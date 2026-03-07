@@ -38,7 +38,6 @@ export default function ProductCard({
   gradeTags = [],
   slug,
 }: ProductCardProps) {
-  const volumeLabel = variant && variant !== "일반" ? `${capacity} · ${variant}` : capacity;
   const detailHref = slug ? `/product/${slug}` : productUrl;
   const imageUrl = slug ? getProductImageUrl(slug) : null;
 
@@ -97,50 +96,21 @@ export default function ProductCard({
         {brand}
       </p>
 
-      {/* 제품명 */}
-      <h3 className="mt-1 line-clamp-2 font-semibold leading-snug" style={{ fontSize: "16px", fontWeight: 600, color: "#1a1a1a" }}>
-        {name}
-      </h3>
-
-      {/* 용량 · 특성 */}
-      <p className="mt-1 text-[13px]" style={{ color: "#6b6b6b" }}>
-        {volumeLabel}
-      </p>
-
-      {/* 제품 특징 태그: 팩, 밀크형, 락토프리 등 (최대 3개, 색상 구분) */}
-      {tags.length > 0 && (() => {
-        const tagStyle = (_tag: string) => {
-          return { bg: "#F5F5F5", border: "#D4D4D4", color: "#6B6B6B" };
-        };
+      {/* 제품명 + 용량, 용기(팩/PET/CAN) */}
+      {(() => {
+        const packageTag = tags.find((t) => ["팩", "PET", "CAN"].includes(t));
+        const capacitySuffix = packageTag ? `, ${packageTag}` : "";
         return (
-          <div className="mt-2 flex flex-wrap gap-1.5" style={{ gap: "6px" }}>
-            {tags.slice(0, 3).map((tag) => {
-              const s = tagStyle(tag);
-              return (
-                <span
-                  key={tag}
-                  className="inline-flex items-center justify-center rounded-full font-medium"
-                  style={{
-                    height: "26px",
-                    padding: "0 10px",
-                    borderRadius: "999px",
-                    fontSize: "12px",
-                    background: s.bg,
-                    border: `1px solid ${s.border}`,
-                    color: s.color,
-                  }}
-                >
-                  {tag}
-                </span>
-              );
-            })}
-          </div>
+          <h3 className="mt-1 line-clamp-2 font-semibold leading-snug" style={{ fontSize: "16px", fontWeight: 600, color: "#1a1a1a" }}>
+            <span>{name}</span>
+            <span className="font-normal" style={{ fontSize: "13px", color: "#6b6b6b" }}> {capacity}{capacitySuffix}</span>
+          </h3>
         );
       })()}
 
-      {/* 등급 태그: 밀도 → 다이어트 → 퍼포먼스 순, 등급 문자 기준 색상 */}
-      {gradeTags.length > 0 && (() => {
-        const order = ["밀도", "다이어트", "퍼포먼스"];
+      {/* 등급 태그: 단백질 밀도 → 다이어트 → 퍼포먼스 순, 락토프리 뱃지 */}
+      {(gradeTags.length > 0 || (variant && variant !== "일반")) && (() => {
+        const order = ["단백질 밀도", "밀도", "다이어트", "퍼포먼스"];
         const sorted = [...gradeTags].sort((a, b) => {
           const ai = order.findIndex((k) => a.startsWith(k));
           const bi = order.findIndex((k) => b.startsWith(k));
@@ -153,6 +123,8 @@ export default function ProductCard({
           if (letter === "C") return { bg: "#FFF1E6", border: "#F08A24", color: "#F08A24" };
           return { bg: "#f3f3f3", border: "#bbb", color: "#999" };
         };
+        const displayLabel = (tag: string) => (tag.startsWith("밀도 ") ? `단백질 밀도 ${tag.slice(4)}` : tag);
+        const lactoFreeStyle = { bg: "#F5F0E8", border: "#D4D4D4", color: "#6B6B6B" };
         return (
           <div className="mt-1.5 flex flex-wrap gap-1.5" style={{ gap: "6px" }}>
             {sorted.map((tag) => {
@@ -172,10 +144,27 @@ export default function ProductCard({
                     color: s.color,
                   }}
                 >
-                  {tag}
+                  {displayLabel(tag)}
                 </span>
               );
             })}
+            {variant && variant !== "일반" && (
+              <span
+                className="inline-flex items-center justify-center rounded-full"
+                style={{
+                  height: "26px",
+                  padding: "0 10px",
+                  borderRadius: "999px",
+                  fontSize: "12px",
+                  fontWeight: 600,
+                  background: lactoFreeStyle.bg,
+                  border: `1px solid ${lactoFreeStyle.border}`,
+                  color: lactoFreeStyle.color,
+                }}
+              >
+                {variant}
+              </span>
+            )}
           </div>
         );
       })()}
@@ -216,7 +205,7 @@ export default function ProductCard({
           style={{ borderRadius: "999px" }}
         >
           <span className="flex h-3.5 w-3.5 shrink-0 items-center justify-center rounded bg-[#ff5722] text-white" aria-hidden>
-            <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z" /><line x1="3" y1="6" x2="21" y2="6" /><path d="M16 10a4 4 0 01-8 0" /></svg>
+            <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 00-2.91-.09z" /><path d="M12 15l-3-3a22 22 0 012-3.95A12.88 12.88 0 0122 2c0 2.72-.78 7.5-6 11a22 22 0 01-3.95 2z" /><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0" /><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5" /></svg>
           </span>
           쿠팡
         </a>

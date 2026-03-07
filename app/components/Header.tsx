@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 
 const navItems = [
@@ -25,7 +26,10 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-10 bg-[#ffffff]">
       <div className="mx-auto flex h-14 max-w-[1200px] items-center justify-between gap-4 px-4 md:px-6">
-        <Link href="/" className="shrink-0 text-lg font-bold text-[var(--accent)]">
+        <Link href="/" className="flex shrink-0 items-center gap-2.5 text-lg font-bold text-[var(--accent)]">
+          <span className="relative flex h-9 w-9 shrink-0 items-center justify-center overflow-hidden rounded-lg" aria-hidden>
+            <Image src="/proteinlab-logo.png" alt="" width={36} height={36} className="object-contain" priority />
+          </span>
           ProteinLab
         </Link>
         <nav className="flex flex-wrap items-center justify-end gap-1 md:gap-2" aria-label="메인 메뉴">
