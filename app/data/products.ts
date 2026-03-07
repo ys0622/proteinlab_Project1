@@ -24,108 +24,18 @@ export interface ProductDetailFields {
 
 export type ProductDetailProps = ProductCardProps & ProductDetailFields;
 
-export const mockProducts: ProductDetailProps[] = [
-  {
-    slug: "newcare-all-protein-choco-245",
-    brand: "뉴케어",
-    name: "올프로틴 (초콜릿)",
-    capacity: "245mL",
-    variant: "락토프리",
-    tags: ["팩", "밀크형", "락토프리"],
-    proteinPerServing: 25,
-    sugar: 0,
-    density: "10.2g/100ml",
-    productUrl: "#",
-  },
-  {
-    slug: "newcare-all-protein-banana-245",
-    brand: "뉴케어",
-    name: "올프로틴 (바나나)",
-    capacity: "245mL",
-    variant: "락토프리",
-    tags: ["팩", "밀크형", "락토프리"],
-    proteinPerServing: 25,
-    sugar: 0,
-    density: "10.2g/100ml",
-    productUrl: "#",
-  },
-  {
-    slug: "danbaek-drink-coffee-250",
-    brand: "더단백",
-    name: "더단백 드링크 (커피)",
-    capacity: "250mL",
-    variant: "일반",
-    tags: ["팩", "밀크형"],
-    proteinPerServing: 20,
-    sugar: 0,
-    density: "8.0g/100ml",
-    productUrl: "#",
-  },
-  {
-    slug: "sellex-profit-milk-vanilla-250",
-    brand: "셀렉스",
-    name: "프로핏 (밀크 바닐라)",
-    capacity: "250mL",
-    variant: "일반",
-    tags: ["팩", "밀크형"],
-    proteinPerServing: 20,
-    sugar: 0,
-    density: "8.0g/100ml",
-    productUrl: "#",
-  },
-  {
-    slug: "sellex-profit-mocha-chocolate-250",
-    brand: "셀렉스",
-    name: "프로핏 (모카 초콜릿)",
-    capacity: "250mL",
-    variant: "일반",
-    tags: ["팩", "밀크형"],
-    proteinPerServing: 20,
-    sugar: 0,
-    density: "8.0g/100ml",
-    productUrl: "#",
-  },
-  {
-    slug: "danbaek-water-apple-400",
-    brand: "더단백",
-    name: "더단백 워터 프로틴 (청사과)",
-    capacity: "400mL",
-    variant: "일반",
-    tags: ["PET", "워터형"],
-    proteinPerServing: 25,
-    sugar: 0,
-    density: "6.3g/100ml",
-    productUrl: "#",
-  },
-  {
-    slug: "hymune-balance-active-milkshake-deepchoco-250",
-    brand: "하이뮨",
-    name: "프로틴 밸런스 액티브 (밀크쉐이크)",
-    capacity: "250mL",
-    variant: "일반",
-    tags: ["팩", "밀크형"],
-    proteinPerServing: 20,
-    sugar: 0,
-    density: "8.0g/100ml",
-    productUrl: "#",
-  },
-  {
-    slug: "ondanbaek-caramel-latte-250",
-    brand: "오늘단백",
-    name: "오늘단백 (카라멜라떼)",
-    capacity: "250mL",
-    variant: "일반",
-    tags: ["팩", "밀크형"],
-    proteinPerServing: 21,
-    density: "8.4g/100ml",
-    productUrl: "#",
-  },
-];
-
+import { getDrinkProductsFromImageMap } from "./drinkProductsFromImageMap";
 import { mockBarProducts } from "./barProductsFromProteinlab";
+import { applyDrinkGrades, applyBarGrades } from "../lib/gradeCalculation";
 
-/** proteinlab.kr/bars 기준 단백질바 59개 */
+/** 단백질 음료 목록: productImage slug와 일치, 등급은 proteinlab.kr 기준으로 산정 */
+export const mockProducts: ProductDetailProps[] = applyDrinkGrades(getDrinkProductsFromImageMap());
+
+/** proteinlab.kr/bars 기준 단백질바 59개 (원본) */
 export { mockBarProducts } from "./barProductsFromProteinlab";
+
+/** 단백질바 + 밀도/다이어트/퍼포먼스 등급 적용 (랭킹·상세용) */
+export const barProductsWithGrades: ProductDetailProps[] = applyBarGrades(mockBarProducts);
 
 /** 1병/1개 기준 영양성분 상세 */
 export function getNutritionDetail(p: ProductDetailProps): NutritionDetailRow[] {
@@ -138,11 +48,11 @@ export function getNutritionDetail(p: ProductDetailProps): NutritionDetailRow[] 
 }
 
 export function getAllProducts(): ProductDetailProps[] {
-  return [...mockProducts, ...mockBarProducts];
+  return [...mockProducts, ...barProductsWithGrades];
 }
 
 export function getProductBySlug(slug: string): ProductDetailProps | null {
-  const bar = mockBarProducts.find((p) => p.slug === slug);
+  const bar = barProductsWithGrades.find((p) => p.slug === slug);
   if (bar) return bar;
   return mockProducts.find((p) => p.slug === slug) ?? null;
 }
