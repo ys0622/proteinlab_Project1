@@ -1,21 +1,37 @@
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css");
 @import "tailwindcss";
 
 :root {
-  --background: #f7f6f3;
+  --font-family: Pretendard, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans KR", sans-serif;
+  --background: #ffffff;
   --background-card: #ffffff;
   --foreground: #1a1a1a;
   --foreground-muted: #5a5a5a;
-  --accent: #0d5c3d;
-  --accent-hover: #0a4a30;
-  --accent-light: #e6f0eb;
+  --foreground-muted-light: #8a8a8a;
   --border: #e2dfda;
   --beige-warm: #f3f0eb;
+  --hero-bg: #efede6;
+  --hero-border: #eaeaea;
+  --filter-box-bg: #efede6;
+  --accent: #2d4a35;
+  --accent-hover: #243d2b;
+  --accent-light: #eaf2ec;
+  --curation-chip-bg: #eaf2ec;
+  --curation-chip-text: #2d4a35;
   --white-warm: #fefefc;
-  /* proteinlab.kr 스페이싱 복구 */
-  --section-mt: 32px;
-  --filter-gap: 12px;
-  --chip-gap: 8px;
   --container-max: 1200px;
+  --filter-gap: 16px;
+  --chip-gap: 8px;
+  --chip-height: 32px;
+  --chip-radius: 16px;
+  /* 객관적 비교 플랫폼: 핵심 지표·등급 색상 */
+  --metric-value-color: #1b7f5b;
+  --grade-density-bg: #e7f3ec;
+  --grade-density-border: #1b7f5b;
+  --grade-diet-bg: #eaf2ff;
+  --grade-diet-border: #4c7bd9;
+  --grade-performance-bg: #fff1e6;
+  --grade-performance-border: #f08a24;
 }
 
 @theme inline {
@@ -28,15 +44,34 @@
   --color-border: var(--border);
   --color-beige: var(--beige-warm);
   --color-card: var(--background-card);
-  --font-sans: var(--font-noto-sans-kr), "Noto Sans KR", system-ui, -apple-system, sans-serif;
+  --color-hero-bg: var(--hero-bg);
+  --color-filter-box: var(--filter-box-bg);
+}
+
+body,
+button,
+input,
+select,
+textarea {
+  font-family: var(--font-family);
 }
 
 body {
-  background: var(--background);
+  background: #ffffff;
   color: var(--foreground);
-  font-family: var(--font-sans);
   font-size: 16px;
+  font-weight: 400;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+}
+
+/* 제품 카드 hover: 비교 플랫폼 UX */
+.product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.06);
 }

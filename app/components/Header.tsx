@@ -1,19 +1,20 @@
 import Link from "next/link";
 
 const navItems = [
-  { label: "제품 목록", href: "/" },
-  { label: "제품 추천", href: "/picks" },
+  { label: "단백질 음료", href: "/" },
+  { label: "단백질 바", href: "/bars" },
+  { label: "제품 추천", href: "/recommend" },
   { label: "등급 랭킹", href: "/ranking" },
-  { label: "등급 기준", href: "/grades" },
-  { label: "브랜드 이벤트 & 혜택", href: "/events" },
-  { label: "단백질 가이드", href: "/guide" },
+  { label: "등급 기준", href: "/grade-criteria" },
+  { label: "브랜드 이벤트 & 혜택", href: "/official-events" },
+  { label: "단백질 가이드", href: "/guides" },
   { label: "문의", href: "/contact" },
   { label: "관리", href: "/admin", adminOnly: true },
 ];
 
 export default function Header() {
   return (
-    <header className="sticky top-0 z-10 border-b border-[var(--border)] bg-[var(--white-warm)]">
+    <header className="sticky top-0 z-10 bg-[#ffffff]">
       <div className="mx-auto flex h-14 max-w-[1200px] items-center justify-between gap-4 px-4 md:px-6">
         <Link href="/" className="shrink-0 text-lg font-bold text-[var(--accent)]">
           ProteinLab

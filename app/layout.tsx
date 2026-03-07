@@ -1,12 +1,8 @@
 import type { Metadata } from "next";
-import { Noto_Sans_KR } from "next/font/google";
+import CompareBar from "./components/CompareBar";
+import CompareBarSpacer from "./components/CompareBarSpacer";
+import { CompareProvider } from "./context/CompareContext";
 import "./globals.css";
-
-const notoSansKr = Noto_Sans_KR({
-  variable: "--font-noto-sans-kr",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-});
 
 export const metadata: Metadata = {
   title: "ProteinLab | 단백질 음료 비교 플랫폼",
@@ -20,8 +16,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko">
-      <body className={`${notoSansKr.variable} font-sans antialiased`}>
-        {children}
+      <body className="antialiased">
+        <CompareProvider>
+          {children}
+          <CompareBarSpacer />
+          <CompareBar />
+        </CompareProvider>
       </body>
     </html>
   );

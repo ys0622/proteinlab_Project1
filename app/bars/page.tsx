@@ -1,9 +1,14 @@
-import Header from "./components/Header";
-import HeroSection from "./components/HeroSection";
-import ProductListWithFilters from "./components/ProductListWithFilters";
-import { mockProducts } from "./data/products";
+import Header from "../components/Header";
+import HeroSection from "../components/HeroSection";
+import ProductListWithFilters from "../components/ProductListWithFilters";
+import { mockBarProducts } from "../data/products";
 
-export default function Home() {
+export const metadata = {
+  title: "단백질 바 비교 | ProteinLab",
+  description: "단백질 바 제품을 브랜드, 단백질 함량, 당류, 용량으로 비교해 보세요. proteinlab.kr 기준 큐레이션.",
+};
+
+export default function BarsPage() {
   return (
     <div className="min-h-screen bg-white">
       <Header />
@@ -11,7 +16,7 @@ export default function Home() {
       <main className="mx-auto max-w-[1200px] px-4 pt-0 pb-2 md:px-6 md:pb-3">
         <HeroSection />
 
-        <ProductListWithFilters productType="drink" products={mockProducts} />
+        <ProductListWithFilters productType="bar" products={mockBarProducts} />
       </main>
 
       <footer className="mt-12 border-t border-[var(--border)] bg-[var(--beige-warm)] py-8">

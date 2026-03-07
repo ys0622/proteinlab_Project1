@@ -1,45 +1,55 @@
 "use client";
 
-import { useState } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 export default function HeroSection() {
-  const [activeTab, setActiveTab] = useState<"drink" | "bar">("drink");
+  const pathname = usePathname();
+  const isBar = pathname === "/bars";
 
   return (
-    <section className="border-b border-[var(--border)] pb-6">
-      <h1 className="text-2xl font-bold text-[var(--foreground)] md:text-3xl">
-        단백질 제품, 제대로 비교하다
-      </h1>
-      <p className="mt-2 text-[var(--foreground-muted)]">
-        국내 단백질 제품의 성분과 영양 정보를 비교·정리하는 플랫폼입니다.
-      </p>
-      <p className="mt-2 text-xs text-[var(--foreground-muted)]">
-        영양성분: 제조사 공식 자료·제품 라벨 기반 수집 · 가격: 쿠팡 최저가 기준 참고값 (변동될 수 있음) · 마지막 업데이트 2026-03-05
-      </p>
-      {/* 탭: proteinlab.kr과 동일 */}
-      <div className="mt-6 flex gap-0 border-b border-[var(--border)]">
-        <button
-          type="button"
-          onClick={() => setActiveTab("drink")}
-          className={`border-b-2 px-4 py-2 text-sm font-medium transition-colors ${
-            activeTab === "drink"
-              ? "border-[var(--accent)] text-[var(--accent)]"
-              : "border-transparent text-[var(--foreground-muted)] hover:text-[var(--foreground)]"
-          }`}
-        >
-          단백질음료
-        </button>
-        <button
-          type="button"
-          onClick={() => setActiveTab("bar")}
-          className={`border-b-2 px-4 py-2 text-sm font-medium transition-colors ${
-            activeTab === "bar"
-              ? "border-[var(--accent)] text-[var(--accent)]"
-              : "border-transparent text-[var(--foreground-muted)] hover:text-[var(--foreground)]"
-          }`}
-        >
-          단백질바
-        </button>
+    <section
+      className="relative w-full border-t border-b"
+      style={{
+        background: "var(--hero-bg)",
+        borderColor: "var(--hero-border)",
+        paddingTop: "16px",
+        paddingBottom: "20px",
+        marginLeft: "calc(-50vw + 50%)",
+        marginRight: "calc(-50vw + 50%)",
+        width: "100vw",
+      }}
+      aria-label="히어로"
+    >
+      <div className="mx-auto max-w-[1200px] px-4 md:px-6">
+        <h1 className="text-2xl font-bold leading-tight text-[var(--foreground)] md:text-3xl" style={{ fontWeight: 700 }}>
+          단백질 제품, 제대로 비교하다
+        </h1>
+        <p className="mt-1 text-sm text-[var(--foreground-muted)]" style={{ fontWeight: 400 }}>
+          국내 단백질 제품의 성분과 영양 정보를 비교 정리하는 플랫폼입니다. 단백질 함량, 당류, 단백질 밀도 등 핵심 지표를 한눈에 확인하세요.
+        </p>
+        <div className="mt-2 flex gap-2">
+          <Link
+            href="/"
+            className={`rounded-full px-3.5 py-1 text-sm font-medium transition-colors ${!isBar
+              ? "bg-[var(--accent)] text-white"
+              : "border border-[var(--border)] bg-white text-[var(--foreground-muted)] hover:text-[var(--foreground)]"
+            }`}
+            style={{ fontWeight: 400 }}
+          >
+            단백질 음료
+          </Link>
+          <Link
+            href="/bars"
+            className={`rounded-full px-3.5 py-1 text-sm font-medium transition-colors ${isBar
+              ? "bg-[var(--accent)] text-white"
+              : "border border-[var(--border)] bg-white text-[var(--foreground-muted)] hover:text-[var(--foreground)]"
+            }`}
+            style={{ fontWeight: 400 }}
+          >
+            단백질 바
+          </Link>
+        </div>
       </div>
     </section>
   );
