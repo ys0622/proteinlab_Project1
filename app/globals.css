@@ -1,26 +1,42 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #f7f6f3;
+  --background-card: #ffffff;
+  --foreground: #1a1a1a;
+  --foreground-muted: #5a5a5a;
+  --accent: #0d5c3d;
+  --accent-hover: #0a4a30;
+  --accent-light: #e6f0eb;
+  --border: #e2dfda;
+  --beige-warm: #f3f0eb;
+  --white-warm: #fefefc;
+  /* proteinlab.kr 스페이싱 복구 */
+  --section-mt: 32px;
+  --filter-gap: 12px;
+  --chip-gap: 8px;
+  --container-max: 1200px;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-light: var(--accent-light);
+  --color-muted: var(--foreground-muted);
+  --color-border: var(--border);
+  --color-beige: var(--beige-warm);
+  --color-card: var(--background-card);
+  --font-sans: var(--font-noto-sans-kr), "Noto Sans KR", system-ui, -apple-system, sans-serif;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
