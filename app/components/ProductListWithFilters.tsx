@@ -1,6 +1,8 @@
 "use client";
 
 import { useState, useMemo } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import type { ProductDetailProps } from "../data/products";
 import {
   defaultDrinkFilters,
@@ -47,6 +49,9 @@ export default function ProductListWithFilters(props: ProductListWithFiltersProp
     });
   };
 
+  const pathname = usePathname();
+  const isBar = pathname === "/bars";
+
   return (
     <>
       <div className="mt-3 rounded-xl border border-[var(--border)] bg-[var(--filter-box-bg)]" style={{ marginTop: "12px", borderRadius: "12px", padding: "10px 12px" }}>
@@ -58,6 +63,29 @@ export default function ProductListWithFilters(props: ProductListWithFiltersProp
             <FilterSection productType="bar" filters={filters as BarFilters} onFilterToggle={handleBarFilterToggle} />
           )}
         </div>
+      </div>
+
+      <div className="mt-3 flex gap-2" style={{ marginTop: "12px" }}>
+        <Link
+          href="/"
+          className={`rounded-full px-3.5 py-1 text-sm font-medium transition-colors ${!isBar
+            ? "bg-[var(--accent)] text-white"
+            : "border border-[var(--border)] bg-white text-[var(--foreground-muted)] hover:text-[var(--foreground)]"
+          }`}
+          style={{ fontWeight: 400 }}
+        >
+          단백질 음료
+        </Link>
+        <Link
+          href="/bars"
+          className={`rounded-full px-3.5 py-1 text-sm font-medium transition-colors ${isBar
+            ? "bg-[var(--accent)] text-white"
+            : "border border-[var(--border)] bg-white text-[var(--foreground-muted)] hover:text-[var(--foreground)]"
+          }`}
+          style={{ fontWeight: 400 }}
+        >
+          단백질 바
+        </Link>
       </div>
 
       <div className="mt-2" style={{ marginTop: "8px" }}>

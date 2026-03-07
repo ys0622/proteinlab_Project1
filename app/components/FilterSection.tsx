@@ -46,15 +46,15 @@ const barQuickCurationItems = [
 ];
 
 const labelMinWidth = "5rem";
-const chipBase = "inline-flex items-center justify-center rounded-full border px-2 text-[10px] sm:text-[11px] transition-colors";
+const chipBase = "inline-flex items-center justify-center rounded-full border px-2 text-[10px] sm:text-[11px] leading-none transition-colors";
 const chipUnselected = "border-[var(--border)] bg-white text-[#454545] hover:border-[var(--accent)] hover:bg-[var(--accent-light)] hover:text-[var(--accent)]";
 const chipSelected = "border-[var(--accent)] bg-[var(--accent-light)] text-[var(--accent)] font-medium";
 
 function FilterRow({ title, children }: { title: string; children: React.ReactNode }) {
   return (
-    <div className="flex flex-col gap-0.5 sm:flex-row sm:items-center">
-      <div className="flex h-6 shrink-0 items-center" style={{ minWidth: labelMinWidth }}>
-        <p className="text-[11px] font-bold text-[var(--foreground-muted)]" style={{ margin: 0 }}>{title}</p>
+    <div className="flex flex-col gap-0.5 sm:flex-row sm:items-start">
+      <div className="flex shrink-0 items-center" style={{ minWidth: labelMinWidth, height: "26px" }}>
+        <p className="text-[11px] font-bold leading-none text-[var(--foreground-muted)]" style={{ margin: 0 }}>{title}</p>
       </div>
       <div className="flex flex-1 flex-wrap items-center gap-1.5" style={{ minHeight: "26px" }}>
         {children}
@@ -121,11 +121,11 @@ export default function FilterSection(props: FilterSectionProps) {
         <div className="mt-1.5 border-t border-[var(--border)] pt-1.5">
           <div className="flex flex-col gap-0.5 sm:flex-row sm:items-center">
             <div className="flex h-6 shrink-0 items-center" style={{ minWidth: labelMinWidth }}>
-              <p className="text-[11px] font-bold text-[var(--foreground-muted)]" style={{ margin: 0 }}>빠른 큐레이션</p>
+              <p className="text-[11px] font-bold leading-none text-[var(--foreground-muted)]" style={{ margin: 0 }}>빠른 큐레이션</p>
             </div>
             <div className="flex flex-1 flex-wrap items-center gap-1.5">
               {drinkQuickCurationItems.map((item) => (
-                <a key={item.label} href={item.href} className="shrink-0 inline-flex items-center justify-center rounded-full border border-[var(--curation-chip-bg)] bg-[var(--curation-chip-bg)] px-2 text-[10px] font-medium text-[var(--curation-chip-text)] hover:opacity-90 transition-opacity sm:text-[11px]" style={{ height: "26px", borderRadius: "13px" }}>
+                <a key={item.label} href={item.href} className="shrink-0 inline-flex items-center justify-center rounded-full border border-[var(--curation-chip-bg)] bg-[var(--curation-chip-bg)] px-2 text-[10px] font-medium leading-none text-[var(--curation-chip-text)] hover:opacity-90 transition-opacity sm:text-[11px]" style={{ height: "26px", borderRadius: "13px" }}>
                   {item.label}
                 </a>
               ))}
@@ -160,11 +160,11 @@ export default function FilterSection(props: FilterSectionProps) {
         <div className="mt-1.5 border-t border-[var(--border)] pt-1.5">
           <div className="flex flex-col gap-0.5 sm:flex-row sm:items-center">
             <div className="flex h-6 shrink-0 items-center" style={{ minWidth: labelMinWidth }}>
-              <p className="text-[11px] font-bold text-[var(--foreground-muted)]" style={{ margin: 0 }}>빠른 큐레이션</p>
+              <p className="text-[11px] font-bold leading-none text-[var(--foreground-muted)]" style={{ margin: 0 }}>빠른 큐레이션</p>
             </div>
             <div className="flex flex-1 flex-wrap items-center gap-1.5">
               {barQuickCurationItems.map((item) => (
-                <a key={item.label} href={item.href} className="shrink-0 inline-flex items-center justify-center rounded-full border border-[var(--curation-chip-bg)] bg-[var(--curation-chip-bg)] px-2 text-[10px] font-medium text-[var(--curation-chip-text)] hover:opacity-90 transition-opacity sm:text-[11px]" style={{ height: "26px", borderRadius: "13px" }}>
+                <a key={item.label} href={item.href} className="shrink-0 inline-flex items-center justify-center rounded-full border border-[var(--curation-chip-bg)] bg-[var(--curation-chip-bg)] px-2 text-[10px] font-medium leading-none text-[var(--curation-chip-text)] hover:opacity-90 transition-opacity sm:text-[11px]" style={{ height: "26px", borderRadius: "13px" }}>
                   {item.label}
                 </a>
               ))}

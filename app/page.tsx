@@ -1,4 +1,5 @@
 import Header from "./components/Header";
+import Footer from "./components/Footer";
 import HeroSection from "./components/HeroSection";
 import ProductListWithFilters from "./components/ProductListWithFilters";
 import { mockProducts } from "./data/products";
@@ -7,18 +8,13 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-white">
       <Header />
+      <HeroSection />
 
       <main className="mx-auto max-w-[1200px] px-4 pt-0 pb-2 md:px-6 md:pb-3">
-        <HeroSection />
-
         <ProductListWithFilters productType="drink" products={mockProducts} />
       </main>
 
-      <footer className="mt-12 border-t border-[var(--border)] bg-[var(--beige-warm)] py-8">
-        <div className="mx-auto max-w-[1200px] px-4 text-center text-sm text-[var(--foreground-muted)] md:px-6">
-          <p>© ProteinLab. 단백질 제품 비교 정보는 참고용이며, 구매 전 공식 정보를 확인하세요.</p>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }

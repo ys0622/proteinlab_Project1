@@ -1,28 +1,62 @@
 import Header from "../components/Header";
+import Footer from "../components/Footer";
+import Link from "next/link";
+import Image from "next/image";
+import { mockProducts, barProductsWithGrades, type ProductDetailProps } from "../data/products";
+import { getDensityValue, getDietScore, getPerformanceScore } from "../lib/gradeCalculation";
+import { getProductImageUrl } from "../lib/productImage";
+import RankingClient from "./RankingClient";
 
 export const metadata = {
   title: "등급 랭킹 | ProteinLab",
-  description: "단백질 음료 등급 랭킹",
+  description: "단백질 음료·단백질 바 등급별 제품 순위",
+};
+
+function prepareRankingData(products: ProductDetailProps[], metric: "density" | "diet" | "performance") {
+  const scored = products.map((p) => {
+    let score: number;
+    if (metric === "density") score = getDensityValue(p);
+    else if (metric === "diet") score = getDietScore(p);
+    else score = getPerformanceScore(p);
+    return { product: p, score };
+  });
+
+  const higherIsBetter = metric !== "diet";
+  scored.sort((a, b) => higherIsBetter ? b.score - a.score : a.score - b.score);
+
+  const len = scored.length;
+  return scored.map((item, idx) => {
+    const pct = idx / len;
+    const grade = pct < 0.2 ? "A" : pct < 0.5 ? "B" : pct < 0.8 ? "C" : "D";
+    return { ...item, grade, rank: idx + 1 };
+  });
+}
+
+export type RankingItem = {
+  product: ProductDetailProps;
+  score: number;
+  grade: string;
+  rank: number;
 };
 
 export default function RankingPage() {
+  const drinkDensity = prepareRankingData(mockProducts, "density");
+  const drinkDiet = prepareRankingData(mockProducts, "diet");
+  const drinkPerf = prepareRankingData(mockProducts, "performance");
+  const barDensity = prepareRankingData(barProductsWithGrades, "density");
+  const barDiet = prepareRankingData(barProductsWithGrades, "diet");
+  const barPerf = prepareRankingData(barProductsWithGrades, "performance");
+
+  const rankings = {
+    drink: { density: drinkDensity, diet: drinkDiet, performance: drinkPerf },
+    bar: { density: barDensity, diet: barDiet, performance: barPerf },
+  };
+
   return (
     <div className="min-h-screen bg-white">
       <Header />
-      <main className="mx-auto max-w-[1200px] px-4 py-8 md:px-6">
-        <h1 className="text-2xl font-bold text-[var(--foreground)] md:text-3xl">등급 랭킹</h1>
-        <p className="mt-2 text-sm text-[var(--foreground-muted)]">
-          단백질 밀도·다이어트·퍼포먼스 등급별 제품 순위입니다.
-        </p>
-        <div className="mt-8 rounded-xl border border-[var(--border)] bg-[var(--hero-bg)] p-6" style={{ background: "#EFEDE6" }}>
-          <p className="text-sm text-[var(--foreground-muted)]">랭킹 목록 영역 (추후 데이터 연동)</p>
-        </div>
-      </main>
-      <footer className="mt-12 border-t border-[var(--border)] bg-[var(--beige-warm)] py-8">
-        <div className="mx-auto max-w-[1200px] px-4 text-center text-sm text-[var(--foreground-muted)] md:px-6">
-          <p>© ProteinLab. 단백질 제품 비교 정보는 참고용이며, 구매 전 공식 정보를 확인하세요.</p>
-        </div>
-      </footer>
+      <RankingClient rankings={rankings} />
+      <Footer />
     </div>
   );
 }

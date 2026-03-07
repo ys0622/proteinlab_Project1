@@ -1,0 +1,3866 @@
+[
+  {
+    "slug": "newcare-all-protein-choco-245",
+    "brand": "뉴케어",
+    "name": "올프로틴 (초콜릿)",
+    "capacity": "245mL",
+    "variant": "락토프리",
+    "tags": [
+      "팩"
+    ],
+    "proteinPerServing": 25,
+    "calories": 135,
+    "sugar": 0,
+    "density": "10.2g/100ml",
+    "productUrl": "#",
+    "productType": "drink",
+    "gradeTags": [
+      "단백질 밀도 A",
+      "다이어트 B",
+      "퍼포먼스 A"
+    ],
+    "manufacturer": "대상웰라이프",
+    "flavor": "초콜릿",
+    "bcaa": "4000mg",
+    "proteinSource": "혼합",
+    "fat": 2.5,
+    "sodium": 250,
+    "calorieDensity": "55.1kcal/100ml",
+    "drinkType": "밀크형",
+    "nutritionPerBottle": {
+      "caloriesKcal": 135,
+      "proteinG": 25,
+      "carbsG": 3,
+      "sugarsG": 0,
+      "fatG": 2.5,
+      "satFatG": 0.5,
+      "sodiumMg": 250,
+      "bcaaMg": 4000
+    }
+  },
+  {
+    "slug": "newcare-all-protein-banana-245",
+    "brand": "뉴케어",
+    "name": "올프로틴 (바나나)",
+    "capacity": "245mL",
+    "variant": "락토프리",
+    "tags": [
+      "팩"
+    ],
+    "proteinPerServing": 25,
+    "calories": 135,
+    "sugar": 0,
+    "density": "10.2g/100ml",
+    "productUrl": "#",
+    "productType": "drink",
+    "gradeTags": [
+      "단백질 밀도 A",
+      "다이어트 B",
+      "퍼포먼스 A"
+    ],
+    "manufacturer": "대상웰라이프",
+    "flavor": "바나나",
+    "bcaa": "4000mg",
+    "proteinSource": "혼합",
+    "fat": 2.5,
+    "sodium": 250,
+    "calorieDensity": "55.1kcal/100ml",
+    "drinkType": "밀크형",
+    "nutritionPerBottle": {
+      "caloriesKcal": 135,
+      "proteinG": 25,
+      "carbsG": 3,
+      "sugarsG": 0,
+      "fatG": 2.5,
+      "satFatG": 0.5,
+      "sodiumMg": 250,
+      "bcaaMg": 4000
+    }
+  },
+  {
+    "slug": "newcare-all-protein-savory-245",
+    "brand": "뉴케어",
+    "name": "올프로틴 (고소한맛)",
+    "capacity": "245mL",
+    "variant": "락토프리",
+    "tags": [
+      "팩"
+    ],
+    "proteinPerServing": 25,
+    "calories": 135,
+    "sugar": 0,
+    "density": "10.2g/100ml",
+    "productUrl": "#",
+    "productType": "drink",
+    "gradeTags": [
+      "단백질 밀도 A",
+      "다이어트 B",
+      "퍼포먼스 A"
+    ],
+    "manufacturer": "대상웰라이프",
+    "flavor": "고소한맛",
+    "bcaa": "4000mg",
+    "proteinSource": "혼합",
+    "fat": 2.5,
+    "sodium": 250,
+    "calorieDensity": "55.1kcal/100ml",
+    "drinkType": "밀크형",
+    "nutritionPerBottle": {
+      "caloriesKcal": 135,
+      "proteinG": 25,
+      "carbsG": 3,
+      "sugarsG": 0,
+      "fatG": 2.5,
+      "satFatG": 0.5,
+      "sodiumMg": 250,
+      "bcaaMg": 4000
+    }
+  },
+  {
+    "slug": "newcare-all-protein-plant-savory-250",
+    "brand": "뉴케어",
+    "name": "올프로틴 식물성단백질 (고소한맛)",
+    "capacity": "250mL",
+    "variant": "락토프리",
+    "tags": [
+      "팩"
+    ],
+    "proteinPerServing": 20,
+    "calories": 130,
+    "sugar": 0,
+    "density": "8.0g/100ml",
+    "productUrl": "#",
+    "productType": "drink",
+    "gradeTags": [
+      "단백질 밀도 B",
+      "다이어트 B",
+      "퍼포먼스 C"
+    ],
+    "manufacturer": "대상웰라이프",
+    "flavor": "고소한맛",
+    "bcaa": "—",
+    "proteinSource": "식물성",
+    "fat": 3.5,
+    "sodium": 230,
+    "calorieDensity": "52.0kcal/100ml",
+    "drinkType": "밀크형",
+    "nutritionPerBottle": {
+      "caloriesKcal": 130,
+      "proteinG": 20,
+      "carbsG": 5,
+      "sugarsG": 0,
+      "fatG": 3.5,
+      "satFatG": 0.5,
+      "sodiumMg": 230
+    }
+  },
+  {
+    "slug": "danbaek-drink-coffee-250",
+    "brand": "더단백",
+    "name": "더단백 드링크 (커피)",
+    "capacity": "250mL",
+    "variant": "일반",
+    "tags": [
+      "팩"
+    ],
+    "proteinPerServing": 20,
+    "calories": 110,
+    "sugar": 0,
+    "density": "8.0g/100ml",
+    "productUrl": "#",
+    "productType": "drink",
+    "gradeTags": [
+      "단백질 밀도 B",
+      "다이어트 B",
+      "퍼포먼스 C"
+    ],
+    "manufacturer": "빙그레",
+    "flavor": "커피",
+    "bcaa": "4000mg",
+    "proteinSource": "혼합",
+    "fat": 1,
+    "sodium": 80,
+    "calorieDensity": "44.0kcal/100ml",
+    "drinkType": "밀크형",
+    "nutritionPerBottle": {
+      "caloriesKcal": 110,
+      "proteinG": 20,
+      "carbsG": 7,
+      "sugarsG": 0,
+      "fatG": 1,
+      "satFatG": 0.4,
+      "sodiumMg": 80,
+      "fiberG": 1.7,
+      "bcaaMg": 4000
+    }
+  },
+  {
+    "slug": "sellex-profit-milk-vanilla-250",
+    "brand": "셀렉스",
+    "name": "프로핏 (밀크 바닐라)",
+    "capacity": "250mL",
+    "variant": "일반",
+    "tags": [
+      "팩"
+    ],
+    "proteinPerServing": 20,
+    "calories": 125,
+    "sugar": 0,
+    "density": "8.0g/100ml",
+    "productUrl": "#",
+    "productType": "drink",
+    "gradeTags": [
+      "단백질 밀도 B",
+      "다이어트 B",
+      "퍼포먼스 C"
+    ],
+    "manufacturer": "매일유업",
+    "flavor": "밀크 바닐라",
+    "bcaa": "4200mg",
+    "proteinSource": "혼합",
+    "fat": 4,
+    "sodium": 300,
+    "calorieDensity": "50.0kcal/100ml",
+    "drinkType": "밀크형",
+    "nutritionPerBottle": {
+      "caloriesKcal": 125,
+      "proteinG": 20,
+      "carbsG": 3,
+      "sugarsG": 0,
+      "fatG": 4,
+      "satFatG": 0,
+      "sodiumMg": 300,
+      "fiberG": 5,
+      "bcaaMg": 4200
+    }
+  },
+  {
+    "slug": "sellex-profit-mocha-chocolate-250",
+    "brand": "셀렉스",
+    "name": "프로핏 (모카 초콜릿)",
+    "capacity": "250mL",
+    "variant": "일반",
+    "tags": [
+      "팩"
+    ],
+    "proteinPerServing": 20,
+    "calories": 135,
+    "sugar": 0,
+    "density": "8.0g/100ml",
+    "productUrl": "#",
+    "productType": "drink",
+    "gradeTags": [
+      "단백질 밀도 B",
+      "다이어트 C",
+      "퍼포먼스 C"
+    ],
+    "manufacturer": "매일유업",
+    "flavor": "모카 초콜릿",
+    "bcaa": "4200mg",
+    "proteinSource": "혼합",
+    "fat": 4,
+    "sodium": 220,
+    "calorieDensity": "54.0kcal/100ml",
+    "drinkType": "밀크형",
+    "nutritionPerBottle": {
+      "caloriesKcal": 135,
+      "proteinG": 20,
+      "carbsG": 4,
+      "sugarsG": 0,
+      "fatG": 4,
+      "satFatG": 0,
+      "sodiumMg": 220,
+      "bcaaMg": 4200
+    }
+  },
+  {
+    "slug": "sellex-profit-banana-250",
+    "brand": "셀렉스",
+    "name": "프로핏 (바나나)",
+    "capacity": "250mL",
+    "variant": "일반",
+    "tags": [
+      "팩"
+    ],
+    "proteinPerServing": 20,
+    "calories": 135,
+    "sugar": 0,
+    "density": "8.0g/100ml",
+    "productUrl": "#",
+    "productType": "drink",
+    "gradeTags": [
+      "단백질 밀도 B",
+      "다이어트 C",
+      "퍼포먼스 C"
+    ],
+    "manufacturer": "매일유업",
+    "flavor": "바나나",
+    "bcaa": "4200mg",
+    "proteinSource": "혼합",
+    "fat": 4,
+    "sodium": 300,
+    "calorieDensity": "54.0kcal/100ml",
+    "drinkType": "밀크형",
+    "nutritionPerBottle": {
+      "caloriesKcal": 135,
+      "proteinG": 20,
+      "carbsG": 6,
+      "sugarsG": 0,
+      "fatG": 4,
+      "satFatG": 0,
+      "sodiumMg": 300,
+      "bcaaMg": 4200
+    }
+  },
+  {
+    "slug": "danbaek-water-apple-400",
+    "brand": "더단백",
+    "name": "더단백 워터 프로틴 (청사과)",
+    "capacity": "400mL",
+    "variant": "일반",
+    "tags": [
+      "PET"
+    ],
+    "proteinPerServing": 25,
+    "calories": 100,
+    "sugar": 0,
+    "density": "6.3g/100ml",
+    "productUrl": "#",
+    "productType": "drink",
+    "gradeTags": [
+      "단백질 밀도 C",
+      "다이어트 A",
+      "퍼포먼스 A"
+    ],
+    "manufacturer": "빙그레",
+    "flavor": "청사과",
+    "bcaa": "—",
+    "proteinSource": "혼합",
+    "fat": 0,
+    "sodium": 47,
+    "calorieDensity": "25.0kcal/100ml",
+    "drinkType": "워터형",
+    "nutritionPerBottle": {
+      "caloriesKcal": 100,
+      "proteinG": 25,
+      "carbsG": 10,
+      "sugarsG": 0,
+      "fatG": 0,
+      "sodiumMg": 47
+    }
+  },
+  {
+    "slug": "hymune-balance-active-milkshake-deepchoco-250",
+    "brand": "하이뮨",
+    "name": "프로틴 밸런스 액티브 (밀크쉐이크)",
+    "capacity": "250mL",
+    "variant": "일반",
+    "tags": [
+      "팩"
+    ],
+    "proteinPerServing": 20,
+    "calories": 104,
+    "sugar": 0,
+    "density": "8.0g/100ml",
+    "productUrl": "#",
+    "productType": "drink",
+    "gradeTags": [
+      "단백질 밀도 B",
+      "다이어트 A",
+      "퍼포먼스 C"
+    ],
+    "manufacturer": "일동후디스",
+    "flavor": "밀크쉐이크",
+    "bcaa": "4500mg",
+    "proteinSource": "혼합",
+    "fat": 0.8,
+    "sodium": 150,
+    "calorieDensity": "41.6kcal/100ml",
+    "drinkType": "밀크형",
+    "nutritionPerBottle": {
+      "caloriesKcal": 104,
+      "proteinG": 20,
+      "carbsG": 7,
+      "sugarsG": 0,
+      "fatG": 0.8,
+      "satFatG": 0.7,
+      "sodiumMg": 150,
+      "bcaaMg": 4500
+    }
+  },
+  {
+    "slug": "danbaek-water-peach-250",
+    "brand": "더단백",
+    "name": "더단백 워터 프로틴 (복숭아)",
+    "capacity": "250mL",
+    "variant": "일반",
+    "tags": [
+      "PET"
+    ],
+    "proteinPerServing": 12,
+    "calories": 55,
+    "sugar": 0,
+    "density": "4.8g/100ml",
+    "productUrl": "#",
+    "productType": "drink",
+    "gradeTags": [
+      "단백질 밀도 D",
+      "다이어트 A",
+      "퍼포먼스 D"
+    ],
+    "manufacturer": "빙그레",
+    "flavor": "복숭아",
+    "bcaa": "—",
+    "proteinSource": "혼합",
+    "fat": 0,
+    "sodium": 53,
+    "calorieDensity": "22.0kcal/100ml",
+    "drinkType": "워터형",
+    "nutritionPerBottle": {
+      "caloriesKcal": 55,
+      "proteinG": 12,
+      "carbsG": 0,
+      "sugarsG": 0,
+      "fatG": 0,
+      "sodiumMg": 53
+    }
+  },
+  {
+    "slug": "hymune-balance-active-deepchoco-250",
+    "brand": "하이뮨",
+    "name": "프로틴 밸런스 액티브 (딥초코)",
+    "capacity": "250mL",
+    "variant": "일반",
+    "tags": [
+      "팩"
+    ],
+    "proteinPerServing": 20,
+    "calories": 104,
+    "sugar": 0,
+    "density": "8.0g/100ml",
+    "productUrl": "#",
+    "productType": "drink",
+    "gradeTags": [
+      "단백질 밀도 C",
+      "다이어트 A",
+      "퍼포먼스 C"
+    ],
+    "manufacturer": "일동후디스",
+    "flavor": "딥초코",
+    "bcaa": "4500mg",
+    "proteinSource": "혼합",
+    "fat": 0.7,
+    "sodium": 150,
+    "calorieDensity": "41.6kcal/100ml",
+    "drinkType": "밀크형",
+    "nutritionPerBottle": {
+      "caloriesKcal": 104,
+      "proteinG": 20,
+      "carbsG": 9,
+      "sugarsG": 0,
+      "fatG": 0.7,
+      "satFatG": 0.5,
+      "sodiumMg": 150,
+      "bcaaMg": 4500
+    }
+  },
+  {
+    "slug": "mymil-furotein-choco-250",
+    "brand": "마이밀",
+    "name": "퓨로틴 (초코맛)",
+    "capacity": "250mL",
+    "variant": "일반",
+    "tags": [
+      "팩"
+    ],
+    "proteinPerServing": 20,
+    "calories": 130,
+    "sugar": 0,
+    "density": "8.0g/100ml",
+    "productUrl": "#",
+    "productType": "drink",
+    "gradeTags": [
+      "단백질 밀도 C",
+      "다이어트 B",
+      "퍼포먼스 C"
+    ],
+    "manufacturer": "대상웰라이프",
+    "flavor": "초코맛",
+    "bcaa": "—",
+    "proteinSource": "혼합",
+    "fat": 3.5,
+    "sodium": 230,
+    "calorieDensity": "52.0kcal/100ml",
+    "drinkType": "밀크형",
+    "nutritionPerBottle": {
+      "caloriesKcal": 130,
+      "proteinG": 20,
+      "carbsG": 5,
+      "sugarsG": 0,
+      "fatG": 3.5,
+      "satFatG": 0.5,
+      "sodiumMg": 230
+    }
+  },
+  {
+    "slug": "mymil-furotein-gosohan-250",
+    "brand": "마이밀",
+    "name": "퓨로틴 (고소한맛)",
+    "capacity": "250mL",
+    "variant": "일반",
+    "tags": [
+      "팩"
+    ],
+    "proteinPerServing": 20,
+    "calories": 130,
+    "sugar": 0,
+    "density": "8.0g/100ml",
+    "productUrl": "#",
+    "productType": "drink",
+    "gradeTags": [
+      "단백질 밀도 C",
+      "다이어트 B",
+      "퍼포먼스 C"
+    ],
+    "manufacturer": "대상웰라이프",
+    "flavor": "고소한맛",
+    "bcaa": "—",
+    "proteinSource": "혼합",
+    "fat": 3.5,
+    "sodium": 230,
+    "calorieDensity": "52.0kcal/100ml",
+    "drinkType": "밀크형",
+    "nutritionPerBottle": {
+      "caloriesKcal": 130,
+      "proteinG": 20,
+      "carbsG": 5,
+      "sugarsG": 0,
+      "fatG": 3.5,
+      "satFatG": 0.5,
+      "sodiumMg": 230
+    }
+  },
+  {
+    "slug": "mymil-furotein-goguma-250",
+    "brand": "마이밀",
+    "name": "퓨로틴 (고구마맛)",
+    "capacity": "250mL",
+    "variant": "일반",
+    "tags": [
+      "팩"
+    ],
+    "proteinPerServing": 20,
+    "calories": 130,
+    "sugar": 0,
+    "density": "8.0g/100ml",
+    "productUrl": "#",
+    "productType": "drink",
+    "gradeTags": [
+      "단백질 밀도 C",
+      "다이어트 B",
+      "퍼포먼스 C"
+    ],
+    "manufacturer": "대상웰라이프",
+    "flavor": "고구마맛",
+    "bcaa": "—",
+    "proteinSource": "혼합",
+    "fat": 3.5,
+    "sodium": 230,
+    "calorieDensity": "52.0kcal/100ml",
+    "drinkType": "밀크형",
+    "nutritionPerBottle": {
+      "caloriesKcal": 130,
+      "proteinG": 20,
+      "carbsG": 5,
+      "sugarsG": 0,
+      "fatG": 3.5,
+      "satFatG": 0.5,
+      "sodiumMg": 230
+    }
+  },
+  {
+    "slug": "ultive-protein-chestnut-250",
+    "brand": "얼티브",
+    "name": "프로틴 (맛밤)",
+    "capacity": "250mL",
+    "variant": "일반",
+    "tags": [
+      "팩"
+    ],
+    "proteinPerServing": 21,
+    "calories": 115,
+    "sugar": 0,
+    "density": "8.4g/100ml",
+    "productUrl": "#",
+    "productType": "drink",
+    "gradeTags": [
+      "단백질 밀도 B",
+      "다이어트 B",
+      "퍼포먼스 B"
+    ],
+    "manufacturer": "얼티브",
+    "flavor": "맛밤",
+    "bcaa": "—",
+    "proteinSource": "혼합",
+    "fat": 3.3,
+    "sodium": 320,
+    "calorieDensity": "46.0kcal/100ml",
+    "drinkType": "밀크형",
+    "nutritionPerBottle": {
+      "caloriesKcal": 115,
+      "proteinG": 21,
+      "carbsG": 1,
+      "sugarsG": 0,
+      "fatG": 3.3,
+      "satFatG": 0.8,
+      "sodiumMg": 320,
+      "fiberG": 0
+    }
+  },
+  {
+    "slug": "ultive-protein-rice-250",
+    "brand": "얼티브",
+    "name": "프로틴 (햇반)",
+    "capacity": "250mL",
+    "variant": "일반",
+    "tags": [
+      "팩"
+    ],
+    "proteinPerServing": 21,
+    "calories": 110,
+    "sugar": 0,
+    "density": "8.4g/100ml",
+    "productUrl": "#",
+    "productType": "drink",
+    "gradeTags": [
+      "단백질 밀도 B",
+      "다이어트 B",
+      "퍼포먼스 B"
+    ],
+    "manufacturer": "얼티브",
+    "flavor": "햇반",
+    "bcaa": "—",
+    "proteinSource": "혼합",
+    "fat": 3,
+    "sodium": 340,
+    "calorieDensity": "44.0kcal/100ml",
+    "drinkType": "밀크형",
+    "nutritionPerBottle": {
+      "caloriesKcal": 110,
+      "proteinG": 21,
+      "carbsG": 0,
+      "sugarsG": 0,
+      "fatG": 3,
+      "satFatG": 0.7,
+      "sodiumMg": 340,
+      "fiberG": 0
+    }
+  },
+  {
+    "slug": "ultive-protein-pistachio-250",
+    "brand": "얼티브",
+    "name": "프로틴 (피스타치오맛)",
+    "capacity": "250mL",
+    "variant": "일반",
+    "tags": [
+      "팩"
+    ],
+    "proteinPerServing": 21,
+    "calories": 115,
+    "sugar": 0,
+    "density": "8.4g/100ml",
+    "productUrl": "#",
+    "productType": "drink",
+    "gradeTags": [
+      "단백질 밀도 B",
+      "다이어트 B",
+      "퍼포먼스 B"
+    ],
+    "manufacturer": "얼티브",
+    "flavor": "피스타치오맛",
+    "bcaa": "—",
+    "proteinSource": "혼합",
+    "fat": 3.1,
+    "sodium": 420,
+    "calorieDensity": "46.0kcal/100ml",
+    "drinkType": "밀크형",
+    "nutritionPerBottle": {
+      "caloriesKcal": 115,
+      "proteinG": 21,
+      "carbsG": 1,
+      "sugarsG": 0,
+      "fatG": 3.1,
+      "satFatG": 0.6,
+      "sodiumMg": 420,
+      "fiberG": 0
+    }
+  },
+  {
+    "slug": "ultive-protein-royalmilktea-250",
+    "brand": "얼티브",
+    "name": "프로틴 (로얄밀크티향)",
+    "capacity": "250mL",
+    "variant": "일반",
+    "tags": [
+      "팩"
+    ],
+    "proteinPerServing": 20,
+    "calories": 115,
+    "sugar": 0,
+    "density": "8.0g/100ml",
+    "productUrl": "#",
+    "productType": "drink",
+    "gradeTags": [
+      "단백질 밀도 C",
+      "다이어트 B",
+      "퍼포먼스 C"
+    ],
+    "manufacturer": "얼티브",
+    "flavor": "로얄밀크티향",
+    "bcaa": "—",
+    "proteinSource": "혼합",
+    "fat": 3.3,
+    "sodium": 380,
+    "calorieDensity": "46.0kcal/100ml",
+    "drinkType": "밀크형",
+    "nutritionPerBottle": {
+      "caloriesKcal": 115,
+      "proteinG": 20,
+      "carbsG": 1,
+      "sugarsG": 0,
+      "fatG": 3.3,
+      "satFatG": 0.7,
+      "sodiumMg": 380,
+      "fiberG": 0
+    }
+  },
+  {
+    "slug": "ultive-vegan-protein-banana-250",
+    "brand": "얼티브",
+    "name": "비건 프로틴 (바나나맛)",
+    "capacity": "250mL",
+    "variant": "락토프리",
+    "tags": [
+      "팩"
+    ],
+    "proteinPerServing": 21,
+    "calories": 115,
+    "sugar": 0,
+    "density": "8.4g/100ml",
+    "productUrl": "#",
+    "productType": "drink",
+    "gradeTags": [
+      "단백질 밀도 B",
+      "다이어트 B",
+      "퍼포먼스 B"
+    ],
+    "manufacturer": "CJ제일제당",
+    "flavor": "바나나맛",
+    "bcaa": "—",
+    "proteinSource": "식물성",
+    "fat": 3.6,
+    "sodium": 410,
+    "calorieDensity": "46.0kcal/100ml",
+    "drinkType": "밀크형",
+    "nutritionPerBottle": {
+      "caloriesKcal": 115,
+      "proteinG": 21,
+      "carbsG": 0,
+      "sugarsG": 0,
+      "fatG": 3.6,
+      "satFatG": 0.9,
+      "sodiumMg": 410,
+      "fiberG": 0
+    }
+  },
+  {
+    "slug": "ultive-vegan-protein-choco-250",
+    "brand": "얼티브",
+    "name": "비건 프로틴 (초코맛)",
+    "capacity": "250mL",
+    "variant": "락토프리",
+    "tags": [
+      "팩"
+    ],
+    "proteinPerServing": 21,
+    "calories": 130,
+    "sugar": 0,
+    "density": "8.4g/100ml",
+    "productUrl": "#",
+    "productType": "drink",
+    "gradeTags": [
+      "단백질 밀도 B",
+      "다이어트 B",
+      "퍼포먼스 B"
+    ],
+    "manufacturer": "CJ제일제당",
+    "flavor": "초코맛",
+    "bcaa": "—",
+    "proteinSource": "식물성",
+    "fat": 3.6,
+    "sodium": 340,
+    "calorieDensity": "52.0kcal/100ml",
+    "drinkType": "밀크형",
+    "nutritionPerBottle": {
+      "caloriesKcal": 130,
+      "proteinG": 21,
+      "carbsG": 3,
+      "sugarsG": 0,
+      "fatG": 3.6,
+      "satFatG": 1,
+      "sodiumMg": 340,
+      "fiberG": 1
+    }
+  },
+  {
+    "slug": "hymune-balance-active-night-tiramisu-zero-250",
+    "brand": "하이뮨",
+    "name": "프로틴 밸런스 액티브 (밤티라미수)",
+    "capacity": "250mL",
+    "variant": "일반",
+    "tags": [
+      "팩"
+    ],
+    "proteinPerServing": 22,
+    "calories": 99,
+    "sugar": 0,
+    "density": "8.8g/100ml",
+    "productUrl": "#",
+    "productType": "drink",
+    "gradeTags": [
+      "단백질 밀도 B",
+      "다이어트 A",
+      "퍼포먼스 B"
+    ],
+    "manufacturer": "일동후디스",
+    "flavor": "밤티라미수",
+    "bcaa": "4500mg",
+    "proteinSource": "혼합",
+    "fat": 0.8,
+    "sodium": 170,
+    "calorieDensity": "39.6kcal/100ml",
+    "drinkType": "밀크형",
+    "nutritionPerBottle": {
+      "caloriesKcal": 99,
+      "proteinG": 22,
+      "carbsG": 3,
+      "sugarsG": 0,
+      "fatG": 0.8,
+      "satFatG": 0,
+      "sodiumMg": 170,
+      "bcaaMg": 4500
+    }
+  },
+  {
+    "slug": "hymune-balance-active-vanilla-bonbon-zero-250",
+    "brand": "하이뮨",
+    "name": "프로틴 밸런스 액티브 (바닐라봉봉)",
+    "capacity": "250mL",
+    "variant": "일반",
+    "tags": [
+      "팩"
+    ],
+    "proteinPerServing": 22,
+    "calories": 99,
+    "sugar": 0,
+    "density": "8.8g/100ml",
+    "productUrl": "#",
+    "productType": "drink",
+    "gradeTags": [
+      "단백질 밀도 B",
+      "다이어트 A",
+      "퍼포먼스 B"
+    ],
+    "manufacturer": "일동후디스",
+    "flavor": "바닐라봉봉",
+    "bcaa": "4500mg",
+    "proteinSource": "혼합",
+    "fat": 0.6,
+    "sodium": 175,
+    "calorieDensity": "39.6kcal/100ml",
+    "drinkType": "밀크형",
+    "nutritionPerBottle": {
+      "caloriesKcal": 99,
+      "proteinG": 22,
+      "carbsG": 3,
+      "sugarsG": 0,
+      "fatG": 0.6,
+      "satFatG": 0,
+      "sodiumMg": 175,
+      "bcaaMg": 4500
+    }
+  },
+  {
+    "slug": "hymune-balance-active-double-shot-coffee-250",
+    "brand": "하이뮨",
+    "name": "프로틴 밸런스 액티브 (더블샷 커피)",
+    "capacity": "250mL",
+    "variant": "일반",
+    "tags": [
+      "팩"
+    ],
+    "proteinPerServing": 20,
+    "calories": 104,
+    "sugar": 0,
+    "density": "8.0g/100ml",
+    "productUrl": "#",
+    "productType": "drink",
+    "gradeTags": [
+      "단백질 밀도 C",
+      "다이어트 A",
+      "퍼포먼스 C"
+    ],
+    "manufacturer": "일동후디스",
+    "flavor": "더블샷 커피",
+    "bcaa": "4500mg",
+    "proteinSource": "혼합",
+    "fat": 0.8,
+    "sodium": 150,
+    "calorieDensity": "41.6kcal/100ml",
+    "drinkType": "밀크형",
+    "nutritionPerBottle": {
+      "caloriesKcal": 104,
+      "proteinG": 20,
+      "carbsG": 7,
+      "sugarsG": 0,
+      "fatG": 0.8,
+      "satFatG": 0.6,
+      "sodiumMg": 150,
+      "bcaaMg": 4500
+    }
+  },
+  {
+    "slug": "sellex-profit-whey-protein-americano-330",
+    "brand": "셀렉스",
+    "name": "프로틴 웨이프로핏 (아메리카노)",
+    "capacity": "330mL",
+    "variant": "일반",
+    "tags": [
+      "PET"
+    ],
+    "proteinPerServing": 20,
+    "calories": 90,
+    "sugar": 0,
+    "density": "6.1g/100ml",
+    "productUrl": "#",
+    "productType": "drink",
+    "gradeTags": [
+      "단백질 밀도 D",
+      "다이어트 A",
+      "퍼포먼스 B"
+    ],
+    "manufacturer": "매일유업",
+    "flavor": "아메리카노",
+    "bcaa": "4800mg",
+    "proteinSource": "혼합",
+    "fat": 0,
+    "sodium": 200,
+    "calorieDensity": "27.3kcal/100ml",
+    "drinkType": "워터형",
+    "nutritionPerBottle": {
+      "caloriesKcal": 90,
+      "proteinG": 20,
+      "carbsG": 3,
+      "sugarsG": 0,
+      "fatG": 0,
+      "satFatG": 0,
+      "sodiumMg": 200,
+      "bcaaMg": 4800
+    }
+  },
+  {
+    "slug": "sellex-profit-strawberry-choco-250",
+    "brand": "셀렉스",
+    "name": "프로핏 (딸기초코)",
+    "capacity": "250mL",
+    "variant": "일반",
+    "tags": [
+      "팩"
+    ],
+    "proteinPerServing": 20,
+    "calories": 100,
+    "sugar": 0,
+    "density": "8.0g/100ml",
+    "productUrl": "#",
+    "productType": "drink",
+    "gradeTags": [
+      "단백질 밀도 C",
+      "다이어트 A",
+      "퍼포먼스 B"
+    ],
+    "manufacturer": "매일유업",
+    "flavor": "딸기초코",
+    "bcaa": "—",
+    "proteinSource": "혼합",
+    "fat": 0.7,
+    "sodium": 220,
+    "calorieDensity": "40.0kcal/100ml",
+    "drinkType": "밀크형",
+    "nutritionPerBottle": {
+      "caloriesKcal": 100,
+      "proteinG": 20,
+      "carbsG": 4,
+      "sugarsG": 0,
+      "fatG": 0.7,
+      "satFatG": 0,
+      "sodiumMg": 220
+    }
+  },
+  {
+    "slug": "sellex-profit-sports-choco-330",
+    "brand": "셀렉스",
+    "name": "프로핏 웨이프로틴 (초콜릿)",
+    "capacity": "330mL",
+    "variant": "일반",
+    "tags": [
+      "PET"
+    ],
+    "proteinPerServing": 20,
+    "calories": 99,
+    "sugar": 0,
+    "density": "6.1g/100ml",
+    "productUrl": "#",
+    "productType": "drink",
+    "gradeTags": [
+      "단백질 밀도 D",
+      "다이어트 A",
+      "퍼포먼스 B"
+    ],
+    "manufacturer": "매일유업",
+    "flavor": "초콜릿",
+    "bcaa": "—",
+    "proteinSource": "혼합",
+    "fat": 0.8,
+    "sodium": 380,
+    "calorieDensity": "30.0kcal/100ml",
+    "drinkType": "밀크형",
+    "nutritionPerBottle": {
+      "caloriesKcal": 99,
+      "proteinG": 20,
+      "carbsG": 2.9,
+      "sugarsG": 0,
+      "fatG": 0.8,
+      "satFatG": 0,
+      "sodiumMg": 380
+    }
+  },
+  {
+    "slug": "calobye-sparkling-grape-340",
+    "brand": "칼로바이",
+    "name": "프로틴 스파클링 (포도)",
+    "capacity": "340mL",
+    "variant": "일반",
+    "tags": [
+      "CAN"
+    ],
+    "proteinPerServing": 18,
+    "calories": 85,
+    "sugar": 0,
+    "density": "5.3g/100ml",
+    "productUrl": "#",
+    "productType": "drink",
+    "gradeTags": [
+      "단백질 밀도 D",
+      "다이어트 A",
+      "퍼포먼스 C"
+    ],
+    "manufacturer": "에이플네이처",
+    "flavor": "포도",
+    "bcaa": "—",
+    "proteinSource": "혼합",
+    "fat": 0,
+    "sodium": 50,
+    "calorieDensity": "25.0kcal/100ml",
+    "drinkType": "워터형",
+    "nutritionPerBottle": {
+      "caloriesKcal": 85,
+      "proteinG": 18,
+      "carbsG": 3,
+      "sugarsG": 0,
+      "fatG": 0,
+      "satFatG": 0,
+      "sodiumMg": 50
+    }
+  },
+  {
+    "slug": "calobye-sparkling-pinkgrapefruit-340",
+    "brand": "칼로바이",
+    "name": "프로틴 스파클링 (핑크자몽)",
+    "capacity": "340mL",
+    "variant": "일반",
+    "tags": [
+      "CAN"
+    ],
+    "proteinPerServing": 18,
+    "calories": 85,
+    "sugar": 0,
+    "density": "5.3g/100ml",
+    "productUrl": "#",
+    "productType": "drink",
+    "gradeTags": [
+      "단백질 밀도 D",
+      "다이어트 A",
+      "퍼포먼스 C"
+    ],
+    "manufacturer": "에이플네이처",
+    "flavor": "핑크자몽",
+    "bcaa": "—",
+    "proteinSource": "혼합",
+    "fat": 0,
+    "sodium": 50,
+    "calorieDensity": "25.0kcal/100ml",
+    "drinkType": "워터형",
+    "nutritionPerBottle": {
+      "caloriesKcal": 85,
+      "proteinG": 18,
+      "carbsG": 3,
+      "sugarsG": 0,
+      "fatG": 0,
+      "satFatG": 0,
+      "sodiumMg": 50
+    }
+  },
+  {
+    "slug": "takefit-pro-lemon-500",
+    "brand": "테이크핏",
+    "name": "테이크핏 프로 (레몬맛)",
+    "capacity": "500mL",
+    "variant": "일반",
+    "tags": [
+      "PET"
+    ],
+    "proteinPerServing": 25,
+    "calories": 100,
+    "sugar": 0,
+    "density": "5.0g/100ml",
+    "productUrl": "#",
+    "productType": "drink",
+    "gradeTags": [
+      "단백질 밀도 D",
+      "다이어트 A",
+      "퍼포먼스 A"
+    ],
+    "manufacturer": "남양유업",
+    "flavor": "레몬맛",
+    "bcaa": "1200mg",
+    "proteinSource": "혼합",
+    "fat": 0,
+    "sodium": 160,
+    "calorieDensity": "20.0kcal/100ml",
+    "drinkType": "워터형",
+    "nutritionPerBottle": {
+      "caloriesKcal": 100,
+      "proteinG": 25,
+      "carbsG": 0,
+      "sugarsG": 0,
+      "fatG": 0,
+      "satFatG": 0,
+      "sodiumMg": 160,
+      "bcaaMg": 1200
+    }
+  },
+  {
+    "slug": "takefit-pro-flatpeach-500",
+    "brand": "테이크핏",
+    "name": "테이크핏 프로 (납작복숭아맛)",
+    "capacity": "500mL",
+    "variant": "일반",
+    "tags": [
+      "PET"
+    ],
+    "proteinPerServing": 25,
+    "calories": 100,
+    "sugar": 0,
+    "density": "5.0g/100ml",
+    "productUrl": "#",
+    "productType": "drink",
+    "gradeTags": [
+      "단백질 밀도 D",
+      "다이어트 A",
+      "퍼포먼스 A"
+    ],
+    "manufacturer": "남양유업",
+    "flavor": "납작복숭아맛",
+    "bcaa": "1200mg",
+    "proteinSource": "혼합",
+    "fat": 0,
+    "sodium": 160,
+    "calorieDensity": "20.0kcal/100ml",
+    "drinkType": "워터형",
+    "nutritionPerBottle": {
+      "caloriesKcal": 100,
+      "proteinG": 25,
+      "carbsG": 0,
+      "sugarsG": 0,
+      "fatG": 0,
+      "satFatG": 0,
+      "sodiumMg": 160,
+      "bcaaMg": 1200
+    }
+  },
+  {
+    "slug": "takefit-pro-shinemuscato-500",
+    "brand": "테이크핏",
+    "name": "테이크핏 프로 (샤인머스캣맛)",
+    "capacity": "500mL",
+    "variant": "일반",
+    "tags": [
+      "PET"
+    ],
+    "proteinPerServing": 25,
+    "calories": 100,
+    "sugar": 0,
+    "density": "5.0g/100ml",
+    "productUrl": "#",
+    "productType": "drink",
+    "gradeTags": [
+      "단백질 밀도 D",
+      "다이어트 A",
+      "퍼포먼스 A"
+    ],
+    "manufacturer": "남양유업",
+    "flavor": "샤인머스캣맛",
+    "bcaa": "1200mg",
+    "proteinSource": "혼합",
+    "fat": 0,
+    "sodium": 160,
+    "calorieDensity": "20.0kcal/100ml",
+    "drinkType": "워터형",
+    "nutritionPerBottle": {
+      "caloriesKcal": 100,
+      "proteinG": 25,
+      "carbsG": 0,
+      "sugarsG": 0,
+      "fatG": 0,
+      "satFatG": 0,
+      "sodiumMg": 160,
+      "bcaaMg": 1200
+    }
+  },
+  {
+    "slug": "newcare-olprotein-water-lemon-350",
+    "brand": "뉴케어",
+    "name": "올프로틴 워터 (레몬)",
+    "capacity": "350mL",
+    "variant": "락토프리",
+    "tags": [
+      "PET"
+    ],
+    "proteinPerServing": 20,
+    "calories": 80,
+    "sugar": 0,
+    "density": "5.7g/100ml",
+    "productUrl": "#",
+    "productType": "drink",
+    "gradeTags": [
+      "단백질 밀도 D",
+      "다이어트 A",
+      "퍼포먼스 B"
+    ],
+    "manufacturer": "대상웰라이프",
+    "flavor": "레몬",
+    "bcaa": "1200mg",
+    "proteinSource": "혼합",
+    "fat": 0,
+    "sodium": 170,
+    "calorieDensity": "22.9kcal/100ml",
+    "drinkType": "워터형",
+    "nutritionPerBottle": {
+      "caloriesKcal": 80,
+      "proteinG": 20,
+      "carbsG": 0,
+      "sugarsG": 0,
+      "fatG": 0,
+      "sodiumMg": 170,
+      "bcaaMg": 1200
+    }
+  },
+  {
+    "slug": "newcare-olprotein-water-apple-350",
+    "brand": "뉴케어",
+    "name": "올프로틴 워터 (사과)",
+    "capacity": "350mL",
+    "variant": "락토프리",
+    "tags": [
+      "PET"
+    ],
+    "proteinPerServing": 20,
+    "calories": 80,
+    "sugar": 0,
+    "density": "5.7g/100ml",
+    "productUrl": "#",
+    "productType": "drink",
+    "gradeTags": [
+      "단백질 밀도 D",
+      "다이어트 A",
+      "퍼포먼스 B"
+    ],
+    "manufacturer": "대상웰라이프",
+    "flavor": "사과",
+    "bcaa": "1200mg",
+    "proteinSource": "혼합",
+    "fat": 0,
+    "sodium": 170,
+    "calorieDensity": "22.9kcal/100ml",
+    "drinkType": "워터형",
+    "nutritionPerBottle": {
+      "caloriesKcal": 80,
+      "proteinG": 20,
+      "carbsG": 0,
+      "sugarsG": 0,
+      "fatG": 0,
+      "sodiumMg": 170,
+      "bcaaMg": 1200
+    }
+  },
+  {
+    "slug": "oatmont-protein-savory-250",
+    "brand": "오트몬트",
+    "name": "프로틴 (고소한맛)",
+    "capacity": "250mL",
+    "variant": "일반",
+    "tags": [
+      "팩"
+    ],
+    "proteinPerServing": 21,
+    "calories": 105,
+    "sugar": 0,
+    "density": "8.4g/100ml",
+    "productUrl": "#",
+    "productType": "drink",
+    "gradeTags": [
+      "단백질 밀도 B",
+      "다이어트 A",
+      "퍼포먼스 B"
+    ],
+    "manufacturer": "롯데칠성음료",
+    "flavor": "고소한맛",
+    "bcaa": "—",
+    "proteinSource": "혼합",
+    "fat": 1.9,
+    "sodium": 365,
+    "calorieDensity": "42.0kcal/100ml",
+    "drinkType": "밀크형",
+    "nutritionPerBottle": {
+      "caloriesKcal": 105,
+      "proteinG": 21,
+      "carbsG": 0,
+      "sugarsG": 0,
+      "fatG": 1.9,
+      "satFatG": 0.5,
+      "sodiumMg": 365
+    }
+  },
+  {
+    "slug": "oatmont-protein-choco-250",
+    "brand": "오트몬트",
+    "name": "프로틴 (초콜릿)",
+    "capacity": "250mL",
+    "variant": "일반",
+    "tags": [
+      "팩"
+    ],
+    "proteinPerServing": 21,
+    "calories": 107,
+    "sugar": 0,
+    "density": "8.4g/100ml",
+    "productUrl": "#",
+    "productType": "drink",
+    "gradeTags": [
+      "단백질 밀도 B",
+      "다이어트 A",
+      "퍼포먼스 B"
+    ],
+    "manufacturer": "롯데칠성음료",
+    "flavor": "초콜릿",
+    "bcaa": "—",
+    "proteinSource": "혼합",
+    "fat": 1.7,
+    "sodium": 365,
+    "calorieDensity": "42.8kcal/100ml",
+    "drinkType": "밀크형",
+    "nutritionPerBottle": {
+      "caloriesKcal": 107,
+      "proteinG": 21,
+      "carbsG": 1.7,
+      "sugarsG": 0,
+      "fatG": 1.7,
+      "satFatG": 0.4,
+      "sodiumMg": 365
+    }
+  },
+  {
+    "slug": "oatmont-protein-cookiecream-250",
+    "brand": "오트몬트",
+    "name": "프로틴 (쿠키앤크림)",
+    "capacity": "250mL",
+    "variant": "일반",
+    "tags": [
+      "팩"
+    ],
+    "proteinPerServing": 21,
+    "calories": 103,
+    "sugar": 0,
+    "density": "8.4g/100ml",
+    "productUrl": "#",
+    "productType": "drink",
+    "gradeTags": [
+      "단백질 밀도 B",
+      "다이어트 A",
+      "퍼포먼스 B"
+    ],
+    "manufacturer": "롯데칠성음료",
+    "flavor": "쿠키앤크림",
+    "bcaa": "—",
+    "proteinSource": "혼합",
+    "fat": 1.8,
+    "sodium": 365,
+    "calorieDensity": "41.2kcal/100ml",
+    "drinkType": "밀크형",
+    "nutritionPerBottle": {
+      "caloriesKcal": 103,
+      "proteinG": 21,
+      "carbsG": 1.7,
+      "sugarsG": 0,
+      "fatG": 1.8,
+      "satFatG": 0.5,
+      "sodiumMg": 365
+    }
+  },
+  {
+    "slug": "hymune-protein-balance-plant-highprotein-190",
+    "brand": "하이뮨",
+    "name": "프로틴 밸런스 (식물성 고단백)",
+    "capacity": "190mL",
+    "variant": "락토프리",
+    "tags": [
+      "팩"
+    ],
+    "proteinPerServing": 10,
+    "calories": 65,
+    "sugar": 0,
+    "density": "5.3g/100ml",
+    "productUrl": "#",
+    "productType": "drink",
+    "gradeTags": [
+      "단백질 밀도 D",
+      "다이어트 B",
+      "퍼포먼스 D"
+    ],
+    "manufacturer": "일동후디스",
+    "flavor": "식물성 고단백",
+    "bcaa": "—",
+    "proteinSource": "식물성",
+    "fat": 0.85,
+    "sodium": 120,
+    "calorieDensity": "34.2kcal/100ml",
+    "drinkType": "밀크형",
+    "nutritionPerBottle": {
+      "caloriesKcal": 65,
+      "proteinG": 10,
+      "carbsG": 6,
+      "sugarsG": 0,
+      "fatG": 0.85,
+      "satFatG": 0.2,
+      "sodiumMg": 120
+    }
+  },
+  {
+    "slug": "danbaek-drink-banana-250",
+    "brand": "더단백",
+    "name": "더단백 드링크 (바나나)",
+    "capacity": "250mL",
+    "variant": "일반",
+    "tags": [
+      "팩"
+    ],
+    "proteinPerServing": 20,
+    "calories": 105,
+    "sugar": 0.7,
+    "density": "8.0g/100ml",
+    "productUrl": "#",
+    "productType": "drink",
+    "gradeTags": [
+      "단백질 밀도 B",
+      "다이어트 B",
+      "퍼포먼스 C"
+    ],
+    "manufacturer": "빙그레",
+    "flavor": "바나나",
+    "bcaa": "4000mg",
+    "proteinSource": "혼합",
+    "fat": 0.5,
+    "sodium": 20,
+    "calorieDensity": "42.0kcal/100ml",
+    "drinkType": "밀크형",
+    "nutritionPerBottle": {
+      "caloriesKcal": 105,
+      "proteinG": 20,
+      "carbsG": 6.5,
+      "sugarsG": 0.7,
+      "fatG": 0.5,
+      "satFatG": 0.2,
+      "sodiumMg": 20,
+      "bcaaMg": 4000
+    }
+  },
+  {
+    "slug": "danbaek-drink-milktea-250",
+    "brand": "더단백",
+    "name": "더단백 드링크 (밀크티)",
+    "capacity": "250mL",
+    "variant": "일반",
+    "tags": [
+      "팩"
+    ],
+    "proteinPerServing": 20,
+    "calories": 110,
+    "sugar": 0.7,
+    "density": "8.0g/100ml",
+    "productUrl": "#",
+    "productType": "drink",
+    "gradeTags": [
+      "단백질 밀도 B",
+      "다이어트 C",
+      "퍼포먼스 C"
+    ],
+    "manufacturer": "빙그레",
+    "flavor": "밀크티",
+    "bcaa": "4000mg",
+    "proteinSource": "혼합",
+    "fat": 0.6,
+    "sodium": 20,
+    "calorieDensity": "44.0kcal/100ml",
+    "drinkType": "밀크형",
+    "nutritionPerBottle": {
+      "caloriesKcal": 110,
+      "proteinG": 20,
+      "carbsG": 4.5,
+      "sugarsG": 0.7,
+      "fatG": 0.6,
+      "satFatG": 0.2,
+      "sodiumMg": 20,
+      "bcaaMg": 4000
+    }
+  },
+  {
+    "slug": "danbaek-drink-strawberry-250",
+    "brand": "더단백",
+    "name": "더단백 드링크 (딸기)",
+    "capacity": "250mL",
+    "variant": "일반",
+    "tags": [
+      "팩"
+    ],
+    "proteinPerServing": 20,
+    "calories": 105,
+    "sugar": 0.7,
+    "density": "8.0g/100ml",
+    "productUrl": "#",
+    "productType": "drink",
+    "gradeTags": [
+      "단백질 밀도 B",
+      "다이어트 B",
+      "퍼포먼스 C"
+    ],
+    "manufacturer": "빙그레",
+    "flavor": "딸기",
+    "bcaa": "4000mg",
+    "proteinSource": "혼합",
+    "fat": 0.6,
+    "sodium": 25,
+    "calorieDensity": "42.0kcal/100ml",
+    "drinkType": "밀크형",
+    "nutritionPerBottle": {
+      "caloriesKcal": 105,
+      "proteinG": 20,
+      "carbsG": 6.5,
+      "sugarsG": 0.7,
+      "fatG": 0.6,
+      "satFatG": 0.2,
+      "sodiumMg": 25,
+      "fiberG": 1.6,
+      "bcaaMg": 4000
+    }
+  },
+  {
+    "slug": "takefit-max-goso-250",
+    "brand": "테이크핏",
+    "name": "테이크핏 맥스 (고소한맛)",
+    "capacity": "250mL",
+    "variant": "일반",
+    "tags": [
+      "팩"
+    ],
+    "proteinPerServing": 24,
+    "calories": 105,
+    "sugar": 0.7,
+    "density": "9.6g/100ml",
+    "productUrl": "#",
+    "productType": "drink",
+    "gradeTags": [
+      "단백질 밀도 A",
+      "다이어트 B",
+      "퍼포먼스 A"
+    ],
+    "manufacturer": "남양유업",
+    "flavor": "고소한맛",
+    "bcaa": "4300mg",
+    "proteinSource": "혼합",
+    "fat": 0.5,
+    "sodium": 210,
+    "calorieDensity": "42.0kcal/100ml",
+    "drinkType": "밀크형",
+    "nutritionPerBottle": {
+      "caloriesKcal": 105,
+      "proteinG": 24,
+      "carbsG": 1,
+      "sugarsG": 0.7,
+      "fatG": 0.5,
+      "satFatG": 0,
+      "sodiumMg": 210,
+      "bcaaMg": 4300
+    }
+  },
+  {
+    "slug": "takefit-max-choco-250",
+    "brand": "테이크핏",
+    "name": "테이크핏 맥스 (초코맛)",
+    "capacity": "250mL",
+    "variant": "일반",
+    "tags": [
+      "팩"
+    ],
+    "proteinPerServing": 24,
+    "calories": 106,
+    "sugar": 0.7,
+    "density": "9.6g/100ml",
+    "productUrl": "#",
+    "productType": "drink",
+    "gradeTags": [
+      "단백질 밀도 A",
+      "다이어트 B",
+      "퍼포먼스 B"
+    ],
+    "manufacturer": "남양유업",
+    "flavor": "초코맛",
+    "bcaa": "4300mg",
+    "proteinSource": "혼합",
+    "fat": 0.7,
+    "sodium": 210,
+    "calorieDensity": "42.4kcal/100ml",
+    "drinkType": "밀크형",
+    "nutritionPerBottle": {
+      "caloriesKcal": 106,
+      "proteinG": 24,
+      "carbsG": 1,
+      "sugarsG": 0.7,
+      "fatG": 0.7,
+      "satFatG": 0.5,
+      "sodiumMg": 210,
+      "bcaaMg": 4300
+    }
+  },
+  {
+    "slug": "takefit-max-banana-250",
+    "brand": "테이크핏",
+    "name": "테이크핏 맥스 (바나나)",
+    "capacity": "250mL",
+    "variant": "일반",
+    "tags": [
+      "팩"
+    ],
+    "proteinPerServing": 24,
+    "calories": 105,
+    "sugar": 0.7,
+    "density": "9.6g/100ml",
+    "productUrl": "#",
+    "productType": "drink",
+    "gradeTags": [
+      "단백질 밀도 A",
+      "다이어트 B",
+      "퍼포먼스 B"
+    ],
+    "manufacturer": "남양유업",
+    "flavor": "바나나",
+    "bcaa": "4300mg",
+    "proteinSource": "혼합",
+    "fat": 0.5,
+    "sodium": 200,
+    "calorieDensity": "42.0kcal/100ml",
+    "drinkType": "밀크형",
+    "nutritionPerBottle": {
+      "caloriesKcal": 105,
+      "proteinG": 24,
+      "carbsG": 1,
+      "sugarsG": 0.7,
+      "fatG": 0.5,
+      "satFatG": 0,
+      "sodiumMg": 200,
+      "bcaaMg": 4300
+    }
+  },
+  {
+    "slug": "takefit-max-pumpkin-250",
+    "brand": "테이크핏",
+    "name": "테이크핏 맥스 (호박고구마)",
+    "capacity": "250mL",
+    "variant": "일반",
+    "tags": [
+      "팩"
+    ],
+    "proteinPerServing": 24,
+    "calories": 105,
+    "sugar": 0.7,
+    "density": "9.6g/100ml",
+    "productUrl": "#",
+    "productType": "drink",
+    "gradeTags": [
+      "단백질 밀도 A",
+      "다이어트 B",
+      "퍼포먼스 B"
+    ],
+    "manufacturer": "남양유업",
+    "flavor": "호박고구마",
+    "bcaa": "4300mg",
+    "proteinSource": "혼합",
+    "fat": 0.5,
+    "sodium": 210,
+    "calorieDensity": "42.0kcal/100ml",
+    "drinkType": "밀크형",
+    "nutritionPerBottle": {
+      "caloriesKcal": 105,
+      "proteinG": 24,
+      "carbsG": 1,
+      "sugarsG": 0.7,
+      "fatG": 0.5,
+      "satFatG": 0,
+      "sodiumMg": 210,
+      "bcaaMg": 4300
+    }
+  },
+  {
+    "slug": "newcare-all-protein-41g",
+    "brand": "뉴케어",
+    "name": "올프로틴 41g (초코맛)",
+    "capacity": "350mL",
+    "variant": "락토프리",
+    "tags": [
+      "PET"
+    ],
+    "proteinPerServing": 41,
+    "calories": 210,
+    "sugar": 0.8,
+    "density": "11.7g/100ml",
+    "productUrl": "#",
+    "productType": "drink",
+    "gradeTags": [
+      "단백질 밀도 A",
+      "다이어트 C",
+      "퍼포먼스 A"
+    ],
+    "manufacturer": "대상웰라이프",
+    "flavor": "초코맛",
+    "bcaa": "7200mg",
+    "proteinSource": "혼합",
+    "fat": 3.5,
+    "sodium": 250,
+    "calorieDensity": "60.0kcal/100ml",
+    "drinkType": "밀크형",
+    "nutritionPerBottle": {
+      "caloriesKcal": 210,
+      "proteinG": 41,
+      "carbsG": 4,
+      "sugarsG": 0.8,
+      "fatG": 3.5,
+      "satFatG": 0.6,
+      "sodiumMg": 250,
+      "bcaaMg": 7200
+    }
+  },
+  {
+    "slug": "danbaek-drink-chocolate-250",
+    "brand": "더단백",
+    "name": "더단백 드링크 (초콜릿)",
+    "capacity": "250mL",
+    "variant": "일반",
+    "tags": [
+      "팩"
+    ],
+    "proteinPerServing": 20,
+    "calories": 105,
+    "sugar": 0.8,
+    "density": "8.0g/100ml",
+    "productUrl": "#",
+    "productType": "drink",
+    "gradeTags": [
+      "단백질 밀도 B",
+      "다이어트 C",
+      "퍼포먼스 C"
+    ],
+    "manufacturer": "빙그레",
+    "flavor": "초콜릿",
+    "bcaa": "4200mg",
+    "proteinSource": "혼합",
+    "fat": 0.6,
+    "sodium": 30,
+    "calorieDensity": "42.0kcal/100ml",
+    "drinkType": "밀크형",
+    "nutritionPerBottle": {
+      "caloriesKcal": 105,
+      "proteinG": 20,
+      "carbsG": 7,
+      "sugarsG": 0.8,
+      "fatG": 0.6,
+      "satFatG": 0.3,
+      "sodiumMg": 30,
+      "fiberG": 1.7,
+      "bcaaMg": 4200
+    }
+  },
+  {
+    "slug": "7eleven-junghoo-choco-protein-330",
+    "brand": "세븐일레븐",
+    "name": "이정후 프로틴 (초콜릿)",
+    "capacity": "330mL",
+    "variant": "일반",
+    "tags": [
+      "팩"
+    ],
+    "proteinPerServing": 33,
+    "calories": 150,
+    "sugar": 0.8,
+    "density": "10.0g/100ml",
+    "productUrl": "#",
+    "productType": "drink",
+    "gradeTags": [
+      "단백질 밀도 A",
+      "다이어트 B",
+      "퍼포먼스 A"
+    ],
+    "manufacturer": "에스앤푸드",
+    "flavor": "초콜릿",
+    "bcaa": "—",
+    "proteinSource": "혼합",
+    "fat": 1.3,
+    "sodium": 210,
+    "calorieDensity": "45.5kcal/100ml",
+    "drinkType": "밀크형",
+    "nutritionPerBottle": {
+      "caloriesKcal": 150,
+      "proteinG": 33,
+      "carbsG": 1.3,
+      "sugarsG": 0.8,
+      "fatG": 1.3,
+      "satFatG": 1,
+      "sodiumMg": 210
+    }
+  },
+  {
+    "slug": "7eleven-junghoo-vanilla-protein-330",
+    "brand": "세븐일레븐",
+    "name": "이정후 프로틴 (바닐라)",
+    "capacity": "330mL",
+    "variant": "일반",
+    "tags": [
+      "팩"
+    ],
+    "proteinPerServing": 33,
+    "calories": 146,
+    "sugar": 0.8,
+    "density": "10.0g/100ml",
+    "productUrl": "#",
+    "productType": "drink",
+    "gradeTags": [
+      "단백질 밀도 A",
+      "다이어트 B",
+      "퍼포먼스 A"
+    ],
+    "manufacturer": "에스앤푸드",
+    "flavor": "바닐라",
+    "bcaa": "—",
+    "proteinSource": "혼합",
+    "fat": 1,
+    "sodium": 210,
+    "calorieDensity": "44.2kcal/100ml",
+    "drinkType": "밀크형",
+    "nutritionPerBottle": {
+      "caloriesKcal": 146,
+      "proteinG": 33,
+      "carbsG": 1.3,
+      "sugarsG": 0.8,
+      "fatG": 1,
+      "satFatG": 0.7,
+      "sodiumMg": 210
+    }
+  },
+  {
+    "slug": "danbaek-drink-melon-250",
+    "brand": "더단백",
+    "name": "더단백 드링크 (멜론)",
+    "capacity": "250mL",
+    "variant": "일반",
+    "tags": [
+      "팩"
+    ],
+    "proteinPerServing": 20,
+    "calories": 109,
+    "sugar": 0.8,
+    "density": "8.0g/100ml",
+    "productUrl": "#",
+    "productType": "drink",
+    "gradeTags": [
+      "단백질 밀도 C",
+      "다이어트 C",
+      "퍼포먼스 C"
+    ],
+    "manufacturer": "빙그레",
+    "flavor": "멜론",
+    "bcaa": "4000mg",
+    "proteinSource": "혼합",
+    "calorieDensity": "43.6kcal/100ml",
+    "drinkType": "밀크형",
+    "nutritionPerBottle": {
+      "caloriesKcal": 109,
+      "proteinG": 20,
+      "sugarsG": 0.8,
+      "bcaaMg": 4000
+    }
+  },
+  {
+    "slug": "danbaek-drink-doublechoco-350",
+    "brand": "더단백",
+    "name": "더단백 드링크 (더블초코)",
+    "capacity": "350mL",
+    "variant": "일반",
+    "tags": [
+      "팩"
+    ],
+    "proteinPerServing": 40,
+    "calories": 182,
+    "sugar": 0.8,
+    "density": "11.4g/100ml",
+    "productUrl": "#",
+    "productType": "drink",
+    "gradeTags": [
+      "단백질 밀도 A",
+      "다이어트 B",
+      "퍼포먼스 A"
+    ],
+    "manufacturer": "빙그레",
+    "flavor": "더블초코",
+    "bcaa": "—",
+    "proteinSource": "혼합",
+    "fat": 0.7,
+    "sodium": 50,
+    "calorieDensity": "52.0kcal/100ml",
+    "drinkType": "밀크형",
+    "nutritionPerBottle": {
+      "caloriesKcal": 182,
+      "proteinG": 40,
+      "carbsG": 4,
+      "sugarsG": 0.8,
+      "fatG": 0.7,
+      "satFatG": 0.4,
+      "sodiumMg": 50
+    }
+  },
+  {
+    "slug": "dryou-protein-drink-choco-250",
+    "brand": "닥터유",
+    "name": "프로 단백질 드링크 (초콜릿)",
+    "capacity": "250mL",
+    "variant": "일반",
+    "tags": [
+      "팩"
+    ],
+    "proteinPerServing": 24,
+    "calories": 151,
+    "sugar": 0.9,
+    "density": "9.6g/100ml",
+    "productUrl": "#",
+    "productType": "drink",
+    "gradeTags": [
+      "단백질 밀도 A",
+      "다이어트 C",
+      "퍼포먼스 B"
+    ],
+    "manufacturer": "오리온",
+    "flavor": "초콜릿",
+    "bcaa": "5000mg",
+    "proteinSource": "혼합",
+    "fat": 3.9,
+    "sodium": 120,
+    "calorieDensity": "60.4kcal/100ml",
+    "drinkType": "밀크형",
+    "nutritionPerBottle": {
+      "caloriesKcal": 151,
+      "proteinG": 24,
+      "carbsG": 5,
+      "sugarsG": 0.9,
+      "fatG": 3.9,
+      "satFatG": 0.5,
+      "sodiumMg": 120,
+      "bcaaMg": 5000
+    }
+  },
+  {
+    "slug": "danbaek-drink-caramel-250",
+    "brand": "더단백",
+    "name": "더단백 드링크 (카라멜)",
+    "capacity": "250mL",
+    "variant": "일반",
+    "tags": [
+      "팩"
+    ],
+    "proteinPerServing": 20,
+    "calories": 105,
+    "sugar": 0.9,
+    "density": "8.0g/100ml",
+    "productUrl": "#",
+    "productType": "drink",
+    "gradeTags": [
+      "단백질 밀도 C",
+      "다이어트 C",
+      "퍼포먼스 C"
+    ],
+    "manufacturer": "빙그레",
+    "flavor": "카라멜",
+    "bcaa": "4200mg",
+    "proteinSource": "혼합",
+    "fat": 1,
+    "calorieDensity": "42.0kcal/100ml",
+    "drinkType": "밀크형",
+    "nutritionPerBottle": {
+      "caloriesKcal": 105,
+      "proteinG": 20,
+      "carbsG": 6,
+      "sugarsG": 0.9,
+      "fatG": 1,
+      "bcaaMg": 4200
+    }
+  },
+  {
+    "slug": "danbaek-drink-darkchoco-330",
+    "brand": "더단백",
+    "name": "더단백 드링크 (다크초코)",
+    "capacity": "330mL",
+    "variant": "일반",
+    "tags": [
+      "팩"
+    ],
+    "proteinPerServing": 35,
+    "calories": 168,
+    "sugar": 0.9,
+    "density": "10.6g/100ml",
+    "productUrl": "#",
+    "productType": "drink",
+    "gradeTags": [
+      "단백질 밀도 A",
+      "다이어트 B",
+      "퍼포먼스 A"
+    ],
+    "manufacturer": "빙그레",
+    "flavor": "다크초코",
+    "bcaa": "6600mg",
+    "proteinSource": "우유",
+    "calorieDensity": "50.9kcal/100ml",
+    "drinkType": "밀크형",
+    "nutritionPerBottle": {
+      "caloriesKcal": 168,
+      "proteinG": 35,
+      "sugarsG": 0.9,
+      "bcaaMg": 6600
+    }
+  },
+  {
+    "slug": "takefit-monster-goso-350",
+    "brand": "테이크핏",
+    "name": "테이크핏 몬스터 (고소한맛)",
+    "capacity": "350mL",
+    "variant": "일반",
+    "tags": [
+      "팩"
+    ],
+    "proteinPerServing": 43,
+    "calories": 186,
+    "sugar": 1,
+    "density": "12.3g/100ml",
+    "productUrl": "#",
+    "productType": "drink",
+    "gradeTags": [
+      "단백질 밀도 A",
+      "다이어트 B",
+      "퍼포먼스 A"
+    ],
+    "manufacturer": "남양유업",
+    "flavor": "고소한맛",
+    "bcaa": "8500mg",
+    "proteinSource": "혼합",
+    "fat": 1,
+    "sodium": 220,
+    "calorieDensity": "53.1kcal/100ml",
+    "drinkType": "밀크형",
+    "nutritionPerBottle": {
+      "caloriesKcal": 186,
+      "proteinG": 43,
+      "carbsG": 1.3,
+      "sugarsG": 1,
+      "fatG": 1,
+      "satFatG": 0.7,
+      "sodiumMg": 220,
+      "bcaaMg": 8500
+    }
+  },
+  {
+    "slug": "takefit-monster-chocobanana-350",
+    "brand": "테이크핏",
+    "name": "테이크핏 몬스터 (초코바나나)",
+    "capacity": "350mL",
+    "variant": "일반",
+    "tags": [
+      "팩"
+    ],
+    "proteinPerServing": 43,
+    "calories": 186,
+    "sugar": 1,
+    "density": "12.3g/100ml",
+    "productUrl": "#",
+    "productType": "drink",
+    "gradeTags": [
+      "단백질 밀도 A",
+      "다이어트 B",
+      "퍼포먼스 A"
+    ],
+    "manufacturer": "남양유업",
+    "flavor": "초코바나나",
+    "bcaa": "8500mg",
+    "proteinSource": "혼합",
+    "fat": 1,
+    "sodium": 220,
+    "calorieDensity": "53.1kcal/100ml",
+    "drinkType": "밀크형",
+    "nutritionPerBottle": {
+      "caloriesKcal": 186,
+      "proteinG": 43,
+      "carbsG": 1.3,
+      "sugarsG": 1,
+      "fatG": 1,
+      "satFatG": 0.7,
+      "sodiumMg": 220,
+      "bcaaMg": 8500
+    }
+  },
+  {
+    "slug": "sellex-profit-peach-icedtea-330",
+    "brand": "셀렉스",
+    "name": "프로틴 웨이프로핏 (복숭아 아이스티)",
+    "capacity": "330mL",
+    "variant": "일반",
+    "tags": [
+      "PET"
+    ],
+    "proteinPerServing": 20,
+    "calories": 90,
+    "sugar": 1,
+    "density": "6.1g/100ml",
+    "productUrl": "#",
+    "productType": "drink",
+    "gradeTags": [
+      "단백질 밀도 D",
+      "다이어트 B",
+      "퍼포먼스 C"
+    ],
+    "manufacturer": "매일유업",
+    "flavor": "복숭아 아이스티",
+    "bcaa": "4800mg",
+    "proteinSource": "혼합",
+    "fat": 0,
+    "sodium": 230,
+    "calorieDensity": "27.3kcal/100ml",
+    "drinkType": "워터형",
+    "nutritionPerBottle": {
+      "caloriesKcal": 90,
+      "proteinG": 20,
+      "carbsG": 2.5,
+      "sugarsG": 1,
+      "fatG": 0,
+      "satFatG": 0,
+      "sodiumMg": 230,
+      "bcaaMg": 4800
+    }
+  },
+  {
+    "slug": "greenbia-proteinmeal-active-choco-250",
+    "brand": "그린비아",
+    "name": "프로틴밀 액티브 (초콜릿)",
+    "capacity": "250mL",
+    "variant": "일반",
+    "tags": [
+      "팩"
+    ],
+    "proteinPerServing": 20,
+    "calories": 120,
+    "sugar": 1,
+    "density": "8.0g/100ml",
+    "productUrl": "#",
+    "productType": "drink",
+    "gradeTags": [
+      "단백질 밀도 C",
+      "다이어트 C",
+      "퍼포먼스 C"
+    ],
+    "manufacturer": "정식품",
+    "flavor": "초콜릿",
+    "bcaa": "—",
+    "proteinSource": "혼합",
+    "fat": 3,
+    "sodium": 250,
+    "calorieDensity": "48.0kcal/100ml",
+    "drinkType": "밀크형",
+    "nutritionPerBottle": {
+      "caloriesKcal": 120,
+      "proteinG": 20,
+      "carbsG": 3,
+      "sugarsG": 1,
+      "fatG": 3,
+      "satFatG": 1,
+      "sodiumMg": 250
+    }
+  },
+  {
+    "slug": "greenbia-proteinmeal-active-almond-walnut-250",
+    "brand": "그린비아",
+    "name": "프로틴밀 액티브 (아몬드&호두)",
+    "capacity": "250mL",
+    "variant": "일반",
+    "tags": [
+      "팩"
+    ],
+    "proteinPerServing": 20,
+    "calories": 120,
+    "sugar": 1,
+    "density": "8.0g/100ml",
+    "productUrl": "#",
+    "productType": "drink",
+    "gradeTags": [
+      "단백질 밀도 C",
+      "다이어트 C",
+      "퍼포먼스 C"
+    ],
+    "manufacturer": "정식품",
+    "flavor": "아몬드&호두",
+    "bcaa": "—",
+    "proteinSource": "혼합",
+    "fat": 3.5,
+    "sodium": 320,
+    "calorieDensity": "48.0kcal/100ml",
+    "drinkType": "밀크형",
+    "nutritionPerBottle": {
+      "caloriesKcal": 120,
+      "proteinG": 20,
+      "carbsG": 2.7,
+      "sugarsG": 1,
+      "fatG": 3.5,
+      "satFatG": 1,
+      "sodiumMg": 320
+    }
+  },
+  {
+    "slug": "sellex-protein-lactosefree-original-190",
+    "brand": "셀렉스",
+    "name": "프로틴 락토프리 (오리지널)",
+    "capacity": "190mL",
+    "variant": "락토프리",
+    "tags": [
+      "팩"
+    ],
+    "proteinPerServing": 14,
+    "calories": 140,
+    "sugar": 1.4,
+    "density": "7.4g/100ml",
+    "productUrl": "#",
+    "productType": "drink",
+    "gradeTags": [
+      "단백질 밀도 C",
+      "다이어트 C",
+      "퍼포먼스 D"
+    ],
+    "manufacturer": "매일유업",
+    "flavor": "오리지널",
+    "bcaa": "—",
+    "proteinSource": "혼합",
+    "fat": 5,
+    "sodium": 130,
+    "calorieDensity": "73.7kcal/100ml",
+    "drinkType": "밀크형",
+    "nutritionPerBottle": {
+      "caloriesKcal": 140,
+      "proteinG": 14,
+      "carbsG": 10,
+      "sugarsG": 1.4,
+      "fatG": 5,
+      "satFatG": 0.5,
+      "sodiumMg": 130
+    }
+  },
+  {
+    "slug": "sellex-protein-lowsugar-190",
+    "brand": "셀렉스",
+    "name": "프로틴 (로우슈거)",
+    "capacity": "190mL",
+    "variant": "일반",
+    "tags": [
+      "팩"
+    ],
+    "proteinPerServing": 12,
+    "calories": 160,
+    "sugar": 2.5,
+    "density": "6.3g/100ml",
+    "productUrl": "#",
+    "productType": "drink",
+    "gradeTags": [
+      "단백질 밀도 C",
+      "다이어트 D",
+      "퍼포먼스 D"
+    ],
+    "manufacturer": "매일유업",
+    "flavor": "로우슈거",
+    "bcaa": "—",
+    "proteinSource": "혼합",
+    "fat": 7,
+    "sodium": 120,
+    "calorieDensity": "84.2kcal/100ml",
+    "drinkType": "밀크형",
+    "nutritionPerBottle": {
+      "caloriesKcal": 160,
+      "proteinG": 12,
+      "carbsG": 12,
+      "sugarsG": 2.5,
+      "fatG": 7,
+      "satFatG": 1.5,
+      "sodiumMg": 120
+    }
+  },
+  {
+    "slug": "hymune-balance-active-banana-250",
+    "brand": "하이뮨",
+    "name": "프로틴 밸런스 액티브 (바나나)",
+    "capacity": "250mL",
+    "variant": "일반",
+    "tags": [
+      "팩"
+    ],
+    "proteinPerServing": 20,
+    "calories": 140,
+    "sugar": 3,
+    "density": "8.0g/100ml",
+    "productUrl": "#",
+    "productType": "drink",
+    "gradeTags": [
+      "단백질 밀도 B",
+      "다이어트 C",
+      "퍼포먼스 C"
+    ],
+    "manufacturer": "일동후디스",
+    "flavor": "바나나",
+    "bcaa": "4500mg",
+    "proteinSource": "혼합",
+    "fat": 3.7,
+    "sodium": 175,
+    "calorieDensity": "56.0kcal/100ml",
+    "drinkType": "밀크형",
+    "nutritionPerBottle": {
+      "caloriesKcal": 140,
+      "proteinG": 20,
+      "carbsG": 8,
+      "sugarsG": 3,
+      "fatG": 3.7,
+      "satFatG": 2,
+      "sodiumMg": 175,
+      "bcaaMg": 4500
+    }
+  },
+  {
+    "slug": "dryou-protein-drink-banana-250",
+    "brand": "닥터유",
+    "name": "프로 단백질 드링크 (바나나)",
+    "capacity": "250mL",
+    "variant": "일반",
+    "tags": [
+      "팩"
+    ],
+    "proteinPerServing": 24,
+    "calories": 143,
+    "sugar": 3,
+    "density": "9.6g/100ml",
+    "productUrl": "#",
+    "productType": "drink",
+    "gradeTags": [
+      "단백질 밀도 A",
+      "다이어트 C",
+      "퍼포먼스 B"
+    ],
+    "manufacturer": "오리온",
+    "flavor": "바나나",
+    "bcaa": "4000mg",
+    "proteinSource": "혼합",
+    "fat": 2.5,
+    "sodium": 100,
+    "calorieDensity": "57.2kcal/100ml",
+    "drinkType": "밀크형",
+    "nutritionPerBottle": {
+      "caloriesKcal": 143,
+      "proteinG": 24,
+      "carbsG": 6,
+      "sugarsG": 3,
+      "fatG": 2.5,
+      "satFatG": 0.7,
+      "sodiumMg": 100,
+      "bcaaMg": 4000
+    }
+  },
+  {
+    "slug": "pasteur-easyprotein-lowsugar-choco-250",
+    "brand": "파스퇴르",
+    "name": "이지프로틴 저당 (초콜릿)",
+    "capacity": "250mL",
+    "variant": "일반",
+    "tags": [
+      "팩"
+    ],
+    "proteinPerServing": 20,
+    "calories": 110,
+    "sugar": 3,
+    "density": "8.0g/100ml",
+    "productUrl": "#",
+    "productType": "drink",
+    "gradeTags": [
+      "단백질 밀도 C",
+      "다이어트 C",
+      "퍼포먼스 C"
+    ],
+    "manufacturer": "롯데웰푸드",
+    "flavor": "초콜릿",
+    "bcaa": "—",
+    "proteinSource": "혼합",
+    "fat": 0.6,
+    "sodium": 120,
+    "calorieDensity": "44.0kcal/100ml",
+    "drinkType": "밀크형",
+    "nutritionPerBottle": {
+      "caloriesKcal": 110,
+      "proteinG": 20,
+      "carbsG": 8,
+      "sugarsG": 3,
+      "fatG": 0.6,
+      "satFatG": 0.4,
+      "sodiumMg": 120,
+      "fiberG": 4
+    }
+  },
+  {
+    "slug": "solveandgo-protamin-savory-250",
+    "brand": "솔브앤고",
+    "name": "프로타민 (고소한맛)",
+    "capacity": "250mL",
+    "variant": "일반",
+    "tags": [
+      "PET"
+    ],
+    "proteinPerServing": 24,
+    "calories": 130,
+    "sugar": 3,
+    "density": "9.6g/100ml",
+    "productUrl": "#",
+    "productType": "drink",
+    "gradeTags": [
+      "단백질 밀도 A",
+      "다이어트 C",
+      "퍼포먼스 B"
+    ],
+    "manufacturer": "솔브앤고",
+    "flavor": "고소한맛",
+    "bcaa": "—",
+    "proteinSource": "혼합",
+    "fat": 0.9,
+    "sodium": 250,
+    "calorieDensity": "52.0kcal/100ml",
+    "drinkType": "밀크형",
+    "nutritionPerBottle": {
+      "caloriesKcal": 130,
+      "proteinG": 24,
+      "carbsG": 12,
+      "sugarsG": 3,
+      "fatG": 0.9,
+      "satFatG": 0.6,
+      "sodiumMg": 250
+    }
+  },
+  {
+    "slug": "yonsei-severance-a2-protein-choco-190",
+    "brand": "연세유업",
+    "name": "세브란스 A2 프로틴 (초콜릿)",
+    "capacity": "190mL",
+    "variant": "일반",
+    "tags": [
+      "팩"
+    ],
+    "proteinPerServing": 12,
+    "calories": 90,
+    "sugar": 3.5,
+    "density": "6.3g/100ml",
+    "productUrl": "#",
+    "productType": "drink",
+    "gradeTags": [
+      "단백질 밀도 C",
+      "다이어트 C",
+      "퍼포먼스 D"
+    ],
+    "manufacturer": "연세유업",
+    "flavor": "초콜릿",
+    "bcaa": "2250mg",
+    "proteinSource": "혼합",
+    "fat": 2.7,
+    "sodium": 100,
+    "calorieDensity": "47.4kcal/100ml",
+    "drinkType": "밀크형",
+    "nutritionPerBottle": {
+      "caloriesKcal": 90,
+      "proteinG": 12,
+      "carbsG": 4,
+      "sugarsG": 3.5,
+      "fatG": 2.7,
+      "satFatG": 2.1,
+      "sodiumMg": 100,
+      "bcaaMg": 2250
+    }
+  },
+  {
+    "slug": "yonsei-severance-a2-protein-coffee-190",
+    "brand": "연세유업",
+    "name": "세브란스 A2 프로틴 (커피)",
+    "capacity": "190mL",
+    "variant": "일반",
+    "tags": [
+      "팩"
+    ],
+    "proteinPerServing": 12,
+    "calories": 85,
+    "sugar": 3.5,
+    "density": "6.3g/100ml",
+    "productUrl": "#",
+    "productType": "drink",
+    "gradeTags": [
+      "단백질 밀도 C",
+      "다이어트 C",
+      "퍼포먼스 D"
+    ],
+    "manufacturer": "연세유업",
+    "flavor": "커피",
+    "bcaa": "2250mg",
+    "proteinSource": "혼합",
+    "fat": 2.5,
+    "sodium": 150,
+    "calorieDensity": "44.7kcal/100ml",
+    "drinkType": "밀크형",
+    "nutritionPerBottle": {
+      "caloriesKcal": 85,
+      "proteinG": 12,
+      "carbsG": 3.6,
+      "sugarsG": 3.5,
+      "fatG": 2.5,
+      "satFatG": 2,
+      "sodiumMg": 150,
+      "bcaaMg": 2250
+    }
+  },
+  {
+    "slug": "dryou-protein-drink-strawberry-250",
+    "brand": "닥터유",
+    "name": "프로 단백질 드링크 (딸기)",
+    "capacity": "250mL",
+    "variant": "일반",
+    "tags": [
+      "팩"
+    ],
+    "proteinPerServing": 24,
+    "calories": 142,
+    "sugar": 3.8,
+    "density": "9.6g/100ml",
+    "productUrl": "#",
+    "productType": "drink",
+    "gradeTags": [
+      "단백질 밀도 A",
+      "다이어트 C",
+      "퍼포먼스 B"
+    ],
+    "manufacturer": "오리온",
+    "flavor": "딸기",
+    "bcaa": "4000mg",
+    "proteinSource": "혼합",
+    "fat": 2,
+    "sodium": 100,
+    "calorieDensity": "56.8kcal/100ml",
+    "drinkType": "밀크형",
+    "nutritionPerBottle": {
+      "caloriesKcal": 142,
+      "proteinG": 24,
+      "carbsG": 7,
+      "sugarsG": 3.8,
+      "fatG": 2,
+      "satFatG": 0.6,
+      "sodiumMg": 100,
+      "bcaaMg": 4000
+    }
+  },
+  {
+    "slug": "dryou-protein-40g-strawberry-350",
+    "brand": "닥터유",
+    "name": "프로 단백질 드링크 40g (딸기)",
+    "capacity": "350mL",
+    "variant": "일반",
+    "tags": [
+      "PET"
+    ],
+    "proteinPerServing": 40,
+    "calories": 244,
+    "sugar": 4,
+    "density": "11.4g/100ml",
+    "productUrl": "#",
+    "productType": "drink",
+    "gradeTags": [
+      "단백질 밀도 A",
+      "다이어트 C",
+      "퍼포먼스 A"
+    ],
+    "manufacturer": "오리온",
+    "flavor": "딸기",
+    "bcaa": "7500mg",
+    "proteinSource": "혼합",
+    "fat": 4,
+    "sodium": 170,
+    "calorieDensity": "69.7kcal/100ml",
+    "drinkType": "밀크형",
+    "nutritionPerBottle": {
+      "caloriesKcal": 244,
+      "proteinG": 40,
+      "carbsG": 12,
+      "sugarsG": 4,
+      "fatG": 4,
+      "satFatG": 2.5,
+      "sodiumMg": 170,
+      "bcaaMg": 7500
+    }
+  },
+  {
+    "slug": "hymune-balance-active-original-250",
+    "brand": "하이뮨",
+    "name": "프로틴 밸런스 액티브 (오리지널)",
+    "capacity": "250mL",
+    "variant": "일반",
+    "tags": [
+      "팩"
+    ],
+    "proteinPerServing": 20,
+    "calories": 130,
+    "sugar": 4,
+    "density": "8.0g/100ml",
+    "productUrl": "#",
+    "productType": "drink",
+    "gradeTags": [
+      "단백질 밀도 B",
+      "다이어트 C",
+      "퍼포먼스 C"
+    ],
+    "manufacturer": "일동후디스",
+    "flavor": "오리지널",
+    "bcaa": "—",
+    "proteinSource": "혼합",
+    "fat": 2.8,
+    "sodium": 165,
+    "calorieDensity": "52.0kcal/100ml",
+    "drinkType": "밀크형",
+    "nutritionPerBottle": {
+      "caloriesKcal": 130,
+      "proteinG": 20,
+      "carbsG": 6,
+      "sugarsG": 4,
+      "fatG": 2.8,
+      "satFatG": 1.4,
+      "sodiumMg": 165
+    }
+  },
+  {
+    "slug": "seoulmilk-protein-energy-coffee-240",
+    "brand": "서울우유",
+    "name": "프로틴 에너지 (커피)",
+    "capacity": "240mL",
+    "variant": "일반",
+    "tags": [
+      "팩"
+    ],
+    "proteinPerServing": 21,
+    "calories": 135,
+    "sugar": 4,
+    "density": "8.8g/100ml",
+    "productUrl": "#",
+    "productType": "drink",
+    "gradeTags": [
+      "단백질 밀도 B",
+      "다이어트 C",
+      "퍼포먼스 C"
+    ],
+    "manufacturer": "서울우유",
+    "flavor": "커피",
+    "bcaa": "—",
+    "proteinSource": "혼합",
+    "fat": 4,
+    "sodium": 200,
+    "calorieDensity": "56.3kcal/100ml",
+    "drinkType": "밀크형",
+    "nutritionPerBottle": {
+      "caloriesKcal": 135,
+      "proteinG": 21,
+      "carbsG": 12,
+      "sugarsG": 4,
+      "fatG": 4,
+      "satFatG": 2,
+      "sodiumMg": 200
+    }
+  },
+  {
+    "slug": "solveandgo-protamin-choco-250",
+    "brand": "솔브앤고",
+    "name": "프로타민 (초코맛)",
+    "capacity": "250mL",
+    "variant": "일반",
+    "tags": [
+      "PET"
+    ],
+    "proteinPerServing": 24,
+    "calories": 135,
+    "sugar": 4,
+    "density": "9.6g/100ml",
+    "productUrl": "#",
+    "productType": "drink",
+    "gradeTags": [
+      "단백질 밀도 A",
+      "다이어트 C",
+      "퍼포먼스 B"
+    ],
+    "manufacturer": "솔브앤고",
+    "flavor": "초코맛",
+    "bcaa": "—",
+    "proteinSource": "혼합",
+    "fat": 1.2,
+    "sodium": 260,
+    "calorieDensity": "54.0kcal/100ml",
+    "drinkType": "밀크형",
+    "nutritionPerBottle": {
+      "caloriesKcal": 135,
+      "proteinG": 24,
+      "carbsG": 12,
+      "sugarsG": 4,
+      "fatG": 1.2,
+      "satFatG": 0.9,
+      "sodiumMg": 260
+    }
+  },
+  {
+    "slug": "hymune-protein-balance-lowsugar-190",
+    "brand": "하이뮨",
+    "name": "프로틴 밸런스 (저당)",
+    "capacity": "190mL",
+    "variant": "일반",
+    "tags": [
+      "팩"
+    ],
+    "proteinPerServing": 10,
+    "calories": 130,
+    "sugar": 4.5,
+    "density": "5.3g/100ml",
+    "productUrl": "#",
+    "productType": "drink",
+    "gradeTags": [
+      "단백질 밀도 D",
+      "다이어트 D",
+      "퍼포먼스 D"
+    ],
+    "manufacturer": "일동후디스",
+    "flavor": "저당",
+    "bcaa": "—",
+    "proteinSource": "혼합",
+    "fat": 4.5,
+    "sodium": 130,
+    "calorieDensity": "68.4kcal/100ml",
+    "drinkType": "밀크형",
+    "nutritionPerBottle": {
+      "caloriesKcal": 130,
+      "proteinG": 10,
+      "carbsG": 14,
+      "sugarsG": 4.5,
+      "fatG": 4.5,
+      "satFatG": 2,
+      "sodiumMg": 130
+    }
+  },
+  {
+    "slug": "dryou-protein-40g-choco-350",
+    "brand": "닥터유",
+    "name": "프로 단백질 드링크 40g (초콜릿)",
+    "capacity": "350mL",
+    "variant": "일반",
+    "tags": [
+      "PET"
+    ],
+    "proteinPerServing": 40,
+    "calories": 258,
+    "sugar": 4.8,
+    "density": "11.4g/100ml",
+    "productUrl": "#",
+    "productType": "drink",
+    "gradeTags": [
+      "단백질 밀도 A",
+      "다이어트 C",
+      "퍼포먼스 A"
+    ],
+    "manufacturer": "오리온",
+    "flavor": "초콜릿",
+    "bcaa": "7500mg",
+    "proteinSource": "혼합",
+    "fat": 6.5,
+    "sodium": 120,
+    "calorieDensity": "73.7kcal/100ml",
+    "drinkType": "밀크형",
+    "nutritionPerBottle": {
+      "caloriesKcal": 258,
+      "proteinG": 40,
+      "carbsG": 9.8,
+      "sugarsG": 4.8,
+      "fatG": 6.5,
+      "satFatG": 2.8,
+      "sodiumMg": 120,
+      "bcaaMg": 7500
+    }
+  },
+  {
+    "slug": "hymune-balance-active-cookie-cream-250",
+    "brand": "하이뮨",
+    "name": "프로틴 밸런스 액티브 (쿠키앤크림)",
+    "capacity": "250mL",
+    "variant": "일반",
+    "tags": [
+      "팩"
+    ],
+    "proteinPerServing": 20,
+    "calories": 130,
+    "sugar": 5,
+    "density": "8.0g/100ml",
+    "productUrl": "#",
+    "productType": "drink",
+    "gradeTags": [
+      "단백질 밀도 B",
+      "다이어트 C",
+      "퍼포먼스 C"
+    ],
+    "manufacturer": "일동후디스",
+    "flavor": "쿠키앤크림",
+    "bcaa": "4500mg",
+    "proteinSource": "혼합",
+    "fat": 3,
+    "sodium": 175,
+    "calorieDensity": "52.0kcal/100ml",
+    "drinkType": "밀크형",
+    "nutritionPerBottle": {
+      "caloriesKcal": 130,
+      "proteinG": 20,
+      "carbsG": 8,
+      "sugarsG": 5,
+      "fatG": 3,
+      "satFatG": 2,
+      "sodiumMg": 175,
+      "bcaaMg": 4500
+    }
+  },
+  {
+    "slug": "labnosh-protein-latte-350",
+    "brand": "랩노쉬",
+    "name": "프로틴 드링크 (라떼)",
+    "capacity": "350mL",
+    "variant": "일반",
+    "tags": [
+      "PET"
+    ],
+    "proteinPerServing": 27,
+    "calories": 170,
+    "sugar": 5,
+    "density": "7.7g/100ml",
+    "productUrl": "#",
+    "productType": "drink",
+    "gradeTags": [
+      "단백질 밀도 C",
+      "다이어트 C",
+      "퍼포먼스 A"
+    ],
+    "manufacturer": "랩노쉬",
+    "flavor": "라떼",
+    "bcaa": "—",
+    "proteinSource": "혼합",
+    "fat": 0,
+    "sodium": 210,
+    "calorieDensity": "48.6kcal/100ml",
+    "drinkType": "밀크형",
+    "nutritionPerBottle": {
+      "caloriesKcal": 170,
+      "proteinG": 27,
+      "carbsG": 20,
+      "sugarsG": 5,
+      "fatG": 0,
+      "satFatG": 0,
+      "sodiumMg": 210,
+      "fiberG": 15
+    }
+  },
+  {
+    "slug": "labnosh-protein-melon-350",
+    "brand": "랩노쉬",
+    "name": "프로틴 드링크 (메론)",
+    "capacity": "350mL",
+    "variant": "일반",
+    "tags": [
+      "PET"
+    ],
+    "proteinPerServing": 27,
+    "calories": 170,
+    "sugar": 5,
+    "density": "7.7g/100ml",
+    "productUrl": "#",
+    "productType": "drink",
+    "gradeTags": [
+      "단백질 밀도 C",
+      "다이어트 C",
+      "퍼포먼스 A"
+    ],
+    "manufacturer": "랩노쉬",
+    "flavor": "메론",
+    "bcaa": "—",
+    "proteinSource": "혼합",
+    "fat": 1.2,
+    "sodium": 125,
+    "calorieDensity": "48.6kcal/100ml",
+    "drinkType": "밀크형",
+    "nutritionPerBottle": {
+      "caloriesKcal": 170,
+      "proteinG": 27,
+      "carbsG": 20,
+      "sugarsG": 5,
+      "fatG": 1.2,
+      "satFatG": 0.5,
+      "sodiumMg": 125,
+      "fiberG": 15
+    }
+  },
+  {
+    "slug": "hymune-balance-active-strawberry-250",
+    "brand": "하이뮨",
+    "name": "프로틴 밸런스 액티브 (딸기)",
+    "capacity": "250mL",
+    "variant": "일반",
+    "tags": [
+      "팩"
+    ],
+    "proteinPerServing": 20,
+    "calories": 140,
+    "sugar": 5,
+    "density": "8.0g/100ml",
+    "productUrl": "#",
+    "productType": "drink",
+    "gradeTags": [
+      "단백질 밀도 B",
+      "다이어트 D",
+      "퍼포먼스 C"
+    ],
+    "manufacturer": "일동후디스",
+    "flavor": "딸기",
+    "bcaa": "—",
+    "proteinSource": "혼합",
+    "fat": 3,
+    "sodium": 140,
+    "calorieDensity": "56.0kcal/100ml",
+    "drinkType": "밀크형",
+    "nutritionPerBottle": {
+      "caloriesKcal": 140,
+      "proteinG": 20,
+      "carbsG": 8,
+      "sugarsG": 5,
+      "fatG": 3,
+      "satFatG": 2,
+      "sodiumMg": 140
+    }
+  },
+  {
+    "slug": "seoulmilk-protein-energy-choco-240",
+    "brand": "서울우유",
+    "name": "프로틴 에너지 (초콜릿)",
+    "capacity": "240mL",
+    "variant": "일반",
+    "tags": [
+      "팩"
+    ],
+    "proteinPerServing": 21,
+    "calories": 145,
+    "sugar": 5,
+    "density": "8.8g/100ml",
+    "productUrl": "#",
+    "productType": "drink",
+    "gradeTags": [
+      "단백질 밀도 B",
+      "다이어트 C",
+      "퍼포먼스 C"
+    ],
+    "manufacturer": "서울우유",
+    "flavor": "초콜릿",
+    "bcaa": "—",
+    "proteinSource": "혼합",
+    "fat": 4.6,
+    "sodium": 170,
+    "calorieDensity": "60.4kcal/100ml",
+    "drinkType": "밀크형",
+    "nutritionPerBottle": {
+      "caloriesKcal": 145,
+      "proteinG": 21,
+      "carbsG": 13,
+      "sugarsG": 5,
+      "fatG": 4.6,
+      "satFatG": 2.8,
+      "sodiumMg": 170
+    }
+  },
+  {
+    "slug": "hymune-protein-balance-choco-190",
+    "brand": "하이뮨",
+    "name": "프로틴 밸런스 (초콜릿)",
+    "capacity": "190mL",
+    "variant": "일반",
+    "tags": [
+      "팩"
+    ],
+    "proteinPerServing": 10,
+    "calories": 140,
+    "sugar": 5,
+    "density": "5.3g/100ml",
+    "productUrl": "#",
+    "productType": "drink",
+    "gradeTags": [
+      "단백질 밀도 D",
+      "다이어트 D",
+      "퍼포먼스 D"
+    ],
+    "manufacturer": "일동후디스",
+    "flavor": "초콜릿",
+    "bcaa": "—",
+    "proteinSource": "혼합",
+    "fat": 7,
+    "sodium": 110,
+    "calorieDensity": "73.7kcal/100ml",
+    "drinkType": "밀크형",
+    "nutritionPerBottle": {
+      "caloriesKcal": 140,
+      "proteinG": 10,
+      "carbsG": 9,
+      "sugarsG": 5,
+      "fatG": 7,
+      "satFatG": 1.5,
+      "sodiumMg": 110
+    }
+  },
+  {
+    "slug": "labnosh-protein-cacao-350",
+    "brand": "랩노쉬",
+    "name": "프로틴 드링크 (카카오)",
+    "capacity": "350mL",
+    "variant": "일반",
+    "tags": [
+      "PET"
+    ],
+    "proteinPerServing": 27,
+    "calories": 175,
+    "sugar": 6,
+    "density": "7.7g/100ml",
+    "productUrl": "#",
+    "productType": "drink",
+    "gradeTags": [
+      "단백질 밀도 C",
+      "다이어트 D",
+      "퍼포먼스 B"
+    ],
+    "manufacturer": "랩노쉬",
+    "flavor": "카카오",
+    "bcaa": "—",
+    "proteinSource": "혼합",
+    "fat": 0.8,
+    "sodium": 190,
+    "calorieDensity": "50.0kcal/100ml",
+    "drinkType": "밀크형",
+    "nutritionPerBottle": {
+      "caloriesKcal": 175,
+      "proteinG": 27,
+      "carbsG": 20,
+      "sugarsG": 6,
+      "fatG": 0.8,
+      "satFatG": 0.6,
+      "sodiumMg": 190,
+      "fiberG": 15
+    }
+  },
+  {
+    "slug": "labnosh-protein-strawberry-350",
+    "brand": "랩노쉬",
+    "name": "프로틴 드링크 (스트로베리)",
+    "capacity": "350mL",
+    "variant": "일반",
+    "tags": [
+      "PET"
+    ],
+    "proteinPerServing": 27,
+    "calories": 175,
+    "sugar": 6,
+    "density": "7.7g/100ml",
+    "productUrl": "#",
+    "productType": "drink",
+    "gradeTags": [
+      "단백질 밀도 C",
+      "다이어트 D",
+      "퍼포먼스 B"
+    ],
+    "manufacturer": "랩노쉬",
+    "flavor": "스트로베리",
+    "bcaa": "—",
+    "proteinSource": "혼합",
+    "fat": 0.5,
+    "sodium": 150,
+    "calorieDensity": "50.0kcal/100ml",
+    "drinkType": "밀크형",
+    "nutritionPerBottle": {
+      "caloriesKcal": 175,
+      "proteinG": 27,
+      "carbsG": 21,
+      "sugarsG": 6,
+      "fatG": 0.5,
+      "satFatG": 0.4,
+      "sodiumMg": 150,
+      "fiberG": 15
+    }
+  },
+  {
+    "slug": "calobye-perfect-powershake-strawberry-250",
+    "brand": "칼로바이",
+    "name": "퍼펙트 파워쉐이크 (딸기맛)",
+    "capacity": "250mL",
+    "variant": "일반",
+    "tags": [
+      "팩"
+    ],
+    "proteinPerServing": 20,
+    "calories": 115,
+    "sugar": 6,
+    "density": "8.0g/100ml",
+    "productUrl": "#",
+    "productType": "drink",
+    "gradeTags": [
+      "단백질 밀도 C",
+      "다이어트 D",
+      "퍼포먼스 D"
+    ],
+    "manufacturer": "칼로바이",
+    "flavor": "딸기맛",
+    "bcaa": "—",
+    "proteinSource": "혼합",
+    "fat": 0,
+    "sodium": 190,
+    "calorieDensity": "46.0kcal/100ml",
+    "drinkType": "밀크형",
+    "nutritionPerBottle": {
+      "caloriesKcal": 115,
+      "proteinG": 20,
+      "carbsG": 9,
+      "sugarsG": 6,
+      "fatG": 0,
+      "satFatG": 0,
+      "sodiumMg": 190
+    }
+  },
+  {
+    "slug": "yonsei-severance-a2-protein-original-190",
+    "brand": "연세유업",
+    "name": "세브란스 A2 프로틴 (오리지널)",
+    "capacity": "190mL",
+    "variant": "일반",
+    "tags": [
+      "팩"
+    ],
+    "proteinPerServing": 12,
+    "calories": 145,
+    "sugar": 6,
+    "density": "6.3g/100ml",
+    "productUrl": "#",
+    "productType": "drink",
+    "gradeTags": [
+      "단백질 밀도 C",
+      "다이어트 D",
+      "퍼포먼스 D"
+    ],
+    "manufacturer": "연세유업",
+    "flavor": "오리지널",
+    "bcaa": "2250mg",
+    "proteinSource": "혼합",
+    "fat": 5,
+    "sodium": 180,
+    "calorieDensity": "76.3kcal/100ml",
+    "drinkType": "밀크형",
+    "nutritionPerBottle": {
+      "caloriesKcal": 145,
+      "proteinG": 12,
+      "carbsG": 13,
+      "sugarsG": 6,
+      "fatG": 5,
+      "satFatG": 2.8,
+      "sodiumMg": 180,
+      "bcaaMg": 2250
+    }
+  },
+  {
+    "slug": "labnosh-protein-banana-350",
+    "brand": "랩노쉬",
+    "name": "프로틴 드링크 (바나나)",
+    "capacity": "350mL",
+    "variant": "일반",
+    "tags": [
+      "PET"
+    ],
+    "proteinPerServing": 25,
+    "calories": 190,
+    "sugar": 8,
+    "density": "7.1g/100ml",
+    "productUrl": "#",
+    "productType": "drink",
+    "gradeTags": [
+      "단백질 밀도 C",
+      "다이어트 D",
+      "퍼포먼스 B"
+    ],
+    "manufacturer": "랩노쉬",
+    "flavor": "바나나",
+    "bcaa": "—",
+    "proteinSource": "혼합",
+    "fat": 3.2,
+    "sodium": 280,
+    "calorieDensity": "54.3kcal/100ml",
+    "drinkType": "밀크형",
+    "nutritionPerBottle": {
+      "caloriesKcal": 190,
+      "proteinG": 25,
+      "carbsG": 15.2,
+      "sugarsG": 8,
+      "fatG": 3.2,
+      "satFatG": 2,
+      "sodiumMg": 280,
+      "fiberG": 5
+    }
+  },
+  {
+    "slug": "labnosh-protein-cookie-cream-350",
+    "brand": "랩노쉬",
+    "name": "프로틴 드링크 (쿠키앤크림)",
+    "capacity": "350mL",
+    "variant": "일반",
+    "tags": [
+      "PET"
+    ],
+    "proteinPerServing": 27,
+    "calories": 165,
+    "sugar": 8,
+    "density": "7.7g/100ml",
+    "productUrl": "#",
+    "productType": "drink",
+    "gradeTags": [
+      "단백질 밀도 C",
+      "다이어트 D",
+      "퍼포먼스 B"
+    ],
+    "manufacturer": "랩노쉬",
+    "flavor": "쿠키앤크림",
+    "bcaa": "—",
+    "proteinSource": "혼합",
+    "fat": 0.9,
+    "sodium": 140,
+    "calorieDensity": "47.1kcal/100ml",
+    "drinkType": "밀크형",
+    "nutritionPerBottle": {
+      "caloriesKcal": 165,
+      "proteinG": 27,
+      "carbsG": 20,
+      "sugarsG": 8,
+      "fatG": 0.9,
+      "satFatG": 0.7,
+      "sodiumMg": 140,
+      "fiberG": 15
+    }
+  },
+  {
+    "slug": "calobye-perfect-powershake-choco-250",
+    "brand": "칼로바이",
+    "name": "퍼펙트 파워쉐이크 (초코맛)",
+    "capacity": "250mL",
+    "variant": "일반",
+    "tags": [
+      "팩"
+    ],
+    "proteinPerServing": 20,
+    "calories": 115,
+    "sugar": 8,
+    "density": "8.0g/100ml",
+    "productUrl": "#",
+    "productType": "drink",
+    "gradeTags": [
+      "단백질 밀도 C",
+      "다이어트 D",
+      "퍼포먼스 D"
+    ],
+    "manufacturer": "칼로바이",
+    "flavor": "초코맛",
+    "bcaa": "—",
+    "proteinSource": "혼합",
+    "fat": 0,
+    "sodium": 170,
+    "calorieDensity": "46.0kcal/100ml",
+    "drinkType": "밀크형",
+    "nutritionPerBottle": {
+      "caloriesKcal": 115,
+      "proteinG": 20,
+      "carbsG": 9,
+      "sugarsG": 8,
+      "fatG": 0,
+      "satFatG": 0,
+      "sodiumMg": 170
+    }
+  },
+  {
+    "slug": "hamsoa-minions-proteinact-choco-330",
+    "brand": "함소아제약",
+    "name": "미니언즈 프로틴액트 (초콜릿)",
+    "capacity": "330mL",
+    "variant": "일반",
+    "tags": [
+      "팩"
+    ],
+    "proteinPerServing": 30,
+    "calories": 205,
+    "sugar": 8,
+    "density": "9.1g/100ml",
+    "productUrl": "#",
+    "productType": "drink",
+    "gradeTags": [
+      "단백질 밀도 B",
+      "다이어트 D",
+      "퍼포먼스 A"
+    ],
+    "manufacturer": "함소아제약",
+    "flavor": "초콜릿",
+    "bcaa": "5000mg",
+    "proteinSource": "혼합",
+    "fat": 2.3,
+    "sodium": 330,
+    "calorieDensity": "62.1kcal/100ml",
+    "drinkType": "밀크형",
+    "nutritionPerBottle": {
+      "caloriesKcal": 205,
+      "proteinG": 30,
+      "carbsG": 16,
+      "sugarsG": 8,
+      "fatG": 2.3,
+      "satFatG": 1.3,
+      "sodiumMg": 330,
+      "bcaaMg": 5000
+    }
+  },
+  {
+    "slug": "mymil-newprotein-original-190",
+    "brand": "마이밀",
+    "name": "뉴프로틴 (오리지널)",
+    "capacity": "190mL",
+    "variant": "일반",
+    "tags": [
+      "팩"
+    ],
+    "proteinPerServing": 9,
+    "calories": 150,
+    "sugar": 10,
+    "density": "4.7g/100ml",
+    "productUrl": "#",
+    "productType": "drink",
+    "gradeTags": [
+      "단백질 밀도 D",
+      "다이어트 D",
+      "퍼포먼스 D"
+    ],
+    "manufacturer": "대상웰라이프",
+    "flavor": "오리지널",
+    "bcaa": "—",
+    "proteinSource": "혼합",
+    "fat": 6,
+    "calorieDensity": "78.9kcal/100ml",
+    "drinkType": "밀크형",
+    "nutritionPerBottle": {
+      "caloriesKcal": 150,
+      "proteinG": 9,
+      "carbsG": 15,
+      "sugarsG": 10,
+      "fatG": 6,
+      "satFatG": 1
+    }
+  },
+  {
+    "slug": "mymil-newprotein-deepchoco-190",
+    "brand": "마이밀",
+    "name": "뉴프로틴 (딥초코)",
+    "capacity": "190mL",
+    "variant": "일반",
+    "tags": [
+      "팩"
+    ],
+    "proteinPerServing": 9,
+    "calories": 150,
+    "sugar": 10,
+    "density": "4.7g/100ml",
+    "productUrl": "#",
+    "productType": "drink",
+    "gradeTags": [
+      "단백질 밀도 D",
+      "다이어트 D",
+      "퍼포먼스 D"
+    ],
+    "manufacturer": "대상웰라이프",
+    "flavor": "딥초코",
+    "bcaa": "—",
+    "proteinSource": "혼합",
+    "fat": 6,
+    "sodium": 170,
+    "calorieDensity": "78.9kcal/100ml",
+    "drinkType": "밀크형",
+    "nutritionPerBottle": {
+      "caloriesKcal": 150,
+      "proteinG": 9,
+      "carbsG": 14,
+      "sugarsG": 10,
+      "fatG": 6,
+      "satFatG": 1,
+      "sodiumMg": 170
+    }
+  },
+  {
+    "slug": "mymil-newprotein-goatmilk-190",
+    "brand": "마이밀",
+    "name": "뉴프로틴 (산양유)",
+    "capacity": "190mL",
+    "variant": "일반",
+    "tags": [
+      "팩"
+    ],
+    "proteinPerServing": 9,
+    "calories": 150,
+    "sugar": 10,
+    "density": "4.7g/100ml",
+    "productUrl": "#",
+    "productType": "drink",
+    "gradeTags": [
+      "단백질 밀도 D",
+      "다이어트 D",
+      "퍼포먼스 D"
+    ],
+    "manufacturer": "대상웰라이프",
+    "flavor": "산양유",
+    "bcaa": "—",
+    "proteinSource": "혼합",
+    "fat": 6,
+    "sodium": 170,
+    "calorieDensity": "78.9kcal/100ml",
+    "drinkType": "밀크형",
+    "nutritionPerBottle": {
+      "caloriesKcal": 150,
+      "proteinG": 9,
+      "carbsG": 15,
+      "sugarsG": 10,
+      "fatG": 6,
+      "satFatG": 1,
+      "sodiumMg": 170
+    }
+  },
+  {
+    "slug": "hymune-protein-balance-190",
+    "brand": "하이뮨",
+    "name": "프로틴 밸런스 (오리지널)",
+    "capacity": "190mL",
+    "variant": "일반",
+    "tags": [
+      "팩"
+    ],
+    "proteinPerServing": 10,
+    "calories": 165,
+    "sugar": 11,
+    "density": "5.3g/100ml",
+    "productUrl": "#",
+    "productType": "drink",
+    "gradeTags": [
+      "단백질 밀도 D",
+      "다이어트 D",
+      "퍼포먼스 D"
+    ],
+    "manufacturer": "일동후디스",
+    "flavor": "오리지널",
+    "bcaa": "—",
+    "proteinSource": "혼합",
+    "fat": 6.5,
+    "sodium": 130,
+    "calorieDensity": "86.8kcal/100ml",
+    "drinkType": "밀크형",
+    "nutritionPerBottle": {
+      "caloriesKcal": 165,
+      "proteinG": 10,
+      "carbsG": 17,
+      "sugarsG": 11,
+      "fatG": 6.5,
+      "satFatG": 2,
+      "sodiumMg": 130
+    }
+  },
+  {
+    "slug": "pasteur-easyprotein-cereal-250",
+    "brand": "파스퇴르",
+    "name": "이지프로틴 (시리얼)",
+    "capacity": "250mL",
+    "variant": "일반",
+    "tags": [
+      "팩"
+    ],
+    "proteinPerServing": 20,
+    "calories": 165,
+    "sugar": 11,
+    "density": "8.0g/100ml",
+    "productUrl": "#",
+    "productType": "drink",
+    "gradeTags": [
+      "단백질 밀도 C",
+      "다이어트 D",
+      "퍼포먼스 D"
+    ],
+    "manufacturer": "롯데웰푸드",
+    "flavor": "시리얼",
+    "bcaa": "—",
+    "proteinSource": "혼합",
+    "fat": 1.5,
+    "sodium": 150,
+    "calorieDensity": "66.0kcal/100ml",
+    "drinkType": "밀크형",
+    "nutritionPerBottle": {
+      "caloriesKcal": 165,
+      "proteinG": 20,
+      "carbsG": 19,
+      "sugarsG": 11,
+      "fatG": 1.5,
+      "satFatG": 0.8,
+      "sodiumMg": 150,
+      "fiberG": 3
+    }
+  },
+  {
+    "slug": "hymune-protein-balance-black-sesame-190",
+    "brand": "하이뮨",
+    "name": "프로틴 밸런스 (흑임자)",
+    "capacity": "190mL",
+    "variant": "일반",
+    "tags": [
+      "팩"
+    ],
+    "proteinPerServing": 10,
+    "calories": 165,
+    "sugar": 14,
+    "density": "5.3g/100ml",
+    "productUrl": "#",
+    "productType": "drink",
+    "gradeTags": [
+      "단백질 밀도 D",
+      "다이어트 D",
+      "퍼포먼스 D"
+    ],
+    "manufacturer": "일동후디스",
+    "flavor": "흑임자",
+    "bcaa": "—",
+    "proteinSource": "혼합",
+    "fat": 5,
+    "sodium": 120,
+    "calorieDensity": "86.8kcal/100ml",
+    "drinkType": "밀크형",
+    "nutritionPerBottle": {
+      "caloriesKcal": 165,
+      "proteinG": 10,
+      "carbsG": 20,
+      "sugarsG": 14,
+      "fatG": 5,
+      "satFatG": 1.5,
+      "sodiumMg": 120
+    }
+  },
+  {
+    "slug": "sellex-protein-original-190",
+    "brand": "셀렉스",
+    "name": "프로틴 (오리지널)",
+    "capacity": "190mL",
+    "variant": "일반",
+    "tags": [
+      "팩"
+    ],
+    "proteinPerServing": 12,
+    "calories": 190,
+    "sugar": 14,
+    "density": "6.3g/100ml",
+    "productUrl": "#",
+    "productType": "drink",
+    "gradeTags": [
+      "단백질 밀도 C",
+      "다이어트 D",
+      "퍼포먼스 D"
+    ],
+    "manufacturer": "매일유업",
+    "flavor": "오리지널",
+    "bcaa": "—",
+    "proteinSource": "혼합",
+    "fat": 6,
+    "sodium": 170,
+    "calorieDensity": "100.0kcal/100ml",
+    "drinkType": "밀크형",
+    "nutritionPerBottle": {
+      "caloriesKcal": 190,
+      "proteinG": 12,
+      "carbsG": 22,
+      "sugarsG": 14,
+      "fatG": 6,
+      "satFatG": 0.6,
+      "sodiumMg": 170
+    }
+  },
+  {
+    "slug": "hymune-protein-balance-plus-190",
+    "brand": "하이뮨",
+    "name": "프로틴 밸런스 (플러스)",
+    "capacity": "190mL",
+    "variant": "일반",
+    "tags": [
+      "팩"
+    ],
+    "proteinPerServing": 13,
+    "calories": 150,
+    "sugar": 14,
+    "density": "6.8g/100ml",
+    "productUrl": "#",
+    "productType": "drink",
+    "gradeTags": [
+      "단백질 밀도 C",
+      "다이어트 D",
+      "퍼포먼스 D"
+    ],
+    "manufacturer": "일동후디스",
+    "flavor": "플러스",
+    "bcaa": "—",
+    "proteinSource": "혼합",
+    "fat": 4,
+    "sodium": 180,
+    "calorieDensity": "78.9kcal/100ml",
+    "drinkType": "밀크형",
+    "nutritionPerBottle": {
+      "caloriesKcal": 150,
+      "proteinG": 13,
+      "carbsG": 16,
+      "sugarsG": 14,
+      "fatG": 4,
+      "satFatG": 1.2,
+      "sodiumMg": 180
+    }
+  },
+  {
+    "slug": "danbaek-water-grapefruit-400",
+    "brand": "더단백",
+    "name": "더단백 워터 프로틴 (백자몽)",
+    "capacity": "400mL",
+    "variant": "일반",
+    "tags": [
+      "PET"
+    ],
+    "proteinPerServing": 25,
+    "calories": 100,
+    "sugar": 0,
+    "density": "6.3g/100ml",
+    "productUrl": "#",
+    "productType": "drink",
+    "gradeTags": [
+      "단백질 밀도 C",
+      "다이어트 A",
+      "퍼포먼스 A"
+    ],
+    "manufacturer": "빙그레",
+    "flavor": "백자몽",
+    "bcaa": "—",
+    "proteinSource": "혼합",
+    "fat": 0,
+    "calorieDensity": "25.0kcal/100ml",
+    "drinkType": "워터형",
+    "nutritionPerBottle": {
+      "caloriesKcal": 100,
+      "proteinG": 25,
+      "carbsG": 10,
+      "sugarsG": 0,
+      "fatG": 0
+    }
+  },
+  {
+    "slug": "mymil-newprotein-banana-190",
+    "brand": "마이밀",
+    "name": "뉴프로틴 (바나나)",
+    "capacity": "190mL",
+    "variant": "일반",
+    "tags": [
+      "팩"
+    ],
+    "proteinPerServing": 9,
+    "calories": 150,
+    "sugar": 10,
+    "density": "4.7g/100ml",
+    "productUrl": "#",
+    "productType": "drink",
+    "gradeTags": [
+      "단백질 밀도 D",
+      "다이어트 C",
+      "퍼포먼스 D"
+    ],
+    "manufacturer": "대상웰라이프",
+    "flavor": "바나나",
+    "bcaa": "—",
+    "proteinSource": "혼합",
+    "fat": 6,
+    "calorieDensity": "78.9kcal/100ml",
+    "drinkType": "밀크형",
+    "nutritionPerBottle": {
+      "caloriesKcal": 150,
+      "proteinG": 9,
+      "carbsG": 14,
+      "sugarsG": 10,
+      "fatG": 6
+    }
+  },
+  {
+    "slug": "oneuldanbaek-caramel-latte-250",
+    "brand": "오늘단백",
+    "name": "오늘단백 (카라멜라떼)",
+    "capacity": "250mL",
+    "variant": "일반",
+    "tags": [
+      "팩"
+    ],
+    "proteinPerServing": 21,
+    "calories": 158,
+    "sugar": 6,
+    "density": "8.4g/100ml",
+    "productUrl": "#",
+    "productType": "drink",
+    "gradeTags": [
+      "단백질 밀도 B",
+      "다이어트 C",
+      "퍼포먼스 B"
+    ],
+    "manufacturer": "하림",
+    "flavor": "카라멜라떼",
+    "bcaa": "—",
+    "proteinSource": "혼합",
+    "fat": 2,
+    "calorieDensity": "63.2kcal/100ml",
+    "drinkType": "밀크형",
+    "nutritionPerBottle": {
+      "caloriesKcal": 158,
+      "proteinG": 21,
+      "carbsG": 14,
+      "sugarsG": 6,
+      "fatG": 2
+    }
+  },
+  {
+    "slug": "oneuldanbaek-choco-latte-250",
+    "brand": "오늘단백",
+    "name": "오늘단백 (초코라떼)",
+    "capacity": "250mL",
+    "variant": "일반",
+    "tags": [
+      "팩"
+    ],
+    "proteinPerServing": 21,
+    "calories": 135,
+    "sugar": 3,
+    "density": "8.4g/100ml",
+    "productUrl": "#",
+    "productType": "drink",
+    "gradeTags": [
+      "단백질 밀도 B",
+      "다이어트 B",
+      "퍼포먼스 B"
+    ],
+    "manufacturer": "하림",
+    "flavor": "초코라떼",
+    "bcaa": "—",
+    "proteinSource": "혼합",
+    "fat": 2,
+    "calorieDensity": "54.0kcal/100ml",
+    "drinkType": "밀크형",
+    "nutritionPerBottle": {
+      "caloriesKcal": 135,
+      "proteinG": 21,
+      "carbsG": 8,
+      "sugarsG": 3,
+      "fatG": 2
+    }
+  },
+  {
+    "slug": "oneuldanbaek-dolce-latte-250",
+    "brand": "오늘단백",
+    "name": "오늘단백 (돌체라떼)",
+    "capacity": "250mL",
+    "variant": "일반",
+    "tags": [
+      "팩"
+    ],
+    "proteinPerServing": 21,
+    "calories": 145,
+    "sugar": 5,
+    "density": "8.4g/100ml",
+    "productUrl": "#",
+    "productType": "drink",
+    "gradeTags": [
+      "단백질 밀도 B",
+      "다이어트 C",
+      "퍼포먼스 B"
+    ],
+    "manufacturer": "하림",
+    "flavor": "돌체라떼",
+    "bcaa": "—",
+    "proteinSource": "혼합",
+    "fat": 2,
+    "calorieDensity": "58.0kcal/100ml",
+    "drinkType": "밀크형",
+    "nutritionPerBottle": {
+      "caloriesKcal": 145,
+      "proteinG": 21,
+      "carbsG": 11,
+      "sugarsG": 5,
+      "fatG": 2
+    }
+  }
+]

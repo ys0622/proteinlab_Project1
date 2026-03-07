@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import Header from "../../components/Header";
+import Footer from "../../components/Footer";
 import ProductCard from "../../components/ProductCard";
 import { mockProducts, mockBarProducts } from "../../data/products";
 import { getPickBySlug, getAllPickSlugs } from "../../data/picksConfig";
@@ -37,31 +38,91 @@ export default async function PickLandingPage({ params }: PageProps) {
     <div className="min-h-screen bg-white">
       <Header />
 
-      <main className="mx-auto max-w-[1200px] px-4 py-8 md:px-6">
-        <div className="mx-auto max-w-[1000px]">
-          <nav className="mb-4 text-sm text-[var(--foreground-muted)]">
+      <section
+        className="relative w-full border-t border-b"
+        style={{
+          background: "var(--hero-bg)",
+          borderColor: "var(--hero-border)",
+          paddingTop: "16px",
+          paddingBottom: "20px",
+        }}
+      >
+        <div className="mx-auto max-w-[1200px] px-4 md:px-6">
+          <nav className="mb-3 text-sm text-[var(--foreground-muted)]">
             <Link href={listHref} className="hover:text-[var(--accent)]">
               {pick.productType === "drink" ? "단백질 음료" : "단백질 바"}
             </Link>
             <span className="mx-2">/</span>
             <span className="text-[var(--foreground)]">{pick.title}</span>
           </nav>
-
-          <header className="rounded-2xl border border-[var(--border)] bg-[#EFEDE6] px-6 py-8 md:py-10" style={{ background: "#EFEDE6" }}>
-            <h1 className="text-2xl font-bold text-[var(--foreground)] md:text-3xl">{pick.title}</h1>
-            <p className="mt-3 text-[15px] leading-relaxed text-[var(--foreground-muted)]">{pick.description}</p>
-          </header>
-
-          <div className="mt-8 prose prose-neutral max-w-none">
-            <div className="rounded-xl border border-[#e8e6e3] bg-[#FFFDF8] p-5 md:p-6" style={{ borderRadius: "12px" }}>
-              <p className="mt-0 text-sm leading-relaxed text-[var(--foreground-muted)]">{pick.content}</p>
-              <p className="mt-3 text-xs text-[var(--foreground-muted)]">※ 콘텐츠는 proteinlab.kr 기준으로 추후 반영 예정입니다.</p>
+          <h1 className="text-2xl font-bold leading-tight text-[var(--foreground)] md:text-3xl" style={{ fontWeight: 700 }}>
+            {pick.title}
+          </h1>
+          {pick.contentData.description ? (
+            <div className="mt-3">
+              {pick.contentData.description.split("\n\n").map((para, i) => (
+                <p key={i} className={`text-sm leading-relaxed text-[var(--foreground-muted)] ${i > 0 ? "mt-2" : "mt-0"}`}>{para}</p>
+              ))}
             </div>
-          </div>
+          ) : (
+            <p className="mt-1 text-sm leading-relaxed text-[var(--foreground-muted)]" style={{ fontWeight: 400 }}>
+              {pick.description}
+            </p>
+          )}
+        </div>
+      </section>
 
-          <section className="mt-10">
-            <h2 className="text-lg font-semibold text-[var(--foreground)]">해당 제품 ({products.length}개)</h2>
-            <div className="mt-4 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3" aria-label="제품 목록">
+      <main className="mx-auto max-w-[1200px] px-4 pt-3 pb-2 md:px-6">
+          {(pick.contentData.recommendations.length > 0 || pick.contentData.criteria.length > 0) && (
+            <div className="grid gap-3 sm:grid-cols-2">
+              {pick.contentData.recommendations.length > 0 && (
+                <div className="rounded-xl border border-[#e8e6e3] bg-[#FFFDF8] px-4 py-3" style={{ borderRadius: "12px" }}>
+                  <h2 className="text-xs font-semibold text-[var(--foreground)]">이런 분에게 추천</h2>
+                  <ul className="mt-1.5 space-y-1">
+                    {pick.contentData.recommendations.map((rec, i) => (
+                      <li key={i} className="flex items-start gap-1.5 text-xs leading-snug text-[var(--foreground-muted)]">
+                        <span className="mt-px shrink-0 text-[var(--accent)]">✓</span>
+                        <span>{rec}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+              {pick.contentData.criteria.length > 0 && (
+                <div className="rounded-xl border border-[#e8e6e3] bg-[#FFFDF8] px-4 py-3" style={{ borderRadius: "12px" }}>
+                  <h2 className="text-xs font-semibold text-[var(--foreground)]">선택 기준</h2>
+                  <ul className="mt-1.5 space-y-1">
+                    {pick.contentData.criteria.map((crit, i) => (
+                      <li key={i} className="flex items-start gap-1.5 text-xs leading-snug text-[var(--foreground-muted)]">
+                        <span className="mt-px shrink-0">·</span>
+                        <span>{crit}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+            </div>
+          )}
+
+          {pick.contentData.faq.length > 0 && (
+            <div className="mt-3 rounded-xl border border-[#e8e6e3] bg-[#FFFDF8] px-4 py-3" style={{ borderRadius: "12px" }}>
+              <h2 className="text-xs font-semibold text-[var(--foreground)]">자주 묻는 질문</h2>
+              <div className="mt-1.5 grid gap-x-6 gap-y-2 sm:grid-cols-2 lg:grid-cols-3">
+                {pick.contentData.faq.map((item, i) => (
+                  <div key={i}>
+                    <p className="text-xs font-medium text-[var(--foreground)]">Q. {item.q}?</p>
+                    <p className="mt-0.5 text-xs leading-snug text-[var(--foreground-muted)]">{item.a}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          <section className="mt-8">
+            <p className="mb-4 text-sm text-[var(--foreground-muted)]">
+              총 <span className="font-semibold text-[var(--foreground)]">{products.length}</span>개 제품
+            </p>
+            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3" aria-label="제품 목록">
               {products.map((product) => (
                 <ProductCard key={product.slug ?? `${product.brand}-${product.name}`} {...product} />
               ))}
@@ -79,14 +140,9 @@ export default async function PickLandingPage({ params }: PageProps) {
               홈으로
             </Link>
           </div>
-        </div>
       </main>
 
-      <footer className="mt-12 border-t border-[var(--border)] bg-[var(--beige-warm)] py-8">
-        <div className="mx-auto max-w-[1200px] px-4 text-center text-sm text-[var(--foreground-muted)] md:px-6">
-          <p>© ProteinLab. 단백질 제품 비교 정보는 참고용이며, 구매 전 공식 정보를 확인하세요.</p>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }

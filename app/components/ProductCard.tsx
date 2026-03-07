@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { getProductImageUrl } from "../lib/productImage";
+import { getCoupangSearchUrl, getNaverSearchUrl, getOfficialMallUrl } from "../lib/purchaseLinks";
 import CompareButton from "./CompareButton";
 
 export interface ProductCardProps {
@@ -14,6 +15,8 @@ export interface ProductCardProps {
   sugar?: number;
   density: string;
   productUrl?: string;
+  /** 쿠팡파트너스 링크 (있으면 사용, 없으면 검색 URL) */
+  coupangUrl?: string;
   /** 등급/특성 태그 예: 밀도 A, 다이어트 B, 퍼포먼스 A */
   gradeTags?: string[];
   /** 상세 페이지 경로용 (있으면 /product/[slug]로 이동) */
@@ -31,12 +34,17 @@ export default function ProductCard({
   sugar,
   density,
   productUrl = "#",
+  coupangUrl,
   gradeTags = [],
   slug,
 }: ProductCardProps) {
   const volumeLabel = variant && variant !== "일반" ? `${capacity} · ${variant}` : capacity;
   const detailHref = slug ? `/product/${slug}` : productUrl;
   const imageUrl = slug ? getProductImageUrl(slug) : null;
+
+  const coupangHref = coupangUrl ?? getCoupangSearchUrl(brand, name);
+  const naverHref = getNaverSearchUrl(brand, name);
+  const officialMallHref = getOfficialMallUrl(brand);
 
   const imageArea = (
     <div
@@ -101,13 +109,8 @@ export default function ProductCard({
 
       {/* 제품 특징 태그: 팩, 밀크형, 락토프리 등 (최대 3개, 색상 구분) */}
       {tags.length > 0 && (() => {
-        const tagStyle = (tag: string) => {
-          if (tag === "팩") return { bg: "#E3F2FD", border: "#90CAF9", color: "#1565C0" };
-          if (tag === "밀크형") return { bg: "#FFF8E1", border: "#FFE082", color: "#E65100" };
-          if (tag === "락토프리") return { bg: "#E8F5E9", border: "#81C784", color: "#2E7D32" };
-          if (tag === "워터형" || tag.includes("워터")) return { bg: "#E1F5FE", border: "#4FC3F7", color: "#0277BD" };
-          if (tag === "PET") return { bg: "#F3E5F5", border: "#CE93D8", color: "#6A1B9A" };
-          return { bg: "#EEEEEE", border: "#BDBDBD", color: "#424242" };
+        const tagStyle = (_tag: string) => {
+          return { bg: "#F5F5F5", border: "#D4D4D4", color: "#6B6B6B" };
         };
         return (
           <div className="mt-2 flex flex-wrap gap-1.5" style={{ gap: "6px" }}>
@@ -135,7 +138,7 @@ export default function ProductCard({
         );
       })()}
 
-      {/* 등급 태그: 밀도 → 다이어트 → 퍼포먼스 순, 등급별 색상 (해석 보조 정보) */}
+      {/* 등급 태그: 밀도 → 다이어트 → 퍼포먼스 순, 등급 문자 기준 색상 */}
       {gradeTags.length > 0 && (() => {
         const order = ["밀도", "다이어트", "퍼포먼스"];
         const sorted = [...gradeTags].sort((a, b) => {
@@ -143,16 +146,17 @@ export default function ProductCard({
           const bi = order.findIndex((k) => b.startsWith(k));
           return (ai === -1 ? 99 : ai) - (bi === -1 ? 99 : bi);
         });
-        const gradeStyle = (tag: string) => {
-          if (tag.startsWith("밀도")) return { bg: "#E7F3EC", border: "#1B7F5B", color: "#1B7F5B" };
-          if (tag.startsWith("다이어트")) return { bg: "#EAF2FF", border: "#4C7BD9", color: "#4C7BD9" };
-          if (tag.startsWith("퍼포먼스")) return { bg: "#FFF1E6", border: "#F08A24", color: "#F08A24" };
-          return { bg: "#f3f3f3", border: "#ccc", color: "#555" };
+        const gradeLetterStyle = (tag: string) => {
+          const letter = tag.split(" ").pop();
+          if (letter === "A") return { bg: "#E7F3EC", border: "#1B7F5B", color: "#1B7F5B" };
+          if (letter === "B") return { bg: "#EAF2FF", border: "#4C7BD9", color: "#4C7BD9" };
+          if (letter === "C") return { bg: "#FFF1E6", border: "#F08A24", color: "#F08A24" };
+          return { bg: "#f3f3f3", border: "#bbb", color: "#999" };
         };
         return (
           <div className="mt-1.5 flex flex-wrap gap-1.5" style={{ gap: "6px" }}>
             {sorted.map((tag) => {
-              const s = gradeStyle(tag);
+              const s = gradeLetterStyle(tag);
               return (
                 <span
                   key={tag}
@@ -201,39 +205,58 @@ export default function ProductCard({
       {/* 구분선: 성분 ~ 구매 링크 */}
       <div className="mx-1 mt-3 border-t border-[#e8e6e3]" />
 
-      {/* 구매 링크 영역 (버튼 높이 32px) */}
-      <div className="mt-3 flex flex-wrap items-center gap-2">
-        <span className="text-[11px] text-[#777]">구매 링크</span>
+      {/* 구매 링크 영역 */}
+      <div className="mt-3 flex flex-wrap items-center gap-1.5">
+        <span className="shrink-0 text-[11px] text-[#777]">구매 링크</span>
         <a
-          href={detailHref}
-          className="inline-flex h-8 items-center gap-1.5 rounded-full border border-[#e2e2e2] bg-white pl-2.5 pr-3 text-[11px] font-normal text-[var(--foreground)] transition-colors hover:border-[var(--accent)] hover:bg-[var(--accent-light)] hover:text-[var(--accent)]"
-          style={{ borderRadius: "999px", height: "32px" }}
+          href={coupangHref}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex h-7 items-center gap-1 rounded-full border border-[#e2e2e2] bg-white pl-2 pr-2.5 text-[11px] font-normal text-[var(--foreground)] transition-colors hover:border-[var(--accent)] hover:bg-[var(--accent-light)] hover:text-[var(--accent)]"
+          style={{ borderRadius: "999px" }}
         >
-          <span className="flex h-4 w-4 shrink-0 items-center justify-center rounded bg-[#ff5722] text-white" aria-hidden>
-            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z" /><line x1="3" y1="6" x2="21" y2="6" /><path d="M16 10a4 4 0 01-8 0" /></svg>
+          <span className="flex h-3.5 w-3.5 shrink-0 items-center justify-center rounded bg-[#ff5722] text-white" aria-hidden>
+            <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z" /><line x1="3" y1="6" x2="21" y2="6" /><path d="M16 10a4 4 0 01-8 0" /></svg>
           </span>
           쿠팡
         </a>
         <a
-          href={detailHref}
-          className="inline-flex h-8 items-center gap-1.5 rounded-full border border-[#e2e2e2] bg-white pl-2.5 pr-3 text-[11px] font-normal text-[var(--foreground)] transition-colors hover:border-[var(--accent)] hover:bg-[var(--accent-light)] hover:text-[var(--accent)]"
-          style={{ borderRadius: "999px", height: "32px" }}
+          href={naverHref}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex h-7 items-center gap-1 rounded-full border border-[#e2e2e2] bg-white pl-2 pr-2.5 text-[11px] font-normal text-[var(--foreground)] transition-colors hover:border-[var(--accent)] hover:bg-[var(--accent-light)] hover:text-[var(--accent)]"
+          style={{ borderRadius: "999px" }}
         >
-          <span className="flex h-4 w-4 shrink-0 items-center justify-center rounded bg-[#03c75a] text-white" aria-hidden>
-            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="9" cy="21" r="1" /><circle cx="20" cy="21" r="1" /><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6" /></svg>
+          <span className="flex h-3.5 w-3.5 shrink-0 items-center justify-center rounded bg-[#03c75a] text-white" aria-hidden>
+            <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="9" cy="21" r="1" /><circle cx="20" cy="21" r="1" /><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6" /></svg>
           </span>
-          네이버쇼핑
+          네이버
         </a>
-        <a
-          href={detailHref}
-          className="inline-flex h-8 items-center gap-1.5 rounded-full border border-[#e2e2e2] bg-white pl-2.5 pr-3 text-[11px] font-normal text-[var(--foreground)] transition-colors hover:border-[var(--accent)] hover:bg-[var(--accent-light)] hover:text-[var(--accent)]"
-          style={{ borderRadius: "999px", height: "32px" }}
-        >
-          <span className="flex h-4 w-4 shrink-0 items-center justify-center rounded bg-[#5c5c5c] text-white" aria-hidden>
-            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" /><polyline points="9 22 9 12 15 12 15 22" /></svg>
+        {officialMallHref ? (
+          <a
+            href={officialMallHref}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex h-7 items-center gap-1 rounded-full border border-[#e2e2e2] bg-white pl-2 pr-2.5 text-[11px] font-normal text-[var(--foreground)] transition-colors hover:border-[var(--accent)] hover:bg-[var(--accent-light)] hover:text-[var(--accent)]"
+            style={{ borderRadius: "999px" }}
+          >
+            <span className="flex h-3.5 w-3.5 shrink-0 items-center justify-center rounded bg-[#5c5c5c] text-white" aria-hidden>
+              <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" /><polyline points="9 22 9 12 15 12 15 22" /></svg>
+            </span>
+            공식몰
+          </a>
+        ) : (
+          <span
+            className="inline-flex h-7 cursor-not-allowed items-center gap-1 rounded-full border border-[#e8e8e8] bg-[#f9f9f9] pl-2 pr-2.5 text-[11px] font-normal"
+            style={{ borderRadius: "999px", color: "#bbb", borderColor: "#e8e8e8" }}
+            title="공식몰 정보 없음"
+          >
+            <span className="flex h-3.5 w-3.5 shrink-0 items-center justify-center rounded bg-[#ddd] text-white" aria-hidden>
+              <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" /><polyline points="9 22 9 12 15 12 15 22" /></svg>
+            </span>
+            공식몰
           </span>
-          공식몰
-        </a>
+        )}
       </div>
 
       {/* 구분선: 구매 링크 ~ 자세히 비교 */}

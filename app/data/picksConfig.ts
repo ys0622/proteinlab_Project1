@@ -1,21 +1,39 @@
 import type { ProductDetailProps } from "../data/products";
 import { getProteinSourceCategory, getBarWeightRange } from "../lib/productFilters";
+import picksContent from "./picksContent.json";
 
 export type PickProductType = "drink" | "bar";
+
+export interface PickContentData {
+  description: string;
+  recommendations: string[];
+  criteria: string[];
+  faq: { q: string; a: string }[];
+}
 
 export interface PickConfig {
   slug: string;
   title: string;
   description: string;
   productType: PickProductType;
-  /** SEO·랜딩용 본문 (proteinlab.kr 콘텐츠 반영 예정) */
+  /** proteinlab.kr 기반 구조화된 콘텐츠 */
+  contentData: PickContentData;
+  /** SEO·랜딩용 본문 (레거시) */
   content: string;
   /** 해당 큐레이션에 맞는 제품만 필터 */
   filterProducts: (products: ProductDetailProps[]) => ProductDetailProps[];
 }
 
+const contentMap = picksContent as Record<string, PickContentData>;
+
+function getContentData(slug: string): PickContentData {
+  return contentMap[slug] ?? { description: "", recommendations: [], criteria: [], faq: [] };
+}
+
+type PickConfigBase = Omit<PickConfig, "contentData">;
+
 /** 단백질 음료 큐레이션 */
-const drinkPicks: PickConfig[] = [
+const drinkPicks: PickConfigBase[] = [
   {
     slug: "zero-sugar",
     title: "당류 0g 단백질 음료",
@@ -54,7 +72,7 @@ const drinkPicks: PickConfig[] = [
     description: "워터형 단백질 음료 비교. 가벼운 맛과 낮은 칼로리로 수분·단백질 동시 보충.",
     productType: "drink",
     content: "워터형 단백질 음료는 밀크형보다 가볍고 당·지방이 적은 편입니다. (proteinlab.kr 콘텐츠 반영 예정)",
-    filterProducts: (list) => list.filter((p) => p.productType !== "bar" && p.tags?.some((t) => t.includes("워터") || t === "PET")),
+    filterProducts: (list) => list.filter((p) => p.productType !== "bar" && p.drinkType === "워터형"),
   },
   {
     slug: "lactose-free",
@@ -99,7 +117,7 @@ const drinkPicks: PickConfig[] = [
 ];
 
 /** 단백질 바 큐레이션 */
-const barPicks: PickConfig[] = [
+const barPicks: PickConfigBase[] = [
   {
     slug: "bar-high-protein-20",
     title: "고단백 20g 이상 단백질 바",
@@ -188,7 +206,10 @@ const barPicks: PickConfig[] = [
   },
 ];
 
-const allPicks = [...drinkPicks, ...barPicks];
+const allPicks: PickConfig[] = [...drinkPicks, ...barPicks].map((p) => ({
+  ...p,
+  contentData: getContentData(p.slug),
+}));
 
 export function getPickBySlug(slug: string): PickConfig | null {
   return allPicks.find((p) => p.slug === slug) ?? null;

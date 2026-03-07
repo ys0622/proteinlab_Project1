@@ -97,26 +97,35 @@ export default function CompareTable({ products, visibleColumnIds }: CompareTabl
                         className="border-b border-l border-[#eee] px-4 py-3"
                         style={bgStyle}
                       >
-                        <div className="flex flex-wrap gap-1.5">
+                        <div className="flex flex-wrap items-center gap-1.5">
                           <Link
                             href={detailHref(p.slug)}
-                            className="inline-flex items-center rounded-full border px-2.5 py-1 text-xs font-medium transition-colors hover:opacity-90"
-                            style={{ background: "#FFF8F0", borderColor: "#E8922C", color: "#C75B00" }}
+                            className="inline-flex h-8 items-center gap-1.5 rounded-full border border-[#e2e2e2] bg-white pl-2.5 pr-3 text-[11px] font-normal text-[var(--foreground)] transition-colors hover:border-[var(--accent)] hover:bg-[var(--accent-light)] hover:text-[var(--accent)]"
+                            style={{ borderRadius: "999px", height: "32px" }}
                           >
+                            <span className="flex h-4 w-4 shrink-0 items-center justify-center rounded bg-[#ff5722] text-white" aria-hidden="true">
+                              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z" /><line x1="3" y1="6" x2="21" y2="6" /><path d="M16 10a4 4 0 01-8 0" /></svg>
+                            </span>
                             쿠팡
                           </Link>
                           <Link
                             href={detailHref(p.slug)}
-                            className="inline-flex items-center rounded-full border px-2.5 py-1 text-xs font-medium transition-colors hover:opacity-90"
-                            style={{ background: "#E8F5E9", borderColor: "#03C75A", color: "#03C75A" }}
+                            className="inline-flex h-8 items-center gap-1.5 rounded-full border border-[#e2e2e2] bg-white pl-2.5 pr-3 text-[11px] font-normal text-[var(--foreground)] transition-colors hover:border-[var(--accent)] hover:bg-[var(--accent-light)] hover:text-[var(--accent)]"
+                            style={{ borderRadius: "999px", height: "32px" }}
                           >
+                            <span className="flex h-4 w-4 shrink-0 items-center justify-center rounded bg-[#03c75a] text-white" aria-hidden="true">
+                              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="9" cy="21" r="1" /><circle cx="20" cy="21" r="1" /><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6" /></svg>
+                            </span>
                             네이버쇼핑
                           </Link>
                           <Link
                             href={detailHref(p.slug)}
-                            className="inline-flex items-center rounded-full border px-2.5 py-1 text-xs font-medium transition-colors hover:opacity-90"
-                            style={{ background: "#E8E8E8", borderColor: "#9e9e9e", color: "#424242" }}
+                            className="inline-flex h-8 items-center gap-1.5 rounded-full border border-[#e2e2e2] bg-white pl-2.5 pr-3 text-[11px] font-normal text-[var(--foreground)] transition-colors hover:border-[var(--accent)] hover:bg-[var(--accent-light)] hover:text-[var(--accent)]"
+                            style={{ borderRadius: "999px", height: "32px" }}
                           >
+                            <span className="flex h-4 w-4 shrink-0 items-center justify-center rounded bg-[#5c5c5c] text-white" aria-hidden="true">
+                              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" /><polyline points="9 22 9 12 15 12 15 22" /></svg>
+                            </span>
                             공식몰
                           </Link>
                         </div>

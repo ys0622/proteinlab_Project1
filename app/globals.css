@@ -56,6 +56,10 @@ textarea {
   font-family: var(--font-family);
 }
 
+html {
+  scrollbar-gutter: stable;
+}
+
 body {
   background: #ffffff;
   color: var(--foreground);
