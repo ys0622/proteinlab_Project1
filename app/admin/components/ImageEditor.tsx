@@ -133,7 +133,7 @@ export default function ImageEditor({ src, onSave, onClose }: Props) {
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
-    const img = new Image();
+    const img = document.createElement("img");
     img.crossOrigin = "anonymous";
     img.onload = () => {
       canvas.width = img.naturalWidth;
@@ -339,7 +339,7 @@ export default function ImageEditor({ src, onSave, onClose }: Props) {
     if (!ctx) return;
 
     const imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-    const img = new Image();
+    const img = document.createElement("img");
     img.onload = () => {
       const newCanvas = document.createElement("canvas");
       const newCtx = newCanvas.getContext("2d");
@@ -359,7 +359,7 @@ export default function ImageEditor({ src, onSave, onClose }: Props) {
         newCtx.drawImage(img, 0, 0);
       }
 
-      const resultImg = new Image();
+      const resultImg = document.createElement("img");
       resultImg.onload = () => {
         if (!canvasRef.current) return;
         const c = canvasRef.current;

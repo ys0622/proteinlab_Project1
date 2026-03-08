@@ -180,7 +180,7 @@ function ImageWorkflowContent() {
     const src = imageState.preview ?? imageState.original;
     if (!src) return;
 
-    const img = new Image();
+    const img = document.createElement("img");
     img.crossOrigin = "anonymous";
     img.onload = () => {
       const canvas = document.createElement("canvas");
