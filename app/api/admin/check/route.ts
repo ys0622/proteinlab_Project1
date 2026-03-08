@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { cookies } from "next/headers";
-import crypto from "crypto";
+import { verifySessionToken } from "@/app/lib/session";
 
 export async function GET() {
   try {
@@ -8,24 +8,8 @@ export async function GET() {
     const token = cookieStore.get("proteinlab_session")?.value;
     if (!token) return NextResponse.json({ isAdmin: false });
 
-    const secret = process.env.SESSION_SECRET ?? "proteinlab-session-secret-change-me";
-    const dotIndex = token.lastIndexOf(".");
-    if (dotIndex === -1) return NextResponse.json({ isAdmin: false });
-
-    const timestamp = token.slice(0, dotIndex);
-    const providedHmac = token.slice(dotIndex + 1);
-
-    const ts = parseInt(timestamp, 10);
-    if (isNaN(ts) || Date.now() - ts > 86400 * 1000) {
-      return NextResponse.json({ isAdmin: false });
-    }
-
-    const expectedHmac = crypto
-      .createHmac("sha256", secret)
-      .update(timestamp)
-      .digest("hex");
-
-    return NextResponse.json({ isAdmin: providedHmac === expectedHmac });
+    const valid = await verifySessionToken(token);
+    return NextResponse.json({ isAdmin: valid });
   } catch {
     return NextResponse.json({ isAdmin: false });
   }

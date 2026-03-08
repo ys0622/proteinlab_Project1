@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { cookies } from "next/headers";
 import fs from "fs/promises";
 import path from "path";
-import crypto from "crypto";
+import { verifySessionToken } from "@/app/lib/session";
 
 const SLUG_TO_IMAGE = path.join(process.cwd(), "app/data/slugToImage.json");
 const SLUG_TO_BAR_IMAGE = path.join(process.cwd(), "app/data/slugToBarImage.json");
@@ -10,30 +10,10 @@ const DRINK_IMG_DIR = path.join(process.cwd(), "public/rtd-drink-image");
 const BAR_IMG_DIR = path.join(process.cwd(), "public/bar-image");
 
 async function verifyAdmin(): Promise<boolean> {
-  try {
-    const cookieStore = await cookies();
-    const token = cookieStore.get("proteinlab_session")?.value;
-    if (!token) return false;
-
-    const secret = process.env.SESSION_SECRET ?? "proteinlab-session-secret-change-me";
-    const dotIndex = token.lastIndexOf(".");
-    if (dotIndex === -1) return false;
-
-    const timestamp = token.slice(0, dotIndex);
-    const providedHmac = token.slice(dotIndex + 1);
-
-    const ts = parseInt(timestamp, 10);
-    if (isNaN(ts) || Date.now() - ts > 86400 * 1000) return false;
-
-    const expectedHmac = crypto
-      .createHmac("sha256", secret)
-      .update(timestamp)
-      .digest("hex");
-
-    return providedHmac === expectedHmac;
-  } catch {
-    return false;
-  }
+  const cookieStore = await cookies();
+  const token = cookieStore.get("proteinlab_session")?.value;
+  if (!token) return false;
+  return verifySessionToken(token);
 }
 
 export async function POST(request: Request) {
