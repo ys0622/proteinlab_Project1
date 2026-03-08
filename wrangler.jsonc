@@ -14,7 +14,8 @@
   "services": [
     {
       "binding": "WORKER_SELF_REFERENCE",
-      "service": "proteinlab-v2"
+      "service": "proteinlab-v2",
+      "environment": "production"
     }
   ],
   "observability": {
