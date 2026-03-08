@@ -21,6 +21,8 @@ export interface ProductCardProps {
   gradeTags?: string[];
   /** 상세 페이지 경로용 (있으면 /product/[slug]로 이동) */
   slug?: string;
+  /** 첫 번째 화면에 보이는 카드면 true - LCP 최적화 */
+  priority?: boolean;
 }
 
 export default function ProductCard({
@@ -37,6 +39,7 @@ export default function ProductCard({
   coupangUrl,
   gradeTags = [],
   slug,
+  priority = false,
 }: ProductCardProps) {
   const detailHref = slug ? `/product/${slug}` : productUrl;
   const imageUrl = slug ? getProductImageUrl(slug) : null;
@@ -63,8 +66,10 @@ export default function ProductCard({
             alt={`${brand} ${name}`}
             fill
             className="object-contain"
-            sizes="200px"
+            sizes="(max-width: 640px) 45vw, (max-width: 1024px) 30vw, 200px"
             unoptimized
+            priority={priority}
+            loading={priority ? "eager" : "lazy"}
           />
         </div>
       ) : (

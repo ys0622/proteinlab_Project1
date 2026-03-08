@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import type { ProductDetailProps } from "../data/products";
@@ -17,6 +17,8 @@ import SearchBar from "./SearchBar";
 import SortBar from "./SortBar";
 import ProductCard from "./ProductCard";
 
+const PAGE_SIZE = 20;
+
 type ProductListWithFiltersProps =
   | { productType: "drink"; products: ProductDetailProps[] }
   | { productType: "bar"; products: ProductDetailProps[] };
@@ -25,13 +27,22 @@ export default function ProductListWithFilters(props: ProductListWithFiltersProp
   const { productType, products } = props;
   const [drinkFilters, setDrinkFilters] = useState<DrinkFilters>(defaultDrinkFilters);
   const [barFilters, setBarFilters] = useState<BarFilters>(defaultBarFilters);
+  const [page, setPage] = useState(1);
 
   const filters = productType === "drink" ? drinkFilters : barFilters;
 
   const filtered = useMemo(
-    () => (productType === "drink" ? filterDrinkProducts(products, filters as DrinkFilters) : filterBarProducts(products, filters as BarFilters)),
+    () => productType === "drink"
+      ? filterDrinkProducts(products, filters as DrinkFilters)
+      : filterBarProducts(products, filters as BarFilters),
     [products, filters, productType]
   );
+
+  // 필터 바뀌면 첫 페이지로 리셋
+  useEffect(() => { setPage(1); }, [filtered]);
+
+  const visible = useMemo(() => filtered.slice(0, page * PAGE_SIZE), [filtered, page]);
+  const hasMore = visible.length < filtered.length;
 
   const handleDrinkFilterToggle = (key: keyof DrinkFilters, value: string) => {
     setDrinkFilters((prev) => {
@@ -97,10 +108,26 @@ export default function ProductListWithFilters(props: ProductListWithFiltersProp
         style={{ marginTop: "12px", gap: "24px" }}
         aria-label="제품 목록"
       >
-        {filtered.map((product) => (
-          <ProductCard key={product.slug ?? `${product.brand}-${product.name}`} {...product} />
+        {visible.map((product, idx) => (
+          <ProductCard
+            key={product.slug ?? `${product.brand}-${product.name}`}
+            {...product}
+            priority={idx < 4}
+          />
         ))}
       </section>
+
+      {hasMore && (
+        <div className="mt-8 flex justify-center">
+          <button
+            type="button"
+            onClick={() => setPage((p) => p + 1)}
+            className="rounded-full border border-[var(--border)] bg-white px-6 py-2.5 text-sm font-medium text-[var(--foreground)] transition-colors hover:border-[var(--accent)] hover:bg-[var(--accent-light)] hover:text-[var(--accent)]"
+          >
+            더 보기 ({filtered.length - visible.length}개 남음)
+          </button>
+        </div>
+      )}
     </>
   );
 }
