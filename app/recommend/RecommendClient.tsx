@@ -102,7 +102,7 @@ function OptionButton({ icon, label, desc, selected, onClick }: {
       <span className="text-2xl shrink-0">{icon}</span>
       <div className="min-w-0">
         <p className="text-sm" style={{ fontWeight: 700, color: "#1a1a1a" }}>{label}</p>
-        <p className="text-xs mt-0.5" style={{ color: "#9090a8" }}>{desc}</p>
+        <p className="text-xs mt-0.5" style={{ color: "var(--foreground-muted)" }}>{desc}</p>
       </div>
     </button>
   );
@@ -121,7 +121,7 @@ function GridOption({ icon, label, desc, selected, onClick }: {
     }}>
       <span className="text-xl">{icon}</span>
       <p className="text-sm" style={{ fontWeight: 700, color: "#1a1a1a" }}>{label}</p>
-      <p className="text-xs" style={{ color: "#9090a8" }}>{desc}</p>
+      <p className="text-xs" style={{ color: "var(--foreground-muted)" }}>{desc}</p>
     </button>
   );
 }
@@ -253,7 +253,7 @@ function ProductResultCard({ product }: { product: RecommendedProduct }) {
           {[
             { label: "단백질", value: `${product.protein}g`, color: "#1B7F5B" },
             { label: "칼로리", value: `${product.calories}kcal`, color: "#6b7280" },
-            { label: "당류", value: `${product.sugar}g`, color: product.sugar === 0 ? "#dc2626" : "#f97316" },
+            { label: "당류", value: `${product.sugar}g`, color: product.sugar === 0 ? "#1B7F5B" : "#f97316" },
           ].map((stat) => (
             <div key={stat.label} className="rounded-lg border border-[#f0eeeb] bg-[#fafaf8] px-2 py-2 text-center">
               <p style={{ fontSize: 16, fontWeight: 800, color: stat.color, lineHeight: 1.2 }}>{stat.value}</p>
@@ -268,7 +268,7 @@ function ProductResultCard({ product }: { product: RecommendedProduct }) {
         </div>
 
         {/* 상세 보기 */}
-        <Link href={product.detailPath} className="mt-3 block w-full py-2.5 text-xs font-semibold text-center rounded-lg transition-colors hover:bg-gray-50" style={{
+        <Link href={product.detailPath} className="mt-3 block w-full py-2.5 text-xs font-semibold text-center rounded-lg transition-colors hover:bg-[var(--accent-light)] hover:text-[var(--accent)]" style={{
           border: "1px solid #e8e6e3", background: "#fff", color: "#374151",
         }}>
           상세 보기 →
@@ -304,7 +304,7 @@ function ResultScreen({ result, onReset, category }: { result: RecommendResult; 
 
       {/* 하단 버튼 */}
       <div className="flex gap-3 pt-2">
-        <button onClick={onReset} className="flex-1 rounded-full py-3 text-sm font-semibold transition-colors hover:bg-gray-50" style={{
+        <button onClick={onReset} className="flex-1 rounded-full py-3 text-sm font-semibold transition-colors hover:bg-[var(--accent-light)] hover:text-[var(--accent)]" style={{
           border: "1px solid #e8e6e3", background: "#fff", color: "#374151",
         }}>
           다시 추천받기
@@ -413,13 +413,13 @@ export default function RecommendClient({ drinkCount, barCount }: { drinkCount: 
               }}>
                 💪 맞춤 추천
               </span>
-              <h1 className="text-3xl font-extrabold mb-4 leading-tight" style={{ color: "#1a1a1a" }}>
+              <h2 className="text-3xl font-extrabold mb-4 leading-tight" style={{ color: "#1a1a1a" }}>
                 나에게 맞는<br />{productLabel} 찾기
-              </h1>
+              </h2>
               <p className="text-base mb-8 leading-relaxed" style={{ color: "#6b6b6b" }}>
                 4가지 질문으로 {productCount}개 제품 중 최적의 {category === "bar" ? "단백질 바" : "RTD 단백질 음료"}를 추천해드려요
               </p>
-              <button onClick={() => setStep(1)} className="inline-block px-8 py-3 text-base font-semibold rounded-xl hover:opacity-90 transition-opacity" style={{
+              <button onClick={() => setStep(1)} className="inline-block px-8 py-3 text-base font-semibold rounded-full hover:opacity-90 transition-opacity" style={{
                 background: "var(--accent)", color: "white",
               }}>
                 시작하기 →

@@ -109,7 +109,7 @@ export default function GuidesPage() {
 
               <div className="px-5 pb-5">
                 <span
-                  className="flex items-center justify-center rounded-lg py-2.5 text-xs font-semibold transition-colors group-hover:bg-gray-50"
+                  className="flex items-center justify-center rounded-lg py-2.5 text-xs font-semibold transition-colors group-hover:bg-[var(--accent-light)] group-hover:text-[var(--accent)]"
                   style={{ border: "1px solid #e8e6e3", color: "#374151" }}
                 >
                   보러 가기 →

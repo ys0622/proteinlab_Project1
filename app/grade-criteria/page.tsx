@@ -121,7 +121,7 @@ export default function GradeCriteriaPage() {
 
         {/* 계산 방식 3개를 나란히 */}
         <div className="mt-6 grid gap-3 sm:grid-cols-3">
-          <div className="rounded-xl border border-[#e8e6e3] bg-[#FFFDF8] px-4 py-3.5" style={{ borderRadius: "12px" }}>
+          <div className="rounded-xl border border-[#e8e6e3] bg-[#FFFDF8] px-4 py-3.5" style={{ borderRadius: "16px" }}>
             <h3 className="text-xs font-semibold" style={{ color: "#1B7F5B" }}>단백질 밀도</h3>
             <ul className="mt-1.5 space-y-1 text-xs leading-relaxed" style={{ color: "#6b6b6b" }}>
               {productType === "drink" ? (
@@ -137,14 +137,14 @@ export default function GradeCriteriaPage() {
               )}
             </ul>
           </div>
-          <div className="rounded-xl border border-[#e8e6e3] bg-[#FFFDF8] px-4 py-3.5" style={{ borderRadius: "12px" }}>
+          <div className="rounded-xl border border-[#e8e6e3] bg-[#FFFDF8] px-4 py-3.5" style={{ borderRadius: "16px" }}>
             <h3 className="text-xs font-semibold" style={{ color: "#4C7BD9" }}>다이어트</h3>
             <ul className="mt-1.5 space-y-1 text-xs leading-relaxed" style={{ color: "#6b6b6b" }}>
               <li>· 칼로리(kcal) + 당류(g) × 4</li>
               <li>· 낮을수록 다이어트에 유리 (당류 4배 가중)</li>
             </ul>
           </div>
-          <div className="rounded-xl border border-[#e8e6e3] bg-[#FFFDF8] px-4 py-3.5" style={{ borderRadius: "12px" }}>
+          <div className="rounded-xl border border-[#e8e6e3] bg-[#FFFDF8] px-4 py-3.5" style={{ borderRadius: "16px" }}>
             <h3 className="text-xs font-semibold" style={{ color: "#F08A24" }}>퍼포먼스</h3>
             <ul className="mt-1.5 space-y-1 text-xs leading-relaxed" style={{ color: "#6b6b6b" }}>
               <li>· 단백질(g) ÷ (1 + (cal + 당류×2) ÷ 100)</li>
@@ -154,7 +154,7 @@ export default function GradeCriteriaPage() {
         </div>
 
         {/* 업데이트 정책 */}
-        <div className="mt-4 rounded-xl border border-[#e8e6e3] bg-[#f9f8f5] px-5 py-4" style={{ borderRadius: "12px" }}>
+        <div className="mt-4 rounded-xl border border-[#e8e6e3] bg-[#FFFDF8] px-5 py-4" style={{ borderRadius: "16px" }}>
           <h2 className="text-sm font-semibold" style={{ color: "#3d3d3d" }}>업데이트 정책</h2>
           <ul className="mt-2 space-y-1 text-xs" style={{ color: "#6b6b6b" }}>
             <li>· 등급 지표 — 모두 영양성분 기반 (가격 무관)</li>

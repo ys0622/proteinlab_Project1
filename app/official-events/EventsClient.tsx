@@ -330,7 +330,7 @@ function BrandEventCard({ brand }: { brand: BrandCard }) {
           href={brand.storeUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center justify-center rounded-lg py-2.5 text-xs font-semibold transition-colors hover:bg-gray-50"
+          className="flex items-center justify-center rounded-lg py-2.5 text-xs font-semibold transition-colors hover:bg-[var(--accent-light)] hover:text-[var(--accent)]"
           style={{ border: "1px solid #e8e6e3", background: "#fff", color: "#374151" }}
         >
           {brand.storeType === "네이버 스토어" ? "네이버 스토어 방문" : "자사몰 방문"} →

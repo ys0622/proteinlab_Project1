@@ -81,7 +81,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
                   <p className="text-xs tracking-wide" style={{ color: "#7a7a7a" }}>
                     {product.brand}
                   </p>
-                  <h1 className="mt-1 line-clamp-2 font-semibold leading-snug" style={{ fontSize: "16px", fontWeight: 600, color: "#1a1a1a" }}>
+                  <h1 className="mt-1 line-clamp-2 font-semibold leading-snug" style={{ fontSize: "20px", fontWeight: 600, color: "#1a1a1a" }}>
                     {product.name}
                   </h1>
                   <p className="mt-1 text-[13px]" style={{ color: "#6b6b6b" }}>

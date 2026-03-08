@@ -100,9 +100,10 @@ export default function ContactPage() {
                   background: "#FFFDF8",
                 }}
               >
-                <div className="border-b border-[#e8e6e3] px-5 pt-5 pb-4">
+                <div className="border-b px-5 pt-5 pb-4" style={{ borderColor: item.accentBorder, background: item.accentBg }}>
                   <h3
-                    className="text-base font-bold text-[var(--foreground)]"
+                    className="text-base font-bold"
+                    style={{ color: item.accentColor }}
                   >
                     {item.emoji} {item.title}
                   </h3>

@@ -163,7 +163,7 @@ function RankingCard({
           {[
             { label: "단백질", value: `${product.proteinPerServing}g`, color: "#1B7F5B" },
             { label: "칼로리", value: product.calories != null ? `${product.calories}kcal` : "—", color: "#6b7280" },
-            { label: "당류", value: product.sugar != null ? `${product.sugar}g` : "—", color: product.sugar === 0 ? "#dc2626" : "#f97316" },
+            { label: "당류", value: product.sugar != null ? `${product.sugar}g` : "—", color: product.sugar === 0 ? "#1B7F5B" : "#f97316" },
           ].map((stat) => (
             <div
               key={stat.label}
@@ -193,7 +193,7 @@ function RankingCard({
         {/* 상세 보기 */}
         <Link
           href={`/product/${product.slug}`}
-          className="mt-3 block w-full rounded-lg py-2.5 text-center text-xs font-semibold transition-colors hover:bg-gray-50"
+          className="mt-3 block w-full rounded-lg py-2.5 text-center text-xs font-semibold transition-colors hover:bg-[var(--accent-light)] hover:text-[var(--accent)]"
           style={{ border: "1px solid #e8e6e3", background: "#fff", color: "#374151" }}
         >
           상세 보기 →
@@ -242,7 +242,7 @@ export default function RankingClient({ rankings }: RankingClientProps) {
               style={{
                 background: productType === t.id ? "var(--accent)" : "white",
                 color: productType === t.id ? "white" : "#6b6b6b",
-                border: productType === t.id ? "none" : "1px solid var(--border)",
+                border: productType === t.id ? "1px solid var(--accent)" : "1px solid var(--border)",
               }}
             >
               {t.label}
