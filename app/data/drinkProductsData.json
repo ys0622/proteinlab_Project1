@@ -598,7 +598,7 @@
       "다이어트 B",
       "퍼포먼스 B"
     ],
-    "manufacturer": "얼티브",
+    "manufacturer": "CJ제일제당",
     "flavor": "맛밤",
     "bcaa": "—",
     "proteinSource": "혼합",
@@ -637,7 +637,7 @@
       "다이어트 B",
       "퍼포먼스 B"
     ],
-    "manufacturer": "얼티브",
+    "manufacturer": "CJ제일제당",
     "flavor": "햇반",
     "bcaa": "—",
     "proteinSource": "혼합",
@@ -676,7 +676,7 @@
       "다이어트 B",
       "퍼포먼스 B"
     ],
-    "manufacturer": "얼티브",
+    "manufacturer": "CJ제일제당",
     "flavor": "피스타치오맛",
     "bcaa": "—",
     "proteinSource": "혼합",
@@ -715,7 +715,7 @@
       "다이어트 B",
       "퍼포먼스 C"
     ],
-    "manufacturer": "얼티브",
+    "manufacturer": "CJ제일제당",
     "flavor": "로얄밀크티향",
     "bcaa": "—",
     "proteinSource": "혼합",
@@ -1127,7 +1127,7 @@
     "capacity": "500mL",
     "variant": "일반",
     "tags": [
-      "팩"
+      "PET"
     ],
     "proteinPerServing": 25,
     "calories": 100,
@@ -1166,7 +1166,7 @@
     "capacity": "500mL",
     "variant": "일반",
     "tags": [
-      "팩"
+      "PET"
     ],
     "proteinPerServing": 25,
     "calories": 100,
@@ -1205,7 +1205,7 @@
     "capacity": "500mL",
     "variant": "일반",
     "tags": [
-      "팩"
+      "PET"
     ],
     "proteinPerServing": 25,
     "calories": 100,
@@ -1315,7 +1315,7 @@
   },
   {
     "slug": "oatmont-protein-savory-250",
-    "brand": "오트몬트",
+    "brand": "오트몬드",
     "name": "프로틴 (고소한맛)",
     "capacity": "250mL",
     "variant": "일반",
@@ -1353,7 +1353,7 @@
   },
   {
     "slug": "oatmont-protein-choco-250",
-    "brand": "오트몬트",
+    "brand": "오트몬드",
     "name": "프로틴 (초콜릿)",
     "capacity": "250mL",
     "variant": "일반",
@@ -1391,7 +1391,7 @@
   },
   {
     "slug": "oatmont-protein-cookiecream-250",
-    "brand": "오트몬트",
+    "brand": "오트몬드",
     "name": "프로틴 (쿠키앤크림)",
     "capacity": "250mL",
     "variant": "일반",
