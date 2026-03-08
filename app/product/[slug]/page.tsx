@@ -7,6 +7,7 @@ import NutritionDetailSection from "../../components/NutritionDetailSection";
 import ProductReviewSection from "../../components/ProductReviewSection";
 import BackButton from "../../components/BackButton";
 import CompareButton from "../../components/CompareButton";
+import AdminQuickEdit from "../../components/AdminQuickEdit";
 import { getNutritionDetail, getProductBySlug } from "../../data/products";
 import { getProductImageUrl } from "../../lib/productImage";
 import { getCoupangSearchUrl, getNaverSearchUrl, getOfficialMallUrl } from "../../lib/purchaseLinks";
@@ -52,7 +53,10 @@ export default async function ProductDetailPage({ params }: PageProps) {
       {/* 히어로 영역: 메뉴 바로 아래 ~ 제품 이미지 끝까지 #EFEDE6 */}
       <section className="w-full border-t border-b bg-[#EFEDE6]" style={{ borderColor: "var(--hero-border)" }}>
         <div className="mx-auto max-w-[1200px] px-4 py-6 md:px-6">
-            <BackButton />
+            <div className="flex items-center justify-between">
+              <BackButton />
+              <AdminQuickEdit slug={slug} />
+            </div>
 
             {/* 상단: 이미지 좌측, 브랜드·제품명·메타 우측(성분 박스 위). 좌·우 높이 일치 */}
             <div className="mt-6 flex flex-col gap-6 lg:flex-row lg:items-stretch lg:gap-8">
