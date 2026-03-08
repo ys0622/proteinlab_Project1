@@ -20,7 +20,7 @@
         "title": "시장 인사이트",
         "subtitle": "TRACK B · 시장인사이트",
         "description": "국내 RTD 단백질 음료 시장의 규모와 성장세, 주요 브랜드 동향, 소비자 선호 변화를 데이터 기반으로 분석합니다.",
-        "count": 3,
+        "count": 2,
         "href": "/guides/insights",
         "accentColor": "#4a6178",
         "accentBg": "#eaf0f6"
@@ -47,17 +47,23 @@
     "accentBg": "#e7f3ec",
     "articles": [
       {
+        "slug": "sources",
         "emoji": "🥛",
         "title": "단백질 급원 가이드",
         "description": "유청·카제인·식물성 단백질의 특성과 활용법",
+        "heroImage": "",
+        "content": "",
         "readTime": "7분 읽기",
         "tags": ["급원", "기초"],
         "href": "/guides/foundations/sources"
       },
       {
+        "slug": "myths",
         "emoji": "🧪",
         "title": "오해와 진실",
         "description": "단백질 섭취에 대한 대표적인 오해를 사실 기반으로 정리",
+        "heroImage": "",
+        "content": "",
         "readTime": "6분 읽기",
         "tags": ["팩트체크", "기초"],
         "href": "/guides/foundations/myths"
@@ -74,20 +80,26 @@
     "accentBg": "#eaf0f6",
     "articles": [
       {
+        "slug": "positioning",
         "emoji": "🧪",
         "title": "제품 포지셔닝 분석",
         "description": "단백질밀도/당류/칼로리 분포로 시장 포지션을 비교",
+        "heroImage": "",
+        "content": "",
         "readTime": "7분 읽기",
         "tags": ["데이터", "포지셔닝"],
-        "href": "/insights"
+        "href": "/guides/insights/positioning"
       },
       {
+        "slug": "history",
         "emoji": "📈",
         "title": "시장 히스토리",
         "description": "파우더에서 RTD까지 시장 변화 타임라인",
+        "heroImage": "",
+        "content": "",
         "readTime": "8분 읽기",
         "tags": ["시장", "히스토리"],
-        "href": "/insights/history"
+        "href": "/guides/insights/history"
       }
     ]
   },
@@ -100,17 +112,23 @@
     "accentBg": "#f5f0ea",
     "articles": [
       {
+        "slug": "intake",
         "emoji": "🥤",
         "title": "섭취량 계산 가이드",
         "description": "목표별 단백질 섭취량을 계산하고 제품으로 채우는 방법",
+        "heroImage": "",
+        "content": "",
         "readTime": "7분 읽기",
         "tags": ["실전", "섭취량"],
         "href": "/guides/practical/intake"
       },
       {
+        "slug": "timing",
         "emoji": "⏰",
         "title": "섭취 타이밍 가이드",
         "description": "운동 전·후, 취침 전 등 상황별 섭취 타이밍 전략",
+        "heroImage": "",
+        "content": "",
         "readTime": "6분 읽기",
         "tags": ["실전", "타이밍"],
         "href": "/guides/practical/timing"

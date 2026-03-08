@@ -42,3 +42,12 @@ next-env.d.ts
 
 # scraped/temp
 proteinlab_source.html
+
+# OpenNext
+.open-next
+
+# wrangler files
+.wrangler
+.dev.vars*
+!.dev.vars.example
+!.env.example

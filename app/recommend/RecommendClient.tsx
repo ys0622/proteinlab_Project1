@@ -75,15 +75,15 @@ const LOADING_STEPS = [
   "최적 조합 3개 선정",
 ];
 
-const gradeColors: Record<string, { bg: string; color: string }> = {
-  A: { bg: "#E7F3EC", color: "#1B7F5B" },
-  B: { bg: "#EAF2FF", color: "#4C7BD9" },
-  C: { bg: "#FFF1E6", color: "#F08A24" },
-  D: { bg: "#f3f3f3", color: "#999" },
+const gradeColors: Record<string, { bg: string; color: string; border: string }> = {
+  A: { bg: "#E7F3EC", color: "#1B7F5B", border: "#1B7F5B" },
+  B: { bg: "#EAF2FF", color: "#4C7BD9", border: "#4C7BD9" },
+  C: { bg: "#FFF1E6", color: "#F08A24", border: "#F08A24" },
+  D: { bg: "#f3f3f3", color: "#999", border: "#bbb" },
 };
 
 const gradeLabels: Record<string, string> = {
-  price: "밀도",
+  price: "단백질 밀도",
   diet: "다이어트",
   performance: "퍼포먼스",
 };
@@ -239,8 +239,16 @@ function ProductResultCard({ product }: { product: RecommendedProduct }) {
             const gc = gradeColors[grade] ?? gradeColors.D;
             return (
               <span key={key} style={{
-                background: gc.bg, color: gc.color,
-                fontSize: 11, fontWeight: 700, padding: "3px 8px", borderRadius: 20,
+                display: "inline-flex",
+                alignItems: "center",
+                height: "26px",
+                padding: "0 10px",
+                borderRadius: "999px",
+                background: gc.bg,
+                border: `1px solid ${gc.border}`,
+                color: gc.color,
+                fontSize: 12,
+                fontWeight: 600,
               }}>
                 {gradeLabels[key] ?? key} {grade}
               </span>

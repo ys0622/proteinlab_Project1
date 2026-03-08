@@ -19,10 +19,8 @@ export default function GuidesPage() {
   const [deleteConfirm, setDeleteConfirm] = useState<string | null>(null);
 
   const staticGuides = [
-    { href: "/guides", label: "가이드 목록 (정적)" },
-    { href: "/guides/foundations", label: "단백질 기초 (정적)" },
-    { href: "/guides/practical", label: "실전 활용 (정적)" },
-    { href: "/guides/insights", label: "인사이트 (정적)" },
+    { href: "/admin/guides/static", label: "✏️ 가이드 콘텐츠 편집 (CMS)", isEdit: true },
+    { href: "/guides", label: "가이드 목록 미리보기 →", isEdit: false },
   ];
 
   useEffect(() => {
@@ -63,17 +61,21 @@ export default function GuidesPage() {
       {/* Static guides notice */}
       <div className="mb-6 rounded-xl border border-[var(--border)] bg-[var(--background-card)] p-4">
         <h2 className="text-sm font-semibold text-[var(--foreground)] mb-2">
-          정적 가이드 페이지 (코드 편집 필요)
+          가이드 콘텐츠 관리
         </h2>
         <div className="flex flex-wrap gap-2">
           {staticGuides.map((g) => (
             <Link
               key={g.href}
               href={g.href}
-              target="_blank"
-              className="rounded-lg border border-[var(--border)] bg-[var(--beige-warm)] px-3 py-1.5 text-xs text-[var(--foreground)] hover:bg-[var(--accent-light)]"
+              target={g.isEdit ? undefined : "_blank"}
+              className={`rounded-lg border px-3 py-1.5 text-xs font-medium hover:bg-[var(--accent-light)] ${
+                g.isEdit
+                  ? "border-[var(--accent)] bg-[var(--accent-light)] text-[var(--accent)]"
+                  : "border-[var(--border)] bg-[var(--beige-warm)] text-[var(--foreground)]"
+              }`}
             >
-              {g.label} →
+              {g.label}
             </Link>
           ))}
         </div>

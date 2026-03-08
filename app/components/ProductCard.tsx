@@ -123,7 +123,7 @@ export default function ProductCard({
           if (letter === "C") return { bg: "#FFF1E6", border: "#F08A24", color: "#F08A24" };
           return { bg: "#f3f3f3", border: "#bbb", color: "#999" };
         };
-        const displayLabel = (tag: string) => (tag.startsWith("밀도 ") ? `단백질 밀도 ${tag.slice(4)}` : tag);
+        const displayLabel = (tag: string) => (tag.startsWith("밀도 ") ? `단백질 밀도 ${tag.slice(3)}` : tag);
         const lactoFreeStyle = { bg: "#F5F0E8", border: "#D4D4D4", color: "#6B6B6B" };
         return (
           <div className="mt-1.5 flex flex-wrap gap-1.5" style={{ gap: "6px" }}>

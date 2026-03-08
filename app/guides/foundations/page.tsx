@@ -1,30 +1,14 @@
 import Link from "next/link";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
+import guidesStaticData from "../../data/guidesStaticData.json";
 
 export const metadata = {
   title: "기초 이해 가이드 | ProteinLab",
   description: "단백질의 기본 개념과 급원별 차이를 이해하는 기초 가이드",
 };
 
-const articles = [
-  {
-    emoji: "🥛",
-    title: "단백질 급원 가이드",
-    description: "유청·카제인·식물성 단백질의 특성과 활용법",
-    readTime: "7분 읽기",
-    tags: ["급원", "기초"],
-    href: "/guides/foundations/sources",
-  },
-  {
-    emoji: "🧪",
-    title: "오해와 진실",
-    description: "단백질 섭취에 대한 대표적인 오해를 사실 기반으로 정리",
-    readTime: "6분 읽기",
-    tags: ["팩트체크", "기초"],
-    href: "/guides/foundations/myths",
-  },
-];
+const { foundations } = guidesStaticData;
 
 export default function FoundationsPage() {
   return (
@@ -46,17 +30,17 @@ export default function FoundationsPage() {
             className="mt-2 text-2xl font-bold leading-tight text-[var(--foreground)] md:text-3xl"
             style={{ fontWeight: 700 }}
           >
-            🧬 기초 이해
+            {foundations.emoji} {foundations.title}
           </h1>
           <p className="mt-1 text-sm text-[var(--foreground-muted)]" style={{ fontWeight: 400 }}>
-            단백질의 기본 개념과 급원별 차이를 먼저 이해하면 제품 선택이 훨씬 쉬워집니다.
+            {foundations.description}
           </p>
         </div>
       </section>
 
       <main className="mx-auto max-w-[1200px] px-4 pb-12 md:px-6">
         <div className="mt-6 grid gap-4 sm:grid-cols-2">
-          {articles.map((article) => (
+          {foundations.articles.map((article) => (
             <Link
               key={article.href}
               href={article.href}
@@ -71,9 +55,9 @@ export default function FoundationsPage() {
               <div className="px-5 pt-5 pb-4">
                 <span
                   className="rounded-md px-2 py-0.5 text-[11px] font-semibold tracking-wide"
-                  style={{ background: "#e7f3ec", color: "#2d6a4f" }}
+                  style={{ background: foundations.accentBg, color: foundations.accentColor }}
                 >
-                  TRACK A
+                  {foundations.trackLabel}
                 </span>
                 <h2 className="mt-3 text-base font-bold text-[var(--foreground)]">
                   {article.emoji} {article.title}

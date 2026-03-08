@@ -2,7 +2,7 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import HeroSection from "../components/HeroSection";
 import ProductListWithFilters from "../components/ProductListWithFilters";
-import { mockBarProducts } from "../data/products";
+import { barProductsWithGrades } from "../data/products";
 
 export const metadata = {
   title: "단백질 바 비교 | ProteinLab",
@@ -16,7 +16,7 @@ export default function BarsPage() {
       <HeroSection />
 
       <main className="mx-auto max-w-[1200px] px-4 pt-0 pb-2 md:px-6 md:pb-3">
-        <ProductListWithFilters productType="bar" products={mockBarProducts} />
+        <ProductListWithFilters productType="bar" products={barProductsWithGrades} />
       </main>
 
       <Footer />

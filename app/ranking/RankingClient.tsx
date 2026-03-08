@@ -39,7 +39,7 @@ const GRADE_COLORS: Record<string, { bg: string; color: string; border: string }
 };
 
 const GRADE_LABELS: Record<string, string> = {
-  "밀도": "밀도",
+  "밀도": "단백질 밀도",
   "다이어트": "다이어트",
   "퍼포먼스": "퍼포먼스",
 };
@@ -68,7 +68,7 @@ function RankingCard({
     return s.toFixed(2);
   };
 
-  const metricLabel = metric === "density" ? "밀도" : metric === "diet" ? "다이어트" : "퍼포먼스";
+  const metricLabel = metric === "density" ? "단백질 밀도" : metric === "diet" ? "다이어트" : "퍼포먼스";
 
   return (
     <div
@@ -144,12 +144,16 @@ function RankingCard({
               <span
                 key={tag}
                 style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  height: "26px",
+                  padding: "0 10px",
+                  borderRadius: "999px",
                   background: c.bg,
+                  border: `1px solid ${c.border}`,
                   color: c.color,
-                  fontSize: 11,
-                  fontWeight: 700,
-                  padding: "3px 8px",
-                  borderRadius: 20,
+                  fontSize: 12,
+                  fontWeight: 600,
                 }}
               >
                 {GRADE_LABELS[label] ?? label} {g}
