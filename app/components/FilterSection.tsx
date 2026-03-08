@@ -179,7 +179,7 @@ export default function FilterSection(props: FilterSectionProps) {
       <div className="md:hidden">
         <button type="button" onClick={() => setMobileFilterOpen(!mobileFilterOpen)} className="flex items-center gap-1 py-1 text-xs font-bold text-[#454545] hover:text-[var(--foreground)]" aria-expanded={mobileFilterOpen}>
           상세 필터
-          <span className={`inline-block transition-transform ${mobileFilterOpen ? "rotate-180" : ""}`}>펼치기 ▼</span>
+          <span className={`inline-block transition-transform duration-200 ${mobileFilterOpen ? "rotate-180" : ""}`}>▼</span>
         </button>
         {mobileFilterOpen && <div className="pt-1">{filterContent}</div>}
       </div>
