@@ -1,8 +1,10 @@
 "use client";
 
-import { useEffect, useState, use } from "react";
+import { useEffect, useState, use, useCallback } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
+import ClipboardPasteZone from "../../../components/ClipboardPasteZone";
 
 interface NutritionPerBottle {
   caloriesKcal?: number;
@@ -87,6 +89,9 @@ export default function ProductEditPage({
   const [saving, setSaving] = useState(false);
   const [saved, setSaved] = useState(false);
   const [error, setError] = useState("");
+  const [imgPreview, setImgPreview] = useState<string | null>(null);
+  const [imgUploading, setImgUploading] = useState(false);
+  const [imgMsg, setImgMsg] = useState("");
 
   useEffect(() => {
     fetch(`/api/admin/products/${slug}`)
@@ -117,6 +122,40 @@ export default function ProductEditPage({
       };
     });
   };
+
+  const handleImageFile = useCallback((file: File) => {
+    const reader = new FileReader();
+    reader.onload = (e) => setImgPreview(e.target?.result as string);
+    reader.readAsDataURL(file);
+    setImgMsg("");
+  }, []);
+
+  const handleImageUpload = useCallback(async () => {
+    if (!imgPreview || !product) return;
+    setImgUploading(true);
+    setImgMsg("");
+    try {
+      const res = await fetch(imgPreview);
+      const blob = await res.blob();
+      const ext = blob.type === "image/png" ? "png" : "jpg";
+      const file = new File([blob], `${slug}.${ext}`, { type: blob.type });
+      const formData = new FormData();
+      formData.append("file", file);
+      formData.append("slug", slug);
+      formData.append("productType", product.productType ?? "drink");
+      const uploadRes = await fetch("/api/admin/images/upload", { method: "POST", body: formData });
+      if (uploadRes.ok) {
+        setImgMsg("✅ 이미지 저장 완료");
+      } else {
+        const d = await uploadRes.json();
+        setImgMsg(`❌ ${d.error}`);
+      }
+    } catch {
+      setImgMsg("❌ 업로드 실패");
+    } finally {
+      setImgUploading(false);
+    }
+  }, [imgPreview, product, slug]);
 
   const handleSave = async () => {
     if (!product) return;
@@ -427,6 +466,58 @@ export default function ProductEditPage({
             className={`${inputCls} min-h-[80px] resize-y`}
             placeholder="내부 메모..."
           />
+        </section>
+
+        {/* F. 이미지 빠른 업로드 */}
+        <section className="rounded-xl border border-[var(--border)] bg-[var(--background-card)] p-5">
+          <div className="flex items-center justify-between mb-4">
+            <h2 className="text-sm font-semibold text-[var(--foreground)]">F. 이미지</h2>
+            <Link
+              href={`/admin/images?slug=${slug}&type=${product.productType ?? "drink"}`}
+              className="text-xs text-[var(--accent)] hover:underline"
+            >
+              이미지 작업 페이지에서 편집 →
+            </Link>
+          </div>
+
+          <ClipboardPasteZone onFile={handleImageFile} hasImage={!!imgPreview} />
+
+          {imgPreview && (
+            <div className="mt-3 flex items-start gap-4">
+              <div
+                className="relative w-28 h-28 rounded-lg border border-[var(--border)] shrink-0 overflow-hidden"
+                style={{
+                  backgroundImage:
+                    "linear-gradient(45deg,#e0e0e0 25%,transparent 25%),linear-gradient(-45deg,#e0e0e0 25%,transparent 25%),linear-gradient(45deg,transparent 75%,#e0e0e0 75%),linear-gradient(-45deg,transparent 75%,#e0e0e0 75%)",
+                  backgroundSize: "12px 12px",
+                  backgroundPosition: "0 0,0 6px,6px -6px,-6px 0",
+                  backgroundColor: "#f0f0f0",
+                }}
+              >
+                <Image src={imgPreview} alt="미리보기" fill className="object-contain" unoptimized />
+              </div>
+              <div className="flex-1 space-y-2">
+                <button
+                  onClick={handleImageUpload}
+                  disabled={imgUploading}
+                  className="rounded-full bg-[var(--accent)] px-4 py-2 text-sm font-medium text-white hover:bg-[var(--accent-hover)] disabled:opacity-60"
+                >
+                  {imgUploading ? "저장 중..." : "이미지 저장"}
+                </button>
+                <button
+                  onClick={() => { setImgPreview(null); setImgMsg(""); }}
+                  className="block text-xs text-[var(--foreground-muted)] hover:text-red-500"
+                >
+                  취소
+                </button>
+                {imgMsg && (
+                  <p className={`text-xs ${imgMsg.startsWith("✅") ? "text-green-600" : "text-red-500"}`}>
+                    {imgMsg}
+                  </p>
+                )}
+              </div>
+            </div>
+          )}
         </section>
       </div>
 

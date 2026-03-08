@@ -4,6 +4,7 @@ import { useEffect, useState, useCallback, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import Image from "next/image";
 import dynamic from "next/dynamic";
+import ClipboardPasteZone from "../components/ClipboardPasteZone";
 
 const ImageEditor = dynamic(() => import("../components/ImageEditor"), { ssr: false });
 
@@ -74,14 +75,43 @@ function ImageWorkflowContent() {
     setMode("upload");
   };
 
-  const handleFileInput = (file: File) => {
+  const handleFileInput = useCallback((file: File) => {
     const reader = new FileReader();
     reader.onload = (e) => {
       const url = e.target?.result as string;
       setImageState({ original: url, processed: null, preview: url });
     };
     reader.readAsDataURL(file);
-  };
+  }, []);
+
+  // 전역 Ctrl+V 붙여넣기: 제품이 선택된 상태이고 텍스트 입력창에 포커스가 없을 때만 처리
+  useEffect(() => {
+    const handler = (e: ClipboardEvent) => {
+      if (!selectedSlug) return;
+
+      const active = document.activeElement;
+      const isTextInput =
+        active instanceof HTMLInputElement ||
+        active instanceof HTMLTextAreaElement ||
+        (active instanceof HTMLElement && active.isContentEditable);
+      if (isTextInput) return;
+
+      const items = e.clipboardData?.items;
+      if (!items) return;
+
+      for (const item of Array.from(items)) {
+        if (item.type.startsWith("image/")) {
+          e.preventDefault();
+          const file = item.getAsFile();
+          if (file) handleFileInput(file);
+          return;
+        }
+      }
+    };
+
+    document.addEventListener("paste", handler);
+    return () => document.removeEventListener("paste", handler);
+  }, [selectedSlug, handleFileInput]);
 
   const handleUrlLoad = async () => {
     if (!urlInput) return;
@@ -91,13 +121,27 @@ function ImageWorkflowContent() {
   const handleRemoveBg = async () => {
     if (!imageState.original) return;
     setRemovingBg(true);
+    setUploadMsg("");
     try {
-      // Stub: remove.bg API integration point
-      // To enable: POST to /api/admin/images/remove-bg with { imageUrl or base64 }
-      await new Promise((r) => setTimeout(r, 1200));
-      setUploadMsg(
-        "⚠️ 배경 제거 API가 연결되지 않았습니다. REMOVE_BG_API_KEY 환경변수를 설정하거나 수동 편집기를 사용하세요."
-      );
+      const res = await fetch("/api/admin/images/remove-bg", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ imageData: imageState.original }),
+      });
+      const data = await res.json();
+
+      if (res.ok && data.dataUrl) {
+        setImageState((prev) => ({
+          ...prev,
+          processed: data.dataUrl,
+          preview: data.dataUrl,
+        }));
+        setUploadMsg("✅ 배경이 제거되었습니다.");
+      } else {
+        setUploadMsg(data.error ?? "배경 제거에 실패했습니다.");
+      }
+    } catch {
+      setUploadMsg("❌ 배경 제거 요청 중 오류가 발생했습니다.");
     } finally {
       setRemovingBg(false);
     }
@@ -263,37 +307,20 @@ function ImageWorkflowContent() {
 
               {/* Image Input */}
               <div className="rounded-xl border border-[var(--border)] bg-[var(--background-card)] p-4 space-y-3">
-                <h3 className="text-sm font-semibold text-[var(--foreground)]">1. 이미지 입력</h3>
-
-                {/* File upload */}
-                <label className="flex items-center gap-2 cursor-pointer">
-                  <div className="rounded-lg border border-[var(--border)] bg-[var(--beige-warm)] px-4 py-2 text-sm hover:bg-[var(--accent-light)] transition-colors">
-                    파일 선택
-                  </div>
-                  <span className="text-xs text-[var(--foreground-muted)]">PNG, JPG, WEBP</span>
-                  <input
-                    type="file"
-                    accept="image/png,image/jpeg,image/webp"
-                    className="hidden"
-                    onChange={(e) => {
-                      const f = e.target.files?.[0];
-                      if (f) handleFileInput(f);
-                    }}
-                  />
-                </label>
-
-                {/* Drag & drop */}
-                <div
-                  onDragOver={(e) => e.preventDefault()}
-                  onDrop={(e) => {
-                    e.preventDefault();
-                    const f = e.dataTransfer.files[0];
-                    if (f) handleFileInput(f);
-                  }}
-                  className="flex items-center justify-center h-16 rounded-lg border border-dashed border-[var(--border)] text-xs text-[var(--foreground-muted)]"
-                >
-                  또는 이미지를 여기로 드래그
+                <div className="flex items-center justify-between">
+                  <h3 className="text-sm font-semibold text-[var(--foreground)]">1. 이미지 입력</h3>
+                  <span className="text-xs text-[var(--foreground-muted)]">
+                    페이지 어디서나{" "}
+                    <kbd className="rounded bg-[var(--beige-warm)] border border-[var(--border)] px-1 py-0.5 text-[10px] font-mono">Ctrl+V</kbd>
+                    {" "}가능
+                  </span>
                 </div>
+
+                {/* 통합 붙여넣기 존 */}
+                <ClipboardPasteZone
+                  onFile={handleFileInput}
+                  hasImage={!!imageState.preview}
+                />
 
                 {/* URL input */}
                 <div className="flex gap-2">
@@ -307,7 +334,7 @@ function ImageWorkflowContent() {
                     onClick={handleUrlLoad}
                     className="rounded-lg bg-[var(--beige-warm)] border border-[var(--border)] px-3 py-2 text-sm hover:bg-[var(--accent-light)]"
                   >
-                    불러오기
+                    URL 불러오기
                   </button>
                 </div>
               </div>

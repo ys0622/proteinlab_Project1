@@ -1,8 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
+import ClipboardPasteZone from "../../components/ClipboardPasteZone";
 
 const inputCls =
   "w-full rounded-lg border border-[var(--border)] bg-[var(--background)] px-3 py-2 text-sm text-[var(--foreground)] focus:outline-none focus:ring-2 focus:ring-[var(--accent)]";
@@ -30,6 +32,13 @@ export default function NewProductPage() {
   const router = useRouter();
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState("");
+  const [imgPreview, setImgPreview] = useState<string | null>(null);
+
+  const handleImageFile = useCallback((file: File) => {
+    const reader = new FileReader();
+    reader.onload = (e) => setImgPreview(e.target?.result as string);
+    reader.readAsDataURL(file);
+  }, []);
 
   const [form, setForm] = useState({
     slug: "",
@@ -140,6 +149,22 @@ export default function NewProductPage() {
       });
 
       if (res.ok) {
+        // 이미지가 붙여넣어진 경우 자동 업로드
+        if (imgPreview) {
+          try {
+            const imgRes = await fetch(imgPreview);
+            const blob = await imgRes.blob();
+            const ext = blob.type === "image/png" ? "png" : "jpg";
+            const imgFile = new File([blob], `${form.slug}.${ext}`, { type: blob.type });
+            const formData = new FormData();
+            formData.append("file", imgFile);
+            formData.append("slug", form.slug);
+            formData.append("productType", form.productType);
+            await fetch("/api/admin/images/upload", { method: "POST", body: formData });
+          } catch {
+            // 이미지 업로드 실패해도 제품 등록은 성공으로 처리
+          }
+        }
         router.push(`/admin/products/${form.slug}/edit`);
       } else {
         const d = await res.json();
@@ -405,6 +430,36 @@ export default function NewProductPage() {
               />
             </Field>
           </div>
+        </section>
+
+        {/* D. 이미지 미리 붙여넣기 */}
+        <section className="rounded-xl border border-[var(--border)] bg-[var(--background-card)] p-5">
+          <div className="flex items-center justify-between mb-3">
+            <h2 className="text-sm font-semibold text-[var(--foreground)]">D. 이미지 (선택)</h2>
+            <span className="text-xs text-[var(--foreground-muted)]">제품 저장 후 이미지 작업 페이지에서도 업로드 가능</span>
+          </div>
+          <ClipboardPasteZone onFile={handleImageFile} hasImage={!!imgPreview} />
+          {imgPreview && (
+            <div className="mt-3 flex items-center gap-3">
+              <div
+                className="relative w-20 h-20 rounded-lg border border-[var(--border)] shrink-0 overflow-hidden"
+                style={{
+                  backgroundImage:
+                    "linear-gradient(45deg,#e0e0e0 25%,transparent 25%),linear-gradient(-45deg,#e0e0e0 25%,transparent 25%),linear-gradient(45deg,transparent 75%,#e0e0e0 75%),linear-gradient(-45deg,transparent 75%,#e0e0e0 75%)",
+                  backgroundSize: "12px 12px",
+                  backgroundPosition: "0 0,0 6px,6px -6px,-6px 0",
+                  backgroundColor: "#f0f0f0",
+                }}
+              >
+                <Image src={imgPreview} alt="미리보기" fill className="object-contain" unoptimized />
+              </div>
+              <div>
+                <p className="text-xs text-green-600 font-medium">이미지 준비됨</p>
+                <p className="text-xs text-[var(--foreground-muted)] mt-0.5">제품 저장 후 자동으로 업로드됩니다.</p>
+                <button onClick={() => setImgPreview(null)} className="text-xs text-[var(--foreground-muted)] hover:text-red-500 mt-1">취소</button>
+              </div>
+            </div>
+          )}
         </section>
 
         <div className="flex justify-end gap-3">
