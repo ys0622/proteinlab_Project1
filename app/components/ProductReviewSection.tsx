@@ -73,20 +73,19 @@ export default function ProductReviewSection() {
         ))}
       </div>
 
-      <div className="mt-3">
+      <div className="mt-3 flex items-start gap-2">
         <textarea
           value={comment}
           onChange={(e) => setComment(e.target.value)}
-          placeholder="익명으로 의견을 남겨보세요 (버튼 없이 바로 입력 가능)"
+          placeholder="익명으로 의견을 남겨보세요"
           rows={2}
-          className="w-full resize-none rounded-lg border border-[var(--border)] bg-[var(--background-card)] px-3 py-2 text-sm placeholder:text-[var(--foreground-muted)] focus:border-[var(--accent)] focus:outline-none focus:ring-1 focus:ring-[var(--accent)]"
+          className="flex-1 resize-none rounded-lg border border-[var(--border)] bg-[var(--background-card)] px-3 py-2 text-sm placeholder:text-[var(--foreground-muted)] focus:border-[var(--accent)] focus:outline-none focus:ring-1 focus:ring-[var(--accent)]"
           aria-label="익명 평가 입력"
         />
-        <p className="mt-1 text-xs text-[var(--foreground-muted)]">익명으로 자유롭게 남겨주세요.</p>
         <button
           type="button"
           onClick={handleSubmit}
-          className="mt-2 rounded-lg bg-[var(--accent)] px-4 py-2 text-sm font-medium text-white hover:opacity-90"
+          className="flex-shrink-0 self-stretch rounded-lg bg-[var(--accent)] px-4 text-sm font-medium text-white hover:opacity-90"
         >
           등록
         </button>

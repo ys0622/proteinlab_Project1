@@ -5,8 +5,11 @@ import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import NutritionDetailSection from "../../components/NutritionDetailSection";
 import ProductReviewSection from "../../components/ProductReviewSection";
+import BackButton from "../../components/BackButton";
+import CompareButton from "../../components/CompareButton";
 import { getNutritionDetail, getProductBySlug } from "../../data/products";
 import { getProductImageUrl } from "../../lib/productImage";
+import { getCoupangSearchUrl, getNaverSearchUrl, getOfficialMallUrl } from "../../lib/purchaseLinks";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -39,18 +42,17 @@ export default async function ProductDetailPage({ params }: PageProps) {
   ].filter(Boolean);
   const metaLine = metaParts.join(" ");
 
+  const coupangHref = getCoupangSearchUrl(product.brand, product.name);
+  const naverHref = getNaverSearchUrl(product.brand, product.name);
+  const officialMallHref = getOfficialMallUrl(product.brand);
+
   return (
     <div className="min-h-screen bg-white">
       <Header />
       {/* 히어로 영역: 메뉴 바로 아래 ~ 제품 이미지 끝까지 #EFEDE6 */}
       <section className="w-full border-t border-b bg-[#EFEDE6]" style={{ borderColor: "var(--hero-border)" }}>
         <div className="mx-auto max-w-[1200px] px-4 py-6 md:px-6">
-            <Link
-              href={isBar ? "/bars" : "/"}
-              className="inline-flex items-center gap-1 text-sm text-[var(--foreground-muted)] hover:text-[var(--accent)]"
-            >
-              ← 뒤로
-            </Link>
+            <BackButton />
 
             {/* 상단: 이미지 좌측, 브랜드·제품명·메타 우측(성분 박스 위). 좌·우 높이 일치 */}
             <div className="mt-6 flex flex-col gap-6 lg:flex-row lg:items-stretch lg:gap-8">
@@ -182,11 +184,62 @@ export default async function ProductDetailPage({ params }: PageProps) {
           <ProductReviewSection />
         </div>
 
-        {/* 비교에 추가 */}
-        <div className="mt-6 flex flex-wrap gap-3">
-          <button type="button" className="rounded-full border border-[var(--accent)] bg-white px-5 py-2.5 text-sm font-medium text-[var(--accent)] transition-colors hover:bg-[var(--accent-light)]">
-            비교에 추가
-          </button>
+        {/* 구매 링크 */}
+        <div className="mt-6 rounded-xl border border-[#e8e6e3] bg-[#FFFDF8] p-4" style={{ borderRadius: "12px" }}>
+          <h2 className="text-base font-semibold text-[var(--foreground)] mb-3">구매 링크</h2>
+          <div className="flex flex-wrap items-center gap-2">
+            <a
+              href={coupangHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex h-9 items-center gap-1.5 rounded-full border border-[#e2e2e2] bg-white pl-3 pr-4 text-sm font-medium text-[var(--foreground)] transition-colors hover:border-[var(--accent)] hover:bg-[var(--accent-light)] hover:text-[var(--accent)]"
+            >
+              <span className="flex h-4 w-4 shrink-0 items-center justify-center rounded bg-[#ff5722] text-white" aria-hidden>
+                <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 00-2.91-.09z" /><path d="M12 15l-3-3a22 22 0 012-3.95A12.88 12.88 0 0122 2c0 2.72-.78 7.5-6 11a22 22 0 01-3.95 2z" /><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0" /><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5" /></svg>
+              </span>
+              쿠팡
+            </a>
+            <a
+              href={naverHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex h-9 items-center gap-1.5 rounded-full border border-[#e2e2e2] bg-white pl-3 pr-4 text-sm font-medium text-[var(--foreground)] transition-colors hover:border-[var(--accent)] hover:bg-[var(--accent-light)] hover:text-[var(--accent)]"
+            >
+              <span className="flex h-4 w-4 shrink-0 items-center justify-center rounded bg-[#03c75a] text-white" aria-hidden>
+                <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="9" cy="21" r="1" /><circle cx="20" cy="21" r="1" /><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6" /></svg>
+              </span>
+              네이버
+            </a>
+            {officialMallHref ? (
+              <a
+                href={officialMallHref}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex h-9 items-center gap-1.5 rounded-full border border-[#e2e2e2] bg-white pl-3 pr-4 text-sm font-medium text-[var(--foreground)] transition-colors hover:border-[var(--accent)] hover:bg-[var(--accent-light)] hover:text-[var(--accent)]"
+              >
+                <span className="flex h-4 w-4 shrink-0 items-center justify-center rounded bg-[#5c5c5c] text-white" aria-hidden>
+                  <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" /><polyline points="9 22 9 12 15 12 15 22" /></svg>
+                </span>
+                공식몰
+              </a>
+            ) : (
+              <span
+                className="inline-flex h-9 cursor-not-allowed items-center gap-1.5 rounded-full border border-[#e8e8e8] bg-[#f9f9f9] pl-3 pr-4 text-sm font-medium"
+                style={{ color: "#bbb" }}
+                title="공식몰 정보 없음"
+              >
+                <span className="flex h-4 w-4 shrink-0 items-center justify-center rounded bg-[#ddd] text-white" aria-hidden>
+                  <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" /><polyline points="9 22 9 12 15 12 15 22" /></svg>
+                </span>
+                공식몰
+              </span>
+            )}
+          </div>
+        </div>
+
+        {/* 비교에 추가 / 제품 목록으로 */}
+        <div className="mt-4 flex flex-wrap gap-3">
+          <CompareButton slug={slug} detailHref={`/product/${slug}`} />
           <Link
             href={isBar ? "/bars" : "/"}
             className="rounded-full border border-[var(--border)] bg-white px-5 py-2.5 text-sm font-medium text-[var(--foreground)] transition-colors hover:bg-[var(--accent-light)]"
