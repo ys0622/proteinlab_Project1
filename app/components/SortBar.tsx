@@ -6,7 +6,6 @@ const options = [
   { value: "sugar_asc", label: "당류 적은순" },
   { value: "protein_desc", label: "단백질 많은순" },
   { value: "density", label: "단백질 밀도순" },
-  { value: "price", label: "가격효율 높은순" },
   { value: "volume_desc", label: "용량 큰순" },
   { value: "volume_asc", label: "용량 작은순" },
   { value: "sugar_desc", label: "당류 많은순" },
