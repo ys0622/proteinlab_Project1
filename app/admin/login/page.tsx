@@ -26,7 +26,14 @@ export default function AdminLoginPage() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ password }),
       });
-      const data = await res.json();
+      const text = await res.text();
+      let data: { error?: string; ok?: boolean } = {};
+      try {
+        data = JSON.parse(text);
+      } catch {
+        setError(`서버 오류 (${res.status}): 응답을 확인할 수 없습니다.`);
+        return;
+      }
 
       if (res.ok) {
         router.push("/admin");
@@ -34,7 +41,7 @@ export default function AdminLoginPage() {
       } else {
         setError(data.error ?? "로그인에 실패했습니다.");
       }
-    } catch {
+    } catch (err) {
       setError("서버에 연결할 수 없습니다.");
     } finally {
       setLoading(false);
