@@ -1,20 +1,14 @@
 import Link from "next/link";
-import fs from "fs/promises";
-import path from "path";
+import drinksData from "@/app/data/drinkProductsData.json";
+import barsData from "@/app/data/barProductsData.json";
+import slugToImageData from "@/app/data/slugToImage.json";
+import slugToBarImageData from "@/app/data/slugToBarImage.json";
 
-async function getDashboardStats() {
-  const [drinksRaw, barsRaw, slugToImageRaw, slugToBarImageRaw] =
-    await Promise.all([
-      fs.readFile(path.join(process.cwd(), "app/data/drinkProductsData.json"), "utf8"),
-      fs.readFile(path.join(process.cwd(), "app/data/barProductsData.json"), "utf8"),
-      fs.readFile(path.join(process.cwd(), "app/data/slugToImage.json"), "utf8"),
-      fs.readFile(path.join(process.cwd(), "app/data/slugToBarImage.json"), "utf8"),
-    ]);
-
-  const drinks: Record<string, unknown>[] = JSON.parse(drinksRaw);
-  const bars: Record<string, unknown>[] = JSON.parse(barsRaw);
-  const slugToImage: Record<string, string> = JSON.parse(slugToImageRaw);
-  const slugToBarImage: Record<string, string> = JSON.parse(slugToBarImageRaw);
+function getDashboardStats() {
+  const drinks = drinksData as Record<string, unknown>[];
+  const bars = barsData as Record<string, unknown>[];
+  const slugToImage = slugToImageData as Record<string, string>;
+  const slugToBarImage = slugToBarImageData as Record<string, string>;
 
   const drinksNoImage = drinks.filter((p) => !slugToImage[p.slug as string]);
   const barsNoImage = bars.filter((p) => !slugToBarImage[p.slug as string]);
@@ -43,7 +37,7 @@ async function getDashboardStats() {
 }
 
 export default async function AdminDashboard() {
-  const stats = await getDashboardStats();
+  const stats = getDashboardStats();
 
   const statCards = [
     {

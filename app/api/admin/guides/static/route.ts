@@ -1,10 +1,7 @@
 import { NextResponse } from "next/server";
 import { cookies } from "next/headers";
-import fs from "fs/promises";
-import path from "path";
 import { verifySessionToken } from "@/app/lib/session";
-
-const DATA_FILE = path.join(process.cwd(), "app/data/guidesStaticData.json");
+import guidesStaticData from "@/app/data/guidesStaticData.json";
 
 async function verifyAdmin(): Promise<boolean> {
   const cookieStore = await cookies();
@@ -17,15 +14,15 @@ export async function GET() {
   if (!(await verifyAdmin())) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
-  const raw = await fs.readFile(DATA_FILE, "utf8");
-  return NextResponse.json(JSON.parse(raw));
+  return NextResponse.json(guidesStaticData);
 }
 
-export async function PUT(request: Request) {
+export async function PUT() {
   if (!(await verifyAdmin())) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
-  const body = await request.json();
-  await fs.writeFile(DATA_FILE, JSON.stringify(body, null, 2), "utf8");
-  return NextResponse.json({ ok: true });
+  return NextResponse.json(
+    { error: "파일 쓰기는 Cloudflare Workers에서 지원되지 않습니다. 로컬 서버를 사용하세요." },
+    { status: 501 }
+  );
 }

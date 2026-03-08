@@ -1,13 +1,10 @@
 import { NextResponse } from "next/server";
 import { cookies } from "next/headers";
-import fs from "fs/promises";
-import path from "path";
 import { verifySessionToken } from "@/app/lib/session";
-
-const DRINK_FILE = path.join(process.cwd(), "app/data/drinkProductsData.json");
-const BAR_FILE = path.join(process.cwd(), "app/data/barProductsData.json");
-const SLUG_TO_IMAGE = path.join(process.cwd(), "app/data/slugToImage.json");
-const SLUG_TO_BAR_IMAGE = path.join(process.cwd(), "app/data/slugToBarImage.json");
+import drinksData from "@/app/data/drinkProductsData.json";
+import barsData from "@/app/data/barProductsData.json";
+import slugToImageData from "@/app/data/slugToImage.json";
+import slugToBarImageData from "@/app/data/slugToBarImage.json";
 
 async function verifyAdmin(): Promise<boolean> {
   const cookieStore = await cookies();
@@ -21,24 +18,15 @@ export async function GET() {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
-  const [drinksRaw, barsRaw, slugToImage, slugToBarImage] = await Promise.all([
-    fs.readFile(DRINK_FILE, "utf8"),
-    fs.readFile(BAR_FILE, "utf8"),
-    fs.readFile(SLUG_TO_IMAGE, "utf8"),
-    fs.readFile(SLUG_TO_BAR_IMAGE, "utf8"),
-  ]);
+  const imageMap = slugToImageData as Record<string, string>;
+  const barImageMap = slugToBarImageData as Record<string, string>;
 
-  const drinks = JSON.parse(drinksRaw);
-  const bars = JSON.parse(barsRaw);
-  const imageMap: Record<string, string> = JSON.parse(slugToImage);
-  const barImageMap: Record<string, string> = JSON.parse(slugToBarImage);
-
-  const drinksWithStatus = drinks.map((p: Record<string, unknown>) => ({
+  const drinksWithStatus = (drinksData as Record<string, unknown>[]).map((p) => ({
     ...p,
     imageStatus: imageMap[p.slug as string] ? "card-ready" : "no-image",
   }));
 
-  const barsWithStatus = bars.map((p: Record<string, unknown>) => ({
+  const barsWithStatus = (barsData as Record<string, unknown>[]).map((p) => ({
     ...p,
     imageStatus: barImageMap[p.slug as string] ? "card-ready" : "no-image",
   }));
@@ -46,27 +34,12 @@ export async function GET() {
   return NextResponse.json({ drinks: drinksWithStatus, bars: barsWithStatus });
 }
 
-export async function POST(request: Request) {
+export async function POST() {
   if (!(await verifyAdmin())) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
-
-  const product = await request.json();
-  const { productType, slug } = product;
-
-  if (!slug || !productType) {
-    return NextResponse.json({ error: "slug and productType are required" }, { status: 400 });
-  }
-
-  const file = productType === "bar" ? BAR_FILE : DRINK_FILE;
-  const existing = JSON.parse(await fs.readFile(file, "utf8"));
-
-  if (existing.find((p: Record<string, unknown>) => p.slug === slug)) {
-    return NextResponse.json({ error: "slug이 이미 존재합니다." }, { status: 409 });
-  }
-
-  existing.push(product);
-  await fs.writeFile(file, JSON.stringify(existing, null, 2), "utf8");
-
-  return NextResponse.json({ ok: true, product });
+  return NextResponse.json(
+    { error: "파일 쓰기는 Cloudflare Workers에서 지원되지 않습니다. 로컬 서버를 사용하세요." },
+    { status: 501 }
+  );
 }
