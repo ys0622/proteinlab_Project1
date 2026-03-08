@@ -1,13 +1,21 @@
 import { NextResponse } from "next/server";
-import crypto from "crypto";
 
-function createSessionToken(): string {
+async function createSessionToken(): Promise<string> {
   const timestamp = Date.now().toString();
   const secret = process.env.SESSION_SECRET ?? "proteinlab-session-secret-change-me";
-  const hmac = crypto
-    .createHmac("sha256", secret)
-    .update(timestamp)
-    .digest("hex");
+  const encoder = new TextEncoder();
+  const keyData = encoder.encode(secret);
+  const key = await crypto.subtle.importKey(
+    "raw",
+    keyData,
+    { name: "HMAC", hash: "SHA-256" },
+    false,
+    ["sign"]
+  );
+  const signature = await crypto.subtle.sign("HMAC", key, encoder.encode(timestamp));
+  const hmac = Array.from(new Uint8Array(signature))
+    .map((b) => b.toString(16).padStart(2, "0"))
+    .join("");
   return `${timestamp}.${hmac}`;
 }
 
@@ -33,7 +41,7 @@ export async function POST(request: Request) {
       );
     }
 
-    const token = createSessionToken();
+    const token = await createSessionToken();
     const response = NextResponse.json({ ok: true });
     response.cookies.set("proteinlab_session", token, {
       httpOnly: true,
@@ -43,7 +51,11 @@ export async function POST(request: Request) {
       path: "/",
     });
     return response;
-  } catch {
-    return NextResponse.json({ error: "요청 처리 중 오류가 발생했습니다." }, { status: 400 });
+  } catch (err) {
+    console.error("[admin/login]", err);
+    return NextResponse.json(
+      { error: "요청 처리 중 오류가 발생했습니다." },
+      { status: 500 }
+    );
   }
 }
