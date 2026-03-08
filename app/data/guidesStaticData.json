@@ -1,0 +1,120 @@
+{
+  "mainPage": {
+    "title": "단백질 가이드",
+    "description": "단백질 섭취의 기초부터 시장 흐름, 실전 활용까지 한 번에 정리한 가이드입니다. 트랙별로 흐름을 따라 필요한 내용을 빠르게 확인해보세요.",
+    "tracks": [
+      {
+        "id": "foundations",
+        "emoji": "🧬",
+        "title": "기초 이해",
+        "subtitle": "TRACK A · 기초이해",
+        "description": "단백질의 구조와 역할, 필수 아미노산, 흡수 원리, 근합성 메커니즘까지 — 과학적 배경 지식을 쉽게 풀어냅니다.",
+        "count": 2,
+        "href": "/guides/foundations",
+        "accentColor": "#2d6a4f",
+        "accentBg": "#e7f3ec"
+      },
+      {
+        "id": "insights",
+        "emoji": "📊",
+        "title": "시장 인사이트",
+        "subtitle": "TRACK B · 시장인사이트",
+        "description": "국내 RTD 단백질 음료 시장의 규모와 성장세, 주요 브랜드 동향, 소비자 선호 변화를 데이터 기반으로 분석합니다.",
+        "count": 3,
+        "href": "/guides/insights",
+        "accentColor": "#4a6178",
+        "accentBg": "#eaf0f6"
+      },
+      {
+        "id": "practical",
+        "emoji": "🎯",
+        "title": "실전 가이드",
+        "subtitle": "TRACK C · 실전가이드",
+        "description": "목적에 맞는 제품 선택법, 섭취 타이밍 전략, 식단 통합 방법 등 — 지금 바로 써먹을 수 있는 실용 가이드를 모았습니다.",
+        "count": 2,
+        "href": "/guides/practical",
+        "accentColor": "#7a5230",
+        "accentBg": "#f5f0ea"
+      }
+    ]
+  },
+  "foundations": {
+    "emoji": "🧬",
+    "title": "기초 이해",
+    "description": "단백질의 기본 개념과 급원별 차이를 먼저 이해하면 제품 선택이 훨씬 쉬워집니다.",
+    "trackLabel": "TRACK A",
+    "accentColor": "#2d6a4f",
+    "accentBg": "#e7f3ec",
+    "articles": [
+      {
+        "emoji": "🥛",
+        "title": "단백질 급원 가이드",
+        "description": "유청·카제인·식물성 단백질의 특성과 활용법",
+        "readTime": "7분 읽기",
+        "tags": ["급원", "기초"],
+        "href": "/guides/foundations/sources"
+      },
+      {
+        "emoji": "🧪",
+        "title": "오해와 진실",
+        "description": "단백질 섭취에 대한 대표적인 오해를 사실 기반으로 정리",
+        "readTime": "6분 읽기",
+        "tags": ["팩트체크", "기초"],
+        "href": "/guides/foundations/myths"
+      }
+    ]
+  },
+  "insights": {
+    "emoji": "📊",
+    "title": "시장 인사이트",
+    "description": "시장 데이터와 제품 포지셔닝을 기반으로 흐름을 읽고 선택 기준을 정리합니다.",
+    "note": "섭취량·타이밍·핫딜 등 실행형 콘텐츠는 실전 가이드에서 확인하세요.",
+    "trackLabel": "TRACK B",
+    "accentColor": "#4a6178",
+    "accentBg": "#eaf0f6",
+    "articles": [
+      {
+        "emoji": "🧪",
+        "title": "제품 포지셔닝 분석",
+        "description": "단백질밀도/당류/칼로리 분포로 시장 포지션을 비교",
+        "readTime": "7분 읽기",
+        "tags": ["데이터", "포지셔닝"],
+        "href": "/insights"
+      },
+      {
+        "emoji": "📈",
+        "title": "시장 히스토리",
+        "description": "파우더에서 RTD까지 시장 변화 타임라인",
+        "readTime": "8분 읽기",
+        "tags": ["시장", "히스토리"],
+        "href": "/insights/history"
+      }
+    ]
+  },
+  "practical": {
+    "emoji": "🎯",
+    "title": "실전 가이드",
+    "description": "지금 바로 적용 가능한 섭취 전략과 루틴 설계를 단계별로 정리했습니다.",
+    "trackLabel": "TRACK C",
+    "accentColor": "#7a5230",
+    "accentBg": "#f5f0ea",
+    "articles": [
+      {
+        "emoji": "🥤",
+        "title": "섭취량 계산 가이드",
+        "description": "목표별 단백질 섭취량을 계산하고 제품으로 채우는 방법",
+        "readTime": "7분 읽기",
+        "tags": ["실전", "섭취량"],
+        "href": "/guides/practical/intake"
+      },
+      {
+        "emoji": "⏰",
+        "title": "섭취 타이밍 가이드",
+        "description": "운동 전·후, 취침 전 등 상황별 섭취 타이밍 전략",
+        "readTime": "6분 읽기",
+        "tags": ["실전", "타이밍"],
+        "href": "/guides/practical/timing"
+      }
+    ]
+  }
+}

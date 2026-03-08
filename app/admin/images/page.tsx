@@ -14,6 +14,30 @@ interface Product {
   brand: string;
   productType?: string;
   imageStatus?: string;
+  capacity?: string;
+  manufacturer?: string;
+  flavor?: string;
+  variant?: string;
+  proteinPerServing?: number;
+  calories?: number;
+  sugar?: number;
+  density?: string;
+  fat?: number;
+  sodium?: number;
+  bcaa?: string;
+  proteinSource?: string;
+  calorieDensity?: string;
+  drinkType?: string;
+  nutritionPerBottle?: {
+    caloriesKcal?: number;
+    proteinG?: number;
+    carbsG?: number;
+    sugarsG?: number;
+    fatG?: number;
+    satFatG?: number;
+    sodiumMg?: number;
+    bcaaMg?: number;
+  };
 }
 
 interface ImageState {
@@ -151,6 +175,37 @@ function ImageWorkflowContent() {
     setImageState((prev) => ({ ...prev, processed: dataUrl, preview: dataUrl }));
     setShowEditor(false);
   };
+
+  const handleRotate = useCallback((degrees: 90 | 180) => {
+    const src = imageState.preview ?? imageState.original;
+    if (!src) return;
+
+    const img = new Image();
+    img.crossOrigin = "anonymous";
+    img.onload = () => {
+      const canvas = document.createElement("canvas");
+      const ctx = canvas.getContext("2d");
+      if (!ctx) return;
+
+      if (degrees === 180) {
+        canvas.width = img.width;
+        canvas.height = img.height;
+        ctx.translate(canvas.width, canvas.height);
+        ctx.rotate((degrees * Math.PI) / 180);
+        ctx.drawImage(img, 0, 0);
+      } else {
+        canvas.width = img.height;
+        canvas.height = img.width;
+        ctx.translate(canvas.width, 0);
+        ctx.rotate((degrees * Math.PI) / 180);
+        ctx.drawImage(img, 0, 0);
+      }
+
+      const dataUrl = canvas.toDataURL("image/png");
+      setImageState((prev) => ({ ...prev, processed: dataUrl, preview: dataUrl }));
+    };
+    img.src = src;
+  }, [imageState.preview, imageState.original]);
 
   const handleUpload = useCallback(async () => {
     const dataUrl = imageState.processed ?? imageState.original;
@@ -363,6 +418,22 @@ function ImageWorkflowContent() {
 
                       {/* Actions */}
                       <div className="space-y-2 flex-1">
+                        <div className="flex gap-2">
+                          <button
+                            onClick={() => handleRotate(90)}
+                            className="flex-1 rounded-lg border border-[var(--border)] bg-[var(--background)] px-3 py-2 text-sm hover:bg-[var(--beige-warm)] transition-colors"
+                            title="시계 방향 90° 회전"
+                          >
+                            🔄 90°
+                          </button>
+                          <button
+                            onClick={() => handleRotate(180)}
+                            className="flex-1 rounded-lg border border-[var(--border)] bg-[var(--background)] px-3 py-2 text-sm hover:bg-[var(--beige-warm)] transition-colors"
+                            title="180° 회전"
+                          >
+                            🔄 180°
+                          </button>
+                        </div>
                         <button
                           onClick={handleRemoveBg}
                           disabled={removingBg}
@@ -435,9 +506,58 @@ function ImageWorkflowContent() {
                   </div>
                 </>
               )}
+
+              {/* 영양소 정보 (크로스 체크) */}
+              {selectedSlug && (
+                <NutritionCrossCheck product={products.find((p) => p.slug === selectedSlug)} />
+              )}
             </div>
           )}
         </div>
+      </div>
+    </div>
+  );
+}
+
+function NutritionCrossCheck({ product }: { product?: Product }) {
+  if (!product) return null;
+
+  const nut = product.nutritionPerBottle;
+  const isBar = product.productType === "bar";
+
+  const rows: { label: string; value: string | number | undefined }[] = [
+    { label: "용량/중량", value: product.capacity },
+    { label: "제조사", value: product.manufacturer },
+    { label: "맛/향", value: product.flavor },
+    ...(product.variant && product.variant !== "일반" ? [{ label: "타입", value: product.variant }] : []),
+    { label: "단백질", value: product.proteinPerServing != null ? `${product.proteinPerServing}g` : nut?.proteinG != null ? `${nut.proteinG}g` : undefined },
+    { label: "칼로리", value: product.calories != null ? `${product.calories}kcal` : nut?.caloriesKcal != null ? `${nut.caloriesKcal}kcal` : undefined },
+    { label: "당류", value: product.sugar != null ? `${product.sugar}g` : nut?.sugarsG != null ? `${nut.sugarsG}g` : undefined },
+    { label: "단백질 밀도", value: product.density },
+    { label: "칼로리 밀도", value: product.calorieDensity },
+    { label: "탄수화물", value: nut?.carbsG != null ? `${nut.carbsG}g` : undefined },
+    { label: "지방", value: product.fat != null ? `${product.fat}g` : nut?.fatG != null ? `${nut.fatG}g` : undefined },
+    { label: "나트륨", value: product.sodium != null ? `${product.sodium}mg` : nut?.sodiumMg != null ? `${nut.sodiumMg}mg` : undefined },
+    { label: "BCAA", value: product.bcaa ?? (nut?.bcaaMg != null ? `${nut.bcaaMg}mg` : undefined) },
+    { label: "단백질 급원", value: product.proteinSource },
+    ...(!isBar && product.drinkType ? [{ label: "음료 타입", value: product.drinkType }] : []),
+  ].filter((r) => r.value != null && r.value !== "");
+
+  return (
+    <div className="mt-6 rounded-xl border border-[var(--border)] bg-[var(--background-card)] p-4">
+      <h3 className="text-sm font-semibold text-[var(--foreground)] mb-2">
+        📋 영양소 정보 (패키지 크로스 체크)
+      </h3>
+      <p className="text-xs text-[var(--foreground-muted)] mb-3">
+        패키지에 적힌 영양성분과 비교하여 올바른 제품인지 확인하세요.
+      </p>
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-x-4 gap-y-2 text-sm">
+        {rows.map(({ label, value }) => (
+          <div key={label} className="flex flex-col">
+            <span className="text-xs text-[var(--foreground-muted)]">{label}</span>
+            <span className="font-medium text-[var(--foreground)]">{value}</span>
+          </div>
+        ))}
       </div>
     </div>
   );

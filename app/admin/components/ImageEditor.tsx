@@ -8,23 +8,123 @@ interface Props {
   onClose: () => void;
 }
 
-type Tool = "erase" | "restore";
+type Tool = "erase" | "restore" | "magic";
 
 interface HistoryEntry {
   imageData: ImageData;
 }
 
+// Flood fill for magic wand - RGB 유클리드 거리 기반, 더 넓은 영역 선택
+function floodFill(
+  data: Uint8ClampedArray,
+  width: number,
+  height: number,
+  startX: number,
+  startY: number,
+  tolerance: number, // 0~100, 유클리드 거리 임계값 (약 0~130)
+  _invert: boolean
+): Set<number> {
+  const visited = new Set<number>();
+  const toErase = new Set<number>();
+  const stack: [number, number][] = [[Math.floor(startX), Math.floor(startY)]];
+
+  const idx = (x: number, y: number) => (y * width + x) * 4;
+  const inBounds = (x: number, y: number) => x >= 0 && x < width && y >= 0 && y < height;
+
+  const startIdx = idx(Math.floor(startX), Math.floor(startY));
+  const r0 = data[startIdx];
+  const g0 = data[startIdx + 1];
+  const b0 = data[startIdx + 2];
+
+  // 유클리드 거리 (RGB): sqrt(dr^2 + dg^2 + db^2), 최대 ~441
+  // tolerance 15~100 -> threshold 약 25~120 (흰배경~다양한 색)
+  const threshold = 20 + (tolerance / 100) * 100;
+  const colorMatch = (i: number) => {
+    const dr = data[i] - r0;
+    const dg = data[i + 1] - g0;
+    const db = data[i + 2] - b0;
+    const dist = Math.sqrt(dr * dr + dg * dg + db * db);
+    return dist <= threshold;
+  };
+
+  const neighbors = [
+    [-1, 0], [1, 0], [0, -1], [0, 1],
+    [-1, -1], [-1, 1], [1, -1], [1, 1],
+  ];
+
+  while (stack.length > 0) {
+    const [x, y] = stack.pop()!;
+    const i = idx(x, y);
+    if (visited.has(i)) continue;
+    visited.add(i);
+
+    if (!inBounds(x, y)) continue;
+    if (!colorMatch(i)) continue;
+
+    toErase.add(i);
+
+    for (const [dx, dy] of neighbors) {
+      const nx = x + dx;
+      const ny = y + dy;
+      const ni = idx(nx, ny);
+      if (inBounds(nx, ny) && !visited.has(ni)) {
+        stack.push([nx, ny]);
+      }
+    }
+  }
+
+  return toErase;
+}
+
+// 경계 확장: 선택 영역을 N픽셀 확장 (안티앨리어싱 엣지 포함)
+function expandSelection(
+  selected: Set<number>,
+  width: number,
+  height: number,
+  pixels: number
+): Set<number> {
+  const idx = (x: number, y: number) => (y * width + x) * 4;
+  const inBounds = (x: number, y: number) => x >= 0 && x < width && y >= 0 && y < height;
+  const neighbors = [[-1, 0], [1, 0], [0, -1], [0, 1], [-1, -1], [-1, 1], [1, -1], [1, 1]];
+
+  let current = new Set(selected);
+  for (let p = 0; p < pixels; p++) {
+    const expanded = new Set(current);
+    current.forEach((i) => {
+      const x = Math.floor((i / 4) % width);
+      const y = Math.floor((i / 4) / width);
+      for (const [dx, dy] of neighbors) {
+        const nx = x + dx;
+        const ny = y + dy;
+        if (inBounds(nx, ny)) expanded.add(idx(nx, ny));
+      }
+    });
+    current = expanded;
+  }
+  return current;
+}
+
 export default function ImageEditor({ src, onSave, onClose }: Props) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const overlayRef = useRef<HTMLCanvasElement>(null); // for brush cursor preview
+  const overlayRef = useRef<HTMLCanvasElement>(null);
   const [tool, setTool] = useState<Tool>("erase");
   const [brushSize, setBrushSize] = useState(20);
+  const [magicTolerance, setMagicTolerance] = useState(55);
+  const [magicExpand, setMagicExpand] = useState(2);
+  const [magicInvert, setMagicInvert] = useState(false);
   const [zoom, setZoom] = useState(1);
   const [isDrawing, setIsDrawing] = useState(false);
   const [history, setHistory] = useState<HistoryEntry[]>([]);
   const [historyIndex, setHistoryIndex] = useState(-1);
+  const historyIndexRef = useRef(-1);
+  const historyRef = useRef<HistoryEntry[]>([]);
   const originalImageData = useRef<ImageData | null>(null);
   const lastPos = useRef<{ x: number; y: number } | null>(null);
+
+  useEffect(() => {
+    historyIndexRef.current = historyIndex;
+    historyRef.current = history;
+  }, [historyIndex, history]);
 
   // Load image onto canvas
   useEffect(() => {
@@ -41,20 +141,25 @@ export default function ImageEditor({ src, onSave, onClose }: Props) {
       ctx.drawImage(img, 0, 0);
       const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
       originalImageData.current = imageData;
-      // Push initial state to history
-      pushHistory(ctx, canvas);
+      historyRef.current = [{ imageData }];
+      historyIndexRef.current = 0;
+      setHistory([{ imageData }]);
+      setHistoryIndex(0);
     };
     img.src = src;
   }, [src]); // eslint-disable-line react-hooks/exhaustive-deps
 
-  const pushHistory = (ctx: CanvasRenderingContext2D, canvas: HTMLCanvasElement) => {
+  const pushHistory = useCallback((ctx: CanvasRenderingContext2D, canvas: HTMLCanvasElement) => {
     const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-    setHistory((prev) => {
-      const trimmed = prev.slice(0, historyIndex + 1);
-      return [...trimmed, { imageData }];
-    });
-    setHistoryIndex((prev) => prev + 1);
-  };
+    const newEntry = { imageData };
+    const idx = historyIndexRef.current;
+    const trimmed = historyRef.current.slice(0, idx + 1);
+    const next = [...trimmed, newEntry];
+    historyRef.current = next;
+    historyIndexRef.current = next.length - 1;
+    setHistory(next);
+    setHistoryIndex(next.length - 1);
+  }, []);
 
   const getCanvasPos = useCallback(
     (e: React.MouseEvent<HTMLCanvasElement> | React.TouchEvent<HTMLCanvasElement>) => {
@@ -118,24 +223,69 @@ export default function ImageEditor({ src, onSave, onClose }: Props) {
     [tool, brushSize]
   );
 
+  const applyMagicWand = useCallback(
+    (x: number, y: number) => {
+      const canvas = canvasRef.current;
+      if (!canvas) return;
+      const ctx = canvas.getContext("2d");
+      if (!ctx) return;
+
+      const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+      let selected = floodFill(
+        imageData.data,
+        canvas.width,
+        canvas.height,
+        x,
+        y,
+        magicTolerance,
+        false
+      );
+      if (magicExpand > 0) {
+        selected = expandSelection(selected, canvas.width, canvas.height, magicExpand);
+      }
+
+      const w = canvas.width;
+      const h = canvas.height;
+      if (magicInvert) {
+        for (let py = 0; py < h; py++) {
+          for (let px = 0; px < w; px++) {
+            const i = (py * w + px) * 4;
+            if (!selected.has(i)) imageData.data[i + 3] = 0;
+          }
+        }
+      } else {
+        selected.forEach((i) => {
+          imageData.data[i + 3] = 0;
+        });
+      }
+      ctx.putImageData(imageData, 0, 0);
+      pushHistory(ctx, canvas);
+    },
+    [magicTolerance, magicExpand, magicInvert] // eslint-disable-line react-hooks/exhaustive-deps
+  );
+
   const handleMouseDown = useCallback(
     (e: React.MouseEvent<HTMLCanvasElement>) => {
-      setIsDrawing(true);
       const pos = getCanvasPos(e);
+      if (tool === "magic") {
+        applyMagicWand(pos.x, pos.y);
+        return;
+      }
+      setIsDrawing(true);
       lastPos.current = pos;
       applyBrush(pos.x, pos.y);
     },
-    [applyBrush, getCanvasPos]
+    [applyBrush, getCanvasPos, tool, applyMagicWand]
   );
 
   const handleMouseMove = useCallback(
     (e: React.MouseEvent<HTMLCanvasElement>) => {
-      if (!isDrawing) return;
+      if (tool === "magic" || !isDrawing) return;
       const pos = getCanvasPos(e);
       applyBrush(pos.x, pos.y);
       lastPos.current = pos;
     },
-    [isDrawing, applyBrush, getCanvasPos]
+    [isDrawing, applyBrush, getCanvasPos, tool]
   );
 
   const handleMouseUp = useCallback(() => {
@@ -150,26 +300,110 @@ export default function ImageEditor({ src, onSave, onClose }: Props) {
   }, [isDrawing]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const undo = useCallback(() => {
-    if (historyIndex <= 0) return;
+    const idx = historyIndexRef.current;
+    if (idx <= 0) return;
     const canvas = canvasRef.current;
     if (!canvas) return;
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
-    const newIndex = historyIndex - 1;
-    ctx.putImageData(history[newIndex].imageData, 0, 0);
-    setHistoryIndex(newIndex);
-  }, [history, historyIndex]);
+    const newIndex = idx - 1;
+    const entry = historyRef.current[newIndex];
+    if (entry) {
+      ctx.putImageData(entry.imageData, 0, 0);
+      historyIndexRef.current = newIndex;
+      setHistoryIndex(newIndex);
+    }
+  }, []);
 
   const redo = useCallback(() => {
-    if (historyIndex >= history.length - 1) return;
+    const idx = historyIndexRef.current;
+    const hist = historyRef.current;
+    if (idx >= hist.length - 1) return;
     const canvas = canvasRef.current;
     if (!canvas) return;
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
-    const newIndex = historyIndex + 1;
-    ctx.putImageData(history[newIndex].imageData, 0, 0);
-    setHistoryIndex(newIndex);
-  }, [history, historyIndex]);
+    const newIndex = idx + 1;
+    const entry = hist[newIndex];
+    if (entry) {
+      ctx.putImageData(entry.imageData, 0, 0);
+      historyIndexRef.current = newIndex;
+      setHistoryIndex(newIndex);
+    }
+  }, []);
+
+  const rotate = useCallback((degrees: 90 | 180) => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
+
+    const imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+    const img = new Image();
+    img.onload = () => {
+      const newCanvas = document.createElement("canvas");
+      const newCtx = newCanvas.getContext("2d");
+      if (!newCtx) return;
+
+      if (degrees === 180) {
+        newCanvas.width = canvas.width;
+        newCanvas.height = canvas.height;
+        newCtx.translate(newCanvas.width, newCanvas.height);
+        newCtx.rotate((degrees * Math.PI) / 180);
+        newCtx.drawImage(img, 0, 0);
+      } else {
+        newCanvas.width = canvas.height;
+        newCanvas.height = canvas.width;
+        newCtx.translate(newCanvas.width, 0);
+        newCtx.rotate((degrees * Math.PI) / 180);
+        newCtx.drawImage(img, 0, 0);
+      }
+
+      const resultImg = new Image();
+      resultImg.onload = () => {
+        if (!canvasRef.current) return;
+        const c = canvasRef.current;
+        const cctx = c.getContext("2d");
+        if (!cctx) return;
+        c.width = resultImg.width;
+        c.height = resultImg.height;
+        cctx.drawImage(resultImg, 0, 0);
+        const imgData = cctx.getImageData(0, 0, c.width, c.height);
+        originalImageData.current = imgData;
+        const entry = { imageData: imgData };
+        historyRef.current = [entry];
+        historyIndexRef.current = 0;
+        setHistory([entry]);
+        setHistoryIndex(0);
+      };
+      resultImg.src = newCanvas.toDataURL("image/png");
+    };
+    img.src = canvas.toDataURL("image/png");
+  }, []);
+
+  const clearAll = useCallback(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
+    const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+    for (let i = 3; i < imageData.data.length; i += 4) imageData.data[i] = 0;
+    ctx.putImageData(imageData, 0, 0);
+    pushHistory(ctx, canvas);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
+  const resetToOriginal = useCallback(() => {
+    const canvas = canvasRef.current;
+    if (!canvas || !originalImageData.current) return;
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
+    ctx.putImageData(originalImageData.current, 0, 0);
+    const entry = { imageData: originalImageData.current };
+    historyRef.current = [entry];
+    historyIndexRef.current = 0;
+    setHistory([entry]);
+    setHistoryIndex(0);
+  }, []);
 
   const handleSave = () => {
     const canvas = canvasRef.current;
@@ -216,6 +450,17 @@ export default function ImageEditor({ src, onSave, onClose }: Props) {
           >
             복원
           </button>
+          <button
+            onClick={() => setTool("magic")}
+            className={`px-3 py-1.5 rounded text-xs font-medium transition-colors ${
+              tool === "magic"
+                ? "bg-[var(--accent)] text-white"
+                : "bg-[#444] text-gray-300 hover:bg-[#555]"
+            }`}
+            title="클릭한 영역과 비슷한 색을 한 번에 지움"
+          >
+            ✨ 매직
+          </button>
         </div>
 
         <div className="flex items-center gap-2 ml-2">
@@ -229,6 +474,75 @@ export default function ImageEditor({ src, onSave, onClose }: Props) {
             className="w-24"
           />
           <span className="text-xs text-gray-300 w-8">{brushSize}px</span>
+        </div>
+
+        {tool === "magic" && (
+          <div className="flex items-center gap-2 ml-2 pl-2 border-l border-[#444]">
+            <span className="text-xs text-gray-400">허용오차:</span>
+            <input
+              type="range"
+              min="15"
+              max="100"
+              value={magicTolerance}
+              onChange={(e) => setMagicTolerance(Number(e.target.value))}
+              className="w-20"
+            />
+            <span className="text-xs text-gray-300 w-6">{magicTolerance}</span>
+            <span className="text-xs text-gray-400">경계:</span>
+            <select
+              value={magicExpand}
+              onChange={(e) => setMagicExpand(Number(e.target.value))}
+              className="rounded bg-[#444] text-gray-300 text-xs px-2 py-1"
+            >
+              <option value={0}>없음</option>
+              <option value={1}>1px</option>
+              <option value={2}>2px</option>
+              <option value={3}>3px</option>
+            </select>
+            <label className="flex items-center gap-1 cursor-pointer">
+              <input
+                type="checkbox"
+                checked={magicInvert}
+                onChange={(e) => setMagicInvert(e.target.checked)}
+                className="rounded"
+              />
+              <span className="text-xs text-gray-400">역선택</span>
+            </label>
+          </div>
+        )}
+
+        <div className="flex items-center gap-1 ml-2 pl-2 border-l border-[#444]">
+          <button
+            onClick={clearAll}
+            className="px-2 py-1 rounded text-xs bg-[#444] text-gray-300 hover:bg-[#555]"
+            title="전체 투명"
+          >
+            🧹 전체 지우기
+          </button>
+          <button
+            onClick={resetToOriginal}
+            className="px-2 py-1 rounded text-xs bg-[#444] text-gray-300 hover:bg-[#555]"
+            title="원본으로"
+          >
+            ↩ 원본
+          </button>
+        </div>
+
+        <div className="flex items-center gap-1 ml-2">
+          <button
+            onClick={() => rotate(90)}
+            className="px-2 py-1 rounded text-xs bg-[#444] text-gray-300 hover:bg-[#555]"
+            title="90° 회전"
+          >
+            🔄 90°
+          </button>
+          <button
+            onClick={() => rotate(180)}
+            className="px-2 py-1 rounded text-xs bg-[#444] text-gray-300 hover:bg-[#555]"
+            title="180° 회전"
+          >
+            🔄 180°
+          </button>
         </div>
 
         <div className="flex items-center gap-1 ml-2">
@@ -298,7 +612,7 @@ export default function ImageEditor({ src, onSave, onClose }: Props) {
           style={{
             transform: `scale(${zoom})`,
             transformOrigin: "center center",
-            cursor: tool === "erase" ? "crosshair" : "cell",
+            cursor: tool === "erase" || tool === "magic" ? "crosshair" : "cell",
             imageRendering: "pixelated",
           }}
           onMouseDown={handleMouseDown}
@@ -311,8 +625,10 @@ export default function ImageEditor({ src, onSave, onClose }: Props) {
 
       {/* Status bar */}
       <div className="px-4 py-2 bg-[#2a2a2a] border-t border-[#444] text-xs text-gray-400 shrink-0">
-        {tool === "erase" ? "🖌 지우기 모드" : "🖌 복원 모드"} · 브러시 {brushSize}px ·
-        Ctrl+Z 실행취소 · Ctrl+Shift+Z 다시실행
+        {tool === "erase" && "🖌 지우기 모드"}
+        {tool === "restore" && "🖌 복원 모드"}
+        {tool === "magic" && `✨ 매직 브러시 (허용오차 ${magicTolerance} · 경계 ${magicExpand}px${magicInvert ? " · 역선택" : ""})`}
+        {" · "}브러시 {brushSize}px · 90°/180° 회전 · Ctrl+Z 실행취소 · Ctrl+Shift+Z 다시실행
       </div>
     </div>
   );
