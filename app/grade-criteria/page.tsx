@@ -54,39 +54,39 @@ export default function GradeCriteriaPage() {
       <Header />
 
       {/* 히어로 영역 */}
-      <section className="bg-[#EFEDE6]">
-        <div className="mx-auto max-w-[1200px] px-4 py-6 md:px-6">
-          <p className="text-sm font-medium text-[var(--accent)]">📊 등급 기준</p>
-          <h1 className="mt-2 text-2xl font-bold md:text-3xl" style={{ color: "#1a1a1a", fontWeight: 700 }}>
-            {productType === "drink" ? "단백질 음료" : "단백질 바"} 등급 산정 기준
+      <section className="w-full border-t border-b bg-[var(--hero-bg)]" style={{ borderColor: "var(--hero-border)" }}>
+        <div className="mx-auto max-w-[1200px] px-4 py-4 md:px-6 md:py-5">
+          <h1 className="text-2xl font-bold leading-tight text-[var(--foreground)] md:text-3xl" style={{ fontWeight: 700 }}>
+            등급 산정 기준
           </h1>
-          <p className="mt-2 text-sm leading-relaxed" style={{ color: "#6b6b6b" }}>
+          <p className="mt-1 text-sm text-[var(--foreground-muted)]" style={{ fontWeight: 400 }}>
             단백질 밀도·다이어트·퍼포먼스 등급은 아래 수치 기준으로 산정됩니다. 모두 영양성분 기반이며, 제조사 공식 자료 기준입니다.
           </p>
-
-          <div className="mt-5 flex gap-2">
-            {PRODUCT_TYPES.map((t) => (
-              <button
-                key={t.id}
-                type="button"
-                onClick={() => setProductType(t.id)}
-                className="rounded-full px-4 py-1.5 text-sm font-medium transition-colors"
-                style={{
-                  background: productType === t.id ? "var(--accent)" : "white",
-                  color: productType === t.id ? "white" : "#6b6b6b",
-                  border: productType === t.id ? "none" : "1px solid #d9d6cf",
-                }}
-              >
-                {t.label}
-              </button>
-            ))}
-          </div>
         </div>
       </section>
 
       <main className="mx-auto max-w-[1200px] px-4 py-6 md:px-6">
+        {/* 단백질 음료/바 토글 */}
+        <div className="flex gap-2">
+          {PRODUCT_TYPES.map((t) => (
+            <button
+              key={t.id}
+              type="button"
+              onClick={() => setProductType(t.id)}
+              className="rounded-full px-4 py-1.5 text-sm font-medium transition-colors"
+              style={{
+                background: productType === t.id ? "var(--accent)" : "white",
+                color: productType === t.id ? "white" : "#6b6b6b",
+                border: productType === t.id ? "none" : "1px solid var(--border)",
+              }}
+            >
+              {t.label}
+            </button>
+          ))}
+        </div>
+
         {/* 통합 등급 테이블 */}
-        <div className="overflow-x-auto rounded-xl border border-[#e8e6e3]">
+        <div className="mt-4 overflow-x-auto rounded-xl border border-[#e8e6e3]">
           <table className="w-full min-w-[600px] border-collapse text-sm">
             <thead>
               <tr style={{ background: "#f9f8f5" }}>

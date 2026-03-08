@@ -94,7 +94,7 @@ function OptionButton({ icon, label, desc, selected, onClick }: {
 }) {
   return (
     <button onClick={onClick} className="w-full text-left flex items-center gap-4 transition-all" style={{
-      border: `1.5px solid ${selected ? "var(--accent)" : "#d9d6cf"}`,
+      border: `1.5px solid ${selected ? "var(--accent)" : "#e8e6e3"}`,
       background: selected ? "var(--accent-light)" : "#fff",
       borderRadius: "12px",
       padding: "16px 20px",
@@ -114,7 +114,7 @@ function GridOption({ icon, label, desc, selected, onClick }: {
 }) {
   return (
     <button onClick={onClick} className="text-left flex flex-col gap-1 transition-all" style={{
-      border: `1.5px solid ${selected ? "var(--accent)" : "#d9d6cf"}`,
+      border: `1.5px solid ${selected ? "var(--accent)" : "#e8e6e3"}`,
       background: selected ? "var(--accent-light)" : "#fff",
       borderRadius: "12px",
       padding: "14px 16px",
@@ -129,10 +129,9 @@ function GridOption({ icon, label, desc, selected, onClick }: {
 // 다음 버튼
 function NextButton({ label, disabled, onClick }: { label: string; disabled: boolean; onClick: () => void }) {
   return (
-    <button onClick={onClick} disabled={disabled} className="w-full py-3 text-sm font-semibold mt-2 transition-opacity" style={{
+    <button onClick={onClick} disabled={disabled} className="mt-2 w-full rounded-full py-3 text-sm font-semibold transition-opacity" style={{
       background: "var(--accent)",
       color: "white",
-      borderRadius: "8px",
       opacity: disabled ? 0.4 : 1,
       pointerEvents: disabled ? "none" : "auto",
     }}>
@@ -150,7 +149,7 @@ function ProgressBar({ step }: { step: number }) {
           <span key={s} style={{ color: step >= s ? "var(--accent)" : "#9ca3af" }}>STEP {s}</span>
         ))}
       </div>
-      <div className="relative rounded-full overflow-hidden" style={{ height: "3px", background: "#d9d6cf" }}>
+      <div className="relative rounded-full overflow-hidden" style={{ height: "3px", background: "#e8e6e3" }}>
         <div className="absolute left-0 top-0 h-full rounded-full transition-all duration-300" style={{
           background: "var(--accent)",
           width: `${((step - 1) / 3) * 100}%`,
@@ -177,7 +176,7 @@ function LoadingScreen({ onDone }: { onDone: () => void }) {
     <div className="fade-in text-center py-12 px-6">
       <div className="mx-auto mb-6" style={{
         width: 40, height: 40, borderRadius: "50%",
-        border: "3px solid #d9d6cf", borderTopColor: "var(--accent)",
+        border: "3px solid #e8e6e3", borderTopColor: "var(--accent)",
         animation: "spin 0.8s linear infinite",
       }} />
       <p className="text-base font-bold mb-6" style={{ color: "#1a1a1a" }}>맞춤 제품 분석 중...</p>
@@ -204,7 +203,7 @@ function ProductResultCard({ product }: { product: RecommendedProduct }) {
   const displayName = [product.name, product.flavor].filter(Boolean).join(" ");
 
   return (
-    <div className="relative flex flex-col" style={{ border: "1px solid #d9d6cf", borderRadius: "14px", background: "#fff", overflow: "hidden" }}>
+    <div className="relative flex flex-col" style={{ border: "1px solid #e8e6e3", borderRadius: "16px", background: "#FFFDF8", overflow: "hidden" }}>
       {isFirst && (
         <span className="absolute top-3 left-3 z-10 text-xs font-bold px-2.5 py-1 rounded-full" style={{ background: "#FFF1E6", color: "#F08A24" }}>
           최고 추천
@@ -270,7 +269,7 @@ function ProductResultCard({ product }: { product: RecommendedProduct }) {
 
         {/* 상세 보기 */}
         <Link href={product.detailPath} className="mt-3 block w-full py-2.5 text-xs font-semibold text-center rounded-lg transition-colors hover:bg-gray-50" style={{
-          border: "1px solid #d9d6cf", background: "#fff", color: "#374151",
+          border: "1px solid #e8e6e3", background: "#fff", color: "#374151",
         }}>
           상세 보기 →
         </Link>
@@ -284,11 +283,11 @@ function ResultScreen({ result, onReset, category }: { result: RecommendResult; 
   return (
     <div className="fade-in space-y-5">
       {/* 선택 조건 */}
-      <div className="px-4 py-4 rounded-xl" style={{ background: "#fff", border: "1px solid #d9d6cf" }}>
+      <div className="px-4 py-4 rounded-xl" style={{ background: "#fff", border: "1px solid #e8e6e3" }}>
         <p className="text-xs font-semibold mb-2" style={{ color: "#7a7a7a" }}>선택 조건:</p>
         <div className="flex flex-wrap gap-2">
           {result.profileChips.map((chip) => (
-            <span key={chip} className="text-sm" style={{ border: "1px solid #d9d6cf", borderRadius: "20px", padding: "4px 12px", color: "#374151" }}>
+            <span key={chip} className="text-sm" style={{ border: "1px solid #e8e6e3", borderRadius: "20px", padding: "4px 12px", color: "#374151" }}>
               {chip}
             </span>
           ))}
@@ -305,12 +304,12 @@ function ResultScreen({ result, onReset, category }: { result: RecommendResult; 
 
       {/* 하단 버튼 */}
       <div className="flex gap-3 pt-2">
-        <button onClick={onReset} className="flex-1 py-3 text-sm font-semibold rounded-xl transition-colors hover:bg-gray-50" style={{
-          border: "1px solid #d9d6cf", background: "#fff", color: "#374151",
+        <button onClick={onReset} className="flex-1 rounded-full py-3 text-sm font-semibold transition-colors hover:bg-gray-50" style={{
+          border: "1px solid #e8e6e3", background: "#fff", color: "#374151",
         }}>
           다시 추천받기
         </button>
-        <Link href="/" className="flex-1 py-3 text-sm font-semibold rounded-xl text-center hover:opacity-90 transition-opacity" style={{
+        <Link href="/" className="flex-1 rounded-full py-3 text-center text-sm font-semibold transition-opacity hover:opacity-90" style={{
           background: "var(--accent)", color: "white",
         }}>
           전체 {category === "bar" ? "단백질바" : "단백질 음료"} 보기 →
@@ -372,22 +371,34 @@ export default function RecommendClient({ drinkCount, barCount }: { drinkCount: 
         @keyframes spin { to { transform: rotate(360deg); } }
       `}</style>
 
-      <div className="min-h-[70vh]" style={{ backgroundColor: "#EFEDE6" }}>
-        <div className="mx-auto max-w-[1200px] px-4 py-10 md:px-6">
+      {/* 히어로 영역 */}
+      <section className="w-full border-t border-b bg-[var(--hero-bg)]" style={{ borderColor: "var(--hero-border)" }}>
+        <div className="mx-auto max-w-[1200px] px-4 py-4 md:px-6 md:py-5">
+          <h1 className="text-2xl font-bold leading-tight text-[var(--foreground)] md:text-3xl" style={{ fontWeight: 700 }}>
+            제품 추천
+          </h1>
+          <p className="mt-1 text-sm text-[var(--foreground-muted)]" style={{ fontWeight: 400 }}>
+            4가지 질문으로 나에게 맞는 단백질 제품을 추천해드립니다. 목적·운동량·선호 조건을 선택하세요.
+          </p>
+        </div>
+      </section>
+
+      <div className="min-h-[70vh] bg-white">
+        <div className="mx-auto max-w-[1200px] px-4 py-6 md:px-6">
 
           {/* 음료/바 토글 */}
           <div className="mb-4 flex items-center justify-center gap-2">
             <button type="button" onClick={() => handleCategoryChange("drink")} className="rounded-full px-4 py-2 text-sm font-semibold transition-colors" style={{
               background: category === "drink" ? "var(--accent)" : "#fff",
               color: category === "drink" ? "#fff" : "#374151",
-              border: "1px solid #d9d6cf",
+              border: "1px solid var(--border)",
             }}>
               단백질 음료
             </button>
             <button type="button" onClick={() => handleCategoryChange("bar")} className="rounded-full px-4 py-2 text-sm font-semibold transition-colors" style={{
               background: category === "bar" ? "var(--accent)" : "#fff",
               color: category === "bar" ? "#fff" : "#374151",
-              border: "1px solid #d9d6cf",
+              border: "1px solid var(--border)",
             }}>
               단백질 바
             </button>
@@ -427,7 +438,7 @@ export default function RecommendClient({ drinkCount, barCount }: { drinkCount: 
             <div className="max-w-lg mx-auto">
             <div key={step} className="fade-in">
               <ProgressBar step={step as number} />
-              <div className="p-6 space-y-5" style={{ background: "#fff", border: "1px solid #d9d6cf", borderRadius: "12px" }}>
+              <div className="p-6 space-y-5" style={{ background: "#fff", border: "1px solid #e8e6e3", borderRadius: "12px" }}>
 
                 {step === 1 && (
                   <>
@@ -511,7 +522,7 @@ export default function RecommendClient({ drinkCount, barCount }: { drinkCount: 
           {/* 로딩 화면 */}
           {step === "loading" && (
             <div className="max-w-lg mx-auto">
-            <div className="fade-in" style={{ background: "#fff", border: "1px solid #d9d6cf", borderRadius: "12px" }}>
+            <div className="fade-in" style={{ background: "#fff", border: "1px solid #e8e6e3", borderRadius: "12px" }}>
               <LoadingScreen onDone={() => setStep("result")} />
             </div>
             </div>
@@ -520,7 +531,7 @@ export default function RecommendClient({ drinkCount, barCount }: { drinkCount: 
           {/* 결과 화면 */}
           {step === "result" && (
             error ? (
-              <div className="fade-in text-center p-8" style={{ background: "#fff", border: "1px solid #d9d6cf", borderRadius: "12px" }}>
+              <div className="fade-in text-center p-8" style={{ background: "#fff", border: "1px solid #e8e6e3", borderRadius: "12px" }}>
                 <p className="text-2xl mb-3">😅</p>
                 <p className="text-base font-bold mb-2" style={{ color: "#1a1a1a" }}>추천 결과를 불러오지 못했어요</p>
                 <p className="text-xs mb-5" style={{ color: "#9ca3af" }}>{error}</p>
@@ -536,7 +547,7 @@ export default function RecommendClient({ drinkCount, barCount }: { drinkCount: 
               <div className="fade-in text-center py-12">
                 <div className="mx-auto" style={{
                   width: 32, height: 32, borderRadius: "50%",
-                  border: "3px solid #d9d6cf", borderTopColor: "var(--accent)",
+                  border: "3px solid #e8e6e3", borderTopColor: "var(--accent)",
                   animation: "spin 0.8s linear infinite",
                 }} />
               </div>

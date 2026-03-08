@@ -43,7 +43,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
     <div className="min-h-screen bg-white">
       <Header />
       {/* 히어로 영역: 메뉴 바로 아래 ~ 제품 이미지 끝까지 #EFEDE6 */}
-      <section className="bg-[#EFEDE6]">
+      <section className="w-full border-t border-b bg-[#EFEDE6]" style={{ borderColor: "var(--hero-border)" }}>
         <div className="mx-auto max-w-[1200px] px-4 py-6 md:px-6">
             <Link
               href={isBar ? "/bars" : "/"}
@@ -184,12 +184,12 @@ export default async function ProductDetailPage({ params }: PageProps) {
 
         {/* 비교에 추가 */}
         <div className="mt-6 flex flex-wrap gap-3">
-          <button type="button" className="rounded-lg border border-[var(--accent)] bg-white px-5 py-2.5 text-sm font-medium text-[var(--accent)] hover:bg-[var(--accent-light)]">
+          <button type="button" className="rounded-full border border-[var(--accent)] bg-white px-5 py-2.5 text-sm font-medium text-[var(--accent)] transition-colors hover:bg-[var(--accent-light)]">
             비교에 추가
           </button>
           <Link
             href={isBar ? "/bars" : "/"}
-            className="rounded-lg border border-[#e2e2e2] bg-white px-5 py-2.5 text-sm font-medium text-[var(--foreground)] hover:bg-[var(--accent-light)]"
+            className="rounded-full border border-[var(--border)] bg-white px-5 py-2.5 text-sm font-medium text-[var(--foreground)] transition-colors hover:bg-[var(--accent-light)]"
           >
             제품 목록으로
           </Link>

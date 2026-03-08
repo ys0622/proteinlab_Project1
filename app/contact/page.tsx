@@ -50,21 +50,12 @@ export default function ContactPage() {
 
       {/* Hero */}
       <section
-        className="w-full border-t border-b"
-        style={{
-          background: "linear-gradient(180deg, var(--hero-bg) 0%, #f8f6f2 100%)",
-          borderColor: "var(--hero-border)",
-        }}
+        className="w-full border-t border-b bg-[var(--hero-bg)]"
+        style={{ borderColor: "var(--hero-border)" }}
       >
         <div className="mx-auto max-w-[1200px] px-4 py-4 md:px-6 md:py-5">
-          <span
-            className="inline-block rounded-md px-2 py-0.5 text-[11px] font-semibold tracking-wide"
-            style={{ background: "var(--accent-light)", color: "var(--accent)" }}
-          >
-            Contact
-          </span>
           <h1
-            className="mt-2 text-2xl font-bold leading-tight text-[var(--foreground)] md:text-3xl"
+            className="text-2xl font-bold leading-tight text-[var(--foreground)] md:text-3xl"
             style={{ fontWeight: 700 }}
           >
             문의
@@ -79,29 +70,19 @@ export default function ContactPage() {
         {/* 이메일 문의 CTA */}
         <section className="mt-6">
           <div
-            className="overflow-hidden rounded-2xl"
-            style={{
-              background: "linear-gradient(135deg, var(--accent) 0%, var(--accent-hover) 100%)",
-              boxShadow: "0 4px 20px rgba(45, 74, 53, 0.2)",
-            }}
+            className="overflow-hidden rounded-2xl border border-[#e8e6e3] px-6 py-6 md:px-8 md:py-7"
+            style={{ background: "#FFFDF8" }}
           >
-            <div className="px-6 py-6 md:px-8 md:py-7">
-              <h2 className="text-base font-bold text-white/95">이메일 문의</h2>
-              <p className="mt-1 text-sm text-white/80">
-                문의 유형을 선택하시고 아래 버튼으로 이메일을 보내주세요.
-              </p>
-              <a
-                href={`mailto:${CONTACT_EMAIL}`}
-                className="mt-5 inline-flex items-center gap-2 rounded-xl px-5 py-3 text-sm font-semibold transition-all hover:scale-[1.02] hover:shadow-lg"
-                style={{
-                  background: "#fff",
-                  color: "var(--accent)",
-                  boxShadow: "0 2px 12px rgba(0,0,0,0.08)",
-                }}
-              >
-                ✉️ 이메일로 문의하기
-              </a>
-            </div>
+            <h2 className="text-base font-bold text-[var(--foreground)]">이메일 문의</h2>
+            <p className="mt-1 text-sm text-[var(--foreground-muted)]">
+              문의 유형을 선택하시고 아래 버튼으로 이메일을 보내주세요.
+            </p>
+            <a
+              href={`mailto:${CONTACT_EMAIL}`}
+              className="mt-5 inline-flex items-center gap-2 rounded-full border border-[var(--accent)] bg-white px-5 py-2.5 text-sm font-medium text-[var(--accent)] transition-colors hover:bg-[var(--accent-light)]"
+            >
+              ✉️ 이메일로 문의하기
+            </a>
           </div>
         </section>
 
@@ -112,24 +93,16 @@ export default function ContactPage() {
             {contactTypes.map((item) => (
               <div
                 key={item.title}
-                className="transition-shadow hover:shadow-md"
+                className="overflow-hidden"
                 style={{
-                  border: `1px solid ${item.accentBorder}`,
-                  borderRadius: "14px",
-                  background: "#fff",
-                  overflow: "hidden",
+                  border: "1px solid #e8e6e3",
+                  borderRadius: "16px",
+                  background: "#FFFDF8",
                 }}
               >
-                <div
-                  className="px-5 pt-5 pb-4"
-                  style={{
-                    background: item.accentBg,
-                    borderBottom: `1px solid ${item.accentBorder}`,
-                  }}
-                >
+                <div className="border-b border-[#e8e6e3] px-5 pt-5 pb-4">
                   <h3
-                    className="text-base font-bold"
-                    style={{ color: item.accentColor }}
+                    className="text-base font-bold text-[var(--foreground)]"
                   >
                     {item.emoji} {item.title}
                   </h3>
@@ -144,14 +117,8 @@ export default function ContactPage() {
 
         {/* 개인정보 처리 */}
         <div
-          className="mt-8"
-          style={{
-            border: "1px solid #d9d6cf",
-            borderRadius: "14px",
-            background: "linear-gradient(180deg, #faf9f7 0%, #fff 100%)",
-            padding: "24px",
-            boxShadow: "0 1px 3px rgba(0,0,0,0.04)",
-          }}
+          className="mt-8 rounded-2xl border border-[#e8e6e3] p-6"
+          style={{ background: "#FFFDF8" }}
         >
           <div className="flex items-center gap-2">
             <span

@@ -62,9 +62,9 @@ export default function FoundationsPage() {
               href={article.href}
               className="group flex flex-col justify-between"
               style={{
-                border: "1px solid #d9d6cf",
-                borderRadius: "14px",
-                background: "#fff",
+                border: "1px solid #e8e6e3",
+                borderRadius: "16px",
+                background: "#FFFDF8",
                 overflow: "hidden",
               }}
             >
@@ -99,7 +99,7 @@ export default function FoundationsPage() {
               <div className="px-5 pb-5">
                 <span
                   className="flex items-center justify-center rounded-lg py-2.5 text-xs font-semibold transition-colors group-hover:bg-gray-50"
-                  style={{ border: "1px solid #d9d6cf", color: "#374151" }}
+                  style={{ border: "1px solid #e8e6e3", color: "#374151" }}
                 >
                   읽기 →
                 </span>

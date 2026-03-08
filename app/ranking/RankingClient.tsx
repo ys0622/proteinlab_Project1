@@ -74,9 +74,9 @@ function RankingCard({
     <div
       className="relative flex flex-col"
       style={{
-        border: "1px solid #d9d6cf",
-        borderRadius: "14px",
-        background: "#fff",
+        border: "1px solid #e8e6e3",
+        borderRadius: "16px",
+        background: "#FFFDF8",
         overflow: "hidden",
       }}
     >
@@ -194,7 +194,7 @@ function RankingCard({
         <Link
           href={`/product/${product.slug}`}
           className="mt-3 block w-full rounded-lg py-2.5 text-center text-xs font-semibold transition-colors hover:bg-gray-50"
-          style={{ border: "1px solid #d9d6cf", background: "#fff", color: "#374151" }}
+          style={{ border: "1px solid #e8e6e3", background: "#fff", color: "#374151" }}
         >
           상세 보기 →
         </Link>
@@ -213,43 +213,45 @@ export default function RankingClient({ rankings }: RankingClientProps) {
   return (
     <>
       {/* 히어로 */}
-      <section className="bg-[#EFEDE6]">
-        <div className="mx-auto max-w-[1200px] px-4 py-8 md:px-6">
+      <section className="w-full border-t border-b bg-[var(--hero-bg)]" style={{ borderColor: "var(--hero-border)" }}>
+        <div className="mx-auto max-w-[1200px] px-4 py-4 md:px-6 md:py-5">
           <h1
             className="text-2xl font-bold md:text-3xl"
             style={{ color: "#1a1a1a", fontWeight: 700 }}
           >
             등급 랭킹
           </h1>
-          <p className="mt-2 text-sm" style={{ color: "#6b6b6b" }}>
+          <p className="mt-1 text-sm text-[var(--foreground-muted)]" style={{ fontWeight: 400 }}>
             단백질 밀도 · 다이어트 · 퍼포먼스 기준 A–D 등급 (전체 제품 대비 상대 평가)
           </p>
-          <div className="mt-4 flex gap-2">
-            {PRODUCT_TYPES.map((t) => (
-              <button
-                key={t.id}
-                type="button"
-                onClick={() => {
-                  setProductType(t.id);
-                  setMetric("density");
-                }}
-                className="rounded-full px-4 py-1.5 text-sm font-medium transition-colors"
-                style={{
-                  background: productType === t.id ? "var(--accent)" : "white",
-                  color: productType === t.id ? "white" : "#6b6b6b",
-                  border: productType === t.id ? "none" : "1px solid #d9d6cf",
-                }}
-              >
-                {t.label}
-              </button>
-            ))}
-          </div>
         </div>
       </section>
 
       <main className="mx-auto max-w-[1200px] px-4 py-6 md:px-6">
+        {/* 단백질 음료/바 토글 */}
+        <div className="flex gap-2">
+          {PRODUCT_TYPES.map((t) => (
+            <button
+              key={t.id}
+              type="button"
+              onClick={() => {
+                setProductType(t.id);
+                setMetric("density");
+              }}
+              className="rounded-full px-4 py-1.5 text-sm font-medium transition-colors"
+              style={{
+                background: productType === t.id ? "var(--accent)" : "white",
+                color: productType === t.id ? "white" : "#6b6b6b",
+                border: productType === t.id ? "none" : "1px solid var(--border)",
+              }}
+            >
+              {t.label}
+            </button>
+          ))}
+        </div>
+
         {/* 언더라인 탭 */}
-        <div className="flex gap-6 border-b border-[#e8e6e3]">
+        <div className="mt-4 flex gap-6 border-b border-[#e8e6e3]">
           {METRICS.map((m) => (
             <button
               key={m.id}

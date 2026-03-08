@@ -208,7 +208,7 @@ export default function EventsClient() {
                 style={{
                   background: active ? "var(--accent)" : "white",
                   color: active ? "white" : "#6b6b6b",
-                  border: active ? "none" : "1px solid #d9d6cf",
+                  border: active ? "none" : "1px solid var(--border)",
                 }}
               >
                 {type === "drink" ? "단백질음료" : "단백질바"}
@@ -279,9 +279,9 @@ function BrandEventCard({ brand }: { brand: BrandCard }) {
     <div
       className="flex flex-col justify-between"
       style={{
-        border: "1px solid #d9d6cf",
-        borderRadius: "14px",
-        background: "#fff",
+        border: "1px solid #e8e6e3",
+        borderRadius: "16px",
+        background: "#FFFDF8",
         overflow: "hidden",
       }}
     >
@@ -331,7 +331,7 @@ function BrandEventCard({ brand }: { brand: BrandCard }) {
           target="_blank"
           rel="noopener noreferrer"
           className="flex items-center justify-center rounded-lg py-2.5 text-xs font-semibold transition-colors hover:bg-gray-50"
-          style={{ border: "1px solid #d9d6cf", background: "#fff", color: "#374151" }}
+          style={{ border: "1px solid #e8e6e3", background: "#fff", color: "#374151" }}
         >
           {brand.storeType === "네이버 스토어" ? "네이버 스토어 방문" : "자사몰 방문"} →
         </a>
