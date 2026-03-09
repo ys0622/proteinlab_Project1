@@ -40,11 +40,11 @@ const BRAND_OFFICIAL_MALL: Record<string, string> = {
   노브랜드: "https://emart.ssg.com/",
 };
 
-/** 쿠팡 검색 URL (제품명 기반 검색 결과 페이지) */
+/** 쿠팡 파트너스 검색 URL (제품명 기반 검색 결과 페이지) */
 export function getCoupangSearchUrl(brand: string, name: string): string {
   const searchName = name.startsWith(brand) ? name : `${brand} ${name}`;
   const query = encodeURIComponent(searchName);
-  return `https://www.coupang.com/np/search?q=${query}`;
+  return `https://link.coupang.com/a/d0NVuv?subId=proteinlab&q=${query}`;
 }
 
 /** 네이버쇼핑 검색 URL */
