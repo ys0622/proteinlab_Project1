@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { trackPurchaseClick } from "@/lib/gtag";
 import { getProductImageUrl } from "../lib/productImage";
 import {
   getOfficialMallUrl,
@@ -10,7 +11,6 @@ import {
 } from "../lib/purchaseLinks";
 import CompareButton from "./CompareButton";
 import PurchaseLinkRow from "./PurchaseLinkRow";
-import { trackPurchaseClick } from "@/lib/gtag";
 
 export interface ProductCardProps {
   brand: string;
@@ -47,11 +47,13 @@ export default function ProductCard({
 }: ProductCardProps) {
   const detailHref = slug ? `/product/${slug}` : productUrl;
   const imageUrl = slug ? getProductImageUrl(slug) : null;
-
   const coupangHref = getPreferredCoupangUrl(brand, name, coupangUrl ?? productUrl);
   const naverHref = getNaverSearchUrl(brand, name);
   const officialMallHref = getOfficialMallUrl(brand);
   const productId = slug ?? `${brand}-${name}`;
+
+  const packageTag = tags.find((tag) => ["팩", "PET", "CAN"].includes(tag));
+  const capacitySuffix = packageTag ? `, ${packageTag}` : "";
 
   const imageArea = (
     <div
@@ -111,68 +113,34 @@ export default function ProductCard({
         {brand}
       </p>
 
-      {(() => {
-        const packageTag = tags.find((tag) => ["팩", "PET", "CAN"].includes(tag));
-        const capacitySuffix = packageTag ? `, ${packageTag}` : "";
+      <h3
+        className="product-card__title mt-1 font-semibold leading-snug"
+        style={{ fontSize: "16px", fontWeight: 600, color: "#1a1a1a" }}
+      >
+        <span>{name}</span>
+        <span className="font-normal" style={{ fontSize: "13px", color: "#6b6b6b" }}>
+          {" "}
+          {capacity}
+          {capacitySuffix}
+        </span>
+      </h3>
 
-        return (
-          <h3
-            className="product-card__title mt-1 line-clamp-2 font-semibold leading-snug"
-            style={{ fontSize: "16px", fontWeight: 600, color: "#1a1a1a" }}
-          >
-            <span>{name}</span>
-            <span className="font-normal" style={{ fontSize: "13px", color: "#6b6b6b" }}>
-              {" "}
-              {capacity}
-              {capacitySuffix}
-            </span>
-          </h3>
-        );
-      })()}
+      {(gradeTags.length > 0 || (variant && variant !== "일반")) && (
+        <div className="mt-1.5 flex flex-wrap gap-1.5" style={{ gap: "6px" }}>
+          {gradeTags.map((tag) => {
+            const letter = tag.split(" ").pop();
+            const style =
+              letter === "A"
+                ? { bg: "#E7F3EC", border: "#1B7F5B", color: "#1B7F5B" }
+                : letter === "B"
+                  ? { bg: "#EAF2FF", border: "#4C7BD9", color: "#4C7BD9" }
+                  : letter === "C"
+                    ? { bg: "#FFF1E6", border: "#F08A24", color: "#F08A24" }
+                    : { bg: "#f3f3f3", border: "#bbb", color: "#999" };
 
-      {(gradeTags.length > 0 || (variant && variant !== "일반")) && (() => {
-        const order = ["단백질바", "바", "다이어트", "퍼포먼스"];
-        const sorted = [...gradeTags].sort((a, b) => {
-          const ai = order.findIndex((keyword) => a.startsWith(keyword));
-          const bi = order.findIndex((keyword) => b.startsWith(keyword));
-          return (ai === -1 ? 99 : ai) - (bi === -1 ? 99 : bi);
-        });
-
-        const gradeLetterStyle = (tag: string) => {
-          const letter = tag.split(" ").pop();
-          if (letter === "A") return { bg: "#E7F3EC", border: "#1B7F5B", color: "#1B7F5B" };
-          if (letter === "B") return { bg: "#EAF2FF", border: "#4C7BD9", color: "#4C7BD9" };
-          if (letter === "C") return { bg: "#FFF1E6", border: "#F08A24", color: "#F08A24" };
-          return { bg: "#f3f3f3", border: "#bbb", color: "#999" };
-        };
-
-        const lactoFreeStyle = { bg: "#F5F0E8", border: "#D4D4D4", color: "#6B6B6B" };
-
-        return (
-          <div className="mt-1.5 flex flex-wrap gap-1.5" style={{ gap: "6px" }}>
-            {sorted.map((tag) => {
-              const style = gradeLetterStyle(tag);
-              return (
-                <span
-                  key={tag}
-                  className="inline-flex items-center justify-center rounded-full"
-                  style={{
-                    height: "26px",
-                    padding: "0 10px",
-                    borderRadius: "999px",
-                    fontSize: "12px",
-                    fontWeight: 600,
-                    background: style.bg,
-                    border: `1px solid ${style.border}`,
-                    color: style.color,
-                  }}
-                >
-                  {tag}
-                </span>
-              );
-            })}
-            {variant && variant !== "일반" ? (
+            return (
               <span
+                key={tag}
                 className="inline-flex items-center justify-center rounded-full"
                 style={{
                   height: "26px",
@@ -180,39 +148,60 @@ export default function ProductCard({
                   borderRadius: "999px",
                   fontSize: "12px",
                   fontWeight: 600,
-                  background: lactoFreeStyle.bg,
-                  border: `1px solid ${lactoFreeStyle.border}`,
-                  color: lactoFreeStyle.color,
+                  background: style.bg,
+                  border: `1px solid ${style.border}`,
+                  color: style.color,
                 }}
               >
-                {variant}
+                {tag}
               </span>
-            ) : null}
-          </div>
-        );
-      })()}
+            );
+          })}
+          {variant && variant !== "일반" ? (
+            <span
+              className="inline-flex items-center justify-center rounded-full"
+              style={{
+                height: "26px",
+                padding: "0 10px",
+                borderRadius: "999px",
+                fontSize: "12px",
+                fontWeight: 600,
+                background: "#F5F0E8",
+                border: "1px solid #D4D4D4",
+                color: "#6B6B6B",
+              }}
+            >
+              {variant}
+            </span>
+          ) : null}
+        </div>
+      )}
 
       <div className="mx-1 mt-3 border-t border-[#e8e6e3]" />
 
-      <div className="mt-3 grid grid-cols-2 gap-2" style={{ gap: "8px" }}>
+      <div className="mt-3 grid grid-cols-2 gap-2">
         {[
           { label: "단백질", value: `${proteinPerServing}g` },
-          { label: "칼로리", value: calories != null ? `${calories}` : "—" },
-          { label: "당류", value: sugar !== undefined ? `${sugar}g` : "—" },
-          { label: "단백질밀도", value: density },
+          { label: "칼로리", value: calories != null ? `${calories}` : "-" },
+          { label: "당류", value: sugar !== undefined ? `${sugar}g` : "-" },
+          { label: "단백질 밀도", value: density },
         ].map(({ label, value }) => (
           <div
             key={label}
-            className="flex flex-col justify-center rounded-lg border border-[#e8e8e8] bg-white px-2.5 py-2 text-left"
+            className="product-card__metric flex flex-col justify-center rounded-lg border border-[#e8e8e8] bg-white px-2.5 py-2 text-left"
             style={{ borderRadius: "10px" }}
           >
-            <span style={{ fontSize: "11px", color: "#6b6b6b" }}>{label}</span>
-            <span style={{ fontSize: "16px", fontWeight: 700, color: "#3d3d3d" }}>{value}</span>
+            <span className="product-card__metric-label" style={{ fontSize: "11px", color: "#6b6b6b" }}>
+              {label}
+            </span>
+            <span className="product-card__metric-value" style={{ fontSize: "16px", fontWeight: 700, color: "#3d3d3d" }}>
+              {value}
+            </span>
           </div>
         ))}
       </div>
 
-      <div className="cta-group">
+      <div className="cta-group mt-4">
         <PurchaseLinkRow
           coupangHref={coupangHref}
           naverHref={naverHref}
@@ -238,7 +227,7 @@ export default function ProductCard({
           className="flex flex-1 items-center justify-center rounded-[10px] border border-[#e2e2e2] bg-white font-medium text-[var(--foreground)] transition-colors hover:border-[var(--accent)] hover:bg-[var(--accent-light)] hover:text-[var(--accent)] active:scale-[0.98]"
           style={{ height: "40px", fontSize: "12px", borderRadius: "10px" }}
         >
-          자세히
+          상세보기
         </Link>
         {slug ? (
           <CompareButton slug={slug} detailHref={detailHref} />

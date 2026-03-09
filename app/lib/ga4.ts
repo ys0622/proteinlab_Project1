@@ -192,6 +192,7 @@ function buildMonthlyRows(report: Ga4ReportResponse) {
 export type VisitorStats = {
   todayVisitors: number;
   last7DaysVisitors: number;
+  last30DaysVisitors: number;
   monthlyVisitors: Array<{
     month: number;
     label: string;
@@ -207,6 +208,7 @@ export async function getVisitorStats(): Promise<VisitorStats> {
     return {
       todayVisitors: 0,
       last7DaysVisitors: 0,
+      last30DaysVisitors: 0,
       monthlyVisitors: [],
       usingTimeZone: KST_TIME_ZONE,
       configured: false,
@@ -215,22 +217,27 @@ export async function getVisitorStats(): Promise<VisitorStats> {
 
   const today = getKstDateString(new Date());
   const weekStart = shiftDate(today, -6);
+  const last30DaysStart = shiftDate(today, -29);
   const { year } = getCurrentKstYearMonth();
   const accessToken = await getAccessToken(config.clientEmail, config.privateKey);
 
-  const [todayReport, weeklyReport, monthlyReport] = await Promise.all([
+  const [todayReport, weeklyReport, last30DaysReport, monthlyReport] = await Promise.all([
     runReport(config.propertyId, accessToken, {
       dateRanges: [{ startDate: today, endDate: today }],
-      metrics: [{ name: "totalUsers" }],
+      metrics: [{ name: "activeUsers" }],
     }),
     runReport(config.propertyId, accessToken, {
       dateRanges: [{ startDate: weekStart, endDate: today }],
-      metrics: [{ name: "totalUsers" }],
+      metrics: [{ name: "activeUsers" }],
+    }),
+    runReport(config.propertyId, accessToken, {
+      dateRanges: [{ startDate: last30DaysStart, endDate: today }],
+      metrics: [{ name: "activeUsers" }],
     }),
     runReport(config.propertyId, accessToken, {
       dateRanges: [{ startDate: `${year}-01-01`, endDate: today }],
       dimensions: [{ name: "month" }],
-      metrics: [{ name: "totalUsers" }],
+      metrics: [{ name: "activeUsers" }],
       orderBys: [
         {
           dimension: {
@@ -245,6 +252,7 @@ export async function getVisitorStats(): Promise<VisitorStats> {
   return {
     todayVisitors: readMetricValue(todayReport),
     last7DaysVisitors: readMetricValue(weeklyReport),
+    last30DaysVisitors: readMetricValue(last30DaysReport),
     monthlyVisitors: buildMonthlyRows(monthlyReport),
     usingTimeZone: KST_TIME_ZONE,
     configured: true,

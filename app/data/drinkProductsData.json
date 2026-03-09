@@ -346,6 +346,7 @@
       "carbsG": 10,
       "sugarsG": 0,
       "fatG": 0,
+      "satFatG": 0,
       "sodiumMg": 47
     }
   },
@@ -422,6 +423,7 @@
       "carbsG": 0,
       "sugarsG": 0,
       "fatG": 0,
+      "satFatG": 0,
       "sodiumMg": 53
     }
   },
@@ -1271,6 +1273,7 @@
       "carbsG": 0,
       "sugarsG": 0,
       "fatG": 0,
+      "satFatG": 0,
       "sodiumMg": 170,
       "bcaaMg": 1200
     }
@@ -1309,6 +1312,7 @@
       "carbsG": 0,
       "sugarsG": 0,
       "fatG": 0,
+      "satFatG": 0,
       "sodiumMg": 170,
       "bcaaMg": 1200
     }
@@ -1923,7 +1927,11 @@
     "nutritionPerBottle": {
       "caloriesKcal": 109,
       "proteinG": 20,
+      "carbsG": 5.7,
       "sugarsG": 0.8,
+      "fatG": 0.7,
+      "satFatG": 0.1,
+      "sodiumMg": 23,
       "bcaaMg": 4000
     }
   },
@@ -2037,6 +2045,8 @@
       "carbsG": 6,
       "sugarsG": 0.9,
       "fatG": 1,
+      "satFatG": 0.3,
+      "sodiumMg": 60,
       "bcaaMg": 4200
     }
   },
@@ -2069,7 +2079,11 @@
     "nutritionPerBottle": {
       "caloriesKcal": 168,
       "proteinG": 35,
+      "carbsG": 4.7,
       "sugarsG": 0.9,
+      "fatG": 1,
+      "satFatG": 0.3,
+      "sodiumMg": 62,
       "bcaaMg": 6600
     }
   },
@@ -3418,7 +3432,8 @@
       "carbsG": 15,
       "sugarsG": 10,
       "fatG": 6,
-      "satFatG": 1
+      "satFatG": 1,
+      "sodiumMg": 170
     }
   },
   {
@@ -3720,7 +3735,9 @@
       "proteinG": 25,
       "carbsG": 10,
       "sugarsG": 0,
-      "fatG": 0
+      "fatG": 0,
+      "satFatG": 0,
+      "sodiumMg": 48
     }
   },
   {
@@ -3755,7 +3772,9 @@
       "proteinG": 9,
       "carbsG": 14,
       "sugarsG": 10,
-      "fatG": 6
+      "fatG": 6,
+      "satFatG": 1,
+      "sodiumMg": 170
     }
   },
   {
@@ -3790,7 +3809,9 @@
       "proteinG": 21,
       "carbsG": 14,
       "sugarsG": 6,
-      "fatG": 2
+      "fatG": 2,
+      "satFatG": 1,
+      "sodiumMg": 200
     }
   },
   {
@@ -3825,7 +3846,9 @@
       "proteinG": 21,
       "carbsG": 8,
       "sugarsG": 3,
-      "fatG": 2
+      "fatG": 2,
+      "satFatG": 1,
+      "sodiumMg": 100
     }
   },
   {
@@ -3860,7 +3883,9 @@
       "proteinG": 21,
       "carbsG": 11,
       "sugarsG": 5,
-      "fatG": 2
+      "fatG": 2,
+      "satFatG": 1,
+      "sodiumMg": 100
     }
   }
 ]

@@ -132,11 +132,7 @@ export default function ProductListWithFilters(props: ProductListWithFiltersProp
         <SortBar total={filtered.length} />
       </div>
 
-      <section
-        className="product-grid mt-3 bg-white lg:grid-cols-3"
-        style={{ marginTop: "12px" }}
-        aria-label="제품 목록"
-      >
+      <section className="product-grid mt-3 bg-white md:grid-cols-2 lg:grid-cols-3" style={{ marginTop: "12px" }} aria-label="제품 목록">
         {visible.map((product, idx) => (
           <ProductCard
             key={product.slug ?? `${product.brand}-${product.name}`}
@@ -153,7 +149,7 @@ export default function ProductListWithFilters(props: ProductListWithFiltersProp
             onClick={() => setPage((current) => current + 1)}
             className="rounded-full border border-[var(--border)] bg-white px-6 py-2.5 text-sm font-medium text-[var(--foreground)] transition-colors hover:border-[var(--accent)] hover:bg-[var(--accent-light)] hover:text-[var(--accent)]"
           >
-            더 보기 ({filtered.length - visible.length}개 남음)
+            더보기 ({filtered.length - visible.length}개 남음)
           </button>
         </div>
       ) : null}

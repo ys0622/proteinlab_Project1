@@ -11,7 +11,8 @@ type PurchaseLinkRowProps = {
 };
 
 function getButtonClassName(size: "sm" | "md", tone: "coupang" | "naver" | "official") {
-  const sizeClass = size === "sm" ? "h-9 px-3 text-xs" : "h-10 px-4 text-sm";
+  const sizeClass =
+    size === "sm" ? "h-9 px-3 text-xs sm:text-[11px] lg:text-xs" : "h-10 px-4 text-sm";
   const toneClass =
     tone === "coupang"
       ? "border-[#f6c7b6] bg-[#fff3ee] text-[#c24e1b] hover:border-[#ef9c7f] hover:bg-[#ffe6db]"
@@ -19,7 +20,7 @@ function getButtonClassName(size: "sm" | "md", tone: "coupang" | "naver" | "offi
         ? "border-[#bfe8cf] bg-[#eefbf3] text-[#0f8f45] hover:border-[#8fd0aa] hover:bg-[#ddf6e7]"
         : "border-[#d8d8d8] bg-[#f4f4f4] text-[#4f4f4f] hover:border-[#bdbdbd] hover:bg-[#ebebeb]";
 
-  return `inline-flex w-full items-center justify-center rounded-full border ${sizeClass} font-medium transition-colors ${toneClass}`;
+  return `inline-flex w-full items-center justify-center rounded-full border text-center leading-none ${sizeClass} font-medium transition-colors ${toneClass}`;
 }
 
 export default function PurchaseLinkRow({
@@ -36,7 +37,7 @@ export default function PurchaseLinkRow({
   const officialClassName = getButtonClassName(size, "official");
 
   return (
-    <div className="grid grid-cols-3 gap-2">
+    <div className="grid grid-cols-1 gap-2 sm:grid-cols-3">
       <a
         href={coupangHref}
         target="_blank"

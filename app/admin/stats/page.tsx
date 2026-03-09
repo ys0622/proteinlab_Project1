@@ -10,10 +10,11 @@ export default async function StatsPage() {
     timeZone: "Asia/Seoul",
     year: "numeric",
   }).format(new Date());
+
   const summaryCards = [
     { label: "오늘 방문자", value: formatNumber(stats.todayVisitors) },
     { label: "최근 7일 방문자", value: formatNumber(stats.last7DaysVisitors) },
-    { label: "집계 시간대", value: "KST" },
+    { label: "최근 30일 방문자", value: formatNumber(stats.last30DaysVisitors) },
   ];
 
   return (
@@ -48,7 +49,7 @@ export default async function StatsPage() {
               <div>
                 <h2 className="text-base font-semibold text-[var(--foreground)]">월별 방문자</h2>
                 <p className="mt-1 text-sm text-[var(--foreground-muted)]">
-                  {nowInKst} 기준 월별 고유 방문자 수입니다.
+                  {nowInKst}년 기준 월별 활성 사용자 수입니다.
                 </p>
               </div>
               <a
@@ -60,6 +61,11 @@ export default async function StatsPage() {
                 Google Analytics 열기
               </a>
             </div>
+
+            <p className="mb-4 rounded-lg bg-[var(--beige-warm)] px-4 py-3 text-xs text-[var(--foreground-muted)]">
+              GA4의 알려진 봇 필터링과 <code>activeUsers</code> 지표를 기준으로 집계합니다. 사내 테스트
+              트래픽까지 제외하려면 GA4에서 내부 트래픽 필터를 별도로 설정해야 합니다.
+            </p>
 
             <div className="overflow-hidden rounded-xl border border-[var(--border)]">
               <table className="w-full text-sm">
@@ -87,28 +93,32 @@ export default async function StatsPage() {
             </div>
 
             <p className="mt-4 text-xs text-[var(--foreground-muted)]">
-              Google Analytics 4 속성 시간대가 {stats.usingTimeZone}로 설정되어 있어야 하루와 월별
-              집계 기준이 한국 시간과 일치합니다.
+              Google Analytics 4 속성 시간대가 {stats.usingTimeZone}로 설정돼 있어야 하루, 7일, 30일,
+              월별 집계가 한국 시간 기준과 일치합니다.
             </p>
           </div>
         </>
       ) : (
         <div className="rounded-xl border border-[var(--border)] bg-[var(--background-card)] p-6">
-          <h2 className="text-base font-semibold text-[var(--foreground)]">
-            방문자 통계 설정 필요
-          </h2>
+          <h2 className="text-base font-semibold text-[var(--foreground)]">방문자 통계 설정 필요</h2>
           <p className="mt-2 text-sm text-[var(--foreground-muted)]">
-            관리자 페이지에서 방문자 수를 보려면 Google Analytics 4 Data API용 환경변수를 추가해야
-            합니다.
+            관리자 페이지에서 방문자 수를 보려면 Google Analytics 4 Data API 조회용 환경변수가 추가로
+            필요합니다.
           </p>
           <div className="mt-4 rounded-lg bg-[var(--beige-warm)] p-4 text-sm text-[var(--foreground)]">
-            <p>`GA4_PROPERTY_ID`</p>
-            <p>`GA4_CLIENT_EMAIL`</p>
-            <p>`GA4_PRIVATE_KEY`</p>
+            <p>
+              <code>GA4_PROPERTY_ID</code>
+            </p>
+            <p>
+              <code>GA4_CLIENT_EMAIL</code>
+            </p>
+            <p>
+              <code>GA4_PRIVATE_KEY</code>
+            </p>
           </div>
           <p className="mt-4 text-xs text-[var(--foreground-muted)]">
-            `NEXT_PUBLIC_GA_ID`는 추적용이고, 관리자 통계 조회에는 별도로 읽기 권한이 있는 서비스
-            계정 키가 필요합니다.
+            <code>NEXT_PUBLIC_GA_ID</code>는 프론트 추적용 ID이고, 관리자 통계 조회에는 별도 읽기 권한이
+            있는 서비스 계정이 필요합니다.
           </p>
         </div>
       )}
