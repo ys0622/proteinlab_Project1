@@ -1,4 +1,4 @@
-type PurchaseStore = "coupang" | "naver" | "official_mall";
+type PurchaseStore = "coupang" | "naver" | "official";
 
 declare global {
   interface Window {

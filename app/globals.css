@@ -108,6 +108,7 @@ h1, h2, h3, h4, h5, h6 {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  text-decoration: none;
   transition: background-color 0.2s ease;
 }
 
@@ -136,6 +137,7 @@ h1, h2, h3, h4, h5, h6 {
   overflow: hidden;
   text-overflow: ellipsis;
   text-align: center;
+  text-decoration: none;
   transition: background-color 0.2s ease, color 0.2s ease;
 }
 
@@ -147,6 +149,10 @@ h1, h2, h3, h4, h5, h6 {
 .btn-cta-secondary-disabled {
   cursor: not-allowed;
   color: #aaa;
+}
+
+.cta-group {
+  width: 100%;
 }
 
 .admin-bottom-tab {

@@ -25,3 +25,4 @@ export const navigationItems: NavigationItem[] = [
   { label: "문의", href: "/contact" },
   { label: "관리", href: "/admin", adminOnly: true },
 ];
+

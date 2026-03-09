@@ -204,7 +204,7 @@ export default function ProductCard({
       <div className="mx-1 mt-3 border-t border-[#e8e6e3]" />
 
       {/* 구매 링크 영역 */}
-      <div className="mt-3">
+      <div className="cta-group">
         <a
           href={coupangHref}
           target="_blank"
@@ -236,7 +236,7 @@ export default function ProductCard({
               target="_blank"
               rel="noopener noreferrer"
               className="btn-cta-secondary"
-              onClick={() => trackPurchaseClick({ productName: name, brand, store: "official_mall", productId })}
+              onClick={() => trackPurchaseClick({ productName: name, brand, store: "official", productId })}
             >
               공식몰
             </a>
