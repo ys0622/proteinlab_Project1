@@ -23,6 +23,4 @@ export const navigationItems: NavigationItem[] = [
   { label: "브랜드 이벤트", href: "/official-events" },
   { label: "단백질 가이드", href: "/guides" },
   { label: "문의", href: "/contact" },
-  { label: "관리", href: "/admin", adminOnly: true },
 ];
-
