@@ -8,11 +8,18 @@ export default function HeroSection() {
       aria-label="히어로"
     >
       <div className="mx-auto max-w-[1200px] px-4 py-4 md:px-6 md:py-5">
-        <h1 className="text-2xl font-bold leading-tight text-[var(--foreground)] md:text-3xl" style={{ fontWeight: 700 }}>
+        <h1
+          className="text-2xl font-bold leading-tight text-[var(--foreground)] md:text-3xl"
+          style={{ fontWeight: 700 }}
+        >
           단백질 제품, 제대로 비교하다
         </h1>
         <p className="mt-1 text-sm text-[var(--foreground-muted)]" style={{ fontWeight: 400 }}>
-          국내 단백질 제품의 성분과 영양 정보를 비교 정리하는 플랫폼입니다. 단백질 함량, 당류, 단백질 밀도 등 핵심 지표를 한눈에 확인하세요.
+          셀렉스, 하이뮨, 더단백, 얼티브 등 국내 단백질 음료 101종을
+          <br />
+          단백질 함량·당류·밀도 등급 기준으로 비교합니다.
+          <br />
+          지금 바로 내 목적에 맞는 제품을 찾아보세요.
         </p>
       </div>
     </section>

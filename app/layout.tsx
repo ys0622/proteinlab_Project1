@@ -8,8 +8,14 @@ import "./globals.css";
 const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
 
 export const metadata: Metadata = {
-  title: "ProteinLab | 단백질 음료 비교 플랫폼",
-  description: "국내 단백질 제품의 성분과 영양 정보를 비교·정리하는 플랫폼입니다.",
+  title: "단백질 음료 비교등급 정리 | ProteinLab",
+  description:
+    "셀렉스, 하이뮨, 더단백 등 국내 단백질 음료를 성분 데이터로 비교합니다. 목적별 추천등급 랭킹가이드까지 한 곳에서 확인하세요.",
+  openGraph: {
+    title: "단백질 음료 비교등급 정리 | ProteinLab",
+    description:
+      "셀렉스, 하이뮨, 더단백 등 국내 단백질 음료를 성분 데이터로 비교합니다. 목적별 추천등급 랭킹가이드까지 한 곳에서 확인하세요.",
+  },
 };
 
 export default function RootLayout({
