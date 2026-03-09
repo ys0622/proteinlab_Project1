@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import Header from "../../../components/Header";
 import Footer from "../../../components/Footer";
@@ -16,36 +17,11 @@ function pickHref(slug: string) {
   return getPickBySlug(slug) ? `/picks/${slug}` : "#";
 }
 
-function ImageSlot({
-  label,
-  alt,
-  pathHint,
-}: {
-  label: string;
-  alt: string;
-  pathHint?: string;
-}) {
-  return (
-    <figure
-      className="mt-4 rounded-xl border border-dashed p-5"
-      style={{ borderColor: "#d8d3cb", background: "#faf8f3" }}
-    >
-      <p className="text-xs font-semibold text-[var(--foreground)]">{label}</p>
-      <p className="mt-1 text-xs text-[var(--foreground-muted)]">alt: {alt}</p>
-      {pathHint && (
-        <p className="mt-1 text-[11px] text-[var(--foreground-muted)]">참고 경로: {pathHint}</p>
-      )}
-    </figure>
-  );
+function drinkImageSrc(filename: string) {
+  return `/rtd-drink-image/${encodeURIComponent(filename)}`;
 }
 
-function Table({
-  headers,
-  rows,
-}: {
-  headers: string[];
-  rows: string[][];
-}) {
+function Table({ headers, rows }: { headers: string[]; rows: string[][] }) {
   return (
     <div className="mt-3 overflow-x-auto rounded-xl border" style={{ borderColor: "#e8e6e3" }}>
       <table className="min-w-full border-collapse text-sm">
@@ -92,6 +68,17 @@ function InlineButton({ href, text }: { href: string; text: string }) {
   );
 }
 
+function ProductImageCard({ src, alt }: { src: string; alt: string }) {
+  return (
+    <div
+      className="relative overflow-hidden rounded-xl border bg-white"
+      style={{ borderColor: "#e8e6e3", minHeight: "180px" }}
+    >
+      <Image src={src} alt={alt} fill className="object-contain p-3" sizes="(max-width: 768px) 100vw, 33vw" />
+    </div>
+  );
+}
+
 export default function ChecklistGuidePage() {
   const links = {
     highProtein20: pickHref("high-protein-20"),
@@ -105,10 +92,7 @@ export default function ChecklistGuidePage() {
     <div className="min-h-screen bg-white">
       <Header />
 
-      <section
-        className="w-full border-t border-b bg-[var(--hero-bg)]"
-        style={{ borderColor: "var(--hero-border)" }}
-      >
+      <section className="w-full border-t border-b bg-[var(--hero-bg)]" style={{ borderColor: "var(--hero-border)" }}>
         <div className="mx-auto max-w-[1200px] px-4 py-4 md:px-6 md:py-5">
           <div className="flex items-center gap-1.5 text-xs text-[var(--foreground-muted)]">
             <Link href="/guides" className="hover:text-[var(--accent)]">
@@ -142,29 +126,34 @@ export default function ChecklistGuidePage() {
       </section>
 
       <main className="mx-auto max-w-[800px] px-4 py-8 md:px-6">
-        <ImageSlot
-          label="[IMAGE SLOT: 편의점 단백질 음료 매대 전경]"
-          alt="편의점 냉장 매대에 진열된 다양한 단백질 음료 제품들"
-        />
+        <div className="mt-4 grid gap-3 md:grid-cols-3">
+          <ProductImageCard
+            src={drinkImageSrc("빙그레 더단백 (커피) 20g 250ml.png")}
+            alt="국내 단백질 음료 대표 제품들"
+          />
+          <ProductImageCard
+            src={drinkImageSrc("매일유업 셀렉스 프로핏 (밀크 바닐라) 20g 250ml.png")}
+            alt="국내 단백질 음료 대표 제품들"
+          />
+          <ProductImageCard
+            src={drinkImageSrc("하이뮨 프로틴 밸런스 액티브 (딥초코) 20g 250ml.png")}
+            alt="국내 단백질 음료 대표 제품들"
+          />
+        </div>
 
         <p className="mt-6 text-sm leading-7 text-[var(--foreground-muted)]">
-          국내 단백질 식품 시장은 2018년 약 813억 원에서 2021년 3,364억 원으로 3년 만에 4배 이상
-          급성장했습니다. 2024년 기준 시장 규모는 약 4,500억 원대로 추정됩니다.
+          국내 단백질 식품 시장은 2018년 약 813억 원에서 2021년 3,364억 원으로 3년 만에 4배 이상 급성장했습니다.
+          2024년 기준 시장 규모는 약 4,500억 원대로 추정됩니다.
         </p>
-        <blockquote
-          className="mt-3 rounded-xl border-l-4 px-4 py-3 text-sm"
-          style={{ borderColor: "#4a6178", background: "#f5f7fb", color: "#425466" }}
-        >
+        <blockquote className="mt-3 rounded-xl border-l-4 px-4 py-3 text-sm" style={{ borderColor: "#4a6178", background: "#f5f7fb", color: "#425466" }}>
           출처: 한국농수산식품유통공사(aT), 국민일보 2024.02.25
         </blockquote>
 
         <section className="mt-10">
-          <h2 className="text-xl font-bold text-[var(--foreground)]">
-            1. 단백질 함량  한 팩에 얼마나 들어있나?
-          </h2>
+          <h2 className="text-xl font-bold text-[var(--foreground)]">1. 단백질 함량  한 팩에 얼마나 들어있나?</h2>
           <p className="mt-3 text-sm leading-7 text-[var(--foreground-muted)]">
-            단백질 음료의 가장 기본 지표입니다. 운동 후 근합성을 극대화하려면 1회 최소 20g 이상이
-            권장됩니다. (출처: 경향신문 수피의 헬스 가이드, 2024.10)
+            단백질 음료의 가장 기본 지표입니다. 운동 후 근합성을 극대화하려면 1회 최소 20g 이상이 권장됩니다.
+            (출처: 경향신문 수피의 헬스 가이드, 2024.10)
           </p>
           <Table
             headers={["함량 기준", "의미"]}
@@ -174,19 +163,19 @@ export default function ChecklistGuidePage() {
               ["20g 미만", "저함량  가벼운 일상 보충 또는 간식 대용"],
             ]}
           />
-          <ImageSlot
-            label="[IMAGE SLOT: ProteinLab 제품 카드  뉴케어 올프로틴 (단백질 25g)]"
-            alt="뉴케어 올프로틴 제품 카드 예시"
-          />
+          <div className="mt-4">
+            <ProductImageCard
+              src={drinkImageSrc("뉴케어 올프로틴 (초콜릿) 25g 245ml.png")}
+              alt="단백질 25g 고함량 제품  뉴케어 올프로틴"
+            />
+          </div>
           <div className="mt-4">
             <InlineButton href={links.highProtein20} text="고단백 20g+ 제품 바로 보기" />
           </div>
         </section>
 
         <section className="mt-10">
-          <h2 className="text-xl font-bold text-[var(--foreground)]">
-            2. 단백질 급원  유청인가, 식물성인가?
-          </h2>
+          <h2 className="text-xl font-bold text-[var(--foreground)]">2. 단백질 급원  유청인가, 식물성인가?</h2>
           <p className="mt-3 text-sm leading-7 text-[var(--foreground-muted)]">
             단백질의 원료(급원)에 따라 흡수 속도와 아미노산 구성이 달라집니다.
             <br />
@@ -201,40 +190,29 @@ export default function ChecklistGuidePage() {
               ["식물성 (대두·완두)", "채식주의자 적합", "비건, 유제품 민감한 분"],
             ]}
           />
-          <ImageSlot
-            label="[IMAGE SLOT: 단백질 급원별 흡수 속도 비교 도식  WPI/WPC/카제인/식물성 타임라인]"
-            alt="WPI, WPC, 카제인, 식물성 급원의 흡수 속도 비교 도식"
-          />
         </section>
 
         <section className="mt-10">
-          <h2 className="text-xl font-bold text-[var(--foreground)]">
-            3. 당류  0g이 무조건 좋은 건 아닙니다
-          </h2>
+          <h2 className="text-xl font-bold text-[var(--foreground)]">3. 당류  0g이 무조건 좋은 건 아닙니다</h2>
           <p className="mt-3 text-sm leading-7 text-[var(--foreground-muted)]">
-            단백질 음료라고 해서 무조건 건강하지 않습니다. 일부 제품은 당류가 단백질 함량만큼 많이
-            들어있기도 합니다.
+            단백질 음료라고 해서 무조건 건강하지 않습니다. 일부 제품은 당류가 단백질 함량만큼 많이 들어있기도 합니다.
           </p>
           <ul className="mt-2 list-disc pl-5 text-sm leading-7 text-[var(--foreground-muted)]">
             <li>다이어트 목적이라면 당류 0~1g 제품 선택</li>
             <li>당류 0g 제품은 감미료(수크랄로스 등)가 포함된 경우가 많음</li>
             <li>감미료는 일반적 섭취량에서 문제없으나, 민감한 분은 확인 권장</li>
           </ul>
-          <p className="mt-2 text-xs text-[var(--foreground-muted)]">
-            (출처: 경향신문 수피의 헬스 가이드, 2024.10)
-          </p>
+          <p className="mt-2 text-xs text-[var(--foreground-muted)]">(출처: 경향신문 수피의 헬스 가이드, 2024.10)</p>
           <div className="mt-4">
             <InlineButton href={links.zeroSugar} text="당류 0g 제품 모아보기" />
           </div>
         </section>
 
         <section className="mt-10">
-          <h2 className="text-xl font-bold text-[var(--foreground)]">
-            4. 단백질 밀도  용량 대비 효율 지표
-          </h2>
+          <h2 className="text-xl font-bold text-[var(--foreground)]">4. 단백질 밀도  용량 대비 효율 지표</h2>
           <p className="mt-3 text-sm leading-7 text-[var(--foreground-muted)]">
-            같은 단백질 함량이라도 용량이 크면 실제 농도는 낮습니다. ProteinLab은 이를 수치화한 단백질
-            밀도(g/100ml) 지표와 A~D 등급을 제공합니다.
+            같은 단백질 함량이라도 용량이 크면 실제 농도는 낮습니다. ProteinLab은 이를 수치화한 단백질 밀도(g/100ml)
+            지표와 A~D 등급을 제공합니다.
           </p>
           <Table
             headers={["밀도 등급", "기준", "의미"]}
@@ -252,9 +230,7 @@ export default function ChecklistGuidePage() {
         </section>
 
         <section className="mt-10">
-          <h2 className="text-xl font-bold text-[var(--foreground)]">
-            5. 워터형 vs 밀크형  내 목적에 맞는 타입
-          </h2>
+          <h2 className="text-xl font-bold text-[var(--foreground)]">5. 워터형 vs 밀크형  내 목적에 맞는 타입</h2>
           <Table
             headers={["구분", "워터형", "밀크형"]}
             rows={[
@@ -265,11 +241,16 @@ export default function ChecklistGuidePage() {
               ["대표 제품", "더단백 워터 프로틴, 랩노쉬 헤이워터", "셀렉스 프로핏, 하이뮨 액티브"],
             ]}
           />
-          <ImageSlot
-            label="[IMAGE SLOT: 워터형(더단백 워터 프로틴) vs 밀크형(셀렉스 프로핏) 제품 나란히 배치]"
-            alt="워터형과 밀크형 단백질 음료 비교 이미지"
-            pathHint="/rtd-drink-image/빙그레 더단백 (청사과) 25g 400ml.png, /rtd-drink-image/매일유업 셀렉스 프로핏 (밀크 바닐라) 20g 250ml.png"
-          />
+          <div className="mt-4 grid gap-3 md:grid-cols-2">
+            <ProductImageCard
+              src={drinkImageSrc("빙그레 더단백 (청사과) 25g 400ml.png")}
+              alt="워터형  더단백 워터 프로틴 청사과"
+            />
+            <ProductImageCard
+              src={drinkImageSrc("매일유업 셀렉스 프로핏 (밀크 바닐라) 20g 250ml.png")}
+              alt="밀크형  셀렉스 프로핏 밀크 바닐라"
+            />
+          </div>
           <div className="mt-4">
             <InlineButton href={links.proteinWater} text="워터형 제품만 보기" />
           </div>
@@ -286,10 +267,24 @@ export default function ChecklistGuidePage() {
               ["비건·유당불내증", "식물성 급원, 락토프리 확인", "식물성"],
             ]}
           />
-          <ImageSlot
-            label="[IMAGE SLOT: 목적별 추천 제품 카드 4종  ProteinLab 등록 제품 각 목적에 맞게 1개씩]"
-            alt="목적별 추천 제품 카드 4종"
-          />
+          <div className="mt-4 grid grid-cols-2 gap-3">
+            <div>
+              <ProductImageCard src={drinkImageSrc("뉴케어 올프로틴 (초콜릿) 25g 245ml.png")} alt="근성장" />
+              <p className="mt-1 text-center text-xs text-[var(--foreground-muted)]">근성장</p>
+            </div>
+            <div>
+              <ProductImageCard src={drinkImageSrc("빙그레 더단백 (청사과) 25g 400ml.png")} alt="다이어트" />
+              <p className="mt-1 text-center text-xs text-[var(--foreground-muted)]">다이어트</p>
+            </div>
+            <div>
+              <ProductImageCard src={drinkImageSrc("매일유업 셀렉스 프로핏 (밀크 바닐라) 20g 250ml.png")} alt="일상보충" />
+              <p className="mt-1 text-center text-xs text-[var(--foreground-muted)]">일상보충</p>
+            </div>
+            <div>
+              <ProductImageCard src={drinkImageSrc("CJ 얼티브 비건 프로틴 (바나나맛) 21g 250ml.png")} alt="비건" />
+              <p className="mt-1 text-center text-xs text-[var(--foreground-muted)]">비건</p>
+            </div>
+          </div>
           <div className="mt-6">
             <Link href="/" className="btn-cta-primary max-w-[280px]">
               전체 제품 비교하러 가기
