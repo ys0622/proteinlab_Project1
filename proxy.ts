@@ -14,7 +14,7 @@ async function verifySession(token: string): Promise<boolean> {
     const timestamp = token.slice(0, dotIndex);
     const providedHmac = token.slice(dotIndex + 1);
 
-    // Reject tokens older than 24 hours
+    // Reject tokens older than 24 hours.
     const ts = parseInt(timestamp, 10);
     if (isNaN(ts) || Date.now() - ts > 86400 * 1000) return false;
 
@@ -29,7 +29,7 @@ async function verifySession(token: string): Promise<boolean> {
     );
     const signature = await crypto.subtle.sign("HMAC", key, encoder.encode(timestamp));
     const expectedHmac = Array.from(new Uint8Array(signature))
-      .map((b) => b.toString(16).padStart(2, "0"))
+      .map((byte) => byte.toString(16).padStart(2, "0"))
       .join("");
 
     return providedHmac === expectedHmac;
@@ -38,7 +38,7 @@ async function verifySession(token: string): Promise<boolean> {
   }
 }
 
-export async function middleware(request: NextRequest) {
+export async function proxy(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
 
   if (pathname.startsWith("/admin") && !pathname.startsWith("/admin/login")) {
