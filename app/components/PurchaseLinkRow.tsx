@@ -10,9 +10,16 @@ type PurchaseLinkRowProps = {
   onOfficialClick?: () => void;
 };
 
-function getButtonClassName(size: "sm" | "md") {
+function getButtonClassName(size: "sm" | "md", tone: "coupang" | "naver" | "official") {
   const sizeClass = size === "sm" ? "h-9 px-3 text-xs" : "h-10 px-4 text-sm";
-  return `inline-flex w-full items-center justify-center rounded-full border border-[#e2e2e2] bg-white ${sizeClass} font-medium text-[var(--foreground)] transition-colors hover:border-[var(--accent)] hover:bg-[var(--accent-light)] hover:text-[var(--accent)]`;
+  const toneClass =
+    tone === "coupang"
+      ? "border-[#f6c7b6] bg-[#fff3ee] text-[#c24e1b] hover:border-[#ef9c7f] hover:bg-[#ffe6db]"
+      : tone === "naver"
+        ? "border-[#bfe8cf] bg-[#eefbf3] text-[#0f8f45] hover:border-[#8fd0aa] hover:bg-[#ddf6e7]"
+        : "border-[#d8d8d8] bg-[#f4f4f4] text-[#4f4f4f] hover:border-[#bdbdbd] hover:bg-[#ebebeb]";
+
+  return `inline-flex w-full items-center justify-center rounded-full border ${sizeClass} font-medium transition-colors ${toneClass}`;
 }
 
 export default function PurchaseLinkRow({
@@ -24,7 +31,9 @@ export default function PurchaseLinkRow({
   onNaverClick,
   onOfficialClick,
 }: PurchaseLinkRowProps) {
-  const buttonClassName = getButtonClassName(size);
+  const coupangClassName = getButtonClassName(size, "coupang");
+  const naverClassName = getButtonClassName(size, "naver");
+  const officialClassName = getButtonClassName(size, "official");
 
   return (
     <div className="grid grid-cols-3 gap-2">
@@ -32,7 +41,7 @@ export default function PurchaseLinkRow({
         href={coupangHref}
         target="_blank"
         rel="noopener noreferrer"
-        className={buttonClassName}
+        className={coupangClassName}
         onClick={onCoupangClick}
       >
         쿠팡 구매
@@ -41,7 +50,7 @@ export default function PurchaseLinkRow({
         href={naverHref}
         target="_blank"
         rel="noopener noreferrer"
-        className={buttonClassName}
+        className={naverClassName}
         onClick={onNaverClick}
       >
         네이버 구매
@@ -51,14 +60,14 @@ export default function PurchaseLinkRow({
           href={officialMallHref}
           target="_blank"
           rel="noopener noreferrer"
-          className={buttonClassName}
+          className={officialClassName}
           onClick={onOfficialClick}
         >
           공식몰 구매
         </a>
       ) : (
         <span
-          className={`${buttonClassName} cursor-not-allowed border-[#e8e8e8] bg-[#f9f9f9] text-[#b5b5b5] hover:border-[#e8e8e8] hover:bg-[#f9f9f9] hover:text-[#b5b5b5]`}
+          className={`${officialClassName} cursor-not-allowed border-[#e3e3e3] bg-[#f7f7f7] text-[#b5b5b5] hover:border-[#e3e3e3] hover:bg-[#f7f7f7] hover:text-[#b5b5b5]`}
           title="공식몰 정보 없음"
         >
           공식몰 구매

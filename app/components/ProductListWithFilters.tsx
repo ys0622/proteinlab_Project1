@@ -133,7 +133,7 @@ export default function ProductListWithFilters(props: ProductListWithFiltersProp
       </div>
 
       <section
-        className="product-grid mt-3 bg-white md:grid-cols-2 lg:grid-cols-3"
+        className="product-grid mt-3 bg-white lg:grid-cols-3"
         style={{ marginTop: "12px" }}
         aria-label="제품 목록"
       >

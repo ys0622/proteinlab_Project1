@@ -212,8 +212,6 @@ export default function ProductCard({
         ))}
       </div>
 
-      <div className="mx-1 mt-3 border-t border-[#e8e6e3]" />
-
       <div className="cta-group">
         <PurchaseLinkRow
           coupangHref={coupangHref}
