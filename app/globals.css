@@ -177,6 +177,10 @@ h1, h2, h3, h4, h5, h6 {
   object-fit: contain;
 }
 
+.product-card__badges {
+  align-content: flex-start;
+}
+
 .filter-drawer {
   min-height: 60vh;
   padding-bottom: env(safe-area-inset-bottom);
@@ -308,11 +312,49 @@ h1, h2, h3, h4, h5, h6 {
   }
 
   .product-card {
+    min-height: 520px;
     padding: 10px !important;
   }
 
   .product-card__title {
+    min-height: 40px;
     font-size: 14px;
+    line-height: 1.3;
+  }
+
+  .product-card__brand {
+    min-height: 16px;
+  }
+
+  .product-card__media {
+    height: 148px !important;
+    padding: 8px !important;
+  }
+
+  .product-card__image {
+    min-height: 120px !important;
+  }
+
+  .product-card__badges {
+    min-height: 52px;
+    max-height: 52px;
+    overflow: hidden;
+    gap: 4px !important;
+  }
+
+  .product-card__badge {
+    height: 22px !important;
+    padding: 0 7px !important;
+    font-size: 10px !important;
+  }
+
+  .product-card__metrics {
+    gap: 6px !important;
+  }
+
+  .product-card__metric {
+    min-height: 52px;
+    padding: 7px 8px !important;
   }
 
   .product-card__metric-label {
@@ -320,7 +362,8 @@ h1, h2, h3, h4, h5, h6 {
   }
 
   .product-card__metric-value {
-    font-size: 14px !important;
+    font-size: 13px !important;
+    white-space: nowrap;
   }
 
   .product-card__metric-value--density {
@@ -331,6 +374,16 @@ h1, h2, h3, h4, h5, h6 {
 
   .cta-group {
     margin-top: 12px !important;
+  }
+
+  .product-card__footer-actions {
+    gap: 8px !important;
+  }
+
+  .product-card__footer-actions > a,
+  .product-card__footer-actions > button {
+    height: 36px !important;
+    font-size: 11px !important;
   }
 
   .dashboard-card__label {

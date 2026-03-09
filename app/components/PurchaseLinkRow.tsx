@@ -13,7 +13,7 @@ type PurchaseLinkRowProps = {
 function getButtonClassName(size: "sm" | "md", tone: "coupang" | "naver" | "official") {
   const sizeClass =
     size === "sm"
-      ? "h-10 px-1.5 text-[10px] sm:px-3 sm:text-xs"
+      ? "h-9 px-1 text-[9px] sm:h-10 sm:px-3 sm:text-xs"
       : "h-11 px-3 text-xs sm:px-4 sm:text-sm";
   const toneClass =
     tone === "coupang"
@@ -22,7 +22,7 @@ function getButtonClassName(size: "sm" | "md", tone: "coupang" | "naver" | "offi
         ? "border-[#bfe8cf] bg-[#eefbf3] text-[#0f8f45] hover:border-[#8fd0aa] hover:bg-[#ddf6e7]"
         : "border-[#d8d8d8] bg-[#f4f4f4] text-[#4f4f4f] hover:border-[#bdbdbd] hover:bg-[#ebebeb]";
 
-  return `inline-flex min-w-0 w-full items-center justify-center overflow-hidden rounded-full border text-center font-semibold leading-none whitespace-nowrap text-ellipsis transition-colors ${sizeClass} ${toneClass}`;
+  return `inline-flex min-w-0 w-full items-center justify-center overflow-hidden rounded-full border text-center font-semibold leading-none whitespace-nowrap text-ellipsis tracking-[-0.02em] transition-colors ${sizeClass} ${toneClass}`;
 }
 
 export default function PurchaseLinkRow({
