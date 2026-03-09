@@ -1,19 +1,30 @@
-import { cookies } from "next/headers";
+"use client";
+
+import { useEffect, useState } from "react";
 import HeaderClient from "./HeaderClient";
-import { verifySessionToken } from "@/app/lib/session";
 
-export default async function Header() {
-  let isAdmin = false;
+export default function Header() {
+  const [isAdmin, setIsAdmin] = useState(false);
 
-  try {
-    const cookieStore = await cookies();
-    const token = cookieStore.get("proteinlab_session")?.value;
-    if (token) {
-      isAdmin = await verifySessionToken(token);
-    }
-  } catch {
-    isAdmin = false;
-  }
+  useEffect(() => {
+    let cancelled = false;
+
+    const checkAdminSession = async () => {
+      try {
+        const res = await fetch("/api/admin/check", { cache: "no-store" });
+        if (!res.ok) return;
+        const data = (await res.json()) as { isAdmin?: boolean };
+        if (!cancelled) setIsAdmin(data.isAdmin === true);
+      } catch {
+        if (!cancelled) setIsAdmin(false);
+      }
+    };
+
+    void checkAdminSession();
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
   return <HeaderClient isAdmin={isAdmin} />;
 }

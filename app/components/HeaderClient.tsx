@@ -67,12 +67,12 @@ export default function HeaderClient({ isAdmin }: { isAdmin: boolean }) {
                       {item.children.map((child) => {
                         const childActive = isActive(pathname, child.href);
                         return (
-                          <Link
-                            key={child.href}
-                            href={child.href}
-                            onClick={() => setOpenGroup(null)}
-                            className={`dropdown-item ${childActive ? "bg-[var(--accent-light)] font-semibold text-[var(--accent)]" : ""}`}
-                          >
+                        <Link
+                          key={child.href}
+                          href={child.href}
+                          onClick={() => setOpenGroupByPath((current) => ({ ...current, [pathname]: null }))}
+                          className={`dropdown-item ${childActive ? "bg-[var(--accent-light)] font-semibold text-[var(--accent)]" : ""}`}
+                        >
                             {child.label}
                           </Link>
                         );
