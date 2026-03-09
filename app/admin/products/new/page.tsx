@@ -119,7 +119,7 @@ export default function NewProductPage() {
         drinkType: form.productType === "drink" ? (form.drinkType || undefined) : undefined,
         proteinSource: form.proteinSource || undefined,
         tags: form.tags.split(",").map((t) => t.trim()).filter(Boolean),
-        productUrl: form.productUrl || "#",
+        productUrl: form.productUrl.trim() || "#",
         proteinPerServing: n(form.proteinPerServing),
         calories: n(form.calories),
         sugar: n(form.sugar),

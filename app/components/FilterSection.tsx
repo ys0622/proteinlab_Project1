@@ -81,11 +81,21 @@ function FilterChip({
 }
 
 type FilterSectionProps =
-  | { productType: "drink"; filters: DrinkFilters; onFilterToggle: (key: keyof DrinkFilters, value: string) => void }
-  | { productType: "bar"; filters: BarFilters; onFilterToggle: (key: keyof BarFilters, value: string) => void };
+  | {
+      productType: "drink";
+      filters: DrinkFilters;
+      onFilterToggle: (key: keyof DrinkFilters, value: string) => void;
+      onResetFilters: () => void;
+    }
+  | {
+      productType: "bar";
+      filters: BarFilters;
+      onFilterToggle: (key: keyof BarFilters, value: string) => void;
+      onResetFilters: () => void;
+    };
 
 export default function FilterSection(props: FilterSectionProps) {
-  const { productType, filters, onFilterToggle } = props;
+  const { productType, filters, onFilterToggle, onResetFilters } = props;
   const [mobileFilterOpen, setMobileFilterOpen] = useState(false);
 
   const filterContent =
@@ -181,7 +191,24 @@ export default function FilterSection(props: FilterSectionProps) {
           상세 필터
           <span className={`inline-block transition-transform duration-200 ${mobileFilterOpen ? "rotate-180" : ""}`}>▼</span>
         </button>
-        {mobileFilterOpen && <div className="pt-1">{filterContent}</div>}
+        {mobileFilterOpen && (
+          <div className="filter-drawer pt-1">
+            <div className="filter-drawer__handle" />
+            {filterContent}
+            <div className="filter-drawer__apply mt-3 flex items-center justify-between gap-3">
+              <button type="button" onClick={onResetFilters} className="btn-reset">
+                초기화
+              </button>
+              <button
+                type="button"
+                onClick={() => setMobileFilterOpen(false)}
+                className="btn-apply inline-flex h-11 items-center justify-center rounded-full bg-[var(--accent)] px-5 text-sm font-medium text-white transition-colors hover:bg-[var(--accent-hover)]"
+              >
+                필터 적용
+              </button>
+            </div>
+          </div>
+        )}
       </div>
       <div className="hidden md:block">{filterContent}</div>
     </div>

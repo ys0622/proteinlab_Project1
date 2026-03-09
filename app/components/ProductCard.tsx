@@ -3,8 +3,13 @@
 import Image from "next/image";
 import Link from "next/link";
 import { getProductImageUrl } from "../lib/productImage";
-import { getCoupangSearchUrl, getNaverSearchUrl, getOfficialMallUrl } from "../lib/purchaseLinks";
+import {
+  getOfficialMallUrl,
+  getNaverSearchUrl,
+  getPreferredCoupangUrl,
+} from "../lib/purchaseLinks";
 import CompareButton from "./CompareButton";
+import PurchaseLinkRow from "./PurchaseLinkRow";
 import { trackPurchaseClick } from "@/lib/gtag";
 
 export interface ProductCardProps {
@@ -18,13 +23,9 @@ export interface ProductCardProps {
   sugar?: number;
   density: string;
   productUrl?: string;
-  /** 쿠팡파트너스 링크 (있으면 사용, 없으면 검색 URL) */
   coupangUrl?: string;
-  /** 등급/특성 태그 예: 밀도 A, 다이어트 B, 퍼포먼스 A */
   gradeTags?: string[];
-  /** 상세 페이지 경로용 (있으면 /product/[slug]로 이동) */
   slug?: string;
-  /** 첫 번째 화면에 보이는 카드면 true - LCP 최적화 */
   priority?: boolean;
 }
 
@@ -47,7 +48,7 @@ export default function ProductCard({
   const detailHref = slug ? `/product/${slug}` : productUrl;
   const imageUrl = slug ? getProductImageUrl(slug) : null;
 
-  const coupangHref = coupangUrl ?? getCoupangSearchUrl(brand, name);
+  const coupangHref = getPreferredCoupangUrl(brand, name, coupangUrl ?? productUrl);
   const naverHref = getNaverSearchUrl(brand, name);
   const officialMallHref = getOfficialMallUrl(brand);
   const productId = slug ?? `${brand}-${name}`;
@@ -64,7 +65,10 @@ export default function ProductCard({
       }}
     >
       {imageUrl ? (
-        <div className="relative h-full w-full" style={{ minHeight: "160px", maxWidth: "200px" }}>
+        <div
+          className="product-card__image relative h-full w-full"
+          style={{ minHeight: "160px", maxWidth: "200px" }}
+        >
           <Image
             src={imageUrl}
             alt={`${brand} ${name}`}
@@ -91,40 +95,49 @@ export default function ProductCard({
         borderColor: "#e8e6e3",
       }}
     >
-      {/* 이미지 영역: 클릭 시 상세 페이지로 */}
       {slug && detailHref.startsWith("/product/") ? (
-        <Link href={detailHref} className="block focus:outline-none focus:ring-2 focus:ring-[var(--accent)] focus:ring-offset-2 rounded-xl" aria-label={`${brand} ${name} 상세 보기`}>
+        <Link
+          href={detailHref}
+          className="block rounded-xl focus:outline-none focus:ring-2 focus:ring-[var(--accent)] focus:ring-offset-2"
+          aria-label={`${brand} ${name} 상세 보기`}
+        >
           {imageArea}
         </Link>
       ) : (
         imageArea
       )}
 
-      {/* 브랜드 */}
       <p className="mt-4 text-xs tracking-wide" style={{ color: "#7a7a7a" }}>
         {brand}
       </p>
 
-      {/* 제품명 + 용량, 용기(팩/PET/CAN) */}
       {(() => {
-        const packageTag = tags.find((t) => ["팩", "PET", "CAN"].includes(t));
+        const packageTag = tags.find((tag) => ["팩", "PET", "CAN"].includes(tag));
         const capacitySuffix = packageTag ? `, ${packageTag}` : "";
+
         return (
-          <h3 className="mt-1 line-clamp-2 font-semibold leading-snug" style={{ fontSize: "16px", fontWeight: 600, color: "#1a1a1a" }}>
+          <h3
+            className="product-card__title mt-1 line-clamp-2 font-semibold leading-snug"
+            style={{ fontSize: "16px", fontWeight: 600, color: "#1a1a1a" }}
+          >
             <span>{name}</span>
-            <span className="font-normal" style={{ fontSize: "13px", color: "#6b6b6b" }}> {capacity}{capacitySuffix}</span>
+            <span className="font-normal" style={{ fontSize: "13px", color: "#6b6b6b" }}>
+              {" "}
+              {capacity}
+              {capacitySuffix}
+            </span>
           </h3>
         );
       })()}
 
-      {/* 등급 태그: 단백질 밀도 → 다이어트 → 퍼포먼스 순, 락토프리 뱃지 */}
       {(gradeTags.length > 0 || (variant && variant !== "일반")) && (() => {
-        const order = ["단백질 밀도", "밀도", "다이어트", "퍼포먼스"];
+        const order = ["단백질바", "바", "다이어트", "퍼포먼스"];
         const sorted = [...gradeTags].sort((a, b) => {
-          const ai = order.findIndex((k) => a.startsWith(k));
-          const bi = order.findIndex((k) => b.startsWith(k));
+          const ai = order.findIndex((keyword) => a.startsWith(keyword));
+          const bi = order.findIndex((keyword) => b.startsWith(keyword));
           return (ai === -1 ? 99 : ai) - (bi === -1 ? 99 : bi);
         });
+
         const gradeLetterStyle = (tag: string) => {
           const letter = tag.split(" ").pop();
           if (letter === "A") return { bg: "#E7F3EC", border: "#1B7F5B", color: "#1B7F5B" };
@@ -132,12 +145,13 @@ export default function ProductCard({
           if (letter === "C") return { bg: "#FFF1E6", border: "#F08A24", color: "#F08A24" };
           return { bg: "#f3f3f3", border: "#bbb", color: "#999" };
         };
-        const displayLabel = (tag: string) => (tag.startsWith("밀도 ") ? `단백질 밀도 ${tag.slice(3)}` : tag);
+
         const lactoFreeStyle = { bg: "#F5F0E8", border: "#D4D4D4", color: "#6B6B6B" };
+
         return (
           <div className="mt-1.5 flex flex-wrap gap-1.5" style={{ gap: "6px" }}>
             {sorted.map((tag) => {
-              const s = gradeLetterStyle(tag);
+              const style = gradeLetterStyle(tag);
               return (
                 <span
                   key={tag}
@@ -148,16 +162,16 @@ export default function ProductCard({
                     borderRadius: "999px",
                     fontSize: "12px",
                     fontWeight: 600,
-                    background: s.bg,
-                    border: `1px solid ${s.border}`,
-                    color: s.color,
+                    background: style.bg,
+                    border: `1px solid ${style.border}`,
+                    color: style.color,
                   }}
                 >
-                  {displayLabel(tag)}
+                  {tag}
                 </span>
               );
             })}
-            {variant && variant !== "일반" && (
+            {variant && variant !== "일반" ? (
               <span
                 className="inline-flex items-center justify-center rounded-full"
                 style={{
@@ -173,21 +187,19 @@ export default function ProductCard({
               >
                 {variant}
               </span>
-            )}
+            ) : null}
           </div>
         );
       })()}
 
-      {/* 구분선: 뱃지 ~ 성분 */}
       <div className="mx-1 mt-3 border-t border-[#e8e6e3]" />
 
-      {/* 핵심 지표: 단백질, 칼로리, 당류, 단백질 밀도 (숫자 강조) */}
       <div className="mt-3 grid grid-cols-2 gap-2" style={{ gap: "8px" }}>
         {[
           { label: "단백질", value: `${proteinPerServing}g` },
           { label: "칼로리", value: calories != null ? `${calories}` : "—" },
           { label: "당류", value: sugar !== undefined ? `${sugar}g` : "—" },
-          { label: "단백질 밀도", value: density },
+          { label: "단백질밀도", value: density },
         ].map(({ label, value }) => (
           <div
             key={label}
@@ -200,58 +212,28 @@ export default function ProductCard({
         ))}
       </div>
 
-      {/* 구분선: 성분 ~ 구매 링크 */}
       <div className="mx-1 mt-3 border-t border-[#e8e6e3]" />
 
-      {/* 구매 링크 영역 */}
       <div className="cta-group">
-        <a
-          href={coupangHref}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="btn-cta-primary"
-          onClick={() => trackPurchaseClick({ productName: name, brand, store: "coupang", productId })}
-        >
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
-            <circle cx="9" cy="20" r="1" />
-            <circle cx="18" cy="20" r="1" />
-            <path d="M3 4h2l2.2 10.2a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 2-1.6L21 7H7.1" />
-          </svg>
-          <span>쿠팡 구매</span>
-        </a>
-
-        <div className="cta-secondary-row">
-          <a
-            href={naverHref}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn-cta-secondary"
-            onClick={() => trackPurchaseClick({ productName: name, brand, store: "naver", productId })}
-          >
-            네이버
-          </a>
-          {officialMallHref ? (
-            <a
-              href={officialMallHref}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-cta-secondary"
-              onClick={() => trackPurchaseClick({ productName: name, brand, store: "official", productId })}
-            >
-              공식몰
-            </a>
-          ) : (
-            <span className="btn-cta-secondary btn-cta-secondary-disabled" title="공식몰 정보 없음">
-              공식몰
-            </span>
-          )}
-        </div>
+        <PurchaseLinkRow
+          coupangHref={coupangHref}
+          naverHref={naverHref}
+          officialMallHref={officialMallHref}
+          size="sm"
+          onCoupangClick={() =>
+            trackPurchaseClick({ productName: name, brand, store: "coupang", productId })
+          }
+          onNaverClick={() =>
+            trackPurchaseClick({ productName: name, brand, store: "naver", productId })
+          }
+          onOfficialClick={() =>
+            trackPurchaseClick({ productName: name, brand, store: "official", productId })
+          }
+        />
       </div>
 
-      {/* 구분선: 구매 링크 ~ 자세히 비교 */}
       <div className="mx-1 mt-3 border-t border-[#e8e6e3]" />
 
-      {/* 자세히 / 비교 (버튼 높이 40px, border-radius 10px) */}
       <div className="mt-3 flex gap-3" style={{ gap: "12px" }}>
         <Link
           href={detailHref}

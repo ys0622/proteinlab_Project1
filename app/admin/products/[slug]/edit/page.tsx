@@ -446,7 +446,10 @@ export default function ProductEditPage({
         <section className="rounded-xl border border-[var(--border)] bg-[var(--background-card)] p-5">
           <h2 className="text-sm font-semibold text-[var(--foreground)] mb-4">D. 링크</h2>
           <div className="space-y-3">
-            <Field label="구매 링크 (productUrl)">
+            <Field
+              label="구매 링크 (productUrl)"
+              hint="쿠팡 버튼에 연결할 쿠팡파트너스 상품 링크를 입력하세요. 비워두면 일반 쿠팡 검색으로 연결됩니다."
+            >
               <input
                 value={product.productUrl ?? ""}
                 onChange={(e) => set("productUrl", e.target.value)}
