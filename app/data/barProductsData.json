@@ -105,15 +105,15 @@
     "slug": "benof-softbar-peanutbutter",
     "brand": "베노프",
     "name": "소프트바 (피넛버터)",
-    "capacity": "50g",
+    "capacity": "60g",
     "variant": "일반",
     "tags": [
       "바"
     ],
     "proteinPerServing": 20,
-    "calories": 215,
+    "calories": 172,
     "sugar": 2,
-    "density": "9.30g/100kcal",
+    "density": "11.63g/100kcal",
     "productUrl": "#",
     "productType": "bar",
     "gradeTags": []
@@ -122,15 +122,15 @@
     "slug": "benof-softbar-cookie-cream",
     "brand": "베노프",
     "name": "소프트바 (쿠키앤크림)",
-    "capacity": "50g",
+    "capacity": "60g",
     "variant": "일반",
     "tags": [
       "바"
     ],
     "proteinPerServing": 20,
-    "calories": 215,
+    "calories": 172,
     "sugar": 2,
-    "density": "9.30g/100kcal",
+    "density": "11.63g/100kcal",
     "productUrl": "#",
     "productType": "bar",
     "gradeTags": []
@@ -139,15 +139,15 @@
     "slug": "benof-softbar-chocolate-caramel",
     "brand": "베노프",
     "name": "소프트바 (초콜릿카라멜)",
-    "capacity": "50g",
+    "capacity": "60g",
     "variant": "일반",
     "tags": [
       "바"
     ],
     "proteinPerServing": 20,
-    "calories": 215,
+    "calories": 172,
     "sugar": 2,
-    "density": "9.30g/100kcal",
+    "density": "11.63g/100kcal",
     "productUrl": "#",
     "productType": "bar",
     "gradeTags": []
@@ -156,15 +156,15 @@
     "slug": "benof-softbar-cacao",
     "brand": "베노프",
     "name": "소프트바 (카카오)",
-    "capacity": "50g",
+    "capacity": "60g",
     "variant": "일반",
     "tags": [
       "바"
     ],
     "proteinPerServing": 20,
-    "calories": 215,
+    "calories": 172,
     "sugar": 2,
-    "density": "9.30g/100kcal",
+    "density": "11.63g/100kcal",
     "productUrl": "#",
     "productType": "bar",
     "gradeTags": []
@@ -173,15 +173,15 @@
     "slug": "benof-softbar-black-sesame",
     "brand": "베노프",
     "name": "소프트바 (흑임자)",
-    "capacity": "50g",
+    "capacity": "60g",
     "variant": "일반",
     "tags": [
       "바"
     ],
     "proteinPerServing": 20,
-    "calories": 215,
+    "calories": 172,
     "sugar": 2,
-    "density": "9.30g/100kcal",
+    "density": "11.63g/100kcal",
     "productUrl": "#",
     "productType": "bar",
     "gradeTags": []
@@ -190,15 +190,15 @@
     "slug": "benof-softbar-injeolmi",
     "brand": "베노프",
     "name": "소프트바 (인절미)",
-    "capacity": "50g",
+    "capacity": "60g",
     "variant": "일반",
     "tags": [
       "바"
     ],
     "proteinPerServing": 20,
-    "calories": 215,
+    "calories": 172,
     "sugar": 2,
-    "density": "9.30g/100kcal",
+    "density": "11.63g/100kcal",
     "productUrl": "#",
     "productType": "bar",
     "gradeTags": []
@@ -207,15 +207,15 @@
     "slug": "benof-softbar-roasted-sweetpotato",
     "brand": "베노프",
     "name": "소프트바 (군고구마)",
-    "capacity": "50g",
+    "capacity": "60g",
     "variant": "일반",
     "tags": [
       "바"
     ],
     "proteinPerServing": 20,
-    "calories": 215,
+    "calories": 172,
     "sugar": 2,
-    "density": "9.30g/100kcal",
+    "density": "11.63g/100kcal",
     "productUrl": "#",
     "productType": "bar",
     "gradeTags": []
@@ -224,15 +224,15 @@
     "slug": "benof-softbar-berry-cheesecake",
     "brand": "베노프",
     "name": "소프트바 (베리베리치즈케이크)",
-    "capacity": "50g",
+    "capacity": "60g",
     "variant": "일반",
     "tags": [
       "바"
     ],
     "proteinPerServing": 20,
-    "calories": 215,
+    "calories": 172,
     "sugar": 2,
-    "density": "9.30g/100kcal",
+    "density": "11.63g/100kcal",
     "productUrl": "#",
     "productType": "bar",
     "gradeTags": []
@@ -247,9 +247,9 @@
       "바"
     ],
     "proteinPerServing": 20,
-    "calories": 240,
-    "sugar": 3,
-    "density": "8.33g/100kcal",
+    "calories": 230,
+    "sugar": 2,
+    "density": "8.70g/100kcal",
     "productUrl": "#",
     "productType": "bar",
     "gradeTags": []
@@ -264,9 +264,9 @@
       "바"
     ],
     "proteinPerServing": 20,
-    "calories": 240,
-    "sugar": 3,
-    "density": "8.33g/100kcal",
+    "calories": 230,
+    "sugar": 2,
+    "density": "8.70g/100kcal",
     "productUrl": "#",
     "productType": "bar",
     "gradeTags": []
@@ -281,9 +281,9 @@
       "바"
     ],
     "proteinPerServing": 20,
-    "calories": 240,
-    "sugar": 3,
-    "density": "8.33g/100kcal",
+    "calories": 230,
+    "sugar": 2,
+    "density": "8.70g/100kcal",
     "productUrl": "#",
     "productType": "bar",
     "gradeTags": []
