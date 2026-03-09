@@ -51,7 +51,6 @@ export default function ProductCard({
   const naverHref = getNaverSearchUrl(brand, name);
   const officialMallHref = getOfficialMallUrl(brand);
   const productId = slug ?? `${brand}-${name}`;
-
   const packageTag = tags.find((tag) => ["팩", "PET", "CAN"].includes(tag));
   const capacitySuffix = packageTag ? `, ${packageTag}` : "";
 
@@ -181,20 +180,31 @@ export default function ProductCard({
 
       <div className="mt-3 grid grid-cols-2 gap-2">
         {[
-          { label: "단백질", value: `${proteinPerServing}g` },
-          { label: "칼로리", value: calories != null ? `${calories}` : "-" },
-          { label: "당류", value: sugar !== undefined ? `${sugar}g` : "-" },
-          { label: "단백질 밀도", value: density },
-        ].map(({ label, value }) => (
+          { label: "단백질", value: `${proteinPerServing}g`, isDensity: false },
+          { label: "칼로리", value: calories != null ? `${calories}` : "-", isDensity: false },
+          { label: "당류", value: sugar !== undefined ? `${sugar}g` : "-", isDensity: false },
+          { label: "단백질 밀도", value: density, isDensity: true },
+        ].map(({ label, value, isDensity }) => (
           <div
             key={label}
-            className="product-card__metric flex flex-col justify-center rounded-lg border border-[#e8e8e8] bg-white px-2.5 py-2 text-left"
+            className="product-card__metric flex min-w-0 flex-col justify-center rounded-lg border border-[#e8e8e8] bg-white px-2.5 py-2 text-left"
             style={{ borderRadius: "10px" }}
           >
-            <span className="product-card__metric-label" style={{ fontSize: "11px", color: "#6b6b6b" }}>
+            <span
+              className="product-card__metric-label"
+              style={{ fontSize: "11px", color: "#6b6b6b" }}
+            >
               {label}
             </span>
-            <span className="product-card__metric-value" style={{ fontSize: "16px", fontWeight: 700, color: "#3d3d3d" }}>
+            <span
+              className={`product-card__metric-value ${isDensity ? "product-card__metric-value--density" : ""}`}
+              style={{
+                fontSize: isDensity ? "15px" : "16px",
+                fontWeight: 700,
+                color: "#3d3d3d",
+                lineHeight: 1.2,
+              }}
+            >
               {value}
             </span>
           </div>

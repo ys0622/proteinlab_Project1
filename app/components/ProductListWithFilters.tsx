@@ -132,7 +132,7 @@ export default function ProductListWithFilters(props: ProductListWithFiltersProp
         <SortBar total={filtered.length} />
       </div>
 
-      <section className="product-grid mt-3 bg-white md:grid-cols-2 lg:grid-cols-3" style={{ marginTop: "12px" }} aria-label="제품 목록">
+      <section className="product-grid mt-3 bg-white" style={{ marginTop: "12px" }} aria-label="제품 목록">
         {visible.map((product, idx) => (
           <ProductCard
             key={product.slug ?? `${product.brand}-${product.name}`}

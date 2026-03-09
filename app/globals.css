@@ -157,7 +157,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .product-grid {
   display: grid;
-  grid-template-columns: repeat(1, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 12px;
 }
 
@@ -321,6 +321,12 @@ h1, h2, h3, h4, h5, h6 {
 
   .product-card__metric-value {
     font-size: 14px !important;
+  }
+
+  .product-card__metric-value--density {
+    font-size: 12px !important;
+    letter-spacing: -0.03em;
+    white-space: nowrap;
   }
 
   .cta-group {
