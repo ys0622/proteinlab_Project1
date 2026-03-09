@@ -21,7 +21,7 @@ export default function SettingsPage() {
               <strong className="text-[var(--foreground)]">SESSION_SECRET</strong> — 세션 토큰 서명 키.
               랜덤한 긴 문자열을 설정하세요.
             </p>
-            <p className="text-xs mt-3 p-3 rounded-lg bg-[var(--beige-warm)] font-mono">
+            <p className="settings-code-block text-xs mt-3 rounded-lg bg-[var(--beige-warm)] p-3 font-mono">
               ADMIN_PASSWORD=my-secure-password<br />
               SESSION_SECRET=random-64-char-string
             </p>

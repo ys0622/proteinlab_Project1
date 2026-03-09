@@ -80,14 +80,14 @@ export default async function AdminDashboard() {
       </div>
 
       {/* Stat Cards */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+      <div className="dashboard-cards mb-8 grid grid-cols-2 gap-4 md:grid-cols-4">
         {statCards.map((card) => (
           <Link
             key={card.label}
             href={card.href}
-            className="rounded-xl border border-[var(--border)] bg-[var(--background-card)] p-4 hover:shadow-sm transition-shadow"
+            className="dashboard-card rounded-xl border border-[var(--border)] bg-[var(--background-card)] p-4 transition-shadow hover:shadow-sm"
           >
-            <p className="text-xs text-[var(--foreground-muted)]">{card.label}</p>
+            <p className="dashboard-card__label text-xs text-[var(--foreground-muted)]">{card.label}</p>
             <p className={`text-3xl font-bold mt-1 ${card.color}`}>{card.value}</p>
             <p className="text-xs text-[var(--foreground-muted)] mt-1">{card.sub}</p>
           </Link>

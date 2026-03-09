@@ -1,8 +1,11 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import { getProductImageUrl } from "../lib/productImage";
 import { getCoupangSearchUrl, getNaverSearchUrl, getOfficialMallUrl } from "../lib/purchaseLinks";
 import CompareButton from "./CompareButton";
+import { trackPurchaseClick } from "@/lib/gtag";
 
 export interface ProductCardProps {
   brand: string;
@@ -47,6 +50,7 @@ export default function ProductCard({
   const coupangHref = coupangUrl ?? getCoupangSearchUrl(brand, name);
   const naverHref = getNaverSearchUrl(brand, name);
   const officialMallHref = getOfficialMallUrl(brand);
+  const productId = slug ?? `${brand}-${name}`;
 
   const imageArea = (
     <div
@@ -200,57 +204,48 @@ export default function ProductCard({
       <div className="mx-1 mt-3 border-t border-[#e8e6e3]" />
 
       {/* 구매 링크 영역 */}
-      <div className="mt-3 flex flex-wrap items-center gap-1.5">
-        <span className="shrink-0 text-[11px] text-[#777]">구매 링크</span>
+      <div className="mt-3">
         <a
           href={coupangHref}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex h-7 items-center gap-1 rounded-full border border-[#e2e2e2] bg-white pl-2 pr-2.5 text-[11px] font-normal text-[var(--foreground)] transition-colors hover:border-[var(--accent)] hover:bg-[var(--accent-light)] hover:text-[var(--accent)]"
-          style={{ borderRadius: "999px" }}
+          className="btn-cta-primary"
+          onClick={() => trackPurchaseClick({ productName: name, brand, store: "coupang", productId })}
         >
-          <span className="flex h-3.5 w-3.5 shrink-0 items-center justify-center rounded bg-[#ff5722] text-white" aria-hidden>
-            <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 00-2.91-.09z" /><path d="M12 15l-3-3a22 22 0 012-3.95A12.88 12.88 0 0122 2c0 2.72-.78 7.5-6 11a22 22 0 01-3.95 2z" /><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0" /><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5" /></svg>
-          </span>
-          쿠팡
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+            <circle cx="9" cy="20" r="1" />
+            <circle cx="18" cy="20" r="1" />
+            <path d="M3 4h2l2.2 10.2a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 2-1.6L21 7H7.1" />
+          </svg>
+          <span>쿠팡 구매</span>
         </a>
-        <a
-          href={naverHref}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex h-7 items-center gap-1 rounded-full border border-[#e2e2e2] bg-white pl-2 pr-2.5 text-[11px] font-normal text-[var(--foreground)] transition-colors hover:border-[var(--accent)] hover:bg-[var(--accent-light)] hover:text-[var(--accent)]"
-          style={{ borderRadius: "999px" }}
-        >
-          <span className="flex h-3.5 w-3.5 shrink-0 items-center justify-center rounded bg-[#03c75a] text-white" aria-hidden>
-            <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="9" cy="21" r="1" /><circle cx="20" cy="21" r="1" /><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6" /></svg>
-          </span>
-          네이버
-        </a>
-        {officialMallHref ? (
+
+        <div className="cta-secondary-row">
           <a
-            href={officialMallHref}
+            href={naverHref}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex h-7 items-center gap-1 rounded-full border border-[#e2e2e2] bg-white pl-2 pr-2.5 text-[11px] font-normal text-[var(--foreground)] transition-colors hover:border-[var(--accent)] hover:bg-[var(--accent-light)] hover:text-[var(--accent)]"
-            style={{ borderRadius: "999px" }}
+            className="btn-cta-secondary"
+            onClick={() => trackPurchaseClick({ productName: name, brand, store: "naver", productId })}
           >
-            <span className="flex h-3.5 w-3.5 shrink-0 items-center justify-center rounded bg-[#5c5c5c] text-white" aria-hidden>
-              <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" /><polyline points="9 22 9 12 15 12 15 22" /></svg>
-            </span>
-            공식몰
+            네이버
           </a>
-        ) : (
-          <span
-            className="inline-flex h-7 cursor-not-allowed items-center gap-1 rounded-full border border-[#e8e8e8] bg-[#f9f9f9] pl-2 pr-2.5 text-[11px] font-normal"
-            style={{ borderRadius: "999px", color: "#bbb", borderColor: "#e8e8e8" }}
-            title="공식몰 정보 없음"
-          >
-            <span className="flex h-3.5 w-3.5 shrink-0 items-center justify-center rounded bg-[#ddd] text-white" aria-hidden>
-              <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" /><polyline points="9 22 9 12 15 12 15 22" /></svg>
+          {officialMallHref ? (
+            <a
+              href={officialMallHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-cta-secondary"
+              onClick={() => trackPurchaseClick({ productName: name, brand, store: "official_mall", productId })}
+            >
+              공식몰
+            </a>
+          ) : (
+            <span className="btn-cta-secondary btn-cta-secondary-disabled" title="공식몰 정보 없음">
+              공식몰
             </span>
-            공식몰
-          </span>
-        )}
+          )}
+        </div>
       </div>
 
       {/* 구분선: 구매 링크 ~ 자세히 비교 */}
