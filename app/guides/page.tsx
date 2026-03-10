@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import GuideVisual from "../components/GuideVisual";
 import { getGuideTracks } from "../data/guidesTracks";
 
 export const metadata = {
@@ -50,6 +51,12 @@ export default function GuidesPage() {
                 </div>
 
                 <div className="px-5 pb-5 pt-4">
+                  <GuideVisual
+                    track={track.slug}
+                    title={track.title}
+                    accentColor={track.accentColor}
+                    accentBg={track.accentBg}
+                  />
                   <h2 className="text-lg font-bold text-[var(--foreground)]">{track.title}</h2>
                   <p className="mt-1 text-xs text-[#8d8d8d]">{track.slots.length}개 주제</p>
                   <p className="mt-3 text-[13px] leading-6 text-[var(--foreground-muted)]">

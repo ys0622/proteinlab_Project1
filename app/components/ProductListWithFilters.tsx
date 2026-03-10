@@ -14,6 +14,7 @@ import {
 } from "../lib/productFilters";
 import FilterSection from "./FilterSection";
 import ProductCard from "./ProductCard";
+import ProductTopFivePopover from "./ProductTopFivePopover";
 import SearchBar from "./SearchBar";
 import SortBar from "./SortBar";
 
@@ -36,7 +37,7 @@ export default function ProductListWithFilters(props: ProductListWithFiltersProp
       productType === "drink"
         ? filterDrinkProducts(products, filters as DrinkFilters)
         : filterBarProducts(products, filters as BarFilters),
-    [products, filters, productType]
+    [products, filters, productType],
   );
 
   const visible = useMemo(() => filtered.slice(0, page * PAGE_SIZE), [filtered, page]);
@@ -103,29 +104,33 @@ export default function ProductListWithFilters(props: ProductListWithFiltersProp
         </div>
       </div>
 
-      <div className="mt-3 flex gap-2" style={{ marginTop: "12px" }}>
-        <Link
-          href="/"
-          className={`rounded-full px-3.5 py-1 text-sm font-medium transition-colors ${
-            !isBar
-              ? "bg-[var(--accent)] text-white"
-              : "border border-[var(--border)] bg-white text-[var(--foreground-muted)] hover:text-[var(--foreground)]"
-          }`}
-          style={{ fontWeight: 400 }}
-        >
-          단백질 음료
-        </Link>
-        <Link
-          href="/bars"
-          className={`rounded-full px-3.5 py-1 text-sm font-medium transition-colors ${
-            isBar
-              ? "bg-[var(--accent)] text-white"
-              : "border border-[var(--border)] bg-white text-[var(--foreground-muted)] hover:text-[var(--foreground)]"
-          }`}
-          style={{ fontWeight: 400 }}
-        >
-          단백질 바
-        </Link>
+      <div className="mt-3 flex items-center justify-between gap-2" style={{ marginTop: "12px" }}>
+        <div className="flex min-w-0 gap-2">
+          <Link
+            href="/"
+            className={`rounded-full px-3.5 py-1 text-sm font-medium transition-colors ${
+              !isBar
+                ? "bg-[var(--accent)] text-white"
+                : "border border-[var(--border)] bg-white text-[var(--foreground-muted)] hover:text-[var(--foreground)]"
+            }`}
+            style={{ fontWeight: 400, whiteSpace: "nowrap" }}
+          >
+            단백질 음료
+          </Link>
+          <Link
+            href="/bars"
+            className={`rounded-full px-3.5 py-1 text-sm font-medium transition-colors ${
+              isBar
+                ? "bg-[var(--accent)] text-white"
+                : "border border-[var(--border)] bg-white text-[var(--foreground-muted)] hover:text-[var(--foreground)]"
+            }`}
+            style={{ fontWeight: 400, whiteSpace: "nowrap" }}
+          >
+            단백질 바
+          </Link>
+        </div>
+
+        <ProductTopFivePopover productType={productType} products={products} />
       </div>
 
       <div className="mt-2" style={{ marginTop: "8px" }}>
@@ -149,7 +154,7 @@ export default function ProductListWithFilters(props: ProductListWithFiltersProp
             onClick={() => setPage((current) => current + 1)}
             className="rounded-full border border-[var(--border)] bg-white px-6 py-2.5 text-sm font-medium text-[var(--foreground)] transition-colors hover:border-[var(--accent)] hover:bg-[var(--accent-light)] hover:text-[var(--accent)]"
           >
-            더보기 ({filtered.length - visible.length}개 남음)
+            더보기({filtered.length - visible.length}개 남음)
           </button>
         </div>
       ) : null}

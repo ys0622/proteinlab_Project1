@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
+import GuideVisual from "@/app/components/GuideVisual";
 import { getGuideTrack, getGuideTracks } from "@/app/data/guidesTracks";
 
 export async function generateStaticParams() {
@@ -77,6 +78,13 @@ export default async function GuideTrackPage({ params }: { params: Promise<{ tra
                 className="group flex h-full flex-col justify-between rounded-2xl border border-[#e8e6e3] bg-white px-5 py-5"
               >
                 <div>
+                  <GuideVisual
+                    track={trackData.slug}
+                    title={slot.title}
+                    accentColor={trackData.accentColor}
+                    accentBg={trackData.accentBg}
+                    variant="topic"
+                  />
                   <p className="text-xs font-semibold tracking-[0.08em] text-[#8f8a84]">
                     GUIDE TOPIC
                   </p>
