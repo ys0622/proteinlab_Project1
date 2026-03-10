@@ -36,23 +36,14 @@ const roleCards = [
   },
   {
     title: "호르몬효소  몸의 신호와 대사를 조절",
-    body: "인슐린, 성장호르몬, 글루카곤은 모두 단백질 호르몬입니다. 소화를 돕는 트립신펩신도 단백질입니다. 단백질 공급이 부족하면 이들의 합성이 감소합니다.",
+    body: "인슐린, 성장호르몬, 글루카곤은 모두 단백질 호르몬입니다. 트립신펩신 같은 소화효소도 단백질입니다. 단백질 공급이 부족하면 이들의 합성이 감소합니다.",
     href: "/guides/basics/immunity-hormone",
     cta: "면역호르몬과 단백질 더 자세히 보기 ",
   },
 ];
 
-function ImageSlot({ alt }: { alt: string }) {
-  return (
-    <div
-      className="mt-4 rounded-2xl border border-dashed border-[#d9d4cd] bg-white px-5 py-8 text-center"
-      role="img"
-      aria-label={alt}
-    >
-      <p className="text-xs font-semibold tracking-[0.08em] text-[#8f8a84]">IMAGE SLOT</p>
-      <p className="mt-2 text-sm font-semibold text-[var(--foreground)]">{alt}</p>
-    </div>
-  );
+function ImageSlot() {
+  return <div className="mt-4 h-56 rounded-2xl border border-[#d8d4cd] bg-[#efede8]" aria-hidden="true" />;
 }
 
 function Callout({ children }: { children: React.ReactNode }) {
@@ -95,8 +86,9 @@ export default function RoleOverviewGuidePage() {
             단백질, 몸에서 어떤 일을 할까?
           </h1>
           <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
-            단백질은 단순히 근육을 키우는 영양소가 아닙니다. 면역세포를 만들고, 호르몬을 합성하고, 온몸의 조직을
-            유지하는 데도 단백질이 필요합니다.
+            단백질은 단순히 근육을 키우는 영양소가 아닙니다.
+            <br />
+            면역세포를 만들고, 호르몬을 합성하고, 온몸의 조직을 유지하는 데도 단백질이 필요합니다.
           </p>
         </div>
       </section>
@@ -114,7 +106,7 @@ export default function RoleOverviewGuidePage() {
               </Callout>
             </div>
 
-            <ImageSlot alt="인체 조직별 단백질 비중 인포그래픽" />
+            <ImageSlot />
 
             <div className="mt-5 overflow-x-auto">
               <table className="min-w-full border-collapse text-left text-sm">
@@ -147,7 +139,7 @@ export default function RoleOverviewGuidePage() {
           <section className="rounded-2xl border border-[#e8e6e3] bg-[#fffdf8] px-5 py-5">
             <h2 className="text-xl font-bold text-[var(--foreground)]">단백질이 하는 3가지 핵심 역할</h2>
 
-            <ImageSlot alt="근육면역호르몬 역할 아이콘 카드 3종" />
+            <ImageSlot />
 
             <div className="mt-5 grid grid-cols-1 gap-4 lg:grid-cols-3">
               {roleCards.map((card) => (
