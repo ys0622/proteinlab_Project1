@@ -3,7 +3,7 @@
 import { useState } from "react";
 
 const options = [
-  { value: "sugar_asc", label: "당류 적은순" },
+  { value: "sugar_asc", label: "당류 낮은순" },
   { value: "protein_desc", label: "단백질 많은순" },
   { value: "density", label: "단백질 밀도순" },
   { value: "volume_desc", label: "용량 큰순" },
@@ -25,7 +25,7 @@ export default function SortBar({
   return (
     <div className="flex flex-wrap items-center justify-between gap-2 border-b border-[var(--border)] py-2">
       <span className="text-sm text-[var(--foreground-muted)]" style={{ fontWeight: 400 }}>
-        전체 {total}개 {categoryLabel} 비교
+        전체 {total}개 {categoryLabel} 스펙 비교  인기 정렬 : 당류 낮은순
       </span>
       <select
         value={sort}
