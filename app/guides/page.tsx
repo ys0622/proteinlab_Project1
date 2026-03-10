@@ -12,8 +12,6 @@ export const metadata = {
 const tracks = getGuideTracks();
 
 export default function GuidesPage() {
-  const totalSlots = tracks.reduce((sum, track) => sum + track.slots.length, 0);
-
   return (
     <div className="min-h-screen bg-white">
       <Header />
@@ -31,11 +29,6 @@ export default function GuidesPage() {
             단백질 기초부터 제품 선택, 섭취 전략, 운동 라이프스타일, 시장 흐름까지 한곳에서
             이어서 볼 수 있도록 가이드를 트랙별로 정리했습니다. 필요한 주제부터 바로 탐색해보세요.
           </p>
-          <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-3">
-            <SummaryCard label="가이드 트랙" value={`${tracks.length}개`} detail="기초부터 시장 인사이트까지" />
-            <SummaryCard label="준비된 주제" value={`${totalSlots}개`} detail="각 주제별로 순차 확장 예정" />
-            <SummaryCard label="탐색 방식" value="트랙별 정리" detail="주제 흐름에 맞춰 이어서 탐색" />
-          </div>
         </div>
       </section>
 
@@ -63,19 +56,16 @@ export default function GuidesPage() {
                   <p className="mt-3 text-[13px] leading-6 text-[var(--foreground-muted)]">
                     {track.description}
                   </p>
-
-                  <div className="mt-4 rounded-xl border border-[#efe8df] bg-white px-3 py-3">
-                    <p className="text-xs font-semibold text-[#8f8a84]">허브 방향</p>
-                    <p className="mt-1 text-sm leading-6 text-[var(--foreground-muted)]">
-                      {track.hubSummary}
-                    </p>
-                  </div>
+                  <p className="mt-4 text-sm leading-6 text-[var(--foreground-muted)]">
+                    {track.slots.slice(0, 3).map((slot) => slot.title).join(", ")}
+                    {track.slots.length > 3 ? " 등" : ""}
+                  </p>
                 </div>
               </div>
 
               <div className="px-5 pb-5">
                 <span className="flex items-center justify-center rounded-lg border border-[#e8e6e3] py-2.5 text-xs font-semibold text-[#374151] transition-colors group-hover:bg-[var(--accent-light)] group-hover:text-[var(--accent)]">
-                  트랙 허브 보기
+                  주제 보러 가기
                 </span>
               </div>
             </Link>
@@ -84,16 +74,6 @@ export default function GuidesPage() {
       </main>
 
       <Footer />
-    </div>
-  );
-}
-
-function SummaryCard({ label, value, detail }: { label: string; value: string; detail: string }) {
-  return (
-    <div className="rounded-2xl border border-[#ebe7e2] bg-white px-4 py-4">
-      <p className="text-xs font-semibold tracking-[0.08em] text-[#8f8a84]">{label}</p>
-      <p className="mt-2 text-2xl font-bold text-[var(--foreground)]">{value}</p>
-      <p className="mt-1 text-sm leading-5 text-[var(--foreground-muted)]">{detail}</p>
     </div>
   );
 }

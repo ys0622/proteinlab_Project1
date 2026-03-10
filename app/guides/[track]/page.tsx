@@ -63,26 +63,6 @@ export default async function GuideTrackPage({ params }: { params: Promise<{ tra
       </section>
 
       <main className="mx-auto max-w-[1200px] px-4 pb-12 md:px-6">
-        <div className="mt-6 grid gap-4 lg:grid-cols-[minmax(0,1.7fr)_minmax(280px,0.9fr)]">
-          <section className="rounded-2xl border border-[#e8e6e3] bg-[#fffdf8] px-5 py-5">
-            <p className="text-sm font-semibold text-[var(--foreground)]">트랙 소개</p>
-            <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">{trackData.hubSummary}</p>
-            <div className="mt-4 rounded-xl border border-[#efe8df] bg-white px-4 py-4">
-              <p className="text-xs font-semibold tracking-[0.08em] text-[#8f8a84]">핵심 주제</p>
-              <p className="mt-1 text-sm leading-6 text-[var(--foreground-muted)]">{trackData.seoFocus}</p>
-            </div>
-          </section>
-
-          <aside className="rounded-2xl border border-[#e8e6e3] bg-white px-5 py-5">
-            <p className="text-sm font-semibold text-[var(--foreground)]">이 트랙에서 다루는 방향</p>
-            <ul className="mt-3 space-y-2 text-sm leading-6 text-[var(--foreground-muted)]">
-              <li>각 슬롯은 향후 독립 SEO 페이지로 확장</li>
-              <li>제품 DB, 랭킹, 추천 페이지와 내부 링크 연결</li>
-              <li>Track 간 교차 링크로 허브 구조 강화</li>
-            </ul>
-          </aside>
-        </div>
-
         <section className="mt-6">
           <div className="flex items-center justify-between gap-3">
             <h2 className="text-lg font-bold text-[var(--foreground)]">주제 목록</h2>
