@@ -2,15 +2,69 @@ import Link from "next/link";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import GuideVisual from "../components/GuideVisual";
-import { getGuideTracks } from "../data/guidesTracks";
+import { getGuideTracks, type GuideTrackSlug } from "../data/guidesTracks";
 
 export const metadata = {
   title: "단백질 가이드 | ProteinLab",
   description:
-    "단백질 기초, 제품 선택, 섭취 전략, 운동 라이프스타일, 시장 인사이트, 계산 도구까지 한곳에서 탐색할 수 있는 ProteinLab 가이드입니다.",
+    "단백질 기초, 제품 선택, 섭취 전략, 운동 라이프스타일까지 한 번에 탐색할 수 있는 ProteinLab 가이드 모음입니다.",
 };
 
 const tracks = getGuideTracks();
+
+const trackCopy: Record<
+  GuideTrackSlug,
+  {
+    title: string;
+    eyebrow: string;
+    summary: string;
+    note: string;
+    cta: string;
+  }
+> = {
+  "protein-basics": {
+    title: "단백질 기초",
+    eyebrow: "역할과 필요량부터",
+    summary: "단백질의 역할, 필요량, 흡수와 종류를 먼저 정리합니다.",
+    note: "역할 · 섭취량 · 흡수 · 종류",
+    cta: "단백질 기초 보기",
+  },
+  "product-selection-comparison": {
+    title: "제품 선택 · 비교",
+    eyebrow: "고르기 전에 보는 기준",
+    summary: "음료와 바를 고를 때 봐야 할 기준과 비교 포인트를 모았습니다.",
+    note: "선택 기준 · 성분 비교 · 추천 리스트",
+    cta: "제품 선택 가이드 보기",
+  },
+  "intake-strategy-health": {
+    title: "섭취 전략 · 건강",
+    eyebrow: "언제 얼마나 먹을지",
+    summary: "언제, 얼마나, 어떤 상황에서 먹을지 실전 기준으로 안내합니다.",
+    note: "타이밍 · 체중 관리 · 식사대용",
+    cta: "섭취 전략 보기",
+  },
+  "fitness-lifestyle": {
+    title: "운동 · 라이프스타일",
+    eyebrow: "운동 상황별 활용",
+    summary: "러닝, 근력 운동, 입문자 상황에 맞춘 단백질 활용 가이드입니다.",
+    note: "러닝 · 근력운동 · 스포츠 영양",
+    cta: "운동 가이드 보기",
+  },
+  "market-insights": {
+    title: "시장 인사이트",
+    eyebrow: "브랜드와 시장 흐름",
+    summary: "RTD 단백질 시장과 브랜드 흐름을 읽기 쉽게 정리합니다.",
+    note: "시장 흐름 · 브랜드 분석 · 성분 트렌드",
+    cta: "시장 인사이트 보기",
+  },
+  tools: {
+    title: "계산기 · 도구",
+    eyebrow: "바로 써보는 계산 도구",
+    summary: "하루 단백질 섭취량과 제품 활용에 바로 쓰는 계산 도구입니다.",
+    note: "섭취량 계산기 · 개수 계산 · 밀도 계산",
+    cta: "계산기 보기",
+  },
+};
 
 export default function GuidesPage() {
   return (
@@ -21,60 +75,69 @@ export default function GuidesPage() {
         className="w-full border-t border-b bg-[var(--hero-bg)]"
         style={{ borderColor: "var(--hero-border)" }}
       >
-        <div className="mx-auto max-w-[1200px] px-4 py-5 md:px-6 md:py-6">
-          <h1 className="mt-2 text-2xl font-bold leading-tight text-[var(--foreground)] md:text-3xl">
+        <div className="mx-auto max-w-[1200px] px-4 py-6 md:px-6 md:py-7">
+          <h1 className="text-2xl font-bold leading-[1.25] text-[var(--foreground)] md:text-3xl">
             단백질 가이드
           </h1>
-          <p className="mt-2 max-w-2xl text-sm leading-6 text-[var(--foreground-muted)]">
-            단백질 기초부터 제품 선택, 섭취 전략, 운동별 활용, 시장 인사이트까지 주제별로
-            정리했습니다. 필요한 트랙부터 바로 살펴보세요.
+          <p className="mt-2 max-w-[760px] text-sm leading-6 text-[var(--foreground-muted)] md:text-[15px]">
+            단백질 기초부터 제품 선택, 섭취 전략, 운동 활용까지 필요한 트랙부터 바로 살펴보세요.
           </p>
         </div>
       </section>
 
       <main className="mx-auto max-w-[1200px] px-4 pb-12 md:px-6">
         <div className="mt-6 grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
-          {tracks.map((track) => (
-            <Link
-              key={track.slug}
-              href={`/guides/${track.slug}`}
-              className="group flex h-full flex-col justify-between rounded-2xl border border-[#e8e6e3] bg-[#fffdf8]"
-            >
-              <div>
-                <div className="border-b border-[#f0eeeb] px-5 pb-3 pt-4">
-                  <span
-                    className="rounded-md px-2 py-0.5 text-[11px] font-semibold tracking-wide"
-                    style={{ background: track.accentBg, color: track.accentColor }}
-                  >
-                    {track.label}
+          {tracks.map((track) => {
+            const copy = trackCopy[track.slug];
+
+            return (
+              <Link
+                key={track.slug}
+                href={`/guides/${track.slug}`}
+                className="group flex h-full flex-col justify-between rounded-2xl border border-[#e8e6e3] bg-[#fffdf8]"
+              >
+                <div>
+                  <div className="border-b border-[#f0eeeb] px-5 pb-3 pt-4">
+                    <div className="flex items-center justify-between gap-3">
+                      <span
+                        className="rounded-md px-2 py-0.5 text-[11px] font-semibold tracking-wide"
+                        style={{ background: track.accentBg, color: track.accentColor }}
+                      >
+                        {track.label}
+                      </span>
+                      <span className="text-[11px] text-[#8d8d8d]">{copy.eyebrow}</span>
+                    </div>
+                  </div>
+
+                  <div className="px-5 pb-5 pt-4">
+                    <GuideVisual
+                      track={track.slug}
+                      title={copy.title}
+                      accentColor={track.accentColor}
+                      accentBg={track.accentBg}
+                    />
+
+                    <h2 className="text-lg font-bold text-[var(--foreground)]">{copy.title}</h2>
+                    <p className="mt-1 text-xs text-[#8d8d8d]">{track.slots.length}개 주제</p>
+                    <p className="mt-3 text-[13px] leading-6 text-[var(--foreground-muted)]">
+                      {copy.summary}
+                    </p>
+                    <span
+                      className="mt-4 inline-flex rounded-full bg-[#f5f2ed] px-3 py-1 text-[11px] font-medium text-[#6b6258]"
+                    >
+                      {copy.note}
+                    </span>
+                  </div>
+                </div>
+
+                <div className="px-5 pb-5">
+                  <span className="flex items-center justify-center rounded-lg border border-[#e8e6e3] py-2.5 text-xs font-semibold text-[#374151] transition-colors group-hover:bg-[var(--accent-light)] group-hover:text-[var(--accent)]">
+                    {copy.cta}
                   </span>
                 </div>
-
-                <div className="px-5 pb-5 pt-4">
-                  <GuideVisual
-                    track={track.slug}
-                    title={track.title}
-                    accentColor={track.accentColor}
-                    accentBg={track.accentBg}
-                  />
-                  <h2 className="text-lg font-bold text-[var(--foreground)]">{track.title}</h2>
-                  <p className="mt-1 text-xs text-[#8d8d8d]">{track.slots.length}개 주제</p>
-                  <p className="mt-3 text-[13px] leading-6 text-[var(--foreground-muted)]">
-                    {track.cardDescription ?? track.description}
-                  </p>
-                  <p className="mt-4 text-sm leading-6 text-[var(--foreground-muted)]">
-                    {track.cardNote ?? track.slots.slice(0, 3).map((slot) => slot.title).join(", ")}
-                  </p>
-                </div>
-              </div>
-
-              <div className="px-5 pb-5">
-                <span className="flex items-center justify-center rounded-lg border border-[#e8e6e3] py-2.5 text-xs font-semibold text-[#374151] transition-colors group-hover:bg-[var(--accent-light)] group-hover:text-[var(--accent)]">
-                  {track.ctaLabel ?? "주제 보러 가기"}
-                </span>
-              </div>
-            </Link>
-          ))}
+              </Link>
+            );
+          })}
         </div>
       </main>
 
