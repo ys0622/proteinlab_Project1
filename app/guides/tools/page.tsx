@@ -16,6 +16,17 @@ export const metadata = {
     "단백질 얼마나 먹어야",
     "체중별 단백질 섭취량",
   ],
+  openGraph: {
+    title: "하루 단백질 섭취량 계산기 | ProteinLab",
+    description:
+      "체중과 운동량을 기반으로 하루 단백질 섭취량을 계산해보세요. ProteinLab 계산기를 통해 나에게 필요한 단백질 권장량을 확인할 수 있습니다.",
+  },
+  twitter: {
+    card: "summary",
+    title: "하루 단백질 섭취량 계산기 | ProteinLab",
+    description:
+      "체중과 운동량을 기반으로 하루 단백질 섭취량을 계산해보세요. ProteinLab 계산기를 통해 나에게 필요한 단백질 권장량을 확인할 수 있습니다.",
+  },
 };
 
 export default function ProteinToolsPage() {
