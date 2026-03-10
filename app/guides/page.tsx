@@ -23,18 +23,18 @@ export default function GuidesPage() {
         style={{ borderColor: "var(--hero-border)" }}
       >
         <div className="mx-auto max-w-[1200px] px-4 py-5 md:px-6 md:py-6">
-          <p className="text-xs font-semibold tracking-[0.18em] text-[var(--accent)]">GUIDES HUB</p>
+          <p className="text-xs font-semibold tracking-[0.18em] text-[var(--accent)]">PROTEINLAB GUIDES</p>
           <h1 className="mt-2 text-2xl font-bold leading-tight text-[var(--foreground)] md:text-3xl">
             단백질 가이드
           </h1>
           <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
-            ProteinLab Guides는 Track 단위로 확장되는 콘텐츠 허브입니다. 현재는 Track A~E 구조와
-            콘텐츠 슬롯만 먼저 설계했고, 이후 각 슬롯에 SEO 콘텐츠, 제품 비교, 내부 링크를 단계적으로 연결할 수 있게 구성했습니다.
+            단백질 기초부터 제품 선택, 섭취 전략, 운동 라이프스타일, 시장 흐름까지 한곳에서
+            이어서 볼 수 있도록 가이드를 트랙별로 정리했습니다. 필요한 주제부터 바로 탐색해보세요.
           </p>
           <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-3">
-            <SummaryCard label="트랙 수" value={`${tracks.length}개`} detail="Track A~E 카테고리 구조" />
-            <SummaryCard label="슬롯 수" value={`${totalSlots}개`} detail="향후 개별 콘텐츠 페이지로 확장" />
-            <SummaryCard label="활용 방향" value="SEO 허브" detail="제품 연결, 내부 링크, 시장 콘텐츠 확장" />
+            <SummaryCard label="가이드 트랙" value={`${tracks.length}개`} detail="기초부터 시장 인사이트까지" />
+            <SummaryCard label="준비된 주제" value={`${totalSlots}개`} detail="각 주제별로 순차 확장 예정" />
+            <SummaryCard label="탐색 방식" value="트랙별 정리" detail="주제 흐름에 맞춰 이어서 탐색" />
           </div>
         </div>
       </section>

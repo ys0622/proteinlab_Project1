@@ -69,7 +69,7 @@ export default async function GuideArticlePage({
             >
               {trackData.label}
             </span>
-            <span className="text-xs text-[#8b8b8b]">PLACEHOLDER PAGE</span>
+            <span className="text-xs text-[#8b8b8b]">가이드 준비 중</span>
           </div>
 
           <h1 className="mt-3 text-2xl font-bold leading-tight text-[var(--foreground)] md:text-3xl">
