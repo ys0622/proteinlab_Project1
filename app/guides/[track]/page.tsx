@@ -56,7 +56,7 @@ export default async function GuideTrackPage({ params }: { params: Promise<{ tra
           <h1 className="mt-3 text-2xl font-bold leading-tight text-[var(--foreground)] md:text-3xl">
             {trackData.title}
           </h1>
-          <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
+          <p className="mt-2 max-w-2xl text-sm leading-6 text-[var(--foreground-muted)]">
             {trackData.description}
           </p>
         </div>
@@ -66,7 +66,7 @@ export default async function GuideTrackPage({ params }: { params: Promise<{ tra
         <section className="mt-6">
           <div className="flex items-center justify-between gap-3">
             <h2 className="text-lg font-bold text-[var(--foreground)]">주제 목록</h2>
-            <p className="text-xs text-[#8b8b8b]">순차적으로 콘텐츠가 추가될 예정입니다</p>
+            <p className="text-xs text-[#8b8b8b]">순차적으로 콘텐츠가 확장됩니다.</p>
           </div>
 
           <div className="mt-4 grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
@@ -77,13 +77,19 @@ export default async function GuideTrackPage({ params }: { params: Promise<{ tra
                 className="group flex h-full flex-col justify-between rounded-2xl border border-[#e8e6e3] bg-white px-5 py-5"
               >
                 <div>
-                  <p className="text-xs font-semibold tracking-[0.08em] text-[#8f8a84]">GUIDE TOPIC</p>
+                  <p className="text-xs font-semibold tracking-[0.08em] text-[#8f8a84]">
+                    GUIDE TOPIC
+                  </p>
                   <h3 className="mt-2 text-base font-bold text-[var(--foreground)]">{slot.title}</h3>
-                  <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">{slot.description}</p>
+                  <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">
+                    {slot.description}
+                  </p>
 
                   <div className="mt-4 rounded-xl border border-[#eef1f3] bg-[#fafbfc] px-3 py-3">
                     <p className="text-xs font-semibold text-[#6f7a84]">이런 내용을 다룰 예정입니다</p>
-                    <p className="mt-1 text-sm leading-6 text-[var(--foreground-muted)]">{slot.searchIntent}</p>
+                    <p className="mt-1 text-sm leading-6 text-[var(--foreground-muted)]">
+                      {slot.searchIntent}
+                    </p>
                   </div>
                 </div>
 

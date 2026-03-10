@@ -4,9 +4,9 @@ import Footer from "../components/Footer";
 import { getGuideTracks } from "../data/guidesTracks";
 
 export const metadata = {
-  title: "단백질 가이드 | Track 기반 콘텐츠 허브 | ProteinLab",
+  title: "단백질 가이드 | ProteinLab",
   description:
-    "단백질 기초, 제품 선택, 섭취 전략, 운동 라이프스타일, 시장 인사이트까지. ProteinLab Guides를 Track 기반 허브 구조로 탐색하세요.",
+    "단백질 기초, 제품 선택, 섭취 전략, 운동 라이프스타일, 시장 인사이트, 계산 도구까지 한곳에서 탐색할 수 있는 ProteinLab 가이드입니다.",
 };
 
 const tracks = getGuideTracks();
@@ -21,13 +21,12 @@ export default function GuidesPage() {
         style={{ borderColor: "var(--hero-border)" }}
       >
         <div className="mx-auto max-w-[1200px] px-4 py-5 md:px-6 md:py-6">
-          <p className="text-xs font-semibold tracking-[0.18em] text-[var(--accent)]">PROTEINLAB GUIDES</p>
           <h1 className="mt-2 text-2xl font-bold leading-tight text-[var(--foreground)] md:text-3xl">
             단백질 가이드
           </h1>
-          <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
-            단백질 기초부터 제품 선택, 섭취 전략, 운동 라이프스타일, 시장 흐름까지 한곳에서
-            이어서 볼 수 있도록 가이드를 트랙별로 정리했습니다. 필요한 주제부터 바로 탐색해보세요.
+          <p className="mt-2 max-w-2xl text-sm leading-6 text-[var(--foreground-muted)]">
+            단백질 기초부터 제품 선택, 섭취 전략, 운동별 활용, 시장 인사이트까지 주제별로
+            정리했습니다. 필요한 트랙부터 바로 살펴보세요.
           </p>
         </div>
       </section>
@@ -52,20 +51,19 @@ export default function GuidesPage() {
 
                 <div className="px-5 pb-5 pt-4">
                   <h2 className="text-lg font-bold text-[var(--foreground)]">{track.title}</h2>
-                  <p className="mt-1 text-xs text-[#8d8d8d]">{track.slots.length}개 콘텐츠 슬롯</p>
+                  <p className="mt-1 text-xs text-[#8d8d8d]">{track.slots.length}개 주제</p>
                   <p className="mt-3 text-[13px] leading-6 text-[var(--foreground-muted)]">
-                    {track.description}
+                    {track.cardDescription ?? track.description}
                   </p>
                   <p className="mt-4 text-sm leading-6 text-[var(--foreground-muted)]">
-                    {track.slots.slice(0, 3).map((slot) => slot.title).join(", ")}
-                    {track.slots.length > 3 ? " 등" : ""}
+                    {track.cardNote ?? track.slots.slice(0, 3).map((slot) => slot.title).join(", ")}
                   </p>
                 </div>
               </div>
 
               <div className="px-5 pb-5">
                 <span className="flex items-center justify-center rounded-lg border border-[#e8e6e3] py-2.5 text-xs font-semibold text-[#374151] transition-colors group-hover:bg-[var(--accent-light)] group-hover:text-[var(--accent)]">
-                  주제 보러 가기
+                  {track.ctaLabel ?? "주제 보러 가기"}
                 </span>
               </div>
             </Link>

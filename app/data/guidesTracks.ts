@@ -3,7 +3,8 @@ export type GuideTrackSlug =
   | "product-selection-comparison"
   | "intake-strategy-health"
   | "fitness-lifestyle"
-  | "market-insights";
+  | "market-insights"
+  | "tools";
 
 export interface GuideSlot {
   slug: string;
@@ -23,6 +24,9 @@ export interface GuideTrack {
   shortLabel: string;
   title: string;
   description: string;
+  cardDescription?: string;
+  cardNote?: string;
+  ctaLabel?: string;
   hubSummary: string;
   seoFocus: string;
   accentColor: string;
@@ -465,6 +469,61 @@ export const guideTracks: GuideTrack[] = [
         internalLinkTargets: [
           { label: "단백질 시장 히스토리", href: "/guides/market-insights/protein-market-history" },
           { label: "성분 트렌드", href: "/guides/market-insights/ingredient-trends" },
+        ],
+      },
+    ],
+  },
+  {
+    slug: "tools",
+    label: "TRACK F",
+    shortLabel: "계산 & 도구",
+    title: "단백질 계산 & 도구",
+    description:
+      "체중과 운동량을 기반으로 하루 단백질 섭취량을 계산하고 목표에 맞는 단백질 섭취 전략을 확인할 수 있는 도구 트랙입니다.",
+    cardDescription:
+      "체중과 운동량을 기반으로 개인에게 필요한 단백질 섭취량을 계산하고 제품 선택에 활용할 수 있는 다양한 단백질 계산 도구를 제공합니다.",
+    cardNote: "하루 단백질 섭취량 계산기 등",
+    ctaLabel: "도구 사용하기",
+    hubSummary:
+      "계산기와 실전 활용 도구를 모아두는 확장형 트랙입니다. 현재는 하루 단백질 섭취량 계산기를 우선 제공하고, 이후 제품 개수 계산기와 단백질 밀도 계산기 등으로 넓혀갈 수 있습니다.",
+    seoFocus: "단백질 섭취량 계산기, 체중별 단백질 계산, 도구형 SEO 콘텐츠",
+    accentColor: "#5d4b8a",
+    accentBg: "#efe9fb",
+    slots: [
+      {
+        slug: "daily-protein-calculator",
+        title: "하루 단백질 섭취량 계산기",
+        description:
+          "체중과 운동량을 기준으로 하루 단백질 권장량을 계산하는 핵심 도구 페이지 슬롯입니다.",
+        searchIntent: "하루 단백질 섭취량 계산기",
+        futureFocus: ["체중 기준 계산", "운동량별 계수", "제품 연결"],
+        internalLinkTargets: [
+          { label: "단백질 섭취량", href: "/guides/protein-basics/protein-intake-amount" },
+          { label: "단백질 음료 비교", href: "/products" },
+        ],
+      },
+      {
+        slug: "protein-drink-count-calculator",
+        title: "단백질 음료 개수 계산기",
+        description:
+          "목표 단백질 섭취량을 기준으로 제품별 몇 병이 필요한지 계산할 수 있도록 확장할 예정인 도구 슬롯입니다.",
+        searchIntent: "단백질 음료 몇 개 먹어야",
+        futureFocus: ["제품별 단백질 함량 반영", "섭취량 환산", "비교 페이지 연결"],
+        internalLinkTargets: [
+          { label: "단백질 음료 선택 가이드", href: "/guides/product-selection-comparison/protein-drink-guide" },
+          { label: "랭킹", href: "/ranking" },
+        ],
+      },
+      {
+        slug: "protein-density-calculator",
+        title: "단백질 밀도 계산기",
+        description:
+          "칼로리 대비 단백질 효율을 계산해 제품 선택에 활용할 수 있도록 준비하는 도구 슬롯입니다.",
+        searchIntent: "단백질 밀도 계산기",
+        futureFocus: ["밀도 계산식", "제품 비교", "선택 기준 연결"],
+        internalLinkTargets: [
+          { label: "영양 성분 기준", href: "/guides/product-selection-comparison/nutrition-criteria" },
+          { label: "제품 비교", href: "/compare" },
         ],
       },
     ],

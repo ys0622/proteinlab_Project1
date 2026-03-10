@@ -75,7 +75,7 @@ export default async function GuideArticlePage({
           <h1 className="mt-3 text-2xl font-bold leading-tight text-[var(--foreground)] md:text-3xl">
             {slot.title}
           </h1>
-          <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
+          <p className="mt-2 max-w-2xl text-sm leading-6 text-[var(--foreground-muted)]">
             {slot.description}
           </p>
         </div>
@@ -87,13 +87,15 @@ export default async function GuideArticlePage({
             <section>
               <p className="text-xs font-semibold tracking-[0.08em] text-[#8f8a84]">요약</p>
               <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">
-                이 페이지는 향후 구체적인 콘텐츠를 작성하기 위한 placeholder입니다. 현재 단계에서는 제목, 설명,
-                검색 의도, 내부 링크 방향만 구조화했습니다.
+                이 페이지는 향후 구체적인 콘텐츠를 작성하기 위한 구조입니다. 현재는 제목, 설명,
+                검색 의도, 내부 링크 방향까지 먼저 정리해 둔 상태입니다.
               </p>
             </section>
 
             <section className="mt-6">
-              <p className="text-xs font-semibold tracking-[0.08em] text-[#8f8a84]">향후 콘텐츠 작성 영역</p>
+              <p className="text-xs font-semibold tracking-[0.08em] text-[#8f8a84]">
+                향후 콘텐츠 작성 영역
+              </p>
               <div className="mt-2 rounded-xl border border-dashed border-[#d9d4cd] bg-white px-4 py-4">
                 <p className="text-sm font-semibold text-[var(--foreground)]">{slot.searchIntent}</p>
                 <ul className="mt-3 space-y-2 text-sm leading-6 text-[var(--foreground-muted)]">
@@ -105,7 +107,9 @@ export default async function GuideArticlePage({
             </section>
 
             <section className="mt-6">
-              <p className="text-xs font-semibold tracking-[0.08em] text-[#8f8a84]">내부 링크 확장 구조</p>
+              <p className="text-xs font-semibold tracking-[0.08em] text-[#8f8a84]">
+                내부 링크 확장 구조
+              </p>
               <div className="mt-3 grid gap-3 sm:grid-cols-2">
                 {slot.internalLinkTargets.map((linkItem) => (
                   <Link
@@ -122,22 +126,24 @@ export default async function GuideArticlePage({
           </article>
 
           <aside className="rounded-2xl border border-[#e8e6e3] bg-white px-5 py-5">
-            <p className="text-sm font-semibold text-[var(--foreground)]">이 슬롯의 역할</p>
+            <p className="text-sm font-semibold text-[var(--foreground)]">이 페이지의 역할</p>
             <ul className="mt-3 space-y-2 text-sm leading-6 text-[var(--foreground-muted)]">
-              <li>개별 SEO 페이지로 확장 가능한 단위</li>
-              <li>Track 허브와 제품 탐색 페이지를 연결하는 중간 노드</li>
-              <li>향후 관련 글, 추천 리스트, 비교 페이지와 교차 링크 가능</li>
+              <li>개별 SEO 콘텐츠로 확장 가능한 주제 구조</li>
+              <li>트랙 허브와 제품 탐색 페이지를 연결하는 중간 노드</li>
+              <li>향후 비교 콘텐츠와 추천 리스트로 확장 가능한 기준 페이지</li>
             </ul>
 
             <div className="mt-5 rounded-xl border border-[#eef1f3] bg-[#fafbfc] px-4 py-4">
-              <p className="text-xs font-semibold tracking-[0.08em] text-[#6f7a84]">TRACK HUB</p>
+              <p className="text-xs font-semibold tracking-[0.08em] text-[#6f7a84]">TRACK</p>
               <p className="mt-1 text-sm font-semibold text-[var(--foreground)]">{trackData.title}</p>
-              <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">{trackData.hubSummary}</p>
+              <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">
+                {trackData.hubSummary}
+              </p>
               <Link
                 href={`/guides/${trackData.slug}`}
                 className="mt-4 inline-flex text-sm font-semibold text-[var(--accent)]"
               >
-                트랙 허브로 돌아가기
+                트랙으로 돌아가기
               </Link>
             </div>
           </aside>
