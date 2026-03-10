@@ -11,13 +11,21 @@ const options = [
   { value: "sugar_desc", label: "당류 많은순" },
 ];
 
-export default function SortBar({ total = 101 }: { total?: number }) {
+interface SortBarProps {
+  total?: number;
+  categoryLabel?: string;
+}
+
+export default function SortBar({
+  total = 101,
+  categoryLabel = "단백질 음료",
+}: SortBarProps) {
   const [sort, setSort] = useState<string>(options[0].value);
 
   return (
     <div className="flex flex-wrap items-center justify-between gap-2 border-b border-[var(--border)] py-2">
       <span className="text-sm text-[var(--foreground-muted)]" style={{ fontWeight: 400 }}>
-        전체 {total}개
+        전체 {total}개 {categoryLabel} 비교
       </span>
       <select
         value={sort}

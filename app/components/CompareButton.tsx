@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { useCompare } from "../context/CompareContext";
 
 interface CompareButtonProps {
@@ -18,7 +17,8 @@ export default function CompareButton({ slug, detailHref }: CompareButtonProps) 
       type="button"
       onClick={() => toggle(slug)}
       disabled={disabled}
-      className="flex flex-1 items-center justify-center rounded-[10px] border font-medium transition-colors active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-60"
+      data-detail-href={detailHref}
+      className="flex flex-1 items-center justify-center rounded-[10px] border font-medium whitespace-nowrap transition-colors active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-60"
       style={{
         height: "40px",
         fontSize: "12px",
@@ -28,7 +28,7 @@ export default function CompareButton({ slug, detailHref }: CompareButtonProps) 
           : { borderColor: "#e2e2e2", background: "white", color: "var(--foreground)" }),
       }}
     >
-      {selected ? "비교 해제" : "비교"}
+      {selected ? "스펙 비교 해제" : "스펙 비교"}
     </button>
   );
 }

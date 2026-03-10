@@ -134,7 +134,7 @@ export default function ProductListWithFilters(props: ProductListWithFiltersProp
       </div>
 
       <div className="mt-2" style={{ marginTop: "8px" }}>
-        <SortBar total={filtered.length} />
+        <SortBar total={filtered.length} categoryLabel={productType === "bar" ? "단백질 바" : "단백질 음료"} />
       </div>
 
       <section className="product-grid mt-3 bg-white" style={{ marginTop: "12px" }} aria-label="제품 목록">
