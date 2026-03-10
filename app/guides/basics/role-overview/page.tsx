@@ -96,6 +96,7 @@ export default function RoleOverviewGuidePage() {
       <main className="mx-auto max-w-[1200px] px-4 py-8 md:px-6">
         <div className="space-y-6">
 
+          {/* Section 1 */}
           <section className="rounded-2xl border border-[#e8e6e3] bg-[#fffdf8] px-5 py-5">
             <h2 className="text-xl font-bold text-[var(--foreground)]">
               우리 몸은 단백질로 이루어져 있다
@@ -135,6 +136,7 @@ export default function RoleOverviewGuidePage() {
             </p>
           </section>
 
+          {/* Section 2 */}
           <section className="rounded-2xl border border-[#e8e6e3] bg-[#fffdf8] px-5 py-5">
             <h2 className="text-xl font-bold text-[var(--foreground)]">
               단백질이 하는 3가지 핵심 역할
@@ -158,6 +160,7 @@ export default function RoleOverviewGuidePage() {
             </div>
           </section>
 
+          {/* Section 3 */}
           <section className="rounded-2xl border border-[#e8e6e3] bg-[#fffdf8] px-5 py-5">
             <h2 className="text-xl font-bold text-[var(--foreground)]">
               나는 하루에 얼마나 먹어야 할까?
