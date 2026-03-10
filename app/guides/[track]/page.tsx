@@ -4,6 +4,45 @@ import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 import { getGuideTrack, getGuideTracks, type GuideTrackSlug } from "@/app/data/guidesTracks";
 
+const heroCopyMap: Record<
+  GuideTrackSlug,
+  {
+    eyebrow: string;
+    description: string;
+  }
+> = {
+  "protein-basics": {
+    eyebrow: "단백질을 이해하는 첫 단계",
+    description:
+      "역할, 권장 섭취량, 흡수 방식, 부족 신호까지 단백질을 제대로 이해하는 데 필요한 기초를 한곳에 모았습니다.",
+  },
+  "product-selection-comparison": {
+    eyebrow: "고르기 전에 꼭 확인할 기준",
+    description:
+      "단백질 음료와 바를 비교할 때 필요한 선택 기준, 성분표 읽는 법, 제품별 차이를 사용자 관점에서 정리했습니다.",
+  },
+  "intake-strategy-health": {
+    eyebrow: "상황에 맞는 섭취 기준",
+    description:
+      "다이어트, 근성장, 식사 대용, 노년기처럼 목적과 생활 패턴에 따라 달라지는 단백질 섭취 전략을 안내합니다.",
+  },
+  "fitness-lifestyle": {
+    eyebrow: "운동하는 사람을 위한 활용 가이드",
+    description:
+      "러닝, 근력 운동, 운동 입문자처럼 활동 맥락에 맞춰 단백질을 어떻게 활용하면 좋은지 쉽게 정리했습니다.",
+  },
+  "market-insights": {
+    eyebrow: "국내 단백질 시장 흐름 정리",
+    description:
+      "RTD 단백질 시장, 브랜드 움직임, 성분 트렌드를 복잡한 업계 표현 없이 읽기 쉽게 풀어낸 페이지입니다.",
+  },
+  tools: {
+    eyebrow: "바로 써보는 계산 도구",
+    description:
+      "하루 단백질 권장량과 제품 활용량을 빠르게 계산해볼 수 있도록 실사용 중심의 도구를 모았습니다.",
+  },
+};
+
 const topicChipsMap: Record<GuideTrackSlug, string[]> = {
   "protein-basics": ["기초", "역할"],
   "product-selection-comparison": ["비교", "선택"],
@@ -42,6 +81,7 @@ export default async function GuideTrackPage({ params }: { params: Promise<{ tra
 
   if (!trackData) notFound();
 
+  const heroCopy = heroCopyMap[trackData.slug];
   const topicChips = topicChipsMap[trackData.slug];
 
   return (
@@ -68,6 +108,7 @@ export default async function GuideTrackPage({ params }: { params: Promise<{ tra
             >
               {trackData.label}
             </span>
+            <span className="text-xs text-[#8b8b8b]">{heroCopy.eyebrow}</span>
             <span className="text-xs text-[#8b8b8b]">{trackData.slots.length}개 주제</span>
           </div>
 
@@ -75,7 +116,7 @@ export default async function GuideTrackPage({ params }: { params: Promise<{ tra
             {trackData.title}
           </h1>
           <p className="mt-2 max-w-2xl text-sm leading-6 text-[var(--foreground-muted)]">
-            {trackData.description}
+            {heroCopy.description}
           </p>
         </div>
       </section>

@@ -407,15 +407,6 @@ function BrandEventCard({ brand }: { brand: BrandCard }) {
           </span>
         </div>
 
-        <div className="px-5 pt-4">
-          <div className="rounded-xl border border-[#efe8df] bg-[#fffaf1] px-3 py-3">
-            <p className="text-xs font-semibold text-[#8c6b3d]">체크 포인트</p>
-            <p className="mt-1 text-sm leading-6 text-[var(--foreground-muted)]">
-              현재 ProteinLab 등록 제품 기준 {brand.productCount}개 제품이 연결돼 있습니다.
-            </p>
-          </div>
-        </div>
-
         <ul className="space-y-3 px-5 pb-2 pt-4">
           {brand.events.map((event) => {
             const color = CATEGORY_COLOR[event.category];
