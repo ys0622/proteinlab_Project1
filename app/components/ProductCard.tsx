@@ -2,6 +2,8 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import type { KeyboardEvent, MouseEvent } from "react";
 import { trackPurchaseClick } from "@/lib/gtag";
 import { getProductImageUrl } from "../lib/productImage";
 import {
@@ -45,6 +47,7 @@ export default function ProductCard({
   slug,
   priority = false,
 }: ProductCardProps) {
+  const router = useRouter();
   const detailHref = slug ? `/product/${slug}` : productUrl;
   const imageUrl = slug ? getProductImageUrl(slug) : null;
   const coupangHref = getPreferredCoupangUrl(brand, name, coupangUrl ?? productUrl);
@@ -53,6 +56,42 @@ export default function ProductCard({
   const productId = slug ?? `${brand}-${name}`;
   const packageTag = tags.find((tag) => ["팩", "PET", "CAN"].includes(tag));
   const capacitySuffix = packageTag ? `, ${packageTag}` : "";
+  const canOpenDetail = Boolean(detailHref && detailHref !== "#");
+
+  const shouldIgnoreCardClick = (target: EventTarget | null) => {
+    if (!(target instanceof HTMLElement)) {
+      return false;
+    }
+
+    return Boolean(target.closest("a, button, input, select, textarea, label"));
+  };
+
+  const openDetail = () => {
+    if (!canOpenDetail) {
+      return;
+    }
+
+    router.push(detailHref);
+  };
+
+  const handleCardClick = (event: MouseEvent<HTMLElement>) => {
+    if (shouldIgnoreCardClick(event.target)) {
+      return;
+    }
+
+    openDetail();
+  };
+
+  const handleCardKeyDown = (event: KeyboardEvent<HTMLElement>) => {
+    if (shouldIgnoreCardClick(event.target)) {
+      return;
+    }
+
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      openDetail();
+    }
+  };
 
   const imageArea = (
     <div
@@ -89,7 +128,12 @@ export default function ProductCard({
 
   return (
     <article
-      className="product-card group flex h-full flex-col overflow-hidden rounded-2xl border bg-[#FFFDF8] transition-all duration-200 ease-out hover:border-[#ddd] active:shadow-sm"
+      className={`product-card group flex h-full flex-col overflow-hidden rounded-2xl border bg-[#FFFDF8] transition-all duration-200 ease-out hover:border-[#ddd] active:shadow-sm ${canOpenDetail ? "cursor-pointer" : ""}`}
+      onClick={handleCardClick}
+      onKeyDown={handleCardKeyDown}
+      role={canOpenDetail ? "link" : undefined}
+      tabIndex={canOpenDetail ? 0 : undefined}
+      aria-label={canOpenDetail ? `${brand} ${name} 상세 보기` : undefined}
       style={{
         borderRadius: "16px",
         padding: "14px",
