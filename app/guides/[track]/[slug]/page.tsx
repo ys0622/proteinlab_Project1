@@ -2,67 +2,44 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
-import guidesData from "@/app/data/guidesData.json";
-
-type Track = "basics" | "how-to-choose" | "by-goal";
-
-const VALID_TRACKS: Track[] = ["basics", "how-to-choose", "by-goal"];
-
-const TRACK_META: Record<Track, { label: string; href: string }> = {
-  basics: { label: "🧬 단백질 기초", href: "/guides/basics" },
-  "how-to-choose": { label: "🎯 제품 선택 가이드", href: "/guides/how-to-choose" },
-  "by-goal": { label: "💪 목적별 활용", href: "/guides/by-goal" },
-};
-
-function isValidTrack(track: string): track is Track {
-  return VALID_TRACKS.includes(track as Track);
-}
-
-type GuideItem = {
-  slug?: string;
-  track?: string;
-  title?: string;
-  description?: string;
-  content?: string;
-};
-
-const guideItems = guidesData as GuideItem[];
-
-function getArticle(track: Track, slug: string) {
-  return guideItems.find((item) => item.track === track && item.slug === slug);
-}
+import { getGuideSlot, getGuideTrack, getGuideTracks } from "@/app/data/guidesTracks";
 
 export async function generateStaticParams() {
-  return guideItems
-    .filter((item): item is Required<Pick<GuideItem, "track" | "slug">> & GuideItem =>
-      typeof item.track === "string" &&
-      typeof item.slug === "string" &&
-      isValidTrack(item.track)
-    )
-    .map((item) => ({ track: item.track, slug: item.slug }));
+  return getGuideTracks().flatMap((track) =>
+    track.slots.map((slot) => ({
+      track: track.slug,
+      slug: slot.slug,
+    })),
+  );
 }
 
-export async function generateMetadata({ params }: { params: Promise<{ track: string; slug: string }> }) {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ track: string; slug: string }>;
+}) {
   const { track, slug } = await params;
-  if (!isValidTrack(track)) return {};
+  const trackData = getGuideTrack(track);
+  const slot = getGuideSlot(track, slug);
 
-  const article = getArticle(track, slug);
-  if (!article) return {};
+  if (!trackData || !slot) return {};
 
   return {
-    title: `${article.title ?? "가이드"} | ProteinLab`,
-    description: article.description ?? "ProteinLab 가이드",
+    title: `${slot.title} | ${trackData.title} | ProteinLab`,
+    description: slot.description,
   };
 }
 
-export default async function GuideArticlePage({ params }: { params: Promise<{ track: string; slug: string }> }) {
+export default async function GuideArticlePage({
+  params,
+}: {
+  params: Promise<{ track: string; slug: string }>;
+}) {
   const { track, slug } = await params;
+  const trackData = getGuideTrack(track);
+  const slot = getGuideSlot(track, slug);
 
-  if (!isValidTrack(track)) notFound();
-  const article = getArticle(track, slug);
-  if (!article) notFound();
-
-  const trackMeta = TRACK_META[track];
+  if (!trackData || !slot) notFound();
 
   return (
     <div className="min-h-screen bg-white">
@@ -72,47 +49,100 @@ export default async function GuideArticlePage({ params }: { params: Promise<{ t
         className="w-full border-t border-b bg-[var(--hero-bg)]"
         style={{ borderColor: "var(--hero-border)" }}
       >
-        <div className="mx-auto max-w-[1200px] px-4 py-4 md:px-6 md:py-5">
-          <div className="flex items-center gap-1.5 text-xs text-[var(--foreground-muted)]">
+        <div className="mx-auto max-w-[1200px] px-4 py-5 md:px-6 md:py-6">
+          <div className="flex flex-wrap items-center gap-1.5 text-xs text-[var(--foreground-muted)]">
             <Link href="/guides" className="hover:text-[var(--accent)]">
-              가이드
+              Guides
             </Link>
             <span>/</span>
-            <Link href={trackMeta.href} className="hover:text-[var(--accent)]">
-              {trackMeta.label}
+            <Link href={`/guides/${trackData.slug}`} className="hover:text-[var(--accent)]">
+              {trackData.title}
             </Link>
+            <span>/</span>
+            <span>{slot.title}</span>
           </div>
-          <h1
-            className="mt-2 text-2xl font-bold leading-tight text-[var(--foreground)] md:text-3xl"
-            style={{ fontWeight: 700 }}
-          >
-            {article.title ?? "가이드"}
+
+          <div className="mt-3 flex flex-wrap items-center gap-3">
+            <span
+              className="rounded-md px-2 py-0.5 text-[11px] font-semibold tracking-wide"
+              style={{ background: trackData.accentBg, color: trackData.accentColor }}
+            >
+              {trackData.label}
+            </span>
+            <span className="text-xs text-[#8b8b8b]">PLACEHOLDER PAGE</span>
+          </div>
+
+          <h1 className="mt-3 text-2xl font-bold leading-tight text-[var(--foreground)] md:text-3xl">
+            {slot.title}
           </h1>
-          {article.description && (
-            <p className="mt-1 text-sm text-[var(--foreground-muted)]">{article.description}</p>
-          )}
+          <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
+            {slot.description}
+          </p>
         </div>
       </section>
 
-      <main className="mx-auto max-w-[800px] px-4 py-8 md:px-6">
-        {article.content ? (
-          <article className="whitespace-pre-wrap text-sm leading-7 text-[var(--foreground)]">
-            {article.content}
-          </article>
-        ) : (
-          <div className="rounded-xl border border-[#e8e6e3] bg-[#FFFDF8] p-6 text-sm text-[var(--foreground-muted)]">
-            본문이 비어 있습니다.
-          </div>
-        )}
-      </main>
+      <main className="mx-auto max-w-[1200px] px-4 py-8 md:px-6">
+        <div className="grid gap-4 lg:grid-cols-[minmax(0,1.7fr)_minmax(280px,0.9fr)]">
+          <article className="rounded-2xl border border-[#e8e6e3] bg-[#fffdf8] px-5 py-5">
+            <section>
+              <p className="text-xs font-semibold tracking-[0.08em] text-[#8f8a84]">요약</p>
+              <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">
+                이 페이지는 향후 구체적인 콘텐츠를 작성하기 위한 placeholder입니다. 현재 단계에서는 제목, 설명,
+                검색 의도, 내부 링크 방향만 구조화했습니다.
+              </p>
+            </section>
 
-      <div className="border-t" style={{ borderColor: "#e8e6e3" }}>
-        <div className="mx-auto max-w-[800px] px-4 py-6 md:px-6">
-          <Link href={trackMeta.href} className="text-sm hover:underline" style={{ color: "var(--accent)" }}>
-            {trackMeta.label} 목록으로
-          </Link>
+            <section className="mt-6">
+              <p className="text-xs font-semibold tracking-[0.08em] text-[#8f8a84]">향후 콘텐츠 작성 영역</p>
+              <div className="mt-2 rounded-xl border border-dashed border-[#d9d4cd] bg-white px-4 py-4">
+                <p className="text-sm font-semibold text-[var(--foreground)]">{slot.searchIntent}</p>
+                <ul className="mt-3 space-y-2 text-sm leading-6 text-[var(--foreground-muted)]">
+                  {slot.futureFocus.map((item) => (
+                    <li key={item}>- {item}</li>
+                  ))}
+                </ul>
+              </div>
+            </section>
+
+            <section className="mt-6">
+              <p className="text-xs font-semibold tracking-[0.08em] text-[#8f8a84]">내부 링크 확장 구조</p>
+              <div className="mt-3 grid gap-3 sm:grid-cols-2">
+                {slot.internalLinkTargets.map((linkItem) => (
+                  <Link
+                    key={linkItem.href}
+                    href={linkItem.href}
+                    className="rounded-xl border border-[#e8e6e3] bg-white px-4 py-4 transition-colors hover:border-[var(--accent)]"
+                  >
+                    <p className="text-sm font-semibold text-[var(--foreground)]">{linkItem.label}</p>
+                    <p className="mt-1 text-xs text-[var(--foreground-muted)]">{linkItem.href}</p>
+                  </Link>
+                ))}
+              </div>
+            </section>
+          </article>
+
+          <aside className="rounded-2xl border border-[#e8e6e3] bg-white px-5 py-5">
+            <p className="text-sm font-semibold text-[var(--foreground)]">이 슬롯의 역할</p>
+            <ul className="mt-3 space-y-2 text-sm leading-6 text-[var(--foreground-muted)]">
+              <li>개별 SEO 페이지로 확장 가능한 단위</li>
+              <li>Track 허브와 제품 탐색 페이지를 연결하는 중간 노드</li>
+              <li>향후 관련 글, 추천 리스트, 비교 페이지와 교차 링크 가능</li>
+            </ul>
+
+            <div className="mt-5 rounded-xl border border-[#eef1f3] bg-[#fafbfc] px-4 py-4">
+              <p className="text-xs font-semibold tracking-[0.08em] text-[#6f7a84]">TRACK HUB</p>
+              <p className="mt-1 text-sm font-semibold text-[var(--foreground)]">{trackData.title}</p>
+              <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">{trackData.hubSummary}</p>
+              <Link
+                href={`/guides/${trackData.slug}`}
+                className="mt-4 inline-flex text-sm font-semibold text-[var(--accent)]"
+              >
+                트랙 허브로 돌아가기
+              </Link>
+            </div>
+          </aside>
         </div>
-      </div>
+      </main>
 
       <Footer />
     </div>

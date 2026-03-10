@@ -1,0 +1,484 @@
+export type GuideTrackSlug =
+  | "protein-basics"
+  | "product-selection-comparison"
+  | "intake-strategy-health"
+  | "fitness-lifestyle"
+  | "market-insights";
+
+export interface GuideSlot {
+  slug: string;
+  title: string;
+  description: string;
+  searchIntent: string;
+  futureFocus: string[];
+  internalLinkTargets: {
+    label: string;
+    href: string;
+  }[];
+}
+
+export interface GuideTrack {
+  slug: GuideTrackSlug;
+  label: string;
+  shortLabel: string;
+  title: string;
+  description: string;
+  hubSummary: string;
+  seoFocus: string;
+  accentColor: string;
+  accentBg: string;
+  slots: GuideSlot[];
+}
+
+export const guideTracks: GuideTrack[] = [
+  {
+    slug: "protein-basics",
+    label: "TRACK A",
+    shortLabel: "단백질 기초",
+    title: "단백질 기초",
+    description:
+      "단백질의 기본 개념, 역할, 권장 섭취량, 부족 신호, 흡수와 종류까지 장기적으로 확장할 기본 SEO 허브입니다.",
+    hubSummary:
+      "단백질 정보 플랫폼의 기반이 되는 기초 설명형 콘텐츠를 담는 트랙입니다. 검색 유입형 주제를 중심으로 개별 페이지를 계속 확장할 수 있습니다.",
+    seoFocus: "기초 개념, 건강 정보, 검색형 질문 대응",
+    accentColor: "#2d6a4f",
+    accentBg: "#e7f3ec",
+    slots: [
+      {
+        slug: "protein-basics-overview",
+        title: "단백질 기본 개념",
+        description: "단백질이 무엇인지, 왜 중요한지 정리할 기본 개념 페이지 슬롯입니다.",
+        searchIntent: "단백질이란 무엇인가",
+        futureFocus: ["기본 정의", "일상 이해 포인트", "관련 용어 정리"],
+        internalLinkTargets: [
+          { label: "단백질 역할", href: "/guides/protein-basics/protein-functions" },
+          { label: "단백질 종류", href: "/guides/protein-basics/protein-types" },
+        ],
+      },
+      {
+        slug: "protein-functions",
+        title: "단백질 역할",
+        description: "근육 외에 회복, 포만감, 식사 구성 등 다양한 역할을 다룰 페이지 슬롯입니다.",
+        searchIntent: "단백질은 몸에서 어떤 역할을 하나",
+        futureFocus: ["신체 기능", "회복과 유지", "생활 속 의미"],
+        internalLinkTargets: [
+          { label: "단백질 섭취량", href: "/guides/protein-basics/protein-intake-amount" },
+          { label: "단백질 건강 영향", href: "/guides/protein-basics/protein-health-impact" },
+        ],
+      },
+      {
+        slug: "protein-intake-amount",
+        title: "단백질 섭취량",
+        description: "일반인, 운동인, 체중 관리 목적 등 상황별 섭취량 기준을 넣을 페이지 슬롯입니다.",
+        searchIntent: "단백질 하루 섭취량",
+        futureFocus: ["권장량 프레임", "상황별 계산", "실전 적용"],
+        internalLinkTargets: [
+          { label: "단백질 부족", href: "/guides/protein-basics/protein-deficiency-signs" },
+          { label: "섭취 전략 & 건강", href: "/guides/intake-strategy-health" },
+        ],
+      },
+      {
+        slug: "protein-deficiency-signs",
+        title: "단백질 부족",
+        description: "단백질 부족 신호와 식단 점검 포인트를 정리할 페이지 슬롯입니다.",
+        searchIntent: "단백질 부족 증상",
+        futureFocus: ["부족 신호", "식단 점검", "주의 포인트"],
+        internalLinkTargets: [
+          { label: "단백질 흡수", href: "/guides/protein-basics/protein-absorption" },
+          { label: "식사대용 전략", href: "/guides/intake-strategy-health/meal-replacement-strategy" },
+        ],
+      },
+      {
+        slug: "protein-absorption",
+        title: "단백질 흡수",
+        description: "흡수 속도, 소화, 섭취 타이밍과 연결될 설명형 페이지 슬롯입니다.",
+        searchIntent: "단백질 흡수 잘되는 방법",
+        futureFocus: ["소화와 흡수", "타이밍 연결", "오해 정리"],
+        internalLinkTargets: [
+          { label: "운동 후 섭취", href: "/guides/intake-strategy-health/post-workout-protein" },
+          { label: "단백질 종류", href: "/guides/protein-basics/protein-types" },
+        ],
+      },
+      {
+        slug: "protein-types",
+        title: "단백질 종류",
+        description: "동물성, 식물성, 유청, 카제인 등 급원과 특징을 정리할 페이지 슬롯입니다.",
+        searchIntent: "단백질 종류 차이",
+        futureFocus: ["급원 비교", "상황별 선택", "제품 연결"],
+        internalLinkTargets: [
+          { label: "제품 선택 & 비교", href: "/guides/product-selection-comparison" },
+          { label: "단백질 파우더 선택 가이드", href: "/guides/product-selection-comparison/protein-powder-guide" },
+        ],
+      },
+      {
+        slug: "protein-health-impact",
+        title: "단백질 건강 영향",
+        description: "단백질 섭취와 건강 관리 사이의 관계를 다룰 페이지 슬롯입니다.",
+        searchIntent: "단백질 건강 영향",
+        futureFocus: ["건강 관점", "과잉과 부족", "장기 관리"],
+        internalLinkTargets: [
+          { label: "노년 단백질", href: "/guides/intake-strategy-health/senior-protein-strategy" },
+          { label: "체중 관리", href: "/guides/intake-strategy-health/weight-management-protein" },
+        ],
+      },
+    ],
+  },
+  {
+    slug: "product-selection-comparison",
+    label: "TRACK B",
+    shortLabel: "제품 선택 & 비교",
+    title: "제품 선택 & 비교",
+    description:
+      "단백질 제품을 고르는 기준, 성분 비교, 추천 리스트, 랭킹형 콘텐츠를 연결하는 제품 탐색 허브입니다.",
+    hubSummary:
+      "제품 DB, 랭킹, 추천, 비교 페이지로 확장하기 위한 핵심 허브입니다. 제품 비교형 검색과 구매 직전 탐색 수요를 받는 구조로 설계했습니다.",
+    seoFocus: "제품 선택, 비교 검색, 추천형 콘텐츠 연결",
+    accentColor: "#4a6178",
+    accentBg: "#eaf0f6",
+    slots: [
+      {
+        slug: "protein-drink-guide",
+        title: "단백질 음료 선택 가이드",
+        description: "RTD 단백질 음료를 고르는 기준을 정리할 페이지 슬롯입니다.",
+        searchIntent: "단백질 음료 추천 기준",
+        futureFocus: ["음료 선택 기준", "성분 우선순위", "제품 DB 연결"],
+        internalLinkTargets: [
+          { label: "랭킹", href: "/ranking" },
+          { label: "제품 비교", href: "/compare" },
+        ],
+      },
+      {
+        slug: "protein-bar-guide",
+        title: "단백질 바 선택 가이드",
+        description: "단백질 바를 목적별로 구분해 선택 기준을 담을 페이지 슬롯입니다.",
+        searchIntent: "단백질 바 고르는 법",
+        futureFocus: ["간식형 제품 구분", "당류·칼로리 비교", "바 제품 연결"],
+        internalLinkTargets: [
+          { label: "단백질 바 목록", href: "/bars" },
+          { label: "성분 비교", href: "/guides/product-selection-comparison/nutrition-comparison" },
+        ],
+      },
+      {
+        slug: "protein-powder-guide",
+        title: "단백질 파우더 선택 가이드",
+        description: "향후 파우더 카테고리 확장을 전제로 한 선택 가이드 슬롯입니다.",
+        searchIntent: "단백질 파우더 선택 기준",
+        futureFocus: ["파우더 카테고리 확장", "원료별 선택", "제품군 비교"],
+        internalLinkTargets: [
+          { label: "단백질 종류", href: "/guides/protein-basics/protein-types" },
+          { label: "운동 영양", href: "/guides/fitness-lifestyle/sports-nutrition-guide" },
+        ],
+      },
+      {
+        slug: "nutrition-comparison",
+        title: "성분 비교",
+        description: "단백질, 당류, 칼로리, 지방, 나트륨 등을 비교하는 페이지 슬롯입니다.",
+        searchIntent: "단백질 제품 성분 비교",
+        futureFocus: ["핵심 지표 비교", "제품 필터 연결", "사용자 비교 프레임"],
+        internalLinkTargets: [
+          { label: "영양 성분 기준", href: "/guides/product-selection-comparison/nutrition-criteria" },
+          { label: "제품 비교", href: "/compare" },
+        ],
+      },
+      {
+        slug: "nutrition-criteria",
+        title: "영양 성분 기준",
+        description: "좋은 제품을 볼 때 어떤 영양 기준을 우선해야 하는지 다룰 페이지 슬롯입니다.",
+        searchIntent: "단백질 제품 영양성분 보는 법",
+        futureFocus: ["판단 기준", "숫자 해석", "구매 체크리스트"],
+        internalLinkTargets: [
+          { label: "단백질 음료 선택 가이드", href: "/guides/product-selection-comparison/protein-drink-guide" },
+          { label: "추천 리스트", href: "/guides/product-selection-comparison/recommendation-lists" },
+        ],
+      },
+      {
+        slug: "recommendation-lists",
+        title: "제품 추천 리스트",
+        description: "상황별 추천 리스트와 큐레이션 페이지로 확장할 슬롯입니다.",
+        searchIntent: "단백질 제품 추천 리스트",
+        futureFocus: ["목적별 추천", "큐레이션 구조", "제품 허브 연결"],
+        internalLinkTargets: [
+          { label: "추천", href: "/recommend" },
+          { label: "Picks", href: "/picks/zero-sugar" },
+        ],
+      },
+      {
+        slug: "ranking-content",
+        title: "랭킹 콘텐츠",
+        description: "랭킹형 콘텐츠와 데이터 기반 순위 해설을 담을 슬롯입니다.",
+        searchIntent: "단백질 음료 랭킹",
+        futureFocus: ["랭킹 해설", "순위 기준 공개", "제품 페이지 연결"],
+        internalLinkTargets: [
+          { label: "랭킹", href: "/ranking" },
+          { label: "시장 인사이트", href: "/guides/market-insights" },
+        ],
+      },
+    ],
+  },
+  {
+    slug: "intake-strategy-health",
+    label: "TRACK C",
+    shortLabel: "섭취 전략 & 건강",
+    title: "섭취 전략 & 건강",
+    description:
+      "운동 전후, 체중 관리, 노년기, 식사대용 등 상황별 섭취 전략을 건강 관점과 함께 확장하는 허브입니다.",
+    hubSummary:
+      "기초 정보와 제품 선택 콘텐츠를 실제 섭취 전략으로 연결하는 트랙입니다. 건강 관리형 검색과 실전형 질문을 함께 받도록 설계했습니다.",
+    seoFocus: "섭취 타이밍, 건강 전략, 실전 활용",
+    accentColor: "#7a5230",
+    accentBg: "#f5f0ea",
+    slots: [
+      {
+        slug: "protein-timing",
+        title: "단백질 섭취 타이밍",
+        description: "하루 중 언제 먹는 것이 좋은지 정리할 전략형 페이지 슬롯입니다.",
+        searchIntent: "단백질 언제 먹어야 하나",
+        futureFocus: ["시간대별 전략", "생활 패턴별 적용", "제품 연결"],
+        internalLinkTargets: [
+          { label: "운동 전 섭취", href: "/guides/intake-strategy-health/pre-workout-protein" },
+          { label: "운동 후 섭취", href: "/guides/intake-strategy-health/post-workout-protein" },
+        ],
+      },
+      {
+        slug: "pre-workout-protein",
+        title: "운동 전 섭취",
+        description: "운동 전에 단백질을 활용하는 방식과 주의점을 담을 페이지 슬롯입니다.",
+        searchIntent: "운동 전 단백질 섭취",
+        futureFocus: ["운동 전 전략", "부담 적은 제품", "운동 유형별 연결"],
+        internalLinkTargets: [
+          { label: "운동 영양", href: "/guides/fitness-lifestyle/sports-nutrition-guide" },
+          { label: "운동 후 섭취", href: "/guides/intake-strategy-health/post-workout-protein" },
+        ],
+      },
+      {
+        slug: "post-workout-protein",
+        title: "운동 후 섭취",
+        description: "운동 후 회복과 단백질 섭취 전략을 담을 페이지 슬롯입니다.",
+        searchIntent: "운동 후 단백질 섭취",
+        futureFocus: ["회복 전략", "제품 선택", "타이밍 연결"],
+        internalLinkTargets: [
+          { label: "단백질 흡수", href: "/guides/protein-basics/protein-absorption" },
+          { label: "근력 운동", href: "/guides/fitness-lifestyle/strength-training-protein" },
+        ],
+      },
+      {
+        slug: "weight-management-protein",
+        title: "체중 관리",
+        description: "감량·유지 상황에서 단백질을 활용하는 전략을 담을 페이지 슬롯입니다.",
+        searchIntent: "다이어트 단백질 섭취",
+        futureFocus: ["포만감 활용", "열량 조절", "식사 구조"],
+        internalLinkTargets: [
+          { label: "식사대용 전략", href: "/guides/intake-strategy-health/meal-replacement-strategy" },
+          { label: "제품 추천 리스트", href: "/guides/product-selection-comparison/recommendation-lists" },
+        ],
+      },
+      {
+        slug: "muscle-maintenance-protein",
+        title: "근육 유지",
+        description: "근육 유지 관점에서 섭취량과 제품 활용법을 정리할 페이지 슬롯입니다.",
+        searchIntent: "근손실 방지 단백질",
+        futureFocus: ["유지 전략", "활동량별 접근", "식사 보완"],
+        internalLinkTargets: [
+          { label: "단백질 섭취량", href: "/guides/protein-basics/protein-intake-amount" },
+          { label: "운동 후 섭취", href: "/guides/intake-strategy-health/post-workout-protein" },
+        ],
+      },
+      {
+        slug: "senior-protein-strategy",
+        title: "노년 단백질",
+        description: "노년층 단백질 섭취 전략과 제품 선택 포인트를 담을 페이지 슬롯입니다.",
+        searchIntent: "노년층 단백질 섭취",
+        futureFocus: ["고령층 전략", "부담 낮은 선택", "건강 관리 연결"],
+        internalLinkTargets: [
+          { label: "단백질 건강 영향", href: "/guides/protein-basics/protein-health-impact" },
+          { label: "단백질 음료 선택 가이드", href: "/guides/product-selection-comparison/protein-drink-guide" },
+        ],
+      },
+      {
+        slug: "meal-replacement-strategy",
+        title: "식사대용 전략",
+        description: "식사대용과 보충용의 차이를 정리하고 활용법을 넣을 페이지 슬롯입니다.",
+        searchIntent: "단백질 음료 식사대용 가능할까",
+        futureFocus: ["식사대용 판단", "보충용과 구분", "제품 연결"],
+        internalLinkTargets: [
+          { label: "체중 관리", href: "/guides/intake-strategy-health/weight-management-protein" },
+          { label: "단백질 음료 선택 가이드", href: "/guides/product-selection-comparison/protein-drink-guide" },
+        ],
+      },
+    ],
+  },
+  {
+    slug: "fitness-lifestyle",
+    label: "TRACK D",
+    shortLabel: "운동 & 라이프스타일",
+    title: "운동 & 라이프스타일",
+    description:
+      "러닝, 마라톤, 근력 운동, 운동 초보, 시즌 스포츠 등 활동 맥락에 맞는 단백질 콘텐츠를 확장하는 허브입니다.",
+    hubSummary:
+      "운동 종목과 라이프스타일별 니즈를 단백질 전략과 연결하는 트랙입니다. 시즌 이벤트와 스포츠 일정형 콘텐츠 확장도 염두에 둔 구조입니다.",
+    seoFocus: "운동 맥락, 라이프스타일별 영양 전략",
+    accentColor: "#8a4b2f",
+    accentBg: "#f8ede7",
+    slots: [
+      {
+        slug: "running-protein-guide",
+        title: "러닝",
+        description: "러너를 위한 단백질 섭취 포인트를 다룰 페이지 슬롯입니다.",
+        searchIntent: "러닝 단백질 섭취",
+        futureFocus: ["지구력 운동 맥락", "회복 포인트", "간편 제품 연결"],
+        internalLinkTargets: [
+          { label: "운동 후 섭취", href: "/guides/intake-strategy-health/post-workout-protein" },
+          { label: "운동 영양", href: "/guides/fitness-lifestyle/sports-nutrition-guide" },
+        ],
+      },
+      {
+        slug: "marathon-protein-guide",
+        title: "마라톤",
+        description: "장거리 훈련과 레이스 준비 상황을 반영한 페이지 슬롯입니다.",
+        searchIntent: "마라톤 단백질 전략",
+        futureFocus: ["장거리 훈련", "회복 관리", "시즌성 콘텐츠"],
+        internalLinkTargets: [
+          { label: "러닝", href: "/guides/fitness-lifestyle/running-protein-guide" },
+          { label: "시즌 스포츠 이벤트", href: "/guides/fitness-lifestyle/seasonal-sports-events" },
+        ],
+      },
+      {
+        slug: "strength-training-protein",
+        title: "근력 운동",
+        description: "근력 운동 맥락에서 단백질 전략을 풀어낼 페이지 슬롯입니다.",
+        searchIntent: "근력운동 단백질",
+        futureFocus: ["근성장 맥락", "운동 전후 전략", "제품 선택"],
+        internalLinkTargets: [
+          { label: "운동 후 섭취", href: "/guides/intake-strategy-health/post-workout-protein" },
+          { label: "근육 유지", href: "/guides/intake-strategy-health/muscle-maintenance-protein" },
+        ],
+      },
+      {
+        slug: "beginner-workout-guide",
+        title: "운동 초보 가이드",
+        description: "운동을 막 시작한 사용자를 위한 입문형 페이지 슬롯입니다.",
+        searchIntent: "운동 초보 단백질",
+        futureFocus: ["입문자 질문", "가장 쉬운 기준", "기초 콘텐츠 연결"],
+        internalLinkTargets: [
+          { label: "단백질 기본 개념", href: "/guides/protein-basics/protein-basics-overview" },
+          { label: "단백질 음료 선택 가이드", href: "/guides/product-selection-comparison/protein-drink-guide" },
+        ],
+      },
+      {
+        slug: "sports-nutrition-guide",
+        title: "운동 영양",
+        description: "운동 상황 전반의 영양 전략과 단백질 위치를 설명할 페이지 슬롯입니다.",
+        searchIntent: "운동 영양 단백질",
+        futureFocus: ["운동 영양 프레임", "보충 전략", "카테고리 확장"],
+        internalLinkTargets: [
+          { label: "운동 전 섭취", href: "/guides/intake-strategy-health/pre-workout-protein" },
+          { label: "단백질 파우더 선택 가이드", href: "/guides/product-selection-comparison/protein-powder-guide" },
+        ],
+      },
+      {
+        slug: "seasonal-sports-events",
+        title: "시즌 스포츠 이벤트",
+        description: "마라톤 시즌, 여름 운동, 대회 시즌 등 이벤트형 콘텐츠 슬롯입니다.",
+        searchIntent: "시즌 스포츠 단백질 가이드",
+        futureFocus: ["시즌성 허브", "이벤트 확장", "운동 트렌드 연결"],
+        internalLinkTargets: [
+          { label: "공식 이벤트", href: "/official-events" },
+          { label: "마라톤", href: "/guides/fitness-lifestyle/marathon-protein-guide" },
+        ],
+      },
+    ],
+  },
+  {
+    slug: "market-insights",
+    label: "TRACK E",
+    shortLabel: "시장 인사이트",
+    title: "시장 인사이트",
+    description:
+      "단백질 시장의 흐름, RTD 카테고리, 브랜드 전략, 성분 트렌드, 신제품과 글로벌 흐름을 확장하는 분석 허브입니다.",
+    hubSummary:
+      "브랜드 관심도와 시장 트렌드형 콘텐츠를 담는 트랙입니다. SEO뿐 아니라 브랜드·시장 관점의 전문 콘텐츠 기반으로 확장할 수 있습니다.",
+    seoFocus: "시장 분석, 브랜드 분석, 트렌드 콘텐츠",
+    accentColor: "#6b4d7c",
+    accentBg: "#f1ebf7",
+    slots: [
+      {
+        slug: "protein-market-history",
+        title: "단백질 시장 히스토리",
+        description: "국내 단백질 시장 변화 흐름을 시간축으로 정리할 페이지 슬롯입니다.",
+        searchIntent: "국내 단백질 시장 역사",
+        futureFocus: ["시장 흐름", "카테고리 변화", "시대별 정리"],
+        internalLinkTargets: [
+          { label: "단백질 RTD 시장", href: "/guides/market-insights/protein-rtd-market" },
+          { label: "글로벌 단백질 시장", href: "/guides/market-insights/global-protein-market" },
+        ],
+      },
+      {
+        slug: "protein-rtd-market",
+        title: "단백질 RTD 시장",
+        description: "RTD 단백질 음료 시장 구조와 변화 포인트를 담을 페이지 슬롯입니다.",
+        searchIntent: "단백질 RTD 시장",
+        futureFocus: ["카테고리 구조", "브랜드 경쟁", "제품 데이터 연결"],
+        internalLinkTargets: [
+          { label: "브랜드 분석", href: "/guides/market-insights/brand-analysis" },
+          { label: "랭킹 콘텐츠", href: "/guides/product-selection-comparison/ranking-content" },
+        ],
+      },
+      {
+        slug: "brand-analysis",
+        title: "브랜드 분석",
+        description: "브랜드 포지셔닝과 제품 구성을 해설할 페이지 슬롯입니다.",
+        searchIntent: "단백질 브랜드 분석",
+        futureFocus: ["브랜드 포트폴리오", "가격대", "포지셔닝"],
+        internalLinkTargets: [
+          { label: "신제품 분석", href: "/guides/market-insights/new-product-analysis" },
+          { label: "공식 이벤트", href: "/official-events" },
+        ],
+      },
+      {
+        slug: "ingredient-trends",
+        title: "성분 트렌드",
+        description: "고단백, 저당, 식물성 등 성분 흐름을 정리할 페이지 슬롯입니다.",
+        searchIntent: "단백질 제품 성분 트렌드",
+        futureFocus: ["성분 흐름", "소비자 선호", "제품 DB 연결"],
+        internalLinkTargets: [
+          { label: "성분 비교", href: "/guides/product-selection-comparison/nutrition-comparison" },
+          { label: "단백질 종류", href: "/guides/protein-basics/protein-types" },
+        ],
+      },
+      {
+        slug: "new-product-analysis",
+        title: "신제품 분석",
+        description: "신제품 출시와 포지셔닝을 빠르게 해설하는 슬롯입니다.",
+        searchIntent: "단백질 신제품 분석",
+        futureFocus: ["신제품 리뷰 구조", "시장 반응", "브랜드 연결"],
+        internalLinkTargets: [
+          { label: "브랜드 분석", href: "/guides/market-insights/brand-analysis" },
+          { label: "추천 리스트", href: "/guides/product-selection-comparison/recommendation-lists" },
+        ],
+      },
+      {
+        slug: "global-protein-market",
+        title: "글로벌 단백질 시장",
+        description: "해외 시장 트렌드와 국내 시장 비교로 확장할 페이지 슬롯입니다.",
+        searchIntent: "글로벌 단백질 시장 트렌드",
+        futureFocus: ["글로벌 비교", "국내 적용", "브랜드 흐름"],
+        internalLinkTargets: [
+          { label: "단백질 시장 히스토리", href: "/guides/market-insights/protein-market-history" },
+          { label: "성분 트렌드", href: "/guides/market-insights/ingredient-trends" },
+        ],
+      },
+    ],
+  },
+];
+
+export function getGuideTracks() {
+  return guideTracks;
+}
+
+export function getGuideTrack(trackSlug: string) {
+  return guideTracks.find((track) => track.slug === trackSlug);
+}
+
+export function getGuideSlot(trackSlug: string, slotSlug: string) {
+  return getGuideTrack(trackSlug)?.slots.find((slot) => slot.slug === slotSlug);
+}

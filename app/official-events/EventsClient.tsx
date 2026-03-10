@@ -21,12 +21,6 @@ interface BrandCard {
   events: BrandEvent[];
 }
 
-interface ProductSummary {
-  totalProducts: number;
-  coveredBrands: number;
-  focusMetric: string;
-}
-
 const CATEGORY_EMOJI: Record<EventCategory, string> = {
   할인: "🔖",
   쿠폰: "🎟",
@@ -48,18 +42,6 @@ const FILTER_TABS: { key: FilterType; emoji: string }[] = [
   { key: "증정", emoji: "🎁" },
   { key: "무료배송", emoji: "🚚" },
 ];
-
-const DRINK_SUMMARY: ProductSummary = {
-  totalProducts: 101,
-  coveredBrands: 18,
-  focusMetric: "20g 이상 고단백 음료 82개 반영",
-};
-
-const BAR_SUMMARY: ProductSummary = {
-  totalProducts: 69,
-  coveredBrands: 24,
-  focusMetric: "15g 이상 단백질 바 34개 반영",
-};
 
 const drinkBrands: BrandCard[] = [
   {
@@ -298,16 +280,11 @@ function getCounts(brands: BrandCard[]) {
   };
 }
 
-function getSummary(type: ProductType) {
-  return type === "drink" ? DRINK_SUMMARY : BAR_SUMMARY;
-}
-
 export default function EventsClient() {
   const [productType, setProductType] = useState<ProductType>("drink");
   const [activeFilter, setActiveFilter] = useState<FilterType>("전체");
 
   const brands = productType === "drink" ? drinkBrands : barBrands;
-  const summary = getSummary(productType);
   const counts = useMemo(() => getCounts(brands), [brands]);
 
   const filteredBrands = useMemo(() => {
@@ -328,20 +305,13 @@ export default function EventsClient() {
         className="w-full border-t border-b bg-[var(--hero-bg)]"
         style={{ borderColor: "var(--hero-border)" }}
       >
-        <div className="mx-auto max-w-[1200px] px-4 py-5 md:px-6 md:py-6">
-          <p className="text-xs font-semibold tracking-[0.18em] text-[var(--accent)]">UPDATED 2026.03</p>
-          <h1 className="mt-2 text-2xl font-bold leading-tight text-[var(--foreground)] md:text-3xl">
+        <div className="mx-auto max-w-[1200px] px-4 py-4 md:px-6 md:py-5">
+          <h1 className="text-2xl font-bold leading-tight text-[var(--foreground)] md:text-3xl">
             브랜드 이벤트 &amp; 혜택
           </h1>
-          <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
-            제품 수가 크게 늘어난 현재 데이터 기준으로 페이지를 다시 정리했습니다. 오래된 날짜형 딜 나열보다,
-            공식몰과 주요 판매처에서 실제로 체크할 만한 할인·쿠폰·증정·무료배송 포인트를 브랜드별로 빠르게 볼 수 있게 구성했습니다.
+          <p className="mt-1 text-sm text-[var(--foreground-muted)]">
+            단백질 브랜드의 자사몰·공식 스토어 혜택을 모았습니다. 정기배송·회원가입 혜택까지 직접 구매 전 여기서 먼저 확인하세요.
           </p>
-          <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-3">
-            <SummaryCard label="전체 등록 제품" value="170개" detail="단백질음료 101개 + 단백질바 69개" />
-            <SummaryCard label="음료 커버리지" value={`${DRINK_SUMMARY.coveredBrands}개 브랜드`} detail={DRINK_SUMMARY.focusMetric} />
-            <SummaryCard label="바 커버리지" value={`${BAR_SUMMARY.coveredBrands}개 브랜드`} detail={BAR_SUMMARY.focusMetric} />
-          </div>
         </div>
       </section>
 
@@ -368,16 +338,6 @@ export default function EventsClient() {
               </button>
             );
           })}
-        </div>
-
-        <div className="mt-4 rounded-2xl border border-[#ebe7e2] bg-[#fffdf9] px-4 py-4 sm:px-5">
-          <p className="text-sm font-semibold text-[var(--foreground)]">
-            {productType === "drink" ? "음료 기준 최신 반영" : "바 기준 최신 반영"}
-          </p>
-          <p className="mt-1 text-sm leading-6 text-[var(--foreground-muted)]">
-            현재 {summary.totalProducts}개 제품, {summary.coveredBrands}개 브랜드를 기준으로 정리했습니다.
-            {" "}{summary.focusMetric}. 세일 기간은 자주 바뀌기 때문에, 페이지에서는 브랜드별로 실구매 전에 확인할 포인트를 우선 보여줍니다.
-          </p>
         </div>
 
         <div className="mt-4 flex gap-5 overflow-x-auto border-b border-[#e8e6e3]">
@@ -410,22 +370,20 @@ export default function EventsClient() {
           ))}
         </div>
 
+        <div className="mt-8 rounded-2xl border border-[#ebe7e2] bg-[#fffdf9] px-4 py-4 sm:px-5">
+          <p className="text-xs font-semibold tracking-[0.08em] text-[#8f8a84]">업데이트 메모</p>
+          <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">
+            2026년 3월 기준으로 최근 등록 제품과 브랜드 구성을 반영해 구조를 정리했습니다. 세부 할인 문구보다
+            브랜드별로 실제 확인할 포인트를 빠르게 보는 데 초점을 맞췄습니다.
+          </p>
+        </div>
+
         <p className="mt-10 text-center text-xs leading-5 text-[#8b8b8b]">
           이벤트와 배송 조건은 판매처 정책에 따라 수시로 바뀝니다. 최종 결제 전에는 브랜드 공식몰, 네이버 스토어,
           쿠팡 로켓배송 페이지에서 실시간 가격과 혜택을 다시 확인하는 것을 권장합니다.
         </p>
       </main>
     </>
-  );
-}
-
-function SummaryCard({ label, value, detail }: { label: string; value: string; detail: string }) {
-  return (
-    <div className="rounded-2xl border border-[#ebe7e2] bg-white px-4 py-4">
-      <p className="text-xs font-semibold tracking-[0.08em] text-[#8f8a84]">{label}</p>
-      <p className="mt-2 text-2xl font-bold text-[var(--foreground)]">{value}</p>
-      <p className="mt-1 text-sm leading-5 text-[var(--foreground-muted)]">{detail}</p>
-    </div>
   );
 }
 
