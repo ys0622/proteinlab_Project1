@@ -2,8 +2,23 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
-import GuideVisual from "@/app/components/GuideVisual";
-import { getGuideTrack, getGuideTracks } from "@/app/data/guidesTracks";
+import { getGuideTrack, getGuideTracks, type GuideTrackSlug } from "@/app/data/guidesTracks";
+
+const topicChipsMap: Record<GuideTrackSlug, string[]> = {
+  "protein-basics": ["기초", "역할"],
+  "product-selection-comparison": ["비교", "선택"],
+  "intake-strategy-health": ["섭취", "건강"],
+  "fitness-lifestyle": ["운동", "라이프"],
+  "market-insights": ["시장", "트렌드"],
+  tools: ["계산", "도구"],
+};
+
+const clampTwoLines = {
+  display: "-webkit-box",
+  WebkitLineClamp: 2,
+  WebkitBoxOrient: "vertical" as const,
+  overflow: "hidden",
+};
 
 export async function generateStaticParams() {
   return getGuideTracks().map((track) => ({ track: track.slug }));
@@ -26,6 +41,8 @@ export default async function GuideTrackPage({ params }: { params: Promise<{ tra
   const trackData = getGuideTrack(track);
 
   if (!trackData) notFound();
+
+  const topicChips = topicChipsMap[trackData.slug];
 
   return (
     <div className="min-h-screen bg-white">
@@ -67,7 +84,7 @@ export default async function GuideTrackPage({ params }: { params: Promise<{ tra
         <section className="mt-6">
           <div className="flex items-center justify-between gap-3">
             <h2 className="text-lg font-bold text-[var(--foreground)]">주제 목록</h2>
-            <p className="text-xs text-[#8b8b8b]">순차적으로 콘텐츠가 확장됩니다.</p>
+            <p className="text-xs text-[#8b8b8b]">순차적으로 콘텐츠가 확장됩니다</p>
           </div>
 
           <div className="mt-4 grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
@@ -75,30 +92,21 @@ export default async function GuideTrackPage({ params }: { params: Promise<{ tra
               <Link
                 key={slot.slug}
                 href={`/guides/${trackData.slug}/${slot.slug}`}
-                className="group flex h-full flex-col justify-between rounded-2xl border border-[#e8e6e3] bg-white px-5 py-5"
+                className="group flex min-h-[248px] h-full flex-col justify-between rounded-2xl border border-[#e8e6e3] bg-white px-5 py-5"
               >
                 <div>
-                  <GuideVisual
-                    track={trackData.slug}
-                    title={slot.title}
-                    accentColor={trackData.accentColor}
-                    accentBg={trackData.accentBg}
-                    variant="topic"
-                  />
-                  <p className="text-xs font-semibold tracking-[0.08em] text-[#8f8a84]">
-                    GUIDE TOPIC
-                  </p>
-                  <h3 className="mt-2 text-base font-bold text-[var(--foreground)]">{slot.title}</h3>
-                  <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">
+                  <div className="guide-visual__chips">
+                    {topicChips.map((chip) => (
+                      <span key={`${slot.slug}-${chip}`} className="guide-visual__chip">
+                        {chip}
+                      </span>
+                    ))}
+                  </div>
+
+                  <h3 className="mt-3 text-base font-bold text-[var(--foreground)]">{slot.title}</h3>
+                  <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]" style={clampTwoLines}>
                     {slot.description}
                   </p>
-
-                  <div className="mt-4 rounded-xl border border-[#eef1f3] bg-[#fafbfc] px-3 py-3">
-                    <p className="text-xs font-semibold text-[#6f7a84]">이런 내용을 다룰 예정입니다</p>
-                    <p className="mt-1 text-sm leading-6 text-[var(--foreground-muted)]">
-                      {slot.searchIntent}
-                    </p>
-                  </div>
                 </div>
 
                 <span className="mt-4 inline-flex items-center text-sm font-semibold text-[var(--accent)]">
