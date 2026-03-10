@@ -370,14 +370,6 @@ export default function EventsClient() {
           ))}
         </div>
 
-        <div className="mt-8 rounded-2xl border border-[#ebe7e2] bg-[#fffdf9] px-4 py-4 sm:px-5">
-          <p className="text-xs font-semibold tracking-[0.08em] text-[#8f8a84]">업데이트 메모</p>
-          <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">
-            2026년 3월 기준으로 최근 등록 제품과 브랜드 구성을 반영해 구조를 정리했습니다. 세부 할인 문구보다
-            브랜드별로 실제 확인할 포인트를 빠르게 보는 데 초점을 맞췄습니다.
-          </p>
-        </div>
-
         <p className="mt-10 text-center text-xs leading-5 text-[#8b8b8b]">
           이벤트와 배송 조건은 판매처 정책에 따라 수시로 바뀝니다. 최종 결제 전에는 브랜드 공식몰, 네이버 스토어,
           쿠팡 로켓배송 페이지에서 실시간 가격과 혜택을 다시 확인하는 것을 권장합니다.
