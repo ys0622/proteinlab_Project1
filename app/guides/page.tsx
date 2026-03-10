@@ -1,4 +1,3 @@
-import type { SVGProps } from "react";
 import Link from "next/link";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
@@ -12,141 +11,77 @@ export const metadata = {
 
 const tracks = getGuideTracks();
 
-function BookIcon(props: SVGProps<SVGSVGElement>) {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" {...props}>
-      <path d="M5 6.5A2.5 2.5 0 0 1 7.5 4H19v15H7.5A2.5 2.5 0 0 0 5 21.5z" />
-      <path d="M5 6.5v15" />
-      <path d="M9 8h6" />
-      <path d="M9 11h6" />
-    </svg>
-  );
-}
-
-function CompareIcon(props: SVGProps<SVGSVGElement>) {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" {...props}>
-      <path d="M7 5v14" />
-      <path d="M17 5v14" />
-      <path d="M4 8h6" />
-      <path d="M14 11h6" />
-      <path d="M4 15h6" />
-      <path d="M14 18h6" />
-    </svg>
-  );
-}
-
-function TimingIcon(props: SVGProps<SVGSVGElement>) {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" {...props}>
-      <circle cx="12" cy="13" r="7" />
-      <path d="M12 13V9" />
-      <path d="M12 13l3 2" />
-      <path d="M9 3h6" />
-    </svg>
-  );
-}
-
-function FitnessIcon(props: SVGProps<SVGSVGElement>) {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" {...props}>
-      <path d="M3 10v4" />
-      <path d="M7 8v8" />
-      <path d="M17 8v8" />
-      <path d="M21 10v4" />
-      <path d="M7 12h10" />
-      <path d="M5 8h2" />
-      <path d="M17 8h2" />
-      <path d="M5 16h2" />
-      <path d="M17 16h2" />
-    </svg>
-  );
-}
-
-function MarketIcon(props: SVGProps<SVGSVGElement>) {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" {...props}>
-      <path d="M4 19h16" />
-      <path d="M7 16v-4" />
-      <path d="M12 16V8" />
-      <path d="M17 16v-6" />
-      <path d="m6 9 4-3 3 2 5-3" />
-    </svg>
-  );
-}
-
-function ToolIcon(props: SVGProps<SVGSVGElement>) {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" {...props}>
-      <rect x="5" y="3.5" width="14" height="17" rx="2" />
-      <path d="M8 7h8" />
-      <path d="M8 11h2" />
-      <path d="M12 11h2" />
-      <path d="M16 11h0" />
-      <path d="M8 15h2" />
-      <path d="M12 15h6" />
-    </svg>
-  );
-}
+const clampTwoLines = {
+  display: "-webkit-box",
+  WebkitLineClamp: 2,
+  WebkitBoxOrient: "vertical" as const,
+  overflow: "hidden",
+};
 
 const trackCopy: Record<
   GuideTrackSlug,
   {
+    subtitle: string;
     title: string;
-    eyebrow: string;
-    summary: string;
-    note: string;
-    cta: string;
-    Icon: (props: SVGProps<SVGSVGElement>) => JSX.Element;
+    description: string;
+    buttonLabel: string;
+    topTags: string[];
+    keywordTags: string[];
   }
 > = {
   "protein-basics": {
+    subtitle: "단백질, 처음부터 제대로",
     title: "단백질 기초",
-    eyebrow: "역할과 필요량부터",
-    summary: "단백질의 역할, 필요량, 흡수와 종류를 먼저 정리합니다.",
-    note: "역할 · 섭취량 · 흡수 · 종류",
-    cta: "단백질 기초 보기",
-    Icon: BookIcon,
+    description:
+      "역할, 섭취량, 흡수 방식, 부족 신호까지 단백질을 이해하는 데 필요한 기초를 정리했습니다.",
+    buttonLabel: "기초 가이드 보기",
+    topTags: ["역할", "섭취량", "흡수"],
+    keywordTags: ["기초 개념", "부족 신호", "단백질 이해"],
   },
   "product-selection-comparison": {
+    subtitle: "고르기 전에 꼭 확인할 것",
     title: "제품 선택 · 비교",
-    eyebrow: "고르기 전에 보는 기준",
-    summary: "음료와 바를 고를 때 봐야 할 기준과 비교 포인트를 모았습니다.",
-    note: "선택 기준 · 성분 비교 · 추천 리스트",
-    cta: "제품 선택 가이드 보기",
-    Icon: CompareIcon,
+    description:
+      "워터형 vs 밀크형, 성분표 읽는 법, 나에게 맞는 단백질 음료 고르는 기준을 알려드립니다.",
+    buttonLabel: "제품 선택 가이드 보기",
+    topTags: ["워터형", "밀크형", "성분표"],
+    keywordTags: ["선택 기준", "제품 비교", "음료 가이드"],
   },
   "intake-strategy-health": {
+    subtitle: "언제, 얼마나, 어떻게",
     title: "섭취 전략 · 건강",
-    eyebrow: "언제 얼마나 먹을지",
-    summary: "언제, 얼마나, 어떤 상황에서 먹을지 실전 기준으로 안내합니다.",
-    note: "타이밍 · 체중 관리 · 식사대용",
-    cta: "섭취 전략 보기",
-    Icon: TimingIcon,
+    description:
+      "다이어트, 근성장, 노년기, 식사 대용 등 목적과 상황에 따라 달라지는 섭취 전략을 안내합니다.",
+    buttonLabel: "섭취 전략 보기",
+    topTags: ["다이어트", "근성장", "식사 대용"],
+    keywordTags: ["섭취 타이밍", "건강 전략", "상황별 가이드"],
   },
   "fitness-lifestyle": {
+    subtitle: "운동하는 사람을 위한 가이드",
     title: "운동 · 라이프스타일",
-    eyebrow: "운동 상황별 활용",
-    summary: "러닝, 근력 운동, 입문자 상황에 맞춘 단백질 활용 가이드입니다.",
-    note: "러닝 · 근력운동 · 스포츠 영양",
-    cta: "운동 가이드 보기",
-    Icon: FitnessIcon,
+    description:
+      "러닝, 근력 운동, 입문자까지 운동 목적별 단백질 활용법을 정리했습니다.",
+    buttonLabel: "운동 가이드 보기",
+    topTags: ["러닝", "근력 운동", "입문자"],
+    keywordTags: ["운동 목적", "활용법", "라이프스타일"],
   },
   "market-insights": {
+    subtitle: "국내 단백질 시장 흐름",
     title: "시장 인사이트",
-    eyebrow: "브랜드와 시장 흐름",
-    summary: "RTD 단백질 시장과 브랜드 흐름을 읽기 쉽게 정리합니다.",
-    note: "시장 흐름 · 브랜드 분석 · 성분 트렌드",
-    cta: "시장 인사이트 보기",
-    Icon: MarketIcon,
+    description:
+      "RTD 단백질 시장 규모, 브랜드 동향, 성분 트렌드를 데이터 기반으로 읽기 쉽게 정리했습니다.",
+    buttonLabel: "시장 인사이트 보기",
+    topTags: ["RTD 시장", "브랜드", "성분 트렌드"],
+    keywordTags: ["시장 규모", "동향 분석", "데이터 기반"],
   },
   tools: {
+    subtitle: "바로 써보는 계산 도구",
     title: "계산기 · 도구",
-    eyebrow: "바로 써보는 계산 도구",
-    summary: "하루 단백질 섭취량과 제품 활용에 바로 쓰는 계산 도구입니다.",
-    note: "섭취량 계산기 · 개수 계산 · 밀도 계산",
-    cta: "계산기 보기",
-    Icon: ToolIcon,
+    description:
+      "내 체중에 맞는 하루 단백질 권장량, 제품 개수 계산까지 바로 사용할 수 있는 도구 모음입니다.",
+    buttonLabel: "계산기 보기",
+    topTags: ["권장량", "제품 개수", "바로 계산"],
+    keywordTags: ["하루 섭취량", "계산 도구", "실전 활용"],
   },
 };
 
@@ -173,55 +108,54 @@ export default function GuidesPage() {
         <div className="mt-6 grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
           {tracks.map((track) => {
             const copy = trackCopy[track.slug];
-            const Icon = copy.Icon;
 
             return (
               <Link
                 key={track.slug}
                 href={`/guides/${track.slug}`}
-                className="group flex h-full flex-col justify-between rounded-2xl border border-[#e8e6e3] bg-[#fffdf8]"
+                className="group flex min-h-[316px] h-full flex-col justify-between rounded-2xl border border-[#e8e6e3] bg-[#fffdf8]"
               >
-                <div>
-                  <div className="border-b border-[#f0eeeb] px-5 pb-3 pt-4">
-                    <div className="flex items-center justify-between gap-3">
-                      <span
-                        className="rounded-md px-2 py-0.5 text-[11px] font-semibold tracking-wide"
-                        style={{ background: track.accentBg, color: track.accentColor }}
-                      >
-                        {track.label}
-                      </span>
-                      <span className="text-[11px] text-[#8d8d8d]">{copy.eyebrow}</span>
-                    </div>
+                <div className="px-5 pb-5 pt-4">
+                  <div className="flex items-center justify-between gap-3">
+                    <span
+                      className="rounded-md px-2 py-0.5 text-[11px] font-semibold tracking-wide"
+                      style={{ background: track.accentBg, color: track.accentColor }}
+                    >
+                      {track.label}
+                    </span>
+                    <span className="text-[11px] text-[#8d8d8d]">{copy.subtitle}</span>
                   </div>
 
-                  <div className="px-5 pb-5 pt-4">
-                    <div className="mb-4 flex items-center gap-3">
-                      <div
-                        className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border"
-                        style={{
-                          color: track.accentColor,
-                          background: track.accentBg,
-                          borderColor: `${track.accentColor}22`,
-                        }}
-                      >
-                        <Icon className="h-6 w-6" />
-                      </div>
-                      <div className="min-w-0">
-                        <h2 className="text-lg font-bold text-[var(--foreground)]">{copy.title}</h2>
-                        <p className="mt-1 text-xs text-[#8d8d8d]">{track.slots.length}개 주제</p>
-                      </div>
-                    </div>
+                  <div className="guide-visual__chips mt-3">
+                    {copy.topTags.map((tag) => (
+                      <span key={`${track.slug}-top-${tag}`} className="guide-visual__chip">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
 
-                    <p className="text-[13px] leading-6 text-[var(--foreground-muted)]">{copy.summary}</p>
-                    <span className="mt-4 inline-flex rounded-full bg-[#f5f2ed] px-3 py-1 text-[11px] font-medium text-[#6b6258]">
-                      {copy.note}
-                    </span>
+                  <h2 className="mt-4 text-lg font-bold text-[var(--foreground)]">{copy.title}</h2>
+                  <p className="mt-1 text-xs text-[#8d8d8d]">{track.slots.length}개 주제</p>
+
+                  <p
+                    className="mt-3 min-h-[44px] text-[13px] leading-[1.7] text-[var(--foreground-muted)]"
+                    style={clampTwoLines}
+                  >
+                    {copy.description}
+                  </p>
+
+                  <div className="guide-visual__chips mt-4">
+                    {copy.keywordTags.map((tag) => (
+                      <span key={`${track.slug}-keyword-${tag}`} className="guide-visual__chip">
+                        {tag}
+                      </span>
+                    ))}
                   </div>
                 </div>
 
                 <div className="px-5 pb-5">
                   <span className="flex items-center justify-center rounded-lg border border-[#e8e6e3] py-2.5 text-xs font-semibold text-[#374151] transition-colors group-hover:bg-[var(--accent-light)] group-hover:text-[var(--accent)]">
-                    {copy.cta}
+                    {copy.buttonLabel}
                   </span>
                 </div>
               </Link>
