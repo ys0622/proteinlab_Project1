@@ -161,6 +161,7 @@ export async function POST(request: Request) {
 
       return {
         rank: i + 1,
+        score: 0,
         id: p.slug,
         brand: p.brand,
         name: p.name,
@@ -175,6 +176,17 @@ export async function POST(request: Request) {
         detailPath: `/product/${p.slug}`,
         imageUrl: getProductImageUrl(p.slug),
       };
+    });
+
+    const topScores = top3.map((item) => scored[item.rank - 1]?.score ?? 0);
+    const maxScore = Math.max(...topScores, 1);
+    const minScore = Math.min(...topScores, maxScore);
+    const scoreGap = Math.max(maxScore - minScore, 1);
+
+    top3.forEach((item, index) => {
+      const rawScore = topScores[index] ?? 0;
+      const normalized = 85 + Math.round(((rawScore - minScore) / scoreGap) * 14);
+      item.score = Math.min(99, Math.max(85, normalized));
     });
 
     const profileChips = [

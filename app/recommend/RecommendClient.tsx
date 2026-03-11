@@ -10,6 +10,7 @@ import type {
 } from "react";
 import MetricBadgeGroup from "@/app/components/MetricBadgeGroup";
 import ProductBadge from "@/app/components/ProductBadge";
+import ProductCard from "@/app/components/ProductCard";
 import {
   getMetricBadgeAriaLabel,
   getMetricBadgeTooltip,
@@ -28,6 +29,7 @@ interface QuizAnswers {
 
 interface RecommendedProduct {
   rank: number;
+  score: number;
   id: string;
   brand: string;
   name: string;
@@ -249,8 +251,29 @@ function ProductResultCard({ product }: { product: RecommendedProduct }) {
       aria-label={`${displayName} 상세 보기`}
       style={{ border: "1px solid #e8e6e3", borderRadius: "16px", background: "#FFFDF8", overflow: "hidden" }}
     >
+      <div className="flex items-center justify-between gap-2 border-b border-[#f0eeeb] bg-[#faf8f2] px-4 py-3">
+        <div className="flex items-center gap-2">
+          <span
+            className="inline-flex h-7 min-w-7 items-center justify-center rounded-full px-2 text-xs font-extrabold"
+            style={{
+              background: isFirst ? "var(--accent)" : "#f3f4f6",
+              color: isFirst ? "white" : "#6b7280",
+            }}
+          >
+            {product.rank}
+          </span>
+          {isFirst ? (
+            <span className="rounded-full px-2.5 py-1 text-xs font-bold" style={{ background: "#FFF1E6", color: "#F08A24" }}>
+              理쒓퀬 異붿쿇
+            </span>
+          ) : null}
+        </div>
+        <span className="rounded-full px-2.5 py-1 text-xs font-semibold" style={{ background: "#EAF2FF", color: "#4C7BD9" }}>
+          異붿쿇 ?먯닔 {product.score}
+        </span>
+      </div>
       {isFirst && (
-        <span className="absolute top-3 left-3 z-10 text-xs font-bold px-2.5 py-1 rounded-full" style={{ background: "#FFF1E6", color: "#F08A24" }}>
+        <span className="hidden absolute top-3 left-3 z-10 text-xs font-bold px-2.5 py-1 rounded-full" style={{ background: "#FFF1E6", color: "#F08A24" }}>
           최고 추천
         </span>
       )}
@@ -262,7 +285,7 @@ function ProductResultCard({ product }: { product: RecommendedProduct }) {
         ) : (
           <div className="h-full w-full" />
         )}
-        <span className="absolute top-3 right-3 w-7 h-7 rounded-full flex items-center justify-center text-xs font-extrabold" style={{
+        <span className="hidden absolute top-3 right-3 w-7 h-7 rounded-full items-center justify-center text-xs font-extrabold" style={{
           background: isFirst ? "var(--accent)" : "#f3f4f6",
           color: isFirst ? "white" : "#6b7280",
         }}>
@@ -326,6 +349,64 @@ function ProductResultCard({ product }: { product: RecommendedProduct }) {
 }
 
 // 결과 화면
+function ProductResultCardMobile({ product }: { product: RecommendedProduct }) {
+  const gradeTags = Object.entries(product.gradeValue).map(
+    ([key, grade]) => `${gradeLabels[key] ?? key} ${grade}`,
+  );
+
+  return (
+    <div className="relative">
+      <div className="mb-2 flex items-center justify-between gap-2 rounded-lg border border-[#e8e6e3] bg-[#faf8f2] px-3 py-2">
+        <div className="flex items-center gap-2">
+          <span
+            className="inline-flex h-7 min-w-7 items-center justify-center rounded-full px-2 text-xs font-extrabold"
+            style={{
+              background: product.rank === 1 ? "var(--accent)" : "#f3f4f6",
+              color: product.rank === 1 ? "white" : "#6b7280",
+            }}
+          >
+            {product.rank}
+          </span>
+          {product.rank === 1 ? (
+            <span
+              className="rounded-full px-2.5 py-1 text-xs font-bold"
+              style={{ background: "#FFF1E6", color: "#F08A24" }}
+            >
+              최고 추천
+            </span>
+          ) : null}
+        </div>
+        <span
+          className="rounded-full px-2.5 py-1 text-xs font-semibold"
+          style={{ background: "#EAF2FF", color: "#4C7BD9" }}
+        >
+          추천 점수 {product.score}
+        </span>
+      </div>
+      <ProductCard
+        brand={product.brand}
+        name={[product.name, product.flavor].filter(Boolean).join(" ")}
+        capacity={product.volume}
+        tags={[]}
+        proteinPerServing={product.protein}
+        calories={product.calories}
+        sugar={product.sugar}
+        density={product.density}
+        gradeTags={gradeTags}
+        slug={product.id}
+      />
+      <div
+        className="mt-2 rounded-lg border border-[#e8e6e3] bg-[#faf8f2] px-3 py-2"
+        style={{ borderLeft: "3px solid var(--accent)" }}
+      >
+        <p style={{ fontSize: 13, color: "#3d3d3d", lineHeight: 1.6, fontWeight: 500 }}>
+          {product.reason}
+        </p>
+      </div>
+    </div>
+  );
+}
+
 function ResultScreen({ result, onReset, category }: { result: RecommendResult; onReset: () => void; category: ProductType }) {
   return (
     <div className="fade-in space-y-5">
@@ -344,7 +425,10 @@ function ResultScreen({ result, onReset, category }: { result: RecommendResult; 
       {/* 추천 제품 */}
       <div>
         <p className="text-base font-extrabold mb-3" style={{ color: "#1a1a1a" }}>🏆 맞춤 추천 제품</p>
-        <div className="grid grid-cols-2 gap-3 lg:grid-cols-3">
+        <div className="grid grid-cols-2 gap-3 md:hidden">
+          {result.products.map((p) => <ProductResultCardMobile key={p.rank} product={p} />)}
+        </div>
+        <div className="hidden gap-3 md:grid md:grid-cols-2 lg:grid-cols-3">
           {result.products.map((p) => <ProductResultCard key={p.rank} product={p} />)}
         </div>
       </div>

@@ -1,10 +1,5 @@
-type Ga4MetricValue = {
-  value?: string;
-};
-
-type Ga4DimensionValue = {
-  value?: string;
-};
+type Ga4MetricValue = { value?: string };
+type Ga4DimensionValue = { value?: string };
 
 type Ga4Row = {
   dimensionValues?: Ga4DimensionValue[];
@@ -13,11 +8,34 @@ type Ga4Row = {
 
 type Ga4ReportResponse = {
   rows?: Ga4Row[];
+  rowCount?: number;
+};
+
+type Ga4BatchResponse = {
+  reports?: Ga4ReportResponse[];
+};
+
+type Ga4Config = {
+  propertyId: string;
+  clientEmail: string;
+  privateKey: string;
+};
+
+type CacheEntry = {
+  data: AdminStatsData;
+  expiresAt: number;
+  staleUntil: number;
 };
 
 const GOOGLE_TOKEN_URL = "https://oauth2.googleapis.com/token";
 const GOOGLE_ANALYTICS_DATA_API = "https://analyticsdata.googleapis.com/v1beta";
+const GA_SCOPE = "https://www.googleapis.com/auth/analytics.readonly";
 const KST_TIME_ZONE = "Asia/Seoul";
+const CACHE_TTL_MS = 5 * 60 * 1000;
+const STALE_TTL_MS = 30 * 60 * 1000;
+
+let statsCache: CacheEntry | null = null;
+let inFlightStatsRequest: Promise<AdminStatsData> | null = null;
 
 function toBase64Url(input: string | Uint8Array): string {
   const buffer =
@@ -57,67 +75,102 @@ function shiftDate(dateString: string, days: number): string {
   return shifted.toISOString().slice(0, 10);
 }
 
-function getCurrentKstYearMonth() {
-  const now = new Date();
-  const formatter = new Intl.DateTimeFormat("en-CA", {
+function formatKstLabel(dateString: string) {
+  const [year, month, day] = dateString.split("-").map(Number);
+  return new Intl.DateTimeFormat("ko-KR", {
+    timeZone: KST_TIME_ZONE,
+    month: "numeric",
+    day: "numeric",
+    weekday: "short",
+  }).format(new Date(Date.UTC(year, month - 1, day)));
+}
+
+function formatSyncTime(date: Date) {
+  return new Intl.DateTimeFormat("ko-KR", {
     timeZone: KST_TIME_ZONE,
     year: "numeric",
     month: "2-digit",
-  });
-  const [year, month] = formatter.format(now).split("-");
-
-  return { year, month };
+    day: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+    hour12: false,
+  }).format(date);
 }
 
-function getGa4Config() {
-  const propertyId = process.env.GA4_PROPERTY_ID;
-  const clientEmail = process.env.GA4_CLIENT_EMAIL;
-  const privateKey = process.env.GA4_PRIVATE_KEY?.replace(/\\n/g, "\n");
+function getGa4Config():
+  | { configured: false; missingEnv: Array<"GA4_PROPERTY_ID" | "GA4_CLIENT_EMAIL" | "GA4_PRIVATE_KEY"> }
+  | ({ configured: true } & Ga4Config) {
+  const propertyId = process.env.GA4_PROPERTY_ID?.trim();
+  const clientEmail = process.env.GA4_CLIENT_EMAIL?.trim();
+  const privateKey = process.env.GA4_PRIVATE_KEY?.replace(/\\n/g, "\n").trim();
 
-  if (!propertyId || !clientEmail || !privateKey) {
-    return null;
+  const missingEnv = [
+    !propertyId ? "GA4_PROPERTY_ID" : null,
+    !clientEmail ? "GA4_CLIENT_EMAIL" : null,
+    !privateKey ? "GA4_PRIVATE_KEY" : null,
+  ].filter(Boolean) as Array<"GA4_PROPERTY_ID" | "GA4_CLIENT_EMAIL" | "GA4_PRIVATE_KEY">;
+
+  if (missingEnv.length > 0) {
+    return { configured: false, missingEnv };
   }
 
   return {
-    propertyId,
-    clientEmail,
-    privateKey,
+    configured: true,
+    propertyId: propertyId!,
+    clientEmail: clientEmail!,
+    privateKey: privateKey!,
   };
+}
+
+function createErrorMessage(status: number, responseText: string) {
+  if (status === 400) return "GA4 속성 ID 또는 요청 형식이 올바르지 않습니다.";
+  if (status === 401) return "GA4 인증에 실패했습니다. 서비스 계정 키를 다시 확인해주세요.";
+  if (status === 403) return "서비스 계정에 GA4 읽기 권한이 없습니다.";
+  if (status === 404) return "GA4 Property를 찾지 못했습니다. GA4_PROPERTY_ID를 확인해주세요.";
+  if (status === 429) return "GA4 API 호출 한도에 도달했습니다. 잠시 후 다시 시도해주세요.";
+  if (status >= 500) return "Google Analytics 응답이 일시적으로 불안정합니다. 잠시 후 다시 시도해주세요.";
+
+  if (/permission|access|forbidden/i.test(responseText)) {
+    return "서비스 계정에 GA4 읽기 권한이 없습니다.";
+  }
+
+  return "GA4 통계를 불러오는 중 오류가 발생했습니다.";
 }
 
 async function getAccessToken(clientEmail: string, privateKey: string) {
   const nowInSeconds = Math.floor(Date.now() / 1000);
-  const header = { alg: "RS256", typ: "JWT" };
-  const payload = {
-    iss: clientEmail,
-    scope: "https://www.googleapis.com/auth/analytics.readonly",
-    aud: GOOGLE_TOKEN_URL,
-    exp: nowInSeconds + 3600,
-    iat: nowInSeconds,
-  };
-
-  const unsignedToken = `${toBase64Url(JSON.stringify(header))}.${toBase64Url(
-    JSON.stringify(payload)
+  const unsignedToken = `${toBase64Url(
+    JSON.stringify({ alg: "RS256", typ: "JWT" }),
+  )}.${toBase64Url(
+    JSON.stringify({
+      iss: clientEmail,
+      scope: GA_SCOPE,
+      aud: GOOGLE_TOKEN_URL,
+      exp: nowInSeconds + 3600,
+      iat: nowInSeconds,
+    }),
   )}`;
+
   const key = await crypto.subtle.importKey(
     "pkcs8",
     pemToArrayBuffer(privateKey),
     { name: "RSASSA-PKCS1-v1_5", hash: "SHA-256" },
     false,
-    ["sign"]
+    ["sign"],
   );
+
   const signature = await crypto.subtle.sign(
     "RSASSA-PKCS1-v1_5",
     key,
-    new TextEncoder().encode(unsignedToken)
+    new TextEncoder().encode(unsignedToken),
   );
+
   const assertion = `${unsignedToken}.${toBase64Url(new Uint8Array(signature))}`;
 
   const response = await fetch(GOOGLE_TOKEN_URL, {
     method: "POST",
-    headers: {
-      "Content-Type": "application/x-www-form-urlencoded",
-    },
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
     body: new URLSearchParams({
       grant_type: "urn:ietf:params:oauth:grant-type:jwt-bearer",
       assertion,
@@ -126,135 +179,280 @@ async function getAccessToken(clientEmail: string, privateKey: string) {
   });
 
   if (!response.ok) {
-    throw new Error(`Failed to get Google access token: ${await response.text()}`);
+    const text = await response.text();
+    throw new Error(createErrorMessage(response.status, text));
   }
 
   const data = (await response.json()) as { access_token?: string };
   if (!data.access_token) {
-    throw new Error("Google access token response did not include access_token");
+    throw new Error("Google access token response did not include access_token.");
   }
 
   return data.access_token;
 }
 
-async function runReport(
+async function runBatchReports(
   propertyId: string,
   accessToken: string,
-  body: Record<string, unknown>
-): Promise<Ga4ReportResponse> {
+  requests: Array<Record<string, unknown>>,
+) {
   const response = await fetch(
-    `${GOOGLE_ANALYTICS_DATA_API}/properties/${propertyId}:runReport`,
+    `${GOOGLE_ANALYTICS_DATA_API}/properties/${propertyId}:batchRunReports`,
     {
       method: "POST",
       headers: {
         Authorization: `Bearer ${accessToken}`,
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(body),
+      body: JSON.stringify({ requests }),
       cache: "no-store",
-    }
+    },
   );
 
   if (!response.ok) {
-    throw new Error(`Failed to run GA4 report: ${await response.text()}`);
+    const text = await response.text();
+    console.error("[ga4] batchRunReports failed", {
+      status: response.status,
+      body: text.slice(0, 500),
+      propertyId,
+    });
+    throw new Error(createErrorMessage(response.status, text));
   }
 
-  return (await response.json()) as Ga4ReportResponse;
+  return (await response.json()) as Ga4BatchResponse;
 }
 
-function readMetricValue(report: Ga4ReportResponse): number {
-  return Number(report.rows?.[0]?.metricValues?.[0]?.value ?? 0);
+function readMetric(report: Ga4ReportResponse | undefined, rowIndex: number, metricIndex: number) {
+  return Number(report?.rows?.[rowIndex]?.metricValues?.[metricIndex]?.value ?? 0);
 }
 
-function buildMonthlyRows(report: Ga4ReportResponse) {
-  const { month: currentMonth } = getCurrentKstYearMonth();
-  const currentMonthNumber = Number(currentMonth);
-  const monthMap = new Map<number, number>();
+function sanitizePagePath(path: string | undefined) {
+  if (!path || path === "(not set)") return "알 수 없음";
+  return path;
+}
 
-  for (const row of report.rows ?? []) {
-    const month = Number(row.dimensionValues?.[0]?.value ?? 0);
-    const visitors = Number(row.metricValues?.[0]?.value ?? 0);
-    if (month >= 1 && month <= 12) {
-      monthMap.set(month, visitors);
-    }
-  }
+function sanitizeSourceMedium(source: string | undefined, medium: string | undefined) {
+  const safeSource = !source || source === "(not set)" ? "direct" : source;
+  const safeMedium = !medium || medium === "(not set)" ? "none" : medium;
+  return `${safeSource} / ${safeMedium}`;
+}
 
-  return Array.from({ length: currentMonthNumber }, (_, index) => {
-    const month = index + 1;
+function buildDailyRows(report: Ga4ReportResponse | undefined) {
+  const rows = (report?.rows ?? []).map((row) => {
+    const rawDate = row.dimensionValues?.[0]?.value ?? "";
+    const isoDate = rawDate
+      ? `${rawDate.slice(0, 4)}-${rawDate.slice(4, 6)}-${rawDate.slice(6, 8)}`
+      : "";
+
     return {
-      month,
-      label: `${month}월`,
-      visitors: monthMap.get(month) ?? 0,
+      date: isoDate,
+      label: isoDate ? formatKstLabel(isoDate) : "-",
+      visitors: Number(row.metricValues?.[0]?.value ?? 0),
+      pageViews: Number(row.metricValues?.[1]?.value ?? 0),
     };
   });
+
+  return rows.sort((a, b) => a.date.localeCompare(b.date));
 }
 
-export type VisitorStats = {
-  todayVisitors: number;
-  last7DaysVisitors: number;
-  last30DaysVisitors: number;
-  monthlyVisitors: Array<{
-    month: number;
-    label: string;
-    visitors: number;
-  }>;
-  usingTimeZone: string;
-  configured: boolean;
-};
+function buildTopPages(report: Ga4ReportResponse | undefined) {
+  return (report?.rows ?? []).map((row, index) => ({
+    rank: index + 1,
+    path: sanitizePagePath(row.dimensionValues?.[0]?.value),
+    pageViews: Number(row.metricValues?.[0]?.value ?? 0),
+  }));
+}
 
-export async function getVisitorStats(): Promise<VisitorStats> {
+function buildTopSources(report: Ga4ReportResponse | undefined) {
+  return (report?.rows ?? []).map((row, index) => ({
+    rank: index + 1,
+    sourceMedium: sanitizeSourceMedium(
+      row.dimensionValues?.[0]?.value,
+      row.dimensionValues?.[1]?.value,
+    ),
+    visitors: Number(row.metricValues?.[0]?.value ?? 0),
+  }));
+}
+
+export type AdminStatsData =
+  | {
+      state: "missing_config";
+      configured: false;
+      missingEnv: Array<"GA4_PROPERTY_ID" | "GA4_CLIENT_EMAIL" | "GA4_PRIVATE_KEY">;
+      message: string;
+    }
+  | {
+      state: "error";
+      configured: true;
+      message: string;
+      lastSyncedAt: string | null;
+      isStale: boolean;
+      usingTimeZone: string;
+    }
+  | {
+      state: "ready";
+      configured: true;
+      message: string | null;
+      usingTimeZone: string;
+      lastSyncedAt: string;
+      isStale: boolean;
+      todayVisitors: number;
+      todayPageViews: number;
+      last7DaysVisitors: number;
+      last30DaysPageViews: number;
+      dailyTrend: Array<{
+        date: string;
+        label: string;
+        visitors: number;
+        pageViews: number;
+      }>;
+      topPages: Array<{
+        rank: number;
+        path: string;
+        pageViews: number;
+      }>;
+      topSources: Array<{
+        rank: number;
+        sourceMedium: string;
+        visitors: number;
+      }>;
+    };
+
+async function fetchGa4DashboardData(config: Ga4Config): Promise<AdminStatsData> {
+  const today = getKstDateString(new Date());
+  const last7Start = shiftDate(today, -6);
+  const last14Start = shiftDate(today, -13);
+  const last30Start = shiftDate(today, -29);
+
+  // activeUsers를 선택한 이유:
+  // GA4 기본 보고서에서 널리 쓰는 사용자 지표이고, 중복 방문보다 "실제 활동 사용자" 관점에 더 가깝습니다.
+  // 관리자 대시보드의 방문자 수 요약에는 totalUsers보다 activeUsers가 더 일관된 값으로 보입니다.
+  const accessToken = await getAccessToken(config.clientEmail, config.privateKey);
+
+  const summaryBatch = await runBatchReports(config.propertyId, accessToken, [
+    {
+      dateRanges: [{ startDate: today, endDate: today }],
+      metrics: [{ name: "activeUsers" }],
+    },
+    {
+      dateRanges: [{ startDate: today, endDate: today }],
+      metrics: [{ name: "screenPageViews" }],
+    },
+    {
+      dateRanges: [{ startDate: last7Start, endDate: today }],
+      metrics: [{ name: "activeUsers" }],
+    },
+    {
+      dateRanges: [{ startDate: last30Start, endDate: today }],
+      metrics: [{ name: "screenPageViews" }],
+    },
+    {
+      dateRanges: [{ startDate: last14Start, endDate: today }],
+      dimensions: [{ name: "date" }],
+      metrics: [{ name: "activeUsers" }, { name: "screenPageViews" }],
+      orderBys: [{ dimension: { dimensionName: "date" } }],
+    },
+  ]);
+
+  const detailBatch = await runBatchReports(config.propertyId, accessToken, [
+    {
+      dateRanges: [{ startDate: last30Start, endDate: today }],
+      dimensions: [{ name: "pagePath" }],
+      metrics: [{ name: "screenPageViews" }],
+      orderBys: [{ metric: { metricName: "screenPageViews" }, desc: true }],
+      limit: 10,
+    },
+    {
+      dateRanges: [{ startDate: last30Start, endDate: today }],
+      dimensions: [{ name: "sessionSource" }, { name: "sessionMedium" }],
+      metrics: [{ name: "activeUsers" }],
+      orderBys: [{ metric: { metricName: "activeUsers" }, desc: true }],
+      limit: 10,
+    },
+  ]);
+
+  const lastSyncedAt = formatSyncTime(new Date());
+
+  return {
+    state: "ready",
+    configured: true,
+    message: null,
+    usingTimeZone: KST_TIME_ZONE,
+    lastSyncedAt,
+    isStale: false,
+    todayVisitors: readMetric(summaryBatch.reports?.[0], 0, 0),
+    todayPageViews: readMetric(summaryBatch.reports?.[1], 0, 0),
+    last7DaysVisitors: readMetric(summaryBatch.reports?.[2], 0, 0),
+    last30DaysPageViews: readMetric(summaryBatch.reports?.[3], 0, 0),
+    dailyTrend: buildDailyRows(summaryBatch.reports?.[4]),
+    topPages: buildTopPages(detailBatch.reports?.[0]),
+    topSources: buildTopSources(detailBatch.reports?.[1]),
+  };
+}
+
+export async function getAdminStats(options?: { forceRefresh?: boolean }): Promise<AdminStatsData> {
+  const forceRefresh = options?.forceRefresh === true;
   const config = getGa4Config();
-  if (!config) {
+
+  if (!config.configured) {
     return {
-      todayVisitors: 0,
-      last7DaysVisitors: 0,
-      last30DaysVisitors: 0,
-      monthlyVisitors: [],
-      usingTimeZone: KST_TIME_ZONE,
+      state: "missing_config",
       configured: false,
+      missingEnv: config.missingEnv,
+      message:
+        "관리자 통계를 사용하려면 Cloudflare secret/env에 GA4 조회용 환경변수를 설정해야 합니다.",
     };
   }
 
-  const today = getKstDateString(new Date());
-  const weekStart = shiftDate(today, -6);
-  const last30DaysStart = shiftDate(today, -29);
-  const { year } = getCurrentKstYearMonth();
-  const accessToken = await getAccessToken(config.clientEmail, config.privateKey);
+  const now = Date.now();
+  if (!forceRefresh && statsCache && now < statsCache.expiresAt) {
+    return statsCache.data;
+  }
 
-  const [todayReport, weeklyReport, last30DaysReport, monthlyReport] = await Promise.all([
-    runReport(config.propertyId, accessToken, {
-      dateRanges: [{ startDate: today, endDate: today }],
-      metrics: [{ name: "activeUsers" }],
-    }),
-    runReport(config.propertyId, accessToken, {
-      dateRanges: [{ startDate: weekStart, endDate: today }],
-      metrics: [{ name: "activeUsers" }],
-    }),
-    runReport(config.propertyId, accessToken, {
-      dateRanges: [{ startDate: last30DaysStart, endDate: today }],
-      metrics: [{ name: "activeUsers" }],
-    }),
-    runReport(config.propertyId, accessToken, {
-      dateRanges: [{ startDate: `${year}-01-01`, endDate: today }],
-      dimensions: [{ name: "month" }],
-      metrics: [{ name: "activeUsers" }],
-      orderBys: [
-        {
-          dimension: {
-            dimensionName: "month",
-            orderType: "NUMERIC",
-          },
-        },
-      ],
-    }),
-  ]);
+  if (!forceRefresh && inFlightStatsRequest) {
+    return inFlightStatsRequest;
+  }
 
-  return {
-    todayVisitors: readMetricValue(todayReport),
-    last7DaysVisitors: readMetricValue(weeklyReport),
-    last30DaysVisitors: readMetricValue(last30DaysReport),
-    monthlyVisitors: buildMonthlyRows(monthlyReport),
-    usingTimeZone: KST_TIME_ZONE,
-    configured: true,
-  };
+  inFlightStatsRequest = (async () => {
+    try {
+      const data = await fetchGa4DashboardData(config);
+      statsCache = {
+        data,
+        expiresAt: now + CACHE_TTL_MS,
+        staleUntil: now + STALE_TTL_MS,
+      };
+      return data;
+    } catch (error) {
+      const message =
+        error instanceof Error
+          ? error.message
+          : "GA4 통계를 불러오는 중 알 수 없는 오류가 발생했습니다.";
+
+      console.error("[ga4] dashboard stats failed", {
+        message,
+        propertyId: config.propertyId,
+      });
+
+      if (statsCache && now < statsCache.staleUntil && statsCache.data.state === "ready") {
+        return {
+          ...statsCache.data,
+          isStale: true,
+          message: "실시간 조회에 실패해 최근 성공 데이터를 대신 표시합니다.",
+        };
+      }
+
+      return {
+        state: "error",
+        configured: true,
+        message,
+        lastSyncedAt: statsCache?.data.state === "ready" ? statsCache.data.lastSyncedAt : null,
+        isStale: false,
+        usingTimeZone: KST_TIME_ZONE,
+      } satisfies AdminStatsData;
+    } finally {
+      inFlightStatsRequest = null;
+    }
+  })();
+
+  return inFlightStatsRequest;
 }
