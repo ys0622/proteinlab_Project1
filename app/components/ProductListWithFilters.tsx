@@ -30,17 +30,17 @@ function applySort(products: ProductDetailProps[], sort: SortOptionValue, produc
   const arr = [...products];
   switch (sort) {
     case "protein_desc":
-      return arr.sort((a, b) => (b.proteinG ?? 0) - (a.proteinG ?? 0));
+      return arr.sort((a, b) => (b.proteinPerServing ?? 0) - (a.proteinPerServing ?? 0));
     case "density":
       return arr.sort((a, b) => {
-        const da = getCapacityMl(a) > 0 ? (a.proteinG ?? 0) / getCapacityMl(a) : 0;
-        const db = getCapacityMl(b) > 0 ? (b.proteinG ?? 0) / getCapacityMl(b) : 0;
+        const da = getCapacityMl(a) > 0 ? (a.proteinPerServing ?? 0) / getCapacityMl(a) : 0;
+        const db = getCapacityMl(b) > 0 ? (b.proteinPerServing ?? 0) / getCapacityMl(b) : 0;
         return db - da;
       });
     case "sugar_asc":
-      return arr.sort((a, b) => (a.sugarG ?? 0) - (b.sugarG ?? 0));
+      return arr.sort((a, b) => (a.sugar ?? 0) - (b.sugar ?? 0));
     case "sugar_desc":
-      return arr.sort((a, b) => (b.sugarG ?? 0) - (a.sugarG ?? 0));
+      return arr.sort((a, b) => (b.sugar ?? 0) - (a.sugar ?? 0));
     case "volume_desc":
       return arr.sort((a, b) => getCapacityMl(b) - getCapacityMl(a));
     case "volume_asc":
