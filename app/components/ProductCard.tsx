@@ -3,7 +3,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import type {
   KeyboardEvent as ReactKeyboardEvent,
   MouseEvent as ReactMouseEvent,
@@ -18,6 +17,8 @@ import {
 import CompareButton from "./CompareButton";
 import ProductBadge, {
   formatProductBadgeLabel,
+  getMetricBadgeAriaLabel,
+  getMetricBadgeTooltip,
   getProductBadgeTone,
 } from "./ProductBadge";
 import PurchaseLinkRow from "./PurchaseLinkRow";
@@ -37,34 +38,6 @@ export interface ProductCardProps {
   gradeTags?: string[];
   slug?: string;
   priority?: boolean;
-}
-
-type TooltipMetric = "density" | "diet" | "performance";
-
-const GRADE_TOOLTIP_TEXT: Record<TooltipMetric, string> = {
-  density:
-    "열량 대비 단백질 함량을 의미합니다.\n단백질 밀도 = 단백질(g) / 칼로리(kcal)\n밀도가 높을수록 같은 칼로리에서 더 많은 단백질을 섭취할 수 있습니다.",
-  diet:
-    "다이어트 식단에 적합한 제품을 평가한 지표입니다.\n당류, 칼로리, 단백질 밀도를 종합적으로 고려합니다.",
-  performance:
-    "운동 후 단백질 보충에 적합한 제품을 평가한 지표입니다.\n단백질 함량과 영양 구성을 종합적으로 고려합니다.",
-};
-
-function getTooltipMetric(tag: string): TooltipMetric | null {
-  if (tag.startsWith("밀도 ") || tag.startsWith("단백질 밀도 ")) return "density";
-  if (tag.startsWith("다이어트 ")) return "diet";
-  if (tag.startsWith("퍼포먼스 ")) return "performance";
-  return null;
-}
-
-function getTooltipAriaLabel(tag: string, metric: TooltipMetric): string {
-  const labels: Record<TooltipMetric, string> = {
-    density: "단백질 밀도 지표 설명 보기",
-    diet: "다이어트 지표 설명 보기",
-    performance: "퍼포먼스 지표 설명 보기",
-  };
-
-  return `${formatProductBadgeLabel(tag)} - ${labels[metric]}`;
 }
 
 export default function ProductCard({
@@ -93,84 +66,6 @@ export default function ProductCard({
   const packageTag = tags.find((tag) => ["팩", "PET", "CAN"].includes(tag));
   const capacitySuffix = packageTag ? `, ${packageTag}` : "";
   const canOpenDetail = Boolean(detailHref && detailHref !== "#");
-  const badgeButtonRefs = useRef<Record<string, HTMLButtonElement | null>>({});
-  const [activeTooltipTag, setActiveTooltipTag] = useState<string | null>(null);
-  const [tooltipStyle, setTooltipStyle] = useState<{
-    top: number;
-    left: number;
-    placement: "top" | "bottom";
-  } | null>(null);
-
-  const activeMetric = activeTooltipTag ? getTooltipMetric(activeTooltipTag) : null;
-  const activeTooltipText = activeMetric ? GRADE_TOOLTIP_TEXT[activeMetric] : null;
-  const activeTooltipId = activeTooltipTag
-    ? `product-card-tooltip-${productId}-${activeTooltipTag.replace(/\s+/g, "-")}`
-    : undefined;
-
-  useLayoutEffect(() => {
-    if (!activeTooltipTag) {
-      setTooltipStyle(null);
-      return;
-    }
-
-    const button = badgeButtonRefs.current[activeTooltipTag];
-    if (!button) return;
-
-    const rect = button.getBoundingClientRect();
-    const tooltipWidth = Math.min(280, window.innerWidth - 16);
-    const preferredTop = rect.top - 12;
-    const shouldPlaceBottom = preferredTop < 80;
-    const top = shouldPlaceBottom ? rect.bottom + 12 : rect.top - 12;
-    const centeredLeft = rect.left + rect.width / 2;
-    const halfWidth = tooltipWidth / 2;
-    const left = Math.min(
-      window.innerWidth - tooltipWidth / 2 - 8,
-      Math.max(tooltipWidth / 2 + 8, centeredLeft),
-    );
-
-    setTooltipStyle({
-      top,
-      left,
-      placement: shouldPlaceBottom ? "bottom" : "top",
-    });
-  }, [activeTooltipTag]);
-
-  useEffect(() => {
-    if (!activeTooltipTag) return;
-
-    const handlePointerDown = (event: MouseEvent) => {
-      const target = event.target as Node;
-      const clickedBadge = Object.values(badgeButtonRefs.current).some((button) =>
-        button?.contains(target),
-      );
-
-      if (!clickedBadge) {
-        setActiveTooltipTag(null);
-      }
-    };
-
-    const handleScroll = () => {
-      setActiveTooltipTag(null);
-    };
-
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
-        setActiveTooltipTag(null);
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll, true);
-    window.addEventListener("resize", handleScroll);
-    document.addEventListener("mousedown", handlePointerDown);
-    document.addEventListener("keydown", handleKeyDown);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll, true);
-      window.removeEventListener("resize", handleScroll);
-      document.removeEventListener("mousedown", handlePointerDown);
-      document.removeEventListener("keydown", handleKeyDown);
-    };
-  }, [activeTooltipTag]);
 
   const shouldIgnoreCardClick = (target: EventTarget | null) => {
     if (!(target instanceof HTMLElement)) {
@@ -286,55 +181,23 @@ export default function ProductCard({
 
           <div className="product-card__badges mt-1.5 flex flex-wrap gap-1.5" style={{ gap: "6px" }}>
             {gradeTags.map((tag) => {
-              const metric = getTooltipMetric(tag);
               const displayTag = formatProductBadgeLabel(tag);
               const tone = getProductBadgeTone(tag);
-
-              if (!metric) {
-                return (
-                  <ProductBadge
-                    key={tag}
-                    label={displayTag}
-                    tone={tone}
-                    className="product-card__badge"
-                  />
-                );
-              }
-
-              const isOpen = activeTooltipTag === tag;
+              const tooltip = getMetricBadgeTooltip(tag);
 
               return (
                 <ProductBadge
                   key={tag}
                   label={displayTag}
                   tone={tone}
-                  interactive
-                  buttonRef={(node) => {
-                    badgeButtonRefs.current[tag] = node;
-                  }}
                   className="product-card__badge transition-transform hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-[var(--accent)] focus:ring-offset-1"
-                  buttonProps={{
-                    "aria-label": getTooltipAriaLabel(tag, metric),
-                    "aria-describedby": isOpen ? activeTooltipId : undefined,
-                    "aria-expanded": isOpen,
-                    onMouseEnter: () => setActiveTooltipTag(tag),
-                    onMouseLeave: () =>
-                      setActiveTooltipTag((current) => (current === tag ? null : current)),
-                    onFocus: () => setActiveTooltipTag(tag),
-                    onBlur: () =>
-                      setActiveTooltipTag((current) => (current === tag ? null : current)),
+                  tooltip={tooltip ?? undefined}
+                  tooltipAriaLabel={getMetricBadgeAriaLabel(tag)}
+                  buttonProps={tooltip ? {
                     onClick: (event) => {
-                      event.preventDefault();
                       event.stopPropagation();
-                      setActiveTooltipTag((current) => (current === tag ? null : tag));
                     },
-                    onKeyDown: (event) => {
-                      if (event.key === "Escape") {
-                        event.preventDefault();
-                        setActiveTooltipTag(null);
-                      }
-                    },
-                  }}
+                  } : undefined}
                 />
               );
             })}
@@ -425,27 +288,6 @@ export default function ProductCard({
           </div>
         </div>
       </article>
-
-      {activeTooltipTag && activeTooltipText && tooltipStyle ? (
-        <div
-          id={activeTooltipId}
-          role="tooltip"
-          className="pointer-events-none fixed z-30 rounded-xl border border-[var(--border)] bg-white px-3 py-3 text-xs leading-5 text-[var(--foreground-muted)] shadow-[0_8px_24px_rgba(0,0,0,0.08)]"
-          style={{
-            width: `${Math.min(280, typeof window === "undefined" ? 280 : window.innerWidth - 16)}px`,
-            maxWidth: "calc(100vw - 16px)",
-            left: tooltipStyle.left,
-            top: tooltipStyle.top,
-            transform:
-              tooltipStyle.placement === "top"
-                ? "translate(-50%, -100%)"
-                : "translate(-50%, 0)",
-            whiteSpace: "pre-line",
-          }}
-        >
-          {activeTooltipText}
-        </div>
-      ) : null}
     </>
   );
 }

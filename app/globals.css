@@ -207,9 +207,61 @@ h1, h2, h3, h4, h5, h6 {
   min-height: var(--product-badge-height);
   padding: 0 var(--product-badge-padding-x);
   border-radius: var(--product-badge-radius);
+  gap: 4px;
   font-size: var(--product-badge-font-size);
   font-weight: var(--product-badge-font-weight);
   line-height: 1;
+}
+
+.product-ui-badge__label {
+  min-width: 0;
+}
+
+.product-ui-badge__indicator {
+  flex-shrink: 0;
+  font-size: 10px;
+  line-height: 1;
+  opacity: 0.72;
+}
+
+.product-ui-badge--interactive {
+  cursor: help;
+}
+
+.product-ui-tooltip {
+  pointer-events: none;
+  position: fixed;
+  z-index: 40;
+  width: min(260px, calc(100vw - 16px));
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.98);
+  padding: 10px 12px;
+  color: var(--foreground-muted);
+  font-size: 12px;
+  line-height: 1.55;
+  white-space: pre-line;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
+}
+
+.product-ui-tooltip__arrow {
+  position: absolute;
+  left: 50%;
+  width: 12px;
+  height: 12px;
+  border-left: 1px solid var(--border);
+  border-top: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.98);
+}
+
+.product-ui-tooltip--top .product-ui-tooltip__arrow {
+  bottom: -7px;
+  transform: translateX(-50%) rotate(225deg);
+}
+
+.product-ui-tooltip--bottom .product-ui-tooltip__arrow {
+  top: -7px;
+  transform: translateX(-50%) rotate(45deg);
 }
 
 .product-ui-badge--neutral {

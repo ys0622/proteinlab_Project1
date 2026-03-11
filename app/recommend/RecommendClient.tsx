@@ -3,6 +3,11 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import ProductBadge, {
+  getMetricBadgeAriaLabel,
+  getMetricBadgeTooltip,
+  getProductBadgeTone,
+} from "@/app/components/ProductBadge";
 
 type ProductType = "drink" | "bar";
 type Step = 0 | 1 | 2 | 3 | 4 | "loading" | "result";
@@ -236,22 +241,16 @@ function ProductResultCard({ product }: { product: RecommendedProduct }) {
         {/* 등급 뱃지 */}
         <div className="mt-2.5 flex gap-1 flex-wrap">
           {Object.entries(product.gradeValue).map(([key, grade]) => {
-            const gc = gradeColors[grade] ?? gradeColors.D;
+            const badgeLabel = `${gradeLabels[key] ?? key} ${grade}`;
+
             return (
-              <span key={key} style={{
-                display: "inline-flex",
-                alignItems: "center",
-                height: "26px",
-                padding: "0 10px",
-                borderRadius: "999px",
-                background: gc.bg,
-                border: `1px solid ${gc.border}`,
-                color: gc.color,
-                fontSize: 12,
-                fontWeight: 600,
-              }}>
-                {gradeLabels[key] ?? key} {grade}
-              </span>
+              <ProductBadge
+                key={key}
+                label={badgeLabel}
+                tone={getProductBadgeTone(badgeLabel)}
+                tooltip={getMetricBadgeTooltip(badgeLabel) ?? undefined}
+                tooltipAriaLabel={getMetricBadgeAriaLabel(badgeLabel)}
+              />
             );
           })}
         </div>

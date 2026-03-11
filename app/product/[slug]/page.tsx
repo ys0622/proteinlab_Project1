@@ -9,6 +9,8 @@ import Header from "../../components/Header";
 import NutritionDetailSection from "../../components/NutritionDetailSection";
 import ProductBadge, {
   formatProductBadgeLabel,
+  getMetricBadgeAriaLabel,
+  getMetricBadgeTooltip,
   getProductBadgeTone,
 } from "../../components/ProductBadge";
 import ProductReviewSection from "../../components/ProductReviewSection";
@@ -173,6 +175,8 @@ export default async function ProductDetailPage({ params }: PageProps) {
                     <ProductBadge
                       label={displayLabel}
                       tone={getProductBadgeTone(label)}
+                      tooltip={getMetricBadgeTooltip(label) ?? undefined}
+                      tooltipAriaLabel={getMetricBadgeAriaLabel(label)}
                     />
                     <p className="mt-3 text-sm text-[var(--foreground-muted)]">
                       {gradeDescs[index] ?? "-"}
