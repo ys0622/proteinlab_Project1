@@ -107,7 +107,31 @@ export default async function GuideSlugPage({
                 아미노산이 결합한 단백질은 근육·피부·혈액·효소·호르몬 등 인체 거의 모든 구성 성분의 원료입니다.<br />
                 체내에서는 끊임없이 단백질이 생성되고 분해되며 — 이를 단백질 대사(아미노산 풀)라고 합니다.
               </blockquote>
-              <div className="mt-4 h-56 rounded-2xl border border-[#d8d4cd] bg-[#efede8]" aria-hidden="true" />
+              <div className="mt-4 overflow-x-auto rounded-2xl border border-[#d8d4cd] bg-[#f7f5f0] p-5">
+                <svg viewBox="0 0 560 180" xmlns="http://www.w3.org/2000/svg" className="w-full" aria-label="인체 조직별 단백질 비중 차트">
+                  {[
+                    { label: "골격근", pct: 22.5, color: "#3d8b6e", textColor: "#1b5e42" },
+                    { label: "피부·근막", pct: 17.5, color: "#5aab8a", textColor: "#1b5e42" },
+                    { label: "뼈·연골", pct: 12.5, color: "#7dc4a8", textColor: "#2d6a54" },
+                    { label: "내장", pct: 7.5, color: "#a8d8c4", textColor: "#2d6a54" },
+                    { label: "혈액", pct: 6, color: "#ceeade", textColor: "#2d6a54" },
+                  ].map((row, i) => {
+                    const barW = (row.pct / 25) * 360;
+                    const y = i * 32 + 10;
+                    return (
+                      <g key={row.label}>
+                        <text x="0" y={y + 14} fontSize="12" fill="#5c5852" fontFamily="sans-serif">{row.label}</text>
+                        <rect x="80" y={y} width={barW} height="22" rx="4" fill={row.color} />
+                        <text x={80 + barW + 6} y={y + 14} fontSize="12" fill={row.textColor} fontWeight="600" fontFamily="sans-serif">{row.pct}%</text>
+                      </g>
+                    );
+                  })}
+                  <text x="80" y="172" fontSize="10" fill="#9b9791" fontFamily="sans-serif">0%</text>
+                  <text x="188" y="172" fontSize="10" fill="#9b9791" fontFamily="sans-serif">10%</text>
+                  <text x="296" y="172" fontSize="10" fill="#9b9791" fontFamily="sans-serif">20%</text>
+                  <text x="404" y="172" fontSize="10" fill="#9b9791" fontFamily="sans-serif">25%+</text>
+                </svg>
+              </div>
               <div className="mt-5 overflow-x-auto">
                 <table className="min-w-full border-collapse text-left text-sm">
                   <thead>
@@ -132,7 +156,42 @@ export default async function GuideSlugPage({
             </section>
             <section className="rounded-2xl border border-[#e8e6e3] bg-[#fffdf8] px-5 py-5">
               <h2 className="text-xl font-bold text-[var(--foreground)]">단백질이 하는 3가지 핵심 역할</h2>
-              <div className="mt-4 h-56 rounded-2xl border border-[#d8d4cd] bg-[#efede8]" aria-hidden="true" />
+              <div className="mt-4 rounded-2xl border border-[#d8d4cd] bg-[#f7f5f0] p-5">
+                <svg viewBox="0 0 540 130" xmlns="http://www.w3.org/2000/svg" className="w-full" aria-label="단백질의 3가지 핵심 역할">
+                  {/* 근육 카드 */}
+                  <rect x="10" y="8" width="160" height="114" rx="12" fill="#e7f3ec" stroke="#c8e6d8" strokeWidth="1"/>
+                  <circle cx="90" cy="48" r="24" fill="white" stroke="#3d8b6e" strokeWidth="1.5"/>
+                  {/* 덤벨 아이콘 */}
+                  <rect x="72" y="45" width="36" height="6" rx="3" fill="#3d8b6e"/>
+                  <rect x="66" y="40" width="10" height="16" rx="3" fill="#3d8b6e"/>
+                  <rect x="108" y="40" width="10" height="16" rx="3" fill="#3d8b6e"/>
+                  <text x="90" y="86" textAnchor="middle" fontSize="13" fontWeight="700" fill="#2d6a4f" fontFamily="sans-serif">근육</text>
+                  <text x="90" y="103" textAnchor="middle" fontSize="10" fill="#5c8a72" fontFamily="sans-serif">만들고 · 회복 · 유지</text>
+                  {/* 면역 카드 */}
+                  <rect x="190" y="8" width="160" height="114" rx="12" fill="#eaf0fa" stroke="#c5d8f0" strokeWidth="1"/>
+                  <circle cx="270" cy="48" r="24" fill="white" stroke="#4a7fb5" strokeWidth="1.5"/>
+                  {/* 방패 아이콘 */}
+                  <path d="M270,28 L286,35 L286,50 Q286,62 270,68 Q254,62 254,50 L254,35 Z" fill="none" stroke="#4a7fb5" strokeWidth="2" strokeLinejoin="round"/>
+                  <path d="M263,48 L268,53 L278,43" fill="none" stroke="#4a7fb5" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  <text x="270" y="86" textAnchor="middle" fontSize="13" fontWeight="700" fill="#2c5f8a" fontFamily="sans-serif">면역</text>
+                  <text x="270" y="103" textAnchor="middle" fontSize="10" fill="#4a6f9a" fontFamily="sans-serif">항체 · 면역세포 재료</text>
+                  {/* 호르몬 카드 */}
+                  <rect x="370" y="8" width="160" height="114" rx="12" fill="#f5ede8" stroke="#e8d0c4" strokeWidth="1"/>
+                  <circle cx="450" cy="48" r="24" fill="white" stroke="#8b5e3d" strokeWidth="1.5"/>
+                  {/* 분자/기어 아이콘 */}
+                  <circle cx="450" cy="48" r="8" fill="none" stroke="#8b5e3d" strokeWidth="2"/>
+                  <line x1="450" y1="30" x2="450" y2="36" stroke="#8b5e3d" strokeWidth="2" strokeLinecap="round"/>
+                  <line x1="450" y1="60" x2="450" y2="66" stroke="#8b5e3d" strokeWidth="2" strokeLinecap="round"/>
+                  <line x1="432" y1="48" x2="438" y2="48" stroke="#8b5e3d" strokeWidth="2" strokeLinecap="round"/>
+                  <line x1="462" y1="48" x2="468" y2="48" stroke="#8b5e3d" strokeWidth="2" strokeLinecap="round"/>
+                  <line x1="437" y1="35" x2="441" y2="39" stroke="#8b5e3d" strokeWidth="2" strokeLinecap="round"/>
+                  <line x1="459" y1="57" x2="463" y2="61" stroke="#8b5e3d" strokeWidth="2" strokeLinecap="round"/>
+                  <line x1="463" y1="35" x2="459" y2="39" stroke="#8b5e3d" strokeWidth="2" strokeLinecap="round"/>
+                  <line x1="441" y1="57" x2="437" y2="61" stroke="#8b5e3d" strokeWidth="2" strokeLinecap="round"/>
+                  <text x="450" y="86" textAnchor="middle" fontSize="13" fontWeight="700" fill="#6b4020" fontFamily="sans-serif">호르몬·효소</text>
+                  <text x="450" y="103" textAnchor="middle" fontSize="10" fill="#8b6040" fontFamily="sans-serif">신호 · 대사 조절</text>
+                </svg>
+              </div>
               <div className="mt-5 grid grid-cols-1 gap-4 lg:grid-cols-3">
                 {roleOverviewCards.map((card) => (
                   <article key={card.title} className="flex min-h-[260px] flex-col rounded-2xl border border-[#e8e6e3] bg-white px-5 py-5">
