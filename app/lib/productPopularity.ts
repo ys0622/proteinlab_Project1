@@ -24,7 +24,7 @@ export interface PopularProductItem {
   viewsLast7d: number;
 }
 
-function getSeedScore(
+export function getPopularityScore(
   product: ProductDetailProps,
   productType: "drink" | "bar",
 ): number | null {
@@ -45,7 +45,7 @@ export function getPopularProducts(
     slug: product.slug,
     brand: product.brand,
     name: product.name,
-    viewsLast7d: getSeedScore(product, productType) ?? Math.max(100, 850 - index * 17),
+    viewsLast7d: getPopularityScore(product, productType) ?? Math.max(100, 850 - index * 17),
   }));
 
   return scored

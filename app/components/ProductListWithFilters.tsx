@@ -26,17 +26,43 @@ type ProductListWithFiltersProps =
   | { productType: "drink"; products: ProductDetailProps[] }
   | { productType: "bar"; products: ProductDetailProps[] };
 
-function applySort(products: ProductDetailProps[], sort: SortOptionValue, productType: "drink" | "bar"): ProductDetailProps[] {
+function getDensityValue(product: ProductDetailProps): number {
+  const capacity = getCapacityMl(product);
+  if (capacity <= 0) return 0;
+  return ((product.proteinPerServing ?? 0) / capacity) * 100;
+}
+
+function getFallbackPopularity(index: number): number {
+  return Math.max(100, 850 - index * 17);
+}
+
+function getRecommendedScore(
+  product: ProductDetailProps,
+  productType: "drink" | "bar",
+  index: number,
+): number {
+  const density = getDensityValue(product);
+  const protein = product.proteinPerServing ?? 0;
+  const sugar = product.sugar ?? 0;
+  const calories = product.calories ?? 0;
+  const popularity = getPopularityScore(product, productType) ?? getFallbackPopularity(index);
+
+  return density * 18 + protein * 2.5 + popularity * 0.01 - sugar * 4 - calories * 0.06;
+}
+
+function applySort(
+  products: ProductDetailProps[],
+  sort: SortOptionValue,
+  productType: "drink" | "bar",
+  allProducts: ProductDetailProps[],
+): ProductDetailProps[] {
   const arr = [...products];
+
   switch (sort) {
     case "protein_desc":
       return arr.sort((a, b) => (b.proteinPerServing ?? 0) - (a.proteinPerServing ?? 0));
     case "density":
-      return arr.sort((a, b) => {
-        const da = getCapacityMl(a) > 0 ? (a.proteinPerServing ?? 0) / getCapacityMl(a) : 0;
-        const db = getCapacityMl(b) > 0 ? (b.proteinPerServing ?? 0) / getCapacityMl(b) : 0;
-        return db - da;
-      });
+      return arr.sort((a, b) => getDensityValue(b) - getDensityValue(a));
     case "sugar_asc":
       return arr.sort((a, b) => (a.sugar ?? 0) - (b.sugar ?? 0));
     case "sugar_desc":
@@ -47,13 +73,22 @@ function applySort(products: ProductDetailProps[], sort: SortOptionValue, produc
       return arr.sort((a, b) => getCapacityMl(a) - getCapacityMl(b));
     case "popular":
       return arr.sort((a, b) => {
-        const sa = getPopularityScore(a, productType) ?? 0;
-        const sb = getPopularityScore(b, productType) ?? 0;
-        return sb - sa;
+        const aIndex = allProducts.indexOf(a);
+        const bIndex = allProducts.indexOf(b);
+        const aScore = getPopularityScore(a, productType) ?? getFallbackPopularity(aIndex);
+        const bScore = getPopularityScore(b, productType) ?? getFallbackPopularity(bIndex);
+        return bScore - aScore;
       });
     case "recommended":
     default:
-      return arr;
+      return arr.sort((a, b) => {
+        const aIndex = allProducts.indexOf(a);
+        const bIndex = allProducts.indexOf(b);
+        return (
+          getRecommendedScore(b, productType, bIndex) -
+          getRecommendedScore(a, productType, aIndex)
+        );
+      });
   }
 }
 
@@ -74,9 +109,12 @@ export default function ProductListWithFilters(props: ProductListWithFiltersProp
     [products, filters, productType],
   );
 
-  const sorted = useMemo(() => applySort(filtered, sort, productType), [filtered, sort, productType]);
+  const sorted = useMemo(
+    () => applySort(filtered, sort, productType, products),
+    [filtered, productType, products, sort],
+  );
 
-  const visible = useMemo(() => sorted.slice(0, page * PAGE_SIZE), [sorted, page]);
+  const visible = useMemo(() => sorted.slice(0, page * PAGE_SIZE), [page, sorted]);
   const hasMore = visible.length < sorted.length;
 
   const handleDrinkFilterToggle = (key: keyof DrinkFilters, value: string) => {
@@ -144,8 +182,11 @@ export default function ProductListWithFilters(props: ProductListWithFiltersProp
         </div>
       </div>
 
-      <div className="mt-3 flex items-center justify-between gap-2" style={{ marginTop: "12px" }}>
-        <div className="flex min-w-0 gap-2">
+      <div
+        className="mt-3 flex flex-col gap-2 min-[360px]:flex-row min-[360px]:items-center min-[360px]:justify-between"
+        style={{ marginTop: "12px" }}
+      >
+        <div className="flex min-w-0 gap-2 overflow-x-auto pb-1">
           <Link
             href="/"
             className={`rounded-full px-3.5 py-1 text-sm font-medium transition-colors ${
