@@ -32,6 +32,27 @@
   --grade-diet-border: #4c7bd9;
   --grade-performance-bg: #fff1e6;
   --grade-performance-border: #f08a24;
+  --product-badge-height: 26px;
+  --product-badge-padding-x: 10px;
+  --product-badge-radius: 999px;
+  --product-badge-font-size: 12px;
+  --product-badge-font-weight: 600;
+  --product-badge-neutral-bg: #f4f1eb;
+  --product-badge-neutral-border: #d8d4cd;
+  --product-badge-neutral-text: #5f5a54;
+  --product-badge-grade-a-bg: #f0f5f2;
+  --product-badge-grade-a-border: #cad9d0;
+  --product-badge-grade-a-text: #355647;
+  --product-badge-grade-b-bg: #f1f4fa;
+  --product-badge-grade-b-border: #d1d9ea;
+  --product-badge-grade-b-text: #42587f;
+  --product-badge-grade-c-bg: #faf4ed;
+  --product-badge-grade-c-border: #e6d8c7;
+  --product-badge-grade-c-text: #8a6441;
+  --product-badge-grade-d-bg: #f4f4f4;
+  --product-badge-grade-d-border: #dddddd;
+  --product-badge-grade-d-text: #6d6d6d;
+  --purchase-link-radius: 12px;
 }
 
 @theme inline {
@@ -179,6 +200,129 @@ h1, h2, h3, h4, h5, h6 {
 
 .product-card__badges {
   align-content: flex-start;
+}
+
+.product-ui-badge {
+  min-width: 0;
+  min-height: var(--product-badge-height);
+  padding: 0 var(--product-badge-padding-x);
+  border-radius: var(--product-badge-radius);
+  font-size: var(--product-badge-font-size);
+  font-weight: var(--product-badge-font-weight);
+  line-height: 1;
+}
+
+.product-ui-badge--neutral {
+  background: var(--product-badge-neutral-bg);
+  border-color: var(--product-badge-neutral-border);
+  color: var(--product-badge-neutral-text);
+}
+
+.product-ui-badge--grade-a {
+  background: var(--product-badge-grade-a-bg);
+  border-color: var(--product-badge-grade-a-border);
+  color: var(--product-badge-grade-a-text);
+}
+
+.product-ui-badge--grade-b {
+  background: var(--product-badge-grade-b-bg);
+  border-color: var(--product-badge-grade-b-border);
+  color: var(--product-badge-grade-b-text);
+}
+
+.product-ui-badge--grade-c {
+  background: var(--product-badge-grade-c-bg);
+  border-color: var(--product-badge-grade-c-border);
+  color: var(--product-badge-grade-c-text);
+}
+
+.product-ui-badge--grade-d {
+  background: var(--product-badge-grade-d-bg);
+  border-color: var(--product-badge-grade-d-border);
+  color: var(--product-badge-grade-d-text);
+}
+
+.purchase-link-row {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.purchase-link-button {
+  display: inline-flex;
+  width: 100%;
+  min-width: 0;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border: 1px solid transparent;
+  border-radius: var(--purchase-link-radius);
+  padding: 0 12px;
+  text-align: center;
+  font-weight: 700;
+  line-height: 1;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.purchase-link-button:hover {
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+}
+
+.purchase-link-button--sm {
+  height: 40px;
+  font-size: 12px;
+}
+
+.purchase-link-button--md {
+  height: 44px;
+  font-size: 14px;
+}
+
+.purchase-link-button--coupang {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+.purchase-link-button--coupang:hover {
+  background: var(--accent-hover);
+  border-color: var(--accent-hover);
+}
+
+.purchase-link-button--naver {
+  background: #355f44;
+  border-color: #355f44;
+  color: #fff;
+}
+
+.purchase-link-button--naver:hover {
+  background: #284a34;
+  border-color: #284a34;
+}
+
+.purchase-link-button--official {
+  background: #4a4a46;
+  border-color: #4a4a46;
+  color: #fff;
+}
+
+.purchase-link-button--official:hover {
+  background: #373733;
+  border-color: #373733;
+}
+
+.purchase-link-button--disabled,
+.purchase-link-button--disabled:hover {
+  background: #ece9e3;
+  border-color: #ded8cf;
+  color: #9a948a;
+  box-shadow: none;
 }
 
 .guide-visual {
@@ -456,7 +600,7 @@ h1, h2, h3, h4, h5, h6 {
   }
 
   .product-card__badge {
-    height: 22px !important;
+    min-height: 22px !important;
     padding: 0 7px !important;
     font-size: 10px !important;
   }
@@ -487,6 +631,20 @@ h1, h2, h3, h4, h5, h6 {
 
   .cta-group {
     margin-top: 12px !important;
+  }
+
+  .purchase-link-row {
+    gap: 6px;
+  }
+
+  .purchase-link-button--sm {
+    height: 36px;
+    font-size: 11px;
+  }
+
+  .purchase-link-button--md {
+    height: 40px;
+    font-size: 12px;
   }
 
   .product-card__footer-actions {

@@ -16,6 +16,10 @@ import {
   getPreferredCoupangUrl,
 } from "../lib/purchaseLinks";
 import CompareButton from "./CompareButton";
+import ProductBadge, {
+  formatProductBadgeLabel,
+  getProductBadgeTone,
+} from "./ProductBadge";
 import PurchaseLinkRow from "./PurchaseLinkRow";
 
 export interface ProductCardProps {
@@ -46,16 +50,8 @@ const GRADE_TOOLTIP_TEXT: Record<TooltipMetric, string> = {
     "운동 후 단백질 보충에 적합한 제품을 평가한 지표입니다.\n단백질 함량과 영양 구성을 종합적으로 고려합니다.",
 };
 
-function formatGradeTagLabel(tag: string): string {
-  if (tag.startsWith("밀도 ")) {
-    return tag.replace("밀도 ", "단백질 밀도 ");
-  }
-
-  return tag;
-}
-
 function getTooltipMetric(tag: string): TooltipMetric | null {
-  if (tag.startsWith("밀도 ")) return "density";
+  if (tag.startsWith("밀도 ") || tag.startsWith("단백질 밀도 ")) return "density";
   if (tag.startsWith("다이어트 ")) return "diet";
   if (tag.startsWith("퍼포먼스 ")) return "performance";
   return null;
@@ -68,7 +64,7 @@ function getTooltipAriaLabel(tag: string, metric: TooltipMetric): string {
     performance: "퍼포먼스 지표 설명 보기",
   };
 
-  return `${formatGradeTagLabel(tag)} - ${labels[metric]}`;
+  return `${formatProductBadgeLabel(tag)} - ${labels[metric]}`;
 }
 
 export default function ProductCard({
@@ -290,98 +286,64 @@ export default function ProductCard({
 
           <div className="product-card__badges mt-1.5 flex flex-wrap gap-1.5" style={{ gap: "6px" }}>
             {gradeTags.map((tag) => {
-              const letter = tag.split(" ").pop();
               const metric = getTooltipMetric(tag);
-              const displayTag = formatGradeTagLabel(tag);
-              const style =
-                letter === "A"
-                  ? { bg: "#E7F3EC", border: "#1B7F5B", color: "#1B7F5B" }
-                  : letter === "B"
-                    ? { bg: "#EAF2FF", border: "#4C7BD9", color: "#4C7BD9" }
-                    : letter === "C"
-                      ? { bg: "#FFF1E6", border: "#F08A24", color: "#F08A24" }
-                      : { bg: "#f3f3f3", border: "#bbb", color: "#999" };
+              const displayTag = formatProductBadgeLabel(tag);
+              const tone = getProductBadgeTone(tag);
 
               if (!metric) {
                 return (
-                  <span
+                  <ProductBadge
                     key={tag}
-                    className="product-card__badge inline-flex items-center justify-center rounded-full"
-                    style={{
-                      height: "26px",
-                      padding: "0 10px",
-                      borderRadius: "999px",
-                      fontSize: "12px",
-                      fontWeight: 600,
-                      background: style.bg,
-                      border: `1px solid ${style.border}`,
-                      color: style.color,
-                    }}
-                  >
-                    {displayTag}
-                  </span>
+                    label={displayTag}
+                    tone={tone}
+                    className="product-card__badge"
+                  />
                 );
               }
 
               const isOpen = activeTooltipTag === tag;
 
               return (
-                <button
+                <ProductBadge
                   key={tag}
-                  ref={(node) => {
+                  label={displayTag}
+                  tone={tone}
+                  interactive
+                  buttonRef={(node) => {
                     badgeButtonRefs.current[tag] = node;
                   }}
-                  type="button"
-                  aria-label={getTooltipAriaLabel(tag, metric)}
-                  aria-describedby={isOpen ? activeTooltipId : undefined}
-                  aria-expanded={isOpen}
-                  onMouseEnter={() => setActiveTooltipTag(tag)}
-                  onMouseLeave={() => setActiveTooltipTag((current) => (current === tag ? null : current))}
-                  onFocus={() => setActiveTooltipTag(tag)}
-                  onBlur={() => setActiveTooltipTag((current) => (current === tag ? null : current))}
-                  onClick={(event) => {
-                    event.preventDefault();
-                    event.stopPropagation();
-                    setActiveTooltipTag((current) => (current === tag ? null : tag));
-                  }}
-                  onKeyDown={(event) => {
-                    if (event.key === "Escape") {
+                  className="product-card__badge transition-transform hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-[var(--accent)] focus:ring-offset-1"
+                  buttonProps={{
+                    "aria-label": getTooltipAriaLabel(tag, metric),
+                    "aria-describedby": isOpen ? activeTooltipId : undefined,
+                    "aria-expanded": isOpen,
+                    onMouseEnter: () => setActiveTooltipTag(tag),
+                    onMouseLeave: () =>
+                      setActiveTooltipTag((current) => (current === tag ? null : current)),
+                    onFocus: () => setActiveTooltipTag(tag),
+                    onBlur: () =>
+                      setActiveTooltipTag((current) => (current === tag ? null : current)),
+                    onClick: (event) => {
                       event.preventDefault();
-                      setActiveTooltipTag(null);
-                    }
+                      event.stopPropagation();
+                      setActiveTooltipTag((current) => (current === tag ? null : tag));
+                    },
+                    onKeyDown: (event) => {
+                      if (event.key === "Escape") {
+                        event.preventDefault();
+                        setActiveTooltipTag(null);
+                      }
+                    },
                   }}
-                  className="product-card__badge inline-flex items-center justify-center rounded-full transition-transform hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-[var(--accent)] focus:ring-offset-1"
-                  style={{
-                    height: "26px",
-                    padding: "0 10px",
-                    borderRadius: "999px",
-                    fontSize: "12px",
-                    fontWeight: 600,
-                    background: style.bg,
-                    border: `1px solid ${style.border}`,
-                    color: style.color,
-                  }}
-                >
-                  {displayTag}
-                </button>
+                />
               );
             })}
             {variant && variant !== "일반" ? (
-              <span
-                className="product-card__badge inline-flex items-center justify-center rounded-full"
-                style={{
-                  height: "26px",
-                  padding: "0 10px",
-                  borderRadius: "999px",
-                  fontSize: "12px",
-                  fontWeight: 600,
-                  background: "#F5F0E8",
-                  border: "1px solid #D4D4D4",
-                  color: "#6B6B6B",
-                }}
-              >
-                {variant}
-              </span>
+              <ProductBadge
+                label={variant}
+                tone="neutral"
+                className="product-card__badge"
+              />
             ) : null}
           </div>
 

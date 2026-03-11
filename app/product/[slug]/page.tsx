@@ -7,6 +7,10 @@ import CompareButton from "../../components/CompareButton";
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
 import NutritionDetailSection from "../../components/NutritionDetailSection";
+import ProductBadge, {
+  formatProductBadgeLabel,
+  getProductBadgeTone,
+} from "../../components/ProductBadge";
 import ProductReviewSection from "../../components/ProductReviewSection";
 import PurchaseLinkRow from "../../components/PurchaseLinkRow";
 import { getNutritionDetail, getProductBySlug } from "../../data/products";
@@ -19,14 +23,6 @@ import {
 
 interface PageProps {
   params: Promise<{ slug: string }>;
-}
-
-function formatGradeTagLabel(tag: string): string {
-  if (tag.startsWith("밀도 ")) {
-    return tag.replace("밀도 ", "단백질 밀도 ");
-  }
-
-  return tag;
 }
 
 export async function generateMetadata({ params }: PageProps) {
@@ -166,16 +162,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
             <h2 className="text-lg font-semibold text-[var(--foreground)]">등급 요약</h2>
             <div className="mt-4 grid gap-3 sm:grid-cols-3">
               {gradeLabels.map((label, index) => {
-                const letter = label.split(" ").pop();
-                const displayLabel = formatGradeTagLabel(label);
-                const style =
-                  letter === "A"
-                    ? { bg: "#E7F3EC", border: "#1B7F5B", color: "#1B7F5B" }
-                    : letter === "B"
-                      ? { bg: "#EAF2FF", border: "#4C7BD9", color: "#4C7BD9" }
-                      : letter === "C"
-                        ? { bg: "#FFF1E6", border: "#F08A24", color: "#F08A24" }
-                        : { bg: "#f3f3f3", border: "#bbb", color: "#999" };
+                const displayLabel = formatProductBadgeLabel(label);
 
                 return (
                   <div
@@ -183,20 +170,10 @@ export default async function ProductDetailPage({ params }: PageProps) {
                     className="rounded-xl border border-[#e8e6e3] p-4"
                     style={{ borderRadius: "12px", background: "#FFFDF8" }}
                   >
-                    <span
-                      className="inline-flex items-center justify-center rounded-full font-semibold"
-                      style={{
-                        height: "26px",
-                        padding: "0 10px",
-                        borderRadius: "999px",
-                        fontSize: "12px",
-                        background: style.bg,
-                        border: `1px solid ${style.border}`,
-                        color: style.color,
-                      }}
-                    >
-                      {displayLabel}
-                    </span>
+                    <ProductBadge
+                      label={displayLabel}
+                      tone={getProductBadgeTone(label)}
+                    />
                     <p className="mt-3 text-sm text-[var(--foreground-muted)]">
                       {gradeDescs[index] ?? "-"}
                     </p>
