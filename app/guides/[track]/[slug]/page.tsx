@@ -2,7 +2,16 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
-import { getGuideSlot, getGuideTrack } from "@/app/data/guidesTracks";
+import { getGuideSlot, getGuideTrack, getGuideTracks } from "@/app/data/guidesTracks";
+
+export async function generateStaticParams() {
+  return getGuideTracks().flatMap((track) =>
+    track.slots.map((slot) => ({
+      track: track.slug,
+      slug: slot.slug,
+    })),
+  );
+}
 
 const roleOverviewBodyRows = [
   ["골격근", "약 20–25%", "액틴, 미오신"],
@@ -42,9 +51,9 @@ const roleOverviewCards = [
 export async function generateMetadata({
   params,
 }: {
-  params: { track: string; slug: string };
+  params: Promise<{ track: string; slug: string }>;
 }) {
-  const { track, slug } = params;
+  const { track, slug } = await params;
   if (track === "basics" && slug === "role-overview") {
     return {
       title: "단백질 역할 — 근육·면역·호르몬에서 하는 일 | ProteinLab",
@@ -60,12 +69,12 @@ export async function generateMetadata({
   };
 }
 
-export default function GuideSlugPage({
+export default async function GuideSlugPage({
   params,
 }: {
-  params: { track: string; slug: string };
+  params: Promise<{ track: string; slug: string }>;
 }) {
-  const { track, slug } = params;
+  const { track, slug } = await params;
 
   if (track === "basics" && slug === "role-overview") {
     return (
