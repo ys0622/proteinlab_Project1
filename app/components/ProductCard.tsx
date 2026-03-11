@@ -31,6 +31,14 @@ export interface ProductCardProps {
   priority?: boolean;
 }
 
+function formatGradeTagLabel(tag: string): string {
+  if (tag.startsWith("밀도 ")) {
+    return tag.replace("밀도 ", "단백질 밀도 ");
+  }
+
+  return tag;
+}
+
 export default function ProductCard({
   brand,
   name,
@@ -172,6 +180,7 @@ export default function ProductCard({
         <div className="product-card__badges mt-1.5 flex flex-wrap gap-1.5" style={{ gap: "6px" }}>
           {gradeTags.map((tag) => {
             const letter = tag.split(" ").pop();
+            const displayTag = formatGradeTagLabel(tag);
             const style =
               letter === "A"
                 ? { bg: "#E7F3EC", border: "#1B7F5B", color: "#1B7F5B" }
@@ -196,7 +205,7 @@ export default function ProductCard({
                   color: style.color,
                 }}
               >
-                {tag}
+                {displayTag}
               </span>
             );
           })}

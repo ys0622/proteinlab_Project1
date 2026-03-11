@@ -21,6 +21,14 @@ interface PageProps {
   params: Promise<{ slug: string }>;
 }
 
+function formatGradeTagLabel(tag: string): string {
+  if (tag.startsWith("밀도 ")) {
+    return tag.replace("밀도 ", "단백질 밀도 ");
+  }
+
+  return tag;
+}
+
 export async function generateMetadata({ params }: PageProps) {
   const { slug } = await params;
   const product = getProductBySlug(slug);
@@ -159,6 +167,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
             <div className="mt-4 grid gap-3 sm:grid-cols-3">
               {gradeLabels.map((label, index) => {
                 const letter = label.split(" ").pop();
+                const displayLabel = formatGradeTagLabel(label);
                 const style =
                   letter === "A"
                     ? { bg: "#E7F3EC", border: "#1B7F5B", color: "#1B7F5B" }
@@ -186,7 +195,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
                         color: style.color,
                       }}
                     >
-                      {label}
+                      {displayLabel}
                     </span>
                     <p className="mt-3 text-sm text-[var(--foreground-muted)]">
                       {gradeDescs[index] ?? "-"}
