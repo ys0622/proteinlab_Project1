@@ -205,6 +205,97 @@ function LoadingScreen({ onDone }: { onDone: () => void }) {
 }
 
 // 추천 제품 카드 (세로형, 그리드 레이아웃용)
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+function RecommendationMeta({
+  rank,
+  score,
+  isFirst,
+  compact = false,
+}: {
+  rank: number;
+  score: number;
+  isFirst: boolean;
+  compact?: boolean;
+}) {
+  if (compact) {
+    return (
+      <div className="mb-2 rounded-lg border border-[#e8e6e3] bg-[#faf8f2] px-3 py-2">
+        <div className="flex items-center justify-between gap-2">
+          <div className="flex items-center gap-2">
+            <span
+              className="inline-flex h-7 min-w-7 items-center justify-center rounded-full px-2 text-xs font-extrabold"
+              style={{
+                background: isFirst ? "var(--accent)" : "#f3f4f6",
+                color: isFirst ? "white" : "#6b7280",
+              }}
+            >
+              {rank}
+            </span>
+            <span className="text-xs font-semibold" style={{ color: "#374151" }}>
+              추천 {rank}위
+            </span>
+          </div>
+          {isFirst ? (
+            <span
+              className="rounded-full px-2 py-1 text-[11px] font-bold"
+              style={{ background: "#FFF1E6", color: "#F08A24" }}
+            >
+              최고 추천
+            </span>
+          ) : null}
+        </div>
+        <div className="mt-2 flex items-center justify-between gap-2 border-t border-[#ece7dd] pt-2">
+          <span className="text-[11px] font-medium" style={{ color: "#7a7a7a" }}>
+            추천 강도
+          </span>
+          <span
+            className="rounded-full px-2.5 py-1 text-xs font-semibold"
+            style={{ background: "#EAF2FF", color: "#4C7BD9" }}
+          >
+            {score}점
+          </span>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="flex items-center justify-between gap-3 border-b border-[#f0eeeb] bg-[#faf8f2] px-4 py-3">
+      <div className="flex items-center gap-2">
+        <span
+          className="inline-flex h-7 min-w-7 items-center justify-center rounded-full px-2 text-xs font-extrabold"
+          style={{
+            background: isFirst ? "var(--accent)" : "#f3f4f6",
+            color: isFirst ? "white" : "#6b7280",
+          }}
+        >
+          {rank}
+        </span>
+        <span className="text-sm font-semibold" style={{ color: "#374151" }}>
+          추천 {rank}위
+        </span>
+        {isFirst ? (
+          <span
+            className="rounded-full px-2.5 py-1 text-xs font-bold"
+            style={{ background: "#FFF1E6", color: "#F08A24" }}
+          >
+            최고 추천
+          </span>
+        ) : null}
+      </div>
+      <div className="text-right">
+        <p className="text-[11px] leading-none" style={{ color: "#7a7a7a" }}>
+          추천 강도
+        </p>
+        <p className="mt-1 text-sm font-extrabold" style={{ color: "#4C7BD9" }}>
+          {score}점
+        </p>
+      </div>
+    </div>
+  );
+}
+
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 function ProductResultCard({ product }: { product: RecommendedProduct }) {
   const router = useRouter();
   const isFirst = product.rank === 1;
@@ -349,6 +440,7 @@ function ProductResultCard({ product }: { product: RecommendedProduct }) {
 }
 
 // 결과 화면
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 function ProductResultCardMobile({ product }: { product: RecommendedProduct }) {
   const gradeTags = Object.entries(product.gradeValue).map(
     ([key, grade]) => `${gradeLabels[key] ?? key} ${grade}`,
@@ -407,6 +499,232 @@ function ProductResultCardMobile({ product }: { product: RecommendedProduct }) {
   );
 }
 
+function RecommendationMetaV2({
+  rank,
+  score,
+  isFirst,
+  compact = false,
+}: {
+  rank: number;
+  score: number;
+  isFirst: boolean;
+  compact?: boolean;
+}) {
+  if (compact) {
+    return (
+      <div className="mb-2 rounded-xl border border-[#e8e6e3] bg-[#faf8f2] px-3 py-2.5">
+        <div className="flex items-start justify-between gap-2">
+          <div className="flex min-w-0 items-center gap-2">
+            <span
+              className="inline-flex h-7 min-w-7 items-center justify-center rounded-full px-2 text-xs font-extrabold"
+              style={{
+                background: isFirst ? "var(--accent)" : "#f3f4f6",
+                color: isFirst ? "white" : "#6b7280",
+              }}
+            >
+              {rank}
+            </span>
+            <div className="min-w-0">
+              <p className="text-xs font-semibold leading-tight" style={{ color: "#374151" }}>
+                추천 {rank}위
+              </p>
+              {isFirst ? (
+                <p className="mt-1 text-[11px] font-semibold leading-tight" style={{ color: "#F08A24" }}>
+                  최고 추천
+                </p>
+              ) : null}
+            </div>
+          </div>
+          <div className="shrink-0 text-right">
+            <p className="text-[11px] leading-none" style={{ color: "#7a7a7a" }}>
+              추천 강도
+            </p>
+            <p className="mt-1 text-sm font-extrabold leading-none" style={{ color: "#4C7BD9" }}>
+              {score}점
+            </p>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="flex items-center justify-between gap-3 border-b border-[#f0eeeb] bg-[#faf8f2] px-4 py-3">
+      <div className="flex min-w-0 items-center gap-2">
+        <span
+          className="inline-flex h-7 min-w-7 items-center justify-center rounded-full px-2 text-xs font-extrabold"
+          style={{
+            background: isFirst ? "var(--accent)" : "#f3f4f6",
+            color: isFirst ? "white" : "#6b7280",
+          }}
+        >
+          {rank}
+        </span>
+        <p className="text-sm font-semibold" style={{ color: "#374151" }}>
+          추천 {rank}위
+        </p>
+        {isFirst ? (
+          <span
+            className="rounded-full px-2.5 py-1 text-xs font-bold"
+            style={{ background: "#FFF1E6", color: "#F08A24" }}
+          >
+            최고 추천
+          </span>
+        ) : null}
+      </div>
+      <div className="shrink-0 text-right">
+        <p className="text-[11px] leading-none" style={{ color: "#7a7a7a" }}>
+          추천 강도
+        </p>
+        <p className="mt-1 text-sm font-extrabold leading-none" style={{ color: "#4C7BD9" }}>
+          {score}점
+        </p>
+      </div>
+    </div>
+  );
+}
+
+function ProductResultCardDesktopV2({ product }: { product: RecommendedProduct }) {
+  const router = useRouter();
+  const isFirst = product.rank === 1;
+  const displayName = [product.name, product.flavor].filter(Boolean).join(" ");
+
+  const shouldIgnoreCardClick = (target: EventTarget | null) => {
+    if (!(target instanceof HTMLElement)) {
+      return false;
+    }
+
+    return Boolean(target.closest("a, button, input, select, textarea, label"));
+  };
+
+  const openDetail = () => {
+    router.push(product.detailPath);
+  };
+
+  const handleCardClick = (event: ReactMouseEvent<HTMLElement>) => {
+    if (shouldIgnoreCardClick(event.target)) {
+      return;
+    }
+
+    openDetail();
+  };
+
+  const handleCardKeyDown = (event: ReactKeyboardEvent<HTMLElement>) => {
+    if (shouldIgnoreCardClick(event.target)) {
+      return;
+    }
+
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      openDetail();
+    }
+  };
+
+  return (
+    <article
+      className="relative flex cursor-pointer flex-col transition-colors duration-200 hover:border-[#ddd] focus:outline-none focus:ring-2 focus:ring-[var(--accent)] focus:ring-offset-2"
+      onClick={handleCardClick}
+      onKeyDown={handleCardKeyDown}
+      role="link"
+      tabIndex={0}
+      aria-label={`${displayName} 상세 보기`}
+      style={{ border: "1px solid #e8e6e3", borderRadius: "16px", background: "#FFFDF8", overflow: "hidden" }}
+    >
+      <RecommendationMetaV2 rank={product.rank} score={product.score} isFirst={isFirst} />
+      <Link href={product.detailPath} className="relative flex items-center justify-center bg-white border-b border-[#f0eeeb]" style={{ height: "160px" }}>
+        {product.imageUrl ? (
+          <Image src={product.imageUrl} alt={displayName} fill className="object-contain p-4" sizes="200px" unoptimized />
+        ) : (
+          <div className="h-full w-full" />
+        )}
+      </Link>
+      <div className="flex flex-1 flex-col p-4">
+        <p className="text-xs truncate" style={{ color: "#7a7a7a" }}>{product.brand}</p>
+        <Link href={product.detailPath} className="mt-0.5 block text-sm font-bold leading-snug hover:underline line-clamp-2" style={{ color: "#1a1a1a" }}>
+          {displayName}
+        </Link>
+        <p className="mt-0.5 text-xs" style={{ color: "#999" }}>{product.volume}</p>
+
+        <MetricBadgeGroup className="mt-2.5">
+          {Object.entries(product.gradeValue).map(([key, grade]) => {
+            const badgeLabel = `${gradeLabels[key] ?? key} ${grade}`;
+
+            return (
+              <ProductBadge
+                key={key}
+                label={badgeLabel}
+                tone={getProductBadgeTone(badgeLabel)}
+                tooltip={getMetricBadgeTooltip(badgeLabel) ?? undefined}
+                tooltipAriaLabel={getMetricBadgeAriaLabel(badgeLabel)}
+              />
+            );
+          })}
+        </MetricBadgeGroup>
+
+        <div className="mt-3 grid grid-cols-3 gap-1.5">
+          {[
+            { label: "단백질", value: `${product.protein}g`, color: "#1B7F5B" },
+            { label: "칼로리", value: `${product.calories}kcal`, color: "#6b7280" },
+            { label: "당류", value: `${product.sugar}g`, color: product.sugar === 0 ? "#1B7F5B" : "#f97316" },
+          ].map((stat) => (
+            <div key={stat.label} className="rounded-lg border border-[#f0eeeb] bg-[#fafaf8] px-2 py-2 text-center">
+              <p style={{ fontSize: 16, fontWeight: 800, color: stat.color, lineHeight: 1.2 }}>{stat.value}</p>
+              <p style={{ fontSize: 10, color: "#9ca3af", marginTop: 2 }}>{stat.label}</p>
+            </div>
+          ))}
+        </div>
+
+        <div className="mt-3 rounded-r-md border border-[#e8e2d7] bg-[#f6f2ea] px-3 py-2" style={{ borderLeftWidth: 3, borderLeftColor: "var(--accent)" }}>
+          <p style={{ fontSize: 13, color: "#3d3d3d", lineHeight: 1.6, fontWeight: 500 }}>{product.reason}</p>
+        </div>
+
+        <Link href={product.detailPath} className="mt-3 block w-full py-2.5 text-xs font-semibold text-center rounded-lg transition-colors hover:bg-[var(--accent-light)] hover:text-[var(--accent)]" style={{
+          border: "1px solid #e8e6e3", background: "#fff", color: "#374151",
+        }}>
+          상세 보기 →
+        </Link>
+      </div>
+    </article>
+  );
+}
+
+function ProductResultCardMobileV2({ product }: { product: RecommendedProduct }) {
+  const gradeTags = Object.entries(product.gradeValue).map(
+    ([key, grade]) => `${gradeLabels[key] ?? key} ${grade}`,
+  );
+
+  return (
+    <div className="relative">
+      <RecommendationMetaV2
+        rank={product.rank}
+        score={product.score}
+        isFirst={product.rank === 1}
+        compact
+      />
+      <ProductCard
+        brand={product.brand}
+        name={[product.name, product.flavor].filter(Boolean).join(" ")}
+        capacity={product.volume}
+        tags={[]}
+        proteinPerServing={product.protein}
+        calories={product.calories}
+        sugar={product.sugar}
+        density={product.density}
+        gradeTags={gradeTags}
+        slug={product.id}
+      />
+      <div
+        className="mt-2 rounded-lg border border-[#e8e6e3] bg-[#faf8f2] px-3 py-2"
+        style={{ borderLeft: "3px solid var(--accent)" }}
+      >
+        <p style={{ fontSize: 13, color: "#3d3d3d", lineHeight: 1.6, fontWeight: 500 }}>
+          {product.reason}
+        </p>
+      </div>
+    </div>
+  );
+}
+
 function ResultScreen({ result, onReset, category }: { result: RecommendResult; onReset: () => void; category: ProductType }) {
   return (
     <div className="fade-in space-y-5">
@@ -426,10 +744,10 @@ function ResultScreen({ result, onReset, category }: { result: RecommendResult; 
       <div>
         <p className="text-base font-extrabold mb-3" style={{ color: "#1a1a1a" }}>🏆 맞춤 추천 제품</p>
         <div className="grid grid-cols-2 gap-3 md:hidden">
-          {result.products.map((p) => <ProductResultCardMobile key={p.rank} product={p} />)}
+          {result.products.map((p) => <ProductResultCardMobileV2 key={p.rank} product={p} />)}
         </div>
         <div className="hidden gap-3 md:grid md:grid-cols-2 lg:grid-cols-3">
-          {result.products.map((p) => <ProductResultCard key={p.rank} product={p} />)}
+          {result.products.map((p) => <ProductResultCardDesktopV2 key={p.rank} product={p} />)}
         </div>
       </div>
 
