@@ -14,6 +14,11 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const BASE_URL = 'https://proteinlab.kr';
 const CONCURRENCY = 3;
 const DELAY_MS = 500;
+const DRINK_TAG_OVERRIDES = {
+  'newcare-all-protein-41g': ['팩'],
+  'takefit-monster-goso-350': ['PET'],
+  'takefit-monster-chocobanana-350': ['PET'],
+};
 
 function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
 
@@ -37,6 +42,10 @@ function parseNum(str) {
   if (!str || str === '—' || str === '-') return undefined;
   const m = str.match(/([\d.]+)/);
   return m ? parseFloat(m[1]) : undefined;
+}
+
+function getDrinkTags(slug, tags) {
+  return DRINK_TAG_OVERRIDES[slug] ?? tags;
 }
 
 // ── 목록 페이지에서 slug 수집 ──
@@ -152,7 +161,7 @@ function parseDrinkPage(html, slug) {
   return {
     slug, brand, name: displayName, capacity,
     variant: lactofree ? '락토프리' : '일반',
-    tags, proteinPerServing: protein ?? 0,
+    tags: getDrinkTags(slug, tags), proteinPerServing: protein ?? 0,
     calories, sugar, density: densityStr,
     productUrl: '#', productType: 'drink', gradeTags,
     manufacturer, flavor,

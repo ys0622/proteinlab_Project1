@@ -6,13 +6,15 @@ import BackButton from "../../components/BackButton";
 import CompareButton from "../../components/CompareButton";
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
+import MetricBadgeGroup from "../../components/MetricBadgeGroup";
 import NutritionDetailSection from "../../components/NutritionDetailSection";
-import ProductBadge, {
+import ProductBadge from "../../components/ProductBadge";
+import {
   formatProductBadgeLabel,
   getMetricBadgeAriaLabel,
   getMetricBadgeTooltip,
   getProductBadgeTone,
-} from "../../components/ProductBadge";
+} from "../../components/productBadgeUtils";
 import ProductReviewSection from "../../components/ProductReviewSection";
 import PurchaseLinkRow from "../../components/PurchaseLinkRow";
 import { getNutritionDetail, getProductBySlug } from "../../data/products";
@@ -49,7 +51,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
 
   if (!product) notFound();
 
-  const gradeLabels = product.gradeTags ?? ["단백질 A", "다이어트 B", "퍼포먼스 B"];
+  const gradeLabels = product.gradeTags ?? ["밀도 A", "다이어트 B", "퍼포먼스 B"];
   const gradeDescs = product.gradeDescriptions ?? ["-", "-", "-"];
   const isBar = product.productType === "bar";
   const productImageUrl = getProductImageUrl(product.slug);
@@ -63,6 +65,33 @@ export default async function ProductDetailPage({ params }: PageProps) {
   const coupangHref = getPreferredCoupangUrl(product.brand, product.name, product.productUrl);
   const naverHref = getNaverSearchUrl(product.brand, product.name);
   const officialMallHref = getOfficialMallUrl(product.brand);
+  const isLactoseFreeDrink =
+    product.productType !== "bar" && product.variant?.trim() === "락토프리";
+
+  const summaryMetrics = isBar
+    ? [
+        { label: "단백질", value: `${product.proteinPerServing}g`, isCompact: false },
+        { label: "칼로리", value: product.calories != null ? `${product.calories}kcal` : "-", isCompact: false },
+        { label: "당류", value: product.sugar !== undefined ? `${product.sugar}g` : "-", isCompact: false },
+        { label: "단백질 밀도", value: product.density ?? "-", isCompact: true },
+        { label: "중량", value: product.capacity ?? "-", isCompact: false },
+        { label: "지방", value: product.fat !== undefined ? `${product.fat}g` : "-", isCompact: false },
+        { label: "나트륨", value: product.sodium !== undefined ? `${product.sodium}mg` : "-", isCompact: false },
+      ]
+    : [
+        { label: "단백질", value: `${product.proteinPerServing}g`, isCompact: false },
+        { label: "칼로리", value: product.calories != null ? `${product.calories}kcal` : "-", isCompact: false },
+        { label: "당류", value: product.sugar !== undefined ? `${product.sugar}g` : "-", isCompact: false },
+        { label: "단백질 밀도", value: product.density ?? "-", isCompact: true },
+        { label: "용량", value: product.capacity ?? "-", isCompact: false },
+        { label: "락토프리", value: isLactoseFreeDrink ? "O" : "X", isCompact: false },
+        { label: "BCAA", value: product.bcaa ?? "-", isCompact: false },
+        { label: "단백질원", value: product.proteinSource ?? "-", isCompact: false },
+        { label: "지방", value: product.fat !== undefined ? `${product.fat}g` : "-", isCompact: false },
+        { label: "나트륨", value: product.sodium !== undefined ? `${product.sodium}mg` : "-", isCompact: false },
+        { label: "칼로리 밀도", value: product.calorieDensity ?? "-", isCompact: true },
+        { label: "음료 타입", value: product.drinkType ?? "-", isCompact: false },
+      ];
 
   return (
     <div className="min-h-screen bg-white">
@@ -81,7 +110,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
           <div className="mt-6 flex flex-col gap-6 lg:flex-row lg:items-stretch lg:gap-8">
             <div className="w-full flex-shrink-0 lg:max-w-[300px]">
               <div
-                className="relative flex w-full items-center justify-center overflow-hidden rounded-2xl border border-[#e8e6e3] bg-white min-h-[260px] sm:min-h-[280px] lg:min-h-0 lg:h-full"
+                className="relative flex w-full min-h-[260px] items-center justify-center overflow-hidden rounded-2xl border border-[#e8e6e3] bg-white sm:min-h-[280px] lg:h-full lg:min-h-0"
                 style={{ borderRadius: "16px" }}
               >
                 {productImageUrl ? (
@@ -116,38 +145,27 @@ export default async function ProductDetailPage({ params }: PageProps) {
               </div>
 
               <div className="grid flex-1 grid-cols-3 content-start gap-2" style={{ gap: "8px" }}>
-                {(isBar
-                  ? [
-                      { label: "단백질", value: `${product.proteinPerServing}g` },
-                      { label: "칼로리", value: product.calories != null ? `${product.calories}kcal` : "?" },
-                      { label: "당류", value: product.sugar !== undefined ? `${product.sugar}g` : "?" },
-                      { label: "단백질밀도", value: product.density ?? "?" },
-                      { label: "중량", value: product.capacity ?? "?" },
-                      { label: "지방", value: product.fat !== undefined ? `${product.fat}g` : "?" },
-                      { label: "나트륨", value: product.sodium !== undefined ? `${product.sodium}mg` : "?" },
-                    ]
-                  : [
-                      { label: "단백질", value: `${product.proteinPerServing}g` },
-                      { label: "칼로리", value: product.calories != null ? `${product.calories}kcal` : "?" },
-                      { label: "당류", value: product.sugar !== undefined ? `${product.sugar}g` : "?" },
-                      { label: "단백질밀도", value: product.density ?? "?" },
-                      { label: "용량", value: product.capacity ?? "?" },
-                      { label: "락토프리", value: product.variant === "락토프리" ? "O" : "?" },
-                      { label: "BCAA", value: product.bcaa ?? "?" },
-                      { label: "단백질원", value: product.proteinSource ?? "?" },
-                      { label: "지방", value: product.fat !== undefined ? `${product.fat}g` : "?" },
-                      { label: "나트륨", value: product.sodium !== undefined ? `${product.sodium}mg` : "?" },
-                      { label: "칼로리밀도", value: product.calorieDensity ?? "?" },
-                      { label: "음료 타입", value: product.drinkType ?? "?" },
-                    ]
-                ).map(({ label, value }) => (
+                {summaryMetrics.map(({ label, value, isCompact }) => (
                   <div
                     key={label}
-                    className="flex flex-col justify-center rounded-lg border border-[#e8e8e8] bg-white px-2.5 py-2 text-left"
+                    className="product-card__metric flex min-w-0 flex-col justify-center rounded-lg border border-[#e8e8e8] bg-white px-2.5 py-2 text-left"
                     style={{ borderRadius: "10px" }}
                   >
-                    <span style={{ fontSize: "11px", color: "#6b6b6b" }}>{label}</span>
-                    <span style={{ fontSize: "16px", fontWeight: 700, color: "#3d3d3d" }}>
+                    <span
+                      className="product-card__metric-label"
+                      style={{ fontSize: "11px", color: "#6b6b6b" }}
+                    >
+                      {label}
+                    </span>
+                    <span
+                      className={`product-card__metric-value ${isCompact ? "product-card__metric-value--compact" : ""}`}
+                      style={{
+                        fontSize: isCompact ? "15px" : "16px",
+                        fontWeight: 700,
+                        color: "#3d3d3d",
+                        lineHeight: 1.2,
+                      }}
+                    >
                       {value}
                     </span>
                   </div>
@@ -172,12 +190,14 @@ export default async function ProductDetailPage({ params }: PageProps) {
                     className="rounded-xl border border-[#e8e6e3] p-4"
                     style={{ borderRadius: "12px", background: "#FFFDF8" }}
                   >
-                    <ProductBadge
-                      label={displayLabel}
-                      tone={getProductBadgeTone(label)}
-                      tooltip={getMetricBadgeTooltip(label) ?? undefined}
-                      tooltipAriaLabel={getMetricBadgeAriaLabel(label)}
-                    />
+                    <MetricBadgeGroup>
+                      <ProductBadge
+                        label={displayLabel}
+                        tone={getProductBadgeTone(displayLabel)}
+                        tooltip={getMetricBadgeTooltip(label) ?? undefined}
+                        tooltipAriaLabel={getMetricBadgeAriaLabel(label)}
+                      />
+                    </MetricBadgeGroup>
                     <p className="mt-3 text-sm text-[var(--foreground-muted)]">
                       {gradeDescs[index] ?? "-"}
                     </p>

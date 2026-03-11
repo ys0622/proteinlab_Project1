@@ -1,11 +1,15 @@
 "use client";
 
-import { useEffect, useId, useLayoutEffect, useRef, useState } from "react";
-import type { ButtonHTMLAttributes, HTMLAttributes } from "react";
-
-type ProductBadgeTone = "grade-a" | "grade-b" | "grade-c" | "grade-d" | "neutral";
+import { useEffect, useEffectEvent, useId, useLayoutEffect, useRef, useState } from "react";
+import type { ButtonHTMLAttributes, HTMLAttributes, ReactNode } from "react";
+import { createPortal } from "react-dom";
+import {
+  formatProductBadgeLabel,
+  getBadgeKindFromLabel,
+  getBadgeToneFromLabel,
+  type ProductBadgeTone,
+} from "./productBadgeUtils";
 type TooltipPlacement = "top" | "bottom";
-type TooltipMetric = "density" | "diet" | "performance";
 
 type ProductBadgeProps = {
   label: string;
@@ -17,147 +21,216 @@ type ProductBadgeProps = {
   spanProps?: HTMLAttributes<HTMLSpanElement>;
 };
 
-export const METRIC_BADGE_TOOLTIP_TEXT: Record<TooltipMetric, string> = {
-  density:
-    "열량 대비 단백질 함량을 의미합니다.\n단백질 밀도 = 단백질(g) / 칼로리(kcal)\n밀도가 높을수록 같은 칼로리에서 더 많은 단백질을 섭취할 수 있습니다.",
-  diet:
-    "다이어트 식단에 적합한 제품을 평가한 지표입니다.\n당류, 칼로리, 단백질 밀도를 종합적으로 고려합니다.",
-  performance:
-    "운동 후 단백질 보충에 적합한 제품을 평가한 지표입니다.\n단백질 함량과 영양 구성을 종합적으로 고려합니다.",
-};
+const MOBILE_MEDIA_QUERY = "(max-width: 768px), (hover: none), (pointer: coarse)";
+const DESKTOP_CLOSE_DELAY_MS = 120;
 
-export function formatProductBadgeLabel(label: string): string {
-  if (label.startsWith("밀도 ")) {
-    return label.replace("밀도 ", "단백질 밀도 ");
+function matchesClientMedia(query: string) {
+  if (typeof window === "undefined" || typeof window.matchMedia !== "function") {
+    return false;
   }
 
-  return label;
+  return window.matchMedia(query).matches;
 }
 
-export function getProductBadgeTone(label: string): ProductBadgeTone {
-  const letter = label.split(" ").pop();
-
-  if (letter === "A") return "grade-a";
-  if (letter === "B") return "grade-b";
-  if (letter === "C") return "grade-c";
-  return "grade-d";
+function isGradeTone(value: string | undefined): value is Exclude<ProductBadgeTone, "neutral"> {
+  return value === "grade-a" || value === "grade-b" || value === "grade-c" || value === "grade-d";
 }
 
-export function getMetricBadgeType(label: string): TooltipMetric | null {
-  if (label.startsWith("밀도 ") || label.startsWith("단백질 밀도 ")) return "density";
-  if (label.startsWith("다이어트 ")) return "diet";
-  if (label.startsWith("퍼포먼스 ")) return "performance";
-  return null;
+function getTooltipPlacement(triggerRect: DOMRect, tooltipRect: DOMRect): TooltipPlacement {
+  const topRoom = triggerRect.top;
+  const bottomRoom = window.innerHeight - triggerRect.bottom;
+
+  if (topRoom >= tooltipRect.height + 24 || topRoom >= bottomRoom) {
+    return "top";
+  }
+
+  return "bottom";
 }
 
-export function getMetricBadgeTooltip(label: string): string | null {
-  const metric = getMetricBadgeType(label);
-  return metric ? METRIC_BADGE_TOOLTIP_TEXT[metric] : null;
-}
+function BadgePortal({ children }: { children: ReactNode }) {
+  if (typeof document === "undefined") {
+    return null;
+  }
 
-export function getMetricBadgeAriaLabel(label: string): string | undefined {
-  const metric = getMetricBadgeType(label);
-
-  if (!metric) return undefined;
-
-  const map: Record<TooltipMetric, string> = {
-    density: "단백질 밀도 지표 설명 보기",
-    diet: "다이어트 지표 설명 보기",
-    performance: "퍼포먼스 지표 설명 보기",
-  };
-
-  return `${formatProductBadgeLabel(label)} - ${map[metric]}`;
+  return createPortal(children, document.body);
 }
 
 export default function ProductBadge({
   label,
-  tone = "neutral",
+  tone,
   className,
   tooltip,
   tooltipAriaLabel,
   buttonProps,
   spanProps,
 }: ProductBadgeProps) {
-  const buttonRef = useRef<HTMLButtonElement | null>(null);
-  const [isOpen, setIsOpen] = useState(false);
-  const [tooltipStyle, setTooltipStyle] = useState<{
-    top: number;
-    left: number;
-    placement: TooltipPlacement;
-  } | null>(null);
-  const tooltipId = useId();
+  const formattedLabel = formatProductBadgeLabel(label);
+  const resolvedTone = tone ?? getBadgeToneFromLabel(label);
+  const badgeKind = getBadgeKindFromLabel(formattedLabel);
   const hasTooltip = Boolean(tooltip);
-  const composedClassName = [
-    "product-ui-badge",
-    `product-ui-badge--${tone}`,
-    hasTooltip ? "product-ui-badge--interactive" : "",
+  const buttonRef = useRef<HTMLButtonElement | null>(null);
+  const tooltipRef = useRef<HTMLDivElement | null>(null);
+  const closeTimerRef = useRef<number | null>(null);
+  const sheetTitleId = useId();
+  const tooltipId = useId();
+  const [isOpen, setIsOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(() => matchesClientMedia(MOBILE_MEDIA_QUERY));
+
+  const badgeClassName = [
+    "metric-badge",
+    `metric-badge--kind-${badgeKind}`,
+    isGradeTone(resolvedTone) ? `metric-badge--${resolvedTone}` : "metric-badge--neutral",
+    hasTooltip ? "metric-badge--interactive" : "",
     className,
   ]
     .filter(Boolean)
     .join(" ");
 
-  useLayoutEffect(() => {
-    if (!hasTooltip || !isOpen || !buttonRef.current) {
-      setTooltipStyle(null);
+  const clearCloseTimer = () => {
+    if (closeTimerRef.current !== null) {
+      window.clearTimeout(closeTimerRef.current);
+      closeTimerRef.current = null;
+    }
+  };
+
+  const openBadgeInfo = () => {
+    clearCloseTimer();
+    setIsOpen(true);
+  };
+
+  const closeBadgeInfo = () => {
+    clearCloseTimer();
+    setIsOpen(false);
+  };
+
+  const closeBadgeInfoFromEffect = useEffectEvent(() => {
+    closeBadgeInfo();
+  });
+
+  const scheduleDesktopClose = () => {
+    if (typeof window === "undefined") return;
+
+    clearCloseTimer();
+    closeTimerRef.current = window.setTimeout(() => {
+      setIsOpen(false);
+    }, DESKTOP_CLOSE_DELAY_MS);
+  };
+
+  useEffect(() => {
+    if (typeof window === "undefined" || typeof window.matchMedia !== "function") {
       return;
     }
 
-    const rect = buttonRef.current.getBoundingClientRect();
-    const tooltipWidth = Math.min(260, window.innerWidth - 16);
-    const placeBottom = rect.top < 84;
-    const top = placeBottom ? rect.bottom + 10 : rect.top - 10;
-    const left = Math.min(
-      window.innerWidth - tooltipWidth / 2 - 8,
-      Math.max(tooltipWidth / 2 + 8, rect.left + rect.width / 2),
-    );
+    const mediaQuery = window.matchMedia(MOBILE_MEDIA_QUERY);
+    const syncIsMobile = () => setIsMobile(mediaQuery.matches);
 
-    setTooltipStyle({
-      top,
-      left,
-      placement: placeBottom ? "bottom" : "top",
-    });
-  }, [hasTooltip, isOpen]);
+    syncIsMobile();
+    mediaQuery.addEventListener("change", syncIsMobile);
+
+    return () => {
+      mediaQuery.removeEventListener("change", syncIsMobile);
+    };
+  }, []);
+
+  useLayoutEffect(() => {
+    if (!hasTooltip || isMobile || !isOpen || !buttonRef.current || !tooltipRef.current) {
+      return;
+    }
+
+    const updateTooltipPosition = () => {
+      if (!buttonRef.current || !tooltipRef.current) return;
+
+      const triggerRect = buttonRef.current.getBoundingClientRect();
+      const tooltipNode = tooltipRef.current;
+      const tooltipRect = tooltipNode.getBoundingClientRect();
+      const placement = getTooltipPlacement(triggerRect, tooltipRect);
+      const centerX = triggerRect.left + triggerRect.width / 2;
+      const maxLeft = window.innerWidth - tooltipRect.width / 2 - 12;
+      const minLeft = tooltipRect.width / 2 + 12;
+      const left = Math.min(maxLeft, Math.max(minLeft, centerX));
+      const top =
+        placement === "top" ? triggerRect.top - 10 : triggerRect.bottom + 10;
+
+      tooltipNode.dataset.placement = placement;
+      tooltipNode.style.left = `${left}px`;
+      tooltipNode.style.top = `${top}px`;
+      tooltipNode.style.transform =
+        placement === "top"
+          ? "translate(-50%, calc(-100% - 8px))"
+          : "translate(-50%, 8px)";
+    };
+
+    updateTooltipPosition();
+    window.addEventListener("resize", updateTooltipPosition);
+    window.addEventListener("scroll", updateTooltipPosition, true);
+
+    return () => {
+      window.removeEventListener("resize", updateTooltipPosition);
+      window.removeEventListener("scroll", updateTooltipPosition, true);
+    };
+  }, [hasTooltip, isMobile, isOpen]);
 
   useEffect(() => {
-    if (!hasTooltip || !isOpen) return;
+    if (!hasTooltip || !isOpen) {
+      return;
+    }
 
-    const close = () => setIsOpen(false);
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        closeBadgeInfoFromEffect();
+      }
+    };
 
-    const handlePointerDown = (event: MouseEvent | TouchEvent) => {
+    const closeOnScroll = () => {
+      closeBadgeInfoFromEffect();
+    };
+
+    const closeOnPointerDown = (event: MouseEvent | TouchEvent) => {
       const target = event.target as Node | null;
 
-      if (buttonRef.current?.contains(target)) {
+      if (buttonRef.current?.contains(target) || tooltipRef.current?.contains(target)) {
         return;
       }
 
-      close();
+      closeBadgeInfoFromEffect();
     };
 
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
-        close();
-      }
-    };
-
-    window.addEventListener("scroll", close, true);
-    window.addEventListener("resize", close);
-    document.addEventListener("mousedown", handlePointerDown);
-    document.addEventListener("touchstart", handlePointerDown);
-    document.addEventListener("keydown", handleKeyDown);
+    document.addEventListener("keydown", closeOnEscape);
+    document.addEventListener("mousedown", closeOnPointerDown);
+    document.addEventListener("touchstart", closeOnPointerDown);
+    window.addEventListener("scroll", closeOnScroll, true);
 
     return () => {
-      window.removeEventListener("scroll", close, true);
-      window.removeEventListener("resize", close);
-      document.removeEventListener("mousedown", handlePointerDown);
-      document.removeEventListener("touchstart", handlePointerDown);
-      document.removeEventListener("keydown", handleKeyDown);
+      document.removeEventListener("keydown", closeOnEscape);
+      document.removeEventListener("mousedown", closeOnPointerDown);
+      document.removeEventListener("touchstart", closeOnPointerDown);
+      window.removeEventListener("scroll", closeOnScroll, true);
     };
   }, [hasTooltip, isOpen]);
 
+  useEffect(() => {
+    if (!isMobile || !isOpen || typeof document === "undefined") {
+      return;
+    }
+
+    const originalOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
+    return () => {
+      document.body.style.overflow = originalOverflow;
+    };
+  }, [isMobile, isOpen]);
+
+  useEffect(() => {
+    return () => {
+      clearCloseTimer();
+    };
+  }, []);
+
   if (!hasTooltip) {
     return (
-      <span className={composedClassName} {...spanProps}>
-        <span className="product-ui-badge__label">{label}</span>
+      <span className={badgeClassName} {...spanProps}>
+        <span className="metric-badge__label">{formattedLabel}</span>
       </span>
     );
   }
@@ -167,62 +240,91 @@ export default function ProductBadge({
       <button
         ref={buttonRef}
         type="button"
-        className={composedClassName}
-        aria-label={tooltipAriaLabel ?? `${label} 설명 보기`}
-        aria-describedby={isOpen ? tooltipId : undefined}
+        className={badgeClassName}
+        aria-label={tooltipAriaLabel ?? `${formattedLabel} 설명 보기`}
+        aria-describedby={!isMobile && isOpen ? tooltipId : undefined}
         aria-expanded={isOpen}
+        aria-haspopup={isMobile ? "dialog" : "true"}
         {...buttonProps}
         onMouseEnter={(event) => {
           buttonProps?.onMouseEnter?.(event);
-          setIsOpen(true);
+          if (!isMobile) openBadgeInfo();
         }}
         onMouseLeave={(event) => {
           buttonProps?.onMouseLeave?.(event);
-          setIsOpen(false);
+          if (!isMobile) scheduleDesktopClose();
         }}
         onFocus={(event) => {
           buttonProps?.onFocus?.(event);
-          setIsOpen(true);
+          if (!isMobile) openBadgeInfo();
         }}
         onBlur={(event) => {
           buttonProps?.onBlur?.(event);
-          setIsOpen(false);
+          if (!isMobile) scheduleDesktopClose();
         }}
         onClick={(event) => {
           buttonProps?.onClick?.(event);
+          event.stopPropagation();
           if (event.defaultPrevented) return;
-          setIsOpen((current) => !current);
-        }}
-        onKeyDown={(event) => {
-          buttonProps?.onKeyDown?.(event);
-          if (event.key === "Escape") {
-            setIsOpen(false);
+          if (isMobile) {
+            setIsOpen(true);
+            return;
           }
+          openBadgeInfo();
         }}
       >
-        <span className="product-ui-badge__label">{label}</span>
-        <span aria-hidden="true" className="product-ui-badge__indicator">
-          •
-        </span>
+        <span className="metric-badge__label">{formattedLabel}</span>
       </button>
 
-      {isOpen && tooltipStyle ? (
-        <div
-          id={tooltipId}
-          role="tooltip"
-          className={`product-ui-tooltip product-ui-tooltip--${tooltipStyle.placement}`}
-          style={{
-            left: tooltipStyle.left,
-            top: tooltipStyle.top,
-            transform:
-              tooltipStyle.placement === "top"
-                ? "translate(-50%, calc(-100% - 8px))"
-                : "translate(-50%, 8px)",
-          }}
-        >
-          {tooltip}
-          <span aria-hidden="true" className="product-ui-tooltip__arrow" />
-        </div>
+      {!isMobile && isOpen ? (
+        <BadgePortal>
+          <div
+            ref={tooltipRef}
+            id={tooltipId}
+            role="tooltip"
+            className="metric-info-tooltip"
+            onMouseEnter={openBadgeInfo}
+            onMouseLeave={scheduleDesktopClose}
+          >
+            {tooltip}
+            <span aria-hidden="true" className="metric-info-tooltip__arrow" />
+          </div>
+        </BadgePortal>
+      ) : null}
+
+      {isMobile && isOpen ? (
+        <BadgePortal>
+          <div className="metric-info-sheet-root" role="presentation">
+            <button
+              type="button"
+              className="metric-info-sheet__backdrop"
+              aria-label="배지 설명 닫기"
+              onClick={closeBadgeInfo}
+            />
+            <div
+              ref={tooltipRef}
+              className="metric-info-sheet"
+              role="dialog"
+              aria-modal="true"
+              aria-labelledby={sheetTitleId}
+            >
+              <div className="metric-info-sheet__handle" aria-hidden="true" />
+              <div className="metric-info-sheet__header">
+                <p id={sheetTitleId} className="metric-info-sheet__title">
+                  {formattedLabel}
+                </p>
+                <button
+                  type="button"
+                  className="metric-info-sheet__close"
+                  onClick={closeBadgeInfo}
+                >
+                  닫기
+                </button>
+              </div>
+              <p className="metric-info-sheet__body">{tooltip}</p>
+            </div>
+          </div>
+        </BadgePortal>
       ) : null}
     </>
   );

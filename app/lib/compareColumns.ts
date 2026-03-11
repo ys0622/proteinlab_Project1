@@ -81,14 +81,14 @@ export const COMPARE_COLUMNS: CompareColumnDef[] = [
   },
   {
     id: "density",
-    label: "단백질밀도",
+    label: "단백질 밀도",
     getValue: (p) => p.density ?? "—",
     highlight: "higher",
     toNumber: (v) => (typeof v === "string" ? parseFloat(v.replace(/[^\d.]/g, "")) : typeof v === "number" ? v : null),
   },
   {
     id: "calorieDensity",
-    label: "칼로리밀도",
+    label: "칼로리 밀도",
     getValue: (p) => p.calorieDensity ?? "—",
     highlight: "lower",
     toNumber: (v) => (typeof v === "string" ? parseFloat(v.replace(/[^\d.]/g, "")) : typeof v === "number" ? v : null),

@@ -1,5 +1,7 @@
 "use client";
 
+import PurchaseLinkButton from "./PurchaseLinkButton";
+
 type PurchaseLinkRowProps = {
   coupangHref: string;
   naverHref: string;
@@ -10,21 +12,6 @@ type PurchaseLinkRowProps = {
   onOfficialClick?: () => void;
 };
 
-function getButtonClassName(size: "sm" | "md", tone: "coupang" | "naver" | "official") {
-  const sizeClass =
-    size === "sm"
-      ? "purchase-link-button--sm"
-      : "purchase-link-button--md";
-  const toneClass =
-    tone === "coupang"
-      ? "purchase-link-button--coupang"
-      : tone === "naver"
-        ? "purchase-link-button--naver"
-        : "purchase-link-button--official";
-
-  return `purchase-link-button ${sizeClass} ${toneClass}`;
-}
-
 export default function PurchaseLinkRow({
   coupangHref,
   naverHref,
@@ -34,48 +21,33 @@ export default function PurchaseLinkRow({
   onNaverClick,
   onOfficialClick,
 }: PurchaseLinkRowProps) {
-  const coupangClassName = getButtonClassName(size, "coupang");
-  const naverClassName = getButtonClassName(size, "naver");
-  const officialClassName = getButtonClassName(size, "official");
-
   return (
     <div className="purchase-link-row">
-      <a
+      <PurchaseLinkButton
         href={coupangHref}
-        target="_blank"
-        rel="noopener noreferrer"
-        className={coupangClassName}
+        label="쿠팡 구매"
+        mobileLabel="쿠팡"
+        tone="coupang"
+        size={size}
         onClick={onCoupangClick}
-      >
-        쿠팡 구매
-      </a>
-      <a
+      />
+      <PurchaseLinkButton
         href={naverHref}
-        target="_blank"
-        rel="noopener noreferrer"
-        className={naverClassName}
+        label="네이버 구매"
+        mobileLabel="네이버"
+        tone="naver"
+        size={size}
         onClick={onNaverClick}
-      >
-        네이버 구매
-      </a>
-      {officialMallHref ? (
-        <a
-          href={officialMallHref}
-          target="_blank"
-          rel="noopener noreferrer"
-          className={officialClassName}
-          onClick={onOfficialClick}
-        >
-          공식몰 구매
-        </a>
-      ) : (
-        <span
-          className={`${officialClassName} purchase-link-button--disabled cursor-not-allowed`}
-          title="공식몰 정보 없음"
-        >
-          공식몰 구매
-        </span>
-      )}
+      />
+      <PurchaseLinkButton
+        href={officialMallHref}
+        label="공식몰 구매"
+        mobileLabel="공식몰"
+        tone="official"
+        size={size}
+        onClick={onOfficialClick}
+        title={officialMallHref ? undefined : "공식몰 정보 없음"}
+      />
     </div>
   );
 }

@@ -3,11 +3,18 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import ProductBadge, {
+import { useRouter } from "next/navigation";
+import type {
+  KeyboardEvent as ReactKeyboardEvent,
+  MouseEvent as ReactMouseEvent,
+} from "react";
+import MetricBadgeGroup from "@/app/components/MetricBadgeGroup";
+import ProductBadge from "@/app/components/ProductBadge";
+import {
   getMetricBadgeAriaLabel,
   getMetricBadgeTooltip,
   getProductBadgeTone,
-} from "@/app/components/ProductBadge";
+} from "@/app/components/productBadgeUtils";
 
 type ProductType = "drink" | "bar";
 type Step = 0 | 1 | 2 | 3 | 4 | "loading" | "result";
@@ -79,13 +86,6 @@ const LOADING_STEPS = [
   "영양 성분·당류 검증",
   "최적 조합 3개 선정",
 ];
-
-const gradeColors: Record<string, { bg: string; color: string; border: string }> = {
-  A: { bg: "#E7F3EC", color: "#1B7F5B", border: "#1B7F5B" },
-  B: { bg: "#EAF2FF", color: "#4C7BD9", border: "#4C7BD9" },
-  C: { bg: "#FFF1E6", color: "#F08A24", border: "#F08A24" },
-  D: { bg: "#f3f3f3", color: "#999", border: "#bbb" },
-};
 
 const gradeLabels: Record<string, string> = {
   price: "단백질 밀도",
@@ -204,11 +204,51 @@ function LoadingScreen({ onDone }: { onDone: () => void }) {
 
 // 추천 제품 카드 (세로형, 그리드 레이아웃용)
 function ProductResultCard({ product }: { product: RecommendedProduct }) {
+  const router = useRouter();
   const isFirst = product.rank === 1;
   const displayName = [product.name, product.flavor].filter(Boolean).join(" ");
 
+  const shouldIgnoreCardClick = (target: EventTarget | null) => {
+    if (!(target instanceof HTMLElement)) {
+      return false;
+    }
+
+    return Boolean(target.closest("a, button, input, select, textarea, label"));
+  };
+
+  const openDetail = () => {
+    router.push(product.detailPath);
+  };
+
+  const handleCardClick = (event: ReactMouseEvent<HTMLElement>) => {
+    if (shouldIgnoreCardClick(event.target)) {
+      return;
+    }
+
+    openDetail();
+  };
+
+  const handleCardKeyDown = (event: ReactKeyboardEvent<HTMLElement>) => {
+    if (shouldIgnoreCardClick(event.target)) {
+      return;
+    }
+
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      openDetail();
+    }
+  };
+
   return (
-    <div className="relative flex flex-col" style={{ border: "1px solid #e8e6e3", borderRadius: "16px", background: "#FFFDF8", overflow: "hidden" }}>
+    <article
+      className="relative flex cursor-pointer flex-col transition-colors duration-200 hover:border-[#ddd] focus:outline-none focus:ring-2 focus:ring-[var(--accent)] focus:ring-offset-2"
+      onClick={handleCardClick}
+      onKeyDown={handleCardKeyDown}
+      role="link"
+      tabIndex={0}
+      aria-label={`${displayName} 상세 보기`}
+      style={{ border: "1px solid #e8e6e3", borderRadius: "16px", background: "#FFFDF8", overflow: "hidden" }}
+    >
       {isFirst && (
         <span className="absolute top-3 left-3 z-10 text-xs font-bold px-2.5 py-1 rounded-full" style={{ background: "#FFF1E6", color: "#F08A24" }}>
           최고 추천
@@ -239,7 +279,7 @@ function ProductResultCard({ product }: { product: RecommendedProduct }) {
         <p className="mt-0.5 text-xs" style={{ color: "#999" }}>{product.volume}</p>
 
         {/* 등급 뱃지 */}
-        <div className="mt-2.5 flex gap-1 flex-wrap">
+        <MetricBadgeGroup className="mt-2.5">
           {Object.entries(product.gradeValue).map(([key, grade]) => {
             const badgeLabel = `${gradeLabels[key] ?? key} ${grade}`;
 
@@ -253,7 +293,7 @@ function ProductResultCard({ product }: { product: RecommendedProduct }) {
               />
             );
           })}
-        </div>
+        </MetricBadgeGroup>
 
         {/* 핵심 수치 */}
         <div className="mt-3 grid grid-cols-3 gap-1.5">
@@ -281,7 +321,7 @@ function ProductResultCard({ product }: { product: RecommendedProduct }) {
           상세 보기 →
         </Link>
       </div>
-    </div>
+    </article>
   );
 }
 

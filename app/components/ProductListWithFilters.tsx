@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import type { ProductDetailProps } from "../data/products";
@@ -98,6 +98,7 @@ export default function ProductListWithFilters(props: ProductListWithFiltersProp
   const [barFilters, setBarFilters] = useState<BarFilters>(defaultBarFilters);
   const [sort, setSort] = useState<SortOptionValue>("recommended");
   const [page, setPage] = useState(1);
+  const [isDesktop, setIsDesktop] = useState(false);
 
   const filters = productType === "drink" ? drinkFilters : barFilters;
 
@@ -114,7 +115,22 @@ export default function ProductListWithFilters(props: ProductListWithFiltersProp
     [filtered, productType, products, sort],
   );
 
-  const visible = useMemo(() => sorted.slice(0, page * PAGE_SIZE), [page, sorted]);
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(min-width: 768px)");
+    const updateIsDesktop = () => setIsDesktop(mediaQuery.matches);
+
+    updateIsDesktop();
+    mediaQuery.addEventListener("change", updateIsDesktop);
+
+    return () => {
+      mediaQuery.removeEventListener("change", updateIsDesktop);
+    };
+  }, []);
+
+  const visible = useMemo(
+    () => (isDesktop ? sorted : sorted.slice(0, page * PAGE_SIZE)),
+    [isDesktop, page, sorted],
+  );
   const hasMore = visible.length < sorted.length;
 
   const handleDrinkFilterToggle = (key: keyof DrinkFilters, value: string) => {
@@ -233,7 +249,7 @@ export default function ProductListWithFilters(props: ProductListWithFiltersProp
         ))}
       </section>
 
-      {hasMore ? (
+      {!isDesktop && hasMore ? (
         <div className="mt-8 flex justify-center">
           <button
             type="button"

@@ -3,6 +3,11 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import type {
+  KeyboardEvent as ReactKeyboardEvent,
+  MouseEvent as ReactMouseEvent,
+} from "react";
 import { getProductImageUrl } from "../lib/productImage";
 import type { ProductDetailProps } from "../data/products";
 
@@ -58,6 +63,7 @@ function RankingCard({
   item: RankingItem;
   metric: GradeMetric;
 }) {
+  const router = useRouter();
   const { product, score, grade, rank } = item;
   const imgUrl = getProductImageUrl(product.slug);
   const gc = GRADE_COLORS[grade] ?? GRADE_COLORS.D;
@@ -69,10 +75,47 @@ function RankingCard({
   };
 
   const metricLabel = metric === "density" ? "단백질 밀도" : metric === "diet" ? "다이어트" : "퍼포먼스";
+  const detailHref = `/product/${product.slug}`;
+
+  const shouldIgnoreCardClick = (target: EventTarget | null) => {
+    if (!(target instanceof HTMLElement)) {
+      return false;
+    }
+
+    return Boolean(target.closest("a, button, input, select, textarea, label"));
+  };
+
+  const openDetail = () => {
+    router.push(detailHref);
+  };
+
+  const handleCardClick = (event: ReactMouseEvent<HTMLElement>) => {
+    if (shouldIgnoreCardClick(event.target)) {
+      return;
+    }
+
+    openDetail();
+  };
+
+  const handleCardKeyDown = (event: ReactKeyboardEvent<HTMLElement>) => {
+    if (shouldIgnoreCardClick(event.target)) {
+      return;
+    }
+
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      openDetail();
+    }
+  };
 
   return (
-    <div
-      className="relative flex flex-col"
+    <article
+      className="relative flex cursor-pointer flex-col transition-colors duration-200 hover:border-[#ddd] focus:outline-none focus:ring-2 focus:ring-[var(--accent)] focus:ring-offset-2"
+      onClick={handleCardClick}
+      onKeyDown={handleCardKeyDown}
+      role="link"
+      tabIndex={0}
+      aria-label={`${product.name} 상세 보기`}
       style={{
         border: "1px solid #e8e6e3",
         borderRadius: "16px",
@@ -101,7 +144,7 @@ function RankingCard({
 
       {/* 이미지 */}
       <Link
-        href={`/product/${product.slug}`}
+        href={detailHref}
         className="relative flex items-center justify-center border-b border-[#f0eeeb] bg-white"
         style={{ height: "160px" }}
       >
@@ -125,7 +168,7 @@ function RankingCard({
           {product.brand}
         </p>
         <Link
-          href={`/product/${product.slug}`}
+          href={detailHref}
           className="mt-0.5 block text-sm font-bold leading-snug line-clamp-2 hover:underline"
           style={{ color: "#1a1a1a" }}
         >
@@ -196,14 +239,14 @@ function RankingCard({
 
         {/* 상세 보기 */}
         <Link
-          href={`/product/${product.slug}`}
+          href={detailHref}
           className="mt-3 block w-full rounded-lg py-2.5 text-center text-xs font-semibold transition-colors hover:bg-[var(--accent-light)] hover:text-[var(--accent)]"
           style={{ border: "1px solid #e8e6e3", background: "#fff", color: "#374151" }}
         >
           상세 보기 →
         </Link>
       </div>
-    </div>
+    </article>
   );
 }
 

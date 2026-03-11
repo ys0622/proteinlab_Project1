@@ -161,7 +161,7 @@
     "capacity": "250mL",
     "variant": "일반",
     "tags": [
-      "팩"
+      "PET"
     ],
     "proteinPerServing": 20,
     "calories": 110,
@@ -201,7 +201,7 @@
     "capacity": "250mL",
     "variant": "일반",
     "tags": [
-      "팩"
+      "PET"
     ],
     "proteinPerServing": 20,
     "calories": 125,
@@ -1750,7 +1750,7 @@
     "capacity": "350mL",
     "variant": "락토프리",
     "tags": [
-      "PET"
+      "팩"
     ],
     "proteinPerServing": 41,
     "calories": 210,
@@ -1789,7 +1789,7 @@
     "capacity": "250mL",
     "variant": "일반",
     "tags": [
-      "팩"
+      "PET"
     ],
     "proteinPerServing": 20,
     "calories": 105,
@@ -1829,7 +1829,7 @@
     "capacity": "330mL",
     "variant": "일반",
     "tags": [
-      "팩"
+      "PET"
     ],
     "proteinPerServing": 33,
     "calories": 150,
@@ -2094,7 +2094,7 @@
     "capacity": "350mL",
     "variant": "일반",
     "tags": [
-      "팩"
+      "PET"
     ],
     "proteinPerServing": 43,
     "calories": 186,
@@ -2133,7 +2133,7 @@
     "capacity": "350mL",
     "variant": "일반",
     "tags": [
-      "팩"
+      "PET"
     ],
     "proteinPerServing": 43,
     "calories": 186,

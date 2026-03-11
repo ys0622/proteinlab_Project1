@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useId, useRef, useState } from "react";
+import SortInfoPopover from "./SortInfoPopover";
 
 export const sortOptions = [
   { value: "recommended", label: "추천순" },
@@ -18,6 +19,10 @@ export type SortOptionValue = (typeof sortOptions)[number]["value"];
 export const RECOMMENDED_SORT_DESCRIPTION =
   "추천순은 단백질 밀도, 당류, 칼로리, 가격 효율 등 제품 비교에 중요한 요소를 종합적으로 고려한 순서입니다.";
 
+function formatComparisonHeadline(total: number, categoryLabel: string) {
+  return `${total}개 ${categoryLabel} 성분 비교`;
+}
+
 interface SortBarProps {
   total?: number;
   categoryLabel?: string;
@@ -32,40 +37,32 @@ export default function SortBar({
   onSortChange,
 }: SortBarProps) {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [infoOpen, setInfoOpen] = useState(false);
   const menuButtonRef = useRef<HTMLButtonElement | null>(null);
   const menuPanelRef = useRef<HTMLDivElement | null>(null);
-  const infoButtonRef = useRef<HTMLButtonElement | null>(null);
-  const infoPanelRef = useRef<HTMLDivElement | null>(null);
   const menuId = useId();
-  const infoId = useId();
 
   const selectedOption =
     sortOptions.find((option) => option.value === sort) ?? sortOptions[0];
 
   useEffect(() => {
-    if (!menuOpen && !infoOpen) return;
+    if (!menuOpen) return;
 
     const handlePointerDown = (event: MouseEvent) => {
       const target = event.target as Node;
 
       if (
         menuButtonRef.current?.contains(target) ||
-        menuPanelRef.current?.contains(target) ||
-        infoButtonRef.current?.contains(target) ||
-        infoPanelRef.current?.contains(target)
+        menuPanelRef.current?.contains(target)
       ) {
         return;
       }
 
       setMenuOpen(false);
-      setInfoOpen(false);
     };
 
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
         setMenuOpen(false);
-        setInfoOpen(false);
       }
     };
 
@@ -76,7 +73,7 @@ export default function SortBar({
       document.removeEventListener("mousedown", handlePointerDown);
       document.removeEventListener("keydown", handleKeyDown);
     };
-  }, [infoOpen, menuOpen]);
+  }, [menuOpen]);
 
   return (
     <div className="flex flex-col gap-2 border-b border-[var(--border)] py-2">
@@ -85,10 +82,10 @@ export default function SortBar({
           className="min-w-0 text-sm text-[var(--foreground-muted)]"
           style={{ fontWeight: 400 }}
         >
-          전체 {total}개 {categoryLabel} 비교
+          {formatComparisonHeadline(total, categoryLabel)}
         </span>
 
-        <div className="relative ml-auto flex shrink-0 items-center gap-1 whitespace-nowrap">
+        <div className="relative ml-auto flex shrink-0 items-center gap-1.5 whitespace-nowrap">
           <span
             className="hidden text-sm text-[var(--foreground-muted)] sm:inline"
             style={{ fontWeight: 400 }}
@@ -151,34 +148,12 @@ export default function SortBar({
             ) : null}
           </div>
 
-          <div className="relative flex shrink-0 items-center">
-            <button
-              ref={infoButtonRef}
-              type="button"
-              aria-label="추천순 기준 설명 보기"
-              aria-expanded={infoOpen}
-              aria-controls={infoId}
-              onClick={() => setInfoOpen((current) => !current)}
-              onMouseEnter={() => setInfoOpen(true)}
-              onMouseLeave={() => setInfoOpen(false)}
-              onFocus={() => setInfoOpen(true)}
-              className="inline-flex h-7 w-7 items-center justify-center rounded-full border border-[var(--border)] bg-white text-xs text-[var(--foreground-muted)] transition-colors hover:border-[var(--accent)] hover:bg-[var(--accent-light)] hover:text-[var(--accent)]"
-            >
-              i
-            </button>
-
-            {infoOpen ? (
-              <div
-                id={infoId}
-                ref={infoPanelRef}
-                role="tooltip"
-                onMouseEnter={() => setInfoOpen(true)}
-                onMouseLeave={() => setInfoOpen(false)}
-                className="absolute right-0 top-full z-20 mt-2 w-[260px] rounded-xl border border-[var(--border)] bg-white px-3 py-3 text-xs leading-5 text-[var(--foreground-muted)] shadow-[0_8px_24px_rgba(0,0,0,0.08)] sm:w-[320px]"
-              >
-                {RECOMMENDED_SORT_DESCRIPTION}
-              </div>
-            ) : null}
+          <div className="sort-info-inline">
+            <span className="sort-info-inline__label">추천순</span>
+            <SortInfoPopover
+              label="추천순"
+              description={RECOMMENDED_SORT_DESCRIPTION}
+            />
           </div>
         </div>
       </div>

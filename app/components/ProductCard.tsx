@@ -15,12 +15,14 @@ import {
   getPreferredCoupangUrl,
 } from "../lib/purchaseLinks";
 import CompareButton from "./CompareButton";
-import ProductBadge, {
+import MetricBadgeGroup from "./MetricBadgeGroup";
+import ProductBadge from "./ProductBadge";
+import {
   formatProductBadgeLabel,
   getMetricBadgeAriaLabel,
   getMetricBadgeTooltip,
   getProductBadgeTone,
-} from "./ProductBadge";
+} from "./productBadgeUtils";
 import PurchaseLinkRow from "./PurchaseLinkRow";
 
 export interface ProductCardProps {
@@ -138,7 +140,7 @@ export default function ProductCard({
   return (
     <>
       <article
-        className={`product-card group flex h-full flex-col overflow-hidden rounded-2xl border bg-[#FFFDF8] transition-all duration-200 ease-out hover:border-[#ddd] active:shadow-sm ${canOpenDetail ? "cursor-pointer" : ""}`}
+        className={`product-card group flex h-full flex-col overflow-hidden rounded-2xl border bg-[#FFFDF8] transition-all duration-200 ease-out hover:border-[#ddd] focus:outline-none focus:ring-2 focus:ring-[var(--accent)] focus:ring-offset-2 active:shadow-sm ${canOpenDetail ? "cursor-pointer" : ""}`}
         onClick={handleCardClick}
         onKeyDown={handleCardKeyDown}
         role={canOpenDetail ? "link" : undefined}
@@ -179,10 +181,10 @@ export default function ProductCard({
             </span>
           </h3>
 
-          <div className="product-card__badges mt-1.5 flex flex-wrap gap-1.5" style={{ gap: "6px" }}>
+          <MetricBadgeGroup className="product-card__badges mt-1.5">
             {gradeTags.map((tag) => {
               const displayTag = formatProductBadgeLabel(tag);
-              const tone = getProductBadgeTone(tag);
+              const tone = getProductBadgeTone(displayTag);
               const tooltip = getMetricBadgeTooltip(tag);
 
               return (
@@ -190,14 +192,9 @@ export default function ProductCard({
                   key={tag}
                   label={displayTag}
                   tone={tone}
-                  className="product-card__badge transition-transform hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-[var(--accent)] focus:ring-offset-1"
+                  className="product-card__badge focus:outline-none focus:ring-2 focus:ring-[var(--accent)] focus:ring-offset-1"
                   tooltip={tooltip ?? undefined}
                   tooltipAriaLabel={getMetricBadgeAriaLabel(tag)}
-                  buttonProps={tooltip ? {
-                    onClick: (event) => {
-                      event.stopPropagation();
-                    },
-                  } : undefined}
                 />
               );
             })}
@@ -206,9 +203,11 @@ export default function ProductCard({
                 label={variant}
                 tone="neutral"
                 className="product-card__badge"
+                tooltip={getMetricBadgeTooltip(variant) ?? undefined}
+                tooltipAriaLabel={getMetricBadgeAriaLabel(variant)}
               />
             ) : null}
-          </div>
+          </MetricBadgeGroup>
 
           <div className="mx-1 mt-3 border-t border-[#e8e6e3]" />
 
@@ -231,7 +230,7 @@ export default function ProductCard({
                   {label}
                 </span>
                 <span
-                  className={`product-card__metric-value ${isDensity ? "product-card__metric-value--density" : ""}`}
+                  className={`product-card__metric-value ${isDensity ? "product-card__metric-value--compact" : ""}`}
                   style={{
                     fontSize: isDensity ? "15px" : "16px",
                     fontWeight: 700,
