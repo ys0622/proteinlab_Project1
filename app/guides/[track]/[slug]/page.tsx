@@ -54,7 +54,7 @@ export async function generateMetadata({
   params: Promise<{ track: string; slug: string }>;
 }) {
   const { track, slug } = await params;
-  if (track === "basics" && slug === "role-overview") {
+  if (track === "protein-basics" && slug === "protein-functions") {
     return {
       title: "단백질 역할 — 근육·면역·호르몬에서 하는 일 | ProteinLab",
       description: "단백질이 근육 성장, 항체 생성, 호르몬 합성에 어떻게 작용하는지 데이터 기반으로 정리했습니다.",
@@ -76,7 +76,7 @@ export default async function GuideSlugPage({
 }) {
   const { track, slug } = await params;
 
-  if (track === "basics" && slug === "role-overview") {
+  if (track === "protein-basics" && slug === "protein-functions") {
     return (
       <div className="min-h-screen bg-white">
         <Header />
