@@ -1,8 +1,8 @@
-import Header from "../../components/Header";
+import { notFound } from "next/navigation";
 import Footer from "../../components/Footer";
+import Header from "../../components/Header";
 import CurationLandingTemplate from "../../components/CurationLandingTemplate";
 import { getCurationLandingData } from "../../lib/curationLanding";
-import { notFound } from "next/navigation";
 
 interface CurationPageProps {
   params: Promise<{ slug: string }>;
@@ -22,7 +22,9 @@ export async function generateMetadata({ params }: CurationPageProps) {
   return {
     title: data.curation.seoTitle ?? `${data.curation.label} 큐레이션 | ProteinLab`,
     description:
-      data.curation.seoDescription ?? data.curation.heroDescription ?? "ProteinLab 큐레이션 페이지",
+      data.curation.seoDescription ??
+      data.curation.heroDescription ??
+      "ProteinLab 큐레이션 페이지",
   };
 }
 

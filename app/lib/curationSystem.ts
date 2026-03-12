@@ -75,7 +75,7 @@ function sortDrinkForRunning(products: ProductDetailProps[]) {
     const densityDelta = parseDensityValue(b.density) - parseDensityValue(a.density);
     if (densityDelta !== 0) return densityDelta;
 
-    const proteinDelta = b.proteinPerServing - a.proteinPerServing;
+    const proteinDelta = (b.proteinPerServing ?? 0) - (a.proteinPerServing ?? 0);
     if (proteinDelta !== 0) return proteinDelta;
 
     return (a.sugar ?? 999) - (b.sugar ?? 999);
@@ -90,7 +90,7 @@ function sortBarForRunning(products: ProductDetailProps[]) {
     const densityDelta = parseDensityValue(b.density) - parseDensityValue(a.density);
     if (densityDelta !== 0) return densityDelta;
 
-    const proteinDelta = b.proteinPerServing - a.proteinPerServing;
+    const proteinDelta = (b.proteinPerServing ?? 0) - (a.proteinPerServing ?? 0);
     if (proteinDelta !== 0) return proteinDelta;
 
     return (a.calories ?? 999) - (b.calories ?? 999);
@@ -102,22 +102,22 @@ function sortDrinkForConvenience(products: ProductDetailProps[]) {
     const densityDelta = parseDensityValue(b.density) - parseDensityValue(a.density);
     if (densityDelta !== 0) return densityDelta;
 
-    const sugarDelta = (a.sugar ?? 999) - (b.sugar ?? 999);
-    if (sugarDelta !== 0) return sugarDelta;
+    const proteinDelta = (b.proteinPerServing ?? 0) - (a.proteinPerServing ?? 0);
+    if (proteinDelta !== 0) return proteinDelta;
 
-    return b.proteinPerServing - a.proteinPerServing;
+    return (a.sugar ?? 999) - (b.sugar ?? 999);
   });
 }
 
 function sortBarForConvenience(products: ProductDetailProps[]) {
   return [...products].sort((a, b) => {
-    const sugarDelta = (a.sugar ?? 999) - (b.sugar ?? 999);
-    if (sugarDelta !== 0) return sugarDelta;
+    const densityDelta = parseDensityValue(b.density) - parseDensityValue(a.density);
+    if (densityDelta !== 0) return densityDelta;
 
-    const proteinDelta = b.proteinPerServing - a.proteinPerServing;
+    const proteinDelta = (b.proteinPerServing ?? 0) - (a.proteinPerServing ?? 0);
     if (proteinDelta !== 0) return proteinDelta;
 
-    return parseDensityValue(b.density) - parseDensityValue(a.density);
+    return (a.sugar ?? 999) - (b.sugar ?? 999);
   });
 }
 
@@ -142,18 +142,20 @@ function recommendWithFallback(
 }
 
 function matchesConvenienceDrink(product: ProductDetailProps) {
+  if (product.productType === "bar") return false;
+
+  const combined = `${product.brand} ${product.name}`;
   return (
-    product.productType !== "bar" &&
-    ["더단백", "셀렉스", "하이뮨", "뉴케어", "랩노쉬", "닥터유"].some((brand) =>
+    ["더단백", "셀렉스", "하이뮨", "랩노쉬", "닥터유"].some((brand) =>
       product.brand.includes(brand),
-    )
+    ) || combined.includes("뉴케어 올프로틴")
   );
 }
 
 function matchesConvenienceBar(product: ProductDetailProps) {
   return (
     product.productType === "bar" &&
-    ["닥터유", "랩노쉬", "롯데"].some((brand) => product.brand.includes(brand))
+    ["닥터유", "랩노쉬", "롯데웰푸드", "롯데"].some((brand) => product.brand.includes(brand))
   );
 }
 
@@ -193,8 +195,8 @@ const curations: CurationDefinition[] = [
         quickLabel: "라이트 20g 미만",
         quickIcon: "🥛",
         quickOrder: 20,
-        filter: (product) => product.productType !== "bar" && product.proteinPerServing < 20,
-        recommend: (products) => products.filter((product) => product.proteinPerServing < 20),
+        filter: (product) => product.productType !== "bar" && (product.proteinPerServing ?? 0) < 20,
+        recommend: (products) => products.filter((product) => (product.proteinPerServing ?? 0) < 20),
       },
     },
   },
@@ -213,8 +215,8 @@ const curations: CurationDefinition[] = [
         quickLabel: "고단백 20g+",
         quickIcon: "💪",
         quickOrder: 30,
-        filter: (product) => product.productType !== "bar" && product.proteinPerServing >= 20,
-        recommend: (products) => products.filter((product) => product.proteinPerServing >= 20),
+        filter: (product) => product.productType !== "bar" && (product.proteinPerServing ?? 0) >= 20,
+        recommend: (products) => products.filter((product) => (product.proteinPerServing ?? 0) >= 20),
       },
     },
   },
@@ -233,8 +235,8 @@ const curations: CurationDefinition[] = [
         quickLabel: "초고단백 30g+",
         quickIcon: "🏋",
         quickOrder: 40,
-        filter: (product) => product.productType !== "bar" && product.proteinPerServing >= 30,
-        recommend: (products) => products.filter((product) => product.proteinPerServing >= 30),
+        filter: (product) => product.productType !== "bar" && (product.proteinPerServing ?? 0) >= 30,
+        recommend: (products) => products.filter((product) => (product.proteinPerServing ?? 0) >= 30),
       },
     },
   },
@@ -262,7 +264,7 @@ const curations: CurationDefinition[] = [
     id: "lactose-free",
     slug: "lactose-free",
     label: "락토프리",
-    icon: "🥤",
+    icon: "🥛",
     kind: "ingredient",
     categoryTargets: ["drink"],
     routeMode: "legacy-pick",
@@ -271,7 +273,7 @@ const curations: CurationDefinition[] = [
       drink: {
         category: "drink",
         quickLabel: "락토프리",
-        quickIcon: "🥤",
+        quickIcon: "🥛",
         quickOrder: 60,
         filter: (product) => product.productType !== "bar" && product.variant === "락토프리",
         recommend: (products) => products.filter((product) => product.variant === "락토프리"),
@@ -279,10 +281,10 @@ const curations: CurationDefinition[] = [
     },
   },
   {
-    id: "value-a",
-    slug: "value-a",
-    label: "가성비 A",
-    icon: "💰",
+    id: "density-a",
+    slug: "density-a",
+    label: "단백질 밀도 A",
+    icon: "⭐",
     kind: "ingredient",
     categoryTargets: ["drink"],
     routeMode: "legacy-pick",
@@ -290,11 +292,12 @@ const curations: CurationDefinition[] = [
     categories: {
       drink: {
         category: "drink",
-        quickLabel: "가성비 A",
-        quickIcon: "💰",
+        quickLabel: "단백질 밀도 A",
+        quickIcon: "⭐",
         quickOrder: 70,
         filter: (product) =>
-          product.productType !== "bar" && hasGrade(product, ["단백질 밀도 A", "밀도 A"]),
+          product.productType !== "bar" &&
+          hasGrade(product, ["단백질 밀도 A", "밀도 A"]),
         recommend: (products) =>
           products.filter((product) => hasGrade(product, ["단백질 밀도 A", "밀도 A"])),
       },
@@ -385,8 +388,8 @@ const curations: CurationDefinition[] = [
         quickLabel: "고단백 20g+",
         quickIcon: "💪",
         quickOrder: 10,
-        filter: (product) => product.productType === "bar" && product.proteinPerServing >= 20,
-        recommend: (products) => products.filter((product) => product.proteinPerServing >= 20),
+        filter: (product) => product.productType === "bar" && (product.proteinPerServing ?? 0) >= 20,
+        recommend: (products) => products.filter((product) => (product.proteinPerServing ?? 0) >= 20),
       },
     },
   },
@@ -405,8 +408,8 @@ const curations: CurationDefinition[] = [
         quickLabel: "고단백 15g+",
         quickIcon: "🏋",
         quickOrder: 20,
-        filter: (product) => product.productType === "bar" && product.proteinPerServing >= 15,
-        recommend: (products) => products.filter((product) => product.proteinPerServing >= 15),
+        filter: (product) => product.productType === "bar" && (product.proteinPerServing ?? 0) >= 15,
+        recommend: (products) => products.filter((product) => (product.proteinPerServing ?? 0) >= 15),
       },
     },
   },
@@ -492,12 +495,12 @@ const curations: CurationDefinition[] = [
         quickOrder: 60,
         filter: (product) =>
           product.productType === "bar" &&
-          /견과|아몬드|피넛|땅콩|너트|호두|캐슈/i.test(
+          /견과|아몬드|피넛|넛츠|호두|캐슈/i.test(
             `${product.name} ${product.flavor ?? ""} ${(product.tags ?? []).join(" ")}`,
           ),
         recommend: (products) =>
           products.filter((product) =>
-            /견과|아몬드|피넛|땅콩|너트|호두|캐슈/i.test(
+            /견과|아몬드|피넛|넛츠|호두|캐슈/i.test(
               `${product.name} ${product.flavor ?? ""} ${(product.tags ?? []).join(" ")}`,
             ),
           ),
@@ -508,7 +511,7 @@ const curations: CurationDefinition[] = [
     id: "bar-no-nut",
     slug: "bar-no-nut",
     label: "무견과",
-    icon: "🌰",
+    icon: "🚫",
     kind: "ingredient",
     categoryTargets: ["bar"],
     routeMode: "legacy-pick",
@@ -517,17 +520,17 @@ const curations: CurationDefinition[] = [
       bar: {
         category: "bar",
         quickLabel: "무견과",
-        quickIcon: "🌰",
+        quickIcon: "🚫",
         quickOrder: 70,
         filter: (product) =>
           product.productType === "bar" &&
-          !/견과|아몬드|피넛|땅콩|너트|호두|캐슈/i.test(
+          !/견과|아몬드|피넛|넛츠|호두|캐슈/i.test(
             `${product.name} ${product.flavor ?? ""} ${(product.tags ?? []).join(" ")}`,
           ),
         recommend: (products) =>
           products.filter(
             (product) =>
-              !/견과|아몬드|피넛|땅콩|너트|호두|캐슈/i.test(
+              !/견과|아몬드|피넛|넛츠|호두|캐슈/i.test(
                 `${product.name} ${product.flavor ?? ""} ${(product.tags ?? []).join(" ")}`,
               ),
           ),
@@ -557,8 +560,8 @@ const curations: CurationDefinition[] = [
   {
     id: "bar-small",
     slug: "bar-small",
-    label: "휴대용",
-    icon: "🎒",
+    label: "소용량",
+    icon: "🧃",
     kind: "ingredient",
     categoryTargets: ["bar"],
     routeMode: "legacy-pick",
@@ -566,8 +569,8 @@ const curations: CurationDefinition[] = [
     categories: {
       bar: {
         category: "bar",
-        quickLabel: "휴대용",
-        quickIcon: "🎒",
+        quickLabel: "소용량",
+        quickIcon: "🧃",
         quickOrder: 90,
         filter: (product) => product.productType === "bar" && parseInt(product.capacity, 10) <= 50,
         recommend: (products) => products.filter((product) => parseInt(product.capacity, 10) <= 50),
@@ -577,8 +580,8 @@ const curations: CurationDefinition[] = [
   {
     id: "bar-high-density",
     slug: "bar-high-density",
-    label: "고밀도",
-    icon: "📈",
+    label: "단백질 밀도 A",
+    icon: "⭐",
     kind: "ingredient",
     categoryTargets: ["bar"],
     routeMode: "legacy-pick",
@@ -586,8 +589,8 @@ const curations: CurationDefinition[] = [
     categories: {
       bar: {
         category: "bar",
-        quickLabel: "고밀도",
-        quickIcon: "📈",
+        quickLabel: "단백질 밀도 A",
+        quickIcon: "⭐",
         quickOrder: 100,
         filter: (product) => product.productType === "bar" && parseDensityValue(product.density) >= 8,
         recommend: (products) => products.filter((product) => parseDensityValue(product.density) >= 8),
@@ -602,42 +605,41 @@ const curations: CurationDefinition[] = [
     kind: "goal",
     categoryTargets: ["drink", "bar"],
     routeMode: "category-query",
-    heroTitle: "러닝 후 단백질 제품 큐레이션",
+    heroTitle: "러닝 후 단백질 음료 추천",
     heroDescription:
-      "러닝이나 마라톤 후에는 근육 회복과 에너지 보충이 중요합니다. ProteinLab에서는 단백질 함량, 당류, 칼로리, 단백질 밀도 데이터를 기준으로 러너에게 적합한 단백질 음료와 단백질 바를 비교할 수 있습니다.",
-    introText:
-      "러닝 큐레이션은 음료와 바를 섞지 않고, 각 카테고리 안에서 러닝 후 회복에 적합한 제품만 따로 비교하는 방식으로 구성됩니다.",
+      "러닝이나 마라톤 후에는 근육 회복과 에너지 보충이 중요합니다. ProteinLab에서는 단백질 함량, 당류, 칼로리, 단백질 밀도 데이터를 기준으로 러닝 후 회복에 적합한 단백질 음료와 단백질 바를 비교할 수 있습니다.",
+    introText: "러너에게 적합한 단백질 제품을 데이터 기준으로 확인하세요.",
     infoSections: [
       {
         title: "러닝 후 단백질이 필요한 이유",
         bullets: [
-          "러닝 후에는 미세한 근육 손상이 생기기 쉬워 회복용 단백질 보충이 중요합니다.",
-          "장거리 러닝 뒤에는 글리코겐 보충과 함께 단백질을 넣어주는 편이 회복 루틴을 만들기 좋습니다.",
-          "운동 직후 또는 식사와 가까운 타이밍에 단백질을 보충하면 일상 루틴으로 연결하기 쉽습니다.",
+          "러닝 후에는 근육 손상 회복과 함께 에너지 보충이 필요합니다.",
+          "운동 직후 단백질을 보충하면 근육 회복 루틴을 만들기 좋습니다.",
+          "러닝 강도와 식사 간격에 따라 음료와 바를 나눠 보는 것이 편합니다.",
         ],
       },
       {
-        title: "러너가 단백질 제품을 고르는 기준",
+        title: "러너가 제품을 고르는 기준",
         bullets: [
-          "단백질 함량: 운동 후 회복용 기준을 충족하는지 확인합니다.",
+          "단백질 함량: 운동 후 회복에 필요한 기준량을 확인합니다.",
           "당류: 필요 이상으로 높지 않은지 확인합니다.",
           "칼로리: 운동 강도와 식사 계획에 맞는지 확인합니다.",
-          "단백질 밀도: 같은 열량이나 용량에서 단백질을 얼마나 효율적으로 얻는지 봅니다.",
+          "단백질 밀도: 같은 열량에서 단백질을 얼마나 효율적으로 섭취하는지 봅니다.",
         ],
       },
       {
         title: "단백질 음료 vs 단백질 바",
         bullets: [
-          "운동 직후에는 음료가 더 간편하고 부담이 적은 경우가 많습니다.",
-          "간식이나 이동 중에는 단백질 바가 더 편할 수 있습니다.",
-          "러닝 직후에는 음료, 이후 간식 타이밍에는 바를 보는 방식으로 나눠 비교하는 편이 좋습니다.",
+          "운동 직후에는 음료가 더 빠르고 가볍게 들어가는 경우가 많습니다.",
+          "간식이나 이동 중 보충에는 단백질 바가 더 편할 수 있습니다.",
+          "ProteinLab에서는 음료와 바를 섞지 않고 각각 따로 비교합니다.",
         ],
       },
       {
         title: "ProteinLab 데이터 기준",
         bullets: [
-          "ProteinLab에서는 단백질 함량, 당류, 칼로리, 단백질 밀도를 함께 비교합니다.",
-          "러닝 큐레이션도 같은 데이터를 기준으로 음료와 바를 각각 따로 선별합니다.",
+          "단백질 함량, 당류, 칼로리, 단백질 밀도를 기준으로 제품을 비교합니다.",
+          "추천 제품은 조건이 부족할 때 완화 규칙을 적용해 최소 3개 이상 보이도록 구성합니다.",
         ],
       },
     ],
@@ -645,12 +647,12 @@ const curations: CurationDefinition[] = [
       {
         href: "/guides/running/basics",
         title: "러너에게 좋은 단백질 선택 기준",
-        description: "러닝 후 회복용 제품을 볼 때 단백질, 당류, 칼로리, 소화 부담을 어떻게 볼지 정리했습니다.",
+        description: "러닝 후 어떤 단백질 제품을 우선 봐야 하는지 데이터 기준으로 정리했습니다.",
       },
       {
         href: "/guides/running/race-week",
         title: "러닝 후 단백질 섭취 타이밍",
-        description: "운동 직후와 레이스 전후에 단백질을 언제, 어떤 방식으로 보충할지 확인해보세요.",
+        description: "운동 직후와 일상 루틴에서 단백질을 언제 보충하면 좋은지 확인해보세요.",
       },
     ],
     seoTitle: "러닝 후 단백질 제품 추천 | ProteinLab",
@@ -664,22 +666,22 @@ const curations: CurationDefinition[] = [
         quickOrder: 100,
         filter: (product) =>
           product.productType !== "bar" &&
-          product.proteinPerServing >= 15 &&
-          product.proteinPerServing <= 25 &&
+          (product.proteinPerServing ?? 0) >= 15 &&
+          (product.proteinPerServing ?? 0) <= 25 &&
           (product.sugar ?? 999) <= 10,
         recommend: (products) =>
           recommendWithFallback(
             [
               products.filter(
                 (product) =>
-                  product.proteinPerServing >= 15 &&
-                  product.proteinPerServing <= 25 &&
+                  (product.proteinPerServing ?? 0) >= 15 &&
+                  (product.proteinPerServing ?? 0) <= 25 &&
                   (product.sugar ?? 999) <= 10,
               ),
               products.filter(
                 (product) =>
-                  product.proteinPerServing >= 12 &&
-                  product.proteinPerServing <= 25 &&
+                  (product.proteinPerServing ?? 0) >= 12 &&
+                  (product.proteinPerServing ?? 0) <= 25 &&
                   (product.sugar ?? 999) <= 12,
               ),
               products.filter(
@@ -692,7 +694,7 @@ const curations: CurationDefinition[] = [
         landingCopy: {
           recommendationTitle: "러너에게 추천하는 단백질 음료",
           recommendationNote:
-            "단백질 밀도, 단백질 함량, 당류, 워터형 여부를 함께 고려해 러닝 후 회복용으로 보기 좋은 제품을 먼저 골랐습니다.",
+            "워터형 여부, 단백질 밀도, 단백질 함량, 당류를 함께 고려해 러닝 후 회복에 보기 좋은 제품을 먼저 고릅니다.",
           comparisonTitle: "러닝에 적합한 단백질 음료 비교",
         },
       },
@@ -703,22 +705,22 @@ const curations: CurationDefinition[] = [
         quickOrder: 110,
         filter: (product) =>
           product.productType === "bar" &&
-          product.proteinPerServing >= 10 &&
-          product.proteinPerServing <= 20 &&
+          (product.proteinPerServing ?? 0) >= 10 &&
+          (product.proteinPerServing ?? 0) <= 20 &&
           (product.sugar ?? 999) <= 10,
         recommend: (products) =>
           recommendWithFallback(
             [
               products.filter(
                 (product) =>
-                  product.proteinPerServing >= 10 &&
-                  product.proteinPerServing <= 20 &&
+                  (product.proteinPerServing ?? 0) >= 10 &&
+                  (product.proteinPerServing ?? 0) <= 20 &&
                   (product.sugar ?? 999) <= 10,
               ),
               products.filter(
                 (product) =>
-                  product.proteinPerServing >= 8 &&
-                  product.proteinPerServing <= 20 &&
+                  (product.proteinPerServing ?? 0) >= 8 &&
+                  (product.proteinPerServing ?? 0) <= 20 &&
                   (product.sugar ?? 999) <= 12,
               ),
               products.filter(
@@ -731,7 +733,7 @@ const curations: CurationDefinition[] = [
         landingCopy: {
           recommendationTitle: "러너에게 추천하는 단백질 바",
           recommendationNote:
-            "당류가 낮고, 단백질 밀도와 단백질 함량이 좋은 제품을 우선순위로 정렬했습니다.",
+            "당류가 낮고 단백질 밀도와 단백질 함량이 좋은 제품을 먼저 볼 수 있도록 정리했습니다.",
           comparisonTitle: "러닝에 적합한 단백질 바 비교",
         },
       },
@@ -745,30 +747,51 @@ const curations: CurationDefinition[] = [
     kind: "context",
     categoryTargets: ["drink", "bar"],
     routeMode: "category-query",
-    heroTitle: "편의점 단백질 제품 큐레이션",
+    heroTitle: "편의점 단백질 음료 추천",
     heroDescription:
-      "편의점에서 접근하기 쉬운 브랜드 기준으로 단백질 음료와 단백질 바를 따로 비교할 수 있도록 준비한 큐레이션입니다.",
-    introText:
-      "현재는 유통 채널 데이터 대신 브랜드 기준으로 구성되어 있으며, 향후 판매 채널 필드가 추가되면 더 정확한 편의점 큐레이션으로 확장할 수 있습니다.",
+      "CU, GS25, 세븐일레븐 등 편의점에서 쉽게 구매할 수 있는 단백질 음료와 단백질 바를 비교합니다. ProteinLab에서는 단백질 함량, 당류, 칼로리, 단백질 밀도 데이터를 기준으로 편의점 단백질 제품을 확인할 수 있습니다.",
+    introText: "편의점에서 쉽게 찾을 수 있는 단백질 제품을 비교해보세요.",
     infoSections: [
       {
-        title: "편의점 큐레이션 기준",
+        title: "편의점 단백질 제품을 볼 때",
         bullets: [
-          "초기 버전은 판매 채널 필드가 아니라 브랜드 기준으로 동작합니다.",
-          "음료와 바는 항상 분리된 데이터셋 안에서 각각 따로 비교합니다.",
+          "편의점에서는 다양한 단백질 음료와 단백질 바를 간편하게 구매할 수 있습니다.",
+          "ProteinLab에서는 편의점에서 자주 판매되는 브랜드 제품을 기준으로 비교합니다.",
+          "음료와 바는 절대 합치지 않고 각각 따로 비교합니다.",
+        ],
+      },
+      {
+        title: "비교 기준",
+        bullets: [
+          "단백질 함량",
+          "당류",
+          "칼로리",
+          "단백질 밀도",
         ],
       },
       {
         title: "현재 적용 브랜드",
         bullets: [
-          "음료: 더단백, 셀렉스, 하이뮨, 뉴케어, 랩노쉬, 닥터유",
-          "바: 닥터유, 랩노쉬, 롯데 계열 중심",
+          "단백질 음료: 더단백, 셀렉스, 하이뮨, 뉴케어 올프로틴, 랩노쉬, 닥터유 프로틴 드링크",
+          "단백질 바: 닥터유 프로틴바, 랩노쉬 프로틴바, 롯데 프로틴바",
         ],
       },
     ],
-    relatedGuideLinks: [],
+    relatedGuideLinks: [
+      {
+        href: "/?curation=convenience",
+        title: "편의점 단백질 음료 비교",
+        description: "편의점에서 찾기 쉬운 단백질 음료만 모아 바로 비교해보세요.",
+      },
+      {
+        href: "/bars?curation=convenience",
+        title: "편의점 단백질 바 비교",
+        description: "편의점 기준 브랜드의 단백질 바를 한 번에 비교해볼 수 있습니다.",
+      },
+    ],
     seoTitle: "편의점 단백질 제품 큐레이션 | ProteinLab",
-    seoDescription: "편의점에서 찾기 쉬운 단백질 음료와 단백질 바를 브랜드 기준으로 비교합니다.",
+    seoDescription:
+      "편의점에서 쉽게 구매할 수 있는 단백질 음료와 단백질 바를 ProteinLab 데이터 기준으로 비교합니다.",
     categories: {
       drink: {
         category: "drink",
@@ -778,9 +801,9 @@ const curations: CurationDefinition[] = [
         filter: matchesConvenienceDrink,
         recommend: (products) => sortDrinkForConvenience(products.filter(matchesConvenienceDrink)),
         landingCopy: {
-          recommendationTitle: "편의점에서 찾기 쉬운 단백질 음료",
+          recommendationTitle: "편의점 단백질 음료 추천",
           recommendationNote:
-            "접근성이 좋은 브랜드 중 단백질 밀도와 당류, 단백질 함량을 함께 고려해 보기 좋은 제품을 먼저 골랐습니다.",
+            "단백질 밀도, 단백질 함량, 당류를 함께 고려해 편의점에서 보기 쉬운 제품을 먼저 보여줍니다.",
           comparisonTitle: "편의점 단백질 음료 비교",
         },
       },
@@ -792,9 +815,9 @@ const curations: CurationDefinition[] = [
         filter: matchesConvenienceBar,
         recommend: (products) => sortBarForConvenience(products.filter(matchesConvenienceBar)),
         landingCopy: {
-          recommendationTitle: "편의점에서 찾기 쉬운 단백질 바",
+          recommendationTitle: "편의점 단백질 바 추천",
           recommendationNote:
-            "접근성이 좋은 브랜드 중 당류와 단백질 함량, 단백질 밀도를 함께 고려해 보기 좋은 제품을 먼저 골랐습니다.",
+            "단백질 밀도, 단백질 함량, 당류를 함께 고려해 편의점 기준 브랜드의 제품을 먼저 보여줍니다.",
           comparisonTitle: "편의점 단백질 바 비교",
         },
       },

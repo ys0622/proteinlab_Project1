@@ -1,10 +1,10 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
+import { useEffect, useMemo, useState } from "react";
 import { usePathname } from "next/navigation";
 import type { ProductDetailProps } from "../data/products";
-import { applyCurationToCategoryProducts, getCurationDefinition } from "../lib/curationSystem";
+import { applyCurationToCategoryProducts } from "../lib/curationSystem";
 import {
   defaultBarFilters,
   defaultDrinkFilters,
@@ -106,7 +106,6 @@ export default function ProductListWithFilters(props: ProductListWithFiltersProp
   const [searchQuery, setSearchQuery] = useState("");
 
   const filters = productType === "drink" ? drinkFilters : barFilters;
-  const activeCuration = curationSlug ? getCurationDefinition(curationSlug) : null;
 
   const curationFiltered = useMemo(
     () => applyCurationToCategoryProducts(products, productType, curationSlug),
@@ -215,38 +214,6 @@ export default function ProductListWithFilters(props: ProductListWithFiltersProp
       <div className="mt-3 md:hidden" style={{ marginTop: "12px" }}>
         <QuickCuration productType={productType} />
       </div>
-
-      {activeCuration ? (
-        <div
-          className="mt-3 flex flex-wrap items-center justify-between gap-3 rounded-xl border border-[var(--border)] bg-[var(--background-card)] px-3 py-3"
-          style={{ marginTop: "12px" }}
-        >
-          <div className="min-w-0">
-            <p className="text-xs font-semibold text-[var(--foreground)]">
-              {activeCuration.icon} {activeCuration.label} 큐레이션 적용 중
-            </p>
-            <p className="mt-1 text-xs leading-5 text-[var(--foreground-muted)]">
-              현재 카테고리 안에서 {activeCuration.label} 조건에 맞는 제품만 비교하고 있습니다.
-            </p>
-          </div>
-          <div className="flex items-center gap-2">
-            {activeCuration.heroTitle ? (
-              <Link
-                href={`/curation/${activeCuration.slug}`}
-                className="rounded-full border border-[var(--border)] bg-white px-3 py-1.5 text-xs font-medium text-[var(--foreground)] transition-colors hover:bg-[var(--accent-light)]"
-              >
-                설명 보기
-              </Link>
-            ) : null}
-            <Link
-              href={productType === "bar" ? "/bars" : "/"}
-              className="rounded-full border border-[var(--border)] bg-white px-3 py-1.5 text-xs font-medium text-[var(--foreground)] transition-colors hover:bg-[var(--accent-light)]"
-            >
-              해제
-            </Link>
-          </div>
-        </div>
-      ) : null}
 
       <div
         className="mt-3 rounded-xl border border-[var(--border)] bg-[var(--filter-box-bg)]"

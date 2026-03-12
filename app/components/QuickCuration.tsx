@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { getQuickCurations, type CurationCategory } from "../lib/curationSystem";
 
 interface QuickCurationProps {
@@ -16,9 +17,9 @@ function QuickCurationChip({
   compact?: boolean;
 }) {
   return (
-    <a
+    <Link
       href={item.href}
-      className={`shrink-0 inline-flex items-center justify-center rounded-full border border-[var(--curation-chip-bg)] bg-[var(--curation-chip-bg)] font-medium leading-none text-[var(--curation-chip-text)] transition-opacity hover:opacity-90 ${
+      className={`inline-flex shrink-0 items-center justify-center rounded-full border border-[var(--curation-chip-bg)] bg-[var(--curation-chip-bg)] font-medium leading-none text-[var(--curation-chip-text)] transition-opacity hover:opacity-90 ${
         compact ? "h-[26px] px-2 text-[10px] sm:text-[11px]" : "px-2.5 py-1 text-[11px]"
       }`}
     >
@@ -30,7 +31,7 @@ function QuickCurationChip({
         {item.icon}
       </span>
       <span>{item.label}</span>
-    </a>
+    </Link>
   );
 }
 
