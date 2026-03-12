@@ -209,10 +209,6 @@ export default function ProductListWithFilters(props: ProductListWithFiltersProp
         <QuickCuration productType={productType} />
       </div>
 
-      <div className="mt-3 hidden md:block" style={{ marginTop: "12px" }}>
-        <QuickCuration productType={productType} variant="inline" />
-      </div>
-
       <div
         className="mt-3 rounded-xl border border-[var(--border)] bg-[var(--filter-box-bg)]"
         style={{ marginTop: "12px", borderRadius: "12px", padding: "10px 12px" }}
@@ -244,6 +240,7 @@ export default function ProductListWithFilters(props: ProductListWithFiltersProp
                   </svg>
                 </button>
               }
+              desktopFooterSlot={<QuickCuration productType={productType} variant="inline" />}
             />
           ) : (
             <FilterSection
@@ -268,6 +265,7 @@ export default function ProductListWithFilters(props: ProductListWithFiltersProp
                   </svg>
                 </button>
               }
+              desktopFooterSlot={<QuickCuration productType={productType} variant="inline" />}
             />
           )}
         </div>

@@ -123,6 +123,7 @@ type FilterSectionProps =
       onFilterToggle: (key: keyof DrinkFilters, value: string) => void;
       onResetFilters: () => void;
       mobileToolbarSlot?: React.ReactNode;
+      desktopFooterSlot?: React.ReactNode;
     }
   | {
       productType: "bar";
@@ -130,10 +131,11 @@ type FilterSectionProps =
       onFilterToggle: (key: keyof BarFilters, value: string) => void;
       onResetFilters: () => void;
       mobileToolbarSlot?: React.ReactNode;
+      desktopFooterSlot?: React.ReactNode;
     };
 
 export default function FilterSection(props: FilterSectionProps) {
-  const { productType, filters, onFilterToggle, onResetFilters, mobileToolbarSlot } = props;
+  const { productType, filters, onFilterToggle, onResetFilters, mobileToolbarSlot, desktopFooterSlot } = props;
   const [mobileFilterOpen, setMobileFilterOpen] = useState(false);
 
   const sortedDrinkBrandOptions = useMemo(
@@ -286,7 +288,14 @@ export default function FilterSection(props: FilterSectionProps) {
         ) : null}
       </div>
 
-      <div className="hidden md:block">{filterRows}</div>
+      <div className="hidden md:block">
+        {filterRows}
+        {desktopFooterSlot ? (
+          <div className="mt-1.5 border-t border-[var(--border)] pt-1.5">
+            {desktopFooterSlot}
+          </div>
+        ) : null}
+      </div>
     </div>
   );
 }

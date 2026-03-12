@@ -203,6 +203,8 @@ export default function GradeCriteriaPage() {
           <ul className="mt-2 space-y-1 text-xs" style={{ color: "#6b6b6b" }}>
             <li>· 등급 지표는 모두 영양성분 기반입니다.</li>
             <li>· 영양성분은 제조사 및 공식 자료 기준으로 업데이트합니다.</li>
+            <li>· 랭킹 점수는 현재 제품군 내 백분위 기준 100점 체계로 환산합니다.</li>
+            <li>· 제품이 추가되면 등급과 랭킹 점수는 전체 데이터를 기준으로 다시 계산됩니다.</li>
           </ul>
         </div>
 
