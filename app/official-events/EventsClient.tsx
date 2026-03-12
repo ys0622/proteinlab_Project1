@@ -387,14 +387,14 @@ function BrandEventCard({ brand }: { brand: BrandCard }) {
     >
       <div className="h-1.5 w-full bg-[#2f5d46]" />
       <div>
-        <div className="border-b border-[#e7eee9] bg-[linear-gradient(135deg,#f8fcf9_0%,#f2f7f4_100%)] px-5 py-4">
-          <div className="flex items-start justify-between gap-3">
+        <div className="border-b border-[#e7eee9] bg-[linear-gradient(135deg,#f8fcf9_0%,#f2f7f4_100%)] px-4 py-4 sm:px-5">
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
             <div>
               <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[#6f8b79]">Brand</p>
               <h2 className="mt-1 text-lg font-bold text-[#224b37]">{brand.brand}</h2>
               <p className="mt-1 text-xs text-[#7a837d]">{brand.note}</p>
             </div>
-            <div className="flex flex-col items-end gap-2">
+            <div className="flex flex-wrap items-center gap-2 sm:flex-col sm:items-end">
               <span
                 className="shrink-0 rounded-full border border-[#cfe0d5] bg-white px-2.5 py-1 text-[11px] font-semibold text-[#2f5d46]"
               >
@@ -410,7 +410,7 @@ function BrandEventCard({ brand }: { brand: BrandCard }) {
           </div>
         </div>
 
-        <ul className="space-y-3 px-5 pb-2 pt-4">
+        <ul className="space-y-3 px-4 pb-2 pt-4 sm:px-5">
           {brand.events.map((event) => {
             const color = CATEGORY_COLOR[event.category];
             return (
@@ -438,7 +438,7 @@ function BrandEventCard({ brand }: { brand: BrandCard }) {
         </ul>
       </div>
 
-      <div className="px-5 pb-5 pt-3">
+      <div className="px-4 pb-4 pt-3 sm:px-5 sm:pb-5">
         <a
           href={brand.storeUrl}
           target="_blank"

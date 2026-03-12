@@ -7,6 +7,7 @@
     "dev": "next dev",
     "start": "next start",
     "lint": "eslint",
+    "audit:products": "node scripts/audit-product-impact.mjs",
     "preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
     "deploy": "opennextjs-cloudflare build && node deploy.cjs",
     "upload": "opennextjs-cloudflare build && opennextjs-cloudflare upload",
