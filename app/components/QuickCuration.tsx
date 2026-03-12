@@ -1,41 +1,9 @@
 "use client";
 
-type QuickCurationItem = {
-  label: string;
-  href: string;
-  icon: string;
-};
-
-const drinkQuickCurationItems: QuickCurationItem[] = [
-  { label: "당류 0g", href: "/picks/zero-sugar", icon: "🍬" },
-  { label: "라이트 20g 미만", href: "/picks/light-protein-under-20", icon: "🥛" },
-  { label: "고단백 20g+", href: "/picks/high-protein-20", icon: "💪" },
-  { label: "초고단백 30g+", href: "/picks/high-protein", icon: "🏋" },
-  { label: "워터형", href: "/picks/protein-water", icon: "💧" },
-  { label: "락토프리", href: "/picks/lactose-free", icon: "🥤" },
-  { label: "가성비 A", href: "/picks/value-a", icon: "💰" },
-  { label: "다이어트 A", href: "/picks/diet-a", icon: "⚖" },
-  { label: "퍼포먼스 A", href: "/picks/fitness-a", icon: "⚡" },
-  { label: "러닝", href: "/curation/running/drink", icon: "🏃" },
-  { label: "식물성", href: "/picks/vegan", icon: "🌿" },
-];
-
-const barQuickCurationItems: QuickCurationItem[] = [
-  { label: "고단백 20g+", href: "/picks/bar-high-protein-20", icon: "💪" },
-  { label: "고단백 15g+", href: "/picks/bar-high-protein-15", icon: "🏋" },
-  { label: "저당", href: "/picks/bar-low-sugar", icon: "🍬" },
-  { label: "저칼로리", href: "/picks/bar-low-calorie", icon: "🥗" },
-  { label: "초코", href: "/picks/bar-choco", icon: "🍫" },
-  { label: "견과", href: "/picks/bar-nut", icon: "🥜" },
-  { label: "무견과", href: "/picks/bar-no-nut", icon: "🌰" },
-  { label: "대용량", href: "/picks/bar-large", icon: "📦" },
-  { label: "휴대용", href: "/picks/bar-small", icon: "🎒" },
-  { label: "고밀도", href: "/picks/bar-high-density", icon: "📈" },
-  { label: "러닝", href: "/curation/running/bar", icon: "🏃" },
-];
+import { getQuickCurations, type CurationCategory } from "../lib/curationSystem";
 
 interface QuickCurationProps {
-  productType: "drink" | "bar";
+  productType: CurationCategory;
   className?: string;
   variant?: "card" | "inline";
 }
@@ -44,7 +12,7 @@ function QuickCurationChip({
   item,
   compact = false,
 }: {
-  item: QuickCurationItem;
+  item: { label: string; href: string; icon: string };
   compact?: boolean;
 }) {
   return (
@@ -71,7 +39,7 @@ export default function QuickCuration({
   className = "",
   variant = "card",
 }: QuickCurationProps) {
-  const items = productType === "bar" ? barQuickCurationItems : drinkQuickCurationItems;
+  const items = getQuickCurations(productType);
 
   if (variant === "inline") {
     return (
@@ -89,7 +57,7 @@ export default function QuickCuration({
           </div>
           <div className="flex flex-1 flex-wrap items-center gap-1.5">
             {items.map((item) => (
-              <QuickCurationChip key={item.label} item={item} compact />
+              <QuickCurationChip key={`${productType}-${item.slug}`} item={item} compact />
             ))}
           </div>
         </div>
@@ -108,7 +76,7 @@ export default function QuickCuration({
       <div className="-mx-3 -mb-1 mt-1 overflow-x-auto px-3 pb-2">
         <div className="flex min-w-max" style={{ gap: "6px" }}>
           {items.map((item) => (
-            <QuickCurationChip key={item.label} item={item} />
+            <QuickCurationChip key={`${productType}-${item.slug}`} item={item} />
           ))}
         </div>
       </div>

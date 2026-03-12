@@ -6,17 +6,24 @@ import { barProductsWithGrades } from "../data/products";
 
 export const metadata = {
   title: "단백질 바 비교 | ProteinLab",
-  description: "단백질 바 제품을 브랜드, 단백질 함량, 당류, 용량으로 비교해 보세요. proteinlab.kr 기준 큐레이션.",
+  description: "단백질 바 제품을 브랜드, 단백질 함량, 당류, 중량 기준으로 비교합니다.",
 };
 
-export default function BarsPage() {
+interface BarsPageProps {
+  searchParams?: Promise<Record<string, string | string[] | undefined>>;
+}
+
+export default async function BarsPage({ searchParams }: BarsPageProps) {
+  const params = (await searchParams) ?? {};
+  const curation = typeof params.curation === "string" ? params.curation : undefined;
+
   return (
     <div className="min-h-screen bg-white">
       <Header />
       <HeroSection />
 
-      <main className="mx-auto max-w-[1200px] px-4 pt-0 pb-2 md:px-6 md:pb-3">
-        <ProductListWithFilters productType="bar" products={barProductsWithGrades} />
+      <main className="mx-auto max-w-[1200px] px-4 pb-2 pt-0 md:px-6 md:pb-3">
+        <ProductListWithFilters productType="bar" products={barProductsWithGrades} curationSlug={curation} />
       </main>
 
       <Footer />
