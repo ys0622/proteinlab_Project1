@@ -56,40 +56,14 @@ function RankingResultCard({
   };
 
   const metricLabel = metric === "density" ? "단백질 밀도" : metric === "diet" ? "다이어트" : "퍼포먼스";
-  const compactMetricLabel = metric === "density" ? "밀도" : metric === "diet" ? "다이어트" : "퍼포";
 
   return (
     <div className="min-w-0">
-      {compact ? (
-        <div className="mb-2 rounded-xl border border-[#e8e6e3] bg-[#faf8f2] px-2.5 py-2">
-          <div className="flex items-center justify-between gap-2">
-            <div className="flex min-w-0 items-center gap-2">
-              <span
-                className="inline-flex h-6 min-w-6 items-center justify-center rounded-full px-1.5 text-[11px] font-extrabold"
-                style={{
-                  background: rank <= 3 ? "var(--accent)" : "#f3f4f6",
-                  color: rank <= 3 ? "#fff" : "#6b7280",
-                }}
-              >
-                {rank}
-              </span>
-              <span
-                className="inline-flex min-w-0 items-center rounded-full px-2 py-1 text-[11px] font-bold whitespace-nowrap"
-                style={{ background: gc.bg, color: gc.color, border: `1px solid ${gc.border}` }}
-              >
-                {compactMetricLabel} {grade}
-              </span>
-            </div>
-            <span className="shrink-0 text-[11px] font-semibold text-[#6b7280]">
-              {rank}위
-            </span>
-          </div>
-        </div>
-      ) : (
-        <div className="mb-2 flex items-center justify-between gap-2 rounded-xl border border-[#e8e6e3] bg-[#faf8f2] px-3 py-2.5">
+      <div className={`mb-2 rounded-xl border border-[#e8e6e3] bg-[#faf8f2] ${compact ? "px-2.5 py-2" : "px-3 py-2.5"}`}>
+        <div className="flex items-center justify-between gap-2">
           <div className="flex min-w-0 items-center gap-2">
             <span
-              className="inline-flex h-7 min-w-7 items-center justify-center rounded-full px-2 text-xs font-extrabold"
+              className={`inline-flex items-center justify-center rounded-full font-extrabold ${compact ? "h-6 min-w-6 px-1.5 text-[11px]" : "h-7 min-w-7 px-2 text-xs"}`}
               style={{
                 background: rank <= 3 ? "var(--accent)" : "#f3f4f6",
                 color: rank <= 3 ? "#fff" : "#6b7280",
@@ -97,29 +71,27 @@ function RankingResultCard({
             >
               {rank}
             </span>
-            <span className="text-xs font-semibold text-[#374151]">
-              {metricLabel} {grade}
+            <span className={`${compact ? "text-[11px]" : "text-xs"} font-semibold text-[#6b7280] whitespace-nowrap`}>
+              {rank}위
             </span>
           </div>
+          <span className={`${compact ? "text-[13px]" : "text-sm"} font-extrabold whitespace-nowrap`} style={{ color: gc.color }}>
+            {formatScore(score, metric)}
+          </span>
+        </div>
+        <div className="mt-2 flex items-center justify-between gap-2 border-t border-[#ece7dd] pt-2">
+          <span className={`${compact ? "text-[11px]" : "text-xs"} min-w-0 font-semibold text-[#374151] whitespace-nowrap`}>
+            {metricLabel}
+          </span>
           <span
-            className="rounded-full px-2.5 py-1 text-xs font-bold"
+            className={`${compact ? "text-[11px]" : "text-xs"} shrink-0 rounded-full px-2.5 py-1 font-bold whitespace-nowrap`}
             style={{ background: gc.bg, color: gc.color, border: `1px solid ${gc.border}` }}
           >
             {grade} 등급
           </span>
         </div>
-      )}
-      <ProductCard {...product} />
-      <div
-        className={`mt-2 flex items-center justify-between rounded-xl border border-[#e8e6e3] bg-[#faf8f2] ${compact ? "px-2.5 py-2" : "px-3 py-2.5"}`}
-      >
-        <span className={`${compact ? "text-[11px]" : "text-xs"} font-medium text-[#6b7280] whitespace-nowrap`}>
-          {compact ? `${compactMetricLabel} 점수` : `${metricLabel} 점수`}
-        </span>
-        <span className={`${compact ? "text-[13px]" : "text-sm"} font-extrabold whitespace-nowrap`} style={{ color: gc.color }}>
-          {formatScore(score, metric)}
-        </span>
       </div>
+      <ProductCard {...product} />
     </div>
   );
 }
