@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import Footer from "@/app/components/Footer";
+import GuideVisual from "@/app/components/GuideVisual";
 import Header from "@/app/components/Header";
 import { getGuideSlot, getGuideTrack, getGuideTracks } from "@/app/data/guidesTracks";
 
@@ -109,7 +110,15 @@ export async function generateMetadata({
           <div className="space-y-6">
             <section className="rounded-2xl border border-[#e8e6e3] bg-[#fffdf8] px-5 py-5">
               <h2 className="text-xl font-bold text-[var(--foreground)]">단백질 결핍의 주요 증상 6가지</h2>
-              <div className="mt-4 h-32 rounded-2xl border border-[#d8d4cd] bg-[#efede8]" aria-hidden="true" />
+              <div className="mt-4">
+                <GuideVisual
+                  track="protein-basics"
+                  title="단백질 부족 신호"
+                  accentColor="#2d6a4f"
+                  accentBg="#e7f3ec"
+                  variant="topic"
+                />
+              </div>
               <div className="mt-5 overflow-x-auto">
                 <table className="min-w-full border-collapse text-left text-sm">
                   <thead>
@@ -212,7 +221,15 @@ export async function generateMetadata({
             <section className="rounded-2xl border border-[#e8e6e3] bg-[#fffdf8] px-5 py-5">
               <h2 className="text-xl font-bold text-[var(--foreground)]">항체와 면역세포의 재료</h2>
               <p className="mt-3 text-sm leading-6 text-[var(--foreground-muted)]">항체(면역글로불린), 사이토카인, 인터페론은 모두 단백질입니다. 단백질이 부족하면 면역세포 수가 감소하고 감염에 취약해집니다. 수술 후 회복기나 중환자의 경우 하루 1.5–2.0 g/kg까지 권장됩니다.</p>
-              <div className="mt-4 h-32 rounded-2xl border border-[#d8d4cd] bg-[#efede8]" aria-hidden="true" />
+              <div className="mt-4">
+                <GuideVisual
+                  track="protein-basics"
+                  title="면역과 단백질"
+                  accentColor="#2d6a4f"
+                  accentBg="#e7f3ec"
+                  variant="topic"
+                />
+              </div>
               <blockquote className="mt-4 rounded-xl border border-[#eef1f3] bg-white px-4 py-4 text-sm leading-6 text-[var(--foreground-muted)]">
                 단백질 결핍 시: 면역세포 수 감소 → 감염률 증가 → 회복 지연
               </blockquote>
@@ -221,7 +238,15 @@ export async function generateMetadata({
             <section className="rounded-2xl border border-[#e8e6e3] bg-[#fffdf8] px-5 py-5">
               <h2 className="text-xl font-bold text-[var(--foreground)]">호르몬과 효소도 단백질이다</h2>
               <p className="mt-3 text-sm leading-6 text-[var(--foreground-muted)]">인슐린, 성장호르몬, 글루카곤은 아미노산 사슬로 이루어진 단백질 호르몬입니다. 소화를 돕는 트립신·펩신 같은 소화효소도 단백질입니다. 단백질이 부족하면 혈당 조절, 성장, 소화 기능에 영향을 미칩니다.</p>
-              <div className="mt-4 h-32 rounded-2xl border border-[#d8d4cd] bg-[#efede8]" aria-hidden="true" />
+              <div className="mt-4">
+                <GuideVisual
+                  track="protein-basics"
+                  title="호르몬과 효소"
+                  accentColor="#2d6a4f"
+                  accentBg="#e7f3ec"
+                  variant="topic"
+                />
+              </div>
               <div className="mt-5 overflow-x-auto">
                 <table className="min-w-full border-collapse text-left text-sm">
                   <thead>
@@ -656,7 +681,15 @@ export default async function GuideSlugPage({
             <section className="rounded-2xl border border-[#e8e6e3] bg-[#fffdf8] px-5 py-5">
               <h2 className="text-xl font-bold text-[var(--foreground)]">근단백질 합성(MPS)이란?</h2>
               <p className="mt-3 text-sm leading-6 text-[var(--foreground-muted)]">운동 후 단백질이 아미노산으로 분해되면, 류신 등 필수아미노산이 근육 내 mTOR 신호경로를 활성화합니다. 이 신호가 근섬유 단백질 합성을 촉진하여 근육이 성장·회복됩니다.</p>
-              <div className="mt-4 h-32 rounded-2xl border border-[#d8d4cd] bg-[#efede8]" aria-hidden="true" />
+              <div className="mt-4">
+                <GuideVisual
+                  track="protein-basics"
+                  title="근단백질 합성"
+                  accentColor="#2d6a4f"
+                  accentBg="#e7f3ec"
+                  variant="topic"
+                />
+              </div>
               <blockquote className="mt-4 rounded-xl border border-[#eef1f3] bg-white px-4 py-4 text-sm leading-6 text-[var(--foreground-muted)]">
                 단백질 20–40g 섭취 시 근합성 자극이 극대화되며, 40g 이상에서는 추가 효과가 크지 않습니다.
               </blockquote>

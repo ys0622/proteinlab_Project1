@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
+import GuideVisual from "@/app/components/GuideVisual";
 import { getGuideTrack, getGuideTracks, type GuideTrackSlug } from "@/app/data/guidesTracks";
 
 const deepGreen = "#1f5138";
@@ -211,6 +212,10 @@ export default async function GuideTrackPage({ params }: { params: Promise<{ tra
               </span>
             ))}
           </div>
+          <div className="mt-3 flex items-center gap-2 text-[11px] font-medium text-[#6f7f76] md:hidden">
+            <span aria-hidden>↓</span>
+            <span>아래 카드에서 바로 주제를 선택할 수 있습니다.</span>
+          </div>
         </div>
       </section>
 
@@ -231,7 +236,7 @@ export default async function GuideTrackPage({ params }: { params: Promise<{ tra
               <Link
                 key={slot.slug}
                 href={slot.href}
-                className="group flex h-full min-h-[264px] flex-col justify-between rounded-2xl border border-[#e8e6e3] bg-[#fffdf8] px-5 py-5 transition-colors hover:border-[#cfe1d7]"
+                className="group flex h-full min-h-[228px] flex-col justify-between rounded-2xl border border-[#e8e6e3] bg-[#fffdf8] px-4 py-4 transition-colors hover:border-[#cfe1d7] sm:min-h-[248px] sm:px-5 sm:py-5"
               >
                 <div>
                   <div className="flex items-center justify-between gap-3">
@@ -253,6 +258,15 @@ export default async function GuideTrackPage({ params }: { params: Promise<{ tra
                   >
                     {slot.title}
                   </h3>
+                  <div className="mt-3 md:hidden">
+                    <GuideVisual
+                      track={trackData.slug}
+                      title={slot.title}
+                      accentColor={trackData.accentColor}
+                      accentBg={trackData.accentBg}
+                      variant="topic"
+                    />
+                  </div>
                   <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]" style={clampTwoLines}>
                     {slot.description}
                   </p>
