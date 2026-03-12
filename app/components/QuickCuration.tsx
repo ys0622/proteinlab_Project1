@@ -16,6 +16,7 @@ const drinkQuickCurationItems: QuickCurationItem[] = [
   { label: "단백질 밀도 A", href: "/picks/value-a", icon: "📈" },
   { label: "다이어트 A", href: "/picks/diet-a", icon: "⚖" },
   { label: "퍼포먼스 A", href: "/picks/fitness-a", icon: "⚡" },
+  { label: "러닝", href: "/curation/running", icon: "🏃" },
   { label: "식물성", href: "/picks/vegan", icon: "🌿" },
 ];
 
@@ -30,6 +31,7 @@ const barQuickCurationItems: QuickCurationItem[] = [
   { label: "대용량", href: "/picks/bar-large", icon: "📦" },
   { label: "소용량", href: "/picks/bar-small", icon: "🧃" },
   { label: "고밀도", href: "/picks/bar-high-density", icon: "📈" },
+  { label: "러닝", href: "/curation/running", icon: "🏃" },
 ];
 
 interface QuickCurationProps {
