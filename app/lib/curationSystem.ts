@@ -843,10 +843,7 @@ export function getQuickCurations(category: CurationCategory) {
         slug: curation.slug,
         label: categoryConfig.quickLabel,
         icon: categoryConfig.quickIcon,
-        href:
-          curation.routeMode === "category-query"
-            ? buildCategoryCurationHref(category, curation.slug)
-            : curation.legacyPathByCategory?.[category] ?? buildCategoryCurationHref(category, curation.slug),
+        href: `/curation/${curation.slug}`,
         order: categoryConfig.quickOrder ?? 999,
       };
     })
