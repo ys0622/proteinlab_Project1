@@ -58,8 +58,8 @@ function RankingResultCard({
   const metricLabel = metric === "density" ? "단백질 밀도" : metric === "diet" ? "다이어트" : "퍼포먼스";
 
   return (
-    <div className="min-w-0">
-      <div className={`mb-2 rounded-xl border border-[#e8e6e3] bg-[#faf8f2] ${compact ? "px-2.5 py-2" : "px-3 py-2.5"}`}>
+    <div className="min-w-0 overflow-hidden rounded-2xl border border-[#e8e6e3] bg-[#FFFDF8]">
+      <div className={`border-b border-[#ece7dd] bg-[#faf8f2] ${compact ? "px-2.5 py-2" : "px-3 py-2.5"}`}>
         <div className="flex items-center justify-between gap-2">
           <div className="flex min-w-0 items-center gap-2">
             <span
@@ -91,7 +91,9 @@ function RankingResultCard({
           </span>
         </div>
       </div>
-      <ProductCard {...product} />
+      <div className="[&_article]:rounded-none [&_article]:border-0 [&_article]:bg-transparent [&_article]:shadow-none">
+        <ProductCard {...product} />
+      </div>
     </div>
   );
 }
