@@ -54,7 +54,7 @@ function ProductSection({
         </div>
       ) : (
         <div className="rounded-xl border border-[#e8e6e3] bg-[#FFFDF8] px-4 py-4 text-sm leading-6 text-[var(--foreground-muted)]">
-          현재 조건에 맞는 제품이 충분하지 않아 노출할 항목이 없습니다.
+          현재 조건에 맞는 제품이 충분하지 않아 이 섹션은 비어 있습니다.
         </div>
       )}
     </section>
@@ -146,7 +146,9 @@ export default function CurationLandingTemplate({
 
         {curation.relatedGuideLinks?.length ? (
           <section className="mt-10 rounded-xl border border-[#e8e6e3] bg-[#FFFDF8] px-4 py-4">
-            <h2 className="text-sm font-semibold text-[var(--foreground)]">관련 가이드</h2>
+            <h2 className="text-sm font-semibold text-[var(--foreground)]">
+              {curation.relatedLinksTitle ?? "관련 가이드"}
+            </h2>
             <div className="mt-3 grid gap-3 md:grid-cols-2">
               {curation.relatedGuideLinks.map((guide) => (
                 <Link

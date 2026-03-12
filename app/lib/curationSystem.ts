@@ -12,6 +12,15 @@ export interface CurationGuideLink {
   description: string;
 }
 
+export interface PopularCurationEntry {
+  slug: string;
+  label: string;
+  icon: string;
+  href: string;
+  weeklyClicks: number;
+  description: string;
+}
+
 export interface CurationInfoSection {
   title: string;
   bullets: string[];
@@ -46,6 +55,7 @@ export interface CurationDefinition {
   heroDescription?: string;
   introText?: string;
   infoSections?: CurationInfoSection[];
+  relatedLinksTitle?: string;
   relatedGuideLinks?: CurationGuideLink[];
   seoTitle?: string;
   seoDescription?: string;
@@ -160,6 +170,42 @@ function matchesConvenienceBar(product: ProductDetailProps) {
 }
 
 const curations: CurationDefinition[] = [
+  {
+    id: "popular",
+    slug: "popular",
+    label: "인기",
+    icon: "🔥",
+    kind: "context",
+    categoryTargets: [],
+    routeMode: "category-query",
+    heroTitle: "이번주 인기 큐레이션",
+    heroDescription:
+      "다른 사용자가 많이 확인한 큐레이션을 모아 보여줍니다. ProteinLab에서는 인기 있는 큐레이션을 통해 제품 선택 기준을 빠르게 파악하고, 각 랜딩 페이지에서 음료와 단백질 바를 따로 비교할 수 있습니다.",
+    introText: "많이 보는 큐레이션부터 빠르게 살펴보세요.",
+    infoSections: [
+      {
+        title: "인기 큐레이션은 어떻게 정하나요?",
+        bullets: [
+          "가능하면 최근 7일 클릭 데이터를 기준으로 인기 큐레이션을 집계합니다.",
+          "초기 단계에는 수동 우선순위를 함께 사용해 비어 있는 상태가 없도록 구성합니다.",
+          "인기 큐레이션은 제품 리스트를 합치지 않고, 각 랜딩 페이지에서 음료와 단백질 바를 분리해 보여줍니다.",
+        ],
+      },
+      {
+        title: "이 페이지에서 할 수 있는 일",
+        bullets: [
+          "이번주 많이 본 큐레이션을 빠르게 확인할 수 있습니다.",
+          "각 큐레이션 랜딩으로 이동해 추천 제품과 전체 비교를 이어서 볼 수 있습니다.",
+          "러닝, 편의점, 저당처럼 목적이나 상황에 맞는 탐색 흐름을 바로 시작할 수 있습니다.",
+        ],
+      },
+    ],
+    relatedLinksTitle: "이번주 인기 큐레이션",
+    seoTitle: "인기 큐레이션 | ProteinLab",
+    seoDescription:
+      "최근 많이 본 ProteinLab 큐레이션을 모아 보고, 각 랜딩 페이지에서 음료와 단백질 바를 따로 비교해보세요.",
+    categories: {},
+  },
   {
     id: "zero-sugar",
     slug: "zero-sugar",
@@ -825,6 +871,24 @@ const curations: CurationDefinition[] = [
   },
 ];
 
+const manualPopularCurations = [
+  {
+    slug: "running",
+    weeklyClicks: 145,
+    description: "러닝 후 회복에 맞는 단백질 음료와 단백질 바를 데이터 기준으로 비교합니다.",
+  },
+  {
+    slug: "convenience",
+    weeklyClicks: 98,
+    description: "편의점에서 쉽게 찾을 수 있는 브랜드 중심으로 단백질 제품을 비교합니다.",
+  },
+  {
+    slug: "zero-sugar",
+    weeklyClicks: 75,
+    description: "당류 부담을 줄이고 싶은 사용자를 위한 단백질 음료를 빠르게 확인할 수 있습니다.",
+  },
+] as const;
+
 export function getAllCurations() {
   return curations;
 }
@@ -834,7 +898,7 @@ export function getCurationDefinition(slug: string) {
 }
 
 export function getQuickCurations(category: CurationCategory) {
-  return curations
+  const items = curations
     .map((curation) => {
       const categoryConfig = curation.categories[category];
       if (!categoryConfig?.quickLabel || !categoryConfig.quickIcon) return null;
@@ -852,6 +916,37 @@ export function getQuickCurations(category: CurationCategory) {
         Boolean(item),
     )
     .sort((a, b) => a.order - b.order);
+
+  return [
+    {
+      slug: "popular",
+      label: "인기",
+      icon: "🔥",
+      href: "/curation/popular",
+      order: -1,
+    },
+    ...items,
+  ];
+}
+
+export function getPopularCurations(limit = 3): PopularCurationEntry[] {
+  const items = manualPopularCurations
+    .map<PopularCurationEntry | null>((entry) => {
+      const definition = getCurationDefinition(entry.slug);
+      if (!definition) return null;
+
+      return {
+        slug: definition.slug,
+        label: definition.label,
+        icon: definition.icon,
+        href: `/curation/${definition.slug}`,
+        weeklyClicks: entry.weeklyClicks,
+        description: entry.description,
+      };
+    })
+    .filter((item): item is PopularCurationEntry => item !== null);
+
+  return items.slice(0, limit);
 }
 
 export function buildCategoryCurationHref(category: CurationCategory, slug: string) {

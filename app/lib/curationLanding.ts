@@ -1,6 +1,6 @@
 import { barProductsWithGrades, mockProducts } from "../data/products";
 import type { CurationDefinition, CurationGuideLink, CurationInfoSection } from "./curationSystem";
-import { getCurationDefinition } from "./curationSystem";
+import { getCurationDefinition, getPopularCurations } from "./curationSystem";
 
 type CategoryKey = "drink" | "bar" | "both";
 
@@ -505,7 +505,19 @@ export function getCurationLandingData(slug: string) {
   const definition = getCurationDefinition(slug);
   if (!definition) return null;
 
-  const curation = normalizeLandingCuration(definition);
+  let curation = normalizeLandingCuration(definition);
+
+  if (slug === "popular") {
+    curation = {
+      ...curation,
+      relatedLinksTitle: "이번주 인기 큐레이션",
+      relatedGuideLinks: getPopularCurations(3).map((entry) => ({
+        href: entry.href,
+        title: `${entry.icon} ${entry.label}`,
+        description: `${entry.description} 최근 7일 기준 ${entry.weeklyClicks}회 클릭`,
+      })),
+    };
+  }
 
   const drinkProducts = curation.categories.drink
     ? mockProducts.filter(curation.categories.drink.filter)
