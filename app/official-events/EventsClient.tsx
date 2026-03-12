@@ -307,7 +307,7 @@ export default function EventsClient() {
       >
         <div className="mx-auto max-w-[1200px] px-4 py-4 md:px-6 md:py-5">
           <h1 className="text-2xl font-bold leading-tight text-[var(--foreground)] md:text-3xl">
-            브랜드 이벤트 &amp; 혜택
+            이벤트/핫딜
           </h1>
           <p className="mt-1 text-sm text-[var(--foreground-muted)]">
             단백질 브랜드의 자사몰·공식 스토어 혜택을 모았습니다. 정기배송·회원가입 혜택까지 직접 구매 전 여기서 먼저 확인하세요.

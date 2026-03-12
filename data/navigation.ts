@@ -20,7 +20,7 @@ export const navigationItems: NavigationItem[] = [
       { label: "등급 기준", href: "/grade-criteria" },
     ],
   },
-  { label: "브랜드 이벤트", href: "/official-events" },
+  { label: "🔥 이벤트/핫딜", href: "/official-events" },
   { label: "단백질 가이드", href: "/guides" },
   { label: "문의", href: "/contact" },
 ];
