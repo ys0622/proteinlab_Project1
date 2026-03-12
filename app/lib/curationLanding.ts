@@ -247,6 +247,30 @@ function mergeInfoSections(
 
 function buildDefaultInfoSections(curation: CurationDefinition, categoryKey: CategoryKey): CurationInfoSection[] {
   const categoryLabel = getCategoryLabel(categoryKey);
+  const situationTitle =
+    curation.kind === "goal"
+      ? `${curation.label} 상황에서 보는 포인트`
+      : curation.kind === "context"
+        ? `${curation.label} 환경에서 보는 포인트`
+        : `${curation.label} 기준으로 보는 포인트`;
+  const situationBullets =
+    curation.kind === "goal"
+      ? [
+          `${curation.label} 목적에 맞는 제품을 먼저 추리고 추천 제품과 전체 비교를 나눠 볼 수 있습니다.`,
+          `${categoryLabel}은 섞지 않고 각각 따로 비교합니다.`,
+          "운동, 회복, 식사 사이 간식처럼 실제 사용 상황에 맞춰 제품을 고를 수 있습니다.",
+        ]
+      : curation.kind === "context"
+        ? [
+            `${curation.label} 환경에서 찾기 쉬운 제품을 먼저 추리고 비교할 수 있습니다.`,
+            `${categoryLabel}은 섞지 않고 각각 따로 비교합니다.`,
+            "브랜드나 접근성 기준으로 먼저 좁힌 뒤 성분 데이터를 함께 볼 수 있습니다.",
+          ]
+        : [
+            `${curation.label} 기준에 맞는 제품을 먼저 추리고 추천 제품과 전체 비교를 나눠 볼 수 있습니다.`,
+            `${categoryLabel}은 섞지 않고 각각 따로 비교합니다.`,
+            "성분 기준 큐레이션 안에서도 단백질, 당류, 칼로리, 밀도를 함께 비교할 수 있습니다.",
+          ];
 
   return [
     {
@@ -259,11 +283,15 @@ function buildDefaultInfoSections(curation: CurationDefinition, categoryKey: Cat
       ],
     },
     {
-      title: `${curation.label} 기준으로 보는 방법`,
+      title: situationTitle,
+      bullets: situationBullets,
+    },
+    {
+      title: "추천 제품과 전체 비교를 같이 보는 이유",
       bullets: [
-        `${curation.label} 기준에 맞는 제품을 먼저 추리고 추천 제품과 전체 비교를 나눠 볼 수 있습니다.`,
-        `${categoryLabel}은 섞지 않고 각각 따로 비교합니다.`,
-        "모바일과 PC 모두 같은 데이터 기준으로 제품을 확인할 수 있습니다.",
+        "추천 제품 섹션에서는 먼저 볼 가치가 높은 제품을 빠르게 확인할 수 있습니다.",
+        "전체 비교 섹션에서는 같은 기준 안에서 제품 폭을 넓게 확인할 수 있습니다.",
+        "모바일과 PC 모두 같은 데이터 기준으로 제품을 비교할 수 있습니다.",
       ],
     },
     {
