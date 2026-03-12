@@ -103,10 +103,12 @@ export default function QuickCuration({
         <p className="text-xs font-semibold text-[var(--foreground)]">빠른 큐레이션</p>
         <span className="text-[11px] text-[var(--foreground-muted)]">좌우로 넘겨보기</span>
       </div>
-      <div className="flex overflow-x-auto pb-1" style={{ gap: "6px" }}>
-        {items.map((item) => (
-          <QuickCurationChip key={item.label} item={item} />
-        ))}
+      <div className="-mx-3 -mb-1 mt-1 overflow-x-auto px-3 pb-2">
+        <div className="flex min-w-max" style={{ gap: "6px" }}>
+          {items.map((item) => (
+            <QuickCurationChip key={item.label} item={item} />
+          ))}
+        </div>
       </div>
     </div>
   );
