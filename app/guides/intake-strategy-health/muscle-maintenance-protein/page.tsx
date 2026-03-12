@@ -5,8 +5,14 @@ import Footer from "@/app/components/Footer";
 export const metadata = {
   title: "근육 유지 전략 | ProteinLab",
   description:
-    "감량기와 운동 병행 상황에서 근육 유지가 왜 중요한지, 총량과 분배 관점에서 정리합니다.",
+    "감량기와 운동 병행 상황에서 근육을 유지하려면 단백질 총량과 분배를 어떻게 봐야 하는지 정리했습니다.",
 };
+
+const maintenancePoints = [
+  "감량기라면 운동 후 한 번보다 하루 총량을 먼저 맞춰야 합니다.",
+  "운동하지 않는 날에도 단백질 섭취 리듬을 유지하는 편이 좋습니다.",
+  "제품은 식사를 대신하는 것이 아니라 식사 계획을 보완하는 용도로 보는 편이 안전합니다.",
+];
 
 export default function MuscleMaintenanceProteinPage() {
   return (
@@ -15,9 +21,13 @@ export default function MuscleMaintenanceProteinPage() {
       <section className="w-full border-t border-b bg-[var(--hero-bg)]" style={{ borderColor: "var(--hero-border)" }}>
         <div className="mx-auto max-w-[1200px] px-4 py-5 md:px-6 md:py-6">
           <div className="flex flex-wrap items-center gap-1.5 text-xs text-[var(--foreground-muted)]">
-            <Link href="/guides">가이드</Link>
+            <Link href="/guides" className="hover:text-[var(--accent)]">
+              가이드
+            </Link>
             <span>/</span>
-            <Link href="/guides/intake-strategy-health">섭취 전략 · 건강</Link>
+            <Link href="/guides/intake-strategy-health" className="hover:text-[var(--accent)]">
+              섭취 전략 · 건강
+            </Link>
             <span>/</span>
             <span>근육 유지 전략</span>
           </div>
@@ -27,16 +37,21 @@ export default function MuscleMaintenanceProteinPage() {
             </span>
           </div>
           <h1 className="mt-3 text-2xl font-bold leading-tight text-[var(--foreground)] md:text-3xl">
-            근육 유지는 총량과 분배를 같이 봐야 합니다
+            근육 유지는
+            <br />
+            총량과 분배를 같이 봐야 합니다
           </h1>
         </div>
       </section>
       <main className="mx-auto max-w-[1200px] px-4 py-8 md:px-6">
         <section className="rounded-2xl border border-[#e8e6e3] bg-white px-5 py-5">
           <ul className="space-y-3 text-sm leading-6 text-[var(--foreground-muted)]">
-            <li>• 감량기라면 단백질 총량이 먼저이고, 그다음이 운동 후 회복 타이밍입니다.</li>
-            <li>• 운동을 하지 않는 날에도 하루 총량이 떨어지지 않게 식사 분배를 유지해야 합니다.</li>
-            <li>• 단백질 제품은 식사 결손을 보완하는 도구로 보는 편이 실전에서 더 유용합니다.</li>
+            {maintenancePoints.map((item) => (
+              <li key={item} className="flex gap-3 rounded-xl border border-[#eef1f3] bg-[#fbfcfd] px-4 py-3">
+                <span className="mt-1 h-2 w-2 shrink-0 rounded-full bg-[#7a5230]" />
+                <span>{item}</span>
+              </li>
+            ))}
           </ul>
         </section>
       </main>
@@ -44,4 +59,3 @@ export default function MuscleMaintenanceProteinPage() {
     </div>
   );
 }
-
