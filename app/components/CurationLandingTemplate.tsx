@@ -73,6 +73,8 @@ export default function CurationLandingTemplate({
   const infoSections = curation.infoSections ?? [];
   const hasDrinkCategory = Boolean(curation.categories.drink);
   const hasBarCategory = Boolean(curation.categories.bar);
+  const isPopularLanding = curation.slug === "popular";
+  const relatedLinksTitle = curation.relatedLinksTitle ?? "관련 가이드";
 
   return (
     <>
@@ -116,6 +118,32 @@ export default function CurationLandingTemplate({
           </div>
         ) : null}
 
+        {isPopularLanding && curation.relatedGuideLinks?.length ? (
+          <section className="mt-8">
+            <div className="mb-4 space-y-1">
+              <h2 className="text-lg font-bold text-[var(--foreground)]">{relatedLinksTitle}</h2>
+              <p className="text-sm leading-6 text-[var(--foreground-muted)]">
+                최근 많이 확인한 큐레이션부터 살펴보고, 각 랜딩 페이지에서 추천 제품과 전체 비교로
+                이어가세요.
+              </p>
+            </div>
+            <div className="grid gap-3 md:grid-cols-3">
+              {curation.relatedGuideLinks.map((guide) => (
+                <Link
+                  key={guide.href}
+                  href={guide.href}
+                  className="rounded-xl border border-[#e8e6e3] bg-[#FFFDF8] px-4 py-4 transition-colors hover:bg-[var(--accent-light)]"
+                >
+                  <p className="text-sm font-semibold text-[var(--foreground)]">{guide.title}</p>
+                  <p className="mt-2 text-xs leading-5 text-[var(--foreground-muted)] md:text-sm">
+                    {guide.description}
+                  </p>
+                </Link>
+              ))}
+            </div>
+          </section>
+        ) : null}
+
         {hasDrinkCategory ? (
           <>
             <ProductSection
@@ -144,10 +172,10 @@ export default function CurationLandingTemplate({
           </>
         ) : null}
 
-        {curation.relatedGuideLinks?.length ? (
+        {!isPopularLanding && curation.relatedGuideLinks?.length ? (
           <section className="mt-10 rounded-xl border border-[#e8e6e3] bg-[#FFFDF8] px-4 py-4">
             <h2 className="text-sm font-semibold text-[var(--foreground)]">
-              {curation.relatedLinksTitle ?? "관련 가이드"}
+              {relatedLinksTitle}
             </h2>
             <div className="mt-3 grid gap-3 md:grid-cols-2">
               {curation.relatedGuideLinks.map((guide) => (
