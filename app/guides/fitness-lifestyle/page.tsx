@@ -16,7 +16,7 @@ const topics = [
       "러너에게 필요한 하루 단백질 기준, 운동 후 회복 타이밍, 제품 비교 포인트를 먼저 정리합니다.",
     question: "러너는 하루에 단백질을 얼마나 먹어야 할까?",
     related: ["1.6~2.0 g/kg/day", "운동 후 20~30g", "하루 4회 분산"],
-    badge: "핵심",
+    badge: "기초",
   },
   {
     title: "마라톤 영양 전략",
@@ -25,23 +25,32 @@ const topics = [
       "훈련기와 레이스 주간을 나눠 보고, 카보 로딩과 회복 식단까지 연결해서 설명합니다.",
     question: "레이스 전후에는 무엇을 다르게 준비해야 할까?",
     related: ["카보 로딩", "레이스 주간 체크", "회복 식단"],
-    badge: "인기",
+    badge: "경기",
   },
   {
-    title: "운동 영양 · 제품 비교",
+    title: "거리별 영양 및 훈련 전략",
+    href: "/guides/fitness-lifestyle/marathon-distance-strategy",
+    description:
+      "5km, 10km, 하프, 풀 마라톤을 거리별로 나눠 훈련 특징과 영양 전략을 비교합니다.",
+    question: "거리별로 단백질과 탄수화물 전략은 어떻게 달라질까?",
+    related: ["5km·10km", "하프·풀", "운동 후 단백질"],
+    badge: "거리별",
+  },
+  {
+    title: "운동 영양 & 제품 비교",
     href: "/guides/fitness-lifestyle/sports-nutrition-guide",
     description:
-      "운동 목적에 따라 어떤 제품이 맞는지, 단백질 종류와 당류·칼로리까지 함께 보는 기준을 정리합니다.",
+      "운동 목적에 따라 어떤 제품이 맞는지, 단백질 종류와 당류·칼로리 기준을 함께 정리합니다.",
     question: "회복용 제품은 어떤 기준으로 골라야 할까?",
-    related: ["고단백", "저당", "식물성", "BCAA"],
+    related: ["고단백", "저당", "식물성"],
     badge: "실전",
   },
   {
     title: "근력운동과 단백질",
     href: "/guides/fitness-lifestyle/strength-training-protein",
     description:
-      "러닝과 병행되는 근력운동에서 단백질 총량, 회복 타이밍, 감량기 전략을 함께 정리합니다.",
-    question: "근력운동을 더하면 단백질 전략은 어떻게 달라질까?",
+      "러닝과 병행하는 근력운동에서 총량, 회복 타이밍, 감량기 전략을 함께 정리합니다.",
+    question: "근력운동을 같이 하면 단백질 전략은 어떻게 달라질까?",
     related: ["주간 루틴", "회복", "근육 유지"],
     badge: "확장",
   },
@@ -49,7 +58,7 @@ const topics = [
     title: "운동 초보 가이드",
     href: "/guides/fitness-lifestyle/beginner-workout-guide",
     description:
-      "운동을 막 시작한 사용자가 식사와 단백질을 무리 없이 연결할 수 있도록 가장 쉬운 기준부터 안내합니다.",
+      "운동을 막 시작한 사람에게 필요한 식사 구조, 제품 활용법, 체크리스트를 가볍게 정리합니다.",
     question: "운동 초보는 무엇부터 챙겨야 할까?",
     related: ["첫 루틴", "가벼운 단백질", "실전 팁"],
     badge: "입문",
@@ -75,16 +84,16 @@ export default function FitnessLifestyleTrackPage() {
             <span className="rounded-md bg-[#f8ede7] px-2 py-0.5 text-[11px] font-semibold tracking-wide text-[#8a4b2f]">
               TRACK D
             </span>
-            <span className="text-xs text-[#8b8b8b]">운동 맥락 속 단백질 전략을 읽는 트랙</span>
+            <span className="text-xs text-[#8b8b8b]">운동 맥락에 맞는 단백질 전략을 보는 트랙</span>
             <span className="text-xs text-[#8b8b8b]">{topics.length}개 주제</span>
           </div>
 
           <div className="mt-4">
             <h1 className="text-[26px] font-bold leading-tight text-[#6b3f28] md:text-[30px]">운동 · 라이프스타일</h1>
             <p className="mt-2 max-w-2xl text-sm leading-6 text-[var(--foreground-muted)]">
-              러닝, 마라톤, 운동 영양, 근력운동, 초보 루틴까지.
+              러닝, 마라톤 영양, 근력운동, 운동 초보 루틴까지.
               <br />
-              실제 운동 상황에 맞는 단백질 전략을 빠르게 찾아볼 수 있도록 Track D를 정리했습니다.
+              실제 운동 상황에 맞는 단백질 전략을 빠르게 찾을 수 있도록 Track D를 정리했습니다.
             </p>
           </div>
         </div>

@@ -150,6 +150,12 @@ export default function MarathonProteinGuidePage() {
           <section className="rounded-[28px] border border-[#e8e6e3] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
             <div className="flex flex-wrap gap-3">
               <Link
+                href="/guides/fitness-lifestyle/marathon-distance-strategy"
+                className="inline-flex items-center justify-center rounded-xl border border-[#eaded7] bg-white px-5 py-3 text-sm font-semibold text-[#6b3f28] transition-colors hover:bg-[#fcf1ea]"
+              >
+                거리별 영양 전략 보기
+              </Link>
+              <Link
                 href="/guides/fitness-lifestyle/sports-nutrition-guide"
                 className="inline-flex items-center justify-center rounded-xl border border-[#eaded7] bg-white px-5 py-3 text-sm font-semibold text-[#6b3f28] transition-colors hover:bg-[#fcf1ea]"
               >

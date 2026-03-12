@@ -772,6 +772,8 @@ h1, h2, h3, h4, h5, h6 {
   overflow: hidden;
   border-radius: 28px;
   border: 1px solid color-mix(in srgb, var(--guide-article-accent) 18%, #e8e6e3) !important;
+  border-top-width: 8px !important;
+  border-top-color: color-mix(in srgb, var(--guide-article-accent) 90%, #ffffff) !important;
   background:
     linear-gradient(180deg, color-mix(in srgb, var(--guide-article-accent-soft) 34%, #ffffff) 0%, #ffffff 68%),
     #ffffff;
@@ -784,7 +786,7 @@ h1, h2, h3, h4, h5, h6 {
   content: "";
   position: absolute;
   inset: 0 0 auto 0;
-  height: 6px;
+  height: 10px;
   background: linear-gradient(
     90deg,
     color-mix(in srgb, var(--guide-article-accent) 100%, #ffffff) 0%,

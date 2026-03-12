@@ -89,7 +89,10 @@ const proteinBasicsParallelSlots = [
     title: "단백질 역할 개요",
     description: "단백질이 근육, 면역, 호르몬, 회복에 어떻게 연결되는지 먼저 이해하는 출발점입니다.",
     searchIntent: "단백질은 몸에서 어떤 일을 하나",
-    internalLinkTargets: [] as { label: string; href: string }[],
+    internalLinkTargets: [
+      { label: "근육과 단백질", href: "/guides/basics/muscle" },
+      { label: "면역·호르몬과 단백질", href: "/guides/basics/immunity-hormone" },
+    ],
     href: "/guides/protein-basics/protein-functions",
   },
   {
