@@ -267,7 +267,7 @@ export const guideTracks: GuideTrack[] = [
         futureFocus: ["장거리 훈련", "회복 관리", "시즌성 콘텐츠"],
         internalLinkTargets: [
           { label: "러닝", href: "/guides/fitness-lifestyle/running-protein-guide" },
-          { label: "시즌 스포츠 이벤트", href: "/guides/fitness-lifestyle/seasonal-sports-events" },
+          { label: "운동 영양", href: "/guides/fitness-lifestyle/sports-nutrition-guide" },
         ],
       },
       {
