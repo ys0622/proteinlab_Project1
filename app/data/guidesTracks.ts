@@ -8,6 +8,7 @@ export type GuideTrackSlug =
 
 export interface GuideSlot {
   slug: string;
+  href?: string;
   title: string;
   description: string;
   searchIntent: string;
@@ -94,17 +95,6 @@ export const guideTracks: GuideTrack[] = [
         internalLinkTargets: [
           { label: "단백질 바 목록", href: "/bars" },
           { label: "성분 비교", href: "/guides/product-selection-comparison/nutrition-comparison" },
-        ],
-      },
-      {
-        slug: "protein-powder-guide",
-        title: "단백질 파우더 선택 가이드",
-        description: "향후 파우더 카테고리 확장을 전제로 한 선택 가이드 슬롯입니다.",
-        searchIntent: "단백질 파우더 선택 기준",
-        futureFocus: ["파우더 카테고리 확장", "원료별 선택", "제품군 비교"],
-        internalLinkTargets: [
-          { label: "단백질 종류", href: "/guides/protein-basics/protein-types" },
-          { label: "운동 영양", href: "/guides/fitness-lifestyle/sports-nutrition-guide" },
         ],
       },
       {
@@ -310,7 +300,7 @@ export const guideTracks: GuideTrack[] = [
         futureFocus: ["운동 영양 프레임", "보충 전략", "카테고리 확장"],
         internalLinkTargets: [
           { label: "운동 전 섭취", href: "/guides/intake-strategy-health/pre-workout-protein" },
-          { label: "단백질 파우더 선택 가이드", href: "/guides/product-selection-comparison/protein-powder-guide" },
+          { label: "단백질 음료 선택 가이드", href: "/guides/product-selection-comparison/protein-drink-guide" },
         ],
       },
       {
