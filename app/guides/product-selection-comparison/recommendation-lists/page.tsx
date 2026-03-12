@@ -55,7 +55,7 @@ export default function RecommendationListsPage() {
         </div>
       </section>
 
-      <main className="mx-auto max-w-[1200px] px-4 py-8 md:px-6">
+      <main className="guide-article-page guide-article-page--track-b mx-auto max-w-[1200px] px-4 py-8 md:px-6">
         <div className="space-y-6">
           <section className="rounded-2xl border border-[#e8e6e3] bg-white px-5 py-5">
             <h2 className="text-xl font-bold text-[var(--foreground)]">상황별로 바로 찾는 법</h2>

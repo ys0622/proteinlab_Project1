@@ -43,7 +43,7 @@ export default function SeniorProteinStrategyPage() {
           </h1>
         </div>
       </section>
-      <main className="mx-auto max-w-[1200px] px-4 py-8 md:px-6">
+      <main className="guide-article-page guide-article-page--track-c mx-auto max-w-[1200px] px-4 py-8 md:px-6">
         <section className="rounded-2xl border border-[#e8e6e3] bg-white px-5 py-5">
           <ul className="space-y-3 text-sm leading-6 text-[var(--foreground-muted)]">
             {seniorTips.map((item) => (

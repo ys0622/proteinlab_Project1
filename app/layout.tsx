@@ -8,13 +8,24 @@ import "./globals.css";
 const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
 
 export const metadata: Metadata = {
-  title: "단백질 음료 비교등급 정리 | ProteinLab",
+  metadataBase: new URL("https://proteinlab.kr"),
+  title: "단백질 제품 비교 플랫폼 | ProteinLab",
   description:
-    "셀렉스, 하이뮨, 더단백 등 국내 단백질 음료를 성분 데이터로 비교합니다. 목적별 추천등급 랭킹가이드까지 한 곳에서 확인하세요.",
+    "단백질 음료와 단백질 바를 성분 데이터로 비교하고, 목적별 추천·등급·가이드까지 한 곳에서 확인하는 ProteinLab입니다.",
   openGraph: {
-    title: "단백질 음료 비교등급 정리 | ProteinLab",
+    title: "단백질 제품 비교 플랫폼 | ProteinLab",
     description:
-      "셀렉스, 하이뮨, 더단백 등 국내 단백질 음료를 성분 데이터로 비교합니다. 목적별 추천등급 랭킹가이드까지 한 곳에서 확인하세요.",
+      "단백질 음료와 단백질 바를 성분 데이터로 비교하고, 목적별 추천·등급·가이드까지 한 곳에서 확인하는 ProteinLab입니다.",
+    url: "https://proteinlab.kr",
+    siteName: "ProteinLab",
+    locale: "ko_KR",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "단백질 제품 비교 플랫폼 | ProteinLab",
+    description:
+      "단백질 음료와 단백질 바를 성분 데이터로 비교하고, 목적별 추천·등급·가이드까지 한 곳에서 확인하는 ProteinLab입니다.",
   },
 };
 

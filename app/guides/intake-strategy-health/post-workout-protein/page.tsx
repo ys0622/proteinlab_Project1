@@ -69,7 +69,7 @@ export default function PostWorkoutProteinPage() {
           </p>
         </div>
       </section>
-      <main className="mx-auto max-w-[1200px] px-4 py-8 md:px-6">
+      <main className="guide-article-page guide-article-page--track-c mx-auto max-w-[1200px] px-4 py-8 md:px-6">
         <div className="space-y-6">
           <section className="rounded-2xl border border-[#e8e6e3] bg-[#fffdf8] px-5 py-5">
             <h2 className="text-xl font-bold text-[var(--foreground)]">운동 후 회복 흐름</h2>

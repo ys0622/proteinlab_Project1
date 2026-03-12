@@ -38,7 +38,7 @@ export default function BrandAnalysisPage() {
           </p>
         </div>
       </section>
-      <main className="mx-auto max-w-[1200px] px-4 py-8 md:px-6">
+      <main className="guide-article-page guide-article-page--track-e mx-auto max-w-[1200px] px-4 py-8 md:px-6">
         <section className="rounded-2xl border border-[#e8e6e3] bg-[#fffdf8] px-5 py-5">
           <h2 className="text-xl font-bold text-[var(--foreground)]">주요 브랜드 포지션</h2>
           <div className="mt-5 overflow-x-auto">

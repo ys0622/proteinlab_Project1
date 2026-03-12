@@ -738,6 +738,111 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 10px;
 }
 
+.guide-article-page {
+  --guide-article-accent: var(--accent);
+  --guide-article-accent-soft: var(--accent-light);
+}
+
+.guide-article-page--track-b {
+  --guide-article-accent: #4a6178;
+  --guide-article-accent-soft: #eef4f9;
+}
+
+.guide-article-page--track-c {
+  --guide-article-accent: #7a5230;
+  --guide-article-accent-soft: #fbf3ec;
+}
+
+.guide-article-page--track-d {
+  --guide-article-accent: #8a4b2f;
+  --guide-article-accent-soft: #fcf1ea;
+}
+
+.guide-article-page--track-e {
+  --guide-article-accent: #6b4d7c;
+  --guide-article-accent-soft: #f5effa;
+}
+
+.guide-article-page > div {
+  gap: 18px;
+}
+
+.guide-article-page > div > section {
+  position: relative;
+  overflow: hidden;
+  border-radius: 28px;
+  border-color: color-mix(in srgb, var(--guide-article-accent) 14%, #e8e6e3) !important;
+  background:
+    linear-gradient(180deg, color-mix(in srgb, var(--guide-article-accent-soft) 24%, #ffffff) 0%, #ffffff 72%),
+    #ffffff;
+  box-shadow: 0 18px 48px rgba(20, 32, 24, 0.05);
+}
+
+.guide-article-page > div > section::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 4px;
+  background: linear-gradient(
+    90deg,
+    color-mix(in srgb, var(--guide-article-accent) 100%, #ffffff) 0%,
+    color-mix(in srgb, var(--guide-article-accent) 40%, #ffffff) 100%
+  );
+}
+
+.guide-article-page > div > section > h2 {
+  color: color-mix(in srgb, var(--guide-article-accent) 76%, #1a1a1a);
+  letter-spacing: -0.02em;
+}
+
+.guide-article-page > div > section > p:first-of-type {
+  max-width: 860px;
+}
+
+.guide-article-page blockquote {
+  border-color: color-mix(in srgb, var(--guide-article-accent) 14%, #eef1f3) !important;
+  background: color-mix(in srgb, var(--guide-article-accent-soft) 38%, #ffffff) !important;
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--guide-article-accent) 6%, transparent);
+}
+
+.guide-article-page table {
+  font-variant-numeric: tabular-nums;
+}
+
+.guide-article-page thead tr {
+  background: color-mix(in srgb, var(--guide-article-accent-soft) 52%, #ffffff);
+}
+
+.guide-article-page thead th {
+  color: color-mix(in srgb, var(--guide-article-accent) 72%, #243d2b);
+}
+
+.guide-article-page tbody tr:last-child td {
+  border-bottom-width: 0;
+}
+
+.guide-article-page [class*="grid"] > article[class*="rounded-xl"],
+.guide-article-page [class*="grid"] > article[class*="rounded-2xl"] {
+  border-color: color-mix(in srgb, var(--guide-article-accent) 12%, #e8eef3) !important;
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--guide-article-accent-soft) 46%, #ffffff) 0%,
+    #ffffff 100%
+  ) !important;
+  box-shadow: 0 12px 28px rgba(20, 32, 24, 0.04);
+}
+
+.guide-article-page ul.space-y-3 > li,
+.guide-article-page ul.space-y-4 > li {
+  border-color: color-mix(in srgb, var(--guide-article-accent) 10%, #eef1f3) !important;
+  background: color-mix(in srgb, var(--guide-article-accent-soft) 32%, #ffffff) !important;
+}
+
+.guide-article-page a.rounded-lg,
+.guide-article-page a.rounded-xl {
+  box-shadow: 0 10px 24px rgba(20, 32, 24, 0.04);
+}
+
 .filter-drawer {
   min-height: 60vh;
   padding-bottom: env(safe-area-inset-bottom);

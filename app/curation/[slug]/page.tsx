@@ -16,6 +16,9 @@ export async function generateMetadata({ params }: CurationPageProps) {
     return {
       title: "큐레이션 | ProteinLab",
       description: "ProteinLab 큐레이션 페이지",
+      alternates: {
+        canonical: "/curation",
+      },
     };
   }
 
@@ -25,6 +28,9 @@ export async function generateMetadata({ params }: CurationPageProps) {
       data.curation.seoDescription ??
       data.curation.heroDescription ??
       "ProteinLab 큐레이션 페이지",
+    alternates: {
+      canonical: `/curation/${slug}`,
+    },
   };
 }
 
