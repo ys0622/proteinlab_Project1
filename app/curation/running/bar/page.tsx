@@ -22,8 +22,8 @@ const runningBars = barProductsWithGrades.filter(
     (product.sugar ?? 999) <= 10,
 );
 
-const recommendedRunningBars = [...runningBars]
-  .sort((a, b) => {
+function rankRunningBars(products: typeof barProductsWithGrades) {
+  return [...products].sort((a, b) => {
     const sugarDelta = (a.sugar ?? 999) - (b.sugar ?? 999);
     if (sugarDelta !== 0) return sugarDelta;
 
@@ -34,8 +34,47 @@ const recommendedRunningBars = [...runningBars]
     if (proteinDelta !== 0) return proteinDelta;
 
     return (a.calories ?? 999) - (b.calories ?? 999);
-  })
-  .slice(0, 6);
+  });
+}
+
+const relaxedRunningBars = barProductsWithGrades.filter(
+  (product) =>
+    product.productType === "bar" &&
+    product.proteinPerServing >= 8 &&
+    product.proteinPerServing <= 20 &&
+    (product.sugar ?? 999) <= 12,
+);
+
+const densityFallbackBars = barProductsWithGrades.filter(
+  (product) =>
+    product.productType === "bar" &&
+    getDensityValue(product.density) >= 4.5 &&
+    (product.sugar ?? 999) <= 12,
+);
+
+function collectRecommendedBars() {
+  const pools = [
+    rankRunningBars(runningBars),
+    rankRunningBars(relaxedRunningBars),
+    rankRunningBars(densityFallbackBars),
+    rankRunningBars(barProductsWithGrades.filter((product) => product.productType === "bar")),
+  ];
+  const picked: typeof barProductsWithGrades = [];
+  const seen = new Set<string>();
+
+  for (const pool of pools) {
+    for (const product of pool) {
+      if (!product.slug || seen.has(product.slug)) continue;
+      seen.add(product.slug);
+      picked.push(product);
+      if (picked.length >= 6) return picked;
+    }
+  }
+
+  return picked;
+}
+
+const recommendedRunningBars = collectRecommendedBars();
 
 export default function RunningBarCurationPage() {
   return (

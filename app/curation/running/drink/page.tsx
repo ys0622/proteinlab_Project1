@@ -14,21 +14,18 @@ function getDensityValue(density: string): number {
   return match ? parseFloat(match[1]) : 0;
 }
 
-function isDensityBOrBetter(gradeTags?: string[]) {
-  return gradeTags?.some((tag) => tag.startsWith("단백질 밀도 A") || tag.startsWith("단백질 밀도 B")) ?? false;
-}
-
-const runningDrinks = mockProducts.filter(
+const primaryRunningDrinks = mockProducts.filter(
   (product) =>
     product.productType !== "bar" &&
     product.proteinPerServing >= 15 &&
     product.proteinPerServing <= 25 &&
-    (product.sugar ?? 999) <= 10 &&
-    isDensityBOrBetter(product.gradeTags),
+    (product.sugar ?? 999) <= 10,
 );
 
-const recommendedRunningDrinks = [...runningDrinks]
-  .sort((a, b) => {
+const runningDrinks = primaryRunningDrinks;
+
+function rankRunningDrinks(products: typeof mockProducts) {
+  return [...products].sort((a, b) => {
     const waterBonusA = a.drinkType === "워터형" ? 1 : 0;
     const waterBonusB = b.drinkType === "워터형" ? 1 : 0;
     if (waterBonusA !== waterBonusB) return waterBonusB - waterBonusA;
@@ -40,8 +37,51 @@ const recommendedRunningDrinks = [...runningDrinks]
     if (proteinDelta !== 0) return proteinDelta;
 
     return (a.sugar ?? 999) - (b.sugar ?? 999);
-  })
-  .slice(0, 6);
+  });
+}
+
+const relaxedRunningDrinks = mockProducts.filter(
+  (product) =>
+    product.productType !== "bar" &&
+    product.proteinPerServing >= 12 &&
+    product.proteinPerServing <= 25 &&
+    (product.sugar ?? 999) <= 12,
+);
+
+const densityFallbackDrinks = mockProducts.filter(
+  (product) =>
+    product.productType !== "bar" &&
+    getDensityValue(product.density) >= 6 &&
+    (product.sugar ?? 999) <= 12,
+);
+
+const topCategoryFallbackDrinks = rankRunningDrinks(
+  mockProducts.filter((product) => product.productType !== "bar"),
+);
+
+function collectRecommendedDrinks() {
+  const pools = [
+    rankRunningDrinks(primaryRunningDrinks),
+    rankRunningDrinks(relaxedRunningDrinks),
+    rankRunningDrinks(densityFallbackDrinks),
+    topCategoryFallbackDrinks,
+  ];
+  const picked: typeof mockProducts = [];
+  const seen = new Set<string>();
+
+  for (const pool of pools) {
+    for (const product of pool) {
+      if (!product.slug || seen.has(product.slug)) continue;
+      seen.add(product.slug);
+      picked.push(product);
+      if (picked.length >= 6) return picked;
+    }
+  }
+
+  return picked;
+}
+
+const recommendedRunningDrinks = collectRecommendedDrinks();
 
 export default function RunningDrinkCurationPage() {
   return (
