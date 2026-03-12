@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { cookies } from "next/headers";
 import { verifySessionToken } from "@/app/lib/session";
-import guidesStaticData from "@/app/data/guidesStaticData.json";
+import { buildAdminGuidesStaticData } from "@/app/lib/adminGuidesStatic";
 
 async function verifyAdmin(): Promise<boolean> {
   const cookieStore = await cookies();
@@ -14,15 +14,20 @@ export async function GET() {
   if (!(await verifyAdmin())) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
-  return NextResponse.json(guidesStaticData);
+
+  return NextResponse.json(buildAdminGuidesStaticData());
 }
 
 export async function PUT() {
   if (!(await verifyAdmin())) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
+
   return NextResponse.json(
-    { error: "파일 쓰기는 Cloudflare Workers에서 지원되지 않습니다. 로컬 서버를 사용하세요." },
-    { status: 501 }
+    {
+      error:
+        "현재 배포 환경은 정적 가이드 JSON을 서버에서 직접 저장하지 않습니다. 관리자 화면에서는 Track A~F 전체 콘텐츠를 검토하고 편집 초안을 확인할 수 있으며, 실제 반영은 코드/데이터 업데이트 방식으로 진행해야 합니다.",
+    },
+    { status: 501 },
   );
 }
