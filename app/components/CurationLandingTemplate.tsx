@@ -71,6 +71,8 @@ export default function CurationLandingTemplate({
   const drinkCopy = curation.categories.drink?.landingCopy;
   const barCopy = curation.categories.bar?.landingCopy;
   const infoSections = curation.infoSections ?? [];
+  const hasDrinkCategory = Boolean(curation.categories.drink);
+  const hasBarCategory = Boolean(curation.categories.bar);
 
   return (
     <>
@@ -86,7 +88,7 @@ export default function CurationLandingTemplate({
         <div className="mx-auto max-w-[1200px] px-4 md:px-6">
           <nav className="mb-3 text-sm text-[var(--foreground-muted)]">
             <Link href="/" className="hover:text-[var(--accent)]">
-              단백질 음료
+              단백질 제품
             </Link>
             <span className="mx-2">/</span>
             <span className="text-[var(--foreground)]">{curation.label} 큐레이션</span>
@@ -98,7 +100,9 @@ export default function CurationLandingTemplate({
 
           <div className="mt-3 max-w-3xl space-y-3 text-sm leading-6 text-[var(--foreground-muted)]">
             {curation.heroDescription ? <p>{curation.heroDescription}</p> : null}
-            {curation.introText ? <p className="font-medium text-[var(--foreground)]">{curation.introText}</p> : null}
+            {curation.introText ? (
+              <p className="font-medium text-[var(--foreground)]">{curation.introText}</p>
+            ) : null}
           </div>
         </div>
       </section>
@@ -112,25 +116,33 @@ export default function CurationLandingTemplate({
           </div>
         ) : null}
 
-        <ProductSection
-          title={drinkCopy?.recommendationTitle ?? "추천 단백질 음료"}
-          note={drinkCopy?.recommendationNote}
-          products={recommendedDrinks}
-        />
-        <ProductSection
-          title={barCopy?.recommendationTitle ?? "추천 단백질 바"}
-          note={barCopy?.recommendationNote}
-          products={recommendedBars}
-        />
+        {hasDrinkCategory ? (
+          <>
+            <ProductSection
+              title={drinkCopy?.recommendationTitle ?? "추천 단백질 음료"}
+              note={drinkCopy?.recommendationNote}
+              products={recommendedDrinks}
+            />
+            <ProductSection
+              title={drinkCopy?.comparisonTitle ?? "단백질 음료 비교"}
+              products={drinkProducts}
+            />
+          </>
+        ) : null}
 
-        <ProductSection
-          title={drinkCopy?.comparisonTitle ?? "단백질 음료 비교"}
-          products={drinkProducts}
-        />
-        <ProductSection
-          title={barCopy?.comparisonTitle ?? "단백질 바 비교"}
-          products={barProducts}
-        />
+        {hasBarCategory ? (
+          <>
+            <ProductSection
+              title={barCopy?.recommendationTitle ?? "추천 단백질 바"}
+              note={barCopy?.recommendationNote}
+              products={recommendedBars}
+            />
+            <ProductSection
+              title={barCopy?.comparisonTitle ?? "단백질 바 비교"}
+              products={barProducts}
+            />
+          </>
+        ) : null}
 
         {curation.relatedGuideLinks?.length ? (
           <section className="mt-10 rounded-xl border border-[#e8e6e3] bg-[#FFFDF8] px-4 py-4">

@@ -143,8 +143,8 @@ export default function ProductListWithFilters(props: ProductListWithFiltersProp
   }, [filtered, searchQuery]);
 
   const sorted = useMemo(
-    () => applySort(searched, sort, productType, products),
-    [searched, productType, products, sort],
+    () => applySort(searched, sort, productType, curationFiltered),
+    [searched, sort, productType, curationFiltered],
   );
 
   useEffect(() => {
@@ -343,7 +343,7 @@ export default function ProductListWithFilters(props: ProductListWithFiltersProp
               </button>
             </div>
             <p className="mt-2 px-1 text-xs text-[var(--foreground-muted)]">
-              셀렉스, 더단백, 하이뮨 등 제품명이나 브랜드로 검색할 수 있습니다.
+              셀렉스, 더단백, 하이뮨처럼 제품명이나 브랜드명으로 검색할 수 있습니다.
             </p>
           </div>
         </div>
@@ -390,7 +390,6 @@ export default function ProductListWithFilters(props: ProductListWithFiltersProp
         />
       </div>
 
-
       <section className="product-grid mt-3 bg-white" style={{ marginTop: "12px" }} aria-label="제품 목록">
         {visible.map((product, idx) => (
           <ProductCard
@@ -410,7 +409,7 @@ export default function ProductListWithFilters(props: ProductListWithFiltersProp
             onClick={() => setPage((current) => current + 1)}
             className="rounded-full border border-[var(--border)] bg-white px-6 py-2.5 text-sm font-medium text-[var(--foreground)] transition-colors hover:border-[var(--accent)] hover:bg-[var(--accent-light)] hover:text-[var(--accent)]"
           >
-            더보기({sorted.length - visible.length}개 남음)
+            더보기 ({sorted.length - visible.length}개 남음)
           </button>
         </div>
       ) : null}

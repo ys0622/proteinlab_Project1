@@ -21,7 +21,8 @@ export async function generateMetadata({ params }: CurationPageProps) {
 
   return {
     title: data.curation.seoTitle ?? `${data.curation.label} 큐레이션 | ProteinLab`,
-    description: data.curation.seoDescription ?? data.curation.heroDescription ?? "ProteinLab 큐레이션 페이지",
+    description:
+      data.curation.seoDescription ?? data.curation.heroDescription ?? "ProteinLab 큐레이션 페이지",
   };
 }
 
