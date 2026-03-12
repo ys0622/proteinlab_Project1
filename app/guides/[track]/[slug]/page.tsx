@@ -172,6 +172,13 @@ export async function generateMetadata({
 
   if (track === "protein-basics" && slug === "protein-functions") {
     return {
+      title: "단백질은 몸에서 어떤 일을 할까? | ProteinLab",
+      description: "단백질이 근육, 면역, 호르몬, 회복에 어떻게 쓰이는지 데이터 기반으로 정리했습니다.",
+    };
+  }
+
+  if (track === "protein-basics" && slug === "protein-functions") {
+    return {
       title: "단백질은 왜 근육·면역·호르몬에 중요한가 | ProteinLab",
       description: "단백질이 근육 성장, 항체 생성, 호르몬 합성에 어떻게 작용하는지 데이터 기반으로 정리했습니다.",
     };
@@ -266,6 +273,197 @@ export default async function GuideSlugPage({
   params: Promise<{ track: string; slug: string }>;
 }) {
   const { track, slug } = await params;
+
+  if (track === "protein-basics" && slug === "protein-functions") {
+    return (
+      <div className="min-h-screen bg-white">
+        <Header />
+        <section className="w-full border-t border-b bg-[var(--hero-bg)]" style={{ borderColor: "var(--hero-border)" }}>
+          <div className="mx-auto max-w-[1200px] px-4 py-4 md:px-6 md:py-5">
+            <div className="flex flex-wrap items-center gap-1.5 text-xs text-[var(--foreground-muted)]">
+              <Link href="/guides" className="hover:text-[var(--accent)]">가이드</Link>
+              <span>/</span>
+              <Link href="/guides/protein-basics" className="hover:text-[var(--accent)]">단백질 기초</Link>
+              <span>/</span>
+              <span>단백질의 역할</span>
+            </div>
+            <div className="mt-3">
+              <span className="rounded-md bg-[#eef4ea] px-2 py-0.5 text-[11px] font-semibold tracking-wide text-[#4c7a57]">TRACK A</span>
+            </div>
+            <h1 className="mt-3 text-2xl font-bold leading-tight text-[var(--foreground)] md:text-3xl">단백질은 몸에서 어떤 일을 할까?</h1>
+            <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
+              단백질은 근육만 만드는 영양소가 아닙니다.<br />
+              면역, 호르몬, 회복까지 몸의 핵심 기능을 지탱하는 재료입니다.
+            </p>
+          </div>
+        </section>
+        <main className="mx-auto max-w-[1200px] px-4 py-8 md:px-6">
+          <div className="space-y-6">
+            <section className="rounded-2xl border border-[#e8e6e3] bg-[#fffdf8] px-5 py-5">
+              <div className="max-w-3xl">
+                <h2 className="text-xl font-bold text-[var(--foreground)]">몸 곳곳이 단백질로 움직입니다</h2>
+                <p className="mt-3 text-sm leading-6 text-[var(--foreground-muted)]">
+                  체내 단백질은 근육에만 모여 있지 않습니다.
+                  피부, 결합조직, 장기, 혈액까지 여러 조직이 단백질을 재료로 사용합니다.
+                </p>
+              </div>
+              <div className="mt-4 overflow-x-auto rounded-2xl border border-[#d8d4cd] bg-[#f7f5f0] p-4">
+                <svg viewBox="0 0 560 108" xmlns="http://www.w3.org/2000/svg" className="h-28 w-full min-w-[520px]" aria-label="인체 조직별 단백질 비중 차트">
+                  {[
+                    { label: "골격근", pct: 22.5, color: "#3d8b6e", textColor: "#1b5e42" },
+                    { label: "피부·결합조직", pct: 17.5, color: "#5aab8a", textColor: "#1b5e42" },
+                    { label: "혈액·장기", pct: 12.5, color: "#7dc4a8", textColor: "#2d6a54" },
+                    { label: "간", pct: 7.5, color: "#a8d8c4", textColor: "#2d6a54" },
+                    { label: "뇌", pct: 6, color: "#ceeade", textColor: "#2d6a54" },
+                  ].map((row, i) => {
+                    const barW = (row.pct / 25) * 360;
+                    const y = i * 19 + 6;
+                    return (
+                      <g key={row.label}>
+                        <text x="0" y={y + 8} fontSize="12" fill="#5c5852" fontFamily="sans-serif">{row.label}</text>
+                        <rect x="100" y={y - 6} width={barW} height="14" rx="4" fill={row.color} />
+                        <text x={100 + barW + 6} y={y + 8} fontSize="12" fill={row.textColor} fontWeight="600" fontFamily="sans-serif">{row.pct}%</text>
+                      </g>
+                    );
+                  })}
+                  <text x="100" y="104" fontSize="10" fill="#9b9791" fontFamily="sans-serif">0%</text>
+                  <text x="208" y="104" fontSize="10" fill="#9b9791" fontFamily="sans-serif">10%</text>
+                  <text x="316" y="104" fontSize="10" fill="#9b9791" fontFamily="sans-serif">20%</text>
+                  <text x="424" y="104" fontSize="10" fill="#9b9791" fontFamily="sans-serif">25%+</text>
+                </svg>
+              </div>
+              <div className="mt-4 grid grid-cols-1 gap-3 md:grid-cols-3">
+                {[
+                  ["대표 조직", "골격근 외에도 피부, 결합조직, 장기에서 단백질이 계속 쓰입니다."],
+                  ["회복 포인트", "운동 후 회복뿐 아니라 조직 재생과 면역 유지에도 단백질이 필요합니다."],
+                  ["핵심 질문", "근육만 챙길 게 아니라 몸 전체 기능을 기준으로 섭취량을 봐야 합니다."],
+                ].map(([title, body]) => (
+                  <article key={title} className="rounded-xl border border-[#e8e6e3] bg-white px-4 py-4">
+                    <h3 className="text-sm font-semibold text-[var(--foreground)]">{title}</h3>
+                    <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">{body}</p>
+                  </article>
+                ))}
+              </div>
+              <div className="mt-5 overflow-x-auto">
+                <table className="min-w-full border-collapse text-left text-sm">
+                  <thead>
+                    <tr className="border-b border-[#e8e6e3] text-[var(--foreground)]">
+                      <th className="px-3 py-3 font-semibold">조직</th>
+                      <th className="px-3 py-3 font-semibold">체중 대비 단백질 비중</th>
+                      <th className="px-3 py-3 font-semibold">대표 역할</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {roleOverviewBodyRows.map((row) => (
+                      <tr key={row[0]} className="border-b border-[#f0eeeb] last:border-b-0">
+                        {row.map((cell) => (
+                          <td key={cell} className="whitespace-nowrap px-3 py-3 text-[var(--foreground-muted)]">{cell}</td>
+                        ))}
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+              <p className="mt-4 text-xs text-[var(--foreground-muted)]">출처: 한국영양학회·보건복지부 「한국인 영양소 섭취기준」(2015)</p>
+            </section>
+            <section className="rounded-2xl border border-[#e8e6e3] bg-[#fffdf8] px-5 py-5">
+              <div className="max-w-3xl">
+                <h2 className="text-xl font-bold text-[var(--foreground)]">단백질이 하는 3가지 핵심 역할</h2>
+                <p className="mt-3 text-sm leading-6 text-[var(--foreground-muted)]">
+                  단백질의 역할은 크게 세 가지로 나눠 볼 수 있습니다.
+                  근육 회복, 면역 유지, 호르몬과 효소 생성입니다.
+                </p>
+              </div>
+              <div className="mt-4 overflow-x-auto rounded-2xl border border-[#d8d4cd] bg-[#f7f5f0] p-4">
+                <svg viewBox="0 0 540 78" xmlns="http://www.w3.org/2000/svg" className="h-28 w-full min-w-[500px]" aria-label="단백질의 3가지 핵심 역할">
+                  <rect x="10" y="5" width="160" height="68" rx="12" fill="#e7f3ec" stroke="#c8e6d8" strokeWidth="1" />
+                  <circle cx="90" cy="29" r="14" fill="white" stroke="#3d8b6e" strokeWidth="1.5" />
+                  <rect x="79" y="27" width="22" height="4" rx="2" fill="#3d8b6e" />
+                  <rect x="75" y="24" width="6" height="10" rx="2" fill="#3d8b6e" />
+                  <rect x="99" y="24" width="6" height="10" rx="2" fill="#3d8b6e" />
+                  <text x="90" y="52" textAnchor="middle" fontSize="13" fontWeight="700" fill="#2d6a4f" fontFamily="sans-serif">근육</text>
+                  <text x="90" y="64" textAnchor="middle" fontSize="10" fill="#5c8a72" fontFamily="sans-serif">생성·회복·유지</text>
+
+                  <rect x="190" y="5" width="160" height="68" rx="12" fill="#eaf0fa" stroke="#c5d8f0" strokeWidth="1" />
+                  <circle cx="270" cy="29" r="14" fill="white" stroke="#4a7fb5" strokeWidth="1.5" />
+                  <path d="M270,17 L280,21 L280,30 Q280,38 270,42 Q260,38 260,30 L260,21 Z" fill="none" stroke="#4a7fb5" strokeWidth="2" strokeLinejoin="round" />
+                  <path d="M266,29 L269,32 L275,26" fill="none" stroke="#4a7fb5" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                  <text x="270" y="52" textAnchor="middle" fontSize="13" fontWeight="700" fill="#2c5f8a" fontFamily="sans-serif">면역</text>
+                  <text x="270" y="64" textAnchor="middle" fontSize="10" fill="#4a6f9a" fontFamily="sans-serif">항체·면역세포 재료</text>
+
+                  <rect x="370" y="5" width="160" height="68" rx="12" fill="#f5ede8" stroke="#e8d0c4" strokeWidth="1" />
+                  <circle cx="450" cy="29" r="14" fill="white" stroke="#8b5e3d" strokeWidth="1.5" />
+                  <circle cx="450" cy="29" r="5" fill="none" stroke="#8b5e3d" strokeWidth="2" />
+                  <line x1="450" y1="18" x2="450" y2="22" stroke="#8b5e3d" strokeWidth="2" strokeLinecap="round" />
+                  <line x1="450" y1="36" x2="450" y2="40" stroke="#8b5e3d" strokeWidth="2" strokeLinecap="round" />
+                  <line x1="439" y1="29" x2="443" y2="29" stroke="#8b5e3d" strokeWidth="2" strokeLinecap="round" />
+                  <line x1="457" y1="29" x2="461" y2="29" stroke="#8b5e3d" strokeWidth="2" strokeLinecap="round" />
+                  <line x1="442" y1="21" x2="445" y2="24" stroke="#8b5e3d" strokeWidth="2" strokeLinecap="round" />
+                  <line x1="455" y1="34" x2="458" y2="37" stroke="#8b5e3d" strokeWidth="2" strokeLinecap="round" />
+                  <line x1="458" y1="21" x2="455" y2="24" stroke="#8b5e3d" strokeWidth="2" strokeLinecap="round" />
+                  <line x1="445" y1="34" x2="442" y2="37" stroke="#8b5e3d" strokeWidth="2" strokeLinecap="round" />
+                  <text x="450" y="52" textAnchor="middle" fontSize="13" fontWeight="700" fill="#6b4020" fontFamily="sans-serif">호르몬·효소</text>
+                  <text x="450" y="64" textAnchor="middle" fontSize="10" fill="#8b6040" fontFamily="sans-serif">신호·대사 조절</text>
+                </svg>
+              </div>
+              <div className="mt-5 grid grid-cols-1 gap-4 lg:grid-cols-3">
+                {roleOverviewCards.map((card) => (
+                  <article key={card.title} className="flex min-h-[180px] flex-col rounded-2xl border border-[#e8e6e3] bg-white px-5 py-5">
+                    <h3 className="text-lg font-bold leading-7 text-[var(--foreground)]">{card.title}</h3>
+                    <p className="mt-3 text-sm leading-6 text-[var(--foreground-muted)]">{card.body}</p>
+                    <div className="mt-auto pt-5">
+                      <Link href={card.href} className="text-sm font-semibold text-[var(--accent)] hover:underline">{card.cta}</Link>
+                    </div>
+                  </article>
+                ))}
+              </div>
+            </section>
+            <section className="rounded-2xl border border-[#e8e6e3] bg-[#fffdf8] px-5 py-5">
+              <div className="max-w-3xl">
+                <h2 className="text-xl font-bold text-[var(--foreground)]">그래서 하루에 얼마나 먹어야 할까?</h2>
+                <p className="mt-3 text-sm leading-6 text-[var(--foreground-muted)]">
+                  몸의 역할을 이해했다면 이제는 섭취량이 중요합니다.
+                  활동량과 체중에 따라 필요한 단백질 양은 달라집니다.
+                </p>
+              </div>
+              <div className="mt-5 overflow-x-auto">
+                <table className="min-w-full border-collapse text-left text-sm">
+                  <thead>
+                    <tr className="border-b border-[#e8e6e3] text-[var(--foreground)]">
+                      <th className="px-3 py-3 font-semibold">활동 수준</th>
+                      <th className="px-3 py-3 font-semibold">권장량</th>
+                      <th className="px-3 py-3 font-semibold">60kg</th>
+                      <th className="px-3 py-3 font-semibold">70kg</th>
+                      <th className="px-3 py-3 font-semibold">80kg</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {roleOverviewIntakeRows.map((row) => (
+                      <tr key={row[0]} className="border-b border-[#f0eeeb] last:border-b-0">
+                        {row.map((cell) => (
+                          <td key={cell} className="whitespace-nowrap px-3 py-3 text-[var(--foreground-muted)]">{cell}</td>
+                        ))}
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+              <p className="mt-4 text-xs text-[var(--foreground-muted)]">출처: WHO·한국영양학회(일반 성인), ISSN Position Stand(운동인)</p>
+              <div className="mt-5 flex flex-wrap gap-3">
+                <Link href="/guides/basics/daily-requirement" className="inline-flex items-center justify-center rounded-lg border border-[#e8e6e3] px-5 py-3 text-sm font-semibold text-[#374151] transition-colors hover:bg-[var(--accent-light)] hover:text-[var(--accent)]">
+                  하루 단백질 권장량 자세히 보기 →
+                </Link>
+                <Link href="/recommend" className="inline-flex items-center justify-center rounded-lg border border-[#e8e6e3] px-5 py-3 text-sm font-semibold text-[#374151] transition-colors hover:bg-[var(--accent-light)] hover:text-[var(--accent)]">
+                  내 목적에 맞는 제품 찾기 →
+                </Link>
+              </div>
+            </section>
+          </div>
+        </main>
+        <Footer />
+      </div>
+    );
+  }
 
   if (track === "protein-basics" && slug === "protein-functions") {
     return (
