@@ -9,8 +9,6 @@ type GuideVisualProps = {
   variant?: "track" | "topic";
 };
 
-type VisualKind = "overview" | "recovery" | "signal" | "warning" | "default";
-
 const trackVisualMap: Record<
   GuideTrackSlug,
   {
@@ -24,7 +22,7 @@ const trackVisualMap: Record<
   },
   "product-selection-comparison": {
     glyph: "C",
-    chips: ["비교", "선택", "성분"],
+    chips: ["비교", "선택", "랭킹"],
   },
   "intake-strategy-health": {
     glyph: "I",
@@ -32,7 +30,7 @@ const trackVisualMap: Record<
   },
   "fitness-lifestyle": {
     glyph: "F",
-    chips: ["운동", "루틴", "회복"],
+    chips: ["운동", "러닝", "영양"],
   },
   "market-insights": {
     glyph: "M",
@@ -40,17 +38,9 @@ const trackVisualMap: Record<
   },
   tools: {
     glyph: "T",
-    chips: ["계산", "도구", "체크"],
+    chips: ["계산", "도구", "활용"],
   },
 };
-
-function getVisualKind(title: string): VisualKind {
-  if (/근육|MPS|회복|성장/i.test(title)) return "recovery";
-  if (/면역|호르몬|효소|신호/i.test(title)) return "signal";
-  if (/부족|결핍|신호|위험/i.test(title)) return "warning";
-  if (/역할|개요|기능|functions/i.test(title)) return "overview";
-  return "default";
-}
 
 export default function GuideVisual({
   track,
@@ -60,12 +50,11 @@ export default function GuideVisual({
   variant = "track",
 }: GuideVisualProps) {
   const visual = trackVisualMap[track];
-  const kind = getVisualKind(title);
   const chips = variant === "track" ? visual.chips : visual.chips.slice(0, 2);
 
   return (
     <div
-      className={`guide-visual guide-visual--${variant} guide-visual--${kind}`}
+      className={`guide-visual ${variant === "topic" ? "guide-visual--topic" : ""}`}
       style={
         {
           "--guide-accent": accentColor,
@@ -75,35 +64,14 @@ export default function GuideVisual({
       aria-hidden="true"
     >
       <div className="guide-visual__panel">
-        <div className="guide-visual__topline">
-          <div className="guide-visual__orb">
-            <span>{visual.glyph}</span>
-          </div>
-          <div className="guide-visual__metrics">
-            <span className="guide-visual__metric">Protein</span>
-            <span className="guide-visual__metric">Sugar</span>
-            <span className="guide-visual__metric">Density</span>
-          </div>
+        <div className="guide-visual__orb">
+          <span>{visual.glyph}</span>
         </div>
-
-        <div className="guide-visual__canvas">
-          <div className="guide-visual__bars">
-            <span className="guide-visual__bar guide-visual__bar--1" />
-            <span className="guide-visual__bar guide-visual__bar--2" />
-            <span className="guide-visual__bar guide-visual__bar--3" />
-          </div>
-
-          <div className="guide-visual__focus">
-            <div className="guide-visual__focus-card">
-              <span className="guide-visual__focus-label">Data</span>
-              <span className="guide-visual__focus-value">{kind === "warning" ? "CHECK" : "GUIDE"}</span>
-            </div>
-            <div className="guide-visual__focus-lines">
-              <span className="guide-visual__line guide-visual__line--strong" />
-              <span className="guide-visual__line" />
-              <span className="guide-visual__line guide-visual__line--short" />
-            </div>
-          </div>
+        <div className="guide-visual__grid">
+          <div className="guide-visual__line guide-visual__line--strong" />
+          <div className="guide-visual__line" />
+          <div className="guide-visual__line guide-visual__line--short" />
+          <div className="guide-visual__line" />
         </div>
       </div>
 
