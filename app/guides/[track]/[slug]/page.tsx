@@ -83,6 +83,27 @@ export async function generateMetadata({
 }) {
   const { track, slug } = await params;
 
+  if (track === "basics" && slug === "muscle") {
+    return {
+      title: "근육 성장에 단백질이 필요한 이유 | ProteinLab",
+      description: "근단백질 합성, 섭취 타이밍, 하루 권장량까지 근육과 단백질의 관계를 정리했습니다.",
+    };
+  }
+
+  if (track === "basics" && slug === "immunity-hormone") {
+    return {
+      title: "단백질과 면역·호르몬 | ProteinLab",
+      description: "항체, 면역세포, 호르몬과 효소가 왜 단백질과 연결되는지 정리했습니다.",
+    };
+  }
+
+  if (track === "basics" && slug === "deficiency-symptoms") {
+    return {
+      title: "단백질 부족 신호 | ProteinLab",
+      description: "피로, 근육 감소, 면역 저하처럼 단백질 부족 시 나타날 수 있는 신호를 정리했습니다.",
+    };
+  }
+
   if (track === "basics" && slug === "deficiency-symptoms") {
     return (
       <div className="min-h-screen bg-white">
@@ -118,6 +139,32 @@ export async function generateMetadata({
                   accentBg="#e7f3ec"
                   variant="topic"
                 />
+              </div>
+              <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-3">
+                <article className="rounded-xl border border-[#e3ece6] bg-white px-4 py-4">
+                  <p className="text-[11px] font-semibold uppercase tracking-wide text-[#6d8a79]">신체 신호</p>
+                  <p className="mt-2 text-sm font-semibold text-[var(--foreground)]">근육 감소·무력감</p>
+                </article>
+                <article className="rounded-xl border border-[#e3ece6] bg-white px-4 py-4">
+                  <p className="text-[11px] font-semibold uppercase tracking-wide text-[#6d8a79]">생활 신호</p>
+                  <p className="mt-2 text-sm font-semibold text-[var(--foreground)]">피로·집중력 저하</p>
+                </article>
+                <article className="rounded-xl border border-[#e3ece6] bg-white px-4 py-4">
+                  <p className="text-[11px] font-semibold uppercase tracking-wide text-[#6d8a79]">건강 신호</p>
+                  <p className="mt-2 text-sm font-semibold text-[var(--foreground)]">면역 저하·회복 지연</p>
+                </article>
+              </div>
+              <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2">
+                <article className="rounded-xl border border-[#e3ece6] bg-white px-4 py-4">
+                  <p className="text-[11px] font-semibold uppercase tracking-wide text-[#6d8a79]">호르몬</p>
+                  <p className="mt-2 text-sm font-semibold text-[var(--foreground)]">인슐린·성장호르몬</p>
+                  <p className="mt-1 text-sm leading-6 text-[var(--foreground-muted)]">혈당 조절과 성장 신호는 단백질성 호르몬과 연결됩니다.</p>
+                </article>
+                <article className="rounded-xl border border-[#e3ece6] bg-white px-4 py-4">
+                  <p className="text-[11px] font-semibold uppercase tracking-wide text-[#6d8a79]">소화 효소</p>
+                  <p className="mt-2 text-sm font-semibold text-[var(--foreground)]">트립신·펩신</p>
+                  <p className="mt-1 text-sm leading-6 text-[var(--foreground-muted)]">음식물을 분해하는 효소도 단백질이라 부족 시 기능 저하가 생길 수 있습니다.</p>
+                </article>
               </div>
               <div className="mt-5 overflow-x-auto">
                 <table className="min-w-full border-collapse text-left text-sm">
@@ -230,6 +277,30 @@ export async function generateMetadata({
                   variant="topic"
                 />
               </div>
+              <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2">
+                <article className="rounded-xl border border-[#e3ece6] bg-white px-4 py-4">
+                  <p className="text-[11px] font-semibold uppercase tracking-wide text-[#6d8a79]">면역 단백질</p>
+                  <p className="mt-2 text-sm font-semibold text-[var(--foreground)]">항체·사이토카인 생성</p>
+                  <p className="mt-1 text-sm leading-6 text-[var(--foreground-muted)]">면역세포와 면역 신호 전달은 단백질 재료를 바탕으로 움직입니다.</p>
+                </article>
+                <article className="rounded-xl border border-[#e3ece6] bg-white px-4 py-4">
+                  <p className="text-[11px] font-semibold uppercase tracking-wide text-[#6d8a79]">회복기 기준</p>
+                  <p className="mt-2 text-sm font-semibold text-[var(--foreground)]">1.5~2.0 g/kg</p>
+                  <p className="mt-1 text-sm leading-6 text-[var(--foreground-muted)]">수술 후 회복기나 중환자 영양에서는 더 높은 기준이 사용됩니다.</p>
+                </article>
+              </div>
+              <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2">
+                <article className="rounded-xl border border-[#e3ece6] bg-white px-4 py-4">
+                  <p className="text-[11px] font-semibold uppercase tracking-wide text-[#6d8a79]">핵심 포인트</p>
+                  <p className="mt-2 text-sm font-semibold text-[var(--foreground)]">운동 후 20~40g 섭취</p>
+                  <p className="mt-1 text-sm leading-6 text-[var(--foreground-muted)]">근합성 자극이 크게 올라가는 대표 구간입니다.</p>
+                </article>
+                <article className="rounded-xl border border-[#e3ece6] bg-white px-4 py-4">
+                  <p className="text-[11px] font-semibold uppercase tracking-wide text-[#6d8a79]">체크 포인트</p>
+                  <p className="mt-2 text-sm font-semibold text-[var(--foreground)]">류신과 총 단백질량</p>
+                  <p className="mt-1 text-sm leading-6 text-[var(--foreground-muted)]">단백질 양뿐 아니라 필수아미노산 구성도 같이 봐야 합니다.</p>
+                </article>
+              </div>
               <blockquote className="mt-4 rounded-xl border border-[#eef1f3] bg-white px-4 py-4 text-sm leading-6 text-[var(--foreground-muted)]">
                 단백질 결핍 시: 면역세포 수 감소 → 감염률 증가 → 회복 지연
               </blockquote>
@@ -298,6 +369,296 @@ export default async function GuideSlugPage({
   params: Promise<{ track: string; slug: string }>;
 }) {
   const { track, slug } = await params;
+
+  if (track === "basics" && slug === "deficiency-symptoms") {
+    return (
+      <div className="min-h-screen bg-white">
+        <Header />
+        <section className="w-full border-t border-b bg-[var(--hero-bg)]" style={{ borderColor: "var(--hero-border)" }}>
+          <div className="mx-auto max-w-[1200px] px-4 py-4 md:px-6 md:py-5">
+            <div className="flex flex-wrap items-center gap-1.5 text-xs text-[var(--foreground-muted)]">
+              <Link href="/guides" className="hover:text-[var(--accent)]">가이드</Link>
+              <span>/</span>
+              <Link href="/guides/protein-basics" className="hover:text-[var(--accent)]">단백질 기초</Link>
+              <span>/</span>
+              <span>단백질 부족 신호</span>
+            </div>
+            <div className="mt-3">
+              <span className="rounded-md bg-[#eef4ea] px-2 py-0.5 text-[11px] font-semibold tracking-wide text-[#4c7a57]">TRACK A</span>
+            </div>
+            <h1 className="mt-3 text-2xl font-bold leading-tight text-[var(--foreground)] md:text-3xl">단백질이 부족하면 몸에 어떤 신호가 올까?</h1>
+            <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
+              단백질 부족은 서서히 나타납니다.<br />
+              피로, 근육 감소, 면역 저하가 겹치기 전에 신호를 먼저 확인해야 합니다.
+            </p>
+          </div>
+        </section>
+        <main className="mx-auto max-w-[1200px] px-4 py-8 md:px-6">
+          <div className="space-y-6">
+            <section className="rounded-2xl border border-[#e8e6e3] bg-[#fffdf8] px-5 py-5">
+              <h2 className="text-xl font-bold text-[var(--foreground)]">대표 신호를 먼저 체크하세요</h2>
+              <p className="mt-3 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
+                단백질 부족은 한 가지 증상으로 끝나지 않습니다.
+                몸 상태와 생활 패턴이 함께 흔들리는 경우가 많습니다.
+              </p>
+              <div className="mt-4">
+                <GuideVisual track="protein-basics" title="단백질 부족 신호" accentColor="#2d6a4f" accentBg="#e7f3ec" variant="topic" />
+              </div>
+              <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-3">
+                <article className="rounded-xl border border-[#e3ece6] bg-white px-4 py-4">
+                  <p className="text-[11px] font-semibold uppercase tracking-wide text-[#6d8a79]">신체 신호</p>
+                  <p className="mt-2 text-sm font-semibold text-[var(--foreground)]">근육 감소·무력감</p>
+                </article>
+                <article className="rounded-xl border border-[#e3ece6] bg-white px-4 py-4">
+                  <p className="text-[11px] font-semibold uppercase tracking-wide text-[#6d8a79]">생활 신호</p>
+                  <p className="mt-2 text-sm font-semibold text-[var(--foreground)]">피로·집중력 저하</p>
+                </article>
+                <article className="rounded-xl border border-[#e3ece6] bg-white px-4 py-4">
+                  <p className="text-[11px] font-semibold uppercase tracking-wide text-[#6d8a79]">건강 신호</p>
+                  <p className="mt-2 text-sm font-semibold text-[var(--foreground)]">면역 저하·회복 지연</p>
+                </article>
+              </div>
+              <div className="mt-5 overflow-x-auto">
+                <table className="min-w-full border-collapse text-left text-sm">
+                  <thead>
+                    <tr className="border-b border-[#e8e6e3] text-[var(--foreground)]">
+                      <th className="px-3 py-3 font-semibold">증상</th>
+                      <th className="px-3 py-3 font-semibold">원인</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {deficiencySymptomRows.map((row) => (
+                      <tr key={row[0]} className="border-b border-[#f0eeeb] last:border-b-0">
+                        {row.map((cell) => (
+                          <td key={cell} className="px-3 py-3 text-sm text-[var(--foreground-muted)]">{cell}</td>
+                        ))}
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </section>
+            <section className="rounded-2xl border border-[#e8e6e3] bg-[#fffdf8] px-5 py-5">
+              <h2 className="text-xl font-bold text-[var(--foreground)]">섭취량 기준도 함께 봐야 합니다</h2>
+              <blockquote className="mt-4 rounded-xl border border-[#eef1f3] bg-white px-4 py-4 text-sm leading-6 text-[var(--foreground-muted)]">
+                하루 단백질 섭취량이 체중(kg) × 0.8g 이하라면 결핍 위험 구간으로 볼 수 있습니다.
+              </blockquote>
+              <p className="mt-4 text-sm leading-6 text-[var(--foreground-muted)]">
+                식사에서 육류, 생선, 달걀, 두부, 유제품 비중이 낮거나 칼로리를 과하게 제한하는 경우 부족 신호가 더 쉽게 나타날 수 있습니다.
+              </p>
+              <div className="mt-5 flex flex-wrap gap-3">
+                <Link href="/guides/basics/daily-requirement" className="inline-flex items-center justify-center rounded-lg border border-[#e8e6e3] px-5 py-3 text-sm font-semibold text-[#374151] transition-colors hover:bg-[var(--accent-light)] hover:text-[var(--accent)]">
+                  하루 단백질 권장량 계산하기 →
+                </Link>
+                <Link href="/recommend" className="inline-flex items-center justify-center rounded-lg border border-[#e8e6e3] px-5 py-3 text-sm font-semibold text-[#374151] transition-colors hover:bg-[var(--accent-light)] hover:text-[var(--accent)]">
+                  단백질 제품 바로 찾기 →
+                </Link>
+              </div>
+            </section>
+          </div>
+        </main>
+        <Footer />
+      </div>
+    );
+  }
+
+  if (track === "basics" && slug === "immunity-hormone") {
+    return (
+      <div className="min-h-screen bg-white">
+        <Header />
+        <section className="w-full border-t border-b bg-[var(--hero-bg)]" style={{ borderColor: "var(--hero-border)" }}>
+          <div className="mx-auto max-w-[1200px] px-4 py-4 md:px-6 md:py-5">
+            <div className="flex flex-wrap items-center gap-1.5 text-xs text-[var(--foreground-muted)]">
+              <Link href="/guides" className="hover:text-[var(--accent)]">가이드</Link>
+              <span>/</span>
+              <Link href="/guides/protein-basics" className="hover:text-[var(--accent)]">단백질 기초</Link>
+              <span>/</span>
+              <span>면역·호르몬과 단백질</span>
+            </div>
+            <div className="mt-3">
+              <span className="rounded-md bg-[#eef4ea] px-2 py-0.5 text-[11px] font-semibold tracking-wide text-[#4c7a57]">TRACK A</span>
+            </div>
+            <h1 className="mt-3 text-2xl font-bold leading-tight text-[var(--foreground)] md:text-3xl">단백질은 면역과 호르몬에도 쓰입니다</h1>
+            <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
+              단백질은 근육만의 재료가 아닙니다.<br />
+              항체, 사이토카인, 인슐린, 효소까지 몸의 조절 시스템 전반과 연결됩니다.
+            </p>
+          </div>
+        </section>
+        <main className="mx-auto max-w-[1200px] px-4 py-8 md:px-6">
+          <div className="space-y-6">
+            <section className="rounded-2xl border border-[#e8e6e3] bg-[#fffdf8] px-5 py-5">
+              <h2 className="text-xl font-bold text-[var(--foreground)]">면역 단백질은 회복과 방어의 재료입니다</h2>
+              <p className="mt-3 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
+                항체와 면역 신호 단백질은 감염 대응뿐 아니라 회복 속도에도 영향을 줍니다.
+              </p>
+              <div className="mt-4">
+                <GuideVisual track="protein-basics" title="면역과 단백질" accentColor="#2d6a4f" accentBg="#e7f3ec" variant="topic" />
+              </div>
+              <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2">
+                <article className="rounded-xl border border-[#e3ece6] bg-white px-4 py-4">
+                  <p className="text-[11px] font-semibold uppercase tracking-wide text-[#6d8a79]">면역 단백질</p>
+                  <p className="mt-2 text-sm font-semibold text-[var(--foreground)]">항체·사이토카인 생성</p>
+                  <p className="mt-1 text-sm leading-6 text-[var(--foreground-muted)]">면역세포와 면역 신호 전달은 단백질 재료를 바탕으로 움직입니다.</p>
+                </article>
+                <article className="rounded-xl border border-[#e3ece6] bg-white px-4 py-4">
+                  <p className="text-[11px] font-semibold uppercase tracking-wide text-[#6d8a79]">회복기 기준</p>
+                  <p className="mt-2 text-sm font-semibold text-[var(--foreground)]">1.5~2.0 g/kg</p>
+                  <p className="mt-1 text-sm leading-6 text-[var(--foreground-muted)]">수술 후 회복기나 중환자 영양에서는 더 높은 기준이 사용됩니다.</p>
+                </article>
+              </div>
+              <blockquote className="mt-4 rounded-xl border border-[#eef1f3] bg-white px-4 py-4 text-sm leading-6 text-[var(--foreground-muted)]">
+                단백질 결핍은 면역세포 감소와 감염률 증가, 회복 지연으로 이어질 수 있습니다.
+              </blockquote>
+            </section>
+            <section className="rounded-2xl border border-[#e8e6e3] bg-[#fffdf8] px-5 py-5">
+              <h2 className="text-xl font-bold text-[var(--foreground)]">호르몬과 효소도 단백질로 움직입니다</h2>
+              <p className="mt-3 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
+                인슐린, 성장호르몬, 소화 효소처럼 대사와 조절을 담당하는 물질도 단백질과 연결됩니다.
+              </p>
+              <div className="mt-4">
+                <GuideVisual track="protein-basics" title="호르몬과 효소" accentColor="#2d6a4f" accentBg="#e7f3ec" variant="topic" />
+              </div>
+              <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2">
+                <article className="rounded-xl border border-[#e3ece6] bg-white px-4 py-4">
+                  <p className="text-[11px] font-semibold uppercase tracking-wide text-[#6d8a79]">호르몬</p>
+                  <p className="mt-2 text-sm font-semibold text-[var(--foreground)]">인슐린·성장호르몬</p>
+                  <p className="mt-1 text-sm leading-6 text-[var(--foreground-muted)]">혈당 조절과 성장 신호는 단백질성 호르몬과 연결됩니다.</p>
+                </article>
+                <article className="rounded-xl border border-[#e3ece6] bg-white px-4 py-4">
+                  <p className="text-[11px] font-semibold uppercase tracking-wide text-[#6d8a79]">소화 효소</p>
+                  <p className="mt-2 text-sm font-semibold text-[var(--foreground)]">트립신·펩신</p>
+                  <p className="mt-1 text-sm leading-6 text-[var(--foreground-muted)]">음식물을 분해하는 효소도 단백질이라 부족 시 기능 저하가 생길 수 있습니다.</p>
+                </article>
+              </div>
+              <div className="mt-5 overflow-x-auto">
+                <table className="min-w-full border-collapse text-left text-sm">
+                  <thead>
+                    <tr className="border-b border-[#e8e6e3] text-[var(--foreground)]">
+                      <th className="px-3 py-3 font-semibold">종류</th>
+                      <th className="px-3 py-3 font-semibold">대표 예시</th>
+                      <th className="px-3 py-3 font-semibold">주요 기능</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {immunityProteinRows.map((row) => (
+                      <tr key={row[0]} className="border-b border-[#f0eeeb] last:border-b-0">
+                        {row.map((cell) => (
+                          <td key={cell} className="whitespace-nowrap px-3 py-3 text-[var(--foreground-muted)]">{cell}</td>
+                        ))}
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </section>
+          </div>
+        </main>
+        <Footer />
+      </div>
+    );
+  }
+
+  if (track === "basics" && slug === "muscle") {
+    return (
+      <div className="min-h-screen bg-white">
+        <Header />
+        <section className="w-full border-t border-b bg-[var(--hero-bg)]" style={{ borderColor: "var(--hero-border)" }}>
+          <div className="mx-auto max-w-[1200px] px-4 py-4 md:px-6 md:py-5">
+            <div className="flex flex-wrap items-center gap-1.5 text-xs text-[var(--foreground-muted)]">
+              <Link href="/guides" className="hover:text-[var(--accent)]">가이드</Link>
+              <span>/</span>
+              <Link href="/guides/protein-basics" className="hover:text-[var(--accent)]">단백질 기초</Link>
+              <span>/</span>
+              <span>근육과 단백질</span>
+            </div>
+            <div className="mt-3">
+              <span className="rounded-md bg-[#eef4ea] px-2 py-0.5 text-[11px] font-semibold tracking-wide text-[#4c7a57]">TRACK A</span>
+            </div>
+            <h1 className="mt-3 text-2xl font-bold leading-tight text-[var(--foreground)] md:text-3xl">근육 성장에 단백질이 필요한 이유</h1>
+            <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
+              운동만으로는 근육이 완성되지 않습니다.<br />
+              단백질이 있어야 손상된 근섬유가 회복되고 새로운 근육 합성이 시작됩니다.
+            </p>
+          </div>
+        </section>
+        <main className="mx-auto max-w-[1200px] px-4 py-8 md:px-6">
+          <div className="space-y-6">
+            <section className="rounded-2xl border border-[#e8e6e3] bg-[#fffdf8] px-5 py-5">
+              <h2 className="text-xl font-bold text-[var(--foreground)]">운동 후에는 근단백질 합성이 중요합니다</h2>
+              <p className="mt-3 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
+                운동 후 단백질이 아미노산으로 분해되면 근합성 신호가 활성화되고, 이 과정이 회복과 성장으로 이어집니다.
+              </p>
+              <div className="mt-4">
+                <GuideVisual track="protein-basics" title="근단백질 합성" accentColor="#2d6a4f" accentBg="#e7f3ec" variant="topic" />
+              </div>
+              <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2">
+                <article className="rounded-xl border border-[#e3ece6] bg-white px-4 py-4">
+                  <p className="text-[11px] font-semibold uppercase tracking-wide text-[#6d8a79]">핵심 포인트</p>
+                  <p className="mt-2 text-sm font-semibold text-[var(--foreground)]">운동 후 20~40g 섭취</p>
+                  <p className="mt-1 text-sm leading-6 text-[var(--foreground-muted)]">근합성 자극이 크게 올라가는 대표 구간입니다.</p>
+                </article>
+                <article className="rounded-xl border border-[#e3ece6] bg-white px-4 py-4">
+                  <p className="text-[11px] font-semibold uppercase tracking-wide text-[#6d8a79]">체크 포인트</p>
+                  <p className="mt-2 text-sm font-semibold text-[var(--foreground)]">류신과 총 단백질량</p>
+                  <p className="mt-1 text-sm leading-6 text-[var(--foreground-muted)]">단백질 양뿐 아니라 필수아미노산 구성도 같이 봐야 합니다.</p>
+                </article>
+              </div>
+              <blockquote className="mt-4 rounded-xl border border-[#eef1f3] bg-white px-4 py-4 text-sm leading-6 text-[var(--foreground-muted)]">
+                단백질 20~40g 섭취 시 근합성 자극이 크게 올라가며, 40g 이상에서는 추가 효과가 제한적입니다.
+              </blockquote>
+            </section>
+            <section className="rounded-2xl border border-[#e8e6e3] bg-[#fffdf8] px-5 py-5">
+              <h2 className="text-xl font-bold text-[var(--foreground)]">언제, 얼마나 먹을지 같이 봐야 합니다</h2>
+              <div className="mt-5 overflow-x-auto">
+                <table className="min-w-full border-collapse text-left text-sm">
+                  <thead>
+                    <tr className="border-b border-[#e8e6e3] text-[var(--foreground)]">
+                      <th className="px-3 py-3 font-semibold">섭취 타이밍</th>
+                      <th className="px-3 py-3 font-semibold">권장량</th>
+                      <th className="px-3 py-3 font-semibold">근거</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {muscleTimingRows.map((row) => (
+                      <tr key={row[0]} className="border-b border-[#f0eeeb] last:border-b-0">
+                        {row.map((cell) => (
+                          <td key={cell} className="whitespace-nowrap px-3 py-3 text-[var(--foreground-muted)]">{cell}</td>
+                        ))}
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+              <div className="mt-5 overflow-x-auto">
+                <table className="min-w-full border-collapse text-left text-sm">
+                  <thead>
+                    <tr className="border-b border-[#e8e6e3] text-[var(--foreground)]">
+                      <th className="px-3 py-3 font-semibold">활동 수준</th>
+                      <th className="px-3 py-3 font-semibold">권장량</th>
+                      <th className="px-3 py-3 font-semibold">60kg</th>
+                      <th className="px-3 py-3 font-semibold">70kg</th>
+                      <th className="px-3 py-3 font-semibold">80kg</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {muscleIntakeRows.map((row) => (
+                      <tr key={row[0]} className="border-b border-[#f0eeeb] last:border-b-0">
+                        {row.map((cell) => (
+                          <td key={cell} className="whitespace-nowrap px-3 py-3 text-[var(--foreground-muted)]">{cell}</td>
+                        ))}
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </section>
+          </div>
+        </main>
+        <Footer />
+      </div>
+    );
+  }
 
   if (track === "protein-basics" && slug === "protein-functions") {
     return (
