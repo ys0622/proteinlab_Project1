@@ -72,11 +72,10 @@ export type WeightRangeBar = "50g 이하" | "50~60g" | "60g 이상";
 export function getBarWeightRange(product: { capacity: string }): WeightRangeBar {
   const g = getCapacityMl(product);
   if (g <= 50) return "50g 이하";
-  if (g <= 60) return "50~60g";
+  if (g < 60) return "50~60g";
   return "60g 이상";
 }
 
-// ---------- 단백질 음료 필터 ----------
 export interface DrinkFilters {
   brand: string[];
   protein: string[];
@@ -105,7 +104,6 @@ export function filterDrinkProducts(products: ProductDetailProps[], filters: Dri
   });
 }
 
-// ---------- 단백질 바 필터 ----------
 export interface BarFilters {
   brand: string[];
   protein: string[];

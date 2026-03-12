@@ -17,7 +17,9 @@ import { getPopularityScore } from "../lib/productPopularity";
 import FilterSection from "./FilterSection";
 import ProductCard from "./ProductCard";
 import ProductTopFivePopover from "./ProductTopFivePopover";
+import QuickCuration from "./QuickCuration";
 import SearchBar from "./SearchBar";
+import ServingBasisNotice from "./ServingBasisNotice";
 import SortBar, { type SortOptionValue } from "./SortBar";
 
 const PAGE_SIZE = 20;
@@ -99,6 +101,8 @@ export default function ProductListWithFilters(props: ProductListWithFiltersProp
   const [sort, setSort] = useState<SortOptionValue>("recommended");
   const [page, setPage] = useState(1);
   const [isDesktop, setIsDesktop] = useState(false);
+  const [mobileSearchOpen, setMobileSearchOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
 
   const filters = productType === "drink" ? drinkFilters : barFilters;
 
@@ -110,9 +114,30 @@ export default function ProductListWithFilters(props: ProductListWithFiltersProp
     [products, filters, productType],
   );
 
+  const searched = useMemo(() => {
+    const keyword = searchQuery.trim().toLowerCase();
+    if (!keyword) return filtered;
+
+    return filtered.filter((product) => {
+      const haystack = [
+        product.name,
+        product.brand,
+        product.flavor,
+        product.slug,
+        product.variant,
+        ...(product.tags ?? []),
+      ]
+        .filter(Boolean)
+        .join(" ")
+        .toLowerCase();
+
+      return haystack.includes(keyword);
+    });
+  }, [filtered, searchQuery]);
+
   const sorted = useMemo(
-    () => applySort(filtered, sort, productType, products),
-    [filtered, productType, products, sort],
+    () => applySort(searched, sort, productType, products),
+    [searched, productType, products, sort],
   );
 
   useEffect(() => {
@@ -157,6 +182,7 @@ export default function ProductListWithFilters(props: ProductListWithFiltersProp
 
   const handleResetFilters = () => {
     setPage(1);
+    setSearchQuery("");
     if (productType === "drink") {
       setDrinkFilters(defaultDrinkFilters);
       return;
@@ -169,23 +195,55 @@ export default function ProductListWithFilters(props: ProductListWithFiltersProp
     setSort(newSort);
   };
 
+  const handleSearchChange = (value: string) => {
+    setPage(1);
+    setSearchQuery(value);
+  };
+
   const pathname = usePathname();
   const isBar = pathname === "/bars";
 
   return (
     <>
+      <div className="mt-3 md:hidden" style={{ marginTop: "12px" }}>
+        <QuickCuration productType={productType} />
+      </div>
+
+      <div className="mt-3 hidden md:block" style={{ marginTop: "12px" }}>
+        <QuickCuration productType={productType} variant="inline" />
+      </div>
+
       <div
         className="mt-3 rounded-xl border border-[var(--border)] bg-[var(--filter-box-bg)]"
         style={{ marginTop: "12px", borderRadius: "12px", padding: "10px 12px" }}
       >
-        <SearchBar />
-        <div className="mt-1.5">
+        <div className="hidden md:block">
+          <SearchBar value={searchQuery} onChange={handleSearchChange} />
+        </div>
+        <div className={isDesktop ? "mt-1.5" : ""}>
           {productType === "drink" ? (
             <FilterSection
               productType="drink"
               filters={filters as DrinkFilters}
               onFilterToggle={handleDrinkFilterToggle}
               onResetFilters={handleResetFilters}
+              mobileToolbarSlot={
+                <button
+                  type="button"
+                  onClick={() => setMobileSearchOpen(true)}
+                  className="inline-flex h-9 w-9 items-center justify-center rounded-full text-[#374151] transition-colors hover:bg-white/70 md:hidden"
+                  aria-label="검색 열기"
+                >
+                  <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                    />
+                  </svg>
+                </button>
+              }
             />
           ) : (
             <FilterSection
@@ -193,10 +251,66 @@ export default function ProductListWithFilters(props: ProductListWithFiltersProp
               filters={filters as BarFilters}
               onFilterToggle={handleBarFilterToggle}
               onResetFilters={handleResetFilters}
+              mobileToolbarSlot={
+                <button
+                  type="button"
+                  onClick={() => setMobileSearchOpen(true)}
+                  className="inline-flex h-9 w-9 items-center justify-center rounded-full text-[#374151] transition-colors hover:bg-white/70 md:hidden"
+                  aria-label="검색 열기"
+                >
+                  <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                    />
+                  </svg>
+                </button>
+              }
             />
           )}
         </div>
       </div>
+
+      {mobileSearchOpen ? (
+        <div
+          className="fixed inset-0 z-[120] bg-black/35 px-4 py-6 md:hidden"
+          onClick={() => setMobileSearchOpen(false)}
+        >
+          <div
+            className="mx-auto mt-16 max-w-[560px] rounded-2xl bg-white p-3 shadow-xl"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <div className="flex items-center gap-2">
+              <SearchBar
+                value={searchQuery}
+                onChange={handleSearchChange}
+                autoFocus
+                className="flex-1"
+              />
+              <button
+                type="button"
+                onClick={() => setMobileSearchOpen(false)}
+                className="inline-flex h-9 w-9 items-center justify-center rounded-full text-[#374151] transition-colors hover:bg-[#f3f4f6]"
+                aria-label="검색 닫기"
+              >
+                <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                </svg>
+              </button>
+            </div>
+            <p className="mt-2 px-1 text-xs text-[var(--foreground-muted)]">
+              셀렉스, 더단백, 하이뮨 등 제품명이나 브랜드로 검색할 수 있습니다.
+            </p>
+          </div>
+        </div>
+      ) : null}
 
       <div
         className="mt-3 flex flex-col gap-2 min-[360px]:flex-row min-[360px]:items-center min-[360px]:justify-between"
@@ -232,12 +346,13 @@ export default function ProductListWithFilters(props: ProductListWithFiltersProp
 
       <div className="mt-2" style={{ marginTop: "8px" }}>
         <SortBar
-          total={filtered.length}
+          total={searched.length}
           categoryLabel={productType === "bar" ? "단백질 바" : "단백질 음료"}
           sort={sort}
           onSortChange={handleSortChange}
         />
       </div>
+
 
       <section className="product-grid mt-3 bg-white" style={{ marginTop: "12px" }} aria-label="제품 목록">
         {visible.map((product, idx) => (
@@ -248,6 +363,8 @@ export default function ProductListWithFilters(props: ProductListWithFiltersProp
           />
         ))}
       </section>
+
+      {productType === "bar" ? <ServingBasisNotice className="mt-4" /> : null}
 
       {!isDesktop && hasMore ? (
         <div className="mt-8 flex justify-center">

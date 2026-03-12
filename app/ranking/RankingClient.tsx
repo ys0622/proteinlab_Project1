@@ -1,15 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
-import type {
-  KeyboardEvent as ReactKeyboardEvent,
-  MouseEvent as ReactMouseEvent,
-} from "react";
-import { getProductImageUrl } from "../lib/productImage";
 import type { ProductDetailProps } from "../data/products";
+import ProductCard from "../components/ProductCard";
 
 type ProductType = "drink" | "bar";
 type GradeMetric = "density" | "diet" | "performance";
@@ -43,29 +37,16 @@ const GRADE_COLORS: Record<string, { bg: string; color: string; border: string }
   D: { bg: "#f3f3f3", color: "#999", border: "#bbb" },
 };
 
-const GRADE_LABELS: Record<string, string> = {
-  "밀도": "단백질 밀도",
-  "다이어트": "다이어트",
-  "퍼포먼스": "퍼포먼스",
-};
-
-function parseGradeTag(tag: string): { label: string; grade: string } {
-  const parts = tag.split(" ");
-  const grade = parts.pop() ?? "";
-  const label = parts.join(" ");
-  return { label, grade };
-}
-
-function RankingCard({
+function RankingResultCard({
   item,
   metric,
+  compact = false,
 }: {
   item: RankingItem;
   metric: GradeMetric;
+  compact?: boolean;
 }) {
-  const router = useRouter();
   const { product, score, grade, rank } = item;
-  const imgUrl = getProductImageUrl(product.slug);
   const gc = GRADE_COLORS[grade] ?? GRADE_COLORS.D;
 
   const formatScore = (s: number, m: GradeMetric) => {
@@ -75,178 +56,41 @@ function RankingCard({
   };
 
   const metricLabel = metric === "density" ? "단백질 밀도" : metric === "diet" ? "다이어트" : "퍼포먼스";
-  const detailHref = `/product/${product.slug}`;
-
-  const shouldIgnoreCardClick = (target: EventTarget | null) => {
-    if (!(target instanceof HTMLElement)) {
-      return false;
-    }
-
-    return Boolean(target.closest("a, button, input, select, textarea, label"));
-  };
-
-  const openDetail = () => {
-    router.push(detailHref);
-  };
-
-  const handleCardClick = (event: ReactMouseEvent<HTMLElement>) => {
-    if (shouldIgnoreCardClick(event.target)) {
-      return;
-    }
-
-    openDetail();
-  };
-
-  const handleCardKeyDown = (event: ReactKeyboardEvent<HTMLElement>) => {
-    if (shouldIgnoreCardClick(event.target)) {
-      return;
-    }
-
-    if (event.key === "Enter" || event.key === " ") {
-      event.preventDefault();
-      openDetail();
-    }
-  };
 
   return (
-    <article
-      className="relative flex cursor-pointer flex-col transition-colors duration-200 hover:border-[#ddd] focus:outline-none focus:ring-2 focus:ring-[var(--accent)] focus:ring-offset-2"
-      onClick={handleCardClick}
-      onKeyDown={handleCardKeyDown}
-      role="link"
-      tabIndex={0}
-      aria-label={`${product.name} 상세 보기`}
-      style={{
-        border: "1px solid #e8e6e3",
-        borderRadius: "16px",
-        background: "#FFFDF8",
-        overflow: "hidden",
-      }}
-    >
-      {/* 순위 뱃지 */}
-      <span
-        className="absolute top-3 right-3 z-10 flex h-7 w-7 items-center justify-center rounded-full text-xs font-extrabold"
-        style={{
-          background: rank <= 3 ? "var(--accent)" : "#f3f4f6",
-          color: rank <= 3 ? "white" : "#6b7280",
-        }}
-      >
-        {rank}
-      </span>
-
-      {/* 현재 메트릭 등급 뱃지 (좌상단) */}
-      <span
-        className="absolute top-3 left-3 z-10 flex items-center gap-1 rounded-full px-2.5 py-1 text-xs font-bold"
-        style={{ background: gc.bg, color: gc.color, border: `1.5px solid ${gc.border}` }}
-      >
-        {metricLabel} {grade}
-      </span>
-
-      {/* 이미지 */}
-      <Link
-        href={detailHref}
-        className="relative flex items-center justify-center border-b border-[#f0eeeb] bg-white"
-        style={{ height: "160px" }}
-      >
-        {imgUrl ? (
-          <Image
-            src={imgUrl}
-            alt={product.name}
-            fill
-            className="object-contain p-4"
-            sizes="200px"
-            unoptimized
-          />
-        ) : (
-          <div className="h-full w-full" />
-        )}
-      </Link>
-
-      {/* 내용 */}
-      <div className="flex flex-1 flex-col p-4">
-        <p className="truncate text-xs" style={{ color: "#7a7a7a" }}>
-          {product.brand}
-        </p>
-        <Link
-          href={detailHref}
-          className="mt-0.5 block text-sm font-bold leading-snug line-clamp-2 hover:underline"
-          style={{ color: "#1a1a1a" }}
-        >
-          {product.name}
-        </Link>
-        <p className="mt-0.5 text-xs" style={{ color: "#999" }}>
-          {product.capacity}
-        </p>
-
-        {/* 전체 등급 뱃지 */}
-        <div className="mt-2.5 flex flex-wrap gap-1">
-          {(product.gradeTags ?? []).map((tag) => {
-            const { label, grade: g } = parseGradeTag(tag);
-            const c = GRADE_COLORS[g] ?? GRADE_COLORS.D;
-            return (
-              <span
-                key={tag}
-                style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  height: "26px",
-                  padding: "0 10px",
-                  borderRadius: "999px",
-                  background: c.bg,
-                  border: `1px solid ${c.border}`,
-                  color: c.color,
-                  fontSize: 12,
-                  fontWeight: 600,
-                }}
-              >
-                {GRADE_LABELS[label] ?? label} {g}
-              </span>
-            );
-          })}
-        </div>
-
-        {/* 핵심 수치 */}
-        <div className="mt-3 grid grid-cols-3 gap-1.5">
-          {[
-            { label: "단백질", value: `${product.proteinPerServing}g`, color: "#1B7F5B" },
-            { label: "칼로리", value: product.calories != null ? `${product.calories}kcal` : "—", color: "#6b7280" },
-            { label: "당류", value: product.sugar != null ? `${product.sugar}g` : "—", color: product.sugar === 0 ? "#1B7F5B" : "#f97316" },
-          ].map((stat) => (
-            <div
-              key={stat.label}
-              className="rounded-lg border border-[#f0eeeb] bg-[#fafaf8] px-2 py-2 text-center"
-            >
-              <p style={{ fontSize: 16, fontWeight: 800, color: stat.color, lineHeight: 1.2 }}>
-                {stat.value}
-              </p>
-              <p style={{ fontSize: 10, color: "#9ca3af", marginTop: 2 }}>{stat.label}</p>
-            </div>
-          ))}
-        </div>
-
-        {/* 현재 메트릭 점수 */}
-        <div
-          className="mt-3 flex items-center justify-between rounded-lg px-3 py-2"
-          style={{ background: "#EFEDE6" }}
-        >
-          <span className="text-xs font-medium" style={{ color: "#7a7a7a" }}>
-            {metricLabel} 점수
+    <div className="relative">
+      <div className="mb-2 flex items-center justify-between gap-2 rounded-xl border border-[#e8e6e3] bg-[#faf8f2] px-3 py-2.5">
+        <div className="flex min-w-0 items-center gap-2">
+          <span
+            className="inline-flex h-7 min-w-7 items-center justify-center rounded-full px-2 text-xs font-extrabold"
+            style={{
+              background: rank <= 3 ? "var(--accent)" : "#f3f4f6",
+              color: rank <= 3 ? "#fff" : "#6b7280",
+            }}
+          >
+            {rank}
           </span>
-          <span className="text-sm font-extrabold" style={{ color: gc.color }}>
-            {formatScore(score, metric)}
+          <span className={`${compact ? "text-[11px]" : "text-xs"} font-semibold text-[#374151]`}>
+            {metricLabel} {grade}
           </span>
         </div>
-
-        {/* 상세 보기 */}
-        <Link
-          href={detailHref}
-          className="mt-3 block w-full rounded-lg py-2.5 text-center text-xs font-semibold transition-colors hover:bg-[var(--accent-light)] hover:text-[var(--accent)]"
-          style={{ border: "1px solid #e8e6e3", background: "#fff", color: "#374151" }}
+        <span
+          className={`${compact ? "text-[11px]" : "text-xs"} rounded-full px-2.5 py-1 font-bold`}
+          style={{ background: gc.bg, color: gc.color, border: `1px solid ${gc.border}` }}
         >
-          상세 보기 →
-        </Link>
+          {grade} 등급
+        </span>
       </div>
-    </article>
+      <ProductCard {...product} />
+      <div
+        className="mt-2 flex items-center justify-between rounded-xl border border-[#e8e6e3] bg-[#faf8f2] px-3 py-2.5"
+      >
+        <span className="text-xs font-medium text-[#6b7280]">{metricLabel} 점수</span>
+        <span className="text-sm font-extrabold" style={{ color: gc.color }}>
+          {formatScore(score, metric)}
+        </span>
+      </div>
+    </div>
   );
 }
 
@@ -323,9 +167,15 @@ export default function RankingClient({ rankings }: RankingClientProps) {
         </p>
 
         {/* 제품 카드 그리드 */}
-        <div className="mt-4 grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-4">
+        <div className="mt-4 grid grid-cols-2 gap-3 md:hidden">
           {items.map((item) => (
-            <RankingCard key={item.product.slug} item={item} metric={metric} />
+            <RankingResultCard key={item.product.slug} item={item} metric={metric} compact />
+          ))}
+        </div>
+
+        <div className="mt-4 hidden md:grid md:grid-cols-3 md:gap-3 lg:grid-cols-4">
+          {items.map((item) => (
+            <RankingResultCard key={item.product.slug} item={item} metric={metric} />
           ))}
         </div>
 

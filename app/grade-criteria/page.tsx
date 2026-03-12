@@ -1,8 +1,8 @@
-"use client";
+﻿"use client";
 
 import { useState } from "react";
-import Header from "../components/Header";
 import Footer from "../components/Footer";
+import Header from "../components/Header";
 
 type ProductType = "drink" | "bar";
 
@@ -40,9 +40,18 @@ const PRODUCT_TYPES: { id: ProductType; label: string }[] = [
 ];
 
 const FAQ = [
-  { q: "단백질음료 등급은 어떻게 계산하나요", a: "단백질 밀도, 다이어트, 퍼포먼스 3개 지표를 각각 계산하고 전체 제품 대비 상대 순위(20/50/80 퍼센타일)로 A~D 등급을 부여합니다." },
-  { q: "가격이 등급에 영향을 주나요", a: "아니요. 등급은 영양성분 기반 지표로만 계산합니다. 가격은 별도 참고 정보입니다." },
-  { q: "식물성 제품도 같은 기준인가요", a: "네. 동일한 지표와 동일한 등급 구간으로 계산합니다." },
+  {
+    q: "단백질 음료 등급은 어떻게 계산하나요?",
+    a: "단백질 밀도, 다이어트, 퍼포먼스 3개 지표를 각각 계산하고 전체 제품 대비 상대 순위 기준으로 A~D 등급을 부여합니다.",
+  },
+  {
+    q: "가격이 등급에 영향을 주나요?",
+    a: "아니요. 등급은 영양성분 기반 지표로만 계산하며 가격은 별도 참고 정보입니다.",
+  },
+  {
+    q: "식물성 제품도 같은 기준으로 계산하나요?",
+    a: "네. 같은 제품군 안에서는 동일한 지표와 동일한 등급 구간으로 계산합니다.",
+  },
 ];
 
 export default function GradeCriteriaPage() {
@@ -53,65 +62,94 @@ export default function GradeCriteriaPage() {
     <div className="min-h-screen bg-white">
       <Header />
 
-      {/* 히어로 영역 */}
       <section className="w-full border-t border-b bg-[var(--hero-bg)]" style={{ borderColor: "var(--hero-border)" }}>
         <div className="mx-auto max-w-[1200px] px-4 py-4 md:px-6 md:py-5">
-          <h1 className="text-2xl font-bold leading-tight text-[var(--foreground)] md:text-3xl" style={{ fontWeight: 700 }}>
+          <h1 className="text-2xl font-bold leading-tight text-[var(--foreground)] md:text-3xl">
             등급 산정 기준
           </h1>
-          <p className="mt-1 text-sm text-[var(--foreground-muted)]" style={{ fontWeight: 400 }}>
-            단백질 밀도·다이어트·퍼포먼스 등급은 아래 수치 기준으로 산정됩니다. 모두 영양성분 기반이며, 제조사 공식 자료 기준입니다.
+          <p className="mt-1 text-sm text-[var(--foreground-muted)]">
+            단백질 밀도, 다이어트, 퍼포먼스 등급은 아래 기준으로 산정합니다. 모두 영양성분 기반이며 제조사 공개 자료를 기준으로 정리했습니다.
           </p>
         </div>
       </section>
 
       <main className="mx-auto max-w-[1200px] px-4 py-6 md:px-6">
-        {/* 단백질 음료/바 토글 */}
         <div className="flex gap-2">
-          {PRODUCT_TYPES.map((t) => (
+          {PRODUCT_TYPES.map((type) => (
             <button
-              key={t.id}
+              key={type.id}
               type="button"
-              onClick={() => setProductType(t.id)}
+              onClick={() => setProductType(type.id)}
               className="rounded-full px-4 py-1.5 text-sm font-medium transition-colors"
               style={{
-                background: productType === t.id ? "var(--accent)" : "white",
-                color: productType === t.id ? "white" : "#6b6b6b",
-                border: productType === t.id ? "none" : "1px solid var(--border)",
+                background: productType === type.id ? "var(--accent)" : "white",
+                color: productType === type.id ? "white" : "#6b6b6b",
+                border: productType === type.id ? "1px solid var(--accent)" : "1px solid var(--border)",
               }}
             >
-              {t.label}
+              {type.label}
             </button>
           ))}
         </div>
 
-        {/* 통합 등급 테이블 */}
-        <div className="mt-4 overflow-x-auto rounded-xl border border-[#e8e6e3]">
-          <table className="w-full min-w-[600px] border-collapse text-sm">
+        <div className="mt-4 md:hidden">
+          <div className="flex items-center gap-2 rounded-xl border border-[#e8e6e3] bg-[#FFFDF8] px-3 py-2 text-xs text-[#6b7280]">
+            <span aria-hidden="true">←</span>
+            <span className="flex-1">좌우로 넘겨보세요. 다이어트 오른쪽에 퍼포먼스 기준이 있습니다.</span>
+            <span aria-hidden="true">→</span>
+          </div>
+        </div>
+
+        <div className="mt-3 overflow-x-auto rounded-xl border border-[#e8e6e3]">
+          <table className="w-full min-w-[760px] border-collapse text-sm">
+            <colgroup>
+              <col style={{ width: "72px" }} />
+              <col style={{ width: "228px" }} />
+              <col style={{ width: "228px" }} />
+              <col style={{ width: "228px" }} />
+            </colgroup>
             <thead>
               <tr style={{ background: "#f9f8f5" }}>
-                <th className="px-4 py-2.5 text-center font-semibold" style={{ color: "#6b6b6b", width: "64px" }}>등급</th>
-                <th className="border-l border-[#e8e6e3] px-4 py-2.5 text-left font-semibold" style={{ color: "#6b6b6b" }}>단백질 밀도</th>
-                <th className="border-l border-[#e8e6e3] px-4 py-2.5 text-left font-semibold" style={{ color: "#6b6b6b" }}>다이어트</th>
-                <th className="border-l border-[#e8e6e3] px-4 py-2.5 text-left font-semibold" style={{ color: "#6b6b6b" }}>퍼포먼스</th>
+                <th className="px-4 py-2.5 text-center font-semibold" style={{ color: "#6b6b6b" }}>
+                  등급
+                </th>
+                <th className="border-l border-[#e8e6e3] px-4 py-2.5 text-left font-semibold whitespace-nowrap" style={{ color: "#6b6b6b" }}>
+                  단백질 밀도
+                </th>
+                <th className="border-l border-[#e8e6e3] px-4 py-2.5 text-left font-semibold whitespace-nowrap" style={{ color: "#6b6b6b" }}>
+                  다이어트
+                </th>
+                <th className="border-l border-[#e8e6e3] px-4 py-2.5 text-left font-semibold whitespace-nowrap" style={{ color: "#6b6b6b" }}>
+                  퍼포먼스
+                </th>
               </tr>
             </thead>
             <tbody>
               {rows.map((row) => {
-                const gc = GRADE_COLORS[row.grade];
+                const color = GRADE_COLORS[row.grade];
                 return (
                   <tr key={row.grade} className="border-t border-[#f0eeeb]">
-                    <td className="px-4 py-3 text-center" style={{ background: gc.bg }}>
+                    <td className="px-4 py-3 text-center" style={{ background: color.bg }}>
                       <span
                         className="inline-flex h-8 w-8 items-center justify-center rounded-full text-sm font-bold"
-                        style={{ background: gc.bg, color: gc.color, border: `1.5px solid ${gc.border}` }}
+                        style={{
+                          background: color.bg,
+                          color: color.color,
+                          border: `1.5px solid ${color.border}`,
+                        }}
                       >
                         {row.grade}
                       </span>
                     </td>
-                    <td className="border-l border-[#f0eeeb] px-4 py-3 leading-relaxed" style={{ color: "#3d3d3d" }}>{row.density}</td>
-                    <td className="border-l border-[#f0eeeb] px-4 py-3 leading-relaxed" style={{ color: "#3d3d3d" }}>{row.diet}</td>
-                    <td className="border-l border-[#f0eeeb] px-4 py-3 leading-relaxed" style={{ color: "#3d3d3d" }}>{row.performance}</td>
+                    <td className="border-l border-[#f0eeeb] px-4 py-3 leading-relaxed" style={{ color: "#3d3d3d" }}>
+                      {row.density}
+                    </td>
+                    <td className="border-l border-[#f0eeeb] px-4 py-3 leading-relaxed" style={{ color: "#3d3d3d" }}>
+                      {row.diet}
+                    </td>
+                    <td className="border-l border-[#f0eeeb] px-4 py-3 leading-relaxed" style={{ color: "#3d3d3d" }}>
+                      {row.performance}
+                    </td>
                   </tr>
                 );
               })}
@@ -119,10 +157,11 @@ export default function GradeCriteriaPage() {
           </table>
         </div>
 
-        {/* 계산 방식 3개를 나란히 */}
         <div className="mt-6 grid gap-3 sm:grid-cols-3">
           <div className="rounded-xl border border-[#e8e6e3] bg-[#FFFDF8] px-4 py-3.5" style={{ borderRadius: "16px" }}>
-            <h3 className="text-xs font-semibold" style={{ color: "#1B7F5B" }}>단백질 밀도</h3>
+            <h3 className="text-xs font-semibold" style={{ color: "#1B7F5B" }}>
+              단백질 밀도
+            </h3>
             <ul className="mt-1.5 space-y-1 text-xs leading-relaxed" style={{ color: "#6b6b6b" }}>
               {productType === "drink" ? (
                 <>
@@ -138,39 +177,46 @@ export default function GradeCriteriaPage() {
             </ul>
           </div>
           <div className="rounded-xl border border-[#e8e6e3] bg-[#FFFDF8] px-4 py-3.5" style={{ borderRadius: "16px" }}>
-            <h3 className="text-xs font-semibold" style={{ color: "#4C7BD9" }}>다이어트</h3>
+            <h3 className="text-xs font-semibold" style={{ color: "#4C7BD9" }}>
+              다이어트
+            </h3>
             <ul className="mt-1.5 space-y-1 text-xs leading-relaxed" style={{ color: "#6b6b6b" }}>
               <li>· 칼로리(kcal) + 당류(g) × 4</li>
-              <li>· 낮을수록 다이어트에 유리 (당류 4배 가중)</li>
+              <li>· 낮을수록 다이어트에 유리하게 계산</li>
             </ul>
           </div>
           <div className="rounded-xl border border-[#e8e6e3] bg-[#FFFDF8] px-4 py-3.5" style={{ borderRadius: "16px" }}>
-            <h3 className="text-xs font-semibold" style={{ color: "#F08A24" }}>퍼포먼스</h3>
+            <h3 className="text-xs font-semibold" style={{ color: "#F08A24" }}>
+              퍼포먼스
+            </h3>
             <ul className="mt-1.5 space-y-1 text-xs leading-relaxed" style={{ color: "#6b6b6b" }}>
-              <li>· 단백질(g) ÷ (1 + (cal + 당류×2) ÷ 100)</li>
-              <li>· 높을수록 운동·퍼포먼스 보충에 효율적</li>
+              <li>· 단백질(g) ÷ (1 + (칼로리 + 당류 × 2) ÷ 100)</li>
+              <li>· 높을수록 운동 후 보충 효율이 좋음</li>
             </ul>
           </div>
         </div>
 
-        {/* 업데이트 정책 */}
         <div className="mt-4 rounded-xl border border-[#e8e6e3] bg-[#FFFDF8] px-5 py-4" style={{ borderRadius: "16px" }}>
-          <h2 className="text-sm font-semibold" style={{ color: "#3d3d3d" }}>업데이트 정책</h2>
+          <h2 className="text-sm font-semibold" style={{ color: "#3d3d3d" }}>
+            업데이트 정책
+          </h2>
           <ul className="mt-2 space-y-1 text-xs" style={{ color: "#6b6b6b" }}>
-            <li>· 등급 지표 — 모두 영양성분 기반 (가격 무관)</li>
-            <li>· 영양성분 — 제조사 공식 자료 기준, 변경 시 즉시 반영</li>
+            <li>· 등급 지표는 모두 영양성분 기반입니다.</li>
+            <li>· 영양성분은 제조사 및 공식 자료 기준으로 업데이트합니다.</li>
           </ul>
         </div>
 
-        {/* FAQ */}
         <div className="mt-6">
-          <h2 className="text-sm font-semibold" style={{ color: "#3d3d3d" }}>자주 묻는 질문</h2>
+          <h2 className="text-sm font-semibold" style={{ color: "#3d3d3d" }}>
+            자주 묻는 질문
+          </h2>
           <div className="mt-3 space-y-2">
-            {FAQ.map((item, i) => (
-              <details key={i} className="group overflow-hidden rounded-xl border border-[#e8e6e3]">
+            {FAQ.map((item) => (
+              <details key={item.q} className="group overflow-hidden rounded-xl border border-[#e8e6e3]">
                 <summary className="flex cursor-pointer items-center justify-between px-4 py-3 text-sm font-medium hover:bg-[#f9f8f5]" style={{ color: "#3d3d3d" }}>
-                  {item.q}?
-                  <span className="text-xs" style={{ color: "#999" }}>▼</span>
+                  {item.q}
+                  <span className="text-xs" style={{ color: "#999" }}>+
+                  </span>
                 </summary>
                 <p className="border-t border-[#f0eeeb] px-4 py-3 text-sm leading-relaxed" style={{ color: "#6b6b6b" }}>
                   {item.a}

@@ -1,12 +1,10 @@
 import type { ProductCardProps } from "../components/ProductCard";
 
-/** 영양성분 상세 (1병/1개 기준) 항목 */
 export interface NutritionDetailRow {
   label: string;
   value: string;
 }
 
-/** proteinlab.kr 기반 1병 기준 영양성분 */
 export interface NutritionPerBottle {
   caloriesKcal?: number;
   proteinG?: number;
@@ -21,10 +19,12 @@ export interface NutritionPerBottle {
   bcaaMg?: number;
 }
 
-/** 상세 페이지용 확장 필드 */
 export interface ProductDetailFields {
   slug: string;
   productType?: "drink" | "bar";
+  nutritionBasis?: "per_unit" | "per_pack" | "unknown";
+  needsServingCheck?: boolean;
+  servingCheckNote?: string;
   manufacturer?: string;
   flavor?: string;
   bcaa?: string;
@@ -44,16 +44,10 @@ import { getDrinkProducts } from "./drinkProductsData";
 import { getBarProducts } from "./barProductsData";
 import { applyDrinkGrades, applyBarGrades } from "../lib/gradeCalculation";
 
-/** 단백질 음료 목록: proteinlab.kr 동기화 데이터 기반, 등급 산정 */
 export const mockProducts: ProductDetailProps[] = applyDrinkGrades(getDrinkProducts());
-
-/** 단백질바: proteinlab.kr 동기화 데이터 기반 */
 export const mockBarProducts: ProductDetailProps[] = getBarProducts();
-
-/** 단백질바 + 밀도/다이어트/퍼포먼스 등급 적용 (랭킹·상세용) */
 export const barProductsWithGrades: ProductDetailProps[] = applyBarGrades(mockBarProducts);
 
-/** 1병/1개 기준 영양성분 상세 */
 export function getNutritionDetail(p: ProductDetailProps): NutritionDetailRow[] {
   if (p.nutritionDetail?.length) return p.nutritionDetail;
 
@@ -75,7 +69,6 @@ export function getNutritionDetail(p: ProductDetailProps): NutritionDetailRow[] 
     return rows;
   }
 
-  /** 단백질바: barProductsData에 있는 필드 기준 (열량/당류/단백질/지방/나트륨 등) */
   if (p.productType === "bar") {
     return [
       { label: "열량", value: p.calories != null ? `${p.calories}kcal` : "—" },

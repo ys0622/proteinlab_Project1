@@ -3,15 +3,15 @@
     "slug": "dryou-proteinbar-pro-3nuts-crunch",
     "brand": "닥터유",
     "name": "프로 단백질바 (3넛츠 크런치)",
-    "capacity": "70g",
+    "capacity": "50g",
     "variant": "일반",
     "tags": [
       "바"
     ],
-    "proteinPerServing": 24,
-    "calories": 355,
-    "sugar": 9,
-    "density": "6.76g/100kcal",
+    "proteinPerServing": 25,
+    "calories": 220,
+    "sugar": 7,
+    "density": "11.36g/100kcal",
     "productUrl": "#",
     "productType": "bar",
     "gradeTags": []
@@ -20,15 +20,15 @@
     "slug": "dryou-proteinbar-pro-choco-classic",
     "brand": "닥터유",
     "name": "프로 단백질바 (초코 클래식)",
-    "capacity": "70g",
+    "capacity": "50g",
     "variant": "일반",
     "tags": [
       "바"
     ],
-    "proteinPerServing": 24,
-    "calories": 355,
-    "sugar": 9,
-    "density": "6.76g/100kcal",
+    "proteinPerServing": 25,
+    "calories": 220,
+    "sugar": 7,
+    "density": "11.36g/100kcal",
     "productUrl": "#",
     "productType": "bar",
     "gradeTags": []
@@ -37,15 +37,15 @@
     "slug": "dryou-proteinbar-pro-crunch",
     "brand": "닥터유",
     "name": "프로 단백질바 (크런치)",
-    "capacity": "70g",
+    "capacity": "50g",
     "variant": "일반",
     "tags": [
       "바"
     ],
-    "proteinPerServing": 24,
-    "calories": 355,
-    "sugar": 9,
-    "density": "6.76g/100kcal",
+    "proteinPerServing": 25,
+    "calories": 220,
+    "sugar": 7,
+    "density": "11.36g/100kcal",
     "productUrl": "#",
     "productType": "bar",
     "gradeTags": []
@@ -68,6 +68,23 @@
     "gradeTags": []
   },
   {
+    "slug": "kirkland-proteinbar-choco-chip-cookie-dough-60",
+    "brand": "커클랜드",
+    "name": "프로틴바 초코칩 쿠키도우",
+    "capacity": "60g",
+    "variant": "일반",
+    "tags": [
+      "바"
+    ],
+    "proteinPerServing": 21,
+    "calories": 220,
+    "sugar": 5,
+    "density": "9.55g/100kcal",
+    "productUrl": "#",
+    "productType": "bar",
+    "gradeTags": []
+  },
+  {
     "slug": "benof-proteinbar-chunky-choco",
     "brand": "베노프",
     "name": "단백질바 (청키초콜릿)",
@@ -79,7 +96,7 @@
     "proteinPerServing": 20,
     "calories": 215,
     "sugar": 2,
-    "density": "9.30g/100kcal",
+    "density": "9.3g/100kcal",
     "productUrl": "#",
     "productType": "bar",
     "gradeTags": []
@@ -96,7 +113,7 @@
     "proteinPerServing": 20,
     "calories": 215,
     "sugar": 2,
-    "density": "9.30g/100kcal",
+    "density": "9.3g/100kcal",
     "productUrl": "#",
     "productType": "bar",
     "gradeTags": []
@@ -105,15 +122,15 @@
     "slug": "benof-softbar-peanutbutter",
     "brand": "베노프",
     "name": "소프트바 (피넛버터)",
-    "capacity": "60g",
+    "capacity": "50g",
     "variant": "일반",
     "tags": [
       "바"
     ],
     "proteinPerServing": 20,
-    "calories": 172,
+    "calories": 215,
     "sugar": 2,
-    "density": "11.63g/100kcal",
+    "density": "9.3g/100kcal",
     "productUrl": "#",
     "productType": "bar",
     "gradeTags": []
@@ -122,15 +139,15 @@
     "slug": "benof-softbar-cookie-cream",
     "brand": "베노프",
     "name": "소프트바 (쿠키앤크림)",
-    "capacity": "60g",
+    "capacity": "50g",
     "variant": "일반",
     "tags": [
       "바"
     ],
     "proteinPerServing": 20,
-    "calories": 172,
+    "calories": 215,
     "sugar": 2,
-    "density": "11.63g/100kcal",
+    "density": "9.3g/100kcal",
     "productUrl": "#",
     "productType": "bar",
     "gradeTags": []
@@ -139,15 +156,15 @@
     "slug": "benof-softbar-chocolate-caramel",
     "brand": "베노프",
     "name": "소프트바 (초콜릿카라멜)",
-    "capacity": "60g",
+    "capacity": "50g",
     "variant": "일반",
     "tags": [
       "바"
     ],
     "proteinPerServing": 20,
-    "calories": 172,
+    "calories": 215,
     "sugar": 2,
-    "density": "11.63g/100kcal",
+    "density": "9.3g/100kcal",
     "productUrl": "#",
     "productType": "bar",
     "gradeTags": []
@@ -156,15 +173,15 @@
     "slug": "benof-softbar-cacao",
     "brand": "베노프",
     "name": "소프트바 (카카오)",
-    "capacity": "60g",
+    "capacity": "50g",
     "variant": "일반",
     "tags": [
       "바"
     ],
     "proteinPerServing": 20,
-    "calories": 172,
+    "calories": 215,
     "sugar": 2,
-    "density": "11.63g/100kcal",
+    "density": "9.3g/100kcal",
     "productUrl": "#",
     "productType": "bar",
     "gradeTags": []
@@ -173,15 +190,15 @@
     "slug": "benof-softbar-black-sesame",
     "brand": "베노프",
     "name": "소프트바 (흑임자)",
-    "capacity": "60g",
+    "capacity": "50g",
     "variant": "일반",
     "tags": [
       "바"
     ],
     "proteinPerServing": 20,
-    "calories": 172,
+    "calories": 215,
     "sugar": 2,
-    "density": "11.63g/100kcal",
+    "density": "9.3g/100kcal",
     "productUrl": "#",
     "productType": "bar",
     "gradeTags": []
@@ -190,15 +207,15 @@
     "slug": "benof-softbar-injeolmi",
     "brand": "베노프",
     "name": "소프트바 (인절미)",
-    "capacity": "60g",
+    "capacity": "50g",
     "variant": "일반",
     "tags": [
       "바"
     ],
     "proteinPerServing": 20,
-    "calories": 172,
+    "calories": 215,
     "sugar": 2,
-    "density": "11.63g/100kcal",
+    "density": "9.3g/100kcal",
     "productUrl": "#",
     "productType": "bar",
     "gradeTags": []
@@ -207,15 +224,15 @@
     "slug": "benof-softbar-roasted-sweetpotato",
     "brand": "베노프",
     "name": "소프트바 (군고구마)",
-    "capacity": "60g",
+    "capacity": "50g",
     "variant": "일반",
     "tags": [
       "바"
     ],
     "proteinPerServing": 20,
-    "calories": 172,
+    "calories": 215,
     "sugar": 2,
-    "density": "11.63g/100kcal",
+    "density": "9.3g/100kcal",
     "productUrl": "#",
     "productType": "bar",
     "gradeTags": []
@@ -224,15 +241,15 @@
     "slug": "benof-softbar-berry-cheesecake",
     "brand": "베노프",
     "name": "소프트바 (베리베리치즈케이크)",
-    "capacity": "60g",
+    "capacity": "50g",
     "variant": "일반",
     "tags": [
       "바"
     ],
     "proteinPerServing": 20,
-    "calories": 172,
+    "calories": 215,
     "sugar": 2,
-    "density": "11.63g/100kcal",
+    "density": "9.3g/100kcal",
     "productUrl": "#",
     "productType": "bar",
     "gradeTags": []
@@ -247,9 +264,9 @@
       "바"
     ],
     "proteinPerServing": 20,
-    "calories": 230,
-    "sugar": 2,
-    "density": "8.70g/100kcal",
+    "calories": 240,
+    "sugar": 3,
+    "density": "8.33g/100kcal",
     "productUrl": "#",
     "productType": "bar",
     "gradeTags": []
@@ -264,9 +281,9 @@
       "바"
     ],
     "proteinPerServing": 20,
-    "calories": 230,
-    "sugar": 2,
-    "density": "8.70g/100kcal",
+    "calories": 240,
+    "sugar": 3,
+    "density": "8.33g/100kcal",
     "productUrl": "#",
     "productType": "bar",
     "gradeTags": []
@@ -281,9 +298,9 @@
       "바"
     ],
     "proteinPerServing": 20,
-    "calories": 230,
-    "sugar": 2,
-    "density": "8.70g/100kcal",
+    "calories": 240,
+    "sugar": 3,
+    "density": "8.33g/100kcal",
     "productUrl": "#",
     "productType": "bar",
     "gradeTags": []
@@ -303,9 +320,7 @@
     "density": "11.76g/100kcal",
     "productUrl": "#",
     "productType": "bar",
-    "gradeTags": [],
-    "fat": 7,
-    "sodium": 200
+    "gradeTags": []
   },
   {
     "slug": "quest-nutrition-protein-bar-chocolate-peanutbutter-60",
@@ -322,9 +337,7 @@
     "density": "11.18g/100kcal",
     "productUrl": "#",
     "productType": "bar",
-    "gradeTags": [],
-    "fat": 8,
-    "sodium": 200
+    "gradeTags": []
   },
   {
     "slug": "quest-nutrition-protein-bar-oatmeal-chocolate-chip-60",
@@ -341,9 +354,160 @@
     "density": "10.59g/100kcal",
     "productUrl": "#",
     "productType": "bar",
-    "gradeTags": [],
-    "fat": 8,
-    "sodium": 250
+    "gradeTags": []
+  },
+  {
+    "slug": "quest-nutrition-protein-bar-deep-chocolate-chip-cookie-dough-60",
+    "brand": "퀘스트 뉴트리션",
+    "name": "단백질바 (딥 초콜릿칩 쿠키도우)",
+    "capacity": "60g",
+    "variant": "일반",
+    "tags": [
+      "바"
+    ],
+    "proteinPerServing": 20,
+    "calories": 170,
+    "sugar": 1,
+    "density": "11.76g/100kcal",
+    "productUrl": "#",
+    "productType": "bar",
+    "gradeTags": []
+  },
+  {
+    "slug": "quest-nutrition-protein-bar-lemon-cake-60",
+    "brand": "퀘스트 뉴트리션",
+    "name": "단백질바 (레몬 케이크)",
+    "capacity": "60g",
+    "variant": "일반",
+    "tags": [
+      "바"
+    ],
+    "proteinPerServing": 20,
+    "calories": 170,
+    "sugar": 1,
+    "density": "11.76g/100kcal",
+    "productUrl": "#",
+    "productType": "bar",
+    "gradeTags": []
+  },
+  {
+    "slug": "quest-nutrition-protein-bar-mint-chocolate-chunk-60",
+    "brand": "퀘스트 뉴트리션",
+    "name": "단백질바 (민트 초콜릿 청크)",
+    "capacity": "60g",
+    "variant": "일반",
+    "tags": [
+      "바"
+    ],
+    "proteinPerServing": 20,
+    "calories": 170,
+    "sugar": 1,
+    "density": "11.76g/100kcal",
+    "productUrl": "#",
+    "productType": "bar",
+    "gradeTags": []
+  },
+  {
+    "slug": "quest-nutrition-protein-bar-cookie-cream-60",
+    "brand": "퀘스트 뉴트리션",
+    "name": "단백질바 (쿠키 앤 크림)",
+    "capacity": "60g",
+    "variant": "일반",
+    "tags": [
+      "바"
+    ],
+    "proteinPerServing": 21,
+    "calories": 200,
+    "sugar": 1,
+    "density": "10.5g/100kcal",
+    "productUrl": "#",
+    "productType": "bar",
+    "gradeTags": []
+  },
+  {
+    "slug": "quest-nutrition-protein-bar-chocolate-chip-cookie-dough-60",
+    "brand": "퀘스트 뉴트리션",
+    "name": "단백질바 (초코칩 쿠키도우)",
+    "capacity": "60g",
+    "variant": "일반",
+    "tags": [
+      "바"
+    ],
+    "proteinPerServing": 20,
+    "calories": 170,
+    "sugar": 1,
+    "density": "11.76g/100kcal",
+    "productUrl": "#",
+    "productType": "bar",
+    "gradeTags": []
+  },
+  {
+    "slug": "quest-nutrition-protein-bar-blueberry-muffin-60",
+    "brand": "퀘스트 뉴트리션",
+    "name": "단백질바 (블루베리 머핀)",
+    "capacity": "60g",
+    "variant": "일반",
+    "tags": [
+      "바"
+    ],
+    "proteinPerServing": 21,
+    "calories": 180,
+    "sugar": 1,
+    "density": "11.67g/100kcal",
+    "productUrl": "#",
+    "productType": "bar",
+    "gradeTags": []
+  },
+  {
+    "slug": "quest-nutrition-protein-bar-white-chocolate-raspberry-60",
+    "brand": "퀘스트 뉴트리션",
+    "name": "단백질바 (화이트 초콜릿 라즈베리)",
+    "capacity": "60g",
+    "variant": "일반",
+    "tags": [
+      "바"
+    ],
+    "proteinPerServing": 20,
+    "calories": 190,
+    "sugar": 1,
+    "density": "10.53g/100kcal",
+    "productUrl": "#",
+    "productType": "bar",
+    "gradeTags": []
+  },
+  {
+    "slug": "quest-nutrition-protein-bar-deep-dish-cookie-cream-60",
+    "brand": "퀘스트 뉴트리션",
+    "name": "단백질바 (딥디쉬 쿠키 앤 크림)",
+    "capacity": "60g",
+    "variant": "일반",
+    "tags": [
+      "바"
+    ],
+    "proteinPerServing": 21,
+    "calories": 200,
+    "sugar": 1,
+    "density": "10.5g/100kcal",
+    "productUrl": "#",
+    "productType": "bar",
+    "gradeTags": []
+  },
+  {
+    "slug": "quest-nutrition-protein-bar-smores-60",
+    "brand": "퀘스트 뉴트리션",
+    "name": "단백질바 (스모어)",
+    "capacity": "60g",
+    "variant": "일반",
+    "tags": [
+      "바"
+    ],
+    "proteinPerServing": 21,
+    "calories": 180,
+    "sugar": 1,
+    "density": "11.67g/100kcal",
+    "productUrl": "#",
+    "productType": "bar",
+    "gradeTags": []
   },
   {
     "slug": "post-proteinbar",
@@ -360,9 +524,7 @@
     "density": "6.23g/100kcal",
     "productUrl": "#",
     "productType": "bar",
-    "gradeTags": [],
-    "fat": 13,
-    "sodium": 200
+    "gradeTags": []
   },
   {
     "slug": "proteinbangatgan-harudanbaekbar-blacksesame",
@@ -379,9 +541,7 @@
     "density": "11.63g/100kcal",
     "productUrl": "#",
     "productType": "bar",
-    "gradeTags": [],
-    "fat": 5,
-    "sodium": 90
+    "gradeTags": []
   },
   {
     "slug": "ondanbaek-protein-bar-apple-cranberry-50",
@@ -398,9 +558,7 @@
     "density": "9.93g/100kcal",
     "productUrl": "#",
     "productType": "bar",
-    "gradeTags": [],
-    "fat": 6,
-    "sodium": 75
+    "gradeTags": []
   },
   {
     "slug": "ondanbaek-protein-bar-chocolate-fudge-50",
@@ -417,9 +575,7 @@
     "density": "8.88g/100kcal",
     "productUrl": "#",
     "productType": "bar",
-    "gradeTags": [],
-    "fat": 7,
-    "sodium": 120
+    "gradeTags": []
   },
   {
     "slug": "proteinbangatgan-harudanbaekbar-cheeseberry",
@@ -436,9 +592,7 @@
     "density": "8.75g/100kcal",
     "productUrl": "#",
     "productType": "bar",
-    "gradeTags": [],
-    "fat": 4,
-    "sodium": 120
+    "gradeTags": []
   },
   {
     "slug": "himnaego-protein-bar-dark-chocolate-50",
@@ -452,12 +606,10 @@
     "proteinPerServing": 13,
     "calories": 250,
     "sugar": 10,
-    "density": "5.20g/100kcal",
+    "density": "5.2g/100kcal",
     "productUrl": "#",
     "productType": "bar",
-    "gradeTags": [],
-    "fat": 12,
-    "sodium": 210
+    "gradeTags": []
   },
   {
     "slug": "nobrand-proteinbar-choco",
@@ -480,15 +632,15 @@
     "slug": "thedanbaek-crunchbar-choco",
     "brand": "더단백",
     "name": "크런치바 (초코)",
-    "capacity": "46g",
+    "capacity": "40g",
     "variant": "일반",
     "tags": [
       "바"
     ],
-    "proteinPerServing": 12,
-    "calories": 205,
+    "proteinPerServing": 15,
+    "calories": 185,
     "sugar": 8,
-    "density": "5.85g/100kcal",
+    "density": "8.11g/100kcal",
     "productUrl": "#",
     "productType": "bar",
     "gradeTags": []
@@ -514,15 +666,15 @@
     "slug": "thedanbaek-crunchbar-peanutbutter",
     "brand": "더단백",
     "name": "크런치바 (피넛버터)",
-    "capacity": "46g",
+    "capacity": "40g",
     "variant": "일반",
     "tags": [
       "바"
     ],
-    "proteinPerServing": 12,
-    "calories": 205,
+    "proteinPerServing": 15,
+    "calories": 185,
     "sugar": 8,
-    "density": "5.85g/100kcal",
+    "density": "8.11g/100kcal",
     "productUrl": "#",
     "productType": "bar",
     "gradeTags": []
@@ -531,15 +683,15 @@
     "slug": "thedanbaek-mildbar-almondcookie",
     "brand": "더단백",
     "name": "마일드바 (아몬드쿠키)",
-    "capacity": "46g",
+    "capacity": "50g",
     "variant": "일반",
     "tags": [
       "바"
     ],
-    "proteinPerServing": 12,
-    "calories": 205,
-    "sugar": 8,
-    "density": "5.85g/100kcal",
+    "proteinPerServing": 15,
+    "calories": 220,
+    "sugar": 0.7,
+    "density": "6.82g/100kcal",
     "productUrl": "#",
     "productType": "bar",
     "gradeTags": []
@@ -556,12 +708,10 @@
     "proteinPerServing": 12,
     "calories": 250,
     "sugar": 5,
-    "density": "4.80g/100kcal",
+    "density": "4.8g/100kcal",
     "productUrl": "#",
     "productType": "bar",
-    "gradeTags": [],
-    "fat": 14,
-    "sodium": 115
+    "gradeTags": []
   },
   {
     "slug": "mymil-new-proteinbar",
@@ -643,31 +793,10 @@
     "proteinPerServing": 12,
     "calories": 138,
     "sugar": 3,
-    "density": "8.70g/100kcal",
+    "density": "8.7g/100kcal",
     "productUrl": "#",
     "productType": "bar",
-    "gradeTags": [],
-    "fat": 8,
-    "sodium": 105
-  },
-  {
-    "slug": "proteinbangatgan-harudanbaekbar-cacao",
-    "brand": "프로틴방앗간",
-    "name": "하루단백바 (카카오)",
-    "capacity": "45g",
-    "variant": "일반",
-    "tags": [
-      "바"
-    ],
-    "proteinPerServing": 12,
-    "calories": 143,
-    "sugar": 4,
-    "density": "8.39g/100kcal",
-    "productUrl": "#",
-    "productType": "bar",
-    "gradeTags": [],
-    "fat": 7.7,
-    "sodium": 67
+    "gradeTags": []
   },
   {
     "slug": "dryou-proteinbar-bite-crunch",
@@ -732,12 +861,10 @@
     "proteinPerServing": 12,
     "calories": 160,
     "sugar": 0,
-    "density": "7.50g/100kcal",
+    "density": "7.5g/100kcal",
     "productUrl": "#",
     "productType": "bar",
-    "gradeTags": [],
-    "fat": 4.6,
-    "sodium": 190
+    "gradeTags": []
   },
   {
     "slug": "danbaekhani-protein-bar-signature-31",
@@ -751,12 +878,61 @@
     "proteinPerServing": 12,
     "calories": 125,
     "sugar": 0,
-    "density": "9.60g/100kcal",
+    "density": "9.6g/100kcal",
     "productUrl": "#",
     "productType": "bar",
-    "gradeTags": [],
-    "fat": 2.3,
-    "sodium": 175
+    "gradeTags": []
+  },
+  {
+    "slug": "danbaekhani-protein-bar-berry-30",
+    "brand": "단백하니",
+    "name": "프로틴바 (베리)",
+    "capacity": "30g",
+    "variant": "일반",
+    "tags": [
+      "바"
+    ],
+    "proteinPerServing": 10,
+    "calories": 120,
+    "sugar": 3,
+    "density": "8.33g/100kcal",
+    "productUrl": "#",
+    "productType": "bar",
+    "gradeTags": []
+  },
+  {
+    "slug": "danbaekhani-protein-bar-peanutbutter-38",
+    "brand": "단백하니",
+    "name": "프로틴바 (피넛버터)",
+    "capacity": "38g",
+    "variant": "일반",
+    "tags": [
+      "바"
+    ],
+    "proteinPerServing": 12,
+    "calories": 170,
+    "sugar": 4,
+    "density": "7.06g/100kcal",
+    "productUrl": "#",
+    "productType": "bar",
+    "gradeTags": []
+  },
+  {
+    "slug": "danbaekhani-protein-bar-matcha-choco-38",
+    "brand": "단백하니",
+    "name": "프로틴바 (말차초코)",
+    "capacity": "38g",
+    "variant": "일반",
+    "tags": [
+      "바"
+    ],
+    "proteinPerServing": 12,
+    "calories": 160,
+    "sugar": 0,
+    "density": "7.5g/100kcal",
+    "productUrl": "#",
+    "productType": "bar",
+    "gradeTags": []
   },
   {
     "slug": "labnosh-foodbar-mildchoco",
@@ -771,23 +947,6 @@
     "calories": 230,
     "sugar": 9,
     "density": "4.78g/100kcal",
-    "productUrl": "#",
-    "productType": "bar",
-    "gradeTags": []
-  },
-  {
-    "slug": "harudanbaek-cacao",
-    "brand": "하루단백바",
-    "name": "카카오",
-    "capacity": "42g",
-    "variant": "일반",
-    "tags": [
-      "바"
-    ],
-    "proteinPerServing": 11,
-    "calories": 180,
-    "sugar": 6,
-    "density": "6.11g/100kcal",
     "productUrl": "#",
     "productType": "bar",
     "gradeTags": []
@@ -858,9 +1017,7 @@
     "density": "6.92g/100kcal",
     "productUrl": "#",
     "productType": "bar",
-    "gradeTags": [],
-    "fat": 5,
-    "sodium": 169
+    "gradeTags": []
   },
   {
     "slug": "kellogg-protein-granolabar-savory",
@@ -942,7 +1099,7 @@
     "proteinPerServing": 8,
     "calories": 160,
     "sugar": 6,
-    "density": "5.00g/100kcal",
+    "density": "5g/100kcal",
     "productUrl": "#",
     "productType": "bar",
     "gradeTags": []
@@ -959,12 +1116,10 @@
     "proteinPerServing": 8,
     "calories": 125,
     "sugar": 2,
-    "density": "6.40g/100kcal",
+    "density": "6.4g/100kcal",
     "productUrl": "#",
     "productType": "bar",
-    "gradeTags": [],
-    "fat": 3.9,
-    "sodium": 154
+    "gradeTags": []
   },
   {
     "slug": "post-proteinbar-mini",
@@ -981,9 +1136,24 @@
     "density": "5.66g/100kcal",
     "productUrl": "#",
     "productType": "bar",
-    "gradeTags": [],
-    "fat": 2.8,
-    "sodium": 45
+    "gradeTags": []
+  },
+  {
+    "slug": "gomgom-proteinbar-mini",
+    "brand": "곰곰",
+    "name": "단백질바 미니",
+    "capacity": "10g",
+    "variant": "일반",
+    "tags": [
+      "바"
+    ],
+    "proteinPerServing": 2.2,
+    "calories": 54,
+    "sugar": 2,
+    "density": "4.07g/100kcal",
+    "productUrl": "#",
+    "productType": "bar",
+    "gradeTags": []
   },
   {
     "slug": "nobrand-proteinbar-mini",
@@ -1029,195 +1199,5 @@
     "productUrl": "#",
     "productType": "bar",
     "gradeTags": []
-  },
-  {
-    "slug": "quest-nutrition-protein-bar-deep-chocolate-chip-cookie-dough-60",
-    "brand": "퀘스트 뉴트리션",
-    "name": "단백질바 (딥 초콜릿칩 쿠키 반죽)",
-    "capacity": "60g",
-    "variant": "일반",
-    "tags": [
-      "바"
-    ],
-    "proteinPerServing": 20,
-    "calories": 170,
-    "sugar": 1,
-    "density": "11.76g/100kcal",
-    "productUrl": "#",
-    "productType": "bar",
-    "gradeTags": [],
-    "fat": 7,
-    "sodium": 200
-  },
-  {
-    "slug": "quest-nutrition-protein-bar-lemon-cake-60",
-    "brand": "퀘스트 뉴트리션",
-    "name": "단백질바 (레몬 케이크)",
-    "capacity": "60g",
-    "variant": "일반",
-    "tags": [
-      "바"
-    ],
-    "proteinPerServing": 20,
-    "calories": 170,
-    "sugar": 1,
-    "density": "11.76g/100kcal",
-    "productUrl": "#",
-    "productType": "bar",
-    "gradeTags": [],
-    "fat": 7,
-    "sodium": 200
-  },
-  {
-    "slug": "quest-nutrition-protein-bar-mint-chocolate-chunk-60",
-    "brand": "퀘스트 뉴트리션",
-    "name": "단백질바 (민트 초콜릿 청크)",
-    "capacity": "60g",
-    "variant": "일반",
-    "tags": [
-      "바"
-    ],
-    "proteinPerServing": 20,
-    "calories": 170,
-    "sugar": 1,
-    "density": "11.76g/100kcal",
-    "productUrl": "#",
-    "productType": "bar",
-    "gradeTags": [],
-    "fat": 7,
-    "sodium": 200
-  },
-  {
-    "slug": "quest-nutrition-protein-bar-cookie-cream-60",
-    "brand": "퀘스트 뉴트리션",
-    "name": "단백질바 (쿠키 앤 크림)",
-    "capacity": "60g",
-    "variant": "일반",
-    "tags": [
-      "바"
-    ],
-    "proteinPerServing": 20,
-    "calories": 170,
-    "sugar": 1,
-    "density": "11.76g/100kcal",
-    "productUrl": "#",
-    "productType": "bar",
-    "gradeTags": [],
-    "fat": 7,
-    "sodium": 200
-  },
-  {
-    "slug": "quest-nutrition-protein-bar-chocolate-chip-cookie-dough-60",
-    "brand": "퀘스트 뉴트리션",
-    "name": "단백질바 (초콜릿 칩 쿠키 반죽)",
-    "capacity": "60g",
-    "variant": "일반",
-    "tags": [
-      "바"
-    ],
-    "proteinPerServing": 20,
-    "calories": 170,
-    "sugar": 1,
-    "density": "11.76g/100kcal",
-    "productUrl": "#",
-    "productType": "bar",
-    "gradeTags": [],
-    "fat": 7,
-    "sodium": 200
-  },
-  {
-    "slug": "kirkland-proteinbar-choco-chip-cookie-dough-60",
-    "brand": "커클랜드",
-    "name": "프로틴바 (초콜릿 칩 쿠키 도우)",
-    "capacity": "60g",
-    "variant": "일반",
-    "tags": [
-      "바"
-    ],
-    "proteinPerServing": 21,
-    "calories": 220,
-    "sugar": 5,
-    "density": "9.55g/100kcal",
-    "productUrl": "#",
-    "productType": "bar",
-    "gradeTags": [],
-    "fat": 7,
-    "sodium": 150
-  },
-  {
-    "slug": "quest-nutrition-protein-bar-blueberry-muffin-60",
-    "brand": "퀘스트 뉴트리션",
-    "name": "단백질바 (블루베리 머핀)",
-    "capacity": "60g",
-    "variant": "일반",
-    "tags": [
-      "바"
-    ],
-    "proteinPerServing": 20,
-    "calories": 170,
-    "sugar": 1,
-    "density": "11.76g/100kcal",
-    "productUrl": "#",
-    "productType": "bar",
-    "gradeTags": [],
-    "fat": 7,
-    "sodium": 200
-  },
-  {
-    "slug": "quest-nutrition-protein-bar-white-chocolate-raspberry-60",
-    "brand": "퀘스트 뉴트리션",
-    "name": "단백질바 (화이트 초콜릿 라즈베리)",
-    "capacity": "60g",
-    "variant": "일반",
-    "tags": [
-      "바"
-    ],
-    "proteinPerServing": 20,
-    "calories": 170,
-    "sugar": 1,
-    "density": "11.76g/100kcal",
-    "productUrl": "#",
-    "productType": "bar",
-    "gradeTags": [],
-    "fat": 7,
-    "sodium": 200
-  },
-  {
-    "slug": "quest-nutrition-protein-bar-deep-dish-cookie-cream-60",
-    "brand": "퀘스트 뉴트리션",
-    "name": "단백질바 (딥 쿠키 & 크림)",
-    "capacity": "60g",
-    "variant": "일반",
-    "tags": [
-      "바"
-    ],
-    "proteinPerServing": 20,
-    "calories": 170,
-    "sugar": 1,
-    "density": "11.76g/100kcal",
-    "productUrl": "#",
-    "productType": "bar",
-    "gradeTags": [],
-    "fat": 7,
-    "sodium": 200
-  },
-  {
-    "slug": "quest-nutrition-protein-bar-smores-60",
-    "brand": "퀘스트 뉴트리션",
-    "name": "단백질바 (스모어)",
-    "capacity": "60g",
-    "variant": "일반",
-    "tags": [
-      "바"
-    ],
-    "proteinPerServing": 20,
-    "calories": 170,
-    "sugar": 1,
-    "density": "11.76g/100kcal",
-    "productUrl": "#",
-    "productType": "bar",
-    "gradeTags": [],
-    "fat": 7,
-    "sodium": 200
   }
 ]

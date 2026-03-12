@@ -584,6 +584,7 @@ function RecommendationMetaV2({
   );
 }
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 function ProductResultCardDesktopV2({ product }: { product: RecommendedProduct }) {
   const router = useRouter();
   const isFirst = product.rank === 1;
@@ -688,6 +689,7 @@ function ProductResultCardDesktopV2({ product }: { product: RecommendedProduct }
   );
 }
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 function ProductResultCardMobileV2({ product }: { product: RecommendedProduct }) {
   const gradeTags = Object.entries(product.gradeValue).map(
     ([key, grade]) => `${gradeLabels[key] ?? key} ${grade}`,
@@ -725,6 +727,141 @@ function ProductResultCardMobileV2({ product }: { product: RecommendedProduct })
   );
 }
 
+function ProductResultCardUnified({
+  product,
+  compact = false,
+}: {
+  product: RecommendedProduct;
+  compact?: boolean;
+}) {
+  const router = useRouter();
+  const isFirst = product.rank === 1;
+  const displayName = [product.name, product.flavor].filter(Boolean).join(" ");
+
+  const shouldIgnoreCardClick = (target: EventTarget | null) => {
+    if (!(target instanceof HTMLElement)) {
+      return false;
+    }
+
+    return Boolean(target.closest("a, button, input, select, textarea, label"));
+  };
+
+  const openDetail = () => {
+    router.push(product.detailPath);
+  };
+
+  const handleCardClick = (event: ReactMouseEvent<HTMLElement>) => {
+    if (shouldIgnoreCardClick(event.target)) {
+      return;
+    }
+
+    openDetail();
+  };
+
+  const handleCardKeyDown = (event: ReactKeyboardEvent<HTMLElement>) => {
+    if (shouldIgnoreCardClick(event.target)) {
+      return;
+    }
+
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      openDetail();
+    }
+  };
+
+  return (
+    <article
+      className="relative flex h-full cursor-pointer flex-col overflow-hidden rounded-2xl border bg-[#FFFDF8] transition-colors duration-200 hover:border-[#ddd] focus:outline-none focus:ring-2 focus:ring-[var(--accent)] focus:ring-offset-2"
+      onClick={handleCardClick}
+      onKeyDown={handleCardKeyDown}
+      role="link"
+      tabIndex={0}
+      aria-label={`${displayName} 상세 보기`}
+    >
+      <RecommendationMetaV2 rank={product.rank} score={product.score} isFirst={isFirst} compact={compact} />
+      <Link
+        href={product.detailPath}
+        className="relative flex items-center justify-center border-b border-[#f0eeeb] bg-white"
+        style={{ height: compact ? "136px" : "160px" }}
+      >
+        {product.imageUrl ? (
+          <Image
+            src={product.imageUrl}
+            alt={displayName}
+            fill
+            className={compact ? "object-contain p-3" : "object-contain p-4"}
+            sizes={compact ? "45vw" : "200px"}
+            unoptimized
+          />
+        ) : (
+          <div className="h-full w-full" />
+        )}
+      </Link>
+      <div className={compact ? "flex flex-1 flex-col p-3" : "flex flex-1 flex-col p-4"}>
+        <p className="truncate text-xs" style={{ color: "#7a7a7a" }}>{product.brand}</p>
+        <Link
+          href={product.detailPath}
+          className={compact ? "mt-0.5 block text-[13px] font-bold leading-snug" : "mt-0.5 block text-sm font-bold leading-snug"}
+          style={{ color: "#1a1a1a" }}
+        >
+          {displayName}
+        </Link>
+        <p className="mt-0.5 text-xs" style={{ color: "#999" }}>{product.volume}</p>
+
+        <MetricBadgeGroup className="mt-2">
+          {Object.entries(product.gradeValue).map(([key, grade]) => {
+            const badgeLabel = `${gradeLabels[key] ?? key} ${grade}`;
+
+            return (
+              <ProductBadge
+                key={key}
+                label={badgeLabel}
+                tone={getProductBadgeTone(badgeLabel)}
+                tooltip={getMetricBadgeTooltip(badgeLabel) ?? undefined}
+                tooltipAriaLabel={getMetricBadgeAriaLabel(badgeLabel)}
+              />
+            );
+          })}
+        </MetricBadgeGroup>
+
+        <div className={compact ? "mt-2 grid grid-cols-2 gap-1.5" : "mt-3 grid grid-cols-3 gap-1.5"}>
+          {[
+            { label: "단백질", value: `${product.protein}g`, color: "#1B7F5B" },
+            { label: "칼로리", value: `${product.calories}kcal`, color: "#6b7280" },
+            { label: "당류", value: `${product.sugar}g`, color: product.sugar === 0 ? "#1B7F5B" : "#f97316" },
+            ...(compact ? [{ label: "밀도", value: product.density, color: "#3d3d3d" }] : []),
+          ].map((stat) => (
+            <div key={stat.label} className="rounded-lg border border-[#f0eeeb] bg-[#fafaf8] px-2 py-2 text-center">
+              <p style={{ fontSize: compact ? 14 : 16, fontWeight: 800, color: stat.color, lineHeight: 1.2 }}>
+                {stat.value}
+              </p>
+              <p style={{ fontSize: 10, color: "#9ca3af", marginTop: 2 }}>{stat.label}</p>
+            </div>
+          ))}
+        </div>
+
+        {!compact ? (
+          <div className="mt-3 rounded-r-md border border-[#e8e2d7] bg-[#f6f2ea] px-3 py-2" style={{ borderLeftWidth: 3, borderLeftColor: "var(--accent)" }}>
+            <p style={{ fontSize: 13, color: "#3d3d3d", lineHeight: 1.6, fontWeight: 500 }}>{product.reason}</p>
+          </div>
+        ) : (
+          <p className="mt-2 rounded-lg bg-[#f6f2ea] px-2.5 py-2 text-[11px] leading-5" style={{ color: "#4b5563" }}>
+            {product.reason}
+          </p>
+        )}
+
+        <Link
+          href={product.detailPath}
+          className="mt-3 block w-full rounded-lg border border-[#e8e6e3] bg-white py-2.5 text-center text-xs font-semibold transition-colors hover:bg-[var(--accent-light)] hover:text-[var(--accent)]"
+          style={{ color: "#374151" }}
+        >
+          상세 보기 →
+        </Link>
+      </div>
+    </article>
+  );
+}
+
 function ResultScreen({ result, onReset, category }: { result: RecommendResult; onReset: () => void; category: ProductType }) {
   return (
     <div className="fade-in space-y-5">
@@ -744,10 +881,10 @@ function ResultScreen({ result, onReset, category }: { result: RecommendResult; 
       <div>
         <p className="text-base font-extrabold mb-3" style={{ color: "#1a1a1a" }}>🏆 맞춤 추천 제품</p>
         <div className="grid grid-cols-2 gap-3 md:hidden">
-          {result.products.map((p) => <ProductResultCardMobileV2 key={p.rank} product={p} />)}
+          {result.products.map((p) => <ProductResultCardUnified key={p.rank} product={p} compact />)}
         </div>
         <div className="hidden gap-3 md:grid md:grid-cols-2 lg:grid-cols-3">
-          {result.products.map((p) => <ProductResultCardDesktopV2 key={p.rank} product={p} />)}
+          {result.products.map((p) => <ProductResultCardUnified key={p.rank} product={p} />)}
         </div>
       </div>
 

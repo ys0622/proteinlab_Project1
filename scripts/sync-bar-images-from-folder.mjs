@@ -41,7 +41,6 @@ const IMAGE_TO_SLUG = {
   "단백하니 프로틴바 (초코).png": "danbaekhani-protein-bar-choco-38",
   "단백하니 프로틴바 시그니처.png": "danbaekhani-protein-bar-signature-31",
   "랩노쉬 푸드바 마일드 초코.png": "labnosh-foodbar-mildchoco",
-  "하루단백바 카카오.png": "harudanbaek-cacao",
   "씨알로 식물성단백질바.png": "cralo-plant-proteinbar",
   "크라운 고단백질초코바.png": "crown-highprotein-chocobar",
   "칼로바이 하루견과 단백질바.png": "calobye-daily-nuts-proteinbar",

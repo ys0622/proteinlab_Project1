@@ -1,5 +1,6 @@
 import type { NutritionPerBottle, ProductDetailProps } from "./products";
 import barData from "./barProductsData.json";
+import { barServingAuditBySlug } from "./barServingAudit";
 
 type BarProduct = ProductDetailProps;
 
@@ -33,12 +34,6 @@ const bsnCrispSlugs = [
   "syntha6-crispy-choco",
   "bsn-protein-crisp-peanut-butter-crunch",
   "bsn-protein-crisp-salted-toffee-pretzel",
-];
-
-const theDanbaekSlugs = [
-  "thedanbaek-crunchbar-choco",
-  "thedanbaek-crunchbar-peanutbutter",
-  "thedanbaek-mildbar-almondcookie",
 ];
 
 const myproteinSoftSlugs = [
@@ -98,16 +93,6 @@ addGroup(bsnCrispSlugs, {
   carbsG: 21,
   sugarsG: 2,
   fatG: 7,
-  satFatG: 5,
-  sodiumMg: 200,
-});
-
-addGroup(theDanbaekSlugs, {
-  caloriesKcal: 205,
-  proteinG: 12,
-  carbsG: 18,
-  sugarsG: 8,
-  fatG: 8,
   satFatG: 5,
   sodiumMg: 200,
 });
@@ -309,6 +294,33 @@ const exactNutritionBySlug: Record<string, NutritionPatch> = {
     sodiumMg: 95,
     fiberG: 3,
   },
+  "thedanbaek-crunchbar-choco": {
+    caloriesKcal: 185,
+    proteinG: 15,
+    carbsG: 13,
+    sugarsG: 8,
+    fatG: 8,
+    satFatG: 5,
+    sodiumMg: 90,
+  },
+  "thedanbaek-crunchbar-peanutbutter": {
+    caloriesKcal: 185,
+    proteinG: 15,
+    carbsG: 13,
+    sugarsG: 8,
+    fatG: 8,
+    satFatG: 5,
+    sodiumMg: 90,
+  },
+  "thedanbaek-mildbar-almondcookie": {
+    caloriesKcal: 220,
+    proteinG: 15,
+    carbsG: 20,
+    sugarsG: 0.7,
+    fatG: 9,
+    satFatG: 5,
+    sodiumMg: 200,
+  },
   "hymune-activebar-nuts": {
     caloriesKcal: 250,
     proteinG: 12,
@@ -335,16 +347,6 @@ const exactNutritionBySlug: Record<string, NutritionPatch> = {
     fatG: 8,
     satFatG: 2,
     sodiumMg: 105,
-    fiberG: 5,
-  },
-  "proteinbangatgan-harudanbaekbar-cacao": {
-    caloriesKcal: 143,
-    proteinG: 12,
-    carbsG: 9.8,
-    sugarsG: 4,
-    fatG: 7.7,
-    satFatG: 2.7,
-    sodiumMg: 40,
     fiberG: 5,
   },
   "dryou-proteinbar-bite-crunch": {
@@ -392,6 +394,28 @@ const exactNutritionBySlug: Record<string, NutritionPatch> = {
     satFatG: 0.9,
     sodiumMg: 175,
   },
+  "danbaekhani-protein-bar-berry-30": {
+    caloriesKcal: 120,
+    proteinG: 10,
+    carbsG: 16,
+    sugarsG: 3,
+    fatG: 3.5,
+    satFatG: 1.5,
+    sodiumMg: 150,
+  },
+  "danbaekhani-protein-bar-peanutbutter-38": {
+    caloriesKcal: 170,
+    proteinG: 12,
+    carbsG: 17,
+    sugarsG: 4,
+    fatG: 7,
+  },
+  "danbaekhani-protein-bar-matcha-choco-38": {
+    caloriesKcal: 160,
+    proteinG: 12,
+    carbsG: 17,
+    fatG: 4.6,
+  },
   "labnosh-foodbar-mildchoco": {
     caloriesKcal: 235,
     proteinG: 12,
@@ -401,16 +425,6 @@ const exactNutritionBySlug: Record<string, NutritionPatch> = {
     satFatG: 5.6,
     sodiumMg: 120,
     fiberG: 10.4,
-  },
-  "harudanbaek-cacao": {
-    caloriesKcal: 180,
-    proteinG: 11,
-    carbsG: 17,
-    sugarsG: 6,
-    fatG: 9,
-    satFatG: 0.9,
-    sodiumMg: 55,
-    fiberG: 5,
   },
   "cralo-plant-proteinbar": {
     caloriesKcal: 185,
@@ -474,6 +488,15 @@ const exactNutritionBySlug: Record<string, NutritionPatch> = {
     fatG: 2.8,
     satFatG: 0.9,
     sodiumMg: 45,
+  },
+  "gomgom-proteinbar-mini": {
+    caloriesKcal: 54,
+    proteinG: 2.2,
+    carbsG: 4.5,
+    sugarsG: 2,
+    fatG: 3,
+    satFatG: 0.7,
+    sodiumMg: 15,
   },
   "nobrand-proteinbar-mini": {
     caloriesKcal: 165,
@@ -558,6 +581,7 @@ function enrichBarProduct(product: BarProduct): BarProduct {
   const sugar = nutritionPerBottle.sugarsG ?? product.sugar;
   const fat = nutritionPerBottle.fatG ?? product.fat;
   const sodium = nutritionPerBottle.sodiumMg ?? product.sodium;
+  const servingAudit = barServingAuditBySlug[product.slug];
   const density =
     calories && proteinPerServing
       ? `${roundToSingleDecimal((proteinPerServing / calories) * 100)}g/100kcal`
@@ -566,6 +590,9 @@ function enrichBarProduct(product: BarProduct): BarProduct {
   return {
     ...product,
     productType: "bar" as const,
+    nutritionBasis: servingAudit?.nutritionBasis ?? "per_unit",
+    needsServingCheck: servingAudit?.needsServingCheck ?? false,
+    servingCheckNote: servingAudit?.note,
     calories,
     proteinPerServing,
     sugar,

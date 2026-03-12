@@ -17,6 +17,7 @@ import {
 } from "../../components/productBadgeUtils";
 import ProductReviewSection from "../../components/ProductReviewSection";
 import PurchaseLinkRow from "../../components/PurchaseLinkRow";
+import ServingBasisNotice from "../../components/ServingBasisNotice";
 import { getNutritionDetail, getProductBySlug } from "../../data/products";
 import { getProductImageUrl } from "../../lib/productImage";
 import {
@@ -208,6 +209,14 @@ export default async function ProductDetailPage({ params }: PageProps) {
           </section>
 
           <div className="mt-8">
+            {isBar ? (
+              <ServingBasisNotice
+                className="mb-3"
+                detail
+                needsServingCheck={product.needsServingCheck}
+                note={product.servingCheckNote}
+              />
+            ) : null}
             <NutritionDetailSection
               rows={getNutritionDetail(product)}
               capacity={product.capacity}

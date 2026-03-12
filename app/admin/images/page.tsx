@@ -55,7 +55,10 @@ function ImageWorkflowContent() {
 
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
+  const [loadError, setLoadError] = useState("");
   const [filter, setFilter] = useState<"all" | "no-image">("no-image");
+  const [typeFilter, setTypeFilter] = useState<"all" | "drink" | "bar">(initSlug ? initType : "all");
+  const [query, setQuery] = useState("");
   const [mode, setMode] = useState<WorkMode>(initSlug ? "upload" : "list");
 
   const [selectedSlug, setSelectedSlug] = useState(initSlug);
@@ -73,22 +76,41 @@ function ImageWorkflowContent() {
   const [showEditor, setShowEditor] = useState(false);
 
   useEffect(() => {
-    fetch("/api/admin/products")
-      .then((r) => r.json())
-      .then((data) => {
+    const loadProducts = async () => {
+      try {
+        setLoadError("");
+        const response = await fetch("/api/admin/products", { cache: "no-store" });
+        const data = await response.json();
+
+        if (!response.ok) {
+          throw new Error(data.error ?? "제품 목록을 불러오지 못했습니다.");
+        }
+
         const all: Product[] = [
           ...(data.drinks || []).map((p: Product) => ({ ...p, productType: "drink" })),
           ...(data.bars || []).map((p: Product) => ({ ...p, productType: "bar" })),
         ];
         setProducts(all);
+      } catch (error) {
+        setLoadError(error instanceof Error ? error.message : "제품 목록을 불러오지 못했습니다.");
+      } finally {
         setLoading(false);
-      })
-      .catch(() => setLoading(false));
+      }
+    };
+
+    loadProducts();
   }, []);
 
   const filtered = products.filter((p) => {
+    if (typeFilter !== "all" && p.productType !== typeFilter) return false;
     if (filter === "no-image") return p.imageStatus === "no-image";
     return true;
+  });
+
+  const visibleProducts = filtered.filter((p) => {
+    const keyword = query.trim().toLowerCase();
+    if (!keyword) return true;
+    return `${p.name} ${p.brand} ${p.slug}`.toLowerCase().includes(keyword);
   });
 
   const selectProduct = (p: Product) => {
@@ -251,6 +273,12 @@ function ImageWorkflowContent() {
   }, [imageState, selectedSlug, selectedType]);
 
   const noImageCount = products.filter((p) => p.imageStatus === "no-image").length;
+  const noImageBarCount = products.filter(
+    (p) => p.productType === "bar" && p.imageStatus === "no-image",
+  ).length;
+  const noImageDrinkCount = products.filter(
+    (p) => p.productType === "drink" && p.imageStatus === "no-image",
+  ).length;
 
   if (showEditor && imageState.original) {
     return (
@@ -270,6 +298,9 @@ function ImageWorkflowContent() {
           <p className="text-sm text-[var(--foreground-muted)] mt-0.5">
             이미지 없는 제품: <strong>{noImageCount}개</strong>
           </p>
+          {loadError ? (
+            <p className="mt-1 text-xs text-red-600">{loadError}</p>
+          ) : null}
         </div>
         <div className="flex gap-2">
           <button
@@ -321,13 +352,55 @@ function ImageWorkflowContent() {
             </button>
           </div>
 
+          <div className="mb-3 grid grid-cols-3 gap-1">
+            <button
+              onClick={() => setTypeFilter("all")}
+              className={`rounded-lg py-1.5 text-xs font-medium ${
+                typeFilter === "all"
+                  ? "bg-[var(--accent-light)] text-[var(--accent)]"
+                  : "border border-[var(--border)] text-[var(--foreground-muted)]"
+              }`}
+            >
+              전체
+            </button>
+            <button
+              onClick={() => setTypeFilter("drink")}
+              className={`rounded-lg py-1.5 text-xs font-medium ${
+                typeFilter === "drink"
+                  ? "bg-[var(--accent-light)] text-[var(--accent)]"
+                  : "border border-[var(--border)] text-[var(--foreground-muted)]"
+              }`}
+            >
+              음료 {filter === "no-image" ? `(${noImageDrinkCount})` : ""}
+            </button>
+            <button
+              onClick={() => setTypeFilter("bar")}
+              className={`rounded-lg py-1.5 text-xs font-medium ${
+                typeFilter === "bar"
+                  ? "bg-[var(--accent-light)] text-[var(--accent)]"
+                  : "border border-[var(--border)] text-[var(--foreground-muted)]"
+              }`}
+            >
+              바 {filter === "no-image" ? `(${noImageBarCount})` : ""}
+            </button>
+          </div>
+
+          <input
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            placeholder="제품명, 브랜드, slug 검색"
+            className="mb-3 w-full rounded-lg border border-[var(--border)] bg-[var(--background)] px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[var(--accent)]"
+          />
+
           <div className="rounded-xl border border-[var(--border)] bg-[var(--background-card)] overflow-hidden max-h-[calc(100vh-200px)] overflow-y-auto">
             {loading ? (
               <div className="p-4 text-center text-sm text-[var(--foreground-muted)]">로딩 중...</div>
-            ) : filtered.length === 0 ? (
-              <div className="p-4 text-center text-sm text-[var(--foreground-muted)]">없음</div>
+            ) : loadError ? (
+              <div className="p-4 text-center text-sm text-red-600">{loadError}</div>
+            ) : visibleProducts.length === 0 ? (
+              <div className="p-4 text-center text-sm text-[var(--foreground-muted)]">선택한 조건에 맞는 제품이 없습니다.</div>
             ) : (
-              filtered.map((p) => (
+              visibleProducts.map((p) => (
                 <button
                   key={p.slug}
                   onClick={() => selectProduct(p)}
