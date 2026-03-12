@@ -1,35 +1,47 @@
 import Link from "next/link";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
+import GuideVisual from "@/app/components/GuideVisual";
 
 export const metadata = {
   title: "단백질과 면역·호르몬 | 항체·효소·인슐린까지 | ProteinLab",
   description:
-    "단백질이 항체 생성, 면역세포 활동, 호르몬·효소 합성에 미치는 영향을 정리했습니다.",
+    "단백질은 근육뿐 아니라 항체, 호르몬, 효소 구성에도 관여합니다. 면역과 대사 관점에서 핵심 역할을 정리했습니다.",
 };
 
 const functionRows = [
   ["단백질 호르몬", "인슐린, 성장호르몬, 글루카곤", "혈당 조절, 성장, 대사 조절"],
-  ["소화효소", "트립신, 펩신", "단백질·음식물 소화"],
-  ["면역단백질", "항체, 사이토카인", "병원체 무력화, 면역 신호 전달"],
+  ["소화효소", "트립신, 펩신", "음식물 소화와 분해"],
+  ["면역단백질", "항체, 사이토카인", "병원체 방어와 면역 신호 전달"],
 ];
 
-function ImageSlot({ alt }: { alt: string }) {
+const focusPoints = [
+  {
+    title: "항체와 사이토카인",
+    body: "면역 반응을 만드는 핵심 재료가 단백질이라, 부족하면 회복과 방어가 동시에 흔들릴 수 있습니다.",
+  },
+  {
+    title: "호르몬의 구성",
+    body: "인슐린과 성장호르몬처럼 대사와 회복을 조절하는 신호도 단백질 사슬로 구성됩니다.",
+  },
+  {
+    title: "효소의 역할",
+    body: "트립신, 펩신 같은 효소 역시 단백질이라 부족하면 소화와 흡수 효율까지 영향을 받습니다.",
+  },
+];
+
+function InsightChip({ title, body }: { title: string; body: string }) {
   return (
-    <div
-      className="mt-4 rounded-2xl border border-dashed border-[#d9d4cd] bg-white px-5 py-8 text-center"
-      role="img"
-      aria-label={alt}
-    >
-      <p className="text-xs font-semibold tracking-[0.08em] text-[#8f8a84]">IMAGE SLOT</p>
-      <p className="mt-2 text-sm font-semibold text-[var(--foreground)]">{alt}</p>
+    <div className="rounded-2xl border border-[#dce8df] bg-[#f6fbf7] p-4 shadow-[0_12px_30px_rgba(45,106,79,0.06)]">
+      <p className="text-sm font-semibold text-[#24543d]">{title}</p>
+      <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">{body}</p>
     </div>
   );
 }
 
 function Callout({ children }: { children: React.ReactNode }) {
   return (
-    <blockquote className="mt-4 rounded-xl border border-[#eef1f3] bg-white px-4 py-4 text-sm leading-6 text-[var(--foreground-muted)]">
+    <blockquote className="mt-4 rounded-2xl border border-[#dce8df] bg-[#f7fbf8] px-4 py-4 text-sm leading-6 text-[var(--foreground-muted)]">
       {children}
     </blockquote>
   );
@@ -51,10 +63,10 @@ export default function ImmunityHormonePage() {
             </Link>
             <span>/</span>
             <Link href="/guides/basics" className="hover:text-[var(--accent)]">
-              🧬 단백질 기초
+              단백질 기초
             </Link>
             <span>/</span>
-            <span>면역과 호르몬</span>
+            <span>면역·호르몬과 단백질</span>
           </div>
 
           <div className="mt-3">
@@ -63,48 +75,87 @@ export default function ImmunityHormonePage() {
             </span>
           </div>
 
-          <h1 className="mt-3 text-2xl font-bold leading-tight text-[var(--foreground)] md:text-3xl">
-            단백질이 면역과 호르몬에 미치는 영향
-          </h1>
-          <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
-            단백질은 근육 외에도 면역과 호르몬 시스템 전반에 관여합니다. 항체, 사이토카인,
-            인슐린. 이 모두가 단백질로 만들어집니다.
-          </p>
+          <div className="mt-4 grid gap-4 lg:grid-cols-[1.15fr_0.85fr] lg:items-center">
+            <div>
+              <h1 className="text-2xl font-bold leading-tight text-[var(--foreground)] md:text-3xl">
+                단백질이 면역과 호르몬에 미치는 영향
+              </h1>
+              <p className="mt-3 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
+                단백질은 근육만 위한 영양소가 아닙니다.
+                <br />
+                항체, 사이토카인, 인슐린, 효소까지 몸의 조절 시스템 전반에 관여합니다.
+              </p>
+            </div>
+
+            <div className="rounded-[28px] border border-[#dce8df] bg-[linear-gradient(135deg,#f7fbf8_0%,#eef6f1_100%)] p-4 shadow-[0_18px_40px_rgba(45,106,79,0.08)]">
+              <GuideVisual
+                track="protein-basics"
+                title="면역·호르몬"
+                accentColor="#2d6a4f"
+                accentBg="#eaf4ee"
+                variant="topic"
+              />
+            </div>
+          </div>
         </div>
       </section>
 
       <main className="mx-auto max-w-[1200px] px-4 py-8 md:px-6">
         <div className="space-y-6">
-          <section className="rounded-2xl border border-[#e8e6e3] bg-[#fffdf8] px-5 py-5">
+          <section className="rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
+            <div className="flex flex-wrap items-center justify-between gap-3">
+              <div>
+                <p className="text-xs font-semibold tracking-[0.12em] text-[#2d6a4f]">핵심 포인트</p>
+                <h2 className="mt-2 text-xl font-bold text-[var(--foreground)]">면역과 대사에서 단백질이 중요한 이유</h2>
+              </div>
+              <span className="rounded-full bg-[#eff7f1] px-3 py-1 text-xs font-semibold text-[#2d6a4f]">
+                면역·호르몬 가이드
+              </span>
+            </div>
+
+            <div className="mt-5 grid gap-3 md:grid-cols-3">
+              {focusPoints.map((point) => (
+                <InsightChip key={point.title} title={point.title} body={point.body} />
+              ))}
+            </div>
+          </section>
+
+          <section className="rounded-[28px] border border-[#e8e6e3] bg-[#fffdf8] px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
             <h2 className="text-xl font-bold text-[var(--foreground)]">항체와 면역세포의 재료</h2>
             <p className="mt-4 text-sm leading-6 text-[var(--foreground-muted)]">
-              항체(면역글로불린), 사이토카인, 인터페론은 모두 단백질입니다. 단백질이 부족하면
-              면역세포 수가 감소하고 감염에 취약해집니다. 수술 후 회복기나 중환자의 경우 하루
-              1.5~2.0 g/kg까지 권장됩니다.
+              항체와 사이토카인, 인터페론은 모두 단백질입니다. 단백질이 부족하면 면역세포 수와 반응성이 떨어지고,
+              회복기에는 감염과 회복 지연 리스크가 함께 커질 수 있습니다.
             </p>
 
-            <ImageSlot alt="항체(면역글로불린) 구조 모식도" />
+            <div className="mt-5 rounded-[28px] border border-[#dce8df] bg-[linear-gradient(135deg,#f7fbf8_0%,#eef6f1_100%)] p-4 shadow-[0_16px_36px_rgba(45,106,79,0.08)]">
+              <GuideVisual
+                track="protein-basics"
+                title="항체와 면역"
+                accentColor="#2d6a4f"
+                accentBg="#eaf4ee"
+                variant="topic"
+              />
+              <div className="mt-4 grid gap-3 md:grid-cols-2">
+                <InsightChip title="회복기 섭취량" body="수술 후나 회복기에는 1.5~2.0 g/kg 수준이 권장되기도 합니다." />
+                <InsightChip title="면역력과 회복" body="단백질 부족은 잦은 피로와 감염 취약성으로 이어질 수 있습니다." />
+              </div>
+            </div>
 
-            <Callout>
-              단백질 결핍 시: 면역세포 수 감소 → 감염률 증가 → 회복 지연
-            </Callout>
+            <Callout>단백질 결핍 시 면역세포 수 감소, 감염률 증가, 회복 지연이 함께 나타날 수 있습니다.</Callout>
 
             <p className="mt-4 text-xs text-[var(--foreground-muted)]">
               출처: Munteanu &amp; Schwartz (2022), Frontiers in Nutrition
             </p>
           </section>
 
-          <section className="rounded-2xl border border-[#e8e6e3] bg-[#fffdf8] px-5 py-5">
+          <section className="rounded-[28px] border border-[#e8e6e3] bg-[#fffdf8] px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
             <h2 className="text-xl font-bold text-[var(--foreground)]">호르몬과 효소도 단백질이다</h2>
             <p className="mt-4 text-sm leading-6 text-[var(--foreground-muted)]">
-              인슐린, 성장호르몬, 글루카곤은 아미노산 사슬로 이루어진 단백질 호르몬입니다. 소화를
-              돕는 트립신·펩신 같은 소화효소도 단백질입니다. 단백질이 부족하면 이들의 합성이 줄어
-              혈당 조절, 성장, 소화 기능에 영향을 미칩니다.
+              인슐린, 성장호르몬, 글루카곤은 모두 단백질 또는 펩타이드 호르몬입니다. 소화를 돕는 트립신과 펩신도
+              단백질로 구성되어 있어 섭취 부족은 대사와 소화 기능 전반에 영향을 줄 수 있습니다.
             </p>
 
-            <ImageSlot alt="인체 호르몬 분비선(내분비계) 모식도" />
-
-            <div className="mt-5 overflow-x-auto">
+            <div className="mt-5 overflow-x-auto rounded-2xl border border-[#ece9e2] bg-white">
               <table className="min-w-full border-collapse text-left text-sm">
                 <thead>
                   <tr className="border-b border-[#e8e6e3] text-[var(--foreground)]">
@@ -132,19 +183,19 @@ export default function ImmunityHormonePage() {
             </p>
           </section>
 
-          <section className="rounded-2xl border border-[#e8e6e3] bg-white px-5 py-5">
+          <section className="rounded-[28px] border border-[#e8e6e3] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
             <div className="flex flex-wrap gap-3">
               <Link
                 href="/guides/basics/role-overview"
-                className="inline-flex items-center justify-center rounded-lg border border-[#e8e6e3] px-5 py-3 text-sm font-semibold text-[#374151] transition-colors hover:bg-[var(--accent-light)] hover:text-[var(--accent)]"
+                className="inline-flex items-center justify-center rounded-xl border border-[#d9e7dc] bg-white px-5 py-3 text-sm font-semibold text-[#24543d] transition-colors hover:bg-[#eef7f1]"
               >
                 단백질 기초 전체 보기
               </Link>
               <Link
                 href="/recommend"
-                className="inline-flex items-center justify-center rounded-lg border border-[#e8e6e3] px-5 py-3 text-sm font-semibold text-[#374151] transition-colors hover:bg-[var(--accent-light)] hover:text-[var(--accent)]"
+                className="inline-flex items-center justify-center rounded-xl border border-[#2d6a4f] bg-[#2d6a4f] px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#24543d]"
               >
-                내 목적에 맞는 단백질 음료 찾기
+                내 목적에 맞는 단백질 찾기
               </Link>
             </div>
           </section>
