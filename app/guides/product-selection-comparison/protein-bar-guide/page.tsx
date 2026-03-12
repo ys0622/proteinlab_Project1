@@ -15,18 +15,25 @@ const barRules = [
   },
   {
     title: "식사 보완형 바",
-    body: "포만감과 열량이 더 중요해집니다. 단백질만 보지 말고 칼로리와 지방도 같이 확인해야 합니다.",
+    body: "포만감과 총열량이 더 중요해집니다. 단백질만 보지 말고 칼로리와 지방도 같이 확인해야 합니다.",
   },
   {
     title: "운동 후 보충형 바",
-    body: "단백질 함량이 높더라도 당류와 식감 때문에 실제 섭취 편의성이 떨어질 수 있어 성분표와 사용 상황을 함께 봐야 합니다.",
+    body: "단백질 함량이 높아도 식감이나 당류 때문에 실제 사용감이 달라질 수 있어 성분표와 상황을 함께 봐야 합니다.",
   },
+];
+
+const pitfalls = [
+  "단백질 함량만 보고 고르면 당류와 칼로리가 예상보다 높을 수 있습니다.",
+  "소용량 바는 전체 기준 영양정보인지 1개 기준인지 다시 확인하는 것이 중요합니다.",
+  "저당 제품도 지방이 높으면 식사 대용처럼 느껴질 수 있어 총열량을 같이 봐야 합니다.",
 ];
 
 export default function ProteinBarGuidePage() {
   return (
     <div className="min-h-screen bg-white">
       <Header />
+
       <section className="w-full border-t border-b bg-[var(--hero-bg)]" style={{ borderColor: "var(--hero-border)" }}>
         <div className="mx-auto max-w-[1200px] px-4 py-5 md:px-6 md:py-6">
           <div className="flex flex-wrap items-center gap-1.5 text-xs text-[var(--foreground-muted)]">
@@ -45,12 +52,13 @@ export default function ProteinBarGuidePage() {
             단백질 바는 간식인지 식사 보완인지부터 구분해야 합니다
           </h1>
           <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
-            단백질 바는 제품마다 성격이 많이 다릅니다.
+            단백질 바는 제품마다 성격이 꽤 다릅니다.
             <br />
-            단백질만 높다고 좋은 것이 아니라, 언제 먹을지에 따라 당류와 칼로리 기준도 달라집니다.
+            단백질 수치만 높다고 좋은 것이 아니라, 언제 먹을지에 따라 당류와 칼로리 기준도 함께 달라집니다.
           </p>
         </div>
       </section>
+
       <main className="mx-auto max-w-[1200px] px-4 py-8 md:px-6">
         <div className="space-y-6">
           <section className="rounded-2xl border border-[#e8e6e3] bg-white px-5 py-5">
@@ -66,11 +74,11 @@ export default function ProteinBarGuidePage() {
           </section>
 
           <section className="rounded-2xl border border-[#e8e6e3] bg-[#fffdf8] px-5 py-5">
-            <h2 className="text-xl font-bold text-[var(--foreground)]">단백질 바를 볼 때 자주 놓치는 숫자</h2>
+            <h2 className="text-xl font-bold text-[var(--foreground)]">단백질 바를 볼 때 자주 놓치는 포인트</h2>
             <ul className="mt-4 space-y-3 text-sm leading-6 text-[var(--foreground-muted)]">
-              <li>• 단백질 함량만 보고 고르면 당류와 칼로리가 예상보다 높을 수 있습니다.</li>
-              <li>• 소용량 바는 전체 기준 영양정보인지 1개 기준인지 다시 확인하는 것이 중요합니다.</li>
-              <li>• 저당 제품도 지방이 높으면 식사 대용처럼 느껴질 수 있어 총열량을 같이 봐야 합니다.</li>
+              {pitfalls.map((item) => (
+                <li key={item}>• {item}</li>
+              ))}
             </ul>
           </section>
 
@@ -86,8 +94,8 @@ export default function ProteinBarGuidePage() {
           </section>
         </div>
       </main>
+
       <Footer />
     </div>
   );
 }
-
