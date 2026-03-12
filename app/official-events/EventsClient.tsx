@@ -125,8 +125,8 @@ const drinkBrands: BrandCard[] = [
     brand: "랩노쉬",
     storeType: "자사몰",
     storeUrl: "https://labnosh.com/",
-    note: "현재 등록 제품 6개",
-    productCount: 6,
+    note: "현재 등록 제품 9개",
+    productCount: 9,
     events: [
       { category: "할인", periodLabel: "상시 체크", description: "재고 소진형 세일과 세트 특가 빈도가 높아 시점별 가격 차이가 큰 브랜드입니다." },
       { category: "쿠폰", periodLabel: "회원 혜택", description: "신규 회원 쿠폰팩과 앱 전용 혜택이 붙는지 같이 확인하는 편이 좋습니다." },
@@ -382,28 +382,42 @@ export default function EventsClient() {
 function BrandEventCard({ brand }: { brand: BrandCard }) {
   return (
     <div
-      className="flex h-full flex-col justify-between rounded-2xl border border-[#e8e6e3] bg-[#fffdf8]"
-      style={{ overflow: "hidden" }}
+      className="flex h-full flex-col justify-between overflow-hidden rounded-2xl border border-[#d8e2da] bg-[#fffdf8] shadow-[0_10px_24px_rgba(20,40,28,0.05)]"
+      style={{ boxShadow: "0 12px 28px rgba(28, 52, 39, 0.06)" }}
     >
+      <div className="h-1.5 w-full bg-[#2f5d46]" />
       <div>
-        <div className="flex items-center justify-between gap-3 border-b border-[#f0eeeb] px-5 py-4">
-          <div>
-            <h2 className="text-base font-bold text-[var(--foreground)]">{brand.brand}</h2>
-            <p className="mt-1 text-xs text-[#8f8a84]">{brand.note}</p>
+        <div className="border-b border-[#e7eee9] bg-[linear-gradient(135deg,#f8fcf9_0%,#f2f7f4_100%)] px-5 py-4">
+          <div className="flex items-start justify-between gap-3">
+            <div>
+              <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[#6f8b79]">Brand</p>
+              <h2 className="mt-1 text-lg font-bold text-[#224b37]">{brand.brand}</h2>
+              <p className="mt-1 text-xs text-[#7a837d]">{brand.note}</p>
+            </div>
+            <div className="flex flex-col items-end gap-2">
+              <span
+                className="shrink-0 rounded-full border border-[#cfe0d5] bg-white px-2.5 py-1 text-[11px] font-semibold text-[#2f5d46]"
+              >
+                제품 {brand.productCount}개
+              </span>
+              <span
+                className="shrink-0 rounded-md px-2.5 py-1 text-[11px] font-medium"
+                style={{ background: "#ebf4ee", color: "#486654" }}
+              >
+                {brand.storeType}
+              </span>
+            </div>
           </div>
-          <span
-            className="shrink-0 rounded-md px-2 py-0.5 text-[11px] font-medium"
-            style={{ background: "#f3f0eb", color: "#6b6b6b" }}
-          >
-            {brand.storeType}
-          </span>
         </div>
 
         <ul className="space-y-3 px-5 pb-2 pt-4">
           {brand.events.map((event) => {
             const color = CATEGORY_COLOR[event.category];
             return (
-              <li key={`${brand.brand}-${event.category}-${event.description}`} className="flex flex-col gap-1.5">
+              <li
+                key={`${brand.brand}-${event.category}-${event.description}`}
+                className="rounded-xl border border-[#edf2ed] bg-white px-3.5 py-3"
+              >
                 <div className="flex flex-wrap items-center gap-1.5">
                   <span
                     className="inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[11px] font-semibold"
@@ -415,9 +429,9 @@ function BrandEventCard({ brand }: { brand: BrandCard }) {
                   >
                     {CATEGORY_EMOJI[event.category]} {event.category}
                   </span>
-                  <span className="text-[11px] text-[#999]">확인 시점: {event.periodLabel}</span>
+                  <span className="text-[11px] font-medium text-[#7a837d]">확인 시점: {event.periodLabel}</span>
                 </div>
-                <p className="text-[13px] leading-6 text-[var(--foreground)]">{event.description}</p>
+                <p className="mt-2 text-[13px] leading-6 text-[var(--foreground)]">{event.description}</p>
               </li>
             );
           })}
@@ -429,7 +443,7 @@ function BrandEventCard({ brand }: { brand: BrandCard }) {
           href={brand.storeUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center justify-center rounded-lg border border-[#e8e6e3] bg-white py-2.5 text-xs font-semibold text-[#374151] transition-colors hover:bg-[var(--accent-light)] hover:text-[var(--accent)]"
+          className="flex items-center justify-center rounded-lg border border-[#cfe0d5] bg-white py-2.5 text-xs font-semibold text-[#2f5d46] transition-colors hover:bg-[#eef5f0] hover:text-[#1f4834]"
         >
           {brand.storeType === "네이버 스토어" ? "네이버 스토어 방문" : "판매처 방문"} →
         </a>

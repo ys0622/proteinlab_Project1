@@ -3323,6 +3323,120 @@
     }
   },
   {
+    "slug": "labnosh-protein-perfect-grain-350",
+    "brand": "랩노쉬",
+    "name": "프로틴 드링크 퍼펙트 (그레인)",
+    "capacity": "350mL",
+    "variant": "일반",
+    "tags": [
+      "PET"
+    ],
+    "proteinPerServing": 27,
+    "calories": 125,
+    "sugar": 0,
+    "density": "7.7g/100ml",
+    "productUrl": "#",
+    "productType": "drink",
+    "gradeTags": [
+      "단백질 밀도 A",
+      "다이어트 A",
+      "퍼포먼스 A"
+    ],
+    "manufacturer": "랩노쉬",
+    "flavor": "그레인",
+    "bcaa": "—",
+    "proteinSource": "혼합",
+    "fat": 0.5,
+    "sodium": 190,
+    "calorieDensity": "35.7kcal/100ml",
+    "drinkType": "밀크형",
+    "nutritionPerBottle": {
+      "caloriesKcal": 125,
+      "proteinG": 27,
+      "carbsG": 3,
+      "sugarsG": 0,
+      "fatG": 0.5,
+      "satFatG": 0.3,
+      "sodiumMg": 190
+    }
+  },
+  {
+    "slug": "labnosh-protein-perfect-choco-350",
+    "brand": "랩노쉬",
+    "name": "프로틴 드링크 퍼펙트 (초코)",
+    "capacity": "350mL",
+    "variant": "일반",
+    "tags": [
+      "PET"
+    ],
+    "proteinPerServing": 27,
+    "calories": 125,
+    "sugar": 0,
+    "density": "7.7g/100ml",
+    "productUrl": "#",
+    "productType": "drink",
+    "gradeTags": [
+      "단백질 밀도 A",
+      "다이어트 A",
+      "퍼포먼스 A"
+    ],
+    "manufacturer": "랩노쉬",
+    "flavor": "초코",
+    "bcaa": "—",
+    "proteinSource": "혼합",
+    "fat": 0.5,
+    "sodium": 190,
+    "calorieDensity": "35.7kcal/100ml",
+    "drinkType": "밀크형",
+    "nutritionPerBottle": {
+      "caloriesKcal": 125,
+      "proteinG": 27,
+      "carbsG": 3,
+      "sugarsG": 0,
+      "fatG": 0.5,
+      "satFatG": 0.3,
+      "sodiumMg": 190
+    }
+  },
+  {
+    "slug": "labnosh-protein-perfect-banana-350",
+    "brand": "랩노쉬",
+    "name": "프로틴 드링크 퍼펙트 (바나나)",
+    "capacity": "350mL",
+    "variant": "일반",
+    "tags": [
+      "PET"
+    ],
+    "proteinPerServing": 27,
+    "calories": 125,
+    "sugar": 0,
+    "density": "7.7g/100ml",
+    "productUrl": "#",
+    "productType": "drink",
+    "gradeTags": [
+      "단백질 밀도 A",
+      "다이어트 A",
+      "퍼포먼스 A"
+    ],
+    "manufacturer": "랩노쉬",
+    "flavor": "바나나",
+    "bcaa": "—",
+    "proteinSource": "혼합",
+    "fat": 0.5,
+    "sodium": 190,
+    "calorieDensity": "35.7kcal/100ml",
+    "drinkType": "밀크형",
+    "nutritionPerBottle": {
+      "caloriesKcal": 125,
+      "proteinG": 27,
+      "carbsG": 3,
+      "sugarsG": 0,
+      "fatG": 0.5,
+      "satFatG": 0.3,
+      "sodiumMg": 190
+    }
+  },
+  {
     "slug": "calobye-perfect-powershake-choco-250",
     "brand": "칼로바이",
     "name": "퍼펙트 파워쉐이크 (초코맛)",
