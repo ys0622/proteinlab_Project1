@@ -13,17 +13,22 @@ function parseDensityNum(d: string): number {
  * - 하위 20% → D
  */
 function assignGrades(values: number[], higherIsBetter: boolean): string[] {
-  const sorted = [...values].sort((a, b) => (higherIsBetter ? b - a : a - b));
-  const len = sorted.length;
+  const ranked = values
+    .map((value, index) => ({ value, index }))
+    .sort((a, b) => (higherIsBetter ? b.value - a.value : a.value - b.value));
 
-  return values.map((v) => {
-    const rank = sorted.indexOf(v);
-    const pct = rank / len;
-    if (pct < 0.2) return "A";
-    if (pct < 0.5) return "B";
-    if (pct < 0.8) return "C";
-    return "D";
+  const grades = new Array<string>(values.length);
+  const len = ranked.length;
+
+  ranked.forEach(({ index }, rankIndex) => {
+    const pct = rankIndex / len;
+    if (pct < 0.2) grades[index] = "A";
+    else if (pct < 0.5) grades[index] = "B";
+    else if (pct < 0.8) grades[index] = "C";
+    else grades[index] = "D";
   });
+
+  return grades;
 }
 
 export function getDensityValue(p: ProductDetailProps): number {

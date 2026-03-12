@@ -1,10 +1,7 @@
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import Link from "next/link";
-import Image from "next/image";
 import { mockProducts, barProductsWithGrades, type ProductDetailProps } from "../data/products";
 import { getDensityValue, getDietScore, getPerformanceScore } from "../lib/gradeCalculation";
-import { getProductImageUrl } from "../lib/productImage";
 import RankingClient from "./RankingClient";
 
 export const metadata = {
@@ -14,21 +11,31 @@ export const metadata = {
 
 function prepareRankingData(products: ProductDetailProps[], metric: "density" | "diet" | "performance") {
   const scored = products.map((p) => {
-    let score: number;
-    if (metric === "density") score = getDensityValue(p);
-    else if (metric === "diet") score = getDietScore(p);
-    else score = getPerformanceScore(p);
-    return { product: p, score };
+    let rawScore: number;
+    if (metric === "density") rawScore = getDensityValue(p);
+    else if (metric === "diet") rawScore = getDietScore(p);
+    else rawScore = getPerformanceScore(p);
+    return { product: p, rawScore };
   });
 
   const higherIsBetter = metric !== "diet";
-  scored.sort((a, b) => higherIsBetter ? b.score - a.score : a.score - b.score);
+  scored.sort((a, b) => higherIsBetter ? b.rawScore - a.rawScore : a.rawScore - b.rawScore);
+
+  const rawValues = scored.map((item) => item.rawScore);
+  const min = Math.min(...rawValues);
+  const max = Math.max(...rawValues);
+  const range = Math.max(max - min, 1);
 
   const len = scored.length;
   return scored.map((item, idx) => {
     const pct = idx / len;
     const grade = pct < 0.2 ? "A" : pct < 0.5 ? "B" : pct < 0.8 ? "C" : "D";
-    return { ...item, grade, rank: idx + 1 };
+    const normalizedRatio = higherIsBetter
+      ? (item.rawScore - min) / range
+      : (max - item.rawScore) / range;
+    const score = Math.round(normalizedRatio * 100);
+
+    return { ...item, score, grade, rank: idx + 1 };
   });
 }
 
