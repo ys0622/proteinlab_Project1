@@ -15,7 +15,7 @@ function getDensityValue(density: string): number {
 }
 
 function isDensityBOrBetter(gradeTags?: string[]) {
-  return gradeTags?.some((tag) => tag.startsWith("밀도 A") || tag.startsWith("밀도 B")) ?? false;
+  return gradeTags?.some((tag) => tag.startsWith("단백질 밀도 A") || tag.startsWith("단백질 밀도 B")) ?? false;
 }
 
 const runningDrinks = mockProducts.filter(

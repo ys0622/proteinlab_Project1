@@ -21,12 +21,12 @@ const guideLinks = [
   {
     href: "/guides/running/basics",
     title: "러너에게 좋은 단백질 선택 기준",
-    description: "러닝 후 회복과 일상 보충에 맞는 단백질 기준을 정리한 가이드입니다.",
+    description: "러닝 후 회복과 일상 보충에 맞는 단백질 선택 기준을 정리한 가이드입니다.",
   },
   {
     href: "/guides/running/race-week",
     title: "러닝 후 단백질 섭취 타이밍",
-    description: "훈련 직후와 레이스 전후에 어떤 방식으로 단백질을 보충할지 확인하세요.",
+    description: "운동 직후와 레이스 전후에 어떻게 단백질을 보충할지 확인해보세요.",
   },
 ];
 
@@ -34,7 +34,7 @@ const contentByType = {
   drink: {
     breadcrumb: "러닝 음료 큐레이션",
     title: "러닝 후 단백질 음료 추천",
-    heroLabel: "러너에게 적합한 단백질 음료를 데이터 기준으로 확인하세요.",
+    heroLabel: "러너에게 적합한 단백질 제품을 데이터 기준으로 확인하세요.",
     criteriaBullets: [
       "단백질 15g 이상, 25g 이하",
       "당류 10g 이하",
@@ -46,8 +46,8 @@ const contentByType = {
     listAriaLabel: "러닝 단백질 음료 목록",
     backHref: "/",
     backLabel: "단백질 음료",
-    secondaryHref: "/bars",
-    secondaryLabel: "단백질 바 전체 보기",
+    secondaryHref: "/curation/running/bar",
+    secondaryLabel: "러닝 단백질 바 보기",
   },
   bar: {
     breadcrumb: "러닝 바 큐레이션",
@@ -55,7 +55,7 @@ const contentByType = {
     heroLabel: "러너에게 적합한 단백질 바를 데이터 기준으로 확인하세요.",
     criteriaBullets: [
       "단백질 10g 이상, 20g 이하",
-      "당류가 낮은 제품",
+      "당류가 낮은 제품 우선",
       "소화 부담이 낮은 단백질 바를 우선 추천",
       "단백질 밀도, 단백질 함량, 당류를 함께 비교",
     ],
@@ -64,8 +64,8 @@ const contentByType = {
     listAriaLabel: "러닝 단백질 바 목록",
     backHref: "/bars",
     backLabel: "단백질 바",
-    secondaryHref: "/",
-    secondaryLabel: "단백질 음료 전체 보기",
+    secondaryHref: "/curation/running/drink",
+    secondaryLabel: "러닝 단백질 음료 보기",
   },
 } satisfies Record<
   RunningCurationType,
@@ -136,11 +136,8 @@ export default function RunningCurationContent({
 
       <main className="mx-auto max-w-[1200px] px-4 pb-2 pt-3 md:px-6">
         <div className="grid gap-3 sm:grid-cols-2">
-          <div
-            className="rounded-xl border border-[#e8e6e3] bg-[#FFFDF8] px-4 py-3"
-            style={{ borderRadius: "12px" }}
-          >
-            <h2 className="text-xs font-semibold text-[var(--foreground)]">러닝 설명</h2>
+          <div className="rounded-xl border border-[#e8e6e3] bg-[#FFFDF8] px-4 py-3">
+            <h2 className="text-xs font-semibold text-[var(--foreground)]">러닝 후 회복 포인트</h2>
             <ul className="mt-1.5 space-y-1">
               {commonDescriptionBullets.map((item) => (
                 <li
@@ -154,10 +151,7 @@ export default function RunningCurationContent({
             </ul>
           </div>
 
-          <div
-            className="rounded-xl border border-[#e8e6e3] bg-[#FFFDF8] px-4 py-3"
-            style={{ borderRadius: "12px" }}
-          >
+          <div className="rounded-xl border border-[#e8e6e3] bg-[#FFFDF8] px-4 py-3">
             <h2 className="text-xs font-semibold text-[var(--foreground)]">제품 큐레이션 기준</h2>
             <ul className="mt-1.5 space-y-1">
               {content.criteriaBullets.map((item) => (
@@ -165,7 +159,7 @@ export default function RunningCurationContent({
                   key={item}
                   className="flex items-start gap-1.5 text-xs leading-snug text-[var(--foreground-muted)]"
                 >
-                  <span className="mt-px shrink-0">•</span>
+                  <span className="mt-px shrink-0 text-[var(--accent)]">•</span>
                   <span>{item}</span>
                 </li>
               ))}
@@ -199,10 +193,7 @@ export default function RunningCurationContent({
           </div>
         </section>
 
-        <section
-          className="mt-10 rounded-xl border border-[#e8e6e3] bg-[#FFFDF8] px-4 py-3"
-          style={{ borderRadius: "12px" }}
-        >
+        <section className="mt-10 rounded-xl border border-[#e8e6e3] bg-[#FFFDF8] px-4 py-3">
           <h2 className="text-xs font-semibold text-[var(--foreground)]">러닝 가이드</h2>
           <div className="mt-3 grid gap-3 md:grid-cols-2">
             {guideLinks.map((guide) => (
