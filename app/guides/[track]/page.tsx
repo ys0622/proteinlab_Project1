@@ -89,6 +89,41 @@ const clampOneLine = {
   overflow: "hidden",
 };
 
+const proteinBasicsParallelSlots = [
+  {
+    slug: "protein-functions",
+    title: "단백질 역할 개요",
+    description: "단백질이 근육, 면역, 호르몬, 회복에 어떻게 쓰이는지 먼저 이해하는 출발점입니다.",
+    searchIntent: "단백질은 몸에서 어떤 일을 하나",
+    internalLinkTargets: [] as { label: string; href: string }[],
+    href: "/guides/protein-basics/protein-functions",
+  },
+  {
+    slug: "muscle",
+    title: "근육과 단백질",
+    description: "근육 성장과 회복에 단백질이 왜 필요한지, 언제 어떻게 먹어야 하는지 정리합니다.",
+    searchIntent: "근육 성장에 단백질이 왜 필요한가",
+    internalLinkTargets: [{ label: "단백질 역할 개요", href: "/guides/protein-basics/protein-functions" }],
+    href: "/guides/basics/muscle",
+  },
+  {
+    slug: "immunity-hormone",
+    title: "면역·호르몬과 단백질",
+    description: "항체, 면역세포, 호르몬과 효소가 왜 단백질과 연결되는지 이해할 수 있게 정리합니다.",
+    searchIntent: "면역과 호르몬에 단백질이 왜 중요한가",
+    internalLinkTargets: [{ label: "단백질 역할 개요", href: "/guides/protein-basics/protein-functions" }],
+    href: "/guides/basics/immunity-hormone",
+  },
+  {
+    slug: "deficiency-symptoms",
+    title: "단백질 부족 신호",
+    description: "피로, 근육 감소, 면역 저하처럼 단백질 부족 시 나타날 수 있는 신호를 모았습니다.",
+    searchIntent: "단백질 부족 증상에는 무엇이 있나",
+    internalLinkTargets: [{ label: "하루 단백질 권장량", href: "/guides/basics/daily-requirement" }],
+    href: "/guides/basics/deficiency-symptoms",
+  },
+];
+
 export async function generateStaticParams() {
   return getGuideTracks().map((track) => ({ track: track.slug }));
 }
@@ -113,6 +148,13 @@ export default async function GuideTrackPage({ params }: { params: Promise<{ tra
 
   const copy = trackPageCopy[trackData.slug];
   const topicChips = topicChipsMap[trackData.slug];
+  const displaySlots =
+    trackData.slug === "protein-basics"
+      ? proteinBasicsParallelSlots
+      : trackData.slots.map((slot) => ({ ...slot, href: `/guides/${trackData.slug}/${slot.slug}` }));
+  if (trackData.slug === "protein-basics") {
+    trackData.slots = proteinBasicsParallelSlots as typeof trackData.slots;
+  }
 
   return (
     <div className="min-h-screen bg-white">
@@ -185,10 +227,10 @@ export default async function GuideTrackPage({ params }: { params: Promise<{ tra
           </div>
 
           <div className="mt-4 grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
-            {trackData.slots.map((slot) => (
+            {displaySlots.map((slot) => (
               <Link
                 key={slot.slug}
-                href={`/guides/${trackData.slug}/${slot.slug}`}
+                href={slot.href}
                 className="group flex h-full min-h-[264px] flex-col justify-between rounded-2xl border border-[#e8e6e3] bg-[#fffdf8] px-5 py-5 transition-colors hover:border-[#cfe1d7]"
               >
                 <div>

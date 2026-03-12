@@ -411,9 +411,9 @@ export default async function GuideSlugPage({
                   <article key={card.title} className="flex min-h-[180px] flex-col rounded-2xl border border-[#e8e6e3] bg-white px-5 py-5">
                     <h3 className="text-lg font-bold leading-7 text-[var(--foreground)]">{card.title}</h3>
                     <p className="mt-3 text-sm leading-6 text-[var(--foreground-muted)]">{card.body}</p>
-                    <div className="mt-auto pt-5">
-                      <Link href={card.href} className="text-sm font-semibold text-[var(--accent)] hover:underline">{card.cta}</Link>
-                    </div>
+                    <p className="mt-auto pt-5 text-sm font-medium text-[#6d746f]">
+                      이 주제는 Track A에서 별도 콘텐츠로 이어집니다.
+                    </p>
                   </article>
                 ))}
               </div>
