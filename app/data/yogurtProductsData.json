@@ -90,7 +90,7 @@
   {
     "slug": "yoplait-protein-blueberry-100",
     "brand": "요플레",
-    "name": "요플레 프로틴 블루베리 떠먹는 요구르트",
+    "name": "요플레 프로틴 블루베리 떠먹는 요구르트 100g",
     "capacity": "100g",
     "variant": "블루베리",
     "tags": [
@@ -108,8 +108,8 @@
       "퍼포먼스 C"
     ],
     "gradeDescriptions": [
-      "단백질 강화 요거트이지만 최상위 제품 대비 밀도는 한 단계 낮습니다.",
-      "당류가 다소 높아 체중 관리용보다는 간식형 요거트에 가깝습니다.",
+      "현재 판매 흔적이 확인되는 떠먹는 블루베리 100g 제품입니다.",
+      "당류가 다소 높아 체중 관리용보다는 간식형 고단백 요거트에 가깝습니다.",
       "운동 직후 회복보다는 일반 고단백 간식으로 보는 편이 자연스럽습니다."
     ],
     "manufacturer": "요플레",
@@ -134,7 +134,7 @@
   {
     "slug": "yoplait-protein-plain-210",
     "brand": "요플레",
-    "name": "요플레 프로틴 플레인 드링킹 요거트",
+    "name": "요플레 프로틴 드링크 플레인 210mL",
     "capacity": "210mL",
     "variant": "플레인",
     "tags": [
@@ -144,7 +144,7 @@
     "calories": 125,
     "sugar": 4,
     "density": "7.1g/100mL",
-    "productUrl": "https://www.coupang.com/vp/products/9048812266",
+    "productUrl": "https://www.11st.co.kr/products/3007683002",
     "productType": "yogurt",
     "gradeTags": [
       "단백질 밀도 B",
@@ -152,11 +152,11 @@
       "퍼포먼스 B"
     ],
     "gradeDescriptions": [
-      "드링킹 타입 기준으로는 단백질 총량이 안정적인 편입니다.",
+      "현재 판매 흔적이 확인되는 드링크 플레인 210mL 제품입니다.",
       "당류가 낮고 마시기 쉬워 가벼운 보충용으로 접근하기 좋습니다.",
-      "운동 후 간단한 보충용으로는 무난하지만 최상위 회복용 제품과는 차이가 있습니다."
+      "운동 후 간단한 보충용으로는 무난한 편입니다."
     ],
-    "manufacturer": "요플레",
+    "manufacturer": "빙그레",
     "flavor": "플레인",
     "fat": 1.8,
     "sodium": 95,
@@ -174,51 +174,9 @@
     }
   },
   {
-    "slug": "yoplait-protein-strawberry-210",
-    "brand": "요플레",
-    "name": "요플레 프로틴 딸기 드링킹 요거트",
-    "capacity": "210mL",
-    "variant": "딸기",
-    "tags": [
-      "PET"
-    ],
-    "proteinPerServing": 15,
-    "calories": 130,
-    "sugar": 7,
-    "density": "7.1g/100mL",
-    "productUrl": "https://www.coupang.com/vp/products/9048812265",
-    "productType": "yogurt",
-    "gradeTags": [
-      "단백질 밀도 B",
-      "다이어트 B",
-      "퍼포먼스 B"
-    ],
-    "gradeDescriptions": [
-      "드링킹 타입으로 접근성이 좋고 단백질 총량도 충분한 편입니다.",
-      "플레인 계열보다 당류가 높아 다이어트 관점에서는 한 단계 보수적으로 봅니다.",
-      "가벼운 운동 후 보충이나 간식용으로 무난한 구성입니다."
-    ],
-    "manufacturer": "요플레",
-    "flavor": "딸기",
-    "fat": 1.8,
-    "sodium": 95,
-    "yogurtType": "드링킹 요거트",
-    "storageType": "냉장",
-    "lactoseFree": false,
-    "proteinPer100g": 7.1,
-    "nutritionPerBottle": {
-      "caloriesKcal": 130,
-      "proteinG": 15,
-      "carbsG": 12,
-      "sugarsG": 7,
-      "fatG": 1.8,
-      "sodiumMg": 95
-    }
-  },
-  {
     "slug": "yoplait-protein-strawberry-banana-210",
     "brand": "요플레",
-    "name": "요플레 프로틴 딸기바나나 드링킹 요거트",
+    "name": "요플레 프로틴 드링크 딸기바나나 210mL",
     "capacity": "210mL",
     "variant": "딸기바나나",
     "tags": [
@@ -228,7 +186,7 @@
     "calories": 135,
     "sugar": 8,
     "density": "7.1g/100mL",
-    "productUrl": "https://www.coupang.com/vp/products/9048812264",
+    "productUrl": "https://www.11st.co.kr/products/3007683002",
     "productType": "yogurt",
     "gradeTags": [
       "단백질 밀도 B",
@@ -236,11 +194,11 @@
       "퍼포먼스 B"
     ],
     "gradeDescriptions": [
-      "드링킹 요거트 기준으로 단백질 총량은 충분한 편입니다.",
-      "맛형 제품이라 칼로리와 당류가 소폭 높아 체중 관리용과는 거리가 있습니다.",
-      "운동 후 간단한 보충식으로는 사용할 수 있지만 최우선 추천군은 아닙니다."
+      "현재 판매 흔적이 확인되는 드링크 딸기바나나 210mL 제품입니다.",
+      "맛형 제품이라 플레인보다 당류와 칼로리가 소폭 높은 편입니다.",
+      "운동 후 간단한 보충식이나 간식용으로 접근할 수 있습니다."
     ],
-    "manufacturer": "요플레",
+    "manufacturer": "빙그레",
     "flavor": "딸기바나나",
     "fat": 1.9,
     "sodium": 100,
@@ -260,43 +218,45 @@
   {
     "slug": "yoplait-protein-max-210",
     "brand": "요플레",
-    "name": "요플레 프로틴 MAX 드링킹 요거트",
+    "name": "요플레 프로틴 MAX 210mL",
     "capacity": "210mL",
     "variant": "플레인",
     "tags": [
       "PET"
     ],
-    "proteinPerServing": 18,
-    "calories": 145,
-    "sugar": 4,
-    "density": "8.6g/100mL",
-    "productUrl": "https://www.coupang.com/vp/products/9181054975",
+    "proteinPerServing": 23,
+    "calories": 180,
+    "sugar": 12,
+    "density": "11.0g/100mL",
+    "productUrl": "https://catalog.11st.co.kr/pc/410027541",
     "productType": "yogurt",
     "gradeTags": [
       "단백질 밀도 A",
-      "다이어트 A",
+      "다이어트 B",
       "퍼포먼스 A"
     ],
     "gradeDescriptions": [
-      "드링킹 요거트 중에서는 단백질 밀도가 높은 편입니다.",
-      "당류 부담이 낮아 체중 관리 관점에서도 비교적 유리합니다.",
-      "간편하게 마실 수 있어 운동 후 보충용으로 보기 좋은 편입니다."
+      "빙그레 자료 기준 단백질 23g으로 강화된 MAX 라인입니다.",
+      "기본 드링크보다 당류와 열량은 높지만 단백질 총량이 크게 높습니다.",
+      "운동 후 보충용 기준으로는 현재 요플레 라인업 내 최상위권입니다."
     ],
-    "manufacturer": "요플레",
+    "manufacturer": "빙그레",
     "flavor": "플레인",
-    "fat": 2,
-    "sodium": 110,
+    "fat": 3.5,
+    "sodium": 125,
     "yogurtType": "드링킹 요거트",
     "storageType": "냉장",
     "lactoseFree": false,
-    "proteinPer100g": 8.6,
+    "proteinPer100g": 11,
     "nutritionPerBottle": {
-      "caloriesKcal": 145,
-      "proteinG": 18,
-      "carbsG": 10,
-      "sugarsG": 4,
-      "fatG": 2,
-      "sodiumMg": 110
+      "caloriesKcal": 180,
+      "proteinG": 23,
+      "carbsG": 13,
+      "sugarsG": 12,
+      "fatG": 3.5,
+      "satFatG": 2.5,
+      "cholesterolMg": 90,
+      "sodiumMg": 125
     }
   },
   {
@@ -524,7 +484,7 @@
   {
     "slug": "yoplait-protein-plain-100",
     "brand": "요플레",
-    "name": "요플레 프로틴 플레인 떠먹는 요구르트",
+    "name": "요플레 프로틴 플레인 떠먹는 요구르트 100g",
     "capacity": "100g",
     "variant": "플레인",
     "tags": [
@@ -534,7 +494,7 @@
     "calories": 105,
     "sugar": 8.5,
     "density": "10.4g/100g",
-    "productUrl": "https://www.coupang.com/vp/products/6558856238",
+    "productUrl": "https://www.coupang.com/vp/products/1583671868",
     "productType": "yogurt",
     "gradeTags": [
       "단백질 밀도 A",
@@ -542,7 +502,7 @@
       "퍼포먼스 B"
     ],
     "gradeDescriptions": [
-      "떠먹는 요거트 기준으로 단백질 밀도가 높은 편입니다.",
+      "현재 판매 흔적이 확인되는 떠먹는 플레인 100g 제품입니다.",
       "당류가 아주 낮지는 않지만 일반 요거트 대비 구성은 괜찮은 편입니다.",
       "운동 직후보다는 간식형 고단백 요거트로 더 잘 맞는 편입니다."
     ],
