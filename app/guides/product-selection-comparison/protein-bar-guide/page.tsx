@@ -52,28 +52,28 @@ export default function ProteinBarGuidePage() {
             단백질 바는 간식인지 식사 보완인지부터 구분해야 합니다
           </h1>
           <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
-            단백질 바는 제품마다 성격이 꽤 다릅니다.
+            간식으로 먹을지, 식사를 보완할지 — 그 용도에 따라 봐야 할 숫자가 달라집니다.
             <br />
-            단백질 수치만 높다고 좋은 것이 아니라, 언제 먹을지에 따라 당류와 칼로리 기준도 함께 달라집니다.
+            단백질 수치 하나만 보고 고르면 실제 용도와 맞지 않을 수 있습니다.
           </p>
         </div>
       </section>
 
-      <main className="guide-article-page guide-article-page--track-b mx-auto max-w-[1200px] px-4 py-8 md:px-6">
+      <main className="mx-auto max-w-[1200px] px-4 py-8 md:px-6">
         <div className="space-y-6">
-          <section className="rounded-2xl border border-[#e8e6e3] bg-white px-5 py-5">
+          <section className="rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
             <h2 className="text-xl font-bold text-[var(--foreground)]">먼저 구분해야 하는 3가지</h2>
             <div className="mt-5 grid gap-3 md:grid-cols-3">
               {barRules.map((item) => (
-                <article key={item.title} className="rounded-xl border border-[#e8eef3] bg-[#f9fbfd] p-4">
-                  <h3 className="text-sm font-semibold text-[#3f556d]">{item.title}</h3>
+                <article key={item.title} className="rounded-2xl border border-[#dce8df] bg-[#f6fbf7] p-4">
+                  <h3 className="text-sm font-semibold text-[#24543d]">{item.title}</h3>
                   <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">{item.body}</p>
                 </article>
               ))}
             </div>
           </section>
 
-          <section className="rounded-2xl border border-[#e8e6e3] bg-[#fffdf8] px-5 py-5">
+          <section className="rounded-[28px] border border-[#e2ebe4] bg-[#f7fbf8] px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
             <h2 className="text-xl font-bold text-[var(--foreground)]">단백질 바를 볼 때 자주 놓치는 포인트</h2>
             <ul className="mt-4 space-y-3 text-sm leading-6 text-[var(--foreground-muted)]">
               {pitfalls.map((item) => (
@@ -82,12 +82,12 @@ export default function ProteinBarGuidePage() {
             </ul>
           </section>
 
-          <section className="rounded-2xl border border-[#e8e6e3] bg-white px-5 py-5">
+          <section className="rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
             <div className="flex flex-wrap gap-3">
-              <Link href="/guides/product-selection-comparison/nutrition-criteria" className="inline-flex items-center justify-center rounded-lg border border-[#d8e2eb] px-5 py-3 text-sm font-semibold text-[#3f556d] transition-colors hover:bg-[#eef4f9]">
+              <Link href="/guides/product-selection-comparison/nutrition-criteria" className="inline-flex items-center justify-center rounded-lg border border-[#d9e7dc] px-5 py-3 text-sm font-semibold text-[#24543d] transition-colors hover:bg-[#eef7f1]">
                 영양성분 기준 보기 →
               </Link>
-              <Link href="/bars" className="inline-flex items-center justify-center rounded-lg border border-[#4a6178] bg-[#4a6178] px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#3c5065]">
+              <Link href="/bars" className="inline-flex items-center justify-center rounded-lg border border-[#2d6a4f] bg-[#2d6a4f] px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#24543d]">
                 단백질 바 비교하기 →
               </Link>
             </div>
