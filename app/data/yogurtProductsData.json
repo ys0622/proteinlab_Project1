@@ -2032,5 +2032,145 @@
     "needsServingCheck": true,
     "nutritionBasis": "unknown",
     "servingCheckNote": "판매 페이지는 옵션형 상품이라 실제 기준 중량과 영양표를 제품 라벨로 다시 확인해야 합니다."
+  },
+  {
+    "slug": "yovil-plain-550",
+    "brand": "요거트빌리지",
+    "name": "요거트빌리지 수제 그릭요거트 플레인 550g",
+    "capacity": "550g",
+    "variant": "플레인",
+    "tags": [
+      "컵"
+    ],
+    "proteinPerServing": 0,
+    "density": "-",
+    "productUrl": "https://m.oasis.co.kr/product/detail/49961-1053293",
+    "productType": "yogurt",
+    "gradeTags": [],
+    "gradeDescriptions": [
+      "오아시스 기준 현재 판매 중인 플레인 550g 제품입니다.",
+      "요거트빌리지의 기본 대용량 플레인 SKU로 보는 편이 맞습니다.",
+      "상세 영양표는 추가 이미지 확인이 필요합니다."
+    ],
+    "manufacturer": "요거트빌리지",
+    "flavor": "플레인",
+    "yogurtType": "그릭 요거트",
+    "storageType": "냉장",
+    "lactoseFree": false,
+    "needsServingCheck": true,
+    "nutritionBasis": "unknown",
+    "servingCheckNote": "판매 흔적은 확인됐지만 상세 영양성분은 페이지에 없습니다. 구매 전 제품 라벨의 기준 중량과 영양정보를 다시 확인해주세요."
+  },
+  {
+    "slug": "yovil-earlgrey-550",
+    "brand": "요거트빌리지",
+    "name": "요거트빌리지 수제 그릭요거트 얼그레이 550g",
+    "capacity": "550g",
+    "variant": "얼그레이",
+    "tags": [
+      "컵"
+    ],
+    "proteinPerServing": 0,
+    "density": "-",
+    "productUrl": "https://m.oasis.co.kr/product/detail/49961-1053293",
+    "productType": "yogurt",
+    "gradeTags": [],
+    "gradeDescriptions": [
+      "오아시스 기준 현재 판매 중인 얼그레이 550g 제품입니다.",
+      "플레인과는 다른 향미 SKU로 따로 관리하는 편이 맞습니다.",
+      "상세 영양표는 추가 이미지 확인이 필요합니다."
+    ],
+    "manufacturer": "요거트빌리지",
+    "flavor": "얼그레이",
+    "yogurtType": "그릭 요거트",
+    "storageType": "냉장",
+    "lactoseFree": false,
+    "needsServingCheck": true,
+    "nutritionBasis": "unknown",
+    "servingCheckNote": "판매 흔적은 확인됐지만 상세 영양성분은 페이지에 없습니다. 구매 전 제품 라벨의 기준 중량과 영양정보를 다시 확인해주세요."
+  },
+  {
+    "slug": "yovil-greentea-550",
+    "brand": "요거트빌리지",
+    "name": "요거트빌리지 수제 그릭요거트 녹차 550g",
+    "capacity": "550g",
+    "variant": "녹차",
+    "tags": [
+      "컵"
+    ],
+    "proteinPerServing": 0,
+    "density": "-",
+    "productUrl": "https://m.oasis.co.kr/product/detail/49961-1053293",
+    "productType": "yogurt",
+    "gradeTags": [],
+    "gradeDescriptions": [
+      "오아시스 기준 현재 판매 중인 녹차 550g 제품입니다.",
+      "플레인과는 다른 향미 SKU로 따로 관리하는 편이 맞습니다.",
+      "상세 영양표는 추가 이미지 확인이 필요합니다."
+    ],
+    "manufacturer": "요거트빌리지",
+    "flavor": "녹차",
+    "yogurtType": "그릭 요거트",
+    "storageType": "냉장",
+    "lactoseFree": false,
+    "needsServingCheck": true,
+    "nutritionBasis": "unknown",
+    "servingCheckNote": "판매 흔적은 확인됐지만 상세 영양성분은 페이지에 없습니다. 구매 전 제품 라벨의 기준 중량과 영양정보를 다시 확인해주세요."
+  },
+  {
+    "slug": "yovil-vanillabean-550",
+    "brand": "요거트빌리지",
+    "name": "요거트빌리지 수제 그릭요거트 바닐라빈 550g",
+    "capacity": "550g",
+    "variant": "바닐라빈",
+    "tags": [
+      "컵"
+    ],
+    "proteinPerServing": 0,
+    "density": "-",
+    "productUrl": "https://m.oasis.co.kr/product/detail/49961-1053293",
+    "productType": "yogurt",
+    "gradeTags": [],
+    "gradeDescriptions": [
+      "오아시스 기준 현재 판매 중인 바닐라빈 550g 제품입니다.",
+      "플레인과는 다른 향미 SKU로 따로 관리하는 편이 맞습니다.",
+      "상세 영양표는 추가 이미지 확인이 필요합니다."
+    ],
+    "manufacturer": "요거트빌리지",
+    "flavor": "바닐라빈",
+    "yogurtType": "그릭 요거트",
+    "storageType": "냉장",
+    "lactoseFree": false,
+    "needsServingCheck": true,
+    "nutritionBasis": "unknown",
+    "servingCheckNote": "판매 흔적은 확인됐지만 상세 영양성분은 페이지에 없습니다. 구매 전 제품 라벨의 기준 중량과 영양정보를 다시 확인해주세요."
+  },
+  {
+    "slug": "yovil-blacksesame-550",
+    "brand": "요거트빌리지",
+    "name": "요거트빌리지 수제 그릭요거트 흑임자 550g",
+    "capacity": "550g",
+    "variant": "흑임자",
+    "tags": [
+      "컵"
+    ],
+    "proteinPerServing": 0,
+    "density": "-",
+    "productUrl": "https://m.oasis.co.kr/product/detail/49961-1053293",
+    "productType": "yogurt",
+    "gradeTags": [],
+    "gradeDescriptions": [
+      "오아시스 기준 현재 판매 중인 흑임자 550g 제품입니다.",
+      "플레인과는 다른 향미 SKU로 따로 관리하는 편이 맞습니다.",
+      "상세 영양표는 추가 이미지 확인이 필요합니다."
+    ],
+    "manufacturer": "요거트빌리지",
+    "flavor": "흑임자",
+    "yogurtType": "그릭 요거트",
+    "storageType": "냉장",
+    "lactoseFree": false,
+    "needsServingCheck": true,
+    "nutritionBasis": "unknown",
+    "servingCheckNote": "판매 흔적은 확인됐지만 상세 영양성분은 페이지에 없습니다. 구매 전 제품 라벨의 기준 중량과 영양정보를 다시 확인해주세요."
   }
 ]
