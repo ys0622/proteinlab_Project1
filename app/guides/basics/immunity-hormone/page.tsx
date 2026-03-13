@@ -75,27 +75,15 @@ export default function ImmunityHormonePage() {
             </span>
           </div>
 
-          <div className="mt-4 grid gap-4 lg:grid-cols-[1.15fr_0.85fr] lg:items-center">
-            <div>
-              <h1 className="text-2xl font-bold leading-tight text-[var(--foreground)] md:text-3xl">
-                단백질이 면역과 호르몬에 미치는 영향
-              </h1>
-              <p className="mt-3 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
-                단백질은 근육만 위한 영양소가 아닙니다.
-                <br />
-                항체, 사이토카인, 인슐린, 효소까지 몸의 조절 시스템 전반에 관여합니다.
-              </p>
-            </div>
-
-            <div className="rounded-[28px] border border-[#dce8df] bg-[linear-gradient(135deg,#f7fbf8_0%,#eef6f1_100%)] p-4 shadow-[0_18px_40px_rgba(45,106,79,0.08)]">
-              <GuideVisual
-                track="protein-basics"
-                title="면역·호르몬"
-                accentColor="#2d6a4f"
-                accentBg="#eaf4ee"
-                variant="topic"
-              />
-            </div>
+          <div className="mt-4">
+            <h1 className="text-2xl font-bold leading-tight text-[var(--foreground)] md:text-3xl">
+              단백질이 면역과 호르몬에 미치는 영향
+            </h1>
+            <p className="mt-3 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
+              단백질은 근육만 위한 영양소가 아닙니다.
+              <br />
+              항체, 사이토카인, 인슐린, 효소까지 몸의 조절 시스템 전반에 관여합니다.
+            </p>
           </div>
         </div>
       </section>
@@ -127,7 +115,8 @@ export default function ImmunityHormonePage() {
               회복기에는 감염과 회복 지연 리스크가 함께 커질 수 있습니다.
             </p>
 
-            <div className="mt-5 rounded-[28px] border border-[#dce8df] bg-[linear-gradient(135deg,#f7fbf8_0%,#eef6f1_100%)] p-4 shadow-[0_16px_36px_rgba(45,106,79,0.08)]">
+            <div className="mt-5 rounded-[28px] border border-[#dce8df] bg-[linear-gradient(135deg,#f7fbf8_0%,#eef6f1_100%)] p-6 shadow-[0_16px_36px_rgba(45,106,79,0.08)]">
+              <div className="mx-auto max-w-2xl">
               <GuideVisual
                 track="protein-basics"
                 title="항체와 면역"
@@ -135,6 +124,7 @@ export default function ImmunityHormonePage() {
                 accentBg="#eaf4ee"
                 variant="topic"
               />
+              </div>
               <div className="mt-4 grid gap-3 md:grid-cols-2">
                 <InsightChip title="회복기 섭취량" body="수술 후나 회복기에는 1.5~2.0 g/kg 수준이 권장되기도 합니다." />
                 <InsightChip title="면역력과 회복" body="단백질 부족은 잦은 피로와 감염 취약성으로 이어질 수 있습니다." />
