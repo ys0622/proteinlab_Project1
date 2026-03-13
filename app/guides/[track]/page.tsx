@@ -3,78 +3,12 @@ import Link from "next/link";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 import GuideVisual from "@/app/components/GuideVisual";
-import { getGuideTrack, getGuideTracks, type GuideTrackSlug } from "@/app/data/guidesTracks";
+import { getGuideTracks, type GuideTrackSlug } from "@/app/data/guidesTracks";
+import { getAdminGuidesStaticRuntimeData } from "@/app/lib/adminGuidesStaticRuntime";
+
+export const dynamic = "force-dynamic";
 
 const deepGreen = "#1f5138";
-
-const trackPageCopy: Record<
-  GuideTrackSlug,
-  {
-    icon: string;
-    eyebrow: string;
-    description: string;
-    featuredTopics: string[];
-    popularTopic: string;
-  }
-> = {
-  "protein-basics": {
-    icon: "🧬",
-    eyebrow: "단백질을 이해하는 첫 단계",
-    description:
-      "역할, 권장 섭취량, 부족 신호까지 단백질 기초를 먼저 이해할 수 있도록 핵심 주제를 모았습니다.",
-    featuredTopics: ["단백질이란 무엇인가", "하루 단백질 섭취량", "단백질 부족 신호"],
-    popularTopic: "하루 단백질 섭취량 계산",
-  },
-  "product-selection-comparison": {
-    icon: "🧪",
-    eyebrow: "고르기 전에 먼저 보는 기준",
-    description:
-      "단백질 음료와 단백질 바를 비교할 때 무엇을 먼저 봐야 하는지, 영양성분을 어떻게 읽어야 하는지 정리합니다.",
-    featuredTopics: ["단백질 음료 고르는 법", "단백질 바 비교 기준", "영양성분 읽는 법"],
-    popularTopic: "단백질 음료 선택 가이드",
-  },
-  "intake-strategy-health": {
-    icon: "⏱️",
-    eyebrow: "상황에 맞는 섭취 전략",
-    description:
-      "운동 전후, 다이어트, 식사대용, 노년 전략까지 상황에 따라 달라지는 단백질 섭취 기준을 안내합니다.",
-    featuredTopics: ["운동 후 단백질 타이밍", "체중 관리와 단백질", "식사대용 전략"],
-    popularTopic: "운동 후 단백질",
-  },
-  "fitness-lifestyle": {
-    icon: "🏃",
-    eyebrow: "운동과 생활 루틴에 맞춘 가이드",
-    description:
-      "러닝, 마라톤, 근력운동, 운동 초보 루틴처럼 운동 방식에 따라 어떤 단백질 루틴이 맞는지 설명합니다.",
-    featuredTopics: ["러닝 후 회복 전략", "근력운동과 단백질", "운동 초보 루틴"],
-    popularTopic: "러닝 단백질 가이드",
-  },
-  "market-insights": {
-    icon: "📊",
-    eyebrow: "국내 단백질 시장 흐름 정리",
-    description:
-      "RTD 시장, 브랜드 포지셔닝, 성분 트렌드를 빠르게 파악할 수 있도록 구조적으로 정리합니다.",
-    featuredTopics: ["RTD 시장 흐름", "브랜드 분석", "성분 트렌드"],
-    popularTopic: "국내 단백질 시장 흐름",
-  },
-  tools: {
-    icon: "🧮",
-    eyebrow: "바로 활용하는 계산 도구",
-    description:
-      "하루 단백질 섭취량과 제품 사용량을 계산하고, 실제 비교와 선택으로 이어질 수 있는 도구를 모았습니다.",
-    featuredTopics: ["하루 단백질 계산", "제품 개수 계산", "단백질 밀도 계산"],
-    popularTopic: "하루 단백질 섭취량 계산기",
-  },
-};
-
-const topicChipsMap: Record<GuideTrackSlug, string[]> = {
-  "protein-basics": ["기초", "역할"],
-  "product-selection-comparison": ["비교", "선택"],
-  "intake-strategy-health": ["섭취", "건강"],
-  "fitness-lifestyle": ["운동", "라이프"],
-  "market-insights": ["시장", "트렌드"],
-  tools: ["계산", "도구"],
-};
 
 const clampTwoLines = {
   display: "-webkit-box",
@@ -83,72 +17,35 @@ const clampTwoLines = {
   overflow: "hidden",
 };
 
-const proteinBasicsParallelSlots = [
-  {
-    slug: "protein-functions",
-    title: "단백질 역할 개요",
-    description: "단백질이 근육, 면역, 호르몬, 회복에 어떻게 연결되는지 먼저 이해하는 출발점입니다.",
-    searchIntent: "단백질은 몸에서 어떤 일을 하나",
-    internalLinkTargets: [
-      { label: "근육과 단백질", href: "/guides/basics/muscle" },
-      { label: "면역·호르몬과 단백질", href: "/guides/basics/immunity-hormone" },
-    ],
-    href: "/guides/protein-basics/protein-functions",
-  },
-  {
-    slug: "muscle",
-    title: "근육과 단백질",
-    description: "근육 성장과 회복에 왜 단백질이 필요한지, 언제 어떻게 먹어야 하는지 정리합니다.",
-    searchIntent: "근육 성장에 단백질이 왜 필요한가",
-    internalLinkTargets: [{ label: "단백질 역할 개요", href: "/guides/protein-basics/protein-functions" }],
-    href: "/guides/basics/muscle",
-  },
-  {
-    slug: "immunity-hormone",
-    title: "면역·호르몬과 단백질",
-    description: "항체, 면역세포, 호르몬과 효소가 왜 단백질과 연결되는지 핵심만 정리합니다.",
-    searchIntent: "면역과 호르몬에 단백질이 왜 중요한가",
-    internalLinkTargets: [{ label: "단백질 역할 개요", href: "/guides/protein-basics/protein-functions" }],
-    href: "/guides/basics/immunity-hormone",
-  },
-  {
-    slug: "deficiency-symptoms",
-    title: "단백질 부족 신호",
-    description: "피로, 근육 감소, 면역 저하처럼 단백질 부족 시 나타나는 신호를 모았습니다.",
-    searchIntent: "단백질 부족 증상에는 무엇이 있나",
-    internalLinkTargets: [{ label: "하루 단백질 권장량", href: "/guides/basics/daily-requirement" }],
-    href: "/guides/basics/deficiency-symptoms",
-  },
-];
-
 export async function generateStaticParams() {
   return getGuideTracks().map((track) => ({ track: track.slug }));
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ track: string }> }) {
   const { track } = await params;
-  const trackData = getGuideTrack(track);
+  const cms = await getAdminGuidesStaticRuntimeData();
+  const section = cms.sections.find((item) => item.slug === track);
 
-  if (!trackData) return {};
+  if (!section) return {};
 
   return {
-    title: `${trackData.title} | ProteinLab Guides`,
-    description: trackData.description,
+    title: `${section.title} | ProteinLab Guides`,
+    description: section.description,
   };
 }
 
 export default async function GuideTrackPage({ params }: { params: Promise<{ track: string }> }) {
   const { track } = await params;
-  const trackData = getGuideTrack(track);
+  const cms = await getAdminGuidesStaticRuntimeData();
+  const section = cms.sections.find((item) => item.slug === track);
 
-  if (!trackData) notFound();
+  if (!section) notFound();
 
-  const copy = trackPageCopy[trackData.slug];
-  const topicChips = topicChipsMap[trackData.slug];
-  const displaySlots =
-    trackData.slug === "protein-basics"
-      ? proteinBasicsParallelSlots
-      : trackData.slots.map((slot) => ({ ...slot, href: `/guides/${trackData.slug}/${slot.slug}` }));
+  const featuredTopics = section.articles.slice(0, 3).map((article) => article.title);
+  const popularTopic =
+    section.articles.find((article) => article.status === "live")?.title ??
+    section.articles[0]?.title ??
+    "대표 콘텐츠 준비 중";
 
   return (
     <div className="min-h-screen bg-white">
@@ -164,18 +61,18 @@ export default async function GuideTrackPage({ params }: { params: Promise<{ tra
               Guides
             </Link>
             <span>/</span>
-            <span>{trackData.title}</span>
+            <span>{section.title}</span>
           </div>
 
           <div className="mt-3 flex flex-wrap items-center gap-2.5">
             <span
               className="rounded-md px-2 py-0.5 text-[11px] font-semibold tracking-wide"
-              style={{ background: trackData.accentBg, color: trackData.accentColor }}
+              style={{ background: section.accentBg, color: section.accentColor }}
             >
-              {trackData.label}
+              {section.trackLabel}
             </span>
-            <span className="text-xs text-[#8b8b8b]">{copy.eyebrow}</span>
-            <span className="text-xs text-[#8b8b8b]">{displaySlots.length}개 주제</span>
+            <span className="text-xs text-[#8b8b8b]">대표 콘텐츠와 연결 흐름을 한 번에 정리합니다.</span>
+            <span className="text-xs text-[#8b8b8b]">{section.articles.length}개 주제</span>
           </div>
 
           <div className="mt-3 flex items-start gap-3">
@@ -183,22 +80,20 @@ export default async function GuideTrackPage({ params }: { params: Promise<{ tra
               aria-hidden
               className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-[#d7e6dd] bg-[#eff7f2] text-lg"
             >
-              {copy.icon}
+              {section.emoji}
             </span>
             <div className="min-w-0">
               <h1 className="text-[26px] font-bold leading-tight md:text-[30px]" style={{ color: deepGreen }}>
-                {trackData.title}
+                {section.title}
               </h1>
-              <p className="mt-1.5 max-w-2xl text-sm leading-6 text-[var(--foreground-muted)]">
-                {copy.description}
-              </p>
+              <p className="mt-1.5 max-w-2xl text-sm leading-6 text-[var(--foreground-muted)]">{section.description}</p>
             </div>
           </div>
 
           <div className="mt-3 flex flex-wrap gap-2">
-            {copy.featuredTopics.slice(0, 3).map((topic) => (
+            {featuredTopics.map((topic) => (
               <span
-                key={`${trackData.slug}-${topic}`}
+                key={`${section.slug}-${topic}`}
                 className="inline-flex items-center rounded-full border border-[#d7e6dd] bg-[#fffdf8] px-2.5 py-1 text-[11px] font-medium text-[var(--foreground-muted)]"
               >
                 {topic}
@@ -218,37 +113,46 @@ export default async function GuideTrackPage({ params }: { params: Promise<{ tra
           <div className="flex items-center justify-between gap-3">
             <div>
               <h2 className="text-lg font-bold text-[var(--foreground)]">주제 목록</h2>
-              <p className="mt-1 text-xs text-[#8b8b8b]">핵심 질문과 연결 콘텐츠를 함께 보고 주제를 선택하세요.</p>
+              <p className="mt-1 text-xs text-[#8b8b8b]">대표 질문과 핵심 포인트를 먼저 보고 필요한 주제로 이동하세요.</p>
             </div>
             <div className="hidden rounded-full border border-[#d7e6dd] bg-[#f4faf6] px-3 py-1.5 text-xs font-medium md:block" style={{ color: deepGreen }}>
-              인기: {copy.popularTopic}
+              인기: {popularTopic}
             </div>
           </div>
 
           <div className="mt-4 grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
-            {displaySlots.map((slot) => (
+            {section.articles.map((article) => (
               <Link
-                key={slot.slug}
-                href={slot.href}
+                key={article.slug}
+                href={article.href}
                 className="group flex h-full min-h-[212px] flex-col justify-between overflow-hidden rounded-2xl border border-[#d8e2da] bg-[#fffdf8] shadow-[0_10px_24px_rgba(20,40,28,0.05)] transition-colors hover:border-[#cfe1d7] sm:min-h-[236px]"
               >
-                <div className="h-1.5 w-full" style={{ background: trackData.accentColor }} />
+                <div className="h-1.5 w-full" style={{ background: section.accentColor }} />
 
                 <div>
                   <div
                     className="border-b border-[#e7eee9] px-4 py-3 sm:px-5"
-                    style={{ background: `linear-gradient(135deg, ${trackData.accentBg} 0%, #fffdf8 100%)` }}
+                    style={{ background: `linear-gradient(135deg, ${section.accentBg} 0%, #fffdf8 100%)` }}
                   >
                     <div className="flex items-center justify-between gap-3">
-                      <div className="guide-visual__chips">
-                        {topicChips.map((chip) => (
-                          <span key={`${slot.slug}-${chip}`} className="guide-visual__chip">
-                            {chip}
+                      <div className="flex flex-wrap gap-2">
+                        {article.tags.slice(0, 2).map((tag) => (
+                          <span
+                            key={`${article.slug}-${tag}`}
+                            className="inline-flex items-center rounded-full border border-[#d9e4dd] bg-[#f7faf8] px-2.5 py-1 text-[11px] font-medium text-[#496555]"
+                          >
+                            {tag}
                           </span>
                         ))}
                       </div>
-                      <span className="rounded-full border border-[#d8e2da] bg-white px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wide text-[#6f7f76]">
-                        Track
+                      <span
+                        className={`rounded-full px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wide ${
+                          article.status === "live"
+                            ? "border border-[#d8e2da] bg-white text-[#6f7f76]"
+                            : "bg-amber-100 text-amber-700"
+                        }`}
+                      >
+                        {article.status === "live" ? "Live" : "Planned"}
                       </span>
                     </div>
                   </div>
@@ -258,49 +162,27 @@ export default async function GuideTrackPage({ params }: { params: Promise<{ tra
                       className="text-base font-bold transition-colors group-hover:text-[var(--accent)]"
                       style={{ color: deepGreen }}
                     >
-                      {slot.title}
+                      {article.emoji} {article.title}
                     </h3>
 
                     <div className="mt-3 md:hidden">
                       <GuideVisual
-                        track={trackData.slug}
-                        title={slot.title}
-                        accentColor={trackData.accentColor}
-                        accentBg={trackData.accentBg}
+                        track={section.slug as GuideTrackSlug}
+                        title={article.title}
+                        accentColor={section.accentColor}
+                        accentBg={section.accentBg}
                         variant="topic"
                       />
                     </div>
 
                     <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]" style={clampTwoLines}>
-                      {slot.description}
+                      {article.description}
                     </p>
 
                     <div className="mt-4 rounded-xl border border-[#edf3ef] bg-white px-3 py-3">
-                      <p className="text-[11px] font-semibold uppercase tracking-wide text-[#7c8b84]">
-                        핵심 질문
-                      </p>
-                      <p className="mt-1 text-[13px] leading-5 text-[var(--foreground)]" style={clampTwoLines}>
-                        {slot.searchIntent}
-                      </p>
+                      <p className="text-[11px] font-semibold uppercase tracking-wide text-[#7c8b84]">읽기 시간</p>
+                      <p className="mt-1 text-[13px] leading-5 text-[var(--foreground)]">{article.readTime}</p>
                     </div>
-
-                    {slot.internalLinkTargets.length > 0 ? (
-                      <div className="mt-3">
-                        <p className="text-[11px] font-semibold uppercase tracking-wide" style={{ color: deepGreen }}>
-                          연결 콘텐츠
-                        </p>
-                        <div className="mt-2 flex flex-wrap gap-2">
-                          {slot.internalLinkTargets.slice(0, 2).map((target) => (
-                            <span
-                              key={`${slot.slug}-${target.href}`}
-                              className="inline-flex items-center rounded-full border border-[#d9e4dd] bg-[#f7faf8] px-2.5 py-1 text-[11px] font-medium text-[#496555]"
-                            >
-                              {target.label}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
-                    ) : null}
                   </div>
                 </div>
 
