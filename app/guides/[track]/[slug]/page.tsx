@@ -380,7 +380,7 @@ export default async function GuideSlugPage({
         <HeroSection
           breadcrumb="근육과 단백질"
           h1="근육 성장에 단백질이 필요한 이유"
-          lead={<>운동만으로는 근육이 완성되지 않습니다.<br />단백질이 있어야 손상된 근섬유가 회복되고 새로운 근육 합성이 시작됩니다.</>}
+          lead={<>운동하면 근육이 생긴다는 건 알지만, 왜 단백질이 필요한지는 잘 모르는 경우가 많습니다.<br />근육이 만들어지는 원리를 알면, 언제 얼마나 먹어야 할지도 자연스럽게 이해됩니다.</>}
         />
         <main className="mx-auto max-w-[1200px] px-4 py-8 md:px-6">
           <div className="space-y-6">
@@ -399,7 +399,7 @@ export default async function GuideSlugPage({
                 <InfoCard label="핵심 성분" title="류신 등 필수아미노산" body="단백질 총량뿐 아니라 필수아미노산(EAA) 구성이 근합성 효율에 영향을 줍니다." />
               </div>
               <Callout>
-                단백질 20–40 g 섭취 시 근합성 자극이 극대화되며, 운동 후 골든 타임(30–45분)에 섭취하면 효과가 높습니다.
+                근육은 운동으로 손상되고, 단백질로 회복됩니다.<br />이 사이클이 반복될수록 근섬유가 굵어지고 — 이것이 근육 성장의 실체입니다.
               </Callout>
               <p className="mt-3 text-xs text-[var(--foreground-muted)]">출처: ISSN Position Stand (2017), Phillips & Van Loon (2011)</p>
             </section>
@@ -407,7 +407,7 @@ export default async function GuideSlugPage({
             <section className="rounded-2xl border border-[#e8e6e3] bg-[#fffdf8] px-5 py-5">
               <h2 className="text-xl font-bold text-[var(--foreground)]">언제 먹어야 효과적일까? — 섭취 타이밍</h2>
               <p className="mt-3 text-sm leading-6 text-[var(--foreground-muted)]">
-                하루 총섭취량이 충분하더라도, 섭취 타이밍에 따라 근합성 효율이 달라집니다.
+                운동 후 30–45분 안에 단백질을 섭취하면 근합성 효율이 높아집니다.<br />취침 전 카제인 단백질은 야간 회복을 돕습니다.
               </p>
               <DataTable
                 headers={["타이밍", "권장량", "근거"]}
@@ -417,7 +417,7 @@ export default async function GuideSlugPage({
             </section>
 
             <section className="rounded-2xl border border-[#e8e6e3] bg-[#fffdf8] px-5 py-5">
-              <h2 className="text-xl font-bold text-[var(--foreground)]">하루 단백질 권장 섭취량</h2>
+              <h2 className="text-xl font-bold text-[var(--foreground)]">그래서 나는 하루에 얼마나 먹어야 할까?</h2>
               <DataTable
                 headers={["활동 수준", "권장량", "60 kg", "70 kg", "80 kg"]}
                 rows={muscleIntakeRows}
