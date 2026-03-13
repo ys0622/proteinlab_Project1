@@ -5,14 +5,20 @@
     "name": "요프로 프로틴 설탕무첨가 플레인 요거트",
     "capacity": "150g",
     "variant": "플레인",
-    "tags": ["컵"],
+    "tags": [
+      "컵"
+    ],
     "proteinPerServing": 15,
     "calories": 84,
     "sugar": 2.3,
     "density": "10.0g/100g",
     "productUrl": "https://www.coupang.com/vp/products/9181041542",
     "productType": "yogurt",
-    "gradeTags": ["단백질 밀도 A", "다이어트 A", "퍼포먼스 B"],
+    "gradeTags": [
+      "단백질 밀도 A",
+      "다이어트 A",
+      "퍼포먼스 B"
+    ],
     "gradeDescriptions": [
       "100g 기준 단백질 함량이 높아 가볍게 먹는 요거트 중에서는 밀도가 좋은 편입니다.",
       "칼로리와 당류 부담이 낮아 간식이나 식사 보완용으로 무난합니다.",
@@ -42,14 +48,20 @@
     "name": "요프로 프로틴 블루베리 요거트",
     "capacity": "150g",
     "variant": "블루베리",
-    "tags": ["컵"],
+    "tags": [
+      "컵"
+    ],
     "proteinPerServing": 13.5,
     "calories": 105,
     "sugar": 10,
     "density": "9.0g/100g",
     "productUrl": "https://www.coupang.com/vp/products/9181041541",
     "productType": "yogurt",
-    "gradeTags": ["단백질 밀도 A", "다이어트 B", "퍼포먼스 B"],
+    "gradeTags": [
+      "단백질 밀도 A",
+      "다이어트 B",
+      "퍼포먼스 B"
+    ],
     "gradeDescriptions": [
       "단백질 밀도가 높아 요거트형 간식 중에서는 상위권에 가깝습니다.",
       "플레인보다 당류가 높아 체중 관리 관점에서는 한 단계 보수적으로 보는 편이 좋습니다.",
@@ -81,14 +93,20 @@
     "name": "요플레 프로틴 블루베리 떠먹는 요구르트",
     "capacity": "100g",
     "variant": "블루베리",
-    "tags": ["컵"],
+    "tags": [
+      "컵"
+    ],
     "proteinPerServing": 9,
     "calories": 105,
     "sugar": 11,
     "density": "9.0g/100g",
     "productUrl": "https://www.coupang.com/vp/products/1583671851",
     "productType": "yogurt",
-    "gradeTags": ["단백질 밀도 B", "다이어트 C", "퍼포먼스 C"],
+    "gradeTags": [
+      "단백질 밀도 B",
+      "다이어트 C",
+      "퍼포먼스 C"
+    ],
     "gradeDescriptions": [
       "단백질 강화 요거트이지만 최상위 제품 대비 밀도는 한 단계 낮습니다.",
       "당류가 다소 높아 체중 관리용보다는 간식형 요거트에 가깝습니다.",
@@ -119,14 +137,20 @@
     "name": "요플레 프로틴 플레인 드링킹 요거트",
     "capacity": "210mL",
     "variant": "플레인",
-    "tags": ["PET"],
+    "tags": [
+      "PET"
+    ],
     "proteinPerServing": 15,
     "calories": 125,
     "sugar": 4,
     "density": "7.1g/100mL",
     "productUrl": "https://www.coupang.com/vp/products/9048812266",
     "productType": "yogurt",
-    "gradeTags": ["단백질 밀도 B", "다이어트 A", "퍼포먼스 B"],
+    "gradeTags": [
+      "단백질 밀도 B",
+      "다이어트 A",
+      "퍼포먼스 B"
+    ],
     "gradeDescriptions": [
       "드링킹 타입 기준으로는 단백질 총량이 안정적인 편입니다.",
       "당류가 낮고 마시기 쉬워 가벼운 보충용으로 접근하기 좋습니다.",
@@ -155,14 +179,20 @@
     "name": "요플레 프로틴 딸기 드링킹 요거트",
     "capacity": "210mL",
     "variant": "딸기",
-    "tags": ["PET"],
+    "tags": [
+      "PET"
+    ],
     "proteinPerServing": 15,
     "calories": 130,
     "sugar": 7,
     "density": "7.1g/100mL",
     "productUrl": "https://www.coupang.com/vp/products/9048812265",
     "productType": "yogurt",
-    "gradeTags": ["단백질 밀도 B", "다이어트 B", "퍼포먼스 B"],
+    "gradeTags": [
+      "단백질 밀도 B",
+      "다이어트 B",
+      "퍼포먼스 B"
+    ],
     "gradeDescriptions": [
       "드링킹 타입으로 접근성이 좋고 단백질 총량도 충분한 편입니다.",
       "플레인 계열보다 당류가 높아 다이어트 관점에서는 한 단계 보수적으로 봅니다.",
@@ -191,14 +221,20 @@
     "name": "요플레 프로틴 딸기바나나 드링킹 요거트",
     "capacity": "210mL",
     "variant": "딸기바나나",
-    "tags": ["PET"],
+    "tags": [
+      "PET"
+    ],
     "proteinPerServing": 15,
     "calories": 135,
     "sugar": 8,
     "density": "7.1g/100mL",
     "productUrl": "https://www.coupang.com/vp/products/9048812264",
     "productType": "yogurt",
-    "gradeTags": ["단백질 밀도 B", "다이어트 B", "퍼포먼스 B"],
+    "gradeTags": [
+      "단백질 밀도 B",
+      "다이어트 B",
+      "퍼포먼스 B"
+    ],
     "gradeDescriptions": [
       "드링킹 요거트 기준으로 단백질 총량은 충분한 편입니다.",
       "맛형 제품이라 칼로리와 당류가 소폭 높아 체중 관리용과는 거리가 있습니다.",
@@ -227,14 +263,20 @@
     "name": "요플레 프로틴 MAX 드링킹 요거트",
     "capacity": "210mL",
     "variant": "플레인",
-    "tags": ["PET"],
+    "tags": [
+      "PET"
+    ],
     "proteinPerServing": 18,
     "calories": 145,
     "sugar": 4,
     "density": "8.6g/100mL",
     "productUrl": "https://www.coupang.com/vp/products/9181054975",
     "productType": "yogurt",
-    "gradeTags": ["단백질 밀도 A", "다이어트 A", "퍼포먼스 A"],
+    "gradeTags": [
+      "단백질 밀도 A",
+      "다이어트 A",
+      "퍼포먼스 A"
+    ],
     "gradeDescriptions": [
       "드링킹 요거트 중에서는 단백질 밀도가 높은 편입니다.",
       "당류 부담이 낮아 체중 관리 관점에서도 비교적 유리합니다.",
@@ -263,14 +305,20 @@
     "name": "후디스 그릭요거트 달지않은 플레인",
     "capacity": "80g",
     "variant": "플레인",
-    "tags": ["컵"],
+    "tags": [
+      "컵"
+    ],
     "proteinPerServing": 4.8,
     "calories": 125,
     "sugar": 12,
     "density": "6.0g/100g",
     "productUrl": "https://www.coupang.com/vp/products/7735387156",
     "productType": "yogurt",
-    "gradeTags": ["단백질 밀도 C", "다이어트 C", "퍼포먼스 C"],
+    "gradeTags": [
+      "단백질 밀도 C",
+      "다이어트 C",
+      "퍼포먼스 C"
+    ],
     "gradeDescriptions": [
       "그릭 요거트이지만 단백질 밀도는 상위권 제품보다 낮은 편입니다.",
       "당류와 칼로리가 높아 체중 관리용으로는 보수적으로 보는 편이 좋습니다.",
@@ -301,14 +349,20 @@
     "name": "후디스 그릭요거트 달지않은 플레인",
     "capacity": "450g",
     "variant": "플레인",
-    "tags": ["컵"],
+    "tags": [
+      "컵"
+    ],
     "proteinPerServing": 27,
     "calories": 360,
     "sugar": 42.8,
     "density": "6.0g/100g",
     "productUrl": "https://www.coupang.com/vp/products/6856595236",
     "productType": "yogurt",
-    "gradeTags": ["단백질 밀도 C", "다이어트 D", "퍼포먼스 C"],
+    "gradeTags": [
+      "단백질 밀도 C",
+      "다이어트 D",
+      "퍼포먼스 C"
+    ],
     "gradeDescriptions": [
       "대용량이라 총 단백질량은 높지만 100g 기준 밀도는 높지 않은 편입니다.",
       "당류와 칼로리 총량이 커서 체중 관리용보다는 가족형 대용량 제품에 가깝습니다.",
@@ -339,14 +393,20 @@
     "name": "그릭데이 라이트 그릭요거트",
     "capacity": "100g",
     "variant": "플레인",
-    "tags": ["컵"],
+    "tags": [
+      "컵"
+    ],
     "proteinPerServing": 11,
     "calories": 90,
     "sugar": 3.5,
     "density": "11.0g/100g",
     "productUrl": "https://www.coupang.com/vp/products/9014451181",
     "productType": "yogurt",
-    "gradeTags": ["단백질 밀도 A", "다이어트 A", "퍼포먼스 B"],
+    "gradeTags": [
+      "단백질 밀도 A",
+      "다이어트 A",
+      "퍼포먼스 B"
+    ],
     "gradeDescriptions": [
       "그릭 타입 중에서도 단백질 밀도가 높아 비교 기준으로 보기 좋습니다.",
       "당류가 낮아 체중 관리용 요거트로도 무난한 선택지입니다.",
@@ -375,14 +435,20 @@
     "name": "매일 바이오 그릭요거트 무가당 플레인",
     "capacity": "80g",
     "variant": "플레인",
-    "tags": ["컵"],
+    "tags": [
+      "컵"
+    ],
     "proteinPerServing": 5.6,
     "calories": 75,
     "sugar": 1.4,
     "density": "7.0g/100g",
     "productUrl": "https://www.coupang.com/vp/products/8730345723",
     "productType": "yogurt",
-    "gradeTags": ["단백질 밀도 B", "다이어트 A", "퍼포먼스 C"],
+    "gradeTags": [
+      "단백질 밀도 B",
+      "다이어트 A",
+      "퍼포먼스 C"
+    ],
     "gradeDescriptions": [
       "무가당 기준으로는 밀도와 당류 밸런스가 괜찮은 편입니다.",
       "당류 부담이 낮아 체중 관리용으로 접근하기 좋은 제품입니다.",
@@ -414,14 +480,20 @@
     "name": "매일 바이오 그릭요거트 플레인",
     "capacity": "80g",
     "variant": "플레인",
-    "tags": ["컵"],
+    "tags": [
+      "컵"
+    ],
     "proteinPerServing": 5.6,
     "calories": 90,
     "sugar": 7,
     "density": "7.0g/100g",
     "productUrl": "https://www.coupang.com/vp/products/8730345723",
     "productType": "yogurt",
-    "gradeTags": ["단백질 밀도 B", "다이어트 B", "퍼포먼스 C"],
+    "gradeTags": [
+      "단백질 밀도 B",
+      "다이어트 B",
+      "퍼포먼스 C"
+    ],
     "gradeDescriptions": [
       "무가당 제품보다 당류는 높지만 여전히 단백질 밀도는 괜찮은 편입니다.",
       "일반 플레인 요거트보다 단백질은 높지만 체중 관리용으로는 무가당 쪽이 더 유리합니다.",
@@ -451,14 +523,20 @@
     "name": "매일 바이오 그릭요거트 드링크 플레인",
     "capacity": "190mL",
     "variant": "플레인",
-    "tags": ["PET"],
+    "tags": [
+      "PET"
+    ],
     "proteinPerServing": 8.3,
     "calories": 132,
     "sugar": 12.5,
     "density": "4.4g/100mL",
     "productUrl": "https://www.coupang.com/vp/products/9181041540",
     "productType": "yogurt",
-    "gradeTags": ["단백질 밀도 C", "다이어트 C", "퍼포먼스 C"],
+    "gradeTags": [
+      "단백질 밀도 C",
+      "다이어트 C",
+      "퍼포먼스 C"
+    ],
     "gradeDescriptions": [
       "마시는 타입이라 편의성은 좋지만 단백질 밀도는 컵형 그릭 요거트보다 낮습니다.",
       "당류가 두 자릿수라 체중 관리용으로는 우선순위가 낮습니다.",
@@ -489,14 +567,20 @@
     "name": "상하목장 유기농 그릭요거트 무가당 플레인",
     "capacity": "80g",
     "variant": "플레인",
-    "tags": ["컵"],
+    "tags": [
+      "컵"
+    ],
     "proteinPerServing": 5.5,
     "calories": 87.5,
     "sugar": 2.5,
     "density": "6.9g/100g",
     "productUrl": "https://direct.maeil.com/m/brand/sangha",
     "productType": "yogurt",
-    "gradeTags": ["단백질 밀도 B", "다이어트 A", "퍼포먼스 C"],
+    "gradeTags": [
+      "단백질 밀도 B",
+      "다이어트 A",
+      "퍼포먼스 C"
+    ],
     "gradeDescriptions": [
       "무가당 방향이라 당류는 낮고 단백질 밀도는 무난한 편입니다.",
       "소용량이라 간식이나 식사 보완용으로 접근하기 좋습니다.",
@@ -526,14 +610,20 @@
     "name": "풀무원다논 그릭요거트 무가당 플레인",
     "capacity": "90g",
     "variant": "플레인",
-    "tags": ["컵"],
+    "tags": [
+      "컵"
+    ],
     "proteinPerServing": 6.1,
     "calories": 64,
     "sugar": 3.3,
     "density": "6.8g/100g",
     "productUrl": "https://www.coupang.com/vp/products/7156108906",
     "productType": "yogurt",
-    "gradeTags": ["단백질 밀도 B", "다이어트 A", "퍼포먼스 C"],
+    "gradeTags": [
+      "단백질 밀도 B",
+      "다이어트 A",
+      "퍼포먼스 C"
+    ],
     "gradeDescriptions": [
       "그릭 요거트 기준으로 밀도와 칼로리 균형이 무난한 편입니다.",
       "무가당 플레인이라 당류 부담이 상대적으로 낮습니다.",
@@ -563,14 +653,20 @@
     "name": "요플레 프로틴 플레인 떠먹는 요구르트",
     "capacity": "100g",
     "variant": "플레인",
-    "tags": ["컵"],
+    "tags": [
+      "컵"
+    ],
     "proteinPerServing": 10.4,
     "calories": 105,
     "sugar": 8.5,
     "density": "10.4g/100g",
     "productUrl": "https://www.coupang.com/vp/products/6558856238",
     "productType": "yogurt",
-    "gradeTags": ["단백질 밀도 A", "다이어트 B", "퍼포먼스 B"],
+    "gradeTags": [
+      "단백질 밀도 A",
+      "다이어트 B",
+      "퍼포먼스 B"
+    ],
     "gradeDescriptions": [
       "떠먹는 요거트 기준으로 단백질 밀도가 높은 편입니다.",
       "당류가 아주 낮지는 않지만 일반 요거트 대비 구성은 괜찮은 편입니다.",
@@ -601,14 +697,20 @@
     "name": "매일 바이오 그릭요거트 플레인",
     "capacity": "150g",
     "variant": "플레인",
-    "tags": ["컵"],
+    "tags": [
+      "컵"
+    ],
     "proteinPerServing": 9,
     "calories": 135,
     "sugar": 5.5,
     "density": "6.0g/100g",
     "productUrl": "https://www.coupang.com/vp/products/8730345723",
     "productType": "yogurt",
-    "gradeTags": ["단백질 밀도 B", "다이어트 B", "퍼포먼스 C"],
+    "gradeTags": [
+      "단백질 밀도 B",
+      "다이어트 B",
+      "퍼포먼스 C"
+    ],
     "gradeDescriptions": [
       "150g 컵 기준으로 단백질 총량은 무난한 편입니다.",
       "플레인 타입이라 맛 부담은 적지만 무가당 제품보다는 당류가 높습니다.",
@@ -639,14 +741,20 @@
     "name": "매일 바이오 그릭요거트 to go 플레인",
     "capacity": "120g",
     "variant": "플레인",
-    "tags": ["컵"],
+    "tags": [
+      "컵"
+    ],
     "proteinPerServing": 7,
     "calories": 120,
     "sugar": 8,
     "density": "5.8g/100g",
     "productUrl": "https://www.coupang.com/vp/products/8730345723",
     "productType": "yogurt",
-    "gradeTags": ["단백질 밀도 C", "다이어트 C", "퍼포먼스 C"],
+    "gradeTags": [
+      "단백질 밀도 C",
+      "다이어트 C",
+      "퍼포먼스 C"
+    ],
     "gradeDescriptions": [
       "간편 휴대형으로 접근성은 좋지만 밀도는 높지 않은 편입니다.",
       "당류와 지방이 모두 어느 정도 있어 체중 관리용 우선순위는 낮습니다.",
@@ -678,14 +786,20 @@
     "name": "상하목장 유기농 인증 그릭요거트 플레인",
     "capacity": "80g",
     "variant": "플레인",
-    "tags": ["컵"],
+    "tags": [
+      "컵"
+    ],
     "proteinPerServing": 4.8,
     "calories": 96,
     "sugar": 8,
     "density": "6.0g/100g",
     "productUrl": "https://www.coupang.com/vp/products/8593813433",
     "productType": "yogurt",
-    "gradeTags": ["단백질 밀도 C", "다이어트 C", "퍼포먼스 C"],
+    "gradeTags": [
+      "단백질 밀도 C",
+      "다이어트 C",
+      "퍼포먼스 C"
+    ],
     "gradeDescriptions": [
       "유기농 그릭 타입이지만 단백질 밀도는 상위권 제품보다 낮은 편입니다.",
       "무가당 제품보다 당류가 높아 체중 관리용으로는 보수적으로 보는 편이 좋습니다.",
@@ -715,12 +829,18 @@
     "name": "매일 바이오 그릭요거트 딜라이트 무가당 플레인",
     "capacity": "80g",
     "variant": "플레인",
-    "tags": ["컵"],
+    "tags": [
+      "컵"
+    ],
     "proteinPerServing": 5,
     "density": "6.3g/100g",
     "productUrl": "https://www.maeildairies.com/maeilbio",
     "productType": "yogurt",
-    "gradeTags": ["단백질 밀도 B", "다이어트 B", "퍼포먼스 C"],
+    "gradeTags": [
+      "단백질 밀도 B",
+      "다이어트 B",
+      "퍼포먼스 C"
+    ],
     "gradeDescriptions": [
       "80g 소용량 기준으로 단백질 밀도는 무난한 편입니다.",
       "무가당 플레인 방향이라 간식형 요거트 중에서는 비교적 가볍게 접근할 수 있습니다.",
@@ -742,12 +862,18 @@
     "name": "매일 바이오 그릭요거트 딜라이트 바나나",
     "capacity": "80g",
     "variant": "바나나",
-    "tags": ["컵"],
+    "tags": [
+      "컵"
+    ],
     "proteinPerServing": 5,
     "density": "6.3g/100g",
     "productUrl": "https://www.maeildairies.com/maeilbio",
     "productType": "yogurt",
-    "gradeTags": ["단백질 밀도 B", "다이어트 C", "퍼포먼스 C"],
+    "gradeTags": [
+      "단백질 밀도 B",
+      "다이어트 C",
+      "퍼포먼스 C"
+    ],
     "gradeDescriptions": [
       "딜라이트 라인 기준으로 단백질량은 동일하지만 맛형 제품이라 플레인보다 보수적으로 보는 편이 좋습니다.",
       "디저트형 접근성이 높아 간식용으로는 좋지만 체중 관리용 우선순위는 낮습니다.",
@@ -769,12 +895,18 @@
     "name": "상하목장 유기농 그릭요거트 무가당 플레인",
     "capacity": "400g",
     "variant": "플레인",
-    "tags": ["컵"],
+    "tags": [
+      "컵"
+    ],
     "proteinPerServing": 28,
     "density": "7.0g/100g",
     "productUrl": "https://direct.maeil.com/m/brand/sangha",
     "productType": "yogurt",
-    "gradeTags": ["단백질 밀도 B", "다이어트 B", "퍼포먼스 B"],
+    "gradeTags": [
+      "단백질 밀도 B",
+      "다이어트 B",
+      "퍼포먼스 B"
+    ],
     "gradeDescriptions": [
       "400g 대용량 기준 총 단백질량이 높아 가족형이나 나눠 먹는 용도로 보기 좋습니다.",
       "무가당 플레인 방향이라 당류 부담은 낮을 가능성이 높지만, 대용량이라 1회 섭취량 관리는 필요합니다.",
@@ -789,5 +921,174 @@
     "nutritionPerBottle": {
       "proteinG": 28
     }
+  },
+  {
+    "slug": "who-highprotein-greek-unsweetened-400",
+    "brand": "후디스",
+    "name": "후디스 고단백 무가당 그릭요거트",
+    "capacity": "400g",
+    "variant": "플레인",
+    "tags": [
+      "컵"
+    ],
+    "proteinPerServing": 40,
+    "density": "10.0g/100g",
+    "productUrl": "https://foodismall.com/product/%ED%9B%84%EB%94%94%EC%8A%A4-%EA%B3%A0%EB%8B%A8%EB%B0%B1-%EB%AC%B4%EA%B0%80%EB%8B%B9-%EA%B7%B8%EB%A6%AD%EC%9A%94%EA%B1%B0%ED%8A%B8-400g-x-3%EA%B0%9C/4514",
+    "productType": "yogurt",
+    "gradeTags": [
+      "단백질 밀도 A",
+      "다이어트 B",
+      "퍼포먼스 A"
+    ],
+    "gradeDescriptions": [
+      "400g 한 통 기준 단백질 40g으로 총량이 매우 높은 편입니다.",
+      "무가당 방향 제품이지만 대용량이라 1회 섭취량은 나눠 보는 편이 자연스럽습니다.",
+      "러닝 후나 식사 사이 보충용으로도 활용하기 쉬운 고단백 그릭 요거트입니다."
+    ],
+    "manufacturer": "일동후디스",
+    "flavor": "플레인",
+    "yogurtType": "그릭 요거트",
+    "storageType": "냉장",
+    "lactoseFree": false,
+    "proteinPer100g": 10,
+    "nutritionPerBottle": {
+      "proteinG": 40
+    }
+  },
+  {
+    "slug": "greekday-signature-100",
+    "brand": "그릭데이",
+    "name": "그릭데이 시그니처",
+    "capacity": "100g",
+    "variant": "플레인",
+    "tags": [
+      "컵"
+    ],
+    "proteinPerServing": 11.42,
+    "calories": 160,
+    "sugar": 1.86,
+    "density": "11.4g/100g",
+    "productUrl": "https://www.kurly.com/goods/5062447",
+    "productType": "yogurt",
+    "gradeTags": [
+      "단백질 밀도 A",
+      "다이어트 A",
+      "퍼포먼스 B"
+    ],
+    "gradeDescriptions": [
+      "100g 기준 단백질 함량이 높아 진한 그릭 타입 비교군에서 상위권에 가깝습니다.",
+      "당류가 낮아 단맛 부담이 적은 편입니다.",
+      "꾸덕한 제형이라 간식형 고단백 요거트로 보기 좋습니다."
+    ],
+    "manufacturer": "그릭데이",
+    "flavor": "플레인",
+    "fat": 9.19,
+    "yogurtType": "그릭 요거트",
+    "storageType": "냉장",
+    "lactoseFree": false,
+    "proteinPer100g": 11.42,
+    "nutritionPerBottle": {
+      "caloriesKcal": 160,
+      "proteinG": 11.42,
+      "sugarsG": 1.86,
+      "fatG": 9.19
+    }
+  },
+  {
+    "slug": "greekday-signature-yuja-100",
+    "brand": "그릭데이",
+    "name": "그릭데이 시그니처 유자",
+    "capacity": "100g",
+    "variant": "유자",
+    "tags": [
+      "컵"
+    ],
+    "proteinPerServing": 8,
+    "density": "8.0g/100g",
+    "productUrl": "https://m.greekday.co.kr/product/%EA%B7%B8%EB%A6%AD%EB%8D%B0%EC%9D%B4-%EC%8B%9C%EA%B7%B8%EB%8B%88%EC%B2%98-%EC%9C%A0%EC%9E%90-100g/433/",
+    "productType": "yogurt",
+    "gradeTags": [
+      "단백질 밀도 B",
+      "다이어트 B",
+      "퍼포먼스 B"
+    ],
+    "gradeDescriptions": [
+      "맛이 들어간 그릭 요거트치고는 단백질 총량이 준수한 편입니다.",
+      "플레인 시그니처보다는 단백질 효율이 낮지만 맛 선택지로는 등록 가치가 있습니다.",
+      "간식형 단백질 요거트로 접근하기 쉬운 제품입니다."
+    ],
+    "manufacturer": "그릭데이",
+    "flavor": "유자",
+    "yogurtType": "그릭 요거트",
+    "storageType": "냉장",
+    "lactoseFree": false,
+    "proteinPer100g": 8,
+    "nutritionPerBottle": {
+      "proteinG": 8
+    }
+  },
+  {
+    "slug": "yozm-plain-greek-450",
+    "brand": "YOZM",
+    "name": "YOZM 플레인 그릭요거트",
+    "capacity": "450g",
+    "variant": "플레인",
+    "tags": [
+      "컵"
+    ],
+    "proteinPerServing": 58.95,
+    "density": "13.1g/100g",
+    "productUrl": "https://www.kurly.com/goods/5034820",
+    "productType": "yogurt",
+    "gradeTags": [
+      "단백질 밀도 A",
+      "다이어트 B",
+      "퍼포먼스 A"
+    ],
+    "gradeDescriptions": [
+      "비교 기사 기준 100g당 단백질 함량이 매우 높아 고단백 그릭 요거트 후보군에서 최상위권입니다.",
+      "대용량 제품이라 1회 섭취량을 나눠서 보는 편이 적절합니다.",
+      "운동 후 보충용이나 식사 보완용으로 활용 폭이 넓습니다."
+    ],
+    "manufacturer": "YOZM",
+    "flavor": "플레인",
+    "fat": 63,
+    "yogurtType": "그릭 요거트",
+    "storageType": "냉장",
+    "lactoseFree": false,
+    "proteinPer100g": 13.1,
+    "nutritionPerBottle": {
+      "proteinG": 58.95,
+      "fatG": 63
+    }
+  },
+  {
+    "slug": "yozm-lowsugar-matcha-100",
+    "brand": "YOZM",
+    "name": "YOZM 저당 그릭요거트 말차",
+    "capacity": "100g",
+    "variant": "말차",
+    "tags": [
+      "컵"
+    ],
+    "proteinPerServing": 0,
+    "density": "-",
+    "productUrl": "https://m.yozm.co.kr/product/%EC%9A%94%EC%A6%98-%EC%A0%80%EB%8B%B9-%EA%B7%B8%EB%A6%AD%EC%9A%94%EA%B1%B0%ED%8A%B8-%EB%A7%90%EC%B0%A8-100g-4%EA%B0%9C/245/category/134/display/1/",
+    "productType": "yogurt",
+    "gradeTags": [],
+    "gradeDescriptions": [
+      "현재 판매 페이지는 확인되지만 영양성분 수치는 추가 확인이 필요합니다.",
+      "저당 flavored 그릭 요거트 후보군으로 먼저 등록했습니다.",
+      "이미지와 영양표를 크로스체크한 뒤 수치를 보완하는 전제로 넣었습니다."
+    ],
+    "manufacturer": "YOZM",
+    "flavor": "말차",
+    "yogurtType": "그릭 요거트",
+    "storageType": "냉장",
+    "lactoseFree": false,
+    "sugar": 2,
+    "needsServingCheck": true,
+    "servingCheckNote": "공식 판매 페이지 기준 당류 2g만 확인됨. 단백질/열량/지방은 이미지 라벨 재확인 필요.",
+    "nutritionBasis": "unknown"
   }
 ]
