@@ -1892,5 +1892,89 @@
     "needsServingCheck": false,
     "nutritionBasis": "per_unit",
     "servingCheckNote": "공식몰 표기는 당류 1g 미만입니다. 현재 비교 계산을 위해 총 당류를 4.05g으로 입력했습니다."
+  },
+  {
+    "slug": "greekdang-plain-500",
+    "brand": "그릭당",
+    "name": "그릭당 플레인 그릭요거트 500g",
+    "capacity": "500g",
+    "variant": "플레인",
+    "tags": [
+      "컵"
+    ],
+    "proteinPerServing": 0,
+    "density": "-",
+    "productUrl": "https://store.ohou.se/goods/2606579",
+    "productType": "yogurt",
+    "gradeTags": [],
+    "gradeDescriptions": [
+      "오늘의집과 지그재그 기준 현재 판매 흔적이 확인되는 플레인 500g 제품입니다.",
+      "그릭당의 기본 대용량 플레인 SKU로 보는 편이 맞습니다.",
+      "상세 영양표는 추가 이미지 확인이 필요합니다."
+    ],
+    "manufacturer": "그릭당",
+    "flavor": "플레인",
+    "yogurtType": "그릭 요거트",
+    "storageType": "냉장",
+    "lactoseFree": false,
+    "needsServingCheck": true,
+    "nutritionBasis": "unknown",
+    "servingCheckNote": "판매 흔적은 확인됐지만 상세 영양표는 확보하지 못했습니다. 구매 전 제품 라벨의 기준 중량과 영양정보를 다시 확인해주세요."
+  },
+  {
+    "slug": "greekdang-vanillabean-500",
+    "brand": "그릭당",
+    "name": "그릭당 바닐라빈 그릭요거트 500g",
+    "capacity": "500g",
+    "variant": "바닐라빈",
+    "tags": [
+      "컵"
+    ],
+    "proteinPerServing": 0,
+    "density": "-",
+    "productUrl": "https://store.ohou.se/goods/2606609",
+    "productType": "yogurt",
+    "gradeTags": [],
+    "gradeDescriptions": [
+      "오늘의집과 지그재그 기준 현재 판매 흔적이 확인되는 바닐라빈 500g 제품입니다.",
+      "플레인과는 별도 향미 SKU라 따로 관리하는 편이 맞습니다.",
+      "상세 영양표는 추가 이미지 확인이 필요합니다."
+    ],
+    "manufacturer": "그릭당",
+    "flavor": "바닐라빈",
+    "yogurtType": "그릭 요거트",
+    "storageType": "냉장",
+    "lactoseFree": false,
+    "needsServingCheck": true,
+    "nutritionBasis": "unknown",
+    "servingCheckNote": "판매 흔적은 확인됐지만 상세 영양표는 확보하지 못했습니다. 구매 전 제품 라벨의 기준 중량과 영양정보를 다시 확인해주세요."
+  },
+  {
+    "slug": "greekdang-earlgrey-500",
+    "brand": "그릭당",
+    "name": "그릭당 얼그레이 그릭요거트 500g",
+    "capacity": "500g",
+    "variant": "얼그레이",
+    "tags": [
+      "컵"
+    ],
+    "proteinPerServing": 0,
+    "density": "-",
+    "productUrl": "https://zigzag.kr/catalog/products/132213294",
+    "productType": "yogurt",
+    "gradeTags": [],
+    "gradeDescriptions": [
+      "지그재그와 11번가 기준 현재 판매 흔적이 확인되는 얼그레이 500g 제품입니다.",
+      "향미가 들어간 대용량 SKU라 플레인과는 별도 제품으로 보는 편이 맞습니다.",
+      "상세 영양표는 추가 이미지 확인이 필요합니다."
+    ],
+    "manufacturer": "그릭당",
+    "flavor": "얼그레이",
+    "yogurtType": "그릭 요거트",
+    "storageType": "냉장",
+    "lactoseFree": false,
+    "needsServingCheck": true,
+    "nutritionBasis": "unknown",
+    "servingCheckNote": "판매 흔적은 확인됐지만 상세 영양표는 확보하지 못했습니다. 구매 전 제품 라벨의 기준 중량과 영양정보를 다시 확인해주세요."
   }
 ]
