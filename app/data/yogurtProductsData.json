@@ -690,7 +690,7 @@
   {
     "slug": "yozm-plain-greek-450",
     "brand": "YOZM",
-    "name": "YOZM 플레인 그릭요거트",
+    "name": "YOZM 플레인 그릭요거트 450g",
     "capacity": "450g",
     "variant": "플레인",
     "tags": [
@@ -698,7 +698,7 @@
     ],
     "proteinPerServing": 58.95,
     "density": "13.1g/100g",
-    "productUrl": "https://www.kurly.com/goods/5034820",
+    "productUrl": "https://yozm.co.kr/product/%EC%9A%94%EC%A6%98-%EA%B7%B8%EB%A6%AD%EC%9A%94%EA%B1%B0%ED%8A%B8-%ED%94%8C%EB%A0%88%EC%9D%B8-450g/68/category/112/display/1/",
     "productType": "yogurt",
     "gradeTags": [
       "단백질 밀도 A",
@@ -706,8 +706,8 @@
       "퍼포먼스 A"
     ],
     "gradeDescriptions": [
-      "비교 기사 기준 100g당 단백질 함량이 매우 높아 고단백 그릭 요거트 후보군에서 최상위권입니다.",
-      "대용량 제품이라 1회 섭취량을 나눠서 보는 편이 적절합니다.",
+      "YOZM 공식몰 기준 현재 판매 흔적이 확인되는 플레인 450g 제품입니다.",
+      "100g당 단백질 밀도가 높은 편이라 대용량 고단백 그릭요거트 후보군에 들어갑니다.",
       "운동 후 보충용이나 식사 보완용으로 활용 폭이 넓습니다."
     ],
     "manufacturer": "YOZM",
@@ -720,35 +720,74 @@
     "nutritionPerBottle": {
       "proteinG": 58.95,
       "fatG": 63
-    }
+    },
+    "needsServingCheck": false,
+    "nutritionBasis": "per_unit"
   },
   {
-    "slug": "yozm-lowsugar-matcha-100",
+    "slug": "yozm-plain-greek-800",
     "brand": "YOZM",
-    "name": "YOZM 저당 그릭요거트 말차",
-    "capacity": "100g",
-    "variant": "말차",
+    "name": "YOZM 플레인 그릭요거트 800g",
+    "capacity": "800g",
+    "variant": "플레인",
+    "tags": [
+      "컵"
+    ],
+    "proteinPerServing": 104.8,
+    "density": "13.1g/100g",
+    "productUrl": "https://yozm.co.kr/product/%EC%9A%94%EC%A6%98-%EA%B7%B8%EB%A6%AD%EC%9A%94%EA%B1%B0%ED%8A%B8-%ED%94%8C%EB%A0%88%EC%9D%B8-800g/103/category/112/display/1/",
+    "productType": "yogurt",
+    "gradeTags": [
+      "단백질 밀도 A",
+      "다이어트 B",
+      "퍼포먼스 A"
+    ],
+    "gradeDescriptions": [
+      "YOZM 공식몰 기준 현재 판매 흔적이 확인되는 플레인 800g 제품입니다.",
+      "대용량 SKU라 총 단백질량은 높지만 실제 섭취량은 나눠서 보는 편이 자연스럽습니다.",
+      "450g과 같은 플레인 라인의 대용량 확장 SKU로 보는 편이 맞습니다."
+    ],
+    "manufacturer": "YOZM",
+    "flavor": "플레인",
+    "fat": 112,
+    "yogurtType": "그릭 요거트",
+    "storageType": "냉장",
+    "lactoseFree": false,
+    "proteinPer100g": 13.1,
+    "nutritionPerBottle": {
+      "proteinG": 104.8,
+      "fatG": 112
+    },
+    "needsServingCheck": true,
+    "servingCheckNote": "공식 판매 흔적은 확인됐지만 현재 상세 영양표는 추가 이미지 확인이 필요합니다. 현재 수치는 450g 제품 값을 용량 비례 확장한 임시값입니다.",
+    "nutritionBasis": "estimated_from_related_sku"
+  },
+  {
+    "slug": "yozm-soft-plain-500",
+    "brand": "YOZM",
+    "name": "YOZM 소프트 플레인 500g",
+    "capacity": "500g",
+    "variant": "플레인",
     "tags": [
       "컵"
     ],
     "proteinPerServing": 0,
     "density": "-",
-    "productUrl": "https://m.yozm.co.kr/product/%EC%9A%94%EC%A6%98-%EC%A0%80%EB%8B%B9-%EA%B7%B8%EB%A6%AD%EC%9A%94%EA%B1%B0%ED%8A%B8-%EB%A7%90%EC%B0%A8-100g-4%EA%B0%9C/245/category/134/display/1/",
+    "productUrl": "https://yozm.co.kr/product/%EC%9A%94%EC%A6%98-%EA%B7%B8%EB%A6%AD%EC%9A%94%EA%B1%B0%ED%8A%B8-%EC%86%8C%ED%94%84%ED%8A%B8-%ED%94%8C%EB%A0%88%EC%9D%B8-500g/116/category/112/display/1/",
     "productType": "yogurt",
     "gradeTags": [],
     "gradeDescriptions": [
-      "현재 판매 페이지는 확인되지만 영양성분 수치는 추가 확인이 필요합니다.",
-      "저당 flavored 그릭 요거트 후보군으로 먼저 등록했습니다.",
-      "이미지와 영양표를 크로스체크한 뒤 수치를 보완하는 전제로 넣었습니다."
+      "YOZM 공식몰 기준 현재 판매 흔적이 확인되는 소프트 플레인 500g 제품입니다.",
+      "플레인 라인과 다른 제형의 별도 SKU라 따로 관리하는 편이 맞습니다.",
+      "상세 영양표는 추가 이미지 확인이 필요합니다."
     ],
     "manufacturer": "YOZM",
-    "flavor": "말차",
+    "flavor": "플레인",
     "yogurtType": "그릭 요거트",
     "storageType": "냉장",
     "lactoseFree": false,
-    "sugar": 2,
     "needsServingCheck": true,
-    "servingCheckNote": "공식 판매 페이지 기준 당류 2g만 확인됨. 단백질/열량/지방은 이미지 라벨 재확인 필요.",
+    "servingCheckNote": "공식 판매는 확인됐지만 상세 영양표는 확보하지 못했습니다. 구매 전 제품 라벨의 기준 중량과 영양정보를 다시 확인해주세요.",
     "nutritionBasis": "unknown"
   },
   {
