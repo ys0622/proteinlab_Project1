@@ -1714,5 +1714,183 @@
     "needsServingCheck": true,
     "nutritionBasis": "unknown",
     "servingCheckNote": "공식 판매는 확인됐지만 상세 영양표는 확보하지 못했습니다. 구매 전 제품 라벨의 기준 중량과 영양정보를 다시 확인해주세요."
+  },
+  {
+    "slug": "lookt-icelandic-mild-100",
+    "brand": "룩트",
+    "name": "룩트 아이슬란딕 요거트 마일드 100g",
+    "capacity": "100g",
+    "variant": "플레인",
+    "tags": [
+      "컵"
+    ],
+    "proteinPerServing": 10.6,
+    "calories": 85,
+    "sugar": 3,
+    "density": "10.6g/100g",
+    "productUrl": "https://lukt.co.kr/shop_view/209",
+    "productType": "yogurt",
+    "gradeTags": [
+      "단백질 밀도 A",
+      "다이어트 A",
+      "퍼포먼스 A"
+    ],
+    "gradeDescriptions": [
+      "룩트 공식몰 기준 현재 판매 중인 마일드 100g 제품입니다.",
+      "100g 기준 단백질 10.6g으로 고단백 요거트 기준에 들어가는 편입니다.",
+      "지방이 낮아 상대적으로 가볍게 먹기 좋은 스키르 계열 제품입니다."
+    ],
+    "manufacturer": "주식회사 아티튜드",
+    "flavor": "플레인",
+    "fat": 2.8,
+    "yogurtType": "아이슬란딕 요거트",
+    "storageType": "냉장",
+    "lactoseFree": false,
+    "proteinPer100g": 10.6,
+    "nutritionPerBottle": {
+      "proteinG": 10.6,
+      "fatG": 2.8,
+      "carbsG": 4,
+      "sugarG": 3,
+      "satFatG": 2,
+      "cholesterolMg": 35,
+      "sodiumMg": 40
+    },
+    "needsServingCheck": false,
+    "nutritionBasis": "per_unit"
+  },
+  {
+    "slug": "lookt-icelandic-thick-100",
+    "brand": "룩트",
+    "name": "룩트 아이슬란딕 요거트 띠크 100g",
+    "capacity": "100g",
+    "variant": "플레인",
+    "tags": [
+      "컵"
+    ],
+    "proteinPerServing": 12,
+    "calories": 190,
+    "sugar": 0.9,
+    "density": "12.0g/100g",
+    "productUrl": "https://lukt.co.kr/shop_view/208",
+    "productType": "yogurt",
+    "gradeTags": [
+      "단백질 밀도 A",
+      "다이어트 B",
+      "퍼포먼스 A"
+    ],
+    "gradeDescriptions": [
+      "룩트 공식몰 기준 현재 판매 중인 띠크 100g 제품입니다.",
+      "100g 기준 단백질 12g으로 고단백 요거트 후보군 상위권에 가깝습니다.",
+      "지방과 질감이 진한 편이라 가볍기보다 든든하게 먹는 쪽에 더 가깝습니다."
+    ],
+    "manufacturer": "주식회사 아티튜드",
+    "flavor": "플레인",
+    "fat": 12,
+    "yogurtType": "아이슬란딕 요거트",
+    "storageType": "냉장",
+    "lactoseFree": false,
+    "proteinPer100g": 12,
+    "nutritionPerBottle": {
+      "proteinG": 12,
+      "fatG": 12,
+      "carbsG": 8.5,
+      "sugarG": 0.9,
+      "satFatG": 8,
+      "cholesterolMg": 20,
+      "sodiumMg": 32
+    },
+    "needsServingCheck": false,
+    "nutritionBasis": "per_unit",
+    "servingCheckNote": "공식몰 표기는 당류 1g 미만입니다. 현재 비교 계산을 위해 0.9g으로 입력했습니다."
+  },
+  {
+    "slug": "lookt-icelandic-mild-450",
+    "brand": "룩트",
+    "name": "룩트 아이슬란딕 요거트 마일드 450g",
+    "capacity": "450g",
+    "variant": "플레인",
+    "tags": [
+      "컵"
+    ],
+    "proteinPerServing": 47.7,
+    "calories": 382.5,
+    "sugar": 13.5,
+    "density": "10.6g/100g",
+    "productUrl": "https://www.lukt.co.kr/26/?idx=97",
+    "productType": "yogurt",
+    "gradeTags": [
+      "단백질 밀도 A",
+      "다이어트 A",
+      "퍼포먼스 A"
+    ],
+    "gradeDescriptions": [
+      "룩트 공식몰 기준 현재 판매 중인 마일드 450g 제품입니다.",
+      "100g 기준 단백질 밀도는 유지하면서 총 단백질량이 커진 대용량 SKU입니다.",
+      "여러 번 나눠 먹는 전제로 식사 보완용이나 간식용 활용 폭이 넓습니다."
+    ],
+    "manufacturer": "주식회사 아티튜드",
+    "flavor": "플레인",
+    "fat": 12.6,
+    "yogurtType": "아이슬란딕 요거트",
+    "storageType": "냉장",
+    "lactoseFree": false,
+    "proteinPer100g": 10.6,
+    "nutritionPerBottle": {
+      "proteinG": 47.7,
+      "fatG": 12.6,
+      "carbsG": 18,
+      "sugarG": 13.5,
+      "satFatG": 9,
+      "cholesterolMg": 157.5,
+      "sodiumMg": 180
+    },
+    "needsServingCheck": false,
+    "nutritionBasis": "per_unit"
+  },
+  {
+    "slug": "lookt-icelandic-thick-450",
+    "brand": "룩트",
+    "name": "룩트 아이슬란딕 요거트 띠크 450g",
+    "capacity": "450g",
+    "variant": "플레인",
+    "tags": [
+      "컵"
+    ],
+    "proteinPerServing": 54,
+    "calories": 855,
+    "sugar": 4.05,
+    "density": "12.0g/100g",
+    "productUrl": "https://www.lukt.co.kr/26/?idx=96",
+    "productType": "yogurt",
+    "gradeTags": [
+      "단백질 밀도 A",
+      "다이어트 B",
+      "퍼포먼스 A"
+    ],
+    "gradeDescriptions": [
+      "룩트 공식몰 기준 현재 판매 중인 띠크 450g 제품입니다.",
+      "100g 기준 단백질 12g 수준을 유지한 대용량 SKU라 총 단백질량이 매우 높습니다.",
+      "질감과 지방이 진한 편이라 한 번에 다 먹기보다 나눠 먹는 쪽이 자연스럽습니다."
+    ],
+    "manufacturer": "주식회사 아티튜드",
+    "flavor": "플레인",
+    "fat": 54,
+    "yogurtType": "아이슬란딕 요거트",
+    "storageType": "냉장",
+    "lactoseFree": false,
+    "proteinPer100g": 12,
+    "nutritionPerBottle": {
+      "proteinG": 54,
+      "fatG": 54,
+      "carbsG": 38.25,
+      "sugarG": 4.05,
+      "satFatG": 36,
+      "cholesterolMg": 90,
+      "sodiumMg": 144
+    },
+    "needsServingCheck": false,
+    "nutritionBasis": "per_unit",
+    "servingCheckNote": "공식몰 표기는 당류 1g 미만입니다. 현재 비교 계산을 위해 총 당류를 4.05g으로 입력했습니다."
   }
 ]
