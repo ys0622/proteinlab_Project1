@@ -262,7 +262,7 @@
   {
     "slug": "who-greek-plain-80",
     "brand": "후디스",
-    "name": "후디스 그릭요거트 달지않은 플레인",
+    "name": "후디스 그릭요거트 플레인 80g",
     "capacity": "80g",
     "variant": "플레인",
     "tags": [
@@ -272,7 +272,7 @@
     "calories": 125,
     "sugar": 12,
     "density": "6.0g/100g",
-    "productUrl": "https://www.coupang.com/vp/products/7735387156",
+    "productUrl": "https://foodismall.com/product/%ED%9B%84%EB%94%94%EC%8A%A4-%EA%B7%B8%EB%A6%AD%EC%9A%94%EA%B1%B0%ED%8A%B8-%ED%94%8C%EB%A0%88%EC%9D%B8-80gx16ea/278/",
     "productType": "yogurt",
     "gradeTags": [
       "단백질 밀도 C",
@@ -280,9 +280,9 @@
       "퍼포먼스 C"
     ],
     "gradeDescriptions": [
-      "그릭 요거트이지만 단백질 밀도는 상위권 제품보다 낮은 편입니다.",
-      "당류와 칼로리가 높아 체중 관리용으로는 보수적으로 보는 편이 좋습니다.",
-      "일반 간식용으로는 무난하지만 운동 후 보충식으로는 우선순위가 낮습니다."
+      "후디스몰 기준 현재 판매 흔적이 확인되는 플레인 80g 제품입니다.",
+      "현재 확인한 판매 페이지는 16개입 묶음 구성이라 개별 컵 기준 라벨 재확인이 필요합니다.",
+      "일반 간식형 그릭요거트로 접근하는 편이 자연스럽습니다."
     ],
     "manufacturer": "일동후디스",
     "flavor": "플레인",
@@ -301,12 +301,15 @@
       "satFatG": 3.9,
       "cholesterolMg": 25,
       "sodiumMg": 90
-    }
+    },
+    "needsServingCheck": true,
+    "nutritionBasis": "unknown",
+    "servingCheckNote": "현재 확인한 판매 페이지는 80g x 16개입 묶음입니다. 현재 수치는 80g 1컵 기준으로 유지했고, 실제 표기 기준은 제품 라벨을 다시 확인해야 합니다."
   },
   {
     "slug": "who-greek-plain-450",
     "brand": "후디스",
-    "name": "후디스 그릭요거트 달지않은 플레인",
+    "name": "후디스 그릭요거트 플레인 450g",
     "capacity": "450g",
     "variant": "플레인",
     "tags": [
@@ -316,7 +319,7 @@
     "calories": 360,
     "sugar": 42.8,
     "density": "6.0g/100g",
-    "productUrl": "https://www.coupang.com/vp/products/6856595236",
+    "productUrl": "https://foodismall.com/product/%ED%9B%84%EB%94%94%EC%8A%A4-%EA%B7%B8%EB%A6%AD%EC%9A%94%EA%B1%B0%ED%8A%B8-%ED%94%8C%EB%A0%88%EC%9D%B8-450g/2296/",
     "productType": "yogurt",
     "gradeTags": [
       "단백질 밀도 C",
@@ -324,9 +327,9 @@
       "퍼포먼스 C"
     ],
     "gradeDescriptions": [
-      "대용량이라 총 단백질량은 높지만 100g 기준 밀도는 높지 않은 편입니다.",
-      "당류와 칼로리 총량이 커서 체중 관리용보다는 가족형 대용량 제품에 가깝습니다.",
-      "양을 나눠 먹는 전제라면 간식이나 식사 보완용으로 활용할 수 있습니다."
+      "후디스몰 기준 현재 판매 중인 플레인 450g 제품입니다.",
+      "100g 기준 밀도는 높지 않지만 대용량이라 나눠 먹기 좋습니다.",
+      "가족형 또는 식사 보완용 대용량 SKU에 가깝습니다."
     ],
     "manufacturer": "일동후디스",
     "flavor": "플레인",
@@ -345,7 +348,9 @@
       "satFatG": 5.4,
       "cholesterolMg": 45,
       "sodiumMg": 495
-    }
+    },
+    "needsServingCheck": false,
+    "nutritionBasis": "per_unit"
   },
   {
     "slug": "maeil-bio-greek-unsweetened-150",
@@ -650,7 +655,7 @@
   {
     "slug": "who-highprotein-greek-unsweetened-400",
     "brand": "후디스",
-    "name": "후디스 고단백 무가당 그릭요거트",
+    "name": "후디스 고단백 무가당 그릭요거트 400g",
     "capacity": "400g",
     "variant": "플레인",
     "tags": [
@@ -658,7 +663,7 @@
     ],
     "proteinPerServing": 40,
     "density": "10.0g/100g",
-    "productUrl": "https://foodismall.com/product/%ED%9B%84%EB%94%94%EC%8A%A4-%EA%B3%A0%EB%8B%A8%EB%B0%B1-%EB%AC%B4%EA%B0%80%EB%8B%B9-%EA%B7%B8%EB%A6%AD%EC%9A%94%EA%B1%B0%ED%8A%B8-400g-x-3%EA%B0%9C/4514",
+    "productUrl": "https://foodismall.com/product/%ED%9B%84%EB%94%94%EC%8A%A4-%EA%B3%A0%EB%8B%A8%EB%B0%B1-%EB%AC%B4%EA%B0%80%EB%8B%B9-%EA%B7%B8%EB%A6%AD%EC%9A%94%EA%B1%B0%ED%8A%B8-400g/4496/",
     "productType": "yogurt",
     "gradeTags": [
       "단백질 밀도 A",
@@ -666,9 +671,9 @@
       "퍼포먼스 A"
     ],
     "gradeDescriptions": [
-      "400g 한 통 기준 단백질 40g으로 총량이 매우 높은 편입니다.",
-      "무가당 방향 제품이지만 대용량이라 1회 섭취량은 나눠 보는 편이 자연스럽습니다.",
-      "러닝 후나 식사 사이 보충용으로도 활용하기 쉬운 고단백 그릭 요거트입니다."
+      "후디스몰 기준 현재 판매 중인 고단백 무가당 400g 제품입니다.",
+      "400g 한 통 기준 단백질 총량이 높아 대용량 고단백 그릭요거트로 보기 좋습니다.",
+      "한 번에 전량 섭취보다는 나눠 먹는 전제가 자연스럽습니다."
     ],
     "manufacturer": "일동후디스",
     "flavor": "플레인",
@@ -678,7 +683,9 @@
     "proteinPer100g": 10,
     "nutritionPerBottle": {
       "proteinG": 40
-    }
+    },
+    "needsServingCheck": false,
+    "nutritionBasis": "per_unit"
   },
   {
     "slug": "yozm-plain-greek-450",
@@ -1640,5 +1647,33 @@
     "needsServingCheck": true,
     "nutritionBasis": "unknown",
     "servingCheckNote": "공식몰에서 8개 묶음 판매는 확인됐지만 상세 영양표는 확보하지 못했습니다. 구매 전 제품 라벨의 기준 중량과 영양정보를 다시 확인해주세요."
+  },
+  {
+    "slug": "who-organic-greek-unsweetened-450",
+    "brand": "후디스",
+    "name": "후디스 유기농 그릭요거트 달지않은 플레인 450g",
+    "capacity": "450g",
+    "variant": "플레인",
+    "tags": [
+      "컵"
+    ],
+    "proteinPerServing": 0,
+    "density": "-",
+    "productUrl": "https://foodismall.com/product/%ED%9B%84%EB%94%94%EC%8A%A4-%EC%9C%A0%EA%B8%B0%EB%86%8D-%EA%B7%B8%EB%A6%AD%EC%9A%94%EA%B1%B0%ED%8A%B8-%EB%8B%AC%EC%A7%80%EC%95%8A%EC%9D%80-%ED%94%8C%EB%A0%88%EC%9D%B8-450g/3714/",
+    "productType": "yogurt",
+    "gradeTags": [],
+    "gradeDescriptions": [
+      "후디스몰 기준 현재 판매 중인 유기농 달지않은 플레인 450g 제품입니다.",
+      "일반 플레인 450g과는 별도 SKU로 보는 편이 맞습니다.",
+      "상세 영양표는 추가 이미지 확인이 필요합니다."
+    ],
+    "manufacturer": "일동후디스",
+    "flavor": "플레인",
+    "yogurtType": "그릭 요거트",
+    "storageType": "냉장",
+    "lactoseFree": false,
+    "needsServingCheck": true,
+    "nutritionBasis": "unknown",
+    "servingCheckNote": "공식 판매는 확인됐지만 상세 영양표는 확보하지 못했습니다. 구매 전 제품 라벨의 기준 중량과 영양정보를 다시 확인해주세요."
   }
 ]
