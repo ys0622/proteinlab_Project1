@@ -21,13 +21,19 @@ import ServingBasisNotice from "../../components/ServingBasisNotice";
 import { getNutritionDetail, getProductBySlug } from "../../data/products";
 import { getProductImageUrl } from "../../lib/productImage";
 import {
-  getOfficialMallUrl,
   getNaverSearchUrl,
+  getOfficialMallUrl,
   getPreferredCoupangUrl,
 } from "../../lib/purchaseLinks";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
+}
+
+function getProductKindLabel(productType?: "drink" | "bar" | "yogurt") {
+  if (productType === "bar") return "단백질 바";
+  if (productType === "yogurt") return "단백질 요거트";
+  return "단백질 음료";
 }
 
 export async function generateMetadata({ params }: PageProps) {
@@ -38,16 +44,9 @@ export async function generateMetadata({ params }: PageProps) {
     return { title: "제품을 찾을 수 없음 | ProteinLab" };
   }
 
-  const kind =
-    product.productType === "bar"
-      ? "단백질 바"
-      : product.productType === "yogurt"
-        ? "단백질 요거트"
-        : "단백질 음료";
-
   return {
     title: `${product.brand} ${product.name} | ProteinLab`,
-    description: `${product.brand} ${product.name} ${kind} 상세 정보`,
+    description: `${product.brand} ${product.name} ${getProductKindLabel(product.productType)} 상세 정보`,
   };
 }
 
@@ -57,7 +56,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
 
   if (!product) notFound();
 
-  const gradeLabels = product.gradeTags ?? ["단백질 밀도 A", "다이어트 B", "퍼포먼스 B"];
+  const gradeLabels = product.gradeTags ?? [];
   const gradeDescs = product.gradeDescriptions ?? ["-", "-", "-"];
   const isBar = product.productType === "bar";
   const isYogurt = product.productType === "yogurt";
@@ -140,7 +139,9 @@ export default async function ProductDetailPage({ params }: PageProps) {
                     unoptimized
                   />
                 ) : (
-                  <div className="h-[200px] w-[200px]" style={{ maxHeight: "200px" }} />
+                  <div className="flex h-full min-h-[220px] w-full items-center justify-center bg-[#f7f4ee] text-sm text-[var(--foreground-muted)]">
+                    이미지 준비 중
+                  </div>
                 )}
               </div>
             </div>
@@ -192,34 +193,36 @@ export default async function ProductDetailPage({ params }: PageProps) {
 
       <main className="bg-white">
         <div className="mx-auto max-w-[1200px] px-4 py-8 md:px-6">
-          <section>
-            <h2 className="text-lg font-semibold text-[var(--foreground)]">등급 요약</h2>
-            <div className="mt-4 grid gap-3 sm:grid-cols-3">
-              {gradeLabels.map((label, index) => {
-                const displayLabel = formatProductBadgeLabel(label);
+          {gradeLabels.length > 0 ? (
+            <section>
+              <h2 className="text-lg font-semibold text-[var(--foreground)]">등급 요약</h2>
+              <div className="mt-4 grid gap-3 sm:grid-cols-3">
+                {gradeLabels.map((label, index) => {
+                  const displayLabel = formatProductBadgeLabel(label);
 
-                return (
-                  <div
-                    key={`${label}-${index}`}
-                    className="rounded-xl border border-[#e8e6e3] p-4"
-                    style={{ borderRadius: "12px", background: "#FFFDF8" }}
-                  >
-                    <MetricBadgeGroup>
-                      <ProductBadge
-                        label={displayLabel}
-                        tone={getProductBadgeTone(displayLabel)}
-                        tooltip={getMetricBadgeTooltip(label) ?? undefined}
-                        tooltipAriaLabel={getMetricBadgeAriaLabel(label)}
-                      />
-                    </MetricBadgeGroup>
-                    <p className="mt-3 text-sm text-[var(--foreground-muted)]">
-                      {gradeDescs[index] ?? "-"}
-                    </p>
-                  </div>
-                );
-              })}
-            </div>
-          </section>
+                  return (
+                    <div
+                      key={`${label}-${index}`}
+                      className="rounded-xl border border-[#e8e6e3] p-4"
+                      style={{ borderRadius: "12px", background: "#FFFDF8" }}
+                    >
+                      <MetricBadgeGroup>
+                        <ProductBadge
+                          label={displayLabel}
+                          tone={getProductBadgeTone(displayLabel)}
+                          tooltip={getMetricBadgeTooltip(label) ?? undefined}
+                          tooltipAriaLabel={getMetricBadgeAriaLabel(label)}
+                        />
+                      </MetricBadgeGroup>
+                      <p className="mt-3 text-sm text-[var(--foreground-muted)]">
+                        {gradeDescs[index] ?? "-"}
+                      </p>
+                    </div>
+                  );
+                })}
+              </div>
+            </section>
+          ) : null}
 
           <div className="mt-8">
             {isBar ? (
