@@ -3,12 +3,15 @@ import type { NutritionDetailRow } from "../data/products";
 interface NutritionDetailSectionProps {
   rows: NutritionDetailRow[];
   capacity?: string;
-  /** 단백질바는 "1개", 음료는 "1병" */
-  unit?: "병" | "개";
+  unit?: "병" | "개" | "컵";
 }
 
-export default function NutritionDetailSection({ rows, capacity, unit = "병" }: NutritionDetailSectionProps) {
-  const unitLabel = unit === "개" ? "1개" : "1병";
+export default function NutritionDetailSection({
+  rows,
+  capacity,
+  unit = "병",
+}: NutritionDetailSectionProps) {
+  const unitLabel = unit === "개" ? "1개" : unit === "컵" ? "1컵" : "1병";
 
   return (
     <section
@@ -19,11 +22,11 @@ export default function NutritionDetailSection({ rows, capacity, unit = "병" }:
         <h2 className="text-sm font-semibold" style={{ color: "#3d3d3d" }}>
           영양성분 상세 ({unitLabel} 기준)
         </h2>
-        {capacity && (
+        {capacity ? (
           <span className="text-xs" style={{ color: "#999" }}>
-            제공량: {unitLabel} ({capacity})
+            제공량 {unitLabel} ({capacity})
           </span>
-        )}
+        ) : null}
       </div>
 
       <div className="overflow-x-auto border-t border-[#e8e6e3]">

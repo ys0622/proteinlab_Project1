@@ -6,7 +6,7 @@ import type { ProductDetailProps } from "../data/products";
 import { getPopularProducts } from "../lib/productPopularity";
 
 interface ProductTopFivePopoverProps {
-  productType: "drink" | "bar";
+  productType: "drink" | "bar" | "yogurt";
   products: ProductDetailProps[];
 }
 
@@ -47,7 +47,12 @@ export default function ProductTopFivePopover({
     };
   }, [open]);
 
-  const title = productType === "bar" ? "오늘 인기 단백질 바" : "오늘 인기 단백질 음료";
+  const title =
+    productType === "bar"
+      ? "오늘 인기 단백질 바"
+      : productType === "yogurt"
+        ? "오늘 인기 단백질 요거트"
+        : "오늘 인기 단백질 음료";
 
   return (
     <div ref={rootRef} className="relative ml-auto shrink-0">
@@ -60,7 +65,7 @@ export default function ProductTopFivePopover({
         className="inline-flex items-center rounded-full border border-[var(--border)] bg-white px-3 py-1 text-xs font-medium text-[var(--foreground-muted)] transition-colors hover:border-[var(--accent)] hover:bg-[var(--accent-light)] hover:text-[var(--accent)] sm:text-sm"
         style={{ fontWeight: 400, whiteSpace: "nowrap" }}
       >
-        🔥 TOP5
+        인기 TOP5
       </button>
 
       {open ? (
@@ -70,7 +75,7 @@ export default function ProductTopFivePopover({
           aria-label={title}
           className="absolute right-0 top-full z-20 mt-2 w-[240px] rounded-xl border border-[var(--border)] bg-white p-3 shadow-[0_8px_24px_rgba(0,0,0,0.08)]"
         >
-          <p className="text-sm font-semibold text-[var(--foreground)]">🔥 {title}</p>
+          <p className="text-sm font-semibold text-[var(--foreground)]">인기 {title}</p>
 
           <ol className="mt-2 space-y-1.5">
             {popularProducts.map((product, index) => (
@@ -91,7 +96,7 @@ export default function ProductTopFivePopover({
             ))}
           </ol>
 
-          <p className="mt-2 px-2 text-[11px] text-[#8b8b8b]">최근 7일 조회수 기준</p>
+          <p className="mt-2 px-2 text-[11px] text-[#8b8b8b]">최근 7일 조회 기준</p>
         </div>
       ) : null}
     </div>

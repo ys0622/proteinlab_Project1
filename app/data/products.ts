@@ -21,7 +21,7 @@ export interface NutritionPerBottle {
 
 export interface ProductDetailFields {
   slug: string;
-  productType?: "drink" | "bar";
+  productType?: "drink" | "bar" | "yogurt";
   nutritionBasis?: "per_unit" | "per_pack" | "unknown";
   needsServingCheck?: boolean;
   servingCheckNote?: string;
@@ -33,6 +33,10 @@ export interface ProductDetailFields {
   sodium?: number;
   calorieDensity?: string;
   drinkType?: string;
+  yogurtType?: string;
+  storageType?: string;
+  lactoseFree?: boolean;
+  proteinPer100g?: number;
   gradeDescriptions?: [string, string, string];
   nutritionDetail?: NutritionDetailRow[];
   nutritionPerBottle?: NutritionPerBottle;
@@ -42,11 +46,13 @@ export type ProductDetailProps = ProductCardProps & ProductDetailFields;
 
 import { getDrinkProducts } from "./drinkProductsData";
 import { getBarProducts } from "./barProductsData";
+import { getYogurtProducts } from "./yogurtProductsData";
 import { applyDrinkGrades, applyBarGrades } from "../lib/gradeCalculation";
 
 export const mockProducts: ProductDetailProps[] = applyDrinkGrades(getDrinkProducts());
 export const mockBarProducts: ProductDetailProps[] = getBarProducts();
 export const barProductsWithGrades: ProductDetailProps[] = applyBarGrades(mockBarProducts);
+export const yogurtProducts: ProductDetailProps[] = getYogurtProducts();
 
 export function getNutritionDetail(p: ProductDetailProps): NutritionDetailRow[] {
   if (p.nutritionDetail?.length) return p.nutritionDetail;
@@ -81,6 +87,18 @@ export function getNutritionDetail(p: ProductDetailProps): NutritionDetailRow[] 
     ];
   }
 
+  if (p.productType === "yogurt") {
+    return [
+      { label: "칼로리", value: p.calories != null ? `${p.calories}kcal` : "-" },
+      { label: "탄수화물", value: "—" },
+      { label: "당류", value: p.sugar !== undefined ? `${p.sugar}g` : "-" },
+      { label: "단백질", value: `${p.proteinPerServing}g` },
+      { label: "지방", value: p.fat !== undefined ? `${p.fat}g` : "-" },
+      { label: "포화지방", value: "—" },
+      { label: "나트륨", value: p.sodium !== undefined ? `${p.sodium}mg` : "-" },
+    ];
+  }
+
   return [
     { label: "열량", value: p.calories != null ? `${p.calories}kcal` : "—" },
     { label: "단백질", value: `${p.proteinPerServing}g` },
@@ -89,12 +107,14 @@ export function getNutritionDetail(p: ProductDetailProps): NutritionDetailRow[] 
 }
 
 export function getAllProducts(): ProductDetailProps[] {
-  return [...mockProducts, ...barProductsWithGrades];
+  return [...mockProducts, ...barProductsWithGrades, ...yogurtProducts];
 }
 
 export function getProductBySlug(slug: string): ProductDetailProps | null {
   const bar = barProductsWithGrades.find((p) => p.slug === slug);
   if (bar) return bar;
+  const yogurt = yogurtProducts.find((p) => p.slug === slug);
+  if (yogurt) return yogurt;
   return mockProducts.find((p) => p.slug === slug) ?? null;
 }
 

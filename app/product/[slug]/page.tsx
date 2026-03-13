@@ -38,7 +38,12 @@ export async function generateMetadata({ params }: PageProps) {
     return { title: "제품을 찾을 수 없음 | ProteinLab" };
   }
 
-  const kind = product.productType === "bar" ? "단백질바" : "단백질 음료";
+  const kind =
+    product.productType === "bar"
+      ? "단백질 바"
+      : product.productType === "yogurt"
+        ? "단백질 요거트"
+        : "단백질 음료";
 
   return {
     title: `${product.brand} ${product.name} | ProteinLab`,
@@ -52,9 +57,10 @@ export default async function ProductDetailPage({ params }: PageProps) {
 
   if (!product) notFound();
 
-  const gradeLabels = product.gradeTags ?? ["밀도 A", "다이어트 B", "퍼포먼스 B"];
+  const gradeLabels = product.gradeTags ?? ["단백질 밀도 A", "다이어트 B", "퍼포먼스 B"];
   const gradeDescs = product.gradeDescriptions ?? ["-", "-", "-"];
   const isBar = product.productType === "bar";
+  const isYogurt = product.productType === "yogurt";
   const productImageUrl = getProductImageUrl(product.slug);
   const metaParts = [
     product.manufacturer,
@@ -67,7 +73,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
   const naverHref = getNaverSearchUrl(product.brand, product.name);
   const officialMallHref = getOfficialMallUrl(product.brand);
   const isLactoseFreeDrink =
-    product.productType !== "bar" && product.variant?.trim() === "락토프리";
+    product.productType === "drink" && product.variant?.trim() === "락토프리";
 
   const summaryMetrics = isBar
     ? [
@@ -79,29 +85,39 @@ export default async function ProductDetailPage({ params }: PageProps) {
         { label: "지방", value: product.fat !== undefined ? `${product.fat}g` : "-", isCompact: false },
         { label: "나트륨", value: product.sodium !== undefined ? `${product.sodium}mg` : "-", isCompact: false },
       ]
-    : [
-        { label: "단백질", value: `${product.proteinPerServing}g`, isCompact: false },
-        { label: "칼로리", value: product.calories != null ? `${product.calories}kcal` : "-", isCompact: false },
-        { label: "당류", value: product.sugar !== undefined ? `${product.sugar}g` : "-", isCompact: false },
-        { label: "단백질 밀도", value: product.density ?? "-", isCompact: true },
-        { label: "용량", value: product.capacity ?? "-", isCompact: false },
-        { label: "락토프리", value: isLactoseFreeDrink ? "O" : "X", isCompact: false },
-        { label: "BCAA", value: product.bcaa ?? "-", isCompact: false },
-        { label: "단백질원", value: product.proteinSource ?? "-", isCompact: false },
-        { label: "지방", value: product.fat !== undefined ? `${product.fat}g` : "-", isCompact: false },
-        { label: "나트륨", value: product.sodium !== undefined ? `${product.sodium}mg` : "-", isCompact: false },
-        { label: "칼로리 밀도", value: product.calorieDensity ?? "-", isCompact: true },
-        { label: "음료 타입", value: product.drinkType ?? "-", isCompact: false },
-      ];
+    : isYogurt
+      ? [
+          { label: "단백질", value: `${product.proteinPerServing}g`, isCompact: false },
+          { label: "칼로리", value: product.calories != null ? `${product.calories}kcal` : "-", isCompact: false },
+          { label: "당류", value: product.sugar !== undefined ? `${product.sugar}g` : "-", isCompact: false },
+          { label: "단백질 밀도", value: product.density ?? "-", isCompact: true },
+          { label: "중량", value: product.capacity ?? "-", isCompact: false },
+          { label: "요거트 유형", value: product.yogurtType ?? "-", isCompact: false },
+          { label: "보관 방식", value: product.storageType ?? "-", isCompact: false },
+          { label: "락토프리", value: product.lactoseFree ? "O" : "X", isCompact: false },
+          { label: "지방", value: product.fat !== undefined ? `${product.fat}g` : "-", isCompact: false },
+          { label: "나트륨", value: product.sodium !== undefined ? `${product.sodium}mg` : "-", isCompact: false },
+        ]
+      : [
+          { label: "단백질", value: `${product.proteinPerServing}g`, isCompact: false },
+          { label: "칼로리", value: product.calories != null ? `${product.calories}kcal` : "-", isCompact: false },
+          { label: "당류", value: product.sugar !== undefined ? `${product.sugar}g` : "-", isCompact: false },
+          { label: "단백질 밀도", value: product.density ?? "-", isCompact: true },
+          { label: "용량", value: product.capacity ?? "-", isCompact: false },
+          { label: "락토프리", value: isLactoseFreeDrink ? "O" : "X", isCompact: false },
+          { label: "BCAA", value: product.bcaa ?? "-", isCompact: false },
+          { label: "단백질원", value: product.proteinSource ?? "-", isCompact: false },
+          { label: "지방", value: product.fat !== undefined ? `${product.fat}g` : "-", isCompact: false },
+          { label: "나트륨", value: product.sodium !== undefined ? `${product.sodium}mg` : "-", isCompact: false },
+          { label: "칼로리 밀도", value: product.calorieDensity ?? "-", isCompact: true },
+          { label: "음료 유형", value: product.drinkType ?? "-", isCompact: false },
+        ];
 
   return (
     <div className="min-h-screen bg-white">
       <Header />
 
-      <section
-        className="w-full border-b border-t bg-[#EFEDE6]"
-        style={{ borderColor: "var(--hero-border)" }}
-      >
+      <section className="w-full border-b border-t bg-[#EFEDE6]" style={{ borderColor: "var(--hero-border)" }}>
         <div className="mx-auto max-w-[1200px] px-4 py-6 md:px-6">
           <div className="flex items-center justify-between">
             <BackButton />
@@ -152,10 +168,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
                     className="product-card__metric flex min-w-0 flex-col justify-center rounded-lg border border-[#e8e8e8] bg-white px-2.5 py-2 text-left"
                     style={{ borderRadius: "10px" }}
                   >
-                    <span
-                      className="product-card__metric-label"
-                      style={{ fontSize: "11px", color: "#6b6b6b" }}
-                    >
+                    <span className="product-card__metric-label" style={{ fontSize: "11px", color: "#6b6b6b" }}>
                       {label}
                     </span>
                     <span
@@ -220,7 +233,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
             <NutritionDetailSection
               rows={getNutritionDetail(product)}
               capacity={product.capacity}
-              unit={isBar ? "개" : "병"}
+              unit={isBar ? "개" : isYogurt ? "컵" : "병"}
             />
           </div>
 
@@ -244,7 +257,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
           <div className="mt-4 flex flex-wrap gap-3">
             <CompareButton slug={slug} detailHref={`/product/${slug}`} />
             <Link
-              href={isBar ? "/bars" : "/"}
+              href={isBar ? "/bars" : isYogurt ? "/yogurt" : "/"}
               className="rounded-full border border-[var(--border)] bg-white px-5 py-2.5 text-sm font-medium text-[var(--foreground)] transition-colors hover:bg-[var(--accent-light)]"
             >
               제품 목록으로

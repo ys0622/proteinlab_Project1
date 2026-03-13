@@ -3,6 +3,7 @@ import { cookies } from "next/headers";
 import { verifySessionToken } from "@/app/lib/session";
 import drinksData from "@/app/data/drinkProductsData.json";
 import barsData from "@/app/data/barProductsData.json";
+import yogurtsData from "@/app/data/yogurtProductsData.json";
 
 async function verifyAdmin(): Promise<boolean> {
   const cookieStore = await cookies();
@@ -14,19 +15,23 @@ async function verifyAdmin(): Promise<boolean> {
 function findProduct(slug: string) {
   const drinks = drinksData as Record<string, unknown>[];
   const bars = barsData as Record<string, unknown>[];
+  const yogurts = yogurtsData as Record<string, unknown>[];
 
-  const drink = drinks.find((p) => p.slug === slug);
+  const drink = drinks.find((product) => product.slug === slug);
   if (drink) return { product: drink, type: "drink" };
 
-  const bar = bars.find((p) => p.slug === slug);
+  const bar = bars.find((product) => product.slug === slug);
   if (bar) return { product: bar, type: "bar" };
+
+  const yogurt = yogurts.find((product) => product.slug === slug);
+  if (yogurt) return { product: yogurt, type: "yogurt" };
 
   return null;
 }
 
 export async function GET(
   _req: Request,
-  { params }: { params: Promise<{ slug: string }> }
+  { params }: { params: Promise<{ slug: string }> },
 ) {
   if (!(await verifyAdmin())) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
@@ -46,7 +51,7 @@ export async function PUT() {
   }
   return NextResponse.json(
     { error: "파일 쓰기는 Cloudflare Workers에서 지원되지 않습니다. 로컬 서버를 사용하세요." },
-    { status: 501 }
+    { status: 501 },
   );
 }
 
@@ -56,6 +61,6 @@ export async function DELETE() {
   }
   return NextResponse.json(
     { error: "파일 쓰기는 Cloudflare Workers에서 지원되지 않습니다. 로컬 서버를 사용하세요." },
-    { status: 501 }
+    { status: 501 },
   );
 }

@@ -8,11 +8,14 @@ import { applyCurationToCategoryProducts } from "../lib/curationSystem";
 import {
   defaultBarFilters,
   defaultDrinkFilters,
+  defaultYogurtFilters,
   filterBarProducts,
   filterDrinkProducts,
+  filterYogurtProducts,
   getCapacityMl,
   type BarFilters,
   type DrinkFilters,
+  type YogurtFilters,
 } from "../lib/productFilters";
 import { getPopularityScore } from "../lib/productPopularity";
 import FilterSection from "./FilterSection";
@@ -27,7 +30,8 @@ const PAGE_SIZE = 20;
 
 type ProductListWithFiltersProps =
   | { productType: "drink"; products: ProductDetailProps[]; curationSlug?: string }
-  | { productType: "bar"; products: ProductDetailProps[]; curationSlug?: string };
+  | { productType: "bar"; products: ProductDetailProps[]; curationSlug?: string }
+  | { productType: "yogurt"; products: ProductDetailProps[]; curationSlug?: string };
 
 function getDensityValue(product: ProductDetailProps): number {
   const capacity = getCapacityMl(product);
@@ -41,7 +45,7 @@ function getFallbackPopularity(index: number): number {
 
 function getRecommendedScore(
   product: ProductDetailProps,
-  productType: "drink" | "bar",
+  productType: "drink" | "bar" | "yogurt",
   index: number,
 ): number {
   const density = getDensityValue(product);
@@ -56,7 +60,7 @@ function getRecommendedScore(
 function applySort(
   products: ProductDetailProps[],
   sort: SortOptionValue,
-  productType: "drink" | "bar",
+  productType: "drink" | "bar" | "yogurt",
   allProducts: ProductDetailProps[],
 ): ProductDetailProps[] {
   const arr = [...products];
@@ -99,26 +103,41 @@ export default function ProductListWithFilters(props: ProductListWithFiltersProp
   const { productType, products, curationSlug } = props;
   const [drinkFilters, setDrinkFilters] = useState<DrinkFilters>(defaultDrinkFilters);
   const [barFilters, setBarFilters] = useState<BarFilters>(defaultBarFilters);
+  const [yogurtFilters, setYogurtFilters] = useState<YogurtFilters>(defaultYogurtFilters);
   const [sort, setSort] = useState<SortOptionValue>("recommended");
   const [page, setPage] = useState(1);
   const [isDesktop, setIsDesktop] = useState(false);
   const [mobileSearchOpen, setMobileSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
 
-  const filters = productType === "drink" ? drinkFilters : barFilters;
+  const pathname = usePathname();
+  const isBar = pathname === "/bars";
+  const isYogurt = pathname === "/yogurt";
+
+  const filters =
+    productType === "drink"
+      ? drinkFilters
+      : productType === "bar"
+        ? barFilters
+        : yogurtFilters;
 
   const curationFiltered = useMemo(
-    () => applyCurationToCategoryProducts(products, productType, curationSlug),
+    () =>
+      productType === "yogurt"
+        ? products
+        : applyCurationToCategoryProducts(products, productType, curationSlug),
     [curationSlug, productType, products],
   );
 
-  const filtered = useMemo(
-    () =>
-      productType === "drink"
-        ? filterDrinkProducts(curationFiltered, filters as DrinkFilters)
-        : filterBarProducts(curationFiltered, filters as BarFilters),
-    [curationFiltered, filters, productType],
-  );
+  const filtered = useMemo(() => {
+    if (productType === "drink") {
+      return filterDrinkProducts(curationFiltered, filters as DrinkFilters);
+    }
+    if (productType === "bar") {
+      return filterBarProducts(curationFiltered, filters as BarFilters);
+    }
+    return filterYogurtProducts(curationFiltered, filters as YogurtFilters);
+  }, [curationFiltered, filters, productType]);
 
   const searched = useMemo(() => {
     const keyword = searchQuery.trim().toLowerCase();
@@ -131,6 +150,7 @@ export default function ProductListWithFilters(props: ProductListWithFiltersProp
         product.flavor,
         product.slug,
         product.variant,
+        product.yogurtType,
         ...(product.tags ?? []),
       ]
         .filter(Boolean)
@@ -186,6 +206,17 @@ export default function ProductListWithFilters(props: ProductListWithFiltersProp
     });
   };
 
+  const handleYogurtFilterToggle = (key: keyof YogurtFilters, value: string) => {
+    setPage(1);
+    setYogurtFilters((prev) => {
+      const current = prev[key];
+      const next = current.includes(value)
+        ? current.filter((item) => item !== value)
+        : [...current, value];
+      return { ...prev, [key]: next };
+    });
+  };
+
   const handleResetFilters = () => {
     setPage(1);
     setSearchQuery("");
@@ -193,7 +224,11 @@ export default function ProductListWithFilters(props: ProductListWithFiltersProp
       setDrinkFilters(defaultDrinkFilters);
       return;
     }
-    setBarFilters(defaultBarFilters);
+    if (productType === "bar") {
+      setBarFilters(defaultBarFilters);
+      return;
+    }
+    setYogurtFilters(defaultYogurtFilters);
   };
 
   const handleSortChange = (newSort: SortOptionValue) => {
@@ -206,14 +241,39 @@ export default function ProductListWithFilters(props: ProductListWithFiltersProp
     setSearchQuery(value);
   };
 
-  const pathname = usePathname();
-  const isBar = pathname === "/bars";
+  const yogurtBrandOptions = useMemo(
+    () =>
+      [...new Set(products.map((product) => product.brand).filter(Boolean))].sort((a, b) =>
+        a.localeCompare(b, "ko"),
+      ),
+    [products],
+  );
+
+  const mobileSearchButton = (
+    <button
+      type="button"
+      onClick={() => setMobileSearchOpen(true)}
+      className="inline-flex h-9 w-9 items-center justify-center rounded-full text-[#374151] transition-colors hover:bg-white/70 md:hidden"
+      aria-label="검색 열기"
+    >
+      <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={2}
+          d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+        />
+      </svg>
+    </button>
+  );
 
   return (
     <>
-      <div className="mt-3 md:hidden" style={{ marginTop: "12px" }}>
-        <QuickCuration productType={productType} />
-      </div>
+      {productType !== "yogurt" ? (
+        <div className="mt-3 md:hidden" style={{ marginTop: "12px" }}>
+          <QuickCuration productType={productType} />
+        </div>
+      ) : null}
 
       <div
         className="mt-3 rounded-xl border border-[var(--border)] bg-[var(--filter-box-bg)]"
@@ -229,49 +289,26 @@ export default function ProductListWithFilters(props: ProductListWithFiltersProp
               filters={filters as DrinkFilters}
               onFilterToggle={handleDrinkFilterToggle}
               onResetFilters={handleResetFilters}
-              mobileToolbarSlot={
-                <button
-                  type="button"
-                  onClick={() => setMobileSearchOpen(true)}
-                  className="inline-flex h-9 w-9 items-center justify-center rounded-full text-[#374151] transition-colors hover:bg-white/70 md:hidden"
-                  aria-label="검색 열기"
-                >
-                  <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                    />
-                  </svg>
-                </button>
-              }
+              mobileToolbarSlot={mobileSearchButton}
               desktopFooterSlot={<QuickCuration productType={productType} variant="inline" />}
             />
-          ) : (
+          ) : productType === "bar" ? (
             <FilterSection
               productType="bar"
               filters={filters as BarFilters}
               onFilterToggle={handleBarFilterToggle}
               onResetFilters={handleResetFilters}
-              mobileToolbarSlot={
-                <button
-                  type="button"
-                  onClick={() => setMobileSearchOpen(true)}
-                  className="inline-flex h-9 w-9 items-center justify-center rounded-full text-[#374151] transition-colors hover:bg-white/70 md:hidden"
-                  aria-label="검색 열기"
-                >
-                  <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                    />
-                  </svg>
-                </button>
-              }
+              mobileToolbarSlot={mobileSearchButton}
               desktopFooterSlot={<QuickCuration productType={productType} variant="inline" />}
+            />
+          ) : (
+            <FilterSection
+              productType="yogurt"
+              filters={filters as YogurtFilters}
+              onFilterToggle={handleYogurtFilterToggle}
+              onResetFilters={handleResetFilters}
+              mobileToolbarSlot={mobileSearchButton}
+              yogurtBrandOptions={yogurtBrandOptions}
             />
           )}
         </div>
@@ -310,7 +347,7 @@ export default function ProductListWithFilters(props: ProductListWithFiltersProp
               </button>
             </div>
             <p className="mt-2 px-1 text-xs text-[var(--foreground-muted)]">
-              셀렉스, 더단백, 하이뮨처럼 제품명이나 브랜드명으로 검색할 수 있습니다.
+              제품명, 브랜드, 맛, 유형으로 검색할 수 있습니다.
             </p>
           </div>
         </div>
@@ -324,7 +361,7 @@ export default function ProductListWithFilters(props: ProductListWithFiltersProp
           <Link
             href="/"
             className={`rounded-full px-3.5 py-1 text-sm font-medium transition-colors ${
-              !isBar
+              !isBar && !isYogurt
                 ? "bg-[var(--accent)] text-white"
                 : "border border-[var(--border)] bg-white text-[var(--foreground-muted)] hover:text-[var(--foreground)]"
             }`}
@@ -343,6 +380,17 @@ export default function ProductListWithFilters(props: ProductListWithFiltersProp
           >
             단백질 바
           </Link>
+          <Link
+            href="/yogurt"
+            className={`rounded-full px-3.5 py-1 text-sm font-medium transition-colors ${
+              isYogurt
+                ? "bg-[var(--accent)] text-white"
+                : "border border-[var(--border)] bg-white text-[var(--foreground-muted)] hover:text-[var(--foreground)]"
+            }`}
+            style={{ fontWeight: 400, whiteSpace: "nowrap" }}
+          >
+            단백질 요거트
+          </Link>
         </div>
 
         <ProductTopFivePopover productType={productType} products={products} />
@@ -351,7 +399,13 @@ export default function ProductListWithFilters(props: ProductListWithFiltersProp
       <div className="mt-2" style={{ marginTop: "8px" }}>
         <SortBar
           total={searched.length}
-          categoryLabel={productType === "bar" ? "단백질 바" : "단백질 음료"}
+          categoryLabel={
+            productType === "bar"
+              ? "단백질 바"
+              : productType === "yogurt"
+                ? "단백질 요거트"
+                : "단백질 음료"
+          }
           sort={sort}
           onSortChange={handleSortChange}
         />

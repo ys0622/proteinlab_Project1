@@ -40,6 +40,8 @@ export interface ProductCardProps {
   gradeTags?: string[];
   slug?: string;
   priority?: boolean;
+  productType?: "drink" | "bar" | "yogurt";
+  yogurtType?: string;
 }
 
 export default function ProductCard({
@@ -57,6 +59,7 @@ export default function ProductCard({
   gradeTags = [],
   slug,
   priority = false,
+  yogurtType,
 }: ProductCardProps) {
   const router = useRouter();
   const detailHref = slug ? `/product/${slug}` : productUrl;
@@ -205,6 +208,13 @@ export default function ProductCard({
                 className="product-card__badge"
                 tooltip={getMetricBadgeTooltip(variant) ?? undefined}
                 tooltipAriaLabel={getMetricBadgeAriaLabel(variant)}
+              />
+            ) : null}
+            {yogurtType ? (
+              <ProductBadge
+                label={yogurtType}
+                tone="neutral"
+                className="product-card__badge"
               />
             ) : null}
           </MetricBadgeGroup>
