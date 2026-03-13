@@ -69,6 +69,7 @@ export default function ProductCard({
   const naverHref = getNaverSearchUrl(brand, name);
   const officialMallHref = getOfficialMallUrl(brand);
   const productId = slug ?? `${brand}-${name}`;
+  const hasCapacityInName = Boolean(capacity && name.includes(capacity));
   const packageTag = tags.find((tag) => ["팩", "PET", "CAN"].includes(tag));
   const capacitySuffix = packageTag ? `, ${packageTag}` : "";
   const canOpenDetail = Boolean(detailHref && detailHref !== "#");
@@ -184,11 +185,13 @@ export default function ProductCard({
           style={{ fontSize: "16px", fontWeight: 600, color: "#1a1a1a" }}
         >
           <span>{name}</span>
-          <span className="font-normal" style={{ fontSize: "13px", color: "#6b6b6b" }}>
-            {" "}
-            {capacity}
-            {capacitySuffix}
-          </span>
+          {!hasCapacityInName ? (
+            <span className="font-normal" style={{ fontSize: "13px", color: "#6b6b6b" }}>
+              {" "}
+              {capacity}
+              {capacitySuffix}
+            </span>
+          ) : null}
         </h3>
 
         <MetricBadgeGroup className="product-card__badges mt-1.5">

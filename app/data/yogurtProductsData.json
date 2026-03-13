@@ -388,48 +388,6 @@
     }
   },
   {
-    "slug": "greekday-light-100",
-    "brand": "그릭데이",
-    "name": "그릭데이 라이트 그릭요거트",
-    "capacity": "100g",
-    "variant": "플레인",
-    "tags": [
-      "컵"
-    ],
-    "proteinPerServing": 11,
-    "calories": 90,
-    "sugar": 3.5,
-    "density": "11.0g/100g",
-    "productUrl": "https://www.coupang.com/vp/products/9014451181",
-    "productType": "yogurt",
-    "gradeTags": [
-      "단백질 밀도 A",
-      "다이어트 A",
-      "퍼포먼스 B"
-    ],
-    "gradeDescriptions": [
-      "그릭 타입 중에서도 단백질 밀도가 높아 비교 기준으로 보기 좋습니다.",
-      "당류가 낮아 체중 관리용 요거트로도 무난한 선택지입니다.",
-      "총량은 중간 정도라 운동 후 보충식으로는 보조용에 가깝습니다."
-    ],
-    "manufacturer": "그릭데이",
-    "flavor": "플레인",
-    "fat": 3.2,
-    "sodium": 45,
-    "yogurtType": "그릭 요거트",
-    "storageType": "냉장",
-    "lactoseFree": false,
-    "proteinPer100g": 11,
-    "nutritionPerBottle": {
-      "caloriesKcal": 90,
-      "proteinG": 11,
-      "carbsG": 5,
-      "sugarsG": 3.5,
-      "fatG": 3.2,
-      "sodiumMg": 45
-    }
-  },
-  {
     "slug": "maeil-bio-greek-unsweetened-80",
     "brand": "매일 바이오",
     "name": "매일 바이오 그릭요거트 무가당 플레인",
@@ -956,78 +914,6 @@
     }
   },
   {
-    "slug": "greekday-signature-100",
-    "brand": "그릭데이",
-    "name": "그릭데이 시그니처",
-    "capacity": "100g",
-    "variant": "플레인",
-    "tags": [
-      "컵"
-    ],
-    "proteinPerServing": 11.42,
-    "calories": 160,
-    "sugar": 1.86,
-    "density": "11.4g/100g",
-    "productUrl": "https://www.kurly.com/goods/5062447",
-    "productType": "yogurt",
-    "gradeTags": [
-      "단백질 밀도 A",
-      "다이어트 A",
-      "퍼포먼스 B"
-    ],
-    "gradeDescriptions": [
-      "100g 기준 단백질 함량이 높아 진한 그릭 타입 비교군에서 상위권에 가깝습니다.",
-      "당류가 낮아 단맛 부담이 적은 편입니다.",
-      "꾸덕한 제형이라 간식형 고단백 요거트로 보기 좋습니다."
-    ],
-    "manufacturer": "그릭데이",
-    "flavor": "플레인",
-    "fat": 9.19,
-    "yogurtType": "그릭 요거트",
-    "storageType": "냉장",
-    "lactoseFree": false,
-    "proteinPer100g": 11.42,
-    "nutritionPerBottle": {
-      "caloriesKcal": 160,
-      "proteinG": 11.42,
-      "sugarsG": 1.86,
-      "fatG": 9.19
-    }
-  },
-  {
-    "slug": "greekday-signature-yuja-100",
-    "brand": "그릭데이",
-    "name": "그릭데이 시그니처 유자",
-    "capacity": "100g",
-    "variant": "유자",
-    "tags": [
-      "컵"
-    ],
-    "proteinPerServing": 8,
-    "density": "8.0g/100g",
-    "productUrl": "https://m.greekday.co.kr/product/%EA%B7%B8%EB%A6%AD%EB%8D%B0%EC%9D%B4-%EC%8B%9C%EA%B7%B8%EB%8B%88%EC%B2%98-%EC%9C%A0%EC%9E%90-100g/433/",
-    "productType": "yogurt",
-    "gradeTags": [
-      "단백질 밀도 B",
-      "다이어트 B",
-      "퍼포먼스 B"
-    ],
-    "gradeDescriptions": [
-      "맛이 들어간 그릭 요거트치고는 단백질 총량이 준수한 편입니다.",
-      "플레인 시그니처보다는 단백질 효율이 낮지만 맛 선택지로는 등록 가치가 있습니다.",
-      "간식형 단백질 요거트로 접근하기 쉬운 제품입니다."
-    ],
-    "manufacturer": "그릭데이",
-    "flavor": "유자",
-    "yogurtType": "그릭 요거트",
-    "storageType": "냉장",
-    "lactoseFree": false,
-    "proteinPer100g": 8,
-    "nutritionPerBottle": {
-      "proteinG": 8
-    }
-  },
-  {
     "slug": "yozm-plain-greek-450",
     "brand": "YOZM",
     "name": "YOZM 플레인 그릭요거트",
@@ -1090,5 +976,527 @@
     "needsServingCheck": true,
     "servingCheckNote": "공식 판매 페이지 기준 당류 2g만 확인됨. 단백질/열량/지방은 이미지 라벨 재확인 필요.",
     "nutritionBasis": "unknown"
+  },
+  {
+    "slug": "greekday-light-100",
+    "brand": "그릭데이",
+    "name": "그릭데이 그릭요거트 라이트 100g",
+    "capacity": "100g",
+    "variant": "플레인",
+    "tags": [
+      "컵"
+    ],
+    "proteinPerServing": 11,
+    "calories": 90,
+    "sugar": 3.5,
+    "density": "11.0g/100g",
+    "productUrl": "https://m.greekday.co.kr/product/%EA%B7%B8%EB%A6%AD%EB%8D%B0%EC%9D%B4-%EA%B7%B8%EB%A6%AD%EC%9A%94%EA%B1%B0%ED%8A%B8-%EB%9D%BC%EC%9D%B4%ED%8A%B8-100g/420",
+    "productType": "yogurt",
+    "gradeTags": [
+      "단백질 밀도 A",
+      "다이어트 A",
+      "퍼포먼스 B"
+    ],
+    "gradeDescriptions": [
+      "그릭 타입 중에서도 단백질 밀도가 높아 비교 기준으로 보기 좋습니다.",
+      "당류가 낮아 체중 관리용 요거트로도 무난한 선택지입니다.",
+      "총량은 중간 정도라 운동 후 보충식으로는 보조용에 가깝습니다."
+    ],
+    "manufacturer": "그릭데이",
+    "flavor": "플레인",
+    "fat": 3.2,
+    "sodium": 45,
+    "yogurtType": "그릭 요거트",
+    "storageType": "냉장",
+    "lactoseFree": false,
+    "proteinPer100g": 11,
+    "nutritionPerBottle": {
+      "caloriesKcal": 90,
+      "proteinG": 11,
+      "carbsG": 5,
+      "sugarsG": 3.5,
+      "fatG": 3.2,
+      "sodiumMg": 45
+    }
+  },
+  {
+    "slug": "greekday-light-100-3pack",
+    "brand": "그릭데이",
+    "name": "그릭데이 그릭요거트 라이트 100g 3개입",
+    "capacity": "100g x 3개입",
+    "variant": "플레인",
+    "tags": [
+      "컵"
+    ],
+    "proteinPerServing": 11,
+    "calories": 90,
+    "sugar": 3.5,
+    "density": "11.0g/100g",
+    "productUrl": "https://greekday.co.kr/product/%EA%B7%B8%EB%A6%AD%EB%8D%B0%EC%9D%B4-%EA%B7%B8%EB%A6%AD%EC%9A%94%EA%B1%B0%ED%8A%B8-%EB%9D%BC%EC%9D%B4%ED%8A%B8-100g-3%EA%B0%9C%EC%9E%85/217/",
+    "productType": "yogurt",
+    "gradeTags": [
+      "단백질 밀도 A",
+      "다이어트 A",
+      "퍼포먼스 B"
+    ],
+    "gradeDescriptions": [
+      "그릭 타입 중에서도 단백질 밀도가 높아 비교 기준으로 보기 좋습니다.",
+      "당류가 낮아 체중 관리용 요거트로도 무난한 선택지입니다.",
+      "총량은 중간 정도라 운동 후 보충식으로는 보조용에 가깝습니다."
+    ],
+    "manufacturer": "그릭데이",
+    "flavor": "플레인",
+    "fat": 3.2,
+    "sodium": 45,
+    "yogurtType": "그릭 요거트",
+    "storageType": "냉장",
+    "lactoseFree": false,
+    "proteinPer100g": 11,
+    "nutritionPerBottle": {
+      "caloriesKcal": 90,
+      "proteinG": 11,
+      "carbsG": 5,
+      "sugarsG": 3.5,
+      "fatG": 3.2,
+      "sodiumMg": 45
+    },
+    "needsServingCheck": true,
+    "nutritionBasis": "unknown",
+    "servingCheckNote": "묶음 SKU로 보입니다. 현재 비교용 수치는 100g 1개 기준으로 유지했고, 실제 표기 기준은 제품 라벨을 다시 확인해야 합니다."
+  },
+  {
+    "slug": "greekday-light-100-5pack",
+    "brand": "그릭데이",
+    "name": "그릭데이 그릭요거트 라이트 100g 5개입",
+    "capacity": "100g x 5개입",
+    "variant": "플레인",
+    "tags": [
+      "컵"
+    ],
+    "proteinPerServing": 11,
+    "calories": 90,
+    "sugar": 3.5,
+    "density": "11.0g/100g",
+    "productUrl": "https://m.greekday.co.kr/product/%EA%B7%B8%EB%A6%AD%EB%8D%B0%EC%9D%B4-%EA%B7%B8%EB%A6%AD%EC%9A%94%EA%B1%B0%ED%8A%B8-%EB%9D%BC%EC%9D%B4%ED%8A%B8-100g-5%EA%B0%9C%EC%9E%85/216",
+    "productType": "yogurt",
+    "gradeTags": [
+      "단백질 밀도 A",
+      "다이어트 A",
+      "퍼포먼스 B"
+    ],
+    "gradeDescriptions": [
+      "그릭 타입 중에서도 단백질 밀도가 높아 비교 기준으로 보기 좋습니다.",
+      "당류가 낮아 체중 관리용 요거트로도 무난한 선택지입니다.",
+      "총량은 중간 정도라 운동 후 보충식으로는 보조용에 가깝습니다."
+    ],
+    "manufacturer": "그릭데이",
+    "flavor": "플레인",
+    "fat": 3.2,
+    "sodium": 45,
+    "yogurtType": "그릭 요거트",
+    "storageType": "냉장",
+    "lactoseFree": false,
+    "proteinPer100g": 11,
+    "nutritionPerBottle": {
+      "caloriesKcal": 90,
+      "proteinG": 11,
+      "carbsG": 5,
+      "sugarsG": 3.5,
+      "fatG": 3.2,
+      "sodiumMg": 45
+    },
+    "needsServingCheck": true,
+    "nutritionBasis": "unknown",
+    "servingCheckNote": "묶음 SKU로 보입니다. 현재 비교용 수치는 100g 1개 기준으로 유지했고, 실제 표기 기준은 제품 라벨을 다시 확인해야 합니다."
+  },
+  {
+    "slug": "greekday-light-450",
+    "brand": "그릭데이",
+    "name": "그릭데이 그릭요거트 라이트 450g",
+    "capacity": "450g",
+    "variant": "플레인",
+    "tags": [
+      "컵"
+    ],
+    "proteinPerServing": 49.5,
+    "calories": 405,
+    "sugar": 15.75,
+    "density": "11.0g/100g",
+    "productUrl": "https://greekday.co.kr/product/%EA%B7%B8%EB%A6%AD%EB%8D%B0%EC%9D%B4-%EA%B7%B8%EB%A6%AD%EC%9A%94%EA%B1%B0%ED%8A%B8-%EB%9D%BC%EC%9D%B4%ED%8A%B8-450g/13/",
+    "productType": "yogurt",
+    "gradeTags": [
+      "단백질 밀도 A",
+      "다이어트 A",
+      "퍼포먼스 B"
+    ],
+    "gradeDescriptions": [
+      "그릭 타입 중에서도 단백질 밀도가 높아 비교 기준으로 보기 좋습니다.",
+      "당류가 낮아 체중 관리용 요거트로도 무난한 선택지입니다.",
+      "총량은 중간 정도라 운동 후 보충식으로는 보조용에 가깝습니다."
+    ],
+    "manufacturer": "그릭데이",
+    "flavor": "플레인",
+    "fat": 14.4,
+    "sodium": 202.5,
+    "yogurtType": "그릭 요거트",
+    "storageType": "냉장",
+    "lactoseFree": false,
+    "proteinPer100g": 11,
+    "nutritionPerBottle": {
+      "caloriesKcal": 405,
+      "proteinG": 49.5,
+      "carbsG": 22.5,
+      "sugarsG": 15.75,
+      "fatG": 14.4,
+      "sodiumMg": 202.5
+    }
+  },
+  {
+    "slug": "greekday-light-800",
+    "brand": "그릭데이",
+    "name": "그릭데이 그릭요거트 라이트 800g",
+    "capacity": "800g",
+    "variant": "플레인",
+    "tags": [
+      "컵"
+    ],
+    "proteinPerServing": 88,
+    "calories": 720,
+    "sugar": 28,
+    "density": "11.0g/100g",
+    "productUrl": "https://m.greekday.co.kr/product/%EA%B7%B8%EB%A6%AD%EB%8D%B0%EC%9D%B4-%EA%B7%B8%EB%A6%AD%EC%9A%94%EA%B1%B0%ED%8A%B8-%EB%9D%BC%EC%9D%B4%ED%8A%B8-800g/24/",
+    "productType": "yogurt",
+    "gradeTags": [
+      "단백질 밀도 A",
+      "다이어트 A",
+      "퍼포먼스 B"
+    ],
+    "gradeDescriptions": [
+      "그릭 타입 중에서도 단백질 밀도가 높아 비교 기준으로 보기 좋습니다.",
+      "당류가 낮아 체중 관리용 요거트로도 무난한 선택지입니다.",
+      "총량은 중간 정도라 운동 후 보충식으로는 보조용에 가깝습니다."
+    ],
+    "manufacturer": "그릭데이",
+    "flavor": "플레인",
+    "fat": 25.6,
+    "sodium": 360,
+    "yogurtType": "그릭 요거트",
+    "storageType": "냉장",
+    "lactoseFree": false,
+    "proteinPer100g": 11,
+    "nutritionPerBottle": {
+      "caloriesKcal": 720,
+      "proteinG": 88,
+      "carbsG": 40,
+      "sugarsG": 28,
+      "fatG": 25.6,
+      "sodiumMg": 360
+    }
+  },
+  {
+    "slug": "greekday-signature-100",
+    "brand": "그릭데이",
+    "name": "그릭데이 그릭요거트 시그니처 100g",
+    "capacity": "100g",
+    "variant": "플레인",
+    "tags": [
+      "컵"
+    ],
+    "proteinPerServing": 11.42,
+    "calories": 160,
+    "sugar": 1.86,
+    "density": "11.4g/100g",
+    "productUrl": "https://m.greekday.co.kr/product/%EA%B7%B8%EB%A6%AD%EB%8D%B0%EC%9D%B4-%EA%B7%B8%EB%A6%AD%EC%9A%94%EA%B1%B0%ED%8A%B8-%EC%8B%9C%EA%B7%B8%EB%8B%88%EC%B2%98-100g/419",
+    "productType": "yogurt",
+    "gradeTags": [
+      "단백질 밀도 A",
+      "다이어트 A",
+      "퍼포먼스 B"
+    ],
+    "gradeDescriptions": [
+      "100g 기준 단백질 함량이 높아 진한 그릭 타입 비교군에서 상위권에 가깝습니다.",
+      "당류가 낮아 단맛 부담이 적은 편입니다.",
+      "꾸덕한 제형이라 간식형 고단백 요거트로 보기 좋습니다."
+    ],
+    "manufacturer": "그릭데이",
+    "flavor": "플레인",
+    "fat": 9.19,
+    "yogurtType": "그릭 요거트",
+    "storageType": "냉장",
+    "lactoseFree": false,
+    "proteinPer100g": 11.42,
+    "nutritionPerBottle": {
+      "caloriesKcal": 160,
+      "proteinG": 11.42,
+      "sugarsG": 1.86,
+      "fatG": 9.19
+    }
+  },
+  {
+    "slug": "greekday-signature-100-3pack",
+    "brand": "그릭데이",
+    "name": "그릭데이 그릭요거트 시그니처 100g 3개입",
+    "capacity": "100g x 3개입",
+    "variant": "플레인",
+    "tags": [
+      "컵"
+    ],
+    "proteinPerServing": 11.42,
+    "calories": 160,
+    "sugar": 1.86,
+    "density": "11.4g/100g",
+    "productUrl": "https://greekday.co.kr/product/%EA%B7%B8%EB%A6%AD%EB%8D%B0%EC%9D%B4-%EA%B7%B8%EB%A6%AD%EC%9A%94%EA%B1%B0%ED%8A%B8-%EC%8B%9C%EA%B7%B8%EB%8B%88%EC%B2%98-100g-3%EA%B0%9C%EC%9E%85/212/",
+    "productType": "yogurt",
+    "gradeTags": [
+      "단백질 밀도 A",
+      "다이어트 A",
+      "퍼포먼스 B"
+    ],
+    "gradeDescriptions": [
+      "100g 기준 단백질 함량이 높아 진한 그릭 타입 비교군에서 상위권에 가깝습니다.",
+      "당류가 낮아 단맛 부담이 적은 편입니다.",
+      "꾸덕한 제형이라 간식형 고단백 요거트로 보기 좋습니다."
+    ],
+    "manufacturer": "그릭데이",
+    "flavor": "플레인",
+    "fat": 9.19,
+    "yogurtType": "그릭 요거트",
+    "storageType": "냉장",
+    "lactoseFree": false,
+    "proteinPer100g": 11.42,
+    "nutritionPerBottle": {
+      "caloriesKcal": 160,
+      "proteinG": 11.42,
+      "sugarsG": 1.86,
+      "fatG": 9.19
+    },
+    "needsServingCheck": true,
+    "nutritionBasis": "unknown",
+    "servingCheckNote": "묶음 SKU로 보입니다. 현재 비교용 수치는 100g 1개 기준으로 유지했고, 실제 표기 기준은 제품 라벨을 다시 확인해야 합니다."
+  },
+  {
+    "slug": "greekday-signature-100-5pack",
+    "brand": "그릭데이",
+    "name": "그릭데이 그릭요거트 시그니처 100g 5개입",
+    "capacity": "100g x 5개입",
+    "variant": "플레인",
+    "tags": [
+      "컵"
+    ],
+    "proteinPerServing": 11.42,
+    "calories": 160,
+    "sugar": 1.86,
+    "density": "11.4g/100g",
+    "productUrl": "https://m.greekday.co.kr/product/%EA%B7%B8%EB%A6%AD%EB%8D%B0%EC%9D%B4-%EA%B7%B8%EB%A6%AD%EC%9A%94%EA%B1%B0%ED%8A%B8-%EC%8B%9C%EA%B7%B8%EB%8B%88%EC%B2%98-100g-5%EA%B0%9C%EC%9E%85/211",
+    "productType": "yogurt",
+    "gradeTags": [
+      "단백질 밀도 A",
+      "다이어트 A",
+      "퍼포먼스 B"
+    ],
+    "gradeDescriptions": [
+      "100g 기준 단백질 함량이 높아 진한 그릭 타입 비교군에서 상위권에 가깝습니다.",
+      "당류가 낮아 단맛 부담이 적은 편입니다.",
+      "꾸덕한 제형이라 간식형 고단백 요거트로 보기 좋습니다."
+    ],
+    "manufacturer": "그릭데이",
+    "flavor": "플레인",
+    "fat": 9.19,
+    "yogurtType": "그릭 요거트",
+    "storageType": "냉장",
+    "lactoseFree": false,
+    "proteinPer100g": 11.42,
+    "nutritionPerBottle": {
+      "caloriesKcal": 160,
+      "proteinG": 11.42,
+      "sugarsG": 1.86,
+      "fatG": 9.19
+    },
+    "needsServingCheck": true,
+    "nutritionBasis": "unknown",
+    "servingCheckNote": "묶음 SKU로 보입니다. 현재 비교용 수치는 100g 1개 기준으로 유지했고, 실제 표기 기준은 제품 라벨을 다시 확인해야 합니다."
+  },
+  {
+    "slug": "greekday-signature-450",
+    "brand": "그릭데이",
+    "name": "그릭데이 그릭요거트 시그니처 450g",
+    "capacity": "450g",
+    "variant": "플레인",
+    "tags": [
+      "컵"
+    ],
+    "proteinPerServing": 51.39,
+    "calories": 720,
+    "sugar": 8.37,
+    "density": "11.4g/100g",
+    "productUrl": "https://m.greekday.co.kr/product/%EA%B7%B8%EB%A6%AD%EB%8D%B0%EC%9D%B4-%EA%B7%B8%EB%A6%AD%EC%9A%94%EA%B1%B0%ED%8A%B8-%EC%8B%9C%EA%B7%B8%EB%8B%88%EC%B2%98-450g/12",
+    "productType": "yogurt",
+    "gradeTags": [
+      "단백질 밀도 A",
+      "다이어트 A",
+      "퍼포먼스 B"
+    ],
+    "gradeDescriptions": [
+      "100g 기준 단백질 함량이 높아 진한 그릭 타입 비교군에서 상위권에 가깝습니다.",
+      "당류가 낮아 단맛 부담이 적은 편입니다.",
+      "꾸덕한 제형이라 간식형 고단백 요거트로 보기 좋습니다."
+    ],
+    "manufacturer": "그릭데이",
+    "flavor": "플레인",
+    "fat": 41.35,
+    "yogurtType": "그릭 요거트",
+    "storageType": "냉장",
+    "lactoseFree": false,
+    "proteinPer100g": 11.42,
+    "nutritionPerBottle": {
+      "caloriesKcal": 720,
+      "proteinG": 51.39,
+      "sugarsG": 8.37,
+      "fatG": 41.35
+    }
+  },
+  {
+    "slug": "greekday-signature-800",
+    "brand": "그릭데이",
+    "name": "그릭데이 그릭요거트 시그니처 800g",
+    "capacity": "800g",
+    "variant": "플레인",
+    "tags": [
+      "컵"
+    ],
+    "proteinPerServing": 91.36,
+    "calories": 1280,
+    "sugar": 14.88,
+    "density": "11.4g/100g",
+    "productUrl": "https://m.greekday.co.kr/product/%EA%B7%B8%EB%A6%AD%EB%8D%B0%EC%9D%B4-%EA%B7%B8%EB%A6%AD%EC%9A%94%EA%B1%B0%ED%8A%B8-%EC%8B%9C%EA%B7%B8%EB%8B%88%EC%B2%98-800g/11/",
+    "productType": "yogurt",
+    "gradeTags": [
+      "단백질 밀도 A",
+      "다이어트 A",
+      "퍼포먼스 B"
+    ],
+    "gradeDescriptions": [
+      "100g 기준 단백질 함량이 높아 진한 그릭 타입 비교군에서 상위권에 가깝습니다.",
+      "당류가 낮아 단맛 부담이 적은 편입니다.",
+      "꾸덕한 제형이라 간식형 고단백 요거트로 보기 좋습니다."
+    ],
+    "manufacturer": "그릭데이",
+    "flavor": "플레인",
+    "fat": 73.52,
+    "yogurtType": "그릭 요거트",
+    "storageType": "냉장",
+    "lactoseFree": false,
+    "proteinPer100g": 11.42,
+    "nutritionPerBottle": {
+      "caloriesKcal": 1280,
+      "proteinG": 91.36,
+      "sugarsG": 14.88,
+      "fatG": 73.52
+    }
+  },
+  {
+    "slug": "greekday-signature-yuja-100",
+    "brand": "그릭데이",
+    "name": "그릭데이 시그니처 유자 100g",
+    "capacity": "100g",
+    "variant": "유자",
+    "tags": [
+      "컵"
+    ],
+    "proteinPerServing": 8,
+    "density": "8.0g/100g",
+    "productUrl": "https://greekday.co.kr/product/%EA%B7%B8%EB%A6%AD%EB%8D%B0%EC%9D%B4-%EC%8B%9C%EA%B7%B8%EB%8B%88%EC%B2%98-%EC%9C%A0%EC%9E%90-100g/433/",
+    "productType": "yogurt",
+    "gradeTags": [
+      "단백질 밀도 B",
+      "다이어트 B",
+      "퍼포먼스 B"
+    ],
+    "gradeDescriptions": [
+      "맛이 들어간 그릭 요거트치고는 단백질 총량이 준수한 편입니다.",
+      "플레인 시그니처보다는 단백질 효율이 낮지만 맛 선택지로는 등록 가치가 있습니다.",
+      "간식형 단백질 요거트로 접근하기 쉬운 제품입니다."
+    ],
+    "manufacturer": "그릭데이",
+    "flavor": "유자",
+    "yogurtType": "그릭 요거트",
+    "storageType": "냉장",
+    "lactoseFree": false,
+    "proteinPer100g": 8,
+    "nutritionPerBottle": {
+      "proteinG": 8
+    }
+  },
+  {
+    "slug": "greekday-signature-yuja-100-3pack",
+    "brand": "그릭데이",
+    "name": "그릭데이 시그니처 유자 100g 3개입",
+    "capacity": "100g x 3개입",
+    "variant": "유자",
+    "tags": [
+      "컵"
+    ],
+    "proteinPerServing": 8,
+    "density": "8.0g/100g",
+    "productUrl": "https://m.greekday.co.kr/product/%EA%B7%B8%EB%A6%AD%EB%8D%B0%EC%9D%B4-%EC%8B%9C%EA%B7%B8%EB%8B%88%EC%B2%98-%EC%9C%A0%EC%9E%90-100g-3%EA%B0%9C%EC%9E%85/407",
+    "productType": "yogurt",
+    "gradeTags": [
+      "단백질 밀도 B",
+      "다이어트 B",
+      "퍼포먼스 B"
+    ],
+    "gradeDescriptions": [
+      "맛이 들어간 그릭 요거트치고는 단백질 총량이 준수한 편입니다.",
+      "플레인 시그니처보다는 단백질 효율이 낮지만 맛 선택지로는 등록 가치가 있습니다.",
+      "간식형 단백질 요거트로 접근하기 쉬운 제품입니다."
+    ],
+    "manufacturer": "그릭데이",
+    "flavor": "유자",
+    "yogurtType": "그릭 요거트",
+    "storageType": "냉장",
+    "lactoseFree": false,
+    "proteinPer100g": 8,
+    "nutritionPerBottle": {
+      "proteinG": 8
+    },
+    "needsServingCheck": true,
+    "nutritionBasis": "unknown",
+    "servingCheckNote": "묶음 SKU로 보입니다. 현재 비교용 수치는 100g 1개 기준으로 유지했고, 실제 표기 기준은 제품 라벨을 다시 확인해야 합니다."
+  },
+  {
+    "slug": "greekday-signature-yuja-100-5pack",
+    "brand": "그릭데이",
+    "name": "그릭데이 시그니처 유자 100g 5개입",
+    "capacity": "100g x 5개입",
+    "variant": "유자",
+    "tags": [
+      "컵"
+    ],
+    "proteinPerServing": 8,
+    "density": "8.0g/100g",
+    "productUrl": "https://m.greekday.co.kr/product/%EA%B7%B8%EB%A6%AD%EB%8D%B0%EC%9D%B4-%EC%8B%9C%EA%B7%B8%EB%8B%88%EC%B2%98-%EC%9C%A0%EC%9E%90-100g-5%EA%B0%9C%EC%9E%85/408/",
+    "productType": "yogurt",
+    "gradeTags": [
+      "단백질 밀도 B",
+      "다이어트 B",
+      "퍼포먼스 B"
+    ],
+    "gradeDescriptions": [
+      "맛이 들어간 그릭 요거트치고는 단백질 총량이 준수한 편입니다.",
+      "플레인 시그니처보다는 단백질 효율이 낮지만 맛 선택지로는 등록 가치가 있습니다.",
+      "간식형 단백질 요거트로 접근하기 쉬운 제품입니다."
+    ],
+    "manufacturer": "그릭데이",
+    "flavor": "유자",
+    "yogurtType": "그릭 요거트",
+    "storageType": "냉장",
+    "lactoseFree": false,
+    "proteinPer100g": 8,
+    "nutritionPerBottle": {
+      "proteinG": 8
+    },
+    "needsServingCheck": true,
+    "nutritionBasis": "unknown",
+    "servingCheckNote": "묶음 SKU로 보입니다. 현재 비교용 수치는 100g 1개 기준으로 유지했고, 실제 표기 기준은 제품 라벨을 다시 확인해야 합니다."
   }
 ]

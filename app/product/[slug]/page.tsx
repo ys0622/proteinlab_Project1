@@ -61,9 +61,10 @@ export default async function ProductDetailPage({ params }: PageProps) {
   const isBar = product.productType === "bar";
   const isYogurt = product.productType === "yogurt";
   const productImageUrl = getProductImageUrl(product.slug);
+  const hasCapacityInName = Boolean(product.capacity && product.name.includes(product.capacity));
   const metaParts = [
     product.manufacturer,
-    product.capacity,
+    hasCapacityInName ? null : product.capacity,
     product.variant && product.variant !== "일반" ? product.variant : null,
   ].filter(Boolean);
   const metaLine = metaParts.join(" ");
@@ -243,7 +244,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
           ) : null}
 
           <div className="mt-8">
-            {isBar ? (
+            {isBar || product.needsServingCheck ? (
               <ServingBasisNotice
                 className="mb-3"
                 detail
