@@ -5,6 +5,8 @@ import GuideVisual from "@/app/components/GuideVisual";
 import Header from "@/app/components/Header";
 import { getGuideSlot, getGuideTrack, getGuideTracks } from "@/app/data/guidesTracks";
 
+export const dynamic = "force-dynamic";
+
 export async function generateStaticParams() {
   return getGuideTracks().flatMap((track) =>
     track.slots.map((slot) => ({
