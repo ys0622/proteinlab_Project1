@@ -24,7 +24,7 @@ export default function NutritionDetailSection({
         </h2>
         {capacity ? (
           <span className="text-xs" style={{ color: "#999" }}>
-            제공량 {unitLabel} ({capacity})
+            총 용량 {capacity}
           </span>
         ) : null}
       </div>

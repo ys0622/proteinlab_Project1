@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import Image from "next/image";
 import Link from "next/link";
@@ -48,7 +48,7 @@ export default function ProductCard({
   brand,
   name,
   capacity,
-  variant = "?쇰컲",
+  variant = "일반",
   tags,
   proteinPerServing,
   calories,
@@ -149,166 +149,156 @@ export default function ProductCard({
   );
 
   return (
-    <>
-      <article
-        className={`product-card group flex h-full flex-col overflow-hidden rounded-2xl border bg-[#FFFDF8] transition-all duration-200 ease-out hover:border-[#ddd] focus:outline-none focus:ring-2 focus:ring-[var(--accent)] focus:ring-offset-2 active:shadow-sm ${canOpenDetail ? "cursor-pointer" : ""}`}
-        onClick={handleCardClick}
-        onKeyDown={handleCardKeyDown}
-        role={canOpenDetail ? "link" : undefined}
-        tabIndex={canOpenDetail ? 0 : undefined}
-        aria-label={canOpenDetail ? `${brand} ${name} ?곸꽭 蹂닿린` : undefined}
-        style={{
-          borderRadius: "16px",
-          padding: "14px",
-          borderColor: "#e8e6e3",
-        }}
-      >
-        {slug && detailHref.startsWith("/product/") ? (
+    <article
+      className={`product-card group flex h-full flex-col overflow-hidden rounded-2xl border bg-[#FFFDF8] transition-all duration-200 ease-out hover:border-[#ddd] focus:outline-none focus:ring-2 focus:ring-[var(--accent)] focus:ring-offset-2 active:shadow-sm ${canOpenDetail ? "cursor-pointer" : ""}`}
+      onClick={handleCardClick}
+      onKeyDown={handleCardKeyDown}
+      role={canOpenDetail ? "link" : undefined}
+      tabIndex={canOpenDetail ? 0 : undefined}
+      aria-label={canOpenDetail ? `${brand} ${name} 상세 보기` : undefined}
+      style={{
+        borderRadius: "16px",
+        padding: "14px",
+        borderColor: "#e8e6e3",
+      }}
+    >
+      {slug && detailHref.startsWith("/product/") ? (
+        <Link
+          href={detailHref}
+          className="block rounded-xl focus:outline-none focus:ring-2 focus:ring-[var(--accent)] focus:ring-offset-2"
+          aria-label={`${brand} ${name} 상세 보기`}
+        >
+          {imageArea}
+        </Link>
+      ) : (
+        imageArea
+      )}
+
+      <div className="product-card__content flex min-h-0 flex-1 flex-col">
+        <p className="product-card__brand mt-4 text-xs tracking-wide" style={{ color: "#7a7a7a" }}>
+          {brand}
+        </p>
+
+        <h3
+          className="product-card__title mt-1 font-semibold leading-snug"
+          style={{ fontSize: "16px", fontWeight: 600, color: "#1a1a1a" }}
+        >
+          <span>{name}</span>
+          <span className="font-normal" style={{ fontSize: "13px", color: "#6b6b6b" }}>
+            {" "}
+            {capacity}
+            {capacitySuffix}
+          </span>
+        </h3>
+
+        <MetricBadgeGroup className="product-card__badges mt-1.5">
+          {visibleGradeTags.map((tag) => {
+            const displayTag = formatProductBadgeLabel(tag);
+            const tone = getProductBadgeTone(displayTag);
+            const tooltip = getMetricBadgeTooltip(tag);
+
+            return (
+              <ProductBadge
+                key={tag}
+                label={displayTag}
+                tone={tone}
+                className="product-card__badge focus:outline-none focus:ring-2 focus:ring-[var(--accent)] focus:ring-offset-1"
+                tooltip={tooltip ?? undefined}
+                tooltipAriaLabel={getMetricBadgeAriaLabel(tag)}
+              />
+            );
+          })}
+          {variant && variant !== "일반" && productType !== "yogurt" ? (
+            <ProductBadge
+              label={variant}
+              tone="neutral"
+              className="product-card__badge"
+              tooltip={getMetricBadgeTooltip(variant) ?? undefined}
+              tooltipAriaLabel={getMetricBadgeAriaLabel(variant)}
+            />
+          ) : null}
+          {yogurtType && productType !== "yogurt" ? (
+            <ProductBadge label={yogurtType} tone="neutral" className="product-card__badge" />
+          ) : null}
+        </MetricBadgeGroup>
+
+        <div className="mx-1 mt-3 border-t border-[#e8e6e3]" />
+
+        <div className="product-card__metrics mt-3 grid grid-cols-2 gap-2">
+          {[
+            { label: "단백질", value: `${proteinPerServing}g`, isDensity: false },
+            { label: "칼로리", value: calories != null ? `${calories}` : "-", isDensity: false },
+            { label: "당류", value: sugar !== undefined ? `${sugar}g` : "-", isDensity: false },
+            { label: "단백질 밀도", value: density, isDensity: true },
+          ].map(({ label, value, isDensity }) => (
+            <div
+              key={label}
+              className="product-card__metric flex min-w-0 flex-col justify-center rounded-lg border border-[#e8e8e8] bg-white px-2.5 py-2 text-left"
+              style={{ borderRadius: "10px" }}
+            >
+              <span
+                className="product-card__metric-label"
+                style={{ fontSize: "11px", color: "#6b6b6b" }}
+              >
+                {label}
+              </span>
+              <span
+                className={`product-card__metric-value ${isDensity ? "product-card__metric-value--compact" : ""}`}
+                style={{
+                  fontSize: isDensity ? "15px" : "16px",
+                  fontWeight: 700,
+                  color: "#3d3d3d",
+                  lineHeight: 1.2,
+                }}
+              >
+                {value}
+              </span>
+            </div>
+          ))}
+        </div>
+
+        <div className="cta-group mt-4">
+          <PurchaseLinkRow
+            coupangHref={coupangHref}
+            naverHref={naverHref}
+            officialMallHref={officialMallHref}
+            size="sm"
+            onCoupangClick={() =>
+              trackPurchaseClick({ productName: name, brand, store: "coupang", productId })
+            }
+            onNaverClick={() =>
+              trackPurchaseClick({ productName: name, brand, store: "naver", productId })
+            }
+            onOfficialClick={() =>
+              trackPurchaseClick({ productName: name, brand, store: "official", productId })
+            }
+          />
+        </div>
+
+        <div className="mx-1 mt-3 border-t border-[#e8e6e3]" />
+
+        <div className="product-card__footer-actions mt-3 flex gap-3" style={{ gap: "12px" }}>
           <Link
             href={detailHref}
-            className="block rounded-xl focus:outline-none focus:ring-2 focus:ring-[var(--accent)] focus:ring-offset-2"
-            aria-label={`${brand} ${name} ?곸꽭 蹂닿린`}
+            className="flex flex-1 items-center justify-center rounded-[10px] border border-[#e2e2e2] bg-white font-medium text-[var(--foreground)] transition-colors hover:border-[var(--accent)] hover:bg-[var(--accent-light)] hover:text-[var(--accent)] active:scale-[0.98]"
+            style={{ height: "40px", fontSize: "12px", borderRadius: "10px" }}
           >
-            {imageArea}
+            상세보기
           </Link>
-        ) : (
-          imageArea
-        )}
-
-        <div className="product-card__content flex min-h-0 flex-1 flex-col">
-          <p className="product-card__brand mt-4 text-xs tracking-wide" style={{ color: "#7a7a7a" }}>
-            {brand}
-          </p>
-
-          <h3
-            className="product-card__title mt-1 font-semibold leading-snug"
-            style={{ fontSize: "16px", fontWeight: 600, color: "#1a1a1a" }}
-          >
-            <span>{name}</span>
-            <span className="font-normal" style={{ fontSize: "13px", color: "#6b6b6b" }}>
-              {" "}
-              {capacity}
-              {capacitySuffix}
-            </span>
-          </h3>
-
-          <MetricBadgeGroup className="product-card__badges mt-1.5">
-            {visibleGradeTags.map((tag) => {
-              const displayTag = formatProductBadgeLabel(tag);
-              const tone = getProductBadgeTone(displayTag);
-              const tooltip = getMetricBadgeTooltip(tag);
-
-              return (
-                <ProductBadge
-                  key={tag}
-                  label={displayTag}
-                  tone={tone}
-                  className="product-card__badge focus:outline-none focus:ring-2 focus:ring-[var(--accent)] focus:ring-offset-1"
-                  tooltip={tooltip ?? undefined}
-                  tooltipAriaLabel={getMetricBadgeAriaLabel(tag)}
-                />
-              );
-            })}
-            {variant && variant !== "?쇰컲" && productType !== "yogurt" ? (
-              <ProductBadge
-                label={variant}
-                tone="neutral"
-                className="product-card__badge"
-                tooltip={getMetricBadgeTooltip(variant) ?? undefined}
-                tooltipAriaLabel={getMetricBadgeAriaLabel(variant)}
-              />
-            ) : null}
-            {yogurtType && productType !== "yogurt" ? (
-              <ProductBadge
-                label={yogurtType}
-                tone="neutral"
-                className="product-card__badge"
-              />
-            ) : null}
-          </MetricBadgeGroup>
-
-          <div className="mx-1 mt-3 border-t border-[#e8e6e3]" />
-
-          <div className="product-card__metrics mt-3 grid grid-cols-2 gap-2">
-            {[
-              { label: "단백질", value: `${proteinPerServing}g`, isDensity: false },
-              { label: "칼로리", value: calories != null ? `${calories}` : "-", isDensity: false },
-              { label: "당류", value: sugar !== undefined ? `${sugar}g` : "-", isDensity: false },
-              { label: "단백질 밀도", value: density, isDensity: true },
-            ].map(({ label, value, isDensity }) => (
-              <div
-                key={label}
-                className="product-card__metric flex min-w-0 flex-col justify-center rounded-lg border border-[#e8e8e8] bg-white px-2.5 py-2 text-left"
-                style={{ borderRadius: "10px" }}
-              >
-                <span
-                  className="product-card__metric-label"
-                  style={{ fontSize: "11px", color: "#6b6b6b" }}
-                >
-                  {label}
-                </span>
-                <span
-                  className={`product-card__metric-value ${isDensity ? "product-card__metric-value--compact" : ""}`}
-                  style={{
-                    fontSize: isDensity ? "15px" : "16px",
-                    fontWeight: 700,
-                    color: "#3d3d3d",
-                    lineHeight: 1.2,
-                  }}
-                >
-                  {value}
-                </span>
-              </div>
-            ))}
-          </div>
-
-          <div className="cta-group mt-4">
-            <PurchaseLinkRow
-              coupangHref={coupangHref}
-              naverHref={naverHref}
-              officialMallHref={officialMallHref}
-              size="sm"
-              onCoupangClick={() =>
-                trackPurchaseClick({ productName: name, brand, store: "coupang", productId })
-              }
-              onNaverClick={() =>
-                trackPurchaseClick({ productName: name, brand, store: "naver", productId })
-              }
-              onOfficialClick={() =>
-                trackPurchaseClick({ productName: name, brand, store: "official", productId })
-              }
-            />
-          </div>
-
-          <div className="mx-1 mt-3 border-t border-[#e8e6e3]" />
-
-          <div className="product-card__footer-actions mt-3 flex gap-3" style={{ gap: "12px" }}>
-            <Link
-              href={detailHref}
-              className="flex flex-1 items-center justify-center rounded-[10px] border border-[#e2e2e2] bg-white font-medium text-[var(--foreground)] transition-colors hover:border-[var(--accent)] hover:bg-[var(--accent-light)] hover:text-[var(--accent)] active:scale-[0.98]"
+          {slug ? (
+            <CompareButton slug={slug} detailHref={detailHref} />
+          ) : (
+            <button
+              type="button"
+              disabled
+              className="flex flex-1 items-center justify-center rounded-[10px] border border-[#e2e2e2] bg-white font-medium text-[var(--foreground)] opacity-60"
               style={{ height: "40px", fontSize: "12px", borderRadius: "10px" }}
             >
-              ?곸꽭蹂닿린
-            </Link>
-            {slug ? (
-              <CompareButton slug={slug} detailHref={detailHref} />
-            ) : (
-              <button
-                type="button"
-                disabled
-                className="flex flex-1 items-center justify-center rounded-[10px] border border-[#e2e2e2] bg-white font-medium text-[var(--foreground)] opacity-60"
-                style={{ height: "40px", fontSize: "12px", borderRadius: "10px" }}
-              >
-                鍮꾧탳
-              </button>
-            )}
-          </div>
+              비교
+            </button>
+          )}
         </div>
-      </article>
-    </>
+      </div>
+    </article>
   );
 }
-
-
-
-

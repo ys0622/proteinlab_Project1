@@ -1,4 +1,8 @@
 import type { ProductCardProps } from "../components/ProductCard";
+import { applyBarGrades, applyDrinkGrades } from "../lib/gradeCalculation";
+import { getBarProducts } from "./barProductsData";
+import { getDrinkProducts } from "./drinkProductsData";
+import { getYogurtProducts } from "./yogurtProductsData";
 
 export interface NutritionDetailRow {
   label: string;
@@ -44,11 +48,6 @@ export interface ProductDetailFields {
 
 export type ProductDetailProps = ProductCardProps & ProductDetailFields;
 
-import { getDrinkProducts } from "./drinkProductsData";
-import { getBarProducts } from "./barProductsData";
-import { getYogurtProducts } from "./yogurtProductsData";
-import { applyDrinkGrades, applyBarGrades } from "../lib/gradeCalculation";
-
 export const mockProducts: ProductDetailProps[] = applyDrinkGrades(getDrinkProducts());
 export const mockBarProducts: ProductDetailProps[] = getBarProducts();
 export const barProductsWithGrades: ProductDetailProps[] = applyBarGrades(mockBarProducts);
@@ -60,16 +59,16 @@ export function getNutritionDetail(p: ProductDetailProps): NutritionDetailRow[] 
   const n = p.nutritionPerBottle;
   if (n) {
     const rows: NutritionDetailRow[] = [
-      { label: "열량", value: n.caloriesKcal != null ? `${n.caloriesKcal}kcal` : "—" },
-      { label: "탄수화물", value: n.carbsG != null ? `${n.carbsG}g` : "—" },
-      { label: "당류", value: n.sugarsG != null ? `${n.sugarsG}g` : "—" },
-      { label: "단백질", value: n.proteinG != null ? `${n.proteinG}g` : "—" },
-      { label: "지방", value: n.fatG != null ? `${n.fatG}g` : "—" },
-      { label: "포화지방", value: n.satFatG != null ? `${n.satFatG}g` : "—" },
+      { label: "칼로리", value: n.caloriesKcal != null ? `${n.caloriesKcal}kcal` : "-" },
+      { label: "탄수화물", value: n.carbsG != null ? `${n.carbsG}g` : "-" },
+      { label: "당류", value: n.sugarsG != null ? `${n.sugarsG}g` : "-" },
+      { label: "단백질", value: n.proteinG != null ? `${n.proteinG}g` : "-" },
+      { label: "지방", value: n.fatG != null ? `${n.fatG}g` : "-" },
+      { label: "포화지방", value: n.satFatG != null ? `${n.satFatG}g` : "-" },
     ];
     if (n.transFatG != null) rows.push({ label: "트랜스지방", value: `${n.transFatG}g` });
     if (n.cholesterolMg != null) rows.push({ label: "콜레스테롤", value: `${n.cholesterolMg}mg` });
-    rows.push({ label: "나트륨", value: n.sodiumMg != null ? `${n.sodiumMg}mg` : "—" });
+    rows.push({ label: "나트륨", value: n.sodiumMg != null ? `${n.sodiumMg}mg` : "-" });
     if (n.fiberG != null) rows.push({ label: "식이섬유", value: `${n.fiberG}g` });
     if (n.bcaaMg != null) rows.push({ label: "BCAA", value: `${n.bcaaMg}mg` });
     return rows;
@@ -77,32 +76,32 @@ export function getNutritionDetail(p: ProductDetailProps): NutritionDetailRow[] 
 
   if (p.productType === "bar") {
     return [
-      { label: "열량", value: p.calories != null ? `${p.calories}kcal` : "—" },
-      { label: "탄수화물", value: "—" },
-      { label: "당류", value: p.sugar !== undefined ? `${p.sugar}g` : "—" },
+      { label: "칼로리", value: p.calories != null ? `${p.calories}kcal` : "-" },
+      { label: "탄수화물", value: "-" },
+      { label: "당류", value: p.sugar !== undefined ? `${p.sugar}g` : "-" },
       { label: "단백질", value: `${p.proteinPerServing}g` },
-      { label: "지방", value: p.fat !== undefined ? `${p.fat}g` : "—" },
-      { label: "포화지방", value: "—" },
-      { label: "나트륨", value: p.sodium !== undefined ? `${p.sodium}mg` : "—" },
+      { label: "지방", value: p.fat !== undefined ? `${p.fat}g` : "-" },
+      { label: "포화지방", value: "-" },
+      { label: "나트륨", value: p.sodium !== undefined ? `${p.sodium}mg` : "-" },
     ];
   }
 
   if (p.productType === "yogurt") {
     return [
       { label: "칼로리", value: p.calories != null ? `${p.calories}kcal` : "-" },
-      { label: "탄수화물", value: "—" },
+      { label: "탄수화물", value: "-" },
       { label: "당류", value: p.sugar !== undefined ? `${p.sugar}g` : "-" },
       { label: "단백질", value: `${p.proteinPerServing}g` },
       { label: "지방", value: p.fat !== undefined ? `${p.fat}g` : "-" },
-      { label: "포화지방", value: "—" },
+      { label: "포화지방", value: "-" },
       { label: "나트륨", value: p.sodium !== undefined ? `${p.sodium}mg` : "-" },
     ];
   }
 
   return [
-    { label: "열량", value: p.calories != null ? `${p.calories}kcal` : "—" },
+    { label: "칼로리", value: p.calories != null ? `${p.calories}kcal` : "-" },
     { label: "단백질", value: `${p.proteinPerServing}g` },
-    { label: "당류", value: p.sugar !== undefined ? `${p.sugar}g` : "—" },
+    { label: "당류", value: p.sugar !== undefined ? `${p.sugar}g` : "-" },
   ];
 }
 

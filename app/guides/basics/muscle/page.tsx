@@ -81,27 +81,15 @@ export default function MuscleGuidePage() {
             </span>
           </div>
 
-          <div className="mt-4 grid gap-4 lg:grid-cols-[1.15fr_0.85fr] lg:items-center">
-            <div>
-              <h1 className="text-2xl font-bold leading-tight text-[var(--foreground)] md:text-3xl">
-                근육 성장에 단백질이 필요한 진짜 이유
-              </h1>
-              <p className="mt-3 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
-                운동만으로는 근육이 자라지 않습니다.
-                <br />
-                단백질이 있어야 손상된 근섬유가 회복되고, 다음 훈련을 버틸 수 있는 몸이 만들어집니다.
-              </p>
-            </div>
-
-            <div className="rounded-[28px] border border-[#dce8df] bg-[linear-gradient(135deg,#f7fbf8_0%,#eef6f1_100%)] p-4 shadow-[0_18px_40px_rgba(45,106,79,0.08)]">
-              <GuideVisual
-                track="protein-basics"
-                title="근육과 단백질"
-                accentColor="#2d6a4f"
-                accentBg="#eaf4ee"
-                variant="topic"
-              />
-            </div>
+          <div className="mt-4">
+            <h1 className="text-2xl font-bold leading-tight text-[var(--foreground)] md:text-3xl">
+              근육 성장에 단백질이 필요한 진짜 이유
+            </h1>
+            <p className="mt-3 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
+              운동만으로는 근육이 자라지 않습니다.
+              <br />
+              단백질이 있어야 손상된 근섬유가 회복되고, 다음 훈련을 버틸 수 있는 몸이 만들어집니다.
+            </p>
           </div>
         </div>
       </section>
@@ -133,7 +121,8 @@ export default function MuscleGuidePage() {
               이 과정이 근섬유 단백질 합성을 촉진해 회복과 성장을 돕습니다.
             </p>
 
-            <div className="mt-5 rounded-[28px] border border-[#dce8df] bg-[linear-gradient(135deg,#f7fbf8_0%,#eef6f1_100%)] p-4 shadow-[0_16px_36px_rgba(45,106,79,0.08)]">
+            <div className="mt-5 rounded-[28px] border border-[#dce8df] bg-[linear-gradient(135deg,#f7fbf8_0%,#eef6f1_100%)] p-6 shadow-[0_16px_36px_rgba(45,106,79,0.08)]">
+              <div className="mx-auto max-w-2xl">
               <GuideVisual
                 track="protein-basics"
                 title="MPS"
@@ -141,6 +130,7 @@ export default function MuscleGuidePage() {
                 accentBg="#eaf4ee"
                 variant="topic"
               />
+              </div>
               <div className="mt-4 grid gap-3 md:grid-cols-2">
                 <InsightChip title="류신과 필수아미노산" body="류신은 근육 합성 스위치를 켜는 대표 아미노산입니다." />
                 <InsightChip title="자극 후 바로 회복" body="운동 후 단백질 공급이 늦어질수록 회복 체감이 떨어질 수 있습니다." />

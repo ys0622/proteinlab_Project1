@@ -18,7 +18,7 @@ export default function CompareButton({ slug, detailHref }: CompareButtonProps) 
       onClick={() => toggle(slug)}
       disabled={disabled}
       data-detail-href={detailHref}
-      className="flex flex-1 items-center justify-center rounded-[10px] border font-medium whitespace-nowrap transition-colors active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-60"
+      className="flex flex-1 items-center justify-center whitespace-nowrap rounded-[10px] border font-medium transition-colors active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-60"
       style={{
         height: "40px",
         fontSize: "12px",
