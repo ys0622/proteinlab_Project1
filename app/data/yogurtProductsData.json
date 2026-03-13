@@ -708,5 +708,86 @@
       "transFatG": 0.2,
       "cholesterolMg": 20
     }
+  },
+  {
+    "slug": "maeil-bio-greek-delight-plain-80",
+    "brand": "매일 바이오",
+    "name": "매일 바이오 그릭요거트 딜라이트 무가당 플레인",
+    "capacity": "80g",
+    "variant": "플레인",
+    "tags": ["컵"],
+    "proteinPerServing": 5,
+    "density": "6.3g/100g",
+    "productUrl": "https://www.maeildairies.com/maeilbio",
+    "productType": "yogurt",
+    "gradeTags": ["단백질 밀도 B", "다이어트 B", "퍼포먼스 C"],
+    "gradeDescriptions": [
+      "80g 소용량 기준으로 단백질 밀도는 무난한 편입니다.",
+      "무가당 플레인 방향이라 간식형 요거트 중에서는 비교적 가볍게 접근할 수 있습니다.",
+      "운동 직후 회복식보다는 작은 간식형 보충에 더 가까운 제품입니다."
+    ],
+    "manufacturer": "매일유업",
+    "flavor": "플레인",
+    "yogurtType": "프로틴 요거트",
+    "storageType": "냉장",
+    "lactoseFree": true,
+    "proteinPer100g": 6.3,
+    "nutritionPerBottle": {
+      "proteinG": 5
+    }
+  },
+  {
+    "slug": "maeil-bio-greek-delight-banana-80",
+    "brand": "매일 바이오",
+    "name": "매일 바이오 그릭요거트 딜라이트 바나나",
+    "capacity": "80g",
+    "variant": "바나나",
+    "tags": ["컵"],
+    "proteinPerServing": 5,
+    "density": "6.3g/100g",
+    "productUrl": "https://www.maeildairies.com/maeilbio",
+    "productType": "yogurt",
+    "gradeTags": ["단백질 밀도 B", "다이어트 C", "퍼포먼스 C"],
+    "gradeDescriptions": [
+      "딜라이트 라인 기준으로 단백질량은 동일하지만 맛형 제품이라 플레인보다 보수적으로 보는 편이 좋습니다.",
+      "디저트형 접근성이 높아 간식용으로는 좋지만 체중 관리용 우선순위는 낮습니다.",
+      "운동 후 회복식보다는 맛있는 고단백 간식에 더 가까운 제품입니다."
+    ],
+    "manufacturer": "매일유업",
+    "flavor": "바나나",
+    "yogurtType": "프로틴 요거트",
+    "storageType": "냉장",
+    "lactoseFree": true,
+    "proteinPer100g": 6.3,
+    "nutritionPerBottle": {
+      "proteinG": 5
+    }
+  },
+  {
+    "slug": "sangha-organic-greek-unsweetened-400",
+    "brand": "상하목장",
+    "name": "상하목장 유기농 그릭요거트 무가당 플레인",
+    "capacity": "400g",
+    "variant": "플레인",
+    "tags": ["컵"],
+    "proteinPerServing": 28,
+    "density": "7.0g/100g",
+    "productUrl": "https://direct.maeil.com/m/brand/sangha",
+    "productType": "yogurt",
+    "gradeTags": ["단백질 밀도 B", "다이어트 B", "퍼포먼스 B"],
+    "gradeDescriptions": [
+      "400g 대용량 기준 총 단백질량이 높아 가족형이나 나눠 먹는 용도로 보기 좋습니다.",
+      "무가당 플레인 방향이라 당류 부담은 낮을 가능성이 높지만, 대용량이라 1회 섭취량 관리는 필요합니다.",
+      "운동 후 보충용으로도 활용 가능하지만 1회분으로 나눠 먹는 전제가 더 자연스럽습니다."
+    ],
+    "manufacturer": "매일유업",
+    "flavor": "플레인",
+    "yogurtType": "그릭 요거트",
+    "storageType": "냉장",
+    "lactoseFree": true,
+    "proteinPer100g": 7,
+    "nutritionPerBottle": {
+      "proteinG": 28
+    }
   }
 ]
