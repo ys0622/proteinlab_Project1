@@ -18,6 +18,13 @@
       "environment": "production"
     }
   ],
+  "kv_namespaces": [
+    {
+      "binding": "GUIDES_STATIC_DRAFTS_KV",
+      "id": "cb0554d5dbaf413d8fe971f91d1d968c",
+      "preview_id": "68ce7bd34e78429fa8fd5edd56db49a6"
+    }
+  ],
   "observability": {
     "enabled": true
   }
