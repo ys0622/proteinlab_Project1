@@ -85,27 +85,15 @@ export default function DeficiencySymptomsPage() {
             </span>
           </div>
 
-          <div className="mt-4 grid gap-4 lg:grid-cols-[1.15fr_0.85fr] lg:items-center">
-            <div>
-              <h1 className="text-2xl font-bold leading-tight text-[var(--foreground)] md:text-3xl">
-                단백질이 부족하면 몸에 어떤 신호가 올까?
-              </h1>
-              <p className="mt-3 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
-                피로, 근육 감소, 잦은 감기, 붓기.
-                <br />
-                단백질 부족은 천천히 나타나기 때문에 자주 반복되는 작은 신호를 먼저 읽는 것이 중요합니다.
-              </p>
-            </div>
-
-            <div className="rounded-[28px] border border-[#dce8df] bg-[linear-gradient(135deg,#f7fbf8_0%,#eef6f1_100%)] p-4 shadow-[0_18px_40px_rgba(45,106,79,0.08)]">
-              <GuideVisual
-                track="protein-basics"
-                title="부족 신호"
-                accentColor="#2d6a4f"
-                accentBg="#eaf4ee"
-                variant="topic"
-              />
-            </div>
+          <div className="mt-4">
+            <h1 className="text-2xl font-bold leading-tight text-[var(--foreground)] md:text-3xl">
+              단백질이 부족하면 몸에 어떤 신호가 올까?
+            </h1>
+            <p className="mt-3 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
+              피로, 근육 감소, 잦은 감기, 붓기.
+              <br />
+              단백질 부족은 천천히 나타나기 때문에 자주 반복되는 작은 신호를 먼저 읽는 것이 중요합니다.
+            </p>
           </div>
         </div>
       </section>
@@ -136,7 +124,8 @@ export default function DeficiencySymptomsPage() {
               근육 감소부터 면역 저하, 부종까지 결핍 신호는 여러 기관에서 동시에 나타날 수 있습니다.
             </p>
 
-            <div className="mt-5 rounded-[28px] border border-[#dce8df] bg-[linear-gradient(135deg,#f7fbf8_0%,#eef6f1_100%)] p-4 shadow-[0_16px_36px_rgba(45,106,79,0.08)]">
+            <div className="mt-5 rounded-[28px] border border-[#dce8df] bg-[linear-gradient(135deg,#f7fbf8_0%,#eef6f1_100%)] p-6 shadow-[0_16px_36px_rgba(45,106,79,0.08)]">
+              <div className="mx-auto max-w-2xl">
               <GuideVisual
                 track="protein-basics"
                 title="결핍 신호"
@@ -144,6 +133,7 @@ export default function DeficiencySymptomsPage() {
                 accentBg="#eaf4ee"
                 variant="topic"
               />
+              </div>
             </div>
 
             <div className="mt-5 overflow-x-auto rounded-2xl border border-[#ece9e2] bg-white">
