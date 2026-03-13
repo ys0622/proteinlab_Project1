@@ -11,6 +11,7 @@ import type {
 
 const inputCls =
   "w-full rounded-lg border border-[var(--border)] bg-[var(--background)] px-3 py-2 text-sm text-[var(--foreground)] focus:outline-none focus:ring-2 focus:ring-[var(--accent)]";
+const STORAGE_KEY = "proteinlab_admin_guides_static_draft_v1";
 
 function ArticleEditor({
   article,
@@ -106,9 +107,9 @@ function SectionEditor({
 }) {
   const setField = (field: keyof AdminGuideSection, value: string) => onChange({ ...section, [field]: value });
   const setArticle = (index: number, updated: AdminGuideArticle) => {
-    const articles = [...section.articles];
-    articles[index] = updated;
-    onChange({ ...section, articles });
+    const nextArticles = [...section.articles];
+    nextArticles[index] = updated;
+    onChange({ ...section, articles: nextArticles });
   };
 
   return (
@@ -236,12 +237,28 @@ export default function StaticGuidesEditorPage() {
   const [saved, setSaved] = useState(false);
   const [error, setError] = useState("");
   const [activeTab, setActiveTab] = useState<string>("mainPage");
+  const [savedAt, setSavedAt] = useState<string>("");
 
   useEffect(() => {
     fetch("/api/admin/guides/static")
       .then((response) => response.json())
       .then((payload) => {
-        setData(payload);
+        if (typeof window !== "undefined") {
+          const draft = window.localStorage.getItem(STORAGE_KEY);
+          if (draft) {
+            try {
+              setData(JSON.parse(draft) as AdminGuidesStaticData);
+              setSavedAt(window.localStorage.getItem(`${STORAGE_KEY}:savedAt`) ?? "");
+              setLoading(false);
+              return;
+            } catch {
+              window.localStorage.removeItem(STORAGE_KEY);
+              window.localStorage.removeItem(`${STORAGE_KEY}:savedAt`);
+            }
+          }
+        }
+
+        setData(payload as AdminGuidesStaticData);
         setLoading(false);
       })
       .catch(() => {
@@ -258,29 +275,40 @@ export default function StaticGuidesEditorPage() {
     ];
   }, [data]);
 
-  const handleSave = useCallback(async () => {
-    if (!data) return;
+  const handleSave = useCallback(() => {
+    if (!data || typeof window === "undefined") return;
     setSaving(true);
     setError("");
     try {
-      const response = await fetch("/api/admin/guides/static", {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
-      });
-
-      if (response.ok) {
-        setSaved(true);
-        setTimeout(() => setSaved(false), 2500);
-      } else {
-        const payload = await response.json();
-        setError(payload.error ?? "가이드 저장에 실패했습니다.");
-      }
+      const now = new Date().toISOString();
+      window.localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+      window.localStorage.setItem(`${STORAGE_KEY}:savedAt`, now);
+      setSavedAt(now);
+      setSaved(true);
+      setTimeout(() => setSaved(false), 2500);
     } catch {
-      setError("가이드 저장 중 오류가 발생했습니다.");
+      setError("브라우저 저장에 실패했습니다.");
     } finally {
       setSaving(false);
     }
+  }, [data]);
+
+  const handleReset = useCallback(() => {
+    if (typeof window === "undefined") return;
+    window.localStorage.removeItem(STORAGE_KEY);
+    window.localStorage.removeItem(`${STORAGE_KEY}:savedAt`);
+    window.location.reload();
+  }, []);
+
+  const handleExport = useCallback(() => {
+    if (!data || typeof window === "undefined") return;
+    const blob = new Blob([JSON.stringify(data, null, 2)], { type: "application/json" });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = "proteinlab-guides-static-draft.json";
+    link.click();
+    URL.revokeObjectURL(url);
   }, [data]);
 
   if (loading) {
@@ -305,9 +333,12 @@ export default function StaticGuidesEditorPage() {
           <p className="mt-1 text-sm text-[var(--foreground-muted)]">
             Track A부터 Track F까지 현재 등록된 가이드 랜딩과 하위 콘텐츠를 한 번에 검토합니다.
           </p>
+          <p className="mt-1 text-xs text-[var(--foreground-muted)]">
+            저장은 현재 브라우저에 보관됩니다. 운영 초안 검토와 구조 관리용으로 사용하세요.
+          </p>
         </div>
 
-        <div className="flex gap-2">
+        <div className="flex flex-wrap gap-2">
           <Link
             href={previewHref}
             target="_blank"
@@ -316,20 +347,36 @@ export default function StaticGuidesEditorPage() {
             미리보기
           </Link>
           <button
+            onClick={handleExport}
+            className="rounded-full border border-[var(--border)] px-4 py-2 text-sm text-[var(--foreground)] hover:bg-[var(--beige-warm)]"
+          >
+            JSON 내보내기
+          </button>
+          <button
+            onClick={handleReset}
+            className="rounded-full border border-[var(--border)] px-4 py-2 text-sm text-[var(--foreground)] hover:bg-[var(--beige-warm)]"
+          >
+            초안 초기화
+          </button>
+          <button
             onClick={handleSave}
             disabled={saving}
             className="rounded-full bg-[var(--accent)] px-5 py-2 text-sm font-medium text-white hover:bg-[var(--accent-hover)] disabled:opacity-60"
           >
-            {saving ? "저장 중..." : saved ? "저장 완료" : "저장"}
+            {saving ? "저장 중..." : saved ? "브라우저 저장 완료" : "브라우저 저장"}
           </button>
         </div>
       </div>
 
-      {error && (
-        <div className="mb-4 rounded-xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-800">
-          {error}
+      {error ? (
+        <div className="mb-4 rounded-xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-800">{error}</div>
+      ) : null}
+
+      {savedAt ? (
+        <div className="mb-4 rounded-xl border border-[var(--border)] bg-[var(--background-card)] px-4 py-3 text-sm text-[var(--foreground-muted)]">
+          마지막 브라우저 저장 시각: {new Date(savedAt).toLocaleString("ko-KR")}
         </div>
-      )}
+      ) : null}
 
       <div className="mb-6 flex gap-1 overflow-x-auto border-b border-[var(--border)]">
         {tabs.map((tab) => (
@@ -363,6 +410,16 @@ export default function StaticGuidesEditorPage() {
           }
         />
       ) : null}
+
+      <div className="mt-6 flex justify-end">
+        <button
+          onClick={handleSave}
+          disabled={saving}
+          className="rounded-full bg-[var(--accent)] px-6 py-2 text-sm font-medium text-white hover:bg-[var(--accent-hover)] disabled:opacity-60"
+        >
+          {saving ? "저장 중..." : saved ? "브라우저 저장 완료" : "브라우저 저장"}
+        </button>
+      </div>
     </div>
   );
 }
