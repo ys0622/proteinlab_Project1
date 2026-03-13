@@ -1976,5 +1976,61 @@
     "needsServingCheck": true,
     "nutritionBasis": "unknown",
     "servingCheckNote": "판매 흔적은 확인됐지만 상세 영양표는 확보하지 못했습니다. 구매 전 제품 라벨의 기준 중량과 영양정보를 다시 확인해주세요."
+  },
+  {
+    "slug": "modu-greek-unsweetened-500",
+    "brand": "모두의그릭",
+    "name": "모두의그릭 무가당 고단백 그릭요거트 500g",
+    "capacity": "500g",
+    "variant": "플레인",
+    "tags": [
+      "컵"
+    ],
+    "proteinPerServing": 0,
+    "density": "-",
+    "productUrl": "https://www.coupang.com/vp/products/9047291743",
+    "productType": "yogurt",
+    "gradeTags": [],
+    "gradeDescriptions": [
+      "쿠팡 기준 현재 판매 흔적이 확인되는 무가당 고단백 500g 제품입니다.",
+      "브랜드의 기본 대용량 SKU로 보는 편이 맞습니다.",
+      "상세 영양표는 추가 이미지 확인이 필요합니다."
+    ],
+    "manufacturer": "모두의그릭",
+    "flavor": "플레인",
+    "yogurtType": "그릭 요거트",
+    "storageType": "냉장",
+    "lactoseFree": false,
+    "needsServingCheck": true,
+    "nutritionBasis": "unknown",
+    "servingCheckNote": "판매 페이지는 옵션형 상품이라 실제 기준 중량과 영양표를 제품 라벨로 다시 확인해야 합니다."
+  },
+  {
+    "slug": "modu-greek-unsweetened-1000",
+    "brand": "모두의그릭",
+    "name": "모두의그릭 무가당 고단백 그릭요거트 1kg",
+    "capacity": "1kg",
+    "variant": "플레인",
+    "tags": [
+      "컵"
+    ],
+    "proteinPerServing": 0,
+    "density": "-",
+    "productUrl": "https://www.coupang.com/vp/products/8882144049",
+    "productType": "yogurt",
+    "gradeTags": [],
+    "gradeDescriptions": [
+      "쿠팡 기준 현재 판매 흔적이 확인되는 무가당 고단백 1kg 제품입니다.",
+      "500g 대비 더 큰 대용량 SKU라 나눠 먹는 전제가 자연스럽습니다.",
+      "상세 영양표는 추가 이미지 확인이 필요합니다."
+    ],
+    "manufacturer": "모두의그릭",
+    "flavor": "플레인",
+    "yogurtType": "그릭 요거트",
+    "storageType": "냉장",
+    "lactoseFree": false,
+    "needsServingCheck": true,
+    "nutritionBasis": "unknown",
+    "servingCheckNote": "판매 페이지는 옵션형 상품이라 실제 기준 중량과 영양표를 제품 라벨로 다시 확인해야 합니다."
   }
 ]
