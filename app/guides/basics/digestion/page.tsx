@@ -23,7 +23,7 @@ const sourceRows = [
 function ImageSlot({ alt }: { alt: string }) {
   return (
     <div
-      className="mt-4 rounded-2xl border border-dashed border-[#d9d4cd] bg-white px-5 py-8 text-center"
+      className="mt-4 rounded-2xl border border-dashed border-[#d9d4cd] bg-white px-5 py-16 text-center"
       role="img"
       aria-label={alt}
     >
