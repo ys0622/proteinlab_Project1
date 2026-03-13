@@ -388,19 +388,19 @@
     }
   },
   {
-    "slug": "maeil-bio-greek-unsweetened-80",
+    "slug": "maeil-bio-greek-unsweetened-150",
     "brand": "매일 바이오",
-    "name": "매일 바이오 그릭요거트 무가당 플레인",
-    "capacity": "80g",
+    "name": "매일 바이오 그릭요거트 무가당 플레인 150g",
+    "capacity": "150g",
     "variant": "플레인",
     "tags": [
       "컵"
     ],
-    "proteinPerServing": 5.6,
-    "calories": 75,
-    "sugar": 1.4,
+    "proteinPerServing": 10.5,
+    "calories": 140.63,
+    "sugar": 2.63,
     "density": "7.0g/100g",
-    "productUrl": "https://www.coupang.com/vp/products/8730345723",
+    "productUrl": "https://direct.maeil.com/index.do",
     "productType": "yogurt",
     "gradeTags": [
       "단백질 밀도 B",
@@ -408,121 +408,34 @@
       "퍼포먼스 C"
     ],
     "gradeDescriptions": [
-      "무가당 기준으로는 밀도와 당류 밸런스가 괜찮은 편입니다.",
+      "공식몰 기준 현재 판매 중인 무가당 플레인 단품입니다.",
       "당류 부담이 낮아 체중 관리용으로 접근하기 좋은 제품입니다.",
-      "총 단백질량이 아주 높지는 않아 운동 후 보충식으로는 보조용에 가깝습니다."
+      "총 단백질량은 150g 기준으로 무난한 편입니다."
     ],
     "manufacturer": "매일유업",
     "flavor": "플레인",
-    "fat": 3.8,
-    "sodium": 65,
+    "fat": 7.13,
+    "sodium": 121.88,
     "yogurtType": "그릭 요거트",
     "storageType": "냉장",
     "lactoseFree": true,
     "proteinPer100g": 7,
     "nutritionPerBottle": {
-      "caloriesKcal": 75,
-      "proteinG": 5.6,
-      "carbsG": 4,
-      "sugarsG": 1.4,
-      "fatG": 3.8,
-      "satFatG": 2.2,
-      "transFatG": 0.5,
-      "cholesterolMg": 20,
-      "sodiumMg": 65
-    }
-  },
-  {
-    "slug": "maeil-bio-greek-plain-80",
-    "brand": "매일 바이오",
-    "name": "매일 바이오 그릭요거트 플레인",
-    "capacity": "80g",
-    "variant": "플레인",
-    "tags": [
-      "컵"
-    ],
-    "proteinPerServing": 5.6,
-    "calories": 90,
-    "sugar": 7,
-    "density": "7.0g/100g",
-    "productUrl": "https://www.coupang.com/vp/products/8730345723",
-    "productType": "yogurt",
-    "gradeTags": [
-      "단백질 밀도 B",
-      "다이어트 B",
-      "퍼포먼스 C"
-    ],
-    "gradeDescriptions": [
-      "무가당 제품보다 당류는 높지만 여전히 단백질 밀도는 괜찮은 편입니다.",
-      "일반 플레인 요거트보다 단백질은 높지만 체중 관리용으로는 무가당 쪽이 더 유리합니다.",
-      "간식이나 아침 보완용으로 무난하게 접근할 수 있습니다."
-    ],
-    "manufacturer": "매일유업",
-    "flavor": "플레인",
-    "fat": 2.5,
-    "yogurtType": "그릭 요거트",
-    "storageType": "냉장",
-    "lactoseFree": true,
-    "proteinPer100g": 7,
-    "nutritionPerBottle": {
-      "caloriesKcal": 90,
-      "proteinG": 5.6,
-      "carbsG": 9,
-      "sugarsG": 7,
-      "fatG": 2.5,
-      "satFatG": 2,
-      "transFatG": 0.5,
-      "cholesterolMg": 20
-    }
-  },
-  {
-    "slug": "maeil-bio-greek-drink-plain-190",
-    "brand": "매일 바이오",
-    "name": "매일 바이오 그릭요거트 드링크 플레인",
-    "capacity": "190mL",
-    "variant": "플레인",
-    "tags": [
-      "PET"
-    ],
-    "proteinPerServing": 8.3,
-    "calories": 132,
-    "sugar": 12.5,
-    "density": "4.4g/100mL",
-    "productUrl": "https://www.coupang.com/vp/products/9181041540",
-    "productType": "yogurt",
-    "gradeTags": [
-      "단백질 밀도 C",
-      "다이어트 C",
-      "퍼포먼스 C"
-    ],
-    "gradeDescriptions": [
-      "마시는 타입이라 편의성은 좋지만 단백질 밀도는 컵형 그릭 요거트보다 낮습니다.",
-      "당류가 두 자릿수라 체중 관리용으로는 우선순위가 낮습니다.",
-      "간편 섭취용으로는 좋지만 운동 후 회복용 기준으로는 보조 선택지에 가깝습니다."
-    ],
-    "manufacturer": "매일유업",
-    "flavor": "플레인",
-    "fat": 3.4,
-    "sodium": 64,
-    "yogurtType": "드링킹 요거트",
-    "storageType": "냉장",
-    "lactoseFree": true,
-    "proteinPer100g": 4.4,
-    "nutritionPerBottle": {
-      "caloriesKcal": 132,
-      "proteinG": 8.3,
-      "carbsG": 17,
-      "sugarsG": 12.5,
-      "fatG": 3.4,
-      "satFatG": 2,
-      "cholesterolMg": 14,
-      "sodiumMg": 64
+      "caloriesKcal": 140.63,
+      "proteinG": 10.5,
+      "carbsG": 7.5,
+      "sugarsG": 2.63,
+      "fatG": 7.13,
+      "satFatG": 4.13,
+      "transFatG": 0.94,
+      "cholesterolMg": 37.5,
+      "sodiumMg": 121.88
     }
   },
   {
     "slug": "sangha-organic-greek-unsweetened-80",
     "brand": "상하목장",
-    "name": "상하목장 유기농 그릭요거트 무가당 플레인",
+    "name": "상하목장 유기농 그릭요거트 무가당 플레인 80g",
     "capacity": "80g",
     "variant": "플레인",
     "tags": [
@@ -540,9 +453,9 @@
       "퍼포먼스 C"
     ],
     "gradeDescriptions": [
-      "무가당 방향이라 당류는 낮고 단백질 밀도는 무난한 편입니다.",
-      "소용량이라 간식이나 식사 보완용으로 접근하기 좋습니다.",
-      "운동 후 보충식 기준으로는 총 단백질량이 높지 않아 보조 선택지에 가깝습니다."
+      "공식몰 기준 현재 판매 중인 무가당 플레인 80g 제품입니다.",
+      "당류 부담이 낮아 체중 관리용으로 접근하기 좋은 편입니다.",
+      "소용량이라 간식형 그릭요거트로 보기 좋습니다."
     ],
     "manufacturer": "매일유업",
     "flavor": "플레인",
@@ -560,7 +473,10 @@
       "satFatG": 3.5,
       "transFatG": 0.2,
       "cholesterolMg": 20
-    }
+    },
+    "needsServingCheck": true,
+    "nutritionBasis": "unknown",
+    "servingCheckNote": "공식몰에서는 16개 묶음 판매 페이지가 확인됩니다. 현재 수치는 80g 1개 기준으로 유지했고, 실제 표기 기준은 제품 라벨을 다시 확인해야 합니다."
   },
   {
     "slug": "pulmuone-dannon-greek-unsweetened-90",
@@ -650,98 +566,9 @@
     }
   },
   {
-    "slug": "maeil-bio-greek-plain-150",
-    "brand": "매일 바이오",
-    "name": "매일 바이오 그릭요거트 플레인",
-    "capacity": "150g",
-    "variant": "플레인",
-    "tags": [
-      "컵"
-    ],
-    "proteinPerServing": 9,
-    "calories": 135,
-    "sugar": 5.5,
-    "density": "6.0g/100g",
-    "productUrl": "https://www.coupang.com/vp/products/8730345723",
-    "productType": "yogurt",
-    "gradeTags": [
-      "단백질 밀도 B",
-      "다이어트 B",
-      "퍼포먼스 C"
-    ],
-    "gradeDescriptions": [
-      "150g 컵 기준으로 단백질 총량은 무난한 편입니다.",
-      "플레인 타입이라 맛 부담은 적지만 무가당 제품보다는 당류가 높습니다.",
-      "간식이나 아침 보완용으로 보기 좋은 중간형 제품입니다."
-    ],
-    "manufacturer": "매일유업",
-    "flavor": "플레인",
-    "fat": 6.5,
-    "sodium": 110,
-    "yogurtType": "그릭 요거트",
-    "storageType": "냉장",
-    "lactoseFree": false,
-    "proteinPer100g": 6,
-    "nutritionPerBottle": {
-      "caloriesKcal": 135,
-      "proteinG": 9,
-      "carbsG": 10,
-      "sugarsG": 5.5,
-      "fatG": 6.5,
-      "satFatG": 4,
-      "cholesterolMg": 35,
-      "sodiumMg": 110
-    }
-  },
-  {
-    "slug": "maeil-bio-greek-togo-120",
-    "brand": "매일 바이오",
-    "name": "매일 바이오 그릭요거트 to go 플레인",
-    "capacity": "120g",
-    "variant": "플레인",
-    "tags": [
-      "컵"
-    ],
-    "proteinPerServing": 7,
-    "calories": 120,
-    "sugar": 8,
-    "density": "5.8g/100g",
-    "productUrl": "https://www.coupang.com/vp/products/8730345723",
-    "productType": "yogurt",
-    "gradeTags": [
-      "단백질 밀도 C",
-      "다이어트 C",
-      "퍼포먼스 C"
-    ],
-    "gradeDescriptions": [
-      "간편 휴대형으로 접근성은 좋지만 밀도는 높지 않은 편입니다.",
-      "당류와 지방이 모두 어느 정도 있어 체중 관리용 우선순위는 낮습니다.",
-      "간단한 이동 간식용으로는 무난하지만 보충식 기준으로는 보조 선택지입니다."
-    ],
-    "manufacturer": "매일유업",
-    "flavor": "플레인",
-    "fat": 5,
-    "sodium": 100,
-    "yogurtType": "그릭 요거트",
-    "storageType": "냉장",
-    "lactoseFree": false,
-    "proteinPer100g": 5.8,
-    "nutritionPerBottle": {
-      "caloriesKcal": 120,
-      "proteinG": 7,
-      "carbsG": 12,
-      "sugarsG": 8,
-      "fatG": 5,
-      "satFatG": 3,
-      "transFatG": 0.5,
-      "cholesterolMg": 25,
-      "sodiumMg": 100
-    }
-  },
-  {
     "slug": "sangha-organic-greek-plain-80",
     "brand": "상하목장",
-    "name": "상하목장 유기농 인증 그릭요거트 플레인",
+    "name": "상하목장 유기농 그릭요거트 플레인 80g",
     "capacity": "80g",
     "variant": "플레인",
     "tags": [
@@ -751,7 +578,7 @@
     "calories": 96,
     "sugar": 8,
     "density": "6.0g/100g",
-    "productUrl": "https://www.coupang.com/vp/products/8593813433",
+    "productUrl": "https://direct.maeil.com/m/brand/sangha",
     "productType": "yogurt",
     "gradeTags": [
       "단백질 밀도 C",
@@ -759,9 +586,9 @@
       "퍼포먼스 C"
     ],
     "gradeDescriptions": [
-      "유기농 그릭 타입이지만 단백질 밀도는 상위권 제품보다 낮은 편입니다.",
-      "무가당 제품보다 당류가 높아 체중 관리용으로는 보수적으로 보는 편이 좋습니다.",
-      "일반 간식형 그릭요거트로 접근하는 편이 자연스럽습니다."
+      "공식몰 기준 현재 판매 중인 플레인 80g 제품입니다.",
+      "무가당 라인보다 당류 부담은 높지만 일반 플레인 그릭요거트로는 무난한 편입니다.",
+      "간식형 그릭요거트로 접근하는 편이 자연스럽습니다."
     ],
     "manufacturer": "매일유업",
     "flavor": "플레인",
@@ -779,20 +606,23 @@
       "satFatG": 3.6,
       "transFatG": 0.2,
       "cholesterolMg": 20
-    }
+    },
+    "needsServingCheck": true,
+    "nutritionBasis": "unknown",
+    "servingCheckNote": "공식몰에서는 16개 묶음 판매 페이지가 확인됩니다. 현재 수치는 80g 1개 기준으로 유지했고, 실제 표기 기준은 제품 라벨을 다시 확인해야 합니다."
   },
   {
     "slug": "maeil-bio-greek-delight-plain-80",
     "brand": "매일 바이오",
-    "name": "매일 바이오 그릭요거트 딜라이트 무가당 플레인",
+    "name": "매일 바이오 그릭요거트 Delight 무가당 플레인 80g",
     "capacity": "80g",
     "variant": "플레인",
     "tags": [
       "컵"
     ],
-    "proteinPerServing": 5,
-    "density": "6.3g/100g",
-    "productUrl": "https://www.maeildairies.com/maeilbio",
+    "proteinPerServing": 6,
+    "density": "7.5g/100g",
+    "productUrl": "https://direct.maeil.com/index.do",
     "productType": "yogurt",
     "gradeTags": [
       "단백질 밀도 B",
@@ -800,9 +630,9 @@
       "퍼포먼스 C"
     ],
     "gradeDescriptions": [
-      "80g 소용량 기준으로 단백질 밀도는 무난한 편입니다.",
-      "무가당 플레인 방향이라 간식형 요거트 중에서는 비교적 가볍게 접근할 수 있습니다.",
-      "운동 직후 회복식보다는 작은 간식형 보충에 더 가까운 제품입니다."
+      "공식 출시자료 기준 80g 한 컵당 단백질 6g이 들어간 Delight 무가당 플레인 제품입니다.",
+      "무가당·락토프리·식이섬유 강화 방향이 특징입니다.",
+      "상세 영양표 전체는 추가 이미지 확인이 필요합니다."
     ],
     "manufacturer": "매일유업",
     "flavor": "플레인",
@@ -811,46 +641,17 @@
     "lactoseFree": true,
     "proteinPer100g": 6.3,
     "nutritionPerBottle": {
-      "proteinG": 5
-    }
-  },
-  {
-    "slug": "maeil-bio-greek-delight-banana-80",
-    "brand": "매일 바이오",
-    "name": "매일 바이오 그릭요거트 딜라이트 바나나",
-    "capacity": "80g",
-    "variant": "바나나",
-    "tags": [
-      "컵"
-    ],
-    "proteinPerServing": 5,
-    "density": "6.3g/100g",
-    "productUrl": "https://www.maeildairies.com/maeilbio",
-    "productType": "yogurt",
-    "gradeTags": [
-      "단백질 밀도 B",
-      "다이어트 C",
-      "퍼포먼스 C"
-    ],
-    "gradeDescriptions": [
-      "딜라이트 라인 기준으로 단백질량은 동일하지만 맛형 제품이라 플레인보다 보수적으로 보는 편이 좋습니다.",
-      "디저트형 접근성이 높아 간식용으로는 좋지만 체중 관리용 우선순위는 낮습니다.",
-      "운동 후 회복식보다는 맛있는 고단백 간식에 더 가까운 제품입니다."
-    ],
-    "manufacturer": "매일유업",
-    "flavor": "바나나",
-    "yogurtType": "프로틴 요거트",
-    "storageType": "냉장",
-    "lactoseFree": true,
-    "proteinPer100g": 6.3,
-    "nutritionPerBottle": {
-      "proteinG": 5
-    }
+      "proteinG": 6,
+      "fiberG": 3
+    },
+    "needsServingCheck": true,
+    "nutritionBasis": "unknown",
+    "servingCheckNote": "공식몰 판매는 확인됐지만 상세 영양표 기준은 추가 이미지 확인이 필요합니다. 구매 전 제품 라벨의 기준 중량과 영양정보를 다시 확인해주세요."
   },
   {
     "slug": "sangha-organic-greek-unsweetened-400",
     "brand": "상하목장",
-    "name": "상하목장 유기농 그릭요거트 무가당 플레인",
+    "name": "상하목장 유기농 그릭요거트 무가당 플레인 400g",
     "capacity": "400g",
     "variant": "플레인",
     "tags": [
@@ -866,19 +667,22 @@
       "퍼포먼스 B"
     ],
     "gradeDescriptions": [
-      "400g 대용량 기준 총 단백질량이 높아 가족형이나 나눠 먹는 용도로 보기 좋습니다.",
-      "무가당 플레인 방향이라 당류 부담은 낮을 가능성이 높지만, 대용량이라 1회 섭취량 관리는 필요합니다.",
-      "운동 후 보충용으로도 활용 가능하지만 1회분으로 나눠 먹는 전제가 더 자연스럽습니다."
+      "공식몰 기준 현재 판매 중인 무가당 플레인 400g 제품입니다.",
+      "대용량이라 한 번에 전량 섭취보다는 나눠 먹는 전제가 자연스럽습니다.",
+      "총 영양값은 실제 제품 라벨을 추가 확인하는 편이 안전합니다."
     ],
     "manufacturer": "매일유업",
     "flavor": "플레인",
     "yogurtType": "그릭 요거트",
     "storageType": "냉장",
-    "lactoseFree": true,
+    "lactoseFree": false,
     "proteinPer100g": 7,
     "nutritionPerBottle": {
       "proteinG": 28
-    }
+    },
+    "needsServingCheck": true,
+    "nutritionBasis": "unknown",
+    "servingCheckNote": "공식몰에서는 400g 3개 묶음 판매 페이지가 확인됩니다. 현재 수치는 400g 1통 기준으로 유지했고, 실제 표기 기준은 제품 라벨을 다시 확인해야 합니다."
   },
   {
     "slug": "who-highprotein-greek-unsweetened-400",
@@ -1252,5 +1056,626 @@
     "nutritionPerBottle": {
       "proteinG": 8
     }
+  },
+  {
+    "slug": "maeil-bio-greek-unsweetened-400",
+    "brand": "매일 바이오",
+    "name": "매일 바이오 그릭요거트 무가당 플레인 400g",
+    "capacity": "400g",
+    "variant": "플레인",
+    "tags": [
+      "컵"
+    ],
+    "proteinPerServing": 28,
+    "calories": 375.01,
+    "sugar": 7.01,
+    "density": "7.0g/100g",
+    "productUrl": "https://direct.maeil.com/index.do",
+    "productType": "yogurt",
+    "gradeTags": [
+      "단백질 밀도 B",
+      "다이어트 A",
+      "퍼포먼스 C"
+    ],
+    "gradeDescriptions": [
+      "공식몰 기준 현재 판매 중인 무가당 플레인 단품입니다.",
+      "당류 부담이 낮아 체중 관리용으로 접근하기 좋은 제품입니다.",
+      "총 단백질량은 150g 기준으로 무난한 편입니다."
+    ],
+    "manufacturer": "매일유업",
+    "flavor": "플레인",
+    "fat": 19.01,
+    "sodium": 325.01,
+    "yogurtType": "그릭 요거트",
+    "storageType": "냉장",
+    "lactoseFree": true,
+    "proteinPer100g": 7,
+    "nutritionPerBottle": {
+      "caloriesKcal": 375.01,
+      "proteinG": 28,
+      "carbsG": 20,
+      "sugarsG": 7.01,
+      "fatG": 19.01,
+      "satFatG": 11.01,
+      "transFatG": 2.51,
+      "cholesterolMg": 100,
+      "sodiumMg": 325.01
+    },
+    "needsServingCheck": true,
+    "nutritionBasis": "unknown",
+    "servingCheckNote": "공식몰에서 400g 판매는 확인됐습니다. 현재 비교용 수치는 150g 라인을 바탕으로 환산한 값이므로 실제 제품 라벨의 총 영양정보를 다시 확인해야 합니다."
+  },
+  {
+    "slug": "maeil-bio-greek-unsweetened-80",
+    "brand": "매일 바이오",
+    "name": "매일 바이오 그릭요거트 무가당 플레인 80g",
+    "capacity": "80g",
+    "variant": "플레인",
+    "tags": [
+      "컵"
+    ],
+    "proteinPerServing": 5.6,
+    "calories": 75,
+    "sugar": 1.4,
+    "density": "7.0g/100g",
+    "productUrl": "https://direct.maeil.com/index.do",
+    "productType": "yogurt",
+    "gradeTags": [
+      "단백질 밀도 B",
+      "다이어트 A",
+      "퍼포먼스 C"
+    ],
+    "gradeDescriptions": [
+      "공식몰 기준 현재 판매 중인 무가당 플레인 단품입니다.",
+      "당류 부담이 낮아 체중 관리용으로 접근하기 좋은 제품입니다.",
+      "총 단백질량은 150g 기준으로 무난한 편입니다."
+    ],
+    "manufacturer": "매일유업",
+    "flavor": "플레인",
+    "fat": 3.8,
+    "sodium": 65,
+    "yogurtType": "그릭 요거트",
+    "storageType": "냉장",
+    "lactoseFree": true,
+    "proteinPer100g": 7,
+    "nutritionPerBottle": {
+      "caloriesKcal": 75,
+      "proteinG": 5.6,
+      "carbsG": 4,
+      "sugarsG": 1.4,
+      "fatG": 3.8,
+      "satFatG": 2.2,
+      "transFatG": 0.5,
+      "cholesterolMg": 20,
+      "sodiumMg": 65
+    },
+    "needsServingCheck": true,
+    "nutritionBasis": "unknown",
+    "servingCheckNote": "공식 출시자료 기준 80g SKU가 현재 판매 중입니다. 현재 수치는 150g 라인을 바탕으로 환산한 값이므로 실제 라벨을 다시 확인해야 합니다."
+  },
+  {
+    "slug": "maeil-bio-greek-unsweetened-800",
+    "brand": "매일 바이오",
+    "name": "매일 바이오 그릭요거트 무가당 플레인 800g",
+    "capacity": "800g",
+    "variant": "플레인",
+    "tags": [
+      "컵"
+    ],
+    "proteinPerServing": 56,
+    "calories": 750.03,
+    "sugar": 14.03,
+    "density": "7.0g/100g",
+    "productUrl": "https://direct.maeil.com/index.do",
+    "productType": "yogurt",
+    "gradeTags": [
+      "단백질 밀도 B",
+      "다이어트 A",
+      "퍼포먼스 C"
+    ],
+    "gradeDescriptions": [
+      "공식몰 기준 현재 판매 중인 무가당 플레인 단품입니다.",
+      "당류 부담이 낮아 체중 관리용으로 접근하기 좋은 제품입니다.",
+      "총 단백질량은 150g 기준으로 무난한 편입니다."
+    ],
+    "manufacturer": "매일유업",
+    "flavor": "플레인",
+    "fat": 38.03,
+    "sodium": 650.03,
+    "yogurtType": "그릭 요거트",
+    "storageType": "냉장",
+    "lactoseFree": true,
+    "proteinPer100g": 7,
+    "nutritionPerBottle": {
+      "caloriesKcal": 750.03,
+      "proteinG": 56,
+      "carbsG": 40,
+      "sugarsG": 14.03,
+      "fatG": 38.03,
+      "satFatG": 22.03,
+      "transFatG": 5.01,
+      "cholesterolMg": 200,
+      "sodiumMg": 650.03
+    },
+    "needsServingCheck": true,
+    "nutritionBasis": "unknown",
+    "servingCheckNote": "공식 출시자료 기준 800g SKU가 현재 판매 중입니다. 현재 수치는 150g 라인을 바탕으로 환산한 값이므로 실제 라벨을 다시 확인해야 합니다."
+  },
+  {
+    "slug": "maeil-bio-greek-plain-150",
+    "brand": "매일 바이오",
+    "name": "매일 바이오 그릭요거트 플레인 150g",
+    "capacity": "150g",
+    "variant": "플레인",
+    "tags": [
+      "컵"
+    ],
+    "proteinPerServing": 9,
+    "calories": 135,
+    "sugar": 5.5,
+    "density": "6.0g/100g",
+    "productUrl": "https://direct.maeil.com/index.do",
+    "productType": "yogurt",
+    "gradeTags": [
+      "단백질 밀도 B",
+      "다이어트 B",
+      "퍼포먼스 C"
+    ],
+    "gradeDescriptions": [
+      "공식 출시자료 기준 현재 판매 중인 플레인 150g 제품입니다.",
+      "무가당 라인보다 당류 부담은 높지만 일반 플레인 그릭요거트로는 무난한 편입니다.",
+      "간식이나 아침 보완용으로 보기 좋은 용량입니다."
+    ],
+    "manufacturer": "매일유업",
+    "flavor": "플레인",
+    "fat": 6.5,
+    "sodium": 110,
+    "yogurtType": "그릭 요거트",
+    "storageType": "냉장",
+    "lactoseFree": false,
+    "proteinPer100g": 6,
+    "nutritionPerBottle": {
+      "caloriesKcal": 135,
+      "proteinG": 9,
+      "carbsG": 10,
+      "sugarsG": 5.5,
+      "fatG": 6.5,
+      "satFatG": 4,
+      "cholesterolMg": 35,
+      "sodiumMg": 110
+    }
+  },
+  {
+    "slug": "maeil-bio-greek-plain-400",
+    "brand": "매일 바이오",
+    "name": "매일 바이오 그릭요거트 플레인 400g",
+    "capacity": "400g",
+    "variant": "플레인",
+    "tags": [
+      "컵"
+    ],
+    "proteinPerServing": 24,
+    "calories": 360,
+    "sugar": 14.67,
+    "density": "6.0g/100g",
+    "productUrl": "https://direct.maeil.com/index.do",
+    "productType": "yogurt",
+    "gradeTags": [
+      "단백질 밀도 B",
+      "다이어트 B",
+      "퍼포먼스 C"
+    ],
+    "gradeDescriptions": [
+      "공식 출시자료 기준 현재 판매 중인 플레인 150g 제품입니다.",
+      "무가당 라인보다 당류 부담은 높지만 일반 플레인 그릭요거트로는 무난한 편입니다.",
+      "간식이나 아침 보완용으로 보기 좋은 용량입니다."
+    ],
+    "manufacturer": "매일유업",
+    "flavor": "플레인",
+    "fat": 17.33,
+    "sodium": 293.33,
+    "yogurtType": "그릭 요거트",
+    "storageType": "냉장",
+    "lactoseFree": false,
+    "proteinPer100g": 6,
+    "nutritionPerBottle": {
+      "caloriesKcal": 360,
+      "proteinG": 24,
+      "carbsG": 26.67,
+      "sugarsG": 14.67,
+      "fatG": 17.33,
+      "satFatG": 10.67,
+      "cholesterolMg": 93.33,
+      "sodiumMg": 293.33
+    },
+    "needsServingCheck": true,
+    "nutritionBasis": "unknown",
+    "servingCheckNote": "공식 출시자료 기준 400g SKU가 현재 판매 중입니다. 현재 수치는 150g 라인을 바탕으로 환산한 값이므로 실제 라벨을 다시 확인해야 합니다."
+  },
+  {
+    "slug": "maeil-bio-greek-delight-banana-80",
+    "brand": "매일 바이오",
+    "name": "매일 바이오 그릭요거트 Delight 바나나 80g",
+    "capacity": "80g",
+    "variant": "바나나",
+    "tags": [
+      "컵"
+    ],
+    "proteinPerServing": 5,
+    "density": "6.3g/100g",
+    "productUrl": "https://direct.maeil.com/index.do",
+    "productType": "yogurt",
+    "gradeTags": [
+      "단백질 밀도 B",
+      "다이어트 C",
+      "퍼포먼스 C"
+    ],
+    "gradeDescriptions": [
+      "공식 출시자료 기준 현재 판매 중인 Delight 바나나 80g 제품입니다.",
+      "Delight 플레인보다 맛 중심 SKU라 당류와 열량은 추가 확인이 필요합니다.",
+      "소용량 간식형 고단백 요거트로 보는 편이 자연스럽습니다."
+    ],
+    "manufacturer": "매일유업",
+    "flavor": "바나나",
+    "yogurtType": "프로틴 요거트",
+    "storageType": "냉장",
+    "lactoseFree": true,
+    "proteinPer100g": 6.3,
+    "needsServingCheck": true,
+    "nutritionBasis": "unknown",
+    "servingCheckNote": "공식 판매는 확인됐지만 상세 영양표 기준은 추가 이미지 확인이 필요합니다. 구매 전 제품 라벨의 기준 중량과 영양정보를 다시 확인해주세요.",
+    "nutritionPerBottle": {
+      "proteinG": 5
+    }
+  },
+  {
+    "slug": "maeil-bio-greek-togo-plain-120",
+    "brand": "매일 바이오",
+    "name": "매일 바이오 그릭요거트 to go 플레인 120g",
+    "capacity": "120g",
+    "variant": "플레인",
+    "tags": [
+      "파우치"
+    ],
+    "proteinPerServing": 7,
+    "calories": 120,
+    "sugar": 8,
+    "density": "5.8g/100g",
+    "productUrl": "https://direct.maeil.com/index.do",
+    "productType": "yogurt",
+    "gradeTags": [
+      "단백질 밀도 C",
+      "다이어트 C",
+      "퍼포먼스 C"
+    ],
+    "gradeDescriptions": [
+      "공식 출시자료 기준 현재 판매 중인 to go 플레인 파우치 제품입니다.",
+      "휴대성은 좋지만 컵형 대비 단백질 밀도는 높지 않은 편입니다.",
+      "간편 섭취용 보조 선택지에 가깝습니다."
+    ],
+    "manufacturer": "매일유업",
+    "flavor": "플레인",
+    "yogurtType": "그릭 요거트",
+    "storageType": "냉장",
+    "lactoseFree": false,
+    "proteinPer100g": 5.8,
+    "needsServingCheck": true,
+    "nutritionBasis": "unknown",
+    "servingCheckNote": "현재 수치는 기존 수집값 기준이며, 공식몰 현재 SKU 기준 영양표는 추가 이미지 확인이 필요합니다.",
+    "nutritionPerBottle": {
+      "caloriesKcal": 120,
+      "proteinG": 7,
+      "sugarsG": 8,
+      "fatG": 5,
+      "sodiumMg": 100
+    }
+  },
+  {
+    "slug": "maeil-bio-greek-togo-honey-120",
+    "brand": "매일 바이오",
+    "name": "매일 바이오 그릭요거트 to go 허니 120g",
+    "capacity": "120g",
+    "variant": "허니",
+    "tags": [
+      "파우치"
+    ],
+    "proteinPerServing": 7,
+    "density": "5.8g/100g",
+    "productUrl": "https://direct.maeil.com/index.do",
+    "productType": "yogurt",
+    "gradeTags": [
+      "단백질 밀도 C",
+      "다이어트 C",
+      "퍼포먼스 C"
+    ],
+    "gradeDescriptions": [
+      "공식 출시자료 기준 현재 판매 중인 to go 허니 파우치 제품입니다.",
+      "플레인보다 당류가 높을 가능성이 있어 체중 관리용으로는 보수적으로 보는 편이 좋습니다.",
+      "상세 영양표는 추가 이미지 확인이 필요합니다."
+    ],
+    "manufacturer": "매일유업",
+    "flavor": "허니",
+    "yogurtType": "그릭 요거트",
+    "storageType": "냉장",
+    "lactoseFree": false,
+    "proteinPer100g": 5.8,
+    "needsServingCheck": true,
+    "nutritionBasis": "unknown",
+    "servingCheckNote": "공식 판매는 확인됐지만 상세 영양표 기준은 추가 이미지 확인이 필요합니다. 구매 전 제품 라벨을 다시 확인해주세요.",
+    "nutritionPerBottle": {
+      "proteinG": 7
+    }
+  },
+  {
+    "slug": "maeil-bio-greek-drink-plain-190",
+    "brand": "매일 바이오",
+    "name": "매일 바이오 그릭요거트 Drink 플레인 190mL",
+    "capacity": "190mL",
+    "variant": "플레인",
+    "tags": [
+      "PET"
+    ],
+    "proteinPerServing": 8.3,
+    "calories": 132,
+    "sugar": 12.5,
+    "density": "4.4g/100mL",
+    "productUrl": "https://direct.maeil.com/index.do",
+    "productType": "yogurt",
+    "gradeTags": [
+      "단백질 밀도 C",
+      "다이어트 C",
+      "퍼포먼스 C"
+    ],
+    "gradeDescriptions": [
+      "공식 출시자료 기준 현재 판매 중인 Drink 플레인 190mL 제품입니다.",
+      "컵형 그릭요거트보다 밀도는 낮지만 간편하게 마시기 좋습니다.",
+      "당류가 두 자릿수라 체중 관리용 우선순위는 낮습니다."
+    ],
+    "manufacturer": "매일유업",
+    "flavor": "플레인",
+    "fat": 3.4,
+    "sodium": 64,
+    "yogurtType": "드링킹 요거트",
+    "storageType": "냉장",
+    "lactoseFree": true,
+    "proteinPer100g": 4.4,
+    "needsServingCheck": true,
+    "nutritionBasis": "unknown",
+    "servingCheckNote": "현재 수치는 기존 수집값 기준이며, 공식몰 현재 SKU 기준 영양표는 추가 이미지 확인이 필요합니다.",
+    "nutritionPerBottle": {
+      "caloriesKcal": 132,
+      "proteinG": 8.3,
+      "carbsG": 17,
+      "sugarsG": 12.5,
+      "fatG": 3.4,
+      "sodiumMg": 64
+    }
+  },
+  {
+    "slug": "maeil-bio-greek-drink-banana-190",
+    "brand": "매일 바이오",
+    "name": "매일 바이오 그릭요거트 Drink 바나나 190mL",
+    "capacity": "190mL",
+    "variant": "바나나",
+    "tags": [
+      "PET"
+    ],
+    "proteinPerServing": 8.3,
+    "density": "4.4g/100mL",
+    "productUrl": "https://direct.maeil.com/index.do",
+    "productType": "yogurt",
+    "gradeTags": [
+      "단백질 밀도 C",
+      "다이어트 C",
+      "퍼포먼스 C"
+    ],
+    "gradeDescriptions": [
+      "공식 출시자료 기준 현재 판매 중인 Drink 바나나 190mL 제품입니다.",
+      "플레인 대비 당류가 더 높을 가능성이 있어 체중 관리용으로는 보수적으로 보는 편이 좋습니다.",
+      "상세 영양표는 추가 이미지 확인이 필요합니다."
+    ],
+    "manufacturer": "매일유업",
+    "flavor": "바나나",
+    "yogurtType": "드링킹 요거트",
+    "storageType": "냉장",
+    "lactoseFree": true,
+    "proteinPer100g": 4.4,
+    "needsServingCheck": true,
+    "nutritionBasis": "unknown",
+    "servingCheckNote": "공식 판매는 확인됐지만 상세 영양표 기준은 추가 이미지 확인이 필요합니다. 구매 전 라벨을 다시 확인해주세요.",
+    "nutritionPerBottle": {
+      "proteinG": 8.3
+    }
+  },
+  {
+    "slug": "maeil-bio-greek-drink-unsweetened-710",
+    "brand": "매일 바이오",
+    "name": "매일 바이오 그릭요거트 Drink 무가당 플레인 710mL",
+    "capacity": "710mL",
+    "variant": "무가당 플레인",
+    "tags": [
+      "PET"
+    ],
+    "proteinPerServing": 31.02,
+    "calories": 493.26,
+    "sugar": 46.71,
+    "density": "4.4g/100mL",
+    "productUrl": "https://direct.maeil.com/index.do",
+    "productType": "yogurt",
+    "gradeTags": [
+      "단백질 밀도 C",
+      "다이어트 C",
+      "퍼포먼스 C"
+    ],
+    "gradeDescriptions": [
+      "공식 출시자료 기준 현재 판매 중인 710mL 대용량 Drink SKU입니다.",
+      "현재 수치는 190mL 라인을 바탕으로 환산한 값이라 실제 라벨 재확인이 필요합니다.",
+      "가족용 또는 나눠 마시는 대용량 SKU로 보는 편이 적절합니다."
+    ],
+    "manufacturer": "매일유업",
+    "flavor": "플레인",
+    "fat": 12.71,
+    "sodium": 239.16,
+    "yogurtType": "드링킹 요거트",
+    "storageType": "냉장",
+    "lactoseFree": true,
+    "proteinPer100g": 4.4,
+    "needsServingCheck": true,
+    "nutritionBasis": "unknown",
+    "servingCheckNote": "공식 판매는 확인됐지만 현재 수치는 190mL 라인을 바탕으로 환산한 값입니다. 실제 제품 라벨의 총 영양정보를 다시 확인해주세요.",
+    "nutritionPerBottle": {
+      "caloriesKcal": 493.26,
+      "proteinG": 31.02,
+      "carbsG": 63.53,
+      "sugarsG": 46.71,
+      "fatG": 12.71,
+      "sodiumMg": 239.16
+    }
+  },
+  {
+    "slug": "maeil-bio-greek-drink-plain-710",
+    "brand": "매일 바이오",
+    "name": "매일 바이오 그릭요거트 Drink 플레인 710mL",
+    "capacity": "710mL",
+    "variant": "플레인",
+    "tags": [
+      "PET"
+    ],
+    "proteinPerServing": 31.02,
+    "calories": 493.26,
+    "sugar": 46.71,
+    "density": "4.4g/100mL",
+    "productUrl": "https://direct.maeil.com/index.do",
+    "productType": "yogurt",
+    "gradeTags": [
+      "단백질 밀도 C",
+      "다이어트 C",
+      "퍼포먼스 C"
+    ],
+    "gradeDescriptions": [
+      "공식 출시자료 기준 현재 판매 중인 710mL 대용량 Drink SKU입니다.",
+      "현재 수치는 190mL 라인을 바탕으로 환산한 값이라 실제 라벨 재확인이 필요합니다.",
+      "가족용 또는 나눠 마시는 대용량 SKU로 보는 편이 적절합니다."
+    ],
+    "manufacturer": "매일유업",
+    "flavor": "플레인",
+    "fat": 12.71,
+    "sodium": 239.16,
+    "yogurtType": "드링킹 요거트",
+    "storageType": "냉장",
+    "lactoseFree": true,
+    "proteinPer100g": 4.4,
+    "needsServingCheck": true,
+    "nutritionBasis": "unknown",
+    "servingCheckNote": "공식 판매는 확인됐지만 현재 수치는 190mL 라인을 바탕으로 환산한 값입니다. 실제 제품 라벨의 총 영양정보를 다시 확인해주세요.",
+    "nutritionPerBottle": {
+      "caloriesKcal": 493.26,
+      "proteinG": 31.02,
+      "carbsG": 63.53,
+      "sugarsG": 46.71,
+      "fatG": 12.71,
+      "sodiumMg": 239.16
+    }
+  },
+  {
+    "slug": "maeil-bio-greek-drink-banana-710",
+    "brand": "매일 바이오",
+    "name": "매일 바이오 그릭요거트 Drink 바나나 710mL",
+    "capacity": "710mL",
+    "variant": "바나나",
+    "tags": [
+      "PET"
+    ],
+    "proteinPerServing": 31.02,
+    "calories": 493.26,
+    "sugar": 46.71,
+    "density": "4.4g/100mL",
+    "productUrl": "https://direct.maeil.com/index.do",
+    "productType": "yogurt",
+    "gradeTags": [
+      "단백질 밀도 C",
+      "다이어트 C",
+      "퍼포먼스 C"
+    ],
+    "gradeDescriptions": [
+      "공식 출시자료 기준 현재 판매 중인 710mL 대용량 Drink SKU입니다.",
+      "현재 수치는 190mL 라인을 바탕으로 환산한 값이라 실제 라벨 재확인이 필요합니다.",
+      "가족용 또는 나눠 마시는 대용량 SKU로 보는 편이 적절합니다."
+    ],
+    "manufacturer": "매일유업",
+    "flavor": "플레인",
+    "fat": 12.71,
+    "sodium": 239.16,
+    "yogurtType": "드링킹 요거트",
+    "storageType": "냉장",
+    "lactoseFree": true,
+    "proteinPer100g": 4.4,
+    "needsServingCheck": true,
+    "nutritionBasis": "unknown",
+    "servingCheckNote": "공식 판매는 확인됐지만 현재 수치는 190mL 라인을 바탕으로 환산한 값입니다. 실제 제품 라벨의 총 영양정보를 다시 확인해주세요.",
+    "nutritionPerBottle": {
+      "caloriesKcal": 493.26,
+      "proteinG": 31.02,
+      "carbsG": 63.53,
+      "sugarsG": 46.71,
+      "fatG": 12.71,
+      "sodiumMg": 239.16
+    }
+  },
+  {
+    "slug": "sangha-organic-greek-apple-kale-120",
+    "brand": "상하목장",
+    "name": "상하목장 유기농 그릭요거트 사과&케일 120g",
+    "capacity": "120g",
+    "variant": "사과&케일",
+    "tags": [
+      "컵"
+    ],
+    "proteinPerServing": 0,
+    "density": "-",
+    "productUrl": "https://direct.maeil.com/m/brand/sangha",
+    "productType": "yogurt",
+    "gradeTags": [],
+    "gradeDescriptions": [
+      "공식몰 기준 현재 판매 중인 사과&케일 120g 제품입니다.",
+      "플레인 계열과 달리 과일·채소 블렌드 라인이라 영양 구성이 다를 수 있습니다.",
+      "상세 영양표는 추가 이미지 확인이 필요합니다."
+    ],
+    "manufacturer": "매일유업",
+    "flavor": "사과&케일",
+    "yogurtType": "그릭 요거트",
+    "storageType": "냉장",
+    "lactoseFree": false,
+    "needsServingCheck": true,
+    "nutritionBasis": "unknown",
+    "servingCheckNote": "공식몰에서 8개 묶음 판매는 확인됐지만 상세 영양표는 확보하지 못했습니다. 구매 전 제품 라벨의 기준 중량과 영양정보를 다시 확인해주세요."
+  },
+  {
+    "slug": "sangha-organic-greek-blueberry-kale-120",
+    "brand": "상하목장",
+    "name": "상하목장 유기농 그릭요거트 블루베리&케일 120g",
+    "capacity": "120g",
+    "variant": "블루베리&케일",
+    "tags": [
+      "컵"
+    ],
+    "proteinPerServing": 0,
+    "density": "-",
+    "productUrl": "https://direct.maeil.com/m/brand/sangha",
+    "productType": "yogurt",
+    "gradeTags": [],
+    "gradeDescriptions": [
+      "공식몰 기준 현재 판매 중인 블루베리&케일 120g 제품입니다.",
+      "플레인 계열과 달리 과일·채소 블렌드 라인이라 영양 구성이 다를 수 있습니다.",
+      "상세 영양표는 추가 이미지 확인이 필요합니다."
+    ],
+    "manufacturer": "매일유업",
+    "flavor": "블루베리&케일",
+    "yogurtType": "그릭 요거트",
+    "storageType": "냉장",
+    "lactoseFree": false,
+    "needsServingCheck": true,
+    "nutritionBasis": "unknown",
+    "servingCheckNote": "공식몰에서 8개 묶음 판매는 확인됐지만 상세 영양표는 확보하지 못했습니다. 구매 전 제품 라벨의 기준 중량과 영양정보를 다시 확인해주세요."
   }
 ]
