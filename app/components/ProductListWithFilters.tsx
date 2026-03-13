@@ -1,8 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useMemo, useState } from "react";
 import { usePathname } from "next/navigation";
+import { useEffect, useMemo, useState } from "react";
 import type { ProductDetailProps } from "../data/products";
 import { applyCurationToCategoryProducts } from "../lib/curationSystem";
 import {

@@ -7,7 +7,7 @@ export function getCapacityMl(product: { capacity: string }): number {
 
 export function getProteinSourceCategory(
   product: ProductDetailProps,
-): "식물성" | "우유" | "혼합" {
+): "식물성" | "유청" | "혼합" {
   if (product.proteinSource === "식물성") return "식물성";
 
   const haystack = [product.proteinSource, product.name, ...(product.tags ?? [])]
@@ -16,7 +16,7 @@ export function getProteinSourceCategory(
     .toLowerCase();
 
   if (/식물성|비건|soy|pea|oat/.test(haystack)) return "식물성";
-  if (product.proteinSource === "우유" || product.drinkType === "밀크형") return "우유";
+  if (product.proteinSource === "유청" || product.drinkType === "밀크형") return "유청";
   return "혼합";
 }
 
@@ -29,7 +29,7 @@ export function getTasteCategory(
   if (/커피|모카|라떼|에스프레소/.test(haystack)) return "커피";
   if (/바나나|바닐라/.test(haystack)) return "바나나/바닐라";
   if (/딸기|베리|복숭아|사과|레몬|망고|포도|블루베리/.test(haystack)) return "과일맛";
-  if (/고소|견과|곡물|아몬드|땅콩|헤이즐넛/.test(haystack)) return "고소/견과";
+  if (/고소|견과|곡물|귀리|아몬드|두유|헤이즐넛/.test(haystack)) return "고소/견과";
   return "기타";
 }
 

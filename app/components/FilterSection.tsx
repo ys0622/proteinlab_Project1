@@ -13,16 +13,18 @@ const drinkBrandOptions = [
   "매일유업",
   "베지밀",
   "셀렉스",
-  "오브리고",
+  "솔브앤고",
   "얼티브",
-  "연세우유",
+  "연세유업",
   "오늘단백",
-  "옵티멈뉴트리션",
+  "함소아제약",
   "칼로바이",
   "테이크핏",
-  "테이스트루트",
+  "파스퇴르",
   "하이뮨",
-  "효소원제약",
+  "서울우유",
+  "세븐일레븐",
+  "오트몬드",
 ];
 
 const barBrandOptions = [
@@ -33,9 +35,9 @@ const barBrandOptions = [
   "비에스엔",
   "퀘스트 뉴트리션",
   "포스트",
-  "프로방앗간",
-  "하루단백",
-  "하니앤손",
+  "프로틴방앗간",
+  "온단백",
+  "힘내고",
   "랩노쉬",
   "더단백",
   "셀렉스",
@@ -48,10 +50,12 @@ const barBrandOptions = [
   "칼로바이",
   "켈로그",
   "롯데웰푸드",
+  "크라운",
+  "베노프",
 ];
 
 const drinkProteinOptions = ["초고단백(30g 이상)", "고단백(20g 이상)", "일반단백(20g 미만)"];
-const drinkSourceOptions = ["식물성", "우유", "혼합"];
+const drinkSourceOptions = ["식물성", "유청", "혼합"];
 const drinkTasteOptions = ["고소/견과", "과일맛", "바나나/바닐라", "초콜릿/케이크", "커피", "기타"];
 const drinkVolumeOptions = ["200ml 이하", "200~300ml", "300~400ml", "400ml 이상"];
 
@@ -341,11 +345,9 @@ export default function FilterSection(props: FilterSectionProps) {
           >
             상세 필터
             <span
-              className={`inline-block transition-transform duration-200 ${
-                mobileFilterOpen ? "rotate-180" : ""
-              }`}
+              className={`inline-block transition-transform duration-200 ${mobileFilterOpen ? "rotate-180" : ""}`}
             >
-              ▾
+              ▼
             </span>
           </button>
           {mobileToolbarSlot}
