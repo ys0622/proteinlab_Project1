@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import Image from "next/image";
 import Link from "next/link";
@@ -48,7 +48,7 @@ export default function ProductCard({
   brand,
   name,
   capacity,
-  variant = "일반",
+  variant = "?쇰컲",
   tags,
   proteinPerServing,
   calories,
@@ -59,6 +59,7 @@ export default function ProductCard({
   gradeTags = [],
   slug,
   priority = false,
+  productType,
   yogurtType,
 }: ProductCardProps) {
   const router = useRouter();
@@ -71,6 +72,13 @@ export default function ProductCard({
   const packageTag = tags.find((tag) => ["팩", "PET", "CAN"].includes(tag));
   const capacitySuffix = packageTag ? `, ${packageTag}` : "";
   const canOpenDetail = Boolean(detailHref && detailHref !== "#");
+  const visibleGradeTags =
+    productType === "yogurt"
+      ? gradeTags.filter(
+          (tag) =>
+            tag.includes("단백질 밀도") || tag.includes("다이어트") || tag.includes("퍼포먼스"),
+        )
+      : gradeTags;
 
   const shouldIgnoreCardClick = (target: EventTarget | null) => {
     if (!(target instanceof HTMLElement)) {
@@ -148,7 +156,7 @@ export default function ProductCard({
         onKeyDown={handleCardKeyDown}
         role={canOpenDetail ? "link" : undefined}
         tabIndex={canOpenDetail ? 0 : undefined}
-        aria-label={canOpenDetail ? `${brand} ${name} 상세 보기` : undefined}
+        aria-label={canOpenDetail ? `${brand} ${name} ?곸꽭 蹂닿린` : undefined}
         style={{
           borderRadius: "16px",
           padding: "14px",
@@ -159,7 +167,7 @@ export default function ProductCard({
           <Link
             href={detailHref}
             className="block rounded-xl focus:outline-none focus:ring-2 focus:ring-[var(--accent)] focus:ring-offset-2"
-            aria-label={`${brand} ${name} 상세 보기`}
+            aria-label={`${brand} ${name} ?곸꽭 蹂닿린`}
           >
             {imageArea}
           </Link>
@@ -185,7 +193,7 @@ export default function ProductCard({
           </h3>
 
           <MetricBadgeGroup className="product-card__badges mt-1.5">
-            {gradeTags.map((tag) => {
+            {visibleGradeTags.map((tag) => {
               const displayTag = formatProductBadgeLabel(tag);
               const tone = getProductBadgeTone(displayTag);
               const tooltip = getMetricBadgeTooltip(tag);
@@ -201,7 +209,7 @@ export default function ProductCard({
                 />
               );
             })}
-            {variant && variant !== "일반" ? (
+            {variant && variant !== "?쇰컲" && productType !== "yogurt" ? (
               <ProductBadge
                 label={variant}
                 tone="neutral"
@@ -210,7 +218,7 @@ export default function ProductCard({
                 tooltipAriaLabel={getMetricBadgeAriaLabel(variant)}
               />
             ) : null}
-            {yogurtType ? (
+            {yogurtType && productType !== "yogurt" ? (
               <ProductBadge
                 label={yogurtType}
                 tone="neutral"
@@ -280,7 +288,7 @@ export default function ProductCard({
               className="flex flex-1 items-center justify-center rounded-[10px] border border-[#e2e2e2] bg-white font-medium text-[var(--foreground)] transition-colors hover:border-[var(--accent)] hover:bg-[var(--accent-light)] hover:text-[var(--accent)] active:scale-[0.98]"
               style={{ height: "40px", fontSize: "12px", borderRadius: "10px" }}
             >
-              상세보기
+              ?곸꽭蹂닿린
             </Link>
             {slug ? (
               <CompareButton slug={slug} detailHref={detailHref} />
@@ -291,7 +299,7 @@ export default function ProductCard({
                 className="flex flex-1 items-center justify-center rounded-[10px] border border-[#e2e2e2] bg-white font-medium text-[var(--foreground)] opacity-60"
                 style={{ height: "40px", fontSize: "12px", borderRadius: "10px" }}
               >
-                비교
+                鍮꾧탳
               </button>
             )}
           </div>
@@ -300,3 +308,7 @@ export default function ProductCard({
     </>
   );
 }
+
+
+
+

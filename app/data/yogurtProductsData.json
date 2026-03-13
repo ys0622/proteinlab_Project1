@@ -12,13 +12,11 @@
     "density": "10.0g/100g",
     "productUrl": "https://www.coupang.com/vp/products/9181041542",
     "productType": "yogurt",
-    "gradeTags": [
-      "단백질 밀도 A",
-      "다이어트 A"
-    ],
+    "gradeTags": ["단백질 밀도 A", "다이어트 A", "퍼포먼스 B"],
     "gradeDescriptions": [
       "100g 기준 단백질 함량이 높아 밀도 체감이 좋은 편입니다.",
-      "칼로리와 당류 부담이 낮아 가벼운 식사 보완용으로 무난합니다."
+      "칼로리와 당류 부담이 낮아 가벼운 식사 보완용으로 무난합니다.",
+      "운동 직후 회복용보다는 간식형 보충에 더 적합한 구성이에요."
     ],
     "manufacturer": "풀무원다논",
     "flavor": "플레인",
@@ -51,13 +49,11 @@
     "density": "9.0g/100g",
     "productUrl": "https://www.coupang.com/vp/products/9181041541",
     "productType": "yogurt",
-    "gradeTags": [
-      "단백질 밀도 A",
-      "다이어트 B"
-    ],
+    "gradeTags": ["단백질 밀도 A", "다이어트 B", "퍼포먼스 B"],
     "gradeDescriptions": [
       "단백질 밀도가 높아 요거트군 안에서는 상위권에 속합니다.",
-      "당류가 약간 올라가 플레인보다는 다이어트 친화도가 낮습니다."
+      "당류가 약간 올라가 플레인보다는 다이어트 친화도가 낮습니다.",
+      "훈련 후 가벼운 보충이나 간식형 회복식으로 무난한 편입니다."
     ],
     "manufacturer": "풀무원다논",
     "flavor": "블루베리",
@@ -92,13 +88,11 @@
     "density": "9.0g/100g",
     "productUrl": "https://www.coupang.com/vp/products/1583671851",
     "productType": "yogurt",
-    "gradeTags": [
-      "단백질 밀도 B",
-      "다이어트 C"
-    ],
+    "gradeTags": ["단백질 밀도 B", "다이어트 C", "퍼포먼스 C"],
     "gradeDescriptions": [
       "단백질 강화 요거트지만 상위 제품 대비 밀도는 한 단계 낮습니다.",
-      "당류가 있는 편이라 체중 관리 목적에는 우선순위가 낮습니다."
+      "당류가 있는 편이라 체중 관리 목적에는 우선순위가 낮습니다.",
+      "운동용 회복보다는 일반 고단백 간식에 가까운 포지션입니다."
     ],
     "manufacturer": "빙그레",
     "flavor": "블루베리",
@@ -117,6 +111,259 @@
       "satFatG": 1.3,
       "cholesterolMg": 20,
       "sodiumMg": 70
+    }
+  },
+  {
+    "slug": "yoplait-protein-plain-210",
+    "brand": "요플레",
+    "name": "요플레 프로틴 플레인 드링킹 요거트",
+    "capacity": "210mL",
+    "variant": "플레인",
+    "tags": ["PET"],
+    "proteinPerServing": 15,
+    "calories": 125,
+    "sugar": 4,
+    "density": "7.1g/100mL",
+    "productUrl": "https://www.coupang.com/vp/products/9048812266",
+    "productType": "yogurt",
+    "gradeTags": ["단백질 밀도 B", "다이어트 A", "퍼포먼스 B"],
+    "gradeDescriptions": [
+      "드링킹형 기준으로 단백질 함량이 안정적인 편입니다.",
+      "당류가 낮고 마시기 쉬워 가벼운 보충용으로 적합합니다.",
+      "운동 후 한 병 기준 보충량으로는 무난하지만 상위권은 아닙니다."
+    ],
+    "manufacturer": "빙그레",
+    "flavor": "플레인",
+    "fat": 1.8,
+    "sodium": 95,
+    "yogurtType": "Drinking yogurt",
+    "storageType": "냉장",
+    "lactoseFree": false,
+    "proteinPer100g": 7.1,
+    "nutritionPerBottle": {
+      "caloriesKcal": 125,
+      "proteinG": 15,
+      "carbsG": 9,
+      "sugarsG": 4,
+      "fatG": 1.8,
+      "sodiumMg": 95
+    }
+  },
+  {
+    "slug": "yoplait-protein-strawberry-210",
+    "brand": "요플레",
+    "name": "요플레 프로틴 딸기 드링킹 요거트",
+    "capacity": "210mL",
+    "variant": "딸기",
+    "tags": ["PET"],
+    "proteinPerServing": 15,
+    "calories": 130,
+    "sugar": 7,
+    "density": "7.1g/100mL",
+    "productUrl": "https://www.coupang.com/vp/products/9048812265",
+    "productType": "yogurt",
+    "gradeTags": ["단백질 밀도 B", "다이어트 B", "퍼포먼스 B"],
+    "gradeDescriptions": [
+      "드링킹형으로 간편하지만 플레인 계열보다 당류가 높습니다.",
+      "맛형 제품이라 다이어트 친화도는 중간 수준입니다.",
+      "간편 회복용으로 무난하지만 밀도 체감은 상위 제품보다 낮습니다."
+    ],
+    "manufacturer": "빙그레",
+    "flavor": "딸기",
+    "fat": 1.8,
+    "sodium": 95,
+    "yogurtType": "Drinking yogurt",
+    "storageType": "냉장",
+    "lactoseFree": false,
+    "proteinPer100g": 7.1,
+    "nutritionPerBottle": {
+      "caloriesKcal": 130,
+      "proteinG": 15,
+      "carbsG": 12,
+      "sugarsG": 7,
+      "fatG": 1.8,
+      "sodiumMg": 95
+    }
+  },
+  {
+    "slug": "yoplait-protein-strawberry-banana-210",
+    "brand": "요플레",
+    "name": "요플레 프로틴 딸기바나나 드링킹 요거트",
+    "capacity": "210mL",
+    "variant": "딸기바나나",
+    "tags": ["PET"],
+    "proteinPerServing": 15,
+    "calories": 135,
+    "sugar": 8,
+    "density": "7.1g/100mL",
+    "productUrl": "https://www.coupang.com/vp/products/9048812264",
+    "productType": "yogurt",
+    "gradeTags": ["단백질 밀도 B", "다이어트 B", "퍼포먼스 B"],
+    "gradeDescriptions": [
+      "드링킹형 기준으로는 단백질 총량이 충분한 편입니다.",
+      "당류와 열량이 조금 더 높아 맛 선호형 제품에 가깝습니다.",
+      "운동 직후 간편 보충용으로는 무난하지만 최우선 추천은 아닙니다."
+    ],
+    "manufacturer": "빙그레",
+    "flavor": "딸기바나나",
+    "fat": 1.9,
+    "sodium": 100,
+    "yogurtType": "Drinking yogurt",
+    "storageType": "냉장",
+    "lactoseFree": false,
+    "proteinPer100g": 7.1,
+    "nutritionPerBottle": {
+      "caloriesKcal": 135,
+      "proteinG": 15,
+      "carbsG": 13,
+      "sugarsG": 8,
+      "fatG": 1.9,
+      "sodiumMg": 100
+    }
+  },
+  {
+    "slug": "yoplait-protein-max-210",
+    "brand": "요플레",
+    "name": "요플레 프로틴 MAX 드링킹 요거트",
+    "capacity": "210mL",
+    "variant": "플레인",
+    "tags": ["PET"],
+    "proteinPerServing": 18,
+    "calories": 145,
+    "sugar": 4,
+    "density": "8.6g/100mL",
+    "productUrl": "https://www.coupang.com/vp/products/9181054975",
+    "productType": "yogurt",
+    "gradeTags": ["단백질 밀도 A", "다이어트 A", "퍼포먼스 A"],
+    "gradeDescriptions": [
+      "드링킹 요거트 중에서는 단백질 밀도가 높은 편입니다.",
+      "당류 부담이 낮아 체중 관리 관점에서도 비교적 유리합니다.",
+      "간편성까지 고려하면 운동 후 보충용으로 가장 보기 좋은 축입니다."
+    ],
+    "manufacturer": "빙그레",
+    "flavor": "플레인",
+    "fat": 2,
+    "sodium": 110,
+    "yogurtType": "Drinking yogurt",
+    "storageType": "냉장",
+    "lactoseFree": false,
+    "proteinPer100g": 8.6,
+    "nutritionPerBottle": {
+      "caloriesKcal": 145,
+      "proteinG": 18,
+      "carbsG": 10,
+      "sugarsG": 4,
+      "fatG": 2,
+      "sodiumMg": 110
+    }
+  },
+  {
+    "slug": "who-greek-plain-80",
+    "brand": "후디스",
+    "name": "후디스 그릭요거트 플레인",
+    "capacity": "80g",
+    "variant": "플레인",
+    "tags": ["컵"],
+    "proteinPerServing": 6,
+    "calories": 65,
+    "sugar": 3,
+    "density": "7.5g/100g",
+    "productUrl": "https://www.coupang.com/vp/products/8986387020",
+    "productType": "yogurt",
+    "gradeTags": ["단백질 밀도 B", "다이어트 B", "퍼포먼스 C"],
+    "gradeDescriptions": [
+      "그릭 타입이라 점도와 포만감이 괜찮은 편입니다.",
+      "중량이 작아 간식형 관리에는 무난하지만 총량은 높지 않습니다.",
+      "운동 후 보충량 기준으로는 상대적으로 부족한 편입니다."
+    ],
+    "manufacturer": "일동후디스",
+    "flavor": "플레인",
+    "fat": 3.4,
+    "sodium": 45,
+    "yogurtType": "Greek yogurt",
+    "storageType": "냉장",
+    "lactoseFree": false,
+    "proteinPer100g": 7.5,
+    "nutritionPerBottle": {
+      "caloriesKcal": 65,
+      "proteinG": 6,
+      "carbsG": 4.5,
+      "sugarsG": 3,
+      "fatG": 3.4,
+      "satFatG": 2.1,
+      "sodiumMg": 45
+    }
+  },
+  {
+    "slug": "who-greek-lowfat-140",
+    "brand": "후디스",
+    "name": "후디스 그릭요거트 달지않은 저지방",
+    "capacity": "140g",
+    "variant": "플레인",
+    "tags": ["컵"],
+    "proteinPerServing": 11,
+    "calories": 95,
+    "sugar": 4.5,
+    "density": "7.9g/100g",
+    "productUrl": "https://www.coupang.com/vp/products/8986387021",
+    "productType": "yogurt",
+    "gradeTags": ["단백질 밀도 B", "다이어트 A", "퍼포먼스 B"],
+    "gradeDescriptions": [
+      "그릭 요거트군에서 밀도와 총량이 모두 무난한 편입니다.",
+      "저지방·저당 방향이라 식사 보완이나 가벼운 간식에 잘 맞습니다.",
+      "운동 후 간단한 회복식으로도 비교적 활용하기 쉽습니다."
+    ],
+    "manufacturer": "일동후디스",
+    "flavor": "플레인",
+    "fat": 1.7,
+    "sodium": 65,
+    "yogurtType": "Greek yogurt",
+    "storageType": "냉장",
+    "lactoseFree": false,
+    "proteinPer100g": 7.9,
+    "nutritionPerBottle": {
+      "caloriesKcal": 95,
+      "proteinG": 11,
+      "carbsG": 8,
+      "sugarsG": 4.5,
+      "fatG": 1.7,
+      "sodiumMg": 65
+    }
+  },
+  {
+    "slug": "greekday-light-100",
+    "brand": "그릭데이",
+    "name": "그릭데이 라이트 그릭요거트",
+    "capacity": "100g",
+    "variant": "플레인",
+    "tags": ["컵"],
+    "proteinPerServing": 11,
+    "calories": 90,
+    "sugar": 3.5,
+    "density": "11.0g/100g",
+    "productUrl": "https://www.coupang.com/vp/products/9014451181",
+    "productType": "yogurt",
+    "gradeTags": ["단백질 밀도 A", "다이어트 A", "퍼포먼스 B"],
+    "gradeDescriptions": [
+      "그릭 타입 중에서도 단백질 밀도가 높은 편이라 비교용 샘플로 보기 좋습니다.",
+      "저당·저칼로리 방향이라 체중 관리용 요거트로 무난합니다.",
+      "총량은 중간 수준이라 운동 후 보충용으로는 보조 역할에 가깝습니다."
+    ],
+    "manufacturer": "스위트바이오",
+    "flavor": "플레인",
+    "fat": 3.2,
+    "sodium": 45,
+    "yogurtType": "Greek yogurt",
+    "storageType": "냉장",
+    "lactoseFree": false,
+    "proteinPer100g": 11,
+    "nutritionPerBottle": {
+      "caloriesKcal": 90,
+      "proteinG": 11,
+      "carbsG": 5,
+      "sugarsG": 3.5,
+      "fatG": 3.2,
+      "sodiumMg": 45
     }
   }
 ]
