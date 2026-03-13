@@ -14,16 +14,16 @@
     "productType": "yogurt",
     "gradeTags": [
       "단백질 밀도 A",
-      "다이어트 A",
-      "퍼포먼스 B"
+      "다이어트 A"
     ],
     "gradeDescriptions": [
       "100g 기준 단백질 함량이 높아 밀도 체감이 좋은 편입니다.",
-      "칼로리와 당류 부담이 낮아 가벼운 식사 보완용으로 무난합니다.",
-      "운동 직후 회복용보다는 간식형 보충에 더 적합한 구성이에요."
+      "칼로리와 당류 부담이 낮아 가벼운 식사 보완용으로 무난합니다."
     ],
     "manufacturer": "풀무원다논",
     "flavor": "플레인",
+    "bcaa": "3250mg",
+    "proteinSource": "혼합 (유청+카제인)",
     "fat": 0,
     "yogurtType": "Protein yogurt",
     "storageType": "냉장",
@@ -34,7 +34,8 @@
       "proteinG": 15,
       "carbsG": 6,
       "sugarsG": 2.3,
-      "fatG": 0
+      "fatG": 0,
+      "bcaaMg": 3250
     }
   },
   {
@@ -52,16 +53,16 @@
     "productType": "yogurt",
     "gradeTags": [
       "단백질 밀도 A",
-      "다이어트 B",
-      "퍼포먼스 B"
+      "다이어트 B"
     ],
     "gradeDescriptions": [
       "단백질 밀도가 높아 요거트군 안에서는 상위권에 속합니다.",
-      "당류가 약간 올라가 플레인보다는 다이어트 친화도가 낮습니다.",
-      "훈련 후 가벼운 보충이나 간식형 회복식으로 무난한 편입니다."
+      "당류가 약간 올라가 플레인보다는 다이어트 친화도가 낮습니다."
     ],
     "manufacturer": "풀무원다논",
     "flavor": "블루베리",
+    "bcaa": "3250mg",
+    "proteinSource": "혼합 (유청+카제인)",
     "fat": 0,
     "sodium": 80,
     "yogurtType": "Protein yogurt",
@@ -74,7 +75,8 @@
       "carbsG": 12,
       "sugarsG": 10,
       "fatG": 0,
-      "sodiumMg": 80
+      "sodiumMg": 80,
+      "bcaaMg": 3250
     }
   },
   {
@@ -92,13 +94,11 @@
     "productType": "yogurt",
     "gradeTags": [
       "단백질 밀도 B",
-      "다이어트 C",
-      "퍼포먼스 C"
+      "다이어트 C"
     ],
     "gradeDescriptions": [
       "단백질 강화 요거트지만 상위 제품 대비 밀도는 한 단계 낮습니다.",
-      "당류가 있는 편이라 체중 관리 목적에는 우선순위가 낮습니다.",
-      "운동용 회복보다는 일반 고단백 간식에 가까운 포지션입니다."
+      "당류가 있는 편이라 체중 관리 목적에는 우선순위가 낮습니다."
     ],
     "manufacturer": "빙그레",
     "flavor": "블루베리",
