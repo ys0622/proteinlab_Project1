@@ -441,7 +441,7 @@
   {
     "slug": "pulmuone-dannon-greek-unsweetened-90",
     "brand": "풀무원다논",
-    "name": "풀무원다논 그릭요거트 무가당 플레인",
+    "name": "풀무원다논 그릭요거트 무가당 플레인 90g",
     "capacity": "90g",
     "variant": "플레인",
     "tags": [
@@ -451,7 +451,7 @@
     "calories": 64,
     "sugar": 3.3,
     "density": "6.8g/100g",
-    "productUrl": "https://www.coupang.com/vp/products/7156108906",
+    "productUrl": "https://www.costco.co.kr/Foods/Chilled-Foods/Chilled-Foods/Pulmuone-Danone-Nonsweet-Greek-Yogurt-90gx24/p/683542",
     "productType": "yogurt",
     "gradeTags": [
       "단백질 밀도 B",
@@ -459,8 +459,8 @@
       "퍼포먼스 C"
     ],
     "gradeDescriptions": [
+      "현재 판매 흔적이 확인되는 무가당 플레인 90g 제품입니다.",
       "그릭 요거트 기준으로 밀도와 칼로리 균형이 무난한 편입니다.",
-      "무가당 플레인이라 당류 부담이 상대적으로 낮습니다.",
       "총 단백질량은 높지 않아 운동 후 보충식보다는 간식형 제품에 가깝습니다."
     ],
     "manufacturer": "풀무원다논",
@@ -479,7 +479,10 @@
       "fatG": 2,
       "satFatG": 1.2,
       "sodiumMg": 50
-    }
+    },
+    "needsServingCheck": true,
+    "nutritionBasis": "unknown",
+    "servingCheckNote": "현재 확인한 판매 페이지는 24개입 구성입니다. 현재 수치는 90g 1컵 기준으로 유지했고, 실제 표기 기준은 제품 라벨을 다시 확인해야 합니다."
   },
   {
     "slug": "yoplait-protein-plain-100",
