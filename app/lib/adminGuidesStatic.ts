@@ -85,7 +85,6 @@ const sections: AdminGuideSection[] = [
       article("deficiency-symptoms", "단백질 부족 신호", "피로, 근육 감소, 부종 등 부족 신호를 정리합니다.", "/guides/basics/deficiency-symptoms", { emoji: "🚨", tags: ["결핍", "증상"] }),
       article("daily-requirement", "하루 단백질 섭취량", "체중과 활동량 기준으로 하루 단백질 권장량을 설명합니다.", "/guides/basics/daily-requirement", { emoji: "📏", tags: ["섭취량", "권장량"] }),
       article("digestion", "단백질 소화와 흡수", "단백질이 소화되고 흡수되는 과정을 설명합니다.", "/guides/basics/digestion", { emoji: "🥛", tags: ["소화", "흡수"] }),
-      article("role-overview", "단백질 역할 개요 인포그래픽", "단백질의 역할을 시각적으로 이해하는 개요 페이지입니다.", "/guides/basics/role-overview", { emoji: "📊", tags: ["인포그래픽", "개요"] }),
     ],
   },
   {
