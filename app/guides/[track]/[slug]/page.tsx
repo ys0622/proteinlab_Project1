@@ -167,8 +167,8 @@ function BarChartSvg() {
     { label: "혈액", pct: 6, color: "#ceeade" },
   ];
   return (
-    <div className="mt-4 overflow-x-auto rounded-2xl border border-[#d8d4cd] bg-[#f7f5f0] p-4">
-      <svg viewBox="0 0 520 112" xmlns="http://www.w3.org/2000/svg" className="w-full min-w-[400px]" aria-label="인체 조직별 단백질 비중">
+    <div className="mt-4 rounded-2xl border border-[#d8d4cd] bg-[#f7f5f0] p-4">
+      <svg viewBox="0 0 520 112" xmlns="http://www.w3.org/2000/svg" className="w-full max-w-[480px]" aria-label="인체 조직별 단백질 비중">
         {rows.map((row, i) => {
           const barW = (row.pct / 25) * 340;
           const y = i * 19 + 6;
@@ -190,10 +190,10 @@ function BarChartSvg() {
 
 function RoleIconSvg() {
   return (
-    <div className="mt-4 overflow-x-auto rounded-2xl border border-[#d8d4cd] bg-[#f7f5f0] p-4">
-      <svg viewBox="0 0 540 82" xmlns="http://www.w3.org/2000/svg" className="w-full min-w-[420px]" aria-label="단백질의 3가지 역할">
+    <div className="mt-4 overflow-x-auto rounded-2xl border border-[#d8d4cd] bg-[#f7f5f0] p-3">
+      <svg viewBox="0 0 540 90" xmlns="http://www.w3.org/2000/svg" className="w-full min-w-[320px] max-w-[540px]" aria-label="단백질의 3가지 역할">
         {/* 근육 */}
-        <rect x="10" y="4" width="160" height="74" rx="12" fill="#e7f3ec" stroke="#c8e6d8" strokeWidth="1" />
+        <rect x="10" y="4" width="160" height="82" rx="12" fill="#e7f3ec" stroke="#c8e6d8" strokeWidth="1" />
         <circle cx="90" cy="30" r="16" fill="white" stroke="#3d8b6e" strokeWidth="1.5" />
         <rect x="78" y="28" width="24" height="4" rx="2" fill="#3d8b6e" />
         <rect x="74" y="24" width="7" height="12" rx="2" fill="#3d8b6e" />
@@ -201,14 +201,14 @@ function RoleIconSvg() {
         <text x="90" y="57" textAnchor="middle" fontSize="12" fontWeight="700" fill="#2d6a4f" fontFamily="sans-serif">근육</text>
         <text x="90" y="70" textAnchor="middle" fontSize="10" fill="#5c8a72" fontFamily="sans-serif">생성 · 회복 · 유지</text>
         {/* 면역 */}
-        <rect x="190" y="4" width="160" height="74" rx="12" fill="#eaf0fa" stroke="#c5d8f0" strokeWidth="1" />
+        <rect x="190" y="4" width="160" height="82" rx="12" fill="#eaf0fa" stroke="#c5d8f0" strokeWidth="1" />
         <circle cx="270" cy="30" r="16" fill="white" stroke="#4a7fb5" strokeWidth="1.5" />
         <path d="M270,18 L281,22 L281,31 Q281,40 270,44 Q259,40 259,31 L259,22 Z" fill="none" stroke="#4a7fb5" strokeWidth="2" strokeLinejoin="round" />
         <path d="M265,30 L268,33 L276,25" fill="none" stroke="#4a7fb5" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
         <text x="270" y="57" textAnchor="middle" fontSize="12" fontWeight="700" fill="#2c5f8a" fontFamily="sans-serif">면역</text>
         <text x="270" y="70" textAnchor="middle" fontSize="10" fill="#4a6f9a" fontFamily="sans-serif">항체 · 면역세포 재료</text>
         {/* 호르몬·효소 */}
-        <rect x="370" y="4" width="160" height="74" rx="12" fill="#f5ede8" stroke="#e8d0c4" strokeWidth="1" />
+        <rect x="370" y="4" width="160" height="82" rx="12" fill="#f5ede8" stroke="#e8d0c4" strokeWidth="1" />
         <circle cx="450" cy="30" r="16" fill="white" stroke="#8b5e3d" strokeWidth="1.5" />
         <circle cx="450" cy="30" r="5" fill="none" stroke="#8b5e3d" strokeWidth="2" />
         <line x1="450" y1="19" x2="450" y2="23" stroke="#8b5e3d" strokeWidth="2" strokeLinecap="round" />
@@ -292,7 +292,7 @@ export default async function GuideSlugPage({
         <HeroSection
           breadcrumb="단백질의 역할"
           h1="단백질, 몸에서 어떤 일을 할까?"
-          lead={<>단백질은 단순히 근육을 키우는 영양소가 아닙니다.<br />면역세포를 만들고, 호르몬을 합성하고, 손상된 조직을 회복하는 데도 단백질이 필요합니다.</>}
+          lead={<>단백질 하면 보통 근육을 떠올리지만, 사실 그게 전부가 아닙니다.<br />피부, 혈액, 면역세포, 호르몬까지 — 우리 몸의 거의 모든 것이 단백질로 만들어집니다.<br />어디서부터 이해해야 할지 모르겠다면, 여기서 시작하세요.</>}
         />
         <main className="mx-auto max-w-[1200px] px-4 py-8 md:px-6">
           <div className="space-y-6">
@@ -301,8 +301,8 @@ export default async function GuideSlugPage({
             <section className="rounded-2xl border border-[#e8e6e3] bg-[#fffdf8] px-5 py-5">
               <h2 className="text-xl font-bold text-[var(--foreground)]">우리 몸은 단백질로 이루어져 있다</h2>
               <Callout>
-                아미노산이 결합한 단백질은 근육, 피부, 혈액, 효소, 호르몬 등 인체 거의 모든 구성 성분의 재료입니다.<br />
-                체내에서는 끊임없이 단백질이 생성·분해되며, 그때마다 새로운 단백질 공급이 필요합니다.
+                우리 몸은 매일 단백질을 분해하고 다시 만들고 있습니다.<br />
+                근육이 줄고, 피부가 거칠어지고, 자주 피곤한 이유 — 단백질 공급이 부족할 때 나타나는 신호일 수 있습니다.
               </Callout>
               <BarChartSvg />
               <DataTable
@@ -323,19 +323,19 @@ export default async function GuideSlugPage({
                 {[
                   {
                     title: "근육 — 만들고, 회복하고, 유지한다",
-                    body: "운동 후 분해된 아미노산, 특히 류신이 근육 내 mTOR 신호를 활성화해 근섬유 합성을 촉진합니다. 운동하는 사람은 체중 1kg당 1.4–2.0g 섭취가 권장됩니다.",
+                    body: "운동 후 단백질을 먹어야 하는 이유가 여기 있습니다. 아미노산(특히 류신)이 근섬유 합성 신호를 켜고, 손상된 근육을 회복시킵니다. 운동하는 사람은 체중 1kg당 1.4–2.0g이 기준입니다.",
                     href: "/guides/basics/muscle",
                     cta: "근육과 단백질 자세히 보기 →",
                   },
                   {
                     title: "면역 — 항체와 면역세포의 재료",
-                    body: "항체(면역글로불린), 사이토카인, 인터페론은 모두 단백질입니다. 단백질이 부족하면 면역세포 수가 줄고 감염에 취약해집니다.",
+                    body: "감기에 자주 걸리거나 회복이 느리다면 단백질 부족을 의심해볼 수 있습니다. 항체와 면역세포 자체가 단백질로 만들어지기 때문입니다.",
                     href: "/guides/basics/immunity-hormone",
                     cta: "면역·호르몬과 단백질 자세히 보기 →",
                   },
                   {
                     title: "호르몬·효소 — 몸의 신호와 대사 조절",
-                    body: "인슐린, 성장호르몬, 글루카곤은 모두 단백질 호르몬입니다. 소화효소(트립신·펩신)도 단백질입니다. 단백질 부족 시 합성이 감소합니다.",
+                    body: "혈당을 조절하는 인슐린, 성장을 돕는 성장호르몬, 음식을 소화하는 효소까지 — 모두 단백질입니다. 단백질이 부족하면 이 시스템 전체가 느려집니다.",
                     href: "/guides/basics/immunity-hormone",
                     cta: "면역·호르몬과 단백질 자세히 보기 →",
                   },
@@ -353,7 +353,7 @@ export default async function GuideSlugPage({
 
             {/* 섹션 3: 섭취량 */}
             <section className="rounded-2xl border border-[#e8e6e3] bg-[#fffdf8] px-5 py-5">
-              <h2 className="text-xl font-bold text-[var(--foreground)]">그래서 하루에 얼마나 먹어야 할까?</h2>
+              <h2 className="text-xl font-bold text-[var(--foreground)]">그래서 나는 하루에 얼마나 먹어야 할까?</h2>
               <p className="mt-3 text-sm leading-6 text-[var(--foreground-muted)]">
                 활동량과 체중에 따라 필요한 단백질 양이 달라집니다. 운동 강도가 높을수록 더 많은 단백질이 필요합니다.
               </p>
@@ -362,6 +362,10 @@ export default async function GuideSlugPage({
                 rows={intakeRows}
               />
               <p className="mt-3 text-xs text-[var(--foreground-muted)]">출처: WHO·한국영양학회(일반 성인), ISSN Position Stand(운동인)</p>
+              <p className="mt-4 text-sm leading-6 text-[var(--foreground-muted)]">
+                권장량을 알았다면 다음 단계는 내 목적에 맞는 제품을 고르는 것입니다.
+                단백질 함량, 당류, 유형까지 한 번에 비교할 수 있습니다.
+              </p>
               <div className="mt-5 flex flex-wrap gap-3">
                 <CtaButton href="/recommend">내 목적에 맞는 단백질 음료 찾기 →</CtaButton>
                 <CtaButton href="/guides/basics/deficiency-symptoms">단백질 부족 신호 확인하기 →</CtaButton>
