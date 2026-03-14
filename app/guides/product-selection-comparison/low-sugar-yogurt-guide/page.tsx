@@ -9,8 +9,8 @@ export const metadata = {
 };
 
 const rules = [
-  ["당류 먼저 좁히기", "저당 목적이면 먼저 당류 5g 이하 제품만 남겨두는 편이 실용적입니다."],
-  ["단백질 함량 같이 보기", "당류만 낮고 단백질이 너무 낮으면 단백질 요거트로서 장점이 줄어듭니다."],
+  ["당류 먼저 좁히기", "다이어트 목적이라면 먼저 당류 5g 이하 제품만 추려보는 것이 실용적입니다."],
+  ["단백질 함량 같이 보기", "당류만 낮고 단백질이 너무 낮으면 단백질 요거트로서의 장점이 줄어듭니다."],
   ["맛 제품은 따로 보기", "바나나, 과일, 토핑형은 기본적으로 당류가 높아질 수 있어 플레인과 따로 보는 편이 안전합니다."],
 ];
 
@@ -46,43 +46,35 @@ export default function LowSugarYogurtGuidePage() {
             <span>저당 단백질 요거트 기준</span>
           </div>
           <div className="mt-3">
-            <span className="rounded-md bg-[#eaf0f6] px-2 py-0.5 text-[11px] font-semibold tracking-wide text-[#4a6178]">TRACK B</span>
+            <span className="rounded-md bg-[#eaf0f6] px-2 py-0.5 text-[11px] font-semibold tracking-wide text-[#4a6178]">
+              TRACK B
+            </span>
           </div>
           <h1 className="mt-3 text-2xl font-bold leading-tight text-[var(--foreground)] md:text-3xl">
-            저당 단백질 요거트는 당류만 낮다고 끝이 아닙니다
+            저당 단백질 요거트는 당류만 보지 말고 단백질도 같이 봐야 합니다
           </h1>
           <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
-            저당 요거트를 찾을 때는 당류를 먼저 좁히는 것이 맞지만, 그 안에서도 단백질 함량과 칼로리 차이가 큽니다.
-            <br />
-            저당 기준을 먼저 세우고, 그 다음 단백질 밀도까지 같이 보는 편이 선택 실수를 줄여줍니다.
+            당류를 먼저 좁히는 것은 좋지만, 단백질 함량과 유형을 같이 봐야 실제로 쓸 만한 제품을 고를 수 있습니다.
           </p>
         </div>
       </section>
+
       <main className="mx-auto max-w-[1200px] px-4 py-8 md:px-6">
         <div className="space-y-6">
-          <section className="rounded-[28px] border border-[#e2ebe4] bg-[#f7fbf8] px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
+          <section className="rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
             <h2 className="text-xl font-bold text-[var(--foreground)]">저당 요거트 비교 원칙</h2>
             <div className="mt-5 grid gap-3 md:grid-cols-3">
-              {rules.map(([title, body]) => (
-                <article key={title} className="rounded-2xl border border-[#dce8df] bg-[#f6fbf7] p-4">
-                  <h3 className="text-sm font-semibold text-[#24543d]">{title}</h3>
-                  <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">{body}</p>
+              {rules.map((item) => (
+                <article key={item[0]} className="rounded-2xl border border-[#dce8df] bg-[#f6fbf7] p-4">
+                  <h3 className="text-sm font-semibold text-[#24543d]">{item[0]}</h3>
+                  <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">{item[1]}</p>
                 </article>
               ))}
             </div>
           </section>
-          <section className="rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
-            <div className="flex flex-wrap gap-3">
-              <Link href="/curation/yogurt-low-sugar" className="inline-flex items-center justify-center rounded-lg border border-[#2d6a4f] bg-[#2d6a4f] px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#24543d]">
-                저당 요거트 추천 보기
-              </Link>
-              <Link href="/yogurt?curation=yogurt-low-sugar" className="inline-flex items-center justify-center rounded-lg border border-[#d9e7dc] px-5 py-3 text-sm font-semibold text-[#24543d] transition-colors hover:bg-[#eef7f1]">
-                저당 요거트만 비교하기
-              </Link>
-            </div>
-          </section>
+
           <section className="rounded-[28px] border border-[#e2ebe4] bg-[#f7fbf8] px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
-            <h2 className="text-xl font-bold text-[var(--foreground)]">함께 이어서 보기</h2>
+            <h2 className="text-xl font-bold text-[var(--foreground)]">관련 페이지</h2>
             <div className="mt-5 grid gap-3 md:grid-cols-3">
               {relatedLinks.map((item) => (
                 <Link key={item.href} href={item.href} className="rounded-2xl border border-[#dce8df] bg-white p-4 transition-colors hover:bg-[#eef7f1]">

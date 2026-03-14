@@ -15,7 +15,7 @@ const cards = [
   },
   {
     title: "당류 같이 보기",
-    body: "꾸덕한 타입이라도 당류가 높으면 용도가 달라질 수 있습니다. 저당 목적이라면 당류 기준을 먼저 잡는 편이 좋습니다.",
+    body: "꾸덕한 타입이어도 당류가 높으면 용도가 달라질 수 있습니다. 다이어트 목적이라면 당류 기준을 먼저 좁히는 편이 좋습니다.",
   },
   {
     title: "대용량은 1회 기준으로 읽기",
@@ -55,22 +55,23 @@ export default function GreekYogurtGuidePage() {
             <span>그릭요거트 추천 기준</span>
           </div>
           <div className="mt-3">
-            <span className="rounded-md bg-[#eaf0f6] px-2 py-0.5 text-[11px] font-semibold tracking-wide text-[#4a6178]">TRACK B</span>
+            <span className="rounded-md bg-[#eaf0f6] px-2 py-0.5 text-[11px] font-semibold tracking-wide text-[#4a6178]">
+              TRACK B
+            </span>
           </div>
           <h1 className="mt-3 text-2xl font-bold leading-tight text-[var(--foreground)] md:text-3xl">
-            그릭요거트는 꾸덕함보다 단백질 밀도를 먼저 봐야 합니다
+            그릭요거트는 단백질 밀도와 당류를 함께 봐야 합니다
           </h1>
           <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
-            그릭요거트는 일반 요거트보다 단백질 함량이 높아 보이지만 제품별 차이도 큽니다.
-            <br />
-            단백질 밀도, 당류, 대용량 여부를 함께 보면 실제로 잘 맞는 제품을 고르기 쉬워집니다.
+            그릭요거트는 꾸덕한 식감 때문에 고단백 이미지가 강하지만, 실제 비교는 밀도와 당류를 같이 봐야 정확합니다.
           </p>
         </div>
       </section>
+
       <main className="mx-auto max-w-[1200px] px-4 py-8 md:px-6">
         <div className="space-y-6">
           <section className="rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
-            <h2 className="text-xl font-bold text-[var(--foreground)]">그릭요거트 비교 포인트</h2>
+            <h2 className="text-xl font-bold text-[var(--foreground)]">그릭요거트 비교 핵심</h2>
             <div className="mt-5 grid gap-3 md:grid-cols-3">
               {cards.map((item) => (
                 <article key={item.title} className="rounded-2xl border border-[#dce8df] bg-[#f6fbf7] p-4">
@@ -80,18 +81,9 @@ export default function GreekYogurtGuidePage() {
               ))}
             </div>
           </section>
-          <section className="rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
-            <div className="flex flex-wrap gap-3">
-              <Link href="/curation/yogurt-greek" className="inline-flex items-center justify-center rounded-lg border border-[#2d6a4f] bg-[#2d6a4f] px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#24543d]">
-                그릭 요거트 추천 보기
-              </Link>
-              <Link href="/yogurt?curation=yogurt-greek" className="inline-flex items-center justify-center rounded-lg border border-[#d9e7dc] px-5 py-3 text-sm font-semibold text-[#24543d] transition-colors hover:bg-[#eef7f1]">
-                그릭 요거트만 비교하기
-              </Link>
-            </div>
-          </section>
+
           <section className="rounded-[28px] border border-[#e2ebe4] bg-[#f7fbf8] px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
-            <h2 className="text-xl font-bold text-[var(--foreground)]">관련 가이드와 비교 페이지</h2>
+            <h2 className="text-xl font-bold text-[var(--foreground)]">관련 페이지</h2>
             <div className="mt-5 grid gap-3 md:grid-cols-3">
               {relatedLinks.map((item) => (
                 <Link key={item.href} href={item.href} className="rounded-2xl border border-[#dce8df] bg-white p-4 transition-colors hover:bg-[#eef7f1]">

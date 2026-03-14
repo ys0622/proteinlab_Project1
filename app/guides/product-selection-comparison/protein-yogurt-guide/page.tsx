@@ -5,7 +5,7 @@ import Footer from "@/app/components/Footer";
 export const metadata = {
   title: "단백질 요거트 추천 기준 | 그릭요거트·드링킹 요거트 비교 | ProteinLab",
   description:
-    "단백질 요거트를 고를 때 그릭요거트, 드링킹 요거트, 대용량 요거트를 어떻게 나눠 보고 단백질 함량, 당류, 칼로리, 단백질 밀도를 함께 비교해야 하는지 정리합니다.",
+    "단백질 요거트를 고를 때 그릭요거트, 드링킹 요거트, 대용량 요거트를 어떻게 나눠 보고 단백질 함량, 당류, 칼로리를 비교해야 하는지 정리합니다.",
 };
 
 const sections = [
@@ -19,13 +19,13 @@ const sections = [
   },
   {
     title: "대용량 요거트",
-    body: "여러 번 나눠 먹는 용도에 잘 맞습니다. 총 단백질 양이 커 보일 수 있으니 100g 기준과 1회 섭취량 기준을 같이 확인하는 편이 좋습니다.",
+    body: "여러 번 나눠 먹는 용도에 맞습니다. 총 단백질 수치가 커 보여도 100g 기준과 1회 섭취 기준을 같이 보는 편이 좋습니다.",
   },
 ];
 
 const checks = [
   "단백질 g만 보지 말고 100g당 단백질 밀도도 같이 보기",
-  "저당 목적이면 당류 5g 이하 여부 먼저 좁히기",
+  "다이어트 목적이면 당류 5g 이하 여부를 먼저 좁히기",
   "대용량 제품은 1회 기준과 전체 기준이 섞이지 않았는지 확인하기",
 ];
 
@@ -66,12 +66,12 @@ export default function ProteinYogurtGuidePage() {
             </span>
           </div>
           <h1 className="mt-3 text-2xl font-bold leading-tight text-[var(--foreground)] md:text-3xl">
-            단백질 요거트는 유형부터 나누고 비교해야 합니다
+            단백질 요거트는 유형부터 나눠 보고 비교해야 합니다
           </h1>
           <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
             그릭요거트, 드링킹 요거트, 대용량 요거트는 같은 단백질 요거트여도 보는 기준이 조금씩 다릅니다.
             <br />
-            먼저 유형을 나누고, 그 다음 단백질 함량, 당류, 칼로리, 단백질 밀도를 비교하면 선택이 쉬워집니다.
+            먼저 유형을 나누고 그다음 단백질 함량, 당류, 칼로리, 단백질 밀도를 비교하면 선택이 쉬워집니다.
           </p>
         </div>
       </section>
@@ -79,7 +79,7 @@ export default function ProteinYogurtGuidePage() {
       <main className="mx-auto max-w-[1200px] px-4 py-8 md:px-6">
         <div className="space-y-6">
           <section className="rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
-            <h2 className="text-xl font-bold text-[var(--foreground)]">먼저 나눠서 보는 3가지 유형</h2>
+            <h2 className="text-xl font-bold text-[var(--foreground)]">먼저 나눠 보는 3가지 유형</h2>
             <div className="mt-5 grid gap-3 md:grid-cols-3">
               {sections.map((item) => (
                 <article key={item.title} className="rounded-2xl border border-[#dce8df] bg-[#f6fbf7] p-4">
@@ -91,10 +91,10 @@ export default function ProteinYogurtGuidePage() {
           </section>
 
           <section className="rounded-[28px] border border-[#e2ebe4] bg-[#f7fbf8] px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
-            <h2 className="text-xl font-bold text-[var(--foreground)]">비교할 때 체크할 핵심</h2>
+            <h2 className="text-xl font-bold text-[var(--foreground)]">비교 전에 체크할 기준</h2>
             <ul className="mt-4 space-y-3 text-sm leading-6 text-[var(--foreground-muted)]">
               {checks.map((item) => (
-                <li key={item}>· {item}</li>
+                <li key={item}>• {item}</li>
               ))}
             </ul>
           </section>

@@ -9,39 +9,39 @@ export const metadata = {
 };
 
 const checklistRows = [
-  ["단백질 함량", "한 병당 20g 전후인지 먼저 확인", "운동 후 보충용인지, 식사 보완용인지 1차 판단이 쉬워집니다."],
-  ["당류", "저당 목적이면 가장 먼저 체크", "단백질이 높아도 당류가 높으면 용도가 달라질 수 있습니다."],
-  ["칼로리", "식사 보완용인지 가벼운 보충용인지 구분", "칼로리가 너무 낮으면 포만감이 부족하고, 너무 높으면 간식형에 가까워질 수 있습니다."],
-  ["단백질 밀도", "열량 대비 단백질 효율 확인", "비슷한 칼로리라면 더 효율적인 제품을 고르기 쉽습니다."],
+  ["단백질 함량", "한 병당 20g 전후인지 먼저 확인", "이동 중 보충용인지, 식사 보완용인지 1차 판단이 쉬워집니다."],
+  ["당류", "다이어트 목적이면 가장 먼저 체크", "단백질이 높아도 당류가 높으면 실제 활용도가 달라질 수 있습니다."],
+  ["칼로리", "식사 보완형인지 가벼운 보충형인지 구분", "칼로리가 너무 낮으면 포만감이 부족하고 너무 높으면 간식형에 가까워질 수 있습니다."],
+  ["단백질 밀도", "용량 대비 단백질 효율 확인", "비슷한 칼로리라면 더 효율적인 제품을 고르기 쉽습니다."],
 ];
 
 const drinkTypes = [
   {
     title: "밀크형 RTD",
-    body: "포만감이 높고 식사 보완에 유리합니다. 대신 당류와 칼로리를 함께 봐야 실제 용도와 맞습니다.",
+    body: "포만감이 있고 식사 보완에 유리합니다. 대신 당류와 칼로리를 같이 봐야 실제 용도와 맞습니다.",
   },
   {
     title: "워터형 RTD",
-    body: "운동 후 가볍게 마시기 좋고, 상대적으로 저당·저칼로리 제품이 많아 회복 간식용으로 보기 쉽습니다.",
+    body: "이동 중 가볍게 마시기 좋고, 상대적으로 저당·저칼로리 제품이 많아 운동 전후 간식용으로 보기 좋습니다.",
   },
   {
     title: "고단백 보강형",
-    body: "40g 전후 고단백 제품은 회복과 근육 보충에 강점이 있지만, 필요 이상으로 과하지 않은지 용도부터 점검하는 것이 좋습니다.",
+    body: "30g 전후 고단백 제품은 운동 후 회복과 근육 유지에 강점이 있지만 필요 이상으로 높지 않은지도 확인하는 편이 좋습니다.",
   },
 ];
 
 const flowCards = [
   {
-    title: "운동 후 회복",
+    title: "이동 중 보충",
     body: "단백질 함량과 단백질 밀도를 먼저 보고, 당류가 과하지 않은지 함께 확인합니다.",
   },
   {
     title: "식사 보완",
-    body: "칼로리와 포만감을 먼저 보고, 단백질이 충분한지 확인하는 순서가 더 현실적입니다.",
+    body: "칼로리와 포만감을 먼저 보고, 단백질이 충분한지 확인하는 순서가 더 실용적입니다.",
   },
   {
     title: "체중 관리",
-    body: "당류와 칼로리를 먼저 좁히고, 그 안에서 단백질 효율이 높은 제품을 고르는 방식이 안전합니다.",
+    body: "당류와 칼로리를 먼저 좁히고 그 안에서 단백질 효율이 높은 제품을 고르는 방식이 안전합니다.",
   },
 ];
 
@@ -55,7 +55,7 @@ export default function ProteinDrinkGuidePage() {
           <div className="flex flex-wrap items-center gap-1.5 text-xs text-[var(--foreground-muted)]">
             <Link href="/guides">가이드</Link>
             <span>/</span>
-            <Link href="/guides/product-selection-comparison">제품 선택 · 비교</Link>
+            <Link href="/guides/product-selection-comparison">제품 선택 & 비교</Link>
             <span>/</span>
             <span>단백질 음료 선택 가이드</span>
           </div>
@@ -68,9 +68,9 @@ export default function ProteinDrinkGuidePage() {
             단백질 음료는 숫자를 보는 순서가 중요합니다
           </h1>
           <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
-            단백질 음료, 뭘 먼저 봐야 할지 모르겠다면 순서가 없는 겁니다.
+            단백질 음료는 무엇부터 봐야 할지 모르면 비교가 어렵습니다.
             <br />
-            단백질 함량, 당류, 칼로리, 단백질 밀도 — 용도에 따라 보는 순서가 달라집니다.
+            단백질 함량, 당류, 칼로리, 단백질 밀도는 용도에 따라 보는 순서가 달라집니다.
           </p>
         </div>
       </section>
@@ -124,17 +124,17 @@ export default function ProteinDrinkGuidePage() {
               ))}
             </div>
             <blockquote className="mt-5 rounded-xl border border-[#dce8df] bg-[#f7fbf8] px-4 py-4 text-sm leading-6 text-[var(--foreground-muted)]">
-              제품 비교에서 중요한 것은 숫자 하나가 아니라 조합입니다. 단백질 함량이 높아도 당류와 칼로리가 함께 높다면 실제 용도는 달라질 수 있습니다.
+              제품 비교에서 중요한 것은 숫자 하나가 아니라 조합입니다. 단백질 함량이 높아도 당류와 칼로리가 함께 높다면 실제 용도가 달라질 수 있습니다.
             </blockquote>
           </section>
 
           <section className="rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
             <div className="flex flex-wrap gap-3">
               <Link href="/guides/product-selection-comparison/nutrition-comparison" className="inline-flex items-center justify-center rounded-lg border border-[#d9e7dc] px-5 py-3 text-sm font-semibold text-[#24543d] transition-colors hover:bg-[#eef7f1]">
-                영양성분 비교 읽는 법 →
+                영양성분 비교 읽는 법
               </Link>
               <Link href="/" className="inline-flex items-center justify-center rounded-lg border border-[#2d6a4f] bg-[#2d6a4f] px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#24543d]">
-                단백질 음료 비교하기 →
+                단백질 음료 비교하기
               </Link>
             </div>
           </section>
