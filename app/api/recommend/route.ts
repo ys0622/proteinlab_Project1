@@ -22,6 +22,66 @@ interface ScoredProduct {
   reason: string;
 }
 
+function getSubtypeKey(product: ProductDetailProps) {
+  if (product.productType === "yogurt") {
+    if (isGreekYogurt(product)) return "yogurt-greek";
+    if (isDrinkingYogurt(product)) return "yogurt-drinking";
+    if (isBulkYogurt(product)) return "yogurt-bulk";
+    return "yogurt-default";
+  }
+
+  if (product.productType === "bar") {
+    const tagText = (product.tags ?? []).join(" ").toLowerCase();
+    if (tagText.includes("meal") || product.calories && product.calories >= 200) return "bar-meal";
+    if ((product.sugar ?? 0) <= 5) return "bar-low-sugar";
+    return "bar-default";
+  }
+
+  const drinkType = (product.drinkType ?? "").toLowerCase();
+  if (drinkType.includes("water") || drinkType.includes("워터")) return "drink-water";
+  if ((product.sugar ?? 0) <= 2) return "drink-low-sugar";
+  return "drink-default";
+}
+
+function selectTopProductsWithDiversity(
+  scored: ScoredProduct[],
+  limit: number,
+  category: RecommendRequest["category"],
+) {
+  const remaining = [...scored];
+  const selected: ScoredProduct[] = [];
+  const brandCounts = new Map<string, number>();
+  const subtypeCounts = new Map<string, number>();
+
+  while (remaining.length > 0 && selected.length < limit) {
+    let bestIndex = 0;
+    let bestAdjustedScore = Number.NEGATIVE_INFINITY;
+
+    remaining.forEach((item, index) => {
+      const brandKey = item.product.brand;
+      const subtypeKey = getSubtypeKey(item.product);
+      const brandPenalty = (brandCounts.get(brandKey) ?? 0) * 12;
+      const subtypePenalty = (subtypeCounts.get(subtypeKey) ?? 0) * (category === "yogurt" ? 10 : 8);
+      const adjustedScore = item.score - brandPenalty - subtypePenalty;
+
+      if (adjustedScore > bestAdjustedScore) {
+        bestAdjustedScore = adjustedScore;
+        bestIndex = index;
+      }
+    });
+
+    const [picked] = remaining.splice(bestIndex, 1);
+    if (!picked) break;
+
+    selected.push(picked);
+    brandCounts.set(picked.product.brand, (brandCounts.get(picked.product.brand) ?? 0) + 1);
+    const subtypeKey = getSubtypeKey(picked.product);
+    subtypeCounts.set(subtypeKey, (subtypeCounts.get(subtypeKey) ?? 0) + 1);
+  }
+
+  return selected;
+}
+
 function isGreekYogurt(product: ProductDetailProps) {
   const text = [product.name, product.yogurtType, product.flavor].filter(Boolean).join(" ").toLowerCase();
   return text.includes("그릭") || text.includes("greek") || text.includes("skyr") || text.includes("아이슬란딕");
@@ -453,8 +513,9 @@ export async function POST(request: Request) {
 
     const scored = products.map((product) => scoreProduct(product, body));
     scored.sort((a, b) => b.score - a.score);
+    const selectedProducts = selectTopProductsWithDiversity(scored, 6, body.category);
 
-    const topProducts = scored.slice(0, 6).map((item, index) => {
+    const topProducts = selectedProducts.map((item, index) => {
       const product = item.product;
       const gradeTags = product.gradeTags ?? [];
       const gradeValue: Record<string, string> = {};
@@ -487,7 +548,7 @@ export async function POST(request: Request) {
       };
     });
 
-    const topScores = topProducts.map((item) => scored[item.rank - 1]?.score ?? 0);
+    const topScores = selectedProducts.map((item) => item.score);
     const maxScore = Math.max(...topScores, 1);
     const minScore = Math.min(...topScores, maxScore);
     const scoreGap = Math.max(maxScore - minScore, 1);
