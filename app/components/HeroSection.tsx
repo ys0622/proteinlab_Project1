@@ -3,7 +3,7 @@
 export default function HeroSection() {
   return (
     <section
-      className="-mt-1 w-full border-b bg-[var(--hero-bg)] md:mt-0 md:border-t"
+      className="w-full border-b bg-[var(--hero-bg)] md:border-t"
       style={{ borderColor: "var(--hero-border)" }}
       aria-label="히어로"
     >

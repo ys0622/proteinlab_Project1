@@ -276,7 +276,7 @@ export default function ProductListWithFilters(props: ProductListWithFiltersProp
 
       <div
         className="mt-3 rounded-xl border border-[var(--border)] bg-[var(--filter-box-bg)]"
-        style={{ marginTop: "12px", borderRadius: "12px", padding: isDesktop ? "10px 12px" : "2px 4px" }}
+        style={{ marginTop: "12px", borderRadius: "12px", padding: isDesktop ? "10px 12px" : "4px 6px" }}
       >
         <div className="hidden md:block">
           <SearchBar value={searchQuery} onChange={handleSearchChange} />
