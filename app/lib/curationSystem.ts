@@ -332,6 +332,9 @@ const curations: CurationDefinition[] = [
     kind: "ingredient",
     categoryTargets: ["yogurt"],
     routeMode: "category-query",
+    seoTitle: "고단백 단백질 요거트 추천 | ProteinLab",
+    seoDescription:
+      "단백질 함량이 높은 단백질 요거트를 비교합니다. 그릭요거트와 대용량 요거트까지 단백질, 당류, 칼로리 기준으로 확인해보세요.",
     categories: {
       yogurt: {
         category: "yogurt",
@@ -361,6 +364,9 @@ const curations: CurationDefinition[] = [
     kind: "ingredient",
     categoryTargets: ["yogurt"],
     routeMode: "category-query",
+    seoTitle: "저당 단백질 요거트 추천 | ProteinLab",
+    seoDescription:
+      "당류 부담이 낮은 단백질 요거트를 비교합니다. 저당 그릭요거트, 드링킹 요거트, 대용량 제품까지 한 번에 확인해보세요.",
     categories: {
       yogurt: {
         category: "yogurt",
@@ -388,6 +394,9 @@ const curations: CurationDefinition[] = [
     kind: "context",
     categoryTargets: ["yogurt"],
     routeMode: "category-query",
+    seoTitle: "그릭요거트 추천 | 단백질 요거트 비교 | ProteinLab",
+    seoDescription:
+      "단백질 함량이 높은 그릭요거트를 비교합니다. 꾸덕한 식감, 단백질 밀도, 당류 기준으로 단백질 요거트를 확인해보세요.",
     categories: {
       yogurt: {
         category: "yogurt",
@@ -413,6 +422,9 @@ const curations: CurationDefinition[] = [
     kind: "context",
     categoryTargets: ["yogurt"],
     routeMode: "category-query",
+    seoTitle: "드링킹 단백질 요거트 추천 | ProteinLab",
+    seoDescription:
+      "마시기 편한 드링킹 단백질 요거트를 비교합니다. 휴대성, 단백질 함량, 당류 기준으로 드링킹 요거트를 확인해보세요.",
     categories: {
       yogurt: {
         category: "yogurt",
@@ -440,6 +452,9 @@ const curations: CurationDefinition[] = [
     kind: "context",
     categoryTargets: ["yogurt"],
     routeMode: "category-query",
+    seoTitle: "대용량 단백질 요거트 추천 | ProteinLab",
+    seoDescription:
+      "400g 이상 대용량 단백질 요거트를 비교합니다. 가성비, 단백질 밀도, 당류 기준으로 여러 번 나눠 먹는 요거트를 확인해보세요.",
     categories: {
       yogurt: {
         category: "yogurt",
