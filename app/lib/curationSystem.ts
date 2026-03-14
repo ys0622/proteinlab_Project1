@@ -1,4 +1,5 @@
 import { type ProductDetailProps } from "../data/products";
+import { getPopularityScore } from "./productPopularity";
 
 export type CurationCategory = "drink" | "bar" | "yogurt";
 export type CurationKind = "ingredient" | "goal" | "context";
@@ -131,6 +132,22 @@ function sortBarForConvenience(products: ProductDetailProps[]) {
   });
 }
 
+function sortByPopularity(
+  products: ProductDetailProps[],
+  productType: CurationCategory,
+) {
+  return [...products].sort((a, b) => {
+    const aScore = getPopularityScore(a, productType) ?? 0;
+    const bScore = getPopularityScore(b, productType) ?? 0;
+    if (aScore !== bScore) return bScore - aScore;
+
+    const densityDelta = parseDensityValue(b.density) - parseDensityValue(a.density);
+    if (densityDelta !== 0) return densityDelta;
+
+    return (b.proteinPerServing ?? 0) - (a.proteinPerServing ?? 0);
+  });
+}
+
 function getCapacityValue(capacity?: string): number {
   if (!capacity) return 0;
   const match = capacity.match(/(\d+(?:\.\d+)?)/);
@@ -248,7 +265,44 @@ const curations: CurationDefinition[] = [
     seoTitle: "인기 큐레이션 | ProteinLab",
     seoDescription:
       "최근 많이 본 ProteinLab 큐레이션을 모아 보고, 각 랜딩 페이지에서 음료와 단백질 바를 따로 비교해보세요.",
-    categories: {},
+    categories: {
+      drink: {
+        category: "drink",
+        filter: (product) => product.productType !== "bar" && product.productType !== "yogurt",
+        recommend: (products) =>
+          sortByPopularity(
+            products.filter((product) => product.productType !== "bar" && product.productType !== "yogurt"),
+            "drink",
+          ),
+        landingCopy: {
+          recommendationTitle: "인기 단백질 음료 추천",
+          recommendationNote: "최근 많이 찾는 단백질 음료를 먼저 보여줍니다.",
+          comparisonTitle: "인기 단백질 음료 비교",
+        },
+      },
+      bar: {
+        category: "bar",
+        filter: (product) => product.productType === "bar",
+        recommend: (products) =>
+          sortByPopularity(products.filter((product) => product.productType === "bar"), "bar"),
+        landingCopy: {
+          recommendationTitle: "인기 단백질 바 추천",
+          recommendationNote: "최근 많이 찾는 단백질 바를 먼저 보여줍니다.",
+          comparisonTitle: "인기 단백질 바 비교",
+        },
+      },
+      yogurt: {
+        category: "yogurt",
+        filter: (product) => product.productType === "yogurt",
+        recommend: (products) =>
+          sortByPopularity(products.filter((product) => product.productType === "yogurt"), "yogurt"),
+        landingCopy: {
+          recommendationTitle: "인기 단백질 요거트 추천",
+          recommendationNote: "최근 많이 찾는 단백질 요거트를 먼저 보여줍니다.",
+          comparisonTitle: "인기 단백질 요거트 비교",
+        },
+      },
+    },
   },
   {
     id: "zero-sugar",
