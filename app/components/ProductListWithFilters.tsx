@@ -29,6 +29,24 @@ import SortBar, { type SortOptionValue } from "./SortBar";
 
 const PAGE_SIZE = 20;
 
+const CATEGORY_INFO = {
+  drink: {
+    count: 101,
+    description: "바로 마실 수 있는 고단백 RTD 제품 비교",
+    mobileDescription: "바로 마실 수 있는 고단백 RTD 제품을 비교합니다.",
+  },
+  bar: {
+    count: 60,
+    description: "간편하게 단백질을 보충할 수 있는 바 형태 제품 비교",
+    mobileDescription: "간편하게 단백질을 보충할 수 있는 바 형태 제품을 비교합니다.",
+  },
+  yogurt: {
+    count: 46,
+    description: "그릭요거트, 드링킹 요거트 등 단백질 함량이 강화된 요거트 제품 비교",
+    mobileDescription: "그릭요거트, 드링킹 요거트 등 단백질 함량이 강화된 요거트 제품을 비교합니다.",
+  },
+} as const;
+
 type ProductListWithFiltersProps =
   | { productType: "drink"; products: ProductDetailProps[]; curationSlug?: string }
   | { productType: "bar"; products: ProductDetailProps[]; curationSlug?: string }
@@ -153,6 +171,7 @@ function ProductListWithFiltersInner(props: ProductListWithFiltersInnerProps) {
   );
   const [isDesktop, setIsDesktop] = useState(false);
   const [mobileSearchOpen, setMobileSearchOpen] = useState(false);
+  const [mobileCategoryInfoOpen, setMobileCategoryInfoOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState(() => initialPersistedState?.searchQuery ?? "");
   const isBar = pathname === "/bars";
   const isYogurt = pathname === "/yogurt";
@@ -433,40 +452,123 @@ function ProductListWithFiltersInner(props: ProductListWithFiltersInnerProps) {
       ) : null}
 
       <div className="mt-3" style={{ marginTop: "12px" }}>
-        <div className="flex min-w-0 gap-2 overflow-x-auto pb-1">
-          <Link
-            href="/"
-            className={`rounded-full px-3.5 py-1 text-sm font-medium transition-colors ${
-              !isBar && !isYogurt
-                ? "bg-[var(--accent)] text-white"
-                : "border border-[var(--border)] bg-white text-[var(--foreground-muted)] hover:text-[var(--foreground)]"
-            }`}
-            style={{ fontWeight: 400, whiteSpace: "nowrap" }}
-          >
-            단백질 음료
-          </Link>
-          <Link
-            href="/bars"
-            className={`rounded-full px-3.5 py-1 text-sm font-medium transition-colors ${
-              isBar
-                ? "bg-[var(--accent)] text-white"
-                : "border border-[var(--border)] bg-white text-[var(--foreground-muted)] hover:text-[var(--foreground)]"
-            }`}
-            style={{ fontWeight: 400, whiteSpace: "nowrap" }}
-          >
-            단백질 바
-          </Link>
-          <Link
-            href="/yogurt"
-            className={`rounded-full px-3.5 py-1 text-sm font-medium transition-colors ${
-              isYogurt
-                ? "bg-[var(--accent)] text-white"
-                : "border border-[var(--border)] bg-white text-[var(--foreground-muted)] hover:text-[var(--foreground)]"
-            }`}
-            style={{ fontWeight: 400, whiteSpace: "nowrap" }}
-          >
-            단백질 요거트
-          </Link>
+        <div className="relative">
+          <div className="flex items-center gap-2">
+            <div className="flex min-w-0 flex-1 gap-2 overflow-x-auto pb-1">
+              <Link
+                href="/"
+                className={`rounded-full px-3.5 py-1 text-sm font-medium transition-colors ${
+                  !isBar && !isYogurt
+                    ? "bg-[var(--accent)] text-white"
+                    : "border border-[var(--border)] bg-white text-[var(--foreground-muted)] hover:text-[var(--foreground)]"
+                }`}
+                style={{ fontWeight: 400, whiteSpace: "nowrap" }}
+              >
+                단백질 음료
+              </Link>
+              <Link
+                href="/bars"
+                className={`rounded-full px-3.5 py-1 text-sm font-medium transition-colors ${
+                  isBar
+                    ? "bg-[var(--accent)] text-white"
+                    : "border border-[var(--border)] bg-white text-[var(--foreground-muted)] hover:text-[var(--foreground)]"
+                }`}
+                style={{ fontWeight: 400, whiteSpace: "nowrap" }}
+              >
+                단백질 바
+              </Link>
+              <Link
+                href="/yogurt"
+                className={`rounded-full px-3.5 py-1 text-sm font-medium transition-colors ${
+                  isYogurt
+                    ? "bg-[var(--accent)] text-white"
+                    : "border border-[var(--border)] bg-white text-[var(--foreground-muted)] hover:text-[var(--foreground)]"
+                }`}
+                style={{ fontWeight: 400, whiteSpace: "nowrap" }}
+              >
+                단백질 요거트
+              </Link>
+              <div className="group relative flex items-center">
+                <button
+                  type="button"
+                  onClick={() => setMobileCategoryInfoOpen((current) => !current)}
+                  className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-[var(--border)] bg-white text-[13px] text-[var(--foreground-muted)] transition-colors hover:text-[var(--foreground)]"
+                  aria-label="카테고리 설명 보기"
+                  aria-expanded={mobileCategoryInfoOpen}
+                >
+                  ⓘ
+                </button>
+
+                <div className="absolute right-0 top-full z-[100] mt-2 hidden w-[300px] rounded-xl border border-[var(--border)] bg-white p-3 shadow-lg md:group-hover:block">
+                  <div className="space-y-2.5">
+                    <div>
+                      <p className="text-xs font-semibold text-[var(--foreground)]">
+                        단백질 음료 ({CATEGORY_INFO.drink.count}개 제품)
+                      </p>
+                      <p className="mt-0.5 text-xs leading-5 text-[var(--foreground-muted)]">
+                        {CATEGORY_INFO.drink.description}
+                      </p>
+                    </div>
+                    <div>
+                      <p className="text-xs font-semibold text-[var(--foreground)]">
+                        단백질 바 ({CATEGORY_INFO.bar.count}개 제품)
+                      </p>
+                      <p className="mt-0.5 text-xs leading-5 text-[var(--foreground-muted)]">
+                        {CATEGORY_INFO.bar.description}
+                      </p>
+                    </div>
+                    <div>
+                      <p className="text-xs font-semibold text-[var(--foreground)]">
+                        단백질 요거트 ({CATEGORY_INFO.yogurt.count}개 제품)
+                      </p>
+                      <p className="mt-0.5 text-xs leading-5 text-[var(--foreground-muted)]">
+                        {CATEGORY_INFO.yogurt.mobileDescription}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {!isDesktop && mobileCategoryInfoOpen ? (
+            <>
+              <button
+                type="button"
+                aria-label="카테고리 설명 닫기"
+                className="fixed inset-0 z-[90] cursor-default"
+                onClick={() => setMobileCategoryInfoOpen(false)}
+              />
+              <div className="absolute right-0 top-full z-[100] mt-2 w-[300px] rounded-xl border border-[var(--border)] bg-white p-3 shadow-lg md:hidden">
+                <div className="space-y-2.5">
+                  <div>
+                    <p className="text-xs font-semibold text-[var(--foreground)]">
+                      단백질 음료 ({CATEGORY_INFO.drink.count}개 제품)
+                    </p>
+                    <p className="mt-0.5 text-xs leading-5 text-[var(--foreground-muted)]">
+                      {CATEGORY_INFO.drink.description}
+                    </p>
+                  </div>
+                  <div>
+                    <p className="text-xs font-semibold text-[var(--foreground)]">
+                      단백질 바 ({CATEGORY_INFO.bar.count}개 제품)
+                    </p>
+                    <p className="mt-0.5 text-xs leading-5 text-[var(--foreground-muted)]">
+                      {CATEGORY_INFO.bar.description}
+                    </p>
+                  </div>
+                  <div>
+                    <p className="text-xs font-semibold text-[var(--foreground)]">
+                      단백질 요거트 ({CATEGORY_INFO.yogurt.count}개 제품)
+                    </p>
+                    <p className="mt-0.5 text-xs leading-5 text-[var(--foreground-muted)]">
+                      {CATEGORY_INFO.yogurt.mobileDescription}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </>
+          ) : null}
         </div>
       </div>
 
