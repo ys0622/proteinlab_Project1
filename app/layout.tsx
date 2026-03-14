@@ -27,6 +27,11 @@ export const metadata: Metadata = {
     description:
       "단백질 음료와 단백질 바를 성분 데이터로 비교하고, 목적별 추천·등급·가이드까지 한 곳에서 확인하는 ProteinLab입니다.",
   },
+  verification: {
+    other: {
+      "naver-site-verification": "4ef87ce2265895dced0d44ac8ed5921f0cef0064",
+    },
+  },
 };
 
 export default function RootLayout({
