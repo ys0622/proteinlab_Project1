@@ -1,5 +1,6 @@
 "use client";
 
+import type { CoupangLinkCategory } from "../lib/purchaseLinks";
 import type { ProductCardProps } from "./ProductCard";
 import ProductCard from "./ProductCard";
 
@@ -13,6 +14,7 @@ type ScoredProductCardProps = {
   highlightLabel?: string;
   reason?: string;
   compact?: boolean;
+  purchaseLinkCategory?: CoupangLinkCategory;
 };
 
 const GRADE_COLORS: Record<string, { bg: string; color: string; border: string }> = {
@@ -32,6 +34,7 @@ export default function ScoredProductCard({
   highlightLabel,
   reason,
   compact = false,
+  purchaseLinkCategory = "ranking",
 }: ScoredProductCardProps) {
   const gradeColor = grade ? GRADE_COLORS[grade] ?? GRADE_COLORS.D : null;
 
@@ -84,7 +87,7 @@ export default function ScoredProductCard({
       </div>
 
       <div className="[&_article]:rounded-none [&_article]:border-0 [&_article]:bg-transparent [&_article]:shadow-none">
-        <ProductCard {...product} />
+        <ProductCard {...product} purchaseLinkCategory={purchaseLinkCategory} />
       </div>
 
       {reason ? (

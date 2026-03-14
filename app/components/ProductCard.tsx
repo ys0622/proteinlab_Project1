@@ -10,6 +10,7 @@ import type {
 import { trackPurchaseClick } from "@/lib/gtag";
 import { getProductImageUrl } from "../lib/productImage";
 import {
+  type CoupangLinkCategory,
   getOfficialMallUrl,
   getNaverSearchUrl,
   getPreferredCoupangUrl,
@@ -42,6 +43,7 @@ export interface ProductCardProps {
   priority?: boolean;
   productType?: "drink" | "bar" | "yogurt";
   yogurtType?: string;
+  purchaseLinkCategory?: CoupangLinkCategory;
 }
 
 export default function ProductCard({
@@ -61,11 +63,18 @@ export default function ProductCard({
   priority = false,
   productType,
   yogurtType,
+  purchaseLinkCategory,
 }: ProductCardProps) {
   const router = useRouter();
   const detailHref = slug ? `/product/${slug}` : productUrl;
   const imageUrl = slug ? getProductImageUrl(slug) : null;
-  const coupangHref = getPreferredCoupangUrl(brand, name, coupangUrl ?? productUrl);
+  const resolvedPurchaseLinkCategory = purchaseLinkCategory ?? productType ?? null;
+  const coupangHref = getPreferredCoupangUrl(
+    brand,
+    name,
+    coupangUrl ?? productUrl,
+    resolvedPurchaseLinkCategory,
+  );
   const naverHref = getNaverSearchUrl(brand, name);
   const officialMallHref = getOfficialMallUrl(brand);
   const productId = slug ?? `${brand}-${name}`;

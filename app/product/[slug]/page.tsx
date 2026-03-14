@@ -81,7 +81,12 @@ export default async function ProductDetailPage({ params }: PageProps) {
           product.bcaa ? `BCAA ${product.bcaa}` : null,
         ].filter(Boolean);
 
-  const coupangHref = getPreferredCoupangUrl(product.brand, product.name, product.productUrl);
+  const resolvedCoupangHref = getPreferredCoupangUrl(
+    product.brand,
+    product.name,
+    product.productUrl,
+    product.productType ?? null,
+  );
   const naverHref = getNaverSearchUrl(product.brand, product.name);
   const officialMallHref = getOfficialMallUrl(product.brand);
   const isLactoseFreeDrink =
@@ -269,7 +274,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
           >
             <h2 className="mb-3 text-base font-semibold text-[var(--foreground)]">구매 링크</h2>
             <PurchaseLinkRow
-              coupangHref={coupangHref}
+              coupangHref={resolvedCoupangHref}
               naverHref={naverHref}
               officialMallHref={officialMallHref}
               size="md"

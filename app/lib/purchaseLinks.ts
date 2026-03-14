@@ -61,8 +61,26 @@ const COUPANG_PARTNERS_TAG =
 const COUPANG_PARTNERS_SUB_ID =
   process.env.NEXT_PUBLIC_COUPANG_PARTNERS_SUB_ID || process.env.COUPANG_PARTNERS_SUB_ID || "proteinlab";
 
+export type CoupangLinkCategory = "drink" | "bar" | "yogurt" | "guide" | "ranking";
+
+const COUPANG_SUB_ID_BY_CATEGORY: Record<CoupangLinkCategory, string> = {
+  drink: "drink",
+  bar: "bar",
+  yogurt: "yogurt",
+  guide: "guide",
+  ranking: "ranking",
+};
+
 function buildSearchName(brand: string, name: string): string {
   return name.startsWith(brand) ? name : `${brand} ${name}`;
+}
+
+function getCoupangSubId(category?: CoupangLinkCategory | null): string {
+  if (!category) {
+    return COUPANG_PARTNERS_SUB_ID;
+  }
+
+  return COUPANG_SUB_ID_BY_CATEGORY[category] ?? COUPANG_PARTNERS_SUB_ID;
 }
 
 export function isValidExternalUrl(value?: string | null): value is string {
@@ -119,7 +137,10 @@ function getCoupangProductParams(url: string): CoupangProductParams | null {
   }
 }
 
-function buildCoupangPartnersProductUrl(productUrl: string): string | null {
+function buildCoupangPartnersProductUrl(
+  productUrl: string,
+  category?: CoupangLinkCategory | null,
+): string | null {
   if (!COUPANG_PARTNERS_TAG) {
     return null;
   }
@@ -131,8 +152,9 @@ function buildCoupangPartnersProductUrl(productUrl: string): string | null {
 
   const url = new URL("https://link.coupang.com/re/AFFSDP");
   url.searchParams.set("lptag", COUPANG_PARTNERS_TAG);
-  if (COUPANG_PARTNERS_SUB_ID) {
-    url.searchParams.set("subid", COUPANG_PARTNERS_SUB_ID);
+  const subId = getCoupangSubId(category);
+  if (subId) {
+    url.searchParams.set("subId", subId);
   }
   url.searchParams.set("pageKey", params.pageKey);
   url.searchParams.set("itemId", params.itemId);
@@ -150,13 +172,14 @@ export function getPreferredCoupangUrl(
   brand: string,
   name: string,
   productUrl?: string | null,
+  category?: CoupangLinkCategory | null,
 ): string {
   if (isCoupangPartnersUrl(productUrl)) {
     return productUrl;
   }
 
   if (isCoupangUrl(productUrl)) {
-    return buildCoupangPartnersProductUrl(productUrl) ?? productUrl;
+    return buildCoupangPartnersProductUrl(productUrl, category) ?? productUrl;
   }
 
   return getCoupangSearchUrl(brand, name);
