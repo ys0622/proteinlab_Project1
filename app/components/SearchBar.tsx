@@ -36,7 +36,7 @@ export default function SearchBar({
         onChange={(e) => onChange(e.target.value)}
         placeholder={placeholder}
         autoFocus={autoFocus}
-        className="w-full border-0 bg-transparent text-xs text-[var(--foreground)] placeholder:text-[var(--foreground-muted-light)] focus:outline-none sm:text-[13px]"
+        className="w-full border-0 bg-transparent text-[16px] text-[var(--foreground)] placeholder:text-[var(--foreground-muted-light)] focus:outline-none sm:text-[13px]"
         aria-label="제품 검색"
         style={{ fontWeight: 400 }}
       />

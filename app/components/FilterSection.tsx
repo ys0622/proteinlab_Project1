@@ -312,7 +312,7 @@ export default function FilterSection(props: FilterSectionProps) {
           <div className="filter-drawer pt-0">
             <div className="filter-drawer__handle" />
             {filterRows}
-            <div className="filter-drawer__apply mt-1 flex items-center justify-between gap-3">
+            <div className="filter-drawer__apply mt-0.5 flex items-center justify-between gap-3">
               <button type="button" onClick={onResetFilters} className="btn-reset">
                 초기화
               </button>

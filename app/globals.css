@@ -890,13 +890,13 @@ h1, h2, h3, h4, h5, h6 {
   height: 4px;
   background: #e0e0e0;
   border-radius: 2px;
-  margin: 6px auto 4px;
+  margin: 4px auto 2px;
 }
 
 .filter-drawer__apply {
   position: sticky;
   bottom: 0;
-  padding: 4px 0 env(safe-area-inset-bottom);
+  padding: 2px 0 env(safe-area-inset-bottom);
   background: var(--filter-box-bg);
 }
 
@@ -1052,8 +1052,8 @@ h1, h2, h3, h4, h5, h6 {
   }
 
   .product-card__metric {
-    min-height: 52px;
-    padding: 7px 8px !important;
+    min-height: 46px;
+    padding: 5px 7px !important;
   }
 
   .product-card__metric-label {
