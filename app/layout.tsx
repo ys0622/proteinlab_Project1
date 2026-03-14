@@ -11,11 +11,11 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://proteinlab.kr"),
   title: "단백질 제품 비교 플랫폼 | ProteinLab",
   description:
-    "단백질 음료와 단백질 바를 성분 데이터로 비교하고, 목적별 추천·등급·가이드까지 한 곳에서 확인하는 ProteinLab입니다.",
+    "단백질 음료, 단백질 바, 단백질 요거트를 성분 데이터로 비교하고 추천, 랭킹, 등급 기준까지 한곳에서 확인하는 ProteinLab입니다.",
   openGraph: {
     title: "단백질 제품 비교 플랫폼 | ProteinLab",
     description:
-      "단백질 음료와 단백질 바를 성분 데이터로 비교하고, 목적별 추천·등급·가이드까지 한 곳에서 확인하는 ProteinLab입니다.",
+      "단백질 음료, 단백질 바, 단백질 요거트를 성분 데이터로 비교하고 추천, 랭킹, 등급 기준까지 한곳에서 확인하는 ProteinLab입니다.",
     url: "https://proteinlab.kr",
     siteName: "ProteinLab",
     locale: "ko_KR",
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "단백질 제품 비교 플랫폼 | ProteinLab",
     description:
-      "단백질 음료와 단백질 바를 성분 데이터로 비교하고, 목적별 추천·등급·가이드까지 한 곳에서 확인하는 ProteinLab입니다.",
+      "단백질 음료, 단백질 바, 단백질 요거트를 성분 데이터로 비교하고 추천, 랭킹, 등급 기준까지 한곳에서 확인하는 ProteinLab입니다.",
   },
   verification: {
     other: {

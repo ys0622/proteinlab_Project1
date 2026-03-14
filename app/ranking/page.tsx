@@ -25,7 +25,7 @@ function prepareRankingData(products: ProductDetailProps[], metric: "density" | 
   });
 
   const higherIsBetter = metric !== "diet";
-  scored.sort((a, b) => higherIsBetter ? b.rawScore - a.rawScore : a.rawScore - b.rawScore);
+  scored.sort((a, b) => (higherIsBetter ? b.rawScore - a.rawScore : a.rawScore - b.rawScore));
   const scoreByRawValue = new Map<number, number>();
   const denominator = Math.max(scored.length - 1, 1);
 

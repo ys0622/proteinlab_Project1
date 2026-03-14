@@ -22,7 +22,7 @@ const topics = [
     title: "단백질 바 선택 가이드",
     href: "/guides/product-selection-comparison/protein-bar-guide",
     description:
-      "단백질 바는 간식형과 식사 보완형을 먼저 나누고, 당류와 칼로리까지 함께 보는 기준을 정리합니다.",
+      "단백질 바는 간식형과 식사 보완형을 먼저 나누고 당류와 칼로리까지 함께 보는 기준을 정리합니다.",
     question: "단백질 바는 간식형과 식사 보완형 중 어디에 가까운가?",
     related: ["당류", "칼로리", "단백질 함량"],
     badge: "입문",
@@ -41,26 +41,26 @@ const topics = [
     href: "/guides/product-selection-comparison/greek-yogurt-guide",
     description:
       "꾸덕한 그릭요거트를 고를 때 단백질 밀도, 당류, 대용량 여부를 어떻게 함께 봐야 하는지 정리합니다.",
-    question: "그릭요거트는 단백질만 높으면 좋은 걸까?",
-    related: ["그릭요거트 추천", "단백질 밀도", "당류", "대용량"],
+    question: "그릭요거트는 단백질만 높으면 충분할까?",
+    related: ["그릭요거트", "단백질 밀도", "당류", "대용량"],
     badge: "요거트",
   },
   {
     title: "저당 단백질 요거트 기준",
     href: "/guides/product-selection-comparison/low-sugar-yogurt-guide",
     description:
-      "저당 단백질 요거트를 고를 때 당류 기준을 어디에 두고, 단백질 함량과 같이 어떻게 읽어야 하는지 정리합니다.",
+      "저당 단백질 요거트를 고를 때 당류 기준을 어디에 두고, 단백질 함량과 함께 어떻게 읽어야 하는지 정리합니다.",
     question: "저당 요거트는 당류만 낮으면 충분할까?",
     related: ["저당 요거트", "당류 기준", "단백질 함량"],
     badge: "요거트",
   },
   {
-    title: "드링킹 요거트 비교 포인트",
+    title: "드링킹 요거트 비교 가이드",
     href: "/guides/product-selection-comparison/drinking-yogurt-guide",
     description:
-      "마시는 단백질 요거트를 비교할 때 휴대성, 용량, 단백질 효율을 어떻게 같이 봐야 하는지 정리합니다.",
+      "마시는 단백질 요거트를 비교할 때 용량, 단백질 함량, 당류를 어떻게 같이 봐야 하는지 정리합니다.",
     question: "드링킹 요거트는 편의성 말고 무엇을 같이 봐야 할까?",
-    related: ["드링킹 요거트", "용량", "휴대성", "단백질 효율"],
+    related: ["드링킹 요거트", "용량", "휴대성", "단백질 함량"],
     badge: "요거트",
   },
   {
@@ -77,16 +77,16 @@ const topics = [
     href: "/guides/product-selection-comparison/nutrition-comparison",
     description:
       "성분표는 숫자 하나보다 조합이 중요합니다. 목적별로 무엇을 먼저 비교해야 하는지 정리합니다.",
-    question: "성분표는 어떤 조합으로 읽어야 실수를 줄일 수 있을까?",
+    question: "영양성분은 어떤 조합으로 읽어야 실수를 줄일 수 있을까?",
     related: ["비교 순서", "숫자 해석", "용도별 판단"],
     badge: "실전",
   },
   {
-    title: "영양성분 기준 세우기",
+    title: "영양성분 기준 익히기",
     href: "/guides/product-selection-comparison/nutrition-criteria",
     description:
-      "좋은 제품을 고를 때 참고할 수 있는 단백질, 당류, 칼로리, 단백질 밀도 기준을 정리합니다.",
-    question: "좋은 제품을 판단할 최소 기준은 어디부터 잡아야 할까?",
+      "좋은 제품을 고를 때 참고할 만한 단백질, 당류, 칼로리, 단백질 밀도 기준을 정리합니다.",
+    question: "좋은 제품의 최소 기준은 어디부터 잡아야 할까?",
     related: ["단백질 기준", "당류 기준", "칼로리 기준"],
     badge: "기준",
   },
@@ -94,7 +94,7 @@ const topics = [
     title: "추천 리스트 활용법",
     href: "/guides/product-selection-comparison/recommendation-lists",
     description:
-      "추천, 큐레이션, picks, 비교 리스트를 어떤 상황에서 구분해 써야 하는지 정리합니다.",
+      "추천, 큐레이션, picks, 비교 리스트를 어떤 상황에서 구분해서 읽어야 하는지 정리합니다.",
     question: "추천 페이지와 큐레이션은 언제 다르게 봐야 할까?",
     related: ["추천", "큐레이션", "비교 흐름"],
     badge: "탐색",
@@ -116,12 +116,12 @@ const startCards = [
     body: "음료, 바, 요거트를 먼저 나누고 같은 유형 안에서 성분을 비교해야 판단이 쉬워집니다.",
   },
   {
-    title: "2. 성분 기준 세우기",
-    body: "단백질, 당류, 칼로리, 단백질 밀도 기준을 먼저 잡아두면 필요한 제품만 빠르게 남길 수 있습니다.",
+    title: "2. 성분 기준 익히기",
+    body: "단백질, 당류, 칼로리, 단백질 밀도 기준을 먼저 익히면 필요한 제품만 빠르게 추릴 수 있습니다.",
   },
   {
     title: "3. 추천과 랭킹 연결하기",
-    body: "추천은 상황별 탐색, 랭킹은 상대 비교에 가깝습니다. 두 흐름을 같이 봐야 선택이 쉬워집니다.",
+    body: "추천은 상황별 탐색, 랭킹은 상위 비교에 가깝습니다. 두 흐름을 같이 봐야 선택이 쉬워집니다.",
   },
 ];
 
@@ -141,7 +141,7 @@ export default function ProductSelectionComparisonPage() {
           </div>
 
           <div className="mt-3 flex flex-wrap items-center gap-2.5">
-            <span className="rounded-md bg-[#eaf0f6] px-2 py-0.5 text-[11px] font-semibold tracking-wide text-[#4a6178]">
+            <span className="rounded-md bg-[#eef4ea] px-2 py-0.5 text-[11px] font-semibold tracking-wide text-[#4c7a57]">
               TRACK B
             </span>
             <span className="text-xs text-[#8b8b8b]">제품 비교 흐름을 이해하는 트랙</span>
@@ -151,7 +151,7 @@ export default function ProductSelectionComparisonPage() {
           <div className="mt-4">
             <h1 className="text-[26px] font-bold leading-tight text-[#3f556d] md:text-[30px]">제품 선택 & 비교</h1>
             <p className="mt-2 max-w-2xl text-sm leading-6 text-[var(--foreground-muted)]">
-              단백질 음료, 단백질 바, 단백질 요거트를 고를 때는 숫자를 보는 순서가 중요합니다.
+              단백질 음료, 단백질 바, 단백질 요거트를 고를 때는 숫자를 읽는 순서가 중요합니다.
               <br />
               Track B에서는 성분 비교, 추천 리스트, 랭킹 해석, 요거트 선택 기준까지 제품 탐색 흐름에 맞춰 정리합니다.
             </p>
@@ -165,7 +165,7 @@ export default function ProductSelectionComparisonPage() {
             <div>
               <h2 className="text-lg font-bold text-[var(--foreground)]">먼저 읽으면 좋은 흐름</h2>
               <p className="mt-1 text-xs text-[#7b8792]">
-                처음 보는 사용자라면 제품 유형 구분부터 시작하고, 그 다음 성분 기준과 랭킹 해석으로 넘어가면 비교가 쉬워집니다.
+                처음 보는 사용자라면 제품 유형 구분부터 시작하고, 그다음 성분 기준과 랭킹 해석으로 넘어가면 비교가 쉬워집니다.
               </p>
             </div>
             <div className="hidden rounded-full border border-[#d8e2eb] bg-white px-3 py-1.5 text-xs font-medium text-[#4a6178] md:block">
@@ -192,7 +192,7 @@ export default function ProductSelectionComparisonPage() {
               </p>
             </div>
             <div className="hidden rounded-full border border-[#d8e2eb] bg-[#f4f8fc] px-3 py-1.5 text-xs font-medium text-[#4a6178] md:block">
-              신규: 단백질 요거트 가이드 묶음
+              최신: 단백질 요거트 가이드 묶음
             </div>
           </div>
 

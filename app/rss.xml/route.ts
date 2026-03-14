@@ -9,7 +9,7 @@ type FeedItem = {
 const feedItems: FeedItem[] = [
   {
     title: "ProteinLab 홈",
-    description: "단백질 음료, 단백질 바, 단백질 요거트 비교 홈입니다.",
+    description: "단백질 음료, 단백질 바, 단백질 요거트 비교 페이지입니다.",
     path: "/",
   },
   {
@@ -34,17 +34,17 @@ const feedItems: FeedItem[] = [
   },
   {
     title: "저당 단백질 요거트 추천",
-    description: "당류 부담이 낮은 단백질 요거트를 비교합니다.",
+    description: "당류 부담이 적은 단백질 요거트를 비교합니다.",
     path: "/curation/yogurt-low-sugar",
   },
   {
-    title: "그릭요거트 추천",
+    title: "그릭 단백질 요거트 추천",
     description: "그릭 타입 단백질 요거트를 비교합니다.",
     path: "/curation/yogurt-greek",
   },
   {
     title: "드링킹 단백질 요거트 추천",
-    description: "드링킹 단백질 요거트를 비교합니다.",
+    description: "마시는 단백질 요거트를 비교합니다.",
     path: "/curation/yogurt-drinking",
   },
   {
@@ -54,7 +54,7 @@ const feedItems: FeedItem[] = [
   },
   {
     title: "단백질 요거트 추천 기준",
-    description: "단백질 요거트를 고를 때 그릭, 드링킹, 대용량을 어떻게 나눠 볼지 정리합니다.",
+    description: "단백질 요거트를 고를 때 그릭, 드링킹, 대용량을 어떻게 나눠 봐야 하는지 정리합니다.",
     path: "/guides/product-selection-comparison/protein-yogurt-guide",
   },
   {
@@ -64,7 +64,7 @@ const feedItems: FeedItem[] = [
   },
   {
     title: "저당 단백질 요거트 추천 기준",
-    description: "당류 5g 이하 기준으로 저당 단백질 요거트를 비교하는 법을 정리합니다.",
+    description: "당류 5g 이하 기준으로 저당 단백질 요거트를 비교하는 방법을 정리합니다.",
     path: "/guides/product-selection-comparison/low-sugar-yogurt-guide",
   },
   {
@@ -74,7 +74,7 @@ const feedItems: FeedItem[] = [
   },
   {
     title: "단백질 요거트 순위 읽는 법",
-    description: "단백질 요거트 랭킹과 등급 기준을 해석하는 법을 정리합니다.",
+    description: "단백질 요거트 랭킹과 등급 기준을 해석하는 방법을 정리합니다.",
     path: "/guides/product-selection-comparison/protein-yogurt-ranking-guide",
   },
 ];
