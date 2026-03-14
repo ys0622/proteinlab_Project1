@@ -61,11 +61,6 @@ const supportingTopics = [
   },
 ];
 
-const readingFlow = [
-  ["1단계", "운동 후 단백질", "운동 후 회복 기준부터 먼저 이해"],
-  ["2단계", "단백질 섭취 타이밍", "하루 전체 흐름 속에서 배치"],
-  ["3단계", "체중 관리와 단백질", "목표에 따라 당류·칼로리 기준 정리"],
-];
 
 export default function IntakeStrategyHealthPage() {
   return (
@@ -102,87 +97,66 @@ export default function IntakeStrategyHealthPage() {
       </section>
 
       <main className="mx-auto max-w-[1200px] px-4 pb-12 md:px-6">
-        <div className="space-y-6">
-          <section className="mt-5 rounded-[28px] border border-[#e2ebe4] bg-[#f7fbf8] px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
-            <div className="flex items-center justify-between gap-3">
-              <h2 className="text-lg font-bold text-[var(--foreground)]">먼저 읽으면 좋은 흐름</h2>
-              <span className="hidden rounded-full border border-[#d9e7dc] bg-white px-3 py-1.5 text-xs font-medium text-[#24543d] md:block">
-                추천 시작점: 운동 후 단백질
-              </span>
+        <section className="mt-5">
+          <div className="flex items-center justify-between gap-3">
+            <div>
+              <h2 className="text-lg font-bold text-[var(--foreground)]">주제 목록</h2>
+              <p className="mt-1 text-xs text-[#8b8b8b]">
+                대표 질문과 핵심 포인트를 먼저 보고 필요한 주제로 이동하세요.
+              </p>
             </div>
-            <p className="mt-1 text-xs text-[#8b8b8b]">
-              Track C는 운동 후 회복 기준을 먼저 잡고, 하루 타이밍과 목표별 전략으로 넓혀가는 순서가 가장 이해하기 쉽습니다.
-            </p>
-            <div className="mt-5 grid gap-3 md:grid-cols-3">
-              <article className="rounded-2xl border border-[#dce8df] bg-white p-4">
-                <p className="text-sm font-semibold text-[#24543d]">1단계 — 운동 후 단백질</p>
-                <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">운동 후 회복 기준부터 먼저 이해합니다.</p>
-              </article>
-              <article className="rounded-2xl border border-[#dce8df] bg-white p-4">
-                <p className="text-sm font-semibold text-[#24543d]">2단계 — 단백질 섭취 타이밍</p>
-                <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">하루 전체 흐름 속에서 단백질을 배치합니다.</p>
-              </article>
-              <article className="rounded-2xl border border-[#dce8df] bg-white p-4">
-                <p className="text-sm font-semibold text-[#24543d]">3단계 — 체중 관리와 단백질</p>
-                <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">목표에 따라 당류·칼로리 기준을 정리합니다.</p>
-              </article>
+            <div className="hidden rounded-full border border-[#d9e7dc] bg-[#eff7f1] px-3 py-1.5 text-xs font-medium text-[#24543d] md:block">
+              인기: 운동 후 단백질
             </div>
-          </section>
+          </div>
 
-          <section>
-            <div className="flex items-center justify-between gap-3">
-              <div>
-                <h2 className="text-lg font-bold text-[var(--foreground)]">대표 주제</h2>
-                <p className="mt-1 text-xs text-[#8b8b8b]">
-                  운동 후 회복, 하루 타이밍, 체중 관리처럼 실전에서 가장 많이 찾는 질문부터 배치했습니다.
-                </p>
-              </div>
-              <div className="hidden rounded-full border border-[#eadfd4] bg-[#fbf6f1] px-3 py-1.5 text-xs font-medium text-[#7a5230] md:block">
-                인기 주제: 운동 후 · 체중 관리
-              </div>
-            </div>
+          <div className="mt-4 grid gap-4 sm:grid-cols-2">
+            {[...featuredTopics, ...supportingTopics].map((topic) => (
+              <Link
+                key={topic.href}
+                href={topic.href}
+                className="group flex h-full flex-col justify-between rounded-2xl border border-[#d8e2da] bg-[#fffdf8] shadow-[0_10px_24px_rgba(20,40,28,0.05)] transition-colors hover:border-[#cfe1d7]"
+              >
+                <div className="h-1.5 w-full rounded-t-2xl bg-[#2d6a4f]" />
+                <div className="flex flex-1 flex-col justify-between px-5 py-4">
+                  <div>
+                    <div className="flex items-center justify-between gap-3">
+                      <div className="flex flex-wrap gap-1.5">
+                        <span className="rounded-full border border-[#d9e4dd] bg-[#f7faf8] px-2.5 py-1 text-[11px] font-medium text-[#496555]">
+                          {"badge" in topic ? topic.badge : "보조"}
+                        </span>
+                      </div>
+                      <span className="rounded-full border border-[#d8e2da] bg-white px-2.5 py-1 text-[11px] font-semibold text-[#6f7f76]">
+                        LIVE
+                      </span>
+                    </div>
 
-            <div className="mt-4 grid gap-4 md:grid-cols-3">
-              {featuredTopics.map((topic) => (
-                <Link
-                  key={topic.href}
-                  href={topic.href}
-                  className="group flex h-full flex-col rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)] transition-colors hover:border-[#c8dfd0]"
-                >
-                  <div className="flex items-center justify-between gap-3">
-                    <span className="rounded-full bg-[#eff7f1] px-3 py-1 text-[11px] font-semibold text-[#2d6a4f]">
-                      {topic.badge}
+                    <h3 className="mt-3 text-base font-bold text-[#1f5138] transition-colors group-hover:text-[var(--accent)]">
+                      {topic.title}
+                    </h3>
+                    <p className="mt-2 text-[13px] leading-[1.7] text-[var(--foreground-muted)]">
+                      {topic.description}
+                    </p>
+
+                    <div className="mt-4 rounded-xl border border-[#d7e6dd] bg-[#f4faf6] px-3 py-2.5">
+                      <p className="text-[11px] font-semibold text-[#1f5138]">읽기 시간</p>
+                      <p className="mt-1 text-[12px] font-medium leading-5 text-[var(--foreground)]">5분 읽기</p>
+                    </div>
+                  </div>
+
+                  <div className="mt-4 flex items-center justify-between gap-3">
+                    <span className="rounded-full border border-[#d9e4dd] bg-[#f7faf8] px-2.5 py-1 text-[11px] font-medium text-[#496555]">
+                      인기
                     </span>
-                    <span className="text-[10px] font-semibold uppercase tracking-wide text-[#9a8e83]">TRACK C</span>
+                    <span className="text-xs font-semibold text-[#2f5d46] transition-colors group-hover:text-[#1f4834]">
+                      주제 보기
+                    </span>
                   </div>
-                  <h3 className="mt-3 text-base font-bold text-[#24543d] transition-colors group-hover:text-[var(--accent)]">
-                    {topic.title}
-                  </h3>
-                  <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">{topic.description}</p>
-                  <div className="mt-4 flex items-center justify-end">
-                    <span className="inline-flex items-center text-sm font-semibold text-[#24543d]">주제 보기 →</span>
-                  </div>
-                </Link>
-              ))}
-            </div>
-          </section>
-
-          <section className="rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
-            <h2 className="text-lg font-bold text-[var(--foreground)]">함께 읽으면 좋은 보조 주제</h2>
-            <div className="mt-4 grid gap-3 md:grid-cols-2">
-              {supportingTopics.map((topic) => (
-                <Link
-                  key={topic.href}
-                  href={topic.href}
-                  className="rounded-xl border border-[#dce8df] bg-[#f6fbf7] px-4 py-4 transition-colors hover:border-[#c8dfd0]"
-                >
-                  <p className="text-sm font-semibold text-[#24543d]">{topic.title}</p>
-                  <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">{topic.description}</p>
-                </Link>
-              ))}
-            </div>
-          </section>
-        </div>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </section>
       </main>
 
       <Footer />

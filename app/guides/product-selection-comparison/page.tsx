@@ -110,20 +110,6 @@ const topics = [
   },
 ];
 
-const startCards = [
-  {
-    title: "1. 제품 유형 나누기",
-    body: "음료, 바, 요거트를 먼저 나누고 같은 유형 안에서 성분을 비교해야 판단이 쉬워집니다.",
-  },
-  {
-    title: "2. 성분 기준 익히기",
-    body: "단백질, 당류, 칼로리, 단백질 밀도 기준을 먼저 익히면 필요한 제품만 빠르게 추릴 수 있습니다.",
-  },
-  {
-    title: "3. 추천과 랭킹 연결하기",
-    body: "추천은 상황별 탐색, 랭킹은 상위 비교에 가깝습니다. 두 흐름을 같이 봐야 선택이 쉬워집니다.",
-  },
-];
 
 export default function ProductSelectionComparisonPage() {
   return (
@@ -160,63 +146,61 @@ export default function ProductSelectionComparisonPage() {
       </section>
 
       <main className="mx-auto max-w-[1200px] px-4 pb-12 md:px-6">
-        <section className="mt-5 rounded-[28px] border border-[#e2ebe4] bg-[#f7fbf8] px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
-          <div className="flex flex-wrap items-center justify-between gap-3">
-            <div>
-              <h2 className="text-lg font-bold text-[var(--foreground)]">먼저 읽으면 좋은 흐름</h2>
-              <p className="mt-1 text-xs text-[#7b8792]">
-                처음 보는 사용자라면 제품 유형 구분부터 시작하고, 그다음 성분 기준과 랭킹 해석으로 넘어가면 비교가 쉬워집니다.
-              </p>
-            </div>
-            <div className="hidden rounded-full border border-[#d9e7dc] bg-white px-3 py-1.5 text-xs font-medium text-[#24543d] md:block">
-              시작 추천: 단백질 요거트 추천 기준
-            </div>
-          </div>
-
-          <div className="mt-4 grid gap-3 md:grid-cols-3">
-            {startCards.map((item) => (
-              <article key={item.title} className="rounded-2xl border border-[#dce8df] bg-[#f6fbf7] p-4">
-                <h3 className="text-sm font-semibold text-[#24543d]">{item.title}</h3>
-                <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">{item.body}</p>
-              </article>
-            ))}
-          </div>
-        </section>
-
-        <section className="mt-6">
+        <section className="mt-5">
           <div className="flex items-center justify-between gap-3">
             <div>
               <h2 className="text-lg font-bold text-[var(--foreground)]">주제 목록</h2>
               <p className="mt-1 text-xs text-[#8b8b8b]">
-                제품을 보는 기본 기준부터 추천과 랭킹 해석, 단백질 요거트 선택 기준까지 검색 의도에 맞는 주제로 정리했습니다.
+                대표 질문과 핵심 포인트를 먼저 보고 필요한 주제로 이동하세요.
               </p>
             </div>
             <div className="hidden rounded-full border border-[#d9e7dc] bg-[#eff7f1] px-3 py-1.5 text-xs font-medium text-[#24543d] md:block">
-              최신: 단백질 요거트 가이드 묶음
+              인기: 영양성분 비교 읽는 법
             </div>
           </div>
 
-          <div className="mt-4 grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+          <div className="mt-4 grid gap-4 sm:grid-cols-2">
             {topics.map((topic) => (
               <Link
                 key={topic.href}
                 href={topic.href}
-                className="group flex h-full flex-col justify-between rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)] transition-colors hover:border-[#c8dfd0]"
+                className="group flex h-full flex-col justify-between rounded-2xl border border-[#d8e2da] bg-[#fffdf8] shadow-[0_10px_24px_rgba(20,40,28,0.05)] transition-colors hover:border-[#cfe1d7]"
               >
-                <div>
-                  <div className="flex items-center justify-between gap-3">
-                    <span className="rounded-full bg-[#eff7f1] px-3 py-1 text-[11px] font-semibold text-[#2d6a4f]">
-                      {topic.badge}
-                    </span>
-                    <span className="text-[10px] font-semibold uppercase tracking-wide text-[#9a8e83]">TRACK B</span>
+                <div className="h-1.5 w-full rounded-t-2xl bg-[#2d6a4f]" />
+                <div className="flex flex-1 flex-col justify-between px-5 py-4">
+                  <div>
+                    <div className="flex items-center justify-between gap-3">
+                      <div className="flex flex-wrap gap-1.5">
+                        <span className="rounded-full border border-[#d9e4dd] bg-[#f7faf8] px-2.5 py-1 text-[11px] font-medium text-[#496555]">
+                          {topic.badge}
+                        </span>
+                      </div>
+                      <span className="rounded-full border border-[#d8e2da] bg-white px-2.5 py-1 text-[11px] font-semibold text-[#6f7f76]">
+                        LIVE
+                      </span>
+                    </div>
+
+                    <h3 className="mt-3 text-base font-bold text-[#1f5138] transition-colors group-hover:text-[var(--accent)]">
+                      {topic.title}
+                    </h3>
+                    <p className="mt-2 text-[13px] leading-[1.7] text-[var(--foreground-muted)]">
+                      {topic.description}
+                    </p>
+
+                    <div className="mt-4 rounded-xl border border-[#d7e6dd] bg-[#f4faf6] px-3 py-2.5">
+                      <p className="text-[11px] font-semibold text-[#1f5138]">읽기 시간</p>
+                      <p className="mt-1 text-[12px] font-medium leading-5 text-[var(--foreground)]">5분 읽기</p>
+                    </div>
                   </div>
-                  <h3 className="mt-3 text-base font-bold text-[#24543d] transition-colors group-hover:text-[var(--accent)]">
-                    {topic.title}
-                  </h3>
-                  <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">{topic.description}</p>
-                </div>
-                <div className="mt-4 flex items-center justify-end">
-                  <span className="inline-flex items-center text-sm font-semibold text-[#24543d]">주제 보기 →</span>
+
+                  <div className="mt-4 flex items-center justify-between gap-3">
+                    <span className="rounded-full border border-[#d9e4dd] bg-[#f7faf8] px-2.5 py-1 text-[11px] font-medium text-[#496555]">
+                      인기
+                    </span>
+                    <span className="text-xs font-semibold text-[#2f5d46] transition-colors group-hover:text-[#1f4834]">
+                      주제 보기
+                    </span>
+                  </div>
                 </div>
               </Link>
             ))}
