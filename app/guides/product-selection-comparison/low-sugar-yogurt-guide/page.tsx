@@ -3,9 +3,9 @@ import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 
 export const metadata = {
-  title: "저당 단백질 요거트 기준 | ProteinLab",
+  title: "저당 단백질 요거트 추천 기준 | 당류 5g 이하 비교 | ProteinLab",
   description:
-    "저당 단백질 요거트를 고를 때 당류, 단백질 함량, 칼로리, 제품 유형을 어떻게 같이 봐야 하는지 정리합니다.",
+    "저당 단백질 요거트를 고를 때 당류 5g 이하 기준, 단백질 함량, 칼로리, 제품 유형을 어떻게 같이 봐야 하는지 정리합니다.",
 };
 
 const rules = [

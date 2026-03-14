@@ -3,7 +3,7 @@ import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 
 export const metadata = {
-  title: "그릭요거트 추천 기준 | 단백질 함량 보는 법 | ProteinLab",
+  title: "그릭요거트 추천 기준 | 단백질 함량·단백질 밀도 비교 | ProteinLab",
   description:
     "그릭요거트를 고를 때 단백질 함량, 단백질 밀도, 당류, 대용량 여부를 어떻게 함께 봐야 하는지 정리합니다.",
 };

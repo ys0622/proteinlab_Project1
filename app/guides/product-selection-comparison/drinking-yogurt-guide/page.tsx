@@ -3,7 +3,7 @@ import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 
 export const metadata = {
-  title: "드링킹 단백질 요거트 비교 포인트 | ProteinLab",
+  title: "드링킹 단백질 요거트 추천 기준 | 마시는 요거트 비교 | ProteinLab",
   description:
     "드링킹 단백질 요거트를 비교할 때 용량, 단백질 함량, 당류, 휴대성을 어떻게 함께 봐야 하는지 정리합니다.",
 };

@@ -3,9 +3,9 @@ import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 
 export const metadata = {
-  title: "단백질 요거트 고르는 법 | ProteinLab",
+  title: "단백질 요거트 추천 기준 | 그릭요거트·드링킹 요거트 비교 | ProteinLab",
   description:
-    "단백질 요거트를 고를 때 그릭요거트, 드링킹 요거트, 대용량 제품을 어떻게 나눠 보고 단백질, 당류, 칼로리를 함께 비교해야 하는지 정리합니다.",
+    "단백질 요거트를 고를 때 그릭요거트, 드링킹 요거트, 대용량 요거트를 어떻게 나눠 보고 단백질 함량, 당류, 칼로리, 단백질 밀도를 함께 비교해야 하는지 정리합니다.",
 };
 
 const sections = [
@@ -58,7 +58,7 @@ export default function ProteinYogurtGuidePage() {
             <span>/</span>
             <Link href="/guides/product-selection-comparison">제품 선택 & 비교</Link>
             <span>/</span>
-            <span>단백질 요거트 고르는 법</span>
+            <span>단백질 요거트 추천 기준</span>
           </div>
           <div className="mt-3">
             <span className="rounded-md bg-[#eaf0f6] px-2 py-0.5 text-[11px] font-semibold tracking-wide text-[#4a6178]">

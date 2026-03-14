@@ -3,7 +3,7 @@ import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 
 export const metadata = {
-  title: "단백질 요거트 순위 읽는 법 | ProteinLab",
+  title: "단백질 요거트 순위 읽는 법 | 랭킹·등급 기준 해석 | ProteinLab",
   description:
     "단백질 요거트 순위와 랭킹에서 단백질 밀도, 다이어트, 퍼포먼스 점수를 어떻게 읽어야 하는지 정리합니다.",
 };
