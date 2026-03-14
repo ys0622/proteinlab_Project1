@@ -98,6 +98,61 @@ export const guideTracks: GuideTrack[] = [
         ],
       },
       {
+        slug: "protein-yogurt-guide",
+        title: "단백질 요거트 선택 가이드",
+        description: "단백질 요거트를 그릭, 드링킹, 대용량 기준으로 나눠 보는 선택 가이드입니다.",
+        searchIntent: "단백질 요거트 고르는 법",
+        futureFocus: ["그릭요거트 비교", "드링킹 요거트 비교", "요거트 DB 연결"],
+        internalLinkTargets: [
+          { label: "단백질 요거트 비교", href: "/yogurt" },
+          { label: "요거트 랭킹", href: "/ranking" },
+        ],
+      },
+      {
+        slug: "greek-yogurt-guide",
+        title: "그릭요거트 추천 기준",
+        description: "그릭요거트를 고를 때 단백질 밀도와 당류를 어떻게 읽어야 하는지 정리합니다.",
+        searchIntent: "그릭요거트 추천 기준",
+        futureFocus: ["그릭요거트 추천", "단백질 밀도", "대용량 요거트"],
+        internalLinkTargets: [
+          { label: "그릭 요거트 큐레이션", href: "/curation/yogurt-greek" },
+          { label: "단백질 요거트 비교", href: "/yogurt?curation=yogurt-greek" },
+        ],
+      },
+      {
+        slug: "low-sugar-yogurt-guide",
+        title: "저당 단백질 요거트 기준",
+        description: "저당 단백질 요거트를 고를 때 당류와 단백질을 함께 보는 기준을 정리합니다.",
+        searchIntent: "저당 단백질 요거트 추천",
+        futureFocus: ["당류 기준", "저당 요거트 비교", "플레인/맛 제품 구분"],
+        internalLinkTargets: [
+          { label: "저당 요거트 큐레이션", href: "/curation/yogurt-low-sugar" },
+          { label: "단백질 요거트 비교", href: "/yogurt?curation=yogurt-low-sugar" },
+        ],
+      },
+      {
+        slug: "drinking-yogurt-guide",
+        title: "드링킹 요거트 비교 포인트",
+        description: "드링킹 단백질 요거트를 비교할 때 용량, 단백질, 당류를 같이 보는 기준입니다.",
+        searchIntent: "드링킹 요거트 추천",
+        futureFocus: ["휴대성 비교", "드링킹 타입 구분", "제품 DB 연결"],
+        internalLinkTargets: [
+          { label: "드링킹 요거트 큐레이션", href: "/curation/yogurt-drinking" },
+          { label: "단백질 요거트 비교", href: "/yogurt?curation=yogurt-drinking" },
+        ],
+      },
+      {
+        slug: "protein-yogurt-ranking-guide",
+        title: "단백질 요거트 순위 읽는 법",
+        description: "단백질 요거트 랭킹의 단백질 밀도, 다이어트, 퍼포먼스 점수 읽는 법을 정리합니다.",
+        searchIntent: "단백질 요거트 순위",
+        futureFocus: ["랭킹 해석", "등급 기준 연결", "요거트 추천 연결"],
+        internalLinkTargets: [
+          { label: "요거트 랭킹", href: "/ranking" },
+          { label: "등급 기준", href: "/grade-criteria" },
+        ],
+      },
+      {
         slug: "nutrition-comparison",
         title: "성분 비교",
         description: "단백질, 당류, 칼로리, 지방, 나트륨 등을 비교하는 페이지 슬롯입니다.",
