@@ -5,13 +5,12 @@ import SortInfoPopover from "./SortInfoPopover";
 
 export const sortOptions = [
   { value: "recommended", label: "추천순" },
-  { value: "popular", label: "인기순" },
   { value: "protein_desc", label: "단백질 많은 순" },
   { value: "density", label: "단백질 밀도순" },
   { value: "sugar_asc", label: "당류 낮은 순" },
+  { value: "sugar_desc", label: "당류 높은 순" },
   { value: "volume_desc", label: "용량 큰 순" },
   { value: "volume_asc", label: "용량 작은 순" },
-  { value: "sugar_desc", label: "당류 높은 순" },
 ] as const;
 
 export type SortOptionValue = (typeof sortOptions)[number]["value"];

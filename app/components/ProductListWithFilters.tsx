@@ -25,7 +25,7 @@ import ProductCard from "./ProductCard";
 import QuickCuration from "./QuickCuration";
 import SearchBar from "./SearchBar";
 import ServingBasisNotice from "./ServingBasisNotice";
-import SortBar, { type SortOptionValue } from "./SortBar";
+import SortBar, { sortOptions, type SortOptionValue } from "./SortBar";
 
 const PAGE_SIZE = 20;
 
@@ -60,6 +60,13 @@ type PersistedFilterState = {
   page: number;
   searchQuery: string;
 };
+
+function normalizeSortValue(value: SortOptionValue | null | undefined): SortOptionValue {
+  if (value && sortOptions.some((option) => option.value === value)) {
+    return value;
+  }
+  return "recommended";
+}
 
 function getPersistedFilterState(storageKey: string): Partial<PersistedFilterState> | null {
   if (typeof window === "undefined") {
@@ -124,14 +131,6 @@ function applySort(
       return arr.sort((a, b) => getCapacityMl(b) - getCapacityMl(a));
     case "volume_asc":
       return arr.sort((a, b) => getCapacityMl(a) - getCapacityMl(b));
-    case "popular":
-      return arr.sort((a, b) => {
-        const aIndex = allProducts.indexOf(a);
-        const bIndex = allProducts.indexOf(b);
-        const aScore = getPopularityScore(a, productType) ?? getFallbackPopularity(aIndex);
-        const bScore = getPopularityScore(b, productType) ?? getFallbackPopularity(bIndex);
-        return bScore - aScore;
-      });
     case "recommended":
     default:
       return arr.sort((a, b) => {
@@ -163,7 +162,7 @@ function ProductListWithFiltersInner(props: ProductListWithFiltersInnerProps) {
   const [yogurtFilters, setYogurtFilters] = useState<YogurtFilters>(
     () => initialPersistedState?.yogurtFilters ?? defaultYogurtFilters,
   );
-  const [sort, setSort] = useState<SortOptionValue>(() => initialPersistedState?.sort ?? "recommended");
+  const [sort, setSort] = useState<SortOptionValue>(() => normalizeSortValue(initialPersistedState?.sort));
   const [page, setPage] = useState(() =>
     typeof initialPersistedState?.page === "number" && initialPersistedState.page > 0
       ? initialPersistedState.page
@@ -172,6 +171,7 @@ function ProductListWithFiltersInner(props: ProductListWithFiltersInnerProps) {
   const [isDesktop, setIsDesktop] = useState(false);
   const [mobileSearchOpen, setMobileSearchOpen] = useState(false);
   const [mobileCategoryInfoOpen, setMobileCategoryInfoOpen] = useState(false);
+  const [desktopCategoryInfoOpen, setDesktopCategoryInfoOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState(() => initialPersistedState?.searchQuery ?? "");
   const isBar = pathname === "/bars";
   const isYogurt = pathname === "/yogurt";
@@ -488,18 +488,34 @@ function ProductListWithFiltersInner(props: ProductListWithFiltersInnerProps) {
               >
                 단백질 요거트
               </Link>
-              <div className="group relative flex items-center">
+              <div
+                className="relative flex items-center"
+                onMouseEnter={() => {
+                  if (isDesktop) setDesktopCategoryInfoOpen(true);
+                }}
+                onMouseLeave={() => {
+                  if (isDesktop) setDesktopCategoryInfoOpen(false);
+                }}
+              >
                 <button
                   type="button"
-                  onClick={() => setMobileCategoryInfoOpen((current) => !current)}
+                  onClick={() => {
+                    if (!isDesktop) {
+                      setMobileCategoryInfoOpen((current) => !current);
+                    }
+                  }}
                   className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-[var(--border)] bg-white text-[13px] text-[var(--foreground-muted)] transition-colors hover:text-[var(--foreground)]"
                   aria-label="카테고리 설명 보기"
-                  aria-expanded={mobileCategoryInfoOpen}
+                  aria-expanded={isDesktop ? desktopCategoryInfoOpen : mobileCategoryInfoOpen}
                 >
                   ⓘ
                 </button>
 
-                <div className="absolute right-0 top-full z-[100] mt-2 hidden w-[300px] rounded-xl border border-[var(--border)] bg-white p-3 shadow-lg md:group-hover:block">
+                <div
+                  className={`absolute right-0 top-full z-[100] mt-2 w-[300px] rounded-xl border border-[var(--border)] bg-white p-3 shadow-lg ${
+                    desktopCategoryInfoOpen ? "hidden md:block" : "hidden"
+                  }`}
+                >
                   <div className="space-y-2.5">
                     <div>
                       <p className="text-xs font-semibold text-[var(--foreground)]">
