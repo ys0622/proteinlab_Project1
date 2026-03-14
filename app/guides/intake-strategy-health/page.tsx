@@ -142,7 +142,7 @@ export default function IntakeStrategyHealthPage() {
               </div>
             </div>
 
-            <div className="mt-4 grid gap-4 xl:grid-cols-3">
+            <div className="mt-4 grid gap-4 md:grid-cols-3">
               {featuredTopics.map((topic) => (
                 <Link
                   key={topic.href}
