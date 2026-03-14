@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- 메인 -->
+  <url><loc>https://proteinlab.kr/</loc><changefreq>daily</changefreq><priority>1.0</priority></url>
+  <url><loc>https://proteinlab.kr/bars</loc><changefreq>daily</changefreq><priority>0.9</priority></url>
+  <url><loc>https://proteinlab.kr/ranking</loc><changefreq>daily</changefreq><priority>0.9</priority></url>
+  <url><loc>https://proteinlab.kr/recommend</loc><changefreq>daily</changefreq><priority>0.9</priority></url>
+  <url><loc>https://proteinlab.kr/compare</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://proteinlab.kr/grade-criteria</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://proteinlab.kr/yogurt</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://proteinlab.kr/tools/calculator</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://proteinlab.kr/official-events</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://proteinlab.kr/about</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://proteinlab.kr/contact</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://proteinlab.kr/privacy</loc><changefreq>monthly</changefreq><priority>0.4</priority></url>
+  <url><loc>https://proteinlab.kr/disclaimer</loc><changefreq>monthly</changefreq><priority>0.4</priority></url>
+
+  <!-- 큐레이션 -->
+  <url><loc>https://proteinlab.kr/curation/running</loc><changefreq>weekly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://proteinlab.kr/curation/running/drink</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://proteinlab.kr/curation/running/bar</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://proteinlab.kr/curation/popular</loc><changefreq>weekly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://proteinlab.kr/curation/zero-sugar</loc><changefreq>weekly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://proteinlab.kr/curation/light-protein-under-20</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://proteinlab.kr/curation/high-protein-20</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://proteinlab.kr/curation/high-protein</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://proteinlab.kr/curation/protein-water</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://proteinlab.kr/curation/lactose-free</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://proteinlab.kr/curation/density-a</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://proteinlab.kr/curation/diet-a</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://proteinlab.kr/curation/fitness-a</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://proteinlab.kr/curation/vegan</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://proteinlab.kr/curation/bar-high-protein-20</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://proteinlab.kr/curation/bar-high-protein-15</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://proteinlab.kr/curation/bar-low-sugar</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://proteinlab.kr/curation/bar-low-calorie</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://proteinlab.kr/curation/bar-choco</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://proteinlab.kr/curation/bar-nut</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://proteinlab.kr/curation/bar-no-nut</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://proteinlab.kr/curation/bar-large</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://proteinlab.kr/curation/bar-small</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://proteinlab.kr/curation/bar-high-density</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://proteinlab.kr/curation/convenience</loc><changefreq>weekly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://proteinlab.kr/curation/yogurt-high-protein</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://proteinlab.kr/curation/yogurt-low-sugar</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://proteinlab.kr/curation/yogurt-greek</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://proteinlab.kr/curation/yogurt-drinking</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://proteinlab.kr/curation/yogurt-bulk</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+
+  <!-- Picks -->
+  <url><loc>https://proteinlab.kr/picks/zero-sugar</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://proteinlab.kr/picks/light-protein-under-20</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://proteinlab.kr/picks/high-protein-20</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://proteinlab.kr/picks/high-protein</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://proteinlab.kr/picks/protein-water</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://proteinlab.kr/picks/lactose-free</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://proteinlab.kr/picks/value-a</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://proteinlab.kr/picks/diet-a</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://proteinlab.kr/picks/fitness-a</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://proteinlab.kr/picks/vegan</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://proteinlab.kr/picks/bar-high-protein-20</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://proteinlab.kr/picks/bar-high-protein-15</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://proteinlab.kr/picks/bar-low-sugar</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://proteinlab.kr/picks/bar-low-calorie</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://proteinlab.kr/picks/bar-choco</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://proteinlab.kr/picks/bar-nut</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://proteinlab.kr/picks/bar-no-nut</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://proteinlab.kr/picks/bar-large</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://proteinlab.kr/picks/bar-small</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://proteinlab.kr/picks/bar-high-density</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+
+  <!-- 가이드 인덱스 -->
+  <url><loc>https://proteinlab.kr/guides</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://proteinlab.kr/guides/basics</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://proteinlab.kr/guides/fitness-lifestyle</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://proteinlab.kr/guides/intake-strategy-health</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://proteinlab.kr/guides/product-selection-comparison</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://proteinlab.kr/guides/market-insights</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://proteinlab.kr/guides/by-goal</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://proteinlab.kr/guides/how-to-choose</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://proteinlab.kr/guides/tools</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://proteinlab.kr/guides/running/basics</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://proteinlab.kr/guides/running/race-week</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+
+  <!-- 가이드 Track A: 단백질 기초 -->
+  <url><loc>https://proteinlab.kr/guides/basics/daily-requirement</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://proteinlab.kr/guides/basics/deficiency-symptoms</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://proteinlab.kr/guides/basics/digestion</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://proteinlab.kr/guides/basics/immunity-hormone</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://proteinlab.kr/guides/basics/muscle</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://proteinlab.kr/guides/basics/role-overview</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+
+  <!-- 가이드 Track B: 제품 선택·비교 -->
+  <url><loc>https://proteinlab.kr/guides/product-selection-comparison/protein-drink-guide</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://proteinlab.kr/guides/product-selection-comparison/protein-bar-guide</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://proteinlab.kr/guides/product-selection-comparison/nutrition-comparison</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://proteinlab.kr/guides/product-selection-comparison/nutrition-criteria</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://proteinlab.kr/guides/product-selection-comparison/ranking-content</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://proteinlab.kr/guides/product-selection-comparison/recommendation-lists</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://proteinlab.kr/guides/product-selection-comparison/protein-yogurt-guide</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://proteinlab.kr/guides/product-selection-comparison/protein-yogurt-ranking-guide</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://proteinlab.kr/guides/product-selection-comparison/greek-yogurt-guide</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://proteinlab.kr/guides/product-selection-comparison/drinking-yogurt-guide</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://proteinlab.kr/guides/product-selection-comparison/low-sugar-yogurt-guide</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://proteinlab.kr/guides/how-to-choose/checklist</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+
+  <!-- 가이드 Track C: 섭취 전략·건강 -->
+  <url><loc>https://proteinlab.kr/guides/intake-strategy-health/post-workout-protein</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://proteinlab.kr/guides/intake-strategy-health/pre-workout-protein</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://proteinlab.kr/guides/intake-strategy-health/protein-timing</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://proteinlab.kr/guides/intake-strategy-health/weight-management-protein</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://proteinlab.kr/guides/intake-strategy-health/meal-replacement-strategy</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://proteinlab.kr/guides/intake-strategy-health/muscle-maintenance-protein</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://proteinlab.kr/guides/intake-strategy-health/senior-protein-strategy</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+
+  <!-- 가이드 Track D: 운동·라이프스타일 -->
+  <url><loc>https://proteinlab.kr/guides/fitness-lifestyle/running-protein-guide</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://proteinlab.kr/guides/fitness-lifestyle/marathon-protein-guide</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://proteinlab.kr/guides/fitness-lifestyle/marathon-distance-strategy</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://proteinlab.kr/guides/fitness-lifestyle/sports-nutrition-guide</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://proteinlab.kr/guides/fitness-lifestyle/strength-training-protein</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://proteinlab.kr/guides/fitness-lifestyle/beginner-workout-guide</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+
+  <!-- 가이드 마켓 인사이트 -->
+  <url><loc>https://proteinlab.kr/guides/market-insights/brand-analysis</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://proteinlab.kr/guides/market-insights/global-protein-market</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://proteinlab.kr/guides/market-insights/ingredient-trends</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://proteinlab.kr/guides/market-insights/new-product-analysis</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://proteinlab.kr/guides/market-insights/protein-market-history</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://proteinlab.kr/guides/market-insights/protein-rtd-market</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+
+</urlset>
