@@ -488,59 +488,59 @@ function ProductListWithFiltersInner(props: ProductListWithFiltersInnerProps) {
               >
                 단백질 요거트
               </Link>
-              <div
-                className="relative flex items-center"
-                onMouseEnter={() => {
-                  if (isDesktop) setDesktopCategoryInfoOpen(true);
+            </div>
+            <div
+              className="relative shrink-0"
+              onMouseEnter={() => {
+                if (isDesktop) setDesktopCategoryInfoOpen(true);
+              }}
+              onMouseLeave={() => {
+                if (isDesktop) setDesktopCategoryInfoOpen(false);
+              }}
+            >
+              <button
+                type="button"
+                onClick={() => {
+                  if (!isDesktop) {
+                    setMobileCategoryInfoOpen((current) => !current);
+                  }
                 }}
-                onMouseLeave={() => {
-                  if (isDesktop) setDesktopCategoryInfoOpen(false);
-                }}
+                className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-[var(--border)] bg-white text-[13px] text-[var(--foreground-muted)] transition-colors hover:text-[var(--foreground)]"
+                aria-label="카테고리 설명 보기"
+                aria-expanded={isDesktop ? desktopCategoryInfoOpen : mobileCategoryInfoOpen}
               >
-                <button
-                  type="button"
-                  onClick={() => {
-                    if (!isDesktop) {
-                      setMobileCategoryInfoOpen((current) => !current);
-                    }
-                  }}
-                  className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-[var(--border)] bg-white text-[13px] text-[var(--foreground-muted)] transition-colors hover:text-[var(--foreground)]"
-                  aria-label="카테고리 설명 보기"
-                  aria-expanded={isDesktop ? desktopCategoryInfoOpen : mobileCategoryInfoOpen}
-                >
-                  ⓘ
-                </button>
+                ⓘ
+              </button>
 
-                <div
-                  className={`absolute right-0 top-full z-[100] mt-2 w-[300px] rounded-xl border border-[var(--border)] bg-white p-3 shadow-lg ${
-                    desktopCategoryInfoOpen ? "hidden md:block" : "hidden"
-                  }`}
-                >
-                  <div className="space-y-2.5">
-                    <div>
-                      <p className="text-xs font-semibold text-[var(--foreground)]">
-                        단백질 음료 ({CATEGORY_INFO.drink.count}개 제품)
-                      </p>
-                      <p className="mt-0.5 text-xs leading-5 text-[var(--foreground-muted)]">
-                        {CATEGORY_INFO.drink.description}
-                      </p>
-                    </div>
-                    <div>
-                      <p className="text-xs font-semibold text-[var(--foreground)]">
-                        단백질 바 ({CATEGORY_INFO.bar.count}개 제품)
-                      </p>
-                      <p className="mt-0.5 text-xs leading-5 text-[var(--foreground-muted)]">
-                        {CATEGORY_INFO.bar.description}
-                      </p>
-                    </div>
-                    <div>
-                      <p className="text-xs font-semibold text-[var(--foreground)]">
-                        단백질 요거트 ({CATEGORY_INFO.yogurt.count}개 제품)
-                      </p>
-                      <p className="mt-0.5 text-xs leading-5 text-[var(--foreground-muted)]">
-                        {CATEGORY_INFO.yogurt.mobileDescription}
-                      </p>
-                    </div>
+              <div
+                className={`absolute right-0 top-full z-[100] mt-2 w-[300px] rounded-xl border border-[var(--border)] bg-white p-3 shadow-lg ${
+                  desktopCategoryInfoOpen ? "hidden md:block" : "hidden"
+                }`}
+              >
+                <div className="space-y-2.5">
+                  <div>
+                    <p className="text-xs font-semibold text-[var(--foreground)]">
+                      단백질 음료 ({CATEGORY_INFO.drink.count}개 제품)
+                    </p>
+                    <p className="mt-0.5 text-xs leading-5 text-[var(--foreground-muted)]">
+                      {CATEGORY_INFO.drink.description}
+                    </p>
+                  </div>
+                  <div>
+                    <p className="text-xs font-semibold text-[var(--foreground)]">
+                      단백질 바 ({CATEGORY_INFO.bar.count}개 제품)
+                    </p>
+                    <p className="mt-0.5 text-xs leading-5 text-[var(--foreground-muted)]">
+                      {CATEGORY_INFO.bar.description}
+                    </p>
+                  </div>
+                  <div>
+                    <p className="text-xs font-semibold text-[var(--foreground)]">
+                      단백질 요거트 ({CATEGORY_INFO.yogurt.count}개 제품)
+                    </p>
+                    <p className="mt-0.5 text-xs leading-5 text-[var(--foreground-muted)]">
+                      {CATEGORY_INFO.yogurt.mobileDescription}
+                    </p>
                   </div>
                 </div>
               </div>

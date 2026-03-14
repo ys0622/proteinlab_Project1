@@ -4,7 +4,7 @@ import { useState } from "react";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 
-type ProductType = "drink" | "bar";
+type ProductType = "drink" | "bar" | "yogurt";
 
 const GRADE_COLORS: Record<string, { color: string; bg: string; border: string }> = {
   A: { color: "#1B7F5B", bg: "#E7F3EC", border: "#1B7F5B" },
@@ -34,9 +34,17 @@ const BAR_ROWS: UnifiedRow[] = [
   { grade: "D", density: "하위 20%", diet: "칼로리·당류 부담 높음", performance: "하위 20%" },
 ];
 
+const YOGURT_ROWS: UnifiedRow[] = [
+  { grade: "A", density: "10g/100g 이상 (상위 20%)", diet: "칼로리·당류 부담 최소 (상위 20%)", performance: "단백질 보충 효율 최상위 (상위 20%)" },
+  { grade: "B", density: "7~10g/100g (상위 50%)", diet: "평균 이상 효율 (상위 50%)", performance: "평균 이상 효율 (상위 50%)" },
+  { grade: "C", density: "6~7g/100g (상위 80%)", diet: "평균 수준 (상위 80%)", performance: "평균 수준 (상위 80%)" },
+  { grade: "D", density: "6g/100g 미만", diet: "칼로리·당류 부담 높음", performance: "하위 20%" },
+];
+
 const PRODUCT_TYPES: { id: ProductType; label: string }[] = [
   { id: "drink", label: "단백질 음료" },
   { id: "bar", label: "단백질 바" },
+  { id: "yogurt", label: "단백질 요거트" },
 ];
 
 const FAQ = [
@@ -52,11 +60,16 @@ const FAQ = [
     q: "식물성 제품도 같은 기준으로 계산하나요?",
     a: "네. 같은 제품군 안에서는 동일한 지표와 동일한 등급 구간으로 계산합니다.",
   },
+  {
+    q: "단백질 요거트도 같은 방식으로 계산하나요?",
+    a: "네. 단백질 요거트도 같은 제품군 내부에서 단백질 밀도, 다이어트, 퍼포먼스 지표를 각각 계산한 뒤 상대 순위 기준으로 A~D 등급을 부여합니다.",
+  },
 ];
 
 export default function GradeCriteriaPage() {
   const [productType, setProductType] = useState<ProductType>("drink");
-  const rows = productType === "drink" ? DRINK_ROWS : BAR_ROWS;
+  const rows =
+    productType === "drink" ? DRINK_ROWS : productType === "bar" ? BAR_ROWS : YOGURT_ROWS;
 
   return (
     <div className="min-h-screen bg-white">
@@ -168,10 +181,15 @@ export default function GradeCriteriaPage() {
                   <li>· 단백질(g) ÷ 용량(mL) × 100</li>
                   <li>· 높을수록 적은 양으로 많은 단백질 보충</li>
                 </>
-              ) : (
+              ) : productType === "bar" ? (
                 <>
                   <li>· 단백질(g) ÷ 칼로리(kcal) × 100</li>
                   <li>· 높을수록 칼로리 대비 단백질 효율 우수</li>
+                </>
+              ) : (
+                <>
+                  <li>· 단백질(g) ÷ 용량(g) × 100</li>
+                  <li>· 높을수록 같은 중량에서 단백질 효율이 높음</li>
                 </>
               )}
             </ul>

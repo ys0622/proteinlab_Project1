@@ -5,7 +5,7 @@ import Link from "next/link";
 import type { ProductDetailProps } from "../data/products";
 import ScoredProductCard from "../components/ScoredProductCard";
 
-type ProductType = "drink" | "bar";
+type ProductType = "drink" | "bar" | "yogurt";
 type GradeMetric = "density" | "diet" | "performance";
 
 interface RankingItem {
@@ -22,6 +22,7 @@ interface RankingClientProps {
 const PRODUCT_TYPES: { id: ProductType; label: string }[] = [
   { id: "drink", label: "단백질 음료" },
   { id: "bar", label: "단백질 바" },
+  { id: "yogurt", label: "단백질 요거트" },
 ];
 
 const METRICS: { id: GradeMetric; label: string }[] = [

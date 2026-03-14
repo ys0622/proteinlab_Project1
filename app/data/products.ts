@@ -1,5 +1,5 @@
 import type { ProductCardProps } from "../components/ProductCard";
-import { applyBarGrades, applyDrinkGrades } from "../lib/gradeCalculation";
+import { applyBarGrades, applyDrinkGrades, applyYogurtGrades } from "../lib/gradeCalculation";
 import { getBarProducts } from "./barProductsData";
 import { getDrinkProducts } from "./drinkProductsData";
 import { getYogurtProducts } from "./yogurtProductsData";
@@ -52,6 +52,7 @@ export const mockProducts: ProductDetailProps[] = applyDrinkGrades(getDrinkProdu
 export const mockBarProducts: ProductDetailProps[] = getBarProducts();
 export const barProductsWithGrades: ProductDetailProps[] = applyBarGrades(mockBarProducts);
 export const yogurtProducts: ProductDetailProps[] = getYogurtProducts();
+export const yogurtProductsWithGrades: ProductDetailProps[] = applyYogurtGrades(yogurtProducts);
 
 function formatValue(value: number | undefined, unit: string) {
   return value != null ? `${value}${unit}` : "-";
@@ -126,13 +127,13 @@ export function getNutritionDetail(p: ProductDetailProps): NutritionDetailRow[] 
 }
 
 export function getAllProducts(): ProductDetailProps[] {
-  return [...mockProducts, ...barProductsWithGrades, ...yogurtProducts];
+  return [...mockProducts, ...barProductsWithGrades, ...yogurtProductsWithGrades];
 }
 
 export function getProductBySlug(slug: string): ProductDetailProps | null {
   const bar = barProductsWithGrades.find((p) => p.slug === slug);
   if (bar) return bar;
-  const yogurt = yogurtProducts.find((p) => p.slug === slug);
+  const yogurt = yogurtProductsWithGrades.find((p) => p.slug === slug);
   if (yogurt) return yogurt;
   return mockProducts.find((p) => p.slug === slug) ?? null;
 }

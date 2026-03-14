@@ -1,6 +1,11 @@
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import { mockProducts, barProductsWithGrades, type ProductDetailProps } from "../data/products";
+import {
+  mockProducts,
+  barProductsWithGrades,
+  yogurtProductsWithGrades,
+  type ProductDetailProps,
+} from "../data/products";
 import { getDensityValue, getDietScore, getPerformanceScore } from "../lib/gradeCalculation";
 import RankingClient from "./RankingClient";
 
@@ -64,10 +69,14 @@ export default function RankingPage() {
   const barDensity = prepareRankingData(barProductsWithGrades, "density");
   const barDiet = prepareRankingData(barProductsWithGrades, "diet");
   const barPerf = prepareRankingData(barProductsWithGrades, "performance");
+  const yogurtDensity = prepareRankingData(yogurtProductsWithGrades, "density");
+  const yogurtDiet = prepareRankingData(yogurtProductsWithGrades, "diet");
+  const yogurtPerf = prepareRankingData(yogurtProductsWithGrades, "performance");
 
   const rankings = {
     drink: { density: drinkDensity, diet: drinkDiet, performance: drinkPerf },
     bar: { density: barDensity, diet: barDiet, performance: barPerf },
+    yogurt: { density: yogurtDensity, diet: yogurtDiet, performance: yogurtPerf },
   };
 
   return (
