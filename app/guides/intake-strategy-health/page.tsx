@@ -83,7 +83,7 @@ export default function IntakeStrategyHealthPage() {
           </div>
 
           <div className="mt-3 flex flex-wrap items-center gap-2.5">
-            <span className="rounded-md bg-[#f5f0ea] px-2 py-0.5 text-[11px] font-semibold tracking-wide text-[#7a5230]">
+            <span className="rounded-md bg-[#eef4ea] px-2 py-0.5 text-[11px] font-semibold tracking-wide text-[#4c7a57]">
               TRACK C
             </span>
             <span className="text-xs text-[#8b8b8b]">운동, 체중 관리, 식사대용, 건강 관리까지 연결하는 섭취 전략 트랙</span>
@@ -91,7 +91,7 @@ export default function IntakeStrategyHealthPage() {
           </div>
 
           <div className="mt-4">
-            <h1 className="text-[26px] font-bold leading-tight text-[#6a5036] md:text-[30px]">섭취 전략 · 건강</h1>
+            <h1 className="text-[26px] font-bold leading-tight text-[var(--foreground)] md:text-[30px]">섭취 전략 · 건강</h1>
             <p className="mt-2 max-w-2xl text-sm leading-6 text-[var(--foreground-muted)]">
               단백질은 많이 먹는 것보다 내 생활 패턴과 목적에 맞게 배치하는 것이 중요합니다.
               <br />
@@ -103,40 +103,29 @@ export default function IntakeStrategyHealthPage() {
 
       <main className="mx-auto max-w-[1200px] px-4 pb-12 md:px-6">
         <div className="space-y-6">
-          <section className="mt-5 rounded-2xl border border-[#e8e6e3] bg-[#fffdf8] px-5 py-5">
+          <section className="mt-5 rounded-[28px] border border-[#e2ebe4] bg-[#f7fbf8] px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
             <div className="flex items-center justify-between gap-3">
-              <div>
-                <h2 className="text-lg font-bold text-[var(--foreground)]">먼저 읽으면 좋은 흐름</h2>
-                <p className="mt-1 text-xs text-[#8b8b8b]">
-                  Track C는 운동 후 회복 기준을 먼저 잡고, 하루 타이밍과 목표별 전략으로 넓혀가는 순서가 가장 이해하기 쉽습니다.
-                </p>
-              </div>
-              <div className="hidden rounded-full border border-[#eadfd4] bg-[#fbf6f1] px-3 py-1.5 text-xs font-medium text-[#7a5230] md:block">
+              <h2 className="text-lg font-bold text-[var(--foreground)]">먼저 읽으면 좋은 흐름</h2>
+              <span className="hidden rounded-full border border-[#d9e7dc] bg-white px-3 py-1.5 text-xs font-medium text-[#24543d] md:block">
                 추천 시작점: 운동 후 단백질
-              </div>
+              </span>
             </div>
-
-            <div className="mt-5 overflow-x-auto">
-              <table className="min-w-full border-collapse text-left text-sm">
-                <thead>
-                  <tr className="border-b border-[#e8e6e3] text-[var(--foreground)]">
-                    <th className="px-3 py-3 font-semibold">순서</th>
-                    <th className="px-3 py-3 font-semibold">주제</th>
-                    <th className="px-3 py-3 font-semibold">왜 먼저 읽어야 하나</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {readingFlow.map((row) => (
-                    <tr key={row[0]} className="border-b border-[#f0eeeb] last:border-b-0">
-                      {row.map((cell) => (
-                        <td key={cell} className="px-3 py-3 text-[var(--foreground-muted)]">
-                          {cell}
-                        </td>
-                      ))}
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+            <p className="mt-1 text-xs text-[#8b8b8b]">
+              Track C는 운동 후 회복 기준을 먼저 잡고, 하루 타이밍과 목표별 전략으로 넓혀가는 순서가 가장 이해하기 쉽습니다.
+            </p>
+            <div className="mt-5 grid gap-3 md:grid-cols-3">
+              <article className="rounded-2xl border border-[#dce8df] bg-white p-4">
+                <p className="text-sm font-semibold text-[#24543d]">1단계 — 운동 후 단백질</p>
+                <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">운동 후 회복 기준부터 먼저 이해합니다.</p>
+              </article>
+              <article className="rounded-2xl border border-[#dce8df] bg-white p-4">
+                <p className="text-sm font-semibold text-[#24543d]">2단계 — 단백질 섭취 타이밍</p>
+                <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">하루 전체 흐름 속에서 단백질을 배치합니다.</p>
+              </article>
+              <article className="rounded-2xl border border-[#dce8df] bg-white p-4">
+                <p className="text-sm font-semibold text-[#24543d]">3단계 — 체중 관리와 단백질</p>
+                <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">목표에 따라 당류·칼로리 기준을 정리합니다.</p>
+              </article>
             </div>
           </section>
 
@@ -158,22 +147,22 @@ export default function IntakeStrategyHealthPage() {
                 <Link
                   key={topic.href}
                   href={topic.href}
-                  className="group flex h-full min-h-[248px] flex-col justify-between rounded-2xl border border-[#e8e6e3] bg-[#fffdf8] px-5 py-5 transition-colors hover:border-[#d9c8b6]"
+                  className="group flex h-full min-h-[248px] flex-col justify-between rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)] transition-colors hover:border-[#c8dfd0]"
                 >
                   <div>
                     <div className="flex items-center justify-between gap-3">
-                      <span className="rounded-full bg-[#f8f1ea] px-3 py-1 text-[11px] font-semibold text-[#7a5230]">
+                      <span className="rounded-full bg-[#eff7f1] px-3 py-1 text-[11px] font-semibold text-[#2d6a4f]">
                         {topic.badge}
                       </span>
                       <span className="text-[10px] font-semibold uppercase tracking-wide text-[#9a8e83]">Track C</span>
                     </div>
 
-                    <h3 className="mt-3 text-base font-bold text-[#6a5036] transition-colors group-hover:text-[var(--accent)]">
+                    <h3 className="mt-3 text-base font-bold text-[#24543d] transition-colors group-hover:text-[var(--accent)]">
                       {topic.title}
                     </h3>
                     <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">{topic.description}</p>
 
-                    <div className="mt-4 rounded-xl border border-[#f0e7e0] bg-white px-3 py-3">
+                    <div className="mt-4 rounded-xl border border-[#dce8df] bg-[#f6fbf7] px-3 py-3">
                       <p className="text-[11px] font-semibold uppercase tracking-wide text-[#9a8e83]">핵심 질문</p>
                       <p className="mt-1 text-[13px] leading-5 text-[var(--foreground)]">{topic.question}</p>
                     </div>
@@ -181,7 +170,7 @@ export default function IntakeStrategyHealthPage() {
                     <ul className="mt-3 space-y-1.5">
                       {topic.related.map((item) => (
                         <li key={item} className="flex items-start gap-2 text-[12px] leading-5 text-[var(--foreground-muted)]">
-                          <span className="mt-[5px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#b68b69]" />
+                          <span className="mt-[5px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#4c9a72]" />
                           <span>{item}</span>
                         </li>
                       ))}
@@ -189,24 +178,24 @@ export default function IntakeStrategyHealthPage() {
                   </div>
 
                   <div className="mt-4 flex items-center justify-between gap-3">
-                    <span className="rounded-full bg-[#f8f1ea] px-2.5 py-1 text-[11px] font-semibold text-[#7a5230]">대표 주제</span>
-                    <span className="inline-flex items-center text-sm font-semibold text-[#6a5036]">주제 보기</span>
+                    <span className="rounded-full bg-[#eff7f1] px-2.5 py-1 text-[11px] font-semibold text-[#2d6a4f]">대표 주제</span>
+                    <span className="inline-flex items-center text-sm font-semibold text-[#24543d]">주제 보기</span>
                   </div>
                 </Link>
               ))}
             </div>
           </section>
 
-          <section className="rounded-2xl border border-[#e8e6e3] bg-white px-5 py-5">
+          <section className="rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
             <h2 className="text-lg font-bold text-[var(--foreground)]">함께 읽으면 좋은 보조 주제</h2>
             <div className="mt-4 grid gap-3 md:grid-cols-2">
               {supportingTopics.map((topic) => (
                 <Link
                   key={topic.href}
                   href={topic.href}
-                  className="rounded-xl border border-[#edf0ee] bg-[#fbfcfb] px-4 py-4 transition-colors hover:border-[#d9c8b6]"
+                  className="rounded-xl border border-[#dce8df] bg-[#f6fbf7] px-4 py-4 transition-colors hover:border-[#c8dfd0]"
                 >
-                  <p className="text-sm font-semibold text-[#6a5036]">{topic.title}</p>
+                  <p className="text-sm font-semibold text-[#24543d]">{topic.title}</p>
                   <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">{topic.description}</p>
                 </Link>
               ))}
