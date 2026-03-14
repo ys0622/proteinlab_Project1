@@ -87,10 +87,10 @@ export default function ScoredProductCard({
       </div>
 
       <div
-        className={`[&_article]:h-full [&_article]:rounded-none [&_article]:border-0 [&_article]:bg-transparent [&_article]:shadow-none [&_.product-card__title]:line-clamp-2 [&_.product-card__brand]:min-h-[16px] [&_.product-card__badges]:content-start ${
+        className={`[&_article]:h-full [&_article]:rounded-none [&_article]:border-0 [&_article]:bg-transparent [&_article]:shadow-none [&_.product-card__content]:justify-between [&_.product-card__title]:line-clamp-2 [&_.product-card__brand]:min-h-[16px] [&_.product-card__badges]:content-start [&_.product-card__footer-actions]:mt-auto ${
           compact
-            ? "[&_.product-card__badges]:min-h-[48px] [&_.product-card__title]:min-h-[36px]"
-            : "[&_.product-card__badges]:min-h-[52px] [&_.product-card__title]:min-h-[44px]"
+            ? "[&_.product-card__badges]:h-[48px] [&_.product-card__badges]:overflow-hidden [&_.product-card__title]:h-[40px] [&_.product-card__title]:overflow-hidden"
+            : "[&_.product-card__badges]:h-[52px] [&_.product-card__badges]:overflow-hidden [&_.product-card__title]:h-[48px] [&_.product-card__title]:overflow-hidden"
         }`}
       >
         <ProductCard {...product} purchaseLinkCategory={purchaseLinkCategory} />

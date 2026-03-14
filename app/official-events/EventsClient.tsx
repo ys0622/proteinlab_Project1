@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from "react";
 
-type ProductType = "drink" | "bar";
+type ProductType = "drink" | "bar" | "yogurt";
 type EventCategory = "할인" | "쿠폰" | "증정" | "무료배송";
 type FilterType = "전체" | EventCategory;
 
@@ -20,6 +20,8 @@ interface BrandCard {
   productCount: number;
   events: BrandEvent[];
 }
+
+const CHECKED_DATE_LABEL = "2026-03-14 확인";
 
 const CATEGORY_EMOJI: Record<EventCategory, string> = {
   할인: "🔖",
@@ -43,7 +45,7 @@ const FILTER_TABS: { key: FilterType; emoji: string }[] = [
   { key: "무료배송", emoji: "🚚" },
 ];
 
-const drinkBrands: BrandCard[] = [
+const rawDrinkBrands: BrandCard[] = [
   {
     brand: "하이뮨",
     storeType: "자사몰",
@@ -156,7 +158,7 @@ const drinkBrands: BrandCard[] = [
   },
 ];
 
-const barBrands: BrandCard[] = [
+const rawBarBrands: BrandCard[] = [
   {
     brand: "퀘스트 뉴트리션",
     storeType: "공식 판매처 중심",
@@ -269,6 +271,92 @@ const barBrands: BrandCard[] = [
   },
 ];
 
+const yogurtBrands: BrandCard[] = [
+  {
+    brand: "그릭데이",
+    storeType: "공식몰",
+    storeUrl: "https://greekday.co.kr/",
+    note: "현재 등록 제품 7개",
+    productCount: 7,
+    events: [
+      { category: "할인", periodLabel: CHECKED_DATE_LABEL, description: "멤버십가와 정기배송 할인 문구가 함께 노출됩니다. 대용량과 소포장 모두 공식몰 기준가를 먼저 확인하는 편이 좋습니다." },
+      { category: "무료배송", periodLabel: CHECKED_DATE_LABEL, description: "회원 30,000원 이상 무료배송 기준이 표시됩니다. 단체 정기배송은 무료배송 안내가 함께 노출됩니다." },
+    ],
+  },
+  {
+    brand: "YOZM",
+    storeType: "공식몰",
+    storeUrl: "https://yozm.co.kr/",
+    note: "현재 등록 제품 3개",
+    productCount: 3,
+    events: [
+      { category: "할인", periodLabel: CHECKED_DATE_LABEL, description: "정기배송 할인 옵션이 상품 페이지에 노출됩니다. 450g·800g 대용량은 정기배송 여부까지 같이 보는 편이 좋습니다." },
+      { category: "무료배송", periodLabel: CHECKED_DATE_LABEL, description: "30,000원 이상 구매 시 무료배송 기준이 표시됩니다. 단품보다 합배송 시 체감가가 좋아집니다." },
+    ],
+  },
+  {
+    brand: "후디스",
+    storeType: "자사몰",
+    storeUrl: "https://foodismall.com/",
+    note: "현재 등록 제품 4개",
+    productCount: 4,
+    events: [
+      { category: "할인", periodLabel: CHECKED_DATE_LABEL, description: "회원 할인 판매가와 추가 할인 표시가 함께 노출됩니다. 그릭요거트 라인은 정기배송 할인 여부도 같이 확인하는 편이 좋습니다." },
+      { category: "무료배송", periodLabel: CHECKED_DATE_LABEL, description: "20,000원 이상 구매 시 무료배송 기준이 표시됩니다. 단품보다 묶음 구매가 유리한 구조입니다." },
+    ],
+  },
+  {
+    brand: "상하목장",
+    storeType: "자사몰",
+    storeUrl: "https://direct.maeil.com/m/brand/sangha",
+    note: "현재 등록 제품 5개",
+    productCount: 5,
+    events: [
+      { category: "할인", periodLabel: CHECKED_DATE_LABEL, description: "브랜드관에서 80g 16개입과 2종 구성에 10% 할인가가 노출됩니다. 브랜드관 기준 특가 구성을 먼저 보는 편이 좋습니다." },
+      { category: "쿠폰", periodLabel: CHECKED_DATE_LABEL, description: "상하목장 브랜드관에 셰프 쿠폰 노출이 확인됩니다. 상품별 적용 여부를 결제 전 다시 확인하는 편이 안전합니다." },
+      { category: "무료배송", periodLabel: CHECKED_DATE_LABEL, description: "냉장 제품은 할인가 기준 15,000원 이상 무료배송 안내가 보입니다. 소용량은 합배송 기준을 같이 보는 편이 좋습니다." },
+    ],
+  },
+  {
+    brand: "매일 바이오",
+    storeType: "자사몰",
+    storeUrl: "https://direct.maeil.com/",
+    note: "현재 등록 제품 14개",
+    productCount: 14,
+    events: [
+      { category: "쿠폰", periodLabel: CHECKED_DATE_LABEL, description: "매일유업 직영몰은 웰컴쿠폰과 구매 적립 구조가 함께 노출됩니다. 신규 회원 조건과 재구매 조건을 같이 보는 편이 좋습니다." },
+      { category: "무료배송", periodLabel: CHECKED_DATE_LABEL, description: "냉장 제품은 할인가 기준 15,000원 이상 무료배송 정책이 안내됩니다. to go·드링크·대용량을 합배송하면 체감가가 좋아집니다." },
+    ],
+  },
+  {
+    brand: "룩트",
+    storeType: "공식몰",
+    storeUrl: "https://lukt.co.kr/",
+    note: "현재 등록 제품 4개",
+    productCount: 4,
+    events: [
+      { category: "할인", periodLabel: CHECKED_DATE_LABEL, description: "멤버십 할인 문구와 SALE 배지가 함께 노출됩니다. 아이슬란딕 라인은 100g과 450g 가격 차이를 같이 보는 편이 좋습니다." },
+      { category: "증정", periodLabel: CHECKED_DATE_LABEL, description: "네이버페이·톡체크아웃 간편구매가 같이 열려 있어 프로모션 연계 혜택이 붙는지 확인 가치가 있습니다." },
+    ],
+  },
+];
+
+const drinkBrands: BrandCard[] = rawDrinkBrands.map((brand) => ({
+  ...brand,
+  events: brand.events.map((event) => ({
+    ...event,
+    periodLabel: CHECKED_DATE_LABEL,
+  })),
+}));
+
+const barBrands: BrandCard[] = rawBarBrands.map((brand) => ({
+  ...brand,
+  events: brand.events.map((event) => ({
+    ...event,
+    periodLabel: CHECKED_DATE_LABEL,
+  })),
+}));
+
 function getCounts(brands: BrandCard[]) {
   const allEvents = brands.flatMap((brand) => brand.events);
   return {
@@ -284,7 +372,7 @@ export default function EventsClient() {
   const [productType, setProductType] = useState<ProductType>("drink");
   const [activeFilter, setActiveFilter] = useState<FilterType>("전체");
 
-  const brands = productType === "drink" ? drinkBrands : barBrands;
+  const brands = productType === "drink" ? drinkBrands : productType === "bar" ? barBrands : yogurtBrands;
   const counts = useMemo(() => getCounts(brands), [brands]);
 
   const filteredBrands = useMemo(() => {
@@ -317,7 +405,7 @@ export default function EventsClient() {
 
       <main className="mx-auto max-w-[1200px] px-4 pb-12 md:px-6">
         <div className="flex gap-2 pt-5">
-          {(["drink", "bar"] as const).map((type) => {
+          {(["drink", "bar", "yogurt"] as const).map((type) => {
             const active = productType === type;
             return (
               <button
@@ -334,7 +422,7 @@ export default function EventsClient() {
                   border: active ? "1px solid var(--accent)" : "1px solid var(--border)",
                 }}
               >
-                {type === "drink" ? "단백질음료" : "단백질바"}
+                {type === "drink" ? "단백질 음료" : type === "bar" ? "단백질 바" : "단백질 요거트"}
               </button>
             );
           })}
