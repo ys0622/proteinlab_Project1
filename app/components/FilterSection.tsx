@@ -291,11 +291,11 @@ export default function FilterSection(props: FilterSectionProps) {
   return (
     <div className="pt-0">
       <div className="md:hidden">
-        <div className="flex items-center justify-between gap-3">
+        <div className="flex items-center justify-between gap-3 pl-1">
           <button
             type="button"
             onClick={() => setMobileFilterOpen((current) => !current)}
-            className="flex items-center gap-1 py-0 text-[11px] font-bold text-[#454545] hover:text-[var(--foreground)]"
+            className="flex items-center gap-1 py-0 pl-0.5 text-[11px] font-bold text-[#454545] hover:text-[var(--foreground)]"
             aria-expanded={mobileFilterOpen}
           >
             상세 필터
