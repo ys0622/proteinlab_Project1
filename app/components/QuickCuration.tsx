@@ -4,7 +4,7 @@ import Link from "next/link";
 import { getQuickCurations, type CurationCategory } from "../lib/curationSystem";
 
 interface QuickCurationProps {
-  productType: CurationCategory | "yogurt";
+  productType: CurationCategory;
   className?: string;
   variant?: "card" | "inline";
 }
@@ -40,10 +40,7 @@ export default function QuickCuration({
   className = "",
   variant = "card",
 }: QuickCurationProps) {
-  const items =
-    productType === "yogurt"
-      ? [{ slug: "popular", label: "인기", icon: "🔥", href: "/yogurt" }]
-      : getQuickCurations(productType);
+  const items = getQuickCurations(productType);
 
   if (variant === "inline") {
     return (

@@ -1,6 +1,6 @@
-import type { ProductDetailProps } from "../data/products";
+import { type ProductDetailProps } from "../data/products";
 
-export type CurationCategory = "drink" | "bar";
+export type CurationCategory = "drink" | "bar" | "yogurt";
 export type CurationKind = "ingredient" | "goal" | "context";
 
 type CurationFilter = (product: ProductDetailProps) => boolean;
@@ -131,6 +131,50 @@ function sortBarForConvenience(products: ProductDetailProps[]) {
   });
 }
 
+function getCapacityValue(capacity?: string): number {
+  if (!capacity) return 0;
+  const match = capacity.match(/(\d+(?:\.\d+)?)/);
+  return match ? parseFloat(match[1]) : 0;
+}
+
+function sortYogurtByProtein(products: ProductDetailProps[]) {
+  return [...products].sort((a, b) => {
+    const densityDelta = parseDensityValue(b.density) - parseDensityValue(a.density);
+    if (densityDelta !== 0) return densityDelta;
+
+    const proteinDelta = (b.proteinPerServing ?? 0) - (a.proteinPerServing ?? 0);
+    if (proteinDelta !== 0) return proteinDelta;
+
+    return (a.sugar ?? 999) - (b.sugar ?? 999);
+  });
+}
+
+function sortYogurtByLowSugar(products: ProductDetailProps[]) {
+  return [...products].sort((a, b) => {
+    const sugarDelta = (a.sugar ?? 999) - (b.sugar ?? 999);
+    if (sugarDelta !== 0) return sugarDelta;
+
+    const densityDelta = parseDensityValue(b.density) - parseDensityValue(a.density);
+    if (densityDelta !== 0) return densityDelta;
+
+    return (b.proteinPerServing ?? 0) - (a.proteinPerServing ?? 0);
+  });
+}
+
+function isGreekYogurt(product: ProductDetailProps) {
+  const haystack = `${product.name} ${product.yogurtType}`.toLowerCase();
+  return haystack.includes("그릭");
+}
+
+function isDrinkingYogurt(product: ProductDetailProps) {
+  const haystack = `${product.name} ${product.yogurtType} ${product.capacity}`.toLowerCase();
+  return haystack.includes("드링크") || haystack.includes("drinking") || haystack.includes("ml");
+}
+
+function isBulkYogurt(product: ProductDetailProps) {
+  return getCapacityValue(product.capacity) >= 400;
+}
+
 function recommendWithFallback(
   pools: ProductDetailProps[][],
   sorter: CurationSorter,
@@ -223,6 +267,139 @@ const curations: CurationDefinition[] = [
         quickOrder: 10,
         filter: (product) => product.productType !== "bar" && (product.sugar ?? 0) <= 0,
         recommend: (products) => products.filter((product) => (product.sugar ?? 0) <= 0),
+      },
+    },
+  },
+  {
+    id: "yogurt-high-protein",
+    slug: "yogurt-high-protein",
+    label: "고단백",
+    icon: "💪",
+    kind: "ingredient",
+    categoryTargets: ["yogurt"],
+    routeMode: "category-query",
+    categories: {
+      yogurt: {
+        category: "yogurt",
+        quickLabel: "고단백",
+        quickIcon: "💪",
+        quickOrder: 10,
+        filter: (product) => product.productType === "yogurt" && (product.proteinPerServing ?? 0) >= 15,
+        recommend: (products) =>
+          sortYogurtByProtein(
+            products.filter(
+              (product) => product.productType === "yogurt" && (product.proteinPerServing ?? 0) >= 15,
+            ),
+          ),
+        landingCopy: {
+          recommendationTitle: "추천 고단백 단백질 요거트",
+          recommendationNote: "단백질 함량과 단백질 밀도를 우선으로 본 추천입니다.",
+          comparisonTitle: "고단백 단백질 요거트 비교",
+        },
+      },
+    },
+  },
+  {
+    id: "yogurt-low-sugar",
+    slug: "yogurt-low-sugar",
+    label: "저당",
+    icon: "🫐",
+    kind: "ingredient",
+    categoryTargets: ["yogurt"],
+    routeMode: "category-query",
+    categories: {
+      yogurt: {
+        category: "yogurt",
+        quickLabel: "저당",
+        quickIcon: "🫐",
+        quickOrder: 20,
+        filter: (product) => product.productType === "yogurt" && (product.sugar ?? 999) <= 5,
+        recommend: (products) =>
+          sortYogurtByLowSugar(
+            products.filter((product) => product.productType === "yogurt" && (product.sugar ?? 999) <= 5),
+          ),
+        landingCopy: {
+          recommendationTitle: "추천 저당 단백질 요거트",
+          recommendationNote: "당류 부담을 줄이면서 단백질을 챙기기 좋은 제품 중심입니다.",
+          comparisonTitle: "저당 단백질 요거트 비교",
+        },
+      },
+    },
+  },
+  {
+    id: "yogurt-greek",
+    slug: "yogurt-greek",
+    label: "그릭",
+    icon: "🥣",
+    kind: "context",
+    categoryTargets: ["yogurt"],
+    routeMode: "category-query",
+    categories: {
+      yogurt: {
+        category: "yogurt",
+        quickLabel: "그릭",
+        quickIcon: "🥣",
+        quickOrder: 30,
+        filter: (product) => product.productType === "yogurt" && isGreekYogurt(product),
+        recommend: (products) =>
+          sortYogurtByProtein(products.filter((product) => product.productType === "yogurt" && isGreekYogurt(product))),
+        landingCopy: {
+          recommendationTitle: "추천 그릭 단백질 요거트",
+          recommendationNote: "그릭 타입 중심으로 꾸덕함과 단백질 밀도를 함께 보기 좋습니다.",
+          comparisonTitle: "그릭 단백질 요거트 비교",
+        },
+      },
+    },
+  },
+  {
+    id: "yogurt-drinking",
+    slug: "yogurt-drinking",
+    label: "드링킹",
+    icon: "🥤",
+    kind: "context",
+    categoryTargets: ["yogurt"],
+    routeMode: "category-query",
+    categories: {
+      yogurt: {
+        category: "yogurt",
+        quickLabel: "드링킹",
+        quickIcon: "🥤",
+        quickOrder: 40,
+        filter: (product) => product.productType === "yogurt" && isDrinkingYogurt(product),
+        recommend: (products) =>
+          sortYogurtByProtein(
+            products.filter((product) => product.productType === "yogurt" && isDrinkingYogurt(product)),
+          ),
+        landingCopy: {
+          recommendationTitle: "추천 드링킹 단백질 요거트",
+          recommendationNote: "빠르게 마시기 쉬운 타입을 단백질 기준으로 정리했습니다.",
+          comparisonTitle: "드링킹 단백질 요거트 비교",
+        },
+      },
+    },
+  },
+  {
+    id: "yogurt-bulk",
+    slug: "yogurt-bulk",
+    label: "대용량",
+    icon: "🧺",
+    kind: "context",
+    categoryTargets: ["yogurt"],
+    routeMode: "category-query",
+    categories: {
+      yogurt: {
+        category: "yogurt",
+        quickLabel: "대용량",
+        quickIcon: "🧺",
+        quickOrder: 50,
+        filter: (product) => product.productType === "yogurt" && isBulkYogurt(product),
+        recommend: (products) =>
+          sortYogurtByProtein(products.filter((product) => product.productType === "yogurt" && isBulkYogurt(product))),
+        landingCopy: {
+          recommendationTitle: "추천 대용량 단백질 요거트",
+          recommendationNote: "400g 이상 제품 중에서 단백질 밀도와 활용도를 먼저 봅니다.",
+          comparisonTitle: "대용량 단백질 요거트 비교",
+        },
       },
     },
   },
@@ -950,7 +1127,9 @@ export function getPopularCurations(limit = 3): PopularCurationEntry[] {
 }
 
 export function buildCategoryCurationHref(category: CurationCategory, slug: string) {
-  return category === "bar" ? `/bars?curation=${slug}` : `/?curation=${slug}`;
+  if (category === "bar") return `/bars?curation=${slug}`;
+  if (category === "yogurt") return `/yogurt?curation=${slug}`;
+  return `/?curation=${slug}`;
 }
 
 export function applyCurationToCategoryProducts(

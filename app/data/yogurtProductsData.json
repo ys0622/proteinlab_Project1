@@ -584,44 +584,6 @@
     "sodium": 35
   },
   {
-    "slug": "maeil-bio-greek-delight-plain-80",
-    "brand": "매일 바이오",
-    "name": "매일 바이오 그릭요거트 Delight 무가당 플레인 80g",
-    "capacity": "80g",
-    "variant": "플레인",
-    "tags": [
-      "컵"
-    ],
-    "proteinPerServing": 6,
-    "density": "7.5g/100g",
-    "productUrl": "https://direct.maeil.com/index.do",
-    "productType": "yogurt",
-    "gradeTags": [
-      "단백질 밀도 B",
-      "다이어트 B",
-      "퍼포먼스 C"
-    ],
-    "gradeDescriptions": [
-      "공식 출시자료 기준 80g 한 컵당 단백질 6g이 들어간 Delight 무가당 플레인 제품입니다.",
-      "무가당·락토프리·식이섬유 강화 방향이 특징입니다.",
-      "상세 영양표 전체는 추가 이미지 확인이 필요합니다."
-    ],
-    "manufacturer": "매일유업",
-    "flavor": "플레인",
-    "yogurtType": "프로틴 요거트",
-    "storageType": "냉장",
-    "lactoseFree": true,
-    "proteinPer100g": 6.3,
-    "nutritionPerBottle": {
-      "proteinG": 6,
-      "fiberG": 3
-    },
-    "needsServingCheck": true,
-    "nutritionBasis": "unknown",
-    "servingCheckNote": "공식몰 판매는 확인됐지만 상세 영양표 기준은 추가 이미지 확인이 필요합니다. 구매 전 제품 라벨의 기준 중량과 영양정보를 다시 확인해주세요.",
-    "calories": 70
-  },
-  {
     "slug": "sangha-organic-greek-unsweetened-400",
     "brand": "상하목장",
     "name": "상하목장 유기농 그릭요거트 무가당 플레인 400g",
@@ -1389,7 +1351,7 @@
     ],
     "proteinPerServing": 5,
     "density": "6.3g/100g",
-    "productUrl": "https://direct.maeil.com/index.do",
+    "productUrl": "https://direct.maeil.com/m/product/productView.do?productCode=P20719",
     "productType": "yogurt",
     "gradeTags": [
       "단백질 밀도 B",
@@ -1409,7 +1371,7 @@
     "proteinPer100g": 6.3,
     "needsServingCheck": true,
     "nutritionBasis": "unknown",
-    "servingCheckNote": "공식 판매는 확인됐지만 상세 영양표 기준은 추가 이미지 확인이 필요합니다. 구매 전 제품 라벨의 기준 중량과 영양정보를 다시 확인해주세요.",
+    "servingCheckNote": "공식몰 상품 페이지는 확인되지만 상세 영양표 기준은 추가 이미지 확인이 필요합니다. 구매 전 제품 라벨의 기준 중량과 영양정보를 다시 확인해주세요.",
     "nutritionPerBottle": {
       "proteinG": 5
     },

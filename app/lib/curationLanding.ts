@@ -1,8 +1,8 @@
-import { barProductsWithGrades, mockProducts } from "../data/products";
+import { barProductsWithGrades, mockProducts, yogurtProducts } from "../data/products";
 import type { CurationDefinition, CurationGuideLink, CurationInfoSection } from "./curationSystem";
 import { getCurationDefinition, getPopularCurations } from "./curationSystem";
 
-type CategoryKey = "drink" | "bar" | "both";
+type CategoryKey = "drink" | "bar" | "yogurt" | "both";
 
 interface LandingProfile {
   heroTitle?: string;
@@ -15,13 +15,17 @@ interface LandingProfile {
 function getCategoryKey(curation: CurationDefinition): CategoryKey {
   const hasDrink = Boolean(curation.categories.drink);
   const hasBar = Boolean(curation.categories.bar);
+  const hasYogurt = Boolean(curation.categories.yogurt);
   if (hasDrink && hasBar) return "both";
+  if (hasYogurt) return "yogurt";
   return hasDrink ? "drink" : "bar";
 }
 
 function getCategoryLabel(categoryKey: CategoryKey) {
   if (categoryKey === "both") return "단백질 음료와 단백질 바";
-  return categoryKey === "drink" ? "단백질 음료" : "단백질 바";
+  if (categoryKey === "drink") return "단백질 음료";
+  if (categoryKey === "bar") return "단백질 바";
+  return "단백질 요거트";
 }
 
 const landingProfiles: Record<string, Partial<Record<CategoryKey, LandingProfile>>> = {
@@ -453,11 +457,25 @@ function buildDefaultGuideLinks(curation: CurationDefinition): CurationGuideLink
     });
   }
 
+  if (curation.categories.yogurt) {
+    links.push({
+      href: `/yogurt?curation=${curation.slug}`,
+      title: `${curation.label} 단백질 요거트 비교`,
+      description: `${curation.label} 기준에 맞는 단백질 요거트를 바로 비교해보세요.`,
+    });
+  }
+
   links.push({
     href: curation.categories.bar
       ? "/guides/product-selection-comparison/protein-bar-guide"
-      : "/guides/how-to-choose/checklist",
-    title: curation.categories.bar ? "단백질 바 고르는 법" : "단백질 음료 고르는 법",
+      : curation.categories.yogurt
+        ? "/guides/how-to-choose/checklist"
+        : "/guides/how-to-choose/checklist",
+    title: curation.categories.bar
+      ? "단백질 바 고르는 법"
+      : curation.categories.yogurt
+        ? "단백질 요거트 고르는 법"
+        : "단백질 음료 고르는 법",
     description: "단백질 함량, 당류, 칼로리, 단백질 밀도를 어떻게 함께 봐야 하는지 정리했습니다.",
   });
 
@@ -525,12 +543,18 @@ export function getCurationLandingData(slug: string) {
   const barProducts = curation.categories.bar
     ? barProductsWithGrades.filter(curation.categories.bar.filter)
     : [];
+  const yogurtProductsForCuration = curation.categories.yogurt
+    ? yogurtProducts.filter(curation.categories.yogurt.filter)
+    : [];
 
   const recommendedDrinks = curation.categories.drink
     ? curation.categories.drink.recommend(mockProducts).slice(0, 6)
     : [];
   const recommendedBars = curation.categories.bar
     ? curation.categories.bar.recommend(barProductsWithGrades).slice(0, 6)
+    : [];
+  const recommendedYogurts = curation.categories.yogurt
+    ? curation.categories.yogurt.recommend(yogurtProducts).slice(0, 6)
     : [];
 
   return {
@@ -539,5 +563,7 @@ export function getCurationLandingData(slug: string) {
     recommendedDrinks,
     barProducts,
     recommendedBars,
+    yogurtProducts: yogurtProductsForCuration,
+    recommendedYogurts,
   };
 }

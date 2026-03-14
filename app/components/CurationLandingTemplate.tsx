@@ -9,6 +9,8 @@ interface CurationLandingTemplateProps {
   recommendedDrinks: ProductDetailProps[];
   barProducts: ProductDetailProps[];
   recommendedBars: ProductDetailProps[];
+  yogurtProducts: ProductDetailProps[];
+  recommendedYogurts: ProductDetailProps[];
 }
 
 function InfoCard({ section }: { section: CurationInfoSection }) {
@@ -67,12 +69,16 @@ export default function CurationLandingTemplate({
   recommendedDrinks,
   barProducts,
   recommendedBars,
+  yogurtProducts,
+  recommendedYogurts,
 }: CurationLandingTemplateProps) {
   const drinkCopy = curation.categories.drink?.landingCopy;
   const barCopy = curation.categories.bar?.landingCopy;
+  const yogurtCopy = curation.categories.yogurt?.landingCopy;
   const infoSections = curation.infoSections ?? [];
   const hasDrinkCategory = Boolean(curation.categories.drink);
   const hasBarCategory = Boolean(curation.categories.bar);
+  const hasYogurtCategory = Boolean(curation.categories.yogurt);
   const isPopularLanding = curation.slug === "popular";
   const relatedLinksTitle = curation.relatedLinksTitle ?? "관련 가이드";
 
@@ -172,11 +178,23 @@ export default function CurationLandingTemplate({
           </>
         ) : null}
 
+        {hasYogurtCategory ? (
+          <>
+            <ProductSection
+              title={yogurtCopy?.recommendationTitle ?? "추천 단백질 요거트"}
+              note={yogurtCopy?.recommendationNote}
+              products={recommendedYogurts}
+            />
+            <ProductSection
+              title={yogurtCopy?.comparisonTitle ?? "단백질 요거트 비교"}
+              products={yogurtProducts}
+            />
+          </>
+        ) : null}
+
         {!isPopularLanding && curation.relatedGuideLinks?.length ? (
           <section className="mt-10 rounded-xl border border-[#e8e6e3] bg-[#FFFDF8] px-4 py-4">
-            <h2 className="text-sm font-semibold text-[var(--foreground)]">
-              {relatedLinksTitle}
-            </h2>
+            <h2 className="text-sm font-semibold text-[var(--foreground)]">{relatedLinksTitle}</h2>
             <div className="mt-3 grid gap-3 md:grid-cols-2">
               {curation.relatedGuideLinks.map((guide) => (
                 <Link
