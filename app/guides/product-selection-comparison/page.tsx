@@ -3,7 +3,7 @@ import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 
 export const metadata = {
-  title: "제품 선택 & 비교 가이드 | ProteinLab",
+  title: "제품 선택 & 비교 가이드 | 단백질 음료·바·요거트 | ProteinLab",
   description:
     "단백질 음료, 단백질 바, 단백질 요거트를 고를 때 필요한 비교 기준과 추천, 랭킹 읽는 법을 Track B에서 정리합니다.",
 };
@@ -28,16 +28,16 @@ const topics = [
     badge: "입문",
   },
   {
-    title: "단백질 요거트 선택 가이드",
+    title: "단백질 요거트 추천 기준",
     href: "/guides/product-selection-comparison/protein-yogurt-guide",
     description:
       "그릭요거트, 드링킹 요거트, 대용량 요거트를 어떤 기준으로 나눠 봐야 하는지 정리합니다.",
     question: "단백질 요거트는 그릭, 드링킹, 대용량을 어떻게 나눠 봐야 할까?",
     related: ["단백질 함량", "당류", "그릭요거트", "드링킹 요거트"],
-    badge: "입문",
+    badge: "요거트",
   },
   {
-    title: "그릭요거트 고르는 법",
+    title: "그릭요거트 추천 기준",
     href: "/guides/product-selection-comparison/greek-yogurt-guide",
     description:
       "꾸덕한 그릭요거트를 고를 때 단백질 밀도, 당류, 대용량 여부를 어떻게 함께 봐야 하는지 정리합니다.",
@@ -64,7 +64,7 @@ const topics = [
     badge: "요거트",
   },
   {
-    title: "단백질 요거트 랭킹 읽는 법",
+    title: "단백질 요거트 순위 읽는 법",
     href: "/guides/product-selection-comparison/protein-yogurt-ranking-guide",
     description:
       "단백질 요거트 랭킹에서 단백질 밀도, 다이어트, 퍼포먼스 점수를 어떻게 읽어야 하는지 정리합니다.",
@@ -169,7 +169,7 @@ export default function ProductSelectionComparisonPage() {
               </p>
             </div>
             <div className="hidden rounded-full border border-[#d8e2eb] bg-white px-3 py-1.5 text-xs font-medium text-[#4a6178] md:block">
-              시작 추천: 단백질 요거트 선택 가이드
+              시작 추천: 단백질 요거트 추천 기준
             </div>
           </div>
 
