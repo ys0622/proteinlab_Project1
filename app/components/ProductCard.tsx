@@ -118,13 +118,13 @@ export default function ProductCard({
 
   const imageArea = (
     <div
-      className="product-card__media flex h-[176px] w-full flex-shrink-0 items-center justify-center overflow-hidden rounded-xl border border-[#eee] bg-[#ffffff] p-1 transition-colors duration-200 group-hover:border-[#e2e2e2] md:h-[200px] md:p-[10px]"
+      className="product-card__media flex h-[172px] w-full flex-shrink-0 items-center justify-center overflow-hidden rounded-xl border border-[#eee] bg-[#ffffff] p-1 transition-colors duration-200 group-hover:border-[#e2e2e2] md:h-[200px] md:p-[10px]"
       style={{ borderRadius: "12px" }}
     >
       {imageUrl ? (
         <div
-          className="product-card__image relative h-full w-full max-w-[180px] md:max-w-[200px]"
-          style={{ minHeight: "140px" }}
+          className="product-card__image relative h-full w-full max-w-[176px] md:max-w-[200px]"
+          style={{ minHeight: "136px" }}
         >
           <Image
             src={imageUrl}
@@ -138,14 +138,14 @@ export default function ProductCard({
           />
         </div>
       ) : (
-        <div className="h-[140px] w-full max-w-[180px] md:h-[160px] md:max-w-[200px]" />
+        <div className="h-[136px] w-full max-w-[176px] md:h-[160px] md:max-w-[200px]" />
       )}
     </div>
   );
 
   return (
     <article
-      className={`product-card group flex h-full flex-col overflow-hidden rounded-2xl border bg-[#FFFDF8] p-2.5 transition-all duration-200 ease-out hover:border-[#ddd] focus:outline-none focus:ring-2 focus:ring-[var(--accent)] focus:ring-offset-2 active:shadow-sm md:p-[14px] ${canOpenDetail ? "cursor-pointer" : ""}`}
+      className={`product-card group flex h-full flex-col overflow-hidden rounded-2xl border bg-[#FFFDF8] p-2 transition-all duration-200 ease-out hover:border-[#ddd] focus:outline-none focus:ring-2 focus:ring-[var(--accent)] focus:ring-offset-2 active:shadow-sm md:p-[14px] ${canOpenDetail ? "cursor-pointer" : ""}`}
       onClick={handleCardClick}
       onKeyDown={handleCardKeyDown}
       role={canOpenDetail ? "link" : undefined}
@@ -169,7 +169,7 @@ export default function ProductCard({
       )}
 
       <div className="product-card__content flex min-h-0 flex-1 flex-col">
-        <p className="product-card__brand mt-2.5 text-xs tracking-wide md:mt-4" style={{ color: "#7a7a7a" }}>
+        <p className="product-card__brand mt-2 text-xs tracking-wide md:mt-4" style={{ color: "#7a7a7a" }}>
           {brand}
         </p>
 
@@ -187,7 +187,7 @@ export default function ProductCard({
           ) : null}
         </h3>
 
-        <MetricBadgeGroup className="product-card__badges mt-0.5">
+        <MetricBadgeGroup className="product-card__badges mt-0">
           {visibleGradeTags.map((tag) => {
             const displayTag = formatProductBadgeLabel(tag);
             const tone = getProductBadgeTone(displayTag);
@@ -218,9 +218,9 @@ export default function ProductCard({
           ) : null}
         </MetricBadgeGroup>
 
-        <div className="mx-1 mt-1.5 border-t border-[#e8e6e3] md:mt-3" />
+        <div className="mx-1 mt-1 border-t border-[#e8e6e3] md:mt-3" />
 
-        <div className="product-card__metrics mt-1.5 grid grid-cols-2 gap-1 md:mt-3 md:gap-2">
+        <div className="product-card__metrics mt-1 grid grid-cols-2 gap-1 md:mt-3 md:gap-2">
           {[
             { label: "단백질", value: `${proteinPerServing}g`, isDensity: false },
             { label: "칼로리", value: calories != null ? `${calories}` : "-", isDensity: false },
@@ -229,7 +229,7 @@ export default function ProductCard({
           ].map(({ label, value, isDensity }) => (
             <div
               key={label}
-              className="product-card__metric flex min-w-0 flex-col justify-center rounded-lg border border-[#e8e8e8] bg-white px-2 py-1 text-left md:px-2.5 md:py-2"
+              className="product-card__metric flex min-w-0 flex-col justify-center rounded-lg border border-[#e8e8e8] bg-white px-1.5 py-1 text-left md:px-2.5 md:py-2"
               style={{ borderRadius: "10px" }}
             >
               <span
@@ -253,7 +253,7 @@ export default function ProductCard({
           ))}
         </div>
 
-        <div className="cta-group mt-2 md:mt-4">
+        <div className="cta-group mt-1.5 md:mt-4">
           <PurchaseLinkRow
             coupangHref={coupangHref}
             naverHref={naverHref}
@@ -271,13 +271,13 @@ export default function ProductCard({
           />
         </div>
 
-        <div className="mx-1 mt-1.5 border-t border-[#e8e6e3] md:mt-3" />
+        <div className="mx-1 mt-1 border-t border-[#e8e6e3] md:mt-3" />
 
-        <div className="product-card__footer-actions mt-1.5 flex gap-1.5 md:mt-3 md:gap-3">
+        <div className="product-card__footer-actions mt-1 flex gap-1.5 md:mt-3 md:gap-3">
           <Link
             href={detailHref}
             className="flex flex-1 items-center justify-center rounded-[10px] border border-[#e2e2e2] bg-white font-medium text-[var(--foreground)] transition-colors hover:border-[var(--accent)] hover:bg-[var(--accent-light)] hover:text-[var(--accent)] active:scale-[0.98]"
-            style={{ height: "34px", fontSize: "12px", borderRadius: "10px" }}
+            style={{ height: "32px", fontSize: "12px", borderRadius: "10px" }}
           >
             상세보기
           </Link>
@@ -288,7 +288,7 @@ export default function ProductCard({
               type="button"
               disabled
               className="flex flex-1 items-center justify-center rounded-[10px] border border-[#e2e2e2] bg-white font-medium text-[var(--foreground)] opacity-60"
-              style={{ height: "34px", fontSize: "12px", borderRadius: "10px" }}
+              style={{ height: "32px", fontSize: "12px", borderRadius: "10px" }}
             >
               비교
             </button>

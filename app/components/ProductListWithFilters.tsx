@@ -268,11 +268,9 @@ export default function ProductListWithFilters(props: ProductListWithFiltersProp
 
   return (
     <>
-      {productType !== "yogurt" ? (
-        <div className="mt-3 md:hidden" style={{ marginTop: "12px" }}>
-          <QuickCuration productType={productType} />
-        </div>
-      ) : null}
+      <div className="mt-3 md:hidden" style={{ marginTop: "12px" }}>
+        <QuickCuration productType={productType} />
+      </div>
 
       <div
         className="mt-3 rounded-xl border border-[var(--border)] bg-[var(--filter-box-bg)]"
@@ -310,6 +308,7 @@ export default function ProductListWithFilters(props: ProductListWithFiltersProp
                 onResetFilters={handleResetFilters}
                 mobileToolbarSlot={mobileSearchButton}
                 yogurtBrandOptions={brandOptions}
+                desktopFooterSlot={<QuickCuration productType={productType} variant="inline" />}
               />
             )}
         </div>

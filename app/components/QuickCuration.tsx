@@ -40,7 +40,10 @@ export default function QuickCuration({
   className = "",
   variant = "card",
 }: QuickCurationProps) {
-  const items = getQuickCurations(productType);
+  const items =
+    productType === "yogurt"
+      ? [{ slug: "popular", label: "인기", icon: "🔥", href: "/yogurt" }]
+      : getQuickCurations(productType);
 
   if (variant === "inline") {
     return (
