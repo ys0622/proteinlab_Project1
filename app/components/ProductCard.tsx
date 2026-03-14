@@ -229,7 +229,7 @@ export default function ProductCard({
           ].map(({ label, value, isDensity }) => (
             <div
               key={label}
-              className="product-card__metric flex min-w-0 flex-col justify-center rounded-lg border border-[#e8e8e8] bg-white px-2 py-1 text-left md:px-2.5 md:py-2"
+              className="product-card__metric flex min-w-0 flex-col justify-center rounded-lg border border-[#e8e8e8] bg-white px-2 py-0.5 text-left md:px-2.5 md:py-2"
               style={{ borderRadius: "10px" }}
             >
               <span
@@ -241,7 +241,7 @@ export default function ProductCard({
               <span
                 className={`product-card__metric-value ${isDensity ? "product-card__metric-value--compact" : ""}`}
                 style={{
-                  fontSize: isDensity ? "15px" : "16px",
+                  fontSize: isDensity ? "14px" : "15px",
                   fontWeight: 700,
                   color: "#3d3d3d",
                   lineHeight: 1.2,
