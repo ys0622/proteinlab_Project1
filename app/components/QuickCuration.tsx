@@ -4,7 +4,7 @@ import Link from "next/link";
 import { getQuickCurations, type CurationCategory } from "../lib/curationSystem";
 
 interface QuickCurationProps {
-  productType: CurationCategory;
+  productType: CurationCategory | "yogurt";
   className?: string;
   variant?: "card" | "inline";
 }
