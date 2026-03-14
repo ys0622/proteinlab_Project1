@@ -147,39 +147,20 @@ export default function IntakeStrategyHealthPage() {
                 <Link
                   key={topic.href}
                   href={topic.href}
-                  className="group flex h-full min-h-[248px] flex-col justify-between rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)] transition-colors hover:border-[#c8dfd0]"
+                  className="group flex h-full flex-col rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)] transition-colors hover:border-[#c8dfd0]"
                 >
-                  <div>
-                    <div className="flex items-center justify-between gap-3">
-                      <span className="rounded-full bg-[#eff7f1] px-3 py-1 text-[11px] font-semibold text-[#2d6a4f]">
-                        {topic.badge}
-                      </span>
-                      <span className="text-[10px] font-semibold uppercase tracking-wide text-[#9a8e83]">Track C</span>
-                    </div>
-
-                    <h3 className="mt-3 text-base font-bold text-[#24543d] transition-colors group-hover:text-[var(--accent)]">
-                      {topic.title}
-                    </h3>
-                    <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">{topic.description}</p>
-
-                    <div className="mt-4 rounded-xl border border-[#dce8df] bg-[#f6fbf7] px-3 py-3">
-                      <p className="text-[11px] font-semibold uppercase tracking-wide text-[#9a8e83]">핵심 질문</p>
-                      <p className="mt-1 text-[13px] leading-5 text-[var(--foreground)]">{topic.question}</p>
-                    </div>
-
-                    <ul className="mt-3 space-y-1.5">
-                      {topic.related.map((item) => (
-                        <li key={item} className="flex items-start gap-2 text-[12px] leading-5 text-[var(--foreground-muted)]">
-                          <span className="mt-[5px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#4c9a72]" />
-                          <span>{item}</span>
-                        </li>
-                      ))}
-                    </ul>
+                  <div className="flex items-center justify-between gap-3">
+                    <span className="rounded-full bg-[#eff7f1] px-3 py-1 text-[11px] font-semibold text-[#2d6a4f]">
+                      {topic.badge}
+                    </span>
+                    <span className="text-[10px] font-semibold uppercase tracking-wide text-[#9a8e83]">TRACK C</span>
                   </div>
-
-                  <div className="mt-4 flex items-center justify-between gap-3">
-                    <span className="rounded-full bg-[#eff7f1] px-2.5 py-1 text-[11px] font-semibold text-[#2d6a4f]">대표 주제</span>
-                    <span className="inline-flex items-center text-sm font-semibold text-[#24543d]">주제 보기</span>
+                  <h3 className="mt-3 text-base font-bold text-[#24543d] transition-colors group-hover:text-[var(--accent)]">
+                    {topic.title}
+                  </h3>
+                  <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">{topic.description}</p>
+                  <div className="mt-4 flex items-center justify-end">
+                    <span className="inline-flex items-center text-sm font-semibold text-[#24543d]">주제 보기 →</span>
                   </div>
                 </Link>
               ))}
