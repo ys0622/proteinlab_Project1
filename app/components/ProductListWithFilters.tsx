@@ -20,7 +20,6 @@ import {
 import { getPopularityScore } from "../lib/productPopularity";
 import FilterSection from "./FilterSection";
 import ProductCard from "./ProductCard";
-import ProductTopFivePopover from "./ProductTopFivePopover";
 import QuickCuration from "./QuickCuration";
 import SearchBar from "./SearchBar";
 import ServingBasisNotice from "./ServingBasisNotice";
@@ -413,10 +412,7 @@ export default function ProductListWithFilters(props: ProductListWithFiltersProp
         </div>
       ) : null}
 
-      <div
-        className="mt-3 flex flex-col gap-2 min-[360px]:flex-row min-[360px]:items-center min-[360px]:justify-between"
-        style={{ marginTop: "12px" }}
-      >
+      <div className="mt-3" style={{ marginTop: "12px" }}>
         <div className="flex min-w-0 gap-2 overflow-x-auto pb-1">
           <Link
             href="/"
@@ -470,8 +466,6 @@ export default function ProductListWithFilters(props: ProductListWithFiltersProp
             active={isYogurt}
           />
         </div>
-
-        <ProductTopFivePopover productType={productType} products={products} />
       </div>
 
       <div className="mt-2" style={{ marginTop: "8px" }}>
