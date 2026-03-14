@@ -52,16 +52,16 @@ export default function NutritionComparisonPage() {
             성분표는 숫자 하나보다 조합이 더 중요합니다
           </h1>
           <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
-            제품 비교를 빠르게 하려면 단백질만 보는 습관부터 바꿔야 합니다.
+            운동 후 회복인지, 저당 간식인지, 식사 보완인지 — 목적이 다르면 먼저 봐야 할 숫자도 달라집니다.
             <br />
-            상황에 따라 우선순위가 달라지기 때문에, 어떤 목적에서 무엇을 먼저 볼지 정해두는 것이 핵심입니다.
+            성분표는 단백질 하나만 보는 게 아니라 조합으로 읽어야 실수가 줄어듭니다.
           </p>
         </div>
       </section>
 
-      <main className="guide-article-page guide-article-page--track-b mx-auto max-w-[1200px] px-4 py-8 md:px-6">
+      <main className="mx-auto max-w-[1200px] px-4 py-8 md:px-6">
         <div className="space-y-6">
-          <section className="rounded-2xl border border-[#e8e6e3] bg-white px-5 py-5">
+          <section className="rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
             <h2 className="text-xl font-bold text-[var(--foreground)]">상황별로 보는 순서가 달라집니다</h2>
             <div className="mt-5 overflow-x-auto">
               <table className="min-w-full border-collapse text-left text-sm">
@@ -87,27 +87,27 @@ export default function NutritionComparisonPage() {
             </div>
           </section>
 
-          <section className="rounded-2xl border border-[#e8e6e3] bg-[#fffdf8] px-5 py-5">
+          <section className="rounded-[28px] border border-[#e2ebe4] bg-[#f7fbf8] px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
             <h2 className="text-xl font-bold text-[var(--foreground)]">비교 실수를 줄이는 3가지 팁</h2>
             <div className="mt-5 grid gap-3 md:grid-cols-3">
               {compareTips.map((item) => (
-                <article key={item.title} className="rounded-xl border border-[#e8eef3] bg-white p-4">
-                  <h3 className="text-sm font-semibold text-[#3f556d]">{item.title}</h3>
+                <article key={item.title} className="rounded-2xl border border-[#dce8df] bg-[#f6fbf7] p-4">
+                  <h3 className="text-sm font-semibold text-[#24543d]">{item.title}</h3>
                   <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">{item.body}</p>
                 </article>
               ))}
             </div>
-            <blockquote className="mt-5 rounded-xl border border-[#eef1f3] bg-[#fbfcfd] px-4 py-4 text-sm leading-6 text-[var(--foreground-muted)]">
+            <blockquote className="mt-5 rounded-xl border border-[#dce8df] bg-[#f7fbf8] px-4 py-4 text-sm leading-6 text-[var(--foreground-muted)]">
               ProteinLab 비교 화면에서는 단백질 함량뿐 아니라 당류, 칼로리, 단백질 밀도를 함께 볼 수 있습니다. 비교는 항상 숫자의 조합으로 판단하는 것이 안전합니다.
             </blockquote>
           </section>
 
-          <section className="rounded-2xl border border-[#e8e6e3] bg-white px-5 py-5">
+          <section className="rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
             <div className="flex flex-wrap gap-3">
-              <Link href="/compare" className="inline-flex items-center justify-center rounded-lg border border-[#4a6178] bg-[#4a6178] px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#3c5065]">
+              <Link href="/compare" className="inline-flex items-center justify-center rounded-lg border border-[#2d6a4f] bg-[#2d6a4f] px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#24543d]">
                 비교 페이지 보기 →
               </Link>
-              <Link href="/guides/product-selection-comparison/nutrition-criteria" className="inline-flex items-center justify-center rounded-lg border border-[#d8e2eb] px-5 py-3 text-sm font-semibold text-[#3f556d] transition-colors hover:bg-[#eef4f9]">
+              <Link href="/guides/product-selection-comparison/nutrition-criteria" className="inline-flex items-center justify-center rounded-lg border border-[#d9e7dc] px-5 py-3 text-sm font-semibold text-[#24543d] transition-colors hover:bg-[#eef7f1]">
                 영양성분 기준 보기 →
               </Link>
             </div>
