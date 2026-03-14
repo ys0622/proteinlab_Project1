@@ -407,7 +407,7 @@
       "컵"
     ],
     "proteinPerServing": 5.5,
-    "calories": 87.5,
+    "calories": 90,
     "sugar": 2.5,
     "density": "6.9g/100g",
     "productUrl": "https://direct.maeil.com/m/brand/sangha",
@@ -430,18 +430,21 @@
     "lactoseFree": false,
     "proteinPer100g": 6.9,
     "nutritionPerBottle": {
-      "caloriesKcal": 87.5,
+      "caloriesKcal": 90,
       "proteinG": 5.5,
       "carbsG": 4,
       "sugarsG": 2.5,
       "fatG": 5.5,
       "satFatG": 3.5,
-      "transFatG": 0.2,
-      "cholesterolMg": 20
+      "transFatG": 0.5,
+      "cholesterolMg": 20,
+      "sodiumMg": 40,
+      "potassiumMg": 180
     },
     "needsServingCheck": true,
     "nutritionBasis": "unknown",
-    "servingCheckNote": "공식몰에서는 16개 묶음 판매 페이지가 확인됩니다. 현재 수치는 80g 1개 기준으로 유지했고, 실제 표기 기준은 제품 라벨을 다시 확인해야 합니다."
+    "servingCheckNote": "공식몰에서는 16개 묶음 판매 페이지가 확인됩니다. 현재 수치는 fatsecret Platform API의 80g 기준 영양정보를 반영했고, 실제 표기 기준은 제품 라벨을 다시 확인해야 합니다.",
+    "sodium": 40
   },
   {
     "slug": "pulmuone-dannon-greek-unsweetened-90",
@@ -542,10 +545,10 @@
     "tags": [
       "컵"
     ],
-    "proteinPerServing": 4.8,
-    "calories": 96,
-    "sugar": 8,
-    "density": "6.0g/100g",
+    "proteinPerServing": 5.3,
+    "calories": 100,
+    "sugar": 7,
+    "density": "6.6g/100g",
     "productUrl": "https://direct.maeil.com/m/brand/sangha",
     "productType": "yogurt",
     "gradeTags": [
@@ -560,24 +563,25 @@
     ],
     "manufacturer": "매일유업",
     "flavor": "플레인",
-    "fat": 5.6,
+    "fat": 5,
     "yogurtType": "그릭 요거트",
     "storageType": "냉장",
     "lactoseFree": false,
-    "proteinPer100g": 6,
+    "proteinPer100g": 6.6,
     "nutritionPerBottle": {
-      "caloriesKcal": 96,
-      "proteinG": 4.8,
-      "carbsG": 8.8,
-      "sugarsG": 8,
-      "fatG": 5.6,
-      "satFatG": 3.6,
-      "transFatG": 0.2,
-      "cholesterolMg": 20
+      "caloriesKcal": 100,
+      "proteinG": 5.3,
+      "carbsG": 8.5,
+      "sugarsG": 7,
+      "fatG": 5,
+      "satFatG": 3,
+      "cholesterolMg": 20,
+      "sodiumMg": 35
     },
     "needsServingCheck": true,
     "nutritionBasis": "unknown",
-    "servingCheckNote": "공식몰에서는 16개 묶음 판매 페이지가 확인됩니다. 현재 수치는 80g 1개 기준으로 유지했고, 실제 표기 기준은 제품 라벨을 다시 확인해야 합니다."
+    "servingCheckNote": "공식몰에서는 16개 묶음 판매 페이지가 확인됩니다. 현재 수치는 fatsecret Platform API의 80g 기준 영양정보를 반영했고, 실제 표기 기준은 제품 라벨을 다시 확인해야 합니다.",
+    "sodium": 35
   },
   {
     "slug": "maeil-bio-greek-delight-plain-80",
@@ -625,8 +629,8 @@
     "tags": [
       "컵"
     ],
-    "proteinPerServing": 28,
-    "density": "7.0g/100g",
+    "proteinPerServing": 27.5,
+    "density": "6.9g/100g",
     "productUrl": "https://direct.maeil.com/m/brand/sangha",
     "productType": "yogurt",
     "gradeTags": [
@@ -644,13 +648,25 @@
     "yogurtType": "그릭 요거트",
     "storageType": "냉장",
     "lactoseFree": false,
-    "proteinPer100g": 7,
+    "proteinPer100g": 6.9,
     "nutritionPerBottle": {
-      "proteinG": 28
+      "caloriesKcal": 450,
+      "proteinG": 27.5,
+      "carbsG": 20,
+      "sugarsG": 12.5,
+      "fatG": 27.5,
+      "satFatG": 17.5,
+      "transFatG": 2.5,
+      "cholesterolMg": 100,
+      "sodiumMg": 200,
+      "potassiumMg": 900
     },
     "needsServingCheck": true,
-    "nutritionBasis": "unknown",
-    "servingCheckNote": "공식몰에서는 400g 3개 묶음 판매 페이지가 확인됩니다. 현재 수치는 400g 1통 기준으로 유지했고, 실제 표기 기준은 제품 라벨을 다시 확인해야 합니다."
+    "nutritionBasis": "per_80g_scaled",
+    "servingCheckNote": "fatsecret Platform API의 80g 기준 영양정보를 400g 용량에 맞춰 환산했습니다. 400g 대용량 SKU 라벨은 추가 이미지로 재확인하는 편이 안전합니다.",
+    "calories": 450,
+    "sugar": 12.5,
+    "fat": 27.5
   },
   {
     "slug": "who-highprotein-greek-unsweetened-400",
@@ -682,10 +698,21 @@
     "lactoseFree": false,
     "proteinPer100g": 10,
     "nutritionPerBottle": {
-      "proteinG": 40
+      "caloriesKcal": 580,
+      "proteinG": 40,
+      "carbsG": 52,
+      "sugarsG": 28,
+      "fatG": 24,
+      "satFatG": 16,
+      "cholesterolMg": 108,
+      "sodiumMg": 400
     },
     "needsServingCheck": false,
-    "nutritionBasis": "per_unit"
+    "nutritionBasis": "per_unit",
+    "calories": 580,
+    "sugar": 28,
+    "fat": 24,
+    "servingCheckNote": "후디스 제품 이미지 전면 표기와 fatsecret Platform API 100g 영양정보를 함께 대조했습니다."
   },
   {
     "slug": "yozm-plain-greek-450",
@@ -696,8 +723,8 @@
     "tags": [
       "컵"
     ],
-    "proteinPerServing": 58.95,
-    "density": "13.1g/100g",
+    "proteinPerServing": 54,
+    "density": "12.0g/100g",
     "productUrl": "https://yozm.co.kr/product/%EC%9A%94%EC%A6%98-%EA%B7%B8%EB%A6%AD%EC%9A%94%EA%B1%B0%ED%8A%B8-%ED%94%8C%EB%A0%88%EC%9D%B8-450g/68/category/112/display/1/",
     "productType": "yogurt",
     "gradeTags": [
@@ -712,17 +739,26 @@
     ],
     "manufacturer": "YOZM",
     "flavor": "플레인",
-    "fat": 63,
+    "fat": 54,
     "yogurtType": "그릭 요거트",
     "storageType": "냉장",
     "lactoseFree": false,
-    "proteinPer100g": 13.1,
+    "proteinPer100g": 12,
     "nutritionPerBottle": {
-      "proteinG": 58.95,
-      "fatG": 63
+      "caloriesKcal": 846,
+      "proteinG": 54,
+      "carbsG": 36,
+      "sugarsG": 9,
+      "fatG": 54,
+      "satFatG": 22.5,
+      "cholesterolMg": 225,
+      "sodiumMg": 112.5
     },
     "needsServingCheck": false,
-    "nutritionBasis": "per_unit"
+    "nutritionBasis": "per_unit",
+    "calories": 846,
+    "sugar": 9,
+    "servingCheckNote": "fatsecret Platform API의 100g 영양정보(2025-09-20 업데이트)를 450g 용량 기준으로 반영했습니다."
   },
   {
     "slug": "yozm-plain-greek-800",
@@ -733,8 +769,8 @@
     "tags": [
       "컵"
     ],
-    "proteinPerServing": 104.8,
-    "density": "13.1g/100g",
+    "proteinPerServing": 96,
+    "density": "12.0g/100g",
     "productUrl": "https://yozm.co.kr/product/%EC%9A%94%EC%A6%98-%EA%B7%B8%EB%A6%AD%EC%9A%94%EA%B1%B0%ED%8A%B8-%ED%94%8C%EB%A0%88%EC%9D%B8-800g/103/category/112/display/1/",
     "productType": "yogurt",
     "gradeTags": [
@@ -749,18 +785,26 @@
     ],
     "manufacturer": "YOZM",
     "flavor": "플레인",
-    "fat": 112,
+    "fat": 96,
     "yogurtType": "그릭 요거트",
     "storageType": "냉장",
     "lactoseFree": false,
-    "proteinPer100g": 13.1,
+    "proteinPer100g": 12,
     "nutritionPerBottle": {
-      "proteinG": 104.8,
-      "fatG": 112
+      "caloriesKcal": 1504,
+      "proteinG": 96,
+      "carbsG": 64,
+      "sugarsG": 16,
+      "fatG": 96,
+      "satFatG": 40,
+      "cholesterolMg": 400,
+      "sodiumMg": 200
     },
     "needsServingCheck": true,
-    "servingCheckNote": "공식 판매 흔적은 확인됐지만 현재 상세 영양표는 추가 이미지 확인이 필요합니다. 현재 수치는 450g 제품 값을 용량 비례 확장한 임시값입니다.",
-    "nutritionBasis": "estimated_from_related_sku"
+    "servingCheckNote": "fatsecret Platform API의 100g 영양정보를 800g 용량 기준으로 환산했습니다. 대용량 SKU 라벨과 총 영양정보는 추가 이미지로 재확인하는 편이 안전합니다.",
+    "nutritionBasis": "per_100g_scaled",
+    "calories": 1504,
+    "sugar": 16
   },
   {
     "slug": "yozm-soft-plain-500",
@@ -771,24 +815,42 @@
     "tags": [
       "컵"
     ],
-    "proteinPerServing": 0,
-    "density": "-",
+    "proteinPerServing": 35,
+    "density": "7.0g/100g",
     "productUrl": "https://yozm.co.kr/product/%EC%9A%94%EC%A6%98-%EA%B7%B8%EB%A6%AD%EC%9A%94%EA%B1%B0%ED%8A%B8-%EC%86%8C%ED%94%84%ED%8A%B8-%ED%94%8C%EB%A0%88%EC%9D%B8-500g/116/category/112/display/1/",
     "productType": "yogurt",
-    "gradeTags": [],
+    "gradeTags": [
+      "단백질 밀도 B",
+      "다이어트 C",
+      "퍼포먼스 B"
+    ],
     "gradeDescriptions": [
-      "YOZM 공식몰 기준 현재 판매 흔적이 확인되는 소프트 플레인 500g 제품입니다.",
-      "플레인 라인과 다른 제형의 별도 SKU라 따로 관리하는 편이 맞습니다.",
-      "상세 영양표는 추가 이미지 확인이 필요합니다."
+      "YOZM 소프트 플레인 500g은 플레인 메인 라인보다 밀도는 낮지만 총 단백질량은 충분한 편입니다.",
+      "500g 대용량이라 총 칼로리와 지방이 높은 편이어서 다이어트 관점에서는 보수적으로 보는 편이 맞습니다.",
+      "식사 보완용이나 나눠 먹는 용도로는 활용도가 있습니다."
     ],
     "manufacturer": "YOZM",
     "flavor": "플레인",
     "yogurtType": "그릭 요거트",
     "storageType": "냉장",
     "lactoseFree": false,
-    "needsServingCheck": true,
-    "servingCheckNote": "공식 판매는 확인됐지만 상세 영양표는 확보하지 못했습니다. 구매 전 제품 라벨의 기준 중량과 영양정보를 다시 확인해주세요.",
-    "nutritionBasis": "unknown"
+    "needsServingCheck": false,
+    "servingCheckNote": "제품 전면 이미지의 500g(580kcal) 표기와 fatsecret Platform API 100g 영양정보를 함께 대조했습니다.",
+    "nutritionBasis": "per_unit",
+    "calories": 580,
+    "sugar": 10,
+    "fat": 40,
+    "proteinPer100g": 7,
+    "nutritionPerBottle": {
+      "caloriesKcal": 580,
+      "proteinG": 35,
+      "carbsG": 20,
+      "sugarsG": 10,
+      "fatG": 40,
+      "satFatG": 22,
+      "cholesterolMg": 125,
+      "sodiumMg": 155
+    }
   },
   {
     "slug": "greekday-light-100",
@@ -1063,8 +1125,22 @@
     "lactoseFree": false,
     "proteinPer100g": 8,
     "nutritionPerBottle": {
-      "proteinG": 8
-    }
+      "caloriesKcal": 200,
+      "proteinG": 8,
+      "carbsG": 23,
+      "sugarsG": 16,
+      "fatG": 8,
+      "satFatG": 4.4,
+      "transFatG": 0.5,
+      "cholesterolMg": 35,
+      "sodiumMg": 35
+    },
+    "calories": 200,
+    "sugar": 16,
+    "fat": 8,
+    "needsServingCheck": false,
+    "nutritionBasis": "per_unit",
+    "servingCheckNote": "fatsecret Platform API 기준 100g 영양정보를 확인했습니다."
   },
   {
     "slug": "maeil-bio-greek-unsweetened-400",
@@ -1377,7 +1453,8 @@
       "sugarsG": 8,
       "fatG": 5,
       "sodiumMg": 100
-    }
+    },
+    "fat": 5
   },
   {
     "slug": "maeil-bio-greek-togo-honey-120",
@@ -1388,7 +1465,7 @@
     "tags": [
       "파우치"
     ],
-    "proteinPerServing": 7,
+    "proteinPerServing": 6,
     "density": "5.8g/100g",
     "productUrl": "https://direct.maeil.com/index.do",
     "productType": "yogurt",
@@ -1408,12 +1485,24 @@
     "storageType": "냉장",
     "lactoseFree": false,
     "proteinPer100g": 5.8,
-    "needsServingCheck": true,
-    "nutritionBasis": "unknown",
-    "servingCheckNote": "공식 판매는 확인됐지만 상세 영양표 기준은 추가 이미지 확인이 필요합니다. 구매 전 제품 라벨을 다시 확인해주세요.",
+    "needsServingCheck": false,
+    "nutritionBasis": "per_unit",
+    "servingCheckNote": "fatsecret Platform API의 120g 기준 영양정보를 반영했습니다.",
     "nutritionPerBottle": {
-      "proteinG": 7
-    }
+      "caloriesKcal": 130,
+      "proteinG": 6,
+      "carbsG": 17,
+      "sugarsG": 12,
+      "fatG": 4,
+      "satFatG": 2.5,
+      "transFatG": 0.5,
+      "cholesterolMg": 25,
+      "sodiumMg": 90,
+      "potassiumMg": 140
+    },
+    "calories": 130,
+    "sugar": 12,
+    "fat": 4
   },
   {
     "slug": "maeil-bio-greek-drink-plain-190",
@@ -1489,12 +1578,24 @@
     "storageType": "냉장",
     "lactoseFree": true,
     "proteinPer100g": 4.4,
-    "needsServingCheck": true,
-    "nutritionBasis": "unknown",
-    "servingCheckNote": "공식 판매는 확인됐지만 상세 영양표 기준은 추가 이미지 확인이 필요합니다. 구매 전 라벨을 다시 확인해주세요.",
+    "needsServingCheck": false,
+    "nutritionBasis": "per_unit",
+    "servingCheckNote": "fatsecret Platform API의 190mL 기준 영양정보를 반영했습니다.",
     "nutritionPerBottle": {
-      "proteinG": 8.3
-    }
+      "caloriesKcal": 132,
+      "proteinG": 8.3,
+      "carbsG": 17,
+      "sugarsG": 12.5,
+      "fatG": 3.4,
+      "satFatG": 2.1,
+      "cholesterolMg": 16,
+      "sodiumMg": 105,
+      "fiberG": 2.5
+    },
+    "calories": 132,
+    "sugar": 12.5,
+    "fat": 3.4,
+    "sodium": 105
   },
   {
     "slug": "maeil-bio-greek-drink-unsweetened-710",
@@ -1640,24 +1741,43 @@
     "tags": [
       "컵"
     ],
-    "proteinPerServing": 0,
-    "density": "-",
+    "proteinPerServing": 7,
+    "density": "5.8g/100g",
     "productUrl": "https://direct.maeil.com/m/brand/sangha",
     "productType": "yogurt",
-    "gradeTags": [],
+    "gradeTags": [
+      "단백질 밀도 C",
+      "다이어트 C",
+      "퍼포먼스 C"
+    ],
     "gradeDescriptions": [
-      "공식몰 기준 현재 판매 중인 사과&케일 120g 제품입니다.",
-      "플레인 계열과 달리 과일·채소 블렌드 라인이라 영양 구성이 다를 수 있습니다.",
-      "상세 영양표는 추가 이미지 확인이 필요합니다."
+      "상하목장 사과&케일 120g은 과일·채소 블렌드 타입이라 플레인 라인보다 단백질 밀도가 낮습니다.",
+      "당류와 총 칼로리가 올라가 있어 체중 관리 관점에서는 보수적으로 보는 편이 맞습니다.",
+      "간편한 맛 제품으로는 무난하지만 고단백 핵심 SKU로 보기는 어렵습니다."
     ],
     "manufacturer": "매일유업",
     "flavor": "사과&케일",
     "yogurtType": "그릭 요거트",
     "storageType": "냉장",
     "lactoseFree": false,
-    "needsServingCheck": true,
-    "nutritionBasis": "unknown",
-    "servingCheckNote": "공식몰에서 8개 묶음 판매는 확인됐지만 상세 영양표는 확보하지 못했습니다. 구매 전 제품 라벨의 기준 중량과 영양정보를 다시 확인해주세요."
+    "needsServingCheck": false,
+    "nutritionBasis": "per_unit",
+    "servingCheckNote": "fatsecret Platform API의 120g 기준 영양정보를 반영했습니다.",
+    "calories": 125,
+    "sugar": 10,
+    "fat": 5,
+    "proteinPer100g": 5.8,
+    "nutritionPerBottle": {
+      "caloriesKcal": 125,
+      "proteinG": 7,
+      "carbsG": 13,
+      "sugarsG": 10,
+      "fatG": 5,
+      "satFatG": 3.5,
+      "cholesterolMg": 20,
+      "sodiumMg": 60,
+      "fiberG": 4
+    }
   },
   {
     "slug": "sangha-organic-greek-blueberry-kale-120",
@@ -1668,24 +1788,43 @@
     "tags": [
       "컵"
     ],
-    "proteinPerServing": 0,
-    "density": "-",
+    "proteinPerServing": 7,
+    "density": "5.8g/100g",
     "productUrl": "https://direct.maeil.com/m/brand/sangha",
     "productType": "yogurt",
-    "gradeTags": [],
+    "gradeTags": [
+      "단백질 밀도 C",
+      "다이어트 C",
+      "퍼포먼스 C"
+    ],
     "gradeDescriptions": [
-      "공식몰 기준 현재 판매 중인 블루베리&케일 120g 제품입니다.",
-      "플레인 계열과 달리 과일·채소 블렌드 라인이라 영양 구성이 다를 수 있습니다.",
-      "상세 영양표는 추가 이미지 확인이 필요합니다."
+      "상하목장 블루베리&케일 120g은 과일·채소 블렌드 타입이라 플레인 라인보다 단백질 밀도가 낮습니다.",
+      "당류와 총 칼로리가 올라가 있어 체중 관리 관점에서는 보수적으로 보는 편이 맞습니다.",
+      "간편한 맛 제품으로는 무난하지만 고단백 핵심 SKU로 보기는 어렵습니다."
     ],
     "manufacturer": "매일유업",
     "flavor": "블루베리&케일",
     "yogurtType": "그릭 요거트",
     "storageType": "냉장",
     "lactoseFree": false,
-    "needsServingCheck": true,
-    "nutritionBasis": "unknown",
-    "servingCheckNote": "공식몰에서 8개 묶음 판매는 확인됐지만 상세 영양표는 확보하지 못했습니다. 구매 전 제품 라벨의 기준 중량과 영양정보를 다시 확인해주세요."
+    "needsServingCheck": false,
+    "nutritionBasis": "per_unit",
+    "servingCheckNote": "fatsecret Platform API의 120g 기준 영양정보를 반영했습니다.",
+    "calories": 125,
+    "sugar": 10,
+    "fat": 5,
+    "proteinPer100g": 5.8,
+    "nutritionPerBottle": {
+      "caloriesKcal": 125,
+      "proteinG": 7,
+      "carbsG": 13,
+      "sugarsG": 10,
+      "fatG": 5,
+      "satFatG": 3.5,
+      "cholesterolMg": 20,
+      "sodiumMg": 60,
+      "fiberG": 4
+    }
   },
   {
     "slug": "who-organic-greek-unsweetened-450",
@@ -1696,15 +1835,19 @@
     "tags": [
       "컵"
     ],
-    "proteinPerServing": 0,
-    "density": "-",
+    "proteinPerServing": 27,
+    "density": "6.0g/100g",
     "productUrl": "https://foodismall.com/product/%ED%9B%84%EB%94%94%EC%8A%A4-%EC%9C%A0%EA%B8%B0%EB%86%8D-%EA%B7%B8%EB%A6%AD%EC%9A%94%EA%B1%B0%ED%8A%B8-%EB%8B%AC%EC%A7%80%EC%95%8A%EC%9D%80-%ED%94%8C%EB%A0%88%EC%9D%B8-450g/3714/",
     "productType": "yogurt",
-    "gradeTags": [],
+    "gradeTags": [
+      "단백질 밀도 C",
+      "다이어트 D",
+      "퍼포먼스 C"
+    ],
     "gradeDescriptions": [
-      "후디스몰 기준 현재 판매 중인 유기농 달지않은 플레인 450g 제품입니다.",
-      "일반 플레인 450g과는 별도 SKU로 보는 편이 맞습니다.",
-      "상세 영양표는 추가 이미지 확인이 필요합니다."
+      "후디스 유기농 달지않은 플레인 450g은 일반 1회분 제품보다 총량이 큰 대용량 그릭요거트입니다.",
+      "100g 기준 밀도는 무난하지만 450g 총량 기준 칼로리와 지방이 높아 다이어트 관점에서는 보수적으로 보는 편이 맞습니다.",
+      "대용량 식사 보완용으로는 활용 가능하지만 한 번에 전량 섭취 전제의 고단백 핵심 SKU는 아닙니다."
     ],
     "manufacturer": "일동후디스",
     "flavor": "플레인",
@@ -1712,8 +1855,22 @@
     "storageType": "냉장",
     "lactoseFree": false,
     "needsServingCheck": true,
-    "nutritionBasis": "unknown",
-    "servingCheckNote": "공식 판매는 확인됐지만 상세 영양표는 확보하지 못했습니다. 구매 전 제품 라벨의 기준 중량과 영양정보를 다시 확인해주세요."
+    "nutritionBasis": "per_80g_scaled",
+    "servingCheckNote": "fatsecret Platform API의 80g 기준 영양정보를 450g 용량에 맞춰 환산했습니다. 450g 대용량 SKU 라벨은 추가 이미지로 재확인하는 편이 안전합니다.",
+    "calories": 590.63,
+    "sugar": 40.5,
+    "fat": 34.88,
+    "proteinPer100g": 6,
+    "nutritionPerBottle": {
+      "caloriesKcal": 590.63,
+      "proteinG": 27,
+      "carbsG": 40.5,
+      "sugarsG": 40.5,
+      "fatG": 34.88,
+      "satFatG": 21.94,
+      "cholesterolMg": 140.63,
+      "sodiumMg": 506.25
+    }
   },
   {
     "slug": "lookt-icelandic-mild-100",

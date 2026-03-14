@@ -52,9 +52,9 @@
   --metric-badge-grade-d-bg: #f3f1ee;
   --metric-badge-grade-d-border: #dfd9d2;
   --metric-badge-grade-d-text: #756d64;
-  --metric-badge-lactosefree-bg: #eef4ec;
-  --metric-badge-lactosefree-border: #cdddca;
-  --metric-badge-lactosefree-text: #3d5f45;
+  --metric-badge-lactosefree-bg: #e7f4f7;
+  --metric-badge-lactosefree-border: #bdd8df;
+  --metric-badge-lactosefree-text: #2d6670;
   --metric-tooltip-radius: 14px;
   --metric-tooltip-width: min(280px, calc(100vw - 24px));
   --purchase-link-radius: 10px;
