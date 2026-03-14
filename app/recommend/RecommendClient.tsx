@@ -52,6 +52,13 @@ interface RecommendResult {
   tips: { icon: string; title: string; desc: string }[];
 }
 
+interface ConditionOption {
+  icon: string;
+  label: string;
+  desc: string;
+  value: string;
+}
+
 // 퀴즈 옵션 데이터
 const PURPOSE_OPTIONS = [
   { icon: "💪", label: "근성장·벌크업", desc: "운동 후 근섬유를 수리하고 키우기", value: "muscle" },
@@ -74,14 +81,32 @@ const INTENSITY_OPTIONS = [
   { icon: "🏋️", label: "매우 강하게", desc: "프로급·고수급 트레이닝", value: "extreme" },
 ];
 
-const CONDITION_OPTIONS = [
-  { icon: "🔥", label: "저칼로리", desc: "150kcal 이하 선호", value: "lowcal" },
-  { icon: "💊", label: "고단백", desc: "30g 이상 선호", value: "highpro" },
-  { icon: "🌿", label: "식물성·비건", desc: "식물성 급원만", value: "vegan" },
-  { icon: "😋", label: "맛이 중요해요", desc: "다양한 맛 옵션", value: "taste" },
-  { icon: "📊", label: "단백질 밀도", desc: "단백질 밀도 A·B 등급 선호", value: "price" },
-  { icon: "🚫", label: "무당류", desc: "당류 2g 이하 선호", value: "sugar" },
-];
+const CONDITION_OPTIONS_BY_CATEGORY: Record<ProductType, ConditionOption[]> = {
+  drink: [
+    { icon: "🔥", label: "저칼로리", desc: "150kcal 이하 선호", value: "lowcal" },
+    { icon: "💊", label: "고단백", desc: "20g 이상 선호", value: "highpro" },
+    { icon: "🌿", label: "식물성·비건", desc: "식물성 급원만", value: "vegan" },
+    { icon: "😋", label: "맛이 중요해요", desc: "다양한 맛 옵션", value: "taste" },
+    { icon: "📊", label: "단백질 밀도", desc: "단백질 밀도 A·B 등급 선호", value: "density" },
+    { icon: "🚫", label: "저당", desc: "당류 2g 이하 선호", value: "lowsugar" },
+  ],
+  bar: [
+    { icon: "💪", label: "고단백", desc: "12g 이상 선호", value: "highpro" },
+    { icon: "🥣", label: "식사 보완형", desc: "포만감 있는 제품 선호", value: "meal" },
+    { icon: "🌿", label: "식물성·비건", desc: "식물성 급원만", value: "vegan" },
+    { icon: "😋", label: "맛이 중요해요", desc: "식감과 맛 균형 선호", value: "taste" },
+    { icon: "📊", label: "단백질 밀도", desc: "단백질 밀도 A·B 등급 선호", value: "density" },
+    { icon: "🚫", label: "저당", desc: "당류 5g 이하 선호", value: "lowsugar" },
+  ],
+  yogurt: [
+    { icon: "💊", label: "고단백", desc: "10g 이상 선호", value: "highpro" },
+    { icon: "🥄", label: "그릭", desc: "꾸덕한 그릭 타입 선호", value: "greek" },
+    { icon: "🥤", label: "드링킹", desc: "마시기 쉬운 타입 선호", value: "drinking" },
+    { icon: "🧺", label: "대용량", desc: "400g 이상 제품 선호", value: "bulk" },
+    { icon: "📊", label: "단백질 밀도", desc: "단백질 밀도 A·B 등급 선호", value: "density" },
+    { icon: "🚫", label: "저당", desc: "당류 5g 이하 선호", value: "lowsugar" },
+  ],
+};
 
 const LOADING_STEPS = [
   "목적·운동량 분석",
@@ -978,6 +1003,7 @@ export default function RecommendClient({
   const productCount =
     category === "bar" ? barCount : category === "yogurt" ? yogurtCount : drinkCount;
   const productLabel = getCategoryLabel(category);
+  const conditionOptions = CONDITION_OPTIONS_BY_CATEGORY[category];
 
   function reset() {
     setStep(0);
@@ -989,6 +1015,7 @@ export default function RecommendClient({
   function handleCategoryChange(c: ProductType) {
     setCategory(c);
     reset();
+    setAnswers({ purpose: "", frequency: "", intensity: "", conditions: [] });
   }
 
   async function submitQuiz() {
@@ -1150,7 +1177,7 @@ export default function RecommendClient({
                       <p className="text-xs mt-0.5" style={{ color: "#9ca3af" }}>복수 선택 가능</p>
                     </div>
                     <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "10px" }}>
-                      {CONDITION_OPTIONS.map((o) => (
+                      {conditionOptions.map((o) => (
                         <GridOption key={o.value} {...o} selected={answers.conditions.includes(o.value)} onClick={() => {
                           setAnswers((prev) => ({
                             ...prev,
