@@ -881,8 +881,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .filter-drawer {
-  min-height: 60vh;
-  padding-bottom: env(safe-area-inset-bottom);
+  min-height: 0;
+  padding-bottom: 0;
 }
 
 .filter-drawer__handle {
@@ -890,13 +890,13 @@ h1, h2, h3, h4, h5, h6 {
   height: 4px;
   background: #e0e0e0;
   border-radius: 2px;
-  margin: 8px auto;
+  margin: 6px auto 4px;
 }
 
 .filter-drawer__apply {
   position: sticky;
   bottom: 0;
-  padding: 12px 0 0;
+  padding: 4px 0 env(safe-area-inset-bottom);
   background: var(--filter-box-bg);
 }
 
@@ -1011,7 +1011,7 @@ h1, h2, h3, h4, h5, h6 {
   }
 
   .product-card {
-    min-height: 520px;
+    min-height: 484px;
     padding: 10px !important;
   }
 
@@ -1077,7 +1077,7 @@ h1, h2, h3, h4, h5, h6 {
   }
 
   .cta-group {
-    margin-top: 12px !important;
+    margin-top: 8px !important;
   }
 
   .purchase-link-row {
@@ -1113,12 +1113,13 @@ h1, h2, h3, h4, h5, h6 {
   }
 
   .product-card__footer-actions {
-    gap: 8px !important;
+    gap: 6px !important;
+    margin-top: 4px !important;
   }
 
   .product-card__footer-actions > a,
   .product-card__footer-actions > button {
-    height: 36px !important;
+    height: 34px !important;
     font-size: 11px !important;
   }
 

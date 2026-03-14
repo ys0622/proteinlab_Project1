@@ -32,6 +32,33 @@ type ProductListWithFiltersProps =
   | { productType: "bar"; products: ProductDetailProps[]; curationSlug?: string }
   | { productType: "yogurt"; products: ProductDetailProps[]; curationSlug?: string };
 
+type PersistedFilterState = {
+  drinkFilters: DrinkFilters;
+  barFilters: BarFilters;
+  yogurtFilters: YogurtFilters;
+  sort: SortOptionValue;
+  page: number;
+  searchQuery: string;
+};
+
+function getPersistedFilterState(storageKey: string): Partial<PersistedFilterState> | null {
+  if (typeof window === "undefined") {
+    return null;
+  }
+
+  const rawState = window.sessionStorage.getItem(storageKey);
+  if (!rawState) {
+    return null;
+  }
+
+  try {
+    return JSON.parse(rawState) as Partial<PersistedFilterState>;
+  } catch {
+    window.sessionStorage.removeItem(storageKey);
+    return null;
+  }
+}
+
 function getDensityValue(product: ProductDetailProps): number {
   const capacity = getCapacityMl(product);
   if (capacity <= 0) return 0;
@@ -98,18 +125,33 @@ function applySort(
   }
 }
 
-export default function ProductListWithFilters(props: ProductListWithFiltersProps) {
+type ProductListWithFiltersInnerProps = ProductListWithFiltersProps & {
+  storageKey: string;
+  pathname: string;
+  initialPersistedState: Partial<PersistedFilterState> | null;
+};
+
+function ProductListWithFiltersInner(props: ProductListWithFiltersInnerProps) {
   const { productType, products, curationSlug } = props;
-  const [drinkFilters, setDrinkFilters] = useState<DrinkFilters>(defaultDrinkFilters);
-  const [barFilters, setBarFilters] = useState<BarFilters>(defaultBarFilters);
-  const [yogurtFilters, setYogurtFilters] = useState<YogurtFilters>(defaultYogurtFilters);
-  const [sort, setSort] = useState<SortOptionValue>("recommended");
-  const [page, setPage] = useState(1);
+  const { initialPersistedState, pathname, storageKey } = props;
+  const [drinkFilters, setDrinkFilters] = useState<DrinkFilters>(
+    () => initialPersistedState?.drinkFilters ?? defaultDrinkFilters,
+  );
+  const [barFilters, setBarFilters] = useState<BarFilters>(
+    () => initialPersistedState?.barFilters ?? defaultBarFilters,
+  );
+  const [yogurtFilters, setYogurtFilters] = useState<YogurtFilters>(
+    () => initialPersistedState?.yogurtFilters ?? defaultYogurtFilters,
+  );
+  const [sort, setSort] = useState<SortOptionValue>(() => initialPersistedState?.sort ?? "recommended");
+  const [page, setPage] = useState(() =>
+    typeof initialPersistedState?.page === "number" && initialPersistedState.page > 0
+      ? initialPersistedState.page
+      : 1,
+  );
   const [isDesktop, setIsDesktop] = useState(false);
   const [mobileSearchOpen, setMobileSearchOpen] = useState(false);
-  const [searchQuery, setSearchQuery] = useState("");
-
-  const pathname = usePathname();
+  const [searchQuery, setSearchQuery] = useState(() => initialPersistedState?.searchQuery ?? "");
   const isBar = pathname === "/bars";
   const isYogurt = pathname === "/yogurt";
 
@@ -176,6 +218,21 @@ export default function ProductListWithFilters(props: ProductListWithFiltersProp
       mediaQuery.removeEventListener("change", updateIsDesktop);
     };
   }, []);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    const persistedState: PersistedFilterState = {
+      drinkFilters,
+      barFilters,
+      yogurtFilters,
+      sort,
+      page,
+      searchQuery,
+    };
+
+    window.sessionStorage.setItem(storageKey, JSON.stringify(persistedState));
+  }, [barFilters, drinkFilters, page, searchQuery, sort, storageKey, yogurtFilters]);
 
   const visible = useMemo(
     () => (isDesktop ? sorted : sorted.slice(0, page * PAGE_SIZE)),
@@ -423,5 +480,24 @@ export default function ProductListWithFilters(props: ProductListWithFiltersProp
         </div>
       ) : null}
     </>
+  );
+}
+
+export default function ProductListWithFilters(props: ProductListWithFiltersProps) {
+  const pathname = usePathname();
+  const storageKey = useMemo(
+    () => `product-list-state:${pathname}:${props.productType}:${props.curationSlug ?? "all"}`,
+    [pathname, props.curationSlug, props.productType],
+  );
+  const initialPersistedState = getPersistedFilterState(storageKey);
+
+  return (
+    <ProductListWithFiltersInner
+      key={storageKey}
+      {...props}
+      pathname={pathname}
+      storageKey={storageKey}
+      initialPersistedState={initialPersistedState}
+    />
   );
 }

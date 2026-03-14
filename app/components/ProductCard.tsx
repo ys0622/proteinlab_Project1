@@ -253,7 +253,7 @@ export default function ProductCard({
           ))}
         </div>
 
-        <div className="cta-group mt-2 md:mt-4">
+        <div className="cta-group mt-1.5 md:mt-4">
           <PurchaseLinkRow
             coupangHref={coupangHref}
             naverHref={naverHref}
@@ -271,9 +271,9 @@ export default function ProductCard({
           />
         </div>
 
-        <div className="mx-1 mt-1.5 border-t border-[#e8e6e3] md:mt-3" />
+        <div className="mx-1 mt-1 border-t border-[#e8e6e3] md:mt-3" />
 
-        <div className="product-card__footer-actions mt-1.5 flex gap-1.5 md:mt-3 md:gap-3">
+        <div className="product-card__footer-actions mt-1 flex gap-1.5 md:mt-3 md:gap-3">
           <Link
             href={detailHref}
             className="flex flex-1 items-center justify-center rounded-[10px] border border-[#e2e2e2] bg-white font-medium text-[var(--foreground)] transition-colors hover:border-[var(--accent)] hover:bg-[var(--accent-light)] hover:text-[var(--accent)] active:scale-[0.98]"
