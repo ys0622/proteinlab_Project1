@@ -74,16 +74,16 @@ export default function SortBar({
   }, [menuOpen]);
 
   return (
-    <div className="flex flex-col gap-2 border-b border-[var(--border)] py-2">
-      <div className="flex items-center justify-between gap-2">
+    <div className="flex flex-col gap-1.5 border-b border-[var(--border)] py-1.5 md:gap-2 md:py-2">
+      <div className="flex items-center justify-between gap-1.5 md:gap-2">
         <span
-          className="min-w-0 text-sm text-[var(--foreground-muted)]"
+          className="min-w-0 text-[13px] text-[var(--foreground-muted)] md:text-sm"
           style={{ fontWeight: 400 }}
         >
           {formatComparisonHeadline(total)}
         </span>
 
-        <div className="relative ml-auto flex shrink-0 items-center gap-1.5 whitespace-nowrap">
+        <div className="relative ml-auto flex shrink-0 items-center gap-1 whitespace-nowrap md:gap-1.5">
           <span
             className="hidden text-sm text-[var(--foreground-muted)] sm:inline"
             style={{ fontWeight: 400 }}
@@ -100,7 +100,7 @@ export default function SortBar({
               aria-controls={menuId}
               aria-label={`정렬 기준 선택: ${selectedOption.label}`}
               onClick={() => setMenuOpen((current) => !current)}
-              className="inline-flex items-center rounded-lg border border-[var(--border)] bg-white px-3 py-1.5 text-sm text-[var(--foreground)] transition-colors hover:border-[var(--accent)] hover:text-[var(--accent)]"
+              className="inline-flex items-center rounded-lg border border-[var(--border)] bg-white px-2.5 py-1 text-[13px] text-[var(--foreground)] transition-colors hover:border-[var(--accent)] hover:text-[var(--accent)] md:px-3 md:py-1.5 md:text-sm"
               style={{ fontWeight: 400, whiteSpace: "nowrap" }}
             >
               {selectedOption.label}

@@ -295,7 +295,7 @@ export default function FilterSection(props: FilterSectionProps) {
           <button
             type="button"
             onClick={() => setMobileFilterOpen((current) => !current)}
-            className="flex items-center gap-1 py-0 text-xs font-bold text-[#454545] hover:text-[var(--foreground)]"
+            className="flex items-center gap-1 py-0 text-[11px] font-bold text-[#454545] hover:text-[var(--foreground)]"
             aria-expanded={mobileFilterOpen}
           >
             상세 필터
@@ -319,7 +319,7 @@ export default function FilterSection(props: FilterSectionProps) {
               <button
                 type="button"
                 onClick={() => setMobileFilterOpen(false)}
-                className="btn-apply inline-flex h-[38px] items-center justify-center rounded-full bg-[var(--accent)] px-5 text-sm font-medium text-white transition-colors hover:bg-[var(--accent-hover)]"
+                className="btn-apply inline-flex h-9 items-center justify-center rounded-full bg-[var(--accent)] px-[18px] text-sm font-medium text-white transition-colors hover:bg-[var(--accent-hover)]"
               >
                 필터 적용
               </button>
