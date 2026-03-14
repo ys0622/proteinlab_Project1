@@ -1081,13 +1081,13 @@ h1, h2, h3, h4, h5, h6 {
   }
 
   .purchase-link-row {
-    gap: 5px;
+    gap: 4px;
   }
 
   .purchase-link--sm {
-    min-height: 32px;
+    min-height: 30px;
     font-size: 11px;
-    padding: 0 5px;
+    padding: 0 4px;
   }
 
   .purchase-link--md {
