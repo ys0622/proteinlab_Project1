@@ -110,7 +110,6 @@ const topics = [
   },
 ];
 
-
 export default function ProductSelectionComparisonPage() {
   return (
     <div className="min-h-screen bg-white">
@@ -151,11 +150,11 @@ export default function ProductSelectionComparisonPage() {
             <div>
               <h2 className="text-lg font-bold text-[var(--foreground)]">주제 목록</h2>
               <p className="mt-1 text-xs text-[#8b8b8b]">
-                대표 질문과 핵심 포인트를 먼저 보고 필요한 주제로 이동하세요.
+                질문과 핵심 포인트를 먼저 보고 필요한 주제로 이동하세요.
               </p>
             </div>
             <div className="hidden rounded-full border border-[#d9e7dc] bg-[#eff7f1] px-3 py-1.5 text-xs font-medium text-[#24543d] md:block">
-              인기: 영양성분 비교 읽는 법
+              읽기: 영양성분 비교 읽는 법
             </div>
           </div>
 
@@ -195,7 +194,7 @@ export default function ProductSelectionComparisonPage() {
 
                   <div className="mt-4 flex items-center justify-between gap-3">
                     <span className="rounded-full border border-[#d9e4dd] bg-[#f7faf8] px-2.5 py-1 text-[11px] font-medium text-[#496555]">
-                      인기
+                      읽기
                     </span>
                     <span className="text-xs font-semibold text-[#2f5d46] transition-colors group-hover:text-[#1f4834]">
                       주제 보기
