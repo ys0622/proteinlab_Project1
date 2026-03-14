@@ -17,6 +17,7 @@ function hasActiveChild(pathname: string, children: NavigationChildItem[]): bool
 
 export default function HeaderClient({ isAdmin }: { isAdmin: boolean }) {
   const pathname = usePathname();
+  const isHome = pathname === "/";
   const [openPath, setOpenPath] = useState<string | null>(null);
   const [openGroupByPath, setOpenGroupByPath] = useState<Record<string, string | null>>({});
   const open = openPath === pathname;
@@ -31,7 +32,13 @@ export default function HeaderClient({ isAdmin }: { isAdmin: boolean }) {
   };
 
   return (
-    <header className="sticky top-0 z-50 border-b border-[#f0eeeb] bg-white">
+    <header
+      className={`sticky top-0 z-50 border-b ${
+        isHome
+          ? "border-[var(--hero-border)] bg-[var(--hero-bg)] md:border-[#f0eeeb] md:bg-white"
+          : "border-[#f0eeeb] bg-white"
+      }`}
+    >
       <div className="mx-auto flex h-14 max-w-[1200px] items-center justify-between px-4 md:px-6">
         <Link href="/" className="flex shrink-0 items-center gap-2 text-lg font-bold text-[var(--accent)]">
           <span className="relative flex h-8 w-8 shrink-0 items-center justify-center overflow-hidden rounded-lg">
