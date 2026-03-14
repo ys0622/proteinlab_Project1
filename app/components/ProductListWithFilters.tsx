@@ -269,14 +269,14 @@ export default function ProductListWithFilters(props: ProductListWithFiltersProp
   return (
     <>
       {productType !== "yogurt" ? (
-        <div className="mt-3 md:hidden" style={{ marginTop: "12px" }}>
+        <div className="mt-2 md:hidden" style={{ marginTop: "8px" }}>
           <QuickCuration productType={productType} />
         </div>
       ) : null}
 
       <div
-        className="mt-3 rounded-xl border border-[var(--border)] bg-[var(--filter-box-bg)]"
-        style={{ marginTop: "10px", borderRadius: "12px", padding: isDesktop ? "10px 12px" : "1px 3px" }}
+        className="mt-2 rounded-xl border border-[var(--border)] bg-[var(--filter-box-bg)]"
+        style={{ marginTop: "8px", borderRadius: "12px", padding: isDesktop ? "10px 12px" : "0px 2px" }}
       >
         <div className="hidden md:block">
           <SearchBar value={searchQuery} onChange={handleSearchChange} />
