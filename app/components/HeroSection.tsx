@@ -7,7 +7,7 @@ export default function HeroSection() {
       style={{ borderColor: "var(--hero-border)" }}
       aria-label="히어로"
     >
-      <div className="mx-auto max-w-[1200px] px-4 pb-2 pt-0.5 md:px-6 md:py-4">
+      <div className="mx-auto max-w-[1200px] px-4 pb-2 pt-0 md:px-6 md:py-4">
         <div className="flex items-baseline gap-1.5 md:block">
           <h1
             className="text-[19px] font-bold leading-tight text-[var(--foreground)] md:text-3xl"
