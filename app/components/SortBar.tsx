@@ -19,20 +19,18 @@ export type SortOptionValue = (typeof sortOptions)[number]["value"];
 export const RECOMMENDED_SORT_DESCRIPTION =
   "추천순은 단백질 밀도, 당류, 칼로리, 가격 효율 등 제품 비교에 중요한 요소를 종합적으로 고려한 순서입니다.";
 
-function formatComparisonHeadline(total: number, categoryLabel: string) {
-  return `${total}개 ${categoryLabel} 제품 비교`;
+function formatComparisonHeadline(total: number) {
+  return `${total}개 제품 비교`;
 }
 
 interface SortBarProps {
   total?: number;
-  categoryLabel?: string;
   sort: SortOptionValue;
   onSortChange: (sort: SortOptionValue) => void;
 }
 
 export default function SortBar({
   total = 101,
-  categoryLabel = "단백질 음료",
   sort,
   onSortChange,
 }: SortBarProps) {
@@ -82,7 +80,7 @@ export default function SortBar({
           className="min-w-0 text-sm text-[var(--foreground-muted)]"
           style={{ fontWeight: 400 }}
         >
-          {formatComparisonHeadline(total, categoryLabel)}
+          {formatComparisonHeadline(total)}
         </span>
 
         <div className="relative ml-auto flex shrink-0 items-center gap-1.5 whitespace-nowrap">

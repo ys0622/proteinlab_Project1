@@ -395,13 +395,6 @@ export default function ProductListWithFilters(props: ProductListWithFiltersProp
       <div className="mt-2" style={{ marginTop: "8px" }}>
         <SortBar
           total={searched.length}
-          categoryLabel={
-            productType === "bar"
-              ? "단백질 바"
-              : productType === "yogurt"
-                ? "단백질 요거트"
-                : "단백질 음료"
-          }
           sort={sort}
           onSortChange={handleSortChange}
         />
