@@ -330,7 +330,7 @@ function ProductListWithFiltersInner(props: ProductListWithFiltersInnerProps) {
       type="button"
       onClick={() => setMobileSearchOpen(true)}
       className="inline-flex h-9 w-9 items-center justify-center rounded-full text-[#374151] transition-colors hover:bg-white/70 md:hidden"
-      aria-label="寃???닿린"
+      aria-label="검색 열기"
     >
       <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path
@@ -413,7 +413,7 @@ function ProductListWithFiltersInner(props: ProductListWithFiltersInnerProps) {
                 type="button"
                 onClick={() => setMobileSearchOpen(false)}
                 className="inline-flex h-9 w-9 items-center justify-center rounded-full text-[#374151] transition-colors hover:bg-[#f3f4f6]"
-                aria-label="寃???リ린"
+                aria-label="검색 닫기"
               >
                 <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path
@@ -426,7 +426,7 @@ function ProductListWithFiltersInner(props: ProductListWithFiltersInnerProps) {
               </button>
             </div>
             <p className="mt-2 px-1 text-xs text-[var(--foreground-muted)]">
-              ?쒗뭹紐? 釉뚮옖?? 留? ?좏삎?쇰줈 寃?됲븷 ???덉뒿?덈떎.
+              제품명, 브랜드, 맛, 유형으로 검색할 수 있습니다.
             </p>
           </div>
         </div>
@@ -478,7 +478,7 @@ function ProductListWithFiltersInner(props: ProductListWithFiltersInnerProps) {
         />
       </div>
 
-      <section className="product-grid mt-3 bg-white" style={{ marginTop: isDesktop ? "12px" : "8px" }} aria-label="?쒗뭹 紐⑸줉">
+      <section className="product-grid mt-3 bg-white" style={{ marginTop: isDesktop ? "12px" : "8px" }} aria-label="제품 목록">
         {visible.map((product, idx) => (
           <ProductCard
             key={product.slug ?? `${product.brand}-${product.name}`}
@@ -497,7 +497,7 @@ function ProductListWithFiltersInner(props: ProductListWithFiltersInnerProps) {
             onClick={() => setPage((current) => current + 1)}
             className="rounded-full border border-[var(--border)] bg-white px-6 py-2.5 text-sm font-medium text-[var(--foreground)] transition-colors hover:border-[var(--accent)] hover:bg-[var(--accent-light)] hover:text-[var(--accent)]"
           >
-            ?붾낫湲?({sorted.length - visible.length}媛??⑥쓬)
+            더보기 ({sorted.length - visible.length}개 남음)
           </button>
         </div>
       ) : null}
