@@ -20,7 +20,7 @@ export const RECOMMENDED_SORT_DESCRIPTION =
   "추천순은 단백질 밀도, 당류, 칼로리, 가격 효율 등 제품 비교에 중요한 요소를 종합적으로 고려한 순서입니다.";
 
 function formatComparisonHeadline(total: number, categoryLabel: string) {
-  return `${total}개 ${categoryLabel} 성분 비교`;
+  return `${total}개 ${categoryLabel} 제품 비교`;
 }
 
 interface SortBarProps {

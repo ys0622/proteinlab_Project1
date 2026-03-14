@@ -26,71 +26,11 @@ import ServingBasisNotice from "./ServingBasisNotice";
 import SortBar, { type SortOptionValue } from "./SortBar";
 
 const PAGE_SIZE = 20;
-const CATEGORY_DEFINITIONS = {
-  drink: "바로 마실 수 있는 단백질 보충 음료(RTD)",
-  bar: "간편하게 단백질을 섭취할 수 있는 스낵 형태 제품",
-  yogurt: "단백질 함량이 높은 그릭요거트 또는 발효유 제품",
-} as const;
 
 type ProductListWithFiltersProps =
   | { productType: "drink"; products: ProductDetailProps[]; curationSlug?: string }
   | { productType: "bar"; products: ProductDetailProps[]; curationSlug?: string }
   | { productType: "yogurt"; products: ProductDetailProps[]; curationSlug?: string };
-
-function CategoryTabWithInfo({
-  href,
-  label,
-  description,
-  active,
-}: {
-  href: string;
-  label: string;
-  description: string;
-  active: boolean;
-}) {
-  const [open, setOpen] = useState(false);
-
-  return (
-    <div className="relative hidden md:inline-flex md:items-center md:gap-1">
-      <Link
-        href={href}
-        className={`rounded-full px-3.5 py-1 text-sm font-medium transition-colors ${
-          active
-            ? "bg-[var(--accent)] text-white"
-            : "border border-[var(--border)] bg-white text-[var(--foreground-muted)] hover:text-[var(--foreground)]"
-        }`}
-        style={{ fontWeight: 400, whiteSpace: "nowrap" }}
-      >
-        {label}
-      </Link>
-      <button
-        type="button"
-        aria-label={`${label} 정의 보기`}
-        aria-expanded={open}
-        onMouseEnter={() => setOpen(true)}
-        onMouseLeave={() => setOpen(false)}
-        onFocus={() => setOpen(true)}
-        onBlur={() => setOpen(false)}
-        onClick={() => setOpen((current) => !current)}
-        className={`inline-flex h-5 w-5 items-center justify-center rounded-full text-[11px] leading-none transition-colors ${
-          active
-            ? "text-[var(--accent)] hover:bg-[var(--accent-light)]"
-            : "text-[var(--foreground-muted)] hover:bg-[var(--filter-box-bg)] hover:text-[var(--foreground)]"
-        }`}
-      >
-        ⓘ
-      </button>
-      {open ? (
-        <div
-          role="tooltip"
-          className="absolute left-full top-1/2 z-20 ml-2 w-52 -translate-y-1/2 rounded-lg border border-[var(--border)] bg-white px-3 py-2 text-xs leading-5 text-[var(--foreground)] shadow-[0_10px_30px_rgba(15,23,42,0.12)]"
-        >
-          {description}
-        </div>
-      ) : null}
-    </div>
-  );
-}
 
 function getDensityValue(product: ProductDetailProps): number {
   const capacity = getCapacityMl(product);
@@ -300,12 +240,12 @@ export default function ProductListWithFilters(props: ProductListWithFiltersProp
     setSearchQuery(value);
   };
 
-  const yogurtBrandOptions = useMemo(
-    () =>
-      [...new Set(products.map((product) => product.brand).filter(Boolean))].sort((a, b) =>
-        a.localeCompare(b, "ko"),
-      ),
-    [products],
+  const brandOptions = useMemo(
+      () =>
+        [...new Set(products.map((product) => product.brand).filter(Boolean))].sort((a, b) =>
+          a.localeCompare(b, "ko"),
+        ),
+      [products],
   );
 
   const mobileSearchButton = (
@@ -342,34 +282,36 @@ export default function ProductListWithFilters(props: ProductListWithFiltersProp
           <SearchBar value={searchQuery} onChange={handleSearchChange} />
         </div>
         <div className={isDesktop ? "mt-1.5" : ""}>
-          {productType === "drink" ? (
-            <FilterSection
-              productType="drink"
-              filters={filters as DrinkFilters}
-              onFilterToggle={handleDrinkFilterToggle}
-              onResetFilters={handleResetFilters}
-              mobileToolbarSlot={mobileSearchButton}
-              desktopFooterSlot={<QuickCuration productType={productType} variant="inline" />}
-            />
-          ) : productType === "bar" ? (
-            <FilterSection
-              productType="bar"
-              filters={filters as BarFilters}
-              onFilterToggle={handleBarFilterToggle}
-              onResetFilters={handleResetFilters}
-              mobileToolbarSlot={mobileSearchButton}
-              desktopFooterSlot={<QuickCuration productType={productType} variant="inline" />}
-            />
-          ) : (
-            <FilterSection
-              productType="yogurt"
-              filters={filters as YogurtFilters}
-              onFilterToggle={handleYogurtFilterToggle}
-              onResetFilters={handleResetFilters}
-              mobileToolbarSlot={mobileSearchButton}
-              yogurtBrandOptions={yogurtBrandOptions}
-            />
-          )}
+            {productType === "drink" ? (
+              <FilterSection
+                productType="drink"
+                filters={filters as DrinkFilters}
+                onFilterToggle={handleDrinkFilterToggle}
+                onResetFilters={handleResetFilters}
+                mobileToolbarSlot={mobileSearchButton}
+                drinkBrandOptions={brandOptions}
+                desktopFooterSlot={<QuickCuration productType={productType} variant="inline" />}
+              />
+            ) : productType === "bar" ? (
+              <FilterSection
+                productType="bar"
+                filters={filters as BarFilters}
+                onFilterToggle={handleBarFilterToggle}
+                onResetFilters={handleResetFilters}
+                mobileToolbarSlot={mobileSearchButton}
+                barBrandOptions={brandOptions}
+                desktopFooterSlot={<QuickCuration productType={productType} variant="inline" />}
+              />
+            ) : (
+              <FilterSection
+                productType="yogurt"
+                filters={filters as YogurtFilters}
+                onFilterToggle={handleYogurtFilterToggle}
+                onResetFilters={handleResetFilters}
+                mobileToolbarSlot={mobileSearchButton}
+                yogurtBrandOptions={brandOptions}
+              />
+            )}
         </div>
       </div>
 
@@ -416,7 +358,7 @@ export default function ProductListWithFilters(props: ProductListWithFiltersProp
         <div className="flex min-w-0 gap-2 overflow-x-auto pb-1">
           <Link
             href="/"
-            className={`rounded-full px-3.5 py-1 text-sm font-medium transition-colors md:hidden ${
+            className={`rounded-full px-3.5 py-1 text-sm font-medium transition-colors ${
               !isBar && !isYogurt
                 ? "bg-[var(--accent)] text-white"
                 : "border border-[var(--border)] bg-white text-[var(--foreground-muted)] hover:text-[var(--foreground)]"
@@ -425,15 +367,9 @@ export default function ProductListWithFilters(props: ProductListWithFiltersProp
           >
             단백질 음료
           </Link>
-          <CategoryTabWithInfo
-            href="/"
-            label="단백질 음료"
-            description={CATEGORY_DEFINITIONS.drink}
-            active={!isBar && !isYogurt}
-          />
           <Link
             href="/bars"
-            className={`rounded-full px-3.5 py-1 text-sm font-medium transition-colors md:hidden ${
+            className={`rounded-full px-3.5 py-1 text-sm font-medium transition-colors ${
               isBar
                 ? "bg-[var(--accent)] text-white"
                 : "border border-[var(--border)] bg-white text-[var(--foreground-muted)] hover:text-[var(--foreground)]"
@@ -442,15 +378,9 @@ export default function ProductListWithFilters(props: ProductListWithFiltersProp
           >
             단백질 바
           </Link>
-          <CategoryTabWithInfo
-            href="/bars"
-            label="단백질 바"
-            description={CATEGORY_DEFINITIONS.bar}
-            active={isBar}
-          />
           <Link
             href="/yogurt"
-            className={`rounded-full px-3.5 py-1 text-sm font-medium transition-colors md:hidden ${
+            className={`rounded-full px-3.5 py-1 text-sm font-medium transition-colors ${
               isYogurt
                 ? "bg-[var(--accent)] text-white"
                 : "border border-[var(--border)] bg-white text-[var(--foreground-muted)] hover:text-[var(--foreground)]"
@@ -459,12 +389,6 @@ export default function ProductListWithFilters(props: ProductListWithFiltersProp
           >
             단백질 요거트
           </Link>
-          <CategoryTabWithInfo
-            href="/yogurt"
-            label="단백질 요거트"
-            description={CATEGORY_DEFINITIONS.yogurt}
-            active={isYogurt}
-          />
         </div>
       </div>
 

@@ -3,57 +3,6 @@
 import { useMemo, useState } from "react";
 import type { BarFilters, DrinkFilters, YogurtFilters } from "../lib/productFilters";
 
-const drinkBrandOptions = [
-  "그린비아",
-  "뉴케어",
-  "닥터유",
-  "더단백",
-  "랩노쉬",
-  "마이밀",
-  "매일유업",
-  "베지밀",
-  "셀렉스",
-  "솔브앤고",
-  "얼티브",
-  "연세유업",
-  "오늘단백",
-  "함소아제약",
-  "칼로바이",
-  "테이크핏",
-  "파스퇴르",
-  "하이뮨",
-  "서울우유",
-  "세븐일레븐",
-  "오트몬드",
-];
-
-const barBrandOptions = [
-  "곰곰",
-  "닥터유",
-  "커클랜드",
-  "노브랜드",
-  "비에스엔",
-  "퀘스트 뉴트리션",
-  "포스트",
-  "프로틴방앗간",
-  "온단백",
-  "힘내고",
-  "랩노쉬",
-  "더단백",
-  "셀렉스",
-  "하이뮨",
-  "마이밀",
-  "마이프로틴",
-  "단백하니",
-  "올가니카",
-  "씨알로",
-  "칼로바이",
-  "켈로그",
-  "롯데웰푸드",
-  "크라운",
-  "베노프",
-];
-
 const drinkProteinOptions = ["초고단백(30g 이상)", "고단백(20g 이상)", "일반단백(20g 미만)"];
 const drinkSourceOptions = ["식물성", "유청", "혼합"];
 const drinkTasteOptions = ["고소/견과", "과일맛", "바나나/바닐라", "초콜릿/케이크", "커피", "기타"];
@@ -132,11 +81,13 @@ type FilterSectionProps =
       productType: "drink";
       filters: DrinkFilters;
       onFilterToggle: (key: keyof DrinkFilters, value: string) => void;
+      drinkBrandOptions?: string[];
     } & SharedProps)
   | ({
       productType: "bar";
       filters: BarFilters;
       onFilterToggle: (key: keyof BarFilters, value: string) => void;
+      barBrandOptions?: string[];
     } & SharedProps)
   | ({
       productType: "yogurt";
@@ -157,12 +108,16 @@ export default function FilterSection(props: FilterSectionProps) {
   const [mobileFilterOpen, setMobileFilterOpen] = useState(false);
 
   const sortedDrinkBrandOptions = useMemo(
-    () => [...drinkBrandOptions].sort((a, b) => a.localeCompare(b, "ko")),
-    [],
+    () => [...(props.productType === "drink" ? props.drinkBrandOptions ?? [] : [])].sort((a, b) =>
+      a.localeCompare(b, "ko"),
+    ),
+    [props],
   );
   const sortedBarBrandOptions = useMemo(
-    () => [...barBrandOptions].sort((a, b) => a.localeCompare(b, "ko")),
-    [],
+    () => [...(props.productType === "bar" ? props.barBrandOptions ?? [] : [])].sort((a, b) =>
+      a.localeCompare(b, "ko"),
+    ),
+    [props],
   );
   const sortedYogurtBrandOptions = useMemo(
     () => [...(props.productType === "yogurt" ? props.yogurtBrandOptions ?? [] : [])].sort((a, b) =>
