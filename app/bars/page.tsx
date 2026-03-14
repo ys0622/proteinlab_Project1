@@ -5,8 +5,9 @@ import ProductListWithFilters from "../components/ProductListWithFilters";
 import { barProductsWithGrades } from "../data/products";
 
 export const metadata = {
-  title: "단백질 바 비교 | ProteinLab",
-  description: "단백질 바 제품을 브랜드, 단백질 함량, 당류, 중량 기준으로 비교합니다.",
+  title: "단백질 바 비교 | 고단백·저당 단백질 바 추천 | ProteinLab",
+  description:
+    "단백질 바 제품을 단백질 함량, 당류, 칼로리, 중량 기준으로 비교합니다. 고단백 단백질 바, 저당 단백질 바, 식사 보완형 단백질 바 추천까지 확인해보세요.",
 };
 
 interface BarsPageProps {
@@ -23,7 +24,11 @@ export default async function BarsPage({ searchParams }: BarsPageProps) {
       <HeroSection />
 
       <main className="mx-auto max-w-[1200px] px-4 pb-2 pt-0 md:px-6 md:pb-3">
-        <ProductListWithFilters productType="bar" products={barProductsWithGrades} curationSlug={curation} />
+        <ProductListWithFilters
+          productType="bar"
+          products={barProductsWithGrades}
+          curationSlug={curation}
+        />
       </main>
 
       <Footer />

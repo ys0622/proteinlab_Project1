@@ -5,7 +5,7 @@ export default function HeroSection() {
     <section
       className="w-full border-b bg-[var(--hero-bg)] md:border-t"
       style={{ borderColor: "var(--hero-border)" }}
-      aria-label="히어로"
+      aria-label="단백질 제품 비교 플랫폼 소개"
     >
       <div className="mx-auto max-w-[1200px] px-4 pb-2 pt-0 md:px-6 md:py-4">
         <div className="flex items-baseline gap-1.5 md:block">
