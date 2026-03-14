@@ -1872,7 +1872,7 @@
       "proteinG": 10.6,
       "fatG": 2.8,
       "carbsG": 4,
-      "sugarG": 3,
+      "sugarsG": 3,
       "satFatG": 2,
       "cholesterolMg": 35,
       "sodiumMg": 40
@@ -1916,7 +1916,7 @@
       "proteinG": 12,
       "fatG": 12,
       "carbsG": 8.5,
-      "sugarG": 0.9,
+      "sugarsG": 0.9,
       "satFatG": 8,
       "cholesterolMg": 20,
       "sodiumMg": 32
@@ -1961,7 +1961,7 @@
       "proteinG": 47.7,
       "fatG": 12.6,
       "carbsG": 18,
-      "sugarG": 13.5,
+      "sugarsG": 13.5,
       "satFatG": 9,
       "cholesterolMg": 157.5,
       "sodiumMg": 180
@@ -2005,7 +2005,7 @@
       "proteinG": 54,
       "fatG": 54,
       "carbsG": 38.25,
-      "sugarG": 4.05,
+      "sugarsG": 4.05,
       "satFatG": 36,
       "cholesterolMg": 90,
       "sodiumMg": 144
