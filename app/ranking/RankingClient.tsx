@@ -77,19 +77,19 @@ export default function RankingClient({ rankings }: RankingClientProps) {
           ))}
         </div>
 
-        <div className="mt-4 flex gap-6 border-b border-[#e8e6e3]">
+        <div className="mt-4 flex gap-2 rounded-2xl border border-[#dce8df] bg-[#f4faf5] p-1.5">
           {METRICS.map((item) => (
             <button
               key={item.id}
               type="button"
               onClick={() => setMetric(item.id)}
-              className="relative pb-3 text-sm font-semibold transition-colors"
-              style={{ color: metric === item.id ? "var(--accent)" : "#999" }}
+              className="relative rounded-xl px-3 py-2 text-sm font-semibold transition-colors"
+              style={{
+                color: metric === item.id ? "#24543d" : "#6b7280",
+                background: metric === item.id ? "#e7f3ec" : "transparent",
+              }}
             >
               {item.label}
-              {metric === item.id ? (
-                <span className="absolute bottom-0 left-0 right-0 h-[2px]" style={{ background: "var(--accent)" }} />
-              ) : null}
             </button>
           ))}
         </div>

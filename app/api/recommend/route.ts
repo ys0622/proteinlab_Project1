@@ -1,10 +1,15 @@
 import { NextResponse } from "next/server";
-import { mockProducts, barProductsWithGrades, type ProductDetailProps } from "../../data/products";
+import {
+  mockProducts,
+  barProductsWithGrades,
+  yogurtProductsWithGrades,
+  type ProductDetailProps,
+} from "../../data/products";
 import { getDensityValue, getDietScore, getPerformanceScore } from "../../lib/gradeCalculation";
 import { getProductImageUrl } from "../../lib/productImage";
 
 interface RecommendRequest {
-  category: "drink" | "bar";
+  category: "drink" | "bar" | "yogurt";
   purpose: string;
   frequency: string;
   intensity: string;
@@ -133,7 +138,12 @@ export async function POST(request: Request) {
     const body = (await request.json()) as RecommendRequest;
     const { category } = body;
 
-    let products = category === "bar" ? [...barProductsWithGrades] : [...mockProducts];
+    let products =
+      category === "bar"
+        ? [...barProductsWithGrades]
+        : category === "yogurt"
+          ? [...yogurtProductsWithGrades]
+          : [...mockProducts];
 
     // vegan 조건 선택 시 식물성 제품만 필터링
     if (body.conditions.includes("vegan")) {

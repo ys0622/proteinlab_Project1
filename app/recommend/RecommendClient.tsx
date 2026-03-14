@@ -18,7 +18,7 @@ import {
   getProductBadgeTone,
 } from "@/app/components/productBadgeUtils";
 
-type ProductType = "drink" | "bar";
+type ProductType = "drink" | "bar" | "yogurt";
 type Step = 0 | 1 | 2 | 3 | 4 | "loading" | "result";
 
 interface QuizAnswers {
@@ -888,6 +888,12 @@ function ProductResultCardUnified({
   );
 }
 
+function getCategoryLabel(category: ProductType) {
+  if (category === "bar") return "단백질 바";
+  if (category === "yogurt") return "단백질 요거트";
+  return "단백질 음료";
+}
+
 function ResultScreen({ result, onReset, category }: { result: RecommendResult; onReset: () => void; category: ProductType }) {
   return (
     <div className="fade-in space-y-5">
@@ -947,22 +953,31 @@ function ResultScreen({ result, onReset, category }: { result: RecommendResult; 
         <Link href="/" className="flex-1 rounded-full py-3 text-center text-sm font-semibold transition-opacity hover:opacity-90" style={{
           background: "var(--accent)", color: "white",
         }}>
-          전체 {category === "bar" ? "단백질바" : "단백질 음료"} 보기 →
+          전체 {getCategoryLabel(category)} 보기 →
         </Link>
       </div>
     </div>
   );
 }
 
-export default function RecommendClient({ drinkCount, barCount }: { drinkCount: number; barCount: number }) {
+export default function RecommendClient({
+  drinkCount,
+  barCount,
+  yogurtCount,
+}: {
+  drinkCount: number;
+  barCount: number;
+  yogurtCount: number;
+}) {
   const [category, setCategory] = useState<ProductType>("drink");
   const [step, setStep] = useState<Step>(0);
   const [answers, setAnswers] = useState<QuizAnswers>({ purpose: "", frequency: "", intensity: "", conditions: [] });
   const [result, setResult] = useState<RecommendResult | null>(null);
   const [error, setError] = useState<string | null>(null);
 
-  const productCount = category === "bar" ? barCount : drinkCount;
-  const productLabel = category === "bar" ? "단백질 바" : "단백질 음료";
+  const productCount =
+    category === "bar" ? barCount : category === "yogurt" ? yogurtCount : drinkCount;
+  const productLabel = getCategoryLabel(category);
 
   function reset() {
     setStep(0);
@@ -1037,6 +1052,13 @@ export default function RecommendClient({ drinkCount, barCount }: { drinkCount: 
             }}>
               단백질 바
             </button>
+            <button type="button" onClick={() => handleCategoryChange("yogurt")} className="rounded-full px-4 py-2 text-sm font-semibold transition-colors" style={{
+              background: category === "yogurt" ? "var(--accent)" : "#fff",
+              color: category === "yogurt" ? "#fff" : "#374151",
+              border: "1px solid var(--border)",
+            }}>
+              단백질 요거트
+            </button>
           </div>
 
           {/* STEP 0: 시작 화면 */}
@@ -1052,7 +1074,7 @@ export default function RecommendClient({ drinkCount, barCount }: { drinkCount: 
                 나에게 맞는<br />{productLabel} 찾기
               </h2>
               <p className="text-base mb-8 leading-relaxed" style={{ color: "#6b6b6b" }}>
-                4가지 질문으로 {productCount}개 제품 중 최적의 {category === "bar" ? "단백질 바" : "RTD 단백질 음료"}를 추천해드려요
+                4가지 질문으로 {productCount}개 제품 중 최적의 {category === "drink" ? "RTD 단백질 음료" : productLabel}를 추천해드려요
               </p>
               <button onClick={() => setStep(1)} className="inline-block px-8 py-3 text-base font-semibold rounded-full hover:opacity-90 transition-opacity" style={{
                 background: "var(--accent)", color: "white",
