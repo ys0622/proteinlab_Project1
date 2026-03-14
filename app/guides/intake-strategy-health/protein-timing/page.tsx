@@ -68,9 +68,9 @@ export default function ProteinTimingPage() {
           </p>
         </div>
       </section>
-      <main className="guide-article-page guide-article-page--track-c mx-auto max-w-[1200px] px-4 py-8 md:px-6">
+      <main className="mx-auto max-w-[1200px] px-4 py-8 md:px-6">
         <div className="space-y-6">
-          <section className="rounded-2xl border border-[#e8e6e3] bg-[#fffdf8] px-5 py-5">
+          <section className="rounded-[28px] border border-[#e2ebe4] bg-[#f7fbf8] px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
             <h2 className="text-xl font-bold text-[var(--foreground)]">하루 기본 타이밍</h2>
             <div className="mt-5 overflow-x-auto">
               <table className="min-w-full border-collapse text-left text-sm">
@@ -96,19 +96,19 @@ export default function ProteinTimingPage() {
             </div>
           </section>
 
-          <section className="rounded-2xl border border-[#e8e6e3] bg-white px-5 py-5">
+          <section className="rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
             <h2 className="text-xl font-bold text-[var(--foreground)]">타이밍을 볼 때 놓치지 말아야 할 기준</h2>
             <div className="mt-5 grid gap-3 md:grid-cols-3">
               {principles.map((item) => (
-                <article key={item.title} className="rounded-xl border border-[#e9ece8] bg-[#fbfcfb] p-4">
-                  <h3 className="text-sm font-semibold text-[#6b563f]">{item.title}</h3>
+                <article key={item.title} className="rounded-2xl border border-[#dce8df] bg-[#f6fbf7] p-4">
+                  <h3 className="text-sm font-semibold text-[#24543d]">{item.title}</h3>
                   <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">{item.body}</p>
                 </article>
               ))}
             </div>
           </section>
 
-          <section className="rounded-2xl border border-[#e8e6e3] bg-white px-5 py-5">
+          <section className="rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
             <h2 className="text-xl font-bold text-[var(--foreground)]">생활 패턴별 적용 예시</h2>
             <div className="mt-5 overflow-x-auto">
               <table className="min-w-full border-collapse text-left text-sm">
@@ -132,9 +132,25 @@ export default function ProteinTimingPage() {
                 </tbody>
               </table>
             </div>
-            <blockquote className="mt-5 rounded-xl border border-[#eef1f3] bg-[#fbfcfd] px-4 py-4 text-sm leading-6 text-[var(--foreground-muted)]">
+            <blockquote className="mt-5 rounded-xl border border-[#dce8df] bg-[#f7fbf8] px-4 py-4 text-sm leading-6 text-[var(--foreground-muted)]">
               좋은 타이밍은 정답이 하나인 것이 아니라, 내 일정 안에서 꾸준히 반복할 수 있는 배치입니다.
             </blockquote>
+          </section>
+          <section className="rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
+            <div className="flex flex-wrap gap-3">
+              <Link
+                href="/guides/intake-strategy-health/pre-workout-protein"
+                className="inline-flex items-center justify-center rounded-lg border border-[#d9e7dc] px-5 py-3 text-sm font-semibold text-[#24543d] transition-colors hover:bg-[#eef7f1]"
+              >
+                운동 전 단백질 보기 →
+              </Link>
+              <Link
+                href="/recommend"
+                className="inline-flex items-center justify-center rounded-lg border border-[#2d6a4f] bg-[#2d6a4f] px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#24543d]"
+              >
+                내 목적에 맞는 제품 찾기 →
+              </Link>
+            </div>
           </section>
         </div>
       </main>

@@ -41,18 +41,37 @@ export default function MuscleMaintenanceProteinPage() {
             <br />
             총량과 분배를 같이 봐야 합니다
           </h1>
+          <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
+            감량 중이라도, 운동을 쉬는 날이라도 — 단백질 리듬을 유지하는 것이 근육 손실을 줄이는 핵심입니다.
+          </p>
         </div>
       </section>
-      <main className="guide-article-page guide-article-page--track-c mx-auto max-w-[1200px] px-4 py-8 md:px-6">
-        <section className="rounded-2xl border border-[#e8e6e3] bg-white px-5 py-5">
+      <main className="mx-auto max-w-[1200px] px-4 py-8 md:px-6">
+        <section className="rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
           <ul className="space-y-3 text-sm leading-6 text-[var(--foreground-muted)]">
             {maintenancePoints.map((item) => (
-              <li key={item} className="flex gap-3 rounded-xl border border-[#eef1f3] bg-[#fbfcfd] px-4 py-3">
-                <span className="mt-1 h-2 w-2 shrink-0 rounded-full bg-[#7a5230]" />
+              <li key={item} className="flex gap-3 rounded-xl border border-[#dce8df] bg-[#f6fbf7] px-4 py-3">
+                <span className="mt-1 h-2 w-2 shrink-0 rounded-full bg-[#2d6a4f]" />
                 <span>{item}</span>
               </li>
             ))}
           </ul>
+        </section>
+        <section className="mt-6 rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
+          <div className="flex flex-wrap gap-3">
+            <Link
+              href="/guides/intake-strategy-health/weight-management-protein"
+              className="inline-flex items-center justify-center rounded-lg border border-[#d9e7dc] px-5 py-3 text-sm font-semibold text-[#24543d] transition-colors hover:bg-[#eef7f1]"
+            >
+              체중 관리와 단백질 보기 →
+            </Link>
+            <Link
+              href="/recommend"
+              className="inline-flex items-center justify-center rounded-lg border border-[#2d6a4f] bg-[#2d6a4f] px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#24543d]"
+            >
+              내 목적에 맞는 제품 찾기 →
+            </Link>
+          </div>
         </section>
       </main>
       <Footer />

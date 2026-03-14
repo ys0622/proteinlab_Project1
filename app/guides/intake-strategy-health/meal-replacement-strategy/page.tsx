@@ -69,9 +69,9 @@ export default function MealReplacementStrategyPage() {
           </p>
         </div>
       </section>
-      <main className="guide-article-page guide-article-page--track-c mx-auto max-w-[1200px] px-4 py-8 md:px-6">
+      <main className="mx-auto max-w-[1200px] px-4 py-8 md:px-6">
         <div className="space-y-6">
-          <section className="rounded-2xl border border-[#e8e6e3] bg-[#fffdf8] px-5 py-5">
+          <section className="rounded-[28px] border border-[#e2ebe4] bg-[#f7fbf8] px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
             <h2 className="text-xl font-bold text-[var(--foreground)]">제품 유형별 해석</h2>
             <div className="mt-5 overflow-x-auto">
               <table className="min-w-full border-collapse text-left text-sm">
@@ -97,24 +97,24 @@ export default function MealReplacementStrategyPage() {
             </div>
           </section>
 
-          <section className="rounded-2xl border border-[#e8e6e3] bg-white px-5 py-5">
+          <section className="rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
             <h2 className="text-xl font-bold text-[var(--foreground)]">식사대용으로 볼 때 중요한 기준</h2>
             <div className="mt-5 grid gap-3 md:grid-cols-3">
               {keyPoints.map((item) => (
-                <article key={item.title} className="rounded-xl border border-[#e9ece8] bg-[#fbfcfb] p-4">
-                  <h3 className="text-sm font-semibold text-[#6b563f]">{item.title}</h3>
+                <article key={item.title} className="rounded-2xl border border-[#dce8df] bg-[#f6fbf7] p-4">
+                  <h3 className="text-sm font-semibold text-[#24543d]">{item.title}</h3>
                   <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">{item.body}</p>
                 </article>
               ))}
             </div>
           </section>
 
-          <section className="rounded-2xl border border-[#e8e6e3] bg-white px-5 py-5">
+          <section className="rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
             <h2 className="text-xl font-bold text-[var(--foreground)]">이럴 때 실전적으로 쓸 수 있습니다</h2>
             <ul className="mt-4 space-y-3 text-sm leading-6 text-[var(--foreground-muted)]">
               {useCases.map((item) => (
-                <li key={item} className="flex gap-3 rounded-xl border border-[#eef1f3] bg-[#fbfcfd] px-4 py-3">
-                  <span className="mt-1 h-2 w-2 shrink-0 rounded-full bg-[#7a5230]" />
+                <li key={item} className="flex gap-3 rounded-xl border border-[#dce8df] bg-[#f6fbf7] px-4 py-3">
+                  <span className="mt-1 h-2 w-2 shrink-0 rounded-full bg-[#2d6a4f]" />
                   <span>{item}</span>
                 </li>
               ))}
@@ -122,13 +122,13 @@ export default function MealReplacementStrategyPage() {
             <div className="mt-5 flex flex-wrap gap-3">
               <Link
                 href="/guides/intake-strategy-health/weight-management-protein"
-                className="inline-flex items-center justify-center rounded-lg border border-[#e8e6e3] px-5 py-3 text-sm font-semibold text-[#6b563f] transition-colors hover:bg-[#f8f4ef]"
+                className="inline-flex items-center justify-center rounded-lg border border-[#d9e7dc] px-5 py-3 text-sm font-semibold text-[#24543d] transition-colors hover:bg-[#eef7f1]"
               >
                 체중 관리와 단백질 보기
               </Link>
               <Link
                 href="/curation/convenience"
-                className="inline-flex items-center justify-center rounded-lg border border-[#7a5230] bg-[#7a5230] px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#644226]"
+                className="inline-flex items-center justify-center rounded-lg border border-[#2d6a4f] bg-[#2d6a4f] px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#24543d]"
               >
                 편의점 큐레이션 보기
               </Link>

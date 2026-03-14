@@ -69,9 +69,9 @@ export default function PostWorkoutProteinPage() {
           </p>
         </div>
       </section>
-      <main className="guide-article-page guide-article-page--track-c mx-auto max-w-[1200px] px-4 py-8 md:px-6">
+      <main className="mx-auto max-w-[1200px] px-4 py-8 md:px-6">
         <div className="space-y-6">
-          <section className="rounded-2xl border border-[#e8e6e3] bg-[#fffdf8] px-5 py-5">
+          <section className="rounded-[28px] border border-[#e2ebe4] bg-[#f7fbf8] px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
             <h2 className="text-xl font-bold text-[var(--foreground)]">운동 후 회복 흐름</h2>
             <p className="mt-3 text-sm leading-6 text-[var(--foreground-muted)]">
               운동 직후 단백질 20~30g을 먼저 채우고, 이후 식사에서 탄수화물과 단백질을 함께 보완하는 흐름이 가장 안정적입니다.
@@ -100,31 +100,47 @@ export default function PostWorkoutProteinPage() {
             </div>
           </section>
 
-          <section className="rounded-2xl border border-[#e8e6e3] bg-white px-5 py-5">
+          <section className="rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
             <h2 className="text-xl font-bold text-[var(--foreground)]">상황별로 고르는 회복 방식</h2>
             <div className="mt-5 grid gap-3 md:grid-cols-3">
               {quickChoices.map((item) => (
-                <article key={item.title} className="rounded-xl border border-[#e9ece8] bg-[#fbfcfb] p-4">
-                  <h3 className="text-sm font-semibold text-[#6b563f]">{item.title}</h3>
+                <article key={item.title} className="rounded-2xl border border-[#dce8df] bg-[#f6fbf7] p-4">
+                  <h3 className="text-sm font-semibold text-[#24543d]">{item.title}</h3>
                   <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">{item.body}</p>
                 </article>
               ))}
             </div>
           </section>
 
-          <section className="rounded-2xl border border-[#e8e6e3] bg-white px-5 py-5">
+          <section className="rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
             <h2 className="text-xl font-bold text-[var(--foreground)]">운동 후에 자주 놓치는 점</h2>
             <ul className="mt-4 space-y-3 text-sm leading-6 text-[var(--foreground-muted)]">
               {mistakes.map((item) => (
-                <li key={item} className="flex gap-3 rounded-xl border border-[#eef1f3] bg-[#fbfcfd] px-4 py-3">
-                  <span className="mt-1 h-2 w-2 shrink-0 rounded-full bg-[#7a5230]" />
+                <li key={item} className="flex gap-3 rounded-xl border border-[#dce8df] bg-[#f6fbf7] px-4 py-3">
+                  <span className="mt-1 h-2 w-2 shrink-0 rounded-full bg-[#2d6a4f]" />
                   <span>{item}</span>
                 </li>
               ))}
             </ul>
-            <blockquote className="mt-5 rounded-xl border border-[#eef1f3] bg-[#fbfcfd] px-4 py-4 text-sm leading-6 text-[var(--foreground-muted)]">
+            <blockquote className="mt-5 rounded-xl border border-[#dce8df] bg-[#f7fbf8] px-4 py-4 text-sm leading-6 text-[var(--foreground-muted)]">
               회복용 제품은 단백질 함량만 높다고 좋은 것이 아닙니다. 다음 식사와 간격, 당류, 칼로리, 포만감까지 함께 봐야 목적에 맞는 선택이 됩니다.
             </blockquote>
+          </section>
+          <section className="rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
+            <div className="flex flex-wrap gap-3">
+              <Link
+                href="/guides/intake-strategy-health/protein-timing"
+                className="inline-flex items-center justify-center rounded-lg border border-[#d9e7dc] px-5 py-3 text-sm font-semibold text-[#24543d] transition-colors hover:bg-[#eef7f1]"
+              >
+                단백질 섭취 타이밍 보기 →
+              </Link>
+              <Link
+                href="/recommend"
+                className="inline-flex items-center justify-center rounded-lg border border-[#2d6a4f] bg-[#2d6a4f] px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#24543d]"
+              >
+                내 목적에 맞는 제품 찾기 →
+              </Link>
+            </div>
           </section>
         </div>
       </main>
