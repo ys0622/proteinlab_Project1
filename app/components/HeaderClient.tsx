@@ -17,7 +17,7 @@ function hasActiveChild(pathname: string, children: NavigationChildItem[]): bool
 
 export default function HeaderClient({ isAdmin }: { isAdmin: boolean }) {
   const pathname = usePathname();
-  const isHome = pathname === "/";
+  const isCategoryHeroPage = pathname === "/" || pathname === "/bars" || pathname === "/yogurt";
   const [openPath, setOpenPath] = useState<string | null>(null);
   const [openGroupByPath, setOpenGroupByPath] = useState<Record<string, string | null>>({});
   const open = openPath === pathname;
@@ -34,7 +34,7 @@ export default function HeaderClient({ isAdmin }: { isAdmin: boolean }) {
   return (
     <header
       className={`sticky top-0 z-50 border-b ${
-        isHome
+        isCategoryHeroPage
           ? "border-[var(--hero-border)] bg-[var(--hero-bg)] md:border-[#f0eeeb] md:bg-white"
           : "border-[#f0eeeb] bg-white"
       }`}
