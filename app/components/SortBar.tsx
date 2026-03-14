@@ -74,7 +74,7 @@ export default function SortBar({
   }, [menuOpen]);
 
   return (
-    <div className="flex flex-col gap-1.5 border-b border-[var(--border)] py-1.5 md:gap-2 md:py-2">
+    <div className="flex flex-col gap-1 border-b border-transparent py-1 md:gap-2 md:border-[var(--border)] md:py-2">
       <div className="flex items-center justify-between gap-1.5 md:gap-2">
         <span
           className="min-w-0 text-[13px] text-[var(--foreground-muted)] md:text-sm"

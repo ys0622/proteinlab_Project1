@@ -331,7 +331,7 @@ function ProductListWithFiltersInner(props: ProductListWithFiltersInnerProps) {
 
       <div
         className="mt-3 rounded-xl border border-[var(--border)] bg-[var(--filter-box-bg)]"
-        style={{ marginTop: "12px", borderRadius: "12px", padding: isDesktop ? "10px 12px" : "4px 6px" }}
+        style={{ marginTop: isDesktop ? "12px" : "10px", borderRadius: "12px", padding: isDesktop ? "10px 12px" : "3px 6px" }}
       >
         <div className="hidden md:block">
           <SearchBar value={searchQuery} onChange={handleSearchChange} />
