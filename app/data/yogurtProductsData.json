@@ -302,8 +302,8 @@
       "cholesterolMg": 25,
       "sodiumMg": 90
     },
-    "needsServingCheck": true,
-    "nutritionBasis": "unknown",
+    "needsServingCheck": false,
+    "nutritionBasis": "per_unit",
     "servingCheckNote": "현재 확인한 판매 페이지는 80g x 16개입 묶음입니다. 현재 수치는 80g 1컵 기준으로 유지했고, 실제 표기 기준은 제품 라벨을 다시 확인해야 합니다."
   },
   {
@@ -1373,9 +1373,16 @@
     "nutritionBasis": "unknown",
     "servingCheckNote": "공식몰 상품 페이지는 확인되지만 상세 영양표 기준은 추가 이미지 확인이 필요합니다. 구매 전 제품 라벨의 기준 중량과 영양정보를 다시 확인해주세요.",
     "nutritionPerBottle": {
-      "proteinG": 5
+      "caloriesKcal": 80,
+      "proteinG": 5,
+      "fatG": 1.5,
+      "sugarsG": 6,
+      "sodiumMg": 50
     },
-    "calories": 80
+    "calories": 80,
+    "sugar": 6,
+    "fat": 1.5,
+    "sodium": 50
   },
   {
     "slug": "maeil-bio-greek-togo-plain-120",
