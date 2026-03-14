@@ -45,7 +45,7 @@ export default function QuickCuration({
   if (variant === "inline") {
     return (
       <div
-        className={`rounded-xl border border-[var(--border)] bg-[var(--background-card)] px-3 py-2.5 md:py-3 ${className}`.trim()}
+        className={`rounded-xl border border-[var(--border)] bg-[var(--background-card)] px-3 py-2 md:py-3 ${className}`.trim()}
       >
         <div className="flex flex-col gap-0.5 sm:flex-row sm:items-center">
           <div className="flex h-6 shrink-0 items-center" style={{ minWidth: "5rem" }}>
@@ -68,13 +68,13 @@ export default function QuickCuration({
 
   return (
     <div
-      className={`rounded-xl border border-[var(--border)] bg-[var(--background-card)] px-3 py-2.5 md:py-3 ${className}`.trim()}
+      className={`rounded-xl border border-[var(--border)] bg-[var(--background-card)] px-3 py-2 md:py-3 ${className}`.trim()}
     >
-      <div className="mb-1.5 flex items-center justify-between gap-3 md:mb-2">
+      <div className="mb-1 flex items-center justify-between gap-3 md:mb-2">
         <p className="text-xs font-semibold text-[var(--foreground)]">빠른 큐레이션</p>
         <span className="text-[11px] text-[var(--foreground-muted)]">좌우로 넘겨보기</span>
       </div>
-      <div className="-mx-3 -mb-1 mt-0.5 overflow-x-auto px-3 pb-1.5 md:mt-1 md:pb-2">
+      <div className="-mx-3 -mb-1 mt-0 overflow-x-auto px-3 pb-1 md:mt-1 md:pb-2">
         <div className="flex min-w-max" style={{ gap: "6px" }}>
           {items.map((item) => (
             <QuickCurationChip key={`${productType}-${item.slug}`} item={item} />

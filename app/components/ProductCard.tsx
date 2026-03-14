@@ -118,19 +118,13 @@ export default function ProductCard({
 
   const imageArea = (
     <div
-      className="product-card__media flex w-full flex-shrink-0 items-center justify-center overflow-hidden rounded-xl transition-colors duration-200 group-hover:border-[#e2e2e2]"
-      style={{
-        borderRadius: "12px",
-        padding: "10px",
-        height: "200px",
-        background: "#ffffff",
-        border: "1px solid #eee",
-      }}
+      className="product-card__media flex h-[184px] w-full flex-shrink-0 items-center justify-center overflow-hidden rounded-xl border border-[#eee] bg-[#ffffff] p-2 transition-colors duration-200 group-hover:border-[#e2e2e2] md:h-[200px] md:p-[10px]"
+      style={{ borderRadius: "12px" }}
     >
       {imageUrl ? (
         <div
-          className="product-card__image relative h-full w-full"
-          style={{ minHeight: "160px", maxWidth: "200px" }}
+          className="product-card__image relative h-full w-full max-w-[188px] md:max-w-[200px]"
+          style={{ minHeight: "148px" }}
         >
           <Image
             src={imageUrl}
@@ -144,7 +138,7 @@ export default function ProductCard({
           />
         </div>
       ) : (
-        <div className="h-[160px] w-full" style={{ maxWidth: "200px" }} />
+        <div className="h-[148px] w-full max-w-[188px] md:h-[160px] md:max-w-[200px]" />
       )}
     </div>
   );
