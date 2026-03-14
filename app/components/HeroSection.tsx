@@ -3,12 +3,12 @@
 export default function HeroSection() {
   return (
     <section
-      className="-mt-2 w-full border-b bg-[var(--hero-bg)] md:mt-0 md:border-t"
+      className="-mt-1 w-full border-b bg-[var(--hero-bg)] md:mt-0 md:border-t"
       style={{ borderColor: "var(--hero-border)" }}
       aria-label="히어로"
     >
-      <div className="mx-auto max-w-[1200px] px-4 pb-1.5 pt-0 md:px-6 md:py-4">
-        <div className="flex items-baseline gap-1 md:block">
+      <div className="mx-auto max-w-[1200px] px-4 pb-2 pt-0 md:px-6 md:py-4">
+        <div className="flex items-baseline gap-1.5 md:block">
           <h1
             className="text-[19px] font-bold leading-tight text-[var(--foreground)] md:text-3xl"
             style={{ fontWeight: 700 }}
