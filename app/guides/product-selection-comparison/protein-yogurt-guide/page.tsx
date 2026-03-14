@@ -11,7 +11,7 @@ export const metadata = {
 const sections = [
   {
     title: "그릭요거트",
-    body: "꾸덕한 식감과 높은 단백질 밀도가 장점입니다. 대신 지방과 총열량이 높아질 수 있어 당류, 칼로리를 같이 봐야 합니다.",
+    body: "꾸덕한 식감과 높은 단백질 밀도가 장점입니다. 대신 지방과 총열량이 높아질 수 있어 당류와 칼로리를 같이 봐야 합니다.",
   },
   {
     title: "드링킹 요거트",
@@ -27,6 +27,24 @@ const checks = [
   "단백질 g만 보지 말고 100g당 단백질 밀도도 같이 보기",
   "저당 목적이면 당류 5g 이하 여부 먼저 좁히기",
   "대용량 제품은 1회 기준과 전체 기준이 섞이지 않았는지 확인하기",
+];
+
+const relatedLinks = [
+  {
+    href: "/guides/product-selection-comparison/greek-yogurt-guide",
+    title: "그릭요거트 추천 기준",
+    description: "그릭 타입을 따로 볼 때 무엇을 먼저 봐야 하는지 정리했습니다.",
+  },
+  {
+    href: "/guides/product-selection-comparison/low-sugar-yogurt-guide",
+    title: "저당 단백질 요거트 기준",
+    description: "당류를 먼저 좁히고 비교하는 흐름을 정리했습니다.",
+  },
+  {
+    href: "/guides/product-selection-comparison/protein-yogurt-ranking-guide",
+    title: "단백질 요거트 순위 읽는 법",
+    description: "랭킹과 점수를 어떻게 해석해야 하는지 바로 이어서 볼 수 있습니다.",
+  },
 ];
 
 export default function ProteinYogurtGuidePage() {
@@ -89,6 +107,18 @@ export default function ProteinYogurtGuidePage() {
               <Link href="/curation/yogurt-greek" className="inline-flex items-center justify-center rounded-lg border border-[#d9e7dc] px-5 py-3 text-sm font-semibold text-[#24543d] transition-colors hover:bg-[#eef7f1]">
                 그릭 요거트 큐레이션 보기
               </Link>
+            </div>
+          </section>
+
+          <section className="rounded-[28px] border border-[#e2ebe4] bg-[#f7fbf8] px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
+            <h2 className="text-xl font-bold text-[var(--foreground)]">함께 보면 좋은 페이지</h2>
+            <div className="mt-5 grid gap-3 md:grid-cols-3">
+              {relatedLinks.map((item) => (
+                <Link key={item.href} href={item.href} className="rounded-2xl border border-[#dce8df] bg-white p-4 transition-colors hover:bg-[#eef7f1]">
+                  <p className="text-sm font-semibold text-[#24543d]">{item.title}</p>
+                  <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">{item.description}</p>
+                </Link>
+              ))}
             </div>
           </section>
         </div>

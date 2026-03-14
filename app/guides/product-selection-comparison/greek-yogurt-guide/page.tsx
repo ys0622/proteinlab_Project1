@@ -11,15 +11,33 @@ export const metadata = {
 const cards = [
   {
     title: "단백질 밀도 먼저 보기",
-    body: "그릭요거트는 100g당 단백질 차이가 꽤 큽니다. 총량보다 밀도를 먼저 보면 비교가 쉬워집니다.",
+    body: "그릭요거트는 100g당 단백질 차이가 큽니다. 총량보다 밀도를 먼저 보면 비교가 쉬워집니다.",
   },
   {
     title: "당류 같이 보기",
     body: "꾸덕한 타입이라도 당류가 높으면 용도가 달라질 수 있습니다. 저당 목적이라면 당류 기준을 먼저 잡는 편이 좋습니다.",
   },
   {
-    title: "대용량은 나눠 먹는 기준으로 보기",
+    title: "대용량은 1회 기준으로 읽기",
     body: "450g, 800g 제품은 총량이 커서 숫자가 과장돼 보일 수 있습니다. 1회 기준으로 다시 읽는 습관이 중요합니다.",
+  },
+];
+
+const relatedLinks = [
+  {
+    href: "/curation/yogurt-greek",
+    title: "그릭 요거트 추천",
+    description: "현재 데이터 기준으로 그릭 타입 제품만 바로 추천 목록으로 볼 수 있습니다.",
+  },
+  {
+    href: "/guides/product-selection-comparison/protein-yogurt-guide",
+    title: "단백질 요거트 선택 가이드",
+    description: "그릭, 드링킹, 대용량 전체 흐름으로 다시 비교할 수 있습니다.",
+  },
+  {
+    href: "/guides/product-selection-comparison/low-sugar-yogurt-guide",
+    title: "저당 단백질 요거트 기준",
+    description: "그릭 타입 안에서도 당류를 어떻게 같이 봐야 하는지 이어서 볼 수 있습니다.",
   },
 ];
 
@@ -70,6 +88,17 @@ export default function GreekYogurtGuidePage() {
               <Link href="/yogurt?curation=yogurt-greek" className="inline-flex items-center justify-center rounded-lg border border-[#d9e7dc] px-5 py-3 text-sm font-semibold text-[#24543d] transition-colors hover:bg-[#eef7f1]">
                 그릭 요거트만 비교하기
               </Link>
+            </div>
+          </section>
+          <section className="rounded-[28px] border border-[#e2ebe4] bg-[#f7fbf8] px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
+            <h2 className="text-xl font-bold text-[var(--foreground)]">관련 가이드와 비교 페이지</h2>
+            <div className="mt-5 grid gap-3 md:grid-cols-3">
+              {relatedLinks.map((item) => (
+                <Link key={item.href} href={item.href} className="rounded-2xl border border-[#dce8df] bg-white p-4 transition-colors hover:bg-[#eef7f1]">
+                  <p className="text-sm font-semibold text-[#24543d]">{item.title}</p>
+                  <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">{item.description}</p>
+                </Link>
+              ))}
             </div>
           </section>
         </div>

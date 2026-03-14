@@ -14,6 +14,24 @@ const rows = [
   ["퍼포먼스", "운동 후 보강이나 단백질 보충 효율을 중심으로 볼 때 유용합니다."],
 ];
 
+const relatedLinks = [
+  {
+    href: "/ranking",
+    title: "단백질 요거트 랭킹",
+    description: "실제 요거트 랭킹 화면에서 단백질 밀도, 다이어트, 퍼포먼스를 바로 확인할 수 있습니다.",
+  },
+  {
+    href: "/grade-criteria",
+    title: "등급 기준",
+    description: "점수와 등급이 어떤 기준으로 계산되는지 상세 기준을 이어서 볼 수 있습니다.",
+  },
+  {
+    href: "/recommend",
+    title: "단백질 요거트 추천",
+    description: "랭킹을 본 뒤엔 개인 조건 기반 추천으로 바로 넘어갈 수 있습니다.",
+  },
+];
+
 export default function ProteinYogurtRankingGuidePage() {
   return (
     <div className="min-h-screen bg-white">
@@ -61,6 +79,17 @@ export default function ProteinYogurtRankingGuidePage() {
               <Link href="/grade-criteria" className="inline-flex items-center justify-center rounded-lg border border-[#d9e7dc] px-5 py-3 text-sm font-semibold text-[#24543d] transition-colors hover:bg-[#eef7f1]">
                 등급 기준 보기
               </Link>
+            </div>
+          </section>
+          <section className="rounded-[28px] border border-[#e2ebe4] bg-[#f7fbf8] px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
+            <h2 className="text-xl font-bold text-[var(--foreground)]">다음으로 보기 좋은 페이지</h2>
+            <div className="mt-5 grid gap-3 md:grid-cols-3">
+              {relatedLinks.map((item) => (
+                <Link key={item.href} href={item.href} className="rounded-2xl border border-[#dce8df] bg-white p-4 transition-colors hover:bg-[#eef7f1]">
+                  <p className="text-sm font-semibold text-[#24543d]">{item.title}</p>
+                  <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">{item.description}</p>
+                </Link>
+              ))}
             </div>
           </section>
         </div>

@@ -11,7 +11,25 @@ export const metadata = {
 const rules = [
   ["당류 먼저 좁히기", "저당 목적이면 먼저 당류 5g 이하 제품만 남겨두는 편이 실용적입니다."],
   ["단백질 함량 같이 보기", "당류만 낮고 단백질이 너무 낮으면 단백질 요거트로서 장점이 줄어듭니다."],
-  ["맛 제품은 기준 다르게 보기", "바나나, 과일, 토핑형은 기본적으로 당류가 높아질 수 있어 플레인과 따로 보는 편이 안전합니다."],
+  ["맛 제품은 따로 보기", "바나나, 과일, 토핑형은 기본적으로 당류가 높아질 수 있어 플레인과 따로 보는 편이 안전합니다."],
+];
+
+const relatedLinks = [
+  {
+    href: "/curation/yogurt-low-sugar",
+    title: "저당 요거트 추천",
+    description: "당류 기준으로 먼저 좁힌 추천 제품을 바로 확인할 수 있습니다.",
+  },
+  {
+    href: "/guides/product-selection-comparison/protein-yogurt-guide",
+    title: "단백질 요거트 선택 가이드",
+    description: "유형 전체를 먼저 이해하고 다시 저당 기준으로 내려오면 비교가 쉬워집니다.",
+  },
+  {
+    href: "/guides/product-selection-comparison/drinking-yogurt-guide",
+    title: "드링킹 요거트 비교 포인트",
+    description: "드링킹 제품 중 저당 후보를 따로 볼 때 유용한 기준입니다.",
+  },
 ];
 
 export default function LowSugarYogurtGuidePage() {
@@ -61,6 +79,17 @@ export default function LowSugarYogurtGuidePage() {
               <Link href="/yogurt?curation=yogurt-low-sugar" className="inline-flex items-center justify-center rounded-lg border border-[#d9e7dc] px-5 py-3 text-sm font-semibold text-[#24543d] transition-colors hover:bg-[#eef7f1]">
                 저당 요거트만 비교하기
               </Link>
+            </div>
+          </section>
+          <section className="rounded-[28px] border border-[#e2ebe4] bg-[#f7fbf8] px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
+            <h2 className="text-xl font-bold text-[var(--foreground)]">함께 이어서 보기</h2>
+            <div className="mt-5 grid gap-3 md:grid-cols-3">
+              {relatedLinks.map((item) => (
+                <Link key={item.href} href={item.href} className="rounded-2xl border border-[#dce8df] bg-white p-4 transition-colors hover:bg-[#eef7f1]">
+                  <p className="text-sm font-semibold text-[#24543d]">{item.title}</p>
+                  <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">{item.description}</p>
+                </Link>
+              ))}
             </div>
           </section>
         </div>

@@ -14,6 +14,24 @@ const rows = [
   ["당류", "맛 제품은 당류가 높아질 수 있어 저당 목적이라면 따로 좁혀서 봐야 합니다."],
 ];
 
+const relatedLinks = [
+  {
+    href: "/curation/yogurt-drinking",
+    title: "드링킹 요거트 추천",
+    description: "마시기 편한 타입만 모은 큐레이션으로 바로 이동할 수 있습니다.",
+  },
+  {
+    href: "/guides/product-selection-comparison/protein-yogurt-guide",
+    title: "단백질 요거트 선택 가이드",
+    description: "드링킹을 포함한 전체 요거트 유형 흐름을 먼저 다시 볼 수 있습니다.",
+  },
+  {
+    href: "/guides/product-selection-comparison/protein-yogurt-ranking-guide",
+    title: "단백질 요거트 순위 읽는 법",
+    description: "드링킹 타입이 랭킹에서 어떻게 보이는지 점수 기준으로 확인할 수 있습니다.",
+  },
+];
+
 export default function DrinkingYogurtGuidePage() {
   return (
     <div className="min-h-screen bg-white">
@@ -61,6 +79,17 @@ export default function DrinkingYogurtGuidePage() {
               <Link href="/yogurt?curation=yogurt-drinking" className="inline-flex items-center justify-center rounded-lg border border-[#d9e7dc] px-5 py-3 text-sm font-semibold text-[#24543d] transition-colors hover:bg-[#eef7f1]">
                 드링킹 요거트만 비교하기
               </Link>
+            </div>
+          </section>
+          <section className="rounded-[28px] border border-[#e2ebe4] bg-[#f7fbf8] px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
+            <h2 className="text-xl font-bold text-[var(--foreground)]">관련 비교와 가이드</h2>
+            <div className="mt-5 grid gap-3 md:grid-cols-3">
+              {relatedLinks.map((item) => (
+                <Link key={item.href} href={item.href} className="rounded-2xl border border-[#dce8df] bg-white p-4 transition-colors hover:bg-[#eef7f1]">
+                  <p className="text-sm font-semibold text-[#24543d]">{item.title}</p>
+                  <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">{item.description}</p>
+                </Link>
+              ))}
             </div>
           </section>
         </div>
