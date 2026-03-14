@@ -44,6 +44,8 @@ export interface ProductCardProps {
   productType?: "drink" | "bar" | "yogurt";
   yogurtType?: string;
   purchaseLinkCategory?: CoupangLinkCategory;
+  maxVisibleBadges?: number;
+  fixedTitleLines?: 1 | 2;
 }
 
 export default function ProductCard({
@@ -64,6 +66,8 @@ export default function ProductCard({
   productType,
   yogurtType,
   purchaseLinkCategory,
+  maxVisibleBadges,
+  fixedTitleLines,
 }: ProductCardProps) {
   const router = useRouter();
   const detailHref = slug ? `/product/${slug}` : productUrl;
@@ -89,6 +93,9 @@ export default function ProductCard({
             tag.includes("단백질 밀도") || tag.includes("다이어트") || tag.includes("퍼포먼스"),
         )
       : gradeTags;
+  const limitedGradeTags = typeof maxVisibleBadges === "number"
+    ? visibleGradeTags.slice(0, maxVisibleBadges)
+    : visibleGradeTags;
 
   const shouldIgnoreCardClick = (target: EventTarget | null) => {
     if (!(target instanceof HTMLElement)) {
@@ -183,7 +190,9 @@ export default function ProductCard({
         </p>
 
         <h3
-          className="product-card__title mt-1 font-semibold leading-snug"
+          className={`product-card__title mt-1 font-semibold leading-snug ${
+            fixedTitleLines === 2 ? "line-clamp-2 min-h-[44px]" : ""
+          }`}
           style={{ fontSize: "16px", fontWeight: 600, color: "#1a1a1a" }}
         >
           <span>{name}</span>
@@ -197,7 +206,7 @@ export default function ProductCard({
         </h3>
 
         <MetricBadgeGroup className="product-card__badges mt-0.5">
-          {visibleGradeTags.map((tag) => {
+          {limitedGradeTags.map((tag) => {
             const displayTag = formatProductBadgeLabel(tag);
             const tone = getProductBadgeTone(displayTag);
             const tooltip = getMetricBadgeTooltip(tag);

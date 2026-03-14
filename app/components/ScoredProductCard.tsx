@@ -93,7 +93,12 @@ export default function ScoredProductCard({
             : "[&_.product-card__badges]:h-[52px] [&_.product-card__badges]:overflow-hidden [&_.product-card__title]:h-[48px] [&_.product-card__title]:overflow-hidden"
         }`}
       >
-        <ProductCard {...product} purchaseLinkCategory={purchaseLinkCategory} />
+        <ProductCard
+          {...product}
+          purchaseLinkCategory={purchaseLinkCategory}
+          fixedTitleLines={2}
+          maxVisibleBadges={compact ? 2 : 3}
+        />
       </div>
 
       {reason ? (
