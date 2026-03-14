@@ -32,8 +32,8 @@ const macroCards = [
 
 function MacroCard({ title, value, note }: { title: string; value: string; note: string }) {
   return (
-    <article className="rounded-2xl border border-[#eaded7] bg-white p-4 shadow-[0_12px_30px_rgba(111,61,38,0.06)]">
-      <p className="text-sm font-semibold text-[#6b3f28]">{title}</p>
+    <article className="rounded-2xl border border-[#dce8df] bg-[#f6fbf7] p-4 shadow-[0_12px_30px_rgba(45,106,79,0.06)]">
+      <p className="text-sm font-semibold text-[#24543d]">{title}</p>
       <p className="mt-2 text-xl font-bold text-[var(--foreground)]">{value}</p>
       <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">{note}</p>
     </article>
@@ -76,15 +76,15 @@ export default function MarathonProteinGuidePage() {
         </div>
       </section>
 
-      <main className="guide-article-page guide-article-page--track-d mx-auto max-w-[1200px] px-4 py-8 md:px-6">
+      <main className="mx-auto max-w-[1200px] px-4 py-8 md:px-6">
         <div className="space-y-6">
           <section className="rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
             <div className="flex flex-wrap items-center justify-between gap-3">
               <div>
-                <p className="text-xs font-semibold tracking-[0.12em] text-[#8a4b2f]">RACE WEEK</p>
+                <p className="text-xs font-semibold tracking-[0.12em] text-[#2d6a4f]">RACE WEEK</p>
                 <h2 className="mt-2 text-xl font-bold text-[var(--foreground)]">레이스 주간 매크로 전략</h2>
               </div>
-              <span className="rounded-full bg-[#fcf1ea] px-3 py-1 text-xs font-semibold text-[#8a4b2f]">
+              <span className="rounded-full bg-[#eff7f1] px-3 py-1 text-xs font-semibold text-[#2d6a4f]">
                 훈련일과 분리해서 보기
               </span>
             </div>
@@ -132,9 +132,9 @@ export default function MarathonProteinGuidePage() {
               {checklistItems.map((item) => (
                 <label
                   key={item}
-                  className="flex items-start gap-3 rounded-2xl border border-[#eaded7] bg-white px-4 py-4 text-sm leading-6 text-[var(--foreground-muted)] shadow-[0_10px_26px_rgba(111,61,38,0.05)]"
+                  className="flex items-start gap-3 rounded-2xl border border-[#dce8df] bg-white px-4 py-4 text-sm leading-6 text-[var(--foreground-muted)] shadow-[0_10px_26px_rgba(20,32,24,0.05)]"
                 >
-                  <span className="mt-1 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-md border border-[#d9c8bf] bg-[#fcf1ea] text-[11px] font-bold text-[#8a4b2f]">
+                  <span className="mt-1 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-md border border-[#c8dfd0] bg-[#eef7f1] text-[11px] font-bold text-[#2d6a4f]">
                     ✓
                   </span>
                   <span>{item}</span>
@@ -151,19 +151,19 @@ export default function MarathonProteinGuidePage() {
             <div className="flex flex-wrap gap-3">
               <Link
                 href="/guides/fitness-lifestyle/marathon-distance-strategy"
-                className="inline-flex items-center justify-center rounded-xl border border-[#eaded7] bg-white px-5 py-3 text-sm font-semibold text-[#6b3f28] transition-colors hover:bg-[#fcf1ea]"
+                className="inline-flex items-center justify-center rounded-xl border border-[#d9e7dc] bg-white px-5 py-3 text-sm font-semibold text-[#24543d] transition-colors hover:bg-[#eef7f1]"
               >
                 거리별 영양 전략 보기
               </Link>
               <Link
                 href="/guides/fitness-lifestyle/sports-nutrition-guide"
-                className="inline-flex items-center justify-center rounded-xl border border-[#eaded7] bg-white px-5 py-3 text-sm font-semibold text-[#6b3f28] transition-colors hover:bg-[#fcf1ea]"
+                className="inline-flex items-center justify-center rounded-xl border border-[#d9e7dc] bg-white px-5 py-3 text-sm font-semibold text-[#24543d] transition-colors hover:bg-[#eef7f1]"
               >
                 제품 비교와 선택 기준 보기
               </Link>
               <Link
                 href="/curation/running"
-                className="inline-flex items-center justify-center rounded-xl border border-[#8a4b2f] bg-[#8a4b2f] px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#6f3d26]"
+                className="inline-flex items-center justify-center rounded-xl border border-[#2d6a4f] bg-[#2d6a4f] px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#24543d]"
               >
                 러닝 큐레이션 보기
               </Link>
