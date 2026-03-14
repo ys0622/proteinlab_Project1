@@ -618,7 +618,8 @@
     },
     "needsServingCheck": true,
     "nutritionBasis": "unknown",
-    "servingCheckNote": "공식몰 판매는 확인됐지만 상세 영양표 기준은 추가 이미지 확인이 필요합니다. 구매 전 제품 라벨의 기준 중량과 영양정보를 다시 확인해주세요."
+    "servingCheckNote": "공식몰 판매는 확인됐지만 상세 영양표 기준은 추가 이미지 확인이 필요합니다. 구매 전 제품 라벨의 기준 중량과 영양정보를 다시 확인해주세요.",
+    "calories": 70
   },
   {
     "slug": "sangha-organic-greek-unsweetened-400",
@@ -1411,7 +1412,8 @@
     "servingCheckNote": "공식 판매는 확인됐지만 상세 영양표 기준은 추가 이미지 확인이 필요합니다. 구매 전 제품 라벨의 기준 중량과 영양정보를 다시 확인해주세요.",
     "nutritionPerBottle": {
       "proteinG": 5
-    }
+    },
+    "calories": 80
   },
   {
     "slug": "maeil-bio-greek-togo-plain-120",
