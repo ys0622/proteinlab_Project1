@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -310,7 +310,7 @@ function ProductListWithFiltersInner(props: ProductListWithFiltersInnerProps) {
       type="button"
       onClick={() => setMobileSearchOpen(true)}
       className="inline-flex h-9 w-9 items-center justify-center rounded-full text-[#374151] transition-colors hover:bg-white/70 md:hidden"
-      aria-label="검???�기"
+      aria-label="寃???닿린"
     >
       <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path
@@ -391,7 +391,7 @@ function ProductListWithFiltersInner(props: ProductListWithFiltersInnerProps) {
                 type="button"
                 onClick={() => setMobileSearchOpen(false)}
                 className="inline-flex h-9 w-9 items-center justify-center rounded-full text-[#374151] transition-colors hover:bg-[#f3f4f6]"
-                aria-label="검???�기"
+                aria-label="寃???リ린"
               >
                 <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path
@@ -404,7 +404,7 @@ function ProductListWithFiltersInner(props: ProductListWithFiltersInnerProps) {
               </button>
             </div>
             <p className="mt-2 px-1 text-xs text-[var(--foreground-muted)]">
-              ?�품�? 브랜?? �? ?�형?�로 검?�할 ???�습?�다.
+              ?쒗뭹紐? 釉뚮옖?? 留? ?좏삎?쇰줈 寃?됲븷 ???덉뒿?덈떎.
             </p>
           </div>
         </div>
@@ -421,7 +421,7 @@ function ProductListWithFiltersInner(props: ProductListWithFiltersInnerProps) {
             }`}
             style={{ fontWeight: 400, whiteSpace: "nowrap" }}
           >
-            ?�백�??�료
+            ?⑤갚吏??뚮즺
           </Link>
           <Link
             href="/bars"
@@ -432,7 +432,7 @@ function ProductListWithFiltersInner(props: ProductListWithFiltersInnerProps) {
             }`}
             style={{ fontWeight: 400, whiteSpace: "nowrap" }}
           >
-            ?�백�?�?
+            ?⑤갚吏?諛?
           </Link>
           <Link
             href="/yogurt"
@@ -443,7 +443,7 @@ function ProductListWithFiltersInner(props: ProductListWithFiltersInnerProps) {
             }`}
             style={{ fontWeight: 400, whiteSpace: "nowrap" }}
           >
-            ?�백�??�거??
+            ?⑤갚吏??붽굅??
           </Link>
         </div>
       </div>
@@ -456,7 +456,7 @@ function ProductListWithFiltersInner(props: ProductListWithFiltersInnerProps) {
         />
       </div>
 
-      <section className="product-grid mt-3 bg-white" style={{ marginTop: isDesktop ? "12px" : "8px" }} aria-label="?�품 목록">
+      <section className="product-grid mt-3 bg-white" style={{ marginTop: isDesktop ? "12px" : "8px" }} aria-label="?쒗뭹 紐⑸줉">
         {visible.map((product, idx) => (
           <ProductCard
             key={product.slug ?? `${product.brand}-${product.name}`}
@@ -475,7 +475,7 @@ function ProductListWithFiltersInner(props: ProductListWithFiltersInnerProps) {
             onClick={() => setPage((current) => current + 1)}
             className="rounded-full border border-[var(--border)] bg-white px-6 py-2.5 text-sm font-medium text-[var(--foreground)] transition-colors hover:border-[var(--accent)] hover:bg-[var(--accent-light)] hover:text-[var(--accent)]"
           >
-            ?�보�?({sorted.length - visible.length}�??�음)
+            ?붾낫湲?({sorted.length - visible.length}媛??⑥쓬)
           </button>
         </div>
       ) : null}
@@ -501,4 +501,5 @@ export default function ProductListWithFilters(props: ProductListWithFiltersProp
     />
   );
 }
+
 
