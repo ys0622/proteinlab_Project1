@@ -53,7 +53,11 @@ const BRAND_OFFICIAL_MALL: Record<string, string> = {
 };
 
 const COUPANG_PARTNERS_TAG =
-  process.env.NEXT_PUBLIC_COUPANG_PARTNERS_TAG || process.env.COUPANG_PARTNERS_TAG || "";
+  process.env.NEXT_PUBLIC_COUPANG_LPTAG ||
+  process.env.COUPANG_LPTAG ||
+  process.env.NEXT_PUBLIC_COUPANG_PARTNERS_TAG ||
+  process.env.COUPANG_PARTNERS_TAG ||
+  "";
 const COUPANG_PARTNERS_SUB_ID =
   process.env.NEXT_PUBLIC_COUPANG_PARTNERS_SUB_ID || process.env.COUPANG_PARTNERS_SUB_ID || "proteinlab";
 
