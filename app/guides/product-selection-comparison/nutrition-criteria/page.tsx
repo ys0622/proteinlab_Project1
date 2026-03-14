@@ -43,12 +43,17 @@ export default function NutritionCriteriaPage() {
           <h1 className="mt-3 text-2xl font-bold leading-tight text-[var(--foreground)] md:text-3xl">
             성분표를 볼 때 최소 기준을 먼저 잡아두면 비교가 쉬워집니다
           </h1>
+          <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
+            기준이 없으면 숫자가 많아질수록 비교가 더 어려워집니다.
+            <br />
+            단백질, 당류, 칼로리 — 항목별 최소 기준을 먼저 잡아두면 필요한 제품만 빠르게 걸러낼 수 있습니다.
+          </p>
         </div>
       </section>
 
-      <main className="guide-article-page guide-article-page--track-b mx-auto max-w-[1200px] px-4 py-8 md:px-6">
+      <main className="mx-auto max-w-[1200px] px-4 py-8 md:px-6">
         <div className="space-y-6">
-          <section className="rounded-2xl border border-[#e8e6e3] bg-white px-5 py-5">
+          <section className="rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
             <h2 className="text-xl font-bold text-[var(--foreground)]">기본 기준표</h2>
             <div className="mt-5 overflow-x-auto">
               <table className="min-w-full border-collapse text-left text-sm">
@@ -74,13 +79,30 @@ export default function NutritionCriteriaPage() {
             </div>
           </section>
 
-          <section className="rounded-2xl border border-[#e8e6e3] bg-[#fffdf8] px-5 py-5">
+          <section className="rounded-[28px] border border-[#e2ebe4] bg-[#f7fbf8] px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
             <h2 className="text-xl font-bold text-[var(--foreground)]">기준을 볼 때 같이 기억할 점</h2>
             <ul className="mt-4 space-y-3 text-sm leading-6 text-[var(--foreground-muted)]">
               {notes.map((item) => (
                 <li key={item}>• {item}</li>
               ))}
             </ul>
+          </section>
+
+          <section className="rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
+            <div className="flex flex-wrap gap-3">
+              <Link
+                href="/guides/product-selection-comparison/nutrition-comparison"
+                className="inline-flex items-center justify-center rounded-lg border border-[#d9e7dc] px-5 py-3 text-sm font-semibold text-[#24543d] transition-colors hover:bg-[#eef7f1]"
+              >
+                영양성분 비교 읽는 법 →
+              </Link>
+              <Link
+                href="/recommend"
+                className="inline-flex items-center justify-center rounded-lg border border-[#2d6a4f] bg-[#2d6a4f] px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#24543d]"
+              >
+                내 목적에 맞는 제품 찾기 →
+              </Link>
+            </div>
           </section>
         </div>
       </main>

@@ -52,16 +52,21 @@ export default function RecommendationListsPage() {
           <h1 className="mt-3 text-2xl font-bold leading-tight text-[var(--foreground)] md:text-3xl">
             추천과 큐레이션은 역할이 다릅니다
           </h1>
+          <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
+            추천, 큐레이션, Picks, 비교 페이지 — 비슷해 보이지만 각각 쓰임이 달라요.
+            <br />
+            어떤 상황에서 무엇을 쓰면 되는지 알아두면 제품 탐색이 훨씬 빨라집니다.
+          </p>
         </div>
       </section>
 
-      <main className="guide-article-page guide-article-page--track-b mx-auto max-w-[1200px] px-4 py-8 md:px-6">
+      <main className="mx-auto max-w-[1200px] px-4 py-8 md:px-6">
         <div className="space-y-6">
-          <section className="rounded-2xl border border-[#e8e6e3] bg-white px-5 py-5">
+          <section className="rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
             <h2 className="text-xl font-bold text-[var(--foreground)]">상황별로 바로 찾는 법</h2>
             <ul className="mt-4 space-y-3 text-sm leading-6 text-[var(--foreground-muted)]">
               {items.map((item) => (
-                <li key={item[0]} className="rounded-xl border border-[#eef1f3] bg-[#fbfcfd] px-4 py-4">
+                <li key={item[0]} className="rounded-xl border border-[#dce8df] bg-[#f6fbf7] px-4 py-4">
                   <span className="font-semibold text-[var(--foreground)]">{item[0]}</span>
                   <span className="ml-2">{item[1]}</span>
                 </li>
@@ -69,15 +74,32 @@ export default function RecommendationListsPage() {
             </ul>
           </section>
 
-          <section className="rounded-2xl border border-[#e8e6e3] bg-[#fffdf8] px-5 py-5">
+          <section className="rounded-[28px] border border-[#e2ebe4] bg-[#f7fbf8] px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
             <h2 className="text-xl font-bold text-[var(--foreground)]">제품 탐색 흐름 예시</h2>
             <div className="mt-5 grid gap-3 md:grid-cols-3">
               {flow.map((item) => (
-                <article key={item.title} className="rounded-xl border border-[#e8eef3] bg-white p-4">
-                  <h3 className="text-sm font-semibold text-[#3f556d]">{item.title}</h3>
+                <article key={item.title} className="rounded-2xl border border-[#dce8df] bg-[#f6fbf7] p-4">
+                  <h3 className="text-sm font-semibold text-[#24543d]">{item.title}</h3>
                   <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">{item.body}</p>
                 </article>
               ))}
+            </div>
+          </section>
+
+          <section className="rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
+            <div className="flex flex-wrap gap-3">
+              <Link
+                href="/recommend"
+                className="inline-flex items-center justify-center rounded-lg border border-[#2d6a4f] bg-[#2d6a4f] px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#24543d]"
+              >
+                제품 추천 받기 →
+              </Link>
+              <Link
+                href="/guides/product-selection-comparison/ranking-content"
+                className="inline-flex items-center justify-center rounded-lg border border-[#d9e7dc] px-5 py-3 text-sm font-semibold text-[#24543d] transition-colors hover:bg-[#eef7f1]"
+              >
+                등급·랭킹 읽는 법 →
+              </Link>
             </div>
           </section>
         </div>

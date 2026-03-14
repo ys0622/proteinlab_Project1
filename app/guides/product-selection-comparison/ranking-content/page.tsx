@@ -59,21 +59,21 @@ export default function RankingContentPage() {
         </div>
       </section>
 
-      <main className="guide-article-page guide-article-page--track-b mx-auto max-w-[1200px] px-4 py-8 md:px-6">
+      <main className="mx-auto max-w-[1200px] px-4 py-8 md:px-6">
         <div className="space-y-6">
-          <section className="rounded-2xl border border-[#e8e6e3] bg-white px-5 py-5">
+          <section className="rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
             <h2 className="text-xl font-bold text-[var(--foreground)]">등급 · 랭킹 · 점수의 차이</h2>
             <div className="mt-5 grid gap-3 md:grid-cols-3">
               {points.map((point) => (
-                <article key={point.title} className="rounded-xl border border-[#e8eef3] bg-[#f9fbfd] p-4">
-                  <h3 className="text-sm font-semibold text-[#3f556d]">{point.title}</h3>
+                <article key={point.title} className="rounded-2xl border border-[#dce8df] bg-[#f6fbf7] p-4">
+                  <h3 className="text-sm font-semibold text-[#24543d]">{point.title}</h3>
                   <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">{point.body}</p>
                 </article>
               ))}
             </div>
           </section>
 
-          <section className="rounded-2xl border border-[#e8e6e3] bg-[#fffdf8] px-5 py-5">
+          <section className="rounded-[28px] border border-[#e2ebe4] bg-[#f7fbf8] px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
             <h2 className="text-xl font-bold text-[var(--foreground)]">지표별로 읽는 포인트</h2>
             <div className="mt-5 overflow-x-auto">
               <table className="min-w-full border-collapse text-left text-sm">
@@ -97,17 +97,17 @@ export default function RankingContentPage() {
                 </tbody>
               </table>
             </div>
-            <blockquote className="mt-5 rounded-xl border border-[#eef1f3] bg-[#fbfcfd] px-4 py-4 text-sm leading-6 text-[var(--foreground-muted)]">
+            <blockquote className="mt-5 rounded-xl border border-[#dce8df] bg-[#f7fbf8] px-4 py-4 text-sm leading-6 text-[var(--foreground-muted)]">
               랭킹은 항상 제품군과 비교 기준을 함께 보는 것이 중요합니다. 음료 랭킹과 바 랭킹을 같은 의미로 읽으면 오해하기 쉽습니다.
             </blockquote>
           </section>
 
-          <section className="rounded-2xl border border-[#e8e6e3] bg-white px-5 py-5">
+          <section className="rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
             <div className="flex flex-wrap gap-3">
-              <Link href="/ranking" className="inline-flex items-center justify-center rounded-lg border border-[#4a6178] bg-[#4a6178] px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#3c5065]">
+              <Link href="/ranking" className="inline-flex items-center justify-center rounded-lg border border-[#2d6a4f] bg-[#2d6a4f] px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#24543d]">
                 랭킹 보기 →
               </Link>
-              <Link href="/grade-criteria" className="inline-flex items-center justify-center rounded-lg border border-[#d8e2eb] px-5 py-3 text-sm font-semibold text-[#3f556d] transition-colors hover:bg-[#eef4f9]">
+              <Link href="/grade-criteria" className="inline-flex items-center justify-center rounded-lg border border-[#d9e7dc] px-5 py-3 text-sm font-semibold text-[#24543d] transition-colors hover:bg-[#eef7f1]">
                 등급 기준 보기 →
               </Link>
             </div>
