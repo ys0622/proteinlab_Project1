@@ -405,12 +405,12 @@ function ProductResultCard({ product }: { product: RecommendedProduct }) {
           </span>
           {isFirst ? (
             <span className="rounded-full px-2.5 py-1 text-xs font-bold" style={{ background: "#FFF1E6", color: "#F08A24" }}>
-              理쒓퀬 異붿쿇
+              최고 추천
             </span>
           ) : null}
         </div>
         <span className="rounded-full px-2.5 py-1 text-xs font-semibold" style={{ background: "#EAF2FF", color: "#4C7BD9" }}>
-          異붿쿇 ?먯닔 {product.score}
+          추천 점수 {product.score}
         </span>
       </div>
       {isFirst && (
