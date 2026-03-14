@@ -10,7 +10,8 @@ import type {
 } from "react";
 import MetricBadgeGroup from "@/app/components/MetricBadgeGroup";
 import ProductBadge from "@/app/components/ProductBadge";
-import ProductCard from "@/app/components/ProductCard";
+import ProductCard, { type ProductCardProps } from "@/app/components/ProductCard";
+import ScoredProductCard from "@/app/components/ScoredProductCard";
 import {
   getMetricBadgeAriaLabel,
   getMetricBadgeTooltip,
@@ -96,6 +97,30 @@ const gradeLabels: Record<string, string> = {
 };
 
 // 옵션 버튼 (세로형)
+function toRecommendationCardProduct(product: RecommendedProduct): ProductCardProps {
+  const recommendationGradeLabels: Record<string, string> = {
+    price: "단백질 밀도",
+    diet: "다이어트",
+    performance: "퍼포먼스",
+  };
+  const gradeTags = Object.entries(product.gradeValue).map(
+    ([key, grade]) => `${recommendationGradeLabels[key] ?? key} ${grade}`,
+  );
+
+  return {
+    brand: product.brand,
+    name: [product.name, product.flavor].filter(Boolean).join(" "),
+    capacity: product.volume,
+    tags: [],
+    proteinPerServing: product.protein,
+    calories: product.calories,
+    sugar: product.sugar,
+    density: product.density,
+    gradeTags,
+    slug: product.id,
+  };
+}
+
 function OptionButton({ icon, label, desc, selected, onClick }: {
   icon: string; label: string; desc: string; selected: boolean; onClick: () => void;
 }) {
@@ -727,6 +752,7 @@ function ProductResultCardMobileV2({ product }: { product: RecommendedProduct })
   );
 }
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 function ProductResultCardUnified({
   product,
   compact = false,
@@ -881,10 +907,33 @@ function ResultScreen({ result, onReset, category }: { result: RecommendResult; 
       <div>
         <p className="text-base font-extrabold mb-3" style={{ color: "#1a1a1a" }}>🏆 맞춤 추천 제품</p>
         <div className="grid grid-cols-2 gap-3 md:hidden">
-          {result.products.map((p) => <ProductResultCardUnified key={p.rank} product={p} compact />)}
+          {result.products.map((product) => (
+            <ScoredProductCard
+              key={product.rank}
+              product={toRecommendationCardProduct(product)}
+              rank={product.rank}
+              score={product.score}
+              scoreCaption="추천 점수"
+              metricLabel="맞춤 추천"
+              highlightLabel={product.rank === 1 ? "최고 추천" : `${product.rank}위`}
+              reason={product.reason}
+              compact
+            />
+          ))}
         </div>
         <div className="hidden gap-3 md:grid md:grid-cols-2 lg:grid-cols-3">
-          {result.products.map((p) => <ProductResultCardUnified key={p.rank} product={p} />)}
+          {result.products.map((product) => (
+            <ScoredProductCard
+              key={product.rank}
+              product={toRecommendationCardProduct(product)}
+              rank={product.rank}
+              score={product.score}
+              scoreCaption="추천 점수"
+              metricLabel="맞춤 추천"
+              highlightLabel={product.rank === 1 ? "최고 추천" : `${product.rank}위`}
+              reason={product.reason}
+            />
+          ))}
         </div>
       </div>
 

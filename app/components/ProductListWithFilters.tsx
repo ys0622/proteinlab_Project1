@@ -13,6 +13,8 @@ import {
   filterDrinkProducts,
   filterYogurtProducts,
   getCapacityMl,
+  getYogurtFlavorCategory,
+  getYogurtTypeCategory,
   type BarFilters,
   type DrinkFilters,
   type YogurtFilters,
@@ -298,11 +300,29 @@ function ProductListWithFiltersInner(props: ProductListWithFiltersInnerProps) {
   };
 
   const brandOptions = useMemo(
-      () =>
-        [...new Set(products.map((product) => product.brand).filter(Boolean))].sort((a, b) =>
-          a.localeCompare(b, "ko"),
-        ),
-      [products],
+    () =>
+      [...new Set(products.map((product) => product.brand).filter(Boolean))].sort((a, b) =>
+        a.localeCompare(b, "ko"),
+      ),
+    [products],
+  );
+  const yogurtTypeOptions = useMemo(
+    () =>
+      productType === "yogurt"
+        ? [...new Set(products.map((product) => getYogurtTypeCategory(product)).filter(Boolean))].sort((a, b) =>
+            a.localeCompare(b, "ko"),
+          )
+        : [],
+    [productType, products],
+  );
+  const yogurtFlavorOptions = useMemo(
+    () =>
+      productType === "yogurt"
+        ? [...new Set(products.map((product) => getYogurtFlavorCategory(product)).filter(Boolean))].sort((a, b) =>
+            a.localeCompare(b, "ko"),
+          )
+        : [],
+    [productType, products],
   );
 
   const mobileSearchButton = (
@@ -365,6 +385,8 @@ function ProductListWithFiltersInner(props: ProductListWithFiltersInnerProps) {
                 onResetFilters={handleResetFilters}
                 mobileToolbarSlot={mobileSearchButton}
                 yogurtBrandOptions={brandOptions}
+                yogurtTypeOptions={yogurtTypeOptions}
+                yogurtFlavorOptions={yogurtFlavorOptions}
                 desktopFooterSlot={<QuickCuration productType={productType} variant="inline" />}
               />
             )}

@@ -6,17 +6,16 @@ import type { BarFilters, DrinkFilters, YogurtFilters } from "../lib/productFilt
 const drinkProteinOptions = ["초고단백(30g 이상)", "고단백(20g 이상)", "일반단백(20g 미만)"];
 const drinkSourceOptions = ["식물성", "유청", "혼합"];
 const drinkTasteOptions = ["고소/견과", "과일맛", "바나나/바닐라", "초콜릿/케이크", "커피", "기타"];
-const drinkVolumeOptions = ["200ml 이하", "200~300ml", "300~400ml", "400ml 이상"];
+const drinkVolumeOptions = ["200mL 이하", "200~300mL", "300~400mL", "400mL 이상"];
 
-const barProteinOptions = ["고단백(20g 이상)", "고단백(15g 이상)", "일반단백(15g 미만)"];
-const barSugarOptions = ["당류 0g", "저당 5g 미만", "보통 5~10g", "고당 10g 이상"];
+const barProteinOptions = ["고단백(20g 이상)", "중간단백(15~20g)", "일반단백(15g 미만)"];
+const barSugarOptions = ["당류 0g", "저당(5g 미만)", "보통당(5~10g)", "고당(10g 이상)"];
 const barWeightOptions = ["50g 이하", "50~60g", "60g 이상"];
 
-const yogurtProteinOptions = ["15g 이상", "10~15g", "10g 미만"];
-const yogurtSugarOptions = ["당류 0g", "5g 미만", "5~10g", "10g 이상"];
+const yogurtProteinOptions = ["고단백(15g 이상)", "중간단백(10~15g)", "일반단백(10g 미만)"];
+const yogurtSugarOptions = ["당류 0g", "저당(5g 미만)", "보통당(5~10g)", "고당(10g 이상)"];
 const yogurtTypeOptions = ["Greek yogurt", "Drinking yogurt", "Protein yogurt"];
 const yogurtFlavorOptions = ["플레인", "초코", "바나나", "베리", "기타"];
-const yogurtLactoseOptions = ["락토프리", "일반"];
 
 const labelMinWidth = "5rem";
 const chipBase =
@@ -94,6 +93,8 @@ type FilterSectionProps =
       filters: YogurtFilters;
       onFilterToggle: (key: keyof YogurtFilters, value: string) => void;
       yogurtBrandOptions?: string[];
+      yogurtTypeOptions?: string[];
+      yogurtFlavorOptions?: string[];
     } & SharedProps);
 
 export default function FilterSection(props: FilterSectionProps) {
@@ -125,6 +126,19 @@ export default function FilterSection(props: FilterSectionProps) {
     ),
     [props],
   );
+  const sortedYogurtTypeOptions = useMemo(
+    () => [...(props.productType === "yogurt" ? props.yogurtTypeOptions ?? yogurtTypeOptions : [])].sort((a, b) =>
+      a.localeCompare(b, "ko"),
+    ),
+    [props],
+  );
+  const sortedYogurtFlavorOptions = useMemo(
+    () =>
+      [...(props.productType === "yogurt" ? props.yogurtFlavorOptions ?? yogurtFlavorOptions : [])].sort((a, b) =>
+        a.localeCompare(b, "ko"),
+      ),
+    [props],
+  );
 
   const filterRows =
     productType === "drink" ? (
@@ -149,7 +163,7 @@ export default function FilterSection(props: FilterSectionProps) {
             />
           ))}
         </FilterRow>
-        <FilterRow title="단백질 원천">
+        <FilterRow title="단백질 원료">
           {drinkSourceOptions.map((source) => (
             <FilterChip
               key={source}
@@ -256,7 +270,7 @@ export default function FilterSection(props: FilterSectionProps) {
           ))}
         </FilterRow>
         <FilterRow title="제품 유형">
-          {yogurtTypeOptions.map((type) => (
+          {sortedYogurtTypeOptions.map((type) => (
             <FilterChip
               key={type}
               label={type}
@@ -266,22 +280,12 @@ export default function FilterSection(props: FilterSectionProps) {
           ))}
         </FilterRow>
         <FilterRow title="맛">
-          {yogurtFlavorOptions.map((flavor) => (
+          {sortedYogurtFlavorOptions.map((flavor) => (
             <FilterChip
               key={flavor}
               label={flavor}
               selected={filters.flavor.includes(flavor)}
               onClick={() => onFilterToggle("flavor", flavor)}
-            />
-          ))}
-        </FilterRow>
-        <FilterRow title="락토프리">
-          {yogurtLactoseOptions.map((value) => (
-            <FilterChip
-              key={value}
-              label={value}
-              selected={filters.lactoseFree.includes(value)}
-              onClick={() => onFilterToggle("lactoseFree", value)}
             />
           ))}
         </FilterRow>
