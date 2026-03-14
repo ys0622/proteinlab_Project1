@@ -51,8 +51,8 @@ const checklist = [
 
 function InsightCard({ title, body }: { title: string; body: string }) {
   return (
-    <article className="rounded-2xl border border-[#eaded7] bg-white p-4 shadow-[0_12px_30px_rgba(111,61,38,0.06)]">
-      <p className="text-sm font-semibold text-[#6b3f28]">{title}</p>
+    <article className="rounded-2xl border border-[#dce8df] bg-[#f6fbf7] p-4 shadow-[0_12px_30px_rgba(45,106,79,0.06)]">
+      <p className="text-sm font-semibold text-[#24543d]">{title}</p>
       <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">{body}</p>
     </article>
   );
@@ -94,15 +94,15 @@ export default function StrengthTrainingProteinPage() {
         </div>
       </section>
 
-      <main className="guide-article-page guide-article-page--track-d mx-auto max-w-[1200px] px-4 py-8 md:px-6">
+      <main className="mx-auto max-w-[1200px] px-4 py-8 md:px-6">
         <div className="space-y-6">
-          <section className="rounded-[28px] border border-[#e8e6e3] bg-[#fffdf8] px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
+          <section className="rounded-[28px] border border-[#e2ebe4] bg-[#f7fbf8] px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
             <div className="flex flex-wrap items-center justify-between gap-3">
               <div>
-                <p className="text-xs font-semibold tracking-[0.12em] text-[#8a4b2f]">KEY NUMBERS</p>
+                <p className="text-xs font-semibold tracking-[0.12em] text-[#2d6a4f]">KEY NUMBERS</p>
                 <h2 className="mt-2 text-xl font-bold text-[var(--foreground)]">근력운동 병행 시 먼저 보는 기준</h2>
               </div>
-              <span className="rounded-full bg-[#fcf1ea] px-3 py-1 text-xs font-semibold text-[#8a4b2f]">
+              <span className="rounded-full bg-[#eff7f1] px-3 py-1 text-xs font-semibold text-[#2d6a4f]">
                 회복과 유지
               </span>
             </div>
@@ -131,7 +131,7 @@ export default function StrengthTrainingProteinPage() {
             </div>
           </section>
 
-          <section className="rounded-[28px] border border-[#e8e6e3] bg-[#fffdf8] px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
+          <section className="rounded-[28px] border border-[#e2ebe4] bg-[#f7fbf8] px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
             <h2 className="text-xl font-bold text-[var(--foreground)]">러닝과 함께할 때 왜 더 중요할까?</h2>
             <div className="mt-5 grid gap-3 md:grid-cols-3">
               {liftCards.map((card) => (
@@ -140,7 +140,7 @@ export default function StrengthTrainingProteinPage() {
             </div>
           </section>
 
-          <section className="rounded-[28px] border border-[#e8e6e3] bg-[#fffdf8] px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
+          <section className="rounded-[28px] border border-[#e2ebe4] bg-[#f7fbf8] px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
             <h2 className="text-xl font-bold text-[var(--foreground)]">하루 식사 예시</h2>
             <p className="mt-3 text-sm leading-6 text-[var(--foreground-muted)]">
               근력운동을 병행한다면 운동 직후만 챙기는 방식보다, 아침과 저녁까지 포함해 총량을 안정적으로 채우는 편이 좋습니다.
@@ -170,7 +170,7 @@ export default function StrengthTrainingProteinPage() {
             </div>
           </section>
 
-          <section className="rounded-[28px] border border-[#e8e6e3] bg-[#fffdf8] px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
+          <section className="rounded-[28px] border border-[#e2ebe4] bg-[#f7fbf8] px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
             <h2 className="text-xl font-bold text-[var(--foreground)]">주간 스케줄별 적용법</h2>
             <p className="mt-3 text-sm leading-6 text-[var(--foreground-muted)]">
               러닝과 근력운동을 같이 하는 사용자는 운동 종류보다 주간 스케줄 전체를 기준으로 섭취 전략을 보는 편이 더 실전적입니다.
@@ -200,15 +200,15 @@ export default function StrengthTrainingProteinPage() {
             </div>
           </section>
 
-          <section className="rounded-[28px] border border-[#e8e6e3] bg-[#fffdf8] px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
+          <section className="rounded-[28px] border border-[#e2ebe4] bg-[#f7fbf8] px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
             <h2 className="text-xl font-bold text-[var(--foreground)]">근력운동 병행 체크리스트</h2>
             <div className="mt-5 grid gap-3 md:grid-cols-2">
               {checklist.map((item) => (
                 <label
                   key={item}
-                  className="flex items-start gap-3 rounded-2xl border border-[#eaded7] bg-white px-4 py-4 text-sm leading-6 text-[var(--foreground-muted)] shadow-[0_10px_26px_rgba(111,61,38,0.05)]"
+                  className="flex items-start gap-3 rounded-2xl border border-[#dce8df] bg-white px-4 py-4 text-sm leading-6 text-[var(--foreground-muted)] shadow-[0_10px_26px_rgba(45,106,79,0.05)]"
                 >
-                  <span className="mt-1 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-md border border-[#d9c8bf] bg-[#fcf1ea] text-[11px] font-bold text-[#8a4b2f]">
+                  <span className="mt-1 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-md border border-[#c8dfd0] bg-[#eef7f1] text-[11px] font-bold text-[#2d6a4f]">
                     ✓
                   </span>
                   <span>{item}</span>
@@ -221,13 +221,13 @@ export default function StrengthTrainingProteinPage() {
             <div className="flex flex-wrap gap-3">
               <Link
                 href="/guides/fitness-lifestyle/running-protein-guide"
-                className="inline-flex items-center justify-center rounded-xl border border-[#eaded7] bg-white px-5 py-3 text-sm font-semibold text-[#6b3f28] transition-colors hover:bg-[#fcf1ea]"
+                className="inline-flex items-center justify-center rounded-xl border border-[#d9e7dc] bg-white px-5 py-3 text-sm font-semibold text-[#24543d] transition-colors hover:bg-[#eef7f1]"
               >
                 러닝 단백질 가이드 보기
               </Link>
               <Link
                 href="/guides/fitness-lifestyle/sports-nutrition-guide"
-                className="inline-flex items-center justify-center rounded-xl border border-[#8a4b2f] bg-[#8a4b2f] px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#6f3d26]"
+                className="inline-flex items-center justify-center rounded-xl border border-[#2d6a4f] bg-[#2d6a4f] px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#24543d]"
               >
                 제품 비교 보기
               </Link>

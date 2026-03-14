@@ -105,7 +105,7 @@ export default function RunningProteinGuidePage() {
         </div>
       </section>
 
-      <main className="guide-article-page guide-article-page--track-d mx-auto max-w-[1200px] px-4 py-8 md:px-6">
+      <main className="mx-auto max-w-[1200px] px-4 py-8 md:px-6">
         <div className="space-y-6">
           <section className="rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
             <div className="flex flex-wrap items-center justify-between gap-3">
@@ -201,13 +201,13 @@ export default function RunningProteinGuidePage() {
             <div className="flex flex-wrap gap-3">
               <Link
                 href="/guides/fitness-lifestyle/marathon-protein-guide"
-                className="inline-flex items-center justify-center rounded-xl border border-[#eaded7] bg-white px-5 py-3 text-sm font-semibold text-[#6b3f28] transition-colors hover:bg-[#fcf1ea]"
+                className="inline-flex items-center justify-center rounded-xl border border-[#d9e7dc] bg-white px-5 py-3 text-sm font-semibold text-[#24543d] transition-colors hover:bg-[#eef7f1]"
               >
                 레이스 주간 전략 이어서 보기
               </Link>
               <Link
                 href="/curation/running"
-                className="inline-flex items-center justify-center rounded-xl border border-[#8a4b2f] bg-[#8a4b2f] px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#6f3d26]"
+                className="inline-flex items-center justify-center rounded-xl border border-[#2d6a4f] bg-[#2d6a4f] px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#24543d]"
               >
                 러닝 큐레이션 보기
               </Link>
