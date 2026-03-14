@@ -46,6 +46,7 @@ export interface ProductCardProps {
   purchaseLinkCategory?: CoupangLinkCategory;
   maxVisibleBadges?: number;
   fixedTitleLines?: 1 | 2;
+  hideSupplementalBadges?: boolean;
 }
 
 export default function ProductCard({
@@ -68,6 +69,7 @@ export default function ProductCard({
   purchaseLinkCategory,
   maxVisibleBadges,
   fixedTitleLines,
+  hideSupplementalBadges,
 }: ProductCardProps) {
   const router = useRouter();
   const detailHref = slug ? `/product/${slug}` : productUrl;
@@ -222,7 +224,7 @@ export default function ProductCard({
               />
             );
           })}
-          {variant && variant !== "일반" && productType !== "yogurt" ? (
+          {variant && variant !== "일반" && productType !== "yogurt" && !hideSupplementalBadges ? (
             <ProductBadge
               label={variant}
               tone="neutral"
@@ -231,7 +233,7 @@ export default function ProductCard({
               tooltipAriaLabel={getMetricBadgeAriaLabel(variant)}
             />
           ) : null}
-          {yogurtType && productType !== "yogurt" ? (
+          {yogurtType && productType !== "yogurt" && !hideSupplementalBadges ? (
             <ProductBadge label={yogurtType} tone="neutral" className="product-card__badge" />
           ) : null}
         </MetricBadgeGroup>

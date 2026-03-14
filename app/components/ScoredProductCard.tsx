@@ -98,6 +98,7 @@ export default function ScoredProductCard({
           purchaseLinkCategory={purchaseLinkCategory}
           fixedTitleLines={2}
           maxVisibleBadges={compact ? 2 : 3}
+          hideSupplementalBadges
         />
       </div>
 
