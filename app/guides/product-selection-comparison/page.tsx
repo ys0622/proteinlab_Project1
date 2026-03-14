@@ -149,7 +149,7 @@ export default function ProductSelectionComparisonPage() {
           </div>
 
           <div className="mt-4">
-            <h1 className="text-[26px] font-bold leading-tight text-[#3f556d] md:text-[30px]">제품 선택 & 비교</h1>
+            <h1 className="text-[26px] font-bold leading-tight text-[var(--foreground)] md:text-[30px]">제품 선택 & 비교</h1>
             <p className="mt-2 max-w-2xl text-sm leading-6 text-[var(--foreground-muted)]">
               단백질 음료, 단백질 바, 단백질 요거트를 고를 때는 숫자를 읽는 순서가 중요합니다.
               <br />
@@ -160,7 +160,7 @@ export default function ProductSelectionComparisonPage() {
       </section>
 
       <main className="mx-auto max-w-[1200px] px-4 pb-12 md:px-6">
-        <section className="mt-5 rounded-2xl border border-[#d8e2eb] bg-[#f7fafc] px-5 py-5">
+        <section className="mt-5 rounded-[28px] border border-[#e2ebe4] bg-[#f7fbf8] px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
           <div className="flex flex-wrap items-center justify-between gap-3">
             <div>
               <h2 className="text-lg font-bold text-[var(--foreground)]">먼저 읽으면 좋은 흐름</h2>
@@ -168,15 +168,15 @@ export default function ProductSelectionComparisonPage() {
                 처음 보는 사용자라면 제품 유형 구분부터 시작하고, 그다음 성분 기준과 랭킹 해석으로 넘어가면 비교가 쉬워집니다.
               </p>
             </div>
-            <div className="hidden rounded-full border border-[#d8e2eb] bg-white px-3 py-1.5 text-xs font-medium text-[#4a6178] md:block">
+            <div className="hidden rounded-full border border-[#d9e7dc] bg-white px-3 py-1.5 text-xs font-medium text-[#24543d] md:block">
               시작 추천: 단백질 요거트 추천 기준
             </div>
           </div>
 
           <div className="mt-4 grid gap-3 md:grid-cols-3">
             {startCards.map((item) => (
-              <article key={item.title} className="rounded-xl border border-[#dfe7ee] bg-white p-4">
-                <h3 className="text-sm font-semibold text-[#3f556d]">{item.title}</h3>
+              <article key={item.title} className="rounded-2xl border border-[#dce8df] bg-[#f6fbf7] p-4">
+                <h3 className="text-sm font-semibold text-[#24543d]">{item.title}</h3>
                 <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">{item.body}</p>
               </article>
             ))}
@@ -191,7 +191,7 @@ export default function ProductSelectionComparisonPage() {
                 제품을 보는 기본 기준부터 추천과 랭킹 해석, 단백질 요거트 선택 기준까지 검색 의도에 맞는 주제로 정리했습니다.
               </p>
             </div>
-            <div className="hidden rounded-full border border-[#d8e2eb] bg-[#f4f8fc] px-3 py-1.5 text-xs font-medium text-[#4a6178] md:block">
+            <div className="hidden rounded-full border border-[#d9e7dc] bg-[#eff7f1] px-3 py-1.5 text-xs font-medium text-[#24543d] md:block">
               최신: 단백질 요거트 가이드 묶음
             </div>
           </div>
@@ -201,41 +201,22 @@ export default function ProductSelectionComparisonPage() {
               <Link
                 key={topic.href}
                 href={topic.href}
-                className="group flex h-full min-h-[228px] flex-col justify-between rounded-2xl border border-[#e8e6e3] bg-[#fffdf8] px-4 py-4 transition-colors hover:border-[#c8d5e2] sm:min-h-[248px] sm:px-5 sm:py-5"
+                className="group flex h-full flex-col justify-between rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)] transition-colors hover:border-[#c8dfd0]"
               >
                 <div>
                   <div className="flex items-center justify-between gap-3">
-                    <span className="rounded-full bg-[#eef4f9] px-3 py-1 text-[11px] font-semibold text-[#4a6178]">
+                    <span className="rounded-full bg-[#eff7f1] px-3 py-1 text-[11px] font-semibold text-[#2d6a4f]">
                       {topic.badge}
                     </span>
-                    <span className="text-[10px] font-semibold uppercase tracking-wide text-[#8d98a1]">Track B</span>
+                    <span className="text-[10px] font-semibold uppercase tracking-wide text-[#9a8e83]">TRACK B</span>
                   </div>
-
-                  <h3 className="mt-3 text-base font-bold text-[#3f556d] transition-colors group-hover:text-[var(--accent)]">
+                  <h3 className="mt-3 text-base font-bold text-[#24543d] transition-colors group-hover:text-[var(--accent)]">
                     {topic.title}
                   </h3>
                   <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">{topic.description}</p>
-
-                  <div className="mt-4 rounded-xl border border-[#e8eef3] bg-white px-3 py-3">
-                    <p className="text-[11px] font-semibold uppercase tracking-wide text-[#8d98a1]">핵심 질문</p>
-                    <p className="mt-1 text-[13px] leading-5 text-[var(--foreground)]">{topic.question}</p>
-                  </div>
-
-                  <ul className="mt-3 space-y-1.5">
-                    {topic.related.slice(0, 3).map((item) => (
-                      <li key={item} className="flex items-start gap-2 text-[12px] leading-5 text-[var(--foreground-muted)]">
-                        <span className="mt-[5px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#7d9ab4]" />
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
                 </div>
-
-                <div className="mt-4 flex items-center justify-between gap-3">
-                  <span className="rounded-full bg-[#eef4f9] px-2.5 py-1 text-[11px] font-semibold text-[#4a6178]">
-                    보기
-                  </span>
-                  <span className="inline-flex items-center text-sm font-semibold text-[#3f556d]">주제 보기</span>
+                <div className="mt-4 flex items-center justify-end">
+                  <span className="inline-flex items-center text-sm font-semibold text-[#24543d]">주제 보기 →</span>
                 </div>
               </Link>
             ))}

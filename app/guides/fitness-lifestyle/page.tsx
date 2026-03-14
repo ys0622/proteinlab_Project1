@@ -81,7 +81,7 @@ export default function FitnessLifestyleTrackPage() {
           </div>
 
           <div className="mt-3 flex flex-wrap items-center gap-2.5">
-            <span className="rounded-md bg-[#f8ede7] px-2 py-0.5 text-[11px] font-semibold tracking-wide text-[#8a4b2f]">
+            <span className="rounded-md bg-[#eef4ea] px-2 py-0.5 text-[11px] font-semibold tracking-wide text-[#4c7a57]">
               TRACK D
             </span>
             <span className="text-xs text-[#8b8b8b]">운동 맥락에 맞는 단백질 전략을 보는 트랙</span>
@@ -89,7 +89,7 @@ export default function FitnessLifestyleTrackPage() {
           </div>
 
           <div className="mt-4">
-            <h1 className="text-[26px] font-bold leading-tight text-[#6b3f28] md:text-[30px]">운동 · 라이프스타일</h1>
+            <h1 className="text-[26px] font-bold leading-tight text-[var(--foreground)] md:text-[30px]">운동 · 라이프스타일</h1>
             <p className="mt-2 max-w-2xl text-sm leading-6 text-[var(--foreground-muted)]">
               러닝, 마라톤 영양, 근력운동, 운동 초보 루틴까지.
               <br />
@@ -108,7 +108,7 @@ export default function FitnessLifestyleTrackPage() {
                 러닝과 마라톤을 중심으로, 실전 운동 영양과 입문자 가이드까지 이어지는 흐름으로 배치했습니다.
               </p>
             </div>
-            <div className="hidden rounded-full border border-[#eaded7] bg-[#fcf1ea] px-3 py-1.5 text-xs font-medium text-[#8a4b2f] md:block">
+            <div className="hidden rounded-full border border-[#d9e7dc] bg-[#eff7f1] px-3 py-1.5 text-xs font-medium text-[#24543d] md:block">
               인기: 마라톤 영양 전략
             </div>
           </div>
@@ -118,41 +118,22 @@ export default function FitnessLifestyleTrackPage() {
               <Link
                 key={topic.href}
                 href={topic.href}
-                className="group flex h-full min-h-[228px] flex-col justify-between rounded-2xl border border-[#e8e6e3] bg-[#fffdf8] px-4 py-4 transition-colors hover:border-[#e0c9bb] sm:min-h-[248px] sm:px-5 sm:py-5"
+                className="group flex h-full flex-col justify-between rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)] transition-colors hover:border-[#c8dfd0]"
               >
                 <div>
                   <div className="flex items-center justify-between gap-3">
-                    <span className="rounded-full bg-[#fcf1ea] px-3 py-1 text-[11px] font-semibold text-[#8a4b2f]">
+                    <span className="rounded-full bg-[#eff7f1] px-3 py-1 text-[11px] font-semibold text-[#2d6a4f]">
                       {topic.badge}
                     </span>
-                    <span className="text-[10px] font-semibold uppercase tracking-wide text-[#9a8b84]">Track D</span>
+                    <span className="text-[10px] font-semibold uppercase tracking-wide text-[#9a8e83]">TRACK D</span>
                   </div>
-
-                  <h3 className="mt-3 text-base font-bold text-[#6b3f28] transition-colors group-hover:text-[var(--accent)]">
+                  <h3 className="mt-3 text-base font-bold text-[#24543d] transition-colors group-hover:text-[var(--accent)]">
                     {topic.title}
                   </h3>
                   <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">{topic.description}</p>
-
-                  <div className="mt-4 rounded-xl border border-[#f0e7e2] bg-white px-3 py-3">
-                    <p className="text-[11px] font-semibold uppercase tracking-wide text-[#9a8b84]">핵심 질문</p>
-                    <p className="mt-1 text-[13px] leading-5 text-[var(--foreground)]">{topic.question}</p>
-                  </div>
-
-                  <ul className="mt-3 space-y-1.5">
-                    {topic.related.slice(0, 3).map((item) => (
-                      <li key={item} className="flex items-start gap-2 text-[12px] leading-5 text-[var(--foreground-muted)]">
-                        <span className="mt-[5px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#d09a7f]" />
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
                 </div>
-
-                <div className="mt-4 flex items-center justify-between gap-3">
-                  <span className="rounded-full bg-[#fcf1ea] px-2.5 py-1 text-[11px] font-semibold text-[#8a4b2f]">
-                    보기
-                  </span>
-                  <span className="inline-flex items-center text-sm font-semibold text-[#6b3f28]">주제 보기</span>
+                <div className="mt-4 flex items-center justify-end">
+                  <span className="inline-flex items-center text-sm font-semibold text-[#24543d]">주제 보기 →</span>
                 </div>
               </Link>
             ))}
