@@ -82,6 +82,70 @@ function selectTopProductsWithDiversity(
   return selected;
 }
 
+function filterIfEnough(
+  products: ProductDetailProps[],
+  predicate: (product: ProductDetailProps) => boolean,
+  minimum = 3,
+) {
+  const filtered = products.filter(predicate);
+  return filtered.length >= minimum ? filtered : products;
+}
+
+function applyConditionPrefilters(products: ProductDetailProps[], req: RecommendRequest) {
+  let filtered = [...products];
+
+  if (req.category === "drink") {
+    if (req.conditions.includes("highpro")) {
+      filtered = filterIfEnough(filtered, (product) => product.proteinPerServing >= 20);
+    }
+    if (req.conditions.includes("lowsugar")) {
+      filtered = filterIfEnough(filtered, (product) => (product.sugar ?? 0) <= 2, 5);
+    }
+    if (req.conditions.includes("lowcal")) {
+      filtered = filterIfEnough(filtered, (product) => (product.calories ?? 999) <= 150, 5);
+    }
+  }
+
+  if (req.category === "bar") {
+    if (req.conditions.includes("meal")) {
+      filtered = filterIfEnough(
+        filtered,
+        (product) => (product.calories ?? 0) >= 170 && product.proteinPerServing >= 10,
+      );
+    }
+    if (req.conditions.includes("highpro")) {
+      filtered = filterIfEnough(filtered, (product) => product.proteinPerServing >= 12);
+    }
+    if (req.conditions.includes("lowsugar")) {
+      filtered = filterIfEnough(
+        filtered,
+        (product) => (product.sugar ?? 0) <= 5 && product.proteinPerServing >= 8,
+        5,
+      );
+    }
+  }
+
+  if (req.category === "yogurt") {
+    if (req.conditions.includes("greek")) {
+      filtered = filterIfEnough(filtered, (product) => isGreekYogurt(product));
+    }
+    if (req.conditions.includes("drinking")) {
+      filtered = filterIfEnough(filtered, (product) => isDrinkingYogurt(product));
+    }
+    if (req.conditions.includes("bulk")) {
+      filtered = filterIfEnough(filtered, (product) => isBulkYogurt(product));
+    }
+    if (req.conditions.includes("highpro")) {
+      filtered = filterIfEnough(filtered, (product) => product.proteinPerServing >= 10);
+    }
+    if (req.conditions.includes("lowsugar")) {
+      filtered = filterIfEnough(filtered, (product) => (product.sugar ?? 0) <= 5, 5);
+    }
+  }
+
+  return filtered;
+}
+
 function isGreekYogurt(product: ProductDetailProps) {
   const text = [product.name, product.yogurtType, product.flavor].filter(Boolean).join(" ").toLowerCase();
   return text.includes("그릭") || text.includes("greek") || text.includes("skyr") || text.includes("아이슬란딕");
@@ -89,7 +153,7 @@ function isGreekYogurt(product: ProductDetailProps) {
 
 function isDrinkingYogurt(product: ProductDetailProps) {
   const text = [product.name, product.capacity].filter(Boolean).join(" ").toLowerCase();
-  return text.includes("드링크") || text.includes("drink") || text.includes("to go") || text.includes("ml");
+  return text.includes("드링크") || text.includes("drink") || text.includes("ml");
 }
 
 function isBulkYogurt(product: ProductDetailProps) {
@@ -500,6 +564,8 @@ export async function POST(request: Request) {
         : category === "yogurt"
           ? [...yogurtProductsWithGrades]
           : [...mockProducts];
+
+    products = applyConditionPrefilters(products, body);
 
     if (body.conditions.includes("vegan")) {
       const veganOnly = products.filter(
