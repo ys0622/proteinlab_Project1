@@ -84,9 +84,9 @@ export default function MarathonDistanceStrategyPage() {
         </div>
       </section>
 
-      <main className="guide-article-page guide-article-page--track-d mx-auto max-w-[1200px] px-4 py-8 md:px-6">
+      <main className="mx-auto max-w-[1200px] px-4 py-8 md:px-6">
         <div className="space-y-6">
-          <section className="rounded-2xl border border-[#e8e6e3] bg-[#fffdf8] px-5 py-5">
+          <section className="rounded-[28px] border border-[#e2ebe4] bg-[#f7fbf8] px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
             <h2 className="text-xl font-bold text-[var(--foreground)]">마라톤 거리별 특징</h2>
             <div className="mt-5 overflow-x-auto rounded-2xl border border-[#ece9e2] bg-white">
               <table className="min-w-full border-collapse text-left text-sm">
@@ -116,21 +116,21 @@ export default function MarathonDistanceStrategyPage() {
             </div>
           </section>
 
-          <section className="rounded-2xl border border-[#e8e6e3] bg-white px-5 py-5">
+          <section className="rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
             <h2 className="text-xl font-bold text-[var(--foreground)]">거리별 전략을 한 번에 보기</h2>
             <div className="mt-5 grid gap-3 md:grid-cols-2">
               {distanceCards.map((item) => (
-                <article key={item.title} className="rounded-2xl border border-[#eaded7] bg-[#fffaf7] p-4">
-                  <h3 className="text-base font-semibold text-[#8a4b2f]">{item.title}</h3>
+                <article key={item.title} className="rounded-2xl border border-[#dce8df] bg-[#f6fbf7] p-4">
+                  <h3 className="text-base font-semibold text-[#24543d]">{item.title}</h3>
                   <ul className="mt-3 space-y-2 text-sm leading-6 text-[var(--foreground-muted)]">
                     {item.training.map((point) => (
                       <li key={point} className="flex items-start gap-2">
-                        <span className="mt-[8px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#d09a7f]" />
+                        <span className="mt-[8px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#4c9a72]" />
                         <span>{point}</span>
                       </li>
                     ))}
                   </ul>
-                  <div className="mt-4 rounded-xl border border-[#f0e7e2] bg-white px-3 py-3 text-sm leading-6 text-[var(--foreground-muted)]">
+                  <div className="mt-4 rounded-xl border border-[#dce8df] bg-white px-3 py-3 text-sm leading-6 text-[var(--foreground-muted)]">
                     <p>
                       <span className="font-semibold text-[var(--foreground)]">러닝 전</span>
                       {" · "}
@@ -147,32 +147,32 @@ export default function MarathonDistanceStrategyPage() {
             </div>
           </section>
 
-          <section className="rounded-2xl border border-[#e8e6e3] bg-white px-5 py-5">
+          <section className="rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
             <h2 className="text-xl font-bold text-[var(--foreground)]">러닝 후 단백질 섭취가 필요한 이유</h2>
-            <blockquote className="mt-4 rounded-xl border border-[#eef1f3] bg-white px-4 py-4 text-sm leading-6 text-[var(--foreground-muted)]">
+            <blockquote className="mt-4 rounded-xl border border-[#dce8df] bg-[#f7fbf8] px-4 py-4 text-sm leading-6 text-[var(--foreground-muted)]">
               운동 후 20~30g 단백질 섭취는 근육 회복, 피로 감소, 다음 훈련 적응에 도움이 됩니다.
             </blockquote>
             <div className="mt-5 grid gap-3 md:grid-cols-3">
               {proteinReasons.map((item) => (
-                <article key={item} className="rounded-xl border border-[#eaded7] bg-[#fcf1ea] p-4 text-sm leading-6 text-[var(--foreground-muted)]">
+                <article key={item} className="rounded-xl border border-[#dce8df] bg-[#f6fbf7] p-4 text-sm leading-6 text-[var(--foreground-muted)]">
                   {item}
                 </article>
               ))}
             </div>
           </section>
 
-          <section className="rounded-2xl border border-[#e8e6e3] bg-white px-5 py-5">
+          <section className="rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
             <h2 className="text-xl font-bold text-[var(--foreground)]">관련 가이드</h2>
             <div className="mt-5 flex flex-wrap gap-3">
               <Link
                 href="/curation/running"
-                className="inline-flex items-center justify-center rounded-xl border border-[#8a4b2f] bg-[#8a4b2f] px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#6f3d26]"
+                className="inline-flex items-center justify-center rounded-xl border border-[#2d6a4f] bg-[#2d6a4f] px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#24543d]"
               >
                 러닝 후 단백질 음료 추천
               </Link>
               <Link
                 href="/guides/product-selection-comparison/protein-drink-guide"
-                className="inline-flex items-center justify-center rounded-xl border border-[#eaded7] bg-white px-5 py-3 text-sm font-semibold text-[#6b3f28] transition-colors hover:bg-[#fcf1ea]"
+                className="inline-flex items-center justify-center rounded-xl border border-[#d9e7dc] bg-white px-5 py-3 text-sm font-semibold text-[#24543d] transition-colors hover:bg-[#eef7f1]"
               >
                 단백질 음료 비교 가이드
               </Link>
