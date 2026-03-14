@@ -295,7 +295,7 @@ export default function FilterSection(props: FilterSectionProps) {
           <button
             type="button"
             onClick={() => setMobileFilterOpen((current) => !current)}
-            className="flex items-center gap-1 py-1 text-xs font-bold text-[#454545] hover:text-[var(--foreground)]"
+            className="flex items-center gap-1 py-0.5 text-xs font-bold text-[#454545] hover:text-[var(--foreground)]"
             aria-expanded={mobileFilterOpen}
           >
             상세 필터
@@ -309,17 +309,17 @@ export default function FilterSection(props: FilterSectionProps) {
         </div>
 
         {mobileFilterOpen ? (
-          <div className="filter-drawer pt-1">
+          <div className="filter-drawer pt-0.5">
             <div className="filter-drawer__handle" />
             {filterRows}
-            <div className="filter-drawer__apply mt-3 flex items-center justify-between gap-3">
+            <div className="filter-drawer__apply mt-2.5 flex items-center justify-between gap-3">
               <button type="button" onClick={onResetFilters} className="btn-reset">
                 초기화
               </button>
               <button
                 type="button"
                 onClick={() => setMobileFilterOpen(false)}
-                className="btn-apply inline-flex h-11 items-center justify-center rounded-full bg-[var(--accent)] px-5 text-sm font-medium text-white transition-colors hover:bg-[var(--accent-hover)]"
+                className="btn-apply inline-flex h-10 items-center justify-center rounded-full bg-[var(--accent)] px-5 text-sm font-medium text-white transition-colors hover:bg-[var(--accent-hover)]"
               >
                 필터 적용
               </button>
