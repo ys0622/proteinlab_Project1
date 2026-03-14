@@ -929,6 +929,17 @@ h1, h2, h3, h4, h5, h6 {
     border-top-width: 0 !important;
   }
 
+  .bg-\[var\(--hero-bg\)\] > .mx-auto,
+  .bg-\[\#EFEDE6\] > .mx-auto {
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+  }
+
+  .bg-\[var\(--hero-bg\)\] h1,
+  .bg-\[\#EFEDE6\] h1 {
+    line-height: 1.2;
+  }
+
   .admin-sidebar {
     display: none;
   }
