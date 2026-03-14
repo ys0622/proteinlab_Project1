@@ -421,7 +421,7 @@ function ProductListWithFiltersInner(props: ProductListWithFiltersInnerProps) {
             }`}
             style={{ fontWeight: 400, whiteSpace: "nowrap" }}
           >
-            ?⑤갚吏??뚮즺
+            단백질 음료
           </Link>
           <Link
             href="/bars"
@@ -432,7 +432,7 @@ function ProductListWithFiltersInner(props: ProductListWithFiltersInnerProps) {
             }`}
             style={{ fontWeight: 400, whiteSpace: "nowrap" }}
           >
-            ?⑤갚吏?諛?
+            단백질 바
           </Link>
           <Link
             href="/yogurt"
@@ -443,7 +443,7 @@ function ProductListWithFiltersInner(props: ProductListWithFiltersInnerProps) {
             }`}
             style={{ fontWeight: 400, whiteSpace: "nowrap" }}
           >
-            ?⑤갚吏??붽굅??
+            단백질 요거트
           </Link>
         </div>
       </div>
