@@ -123,7 +123,7 @@ export default function IntakeStrategyHealthPage() {
                     <div className="flex items-center justify-between gap-3">
                       <div className="flex flex-wrap gap-1.5">
                         <span className="rounded-full border border-[#d9e4dd] bg-[#f7faf8] px-2.5 py-1 text-[11px] font-medium text-[#496555]">
-                          {"badge" in topic ? topic.badge : "보조"}
+                          {String("badge" in topic ? topic.badge : "보조")}
                         </span>
                       </div>
                       <span className="rounded-full border border-[#d8e2da] bg-white px-2.5 py-1 text-[11px] font-semibold text-[#6f7f76]">
