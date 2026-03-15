@@ -56,11 +56,6 @@ const supportingTopics = [
   },
 ];
 
-const readingFlow = [
-  ["1단계", "단백질 RTD 시장", "카테고리 구조와 성장 배경 이해"],
-  ["2단계", "브랜드 분석", "시장 안에서 브랜드가 어떤 역할을 하는지 비교"],
-  ["3단계", "성분 트렌드", "소비자 키워드가 제품 기획을 어떻게 바꾸는지 읽기"],
-];
 
 export default function MarketInsightsPage() {
   return (
@@ -76,14 +71,14 @@ export default function MarketInsightsPage() {
             <span>시장 인사이트</span>
           </div>
           <div className="mt-3 flex flex-wrap items-center gap-2.5">
-            <span className="rounded-md bg-[#f1ebf7] px-2 py-0.5 text-[11px] font-semibold tracking-wide text-[#6b4d7c]">
+            <span className="rounded-md bg-[#eef4ea] px-2 py-0.5 text-[11px] font-semibold tracking-wide text-[#4c7a57]">
               TRACK E
             </span>
             <span className="text-xs text-[#8b8b8b]">시장과 브랜드를 데이터로 읽는 트랙</span>
             <span className="text-xs text-[#8b8b8b]">6개 주제</span>
           </div>
           <div className="mt-4">
-            <h1 className="text-[26px] font-bold leading-tight text-[#5a4271] md:text-[30px]">시장 인사이트</h1>
+            <h1 className="text-[26px] font-bold leading-tight text-[var(--foreground)] md:text-[30px]">시장 인사이트</h1>
             <p className="mt-2 max-w-2xl text-sm leading-6 text-[var(--foreground-muted)]">
               제품 숫자를 읽는 단계를 넘어,
               <br />
@@ -99,106 +94,66 @@ export default function MarketInsightsPage() {
       </section>
 
       <main className="mx-auto max-w-[1200px] px-4 pb-12 md:px-6">
-        <div className="space-y-6">
-          <section className="mt-5 rounded-2xl border border-[#e8e6e3] bg-[#fffdf8] px-5 py-5">
-            <div className="flex items-center justify-between gap-3">
-              <div>
-                <h2 className="text-lg font-bold text-[var(--foreground)]">먼저 읽으면 좋은 흐름</h2>
-                <p className="mt-1 text-xs text-[#8b8b8b]">
-                  시장 구조를 먼저 보고, 그다음 브랜드와 성분 트렌드로 넓혀가면 흐름이 더 잘 읽힙니다.
-                </p>
-              </div>
-              <div className="hidden rounded-full border border-[#e7dff0] bg-[#f7f2fb] px-3 py-1.5 text-xs font-medium text-[#6b4d7c] md:block">
-                추천 시작점: RTD 시장
-              </div>
+        <section className="mt-5">
+          <div className="flex items-center justify-between gap-3">
+            <div>
+              <h2 className="text-lg font-bold text-[var(--foreground)]">주제 목록</h2>
+              <p className="mt-1 text-xs text-[#8b8b8b]">
+                대표 질문과 핵심 포인트를 먼저 보고 필요한 주제로 이동하세요.
+              </p>
             </div>
-            <div className="mt-5 overflow-x-auto">
-              <table className="min-w-full border-collapse text-left text-sm">
-                <thead>
-                  <tr className="border-b border-[#e8e6e3] text-[var(--foreground)]">
-                    <th className="px-3 py-3 font-semibold">순서</th>
-                    <th className="px-3 py-3 font-semibold">주제</th>
-                    <th className="px-3 py-3 font-semibold">왜 먼저 읽나</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {readingFlow.map((row) => (
-                    <tr key={row[0]} className="border-b border-[#f0eeeb] last:border-b-0">
-                      {row.map((cell) => (
-                        <td key={cell} className="px-3 py-3 text-[var(--foreground-muted)]">
-                          {cell}
-                        </td>
-                      ))}
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+            <div className="hidden rounded-full border border-[#d9e7dc] bg-[#eff7f1] px-3 py-1.5 text-xs font-medium text-[#24543d] md:block">
+              인기: 단백질 RTD 시장
             </div>
-          </section>
+          </div>
 
-          <section>
-            <div className="flex items-center justify-between gap-3">
-              <div>
-                <h2 className="text-lg font-bold text-[var(--foreground)]">대표 주제</h2>
-                <p className="mt-1 text-xs text-[#8b8b8b]">
-                  시장 구조, 브랜드 포지션, 성분 트렌드를 중심으로 가장 먼저 읽을 주제를 앞에 배치했습니다.
-                </p>
-              </div>
-            </div>
-            <div className="mt-4 grid gap-4 xl:grid-cols-3">
-              {featuredTopics.map((topic) => (
-                <Link
-                  key={topic.href}
-                  href={topic.href}
-                  className="group flex min-h-[248px] flex-col justify-between rounded-2xl border border-[#e8e6e3] bg-[#fffdf8] px-5 py-5 transition-colors hover:border-[#d9cde4]"
-                >
+          <div className="mt-4 grid gap-4 sm:grid-cols-2">
+            {[...featuredTopics, ...supportingTopics].map((topic) => (
+              <Link
+                key={topic.href}
+                href={topic.href}
+                className="group flex h-full flex-col justify-between rounded-2xl border border-[#d8e2da] bg-[#fffdf8] shadow-[0_10px_24px_rgba(20,40,28,0.05)] transition-colors hover:border-[#cfe1d7]"
+              >
+                <div className="h-1.5 w-full rounded-t-2xl bg-[#2d6a4f]" />
+                <div className="flex flex-1 flex-col justify-between px-5 py-4">
                   <div>
                     <div className="flex items-center justify-between gap-3">
-                      <span className="rounded-full bg-[#f4eef9] px-3 py-1 text-[11px] font-semibold text-[#6b4d7c]">
-                        {topic.badge}
+                      <div className="flex flex-wrap gap-1.5">
+                        <span className="rounded-full border border-[#d9e4dd] bg-[#f7faf8] px-2.5 py-1 text-[11px] font-medium text-[#496555]">
+                          {String("badge" in topic ? topic.badge : "보조")}
+                        </span>
+                      </div>
+                      <span className="rounded-full border border-[#d8e2da] bg-white px-2.5 py-1 text-[11px] font-semibold text-[#6f7f76]">
+                        LIVE
                       </span>
-                      <span className="text-[10px] font-semibold uppercase tracking-wide text-[#9a8faa]">Track E</span>
                     </div>
-                    <h2 className="mt-3 text-base font-bold text-[#5a4271] group-hover:text-[var(--accent)]">{topic.title}</h2>
-                    <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">{topic.description}</p>
-                    <div className="mt-4 rounded-xl border border-[#ece5f3] bg-white px-3 py-3">
-                      <p className="text-[11px] font-semibold uppercase tracking-wide text-[#9a8faa]">핵심 질문</p>
-                      <p className="mt-1 text-[13px] leading-5 text-[var(--foreground)]">{topic.question}</p>
-                    </div>
-                    <ul className="mt-3 space-y-1.5">
-                      {topic.related.map((item) => (
-                        <li key={item} className="flex items-start gap-2 text-[12px] leading-5 text-[var(--foreground-muted)]">
-                          <span className="mt-[5px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#9077a6]" />
-                          <span>{item}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                  <div className="mt-4 flex items-center justify-between">
-                    <span className="rounded-full bg-[#f4eef9] px-2.5 py-1 text-[11px] font-semibold text-[#6b4d7c]">대표 주제</span>
-                    <span className="text-sm font-semibold text-[#5a4271]">주제 보기</span>
-                  </div>
-                </Link>
-              ))}
-            </div>
-          </section>
 
-          <section className="rounded-2xl border border-[#e8e6e3] bg-white px-5 py-5">
-            <h2 className="text-lg font-bold text-[var(--foreground)]">함께 읽으면 좋은 보조 주제</h2>
-            <div className="mt-4 grid gap-3 md:grid-cols-3">
-              {supportingTopics.map((topic) => (
-                <Link
-                  key={topic.href}
-                  href={topic.href}
-                  className="rounded-xl border border-[#f0ebf4] bg-[#fbfafc] px-4 py-4 transition-colors hover:border-[#d9cde4]"
-                >
-                  <p className="text-sm font-semibold text-[#5a4271]">{topic.title}</p>
-                  <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">{topic.description}</p>
-                </Link>
-              ))}
-            </div>
-          </section>
-        </div>
+                    <h3 className="mt-3 text-base font-bold text-[#1f5138] transition-colors group-hover:text-[var(--accent)]">
+                      {topic.title}
+                    </h3>
+                    <p className="mt-2 text-[13px] leading-[1.7] text-[var(--foreground-muted)]">
+                      {topic.description}
+                    </p>
+
+                    <div className="mt-4 rounded-xl border border-[#d7e6dd] bg-[#f4faf6] px-3 py-2.5">
+                      <p className="text-[11px] font-semibold text-[#1f5138]">읽기 시간</p>
+                      <p className="mt-1 text-[12px] font-medium leading-5 text-[var(--foreground)]">5분 읽기</p>
+                    </div>
+                  </div>
+
+                  <div className="mt-4 flex items-center justify-between gap-3">
+                    <span className="rounded-full border border-[#d9e4dd] bg-[#f7faf8] px-2.5 py-1 text-[11px] font-medium text-[#496555]">
+                      인기
+                    </span>
+                    <span className="text-xs font-semibold text-[#2f5d46] transition-colors group-hover:text-[#1f4834]">
+                      주제 보기
+                    </span>
+                  </div>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </section>
       </main>
       <Footer />
     </div>
