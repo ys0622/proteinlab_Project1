@@ -14,7 +14,7 @@ const featuredTopics = [
     href: "/guides/market-insights/protein-rtd-market",
     badge: "먼저 읽기",
     description:
-      "RTD 단백질 음료 시장이 어떻게 커졌고, 어떤 기준으로 브랜드와 제품이 나뉘는지 먼저 정리합니다.",
+      "RTD 단백질 음료 시장이 어떻게 커졌고 어떤 기준으로 브랜드와 제품이 나뉘는지 먼저 정리합니다.",
     question: "RTD 시장은 왜 이렇게 빠르게 커졌을까?",
   },
   {
@@ -22,7 +22,7 @@ const featuredTopics = [
     href: "/guides/market-insights/brand-analysis",
     badge: "포지셔닝 비교",
     description:
-      "더단백, 랩노쉬, 하이뮨, 닥터유 같은 주요 브랜드가 어떤 소비자 이미지를 갖는지 비교합니다.",
+      "더단백, 뉴케어 올프로틴, 마이밀 같은 주요 브랜드가 어떤 포지셔닝을 갖는지 비교합니다.",
     question: "브랜드는 어떤 차이로 선택 기준을 만들까?",
   },
   {
@@ -30,7 +30,7 @@ const featuredTopics = [
     href: "/guides/market-insights/ingredient-trends",
     badge: "트렌드",
     description:
-      "저당, 워터형, 식물성 같은 키워드가 왜 중요해졌는지와 실제 구매 기준 변화를 함께 봅니다.",
+      "제로, 워터형, 식물성 같은 키워드가 왜 중요해졌는지와 실제 구매 기준 변화를 함께 봅니다.",
     question: "요즘 단백질 제품은 어떤 방향으로 바뀌고 있을까?",
   },
 ];
@@ -67,9 +67,7 @@ export default function MarketInsightsPage() {
             <span>시장 인사이트</span>
           </div>
           <div className="mt-3 flex flex-wrap items-center gap-2.5">
-            <span className="rounded-md bg-[#eef4ea] px-2 py-0.5 text-[11px] font-semibold tracking-wide text-[#4c7a57]">
-              TRACK E
-            </span>
+            <span className="rounded-md bg-[#eef4ea] px-2 py-0.5 text-[11px] font-semibold tracking-wide text-[#4c7a57]">TRACK E</span>
             <span className="text-xs text-[#8b8b8b]">시장과 브랜드를 데이터 관점으로 읽는 인사이트 트랙</span>
             <span className="text-xs text-[#8b8b8b]">6개 주제</span>
           </div>
@@ -81,7 +79,7 @@ export default function MarketInsightsPage() {
               시장과 브랜드의 흐름을 해석하는 콘텐츠를 모았습니다.
             </p>
             <p className="mt-2 max-w-2xl text-sm leading-6 text-[var(--foreground-muted)]">
-              Track E는 검색 유입형 시장 콘텐츠와 ProteinLab 제품 데이터를 연결하는 허브입니다.
+              Track E는 검색형 유입과 시장 콘텐츠를 ProteinLab 제품 데이터와 연결하는 허브입니다.
             </p>
           </div>
         </div>
@@ -92,12 +90,10 @@ export default function MarketInsightsPage() {
           <div className="flex items-center justify-between gap-3">
             <div>
               <h2 className="text-lg font-bold text-[var(--foreground)]">주제 목록</h2>
-              <p className="mt-1 text-xs text-[#8b8b8b]">
-                대표 질문을 먼저 보고 필요한 인사이트 주제로 이동할 수 있습니다.
-              </p>
+              <p className="mt-1 text-xs text-[#8b8b8b]">가장 큰 질문부터 보고 필요한 인사이트 주제로 이동할 수 있습니다.</p>
             </div>
             <div className="hidden rounded-full border border-[#d9e7dc] bg-[#eff7f1] px-3 py-1.5 text-xs font-medium text-[#24543d] md:block">
-              인기: 단백질 RTD 시장
+              읽기 시작: 단백질 RTD 시장
             </div>
           </div>
 
@@ -117,17 +113,11 @@ export default function MarketInsightsPage() {
                           {String("badge" in topic ? topic.badge : "보조 주제")}
                         </span>
                       </div>
-                      <span className="rounded-full border border-[#d8e2da] bg-white px-2.5 py-1 text-[11px] font-semibold text-[#6f7f76]">
-                        LIVE
-                      </span>
+                      <span className="rounded-full border border-[#d8e2da] bg-white px-2.5 py-1 text-[11px] font-semibold text-[#6f7f76]">LIVE</span>
                     </div>
 
-                    <h3 className="mt-3 text-base font-bold text-[#1f5138] transition-colors group-hover:text-[var(--accent)]">
-                      {topic.title}
-                    </h3>
-                    <p className="mt-2 text-[13px] leading-[1.7] text-[var(--foreground-muted)]">
-                      {topic.description}
-                    </p>
+                    <h3 className="mt-3 text-base font-bold text-[#1f5138] transition-colors group-hover:text-[var(--accent)]">{topic.title}</h3>
+                    <p className="mt-2 text-[13px] leading-[1.7] text-[var(--foreground-muted)]">{topic.description}</p>
 
                     <div className="mt-4 rounded-xl border border-[#d7e6dd] bg-[#f4faf6] px-3 py-2.5">
                       <p className="text-[11px] font-semibold text-[#1f5138]">읽기 포인트</p>
@@ -138,12 +128,8 @@ export default function MarketInsightsPage() {
                   </div>
 
                   <div className="mt-4 flex items-center justify-between gap-3">
-                    <span className="rounded-full border border-[#d9e4dd] bg-[#f7faf8] px-2.5 py-1 text-[11px] font-medium text-[#496555]">
-                      바로 보기
-                    </span>
-                    <span className="text-xs font-semibold text-[#2f5d46] transition-colors group-hover:text-[#1f4834]">
-                      주제 열기
-                    </span>
+                    <span className="rounded-full border border-[#d9e4dd] bg-[#f7faf8] px-2.5 py-1 text-[11px] font-medium text-[#496555]">바로 보기</span>
+                    <span className="text-xs font-semibold text-[#2f5d46] transition-colors group-hover:text-[#1f4834]">주제 열기</span>
                   </div>
                 </div>
               </Link>

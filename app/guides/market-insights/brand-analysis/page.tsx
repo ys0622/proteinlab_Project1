@@ -3,47 +3,48 @@ import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 
 export const metadata = {
-  title: "단백질 브랜드 분석 | ProteinLab",
-  description: "더단백, 랩노쉬, 하이뮨, 닥터유 등 주요 브랜드의 포지셔닝과 소비자 인식을 비교합니다.",
+  title: "단백질 브랜드 포지셔닝 분석 | ProteinLab",
+  description: "더단백, 뉴케어 올프로틴, 마이밀, 하이뮨 등 주요 브랜드의 포지셔닝과 브랜드 메시지를 비교합니다.",
 };
 
 const brandRows = [
-  ["더단백", "빙그레", "운동·다이어트 중심", "저당·고단백 메시지가 강하고 접근성이 좋습니다."],
-  ["랩노쉬", "이그니스", "식사 보완·간편식", "식사대용형 서사와 제품 라인업 구성이 명확합니다."],
-  ["하이뮨", "일동후디스", "중장년 건강 관리", "프리미엄 이미지와 건강 관리 맥락이 강합니다."],
-  ["닥터유", "오리온", "편의점·일상 보충", "유통 접근성과 가성비 강점이 있습니다."],
-  ["하이뮨 프로틴 밸런스", "일동후디스", "시니어·건강 관리", "복합 영양과 균형 서사를 강화합니다."],
-  ["요프로", "빙그레", "MZ·다이어트", "저칼로리·가벼운 섭취 맥락이 강합니다."],
+  ["더단백", "빙그레", "운동·다이어트 중심", "고단백과 저당 메시지가 강하고 대중성도 좋습니다."],
+  ["뉴케어 올프로틴", "대상웰라이프", "회복·시니어·영양관리", "뉴케어의 신뢰를 가져오면서도 단백질 중심 포지셔닝을 강화합니다."],
+  ["마이밀", "롯데웰푸드", "간편 식사 보완", "식사대용과 포만감 이미지를 중심으로 접근합니다."],
+  ["하이뮨", "일동후디스", "중장년 건강 관리", "프리미엄 이미지와 건강 관리 메시지가 강합니다."],
+  ["셀렉스", "매일유업", "일상 단백질 보충", "유통 확장성과 가성비 강점이 있습니다."],
+  ["하이뮨 프로틴 밸런스", "일동후디스", "시니어·균형 영양", "복합 영양과 균형 식사를 강조합니다."],
+  ["랩노쉬", "빙그레", "MZ·다이어트", "저칼로리와 가벼운 섭취 맥락이 강합니다."],
 ];
 
 const positionCards = [
   {
-    title: "편의점 중심 브랜드",
-    brands: "더단백, 닥터유",
+    title: "대중형 단백질 브랜드",
+    brands: "더단백, 셀렉스",
     body: "접근성이 높아 반복 구매 진입 장벽이 낮고, 일상형 RTD 이미지를 빠르게 형성합니다.",
   },
   {
     title: "건강 관리 중심 브랜드",
-    brands: "하이뮨, 하이뮨 프로틴 밸런스",
-    body: "면역, 회복, 중장년 건강 같은 메시지로 프리미엄 포지셔닝을 구축합니다.",
+    brands: "하이뮨, 하이뮨 프로틴 밸런스, 뉴케어 올프로틴",
+    body: "회복, 균형 영양, 중장년 건강관리 같은 메시지로 프리미엄 포지셔닝을 강화합니다.",
   },
   {
-    title: "식사대용·루틴형 브랜드",
-    brands: "랩노쉬",
-    body: "포만감과 한 끼 대체 서사를 전면에 두고 식사보완 맥락을 강화합니다.",
+    title: "식사 보완·포만감 중심 브랜드",
+    brands: "마이밀",
+    body: "포만감과 식사 보완 메시지를 전면에 두고 식사대용형 수요를 공략합니다.",
   },
   {
     title: "가벼운 다이어트형 브랜드",
-    brands: "요프로, 더단백 일부",
-    body: "낮은 칼로리와 가벼운 섭취 경험을 강조해 체중 관리 수요를 공략합니다.",
+    brands: "랩노쉬, 더단백 일부 라인",
+    body: "저칼로리와 가벼운 섭취 경험을 강조해 체중 관리 수요에 맞춥니다.",
   },
 ];
 
 const readingPoints = [
-  "브랜드 이미지와 실제 성분 수치는 다를 수 있으므로 제품별 숫자를 따로 확인해야 합니다.",
-  "같은 브랜드라도 라인별로 용도와 포만감, 칼로리가 다르므로 SKU 기준으로 비교해야 합니다.",
-  "편의점 채널 중심 브랜드는 접근성이 강점이지만 가격과 용량 전략이 온라인 상품과 다를 수 있습니다.",
-  "건강 관리 중심 브랜드는 회복·균형 메시지가 강해 중장년층과 건강 관심층에 더 맞을 수 있습니다.",
+  "브랜드 이미지와 실제 성분 수치는 다를 수 있으므로 제품별 숫자를 별도로 확인해야 합니다.",
+  "같은 브랜드라도 라인별로 용도와 포만감, 칼로리가 달라 SKU 기준 비교가 필요합니다.",
+  "대중형 브랜드는 접근성이 강점이지만 성분 폭이 넓어 상품별 차이가 큽니다.",
+  "건강관리형 브랜드는 회복·균형 메시지가 강해 중장년층과 건강 관심층에 잘 맞습니다.",
 ];
 
 export default function BrandAnalysisPage() {
@@ -53,9 +54,13 @@ export default function BrandAnalysisPage() {
       <section className="w-full border-t border-b bg-[var(--hero-bg)]" style={{ borderColor: "var(--hero-border)" }}>
         <div className="mx-auto max-w-[1200px] px-4 py-5 md:px-6 md:py-6">
           <div className="flex flex-wrap items-center gap-1.5 text-xs text-[var(--foreground-muted)]">
-            <Link href="/guides" className="hover:text-[var(--accent)]">Guides</Link>
+            <Link href="/guides" className="hover:text-[var(--accent)]">
+              Guides
+            </Link>
             <span>/</span>
-            <Link href="/guides/market-insights" className="hover:text-[var(--accent)]">시장 인사이트</Link>
+            <Link href="/guides/market-insights" className="hover:text-[var(--accent)]">
+              시장 인사이트
+            </Link>
             <span>/</span>
             <span>브랜드 분석</span>
           </div>
@@ -66,9 +71,9 @@ export default function BrandAnalysisPage() {
             브랜드는 어떤 차이로 선택 기준을 만들까?
           </h1>
           <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
-            같은 단백질 카테고리 안에서도 브랜드는 유통, 타깃, 메시지, 제품 구성으로 다른 인식을 만듭니다.
+            같은 단백질 카테고리 안에서도 브랜드는 유통, 가격, 메시지, 제품 구성을 통해 서로 다른 인식을 만듭니다.
             <br />
-            브랜드 포지셔닝을 읽으면 제품 선택과 시장 흐름 해석이 더 빨라집니다.
+            브랜드 포지셔닝을 읽으면 제품 비교와 시장 흐름 해석이 더 쉬워집니다.
           </p>
         </div>
       </section>
@@ -78,7 +83,7 @@ export default function BrandAnalysisPage() {
           <section className="rounded-[28px] border border-[#e2ebe4] bg-[#f7fbf8] px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
             <h2 className="text-xl font-bold text-[var(--foreground)]">주요 브랜드 포지셔닝 비교</h2>
             <p className="mt-3 text-sm leading-6 text-[var(--foreground-muted)]">
-              브랜드별 운영사, 대표 타깃, 핵심 메시지를 나눠서 보면 시장 구도가 선명해집니다.
+              브랜드별 운영사와 대표 메시지를 같이 보면 시장 내 역할이 훨씬 선명하게 보입니다.
             </p>
             <div className="mt-5 overflow-x-auto rounded-2xl border border-[#ece9e2] bg-white">
               <table className="min-w-full border-collapse text-left text-sm">
@@ -86,8 +91,8 @@ export default function BrandAnalysisPage() {
                   <tr className="border-b border-[#e8e6e3] text-[var(--foreground)]">
                     <th className="px-3 py-3 font-semibold">브랜드</th>
                     <th className="px-3 py-3 font-semibold">운영사</th>
-                    <th className="px-3 py-3 font-semibold">대표 타깃</th>
-                    <th className="px-3 py-3 font-semibold">포지셔닝</th>
+                    <th className="px-3 py-3 font-semibold">대표 포지션</th>
+                    <th className="px-3 py-3 font-semibold">해석</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -132,7 +137,7 @@ export default function BrandAnalysisPage() {
               ))}
             </ul>
             <blockquote className="mt-5 rounded-xl border border-[#dce8df] bg-[#f7fbf8] px-4 py-4 text-sm leading-6 text-[var(--foreground-muted)]">
-              브랜드 분석의 목적은 브랜드 선호를 고르는 것이 아니라, 제품 비교 전에 어떤 서사와 타깃으로 구성돼 있는지 이해하는 데 있습니다.
+              브랜드 분석의 목적은 브랜드 선호를 고르는 것이 아니라, 제품 비교 전에 어떤 메시지와 타깃으로 구성돼 있는지 이해하는 데 있습니다.
             </blockquote>
           </section>
         </div>
