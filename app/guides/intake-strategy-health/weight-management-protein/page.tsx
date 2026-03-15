@@ -5,19 +5,19 @@ import Footer from "@/app/components/Footer";
 export const metadata = {
   title: "체중 관리용 단백질 가이드 | ProteinLab",
   description:
-    "감량과 유지 단계에서 단백질을 어떻게 활용해야 하는지, 당류와 칼로리까지 함께 보는 기준으로 정리했습니다.",
+    "감량과 유지 단계에서 단백질을 어떻게 사용해야 하는지, 당류와 칼로리까지 함께 보는 기준으로 정리합니다.",
 };
 
 const goalRows = [
   ["감량 초반", "저당 + 적정 단백질", "칼로리와 당류를 먼저 보고 포만감이 유지되는지를 확인하는 것이 중요합니다."],
-  ["유지 단계", "균형형 제품", "단백질만 높은 제품보다 식사와의 연결감, 포만감, 지속 가능성을 함께 보는 편이 좋습니다."],
-  ["운동 병행", "충분한 단백질 + 회복 고려", "감량 중에도 회복이 부족하면 운동 효율과 컨디션이 함께 무너지기 쉽습니다."],
+  ["유지 단계", "균형형 제품", "단백질만 높은 제품보다 식사대용과 연결되는 포만감과 지속 가능성을 함께 보는 편이 좋습니다."],
+  ["운동 병행", "충분한 단백질 + 회복 고려", "감량 중에도 회복이 부족하면 운동 효율과 컨디션이 함께 무너질 수 있습니다."],
 ];
 
 const compareCards = [
   {
     title: "당류 먼저 보기",
-    body: "체중 관리 목적이라면 단백질 함량만큼 당류도 중요합니다. 같은 단백질이라도 당류 차이가 크게 날 수 있습니다.",
+    body: "체중 관리 목적이라면 단백질 함량만큼 당류도 중요합니다. 같은 단백질이라도 당류 차이가 크게 작용합니다.",
   },
   {
     title: "칼로리와 포만감 같이 보기",
@@ -30,9 +30,9 @@ const compareCards = [
 ];
 
 const avoidList = [
-  "체중 관리를 위해 무조건 저칼로리 제품만 고르는 것",
-  "단백질 함량만 보고 당류를 확인하지 않는 것",
-  "식사대용 제품과 가벼운 보충 제품을 같은 기준으로 비교하는 것",
+  "체중 관리를 위해 무조건 저칼로리 제품만 고르는 경우",
+  "단백질 함량만 보고 당류를 확인하지 않는 경우",
+  "식사대용형 제품과 가벼운 보충형 제품을 같은 기준으로 비교하는 경우",
 ];
 
 export default function WeightManagementProteinPage() {
@@ -110,7 +110,7 @@ export default function WeightManagementProteinPage() {
               ))}
             </ul>
             <blockquote className="mt-5 rounded-xl border border-[#dce8df] bg-[#f7fbf8] px-4 py-4 text-sm leading-6 text-[var(--foreground-muted)]">
-              다이어트용 제품이라고 모두 같은 카테고리가 아닙니다. 간식형, 회복형, 식사보완형을 먼저 나누면 비교가 훨씬 쉬워집니다.
+              다이어트용 제품이라고 모두 같은 카테고리가 아닙니다. 간식형과 회복형, 식사보완형을 먼저 나누면 비교가 훨씬 쉬워집니다.
             </blockquote>
           </section>
           <section className="rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">

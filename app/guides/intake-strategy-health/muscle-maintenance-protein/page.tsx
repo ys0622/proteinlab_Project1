@@ -5,7 +5,7 @@ import Footer from "@/app/components/Footer";
 export const metadata = {
   title: "근육 유지 단백질 전략 | ProteinLab",
   description:
-    "감량기나 운동 병행 상황에서 근육을 유지하려면 하루 총량과 분산 섭취를 어떻게 봐야 하는지 정리했습니다.",
+    "감량기나 운동 병행 상황에서 근육을 유지하려면 하루 총량과 분산 섭취를 어떻게 봐야 하는지 정리합니다.",
 };
 
 const maintenancePoints = [
@@ -15,9 +15,9 @@ const maintenancePoints = [
 ];
 
 const maintenanceMatrix = [
-  ["감량기", "총량 유지", "체중 감량 중에도 근육량을 줄이려면 우선 하루 총량이 무너지지 않아야 합니다."],
+  ["감량기", "총량 유지", "체중 감량 중에도 근손실을 줄이려면 우선 하루 총량이 무너지지 않아야 합니다."],
   ["근력 운동 병행", "운동 후 + 하루 분산", "회복용 보충과 전체 루틴을 같이 챙겨야 유지 효율이 올라갑니다."],
-  ["바쁜 일정", "간식 루틴 확보", "아침이나 오후 간식에 보완 지점을 만들면 총량 유지가 쉬워집니다."],
+  ["바쁜 일정", "간식 루틴 확보", "아침이나 오후 간식에 보충 지점을 만들면 총량 유지가 쉬워집니다."],
 ];
 
 export default function MuscleMaintenanceProteinPage() {
@@ -42,7 +42,7 @@ export default function MuscleMaintenanceProteinPage() {
             총량과 분산을 같이 봐야 합니다
           </h1>
           <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
-            감량 중이든 운동을 쉬는 주든 단백질 루틴을 안정적으로 유지하는 것이 근육 유지의 기본입니다.
+            감량 중이든 운동을 병행하든 줄어든 단백질 루틴을 안정적으로 유지하는 것이 근육 유지의 기본입니다.
           </p>
         </div>
       </section>
@@ -86,7 +86,7 @@ export default function MuscleMaintenanceProteinPage() {
         <section className="mt-6 rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
           <p className="text-[11px] font-semibold tracking-[0.08em] text-[#2d6a4f]">MUSCLE NOTE</p>
           <p className="mt-3 text-sm leading-6 text-[var(--foreground-muted)]">
-            근육 유지 전략은 고단백 제품을 많이 먹는 것이 아니라, 주간 총량을 흔들리지 않게 보완 지점을 만드는 것에서 시작합니다.
+            근육 유지 전략은 고단백 제품을 많이 먹는 것이 아니라, 주간 총량이 흔들리지 않게 보충 지점을 만드는 것에서 시작합니다.
           </p>
         </section>
       </main>

@@ -5,11 +5,11 @@ import Footer from "@/app/components/Footer";
 export const metadata = {
   title: "식사대용 단백질 전략 | ProteinLab",
   description:
-    "단백질 보충제가 언제 식사대용에 가까워지는지, 보완형 제품과 어떤 기준으로 구분해야 하는지 정리했습니다.",
+    "단백질 보충제가 언제 식사대용에 가까워지는지, 보충형 제품과 어떤 기준으로 구분해야 하는지 정리합니다.",
 };
 
 const replacementRows = [
-  ["가벼운 RTD", "보충형에 가까움", "단백질은 충분해도 칼로리와 포만감이 식사를 대체하기엔 부족한 경우가 많습니다."],
+  ["가벼운 RTD", "보충형에 가깝다", "단백질이 충분해도 칼로리와 포만감이 식사를 대체하기엔 부족한 경우가 많습니다."],
   ["바 형태 고단백", "상황별 식사 보완", "칼로리와 포만감이 어느 정도 있어 바쁜 일정에서 보완형으로 쓰기 쉽습니다."],
   ["바 + 음료 조합", "간편 식사 보완", "짧은 점심이나 이동 중 식사 보완이 필요할 때 실전성이 높습니다."],
 ];
@@ -32,7 +32,7 @@ const keyPoints = [
 const useCases = [
   "출근 전 아침을 거르기 쉬운 날",
   "오후 업무 중 간편하게 끼니를 보완해야 하는 날",
-  "운동 후 바로 식사하기 어렵지만 허기를 오래 끌고 싶지 않을 때",
+  "운동 후 바로 식사하기 어렵지만 허기를 오래 두고 싶지 않을 때",
 ];
 
 export default function MealReplacementStrategyPage() {
@@ -57,7 +57,7 @@ export default function MealReplacementStrategyPage() {
             언제 식사대용이 되는지 구분해야 합니다
           </h1>
           <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
-            모든 단백질 음료가 식사대용은 아닙니다. 포만감과 칼로리, 다음 식사까지의 간격을 먼저 봐야 기준이 분명해집니다.
+            모든 단백질 음료가 식사대용은 아닙니다. 포만감과 칼로리, 다음 끼니까지의 간격을 먼저 봐야 기준이 분명해집니다.
           </p>
         </div>
       </section>
@@ -68,7 +68,7 @@ export default function MealReplacementStrategyPage() {
             <div className="mt-4 rounded-2xl border border-[#dce8df] bg-white px-4 py-4">
               <p className="text-[11px] font-semibold tracking-[0.08em] text-[#2d6a4f]">MEAL-REPLACEMENT CHECK</p>
               <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">
-                단백질 양만 많다고 식사대용이 되지는 않습니다. 포만감, 칼로리, 다음 끼니까지의 거리까지 함께 봐야 합니다.
+                단백질 함량이 많다고 식사대용이 되지는 않습니다. 포만감, 칼로리, 다음 끼니까지 거리까지 함께 봐야 합니다.
               </p>
             </div>
             <div className="mt-5 overflow-x-auto">
@@ -77,7 +77,7 @@ export default function MealReplacementStrategyPage() {
                   <tr className="border-b border-[#e8e6e3] text-[var(--foreground)]">
                     <th className="px-3 py-3 font-semibold">유형</th>
                     <th className="px-3 py-3 font-semibold">해석</th>
-                    <th className="px-3 py-3 font-semibold">실전 사인</th>
+                    <th className="px-3 py-3 font-semibold">실전 포인트</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -106,7 +106,7 @@ export default function MealReplacementStrategyPage() {
           </section>
 
           <section className="rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
-            <h2 className="text-xl font-bold text-[var(--foreground)]">이럴 때 실전적으로 쓰입니다</h2>
+            <h2 className="text-xl font-bold text-[var(--foreground)]">이럴 때는 실전적으로 쓰입니다</h2>
             <ul className="mt-4 space-y-3 text-sm leading-6 text-[var(--foreground-muted)]">
               {useCases.map((item) => (
                 <li key={item} className="flex gap-3 rounded-xl border border-[#dce8df] bg-[#f6fbf7] px-4 py-3">
@@ -116,13 +116,13 @@ export default function MealReplacementStrategyPage() {
               ))}
             </ul>
             <blockquote className="mt-5 rounded-xl border border-[#dce8df] bg-[#f7fbf8] px-4 py-4 text-sm leading-6 text-[var(--foreground-muted)]">
-              식사대용은 한 번의 이벤트가 아니라 반복 가능한 루틴입니다. 그래서 위장 부담과 만족도도 함께 봐야 합니다.
+              식사대용은 한 번의 이벤트가 아니라 반복 가능한 루틴입니다. 그래서 위장 부담과 맛 지속성도 함께 봐야 합니다.
             </blockquote>
           </section>
           <section className="rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
             <p className="text-[11px] font-semibold tracking-[0.08em] text-[#2d6a4f]">MEAL NOTE</p>
             <p className="mt-3 text-sm leading-6 text-[var(--foreground-muted)]">
-              식사대용 여부는 제품 설명보다 실제 포만감과 칼로리, 그리고 다음 끼니까지 버틸 수 있는지가 더 정확한 기준입니다.
+              식사대용 여부는 제품 설명보다 실제 포만감과 칼로리, 그리고 다음 끼니까지 버틸 수 있는지가 가장 정확한 기준입니다.
             </p>
           </section>
         </div>

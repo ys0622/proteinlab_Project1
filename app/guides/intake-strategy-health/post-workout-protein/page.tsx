@@ -5,13 +5,13 @@ import Footer from "@/app/components/Footer";
 export const metadata = {
   title: "운동 후 단백질 가이드 | ProteinLab",
   description:
-    "운동 후 단백질을 언제, 얼마나, 어떤 기준으로 채울지 회복 루틴과 제품 선택 기준 중심으로 정리했습니다.",
+    "운동 후 단백질을 언제, 얼마나, 어떤 기준으로 채울지 회복 루틴과 제품 선택 기준 중심으로 정리합니다.",
 };
 
 const recoveryTimelineRows = [
-  ["운동 직후 0~1시간", "20~30g", "물 또는 가벼운 보충과 함께 회복 루틴을 시작하는 구간입니다."],
-  ["1~2시간 뒤 식사", "단백질 + 탄수화물", "다음 식사에서 회복 총량을 보완해 운동 후 루틴을 마무리합니다."],
-  ["나머지 식사", "하루 총량 분산", "운동 직후 한 번만으로 끝내지 말고 하루 전체 루틴에 연결하는 것이 중요합니다."],
+  ["운동 직후 0~1시간", "20~30g", "물이나 가벼운 보충과 함께 회복 루틴을 시작하는 구간입니다."],
+  ["1~2시간 뒤 식사", "단백질 + 탄수화물", "다음 식사에서 회복 총량을 보완하며 운동 후 루틴을 마무리합니다."],
+  ["나머지 식사", "하루 총량 분산", "운동 직후 한 번만으로 끝내지 말고 하루 전체 루틴과 연결하는 것이 중요합니다."],
 ];
 
 const quickChoices = [
@@ -21,7 +21,7 @@ const quickChoices = [
   },
   {
     title: "운동 후 식사까지 시간이 길 때",
-    body: "바나 RTD처럼 바로 섭취 가능한 형태가 실전적입니다. 단, 당류와 칼로리를 함께 봐야 합니다.",
+    body: "바나 RTD처럼 바로 섭취 가능한 형태가 실전적입니다. 이때도 당류와 칼로리를 같이 봐야 합니다.",
   },
   {
     title: "헬스장이나 야외에서 바로 채울 때",
@@ -32,7 +32,7 @@ const quickChoices = [
 const mistakes = [
   "운동 직후 한 번만 챙기고 하루 총량을 놓치는 경우",
   "단백질만 보고 당류와 칼로리를 확인하지 않는 경우",
-  "회복용이라고 샀지만 실제로는 식사대용에 가까운 제품을 고르는 경우",
+  "회복용이라고 하지만 실제로는 식사대용에 가까운 제품을 고르는 경우",
 ];
 
 export default function PostWorkoutProteinPage() {
@@ -121,13 +121,13 @@ export default function PostWorkoutProteinPage() {
               ))}
             </ul>
             <blockquote className="mt-5 rounded-xl border border-[#dce8df] bg-[#f7fbf8] px-4 py-4 text-sm leading-6 text-[var(--foreground-muted)]">
-              회복용 제품은 단백질 함량만 높다고 끝이 아닙니다. 다음 식사 간격, 당류, 칼로리까지 같이 봐야 목적에 맞는 선택이 됩니다.
+              회복용 제품은 단백질 함량만 높다고 충분하지 않습니다. 다음 식사 간격, 당류, 칼로리까지 같이 봐야 목적에 맞는 선택이 됩니다.
             </blockquote>
           </section>
           <section className="rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
             <p className="text-[11px] font-semibold tracking-[0.08em] text-[#2d6a4f]">RECOVERY NOTE</p>
             <p className="mt-3 text-sm leading-6 text-[var(--foreground-muted)]">
-              운동 후 보충은 빠를수록 좋다는 말보다, 다음 식사까지 얼마나 비는지와 하루 총량을 얼마나 유지하는지가 더 중요합니다.
+              운동 후 보충은 빠르면 좋다보다, 다음 식사까지 얼마나 비는지와 하루 총량을 얼마나 유지하는지가 더 중요합니다.
             </p>
           </section>
         </div>

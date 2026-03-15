@@ -9,15 +9,15 @@ export const metadata = {
 };
 
 const seniorTips = [
-  "한 번에 많이 먹기보다 부담이 적은 식사와 간식으로 나누는 편이 실천하기 쉽습니다.",
-  "쉐이크나 액상형처럼 부드러운 형태는 씹는 부담과 위장 부담이 적어 활용하기 좋습니다.",
-  "건강 관리 목적이라면 당류와 칼로리도 같이 보고, 꾸준히 유지할 수 있는 루틴을 우선해야 합니다.",
+  "한 번에 많이 먹기보다 부담이 적은 식사와 간식으로 나누는 쪽이 실천하기 쉽습니다.",
+  "요거트나 액상형처럼 부드러운 형태는 씹는 부담과 위장 부담이 적어 사용하기 좋습니다.",
+  "건강 관리 목적이라면 당류와 칼로리도 같이 보고, 꾸준히 유지할 수 있는 루틴이 우선입니다.",
 ];
 
 const seniorRows = [
-  ["아침", "부드러운 형태 우선", "위 부담이 적고 단백질을 챙기기 쉬운 시작점이 됩니다."],
-  ["오후 간식", "소량 보충", "하루 총량이 비기 쉬운 구간을 메우기에 좋습니다."],
-  ["저녁", "과하지 않게 마무리", "식사량이 적다면 저녁에 보완 지점을 만들면 안정적입니다."],
+  ["아침", "부드러운 형태 우선", "첫 부담이 적고 단백질을 챙기기 쉬운 시작점이 됩니다."],
+  ["오후 간식", "소량 보충", "하루 총량을 비우기 쉬운 구간을 메우기에 좋습니다."],
+  ["저녁", "과하지 않게 마무리", "식사량이 적다면 저녁에 보충 지점을 만들면 안정적입니다."],
 ];
 
 export default function SeniorProteinStrategyPage() {
@@ -37,12 +37,12 @@ export default function SeniorProteinStrategyPage() {
             <span className="rounded-md bg-[#f5f0ea] px-2 py-0.5 text-[11px] font-semibold tracking-wide text-[#7a5230]">TRACK C</span>
           </div>
           <h1 className="mt-3 text-2xl font-bold leading-tight text-[var(--foreground)] md:text-3xl">
-            시니어기는
+            시니어기에는
             <br />
             꾸준히 먹을 수 있는 방식이 더 중요합니다
           </h1>
           <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
-            나이가 들수록 한 번에 많은 양보다 부담 없이 자주 챙기는 방식이 훨씬 실전적입니다.
+            나이가 들수록 한 번에 많은 양보다 부담 없이 자주 챙기는 방식이 더 실전적입니다.
           </p>
         </div>
       </section>
@@ -51,7 +51,7 @@ export default function SeniorProteinStrategyPage() {
           <div className="rounded-2xl border border-[#dce8df] bg-[#f7fbf8] px-4 py-4">
             <p className="text-[11px] font-semibold tracking-[0.08em] text-[#2d6a4f]">SENIOR ROUTINE</p>
             <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">
-              아침, 간식, 저녁처럼 구간별로 나눠 부담 없이 분산하는 방식이 가장 실전적입니다.
+              아침, 간식, 저녁 구간별로 나눠 부담 없이 분산하는 방식이 가장 실전적입니다.
             </p>
           </div>
           <ul className="mt-5 space-y-3 text-sm leading-6 text-[var(--foreground-muted)]">
