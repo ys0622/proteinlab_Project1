@@ -413,6 +413,39 @@ export const guideTracks: GuideTrack[] = [
           { label: "마라톤", href: "/guides/fitness-lifestyle/marathon-protein-guide" },
         ],
       },
+      {
+        slug: "spring-diet-protein-guide",
+        title: "봄 다이어트 단백질 전략",
+        description: "봄철 체중 관리 시즌에 맞는 단백질 음료, 바, 요거트 선택 기준을 정리합니다.",
+        searchIntent: "봄 다이어트 단백질",
+        futureFocus: ["봄 다이어트", "저당 제품 기준", "가벼운 감량 루틴"],
+        internalLinkTargets: [
+          { label: "체중 관리와 단백질", href: "/guides/intake-strategy-health/weight-management-protein" },
+          { label: "다이어트 단백질 음료 기준", href: "/guides/product-selection-comparison/diet-protein-drink-guide" },
+        ],
+      },
+      {
+        slug: "spring-running-start-guide",
+        title: "봄 러닝 시작 단백질 가이드",
+        description: "봄에 러닝을 다시 시작할 때 회복 루틴과 제품 선택 기준을 정리합니다.",
+        searchIntent: "봄 러닝 단백질",
+        futureFocus: ["러닝 재개", "회복 루틴", "가벼운 RTD"],
+        internalLinkTargets: [
+          { label: "러닝 단백질 가이드", href: "/guides/fitness-lifestyle/running-protein-guide" },
+          { label: "운동 후 단백질", href: "/guides/intake-strategy-health/post-workout-protein" },
+        ],
+      },
+      {
+        slug: "spring-outdoor-protein-snack-guide",
+        title: "봄 야외활동 단백질 간식 가이드",
+        description: "피크닉, 가벼운 등산, 야외활동용 단백질 간식 기준을 정리합니다.",
+        searchIntent: "봄 단백질 간식",
+        futureFocus: ["야외활동 간식", "피크닉 단백질", "휴대성"],
+        internalLinkTargets: [
+          { label: "단백질 바 선택 가이드", href: "/guides/product-selection-comparison/protein-bar-guide" },
+          { label: "드링킹 요거트 비교 가이드", href: "/guides/product-selection-comparison/drinking-yogurt-guide" },
+        ],
+      },
     ],
   },
   {
