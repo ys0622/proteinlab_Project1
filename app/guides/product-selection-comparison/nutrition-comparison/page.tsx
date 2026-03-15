@@ -5,27 +5,27 @@ import Footer from "@/app/components/Footer";
 export const metadata = {
   title: "영양성분 비교 보는 법 | ProteinLab",
   description:
-    "단백질, 당류, 칼로리, 지방을 어떤 순서로 함께 비교해야 하는지 목적별 기준으로 정리합니다.",
+    "단백질, 당류, 칼로리, 지방을 어떤 순서로 함께 읽어야 하는지 목적별 기준 중심으로 정리합니다.",
 };
 
 const rows = [
   ["운동 후 보충", "단백질 함량 → 단백질 밀도 → 당류", "보충 효율이 우선이라 단백질과 밀도를 먼저 보는 편이 유리합니다."],
-  ["체중 관리", "당류 → 칼로리 → 단백질 함량", "당류와 총열량을 먼저 좁혀야 목적에 맞는 제품이 빠르게 남습니다."],
-  ["식사 보완", "칼로리 → 단백질 함량 → 당류", "총열량과 포만감을 먼저 보고 단백질을 보완하는 흐름이 자연스럽습니다."],
+  ["체중 관리", "당류 → 칼로리 → 단백질 함량", "당류와 총열량을 먼저 좁혀야 목적에 맞는 제품을 빠르게 고를 수 있습니다."],
+  ["식사 보완", "칼로리 → 단백질 함량 → 당류", "총열량과 포만감이 먼저고, 그 위에 단백질을 보완하는 흐름이 자연스럽습니다."],
 ];
 
 const compareTips = [
   {
     title: "비슷한 칼로리끼리 비교하기",
-    body: "칼로리 구간을 먼저 맞춰두면 단백질 밀도와 당류 차이가 훨씬 잘 보입니다.",
+    body: "칼로리 구간을 먼저 맞추면 단백질 밀도와 당류 차이가 더 선명하게 보입니다.",
   },
   {
     title: "단백질 g만 따로 보지 않기",
-    body: "단백질이 높아도 당류와 칼로리가 함께 높으면 실제 용도는 달라질 수 있습니다.",
+    body: "단백질이 높아도 당류나 칼로리가 높으면 실제 용도는 크게 달라질 수 있습니다.",
   },
   {
-    title: "용도부터 정하고 성분 읽기",
-    body: "운동 후용인지, 간식형인지, 식사 보완형인지 먼저 정하면 숫자 해석이 훨씬 쉬워집니다.",
+    title: "용도를 먼저 정하고 숫자 읽기",
+    body: "운동 후, 다이어트, 식사 보완처럼 목적을 먼저 정하면 숫자 해석이 훨씬 쉬워집니다.",
   },
 ];
 
@@ -39,7 +39,7 @@ export default function NutritionComparisonPage() {
           <div className="flex flex-wrap items-center gap-1.5 text-xs text-[var(--foreground-muted)]">
             <Link href="/guides">가이드</Link>
             <span>/</span>
-            <Link href="/guides/product-selection-comparison">제품 선택 · 비교</Link>
+            <Link href="/guides/product-selection-comparison">제품 선택 & 비교</Link>
             <span>/</span>
             <span>영양성분 비교</span>
           </div>
@@ -88,7 +88,7 @@ export default function NutritionComparisonPage() {
           </section>
 
           <section className="rounded-[28px] border border-[#e2ebe4] bg-[#f7fbf8] px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
-            <h2 className="text-xl font-bold text-[var(--foreground)]">비교 실수를 줄이는 3가지 팁</h2>
+            <h2 className="text-xl font-bold text-[var(--foreground)]">비교 실수를 줄이는 3가지 법칙</h2>
             <div className="mt-5 grid gap-3 md:grid-cols-3">
               {compareTips.map((item) => (
                 <article key={item.title} className="rounded-2xl border border-[#dce8df] bg-[#f6fbf7] p-4">
@@ -98,7 +98,7 @@ export default function NutritionComparisonPage() {
               ))}
             </div>
             <blockquote className="mt-5 rounded-xl border border-[#dce8df] bg-[#f7fbf8] px-4 py-4 text-sm leading-6 text-[var(--foreground-muted)]">
-              ProteinLab 비교 화면에서는 단백질 함량뿐 아니라 당류, 칼로리, 단백질 밀도를 함께 볼 수 있습니다. 비교 순서를 정해두면 판단 속도가 훨씬 빨라집니다.
+              ProteinLab 비교 화면에서는 단백질 함량뿐 아니라 당류, 칼로리, 단백질 밀도까지 함께 볼 수 있습니다. 비교 순서만 정하면 판단 속도는 훨씬 빨라집니다.
             </blockquote>
           </section>
 
