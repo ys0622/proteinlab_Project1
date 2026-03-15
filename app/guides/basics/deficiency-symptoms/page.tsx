@@ -11,7 +11,7 @@ export const metadata = {
 
 const summaryRows = [
   ["근육 감소·무력감", "근단백질 합성 저하와 분해 증가"],
-  ["피로·집중력 저하", "에너지 대사와 신호 물질 구성 영향"],
+  ["피로·집중력 저하", "에너지 대사와 신호 전달 구성 영향"],
   ["상처 회복 지연", "콜라겐과 조직 재생 속도 저하"],
   ["면역 저하", "항체와 면역세포 생성 감소"],
   ["부종", "알부민 감소로 체액 조절 불안정"],
@@ -21,18 +21,18 @@ const summaryRows = [
 const riskRows = [
   ["다이어트·식사 조절 중", "칼로리 제한으로 단백질 총량이 부족해지기 쉬움", "끼니마다 단백질 식품을 우선 배치"],
   ["고령층", "흡수 효율과 식욕 저하로 결핍 위험이 높음", "체중당 1.2g/kg 이상 목표 확인"],
-  ["채식·비건 식단", "필수아미노산 균형이 무너지기 쉬움", "콩류와 곡류를 같이 구성"],
+  ["채식·비건 식단", "필수 아미노산 균형이 무너지기 쉬움", "콩류와 곡류를 함께 구성"],
   ["불규칙한 식사", "공급 간격이 길어 총 섭취량이 줄기 쉬움", "하루 3회 이상 분산 섭취"],
 ];
 
 const warningPoints = [
   {
     title: "근력과 체력 저하",
-    body: "예전보다 계단이 힘들고 자주 지친다면 하루 단백질 총량을 먼저 점검할 필요가 있습니다.",
+    body: "예전보다 계단이 힘들고 자주 지친다면 하루 단백질 총량을 먼저 확인할 필요가 있습니다.",
   },
   {
     title: "회복 속도 저하",
-    body: "운동 후 근육통이나 상처 회복이 유난히 길어지면 조직 재생 재료가 부족할 수 있습니다.",
+    body: "운동 후 근육통이나 상처 회복이 오래 간다면 조직 재생 재료가 부족한 상태일 수 있습니다.",
   },
   {
     title: "면역과 컨디션 저하",
@@ -65,23 +65,23 @@ export default function DeficiencySymptomsPage() {
       <section className="w-full border-t border-b bg-[var(--hero-bg)]" style={{ borderColor: "var(--hero-border)" }}>
         <div className="mx-auto max-w-[1200px] px-4 py-5 md:px-6 md:py-6">
           <div className="flex flex-wrap items-center gap-1.5 text-xs text-[var(--foreground-muted)]">
-            <Link href="/guides" className="hover:text-[var(--accent)]">가이드</Link>
+            <Link href="/guides" className="hover:text-[var(--accent)]">
+              가이드
+            </Link>
             <span>/</span>
-            <Link href="/guides/basics" className="hover:text-[var(--accent)]">단백질 기초</Link>
+            <Link href="/guides/basics" className="hover:text-[var(--accent)]">
+              단백질 기초
+            </Link>
             <span>/</span>
             <span>단백질 부족 신호</span>
           </div>
 
           <div className="mt-3">
-            <span className="rounded-md bg-[#eef4ea] px-2 py-0.5 text-[11px] font-semibold tracking-wide text-[#4c7a57]">
-              TRACK A
-            </span>
+            <span className="rounded-md bg-[#eef4ea] px-2 py-0.5 text-[11px] font-semibold tracking-wide text-[#4c7a57]">TRACK A</span>
           </div>
 
           <div className="mt-4">
-            <h1 className="text-2xl font-bold leading-tight text-[var(--foreground)] md:text-3xl">
-              단백질이 부족하면 몸에 어떤 신호가 올까?
-            </h1>
+            <h1 className="text-2xl font-bold leading-tight text-[var(--foreground)] md:text-3xl">단백질이 부족하면 몸에 어떤 신호가 올까?</h1>
             <p className="mt-3 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
               피로, 근육 감소, 잦은 감기, 붓기.
               <br />
@@ -96,12 +96,10 @@ export default function DeficiencySymptomsPage() {
           <section className="rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
             <div className="flex flex-wrap items-center justify-between gap-3">
               <div>
-                <p className="text-xs font-semibold tracking-[0.12em] text-[#2d6a4f]">체크 포인트</p>
+                <p className="text-xs font-semibold tracking-[0.12em] text-[#2d6a4f]">체크 사인</p>
                 <h2 className="mt-2 text-xl font-bold text-[var(--foreground)]">단백질 부족 때 자주 보이는 신호</h2>
               </div>
-              <span className="rounded-full bg-[#eff7f1] px-3 py-1 text-xs font-semibold text-[#2d6a4f]">
-                결핍 신호 가이드
-              </span>
+              <span className="rounded-full bg-[#eff7f1] px-3 py-1 text-xs font-semibold text-[#2d6a4f]">결핍 신호 가이드</span>
             </div>
 
             <div className="mt-5 grid gap-3 md:grid-cols-3">
@@ -114,18 +112,12 @@ export default function DeficiencySymptomsPage() {
           <section className="rounded-[28px] border border-[#e8e6e3] bg-[#fffdf8] px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
             <h2 className="text-xl font-bold text-[var(--foreground)]">대표 증상 6가지</h2>
             <p className="mt-4 text-sm leading-6 text-[var(--foreground-muted)]">
-              근육 감소부터 면역 저하, 상처 회복 지연까지 결핍 신호는 여러 기관에서 동시에 드러날 수 있습니다.
+              근육 감소부터 면역 저하와 상처 회복 지연까지 결핍 신호는 여러 기관에서 동시에 나타날 수 있습니다.
             </p>
 
             <div className="mt-5 rounded-[28px] border border-[#dce8df] bg-[linear-gradient(135deg,#f7fbf8_0%,#eef6f1_100%)] p-6 shadow-[0_16px_36px_rgba(45,106,79,0.08)]">
               <div className="mx-auto max-w-2xl">
-                <GuideVisual
-                  track="protein-basics"
-                  title="결핍 신호"
-                  accentColor="#2d6a4f"
-                  accentBg="#eaf4ee"
-                  variant="topic"
-                />
+                <GuideVisual track="protein-basics" title="결핍 신호" accentColor="#2d6a4f" accentBg="#eaf4ee" variant="topic" />
               </div>
             </div>
 
@@ -154,12 +146,10 @@ export default function DeficiencySymptomsPage() {
 
           <section className="rounded-[28px] border border-[#e8e6e3] bg-[#fffdf8] px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
             <h2 className="text-xl font-bold text-[var(--foreground)]">누가 단백질이 부족해지기 쉬울까?</h2>
-            <Callout>
-              하루 단백질 섭취량이 체중(kg) x 0.8g 이하로 오래 유지되면 결핍 위험 구간으로 볼 수 있습니다.
-            </Callout>
+            <Callout>하루 단백질 섭취량이 체중(kg) x 0.8g 이하로 오래 유지되면 결핍 위험 구간으로 볼 수 있습니다.</Callout>
 
             <p className="mt-4 text-sm leading-6 text-[var(--foreground-muted)]">
-              식단에서 육류, 생선, 달걀, 유제품, 콩류가 줄어들거나 칼로리 제한이 과해지면 결핍 위험이 커집니다.
+              식단에서 육류, 생선, 달걀, 유제품, 콩류가 줄어들거나 칼로리 제한이 과해지면 결핍 위험은 커집니다.
             </p>
 
             <div className="mt-5 overflow-x-auto rounded-2xl border border-[#ece9e2] bg-white">
@@ -168,7 +158,7 @@ export default function DeficiencySymptomsPage() {
                   <tr className="border-b border-[#e8e6e3] text-[var(--foreground)]">
                     <th className="px-3 py-3 font-semibold">위험군</th>
                     <th className="px-3 py-3 font-semibold">이유</th>
-                    <th className="px-3 py-3 font-semibold">점검 포인트</th>
+                    <th className="px-3 py-3 font-semibold">작은 체크포인트</th>
                   </tr>
                 </thead>
                 <tbody>
