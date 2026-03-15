@@ -3,21 +3,21 @@ import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 
 export const metadata = {
-  title: "단백질 소화흡수 메커니즘 | 입에서 근육까지 | ProteinLab",
+  title: "단백질 소화·흡수 메커니즘 | 입에서 근육까지 | ProteinLab",
   description:
-    "단백질이 입·위·소장을 거쳐 아미노산으로 분해·흡수되는 과정을 쉽게 정리했습니다. 급원별 흡수 속도 차이도 확인하세요.",
+    "단백질이 입, 위, 소장을 거쳐 아미노산으로 분해·흡수되는 과정과 원료별 흡수 특성 차이를 정리합니다.",
 };
 
 const digestionRows = [
-  ["1단계", "입", "저작으로 음식 기계적 분쇄", "-"],
-  ["2단계", "위", "위산(HCl) + 펩신 → 단백질 일부 분해", "약 10~20%"],
-  ["3단계", "소장", "트립신·키모트립신·점막효소 → 아미노산으로 완전 분해 후 흡수", "나머지 전량"],
+  ["1단계", "입", "씹는 과정으로 음식물을 잘게 부수기", "-"],
+  ["2단계", "위", "위산(HCl)과 펩신으로 단백질 사슬 분해", "약 10~20%"],
+  ["3단계", "소장", "트립신 등 효소로 아미노산까지 분해 후 흡수", "대부분"],
 ];
 
 const sourceRows = [
-  ["유청(Whey) / WPI", "빠름", "BCAA·류신 풍부, 근합성 효과 높음", "운동 직후"],
-  ["카제인(Casein)", "느림", "장시간 아미노산 공급, 포만감 지속", "취침 전·식사 간 간식"],
-  ["식물성 (대두·완두)", "중간", "항영양소로 소화율 낮은 편, 비건 적합", "평시·식사 대용"],
+  ["유청(Whey) / WPI", "빠름", "BCAA와 류신 비율이 높아 운동 직후 활용이 좋음", "운동 직후"],
+  ["카제인(Casein)", "느림", "천천히 흡수되어 포만감과 야간 보충에 유리", "취침 전, 간식"],
+  ["식물성(대두·완두)", "중간", "소화 부담이 낮고 비건 식단과 조합이 쉬움", "평상시, 식사 대용"],
 ];
 
 function ImageSlot({ alt }: { alt: string }) {
@@ -57,10 +57,10 @@ export default function DigestionGuidePage() {
             </Link>
             <span>/</span>
             <Link href="/guides/basics" className="hover:text-[var(--accent)]">
-              🧬 단백질 기초
+              단백질 기초
             </Link>
             <span>/</span>
-            <span>단백질 소화흡수 메커니즘</span>
+            <span>단백질 소화·흡수 메커니즘</span>
           </div>
 
           <div className="mt-3">
@@ -70,11 +70,10 @@ export default function DigestionGuidePage() {
           </div>
 
           <h1 className="mt-3 text-2xl font-bold leading-tight text-[var(--foreground)] md:text-3xl">
-            단백질, 먹으면 몸에서 어떻게 흡수될까?
+            단백질을 먹으면 몸에서 어떻게 흡수될까?
           </h1>
           <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
-            단백질은 먹는다고 바로 근육이 되지 않습니다. 입·위·소장을 거쳐 아미노산으로 분해된 뒤에야
-            비로소 몸에 흡수됩니다.
+            단백질은 먹는 즉시 바로 근육이 되지 않습니다. 입, 위, 소장을 거쳐 아미노산으로 분해된 뒤 비로소 몸이 활용할 수 있습니다.
           </p>
         </div>
       </section>
@@ -82,7 +81,7 @@ export default function DigestionGuidePage() {
       <main className="mx-auto max-w-[1200px] px-4 py-8 md:px-6">
         <div className="space-y-6">
           <section className="rounded-2xl border border-[#e8e6e3] bg-[#fffdf8] px-5 py-5">
-            <h2 className="text-xl font-bold text-[var(--foreground)]">단백질 소화흡수 3단계</h2>
+            <h2 className="text-xl font-bold text-[var(--foreground)]">단백질 소화·흡수 3단계</h2>
 
             <div className="mt-5 overflow-x-auto">
               <table className="min-w-full border-collapse text-left text-sm">
@@ -91,7 +90,7 @@ export default function DigestionGuidePage() {
                     <th className="px-3 py-3 font-semibold">단계</th>
                     <th className="px-3 py-3 font-semibold">기관</th>
                     <th className="px-3 py-3 font-semibold">주요 작용</th>
-                    <th className="px-3 py-3 font-semibold">분해 비율</th>
+                    <th className="px-3 py-3 font-semibold">분해 비중</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -109,62 +108,57 @@ export default function DigestionGuidePage() {
             </div>
 
             <p className="mt-4 text-xs text-[var(--foreground-muted)]">
-              출처: 한국영양학회·보건복지부 「한국인 영양소 섭취기준」(2020)
+              출처: 대한영양사협회, 보건복지부 한국인 영양소 섭취기준(2020)
             </p>
 
-            <ImageSlot alt="단백질 소화흡수 3단계 경로 도식" />
+            <ImageSlot alt="단백질이 입, 위, 소장을 거쳐 아미노산으로 분해되는 3단계 흐름" />
           </section>
 
           <section className="rounded-2xl border border-[#e8e6e3] bg-[#fffdf8] px-5 py-5">
-            <h2 className="text-xl font-bold text-[var(--foreground)]">위에서 일어나는 일</h2>
+            <h2 className="text-xl font-bold text-[var(--foreground)]">위에서 먼저 풀어내기 시작한다</h2>
             <p className="mt-4 text-sm leading-6 text-[var(--foreground-muted)]">
-              위에 들어온 단백질은 위산(HCl)과 펩신 효소에 의해 잘게 분해되기 시작합니다. 주세포에서
-              분비된 펩시노겐이 pH 4 미만의 환경에서 펩신으로 활성화되어 큰 단백질 사슬을 펩타이드로
-              절단합니다. 이 단계에서 전체 단백질의 약 10~20%가 분해되며, 위의 수축운동이 내용물을
-              균일하게 혼합해 소장으로 천천히 이동시킵니다.
+              위에서는 위산과 펩신이 단백질 사슬을 잘게 끊기 시작합니다. 이 단계는 전체 분해의 일부만 담당하지만, 뒤이어 소장에서
+              아미노산까지 완전히 분해될 수 있도록 준비하는 중요한 구간입니다.
             </p>
 
             <div className="mt-4">
               <Callout>
-                위에서 느끼는 포만감은 단백질이 소장으로 이동하기 전 위에 머무는 시간과 관련이 있습니다.
+                위에 머무는 시간이 길수록 포만감은 커질 수 있습니다. 카제인처럼 천천히 흡수되는 단백질이 취침 전 보충용으로 자주 언급되는 이유이기도 합니다.
               </Callout>
             </div>
 
-            <p className="mt-4 text-xs text-[var(--foreground-muted)]">출처: 한국영양학회(2020)</p>
+            <p className="mt-4 text-xs text-[var(--foreground-muted)]">출처: 대한영양사협회(2020)</p>
           </section>
 
           <section className="rounded-2xl border border-[#e8e6e3] bg-[#fffdf8] px-5 py-5">
-            <h2 className="text-xl font-bold text-[var(--foreground)]">소장에서 아미노산이 되다</h2>
+            <h2 className="text-xl font-bold text-[var(--foreground)]">소장에서 아미노산으로 흡수된다</h2>
             <p className="mt-4 text-sm leading-6 text-[var(--foreground-muted)]">
-              소장에서 췌장이 분비한 트립신·키모트립신과 장 점막세포의 아미노펩티다아제·디펩티다아제가
-              함께 작용해 펩타이드를 개별 아미노산으로 완전히 분해합니다. 분해된 아미노산은 Na 공수송체를
-              통한 능동수송으로 혈액에 흡수되고, 간으로 이동해 근육 합성·효소·호르몬 재료로 분배됩니다.
+              소장에서는 트립신, 키모트립신 같은 효소가 펩타이드를 더 잘게 분해하고, 그 결과 생성된 아미노산이 장벽을 통해 흡수됩니다.
+              흡수된 아미노산은 혈액을 통해 근육, 효소, 호르몬, 면역단백질 합성에 사용됩니다.
             </p>
 
-            <ImageSlot alt="소장 점막세포에서 아미노산이 혈액으로 흡수되는 과정 도식" />
+            <ImageSlot alt="소장 점막에서 아미노산이 흡수되어 혈류로 이동하는 과정" />
 
             <div className="mt-4">
               <Callout>
-                동물성 단백질은 필수아미노산이 균형있게 포함되어 소화율이 높고, 식물성 단백질은 항영양소의
-                영향으로 상대적으로 소화율이 낮습니다.
+                동물성 단백질은 필수아미노산 구성이 고르게 들어 있는 경우가 많고, 식물성 단백질은 식이섬유나 다른 영양소와 함께 들어 있어 소화 속도가 상대적으로 완만할 수 있습니다.
               </Callout>
             </div>
 
-            <p className="mt-4 text-xs text-[var(--foreground-muted)]">출처: 한국영양학회(2020)</p>
+            <p className="mt-4 text-xs text-[var(--foreground-muted)]">출처: 대한영양사협회(2020)</p>
           </section>
 
           <section className="rounded-2xl border border-[#e8e6e3] bg-[#fffdf8] px-5 py-5">
-            <h2 className="text-xl font-bold text-[var(--foreground)]">단백질 급원별 흡수 속도 차이</h2>
+            <h2 className="text-xl font-bold text-[var(--foreground)]">단백질 원료별 흡수 특성 차이</h2>
             <p className="mt-4 text-sm leading-6 text-[var(--foreground-muted)]">
-              같은 단백질이라도 급원에 따라 흡수 속도와 아미노산 구성이 다릅니다. 목적에 맞는 급원을
-              선택하면 섭취 효과를 높일 수 있습니다.
+              같은 단백질이라도 원료에 따라 흡수 속도, 포만감, 아미노산 구성에 차이가 있습니다. 운동 직후, 간식, 취침 전처럼 목적에 맞게 선택하는 것이 좋습니다.
             </p>
 
             <div className="mt-5 overflow-x-auto">
               <table className="min-w-full border-collapse text-left text-sm">
                 <thead>
                   <tr className="border-b border-[#e8e6e3] text-[var(--foreground)]">
-                    <th className="px-3 py-3 font-semibold">급원</th>
+                    <th className="px-3 py-3 font-semibold">원료</th>
                     <th className="px-3 py-3 font-semibold">흡수 속도</th>
                     <th className="px-3 py-3 font-semibold">특징</th>
                     <th className="px-3 py-3 font-semibold">추천 타이밍</th>
@@ -185,24 +179,24 @@ export default function DigestionGuidePage() {
             </div>
 
             <p className="mt-4 text-xs text-[var(--foreground-muted)]">
-              출처: 한국영양학회(2020) / ISSN Position Stand (2007)
+              출처: 대한영양사협회(2020), ISSN Position Stand (2007)
             </p>
 
             <div className="mt-5">
               <Link href="/guides/basics/sources" className="text-sm font-semibold text-[var(--accent)] hover:underline">
-                급원별 차이 더 자세히 보기
+                원료별 차이 더 자세히 보기
               </Link>
             </div>
           </section>
 
           <section className="rounded-2xl border border-[#e8e6e3] bg-[#fffdf8] px-5 py-5">
-            <h2 className="text-xl font-bold text-[var(--foreground)]">흡수율을 높이는 섭취 원칙</h2>
+            <h2 className="text-xl font-bold text-[var(--foreground)]">흡수 효율을 높이는 섭취 팁</h2>
 
             <div className="mt-5 space-y-4">
               <Callout>
-                <strong>한 끼 20~30g</strong>
+                <strong>한 번에 20~30g 정도</strong>
                 <br />
-                한 끼 40g 이상은 추가 흡수 효과가 크지 않습니다. 20~30g씩 나눠 섭취하는 것이 효율적입니다.
+                한 번에 지나치게 많이 먹기보다 20~30g 범위로 나누는 편이 일상에서는 더 효율적입니다.
                 <br />
                 <span className="text-xs">출처: ISSN Position Stand (2007)</span>
               </Callout>
@@ -210,15 +204,15 @@ export default function DigestionGuidePage() {
               <Callout>
                 <strong>하루 3~4회 분산 섭취</strong>
                 <br />
-                아침·점심·저녁에 균등하게 나눠 섭취하면 하루 종일 근합성 신호를 유지할 수 있습니다.
+                아침, 점심, 저녁, 간식으로 나눠 먹으면 하루 종일 단백질 공급을 일정하게 유지할 수 있습니다.
                 <br />
-                <span className="text-xs">출처: 한국영양학회(2020)</span>
+                <span className="text-xs">출처: 대한영양사협회(2020)</span>
               </Callout>
 
               <Callout>
-                <strong>운동 후 30~45분 이내</strong>
+                <strong>운동 후 30~45분 활용</strong>
                 <br />
-                운동 직후 골든 타임에 빠른 흡수 단백질(유청)을 섭취하면 회복 효과가 높아집니다.
+                운동 뒤에는 빠르게 섭취할 수 있는 음료나 유청 단백질이 실무적으로 활용하기 편합니다.
                 <br />
                 <span className="text-xs">출처: ACSM &quot;Nutrition and Athletic Performance&quot; (2009)</span>
               </Callout>

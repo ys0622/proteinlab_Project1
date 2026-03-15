@@ -6,27 +6,27 @@ import GuideVisual from "@/app/components/GuideVisual";
 export const metadata = {
   title: "단백질과 면역·호르몬 | 항체·효소·인슐린까지 | ProteinLab",
   description:
-    "단백질은 근육뿐 아니라 항체, 호르몬, 효소 구성에도 관여합니다. 면역과 대사 관점에서 핵심 역할을 정리했습니다.",
+    "단백질이 근육뿐 아니라 항체, 호르몬, 효소 합성에 어떻게 관여하는지 면역과 대사 관점에서 정리합니다.",
 };
 
 const functionRows = [
-  ["단백질 호르몬", "인슐린, 성장호르몬, 글루카곤", "혈당 조절, 성장, 대사 조절"],
-  ["소화효소", "트립신, 펩신", "음식물 소화와 분해"],
-  ["면역단백질", "항체, 사이토카인", "병원체 방어와 면역 신호 전달"],
+  ["단백질 호르몬", "인슐린, 성장호르몬, 글루카곤", "혈당 조절, 성장, 에너지 대사 조절"],
+  ["소화 효소", "펩신, 트립신", "음식물 소화와 분해"],
+  ["면역 단백질", "항체, 사이토카인", "병원체 방어와 면역 신호 전달"],
 ];
 
 const focusPoints = [
   {
     title: "항체와 사이토카인",
-    body: "면역 반응을 만드는 핵심 재료가 단백질이라, 부족하면 회복과 방어가 동시에 흔들릴 수 있습니다.",
+    body: "면역 반응을 움직이는 핵심 재료가 단백질입니다. 부족하면 방어와 회복이 동시에 흔들릴 수 있습니다.",
   },
   {
-    title: "호르몬의 구성",
-    body: "인슐린과 성장호르몬처럼 대사와 회복을 조절하는 신호도 단백질 사슬로 구성됩니다.",
+    title: "호르몬의 구조",
+    body: "인슐린과 성장호르몬처럼 대사와 회복을 조절하는 신호 물질 일부는 단백질 구조를 가집니다.",
   },
   {
     title: "효소의 역할",
-    body: "트립신, 펩신 같은 효소 역시 단백질이라 부족하면 소화와 흡수 효율까지 영향을 받습니다.",
+    body: "소화 효소 상당수는 단백질입니다. 섭취가 부족하면 소화와 흡수 효율에도 영향을 줄 수 있습니다.",
   },
 ];
 
@@ -80,9 +80,9 @@ export default function ImmunityHormonePage() {
               단백질이 면역과 호르몬에 미치는 영향
             </h1>
             <p className="mt-3 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
-              단백질은 근육만 위한 영양소가 아닙니다.
+              단백질은 근육만을 위한 영양소가 아닙니다.
               <br />
-              항체, 사이토카인, 인슐린, 효소까지 몸의 조절 시스템 전반에 관여합니다.
+              항체, 사이토카인, 인슐린, 소화효소까지 몸의 조절 시스템 전반에 관여합니다.
             </p>
           </div>
         </div>
@@ -94,7 +94,7 @@ export default function ImmunityHormonePage() {
             <div className="flex flex-wrap items-center justify-between gap-3">
               <div>
                 <p className="text-xs font-semibold tracking-[0.12em] text-[#2d6a4f]">핵심 포인트</p>
-                <h2 className="mt-2 text-xl font-bold text-[var(--foreground)]">면역과 대사에서 단백질이 중요한 이유</h2>
+                <h2 className="mt-2 text-xl font-bold text-[var(--foreground)]">면역과 대사에 단백질이 중요한 이유</h2>
               </div>
               <span className="rounded-full bg-[#eff7f1] px-3 py-1 text-xs font-semibold text-[#2d6a4f]">
                 면역·호르몬 가이드
@@ -111,27 +111,27 @@ export default function ImmunityHormonePage() {
           <section className="rounded-[28px] border border-[#e8e6e3] bg-[#fffdf8] px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
             <h2 className="text-xl font-bold text-[var(--foreground)]">항체와 면역세포의 재료</h2>
             <p className="mt-4 text-sm leading-6 text-[var(--foreground-muted)]">
-              항체와 사이토카인, 인터페론은 모두 단백질입니다. 단백질이 부족하면 면역세포 수와 반응성이 떨어지고,
-              회복기에는 감염과 회복 지연 리스크가 함께 커질 수 있습니다.
+              항체와 사이토카인 같은 면역 단백질은 병원체를 인식하고 방어 반응을 조율합니다. 단백질 섭취가 부족하면
+              면역세포의 증식, 회복 속도, 감염 저항성이 함께 낮아질 수 있습니다.
             </p>
 
             <div className="mt-5 rounded-[28px] border border-[#dce8df] bg-[linear-gradient(135deg,#f7fbf8_0%,#eef6f1_100%)] p-6 shadow-[0_16px_36px_rgba(45,106,79,0.08)]">
               <div className="mx-auto max-w-2xl">
-              <GuideVisual
-                track="protein-basics"
-                title="항체와 면역"
-                accentColor="#2d6a4f"
-                accentBg="#eaf4ee"
-                variant="topic"
-              />
+                <GuideVisual
+                  track="protein-basics"
+                  title="항체와 면역"
+                  accentColor="#2d6a4f"
+                  accentBg="#eaf4ee"
+                  variant="topic"
+                />
               </div>
               <div className="mt-4 grid gap-3 md:grid-cols-2">
-                <InsightChip title="회복기 섭취량" body="수술 후나 회복기에는 1.5~2.0 g/kg 수준이 권장되기도 합니다." />
-                <InsightChip title="면역력과 회복" body="단백질 부족은 잦은 피로와 감염 취약성으로 이어질 수 있습니다." />
+                <InsightChip title="회복기 섭취량" body="수술 후나 회복기에는 1.5~2.0 g/kg 수준까지 권장되기도 합니다." />
+                <InsightChip title="면역력과 단백질" body="단백질 부족은 피로, 감염 취약성, 상처 회복 지연으로 이어질 수 있습니다." />
               </div>
             </div>
 
-            <Callout>단백질 결핍 시 면역세포 수 감소, 감염률 증가, 회복 지연이 함께 나타날 수 있습니다.</Callout>
+            <Callout>단백질 결핍이 심해지면 면역세포 수와 항체 생성이 줄고, 감염 후 회복도 느려질 수 있습니다.</Callout>
 
             <p className="mt-4 text-xs text-[var(--foreground-muted)]">
               출처: Munteanu &amp; Schwartz (2022), Frontiers in Nutrition
@@ -141,8 +141,8 @@ export default function ImmunityHormonePage() {
           <section className="rounded-[28px] border border-[#e8e6e3] bg-[#fffdf8] px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
             <h2 className="text-xl font-bold text-[var(--foreground)]">호르몬과 효소도 단백질이다</h2>
             <p className="mt-4 text-sm leading-6 text-[var(--foreground-muted)]">
-              인슐린, 성장호르몬, 글루카곤은 모두 단백질 또는 펩타이드 호르몬입니다. 소화를 돕는 트립신과 펩신도
-              단백질로 구성되어 있어 섭취 부족은 대사와 소화 기능 전반에 영향을 줄 수 있습니다.
+              인슐린, 성장호르몬, 글루카곤처럼 대사와 회복을 조절하는 신호 물질 가운데 상당수는 단백질입니다. 소화를 담당하는
+              펩신과 트립신도 단백질 구조를 가지기 때문에, 단백질 섭취 부족은 대사 조절과 소화 효율 모두에 영향을 줄 수 있습니다.
             </p>
 
             <div className="mt-5 overflow-x-auto rounded-2xl border border-[#ece9e2] bg-white">
@@ -169,7 +169,7 @@ export default function ImmunityHormonePage() {
             </div>
 
             <p className="mt-4 text-xs text-[var(--foreground-muted)]">
-              출처: 한국영양학회·보건복지부 「한국인 영양소 섭취기준」(2015)
+              출처: 대한영양사협회, 보건복지부 한국인 영양소 섭취기준(2015)
             </p>
           </section>
 

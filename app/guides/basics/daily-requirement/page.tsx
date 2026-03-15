@@ -3,58 +3,58 @@ import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 
 export const metadata = {
-  title: "하루 단백질 권장량 | 목적·체중·연령별 완전 정리 | ProteinLab",
+  title: "하루 단백질 권장량 | 목적·체중·연령별 정리 | ProteinLab",
   description:
-    "일반 성인부터 운동인·고령자까지, 목적별 하루 단백질 권장량과 섭취 원칙을 데이터 기반으로 정리했습니다.",
+    "일반 성인부터 운동인, 체중 조절 중인 사람, 고령층까지 하루 단백질 권장량과 분산 섭취 원칙을 정리합니다.",
 };
 
 const requirementRows = [
   ["일반 성인", "0.8 g/kg", "48g", "56g", "64g"],
-  ["체중 조절·일상", "1.0~1.2 g/kg", "60~72g", "70~84g", "80~96g"],
+  ["체중 조절·일상 활동", "1.0~1.2 g/kg", "60~72g", "70~84g", "80~96g"],
   ["운동·근성장", "1.2~1.7 g/kg", "72~102g", "84~119g", "96~136g"],
-  ["고령자 (60세 이상)", "1.2 g/kg 이상", "72g 이상", "84g 이상", "96g 이상"],
+  ["고령층(60세 이상)", "1.2 g/kg 이상", "72g 이상", "84g 이상", "96g 이상"],
 ];
 
 const principleCards = [
   {
-    icon: "📌",
-    title: "하루 3끼에 나눠서",
-    body: "한 끼 40g 이상을 넘으면 추가 효과는 크지 않습니다. 15~30g씩 균등하게 분배하세요.",
+    icon: "1",
+    title: "하루 3회 이상 나눠 먹기",
+    body: "한 번에 몰아 먹기보다 끼니마다 15~30g씩 분산하면 흡수와 활용이 더 안정적입니다.",
   },
   {
-    icon: "📌",
-    title: "완전 단백질을 선택",
-    body: "필수 아미노산이 모두 포함된 유청·육류·달걀·두부 등을 우선합니다.",
+    icon: "2",
+    title: "완전 단백질을 우선 선택",
+    body: "유청, 달걀, 생선, 육류, 우유처럼 필수아미노산이 균형 있게 들어간 식품이 기본입니다.",
   },
   {
-    icon: "📌",
+    icon: "3",
     title: "2g/kg 이상은 신중하게",
-    body: "과도한 단백질은 신장 부담과 체지방 증가로 이어질 수 있습니다.",
+    body: "고강도 훈련이 아니라면 지나치게 높은 섭취는 효율이 떨어질 수 있어 목적에 맞게 조절하는 편이 좋습니다.",
   },
 ];
 
 const faqs = [
   {
-    question: "단백질 부족 시 어떤 징후를 먼저 확인해야 하나요?",
+    question: "단백질 부족 여부는 어떤 신호로 먼저 알 수 있나요?",
     answer:
-      "근육 약화, 피로, 잦은 감기, 탈모, 부종이 대표 증상입니다. 특히 이유 없이 피로가 심해진다면 단백질 섭취를 점검해보세요.",
+      "근력 저하, 잦은 피로, 상처 회복 지연, 잦은 감염 같은 신호가 반복되면 하루 단백질 섭취량부터 점검하는 편이 좋습니다.",
     linkLabel: "단백질 부족 증상 자세히 보기",
     href: "/guides/basics/deficiency-symptoms",
   },
   {
-    question: "운동을 많이 안 해도 단백질을 많이 먹어야 하나요?",
+    question: "운동을 많이 하지 않아도 단백질을 신경 써야 하나요?",
     answer:
-      "운동을 하지 않으면 0.8g/kg(RDA)으로 충분합니다. 다만 중장년층은 근감소증 예방을 위해 1.0~1.2g/kg 섭취를 권장합니다.",
+      "운동을 하지 않아도 기본 권장량은 필요합니다. 다만 체중 조절, 고령, 회복기라면 일반 권장량보다 조금 더 높은 섭취가 도움이 될 수 있습니다.",
   },
   {
-    question: "단백질 과잉 섭취는 문제가 없나요?",
+    question: "단백질을 많이 먹으면 무조건 좋은가요?",
     answer:
-      "일반 식사로는 과잉 섭취가 어렵지만, 보충제 과용 시 신장 부담과 체지방 증가가 우려됩니다. 2g/kg 이상은 신중하게 접근하세요.",
+      "그렇지는 않습니다. 총량보다 중요한 것은 내 체중과 목적에 맞는 적정량을 꾸준히 채우는 것입니다. 과도한 보충제 섭취는 불필요한 열량 증가로 이어질 수 있습니다.",
   },
   {
-    question: "단백질이 부족할 때 가장 빠르게 보완하는 방법은?",
+    question: "식사만으로 부족하면 어떻게 보완하나요?",
     answer:
-      "생선·달걀·콩·유제품 등 고단백 식품을 매 끼니에 포함하세요. 부족할 경우 단백질 음료로 간편하게 보충할 수 있습니다.",
+      "우유, 달걀, 두부, 그릭요거트 같은 식품으로 먼저 보완하고, 끼니 구성이 어려울 때 단백질 음료나 바를 보조적으로 활용하면 됩니다.",
   },
 ];
 
@@ -82,7 +82,7 @@ export default function DailyRequirementPage() {
             </Link>
             <span>/</span>
             <Link href="/guides/basics" className="hover:text-[var(--accent)]">
-              🧬 단백질 기초
+              단백질 기초
             </Link>
             <span>/</span>
             <span>하루 단백질 권장량</span>
@@ -98,8 +98,7 @@ export default function DailyRequirementPage() {
             나는 단백질이 얼마나 필요할까?
           </h1>
           <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
-            단백질 권장량은 체중, 나이, 활동 수준에 따라 달라집니다. 내 상황에 맞는 하루 목표량을
-            확인해보세요.
+            단백질 권장량은 체중, 연령, 활동량, 목표에 따라 달라집니다. 내 상황에 맞는 하루 목표치를 먼저 정하는 것이 출발점입니다.
           </p>
         </div>
       </section>
@@ -114,7 +113,7 @@ export default function DailyRequirementPage() {
                 <thead>
                   <tr className="border-b border-[#e8e6e3] text-[var(--foreground)]">
                     <th className="px-3 py-3 font-semibold">목적</th>
-                    <th className="px-3 py-3 font-semibold">권장량 (g/kg 체중)</th>
+                    <th className="px-3 py-3 font-semibold">권장량(g/kg 체중)</th>
                     <th className="px-3 py-3 font-semibold">60kg 기준</th>
                     <th className="px-3 py-3 font-semibold">70kg 기준</th>
                     <th className="px-3 py-3 font-semibold">80kg 기준</th>
@@ -135,14 +134,14 @@ export default function DailyRequirementPage() {
             </div>
 
             <p className="mt-4 text-xs text-[var(--foreground-muted)]">
-              출처: WHO / 한국영양학회·보건복지부 「한국인 영양소 섭취기준」(2015) / 대한노인의학회
+              출처: WHO / 대한영양사협회 / 보건복지부 한국인 영양소 섭취기준(2015) / 대한노인의학회
             </p>
 
             <Callout>
-              단백질은 한 끼에 몰아서 먹기보다 아침·점심·저녁 15~30g씩 나눠 섭취하는 것이 효과적입니다.
+              단백질은 하루 한 번에 몰아 먹기보다 아침, 점심, 저녁, 간식으로 나누어 15~30g씩 분산 섭취하는 편이 실용적입니다.
             </Callout>
 
-            <p className="mt-4 text-xs text-[var(--foreground-muted)]">출처: 한국영양학회(2015)</p>
+            <p className="mt-4 text-xs text-[var(--foreground-muted)]">출처: 대한영양사협회(2015)</p>
 
             <div className="mt-5">
               <Link
@@ -160,7 +159,7 @@ export default function DailyRequirementPage() {
             <div className="mt-5 grid gap-4 md:grid-cols-3">
               {principleCards.map((card) => (
                 <article key={card.title} className="rounded-2xl border border-[#e8e6e3] bg-white px-4 py-4">
-                  <p className="text-lg">{card.icon}</p>
+                  <p className="text-lg font-semibold text-[#24543d]">{card.icon}</p>
                   <h3 className="mt-3 text-base font-semibold text-[var(--foreground)]">{card.title}</h3>
                   <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">{card.body}</p>
                 </article>

@@ -3,43 +3,43 @@ import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 
 export const metadata = {
-  title: "단백질 역할 — 근육·면역·호르몬에서 하는 일 | ProteinLab",
+  title: "단백질은 몸에서 어떤 일을 할까 | ProteinLab",
   description:
-    "단백질이 근육 성장, 항체 생성, 호르몬 합성에 어떻게 작용하는지 데이터 기반으로 정리했습니다.",
+    "단백질이 근육 성장, 항체 생성, 호르몬과 효소 합성에 어떻게 관여하는지 기본 구조부터 정리합니다.",
 };
 
 const bodyCompositionRows = [
-  ["골격근", "약 20–25%", "액틴, 미오신"],
-  ["피부·근막", "약 15–20%", "콜라겐, 엘라스틴"],
-  ["뼈·연골", "약 10–15%", "콜라겐(Ⅰ형)"],
-  ["내장(간·심장)", "약 5–10%", "효소류, 알부민"],
-  ["혈액", "약 5–7%", "알부민, 글로불린"],
+  ["골격근", "약 20~25%", "액틴, 미오신"],
+  ["피부·결합조직", "약 15~20%", "콜라겐, 엘라스틴"],
+  ["뼈·연골", "약 10~15%", "콜라겐(구조 단백질)"],
+  ["내장기관", "약 5~10%", "효소, 운반 단백질"],
+  ["혈액", "약 5% 내외", "헤모글로빈, 알부민"],
 ];
 
 const intakeRows = [
   ["일반 성인", "0.8 g/kg", "48g", "56g", "64g"],
-  ["중등도 운동", "1.2–1.6 g/kg", "72–96g", "84–112g", "96–128g"],
-  ["고강도·근성장", "1.6–2.0 g/kg", "96–120g", "112–140g", "128–160g"],
+  ["중강도 운동", "1.2~1.6 g/kg", "72~96g", "84~112g", "96~128g"],
+  ["고강도 훈련·근성장", "1.6~2.0 g/kg", "96~120g", "112~140g", "128~160g"],
 ];
 
 const roleCards = [
   {
-    title: "근육 — 만들고, 회복하고, 유지한다",
-    body: "운동 후 단백질에서 분해된 아미노산(특히 류신)이 근육 내 mTOR 신호경로를 활성화해 근섬유 합성을 촉진합니다. 운동하는 사람은 하루 체중 1kg당 1.4–2.0g 섭취가 권장됩니다.",
+    title: "근육을 만들고 회복시키는 재료",
+    body: "운동 뒤 단백질이 아미노산으로 분해되면 류신 같은 필수아미노산이 근육 합성 신호를 자극합니다. 손상된 근섬유를 다시 붙이고 다음 훈련을 버틸 회복 기반을 만드는 역할입니다.",
     href: "/guides/basics/muscle",
-    cta: "근육과 단백질 더 자세히 보기 →",
+    cta: "근육과 단백질 자세히 보기 →",
   },
   {
-    title: "면역 — 항체와 면역세포의 재료",
-    body: "항체(면역글로불린), 사이토카인, 인터페론은 모두 단백질입니다. 단백질이 부족하면 면역세포 수가 줄고 감염에 취약해집니다.",
+    title: "면역세포와 항체를 만드는 재료",
+    body: "항체, 사이토카인, 면역세포 표면 단백질은 모두 단백질입니다. 충분히 먹지 못하면 감염 방어와 회복 속도가 함께 흔들릴 수 있어 단순 체력 문제로만 보면 안 됩니다.",
     href: "/guides/basics/immunity-hormone",
-    cta: "면역·호르몬과 단백질 더 자세히 보기 →",
+    cta: "면역·호르몬과 단백질 자세히 보기 →",
   },
   {
-    title: "호르몬·효소 — 몸의 신호와 대사를 조절",
-    body: "인슐린, 성장호르몬, 글루카곤은 모두 단백질 호르몬입니다. 트립신·펩신 같은 소화효소도 단백질입니다. 단백질 공급이 부족하면 이들의 합성이 감소합니다.",
+    title: "호르몬과 효소를 움직이는 기반",
+    body: "인슐린, 성장호르몬, 글루카곤 같은 신호 물질과 소화효소 상당수도 단백질 구조를 가집니다. 단백질 섭취가 부족하면 대사 조절과 소화 효율까지 연쇄적으로 영향을 받을 수 있습니다.",
     href: "/guides/basics/immunity-hormone",
-    cta: "면역·호르몬과 단백질 더 자세히 보기 →",
+    cta: "면역·호르몬과 단백질 자세히 보기 →",
   },
 ];
 
@@ -75,7 +75,7 @@ export default function RoleOverviewGuidePage() {
             <span>/</span>
             <Link href="/guides/basics" className="hover:text-[var(--accent)]">단백질 기초</Link>
             <span>/</span>
-            <span>단백질 역할 개요</span>
+            <span>단백질의 역할 개요</span>
           </div>
           <div className="mt-3">
             <span className="rounded-md bg-[#eef4ea] px-2 py-0.5 text-[11px] font-semibold tracking-wide text-[#4c7a57]">
@@ -83,12 +83,12 @@ export default function RoleOverviewGuidePage() {
             </span>
           </div>
           <h1 className="mt-3 text-2xl font-bold leading-tight text-[var(--foreground)] md:text-3xl">
-            단백질, 몸에서 어떤 일을 할까?
+            단백질은 몸에서 어떤 일을 할까?
           </h1>
           <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
             단백질은 단순히 근육을 키우는 영양소가 아닙니다.
             <br />
-            면역세포를 만들고, 호르몬을 합성하고, 온몸의 조직을 유지하는 데도 단백질이 필요합니다.
+            면역세포를 만들고, 호르몬과 효소를 합성하고, 손상된 조직을 회복시키는 데까지 폭넓게 관여합니다.
           </p>
         </div>
       </section>
@@ -96,16 +96,15 @@ export default function RoleOverviewGuidePage() {
       <main className="mx-auto max-w-[1200px] px-4 py-8 md:px-6">
         <div className="space-y-6">
 
-          {/* Section 1 */}
           <section className="rounded-2xl border border-[#e8e6e3] bg-[#fffdf8] px-5 py-5">
             <h2 className="text-xl font-bold text-[var(--foreground)]">
-              우리 몸은 단백질로 이루어져 있다
+              우리 몸은 생각보다 많은 단백질로 이루어져 있다
             </h2>
             <div className="mt-4">
               <Callout>
-                아미노산이 결합한 단백질은 근육·피부·혈액·효소·호르몬 등 인체 거의 모든 구성 성분의 원료입니다.
+                아미노산이 결합한 단백질은 근육뿐 아니라 피부, 혈액, 효소, 호르몬, 항체까지 인체 거의 모든 기능의 재료입니다.
                 <br />
-                체내에서는 끊임없이 단백질이 생성되고 분해되며 — 이를 단백질 대사(아미노산 풀)라고 합니다.
+                체내에서는 단백질이 계속 분해되고 다시 합성되기 때문에, 매일 일정량의 공급이 필요합니다.
               </Callout>
             </div>
             <ImageSlot />
@@ -114,7 +113,7 @@ export default function RoleOverviewGuidePage() {
                 <thead>
                   <tr className="border-b border-[#e8e6e3] text-[var(--foreground)]">
                     <th className="px-3 py-3 font-semibold">조직</th>
-                    <th className="px-3 py-3 font-semibold">체중 대비 단백질 비중</th>
+                    <th className="px-3 py-3 font-semibold">체성분 내 단백질 비중</th>
                     <th className="px-3 py-3 font-semibold">대표 단백질</th>
                   </tr>
                 </thead>
@@ -132,14 +131,13 @@ export default function RoleOverviewGuidePage() {
               </table>
             </div>
             <p className="mt-4 text-xs text-[var(--foreground-muted)]">
-              출처: 한국영양학회·보건복지부 「한국인 영양소 섭취기준」(2015)
+              출처: 대한영양사협회, 보건복지부 한국인 영양소 섭취기준(2015)
             </p>
           </section>
 
-          {/* Section 2 */}
           <section className="rounded-2xl border border-[#e8e6e3] bg-[#fffdf8] px-5 py-5">
             <h2 className="text-xl font-bold text-[var(--foreground)]">
-              단백질이 하는 3가지 핵심 역할
+              단백질이 하는 대표적인 3가지 역할
             </h2>
             <ImageSlot />
             <div className="mt-5 grid grid-cols-1 gap-4 lg:grid-cols-3">
@@ -160,10 +158,9 @@ export default function RoleOverviewGuidePage() {
             </div>
           </section>
 
-          {/* Section 3 */}
           <section className="rounded-2xl border border-[#e8e6e3] bg-[#fffdf8] px-5 py-5">
             <h2 className="text-xl font-bold text-[var(--foreground)]">
-              나는 하루에 얼마나 먹어야 할까?
+              하루에 얼마나 먹어야 할까?
             </h2>
             <div className="mt-5 overflow-x-auto">
               <table className="min-w-full border-collapse text-left text-sm">
@@ -190,14 +187,14 @@ export default function RoleOverviewGuidePage() {
               </table>
             </div>
             <p className="mt-4 text-xs text-[var(--foreground-muted)]">
-              출처: WHO·한국영양학회(일반 성인), ISSN Position Stand(운동자)
+              출처: WHO, 대한영양사협회(일반 성인), ISSN Position Stand(운동인)
             </p>
             <div className="mt-5">
               <Link
                 href="/recommend"
                 className="inline-flex items-center justify-center rounded-lg border border-[#e8e6e3] px-5 py-3 text-sm font-semibold text-[#374151] transition-colors hover:bg-[var(--accent-light)] hover:text-[var(--accent)]"
               >
-                내 목적에 맞는 단백질 음료 찾기 →
+                내 목적에 맞는 단백질 제품 찾기 →
               </Link>
             </div>
           </section>
