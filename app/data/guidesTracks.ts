@@ -550,7 +550,7 @@ export const guideTracks: GuideTrack[] = [
         slug: "daily-protein-calculator",
         title: "하루 단백질 섭취량 계산기",
         description:
-          "체중과 운동량을 기준으로 하루 단백질 권장량을 계산하는 핵심 도구 페이지 슬롯입니다.",
+          "체중과 운동량을 입력하면 하루 단백질 권장량을 바로 계산할 수 있습니다.",
         searchIntent: "하루 단백질 섭취량 계산기",
         futureFocus: ["체중 기준 계산", "운동량별 계수", "제품 연결"],
         internalLinkTargets: [
@@ -562,7 +562,7 @@ export const guideTracks: GuideTrack[] = [
         slug: "protein-drink-count-calculator",
         title: "단백질 음료 개수 계산기",
         description:
-          "목표 단백질 섭취량을 기준으로 제품별 몇 병이 필요한지 계산할 수 있도록 확장할 예정인 도구 슬롯입니다.",
+          "목표 단백질 섭취량을 기준으로 단백질 음료가 하루 몇 개 필요한지 계산합니다.",
         searchIntent: "단백질 음료 몇 개 먹어야",
         futureFocus: ["제품별 단백질 함량 반영", "섭취량 환산", "비교 페이지 연결"],
         internalLinkTargets: [
@@ -574,7 +574,7 @@ export const guideTracks: GuideTrack[] = [
         slug: "protein-density-calculator",
         title: "단백질 밀도 계산기",
         description:
-          "칼로리 대비 단백질 효율을 계산해 제품 선택에 활용할 수 있도록 준비하는 도구 슬롯입니다.",
+          "칼로리 대비 단백질 효율을 계산해 더 효율적인 제품을 고를 수 있도록 도와줍니다.",
         searchIntent: "단백질 밀도 계산기",
         futureFocus: ["밀도 계산식", "제품 비교", "선택 기준 연결"],
         internalLinkTargets: [
