@@ -187,7 +187,7 @@ export function buildAdminGuidesStaticData(): AdminGuidesStaticData {
   return {
     mainPage: {
       title: "단백질 가이드",
-      description: "Track A부터 Track F까지 현재 사이트에 연결된 가이드 구조를 운영 관점에서 한 번에 관리합니다.",
+      description: "단백질 기초부터 제품 선택, 섭취 전략, 시장 인사이트까지 — 목적에 맞는 가이드를 바로 찾아보세요.",
       tracks: sections.map((section) => ({
         id: section.id,
         emoji: section.emoji,
