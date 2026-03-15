@@ -3,34 +3,34 @@ import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 
 export const metadata = {
-  title: "러너용 단백질 제품 비교와 선택 기준 | ProteinLab",
+  title: "운동 목적별 단백질 음료 선택 기준 | ProteinLab",
   description:
-    "유청, 식물성, 저당, 고단백 제품까지. 러너가 실제로 제품을 고를 때 보는 기준과 대표 제품 비교를 정리했습니다.",
+    "벌크업, 체중 관리, 회복 중심 운동까지 목적에 맞게 단백질 음료를 고르는 기준을 정리했습니다. 단백질 함량, 흡수 부담, 당류와 칼로리를 함께 비교하세요.",
 };
 
 const productRows = [
-  ["테이크핏 몬스터", "혼합 (유청+카제인)", "43g", "8.5g", "1.3g", "186kcal", "회복·근육보충"],
-  ["뉴케어 올프로틴 41g", "혼합 (락토프리)", "41g", "7.2g", "4g", "210kcal", "회복·근력 증가"],
-  ["닥터유 프로 단백질 드링크", "혼합", "40g", "7.5g", "9.8g", "258kcal", "식사대용·회복"],
-  ["셀렉스 프로핏", "혼합", "20g", "4.2g", "3g", "125kcal", "저당·가벼운 회복 간식"],
-  ["올프로틴 식물성", "식물성", "20g", "-", "5g", "130kcal", "식물성 보충·회복"],
+  ["게이너/매스형", "복합형(단백질+탄수화물)", "30~45g", "중간", "낮음", "200~350kcal", "벌크업, 체중 증가"],
+  ["고단백 RTD", "유청 단백질 중심", "20~30g", "높음", "중간", "100~180kcal", "운동 후 회복"],
+  ["저당 RTD", "유청 또는 분리유청", "20~25g", "높음", "낮음", "90~140kcal", "다이어트, 체중 관리"],
+  ["식물성 RTD", "대두/완두 단백질", "15~25g", "중간", "낮음", "100~170kcal", "식물성 선호, 유당 부담"],
+  ["드링킹 요거트형", "발효유+단백질 강화", "10~20g", "중간", "중간", "90~160kcal", "간편 간식, 아침 보완"],
 ];
 
 const flowCards = [
   {
-    title: "회복/근육 증가",
-    body: "훈련 후 빠른 회복과 근육 유지가 목표라면 고단백·고BCAA 제품을 우선 봅니다.",
-    product: "예: 테이크핏 몬스터",
+    title: "회복이 우선일 때",
+    body: "운동 직후 빠르게 마실 제품이 필요하다면 단백질 함량 20g 이상, 당류 낮음, 소화 부담이 덜한 RTD부터 고르는 편이 안정적입니다.",
+    product: "예시: 고단백 RTD",
   },
   {
-    title: "저당/체중 관리",
-    body: "목표 체중 관리가 필요하다면 저당·적정 단백 제품이 더 부담이 적습니다.",
-    product: "예: 셀렉스 프로핏",
+    title: "체중 관리가 우선일 때",
+    body: "칼로리와 당류를 먼저 본 뒤 단백질 밀도까지 확인해야 합니다. 체중 조절 단계에서는 같은 20g 단백질이라도 총열량 차이가 큽니다.",
+    product: "예시: 저당 RTD",
   },
   {
-    title: "식물성 선호",
-    body: "유당 부담이나 식물성 선호가 있다면 식물성 단백질과 저칼로리 조합을 우선 확인합니다.",
-    product: "예: 올프로틴 식물성",
+    title: "벌크업이 우선일 때",
+    body: "단백질 g 수치만 볼 게 아니라 탄수화물 보강, 총칼로리, 운동 직후 섭취 편의성까지 같이 봐야 실제 체중 증가 루틴에 맞습니다.",
+    product: "예시: 게이너/매스형",
   },
 ];
 
@@ -47,10 +47,10 @@ export default function SportsNutritionGuidePage() {
             </Link>
             <span>/</span>
             <Link href="/guides/fitness-lifestyle" className="hover:text-[var(--accent)]">
-              운동 · 라이프스타일
+              운동 & 라이프스타일
             </Link>
             <span>/</span>
-            <span>운동 영양 & 제품 비교</span>
+            <span>운동 목적별 단백질 음료 선택</span>
           </div>
 
           <div className="mt-3">
@@ -60,12 +60,12 @@ export default function SportsNutritionGuidePage() {
           </div>
 
           <h1 className="mt-3 text-2xl font-bold leading-tight text-[var(--foreground)] md:text-3xl">
-            러너는 어떤 단백질 제품을 골라야 할까?
+            운동 목적에 따라 단백질 음료를 고르는 기준
           </h1>
           <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
-            제품 선택은 단순히 단백질 g 수치만 보는 문제가 아닙니다.
+            단백질 음료 선택은 단순히 단백질 g 수치만 보면 끝나지 않습니다.
             <br />
-            단백질 종류, BCAA/류신, 탄수화물, 칼로리, 용도를 함께 봐야 실전에서 실패가 적습니다.
+            운동 목적, 회복 속도, 흡수 부담, 총칼로리와 당류를 함께 봐야 실제 루틴에 맞는 제품을 고를 수 있습니다.
           </p>
         </div>
       </section>
@@ -76,7 +76,9 @@ export default function SportsNutritionGuidePage() {
             <div className="flex flex-wrap items-center justify-between gap-3">
               <div>
                 <p className="text-xs font-semibold tracking-[0.12em] text-[#2d6a4f]">SELECTION FLOW</p>
-                <h2 className="mt-2 text-xl font-bold text-[var(--foreground)]">용도별로 고르면 제품 선택이 빨라집니다</h2>
+                <h2 className="mt-2 text-xl font-bold text-[var(--foreground)]">
+                  목적부터 정하면 제품 선택이 쉬워집니다
+                </h2>
               </div>
               <span className="rounded-full bg-[#eff7f1] px-3 py-1 text-xs font-semibold text-[#2d6a4f]">
                 제품 선택 플로우
@@ -91,7 +93,7 @@ export default function SportsNutritionGuidePage() {
                 >
                   <p className="text-sm font-semibold text-[#24543d]">{card.title}</p>
                   <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">{card.body}</p>
-                  <p className="mt-3 rounded-full bg-[#eff7f1] px-3 py-1 text-[11px] font-semibold text-[#2d6a4f] inline-flex">
+                  <p className="mt-3 inline-flex rounded-full bg-[#eff7f1] px-3 py-1 text-[11px] font-semibold text-[#2d6a4f]">
                     {card.product}
                   </p>
                 </article>
@@ -100,22 +102,22 @@ export default function SportsNutritionGuidePage() {
           </section>
 
           <section className="rounded-[28px] border border-[#e2ebe4] bg-[#f7fbf8] px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
-            <h2 className="text-xl font-bold text-[var(--foreground)]">러너용 주요 제품 비교</h2>
+            <h2 className="text-xl font-bold text-[var(--foreground)]">운동 목적별 제품군 비교</h2>
             <p className="mt-3 text-sm leading-6 text-[var(--foreground-muted)]">
-              단백질 종류, 단백질 g 수치, BCAA/류신, 탄수화물, 칼로리를 함께 보면 용도 구분이 훨씬 명확해집니다.
+              단백질 종류, 단백질 g 수치, 흡수 부담, 총열량을 같이 보면 어떤 상황에서 어떤 제품군이 유리한지 구분하기 쉬워집니다.
             </p>
 
             <div className="mt-5 overflow-x-auto rounded-2xl border border-[#ece9e2] bg-white">
               <table className="min-w-full border-collapse text-left text-sm">
                 <thead>
                   <tr className="border-b border-[#e8e6e3] text-[var(--foreground)]">
-                    <th className="px-3 py-3 font-semibold">제품</th>
-                    <th className="px-3 py-3 font-semibold">단백질 종류</th>
+                    <th className="px-3 py-3 font-semibold">제품군</th>
+                    <th className="px-3 py-3 font-semibold">구성 특징</th>
                     <th className="px-3 py-3 font-semibold">단백질</th>
-                    <th className="px-3 py-3 font-semibold">BCAA/류신</th>
-                    <th className="px-3 py-3 font-semibold">탄수</th>
+                    <th className="px-3 py-3 font-semibold">흡수 속도</th>
+                    <th className="px-3 py-3 font-semibold">부담</th>
                     <th className="px-3 py-3 font-semibold">열량</th>
-                    <th className="px-3 py-3 font-semibold">추천 용도</th>
+                    <th className="px-3 py-3 font-semibold">추천 상황</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -133,7 +135,7 @@ export default function SportsNutritionGuidePage() {
             </div>
 
             <p className="mt-4 text-xs text-[var(--foreground-muted)]">
-              출처: ProteinLab 제품 페이지, Witard et al. (2025), ISSN Position Stand (2007)
+              비교 기준: ProteinLab 제품 데이터, 운동 후 단백질 섭취 가이드, 일반적인 RTD 제품군 특성
             </p>
           </section>
 
@@ -141,15 +143,15 @@ export default function SportsNutritionGuidePage() {
             <h2 className="text-xl font-bold text-[var(--foreground)]">실전 선택 팁</h2>
             <div className="mt-5 grid gap-3 md:grid-cols-2">
               <article className="rounded-2xl border border-[#dce8df] bg-[#f6fbf7] p-4 shadow-[0_12px_30px_rgba(45,106,79,0.06)]">
-                <p className="text-sm font-semibold text-[#24543d]">회복이 우선이면</p>
+                <p className="text-sm font-semibold text-[#24543d]">운동 후 회복이 우선이라면</p>
                 <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">
-                  고단백·고BCAA 제품이 유리합니다. 훈련 직후 바로 마실 수 있는 RTD 음료가 가장 실전적입니다.
+                  20g 이상 단백질을 빠르게 보충할 수 있는 RTD가 가장 무난합니다. 당류가 높지 않고 마시기 쉬운 구성을 먼저 보는 편이 지속하기 쉽습니다.
                 </p>
               </article>
               <article className="rounded-2xl border border-[#dce8df] bg-[#f6fbf7] p-4 shadow-[0_12px_30px_rgba(45,106,79,0.06)]">
-                <p className="text-sm font-semibold text-[#24543d]">체중 관리가 우선이면</p>
+                <p className="text-sm font-semibold text-[#24543d]">체중 관리가 우선이라면</p>
                 <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">
-                  저당·저칼로리 제품을 먼저 보고, 단백질 밀도와 당류를 함께 체크하는 편이 효율적입니다.
+                  저당, 저칼로리, 높은 단백질 밀도를 먼저 봐야 합니다. 같은 단백질 20g이어도 총열량과 당류가 다르면 다이어트 효율이 크게 달라집니다.
                 </p>
               </article>
             </div>
