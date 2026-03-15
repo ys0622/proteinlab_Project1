@@ -64,9 +64,7 @@ export default function ProteinToolsClient() {
           <div className="flex items-center justify-between gap-3">
             <div>
               <p className="text-xs font-semibold tracking-[0.08em] text-[#2d6a4f]">CALCULATOR</p>
-              <h2 className="mt-2 text-lg font-bold text-[var(--foreground)]">
-                하루 단백질 섭취량 계산기
-              </h2>
+              <h2 className="mt-2 text-lg font-bold text-[var(--foreground)]">하루 단백질 섭취량 계산기</h2>
             </div>
           </div>
 
@@ -129,16 +127,14 @@ export default function ProteinToolsClient() {
 
         <section className="rounded-[28px] border border-[#c5dcc9] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(45,106,79,0.06)]">
           <p className="text-xs font-semibold tracking-[0.08em] text-[#2d6a4f]">RESULT</p>
-          <h2 className="mt-2 text-lg font-bold text-[var(--foreground)]">
-            당신의 하루 권장 단백질 섭취량
-          </h2>
+          <h2 className="mt-2 text-lg font-bold text-[var(--foreground)]">당신의 하루 권장 단백질 섭취량</h2>
 
           <div className="mt-5 rounded-2xl border border-[#c5dcc9] bg-[linear-gradient(135deg,#f4faf5_0%,#eaf4ed_100%)] px-4 py-5">
             <p className="text-xs text-[#2d6a4f]">
-              {submitted ? `${calculation.goalLabel} 기준 계산 결과` : "입력 후 계산 결과가 표시됩니다."}
+              {submitted ? `${calculation.goalLabel} 기준 계산 결과` : "입력 후 계산 결과가 표시됩니다"}
             </p>
             <p className="mt-2 text-3xl font-bold text-[#2d6a4f]">
-              {calculation.recommendedProtein > 0 ? `${calculation.recommendedProtein}g / day` : "—"}
+              {calculation.recommendedProtein > 0 ? `${calculation.recommendedProtein}g / day` : "--"}
             </p>
             <p className="mt-3 text-sm leading-6 text-[var(--foreground-muted)]">
               이는 일반적인 권장 범위를 기반으로 계산한 값입니다. 개인의 건강 상태와 식사 패턴에 따라 달라질 수 있습니다.
@@ -146,11 +142,9 @@ export default function ProteinToolsClient() {
           </div>
 
           <div className="mt-5 rounded-xl border border-[#e8e6e3] bg-[#fffdf8] px-4 py-4">
-            <p className="text-sm font-semibold text-[var(--foreground)]">
-              계산 기준: {calculation.factor.toFixed(1)} g/kg
-            </p>
+            <p className="text-sm font-semibold text-[var(--foreground)]">계산 기준: {calculation.factor.toFixed(1)} g/kg</p>
             <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">
-              체중과 활동량 조합을 바꾸면 결과도 함께 달라집니다. 목표에 맞는 해석 참고용으로 보시면 됩니다.
+              체중과 활동량 조합을 바꾸면 결과도 함께 달라집니다. 목표에 맞는 해석 참고용으로 보면 됩니다.
             </p>
           </div>
         </section>
@@ -158,23 +152,17 @@ export default function ProteinToolsClient() {
 
       <section className="rounded-2xl border border-[#e8e6e3] bg-[#fffdf8] px-5 py-5">
         <p className="text-xs font-semibold tracking-[0.08em] text-[#8f8a84]">PRODUCT LINK</p>
-        <h2 className="mt-2 text-lg font-bold text-[var(--foreground)]">
-          권장량을 채우기 위한 단백질 음료 예시
-        </h2>
+        <h2 className="mt-2 text-lg font-bold text-[var(--foreground)]">권장량을 채우기 위한 단백질 음료 예시</h2>
 
         <div className="mt-4 grid gap-3 md:grid-cols-2">
           <div className="rounded-xl border border-[#eef1f3] bg-white px-4 py-4">
             <p className="text-sm font-semibold text-[var(--foreground)]">단백질 25g 제품 기준</p>
-            <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">
-              하루 약 {calculation.drink25gCount}
-            </p>
+            <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">하루 약 {calculation.drink25gCount}</p>
           </div>
 
           <div className="rounded-xl border border-[#eef1f3] bg-white px-4 py-4">
             <p className="text-sm font-semibold text-[var(--foreground)]">단백질 20g 제품 기준</p>
-            <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">
-              하루 약 {calculation.drink20gCount}
-            </p>
+            <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">하루 약 {calculation.drink20gCount}</p>
           </div>
         </div>
 
@@ -194,25 +182,21 @@ export default function ProteinToolsClient() {
         <article className="rounded-2xl border border-[#e8e6e3] bg-white px-5 py-5">
           <h3 className="text-base font-bold text-[var(--foreground)]">단백질이 왜 중요한가</h3>
           <p className="mt-3 text-sm leading-6 text-[var(--foreground-muted)]">
-            단백질은 근육, 면역, 호르몬 생성 등 몸의 핵심 구조와 기능 유지에 중요한 필수 영양소입니다.
+            단백질은 근육, 면역, 호르몬 생성 등 몸의 구조와 기능 유지에 중요한 필수 영양소입니다.
           </p>
         </article>
 
         <article className="rounded-2xl border border-[#e8e6e3] bg-white px-5 py-5">
-          <h3 className="text-base font-bold text-[var(--foreground)]">
-            활동량에 따라 단백질 필요량이 달라지는 이유
-          </h3>
+          <h3 className="text-base font-bold text-[var(--foreground)]">활동량에 따라 필요량이 달라지는 이유</h3>
           <p className="mt-3 text-sm leading-6 text-[var(--foreground-muted)]">
             활동량이 늘어나면 근육 회복과 유지 부담이 커지기 때문에 보통 더 많은 단백질이 필요합니다.
           </p>
         </article>
 
         <article className="rounded-2xl border border-[#e8e6e3] bg-white px-5 py-5">
-          <h3 className="text-base font-bold text-[var(--foreground)]">
-            계산 결과를 어떻게 써야 할까
-          </h3>
+          <h3 className="text-base font-bold text-[var(--foreground)]">계산 결과를 어떻게 써야 할까</h3>
           <p className="mt-3 text-sm leading-6 text-[var(--foreground-muted)]">
-            하루 권장량은 일반 식사와 단백질 제품을 조합해 나누어 채우는 것이 가장 현실적입니다.
+            하루 권장량은 일반 식사와 제품을 조합해 나누어 채우는 것이 가장 현실적입니다.
           </p>
         </article>
       </section>
