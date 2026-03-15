@@ -28,10 +28,10 @@ const topics = [
     badge: "경기",
   },
   {
-    title: "거리별 영양 및 훈련 전략",
+    title: "거리별 영양 & 러닝 전략",
     href: "/guides/fitness-lifestyle/marathon-distance-strategy",
     description:
-      "5km, 10km, 하프, 풀 마라톤을 거리별로 나눠 훈련 포인트와 영양 전략을 비교합니다.",
+      "5km, 10km, 하프, 풀 마라톤을 거리별로 나눠 러닝 포인트와 영양 전략을 비교합니다.",
     question: "거리별로 단백질과 탄수화물 전략은 어떻게 달라질까?",
     related: ["5km·10km", "하프·풀", "운동 후 단백질"],
     badge: "거리별",
@@ -49,7 +49,7 @@ const topics = [
     title: "근력운동과 단백질",
     href: "/guides/fitness-lifestyle/strength-training-protein",
     description:
-      "러닝과 병행하는 근력운동에서 총량, 회복 타이밍, 감량기 전략을 함께 정리합니다.",
+      "러닝과 병행하는 근력운동에서 총량, 회복 타이밍, 감량기 전략까지 함께 정리합니다.",
     question: "근력운동을 같이 하면 단백질 전략은 어떻게 달라질까?",
     related: ["주간 루틴", "회복", "근육 유지"],
     badge: "병행",
@@ -58,7 +58,7 @@ const topics = [
     title: "운동 초보 가이드",
     href: "/guides/fitness-lifestyle/beginner-workout-guide",
     description:
-      "운동을 막 시작한 사람이 먼저 챙겨야 할 식사 구조, 제품 사용법, 체크리스트를 가볍게 정리합니다.",
+      "운동을 막 시작하는 사람이 먼저 챙겨야 할 식사 구조, 제품 사용법, 체크리스트를 가볍게 정리합니다.",
     question: "운동 초보는 무엇부터 챙겨야 할까?",
     related: ["첫 루틴", "가벼운 단백질", "실전 팁"],
     badge: "입문",
@@ -67,7 +67,7 @@ const topics = [
     title: "봄 다이어트 단백질 전략",
     href: "/guides/fitness-lifestyle/spring-diet-protein-guide",
     description:
-      "봄철 체중 관리 시즌에 맞는 단백질 음료, 바, 요거트 선택 기준을 비교형으로 정리합니다.",
+      "봄철 체중 관리 수요에 맞는 단백질 음료, 바, 요거트 선택 기준을 비교형으로 정리합니다.",
     question: "봄 다이어트에는 어떤 단백질 기준이 중요할까?",
     related: ["저당", "포만감", "가벼운 감량"],
     badge: "봄 시즌",
@@ -111,7 +111,7 @@ export default function FitnessLifestyleTrackPage() {
             <span className="rounded-md bg-[#eef4ea] px-2 py-0.5 text-[11px] font-semibold tracking-wide text-[#4c7a57]">
               TRACK D
             </span>
-            <span className="text-xs text-[#8b8b8b]">운동 맥락에 맞는 단백질 전략을 정리한 트랙</span>
+            <span className="text-xs text-[#8b8b8b]">운동 맥락에 맞는 단백질 전략을 정리하는 트랙</span>
             <span className="text-xs text-[#8b8b8b]">{topics.length}개 주제</span>
           </div>
 
