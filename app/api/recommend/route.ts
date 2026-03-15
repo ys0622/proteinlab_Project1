@@ -606,7 +606,7 @@ export async function POST(request: Request) {
         protein: product.proteinPerServing,
         calories: product.calories ?? 0,
         sugar: product.sugar ?? 0,
-        density: getDensityValue(product).toFixed(1),
+        density: product.density ?? getDensityValue(product).toFixed(1),
         gradeValue,
         reason: item.reason,
         detailPath: `/product/${product.slug}`,

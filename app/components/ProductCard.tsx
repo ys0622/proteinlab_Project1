@@ -261,13 +261,15 @@ export default function ProductCard({
               <span
                 className={`product-card__metric-value ${isDensity ? "product-card__metric-value--compact" : ""}`}
                 style={{
-                  fontSize: isDensity ? "13px" : "14px",
+                  fontSize: isDensity ? "12px" : "13px",
                   fontWeight: 700,
                   color: "#3d3d3d",
                   lineHeight: 1.2,
                 }}
               >
-                {value}
+                <span className="block min-w-0 break-words whitespace-normal md:text-[14px]">
+                  {value}
+                </span>
               </span>
             </div>
           ))}
