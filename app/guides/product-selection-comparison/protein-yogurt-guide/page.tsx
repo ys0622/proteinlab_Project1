@@ -11,22 +11,29 @@ export const metadata = {
 const sections = [
   {
     title: "그릭요거트",
-    body: "꾸덕한 식감과 높은 단백질 밀도가 장점입니다. 다만 지방과 총열량이 같이 높아질 수 있어 당류와 칼로리도 함께 봐야 합니다.",
+    body: "꾸덕한 질감과 높은 단백질 밀도가 강점입니다. 대신 지방과 총열량도 같이 높아질 수 있어 당류, 칼로리를 함께 봐야 합니다.",
   },
   {
     title: "드링킹 요거트",
-    body: "마시기 편하고 휴대성이 좋습니다. 대신 제품마다 단백질 함량 차이가 커서 용량과 단백질 g를 같이 봐야 합니다.",
+    body: "마시기 편하고 휴대성이 좋습니다. 제품마다 단백질 함량 차이가 커서 용량과 단백질 g를 같이 읽는 편이 정확합니다.",
   },
   {
     title: "대용량 요거트",
-    body: "여러 번 나눠 먹기 좋습니다. 총 단백질이 커 보여도 100g 기준과 1회 섭취 기준을 함께 보는 편이 안전합니다.",
+    body: "여러 번 나눠 먹기 좋지만 총 단백질이 커 보일 수 있습니다. 100g 기준과 1회 섭취 기준을 함께 봐야 실제 비교가 됩니다.",
   },
 ];
 
 const checks = [
   "단백질 g만 보지 말고 100g당 단백질 밀도도 같이 보기",
-  "다이어트 목적이면 당류 5g 안팎 여부를 먼저 좁혀 보기",
-  "대용량 제품은 1회 기준과 총량 기준이 섞이지 않았는지 확인하기",
+  "다이어트 목적이면 당류 5g 이하 여부를 먼저 좁혀 보기",
+  "대용량 제품은 1회 기준과 총량 기준이 섞이지 않는지 확인하기",
+  "그릭과 드링킹은 같은 요거트라도 용도와 비교 기준이 다르다는 점 기억하기",
+];
+
+const comparisonMatrix = [
+  ["그릭", "꾸덕함, 밀도", "단백질 밀도", "당류, 칼로리"],
+  ["드링킹", "휴대성, 간편함", "용량 대비 단백질", "당류, 유형 오판"],
+  ["대용량", "나눠먹기, 가성비", "100g 기준", "총량 착시"],
 ];
 
 const relatedLinks = [
@@ -71,7 +78,7 @@ export default function ProteinYogurtGuidePage() {
           <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
             그릭요거트, 드링킹 요거트, 대용량 요거트는 같은 단백질 요거트여도 비교 기준이 조금씩 다릅니다.
             <br />
-            먼저 유형을 나누고 그다음 단백질 함량, 당류, 칼로리, 단백질 밀도를 비교하는 편이 선택이 쉬워집니다.
+            먼저 유형을 나누고 그다음 단백질 함량, 당류, 칼로리, 단백질 밀도를 보는 편이 훨씬 정확합니다.
           </p>
         </div>
       </section>
@@ -90,28 +97,43 @@ export default function ProteinYogurtGuidePage() {
             </div>
           </section>
 
-          <section className="rounded-[28px] border border-[#e2ebe4] bg-[#f7fbf8] px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
-            <h2 className="text-xl font-bold text-[var(--foreground)]">비교 전에 체크할 기준</h2>
-            <ul className="mt-4 space-y-3 text-sm leading-6 text-[var(--foreground-muted)]">
-              {checks.map((item) => (
-                <li key={item}>• {item}</li>
-              ))}
-            </ul>
-          </section>
-
           <section className="rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
-            <div className="flex flex-wrap gap-3">
-              <Link href="/yogurt" className="inline-flex items-center justify-center rounded-lg border border-[#2d6a4f] bg-[#2d6a4f] px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#24543d]">
-                단백질 요거트 비교하기
-              </Link>
-              <Link href="/curation/yogurt-greek" className="inline-flex items-center justify-center rounded-lg border border-[#d9e7dc] px-5 py-3 text-sm font-semibold text-[#24543d] transition-colors hover:bg-[#eef7f1]">
-                그릭 요거트 큐레이션 보기
-              </Link>
+            <h2 className="text-xl font-bold text-[var(--foreground)]">유형별 체크 매트릭스</h2>
+            <div className="mt-5 overflow-x-auto">
+              <table className="min-w-full border-collapse text-left text-sm">
+                <thead>
+                  <tr className="border-b border-[#e8e6e3] text-[var(--foreground)]">
+                    <th className="px-3 py-3 font-semibold">유형</th>
+                    <th className="px-3 py-3 font-semibold">먼저 볼 것</th>
+                    <th className="px-3 py-3 font-semibold">핵심 수치</th>
+                    <th className="px-3 py-3 font-semibold">주의점</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {comparisonMatrix.map((row) => (
+                    <tr key={row[0]} className="border-b border-[#f0eeeb] last:border-b-0">
+                      <td className="whitespace-nowrap px-3 py-3 font-medium text-[var(--foreground)]">{row[0]}</td>
+                      <td className="px-3 py-3 text-[var(--foreground-muted)]">{row[1]}</td>
+                      <td className="px-3 py-3 text-[var(--foreground-muted)]">{row[2]}</td>
+                      <td className="px-3 py-3 text-[var(--foreground-muted)]">{row[3]}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
             </div>
           </section>
 
           <section className="rounded-[28px] border border-[#e2ebe4] bg-[#f7fbf8] px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
-            <h2 className="text-xl font-bold text-[var(--foreground)]">함께 보면 좋은 페이지</h2>
+            <h2 className="text-xl font-bold text-[var(--foreground)]">비교 전에 체크할 기준</h2>
+            <ul className="mt-4 space-y-3 text-sm leading-6 text-[var(--foreground-muted)]">
+              {checks.map((item) => (
+                <li key={item}>- {item}</li>
+              ))}
+            </ul>
+          </section>
+
+          <section className="rounded-[28px] border border-[#e2ebe4] bg-[#f7fbf8] px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
+            <h2 className="text-xl font-bold text-[var(--foreground)]">같이 보면 좋은 페이지</h2>
             <div className="mt-5 grid gap-3 md:grid-cols-3">
               {relatedLinks.map((item) => (
                 <Link key={item.href} href={item.href} className="rounded-2xl border border-[#dce8df] bg-white p-4 transition-colors hover:bg-[#eef7f1]">

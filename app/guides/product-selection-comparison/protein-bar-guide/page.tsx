@@ -5,28 +5,34 @@ import Footer from "@/app/components/Footer";
 export const metadata = {
   title: "단백질 바 선택 가이드 | ProteinLab",
   description:
-    "단백질 바를 간식형과 식사 보완형으로 나누고, 당류, 칼로리, 단백질 함량을 어떤 순서로 봐야 하는지 정리합니다.",
+    "단백질 바를 간식형, 식사 보완형, 운동 후 보충형으로 나눠 보고 당류, 칼로리, 단백질 밀도를 어떤 순서로 봐야 하는지 정리합니다.",
 };
 
 const barRules = [
   {
     title: "간식형 바",
-    body: "가볍게 먹는 용도라면 단백질 10~15g 안팎인지, 당류와 칼로리가 과하지 않은지 먼저 확인하는 편이 좋습니다.",
+    body: "가볍게 먹는 용도라면 단백질 10~15g 전후인지, 당류와 칼로리가 과하지 않은지 먼저 확인하는 편이 효율적입니다.",
   },
   {
     title: "식사 보완형 바",
-    body: "포만감과 총열량이 더 중요합니다. 단백질만 보지 말고 칼로리와 지방도 함께 봐야 목적에 맞습니다.",
+    body: "포만감과 총열량이 중요합니다. 단백질만 보지 말고 칼로리와 지방, 당류를 함께 봐야 실제 식사 보완용인지 판단할 수 있습니다.",
   },
   {
     title: "운동 후 보충형 바",
-    body: "단백질 함량이 높아도 식감이나 당류 구성에 따라 실제 활용도가 달라질 수 있어 성분표를 같이 봐야 합니다.",
+    body: "단백질 함량이 높아도 당류 구성이 과하거나 밀도가 낮으면 효율이 떨어질 수 있어 성분 조합을 같이 봐야 합니다.",
   },
 ];
 
 const pitfalls = [
-  "단백질 함량만 보고 고르면 당류와 칼로리가 예상보다 높을 수 있습니다.",
-  "소포장 제품은 전체 기준 영양정보인지 1개 기준인지 다시 확인하는 편이 안전합니다.",
-  "견과류나 지방 함량이 높으면 식사 대체형에 가까워질 수 있어 총열량을 같이 봐야 합니다.",
+  "단백질 함량만 보고 고르면 당류와 칼로리가 예상보다 높은 제품을 고를 수 있습니다.",
+  "소포장 제품은 전체 기준 영양정보인지 1개 기준인지 다시 확인해야 비교 오류를 줄일 수 있습니다.",
+  "단백질 바는 이름보다 용도가 중요합니다. 간식형과 식사 보완형은 보는 기준이 다릅니다.",
+];
+
+const barMatrix = [
+  ["간식형", "10~15g", "낮을수록 유리", "가볍게 먹는 용도"],
+  ["식사 보완형", "12~20g", "중간 이상 허용", "포만감과 총열량 같이 보기"],
+  ["운동 후 보충형", "15g+", "과하지 않은지 체크", "단백질 밀도와 당류 균형"],
 ];
 
 export default function ProteinBarGuidePage() {
@@ -52,9 +58,9 @@ export default function ProteinBarGuidePage() {
             단백질 바는 간식형인지 식사 보완형인지부터 구분해야 합니다
           </h1>
           <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
-            간식으로 먹을지, 식사를 보완할지에 따라 먼저 봐야 할 숫자가 달라집니다.
+            같은 단백질 바라도 간식형, 식사 보완형, 운동 후 보충형은 비교 기준이 다릅니다.
             <br />
-            단백질 수치 하나만 보면 실제 목적과 다른 제품을 고르기 쉽습니다.
+            단백질 수치 하나보다 당류, 칼로리, 단백질 밀도를 어떤 맥락에서 보는지가 더 중요합니다.
           </p>
         </div>
       </section>
@@ -73,24 +79,39 @@ export default function ProteinBarGuidePage() {
             </div>
           </section>
 
+          <section className="rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
+            <h2 className="text-xl font-bold text-[var(--foreground)]">용도별 체크 매트릭스</h2>
+            <div className="mt-5 overflow-x-auto">
+              <table className="min-w-full border-collapse text-left text-sm">
+                <thead>
+                  <tr className="border-b border-[#e8e6e3] text-[var(--foreground)]">
+                    <th className="px-3 py-3 font-semibold">유형</th>
+                    <th className="px-3 py-3 font-semibold">단백질</th>
+                    <th className="px-3 py-3 font-semibold">당류</th>
+                    <th className="px-3 py-3 font-semibold">핵심 포인트</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {barMatrix.map((row) => (
+                    <tr key={row[0]} className="border-b border-[#f0eeeb] last:border-b-0">
+                      <td className="whitespace-nowrap px-3 py-3 font-medium text-[var(--foreground)]">{row[0]}</td>
+                      <td className="px-3 py-3 text-[var(--foreground-muted)]">{row[1]}</td>
+                      <td className="px-3 py-3 text-[var(--foreground-muted)]">{row[2]}</td>
+                      <td className="px-3 py-3 text-[var(--foreground-muted)]">{row[3]}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </section>
+
           <section className="rounded-[28px] border border-[#e2ebe4] bg-[#f7fbf8] px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
             <h2 className="text-xl font-bold text-[var(--foreground)]">단백질 바를 볼 때 자주 놓치는 포인트</h2>
             <ul className="mt-4 space-y-3 text-sm leading-6 text-[var(--foreground-muted)]">
               {pitfalls.map((item) => (
-                <li key={item}>• {item}</li>
+                <li key={item}>- {item}</li>
               ))}
             </ul>
-          </section>
-
-          <section className="rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
-            <div className="flex flex-wrap gap-3">
-              <Link href="/guides/product-selection-comparison/nutrition-criteria" className="inline-flex items-center justify-center rounded-lg border border-[#d9e7dc] px-5 py-3 text-sm font-semibold text-[#24543d] transition-colors hover:bg-[#eef7f1]">
-                영양성분 기준 보기
-              </Link>
-              <Link href="/bars" className="inline-flex items-center justify-center rounded-lg border border-[#2d6a4f] bg-[#2d6a4f] px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#24543d]">
-                단백질 바 비교하기
-              </Link>
-            </div>
           </section>
         </div>
       </main>

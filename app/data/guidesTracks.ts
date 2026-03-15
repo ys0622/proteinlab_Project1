@@ -87,6 +87,28 @@ export const guideTracks: GuideTrack[] = [
         ],
       },
       {
+        slug: "diet-protein-drink-guide",
+        title: "다이어트 단백질 음료 기준",
+        description: "저당, 저칼로리, 단백질 밀도를 함께 보면서 다이어트용 단백질 음료를 고르는 기준을 정리한 페이지입니다.",
+        searchIntent: "다이어트 단백질 음료 기준",
+        futureFocus: ["저당 단백질 음료", "저칼로리 기준", "단백질 밀도 비교"],
+        internalLinkTargets: [
+          { label: "다이어트용 Picks", href: "/picks/diet-a" },
+          { label: "단백질 음료 선택 가이드", href: "/guides/product-selection-comparison/protein-drink-guide" },
+        ],
+      },
+      {
+        slug: "low-sugar-protein-drink-guide",
+        title: "저당 단백질 음료 추천 기준",
+        description: "당류 컷을 먼저 잡고 저당 단백질 음료 후보를 비교하는 기준을 정리한 페이지입니다.",
+        searchIntent: "저당 단백질 음료 추천",
+        futureFocus: ["당류 컷", "저당 RTD", "워터형 음료 비교"],
+        internalLinkTargets: [
+          { label: "zero sugar picks", href: "/picks/zero-sugar" },
+          { label: "단백질 음료 선택 가이드", href: "/guides/product-selection-comparison/protein-drink-guide" },
+        ],
+      },
+      {
         slug: "protein-bar-guide",
         title: "단백질 바 선택 가이드",
         description: "단백질 바를 목적별로 구분해 선택 기준을 담을 페이지 슬롯입니다.",
@@ -95,6 +117,17 @@ export const guideTracks: GuideTrack[] = [
         internalLinkTargets: [
           { label: "단백질 바 목록", href: "/bars" },
           { label: "성분 비교", href: "/guides/product-selection-comparison/nutrition-comparison" },
+        ],
+      },
+      {
+        slug: "meal-replacement-protein-bar-guide",
+        title: "식사대용 단백질 바 기준",
+        description: "포만감과 칼로리, 단백질을 같이 보며 식사대용 단백질 바를 고르는 기준을 정리합니다.",
+        searchIntent: "식사대용 단백질 바",
+        futureFocus: ["식사보완형 바", "포만감 기준", "총열량 비교"],
+        internalLinkTargets: [
+          { label: "단백질 바 목록", href: "/bars" },
+          { label: "단백질 바 선택 가이드", href: "/guides/product-selection-comparison/protein-bar-guide" },
         ],
       },
       {
@@ -114,6 +147,17 @@ export const guideTracks: GuideTrack[] = [
         description: "그릭요거트를 고를 때 단백질 밀도와 당류를 어떻게 읽어야 하는지 정리합니다.",
         searchIntent: "그릭요거트 추천 기준",
         futureFocus: ["그릭요거트 추천", "단백질 밀도", "대용량 요거트"],
+        internalLinkTargets: [
+          { label: "그릭 요거트 큐레이션", href: "/curation/yogurt-greek" },
+          { label: "단백질 요거트 비교", href: "/yogurt?curation=yogurt-greek" },
+        ],
+      },
+      {
+        slug: "unsweetened-greek-yogurt-guide",
+        title: "무가당 그릭요거트 추천 기준",
+        description: "무가당 그릭요거트를 고를 때 당류, 단백질 밀도, 용량 기준을 같이 보는 흐름을 정리합니다.",
+        searchIntent: "무가당 그릭요거트 추천",
+        futureFocus: ["무가당 그릭요거트", "당류 기준", "대용량 그릭요거트"],
         internalLinkTargets: [
           { label: "그릭 요거트 큐레이션", href: "/curation/yogurt-greek" },
           { label: "단백질 요거트 비교", href: "/yogurt?curation=yogurt-greek" },
