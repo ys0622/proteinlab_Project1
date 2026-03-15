@@ -36,16 +36,16 @@ const topics = [
   {
     title: "단백질 바 선택 가이드",
     href: "/guides/product-selection-comparison/protein-bar-guide",
-    description: "단백질 바를 간식용, 식사 보완용, 운동 후 보충용으로 나눠 보는 기준을 정리합니다.",
-    question: "단백질 바는 간식과 식사 보완 중 어디에 가까운가?",
+    description: "단백질 바를 간식, 식사 보완, 운동 후 보충용으로 나눠 보는 기준을 정리합니다.",
+    question: "단백질 바는 간식과 식사 보완 중 어디에 더 가까울까?",
     related: ["당류", "칼로리", "단백질 총량"],
     badge: "입문",
   },
   {
     title: "식사대용 단백질 바 기준",
     href: "/guides/product-selection-comparison/meal-replacement-protein-bar-guide",
-    description: "식사대용 바를 볼 때 포만감, 총열량, 단백질을 어떤 순서로 읽어야 하는지 정리합니다.",
-    question: "식사대용 단백질 바는 간식용 바와 무엇이 다를까?",
+    description: "식사대용 바는 포만감, 총열량, 단백질을 어떤 순서로 읽어야 하는지 정리합니다.",
+    question: "식사대용 단백질 바는 간식형 바와 무엇이 다를까?",
     related: ["식사대용", "포만감", "총열량"],
     badge: "바",
   },
@@ -53,14 +53,14 @@ const topics = [
     title: "단백질 요거트 추천 기준",
     href: "/guides/product-selection-comparison/protein-yogurt-guide",
     description: "그릭, 드링킹, 대용량 요거트를 어떤 기준으로 나눠 보고 비교해야 하는지 정리합니다.",
-    question: "단백질 요거트는 어떤 유형부터 나눠서 봐야 할까?",
+    question: "단백질 요거트는 어떤 유형부터 나눠 봐야 할까?",
     related: ["그릭", "드링킹", "대용량", "단백질 함량"],
     badge: "요거트",
   },
   {
     title: "그릭요거트 추천 기준",
     href: "/guides/product-selection-comparison/greek-yogurt-guide",
-    description: "그릭요거트에서 단백질 밀도, 당류, 용량을 어떤 순서로 읽어야 하는지 정리합니다.",
+    description: "그릭요거트 안에서 단백질 밀도, 당류, 용량을 어떤 순서로 읽어야 하는지 정리합니다.",
     question: "그릭요거트는 꾸덕함만 보고 고르면 될까?",
     related: ["그릭요거트", "단백질 밀도", "당류", "용량"],
     badge: "요거트",
@@ -69,14 +69,14 @@ const topics = [
     title: "무가당 그릭요거트 추천 기준",
     href: "/guides/product-selection-comparison/unsweetened-greek-yogurt-guide",
     description: "무가당 그릭요거트를 고를 때 당류, 단백질 밀도, 대용량 여부를 함께 읽는 방법을 정리합니다.",
-    question: "무가당 그릭요거트는 제품명만 봐도 충분할까?",
+    question: "무가당 그릭요거트는 제품명만 보면 충분할까?",
     related: ["무가당", "플레인", "100g 기준"],
     badge: "요거트",
   },
   {
     title: "저당 단백질 요거트 기준",
     href: "/guides/product-selection-comparison/low-sugar-yogurt-guide",
-    description: "저당 단백질 요거트를 비교할 때 당류와 단백질을 함께 보는 기준을 정리합니다.",
+    description: "저당 단백질 요거트를 비교할 때 당류만이 아니라 단백질까지 함께 보는 기준을 정리합니다.",
     question: "저당 요거트는 당류만 낮으면 괜찮을까?",
     related: ["저당 요거트", "당류 기준", "단백질 함량"],
     badge: "요거트",
@@ -92,7 +92,7 @@ const topics = [
   {
     title: "단백질 요거트 순위 보는 법",
     href: "/guides/product-selection-comparison/protein-yogurt-ranking-guide",
-    description: "요거트 랭킹에서 단백질 밀도, 다이어트, 퍼포먼스 점수를 어떻게 읽어야 하는지 정리합니다.",
+    description: "요거트 랭킹에서 단백질 밀도, 다이어트, 퍼포먼스 점수를 어떻게 읽는지 정리합니다.",
     question: "요거트 랭킹 1위는 어떤 기준으로 정해질까?",
     related: ["랭킹", "단백질 밀도", "다이어트", "퍼포먼스"],
     badge: "요거트",
@@ -108,7 +108,7 @@ const topics = [
   {
     title: "영양성분 기준 읽기",
     href: "/guides/product-selection-comparison/nutrition-criteria",
-    description: "좋은 제품을 고를 때 참고하는 단백질, 당류, 칼로리, 단백질 밀도 기준을 정리합니다.",
+    description: "좋은 제품을 고를 때 참고하는 단백질, 당류, 칼로리, 밀도 기준을 정리합니다.",
     question: "최소 기준은 어디부터 잡는 게 좋을까?",
     related: ["단백질 기준", "당류 기준", "칼로리 기준"],
     badge: "기준",
@@ -147,9 +147,7 @@ export default function ProductSelectionComparisonPage() {
           </div>
 
           <div className="mt-3 flex flex-wrap items-center gap-2.5">
-            <span className="rounded-md bg-[#eef4ea] px-2 py-0.5 text-[11px] font-semibold tracking-wide text-[#4c7a57]">
-              TRACK B
-            </span>
+            <span className="rounded-md bg-[#eef4ea] px-2 py-0.5 text-[11px] font-semibold tracking-wide text-[#4c7a57]">TRACK B</span>
             <span className="text-xs text-[#8b8b8b]">제품 비교 흐름을 이해하는 트랙</span>
             <span className="text-xs text-[#8b8b8b]">{topics.length}개 주제</span>
           </div>
@@ -159,7 +157,7 @@ export default function ProductSelectionComparisonPage() {
             <p className="mt-2 max-w-2xl text-sm leading-6 text-[var(--foreground-muted)]">
               단백질 음료, 단백질 바, 단백질 요거트는 숫자를 읽는 순서가 중요합니다.
               <br />
-              Track B에서는 성분 비교, 추천 리스트, 랭킹 해석, 선택 기준까지 제품 탐색 흐름에 맞춰 정리합니다.
+              Track B에서는 영양성분 비교, 추천 리스트, 랭킹 해석, 선택 기준까지 제품 탐색 흐름에 맞춰 정리합니다.
             </p>
           </div>
         </div>
@@ -193,14 +191,10 @@ export default function ProductSelectionComparisonPage() {
                           {topic.badge}
                         </span>
                       </div>
-                      <span className="rounded-full border border-[#d8e2da] bg-white px-2.5 py-1 text-[11px] font-semibold text-[#6f7f76]">
-                        LIVE
-                      </span>
+                      <span className="rounded-full border border-[#d8e2da] bg-white px-2.5 py-1 text-[11px] font-semibold text-[#6f7f76]">LIVE</span>
                     </div>
 
-                    <h3 className="mt-3 text-base font-bold text-[#1f5138] transition-colors group-hover:text-[var(--accent)]">
-                      {topic.title}
-                    </h3>
+                    <h3 className="mt-3 text-base font-bold text-[#1f5138] transition-colors group-hover:text-[var(--accent)]">{topic.title}</h3>
                     <p className="mt-2 text-[13px] leading-[1.7] text-[var(--foreground-muted)]">{topic.description}</p>
 
                     <div className="mt-4 rounded-xl border border-[#d7e6dd] bg-[#f4faf6] px-3 py-2.5">
@@ -210,12 +204,8 @@ export default function ProductSelectionComparisonPage() {
                   </div>
 
                   <div className="mt-4 flex items-center justify-between gap-3">
-                    <span className="rounded-full border border-[#d9e4dd] bg-[#f7faf8] px-2.5 py-1 text-[11px] font-medium text-[#496555]">
-                      {topic.related[0]}
-                    </span>
-                    <span className="text-xs font-semibold text-[#2f5d46] transition-colors group-hover:text-[#1f4834]">
-                      주제 보기
-                    </span>
+                    <span className="rounded-full border border-[#d9e4dd] bg-[#f7faf8] px-2.5 py-1 text-[11px] font-medium text-[#496555]">{topic.related[0]}</span>
+                    <span className="text-xs font-semibold text-[#2f5d46] transition-colors group-hover:text-[#1f4834]">주제 보기</span>
                   </div>
                 </div>
               </Link>
@@ -223,7 +213,6 @@ export default function ProductSelectionComparisonPage() {
           </div>
         </section>
       </main>
-
       <Footer />
     </div>
   );

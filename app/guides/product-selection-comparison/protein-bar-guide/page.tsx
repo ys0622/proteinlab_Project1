@@ -3,9 +3,9 @@ import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 
 export const metadata = {
-  title: "단백질 바 선택 가이드 | ProteinLab",
+  title: "단백질 바 선택 가이드 | 식사 보완·간식형 비교 기준 | ProteinLab",
   description:
-    "단백질 바를 간식용, 식사 보완용, 운동 후 보충용으로 나눠 보고 당류, 칼로리, 단백질 밀도를 비교하는 기준을 정리합니다.",
+    "단백질 바를 간식형, 식사 보완형, 운동 후 보충형으로 나눠 보고 당류, 칼로리, 단백질 밀도를 어떤 기준으로 비교해야 하는지 정리합니다.",
 };
 
 const barRules = [
@@ -15,18 +15,18 @@ const barRules = [
   },
   {
     title: "식사 보완형 바",
-    body: "포만감과 총열량이 중요합니다. 단백질만 보지 말고 칼로리, 지방, 당류를 함께 봐야 식사 대용과 가까운지 판단할 수 있습니다.",
+    body: "포만감과 총열량이 중요합니다. 단백질만 보지 말고 칼로리, 지방, 당류를 함께 봐야 식사 대체 목적과 가까운지 알 수 있습니다.",
   },
   {
     title: "운동 후 보충형 바",
-    body: "단백질 자체가 높아도 당류 구성이 과하거나 밀도가 낮으면 효율은 떨어질 수 있어 성분 조합을 같이 봐야 합니다.",
+    body: "단백질 자체가 높아도 당류 구성이 과하거나 지방이 높으면 체감 효율이 달라집니다. 숫자 조합을 같이 보는 편이 안전합니다.",
   },
 ];
 
 const pitfalls = [
   "단백질 총량만 보고 고르면 당류와 칼로리가 예상보다 높은 제품을 고를 수 있습니다.",
-  "표기상 멀티팩 상품은 1개 기준인지 전체 기준인지 다시 확인해야 비교 실수를 줄일 수 있습니다.",
-  "단백질 바는 이름보다 용도가 중요합니다. 간식형과 식사 보완형을 같은 기준으로 보면 판단이 흐려집니다.",
+  "소포장·멀티팩 제품은 1개 기준인지 전체 기준인지 다시 확인해야 비교 실수를 줄일 수 있습니다.",
+  "단백질 바는 이름보다 용도가 중요합니다. 간식형과 식사 보완형을 같은 기준으로 보면 판단이 흔들립니다.",
 ];
 
 const barMatrix = [
@@ -88,7 +88,7 @@ export default function ProteinBarGuidePage() {
                     <th className="px-3 py-3 font-semibold">유형</th>
                     <th className="px-3 py-3 font-semibold">단백질</th>
                     <th className="px-3 py-3 font-semibold">당류</th>
-                    <th className="px-3 py-3 font-semibold">대표 포인트</th>
+                    <th className="px-3 py-3 font-semibold">주요 포인트</th>
                   </tr>
                 </thead>
                 <tbody>
