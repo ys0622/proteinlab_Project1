@@ -3,7 +3,7 @@ import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 
 export const metadata = {
-  title: "제품 선택 & 비교 가이드 | 단백질 음료·바·요거트 | ProteinLab",
+  title: "제품 선택 & 비교 가이드 | 단백질 음료·바·요거트 비교 기준 | ProteinLab",
   description:
     "단백질 음료, 단백질 바, 단백질 요거트를 어떤 기준으로 비교하고 선택해야 하는지 Track B에서 제품 탐색 흐름 중심으로 정리합니다.",
 };
@@ -20,7 +20,7 @@ const topics = [
   {
     title: "다이어트 단백질 음료 기준",
     href: "/guides/product-selection-comparison/diet-protein-drink-guide",
-    description: "다이어트 목적에서 칼로리, 당류, 단백질 밀도를 어떤 순서로 봐야 하는지 정리합니다.",
+    description: "체중 관리 목적에서 칼로리, 당류, 단백질 밀도를 어떤 순서로 봐야 하는지 정리합니다.",
     question: "다이어트용 단백질 음료는 단백질만 높으면 충분할까?",
     related: ["당류", "저칼로리", "단백질 밀도"],
     badge: "음료",
@@ -28,15 +28,15 @@ const topics = [
   {
     title: "저당 단백질 음료 추천 기준",
     href: "/guides/product-selection-comparison/low-sugar-protein-drink-guide",
-    description: "당류가 낮은 단백질 음료를 고를 때 확인해야 할 컷과 예외를 정리합니다.",
+    description: "당류가 낮은 단백질 음료를 고를 때 확인해야 할 기준과 예외를 정리합니다.",
     question: "저당 단백질 음료는 당류 몇 g부터 봐야 할까?",
-    related: ["저당 컷", "워터형", "RTD"],
+    related: ["저당", "워터형", "RTD"],
     badge: "음료",
   },
   {
     title: "단백질 바 선택 가이드",
     href: "/guides/product-selection-comparison/protein-bar-guide",
-    description: "단백질 바를 간식형, 식사 보완형, 운동 후 보충형으로 나눠 보는 기준을 정리합니다.",
+    description: "단백질 바를 간식용, 식사 보완용, 운동 후 보충용으로 나눠 보는 기준을 정리합니다.",
     question: "단백질 바는 간식과 식사 보완 중 어디에 가까운가?",
     related: ["당류", "칼로리", "단백질 총량"],
     badge: "입문",
@@ -44,16 +44,16 @@ const topics = [
   {
     title: "식사대용 단백질 바 기준",
     href: "/guides/product-selection-comparison/meal-replacement-protein-bar-guide",
-    description: "식사대용 단백질 바를 볼 때 포만감, 총열량, 단백질을 어떤 순서로 읽어야 하는지 정리합니다.",
-    question: "식사대용 단백질 바는 간식형 바와 무엇이 다를까?",
+    description: "식사대용 바를 볼 때 포만감, 총열량, 단백질을 어떤 순서로 읽어야 하는지 정리합니다.",
+    question: "식사대용 단백질 바는 간식용 바와 무엇이 다를까?",
     related: ["식사대용", "포만감", "총열량"],
     badge: "바",
   },
   {
     title: "단백질 요거트 추천 기준",
     href: "/guides/product-selection-comparison/protein-yogurt-guide",
-    description: "그릭, 드링킹, 대용량 요거트를 어떤 기준으로 나눠 비교해야 하는지 정리합니다.",
-    question: "단백질 요거트는 어떤 유형부터 나눠 봐야 할까?",
+    description: "그릭, 드링킹, 대용량 요거트를 어떤 기준으로 나눠 보고 비교해야 하는지 정리합니다.",
+    question: "단백질 요거트는 어떤 유형부터 나눠서 봐야 할까?",
     related: ["그릭", "드링킹", "대용량", "단백질 함량"],
     badge: "요거트",
   },
@@ -84,7 +84,7 @@ const topics = [
   {
     title: "드링킹 요거트 비교 가이드",
     href: "/guides/product-selection-comparison/drinking-yogurt-guide",
-    description: "마시는 요거트를 비교할 때 용량 대비 단백질과 당류를 읽는 흐름을 정리합니다.",
+    description: "마시는 요거트를 비교할 때 용량 대비 단백질과 당류를 읽는 순서를 정리합니다.",
     question: "드링킹 요거트는 휴대성만 보고 고르면 될까?",
     related: ["드링킹", "용량", "당류", "단백질"],
     badge: "요거트",
@@ -108,7 +108,7 @@ const topics = [
   {
     title: "영양성분 기준 읽기",
     href: "/guides/product-selection-comparison/nutrition-criteria",
-    description: "좋은 제품을 고를 때 참고할 단백질, 당류, 칼로리, 단백질 밀도 기준을 정리합니다.",
+    description: "좋은 제품을 고를 때 참고하는 단백질, 당류, 칼로리, 단백질 밀도 기준을 정리합니다.",
     question: "최소 기준은 어디부터 잡는 게 좋을까?",
     related: ["단백질 기준", "당류 기준", "칼로리 기준"],
     badge: "기준",
@@ -204,7 +204,7 @@ export default function ProductSelectionComparisonPage() {
                     <p className="mt-2 text-[13px] leading-[1.7] text-[var(--foreground-muted)]">{topic.description}</p>
 
                     <div className="mt-4 rounded-xl border border-[#d7e6dd] bg-[#f4faf6] px-3 py-2.5">
-                      <p className="text-[11px] font-semibold text-[#1f5138]">핵심 질문</p>
+                      <p className="text-[11px] font-semibold text-[#1f5138]">대표 질문</p>
                       <p className="mt-1 text-[12px] font-medium leading-5 text-[var(--foreground)]">{topic.question}</p>
                     </div>
                   </div>

@@ -5,7 +5,7 @@ import Footer from "@/app/components/Footer";
 export const metadata = {
   title: "단백질 요거트 추천 기준 | 그릭·드링킹·대용량 비교 | ProteinLab",
   description:
-    "단백질 요거트를 고를 때 그릭, 드링킹, 대용량 제품을 어떻게 나눠 보고 단백질 함량, 당류, 칼로리, 밀도를 비교해야 하는지 정리합니다.",
+    "단백질 요거트를 고를 때 그릭, 드링킹, 대용량 제품을 어떻게 나눠 보고 단백질 함량, 당류, 칼로리 기준으로 비교해야 하는지 정리합니다.",
 };
 
 const sections = [
@@ -15,25 +15,25 @@ const sections = [
   },
   {
     title: "드링킹 요거트",
-    body: "마시기 편하고 휴대성이 좋습니다. 제품별 단백질 함량 차이가 커서 용량 대비 단백질과 당류를 함께 읽어야 합니다.",
+    body: "마시기 편하고 휴대성이 좋습니다. 제품별로 단백질 함량 차이가 커서 용량 대비 단백질과 당류를 함께 읽는 편이 좋습니다.",
   },
   {
     title: "대용량 요거트",
-    body: "여러 번 나눠 먹기 좋지만 총 단백질이 커 보이기 쉽습니다. 100g 기준과 1회 섭취 기준을 분리해서 봐야 비교가 정확합니다.",
+    body: "여러 번 나눠 먹기 좋지만 총단백질이 커 보이기 쉽습니다. 100g 기준과 1회 섭취 기준을 분리해서 봐야 비교가 정확합니다.",
   },
 ];
 
 const checks = [
-  "단백질 g만 보지 말고 100g당 단백질 밀도도 같이 보기",
+  "단백질 g만 보지 말고 100g당 단백질 밀도까지 같이 보기",
   "다이어트 목적이면 당류 5g 이하 여부를 먼저 좁혀 보기",
-  "대용량 제품은 1회 기준과 총량 기준이 섞이지 않는지 확인하기",
+  "대용량 제품은 1회 기준과 총용량 기준이 섞이지 않는지 확인하기",
   "그릭과 드링킹은 같은 요거트라도 비교 기준이 다르다는 점 기억하기",
 ];
 
 const comparisonMatrix = [
   ["그릭", "꾸덕함과 밀도", "단백질 밀도", "당류, 칼로리"],
-  ["드링킹", "마시기 편한가", "용량 대비 단백질", "당류, 유형 표기"],
-  ["대용량", "나눠 먹는 편의성", "100g 기준", "총량 착시"],
+  ["드링킹", "마시기 편한가", "용량 대비 단백질", "당류, 타입 표기"],
+  ["대용량", "나눠 먹는 편의성", "100g 기준", "총용량 착시"],
 ];
 
 const relatedLinks = [
@@ -73,12 +73,12 @@ export default function ProteinYogurtGuidePage() {
             </span>
           </div>
           <h1 className="mt-3 text-2xl font-bold leading-tight text-[var(--foreground)] md:text-3xl">
-            단백질 요거트는 유형부터 나누고 비교해야 합니다
+            단백질 요거트는 유형부터 나눠서 비교해야 합니다
           </h1>
           <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
             그릭, 드링킹, 대용량 요거트는 같은 단백질 요거트라도 비교 기준이 다릅니다.
             <br />
-            먼저 유형을 나누고, 그다음 단백질 함량, 당류, 칼로리, 단백질 밀도를 보는 편이 훨씬 정확합니다.
+            먼저 유형을 나누고, 그다음 단백질 함량, 당류, 칼로리, 단백질 밀도를 보는 편이 더 정확합니다.
           </p>
         </div>
       </section>
@@ -105,7 +105,7 @@ export default function ProteinYogurtGuidePage() {
                   <tr className="border-b border-[#e8e6e3] text-[var(--foreground)]">
                     <th className="px-3 py-3 font-semibold">유형</th>
                     <th className="px-3 py-3 font-semibold">먼저 볼 것</th>
-                    <th className="px-3 py-3 font-semibold">핵심 수치</th>
+                    <th className="px-3 py-3 font-semibold">대표 수치</th>
                     <th className="px-3 py-3 font-semibold">주의점</th>
                   </tr>
                 </thead>
