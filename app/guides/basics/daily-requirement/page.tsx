@@ -5,56 +5,56 @@ import Footer from "@/app/components/Footer";
 export const metadata = {
   title: "하루 단백질 권장량 | 목적·체중·연령별 정리 | ProteinLab",
   description:
-    "일반 성인부터 운동인, 체중 조절 중인 사람, 고령층까지 하루 단백질 권장량과 분산 섭취 원칙을 정리합니다.",
+    "일반 성인부터 운동 중인 사람, 고령층까지 하루 단백질 권장량과 분산 섭취 원칙을 정리합니다.",
 };
 
 const requirementRows = [
   ["일반 성인", "0.8 g/kg", "48g", "56g", "64g"],
-  ["체중 조절·일상 활동", "1.0~1.2 g/kg", "60~72g", "70~84g", "80~96g"],
-  ["운동·근성장", "1.2~1.7 g/kg", "72~102g", "84~119g", "96~136g"],
-  ["고령층(60세 이상)", "1.2 g/kg 이상", "72g 이상", "84g 이상", "96g 이상"],
+  ["체중 관리·가벼운 활동", "1.0~1.2 g/kg", "60~72g", "70~84g", "80~96g"],
+  ["운동·근력 유지", "1.2~1.7 g/kg", "72~102g", "84~119g", "96~136g"],
+  ["고령층", "1.2 g/kg 이상", "72g 이상", "84g 이상", "96g 이상"],
 ];
 
 const principleCards = [
   {
     icon: "1",
     title: "하루 3회 이상 나눠 먹기",
-    body: "한 번에 몰아 먹기보다 끼니마다 15~30g씩 분산하면 흡수와 활용이 더 안정적입니다.",
+    body: "한 번에 몰아 먹기보다 끼니마다 15~30g씩 나눠 먹는 편이 실제 생활에서 꾸준히 유지하기 쉽습니다.",
   },
   {
     icon: "2",
     title: "완전 단백질을 우선 선택",
-    body: "유청, 달걀, 생선, 육류, 우유처럼 필수아미노산이 균형 있게 들어간 식품이 기본입니다.",
+    body: "유청, 우유, 달걀, 생선, 육류, 콩류처럼 필수아미노산 구성이 좋은 식품을 기본으로 두는 편이 안정적입니다.",
   },
   {
     icon: "3",
-    title: "2g/kg 이상은 신중하게",
-    body: "고강도 훈련이 아니라면 지나치게 높은 섭취는 효율이 떨어질 수 있어 목적에 맞게 조절하는 편이 좋습니다.",
+    title: "고강도 운동이 아니라면 과잉은 피하기",
+    body: "고강도 훈련이 아니라면 지나치게 높은 섭취는 효율이 떨어질 수 있습니다. 목적에 맞는 적정선을 먼저 맞추는 게 중요합니다.",
   },
 ];
 
 const faqs = [
   {
-    question: "단백질 부족 여부는 어떤 신호로 먼저 알 수 있나요?",
+    question: "단백질 부족은 어떤 신호로 먼저 드러나나?",
     answer:
-      "근력 저하, 잦은 피로, 상처 회복 지연, 잦은 감염 같은 신호가 반복되면 하루 단백질 섭취량부터 점검하는 편이 좋습니다.",
+      "근력 저하, 잦은 피로, 회복 지연, 감기 같은 신호가 반복되면 하루 단백질 총량을 먼저 점검해볼 필요가 있습니다.",
     linkLabel: "단백질 부족 증상 자세히 보기",
     href: "/guides/basics/deficiency-symptoms",
   },
   {
-    question: "운동을 많이 하지 않아도 단백질을 신경 써야 하나요?",
+    question: "운동을 많이 하지 않아도 단백질을 신경 써야 하나?",
     answer:
-      "운동을 하지 않아도 기본 권장량은 필요합니다. 다만 체중 조절, 고령, 회복기라면 일반 권장량보다 조금 더 높은 섭취가 도움이 될 수 있습니다.",
+      "운동량이 적어도 기본 권장량은 필요합니다. 특히 체중 조절, 고령, 회복기라면 일반 권장량보다 조금 높은 섭취가 필요한 경우가 있습니다.",
   },
   {
-    question: "단백질을 많이 먹으면 무조건 좋은가요?",
+    question: "단백질을 많이 먹으면 무조건 좋은가?",
     answer:
-      "그렇지는 않습니다. 총량보다 중요한 것은 내 체중과 목적에 맞는 적정량을 꾸준히 채우는 것입니다. 과도한 보충제 섭취는 불필요한 열량 증가로 이어질 수 있습니다.",
+      "그렇지 않습니다. 총량보다 중요한 건 체중과 목적에 맞는 적정량을 꾸준히 채우는 것입니다. 과도한 보충은 실질적인 효율이 낮을 수 있습니다.",
   },
   {
-    question: "식사만으로 부족하면 어떻게 보완하나요?",
+    question: "식사만으로 부족하면 어떻게 보완하나?",
     answer:
-      "우유, 달걀, 두부, 그릭요거트 같은 식품으로 먼저 보완하고, 끼니 구성이 어려울 때 단백질 음료나 바를 보조적으로 활용하면 됩니다.",
+      "우유, 달걀, 두부, 그릭요거트 같은 식품으로 먼저 보완하고, 식사 구성이 어려운 날에만 단백질 음료나 바를 보조적으로 쓰는 편이 자연스럽습니다.",
   },
 ];
 
@@ -71,19 +71,12 @@ export default function DailyRequirementPage() {
     <div className="min-h-screen bg-white">
       <Header />
 
-      <section
-        className="w-full border-t border-b bg-[var(--hero-bg)]"
-        style={{ borderColor: "var(--hero-border)" }}
-      >
+      <section className="w-full border-t border-b bg-[var(--hero-bg)]" style={{ borderColor: "var(--hero-border)" }}>
         <div className="mx-auto max-w-[1200px] px-4 py-5 md:px-6 md:py-6">
           <div className="flex flex-wrap items-center gap-1.5 text-xs text-[var(--foreground-muted)]">
-            <Link href="/guides" className="hover:text-[var(--accent)]">
-              가이드
-            </Link>
+            <Link href="/guides" className="hover:text-[var(--accent)]">가이드</Link>
             <span>/</span>
-            <Link href="/guides/basics" className="hover:text-[var(--accent)]">
-              단백질 기초
-            </Link>
+            <Link href="/guides/basics" className="hover:text-[var(--accent)]">단백질 기초</Link>
             <span>/</span>
             <span>하루 단백질 권장량</span>
           </div>
@@ -98,7 +91,7 @@ export default function DailyRequirementPage() {
             나는 단백질이 얼마나 필요할까?
           </h1>
           <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
-            단백질 권장량은 체중, 연령, 활동량, 목표에 따라 달라집니다. 내 상황에 맞는 하루 목표치를 먼저 정하는 것이 출발점입니다.
+            단백질 권장량은 체중, 연령, 활동량, 목적에 따라 달라집니다. 먼저 내 상황에 맞는 하루 목표치를 정하는 것이 출발점입니다.
           </p>
         </div>
       </section>
@@ -107,13 +100,12 @@ export default function DailyRequirementPage() {
         <div className="space-y-6">
           <section className="rounded-2xl border border-[#e8e6e3] bg-[#fffdf8] px-5 py-5">
             <h2 className="text-xl font-bold text-[var(--foreground)]">목적별 하루 단백질 권장량</h2>
-
             <div className="mt-5 overflow-x-auto">
               <table className="min-w-full border-collapse text-left text-sm">
                 <thead>
                   <tr className="border-b border-[#e8e6e3] text-[var(--foreground)]">
                     <th className="px-3 py-3 font-semibold">목적</th>
-                    <th className="px-3 py-3 font-semibold">권장량(g/kg 체중)</th>
+                    <th className="px-3 py-3 font-semibold">권장량(g/kg)</th>
                     <th className="px-3 py-3 font-semibold">60kg 기준</th>
                     <th className="px-3 py-3 font-semibold">70kg 기준</th>
                     <th className="px-3 py-3 font-semibold">80kg 기준</th>
@@ -134,28 +126,16 @@ export default function DailyRequirementPage() {
             </div>
 
             <p className="mt-4 text-xs text-[var(--foreground-muted)]">
-              출처: WHO / 대한영양사협회 / 보건복지부 한국인 영양소 섭취기준(2015) / 대한노인의학회
+              출처: WHO / 대한영양사협회 / 보건복지부 한국인 영양소 섭취기준 / 대한노인학회
             </p>
 
             <Callout>
-              단백질은 하루 한 번에 몰아 먹기보다 아침, 점심, 저녁, 간식으로 나누어 15~30g씩 분산 섭취하는 편이 실용적입니다.
+              단백질은 하루 한 번에 몰아 먹기보다 아침, 점심, 저녁, 간식처럼 15~30g씩 분산해 섭취하는 편이 일상에서 더 실용적입니다.
             </Callout>
-
-            <p className="mt-4 text-xs text-[var(--foreground-muted)]">출처: 대한영양사협회(2015)</p>
-
-            <div className="mt-5">
-              <Link
-                href="/tools/calculator"
-                className="inline-flex items-center justify-center rounded-lg border border-[#e8e6e3] px-5 py-3 text-sm font-semibold text-[#374151] transition-colors hover:bg-[var(--accent-light)] hover:text-[var(--accent)]"
-              >
-                단백질 계산기로 직접 계산해보기
-              </Link>
-            </div>
           </section>
 
           <section className="rounded-2xl border border-[#e8e6e3] bg-[#fffdf8] px-5 py-5">
             <h2 className="text-xl font-bold text-[var(--foreground)]">단백질 섭취 3가지 원칙</h2>
-
             <div className="mt-5 grid gap-4 md:grid-cols-3">
               {principleCards.map((card) => (
                 <article key={card.title} className="rounded-2xl border border-[#e8e6e3] bg-white px-4 py-4">
@@ -165,13 +145,10 @@ export default function DailyRequirementPage() {
                 </article>
               ))}
             </div>
-
-            <p className="mt-4 text-xs text-[var(--foreground-muted)]">출처: WHO</p>
           </section>
 
           <section className="rounded-2xl border border-[#e8e6e3] bg-[#fffdf8] px-5 py-5">
             <h2 className="text-xl font-bold text-[var(--foreground)]">자주 묻는 질문</h2>
-
             <div className="mt-5 space-y-4">
               {faqs.map((faq) => (
                 <article key={faq.question} className="rounded-2xl border border-[#e8e6e3] bg-white px-4 py-4">
@@ -186,23 +163,6 @@ export default function DailyRequirementPage() {
                   ) : null}
                 </article>
               ))}
-            </div>
-          </section>
-
-          <section className="rounded-2xl border border-[#e8e6e3] bg-white px-5 py-5">
-            <div className="flex flex-wrap gap-3">
-              <Link
-                href="/guides/basics/deficiency-symptoms"
-                className="inline-flex items-center justify-center rounded-lg border border-[#e8e6e3] px-5 py-3 text-sm font-semibold text-[#374151] transition-colors hover:bg-[var(--accent-light)] hover:text-[var(--accent)]"
-              >
-                단백질 부족 증상 확인하기
-              </Link>
-              <Link
-                href="/recommend"
-                className="inline-flex items-center justify-center rounded-lg border border-[#e8e6e3] px-5 py-3 text-sm font-semibold text-[#374151] transition-colors hover:bg-[var(--accent-light)] hover:text-[var(--accent)]"
-              >
-                내 목적에 맞는 제품 찾기
-              </Link>
             </div>
           </section>
         </div>

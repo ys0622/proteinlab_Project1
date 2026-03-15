@@ -10,7 +10,7 @@ export const metadata = {
 };
 
 const functionRows = [
-  ["단백질 호르몬", "인슐린, 성장호르몬, 글루카곤", "혈당 조절, 성장, 에너지 대사 조절"],
+  ["단백질성 호르몬", "인슐린, 성장호르몬, 글루카곤", "혈당 조절, 성장, 에너지 대사 조절"],
   ["소화 효소", "펩신, 트립신", "음식물 소화와 분해"],
   ["면역 단백질", "항체, 사이토카인", "병원체 방어와 면역 신호 전달"],
 ];
@@ -18,15 +18,15 @@ const functionRows = [
 const focusPoints = [
   {
     title: "항체와 사이토카인",
-    body: "면역 반응을 움직이는 핵심 재료가 단백질입니다. 부족하면 방어와 회복이 동시에 흔들릴 수 있습니다.",
+    body: "면역 반응을 움직이는 직접 재료가 단백질입니다. 부족하면 방어와 회복 속도가 함께 흔들릴 수 있습니다.",
   },
   {
     title: "호르몬의 구조",
-    body: "인슐린과 성장호르몬처럼 대사와 회복을 조절하는 신호 물질 일부는 단백질 구조를 가집니다.",
+    body: "인슐린과 성장호르몬처럼 대사와 회복을 조절하는 신호 물질 상당수도 단백질 구조를 가집니다.",
   },
   {
     title: "효소의 역할",
-    body: "소화 효소 상당수는 단백질입니다. 섭취가 부족하면 소화와 흡수 효율에도 영향을 줄 수 있습니다.",
+    body: "소화 효소도 단백질입니다. 섭취가 부족하면 소화와 흡수 효율에도 간접적인 영향이 갈 수 있습니다.",
   },
 ];
 
@@ -52,19 +52,12 @@ export default function ImmunityHormonePage() {
     <div className="min-h-screen bg-white">
       <Header />
 
-      <section
-        className="w-full border-t border-b bg-[var(--hero-bg)]"
-        style={{ borderColor: "var(--hero-border)" }}
-      >
+      <section className="w-full border-t border-b bg-[var(--hero-bg)]" style={{ borderColor: "var(--hero-border)" }}>
         <div className="mx-auto max-w-[1200px] px-4 py-5 md:px-6 md:py-6">
           <div className="flex flex-wrap items-center gap-1.5 text-xs text-[var(--foreground-muted)]">
-            <Link href="/guides" className="hover:text-[var(--accent)]">
-              가이드
-            </Link>
+            <Link href="/guides" className="hover:text-[var(--accent)]">가이드</Link>
             <span>/</span>
-            <Link href="/guides/basics" className="hover:text-[var(--accent)]">
-              단백질 기초
-            </Link>
+            <Link href="/guides/basics" className="hover:text-[var(--accent)]">단백질 기초</Link>
             <span>/</span>
             <span>면역·호르몬과 단백질</span>
           </div>
@@ -111,38 +104,30 @@ export default function ImmunityHormonePage() {
           <section className="rounded-[28px] border border-[#e8e6e3] bg-[#fffdf8] px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
             <h2 className="text-xl font-bold text-[var(--foreground)]">항체와 면역세포의 재료</h2>
             <p className="mt-4 text-sm leading-6 text-[var(--foreground-muted)]">
-              항체와 사이토카인 같은 면역 단백질은 병원체를 인식하고 방어 반응을 조율합니다. 단백질 섭취가 부족하면
-              면역세포의 증식, 회복 속도, 감염 저항성이 함께 낮아질 수 있습니다.
+              항체와 사이토카인은 병원체를 인식하고 면역 반응을 조절하는 핵심 단백질입니다. 단백질 섭취가 부족하면 면역세포 증식과 회복 속도에도 영향을 줄 수 있습니다.
             </p>
 
             <div className="mt-5 rounded-[28px] border border-[#dce8df] bg-[linear-gradient(135deg,#f7fbf8_0%,#eef6f1_100%)] p-6 shadow-[0_16px_36px_rgba(45,106,79,0.08)]">
               <div className="mx-auto max-w-2xl">
                 <GuideVisual
                   track="protein-basics"
-                  title="항체와 면역"
+                  title="항체·면역"
                   accentColor="#2d6a4f"
                   accentBg="#eaf4ee"
                   variant="topic"
                 />
               </div>
-              <div className="mt-4 grid gap-3 md:grid-cols-2">
-                <InsightChip title="회복기 섭취량" body="수술 후나 회복기에는 1.5~2.0 g/kg 수준까지 권장되기도 합니다." />
-                <InsightChip title="면역력과 단백질" body="단백질 부족은 피로, 감염 취약성, 상처 회복 지연으로 이어질 수 있습니다." />
-              </div>
             </div>
 
-            <Callout>단백질 결핍이 심해지면 면역세포 수와 항체 생성이 줄고, 감염 후 회복도 느려질 수 있습니다.</Callout>
-
-            <p className="mt-4 text-xs text-[var(--foreground-muted)]">
-              출처: Munteanu &amp; Schwartz (2022), Frontiers in Nutrition
-            </p>
+            <Callout>
+              단백질 결핍이 심해지면 면역세포 수와 항체 생성이 줄고, 감염 이후 회복이 느려질 수 있습니다.
+            </Callout>
           </section>
 
           <section className="rounded-[28px] border border-[#e8e6e3] bg-[#fffdf8] px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
             <h2 className="text-xl font-bold text-[var(--foreground)]">호르몬과 효소도 단백질이다</h2>
             <p className="mt-4 text-sm leading-6 text-[var(--foreground-muted)]">
-              인슐린, 성장호르몬, 글루카곤처럼 대사와 회복을 조절하는 신호 물질 가운데 상당수는 단백질입니다. 소화를 담당하는
-              펩신과 트립신도 단백질 구조를 가지기 때문에, 단백질 섭취 부족은 대사 조절과 소화 효율 모두에 영향을 줄 수 있습니다.
+              인슐린, 성장호르몬, 글루카곤처럼 대사와 회복을 조절하는 신호 물질과 소화효소 상당수도 단백질 구조를 기반으로 합니다.
             </p>
 
             <div className="mt-5 overflow-x-auto rounded-2xl border border-[#ece9e2] bg-white">
@@ -166,27 +151,6 @@ export default function ImmunityHormonePage() {
                   ))}
                 </tbody>
               </table>
-            </div>
-
-            <p className="mt-4 text-xs text-[var(--foreground-muted)]">
-              출처: 대한영양사협회, 보건복지부 한국인 영양소 섭취기준(2015)
-            </p>
-          </section>
-
-          <section className="rounded-[28px] border border-[#e8e6e3] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
-            <div className="flex flex-wrap gap-3">
-              <Link
-                href="/guides/basics/role-overview"
-                className="inline-flex items-center justify-center rounded-xl border border-[#d9e7dc] bg-white px-5 py-3 text-sm font-semibold text-[#24543d] transition-colors hover:bg-[#eef7f1]"
-              >
-                단백질 기초 전체 보기
-              </Link>
-              <Link
-                href="/recommend"
-                className="inline-flex items-center justify-center rounded-xl border border-[#2d6a4f] bg-[#2d6a4f] px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#24543d]"
-              >
-                내 목적에 맞는 단백질 찾기
-              </Link>
             </div>
           </section>
         </div>
