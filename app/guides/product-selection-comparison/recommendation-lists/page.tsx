@@ -11,18 +11,18 @@ export const metadata = {
 const items = [
   ["추천", "목적 기반으로 몇 개의 후보를 빠르게 좁히고 싶을 때"],
   ["큐레이션", "상황이나 성분 조건에 맞는 제품군을 넓게 보고 싶을 때"],
-  ["Picks", "특정 기준으로 먼저 정리된 리스트에서 빠르게 훑어볼 때"],
-  ["비교 페이지", "여러 제품을 숫자로 직접 비교하고 싶을 때"],
+  ["Picks", "특정 기준으로 먼저 정리된 리스트를 짧게 읽어보고 싶을 때"],
+  ["비교 페이지", "여러 제품을 숫자로 직접 비교하고 결정하고 싶을 때"],
 ];
 
 const flow = [
   {
     title: "먼저 좁히기",
-    body: "러닝, 편의점, 저당처럼 상황이 이미 정해져 있다면 큐레이션부터 보는 편이 빠릅니다.",
+    body: "브랜드나 맛보다 먼저 목적을 정하고 싶다면 큐레이션부터 보는 편이 빠릅니다.",
   },
   {
     title: "후보 고르기",
-    body: "후보를 몇 개로 줄이고 싶다면 추천 결과를 보는 편이 부담이 적습니다.",
+    body: "후보를 몇 개로 줄이고 싶다면 추천 결과를 보고 우선순위를 잡는 편이 편합니다.",
   },
   {
     title: "직접 비교하기",
@@ -53,9 +53,9 @@ export default function RecommendationListsPage() {
             추천과 큐레이션은 역할이 다릅니다
           </h1>
           <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
-            추천, 큐레이션, Picks, 비교 페이지 — 비슷해 보이지만 각각 쓰임이 달라요.
+            추천, 큐레이션, Picks, 비교 페이지는 비슷해 보여도 각각 쓰임새가 다릅니다.
             <br />
-            어떤 상황에서 무엇을 쓰면 되는지 알아두면 제품 탐색이 훨씬 빨라집니다.
+            어떤 상황에서 무엇을 먼저 봐야 하는지 알면 제품 탐색 속도가 훨씬 빨라집니다.
           </p>
         </div>
       </section>
@@ -92,13 +92,13 @@ export default function RecommendationListsPage() {
                 href="/recommend"
                 className="inline-flex items-center justify-center rounded-lg border border-[#2d6a4f] bg-[#2d6a4f] px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#24543d]"
               >
-                제품 추천 받기 →
+                제품 추천 받기
               </Link>
               <Link
                 href="/guides/product-selection-comparison/ranking-content"
                 className="inline-flex items-center justify-center rounded-lg border border-[#d9e7dc] px-5 py-3 text-sm font-semibold text-[#24543d] transition-colors hover:bg-[#eef7f1]"
               >
-                등급·랭킹 읽는 법 →
+                랭킹·점수 보는 법
               </Link>
             </div>
           </section>

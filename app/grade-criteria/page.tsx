@@ -28,10 +28,10 @@ const DRINK_ROWS: UnifiedRow[] = [
 ];
 
 const BAR_ROWS: UnifiedRow[] = [
-  { grade: "A", density: "상위 20%", diet: "칼로리·당류 부담 최소 (상위 20%)", performance: "단백질 보충 효율 최상위 (상위 20%)" },
-  { grade: "B", density: "상위 50%", diet: "평균 이상 효율 (상위 50%)", performance: "평균 이상 효율 (상위 50%)" },
-  { grade: "C", density: "상위 80%", diet: "평균 수준 (상위 80%)", performance: "평균 수준 (상위 80%)" },
-  { grade: "D", density: "하위 20%", diet: "칼로리·당류 부담 높음", performance: "하위 20%" },
+  { grade: "A", density: "칼로리 대비 단백질 효율 최상위 (상위 20%)", diet: "칼로리·당류 부담 최소 (상위 20%)", performance: "단백질 보충 효율 최상위 (상위 20%)" },
+  { grade: "B", density: "칼로리 대비 단백질 효율 우수 (상위 50%)", diet: "평균 이상 효율 (상위 50%)", performance: "평균 이상 효율 (상위 50%)" },
+  { grade: "C", density: "칼로리 대비 단백질 효율 보통 (상위 80%)", diet: "평균 수준 (상위 80%)", performance: "평균 수준 (상위 80%)" },
+  { grade: "D", density: "칼로리 대비 단백질 효율 낮음 (하위 20%)", diet: "칼로리·당류 부담 높음", performance: "하위 20%" },
 ];
 
 const YOGURT_ROWS: UnifiedRow[] = [
@@ -184,7 +184,7 @@ export default function GradeCriteriaPage() {
               ) : productType === "bar" ? (
                 <>
                   <li>· 단백질(g) ÷ 칼로리(kcal) × 100</li>
-                  <li>· 높을수록 칼로리 대비 단백질 효율 우수</li>
+                  <li>· 높을수록 같은 칼로리에서 단백질 효율이 좋음</li>
                 </>
               ) : (
                 <>

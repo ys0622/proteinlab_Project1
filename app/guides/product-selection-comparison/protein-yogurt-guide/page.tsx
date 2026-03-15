@@ -3,7 +3,7 @@ import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 
 export const metadata = {
-  title: "단백질 요거트 추천 기준 | 그릭요거트·드링킹 요거트 비교 | ProteinLab",
+  title: "단백질 요거트 추천 기준 | 그릭·드링킹·대용량 비교 | ProteinLab",
   description:
     "단백질 요거트를 고를 때 그릭요거트, 드링킹 요거트, 대용량 요거트를 어떻게 나눠 보고 단백질 함량, 당류, 칼로리를 비교해야 하는지 정리합니다.",
 };
@@ -11,39 +11,39 @@ export const metadata = {
 const sections = [
   {
     title: "그릭요거트",
-    body: "꾸덕한 식감과 높은 단백질 밀도가 장점입니다. 대신 지방과 총열량이 높아질 수 있어 당류와 칼로리를 같이 봐야 합니다.",
+    body: "꾸덕한 식감과 높은 단백질 밀도가 장점입니다. 다만 지방과 총열량이 같이 높아질 수 있어 당류와 칼로리도 함께 봐야 합니다.",
   },
   {
     title: "드링킹 요거트",
-    body: "마시기 편하고 휴대성이 좋습니다. 컵형보다 간편하지만 제품마다 단백질 함량 차이가 커서 용량과 밀도를 같이 봐야 합니다.",
+    body: "마시기 편하고 휴대성이 좋습니다. 대신 제품마다 단백질 함량 차이가 커서 용량과 단백질 g를 같이 봐야 합니다.",
   },
   {
     title: "대용량 요거트",
-    body: "여러 번 나눠 먹는 용도에 맞습니다. 총 단백질 수치가 커 보여도 100g 기준과 1회 섭취 기준을 같이 보는 편이 좋습니다.",
+    body: "여러 번 나눠 먹기 좋습니다. 총 단백질이 커 보여도 100g 기준과 1회 섭취 기준을 함께 보는 편이 안전합니다.",
   },
 ];
 
 const checks = [
   "단백질 g만 보지 말고 100g당 단백질 밀도도 같이 보기",
-  "다이어트 목적이면 당류 5g 이하 여부를 먼저 좁히기",
-  "대용량 제품은 1회 기준과 전체 기준이 섞이지 않았는지 확인하기",
+  "다이어트 목적이면 당류 5g 안팎 여부를 먼저 좁혀 보기",
+  "대용량 제품은 1회 기준과 총량 기준이 섞이지 않았는지 확인하기",
 ];
 
 const relatedLinks = [
   {
     href: "/guides/product-selection-comparison/greek-yogurt-guide",
     title: "그릭요거트 추천 기준",
-    description: "그릭 타입을 따로 볼 때 무엇을 먼저 봐야 하는지 정리했습니다.",
+    description: "그릭요거트 안에서 무엇을 먼저 비교해야 하는지 더 자세히 정리합니다.",
   },
   {
     href: "/guides/product-selection-comparison/low-sugar-yogurt-guide",
     title: "저당 단백질 요거트 기준",
-    description: "당류를 먼저 좁히고 비교하는 흐름을 정리했습니다.",
+    description: "당류를 우선으로 보면서도 단백질 함량을 놓치지 않는 흐름을 정리합니다.",
   },
   {
     href: "/guides/product-selection-comparison/protein-yogurt-ranking-guide",
-    title: "단백질 요거트 순위 읽는 법",
-    description: "랭킹과 점수를 어떻게 해석해야 하는지 바로 이어서 볼 수 있습니다.",
+    title: "단백질 요거트 순위 보는 법",
+    description: "랭킹과 점수를 어떻게 읽어야 하는지 바로 이어서 볼 수 있습니다.",
   },
 ];
 
@@ -69,9 +69,9 @@ export default function ProteinYogurtGuidePage() {
             단백질 요거트는 유형부터 나눠 보고 비교해야 합니다
           </h1>
           <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
-            그릭요거트, 드링킹 요거트, 대용량 요거트는 같은 단백질 요거트여도 보는 기준이 조금씩 다릅니다.
+            그릭요거트, 드링킹 요거트, 대용량 요거트는 같은 단백질 요거트여도 비교 기준이 조금씩 다릅니다.
             <br />
-            먼저 유형을 나누고 그다음 단백질 함량, 당류, 칼로리, 단백질 밀도를 비교하면 선택이 쉬워집니다.
+            먼저 유형을 나누고 그다음 단백질 함량, 당류, 칼로리, 단백질 밀도를 비교하는 편이 선택이 쉬워집니다.
           </p>
         </div>
       </section>

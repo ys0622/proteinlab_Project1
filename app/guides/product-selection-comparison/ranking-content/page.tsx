@@ -3,9 +3,9 @@ import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 
 export const metadata = {
-  title: "등급 · 랭킹 읽는 법 | ProteinLab",
+  title: "랭킹 & 점수 보는 법 | ProteinLab",
   description:
-    "등급과 랭킹이 어떤 기준으로 계산되는지, 점수와 순위를 어떻게 이해해야 하는지 설명합니다.",
+    "랭킹과 점수가 어떤 기준으로 계산되는지, 순위와 점수를 어떻게 읽어야 하는지 설명합니다.",
 };
 
 const points = [
@@ -15,18 +15,18 @@ const points = [
   },
   {
     title: "랭킹",
-    body: "현재 데이터셋 안에서 상대적으로 어디에 위치하는지 보여주는 순위입니다.",
+    body: "현재 데이터 안에서 상대적으로 어느 위치에 있는지를 보여주는 순위입니다.",
   },
   {
     title: "점수",
-    body: "사용자 이해를 돕기 위해 100점 기준으로 환산한 상대 점수입니다.",
+    body: "사용자가 이해하기 쉽게 100점 기준으로 환산한 상대 점수입니다.",
   },
 ];
 
 const readRows = [
-  ["단백질 밀도 랭킹", "열량 대비 단백질 효율이 좋은 제품", "가벼운 보충용, 고효율 비교에 유리"],
-  ["다이어트 등급", "당류·칼로리·단백질 밀도를 함께 고려", "체중 관리나 저당 선택에 유리"],
-  ["퍼포먼스 등급", "운동 후 보충 관점의 함량과 구성", "회복과 단백질 보충 목적에 유리"],
+  ["단백질 밀도 랭킹", "적은 양 대비 단백질 효율이 좋은 제품", "가벼운 보충용 제품을 찾을 때 먼저 보기 좋습니다."],
+  ["다이어트 점수", "칼로리와 당류 부담을 함께 줄인 제품", "체중 관리나 저당 중심 선택에 유리합니다."],
+  ["퍼포먼스 점수", "운동 후 보충 효율이 좋은 제품", "운동 직후 회복용 후보를 고를 때 보기 좋습니다."],
 ];
 
 export default function RankingContentPage() {
@@ -41,7 +41,7 @@ export default function RankingContentPage() {
             <span>/</span>
             <Link href="/guides/product-selection-comparison">제품 선택 · 비교</Link>
             <span>/</span>
-            <span>등급 · 랭킹 읽는 법</span>
+            <span>랭킹 & 점수 보는 법</span>
           </div>
           <div className="mt-3">
             <span className="rounded-md bg-[#eaf0f6] px-2 py-0.5 text-[11px] font-semibold tracking-wide text-[#4a6178]">
@@ -49,7 +49,7 @@ export default function RankingContentPage() {
             </span>
           </div>
           <h1 className="mt-3 text-2xl font-bold leading-tight text-[var(--foreground)] md:text-3xl">
-            랭킹은 순위만 보는 것이 아니라 기준을 같이 읽어야 합니다
+            랭킹은 순위만 보지 말고 기준까지 같이 읽어야 합니다
           </h1>
           <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
             같은 1위라도 어떤 지표에서 1위인지에 따라 의미가 달라집니다.
@@ -74,7 +74,7 @@ export default function RankingContentPage() {
           </section>
 
           <section className="rounded-[28px] border border-[#e2ebe4] bg-[#f7fbf8] px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
-            <h2 className="text-xl font-bold text-[var(--foreground)]">지표별로 읽는 포인트</h2>
+            <h2 className="text-xl font-bold text-[var(--foreground)]">지표별로 읽는 기준</h2>
             <div className="mt-5 overflow-x-auto">
               <table className="min-w-full border-collapse text-left text-sm">
                 <thead>
@@ -98,17 +98,17 @@ export default function RankingContentPage() {
               </table>
             </div>
             <blockquote className="mt-5 rounded-xl border border-[#dce8df] bg-[#f7fbf8] px-4 py-4 text-sm leading-6 text-[var(--foreground-muted)]">
-              랭킹은 항상 제품군과 비교 기준을 함께 보는 것이 중요합니다. 음료 랭킹과 바 랭킹을 같은 의미로 읽으면 오해하기 쉽습니다.
+              랭킹은 같은 제품군 안에서 비교한 결과를 읽는 것이 중요합니다. 음료 랭킹과 바 랭킹을 같은 숫자로 바로 비교하는 식의 해석은 맞지 않습니다.
             </blockquote>
           </section>
 
           <section className="rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
             <div className="flex flex-wrap gap-3">
               <Link href="/ranking" className="inline-flex items-center justify-center rounded-lg border border-[#2d6a4f] bg-[#2d6a4f] px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#24543d]">
-                랭킹 보기 →
+                랭킹 보기
               </Link>
               <Link href="/grade-criteria" className="inline-flex items-center justify-center rounded-lg border border-[#d9e7dc] px-5 py-3 text-sm font-semibold text-[#24543d] transition-colors hover:bg-[#eef7f1]">
-                등급 기준 보기 →
+                등급 기준 보기
               </Link>
             </div>
           </section>
