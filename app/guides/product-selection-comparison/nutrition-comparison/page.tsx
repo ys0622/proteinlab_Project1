@@ -21,7 +21,7 @@ const compareTips = [
   },
   {
     title: "단백질 g만 따로 보지 않기",
-    body: "단백질이 높아도 당류나 칼로리가 높으면 실제 용도는 크게 달라질 수 있습니다.",
+    body: "단백질이 높아도 당류나 칼로리가 높으면 실제 용도는 다르게 해석해야 합니다.",
   },
   {
     title: "용도를 먼저 정하고 숫자 읽기",
@@ -88,7 +88,7 @@ export default function NutritionComparisonPage() {
           </section>
 
           <section className="rounded-[28px] border border-[#e2ebe4] bg-[#f7fbf8] px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
-            <h2 className="text-xl font-bold text-[var(--foreground)]">비교 실수를 줄이는 3가지 법칙</h2>
+            <h2 className="text-xl font-bold text-[var(--foreground)]">비교 실수를 줄이는 3가지 원칙</h2>
             <div className="mt-5 grid gap-3 md:grid-cols-3">
               {compareTips.map((item) => (
                 <article key={item.title} className="rounded-2xl border border-[#dce8df] bg-[#f6fbf7] p-4">
@@ -98,7 +98,7 @@ export default function NutritionComparisonPage() {
               ))}
             </div>
             <blockquote className="mt-5 rounded-xl border border-[#dce8df] bg-[#f7fbf8] px-4 py-4 text-sm leading-6 text-[var(--foreground-muted)]">
-              ProteinLab 비교 화면에서는 단백질 함량뿐 아니라 당류, 칼로리, 단백질 밀도까지 함께 볼 수 있습니다. 비교 순서만 정하면 판단 속도는 훨씬 빨라집니다.
+              ProteinLab 비교 화면에서는 단백질 함량뿐 아니라 당류, 칼로리, 단백질 밀도까지 함께 볼 수 있습니다. 비교 순서만 정해도 판단 속도는 크게 빨라집니다.
             </blockquote>
           </section>
 

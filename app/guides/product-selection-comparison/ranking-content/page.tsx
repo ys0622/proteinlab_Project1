@@ -24,9 +24,9 @@ const points = [
 ];
 
 const readRows = [
-  ["단백질 밀도 랭킹", "열량 대비 단백질 효율이 좋은 제품", "가벼운 보충용 제품을 찾을 때 먼저 보기 좋습니다."],
+  ["단백질 밀도 랭킹", "같은 양 대비 단백질 효율이 좋은 제품", "가벼운 보충형 제품을 찾을 때 먼저 보기 좋습니다."],
   ["다이어트 점수", "칼로리와 당류 부담을 줄인 제품", "체중 관리나 식단 정리 목적에 유용합니다."],
-  ["퍼포먼스 점수", "운동 후 보충 효율이 좋은 제품", "운동 직후 회복용 후보를 고를 때 유용합니다."],
+  ["퍼포먼스 점수", "운동 후 보충 효율이 좋은 제품", "운동 직후 보강용 후보를 고를 때 유용합니다."],
 ];
 
 export default function RankingContentPage() {
@@ -54,7 +54,7 @@ export default function RankingContentPage() {
           <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
             같은 1위라도 어떤 지표에서 1위인지에 따라 해석은 달라집니다.
             <br />
-            등급, 랭킹, 점수를 구분해 보면 제품 비교가 훨씬 직관적입니다.
+            등급, 랭킹, 점수를 구분해 보면 제품 비교가 더 직접적입니다.
           </p>
         </div>
       </section>
@@ -98,7 +98,7 @@ export default function RankingContentPage() {
               </table>
             </div>
             <blockquote className="mt-5 rounded-xl border border-[#dce8df] bg-[#f7fbf8] px-4 py-4 text-sm leading-6 text-[var(--foreground-muted)]">
-              랭킹은 같은 제품군 안에서 비교한 결과를 읽는 것이 중요합니다. 음료 랭킹과 바 랭킹을 숫자만으로 직접 비교하면 해석이 달라질 수 있습니다.
+              랭킹은 같은 제품군 안에서 비교한 결과를 읽는 것이 중요합니다. 음료 랭킹과 바 랭킹은 숫자만으로 직접 비교하면 해석이 달라질 수 있습니다.
             </blockquote>
           </section>
 

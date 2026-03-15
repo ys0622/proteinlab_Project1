@@ -3,7 +3,7 @@ import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 
 export const metadata = {
-  title: "다이어트 단백질 음료 기준 | 저당·저칼로리·고단백 밀도 비교 | ProteinLab",
+  title: "다이어트 단백질 음료 기준 | 저당·저칼로리·밀도 비교 | ProteinLab",
   description:
     "다이어트용 단백질 음료를 고를 때 당류, 칼로리, 단백질 밀도를 어떤 순서로 비교해야 하는지 ProteinLab 기준으로 정리합니다.",
 };
@@ -15,19 +15,19 @@ const criteriaCards = [
   },
   {
     title: "2. 칼로리와 포만감을 같이 본다",
-    body: "너무 가벼우면 간식형에 가깝고, 너무 높으면 식사 보완형에 가까워집니다. 다이어트용은 이 균형이 중요합니다.",
+    body: "너무 가벼우면 간식형에 가깝고, 너무 높으면 식사 보완형에 가까워집니다. 다이어트용은 그 균형이 중요합니다.",
   },
   {
     title: "3. 마지막이 단백질 밀도다",
-    body: "후보를 추린 뒤에는 100kcal당 단백질 효율을 보면 같은 칼로리에서 더 실용적인 제품을 고르기 쉽습니다.",
+    body: "후보를 추린 뒤에는 100kcal당 단백질 효율을 보면 같은 칼로리 안에서 더 실용적인 제품을 고르기 쉽습니다.",
   },
 ];
 
 const checklistRows = [
-  ["당류", "가급적 먼저 확인", "다이어트 목적이라면 당류가 낮은 제품부터 좁히는 편이 실제 선택과 가깝습니다."],
-  ["칼로리", "식사 보완형인지 간식형인지 구분", "칼로리와 포만감 수준을 같이 봐야 맥락을 읽을 수 있습니다."],
+  ["당류", "가능한 한 먼저 확인", "다이어트 목적이라면 당류가 낮은 제품부터 좁히는 편이 실제 선택과 가깝습니다."],
+  ["칼로리", "식사 보완형인지 간식형인지 구분", "칼로리와 포만감을 같이 봐야 맥락을 읽을 수 있습니다."],
   ["단백질 함량", "최소 기준 이상인지 확인", "단백질이 너무 낮으면 보충용으로서 의미가 약해집니다."],
-  ["단백질 밀도", "후보군 최종 비교", "비슷한 열량에서 효율을 가르는 마지막 지표입니다."],
+  ["단백질 밀도", "후보군 최종 비교", "비슷한 제품 안에서 효율을 가르는 마지막 지표입니다."],
 ];
 
 const thresholdBars = [
@@ -48,7 +48,7 @@ const flowCards = [
   },
   {
     title: "운동 후 가볍게",
-    body: "당류가 과하지 않으면서 단백질 밀도가 괜찮은 제품이 유리합니다. 너무 무거우면 식사대용형과 목적이 섞입니다.",
+    body: "당류가 과하지 않으면서 단백질 밀도가 괜찮은 제품을 고릅니다. 너무 무거우면 식사 대체형과 목적이 섞입니다.",
   },
 ];
 
@@ -75,7 +75,7 @@ export default function DietProteinDrinkGuidePage() {
             다이어트 단백질 음료는 단백질만 보면 부족합니다
           </h1>
           <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
-            체중 관리용 단백질 음료는 단백질 수치만 높다고 끝이 아닙니다.
+            체중 관리용 단백질 음료는 고단백만으로 판단하기 어렵습니다.
             <br />
             당류, 칼로리, 단백질 밀도를 어떤 순서로 비교해야 하는지 ProteinLab 기준으로 정리합니다.
           </p>
@@ -121,7 +121,7 @@ export default function DietProteinDrinkGuidePage() {
           </section>
 
           <section className="rounded-[28px] border border-[#e2ebe4] bg-[#f7fbf8] px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
-            <h2 className="text-xl font-bold text-[var(--foreground)]">빠르게 보는 기준표</h2>
+            <h2 className="text-xl font-bold text-[var(--foreground)]">빠르게 보는 기준선</h2>
             <div className="mt-5 space-y-4">
               {thresholdBars.map((item) => (
                 <div key={item.label}>
@@ -148,7 +148,7 @@ export default function DietProteinDrinkGuidePage() {
               ))}
             </div>
             <blockquote className="mt-5 rounded-xl border border-[#dce8df] bg-[#f7fbf8] px-4 py-4 text-sm leading-6 text-[var(--foreground-muted)]">
-              다이어트용 단백질 음료는 고단백과 저칼로리만으로 끝나지 않습니다. 너무 가벼우면 포만감이 약하고, 너무 무거우면 식사 보완형에 가까워집니다.
+              다이어트용 단백질 음료는 고단백과 저칼로리만으로 끝나지 않습니다. 너무 가벼우면 포만감이 약하고 너무 무거우면 식사 보완형에 가까워집니다.
             </blockquote>
           </section>
         </div>

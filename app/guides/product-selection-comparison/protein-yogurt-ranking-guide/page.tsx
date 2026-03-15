@@ -3,14 +3,14 @@ import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 
 export const metadata = {
-  title: "단백질 요거트 순위 보는 법 | 랭킹·등급 기준 해석 | ProteinLab",
+  title: "단백질 요거트 순위 보는 법 | 점수·등급 기준 해석 | ProteinLab",
   description:
     "단백질 요거트 순위와 랭킹에서 단백질 밀도, 다이어트, 퍼포먼스 점수를 어떻게 읽어야 하는지 정리합니다.",
 };
 
 const rows = [
   ["단백질 밀도", "같은 중량에서 단백질이 얼마나 효율적으로 들어 있는지 보는 지표"],
-  ["다이어트", "칼로리와 당류 부담을 함께 줄인 제품을 먼저 볼 때 유용한 지표"],
+  ["다이어트", "칼로리와 당류 부담을 함께 줄인 제품을 먼저 보는 데 유용한 지표"],
   ["퍼포먼스", "운동 후 보충이나 단백질 보강 관점에서 활용도가 높은 제품을 보는 지표"],
 ];
 
@@ -23,7 +23,7 @@ const relatedLinks = [
   {
     href: "/grade-criteria",
     title: "등급 기준",
-    description: "점수와 등급이 어떤 기준으로 계산되는지 더 자세히 이어서 볼 수 있습니다.",
+    description: "점수가 등급으로 어떻게 변환되는지 더 자세히 이어서 볼 수 있습니다.",
   },
   {
     href: "/recommend",
@@ -52,9 +52,9 @@ export default function ProteinYogurtRankingGuidePage() {
             단백질 요거트 순위는 점수 기준까지 같이 읽어야 합니다
           </h1>
           <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
-            요거트 랭킹은 단순 순번이 아니라 단백질 밀도, 다이어트, 퍼포먼스 기준으로 나뉘어 있습니다.
+            요거트 랭킹은 단순 번호가 아니라 단백질 밀도, 다이어트, 퍼포먼스 기준으로 나뉘어 있습니다.
             <br />
-            같은 제품도 어떤 지표에서 상위인지에 따라 활용 목적이 달라질 수 있습니다.
+            같은 제품도 어떤 지표에서 상위인지에 따라 쓰임새가 달라질 수 있습니다.
           </p>
         </div>
       </section>
