@@ -5,13 +5,13 @@ import Footer from "@/app/components/Footer";
 export const metadata = {
   title: "봄 러닝 시작 단백질 가이드 | 입문 러너 회복 전략 | ProteinLab",
   description:
-    "봄에 러닝을 다시 시작할 때 필요한 단백질 기준, 회복 타이밍, 가벼운 제품 선택 포인트를 ProteinLab 기준으로 정리합니다.",
+    "봄에 러닝을 다시 시작할 때 필요한 단백질 기준, 회복 타이밍, 가벼운 제품 선택 포인트를 ProteinLab 기준으로 정리했습니다.",
 };
 
 const restartCards = [
   {
     title: "운동량보다 회복 루틴",
-    body: "봄에는 러닝 거리보다 회복 루틴을 먼저 만드는 편이 중요합니다. 운동 후 단백질과 다음 식사 연결을 먼저 잡아야 합니다.",
+    body: "봄에는 러닝 거리보다 회복 루틴을 먼저 만드는 편이 중요합니다. 운동 후 단백질과 다음 식사 연결부터 잡아두는 게 좋습니다.",
   },
   {
     title: "가벼운 제품 우선",
@@ -19,14 +19,14 @@ const restartCards = [
   },
   {
     title: "주간 총량 유지",
-    body: "운동하는 날만 챙기기보다 주간 기준으로 단백질 총량을 유지하는 편이 회복과 적응에 유리합니다.",
+    body: "달리는 날만 챙기기보다 주간 기준으로 단백질 총량을 안정적으로 유지하는 편이 회복과 적응에 유리합니다.",
   },
 ];
 
 const timingRows = [
   ["러닝 직후", "20~30g", "가벼운 회복 시작"],
   ["다음 식사", "탄수화물 + 단백질", "회복과 허기 관리"],
-  ["운동 없는 날", "총량 유지", "주간 루틴 유지"],
+  ["운동 없는 날", "총량 유지", "주간 루틴 안정화"],
 ];
 
 export default function SpringRunningStartGuidePage() {
@@ -37,9 +37,9 @@ export default function SpringRunningStartGuidePage() {
       <section className="w-full border-t border-b bg-[var(--hero-bg)]" style={{ borderColor: "var(--hero-border)" }}>
         <div className="mx-auto max-w-[1200px] px-4 py-5 md:px-6 md:py-6">
           <div className="flex flex-wrap items-center gap-1.5 text-xs text-[var(--foreground-muted)]">
-            <Link href="/guides">가이드</Link>
+            <Link href="/guides">Guides</Link>
             <span>/</span>
-            <Link href="/guides/fitness-lifestyle">운동 · 라이프스타일</Link>
+            <Link href="/guides/fitness-lifestyle">운동 & 라이프스타일</Link>
             <span>/</span>
             <span>봄 러닝 시작 단백질 가이드</span>
           </div>
@@ -56,7 +56,7 @@ export default function SpringRunningStartGuidePage() {
           <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
             봄은 러닝을 다시 시작하는 사람이 많아지는 시즌입니다.
             <br />
-            거리보다 먼저 운동 후 단백질, 다음 식사, 주간 총량을 연결하는 회복 루틴을 잡는 것이 중요합니다.
+            거리보다 먼저 운동 후 단백질, 다음 식사, 주간 총량이 연결되는 회복 루틴을 만드는 것이 중요합니다.
           </p>
         </div>
       </section>
@@ -83,7 +83,7 @@ export default function SpringRunningStartGuidePage() {
                   <tr className="border-b border-[#e8e6e3] text-[var(--foreground)]">
                     <th className="px-3 py-3 font-semibold">구간</th>
                     <th className="px-3 py-3 font-semibold">권장량</th>
-                    <th className="px-3 py-3 font-semibold">핵심</th>
+                    <th className="px-3 py-3 font-semibold">목적</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -98,6 +98,14 @@ export default function SpringRunningStartGuidePage() {
                   ))}
                 </tbody>
               </table>
+            </div>
+            <div className="mt-5 flex flex-wrap gap-2">
+              <Link href="/guides/intake-strategy-health/post-workout-protein" className="rounded-full border border-[#eaded7] bg-white px-3 py-1 text-xs font-semibold text-[#8a4b2f]">
+                관련: 운동 후 단백질
+              </Link>
+              <Link href="/guides/fitness-lifestyle/running-protein-guide" className="rounded-full border border-[#eaded7] bg-white px-3 py-1 text-xs font-semibold text-[#8a4b2f]">
+                관련: 러닝 단백질 가이드
+              </Link>
             </div>
           </section>
         </div>
