@@ -5,11 +5,11 @@ import Footer from "@/app/components/Footer";
 export const metadata = {
   title: "저당 단백질 요거트 추천 기준 | 당류 5g 이하 비교 | ProteinLab",
   description:
-    "저당 단백질 요거트를 고를 때 당류 5g 이하 기준, 단백질 함량, 칼로리, 제품 유형을 어떻게 같이 봐야 하는지 정리합니다.",
+    "저당 단백질 요거트를 고를 때 당류 5g 이하 기준과 단백질 함량, 칼로리, 제품 유형을 함께 보는 방법을 정리합니다.",
 };
 
 const rules = [
-  ["당류 먼저 좁히기", "다이어트 목적이라면 먼저 당류 5g 이하 제품만 추려보는 것이 실용적입니다."],
+  ["당류 먼저 좁히기", "다이어트 목적이라면 먼저 당류 5g 이하 제품만 추려보는 흐름이 실용적입니다."],
   ["단백질 함량 같이 보기", "당류만 낮고 단백질이 너무 낮으면 단백질 요거트로서의 장점이 줄어듭니다."],
   ["맛 제품은 따로 보기", "바나나, 과일, 토핑형은 기본적으로 당류가 높아질 수 있어 플레인과 따로 보는 편이 안전합니다."],
 ];
@@ -23,12 +23,12 @@ const relatedLinks = [
   {
     href: "/guides/product-selection-comparison/protein-yogurt-guide",
     title: "단백질 요거트 선택 가이드",
-    description: "유형 전체를 먼저 이해하고 다시 저당 기준으로 내려오면 비교가 쉬워집니다.",
+    description: "유형 전체를 먼저 이해한 뒤 다시 저당 기준으로 내려오면 비교가 더 쉬워집니다.",
   },
   {
     href: "/guides/product-selection-comparison/drinking-yogurt-guide",
     title: "드링킹 요거트 비교 포인트",
-    description: "드링킹 제품 중 저당 후보를 따로 볼 때 유용한 기준입니다.",
+    description: "드링킹 타입에서 당류를 따로 보는 기준을 이어서 확인할 수 있습니다.",
   },
 ];
 
@@ -54,7 +54,7 @@ export default function LowSugarYogurtGuidePage() {
             저당 단백질 요거트는 당류만 보지 말고 단백질도 같이 봐야 합니다
           </h1>
           <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
-            당류를 먼저 좁히는 것은 좋지만, 단백질 함량과 유형을 같이 봐야 실제로 쓸 만한 제품을 고를 수 있습니다.
+            당류를 먼저 좁히는 것은 좋지만, 단백질 함량과 유형을 같이 봐야 실제로 먹을 만한 제품을 찾을 수 있습니다.
           </p>
         </div>
       </section>
@@ -62,7 +62,7 @@ export default function LowSugarYogurtGuidePage() {
       <main className="mx-auto max-w-[1200px] px-4 py-8 md:px-6">
         <div className="space-y-6">
           <section className="rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
-            <h2 className="text-xl font-bold text-[var(--foreground)]">저당 요거트 비교 원칙</h2>
+            <h2 className="text-xl font-bold text-[var(--foreground)]">저당 요거트 비교 기준</h2>
             <div className="mt-5 grid gap-3 md:grid-cols-3">
               {rules.map((item) => (
                 <article key={item[0]} className="rounded-2xl border border-[#dce8df] bg-[#f6fbf7] p-4">

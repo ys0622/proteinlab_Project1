@@ -11,24 +11,24 @@ export const metadata = {
 const rows = [
   ["용량", "190mL, 210mL처럼 비슷해 보여도 총 단백질과 칼로리가 달라질 수 있습니다."],
   ["단백질 효율", "마시기 편해도 단백질이 너무 낮으면 일반 드링킹 요거트와 차이가 줄어듭니다."],
-  ["당류", "맛 제품은 당류가 높아질 수 있어 다이어트 목적이면 따로 좁혀서 봐야 합니다."],
+  ["당류", "맛 제품은 당류가 높아지기 쉬워 다이어트 목적이면 특히 따로 좁혀 봐야 합니다."],
 ];
 
 const relatedLinks = [
   {
     href: "/curation/yogurt-drinking",
     title: "드링킹 요거트 추천",
-    description: "마시기 편한 타입만 모은 큐레이션으로 바로 이동할 수 있습니다.",
+    description: "마시기 편한 제품만 따로 모은 큐레이션으로 바로 이동할 수 있습니다.",
   },
   {
     href: "/guides/product-selection-comparison/protein-yogurt-guide",
     title: "단백질 요거트 선택 가이드",
-    description: "드링킹을 포함한 전체 요거트 유형 흐름을 먼저 다시 볼 수 있습니다.",
+    description: "드링킹을 포함한 전체 요거트 유형을 먼저 비교할 수 있습니다.",
   },
   {
     href: "/guides/product-selection-comparison/protein-yogurt-ranking-guide",
-    title: "단백질 요거트 순위 읽는 법",
-    description: "드링킹 타입이 랭킹에서 어떻게 보이는지 점수 기준으로 확인할 수 있습니다.",
+    title: "단백질 요거트 순위 보는 법",
+    description: "드링킹 타입이 랭킹에서 어떻게 보이는지도 이어서 확인할 수 있습니다.",
   },
 ];
 
@@ -54,7 +54,7 @@ export default function DrinkingYogurtGuidePage() {
             드링킹 단백질 요거트는 용량과 당류를 같이 봐야 합니다
           </h1>
           <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
-            마시는 타입은 편하지만 제품마다 용량과 단백질 차이가 큽니다. 휴대성만 보지 말고 당류와 효율을 같이 봐야 합니다.
+            마시는 타입은 휴대성이 편하지만 제품마다 용량과 단백질 차이가 큽니다. 편의성만 보지 말고 당류와 효율도 같이 봐야 합니다.
           </p>
         </div>
       </section>

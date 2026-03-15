@@ -3,7 +3,7 @@ import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 
 export const metadata = {
-  title: "그릭요거트 추천 기준 | 단백질 함량·단백질 밀도 비교 | ProteinLab",
+  title: "그릭요거트 추천 기준 | 단백질 함량·밀도 비교 | ProteinLab",
   description:
     "그릭요거트를 고를 때 단백질 함량, 단백질 밀도, 당류, 대용량 여부를 어떻게 함께 봐야 하는지 정리합니다.",
 };
@@ -11,15 +11,15 @@ export const metadata = {
 const cards = [
   {
     title: "단백질 밀도 먼저 보기",
-    body: "그릭요거트는 100g당 단백질 차이가 큽니다. 총량보다 밀도를 먼저 보면 비교가 쉬워집니다.",
+    body: "그릭요거트는 100g당 단백질 차이가 큽니다. 총량보다 밀도를 먼저 보면 비교가 훨씬 쉬워집니다.",
   },
   {
-    title: "당류 같이 보기",
-    body: "꾸덕한 타입이어도 당류가 높으면 용도가 달라질 수 있습니다. 다이어트 목적이라면 당류 기준을 먼저 좁히는 편이 좋습니다.",
+    title: "당류도 같이 보기",
+    body: "꾸덕한 질감이 강점이어도 당류가 높으면 용도가 달라질 수 있습니다. 다이어트 목적이라면 당류 기준을 함께 좁혀야 합니다.",
   },
   {
-    title: "대용량은 1회 기준으로 읽기",
-    body: "450g, 800g 제품은 총량이 커서 숫자가 과장돼 보일 수 있습니다. 1회 기준으로 다시 읽는 습관이 중요합니다.",
+    title: "대용량은 1회 기준 병행",
+    body: "450g, 800g 제품은 총량이 커 보입니다. 1회 섭취 기준과 100g 기준을 같이 읽어야 착시를 줄일 수 있습니다.",
   },
 ];
 
@@ -27,17 +27,17 @@ const relatedLinks = [
   {
     href: "/curation/yogurt-greek",
     title: "그릭 요거트 추천",
-    description: "현재 데이터 기준으로 그릭 타입 제품만 바로 추천 목록으로 볼 수 있습니다.",
+    description: "현재 데이터 기준으로 그릭 타입 제품만 바로 모아볼 수 있습니다.",
   },
   {
     href: "/guides/product-selection-comparison/protein-yogurt-guide",
     title: "단백질 요거트 선택 가이드",
-    description: "그릭, 드링킹, 대용량 전체 흐름으로 다시 비교할 수 있습니다.",
+    description: "그릭, 드링킹, 대용량을 포함한 전체 흐름으로 다시 비교할 수 있습니다.",
   },
   {
     href: "/guides/product-selection-comparison/low-sugar-yogurt-guide",
     title: "저당 단백질 요거트 기준",
-    description: "그릭 타입 안에서도 당류를 어떻게 같이 봐야 하는지 이어서 볼 수 있습니다.",
+    description: "그릭 요거트 안에서도 당류를 어떻게 같이 봐야 하는지 이어서 확인할 수 있습니다.",
   },
 ];
 
@@ -60,10 +60,10 @@ export default function GreekYogurtGuidePage() {
             </span>
           </div>
           <h1 className="mt-3 text-2xl font-bold leading-tight text-[var(--foreground)] md:text-3xl">
-            그릭요거트는 단백질 밀도와 당류를 함께 봐야 합니다
+            그릭요거트는 단백질 밀도와 당류를 같이 봐야 합니다
           </h1>
           <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
-            그릭요거트는 꾸덕한 식감 때문에 고단백 이미지가 강하지만, 실제 비교는 밀도와 당류를 같이 봐야 정확합니다.
+            그릭요거트는 꾸덕함과 고단백 이미지가 강하지만, 실제 비교는 밀도와 당류를 같이 봐야 더 정확합니다.
           </p>
         </div>
       </section>

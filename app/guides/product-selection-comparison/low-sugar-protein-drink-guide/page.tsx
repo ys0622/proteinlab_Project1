@@ -5,34 +5,34 @@ import Footer from "@/app/components/Footer";
 export const metadata = {
   title: "저당 단백질 음료 추천 기준 | 당류 낮은 RTD 비교 | ProteinLab",
   description:
-    "저당 단백질 음료를 고를 때 당류 컷, 단백질 함량, 칼로리, 단백질 밀도를 어떤 순서로 확인해야 하는지 ProteinLab 기준으로 정리합니다.",
+    "저당 단백질 음료를 고를 때 당류 컷, 단백질 함량, 칼로리, 단백질 밀도를 어떤 순서로 확인해야 하는지 정리합니다.",
 };
 
 const standards = [
   {
-    title: "당류 컷 먼저",
-    body: "저당 단백질 음료를 찾는다면 가장 먼저 당류 기준선을 정해야 합니다. 단백질이 높아도 당류가 높으면 검색 의도와 어긋납니다.",
+    title: "당류 컷을 먼저 정하기",
+    body: "저당 단백질 음료를 찾는다면 가장 먼저 당류 기준을 정해야 합니다. 단백질이 높아도 당류가 높으면 검색 목적과 멀어집니다.",
   },
   {
     title: "그다음 단백질",
-    body: "당류가 낮은 후보 안에서 단백질 함량이 충분한지 봐야 실제 보충용으로 의미가 생깁니다.",
+    body: "당류가 낮은 후보 안에서 단백질이 충분한지 봐야 실제 보충용으로서 의미가 살아납니다.",
   },
   {
     title: "마지막은 칼로리와 밀도",
-    body: "비슷한 저당 제품끼리는 칼로리와 단백질 밀도를 비교해야 가볍게 마실지, 운동 후 보충할지 구분이 됩니다.",
+    body: "비슷한 저당 제품끼리는 칼로리와 단백질 밀도를 비교해야 가볍게 마실지, 운동 후 보충형인지 구분할 수 있습니다.",
   },
 ];
 
 const filterRows = [
-  ["당류 2g 이하", "가장 엄격한 저당 기준", "워터형이나 일부 저당 RTD에서 자주 보이는 구간"],
-  ["당류 5g 이하", "일반적인 저당 비교 기준", "밀크형 RTD까지 포함해 비교 폭이 넓어집니다"],
-  ["단백질 20g+", "기본 보충용 기준", "저당이면서도 보충용으로 쓸 만한지 판단하기 쉽습니다"],
-  ["단백질 밀도", "최종 비교용", "같은 칼로리에서 효율이 더 좋은 제품을 고를 수 있습니다"],
+  ["당류 2g 이하", "가장 엄격한 저당 기준", "워터형·초저당 RTD에서 자주 보이는 구간"],
+  ["당류 5g 이하", "일반적인 저당 비교 기준", "밸런스형 RTD까지 포함해 비교 폭이 넓어집니다."],
+  ["단백질 20g+", "기본 보충형 기준", "저당이면서도 보충용으로 쓸 만한지 판단하기 쉽습니다."],
+  ["단백질 밀도", "최종 비교용", "같은 칼로리에서 어느 제품이 더 효율적인지 가를 수 있습니다."],
 ];
 
 const chartItems = [
   { label: "워터형", width: "78%", note: "저당 후보 비중이 높은 편" },
-  { label: "밀크형", width: "54%", note: "포만감이 좋지만 당류 확인이 더 중요" },
+  { label: "밸런스형", width: "54%", note: "포만감은 좋지만 당류 확인이 중요" },
   { label: "고단백형", width: "61%", note: "저당 여부와 칼로리 차이가 큼" },
 ];
 
@@ -58,9 +58,7 @@ export default function LowSugarProteinDrinkGuidePage() {
             저당 단백질 음료는 당류 컷부터 정해야 합니다
           </h1>
           <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
-            저당 단백질 음료는 단순히 단백질만 높은 제품이 아니라, 당류 기준 안에서 비교가 가능한 제품군입니다.
-            <br />
-            당류 컷, 단백질 함량, 칼로리, 단백질 밀도를 어떤 순서로 확인해야 하는지 정리했습니다.
+            저당 단백질 음료는 단순히 단백질만 높은 제품이 아닙니다. 당류 기준 안에서 비교가 가능한 제품군을 먼저 정한 뒤 살펴봐야 합니다.
           </p>
         </div>
       </section>
@@ -104,7 +102,7 @@ export default function LowSugarProteinDrinkGuidePage() {
           </section>
 
           <section className="rounded-[28px] border border-[#e2ebe4] bg-[#f7fbf8] px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
-            <h2 className="text-xl font-bold text-[var(--foreground)]">유형별 저당 후보군 감각</h2>
+            <h2 className="text-xl font-bold text-[var(--foreground)]">유형별 저당 후보감</h2>
             <div className="mt-5 space-y-4">
               {chartItems.map((item) => (
                 <div key={item.label}>

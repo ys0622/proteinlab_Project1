@@ -3,30 +3,30 @@ import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 
 export const metadata = {
-  title: "추천 리스트 활용법 | ProteinLab",
+  title: "추천 리스트 사용하는 법 | ProteinLab",
   description:
     "추천, 큐레이션, picks, 비교 페이지가 각각 어떤 상황에서 유용한지 정리합니다.",
 };
 
 const items = [
-  ["추천", "목적 기반으로 몇 개의 후보를 빠르게 좁히고 싶을 때"],
-  ["큐레이션", "상황이나 성분 조건에 맞는 제품군을 넓게 보고 싶을 때"],
-  ["Picks", "특정 기준으로 먼저 정리된 리스트를 짧게 읽어보고 싶을 때"],
-  ["비교 페이지", "여러 제품을 숫자로 직접 비교하고 결정하고 싶을 때"],
+  ["추천", "내 목적과 조건을 기준으로 후보를 빠르게 좁히고 싶을 때"],
+  ["큐레이션", "특정 상황이나 성분 조건에 맞는 제품군을 묶어서 보고 싶을 때"],
+  ["Picks", "특정 기준으로 이미 정리된 리스트를 빠르게 훑고 싶을 때"],
+  ["비교 페이지", "여러 제품을 수치로 직접 비교하며 최종 결정하고 싶을 때"],
 ];
 
 const flow = [
   {
     title: "먼저 좁히기",
-    body: "브랜드나 맛보다 먼저 목적을 정하고 싶다면 큐레이션부터 보는 편이 빠릅니다.",
+    body: "브랜드나 맛보다 먼저 목적을 정했다면 큐레이션부터 보는 편이 빠릅니다.",
   },
   {
     title: "후보 고르기",
-    body: "후보를 몇 개로 줄이고 싶다면 추천 결과를 보고 우선순위를 잡는 편이 편합니다.",
+    body: "후보를 몇 개로 줄이고 싶다면 추천 결과를 보고 우선순위를 세우는 흐름이 적합합니다.",
   },
   {
     title: "직접 비교하기",
-    body: "마지막 판단은 비교 페이지에서 숫자를 나란히 놓고 보는 방식이 가장 명확합니다.",
+    body: "마지막 판단은 비교 페이지에서 숫자를 직접 나란히 놓고 보는 방식이 가장 명확합니다.",
   },
 ];
 
@@ -40,9 +40,9 @@ export default function RecommendationListsPage() {
           <div className="flex flex-wrap items-center gap-1.5 text-xs text-[var(--foreground-muted)]">
             <Link href="/guides">가이드</Link>
             <span>/</span>
-            <Link href="/guides/product-selection-comparison">제품 선택 · 비교</Link>
+            <Link href="/guides/product-selection-comparison">제품 선택 & 비교</Link>
             <span>/</span>
-            <span>추천 리스트 활용법</span>
+            <span>추천 리스트 사용하는 법</span>
           </div>
           <div className="mt-3">
             <span className="rounded-md bg-[#eaf0f6] px-2 py-0.5 text-[11px] font-semibold tracking-wide text-[#4a6178]">
@@ -50,10 +50,10 @@ export default function RecommendationListsPage() {
             </span>
           </div>
           <h1 className="mt-3 text-2xl font-bold leading-tight text-[var(--foreground)] md:text-3xl">
-            추천과 큐레이션은 역할이 다릅니다
+            추천과 큐레이션은 비슷해 보여도 역할이 다릅니다
           </h1>
           <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
-            추천, 큐레이션, Picks, 비교 페이지는 비슷해 보여도 각각 쓰임새가 다릅니다.
+            추천, 큐레이션, Picks, 비교 페이지는 각각 쓰임새가 다릅니다.
             <br />
             어떤 상황에서 무엇을 먼저 봐야 하는지 알면 제품 탐색 속도가 훨씬 빨라집니다.
           </p>
@@ -98,7 +98,7 @@ export default function RecommendationListsPage() {
                 href="/guides/product-selection-comparison/ranking-content"
                 className="inline-flex items-center justify-center rounded-lg border border-[#d9e7dc] px-5 py-3 text-sm font-semibold text-[#24543d] transition-colors hover:bg-[#eef7f1]"
               >
-                랭킹·점수 보는 법
+                랭킹·점수 보는 법 →
               </Link>
             </div>
           </section>

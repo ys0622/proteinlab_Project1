@@ -5,28 +5,28 @@ import Footer from "@/app/components/Footer";
 export const metadata = {
   title: "랭킹 & 점수 보는 법 | ProteinLab",
   description:
-    "랭킹과 점수가 어떤 기준으로 계산되는지, 순위와 점수를 어떻게 읽어야 하는지 설명합니다.",
+    "랭킹과 점수가 어떤 기준으로 계산되는지, 순위와 점수를 어떻게 함께 읽어야 하는지 설명합니다.",
 };
 
 const points = [
   {
     title: "등급",
-    body: "단백질 밀도, 다이어트, 퍼포먼스처럼 특정 목적에 맞춰 요약한 지표입니다.",
+    body: "단백질 밀도, 다이어트, 퍼포먼스처럼 특정 목적에 맞춘 요약 지표입니다.",
   },
   {
     title: "랭킹",
-    body: "현재 데이터 안에서 상대적으로 어느 위치에 있는지를 보여주는 순위입니다.",
+    body: "현재 데이터 안에서 상대적으로 어느 위치에 있는지 보여주는 순위입니다.",
   },
   {
     title: "점수",
-    body: "사용자가 이해하기 쉽게 100점 기준으로 환산한 상대 점수입니다.",
+    body: "사용자가 해석하기 쉽게 100점 기준으로 환산한 상대 점수입니다.",
   },
 ];
 
 const readRows = [
-  ["단백질 밀도 랭킹", "적은 양 대비 단백질 효율이 좋은 제품", "가벼운 보충용 제품을 찾을 때 먼저 보기 좋습니다."],
-  ["다이어트 점수", "칼로리와 당류 부담을 함께 줄인 제품", "체중 관리나 저당 중심 선택에 유리합니다."],
-  ["퍼포먼스 점수", "운동 후 보충 효율이 좋은 제품", "운동 직후 회복용 후보를 고를 때 보기 좋습니다."],
+  ["단백질 밀도 랭킹", "열량 대비 단백질 효율이 좋은 제품", "가벼운 보충용 제품을 찾을 때 먼저 보기 좋습니다."],
+  ["다이어트 점수", "칼로리와 당류 부담을 줄인 제품", "체중 관리나 식단 정리 목적에 유용합니다."],
+  ["퍼포먼스 점수", "운동 후 보충 효율이 좋은 제품", "운동 직후 회복용 후보를 고를 때 유용합니다."],
 ];
 
 export default function RankingContentPage() {
@@ -39,7 +39,7 @@ export default function RankingContentPage() {
           <div className="flex flex-wrap items-center gap-1.5 text-xs text-[var(--foreground-muted)]">
             <Link href="/guides">가이드</Link>
             <span>/</span>
-            <Link href="/guides/product-selection-comparison">제품 선택 · 비교</Link>
+            <Link href="/guides/product-selection-comparison">제품 선택 & 비교</Link>
             <span>/</span>
             <span>랭킹 & 점수 보는 법</span>
           </div>
@@ -49,12 +49,12 @@ export default function RankingContentPage() {
             </span>
           </div>
           <h1 className="mt-3 text-2xl font-bold leading-tight text-[var(--foreground)] md:text-3xl">
-            랭킹은 순위만 보지 말고 기준까지 같이 읽어야 합니다
+            순위만 보지 말고 점수 기준까지 같이 읽어야 합니다
           </h1>
           <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
-            같은 1위라도 어떤 지표에서 1위인지에 따라 의미가 달라집니다.
+            같은 1위라도 어떤 지표에서 1위인지에 따라 해석은 달라집니다.
             <br />
-            등급, 랭킹, 점수를 구분해서 보면 제품 비교가 훨씬 직관적입니다.
+            등급, 랭킹, 점수를 구분해 보면 제품 비교가 훨씬 직관적입니다.
           </p>
         </div>
       </section>
@@ -62,7 +62,7 @@ export default function RankingContentPage() {
       <main className="mx-auto max-w-[1200px] px-4 py-8 md:px-6">
         <div className="space-y-6">
           <section className="rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
-            <h2 className="text-xl font-bold text-[var(--foreground)]">등급 · 랭킹 · 점수의 차이</h2>
+            <h2 className="text-xl font-bold text-[var(--foreground)]">등급, 랭킹, 점수의 차이</h2>
             <div className="mt-5 grid gap-3 md:grid-cols-3">
               {points.map((point) => (
                 <article key={point.title} className="rounded-2xl border border-[#dce8df] bg-[#f6fbf7] p-4">
@@ -98,7 +98,7 @@ export default function RankingContentPage() {
               </table>
             </div>
             <blockquote className="mt-5 rounded-xl border border-[#dce8df] bg-[#f7fbf8] px-4 py-4 text-sm leading-6 text-[var(--foreground-muted)]">
-              랭킹은 같은 제품군 안에서 비교한 결과를 읽는 것이 중요합니다. 음료 랭킹과 바 랭킹을 같은 숫자로 바로 비교하는 식의 해석은 맞지 않습니다.
+              랭킹은 같은 제품군 안에서 비교한 결과를 읽는 것이 중요합니다. 음료 랭킹과 바 랭킹을 숫자만으로 직접 비교하면 해석이 달라질 수 있습니다.
             </blockquote>
           </section>
 
