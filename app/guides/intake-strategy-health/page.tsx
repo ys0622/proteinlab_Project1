@@ -3,38 +3,35 @@ import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 
 export const metadata = {
-  title: "섭취 전략 · 건강 | ProteinLab",
+  title: "섭취 전략 & 건강 | ProteinLab",
   description:
-    "운동 전후 섭취, 체중 관리, 식사대용, 노년 단백질 전략까지 실제 생활에 바로 연결되는 단백질 섭취 전략을 정리했습니다.",
+    "운동 전후 섭취, 체중 관리, 식사대용, 시니어 단백질 전략까지 실생활에 바로 적용하는 ProteinLab Track C 가이드입니다.",
 };
 
 const featuredTopics = [
   {
     title: "운동 후 단백질",
     href: "/guides/intake-strategy-health/post-workout-protein",
-    badge: "가장 먼저",
+    badge: "가장 많이 찾는 주제",
     description:
-      "회복 타이밍, 20~30g 기준, 제품 선택 포인트까지 운동 후 섭취의 핵심만 먼저 정리했습니다.",
-    question: "운동 후 무엇을 먼저 챙겨야 할까?",
-    related: ["회복 타이밍", "20~30g 기준", "RTD와 식사 보완"],
+      "운동 직후 20~30g 보충 원칙, 회복 루틴, 제품 선택 기준을 한 번에 정리한 대표 가이드입니다.",
+    question: "운동 직후 무엇을 얼마나 먹는 게 가장 실전적인가?",
   },
   {
     title: "단백질 섭취 타이밍",
     href: "/guides/intake-strategy-health/protein-timing",
-    badge: "핵심 흐름",
+    badge: "하루 루틴 설계",
     description:
-      "운동 전후만이 아니라 아침, 간식, 저녁까지 하루 전체 흐름으로 단백질을 배치하는 방법을 다룹니다.",
-    question: "언제 먹어야 가장 실전적으로 유지될까?",
-    related: ["하루 분배", "생활 패턴", "운동 없는 날 기준"],
+      "운동 후 한 번만 챙기기보다 아침, 간식, 저녁까지 하루 전체 루틴으로 배치하는 방법을 정리했습니다.",
+    question: "언제 먹어야 꾸준히 실천하기 쉽고 효과도 좋은가?",
   },
   {
-    title: "체중 관리와 단백질",
+    title: "체중 관리용 단백질",
     href: "/guides/intake-strategy-health/weight-management-protein",
-    badge: "목표별 전략",
+    badge: "다이어트 실전",
     description:
-      "단백질 함량만이 아니라 당류, 칼로리, 포만감까지 같이 보는 체중 관리용 선택 기준을 정리했습니다.",
-    question: "감량기에는 무엇부터 봐야 할까?",
-    related: ["저당 기준", "칼로리 해석", "단백질 밀도"],
+      "단백질 함량만이 아니라 당류, 칼로리, 포만감까지 함께 보는 체중 관리용 기준을 다룹니다.",
+    question: "감량기에는 무엇부터 우선순위로 봐야 할까?",
   },
 ];
 
@@ -42,31 +39,29 @@ const supportingTopics = [
   {
     title: "운동 전 단백질",
     href: "/guides/intake-strategy-health/pre-workout-protein",
-    description: "운동 전 섭취가 필요한 상황과 소화 부담을 줄이는 기준",
+    description: "운동 전 섭취가 필요한 상황과 소화 부담을 줄이는 선택 기준을 정리했습니다.",
   },
   {
     title: "식사대용 전략",
     href: "/guides/intake-strategy-health/meal-replacement-strategy",
-    description: "보충용 제품과 식사대용 제품을 어떻게 구분할지 정리",
+    description: "보완용 제품과 식사대용 제품을 어떤 기준으로 구분해야 하는지 설명합니다.",
   },
   {
     title: "근육 유지 전략",
     href: "/guides/intake-strategy-health/muscle-maintenance-protein",
-    description: "감량기와 운동 병행 상황에서 총량과 분배를 보는 법",
+    description: "감량기와 운동 병행 상황에서 총량과 분배를 어떻게 설계할지 다룹니다.",
   },
   {
-    title: "노년 단백질 전략",
+    title: "시니어 단백질 전략",
     href: "/guides/intake-strategy-health/senior-protein-strategy",
-    description: "부담을 줄이면서 꾸준히 챙기는 방식과 제품 선택 기준",
+    description: "부담을 줄이면서 꾸준히 챙기는 방식과 제품 선택 기준을 정리했습니다.",
   },
 ];
-
 
 export default function IntakeStrategyHealthPage() {
   return (
     <div className="min-h-screen bg-white">
       <Header />
-
       <section className="w-full border-t border-b bg-[var(--hero-bg)]" style={{ borderColor: "var(--hero-border)" }}>
         <div className="mx-auto max-w-[1200px] px-4 py-5 md:px-6 md:py-6">
           <div className="flex items-center gap-1.5 text-xs text-[var(--foreground-muted)]">
@@ -74,42 +69,36 @@ export default function IntakeStrategyHealthPage() {
               Guides
             </Link>
             <span>/</span>
-            <span>섭취 전략 · 건강</span>
+            <span>섭취 전략 & 건강</span>
           </div>
-
           <div className="mt-3 flex flex-wrap items-center gap-2.5">
             <span className="rounded-md bg-[#eef4ea] px-2 py-0.5 text-[11px] font-semibold tracking-wide text-[#4c7a57]">
               TRACK C
             </span>
-            <span className="text-xs text-[#8b8b8b]">운동, 체중 관리, 식사대용, 건강 관리까지 연결하는 섭취 전략 트랙</span>
+            <span className="text-xs text-[#8b8b8b]">운동, 체중 관리, 식사대용, 시니어 전략을 연결하는 섭취 루틴 트랙</span>
             <span className="text-xs text-[#8b8b8b]">7개 주제</span>
           </div>
-
           <div className="mt-4">
-            <h1 className="text-[26px] font-bold leading-tight text-[var(--foreground)] md:text-[30px]">섭취 전략 · 건강</h1>
+            <h1 className="text-[26px] font-bold leading-tight text-[var(--foreground)] md:text-[30px]">섭취 전략 & 건강</h1>
             <p className="mt-2 max-w-2xl text-sm leading-6 text-[var(--foreground-muted)]">
-              단백질은 많이 먹는 것보다 내 생활 패턴과 목적에 맞게 배치하는 것이 중요합니다.
+              단백질은 많이 먹는 것보다 목적과 생활 패턴에 맞게 배치하는 것이 더 중요합니다.
               <br />
-              Track C는 운동 전후, 체중 관리, 식사대용, 노년 전략까지 실제 생활에 바로 적용할 수 있는 기준을 정리합니다.
+              Track C는 운동 전후, 체중 관리, 식사대용, 시니어 전략까지 실전에서 바로 적용할 수 있는 기준을 모았습니다.
             </p>
           </div>
         </div>
       </section>
-
       <main className="mx-auto max-w-[1200px] px-4 pb-12 md:px-6">
         <section className="mt-5">
           <div className="flex items-center justify-between gap-3">
             <div>
               <h2 className="text-lg font-bold text-[var(--foreground)]">주제 목록</h2>
-              <p className="mt-1 text-xs text-[#8b8b8b]">
-                대표 질문과 핵심 포인트를 먼저 보고 필요한 주제로 이동하세요.
-              </p>
+              <p className="mt-1 text-xs text-[#8b8b8b]">질문형 가이드부터 먼저 보고, 필요한 루틴 주제로 바로 이동할 수 있습니다.</p>
             </div>
             <div className="hidden rounded-full border border-[#d9e7dc] bg-[#eff7f1] px-3 py-1.5 text-xs font-medium text-[#24543d] md:block">
               인기: 운동 후 단백질
             </div>
           </div>
-
           <div className="mt-4 grid gap-4 sm:grid-cols-2">
             {[...featuredTopics, ...supportingTopics].map((topic) => (
               <Link
@@ -123,33 +112,32 @@ export default function IntakeStrategyHealthPage() {
                     <div className="flex items-center justify-between gap-3">
                       <div className="flex flex-wrap gap-1.5">
                         <span className="rounded-full border border-[#d9e4dd] bg-[#f7faf8] px-2.5 py-1 text-[11px] font-medium text-[#496555]">
-                          {String("badge" in topic ? topic.badge : "보조")}
+                          {String("badge" in topic ? topic.badge : "보조 주제")}
                         </span>
                       </div>
                       <span className="rounded-full border border-[#d8e2da] bg-white px-2.5 py-1 text-[11px] font-semibold text-[#6f7f76]">
                         LIVE
                       </span>
                     </div>
-
                     <h3 className="mt-3 text-base font-bold text-[#1f5138] transition-colors group-hover:text-[var(--accent)]">
                       {topic.title}
                     </h3>
                     <p className="mt-2 text-[13px] leading-[1.7] text-[var(--foreground-muted)]">
                       {topic.description}
                     </p>
-
                     <div className="mt-4 rounded-xl border border-[#d7e6dd] bg-[#f4faf6] px-3 py-2.5">
-                      <p className="text-[11px] font-semibold text-[#1f5138]">읽기 시간</p>
-                      <p className="mt-1 text-[12px] font-medium leading-5 text-[var(--foreground)]">5분 읽기</p>
+                      <p className="text-[11px] font-semibold text-[#1f5138]">읽기 포인트</p>
+                      <p className="mt-1 text-[12px] font-medium leading-5 text-[var(--foreground)]">
+                        {String("question" in topic ? topic.question : "상황별 섭취 기준을 빠르게 확인할 수 있습니다.")}
+                      </p>
                     </div>
                   </div>
-
                   <div className="mt-4 flex items-center justify-between gap-3">
                     <span className="rounded-full border border-[#d9e4dd] bg-[#f7faf8] px-2.5 py-1 text-[11px] font-medium text-[#496555]">
-                      인기
+                      바로 보기
                     </span>
                     <span className="text-xs font-semibold text-[#2f5d46] transition-colors group-hover:text-[#1f4834]">
-                      주제 보기
+                      주제 열기
                     </span>
                   </div>
                 </div>
@@ -158,7 +146,6 @@ export default function IntakeStrategyHealthPage() {
           </div>
         </section>
       </main>
-
       <Footer />
     </div>
   );
