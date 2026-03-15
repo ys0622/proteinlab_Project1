@@ -8,39 +8,39 @@ export const metadata = {
 };
 
 const historyRows = [
-  ["2000년대 초반", "보충제 중심", "헬스·운동 목적 소비자 위주로 파우더 시장이 중심이었습니다."],
-  ["2010년대", "RTD 성장 시작", "편의점 채널 확장과 함께 일반 소비자 진입이 시작됐습니다."],
-  ["2018~2020", "대중화 단계", "더단백 등 대표 브랜드 출시로 시장이 빠르게 커졌습니다."],
-  ["2021~현재", "세분화 단계", "저당, 워터형, 식물성처럼 목적별 제품 구조로 나뉘고 있습니다."],
+  ["2000년대 초반", "보충제 중심", "운동 목적 소비자 위주로 시장이 형성됐습니다."],
+  ["2010년대", "RTD 성장 시작", "편의점 채널 확장과 함께 일반 소비자 유입이 늘었습니다."],
+  ["2018~2020", "대중화 단계", "더단백 등 대형 브랜드 출시로 시장이 빠르게 커졌습니다."],
+  ["2021~현재", "세분화 단계", "저당, 워터형, 식물성 등 목적별 제품 구조로 이동하고 있습니다."],
 ];
 
 const turningPoints = [
   {
     title: "보충제에서 일상식으로",
-    body: "단백질은 운동용 보충제에서 체중 관리와 건강 관리용 일상 제품으로 이동했습니다. 편의성이 대중화를 만들었습니다.",
+    body: "단백질은 운동용 보충제에서 체중 관리와 건강 관리를 위한 일상 제품으로 이동했습니다. 편의성이 대중화를 만들었습니다.",
   },
   {
-    title: "편의점이 성장의 분기점",
-    body: "RTD가 빠르게 커진 가장 큰 이유는 어디서나 바로 살 수 있는 접근성이었습니다.",
+    title: "편의성이 성장의 분기점",
+    body: "RTD가 빠르게 커진 가장 큰 이유는 어디서나 바로 마실 수 있는 접근성이었습니다.",
   },
   {
     title: "세분화가 경쟁의 핵심",
-    body: "이제는 단순히 고단백보다 저당, 워터형, 식물성처럼 목적 기반 키워드가 더 중요해졌습니다.",
+    body: "이제는 단순 고단백보다 저당, 워터형, 식물성 같은 키워드가 더 중요해지고 있습니다.",
   },
 ];
 
 const marketSizeRows = [
-  ["2018", "약 2,000억 원대", "RTD 대중화 시작 단계"],
-  ["2020", "약 3,500억 원대", "코로나 이후 건강 관리 수요 급증"],
+  ["2018", "약 2,000억 원", "RTD 대중화 시작 단계"],
+  ["2020", "약 3,500억 원", "코로나 이후 건강관리 수요 급증"],
   ["2022", "약 5,000억 원 이상", "세분화와 채널 확장이 동시에 진행"],
-  ["2024~", "지속 성장 추세", "요거트·바까지 인접 카테고리 확장"],
+  ["2024~", "지속 성장 추세", "요거트·기능식 인접 카테고리까지 확장"],
 ];
 
 const keyInsights = [
-  "시장이 커질수록 브랜드 메시지와 실제 성분 사이 간격도 커집니다. 숫자를 직접 확인하는 습관이 더 중요해집니다.",
-  "편의점 중심 유통은 접근성이 강점이지만, 가격과 용량 구성이 온라인 상품과 다를 수 있습니다.",
-  "세분화 단계에서는 내 목적에 맞는 카테고리를 먼저 정하는 것이 제품 선택보다 앞섭니다.",
-  "시장 히스토리를 이해하면 신제품이 어떤 포지셔닝을 노리는지 더 빨리 읽을 수 있습니다.",
+  "시장이 커질수록 브랜드 메시지와 실제 성분 차이가 커집니다. 숫자를 직접 확인하는 습관이 더 중요해집니다.",
+  "편의점 중심 유통은 접근성이 강점이지만 가격과 용량 구성의 차이가 생깁니다.",
+  "세분화 단계에서는 먼저 목적에 맞는 카테고리를 고르는 것이 제품 선택보다 중요합니다.",
+  "시장 히스토리를 이해하면 신제품이 어떤 포지셔닝으로 나오는지 더 잘 읽을 수 있습니다.",
 ];
 
 export default function ProteinMarketHistoryPage() {
@@ -50,9 +50,13 @@ export default function ProteinMarketHistoryPage() {
       <section className="w-full border-t border-b bg-[var(--hero-bg)]" style={{ borderColor: "var(--hero-border)" }}>
         <div className="mx-auto max-w-[1200px] px-4 py-5 md:px-6 md:py-6">
           <div className="flex flex-wrap items-center gap-1.5 text-xs text-[var(--foreground-muted)]">
-            <Link href="/guides" className="hover:text-[var(--accent)]">Guides</Link>
+            <Link href="/guides" className="hover:text-[var(--accent)]">
+              Guides
+            </Link>
             <span>/</span>
-            <Link href="/guides/market-insights" className="hover:text-[var(--accent)]">시장 인사이트</Link>
+            <Link href="/guides/market-insights" className="hover:text-[var(--accent)]">
+              시장 인사이트
+            </Link>
             <span>/</span>
             <span>단백질 시장 히스토리</span>
           </div>
@@ -65,7 +69,7 @@ export default function ProteinMarketHistoryPage() {
           <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
             보충제 중심 시장에서 RTD 대중화 시장으로, 다시 목적별 세분화 단계로 이동한 흐름을 정리했습니다.
             <br />
-            시장 구조를 이해하면 브랜드와 제품을 읽는 기준도 함께 선명해집니다.
+            시장 구조를 이해하면 브랜드와 제품을 읽는 기준도 더 선명해집니다.
           </p>
         </div>
       </section>
@@ -75,7 +79,7 @@ export default function ProteinMarketHistoryPage() {
           <section className="rounded-[28px] border border-[#e2ebe4] bg-[#f7fbf8] px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
             <h2 className="text-xl font-bold text-[var(--foreground)]">시장 변화 4단계</h2>
             <p className="mt-3 text-sm leading-6 text-[var(--foreground-muted)]">
-              보충제 중심 시장에서 편의점 RTD 대중화 시장으로, 지금은 세분화 경쟁 단계에 들어섰습니다.
+              보충제 중심 시장에서 편의형 단백질 시장으로, 지금은 세분화 경쟁 단계에 들어섰습니다.
             </p>
             <div className="mt-5 overflow-x-auto rounded-2xl border border-[#ece9e2] bg-white">
               <table className="min-w-full border-collapse text-left text-sm">
@@ -116,7 +120,7 @@ export default function ProteinMarketHistoryPage() {
           <section className="rounded-[28px] border border-[#e2ebe4] bg-[#f7fbf8] px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
             <h2 className="text-xl font-bold text-[var(--foreground)]">시장 규모 추이</h2>
             <p className="mt-3 text-sm leading-6 text-[var(--foreground-muted)]">
-              정확한 수치는 조사 기관마다 다를 수 있지만, 전반적 성장 흐름은 일관됩니다.
+              정확한 수치는 조사 기관마다 다르지만, 전체 성장 흐름은 일관됩니다.
             </p>
             <div className="mt-5 overflow-x-auto rounded-2xl border border-[#ece9e2] bg-white">
               <table className="min-w-full border-collapse text-left text-sm">
