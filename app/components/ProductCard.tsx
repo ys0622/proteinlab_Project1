@@ -87,6 +87,9 @@ export default function ProductCard({
   const hasCapacityInName = Boolean(capacity && name.includes(capacity));
   const packageTag = tags.find((tag) => ["팩", "PET", "CAN"].includes(tag));
   const capacitySuffix = packageTag ? `, ${packageTag}` : "";
+  const capacityIndex = hasCapacityInName && capacity ? name.lastIndexOf(capacity) : -1;
+  const titlePrefix = capacityIndex > 0 ? name.slice(0, capacityIndex).trim() : name;
+  const titleCapacityLabel = capacity ? `${capacity}${capacitySuffix}` : "";
   const canOpenDetail = Boolean(detailHref && detailHref !== "#");
   const visibleGradeTags =
     productType === "yogurt"
@@ -197,12 +200,11 @@ export default function ProductCard({
           }`}
           style={{ fontSize: "16px", fontWeight: 600, color: "#1a1a1a" }}
         >
-          <span>{name}</span>
-          {!hasCapacityInName ? (
+          <span>{titlePrefix}</span>
+          {titleCapacityLabel ? (
             <span className="font-normal" style={{ fontSize: "13px", color: "#6b6b6b" }}>
               {" "}
-              {capacity}
-              {capacitySuffix}
+              {titleCapacityLabel}
             </span>
           ) : null}
         </h3>
