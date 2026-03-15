@@ -3,15 +3,21 @@ import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 
 export const metadata = {
-  title: "노년 단백질 전략 | ProteinLab",
+  title: "시니어 단백질 전략 | ProteinLab",
   description:
-    "노년층이 부담을 줄이면서 단백질을 꾸준히 챙기는 방법과 제품 선택 기준을 정리했습니다.",
+    "시니어가 부담을 줄이면서 단백질을 꾸준히 챙기는 방법과 제품 선택 기준을 정리한 가이드입니다.",
 };
 
 const seniorTips = [
   "한 번에 많이 먹기보다 부담이 적은 식사와 간식으로 나누는 편이 실천하기 쉽습니다.",
-  "음료형이나 부드러운 보충제는 씹기 부담이 낮아 활용하기 좋습니다.",
-  "건강 관리 목적이라면 당류와 칼로리도 함께 보고, 지속 가능한 섭취 패턴을 우선합니다.",
+  "드링킹 타입이나 부드러운 보충식은 씹는 부담이 적어 활용하기 좋습니다.",
+  "건강 관리 목적이라면 당류와 칼로리도 함께 보고, 꾸준히 유지할 수 있는 루틴을 우선합니다.",
+];
+
+const seniorRows = [
+  ["아침", "부드러운 형태 우선", "속 부담이 적고 꾸준히 챙기기 쉬운 방식이 좋습니다."],
+  ["오후 간식", "소량 보완", "하루 총량이 부족해지는 구간을 메우기 좋습니다."],
+  ["저녁", "과하지 않게 마무리", "식사량이 적다면 저녁에 보완 지점을 만드는 편이 안정적입니다."],
 ];
 
 export default function SeniorProteinStrategyPage() {
@@ -22,14 +28,14 @@ export default function SeniorProteinStrategyPage() {
         <div className="mx-auto max-w-[1200px] px-4 py-5 md:px-6 md:py-6">
           <div className="flex flex-wrap items-center gap-1.5 text-xs text-[var(--foreground-muted)]">
             <Link href="/guides" className="hover:text-[var(--accent)]">
-              가이드
+              Guides
             </Link>
             <span>/</span>
             <Link href="/guides/intake-strategy-health" className="hover:text-[var(--accent)]">
-              섭취 전략 · 건강
+              섭취 전략 & 건강
             </Link>
             <span>/</span>
-            <span>노년 단백질 전략</span>
+            <span>시니어 단백질 전략</span>
           </div>
           <div className="mt-3">
             <span className="rounded-md bg-[#f5f0ea] px-2 py-0.5 text-[11px] font-semibold tracking-wide text-[#7a5230]">
@@ -37,18 +43,24 @@ export default function SeniorProteinStrategyPage() {
             </span>
           </div>
           <h1 className="mt-3 text-2xl font-bold leading-tight text-[var(--foreground)] md:text-3xl">
-            노년기에는
+            시니어기에는
             <br />
             꾸준히 먹을 수 있는 방식이 더 중요합니다
           </h1>
           <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
-            나이가 들수록 단백질 흡수 효율이 낮아집니다. 한 번에 많이 먹는 것보다 부담 없이 자주 먹는 방식이 더 효과적입니다.
+            나이가 들수록 한 번에 많은 양보다 부담 없이 자주 챙기는 방식이 훨씬 실전적입니다.
           </p>
         </div>
       </section>
       <main className="mx-auto max-w-[1200px] px-4 py-8 md:px-6">
         <section className="rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
-          <ul className="space-y-3 text-sm leading-6 text-[var(--foreground-muted)]">
+          <div className="rounded-2xl border border-[#dce8df] bg-[#f7fbf8] px-4 py-4">
+            <p className="text-[11px] font-semibold tracking-[0.08em] text-[#2d6a4f]">SENIOR ROUTINE</p>
+            <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">
+              아침, 간식, 저녁 세 구간으로 나누어 부담 없이 분산하는 방식이 가장 실전적입니다.
+            </p>
+          </div>
+          <ul className="mt-5 space-y-3 text-sm leading-6 text-[var(--foreground-muted)]">
             {seniorTips.map((item) => (
               <li key={item} className="flex gap-3 rounded-xl border border-[#dce8df] bg-[#f6fbf7] px-4 py-3">
                 <span className="mt-1 h-2 w-2 shrink-0 rounded-full bg-[#2d6a4f]" />
@@ -56,22 +68,34 @@ export default function SeniorProteinStrategyPage() {
               </li>
             ))}
           </ul>
+          <div className="mt-5 overflow-x-auto">
+            <table className="min-w-full border-collapse text-left text-sm">
+              <thead>
+                <tr className="border-b border-[#e8e6e3] text-[var(--foreground)]">
+                  <th className="px-3 py-3 font-semibold">구간</th>
+                  <th className="px-3 py-3 font-semibold">전략</th>
+                  <th className="px-3 py-3 font-semibold">실전 해석</th>
+                </tr>
+              </thead>
+              <tbody>
+                {seniorRows.map((row) => (
+                  <tr key={row[0]} className="border-b border-[#f0eeeb] last:border-b-0">
+                    {row.map((cell) => (
+                      <td key={cell} className="px-3 py-3 text-[var(--foreground-muted)]">
+                        {cell}
+                      </td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </section>
         <section className="mt-6 rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
-          <div className="flex flex-wrap gap-3">
-            <Link
-              href="/guides/intake-strategy-health/muscle-maintenance-protein"
-              className="inline-flex items-center justify-center rounded-lg border border-[#d9e7dc] px-5 py-3 text-sm font-semibold text-[#24543d] transition-colors hover:bg-[#eef7f1]"
-            >
-              근육 유지 전략 보기 →
-            </Link>
-            <Link
-              href="/recommend"
-              className="inline-flex items-center justify-center rounded-lg border border-[#2d6a4f] bg-[#2d6a4f] px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#24543d]"
-            >
-              내 목적에 맞는 제품 찾기 →
-            </Link>
-          </div>
+          <p className="text-[11px] font-semibold tracking-[0.08em] text-[#2d6a4f]">SENIOR NOTE</p>
+          <p className="mt-3 text-sm leading-6 text-[var(--foreground-muted)]">
+            시니어 루틴에서는 완벽한 수치보다 부담 없이 반복할 수 있는 방식이 더 중요합니다. 그래서 맛과 위장 부담도 함께 확인해야 합니다.
+          </p>
         </section>
       </main>
       <Footer />

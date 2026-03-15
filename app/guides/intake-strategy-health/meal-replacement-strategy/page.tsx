@@ -3,36 +3,36 @@ import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 
 export const metadata = {
-  title: "식사대용 전략 | ProteinLab",
+  title: "식사대용 단백질 전략 | ProteinLab",
   description:
-    "단백질 음료가 언제 식사대용이 될 수 있는지, 보충용 제품과 어떤 기준으로 구분해야 하는지 정리했습니다.",
+    "단백질 음료가 언제 식사대용이 되는지, 보완용 제품과 어떤 기준으로 구분해야 하는지 정리했습니다.",
 };
 
 const replacementRows = [
-  ["가벼운 RTD", "보충용에 가까움", "단백질은 충분해도 칼로리와 포만감이 식사 수준은 아닌 경우가 많음"],
-  ["밀크형 고단백", "상황에 따라 식사 보완", "칼로리와 포만감이 더 높아 식사 보완용으로 쓰기 쉬움"],
-  ["바 + 음료 조합", "간편 식사 보완", "바쁜 일정에서 한 끼를 단순화할 때 활용 가능"],
+  ["가벼운 RTD", "보완용에 가까움", "단백질은 충분해도 칼로리와 포만감이 식사를 대체하기에는 부족할 수 있습니다."],
+  ["바 형태 고단백", "상황에 따라 식사 보완", "칼로리와 포만감이 어느 정도 있어 보완용으로 쓰기 쉽습니다."],
+  ["바 + 음료 조합", "간편 식사 보완", "바쁜 일정에서 한 끼를 간단히 보완해야 할 때 실전성이 높습니다."],
 ];
 
 const keyPoints = [
   {
     title: "포만감",
-    body: "식사대용은 단백질만 높다고 되는 것이 아닙니다. 실제로 한 끼를 대신할 만큼 포만감이 유지되는지가 중요합니다.",
+    body: "식사대용은 단백질만 높다고 되는 것이 아닙니다. 실제로 다음 끼니까지 버틸 수 있는 포만감이 중요합니다.",
   },
   {
     title: "칼로리",
-    body: "칼로리가 너무 낮으면 보충용에 가깝고, 너무 높으면 목적에 따라 과해질 수 있습니다. 상황에 맞는 범위를 봐야 합니다.",
+    body: "칼로리가 너무 낮으면 보완용에 가깝고, 너무 높으면 목적에 따라 과한 선택이 될 수 있습니다.",
   },
   {
     title: "지속 가능성",
-    body: "매일 반복할 수 있는 맛과 부담 없는 위장감이 중요합니다. 식사대용은 한두 번의 이벤트가 아니라 습관이 되기 쉽기 때문입니다.",
+    body: "매일 반복할 수 있는 맛과 부담 없는 위장감이 실제 운영에서 더 중요합니다.",
   },
 ];
 
 const useCases = [
-  "출근 전 식사를 거르기 쉬운 날",
-  "오후 업무 중 간편하게 한 끼를 보완해야 할 때",
-  "운동 후 바로 식사하기 어렵지만 허기를 오래 두고 싶지 않을 때",
+  "출근 전 아침을 거르기 쉬운 날",
+  "오후 업무 중 간편하게 한 끼를 보완해야 하는 날",
+  "운동 후 바로 식사하기 어렵지만 허기를 오래 끌고 싶지 않을 때",
 ];
 
 export default function MealReplacementStrategyPage() {
@@ -43,11 +43,11 @@ export default function MealReplacementStrategyPage() {
         <div className="mx-auto max-w-[1200px] px-4 py-5 md:px-6 md:py-6">
           <div className="flex flex-wrap items-center gap-1.5 text-xs text-[var(--foreground-muted)]">
             <Link href="/guides" className="hover:text-[var(--accent)]">
-              가이드
+              Guides
             </Link>
             <span>/</span>
             <Link href="/guides/intake-strategy-health" className="hover:text-[var(--accent)]">
-              섭취 전략 · 건강
+              섭취 전략 & 건강
             </Link>
             <span>/</span>
             <span>식사대용 전략</span>
@@ -60,12 +60,10 @@ export default function MealReplacementStrategyPage() {
           <h1 className="mt-3 text-2xl font-bold leading-tight text-[var(--foreground)] md:text-3xl">
             단백질 음료가
             <br />
-            언제 식사대용이 되는지부터 구분해야 합니다
+            언제 식사대용이 되는지 구분해야 합니다
           </h1>
           <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
-            모든 단백질 음료가 식사대용은 아닙니다.
-            <br />
-            포만감과 칼로리, 실제로 한 끼를 대신할 수 있는지를 먼저 구분해야 선택 기준이 선명해집니다.
+            모든 단백질 음료가 식사대용은 아닙니다. 포만감과 칼로리, 다음 식사까지의 간격을 먼저 봐야 기준이 선명해집니다.
           </p>
         </div>
       </section>
@@ -73,13 +71,19 @@ export default function MealReplacementStrategyPage() {
         <div className="space-y-6">
           <section className="rounded-[28px] border border-[#e2ebe4] bg-[#f7fbf8] px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
             <h2 className="text-xl font-bold text-[var(--foreground)]">제품 유형별 해석</h2>
+            <div className="mt-4 rounded-2xl border border-[#dce8df] bg-white px-4 py-4">
+              <p className="text-[11px] font-semibold tracking-[0.08em] text-[#2d6a4f]">MEAL-REPLACEMENT CHECK</p>
+              <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">
+                단백질 함량만 높다고 식사대용이 되지 않습니다. 포만감, 칼로리, 섭취 편의성 세 요소를 함께 봐야 합니다.
+              </p>
+            </div>
             <div className="mt-5 overflow-x-auto">
               <table className="min-w-full border-collapse text-left text-sm">
                 <thead>
                   <tr className="border-b border-[#e8e6e3] text-[var(--foreground)]">
                     <th className="px-3 py-3 font-semibold">유형</th>
                     <th className="px-3 py-3 font-semibold">해석</th>
-                    <th className="px-3 py-3 font-semibold">포인트</th>
+                    <th className="px-3 py-3 font-semibold">실전 포인트</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -110,7 +114,7 @@ export default function MealReplacementStrategyPage() {
           </section>
 
           <section className="rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
-            <h2 className="text-xl font-bold text-[var(--foreground)]">이럴 때 실전적으로 쓸 수 있습니다</h2>
+            <h2 className="text-xl font-bold text-[var(--foreground)]">이런 날에 실전적으로 쓰입니다</h2>
             <ul className="mt-4 space-y-3 text-sm leading-6 text-[var(--foreground-muted)]">
               {useCases.map((item) => (
                 <li key={item} className="flex gap-3 rounded-xl border border-[#dce8df] bg-[#f6fbf7] px-4 py-3">
@@ -119,20 +123,15 @@ export default function MealReplacementStrategyPage() {
                 </li>
               ))}
             </ul>
-            <div className="mt-5 flex flex-wrap gap-3">
-              <Link
-                href="/guides/intake-strategy-health/weight-management-protein"
-                className="inline-flex items-center justify-center rounded-lg border border-[#d9e7dc] px-5 py-3 text-sm font-semibold text-[#24543d] transition-colors hover:bg-[#eef7f1]"
-              >
-                체중 관리와 단백질 보기
-              </Link>
-              <Link
-                href="/curation/convenience"
-                className="inline-flex items-center justify-center rounded-lg border border-[#2d6a4f] bg-[#2d6a4f] px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#24543d]"
-              >
-                편의점 큐레이션 보기
-              </Link>
-            </div>
+            <blockquote className="mt-5 rounded-xl border border-[#dce8df] bg-[#f7fbf8] px-4 py-4 text-sm leading-6 text-[var(--foreground-muted)]">
+              식사대용은 한 번의 이벤트가 아니라 반복 가능한 루틴입니다. 그래서 위장 부담과 맛 만족도도 함께 봐야 합니다.
+            </blockquote>
+          </section>
+          <section className="rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
+            <p className="text-[11px] font-semibold tracking-[0.08em] text-[#2d6a4f]">MEAL NOTE</p>
+            <p className="mt-3 text-sm leading-6 text-[var(--foreground-muted)]">
+              식사대용 여부는 제품 설명 문구보다 실제 포만감과 칼로리, 그리고 다음 끼니까지 버틸 수 있는지가 더 정확한 기준입니다.
+            </p>
           </section>
         </div>
       </main>

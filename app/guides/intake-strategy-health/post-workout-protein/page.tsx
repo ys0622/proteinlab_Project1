@@ -5,27 +5,27 @@ import Footer from "@/app/components/Footer";
 export const metadata = {
   title: "운동 후 단백질 가이드 | ProteinLab",
   description:
-    "운동 후 단백질을 언제, 얼마나, 어떤 기준으로 챙겨야 하는지 회복 타이밍과 제품 선택 기준 중심으로 정리했습니다.",
+    "운동 후 단백질을 언제, 얼마나, 어떤 기준으로 챙길지 회복 타이밍과 제품 선택 기준 중심으로 정리했습니다.",
 };
 
 const recoveryTimelineRows = [
-  ["운동 직후 0~1시간", "20~30g", "물 또는 탄수화물과 함께 가볍게 회복 시작"],
-  ["1~2시간 뒤 식사", "단백질 + 탄수화물", "다음 식사에서 총 회복량을 보완"],
-  ["나머지 식사", "하루 총량 분산", "운동 직후 한 번으로 끝내지 않고 하루 섭취량 유지"],
+  ["운동 직후 0~1시간", "20~30g", "물 또는 수분 보충과 함께 가볍게 회복을 시작합니다."],
+  ["1~2시간 내 식사", "단백질 + 탄수화물", "다음 식사에서 회복 총량을 보완합니다."],
+  ["나머지 식사", "하루 총량 분산", "운동 직후 한 번만으로 끝내지 말고 하루 전체 루틴을 맞춥니다."],
 ];
 
 const quickChoices = [
   {
     title: "가볍게 회복하고 싶을 때",
-    body: "워터형 RTD나 당이 낮은 단백질 음료가 부담이 적습니다. 땀을 많이 흘렸다면 수분 보충도 함께 봐야 합니다.",
+    body: "워터형 RTD나 드링킹 타입처럼 부담이 적은 형태가 잘 맞습니다.",
   },
   {
-    title: "운동 후 허기가 큰 날",
-    body: "밀크형 RTD나 식사와 함께 먹는 방식이 더 잘 맞습니다. 단백질만 보지 말고 칼로리와 포만감도 같이 확인하세요.",
+    title: "운동 후 식사까지 시간이 길 때",
+    body: "바나 RTD처럼 바로 먹을 수 있는 제품이 더 실전적입니다. 다만 당류와 칼로리도 같이 봐야 합니다.",
   },
   {
-    title: "외부에서 바로 챙겨야 할 때",
-    body: "바 형태나 RTD처럼 바로 먹을 수 있는 제품이 유리합니다. 다음 식사를 얼마나 빨리 할 수 있는지도 중요합니다.",
+    title: "헬스장이나 이동 중 바로 챙길 때",
+    body: "보관이 쉽고 마시기 빠른 형태가 유리합니다. 다음 식사와의 간격도 함께 보세요.",
   },
 ];
 
@@ -43,11 +43,11 @@ export default function PostWorkoutProteinPage() {
         <div className="mx-auto max-w-[1200px] px-4 py-5 md:px-6 md:py-6">
           <div className="flex flex-wrap items-center gap-1.5 text-xs text-[var(--foreground-muted)]">
             <Link href="/guides" className="hover:text-[var(--accent)]">
-              가이드
+              Guides
             </Link>
             <span>/</span>
             <Link href="/guides/intake-strategy-health" className="hover:text-[var(--accent)]">
-              섭취 전략 · 건강
+              섭취 전략 & 건강
             </Link>
             <span>/</span>
             <span>운동 후 단백질</span>
@@ -63,26 +63,32 @@ export default function PostWorkoutProteinPage() {
             회복을 시작하는 첫 번째 신호입니다
           </h1>
           <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
-            운동 후에는 단백질을 언제, 얼마나, 어떤 식으로 넣어야 하는지가 중요합니다.
-            <br />
-            한 번에 많이 먹는 것보다 회복 타이밍과 하루 총량을 함께 보는 편이 더 실전적입니다.
+            운동 후 단백질은 언제, 얼마나, 어떤 제품으로 넣을지까지 함께 봐야 실전 루틴이 됩니다.
           </p>
         </div>
       </section>
       <main className="mx-auto max-w-[1200px] px-4 py-8 md:px-6">
         <div className="space-y-6">
           <section className="rounded-[28px] border border-[#e2ebe4] bg-[#f7fbf8] px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
-            <h2 className="text-xl font-bold text-[var(--foreground)]">운동 후 회복 흐름</h2>
+            <h2 className="text-xl font-bold text-[var(--foreground)]">운동 후 회복 타임라인</h2>
             <p className="mt-3 text-sm leading-6 text-[var(--foreground-muted)]">
-              운동 직후 단백질 20~30g을 먼저 채우고, 이후 식사에서 탄수화물과 단백질을 함께 보완하는 흐름이 가장 안정적입니다.
+              운동 직후 20~30g을 먼저 채우고, 이후 식사에서 탄수화물과 단백질을 함께 보완하는 방식이 가장 안정적입니다.
             </p>
+            <div className="mt-4 grid gap-3 md:grid-cols-3">
+              {["0~1시간", "1~2시간", "하루 전체"].map((label) => (
+                <div key={label} className="rounded-xl border border-[#dce8df] bg-white px-3 py-3 text-center">
+                  <p className="text-[11px] font-semibold tracking-[0.08em] text-[#2d6a4f]">RECOVERY</p>
+                  <p className="mt-1 text-sm font-semibold text-[var(--foreground)]">{label}</p>
+                </div>
+              ))}
+            </div>
             <div className="mt-5 overflow-x-auto">
               <table className="min-w-full border-collapse text-left text-sm">
                 <thead>
                   <tr className="border-b border-[#e8e6e3] text-[var(--foreground)]">
                     <th className="px-3 py-3 font-semibold">구간</th>
                     <th className="px-3 py-3 font-semibold">권장량</th>
-                    <th className="px-3 py-3 font-semibold">포인트</th>
+                    <th className="px-3 py-3 font-semibold">실전 해석</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -113,7 +119,7 @@ export default function PostWorkoutProteinPage() {
           </section>
 
           <section className="rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
-            <h2 className="text-xl font-bold text-[var(--foreground)]">운동 후에 자주 놓치는 점</h2>
+            <h2 className="text-xl font-bold text-[var(--foreground)]">운동 후에 자주 놓치는 부분</h2>
             <ul className="mt-4 space-y-3 text-sm leading-6 text-[var(--foreground-muted)]">
               {mistakes.map((item) => (
                 <li key={item} className="flex gap-3 rounded-xl border border-[#dce8df] bg-[#f6fbf7] px-4 py-3">
@@ -123,24 +129,14 @@ export default function PostWorkoutProteinPage() {
               ))}
             </ul>
             <blockquote className="mt-5 rounded-xl border border-[#dce8df] bg-[#f7fbf8] px-4 py-4 text-sm leading-6 text-[var(--foreground-muted)]">
-              회복용 제품은 단백질 함량만 높다고 좋은 것이 아닙니다. 다음 식사와 간격, 당류, 칼로리, 포만감까지 함께 봐야 목적에 맞는 선택이 됩니다.
+              회복용 제품은 단백질 함량만 높다고 끝이 아닙니다. 다음 식사와의 간격, 당류, 칼로리, 포만감까지 같이 봐야 목적에 맞는 선택이 됩니다.
             </blockquote>
           </section>
           <section className="rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
-            <div className="flex flex-wrap gap-3">
-              <Link
-                href="/guides/intake-strategy-health/protein-timing"
-                className="inline-flex items-center justify-center rounded-lg border border-[#d9e7dc] px-5 py-3 text-sm font-semibold text-[#24543d] transition-colors hover:bg-[#eef7f1]"
-              >
-                단백질 섭취 타이밍 보기 →
-              </Link>
-              <Link
-                href="/recommend"
-                className="inline-flex items-center justify-center rounded-lg border border-[#2d6a4f] bg-[#2d6a4f] px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#24543d]"
-              >
-                내 목적에 맞는 제품 찾기 →
-              </Link>
-            </div>
+            <p className="text-[11px] font-semibold tracking-[0.08em] text-[#2d6a4f]">RECOVERY NOTE</p>
+            <p className="mt-3 text-sm leading-6 text-[var(--foreground-muted)]">
+              운동 후 보충은 빠를수록 좋다는 말보다, 다음 식사까지 얼마나 비는지와 하루 총량이 유지되는지가 더 중요합니다.
+            </p>
           </section>
         </div>
       </main>
