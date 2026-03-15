@@ -169,7 +169,7 @@ const sections: AdminGuideSection[] = [
     slug: "tools",
     emoji: "🧮",
     title: "계산기 · 도구",
-    description: "단백질 계산기와 향후 확장될 도구 페이지까지 Track F 관리용 목록입니다.",
+    description: "하루 단백질 권장량, 음료 개수, 단백질 밀도를 직접 계산해볼 수 있는 도구 모음입니다.",
     note: "현재는 일부 도구만 실제 페이지가 있고, 나머지는 예정 상태입니다.",
     trackLabel: "TRACK F",
     accentColor: "#2d6a4f",
