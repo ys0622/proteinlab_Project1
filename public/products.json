@@ -1,0 +1,1991 @@
+{
+  "generated_at": "2026-03-16T06:10:16.284Z",
+  "total": 220,
+  "categories": {
+    "drinks": 104,
+    "bars": 71,
+    "yogurt": 45
+  },
+  "products": [
+    {
+      "slug": "newcare-all-protein-choco-245",
+      "name": "올프로틴 (초콜릿)",
+      "brand": "뉴케어",
+      "category": "drinks",
+      "protein": 25,
+      "calories": 135,
+      "sugar": 0
+    },
+    {
+      "slug": "newcare-all-protein-banana-245",
+      "name": "올프로틴 (바나나)",
+      "brand": "뉴케어",
+      "category": "drinks",
+      "protein": 25,
+      "calories": 135,
+      "sugar": 0
+    },
+    {
+      "slug": "newcare-all-protein-savory-245",
+      "name": "올프로틴 (고소한맛)",
+      "brand": "뉴케어",
+      "category": "drinks",
+      "protein": 25,
+      "calories": 135,
+      "sugar": 0
+    },
+    {
+      "slug": "newcare-all-protein-plant-savory-250",
+      "name": "올프로틴 식물성단백질 (고소한맛)",
+      "brand": "뉴케어",
+      "category": "drinks",
+      "protein": 20,
+      "calories": 130,
+      "sugar": 0
+    },
+    {
+      "slug": "danbaek-drink-coffee-250",
+      "name": "더단백 드링크 (커피)",
+      "brand": "더단백",
+      "category": "drinks",
+      "protein": 20,
+      "calories": 110,
+      "sugar": 0
+    },
+    {
+      "slug": "sellex-profit-milk-vanilla-250",
+      "name": "프로핏 (밀크 바닐라)",
+      "brand": "셀렉스",
+      "category": "drinks",
+      "protein": 20,
+      "calories": 125,
+      "sugar": 0
+    },
+    {
+      "slug": "sellex-profit-mocha-chocolate-250",
+      "name": "프로핏 (모카 초콜릿)",
+      "brand": "셀렉스",
+      "category": "drinks",
+      "protein": 20,
+      "calories": 135,
+      "sugar": 0
+    },
+    {
+      "slug": "sellex-profit-banana-250",
+      "name": "프로핏 (바나나)",
+      "brand": "셀렉스",
+      "category": "drinks",
+      "protein": 20,
+      "calories": 135,
+      "sugar": 0
+    },
+    {
+      "slug": "danbaek-water-apple-400",
+      "name": "더단백 워터 프로틴 (청사과)",
+      "brand": "더단백",
+      "category": "drinks",
+      "protein": 25,
+      "calories": 100,
+      "sugar": 0
+    },
+    {
+      "slug": "hymune-balance-active-milkshake-deepchoco-250",
+      "name": "프로틴 밸런스 액티브 (밀크쉐이크)",
+      "brand": "하이뮨",
+      "category": "drinks",
+      "protein": 20,
+      "calories": 104,
+      "sugar": 0
+    },
+    {
+      "slug": "danbaek-water-peach-250",
+      "name": "더단백 워터 프로틴 (복숭아)",
+      "brand": "더단백",
+      "category": "drinks",
+      "protein": 12,
+      "calories": 55,
+      "sugar": 0
+    },
+    {
+      "slug": "hymune-balance-active-deepchoco-250",
+      "name": "프로틴 밸런스 액티브 (딥초코)",
+      "brand": "하이뮨",
+      "category": "drinks",
+      "protein": 20,
+      "calories": 104,
+      "sugar": 0
+    },
+    {
+      "slug": "mymil-furotein-choco-250",
+      "name": "퓨로틴 (초코맛)",
+      "brand": "마이밀",
+      "category": "drinks",
+      "protein": 20,
+      "calories": 130,
+      "sugar": 0
+    },
+    {
+      "slug": "mymil-furotein-gosohan-250",
+      "name": "퓨로틴 (고소한맛)",
+      "brand": "마이밀",
+      "category": "drinks",
+      "protein": 20,
+      "calories": 130,
+      "sugar": 0
+    },
+    {
+      "slug": "mymil-furotein-goguma-250",
+      "name": "퓨로틴 (고구마맛)",
+      "brand": "마이밀",
+      "category": "drinks",
+      "protein": 20,
+      "calories": 130,
+      "sugar": 0
+    },
+    {
+      "slug": "ultive-protein-chestnut-250",
+      "name": "프로틴 (맛밤)",
+      "brand": "얼티브",
+      "category": "drinks",
+      "protein": 21,
+      "calories": 115,
+      "sugar": 0
+    },
+    {
+      "slug": "ultive-protein-rice-250",
+      "name": "프로틴 (햇반)",
+      "brand": "얼티브",
+      "category": "drinks",
+      "protein": 21,
+      "calories": 110,
+      "sugar": 0
+    },
+    {
+      "slug": "ultive-protein-pistachio-250",
+      "name": "프로틴 (피스타치오맛)",
+      "brand": "얼티브",
+      "category": "drinks",
+      "protein": 21,
+      "calories": 115,
+      "sugar": 0
+    },
+    {
+      "slug": "ultive-protein-royalmilktea-250",
+      "name": "프로틴 (로얄밀크티향)",
+      "brand": "얼티브",
+      "category": "drinks",
+      "protein": 20,
+      "calories": 115,
+      "sugar": 0
+    },
+    {
+      "slug": "ultive-vegan-protein-banana-250",
+      "name": "비건 프로틴 (바나나맛)",
+      "brand": "얼티브",
+      "category": "drinks",
+      "protein": 21,
+      "calories": 115,
+      "sugar": 0
+    },
+    {
+      "slug": "ultive-vegan-protein-choco-250",
+      "name": "비건 프로틴 (초코맛)",
+      "brand": "얼티브",
+      "category": "drinks",
+      "protein": 21,
+      "calories": 130,
+      "sugar": 0
+    },
+    {
+      "slug": "hymune-balance-active-night-tiramisu-zero-250",
+      "name": "프로틴 밸런스 액티브 (밤티라미수)",
+      "brand": "하이뮨",
+      "category": "drinks",
+      "protein": 22,
+      "calories": 99,
+      "sugar": 0
+    },
+    {
+      "slug": "hymune-balance-active-vanilla-bonbon-zero-250",
+      "name": "프로틴 밸런스 액티브 (바닐라봉봉)",
+      "brand": "하이뮨",
+      "category": "drinks",
+      "protein": 22,
+      "calories": 99,
+      "sugar": 0
+    },
+    {
+      "slug": "hymune-balance-active-double-shot-coffee-250",
+      "name": "프로틴 밸런스 액티브 (더블샷 커피)",
+      "brand": "하이뮨",
+      "category": "drinks",
+      "protein": 20,
+      "calories": 104,
+      "sugar": 0
+    },
+    {
+      "slug": "sellex-profit-whey-protein-americano-330",
+      "name": "프로틴 웨이프로핏 (아메리카노)",
+      "brand": "셀렉스",
+      "category": "drinks",
+      "protein": 20,
+      "calories": 90,
+      "sugar": 0
+    },
+    {
+      "slug": "sellex-profit-strawberry-choco-250",
+      "name": "프로핏 (딸기초코)",
+      "brand": "셀렉스",
+      "category": "drinks",
+      "protein": 20,
+      "calories": 100,
+      "sugar": 0
+    },
+    {
+      "slug": "sellex-profit-sports-choco-330",
+      "name": "프로핏 웨이프로틴 (초콜릿)",
+      "brand": "셀렉스",
+      "category": "drinks",
+      "protein": 20,
+      "calories": 99,
+      "sugar": 0
+    },
+    {
+      "slug": "calobye-sparkling-grape-340",
+      "name": "프로틴 스파클링 (포도)",
+      "brand": "칼로바이",
+      "category": "drinks",
+      "protein": 18,
+      "calories": 85,
+      "sugar": 0
+    },
+    {
+      "slug": "calobye-sparkling-pinkgrapefruit-340",
+      "name": "프로틴 스파클링 (핑크자몽)",
+      "brand": "칼로바이",
+      "category": "drinks",
+      "protein": 18,
+      "calories": 85,
+      "sugar": 0
+    },
+    {
+      "slug": "takefit-pro-lemon-500",
+      "name": "테이크핏 프로 (레몬맛)",
+      "brand": "테이크핏",
+      "category": "drinks",
+      "protein": 25,
+      "calories": 100,
+      "sugar": 0
+    },
+    {
+      "slug": "takefit-pro-flatpeach-500",
+      "name": "테이크핏 프로 (납작복숭아맛)",
+      "brand": "테이크핏",
+      "category": "drinks",
+      "protein": 25,
+      "calories": 100,
+      "sugar": 0
+    },
+    {
+      "slug": "takefit-pro-shinemuscato-500",
+      "name": "테이크핏 프로 (샤인머스캣맛)",
+      "brand": "테이크핏",
+      "category": "drinks",
+      "protein": 25,
+      "calories": 100,
+      "sugar": 0
+    },
+    {
+      "slug": "newcare-olprotein-water-lemon-350",
+      "name": "올프로틴 워터 (레몬)",
+      "brand": "뉴케어",
+      "category": "drinks",
+      "protein": 20,
+      "calories": 80,
+      "sugar": 0
+    },
+    {
+      "slug": "newcare-olprotein-water-apple-350",
+      "name": "올프로틴 워터 (사과)",
+      "brand": "뉴케어",
+      "category": "drinks",
+      "protein": 20,
+      "calories": 80,
+      "sugar": 0
+    },
+    {
+      "slug": "oatmont-protein-savory-250",
+      "name": "프로틴 (고소한맛)",
+      "brand": "오트몬드",
+      "category": "drinks",
+      "protein": 21,
+      "calories": 105,
+      "sugar": 0
+    },
+    {
+      "slug": "oatmont-protein-choco-250",
+      "name": "프로틴 (초콜릿)",
+      "brand": "오트몬드",
+      "category": "drinks",
+      "protein": 21,
+      "calories": 107,
+      "sugar": 0
+    },
+    {
+      "slug": "oatmont-protein-cookiecream-250",
+      "name": "프로틴 (쿠키앤크림)",
+      "brand": "오트몬드",
+      "category": "drinks",
+      "protein": 21,
+      "calories": 103,
+      "sugar": 0
+    },
+    {
+      "slug": "hymune-protein-balance-plant-highprotein-190",
+      "name": "프로틴 밸런스 (식물성 고단백)",
+      "brand": "하이뮨",
+      "category": "drinks",
+      "protein": 10,
+      "calories": 65,
+      "sugar": 0
+    },
+    {
+      "slug": "danbaek-drink-banana-250",
+      "name": "더단백 드링크 (바나나)",
+      "brand": "더단백",
+      "category": "drinks",
+      "protein": 20,
+      "calories": 105,
+      "sugar": 0.7
+    },
+    {
+      "slug": "danbaek-drink-milktea-250",
+      "name": "더단백 드링크 (밀크티)",
+      "brand": "더단백",
+      "category": "drinks",
+      "protein": 20,
+      "calories": 110,
+      "sugar": 0.7
+    },
+    {
+      "slug": "danbaek-drink-strawberry-250",
+      "name": "더단백 드링크 (딸기)",
+      "brand": "더단백",
+      "category": "drinks",
+      "protein": 20,
+      "calories": 105,
+      "sugar": 0.7
+    },
+    {
+      "slug": "takefit-max-goso-250",
+      "name": "테이크핏 맥스 (고소한맛)",
+      "brand": "테이크핏",
+      "category": "drinks",
+      "protein": 24,
+      "calories": 105,
+      "sugar": 0.7
+    },
+    {
+      "slug": "takefit-max-choco-250",
+      "name": "테이크핏 맥스 (초코맛)",
+      "brand": "테이크핏",
+      "category": "drinks",
+      "protein": 24,
+      "calories": 106,
+      "sugar": 0.7
+    },
+    {
+      "slug": "takefit-max-banana-250",
+      "name": "테이크핏 맥스 (바나나)",
+      "brand": "테이크핏",
+      "category": "drinks",
+      "protein": 24,
+      "calories": 105,
+      "sugar": 0.7
+    },
+    {
+      "slug": "takefit-max-pumpkin-250",
+      "name": "테이크핏 맥스 (호박고구마)",
+      "brand": "테이크핏",
+      "category": "drinks",
+      "protein": 24,
+      "calories": 105,
+      "sugar": 0.7
+    },
+    {
+      "slug": "newcare-all-protein-41g",
+      "name": "올프로틴 41g (초코맛)",
+      "brand": "뉴케어",
+      "category": "drinks",
+      "protein": 41,
+      "calories": 210,
+      "sugar": 0.8
+    },
+    {
+      "slug": "danbaek-drink-chocolate-250",
+      "name": "더단백 드링크 (초콜릿)",
+      "brand": "더단백",
+      "category": "drinks",
+      "protein": 20,
+      "calories": 105,
+      "sugar": 0.8
+    },
+    {
+      "slug": "7eleven-junghoo-choco-protein-330",
+      "name": "이정후 프로틴 (초콜릿)",
+      "brand": "세븐일레븐",
+      "category": "drinks",
+      "protein": 33,
+      "calories": 150,
+      "sugar": 0.8
+    },
+    {
+      "slug": "7eleven-junghoo-vanilla-protein-330",
+      "name": "이정후 프로틴 (바닐라)",
+      "brand": "세븐일레븐",
+      "category": "drinks",
+      "protein": 33,
+      "calories": 146,
+      "sugar": 0.8
+    },
+    {
+      "slug": "danbaek-drink-melon-250",
+      "name": "더단백 드링크 (멜론)",
+      "brand": "더단백",
+      "category": "drinks",
+      "protein": 20,
+      "calories": 109,
+      "sugar": 0.8
+    },
+    {
+      "slug": "danbaek-drink-doublechoco-350",
+      "name": "더단백 드링크 (더블초코)",
+      "brand": "더단백",
+      "category": "drinks",
+      "protein": 40,
+      "calories": 182,
+      "sugar": 0.8
+    },
+    {
+      "slug": "dryou-protein-drink-choco-250",
+      "name": "프로 단백질 드링크 (초콜릿)",
+      "brand": "닥터유",
+      "category": "drinks",
+      "protein": 24,
+      "calories": 151,
+      "sugar": 0.9
+    },
+    {
+      "slug": "danbaek-drink-caramel-250",
+      "name": "더단백 드링크 (카라멜)",
+      "brand": "더단백",
+      "category": "drinks",
+      "protein": 20,
+      "calories": 105,
+      "sugar": 0.9
+    },
+    {
+      "slug": "danbaek-drink-darkchoco-330",
+      "name": "더단백 드링크 (다크초코)",
+      "brand": "더단백",
+      "category": "drinks",
+      "protein": 35,
+      "calories": 168,
+      "sugar": 0.9
+    },
+    {
+      "slug": "takefit-monster-goso-350",
+      "name": "테이크핏 몬스터 (고소한맛)",
+      "brand": "테이크핏",
+      "category": "drinks",
+      "protein": 43,
+      "calories": 186,
+      "sugar": 1
+    },
+    {
+      "slug": "takefit-monster-chocobanana-350",
+      "name": "테이크핏 몬스터 (초코바나나)",
+      "brand": "테이크핏",
+      "category": "drinks",
+      "protein": 43,
+      "calories": 186,
+      "sugar": 1
+    },
+    {
+      "slug": "sellex-profit-peach-icedtea-330",
+      "name": "프로틴 웨이프로핏 (복숭아 아이스티)",
+      "brand": "셀렉스",
+      "category": "drinks",
+      "protein": 20,
+      "calories": 90,
+      "sugar": 1
+    },
+    {
+      "slug": "greenbia-proteinmeal-active-choco-250",
+      "name": "프로틴밀 액티브 (초콜릿)",
+      "brand": "그린비아",
+      "category": "drinks",
+      "protein": 20,
+      "calories": 120,
+      "sugar": 1
+    },
+    {
+      "slug": "greenbia-proteinmeal-active-almond-walnut-250",
+      "name": "프로틴밀 액티브 (아몬드&호두)",
+      "brand": "그린비아",
+      "category": "drinks",
+      "protein": 20,
+      "calories": 120,
+      "sugar": 1
+    },
+    {
+      "slug": "sellex-protein-lactosefree-original-190",
+      "name": "프로틴 락토프리 (오리지널)",
+      "brand": "셀렉스",
+      "category": "drinks",
+      "protein": 14,
+      "calories": 140,
+      "sugar": 1.4
+    },
+    {
+      "slug": "sellex-protein-lowsugar-190",
+      "name": "프로틴 (로우슈거)",
+      "brand": "셀렉스",
+      "category": "drinks",
+      "protein": 12,
+      "calories": 160,
+      "sugar": 2.5
+    },
+    {
+      "slug": "hymune-balance-active-banana-250",
+      "name": "프로틴 밸런스 액티브 (바나나)",
+      "brand": "하이뮨",
+      "category": "drinks",
+      "protein": 20,
+      "calories": 140,
+      "sugar": 3
+    },
+    {
+      "slug": "dryou-protein-drink-banana-250",
+      "name": "프로 단백질 드링크 (바나나)",
+      "brand": "닥터유",
+      "category": "drinks",
+      "protein": 24,
+      "calories": 143,
+      "sugar": 3
+    },
+    {
+      "slug": "pasteur-easyprotein-lowsugar-choco-250",
+      "name": "이지프로틴 저당 (초콜릿)",
+      "brand": "파스퇴르",
+      "category": "drinks",
+      "protein": 20,
+      "calories": 110,
+      "sugar": 3
+    },
+    {
+      "slug": "solveandgo-protamin-savory-250",
+      "name": "프로타민 (고소한맛)",
+      "brand": "솔브앤고",
+      "category": "drinks",
+      "protein": 24,
+      "calories": 130,
+      "sugar": 3
+    },
+    {
+      "slug": "yonsei-severance-a2-protein-choco-190",
+      "name": "세브란스 A2 프로틴 (초콜릿)",
+      "brand": "연세유업",
+      "category": "drinks",
+      "protein": 12,
+      "calories": 90,
+      "sugar": 3.5
+    },
+    {
+      "slug": "yonsei-severance-a2-protein-coffee-190",
+      "name": "세브란스 A2 프로틴 (커피)",
+      "brand": "연세유업",
+      "category": "drinks",
+      "protein": 12,
+      "calories": 85,
+      "sugar": 3.5
+    },
+    {
+      "slug": "dryou-protein-drink-strawberry-250",
+      "name": "프로 단백질 드링크 (딸기)",
+      "brand": "닥터유",
+      "category": "drinks",
+      "protein": 24,
+      "calories": 142,
+      "sugar": 3.8
+    },
+    {
+      "slug": "dryou-protein-40g-strawberry-350",
+      "name": "프로 단백질 드링크 40g (딸기)",
+      "brand": "닥터유",
+      "category": "drinks",
+      "protein": 40,
+      "calories": 244,
+      "sugar": 4
+    },
+    {
+      "slug": "hymune-balance-active-original-250",
+      "name": "프로틴 밸런스 액티브 (오리지널)",
+      "brand": "하이뮨",
+      "category": "drinks",
+      "protein": 20,
+      "calories": 130,
+      "sugar": 4
+    },
+    {
+      "slug": "seoulmilk-protein-energy-coffee-240",
+      "name": "프로틴 에너지 (커피)",
+      "brand": "서울우유",
+      "category": "drinks",
+      "protein": 21,
+      "calories": 135,
+      "sugar": 4
+    },
+    {
+      "slug": "solveandgo-protamin-choco-250",
+      "name": "프로타민 (초코맛)",
+      "brand": "솔브앤고",
+      "category": "drinks",
+      "protein": 24,
+      "calories": 135,
+      "sugar": 4
+    },
+    {
+      "slug": "hymune-protein-balance-lowsugar-190",
+      "name": "프로틴 밸런스 (저당)",
+      "brand": "하이뮨",
+      "category": "drinks",
+      "protein": 10,
+      "calories": 130,
+      "sugar": 4.5
+    },
+    {
+      "slug": "dryou-protein-40g-choco-350",
+      "name": "프로 단백질 드링크 40g (초콜릿)",
+      "brand": "닥터유",
+      "category": "drinks",
+      "protein": 40,
+      "calories": 258,
+      "sugar": 4.8
+    },
+    {
+      "slug": "hymune-balance-active-cookie-cream-250",
+      "name": "프로틴 밸런스 액티브 (쿠키앤크림)",
+      "brand": "하이뮨",
+      "category": "drinks",
+      "protein": 20,
+      "calories": 130,
+      "sugar": 5
+    },
+    {
+      "slug": "labnosh-protein-latte-350",
+      "name": "프로틴 드링크 (라떼)",
+      "brand": "랩노쉬",
+      "category": "drinks",
+      "protein": 27,
+      "calories": 170,
+      "sugar": 5
+    },
+    {
+      "slug": "labnosh-protein-melon-350",
+      "name": "프로틴 드링크 (메론)",
+      "brand": "랩노쉬",
+      "category": "drinks",
+      "protein": 27,
+      "calories": 170,
+      "sugar": 5
+    },
+    {
+      "slug": "hymune-balance-active-strawberry-250",
+      "name": "프로틴 밸런스 액티브 (딸기)",
+      "brand": "하이뮨",
+      "category": "drinks",
+      "protein": 20,
+      "calories": 140,
+      "sugar": 5
+    },
+    {
+      "slug": "seoulmilk-protein-energy-choco-240",
+      "name": "프로틴 에너지 (초콜릿)",
+      "brand": "서울우유",
+      "category": "drinks",
+      "protein": 21,
+      "calories": 145,
+      "sugar": 5
+    },
+    {
+      "slug": "hymune-protein-balance-choco-190",
+      "name": "프로틴 밸런스 (초콜릿)",
+      "brand": "하이뮨",
+      "category": "drinks",
+      "protein": 10,
+      "calories": 140,
+      "sugar": 5
+    },
+    {
+      "slug": "labnosh-protein-cacao-350",
+      "name": "프로틴 드링크 (카카오)",
+      "brand": "랩노쉬",
+      "category": "drinks",
+      "protein": 27,
+      "calories": 175,
+      "sugar": 6
+    },
+    {
+      "slug": "labnosh-protein-strawberry-350",
+      "name": "프로틴 드링크 (스트로베리)",
+      "brand": "랩노쉬",
+      "category": "drinks",
+      "protein": 27,
+      "calories": 175,
+      "sugar": 6
+    },
+    {
+      "slug": "calobye-perfect-powershake-strawberry-250",
+      "name": "퍼펙트 파워쉐이크 (딸기맛)",
+      "brand": "칼로바이",
+      "category": "drinks",
+      "protein": 20,
+      "calories": 115,
+      "sugar": 6
+    },
+    {
+      "slug": "yonsei-severance-a2-protein-original-190",
+      "name": "세브란스 A2 프로틴 (오리지널)",
+      "brand": "연세유업",
+      "category": "drinks",
+      "protein": 12,
+      "calories": 145,
+      "sugar": 6
+    },
+    {
+      "slug": "labnosh-protein-banana-350",
+      "name": "프로틴 드링크 (바나나)",
+      "brand": "랩노쉬",
+      "category": "drinks",
+      "protein": 25,
+      "calories": 190,
+      "sugar": 8
+    },
+    {
+      "slug": "labnosh-protein-cookie-cream-350",
+      "name": "프로틴 드링크 (쿠키앤크림)",
+      "brand": "랩노쉬",
+      "category": "drinks",
+      "protein": 27,
+      "calories": 165,
+      "sugar": 8
+    },
+    {
+      "slug": "labnosh-protein-perfect-grain-350",
+      "name": "프로틴 드링크 퍼펙트 (그레인)",
+      "brand": "랩노쉬",
+      "category": "drinks",
+      "protein": 27,
+      "calories": 125,
+      "sugar": 0
+    },
+    {
+      "slug": "labnosh-protein-perfect-choco-350",
+      "name": "프로틴 드링크 퍼펙트 (초코)",
+      "brand": "랩노쉬",
+      "category": "drinks",
+      "protein": 27,
+      "calories": 125,
+      "sugar": 0
+    },
+    {
+      "slug": "labnosh-protein-perfect-banana-350",
+      "name": "프로틴 드링크 퍼펙트 (바나나)",
+      "brand": "랩노쉬",
+      "category": "drinks",
+      "protein": 27,
+      "calories": 125,
+      "sugar": 0
+    },
+    {
+      "slug": "calobye-perfect-powershake-choco-250",
+      "name": "퍼펙트 파워쉐이크 (초코맛)",
+      "brand": "칼로바이",
+      "category": "drinks",
+      "protein": 20,
+      "calories": 115,
+      "sugar": 8
+    },
+    {
+      "slug": "hamsoa-minions-proteinact-choco-330",
+      "name": "미니언즈 프로틴액트 (초콜릿)",
+      "brand": "함소아제약",
+      "category": "drinks",
+      "protein": 30,
+      "calories": 205,
+      "sugar": 8
+    },
+    {
+      "slug": "mymil-newprotein-original-190",
+      "name": "뉴프로틴 (오리지널)",
+      "brand": "마이밀",
+      "category": "drinks",
+      "protein": 9,
+      "calories": 150,
+      "sugar": 10
+    },
+    {
+      "slug": "mymil-newprotein-deepchoco-190",
+      "name": "뉴프로틴 (딥초코)",
+      "brand": "마이밀",
+      "category": "drinks",
+      "protein": 9,
+      "calories": 150,
+      "sugar": 10
+    },
+    {
+      "slug": "mymil-newprotein-goatmilk-190",
+      "name": "뉴프로틴 (산양유)",
+      "brand": "마이밀",
+      "category": "drinks",
+      "protein": 9,
+      "calories": 150,
+      "sugar": 10
+    },
+    {
+      "slug": "hymune-protein-balance-190",
+      "name": "프로틴 밸런스 (오리지널)",
+      "brand": "하이뮨",
+      "category": "drinks",
+      "protein": 10,
+      "calories": 165,
+      "sugar": 11
+    },
+    {
+      "slug": "pasteur-easyprotein-cereal-250",
+      "name": "이지프로틴 (시리얼)",
+      "brand": "파스퇴르",
+      "category": "drinks",
+      "protein": 20,
+      "calories": 165,
+      "sugar": 11
+    },
+    {
+      "slug": "hymune-protein-balance-black-sesame-190",
+      "name": "프로틴 밸런스 (흑임자)",
+      "brand": "하이뮨",
+      "category": "drinks",
+      "protein": 10,
+      "calories": 165,
+      "sugar": 14
+    },
+    {
+      "slug": "sellex-protein-original-190",
+      "name": "프로틴 (오리지널)",
+      "brand": "셀렉스",
+      "category": "drinks",
+      "protein": 12,
+      "calories": 190,
+      "sugar": 14
+    },
+    {
+      "slug": "hymune-protein-balance-plus-190",
+      "name": "프로틴 밸런스 (플러스)",
+      "brand": "하이뮨",
+      "category": "drinks",
+      "protein": 13,
+      "calories": 150,
+      "sugar": 14
+    },
+    {
+      "slug": "danbaek-water-grapefruit-400",
+      "name": "더단백 워터 프로틴 (백자몽)",
+      "brand": "더단백",
+      "category": "drinks",
+      "protein": 25,
+      "calories": 100,
+      "sugar": 0
+    },
+    {
+      "slug": "mymil-newprotein-banana-190",
+      "name": "뉴프로틴 (바나나)",
+      "brand": "마이밀",
+      "category": "drinks",
+      "protein": 9,
+      "calories": 150,
+      "sugar": 10
+    },
+    {
+      "slug": "oneuldanbaek-caramel-latte-250",
+      "name": "오늘단백 (카라멜라떼)",
+      "brand": "오늘단백",
+      "category": "drinks",
+      "protein": 21,
+      "calories": 158,
+      "sugar": 6
+    },
+    {
+      "slug": "oneuldanbaek-choco-latte-250",
+      "name": "오늘단백 (초코라떼)",
+      "brand": "오늘단백",
+      "category": "drinks",
+      "protein": 21,
+      "calories": 135,
+      "sugar": 3
+    },
+    {
+      "slug": "oneuldanbaek-dolce-latte-250",
+      "name": "오늘단백 (돌체라떼)",
+      "brand": "오늘단백",
+      "category": "drinks",
+      "protein": 21,
+      "calories": 145,
+      "sugar": 5
+    },
+    {
+      "slug": "dryou-proteinbar-pro-3nuts-crunch",
+      "name": "프로 단백질바 (3넛츠 크런치)",
+      "brand": "닥터유",
+      "category": "bars",
+      "protein": 25,
+      "calories": 220,
+      "sugar": 7
+    },
+    {
+      "slug": "dryou-proteinbar-pro-choco-classic",
+      "name": "프로 단백질바 (초코 클래식)",
+      "brand": "닥터유",
+      "category": "bars",
+      "protein": 25,
+      "calories": 220,
+      "sugar": 7
+    },
+    {
+      "slug": "dryou-proteinbar-pro-crunch",
+      "name": "프로 단백질바 (크런치)",
+      "brand": "닥터유",
+      "category": "bars",
+      "protein": 25,
+      "calories": 220,
+      "sugar": 7
+    },
+    {
+      "slug": "kirkland-proteinbar-choco-brownie",
+      "name": "프로틴바 초콜릿 브라우니",
+      "brand": "커클랜드",
+      "category": "bars",
+      "protein": 21,
+      "calories": 190,
+      "sugar": 2
+    },
+    {
+      "slug": "kirkland-proteinbar-choco-chip-cookie-dough-60",
+      "name": "프로틴바 초코칩 쿠키도우",
+      "brand": "커클랜드",
+      "category": "bars",
+      "protein": 21,
+      "calories": 220,
+      "sugar": 5
+    },
+    {
+      "slug": "benof-proteinbar-chunky-choco",
+      "name": "단백질바 (청키초콜릿)",
+      "brand": "베노프",
+      "category": "bars",
+      "protein": 20,
+      "calories": 215,
+      "sugar": 2
+    },
+    {
+      "slug": "benof-proteinbar-truffle-peanutbutter-choco",
+      "name": "단백질바 (트러플피넛버터초콜릿)",
+      "brand": "베노프",
+      "category": "bars",
+      "protein": 20,
+      "calories": 215,
+      "sugar": 2
+    },
+    {
+      "slug": "benof-softbar-peanutbutter",
+      "name": "소프트바 (피넛버터)",
+      "brand": "베노프",
+      "category": "bars",
+      "protein": 20,
+      "calories": 215,
+      "sugar": 2
+    },
+    {
+      "slug": "benof-softbar-cookie-cream",
+      "name": "소프트바 (쿠키앤크림)",
+      "brand": "베노프",
+      "category": "bars",
+      "protein": 20,
+      "calories": 215,
+      "sugar": 2
+    },
+    {
+      "slug": "benof-softbar-chocolate-caramel",
+      "name": "소프트바 (초콜릿카라멜)",
+      "brand": "베노프",
+      "category": "bars",
+      "protein": 20,
+      "calories": 215,
+      "sugar": 2
+    },
+    {
+      "slug": "benof-softbar-cacao",
+      "name": "소프트바 (카카오)",
+      "brand": "베노프",
+      "category": "bars",
+      "protein": 20,
+      "calories": 215,
+      "sugar": 2
+    },
+    {
+      "slug": "benof-softbar-black-sesame",
+      "name": "소프트바 (흑임자)",
+      "brand": "베노프",
+      "category": "bars",
+      "protein": 20,
+      "calories": 215,
+      "sugar": 2
+    },
+    {
+      "slug": "benof-softbar-injeolmi",
+      "name": "소프트바 (인절미)",
+      "brand": "베노프",
+      "category": "bars",
+      "protein": 20,
+      "calories": 215,
+      "sugar": 2
+    },
+    {
+      "slug": "benof-softbar-roasted-sweetpotato",
+      "name": "소프트바 (군고구마)",
+      "brand": "베노프",
+      "category": "bars",
+      "protein": 20,
+      "calories": 215,
+      "sugar": 2
+    },
+    {
+      "slug": "benof-softbar-berry-cheesecake",
+      "name": "소프트바 (베리베리치즈케이크)",
+      "brand": "베노프",
+      "category": "bars",
+      "protein": 20,
+      "calories": 215,
+      "sugar": 2
+    },
+    {
+      "slug": "syntha6-crispy-choco",
+      "name": "프로틴 키리스프 단백질바 (초콜릿 크런치)",
+      "brand": "비에스엔",
+      "category": "bars",
+      "protein": 20,
+      "calories": 240,
+      "sugar": 3
+    },
+    {
+      "slug": "bsn-protein-crisp-peanut-butter-crunch",
+      "name": "프로틴 키리스프 단백질바 (피넛 버터 크런치)",
+      "brand": "비에스엔",
+      "category": "bars",
+      "protein": 20,
+      "calories": 240,
+      "sugar": 3
+    },
+    {
+      "slug": "bsn-protein-crisp-salted-toffee-pretzel",
+      "name": "프로틴 키리스프 단백질바 (솔티드 토피 프레첼)",
+      "brand": "비에스엔",
+      "category": "bars",
+      "protein": 20,
+      "calories": 240,
+      "sugar": 3
+    },
+    {
+      "slug": "quest-nutrition-protein-bar-double-chocolate-chunk-60",
+      "name": "단백질바 (더블 초콜릿 청크)",
+      "brand": "퀘스트 뉴트리션",
+      "category": "bars",
+      "protein": 20,
+      "calories": 170,
+      "sugar": 1
+    },
+    {
+      "slug": "quest-nutrition-protein-bar-chocolate-peanutbutter-60",
+      "name": "단백질바 (초콜릿 피넛버터)",
+      "brand": "퀘스트 뉴트리션",
+      "category": "bars",
+      "protein": 19,
+      "calories": 170,
+      "sugar": 1
+    },
+    {
+      "slug": "quest-nutrition-protein-bar-oatmeal-chocolate-chip-60",
+      "name": "단백질바 (오트밀 초콜릿 칩)",
+      "brand": "퀘스트 뉴트리션",
+      "category": "bars",
+      "protein": 18,
+      "calories": 170,
+      "sugar": 1
+    },
+    {
+      "slug": "quest-nutrition-protein-bar-deep-chocolate-chip-cookie-dough-60",
+      "name": "단백질바 (딥 초콜릿칩 쿠키도우)",
+      "brand": "퀘스트 뉴트리션",
+      "category": "bars",
+      "protein": 20,
+      "calories": 170,
+      "sugar": 1
+    },
+    {
+      "slug": "quest-nutrition-protein-bar-lemon-cake-60",
+      "name": "단백질바 (레몬 케이크)",
+      "brand": "퀘스트 뉴트리션",
+      "category": "bars",
+      "protein": 20,
+      "calories": 170,
+      "sugar": 1
+    },
+    {
+      "slug": "quest-nutrition-protein-bar-mint-chocolate-chunk-60",
+      "name": "단백질바 (민트 초콜릿 청크)",
+      "brand": "퀘스트 뉴트리션",
+      "category": "bars",
+      "protein": 20,
+      "calories": 170,
+      "sugar": 1
+    },
+    {
+      "slug": "quest-nutrition-protein-bar-cookie-cream-60",
+      "name": "단백질바 (쿠키 앤 크림)",
+      "brand": "퀘스트 뉴트리션",
+      "category": "bars",
+      "protein": 21,
+      "calories": 200,
+      "sugar": 1
+    },
+    {
+      "slug": "quest-nutrition-protein-bar-chocolate-chip-cookie-dough-60",
+      "name": "단백질바 (초코칩 쿠키도우)",
+      "brand": "퀘스트 뉴트리션",
+      "category": "bars",
+      "protein": 20,
+      "calories": 170,
+      "sugar": 1
+    },
+    {
+      "slug": "quest-nutrition-protein-bar-blueberry-muffin-60",
+      "name": "단백질바 (블루베리 머핀)",
+      "brand": "퀘스트 뉴트리션",
+      "category": "bars",
+      "protein": 21,
+      "calories": 180,
+      "sugar": 1
+    },
+    {
+      "slug": "quest-nutrition-protein-bar-white-chocolate-raspberry-60",
+      "name": "단백질바 (화이트 초콜릿 라즈베리)",
+      "brand": "퀘스트 뉴트리션",
+      "category": "bars",
+      "protein": 20,
+      "calories": 190,
+      "sugar": 1
+    },
+    {
+      "slug": "quest-nutrition-protein-bar-deep-dish-cookie-cream-60",
+      "name": "단백질바 (딥디쉬 쿠키 앤 크림)",
+      "brand": "퀘스트 뉴트리션",
+      "category": "bars",
+      "protein": 21,
+      "calories": 200,
+      "sugar": 1
+    },
+    {
+      "slug": "quest-nutrition-protein-bar-smores-60",
+      "name": "단백질바 (스모어)",
+      "brand": "퀘스트 뉴트리션",
+      "category": "bars",
+      "protein": 21,
+      "calories": 180,
+      "sugar": 1
+    },
+    {
+      "slug": "post-proteinbar",
+      "name": "단백질바",
+      "brand": "포스트",
+      "category": "bars",
+      "protein": 16,
+      "calories": 257,
+      "sugar": 10
+    },
+    {
+      "slug": "proteinbangatgan-harudanbaekbar-blacksesame",
+      "name": "하루단백바 (흑임자)",
+      "brand": "프로틴방앗간",
+      "category": "bars",
+      "protein": 15,
+      "calories": 129,
+      "sugar": 4.7
+    },
+    {
+      "slug": "ondanbaek-protein-bar-apple-cranberry-50",
+      "name": "프로틴바 (애플크랜베리)",
+      "brand": "온단백",
+      "category": "bars",
+      "protein": 15,
+      "calories": 151,
+      "sugar": 6
+    },
+    {
+      "slug": "ondanbaek-protein-bar-chocolate-fudge-50",
+      "name": "프로틴바 (초콜릿퍼지)",
+      "brand": "온단백",
+      "category": "bars",
+      "protein": 15,
+      "calories": 169,
+      "sugar": 11
+    },
+    {
+      "slug": "proteinbangatgan-harudanbaekbar-cheeseberry",
+      "name": "하루단백바 (치즈베리)",
+      "brand": "프로틴방앗간",
+      "category": "bars",
+      "protein": 14,
+      "calories": 160,
+      "sugar": 3
+    },
+    {
+      "slug": "himnaego-protein-bar-dark-chocolate-50",
+      "name": "단백질바 (다크 초콜릿)",
+      "brand": "힘내고",
+      "category": "bars",
+      "protein": 13,
+      "calories": 250,
+      "sugar": 10
+    },
+    {
+      "slug": "nobrand-proteinbar-choco",
+      "name": "단백질바 초코",
+      "brand": "노브랜드",
+      "category": "bars",
+      "protein": 12,
+      "calories": 220,
+      "sugar": 10
+    },
+    {
+      "slug": "thedanbaek-crunchbar-choco",
+      "name": "크런치바 (초코)",
+      "brand": "더단백",
+      "category": "bars",
+      "protein": 15,
+      "calories": 185,
+      "sugar": 8
+    },
+    {
+      "slug": "selex-proteinbar-berryoat",
+      "name": "프로틴바 베리오트",
+      "brand": "셀렉스",
+      "category": "bars",
+      "protein": 12,
+      "calories": 215,
+      "sugar": 8
+    },
+    {
+      "slug": "thedanbaek-crunchbar-peanutbutter",
+      "name": "크런치바 (피넛버터)",
+      "brand": "더단백",
+      "category": "bars",
+      "protein": 15,
+      "calories": 185,
+      "sugar": 8
+    },
+    {
+      "slug": "thedanbaek-mildbar-almondcookie",
+      "name": "마일드바 (아몬드쿠키)",
+      "brand": "더단백",
+      "category": "bars",
+      "protein": 15,
+      "calories": 220,
+      "sugar": 0.7
+    },
+    {
+      "slug": "hymune-activebar-nuts",
+      "name": "액티브바 (넛츠)",
+      "brand": "하이뮨",
+      "category": "bars",
+      "protein": 12,
+      "calories": 250,
+      "sugar": 5
+    },
+    {
+      "slug": "mymil-new-proteinbar",
+      "name": "뉴프로틴바",
+      "brand": "마이밀",
+      "category": "bars",
+      "protein": 12,
+      "calories": 210,
+      "sugar": 8
+    },
+    {
+      "slug": "myprotein-soft-lemon-earlgrey",
+      "name": "소프트 단백질 (레몬 얼그레이)",
+      "brand": "마이프로틴",
+      "category": "bars",
+      "protein": 12,
+      "calories": 210,
+      "sugar": 8
+    },
+    {
+      "slug": "myprotein-soft-caramel-choco",
+      "name": "소프트 단백질 (카라멜 초코)",
+      "brand": "마이프로틴",
+      "category": "bars",
+      "protein": 12,
+      "calories": 210,
+      "sugar": 8
+    },
+    {
+      "slug": "myprotein-soft-strawberry-yogurt",
+      "name": "소프트 단백질 (딸기 요거트)",
+      "brand": "마이프로틴",
+      "category": "bars",
+      "protein": 12,
+      "calories": 210,
+      "sugar": 8
+    },
+    {
+      "slug": "proteinbangatgan-harudanbaekbar-jetchococake",
+      "name": "하루단백바 (제트초코케이크)",
+      "brand": "프로틴방앗간",
+      "category": "bars",
+      "protein": 12,
+      "calories": 138,
+      "sugar": 3
+    },
+    {
+      "slug": "dryou-proteinbar-bite-crunch",
+      "name": "프로 단백질바 한입쏙 (크런치)",
+      "brand": "닥터유",
+      "category": "bars",
+      "protein": 12,
+      "calories": 90,
+      "sugar": 4
+    },
+    {
+      "slug": "dryou-proteinbar-nuts",
+      "name": "단백질바 (견과)",
+      "brand": "닥터유",
+      "category": "bars",
+      "protein": 12,
+      "calories": 230,
+      "sugar": 9
+    },
+    {
+      "slug": "dryou-proteinbar-pro-bite-choco-classic",
+      "name": "프로 단백질바 한입쏙 (초코 클래식)",
+      "brand": "닥터유",
+      "category": "bars",
+      "protein": 12,
+      "calories": 90,
+      "sugar": 4
+    },
+    {
+      "slug": "danbaekhani-protein-bar-choco-38",
+      "name": "프로틴바 (초코)",
+      "brand": "단백하니",
+      "category": "bars",
+      "protein": 12,
+      "calories": 160,
+      "sugar": 0
+    },
+    {
+      "slug": "danbaekhani-protein-bar-signature-31",
+      "name": "프로틴바 시그니처",
+      "brand": "단백하니",
+      "category": "bars",
+      "protein": 12,
+      "calories": 125,
+      "sugar": 0
+    },
+    {
+      "slug": "danbaekhani-protein-bar-berry-30",
+      "name": "프로틴바 (베리)",
+      "brand": "단백하니",
+      "category": "bars",
+      "protein": 10,
+      "calories": 120,
+      "sugar": 3
+    },
+    {
+      "slug": "danbaekhani-protein-bar-peanutbutter-38",
+      "name": "프로틴바 (피넛버터)",
+      "brand": "단백하니",
+      "category": "bars",
+      "protein": 12,
+      "calories": 170,
+      "sugar": 4
+    },
+    {
+      "slug": "danbaekhani-protein-bar-matcha-choco-38",
+      "name": "프로틴바 (말차초코)",
+      "brand": "단백하니",
+      "category": "bars",
+      "protein": 12,
+      "calories": 160,
+      "sugar": 0
+    },
+    {
+      "slug": "labnosh-foodbar-mildchoco",
+      "name": "푸드바 마일드 초코",
+      "brand": "랩노쉬",
+      "category": "bars",
+      "protein": 11,
+      "calories": 230,
+      "sugar": 9
+    },
+    {
+      "slug": "cralo-plant-proteinbar",
+      "name": "식물성단백질바",
+      "brand": "씨알로",
+      "category": "bars",
+      "protein": 10,
+      "calories": 185,
+      "sugar": 7
+    },
+    {
+      "slug": "crown-highprotein-chocobar",
+      "name": "고단백질초코바",
+      "brand": "크라운",
+      "category": "bars",
+      "protein": 10,
+      "calories": 210,
+      "sugar": 11
+    },
+    {
+      "slug": "calobye-daily-nuts-proteinbar",
+      "name": "하루견과 단백질바",
+      "brand": "칼로바이",
+      "category": "bars",
+      "protein": 10,
+      "calories": 190,
+      "sugar": 7
+    },
+    {
+      "slug": "organica-ola-chewy-protein-bar-berry-almond-35",
+      "name": "올라 츄이프로틴바 (베리아몬드)",
+      "brand": "올가니카",
+      "category": "bars",
+      "protein": 9,
+      "calories": 130,
+      "sugar": 3
+    },
+    {
+      "slug": "kellogg-protein-granolabar-savory",
+      "name": "프로틴 그래놀라바 (고소한맛)",
+      "brand": "켈로그",
+      "category": "bars",
+      "protein": 8,
+      "calories": 165,
+      "sugar": 7
+    },
+    {
+      "slug": "kellogg-proteinbark-nuts",
+      "name": "프로틴바K (견과)",
+      "brand": "켈로그",
+      "category": "bars",
+      "protein": 8,
+      "calories": 165,
+      "sugar": 7
+    },
+    {
+      "slug": "kellogg-proteinbark-caramel-nuts",
+      "name": "프로틴바K (카라멜&넛)",
+      "brand": "켈로그",
+      "category": "bars",
+      "protein": 8,
+      "calories": 165,
+      "sugar": 7
+    },
+    {
+      "slug": "kellogg-proteinbark-hazelnut-darkchoco",
+      "name": "프로틴바K (헤이즐넛&다크초코)",
+      "brand": "켈로그",
+      "category": "bars",
+      "protein": 8,
+      "calories": 165,
+      "sugar": 7
+    },
+    {
+      "slug": "dryou-proteinbar-mini-nuts",
+      "name": "단백질바 미니 (견과)",
+      "brand": "닥터유",
+      "category": "bars",
+      "protein": 8,
+      "calories": 160,
+      "sugar": 6
+    },
+    {
+      "slug": "organica-ola-chewy-protein-bar-peanut-cacao-35",
+      "name": "올라 츄이프로틴바 (피넛카카오)",
+      "brand": "올가니카",
+      "category": "bars",
+      "protein": 8,
+      "calories": 125,
+      "sugar": 2
+    },
+    {
+      "slug": "post-proteinbar-mini",
+      "name": "단백질바 미니",
+      "brand": "포스트",
+      "category": "bars",
+      "protein": 3,
+      "calories": 53,
+      "sugar": 2
+    },
+    {
+      "slug": "gomgom-proteinbar-mini",
+      "name": "단백질바 미니",
+      "brand": "곰곰",
+      "category": "bars",
+      "protein": 2.2,
+      "calories": 54,
+      "sugar": 2
+    },
+    {
+      "slug": "nobrand-proteinbar-mini",
+      "name": "단백질바 미니",
+      "brand": "노브랜드",
+      "category": "bars",
+      "protein": 0,
+      "calories": null,
+      "sugar": null
+    },
+    {
+      "slug": "lottewellfood-easyprotein-highprotein-crispy",
+      "name": "이지프로틴 고단백질바 (크리스피)",
+      "brand": "롯데웰푸드",
+      "category": "bars",
+      "protein": 0,
+      "calories": null,
+      "sugar": null
+    },
+    {
+      "slug": "lottewellfood-easyprotein-energy-bar",
+      "name": "이지프로틴 에너지단백질바",
+      "brand": "롯데웰푸드",
+      "category": "bars",
+      "protein": 0,
+      "calories": null,
+      "sugar": null
+    },
+    {
+      "slug": "yopro-plain-150",
+      "name": "요프로 프로틴 설탕무첨가 플레인 요거트 150g",
+      "brand": "요프로",
+      "category": "yogurt",
+      "protein": 15,
+      "calories": 84,
+      "sugar": 2.3
+    },
+    {
+      "slug": "yopro-blueberry-150",
+      "name": "요프로 프로틴 블루베리 요거트 150g",
+      "brand": "요프로",
+      "category": "yogurt",
+      "protein": 13.5,
+      "calories": 105,
+      "sugar": 10
+    },
+    {
+      "slug": "yoplait-protein-blueberry-100",
+      "name": "요플레 프로틴 블루베리 떠먹는 요구르트 100g",
+      "brand": "요플레",
+      "category": "yogurt",
+      "protein": 9,
+      "calories": 105,
+      "sugar": 11
+    },
+    {
+      "slug": "yoplait-protein-plain-210",
+      "name": "요플레 프로틴 드링크 플레인 210mL",
+      "brand": "요플레",
+      "category": "yogurt",
+      "protein": 15,
+      "calories": 125,
+      "sugar": 4
+    },
+    {
+      "slug": "yoplait-protein-strawberry-banana-210",
+      "name": "요플레 프로틴 드링크 딸기바나나 210mL",
+      "brand": "요플레",
+      "category": "yogurt",
+      "protein": 15,
+      "calories": 135,
+      "sugar": 8
+    },
+    {
+      "slug": "yoplait-protein-max-210",
+      "name": "요플레 프로틴 MAX 210mL",
+      "brand": "요플레",
+      "category": "yogurt",
+      "protein": 23,
+      "calories": 180,
+      "sugar": 12
+    },
+    {
+      "slug": "who-greek-plain-80",
+      "name": "후디스 그릭요거트 플레인 80g",
+      "brand": "후디스",
+      "category": "yogurt",
+      "protein": 4.8,
+      "calories": 125,
+      "sugar": 12
+    },
+    {
+      "slug": "who-greek-plain-450",
+      "name": "후디스 그릭요거트 플레인 450g",
+      "brand": "후디스",
+      "category": "yogurt",
+      "protein": 27,
+      "calories": 360,
+      "sugar": 42.8
+    },
+    {
+      "slug": "maeil-bio-greek-unsweetened-150",
+      "name": "매일 바이오 그릭요거트 무가당 플레인 150g",
+      "brand": "매일 바이오",
+      "category": "yogurt",
+      "protein": 10.5,
+      "calories": 140.63,
+      "sugar": 2.63
+    },
+    {
+      "slug": "sangha-organic-greek-unsweetened-80",
+      "name": "상하목장 유기농 그릭요거트 무가당 플레인 80g",
+      "brand": "상하목장",
+      "category": "yogurt",
+      "protein": 5.5,
+      "calories": 90,
+      "sugar": 2.5
+    },
+    {
+      "slug": "pulmuone-dannon-greek-unsweetened-90",
+      "name": "풀무원다논 그릭요거트 무가당 플레인 90g",
+      "brand": "풀무원다논",
+      "category": "yogurt",
+      "protein": 6.1,
+      "calories": 64,
+      "sugar": 3.3
+    },
+    {
+      "slug": "yoplait-protein-plain-100",
+      "name": "요플레 프로틴 플레인 떠먹는 요구르트 100g",
+      "brand": "요플레",
+      "category": "yogurt",
+      "protein": 10.4,
+      "calories": 105,
+      "sugar": 8.5
+    },
+    {
+      "slug": "sangha-organic-greek-plain-80",
+      "name": "상하목장 유기농 그릭요거트 플레인 80g",
+      "brand": "상하목장",
+      "category": "yogurt",
+      "protein": 5.3,
+      "calories": 100,
+      "sugar": 7
+    },
+    {
+      "slug": "sangha-organic-greek-unsweetened-400",
+      "name": "상하목장 유기농 그릭요거트 무가당 플레인 400g",
+      "brand": "상하목장",
+      "category": "yogurt",
+      "protein": 27.5,
+      "calories": 450,
+      "sugar": 12.5
+    },
+    {
+      "slug": "who-highprotein-greek-unsweetened-400",
+      "name": "후디스 고단백 무가당 그릭요거트 400g",
+      "brand": "후디스",
+      "category": "yogurt",
+      "protein": 40,
+      "calories": 580,
+      "sugar": 28
+    },
+    {
+      "slug": "yozm-plain-greek-450",
+      "name": "YOZM 플레인 그릭요거트 450g",
+      "brand": "YOZM",
+      "category": "yogurt",
+      "protein": 54,
+      "calories": 846,
+      "sugar": 9
+    },
+    {
+      "slug": "yozm-plain-greek-800",
+      "name": "YOZM 플레인 그릭요거트 800g",
+      "brand": "YOZM",
+      "category": "yogurt",
+      "protein": 96,
+      "calories": 1504,
+      "sugar": 16
+    },
+    {
+      "slug": "yozm-soft-plain-500",
+      "name": "YOZM 소프트 플레인 500g",
+      "brand": "YOZM",
+      "category": "yogurt",
+      "protein": 35,
+      "calories": 580,
+      "sugar": 10
+    },
+    {
+      "slug": "greekday-light-100",
+      "name": "그릭데이 그릭요거트 라이트 100g",
+      "brand": "그릭데이",
+      "category": "yogurt",
+      "protein": 11,
+      "calories": 90,
+      "sugar": 3.5
+    },
+    {
+      "slug": "greekday-light-450",
+      "name": "그릭데이 그릭요거트 라이트 450g",
+      "brand": "그릭데이",
+      "category": "yogurt",
+      "protein": 49.5,
+      "calories": 405,
+      "sugar": 15.75
+    },
+    {
+      "slug": "greekday-light-800",
+      "name": "그릭데이 그릭요거트 라이트 800g",
+      "brand": "그릭데이",
+      "category": "yogurt",
+      "protein": 88,
+      "calories": 720,
+      "sugar": 28
+    },
+    {
+      "slug": "greekday-signature-100",
+      "name": "그릭데이 그릭요거트 시그니처 100g",
+      "brand": "그릭데이",
+      "category": "yogurt",
+      "protein": 11.42,
+      "calories": 160,
+      "sugar": 1.86
+    },
+    {
+      "slug": "greekday-signature-450",
+      "name": "그릭데이 그릭요거트 시그니처 450g",
+      "brand": "그릭데이",
+      "category": "yogurt",
+      "protein": 51.39,
+      "calories": 720,
+      "sugar": 8.37
+    },
+    {
+      "slug": "greekday-signature-800",
+      "name": "그릭데이 그릭요거트 시그니처 800g",
+      "brand": "그릭데이",
+      "category": "yogurt",
+      "protein": 91.36,
+      "calories": 1280,
+      "sugar": 14.88
+    },
+    {
+      "slug": "greekday-signature-yuja-100",
+      "name": "그릭데이 시그니처 유자 100g",
+      "brand": "그릭데이",
+      "category": "yogurt",
+      "protein": 8,
+      "calories": 200,
+      "sugar": 16
+    },
+    {
+      "slug": "maeil-bio-greek-unsweetened-400",
+      "name": "매일 바이오 그릭요거트 무가당 플레인 400g",
+      "brand": "매일 바이오",
+      "category": "yogurt",
+      "protein": 28,
+      "calories": 375.01,
+      "sugar": 7.01
+    },
+    {
+      "slug": "maeil-bio-greek-unsweetened-80",
+      "name": "매일 바이오 그릭요거트 무가당 플레인 80g",
+      "brand": "매일 바이오",
+      "category": "yogurt",
+      "protein": 5.6,
+      "calories": 75,
+      "sugar": 1.4
+    },
+    {
+      "slug": "maeil-bio-greek-unsweetened-800",
+      "name": "매일 바이오 그릭요거트 무가당 플레인 800g",
+      "brand": "매일 바이오",
+      "category": "yogurt",
+      "protein": 56,
+      "calories": 750.03,
+      "sugar": 14.03
+    },
+    {
+      "slug": "maeil-bio-greek-plain-150",
+      "name": "매일 바이오 그릭요거트 플레인 150g",
+      "brand": "매일 바이오",
+      "category": "yogurt",
+      "protein": 9,
+      "calories": 135,
+      "sugar": 5.5
+    },
+    {
+      "slug": "maeil-bio-greek-plain-400",
+      "name": "매일 바이오 그릭요거트 플레인 400g",
+      "brand": "매일 바이오",
+      "category": "yogurt",
+      "protein": 24,
+      "calories": 360,
+      "sugar": 14.67
+    },
+    {
+      "slug": "maeil-bio-greek-delight-banana-80",
+      "name": "매일 바이오 그릭요거트 Delight 바나나 80g",
+      "brand": "매일 바이오",
+      "category": "yogurt",
+      "protein": 5,
+      "calories": 80,
+      "sugar": 6
+    },
+    {
+      "slug": "maeil-bio-greek-togo-plain-120",
+      "name": "매일 바이오 그릭요거트 to go 플레인 120g",
+      "brand": "매일 바이오",
+      "category": "yogurt",
+      "protein": 7,
+      "calories": 120,
+      "sugar": 8
+    },
+    {
+      "slug": "maeil-bio-greek-togo-honey-120",
+      "name": "매일 바이오 그릭요거트 to go 허니 120g",
+      "brand": "매일 바이오",
+      "category": "yogurt",
+      "protein": 6,
+      "calories": 130,
+      "sugar": 12
+    },
+    {
+      "slug": "maeil-bio-greek-drink-plain-190",
+      "name": "매일 바이오 그릭요거트 Drink 플레인 190mL",
+      "brand": "매일 바이오",
+      "category": "yogurt",
+      "protein": 8.3,
+      "calories": 132,
+      "sugar": 12.5
+    },
+    {
+      "slug": "maeil-bio-greek-drink-banana-190",
+      "name": "매일 바이오 그릭요거트 Drink 바나나 190mL",
+      "brand": "매일 바이오",
+      "category": "yogurt",
+      "protein": 8.3,
+      "calories": 132,
+      "sugar": 12.5
+    },
+    {
+      "slug": "maeil-bio-greek-drink-unsweetened-710",
+      "name": "매일 바이오 그릭요거트 Drink 무가당 플레인 710mL",
+      "brand": "매일 바이오",
+      "category": "yogurt",
+      "protein": 31.02,
+      "calories": 493.26,
+      "sugar": 46.71
+    },
+    {
+      "slug": "maeil-bio-greek-drink-plain-710",
+      "name": "매일 바이오 그릭요거트 Drink 플레인 710mL",
+      "brand": "매일 바이오",
+      "category": "yogurt",
+      "protein": 31.02,
+      "calories": 493.26,
+      "sugar": 46.71
+    },
+    {
+      "slug": "maeil-bio-greek-drink-banana-710",
+      "name": "매일 바이오 그릭요거트 Drink 바나나 710mL",
+      "brand": "매일 바이오",
+      "category": "yogurt",
+      "protein": 31.02,
+      "calories": 493.26,
+      "sugar": 46.71
+    },
+    {
+      "slug": "sangha-organic-greek-apple-kale-120",
+      "name": "상하목장 유기농 그릭요거트 사과&케일 120g",
+      "brand": "상하목장",
+      "category": "yogurt",
+      "protein": 7,
+      "calories": 125,
+      "sugar": 10
+    },
+    {
+      "slug": "sangha-organic-greek-blueberry-kale-120",
+      "name": "상하목장 유기농 그릭요거트 블루베리&케일 120g",
+      "brand": "상하목장",
+      "category": "yogurt",
+      "protein": 7,
+      "calories": 125,
+      "sugar": 10
+    },
+    {
+      "slug": "who-organic-greek-unsweetened-450",
+      "name": "후디스 유기농 그릭요거트 달지않은 플레인 450g",
+      "brand": "후디스",
+      "category": "yogurt",
+      "protein": 27,
+      "calories": 590.63,
+      "sugar": 40.5
+    },
+    {
+      "slug": "lookt-icelandic-mild-100",
+      "name": "룩트 아이슬란딕 요거트 마일드 100g",
+      "brand": "룩트",
+      "category": "yogurt",
+      "protein": 10.6,
+      "calories": 85,
+      "sugar": 3
+    },
+    {
+      "slug": "lookt-icelandic-thick-100",
+      "name": "룩트 아이슬란딕 요거트 띠크 100g",
+      "brand": "룩트",
+      "category": "yogurt",
+      "protein": 12,
+      "calories": 190,
+      "sugar": 0.9
+    },
+    {
+      "slug": "lookt-icelandic-mild-450",
+      "name": "룩트 아이슬란딕 요거트 마일드 450g",
+      "brand": "룩트",
+      "category": "yogurt",
+      "protein": 47.7,
+      "calories": 382.5,
+      "sugar": 13.5
+    },
+    {
+      "slug": "lookt-icelandic-thick-450",
+      "name": "룩트 아이슬란딕 요거트 띠크 450g",
+      "brand": "룩트",
+      "category": "yogurt",
+      "protein": 54,
+      "calories": 855,
+      "sugar": 4.05
+    }
+  ]
+}
