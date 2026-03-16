@@ -5,14 +5,14 @@ import Footer from "@/app/components/Footer";
 export const metadata = {
   title: "마라톤 거리별 영양과 훈련 전략 | ProteinLab",
   description:
-    "5km, 10km, 하프, 풀 마라톤까지 거리별 특성에 맞는 훈련 포인트와 단백질 회복 전략을 정리했습니다.",
+    "5km, 10km, 하프, 풀 마라톤까지 거리별 특성에 맞는 훈련 포인트와 단백질 회복 전략을 정리합니다.",
 };
 
 const distanceRows = [
-  ["5km", "고강도 인터벌 적응", "낮음", "기록 향상과 스피드 유지가 핵심"],
+  ["5km", "고강도와 인터벌 적응", "낮음", "기록 향상과 스피드 유지가 핵심"],
   ["10km", "지구력과 페이스 유지", "중간", "스피드와 지구력을 함께 끌어올리는 구간"],
   ["하프", "롱런과 페이스 적응 비중 증가", "높음", "장거리 적응이 본격적으로 시작되는 단계"],
-  ["풀", "장시간 에너지 관리와 회복 최적화", "매우 높음", "장거리 적응과 기록 관리가 모두 중요한 구간"],
+  ["풀", "지속적 에너지 관리와 회복 최적화", "매우 높음", "장거리 적응과 기록 관리가 모두 중요한 구간"],
 ];
 
 const distanceCards = [
@@ -20,7 +20,7 @@ const distanceCards = [
     title: "5km 전략",
     training: ["짧은 인터벌", "강도 훈련", "5km 페이스 적응"],
     nutritionBefore: "가벼운 탄수화물 보충",
-    nutritionAfter: "운동 후 단백질 20g 안팎",
+    nutritionAfter: "운동 후 단백질 20g 전후",
   },
   {
     title: "10km 전략",
@@ -43,7 +43,7 @@ const distanceCards = [
 ];
 
 const proteinReasons = [
-  "거리 훈련이 길어질수록 근육 회복 속도와 다음 훈련 적응이 더 중요해집니다.",
+  "거리 훈련이 길어질수록 근육 회복 속도가 다음 훈련 적응에 더 중요해집니다.",
   "장거리 러닝 후에는 전체 피로가 커서 회복 루틴을 빠르게 챙기는 편이 좋습니다.",
   "운동 후 20~30g 단백질 섭취는 회복 루틴을 만들기 위한 가장 실전적인 출발점입니다.",
 ];
@@ -77,7 +77,7 @@ export default function MarathonDistanceStrategyPage() {
           <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
             5km, 10km, 하프, 풀 마라톤은 훈련 목적과 에너지 전략이 서로 다릅니다.
             <br />
-            거리별 특성을 먼저 이해하면 운동 후 단백질 섭취와 회복 루틴도 훨씬 명확하게 설계할 수 있습니다.
+            거리별 특성을 먼저 이해하면 운동 후 단백질 섭취와 회복 루틴도 더 명확하게 설계할 수 있습니다.
           </p>
         </div>
       </section>

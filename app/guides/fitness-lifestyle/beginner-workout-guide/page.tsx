@@ -5,7 +5,7 @@ import Footer from "@/app/components/Footer";
 export const metadata = {
   title: "운동 초보 단백질 가이드 | ProteinLab",
   description:
-    "운동을 막 시작한 사람을 위한 단백질 섭취 가이드입니다. 식사, 간식, 제품 선택을 쉽게 연결해서 정리했습니다.",
+    "운동을 막 시작한 사람을 위한 단백질 섭취 가이드입니다. 식사, 간식, 제품 선택을 쉽게 연결해 정리합니다.",
 };
 
 const starterCards = [
@@ -15,11 +15,11 @@ const starterCards = [
   },
   {
     title: "익숙한 음식부터",
-    body: "계란, 우유, 그릭요거트 같은 익숙한 식품으로 시작하면 부담 없이 루틴을 만들기 쉽습니다.",
+    body: "계란, 우유, 그릭요거트 같은 익숙한 식품으로 시작하면 부담 없이 루틴을 만들기 좋습니다.",
   },
   {
-    title: "제품은 보완용",
-    body: "단백질 음료나 바는 식사를 완전히 대체하기보다 부족한 구간을 채우는 보조 수단으로 보는 편이 좋습니다.",
+    title: "제품은 보완용으로",
+    body: "단백질 음료와 바는 식사를 완전히 대체하기보다 부족한 구간을 채우는 보조 수단으로 보는 편이 좋습니다.",
   },
 ];
 
@@ -34,7 +34,7 @@ const checklist = [
   "운동 주 2~3회라면 식사마다 단백질 식품 한 가지씩 넣기",
   "제품 선택 시 단백질 g, 당류, 칼로리를 함께 보기",
   "처음부터 고단백 제품만 찾기보다 지속 가능한 루틴 만들기",
-  "속이 불편하면 웨이보다 우유, 요거트형 제품부터 시도하기",
+  "속이 불편하다면 쉐이크보다 우유, 요거트형 제품부터 시도하기",
 ];
 
 const beginnerFaq = [
@@ -44,7 +44,7 @@ const beginnerFaq = [
   },
   {
     title: "처음부터 고단백 제품을 고르는 게 좋을까?",
-    body: "무조건 높은 수치보다 부담 없이 꾸준히 먹을 수 있는 제품이 먼저입니다. 초보자는 단백질 양, 당류, 칼로리의 균형을 함께 보는 편이 좋습니다.",
+    body: "무조건 높은 수치보다 부담 없이 꾸준히 먹을 수 있는 제품이 먼저입니다. 초보자는 단백질량과 당류, 칼로리 균형을 함께 보는 편이 좋습니다.",
   },
   {
     title: "운동하지 않는 날에도 단백질을 챙겨야 할까?",
@@ -53,9 +53,9 @@ const beginnerFaq = [
 ];
 
 const starterFlow = [
-  ["1단계", "하루 식사 3번 체크", "매 끼니에 단백질 식품 1개씩 넣기"],
+  ["1단계", "하루 식사 3번 체크", "매 끼니에 단백질 식품 1가지씩 넣기"],
   ["2단계", "간식 한 번 보완", "요거트, 우유, RTD 중 부담 적은 제품 선택"],
-  ["3단계", "운동 후 루틴 고정", "운동 후 1시간 안에 회복식 연결"],
+  ["3단계", "운동 후 루틴 고정", "운동 후 1시간 안에 회복 루틴 연결"],
 ];
 
 function InsightCard({ title, body }: { title: string; body: string }) {
@@ -93,7 +93,7 @@ export default function BeginnerWorkoutGuidePage() {
           <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
             운동을 막 시작한 사람에게는 복잡한 보충제 루틴보다,
             <br />
-            식사와 간식 안에 단백질을 자연스럽게 넣는 흐름을 만드는 편이 훨씬 실전적입니다.
+            식사와 간식 안에 단백질을 자연스럽게 넣는 흐름을 만드는 것이 훨씬 실전적입니다.
           </p>
         </div>
       </section>
@@ -185,7 +185,7 @@ export default function BeginnerWorkoutGuidePage() {
           </section>
 
           <section className="rounded-[28px] border border-[#e8e6e3] bg-[#fffdf8] px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
-            <h2 className="text-xl font-bold text-[var(--foreground)]">초보자 체크리스트</h2>
+            <h2 className="text-xl font-bold text-[var(--foreground)]">초보용 체크리스트</h2>
             <div className="mt-5 grid gap-3 md:grid-cols-2">
               {checklist.map((item) => (
                 <label
@@ -193,7 +193,7 @@ export default function BeginnerWorkoutGuidePage() {
                   className="flex items-start gap-3 rounded-2xl border border-[#eaded7] bg-white px-4 py-4 text-sm leading-6 text-[var(--foreground-muted)] shadow-[0_10px_26px_rgba(111,61,38,0.05)]"
                 >
                   <span className="mt-1 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-md border border-[#d9c8bf] bg-[#fcf1ea] text-[11px] font-bold text-[#8a4b2f]">
-                    ✓
+                    OK
                   </span>
                   <span>{item}</span>
                 </label>

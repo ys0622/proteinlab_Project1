@@ -5,7 +5,7 @@ import Footer from "@/app/components/Footer";
 export const metadata = {
   title: "마라톤 레이스 주간 영양 전략 가이드 | ProteinLab",
   description:
-    "마라톤 레이스 주간에는 평소 훈련보다 탄수화물 로딩, 수분, 단백질 회복 전략을 더 정교하게 설계해야 합니다. 레이스 전후 체크리스트를 실전 관점에서 정리했습니다.",
+    "마라톤 레이스 주간에는 평소 훈련보다 탄수화물 로딩, 수분, 단백질 회복 전략을 더 정확하게 설계해야 합니다. 레이스 전후 체크리스트를 실전 관점에서 정리합니다.",
 };
 
 const checklistItems = [
@@ -14,13 +14,13 @@ const checklistItems = [
   "섬유질이 많은 음식은 줄이고 소화가 쉬운 메뉴로 구성하기",
   "지방과 자극적인 음식은 경기 직전에는 피하기",
   "에너지젤과 스포츠음료를 사용할 계획이면 미리 테스트하기",
-  "경기 후 회복용 단백질과 수분 보충 루틴을 바로 연결하기",
+  "경기 후 회복은 단백질과 수분 보충 루틴으로 바로 연결하기",
 ];
 
 const timelineRows = [
-  ["일주일 전", "일반 훈련 유지", "균형 식단과 충분한 수분, 단백질 총량 유지"],
-  ["3일 전", "로딩 시작", "탄수화물 비중을 높이고 위장 부담은 줄이기"],
-  ["하루 전", "컨디션 조절", "소화가 쉬운 식사, 과식 금지, 수분 관리"],
+  ["1주 전", "일반 훈련 유지", "균형 식단과 충분한 수분, 단백질 총량 유지"],
+  ["3일 전", "로딩 시작", "탄수화물 비중을 높이고 위장 부담을 줄이기"],
+  ["전날", "컨디션 조절", "소화가 쉬운 식사, 과식 금지, 수분 관리"],
   ["당일", "레이스 데이", "출발 전 탄수화물, 경기 후 빠른 회복 루틴 연결"],
 ];
 
@@ -59,13 +59,9 @@ export default function MarathonProteinGuidePage() {
       <section className="w-full border-t border-b bg-[var(--hero-bg)]" style={{ borderColor: "var(--hero-border)" }}>
         <div className="mx-auto max-w-[1200px] px-4 py-5 md:px-6 md:py-6">
           <div className="flex flex-wrap items-center gap-1.5 text-xs text-[var(--foreground-muted)]">
-            <Link href="/guides" className="hover:text-[var(--accent)]">
-              가이드
-            </Link>
+            <Link href="/guides" className="hover:text-[var(--accent)]">가이드</Link>
             <span>/</span>
-            <Link href="/guides/fitness-lifestyle" className="hover:text-[var(--accent)]">
-              운동 & 라이프스타일
-            </Link>
+            <Link href="/guides/fitness-lifestyle" className="hover:text-[var(--accent)]">운동 & 라이프스타일</Link>
             <span>/</span>
             <span>마라톤 레이스 주간 영양 전략</span>
           </div>
@@ -73,7 +69,7 @@ export default function MarathonProteinGuidePage() {
             <span className="rounded-md bg-[#f8ede7] px-2 py-0.5 text-[11px] font-semibold tracking-wide text-[#8a4b2f]">TRACK D</span>
           </div>
           <h1 className="mt-3 text-2xl font-bold leading-tight text-[var(--foreground)] md:text-3xl">
-            마라톤은 레이스 데이 영양이 성패를 좌우합니다
+            마라톤은 레이스 주간 영양이 성패를 좌우합니다
           </h1>
           <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
             일반적인 러닝 훈련과 마라톤 대회 전후 영양 전략은 다르게 설계해야 합니다.
@@ -137,7 +133,7 @@ export default function MarathonProteinGuidePage() {
                   className="flex items-start gap-3 rounded-2xl border border-[#dce8df] bg-white px-4 py-4 text-sm leading-6 text-[var(--foreground-muted)] shadow-[0_10px_26px_rgba(20,32,24,0.05)]"
                 >
                   <span className="mt-1 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-md border border-[#c8dfd0] bg-[#eef7f1] text-[11px] font-bold text-[#2d6a4f]">
-                    ✓
+                    OK
                   </span>
                   <span>{item}</span>
                 </label>
