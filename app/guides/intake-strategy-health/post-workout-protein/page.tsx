@@ -10,8 +10,8 @@ export const metadata = {
 
 const recoveryTimelineRows = [
   ["운동 직후 0~1시간", "20~30g", "물이나 가벼운 보충과 함께 회복 루틴을 시작하는 구간입니다."],
-  ["1~2시간 뒤 식사", "단백질 + 탄수화물", "다음 식사에서 회복 총량을 보완하며 운동 후 루틴을 마무리합니다."],
-  ["나머지 식사", "하루 총량 분산", "운동 직후 한 번만으로 끝내지 말고 하루 전체 루틴과 연결하는 것이 중요합니다."],
+  ["1~2시간 내 식사", "단백질 + 탄수화물", "다음 식사에서 회복 총량을 보완하고 운동 후 루틴을 마무리합니다."],
+  ["나머지 식사", "하루 총량 분산", "운동 직후 한 번으로 끝내지 말고 하루 전체 루틴과 연결하는 것이 중요합니다."],
 ];
 
 const quickChoices = [
@@ -21,18 +21,18 @@ const quickChoices = [
   },
   {
     title: "운동 후 식사까지 시간이 길 때",
-    body: "바나 RTD처럼 바로 섭취 가능한 형태가 실전적입니다. 이때도 당류와 칼로리를 같이 봐야 합니다.",
+    body: "바나 RTD처럼 바로 섭취 가능한 형태가 실전적입니다. 이때는 당류와 칼로리도 함께 봐야 합니다.",
   },
   {
     title: "헬스장이나 야외에서 바로 채울 때",
-    body: "보관이 쉽고 마시기 빠른 형태가 유리합니다. 이후 식사 간격까지 함께 고려하는 것이 좋습니다.",
+    body: "보관이 쉽고 마시기 빠른 제품이 유리합니다. 이후 식사 간격까지 같이 고려하는 것이 좋습니다.",
   },
 ];
 
 const mistakes = [
   "운동 직후 한 번만 챙기고 하루 총량을 놓치는 경우",
   "단백질만 보고 당류와 칼로리를 확인하지 않는 경우",
-  "회복용이라고 하지만 실제로는 식사대용에 가까운 제품을 고르는 경우",
+  "회복용 제품이어야 하지만 실제로는 식사대용 제품을 고르는 경우",
 ];
 
 export default function PostWorkoutProteinPage() {
@@ -66,7 +66,7 @@ export default function PostWorkoutProteinPage() {
           <section className="rounded-[28px] border border-[#e2ebe4] bg-[#f7fbf8] px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
             <h2 className="text-xl font-bold text-[var(--foreground)]">운동 후 회복 타임라인</h2>
             <p className="mt-3 text-sm leading-6 text-[var(--foreground-muted)]">
-              운동 직후 20~30g을 먼저 채우고, 이후 식사에서 탄수화물과 단백질을 함께 보완하는 방식이 가장 안정적입니다.
+              운동 직후 20~30g를 먼저 채우고 이후 식사에서 탄수화물과 단백질을 함께 보완하는 방식이 가장 안정적입니다.
             </p>
             <div className="mt-4 grid gap-3 md:grid-cols-3">
               {["0~1시간", "1~2시간", "하루 전체"].map((label) => (
@@ -127,7 +127,7 @@ export default function PostWorkoutProteinPage() {
           <section className="rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
             <p className="text-[11px] font-semibold tracking-[0.08em] text-[#2d6a4f]">RECOVERY NOTE</p>
             <p className="mt-3 text-sm leading-6 text-[var(--foreground-muted)]">
-              운동 후 보충은 빠르면 좋다보다, 다음 식사까지 얼마나 비는지와 하루 총량을 얼마나 유지하는지가 더 중요합니다.
+              운동 후 보충은 빠르면 좋다보다, 다음 식사까지 얼마나 비는지와 하루 총량에 얼마나 기여하는지가 더 중요합니다.
             </p>
           </section>
         </div>
