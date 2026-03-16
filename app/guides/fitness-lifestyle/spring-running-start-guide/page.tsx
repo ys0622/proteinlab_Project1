@@ -5,7 +5,7 @@ import Footer from "@/app/components/Footer";
 export const metadata = {
   title: "봄 러닝 시작 단백질 가이드 | 입문 러너 회복 전략 | ProteinLab",
   description:
-    "봄에 러닝을 다시 시작할 때 필요한 단백질 기준, 회복 타이밍, 가벼운 제품 선택 포인트를 ProteinLab 기준으로 정리했습니다.",
+    "봄에 러닝을 다시 시작할 때 필요한 단백질 기준, 회복 타이밍, 가벼운 제품 선택 포인트를 ProteinLab 기준으로 정리합니다.",
 };
 
 const restartCards = [
@@ -15,11 +15,11 @@ const restartCards = [
   },
   {
     title: "가벼운 제품 선택",
-    body: "러닝 재개 초반에는 속이 부담되지 않는 파우더, RTD, 가벼운 요거트형 제품이 잘 맞는 경우가 많습니다.",
+    body: "러닝 재개 초반에는 속이 부담되지 않는 파우치형 RTD, 가벼운 요거트형 제품이 더 맞는 경우가 많습니다.",
   },
   {
     title: "주간 총량 유지",
-    body: "운동 직후만 챙기기보다 주간 기준으로 단백질 총량을 안정적으로 유지하는 것이 회복과 적응에 더 유리합니다.",
+    body: "운동 직후만 챙기기보다 주간 기준으로 단백질 총량을 일정하게 유지하는 것이 회복과 적응에 더 유리합니다.",
   },
 ];
 
@@ -52,9 +52,9 @@ export default function SpringRunningStartGuidePage() {
             회복 루틴부터 다시 잡아야 합니다
           </h1>
           <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
-            봄은 러닝을 다시 시작하는 사람이 많아지는 시즌입니다.
+            봄에 러닝을 다시 시작하는 사람이 많아지는 시즌입니다.
             <br />
-            거리보다 먼저 운동 후 단백질, 다음 식사, 주간 총량을 연결하는 회복 루틴을 만드는 것이 중요합니다.
+            거리보다 먼저 운동 후 단백질, 다음 식사, 주간 총량이 연결되는 회복 루틴을 만드는 것이 중요합니다.
           </p>
         </div>
       </section>
