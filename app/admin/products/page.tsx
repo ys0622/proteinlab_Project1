@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState, useCallback, useMemo } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { Suspense } from "react";
@@ -23,9 +23,10 @@ function ProductsContent() {
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState("");
-  const [typeFilter, setTypeFilter] = useState<"all" | "drink" | "bar">("all");
+  const [typeFilter, setTypeFilter] = useState<"all" | "drink" | "bar" | "yogurt">("all");
   const [imageFilter, setImageFilter] = useState<"all" | "no-image" | "has-image">("all");
   const [reviewFilter, setReviewFilter] = useState(false);
+  const [brandFilter, setBrandFilter] = useState("all");
   const [deleteConfirm, setDeleteConfirm] = useState<string | null>(null);
 
   const urlFilter = searchParams.get("filter");
@@ -41,6 +42,7 @@ function ProductsContent() {
         const all = [
           ...(data.drinks || []).map((p: Product) => ({ ...p, productType: "drink" })),
           ...(data.bars || []).map((p: Product) => ({ ...p, productType: "bar" })),
+          ...(data.yogurts || []).map((p: Product) => ({ ...p, productType: "yogurt" })),
         ];
         setProducts(all);
         setLoading(false);
@@ -56,6 +58,11 @@ function ProductsContent() {
     }
   }, []);
 
+  const brands = useMemo(
+    () => Array.from(new Set(products.map((p) => p.brand).filter(Boolean))).sort(),
+    [products],
+  );
+
   const needsReview = (p: Product) => {
     const n = p.nutritionPerBottle;
     return !n || n.sodiumMg === undefined || n.fatG === undefined || n.carbsG === undefined;
@@ -63,6 +70,7 @@ function ProductsContent() {
 
   const filtered = products.filter((p) => {
     if (typeFilter !== "all" && p.productType !== typeFilter) return false;
+    if (brandFilter !== "all" && p.brand !== brandFilter) return false;
     if (imageFilter === "no-image" && p.imageStatus !== "no-image") return false;
     if (imageFilter === "has-image" && p.imageStatus === "no-image") return false;
     if (reviewFilter && !needsReview(p)) return false;
@@ -108,12 +116,24 @@ function ProductsContent() {
 
         <select
           value={typeFilter}
-          onChange={(e) => setTypeFilter(e.target.value as "all" | "drink" | "bar")}
+          onChange={(e) => setTypeFilter(e.target.value as "all" | "drink" | "bar" | "yogurt")}
           className="rounded-lg border border-[var(--border)] bg-[var(--background)] px-3 py-2 text-sm focus:outline-none"
         >
           <option value="all">전체 카테고리</option>
           <option value="drink">단백질 음료</option>
           <option value="bar">단백질 바</option>
+          <option value="yogurt">단백질 요거트</option>
+        </select>
+
+        <select
+          value={brandFilter}
+          onChange={(e) => setBrandFilter(e.target.value)}
+          className="rounded-lg border border-[var(--border)] bg-[var(--background)] px-3 py-2 text-sm focus:outline-none"
+        >
+          <option value="all">전체 브랜드</option>
+          {brands.map((b) => (
+            <option key={b} value={b}>{b}</option>
+          ))}
         </select>
 
         <select
@@ -197,10 +217,12 @@ function ProductsContent() {
                         className={`inline-block rounded-full px-2 py-0.5 text-xs font-medium ${
                           p.productType === "bar"
                             ? "bg-amber-100 text-amber-700"
-                            : "bg-blue-100 text-blue-700"
+                            : p.productType === "yogurt"
+                              ? "bg-purple-100 text-purple-700"
+                              : "bg-blue-100 text-blue-700"
                         }`}
                       >
-                        {p.productType === "bar" ? "바" : "음료"}
+                        {p.productType === "bar" ? "바" : p.productType === "yogurt" ? "요거트" : "음료"}
                       </span>
                     </td>
                     <td className="px-4 py-3 text-[var(--foreground-muted)]">
