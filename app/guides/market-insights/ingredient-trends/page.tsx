@@ -4,7 +4,7 @@ import Footer from "@/app/components/Footer";
 
 export const metadata = {
   title: "단백질 성분 트렌드 | ProteinLab",
-  description: "제로, 워터형, 식물성, 고단백 등 주요 성분 트렌드가 왜 중요해졌는지 정리했습니다.",
+  description: "저당, 워터형, 식물성, 고단백 등 주요 성분 트렌드가 왜 중요해졌는지 정리합니다.",
 };
 
 const trendCards = [
@@ -15,23 +15,23 @@ const trendCards = [
   },
   {
     title: "워터형",
-    tag: "가벼운 보완",
+    tag: "가벼운 보충",
     body: "운동 후나 가볍게 마시는 수요가 늘면서 저칼로리 중심 워터형 RTD가 빠르게 성장하고 있습니다.",
   },
   {
     title: "식물성",
     tag: "라이프스타일",
-    body: "비건, 유당 부담, 환경 관심과 연결되며 식물성 단백질 수요가 꾸준히 확대되고 있습니다.",
+    body: "비건, 유당 부담, 환경 관심과 연결되며 식물성 단백질 수요가 꾸준히 늘고 있습니다.",
   },
   {
     title: "고단백",
-    tag: "운동 보완",
-    body: "운동 후 회복을 중시하는 층은 여전히 30g 안팎의 고단백 제품을 적극적으로 찾고 있습니다.",
+    tag: "운동 보충",
+    body: "운동 후 회복을 중시하는 층은 여전히 30g 전후 고단백 제품을 적극적으로 찾고 있습니다.",
   },
   {
     title: "락토프리",
     tag: "소화 편의",
-    body: "소화 부담을 줄이고 싶어 하는 수요가 커지면서 별도 선택 포인트로 자리 잡았습니다.",
+    body: "소화 부담을 줄이면서도 먹고 싶은 수요가 커지면서 별도 선택 포인트로 자리 잡았습니다.",
   },
   {
     title: "식사대용형",
@@ -41,16 +41,16 @@ const trendCards = [
 ];
 
 const trendRows = [
-  ["저당", "당류 5g 이하", "체중 관리·간식", "제품 수가 빠르게 늘고 있습니다."],
-  ["워터형", "100kcal 안팎", "운동 후 가벼운 회복", "독립 카테고리로 자리 잡는 중입니다."],
+  ["저당", "당류 5g 이하", "체중 관리 제품군", "제품 수가 빠르게 늘고 있습니다."],
+  ["워터형", "100kcal 전후", "운동 후 가벼운 회복", "독립 카테고리로 자리 잡는 중입니다."],
   ["식물성", "식물성 원료 기반", "비건·유당 부담", "라이프스타일 수요가 커지고 있습니다."],
-  ["고단백", "단백질 30g 안팎", "운동·회복 보완", "프리미엄 RTD 쪽에서 강합니다."],
-  ["락토프리", "유당 관련 제거", "소화 민감층", "중장년층과 위장 민감 수요를 함께 받습니다."],
+  ["고단백", "단백질 30g 전후", "운동·회복 보충", "프리미엄 RTD 쪽에서 강합니다."],
+  ["락토프리", "유당 제거 또는 축소", "소화 민감층", "중장년과 위장 민감 수요를 함께 받습니다."],
 ];
 
 const readingPoints = [
   "트렌드 키워드는 마케팅 문구로만 쓰이는 경우가 많아 실제 수치를 직접 확인해야 합니다.",
-  "저당 제품도 단백질 함량과 포만감이 부족할 수 있어 함께 봐야 합니다.",
+  "저당 제품은 단백질 함량과 포만감이 부족할 수 있어 함께 봐야 합니다.",
   "식물성 제품은 맛과 포만감이 다를 수 있어 목적에 맞는지 따져야 합니다.",
   "여러 트렌드를 동시에 만족하는 제품일수록 가격이 높아지는 경향이 있습니다.",
 ];
@@ -62,13 +62,9 @@ export default function IngredientTrendsPage() {
       <section className="w-full border-t border-b bg-[var(--hero-bg)]" style={{ borderColor: "var(--hero-border)" }}>
         <div className="mx-auto max-w-[1200px] px-4 py-5 md:px-6 md:py-6">
           <div className="flex flex-wrap items-center gap-1.5 text-xs text-[var(--foreground-muted)]">
-            <Link href="/guides" className="hover:text-[var(--accent)]">
-              Guides
-            </Link>
+            <Link href="/guides" className="hover:text-[var(--accent)]">Guides</Link>
             <span>/</span>
-            <Link href="/guides/market-insights" className="hover:text-[var(--accent)]">
-              시장 인사이트
-            </Link>
+            <Link href="/guides/market-insights" className="hover:text-[var(--accent)]">시장 인사이트</Link>
             <span>/</span>
             <span>성분 트렌드</span>
           </div>
@@ -89,7 +85,7 @@ export default function IngredientTrendsPage() {
       <main className="mx-auto max-w-[1200px] px-4 py-8 md:px-6">
         <div className="space-y-6">
           <section className="rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
-            <h2 className="text-xl font-bold text-[var(--foreground)]">6가지 대표 트렌드 키워드</h2>
+            <h2 className="text-xl font-bold text-[var(--foreground)]">6가지 핵심 트렌드 키워드</h2>
             <p className="mt-3 text-sm leading-6 text-[var(--foreground-muted)]">
               소비자의 선택 기준이 바뀌면서 제품 기획 방향도 함께 이동하고 있습니다.
             </p>
@@ -107,7 +103,7 @@ export default function IngredientTrendsPage() {
           </section>
 
           <section className="rounded-[28px] border border-[#e2ebe4] bg-[#f7fbf8] px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
-            <h2 className="text-xl font-bold text-[var(--foreground)]">트렌드별 기준과 주요 타깃</h2>
+            <h2 className="text-xl font-bold text-[var(--foreground)]">트렌드별 기준과 주요 의미</h2>
             <div className="mt-4 rounded-2xl border border-[#dce8df] bg-white px-4 py-4">
               <p className="text-[11px] font-semibold tracking-[0.08em] text-[#2d6a4f]">TREND MAP</p>
               <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">
@@ -150,7 +146,7 @@ export default function IngredientTrendsPage() {
               ))}
             </ul>
             <blockquote className="mt-5 rounded-xl border border-[#dce8df] bg-[#f7fbf8] px-4 py-4 text-sm leading-6 text-[var(--foreground-muted)]">
-              트렌드 키워드는 검색에는 강하지만 실제 선택에서는 단백질, 당류, 칼로리, 포만감 기준으로 다시 해석해야 합니다.
+              트렌드 키워드는 검색에는 강하지만, 실제 선택에서는 단백질, 당류, 칼로리, 포만감 기준으로 다시 해석해야 합니다.
             </blockquote>
           </section>
         </div>

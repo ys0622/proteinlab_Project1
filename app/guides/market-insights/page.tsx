@@ -14,7 +14,7 @@ const featuredTopics = [
     href: "/guides/market-insights/protein-rtd-market",
     badge: "먼저 읽기",
     description:
-      "RTD 단백질 음료 시장이 어떻게 커졌고 어떤 기준으로 브랜드와 제품이 나뉘는지 먼저 정리합니다.",
+      "RTD 단백질 음료 시장이 어떻게 커졌고, 어떤 기준으로 브랜드와 제품이 나뉘는지 먼저 정리합니다.",
     question: "RTD 시장은 왜 이렇게 빠르게 커졌을까?",
   },
   {
@@ -22,7 +22,7 @@ const featuredTopics = [
     href: "/guides/market-insights/brand-analysis",
     badge: "포지셔닝 비교",
     description:
-      "더단백, 뉴케어 올프로틴, 마이밀 같은 주요 브랜드가 어떤 포지셔닝을 갖는지 비교합니다.",
+      "더단백, 올프로틴, 마이밀 같은 주요 브랜드가 어떤 포지셔닝을 갖는지 비교합니다.",
     question: "브랜드는 어떤 차이로 선택 기준을 만들까?",
   },
   {
@@ -30,7 +30,7 @@ const featuredTopics = [
     href: "/guides/market-insights/ingredient-trends",
     badge: "트렌드",
     description:
-      "제로, 워터형, 식물성 같은 키워드가 왜 중요해졌는지와 실제 구매 기준 변화를 함께 봅니다.",
+      "저당, 워터형, 식물성 같은 키워드가 왜 중요해졌는지와 실제 구매 기준 변화를 함께 봅니다.",
     question: "요즘 단백질 제품은 어떤 방향으로 바뀌고 있을까?",
   },
 ];
@@ -52,6 +52,14 @@ const supportingTopics = [
     description: "해외 흐름을 통해 국내 제품과 브랜드 변화 방향을 해석합니다.",
   },
 ];
+
+type MarketTopicCard = {
+  title: string;
+  href: string;
+  description: string;
+  badge?: string;
+  question?: string;
+};
 
 export default function MarketInsightsPage() {
   return (
@@ -98,7 +106,7 @@ export default function MarketInsightsPage() {
           </div>
 
           <div className="mt-4 grid gap-4 sm:grid-cols-2">
-            {[...featuredTopics, ...supportingTopics].map((topic) => (
+            {[...featuredTopics, ...supportingTopics].map((topic: MarketTopicCard) => (
               <Link
                 key={topic.href}
                 href={topic.href}
@@ -110,7 +118,7 @@ export default function MarketInsightsPage() {
                     <div className="flex items-center justify-between gap-3">
                       <div className="flex flex-wrap gap-1.5">
                         <span className="rounded-full border border-[#d9e4dd] bg-[#f7faf8] px-2.5 py-1 text-[11px] font-medium text-[#496555]">
-                          {String("badge" in topic ? topic.badge : "보조 주제")}
+                          {topic.badge ?? "보조 주제"}
                         </span>
                       </div>
                       <span className="rounded-full border border-[#d8e2da] bg-white px-2.5 py-1 text-[11px] font-semibold text-[#6f7f76]">LIVE</span>
@@ -120,16 +128,16 @@ export default function MarketInsightsPage() {
                     <p className="mt-2 text-[13px] leading-[1.7] text-[var(--foreground-muted)]">{topic.description}</p>
 
                     <div className="mt-4 rounded-xl border border-[#d7e6dd] bg-[#f4faf6] px-3 py-2.5">
-                      <p className="text-[11px] font-semibold text-[#1f5138]">읽기 포인트</p>
+                      <p className="text-[11px] font-semibold text-[#1f5138]">핵심 질문</p>
                       <p className="mt-1 text-[12px] font-medium leading-5 text-[var(--foreground)]">
-                        {String("question" in topic ? topic.question : "시장 흐름과 브랜드 해석 포인트를 빠르게 확인할 수 있습니다.")}
+                        {topic.question ?? "시장 흐름과 브랜드 해석 포인트를 빠르게 확인할 수 있습니다."}
                       </p>
                     </div>
                   </div>
 
                   <div className="mt-4 flex items-center justify-between gap-3">
                     <span className="rounded-full border border-[#d9e4dd] bg-[#f7faf8] px-2.5 py-1 text-[11px] font-medium text-[#496555]">바로 보기</span>
-                    <span className="text-xs font-semibold text-[#2f5d46] transition-colors group-hover:text-[#1f4834]">주제 열기</span>
+                    <span className="text-xs font-semibold text-[#2f5d46] transition-colors group-hover:text-[#1f4834]">주제 읽기</span>
                   </div>
                 </div>
               </Link>
