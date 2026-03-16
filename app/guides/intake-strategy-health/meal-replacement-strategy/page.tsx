@@ -5,7 +5,7 @@ import Footer from "@/app/components/Footer";
 export const metadata = {
   title: "식사대용 단백질 전략 | ProteinLab",
   description:
-    "단백질 보충제가 언제 식사대용에 가까워지는지, 보충형 제품과 어떤 기준으로 구분해야 하는지 정리합니다.",
+    "단백질 보충 제품이 언제 식사대용에 가까워지는지, 보충용과 어떤 기준으로 구분해야 하는지 정리합니다.",
 };
 
 const replacementRows = [
@@ -17,7 +17,7 @@ const replacementRows = [
 const keyPoints = [
   {
     title: "포만감",
-    body: "식사대용은 단백질만 높다고 되는 것이 아닙니다. 다음 식사까지 버틸 수 있는 포만감이 중요합니다.",
+    body: "식사대용은 단백질만 높다고 되는 것이 아닙니다. 다음 끼니까지 버틸 수 있는 포만감이 중요합니다.",
   },
   {
     title: "칼로리",
@@ -31,28 +31,37 @@ const keyPoints = [
 
 const useCases = [
   "출근 전 아침을 거르기 쉬운 날",
-  "오후 업무 중 간편하게 끼니를 보완해야 하는 날",
-  "운동 후 바로 식사하기 어렵지만 허기를 오래 두고 싶지 않을 때",
+  "오후 업무 중 간편하게 한 끼를 보완해야 하는 날",
+  "운동 후 바로 식사하기 어렵지만 공복이 오래 가면 안 될 때",
 ];
 
 export default function MealReplacementStrategyPage() {
   return (
     <div className="min-h-screen bg-white">
       <Header />
-      <section className="w-full border-t border-b bg-[var(--hero-bg)]" style={{ borderColor: "var(--hero-border)" }}>
+      <section
+        className="w-full border-t border-b bg-[var(--hero-bg)]"
+        style={{ borderColor: "var(--hero-border)" }}
+      >
         <div className="mx-auto max-w-[1200px] px-4 py-5 md:px-6 md:py-6">
           <div className="flex flex-wrap items-center gap-1.5 text-xs text-[var(--foreground-muted)]">
-            <Link href="/guides" className="hover:text-[var(--accent)]">Guides</Link>
+            <Link href="/guides" className="hover:text-[var(--accent)]">
+              Guides
+            </Link>
             <span>/</span>
-            <Link href="/guides/intake-strategy-health" className="hover:text-[var(--accent)]">섭취 전략 & 건강</Link>
+            <Link href="/guides/intake-strategy-health" className="hover:text-[var(--accent)]">
+              섭취 전략 & 건강
+            </Link>
             <span>/</span>
             <span>식사대용 전략</span>
           </div>
           <div className="mt-3">
-            <span className="rounded-md bg-[#f5f0ea] px-2 py-0.5 text-[11px] font-semibold tracking-wide text-[#7a5230]">TRACK C</span>
+            <span className="rounded-md bg-[#f5f0ea] px-2 py-0.5 text-[11px] font-semibold tracking-wide text-[#7a5230]">
+              TRACK C
+            </span>
           </div>
           <h1 className="mt-3 text-2xl font-bold leading-tight text-[var(--foreground)] md:text-3xl">
-            단백질 보충제가
+            단백질 보충 제품이
             <br />
             언제 식사대용이 되는지 구분해야 합니다
           </h1>
@@ -68,7 +77,7 @@ export default function MealReplacementStrategyPage() {
             <div className="mt-4 rounded-2xl border border-[#dce8df] bg-white px-4 py-4">
               <p className="text-[11px] font-semibold tracking-[0.08em] text-[#2d6a4f]">MEAL-REPLACEMENT CHECK</p>
               <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">
-                단백질 함량이 많다고 식사대용이 되지는 않습니다. 포만감, 칼로리, 다음 끼니까지 거리까지 함께 봐야 합니다.
+                단백질 함량이 많다고 식사대용이 되지는 않습니다. 포만감, 칼로리, 다음 끼니까지 거리까지 같이 봐야 합니다.
               </p>
             </div>
             <div className="mt-5 overflow-x-auto">
@@ -77,14 +86,16 @@ export default function MealReplacementStrategyPage() {
                   <tr className="border-b border-[#e8e6e3] text-[var(--foreground)]">
                     <th className="px-3 py-3 font-semibold">유형</th>
                     <th className="px-3 py-3 font-semibold">해석</th>
-                    <th className="px-3 py-3 font-semibold">실전 포인트</th>
+                    <th className="px-3 py-3 font-semibold">실전 사인</th>
                   </tr>
                 </thead>
                 <tbody>
                   {replacementRows.map((row) => (
                     <tr key={row[0]} className="border-b border-[#f0eeeb] last:border-b-0">
                       {row.map((cell) => (
-                        <td key={cell} className="px-3 py-3 text-[var(--foreground-muted)]">{cell}</td>
+                        <td key={cell} className="px-3 py-3 text-[var(--foreground-muted)]">
+                          {cell}
+                        </td>
                       ))}
                     </tr>
                   ))}
@@ -106,7 +117,7 @@ export default function MealReplacementStrategyPage() {
           </section>
 
           <section className="rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
-            <h2 className="text-xl font-bold text-[var(--foreground)]">이럴 때는 실전적으로 쓰입니다</h2>
+            <h2 className="text-xl font-bold text-[var(--foreground)]">이럴 때는 실전적으로 유입됩니다</h2>
             <ul className="mt-4 space-y-3 text-sm leading-6 text-[var(--foreground-muted)]">
               {useCases.map((item) => (
                 <li key={item} className="flex gap-3 rounded-xl border border-[#dce8df] bg-[#f6fbf7] px-4 py-3">
@@ -116,14 +127,8 @@ export default function MealReplacementStrategyPage() {
               ))}
             </ul>
             <blockquote className="mt-5 rounded-xl border border-[#dce8df] bg-[#f7fbf8] px-4 py-4 text-sm leading-6 text-[var(--foreground-muted)]">
-              식사대용은 한 번의 이벤트가 아니라 반복 가능한 루틴입니다. 그래서 위장 부담과 맛 지속성도 함께 봐야 합니다.
+              식사대용은 한 번의 이벤트가 아니라 반복 가능한 루틴입니다. 그래서 위장 부담과 맛 지속성까지 함께 봐야 합니다.
             </blockquote>
-          </section>
-          <section className="rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
-            <p className="text-[11px] font-semibold tracking-[0.08em] text-[#2d6a4f]">MEAL NOTE</p>
-            <p className="mt-3 text-sm leading-6 text-[var(--foreground-muted)]">
-              식사대용 여부는 제품 설명보다 실제 포만감과 칼로리, 그리고 다음 끼니까지 버틸 수 있는지가 가장 정확한 기준입니다.
-            </p>
           </section>
         </div>
       </main>

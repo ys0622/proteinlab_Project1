@@ -11,7 +11,7 @@ export const metadata = {
 const beforeWorkoutRows = [
   ["직전 식사를 한 경우", "추가 보충보다 식사 상태 확인", "소화 부담을 줄이고 운동 집중도를 높이려면 마지막 식사와의 간격을 먼저 봐야 합니다."],
   ["공복 운동", "가벼운 보충 가능", "RTD나 액상형처럼 부담이 적은 형태가 맞는 경우가 많습니다."],
-  ["고강도·유산소 일정", "탄수화물 우선", "운동 직전에는 단백질보다 에너지 보충이 더 중요한 경우가 많습니다."],
+  ["고강도·지구성 일정", "필요 탄수화물 우선", "운동 직전에는 단백질보다 에너지 보충이 더 중요한 경우가 많습니다."],
 ];
 
 const quickRules = [
@@ -25,7 +25,7 @@ const quickRules = [
   },
   {
     title: "운동 강도에 맞춰 판단하기",
-    body: "웨이트, 러닝, 장거리 유산소는 필요한 보충 우선순위가 다릅니다. 같은 기준으로 볼 필요는 없습니다.",
+    body: "웨이트와 러닝, 지구력 운동은 우선순위가 다릅니다. 같은 기준으로 볼 필요는 없습니다.",
   },
 ];
 
@@ -33,17 +33,26 @@ export default function PreWorkoutProteinPage() {
   return (
     <div className="min-h-screen bg-white">
       <Header />
-      <section className="w-full border-t border-b bg-[var(--hero-bg)]" style={{ borderColor: "var(--hero-border)" }}>
+      <section
+        className="w-full border-t border-b bg-[var(--hero-bg)]"
+        style={{ borderColor: "var(--hero-border)" }}
+      >
         <div className="mx-auto max-w-[1200px] px-4 py-5 md:px-6 md:py-6">
           <div className="flex flex-wrap items-center gap-1.5 text-xs text-[var(--foreground-muted)]">
-            <Link href="/guides" className="hover:text-[var(--accent)]">Guides</Link>
+            <Link href="/guides" className="hover:text-[var(--accent)]">
+              Guides
+            </Link>
             <span>/</span>
-            <Link href="/guides/intake-strategy-health" className="hover:text-[var(--accent)]">섭취 전략 & 건강</Link>
+            <Link href="/guides/intake-strategy-health" className="hover:text-[var(--accent)]">
+              섭취 전략 & 건강
+            </Link>
             <span>/</span>
             <span>운동 전 단백질</span>
           </div>
           <div className="mt-3">
-            <span className="rounded-md bg-[#f5f0ea] px-2 py-0.5 text-[11px] font-semibold tracking-wide text-[#7a5230]">TRACK C</span>
+            <span className="rounded-md bg-[#f5f0ea] px-2 py-0.5 text-[11px] font-semibold tracking-wide text-[#7a5230]">
+              TRACK C
+            </span>
           </div>
           <h1 className="mt-3 text-2xl font-bold leading-tight text-[var(--foreground)] md:text-3xl">
             운동 전 단백질은
@@ -51,7 +60,7 @@ export default function PreWorkoutProteinPage() {
             무조건이 아니라 상황 판단이 먼저입니다
           </h1>
           <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
-            운동 전에 단백질을 챙길지보다 소화 부담과 직전 식사 상태를 먼저 살피는 편이 더 실전적입니다.
+            운동 전에 단백질을 챙길지보다 소화 부담과 직전 식사 상태를 먼저 보는 편이 더 실전적입니다.
           </p>
         </div>
       </section>
@@ -77,7 +86,9 @@ export default function PreWorkoutProteinPage() {
                 {beforeWorkoutRows.map((row) => (
                   <tr key={row[0]} className="border-b border-[#f0eeeb] last:border-b-0">
                     {row.map((cell) => (
-                      <td key={cell} className="px-3 py-3 text-[var(--foreground-muted)]">{cell}</td>
+                      <td key={cell} className="px-3 py-3 text-[var(--foreground-muted)]">
+                        {cell}
+                      </td>
                     ))}
                   </tr>
                 ))}
