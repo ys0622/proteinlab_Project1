@@ -8,7 +8,7 @@ import { getGuideTrack } from "@/app/data/guidesTracks";
 export const metadata = {
   title: "하루 단백질 섭취량 계산기 | ProteinLab",
   description:
-    "체중과 활동량을 기준으로 하루 단백질 권장량을 계산해보세요. ProteinLab 계산기로 내게 맞는 단백질 섭취 기준을 빠르게 확인할 수 있습니다.",
+    "체중과 활동량을 기준으로 하루 단백질 권장량을 계산해보세요. ProteinLab 계산기로 나에게 맞는 단백질 섭취 기준을 빠르게 확인할 수 있습니다.",
   keywords: [
     "하루 단백질 섭취량",
     "단백질 섭취량 계산기",
@@ -19,13 +19,13 @@ export const metadata = {
   openGraph: {
     title: "하루 단백질 섭취량 계산기 | ProteinLab",
     description:
-      "체중과 활동량을 기준으로 하루 단백질 권장량을 계산해보세요. ProteinLab 계산기로 내게 맞는 단백질 섭취 기준을 빠르게 확인할 수 있습니다.",
+      "체중과 활동량을 기준으로 하루 단백질 권장량을 계산해보세요. ProteinLab 계산기로 나에게 맞는 단백질 섭취 기준을 빠르게 확인할 수 있습니다.",
   },
   twitter: {
     card: "summary",
     title: "하루 단백질 섭취량 계산기 | ProteinLab",
     description:
-      "체중과 활동량을 기준으로 하루 단백질 권장량을 계산해보세요. ProteinLab 계산기로 내게 맞는 단백질 섭취 기준을 빠르게 확인할 수 있습니다.",
+      "체중과 활동량을 기준으로 하루 단백질 권장량을 계산해보세요. ProteinLab 계산기로 나에게 맞는 단백질 섭취 기준을 빠르게 확인할 수 있습니다.",
   },
 };
 

@@ -131,13 +131,13 @@ export default function ProteinToolsClient() {
 
           <div className="mt-5 rounded-2xl border border-[#c5dcc9] bg-[linear-gradient(135deg,#f4faf5_0%,#eaf4ed_100%)] px-4 py-5">
             <p className="text-xs text-[#2d6a4f]">
-              {submitted ? `${calculation.goalLabel} 기준 계산 결과` : "입력 후 계산 결과가 표시됩니다"}
+              {submitted ? `${calculation.goalLabel} 기준 계산 결과` : "입력 후 계산 결과가 표시됩니다."}
             </p>
             <p className="mt-2 text-3xl font-bold text-[#2d6a4f]">
               {calculation.recommendedProtein > 0 ? `${calculation.recommendedProtein}g / day` : "--"}
             </p>
             <p className="mt-3 text-sm leading-6 text-[var(--foreground-muted)]">
-              이는 일반적인 권장 범위를 기반으로 계산한 값입니다. 개인의 건강 상태와 식사 패턴에 따라 달라질 수 있습니다.
+              이는 일반적인 권장 범위를 기준으로 계산한 값입니다. 개인의 건강 상태와 식사 패턴에 따라 달라질 수 있습니다.
             </p>
           </div>
 
@@ -167,7 +167,7 @@ export default function ProteinToolsClient() {
         </div>
 
         <p className="mt-4 text-sm leading-6 text-[var(--foreground-muted)]">
-          실제 섭취는 일반 식사와 단백질 음료를 함께 조합해 나누어 채우는 방식이 가장 실전적입니다.
+          실제 섭취는 일반 식사와 단백질 음료를 함께 조합해 나눠 채우는 방식이 가장 실전적입니다.
         </p>
 
         <Link
@@ -196,7 +196,7 @@ export default function ProteinToolsClient() {
         <article className="rounded-2xl border border-[#e8e6e3] bg-white px-5 py-5">
           <h3 className="text-base font-bold text-[var(--foreground)]">계산 결과를 어떻게 써야 할까</h3>
           <p className="mt-3 text-sm leading-6 text-[var(--foreground-muted)]">
-            하루 권장량은 일반 식사와 제품을 조합해 나누어 채우는 것이 가장 현실적입니다.
+            하루 권장량은 일반 식사와 제품을 조합해서 나눠 채우는 것이 가장 현실적입니다.
           </p>
         </article>
       </section>
