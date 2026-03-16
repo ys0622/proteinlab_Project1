@@ -5,13 +5,13 @@ import Footer from "@/app/components/Footer";
 export const metadata = {
   title: "체중 관리용 단백질 가이드 | ProteinLab",
   description:
-    "감량과 유지 단계에서 단백질을 어떻게 써야 하는지, 당류와 칼로리까지 함께 보는 기준으로 정리합니다.",
+    "감량과 유지 단계에서 단백질을 어떻게 써야 하는지, 당류와 칼로리까지 같이 보는 기준으로 정리한 가이드입니다.",
 };
 
 const goalRows = [
   ["감량 초반", "저당 + 적정 단백질", "칼로리와 당류를 먼저 보고 포만감이 유지되는지 확인하는 것이 중요합니다."],
   ["유지 단계", "균형 있는 제품", "단백질만 높은 제품보다 식사대용과 연결되는 포만감과 지속 가능성을 같이 보는 편이 좋습니다."],
-  ["운동 병행", "충분한 단백질 + 회복 고려", "감량 중에도 회복이 부족하면 운동 효율과 컨디션이 함께 무너질 수 있습니다."],
+  ["운동 병행", "충분한 단백질 + 회복 고려", "감량 중에도 회복이 부족하면 운동 효율과 컨디션이 같이 무너질 수 있습니다."],
 ];
 
 const compareCards = [
@@ -32,17 +32,14 @@ const compareCards = [
 const avoidList = [
   "체중 관리를 위해 무조건 저칼로리 제품만 고르는 경우",
   "단백질 함량만 보고 당류를 확인하지 않는 경우",
-  "식사대용형 제품과 가벼운 보충형 제품을 같은 기준으로 비교하는 경우",
+  "식사대용형 제품과 가벼운 보충용 제품을 같은 기준으로 비교하는 경우",
 ];
 
 export default function WeightManagementProteinPage() {
   return (
     <div className="min-h-screen bg-white">
       <Header />
-      <section
-        className="w-full border-t border-b bg-[var(--hero-bg)]"
-        style={{ borderColor: "var(--hero-border)" }}
-      >
+      <section className="w-full border-t border-b bg-[var(--hero-bg)]" style={{ borderColor: "var(--hero-border)" }}>
         <div className="mx-auto max-w-[1200px] px-4 py-5 md:px-6 md:py-6">
           <div className="flex flex-wrap items-center gap-1.5 text-xs text-[var(--foreground-muted)]">
             <Link href="/guides" className="hover:text-[var(--accent)]">
@@ -66,7 +63,7 @@ export default function WeightManagementProteinPage() {
             당류와 칼로리 조합까지 같이 봐야 합니다
           </h1>
           <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
-            감량기에 좋은 제품 기준은 조금 다릅니다. 단백질이 높아도 당류와 칼로리가 목적에 맞지 않으면 결과는 달라집니다.
+            감량기에 좋은 제품 기준은 조금 다릅니다. 단백질이 높아도 당류와 칼로리가 목적에 맞지 않으면 결과가 달라집니다.
           </p>
         </div>
       </section>
@@ -121,7 +118,7 @@ export default function WeightManagementProteinPage() {
               ))}
             </ul>
             <blockquote className="mt-5 rounded-xl border border-[#dce8df] bg-[#f7fbf8] px-4 py-4 text-sm leading-6 text-[var(--foreground-muted)]">
-              다이어트용 제품이라고 모두 같은 카테고리가 아닙니다. 간식형과 회복형, 식사보완형을 먼저 나누면 비교가 훨씬 쉬워집니다.
+              다이어트용 제품이라고 모두 같은 카테고리는 아닙니다. 간식형과 회복용, 식사보완형을 먼저 나누면 비교가 훨씬 쉬워집니다.
             </blockquote>
           </section>
         </div>
