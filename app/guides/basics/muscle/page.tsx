@@ -23,16 +23,16 @@ const intakeRows = [
 
 const keyPoints = [
   {
-    title: "근단백질 합성 활성화",
-    body: "운동 후 류신을 포함한 필수 아미노산이 들어오면 손상된 조직을 회복하고 새 근육을 만드는 신호가 켜집니다.",
+    title: "근단백질 합성의 출발점",
+    body: "운동 후 단백질이 아미노산으로 분해되면 류신 같은 필수 아미노산이 근육 합성 신호를 자극합니다.",
   },
   {
     title: "운동 후 20~40g이 실전적인 이유",
-    body: "너무 적으면 회복 자극이 약하고, 과도하게 많으면 추가 효율은 제한적일 수 있습니다. 20~40g 범위가 가장 실전적입니다.",
+    body: "너무 적으면 회복 자극이 약하고, 과도하게 많아도 추가 효율은 제한적일 수 있습니다. 20~40g 범위가 가장 실전적입니다.",
   },
   {
     title: "하루 총량과 분산 섭취",
-    body: "한 번에 몰아 먹기보다 하루 3~4회로 나누어 먹는 편이 근육 유지와 회복 흐름에 더 유리합니다.",
+    body: "한 번에 몰아 먹기보다 하루 3~4회로 나눠 먹는 편이 근육 유지와 회복 흐름에 더 유리합니다.",
   },
 ];
 
@@ -58,7 +58,10 @@ export default function MuscleGuidePage() {
     <div className="min-h-screen bg-white">
       <Header />
 
-      <section className="w-full border-t border-b bg-[var(--hero-bg)]" style={{ borderColor: "var(--hero-border)" }}>
+      <section
+        className="w-full border-t border-b bg-[var(--hero-bg)]"
+        style={{ borderColor: "var(--hero-border)" }}
+      >
         <div className="mx-auto max-w-[1200px] px-4 py-5 md:px-6 md:py-6">
           <div className="flex flex-wrap items-center gap-1.5 text-xs text-[var(--foreground-muted)]">
             <Link href="/guides" className="hover:text-[var(--accent)]">
@@ -73,15 +76,19 @@ export default function MuscleGuidePage() {
           </div>
 
           <div className="mt-3">
-            <span className="rounded-md bg-[#eef4ea] px-2 py-0.5 text-[11px] font-semibold tracking-wide text-[#4c7a57]">TRACK A</span>
+            <span className="rounded-md bg-[#eef4ea] px-2 py-0.5 text-[11px] font-semibold tracking-wide text-[#4c7a57]">
+              TRACK A
+            </span>
           </div>
 
           <div className="mt-4">
-            <h1 className="text-2xl font-bold leading-tight text-[var(--foreground)] md:text-3xl">근육 성장에 단백질이 필요한 진짜 이유</h1>
+            <h1 className="text-2xl font-bold leading-tight text-[var(--foreground)] md:text-3xl">
+              근육 성장에 단백질이 필요한 진짜 이유
+            </h1>
             <p className="mt-3 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
               운동만으로는 근육이 그대로 커지지 않습니다.
               <br />
-              단백질이 있어야 손상된 근섬유를 회복하고 다음 훈련을 위한 재료를 공급할 수 있습니다.
+              단백질이 있어야 손상된 근섬유를 회복하고 다음 적응을 위한 재료를 공급할 수 있습니다.
             </p>
           </div>
         </div>
@@ -92,10 +99,12 @@ export default function MuscleGuidePage() {
           <section className="rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
             <div className="flex flex-wrap items-center justify-between gap-3">
               <div>
-                <p className="text-xs font-semibold tracking-[0.12em] text-[#2d6a4f]">핵심 포인트</p>
+                <p className="text-xs font-semibold tracking-[0.12em] text-[#2d6a4f]">핵심 사인</p>
                 <h2 className="mt-2 text-xl font-bold text-[var(--foreground)]">운동 후 회복을 결정하는 3가지 기준</h2>
               </div>
-              <span className="rounded-full bg-[#eff7f1] px-3 py-1 text-xs font-semibold text-[#2d6a4f]">운동 회복 가이드</span>
+              <span className="rounded-full bg-[#eff7f1] px-3 py-1 text-xs font-semibold text-[#2d6a4f]">
+                운동 회복 가이드
+              </span>
             </div>
 
             <div className="mt-5 grid gap-3 md:grid-cols-3">
@@ -108,21 +117,35 @@ export default function MuscleGuidePage() {
           <section className="rounded-[28px] border border-[#e8e6e3] bg-[#fffdf8] px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
             <h2 className="text-xl font-bold text-[var(--foreground)]">근단백질 합성(MPS)이란?</h2>
             <p className="mt-4 text-sm leading-6 text-[var(--foreground-muted)]">
-              운동 후 단백질이 아미노산으로 분해되면 류신 같은 필수 아미노산이 근육 합성 신호를 자극합니다. 이 과정을 근단백질 합성(MPS)이라고 합니다.
+              운동 후 단백질이 아미노산으로 분해되면 류신 같은 필수 아미노산이 근육 합성 신호를 자극합니다.
+              이 과정을 근단백질 합성(MPS)이라고 부릅니다.
             </p>
 
             <div className="mt-5 rounded-[28px] border border-[#dce8df] bg-[linear-gradient(135deg,#f7fbf8_0%,#eef6f1_100%)] p-6 shadow-[0_16px_36px_rgba(45,106,79,0.08)]">
               <div className="mx-auto max-w-2xl">
-                <GuideVisual track="protein-basics" title="MPS" accentColor="#2d6a4f" accentBg="#eaf4ee" variant="topic" />
+                <GuideVisual
+                  track="protein-basics"
+                  title="MPS"
+                  accentColor="#2d6a4f"
+                  accentBg="#eaf4ee"
+                  variant="topic"
+                />
               </div>
               <div className="mt-4 grid gap-3 md:grid-cols-2">
-                <InsightChip title="류신과 필수 아미노산" body="류신은 근육 합성 스위치를 켜는 대표 아미노산입니다. 단백질의 질이 중요한 이유도 여기에 있습니다." />
-                <InsightChip title="운동 직후 회복 구간" body="운동 후 단백질을 보충하면 체감 회복과 다음 훈련 준비가 더 안정적으로 이어질 수 있습니다." />
+                <InsightChip
+                  title="류신과 필수 아미노산"
+                  body="류신은 근육 합성 스위치를 켜는 대표 아미노산입니다. 단백질의 질이 중요한 이유도 여기에 있습니다."
+                />
+                <InsightChip
+                  title="운동 직후 회복 구간"
+                  body="운동 후 단백질을 보충하면 체감 회복과 다음 훈련 준비가 더 안정적으로 이어질 수 있습니다."
+                />
               </div>
             </div>
 
             <Callout>
-              단백질 20~40g 정도면 근단백질 합성 자극에 충분한 경우가 많습니다. 그 이상은 추가 효율이 제한적일 수 있어 총량과 분산 섭취가 더 중요합니다.
+              단백질 20~40g 전후면 근단백질 합성 자극이 충분한 경우가 많습니다. 그 이상은 추가 효율이
+              제한적일 수 있어 총량과 분산 섭취가 더 중요합니다.
             </Callout>
           </section>
 
