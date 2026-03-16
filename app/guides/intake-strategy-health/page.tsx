@@ -58,6 +58,14 @@ const supportingTopics = [
   },
 ];
 
+type IntakeTopicCard = {
+  title: string;
+  href: string;
+  description: string;
+  badge?: string;
+  question?: string;
+};
+
 export default function IntakeStrategyHealthPage() {
   return (
     <div className="min-h-screen bg-white">
@@ -100,7 +108,7 @@ export default function IntakeStrategyHealthPage() {
             </div>
           </div>
           <div className="mt-4 grid gap-4 sm:grid-cols-2">
-            {[...featuredTopics, ...supportingTopics].map((topic) => (
+            {[...featuredTopics, ...supportingTopics].map((topic: IntakeTopicCard) => (
               <Link
                 key={topic.href}
                 href={topic.href}
@@ -112,7 +120,7 @@ export default function IntakeStrategyHealthPage() {
                     <div className="flex items-center justify-between gap-3">
                       <div className="flex flex-wrap gap-1.5">
                         <span className="rounded-full border border-[#d9e4dd] bg-[#f7faf8] px-2.5 py-1 text-[11px] font-medium text-[#496555]">
-                          {"badge" in topic ? topic.badge : "보조 주제"}
+                          {topic.badge ?? "보조 주제"}
                         </span>
                       </div>
                       <span className="rounded-full border border-[#d8e2da] bg-white px-2.5 py-1 text-[11px] font-semibold text-[#6f7f76]">
@@ -126,7 +134,7 @@ export default function IntakeStrategyHealthPage() {
                     <div className="mt-4 rounded-xl border border-[#d7e6dd] bg-[#f4faf6] px-3 py-2.5">
                       <p className="text-[11px] font-semibold text-[#1f5138]">핵심 질문</p>
                       <p className="mt-1 text-[12px] font-medium leading-5 text-[var(--foreground)]">
-                        {"question" in topic ? topic.question : "상황별로 어떤 섭취 기준이 다른지 확인할 수 있습니다."}
+                        {topic.question ?? "상황별로 어떤 섭취 기준이 다른지 확인할 수 있습니다."}
                       </p>
                     </div>
                   </div>
