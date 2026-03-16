@@ -3,7 +3,7 @@ import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 
 export const metadata = {
-  title: "랭킹 & 점수 보는 법 | ProteinLab",
+  title: "랭킹과 점수 보는 법 | ProteinLab",
   description:
     "랭킹과 점수가 어떤 기준으로 계산되는지, 순위와 점수를 어떻게 함께 읽어야 하는지 설명합니다.",
 };
@@ -15,7 +15,7 @@ const points = [
   },
   {
     title: "랭킹",
-    body: "현재 데이터 안에서 상대적으로 어느 위치에 있는지 보여주는 순위입니다.",
+    body: "현재 데이터 안에서 상대적으로 높은 위치에 있는지를 보여주는 순위입니다.",
   },
   {
     title: "점수",
@@ -24,7 +24,7 @@ const points = [
 ];
 
 const readRows = [
-  ["단백질 밀도 랭킹", "같은 양 대비 단백질 효율이 좋은 제품", "가벼운 보충형 제품을 찾을 때 먼저 보기 좋습니다."],
+  ["단백질 밀도 랭킹", "같은 용량 대비 단백질 효율이 좋은 제품", "가볍게 보충할 제품을 찾을 때 먼저 보기 좋습니다."],
   ["다이어트 점수", "칼로리와 당류 부담을 줄인 제품", "체중 관리나 식단 정리 목적에 유용합니다."],
   ["퍼포먼스 점수", "운동 후 보충 효율이 좋은 제품", "운동 직후 보강용 후보를 고를 때 유용합니다."],
 ];
@@ -34,7 +34,10 @@ export default function RankingContentPage() {
     <div className="min-h-screen bg-white">
       <Header />
 
-      <section className="w-full border-t border-b bg-[var(--hero-bg)]" style={{ borderColor: "var(--hero-border)" }}>
+      <section
+        className="w-full border-t border-b bg-[var(--hero-bg)]"
+        style={{ borderColor: "var(--hero-border)" }}
+      >
         <div className="mx-auto max-w-[1200px] px-4 py-5 md:px-6 md:py-6">
           <div className="flex flex-wrap items-center gap-1.5 text-xs text-[var(--foreground-muted)]">
             <Link href="/guides">가이드</Link>
@@ -52,9 +55,8 @@ export default function RankingContentPage() {
             순위만 보지 말고 점수 기준까지 같이 읽어야 합니다
           </h1>
           <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
-            같은 1위라도 어떤 지표에서 1위인지에 따라 해석은 달라집니다.
-            <br />
-            등급, 랭킹, 점수를 구분해 보면 제품 비교가 더 직접적입니다.
+            같은 1위라도 어떤 지표에서 1위인지에 따라 해석은 달라집니다. 등급, 랭킹, 점수를 구분해
+            보면 제품 비교가 더 직접적입니다.
           </p>
         </div>
       </section>
@@ -98,19 +100,9 @@ export default function RankingContentPage() {
               </table>
             </div>
             <blockquote className="mt-5 rounded-xl border border-[#dce8df] bg-[#f7fbf8] px-4 py-4 text-sm leading-6 text-[var(--foreground-muted)]">
-              랭킹은 같은 제품군 안에서 비교한 결과를 읽는 것이 중요합니다. 음료 랭킹과 바 랭킹은 숫자만으로 직접 비교하면 해석이 달라질 수 있습니다.
+              랭킹은 같은 제품군 안에서 비교한 결과를 읽는 것이 중요합니다. 음료 랭킹과 바 랭킹을 숫자만으로
+              직접 비교하면 해석이 달라질 수 있습니다.
             </blockquote>
-          </section>
-
-          <section className="rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
-            <div className="flex flex-wrap gap-3">
-              <Link href="/ranking" className="inline-flex items-center justify-center rounded-lg border border-[#2d6a4f] bg-[#2d6a4f] px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#24543d]">
-                랭킹 보기
-              </Link>
-              <Link href="/grade-criteria" className="inline-flex items-center justify-center rounded-lg border border-[#d9e7dc] px-5 py-3 text-sm font-semibold text-[#24543d] transition-colors hover:bg-[#eef7f1]">
-                등급 기준 보기
-              </Link>
-            </div>
           </section>
         </div>
       </main>

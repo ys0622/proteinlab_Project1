@@ -5,7 +5,7 @@ import Footer from "@/app/components/Footer";
 export const metadata = {
   title: "무가당 그릭요거트 추천 기준 | 당류·단백질 밀도 비교 | ProteinLab",
   description:
-    "무가당 그릭요거트를 고를 때 당류, 단백질 밀도, 칼로리, 용량 기준을 어떻게 함께 읽어야 하는지 정리합니다.",
+    "무가당 그릭요거트를 고를 때 당류, 단백질 밀도, 칼로리, 총용량 기준을 어떻게 함께 읽어야 하는지 정리합니다.",
 };
 
 const rules = [
@@ -18,15 +18,15 @@ const rules = [
     body: "무가당 그릭요거트는 단백질 g보다 100g당 단백질 밀도를 먼저 봐야 진짜 고단백 제품을 가리기 쉽습니다.",
   },
   {
-    title: "대용량과 1회 기준 병행",
-    body: "450g, 800g 제품은 총용량보다 1회 섭취 기준과 100g 기준을 같이 읽어야 비교 오류가 줄어듭니다.",
+    title: "총용량과 1회 기준 병행",
+    body: "450g, 800g 제품은 총단백질만 커 보일 수 있어 1회 섭취 기준과 100g 기준을 함께 읽어야 착시가 줄어듭니다.",
   },
 ];
 
 const compareRows = [
   ["당류", "0~5g 구간 우선", "무가당 여부를 판단하는 출발점"],
   ["단백질 밀도", "100g당 수치 비교", "그릭 제품군 안에서 가장 유용한 기준"],
-  ["칼로리", "밀도와 함께 보기", "밀도는 높아도 총량이 과한 제품은 따로 분리"],
+  ["칼로리", "밀도와 함께 보기", "밀도는 높아도 총열량이 과한 제품은 따로 분리"],
   ["용량", "100g 기준 병행", "대용량 착시를 줄이기 위한 포인트"],
 ];
 
@@ -34,7 +34,10 @@ export default function UnsweetenedGreekYogurtGuidePage() {
   return (
     <div className="min-h-screen bg-white">
       <Header />
-      <section className="w-full border-t border-b bg-[var(--hero-bg)]" style={{ borderColor: "var(--hero-border)" }}>
+      <section
+        className="w-full border-t border-b bg-[var(--hero-bg)]"
+        style={{ borderColor: "var(--hero-border)" }}
+      >
         <div className="mx-auto max-w-[1200px] px-4 py-5 md:px-6 md:py-6">
           <div className="flex flex-wrap items-center gap-1.5 text-xs text-[var(--foreground-muted)]">
             <Link href="/guides">가이드</Link>
@@ -52,8 +55,7 @@ export default function UnsweetenedGreekYogurtGuidePage() {
             무가당 그릭요거트는 당류와 단백질 밀도를 같이 봐야 합니다
           </h1>
           <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
-            무가당 그릭요거트는 플레인, 대용량 제품과 섞여 있어 제품명만으로는 비교가 어렵습니다.
-            <br />
+            무가당 그릭요거트는 플레인 대용량 제품과 섞여 있어 제품명만으로는 비교가 어렵습니다.
             당류, 100g당 단백질 밀도, 칼로리, 용량을 함께 읽는 흐름을 정리합니다.
           </p>
         </div>
