@@ -19,11 +19,11 @@ const topics = [
     badge: "기초",
   },
   {
-    title: "마라톤 영양 전략",
+    title: "마라톤 단백질 전략",
     href: "/guides/fitness-lifestyle/marathon-protein-guide",
     description:
-      "훈련기와 레이스 주간을 나눠 보고, 카보로딩과 회복 식단까지 연결해서 설명합니다.",
-    question: "레이스 전후에는 무엇을 다르게 준비해야 할까?",
+      "레이스 주간을 앞두고, 회복과 식단까지 연결해 실전적으로 챙겨야 할 기준을 정리합니다.",
+    question: "레이스 전후에는 무엇을 어떻게 준비해야 할까?",
     related: ["카보로딩", "레이스 주간 체크", "회복 식단"],
     badge: "경기",
   },
@@ -31,9 +31,9 @@ const topics = [
     title: "거리별 영양 & 러닝 전략",
     href: "/guides/fitness-lifestyle/marathon-distance-strategy",
     description:
-      "5km, 10km, 하프, 풀 마라톤을 거리별로 나눠 어떤 영양 포인트가 달라지는지 비교합니다.",
-    question: "거리별로 단백질과 탄수화물 전략은 어떻게 달라질까?",
-    related: ["5km·10km", "하프·풀", "운동 후 단백질"],
+      "5km, 10km, 하프, 풀 마라톤을 거리별로 나누어 어떤 영양 포인트가 달라지는지 비교합니다.",
+    question: "거리별로 단백질과 수분 보충 전략은 어떻게 달라질까?",
+    related: ["5km~10km", "하프~풀", "운동 후 단백질"],
     badge: "거리별",
   },
   {
@@ -41,8 +41,8 @@ const topics = [
     href: "/guides/fitness-lifestyle/sports-nutrition-guide",
     description:
       "운동 목적에 따라 어떤 제품이 맞는지, 단백질 종류와 당류·칼로리 기준을 함께 정리합니다.",
-    question: "운동 목적별로 제품은 어떤 기준으로 골라야 할까?",
-    related: ["고단백", "저당", "증량형"],
+    question: "운동 목적별 제품은 어떤 기준으로 골라야 할까?",
+    related: ["고단백", "저당", "증량용"],
     badge: "실전",
   },
   {
@@ -85,7 +85,7 @@ const topics = [
     title: "봄 야외활동 단백질 간식 가이드",
     href: "/guides/fitness-lifestyle/spring-outdoor-protein-snack-guide",
     description:
-      "피크닉, 가벼운 산책, 야외활동에서 챙기기 좋은 단백질 간식 기준을 정리합니다.",
+      "피크닉, 가벼운 등산, 야외활동에서 챙기기 좋은 단백질 간식 기준을 정리합니다.",
     question: "야외활동에서는 어떤 단백질 간식이 실전적일까?",
     related: ["휴대성", "간식형 바", "드링킹 요거트"],
     badge: "봄 시즌",
@@ -111,7 +111,7 @@ export default function FitnessLifestyleTrackPage() {
             <span className="rounded-md bg-[#eef4ea] px-2 py-0.5 text-[11px] font-semibold tracking-wide text-[#4c7a57]">
               TRACK D
             </span>
-            <span className="text-xs text-[#8b8b8b]">운동 맥락에 맞는 단백질 전략을 정리하는 트랙</span>
+            <span className="text-xs text-[#8b8b8b]">운동 목적에 맞는 단백질 전략을 정리하는 트랙</span>
             <span className="text-xs text-[#8b8b8b]">{topics.length}개 주제</span>
           </div>
 
@@ -122,7 +122,7 @@ export default function FitnessLifestyleTrackPage() {
             <p className="mt-2 max-w-2xl text-sm leading-6 text-[var(--foreground-muted)]">
               러닝, 마라톤, 운동 영양, 근력운동, 운동 초보 루틴까지.
               <br />
-              실제 운동 상황에 맞는 단백질 전략을 빠르게 찾을 수 있도록 Track D를 정리했습니다.
+              실제 운동 상황에 맞는 단백질 전략을 비교형으로 찾을 수 있도록 Track D를 구성했습니다.
             </p>
           </div>
         </div>
@@ -167,7 +167,7 @@ export default function FitnessLifestyleTrackPage() {
                     <p className="mt-2 text-[13px] leading-[1.7] text-[var(--foreground-muted)]">{topic.description}</p>
 
                     <div className="mt-4 rounded-xl border border-[#d7e6dd] bg-[#f4faf6] px-3 py-2.5">
-                      <p className="text-[11px] font-semibold text-[#1f5138]">핵심 질문</p>
+                      <p className="text-[11px] font-semibold text-[#1f5138]">대표 질문</p>
                       <p className="mt-1 text-[12px] font-medium leading-5 text-[var(--foreground)]">{topic.question}</p>
                     </div>
                   </div>

@@ -5,33 +5,33 @@ import Footer from "@/app/components/Footer";
 export const metadata = {
   title: "러닝 단백질 가이드 | 러너의 필요량과 회복 타이밍 | ProteinLab",
   description:
-    "러너에게 필요한 단백질 양, 운동 후 회복 타이밍, 하루 분산 섭취 기준을 데이터 중심으로 정리합니다.",
+    "러너에게 필요한 단백질량, 운동 후 회복 타이밍, 하루 분산 섭취 기준을 데이터 중심으로 정리합니다.",
 };
 
 const dailyNeedRows = [
   ["일반 러닝 훈련기", "1.6 g/kg/day", "지구력 훈련 회복과 유지에 필요한 기본 범위입니다."],
   ["고강도 훈련기", "1.8~2.0 g/kg/day", "인터벌과 근력 운동을 함께 하는 시기에는 기준이 조금 올라갑니다."],
-  ["탄수화물 제한·감량기", "2.0 g/kg/day 전후", "에너지 부족 환경에서 근손실을 줄이기 위한 기준입니다."],
+  ["수분 부족·감량기", "2.0 g/kg/day 전후", "에너지 부족 환경에서 근손실을 줄이기 위한 기준입니다."],
 ];
 
 const mealRows = [
   ["60kg", "24~30g", "운동 후 회복 식사 1회 기준으로 보기 좋습니다."],
-  ["70kg", "28~35g", "고품질 단백질을 한 끼에 넣기 좋은 범위입니다."],
+  ["70kg", "28~35g", "고품질 단백질을 한 끼에 담기 좋은 범위입니다."],
   ["80kg", "32~40g", "하루 4회 분산 섭취를 고려하기 좋은 수치입니다."],
 ];
 
 const timingPoints = [
   {
     title: "운동 직후 0~1시간",
-    body: "단백질 20~30g와 탄수화물을 함께 먹으면 회복 시작 신호를 빠르게 만들기 좋습니다.",
+    body: "단백질 20~30g과 수분 보충을 같이 챙기면 회복 신호를 빠르게 만들 수 있습니다.",
   },
   {
     title: "하루 4회 분산 섭취",
-    body: "한 번에 몰아 먹기보다 식사와 간식으로 나눠 먹는 편이 러너의 회복과 유지에 더 유리합니다.",
+    body: "한 번에 몰아 먹기보다 식사와 간식으로 나눠 먹는 편이 러너의 회복과 유지에 유리합니다.",
   },
   {
     title: "취침 전 보완 단백질",
-    body: "카제인 계열이나 소화가 편한 단백질은 야간 회복과 공복 구간 보완에 활용할 수 있습니다.",
+    body: "카제인 계열이나 소화가 편한 단백질은 야간 회복과 공복 구간 보완에 유용합니다.",
   },
 ];
 
@@ -66,9 +66,13 @@ export default function RunningProteinGuidePage() {
       <section className="w-full border-t border-b bg-[var(--hero-bg)]" style={{ borderColor: "var(--hero-border)" }}>
         <div className="mx-auto max-w-[1200px] px-4 py-5 md:px-6 md:py-6">
           <div className="flex flex-wrap items-center gap-1.5 text-xs text-[var(--foreground-muted)]">
-            <Link href="/guides" className="hover:text-[var(--accent)]">가이드</Link>
+            <Link href="/guides" className="hover:text-[var(--accent)]">
+              Guides
+            </Link>
             <span>/</span>
-            <Link href="/guides/fitness-lifestyle" className="hover:text-[var(--accent)]">운동 & 라이프스타일</Link>
+            <Link href="/guides/fitness-lifestyle" className="hover:text-[var(--accent)]">
+              운동 & 라이프스타일
+            </Link>
             <span>/</span>
             <span>러닝 단백질 가이드</span>
           </div>
@@ -81,7 +85,7 @@ export default function RunningProteinGuidePage() {
           <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
             러너는 일반 성인보다 더 많은 단백질이 필요합니다.
             <br />
-            하루 필요량, 1회 섭취 기준, 회복 타이밍을 이해하면 제품 비교도 훨씬 쉬워집니다.
+            하루 필요량과 1회 섭취 기준, 회복 타이밍을 이해하면 제품 비교도 훨씬 쉬워집니다.
           </p>
         </div>
       </section>
@@ -98,7 +102,7 @@ export default function RunningProteinGuidePage() {
             <div className="mt-5 grid gap-3 md:grid-cols-3">
               <GaugeBar label="일일 권장량" value="1.6~2.0 g/kg" width="84%" note="일반 성인 기준보다 높은 범위입니다." />
               <GaugeBar label="1회 권장량" value="0.4~0.5 g/kg" width="64%" note="60kg 기준 한 번에 24~30g 정도입니다." />
-              <GaugeBar label="운동 후 타이밍" value="0~1시간" width="76%" note="운동 직후 보충은 회복 루틴을 빠르게 만듭니다." />
+              <GaugeBar label="운동 후 타이밍" value="0~1시간" width="76%" note="운동 직후 보충이 회복 루틴을 빠르게 만듭니다." />
             </div>
           </section>
 
@@ -120,7 +124,9 @@ export default function RunningProteinGuidePage() {
                   {dailyNeedRows.map((row) => (
                     <tr key={row[0]} className="border-b border-[#f0eeeb] last:border-b-0">
                       {row.map((cell) => (
-                        <td key={cell} className="whitespace-nowrap px-3 py-3 text-[var(--foreground-muted)]">{cell}</td>
+                        <td key={cell} className="whitespace-nowrap px-3 py-3 text-[var(--foreground-muted)]">
+                          {cell}
+                        </td>
                       ))}
                     </tr>
                   ))}
@@ -132,7 +138,7 @@ export default function RunningProteinGuidePage() {
           <section className="rounded-[28px] border border-[#e8e6e3] bg-[#fffdf8] px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
             <h2 className="text-xl font-bold text-[var(--foreground)]">1회 기준과 분산 섭취</h2>
             <p className="mt-3 text-sm leading-6 text-[var(--foreground-muted)]">
-              보통 한 끼에 체중 1kg당 0.4~0.5g 정도를 기준으로 잡으면 좋습니다. 러너는 하루 4회 이상으로 나눠 먹는 방식이 실제 적용에 더 유리합니다.
+              보통 한 끼에 체중 1kg당 0.4~0.5g 정도를 기준으로 잡으면 좋습니다. 러너는 하루 4회 이상으로 나누어 먹는 방식이 실제 적용에 더 유리합니다.
             </p>
             <div className="mt-5 overflow-x-auto rounded-2xl border border-[#ece9e2] bg-white">
               <table className="min-w-full border-collapse text-left text-sm">
@@ -147,7 +153,9 @@ export default function RunningProteinGuidePage() {
                   {mealRows.map((row) => (
                     <tr key={row[0]} className="border-b border-[#f0eeeb] last:border-b-0">
                       {row.map((cell) => (
-                        <td key={cell} className="whitespace-nowrap px-3 py-3 text-[var(--foreground-muted)]">{cell}</td>
+                        <td key={cell} className="whitespace-nowrap px-3 py-3 text-[var(--foreground-muted)]">
+                          {cell}
+                        </td>
                       ))}
                     </tr>
                   ))}
@@ -166,10 +174,16 @@ export default function RunningProteinGuidePage() {
 
           <section className="rounded-[28px] border border-[#e8e6e3] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
             <div className="flex flex-wrap gap-3">
-              <Link href="/guides/fitness-lifestyle/marathon-protein-guide" className="inline-flex items-center justify-center rounded-xl border border-[#d9e7dc] bg-white px-5 py-3 text-sm font-semibold text-[#24543d] transition-colors hover:bg-[#eef7f1]">
+              <Link
+                href="/guides/fitness-lifestyle/marathon-protein-guide"
+                className="inline-flex items-center justify-center rounded-xl border border-[#d9e7dc] bg-white px-5 py-3 text-sm font-semibold text-[#24543d] transition-colors hover:bg-[#eef7f1]"
+              >
                 레이스 주간 전략 보기
               </Link>
-              <Link href="/curation/running" className="inline-flex items-center justify-center rounded-xl border border-[#2d6a4f] bg-[#2d6a4f] px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#24543d]">
+              <Link
+                href="/curation/running"
+                className="inline-flex items-center justify-center rounded-xl border border-[#2d6a4f] bg-[#2d6a4f] px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#24543d]"
+              >
                 러닝 큐레이션 보기
               </Link>
             </div>

@@ -15,17 +15,17 @@ const restartCards = [
   },
   {
     title: "가벼운 제품 선택",
-    body: "러닝 재개 초반에는 속이 부담되지 않는 파우치형 RTD, 가벼운 요거트형 제품이 더 맞는 경우가 많습니다.",
+    body: "러닝 재개 초반에는 속이 부담되지 않는 우유형 RTD, 가벼운 그릭요거트형 제품이 잘 맞는 경우가 많습니다.",
   },
   {
     title: "주간 총량 유지",
-    body: "운동 직후만 챙기기보다 주간 기준으로 단백질 총량을 일정하게 유지하는 것이 회복과 적응에 더 유리합니다.",
+    body: "운동 직후만 챙기기보다 주간 기준으로 단백질 총량을 안정적으로 유지하는 편이 회복과 적응에 더 유리합니다.",
   },
 ];
 
 const timingRows = [
   ["러닝 직후", "20~30g", "가벼운 회복 시작"],
-  ["다음 식사", "탄수화물 + 단백질", "회복과 다음 운동 대비"],
+  ["다음 식사", "탄수화물 + 단백질", "회복과 다음 운동 준비"],
   ["운동 없는 날", "총량 유지", "주간 루틴 안정화"],
 ];
 
@@ -54,7 +54,7 @@ export default function SpringRunningStartGuidePage() {
           <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
             봄에 러닝을 다시 시작하는 사람이 많아지는 시즌입니다.
             <br />
-            거리보다 먼저 운동 후 단백질, 다음 식사, 주간 총량이 연결되는 회복 루틴을 만드는 것이 중요합니다.
+            거리보다 먼저 운동 후 단백질, 다음 식사, 주간 총량을 연결하는 회복 루틴을 만드는 것이 중요합니다.
           </p>
         </div>
       </section>
@@ -98,11 +98,17 @@ export default function SpringRunningStartGuidePage() {
               </table>
             </div>
             <div className="mt-5 flex flex-wrap gap-2">
-              <Link href="/guides/intake-strategy-health/post-workout-protein" className="rounded-full border border-[#eaded7] bg-white px-3 py-1 text-xs font-semibold text-[#8a4b2f]">
-                관련 운동 후 단백질
+              <Link
+                href="/guides/intake-strategy-health/post-workout-protein"
+                className="rounded-full border border-[#eaded7] bg-white px-3 py-1 text-xs font-semibold text-[#8a4b2f]"
+              >
+                관련: 운동 후 단백질
               </Link>
-              <Link href="/guides/fitness-lifestyle/running-protein-guide" className="rounded-full border border-[#eaded7] bg-white px-3 py-1 text-xs font-semibold text-[#8a4b2f]">
-                관련 러닝 단백질 가이드
+              <Link
+                href="/guides/fitness-lifestyle/running-protein-guide"
+                className="rounded-full border border-[#eaded7] bg-white px-3 py-1 text-xs font-semibold text-[#8a4b2f]"
+              >
+                관련: 러닝 단백질 가이드
               </Link>
             </div>
           </section>
