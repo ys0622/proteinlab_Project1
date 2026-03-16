@@ -15,26 +15,29 @@ const principles = [
   },
   {
     title: "단백질도 보완 기준",
-    body: "식사대용형이라도 단백질이 낮으면 의미가 약해집니다. 포만감과 함께 최소 단백질 기준을 같이 확인해야 합니다.",
+    body: "식사대용형이라도 단백질이 낮으면 포만감은 있어도 보충용으로서 의미가 약해집니다. 포만감과 함께 최소 단백질 기준을 같이 봐야 합니다.",
   },
   {
     title: "당류는 과하지 않게",
-    body: "식사대용이라 해도 당류가 높을 필요는 없습니다. 포만감과 당류 균형을 같이 보는 편이 좋습니다.",
+    body: "식사대용형이라도 당류가 높을 필요는 없습니다. 포만감과 당류 균형을 같이 보는 편이 좋습니다.",
   },
 ];
 
 const matrix = [
-  ["칼로리", "중간 이상", "식사 보완형인지 가늠하는 첫 기준"],
+  ["칼로리", "중간 이상", "식사 보완형인지 판단하기 위한 첫 기준"],
   ["단백질", "12g 이상 우선", "보완용으로서 의미가 있는지 확인"],
-  ["당류", "과하지 않게 체크", "식사대용이어도 과도한 당류는 불리"],
-  ["식이섬유/포만감", "부가 체크", "오래 버틸 수 있는지 참고"],
+  ["당류", "과하지 않게 체크", "식사대용형이라도 과도한 당류는 불리"],
+  ["식이섬유/포만감", "추가 체크", "브랜드별 차이를 참고하기 좋음"],
 ];
 
 export default function MealReplacementProteinBarGuidePage() {
   return (
     <div className="min-h-screen bg-white">
       <Header />
-      <section className="w-full border-t border-b bg-[var(--hero-bg)]" style={{ borderColor: "var(--hero-border)" }}>
+      <section
+        className="w-full border-t border-b bg-[var(--hero-bg)]"
+        style={{ borderColor: "var(--hero-border)" }}
+      >
         <div className="mx-auto max-w-[1200px] px-4 py-5 md:px-6 md:py-6">
           <div className="flex flex-wrap items-center gap-1.5 text-xs text-[var(--foreground-muted)]">
             <Link href="/guides">가이드</Link>
@@ -54,7 +57,8 @@ export default function MealReplacementProteinBarGuidePage() {
           <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
             식사대용 단백질 바는 단백질만 높다고 끝나지 않습니다.
             <br />
-            포만감, 칼로리, 단백질, 당류를 함께 읽어야 실제로 끼니를 보완할 수 있는지 판단할 수 있습니다.
+            포만감, 칼로리, 단백질, 당류를 함께 읽어야 실제로 한 끼를 보완할 수 있는지
+            판단할 수 있습니다.
           </p>
         </div>
       </section>
@@ -65,9 +69,14 @@ export default function MealReplacementProteinBarGuidePage() {
             <h2 className="text-xl font-bold text-[var(--foreground)]">식사대용 바 기준 3가지</h2>
             <div className="mt-5 grid gap-3 md:grid-cols-3">
               {principles.map((item) => (
-                <article key={item.title} className="rounded-2xl border border-[#dce8df] bg-[#f6fbf7] p-4">
+                <article
+                  key={item.title}
+                  className="rounded-2xl border border-[#dce8df] bg-[#f6fbf7] p-4"
+                >
                   <h3 className="text-sm font-semibold text-[#24543d]">{item.title}</h3>
-                  <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">{item.body}</p>
+                  <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">
+                    {item.body}
+                  </p>
                 </article>
               ))}
             </div>
@@ -80,14 +89,16 @@ export default function MealReplacementProteinBarGuidePage() {
                 <thead>
                   <tr className="border-b border-[#e8e6e3] text-[var(--foreground)]">
                     <th className="px-3 py-3 font-semibold">항목</th>
-                    <th className="px-3 py-3 font-semibold">권장 관점</th>
+                    <th className="px-3 py-3 font-semibold">권장 관찰</th>
                     <th className="px-3 py-3 font-semibold">메모</th>
                   </tr>
                 </thead>
                 <tbody>
                   {matrix.map((row) => (
                     <tr key={row[0]} className="border-b border-[#f0eeeb] last:border-b-0">
-                      <td className="whitespace-nowrap px-3 py-3 font-medium text-[var(--foreground)]">{row[0]}</td>
+                      <td className="whitespace-nowrap px-3 py-3 font-medium text-[var(--foreground)]">
+                        {row[0]}
+                      </td>
                       <td className="px-3 py-3 text-[var(--foreground-muted)]">{row[1]}</td>
                       <td className="px-3 py-3 text-[var(--foreground-muted)]">{row[2]}</td>
                     </tr>
