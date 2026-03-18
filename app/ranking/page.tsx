@@ -1,12 +1,8 @@
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import {
-  mockProducts,
-  barProductsWithGrades,
-  yogurtProductsWithGrades,
-  type ProductDetailProps,
-} from "../data/products";
+import type { ProductDetailProps } from "../data/products";
 import { getDensityValue, getDietScore, getPerformanceScore } from "../lib/gradeCalculation";
+import { getProductsByCategoryAsync } from "../lib/productData";
 import RankingClient from "./RankingClient";
 
 export const metadata = {
@@ -63,16 +59,22 @@ export type RankingItem = {
   rank: number;
 };
 
-export default function RankingPage() {
-  const drinkDensity = prepareRankingData(mockProducts, "density");
-  const drinkDiet = prepareRankingData(mockProducts, "diet");
-  const drinkPerf = prepareRankingData(mockProducts, "performance");
-  const barDensity = prepareRankingData(barProductsWithGrades, "density");
-  const barDiet = prepareRankingData(barProductsWithGrades, "diet");
-  const barPerf = prepareRankingData(barProductsWithGrades, "performance");
-  const yogurtDensity = prepareRankingData(yogurtProductsWithGrades, "density");
-  const yogurtDiet = prepareRankingData(yogurtProductsWithGrades, "diet");
-  const yogurtPerf = prepareRankingData(yogurtProductsWithGrades, "performance");
+export default async function RankingPage() {
+  const [drinkProducts, barProducts, yogurtProducts] = await Promise.all([
+    getProductsByCategoryAsync("drink"),
+    getProductsByCategoryAsync("bar"),
+    getProductsByCategoryAsync("yogurt"),
+  ]);
+
+  const drinkDensity = prepareRankingData(drinkProducts, "density");
+  const drinkDiet = prepareRankingData(drinkProducts, "diet");
+  const drinkPerf = prepareRankingData(drinkProducts, "performance");
+  const barDensity = prepareRankingData(barProducts, "density");
+  const barDiet = prepareRankingData(barProducts, "diet");
+  const barPerf = prepareRankingData(barProducts, "performance");
+  const yogurtDensity = prepareRankingData(yogurtProducts, "density");
+  const yogurtDiet = prepareRankingData(yogurtProducts, "diet");
+  const yogurtPerf = prepareRankingData(yogurtProducts, "performance");
 
   const rankings = {
     drink: { density: drinkDensity, diet: drinkDiet, performance: drinkPerf },

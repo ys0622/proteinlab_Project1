@@ -2,7 +2,7 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import HeroSection from "../components/HeroSection";
 import ProductListWithFilters from "../components/ProductListWithFilters";
-import { barProductsWithGrades } from "../data/products";
+import { getProductsByCategoryAsync } from "../lib/productData";
 
 export const metadata = {
   title: "단백질 바 비교 | 고단백·저당 단백질 바 추천 | ProteinLab",
@@ -17,6 +17,7 @@ interface BarsPageProps {
 export default async function BarsPage({ searchParams }: BarsPageProps) {
   const params = (await searchParams) ?? {};
   const curation = typeof params.curation === "string" ? params.curation : undefined;
+  const products = await getProductsByCategoryAsync("bar");
 
   return (
     <div className="min-h-screen bg-white">
@@ -26,7 +27,7 @@ export default async function BarsPage({ searchParams }: BarsPageProps) {
       <main className="mx-auto max-w-[1200px] px-4 pb-2 pt-0 md:px-6 md:pb-3">
         <ProductListWithFilters
           productType="bar"
-          products={barProductsWithGrades}
+          products={products}
           curationSlug={curation}
         />
       </main>

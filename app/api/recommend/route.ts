@@ -1,12 +1,8 @@
 import { NextResponse } from "next/server";
-import {
-  mockProducts,
-  barProductsWithGrades,
-  yogurtProductsWithGrades,
-  type ProductDetailProps,
-} from "../../data/products";
+import type { ProductDetailProps } from "../../data/products";
 import { getDensityValue, getDietScore, getPerformanceScore } from "../../lib/gradeCalculation";
 import { getProductImageUrl } from "../../lib/productImage";
+import { getProductsByCategoryAsync } from "../../lib/productData";
 
 interface RecommendRequest {
   category: "drink" | "bar" | "yogurt";
@@ -558,12 +554,8 @@ export async function POST(request: Request) {
     const body = (await request.json()) as RecommendRequest;
     const { category } = body;
 
-    let products =
-      category === "bar"
-        ? [...barProductsWithGrades]
-        : category === "yogurt"
-          ? [...yogurtProductsWithGrades]
-          : [...mockProducts];
+    const categoryProducts = await getProductsByCategoryAsync(category);
+    let products = [...categoryProducts];
 
     products = applyConditionPrefilters(products, body);
 
@@ -611,6 +603,9 @@ export async function POST(request: Request) {
         reason: item.reason,
         detailPath: `/product/${product.slug}`,
         imageUrl: getProductImageUrl(product.slug),
+        coupangUrl: product.coupangUrl ?? null,
+        naverUrl: product.naverUrl ?? null,
+        officialUrl: product.officialUrl ?? null,
       };
     });
 

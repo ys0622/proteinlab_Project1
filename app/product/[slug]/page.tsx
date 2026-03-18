@@ -18,13 +18,10 @@ import {
 import ProductReviewSection from "../../components/ProductReviewSection";
 import PurchaseLinkRow from "../../components/PurchaseLinkRow";
 import ServingBasisNotice from "../../components/ServingBasisNotice";
-import { getNutritionDetail, getProductBySlug } from "../../data/products";
+import { getNutritionDetail } from "../../data/products";
+import { getProductBySlugAsync } from "../../lib/productData";
 import { getProductImageUrl } from "../../lib/productImage";
-import {
-  getNaverSearchUrl,
-  getOfficialMallUrl,
-  getPreferredCoupangUrl,
-} from "../../lib/purchaseLinks";
+import { getPreferredCoupangUrl } from "../../lib/purchaseLinks";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -38,11 +35,8 @@ function getProductKindLabel(productType?: "drink" | "bar" | "yogurt") {
 
 export async function generateMetadata({ params }: PageProps) {
   const { slug } = await params;
-  const product = getProductBySlug(slug);
-
-  if (!product) {
-    return { title: "제품을 찾을 수 없음 | ProteinLab" };
-  }
+  const product = await getProductBySlugAsync(slug);
+  if (!product) return { title: "제품을 찾을 수 없음 | ProteinLab" };
 
   return {
     title: `${product.brand} ${product.name} | ProteinLab`,
@@ -52,8 +46,7 @@ export async function generateMetadata({ params }: PageProps) {
 
 export default async function ProductDetailPage({ params }: PageProps) {
   const { slug } = await params;
-  const product = getProductBySlug(slug);
-
+  const product = await getProductBySlugAsync(slug);
   if (!product) notFound();
 
   const gradeLabels = product.gradeTags ?? [];
@@ -82,13 +75,11 @@ export default async function ProductDetailPage({ params }: PageProps) {
         ].filter(Boolean);
 
   const resolvedCoupangHref = getPreferredCoupangUrl(
-    product.brand,
-    product.name,
-    product.productUrl,
+    product.coupangUrl,
     product.productType ?? null,
   );
-  const naverHref = getNaverSearchUrl(product.brand, product.name);
-  const officialMallHref = getOfficialMallUrl(product.brand);
+  const naverHref = product.naverUrl && product.naverUrl !== "#" && product.naverUrl !== "" ? product.naverUrl : null;
+  const officialMallHref = product.officialUrl && product.officialUrl !== "#" && product.officialUrl !== "" ? product.officialUrl : null;
   const isLactoseFreeDrink =
     product.productType === "drink" && product.variant?.trim() === "락토프리";
 

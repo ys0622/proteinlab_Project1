@@ -3,8 +3,8 @@ import { notFound } from "next/navigation";
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
 import ProductCard from "../../components/ProductCard";
-import { mockBarProducts, mockProducts } from "../../data/products";
 import { getAllPickSlugs, getPickBySlug } from "../../data/picksConfig";
+import { getProductsByCategoryAsync } from "../../lib/productData";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -38,7 +38,9 @@ export default async function PickLandingPage({ params }: PageProps) {
 
   if (!pick) notFound();
 
-  const allProducts = pick.productType === "drink" ? mockProducts : mockBarProducts;
+  const allProducts = await getProductsByCategoryAsync(
+    pick.productType === "drink" ? "drink" : "bar"
+  );
   const products = pick.filterProducts(allProducts);
   const listHref = pick.productType === "drink" ? "/" : "/bars";
   const listLabel = pick.productType === "drink" ? "단백질 음료" : "단백질 바";
