@@ -153,7 +153,9 @@ function ProductListWithFiltersInner(props: ProductListWithFiltersInnerProps) {
   const [yogurtFilters, setYogurtFilters] = useState<YogurtFilters>(
     () => initialPersistedState?.yogurtFilters ?? defaultYogurtFilters,
   );
-  const [sort, setSort] = useState<SortOptionValue>(() => normalizeSortValue(initialPersistedState?.sort));
+  const [sort, setSort] = useState<SortOptionValue>(
+    () => normalizeSortValue(initialPersistedState?.sort),
+  );
   const [page, setPage] = useState(() =>
     typeof initialPersistedState?.page === "number" && initialPersistedState.page > 0
       ? initialPersistedState.page
@@ -161,7 +163,9 @@ function ProductListWithFiltersInner(props: ProductListWithFiltersInnerProps) {
   );
   const [isDesktop, setIsDesktop] = useState(false);
   const [mobileSearchOpen, setMobileSearchOpen] = useState(false);
-  const [searchQuery, setSearchQuery] = useState(() => initialPersistedState?.searchQuery ?? "");
+  const [searchQuery, setSearchQuery] = useState(
+    () => initialPersistedState?.searchQuery ?? "",
+  );
 
   const filters =
     productType === "drink"
@@ -321,18 +325,16 @@ function ProductListWithFiltersInner(props: ProductListWithFiltersInnerProps) {
   const yogurtTypeOptions = useMemo(
     () =>
       productType === "yogurt"
-        ? [...new Set(products.map((product) => getYogurtTypeCategory(product)).filter(Boolean))].sort((a, b) =>
-            a.localeCompare(b, "ko"),
-          )
+        ? [...new Set(products.map((product) => getYogurtTypeCategory(product)).filter(Boolean))]
+            .sort((a, b) => a.localeCompare(b, "ko"))
         : [],
     [productType, products],
   );
   const yogurtFlavorOptions = useMemo(
     () =>
       productType === "yogurt"
-        ? [...new Set(products.map((product) => getYogurtFlavorCategory(product)).filter(Boolean))].sort((a, b) =>
-            a.localeCompare(b, "ko"),
-          )
+        ? [...new Set(products.map((product) => getYogurtFlavorCategory(product)).filter(Boolean))]
+            .sort((a, b) => a.localeCompare(b, "ko"))
         : [],
     [productType, products],
   );
@@ -377,7 +379,11 @@ function ProductListWithFiltersInner(props: ProductListWithFiltersInnerProps) {
 
           <div
             className="mt-3 rounded-xl border border-[var(--border)] bg-[var(--filter-box-bg)]"
-            style={{ marginTop: isDesktop ? "12px" : "10px", borderRadius: "12px", padding: isDesktop ? "10px 12px" : "3px 6px" }}
+            style={{
+              marginTop: isDesktop ? "12px" : "10px",
+              borderRadius: "12px",
+              padding: isDesktop ? "10px 12px" : "3px 6px",
+            }}
           >
             <div className="hidden md:block">
               <SearchBar value={searchQuery} onChange={handleSearchChange} />
@@ -419,15 +425,7 @@ function ProductListWithFiltersInner(props: ProductListWithFiltersInnerProps) {
             </div>
           </div>
         </>
-      ) : (
-        <div className="mt-3 rounded-2xl border border-[var(--border)] bg-[var(--background-card)] p-4">
-          <p className="text-sm font-semibold text-[var(--foreground)]">쉐이크 카테고리</p>
-          <p className="mt-1 text-sm leading-6 text-[var(--foreground-muted)]">
-            파우치형 중심의 간편 섭취 쉐이크만 포함할 예정입니다. 이번 버전에서는 카테고리 구조와 정보 UI를 먼저 정리했고,
-            제품 데이터는 이후 같은 기준으로 추가할 수 있도록 분리해 두었습니다.
-          </p>
-        </div>
-      )}
+      ) : null}
 
       {mobileSearchOpen ? (
         <div
@@ -480,11 +478,15 @@ function ProductListWithFiltersInner(props: ProductListWithFiltersInnerProps) {
           <p className="mt-1 text-sm text-[var(--foreground-muted)]">
             {productType === "shake"
               ? "쉐이크 데이터가 아직 등록되지 않았습니다."
-              : "검색어나 필터 조건을 조정해 다시 확인해보세요."}
+              : "검색어 또는 필터 조건을 조정해 다시 확인해보세요."}
           </p>
         </div>
       ) : (
-        <section className="product-grid mt-3 bg-white" style={{ marginTop: isDesktop ? "12px" : "8px" }} aria-label="제품 목록">
+        <section
+          className="product-grid mt-3 bg-white"
+          style={{ marginTop: isDesktop ? "12px" : "8px" }}
+          aria-label="제품 목록"
+        >
           {visible.map((product, idx) => (
             <ProductCard
               key={product.slug ?? `${product.brand}-${product.name}`}
