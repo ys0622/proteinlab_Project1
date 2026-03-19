@@ -10,6 +10,7 @@ import type {
 import { trackPurchaseClick } from "@/lib/gtag";
 import { getProductImageUrl } from "../lib/productImage";
 import {
+  getKnownSourceCoupangUrlBySlug,
   type CoupangLinkCategory,
   getPreferredCoupangUrl,
   normalizeCoupangUrl,
@@ -104,7 +105,8 @@ export default function ProductCard({
   const resolvedPurchaseLinkCategory = purchaseLinkCategory ?? productType ?? null;
   const coupangHref =
     getPreferredCoupangUrl(coupangUrl, resolvedPurchaseLinkCategory) ??
-    normalizeCoupangUrl(coupangUrl);
+    normalizeCoupangUrl(coupangUrl) ??
+    getKnownSourceCoupangUrlBySlug(slug);
   const naverHref = naverUrl && naverUrl !== "#" && naverUrl !== "" ? naverUrl : null;
   const officialMallHref = officialUrl && officialUrl !== "#" && officialUrl !== "" ? officialUrl : null;
   const productId = slug ?? `${brand}-${name}`;

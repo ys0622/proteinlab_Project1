@@ -62,6 +62,17 @@ const COUPANG_PARTNERS_SUB_ID =
 
 export type CoupangLinkCategory = "drink" | "bar" | "yogurt" | "shake" | "guide" | "ranking";
 
+const KNOWN_SOURCE_COUPANG_URLS_BY_SLUG: Record<string, string> = {
+  "newcare-all-protein-choco-245":
+    "https://www.coupang.com/vp/products/8391141735?itemId=24971392807&vendorItemId=91994723764",
+  "newcare-all-protein-banana-245":
+    "https://www.coupang.com/vp/products/8391213192?itemId=24256029913&vendorItemId=91994723751",
+  "newcare-all-protein-savory-245":
+    "https://www.coupang.com/vp/products/8391180879?itemId=24963749598&vendorItemId=91994723799",
+  "newcare-all-protein-plant-savory-250":
+    "https://www.coupang.com/vp/products/9413959502?itemId=27972525769&vendorItemId=94930425876",
+};
+
 const COUPANG_SUB_ID_BY_CATEGORY: Record<CoupangLinkCategory, string> = {
   drink: "drink",
   bar: "bar",
@@ -232,6 +243,11 @@ export function getPreferredCoupangUrl(
   }
 
   return null;
+}
+
+export function getKnownSourceCoupangUrlBySlug(slug?: string | null): string | null {
+  if (!slug) return null;
+  return KNOWN_SOURCE_COUPANG_URLS_BY_SLUG[slug] ?? null;
 }
 
 export function getNaverSearchUrl(brand: string, name: string): string {
