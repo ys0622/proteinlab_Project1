@@ -177,7 +177,7 @@ function ProductListWithFiltersInner(props: ProductListWithFiltersInnerProps) {
           : null;
 
   const curationFiltered = useMemo(() => {
-    if (productType === "yogurt" || productType === "shake") {
+    if (productType === "yogurt") {
       return products;
     }
     return applyCurationToCategoryProducts(products, productType, curationSlug);
@@ -425,7 +425,11 @@ function ProductListWithFiltersInner(props: ProductListWithFiltersInnerProps) {
             </div>
           </div>
         </>
-      ) : null}
+      ) : (
+        <div className="mt-3" style={{ marginTop: "12px" }}>
+          <QuickCuration productType={productType} />
+        </div>
+      )}
 
       {mobileSearchOpen ? (
         <div

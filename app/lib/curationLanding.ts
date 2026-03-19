@@ -1,8 +1,8 @@
-import { barProductsWithGrades, mockProducts, yogurtProducts } from "../data/products";
+import { barProductsWithGrades, mockProducts, shakeProducts, yogurtProducts } from "../data/products";
 import type { CurationDefinition, CurationGuideLink, CurationInfoSection } from "./curationSystem";
 import { getCurationDefinition, getPopularCurations } from "./curationSystem";
 
-type CategoryKey = "drink" | "bar" | "yogurt" | "both";
+type CategoryKey = "drink" | "bar" | "yogurt" | "shake" | "both";
 
 interface LandingProfile {
   heroTitle?: string;
@@ -16,7 +16,9 @@ function getCategoryKey(curation: CurationDefinition): CategoryKey {
   const hasDrink = Boolean(curation.categories.drink);
   const hasBar = Boolean(curation.categories.bar);
   const hasYogurt = Boolean(curation.categories.yogurt);
+  const hasShake = Boolean(curation.categories.shake);
   if (hasDrink && hasBar) return "both";
+  if (hasShake) return "shake";
   if (hasYogurt) return "yogurt";
   return hasDrink ? "drink" : "bar";
 }
@@ -25,6 +27,7 @@ function getCategoryLabel(categoryKey: CategoryKey) {
   if (categoryKey === "both") return "단백질 음료와 단백질 바";
   if (categoryKey === "drink") return "단백질 음료";
   if (categoryKey === "bar") return "단백질 바";
+  if (categoryKey === "shake") return "단백질 쉐이크";
   return "단백질 요거트";
 }
 
@@ -550,8 +553,16 @@ function buildDefaultGuideLinks(curation: CurationDefinition): CurationGuideLink
   if (curation.categories.yogurt) {
     links.push({
       href: `/yogurt?curation=${curation.slug}`,
-      title: `${curation.label} 단백질 요거트 비교`,
-      description: `${curation.label} 기준에 맞는 단백질 요거트를 바로 비교해보세요.`,
+      title: `${curation.label} ?⑤갚吏??붽굅??鍮꾧탳`,
+      description: `${curation.label} 湲곗???留욌뒗 ?⑤갚吏??붽굅?몃? 諛붾줈 鍮꾧탳?대낫?몄슂.`,
+    });
+  }
+
+  if (curation.categories.shake) {
+    links.push({
+      href: `/shake?curation=${curation.slug}`,
+      title: `${curation.label} 단백질 쉐이크 비교`,
+      description: `${curation.label} 기준에 맞는 단백질 쉐이크를 바로 비교해보세요.`,
     });
   }
 
@@ -593,7 +604,7 @@ function normalizeLandingCuration(curation: CurationDefinition): CurationDefinit
     introText:
       curation.introText ?? profile?.introText ?? `${curation.label} 기준에 맞는 제품을 데이터 기준으로 확인하세요.`,
     infoSections:
-      curation.infoSections?.length
+      curation.infoSections !== undefined
         ? curation.infoSections
         : mergeInfoSections(baseSections, profile?.infoSections),
     relatedGuideLinks:
@@ -636,6 +647,9 @@ export function getCurationLandingData(slug: string) {
   const yogurtProductsForCuration = curation.categories.yogurt
     ? yogurtProducts.filter(curation.categories.yogurt.filter)
     : [];
+  const shakeProductsForCuration = curation.categories.shake
+    ? shakeProducts.filter(curation.categories.shake.filter)
+    : [];
 
   const recommendedDrinks = curation.categories.drink
     ? curation.categories.drink.recommend(mockProducts).slice(0, 6)
@@ -646,6 +660,9 @@ export function getCurationLandingData(slug: string) {
   const recommendedYogurts = curation.categories.yogurt
     ? curation.categories.yogurt.recommend(yogurtProducts).slice(0, 6)
     : [];
+  const recommendedShakes = curation.categories.shake
+    ? curation.categories.shake.recommend(shakeProducts).slice(0, 6)
+    : [];
 
   return {
     curation,
@@ -655,5 +672,7 @@ export function getCurationLandingData(slug: string) {
     recommendedBars,
     yogurtProducts: yogurtProductsForCuration,
     recommendedYogurts,
+    shakeProducts: shakeProductsForCuration,
+    recommendedShakes,
   };
 }

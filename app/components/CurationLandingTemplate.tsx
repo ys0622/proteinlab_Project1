@@ -11,6 +11,8 @@ interface CurationLandingTemplateProps {
   recommendedBars: ProductDetailProps[];
   yogurtProducts: ProductDetailProps[];
   recommendedYogurts: ProductDetailProps[];
+  shakeProducts: ProductDetailProps[];
+  recommendedShakes: ProductDetailProps[];
 }
 
 function InfoCard({ section }: { section: CurationInfoSection }) {
@@ -75,14 +77,18 @@ export default function CurationLandingTemplate({
   recommendedBars,
   yogurtProducts,
   recommendedYogurts,
+  shakeProducts,
+  recommendedShakes,
 }: CurationLandingTemplateProps) {
   const drinkCopy = curation.categories.drink?.landingCopy;
   const barCopy = curation.categories.bar?.landingCopy;
   const yogurtCopy = curation.categories.yogurt?.landingCopy;
+  const shakeCopy = curation.categories.shake?.landingCopy;
   const infoSections = curation.infoSections ?? [];
   const hasDrinkCategory = Boolean(curation.categories.drink);
   const hasBarCategory = Boolean(curation.categories.bar);
   const hasYogurtCategory = Boolean(curation.categories.yogurt);
+  const hasShakeCategory = Boolean(curation.categories.shake);
   const isPopularLanding = curation.slug === "popular";
   const relatedLinksTitle = curation.relatedLinksTitle ?? "관련 가이드";
 
@@ -132,10 +138,7 @@ export default function CurationLandingTemplate({
           <section className="mt-8">
             <div className="mb-4 space-y-1">
               <h2 className="text-lg font-bold text-[var(--foreground)]">{relatedLinksTitle}</h2>
-              <p className="text-sm leading-6 text-[var(--foreground-muted)]">
-                최근 많이 확인한 큐레이션부터 살펴보고, 각 랜딩 페이지에서 추천 제품과 전체 비교로
-                이어가세요.
-              </p>
+              <p className="text-sm leading-6 text-[var(--foreground-muted)]">최근 많이 찾은 큐레이션부터 바로 살펴보세요.</p>
             </div>
             <div className="grid gap-3 md:grid-cols-3">
               {curation.relatedGuideLinks.map((guide) => (
@@ -192,6 +195,20 @@ export default function CurationLandingTemplate({
             <ProductSection
               title={yogurtCopy?.comparisonTitle ?? "단백질 요거트 비교"}
               products={yogurtProducts}
+            />
+          </>
+        ) : null}
+
+        {hasShakeCategory ? (
+          <>
+            <ProductSection
+              title={shakeCopy?.recommendationTitle ?? "추천 단백질 쉐이크"}
+              note={shakeCopy?.recommendationNote}
+              products={recommendedShakes}
+            />
+            <ProductSection
+              title={shakeCopy?.comparisonTitle ?? "단백질 쉐이크 비교"}
+              products={shakeProducts}
             />
           </>
         ) : null}

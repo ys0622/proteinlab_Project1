@@ -178,6 +178,61 @@ function sortYogurtByLowSugar(products: ProductDetailProps[]) {
   });
 }
 
+function getFiberValue(product: ProductDetailProps) {
+  return product.nutritionPerBottle?.fiberG ?? 0;
+}
+
+function sortShakeByProtein(products: ProductDetailProps[]) {
+  return [...products].sort((a, b) => {
+    const densityDelta = parseDensityValue(b.density) - parseDensityValue(a.density);
+    if (densityDelta !== 0) return densityDelta;
+
+    const proteinDelta = (b.proteinPerServing ?? 0) - (a.proteinPerServing ?? 0);
+    if (proteinDelta !== 0) return proteinDelta;
+
+    return (a.sugar ?? 999) - (b.sugar ?? 999);
+  });
+}
+
+function sortShakeByLowSugar(products: ProductDetailProps[]) {
+  return [...products].sort((a, b) => {
+    const sugarDelta = (a.sugar ?? 999) - (b.sugar ?? 999);
+    if (sugarDelta !== 0) return sugarDelta;
+
+    const densityDelta = parseDensityValue(b.density) - parseDensityValue(a.density);
+    if (densityDelta !== 0) return densityDelta;
+
+    return (b.proteinPerServing ?? 0) - (a.proteinPerServing ?? 0);
+  });
+}
+
+function sortShakeByFiber(products: ProductDetailProps[]) {
+  return [...products].sort((a, b) => {
+    const fiberDelta = getFiberValue(b) - getFiberValue(a);
+    if (fiberDelta !== 0) return fiberDelta;
+
+    const sugarDelta = (a.sugar ?? 999) - (b.sugar ?? 999);
+    if (sugarDelta !== 0) return sugarDelta;
+
+    return (b.proteinPerServing ?? 0) - (a.proteinPerServing ?? 0);
+  });
+}
+
+function sortShakeForMealReplacement(products: ProductDetailProps[]) {
+  return [...products].sort((a, b) => {
+    const fiberDelta = getFiberValue(b) - getFiberValue(a);
+    if (fiberDelta !== 0) return fiberDelta;
+
+    const proteinDelta = (b.proteinPerServing ?? 0) - (a.proteinPerServing ?? 0);
+    if (proteinDelta !== 0) return proteinDelta;
+
+    const sugarDelta = (a.sugar ?? 999) - (b.sugar ?? 999);
+    if (sugarDelta !== 0) return sugarDelta;
+
+    return (a.calories ?? 999) - (b.calories ?? 999);
+  });
+}
+
 function isGreekYogurt(product: ProductDetailProps) {
   const haystack = `${product.name} ${product.yogurtType}`.toLowerCase();
   return haystack.includes("그릭");
@@ -243,24 +298,7 @@ const curations: CurationDefinition[] = [
     heroDescription:
       "다른 사용자가 많이 확인한 큐레이션을 모아 보여줍니다. ProteinLab에서는 인기 있는 큐레이션을 통해 제품 선택 기준을 빠르게 파악하고, 각 랜딩 페이지에서 음료와 단백질 바를 따로 비교할 수 있습니다.",
     introText: "많이 보는 큐레이션부터 빠르게 살펴보세요.",
-    infoSections: [
-      {
-        title: "인기 큐레이션은 어떻게 정하나요?",
-        bullets: [
-          "가능하면 최근 7일 클릭 데이터를 기준으로 인기 큐레이션을 집계합니다.",
-          "초기 단계에는 수동 우선순위를 함께 사용해 비어 있는 상태가 없도록 구성합니다.",
-          "인기 큐레이션은 제품 리스트를 합치지 않고, 각 랜딩 페이지에서 음료와 단백질 바를 분리해 보여줍니다.",
-        ],
-      },
-      {
-        title: "이 페이지에서 할 수 있는 일",
-        bullets: [
-          "이번주 많이 본 큐레이션을 빠르게 확인할 수 있습니다.",
-          "각 큐레이션 랜딩으로 이동해 추천 제품과 전체 비교를 이어서 볼 수 있습니다.",
-          "러닝, 편의점, 저당처럼 목적이나 상황에 맞는 탐색 흐름을 바로 시작할 수 있습니다.",
-        ],
-      },
-    ],
+    infoSections: [],
     relatedLinksTitle: "이번주 인기 큐레이션",
     seoTitle: "인기 큐레이션 | ProteinLab",
     seoDescription:
@@ -300,6 +338,17 @@ const curations: CurationDefinition[] = [
           recommendationTitle: "인기 단백질 요거트 추천",
           recommendationNote: "최근 많이 찾는 단백질 요거트를 먼저 보여줍니다.",
           comparisonTitle: "인기 단백질 요거트 비교",
+        },
+      },
+      shake: {
+        category: "shake",
+        filter: (product) => product.productType === "shake",
+        recommend: (products) =>
+          sortByPopularity(products.filter((product) => product.productType === "shake"), "shake"),
+        landingCopy: {
+          recommendationTitle: "인기 단백질 쉐이크 추천",
+          recommendationNote: "최근 많이 찾는 단백질 쉐이크를 먼저 보여줍니다.",
+          comparisonTitle: "인기 단백질 쉐이크 비교",
         },
       },
     },
@@ -889,6 +938,139 @@ const curations: CurationDefinition[] = [
       },
     },
   },
+
+  {
+    id: "shake-high-protein",
+    slug: "shake-high-protein",
+    label: "고단백",
+    icon: "💪",
+    kind: "ingredient",
+    categoryTargets: ["shake"],
+    routeMode: "category-query",
+    seoTitle: "고단백 단백질 쉐이크 추천 | ProteinLab",
+    seoDescription:
+      "단백질 20g 이상 파우치형 단백질 쉐이크를 비교합니다. ProteinLab에서 단백질, 당류, 칼로리, 식이섬유 기준으로 확인해보세요.",
+    categories: {
+      shake: {
+        category: "shake",
+        quickLabel: "고단백",
+        quickIcon: "💪",
+        quickOrder: 10,
+        filter: (product) => product.productType === "shake" && (product.proteinPerServing ?? 0) >= 20,
+        recommend: (products) =>
+          sortShakeByProtein(
+            products.filter(
+              (product) => product.productType === "shake" && (product.proteinPerServing ?? 0) >= 20,
+            ),
+          ),
+        landingCopy: {
+          recommendationTitle: "추천 고단백 쉐이크",
+          recommendationNote: "단백질 함량과 단백질 밀도를 우선으로 보기 좋은 제품을 먼저 보여줍니다.",
+          comparisonTitle: "고단백 쉐이크 비교",
+        },
+      },
+    },
+  },
+  {
+    id: "shake-low-sugar",
+    slug: "shake-low-sugar",
+    label: "저당",
+    icon: "🫐",
+    kind: "ingredient",
+    categoryTargets: ["shake"],
+    routeMode: "category-query",
+    seoTitle: "저당 단백질 쉐이크 추천 | ProteinLab",
+    seoDescription:
+      "당류 부담이 적은 파우치형 단백질 쉐이크를 비교합니다. ProteinLab에서 당류, 단백질, 칼로리를 함께 확인해보세요.",
+    categories: {
+      shake: {
+        category: "shake",
+        quickLabel: "저당",
+        quickIcon: "🫐",
+        quickOrder: 20,
+        filter: (product) => product.productType === "shake" && (product.sugar ?? 999) <= 3,
+        recommend: (products) =>
+          sortShakeByLowSugar(
+            products.filter((product) => product.productType === "shake" && (product.sugar ?? 999) <= 3),
+          ),
+        landingCopy: {
+          recommendationTitle: "추천 저당 쉐이크",
+          recommendationNote: "당류를 낮게 가져가면서 단백질을 챙기기 좋은 제품을 먼저 보여줍니다.",
+          comparisonTitle: "저당 쉐이크 비교",
+        },
+      },
+    },
+  },
+  {
+    id: "shake-meal-replacement",
+    slug: "shake-meal-replacement",
+    label: "식사대용",
+    icon: "🥣",
+    kind: "goal",
+    categoryTargets: ["shake"],
+    routeMode: "category-query",
+    seoTitle: "식사대용 단백질 쉐이크 추천 | ProteinLab",
+    seoDescription:
+      "포만감과 성분 균형을 고려해 식사대용으로 보기 좋은 파우치형 단백질 쉐이크를 비교합니다.",
+    categories: {
+      shake: {
+        category: "shake",
+        quickLabel: "식사대용",
+        quickIcon: "🥣",
+        quickOrder: 30,
+        filter: (product) =>
+          product.productType === "shake" &&
+          (product.proteinPerServing ?? 0) >= 15 &&
+          (product.calories ?? 0) >= 150 &&
+          getFiberValue(product) >= 4,
+        recommend: (products) =>
+          sortShakeForMealReplacement(
+            products.filter(
+              (product) =>
+                product.productType === "shake" &&
+                (product.proteinPerServing ?? 0) >= 15 &&
+                (product.calories ?? 0) >= 150 &&
+                getFiberValue(product) >= 4,
+            ),
+          ),
+        landingCopy: {
+          recommendationTitle: "추천 식사대용 쉐이크",
+          recommendationNote: "포만감에 영향을 주는 식이섬유와 단백질을 함께 보면서 고르기 좋은 제품을 먼저 보여줍니다.",
+          comparisonTitle: "식사대용 쉐이크 비교",
+        },
+      },
+    },
+  },
+  {
+    id: "shake-high-fiber",
+    slug: "shake-high-fiber",
+    label: "식이섬유",
+    icon: "🌾",
+    kind: "ingredient",
+    categoryTargets: ["shake"],
+    routeMode: "category-query",
+    seoTitle: "식이섬유 높은 단백질 쉐이크 추천 | ProteinLab",
+    seoDescription:
+      "식이섬유 함량이 높은 파우치형 단백질 쉐이크를 비교합니다. ProteinLab에서 단백질, 당류, 칼로리와 함께 확인해보세요.",
+    categories: {
+      shake: {
+        category: "shake",
+        quickLabel: "식이섬유",
+        quickIcon: "🌾",
+        quickOrder: 40,
+        filter: (product) => product.productType === "shake" && getFiberValue(product) >= 5,
+        recommend: (products) =>
+          sortShakeByFiber(
+            products.filter((product) => product.productType === "shake" && getFiberValue(product) >= 5),
+          ),
+        landingCopy: {
+          recommendationTitle: "추천 식이섬유 쉐이크",
+          recommendationNote: "식이섬유 함량이 높은 제품을 중심으로 당류와 단백질 균형까지 함께 보기 좋게 정리했습니다.",
+          comparisonTitle: "식이섬유 쉐이크 비교",
+        },
+      },
+    },
+  },
   {
     id: "running",
     slug: "running",
@@ -1198,6 +1380,7 @@ export function getPopularCurations(limit = 3): PopularCurationEntry[] {
 export function buildCategoryCurationHref(category: CurationCategory, slug: string) {
   if (category === "bar") return `/bars?curation=${slug}`;
   if (category === "yogurt") return `/yogurt?curation=${slug}`;
+  if (category === "shake") return `/shake?curation=${slug}`;
   return `/?curation=${slug}`;
 }
 
