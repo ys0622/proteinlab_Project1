@@ -74,14 +74,27 @@ export async function GET(request: NextRequest) {
   const url = searchParams.get("url");
   const slug = searchParams.get("slug");
   const category = toCategory(searchParams.get("category"));
+  const debug = searchParams.get("debug") === "1";
 
   const fallbackDestination = getCoupangDestinationUrl(url, category, slug);
   const runtimeTag = await getRuntimeCoupangTag();
-  const destination =
-    (fallbackDestination ? buildRuntimePartnersUrl(fallbackDestination, runtimeTag, category) : null) ??
-    fallbackDestination;
+  const partnersDestination =
+    fallbackDestination ? buildRuntimePartnersUrl(fallbackDestination, runtimeTag, category) : null;
+  const destination = partnersDestination ?? fallbackDestination;
   if (!destination || !isValidExternalUrl(destination)) {
     return NextResponse.json({ error: "invalid_coupang_url" }, { status: 400 });
+  }
+
+  if (debug) {
+    return NextResponse.json({
+      hasRuntimeTag: Boolean(runtimeTag),
+      runtimeTagPreview: runtimeTag ? `${runtimeTag.slice(0, 3)}***` : null,
+      usedPartnersRedirect: Boolean(partnersDestination),
+      destination,
+      fallbackDestination,
+      slug,
+      category,
+    });
   }
 
   return NextResponse.redirect(destination, 307);
