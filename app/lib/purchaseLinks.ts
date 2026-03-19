@@ -71,6 +71,12 @@ const KNOWN_SOURCE_COUPANG_URLS_BY_SLUG: Record<string, string> = {
     "https://www.coupang.com/vp/products/8391180879?itemId=24963749598&vendorItemId=91994723799",
   "newcare-all-protein-plant-savory-250":
     "https://www.coupang.com/vp/products/9413959502?itemId=27972525769&vendorItemId=94930425876",
+  "newcare-olprotein-water-lemon-350":
+    "https://www.coupang.com/vp/products/8888082152?itemId=26687416262&vendorItemId=93659473043",
+  "newcare-olprotein-water-apple-350":
+    "https://www.coupang.com/vp/products/8888082215?itemId=26554259073&vendorItemId=93659473038",
+  "newcare-all-protein-41g":
+    "https://www.coupang.com/vp/products/8869229030?itemId=26181687745&vendorItemId=93475736005",
 };
 
 const COUPANG_SUB_ID_BY_CATEGORY: Record<CoupangLinkCategory, string> = {
