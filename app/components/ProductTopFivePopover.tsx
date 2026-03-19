@@ -6,7 +6,7 @@ import type { ProductDetailProps } from "../data/products";
 import { getPopularProducts } from "../lib/productPopularity";
 
 interface ProductTopFivePopoverProps {
-  productType: "drink" | "bar" | "yogurt";
+  productType: "drink" | "bar" | "yogurt" | "shake";
   products: ProductDetailProps[];
 }
 
@@ -52,7 +52,9 @@ export default function ProductTopFivePopover({
       ? "오늘 인기 단백질 바"
       : productType === "yogurt"
         ? "오늘 인기 단백질 요거트"
-        : "오늘 인기 단백질 음료";
+        : productType === "shake"
+          ? "오늘 인기 쉐이크"
+          : "오늘 인기 단백질 음료";
 
   return (
     <div ref={rootRef} className="relative ml-auto shrink-0">

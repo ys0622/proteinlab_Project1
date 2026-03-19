@@ -1,10 +1,11 @@
 {
-  "generated_at": "2026-03-16T06:10:16.284Z",
-  "total": 220,
+  "generated_at": "2026-03-19T04:45:58.984Z",
+  "total": 223,
   "categories": {
     "drinks": 104,
     "bars": 71,
-    "yogurt": 45
+    "yogurt": 45,
+    "shake": 3
   },
   "products": [
     {
@@ -58,7 +59,7 @@
       "brand": "셀렉스",
       "category": "drinks",
       "protein": 20,
-      "calories": 125,
+      "calories": 105,
       "sugar": 0
     },
     {
@@ -67,7 +68,7 @@
       "brand": "셀렉스",
       "category": "drinks",
       "protein": 20,
-      "calories": 135,
+      "calories": 105,
       "sugar": 0
     },
     {
@@ -949,26 +950,26 @@
       "brand": "닥터유",
       "category": "bars",
       "protein": 25,
-      "calories": 220,
-      "sugar": 7
+      "calories": 334,
+      "sugar": 8
     },
     {
       "slug": "dryou-proteinbar-pro-choco-classic",
       "name": "프로 단백질바 (초코 클래식)",
       "brand": "닥터유",
       "category": "bars",
-      "protein": 25,
-      "calories": 220,
-      "sugar": 7
+      "protein": 24,
+      "calories": 312,
+      "sugar": 9
     },
     {
       "slug": "dryou-proteinbar-pro-crunch",
       "name": "프로 단백질바 (크런치)",
       "brand": "닥터유",
       "category": "bars",
-      "protein": 25,
-      "calories": 220,
-      "sugar": 7
+      "protein": 24,
+      "calories": 355,
+      "sugar": 9
     },
     {
       "slug": "kirkland-proteinbar-choco-brownie",
@@ -1102,8 +1103,8 @@
       "brand": "비에스엔",
       "category": "bars",
       "protein": 20,
-      "calories": 240,
-      "sugar": 3
+      "calories": 190,
+      "sugar": 5
     },
     {
       "slug": "quest-nutrition-protein-bar-double-chocolate-chunk-60",
@@ -1119,8 +1120,8 @@
       "name": "단백질바 (초콜릿 피넛버터)",
       "brand": "퀘스트 뉴트리션",
       "category": "bars",
-      "protein": 19,
-      "calories": 170,
+      "protein": 20,
+      "calories": 190,
       "sugar": 1
     },
     {
@@ -1165,7 +1166,7 @@
       "brand": "퀘스트 뉴트리션",
       "category": "bars",
       "protein": 21,
-      "calories": 200,
+      "calories": 190,
       "sugar": 1
     },
     {
@@ -1371,9 +1372,9 @@
       "name": "프로 단백질바 한입쏙 (크런치)",
       "brand": "닥터유",
       "category": "bars",
-      "protein": 12,
-      "calories": 90,
-      "sugar": 4
+      "protein": 8.4,
+      "calories": 122.6,
+      "sugar": 3.1
     },
     {
       "slug": "dryou-proteinbar-nuts",
@@ -1389,9 +1390,9 @@
       "name": "프로 단백질바 한입쏙 (초코 클래식)",
       "brand": "닥터유",
       "category": "bars",
-      "protein": 12,
-      "calories": 90,
-      "sugar": 4
+      "protein": 8.4,
+      "calories": 98.4,
+      "sugar": 2.9
     },
     {
       "slug": "danbaekhani-protein-bar-choco-38",
@@ -1560,27 +1561,27 @@
       "name": "단백질바 미니",
       "brand": "노브랜드",
       "category": "bars",
-      "protein": 0,
-      "calories": null,
-      "sugar": null
+      "protein": 7,
+      "calories": 165,
+      "sugar": 6.7
     },
     {
       "slug": "lottewellfood-easyprotein-highprotein-crispy",
       "name": "이지프로틴 고단백질바 (크리스피)",
       "brand": "롯데웰푸드",
       "category": "bars",
-      "protein": 0,
-      "calories": null,
-      "sugar": null
+      "protein": 20,
+      "calories": 180,
+      "sugar": 5
     },
     {
       "slug": "lottewellfood-easyprotein-energy-bar",
       "name": "이지프로틴 에너지단백질바",
       "brand": "롯데웰푸드",
       "category": "bars",
-      "protein": 0,
-      "calories": null,
-      "sugar": null
+      "protein": 9,
+      "calories": 195,
+      "sugar": 5
     },
     {
       "slug": "yopro-plain-150",
@@ -1606,8 +1607,8 @@
       "brand": "요플레",
       "category": "yogurt",
       "protein": 9,
-      "calories": 105,
-      "sugar": 11
+      "calories": 112,
+      "sugar": 12
     },
     {
       "slug": "yoplait-protein-plain-210",
@@ -1623,9 +1624,9 @@
       "name": "요플레 프로틴 드링크 딸기바나나 210mL",
       "brand": "요플레",
       "category": "yogurt",
-      "protein": 15,
-      "calories": 135,
-      "sugar": 8
+      "protein": 17,
+      "calories": 190,
+      "sugar": 18
     },
     {
       "slug": "yoplait-protein-max-210",
@@ -1633,7 +1634,7 @@
       "brand": "요플레",
       "category": "yogurt",
       "protein": 23,
-      "calories": 180,
+      "calories": 188,
       "sugar": 12
     },
     {
@@ -1723,8 +1724,8 @@
       "brand": "YOZM",
       "category": "yogurt",
       "protein": 54,
-      "calories": 846,
-      "sugar": 9
+      "calories": 810,
+      "sugar": 4.5
     },
     {
       "slug": "yozm-plain-greek-800",
@@ -1986,6 +1987,33 @@
       "protein": 54,
       "calories": 855,
       "sugar": 4.05
+    },
+    {
+      "slug": "flymill-proteinshake-choco-45",
+      "name": "프로틴쉐이크 (초코)",
+      "brand": "플라이밀",
+      "category": "shake",
+      "protein": 22,
+      "calories": 150,
+      "sugar": 3.6
+    },
+    {
+      "slug": "labnosh-slimshake-double-choco-45",
+      "name": "슬림쉐이크 (더블초코)",
+      "brand": "랩노쉬",
+      "category": "shake",
+      "protein": 20,
+      "calories": 165,
+      "sugar": 1.1
+    },
+    {
+      "slug": "danbaekhani-proteinshake-signature-40",
+      "name": "단백질쉐이크 (시그니처)",
+      "brand": "단백하니",
+      "category": "shake",
+      "protein": 22,
+      "calories": 155,
+      "sugar": 2
     }
   ]
 }

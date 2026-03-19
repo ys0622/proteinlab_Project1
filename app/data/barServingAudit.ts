@@ -17,18 +17,12 @@ export const barServingAuditBySlug: Record<string, BarServingAuditEntry> = {
     sourceHint: "외부 판매 페이지에서 31g x 5개입으로 확인",
   },
   "dryou-proteinbar-bite-crunch": {
-    nutritionBasis: "unknown",
-    needsServingCheck: true,
-    note:
-      "이 제품은 소포장 제품으로 보이며, 현재 수집값이 낱개 기준인지 재확인이 필요합니다. 구매 전 라벨의 기준 중량과 1개당 영양정보를 다시 확인해주세요.",
-    sourceHint: "오리온 미니/프로 미니 계열 외부 영양정보 대비 현재 값 불일치",
+    nutritionBasis: "per_unit",
+    sourceHint: "스펙 이미지가 100g당 기준이며 데이터 capacity가 24g이어서 1개 24g 기준으로 환산 반영",
   },
   "dryou-proteinbar-pro-bite-choco-classic": {
-    nutritionBasis: "unknown",
-    needsServingCheck: true,
-    note:
-      "이 제품은 소포장 제품으로 보이며, 현재 수집값이 낱개 기준인지 재확인이 필요합니다. 구매 전 라벨의 기준 중량과 1개당 영양정보를 다시 확인해주세요.",
-    sourceHint: "오리온 미니/프로 미니 계열 외부 영양정보 대비 현재 값 불일치",
+    nutritionBasis: "per_unit",
+    sourceHint: "스펙 이미지가 100g당 기준이며 데이터 capacity가 24g이어서 1개 24g 기준으로 환산 반영",
   },
   "dryou-proteinbar-mini-nuts": {
     nutritionBasis: "unknown",
@@ -75,5 +69,9 @@ export const barServingAuditBySlug: Record<string, BarServingAuditEntry> = {
   "kellogg-proteinbark-hazelnut-darkchoco": {
     nutritionBasis: "per_unit",
     sourceHint: "프로틴바K 계열 외부 판매 규격 기준 1개 단위 제품으로 확인",
+  },
+  "gomgom-proteinbar-mini": {
+    nutritionBasis: "per_unit",
+    sourceHint: "스펙 이미지가 100g당 기준이며 데이터 capacity가 10g이어서 1개 10g 기준으로 환산 반영",
   },
 };

@@ -5,7 +5,7 @@ import { getProductImageUrl } from "../../lib/productImage";
 import { getProductsByCategoryAsync } from "../../lib/productData";
 
 interface RecommendRequest {
-  category: "drink" | "bar" | "yogurt";
+  category: "drink" | "bar" | "yogurt" | "shake";
   purpose: string;
   frequency: string;
   intensity: string;
@@ -450,6 +450,10 @@ function getConditionLabel(category: RecommendRequest["category"], value: string
       bulk: "대용량",
       density: "단백질 밀도",
       lowsugar: "저당",
+    },
+    shake: {
+      pouch: "파우치형",
+      "powder-excluded": "파우더 제외",
     },
   };
 

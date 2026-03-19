@@ -4,13 +4,14 @@ import { useEffect, useState, useCallback, useMemo } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { Suspense } from "react";
+import { getCategoryLabel, type ProductCategory } from "@/app/lib/categories";
 
 interface Product {
   slug: string;
   name: string;
   brand: string;
   manufacturer?: string;
-  productType?: string;
+  productType?: ProductCategory;
   proteinPerServing?: number;
   imageStatus?: string;
   nutritionPerBottle?: Record<string, unknown>;
@@ -23,7 +24,7 @@ function ProductsContent() {
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState("");
-  const [typeFilter, setTypeFilter] = useState<"all" | "drink" | "bar" | "yogurt">("all");
+  const [typeFilter, setTypeFilter] = useState<"all" | ProductCategory>("all");
   const [imageFilter, setImageFilter] = useState<"all" | "no-image" | "has-image">("all");
   const [reviewFilter, setReviewFilter] = useState(false);
   const [brandFilter, setBrandFilter] = useState("all");
@@ -43,6 +44,7 @@ function ProductsContent() {
           ...(data.drinks || []).map((p: Product) => ({ ...p, productType: "drink" })),
           ...(data.bars || []).map((p: Product) => ({ ...p, productType: "bar" })),
           ...(data.yogurts || []).map((p: Product) => ({ ...p, productType: "yogurt" })),
+          ...(data.shakes || []).map((p: Product) => ({ ...p, productType: "shake" })),
         ];
         setProducts(all);
         setLoading(false);
@@ -116,13 +118,14 @@ function ProductsContent() {
 
         <select
           value={typeFilter}
-          onChange={(e) => setTypeFilter(e.target.value as "all" | "drink" | "bar" | "yogurt")}
+          onChange={(e) => setTypeFilter(e.target.value as "all" | ProductCategory)}
           className="rounded-lg border border-[var(--border)] bg-[var(--background)] px-3 py-2 text-sm focus:outline-none"
         >
           <option value="all">전체 카테고리</option>
-          <option value="drink">단백질 음료</option>
-          <option value="bar">단백질 바</option>
-          <option value="yogurt">단백질 요거트</option>
+          <option value="drink">{getCategoryLabel("drink")}</option>
+          <option value="bar">{getCategoryLabel("bar")}</option>
+          <option value="yogurt">{getCategoryLabel("yogurt")}</option>
+          <option value="shake">{getCategoryLabel("shake")}</option>
         </select>
 
         <select
@@ -219,10 +222,12 @@ function ProductsContent() {
                             ? "bg-amber-100 text-amber-700"
                             : p.productType === "yogurt"
                               ? "bg-purple-100 text-purple-700"
+                              : p.productType === "shake"
+                                ? "bg-emerald-100 text-emerald-700"
                               : "bg-blue-100 text-blue-700"
                         }`}
                       >
-                        {p.productType === "bar" ? "바" : p.productType === "yogurt" ? "요거트" : "음료"}
+                        {getCategoryLabel((p.productType ?? "drink") as ProductCategory)}
                       </span>
                     </td>
                     <td className="px-4 py-3 text-[var(--foreground-muted)]">

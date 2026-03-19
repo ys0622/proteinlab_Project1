@@ -5,6 +5,7 @@ import { getProductKV, kvKeyOverride, kvKeyNew } from "@/app/lib/productKV";
 import drinksData from "@/app/data/drinkProductsData.json";
 import barsData from "@/app/data/barProductsData.json";
 import yogurtsData from "@/app/data/yogurtProductsData.json";
+import shakesData from "@/app/data/shakeProductsData.json";
 
 async function verifyAdmin(): Promise<boolean> {
   const cookieStore = await cookies();
@@ -17,6 +18,7 @@ function findProductInJson(slug: string) {
   const drinks = drinksData as Record<string, unknown>[];
   const bars = barsData as Record<string, unknown>[];
   const yogurts = yogurtsData as Record<string, unknown>[];
+  const shakes = shakesData as Record<string, unknown>[];
 
   const drink = drinks.find((p) => p.slug === slug);
   if (drink) return { product: drink, type: "drink" };
@@ -26,6 +28,9 @@ function findProductInJson(slug: string) {
 
   const yogurt = yogurts.find((p) => p.slug === slug);
   if (yogurt) return { product: yogurt, type: "yogurt" };
+
+  const shake = shakes.find((p) => p.slug === slug);
+  if (shake) return { product: shake, type: "shake" };
 
   return null;
 }

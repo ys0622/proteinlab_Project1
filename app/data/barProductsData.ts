@@ -1,6 +1,12 @@
 import type { NutritionPerBottle, ProductDetailProps } from "./products";
+import { isCoupangUrl } from "../lib/purchaseLinks";
 import barData from "./barProductsData.json";
 import { barServingAuditBySlug } from "./barServingAudit";
+
+function withCoupangUrl<T extends { productUrl?: string; coupangUrl?: string }>(p: T): T {
+  const coupangUrl = p.coupangUrl ?? (p.productUrl && isCoupangUrl(p.productUrl) ? p.productUrl : undefined);
+  return { ...p, coupangUrl };
+}
 
 type BarProduct = ProductDetailProps;
 
@@ -90,11 +96,13 @@ addGroup(benofSoftbarSlugs, {
 addGroup(bsnCrispSlugs, {
   caloriesKcal: 190,
   proteinG: 20,
-  carbsG: 21,
-  sugarsG: 2,
-  fatG: 7,
-  satFatG: 5,
-  sodiumMg: 200,
+  carbsG: 22,
+  sugarsG: 5,
+  fatG: 6,
+  satFatG: 4,
+  sodiumMg: 230,
+  cholesterolMg: 15,
+  fiberG: 5,
 });
 
 addGroup(myproteinSoftSlugs, {
@@ -119,22 +127,26 @@ addGroup(kelloggSlugs, {
 
 const exactNutritionBySlug: Record<string, NutritionPatch> = {
   "dryou-proteinbar-pro-3nuts-crunch": {
-    caloriesKcal: 355,
-    proteinG: 24,
-    carbsG: 22,
-    sugarsG: 9,
-    fatG: 19,
-    satFatG: 9,
-    sodiumMg: 200,
+    caloriesKcal: 334,
+    proteinG: 25,
+    carbsG: 18,
+    sugarsG: 8,
+    fatG: 18,
+    satFatG: 3.6,
+    sodiumMg: 170,
+    cholesterolMg: 11,
+    transFatG: 0,
   },
   "dryou-proteinbar-pro-choco-classic": {
-    caloriesKcal: 355,
+    caloriesKcal: 312,
     proteinG: 24,
-    carbsG: 22,
+    carbsG: 27,
     sugarsG: 9,
-    fatG: 19,
-    satFatG: 9,
-    sodiumMg: 200,
+    fatG: 12,
+    satFatG: 6,
+    sodiumMg: 210,
+    cholesterolMg: 0,
+    transFatG: 0,
   },
   "dryou-proteinbar-pro-crunch": {
     caloriesKcal: 355,
@@ -142,8 +154,10 @@ const exactNutritionBySlug: Record<string, NutritionPatch> = {
     carbsG: 22,
     sugarsG: 9,
     fatG: 19,
-    satFatG: 9,
+    satFatG: 6,
     sodiumMg: 200,
+    cholesterolMg: 9,
+    transFatG: 0,
   },
   "kirkland-proteinbar-choco-brownie": {
     caloriesKcal: 190,
@@ -182,6 +196,9 @@ const exactNutritionBySlug: Record<string, NutritionPatch> = {
     fatG: 9,
     satFatG: 2.5,
     sodiumMg: 220,
+    cholesterolMg: 5,
+    fiberG: 11,
+    transFatG: 0,
   },
   "quest-nutrition-protein-bar-oatmeal-chocolate-chip-60": {
     caloriesKcal: 170,
@@ -193,13 +210,16 @@ const exactNutritionBySlug: Record<string, NutritionPatch> = {
     sodiumMg: 250,
   },
   "quest-nutrition-protein-bar-cookie-cream-60": {
-    caloriesKcal: 200,
+    caloriesKcal: 190,
     proteinG: 21,
-    carbsG: 21,
+    carbsG: 22,
     sugarsG: 1,
     fatG: 8,
     satFatG: 2.5,
-    sodiumMg: 280,
+    sodiumMg: 290,
+    cholesterolMg: 10,
+    fiberG: 13,
+    transFatG: 0,
   },
   "quest-nutrition-protein-bar-white-chocolate-raspberry-60": {
     caloriesKcal: 190,
@@ -350,13 +370,15 @@ const exactNutritionBySlug: Record<string, NutritionPatch> = {
     fiberG: 5,
   },
   "dryou-proteinbar-bite-crunch": {
-    caloriesKcal: 90,
-    proteinG: 12,
-    carbsG: 8,
-    sugarsG: 4,
-    fatG: 2.5,
-    satFatG: 0.8,
-    sodiumMg: 60,
+    caloriesKcal: 122.6,
+    proteinG: 8.4,
+    carbsG: 7.7,
+    sugarsG: 3.1,
+    fatG: 6.5,
+    satFatG: 2.2,
+    sodiumMg: 69.6,
+    cholesterolMg: 3.1,
+    transFatG: 0,
   },
   "dryou-proteinbar-nuts": {
     caloriesKcal: 230,
@@ -368,13 +390,15 @@ const exactNutritionBySlug: Record<string, NutritionPatch> = {
     sodiumMg: 100,
   },
   "dryou-proteinbar-pro-bite-choco-classic": {
-    caloriesKcal: 90,
-    proteinG: 12,
-    carbsG: 8,
-    sugarsG: 4,
-    fatG: 2.5,
-    satFatG: 0.8,
-    sodiumMg: 60,
+    caloriesKcal: 98.4,
+    proteinG: 8.4,
+    carbsG: 10.8,
+    sugarsG: 2.9,
+    fatG: 2.4,
+    satFatG: 1.9,
+    sodiumMg: 72,
+    cholesterolMg: 0,
+    transFatG: 0,
   },
   "danbaekhani-protein-bar-choco-38": {
     caloriesKcal: 160,
@@ -459,8 +483,10 @@ const exactNutritionBySlug: Record<string, NutritionPatch> = {
     carbsG: 16,
     sugarsG: 3,
     fatG: 5,
-    satFatG: 1.5,
+    satFatG: 1.1,
     sodiumMg: 169,
+    cholesterolMg: 0,
+    transFatG: 0,
   },
   "dryou-proteinbar-mini-nuts": {
     caloriesKcal: 160,
@@ -474,11 +500,13 @@ const exactNutritionBySlug: Record<string, NutritionPatch> = {
   "organica-ola-chewy-protein-bar-peanut-cacao-35": {
     caloriesKcal: 125,
     proteinG: 8,
-    carbsG: 15,
+    carbsG: 19,
     sugarsG: 2,
     fatG: 3.9,
-    satFatG: 1.2,
+    satFatG: 1.6,
     sodiumMg: 154,
+    cholesterolMg: 0,
+    transFatG: 0,
   },
   "post-proteinbar-mini": {
     caloriesKcal: 53,
@@ -497,6 +525,8 @@ const exactNutritionBySlug: Record<string, NutritionPatch> = {
     fatG: 3,
     satFatG: 0.7,
     sodiumMg: 15,
+    cholesterolMg: 0,
+    transFatG: 0,
   },
   "nobrand-proteinbar-mini": {
     caloriesKcal: 165,
@@ -604,7 +634,7 @@ function enrichBarProduct(product: BarProduct): BarProduct {
 }
 
 export function getBarProducts(): ProductDetailProps[] {
-  return (barData as ProductDetailProps[]).map(enrichBarProduct);
+  return (barData as ProductDetailProps[]).map(enrichBarProduct).map(withCoupangUrl);
 }
 
 export const mockBarProducts: ProductDetailProps[] = getBarProducts();

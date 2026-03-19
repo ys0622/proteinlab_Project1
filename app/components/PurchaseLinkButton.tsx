@@ -22,16 +22,17 @@ export default function PurchaseLinkButton({
   onClick,
   title,
 }: PurchaseLinkButtonProps) {
+  const hasValidHref = href && href !== "#" && href !== "";
   const className = [
     "purchase-link",
     `purchase-link--${size}`,
     `purchase-link--${tone}`,
-    href ? "" : "purchase-link--disabled",
+    hasValidHref ? "" : "purchase-link--disabled",
   ]
     .filter(Boolean)
     .join(" ");
 
-  if (!href) {
+  if (!hasValidHref) {
     return (
       <span className={className} title={title}>
         <span className="purchase-link__label purchase-link__label--desktop">{label}</span>

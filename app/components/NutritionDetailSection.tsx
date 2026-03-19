@@ -3,15 +3,16 @@ import type { NutritionDetailRow } from "../data/products";
 interface NutritionDetailSectionProps {
   rows: NutritionDetailRow[];
   capacity?: string;
-  unit?: "병" | "개" | "컵";
+  unit?: "bottle" | "piece" | "cup" | "pack";
 }
 
 export default function NutritionDetailSection({
   rows,
   capacity,
-  unit = "병",
+  unit = "bottle",
 }: NutritionDetailSectionProps) {
-  const unitLabel = unit === "개" ? "1개" : unit === "컵" ? "1컵" : "1병";
+  const unitLabel =
+    unit === "piece" ? "1개" : unit === "cup" ? "1컵" : unit === "pack" ? "1팩" : "1병";
 
   return (
     <section
@@ -24,7 +25,7 @@ export default function NutritionDetailSection({
         </h2>
         {capacity ? (
           <span className="text-xs" style={{ color: "#999" }}>
-            총 용량 {capacity}
+            총 내용량 {capacity}
           </span>
         ) : null}
       </div>

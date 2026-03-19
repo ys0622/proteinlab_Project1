@@ -4,8 +4,10 @@ import { verifySessionToken } from "@/app/lib/session";
 import drinksData from "@/app/data/drinkProductsData.json";
 import barsData from "@/app/data/barProductsData.json";
 import yogurtsData from "@/app/data/yogurtProductsData.json";
+import shakesData from "@/app/data/shakeProductsData.json";
 import slugToImageData from "@/app/data/slugToImage.json";
 import slugToBarImageData from "@/app/data/slugToBarImage.json";
+import slugToShakeImageData from "@/app/data/slugToShakeImage.json";
 import slugToYogurtImageData from "@/app/data/slugToYogurtImage.json";
 import { getProductKV, kvKeyNew } from "@/app/lib/productKV";
 import { slugExistsInJson } from "@/app/lib/productData";
@@ -25,6 +27,7 @@ export async function GET() {
 
   const drinkImageMap = slugToImageData as Record<string, string>;
   const barImageMap = slugToBarImageData as Record<string, string>;
+  const shakeImageMap = slugToShakeImageData as Record<string, string>;
   const yogurtImageMap = slugToYogurtImageData as Record<string, string>;
 
   const drinksWithStatus = (drinksData as Record<string, unknown>[]).map((product) => ({
@@ -42,10 +45,16 @@ export async function GET() {
     imageStatus: yogurtImageMap[product.slug as string] ? "card-ready" : "no-image",
   }));
 
+  const shakesWithStatus = (shakesData as Record<string, unknown>[]).map((product) => ({
+    ...product,
+    imageStatus: shakeImageMap[product.slug as string] ? "card-ready" : "no-image",
+  }));
+
   const kvNew = await getAllNewProductsFromKV();
   const drinkSlugs = new Set((drinksData as Record<string, unknown>[]).map((p) => p.slug));
   const barSlugs = new Set((barsData as Record<string, unknown>[]).map((p) => p.slug));
   const yogurtSlugs = new Set((yogurtsData as Record<string, unknown>[]).map((p) => p.slug));
+  const shakeSlugs = new Set((shakesData as Record<string, unknown>[]).map((p) => p.slug));
 
   const drinksNew = kvNew
     .filter((p) => (p.productType as string) === "drink" && !drinkSlugs.has(p.slug as string))
@@ -56,11 +65,15 @@ export async function GET() {
   const yogurtsNew = kvNew
     .filter((p) => (p.productType as string) === "yogurt" && !yogurtSlugs.has(p.slug as string))
     .map((p) => ({ ...p, imageStatus: "no-image" }));
+  const shakesNew = kvNew
+    .filter((p) => (p.productType as string) === "shake" && !shakeSlugs.has(p.slug as string))
+    .map((p) => ({ ...p, imageStatus: "no-image" }));
 
   return NextResponse.json({
     drinks: [...drinksWithStatus, ...drinksNew],
     bars: [...barsWithStatus, ...barsNew],
     yogurts: [...yogurtsWithStatus, ...yogurtsNew],
+    shakes: [...shakesWithStatus, ...shakesNew],
   });
 }
 
@@ -101,9 +114,9 @@ export async function POST(request: Request) {
     }
 
     const productType = (body.productType as string) || "drink";
-    if (!["drink", "bar", "yogurt"].includes(productType)) {
+    if (!["drink", "bar", "yogurt", "shake"].includes(productType)) {
       return NextResponse.json(
-        { error: "productType은 drink, bar, yogurt 중 하나여야 합니다." },
+        { error: "productType은 drink, bar, yogurt, shake 중 하나여야 합니다." },
         { status: 400 }
       );
     }

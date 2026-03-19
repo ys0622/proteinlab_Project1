@@ -16,34 +16,14 @@ const distanceRows = [
 ];
 
 const distanceCards = [
-  {
-    title: "5km 전략",
-    training: ["짧은 인터벌", "강도 훈련", "5km 페이스 적응"],
-    nutritionBefore: "가벼운 탄수화물 보충",
-    nutritionAfter: "운동 후 단백질 20g 전후",
-  },
-  {
-    title: "10km 전략",
-    training: ["지구력 러닝", "템포런", "10km 페이스 훈련"],
-    nutritionBefore: "러닝 전 소량 탄수화물 보강",
-    nutritionAfter: "단백질과 탄수화물 조합",
-  },
-  {
-    title: "하프 마라톤 전략",
-    training: ["롱런", "레이스 페이스 훈련", "글리코겐 관리"],
-    nutritionBefore: "훈련 전 스포츠음료 또는 간단한 탄수화물",
-    nutritionAfter: "운동 후 단백질 20~25g",
-  },
-  {
-    title: "풀 마라톤 전략",
-    training: ["장거리 롱런", "30km 전후 적응", "주간 회복 관리"],
-    nutritionBefore: "장거리 전 탄수화물 로딩",
-    nutritionAfter: "운동 후 단백질 25~30g",
-  },
+  { title: "5km 전략", training: ["짧은 인터벌", "강도 훈련", "5km 페이스 적응"], nutritionBefore: "가벼운 탄수화물 보충", nutritionAfter: "운동 후 단백질 20g 전후" },
+  { title: "10km 전략", training: ["지구력 러닝", "템포런", "10km 페이스 훈련"], nutritionBefore: "러닝 전 소량 탄수화물 보강", nutritionAfter: "단백질과 탄수화물 조합" },
+  { title: "하프 마라톤 전략", training: ["롱런", "레이스 페이스 훈련", "글리코겐 관리"], nutritionBefore: "훈련 전 스포츠음료나 간단한 탄수화물", nutritionAfter: "운동 후 단백질 20~25g" },
+  { title: "풀 마라톤 전략", training: ["장거리 롱런", "30km 전후 적응", "주간 회복 관리"], nutritionBefore: "장거리 전 탄수화물 로딩", nutritionAfter: "운동 후 단백질 25~30g" },
 ];
 
 const proteinReasons = [
-  "거리 훈련이 길어질수록 근육 회복 속도가 다음 훈련 적응에 더 중요해집니다.",
+  "거리 훈련이 길어질수록 근육 회복 속도가 다음 훈련 적응에 중요해집니다.",
   "장거리 러닝 후에는 전체 피로가 커서 회복 루틴을 빠르게 챙기는 편이 좋습니다.",
   "운동 후 20~30g 단백질 섭취는 회복 루틴을 만들기 위한 가장 실전적인 출발점입니다.",
 ];
@@ -52,28 +32,19 @@ export default function MarathonDistanceStrategyPage() {
   return (
     <div className="min-h-screen bg-white">
       <Header />
-
       <section className="w-full border-t border-b bg-[var(--hero-bg)]" style={{ borderColor: "var(--hero-border)" }}>
         <div className="mx-auto max-w-[1200px] px-4 py-5 md:px-6 md:py-6">
           <div className="flex flex-wrap items-center gap-1.5 text-xs text-[var(--foreground-muted)]">
-            <Link href="/guides" className="hover:text-[var(--accent)]">
-              가이드
-            </Link>
+            <Link href="/guides" className="hover:text-[var(--accent)]">Guides</Link>
             <span>/</span>
-            <Link href="/guides/fitness-lifestyle" className="hover:text-[var(--accent)]">
-              운동 & 라이프스타일
-            </Link>
+            <Link href="/guides/fitness-lifestyle" className="hover:text-[var(--accent)]">운동 & 라이프스타일</Link>
             <span>/</span>
             <span>마라톤 거리별 영양과 훈련 전략</span>
           </div>
-
           <div className="mt-3">
             <span className="rounded-md bg-[#f8ede7] px-2 py-0.5 text-[11px] font-semibold tracking-wide text-[#8a4b2f]">TRACK D</span>
           </div>
-
-          <h1 className="mt-3 text-2xl font-bold leading-tight text-[var(--foreground)] md:text-3xl">
-            마라톤 거리별 영양과 훈련 전략
-          </h1>
+          <h1 className="mt-3 text-2xl font-bold leading-tight text-[var(--foreground)] md:text-3xl">마라톤 거리별 영양과 훈련 전략</h1>
           <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
             5km, 10km, 하프, 풀 마라톤은 훈련 목적과 에너지 전략이 서로 다릅니다.
             <br />
@@ -81,7 +52,6 @@ export default function MarathonDistanceStrategyPage() {
           </p>
         </div>
       </section>
-
       <main className="mx-auto max-w-[1200px] px-4 py-8 md:px-6">
         <div className="space-y-6">
           <section className="rounded-[28px] border border-[#e2ebe4] bg-[#f7fbf8] px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
@@ -100,12 +70,7 @@ export default function MarathonDistanceStrategyPage() {
                   {distanceRows.map((row) => (
                     <tr key={row[0]} className="border-b border-[#f0eeeb] last:border-b-0">
                       {row.map((cell, index) => (
-                        <td
-                          key={cell}
-                          className={`px-3 py-3 ${
-                            index === 0 ? "whitespace-nowrap font-medium text-[var(--foreground)]" : "text-[var(--foreground-muted)]"
-                          }`}
-                        >
+                        <td key={cell} className={`px-3 py-3 ${index === 0 ? "whitespace-nowrap font-medium text-[var(--foreground)]" : "text-[var(--foreground-muted)]"}`}>
                           {cell}
                         </td>
                       ))}
@@ -115,7 +80,6 @@ export default function MarathonDistanceStrategyPage() {
               </table>
             </div>
           </section>
-
           <section className="rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
             <h2 className="text-xl font-bold text-[var(--foreground)]">거리별 전략을 한 번에 보기</h2>
             <div className="mt-5 grid gap-3 md:grid-cols-2">
@@ -131,22 +95,13 @@ export default function MarathonDistanceStrategyPage() {
                     ))}
                   </ul>
                   <div className="mt-4 rounded-xl border border-[#dce8df] bg-white px-3 py-3 text-sm leading-6 text-[var(--foreground-muted)]">
-                    <p>
-                      <span className="font-semibold text-[var(--foreground)]">운동 전</span>
-                      {" : "}
-                      {item.nutritionBefore}
-                    </p>
-                    <p className="mt-1">
-                      <span className="font-semibold text-[var(--foreground)]">운동 후</span>
-                      {" : "}
-                      {item.nutritionAfter}
-                    </p>
+                    <p><span className="font-semibold text-[var(--foreground)]">운동 전</span>{" : "}{item.nutritionBefore}</p>
+                    <p className="mt-1"><span className="font-semibold text-[var(--foreground)]">운동 후</span>{" : "}{item.nutritionAfter}</p>
                   </div>
                 </article>
               ))}
             </div>
           </section>
-
           <section className="rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
             <h2 className="text-xl font-bold text-[var(--foreground)]">운동 후 단백질이 중요한 이유</h2>
             <blockquote className="mt-4 rounded-xl border border-[#dce8df] bg-[#f7fbf8] px-4 py-4 text-sm leading-6 text-[var(--foreground-muted)]">
@@ -154,33 +109,19 @@ export default function MarathonDistanceStrategyPage() {
             </blockquote>
             <div className="mt-5 grid gap-3 md:grid-cols-3">
               {proteinReasons.map((item) => (
-                <article key={item} className="rounded-xl border border-[#dce8df] bg-[#f6fbf7] p-4 text-sm leading-6 text-[var(--foreground-muted)]">
-                  {item}
-                </article>
+                <article key={item} className="rounded-xl border border-[#dce8df] bg-[#f6fbf7] p-4 text-sm leading-6 text-[var(--foreground-muted)]">{item}</article>
               ))}
             </div>
           </section>
-
           <section className="rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
             <h2 className="text-xl font-bold text-[var(--foreground)]">관련 가이드</h2>
             <div className="mt-5 flex flex-wrap gap-3">
-              <Link
-                href="/curation/running"
-                className="inline-flex items-center justify-center rounded-xl border border-[#2d6a4f] bg-[#2d6a4f] px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#24543d]"
-              >
-                러닝용 단백질 제품 보기
-              </Link>
-              <Link
-                href="/guides/product-selection-comparison/protein-drink-guide"
-                className="inline-flex items-center justify-center rounded-xl border border-[#d9e7dc] bg-white px-5 py-3 text-sm font-semibold text-[#24543d] transition-colors hover:bg-[#eef7f1]"
-              >
-                단백질 음료 비교 가이드
-              </Link>
+              <Link href="/curation/running" className="inline-flex items-center justify-center rounded-xl border border-[#2d6a4f] bg-[#2d6a4f] px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#24543d]">러닝용 단백질 제품 보기</Link>
+              <Link href="/guides/product-selection-comparison/protein-drink-guide" className="inline-flex items-center justify-center rounded-xl border border-[#d9e7dc] bg-white px-5 py-3 text-sm font-semibold text-[#24543d] transition-colors hover:bg-[#eef7f1]">단백질 음료 비교 가이드</Link>
             </div>
           </section>
         </div>
       </main>
-
       <Footer />
     </div>
   );

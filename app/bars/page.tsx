@@ -2,6 +2,7 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import HeroSection from "../components/HeroSection";
 import ProductListWithFilters from "../components/ProductListWithFilters";
+import type { ProductCategory } from "../lib/categories";
 import { getProductsByCategoryAsync } from "../lib/productData";
 
 export const metadata = {
@@ -17,7 +18,18 @@ interface BarsPageProps {
 export default async function BarsPage({ searchParams }: BarsPageProps) {
   const params = (await searchParams) ?? {};
   const curation = typeof params.curation === "string" ? params.curation : undefined;
-  const products = await getProductsByCategoryAsync("bar");
+  const [drinks, products, yogurts, shakes] = await Promise.all([
+    getProductsByCategoryAsync("drink"),
+    getProductsByCategoryAsync("bar"),
+    getProductsByCategoryAsync("yogurt"),
+    getProductsByCategoryAsync("shake"),
+  ]);
+  const categoryCounts: Record<ProductCategory, number> = {
+    drink: drinks.length,
+    bar: products.length,
+    yogurt: yogurts.length,
+    shake: shakes.length,
+  };
 
   return (
     <div className="min-h-screen bg-white">
@@ -29,6 +41,7 @@ export default async function BarsPage({ searchParams }: BarsPageProps) {
           productType="bar"
           products={products}
           curationSlug={curation}
+          categoryCounts={categoryCounts}
         />
       </main>
 

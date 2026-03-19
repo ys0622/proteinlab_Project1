@@ -1,0 +1,104 @@
+[
+  {
+    "slug": "flymill-proteinshake-choco-45",
+    "brand": "플라이밀",
+    "name": "프로틴쉐이크 (초코)",
+    "capacity": "45g",
+    "variant": "파우치형",
+    "tags": [
+      "파우치형",
+      "쉐이크"
+    ],
+    "proteinPerServing": 22,
+    "calories": 150,
+    "sugar": 3.6,
+    "fat": 2.7,
+    "sodium": 216.9,
+    "density": "14.7g/100kcal",
+    "productUrl": "#",
+    "productType": "shake",
+    "gradeTags": [],
+    "flavor": "초코",
+    "nutritionBasis": "per_pack",
+    "nutritionPerBottle": {
+      "caloriesKcal": 150,
+      "proteinG": 22,
+      "carbsG": 16,
+      "sugarsG": 3.6,
+      "fatG": 2.7,
+      "satFatG": 1.1,
+      "transFatG": 0,
+      "cholesterolMg": 13.6,
+      "sodiumMg": 216.9,
+      "fiberG": 5.6
+    }
+  },
+  {
+    "slug": "labnosh-slimshake-double-choco-45",
+    "brand": "랩노쉬",
+    "name": "슬림쉐이크 (더블초코)",
+    "capacity": "45g",
+    "variant": "파우치형",
+    "tags": [
+      "파우치형",
+      "쉐이크"
+    ],
+    "proteinPerServing": 20,
+    "calories": 165,
+    "sugar": 1.1,
+    "fat": 3.4,
+    "sodium": 189.5,
+    "density": "12.1g/100kcal",
+    "productUrl": "#",
+    "productType": "shake",
+    "gradeTags": [],
+    "flavor": "더블초코",
+    "nutritionBasis": "per_pack",
+    "nutritionPerBottle": {
+      "caloriesKcal": 165,
+      "proteinG": 20,
+      "carbsG": 16.2,
+      "sugarsG": 1.1,
+      "fatG": 3.4,
+      "satFatG": 2.2,
+      "transFatG": 0,
+      "cholesterolMg": 33.2,
+      "sodiumMg": 189.5,
+      "fiberG": 6.2
+    }
+  },
+  {
+    "slug": "danbaekhani-proteinshake-signature-40",
+    "brand": "단백하니",
+    "name": "단백질쉐이크 (시그니처)",
+    "capacity": "40g",
+    "variant": "파우치형",
+    "tags": [
+      "파우치형",
+      "쉐이크"
+    ],
+    "proteinPerServing": 22,
+    "calories": 155,
+    "sugar": 2,
+    "fat": 2.8,
+    "sodium": 210,
+    "density": "14.2g/100kcal",
+    "productUrl": "#",
+    "productType": "shake",
+    "gradeTags": [],
+    "flavor": "시그니처",
+    "nutritionBasis": "per_pack",
+    "nutritionPerBottle": {
+      "caloriesKcal": 155,
+      "proteinG": 22,
+      "carbsG": 12,
+      "sugarsG": 2,
+      "fatG": 2.8,
+      "satFatG": 0.8,
+      "transFatG": 0,
+      "cholesterolMg": 0,
+      "sodiumMg": 210,
+      "fiberG": 4
+    }
+  }
+]

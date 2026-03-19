@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import CompareTable from "../components/CompareTable";
@@ -12,12 +12,14 @@ import { getProductBySlug } from "../data/products";
 import { getProductImageUrl } from "../lib/productImage";
 import type { CompareColumnId } from "../lib/compareColumns";
 import { COMPARE_COLUMNS } from "../lib/compareColumns";
+import type { ProductDetailProps } from "../data/products";
 
 const MAX_PRODUCTS = 4;
 
 export default function ComparePage() {
   const router = useRouter();
   const { selectedSlugs, remove, clear } = useCompare();
+  const [products, setProducts] = useState<ProductDetailProps[]>([]);
   const [visibleIds, setVisibleIds] = useState<CompareColumnId[]>([
     "proteinSource",
     "proteinPerServing",
@@ -30,13 +32,26 @@ export default function ComparePage() {
     "priceLinks",
   ]);
 
-  const products = useMemo(
-    () =>
-      selectedSlugs
-        .map((slug) => getProductBySlug(slug))
-        .filter((p): p is NonNullable<typeof p> => p != null),
-    [selectedSlugs]
-  );
+  useEffect(() => {
+    if (selectedSlugs.length === 0) {
+      setProducts([]);
+      return;
+    }
+    const fallback = selectedSlugs
+      .map((slug) => getProductBySlug(slug))
+      .filter((p): p is NonNullable<typeof p> => p != null);
+    setProducts(fallback);
+
+    const slugs = selectedSlugs.join(",");
+    fetch(`/api/products/compare?slugs=${encodeURIComponent(slugs)}`)
+      .then((res) => res.json())
+      .then((data: { products?: ProductDetailProps[] }) => {
+        if (Array.isArray(data.products) && data.products.length > 0) {
+          setProducts(data.products);
+        }
+      })
+      .catch(() => {});
+  }, [selectedSlugs]);
 
   const toggleColumn = (id: CompareColumnId) => {
     setVisibleIds((prev) =>

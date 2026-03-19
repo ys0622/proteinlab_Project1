@@ -5,6 +5,7 @@ import { useSearchParams } from "next/navigation";
 import Image from "next/image";
 import dynamic from "next/dynamic";
 import ClipboardPasteZone from "../components/ClipboardPasteZone";
+import type { ProductCategory } from "@/app/lib/categories";
 
 const ImageEditor = dynamic(() => import("../components/ImageEditor"), { ssr: false });
 
@@ -12,7 +13,7 @@ interface Product {
   slug: string;
   name: string;
   brand: string;
-  productType?: string;
+  productType?: ProductCategory;
   imageStatus?: string;
   capacity?: string;
   manufacturer?: string;
@@ -51,18 +52,18 @@ type WorkMode = "list" | "upload";
 function ImageWorkflowContent() {
   const searchParams = useSearchParams();
   const initSlug = searchParams.get("slug") ?? "";
-  const initType = (searchParams.get("type") ?? "drink") as "drink" | "bar";
+  const initType = (searchParams.get("type") ?? "drink") as ProductCategory;
 
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
   const [loadError, setLoadError] = useState("");
   const [filter, setFilter] = useState<"all" | "no-image">("no-image");
-  const [typeFilter, setTypeFilter] = useState<"all" | "drink" | "bar">(initSlug ? initType : "all");
+  const [typeFilter, setTypeFilter] = useState<"all" | ProductCategory>(initSlug ? initType : "all");
   const [query, setQuery] = useState("");
   const [mode, setMode] = useState<WorkMode>(initSlug ? "upload" : "list");
 
   const [selectedSlug, setSelectedSlug] = useState(initSlug);
-  const [selectedType, setSelectedType] = useState<"drink" | "bar">(initType);
+  const [selectedType, setSelectedType] = useState<ProductCategory>(initType);
 
   const [imageState, setImageState] = useState<ImageState>({
     original: null,
@@ -89,6 +90,8 @@ function ImageWorkflowContent() {
         const all: Product[] = [
           ...(data.drinks || []).map((p: Product) => ({ ...p, productType: "drink" })),
           ...(data.bars || []).map((p: Product) => ({ ...p, productType: "bar" })),
+          ...(data.yogurts || []).map((p: Product) => ({ ...p, productType: "yogurt" })),
+          ...(data.shakes || []).map((p: Product) => ({ ...p, productType: "shake" })),
         ];
         setProducts(all);
       } catch (error) {
@@ -115,7 +118,7 @@ function ImageWorkflowContent() {
 
   const selectProduct = (p: Product) => {
     setSelectedSlug(p.slug);
-    setSelectedType((p.productType ?? "drink") as "drink" | "bar");
+    setSelectedType((p.productType ?? "drink") as ProductCategory);
     setImageState({ original: null, processed: null, preview: null });
     setUploadMsg("");
     setMode("upload");
@@ -562,8 +565,10 @@ function ImageWorkflowContent() {
                         onChange={(e) => setSelectedType(e.target.value as "drink" | "bar")}
                         className="rounded-lg border border-[var(--border)] bg-[var(--background)] px-3 py-2 text-sm"
                       >
-                        <option value="drink">단백질 음료</option>
-                        <option value="bar">단백질 바</option>
+                        <option value="drink">음료</option>
+                        <option value="bar">바</option>
+                        <option value="yogurt">요거트</option>
+                        <option value="shake">쉐이크</option>
                       </select>
                       <button
                         onClick={handleUpload}

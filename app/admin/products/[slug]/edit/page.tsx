@@ -5,6 +5,8 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import ClipboardPasteZone from "../../../components/ClipboardPasteZone";
+import LinkRecommendationSection from "@/app/components/admin/LinkRecommendationSection";
+import { ORDERED_CATEGORY_IDS, getCategoryLabel } from "@/app/lib/categories";
 
 interface NutritionPerBottle {
   caloriesKcal?: number;
@@ -38,7 +40,11 @@ interface Product {
   density?: string;
   calorieDensity?: string;
   gradeTags?: string[];
+  /** @deprecated 쿠팡 링크는 coupangUrl 사용 */
   productUrl?: string;
+  coupangUrl?: string;
+  naverUrl?: string;
+  officialUrl?: string;
   nutritionPerBottle?: NutritionPerBottle;
   adminMemo?: string;
 }
@@ -271,8 +277,11 @@ export default function ProductEditPage({
                 onChange={(e) => set("productType", e.target.value)}
                 className={inputCls}
               >
-                <option value="drink">단백질 음료</option>
-                <option value="bar">단백질 바</option>
+                {ORDERED_CATEGORY_IDS.map((category) => (
+                  <option key={category} value={category}>
+                    {getCategoryLabel(category)}
+                  </option>
+                ))}
               </select>
             </Field>
             <Field label="맛 / 플레이버">
@@ -445,16 +454,59 @@ export default function ProductEditPage({
         {/* D. 링크 */}
         <section className="rounded-xl border border-[var(--border)] bg-[var(--background-card)] p-5">
           <h2 className="text-sm font-semibold text-[var(--foreground)] mb-4">D. 링크</h2>
-          <div className="space-y-3">
+          <div className="space-y-4">
             <Field
-              label="구매 링크 (productUrl)"
-              hint="쿠팡 버튼에 연결할 쿠팡파트너스 상품 링크를 입력하세요. 비워두면 일반 쿠팡 검색으로 연결됩니다."
+              label="쿠팡 링크 (coupangUrl)"
+              hint="쿠팡 버튼에 연결할 쿠팡파트너스 상품 링크. 비워두면 비활성화. (link.coupang.com 또는 coupang.com/vp/products)"
             >
               <input
-                value={product.productUrl ?? ""}
-                onChange={(e) => set("productUrl", e.target.value)}
+                value={product.coupangUrl ?? product.productUrl ?? ""}
+                onChange={(e) => set("coupangUrl", e.target.value)}
+                className={inputCls}
+                placeholder="https://link.coupang.com/... 또는 https://www.coupang.com/vp/products/..."
+              />
+              <LinkRecommendationSection
+                type="coupang"
+                brand={product.brand ?? ""}
+                name={product.name ?? ""}
+                currentValue={product.coupangUrl ?? product.productUrl ?? ""}
+                onSelect={(url) => set("coupangUrl", url)}
+              />
+            </Field>
+            <Field
+              label="네이버 링크 (naverUrl)"
+              hint="네이버쇼핑/스마트스토어 상품 상세 URL. 비워두면 비활성화."
+            >
+              <input
+                value={product.naverUrl ?? ""}
+                onChange={(e) => set("naverUrl", e.target.value)}
+                className={inputCls}
+                placeholder="https://smartstore.naver.com/... 또는 https://shopping.naver.com/..."
+              />
+              <LinkRecommendationSection
+                type="naver"
+                brand={product.brand ?? ""}
+                name={product.name ?? ""}
+                currentValue={product.naverUrl ?? ""}
+                onSelect={(url) => set("naverUrl", url)}
+              />
+            </Field>
+            <Field
+              label="공식몰 링크 (officialUrl)"
+              hint="브랜드 공식몰 상품 상세 URL. 비워두면 비활성화."
+            >
+              <input
+                value={product.officialUrl ?? ""}
+                onChange={(e) => set("officialUrl", e.target.value)}
                 className={inputCls}
                 placeholder="https://..."
+              />
+              <LinkRecommendationSection
+                type="official"
+                brand={product.brand ?? ""}
+                name={product.name ?? ""}
+                currentValue={product.officialUrl ?? ""}
+                onSelect={(url) => set("officialUrl", url)}
               />
             </Field>
           </div>

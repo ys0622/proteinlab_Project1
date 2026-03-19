@@ -1,0 +1,882 @@
+[
+  {
+    "key": "product-override:newcare-all-protein-choco-245",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:newcare-all-protein-banana-245",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:newcare-all-protein-savory-245",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:newcare-all-protein-plant-savory-250",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:danbaek-drink-coffee-250",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:sellex-profit-milk-vanilla-250",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:sellex-profit-mocha-chocolate-250",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:sellex-profit-banana-250",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:danbaek-water-apple-400",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:hymune-balance-active-milkshake-deepchoco-250",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:danbaek-water-peach-250",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:hymune-balance-active-deepchoco-250",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:mymil-furotein-choco-250",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:mymil-furotein-gosohan-250",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:mymil-furotein-goguma-250",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:ultive-protein-chestnut-250",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:ultive-protein-rice-250",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:ultive-protein-pistachio-250",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:ultive-protein-royalmilktea-250",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:ultive-vegan-protein-banana-250",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:ultive-vegan-protein-choco-250",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:hymune-balance-active-night-tiramisu-zero-250",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:hymune-balance-active-vanilla-bonbon-zero-250",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:hymune-balance-active-double-shot-coffee-250",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:sellex-profit-whey-protein-americano-330",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:sellex-profit-strawberry-choco-250",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:sellex-profit-sports-choco-330",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:calobye-sparkling-grape-340",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:calobye-sparkling-pinkgrapefruit-340",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:takefit-pro-lemon-500",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:takefit-pro-flatpeach-500",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:takefit-pro-shinemuscato-500",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:newcare-olprotein-water-lemon-350",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:newcare-olprotein-water-apple-350",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:oatmont-protein-savory-250",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:oatmont-protein-choco-250",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:oatmont-protein-cookiecream-250",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:hymune-protein-balance-plant-highprotein-190",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:danbaek-drink-banana-250",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:danbaek-drink-milktea-250",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:danbaek-drink-strawberry-250",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:takefit-max-goso-250",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:takefit-max-choco-250",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:takefit-max-banana-250",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:takefit-max-pumpkin-250",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:newcare-all-protein-41g",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:danbaek-drink-chocolate-250",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:7eleven-junghoo-choco-protein-330",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:7eleven-junghoo-vanilla-protein-330",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:danbaek-drink-melon-250",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:danbaek-drink-doublechoco-350",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:dryou-protein-drink-choco-250",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:danbaek-drink-caramel-250",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:danbaek-drink-darkchoco-330",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:takefit-monster-goso-350",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:takefit-monster-chocobanana-350",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:sellex-profit-peach-icedtea-330",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:greenbia-proteinmeal-active-choco-250",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:greenbia-proteinmeal-active-almond-walnut-250",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:sellex-protein-lactosefree-original-190",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:sellex-protein-lowsugar-190",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:hymune-balance-active-banana-250",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:dryou-protein-drink-banana-250",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:pasteur-easyprotein-lowsugar-choco-250",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:solveandgo-protamin-savory-250",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:yonsei-severance-a2-protein-choco-190",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:yonsei-severance-a2-protein-coffee-190",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:dryou-protein-drink-strawberry-250",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:dryou-protein-40g-strawberry-350",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:hymune-balance-active-original-250",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:seoulmilk-protein-energy-coffee-240",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:solveandgo-protamin-choco-250",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:hymune-protein-balance-lowsugar-190",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:dryou-protein-40g-choco-350",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:hymune-balance-active-cookie-cream-250",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:labnosh-protein-latte-350",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:labnosh-protein-melon-350",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:hymune-balance-active-strawberry-250",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:seoulmilk-protein-energy-choco-240",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:hymune-protein-balance-choco-190",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:labnosh-protein-cacao-350",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:labnosh-protein-strawberry-350",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:calobye-perfect-powershake-strawberry-250",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:yonsei-severance-a2-protein-original-190",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:labnosh-protein-banana-350",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:labnosh-protein-cookie-cream-350",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:labnosh-protein-perfect-grain-350",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:labnosh-protein-perfect-choco-350",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:labnosh-protein-perfect-banana-350",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:calobye-perfect-powershake-choco-250",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:hamsoa-minions-proteinact-choco-330",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:mymil-newprotein-original-190",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:mymil-newprotein-deepchoco-190",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:mymil-newprotein-goatmilk-190",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:hymune-protein-balance-190",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:pasteur-easyprotein-cereal-250",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:hymune-protein-balance-black-sesame-190",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:sellex-protein-original-190",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:hymune-protein-balance-plus-190",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:danbaek-water-grapefruit-400",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:mymil-newprotein-banana-190",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:oneuldanbaek-caramel-latte-250",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:oneuldanbaek-choco-latte-250",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:oneuldanbaek-dolce-latte-250",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:dryou-proteinbar-pro-3nuts-crunch",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:dryou-proteinbar-pro-choco-classic",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:dryou-proteinbar-pro-crunch",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:kirkland-proteinbar-choco-brownie",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:kirkland-proteinbar-choco-chip-cookie-dough-60",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:benof-proteinbar-chunky-choco",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:benof-proteinbar-truffle-peanutbutter-choco",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:benof-softbar-peanutbutter",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:benof-softbar-cookie-cream",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:benof-softbar-chocolate-caramel",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:benof-softbar-cacao",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:benof-softbar-black-sesame",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:benof-softbar-injeolmi",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:benof-softbar-roasted-sweetpotato",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:benof-softbar-berry-cheesecake",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:syntha6-crispy-choco",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:bsn-protein-crisp-peanut-butter-crunch",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:bsn-protein-crisp-salted-toffee-pretzel",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:quest-nutrition-protein-bar-double-chocolate-chunk-60",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:quest-nutrition-protein-bar-chocolate-peanutbutter-60",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:quest-nutrition-protein-bar-oatmeal-chocolate-chip-60",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:quest-nutrition-protein-bar-deep-chocolate-chip-cookie-dough-60",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:quest-nutrition-protein-bar-lemon-cake-60",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:quest-nutrition-protein-bar-mint-chocolate-chunk-60",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:quest-nutrition-protein-bar-cookie-cream-60",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:quest-nutrition-protein-bar-chocolate-chip-cookie-dough-60",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:quest-nutrition-protein-bar-blueberry-muffin-60",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:quest-nutrition-protein-bar-white-chocolate-raspberry-60",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:quest-nutrition-protein-bar-deep-dish-cookie-cream-60",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:quest-nutrition-protein-bar-smores-60",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:post-proteinbar",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:proteinbangatgan-harudanbaekbar-blacksesame",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:ondanbaek-protein-bar-apple-cranberry-50",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:ondanbaek-protein-bar-chocolate-fudge-50",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:proteinbangatgan-harudanbaekbar-cheeseberry",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:himnaego-protein-bar-dark-chocolate-50",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:nobrand-proteinbar-choco",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:thedanbaek-crunchbar-choco",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:selex-proteinbar-berryoat",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:thedanbaek-crunchbar-peanutbutter",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:thedanbaek-mildbar-almondcookie",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:hymune-activebar-nuts",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:mymil-new-proteinbar",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:myprotein-soft-lemon-earlgrey",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:myprotein-soft-caramel-choco",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:myprotein-soft-strawberry-yogurt",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:proteinbangatgan-harudanbaekbar-jetchococake",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:dryou-proteinbar-bite-crunch",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:dryou-proteinbar-nuts",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:dryou-proteinbar-pro-bite-choco-classic",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:danbaekhani-protein-bar-choco-38",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:danbaekhani-protein-bar-signature-31",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:danbaekhani-protein-bar-berry-30",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:danbaekhani-protein-bar-peanutbutter-38",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:danbaekhani-protein-bar-matcha-choco-38",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:labnosh-foodbar-mildchoco",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:cralo-plant-proteinbar",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:crown-highprotein-chocobar",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:calobye-daily-nuts-proteinbar",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:organica-ola-chewy-protein-bar-berry-almond-35",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:kellogg-protein-granolabar-savory",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:kellogg-proteinbark-nuts",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:kellogg-proteinbark-caramel-nuts",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:kellogg-proteinbark-hazelnut-darkchoco",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:dryou-proteinbar-mini-nuts",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:organica-ola-chewy-protein-bar-peanut-cacao-35",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:post-proteinbar-mini",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:gomgom-proteinbar-mini",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:nobrand-proteinbar-mini",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:lottewellfood-easyprotein-highprotein-crispy",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:lottewellfood-easyprotein-energy-bar",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:yopro-plain-150",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:yopro-blueberry-150",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:yoplait-protein-blueberry-100",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:yoplait-protein-plain-210",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:yoplait-protein-strawberry-banana-210",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:yoplait-protein-max-210",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:who-greek-plain-80",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":\"https://foodismall.com/product/%ED%9B%84%EB%94%94%EC%8A%A4-%EA%B7%B8%EB%A6%AD%EC%9A%94%EA%B1%B0%ED%8A%B8-%ED%94%8C%EB%A0%88%EC%9D%B8-80gx16ea/278/\"}"
+  },
+  {
+    "key": "product-override:who-greek-plain-450",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":\"https://foodismall.com/product/%ED%9B%84%EB%94%94%EC%8A%A4-%EA%B7%B8%EB%A6%AD%EC%9A%94%EA%B1%B0%ED%8A%B8-%ED%94%8C%EB%A0%88%EC%9D%B8-450g/2296/\"}"
+  },
+  {
+    "key": "product-override:maeil-bio-greek-unsweetened-150",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:sangha-organic-greek-unsweetened-80",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:pulmuone-dannon-greek-unsweetened-90",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:yoplait-protein-plain-100",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:sangha-organic-greek-plain-80",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:sangha-organic-greek-unsweetened-400",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:who-highprotein-greek-unsweetened-400",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":\"https://foodismall.com/product/%ED%9B%84%EB%94%94%EC%8A%A4-%EA%B3%A0%EB%8B%A8%EB%B0%B1-%EB%AC%B4%EA%B0%80%EB%8B%B9-%EA%B7%B8%EB%A6%AD%EC%9A%94%EA%B1%B0%ED%8A%B8-400g/4496/\"}"
+  },
+  {
+    "key": "product-override:yozm-plain-greek-450",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":\"https://yozm.co.kr/product/%EC%9A%94%EC%A6%98-%EA%B7%B8%EB%A6%AD%EC%9A%94%EA%B1%B0%ED%8A%B8-%ED%94%8C%EB%A0%88%EC%9D%B8-450g/68/category/112/display/1/\"}"
+  },
+  {
+    "key": "product-override:yozm-plain-greek-800",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":\"https://yozm.co.kr/product/%EC%9A%94%EC%A6%98-%EA%B7%B8%EB%A6%AD%EC%9A%94%EA%B1%B0%ED%8A%B8-%ED%94%8C%EB%A0%88%EC%9D%B8-800g/103/category/112/display/1/\"}"
+  },
+  {
+    "key": "product-override:yozm-soft-plain-500",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":\"https://yozm.co.kr/product/%EC%9A%94%EC%A6%98-%EA%B7%B8%EB%A6%AD%EC%9A%94%EA%B1%B0%ED%8A%B8-%EC%86%8C%ED%94%84%ED%8A%B8-%ED%94%8C%EB%A0%88%EC%9D%B8-500g/116/category/112/display/1/\"}"
+  },
+  {
+    "key": "product-override:greekday-light-100",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":\"https://m.greekday.co.kr/product/%EA%B7%B8%EB%A6%AD%EB%8D%B0%EC%9D%B4-%EA%B7%B8%EB%A6%AD%EC%9A%94%EA%B1%B0%ED%8A%B8-%EB%9D%BC%EC%9D%B4%ED%8A%B8-100g/420\"}"
+  },
+  {
+    "key": "product-override:greekday-light-450",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":\"https://greekday.co.kr/product/%EA%B7%B8%EB%A6%AD%EB%8D%B0%EC%9D%B4-%EA%B7%B8%EB%A6%AD%EC%9A%94%EA%B1%B0%ED%8A%B8-%EB%9D%BC%EC%9D%B4%ED%8A%B8-450g/13/\"}"
+  },
+  {
+    "key": "product-override:greekday-light-800",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":\"https://m.greekday.co.kr/product/%EA%B7%B8%EB%A6%AD%EB%8D%B0%EC%9D%B4-%EA%B7%B8%EB%A6%AD%EC%9A%94%EA%B1%B0%ED%8A%B8-%EB%9D%BC%EC%9D%B4%ED%8A%B8-800g/24/\"}"
+  },
+  {
+    "key": "product-override:greekday-signature-100",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":\"https://m.greekday.co.kr/product/%EA%B7%B8%EB%A6%AD%EB%8D%B0%EC%9D%B4-%EA%B7%B8%EB%A6%AD%EC%9A%94%EA%B1%B0%ED%8A%B8-%EC%8B%9C%EA%B7%B8%EB%8B%88%EC%B2%98-100g/419\"}"
+  },
+  {
+    "key": "product-override:greekday-signature-450",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":\"https://m.greekday.co.kr/product/%EA%B7%B8%EB%A6%AD%EB%8D%B0%EC%9D%B4-%EA%B7%B8%EB%A6%AD%EC%9A%94%EA%B1%B0%ED%8A%B8-%EC%8B%9C%EA%B7%B8%EB%8B%88%EC%B2%98-450g/12\"}"
+  },
+  {
+    "key": "product-override:greekday-signature-800",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":\"https://m.greekday.co.kr/product/%EA%B7%B8%EB%A6%AD%EB%8D%B0%EC%9D%B4-%EA%B7%B8%EB%A6%AD%EC%9A%94%EA%B1%B0%ED%8A%B8-%EC%8B%9C%EA%B7%B8%EB%8B%88%EC%B2%98-800g/11/\"}"
+  },
+  {
+    "key": "product-override:greekday-signature-yuja-100",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":\"https://greekday.co.kr/product/%EA%B7%B8%EB%A6%AD%EB%8D%B0%EC%9D%B4-%EC%8B%9C%EA%B7%B8%EB%8B%88%EC%B2%98-%EC%9C%A0%EC%9E%90-100g/433/\"}"
+  },
+  {
+    "key": "product-override:maeil-bio-greek-unsweetened-400",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:maeil-bio-greek-unsweetened-80",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:maeil-bio-greek-unsweetened-800",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:maeil-bio-greek-plain-150",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:maeil-bio-greek-plain-400",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:maeil-bio-greek-delight-banana-80",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":\"https://direct.maeil.com/m/product/productView.do?productCode=P20719\"}"
+  },
+  {
+    "key": "product-override:maeil-bio-greek-togo-plain-120",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:maeil-bio-greek-togo-honey-120",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:maeil-bio-greek-drink-plain-190",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:maeil-bio-greek-drink-banana-190",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:maeil-bio-greek-drink-unsweetened-710",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:maeil-bio-greek-drink-plain-710",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:maeil-bio-greek-drink-banana-710",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:sangha-organic-greek-apple-kale-120",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:sangha-organic-greek-blueberry-kale-120",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:who-organic-greek-unsweetened-450",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":\"https://foodismall.com/product/%ED%9B%84%EB%94%94%EC%8A%A4-%EC%9C%A0%EA%B8%B0%EB%86%8D-%EA%B7%B8%EB%A6%AD%EC%9A%94%EA%B1%B0%ED%8A%B8-%EB%8B%AC%EC%A7%80%EC%95%8A%EC%9D%80-%ED%94%8C%EB%A0%88%EC%9D%B8-450g/3714/\"}"
+  },
+  {
+    "key": "product-override:lookt-icelandic-mild-100",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":\"https://lukt.co.kr/shop_view/209\"}"
+  },
+  {
+    "key": "product-override:lookt-icelandic-thick-100",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":\"https://lukt.co.kr/shop_view/208\"}"
+  },
+  {
+    "key": "product-override:lookt-icelandic-mild-450",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  },
+  {
+    "key": "product-override:lookt-icelandic-thick-450",
+    "value": "{\"coupangUrl\":null,\"naverUrl\":null,\"officialUrl\":null}"
+  }
+]

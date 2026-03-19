@@ -1,9 +1,10 @@
-﻿"use client";
+"use client";
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
 import type { ProductDetailProps } from "../data/products";
+import { type ProductCategory } from "../lib/categories";
 import { applyCurationToCategoryProducts } from "../lib/curationSystem";
 import {
   defaultBarFilters,
@@ -20,6 +21,7 @@ import {
   type YogurtFilters,
 } from "../lib/productFilters";
 import { getPopularityScore } from "../lib/productPopularity";
+import CategoryTabs from "./CategoryTabs";
 import FilterSection from "./FilterSection";
 import ProductCard from "./ProductCard";
 import QuickCuration from "./QuickCuration";
@@ -29,28 +31,12 @@ import SortBar, { sortOptions, type SortOptionValue } from "./SortBar";
 
 const PAGE_SIZE = 20;
 
-const CATEGORY_INFO = {
-  drink: {
-    count: 104,
-    description: "바로 마실 수 있는 고단백 RTD 제품 비교",
-    mobileDescription: "바로 마실 수 있는 고단백 RTD 제품을 비교합니다.",
-  },
-  bar: {
-    count: 71,
-    description: "간편하게 단백질을 보충할 수 있는 바 형태 제품 비교",
-    mobileDescription: "간편하게 단백질을 보충할 수 있는 바 형태 제품을 비교합니다.",
-  },
-  yogurt: {
-    count: 45,
-    description: "그릭요거트, 드링킹 요거트 등 단백질 함량이 강화된 요거트 제품 비교",
-    mobileDescription: "그릭요거트, 드링킹 요거트 등 단백질 함량이 강화된 요거트 제품을 비교합니다.",
-  },
-} as const;
-
-type ProductListWithFiltersProps =
-  | { productType: "drink"; products: ProductDetailProps[]; curationSlug?: string }
-  | { productType: "bar"; products: ProductDetailProps[]; curationSlug?: string }
-  | { productType: "yogurt"; products: ProductDetailProps[]; curationSlug?: string };
+type ProductListWithFiltersProps = {
+  productType: ProductCategory;
+  products: ProductDetailProps[];
+  curationSlug?: string;
+  categoryCounts?: Partial<Record<ProductCategory, number>>;
+};
 
 type PersistedFilterState = {
   drinkFilters: DrinkFilters;
@@ -69,14 +55,10 @@ function normalizeSortValue(value: SortOptionValue | null | undefined): SortOpti
 }
 
 function getPersistedFilterState(storageKey: string): Partial<PersistedFilterState> | null {
-  if (typeof window === "undefined") {
-    return null;
-  }
+  if (typeof window === "undefined") return null;
 
   const rawState = window.sessionStorage.getItem(storageKey);
-  if (!rawState) {
-    return null;
-  }
+  if (!rawState) return null;
 
   try {
     return JSON.parse(rawState) as Partial<PersistedFilterState>;
@@ -98,7 +80,7 @@ function getFallbackPopularity(index: number): number {
 
 function getRecommendedScore(
   product: ProductDetailProps,
-  productType: "drink" | "bar" | "yogurt",
+  productType: ProductCategory,
   index: number,
 ): number {
   const density = getDensityValue(product);
@@ -113,7 +95,7 @@ function getRecommendedScore(
 function applySort(
   products: ProductDetailProps[],
   sort: SortOptionValue,
-  productType: "drink" | "bar" | "yogurt",
+  productType: ProductCategory,
   allProducts: ProductDetailProps[],
 ): ProductDetailProps[] {
   const arr = [...products];
@@ -146,13 +128,11 @@ function applySort(
 
 type ProductListWithFiltersInnerProps = ProductListWithFiltersProps & {
   storageKey: string;
-  pathname: string;
   initialPersistedState: Partial<PersistedFilterState> | null;
 };
 
 function ProductListWithFiltersInner(props: ProductListWithFiltersInnerProps) {
-  const { productType, products, curationSlug } = props;
-  const { initialPersistedState, pathname, storageKey } = props;
+  const { productType, products, curationSlug, categoryCounts, storageKey, initialPersistedState } = props;
   const [drinkFilters, setDrinkFilters] = useState<DrinkFilters>(
     () => initialPersistedState?.drinkFilters ?? defaultDrinkFilters,
   );
@@ -170,26 +150,23 @@ function ProductListWithFiltersInner(props: ProductListWithFiltersInnerProps) {
   );
   const [isDesktop, setIsDesktop] = useState(false);
   const [mobileSearchOpen, setMobileSearchOpen] = useState(false);
-  const [mobileCategoryInfoOpen, setMobileCategoryInfoOpen] = useState(false);
-  const [desktopCategoryInfoOpen, setDesktopCategoryInfoOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState(() => initialPersistedState?.searchQuery ?? "");
-  const isBar = pathname === "/bars";
-  const isYogurt = pathname === "/yogurt";
 
   const filters =
     productType === "drink"
       ? drinkFilters
       : productType === "bar"
         ? barFilters
-        : yogurtFilters;
+        : productType === "yogurt"
+          ? yogurtFilters
+          : null;
 
-  const curationFiltered = useMemo(
-    () =>
-      productType === "yogurt"
-        ? products
-        : applyCurationToCategoryProducts(products, productType, curationSlug),
-    [curationSlug, productType, products],
-  );
+  const curationFiltered = useMemo(() => {
+    if (productType === "yogurt" || productType === "shake") {
+      return products;
+    }
+    return applyCurationToCategoryProducts(products, productType, curationSlug);
+  }, [curationSlug, productType, products]);
 
   const filtered = useMemo(() => {
     if (productType === "drink") {
@@ -198,7 +175,10 @@ function ProductListWithFiltersInner(props: ProductListWithFiltersInnerProps) {
     if (productType === "bar") {
       return filterBarProducts(curationFiltered, filters as BarFilters);
     }
-    return filterYogurtProducts(curationFiltered, filters as YogurtFilters);
+    if (productType === "yogurt") {
+      return filterYogurtProducts(curationFiltered, filters as YogurtFilters);
+    }
+    return curationFiltered.filter((product) => product.productType === "shake");
   }, [curationFiltered, filters, productType]);
 
   const searched = useMemo(() => {
@@ -305,7 +285,9 @@ function ProductListWithFiltersInner(props: ProductListWithFiltersInnerProps) {
       setBarFilters(defaultBarFilters);
       return;
     }
-    setYogurtFilters(defaultYogurtFilters);
+    if (productType === "yogurt") {
+      setYogurtFilters(defaultYogurtFilters);
+    }
   };
 
   const handleSortChange = (newSort: SortOptionValue) => {
@@ -364,53 +346,73 @@ function ProductListWithFiltersInner(props: ProductListWithFiltersInnerProps) {
 
   return (
     <>
-      <div className="mt-3 md:hidden" style={{ marginTop: "12px" }}>
-        <QuickCuration productType={productType} />
+      <div className="mt-3">
+        <CategoryTabs
+          activeCategory={productType}
+          counts={categoryCounts}
+          stickyMobile
+        />
       </div>
 
-      <div
-        className="mt-3 rounded-xl border border-[var(--border)] bg-[var(--filter-box-bg)]"
-        style={{ marginTop: isDesktop ? "12px" : "10px", borderRadius: "12px", padding: isDesktop ? "10px 12px" : "3px 6px" }}
-      >
-        <div className="hidden md:block">
-          <SearchBar value={searchQuery} onChange={handleSearchChange} />
+      {productType !== "shake" ? (
+        <>
+          <div className="mt-3 md:hidden" style={{ marginTop: "12px" }}>
+            <QuickCuration productType={productType} />
+          </div>
+
+          <div
+            className="mt-3 rounded-xl border border-[var(--border)] bg-[var(--filter-box-bg)]"
+            style={{ marginTop: isDesktop ? "12px" : "10px", borderRadius: "12px", padding: isDesktop ? "10px 12px" : "3px 6px" }}
+          >
+            <div className="hidden md:block">
+              <SearchBar value={searchQuery} onChange={handleSearchChange} />
+            </div>
+            <div className={isDesktop ? "mt-1.5" : ""}>
+              {productType === "drink" ? (
+                <FilterSection
+                  productType="drink"
+                  filters={filters as DrinkFilters}
+                  onFilterToggle={handleDrinkFilterToggle}
+                  onResetFilters={handleResetFilters}
+                  mobileToolbarSlot={mobileSearchButton}
+                  drinkBrandOptions={brandOptions}
+                  desktopFooterSlot={<QuickCuration productType={productType} variant="inline" />}
+                />
+              ) : productType === "bar" ? (
+                <FilterSection
+                  productType="bar"
+                  filters={filters as BarFilters}
+                  onFilterToggle={handleBarFilterToggle}
+                  onResetFilters={handleResetFilters}
+                  mobileToolbarSlot={mobileSearchButton}
+                  barBrandOptions={brandOptions}
+                  desktopFooterSlot={<QuickCuration productType={productType} variant="inline" />}
+                />
+              ) : (
+                <FilterSection
+                  productType="yogurt"
+                  filters={filters as YogurtFilters}
+                  onFilterToggle={handleYogurtFilterToggle}
+                  onResetFilters={handleResetFilters}
+                  mobileToolbarSlot={mobileSearchButton}
+                  yogurtBrandOptions={brandOptions}
+                  yogurtTypeOptions={yogurtTypeOptions}
+                  yogurtFlavorOptions={yogurtFlavorOptions}
+                  desktopFooterSlot={<QuickCuration productType={productType} variant="inline" />}
+                />
+              )}
+            </div>
+          </div>
+        </>
+      ) : (
+        <div className="mt-3 rounded-2xl border border-[var(--border)] bg-[var(--background-card)] p-4">
+          <p className="text-sm font-semibold text-[var(--foreground)]">쉐이크 카테고리</p>
+          <p className="mt-1 text-sm leading-6 text-[var(--foreground-muted)]">
+            파우치형 중심의 간편 섭취 쉐이크만 포함할 예정입니다. 이번 버전에서는 카테고리 구조와 정보 UI를 먼저 정리했고,
+            제품 데이터는 이후 같은 기준으로 추가할 수 있도록 분리해 두었습니다.
+          </p>
         </div>
-        <div className={isDesktop ? "mt-1.5" : ""}>
-            {productType === "drink" ? (
-              <FilterSection
-                productType="drink"
-                filters={filters as DrinkFilters}
-                onFilterToggle={handleDrinkFilterToggle}
-                onResetFilters={handleResetFilters}
-                mobileToolbarSlot={mobileSearchButton}
-                drinkBrandOptions={brandOptions}
-                desktopFooterSlot={<QuickCuration productType={productType} variant="inline" />}
-              />
-            ) : productType === "bar" ? (
-              <FilterSection
-                productType="bar"
-                filters={filters as BarFilters}
-                onFilterToggle={handleBarFilterToggle}
-                onResetFilters={handleResetFilters}
-                mobileToolbarSlot={mobileSearchButton}
-                barBrandOptions={brandOptions}
-                desktopFooterSlot={<QuickCuration productType={productType} variant="inline" />}
-              />
-            ) : (
-              <FilterSection
-                productType="yogurt"
-                filters={filters as YogurtFilters}
-                onFilterToggle={handleYogurtFilterToggle}
-                onResetFilters={handleResetFilters}
-                mobileToolbarSlot={mobileSearchButton}
-                yogurtBrandOptions={brandOptions}
-                yogurtTypeOptions={yogurtTypeOptions}
-                yogurtFlavorOptions={yogurtFlavorOptions}
-                desktopFooterSlot={<QuickCuration productType={productType} variant="inline" />}
-              />
-            )}
-        </div>
-      </div>
+      )}
 
       {mobileSearchOpen ? (
         <div
@@ -451,160 +453,30 @@ function ProductListWithFiltersInner(props: ProductListWithFiltersInnerProps) {
         </div>
       ) : null}
 
-      <div className="mt-3" style={{ marginTop: "12px" }}>
-        <div className="relative">
-          <div className="flex items-center">
-            <div className="flex min-w-0 items-center gap-2 overflow-x-auto overflow-y-visible pb-1 md:overflow-visible">
-              <Link
-                href="/"
-                className={`rounded-full px-3.5 py-1 text-sm font-medium transition-colors ${
-                  !isBar && !isYogurt
-                    ? "bg-[var(--accent)] text-white"
-                    : "border border-[var(--border)] bg-white text-[var(--foreground-muted)] hover:text-[var(--foreground)]"
-                }`}
-                style={{ fontWeight: 400, whiteSpace: "nowrap" }}
-              >
-                단백질 음료
-              </Link>
-              <Link
-                href="/bars"
-                className={`rounded-full px-3.5 py-1 text-sm font-medium transition-colors ${
-                  isBar
-                    ? "bg-[var(--accent)] text-white"
-                    : "border border-[var(--border)] bg-white text-[var(--foreground-muted)] hover:text-[var(--foreground)]"
-                }`}
-                style={{ fontWeight: 400, whiteSpace: "nowrap" }}
-              >
-                단백질 바
-              </Link>
-              <div
-                className="relative flex shrink-0 items-center gap-1.5"
-                onMouseEnter={() => {
-                  if (isDesktop) setDesktopCategoryInfoOpen(true);
-                }}
-                onMouseLeave={() => {
-                  if (isDesktop) setDesktopCategoryInfoOpen(false);
-                }}
-              >
-                <Link
-                  href="/yogurt"
-                  className={`rounded-full px-3.5 py-1 text-sm font-medium transition-colors ${
-                    isYogurt
-                      ? "bg-[var(--accent)] text-white"
-                      : "border border-[var(--border)] bg-white text-[var(--foreground-muted)] hover:text-[var(--foreground)]"
-                  }`}
-                  style={{ fontWeight: 400, whiteSpace: "nowrap" }}
-                >
-                  단백질 요거트
-                </Link>
-                <button
-                  type="button"
-                  onClick={() => {
-                    if (!isDesktop) {
-                      setMobileCategoryInfoOpen((current) => !current);
-                    }
-                  }}
-                  className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-[var(--border)] bg-white text-[13px] text-[var(--foreground-muted)] transition-colors hover:text-[var(--foreground)]"
-                  aria-label="카테고리 설명 보기"
-                  aria-expanded={isDesktop ? desktopCategoryInfoOpen : mobileCategoryInfoOpen}
-                >
-                  ⓘ
-                </button>
+      <div className="mt-1.5" style={{ marginTop: isDesktop ? "6px" : "8px" }}>
+        <SortBar total={searched.length} sort={sort} onSortChange={handleSortChange} />
+      </div>
 
-                <div
-                  className={`absolute right-0 top-full z-[100] mt-2 hidden w-[300px] rounded-xl border border-[var(--border)] bg-white p-3 shadow-lg md:block ${
-                    desktopCategoryInfoOpen ? "" : "md:hidden"
-                  }`}
-                >
-                  <div className="space-y-2.5">
-                    <div>
-                      <p className="text-xs font-semibold text-[var(--foreground)]">
-                        단백질 음료 ({CATEGORY_INFO.drink.count}개 제품)
-                      </p>
-                      <p className="mt-0.5 text-xs leading-5 text-[var(--foreground-muted)]">
-                        {CATEGORY_INFO.drink.description}
-                      </p>
-                    </div>
-                    <div>
-                      <p className="text-xs font-semibold text-[var(--foreground)]">
-                        단백질 바 ({CATEGORY_INFO.bar.count}개 제품)
-                      </p>
-                      <p className="mt-0.5 text-xs leading-5 text-[var(--foreground-muted)]">
-                        {CATEGORY_INFO.bar.description}
-                      </p>
-                    </div>
-                    <div>
-                      <p className="text-xs font-semibold text-[var(--foreground)]">
-                        단백질 요거트 ({CATEGORY_INFO.yogurt.count}개 제품)
-                      </p>
-                      <p className="mt-0.5 text-xs leading-5 text-[var(--foreground-muted)]">
-                        {CATEGORY_INFO.yogurt.mobileDescription}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {!isDesktop && mobileCategoryInfoOpen ? (
-            <>
-              <button
-                type="button"
-                aria-label="카테고리 설명 닫기"
-                className="fixed inset-0 z-[90] cursor-default"
-                onClick={() => setMobileCategoryInfoOpen(false)}
-              />
-              <div className="absolute right-0 top-full z-[100] mt-2 w-[300px] rounded-xl border border-[var(--border)] bg-white p-3 shadow-lg md:hidden">
-                <div className="space-y-2.5">
-                  <div>
-                    <p className="text-xs font-semibold text-[var(--foreground)]">
-                      단백질 음료 ({CATEGORY_INFO.drink.count}개 제품)
-                    </p>
-                    <p className="mt-0.5 text-xs leading-5 text-[var(--foreground-muted)]">
-                      {CATEGORY_INFO.drink.description}
-                    </p>
-                  </div>
-                  <div>
-                    <p className="text-xs font-semibold text-[var(--foreground)]">
-                      단백질 바 ({CATEGORY_INFO.bar.count}개 제품)
-                    </p>
-                    <p className="mt-0.5 text-xs leading-5 text-[var(--foreground-muted)]">
-                      {CATEGORY_INFO.bar.description}
-                    </p>
-                  </div>
-                  <div>
-                    <p className="text-xs font-semibold text-[var(--foreground)]">
-                      단백질 요거트 ({CATEGORY_INFO.yogurt.count}개 제품)
-                    </p>
-                    <p className="mt-0.5 text-xs leading-5 text-[var(--foreground-muted)]">
-                      {CATEGORY_INFO.yogurt.mobileDescription}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </>
-          ) : null}
+      {visible.length === 0 ? (
+        <div className="mt-4 rounded-2xl border border-[var(--border)] bg-[var(--background-card)] px-5 py-8 text-center">
+          <p className="text-sm font-semibold text-[var(--foreground)]">표시할 제품이 없습니다.</p>
+          <p className="mt-1 text-sm text-[var(--foreground-muted)]">
+            {productType === "shake"
+              ? "쉐이크 데이터가 아직 등록되지 않았습니다."
+              : "검색어나 필터 조건을 조정해 다시 확인해보세요."}
+          </p>
         </div>
-      </div>
-
-      <div className="mt-1.5" style={{ marginTop: isDesktop ? "6px" : "4px" }}>
-        <SortBar
-          total={searched.length}
-          sort={sort}
-          onSortChange={handleSortChange}
-        />
-      </div>
-
-      <section className="product-grid mt-3 bg-white" style={{ marginTop: isDesktop ? "12px" : "8px" }} aria-label="제품 목록">
-        {visible.map((product, idx) => (
-          <ProductCard
-            key={product.slug ?? `${product.brand}-${product.name}`}
-            {...product}
-            priority={idx < 4}
-          />
-        ))}
-      </section>
+      ) : (
+        <section className="product-grid mt-3 bg-white" style={{ marginTop: isDesktop ? "12px" : "8px" }} aria-label="제품 목록">
+          {visible.map((product, idx) => (
+            <ProductCard
+              key={product.slug ?? `${product.brand}-${product.name}`}
+              {...product}
+              priority={idx < 4}
+            />
+          ))}
+        </section>
+      )}
 
       {productType === "bar" ? <ServingBasisNotice className="mt-4" /> : null}
 
@@ -617,6 +489,17 @@ function ProductListWithFiltersInner(props: ProductListWithFiltersInnerProps) {
           >
             더보기 ({sorted.length - visible.length}개 남음)
           </button>
+        </div>
+      ) : null}
+
+      {productType === "shake" ? (
+        <div className="mt-4">
+          <Link
+            href="/recommend"
+            className="inline-flex rounded-full border border-[var(--border)] bg-white px-4 py-2 text-sm font-medium text-[var(--foreground)] transition-colors hover:bg-[var(--accent-light)]"
+          >
+            추천 페이지에서도 쉐이크 카테고리 구조 확인하기
+          </Link>
         </div>
       ) : null}
     </>
@@ -635,11 +518,8 @@ export default function ProductListWithFilters(props: ProductListWithFiltersProp
     <ProductListWithFiltersInner
       key={storageKey}
       {...props}
-      pathname={pathname}
       storageKey={storageKey}
       initialPersistedState={initialPersistedState}
     />
   );
 }
-
-

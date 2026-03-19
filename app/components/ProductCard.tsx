@@ -9,12 +9,7 @@ import type {
 } from "react";
 import { trackPurchaseClick } from "@/lib/gtag";
 import { getProductImageUrl } from "../lib/productImage";
-import {
-  type CoupangLinkCategory,
-  getOfficialMallUrl,
-  getNaverSearchUrl,
-  getPreferredCoupangUrl,
-} from "../lib/purchaseLinks";
+import { type CoupangLinkCategory, getPreferredCoupangUrl } from "../lib/purchaseLinks";
 import CompareButton from "./CompareButton";
 import MetricBadgeGroup from "./MetricBadgeGroup";
 import ProductBadge from "./ProductBadge";
@@ -36,12 +31,17 @@ export interface ProductCardProps {
   calories?: number;
   sugar?: number;
   density: string;
+  /** @deprecated 쿠팡 링크는 coupangUrl만 사용 */
   productUrl?: string;
   coupangUrl?: string;
+  /** 제품별 네이버쇼핑 URL (null이면 비활성화) */
+  naverUrl?: string | null;
+  /** 제품별 공식몰 상세 URL (null이면 비활성화) */
+  officialUrl?: string | null;
   gradeTags?: string[];
   slug?: string;
   priority?: boolean;
-  productType?: "drink" | "bar" | "yogurt";
+  productType?: "drink" | "bar" | "yogurt" | "shake";
   yogurtType?: string;
   purchaseLinkCategory?: CoupangLinkCategory;
   maxVisibleBadges?: number;
@@ -61,6 +61,8 @@ export default function ProductCard({
   density,
   productUrl = "#",
   coupangUrl,
+  naverUrl,
+  officialUrl,
   gradeTags = [],
   slug,
   priority = false,
@@ -72,17 +74,12 @@ export default function ProductCard({
   hideSupplementalBadges,
 }: ProductCardProps) {
   const router = useRouter();
-  const detailHref = slug ? `/product/${slug}` : productUrl;
+  const detailHref = slug ? `/product/${slug}` : "#";
   const imageUrl = slug ? getProductImageUrl(slug) : null;
   const resolvedPurchaseLinkCategory = purchaseLinkCategory ?? productType ?? null;
-  const coupangHref = getPreferredCoupangUrl(
-    brand,
-    name,
-    coupangUrl ?? productUrl,
-    resolvedPurchaseLinkCategory,
-  );
-  const naverHref = getNaverSearchUrl(brand, name);
-  const officialMallHref = getOfficialMallUrl(brand);
+  const coupangHref = getPreferredCoupangUrl(coupangUrl, resolvedPurchaseLinkCategory);
+  const naverHref = naverUrl && naverUrl !== "#" && naverUrl !== "" ? naverUrl : null;
+  const officialMallHref = officialUrl && officialUrl !== "#" && officialUrl !== "" ? officialUrl : null;
   const productId = slug ?? `${brand}-${name}`;
   const hasCapacityInName = Boolean(capacity && name.includes(capacity));
   const packageTag = tags.find((tag) => ["팩", "PET", "CAN"].includes(tag));

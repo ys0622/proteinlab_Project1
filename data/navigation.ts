@@ -1,3 +1,5 @@
+import { ORDERED_CATEGORY_IDS, getCategoryHref, getCategoryLabel } from "@/app/lib/categories";
+
 export type NavigationChildItem = {
   label: string;
   href: string;
@@ -13,11 +15,10 @@ export type NavigationItem = {
 export const navigationItems: NavigationItem[] = [
   {
     label: "제품 목록",
-    children: [
-      { label: "단백질 음료", href: "/" },
-      { label: "단백질 바", href: "/bars" },
-      { label: "단백질 요거트", href: "/yogurt" },
-    ],
+    children: ORDERED_CATEGORY_IDS.map((category) => ({
+      label: getCategoryLabel(category),
+      href: getCategoryHref(category),
+    })),
   },
   { label: "제품 추천", href: "/recommend" },
   {

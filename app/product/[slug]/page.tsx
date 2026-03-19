@@ -19,6 +19,7 @@ import ProductReviewSection from "../../components/ProductReviewSection";
 import PurchaseLinkRow from "../../components/PurchaseLinkRow";
 import ServingBasisNotice from "../../components/ServingBasisNotice";
 import { getNutritionDetail } from "../../data/products";
+import { getCategoryHref, getCategoryLabel } from "../../lib/categories";
 import { getProductBySlugAsync } from "../../lib/productData";
 import { getProductImageUrl } from "../../lib/productImage";
 import { getPreferredCoupangUrl } from "../../lib/purchaseLinks";
@@ -27,10 +28,8 @@ interface PageProps {
   params: Promise<{ slug: string }>;
 }
 
-function getProductKindLabel(productType?: "drink" | "bar" | "yogurt") {
-  if (productType === "bar") return "단백질 바";
-  if (productType === "yogurt") return "단백질 요거트";
-  return "단백질 음료";
+function getProductKindLabel(productType?: "drink" | "bar" | "yogurt" | "shake") {
+  return getCategoryLabel(productType ?? "drink");
 }
 
 export async function generateMetadata({ params }: PageProps) {
@@ -53,6 +52,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
   const gradeDescs = product.gradeDescriptions ?? ["-", "-", "-"];
   const isBar = product.productType === "bar";
   const isYogurt = product.productType === "yogurt";
+  const isShake = product.productType === "shake";
   const productImageUrl = getProductImageUrl(product.slug);
   const hasCapacityInName = Boolean(product.capacity && product.name.includes(product.capacity));
   const metaParts = [
@@ -63,7 +63,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
   const metaLine = metaParts.join(" ");
   const productFacts = isBar
     ? []
-    : isYogurt
+      : isYogurt
       ? [
           product.storageType ? `보관 ${product.storageType}` : null,
           product.lactoseFree ? "락토프리" : null,
@@ -104,6 +104,17 @@ export default async function ProductDetailPage({ params }: PageProps) {
           { label: "지방", value: product.fat !== undefined ? `${product.fat}g` : "-", isCompact: false },
           { label: "나트륨", value: product.sodium !== undefined ? `${product.sodium}mg` : "-", isCompact: false },
         ]
+      : isShake
+        ? [
+            { label: "단백질", value: `${product.proteinPerServing}g`, isCompact: false },
+            { label: "칼로리", value: product.calories != null ? `${product.calories}kcal` : "-", isCompact: false },
+            { label: "당류", value: product.sugar !== undefined ? `${product.sugar}g` : "-", isCompact: false },
+            { label: "단백질 밀도", value: product.density ?? "-", isCompact: true },
+            { label: "용량", value: product.capacity ?? "-", isCompact: false },
+            { label: "제품 유형", value: "파우치형 쉐이크", isCompact: false },
+            { label: "지방", value: product.fat !== undefined ? `${product.fat}g` : "-", isCompact: false },
+            { label: "나트륨", value: product.sodium !== undefined ? `${product.sodium}mg` : "-", isCompact: false },
+          ]
       : [
           { label: "단백질", value: `${product.proteinPerServing}g`, isCompact: false },
           { label: "칼로리", value: product.calories != null ? `${product.calories}kcal` : "-", isCompact: false },
@@ -251,7 +262,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
             <NutritionDetailSection
               rows={getNutritionDetail(product)}
               capacity={product.capacity}
-              unit={isBar ? "개" : isYogurt ? "컵" : "병"}
+              unit={isBar ? "piece" : isYogurt ? "cup" : isShake ? "pack" : "bottle"}
             />
           </div>
 
@@ -275,7 +286,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
           <div className="mt-4 flex flex-wrap gap-3">
             <CompareButton slug={slug} detailHref={`/product/${slug}`} />
             <Link
-              href={isBar ? "/bars" : isYogurt ? "/yogurt" : "/"}
+              href={getCategoryHref((product.productType ?? "drink") as "drink" | "bar" | "yogurt" | "shake")}
               className="rounded-full border border-[var(--border)] bg-white px-5 py-2.5 text-sm font-medium text-[var(--foreground)] transition-colors hover:bg-[var(--accent-light)]"
             >
               제품 목록으로

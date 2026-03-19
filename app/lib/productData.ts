@@ -8,12 +8,13 @@ import type { ProductDetailProps } from "@/app/data/products";
 import {
   mockProducts,
   barProductsWithGrades,
+  shakeProducts,
   yogurtProductsWithGrades,
 } from "@/app/data/products";
 import { getAllNewProductsFromKV } from "./productKV";
 import { withProductOverride } from "./productOverride";
 
-export type ProductCategory = "drink" | "bar" | "yogurt";
+export type ProductCategory = "drink" | "bar" | "yogurt" | "shake";
 
 function toProductDetailProps(raw: Record<string, unknown>): ProductDetailProps {
   const p = raw as unknown as ProductDetailProps;
@@ -35,7 +36,8 @@ export function slugExistsInJson(slug: string): boolean {
   return (
     mockProducts.some((p) => p.slug === slug) ||
     barProductsWithGrades.some((p) => p.slug === slug) ||
-    yogurtProductsWithGrades.some((p) => p.slug === slug)
+    yogurtProductsWithGrades.some((p) => p.slug === slug) ||
+    shakeProducts.some((p) => p.slug === slug)
   );
 }
 
@@ -46,6 +48,7 @@ export async function getProductBySlugAsync(
   const fromJson =
     barProductsWithGrades.find((p) => p.slug === slug) ??
     yogurtProductsWithGrades.find((p) => p.slug === slug) ??
+    shakeProducts.find((p) => p.slug === slug) ??
     mockProducts.find((p) => p.slug === slug) ??
     null;
 
@@ -67,7 +70,9 @@ export async function getProductsByCategoryAsync(
       ? mockProducts
       : category === "bar"
         ? barProductsWithGrades
-        : yogurtProductsWithGrades;
+        : category === "yogurt"
+          ? yogurtProductsWithGrades
+          : shakeProducts;
 
   const kvNew = await getAllNewProductsFromKV();
   const newInCategory = kvNew
@@ -85,10 +90,11 @@ export async function getProductsByCategoryAsync(
 
 /** 전체 제품 (JSON + KV 신규, 카테고리별 병합) */
 export async function getAllProductsAsync(): Promise<ProductDetailProps[]> {
-  const [drinks, bars, yogurts] = await Promise.all([
+  const [drinks, bars, yogurts, shakes] = await Promise.all([
     getProductsByCategoryAsync("drink"),
     getProductsByCategoryAsync("bar"),
     getProductsByCategoryAsync("yogurt"),
+    getProductsByCategoryAsync("shake"),
   ]);
-  return [...drinks, ...bars, ...yogurts];
+  return [...drinks, ...bars, ...yogurts, ...shakes];
 }

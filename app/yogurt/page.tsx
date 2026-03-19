@@ -2,6 +2,7 @@ import Footer from "../components/Footer";
 import Header from "../components/Header";
 import HeroSection from "../components/HeroSection";
 import ProductListWithFilters from "../components/ProductListWithFilters";
+import type { ProductCategory } from "../lib/categories";
 import { getProductsByCategoryAsync } from "../lib/productData";
 
 export const metadata = {
@@ -11,14 +12,25 @@ export const metadata = {
 };
 
 export default async function YogurtPage() {
-  const products = await getProductsByCategoryAsync("yogurt");
+  const [drinks, bars, products, shakes] = await Promise.all([
+    getProductsByCategoryAsync("drink"),
+    getProductsByCategoryAsync("bar"),
+    getProductsByCategoryAsync("yogurt"),
+    getProductsByCategoryAsync("shake"),
+  ]);
+  const categoryCounts: Record<ProductCategory, number> = {
+    drink: drinks.length,
+    bar: bars.length,
+    yogurt: products.length,
+    shake: shakes.length,
+  };
   return (
     <div className="min-h-screen bg-white">
       <Header />
       <HeroSection />
 
       <main className="mx-auto max-w-[1200px] px-4 pb-2 pt-0 md:px-6 md:pb-3">
-        <ProductListWithFilters productType="yogurt" products={products} />
+        <ProductListWithFilters productType="yogurt" products={products} categoryCounts={categoryCounts} />
       </main>
 
       <Footer />

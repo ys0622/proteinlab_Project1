@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import ClipboardPasteZone from "../../components/ClipboardPasteZone";
+import { ORDERED_CATEGORY_IDS, getCategoryLabel, type ProductCategory } from "@/app/lib/categories";
 
 const inputCls =
   "w-full rounded-lg border border-[var(--border)] bg-[var(--background)] px-3 py-2 text-sm text-[var(--foreground)] focus:outline-none focus:ring-2 focus:ring-[var(--accent)]";
@@ -45,7 +46,7 @@ export default function NewProductPage() {
     brand: "",
     manufacturer: "",
     name: "",
-    productType: "drink",
+    productType: "drink" as ProductCategory,
     flavor: "",
     variant: "",
     capacity: "",
@@ -53,6 +54,7 @@ export default function NewProductPage() {
     proteinSource: "유청",
     tags: "",
     productUrl: "#",
+    coupangUrl: "",
     // Nutrition
     proteinPerServing: "",
     calories: "",
@@ -120,6 +122,7 @@ export default function NewProductPage() {
         proteinSource: form.proteinSource || undefined,
         tags: form.tags.split(",").map((t) => t.trim()).filter(Boolean),
         productUrl: form.productUrl.trim() || "#",
+        coupangUrl: form.coupangUrl?.trim() || undefined,
         proteinPerServing: n(form.proteinPerServing),
         calories: n(form.calories),
         sugar: n(form.sugar),
@@ -205,8 +208,11 @@ export default function NewProductPage() {
                 onChange={(e) => set("productType", e.target.value)}
                 className={inputCls}
               >
-                <option value="drink">단백질 음료</option>
-                <option value="bar">단백질 바</option>
+                {ORDERED_CATEGORY_IDS.map((category) => (
+                  <option key={category} value={category}>
+                    {getCategoryLabel(category)}
+                  </option>
+                ))}
               </select>
             </Field>
             <Field label="브랜드 *">
@@ -414,12 +420,12 @@ export default function NewProductPage() {
                 placeholder="단백질 밀도 A, 다이어트 B"
               />
             </Field>
-            <Field label="구매 링크">
+            <Field label="쿠팡 링크 (coupangUrl)" hint="비워두면 쿠팡 버튼 비활성화">
               <input
-                value={form.productUrl}
-                onChange={(e) => set("productUrl", e.target.value)}
+                value={form.coupangUrl}
+                onChange={(e) => set("coupangUrl", e.target.value)}
                 className={inputCls}
-                placeholder="https://..."
+                placeholder="https://link.coupang.com/... 또는 https://www.coupang.com/vp/products/..."
               />
             </Field>
             <Field label="관리자 메모">

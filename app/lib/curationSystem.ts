@@ -1,7 +1,7 @@
 import { type ProductDetailProps } from "../data/products";
 import { getPopularityScore } from "./productPopularity";
 
-export type CurationCategory = "drink" | "bar" | "yogurt";
+export type CurationCategory = "drink" | "bar" | "yogurt" | "shake";
 export type CurationKind = "ingredient" | "goal" | "context";
 
 type CurationFilter = (product: ProductDetailProps) => boolean;
@@ -268,10 +268,10 @@ const curations: CurationDefinition[] = [
     categories: {
       drink: {
         category: "drink",
-        filter: (product) => product.productType !== "bar" && product.productType !== "yogurt",
+        filter: (product) => product.productType === "drink",
         recommend: (products) =>
           sortByPopularity(
-            products.filter((product) => product.productType !== "bar" && product.productType !== "yogurt"),
+            products.filter((product) => product.productType === "drink"),
             "drink",
           ),
         landingCopy: {
@@ -319,7 +319,7 @@ const curations: CurationDefinition[] = [
         quickLabel: "당류 0g",
         quickIcon: "🍬",
         quickOrder: 10,
-        filter: (product) => product.productType !== "bar" && (product.sugar ?? 0) <= 0,
+        filter: (product) => product.productType === "drink" && (product.sugar ?? 0) <= 0,
         recommend: (products) => products.filter((product) => (product.sugar ?? 0) <= 0),
       },
     },
@@ -487,7 +487,7 @@ const curations: CurationDefinition[] = [
         quickLabel: "라이트 20g 미만",
         quickIcon: "🥛",
         quickOrder: 20,
-        filter: (product) => product.productType !== "bar" && (product.proteinPerServing ?? 0) < 20,
+        filter: (product) => product.productType === "drink" && (product.proteinPerServing ?? 0) < 20,
         recommend: (products) => products.filter((product) => (product.proteinPerServing ?? 0) < 20),
       },
     },
@@ -507,7 +507,7 @@ const curations: CurationDefinition[] = [
         quickLabel: "고단백 20g+",
         quickIcon: "💪",
         quickOrder: 30,
-        filter: (product) => product.productType !== "bar" && (product.proteinPerServing ?? 0) >= 20,
+        filter: (product) => product.productType === "drink" && (product.proteinPerServing ?? 0) >= 20,
         recommend: (products) => products.filter((product) => (product.proteinPerServing ?? 0) >= 20),
       },
     },
@@ -527,7 +527,7 @@ const curations: CurationDefinition[] = [
         quickLabel: "초고단백 30g+",
         quickIcon: "🏋",
         quickOrder: 40,
-        filter: (product) => product.productType !== "bar" && (product.proteinPerServing ?? 0) >= 30,
+        filter: (product) => product.productType === "drink" && (product.proteinPerServing ?? 0) >= 30,
         recommend: (products) => products.filter((product) => (product.proteinPerServing ?? 0) >= 30),
       },
     },
@@ -547,7 +547,7 @@ const curations: CurationDefinition[] = [
         quickLabel: "워터형",
         quickIcon: "💧",
         quickOrder: 50,
-        filter: (product) => product.productType !== "bar" && product.drinkType === "워터형",
+        filter: (product) => product.productType === "drink" && product.drinkType === "워터형",
         recommend: (products) => products.filter((product) => product.drinkType === "워터형"),
       },
     },
@@ -567,7 +567,7 @@ const curations: CurationDefinition[] = [
         quickLabel: "락토프리",
         quickIcon: "🥛",
         quickOrder: 60,
-        filter: (product) => product.productType !== "bar" && product.variant === "락토프리",
+        filter: (product) => product.productType === "drink" && product.variant === "락토프리",
         recommend: (products) => products.filter((product) => product.variant === "락토프리"),
       },
     },
@@ -588,7 +588,7 @@ const curations: CurationDefinition[] = [
         quickIcon: "⭐",
         quickOrder: 70,
         filter: (product) =>
-          product.productType !== "bar" &&
+          product.productType === "drink" &&
           hasGrade(product, ["단백질 밀도 A", "밀도 A"]),
         recommend: (products) =>
           products.filter((product) => hasGrade(product, ["단백질 밀도 A", "밀도 A"])),
@@ -610,7 +610,7 @@ const curations: CurationDefinition[] = [
         quickLabel: "다이어트 A",
         quickIcon: "⚖",
         quickOrder: 80,
-        filter: (product) => product.productType !== "bar" && hasGrade(product, ["다이어트 A"]),
+        filter: (product) => product.productType === "drink" && hasGrade(product, ["다이어트 A"]),
         recommend: (products) => products.filter((product) => hasGrade(product, ["다이어트 A"])),
       },
     },
@@ -630,7 +630,7 @@ const curations: CurationDefinition[] = [
         quickLabel: "퍼포먼스 A",
         quickIcon: "⚡",
         quickOrder: 90,
-        filter: (product) => product.productType !== "bar" && hasGrade(product, ["퍼포먼스 A"]),
+        filter: (product) => product.productType === "drink" && hasGrade(product, ["퍼포먼스 A"]),
         recommend: (products) => products.filter((product) => hasGrade(product, ["퍼포먼스 A"])),
       },
     },
@@ -651,7 +651,7 @@ const curations: CurationDefinition[] = [
         quickIcon: "🌿",
         quickOrder: 110,
         filter: (product) =>
-          product.productType !== "bar" &&
+          product.productType === "drink" &&
           ((product.proteinSource ?? "").includes("식물성") ||
             product.name.includes("식물성") ||
             product.tags?.includes("식물성") === true),
@@ -957,7 +957,7 @@ const curations: CurationDefinition[] = [
         quickIcon: "🏃",
         quickOrder: 100,
         filter: (product) =>
-          product.productType !== "bar" &&
+          product.productType === "drink" &&
           (product.proteinPerServing ?? 0) >= 15 &&
           (product.proteinPerServing ?? 0) <= 25 &&
           (product.sugar ?? 999) <= 10,

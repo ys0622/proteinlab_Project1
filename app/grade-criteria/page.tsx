@@ -1,10 +1,10 @@
-﻿"use client";
+"use client";
 
 import { useState } from "react";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
-
-type ProductType = "drink" | "bar" | "yogurt";
+import CategoryTabs from "../components/CategoryTabs";
+import type { ProductCategory } from "../lib/categories";
 
 const GRADE_COLORS: Record<string, { color: string; bg: string; border: string }> = {
   A: { color: "#1B7F5B", bg: "#E7F3EC", border: "#1B7F5B" },
@@ -41,10 +41,11 @@ const YOGURT_ROWS: UnifiedRow[] = [
   { grade: "D", density: "6g/100g 미만", diet: "칼로리·당류 부담 높음", performance: "하위 20%" },
 ];
 
-const PRODUCT_TYPES: { id: ProductType; label: string }[] = [
-  { id: "drink", label: "단백질 음료" },
-  { id: "bar", label: "단백질 바" },
-  { id: "yogurt", label: "단백질 요거트" },
+const SHAKE_ROWS: UnifiedRow[] = [
+  { grade: "A", density: "데이터 축적 후 동일 기준 적용 예정", diet: "데이터 축적 후 동일 기준 적용 예정", performance: "데이터 축적 후 동일 기준 적용 예정" },
+  { grade: "B", density: "카테고리 구조는 반영 완료", diet: "카테고리 구조는 반영 완료", performance: "카테고리 구조는 반영 완료" },
+  { grade: "C", density: "파우치형 쉐이크만 집계 예정", diet: "파우더는 제외", performance: "추후 실제 제품 데이터 반영" },
+  { grade: "D", density: "현재 공개 랭킹 데이터 없음", diet: "현재 공개 랭킹 데이터 없음", performance: "현재 공개 랭킹 데이터 없음" },
 ];
 
 const FAQ = [
@@ -67,9 +68,16 @@ const FAQ = [
 ];
 
 export default function GradeCriteriaPage() {
-  const [productType, setProductType] = useState<ProductType>("drink");
+  const [productType, setProductType] = useState<ProductCategory>("drink");
+  const categoryCounts = { drink: 104, bar: 71, yogurt: 45, shake: 3 };
   const rows =
-    productType === "drink" ? DRINK_ROWS : productType === "bar" ? BAR_ROWS : YOGURT_ROWS;
+    productType === "drink"
+      ? DRINK_ROWS
+      : productType === "bar"
+        ? BAR_ROWS
+        : productType === "yogurt"
+          ? YOGURT_ROWS
+          : SHAKE_ROWS;
 
   return (
     <div className="min-h-screen bg-white">
@@ -87,25 +95,15 @@ export default function GradeCriteriaPage() {
       </section>
 
       <main className="mx-auto max-w-[1200px] px-4 py-6 md:px-6">
-        <div className="flex gap-2">
-          {PRODUCT_TYPES.map((type) => (
-            <button
-              key={type.id}
-              type="button"
-              onClick={() => setProductType(type.id)}
-              className="rounded-full px-4 py-1.5 text-sm font-medium transition-colors"
-              style={{
-                background: productType === type.id ? "var(--accent)" : "white",
-                color: productType === type.id ? "white" : "#6b6b6b",
-                border: productType === type.id ? "1px solid var(--accent)" : "1px solid var(--border)",
-              }}
-            >
-              {type.label}
-            </button>
-          ))}
-        </div>
+        <CategoryTabs
+          activeCategory={productType}
+          counts={categoryCounts}
+          onSelect={setProductType}
+          stickyMobile
+          className="mb-4"
+        />
 
-        <div className="mt-4 md:hidden">
+        <div className="md:hidden">
           <div className="flex items-center gap-2 rounded-xl border border-[#e8e6e3] bg-[#FFFDF8] px-3 py-2 text-xs text-[#6b7280]">
             <span aria-hidden="true">←</span>
             <span className="flex-1">좌우로 넘겨보세요. 다이어트 오른쪽에 퍼포먼스 기준이 있습니다.</span>
@@ -176,22 +174,9 @@ export default function GradeCriteriaPage() {
               단백질 밀도
             </h3>
             <ul className="mt-1.5 space-y-1 text-xs leading-relaxed" style={{ color: "#6b6b6b" }}>
-              {productType === "drink" ? (
-                <>
-                  <li>· 단백질(g) ÷ 용량(mL) × 100</li>
-                  <li>· 높을수록 적은 양으로 많은 단백질 보충</li>
-                </>
-              ) : productType === "bar" ? (
-                <>
-                  <li>· 단백질(g) ÷ 칼로리(kcal) × 100</li>
-                  <li>· 높을수록 같은 칼로리에서 단백질 효율이 좋음</li>
-                </>
-              ) : (
-                <>
-                  <li>· 단백질(g) ÷ 용량(g) × 100</li>
-                  <li>· 높을수록 같은 중량에서 단백질 효율이 높음</li>
-                </>
-              )}
+              <li>제품 유형별 기준 단위에 맞춰 비교합니다.</li>
+              <li>음료는 mL, 요거트와 바는 g 기준으로 해석합니다.</li>
+              <li>쉐이크는 파우치형만 같은 구조로 추가 가능합니다.</li>
             </ul>
           </div>
           <div className="rounded-xl border border-[#e8e6e3] bg-[#FFFDF8] px-4 py-3.5" style={{ borderRadius: "16px" }}>
@@ -199,8 +184,9 @@ export default function GradeCriteriaPage() {
               다이어트
             </h3>
             <ul className="mt-1.5 space-y-1 text-xs leading-relaxed" style={{ color: "#6b6b6b" }}>
-              <li>· 칼로리(kcal) + 당류(g) × 4</li>
-              <li>· 낮을수록 다이어트에 유리하게 계산</li>
+              <li>칼로리와 당류 부담을 함께 봅니다.</li>
+              <li>같은 카테고리 안에서만 상대 비교합니다.</li>
+              <li>카테고리가 달라도 등급 계산 경로는 동일한 구조를 씁니다.</li>
             </ul>
           </div>
           <div className="rounded-xl border border-[#e8e6e3] bg-[#FFFDF8] px-4 py-3.5" style={{ borderRadius: "16px" }}>
@@ -208,42 +194,20 @@ export default function GradeCriteriaPage() {
               퍼포먼스
             </h3>
             <ul className="mt-1.5 space-y-1 text-xs leading-relaxed" style={{ color: "#6b6b6b" }}>
-              <li>· 단백질(g) ÷ (1 + (칼로리 + 당류 × 2) ÷ 100)</li>
-              <li>· 높을수록 운동 후 보충 효율이 좋음</li>
+              <li>단백질 보충 효율과 실제 섭취 체감을 같이 반영합니다.</li>
+              <li>추천과 랭킹도 같은 데이터 구조를 사용합니다.</li>
+              <li>신규 카테고리도 별도 예외 없이 여기에 연결됩니다.</li>
             </ul>
           </div>
         </div>
 
-        <div className="mt-4 rounded-xl border border-[#e8e6e3] bg-[#FFFDF8] px-5 py-4" style={{ borderRadius: "16px" }}>
-          <h2 className="text-sm font-semibold" style={{ color: "#3d3d3d" }}>
-            업데이트 정책
-          </h2>
-          <ul className="mt-2 space-y-1 text-xs" style={{ color: "#6b6b6b" }}>
-            <li>· 등급 지표는 모두 영양성분 기반입니다.</li>
-            <li>· 영양성분은 제조사 및 공식 자료 기준으로 업데이트합니다.</li>
-            <li>· 랭킹 점수는 현재 제품군 내 백분위 기준 100점 체계로 환산합니다.</li>
-            <li>· 제품이 추가되면 등급과 랭킹 점수는 전체 데이터를 기준으로 다시 계산됩니다.</li>
-          </ul>
-        </div>
-
-        <div className="mt-6">
-          <h2 className="text-sm font-semibold" style={{ color: "#3d3d3d" }}>
-            자주 묻는 질문
-          </h2>
-          <div className="mt-3 space-y-2">
-            {FAQ.map((item) => (
-              <details key={item.q} className="group overflow-hidden rounded-xl border border-[#e8e6e3]">
-                <summary className="flex cursor-pointer items-center justify-between px-4 py-3 text-sm font-medium hover:bg-[#f9f8f5]" style={{ color: "#3d3d3d" }}>
-                  {item.q}
-                  <span className="text-xs" style={{ color: "#999" }}>+
-                  </span>
-                </summary>
-                <p className="border-t border-[#f0eeeb] px-4 py-3 text-sm leading-relaxed" style={{ color: "#6b6b6b" }}>
-                  {item.a}
-                </p>
-              </details>
-            ))}
-          </div>
+        <div className="mt-8 space-y-3">
+          {FAQ.map((item) => (
+            <div key={item.q} className="rounded-xl border border-[#e8e6e3] bg-white px-4 py-3">
+              <p className="text-sm font-semibold text-[var(--foreground)]">{item.q}</p>
+              <p className="mt-1 text-sm leading-6 text-[var(--foreground-muted)]">{item.a}</p>
+            </div>
+          ))}
         </div>
       </main>
 

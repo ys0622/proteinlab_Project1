@@ -1,7 +1,6 @@
 /**
  * Purchase link helpers.
- * - Coupang: prefer a product-specific Coupang Partners deep link when possible.
- * - Fallback: use Coupang search results when product metadata is insufficient.
+ * - Coupang: coupangUrl 기반만 사용. 검색 URL fallback 없음.
  * - Naver: product-name search results.
  * - Official mall: brand homepage when known.
  */
@@ -61,19 +60,16 @@ const COUPANG_PARTNERS_TAG =
 const COUPANG_PARTNERS_SUB_ID =
   process.env.NEXT_PUBLIC_COUPANG_PARTNERS_SUB_ID || process.env.COUPANG_PARTNERS_SUB_ID || "proteinlab";
 
-export type CoupangLinkCategory = "drink" | "bar" | "yogurt" | "guide" | "ranking";
+export type CoupangLinkCategory = "drink" | "bar" | "yogurt" | "shake" | "guide" | "ranking";
 
 const COUPANG_SUB_ID_BY_CATEGORY: Record<CoupangLinkCategory, string> = {
   drink: "drink",
   bar: "bar",
   yogurt: "yogurt",
+  shake: "shake",
   guide: "guide",
   ranking: "ranking",
 };
-
-function buildSearchName(brand: string, name: string): string {
-  return name.startsWith(brand) ? name : `${brand} ${name}`;
-}
 
 function getCoupangSubId(category?: CoupangLinkCategory | null): string {
   if (!category) {
@@ -163,26 +159,54 @@ function buildCoupangPartnersProductUrl(
   return url.toString();
 }
 
-export function getCoupangSearchUrl(brand: string, name: string): string {
-  const query = encodeURIComponent(buildSearchName(brand, name));
-  return `https://www.coupang.com/np/search?component=&q=${query}`;
+function buildSearchName(brand: string, name: string): string {
+  return name.startsWith(brand) ? name : `${brand} ${name}`;
 }
 
+/**
+ * coupangUrl이 유효한 쿠팡 파트너스/상품 링크인지 검증.
+ * np/search 포함 시 false (검색 URL은 수익 미발생).
+ */
+export function isValidCoupangLink(value?: string | null): boolean {
+  if (!value || value === "#") return false;
+  try {
+    const url = new URL(value);
+    const host = url.hostname.toLowerCase();
+    if (host.includes("link.coupang.com")) return true;
+    if (host.includes("coupang.com") && url.pathname.includes("/vp/products/")) {
+      const params = getCoupangProductParams(value);
+      return params !== null;
+    }
+    if (url.href.includes("np/search")) {
+      if (typeof console !== "undefined" && console.warn) {
+        console.warn("[purchaseLinks] np/search URL은 파트너스 수익이 발생하지 않습니다:", value);
+      }
+      return false;
+    }
+    return false;
+  } catch {
+    return false;
+  }
+}
+
+/**
+ * coupangUrl만 사용. 검색 fallback 없음.
+ * 유효하지 않으면 null 반환.
+ */
 export function getPreferredCoupangUrl(
-  brand: string,
-  name: string,
-  productUrl?: string | null,
+  coupangUrl?: string | null,
   category?: CoupangLinkCategory | null,
-): string {
-  if (isCoupangPartnersUrl(productUrl)) {
-    return productUrl;
+): string | null {
+  if (!coupangUrl || coupangUrl === "#") return null;
+  if (!isValidCoupangLink(coupangUrl)) return null;
+
+  if (isCoupangPartnersUrl(coupangUrl)) return coupangUrl;
+
+  if (isCoupangUrl(coupangUrl)) {
+    return buildCoupangPartnersProductUrl(coupangUrl, category);
   }
 
-  if (isCoupangUrl(productUrl)) {
-    return buildCoupangPartnersProductUrl(productUrl, category) ?? productUrl;
-  }
-
-  return getCoupangSearchUrl(brand, name);
+  return null;
 }
 
 export function getNaverSearchUrl(brand: string, name: string): string {

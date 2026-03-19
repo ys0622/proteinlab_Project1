@@ -10,19 +10,23 @@ export const metadata = {
 };
 
 export default async function RecommendPage() {
-  const [drinks, bars, yogurts] = await Promise.all([
+  const [drinks, bars, yogurts, shakes] = await Promise.all([
     getProductsByCategoryAsync("drink"),
     getProductsByCategoryAsync("bar"),
     getProductsByCategoryAsync("yogurt"),
+    getProductsByCategoryAsync("shake"),
   ]);
-  const drinkCount = drinks.length;
-  const barCount = bars.length;
-  const yogurtCount = yogurts.length;
+  const categoryCounts = {
+    drink: drinks.length,
+    bar: bars.length,
+    yogurt: yogurts.length,
+    shake: shakes.length,
+  };
 
   return (
     <div className="min-h-screen bg-white">
       <Header />
-      <RecommendClient drinkCount={drinkCount} barCount={barCount} yogurtCount={yogurtCount} />
+      <RecommendClient categoryCounts={categoryCounts} />
       <Footer />
     </div>
   );

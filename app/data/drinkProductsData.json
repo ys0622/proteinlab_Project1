@@ -204,7 +204,7 @@
       "PET"
     ],
     "proteinPerServing": 20,
-    "calories": 125,
+    "calories": 105,
     "sugar": 0,
     "density": "8.0g/100ml",
     "productUrl": "#",
@@ -218,18 +218,19 @@
     "flavor": "밀크 바닐라",
     "bcaa": "4200mg",
     "proteinSource": "혼합",
-    "fat": 4,
+    "fat": 0.8,
     "sodium": 300,
-    "calorieDensity": "50.0kcal/100ml",
+    "calorieDensity": "42.0kcal/100ml",
     "drinkType": "밀크형",
     "nutritionPerBottle": {
-      "caloriesKcal": 125,
+      "caloriesKcal": 105,
       "proteinG": 20,
-      "carbsG": 3,
+      "carbsG": 4,
       "sugarsG": 0,
-      "fatG": 4,
+      "fatG": 0.8,
       "satFatG": 0,
       "sodiumMg": 300,
+      "cholesterolMg": 12,
       "fiberG": 5,
       "bcaaMg": 4200
     }
@@ -244,7 +245,7 @@
       "팩"
     ],
     "proteinPerServing": 20,
-    "calories": 135,
+    "calories": 105,
     "sugar": 0,
     "density": "8.0g/100ml",
     "productUrl": "#",
@@ -258,18 +259,19 @@
     "flavor": "모카 초콜릿",
     "bcaa": "4200mg",
     "proteinSource": "혼합",
-    "fat": 4,
+    "fat": 0.8,
     "sodium": 220,
-    "calorieDensity": "54.0kcal/100ml",
+    "calorieDensity": "42.0kcal/100ml",
     "drinkType": "밀크형",
     "nutritionPerBottle": {
-      "caloriesKcal": 135,
+      "caloriesKcal": 105,
       "proteinG": 20,
       "carbsG": 4,
       "sugarsG": 0,
-      "fatG": 4,
+      "fatG": 0.8,
       "satFatG": 0,
       "sodiumMg": 220,
+      "cholesterolMg": 13,
       "bcaaMg": 4200
     }
   },
@@ -3699,6 +3701,7 @@
       "sugarsG": 11,
       "fatG": 1.5,
       "satFatG": 0.8,
+      "cholesterolMg": 20,
       "sodiumMg": 150,
       "fiberG": 3
     }

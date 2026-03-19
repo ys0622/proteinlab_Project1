@@ -12,7 +12,7 @@
     "calories": 84,
     "sugar": 2.3,
     "density": "10.0g/100g",
-    "productUrl": "https://www.coupang.com/vp/products/9181041542",
+    "productUrl": "#",
     "productType": "yogurt",
     "gradeTags": [
       "단백질 밀도 A",
@@ -29,6 +29,7 @@
     "bcaa": "3250mg",
     "proteinSource": "혼합(유청+카제인)",
     "fat": 0,
+    "sodium": 85,
     "yogurtType": "프로틴 요거트",
     "storageType": "냉장",
     "lactoseFree": true,
@@ -39,6 +40,8 @@
       "carbsG": 6,
       "sugarsG": 2.3,
       "fatG": 0,
+      "cholesterolMg": 10,
+      "sodiumMg": 85,
       "bcaaMg": 3250
     }
   },
@@ -55,7 +58,7 @@
     "calories": 105,
     "sugar": 10,
     "density": "9.0g/100g",
-    "productUrl": "https://www.coupang.com/vp/products/9181041541",
+    "productUrl": "#",
     "productType": "yogurt",
     "gradeTags": [
       "단백질 밀도 A",
@@ -83,6 +86,7 @@
       "carbsG": 12,
       "sugarsG": 10,
       "fatG": 0,
+      "cholesterolMg": 5,
       "sodiumMg": 80,
       "bcaaMg": 3250
     }
@@ -97,10 +101,10 @@
       "컵"
     ],
     "proteinPerServing": 9,
-    "calories": 105,
-    "sugar": 11,
+    "calories": 112,
+    "sugar": 12,
     "density": "9.0g/100g",
-    "productUrl": "https://www.coupang.com/vp/products/1583671851",
+    "productUrl": "#",
     "productType": "yogurt",
     "gradeTags": [
       "단백질 밀도 B",
@@ -121,10 +125,10 @@
     "lactoseFree": false,
     "proteinPer100g": 9,
     "nutritionPerBottle": {
-      "caloriesKcal": 105,
+      "caloriesKcal": 112,
       "proteinG": 9,
-      "carbsG": 12,
-      "sugarsG": 11,
+      "carbsG": 14,
+      "sugarsG": 12,
       "fatG": 2.2,
       "satFatG": 1.3,
       "cholesterolMg": 20,
@@ -182,10 +186,10 @@
     "tags": [
       "PET"
     ],
-    "proteinPerServing": 15,
-    "calories": 135,
-    "sugar": 8,
-    "density": "7.1g/100mL",
+    "proteinPerServing": 17,
+    "calories": 190,
+    "sugar": 18,
+    "density": "8.1g/100mL",
     "productUrl": "https://www.11st.co.kr/products/3007683002",
     "productType": "yogurt",
     "gradeTags": [
@@ -200,19 +204,21 @@
     ],
     "manufacturer": "빙그레",
     "flavor": "딸기바나나",
-    "fat": 1.9,
-    "sodium": 100,
+    "fat": 3.1,
+    "sodium": 120,
     "yogurtType": "드링킹 요거트",
     "storageType": "냉장",
     "lactoseFree": false,
-    "proteinPer100g": 7.1,
+    "proteinPer100g": 8.1,
     "nutritionPerBottle": {
-      "caloriesKcal": 135,
-      "proteinG": 15,
-      "carbsG": 13,
-      "sugarsG": 8,
-      "fatG": 1.9,
-      "sodiumMg": 100
+      "caloriesKcal": 190,
+      "proteinG": 17,
+      "carbsG": 23,
+      "sugarsG": 18,
+      "fatG": 3.1,
+      "satFatG": 1.6,
+      "cholesterolMg": 55,
+      "sodiumMg": 120
     }
   },
   {
@@ -225,7 +231,7 @@
       "PET"
     ],
     "proteinPerServing": 23,
-    "calories": 180,
+    "calories": 188,
     "sugar": 12,
     "density": "11.0g/100mL",
     "productUrl": "https://catalog.11st.co.kr/pc/410027541",
@@ -242,21 +248,21 @@
     ],
     "manufacturer": "빙그레",
     "flavor": "플레인",
-    "fat": 3.5,
-    "sodium": 125,
+    "fat": 4,
+    "sodium": 180,
     "yogurtType": "드링킹 요거트",
     "storageType": "냉장",
     "lactoseFree": false,
     "proteinPer100g": 11,
     "nutritionPerBottle": {
-      "caloriesKcal": 180,
+      "caloriesKcal": 188,
       "proteinG": 23,
-      "carbsG": 13,
+      "carbsG": 15,
       "sugarsG": 12,
-      "fatG": 3.5,
-      "satFatG": 2.5,
-      "cholesterolMg": 90,
-      "sodiumMg": 125
+      "fatG": 4,
+      "satFatG": 2.2,
+      "cholesterolMg": 45,
+      "sodiumMg": 180
     }
   },
   {
@@ -304,7 +310,8 @@
     },
     "needsServingCheck": false,
     "nutritionBasis": "per_unit",
-    "servingCheckNote": "현재 확인한 판매 페이지는 80g x 16개입 묶음입니다. 현재 수치는 80g 1컵 기준으로 유지했고, 실제 표기 기준은 제품 라벨을 다시 확인해야 합니다."
+    "servingCheckNote": "현재 확인한 판매 페이지는 80g x 16개입 묶음입니다. 현재 수치는 80g 1컵 기준으로 유지했고, 실제 표기 기준은 제품 라벨을 다시 확인해야 합니다.",
+    "officialUrl": "https://foodismall.com/product/%ED%9B%84%EB%94%94%EC%8A%A4-%EA%B7%B8%EB%A6%AD%EC%9A%94%EA%B1%B0%ED%8A%B8-%ED%94%8C%EB%A0%88%EC%9D%B8-80gx16ea/278/"
   },
   {
     "slug": "who-greek-plain-450",
@@ -350,7 +357,8 @@
       "sodiumMg": 495
     },
     "needsServingCheck": false,
-    "nutritionBasis": "per_unit"
+    "nutritionBasis": "per_unit",
+    "officialUrl": "https://foodismall.com/product/%ED%9B%84%EB%94%94%EC%8A%A4-%EA%B7%B8%EB%A6%AD%EC%9A%94%EA%B1%B0%ED%8A%B8-%ED%94%8C%EB%A0%88%EC%9D%B8-450g/2296/"
   },
   {
     "slug": "maeil-bio-greek-unsweetened-150",
@@ -505,7 +513,7 @@
     "calories": 105,
     "sugar": 8.5,
     "density": "10.4g/100g",
-    "productUrl": "https://www.coupang.com/vp/products/1583671868",
+    "productUrl": "#",
     "productType": "yogurt",
     "gradeTags": [
       "단백질 밀도 A",
@@ -675,7 +683,8 @@
     "calories": 580,
     "sugar": 28,
     "fat": 24,
-    "servingCheckNote": "후디스 제품 이미지 전면 표기와 fatsecret Platform API 100g 영양정보를 함께 대조했습니다."
+    "servingCheckNote": "후디스 제품 이미지 전면 표기와 fatsecret Platform API 100g 영양정보를 함께 대조했습니다.",
+    "officialUrl": "https://foodismall.com/product/%ED%9B%84%EB%94%94%EC%8A%A4-%EA%B3%A0%EB%8B%A8%EB%B0%B1-%EB%AC%B4%EA%B0%80%EB%8B%B9-%EA%B7%B8%EB%A6%AD%EC%9A%94%EA%B1%B0%ED%8A%B8-400g/4496/"
   },
   {
     "slug": "yozm-plain-greek-450",
@@ -702,26 +711,28 @@
     ],
     "manufacturer": "YOZM",
     "flavor": "플레인",
-    "fat": 54,
+    "fat": 45,
+    "sodium": 112.5,
     "yogurtType": "그릭 요거트",
     "storageType": "냉장",
     "lactoseFree": false,
     "proteinPer100g": 12,
     "nutritionPerBottle": {
-      "caloriesKcal": 846,
+      "caloriesKcal": 810,
       "proteinG": 54,
-      "carbsG": 36,
-      "sugarsG": 9,
-      "fatG": 54,
-      "satFatG": 22.5,
+      "carbsG": 49.5,
+      "sugarsG": 4.5,
+      "fatG": 45,
+      "satFatG": 31.5,
       "cholesterolMg": 225,
       "sodiumMg": 112.5
     },
     "needsServingCheck": false,
     "nutritionBasis": "per_unit",
-    "calories": 846,
-    "sugar": 9,
-    "servingCheckNote": "fatsecret Platform API의 100g 영양정보(2025-09-20 업데이트)를 450g 용량 기준으로 반영했습니다."
+    "calories": 810,
+    "sugar": 4.5,
+    "servingCheckNote": "스펙 이미지의 100g당 영양정보를 450g 총내용량 기준으로 환산 반영했습니다.",
+    "officialUrl": "https://yozm.co.kr/product/%EC%9A%94%EC%A6%98-%EA%B7%B8%EB%A6%AD%EC%9A%94%EA%B1%B0%ED%8A%B8-%ED%94%8C%EB%A0%88%EC%9D%B8-450g/68/category/112/display/1/"
   },
   {
     "slug": "yozm-plain-greek-800",
@@ -767,7 +778,8 @@
     "servingCheckNote": "fatsecret Platform API의 100g 영양정보를 800g 용량 기준으로 환산했습니다. 대용량 SKU 라벨과 총 영양정보는 추가 이미지로 재확인하는 편이 안전합니다.",
     "nutritionBasis": "per_100g_scaled",
     "calories": 1504,
-    "sugar": 16
+    "sugar": 16,
+    "officialUrl": "https://yozm.co.kr/product/%EC%9A%94%EC%A6%98-%EA%B7%B8%EB%A6%AD%EC%9A%94%EA%B1%B0%ED%8A%B8-%ED%94%8C%EB%A0%88%EC%9D%B8-800g/103/category/112/display/1/"
   },
   {
     "slug": "yozm-soft-plain-500",
@@ -813,7 +825,8 @@
       "satFatG": 22,
       "cholesterolMg": 125,
       "sodiumMg": 155
-    }
+    },
+    "officialUrl": "https://yozm.co.kr/product/%EC%9A%94%EC%A6%98-%EA%B7%B8%EB%A6%AD%EC%9A%94%EA%B1%B0%ED%8A%B8-%EC%86%8C%ED%94%84%ED%8A%B8-%ED%94%8C%EB%A0%88%EC%9D%B8-500g/116/category/112/display/1/"
   },
   {
     "slug": "greekday-light-100",
@@ -855,7 +868,8 @@
       "sugarsG": 3.5,
       "fatG": 3.2,
       "sodiumMg": 45
-    }
+    },
+    "officialUrl": "https://m.greekday.co.kr/product/%EA%B7%B8%EB%A6%AD%EB%8D%B0%EC%9D%B4-%EA%B7%B8%EB%A6%AD%EC%9A%94%EA%B1%B0%ED%8A%B8-%EB%9D%BC%EC%9D%B4%ED%8A%B8-100g/420"
   },
   {
     "slug": "greekday-light-450",
@@ -897,7 +911,8 @@
       "sugarsG": 15.75,
       "fatG": 14.4,
       "sodiumMg": 202.5
-    }
+    },
+    "officialUrl": "https://greekday.co.kr/product/%EA%B7%B8%EB%A6%AD%EB%8D%B0%EC%9D%B4-%EA%B7%B8%EB%A6%AD%EC%9A%94%EA%B1%B0%ED%8A%B8-%EB%9D%BC%EC%9D%B4%ED%8A%B8-450g/13/"
   },
   {
     "slug": "greekday-light-800",
@@ -939,7 +954,8 @@
       "sugarsG": 28,
       "fatG": 25.6,
       "sodiumMg": 360
-    }
+    },
+    "officialUrl": "https://m.greekday.co.kr/product/%EA%B7%B8%EB%A6%AD%EB%8D%B0%EC%9D%B4-%EA%B7%B8%EB%A6%AD%EC%9A%94%EA%B1%B0%ED%8A%B8-%EB%9D%BC%EC%9D%B4%ED%8A%B8-800g/24/"
   },
   {
     "slug": "greekday-signature-100",
@@ -978,7 +994,8 @@
       "proteinG": 11.42,
       "sugarsG": 1.86,
       "fatG": 9.19
-    }
+    },
+    "officialUrl": "https://m.greekday.co.kr/product/%EA%B7%B8%EB%A6%AD%EB%8D%B0%EC%9D%B4-%EA%B7%B8%EB%A6%AD%EC%9A%94%EA%B1%B0%ED%8A%B8-%EC%8B%9C%EA%B7%B8%EB%8B%88%EC%B2%98-100g/419"
   },
   {
     "slug": "greekday-signature-450",
@@ -1017,7 +1034,8 @@
       "proteinG": 51.39,
       "sugarsG": 8.37,
       "fatG": 41.35
-    }
+    },
+    "officialUrl": "https://m.greekday.co.kr/product/%EA%B7%B8%EB%A6%AD%EB%8D%B0%EC%9D%B4-%EA%B7%B8%EB%A6%AD%EC%9A%94%EA%B1%B0%ED%8A%B8-%EC%8B%9C%EA%B7%B8%EB%8B%88%EC%B2%98-450g/12"
   },
   {
     "slug": "greekday-signature-800",
@@ -1056,7 +1074,8 @@
       "proteinG": 91.36,
       "sugarsG": 14.88,
       "fatG": 73.52
-    }
+    },
+    "officialUrl": "https://m.greekday.co.kr/product/%EA%B7%B8%EB%A6%AD%EB%8D%B0%EC%9D%B4-%EA%B7%B8%EB%A6%AD%EC%9A%94%EA%B1%B0%ED%8A%B8-%EC%8B%9C%EA%B7%B8%EB%8B%88%EC%B2%98-800g/11/"
   },
   {
     "slug": "greekday-signature-yuja-100",
@@ -1103,7 +1122,8 @@
     "fat": 8,
     "needsServingCheck": false,
     "nutritionBasis": "per_unit",
-    "servingCheckNote": "fatsecret Platform API 기준 100g 영양정보를 확인했습니다."
+    "servingCheckNote": "fatsecret Platform API 기준 100g 영양정보를 확인했습니다.",
+    "officialUrl": "https://greekday.co.kr/product/%EA%B7%B8%EB%A6%AD%EB%8D%B0%EC%9D%B4-%EC%8B%9C%EA%B7%B8%EB%8B%88%EC%B2%98-%EC%9C%A0%EC%9E%90-100g/433/"
   },
   {
     "slug": "maeil-bio-greek-unsweetened-400",
@@ -1382,7 +1402,8 @@
     "calories": 80,
     "sugar": 6,
     "fat": 1.5,
-    "sodium": 50
+    "sodium": 50,
+    "officialUrl": "https://direct.maeil.com/m/product/productView.do?productCode=P20719"
   },
   {
     "slug": "maeil-bio-greek-togo-plain-120",
@@ -1841,7 +1862,8 @@
       "satFatG": 21.94,
       "cholesterolMg": 140.63,
       "sodiumMg": 506.25
-    }
+    },
+    "officialUrl": "https://foodismall.com/product/%ED%9B%84%EB%94%94%EC%8A%A4-%EC%9C%A0%EA%B8%B0%EB%86%8D-%EA%B7%B8%EB%A6%AD%EC%9A%94%EA%B1%B0%ED%8A%B8-%EB%8B%AC%EC%A7%80%EC%95%8A%EC%9D%80-%ED%94%8C%EB%A0%88%EC%9D%B8-450g/3714/"
   },
   {
     "slug": "lookt-icelandic-mild-100",
@@ -1885,7 +1907,8 @@
       "sodiumMg": 40
     },
     "needsServingCheck": false,
-    "nutritionBasis": "per_unit"
+    "nutritionBasis": "per_unit",
+    "officialUrl": "https://lukt.co.kr/shop_view/209"
   },
   {
     "slug": "lookt-icelandic-thick-100",
@@ -1930,7 +1953,8 @@
     },
     "needsServingCheck": false,
     "nutritionBasis": "per_unit",
-    "servingCheckNote": "공식몰 표기는 당류 1g 미만입니다. 현재 비교 계산을 위해 0.9g으로 입력했습니다."
+    "servingCheckNote": "공식몰 표기는 당류 1g 미만입니다. 현재 비교 계산을 위해 0.9g으로 입력했습니다.",
+    "officialUrl": "https://lukt.co.kr/shop_view/208"
   },
   {
     "slug": "lookt-icelandic-mild-450",

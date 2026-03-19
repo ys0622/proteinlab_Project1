@@ -3,15 +3,15 @@
     "slug": "dryou-proteinbar-pro-3nuts-crunch",
     "brand": "닥터유",
     "name": "프로 단백질바 (3넛츠 크런치)",
-    "capacity": "50g",
+    "capacity": "70g",
     "variant": "일반",
     "tags": [
       "바"
     ],
     "proteinPerServing": 25,
-    "calories": 220,
-    "sugar": 7,
-    "density": "11.36g/100kcal",
+    "calories": 334,
+    "sugar": 8,
+    "density": "7.5g/100kcal",
     "productUrl": "#",
     "productType": "bar",
     "gradeTags": []
@@ -20,15 +20,15 @@
     "slug": "dryou-proteinbar-pro-choco-classic",
     "brand": "닥터유",
     "name": "프로 단백질바 (초코 클래식)",
-    "capacity": "50g",
+    "capacity": "70g",
     "variant": "일반",
     "tags": [
       "바"
     ],
-    "proteinPerServing": 25,
-    "calories": 220,
-    "sugar": 7,
-    "density": "11.36g/100kcal",
+    "proteinPerServing": 24,
+    "calories": 312,
+    "sugar": 9,
+    "density": "7.7g/100kcal",
     "productUrl": "#",
     "productType": "bar",
     "gradeTags": []
@@ -37,15 +37,15 @@
     "slug": "dryou-proteinbar-pro-crunch",
     "brand": "닥터유",
     "name": "프로 단백질바 (크런치)",
-    "capacity": "50g",
+    "capacity": "70g",
     "variant": "일반",
     "tags": [
       "바"
     ],
-    "proteinPerServing": 25,
-    "calories": 220,
-    "sugar": 7,
-    "density": "11.36g/100kcal",
+    "proteinPerServing": 24,
+    "calories": 355,
+    "sugar": 9,
+    "density": "6.8g/100kcal",
     "productUrl": "#",
     "productType": "bar",
     "gradeTags": []
@@ -298,9 +298,9 @@
       "바"
     ],
     "proteinPerServing": 20,
-    "calories": 240,
-    "sugar": 3,
-    "density": "8.33g/100kcal",
+    "calories": 190,
+    "sugar": 5,
+    "density": "10.5g/100kcal",
     "productUrl": "#",
     "productType": "bar",
     "gradeTags": []
@@ -331,10 +331,10 @@
     "tags": [
       "바"
     ],
-    "proteinPerServing": 19,
-    "calories": 170,
+    "proteinPerServing": 20,
+    "calories": 190,
     "sugar": 1,
-    "density": "11.18g/100kcal",
+    "density": "10.5g/100kcal",
     "productUrl": "#",
     "productType": "bar",
     "gradeTags": []
@@ -417,9 +417,9 @@
       "바"
     ],
     "proteinPerServing": 21,
-    "calories": 200,
+    "calories": 190,
     "sugar": 1,
-    "density": "10.5g/100kcal",
+    "density": "11.1g/100kcal",
     "productUrl": "#",
     "productType": "bar",
     "gradeTags": []
@@ -807,10 +807,10 @@
     "tags": [
       "바"
     ],
-    "proteinPerServing": 12,
-    "calories": 90,
-    "sugar": 4,
-    "density": "13.33g/100kcal",
+    "proteinPerServing": 8.4,
+    "calories": 122.6,
+    "sugar": 3.1,
+    "density": "6.9g/100kcal",
     "productUrl": "#",
     "productType": "bar",
     "gradeTags": []
@@ -841,10 +841,10 @@
     "tags": [
       "바"
     ],
-    "proteinPerServing": 12,
-    "calories": 90,
-    "sugar": 4,
-    "density": "13.33g/100kcal",
+    "proteinPerServing": 8.4,
+    "calories": 98.4,
+    "sugar": 2.9,
+    "density": "8.5g/100kcal",
     "productUrl": "#",
     "productType": "bar",
     "gradeTags": []
@@ -1014,7 +1014,7 @@
     "proteinPerServing": 9,
     "calories": 130,
     "sugar": 3,
-    "density": "6.92g/100kcal",
+    "density": "6.9g/100kcal",
     "productUrl": "#",
     "productType": "bar",
     "gradeTags": []
@@ -1164,8 +1164,10 @@
     "tags": [
       "바"
     ],
-    "proteinPerServing": 0,
-    "density": "—",
+    "proteinPerServing": 7,
+    "calories": 165,
+    "sugar": 6.7,
+    "density": "4.2g/100kcal",
     "productUrl": "#",
     "productType": "bar",
     "gradeTags": []
@@ -1179,8 +1181,10 @@
     "tags": [
       "바"
     ],
-    "proteinPerServing": 0,
-    "density": "—",
+    "proteinPerServing": 20,
+    "calories": 180,
+    "sugar": 5,
+    "density": "11.1g/100kcal",
     "productUrl": "#",
     "productType": "bar",
     "gradeTags": []
@@ -1194,8 +1198,10 @@
     "tags": [
       "바"
     ],
-    "proteinPerServing": 0,
-    "density": "—",
+    "proteinPerServing": 9,
+    "calories": 195,
+    "sugar": 5,
+    "density": "4.6g/100kcal",
     "productUrl": "#",
     "productType": "bar",
     "gradeTags": []

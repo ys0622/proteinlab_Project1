@@ -12,6 +12,7 @@ function readJson(relPath) {
 const drinks = readJson("app/data/drinkProductsData.json");
 const bars = readJson("app/data/barProductsData.json");
 const yogurts = readJson("app/data/yogurtProductsData.json");
+const shakes = readJson("app/data/shakeProductsData.json");
 
 // barProductsData.ts 와 JSON 제품 수 불일치 경고 (TS는 JSON을 import하므로 동일해야 함)
 // 향후 TS가 별도 배열을 가질 경우를 대비해 경고 로직만 유지
@@ -38,6 +39,7 @@ const products = [
   ...mapProducts(drinks, "drinks"),
   ...mapProducts(bars, "bars"),
   ...mapProducts(yogurts, "yogurt"),
+  ...mapProducts(shakes, "shake"),
 ];
 
 const output = {
@@ -47,6 +49,7 @@ const output = {
     drinks: drinks.length,
     bars: bars.length,
     yogurt: yogurts.length,
+    shake: shakes.length,
   },
   products,
 };
@@ -55,5 +58,5 @@ writeFileSync(resolve(root, "public/products.json"), JSON.stringify(output, null
 
 console.log("✅ products.json 생성 완료");
 console.log(
-  `   음료: ${drinks.length}개 / 바: ${bars.length}개 / 요거트: ${yogurts.length}개 / 합계: ${products.length}개`
+  `   음료: ${drinks.length}개 / 바: ${bars.length}개 / 요거트: ${yogurts.length}개 / 쉐이크: ${shakes.length}개 / 합계: ${products.length}개`
 );

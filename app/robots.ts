@@ -1,12 +1,14 @@
-import type { MetadataRoute } from "next";
+import { MetadataRoute } from 'next'
 
 export default function robots(): MetadataRoute.Robots {
   return {
-    rules: {
-      userAgent: "*",
-      allow: "/",
-    },
-    sitemap: "https://proteinlab.kr/sitemap.xml",
-    host: "https://proteinlab.kr",
-  };
+    rules: [
+      {
+        userAgent: '*',
+        allow: '/',
+      },
+    ],
+    host: 'https://proteinlab.kr',
+    sitemap: 'https://proteinlab.kr/sitemap.xml',
+  }
 }

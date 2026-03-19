@@ -2,6 +2,7 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import type { ProductDetailProps } from "../data/products";
 import { getDensityValue, getDietScore, getPerformanceScore } from "../lib/gradeCalculation";
+import type { ProductCategory } from "../lib/categories";
 import { getProductsByCategoryAsync } from "../lib/productData";
 import RankingClient from "./RankingClient";
 
@@ -60,10 +61,11 @@ export type RankingItem = {
 };
 
 export default async function RankingPage() {
-  const [drinkProducts, barProducts, yogurtProducts] = await Promise.all([
+  const [drinkProducts, barProducts, yogurtProducts, shakeProducts] = await Promise.all([
     getProductsByCategoryAsync("drink"),
     getProductsByCategoryAsync("bar"),
     getProductsByCategoryAsync("yogurt"),
+    getProductsByCategoryAsync("shake"),
   ]);
 
   const drinkDensity = prepareRankingData(drinkProducts, "density");
@@ -75,11 +77,15 @@ export default async function RankingPage() {
   const yogurtDensity = prepareRankingData(yogurtProducts, "density");
   const yogurtDiet = prepareRankingData(yogurtProducts, "diet");
   const yogurtPerf = prepareRankingData(yogurtProducts, "performance");
+  const shakeDensity = prepareRankingData(shakeProducts, "density");
+  const shakeDiet = prepareRankingData(shakeProducts, "diet");
+  const shakePerf = prepareRankingData(shakeProducts, "performance");
 
-  const rankings = {
+  const rankings: Record<ProductCategory, { density: RankingItem[]; diet: RankingItem[]; performance: RankingItem[] }> = {
     drink: { density: drinkDensity, diet: drinkDiet, performance: drinkPerf },
     bar: { density: barDensity, diet: barDiet, performance: barPerf },
     yogurt: { density: yogurtDensity, diet: yogurtDiet, performance: yogurtPerf },
+    shake: { density: shakeDensity, diet: shakeDiet, performance: shakePerf },
   };
 
   return (

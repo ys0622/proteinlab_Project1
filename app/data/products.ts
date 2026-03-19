@@ -2,6 +2,7 @@ import type { ProductCardProps } from "../components/ProductCard";
 import { applyBarGrades, applyDrinkGrades, applyYogurtGrades } from "../lib/gradeCalculation";
 import { getBarProducts } from "./barProductsData";
 import { getDrinkProducts } from "./drinkProductsData";
+import { getShakeProducts } from "./shakeProductsData";
 import { getYogurtProducts } from "./yogurtProductsData";
 
 export interface NutritionDetailRow {
@@ -25,7 +26,7 @@ export interface NutritionPerBottle {
 
 export interface ProductDetailFields {
   slug: string;
-  productType?: "drink" | "bar" | "yogurt";
+  productType?: "drink" | "bar" | "yogurt" | "shake";
   nutritionBasis?: "per_unit" | "per_pack" | "unknown";
   needsServingCheck?: boolean;
   servingCheckNote?: string;
@@ -53,6 +54,7 @@ export const mockBarProducts: ProductDetailProps[] = getBarProducts();
 export const barProductsWithGrades: ProductDetailProps[] = applyBarGrades(mockBarProducts);
 export const yogurtProducts: ProductDetailProps[] = getYogurtProducts();
 export const yogurtProductsWithGrades: ProductDetailProps[] = applyYogurtGrades(yogurtProducts);
+export const shakeProducts: ProductDetailProps[] = getShakeProducts();
 
 function formatValue(value: number | undefined, unit: string) {
   return value != null ? `${value}${unit}` : "-";
@@ -127,7 +129,7 @@ export function getNutritionDetail(p: ProductDetailProps): NutritionDetailRow[] 
 }
 
 export function getAllProducts(): ProductDetailProps[] {
-  return [...mockProducts, ...barProductsWithGrades, ...yogurtProductsWithGrades];
+  return [...mockProducts, ...barProductsWithGrades, ...yogurtProductsWithGrades, ...shakeProducts];
 }
 
 export function getProductBySlug(slug: string): ProductDetailProps | null {
@@ -135,6 +137,8 @@ export function getProductBySlug(slug: string): ProductDetailProps | null {
   if (bar) return bar;
   const yogurt = yogurtProductsWithGrades.find((p) => p.slug === slug);
   if (yogurt) return yogurt;
+  const shake = shakeProducts.find((p) => p.slug === slug);
+  if (shake) return shake;
   return mockProducts.find((p) => p.slug === slug) ?? null;
 }
 
