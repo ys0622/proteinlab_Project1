@@ -1,10 +1,11 @@
 import type { NutritionPerBottle, ProductDetailProps } from "./products";
-import { isCoupangUrl } from "../lib/purchaseLinks";
+import { isCoupangUrl, normalizeCoupangUrl } from "../lib/purchaseLinks";
 import barData from "./barProductsData.json";
 import { barServingAuditBySlug } from "./barServingAudit";
 
 function withCoupangUrl<T extends { productUrl?: string; coupangUrl?: string }>(p: T): T {
-  const coupangUrl = p.coupangUrl ?? (p.productUrl && isCoupangUrl(p.productUrl) ? p.productUrl : undefined);
+  const sourceUrl = p.coupangUrl ?? (p.productUrl && isCoupangUrl(p.productUrl) ? p.productUrl : undefined);
+  const coupangUrl = normalizeCoupangUrl(sourceUrl) ?? undefined;
   return { ...p, coupangUrl };
 }
 

@@ -1,5 +1,6 @@
 import { getCloudflareContext } from "@opennextjs/cloudflare";
 import type { ProductDetailProps } from "@/app/data/products";
+import { normalizeCoupangUrl } from "./purchaseLinks";
 
 interface KVStore {
   get(key: string, type: "json"): Promise<Record<string, unknown> | null>;
@@ -49,7 +50,11 @@ export async function withProductOverride(base: ProductDetailProps): Promise<Pro
 
     // slug, productType은 덮어쓰지 않음
     const { slug: _s, productType: _t, updatedAt: _u, ...rest } = override as Record<string, unknown>;
-    return { ...base, ...rest } as ProductDetailProps;
+    const merged = { ...base, ...rest } as ProductDetailProps;
+    if (typeof merged.coupangUrl === "string") {
+      merged.coupangUrl = normalizeCoupangUrl(merged.coupangUrl) ?? merged.coupangUrl;
+    }
+    return merged;
   } catch {
     return base;
   }

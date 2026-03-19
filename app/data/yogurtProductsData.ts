@@ -1,9 +1,10 @@
 import type { ProductDetailProps } from "./products";
-import { isCoupangUrl } from "../lib/purchaseLinks";
+import { isCoupangUrl, normalizeCoupangUrl } from "../lib/purchaseLinks";
 import yogurtData from "./yogurtProductsData.json";
 
 function withCoupangUrl<T extends { productUrl?: string; coupangUrl?: string }>(p: T): T {
-  const coupangUrl = p.coupangUrl ?? (p.productUrl && isCoupangUrl(p.productUrl) ? p.productUrl : undefined);
+  const sourceUrl = p.coupangUrl ?? (p.productUrl && isCoupangUrl(p.productUrl) ? p.productUrl : undefined);
+  const coupangUrl = normalizeCoupangUrl(sourceUrl) ?? undefined;
   return { ...p, coupangUrl };
 }
 

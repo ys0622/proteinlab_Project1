@@ -133,6 +133,30 @@ function getCoupangProductParams(url: string): CoupangProductParams | null {
   }
 }
 
+export function normalizeCoupangUrl(value?: string | null): string | null {
+  if (!isValidExternalUrl(value)) {
+    return null;
+  }
+
+  if (isCoupangPartnersUrl(value)) {
+    return value;
+  }
+
+  if (!isCoupangUrl(value)) {
+    return value;
+  }
+
+  const params = getCoupangProductParams(value);
+  if (!params) {
+    return value;
+  }
+
+  const normalized = new URL(`https://www.coupang.com/vp/products/${params.pageKey}`);
+  normalized.searchParams.set("itemId", params.itemId);
+  normalized.searchParams.set("vendorItemId", params.vendorItemId);
+  return normalized.toString();
+}
+
 function buildCoupangPartnersProductUrl(
   productUrl: string,
   category?: CoupangLinkCategory | null,
@@ -197,13 +221,14 @@ export function getPreferredCoupangUrl(
   coupangUrl?: string | null,
   category?: CoupangLinkCategory | null,
 ): string | null {
-  if (!coupangUrl || coupangUrl === "#") return null;
-  if (!isValidCoupangLink(coupangUrl)) return null;
+  const normalizedCoupangUrl = normalizeCoupangUrl(coupangUrl);
+  if (!normalizedCoupangUrl || normalizedCoupangUrl === "#") return null;
+  if (!isValidCoupangLink(normalizedCoupangUrl)) return null;
 
-  if (isCoupangPartnersUrl(coupangUrl)) return coupangUrl;
+  if (isCoupangPartnersUrl(normalizedCoupangUrl)) return normalizedCoupangUrl;
 
-  if (isCoupangUrl(coupangUrl)) {
-    return buildCoupangPartnersProductUrl(coupangUrl, category);
+  if (isCoupangUrl(normalizedCoupangUrl)) {
+    return buildCoupangPartnersProductUrl(normalizedCoupangUrl, category);
   }
 
   return null;
