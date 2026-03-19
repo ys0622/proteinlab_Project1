@@ -199,13 +199,13 @@ export function getCoupangRedirectHref(
   category?: CoupangLinkCategory | null,
   slug?: string | null,
 ): string | null {
-  const normalized = normalizeCoupangUrl(coupangUrl) ?? getKnownSourceCoupangUrlBySlug(slug);
-  if (!normalized || !isValidCoupangLink(normalized)) {
+  const destination = getCoupangDestinationUrl(coupangUrl, category, slug);
+  if (!destination || !isValidCoupangLink(destination)) {
     return null;
   }
 
   const redirectUrl = new URL("/api/out/coupang", "https://proteinlab.kr");
-  redirectUrl.searchParams.set("url", normalized);
+  redirectUrl.searchParams.set("url", destination);
   if (category) {
     redirectUrl.searchParams.set("category", category);
   }
@@ -276,11 +276,18 @@ export function getCoupangDestinationUrl(
   category?: CoupangLinkCategory | null,
   slug?: string | null,
 ): string | null {
-  return (
-    getPreferredCoupangUrl(coupangUrl, category) ??
-    normalizeCoupangUrl(coupangUrl) ??
-    getKnownSourceCoupangUrlBySlug(slug)
-  );
+  const knownSourceUrl = getKnownSourceCoupangUrlBySlug(slug);
+  const preferred = getPreferredCoupangUrl(coupangUrl, category);
+  if (preferred) {
+    return preferred;
+  }
+
+  const normalized = normalizeCoupangUrl(coupangUrl);
+  if (normalized && isValidCoupangLink(normalized)) {
+    return normalized;
+  }
+
+  return knownSourceUrl;
 }
 
 export function getNaverSearchUrl(brand: string, name: string): string {
