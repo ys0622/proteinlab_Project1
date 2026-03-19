@@ -139,6 +139,27 @@ function applyConditionPrefilters(products: ProductDetailProps[], req: Recommend
     }
   }
 
+  if (req.category === "shake") {
+    if (req.conditions.includes("highpro")) {
+      filtered = filterIfEnough(filtered, (product) => product.proteinPerServing >= 20);
+    }
+    if (req.conditions.includes("lowsugar")) {
+      filtered = filterIfEnough(filtered, (product) => (product.sugar ?? 0) <= 3, 5);
+    }
+    if (req.conditions.includes("meal")) {
+      filtered = filterIfEnough(
+        filtered,
+        (product) =>
+          (product.calories ?? 0) >= 150 &&
+          product.proteinPerServing >= 15 &&
+          (product.nutritionPerBottle?.fiberG ?? 0) >= 4,
+      );
+    }
+    if (req.conditions.includes("fiber")) {
+      filtered = filterIfEnough(filtered, (product) => (product.nutritionPerBottle?.fiberG ?? 0) >= 5, 5);
+    }
+  }
+
   return filtered;
 }
 
@@ -389,9 +410,82 @@ function scoreYogurtProduct(product: ProductDetailProps, req: RecommendRequest):
   };
 }
 
+function scoreShakeProduct(product: ProductDetailProps, req: RecommendRequest): ScoredProduct {
+  let score = 0;
+  const reasons: string[] = [];
+  const density = getDensityValue(product);
+  const diet = getDietScore(product);
+  const performance = getPerformanceScore(product);
+  const protein = product.proteinPerServing;
+  const calories = product.calories ?? 160;
+  const sugar = product.sugar ?? 0;
+  const fiber = product.nutritionPerBottle?.fiberG ?? 0;
+
+  if (req.purpose === "muscle") {
+    score += protein * 3 + performance * 2.2 + density * 6;
+    if (protein >= 20) reasons.push("고단백 기준으로 운동 보충에 보기 좋습니다");
+  } else if (req.purpose === "diet") {
+    score += (320 - diet) * 1.8 + density * 10;
+    if (sugar <= 3) reasons.push("당류 부담이 낮아 다이어트 관점에서 보기 좋습니다");
+  } else if (req.purpose === "daily") {
+    score += protein * 2 + density * 8 + fiber * 6;
+    if (fiber >= 4) reasons.push("식이섬유가 있어 간편식 대용으로 보기 좋습니다");
+  } else if (req.purpose === "recovery") {
+    score += performance * 2.5 + protein * 2;
+    if (protein >= 20) reasons.push("운동 후 단백질 보충용으로 무난합니다");
+  }
+
+  if (req.frequency === "daily" || req.frequency === "often") {
+    score += density * 2 + fiber * 2;
+  }
+
+  if (req.intensity === "extreme" || req.intensity === "hard") {
+    score += protein * 1.5;
+  } else if (req.intensity === "light") {
+    score += 220 - calories;
+  }
+
+  for (const condition of req.conditions) {
+    if (condition === "highpro" && protein >= 20) {
+      score += 26;
+      reasons.push("20g 이상 단백질을 담고 있습니다");
+    }
+    if (condition === "lowsugar" && sugar <= 3) {
+      score += 24;
+      reasons.push("당류 3g 이하로 비교적 깔끔합니다");
+    }
+    if (condition === "meal" && calories >= 150 && fiber >= 4) {
+      score += 24;
+      reasons.push("칼로리와 식이섬유가 있어 식사대용으로 보기 좋습니다");
+    }
+    if (condition === "fiber" && fiber >= 5) {
+      score += 24;
+      reasons.push("식이섬유 함량이 높은 편입니다");
+    }
+    if (condition === "density") {
+      score += density * 5;
+      if (density >= 14) reasons.push("칼로리 대비 단백질 효율이 좋습니다");
+    }
+  }
+
+  return {
+    product,
+    score,
+    reason: buildReason(
+      reasons,
+      protein >= 20
+        ? "고단백 파우치형 쉐이크로 활용도가 좋은 편입니다"
+        : fiber >= 5
+          ? "식이섬유와 단백질 구성이 비교적 균형적입니다"
+          : "간편하게 섭취하기 좋은 파우치형 쉐이크입니다",
+    ),
+  };
+}
+
 function scoreProduct(product: ProductDetailProps, req: RecommendRequest): ScoredProduct {
   if (req.category === "bar") return scoreBarProduct(product, req);
   if (req.category === "yogurt") return scoreYogurtProduct(product, req);
+  if (req.category === "shake") return scoreShakeProduct(product, req);
   return scoreDrinkProduct(product, req);
 }
 

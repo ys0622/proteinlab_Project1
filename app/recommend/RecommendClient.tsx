@@ -107,8 +107,11 @@ const CONDITION_OPTIONS_BY_CATEGORY: Record<ProductType, ConditionOption[]> = {
     { icon: "🍬", label: "저당", desc: "당류 5g 이하 선호", value: "lowsugar" },
   ],
   shake: [
-    { icon: "🧃", label: "파우치형", desc: "간편 섭취형 중심", value: "pouch" },
-    { icon: "🚫", label: "파우더 제외", desc: "이번 버전 대상 제외", value: "powder-excluded" },
+    { icon: "💪", label: "고단백", desc: "20g 이상 선호", value: "highpro" },
+    { icon: "🫐", label: "저당", desc: "당류 3g 이하 선호", value: "lowsugar" },
+    { icon: "🥣", label: "식사대용", desc: "포만감 보완용 제품 선호", value: "meal" },
+    { icon: "🌾", label: "식이섬유", desc: "식이섬유 5g 이상 선호", value: "fiber" },
+    { icon: "⭐", label: "단백질 밀도", desc: "칼로리 대비 단백질 효율 선호", value: "density" },
   ],
 };
 
