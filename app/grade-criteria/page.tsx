@@ -42,10 +42,10 @@ const YOGURT_ROWS: UnifiedRow[] = [
 ];
 
 const SHAKE_ROWS: UnifiedRow[] = [
-  { grade: "A", density: "데이터 축적 후 동일 기준 적용 예정", diet: "데이터 축적 후 동일 기준 적용 예정", performance: "데이터 축적 후 동일 기준 적용 예정" },
-  { grade: "B", density: "카테고리 구조는 반영 완료", diet: "카테고리 구조는 반영 완료", performance: "카테고리 구조는 반영 완료" },
-  { grade: "C", density: "파우치형 쉐이크만 집계 예정", diet: "파우더는 제외", performance: "추후 실제 제품 데이터 반영" },
-  { grade: "D", density: "현재 공개 랭킹 데이터 없음", diet: "현재 공개 랭킹 데이터 없음", performance: "현재 공개 랭킹 데이터 없음" },
+  { grade: "A", density: "상위 20%", diet: "점수 낮은 상위 20%", performance: "점수 높은 상위 20%" },
+  { grade: "B", density: "상위 50%", diet: "점수 낮은 상위 50%", performance: "점수 높은 상위 50%" },
+  { grade: "C", density: "상위 80%", diet: "점수 낮은 상위 80%", performance: "점수 높은 상위 80%" },
+  { grade: "D", density: "하위 20%", diet: "점수 높은 하위 20%", performance: "점수 낮은 하위 20%" },
 ];
 
 const FAQ = [
@@ -63,7 +63,11 @@ const FAQ = [
   },
   {
     q: "단백질 요거트도 같은 방식으로 계산하나요?",
-    a: "네. 단백질 요거트도 같은 제품군 내부에서 단백질 밀도, 다이어트, 퍼포먼스 지표를 각각 계산한 뒤 상대 순위 기준으로 A~D 등급을 부여합니다.",
+    a: "네. 단백질 요거트도 같은 카테고리 내부에서 단백질 밀도, 다이어트, 퍼포먼스 지표를 각각 계산한 뒤 상대 순위 기준으로 A~D 등급을 부여합니다.",
+  },
+  {
+    q: "쉐이크도 같은 방식으로 계산하나요?",
+    a: "네. 파우치형 단백질 쉐이크도 같은 카테고리 내부에서 단백질 밀도, 다이어트, 퍼포먼스 지표를 각각 계산한 뒤 상대 순위 기준으로 A~D 등급을 부여합니다.",
   },
 ];
 

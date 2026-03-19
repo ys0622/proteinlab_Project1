@@ -108,6 +108,10 @@ export function applyYogurtGrades(products: ProductDetailProps[]): ProductDetail
   return applyGradesInternal(products);
 }
 
+export function applyShakeGrades(products: ProductDetailProps[]): ProductDetailProps[] {
+  return applyGradesInternal(products);
+}
+
 export function getDensitySortKey(p: ProductDetailProps): number {
   return getDensityValue(p);
 }

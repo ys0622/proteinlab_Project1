@@ -1,5 +1,5 @@
 import type { ProductCardProps } from "../components/ProductCard";
-import { applyBarGrades, applyDrinkGrades, applyYogurtGrades } from "../lib/gradeCalculation";
+import { applyBarGrades, applyDrinkGrades, applyShakeGrades, applyYogurtGrades } from "../lib/gradeCalculation";
 import { getBarProducts } from "./barProductsData";
 import { getDrinkProducts } from "./drinkProductsData";
 import { getShakeProducts } from "./shakeProductsData";
@@ -54,7 +54,7 @@ export const mockBarProducts: ProductDetailProps[] = getBarProducts();
 export const barProductsWithGrades: ProductDetailProps[] = applyBarGrades(mockBarProducts);
 export const yogurtProducts: ProductDetailProps[] = getYogurtProducts();
 export const yogurtProductsWithGrades: ProductDetailProps[] = applyYogurtGrades(yogurtProducts);
-export const shakeProducts: ProductDetailProps[] = getShakeProducts();
+export const shakeProducts: ProductDetailProps[] = applyShakeGrades(getShakeProducts());
 
 function formatValue(value: number | undefined, unit: string) {
   return value != null ? `${value}${unit}` : "-";
