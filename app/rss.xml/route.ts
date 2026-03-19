@@ -58,6 +58,31 @@ const feedItems: FeedItem[] = [
     path: "/guides/product-selection-comparison/protein-yogurt-guide",
   },
   {
+    title: "단백질 쉐이크 추천 가이드",
+    description: "파우치형 중심의 간편 섭취 단백질 쉐이크를 고를 때 단백질, 당류, 칼로리, 식이섬유를 어떻게 봐야 하는지 정리했습니다.",
+    path: "/guides/product-selection-comparison/protein-shake-guide",
+  },
+  {
+    title: "식사대용 단백질 쉐이크",
+    description: "식사대용 단백질 쉐이크를 고를 때 단백질, 칼로리, 식이섬유를 함께 보는 기준을 정리했습니다.",
+    path: "/guides/product-selection-comparison/meal-replacement-protein-shake-guide",
+  },
+  {
+    title: "단백질 음료 vs 단백질 쉐이크",
+    description: "RTD 단백질 음료와 파우치형 단백질 쉐이크의 차이를 용도와 성분 기준으로 비교했습니다.",
+    path: "/guides/product-selection-comparison/protein-drink-vs-protein-shake",
+  },
+  {
+    title: "저당 단백질 쉐이크",
+    description: "당류가 낮은 단백질 쉐이크를 고를 때 단백질과 칼로리, 식이섬유까지 함께 보는 기준을 정리했습니다.",
+    path: "/guides/product-selection-comparison/low-sugar-protein-shake-guide",
+  },
+  {
+    title: "운동 후 단백질 쉐이크",
+    description: "운동 후 단백질 쉐이크를 고를 때 단백질 함량, 당류, 단백질 밀도를 어떻게 봐야 하는지 정리했습니다.",
+    path: "/guides/product-selection-comparison/post-workout-protein-shake-guide",
+  },
+  {
     title: "그릭요거트 추천 기준",
     description: "그릭요거트의 단백질 함량, 단백질 밀도, 당류 기준을 정리합니다.",
     path: "/guides/product-selection-comparison/greek-yogurt-guide",

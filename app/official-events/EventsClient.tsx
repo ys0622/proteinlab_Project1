@@ -1,8 +1,8 @@
-"use client";
+﻿"use client";
 
 import { useMemo, useState } from "react";
 
-type ProductType = "drink" | "bar" | "yogurt";
+type ProductType = "drink" | "bar" | "yogurt" | "shake";
 type EventCategory = "할인" | "쿠폰" | "증정" | "무료배송";
 type FilterType = "전체" | EventCategory;
 
@@ -271,6 +271,75 @@ const rawBarBrands: BrandCard[] = [
   },
 ];
 
+const rawShakeBrands: BrandCard[] = [
+  {
+    brand: "플라이밀",
+    storeType: "자사몰",
+    storeUrl: "https://flymill.co.kr/",
+    note: "현재 등록 쉐이크 12개",
+    productCount: 12,
+    events: [
+      { category: "할인", periodLabel: CHECKED_DATE_LABEL, description: "쉐이크 묶음 구성과 맛별 세트 할인 노출 빈도가 높아 단품보다 세트 가격을 먼저 확인하는 편이 좋습니다." },
+      { category: "쿠폰", periodLabel: CHECKED_DATE_LABEL, description: "신규 회원 쿠폰이나 장바구니 쿠폰이 함께 붙는 경우가 있어 최종 결제 직전 가격을 다시 보는 편이 안전합니다." },
+    ],
+  },
+  {
+    brand: "랩노쉬",
+    storeType: "자사몰",
+    storeUrl: "https://labnosh.com/",
+    note: "현재 등록 쉐이크 9개",
+    productCount: 9,
+    events: [
+      { category: "할인", periodLabel: CHECKED_DATE_LABEL, description: "슬림쉐이크 세트 구성과 정기배송 할인 문구가 반복적으로 노출되는 편이라 단품보다 구성 가격을 같이 보는 편이 좋습니다." },
+      { category: "무료배송", periodLabel: CHECKED_DATE_LABEL, description: "자사몰은 금액 조건 무료배송이 자주 붙어 소량보다 묶음 구매 체감가가 더 내려가는 구조가 많습니다." },
+    ],
+  },
+  {
+    brand: "단백하니",
+    storeType: "네이버 스토어",
+    storeUrl: "https://smartstore.naver.com/",
+    note: "현재 등록 쉐이크 4개",
+    productCount: 4,
+    events: [
+      { category: "할인", periodLabel: CHECKED_DATE_LABEL, description: "맛별 묶음 할인과 세트 프로모션이 반복적으로 열려 단품보다 세트 구성이 유리한 경우가 많습니다." },
+      { category: "쿠폰", periodLabel: CHECKED_DATE_LABEL, description: "스토어 쿠폰이 붙는 시점이 있어 네이버 스토어 특가 여부를 같이 확인하는 편이 좋습니다." },
+    ],
+  },
+  {
+    brand: "프로티원",
+    storeType: "자사몰",
+    storeUrl: "https://proteone.kr/",
+    note: "현재 등록 쉐이크 6개",
+    productCount: 6,
+    events: [
+      { category: "할인", periodLabel: CHECKED_DATE_LABEL, description: "맛별 다중 구성 할인과 기획전 가격 차이가 있는 편이라 대표 상품과 세트 상품을 같이 보는 편이 좋습니다." },
+      { category: "증정", periodLabel: CHECKED_DATE_LABEL, description: "한정 구성 사은품이나 증정 이벤트가 붙는 경우가 있어 장바구니 구성품을 같이 체크할 가치가 있습니다." },
+    ],
+  },
+  {
+    brand: "잇더핏",
+    storeType: "자사몰",
+    storeUrl: "https://itthefit.com/",
+    note: "현재 등록 쉐이크 8개",
+    productCount: 8,
+    events: [
+      { category: "할인", periodLabel: CHECKED_DATE_LABEL, description: "카페 계열 맛과 곡물 계열 맛의 묶음 기획전이 번갈아 열려 맛별 세트 체감가 차이가 큰 편입니다." },
+      { category: "쿠폰", periodLabel: CHECKED_DATE_LABEL, description: "회원 쿠폰과 기획전 할인이 중복되는지 확인하면 실결제 체감가를 더 정확히 볼 수 있습니다." },
+    ],
+  },
+  {
+    brand: "올더배러",
+    storeType: "자사몰",
+    storeUrl: "https://allthebetter.co.kr/",
+    note: "현재 등록 쉐이크 6개",
+    productCount: 6,
+    events: [
+      { category: "할인", periodLabel: CHECKED_DATE_LABEL, description: "로우슈거 쉐이크 라인은 세트 할인과 브랜드 기획전이 자주 묶여 보여 카테고리 페이지 가격과 장바구니 가격을 같이 보는 편이 좋습니다." },
+      { category: "무료배송", periodLabel: CHECKED_DATE_LABEL, description: "무료배송 기준 금액이 체감가에 미치는 영향이 커 소량 주문보다는 묶음 주문이 유리한 경우가 많습니다." },
+    ],
+  },
+];
+
 const yogurtBrands: BrandCard[] = [
   {
     brand: "그릭데이",
@@ -357,6 +426,14 @@ const barBrands: BrandCard[] = rawBarBrands.map((brand) => ({
   })),
 }));
 
+const shakeBrands: BrandCard[] = rawShakeBrands.map((brand) => ({
+  ...brand,
+  events: brand.events.map((event) => ({
+    ...event,
+    periodLabel: CHECKED_DATE_LABEL,
+  })),
+}));
+
 function getCounts(brands: BrandCard[]) {
   const allEvents = brands.flatMap((brand) => brand.events);
   return {
@@ -372,7 +449,14 @@ export default function EventsClient() {
   const [productType, setProductType] = useState<ProductType>("drink");
   const [activeFilter, setActiveFilter] = useState<FilterType>("전체");
 
-  const brands = productType === "drink" ? drinkBrands : productType === "bar" ? barBrands : yogurtBrands;
+  const brands =
+    productType === "drink"
+      ? drinkBrands
+      : productType === "bar"
+        ? barBrands
+        : productType === "yogurt"
+          ? yogurtBrands
+          : shakeBrands;
   const counts = useMemo(() => getCounts(brands), [brands]);
 
   const filteredBrands = useMemo(() => {
@@ -405,7 +489,7 @@ export default function EventsClient() {
 
       <main className="mx-auto max-w-[1200px] px-4 pb-12 md:px-6">
         <div className="flex gap-2 pt-5">
-          {(["drink", "bar", "yogurt"] as const).map((type) => {
+          {(["drink", "bar", "yogurt", "shake"] as const).map((type) => {
             const active = productType === type;
             return (
               <button
@@ -422,7 +506,7 @@ export default function EventsClient() {
                   border: active ? "1px solid var(--accent)" : "1px solid var(--border)",
                 }}
               >
-                {type === "drink" ? "단백질 음료" : type === "bar" ? "단백질 바" : "단백질 요거트"}
+                {type === "drink" ? "단백질 음료" : type === "bar" ? "단백질 바" : type === "yogurt" ? "단백질 요거트" : "단백질 쉐이크"}
               </button>
             );
           })}
@@ -539,3 +623,4 @@ function BrandEventCard({ brand }: { brand: BrandCard }) {
     </div>
   );
 }
+

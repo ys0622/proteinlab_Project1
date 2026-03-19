@@ -109,6 +109,61 @@ export const guideTracks: GuideTrack[] = [
         ],
       },
       {
+        slug: "protein-shake-guide",
+        title: "단백질 쉐이크 추천 가이드",
+        description: "파우치형 중심의 간편 섭취 단백질 쉐이크를 비교할 때 단백질, 당류, 칼로리, 식이섬유를 어떻게 봐야 하는지 정리한 페이지입니다.",
+        searchIntent: "단백질 쉐이크 추천",
+        futureFocus: ["쉐이크 비교 기준", "식사대용 쉐이크", "저당 쉐이크"],
+        internalLinkTargets: [
+          { label: "쉐이크 카테고리", href: "/shake" },
+          { label: "쉐이크 추천", href: "/recommend?category=shake" },
+        ],
+      },
+      {
+        slug: "meal-replacement-protein-shake-guide",
+        title: "식사대용 단백질 쉐이크",
+        description: "식사대용 쉐이크를 고를 때 단백질, 칼로리, 식이섬유를 어떤 순서로 봐야 하는지 정리한 페이지입니다.",
+        searchIntent: "식사대용 단백질 쉐이크",
+        futureFocus: ["한 끼 대체 기준", "포만감 비교", "식이섬유 기준"],
+        internalLinkTargets: [
+          { label: "쉐이크 카테고리", href: "/shake?curation=shake-meal-replacement" },
+          { label: "단백질 쉐이크 추천", href: "/guides/product-selection-comparison/protein-shake-guide" },
+        ],
+      },
+      {
+        slug: "protein-drink-vs-protein-shake",
+        title: "단백질 음료 vs 단백질 쉐이크",
+        description: "RTD 단백질 음료와 파우치형 단백질 쉐이크의 차이를 용도와 성분 기준으로 정리한 비교 가이드입니다.",
+        searchIntent: "단백질 음료 vs 단백질 쉐이크",
+        futureFocus: ["RTD vs 쉐이크", "운동 후 보충", "식사대용 비교"],
+        internalLinkTargets: [
+          { label: "단백질 음료 선택 가이드", href: "/guides/product-selection-comparison/protein-drink-guide" },
+          { label: "쉐이크 카테고리", href: "/shake" },
+        ],
+      },
+      {
+        slug: "low-sugar-protein-shake-guide",
+        title: "저당 단백질 쉐이크",
+        description: "당류가 낮은 단백질 쉐이크를 비교할 때 단백질과 칼로리, 식이섬유까지 함께 보는 기준을 정리한 페이지입니다.",
+        searchIntent: "저당 단백질 쉐이크",
+        futureFocus: ["저당 쉐이크", "당류 기준", "저당 식사대용"],
+        internalLinkTargets: [
+          { label: "쉐이크 저당 큐레이션", href: "/shake?curation=shake-low-sugar" },
+          { label: "단백질 쉐이크 추천", href: "/guides/product-selection-comparison/protein-shake-guide" },
+        ],
+      },
+      {
+        slug: "post-workout-protein-shake-guide",
+        title: "운동 후 단백질 쉐이크",
+        description: "운동 후 단백질 쉐이크를 고를 때 단백질 함량, 당류, 단백질 밀도를 어떻게 봐야 하는지 정리한 페이지입니다.",
+        searchIntent: "운동 후 단백질 쉐이크",
+        futureFocus: ["운동 후 보충", "고단백 쉐이크", "단백질 밀도"],
+        internalLinkTargets: [
+          { label: "운동 후 단백질 섭취", href: "/guides/intake-strategy-health/post-workout-protein" },
+          { label: "쉐이크 추천", href: "/recommend?category=shake" },
+        ],
+      },
+      {
         slug: "protein-bar-guide",
         title: "단백질 바 선택 가이드",
         description: "단백질 바를 목적별로 구분해 선택 기준을 담을 페이지 슬롯입니다.",
