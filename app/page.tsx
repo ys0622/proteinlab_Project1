@@ -37,6 +37,7 @@ export default async function Home({ searchParams }: HomePageProps) {
           curationSlug={curation}
           categoryCounts={categoryCounts}
           stickyTabs={false}
+          tabsPlacement="before_grid"
         />
       </main>
 

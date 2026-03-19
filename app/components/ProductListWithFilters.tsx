@@ -37,6 +37,7 @@ type ProductListWithFiltersProps = {
   curationSlug?: string;
   categoryCounts?: Partial<Record<ProductCategory, number>>;
   stickyTabs?: boolean;
+  tabsPlacement?: "top" | "before_grid";
 };
 
 type PersistedFilterState = {
@@ -141,6 +142,7 @@ function ProductListWithFiltersInner(props: ProductListWithFiltersInnerProps) {
     storageKey,
     initialPersistedState,
     stickyTabs = true,
+    tabsPlacement = "top",
   } = props;
   const [drinkFilters, setDrinkFilters] = useState<DrinkFilters>(
     () => initialPersistedState?.drinkFilters ?? defaultDrinkFilters,
@@ -353,15 +355,19 @@ function ProductListWithFiltersInner(props: ProductListWithFiltersInnerProps) {
     </button>
   );
 
+  const categoryTabs = (
+    <div className="mt-3">
+      <CategoryTabs
+        activeCategory={productType}
+        counts={categoryCounts}
+        stickyMobile={stickyTabs}
+      />
+    </div>
+  );
+
   return (
     <>
-      <div className="mt-3">
-        <CategoryTabs
-          activeCategory={productType}
-          counts={categoryCounts}
-          stickyMobile={stickyTabs}
-        />
-      </div>
+      {tabsPlacement === "top" ? categoryTabs : null}
 
       {productType !== "shake" ? (
         <>
@@ -465,6 +471,8 @@ function ProductListWithFiltersInner(props: ProductListWithFiltersInnerProps) {
       <div className="mt-1.5" style={{ marginTop: isDesktop ? "6px" : "8px" }}>
         <SortBar total={searched.length} sort={sort} onSortChange={handleSortChange} />
       </div>
+
+      {tabsPlacement === "before_grid" ? categoryTabs : null}
 
       {visible.length === 0 ? (
         <div className="mt-4 rounded-2xl border border-[var(--border)] bg-[var(--background-card)] px-5 py-8 text-center">
