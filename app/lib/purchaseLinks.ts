@@ -228,7 +228,7 @@ export function getPreferredCoupangUrl(
   if (isCoupangPartnersUrl(normalizedCoupangUrl)) return normalizedCoupangUrl;
 
   if (isCoupangUrl(normalizedCoupangUrl)) {
-    return buildCoupangPartnersProductUrl(normalizedCoupangUrl, category);
+    return buildCoupangPartnersProductUrl(normalizedCoupangUrl, category) ?? normalizedCoupangUrl;
   }
 
   return null;
