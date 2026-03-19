@@ -9,7 +9,11 @@ import type {
 } from "react";
 import { trackPurchaseClick } from "@/lib/gtag";
 import { getProductImageUrl } from "../lib/productImage";
-import { type CoupangLinkCategory, getPreferredCoupangUrl } from "../lib/purchaseLinks";
+import {
+  type CoupangLinkCategory,
+  getPreferredCoupangUrl,
+  normalizeCoupangUrl,
+} from "../lib/purchaseLinks";
 import CompareButton from "./CompareButton";
 import MetricBadgeGroup from "./MetricBadgeGroup";
 import ProductBadge from "./ProductBadge";
@@ -98,7 +102,9 @@ export default function ProductCard({
   const detailHref = slug ? `/product/${slug}` : "#";
   const imageUrl = slug ? getProductImageUrl(slug) : null;
   const resolvedPurchaseLinkCategory = purchaseLinkCategory ?? productType ?? null;
-  const coupangHref = getPreferredCoupangUrl(coupangUrl, resolvedPurchaseLinkCategory);
+  const coupangHref =
+    getPreferredCoupangUrl(coupangUrl, resolvedPurchaseLinkCategory) ??
+    normalizeCoupangUrl(coupangUrl);
   const naverHref = naverUrl && naverUrl !== "#" && naverUrl !== "" ? naverUrl : null;
   const officialMallHref = officialUrl && officialUrl !== "#" && officialUrl !== "" ? officialUrl : null;
   const productId = slug ?? `${brand}-${name}`;

@@ -23,7 +23,7 @@ import { getNutritionDetail } from "../../data/products";
 import { getCategoryHref, getCategoryLabel } from "../../lib/categories";
 import { getProductBySlugAsync } from "../../lib/productData";
 import { getProductImageUrl } from "../../lib/productImage";
-import { getPreferredCoupangUrl } from "../../lib/purchaseLinks";
+import { getPreferredCoupangUrl, normalizeCoupangUrl } from "../../lib/purchaseLinks";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -124,10 +124,9 @@ export default async function ProductDetailPage({ params }: PageProps) {
           product.bcaa ? `BCAA ${product.bcaa}` : null,
         ].filter(Boolean);
 
-  const resolvedCoupangHref = getPreferredCoupangUrl(
-    product.coupangUrl,
-    product.productType ?? null,
-  );
+  const resolvedCoupangHref =
+    getPreferredCoupangUrl(product.coupangUrl, product.productType ?? null) ??
+    normalizeCoupangUrl(product.coupangUrl);
   const naverHref = product.naverUrl && product.naverUrl !== "#" && product.naverUrl !== "" ? product.naverUrl : null;
   const officialMallHref = product.officialUrl && product.officialUrl !== "#" && product.officialUrl !== "" ? product.officialUrl : null;
   const isLactoseFreeDrink =
