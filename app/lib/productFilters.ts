@@ -178,12 +178,26 @@ export interface YogurtFilters {
   flavor: string[];
 }
 
+export interface ShakeFilters {
+  brand: string[];
+  protein: string[];
+  sugar: string[];
+  taste: string[];
+}
+
 export const defaultYogurtFilters: YogurtFilters = {
   brand: [],
   protein: [],
   sugar: [],
   yogurtType: [],
   flavor: [],
+};
+
+export const defaultShakeFilters: ShakeFilters = {
+  brand: [],
+  protein: [],
+  sugar: [],
+  taste: [],
 };
 
 export function filterYogurtProducts(
@@ -197,6 +211,20 @@ export function filterYogurtProducts(
     if (filters.sugar.length > 0 && !filters.sugar.includes(getYogurtSugarRange(product))) return false;
     if (filters.yogurtType.length > 0 && !filters.yogurtType.includes(getYogurtTypeCategory(product))) return false;
     if (filters.flavor.length > 0 && !filters.flavor.includes(getYogurtFlavorCategory(product))) return false;
+    return true;
+  });
+}
+
+export function filterShakeProducts(
+  products: ProductDetailProps[],
+  filters: ShakeFilters,
+): ProductDetailProps[] {
+  return products.filter((product) => {
+    if (product.productType !== "shake") return false;
+    if (filters.brand.length > 0 && !filters.brand.includes(product.brand)) return false;
+    if (filters.protein.length > 0 && !filters.protein.includes(getProteinRangeBar(product))) return false;
+    if (filters.sugar.length > 0 && !filters.sugar.includes(getSugarRangeBar(product))) return false;
+    if (filters.taste.length > 0 && !filters.taste.includes(getTasteCategory(product))) return false;
     return true;
   });
 }

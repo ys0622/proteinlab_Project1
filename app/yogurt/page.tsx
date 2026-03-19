@@ -30,7 +30,12 @@ export default async function YogurtPage() {
       <HeroSection />
 
       <main className="mx-auto max-w-[1200px] px-4 pb-2 pt-0 md:px-6 md:pb-3">
-        <ProductListWithFilters productType="yogurt" products={products} categoryCounts={categoryCounts} />
+        <ProductListWithFilters
+          productType="yogurt"
+          products={products}
+          categoryCounts={categoryCounts}
+          tabsPlacement="before_grid"
+        />
       </main>
 
       <Footer />

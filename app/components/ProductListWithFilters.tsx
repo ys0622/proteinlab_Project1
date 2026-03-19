@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -9,15 +9,18 @@ import { applyCurationToCategoryProducts } from "../lib/curationSystem";
 import {
   defaultBarFilters,
   defaultDrinkFilters,
+  defaultShakeFilters,
   defaultYogurtFilters,
   filterBarProducts,
   filterDrinkProducts,
+  filterShakeProducts,
   filterYogurtProducts,
   getCapacityMl,
   getYogurtFlavorCategory,
   getYogurtTypeCategory,
   type BarFilters,
   type DrinkFilters,
+  type ShakeFilters,
   type YogurtFilters,
 } from "../lib/productFilters";
 import { getPopularityScore } from "../lib/productPopularity";
@@ -44,6 +47,7 @@ type PersistedFilterState = {
   drinkFilters: DrinkFilters;
   barFilters: BarFilters;
   yogurtFilters: YogurtFilters;
+  shakeFilters: ShakeFilters;
   sort: SortOptionValue;
   page: number;
   searchQuery: string;
@@ -153,6 +157,9 @@ function ProductListWithFiltersInner(props: ProductListWithFiltersInnerProps) {
   const [yogurtFilters, setYogurtFilters] = useState<YogurtFilters>(
     () => initialPersistedState?.yogurtFilters ?? defaultYogurtFilters,
   );
+  const [shakeFilters, setShakeFilters] = useState<ShakeFilters>(
+    () => initialPersistedState?.shakeFilters ?? defaultShakeFilters,
+  );
   const [sort, setSort] = useState<SortOptionValue>(
     () => normalizeSortValue(initialPersistedState?.sort),
   );
@@ -174,7 +181,7 @@ function ProductListWithFiltersInner(props: ProductListWithFiltersInnerProps) {
         ? barFilters
         : productType === "yogurt"
           ? yogurtFilters
-          : null;
+          : shakeFilters;
 
   const curationFiltered = useMemo(() => {
     if (productType === "yogurt") {
@@ -193,7 +200,7 @@ function ProductListWithFiltersInner(props: ProductListWithFiltersInnerProps) {
     if (productType === "yogurt") {
       return filterYogurtProducts(curationFiltered, filters as YogurtFilters);
     }
-    return curationFiltered.filter((product) => product.productType === "shake");
+    return filterShakeProducts(curationFiltered, filters as ShakeFilters);
   }, [curationFiltered, filters, productType]);
 
   const searched = useMemo(() => {
@@ -242,13 +249,14 @@ function ProductListWithFiltersInner(props: ProductListWithFiltersInnerProps) {
       drinkFilters,
       barFilters,
       yogurtFilters,
+      shakeFilters,
       sort,
       page,
       searchQuery,
     };
 
     window.sessionStorage.setItem(storageKey, JSON.stringify(persistedState));
-  }, [barFilters, drinkFilters, page, searchQuery, sort, storageKey, yogurtFilters]);
+  }, [barFilters, drinkFilters, page, searchQuery, shakeFilters, sort, storageKey, yogurtFilters]);
 
   const visible = useMemo(
     () => (isDesktop ? sorted : sorted.slice(0, page * PAGE_SIZE)),
@@ -289,6 +297,17 @@ function ProductListWithFiltersInner(props: ProductListWithFiltersInnerProps) {
     });
   };
 
+  const handleShakeFilterToggle = (key: keyof ShakeFilters, value: string) => {
+    setPage(1);
+    setShakeFilters((prev) => {
+      const current = prev[key];
+      const next = current.includes(value)
+        ? current.filter((item) => item !== value)
+        : [...current, value];
+      return { ...prev, [key]: next };
+    });
+  };
+
   const handleResetFilters = () => {
     setPage(1);
     setSearchQuery("");
@@ -302,7 +321,9 @@ function ProductListWithFiltersInner(props: ProductListWithFiltersInnerProps) {
     }
     if (productType === "yogurt") {
       setYogurtFilters(defaultYogurtFilters);
+      return;
     }
+    setShakeFilters(defaultShakeFilters);
   };
 
   const handleSortChange = (newSort: SortOptionValue) => {
@@ -371,65 +392,67 @@ function ProductListWithFiltersInner(props: ProductListWithFiltersInnerProps) {
     <>
       {tabsPlacement === "top" ? categoryTabs : null}
 
-      {productType !== "shake" ? (
-        <>
-          <div className="mt-3 md:hidden" style={{ marginTop: "12px" }}>
-            <QuickCuration productType={productType} />
-          </div>
+      <div className="mt-3 md:hidden" style={{ marginTop: "12px" }}>
+        <QuickCuration productType={productType} />
+      </div>
 
-          <div
-            className="mt-3 rounded-xl border border-[var(--border)] bg-[var(--filter-box-bg)]"
-            style={{
-              marginTop: isDesktop ? "12px" : "10px",
-              borderRadius: "12px",
-              padding: isDesktop ? "10px 12px" : "3px 6px",
-            }}
-          >
-            <div className="hidden md:block">
-              <SearchBar value={searchQuery} onChange={handleSearchChange} />
-            </div>
-            <div className={isDesktop ? "mt-1.5" : ""}>
-              {productType === "drink" ? (
-                <FilterSection
-                  productType="drink"
-                  filters={filters as DrinkFilters}
-                  onFilterToggle={handleDrinkFilterToggle}
-                  onResetFilters={handleResetFilters}
-                  mobileToolbarSlot={mobileSearchButton}
-                  drinkBrandOptions={brandOptions}
-                  desktopFooterSlot={<QuickCuration productType={productType} variant="inline" />}
-                />
-              ) : productType === "bar" ? (
-                <FilterSection
-                  productType="bar"
-                  filters={filters as BarFilters}
-                  onFilterToggle={handleBarFilterToggle}
-                  onResetFilters={handleResetFilters}
-                  mobileToolbarSlot={mobileSearchButton}
-                  barBrandOptions={brandOptions}
-                  desktopFooterSlot={<QuickCuration productType={productType} variant="inline" />}
-                />
-              ) : (
-                <FilterSection
-                  productType="yogurt"
-                  filters={filters as YogurtFilters}
-                  onFilterToggle={handleYogurtFilterToggle}
-                  onResetFilters={handleResetFilters}
-                  mobileToolbarSlot={mobileSearchButton}
-                  yogurtBrandOptions={brandOptions}
-                  yogurtTypeOptions={yogurtTypeOptions}
-                  yogurtFlavorOptions={yogurtFlavorOptions}
-                  desktopFooterSlot={<QuickCuration productType={productType} variant="inline" />}
-                />
-              )}
-            </div>
-          </div>
-        </>
-      ) : (
-        <div className="mt-3" style={{ marginTop: "12px" }}>
-          <QuickCuration productType={productType} />
+      <div
+        className="mt-3 rounded-xl border border-[var(--border)] bg-[var(--filter-box-bg)]"
+        style={{
+          marginTop: isDesktop ? "12px" : "10px",
+          borderRadius: "12px",
+          padding: isDesktop ? "10px 12px" : "3px 6px",
+        }}
+      >
+        <div className="hidden md:block">
+          <SearchBar value={searchQuery} onChange={handleSearchChange} />
         </div>
-      )}
+        <div className={isDesktop ? "mt-1.5" : ""}>
+          {productType === "drink" ? (
+            <FilterSection
+              productType="drink"
+              filters={filters as DrinkFilters}
+              onFilterToggle={handleDrinkFilterToggle}
+              onResetFilters={handleResetFilters}
+              mobileToolbarSlot={mobileSearchButton}
+              drinkBrandOptions={brandOptions}
+              desktopFooterSlot={<QuickCuration productType={productType} variant="inline" />}
+            />
+          ) : productType === "bar" ? (
+            <FilterSection
+              productType="bar"
+              filters={filters as BarFilters}
+              onFilterToggle={handleBarFilterToggle}
+              onResetFilters={handleResetFilters}
+              mobileToolbarSlot={mobileSearchButton}
+              barBrandOptions={brandOptions}
+              desktopFooterSlot={<QuickCuration productType={productType} variant="inline" />}
+            />
+          ) : productType === "yogurt" ? (
+            <FilterSection
+              productType="yogurt"
+              filters={filters as YogurtFilters}
+              onFilterToggle={handleYogurtFilterToggle}
+              onResetFilters={handleResetFilters}
+              mobileToolbarSlot={mobileSearchButton}
+              yogurtBrandOptions={brandOptions}
+              yogurtTypeOptions={yogurtTypeOptions}
+              yogurtFlavorOptions={yogurtFlavorOptions}
+              desktopFooterSlot={<QuickCuration productType={productType} variant="inline" />}
+            />
+          ) : (
+            <FilterSection
+              productType="shake"
+              filters={filters as ShakeFilters}
+              onFilterToggle={handleShakeFilterToggle}
+              onResetFilters={handleResetFilters}
+              mobileToolbarSlot={mobileSearchButton}
+              shakeBrandOptions={brandOptions}
+              desktopFooterSlot={<QuickCuration productType={productType} variant="inline" />}
+            />
+          )}
+        </div>
+      </div>
 
       {mobileSearchOpen ? (
         <div
@@ -518,7 +541,7 @@ function ProductListWithFiltersInner(props: ProductListWithFiltersInnerProps) {
       {productType === "shake" ? (
         <div className="mt-4">
           <Link
-            href="/recommend"
+            href="/recommend?category=shake"
             className="inline-flex rounded-full border border-[var(--border)] bg-white px-4 py-2 text-sm font-medium text-[var(--foreground)] transition-colors hover:bg-[var(--accent-light)]"
           >
             추천 페이지에서도 쉐이크 카테고리 구조 확인하기
@@ -546,3 +569,4 @@ export default function ProductListWithFilters(props: ProductListWithFiltersProp
     />
   );
 }
+

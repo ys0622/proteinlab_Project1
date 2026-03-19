@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import type { BarFilters, DrinkFilters, YogurtFilters } from "../lib/productFilters";
+import type { BarFilters, DrinkFilters, ShakeFilters, YogurtFilters } from "../lib/productFilters";
 
 const drinkProteinOptions = ["초고단백(30g 이상)", "고단백(20g 이상)", "일반단백(20g 미만)"];
 const drinkSourceOptions = ["식물성", "유청", "혼합"];
@@ -95,6 +95,12 @@ type FilterSectionProps =
       yogurtBrandOptions?: string[];
       yogurtTypeOptions?: string[];
       yogurtFlavorOptions?: string[];
+    } & SharedProps)
+  | ({
+      productType: "shake";
+      filters: ShakeFilters;
+      onFilterToggle: (key: keyof ShakeFilters, value: string) => void;
+      shakeBrandOptions?: string[];
     } & SharedProps);
 
 export default function FilterSection(props: FilterSectionProps) {
@@ -137,6 +143,12 @@ export default function FilterSection(props: FilterSectionProps) {
       [...(props.productType === "yogurt" ? props.yogurtFlavorOptions ?? yogurtFlavorOptions : [])].sort((a, b) =>
         a.localeCompare(b, "ko"),
       ),
+    [props],
+  );
+  const sortedShakeBrandOptions = useMemo(
+    () => [...(props.productType === "shake" ? props.shakeBrandOptions ?? [] : [])].sort((a, b) =>
+      a.localeCompare(b, "ko"),
+    ),
     [props],
   );
 
@@ -237,7 +249,7 @@ export default function FilterSection(props: FilterSectionProps) {
           ))}
         </FilterRow>
       </div>
-    ) : (
+    ) : productType === "yogurt" ? (
       <div className="flex flex-col" style={{ gap: "4px" }}>
         <FilterRow title="브랜드">
           {sortedYogurtBrandOptions.map((brand) => (
@@ -286,6 +298,49 @@ export default function FilterSection(props: FilterSectionProps) {
               label={flavor}
               selected={filters.flavor.includes(flavor)}
               onClick={() => onFilterToggle("flavor", flavor)}
+            />
+          ))}
+        </FilterRow>
+      </div>
+    ) : (
+      <div className="flex flex-col" style={{ gap: "4px" }}>
+        <FilterRow title="브랜드">
+          {sortedShakeBrandOptions.map((brand) => (
+            <FilterChip
+              key={brand}
+              label={brand}
+              selected={filters.brand.includes(brand)}
+              onClick={() => onFilterToggle("brand", brand)}
+            />
+          ))}
+        </FilterRow>
+        <FilterRow title="단백질 함량">
+          {barProteinOptions.map((protein) => (
+            <FilterChip
+              key={protein}
+              label={protein}
+              selected={filters.protein.includes(protein)}
+              onClick={() => onFilterToggle("protein", protein)}
+            />
+          ))}
+        </FilterRow>
+        <FilterRow title="당류">
+          {barSugarOptions.map((sugar) => (
+            <FilterChip
+              key={sugar}
+              label={sugar}
+              selected={filters.sugar.includes(sugar)}
+              onClick={() => onFilterToggle("sugar", sugar)}
+            />
+          ))}
+        </FilterRow>
+        <FilterRow title="맛">
+          {drinkTasteOptions.map((taste) => (
+            <FilterChip
+              key={taste}
+              label={taste}
+              selected={filters.taste.includes(taste)}
+              onClick={() => onFilterToggle("taste", taste)}
             />
           ))}
         </FilterRow>

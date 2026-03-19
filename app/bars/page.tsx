@@ -42,6 +42,7 @@ export default async function BarsPage({ searchParams }: BarsPageProps) {
           products={products}
           curationSlug={curation}
           categoryCounts={categoryCounts}
+          tabsPlacement="before_grid"
         />
       </main>
 
