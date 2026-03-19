@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-03-19T05:13:49.294Z",
-  "total": 229,
+  "generated_at": "2026-03-19T06:27:08.357Z",
+  "total": 287,
   "categories": {
     "drinks": 104,
     "bars": 71,
     "yogurt": 45,
-    "shake": 9
+    "shake": 67
   },
   "products": [
     {
@@ -2068,6 +2068,528 @@
       "protein": 22,
       "calories": 140,
       "sugar": 2
+    },
+    {
+      "slug": "flymill-proteinshake-goguma-45",
+      "name": "프로틴쉐이크 (고구마)",
+      "brand": "플라이밀",
+      "category": "shake",
+      "protein": 19,
+      "calories": 148,
+      "sugar": 3.7
+    },
+    {
+      "slug": "labnosh-slimshake-jeju-matcha-45",
+      "name": "슬림쉐이크 (제주말차)",
+      "brand": "랩노쉬",
+      "category": "shake",
+      "protein": 20,
+      "calories": 165,
+      "sugar": 1.1
+    },
+    {
+      "slug": "proteone-proteinshake-choco-40",
+      "name": "단백쉐이크 (초코맛)",
+      "brand": "프로티원",
+      "category": "shake",
+      "protein": 23,
+      "calories": 128,
+      "sugar": 1
+    },
+    {
+      "slug": "proteone-proteinshake-coffee-40",
+      "name": "단백쉐이크 (커피맛)",
+      "brand": "프로티원",
+      "category": "shake",
+      "protein": 22,
+      "calories": 108,
+      "sugar": 1
+    },
+    {
+      "slug": "itthefit-proteinshake-double-choco-40",
+      "name": "단백질 쉐이크 (더블초코)",
+      "brand": "잇더핏",
+      "category": "shake",
+      "protein": 21.3,
+      "calories": 122,
+      "sugar": 0.6
+    },
+    {
+      "slug": "labnosh-slimshake-strawberry-banana-45",
+      "name": "슬림쉐이크 (딸기바나나)",
+      "brand": "랩노쉬",
+      "category": "shake",
+      "protein": 20,
+      "calories": 160,
+      "sugar": 5.1
+    },
+    {
+      "slug": "labnosh-slimshake-roasting-black-sesame-45",
+      "name": "슬림쉐이크 (로스팅흑임자)",
+      "brand": "랩노쉬",
+      "category": "shake",
+      "protein": 20,
+      "calories": 165,
+      "sugar": 1.1
+    },
+    {
+      "slug": "proteone-proteinshake-strawberry-40",
+      "name": "단백쉐이크 (딸기맛)",
+      "brand": "프로티원",
+      "category": "shake",
+      "protein": 20,
+      "calories": 123,
+      "sugar": 2
+    },
+    {
+      "slug": "proteone-proteinshake-black-sesame-40",
+      "name": "단백쉐이크 (흑임자맛)",
+      "brand": "프로티원",
+      "category": "shake",
+      "protein": 20,
+      "calories": 133,
+      "sugar": 1
+    },
+    {
+      "slug": "itthefit-proteinshake-cafe-latte-40",
+      "name": "단백질 쉐이크 (카페라떼)",
+      "brand": "잇더핏",
+      "category": "shake",
+      "protein": 21.9,
+      "calories": 135,
+      "sugar": 2
+    },
+    {
+      "slug": "itthefit-proteinshake-cookie-cream-40",
+      "name": "단백질 쉐이크 (쿠키앤크림)",
+      "brand": "잇더핏",
+      "category": "shake",
+      "protein": 21.3,
+      "calories": 139,
+      "sugar": 2.5
+    },
+    {
+      "slug": "kkobak-kobab-high-protein-low-sugar-choco-40",
+      "name": "고단저당 (초코)",
+      "brand": "꼬박꼬밥",
+      "category": "shake",
+      "protein": 20,
+      "calories": 157,
+      "sugar": 2
+    },
+    {
+      "slug": "kkobak-kobab-high-protein-low-sugar-coffee-40",
+      "name": "고단저당 (커피)",
+      "brand": "꼬박꼬밥",
+      "category": "shake",
+      "protein": 20,
+      "calories": 155,
+      "sugar": 1.1
+    },
+    {
+      "slug": "kkobak-kobab-high-protein-low-sugar-jeju-matcha-40",
+      "name": "고단저당 (제주 말차)",
+      "brand": "꼬박꼬밥",
+      "category": "shake",
+      "protein": 20,
+      "calories": 153,
+      "sugar": 2
+    },
+    {
+      "slug": "kkobak-kobab-high-protein-low-sugar-sweet-corn-40",
+      "name": "고단저당 (스윗콘)",
+      "brand": "꼬박꼬밥",
+      "category": "shake",
+      "protein": 20,
+      "calories": 158,
+      "sugar": 2
+    },
+    {
+      "slug": "kkobak-kobab-high-protein-low-sugar-black-sesame-40",
+      "name": "고단저당 (흑임자)",
+      "brand": "꼬박꼬밥",
+      "category": "shake",
+      "protein": 21,
+      "calories": 153,
+      "sugar": 0.9
+    },
+    {
+      "slug": "kkobak-kobab-high-protein-low-sugar-misugaru-40",
+      "name": "고단저당 (미숫가루)",
+      "brand": "꼬박꼬밥",
+      "category": "shake",
+      "protein": 20,
+      "calories": 148,
+      "sugar": 1.2
+    },
+    {
+      "slug": "proteone-proteinshake-grain-40",
+      "name": "단백쉐이크 (곡물맛)",
+      "brand": "프로티원",
+      "category": "shake",
+      "protein": 20,
+      "calories": 134,
+      "sugar": 1
+    },
+    {
+      "slug": "itthefit-proteinshake-black-sesame-40",
+      "name": "단백질 쉐이크 (흑임자)",
+      "brand": "잇더핏",
+      "category": "shake",
+      "protein": 21,
+      "calories": 143,
+      "sugar": 3
+    },
+    {
+      "slug": "itthefit-proteinshake-goguma-40",
+      "name": "단백질 쉐이크 (고구마)",
+      "brand": "잇더핏",
+      "category": "shake",
+      "protein": 21,
+      "calories": 137,
+      "sugar": 4
+    },
+    {
+      "slug": "itthefit-proteinshake-misugaru-40",
+      "name": "단백질 쉐이크 (미숫가루)",
+      "brand": "잇더핏",
+      "category": "shake",
+      "protein": 28.7,
+      "calories": 154,
+      "sugar": 0.9
+    },
+    {
+      "slug": "itthefit-proteinshake-corn-40",
+      "name": "단백질 쉐이크 (옥수수)",
+      "brand": "잇더핏",
+      "category": "shake",
+      "protein": 21.4,
+      "calories": 137,
+      "sugar": 1.7
+    },
+    {
+      "slug": "milit-proteinshake-chocolate-40",
+      "name": "단백질쉐이크 (초콜릿맛)",
+      "brand": "밀잇",
+      "category": "shake",
+      "protein": 16,
+      "calories": 159,
+      "sugar": 2.8
+    },
+    {
+      "slug": "milit-proteinshake-coffee-40",
+      "name": "단백질쉐이크 (커피맛)",
+      "brand": "밀잇",
+      "category": "shake",
+      "protein": 16,
+      "calories": 165,
+      "sugar": 1.9
+    },
+    {
+      "slug": "milit-proteinshake-banana-40",
+      "name": "단백질쉐이크 (바나나맛)",
+      "brand": "밀잇",
+      "category": "shake",
+      "protein": 14,
+      "calories": 163,
+      "sugar": 4
+    },
+    {
+      "slug": "flymill-proteinshake-green-45",
+      "name": "프로틴쉐이크 (그린)",
+      "brand": "플라이밀",
+      "category": "shake",
+      "protein": 21,
+      "calories": 155,
+      "sugar": 2.8
+    },
+    {
+      "slug": "flymill-proteinshake-dolce-latte-45",
+      "name": "프로틴쉐이크 (돌체라떼)",
+      "brand": "플라이밀",
+      "category": "shake",
+      "protein": 20,
+      "calories": 150,
+      "sugar": 3.6
+    },
+    {
+      "slug": "flymill-proteinshake-milk-tea-45",
+      "name": "프로틴쉐이크 (밀크티)",
+      "brand": "플라이밀",
+      "category": "shake",
+      "protein": 20,
+      "calories": 164,
+      "sugar": 3.2
+    },
+    {
+      "slug": "flymill-proteinshake-brown-45",
+      "name": "프로틴쉐이크 (브라운)",
+      "brand": "플라이밀",
+      "category": "shake",
+      "protein": 20,
+      "calories": 166,
+      "sugar": 1
+    },
+    {
+      "slug": "flymill-proteinshake-black-45",
+      "name": "프로틴쉐이크 (블랙)",
+      "brand": "플라이밀",
+      "category": "shake",
+      "protein": 22,
+      "calories": 160,
+      "sugar": 2
+    },
+    {
+      "slug": "flymill-proteinshake-corn-cereal-45",
+      "name": "프로틴쉐이크 (콘시리얼)",
+      "brand": "플라이밀",
+      "category": "shake",
+      "protein": 20,
+      "calories": 153,
+      "sugar": 3.9
+    },
+    {
+      "slug": "labnosh-slimshake-strawberry-cookie-crumble-45",
+      "name": "슬림쉐이크 (딸기쿠키크럼블)",
+      "brand": "랩노쉬",
+      "category": "shake",
+      "protein": 20,
+      "calories": 170,
+      "sugar": 1.8
+    },
+    {
+      "slug": "labnosh-slimshake-earl-grey-milk-tea-45",
+      "name": "슬림쉐이크 (얼그레이밀크티)",
+      "brand": "랩노쉬",
+      "category": "shake",
+      "protein": 20,
+      "calories": 165,
+      "sugar": 1.6
+    },
+    {
+      "slug": "labnosh-slimshake-super-sweet-corn-45",
+      "name": "슬림쉐이크 (초당옥수수)",
+      "brand": "랩노쉬",
+      "category": "shake",
+      "protein": 20,
+      "calories": 173,
+      "sugar": 2.2
+    },
+    {
+      "slug": "itthefit-proteinshake-green-tea-latte-40",
+      "name": "단백질 쉐이크 (녹차라떼)",
+      "brand": "잇더핏",
+      "category": "shake",
+      "protein": 22.4,
+      "calories": 134,
+      "sugar": 1.1
+    },
+    {
+      "slug": "lookat-proteinshake-roasted-soy-soboro-45",
+      "name": "단백질쉐이크 (볶음콩소보로)",
+      "brand": "룩트",
+      "category": "shake",
+      "protein": 20.7,
+      "calories": 178,
+      "sugar": 6.3
+    },
+    {
+      "slug": "lookat-proteinshake-cinnamon-pecan-45",
+      "name": "단백질쉐이크 (시나몬피칸)",
+      "brand": "룩트",
+      "category": "shake",
+      "protein": 16.5,
+      "calories": 179,
+      "sugar": 5.2
+    },
+    {
+      "slug": "lookat-proteinshake-choco-hazelnut-45",
+      "name": "단백질쉐이크 (초코헤이즐넛)",
+      "brand": "룩트",
+      "category": "shake",
+      "protein": 16.8,
+      "calories": 180,
+      "sugar": 6.6
+    },
+    {
+      "slug": "benof-proteinshake-misugaru-cereal-40",
+      "name": "단백질쉐이크 (미숫가루시리얼)",
+      "brand": "베노프",
+      "category": "shake",
+      "protein": 20,
+      "calories": 137,
+      "sugar": 0.9
+    },
+    {
+      "slug": "hyindam-ttukttak-shake-original-60",
+      "name": "뚝딱쉐이크 (오리지널)",
+      "brand": "혜인담",
+      "category": "shake",
+      "protein": 14.5,
+      "calories": 234,
+      "sugar": 14.1
+    },
+    {
+      "slug": "allthebetter-proteinshake-multi-berry-smoothie-45",
+      "name": "단백질쉐이크 (멀티베리스무디)",
+      "brand": "올더배러",
+      "category": "shake",
+      "protein": 24,
+      "calories": 160,
+      "sugar": 3
+    },
+    {
+      "slug": "allthebetter-proteinshake-banana-latte-45",
+      "name": "단백질쉐이크 (바나나라떼)",
+      "brand": "올더배러",
+      "category": "shake",
+      "protein": 24,
+      "calories": 165,
+      "sugar": 4
+    },
+    {
+      "slug": "allthebetter-proteinshake-corn-latte-45",
+      "name": "단백질쉐이크 (옥수수라떼)",
+      "brand": "올더배러",
+      "category": "shake",
+      "protein": 24,
+      "calories": 165,
+      "sugar": 3
+    },
+    {
+      "slug": "allthebetter-proteinshake-low-sugar-17grain-misugaru-45",
+      "name": "단백질쉐이크 (저당 17곡 미숫가루)",
+      "brand": "올더배러",
+      "category": "shake",
+      "protein": 24,
+      "calories": 170,
+      "sugar": 1
+    },
+    {
+      "slug": "allthebetter-proteinshake-low-sugar-black-soy-milk-45",
+      "name": "단백질쉐이크 (저당 검은콩두유)",
+      "brand": "올더배러",
+      "category": "shake",
+      "protein": 24,
+      "calories": 165,
+      "sugar": 1
+    },
+    {
+      "slug": "allthebetter-proteinshake-low-sugar-chocolate-mousse-45",
+      "name": "단백질쉐이크 (저당 초콜릿무스)",
+      "brand": "올더배러",
+      "category": "shake",
+      "protein": 25,
+      "calories": 175,
+      "sugar": 2
+    },
+    {
+      "slug": "hyindam-ttukttak-shake-seoritae-60",
+      "name": "뚝딱쉐이크 (서리태)",
+      "brand": "혜인담",
+      "category": "shake",
+      "protein": 17.2,
+      "calories": 239,
+      "sugar": 6
+    },
+    {
+      "slug": "hyindam-ttukttak-shake-choco-protein-60",
+      "name": "뚝딱쉐이크 (초코프로틴)",
+      "brand": "혜인담",
+      "category": "shake",
+      "protein": 20.7,
+      "calories": 216,
+      "sugar": 8.2
+    },
+    {
+      "slug": "hyindam-ttukttak-shake-ppong-latte-50",
+      "name": "뚝딱쉐이크 (퐁라떼맛)",
+      "brand": "혜인담",
+      "category": "shake",
+      "protein": 16.3,
+      "calories": 192,
+      "sugar": 7.3
+    },
+    {
+      "slug": "benof-proteinshake-chocolate-cereal-40",
+      "name": "단백질쉐이크 (초콜릿시리얼)",
+      "brand": "베노프",
+      "category": "shake",
+      "protein": 20,
+      "calories": 119,
+      "sugar": 1.3
+    },
+    {
+      "slug": "milit-proteinshake-matcha-choco-cookie-40",
+      "name": "단백질쉐이크 (말차초코쿠키맛)",
+      "brand": "밀잇",
+      "category": "shake",
+      "protein": 20,
+      "calories": 158,
+      "sugar": 3.1
+    },
+    {
+      "slug": "milit-proteinshake-melon-40",
+      "name": "단백질쉐이크 (멜론맛)",
+      "brand": "밀잇",
+      "category": "shake",
+      "protein": 15,
+      "calories": 157,
+      "sugar": 2.9
+    },
+    {
+      "slug": "milit-proteinshake-cereal-40",
+      "name": "단백질쉐이크 (시리얼맛)",
+      "brand": "밀잇",
+      "category": "shake",
+      "protein": 18,
+      "calories": 147,
+      "sugar": 3.7
+    },
+    {
+      "slug": "milit-proteinshake-pistachio-40",
+      "name": "단백질쉐이크 (피스타치오맛)",
+      "brand": "밀잇",
+      "category": "shake",
+      "protein": 15,
+      "calories": 164,
+      "sugar": 2.6
+    },
+    {
+      "slug": "itthefit-proteinshake-banana-40",
+      "name": "단백질 쉐이크 (바나나)",
+      "brand": "잇더핏",
+      "category": "shake",
+      "protein": 21.7,
+      "calories": 127,
+      "sugar": 2.6
+    },
+    {
+      "slug": "flymill-proteinshake-cookie-cream-45",
+      "name": "프로틴쉐이크 (쿠키앤크림)",
+      "brand": "플라이밀",
+      "category": "shake",
+      "protein": 20.3,
+      "calories": 173,
+      "sugar": 2.8
+    },
+    {
+      "slug": "flymill-proteinshake-peanut-butter-45",
+      "name": "프로틴쉐이크 (피넛버터)",
+      "brand": "플라이밀",
+      "category": "shake",
+      "protein": 24,
+      "calories": 179,
+      "sugar": 1.2
+    },
+    {
+      "slug": "flymill-proteinshake-pistachio-45",
+      "name": "프로틴쉐이크 (피스타치오)",
+      "brand": "플라이밀",
+      "category": "shake",
+      "protein": 20.8,
+      "calories": 169,
+      "sugar": 2.4
     }
   ]
 }
