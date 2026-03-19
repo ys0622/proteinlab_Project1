@@ -78,6 +78,23 @@ export function getNutritionDetail(p: ProductDetailProps): NutritionDetailRow[] 
     ];
   }
 
+  if (n && p.productType === "drink") {
+    const rows: NutritionDetailRow[] = [
+      { label: "칼로리", value: formatValue(n.caloriesKcal, "kcal") },
+      { label: "탄수화물", value: formatValue(n.carbsG, "g") },
+      { label: "당류", value: formatValue(n.sugarsG, "g") },
+      { label: "단백질", value: formatValue(n.proteinG, "g") },
+      { label: "지방", value: formatValue(n.fatG, "g") },
+      { label: "포화지방", value: formatValue(n.satFatG, "g") },
+    ];
+    if (n.transFatG != null) rows.push({ label: "트랜스지방", value: `${n.transFatG}g` });
+    if (n.cholesterolMg != null) rows.push({ label: "콜레스테롤", value: `${n.cholesterolMg}mg` });
+    rows.push({ label: "나트륨", value: formatValue(n.sodiumMg, "mg") });
+    if (n.fiberG != null) rows.push({ label: "식이섬유", value: `${n.fiberG}g` });
+    rows.push({ label: "BCAA", value: `${n.bcaaMg ?? 0}mg` });
+    return rows;
+  }
+
   if (n) {
     const rows: NutritionDetailRow[] = [
       { label: "칼로리", value: formatValue(n.caloriesKcal, "kcal") },
