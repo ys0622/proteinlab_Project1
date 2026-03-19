@@ -13,7 +13,6 @@ import {
   getCoupangRedirectHref,
   getKnownSourceCoupangUrlBySlug,
   type CoupangLinkCategory,
-  getPreferredCoupangUrl,
   normalizeCoupangUrl,
 } from "../lib/purchaseLinks";
 import CompareButton from "./CompareButton";
@@ -105,7 +104,6 @@ export default function ProductCard({
   const imageUrl = slug ? getProductImageUrl(slug) : null;
   const resolvedPurchaseLinkCategory = purchaseLinkCategory ?? productType ?? null;
   const rawCoupangUrl =
-    getPreferredCoupangUrl(coupangUrl, resolvedPurchaseLinkCategory) ??
     normalizeCoupangUrl(coupangUrl) ??
     getKnownSourceCoupangUrlBySlug(slug);
   const coupangHref = getCoupangRedirectHref(rawCoupangUrl, resolvedPurchaseLinkCategory, slug);

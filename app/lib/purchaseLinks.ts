@@ -133,6 +133,16 @@ type CoupangProductParams = {
   vendorItemId: string;
 };
 
+function buildCoupangTraceId(params: CoupangProductParams): string {
+  const seed = `${params.pageKey}:${params.itemId}:${params.vendorItemId}`;
+  let hash = 0;
+  for (let index = 0; index < seed.length; index += 1) {
+    hash = (hash * 31 + seed.charCodeAt(index)) >>> 0;
+  }
+
+  return `PL-${params.pageKey}-${hash.toString(16)}`;
+}
+
 function getCoupangProductParams(url: string): CoupangProductParams | null {
   try {
     const parsed = new URL(url);
@@ -191,11 +201,12 @@ function buildCoupangPartnersProductUrl(
   url.searchParams.set("lptag", COUPANG_PARTNERS_TAG);
   const subId = getCoupangSubId(category);
   if (subId) {
-    url.searchParams.set("subId", subId);
+    url.searchParams.set("subid", subId);
   }
   url.searchParams.set("pageKey", params.pageKey);
   url.searchParams.set("itemId", params.itemId);
   url.searchParams.set("vendorItemId", params.vendorItemId);
+  url.searchParams.set("traceid", buildCoupangTraceId(params));
 
   return url.toString();
 }
@@ -205,13 +216,13 @@ export function getCoupangRedirectHref(
   category?: CoupangLinkCategory | null,
   slug?: string | null,
 ): string | null {
-  const destination = getCoupangDestinationUrl(coupangUrl, category, slug);
-  if (!destination || !isValidCoupangLink(destination)) {
+  const sourceUrl = normalizeCoupangUrl(coupangUrl) ?? getKnownSourceCoupangUrlBySlug(slug);
+  if (!sourceUrl || !isValidCoupangLink(sourceUrl)) {
     return null;
   }
 
   const redirectUrl = new URL("/api/out/coupang", "https://proteinlab.kr");
-  redirectUrl.searchParams.set("url", destination);
+  redirectUrl.searchParams.set("url", sourceUrl);
   if (category) {
     redirectUrl.searchParams.set("category", category);
   }

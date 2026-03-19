@@ -26,7 +26,6 @@ import { getProductImageUrl } from "../../lib/productImage";
 import {
   getCoupangRedirectHref,
   getKnownSourceCoupangUrlBySlug,
-  getPreferredCoupangUrl,
   normalizeCoupangUrl,
 } from "../../lib/purchaseLinks";
 
@@ -130,7 +129,6 @@ export default async function ProductDetailPage({ params }: PageProps) {
         ].filter(Boolean);
 
   const rawCoupangUrl =
-    getPreferredCoupangUrl(product.coupangUrl, product.productType ?? null) ??
     normalizeCoupangUrl(product.coupangUrl) ??
     getKnownSourceCoupangUrlBySlug(product.slug);
   const resolvedCoupangHref = getCoupangRedirectHref(

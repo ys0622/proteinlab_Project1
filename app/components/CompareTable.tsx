@@ -2,7 +2,11 @@
 
 import type { ProductDetailProps } from "../data/products";
 import { type CompareColumnId, getCompareColumn } from "../lib/compareColumns";
-import { getCoupangRedirectHref, getPreferredCoupangUrl } from "../lib/purchaseLinks";
+import {
+  getCoupangRedirectHref,
+  getKnownSourceCoupangUrlBySlug,
+  normalizeCoupangUrl,
+} from "../lib/purchaseLinks";
 import Link from "next/link";
 
 interface CompareTableProps {
@@ -96,7 +100,8 @@ export default function CompareTable({ products, visibleColumnIds }: CompareTabl
                       : null;
 
                   if (isPriceRow) {
-                    const rawCoupangUrl = getPreferredCoupangUrl(p.coupangUrl, p.productType ?? null);
+                    const rawCoupangUrl =
+                      normalizeCoupangUrl(p.coupangUrl) ?? getKnownSourceCoupangUrlBySlug(p.slug);
                     const coupangHref = getCoupangRedirectHref(
                       rawCoupangUrl,
                       p.productType ?? null,

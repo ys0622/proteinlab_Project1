@@ -35,6 +35,16 @@ function getCoupangProductParams(url: string) {
   }
 }
 
+function buildCoupangTraceId(params: { pageKey: string; itemId: string; vendorItemId: string }) {
+  const seed = `${params.pageKey}:${params.itemId}:${params.vendorItemId}`;
+  let hash = 0;
+  for (let index = 0; index < seed.length; index += 1) {
+    hash = (hash * 31 + seed.charCodeAt(index)) >>> 0;
+  }
+
+  return `PL-${params.pageKey}-${hash.toString(16)}`;
+}
+
 async function getRuntimeCoupangTag(): Promise<string> {
   try {
     const { env } = await getCloudflareContext({ async: true });
@@ -62,10 +72,11 @@ function buildRuntimePartnersUrl(
   const subId = category ?? "proteinlab";
   const url = new URL("https://link.coupang.com/re/AFFSDP");
   url.searchParams.set("lptag", tag);
-  url.searchParams.set("subId", subId);
+  url.searchParams.set("subid", subId);
   url.searchParams.set("pageKey", params.pageKey);
   url.searchParams.set("itemId", params.itemId);
   url.searchParams.set("vendorItemId", params.vendorItemId);
+  url.searchParams.set("traceid", buildCoupangTraceId(params));
   return url.toString();
 }
 
