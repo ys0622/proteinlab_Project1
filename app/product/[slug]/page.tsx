@@ -24,6 +24,7 @@ import { getCategoryHref, getCategoryLabel } from "../../lib/categories";
 import { getProductBySlugAsync } from "../../lib/productData";
 import { getProductImageUrl } from "../../lib/productImage";
 import {
+  getCoupangRedirectHref,
   getKnownSourceCoupangUrlBySlug,
   getPreferredCoupangUrl,
   normalizeCoupangUrl,
@@ -128,10 +129,15 @@ export default async function ProductDetailPage({ params }: PageProps) {
           product.bcaa ? `BCAA ${product.bcaa}` : null,
         ].filter(Boolean);
 
-  const resolvedCoupangHref =
+  const rawCoupangUrl =
     getPreferredCoupangUrl(product.coupangUrl, product.productType ?? null) ??
     normalizeCoupangUrl(product.coupangUrl) ??
     getKnownSourceCoupangUrlBySlug(product.slug);
+  const resolvedCoupangHref = getCoupangRedirectHref(
+    rawCoupangUrl,
+    product.productType ?? null,
+    product.slug,
+  );
   const naverHref = product.naverUrl && product.naverUrl !== "#" && product.naverUrl !== "" ? product.naverUrl : null;
   const officialMallHref = product.officialUrl && product.officialUrl !== "#" && product.officialUrl !== "" ? product.officialUrl : null;
   const isLactoseFreeDrink =

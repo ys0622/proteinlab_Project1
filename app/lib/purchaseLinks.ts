@@ -194,6 +194,27 @@ function buildCoupangPartnersProductUrl(
   return url.toString();
 }
 
+export function getCoupangRedirectHref(
+  coupangUrl?: string | null,
+  category?: CoupangLinkCategory | null,
+  slug?: string | null,
+): string | null {
+  const normalized = normalizeCoupangUrl(coupangUrl) ?? getKnownSourceCoupangUrlBySlug(slug);
+  if (!normalized || !isValidCoupangLink(normalized)) {
+    return null;
+  }
+
+  const redirectUrl = new URL("/api/out/coupang", "https://proteinlab.kr");
+  redirectUrl.searchParams.set("url", normalized);
+  if (category) {
+    redirectUrl.searchParams.set("category", category);
+  }
+  if (slug) {
+    redirectUrl.searchParams.set("slug", slug);
+  }
+  return `${redirectUrl.pathname}${redirectUrl.search}`;
+}
+
 function buildSearchName(brand: string, name: string): string {
   return name.startsWith(brand) ? name : `${brand} ${name}`;
 }
@@ -248,6 +269,18 @@ export function getPreferredCoupangUrl(
 export function getKnownSourceCoupangUrlBySlug(slug?: string | null): string | null {
   if (!slug) return null;
   return KNOWN_SOURCE_COUPANG_URLS_BY_SLUG[slug] ?? null;
+}
+
+export function getCoupangDestinationUrl(
+  coupangUrl?: string | null,
+  category?: CoupangLinkCategory | null,
+  slug?: string | null,
+): string | null {
+  return (
+    getPreferredCoupangUrl(coupangUrl, category) ??
+    normalizeCoupangUrl(coupangUrl) ??
+    getKnownSourceCoupangUrlBySlug(slug)
+  );
 }
 
 export function getNaverSearchUrl(brand: string, name: string): string {
