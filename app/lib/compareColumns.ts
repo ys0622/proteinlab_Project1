@@ -12,6 +12,7 @@ export type CompareColumnId =
   | "sugar"
   | "fat"
   | "sodium"
+  | "fiber"
   | "density"
   | "calorieDensity"
   | "priceLinks";
@@ -77,6 +78,13 @@ export const COMPARE_COLUMNS: CompareColumnDef[] = [
     label: "나트륨",
     getValue: (p) => (p.sodium !== undefined ? `${p.sodium}mg` : "—"),
     highlight: "lower",
+    toNumber: (v) => (typeof v === "string" ? parseFloat(v.replace(/[^\d.]/g, "")) : typeof v === "number" ? v : null),
+  },
+  {
+    id: "fiber",
+    label: "식이섬유",
+    getValue: (p) => (p.nutritionPerBottle?.fiberG != null ? `${p.nutritionPerBottle.fiberG}g` : "—"),
+    highlight: "higher",
     toNumber: (v) => (typeof v === "string" ? parseFloat(v.replace(/[^\d.]/g, "")) : typeof v === "number" ? v : null),
   },
   {

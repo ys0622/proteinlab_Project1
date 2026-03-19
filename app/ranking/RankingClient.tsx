@@ -32,6 +32,20 @@ function getMetricGuide(metric: GradeMetric) {
     : "높을수록 유리한 값을 100점 기준으로 환산";
 }
 
+function getCategoryRankingDescription(productType: ProductCategory, metric: GradeMetric) {
+  if (productType === "shake") {
+    if (metric === "density") {
+      return "쉐이크는 칼로리 대비 단백질 효율을 기준으로 정렬합니다. 같은 파우치형이라도 밀도 차이가 커서 체감이 크게 갈립니다.";
+    }
+    if (metric === "diet") {
+      return "쉐이크 다이어트 점수는 당류, 칼로리, 단백질 밀도와 식이섬유 균형을 함께 반영합니다.";
+    }
+    return "쉐이크 퍼포먼스 점수는 단백질 함량과 효율을 중심으로 운동 보충 관점에서 계산합니다.";
+  }
+
+  return "단백질 밀도, 다이어트, 퍼포먼스 점수를 모두 100점 기준으로 비교합니다.";
+}
+
 export default function RankingClient({ rankings }: RankingClientProps) {
   const [productType, setProductType] = useState<ProductCategory>("drink");
   const [metric, setMetric] = useState<GradeMetric>("density");
@@ -53,7 +67,7 @@ export default function RankingClient({ rankings }: RankingClientProps) {
             등급 순위
           </h1>
           <p className="mt-1 text-sm text-[var(--foreground-muted)]" style={{ fontWeight: 400 }}>
-            단백질 밀도, 다이어트, 퍼포먼스 점수를 모두 100점 기준으로 비교합니다.
+            {getCategoryRankingDescription(productType, metric)}
           </p>
         </div>
       </section>

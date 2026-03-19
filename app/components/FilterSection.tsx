@@ -16,6 +16,9 @@ const yogurtProteinOptions = ["고단백(15g 이상)", "중간단백(10~15g)", "
 const yogurtSugarOptions = ["당류 0g", "저당(5g 미만)", "보통당(5~10g)", "고당(10g 이상)"];
 const yogurtTypeOptions = ["Greek yogurt", "Drinking yogurt", "Protein yogurt"];
 const yogurtFlavorOptions = ["플레인", "초코", "바나나", "베리", "기타"];
+const shakeUseCaseOptions = ["운동보충형", "식사대용형", "저당형"];
+const shakeFiberOptions = ["식이섬유 높음(5g 이상)", "식이섬유 보통(3~5g)", "식이섬유 낮음(3g 미만)"];
+const shakeTasteOptions = ["초콜릿/디저트", "커피", "곡물/미숫가루", "말차/차", "과일", "고소/견과", "기타"];
 
 const labelMinWidth = "5rem";
 const chipBase =
@@ -334,8 +337,28 @@ export default function FilterSection(props: FilterSectionProps) {
             />
           ))}
         </FilterRow>
+        <FilterRow title="용도">
+          {shakeUseCaseOptions.map((useCase) => (
+            <FilterChip
+              key={useCase}
+              label={useCase}
+              selected={filters.useCase.includes(useCase)}
+              onClick={() => onFilterToggle("useCase", useCase)}
+            />
+          ))}
+        </FilterRow>
+        <FilterRow title="식이섬유">
+          {shakeFiberOptions.map((fiber) => (
+            <FilterChip
+              key={fiber}
+              label={fiber}
+              selected={filters.fiber.includes(fiber)}
+              onClick={() => onFilterToggle("fiber", fiber)}
+            />
+          ))}
+        </FilterRow>
         <FilterRow title="맛">
-          {drinkTasteOptions.map((taste) => (
+          {shakeTasteOptions.map((taste) => (
             <FilterChip
               key={taste}
               label={taste}

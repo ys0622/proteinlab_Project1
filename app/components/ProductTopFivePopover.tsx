@@ -53,7 +53,7 @@ export default function ProductTopFivePopover({
       : productType === "yogurt"
         ? "오늘 인기 단백질 요거트"
         : productType === "shake"
-          ? "오늘 인기 쉐이크"
+          ? "오늘 인기 단백질 쉐이크"
           : "오늘 인기 단백질 음료";
 
   return (

@@ -28,6 +28,7 @@ export default function ComparePage() {
     "sugar",
     "fat",
     "sodium",
+    "fiber",
     "density",
     "priceLinks",
   ]);
@@ -85,6 +86,16 @@ export default function ComparePage() {
     alert("공유 링크가 복사되었습니다.");
   };
 
+  const selectedCategory =
+    products.length > 0 && products.every((product) => product.productType === products[0]?.productType)
+      ? products[0]?.productType
+      : null;
+
+  const compareDescription =
+    selectedCategory === "shake"
+      ? "파우치형 단백질 쉐이크를 단백질, 당류, 식이섬유, 단백질 밀도 기준으로 나란히 비교합니다"
+      : "최대 4개 제품을 나란히 비교합니다";
+
   if (products.length === 0) {
     return (
       <div className="min-h-screen bg-white">
@@ -118,7 +129,7 @@ export default function ComparePage() {
             <div>
               <h1 className="text-2xl font-bold" style={{ color: "#1a1a1a", fontWeight: 700 }}>제품 비교</h1>
               <p className="mt-1 text-sm" style={{ color: "#6b6b6b" }}>
-                최대 4개 제품을 나란히 비교합니다
+                {compareDescription}
               </p>
             </div>
             <div className="flex flex-wrap gap-2">

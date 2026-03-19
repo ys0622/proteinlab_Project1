@@ -221,6 +221,8 @@ h1, h2, h3, h4, h5, h6 {
 .product-card__metric-value--compact {
   letter-spacing: -0.035em;
   text-overflow: clip;
+  white-space: normal;
+  line-height: 1.1;
 }
 
 .metric-badge-group {
@@ -1085,14 +1087,13 @@ h1, h2, h3, h4, h5, h6 {
   }
 
   .product-card__metric-value--compact {
-    display: inline-block;
+    display: block;
     min-width: 0;
-    overflow: visible;
-    font-size: 10px !important;
-    letter-spacing: -0.06em;
-    line-height: 1.05;
-    transform: scaleX(0.9);
-    transform-origin: left center;
+    overflow: hidden;
+    font-size: 11px !important;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+    transform: none;
   }
 
   .cta-group {

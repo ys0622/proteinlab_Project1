@@ -7,9 +7,9 @@ import { getProductsByCategoryAsync } from "../lib/productData";
 import RankingClient from "./RankingClient";
 
 export const metadata = {
-  title: "단백질 랭킹 | 단백질 음료·바·요거트 순위 | ProteinLab",
+  title: "단백질 랭킹 | 음료·바·요거트·쉐이크 순위 | ProteinLab",
   description:
-    "단백질 음료, 단백질 바, 단백질 요거트 순위를 단백질 밀도, 다이어트, 퍼포먼스 100점 기준으로 비교합니다. 그릭요거트와 드링킹 요거트 순위도 함께 확인해보세요.",
+    "단백질 음료, 단백질 바, 단백질 요거트, 단백질 쉐이크 순위를 단백질 밀도, 다이어트, 퍼포먼스 100점 기준으로 비교합니다.",
 };
 
 function prepareRankingData(products: ProductDetailProps[], metric: "density" | "diet" | "performance") {

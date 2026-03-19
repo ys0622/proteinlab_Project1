@@ -107,11 +107,11 @@ const CONDITION_OPTIONS_BY_CATEGORY: Record<ProductType, ConditionOption[]> = {
     { icon: "🍬", label: "저당", desc: "당류 5g 이하 선호", value: "lowsugar" },
   ],
   shake: [
-    { icon: "💪", label: "고단백", desc: "20g 이상 선호", value: "highpro" },
-    { icon: "🫐", label: "저당", desc: "당류 3g 이하 선호", value: "lowsugar" },
-    { icon: "🥣", label: "식사대용", desc: "포만감 보완용 제품 선호", value: "meal" },
-    { icon: "🌾", label: "식이섬유", desc: "식이섬유 5g 이상 선호", value: "fiber" },
-    { icon: "⭐", label: "단백질 밀도", desc: "칼로리 대비 단백질 효율 선호", value: "density" },
+    { icon: "💪", label: "운동보충", desc: "단백질 20g 이상 제품 선호", value: "highpro" },
+    { icon: "🫐", label: "저당", desc: "당류 3g 이하 제품 선호", value: "lowsugar" },
+    { icon: "🥣", label: "식사대용", desc: "칼로리·식이섬유까지 같이 보기", value: "meal" },
+    { icon: "🌾", label: "식이섬유", desc: "식이섬유 5g 이상 제품 선호", value: "fiber" },
+    { icon: "⭐", label: "밀도 우선", desc: "칼로리 대비 단백질 효율 선호", value: "density" },
   ],
 };
 

@@ -25,8 +25,8 @@ export default function PurchaseLinkRow({
     <div className="purchase-link-row">
       <PurchaseLinkButton
         href={coupangHref}
-        label={coupangHref ? "쿠팡 구매" : "링크 준비중"}
-        mobileLabel={coupangHref ? "쿠팡" : "준비중"}
+        label={coupangHref ? "쿠팡 구매" : "쿠팡 링크 준비중"}
+        mobileLabel={coupangHref ? "쿠팡" : "쿠팡 준비중"}
         tone="coupang"
         size={size}
         onClick={coupangHref ? onCoupangClick : undefined}
@@ -34,8 +34,8 @@ export default function PurchaseLinkRow({
       />
       <PurchaseLinkButton
         href={naverHref}
-        label={naverHref ? "네이버 구매" : "링크 준비중"}
-        mobileLabel={naverHref ? "네이버" : "준비중"}
+        label={naverHref ? "네이버 구매" : "네이버 링크 준비중"}
+        mobileLabel={naverHref ? "네이버" : "네이버 준비중"}
         tone="naver"
         size={size}
         onClick={naverHref ? onNaverClick : undefined}
@@ -43,8 +43,8 @@ export default function PurchaseLinkRow({
       />
       <PurchaseLinkButton
         href={officialMallHref}
-        label={officialMallHref ? "공식몰 구매" : "링크 준비중"}
-        mobileLabel={officialMallHref ? "공식몰" : "준비중"}
+        label={officialMallHref ? "공식몰 구매" : "공식몰 링크 준비중"}
+        mobileLabel={officialMallHref ? "공식몰" : "공식몰 준비중"}
         tone="official"
         size={size}
         onClick={officialMallHref ? onOfficialClick : undefined}

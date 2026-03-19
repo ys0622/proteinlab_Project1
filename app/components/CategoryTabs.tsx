@@ -141,7 +141,7 @@ export default function CategoryTabs({
                 </button>
 
                 {desktopInfoOpen ? (
-                  <div className="absolute right-0 top-full z-[100] mt-2 hidden w-[300px] rounded-xl border border-[var(--border)] bg-white p-3 shadow-lg md:block">
+                  <div className="absolute right-0 bottom-full z-[100] mb-3 hidden w-[320px] rounded-xl border border-[var(--border)] bg-white p-3 shadow-lg md:block">
                     <CategoryInfoPanel counts={counts} />
                   </div>
                 ) : null}

@@ -33,6 +33,14 @@ function getSubtypeKey(product: ProductDetailProps) {
     return "bar-default";
   }
 
+  if (product.productType === "shake") {
+    const fiber = product.nutritionPerBottle?.fiberG ?? 0;
+    if (product.proteinPerServing >= 20 && getDensityValue(product) >= 14) return "shake-performance";
+    if ((product.calories ?? 0) >= 150 && product.proteinPerServing >= 15 && fiber >= 4) return "shake-meal";
+    if ((product.sugar ?? 0) <= 3) return "shake-low-sugar";
+    return "shake-default";
+  }
+
   const drinkType = (product.drinkType ?? "").toLowerCase();
   if (drinkType.includes("water") || drinkType.includes("워터")) return "drink-water";
   if ((product.sugar ?? 0) <= 2) return "drink-low-sugar";
@@ -429,7 +437,7 @@ function scoreShakeProduct(product: ProductDetailProps, req: RecommendRequest): 
     if (sugar <= 3) reasons.push("당류 부담이 낮아 다이어트 관점에서 보기 좋습니다");
   } else if (req.purpose === "daily") {
     score += protein * 2 + density * 8 + fiber * 6;
-    if (fiber >= 4) reasons.push("식이섬유가 있어 간편식 대용으로 보기 좋습니다");
+    if (fiber >= 4) reasons.push("파우치형이라 일상 루틴에 넣기 쉬운 편입니다");
   } else if (req.purpose === "recovery") {
     score += performance * 2.5 + protein * 2;
     if (protein >= 20) reasons.push("운동 후 단백질 보충용으로 무난합니다");
@@ -546,8 +554,11 @@ function getConditionLabel(category: RecommendRequest["category"], value: string
       lowsugar: "저당",
     },
     shake: {
-      pouch: "파우치형",
-      "powder-excluded": "파우더 제외",
+      highpro: "운동보충",
+      lowsugar: "저당",
+      meal: "식사대용",
+      fiber: "식이섬유",
+      density: "밀도 우선",
     },
   };
 
@@ -581,6 +592,21 @@ function getCategoryTips(req: RecommendRequest) {
         icon: "🧊",
         title: "냉장 보관 기준 확인",
         desc: "요거트는 보관 조건과 개봉 후 섭취 타이밍까지 함께 보는 것이 안전합니다.",
+      },
+    ];
+  }
+
+  if (req.category === "shake") {
+    return [
+      {
+        icon: "🥣",
+        title: "식사대용 여부를 먼저 구분",
+        desc: "쉐이크는 단백질만 높아도 식사대용으로는 부족할 수 있어 칼로리와 식이섬유를 같이 보는 편이 좋습니다.",
+      },
+      {
+        icon: "📊",
+        title: "당류와 밀도를 함께 비교",
+        desc: "같은 파우치형 쉐이크라도 당류와 단백질 밀도 차이가 커서 목적별 체감이 달라집니다.",
       },
     ];
   }

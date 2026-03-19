@@ -9,6 +9,7 @@ import Header from "../../components/Header";
 import MetricBadgeGroup from "../../components/MetricBadgeGroup";
 import NutritionDetailSection from "../../components/NutritionDetailSection";
 import ProductBadge from "../../components/ProductBadge";
+import type { ProductDetailProps } from "../../data/products";
 import {
   formatProductBadgeLabel,
   getMetricBadgeAriaLabel,
@@ -30,6 +31,41 @@ interface PageProps {
 
 function getProductKindLabel(productType?: "drink" | "bar" | "yogurt" | "shake") {
   return getCategoryLabel(productType ?? "drink");
+}
+
+function renderSummaryMetricValue(value: string, isCompact: boolean) {
+  if (!isCompact) {
+    return value;
+  }
+
+  const [metricValue, metricUnit] = value.split("/");
+
+  if (!metricUnit) {
+    return value;
+  }
+
+  return (
+    <span className="flex min-w-0 flex-col">
+      <span className="truncate">{metricValue}</span>
+      <span className="text-[11px] font-semibold leading-tight text-[#6b6b6b]">
+        /{metricUnit}
+      </span>
+    </span>
+  );
+}
+
+function getShakePositioning(product: ProductDetailProps) {
+  const calories = product.calories ?? 0;
+  const fiber = product.nutritionPerBottle?.fiberG ?? 0;
+  const sugar = product.sugar ?? 0;
+
+  if (calories >= 150 && product.proteinPerServing >= 15 && fiber >= 4) {
+    return "식사대용형";
+  }
+  if (sugar <= 3) {
+    return "저당형";
+  }
+  return "운동보충형";
 }
 
 export async function generateMetadata({ params }: PageProps) {
@@ -111,9 +147,9 @@ export default async function ProductDetailPage({ params }: PageProps) {
             { label: "당류", value: product.sugar !== undefined ? `${product.sugar}g` : "-", isCompact: false },
             { label: "단백질 밀도", value: product.density ?? "-", isCompact: true },
             { label: "용량", value: product.capacity ?? "-", isCompact: false },
-            { label: "제품 유형", value: "파우치형 쉐이크", isCompact: false },
+            { label: "식이섬유", value: product.nutritionPerBottle?.fiberG != null ? `${product.nutritionPerBottle.fiberG}g` : "-", isCompact: false },
             { label: "지방", value: product.fat !== undefined ? `${product.fat}g` : "-", isCompact: false },
-            { label: "나트륨", value: product.sodium !== undefined ? `${product.sodium}mg` : "-", isCompact: false },
+            { label: "섭취 포인트", value: getShakePositioning(product), isCompact: false },
           ]
       : [
           { label: "단백질", value: `${product.proteinPerServing}g`, isCompact: false },
@@ -207,7 +243,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
                         lineHeight: 1.2,
                       }}
                     >
-                      {value}
+                      {renderSummaryMetricValue(value, isCompact)}
                     </span>
                   </div>
                 ))}

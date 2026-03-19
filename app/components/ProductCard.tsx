@@ -49,6 +49,27 @@ export interface ProductCardProps {
   hideSupplementalBadges?: boolean;
 }
 
+function renderMetricValue(value: string, isDensity: boolean) {
+  if (!isDensity) {
+    return value;
+  }
+
+  const [metricValue, metricUnit] = value.split("/");
+
+  if (!metricUnit) {
+    return value;
+  }
+
+  return (
+    <span className="flex min-w-0 flex-col">
+      <span className="truncate">{metricValue}</span>
+      <span className="text-[10px] font-semibold leading-tight text-[#6b6b6b] md:text-[11px]">
+        /{metricUnit}
+      </span>
+    </span>
+  );
+}
+
 export default function ProductCard({
   brand,
   name,
@@ -266,8 +287,8 @@ export default function ProductCard({
                   lineHeight: 1.2,
                 }}
               >
-                <span className="block min-w-0 break-words whitespace-normal md:text-[14px]">
-                  {value}
+                <span className="block min-w-0 md:text-[14px]">
+                  {renderMetricValue(value, isDensity)}
                 </span>
               </span>
             </div>

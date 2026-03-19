@@ -111,6 +111,57 @@ export function getYogurtTypeCategory(product: ProductDetailProps): string {
   return product.yogurtType?.trim() || "Protein yogurt";
 }
 
+export type ShakeFlavorCategory =
+  | "초콜릿/디저트"
+  | "커피"
+  | "곡물/미숫가루"
+  | "말차/차"
+  | "과일"
+  | "고소/견과"
+  | "기타";
+
+export function getShakeFlavorCategory(product: ProductDetailProps): ShakeFlavorCategory {
+  const haystack = [product.name, product.flavor].filter(Boolean).join(" ").toLowerCase();
+
+  if (/초코|초콜릿|쿠키|케이크|브라우니|헤이즐넛/.test(haystack)) return "초콜릿/디저트";
+  if (/커피|모카|라떼|에스프레소|돌체/.test(haystack)) return "커피";
+  if (/미숫|곡물|시리얼|인절미|옥수수|콘|soboro|17곡/.test(haystack)) return "곡물/미숫가루";
+  if (/말차|녹차|얼그레이|밀크티|tea/.test(haystack)) return "말차/차";
+  if (/딸기|베리|바나나|멜론|복숭아|망고/.test(haystack)) return "과일";
+  if (/참깨|흑임자|검은콩|서리태|피스타치오|땅콩|견과/.test(haystack)) return "고소/견과";
+  return "기타";
+}
+
+export type ShakeFiberRange = "식이섬유 높음(5g 이상)" | "식이섬유 보통(3~5g)" | "식이섬유 낮음(3g 미만)";
+
+export function getShakeFiberRange(product: ProductDetailProps): ShakeFiberRange {
+  const fiber = product.nutritionPerBottle?.fiberG ?? 0;
+  if (fiber >= 5) return "식이섬유 높음(5g 이상)";
+  if (fiber >= 3) return "식이섬유 보통(3~5g)";
+  return "식이섬유 낮음(3g 미만)";
+}
+
+export type ShakeUseCase = "운동보충형" | "식사대용형" | "저당형";
+
+export function getShakeUseCase(product: ProductDetailProps): ShakeUseCase[] {
+  const useCases: ShakeUseCase[] = [];
+  const calories = product.calories ?? 0;
+  const sugar = product.sugar ?? 0;
+  const fiber = product.nutritionPerBottle?.fiberG ?? 0;
+
+  if (product.proteinPerServing >= 20) {
+    useCases.push("운동보충형");
+  }
+  if (calories >= 150 && product.proteinPerServing >= 15 && fiber >= 4) {
+    useCases.push("식사대용형");
+  }
+  if (sugar <= 3) {
+    useCases.push("저당형");
+  }
+
+  return useCases;
+}
+
 export interface DrinkFilters {
   brand: string[];
   protein: string[];
@@ -182,6 +233,8 @@ export interface ShakeFilters {
   brand: string[];
   protein: string[];
   sugar: string[];
+  useCase: string[];
+  fiber: string[];
   taste: string[];
 }
 
@@ -197,6 +250,8 @@ export const defaultShakeFilters: ShakeFilters = {
   brand: [],
   protein: [],
   sugar: [],
+  useCase: [],
+  fiber: [],
   taste: [],
 };
 
@@ -224,7 +279,9 @@ export function filterShakeProducts(
     if (filters.brand.length > 0 && !filters.brand.includes(product.brand)) return false;
     if (filters.protein.length > 0 && !filters.protein.includes(getProteinRangeBar(product))) return false;
     if (filters.sugar.length > 0 && !filters.sugar.includes(getSugarRangeBar(product))) return false;
-    if (filters.taste.length > 0 && !filters.taste.includes(getTasteCategory(product))) return false;
+    if (filters.useCase.length > 0 && !filters.useCase.some((selected) => getShakeUseCase(product).includes(selected as ShakeUseCase))) return false;
+    if (filters.fiber.length > 0 && !filters.fiber.includes(getShakeFiberRange(product))) return false;
+    if (filters.taste.length > 0 && !filters.taste.includes(getShakeFlavorCategory(product))) return false;
     return true;
   });
 }
