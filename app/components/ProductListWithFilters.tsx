@@ -36,6 +36,7 @@ type ProductListWithFiltersProps = {
   products: ProductDetailProps[];
   curationSlug?: string;
   categoryCounts?: Partial<Record<ProductCategory, number>>;
+  stickyTabs?: boolean;
 };
 
 type PersistedFilterState = {
@@ -132,7 +133,15 @@ type ProductListWithFiltersInnerProps = ProductListWithFiltersProps & {
 };
 
 function ProductListWithFiltersInner(props: ProductListWithFiltersInnerProps) {
-  const { productType, products, curationSlug, categoryCounts, storageKey, initialPersistedState } = props;
+  const {
+    productType,
+    products,
+    curationSlug,
+    categoryCounts,
+    storageKey,
+    initialPersistedState,
+    stickyTabs = true,
+  } = props;
   const [drinkFilters, setDrinkFilters] = useState<DrinkFilters>(
     () => initialPersistedState?.drinkFilters ?? defaultDrinkFilters,
   );
@@ -350,7 +359,7 @@ function ProductListWithFiltersInner(props: ProductListWithFiltersInnerProps) {
         <CategoryTabs
           activeCategory={productType}
           counts={categoryCounts}
-          stickyMobile
+          stickyMobile={stickyTabs}
         />
       </div>
 

@@ -36,6 +36,7 @@ export default async function Home({ searchParams }: HomePageProps) {
           products={products}
           curationSlug={curation}
           categoryCounts={categoryCounts}
+          stickyTabs={false}
         />
       </main>
 

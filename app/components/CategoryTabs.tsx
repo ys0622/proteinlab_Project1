@@ -24,17 +24,19 @@ function CategoryInfoPanel({
   counts?: Partial<Record<ProductCategory, number>>;
 }) {
   return (
-    <div className="space-y-3">
+    <div className="space-y-2.5">
       {ORDERED_CATEGORY_IDS.map((category) => {
         const meta = CATEGORY_META[category];
         const count = counts?.[category] ?? meta.count;
 
         return (
           <div key={category}>
-            <p className="text-sm font-semibold text-[var(--foreground)]">
+            <p className="text-xs font-semibold text-[var(--foreground)]">
               {meta.label} ({count}개 제품)
             </p>
-            <p className="mt-1 text-xs leading-5 text-[var(--foreground-muted)]">{meta.description}</p>
+            <p className="mt-0.5 text-xs leading-5 text-[var(--foreground-muted)]">
+              {meta.description}
+            </p>
           </div>
         );
       })}
@@ -72,20 +74,20 @@ export default function CategoryTabs({
   return (
     <div className={wrapperClassName}>
       <div className="relative">
-        <div className="flex items-center gap-2">
+        <div className="flex items-center">
           <nav
             aria-label={ariaLabel}
-            className="min-w-0 flex-1 overflow-x-auto overflow-y-visible pb-1 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+            className="min-w-0 flex-1 overflow-x-auto overflow-y-visible pb-1 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:overflow-visible"
           >
             <div className="flex min-w-max items-center gap-2">
               {ORDERED_CATEGORY_IDS.map((category) => {
                 const meta = CATEGORY_META[category];
                 const active = activeCategory === category;
                 const commonClassName =
-                  "inline-flex min-h-10 items-center justify-center rounded-full px-4 py-2 text-sm font-semibold transition-colors";
+                  "rounded-full px-3.5 py-1 text-sm font-medium whitespace-nowrap transition-colors";
                 const toneClassName = active
                   ? "bg-[var(--accent)] text-white"
-                  : "border border-[var(--border)] bg-white text-[var(--foreground-muted)] hover:border-[var(--accent)] hover:bg-[var(--accent-light)] hover:text-[var(--accent)]";
+                  : "border border-[var(--border)] bg-white text-[var(--foreground-muted)] hover:text-[var(--foreground)]";
 
                 if (onSelect) {
                   return (
@@ -112,77 +114,54 @@ export default function CategoryTabs({
                   </Link>
                 );
               })}
+
+              <div
+                className="relative flex shrink-0 items-center"
+                onMouseEnter={() => {
+                  if (isDesktop) setDesktopInfoOpen(true);
+                }}
+                onMouseLeave={() => {
+                  if (isDesktop) setDesktopInfoOpen(false);
+                }}
+              >
+                <button
+                  type="button"
+                  onClick={() => {
+                    if (isDesktop) {
+                      setDesktopInfoOpen((current) => !current);
+                    } else {
+                      setMobileInfoOpen((current) => !current);
+                    }
+                  }}
+                  className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-[var(--border)] bg-white text-[13px] text-[var(--foreground-muted)] transition-colors hover:text-[var(--foreground)]"
+                  aria-label="카테고리 설명 보기"
+                  aria-expanded={isDesktop ? desktopInfoOpen : mobileInfoOpen}
+                >
+                  ⓘ
+                </button>
+
+                {desktopInfoOpen ? (
+                  <div className="absolute right-0 top-full z-[100] mt-2 hidden w-[300px] rounded-xl border border-[var(--border)] bg-white p-3 shadow-lg md:block">
+                    <CategoryInfoPanel counts={counts} />
+                  </div>
+                ) : null}
+              </div>
             </div>
           </nav>
-
-          <div
-            className="relative shrink-0"
-            onMouseEnter={() => {
-              if (isDesktop) setDesktopInfoOpen(true);
-            }}
-            onMouseLeave={() => {
-              if (isDesktop) setDesktopInfoOpen(false);
-            }}
-          >
-            <button
-              type="button"
-              onClick={() => {
-                if (isDesktop) {
-                  setDesktopInfoOpen((current) => !current);
-                } else {
-                  setMobileInfoOpen(true);
-                }
-              }}
-              className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[var(--border)] bg-white text-sm font-semibold text-[var(--foreground-muted)] transition-colors hover:border-[var(--accent)] hover:bg-[var(--accent-light)] hover:text-[var(--accent)]"
-              aria-label="카테고리 설명 보기"
-              aria-expanded={isDesktop ? desktopInfoOpen : mobileInfoOpen}
-            >
-              i
-            </button>
-
-            {desktopInfoOpen ? (
-              <div className="absolute right-0 top-full z-[80] mt-2 hidden w-[340px] rounded-2xl border border-[var(--border)] bg-white p-4 shadow-[0_16px_40px_rgba(0,0,0,0.12)] md:block">
-                <CategoryInfoPanel counts={counts} />
-              </div>
-            ) : null}
-          </div>
         </div>
 
-        {mobileInfoOpen ? (
-          <div className="md:hidden">
+        {!isDesktop && mobileInfoOpen ? (
+          <>
             <button
               type="button"
               aria-label="카테고리 설명 닫기"
-              className="fixed inset-0 z-[90] bg-black/35"
+              className="fixed inset-0 z-[90] cursor-default"
               onClick={() => setMobileInfoOpen(false)}
             />
-            <div
-              className="fixed inset-x-0 bottom-0 z-[100] rounded-t-[28px] border border-[var(--border)] bg-white px-5 pb-6 pt-3 shadow-[0_-18px_44px_rgba(0,0,0,0.18)]"
-              role="dialog"
-              aria-label="카테고리 설명"
-            >
-              <div className="mx-auto h-1.5 w-12 rounded-full bg-[#ddd6c8]" aria-hidden="true" />
-              <div className="mt-4 flex items-start justify-between gap-4">
-                <div>
-                  <p className="text-base font-semibold text-[var(--foreground)]">카테고리 안내</p>
-                  <p className="mt-1 text-xs text-[var(--foreground-muted)]">
-                    모든 페이지에서 동일한 기준으로 카테고리를 보여줍니다.
-                  </p>
-                </div>
-                <button
-                  type="button"
-                  onClick={() => setMobileInfoOpen(false)}
-                  className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-[var(--border)] text-[var(--foreground-muted)]"
-                  aria-label="카테고리 설명 닫기"
-                >
-                  ×
-                </button>
-              </div>
-              <div className="mt-4">
-                <CategoryInfoPanel counts={counts} />
-              </div>
+            <div className="absolute right-0 top-full z-[100] mt-2 w-[300px] rounded-xl border border-[var(--border)] bg-white p-3 shadow-lg md:hidden">
+              <CategoryInfoPanel counts={counts} />
             </div>
-          </div>
+          </>
         ) : null}
       </div>
     </div>
