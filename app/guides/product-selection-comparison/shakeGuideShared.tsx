@@ -217,6 +217,35 @@ export function ShakeGuidePage({
                 </li>
               ))}
             </ul>
+            <div className="mt-5 grid gap-3 md:grid-cols-3">
+              <Link
+                href="/shake"
+                className="rounded-2xl border border-[#dce8df] bg-[#f6fbf7] p-4 transition-colors hover:bg-[#eef7f1]"
+              >
+                <p className="text-sm font-semibold text-[#24543d]">쉐이크 전체 비교</p>
+                <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">
+                  카테고리 전체 목록에서 필터, 빠른 큐레이션, 상세페이지를 한 번에 볼 수 있습니다.
+                </p>
+              </Link>
+              <Link
+                href="/recommend?category=shake"
+                className="rounded-2xl border border-[#dce8df] bg-[#f6fbf7] p-4 transition-colors hover:bg-[#eef7f1]"
+              >
+                <p className="text-sm font-semibold text-[#24543d]">쉐이크 추천 받기</p>
+                <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">
+                  운동보충, 저당, 식사대용, 식이섬유 기준으로 쉐이크 추천을 바로 받아볼 수 있습니다.
+                </p>
+              </Link>
+              <Link
+                href="/ranking"
+                className="rounded-2xl border border-[#dce8df] bg-[#f6fbf7] p-4 transition-colors hover:bg-[#eef7f1]"
+              >
+                <p className="text-sm font-semibold text-[#24543d]">등급 순위 보기</p>
+                <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">
+                  단백질 밀도, 다이어트, 퍼포먼스 기준에서 쉐이크가 어디쯤인지 바로 확인할 수 있습니다.
+                </p>
+              </Link>
+            </div>
           </section>
 
           <section className="rounded-[28px] border border-[#dce8df] bg-[#f4faf6] px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
@@ -234,6 +263,12 @@ export function ShakeGuidePage({
                 className="inline-flex items-center justify-center rounded-xl border border-[#cddfd3] bg-[#24543d] px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#1e4735]"
               >
                 쉐이크 추천 받기
+              </Link>
+              <Link
+                href="/ranking"
+                className="inline-flex items-center justify-center rounded-xl border border-[#cddfd3] bg-white px-5 py-3 text-sm font-semibold text-[#24543d] transition-colors hover:bg-[#eef7f1]"
+              >
+                쉐이크 등급 순위 보기
               </Link>
             </div>
           </section>

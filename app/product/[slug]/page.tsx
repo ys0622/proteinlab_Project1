@@ -68,6 +68,20 @@ function getShakePositioning(product: ProductDetailProps) {
   return "운동보충형";
 }
 
+function getShakeSummaryNote(product: ProductDetailProps) {
+  const positioning = getShakePositioning(product);
+  const fiber = product.nutritionPerBottle?.fiberG ?? 0;
+  const sugar = product.sugar ?? 0;
+
+  if (positioning === "식사대용형") {
+    return `식이섬유 ${fiber}g와 칼로리 구성이 함께 들어 있어 한 끼 대체 관점에서도 보기 좋은 쉐이크입니다.`;
+  }
+  if (positioning === "저당형") {
+    return `당류 ${sugar}g 기준으로 비교적 깔끔한 편이라 저당 쉐이크 축에서 먼저 보기 좋습니다.`;
+  }
+  return `단백질 ${product.proteinPerServing}g와 단백질 밀도를 먼저 보는 운동보충형 쉐이크에 가깝습니다.`;
+}
+
 export async function generateMetadata({ params }: PageProps) {
   const { slug } = await params;
   const product = await getProductBySlugAsync(slug);
@@ -210,6 +224,11 @@ export default async function ProductDetailPage({ params }: PageProps) {
                 <p className="mt-1 text-[13px]" style={{ color: "#6b6b6b" }}>
                   {metaLine}
                 </p>
+                {isShake ? (
+                  <p className="mt-2 max-w-2xl text-[13px] leading-6 text-[#5f6258]">
+                    {getShakeSummaryNote(product)}
+                  </p>
+                ) : null}
                 {productFacts.length > 0 ? (
                   <div className="mt-3 flex flex-wrap gap-2">
                     {productFacts.map((fact) => (
@@ -311,6 +330,11 @@ export default async function ProductDetailPage({ params }: PageProps) {
             style={{ borderRadius: "12px" }}
           >
             <h2 className="mb-3 text-base font-semibold text-[var(--foreground)]">구매 링크</h2>
+            {isShake && !resolvedCoupangHref && !naverHref && !officialMallHref ? (
+              <p className="mb-3 text-sm leading-6 text-[var(--foreground-muted)]">
+                쉐이크 구매 링크는 브랜드별 공식 링크를 순차 확인 중입니다. 현재는 제품 비교와 상세 성분 확인을 먼저 진행할 수 있습니다.
+              </p>
+            ) : null}
             <PurchaseLinkRow
               coupangHref={resolvedCoupangHref}
               naverHref={naverHref}
