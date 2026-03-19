@@ -69,7 +69,7 @@ const FAQ = [
 
 export default function GradeCriteriaPage() {
   const [productType, setProductType] = useState<ProductCategory>("drink");
-  const categoryCounts = { drink: 104, bar: 71, yogurt: 45, shake: 3 };
+  const categoryCounts = { drink: 104, bar: 71, yogurt: 45, shake: 9 };
   const rows =
     productType === "drink"
       ? DRINK_ROWS

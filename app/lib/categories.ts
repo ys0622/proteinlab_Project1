@@ -35,7 +35,7 @@ export const CATEGORY_META: Record<ProductCategory, CategoryMeta> = {
     description: "파우치형 중심의 간편 섭취 단백질 쉐이크 비교 (파우더 제외)",
     order: 4,
     href: "/shake",
-    count: 3,
+    count: 9,
   },
 };
 

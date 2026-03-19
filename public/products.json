@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-03-19T04:45:58.984Z",
-  "total": 223,
+  "generated_at": "2026-03-19T05:13:49.294Z",
+  "total": 229,
   "categories": {
     "drinks": 104,
     "bars": 71,
     "yogurt": 45,
-    "shake": 3
+    "shake": 9
   },
   "products": [
     {
@@ -2013,6 +2013,60 @@
       "category": "shake",
       "protein": 22,
       "calories": 155,
+      "sugar": 2
+    },
+    {
+      "slug": "flymill-proteinshake-banana-45",
+      "name": "프로틴쉐이크 (바나나)",
+      "brand": "플라이밀",
+      "category": "shake",
+      "protein": 20.4,
+      "calories": 173,
+      "sugar": 2.3
+    },
+    {
+      "slug": "labnosh-slimshake-injeolmi-45",
+      "name": "슬림쉐이크 (인절미)",
+      "brand": "랩노쉬",
+      "category": "shake",
+      "protein": 20,
+      "calories": 165,
+      "sugar": 2.1
+    },
+    {
+      "slug": "danbaekhani-proteinshake-choco-40",
+      "name": "단백질쉐이크 (초코)",
+      "brand": "단백하니",
+      "category": "shake",
+      "protein": 22,
+      "calories": 145,
+      "sugar": 2
+    },
+    {
+      "slug": "flymill-proteinshake-strawberry-45",
+      "name": "프로틴쉐이크 (딸기)",
+      "brand": "플라이밀",
+      "category": "shake",
+      "protein": 19,
+      "calories": 147,
+      "sugar": 2.5
+    },
+    {
+      "slug": "labnosh-slimshake-goguma-45",
+      "name": "슬림쉐이크 (고구마)",
+      "brand": "랩노쉬",
+      "category": "shake",
+      "protein": 20,
+      "calories": 175,
+      "sugar": 2.1
+    },
+    {
+      "slug": "danbaekhani-proteinshake-matcha-40",
+      "name": "단백질쉐이크 (말차)",
+      "brand": "단백하니",
+      "category": "shake",
+      "protein": 22,
+      "calories": 140,
       "sugar": 2
     }
   ]

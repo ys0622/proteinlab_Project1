@@ -9,7 +9,7 @@
     "lint": "eslint",
     "audit:products": "node scripts/audit-product-impact.mjs",
     "preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
-    "deploy": "opennextjs-cloudflare build && node deploy.cjs",
+    "deploy": "opennextjs-cloudflare build && node scripts/patch-worker-robots.mjs && node deploy.cjs",
     "upload": "opennextjs-cloudflare build && opennextjs-cloudflare upload",
     "cf-typegen": "wrangler types --env-interface CloudflareEnv cloudflare-env.d.ts",
     "postinstall": "patch-package"
