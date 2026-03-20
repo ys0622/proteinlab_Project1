@@ -86,14 +86,31 @@ function getShakeSummaryNote(product: ProductDetailProps) {
   return `단백질 ${product.proteinPerServing}g와 단백질 밀도를 먼저 보는 운동보충형 쉐이크에 가깝습니다.`;
 }
 
+function buildProductDescription(product: ProductDetailProps): string {
+  const kind = getProductKindLabel(product.productType);
+  const protein = `단백질 ${product.proteinPerServing}g`;
+  const cal = product.calories != null ? `, ${product.calories}kcal` : "";
+  const sugar = product.sugar != null ? `, 당류 ${product.sugar}g` : "";
+  const grade = product.gradeTags?.length ? ` · ${product.gradeTags[0]} 등급` : "";
+  return `${product.brand} ${product.name} ${kind} 상세 정보. ${protein}${cal}${sugar}${grade}. 단백질 밀도·영양 성분 비교.`;
+}
+
 export async function generateMetadata({ params }: PageProps) {
   const { slug } = await params;
   const product = await getProductBySlugAsync(slug);
   if (!product) return { title: "제품을 찾을 수 없음 | ProteinLab" };
 
+  const imageUrl = getProductImageUrl(slug);
+  const ogImage = imageUrl ? `https://proteinlab.kr${imageUrl}` : undefined;
+
   return {
     title: `${product.brand} ${product.name} | ProteinLab`,
-    description: `${product.brand} ${product.name} ${getProductKindLabel(product.productType)} 상세 정보`,
+    description: buildProductDescription(product),
+    openGraph: ogImage
+      ? {
+          images: [{ url: ogImage, width: 800, height: 800, alt: `${product.brand} ${product.name}` }],
+        }
+      : undefined,
   };
 }
 
@@ -184,8 +201,30 @@ export default async function ProductDetailPage({ params }: PageProps) {
           { label: "나트륨", value: product.sodium !== undefined ? `${product.sodium}mg` : "-", isCompact: false },
         ];
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name: product.name,
+    brand: { "@type": "Brand", name: product.brand },
+    description: buildProductDescription(product),
+    ...(productImageUrl ? { image: `https://proteinlab.kr${productImageUrl}` } : {}),
+    category: getProductKindLabel(product.productType),
+    nutrition: {
+      "@type": "NutritionInformation",
+      proteinContent: `${product.proteinPerServing} g`,
+      ...(product.calories != null ? { calories: `${product.calories} kcal` } : {}),
+      ...(product.sugar != null ? { sugarContent: `${product.sugar} g` } : {}),
+      ...(product.fat != null ? { fatContent: `${product.fat} g` } : {}),
+      ...(product.sodium != null ? { sodiumContent: `${product.sodium} mg` } : {}),
+    },
+  };
+
   return (
     <div className="min-h-screen bg-white">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <Header />
 
       <section className="w-full border-b border-t bg-[#EFEDE6]" style={{ borderColor: "var(--hero-border)" }}>

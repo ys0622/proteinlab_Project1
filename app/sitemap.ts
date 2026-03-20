@@ -2,6 +2,12 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import type { MetadataRoute } from "next";
 import { getAllCurations } from "./lib/curationSystem";
+import {
+  mockProducts,
+  barProductsWithGrades,
+  shakeProducts,
+  yogurtProductsWithGrades,
+} from "./data/products";
 
 const SITE_URL = "https://proteinlab.kr";
 const APP_DIR = path.join(process.cwd(), "app");
@@ -49,7 +55,17 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     new Set([...staticRoutes, ...guideRoutes, ...curationStaticRoutes, ...curationRoutes]),
   );
 
-  return allRoutes.map((route) => ({
+  const allProducts = [
+    ...mockProducts,
+    ...barProductsWithGrades,
+    ...shakeProducts,
+    ...yogurtProductsWithGrades,
+  ];
+  const productRoutes = allProducts
+    .filter((p) => p.slug)
+    .map((p) => ({ slug: p.slug! }));
+
+  const staticEntries: MetadataRoute.Sitemap = allRoutes.map((route) => ({
     url: `${SITE_URL}${route}`,
     lastModified: new Date(),
     changeFrequency:
@@ -65,4 +81,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
               ? 0.8
               : 0.7,
   }));
+
+  const productEntries: MetadataRoute.Sitemap = productRoutes.map(({ slug }) => ({
+    url: `${SITE_URL}/product/${slug}`,
+    lastModified: new Date(),
+    changeFrequency: "weekly",
+    priority: 0.75,
+  }));
+
+  return [...staticEntries, ...productEntries];
 }
