@@ -1,4 +1,5 @@
 import Header from "../components/Header";
+import AffiliateDisclosure from "../components/AffiliateDisclosure";
 import Footer from "../components/Footer";
 import HeroSection from "../components/HeroSection";
 import ProductListWithFilters from "../components/ProductListWithFilters";
@@ -37,6 +38,7 @@ export default async function BarsPage({ searchParams }: BarsPageProps) {
       <HeroSection />
 
       <main className="mx-auto max-w-[1200px] px-4 pb-2 pt-0 md:px-6 md:pb-3">
+        <AffiliateDisclosure />
         <ProductListWithFilters
           productType="bar"
           products={products}

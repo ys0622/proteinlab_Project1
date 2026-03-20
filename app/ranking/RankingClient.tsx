@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import AffiliateDisclosure from "../components/AffiliateDisclosure";
 import type { ProductDetailProps } from "../data/products";
 import CategoryTabs from "../components/CategoryTabs";
 import ScoredProductCard from "../components/ScoredProductCard";
@@ -79,6 +80,7 @@ export default function RankingClient({ rankings }: RankingClientProps) {
           <p className="mt-1 text-sm text-[var(--foreground-muted)]" style={{ fontWeight: 400 }}>
             {getCategoryRankingDescription(productType, metric)}
           </p>
+          <AffiliateDisclosure className="mt-2 mb-0" />
         </div>
       </section>
 

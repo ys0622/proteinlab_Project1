@@ -1,3 +1,4 @@
+import AffiliateDisclosure from "../components/AffiliateDisclosure";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import HeroSection from "../components/HeroSection";
@@ -30,6 +31,7 @@ export default async function YogurtPage() {
       <HeroSection />
 
       <main className="mx-auto max-w-[1200px] px-4 pb-2 pt-0 md:px-6 md:pb-3">
+        <AffiliateDisclosure />
         <ProductListWithFilters
           productType="yogurt"
           products={products}

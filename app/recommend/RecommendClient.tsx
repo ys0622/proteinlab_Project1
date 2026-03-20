@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import AffiliateDisclosure from "@/app/components/AffiliateDisclosure";
 import CategoryTabs from "@/app/components/CategoryTabs";
 import ScoredProductCard from "@/app/components/ScoredProductCard";
 import type { ProductCardProps } from "@/app/components/ProductCard";
@@ -496,6 +497,7 @@ export default function RecommendClient({ categoryCounts }: RecommendClientProps
           <p className="mt-1 text-sm text-[var(--foreground-muted)]" style={{ fontWeight: 400 }}>
             4가지 질문으로 목적, 운동 패턴, 선호 조건에 맞는 카테고리별 제품을 추천합니다.
           </p>
+          <AffiliateDisclosure className="mt-2 mb-0" />
         </div>
       </section>
 
