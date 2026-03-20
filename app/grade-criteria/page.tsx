@@ -42,10 +42,10 @@ const YOGURT_ROWS: UnifiedRow[] = [
 ];
 
 const SHAKE_ROWS: UnifiedRow[] = [
-  { grade: "A", density: "상위 20%", diet: "점수 낮은 상위 20%", performance: "점수 높은 상위 20%" },
-  { grade: "B", density: "상위 50%", diet: "점수 낮은 상위 50%", performance: "점수 높은 상위 50%" },
-  { grade: "C", density: "상위 80%", diet: "점수 낮은 상위 80%", performance: "점수 높은 상위 80%" },
-  { grade: "D", density: "하위 20%", diet: "점수 높은 하위 20%", performance: "점수 낮은 하위 20%" },
+  { grade: "A", density: "100kcal당 단백질 효율 최상위 (상위 20%)", diet: "칼로리·당류 부담 최소 (상위 20%)", performance: "단백질 보충 효율 최상위 (상위 20%)" },
+  { grade: "B", density: "100kcal당 단백질 효율 우수 (상위 50%)", diet: "평균 이상 효율 (상위 50%)", performance: "평균 이상 효율 (상위 50%)" },
+  { grade: "C", density: "100kcal당 단백질 효율 보통 (상위 80%)", diet: "평균 수준 (상위 80%)", performance: "평균 수준 (상위 80%)" },
+  { grade: "D", density: "100kcal당 단백질 효율 낮음 (하위 20%)", diet: "칼로리·당류 부담 높음", performance: "하위 20%" },
 ];
 
 const FAQ = [
@@ -171,6 +171,17 @@ export default function GradeCriteriaPage() {
             </tbody>
           </table>
         </div>
+
+        {productType === "shake" && (
+          <div className="mt-4 rounded-xl border border-[#e8e6e3] bg-[#FFFDF8] px-4 py-3.5" style={{ borderRadius: "16px" }}>
+            <p className="text-xs font-semibold" style={{ color: "#6b6b6b" }}>쉐이크 등급 산정 기준 안내</p>
+            <ul className="mt-1.5 space-y-1 text-xs leading-relaxed" style={{ color: "#6b6b6b" }}>
+              <li>쉐이크 등급은 1포(40~45g)당 영양성분 기준으로 카테고리 내 상대 비교입니다.</li>
+              <li>단백질 밀도는 100kcal당 단백질(g) 기준으로 산출됩니다.</li>
+              <li>음료(100mL 기준)와 직접 비교되지 않으며, 쉐이크 제품 간 상대 평가입니다.</li>
+            </ul>
+          </div>
+        )}
 
         <div className="mt-6 grid gap-3 sm:grid-cols-3">
           <div className="rounded-xl border border-[#e8e6e3] bg-[#FFFDF8] px-4 py-3.5" style={{ borderRadius: "16px" }}>
