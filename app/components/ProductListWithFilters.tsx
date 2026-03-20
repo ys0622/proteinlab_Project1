@@ -60,6 +60,58 @@ function normalizeSortValue(value: SortOptionValue | null | undefined): SortOpti
   return "recommended";
 }
 
+function toStringArray(value: unknown): string[] {
+  if (!Array.isArray(value)) {
+    return [];
+  }
+
+  return value.filter((item): item is string => typeof item === "string");
+}
+
+function normalizeDrinkFilters(value: unknown): DrinkFilters {
+  const candidate = (value ?? {}) as Partial<Record<keyof DrinkFilters, unknown>>;
+  return {
+    brand: toStringArray(candidate.brand),
+    protein: toStringArray(candidate.protein),
+    source: toStringArray(candidate.source),
+    taste: toStringArray(candidate.taste),
+    volume: toStringArray(candidate.volume),
+  };
+}
+
+function normalizeBarFilters(value: unknown): BarFilters {
+  const candidate = (value ?? {}) as Partial<Record<keyof BarFilters, unknown>>;
+  return {
+    brand: toStringArray(candidate.brand),
+    protein: toStringArray(candidate.protein),
+    sugar: toStringArray(candidate.sugar),
+    weight: toStringArray(candidate.weight),
+  };
+}
+
+function normalizeYogurtFilters(value: unknown): YogurtFilters {
+  const candidate = (value ?? {}) as Partial<Record<keyof YogurtFilters, unknown>>;
+  return {
+    brand: toStringArray(candidate.brand),
+    protein: toStringArray(candidate.protein),
+    sugar: toStringArray(candidate.sugar),
+    yogurtType: toStringArray(candidate.yogurtType),
+    flavor: toStringArray(candidate.flavor),
+  };
+}
+
+function normalizeShakeFilters(value: unknown): ShakeFilters {
+  const candidate = (value ?? {}) as Partial<Record<keyof ShakeFilters, unknown>>;
+  return {
+    brand: toStringArray(candidate.brand),
+    protein: toStringArray(candidate.protein),
+    sugar: toStringArray(candidate.sugar),
+    useCase: toStringArray(candidate.useCase),
+    fiber: toStringArray(candidate.fiber),
+    taste: toStringArray(candidate.taste),
+  };
+}
+
 function getPersistedFilterState(storageKey: string): Partial<PersistedFilterState> | null {
   if (typeof window === "undefined") return null;
 
@@ -67,7 +119,18 @@ function getPersistedFilterState(storageKey: string): Partial<PersistedFilterSta
   if (!rawState) return null;
 
   try {
-    return JSON.parse(rawState) as Partial<PersistedFilterState>;
+    const parsed = JSON.parse(rawState) as Partial<PersistedFilterState>;
+
+    return {
+      ...parsed,
+      drinkFilters: normalizeDrinkFilters(parsed.drinkFilters),
+      barFilters: normalizeBarFilters(parsed.barFilters),
+      yogurtFilters: normalizeYogurtFilters(parsed.yogurtFilters),
+      shakeFilters: normalizeShakeFilters(parsed.shakeFilters),
+      sort: normalizeSortValue(parsed.sort),
+      page: typeof parsed.page === "number" && Number.isFinite(parsed.page) && parsed.page > 0 ? parsed.page : 1,
+      searchQuery: typeof parsed.searchQuery === "string" ? parsed.searchQuery : "",
+    };
   } catch {
     window.sessionStorage.removeItem(storageKey);
     return null;
