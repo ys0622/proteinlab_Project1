@@ -160,6 +160,18 @@ function getCoupangProductParams(url: string): CoupangProductParams | null {
   }
 }
 
+export function extractCoupangProductParams(url?: string | null): CoupangProductParams | null {
+  if (!isValidExternalUrl(url)) {
+    return null;
+  }
+
+  if (!isCoupangUrl(url)) {
+    return null;
+  }
+
+  return getCoupangProductParams(url);
+}
+
 export function normalizeCoupangUrl(value?: string | null): string | null {
   if (!isValidExternalUrl(value)) {
     return null;
@@ -221,8 +233,15 @@ export function getCoupangRedirectHref(
     return null;
   }
 
+  const params = extractCoupangProductParams(sourceUrl);
+  if (!params) {
+    return null;
+  }
+
   const redirectUrl = new URL("/api/out/coupang", "https://proteinlab.kr");
-  redirectUrl.searchParams.set("url", sourceUrl);
+  redirectUrl.searchParams.set("pageKey", params.pageKey);
+  redirectUrl.searchParams.set("itemId", params.itemId);
+  redirectUrl.searchParams.set("vendorItemId", params.vendorItemId);
   if (category) {
     redirectUrl.searchParams.set("category", category);
   }

@@ -1,6 +1,7 @@
 import { getCloudflareContext } from "@opennextjs/cloudflare";
 import { NextRequest, NextResponse } from "next/server";
 import {
+  extractCoupangProductParams,
   getCoupangDestinationUrl,
   type CoupangLinkCategory,
   isValidExternalUrl,
@@ -83,11 +84,18 @@ function buildRuntimePartnersUrl(
 export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url);
   const url = searchParams.get("url");
+  const pageKey = searchParams.get("pageKey");
+  const itemId = searchParams.get("itemId");
+  const vendorItemId = searchParams.get("vendorItemId");
   const slug = searchParams.get("slug");
   const category = toCategory(searchParams.get("category"));
   const debug = searchParams.get("debug") === "1";
 
-  const fallbackDestination = getCoupangDestinationUrl(url, category, slug);
+  const normalizedSourceUrl =
+    pageKey && itemId && vendorItemId
+      ? `https://www.coupang.com/vp/products/${pageKey}?itemId=${itemId}&vendorItemId=${vendorItemId}`
+      : url;
+  const fallbackDestination = getCoupangDestinationUrl(normalizedSourceUrl, category, slug);
   const runtimeTag = await getRuntimeCoupangTag();
   const partnersDestination =
     fallbackDestination ? buildRuntimePartnersUrl(fallbackDestination, runtimeTag, category) : null;
@@ -103,6 +111,7 @@ export async function GET(request: NextRequest) {
       usedPartnersRedirect: Boolean(partnersDestination),
       destination,
       fallbackDestination,
+      sourceParams: extractCoupangProductParams(normalizedSourceUrl),
       slug,
       category,
     });
