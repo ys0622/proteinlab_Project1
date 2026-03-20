@@ -885,12 +885,12 @@ const curations: CurationDefinition[] = [
         quickOrder: 60,
         filter: (product) =>
           product.productType === "bar" &&
-          /견과|아몬드|피넛|넛츠|호두|캐슈/i.test(
+          /견과|아몬드|피넛|넛츠|너츠|호두|캐슈|피스타치오/i.test(
             `${product.name} ${product.flavor ?? ""} ${(product.tags ?? []).join(" ")}`,
           ),
         recommend: (products) =>
           products.filter((product) =>
-            /견과|아몬드|피넛|넛츠|호두|캐슈/i.test(
+            /견과|아몬드|피넛|넛츠|너츠|호두|캐슈|피스타치오/i.test(
               `${product.name} ${product.flavor ?? ""} ${(product.tags ?? []).join(" ")}`,
             ),
           ),
@@ -914,13 +914,13 @@ const curations: CurationDefinition[] = [
         quickOrder: 70,
         filter: (product) =>
           product.productType === "bar" &&
-          !/견과|아몬드|피넛|넛츠|호두|캐슈/i.test(
+          !/견과|아몬드|피넛|넛츠|너츠|호두|캐슈|피스타치오/i.test(
             `${product.name} ${product.flavor ?? ""} ${(product.tags ?? []).join(" ")}`,
           ),
         recommend: (products) =>
           products.filter(
             (product) =>
-              !/견과|아몬드|피넛|넛츠|호두|캐슈/i.test(
+              !/견과|아몬드|피넛|넛츠|너츠|호두|캐슈|피스타치오/i.test(
                 `${product.name} ${product.flavor ?? ""} ${(product.tags ?? []).join(" ")}`,
               ),
           ),
