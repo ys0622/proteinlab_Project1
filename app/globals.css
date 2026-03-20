@@ -474,14 +474,14 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .purchase-link--naver {
-  background: #22a06b;
-  border-color: #22a06b;
+  background: #628c78;
+  border-color: #628c78;
   color: #fff;
 }
 
 .purchase-link--naver:hover {
-  background: #1b8559;
-  border-color: #1b8559;
+  background: #557867;
+  border-color: #557867;
 }
 
 .purchase-link--official {
