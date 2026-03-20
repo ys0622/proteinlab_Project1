@@ -32,6 +32,7 @@ export default function HeaderClient({ isAdmin }: { isAdmin: boolean }) {
   };
 
   return (
+    <>
     <header
       className={`sticky top-0 z-50 border-b ${
         isHeroHeaderPage
@@ -192,5 +193,13 @@ export default function HeaderClient({ isAdmin }: { isAdmin: boolean }) {
         </nav>
       ) : null}
     </header>
+    {!pathname.startsWith("/admin") && (
+      <div style={{ background: "#f5f5f5", borderBottom: "1px solid #e8e8e8" }}>
+        <p style={{ margin: 0, padding: "6px 16px", fontSize: "12px", textAlign: "center", color: "#888", lineHeight: 1.5 }}>
+          이 사이트의 일부 쿠팡 구매 링크는 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.
+        </p>
+      </div>
+    )}
+    </>
   );
 }
