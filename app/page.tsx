@@ -10,6 +10,27 @@ interface HomePageProps {
   searchParams?: Promise<Record<string, string | string[] | undefined>>;
 }
 
+const websiteJsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://proteinlab.kr/#website",
+      url: "https://proteinlab.kr",
+      name: "ProteinLab",
+      description:
+        "단백질 음료, 단백질 바, 단백질 요거트를 성분 데이터로 비교하고 추천, 랭킹, 등급 기준까지 한곳에서 확인하는 ProteinLab입니다.",
+      inLanguage: "ko",
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://proteinlab.kr/#organization",
+      name: "ProteinLab",
+      url: "https://proteinlab.kr",
+    },
+  ],
+};
+
 export default async function Home({ searchParams }: HomePageProps) {
   const params = (await searchParams) ?? {};
   const curation = typeof params.curation === "string" ? params.curation : undefined;
@@ -28,6 +49,10 @@ export default async function Home({ searchParams }: HomePageProps) {
 
   return (
     <div className="min-h-screen bg-white">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
+      />
       <Header />
       <HeroSection />
 

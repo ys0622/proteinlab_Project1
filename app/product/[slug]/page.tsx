@@ -111,6 +111,12 @@ export async function generateMetadata({ params }: PageProps) {
           images: [{ url: ogImage, width: 800, height: 800, alt: `${product.brand} ${product.name}` }],
         }
       : undefined,
+    twitter: {
+      card: "summary_large_image",
+      title: `${product.brand} ${product.name} | ProteinLab`,
+      description: buildProductDescription(product),
+      ...(ogImage ? { images: [ogImage] } : {}),
+    },
   };
 }
 

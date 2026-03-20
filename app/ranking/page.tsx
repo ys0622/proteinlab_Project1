@@ -88,8 +88,37 @@ export default async function RankingPage() {
     shake: { density: shakeDensity, diet: shakeDiet, performance: shakePerf },
   };
 
+  const categoryLabelMap: Record<ProductCategory, string> = {
+    drink: "단백질 음료",
+    bar: "단백질 바",
+    yogurt: "단백질 요거트",
+    shake: "단백질 쉐이크",
+  };
+
+  const itemListJsonLd = (Object.entries(rankings) as [ProductCategory, typeof rankings.drink][]).map(
+    ([cat, data]) => ({
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      name: `${categoryLabelMap[cat]} 단백질 밀도 랭킹`,
+      description: `단백질 밀도(g/100kcal) 기준 ${categoryLabelMap[cat]} 순위`,
+      url: "https://proteinlab.kr/ranking",
+      itemListOrder: "https://schema.org/ItemListOrderDescending",
+      numberOfItems: Math.min(10, data.density.length),
+      itemListElement: data.density.slice(0, 10).map((item) => ({
+        "@type": "ListItem",
+        position: item.rank,
+        name: `${item.product.brand} ${item.product.name}`,
+        url: `https://proteinlab.kr/product/${item.product.slug}`,
+      })),
+    }),
+  );
+
   return (
     <div className="min-h-screen bg-white">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListJsonLd) }}
+      />
       <Header />
       <RankingClient rankings={rankings} />
       <Footer />
