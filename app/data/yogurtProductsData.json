@@ -310,7 +310,6 @@
     },
     "needsServingCheck": false,
     "nutritionBasis": "per_unit",
-    "servingCheckNote": "현재 확인한 판매 페이지는 80g x 16개입 묶음입니다. 현재 수치는 80g 1컵 기준으로 유지했고, 실제 표기 기준은 제품 라벨을 다시 확인해야 합니다.",
     "officialUrl": "https://foodismall.com/product/%ED%9B%84%EB%94%94%EC%8A%A4-%EA%B7%B8%EB%A6%AD%EC%9A%94%EA%B1%B0%ED%8A%B8-%ED%94%8C%EB%A0%88%EC%9D%B8-80gx16ea/278/"
   },
   {
@@ -451,7 +450,6 @@
     },
     "needsServingCheck": true,
     "nutritionBasis": "unknown",
-    "servingCheckNote": "공식몰에서는 16개 묶음 판매 페이지가 확인됩니다. 현재 수치는 fatsecret Platform API의 80g 기준 영양정보를 반영했고, 실제 표기 기준은 제품 라벨을 다시 확인해야 합니다.",
     "sodium": 40
   },
   {
@@ -497,8 +495,7 @@
       "sodiumMg": 50
     },
     "needsServingCheck": true,
-    "nutritionBasis": "unknown",
-    "servingCheckNote": "현재 확인한 판매 페이지는 24개입 구성입니다. 현재 수치는 90g 1컵 기준으로 유지했고, 실제 표기 기준은 제품 라벨을 다시 확인해야 합니다."
+    "nutritionBasis": "unknown"
   },
   {
     "slug": "yoplait-protein-plain-100",
@@ -588,7 +585,6 @@
     },
     "needsServingCheck": true,
     "nutritionBasis": "unknown",
-    "servingCheckNote": "공식몰에서는 16개 묶음 판매 페이지가 확인됩니다. 현재 수치는 fatsecret Platform API의 80g 기준 영양정보를 반영했고, 실제 표기 기준은 제품 라벨을 다시 확인해야 합니다.",
     "sodium": 35
   },
   {
@@ -634,7 +630,6 @@
     },
     "needsServingCheck": true,
     "nutritionBasis": "per_80g_scaled",
-    "servingCheckNote": "fatsecret Platform API의 80g 기준 영양정보를 400g 용량에 맞춰 환산했습니다. 400g 대용량 SKU 라벨은 추가 이미지로 재확인하는 편이 안전합니다.",
     "calories": 450,
     "sugar": 12.5,
     "fat": 27.5
@@ -683,7 +678,6 @@
     "calories": 580,
     "sugar": 28,
     "fat": 24,
-    "servingCheckNote": "후디스 제품 이미지 전면 표기와 fatsecret Platform API 100g 영양정보를 함께 대조했습니다.",
     "officialUrl": "https://foodismall.com/product/%ED%9B%84%EB%94%94%EC%8A%A4-%EA%B3%A0%EB%8B%A8%EB%B0%B1-%EB%AC%B4%EA%B0%80%EB%8B%B9-%EA%B7%B8%EB%A6%AD%EC%9A%94%EA%B1%B0%ED%8A%B8-400g/4496/"
   },
   {
@@ -731,7 +725,6 @@
     "nutritionBasis": "per_unit",
     "calories": 810,
     "sugar": 4.5,
-    "servingCheckNote": "스펙 이미지의 100g당 영양정보를 450g 총내용량 기준으로 환산 반영했습니다.",
     "officialUrl": "https://yozm.co.kr/product/%EC%9A%94%EC%A6%98-%EA%B7%B8%EB%A6%AD%EC%9A%94%EA%B1%B0%ED%8A%B8-%ED%94%8C%EB%A0%88%EC%9D%B8-450g/68/category/112/display/1/"
   },
   {
@@ -775,7 +768,6 @@
       "sodiumMg": 200
     },
     "needsServingCheck": true,
-    "servingCheckNote": "fatsecret Platform API의 100g 영양정보를 800g 용량 기준으로 환산했습니다. 대용량 SKU 라벨과 총 영양정보는 추가 이미지로 재확인하는 편이 안전합니다.",
     "nutritionBasis": "per_100g_scaled",
     "calories": 1504,
     "sugar": 16,
@@ -810,7 +802,6 @@
     "storageType": "냉장",
     "lactoseFree": false,
     "needsServingCheck": false,
-    "servingCheckNote": "제품 전면 이미지의 500g(580kcal) 표기와 fatsecret Platform API 100g 영양정보를 함께 대조했습니다.",
     "nutritionBasis": "per_unit",
     "calories": 580,
     "sugar": 10,
@@ -1122,7 +1113,6 @@
     "fat": 8,
     "needsServingCheck": false,
     "nutritionBasis": "per_unit",
-    "servingCheckNote": "fatsecret Platform API 기준 100g 영양정보를 확인했습니다.",
     "officialUrl": "https://greekday.co.kr/product/%EA%B7%B8%EB%A6%AD%EB%8D%B0%EC%9D%B4-%EC%8B%9C%EA%B7%B8%EB%8B%88%EC%B2%98-%EC%9C%A0%EC%9E%90-100g/433/"
   },
   {
@@ -1170,8 +1160,7 @@
       "sodiumMg": 325.01
     },
     "needsServingCheck": true,
-    "nutritionBasis": "unknown",
-    "servingCheckNote": "공식몰에서 400g 판매는 확인됐습니다. 현재 비교용 수치는 150g 라인을 바탕으로 환산한 값이므로 실제 제품 라벨의 총 영양정보를 다시 확인해야 합니다."
+    "nutritionBasis": "unknown"
   },
   {
     "slug": "maeil-bio-greek-unsweetened-80",
@@ -1218,8 +1207,7 @@
       "sodiumMg": 65
     },
     "needsServingCheck": true,
-    "nutritionBasis": "unknown",
-    "servingCheckNote": "공식 출시자료 기준 80g SKU가 현재 판매 중입니다. 현재 수치는 150g 라인을 바탕으로 환산한 값이므로 실제 라벨을 다시 확인해야 합니다."
+    "nutritionBasis": "unknown"
   },
   {
     "slug": "maeil-bio-greek-unsweetened-800",
@@ -1266,8 +1254,7 @@
       "sodiumMg": 650.03
     },
     "needsServingCheck": true,
-    "nutritionBasis": "unknown",
-    "servingCheckNote": "공식 출시자료 기준 800g SKU가 현재 판매 중입니다. 현재 수치는 150g 라인을 바탕으로 환산한 값이므로 실제 라벨을 다시 확인해야 합니다."
+    "nutritionBasis": "unknown"
   },
   {
     "slug": "maeil-bio-greek-plain-150",
@@ -1357,8 +1344,7 @@
       "sodiumMg": 293.33
     },
     "needsServingCheck": true,
-    "nutritionBasis": "unknown",
-    "servingCheckNote": "공식 출시자료 기준 400g SKU가 현재 판매 중입니다. 현재 수치는 150g 라인을 바탕으로 환산한 값이므로 실제 라벨을 다시 확인해야 합니다."
+    "nutritionBasis": "unknown"
   },
   {
     "slug": "maeil-bio-greek-delight-banana-80",
@@ -1391,7 +1377,6 @@
     "proteinPer100g": 6.3,
     "needsServingCheck": true,
     "nutritionBasis": "unknown",
-    "servingCheckNote": "공식몰 상품 페이지는 확인되지만 상세 영양표 기준은 추가 이미지 확인이 필요합니다. 구매 전 제품 라벨의 기준 중량과 영양정보를 다시 확인해주세요.",
     "nutritionPerBottle": {
       "caloriesKcal": 80,
       "proteinG": 5,
@@ -1438,7 +1423,6 @@
     "proteinPer100g": 5.8,
     "needsServingCheck": true,
     "nutritionBasis": "unknown",
-    "servingCheckNote": "현재 수치는 기존 수집값 기준이며, 공식몰 현재 SKU 기준 영양표는 추가 이미지 확인이 필요합니다.",
     "nutritionPerBottle": {
       "caloriesKcal": 120,
       "proteinG": 7,
@@ -1479,7 +1463,6 @@
     "proteinPer100g": 5.8,
     "needsServingCheck": false,
     "nutritionBasis": "per_unit",
-    "servingCheckNote": "fatsecret Platform API의 120g 기준 영양정보를 반영했습니다.",
     "nutritionPerBottle": {
       "caloriesKcal": 130,
       "proteinG": 6,
@@ -1531,7 +1514,6 @@
     "proteinPer100g": 4.4,
     "needsServingCheck": true,
     "nutritionBasis": "unknown",
-    "servingCheckNote": "현재 수치는 기존 수집값 기준이며, 공식몰 현재 SKU 기준 영양표는 추가 이미지 확인이 필요합니다.",
     "nutritionPerBottle": {
       "caloriesKcal": 132,
       "proteinG": 8.3,
@@ -1572,7 +1554,6 @@
     "proteinPer100g": 4.4,
     "needsServingCheck": false,
     "nutritionBasis": "per_unit",
-    "servingCheckNote": "fatsecret Platform API의 190mL 기준 영양정보를 반영했습니다.",
     "nutritionPerBottle": {
       "caloriesKcal": 132,
       "proteinG": 8.3,
@@ -1624,7 +1605,6 @@
     "proteinPer100g": 4.4,
     "needsServingCheck": true,
     "nutritionBasis": "unknown",
-    "servingCheckNote": "공식 판매는 확인됐지만 현재 수치는 190mL 라인을 바탕으로 환산한 값입니다. 실제 제품 라벨의 총 영양정보를 다시 확인해주세요.",
     "nutritionPerBottle": {
       "caloriesKcal": 493.26,
       "proteinG": 31.02,
@@ -1669,7 +1649,6 @@
     "proteinPer100g": 4.4,
     "needsServingCheck": true,
     "nutritionBasis": "unknown",
-    "servingCheckNote": "공식 판매는 확인됐지만 현재 수치는 190mL 라인을 바탕으로 환산한 값입니다. 실제 제품 라벨의 총 영양정보를 다시 확인해주세요.",
     "nutritionPerBottle": {
       "caloriesKcal": 493.26,
       "proteinG": 31.02,
@@ -1714,7 +1693,6 @@
     "proteinPer100g": 4.4,
     "needsServingCheck": true,
     "nutritionBasis": "unknown",
-    "servingCheckNote": "공식 판매는 확인됐지만 현재 수치는 190mL 라인을 바탕으로 환산한 값입니다. 실제 제품 라벨의 총 영양정보를 다시 확인해주세요.",
     "nutritionPerBottle": {
       "caloriesKcal": 493.26,
       "proteinG": 31.02,
@@ -1754,7 +1732,6 @@
     "lactoseFree": false,
     "needsServingCheck": false,
     "nutritionBasis": "per_unit",
-    "servingCheckNote": "fatsecret Platform API의 120g 기준 영양정보를 반영했습니다.",
     "calories": 125,
     "sugar": 10,
     "fat": 5,
@@ -1801,7 +1778,6 @@
     "lactoseFree": false,
     "needsServingCheck": false,
     "nutritionBasis": "per_unit",
-    "servingCheckNote": "fatsecret Platform API의 120g 기준 영양정보를 반영했습니다.",
     "calories": 125,
     "sugar": 10,
     "fat": 5,
@@ -1848,7 +1824,6 @@
     "lactoseFree": false,
     "needsServingCheck": true,
     "nutritionBasis": "per_80g_scaled",
-    "servingCheckNote": "fatsecret Platform API의 80g 기준 영양정보를 450g 용량에 맞춰 환산했습니다. 450g 대용량 SKU 라벨은 추가 이미지로 재확인하는 편이 안전합니다.",
     "calories": 590.63,
     "sugar": 40.5,
     "fat": 34.88,
@@ -1953,7 +1928,6 @@
     },
     "needsServingCheck": false,
     "nutritionBasis": "per_unit",
-    "servingCheckNote": "공식몰 표기는 당류 1g 미만입니다. 현재 비교 계산을 위해 0.9g으로 입력했습니다.",
     "officialUrl": "https://lukt.co.kr/shop_view/208"
   },
   {
@@ -2042,7 +2016,6 @@
       "sodiumMg": 144
     },
     "needsServingCheck": false,
-    "nutritionBasis": "per_unit",
-    "servingCheckNote": "공식몰 표기는 당류 1g 미만입니다. 현재 비교 계산을 위해 총 당류를 4.05g으로 입력했습니다."
+    "nutritionBasis": "per_unit"
   }
 ]

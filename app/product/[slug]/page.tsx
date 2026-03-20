@@ -314,7 +314,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
           ) : null}
 
           <div className="mt-8">
-            {isBar || product.needsServingCheck ? (
+            {isBar ? (
               <ServingBasisNotice
                 className="mb-3"
                 detail
@@ -349,6 +349,11 @@ export default async function ProductDetailPage({ params }: PageProps) {
               officialMallHref={officialMallHref}
               size="md"
             />
+            {resolvedCoupangHref ? (
+              <p className="mt-2 text-[11px] leading-relaxed text-[var(--foreground-muted)]">
+                쿠팡 링크는 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.
+              </p>
+            ) : null}
           </div>
 
           <div className="mt-4 flex flex-wrap gap-3">
