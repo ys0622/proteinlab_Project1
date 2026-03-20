@@ -38,14 +38,19 @@ function getLocalOverride(slug: string): Record<string, unknown> | null {
 export async function withProductOverride(base: ProductDetailProps): Promise<ProductDetailProps> {
   try {
     const kv = await getKV();
-    let override: Record<string, unknown> | null = null;
+    let kvOverride: Record<string, unknown> | null = null;
 
     if (kv) {
-      override = await kv.get(`product-override:${base.slug}`, "json");
+      kvOverride = await kv.get(`product-override:${base.slug}`, "json");
     }
-    if (!override) {
-      override = getLocalOverride(base.slug);
-    }
+    const localOverride = getLocalOverride(base.slug);
+    const override =
+      kvOverride || localOverride
+        ? {
+            ...(kvOverride ?? {}),
+            ...(localOverride ?? {}),
+          }
+        : null;
     if (!override) return base;
 
     // slug, productType은 덮어쓰지 않음

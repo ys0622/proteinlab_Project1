@@ -60,13 +60,13 @@ export default async function GuidesPage() {
               <Link
                 key={track.id}
                 href={track.href}
-                className="group flex h-full min-h-[292px] flex-col justify-between overflow-hidden rounded-2xl border border-[#d8e2da] bg-[#fffdf8] shadow-[0_10px_24px_rgba(20,40,28,0.05)] transition-colors hover:border-[#cfe1d7]"
+                className="group grid h-full min-h-[320px] grid-rows-[auto_1fr_auto] overflow-hidden rounded-2xl border border-[#d8e2da] bg-[#fffdf8] shadow-[0_10px_24px_rgba(20,40,28,0.05)] transition-colors hover:border-[#cfe1d7]"
               >
                 <div className="h-1.5 w-full" style={{ background: track.accentColor }} />
 
                 <div>
                   <div
-                    className="border-b border-[#e7eee9] px-5 py-4"
+                    className="min-h-[136px] border-b border-[#e7eee9] px-5 py-4"
                     style={{ background: `linear-gradient(135deg, ${track.accentBg} 0%, #fffdf8 100%)` }}
                   >
                     <div className="flex items-center justify-between gap-3">
@@ -102,7 +102,7 @@ export default async function GuidesPage() {
                     </div>
                   </div>
 
-                  <div className="px-5 pb-5 pt-4">
+                  <div className="flex min-h-[156px] flex-col px-5 pb-5 pt-4">
                     <p className="text-[13px] leading-[1.7] text-[var(--foreground-muted)]" style={clampTwoLines}>
                       {track.description}
                     </p>
@@ -134,7 +134,7 @@ export default async function GuidesPage() {
                       </ul>
                     </div>
 
-                    <div className="mt-4 rounded-xl border border-[#d7e6dd] bg-[#f4faf6] px-3 py-2.5">
+                    <div className="mt-auto rounded-xl border border-[#d7e6dd] bg-[#f4faf6] px-3 py-2.5">
                       <p className="text-[11px] font-semibold" style={{ color: track.accentColor }}>
                         인기 콘텐츠
                       </p>
