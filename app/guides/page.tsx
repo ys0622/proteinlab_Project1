@@ -11,8 +11,6 @@ export const metadata = {
     "단백질 기초, 제품 선택, 섭취 전략, 운동 라이프스타일까지 한 번에 탐색하는 ProteinLab 가이드 허브입니다.",
 };
 
-const deepGreen = "#1f5138";
-
 const clampTwoLines = {
   display: "-webkit-box",
   WebkitLineClamp: 2,
@@ -96,7 +94,7 @@ export default async function GuidesPage() {
                         </p>
                         <h2
                           className="mt-1 text-lg font-bold transition-colors group-hover:text-[var(--accent)]"
-                          style={{ color: deepGreen }}
+                          style={{ color: track.accentColor }}
                         >
                           {track.title}
                         </h2>
@@ -137,7 +135,7 @@ export default async function GuidesPage() {
                     </div>
 
                     <div className="mt-4 rounded-xl border border-[#d7e6dd] bg-[#f4faf6] px-3 py-2.5">
-                      <p className="text-[11px] font-semibold" style={{ color: deepGreen }}>
+                      <p className="text-[11px] font-semibold" style={{ color: track.accentColor }}>
                         인기 콘텐츠
                       </p>
                       <p className="mt-1 text-[12px] font-medium leading-5 text-[var(--foreground)]" style={clampOneLine}>
@@ -148,7 +146,13 @@ export default async function GuidesPage() {
                 </div>
 
                 <div className="px-5 pb-5">
-                  <span className="flex items-center justify-center rounded-lg border border-[#cfe0d5] bg-white py-2.5 text-xs font-semibold text-[#2f5d46] transition-colors group-hover:bg-[#eef5f0] group-hover:text-[#1f4834]">
+                  <span
+                    className="flex items-center justify-center rounded-lg border bg-white py-2.5 text-xs font-semibold transition-colors"
+                    style={{
+                      borderColor: track.accentBg,
+                      color: track.accentColor,
+                    }}
+                  >
                     가이드 보기
                   </span>
                 </div>

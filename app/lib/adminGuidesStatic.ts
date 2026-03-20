@@ -94,7 +94,7 @@ const sections: AdminGuideSection[] = [
     title: "제품 선택 · 비교",
     description: "단백질 음료와 바를 고를 때 성분표를 읽는 법부터 추천 리스트, 랭킹 해석까지 정리했습니다.",
     trackLabel: "TRACK B",
-    accentColor: "#2d6a4f",
+    accentColor: "#4a6178",
     accentBg: "#eaf0f6",
     previewHref: "/guides/product-selection-comparison",
     articles: [
@@ -118,7 +118,7 @@ const sections: AdminGuideSection[] = [
     title: "섭취 전략 · 건강",
     description: "운동 전후, 체중 관리, 식사대용, 노년 전략까지 실생활에 바로 적용할 수 있는 섭취 기준을 정리했습니다.",
     trackLabel: "TRACK C",
-    accentColor: "#2d6a4f",
+    accentColor: "#7a5230",
     accentBg: "#f5f0ea",
     previewHref: "/guides/intake-strategy-health",
     articles: [
@@ -138,7 +138,7 @@ const sections: AdminGuideSection[] = [
     title: "운동 · 라이프스타일",
     description: "러닝, 마라톤, 근력운동, 운동 초보 루틴까지 실제 운동 상황에 맞는 단백질 전략을 빠르게 찾을 수 있습니다.",
     trackLabel: "TRACK D",
-    accentColor: "#2d6a4f",
+    accentColor: "#8a4b2f",
     accentBg: "#f8ede7",
     previewHref: "/guides/fitness-lifestyle",
     articles: [
@@ -157,7 +157,7 @@ const sections: AdminGuideSection[] = [
     title: "시장 인사이트",
     description: "RTD 시장, 브랜드 전략, 성분 트렌드 등 시장과 브랜드의 흐름을 데이터로 읽습니다.",
     trackLabel: "TRACK E",
-    accentColor: "#2d6a4f",
+    accentColor: "#6b4d7c",
     accentBg: "#f1ebf7",
     previewHref: "/guides/market-insights",
     articles: [
@@ -177,7 +177,7 @@ const sections: AdminGuideSection[] = [
     description: "하루 단백질 권장량, 음료 개수, 단백질 밀도를 직접 계산해볼 수 있는 도구 모음입니다.",
     note: "현재는 일부 도구만 실제 페이지가 있고, 나머지는 예정 상태입니다.",
     trackLabel: "TRACK F",
-    accentColor: "#2d6a4f",
+    accentColor: "#5d4b8a",
     accentBg: "#efe9fb",
     previewHref: "/guides/tools",
     articles: [

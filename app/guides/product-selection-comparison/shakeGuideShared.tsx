@@ -148,7 +148,7 @@ export function ShakeGuidePage({
 
           <section className="rounded-[28px] border border-[#e2ebe4] bg-[#f7fbf8] px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
             <div className="flex items-center justify-between gap-3">
-              <h2 className="text-xl font-bold text-[var(--foreground)]">TL;DR</h2>
+              <h2 className="text-xl font-bold text-[var(--foreground)]">핵심 요약</h2>
               <span className="rounded-full border border-[#d8e5da] bg-white px-3 py-1 text-[11px] font-semibold text-[#24543d]">
                 {keyword}
               </span>
