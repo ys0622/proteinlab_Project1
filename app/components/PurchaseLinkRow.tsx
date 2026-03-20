@@ -25,30 +25,30 @@ export default function PurchaseLinkRow({
     <div className="purchase-link-row">
       <PurchaseLinkButton
         href={coupangHref}
-        label={coupangHref ? "쿠팡 구매" : "쿠팡 링크 준비중"}
-        mobileLabel={coupangHref ? "쿠팡" : "쿠팡 준비중"}
+        label="쿠팡 구매"
+        mobileLabel="쿠팡"
         tone="coupang"
         size={size}
         onClick={coupangHref ? onCoupangClick : undefined}
-        title={coupangHref ? undefined : "쿠팡 링크가 등록되지 않았습니다"}
+        title={coupangHref ? undefined : "쿠팡 링크가 아직 등록되지 않았습니다."}
       />
       <PurchaseLinkButton
         href={naverHref}
-        label={naverHref ? "네이버 구매" : "네이버 링크 준비중"}
-        mobileLabel={naverHref ? "네이버" : "네이버 준비중"}
+        label="네이버쇼핑"
+        mobileLabel="네이버"
         tone="naver"
         size={size}
         onClick={naverHref ? onNaverClick : undefined}
-        title={naverHref ? undefined : "네이버 링크가 등록되지 않았습니다"}
+        title={naverHref ? undefined : "네이버쇼핑 링크가 아직 등록되지 않았습니다."}
       />
       <PurchaseLinkButton
         href={officialMallHref}
-        label={officialMallHref ? "공식몰 구매" : "공식몰 링크 준비중"}
-        mobileLabel={officialMallHref ? "공식몰" : "공식몰 준비중"}
+        label="공식몰"
+        mobileLabel="공식몰"
         tone="official"
         size={size}
         onClick={officialMallHref ? onOfficialClick : undefined}
-        title={officialMallHref ? undefined : "공식몰 링크가 등록되지 않았습니다"}
+        title={officialMallHref ? undefined : "공식몰 링크가 아직 등록되지 않았습니다."}
       />
     </div>
   );

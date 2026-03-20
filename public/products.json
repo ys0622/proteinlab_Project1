@@ -1,8 +1,8 @@
 {
-  "generated_at": "2026-03-19T14:07:43.182Z",
-  "total": 287,
+  "generated_at": "2026-03-20T04:31:12.126Z",
+  "total": 282,
   "categories": {
-    "drinks": 104,
+    "drinks": 99,
     "bars": 71,
     "yogurt": 45,
     "shake": 67
@@ -119,24 +119,6 @@
     {
       "slug": "mymil-furotein-choco-250",
       "name": "퓨로틴 (초코맛)",
-      "brand": "마이밀",
-      "category": "drinks",
-      "protein": 20,
-      "calories": 130,
-      "sugar": 0
-    },
-    {
-      "slug": "mymil-furotein-gosohan-250",
-      "name": "퓨로틴 (고소한맛)",
-      "brand": "마이밀",
-      "category": "drinks",
-      "protein": 20,
-      "calories": 130,
-      "sugar": 0
-    },
-    {
-      "slug": "mymil-furotein-goguma-250",
-      "name": "퓨로틴 (고구마맛)",
       "brand": "마이밀",
       "category": "drinks",
       "protein": 20,
@@ -916,33 +898,6 @@
       "protein": 9,
       "calories": 150,
       "sugar": 10
-    },
-    {
-      "slug": "oneuldanbaek-caramel-latte-250",
-      "name": "오늘단백 (카라멜라떼)",
-      "brand": "오늘단백",
-      "category": "drinks",
-      "protein": 21,
-      "calories": 158,
-      "sugar": 6
-    },
-    {
-      "slug": "oneuldanbaek-choco-latte-250",
-      "name": "오늘단백 (초코라떼)",
-      "brand": "오늘단백",
-      "category": "drinks",
-      "protein": 21,
-      "calories": 135,
-      "sugar": 3
-    },
-    {
-      "slug": "oneuldanbaek-dolce-latte-250",
-      "name": "오늘단백 (돌체라떼)",
-      "brand": "오늘단백",
-      "category": "drinks",
-      "protein": 21,
-      "calories": 145,
-      "sugar": 5
     },
     {
       "slug": "dryou-proteinbar-pro-3nuts-crunch",

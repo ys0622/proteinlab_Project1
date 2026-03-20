@@ -463,43 +463,43 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .purchase-link--coupang {
-  background: #2f4f39;
-  border-color: #2f4f39;
+  background: #346aff;
+  border-color: #346aff;
   color: #fff;
 }
 
 .purchase-link--coupang:hover {
-  background: #25412d;
-  border-color: #25412d;
+  background: #2557de;
+  border-color: #2557de;
 }
 
 .purchase-link--naver {
-  background: #ffffff;
-  border-color: #bfcfbf;
-  color: #1d5d35;
-}
-
-.purchase-link--naver:hover {
-  background: #f4fbf5;
-  border-color: #7cb48a;
-}
-
-.purchase-link--official {
-  background: #4c463f;
-  border-color: #4c463f;
+  background: #03c75a;
+  border-color: #03c75a;
   color: #fff;
 }
 
+.purchase-link--naver:hover {
+  background: #02a94d;
+  border-color: #02a94d;
+}
+
+.purchase-link--official {
+  background: #fff;
+  border-color: #d8dde5;
+  color: #374151;
+}
+
 .purchase-link--official:hover {
-  background: #3f3934;
-  border-color: #3f3934;
+  background: #f8fafc;
+  border-color: #bfc7d4;
 }
 
 .purchase-link--disabled,
 .purchase-link--disabled:hover {
-  background: #ece9e3;
-  border-color: #ded8cf;
-  color: #9a948a;
+  background: #f3f4f6;
+  border-color: #e5e7eb;
+  color: #9ca3af;
   box-shadow: none;
   transform: none;
   cursor: not-allowed;

@@ -26,7 +26,17 @@ const METRICS: { id: GradeMetric; label: string }[] = [
   { id: "performance", label: "퍼포먼스" },
 ];
 
-function getMetricGuide(metric: GradeMetric) {
+function getMetricGuide(productType: ProductCategory, metric: GradeMetric) {
+  if (productType === "shake") {
+    if (metric === "density") {
+      return "칼로리 대비 단백질 효율이 높은 제품이 위로 올라옵니다";
+    }
+    if (metric === "diet") {
+      return "당류, 칼로리, 밀도, 식이섬유 균형을 반영한 상대 점수입니다";
+    }
+    return "단백질 함량과 밀도를 중심으로 운동 보충 관점에서 계산합니다";
+  }
+
   return metric === "diet"
     ? "낮을수록 유리한 값을 100점 기준으로 환산"
     : "높을수록 유리한 값을 100점 기준으로 환산";
@@ -35,12 +45,12 @@ function getMetricGuide(metric: GradeMetric) {
 function getCategoryRankingDescription(productType: ProductCategory, metric: GradeMetric) {
   if (productType === "shake") {
     if (metric === "density") {
-      return "쉐이크는 칼로리 대비 단백질 효율을 기준으로 정렬합니다. 같은 파우치형이라도 밀도 차이가 커서 체감이 크게 갈립니다.";
+      return "쉐이크는 칼로리 대비 단백질 효율 차이가 커서 같은 파우치형이라도 만족도가 갈립니다. 밀도 상위권은 운동 보충용으로 비교하기 좋습니다.";
     }
     if (metric === "diet") {
-      return "쉐이크 다이어트 점수는 당류, 칼로리, 단백질 밀도와 식이섬유 균형을 함께 반영합니다.";
+      return "쉐이크의 다이어트 점수는 당류만 보는 방식이 아니라 칼로리, 단백질 밀도, 식이섬유 균형까지 함께 반영합니다.";
     }
-    return "쉐이크 퍼포먼스 점수는 단백질 함량과 효율을 중심으로 운동 보충 관점에서 계산합니다.";
+    return "쉐이크의 퍼포먼스 점수는 단백질 함량과 밀도를 중심으로 운동 직후 보충 관점에서 계산합니다.";
   }
 
   return "단백질 밀도, 다이어트, 퍼포먼스 점수를 모두 100점 기준으로 비교합니다.";
@@ -102,7 +112,7 @@ export default function RankingClient({ rankings }: RankingClientProps) {
         </div>
 
         <p className="mt-4 text-xs text-[#999]">
-          {getMetricGuide(metric)} · 총 {items.length}개 제품
+          {getMetricGuide(productType, metric)} · 총 {items.length}개 제품
         </p>
 
         {items.length === 0 ? (

@@ -95,6 +95,23 @@ export function getNutritionDetail(p: ProductDetailProps): NutritionDetailRow[] 
     return rows;
   }
 
+  if (n && p.productType === "shake") {
+    const rows: NutritionDetailRow[] = [
+      { label: "칼로리", value: formatValue(n.caloriesKcal, "kcal") },
+      { label: "탄수화물", value: formatValue(n.carbsG, "g") },
+      { label: "당류", value: formatValue(n.sugarsG, "g") },
+      { label: "단백질", value: formatValue(n.proteinG, "g") },
+      { label: "지방", value: formatValue(n.fatG, "g") },
+      { label: "포화지방", value: formatValue(n.satFatG, "g") },
+      { label: "트랜스지방", value: formatValue(n.transFatG, "g") },
+      { label: "콜레스테롤", value: formatValue(n.cholesterolMg, "mg") },
+      { label: "나트륨", value: formatValue(n.sodiumMg, "mg") },
+      { label: "식이섬유", value: formatValue(n.fiberG ?? 0, "g") },
+      { label: "BCAA", value: formatValue(n.bcaaMg ?? 0, "mg") },
+    ];
+    return rows;
+  }
+
   if (n) {
     const rows: NutritionDetailRow[] = [
       { label: "칼로리", value: formatValue(n.caloriesKcal, "kcal") },

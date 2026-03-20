@@ -431,16 +431,16 @@ function scoreShakeProduct(product: ProductDetailProps, req: RecommendRequest): 
 
   if (req.purpose === "muscle") {
     score += protein * 3 + performance * 2.2 + density * 6;
-    if (protein >= 20) reasons.push("고단백 기준으로 운동 보충에 보기 좋습니다");
+    if (protein >= 20) reasons.push(`단백질 밀도 ${density.toFixed(1)}g/100kcal로 운동 후 보충 효율이 좋습니다`);
   } else if (req.purpose === "diet") {
     score += (320 - diet) * 1.8 + density * 10;
-    if (sugar <= 3) reasons.push("당류 부담이 낮아 다이어트 관점에서 보기 좋습니다");
+    if (sugar <= 3) reasons.push(`당류 ${sugar}g로 비교적 가볍게 고르기 좋습니다`);
   } else if (req.purpose === "daily") {
     score += protein * 2 + density * 8 + fiber * 6;
-    if (fiber >= 4) reasons.push("파우치형이라 일상 루틴에 넣기 쉬운 편입니다");
+    if (fiber >= 4) reasons.push(`식이섬유 ${fiber}g가 들어 있어 일상 루틴에 넣기 편합니다`);
   } else if (req.purpose === "recovery") {
     score += performance * 2.5 + protein * 2;
-    if (protein >= 20) reasons.push("운동 후 단백질 보충용으로 무난합니다");
+    if (protein >= 20) reasons.push(`단백질 ${protein}g와 밀도 구성이 회복용 보충 기준에 무난합니다`);
   }
 
   if (req.frequency === "daily" || req.frequency === "often") {
@@ -456,23 +456,23 @@ function scoreShakeProduct(product: ProductDetailProps, req: RecommendRequest): 
   for (const condition of req.conditions) {
     if (condition === "highpro" && protein >= 20) {
       score += 26;
-      reasons.push("20g 이상 단백질을 담고 있습니다");
+      reasons.push(`20g 이상 고단백 기준을 충족합니다`);
     }
     if (condition === "lowsugar" && sugar <= 3) {
       score += 24;
-      reasons.push("당류 3g 이하로 비교적 깔끔합니다");
+      reasons.push(`저당 기준인 당류 3g 이하 구간에 들어옵니다`);
     }
-    if (condition === "meal" && calories >= 150 && fiber >= 4) {
+    if (condition === "meal" && calories >= 150 && fiber >= 4 && protein >= 15) {
       score += 24;
-      reasons.push("칼로리와 식이섬유가 있어 식사대용으로 보기 좋습니다");
+      reasons.push(`칼로리 ${calories}kcal, 식이섬유 ${fiber}g로 식사대용 쪽에 가깝습니다`);
     }
     if (condition === "fiber" && fiber >= 5) {
       score += 24;
-      reasons.push("식이섬유 함량이 높은 편입니다");
+      reasons.push(`식이섬유 ${fiber}g로 포만감 기준에서 유리합니다`);
     }
     if (condition === "density") {
       score += density * 5;
-      if (density >= 14) reasons.push("칼로리 대비 단백질 효율이 좋습니다");
+      if (density >= 14) reasons.push(`칼로리 대비 단백질 효율이 높은 편입니다`);
     }
   }
 
@@ -482,9 +482,9 @@ function scoreShakeProduct(product: ProductDetailProps, req: RecommendRequest): 
     reason: buildReason(
       reasons,
       protein >= 20
-        ? "고단백 파우치형 쉐이크로 활용도가 좋은 편입니다"
+        ? `단백질 ${protein}g 기준으로 무난하게 고르기 좋은 쉐이크입니다`
         : fiber >= 5
-          ? "식이섬유와 단백질 구성이 비교적 균형적입니다"
+          ? `식이섬유 ${fiber}g와 단백질 구성이 비교적 균형적입니다`
           : "간편하게 섭취하기 좋은 파우치형 쉐이크입니다",
     ),
   };

@@ -93,8 +93,8 @@ export default function ComparePage() {
 
   const compareDescription =
     selectedCategory === "shake"
-      ? "파우치형 단백질 쉐이크를 단백질, 당류, 식이섬유, 단백질 밀도 기준으로 나란히 비교합니다"
-      : "최대 4개 제품을 나란히 비교합니다";
+      ? "파우치형 단백질 쉐이크를 단백질, 당류, 식이섬유, 단백질 밀도 기준으로 비교합니다. 식사대용인지 운동보충용인지도 같이 판단하기 좋게 정리했습니다."
+      : "최대 4개 제품을 한 화면에서 비교합니다.";
 
   if (products.length === 0) {
     return (

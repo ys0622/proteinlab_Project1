@@ -106,6 +106,37 @@ export function ShakeGuidePage({
 
       <main className="mx-auto max-w-[1200px] px-4 py-8 md:px-6">
         <div className="space-y-6">
+          <section className="grid gap-3 md:grid-cols-4">
+            <Link
+              href="/shake"
+              className="rounded-2xl border border-[#dce8df] bg-[#f6fbf7] px-4 py-4 text-sm leading-6 text-[var(--foreground-muted)] transition-colors hover:bg-[#eef7f1]"
+            >
+              <p className="font-semibold text-[#24543d]">쉐이크 전체 비교</p>
+              <p className="mt-1">등록된 쉐이크를 한 번에 보고 필터와 정렬까지 바로 써볼 수 있습니다.</p>
+            </Link>
+            <Link
+              href="/shake?curation=shake-high-protein"
+              className="rounded-2xl border border-[#dce8df] bg-[#f6fbf7] px-4 py-4 text-sm leading-6 text-[var(--foreground-muted)] transition-colors hover:bg-[#eef7f1]"
+            >
+              <p className="font-semibold text-[#24543d]">고단백 쉐이크 보기</p>
+              <p className="mt-1">단백질 20g 이상 제품만 먼저 모아서 빠르게 비교할 수 있습니다.</p>
+            </Link>
+            <Link
+              href="/shake?curation=shake-meal-replacement"
+              className="rounded-2xl border border-[#dce8df] bg-[#f6fbf7] px-4 py-4 text-sm leading-6 text-[var(--foreground-muted)] transition-colors hover:bg-[#eef7f1]"
+            >
+              <p className="font-semibold text-[#24543d]">식사대용 쉐이크 보기</p>
+              <p className="mt-1">칼로리와 식이섬유를 같이 보고 한 끼 대체용 제품을 좁혀볼 수 있습니다.</p>
+            </Link>
+            <Link
+              href="/recommend?category=shake"
+              className="rounded-2xl border border-[#dce8df] bg-[#f6fbf7] px-4 py-4 text-sm leading-6 text-[var(--foreground-muted)] transition-colors hover:bg-[#eef7f1]"
+            >
+              <p className="font-semibold text-[#24543d]">쉐이크 추천 받기</p>
+              <p className="mt-1">운동보충, 저당, 식사대용 기준으로 추천 결과를 바로 볼 수 있습니다.</p>
+            </Link>
+          </section>
+
           <section className="rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
             <h2 className="text-xl font-bold text-[var(--foreground)]">{hook}</h2>
             <div className="mt-4 space-y-3 text-sm leading-6 text-[var(--foreground-muted)]">

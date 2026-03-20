@@ -182,6 +182,43 @@ function getFiberValue(product: ProductDetailProps) {
   return product.nutritionPerBottle?.fiberG ?? 0;
 }
 
+function getShakeFlavorText(product: ProductDetailProps) {
+  return [product.name, product.flavor, product.variant, product.tags?.join(" ")]
+    .filter(Boolean)
+    .join(" ")
+    .toLowerCase();
+}
+
+function isShakeCoffeeFlavor(product: ProductDetailProps) {
+  const text = getShakeFlavorText(product);
+  return includesAny(text, [
+    "커피",
+    "카페",
+    "coffee",
+    "espresso",
+    "모카",
+    "돌체",
+    "밀크티",
+    "milk tea",
+    "earl",
+    "얼그레이",
+    "녹차라떼",
+    "말차라떼",
+    "green tea latte",
+    "matcha latte",
+  ]);
+}
+
+function isShakeGrainFlavor(product: ProductDetailProps) {
+  const text = getShakeFlavorText(product);
+  return includesAny(text, ["곡물", "미숫", "인절미", "흑임자", "참깨", "서리태", "콩", "grain", "cereal", "corn", "sesame", "고구마"]);
+}
+
+function isShakeDessertFlavor(product: ProductDetailProps) {
+  const text = getShakeFlavorText(product);
+  return includesAny(text, ["초코", "초콜릿", "쿠키", "크림", "바나나", "딸기", "멜론", "피스타치오", "초코무스", "berry", "cookie", "cream", "choco", "banana", "strawberry", "melon", "pistachio"]);
+}
+
 function sortShakeByProtein(products: ProductDetailProps[]) {
   return [...products].sort((a, b) => {
     const densityDelta = parseDensityValue(b.density) - parseDensityValue(a.density);
@@ -230,6 +267,18 @@ function sortShakeForMealReplacement(products: ProductDetailProps[]) {
     if (sugarDelta !== 0) return sugarDelta;
 
     return (a.calories ?? 999) - (b.calories ?? 999);
+  });
+}
+
+function sortShakeByFlavor(products: ProductDetailProps[]) {
+  return [...products].sort((a, b) => {
+    const sugarDelta = (a.sugar ?? 999) - (b.sugar ?? 999);
+    if (sugarDelta !== 0) return sugarDelta;
+
+    const proteinDelta = (b.proteinPerServing ?? 0) - (a.proteinPerServing ?? 0);
+    if (proteinDelta !== 0) return proteinDelta;
+
+    return parseDensityValue(b.density) - parseDensityValue(a.density);
   });
 }
 
@@ -1067,6 +1116,96 @@ const curations: CurationDefinition[] = [
           recommendationTitle: "추천 식이섬유 쉐이크",
           recommendationNote: "식이섬유 함량이 높은 제품을 중심으로 당류와 단백질 균형까지 함께 보기 좋게 정리했습니다.",
           comparisonTitle: "식이섬유 쉐이크 비교",
+        },
+      },
+    },
+  },
+  {
+    id: "shake-coffee-latte",
+    slug: "shake-coffee-latte",
+    label: "커피·라떼",
+    icon: "☕",
+    kind: "context",
+    categoryTargets: ["shake"],
+    routeMode: "category-query",
+    seoTitle: "커피·라떼 단백질 쉐이크 추천 | ProteinLab",
+    seoDescription:
+      "커피, 라떼, 밀크티 계열의 파우치형 단백질 쉐이크를 모아 비교합니다. ProteinLab에서 당류, 단백질, 밀도까지 같이 확인해보세요.",
+    categories: {
+      shake: {
+        category: "shake",
+        quickLabel: "커피·라떼",
+        quickIcon: "☕",
+        quickOrder: 50,
+        filter: (product) => product.productType === "shake" && isShakeCoffeeFlavor(product),
+        recommend: (products) =>
+          sortShakeByFlavor(
+            products.filter((product) => product.productType === "shake" && isShakeCoffeeFlavor(product)),
+          ),
+        landingCopy: {
+          recommendationTitle: "추천 커피·라떼 쉐이크",
+          recommendationNote: "커피향 계열 제품 중 당류와 단백질 균형이 좋은 순서로 먼저 보여줍니다.",
+          comparisonTitle: "커피·라떼 쉐이크 비교",
+        },
+      },
+    },
+  },
+  {
+    id: "shake-grain-misugaru",
+    slug: "shake-grain-misugaru",
+    label: "곡물·미숫가루",
+    icon: "🌾",
+    kind: "context",
+    categoryTargets: ["shake"],
+    routeMode: "category-query",
+    seoTitle: "곡물·미숫가루 단백질 쉐이크 추천 | ProteinLab",
+    seoDescription:
+      "곡물, 미숫가루, 흑임자 계열 파우치형 단백질 쉐이크를 비교합니다. 식사대용 관점에서 보기 좋은 제품을 ProteinLab 기준으로 정리했습니다.",
+    categories: {
+      shake: {
+        category: "shake",
+        quickLabel: "곡물·미숫가루",
+        quickIcon: "🌾",
+        quickOrder: 60,
+        filter: (product) => product.productType === "shake" && isShakeGrainFlavor(product),
+        recommend: (products) =>
+          sortShakeForMealReplacement(
+            products.filter((product) => product.productType === "shake" && isShakeGrainFlavor(product)),
+          ),
+        landingCopy: {
+          recommendationTitle: "추천 곡물형 쉐이크",
+          recommendationNote: "식사대용으로 보기 쉬운 곡물·미숫가루 계열 제품을 먼저 정리했습니다.",
+          comparisonTitle: "곡물·미숫가루 쉐이크 비교",
+        },
+      },
+    },
+  },
+  {
+    id: "shake-dessert-flavor",
+    slug: "shake-dessert-flavor",
+    label: "초코·디저트",
+    icon: "🍫",
+    kind: "context",
+    categoryTargets: ["shake"],
+    routeMode: "category-query",
+    seoTitle: "초코·디저트 단백질 쉐이크 추천 | ProteinLab",
+    seoDescription:
+      "초코, 쿠키, 과일 디저트 계열의 파우치형 단백질 쉐이크를 모아 비교합니다. 맛뿐 아니라 당류와 단백질 균형까지 같이 확인해보세요.",
+    categories: {
+      shake: {
+        category: "shake",
+        quickLabel: "초코·디저트",
+        quickIcon: "🍫",
+        quickOrder: 70,
+        filter: (product) => product.productType === "shake" && isShakeDessertFlavor(product),
+        recommend: (products) =>
+          sortShakeByFlavor(
+            products.filter((product) => product.productType === "shake" && isShakeDessertFlavor(product)),
+          ),
+        landingCopy: {
+          recommendationTitle: "추천 디저트형 쉐이크",
+          recommendationNote: "맛 만족감이 높은 계열 안에서도 당류와 단백질 균형이 괜찮은 제품을 먼저 보여줍니다.",
+          comparisonTitle: "초코·디저트 쉐이크 비교",
         },
       },
     },
