@@ -701,6 +701,23 @@
     "coupangUrl": "https://www.coupang.com/vp/products/6925112745?itemId=18626017279&vendorItemId=85761396304"
   },
   {
+    "slug": "selex-protein-nutsbar",
+    "brand": "셀렉스",
+    "name": "프로틴 너츠바",
+    "capacity": "50g",
+    "variant": "일반",
+    "tags": [
+      "바"
+    ],
+    "proteinPerServing": 12,
+    "calories": 245,
+    "sugar": 9,
+    "density": "4.9g/100kcal",
+    "productUrl": "#",
+    "productType": "bar",
+    "gradeTags": []
+  },
+  {
     "slug": "thedanbaek-crunchbar-peanutbutter",
     "brand": "더단백",
     "name": "크런치바 (피넛버터)",
@@ -935,6 +952,74 @@
     "coupangUrl": "https://www.coupang.com/vp/products/8802146213?itemId=25631627100&vendorItemId=92621759636"
   },
   {
+    "slug": "oneuldanbaek-milkchoco-strawberry-bar-48",
+    "brand": "오늘단백",
+    "name": "밀크초코 스트로베리 바",
+    "capacity": "48g",
+    "variant": "일반",
+    "tags": [
+      "바"
+    ],
+    "proteinPerServing": 16,
+    "calories": 172,
+    "sugar": 4,
+    "density": "9.3g/100kcal",
+    "productUrl": "#",
+    "productType": "bar",
+    "gradeTags": []
+  },
+  {
+    "slug": "oneuldanbaek-milkchoco-cheesecake-bar-48",
+    "brand": "오늘단백",
+    "name": "밀크초코 치즈케이크 바",
+    "capacity": "48g",
+    "variant": "일반",
+    "tags": [
+      "바"
+    ],
+    "proteinPerServing": 16,
+    "calories": 161,
+    "sugar": 4,
+    "density": "9.9g/100kcal",
+    "productUrl": "#",
+    "productType": "bar",
+    "gradeTags": []
+  },
+  {
+    "slug": "oneuldanbaek-milkchoco-caramel-bar-48",
+    "brand": "오늘단백",
+    "name": "밀크초코 카라멜 바",
+    "capacity": "48g",
+    "variant": "일반",
+    "tags": [
+      "바"
+    ],
+    "proteinPerServing": 16,
+    "calories": 180,
+    "sugar": 3,
+    "density": "8.9g/100kcal",
+    "productUrl": "#",
+    "productType": "bar",
+    "gradeTags": []
+  },
+  {
+    "slug": "oneuldanbaek-milkchoco-pistachio-bar-48",
+    "brand": "오늘단백",
+    "name": "밀크초코 피스타치오 바",
+    "capacity": "48g",
+    "variant": "일반",
+    "tags": [
+      "바"
+    ],
+    "proteinPerServing": 16,
+    "calories": 175,
+    "sugar": 3,
+    "density": "9.1g/100kcal",
+    "productUrl": "#",
+    "productType": "bar",
+    "gradeTags": []
+  },
+  {
     "slug": "danbaekhani-protein-bar-berry-30",
     "brand": "단백하니",
     "name": "프로틴바 (베리)",
@@ -1000,6 +1085,74 @@
     "calories": 230,
     "sugar": 9,
     "density": "4.78g/100kcal",
+    "productUrl": "#",
+    "productType": "bar",
+    "gradeTags": []
+  },
+  {
+    "slug": "labnosh-cookiebar-milktea-35",
+    "brand": "랩노쉬",
+    "name": "단백쿠키바 밀크티",
+    "capacity": "35g",
+    "variant": "일반",
+    "tags": [
+      "바"
+    ],
+    "proteinPerServing": 7,
+    "calories": 140,
+    "sugar": 9,
+    "density": "5g/100kcal",
+    "productUrl": "#",
+    "productType": "bar",
+    "gradeTags": []
+  },
+  {
+    "slug": "labnosh-cookiebar-blackcookie-35",
+    "brand": "랩노쉬",
+    "name": "단백쿠키바 블랙쿠키",
+    "capacity": "35g",
+    "variant": "일반",
+    "tags": [
+      "바"
+    ],
+    "proteinPerServing": 4,
+    "calories": 145,
+    "sugar": 13,
+    "density": "2.8g/100kcal",
+    "productUrl": "#",
+    "productType": "bar",
+    "gradeTags": []
+  },
+  {
+    "slug": "labnosh-cookiebar-cookie-cream-35",
+    "brand": "랩노쉬",
+    "name": "단백쿠키바 쿠키앤크림",
+    "capacity": "35g",
+    "variant": "일반",
+    "tags": [
+      "바"
+    ],
+    "proteinPerServing": 7,
+    "calories": 137,
+    "sugar": 7,
+    "density": "5.1g/100kcal",
+    "productUrl": "#",
+    "productType": "bar",
+    "gradeTags": []
+  },
+  {
+    "slug": "labnosh-cookiebar-peanutbutter-35",
+    "brand": "랩노쉬",
+    "name": "단백쿠키바 피넛버터",
+    "capacity": "35g",
+    "variant": "일반",
+    "tags": [
+      "바"
+    ],
+    "proteinPerServing": 7,
+    "calories": 155,
+    "sugar": 7,
+    "density": "4.5g/100kcal",
     "productUrl": "#",
     "productType": "bar",
     "gradeTags": []

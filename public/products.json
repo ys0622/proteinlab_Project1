@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-03-20T11:40:36.326Z",
-  "total": 282,
+  "generated_at": "2026-03-20T12:03:47.580Z",
+  "total": 291,
   "categories": {
     "drinks": 99,
-    "bars": 71,
+    "bars": 80,
     "yogurt": 45,
     "shake": 67
   },
@@ -1251,6 +1251,15 @@
       "sugar": 8
     },
     {
+      "slug": "selex-protein-nutsbar",
+      "name": "프로틴 너츠바",
+      "brand": "셀렉스",
+      "category": "bars",
+      "protein": 12,
+      "calories": 245,
+      "sugar": 9
+    },
+    {
       "slug": "thedanbaek-crunchbar-peanutbutter",
       "name": "크런치바 (피넛버터)",
       "brand": "더단백",
@@ -1368,6 +1377,42 @@
       "sugar": 0
     },
     {
+      "slug": "oneuldanbaek-milkchoco-strawberry-bar-48",
+      "name": "밀크초코 스트로베리 바",
+      "brand": "오늘단백",
+      "category": "bars",
+      "protein": 16,
+      "calories": 172,
+      "sugar": 4
+    },
+    {
+      "slug": "oneuldanbaek-milkchoco-cheesecake-bar-48",
+      "name": "밀크초코 치즈케이크 바",
+      "brand": "오늘단백",
+      "category": "bars",
+      "protein": 16,
+      "calories": 161,
+      "sugar": 4
+    },
+    {
+      "slug": "oneuldanbaek-milkchoco-caramel-bar-48",
+      "name": "밀크초코 카라멜 바",
+      "brand": "오늘단백",
+      "category": "bars",
+      "protein": 16,
+      "calories": 180,
+      "sugar": 3
+    },
+    {
+      "slug": "oneuldanbaek-milkchoco-pistachio-bar-48",
+      "name": "밀크초코 피스타치오 바",
+      "brand": "오늘단백",
+      "category": "bars",
+      "protein": 16,
+      "calories": 175,
+      "sugar": 3
+    },
+    {
       "slug": "danbaekhani-protein-bar-berry-30",
       "name": "프로틴바 (베리)",
       "brand": "단백하니",
@@ -1402,6 +1447,42 @@
       "protein": 11,
       "calories": 230,
       "sugar": 9
+    },
+    {
+      "slug": "labnosh-cookiebar-milktea-35",
+      "name": "단백쿠키바 밀크티",
+      "brand": "랩노쉬",
+      "category": "bars",
+      "protein": 7,
+      "calories": 140,
+      "sugar": 9
+    },
+    {
+      "slug": "labnosh-cookiebar-blackcookie-35",
+      "name": "단백쿠키바 블랙쿠키",
+      "brand": "랩노쉬",
+      "category": "bars",
+      "protein": 4,
+      "calories": 145,
+      "sugar": 13
+    },
+    {
+      "slug": "labnosh-cookiebar-cookie-cream-35",
+      "name": "단백쿠키바 쿠키앤크림",
+      "brand": "랩노쉬",
+      "category": "bars",
+      "protein": 7,
+      "calories": 137,
+      "sugar": 7
+    },
+    {
+      "slug": "labnosh-cookiebar-peanutbutter-35",
+      "name": "단백쿠키바 피넛버터",
+      "brand": "랩노쉬",
+      "category": "bars",
+      "protein": 7,
+      "calories": 155,
+      "sugar": 7
     },
     {
       "slug": "cralo-plant-proteinbar",
