@@ -257,7 +257,7 @@
   {
     "slug": "syntha6-crispy-choco",
     "brand": "비에스엔",
-    "name": "프로틴 키리스프 단백질바 (초콜릿 크런치)",
+    "name": "프로틴 크리스프 단백질바 (초콜릿 크런치)",
     "capacity": "57g",
     "variant": "일반",
     "tags": [
@@ -274,7 +274,7 @@
   {
     "slug": "bsn-protein-crisp-peanut-butter-crunch",
     "brand": "비에스엔",
-    "name": "프로틴 키리스프 단백질바 (피넛 버터 크런치)",
+    "name": "프로틴 크리스프 단백질바 (피넛 버터 크런치)",
     "capacity": "57g",
     "variant": "일반",
     "tags": [
@@ -291,7 +291,7 @@
   {
     "slug": "bsn-protein-crisp-salted-toffee-pretzel",
     "brand": "비에스엔",
-    "name": "프로틴 키리스프 단백질바 (솔티드 토피 프레첼)",
+    "name": "프로틴 크리스프 단백질바 (솔티드 토피 프레첼)",
     "capacity": "57g",
     "variant": "일반",
     "tags": [
@@ -733,7 +733,7 @@
   {
     "slug": "myprotein-soft-lemon-earlgrey",
     "brand": "마이프로틴",
-    "name": "소프트 단백질 (레몬 얼그레이)",
+    "name": "소프트 단백질바 (레몬 얼그레이)",
     "capacity": "50g",
     "variant": "일반",
     "tags": [
@@ -750,7 +750,7 @@
   {
     "slug": "myprotein-soft-caramel-choco",
     "brand": "마이프로틴",
-    "name": "소프트 단백질 (카라멜 초코)",
+    "name": "소프트 단백질바 (카라멜 초코)",
     "capacity": "50g",
     "variant": "일반",
     "tags": [
@@ -767,7 +767,7 @@
   {
     "slug": "myprotein-soft-strawberry-yogurt",
     "brand": "마이프로틴",
-    "name": "소프트 단백질 (딸기 요거트)",
+    "name": "소프트 단백질바 (딸기 요거트)",
     "capacity": "50g",
     "variant": "일반",
     "tags": [

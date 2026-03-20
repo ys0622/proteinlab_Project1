@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-20T07:20:49.462Z",
+  "generated_at": "2026-03-20T07:55:07.160Z",
   "total": 282,
   "categories": {
     "drinks": 99,
@@ -1036,7 +1036,7 @@
     },
     {
       "slug": "syntha6-crispy-choco",
-      "name": "프로틴 키리스프 단백질바 (초콜릿 크런치)",
+      "name": "프로틴 크리스프 단백질바 (초콜릿 크런치)",
       "brand": "비에스엔",
       "category": "bars",
       "protein": 20,
@@ -1045,7 +1045,7 @@
     },
     {
       "slug": "bsn-protein-crisp-peanut-butter-crunch",
-      "name": "프로틴 키리스프 단백질바 (피넛 버터 크런치)",
+      "name": "프로틴 크리스프 단백질바 (피넛 버터 크런치)",
       "brand": "비에스엔",
       "category": "bars",
       "protein": 20,
@@ -1054,7 +1054,7 @@
     },
     {
       "slug": "bsn-protein-crisp-salted-toffee-pretzel",
-      "name": "프로틴 키리스프 단백질바 (솔티드 토피 프레첼)",
+      "name": "프로틴 크리스프 단백질바 (솔티드 토피 프레첼)",
       "brand": "비에스엔",
       "category": "bars",
       "protein": 20,
@@ -1288,7 +1288,7 @@
     },
     {
       "slug": "myprotein-soft-lemon-earlgrey",
-      "name": "소프트 단백질 (레몬 얼그레이)",
+      "name": "소프트 단백질바 (레몬 얼그레이)",
       "brand": "마이프로틴",
       "category": "bars",
       "protein": 12,
@@ -1297,7 +1297,7 @@
     },
     {
       "slug": "myprotein-soft-caramel-choco",
-      "name": "소프트 단백질 (카라멜 초코)",
+      "name": "소프트 단백질바 (카라멜 초코)",
       "brand": "마이프로틴",
       "category": "bars",
       "protein": 12,
@@ -1306,7 +1306,7 @@
     },
     {
       "slug": "myprotein-soft-strawberry-yogurt",
-      "name": "소프트 단백질 (딸기 요거트)",
+      "name": "소프트 단백질바 (딸기 요거트)",
       "brand": "마이프로틴",
       "category": "bars",
       "protein": 12,
