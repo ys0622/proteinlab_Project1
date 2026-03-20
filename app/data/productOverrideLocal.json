@@ -1073,5 +1073,50 @@
     "coupangUrl": null,
     "naverUrl": null,
     "officialUrl": null
+  },
+  "labnosh-cookiebar-milktea-35": {
+    "coupangUrl": "https://www.coupang.com/vp/products/9335014218?itemId=24449984601&vendorItemId=91463840942",
+    "naverUrl": "https://search.shopping.naver.com/search/all?query=%EB%9E%A9%EB%85%B8%EC%89%AC%20%EB%8B%A8%EB%B0%B1%EC%BF%A0%ED%82%A4%EB%B0%94%20%EB%B0%80%ED%81%AC%ED%8B%B0&prevQuery=%EC%85%80%EB%A0%89%EC%8A%A4%20%ED%94%84%EB%A1%9C%ED%8B%B4%20%EB%84%88%EC%B8%A0%EB%B0%94&vertical=search",
+    "officialUrl": "https://labnosh.com/category/%EA%B0%80%EB%B2%BC%EC%9A%B4-%EA%B0%84%EC%8B%9D/63/"
+  },
+  "labnosh-cookiebar-blackcookie-35": {
+    "coupangUrl": "https://www.coupang.com/vp/products/8288969576?itemId=23706145720&vendorItemId=90770102140",
+    "naverUrl": "https://search.shopping.naver.com/search/all?query=%EB%9E%A9%EB%85%B8%EC%89%AC%20%EB%8B%A8%EB%B0%B1%EC%BF%A0%ED%82%A4%EB%B0%94%20%EB%B8%94%EB%9E%99%EC%BF%A0%ED%82%A4&prevQuery=%EB%9E%A9%EB%85%B8%EC%89%AC%20%EB%8B%A8%EB%B0%B1%EC%BF%A0%ED%82%A4%EB%B0%94%20%EB%B0%80%ED%81%AC%ED%8B%B0&vertical=search",
+    "officialUrl": "https://labnosh.com/category/%EA%B0%80%EB%B2%BC%EC%9A%B4-%EA%B0%84%EC%8B%9D/63/"
+  },
+  "labnosh-cookiebar-cookie-cream-35": {
+    "coupangUrl": "https://www.coupang.com/vp/products/9285366201?itemId=27805806865&vendorItemId=94765719805",
+    "naverUrl": "https://search.shopping.naver.com/search/all?query=%EB%9E%A9%EB%85%B8%EC%89%AC%20%EB%8B%A8%EB%B0%B1%EC%BF%A0%ED%82%A4%EB%B0%94%20%EC%BF%A0%ED%82%A4%EC%95%A4%ED%81%AC%EB%A6%BC&prevQuery=%EB%9E%A9%EB%85%B8%EC%89%AC%20%EB%8B%A8%EB%B0%B1%EC%BF%A0%ED%82%A4%EB%B0%94%20%EB%B8%94%EB%9E%99%EC%BF%A0%ED%82%A4&vertical=search",
+    "officialUrl": "https://labnosh.com/category/%EA%B0%80%EB%B2%BC%EC%9A%B4-%EA%B0%84%EC%8B%9D/63/"
+  },
+  "labnosh-cookiebar-peanutbutter-35": {
+    "coupangUrl": "https://www.coupang.com/vp/products/9334776582?itemId=20067369748&vendorItemId=86554416433",
+    "naverUrl": "https://search.shopping.naver.com/search/all?query=%EB%9E%A9%EB%85%B8%EC%89%AC%20%EB%8B%A8%EB%B0%B1%EC%BF%A0%ED%82%A4%EB%B0%94%20%ED%94%BC%EB%84%9B%EB%B2%84%ED%84%B0%2035g&prevQuery=%EB%9E%A9%EB%85%B8%EC%89%AC%20%EB%8B%A8%EB%B0%B1%EC%BF%A0%ED%82%A4%EB%B0%94%20%ED%94%BC%EB%84%9B%EB%B2%84%ED%84%B0%2035g%20x%2012%EA%B0%9C%EC%9E%85%2012%EA%B0%9C%20%EB%8B%A8%EB%B0%B1%EB%B0%94%20%ED%94%84%EB%A1%9C%ED%8B%B4%EB%B0%94&vertical=search",
+    "officialUrl": "https://labnosh.com/category/%EA%B0%80%EB%B2%BC%EC%9A%B4-%EA%B0%84%EC%8B%9D/63/"
+  },
+  "selex-protein-nutsbar": {
+    "coupangUrl": "https://www.coupang.com/vp/products/7810096703?itemId=20795307852&vendorItemId=76117123494",
+    "naverUrl": "https://search.shopping.naver.com/search/all?where=all&frm=NVSCTAB&query=%EC%85%80%EB%A0%89%EC%8A%A4+%ED%94%84%EB%A1%9C%ED%8B%B4+%EB%84%88%EC%B8%A0%EB%B0%94",
+    "officialUrl": "https://brand.naver.com/selex/category/8dad6b63c9314e51921ff5c3af1d0586?cp=1"
+  },
+  "oneuldanbaek-milkchoco-strawberry-bar-48": {
+    "coupangUrl": "https://www.coupang.com/vp/products/9336852275?itemId=27958342462&vendorItemId=95023811444",
+    "naverUrl": "https://search.shopping.naver.com/search/all?query=%EC%98%A4%EB%8A%98%EB%8B%A8%EB%B0%B1%20%EB%B0%80%ED%81%AC%EC%B4%88%EC%BD%94%20%EC%8A%A4%ED%8A%B8%EB%A1%9C%EB%B2%A0%EB%A6%AC%EB%B0%94&prevQuery=%EC%98%A4%EB%8A%98%EB%8B%A8%EB%B0%B1%20%EB%B0%80%ED%81%AC%EC%B4%88%EC%BD%94%20%EC%8A%A4%ED%8A%B8%EB%A1%9C%EB%B2%A0%EB%A6%AC&vertical=search",
+    "officialUrl": "https://brand.naver.com/harim/category/1a6d3a6007e143a59ecb3ae9b3418fc2?cp=2"
+  },
+  "oneuldanbaek-milkchoco-cheesecake-bar-48": {
+    "coupangUrl": "https://www.coupang.com/vp/products/9336851870?itemId=27852440471&vendorItemId=94811817751",
+    "naverUrl": "https://search.shopping.naver.com/search/all?query=%EC%98%A4%EB%8A%98%EB%8B%A8%EB%B0%B1%20%EB%B0%80%ED%81%AC%EC%B4%88%EC%BD%94%20%EC%B9%98%EC%A6%88%EC%BC%80%EC%9D%B4%ED%81%AC&prevQuery=%EC%98%A4%EB%8A%98%EB%8B%A8%EB%B0%B1%20%EB%B0%80%ED%81%AC%EC%B4%88%EC%BD%94%20%EC%B9%B4%EB%9D%BC%EB%A9%9C%EB%B0%94&vertical=search",
+    "officialUrl": "https://brand.naver.com/harim/category/1a6d3a6007e143a59ecb3ae9b3418fc2?cp=2"
+  },
+  "oneuldanbaek-milkchoco-caramel-bar-48": {
+    "coupangUrl": "https://www.coupang.com/vp/products/8565874184?itemId=25008967806&vendorItemId=94914878969",
+    "naverUrl": "https://search.shopping.naver.com/search/all?query=%EC%98%A4%EB%8A%98%EB%8B%A8%EB%B0%B1%20%EB%B0%80%ED%81%AC%EC%B4%88%EC%BD%94%20%EC%B9%B4%EB%9D%BC%EB%A9%9C%EB%B0%94&prevQuery=%EC%98%A4%EB%8A%98%EB%8B%A8%EB%B0%B1%20%EB%B0%80%ED%81%AC%EC%B4%88%EC%BD%94%20%ED%94%BC%EC%8A%A4%ED%83%80%EC%B9%98%EC%98%A4&vertical=search",
+    "officialUrl": "https://brand.naver.com/harim/category/1a6d3a6007e143a59ecb3ae9b3418fc2?cp=2"
+  },
+  "oneuldanbaek-milkchoco-pistachio-bar-48": {
+    "coupangUrl": "https://www.coupang.com/vp/products/8682551753?itemId=24811023557&vendorItemId=91996985367",
+    "naverUrl": "https://search.shopping.naver.com/search/all?query=%EC%98%A4%EB%8A%98%EB%8B%A8%EB%B0%B1%20%EB%B0%80%ED%81%AC%EC%B4%88%EC%BD%94%20%ED%94%BC%EC%8A%A4%ED%83%80%EC%B9%98%EC%98%A4&prevQuery=%EC%98%A4%EB%8A%98%EB%8B%A8%EB%B0%B1%20%EB%B0%80%ED%81%AC%EC%B4%88%EC%BD%94&vertical=search",
+    "officialUrl": "https://brand.naver.com/harim/category/1a6d3a6007e143a59ecb3ae9b3418fc2?cp=2"
   }
 }
