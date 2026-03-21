@@ -31,6 +31,31 @@ export function getHomeHubLinks(): TrafficLinkItem[] {
   ];
 }
 
+export function getBrandHubLinks(): TrafficLinkItem[] {
+  return [
+    {
+      href: "/brands/sellex",
+      title: "셀렉스 브랜드 허브",
+      description: "셀렉스 음료와 바를 한 번에 모아 비교합니다.",
+    },
+    {
+      href: "/brands/labnosh",
+      title: "랩노쉬 브랜드 허브",
+      description: "랩노쉬 음료, 바, 쉐이크 라인을 브랜드 단위로 확인합니다.",
+    },
+    {
+      href: "/brands/hymune",
+      title: "하이뮨 브랜드 허브",
+      description: "하이뮨 대표 RTD와 관련 제품을 브랜드 기준으로 모아 봅니다.",
+    },
+    {
+      href: "/brands/danbaek",
+      title: "더단백 브랜드 허브",
+      description: "더단백 음료와 바를 함께 보고 제품군 구성을 빠르게 비교합니다.",
+    },
+  ];
+}
+
 export function getGuidesHubLinks(): TrafficLinkItem[] {
   return [
     {

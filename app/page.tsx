@@ -4,8 +4,10 @@ import Footer from "./components/Footer";
 import HeroSection from "./components/HeroSection";
 import PopularHubLinks from "./components/PopularHubLinks";
 import ProductListWithFilters from "./components/ProductListWithFilters";
+import RelatedLinkCards from "./components/RelatedLinkCards";
 import { getProductsByCategoryAsync } from "./lib/productData";
 import type { ProductCategory } from "./lib/categories";
+import { getBrandHubLinks } from "./lib/trafficLinks";
 
 interface HomePageProps {
   searchParams?: Promise<Record<string, string | string[] | undefined>>;
@@ -59,6 +61,12 @@ export default async function Home({ searchParams }: HomePageProps) {
 
       <main className="mx-auto max-w-[1200px] px-4 pb-2 pt-0 md:px-6 md:pb-3">
         <PopularHubLinks />
+        <RelatedLinkCards
+          title="브랜드 허브 바로가기"
+          description="검색량이 큰 대표 브랜드부터 제품군 전체를 빠르게 탐색할 수 있게 묶었습니다."
+          links={getBrandHubLinks()}
+          className="mt-6"
+        />
         <AffiliateDisclosure mobileCompact />
         <ProductListWithFilters
           productType="drink"

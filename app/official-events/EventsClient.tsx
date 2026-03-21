@@ -21,6 +21,51 @@ interface BrandCard {
   events: BrandEvent[];
 }
 
+const PRODUCT_TYPE_META: Record<
+  ProductType,
+  {
+    label: string;
+    eyebrow: string;
+    emoji: string;
+    accentColor: string;
+    accentBg: string;
+    accentBorder: string;
+  }
+> = {
+  drink: {
+    label: "음료",
+    eyebrow: "Protein Drink",
+    emoji: "🥤",
+    accentColor: "#2f5d46",
+    accentBg: "#eef6f0",
+    accentBorder: "#cfe0d5",
+  },
+  bar: {
+    label: "바",
+    eyebrow: "Protein Bar",
+    emoji: "🍫",
+    accentColor: "#7b4f2f",
+    accentBg: "#faf2e8",
+    accentBorder: "#e7d5c0",
+  },
+  yogurt: {
+    label: "요거트",
+    eyebrow: "Protein Yogurt",
+    emoji: "🥣",
+    accentColor: "#365b76",
+    accentBg: "#edf4f8",
+    accentBorder: "#d2e1ea",
+  },
+  shake: {
+    label: "쉐이크",
+    eyebrow: "Protein Shake",
+    emoji: "🥛",
+    accentColor: "#6b4c7f",
+    accentBg: "#f4eef8",
+    accentBorder: "#ddd2e9",
+  },
+};
+
 const CHECKED_DATE_LABEL = "2026-03-14 확인";
 
 const CATEGORY_EMOJI: Record<EventCategory, string> = {
@@ -276,11 +321,11 @@ const rawShakeBrands: BrandCard[] = [
     brand: "플라이밀",
     storeType: "자사몰",
     storeUrl: "https://flymill.co.kr/",
-    note: "현재 등록 쉐이크 12개",
-    productCount: 12,
+    note: "현재 등록 쉐이크 13개",
+    productCount: 13,
     events: [
-      { category: "할인", periodLabel: CHECKED_DATE_LABEL, description: "쉐이크 묶음 구성과 맛별 세트 할인 노출 빈도가 높아 단품보다 세트 가격을 먼저 확인하는 편이 좋습니다." },
-      { category: "쿠폰", periodLabel: CHECKED_DATE_LABEL, description: "신규 회원 쿠폰이나 장바구니 쿠폰이 함께 붙는 경우가 있어 최종 결제 직전 가격을 다시 보는 편이 안전합니다." },
+      { category: "할인", periodLabel: CHECKED_DATE_LABEL, description: "초코, 바나나, 딸기부터 쿠키앤크림·피스타치오까지 맛 구성이 넓어서 단품보다 맛별 묶음 구성을 먼저 보는 편이 좋습니다." },
+      { category: "쿠폰", periodLabel: CHECKED_DATE_LABEL, description: "자사몰은 신규 회원 쿠폰과 세트 기획전이 함께 보이는 경우가 있어 최종 결제 직전 가격을 다시 확인하는 편이 안전합니다." },
     ],
   },
   {
@@ -296,34 +341,34 @@ const rawShakeBrands: BrandCard[] = [
   },
   {
     brand: "단백하니",
-    storeType: "네이버 스토어",
-    storeUrl: "https://smartstore.naver.com/",
-    note: "현재 등록 쉐이크 4개",
-    productCount: 4,
+    storeType: "공식몰",
+    storeUrl: "https://dailyprotein.co.kr/",
+    note: "현재 등록 쉐이크 3개",
+    productCount: 3,
     events: [
-      { category: "할인", periodLabel: CHECKED_DATE_LABEL, description: "맛별 묶음 할인과 세트 프로모션이 반복적으로 열려 단품보다 세트 구성이 유리한 경우가 많습니다." },
-      { category: "쿠폰", periodLabel: CHECKED_DATE_LABEL, description: "스토어 쿠폰이 붙는 시점이 있어 네이버 스토어 특가 여부를 같이 확인하는 편이 좋습니다." },
+      { category: "할인", periodLabel: CHECKED_DATE_LABEL, description: "시그니처, 초코, 말차 3종 중심으로 운영돼 맛별 묶음이나 세트 구성 가격을 먼저 보는 편이 좋습니다." },
+      { category: "쿠폰", periodLabel: CHECKED_DATE_LABEL, description: "공식몰은 회원 전용 할인이나 장바구니 혜택이 붙는 시점이 있어 최종 결제 단계에서 할인 적용 여부를 다시 보는 편이 좋습니다." },
     ],
   },
   {
     brand: "프로티원",
     storeType: "자사몰",
     storeUrl: "https://proteone.kr/",
-    note: "현재 등록 쉐이크 6개",
-    productCount: 6,
+    note: "현재 등록 쉐이크 5개",
+    productCount: 5,
     events: [
-      { category: "할인", periodLabel: CHECKED_DATE_LABEL, description: "맛별 다중 구성 할인과 기획전 가격 차이가 있는 편이라 대표 상품과 세트 상품을 같이 보는 편이 좋습니다." },
-      { category: "증정", periodLabel: CHECKED_DATE_LABEL, description: "한정 구성 사은품이나 증정 이벤트가 붙는 경우가 있어 장바구니 구성품을 같이 체크할 가치가 있습니다." },
+      { category: "할인", periodLabel: CHECKED_DATE_LABEL, description: "초코, 커피, 딸기, 흑임자, 곡물 5종 중심이라 저당 라인과 맛별 구성 가격을 같이 보는 편이 좋습니다." },
+      { category: "증정", periodLabel: CHECKED_DATE_LABEL, description: "한정 기획 세트나 사은 구성은 시즌별로 달라질 수 있어 장바구니 구성품을 같이 체크할 가치가 있습니다." },
     ],
   },
   {
     brand: "잇더핏",
     storeType: "자사몰",
     storeUrl: "https://itthefit.com/",
-    note: "현재 등록 쉐이크 8개",
-    productCount: 8,
+    note: "현재 등록 쉐이크 9개",
+    productCount: 9,
     events: [
-      { category: "할인", periodLabel: CHECKED_DATE_LABEL, description: "카페 계열 맛과 곡물 계열 맛의 묶음 기획전이 번갈아 열려 맛별 세트 체감가 차이가 큰 편입니다." },
+      { category: "할인", periodLabel: CHECKED_DATE_LABEL, description: "더블초코, 카페라떼, 쿠키앤크림, 미숫가루, 콘 등 맛 스펙트럼이 넓어 맛별 묶음 세트 체감가 차이가 큰 편입니다." },
       { category: "쿠폰", periodLabel: CHECKED_DATE_LABEL, description: "회원 쿠폰과 기획전 할인이 중복되는지 확인하면 실결제 체감가를 더 정확히 볼 수 있습니다." },
     ],
   },
@@ -491,6 +536,7 @@ export default function EventsClient() {
         <div className="flex gap-2 pt-5">
           {(["drink", "bar", "yogurt", "shake"] as const).map((type) => {
             const active = productType === type;
+            const meta = PRODUCT_TYPE_META[type];
             return (
               <button
                 key={type}
@@ -506,7 +552,7 @@ export default function EventsClient() {
                   border: active ? "1px solid var(--accent)" : "1px solid var(--border)",
                 }}
               >
-                {type === "drink" ? "단백질 음료" : type === "bar" ? "단백질 바" : type === "yogurt" ? "단백질 요거트" : "단백질 쉐이크"}
+                {meta.label}
               </button>
             );
           })}
@@ -538,7 +584,7 @@ export default function EventsClient() {
 
         <div className="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {filteredBrands.map((brand) => (
-            <BrandEventCard key={brand.brand} brand={brand} />
+            <BrandEventCard key={brand.brand} brand={brand} productType={productType} />
           ))}
         </div>
 
@@ -551,38 +597,75 @@ export default function EventsClient() {
   );
 }
 
-function BrandEventCard({ brand }: { brand: BrandCard }) {
+function BrandEventCard({ brand, productType }: { brand: BrandCard; productType: ProductType }) {
+  const meta = PRODUCT_TYPE_META[productType];
+
   return (
     <div
-      className="flex h-full flex-col justify-between overflow-hidden rounded-2xl border border-[#d8e2da] bg-[#fffdf8] shadow-[0_10px_24px_rgba(20,40,28,0.05)]"
-      style={{ boxShadow: "0 12px 28px rgba(28, 52, 39, 0.06)" }}
+      className="flex h-full min-h-[320px] flex-col overflow-hidden rounded-2xl border bg-[#fffdf8] shadow-[0_10px_24px_rgba(20,40,28,0.05)] transition-colors"
+      style={{
+        borderColor: meta.accentBorder,
+        boxShadow: "0 12px 28px rgba(28, 52, 39, 0.06)",
+      }}
     >
-      <div className="h-1.5 w-full bg-[#2f5d46]" />
+      <div className="h-1.5 w-full" style={{ background: meta.accentColor }} />
       <div>
-        <div className="border-b border-[#e7eee9] bg-[linear-gradient(135deg,#f8fcf9_0%,#f2f7f4_100%)] px-4 py-4 sm:px-5">
-          <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
-            <div>
-              <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[#6f8b79]">Brand</p>
-              <h2 className="mt-1 text-lg font-bold text-[#224b37]">{brand.brand}</h2>
+        <div
+          className="min-h-[132px] border-b px-5 py-4"
+          style={{
+            borderColor: meta.accentBorder,
+            background: `linear-gradient(135deg, ${meta.accentBg} 0%, #fffdf8 100%)`,
+          }}
+        >
+          <div className="flex items-center justify-between gap-3">
+            <span
+              className="rounded-md bg-white px-2 py-0.5 text-[11px] font-semibold tracking-wide"
+              style={{ color: meta.accentColor }}
+            >
+              {meta.eyebrow}
+            </span>
+            <span
+              className="rounded-full border bg-white px-2.5 py-1 text-[11px] font-semibold text-[#6f7f76]"
+              style={{ borderColor: meta.accentBorder }}
+            >
+              제품 {brand.productCount}개
+            </span>
+          </div>
+
+          <div className="mt-4 flex items-start gap-3">
+            <span
+              aria-hidden
+              className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full border bg-white text-lg"
+              style={{ borderColor: meta.accentBorder }}
+            >
+              {meta.emoji}
+            </span>
+            <div className="min-w-0">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[#6f7f76]">
+                Brand
+              </p>
+              <h2 className="mt-1 text-lg font-bold" style={{ color: meta.accentColor }}>
+                {brand.brand}
+              </h2>
               <p className="mt-1 text-xs text-[#7a837d]">{brand.note}</p>
             </div>
-            <div className="flex flex-wrap items-center gap-2 sm:flex-col sm:items-end">
-              <span
-                className="shrink-0 rounded-full border border-[#cfe0d5] bg-white px-2.5 py-1 text-[11px] font-semibold text-[#2f5d46]"
-              >
-                제품 {brand.productCount}개
-              </span>
-              <span
-                className="shrink-0 rounded-md px-2.5 py-1 text-[11px] font-medium"
-                style={{ background: "#ebf4ee", color: "#486654" }}
-              >
-                {brand.storeType}
-              </span>
-            </div>
+          </div>
+
+          <div className="mt-4">
+            <span
+              className="inline-flex rounded-full border px-2.5 py-1 text-[11px] font-medium"
+              style={{
+                borderColor: meta.accentBorder,
+                background: "#fff",
+                color: meta.accentColor,
+              }}
+            >
+              {brand.storeType}
+            </span>
           </div>
         </div>
 
-        <ul className="space-y-3 px-4 pb-2 pt-4 sm:px-5">
+        <ul className="space-y-3 px-5 pb-2 pt-4">
           {brand.events.map((event) => {
             const color = CATEGORY_COLOR[event.category];
             return (
@@ -610,12 +693,16 @@ function BrandEventCard({ brand }: { brand: BrandCard }) {
         </ul>
       </div>
 
-      <div className="px-4 pb-4 pt-3 sm:px-5 sm:pb-5">
+      <div className="mt-auto px-5 pb-5 pt-3">
         <a
           href={brand.storeUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center justify-center rounded-lg border border-[#cfe0d5] bg-white py-2.5 text-xs font-semibold text-[#2f5d46] transition-colors hover:bg-[#eef5f0] hover:text-[#1f4834]"
+          className="flex items-center justify-center rounded-lg border bg-white py-2.5 text-xs font-semibold transition-colors"
+          style={{
+            borderColor: meta.accentBorder,
+            color: meta.accentColor,
+          }}
         >
           {brand.storeType === "네이버 스토어" ? "네이버 스토어 방문" : "판매처 방문"} →
         </a>

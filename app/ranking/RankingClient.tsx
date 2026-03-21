@@ -8,7 +8,7 @@ import type { ProductDetailProps } from "../data/products";
 import CategoryTabs from "../components/CategoryTabs";
 import ScoredProductCard from "../components/ScoredProductCard";
 import { getCategoryLabel, type ProductCategory } from "../lib/categories";
-import { getRankingHubLinks } from "../lib/trafficLinks";
+import { getBrandHubLinks, getRankingHubLinks } from "../lib/trafficLinks";
 
 type GradeMetric = "density" | "diet" | "performance";
 
@@ -124,6 +124,13 @@ export default function RankingClient({ rankings }: RankingClientProps) {
           description="기준 설명, 맞춤 추천, 주제형 랜딩으로 이어지도록 주요 허브를 연결했습니다."
           links={getRankingHubLinks()}
           className="mt-6"
+        />
+
+        <RelatedLinkCards
+          title="브랜드별로 다시 보기"
+          description="상위권 제품을 본 뒤 브랜드 허브에서 같은 브랜드의 다른 제품군까지 이어서 확인할 수 있습니다."
+          links={getBrandHubLinks()}
+          className="mt-4"
         />
 
         {items.length === 0 ? (
