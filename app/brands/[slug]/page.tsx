@@ -1,4 +1,4 @@
-import Link from "next/link";
+ï»¿import Link from "next/link";
 import { notFound } from "next/navigation";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
@@ -23,12 +23,12 @@ export async function generateMetadata({ params }: PageProps) {
   const brand = slugToBrand(slug, brands.map((item) => item.brand));
 
   if (!brand) {
-    return { title: "ºê·£µå ÆäÀÌÁö¸¦ Ã£À» ¼ö ¾øÀ½ | ProteinLab" };
+    return { title: "ë¸Œëœë“œ í˜ì´ì§€ë¥¼ ì°¾ì„ ìˆ˜ ì—†ìŒ | ProteinLab" };
   }
 
   return {
-    title: `${brand} ´Ü¹éÁú Á¦Ç° ¸ğÀ½ | ProteinLab`,
-    description: `${brand} ºê·£µåÀÇ ´Ü¹éÁú À½·á, ¹Ù, ¿ä°ÅÆ®, ½¦ÀÌÅ© Á¦Ç°À» ÇÑ °÷¿¡¼­ ºñ±³ÇÕ´Ï´Ù.`,
+    title: `${brand} ë‹¨ë°±ì§ˆ ì œí’ˆ ëª¨ìŒ | ProteinLab`,
+    description: `${brand} ë¸Œëœë“œì˜ ë‹¨ë°±ì§ˆ ìŒë£Œ, ë°”, ìš”ê±°íŠ¸, ì‰ì´í¬ ì œí’ˆì„ í•œ ê³³ì—ì„œ ë¹„êµí•©ë‹ˆë‹¤.`,
   };
 }
 
@@ -52,33 +52,33 @@ export default async function BrandPage({ params }: PageProps) {
         <div className="mx-auto max-w-[1200px] px-4 py-6 md:px-6 md:py-7">
           <nav className="mb-3 text-sm text-[var(--foreground-muted)]">
             <Link href="/brands" className="hover:text-[var(--accent)]">
-              ºê·£µå
+              ë¸Œëœë“œ
             </Link>
             <span className="mx-2">/</span>
             <span className="text-[var(--foreground)]">{brand.brand}</span>
           </nav>
           <h1 className="text-2xl font-bold leading-[1.25] text-[var(--foreground)] md:text-3xl">
-            {brand.brand} ´Ü¹éÁú Á¦Ç° ¸ğÀ½
+            {brand.brand} ë‹¨ë°±ì§ˆ ì œí’ˆ ëª¨ìŒ
           </h1>
           <p className="mt-2 max-w-[760px] text-sm leading-6 text-[var(--foreground-muted)] md:text-[15px]">
-            {brand.brand} ºê·£µå Á¦Ç° {brand.total}°³¸¦ ¸ğ¾Ò½À´Ï´Ù. Á¦Ç° »ó¼¼¿Í ºñ±³ ÆäÀÌÁö·Î ¹Ù·Î ÀÌµ¿ÇÒ ¼ö ÀÖ°Ô ±¸¼ºÇß½À´Ï´Ù.
+            {brand.brand} ë¸Œëœë“œ ì œí’ˆ {brand.total}ê°œë¥¼ ëª¨ì•˜ìŠµë‹ˆë‹¤. ì œí’ˆ ìƒì„¸ì™€ ë¹„êµ í˜ì´ì§€ë¡œ ë°”ë¡œ ì´ë™í•  ìˆ˜ ìˆê²Œ êµ¬ì„±í–ˆìŠµë‹ˆë‹¤.
           </p>
         </div>
       </section>
 
       <main className="mx-auto max-w-[1200px] px-4 pb-12 pt-6 md:px-6">
         <section className="rounded-2xl border border-[#e8e6e3] bg-[#FFFDF8] p-5">
-          <h2 className="text-base font-semibold text-[var(--foreground)]">ºê·£µå ¿ä¾à</h2>
+          <h2 className="text-base font-semibold text-[var(--foreground)]">ë¸Œëœë“œ ìš”ì•½</h2>
           <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">
-            Ä«Å×°í¸®: {brand.categories.map((category) => getCategoryLabel(category as ProductCategory)).join(", ")} / ÃÑ Á¦Ç° ¼ö: {brand.total}°³
+            ì¹´í…Œê³ ë¦¬: {brand.categories.map((category) => getCategoryLabel(category as ProductCategory)).join(", ")} / ì´ ì œí’ˆ ìˆ˜: {brand.total}ê°œ
           </p>
         </section>
 
         <section className="mt-8">
           <div className="mb-4 space-y-1">
-            <h2 className="text-lg font-bold text-[var(--foreground)]">Á¦Ç° ¸ñ·Ï</h2>
+            <h2 className="text-lg font-bold text-[var(--foreground)]">ì œí’ˆ ëª©ë¡</h2>
             <p className="text-sm leading-6 text-[var(--foreground-muted)]">
-              ºê·£µå °Ë»ö ÈÄ ¹Ù·Î Á¦Ç° »ó¼¼¿Í ºñ±³ ÆäÀÌÁö·Î ÀÌµ¿ÇÒ ¼ö ÀÖ°Ô ±¸¼ºÇß½À´Ï´Ù.
+              ë¸Œëœë“œ ê²€ìƒ‰ í›„ ë°”ë¡œ ì œí’ˆ ìƒì„¸ì™€ ë¹„êµ í˜ì´ì§€ë¡œ ì´ë™í•  ìˆ˜ ìˆê²Œ êµ¬ì„±í–ˆìŠµë‹ˆë‹¤.
             </p>
           </div>
           <div className="grid grid-cols-2 gap-3 md:gap-6 lg:grid-cols-3">

@@ -1,4 +1,4 @@
-import Link from "next/link";
+ï»¿import Link from "next/link";
 import { notFound } from "next/navigation";
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
@@ -17,7 +17,7 @@ export async function generateMetadata({ params }: PageProps) {
   const topic = getSearchTopicBySlug(slug);
 
   if (!topic) {
-    return { title: "°Ë»ö ÁÖÁ¦¸¦ Ã£À» ¼ö ¾øÀ½ | ProteinLab" };
+    return { title: "ê²€ìƒ‰ ì£¼ì œë¥¼ ì°¾ì„ ìˆ˜ ì—†ìŒ | ProteinLab" };
   }
 
   return {
@@ -64,7 +64,7 @@ export default async function TopicLandingPage({ params }: PageProps) {
         <div className="mx-auto max-w-[1200px] px-4 py-6 md:px-6 md:py-7">
           <nav className="mb-3 text-sm text-[var(--foreground-muted)]">
             <Link href="/topics" className="hover:text-[var(--accent)]">
-              °Ë»ö ÁÖÁ¦
+              ê²€ìƒ‰ ì£¼ì œ
             </Link>
             <span className="mx-2">/</span>
             <span className="text-[var(--foreground)]">{topic.title}</span>
@@ -81,7 +81,7 @@ export default async function TopicLandingPage({ params }: PageProps) {
 
       <main className="mx-auto max-w-[1200px] px-4 pb-12 pt-6 md:px-6">
         <section className="rounded-2xl border border-[#e8e6e3] bg-[#FFFDF8] p-5">
-          <h2 className="text-base font-semibold text-[var(--foreground)]">ÀÌ ÆäÀÌÁö¿¡¼­ º¸´Â ±âÁØ</h2>
+          <h2 className="text-base font-semibold text-[var(--foreground)]">ì´ í˜ì´ì§€ì—ì„œ ë³´ëŠ” ê¸°ì¤€</h2>
           <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">{topic.intro}</p>
           <ul className="mt-4 space-y-2">
             {topic.bullets.map((bullet) => (
@@ -100,10 +100,10 @@ export default async function TopicLandingPage({ params }: PageProps) {
           <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
             <div>
               <h2 className="text-base font-semibold text-[var(--foreground)]">
-                ¹Ù·Î ºñ±³ÇÏ·¯ °¡±â
+                ë°”ë¡œ ë¹„êµí•˜ëŸ¬ ê°€ê¸°
               </h2>
               <p className="mt-1 text-sm leading-6 text-[var(--foreground-muted)]">
-                Á¶°Ç ¼³¸í¸¸ º¸°í ³¡³ªÁö ¾Êµµ·Ï ½ÇÁ¦ ºñ±³ ÆäÀÌÁö·Î ¹Ù·Î ¿¬°áÇÕ´Ï´Ù.
+                ì¡°ê±´ ì„¤ëª…ë§Œ ë³´ê³  ëë‚˜ì§€ ì•Šë„ë¡ ì‹¤ì œ ë¹„êµ í˜ì´ì§€ë¡œ ë°”ë¡œ ì—°ê²°í•©ë‹ˆë‹¤.
               </p>
             </div>
             <Link
