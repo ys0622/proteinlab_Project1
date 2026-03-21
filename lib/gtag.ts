@@ -30,3 +30,24 @@ export const trackPurchaseClick = ({
   });
 };
 
+export const trackNavigationClick = ({
+  section,
+  destination,
+  label,
+}: {
+  section: string;
+  destination: string;
+  label: string;
+}) => {
+  if (typeof window === "undefined") return;
+  if (typeof window.gtag !== "function") return;
+
+  window.gtag("event", "navigation_click", {
+    event_category: "engagement",
+    event_label: `${section} | ${label}`,
+    section,
+    destination,
+    label,
+  });
+};
+

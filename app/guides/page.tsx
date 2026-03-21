@@ -1,14 +1,16 @@
 import Link from "next/link";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import RelatedLinkCards from "../components/RelatedLinkCards";
 import { getAdminGuidesStaticRuntimeData } from "@/app/lib/adminGuidesStaticRuntime";
+import { getGuidesHubLinks } from "../lib/trafficLinks";
 
 export const dynamic = "force-dynamic";
 
 export const metadata = {
-  title: "단백질 가이드 | ProteinLab",
+  title: "단백질 가이드 모음 | 고단백·저당·식사대용 선택법 | ProteinLab",
   description:
-    "단백질 기초, 제품 선택, 섭취 전략, 운동 라이프스타일까지 한 번에 탐색하는 ProteinLab 가이드 허브입니다.",
+    "단백질 기초부터 고단백, 저당, 식사대용, 운동 후 섭취 기준까지 한 번에 탐색하는 ProteinLab 가이드 허브입니다.",
 };
 
 const clampTwoLines = {
@@ -47,6 +49,13 @@ export default async function GuidesPage() {
       </section>
 
       <main className="mx-auto max-w-[1200px] px-4 pb-12 md:px-6">
+        <RelatedLinkCards
+          title="가이드 다음에 바로 볼 페이지"
+          description="기준을 읽은 뒤 바로 비교, 순위, 추천으로 이동할 수 있게 연결했습니다."
+          links={getGuidesHubLinks()}
+          className="mt-6"
+        />
+
         <div className="mt-6 grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
           {cms.mainPage.tracks.map((track) => {
             const section = cms.sections.find((item) => item.id === track.id || item.slug === track.href.replace("/guides/", ""));

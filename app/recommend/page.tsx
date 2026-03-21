@@ -4,9 +4,9 @@ import RecommendClient from "./RecommendClient";
 import { getProductsByCategoryAsync } from "../lib/productData";
 
 export const metadata = {
-  title: "단백질 추천 | 단백질 음료·바·요거트 추천 | ProteinLab",
+  title: "단백질 추천 | 음료·바·요거트·쉐이크 맞춤 추천 | ProteinLab",
   description:
-    "나에게 맞는 단백질 음료, 단백질 바, 단백질 요거트를 추천합니다. 저당, 그릭, 드링킹, 대용량, 고단백 조건까지 한 번에 비교해보세요.",
+    "운동 목적과 조건에 맞는 단백질 음료, 바, 요거트, 쉐이크를 추천합니다. 저당, 고단백, 그릭, 드링킹, 식사대용 조건까지 한 번에 비교해보세요.",
 };
 
 export default async function RecommendPage() {

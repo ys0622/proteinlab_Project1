@@ -1,8 +1,10 @@
 import fs from "node:fs/promises";
 import path from "node:path";
 import type { MetadataRoute } from "next";
+import { getAllCompareLandings } from "./data/compareLandings";
 import { getAllSearchTopics } from "./data/searchTopics";
 import { getAllCurations } from "./lib/curationSystem";
+import { getBrandSummary } from "./lib/brandHubs";
 import {
   mockProducts,
   barProductsWithGrades,
@@ -25,6 +27,7 @@ const staticRoutes = [
   "/shake",
   "/yogurt",
   "/topics",
+  "/brands",
   "/search",
   "/favorites",
 ] as const;
@@ -58,8 +61,16 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   const curationRoutes = getAllCurations().map((curation) => `/curation/${curation.slug}`);
   const topicRoutes = getAllSearchTopics().map((topic) => `/topics/${topic.slug}`);
+  const compareRoutes = getAllCompareLandings().map((landing) => `/compare/${landing.slug}`);
   const allRoutes = Array.from(
-    new Set([...staticRoutes, ...guideRoutes, ...curationStaticRoutes, ...curationRoutes, ...topicRoutes]),
+    new Set([
+      ...staticRoutes,
+      ...guideRoutes,
+      ...curationStaticRoutes,
+      ...curationRoutes,
+      ...topicRoutes,
+      ...compareRoutes,
+    ]),
   );
 
   const allProducts = [
@@ -71,12 +82,21 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const productRoutes = allProducts
     .filter((p) => p.slug)
     .map((p) => ({ slug: p.slug! }));
+  const brandEntries: MetadataRoute.Sitemap = getBrandSummary(allProducts).map((brand) => ({
+    url: `${SITE_URL}/brands/${brand.slug}`,
+    lastModified: new Date(),
+    changeFrequency: "weekly",
+    priority: 0.72,
+  }));
 
   const staticEntries: MetadataRoute.Sitemap = allRoutes.map((route) => ({
     url: `${SITE_URL}${route}`,
     lastModified: new Date(),
     changeFrequency:
-      route.startsWith("/guides/") || route.startsWith("/curation/") || route.startsWith("/topics/")
+      route.startsWith("/guides/") ||
+      route.startsWith("/curation/") ||
+      route.startsWith("/topics/") ||
+      route.startsWith("/compare/")
         ? "weekly"
         : "daily",
     priority:
@@ -88,6 +108,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
             ? 0.85
             : route.startsWith("/topics/")
               ? 0.83
+              : route.startsWith("/compare/")
+                ? 0.82
             : route.startsWith("/guides/")
               ? 0.8
               : 0.7,
@@ -100,5 +122,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.75,
   }));
 
-  return [...staticEntries, ...productEntries];
+  return [...staticEntries, ...brandEntries, ...productEntries];
 }

@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import AffiliateDisclosure from "@/app/components/AffiliateDisclosure";
 import CategoryTabs from "@/app/components/CategoryTabs";
+import RelatedLinkCards from "@/app/components/RelatedLinkCards";
 import ScoredProductCard from "@/app/components/ScoredProductCard";
 import type { ProductCardProps } from "@/app/components/ProductCard";
 import {
@@ -12,6 +13,7 @@ import {
   getCategoryLabel,
   type ProductCategory,
 } from "@/app/lib/categories";
+import { getRecommendHubLinks } from "@/app/lib/trafficLinks";
 
 type ProductType = ProductCategory;
 type Step = 0 | 1 | 2 | 3 | 4 | "loading" | "result";
@@ -509,6 +511,13 @@ export default function RecommendClient({ categoryCounts }: RecommendClientProps
             onSelect={handleCategoryChange}
             stickyMobile
             className="mb-4"
+          />
+
+          <RelatedLinkCards
+            title="추천과 함께 보면 좋은 페이지"
+            description="추천 결과를 본 뒤 전체 순위, 기준 가이드, 주제형 랜딩까지 이어서 탐색할 수 있습니다."
+            links={getRecommendHubLinks()}
+            className="mt-0"
           />
 
           {step === 0 && (

@@ -3,10 +3,12 @@
 import { useState } from "react";
 import Link from "next/link";
 import AffiliateDisclosure from "../components/AffiliateDisclosure";
+import RelatedLinkCards from "../components/RelatedLinkCards";
 import type { ProductDetailProps } from "../data/products";
 import CategoryTabs from "../components/CategoryTabs";
 import ScoredProductCard from "../components/ScoredProductCard";
 import { getCategoryLabel, type ProductCategory } from "../lib/categories";
+import { getRankingHubLinks } from "../lib/trafficLinks";
 
 type GradeMetric = "density" | "diet" | "performance";
 
@@ -116,6 +118,13 @@ export default function RankingClient({ rankings }: RankingClientProps) {
         <p className="mt-4 text-xs text-[#999]">
           {getMetricGuide(productType, metric)} · 총 {items.length}개 제품
         </p>
+
+        <RelatedLinkCards
+          title="순위 다음에 보기 좋은 페이지"
+          description="기준 설명, 맞춤 추천, 주제형 랜딩으로 이어지도록 주요 허브를 연결했습니다."
+          links={getRankingHubLinks()}
+          className="mt-6"
+        />
 
         {items.length === 0 ? (
           <div className="mt-4 rounded-2xl border border-[var(--border)] bg-[var(--background-card)] px-5 py-10 text-center">
