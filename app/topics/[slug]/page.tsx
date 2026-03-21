@@ -2,7 +2,6 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
-import RelatedLinkCards from "../../components/RelatedLinkCards";
 import { getAllSearchTopics, getSearchTopicBySlug } from "../../data/searchTopics";
 
 interface PageProps {
@@ -18,7 +17,7 @@ export async function generateMetadata({ params }: PageProps) {
   const topic = getSearchTopicBySlug(slug);
 
   if (!topic) {
-    return { title: "ê²€ìƒ‰ ì£¼ì œë¥¼ ì°¾ì„ ìˆ˜ ì—†ìŒ | ProteinLab" };
+    return { title: "°Ë»ö ÁÖÁ¦¸¦ Ã£À» ¼ö ¾øÀ½ | ProteinLab" };
   }
 
   return {
@@ -65,7 +64,7 @@ export default async function TopicLandingPage({ params }: PageProps) {
         <div className="mx-auto max-w-[1200px] px-4 py-6 md:px-6 md:py-7">
           <nav className="mb-3 text-sm text-[var(--foreground-muted)]">
             <Link href="/topics" className="hover:text-[var(--accent)]">
-              ê²€ìƒ‰ ì£¼ì œ
+              °Ë»ö ÁÖÁ¦
             </Link>
             <span className="mx-2">/</span>
             <span className="text-[var(--foreground)]">{topic.title}</span>
@@ -82,7 +81,7 @@ export default async function TopicLandingPage({ params }: PageProps) {
 
       <main className="mx-auto max-w-[1200px] px-4 pb-12 pt-6 md:px-6">
         <section className="rounded-2xl border border-[#e8e6e3] bg-[#FFFDF8] p-5">
-          <h2 className="text-base font-semibold text-[var(--foreground)]">ì´ í˜ì´ì§€ì—ì„œ ë³¼ ìˆ˜ ìˆëŠ” ê²ƒ</h2>
+          <h2 className="text-base font-semibold text-[var(--foreground)]">ÀÌ ÆäÀÌÁö¿¡¼­ º¸´Â ±âÁØ</h2>
           <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">{topic.intro}</p>
           <ul className="mt-4 space-y-2">
             {topic.bullets.map((bullet) => (
@@ -101,10 +100,10 @@ export default async function TopicLandingPage({ params }: PageProps) {
           <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
             <div>
               <h2 className="text-base font-semibold text-[var(--foreground)]">
-                ë°”ë¡œ ë¹„êµí•˜ëŸ¬ ê°€ê¸°
+                ¹Ù·Î ºñ±³ÇÏ·¯ °¡±â
               </h2>
               <p className="mt-1 text-sm leading-6 text-[var(--foreground-muted)]">
-                ì¡°ê±´í˜• ëœë”©ì—ì„œ ì„¤ëª…ë§Œ ë³´ê³  ëë‚˜ì§€ ì•Šë„ë¡ ì‹¤ì œ ë¹„êµ í˜ì´ì§€ë¡œ ë°”ë¡œ ì—°ê²°í•©ë‹ˆë‹¤.
+                Á¶°Ç ¼³¸í¸¸ º¸°í ³¡³ªÁö ¾Êµµ·Ï ½ÇÁ¦ ºñ±³ ÆäÀÌÁö·Î ¹Ù·Î ¿¬°áÇÕ´Ï´Ù.
               </p>
             </div>
             <Link
@@ -115,12 +114,6 @@ export default async function TopicLandingPage({ params }: PageProps) {
             </Link>
           </div>
         </section>
-
-        <RelatedLinkCards
-          title="í•¨ê»˜ ë³´ë©´ ì¢‹ì€ í˜ì´ì§€"
-          description="ê°€ì´ë“œ, ìˆœìœ„, ì¶”ì²œ, ì¹´í…Œê³ ë¦¬ í˜ì´ì§€ë¥¼ í•¨ê»˜ ì—°ê²°í•´ íƒìƒ‰ ê²½ë¡œë¥¼ ë„“í˜”ìŠµë‹ˆë‹¤."
-          links={topic.relatedLinks}
-        />
       </main>
 
       <Footer />

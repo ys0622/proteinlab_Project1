@@ -3,13 +3,11 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import CompareTable from "../components/CompareTable";
-import RelatedLinkCards from "../components/RelatedLinkCards";
 import { useCompare } from "../context/CompareContext";
-import { getAllCompareLandings } from "../data/compareLandings";
 import { getProductBySlug } from "../data/products";
 import { getProductImageUrl } from "../lib/productImage";
 import type { CompareColumnId } from "../lib/compareColumns";
@@ -17,16 +15,14 @@ import { COMPARE_COLUMNS } from "../lib/compareColumns";
 import type { ProductDetailProps } from "../data/products";
 
 const MAX_PRODUCTS = 4;
-const compareLandingLinks = getAllCompareLandings().slice(0, 6).map((item) => ({
-  href: `/compare/${item.slug}`,
-  title: item.title,
-  description: item.description,
-}));
 
 export default function ComparePage() {
   const router = useRouter();
   const { selectedSlugs, remove, clear } = useCompare();
-  const [products, setProducts] = useState<ProductDetailProps[]>([]);
+  const [fetchedState, setFetchedState] = useState<{
+    slugs: string;
+    products: ProductDetailProps[];
+  } | null>(null);
   const [visibleIds, setVisibleIds] = useState<CompareColumnId[]>([
     "proteinSource",
     "proteinPerServing",
@@ -40,26 +36,40 @@ export default function ComparePage() {
     "priceLinks",
   ]);
 
+  const fallbackProducts = useMemo(
+    () =>
+      selectedSlugs
+      .map((slug) => getProductBySlug(slug))
+      .filter((p): p is NonNullable<typeof p> => p != null),
+    [selectedSlugs]
+  );
+
   useEffect(() => {
     if (selectedSlugs.length === 0) {
-      setProducts([]);
       return;
     }
-    const fallback = selectedSlugs
-      .map((slug) => getProductBySlug(slug))
-      .filter((p): p is NonNullable<typeof p> => p != null);
-    setProducts(fallback);
-
     const slugs = selectedSlugs.join(",");
+    let cancelled = false;
+
     fetch(`/api/products/compare?slugs=${encodeURIComponent(slugs)}`)
       .then((res) => res.json())
       .then((data: { products?: ProductDetailProps[] }) => {
-        if (Array.isArray(data.products) && data.products.length > 0) {
-          setProducts(data.products);
+        if (!cancelled && Array.isArray(data.products) && data.products.length > 0) {
+          setFetchedState({ slugs, products: data.products });
         }
       })
       .catch(() => {});
+
+    return () => {
+      cancelled = true;
+    };
   }, [selectedSlugs]);
+
+  const slugsKey = selectedSlugs.join(",");
+  const products =
+    fetchedState?.slugs === slugsKey && fetchedState.products.length > 0
+      ? fetchedState.products
+      : fallbackProducts;
 
   const toggleColumn = (id: CompareColumnId) => {
     setVisibleIds((prev) =>
@@ -119,12 +129,6 @@ export default function ComparePage() {
             >
               제품 목록으로
             </Link>
-            <RelatedLinkCards
-              title="바로 볼 수 있는 비교 랜딩"
-              description="자주 비교되는 제품 조합은 고정 URL로도 제공합니다."
-              links={compareLandingLinks}
-              className="mt-8"
-            />
           </div>
         </section>
       </div>
@@ -254,11 +258,6 @@ export default function ComparePage() {
 
           {/* 비교 테이블 */}
           <CompareTable products={products} visibleColumnIds={visibleIds} />
-          <RelatedLinkCards
-            title="많이 찾는 비교 랜딩"
-            description="브랜드 비교와 카테고리 비교를 바로 열 수 있는 고정 비교 페이지입니다."
-            links={compareLandingLinks}
-          />
         </div>
       </main>
       <Footer />
