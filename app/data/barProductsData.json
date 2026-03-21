@@ -713,7 +713,8 @@
     "density": "5.45g/100kcal",
     "productUrl": "#",
     "productType": "bar",
-    "gradeTags": []
+    "gradeTags": [],
+    "officialUrl": "https://emart.ssg.com/entity/nobrands.ssg"
   },
   {
     "slug": "thedanbaek-crunchbar-choco",
@@ -1302,7 +1303,8 @@
     "productUrl": "#",
     "productType": "bar",
     "gradeTags": [],
-    "naverUrl": "https://search.shopping.naver.com/search/all?query=%ED%81%AC%EB%9D%BC%EC%9A%B4%20%EA%B3%A0%EB%8B%A8%EB%B0%B1%EC%A7%88%EC%B4%88%EC%BD%94%EB%B0%94%2032g&prevQuery=%ED%81%AC%EB%9D%BC%EC%9A%B4%20%EA%B3%A0%EB%8B%A8%EB%B0%B1%EC%A7%88%EC%B4%88%EC%BD%94%EB%B0%94%2032g%20X%2012&vertical=search"
+    "naverUrl": "https://search.shopping.naver.com/search/all?query=%ED%81%AC%EB%9D%BC%EC%9A%B4%20%EA%B3%A0%EB%8B%A8%EB%B0%B1%EC%A7%88%EC%B4%88%EC%BD%94%EB%B0%94%2032g&prevQuery=%ED%81%AC%EB%9D%BC%EC%9A%B4%20%EA%B3%A0%EB%8B%A8%EB%B0%B1%EC%A7%88%EC%B4%88%EC%BD%94%EB%B0%94%2032g%20X%2012&vertical=search",
+    "officialUrl": "https://www.crown.co.kr/"
   },
   {
     "slug": "calobye-daily-nuts-proteinbar",
@@ -1500,7 +1502,8 @@
     "productType": "bar",
     "gradeTags": [],
     "coupangUrl": "https://www.coupang.com/vp/products/5836348958?itemId=10115318535&vendorItemId=77398106862&pickType=COU_PICK&q=%EA%B3%B0%EA%B3%B0+%EB%8B%A8%EB%B0%B1%EC%A7%88%EB%B0%94+%EB%AF%B8%EB%8B%88&searchId=33753379371275&sourceType=search&itemsCount=36&searchRank=0&rank=0&traceId=",
-    "naverUrl": "https://search.shopping.naver.com/search/all?query=%EA%B3%B0%EA%B3%B0%20%EB%8B%A8%EB%B0%B1%EC%A7%88%EB%B0%94%20%EB%AF%B8%EB%8B%88&prevQuery=%EB%8B%A5%ED%84%B0%EC%9C%A0%20%ED%94%84%EB%A1%9C%20%EB%8B%A8%EB%B0%B1%EC%A7%88%EB%B0%94%20%ED%81%AC%EB%9F%B0%EC%B9%98%2070g%2C%201%EA%B0%9C%EC%9E%85%2C%201%EA%B0%9C&vertical=search"
+    "naverUrl": "https://search.shopping.naver.com/search/all?query=%EA%B3%B0%EA%B3%B0%20%EB%8B%A8%EB%B0%B1%EC%A7%88%EB%B0%94%20%EB%AF%B8%EB%8B%88&prevQuery=%EB%8B%A5%ED%84%B0%EC%9C%A0%20%ED%94%84%EB%A1%9C%20%EB%8B%A8%EB%B0%B1%EC%A7%88%EB%B0%94%20%ED%81%AC%EB%9F%B0%EC%B9%98%2070g%2C%201%EA%B0%9C%EC%9E%85%2C%201%EA%B0%9C&vertical=search",
+    "officialUrl": "https://www.coupang.com/np/search?q=%EA%B3%B0%EA%B3%B0+%EB%8B%A8%EB%B0%B1%EB%B0%94"
   },
   {
     "slug": "nobrand-proteinbar-mini",
@@ -1519,7 +1522,8 @@
     "productType": "bar",
     "gradeTags": [],
     "coupangUrl": "https://www.coupang.com/vp/products/8317838740?itemId=17970195889&vendorItemId=91862024634&q=%EB%85%B8%EB%B8%8C%EB%9E%9C%EB%93%9C+%EB%8B%A8%EB%B0%B1%EC%A7%88%EB%B0%94+%EB%AF%B8%EB%8B%88&searchId=b0617e81939253&sourceType=search&itemsCount=36&searchRank=0&rank=0&traceId=mmyltrqg",
-    "naverUrl": "https://search.shopping.naver.com/search/all?query=%EB%85%B8%EB%B8%8C%EB%9E%9C%EB%93%9C%20%EB%8B%A8%EB%B0%B1%EC%A7%88%EB%B0%94%20%EB%AF%B8%EB%8B%88&prevQuery=%EB%85%B8%EB%B8%8C%EB%9E%9C%EB%93%9C%20%EB%8B%A8%EB%B0%B1%EC%A7%88%EB%B0%94%20%EC%B4%88%EC%BD%94&vertical=search"
+    "naverUrl": "https://search.shopping.naver.com/search/all?query=%EB%85%B8%EB%B8%8C%EB%9E%9C%EB%93%9C%20%EB%8B%A8%EB%B0%B1%EC%A7%88%EB%B0%94%20%EB%AF%B8%EB%8B%88&prevQuery=%EB%85%B8%EB%B8%8C%EB%9E%9C%EB%93%9C%20%EB%8B%A8%EB%B0%B1%EC%A7%88%EB%B0%94%20%EC%B4%88%EC%BD%94&vertical=search",
+    "officialUrl": "https://emart.ssg.com/entity/nobrands.ssg"
   },
   {
     "slug": "lottewellfood-easyprotein-highprotein-crispy",
@@ -1538,7 +1542,8 @@
     "productType": "bar",
     "gradeTags": [],
     "coupangUrl": "https://www.coupang.com/vp/products/8451619609?itemId=24484892478&vendorItemId=91548718424&pickType=COU_PICK&q=%EC%9D%B4%EC%A7%80%ED%94%84%EB%A1%9C%ED%8B%B4%20%EA%B3%A0%EB%8B%A8%EB%B0%B1%EC%A7%88%EB%B0%94%20(%ED%81%AC%EB%A6%AC%EC%8A%A4%ED%94%BC)&searchId=3dd04431884316&sourceType=search&itemsCount=36&searchRank=0&rank=0",
-    "naverUrl": "https://search.shopping.naver.com/search/all?query=%EC%9D%B4%EC%A7%80%ED%94%84%EB%A1%9C%ED%8B%B4%20%EA%B3%A0%EB%8B%A8%EB%B0%B1%EC%A7%88%EB%B0%94%20(%ED%81%AC%EB%A6%AC%EC%8A%A4%ED%94%BC)&prevQuery=%EC%9D%B4%EC%A7%80%ED%94%84%EB%A1%9C%ED%8B%B4%20%EC%97%90%EB%84%88%EC%A7%80%EB%8B%A8%EB%B0%B1%EC%A7%88%EB%B0%94&vertical=search"
+    "naverUrl": "https://search.shopping.naver.com/search/all?query=%EC%9D%B4%EC%A7%80%ED%94%84%EB%A1%9C%ED%8B%B4%20%EA%B3%A0%EB%8B%A8%EB%B0%B1%EC%A7%88%EB%B0%94%20(%ED%81%AC%EB%A6%AC%EC%8A%A4%ED%94%BC)&prevQuery=%EC%9D%B4%EC%A7%80%ED%94%84%EB%A1%9C%ED%8B%B4%20%EC%97%90%EB%84%88%EC%A7%80%EB%8B%A8%EB%B0%B1%EC%A7%88%EB%B0%94&vertical=search",
+    "officialUrl": "https://www.lottemart.com/"
   },
   {
     "slug": "lottewellfood-easyprotein-energy-bar",
@@ -1557,6 +1562,7 @@
     "productType": "bar",
     "gradeTags": [],
     "coupangUrl": "https://www.coupang.com/vp/products/8710855849?itemId=25589417080&vendorItemId=85321281493&q=%EC%9D%B4%EC%A7%80%ED%94%84%EB%A1%9C%ED%8B%B4+%EC%97%90%EB%84%88%EC%A7%80%EB%8B%A8%EB%B0%B1%EC%A7%88%EB%B0%94&searchId=50001e6c888645&sourceType=search&itemsCount=36&searchRank=0&rank=0&traceId=mmylpwwq",
-    "naverUrl": "https://search.shopping.naver.com/search/all?query=%EC%9D%B4%EC%A7%80%ED%94%84%EB%A1%9C%ED%8B%B4%20%EC%97%90%EB%84%88%EC%A7%80%EB%8B%A8%EB%B0%B1%EC%A7%88%EB%B0%94&prevQuery=%EB%9E%A9%EB%85%B8%EC%89%AC%20%ED%91%B8%EB%93%9C%EB%B0%94%20%EB%A7%88%EC%9D%BC%EB%93%9C%20%EC%B4%88%EC%BD%94&vertical=search"
+    "naverUrl": "https://search.shopping.naver.com/search/all?query=%EC%9D%B4%EC%A7%80%ED%94%84%EB%A1%9C%ED%8B%B4%20%EC%97%90%EB%84%88%EC%A7%80%EB%8B%A8%EB%B0%B1%EC%A7%88%EB%B0%94&prevQuery=%EB%9E%A9%EB%85%B8%EC%89%AC%20%ED%91%B8%EB%93%9C%EB%B0%94%20%EB%A7%88%EC%9D%BC%EB%93%9C%20%EC%B4%88%EC%BD%94&vertical=search",
+    "officialUrl": "https://www.lottemart.com/"
   }
 ]
