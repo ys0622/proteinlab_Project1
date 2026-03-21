@@ -688,6 +688,25 @@ export default function RecommendClient({ categoryCounts }: RecommendClientProps
             </div>
           )}
 
+          {step === "result" && !result && !error && (
+            <div className="max-w-lg mx-auto">
+              <div className="border border-[#e8e6e3] rounded-xl bg-white text-center py-12">
+                <div
+                  className="mx-auto mb-4"
+                  style={{
+                    width: 36,
+                    height: 36,
+                    borderRadius: "50%",
+                    border: "3px solid #e8e6e3",
+                    borderTopColor: "var(--accent)",
+                    animation: "spin 0.8s linear infinite",
+                  }}
+                />
+                <p className="text-sm text-[#9ca3af]">결과를 불러오는 중입니다...</p>
+              </div>
+            </div>
+          )}
+
           {step === "result" &&
             (error ? (
               <div className="fade-in text-center p-8 border border-[#e8e6e3] rounded-xl bg-white">

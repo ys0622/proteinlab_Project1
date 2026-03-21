@@ -375,7 +375,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
           </div>
 
           <div className="mt-6">
-            <ProductReviewSection />
+            <ProductReviewSection slug={slug} />
           </div>
 
           <div
