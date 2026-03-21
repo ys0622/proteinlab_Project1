@@ -16,6 +16,7 @@ import {
   normalizeCoupangUrl,
 } from "../lib/purchaseLinks";
 import CompareButton from "./CompareButton";
+import FavoriteButton from "./FavoriteButton";
 import MetricBadgeGroup from "./MetricBadgeGroup";
 import ProductBadge from "./ProductBadge";
 import {
@@ -332,7 +333,10 @@ export default function ProductCard({
             상세보기
           </Link>
           {slug ? (
-            <CompareButton slug={slug} detailHref={detailHref} />
+            <>
+              <FavoriteButton slug={slug} />
+              <CompareButton slug={slug} detailHref={detailHref} />
+            </>
           ) : (
             <button
               type="button"

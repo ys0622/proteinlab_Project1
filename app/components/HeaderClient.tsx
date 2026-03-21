@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { navigationItems, type NavigationChildItem } from "@/data/navigation";
+import { useFavorites } from "../context/FavoritesContext";
 
 function isActive(pathname: string, href: string): boolean {
   if (href === "/") return pathname === "/";
@@ -20,6 +21,8 @@ export default function HeaderClient({ isAdmin }: { isAdmin: boolean }) {
   const isHeroHeaderPage = !pathname.startsWith("/admin");
   const [openPath, setOpenPath] = useState<string | null>(null);
   const [openGroupByPath, setOpenGroupByPath] = useState<Record<string, string | null>>({});
+  const { favoriteSlugs } = useFavorites();
+  const favoriteCount = favoriteSlugs.length;
   const open = openPath === pathname;
   const visibleNavItems = navigationItems.filter((item) => !item.adminOnly || isAdmin);
   const openGroup = openGroupByPath[pathname] ?? null;
@@ -107,13 +110,36 @@ export default function HeaderClient({ isAdmin }: { isAdmin: boolean }) {
           })}
         </nav>
 
-        <button
-          type="button"
-          className="flex h-10 w-10 items-center justify-center rounded-lg text-[var(--foreground)] hover:bg-[var(--accent-light)] md:hidden"
-          onClick={() => setOpenPath((current) => (current === pathname ? null : pathname))}
-          aria-label={open ? "메뉴 닫기" : "메뉴 열기"}
-          aria-expanded={open}
-        >
+        <div className="flex items-center gap-1">
+          <Link
+            href="/search"
+            className="flex h-9 w-9 items-center justify-center rounded-lg text-[var(--foreground)] hover:bg-[var(--accent-light)] hover:text-[var(--accent)]"
+            aria-label="검색"
+          >
+            <svg width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="11" cy="11" r="8" />
+              <line x1="21" y1="21" x2="16.65" y2="16.65" />
+            </svg>
+          </Link>
+          <Link
+            href="/favorites"
+            className="relative flex h-9 w-9 items-center justify-center rounded-lg text-[var(--foreground)] hover:bg-[var(--accent-light)] hover:text-[var(--accent)]"
+            aria-label="즐겨찾기"
+          >
+            <span className="text-[17px]">{favoriteCount > 0 ? "♥" : "♡"}</span>
+            {favoriteCount > 0 && (
+              <span className="absolute -right-0.5 -top-0.5 flex h-4 w-4 items-center justify-center rounded-full bg-[#e85c5c] text-[10px] font-bold text-white">
+                {favoriteCount > 9 ? "9+" : favoriteCount}
+              </span>
+            )}
+          </Link>
+          <button
+            type="button"
+            className="flex h-10 w-10 items-center justify-center rounded-lg text-[var(--foreground)] hover:bg-[var(--accent-light)] md:hidden"
+            onClick={() => setOpenPath((current) => (current === pathname ? null : pathname))}
+            aria-label={open ? "메뉴 닫기" : "메뉴 열기"}
+            aria-expanded={open}
+          >
           {open ? (
             <svg width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
               <line x1="5" y1="5" x2="19" y2="19" />
@@ -126,7 +152,8 @@ export default function HeaderClient({ isAdmin }: { isAdmin: boolean }) {
               <line x1="3" y1="19" x2="21" y2="19" />
             </svg>
           )}
-        </button>
+          </button>
+        </div>
       </div>
 
       {open ? (

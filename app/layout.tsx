@@ -3,19 +3,20 @@ import Script from "next/script";
 import CompareBar from "./components/CompareBar";
 import CompareBarSpacer from "./components/CompareBarSpacer";
 import { CompareProvider } from "./context/CompareContext";
+import { FavoritesProvider } from "./context/FavoritesContext";
 import "./globals.css";
 
 const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://proteinlab.kr"),
-  title: "단백질 제품 비교 플랫폼 | ProteinLab",
+  title: "단백질 제품 비교 추천 순위 | ProteinLab",
   description:
-    "단백질 음료, 단백질 바, 단백질 요거트를 성분 데이터로 비교하고 추천, 랭킹, 등급 기준까지 한곳에서 확인하는 ProteinLab입니다.",
+    "단백질 음료, 단백질 바, 단백질 요거트, 단백질 쉐이크를 성분 데이터로 비교하고 추천, 순위, 등급 기준까지 한곳에서 확인하는 ProteinLab입니다.",
   openGraph: {
-    title: "단백질 제품 비교 플랫폼 | ProteinLab",
+    title: "단백질 제품 비교 추천 순위 | ProteinLab",
     description:
-      "단백질 음료, 단백질 바, 단백질 요거트를 성분 데이터로 비교하고 추천, 랭킹, 등급 기준까지 한곳에서 확인하는 ProteinLab입니다.",
+      "단백질 음료, 단백질 바, 단백질 요거트, 단백질 쉐이크를 성분 데이터로 비교하고 추천, 순위, 등급 기준까지 한곳에서 확인하는 ProteinLab입니다.",
     url: "https://proteinlab.kr",
     siteName: "ProteinLab",
     locale: "ko_KR",
@@ -23,9 +24,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "단백질 제품 비교 플랫폼 | ProteinLab",
+    title: "단백질 제품 비교 추천 순위 | ProteinLab",
     description:
-      "단백질 음료, 단백질 바, 단백질 요거트를 성분 데이터로 비교하고 추천, 랭킹, 등급 기준까지 한곳에서 확인하는 ProteinLab입니다.",
+      "단백질 음료, 단백질 바, 단백질 요거트, 단백질 쉐이크를 성분 데이터로 비교하고 추천, 순위, 등급 기준까지 한곳에서 확인하는 ProteinLab입니다.",
   },
   verification: {
     other: {
@@ -60,11 +61,13 @@ export default function RootLayout({
             </Script>
           </>
         ) : null}
-        <CompareProvider>
-          {children}
-          <CompareBarSpacer />
-          <CompareBar />
-        </CompareProvider>
+        <FavoritesProvider>
+          <CompareProvider>
+            {children}
+            <CompareBarSpacer />
+            <CompareBar />
+          </CompareProvider>
+        </FavoritesProvider>
       </body>
     </html>
   );

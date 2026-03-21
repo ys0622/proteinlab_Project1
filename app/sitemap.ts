@@ -1,6 +1,7 @@
 import fs from "node:fs/promises";
 import path from "node:path";
 import type { MetadataRoute } from "next";
+import { getAllSearchTopics } from "./data/searchTopics";
 import { getAllCurations } from "./lib/curationSystem";
 import {
   mockProducts,
@@ -21,6 +22,11 @@ const staticRoutes = [
   "/guides",
   "/official-events",
   "/compare",
+  "/shake",
+  "/yogurt",
+  "/topics",
+  "/search",
+  "/favorites",
 ] as const;
 
 async function collectStaticRoutesFromApp(relativeDir: string, basePath: string) {
@@ -51,8 +57,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   ]);
 
   const curationRoutes = getAllCurations().map((curation) => `/curation/${curation.slug}`);
+  const topicRoutes = getAllSearchTopics().map((topic) => `/topics/${topic.slug}`);
   const allRoutes = Array.from(
-    new Set([...staticRoutes, ...guideRoutes, ...curationStaticRoutes, ...curationRoutes]),
+    new Set([...staticRoutes, ...guideRoutes, ...curationStaticRoutes, ...curationRoutes, ...topicRoutes]),
   );
 
   const allProducts = [
@@ -69,7 +76,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     url: `${SITE_URL}${route}`,
     lastModified: new Date(),
     changeFrequency:
-      route.startsWith("/guides/") || route.startsWith("/curation/") ? "weekly" : "daily",
+      route.startsWith("/guides/") || route.startsWith("/curation/") || route.startsWith("/topics/")
+        ? "weekly"
+        : "daily",
     priority:
       route === "/"
         ? 1
@@ -77,6 +86,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
           ? 0.9
           : route.startsWith("/curation/")
             ? 0.85
+            : route.startsWith("/topics/")
+              ? 0.83
             : route.startsWith("/guides/")
               ? 0.8
               : 0.7,
