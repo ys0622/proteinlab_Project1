@@ -138,7 +138,7 @@ export default function HeaderClient({ isAdmin }: { isAdmin: boolean }) {
             })}
           </nav>
 
-          <div className="ml-auto flex items-center md:w-0 md:justify-end">
+          <div className="ml-auto flex items-center md:hidden">
             <button
               type="button"
               className="flex h-10 w-10 items-center justify-center rounded-lg text-[var(--foreground)] hover:bg-[var(--accent-light)] md:hidden"
