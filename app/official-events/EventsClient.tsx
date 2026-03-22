@@ -319,13 +319,13 @@ const rawBarBrands: BrandCard[] = [
 const rawShakeBrands: BrandCard[] = [
   {
     brand: "플라이밀",
-    storeType: "자사몰",
-    storeUrl: "https://flymill.co.kr/",
+    storeType: "네이버 쇼핑",
+    storeUrl: "https://search.shopping.naver.com/search/all?query=%ED%94%8C%EB%9D%BC%EC%9D%B4%EB%B0%80%20%EB%8B%A8%EB%B0%B1%EC%A7%88%20%EC%89%90%EC%9D%B4%ED%81%AC",
     note: "현재 등록 쉐이크 13개",
     productCount: 13,
     events: [
       { category: "할인", periodLabel: CHECKED_DATE_LABEL, description: "초코, 바나나, 딸기부터 쿠키앤크림·피스타치오까지 맛 구성이 넓어 단품보다 맛별 묶음 구성과 세트 가격을 먼저 보는 편이 좋습니다." },
-      { category: "쿠폰", periodLabel: CHECKED_DATE_LABEL, description: "자사몰은 신규 회원 쿠폰과 기획전이 함께 붙는 경우가 있어 최종 결제 직전 적용 혜택을 다시 확인하는 편이 안전합니다." },
+      { category: "쿠폰", periodLabel: CHECKED_DATE_LABEL, description: "브랜드 전용몰 링크가 불안정한 경우가 있어 네이버 쇼핑 기준으로 판매처별 최종 혜택을 비교하는 편이 안전합니다." },
     ],
   },
   {
@@ -341,46 +341,46 @@ const rawShakeBrands: BrandCard[] = [
   },
   {
     brand: "단백하니",
-    storeType: "공식몰",
-    storeUrl: "https://dailyprotein.co.kr/",
+    storeType: "올리브영 브랜드관",
+    storeUrl: "https://m.oliveyoung.co.kr/m/mtn/brand/A017276",
     note: "현재 등록 쉐이크 3개",
     productCount: 3,
     events: [
-      { category: "할인", periodLabel: CHECKED_DATE_LABEL, description: "시그니처, 초코, 말차 3종 중심으로 운영돼 맛별 묶음이나 세트 구성 가격을 먼저 보는 편이 좋습니다." },
-      { category: "쿠폰", periodLabel: CHECKED_DATE_LABEL, description: "공식몰은 회원 전용 할인이나 장바구니 혜택이 붙는 시점이 있어 최종 결제 단계에서 할인 적용 여부를 다시 보는 편이 좋습니다." },
+      { category: "할인", periodLabel: CHECKED_DATE_LABEL, description: "올리브영 브랜드관에서 3종 중심으로 노출돼 올영세일이나 브랜드전 적용 여부를 먼저 보는 편이 좋습니다." },
+      { category: "쿠폰", periodLabel: CHECKED_DATE_LABEL, description: "브랜드관 진입 후 상품별 쿠폰 적용 범위가 다를 수 있어 장바구니 단계에서 최종 할인 반영 여부를 다시 확인하는 편이 안전합니다." },
     ],
   },
   {
     brand: "프로티원",
-    storeType: "공식몰",
-    storeUrl: "https://proteone.kr/",
+    storeType: "올리브영 브랜드관",
+    storeUrl: "https://m.oliveyoung.co.kr/m/mtn/brand/A010952",
     note: "현재 등록 쉐이크 5개",
     productCount: 5,
     events: [
-      { category: "할인", periodLabel: CHECKED_DATE_LABEL, description: "초코, 커피, 딸기, 흑임자, 곡물 5종 중심이라 맛별 구성과 저당 성향 제품 가격을 같이 보는 편이 좋습니다." },
-      { category: "무료배송", periodLabel: CHECKED_DATE_LABEL, description: "공식몰은 박스 수와 구성에 따라 배송 혜택 체감이 달라 묶음 기준 최종가를 같이 보는 편이 안전합니다." },
+      { category: "할인", periodLabel: CHECKED_DATE_LABEL, description: "프로티원 브랜드관은 파우치형과 대용량 구성이 함께 보여 단품보다 구성별 체감가를 먼저 비교하는 편이 좋습니다." },
+      { category: "무료배송", periodLabel: CHECKED_DATE_LABEL, description: "브랜드관 내 일부 쉐이크 구성은 무료배송과 쿠폰이 함께 표시돼 같은 맛이라도 박스 수에 따라 결제 금액 차이가 큽니다." },
     ],
   },
   {
     brand: "잇더핏",
-    storeType: "자사몰",
-    storeUrl: "https://itthefit.com/",
+    storeType: "네이버 쇼핑",
+    storeUrl: "https://search.shopping.naver.com/search/all?query=%EC%9E%87%EB%8D%94%ED%95%8F%20%EB%8B%A8%EB%B0%B1%EC%A7%88%20%EC%89%90%EC%9D%B4%ED%81%AC",
     note: "현재 등록 쉐이크 9개",
     productCount: 9,
     events: [
       { category: "할인", periodLabel: CHECKED_DATE_LABEL, description: "더블초코, 카페라떼, 쿠키앤크림, 미숫가루, 콘 등 맛 스펙트럼이 넓어 맛별 묶음 세트 체감가 차이가 큰 편입니다." },
-      { category: "쿠폰", periodLabel: CHECKED_DATE_LABEL, description: "회원 쿠폰과 기획전 할인이 중복되는지 확인하면 실결제 체감가를 더 정확히 볼 수 있습니다." },
+      { category: "쿠폰", periodLabel: CHECKED_DATE_LABEL, description: "브랜드 전용몰보다 판매처가 나뉘어 보이는 경우가 있어 네이버 쇼핑 기준으로 쿠폰과 배송 혜택을 함께 비교하는 편이 안전합니다." },
     ],
   },
   {
     brand: "올더배러",
-    storeType: "자사몰",
-    storeUrl: "https://allthebetter.co.kr/",
+    storeType: "네이버 쇼핑",
+    storeUrl: "https://search.shopping.naver.com/search/all?query=%EC%98%AC%EB%8D%94%EB%B0%B0%EB%9F%AC%20%EB%8B%A8%EB%B0%B1%EC%A7%88%20%EC%89%90%EC%9D%B4%ED%81%AC",
     note: "현재 등록 쉐이크 6개",
     productCount: 6,
     events: [
       { category: "할인", periodLabel: CHECKED_DATE_LABEL, description: "로우슈거 쉐이크 라인은 세트 할인과 브랜드 기획전이 자주 묶여 보여 카테고리 페이지 가격과 장바구니 가격을 같이 보는 편이 좋습니다." },
-      { category: "무료배송", periodLabel: CHECKED_DATE_LABEL, description: "무료배송 기준 금액이 체감가에 미치는 영향이 커 소량 주문보다는 묶음 주문이 유리한 경우가 많습니다." },
+      { category: "무료배송", periodLabel: CHECKED_DATE_LABEL, description: "브랜드 전용몰 링크보다 판매처별 노출이 더 안정적이라 네이버 쇼핑 기준 배송비 포함 최종가를 같이 보는 편이 안전합니다." },
     ],
   },
 ];
