@@ -50,7 +50,7 @@ export default async function GuidesPage() {
         <div className="mt-6 grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
           {cms.mainPage.tracks.map((track) => {
             const section = cms.sections.find((item) => item.id === track.id || item.slug === track.href.replace("/guides/", ""));
-            const featuredTopics = section?.articles.slice(0, 3).map((article) => article.title) ?? [];
+            const featuredTopics = section?.articles.slice(0, 2).map((article) => article.title) ?? [];
             const popularTopic =
               section?.articles.find((article) => article.status === "live")?.title ??
               section?.articles[0]?.title ??
@@ -60,13 +60,13 @@ export default async function GuidesPage() {
               <Link
                 key={track.id}
                 href={track.href}
-                className="group grid h-full min-h-[320px] grid-rows-[auto_1fr_auto] overflow-hidden rounded-2xl border border-[#d8e2da] bg-[#fffdf8] shadow-[0_10px_24px_rgba(20,40,28,0.05)] transition-colors hover:border-[#cfe1d7]"
+                className="group grid h-full min-h-[276px] grid-rows-[auto_1fr_auto] overflow-hidden rounded-2xl border border-[#d8e2da] bg-[#fffdf8] shadow-[0_10px_24px_rgba(20,40,28,0.05)] transition-colors hover:border-[#cfe1d7]"
               >
                 <div className="h-1.5 w-full" style={{ background: track.accentColor }} />
 
                 <div>
                   <div
-                    className="min-h-[136px] border-b border-[#e7eee9] px-5 py-4"
+                    className="min-h-[108px] border-b border-[#e7eee9] px-4 py-3.5"
                     style={{ background: `linear-gradient(135deg, ${track.accentBg} 0%, #fffdf8 100%)` }}
                   >
                     <div className="flex items-center justify-between gap-3">
@@ -81,7 +81,7 @@ export default async function GuidesPage() {
                       </span>
                     </div>
 
-                    <div className="mt-4 flex items-start gap-3">
+                    <div className="mt-3 flex items-start gap-3">
                       <span
                         aria-hidden
                         className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-[#d7e6dd] bg-white text-lg"
@@ -93,7 +93,7 @@ export default async function GuidesPage() {
                           {track.subtitle}
                         </p>
                         <h2
-                          className="mt-1 text-lg font-bold transition-colors group-hover:text-[var(--accent)]"
+                          className="mt-0.5 text-[17px] font-bold transition-colors group-hover:text-[var(--accent)]"
                           style={{ color: track.accentColor }}
                         >
                           {track.title}
@@ -102,15 +102,15 @@ export default async function GuidesPage() {
                     </div>
                   </div>
 
-                  <div className="flex min-h-[156px] flex-col px-5 pb-5 pt-4">
-                    <p className="text-[13px] leading-[1.7] text-[var(--foreground-muted)]" style={clampTwoLines}>
+                  <div className="flex min-h-[132px] flex-col px-4 pb-4 pt-3.5">
+                    <p className="text-[13px] leading-[1.6] text-[var(--foreground-muted)]" style={clampTwoLines}>
                       {track.description}
                     </p>
 
-                    <div className="mt-4">
+                    <div className="mt-3">
                       <p className="text-[11px] font-semibold uppercase tracking-wide text-[#7c8b84]">대표 콘텐츠</p>
 
-                      <div className="mt-2 hidden flex-wrap gap-2 md:flex">
+                      <div className="mt-2 hidden flex-wrap gap-1.5 md:flex">
                         {featuredTopics.map((topic) => (
                           <span
                             key={`${track.id}-${topic}`}
@@ -134,7 +134,7 @@ export default async function GuidesPage() {
                       </ul>
                     </div>
 
-                    <div className="mt-auto rounded-xl border border-[#d7e6dd] bg-[#f4faf6] px-3 py-2.5">
+                    <div className="mt-auto rounded-xl border border-[#d7e6dd] bg-[#f4faf6] px-3 py-2">
                       <p className="text-[11px] font-semibold" style={{ color: track.accentColor }}>
                         인기 콘텐츠
                       </p>
@@ -145,7 +145,7 @@ export default async function GuidesPage() {
                   </div>
                 </div>
 
-                <div className="px-5 pb-5">
+                <div className="px-4 pb-4">
                   <span
                     className="flex items-center justify-center rounded-lg border bg-white py-2.5 text-xs font-semibold transition-colors"
                     style={{

@@ -90,6 +90,13 @@ const FILTER_TABS: { key: FilterType; emoji: string }[] = [
   { key: "무료배송", emoji: "🚚" },
 ];
 
+const clampThreeLines = {
+  display: "-webkit-box",
+  WebkitLineClamp: 3,
+  WebkitBoxOrient: "vertical" as const,
+  overflow: "hidden",
+};
+
 const rawDrinkBrands: BrandCard[] = [
   {
     brand: "하이뮨",
@@ -602,7 +609,7 @@ function BrandEventCard({ brand, productType }: { brand: BrandCard; productType:
 
   return (
     <div
-      className="flex h-full min-h-[320px] flex-col overflow-hidden rounded-2xl border bg-[#fffdf8] shadow-[0_10px_24px_rgba(20,40,28,0.05)] transition-colors"
+      className="flex h-full min-h-[284px] flex-col overflow-hidden rounded-2xl border bg-[#fffdf8] shadow-[0_10px_24px_rgba(20,40,28,0.05)] transition-colors"
       style={{
         borderColor: meta.accentBorder,
         boxShadow: "0 12px 28px rgba(28, 52, 39, 0.06)",
@@ -611,7 +618,7 @@ function BrandEventCard({ brand, productType }: { brand: BrandCard; productType:
       <div className="h-1.5 w-full" style={{ background: meta.accentColor }} />
       <div>
         <div
-          className="min-h-[132px] border-b px-5 py-4"
+          className="min-h-[108px] border-b px-4 py-3.5"
           style={{
             borderColor: meta.accentBorder,
             background: `linear-gradient(135deg, ${meta.accentBg} 0%, #fffdf8 100%)`,
@@ -632,7 +639,7 @@ function BrandEventCard({ brand, productType }: { brand: BrandCard; productType:
             </span>
           </div>
 
-          <div className="mt-4 flex items-start gap-3">
+          <div className="mt-3 flex items-start gap-3">
             <span
               aria-hidden
               className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full border bg-white text-lg"
@@ -644,14 +651,14 @@ function BrandEventCard({ brand, productType }: { brand: BrandCard; productType:
               <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[#6f7f76]">
                 Brand
               </p>
-              <h2 className="mt-1 text-lg font-bold" style={{ color: meta.accentColor }}>
+              <h2 className="mt-0.5 text-[17px] font-bold" style={{ color: meta.accentColor }}>
                 {brand.brand}
               </h2>
               <p className="mt-1 text-xs text-[#7a837d]">{brand.note}</p>
             </div>
           </div>
 
-          <div className="mt-4">
+          <div className="mt-3">
             <span
               className="inline-flex rounded-full border px-2.5 py-1 text-[11px] font-medium"
               style={{
@@ -665,13 +672,13 @@ function BrandEventCard({ brand, productType }: { brand: BrandCard; productType:
           </div>
         </div>
 
-        <ul className="space-y-3 px-5 pb-2 pt-4">
+        <ul className="space-y-2.5 px-4 pb-2 pt-3.5">
           {brand.events.map((event) => {
             const color = CATEGORY_COLOR[event.category];
             return (
               <li
                 key={`${brand.brand}-${event.category}-${event.description}`}
-                className="rounded-xl border border-[#edf2ed] bg-white px-3.5 py-3"
+                className="rounded-xl border border-[#edf2ed] bg-white px-3 py-2.5"
               >
                 <div className="flex flex-wrap items-center gap-1.5">
                   <span
@@ -686,14 +693,16 @@ function BrandEventCard({ brand, productType }: { brand: BrandCard; productType:
                   </span>
                   <span className="text-[11px] font-medium text-[#7a837d]">확인 시점: {event.periodLabel}</span>
                 </div>
-                <p className="mt-2 text-[13px] leading-6 text-[var(--foreground)]">{event.description}</p>
+                <p className="mt-1.5 text-[13px] leading-[1.55] text-[var(--foreground)]" style={clampThreeLines}>
+                  {event.description}
+                </p>
               </li>
             );
           })}
         </ul>
       </div>
 
-      <div className="mt-auto px-5 pb-5 pt-3">
+      <div className="mt-auto px-4 pb-4 pt-2.5">
         <a
           href={brand.storeUrl}
           target="_blank"

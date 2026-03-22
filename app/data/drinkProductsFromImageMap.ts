@@ -1,4 +1,4 @@
-import type { ProductDetailProps } from "./products";
+﻿import type { ProductDetailProps } from "./products";
 import slugToImageData from "./slugToImage.json";
 
 const slugToImageFilename: Record<string, string> = slugToImageData;
@@ -40,6 +40,10 @@ function inferTags(name: string, volume: number): string[] {
   return ["팩", "밀크형"];
 }
 
+function hasKnownPetBottleSlug(slug: string): boolean {
+  return slug.startsWith("danbaek-drink-");
+}
+
 export function getDrinkProductsFromImageMap(): ProductDetailProps[] {
   const products: ProductDetailProps[] = [];
 
@@ -57,7 +61,9 @@ export function getDrinkProductsFromImageMap(): ProductDetailProps[] {
       name: parsed.name,
       capacity: `${parsed.volume}mL`,
       variant: "일반",
-      tags: inferTags(parsed.name, parsed.volume),
+      tags: hasKnownPetBottleSlug(slug)
+        ? ["PET"]
+        : inferTags(parsed.name, parsed.volume),
       proteinPerServing: parsed.protein,
       sugar: 0,
       density: `${density}g/100ml`,
@@ -69,3 +75,5 @@ export function getDrinkProductsFromImageMap(): ProductDetailProps[] {
 
   return products;
 }
+
+
