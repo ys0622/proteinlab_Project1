@@ -59,7 +59,7 @@ export default function HeaderClient({ isAdmin }: { isAdmin: boolean }) {
           </Link>
 
           <nav
-            className="hidden flex-1 items-center justify-center gap-0.5 md:flex"
+            className="ml-auto hidden items-center gap-0.5 md:flex"
             aria-label="메인 메뉴"
           >
             {visibleNavItems.map((item) => {
@@ -138,7 +138,7 @@ export default function HeaderClient({ isAdmin }: { isAdmin: boolean }) {
             })}
           </nav>
 
-          <div className="ml-auto flex items-center md:w-10 md:justify-end">
+          <div className="ml-auto flex items-center md:w-0 md:justify-end">
             <button
               type="button"
               className="flex h-10 w-10 items-center justify-center rounded-lg text-[var(--foreground)] hover:bg-[var(--accent-light)] md:hidden"
