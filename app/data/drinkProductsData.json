@@ -2030,7 +2030,7 @@
     "capacity": "330mL",
     "variant": "일반",
     "tags": [
-      "PET"
+      "팩"
     ],
     "proteinPerServing": 35,
     "calories": 168,
@@ -2068,7 +2068,7 @@
     "capacity": "350mL",
     "variant": "일반",
     "tags": [
-      "PET"
+      "팩"
     ],
     "proteinPerServing": 43,
     "calories": 186,
@@ -2108,7 +2108,7 @@
     "capacity": "350mL",
     "variant": "일반",
     "tags": [
-      "PET"
+      "팩"
     ],
     "proteinPerServing": 43,
     "calories": 186,
@@ -3903,5 +3903,3 @@
     "coupangUrl": "https://www.coupang.com/vp/products/7345092004?itemId=18143492367&vendorItemId=85293912587"
   }
 ]
-
-

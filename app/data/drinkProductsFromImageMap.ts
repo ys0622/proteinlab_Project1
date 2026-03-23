@@ -40,8 +40,19 @@ function inferTags(name: string, volume: number): string[] {
   return ["팩", "밀크형"];
 }
 
+const knownPetBottleSlugs = new Set([
+  "danbaek-drink-coffee-250",
+  "danbaek-drink-banana-250",
+  "danbaek-drink-milktea-250",
+  "danbaek-drink-strawberry-250",
+  "danbaek-drink-chocolate-250",
+  "danbaek-drink-melon-250",
+  "danbaek-drink-doublechoco-350",
+  "danbaek-drink-caramel-250",
+]);
+
 function hasKnownPetBottleSlug(slug: string): boolean {
-  return slug.startsWith("danbaek-drink-");
+  return knownPetBottleSlugs.has(slug);
 }
 
 export function getDrinkProductsFromImageMap(): ProductDetailProps[] {
