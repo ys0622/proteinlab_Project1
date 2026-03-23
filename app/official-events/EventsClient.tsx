@@ -1,6 +1,10 @@
 ﻿"use client";
 
 import { useMemo, useState } from "react";
+import barProductsData from "../data/barProductsData.json";
+import drinkProductsData from "../data/drinkProductsData.json";
+import shakeProductsData from "../data/shakeProductsData.json";
+import yogurtProductsData from "../data/yogurtProductsData.json";
 
 type ProductType = "drink" | "bar" | "yogurt" | "shake";
 type EventCategory = "할인" | "쿠폰" | "증정" | "무료배송";
@@ -19,6 +23,13 @@ interface BrandCard {
   note: string;
   productCount: number;
   events: BrandEvent[];
+}
+
+interface ProductLinkSource {
+  brand: string;
+  officialUrl?: string;
+  naverUrl?: string;
+  coupangUrl?: string;
 }
 
 const PRODUCT_TYPE_META: Record<
@@ -392,7 +403,7 @@ const rawShakeBrands: BrandCard[] = [
   },
 ];
 
-const yogurtBrands: BrandCard[] = [
+const rawYogurtBrands: BrandCard[] = [
   {
     brand: "그릭데이",
     storeType: "공식몰",
@@ -462,29 +473,145 @@ const yogurtBrands: BrandCard[] = [
   },
 ];
 
-const drinkBrands: BrandCard[] = rawDrinkBrands.map((brand) => ({
-  ...brand,
-  events: brand.events.map((event) => ({
-    ...event,
-    periodLabel: CHECKED_DATE_LABEL,
-  })),
-}));
+const PRODUCT_LINK_SOURCES: Record<ProductType, ProductLinkSource[]> = {
+  drink: drinkProductsData as ProductLinkSource[],
+  bar: barProductsData as ProductLinkSource[],
+  yogurt: yogurtProductsData as ProductLinkSource[],
+  shake: shakeProductsData as ProductLinkSource[],
+};
 
-const barBrands: BrandCard[] = rawBarBrands.map((brand) => ({
-  ...brand,
-  events: brand.events.map((event) => ({
-    ...event,
-    periodLabel: CHECKED_DATE_LABEL,
-  })),
-}));
+function getMostCommonUrl(products: ProductLinkSource[], key: keyof ProductLinkSource) {
+  const counts = new Map<string, number>();
 
-const shakeBrands: BrandCard[] = rawShakeBrands.map((brand) => ({
-  ...brand,
-  events: brand.events.map((event) => ({
-    ...event,
-    periodLabel: CHECKED_DATE_LABEL,
-  })),
-}));
+  for (const product of products) {
+    const value = product[key];
+    if (!value || value === "#") continue;
+    counts.set(value, (counts.get(value) ?? 0) + 1);
+  }
+
+  return [...counts.entries()].sort((a, b) => b[1] - a[1])[0]?.[0] ?? "";
+}
+
+function inferStoreType(storeUrl: string) {
+  if (!storeUrl || storeUrl === "#") return "공식 판매처";
+
+  try {
+    const { hostname } = new URL(storeUrl);
+
+    if (hostname.includes("smartstore.naver.com")) return "네이버 스토어";
+    if (hostname.includes("brand.naver.com")) return "네이버 브랜드관";
+    if (hostname.includes("search.shopping.naver.com")) return "네이버 쇼핑";
+    if (hostname.includes("oliveyoung.co.kr")) return "올리브영 브랜드관";
+    if (hostname.includes("coupang.com")) return "쿠팡";
+    if (
+      hostname.includes("wellife.co.kr") ||
+      hostname.includes("foodismall.com") ||
+      hostname.includes("labnosh.com") ||
+      hostname.includes("harimmall.com") ||
+      hostname.includes("selexmall.com") ||
+      hostname.includes("dryoumall.com")
+    ) {
+      return "자사몰";
+    }
+
+    return "공식몰";
+  } catch {
+    return "공식 판매처";
+  }
+}
+
+function buildGenericEvents(brand: string, storeType: string): BrandEvent[] {
+  if (storeType.includes("네이버") || storeType.includes("올리브영")) {
+    return [
+      {
+        category: "할인",
+        periodLabel: CHECKED_DATE_LABEL,
+        description: `${brand} 라인은 ${storeType} 기획전과 묶음 구성에 따라 체감가 차이가 자주 납니다.`,
+      },
+      {
+        category: "쿠폰",
+        periodLabel: CHECKED_DATE_LABEL,
+        description: `${storeType} 쿠폰과 장바구니 할인이 함께 붙는지 결제 직전에 확인하는 편이 좋습니다.`,
+      },
+    ];
+  }
+
+  if (storeType === "쿠팡") {
+    return [
+      {
+        category: "할인",
+        periodLabel: CHECKED_DATE_LABEL,
+        description: `${brand} 상품은 판매처와 묶음 수량에 따라 쿠팡 노출가 차이가 큰 편입니다.`,
+      },
+      {
+        category: "무료배송",
+        periodLabel: CHECKED_DATE_LABEL,
+        description: `로켓배송 여부와 무료배송 조건에 따라 최종 결제 금액 차이가 생길 수 있습니다.`,
+      },
+    ];
+  }
+
+  return [
+    {
+      category: "할인",
+      periodLabel: CHECKED_DATE_LABEL,
+      description: `${brand} 라인은 자사몰 기획전과 세트 할인 반영 여부를 먼저 확인하는 편이 좋습니다.`,
+    },
+    {
+      category: "무료배송",
+      periodLabel: CHECKED_DATE_LABEL,
+      description: `${storeType} 기준 배송비 조건과 합배송 기준이 자주 함께 붙어 최종가 차이가 생길 수 있습니다.`,
+    },
+  ];
+}
+
+function buildBrandCards(productType: ProductType, curatedBrands: BrandCard[]) {
+  const products = PRODUCT_LINK_SOURCES[productType];
+  const counts = new Map<string, number>();
+
+  for (const product of products) {
+    counts.set(product.brand, (counts.get(product.brand) ?? 0) + 1);
+  }
+
+  const curatedMap = new Map(curatedBrands.map((brand) => [brand.brand, brand]));
+  const orderedBrands = [
+    ...curatedBrands.map((brand) => brand.brand).filter((brand) => counts.has(brand)),
+    ...[...counts.entries()]
+      .map(([brand]) => brand)
+      .filter((brand) => !curatedMap.has(brand))
+      .sort((a, b) => (counts.get(b) ?? 0) - (counts.get(a) ?? 0) || a.localeCompare(b, "ko")),
+  ];
+
+  return orderedBrands.map((brand) => {
+    const curated = curatedMap.get(brand);
+    const brandProducts = products.filter((product) => product.brand === brand);
+    const storeUrl =
+      curated?.storeUrl ||
+      getMostCommonUrl(brandProducts, "officialUrl") ||
+      getMostCommonUrl(brandProducts, "naverUrl") ||
+      getMostCommonUrl(brandProducts, "coupangUrl") ||
+      "#";
+    const storeType = curated?.storeType || inferStoreType(storeUrl);
+    const events =
+      curated?.events?.length
+        ? curated.events.map((event) => ({ ...event, periodLabel: CHECKED_DATE_LABEL }))
+        : buildGenericEvents(brand, storeType);
+
+    return {
+      brand,
+      storeType,
+      storeUrl,
+      note: `현재 등록 제품 ${counts.get(brand) ?? 0}개`,
+      productCount: counts.get(brand) ?? 0,
+      events,
+    };
+  });
+}
+
+const drinkBrands: BrandCard[] = buildBrandCards("drink", rawDrinkBrands);
+const barBrands: BrandCard[] = buildBrandCards("bar", rawBarBrands);
+const yogurtBrands: BrandCard[] = buildBrandCards("yogurt", rawYogurtBrands);
+const shakeBrands: BrandCard[] = buildBrandCards("shake", rawShakeBrands);
 
 function getCounts(brands: BrandCard[]) {
   const allEvents = brands.flatMap((brand) => brand.events);
