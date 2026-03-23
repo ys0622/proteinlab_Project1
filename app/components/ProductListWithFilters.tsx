@@ -24,6 +24,7 @@ import {
   type YogurtFilters,
 } from "../lib/productFilters";
 import { getPopularityScore } from "../lib/productPopularity";
+import { trackEvent } from "@/lib/gtag";
 import CategoryTabs from "./CategoryTabs";
 import FilterSection from "./FilterSection";
 import ProductCard from "./ProductCard";
@@ -390,6 +391,16 @@ function ProductListWithFiltersInner(props: ProductListWithFiltersInnerProps) {
   };
 
   const handleSortChange = (newSort: SortOptionValue) => {
+    if (newSort !== sort) {
+      trackEvent("sort_change", {
+        from_sort: sort,
+        to_sort: newSort,
+        category: productType,
+        total_results: searched.length,
+        search_query: searchQuery.trim() || undefined,
+      });
+    }
+
     setPage(1);
     setSort(newSort);
   };
