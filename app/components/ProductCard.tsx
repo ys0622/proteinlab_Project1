@@ -264,13 +264,13 @@ export default function ProductCard({
 
         {isDrinkCard && feedbackMeta ? (
           <>
-            <div className="pointer-events-none absolute bottom-1.5 left-1.5 z-10 flex gap-1 md:hidden">
+            <div className="pointer-events-none absolute left-1.5 top-1.5 z-10 flex flex-col gap-1 md:hidden">
               {feedbackMeta.recommendCount > 0 ? (
-                <span className="inline-flex min-h-[20px] items-center rounded-full border border-[#d9e7df] bg-white/92 px-1.5 py-[3px] text-[9px] font-semibold leading-none text-[#2F5D46] shadow-[0_1px_3px_rgba(15,23,42,0.08)]">
+                <span className="inline-flex min-h-[18px] items-center self-start rounded-full border border-[#d9e7df] bg-white/92 px-1.5 py-[2px] text-[8px] font-semibold leading-none text-[#2F5D46] shadow-[0_1px_3px_rgba(15,23,42,0.08)]">
                   👍 {feedbackMeta.recommendCount}
                 </span>
               ) : null}
-              <span className="inline-flex min-h-[20px] items-center rounded-full border border-[#e5e7eb] bg-white/92 px-1.5 py-[3px] text-[9px] font-semibold leading-none text-[#4b5563] shadow-[0_1px_3px_rgba(15,23,42,0.08)]">
+              <span className="inline-flex min-h-[18px] items-center self-start rounded-full border border-[#e5e7eb] bg-white/92 px-1.5 py-[2px] text-[8px] font-semibold leading-none text-[#4b5563] shadow-[0_1px_3px_rgba(15,23,42,0.08)]">
                 리뷰 {feedbackMeta.reviewCount}
               </span>
             </div>
