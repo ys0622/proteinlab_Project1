@@ -11,6 +11,9 @@ type SummaryItem = {
 type ProductExample = {
   name: string;
   protein: string;
+  sugar?: string;
+  calories?: string;
+  fiber?: string;
   feature: string;
   recommendedFor: string;
 };
@@ -87,7 +90,7 @@ export function ShakeGuidePage({
             <span>{breadcrumbLabel}</span>
           </div>
           <div className="mt-3">
-            <span className="rounded-md bg-[#eaf0f6] px-2 py-0.5 text-[11px] font-semibold tracking-wide text-[#4a6178]">
+            <span className="rounded-md bg-[#eef4ea] px-2 py-0.5 text-[11px] font-semibold tracking-wide text-[#4c7a57]">
               TRACK B
             </span>
           </div>
@@ -222,7 +225,18 @@ export function ShakeGuidePage({
               {products.map((item) => (
                 <article key={item.name} className="rounded-2xl border border-[#dce8df] bg-[#f6fbf7] p-4">
                   <h3 className="text-sm font-semibold text-[#24543d]">{item.name}</h3>
-                  <p className="mt-2 text-sm font-medium text-[var(--foreground)]">단백질 {item.protein}</p>
+                  <div className="mt-2 flex flex-wrap gap-2">
+                    <span className="rounded-full bg-[#eff7f1] px-2.5 py-1 text-[11px] font-semibold text-[#2d6a4f]">단백질 {item.protein}</span>
+                    {item.sugar !== undefined && (
+                      <span className="rounded-full bg-[#f6fbf7] border border-[#dce8df] px-2.5 py-1 text-[11px] font-medium text-[var(--foreground-muted)]">당류 {item.sugar}</span>
+                    )}
+                    {item.calories !== undefined && (
+                      <span className="rounded-full bg-[#f6fbf7] border border-[#dce8df] px-2.5 py-1 text-[11px] font-medium text-[var(--foreground-muted)]">칼로리 {item.calories}</span>
+                    )}
+                    {item.fiber !== undefined && (
+                      <span className="rounded-full bg-[#f6fbf7] border border-[#dce8df] px-2.5 py-1 text-[11px] font-medium text-[var(--foreground-muted)]">식이섬유 {item.fiber}</span>
+                    )}
+                  </div>
                   <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">특징: {item.feature}</p>
                   <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">
                     추천 대상: {item.recommendedFor}
