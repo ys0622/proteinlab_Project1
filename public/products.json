@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-03-22T23:52:15.881Z",
-  "total": 291,
+  "generated_at": "2026-03-23T06:53:15.410Z",
+  "total": 293,
   "categories": {
     "drinks": 99,
     "bars": 80,
     "yogurt": 45,
-    "shake": 67
+    "shake": 69
   },
   "products": [
     {
@@ -2626,6 +2626,24 @@
       "protein": 20.8,
       "calories": 169,
       "sugar": 2.4
+    },
+    {
+      "slug": "thedanbaek-proteinshake-powder-choco-32",
+      "name": "단백질쉐이크 파우더 (초코)",
+      "brand": "더단백",
+      "category": "shake",
+      "protein": 20,
+      "calories": 110,
+      "sugar": 0.8
+    },
+    {
+      "slug": "thedanbaek-proteinshake-powder-grain-32",
+      "name": "단백질쉐이크 파우더 (곡물)",
+      "brand": "더단백",
+      "category": "shake",
+      "protein": 20,
+      "calories": 110,
+      "sugar": 0.8
     }
   ]
 }

@@ -2275,5 +2275,73 @@
       "sodiumMg": 259.9,
       "fiberG": 2.4
     }
+  },
+  {
+    "slug": "thedanbaek-proteinshake-powder-choco-32",
+    "brand": "더단백",
+    "name": "단백질쉐이크 파우더 (초코)",
+    "capacity": "32g",
+    "variant": "파우치형",
+    "tags": [
+      "파우치형",
+      "쉐이크"
+    ],
+    "proteinPerServing": 20,
+    "calories": 110,
+    "sugar": 0.8,
+    "fat": 1.47,
+    "sodium": 360,
+    "density": "18.2g/100kcal",
+    "productUrl": "#",
+    "productType": "shake",
+    "gradeTags": [],
+    "flavor": "초코",
+    "nutritionBasis": "per_pack",
+    "nutritionPerBottle": {
+      "caloriesKcal": 110,
+      "proteinG": 20,
+      "carbsG": 7,
+      "sugarsG": 0.8,
+      "fatG": 1.47,
+      "satFatG": 0.68,
+      "transFatG": 0,
+      "cholesterolMg": 20,
+      "sodiumMg": 360,
+      "fiberG": 2.7
+    }
+  },
+  {
+    "slug": "thedanbaek-proteinshake-powder-grain-32",
+    "brand": "더단백",
+    "name": "단백질쉐이크 파우더 (곡물)",
+    "capacity": "32g",
+    "variant": "파우치형",
+    "tags": [
+      "파우치형",
+      "쉐이크"
+    ],
+    "proteinPerServing": 20,
+    "calories": 110,
+    "sugar": 0.8,
+    "fat": 1.2,
+    "sodium": 330,
+    "density": "18.2g/100kcal",
+    "productUrl": "#",
+    "productType": "shake",
+    "gradeTags": [],
+    "flavor": "곡물",
+    "nutritionBasis": "per_pack",
+    "nutritionPerBottle": {
+      "caloriesKcal": 110,
+      "proteinG": 20,
+      "carbsG": 7,
+      "sugarsG": 0.8,
+      "fatG": 1.2,
+      "satFatG": 0.55,
+      "transFatG": 0,
+      "cholesterolMg": 20,
+      "sodiumMg": 330,
+      "fiberG": 2.4
+    }
   }
 ]
