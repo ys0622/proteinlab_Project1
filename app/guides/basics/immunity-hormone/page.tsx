@@ -90,16 +90,8 @@ export default function ImmunityHormonePage() {
 
       <main className="mx-auto max-w-[1200px] px-4 py-8 md:px-6">
         <div className="space-y-6">
-          <section className="rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
-            <div className="flex flex-wrap items-center justify-between gap-3">
-              <div>
-                <p className="text-xs font-semibold tracking-[0.12em] text-[#2d6a4f]">핵심 사인</p>
-                <h2 className="mt-2 text-xl font-bold text-[var(--foreground)]">면역과 대사에 단백질이 중요한 이유</h2>
-              </div>
-              <span className="rounded-full bg-[#eff7f1] px-3 py-1 text-xs font-semibold text-[#2d6a4f]">
-                면역·호르몬 가이드
-              </span>
-            </div>
+          <section className="rounded-[28px] border border-[#e8e6e3] bg-[#fffdf8] px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
+            <h2 className="text-xl font-bold text-[var(--foreground)]">면역과 대사에 단백질이 중요한 이유</h2>
 
             <div className="mt-5 grid gap-3 md:grid-cols-3">
               {focusPoints.map((point) => (
