@@ -18,6 +18,13 @@ const clampTwoLines = {
   overflow: "hidden",
 };
 
+const clampThreeLines = {
+  display: "-webkit-box",
+  WebkitLineClamp: 3,
+  WebkitBoxOrient: "vertical" as const,
+  overflow: "hidden",
+};
+
 const clampOneLine = {
   display: "-webkit-box",
   WebkitLineClamp: 1,
@@ -60,23 +67,23 @@ export default async function GuidesPage() {
               <Link
                 key={track.id}
                 href={track.href}
-                className="group grid h-full min-h-[292px] grid-rows-[auto_1fr_auto] overflow-hidden rounded-[24px] border border-[#d8e2da] bg-[#fffdf8] shadow-[0_10px_24px_rgba(20,40,28,0.05)] transition-colors hover:border-[#cfe1d7]"
+                className="group grid h-full min-h-[320px] grid-rows-[auto_1fr_auto] overflow-hidden rounded-[24px] border border-[#d8e2da] bg-[#fffdf8] shadow-[0_10px_24px_rgba(20,40,28,0.05)] transition-colors hover:border-[#cfe1d7]"
               >
                 <div className="h-1.5 w-full" style={{ background: track.accentColor }} />
 
                 <div>
                   <div
-                    className="min-h-[108px] border-b border-[#e7eee9] px-4 py-3.5"
+                    className="min-h-[124px] border-b border-[#e7eee9] px-4 py-3.5"
                     style={{ background: `linear-gradient(135deg, ${track.accentBg} 0%, #fffdf8 100%)` }}
                   >
                     <div className="flex items-center justify-between gap-3">
                       <span
-                        className="rounded-md bg-white px-2 py-0.5 text-[11px] font-semibold tracking-wide"
+                        className="shrink-0 whitespace-nowrap rounded-md bg-white px-2 py-0.5 text-[11px] font-semibold tracking-wide"
                         style={{ color: track.accentColor }}
                       >
                         {track.subtitle}
                       </span>
-                      <span className="rounded-full border border-[#d8e2da] bg-white px-2.5 py-1 text-[11px] font-semibold text-[#6f7f76]">
+                      <span className="shrink-0 whitespace-nowrap rounded-full border border-[#d8e2da] bg-white px-2.5 py-1 text-[11px] font-semibold text-[#6f7f76]">
                         {track.count}개 주제
                       </span>
                     </div>
@@ -90,20 +97,20 @@ export default async function GuidesPage() {
                       </span>
                       <div className="min-w-0">
                         <h2
-                          className="text-[17px] font-bold transition-colors group-hover:text-[var(--accent)]"
-                          style={{ color: track.accentColor }}
+                          className="min-h-[52px] text-[17px] font-bold leading-7 transition-colors group-hover:text-[var(--accent)]"
+                          style={{ ...clampTwoLines, color: track.accentColor }}
                         >
                           {track.title}
                         </h2>
-                        <p className="mt-1 text-[12px] font-medium text-[#6f7f76]" style={clampOneLine}>
+                        <p className="mt-1 whitespace-nowrap text-[12px] font-medium text-[#6f7f76]" style={clampOneLine}>
                           {track.count}개 주제
                         </p>
                       </div>
                     </div>
                   </div>
 
-                  <div className="flex min-h-[132px] flex-col px-4 pb-4 pt-3.5">
-                    <p className="text-[13px] leading-[1.6] text-[var(--foreground-muted)]" style={clampTwoLines}>
+                  <div className="flex min-h-[156px] flex-col px-4 pb-4 pt-3.5">
+                    <p className="min-h-[63px] text-[13px] leading-[1.6] text-[var(--foreground-muted)]" style={clampThreeLines}>
                       {track.description}
                     </p>
 
@@ -114,10 +121,10 @@ export default async function GuidesPage() {
                         {featuredTopics.map((article) => (
                           <span
                             key={`${track.id}-${article.slug}`}
-                            className="inline-flex items-center gap-1 rounded-full border border-[#d9e4dd] bg-[#f7faf8] px-2.5 py-1 text-[11px] font-medium text-[#496555]"
+                            className="inline-flex max-w-full items-center gap-1 rounded-full border border-[#d9e4dd] bg-[#f7faf8] px-2.5 py-1 text-[11px] font-medium text-[#496555]"
                           >
                             <span aria-hidden>{article.emoji}</span>
-                            <span>{article.title}</span>
+                            <span className="max-w-[160px]" style={clampOneLine}>{article.title}</span>
                           </span>
                         ))}
                       </div>
