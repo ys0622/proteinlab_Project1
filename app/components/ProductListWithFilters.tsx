@@ -582,6 +582,7 @@ function ProductListWithFiltersInner(props: ProductListWithFiltersInnerProps) {
               key={product.slug ?? `${product.brand}-${product.name}`}
               {...product}
               priority={idx < 4}
+              productType={productType}
             />
           ))}
         </section>

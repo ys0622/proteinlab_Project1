@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 import type {
   KeyboardEvent as ReactKeyboardEvent,
   MouseEvent as ReactMouseEvent,
@@ -55,6 +56,57 @@ export interface ProductCardProps {
   hideSupplementalBadges?: boolean;
 }
 
+interface Review {
+  id: string;
+  rating: "up" | "mid" | "down";
+  tags: string[];
+  comment: string;
+  createdAt: string;
+}
+
+interface ReviewSummary {
+  recommendCount: number;
+  reviewCount: number;
+}
+
+const reviewSummaryCache = new Map<string, ReviewSummary>();
+const pendingReviewSummaryRequests = new Map<string, Promise<ReviewSummary>>();
+
+async function fetchReviewSummary(slug: string): Promise<ReviewSummary> {
+  const cached = reviewSummaryCache.get(slug);
+  if (cached) {
+    return cached;
+  }
+
+  const pending = pendingReviewSummaryRequests.get(slug);
+  if (pending) {
+    return pending;
+  }
+
+  const request = fetch(`/api/reviews/${slug}`)
+    .then((response) => response.json())
+    .then((data: { reviews?: Review[] }) => {
+      const reviews = Array.isArray(data.reviews) ? data.reviews : [];
+      const summary = {
+        recommendCount: reviews.filter((review) => review.rating === "up").length,
+        reviewCount: reviews.length,
+      };
+      reviewSummaryCache.set(slug, summary);
+      return summary;
+    })
+    .catch(() => {
+      const emptySummary = { recommendCount: 0, reviewCount: 0 };
+      reviewSummaryCache.set(slug, emptySummary);
+      return emptySummary;
+    })
+    .finally(() => {
+      pendingReviewSummaryRequests.delete(slug);
+    });
+
+  pendingReviewSummaryRequests.set(slug, request);
+  return request;
+}
+
 function renderMetricValue(value: string, isDensity: boolean) {
   if (!isDensity) {
     return value;
@@ -101,6 +153,10 @@ export default function ProductCard({
   hideSupplementalBadges,
 }: ProductCardProps) {
   const router = useRouter();
+  const isDrinkCard = productType === "drink";
+  const [reviewSummary, setReviewSummary] = useState<ReviewSummary | null>(() =>
+    slug ? reviewSummaryCache.get(slug) ?? null : null,
+  );
   const detailHref = slug ? `/product/${slug}` : "#";
   const imageUrl = slug ? getProductImageUrl(slug) : null;
   const resolvedPurchaseLinkCategory = purchaseLinkCategory ?? productType ?? null;
@@ -128,6 +184,26 @@ export default function ProductCard({
   const limitedGradeTags = typeof maxVisibleBadges === "number"
     ? visibleGradeTags.slice(0, maxVisibleBadges)
     : visibleGradeTags;
+  const feedbackMeta =
+    isDrinkCard && reviewSummary && reviewSummary.reviewCount > 0 ? reviewSummary : null;
+
+  useEffect(() => {
+    if (!isDrinkCard || !slug) {
+      return;
+    }
+
+    let cancelled = false;
+
+    void fetchReviewSummary(slug).then((summary) => {
+      if (!cancelled) {
+        setReviewSummary(summary);
+      }
+    });
+
+    return () => {
+      cancelled = true;
+    };
+  }, [isDrinkCard, slug]);
 
   const shouldIgnoreCardClick = (target: EventTarget | null) => {
     if (!(target instanceof HTMLElement)) {
@@ -166,7 +242,7 @@ export default function ProductCard({
 
   const imageArea = (
     <div
-      className="product-card__media flex h-[176px] w-full flex-shrink-0 items-center justify-center overflow-hidden rounded-xl border border-[#eee] bg-[#ffffff] p-1 transition-colors duration-200 group-hover:border-[#e2e2e2] md:h-[200px] md:p-[10px]"
+      className={`product-card__media flex w-full flex-shrink-0 items-center justify-center overflow-hidden rounded-xl border border-[#eee] bg-[#ffffff] p-1 transition-colors duration-200 group-hover:border-[#e2e2e2] md:p-[10px] ${isDrinkCard ? "h-[166px] md:h-[188px]" : "h-[176px] md:h-[200px]"}`}
       style={{ borderRadius: "12px" }}
     >
       {imageUrl ? (
@@ -217,7 +293,10 @@ export default function ProductCard({
       )}
 
       <div className="product-card__content flex min-h-0 flex-1 flex-col">
-        <p className="product-card__brand mt-2.5 text-xs tracking-wide md:mt-4" style={{ color: "#7a7a7a" }}>
+        <p
+          className={`product-card__brand text-xs tracking-wide ${isDrinkCard ? "mt-2 md:mt-3" : "mt-2.5 md:mt-4"}`}
+          style={{ color: "#7a7a7a" }}
+        >
           {brand}
         </p>
 
@@ -267,9 +346,9 @@ export default function ProductCard({
           ) : null}
         </MetricBadgeGroup>
 
-        <div className="mx-1 mt-1.5 border-t border-[#e8e6e3] md:mt-3" />
+        <div className={`mx-1 border-t border-[#e8e6e3] ${isDrinkCard ? "mt-1 md:mt-2.5" : "mt-1.5 md:mt-3"}`} />
 
-        <div className="product-card__metrics mt-1.5 grid grid-cols-2 gap-1 md:mt-3 md:gap-2">
+        <div className={`product-card__metrics grid grid-cols-2 gap-1 md:gap-2 ${isDrinkCard ? "mt-1 md:mt-2.5" : "mt-1.5 md:mt-3"}`}>
           {[
             { label: "단백질", value: `${proteinPerServing}g`, isDensity: false },
             { label: "칼로리", value: calories != null ? `${calories}` : "-", isDensity: false },
@@ -278,7 +357,7 @@ export default function ProductCard({
           ].map(({ label, value, isDensity }) => (
             <div
               key={label}
-              className="product-card__metric flex min-w-0 flex-col justify-center rounded-lg border border-[#e8e8e8] bg-white px-2 py-0 text-left md:px-2.5 md:py-2"
+              className={`product-card__metric flex min-w-0 flex-col justify-center rounded-lg border border-[#e8e8e8] bg-white px-2 text-left md:px-2.5 ${isDrinkCard ? "py-1 md:py-1.5" : "py-0 md:py-2"}`}
               style={{ borderRadius: "10px" }}
             >
               <span
@@ -304,7 +383,23 @@ export default function ProductCard({
           ))}
         </div>
 
-        <div className="cta-group mt-1.5 md:mt-4">
+        {isDrinkCard ? (
+          <div className="product-card__feedback mt-1 flex min-h-[16px] items-center text-[11px] leading-none text-[#7a7a7a] md:mt-2">
+            {feedbackMeta ? (
+              <>
+                <span>추천 {feedbackMeta.recommendCount}</span>
+                <span className="mx-1.5 text-[#c4c4c4]">·</span>
+                <span>리뷰 {feedbackMeta.reviewCount}</span>
+              </>
+            ) : (
+              <span aria-hidden="true" className="invisible">
+                추천 00 · 리뷰 00
+              </span>
+            )}
+          </div>
+        ) : null}
+
+        <div className={`cta-group ${isDrinkCard ? "mt-1 md:mt-2.5" : "mt-1.5 md:mt-4"}`}>
           <PurchaseLinkRow
             coupangHref={coupangHref}
             naverHref={naverHref}
@@ -322,9 +417,9 @@ export default function ProductCard({
           />
         </div>
 
-        <div className="mx-1 mt-1 border-t border-[#e8e6e3] md:mt-3" />
+        <div className={`mx-1 border-t border-[#e8e6e3] ${isDrinkCard ? "mt-1 md:mt-2" : "mt-1 md:mt-3"}`} />
 
-        <div className="product-card__footer-actions mt-1 flex gap-1.5 md:mt-3 md:gap-3">
+        <div className={`product-card__footer-actions flex gap-1.5 md:gap-3 ${isDrinkCard ? "mt-1 md:mt-2.5" : "mt-1 md:mt-3"}`}>
           <Link
             href={detailHref}
             className="flex flex-1 items-center justify-center rounded-[10px] border border-[#e2e2e2] bg-white font-medium text-[var(--foreground)] transition-colors hover:border-[var(--accent)] hover:bg-[var(--accent-light)] hover:text-[var(--accent)] active:scale-[0.98]"
@@ -334,8 +429,8 @@ export default function ProductCard({
           </Link>
           {slug ? (
             <>
-              <FavoriteButton slug={slug} />
               <CompareButton slug={slug} detailHref={detailHref} />
+              <FavoriteButton slug={slug} />
             </>
           ) : (
             <button

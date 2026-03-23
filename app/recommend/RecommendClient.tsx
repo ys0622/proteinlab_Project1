@@ -129,7 +129,10 @@ const gradeLabels: Record<string, string> = {
   performance: "퍼포먼스",
 };
 
-function toRecommendationCardProduct(product: RecommendedProduct): ProductCardProps {
+function toRecommendationCardProduct(
+  product: RecommendedProduct,
+  category: ProductType,
+): ProductCardProps {
   const gradeTags = Object.entries(product.gradeValue).map(
     ([key, grade]) => `${gradeLabels[key] ?? key} ${grade}`,
   );
@@ -143,6 +146,7 @@ function toRecommendationCardProduct(product: RecommendedProduct): ProductCardPr
     calories: product.calories,
     sugar: product.sugar,
     density: product.density,
+    productType: category,
     gradeTags,
     slug: product.id,
     coupangUrl: product.coupangUrl ?? undefined,
@@ -343,7 +347,7 @@ function ResultScreen({
           {result.products.map((product) => (
             <ScoredProductCard
               key={product.rank}
-              product={toRecommendationCardProduct(product)}
+              product={toRecommendationCardProduct(product, category)}
               rank={product.rank}
               score={product.score}
               scoreCaption="추천 점수"
@@ -358,7 +362,7 @@ function ResultScreen({
           {result.products.map((product) => (
             <ScoredProductCard
               key={product.rank}
-              product={toRecommendationCardProduct(product)}
+              product={toRecommendationCardProduct(product, category)}
               rank={product.rank}
               score={product.score}
               scoreCaption="추천 점수"
