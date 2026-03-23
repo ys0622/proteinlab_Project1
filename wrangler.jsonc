@@ -19,6 +19,20 @@
       "environment": "production"
     }
   ],
+  "routes": [
+    {
+      "pattern": "proteinlab.kr/*",
+      "zone_name": "proteinlab.kr"
+    },
+    {
+      "pattern": "proteinlab.kr",
+      "zone_name": "proteinlab.kr",
+      "custom_domain": true
+    }
+  ],
+  "vars": {
+    "NEXT_PUBLIC_GA_ID": "G-8QE32NV5GR"
+  },
   "kv_namespaces": [
     {
       "binding": "GUIDES_STATIC_DRAFTS_KV",
