@@ -19,7 +19,7 @@ export default function HeroSection() {
             className="shrink-0 text-[11px] leading-none text-[var(--foreground-muted)] md:mt-1 md:text-sm md:leading-normal"
             style={{ fontWeight: 400 }}
           >
-            나에게 맞는 제품을 찾아보세요
+            음료·바·요거트·쉐이크 290개 이상 · 단백질·당류·칼로리 성분 기준 직접 비교
           </p>
         </div>
       </div>

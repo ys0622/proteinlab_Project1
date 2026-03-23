@@ -6,9 +6,9 @@ import type { ProductCategory } from "../lib/categories";
 import { getProductsByCategoryAsync } from "../lib/productData";
 
 export const metadata = {
-  title: "쉐이크 비교 | 파우치형 단백질 쉐이크 비교 | ProteinLab",
+  title: "단백질 쉐이크 비교 추천 | 67개 저당·고단백·식사대용 기준 | ProteinLab",
   description:
-    "파우더를 제외한 파우치형 중심의 간편 섭취 단백질 쉐이크 카테고리를 ProteinLab 기준으로 정리합니다.",
+    "단백질 쉐이크 67개를 단백질 함량, 당류, 칼로리, 식이섬유 기준으로 비교합니다. 운동보충·저당·식사대용 목적에 맞는 제품을 성분 데이터로 바로 선택하세요.",
 };
 
 export default async function ShakePage() {
