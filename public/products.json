@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-23T08:31:45.671Z",
+  "generated_at": "2026-03-23T12:05:53.965Z",
   "total": 298,
   "categories": {
     "drinks": 104,
@@ -59,8 +59,8 @@
       "brand": "오늘단백",
       "category": "drinks",
       "protein": 21,
-      "calories": 110,
-      "sugar": 0
+      "calories": 135,
+      "sugar": 3
     },
     {
       "slug": "sellex-profit-milk-vanilla-250",
@@ -932,8 +932,8 @@
       "brand": "오늘단백",
       "category": "drinks",
       "protein": 21,
-      "calories": 110,
-      "sugar": 0
+      "calories": 158,
+      "sugar": 6
     },
     {
       "slug": "oneuldanbaek-dolce-latte-250",
@@ -941,8 +941,8 @@
       "brand": "오늘단백",
       "category": "drinks",
       "protein": 21,
-      "calories": 110,
-      "sugar": 0
+      "calories": 135,
+      "sugar": 4
     },
     {
       "slug": "dryou-proteinbar-pro-3nuts-crunch",
