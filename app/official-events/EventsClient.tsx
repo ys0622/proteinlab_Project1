@@ -473,6 +473,141 @@ const rawYogurtBrands: BrandCard[] = [
   },
 ];
 
+const additionalDrinkBrands: BrandCard[] = [
+  {
+    brand: "오늘단백",
+    storeType: "자사몰",
+    storeUrl: "https://harimmall.com/category/%EC%98%A4%EB%8A%98%EB%8B%A8%EB%B0%B1/520/",
+    note: "현재 등록 제품 3개",
+    productCount: 3,
+    events: [
+      { category: "할인", periodLabel: CHECKED_DATE_LABEL, description: "라떼형 3종 중심이라 맛별 세트 구성과 박스 단위 가격을 먼저 비교하는 편이 좋습니다." },
+      { category: "무료배송", periodLabel: CHECKED_DATE_LABEL, description: "하림몰 기준 합배송 조건을 넘기면 체감가 차이가 커져 단품보다 묶음 확인 가치가 높습니다." },
+    ],
+  },
+  {
+    brand: "연세유업",
+    storeType: "자사몰",
+    storeUrl: "https://yonseidairy.com/goods/goods_list.php?cateCd=022013",
+    note: "현재 등록 제품 3개",
+    productCount: 3,
+    events: [
+      { category: "할인", periodLabel: CHECKED_DATE_LABEL, description: "세브란스 A2 프로틴은 맛 수가 적어도 박스 구성 할인 여부에 따라 단가 차이가 분명한 편입니다." },
+      { category: "무료배송", periodLabel: CHECKED_DATE_LABEL, description: "공식몰 카테고리 기준 배송비 조건과 박스 수량에 따른 실구매가를 함께 보는 편이 좋습니다." },
+    ],
+  },
+  {
+    brand: "오트몬드",
+    storeType: "네이버 브랜드관",
+    storeUrl: "https://brand.naver.com/woongjinfood/category/09ec7d4b0a5f4949b4b094b6fa0c368b?cp=2",
+    note: "현재 등록 제품 3개",
+    productCount: 3,
+    events: [
+      { category: "할인", periodLabel: CHECKED_DATE_LABEL, description: "초코, 쿠키앤크림, 고소한맛처럼 맛 수가 적어도 브랜드전이나 세트 노출 여부에 따라 가격 차이가 납니다." },
+      { category: "쿠폰", periodLabel: CHECKED_DATE_LABEL, description: "네이버 브랜드관 쿠폰 반영 여부에 따라 단품보다 세트가 더 유리해지는 경우가 있습니다." },
+    ],
+  },
+  {
+    brand: "그린비아",
+    storeType: "자사몰",
+    storeUrl: "https://www.wellife.co.kr/categories/index/101003000000",
+    note: "현재 등록 제품 2개",
+    productCount: 2,
+    events: [
+      { category: "할인", periodLabel: CHECKED_DATE_LABEL, description: "프로틴밀 액티브는 맛 수는 적지만 대상웰라이프 기획전 반영 여부에 따라 박스 단가 차이가 납니다." },
+      { category: "무료배송", periodLabel: CHECKED_DATE_LABEL, description: "웰라이프 묶음 합산 기준으로 배송비 조건을 넘기기 쉬운 편이라 장바구니 총액을 같이 보는 편이 좋습니다." },
+    ],
+  },
+  {
+    brand: "롯데웰푸드",
+    storeType: "자사몰",
+    storeUrl: "https://www.lottefoodmall.com/?act=main.pasteur",
+    note: "현재 등록 제품 2개",
+    productCount: 2,
+    events: [
+      { category: "할인", periodLabel: CHECKED_DATE_LABEL, description: "이지프로틴 저당 라인은 맛 수는 적어도 브랜드 기획전 반영 빈도가 있어 단품보다 박스 가격을 먼저 보는 편이 좋습니다." },
+      { category: "증정", periodLabel: CHECKED_DATE_LABEL, description: "롯데 계열몰은 세트 사은 구성이 붙는 경우가 있어 결제 직전 혜택 문구를 다시 확인하는 편이 안전합니다." },
+    ],
+  },
+  {
+    brand: "서울우유",
+    storeType: "네이버 브랜드관",
+    storeUrl: "https://brand.naver.com/seoulmilk/category/e086f24d6e724ea88028fd47264c1936?cp=1",
+    note: "현재 등록 제품 2개",
+    productCount: 2,
+    events: [
+      { category: "할인", periodLabel: CHECKED_DATE_LABEL, description: "프로틴 에너지는 커피와 초콜릿 두 축이라 묶음 판매 여부에 따라 체감가가 달라집니다." },
+      { category: "쿠폰", periodLabel: CHECKED_DATE_LABEL, description: "네이버 브랜드관 쿠폰과 배송 혜택이 함께 붙는지 확인하는 편이 좋습니다." },
+    ],
+  },
+  {
+    brand: "세븐일레븐",
+    storeType: "공식 판매처",
+    storeUrl: "https://www.7-eleven.co.kr/",
+    note: "현재 등록 제품 2개",
+    productCount: 2,
+    events: [
+      { category: "할인", periodLabel: CHECKED_DATE_LABEL, description: "편의점 단독 상품 성격이 강해 온라인 판매처보다 오프라인 행사나 편의점 증정 행사를 같이 보는 편이 좋습니다." },
+      { category: "증정", periodLabel: CHECKED_DATE_LABEL, description: "1+1, 2+1 같은 편의점형 증정 이벤트가 붙는지 수시로 확인 가치가 있습니다." },
+    ],
+  },
+  {
+    brand: "솔브앤고",
+    storeType: "네이버 브랜드관",
+    storeUrl: "https://brand.naver.com/dcfwithedaymall/category/d6ef46e43ee04512bfa7eae66afb50ad?cp=1",
+    note: "현재 등록 제품 2개",
+    productCount: 2,
+    events: [
+      { category: "할인", periodLabel: CHECKED_DATE_LABEL, description: "프로타민 라인은 맛 수가 적어도 네이버 브랜드관 할인 반영 여부에 따라 체감가 차이가 납니다." },
+      { category: "쿠폰", periodLabel: CHECKED_DATE_LABEL, description: "브랜드관 쿠폰 적용 여부와 배송비 포함 최종가를 함께 확인하는 편이 좋습니다." },
+    ],
+  },
+  {
+    brand: "함소아제약",
+    storeType: "자사몰",
+    storeUrl: "https://www.hamsoamall.co.kr/",
+    note: "현재 등록 제품 1개",
+    productCount: 1,
+    events: [
+      { category: "할인", periodLabel: CHECKED_DATE_LABEL, description: "미니언즈 프로틴액트는 단일 SKU라 자사몰 행사나 키즈 라인 묶음 기획 여부를 먼저 보는 편이 좋습니다." },
+      { category: "무료배송", periodLabel: CHECKED_DATE_LABEL, description: "단품보다는 자사몰 합배송 조건을 함께 확인해야 최종가 판단이 쉽습니다." },
+    ],
+  },
+];
+
+const additionalBarBrands: BrandCard[] = [
+  { brand: "단백하니", storeType: "올리브영 브랜드관", storeUrl: "https://m.oliveyoung.co.kr/m/mtn/brand/A017276", note: "현재 등록 제품 5개", productCount: 5, events: [{ category: "할인", periodLabel: CHECKED_DATE_LABEL, description: "올영 브랜드전과 묶음 구성에 따라 바 단가 차이가 커지는 편입니다." }, { category: "쿠폰", periodLabel: CHECKED_DATE_LABEL, description: "브랜드관 쿠폰과 장바구니 할인 중복 여부를 결제 직전에 확인하는 편이 좋습니다." }] },
+  { brand: "랩노쉬", storeType: "자사몰", storeUrl: "https://labnosh.com/category/%EB%9E%A9%EB%85%B8%EC%89%AC/44/", note: "현재 등록 제품 5개", productCount: 5, events: [{ category: "할인", periodLabel: CHECKED_DATE_LABEL, description: "푸드바는 세트 할인과 맛별 재고 소진형 세일이 자주 보여 단품보다 묶음 가격 비교가 중요합니다." }, { category: "무료배송", periodLabel: CHECKED_DATE_LABEL, description: "자사몰은 금액 조건 무료배송과 함께 보이는 경우가 많아 합배송 기준을 같이 보는 편이 좋습니다." }] },
+  { brand: "오늘단백", storeType: "네이버 브랜드관", storeUrl: "https://brand.naver.com/harim/category/1a6d3a6007e143a59ecb3ae9b3418fc2?cp=2", note: "현재 등록 제품 4개", productCount: 4, events: [{ category: "할인", periodLabel: CHECKED_DATE_LABEL, description: "밀크초코 라인 4종은 맛별 세트 가격 차이가 있어 브랜드관 기준 비교가 효율적입니다." }, { category: "쿠폰", periodLabel: CHECKED_DATE_LABEL, description: "네이버 브랜드관 쿠폰과 적립을 함께 반영하면 체감가가 더 내려갈 수 있습니다." }] },
+  { brand: "셀렉스", storeType: "네이버 브랜드관", storeUrl: "https://brand.naver.com/selex/category/85709825a6ff41b7bfdb4b6dbd205dd0?cp=1", note: "현재 등록 제품 2개", productCount: 2, events: [{ category: "할인", periodLabel: CHECKED_DATE_LABEL, description: "셀렉스 바는 SKU 수는 적지만 브랜드전 여부에 따라 묶음 체감가가 달라집니다." }, { category: "쿠폰", periodLabel: CHECKED_DATE_LABEL, description: "브랜드관 쿠폰과 무료배송 조건을 함께 확인하는 편이 좋습니다." }] },
+  { brand: "커클랜드", storeType: "공식 판매처", storeUrl: "https://www.costco.co.kr/", note: "현재 등록 제품 2개", productCount: 2, events: [{ category: "할인", periodLabel: CHECKED_DATE_LABEL, description: "대용량 박스 판매 비중이 높아 행사 시점별 단가 차이가 큰 편입니다." }, { category: "무료배송", periodLabel: CHECKED_DATE_LABEL, description: "판매처별 배송 조건이 달라 박스 단위 실구매가 비교가 중요합니다." }] },
+  { brand: "포스트", storeType: "자사몰", storeUrl: "https://www.postmall.co.kr/", note: "현재 등록 제품 2개", productCount: 2, events: [{ category: "할인", periodLabel: CHECKED_DATE_LABEL, description: "프로틴 그래놀라바는 프로모션이 붙을 때 묶음 단가 차이가 분명해집니다." }, { category: "무료배송", periodLabel: CHECKED_DATE_LABEL, description: "자사몰 합배송 기준을 함께 보면 체감가 판단이 쉬워집니다." }] },
+  { brand: "온단백", storeType: "자사몰", storeUrl: "https://dailyprotein.co.kr/", note: "현재 등록 제품 2개", productCount: 2, events: [{ category: "할인", periodLabel: CHECKED_DATE_LABEL, description: "소수 SKU 중심이라 자사몰 행사 반영 여부에 따라 체감가 차이가 커집니다." }, { category: "무료배송", periodLabel: CHECKED_DATE_LABEL, description: "합배송 조건과 세트 구성을 함께 보는 편이 좋습니다." }] },
+  { brand: "올가니카", storeType: "공식몰", storeUrl: "https://www.organica.co.kr/", note: "현재 등록 제품 2개", productCount: 2, events: [{ category: "할인", periodLabel: CHECKED_DATE_LABEL, description: "간식형 라인은 기획전 반영 여부에 따라 단가 차이가 자주 납니다." }, { category: "무료배송", periodLabel: CHECKED_DATE_LABEL, description: "공식몰 배송 조건과 묶음 구성을 같이 확인하는 편이 좋습니다." }] },
+  { brand: "곰곰", storeType: "쿠팡", storeUrl: "https://www.coupang.com/", note: "현재 등록 제품 1개", productCount: 1, events: [{ category: "할인", periodLabel: CHECKED_DATE_LABEL, description: "단일 SKU라도 쿠팡 판매처와 재고 상황에 따라 노출가 차이가 생깁니다." }, { category: "무료배송", periodLabel: CHECKED_DATE_LABEL, description: "로켓배송 여부와 배송비 조건을 함께 보는 편이 좋습니다." }] },
+  { brand: "노브랜드", storeType: "공식 판매처", storeUrl: "https://emart.ssg.com/", note: "현재 등록 제품 2개", productCount: 2, events: [{ category: "할인", periodLabel: CHECKED_DATE_LABEL, description: "이마트 계열 행사 주기에 따라 체감가 차이가 커져 행사 시점 체크 가치가 높습니다." }, { category: "증정", periodLabel: CHECKED_DATE_LABEL, description: "대형마트형 증정 행사나 묶음 구성이 붙는지 같이 보는 편이 좋습니다." }] },
+  { brand: "마이밀", storeType: "자사몰", storeUrl: "https://www.wellife.co.kr/categories/index/102000000000", note: "현재 등록 제품 1개", productCount: 1, events: [{ category: "할인", periodLabel: CHECKED_DATE_LABEL, description: "대상웰라이프 기획전 반영 여부에 따라 단일 바 SKU도 가격 차이가 생깁니다." }, { category: "무료배송", periodLabel: CHECKED_DATE_LABEL, description: "웰라이프 다른 품목과 합배송 시 체감가가 내려가는 구조를 같이 보는 편이 좋습니다." }] },
+  { brand: "씨알로", storeType: "공식 판매처", storeUrl: "https://www.coupang.com/", note: "현재 등록 제품 1개", productCount: 1, events: [{ category: "할인", periodLabel: CHECKED_DATE_LABEL, description: "소수 SKU 중심이라 입점몰 기획전 여부에 따라 가격이 달라집니다." }, { category: "무료배송", periodLabel: CHECKED_DATE_LABEL, description: "판매처별 배송 조건을 포함해 최종가를 같이 보는 편이 좋습니다." }] },
+  { brand: "크라운", storeType: "공식몰", storeUrl: "https://www.crown.co.kr/", note: "현재 등록 제품 1개", productCount: 1, events: [{ category: "할인", periodLabel: CHECKED_DATE_LABEL, description: "제과 브랜드 행사 주기에 따라 단일 SKU도 체감가가 달라질 수 있습니다." }, { category: "증정", periodLabel: CHECKED_DATE_LABEL, description: "대형 유통몰 중심 사은 구성 여부를 함께 확인하는 편이 좋습니다." }] },
+  { brand: "하이뮨", storeType: "자사몰", storeUrl: "https://foodismall.com/", note: "현재 등록 제품 1개", productCount: 1, events: [{ category: "할인", periodLabel: CHECKED_DATE_LABEL, description: "식품몰 기획전과 회원가가 함께 붙는지 보면 단일 바 SKU도 체감가 차이가 납니다." }, { category: "무료배송", periodLabel: CHECKED_DATE_LABEL, description: "푸디스몰 합배송 기준을 같이 보는 편이 좋습니다." }] },
+  { brand: "힘내고", storeType: "자사몰", storeUrl: "https://dailyprotein.co.kr/", note: "현재 등록 제품 1개", productCount: 1, events: [{ category: "할인", periodLabel: CHECKED_DATE_LABEL, description: "소수 SKU라 자사몰 할인 반영 여부에 따라 가격 차이가 바로 드러납니다." }, { category: "무료배송", periodLabel: CHECKED_DATE_LABEL, description: "단품보다 합배송 기준을 함께 확인하는 편이 좋습니다." }] },
+];
+
+const additionalYogurtBrands: BrandCard[] = [
+  { brand: "요플레", storeType: "공식 판매처", storeUrl: "https://www.coupang.com/", note: "현재 등록 제품 5개", productCount: 5, events: [{ category: "할인", periodLabel: CHECKED_DATE_LABEL, description: "프로틴·맥스 라인은 대형 유통몰 행사 빈도가 있어 묶음가 차이를 먼저 보는 편이 좋습니다." }, { category: "무료배송", periodLabel: CHECKED_DATE_LABEL, description: "냉장 제품 특성상 배송비 포함 최종가를 같이 봐야 체감가 판단이 쉽습니다." }] },
+  { brand: "요프로", storeType: "공식 판매처", storeUrl: "https://www.coupang.com/", note: "현재 등록 제품 2개", productCount: 2, events: [{ category: "할인", periodLabel: CHECKED_DATE_LABEL, description: "플레인과 블루베리 정도로 SKU가 적어도 행사 시점별 묶음가 차이가 있습니다." }, { category: "무료배송", periodLabel: CHECKED_DATE_LABEL, description: "냉장 배송 조건과 묶음 수량을 함께 보는 편이 좋습니다." }] },
+  { brand: "풀무원다논", storeType: "자사몰", storeUrl: "https://shop.pulmuone.com/", note: "현재 등록 제품 1개", productCount: 1, events: [{ category: "할인", periodLabel: CHECKED_DATE_LABEL, description: "소수 SKU라 자사몰 또는 입점몰 프로모션 반영 여부를 먼저 확인하는 편이 좋습니다." }, { category: "무료배송", periodLabel: CHECKED_DATE_LABEL, description: "냉장 합배송 기준을 포함해 최종가를 보는 편이 안전합니다." }] },
+];
+
+const additionalShakeBrands: BrandCard[] = [
+  { brand: "꼬박꼬밥", storeType: "공식 판매처", storeUrl: "https://www.coupang.com/", note: "현재 등록 쉐이크 6개", productCount: 6, events: [{ category: "할인", periodLabel: CHECKED_DATE_LABEL, description: "고단저당 라인은 맛 수가 다양해 박스 구성과 판매처별 세트가 차이를 만듭니다." }, { category: "무료배송", periodLabel: CHECKED_DATE_LABEL, description: "박스 수량과 배송 조건을 함께 비교하는 편이 좋습니다." }] },
+  { brand: "더단백", storeType: "네이버 브랜드관", storeUrl: "https://brand.naver.com/binggrae/category/54e40c847f15417fae9351c9478ee909?cp=1", note: "현재 등록 쉐이크 2개", productCount: 2, events: [{ category: "할인", periodLabel: CHECKED_DATE_LABEL, description: "파우더형 2종이라 브랜드관 할인 반영 여부가 체감가에 바로 드러납니다." }, { category: "쿠폰", periodLabel: CHECKED_DATE_LABEL, description: "브랜드관 쿠폰과 배송 혜택을 함께 확인하는 편이 좋습니다." }] },
+  { brand: "룩트", storeType: "공식몰", storeUrl: "https://lukt.co.kr/26", note: "현재 등록 쉐이크 3개", productCount: 3, events: [{ category: "할인", periodLabel: CHECKED_DATE_LABEL, description: "식사대용 계열은 멤버십 할인과 정기배송 문구를 같이 보는 편이 좋습니다." }, { category: "무료배송", periodLabel: CHECKED_DATE_LABEL, description: "공식몰 기준 배송 조건과 세트 구성을 함께 확인하는 편이 좋습니다." }] },
+  { brand: "밀잇", storeType: "공식 판매처", storeUrl: "https://www.coupang.com/", note: "현재 등록 쉐이크 7개", productCount: 7, events: [{ category: "할인", periodLabel: CHECKED_DATE_LABEL, description: "맛 수가 많은 편이라 행사 시점에는 단품보다 혼합 세트 체감가 차이가 커집니다." }, { category: "무료배송", periodLabel: CHECKED_DATE_LABEL, description: "박스 수량과 판매처별 배송 조건을 함께 보는 편이 좋습니다." }] },
+  { brand: "베노프", storeType: "공식몰", storeUrl: "https://benope.com/", note: "현재 등록 쉐이크 2개", productCount: 2, events: [{ category: "할인", periodLabel: CHECKED_DATE_LABEL, description: "적은 SKU라도 자사몰 행사 반영 여부에 따라 세트 가격 차이가 분명합니다." }, { category: "쿠폰", periodLabel: CHECKED_DATE_LABEL, description: "자사몰 쿠폰과 네이버 판매처 혜택 중 어느 쪽이 유리한지 같이 보는 편이 좋습니다." }] },
+  { brand: "혜인담", storeType: "공식몰", storeUrl: "https://www.haeindam.com/", note: "현재 등록 쉐이크 4개", productCount: 4, events: [{ category: "할인", periodLabel: CHECKED_DATE_LABEL, description: "곡물형 라인은 묶음 구성과 브랜드 기획전 여부에 따라 체감가가 달라집니다." }, { category: "무료배송", periodLabel: CHECKED_DATE_LABEL, description: "공식몰 배송 조건과 박스 구성을 함께 보는 편이 좋습니다." }] },
+];
+
 const PRODUCT_LINK_SOURCES: Record<ProductType, ProductLinkSource[]> = {
   drink: drinkProductsData as ProductLinkSource[],
   bar: barProductsData as ProductLinkSource[],
@@ -608,10 +743,10 @@ function buildBrandCards(productType: ProductType, curatedBrands: BrandCard[]) {
   });
 }
 
-const drinkBrands: BrandCard[] = buildBrandCards("drink", rawDrinkBrands);
-const barBrands: BrandCard[] = buildBrandCards("bar", rawBarBrands);
-const yogurtBrands: BrandCard[] = buildBrandCards("yogurt", rawYogurtBrands);
-const shakeBrands: BrandCard[] = buildBrandCards("shake", rawShakeBrands);
+const drinkBrands: BrandCard[] = buildBrandCards("drink", [...rawDrinkBrands, ...additionalDrinkBrands]);
+const barBrands: BrandCard[] = buildBrandCards("bar", [...rawBarBrands, ...additionalBarBrands]);
+const yogurtBrands: BrandCard[] = buildBrandCards("yogurt", [...rawYogurtBrands, ...additionalYogurtBrands]);
+const shakeBrands: BrandCard[] = buildBrandCards("shake", [...rawShakeBrands, ...additionalShakeBrands]);
 
 function getCounts(brands: BrandCard[]) {
   const allEvents = brands.flatMap((brand) => brand.events);
