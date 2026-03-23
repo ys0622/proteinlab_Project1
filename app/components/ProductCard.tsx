@@ -38,12 +38,9 @@ export interface ProductCardProps {
   calories?: number;
   sugar?: number;
   density: string;
-  /** @deprecated 쿠팡 링크는 coupangUrl만 사용 */
   productUrl?: string;
   coupangUrl?: string;
-  /** 제품별 네이버쇼핑 URL (null이면 비활성화) */
   naverUrl?: string | null;
-  /** 제품별 공식몰 상세 URL (null이면 비활성화) */
   officialUrl?: string | null;
   gradeTags?: string[];
   slug?: string;
@@ -138,7 +135,7 @@ export default function ProductCard({
   calories,
   sugar,
   density,
-  productUrl = "#",
+  productUrl: _productUrl = "#",
   coupangUrl,
   naverUrl,
   officialUrl,
@@ -157,12 +154,12 @@ export default function ProductCard({
   const [reviewSummary, setReviewSummary] = useState<ReviewSummary | null>(() =>
     slug ? reviewSummaryCache.get(slug) ?? null : null,
   );
+  void _productUrl;
+
   const detailHref = slug ? `/product/${slug}` : "#";
   const imageUrl = slug ? getProductImageUrl(slug) : null;
   const resolvedPurchaseLinkCategory = purchaseLinkCategory ?? productType ?? null;
-  const rawCoupangUrl =
-    normalizeCoupangUrl(coupangUrl) ??
-    getKnownSourceCoupangUrlBySlug(slug);
+  const rawCoupangUrl = normalizeCoupangUrl(coupangUrl) ?? getKnownSourceCoupangUrlBySlug(slug);
   const coupangHref = getCoupangRedirectHref(rawCoupangUrl, resolvedPurchaseLinkCategory, slug);
   const naverHref = naverUrl && naverUrl !== "#" && naverUrl !== "" ? naverUrl : null;
   const officialMallHref = officialUrl && officialUrl !== "#" && officialUrl !== "" ? officialUrl : null;
@@ -178,12 +175,13 @@ export default function ProductCard({
     productType === "yogurt"
       ? gradeTags.filter(
           (tag) =>
-            tag.includes("단백질 밀도") || tag.includes("다이어트") || tag.includes("퍼포먼스"),
+            tag.includes("가성비") || tag.includes("다이어트") || tag.includes("퍼포먼스"),
         )
       : gradeTags;
-  const limitedGradeTags = typeof maxVisibleBadges === "number"
-    ? visibleGradeTags.slice(0, maxVisibleBadges)
-    : visibleGradeTags;
+  const limitedGradeTags =
+    typeof maxVisibleBadges === "number"
+      ? visibleGradeTags.slice(0, maxVisibleBadges)
+      : visibleGradeTags;
   const feedbackMeta =
     isDrinkCard && reviewSummary && reviewSummary.reviewCount > 0 ? reviewSummary : null;
 
@@ -240,7 +238,7 @@ export default function ProductCard({
     }
   };
 
-  const imageArea = (
+  const mediaBox = (
     <div
       className={`product-card__media flex w-full flex-shrink-0 items-center justify-center overflow-hidden rounded-xl border border-[#eee] bg-[#ffffff] p-1 transition-colors duration-200 group-hover:border-[#e2e2e2] md:p-[10px] ${isDrinkCard ? "h-[166px] md:h-[188px]" : "h-[176px] md:h-[200px]"}`}
       style={{ borderRadius: "12px" }}
@@ -280,17 +278,34 @@ export default function ProductCard({
         borderColor: "#e8e6e3",
       }}
     >
-      {slug && detailHref.startsWith("/product/") ? (
-        <Link
-          href={detailHref}
-          className="block rounded-xl focus:outline-none focus:ring-2 focus:ring-[var(--accent)] focus:ring-offset-2"
-          aria-label={`${brand} ${name} 상세 보기`}
-        >
-          {imageArea}
-        </Link>
-      ) : (
-        imageArea
-      )}
+      <div className="relative">
+        {mediaBox}
+
+        {slug ? (
+          <div className="absolute right-2 top-2 z-10">
+            <FavoriteButton slug={slug} />
+          </div>
+        ) : null}
+
+        {isDrinkCard && feedbackMeta ? (
+          <div className="pointer-events-none absolute bottom-2 right-2 z-10">
+            <div className="flex min-h-[24px] items-center rounded-full border border-[#e5e7eb] bg-white/92 px-2 py-1 text-[10px] leading-none text-[#6b7280] shadow-[0_1px_4px_rgba(15,23,42,0.08)] backdrop-blur-[2px] md:text-[11px]">
+              {feedbackMeta.recommendCount > 0 ? (
+                <>
+                  <span className="inline-flex items-center gap-1 text-[#2F5D46]">
+                    <span aria-hidden="true">👍</span>
+                    <span className="font-semibold">{feedbackMeta.recommendCount}</span>
+                  </span>
+                  <span className="mx-1.5 text-[#c4c4c4]">·</span>
+                </>
+              ) : null}
+              <span className="whitespace-nowrap">
+                <span className="font-semibold text-[#4b5563]">{feedbackMeta.reviewCount}</span>리뷰
+              </span>
+            </div>
+          </div>
+        ) : null}
+      </div>
 
       <div className="product-card__content flex min-h-0 flex-1 flex-col">
         <p
@@ -383,31 +398,6 @@ export default function ProductCard({
           ))}
         </div>
 
-        {isDrinkCard ? (
-          <div className="product-card__feedback mt-1 flex min-h-[16px] items-center text-[11px] leading-none text-[#7a7a7a] md:mt-2">
-            {feedbackMeta ? (
-              <>
-                {feedbackMeta.recommendCount > 0 ? (
-                  <>
-                    <span className="inline-flex items-center gap-1 text-[#2F5D46]">
-                      <span aria-hidden="true">👍</span>
-                      <span className="font-semibold">{feedbackMeta.recommendCount}</span>
-                    </span>
-                    <span className="mx-1.5 text-[#c4c4c4]">·</span>
-                  </>
-                ) : null}
-                <span>
-                  리뷰 <span className="font-semibold text-[#4b5563]">{feedbackMeta.reviewCount}</span>
-                </span>
-              </>
-            ) : (
-              <span aria-hidden="true" className="invisible">
-                👍 00 · 리뷰 00
-              </span>
-            )}
-          </div>
-        ) : null}
-
         <div className={`cta-group ${isDrinkCard ? "mt-1 md:mt-2.5" : "mt-1.5 md:mt-4"}`}>
           <PurchaseLinkRow
             coupangHref={coupangHref}
@@ -437,10 +427,7 @@ export default function ProductCard({
             상세보기
           </Link>
           {slug ? (
-            <>
-              <CompareButton slug={slug} detailHref={detailHref} />
-              <FavoriteButton slug={slug} />
-            </>
+            <CompareButton slug={slug} detailHref={detailHref} />
           ) : (
             <button
               type="button"
