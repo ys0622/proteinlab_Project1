@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-23T06:53:15.410Z",
+  "generated_at": "2026-03-23T07:02:42.683Z",
   "total": 293,
   "categories": {
     "drinks": 99,
@@ -2026,7 +2026,7 @@
     },
     {
       "slug": "flymill-proteinshake-choco-45",
-      "name": "프로틴쉐이크 (초코)",
+      "name": "단백질 쉐이크 (초코)",
       "brand": "플라이밀",
       "category": "shake",
       "protein": 22,
@@ -2044,7 +2044,7 @@
     },
     {
       "slug": "danbaekhani-proteinshake-signature-40",
-      "name": "단백질쉐이크 (시그니처)",
+      "name": "단백질 쉐이크 (시그니처)",
       "brand": "단백하니",
       "category": "shake",
       "protein": 22,
@@ -2053,7 +2053,7 @@
     },
     {
       "slug": "flymill-proteinshake-banana-45",
-      "name": "프로틴쉐이크 (바나나)",
+      "name": "단백질 쉐이크 (바나나)",
       "brand": "플라이밀",
       "category": "shake",
       "protein": 20.4,
@@ -2071,7 +2071,7 @@
     },
     {
       "slug": "danbaekhani-proteinshake-choco-40",
-      "name": "단백질쉐이크 (초코)",
+      "name": "단백질 쉐이크 (초코)",
       "brand": "단백하니",
       "category": "shake",
       "protein": 22,
@@ -2080,7 +2080,7 @@
     },
     {
       "slug": "flymill-proteinshake-strawberry-45",
-      "name": "프로틴쉐이크 (딸기)",
+      "name": "단백질 쉐이크 (딸기)",
       "brand": "플라이밀",
       "category": "shake",
       "protein": 19,
@@ -2098,7 +2098,7 @@
     },
     {
       "slug": "danbaekhani-proteinshake-matcha-40",
-      "name": "단백질쉐이크 (말차)",
+      "name": "단백질 쉐이크 (말차)",
       "brand": "단백하니",
       "category": "shake",
       "protein": 22,
@@ -2107,7 +2107,7 @@
     },
     {
       "slug": "flymill-proteinshake-goguma-45",
-      "name": "프로틴쉐이크 (고구마)",
+      "name": "단백질 쉐이크 (고구마)",
       "brand": "플라이밀",
       "category": "shake",
       "protein": 19,
@@ -2125,7 +2125,7 @@
     },
     {
       "slug": "proteone-proteinshake-choco-40",
-      "name": "단백쉐이크 (초코맛)",
+      "name": "단백질 쉐이크 (초코맛)",
       "brand": "프로티원",
       "category": "shake",
       "protein": 23,
@@ -2134,7 +2134,7 @@
     },
     {
       "slug": "proteone-proteinshake-coffee-40",
-      "name": "단백쉐이크 (커피맛)",
+      "name": "단백질 쉐이크 (커피맛)",
       "brand": "프로티원",
       "category": "shake",
       "protein": 22,
@@ -2170,7 +2170,7 @@
     },
     {
       "slug": "proteone-proteinshake-strawberry-40",
-      "name": "단백쉐이크 (딸기맛)",
+      "name": "단백질 쉐이크 (딸기맛)",
       "brand": "프로티원",
       "category": "shake",
       "protein": 20,
@@ -2179,7 +2179,7 @@
     },
     {
       "slug": "proteone-proteinshake-black-sesame-40",
-      "name": "단백쉐이크 (흑임자맛)",
+      "name": "단백질 쉐이크 (흑임자맛)",
       "brand": "프로티원",
       "category": "shake",
       "protein": 20,
@@ -2206,7 +2206,7 @@
     },
     {
       "slug": "kkobak-kobab-high-protein-low-sugar-choco-40",
-      "name": "고단저당 (초코)",
+      "name": "단백질 쉐이크 고단저당 (초코)",
       "brand": "꼬박꼬밥",
       "category": "shake",
       "protein": 20,
@@ -2215,7 +2215,7 @@
     },
     {
       "slug": "kkobak-kobab-high-protein-low-sugar-coffee-40",
-      "name": "고단저당 (커피)",
+      "name": "단백질 쉐이크 고단저당 (커피)",
       "brand": "꼬박꼬밥",
       "category": "shake",
       "protein": 20,
@@ -2224,7 +2224,7 @@
     },
     {
       "slug": "kkobak-kobab-high-protein-low-sugar-jeju-matcha-40",
-      "name": "고단저당 (제주 말차)",
+      "name": "단백질 쉐이크 고단저당 (제주 말차)",
       "brand": "꼬박꼬밥",
       "category": "shake",
       "protein": 20,
@@ -2233,7 +2233,7 @@
     },
     {
       "slug": "kkobak-kobab-high-protein-low-sugar-sweet-corn-40",
-      "name": "고단저당 (스윗콘)",
+      "name": "단백질 쉐이크 고단저당 (스윗콘)",
       "brand": "꼬박꼬밥",
       "category": "shake",
       "protein": 20,
@@ -2242,7 +2242,7 @@
     },
     {
       "slug": "kkobak-kobab-high-protein-low-sugar-black-sesame-40",
-      "name": "고단저당 (흑임자)",
+      "name": "단백질 쉐이크 고단저당 (흑임자)",
       "brand": "꼬박꼬밥",
       "category": "shake",
       "protein": 21,
@@ -2251,7 +2251,7 @@
     },
     {
       "slug": "kkobak-kobab-high-protein-low-sugar-misugaru-40",
-      "name": "고단저당 (미숫가루)",
+      "name": "단백질 쉐이크 고단저당 (미숫가루)",
       "brand": "꼬박꼬밥",
       "category": "shake",
       "protein": 20,
@@ -2260,7 +2260,7 @@
     },
     {
       "slug": "proteone-proteinshake-grain-40",
-      "name": "단백쉐이크 (곡물맛)",
+      "name": "단백질 쉐이크 (곡물맛)",
       "brand": "프로티원",
       "category": "shake",
       "protein": 20,
@@ -2305,7 +2305,7 @@
     },
     {
       "slug": "milit-proteinshake-chocolate-40",
-      "name": "단백질쉐이크 (초콜릿맛)",
+      "name": "단백질 쉐이크 (초콜릿맛)",
       "brand": "밀잇",
       "category": "shake",
       "protein": 16,
@@ -2314,7 +2314,7 @@
     },
     {
       "slug": "milit-proteinshake-coffee-40",
-      "name": "단백질쉐이크 (커피맛)",
+      "name": "단백질 쉐이크 (커피맛)",
       "brand": "밀잇",
       "category": "shake",
       "protein": 16,
@@ -2323,7 +2323,7 @@
     },
     {
       "slug": "milit-proteinshake-banana-40",
-      "name": "단백질쉐이크 (바나나맛)",
+      "name": "단백질 쉐이크 (바나나맛)",
       "brand": "밀잇",
       "category": "shake",
       "protein": 14,
@@ -2332,7 +2332,7 @@
     },
     {
       "slug": "flymill-proteinshake-green-45",
-      "name": "프로틴쉐이크 (그린)",
+      "name": "단백질 쉐이크 (그린)",
       "brand": "플라이밀",
       "category": "shake",
       "protein": 21,
@@ -2341,7 +2341,7 @@
     },
     {
       "slug": "flymill-proteinshake-dolce-latte-45",
-      "name": "프로틴쉐이크 (돌체라떼)",
+      "name": "단백질 쉐이크 (돌체라떼)",
       "brand": "플라이밀",
       "category": "shake",
       "protein": 20,
@@ -2350,7 +2350,7 @@
     },
     {
       "slug": "flymill-proteinshake-milk-tea-45",
-      "name": "프로틴쉐이크 (밀크티)",
+      "name": "단백질 쉐이크 (밀크티)",
       "brand": "플라이밀",
       "category": "shake",
       "protein": 20,
@@ -2359,7 +2359,7 @@
     },
     {
       "slug": "flymill-proteinshake-brown-45",
-      "name": "프로틴쉐이크 (브라운)",
+      "name": "단백질 쉐이크 (브라운)",
       "brand": "플라이밀",
       "category": "shake",
       "protein": 20,
@@ -2368,7 +2368,7 @@
     },
     {
       "slug": "flymill-proteinshake-black-45",
-      "name": "프로틴쉐이크 (블랙)",
+      "name": "단백질 쉐이크 (블랙)",
       "brand": "플라이밀",
       "category": "shake",
       "protein": 22,
@@ -2377,7 +2377,7 @@
     },
     {
       "slug": "flymill-proteinshake-corn-cereal-45",
-      "name": "프로틴쉐이크 (콘시리얼)",
+      "name": "단백질 쉐이크 (콘시리얼)",
       "brand": "플라이밀",
       "category": "shake",
       "protein": 20,
@@ -2422,7 +2422,7 @@
     },
     {
       "slug": "lookat-proteinshake-roasted-soy-soboro-45",
-      "name": "단백질쉐이크 (볶음콩소보로)",
+      "name": "단백질 쉐이크 (볶음콩소보로)",
       "brand": "룩트",
       "category": "shake",
       "protein": 20.7,
@@ -2431,7 +2431,7 @@
     },
     {
       "slug": "lookat-proteinshake-cinnamon-pecan-45",
-      "name": "단백질쉐이크 (시나몬피칸)",
+      "name": "단백질 쉐이크 (시나몬피칸)",
       "brand": "룩트",
       "category": "shake",
       "protein": 16.5,
@@ -2440,7 +2440,7 @@
     },
     {
       "slug": "lookat-proteinshake-choco-hazelnut-45",
-      "name": "단백질쉐이크 (초코헤이즐넛)",
+      "name": "단백질 쉐이크 (초코헤이즐넛)",
       "brand": "룩트",
       "category": "shake",
       "protein": 16.8,
@@ -2449,7 +2449,7 @@
     },
     {
       "slug": "benof-proteinshake-misugaru-cereal-40",
-      "name": "단백질쉐이크 (미숫가루시리얼)",
+      "name": "단백질 쉐이크 (미숫가루시리얼)",
       "brand": "베노프",
       "category": "shake",
       "protein": 20,
@@ -2467,7 +2467,7 @@
     },
     {
       "slug": "allthebetter-proteinshake-multi-berry-smoothie-45",
-      "name": "단백질쉐이크 (멀티베리스무디)",
+      "name": "단백질 쉐이크 (멀티베리스무디)",
       "brand": "올더배러",
       "category": "shake",
       "protein": 24,
@@ -2476,7 +2476,7 @@
     },
     {
       "slug": "allthebetter-proteinshake-banana-latte-45",
-      "name": "단백질쉐이크 (바나나라떼)",
+      "name": "단백질 쉐이크 (바나나라떼)",
       "brand": "올더배러",
       "category": "shake",
       "protein": 24,
@@ -2485,7 +2485,7 @@
     },
     {
       "slug": "allthebetter-proteinshake-corn-latte-45",
-      "name": "단백질쉐이크 (옥수수라떼)",
+      "name": "단백질 쉐이크 (옥수수라떼)",
       "brand": "올더배러",
       "category": "shake",
       "protein": 24,
@@ -2494,7 +2494,7 @@
     },
     {
       "slug": "allthebetter-proteinshake-low-sugar-17grain-misugaru-45",
-      "name": "단백질쉐이크 (저당 17곡 미숫가루)",
+      "name": "단백질 쉐이크 (저당 17곡 미숫가루)",
       "brand": "올더배러",
       "category": "shake",
       "protein": 24,
@@ -2503,7 +2503,7 @@
     },
     {
       "slug": "allthebetter-proteinshake-low-sugar-black-soy-milk-45",
-      "name": "단백질쉐이크 (저당 검은콩두유)",
+      "name": "단백질 쉐이크 (저당 검은콩두유)",
       "brand": "올더배러",
       "category": "shake",
       "protein": 24,
@@ -2512,7 +2512,7 @@
     },
     {
       "slug": "allthebetter-proteinshake-low-sugar-chocolate-mousse-45",
-      "name": "단백질쉐이크 (저당 초콜릿무스)",
+      "name": "단백질 쉐이크 (저당 초콜릿무스)",
       "brand": "올더배러",
       "category": "shake",
       "protein": 25,
@@ -2548,7 +2548,7 @@
     },
     {
       "slug": "benof-proteinshake-chocolate-cereal-40",
-      "name": "단백질쉐이크 (초콜릿시리얼)",
+      "name": "단백질 쉐이크 (초콜릿시리얼)",
       "brand": "베노프",
       "category": "shake",
       "protein": 20,
@@ -2557,7 +2557,7 @@
     },
     {
       "slug": "milit-proteinshake-matcha-choco-cookie-40",
-      "name": "단백질쉐이크 (말차초코쿠키맛)",
+      "name": "단백질 쉐이크 (말차초코쿠키맛)",
       "brand": "밀잇",
       "category": "shake",
       "protein": 20,
@@ -2566,7 +2566,7 @@
     },
     {
       "slug": "milit-proteinshake-melon-40",
-      "name": "단백질쉐이크 (멜론맛)",
+      "name": "단백질 쉐이크 (멜론맛)",
       "brand": "밀잇",
       "category": "shake",
       "protein": 15,
@@ -2575,7 +2575,7 @@
     },
     {
       "slug": "milit-proteinshake-cereal-40",
-      "name": "단백질쉐이크 (시리얼맛)",
+      "name": "단백질 쉐이크 (시리얼맛)",
       "brand": "밀잇",
       "category": "shake",
       "protein": 18,
@@ -2584,7 +2584,7 @@
     },
     {
       "slug": "milit-proteinshake-pistachio-40",
-      "name": "단백질쉐이크 (피스타치오맛)",
+      "name": "단백질 쉐이크 (피스타치오맛)",
       "brand": "밀잇",
       "category": "shake",
       "protein": 15,
@@ -2602,7 +2602,7 @@
     },
     {
       "slug": "flymill-proteinshake-cookie-cream-45",
-      "name": "프로틴쉐이크 (쿠키앤크림)",
+      "name": "단백질 쉐이크 (쿠키앤크림)",
       "brand": "플라이밀",
       "category": "shake",
       "protein": 20.3,
@@ -2611,7 +2611,7 @@
     },
     {
       "slug": "flymill-proteinshake-peanut-butter-45",
-      "name": "프로틴쉐이크 (피넛버터)",
+      "name": "단백질 쉐이크 (피넛버터)",
       "brand": "플라이밀",
       "category": "shake",
       "protein": 24,
@@ -2620,7 +2620,7 @@
     },
     {
       "slug": "flymill-proteinshake-pistachio-45",
-      "name": "프로틴쉐이크 (피스타치오)",
+      "name": "단백질 쉐이크 (피스타치오)",
       "brand": "플라이밀",
       "category": "shake",
       "protein": 20.8,
