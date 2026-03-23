@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import Script from "next/script";
+import { Suspense } from "react";
+import AnalyticsPageViewTracker from "./components/AnalyticsPageViewTracker";
 import CompareBar from "./components/CompareBar";
 import CompareBarSpacer from "./components/CompareBarSpacer";
 import { CompareProvider } from "./context/CompareContext";
@@ -53,9 +55,10 @@ export default function RootLayout({
               {`
                 window.dataLayer = window.dataLayer || [];
                 function gtag(){dataLayer.push(arguments);}
+                window.gtag = gtag;
                 gtag('js', new Date());
                 gtag('config', '${GA_ID}', {
-                  page_path: window.location.pathname,
+                  send_page_view: false,
                 });
               `}
             </Script>
@@ -63,6 +66,9 @@ export default function RootLayout({
         ) : null}
         <FavoritesProvider>
           <CompareProvider>
+            <Suspense fallback={null}>
+              <AnalyticsPageViewTracker />
+            </Suspense>
             {children}
             <CompareBarSpacer />
             <CompareBar />

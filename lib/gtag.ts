@@ -1,32 +1,30 @@
-type PurchaseStore = "coupang" | "naver" | "official";
+import {
+  event,
+  outboundClick,
+  purchaseClick,
+} from "./analytics";
 
-declare global {
-  interface Window {
-    gtag?: (...args: unknown[]) => void;
-  }
-}
+type PurchaseStore = "coupang" | "naver" | "official";
 
 export const trackPurchaseClick = ({
   productName,
   brand,
   store,
   productId,
+  destinationUrl,
 }: {
   productName: string;
   brand: string;
   store: PurchaseStore;
   productId: string;
+  destinationUrl?: string;
 }) => {
-  if (typeof window === "undefined") return;
-  if (typeof window.gtag !== "function") return;
-
-  window.gtag("event", "purchase_link_click", {
-    event_category: "engagement",
-    event_label: `${productName} | ${store}`,
-    product_id: productId,
-    product_name: productName,
+  purchaseClick({
+    productId,
+    productName,
     brand,
     store,
+    destinationUrl,
   });
 };
 
@@ -39,15 +37,11 @@ export const trackNavigationClick = ({
   destination: string;
   label: string;
 }) => {
-  if (typeof window === "undefined") return;
-  if (typeof window.gtag !== "function") return;
-
-  window.gtag("event", "navigation_click", {
-    event_category: "engagement",
-    event_label: `${section} | ${label}`,
-    section,
-    destination,
-    label,
+  outboundClick({
+    label: `${section} | ${label}`,
+    destinationUrl: destination,
+    category: "navigation",
   });
 };
 
+export const trackEvent = event;

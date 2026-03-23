@@ -8,7 +8,7 @@ import type {
   KeyboardEvent as ReactKeyboardEvent,
   MouseEvent as ReactMouseEvent,
 } from "react";
-import { trackPurchaseClick } from "@/lib/gtag";
+import { productClick, purchaseClick } from "@/lib/analytics";
 import { getProductImageUrl } from "../lib/productImage";
 import {
   getCoupangRedirectHref,
@@ -194,6 +194,13 @@ export default function ProductCard({
 
   const openDetail = () => {
     if (!canOpenDetail) return;
+    productClick({
+      productId,
+      productName: name,
+      brand,
+      category: productType,
+      destinationUrl: detailHref,
+    });
     router.push(detailHref);
   };
 
@@ -391,13 +398,31 @@ export default function ProductCard({
             officialMallHref={officialMallHref}
             size="sm"
             onCoupangClick={() =>
-              trackPurchaseClick({ productName: name, brand, store: "coupang", productId })
+              purchaseClick({
+                productName: name,
+                brand,
+                store: "coupang",
+                productId,
+                destinationUrl: coupangHref ?? undefined,
+              })
             }
             onNaverClick={() =>
-              trackPurchaseClick({ productName: name, brand, store: "naver", productId })
+              purchaseClick({
+                productName: name,
+                brand,
+                store: "naver",
+                productId,
+                destinationUrl: naverHref ?? undefined,
+              })
             }
             onOfficialClick={() =>
-              trackPurchaseClick({ productName: name, brand, store: "official", productId })
+              purchaseClick({
+                productName: name,
+                brand,
+                store: "official",
+                productId,
+                destinationUrl: officialMallHref ?? undefined,
+              })
             }
           />
         </div>
@@ -407,6 +432,15 @@ export default function ProductCard({
         <div className={`product-card__footer-actions flex gap-1.5 md:gap-3 ${productType === "drink" ? "mt-1 md:mt-2.5" : "mt-1 md:mt-3"}`}>
           <Link
             href={detailHref}
+            onClick={() =>
+              productClick({
+                productId,
+                productName: name,
+                brand,
+                category: productType,
+                destinationUrl: detailHref,
+              })
+            }
             className="flex flex-1 items-center justify-center rounded-[10px] border border-[#e2e2e2] bg-white font-medium text-[var(--foreground)] transition-colors hover:border-[var(--accent)] hover:bg-[var(--accent-light)] hover:text-[var(--accent)] active:scale-[0.98]"
             style={{ height: "34px", fontSize: "12px", borderRadius: "10px" }}
           >
