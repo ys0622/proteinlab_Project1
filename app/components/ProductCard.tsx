@@ -387,13 +387,22 @@ export default function ProductCard({
           <div className="product-card__feedback mt-1 flex min-h-[16px] items-center text-[11px] leading-none text-[#7a7a7a] md:mt-2">
             {feedbackMeta ? (
               <>
-                <span>추천 {feedbackMeta.recommendCount}</span>
-                <span className="mx-1.5 text-[#c4c4c4]">·</span>
-                <span>리뷰 {feedbackMeta.reviewCount}</span>
+                {feedbackMeta.recommendCount > 0 ? (
+                  <>
+                    <span className="inline-flex items-center gap-1 text-[#2F5D46]">
+                      <span aria-hidden="true">👍</span>
+                      <span className="font-semibold">{feedbackMeta.recommendCount}</span>
+                    </span>
+                    <span className="mx-1.5 text-[#c4c4c4]">·</span>
+                  </>
+                ) : null}
+                <span>
+                  리뷰 <span className="font-semibold text-[#4b5563]">{feedbackMeta.reviewCount}</span>
+                </span>
               </>
             ) : (
               <span aria-hidden="true" className="invisible">
-                추천 00 · 리뷰 00
+                👍 00 · 리뷰 00
               </span>
             )}
           </div>
