@@ -92,6 +92,8 @@ const topics = [
   },
 ];
 
+const topicEmojis = ["🏃", "🏁", "📏", "🥗", "🏋️", "🌱", "🌸", "🌤️", "🧺"];
+
 export default function FitnessLifestyleTrackPage() {
   return (
     <div className="min-h-screen bg-white">
@@ -140,8 +142,8 @@ export default function FitnessLifestyleTrackPage() {
             </div>
           </div>
 
-          <div className="mt-4 grid gap-4 sm:grid-cols-2">
-            {topics.map((topic) => (
+          <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {topics.map((topic, index) => (
               <Link
                 key={topic.href}
                 href={topic.href}
@@ -156,8 +158,8 @@ export default function FitnessLifestyleTrackPage() {
                           {topic.badge}
                         </span>
                       </div>
-                      <span className="rounded-full border border-[#d8e2da] bg-white px-2.5 py-1 text-[11px] font-semibold text-[#6f7f76]">
-                        LIVE
+                      <span className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-[#d7e6dd] bg-white text-lg">
+                        {topicEmojis[index % topicEmojis.length]}
                       </span>
                     </div>
 

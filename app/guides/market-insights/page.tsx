@@ -53,6 +53,8 @@ const supportingTopics = [
   },
 ];
 
+const topicEmojis = ["🥤", "🏷️", "📈", "🕰️", "🆕", "🌍"];
+
 type MarketTopicCard = {
   title: string;
   href: string;
@@ -105,8 +107,8 @@ export default function MarketInsightsPage() {
             </div>
           </div>
 
-          <div className="mt-4 grid gap-4 sm:grid-cols-2">
-            {[...featuredTopics, ...supportingTopics].map((topic: MarketTopicCard) => (
+          <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {[...featuredTopics, ...supportingTopics].map((topic: MarketTopicCard, index) => (
               <Link
                 key={topic.href}
                 href={topic.href}
@@ -121,7 +123,9 @@ export default function MarketInsightsPage() {
                           {topic.badge ?? "보조 주제"}
                         </span>
                       </div>
-                      <span className="rounded-full border border-[#d8e2da] bg-white px-2.5 py-1 text-[11px] font-semibold text-[#6f7f76]">LIVE</span>
+                      <span className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-[#d7e6dd] bg-white text-lg">
+                        {topicEmojis[index % topicEmojis.length]}
+                      </span>
                     </div>
 
                     <h3 className="mt-3 text-base font-bold text-[#1f5138] transition-colors group-hover:text-[var(--accent)]">{topic.title}</h3>

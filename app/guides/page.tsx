@@ -50,7 +50,7 @@ export default async function GuidesPage() {
         <div className="mt-6 grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
           {cms.mainPage.tracks.map((track) => {
             const section = cms.sections.find((item) => item.id === track.id || item.slug === track.href.replace("/guides/", ""));
-            const featuredTopics = section?.articles.slice(0, 2).map((article) => article.title) ?? [];
+            const featuredTopics = section?.articles.slice(0, 3) ?? [];
             const popularTopic =
               section?.articles.find((article) => article.status === "live")?.title ??
               section?.articles[0]?.title ??
@@ -60,7 +60,7 @@ export default async function GuidesPage() {
               <Link
                 key={track.id}
                 href={track.href}
-                className="group grid h-full min-h-[276px] grid-rows-[auto_1fr_auto] overflow-hidden rounded-2xl border border-[#d8e2da] bg-[#fffdf8] shadow-[0_10px_24px_rgba(20,40,28,0.05)] transition-colors hover:border-[#cfe1d7]"
+                className="group grid h-full min-h-[292px] grid-rows-[auto_1fr_auto] overflow-hidden rounded-[24px] border border-[#d8e2da] bg-[#fffdf8] shadow-[0_10px_24px_rgba(20,40,28,0.05)] transition-colors hover:border-[#cfe1d7]"
               >
                 <div className="h-1.5 w-full" style={{ background: track.accentColor }} />
 
@@ -84,20 +84,20 @@ export default async function GuidesPage() {
                     <div className="mt-3 flex items-start gap-3">
                       <span
                         aria-hidden
-                        className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-[#d7e6dd] bg-white text-lg"
+                        className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-[#d7e6dd] bg-white text-lg shadow-[0_4px_10px_rgba(20,40,28,0.06)]"
                       >
                         {track.emoji}
                       </span>
                       <div className="min-w-0">
-                        <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[#6f7f76]" style={clampOneLine}>
-                          {track.subtitle}
-                        </p>
                         <h2
-                          className="mt-0.5 text-[17px] font-bold transition-colors group-hover:text-[var(--accent)]"
+                          className="text-[17px] font-bold transition-colors group-hover:text-[var(--accent)]"
                           style={{ color: track.accentColor }}
                         >
                           {track.title}
                         </h2>
+                        <p className="mt-1 text-[12px] font-medium text-[#6f7f76]" style={clampOneLine}>
+                          {track.count}개 주제
+                        </p>
                       </div>
                     </div>
                   </div>
@@ -111,24 +111,27 @@ export default async function GuidesPage() {
                       <p className="text-[11px] font-semibold uppercase tracking-wide text-[#7c8b84]">대표 콘텐츠</p>
 
                       <div className="mt-2 hidden flex-wrap gap-1.5 md:flex">
-                        {featuredTopics.map((topic) => (
+                        {featuredTopics.map((article) => (
                           <span
-                            key={`${track.id}-${topic}`}
-                            className="inline-flex items-center rounded-full border border-[#d9e4dd] bg-[#f7faf8] px-2.5 py-1 text-[11px] font-medium text-[#496555]"
+                            key={`${track.id}-${article.slug}`}
+                            className="inline-flex items-center gap-1 rounded-full border border-[#d9e4dd] bg-[#f7faf8] px-2.5 py-1 text-[11px] font-medium text-[#496555]"
                           >
-                            {topic}
+                            <span aria-hidden>{article.emoji}</span>
+                            <span>{article.title}</span>
                           </span>
                         ))}
                       </div>
 
                       <ul className="mt-2 space-y-1.5 md:hidden">
-                        {featuredTopics.map((topic) => (
+                        {featuredTopics.map((article) => (
                           <li
-                            key={`${track.id}-mobile-${topic}`}
+                            key={`${track.id}-mobile-${article.slug}`}
                             className="flex items-start gap-2 text-[12px] leading-5 text-[var(--foreground-muted)]"
                           >
                             <span className="mt-[5px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#b8c9c0]" />
-                            <span style={clampOneLine}>{topic}</span>
+                            <span style={clampOneLine}>
+                              {article.emoji} {article.title}
+                            </span>
                           </li>
                         ))}
                       </ul>
