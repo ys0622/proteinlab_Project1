@@ -38,7 +38,7 @@ export default function LowSugarProteinShakeGuidePage() {
       products={[
         { name: "랩노쉬 슬림쉐이크 더블초코", protein: "20g", feature: "당류가 낮고 식이섬유까지 포함되어 저당 + 식사대용 기준을 같이 보기 좋습니다.", recommendedFor: "저당 기준과 식사대용 기준을 동시에 보는 사람" },
         { name: "단백하니 단백질쉐이크 시그니처", protein: "22g", feature: "고단백 중심이면서 당류 부담이 낮은 편이라 운동 후 보충용 저당 비교에도 잘 들어옵니다.", recommendedFor: "저당 기준과 운동 후 보충 기준을 같이 보는 사람" },
-        { name: "플라이밀 프로틴쉐이크 딸기", protein: "제품 기준 확인", feature: "맛 선택 폭이 있는 라인업 중에서도 저당 비교 축으로 보기 쉬운 타입입니다.", recommendedFor: "맛 선택 폭과 저당 기준을 같이 보는 사람" },
+        { name: "플라이밀 프로틴쉐이크 피넛버터", protein: "24g", sugar: "1.2g", calories: "179kcal", feature: "당류가 낮고 단백질 함량이 높아 저당 기준으로 비교하기 좋습니다.", recommendedFor: "저당 기준과 고단백을 같이 보는 사람" },
       ]}
       closing="저당 단백질 쉐이크는 당류만 낮다고 좋은 제품이 되는 건 아닙니다. 단백질, 칼로리, 식이섬유까지 함께 봐야 실제로 만족도가 높은 제품을 고를 수 있습니다."
       internalLinks={[

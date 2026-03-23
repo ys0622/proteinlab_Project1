@@ -37,7 +37,7 @@ export default function ProteinDrinkVsProteinShakePage() {
         { title: "비교할 때 주의할 점", body: "둘 다 같은 단백질 제품이라고 묶어서 비교하면 용도 차이를 놓치기 쉽습니다. RTD인지, 식사대용 성격이 있는지 먼저 나눠보는 편이 좋습니다." },
       ]}
       products={[
-        { name: "셀렉스 프로핏 밀크 바닐라", protein: "제품 기준 확인", feature: "RTD 형태로 바로 마시기 쉬워 운동 후 가볍게 접근하기 좋습니다.", recommendedFor: "운동 후 빠르게 마실 제품을 찾는 사람" },
+        { name: "잇더핏 단백질쉐이크 미숫가루", protein: "28.7g", sugar: "0.9g", calories: "154kcal", feature: "단백질 밀도가 높고 당류가 낮아 운동 후 보충용과 저당 비교 모두에 잘 들어옵니다.", recommendedFor: "단백질 효율을 우선하면서 바로 마실 수 있는 제품을 찾는 사람" },
         { name: "랩노쉬 슬림쉐이크 더블초코", protein: "20g", feature: "식이섬유가 포함되어 식사대용 맥락에서 보기 좋습니다.", recommendedFor: "한 끼 대체까지 고려하는 사람" },
         { name: "단백하니 단백질쉐이크 시그니처", protein: "22g", feature: "고단백 중심의 간편 섭취형이라 쉐이크 쪽 고단백 비교에 잘 들어옵니다.", recommendedFor: "쉐이크 형태로 단백질 보충 효율을 우선하는 사람" },
       ]}

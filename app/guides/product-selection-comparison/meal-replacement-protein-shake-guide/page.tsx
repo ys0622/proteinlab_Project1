@@ -38,7 +38,7 @@ export default function MealReplacementProteinShakeGuidePage() {
       products={[
         { name: "랩노쉬 슬림쉐이크 더블초코", protein: "20g", feature: "식이섬유와 단백질 밸런스가 좋아 식사대용 쉐이크 맥락에서 보기 편합니다.", recommendedFor: "한 끼 대체 목적을 가장 우선하는 사람" },
         { name: "플라이밀 프로틴쉐이크 초코", protein: "22g", feature: "단백질 함량이 높고 식이섬유도 포함되어 범용적인 식사대용 후보로 보기 좋습니다.", recommendedFor: "식사대용과 단백질 보충을 같이 노리는 사람" },
-        { name: "올더배러 로우슈거 17곡 미숫가루", protein: "제품별 확인", feature: "곡물형 풍미와 식사대용 맥락이 강한 타입이라 취향이 맞으면 선택 폭이 넓습니다.", recommendedFor: "달지 않은 곡물형 식사대용 쉐이크를 찾는 사람" },
+        { name: "올더배러 단백질쉐이크 저당 17곡 미숫가루", protein: "24g", sugar: "1g", calories: "170kcal", feature: "곡물형 풍미에 저당·고단백 균형이 좋아 식사대용 맥락에서 비교하기 좋습니다.", recommendedFor: "달지 않은 곡물형 식사대용 쉐이크를 찾는 사람" },
       ]}
       closing="식사대용 단백질 쉐이크는 고단백보다 균형이 더 중요할 때가 많습니다. 칼로리, 식이섬유, 당류, 단백질을 함께 봐야 실제로 한 끼를 대체하기 쉬운 제품을 고를 수 있습니다."
       internalLinks={[

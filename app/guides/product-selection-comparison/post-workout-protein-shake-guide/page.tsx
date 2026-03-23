@@ -38,7 +38,7 @@ export default function PostWorkoutProteinShakeGuidePage() {
       products={[
         { name: "단백하니 단백질쉐이크 시그니처", protein: "22g", feature: "고단백 중심이라 운동 후 보충용 비교에 가장 먼저 넣기 좋은 타입입니다.", recommendedFor: "운동 후 보충 효율을 우선하는 사람" },
         { name: "플라이밀 프로틴쉐이크 초코", protein: "22g", feature: "단백질과 전체 균형이 무난해 운동 후에 비교하기 편합니다.", recommendedFor: "무난한 운동 후 쉐이크를 찾는 사람" },
-        { name: "프로티원 단백질쉐이크 초코", protein: "제품 기준 확인", feature: "고단백 축에서 다른 브랜드와 함께 비교하기 좋은 타입입니다.", recommendedFor: "브랜드보다는 성분 기준으로 비교하려는 사람" },
+        { name: "프로티원 단백쉐이크 초코", protein: "23g", sugar: "1g", calories: "128kcal", feature: "고단백·저당·저칼로리 균형이 좋아 운동 후 보충용 비교에 잘 들어옵니다.", recommendedFor: "단백질 밀도가 높은 운동 후 쉐이크를 찾는 사람" },
       ]}
       closing="운동 후 단백질 쉐이크는 단백질 함량만 보지 말고, 당류와 단백질 밀도까지 함께 보는 게 좋습니다. 그래야 같은 쉐이크라도 실제 보충 효율이 더 좋은 제품을 걸러낼 수 있습니다."
       internalLinks={[
