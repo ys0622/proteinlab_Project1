@@ -627,6 +627,97 @@ function getMostCommonUrl(products: ProductLinkSource[], key: keyof ProductLinkS
   return [...counts.entries()].sort((a, b) => b[1] - a[1])[0]?.[0] ?? "";
 }
 
+function classifyStoreUrl(url: string) {
+  if (!url || url === "#") return { score: 0, kind: "missing" as const };
+
+  try {
+    const parsed = new URL(url);
+    const { hostname, pathname, searchParams } = parsed;
+    const lowerPath = pathname.toLowerCase();
+
+    if (hostname.includes("coupang.com")) {
+      if (
+        lowerPath.includes("/vp/products/") &&
+        searchParams.get("itemId") &&
+        searchParams.get("vendorItemId")
+      ) {
+        return { score: 88, kind: "product" as const };
+      }
+      return { score: 35, kind: "generic" as const };
+    }
+
+    if (hostname.includes("search.shopping.naver.com")) {
+      return { score: 28, kind: "search" as const };
+    }
+
+    if (hostname.includes("brand.naver.com") || hostname.includes("smartstore.naver.com")) {
+      if (lowerPath.includes("/products/")) return { score: 82, kind: "product" as const };
+      if (lowerPath.includes("/category/")) return { score: 72, kind: "category" as const };
+      return { score: 55, kind: "brand" as const };
+    }
+
+    if (
+      lowerPath.includes("/product/") ||
+      lowerPath.includes("/products/view/") ||
+      lowerPath.includes("/products/") ||
+      lowerPath.includes("/goods/view") ||
+      lowerPath.includes("/item/")
+    ) {
+      return { score: 90, kind: "product" as const };
+    }
+
+    if (
+      lowerPath.includes("/category/") ||
+      lowerPath.includes("/categories/") ||
+      lowerPath.includes("/goods/goods_list.php") ||
+      lowerPath.includes("/list.html")
+    ) {
+      return { score: 75, kind: "category" as const };
+    }
+
+    if (
+      lowerPath === "/" ||
+      lowerPath === "" ||
+      lowerPath === "/index.html" ||
+      lowerPath === "/index.php"
+    ) {
+      return { score: 20, kind: "homepage" as const };
+    }
+
+    return { score: 50, kind: "brand" as const };
+  } catch {
+    return { score: 0, kind: "invalid" as const };
+  }
+}
+
+function chooseBestStoreUrl(products: ProductLinkSource[]) {
+  const scores = new Map<string, { score: number; count: number }>();
+
+  for (const product of products) {
+    for (const candidate of [product.officialUrl, product.naverUrl, product.coupangUrl]) {
+      if (!candidate || candidate === "#") continue;
+
+      const { score } = classifyStoreUrl(candidate);
+      const current = scores.get(candidate);
+      if (!current) {
+        scores.set(candidate, { score, count: 1 });
+        continue;
+      }
+
+      scores.set(candidate, {
+        score: Math.max(current.score, score),
+        count: current.count + 1,
+      });
+    }
+  }
+
+  return [...scores.entries()].sort((a, b) => {
+    const scoreDiff = b[1].score - a[1].score;
+    if (scoreDiff !== 0) return scoreDiff;
+    return b[1].count - a[1].count;
+  })[0]?.[0] ?? "";
+}
+
 function inferStoreType(storeUrl: string) {
   if (!storeUrl || storeUrl === "#") return "공식 판매처";
 
@@ -720,12 +811,18 @@ function buildBrandCards(productType: ProductType, curatedBrands: BrandCard[]) {
   return orderedBrands.map((brand) => {
     const curated = curatedMap.get(brand);
     const brandProducts = products.filter((product) => product.brand === brand);
-    const storeUrl =
-      curated?.storeUrl ||
+    const bestDataUrl =
+      chooseBestStoreUrl(brandProducts) ||
       getMostCommonUrl(brandProducts, "officialUrl") ||
       getMostCommonUrl(brandProducts, "naverUrl") ||
       getMostCommonUrl(brandProducts, "coupangUrl") ||
       "#";
+    const curatedScore = curated?.storeUrl ? classifyStoreUrl(curated.storeUrl).score : 0;
+    const bestDataScore = classifyStoreUrl(bestDataUrl).score;
+    const storeUrl =
+      curated?.storeUrl && curatedScore >= bestDataScore
+        ? curated.storeUrl
+        : bestDataUrl;
     const storeType = curated?.storeType || inferStoreType(storeUrl);
     const events =
       curated?.events?.length
