@@ -263,15 +263,15 @@ export default function ProductCard({
         ) : null}
 
         {isDrinkCard && feedbackMeta ? (
-          <div className="pointer-events-none absolute bottom-1.5 right-1.5 z-10 md:bottom-2 md:right-2">
-            <div className="flex min-h-[20px] items-center rounded-full border border-[#e5e7eb] bg-white/90 px-1.5 py-[3px] text-[9px] leading-none text-[#6b7280] shadow-[0_1px_3px_rgba(15,23,42,0.08)] backdrop-blur-[2px] md:min-h-[24px] md:px-2 md:py-1 md:text-[11px]">
+          <div className="pointer-events-none absolute bottom-2 right-2 z-10 hidden md:block">
+            <div className="flex min-h-[24px] items-center rounded-full border border-[#e5e7eb] bg-white/92 px-2 py-1 text-[11px] leading-none text-[#6b7280] shadow-[0_1px_4px_rgba(15,23,42,0.08)] backdrop-blur-[2px]">
               {feedbackMeta.recommendCount > 0 ? (
                 <>
                   <span className="inline-flex items-center gap-1 text-[#2F5D46]">
                     <span aria-hidden="true">👍</span>
                     <span className="font-semibold">{feedbackMeta.recommendCount}</span>
                   </span>
-                  <span className="mx-1 text-[#c4c4c4] md:mx-1.5">·</span>
+                  <span className="mx-1.5 text-[#c4c4c4]">·</span>
                 </>
               ) : null}
               <span className="whitespace-nowrap">
@@ -283,6 +283,23 @@ export default function ProductCard({
       </div>
 
       <div className="product-card__content flex min-h-0 flex-1 flex-col">
+        {isDrinkCard && feedbackMeta ? (
+          <div className="mt-1 flex items-center text-[10px] leading-none text-[#6b7280] md:hidden">
+            {feedbackMeta.recommendCount > 0 ? (
+              <>
+                <span className="inline-flex items-center gap-1 text-[#2F5D46]">
+                  <span aria-hidden="true">👍</span>
+                  <span className="font-semibold">{feedbackMeta.recommendCount}</span>
+                </span>
+                <span className="mx-1 text-[#c4c4c4]">·</span>
+              </>
+            ) : null}
+            <span className="whitespace-nowrap">
+              <span className="font-semibold text-[#4b5563]">{feedbackMeta.reviewCount}</span>리뷰
+            </span>
+          </div>
+        ) : null}
+
         <p
           className={`product-card__brand text-xs tracking-wide ${isDrinkCard ? "mt-2 md:mt-3" : "mt-2.5 md:mt-4"}`}
           style={{ color: "#7a7a7a" }}
