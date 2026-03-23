@@ -4,7 +4,7 @@ import { useEffect, useId, useRef, useState } from "react";
 import SortInfoPopover from "./SortInfoPopover";
 
 export const sortOptions = [
-  { value: "recommended", label: "추천순" },
+  { value: "recommended", label: "추천순(균형)" },
   { value: "protein_desc", label: "단백질 많은 순" },
   { value: "density", label: "단백질 밀도순" },
   { value: "sugar_asc", label: "당류 낮은 순" },
@@ -16,10 +16,10 @@ export const sortOptions = [
 export type SortOptionValue = (typeof sortOptions)[number]["value"];
 
 export const RECOMMENDED_SORT_DESCRIPTION =
-  "추천순은 단백질 밀도, 당류, 칼로리, 가격 효율 등 제품 비교에 중요한 요소를 종합적으로 고려한 순서입니다.";
+  "추천순(균형)은 단백질 밀도, 단백질량, 당류, 칼로리, 인기도를 함께 반영한 균형형 정렬입니다.";
 
 function formatComparisonHeadline(total: number) {
-  return `${total}개 제품 비교`;
+  return `${total}개 상품 비교`;
 }
 
 interface SortBarProps {
@@ -104,7 +104,7 @@ export default function SortBar({
             >
               {selectedOption.label}
               <span className="ml-1 text-xs" aria-hidden="true">
-                ▼
+                ▾
               </span>
             </button>
 

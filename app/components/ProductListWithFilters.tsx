@@ -144,6 +144,15 @@ function getDensityValue(product: ProductDetailProps): number {
   return ((product.proteinPerServing ?? 0) / capacity) * 100;
 }
 
+function getPer100UnitValue(value: number | undefined, product: ProductDetailProps): number {
+  if (value == null) return 0;
+
+  const capacity = getCapacityMl(product);
+  if (capacity <= 0) return value;
+
+  return (value / capacity) * 100;
+}
+
 function getFallbackPopularity(index: number): number {
   return Math.max(100, 850 - index * 17);
 }
@@ -154,10 +163,19 @@ function getRecommendedScore(
   index: number,
 ): number {
   const density = getDensityValue(product);
+  const popularity = getPopularityScore(product, productType) ?? getFallbackPopularity(index);
+
+  if (productType === "yogurt") {
+    const protein = getPer100UnitValue(product.proteinPerServing, product);
+    const sugar = getPer100UnitValue(product.sugar, product);
+    const calories = getPer100UnitValue(product.calories, product);
+
+    return density * 18 + protein * 2.5 + popularity * 0.01 - sugar * 4 - calories * 0.06;
+  }
+
   const protein = product.proteinPerServing ?? 0;
   const sugar = product.sugar ?? 0;
   const calories = product.calories ?? 0;
-  const popularity = getPopularityScore(product, productType) ?? getFallbackPopularity(index);
 
   return density * 18 + protein * 2.5 + popularity * 0.01 - sugar * 4 - calories * 0.06;
 }
