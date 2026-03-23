@@ -2,6 +2,20 @@ import Link from "next/link";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 
+const clampTwoLines = {
+  display: "-webkit-box",
+  WebkitLineClamp: 2,
+  WebkitBoxOrient: "vertical" as const,
+  overflow: "hidden",
+};
+
+const clampThreeLines = {
+  display: "-webkit-box",
+  WebkitLineClamp: 3,
+  WebkitBoxOrient: "vertical" as const,
+  overflow: "hidden",
+};
+
 export const metadata = {
   title: "제품 선택 & 비교 가이드 | 단백질 음료·바·요거트 비교 기준 | ProteinLab",
   description:
@@ -230,24 +244,31 @@ export default function ProductSelectionComparisonPage() {
               <Link
                 key={topic.href}
                 href={topic.href}
-                className="group flex h-full flex-col justify-between rounded-2xl border border-[#d8e2da] bg-[#fffdf8] shadow-[0_10px_24px_rgba(20,40,28,0.05)] transition-colors hover:border-[#cfe1d7]"
+                className="group flex h-full min-h-[248px] flex-col justify-between overflow-hidden rounded-[24px] border border-[#d8e2da] bg-[#fffdf8] shadow-[0_10px_24px_rgba(20,40,28,0.05)] transition-colors hover:border-[#cfe1d7] sm:min-h-[256px]"
               >
-                <div className="h-1.5 w-full rounded-t-2xl bg-[#2d6a4f]" />
-                <div className="flex flex-1 flex-col justify-between px-5 py-4">
+                <div className="h-1.5 w-full bg-[#2d6a4f]" />
+                <div className="flex flex-1 flex-col justify-between px-4 py-4 sm:px-5">
                   <div>
                     <div className="flex items-center justify-between gap-3">
                       <div className="flex flex-wrap gap-1.5">
-                        <span className="rounded-full border border-[#d9e4dd] bg-[#f7faf8] px-2.5 py-1 text-[11px] font-medium text-[#496555]">
+                        <span className="whitespace-nowrap rounded-full border border-[#d9e4dd] bg-[#f7faf8] px-2.5 py-1 text-[11px] font-medium text-[#496555]">
                           {topic.badge}
                         </span>
                       </div>
-                      <span className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-[#d7e6dd] bg-white text-lg">
+                      <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-[#d7e6dd] bg-white text-lg shadow-[0_4px_10px_rgba(20,40,28,0.06)]">
                         {topicEmojis[index % topicEmojis.length]}
                       </span>
                     </div>
 
-                    <h3 className="mt-3 text-base font-bold text-[#1f5138] transition-colors group-hover:text-[var(--accent)]">{topic.title}</h3>
-                    <p className="mt-2 text-[13px] leading-[1.7] text-[var(--foreground-muted)]">{topic.description}</p>
+                    <h3
+                      className="mt-3 min-h-[52px] text-base font-bold leading-7 text-[#1f5138] transition-colors group-hover:text-[var(--accent)]"
+                      style={clampTwoLines}
+                    >
+                      {topic.title}
+                    </h3>
+                    <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]" style={clampThreeLines}>
+                      {topic.description}
+                    </p>
 
                     <div className="mt-4 rounded-xl border border-[#d7e6dd] bg-[#f4faf6] px-3 py-2.5">
                       <p className="text-[11px] font-semibold text-[#1f5138]">대표 질문</p>

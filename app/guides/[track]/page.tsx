@@ -159,11 +159,11 @@ export default async function GuideTrackPage({ params }: { params: Promise<{ tra
                     </div>
 
                     {article.tags.length > 0 && (
-                      <div className="mt-3 flex flex-wrap gap-2">
+                      <div className="mt-3 min-h-[28px] flex flex-wrap gap-2">
                         {article.tags.slice(0, 2).map((tag) => (
                           <span
                             key={`${article.slug}-${tag}`}
-                            className="inline-flex items-center rounded-full border border-[#d9e4dd] bg-[#f7faf8] px-2.5 py-1 text-[11px] font-medium text-[#496555]"
+                            className="inline-flex items-center whitespace-nowrap rounded-full border border-[#d9e4dd] bg-[#f7faf8] px-2.5 py-1 text-[11px] font-medium text-[#496555]"
                           >
                             {tag}
                           </span>
