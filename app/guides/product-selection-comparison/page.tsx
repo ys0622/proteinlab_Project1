@@ -10,6 +10,14 @@ export const metadata = {
 
 const topics = [
   {
+    title: "편의점 단백질 음료·바 추천",
+    href: "/guides/product-selection-comparison/convenience-store-protein-guide",
+    description: "CU·GS25·세븐일레븐에서 살 수 있는 단백질 음료·바를 단백질 함량, 당류, 칼로리 기준으로 비교합니다.",
+    question: "편의점에서 단백질 제품을 고를 때 무엇부터 봐야 할까?",
+    related: ["편의점", "더단백", "셀렉스", "닥터유", "랩노쉬"],
+    badge: "편의점",
+  },
+  {
     title: "단백질 음료 선택 가이드",
     href: "/guides/product-selection-comparison/protein-drink-guide",
     description: "단백질 음료를 고를 때 단백질 함량, 당류, 칼로리, 단백질 밀도를 어떤 순서로 봐야 하는지 정리합니다.",
