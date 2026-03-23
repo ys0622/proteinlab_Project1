@@ -23,12 +23,19 @@ export const metadata: Metadata = {
     siteName: "ProteinLab",
     locale: "ko_KR",
     type: "website",
+    images: [
+      {
+        url: "/proteinlab-logo.png",
+        alt: "ProteinLab — 단백질 제품 성분 비교 플랫폼",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "단백질 제품 비교·추천 | 음료·바·요거트·쉐이크 성분 기준 | ProteinLab",
     description:
       "단백질 음료, 단백질 바, 단백질 요거트, 단백질 쉐이크 290개 이상을 단백질·당류·칼로리 성분 기준으로 비교합니다. 목적별 추천과 등급 순위까지 한 번에 확인하세요.",
+    images: ["/proteinlab-logo.png"],
   },
   verification: {
     other: {

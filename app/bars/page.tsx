@@ -10,6 +10,9 @@ export const metadata = {
   title: "단백질 바 비교 추천 | 80개 단백질·당류·칼로리 기준 | ProteinLab",
   description:
     "단백질 바 80개를 단백질 함량, 당류, 칼로리, 중량 기준으로 비교합니다. 운동보충·저당·식사보완 목적에 맞는 제품을 성분 데이터로 바로 선택하세요.",
+  alternates: {
+    canonical: "https://proteinlab.kr/bars",
+  },
 };
 
 interface BarsPageProps {

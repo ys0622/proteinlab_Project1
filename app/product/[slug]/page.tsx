@@ -92,7 +92,14 @@ function buildProductDescription(product: ProductDetailProps): string {
   const cal = product.calories != null ? `, ${product.calories}kcal` : "";
   const sugar = product.sugar != null ? `, 당류 ${product.sugar}g` : "";
   const grade = product.gradeTags?.length ? ` · ${product.gradeTags[0]} 등급` : "";
-  return `${product.brand} ${product.name} ${kind} 상세 정보. ${protein}${cal}${sugar}${grade}. 단백질 밀도·영양 성분 비교.`;
+  return `${product.brand} ${product.name} 성분 정보. ${protein}${cal}${sugar}${grade}. 단백질 밀도·영양 성분을 기준으로 직접 비교해보세요.`;
+}
+
+function buildProductTitle(product: ProductDetailProps): string {
+  const kind = getProductKindLabel(product.productType);
+  const protein = `단백질 ${product.proteinPerServing}g`;
+  const sugar = product.sugar != null ? ` · 당류 ${product.sugar}g` : "";
+  return `${product.brand} ${product.name} | ${protein}${sugar} · ${kind} | ProteinLab`;
 }
 
 export async function generateMetadata({ params }: PageProps) {
@@ -104,7 +111,7 @@ export async function generateMetadata({ params }: PageProps) {
   const ogImage = imageUrl ? `https://proteinlab.kr${imageUrl}` : undefined;
 
   return {
-    title: `${product.brand} ${product.name} | ProteinLab`,
+    title: buildProductTitle(product),
     description: buildProductDescription(product),
     openGraph: ogImage
       ? {
@@ -113,7 +120,7 @@ export async function generateMetadata({ params }: PageProps) {
       : undefined,
     twitter: {
       card: "summary_large_image",
-      title: `${product.brand} ${product.name} | ProteinLab`,
+      title: buildProductTitle(product),
       description: buildProductDescription(product),
       ...(ogImage ? { images: [ogImage] } : {}),
     },

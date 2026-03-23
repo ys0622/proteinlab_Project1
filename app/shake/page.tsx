@@ -9,6 +9,9 @@ export const metadata = {
   title: "단백질 쉐이크 비교 추천 | 67개 저당·고단백·식사대용 기준 | ProteinLab",
   description:
     "단백질 쉐이크 67개를 단백질 함량, 당류, 칼로리, 식이섬유 기준으로 비교합니다. 운동보충·저당·식사대용 목적에 맞는 제품을 성분 데이터로 바로 선택하세요.",
+  alternates: {
+    canonical: "https://proteinlab.kr/shake",
+  },
 };
 
 export default async function ShakePage() {
