@@ -71,14 +71,10 @@ const pendingReviewSummaryRequests = new Map<string, Promise<ReviewSummary>>();
 
 async function fetchReviewSummary(slug: string): Promise<ReviewSummary> {
   const cached = reviewSummaryCache.get(slug);
-  if (cached) {
-    return cached;
-  }
+  if (cached) return cached;
 
   const pending = pendingReviewSummaryRequests.get(slug);
-  if (pending) {
-    return pending;
-  }
+  if (pending) return pending;
 
   const request = fetch(`/api/reviews/${slug}`)
     .then((response) => response.json())
@@ -105,15 +101,10 @@ async function fetchReviewSummary(slug: string): Promise<ReviewSummary> {
 }
 
 function renderMetricValue(value: string, isDensity: boolean) {
-  if (!isDensity) {
-    return value;
-  }
+  if (!isDensity) return value;
 
   const [metricValue, metricUnit] = value.split("/");
-
-  if (!metricUnit) {
-    return value;
-  }
+  if (!metricUnit) return value;
 
   return (
     <span className="flex min-w-0 flex-col">
@@ -174,8 +165,7 @@ export default function ProductCard({
   const visibleGradeTags =
     productType === "yogurt"
       ? gradeTags.filter(
-          (tag) =>
-            tag.includes("가성비") || tag.includes("다이어트") || tag.includes("퍼포먼스"),
+          (tag) => tag.includes("가성비") || tag.includes("다이어트") || tag.includes("퍼포먼스"),
         )
       : gradeTags;
   const limitedGradeTags =
@@ -186,16 +176,12 @@ export default function ProductCard({
     isDrinkCard && reviewSummary && reviewSummary.reviewCount > 0 ? reviewSummary : null;
 
   useEffect(() => {
-    if (!isDrinkCard || !slug) {
-      return;
-    }
+    if (!isDrinkCard || !slug) return;
 
     let cancelled = false;
 
     void fetchReviewSummary(slug).then((summary) => {
-      if (!cancelled) {
-        setReviewSummary(summary);
-      }
+      if (!cancelled) setReviewSummary(summary);
     });
 
     return () => {
@@ -204,33 +190,22 @@ export default function ProductCard({
   }, [isDrinkCard, slug]);
 
   const shouldIgnoreCardClick = (target: EventTarget | null) => {
-    if (!(target instanceof HTMLElement)) {
-      return false;
-    }
-
+    if (!(target instanceof HTMLElement)) return false;
     return Boolean(target.closest("a, button, input, select, textarea, label"));
   };
 
   const openDetail = () => {
-    if (!canOpenDetail) {
-      return;
-    }
-
+    if (!canOpenDetail) return;
     router.push(detailHref);
   };
 
   const handleCardClick = (event: ReactMouseEvent<HTMLElement>) => {
-    if (shouldIgnoreCardClick(event.target)) {
-      return;
-    }
-
+    if (shouldIgnoreCardClick(event.target)) return;
     openDetail();
   };
 
   const handleCardKeyDown = (event: ReactKeyboardEvent<HTMLElement>) => {
-    if (shouldIgnoreCardClick(event.target)) {
-      return;
-    }
+    if (shouldIgnoreCardClick(event.target)) return;
 
     if (event.key === "Enter" || event.key === " ") {
       event.preventDefault();
@@ -282,21 +257,21 @@ export default function ProductCard({
         {mediaBox}
 
         {slug ? (
-          <div className="absolute right-2 top-2 z-10">
-            <FavoriteButton slug={slug} />
+          <div className="absolute right-1.5 top-1.5 z-10 md:right-2 md:top-2">
+            <FavoriteButton slug={slug} compact={isDrinkCard} />
           </div>
         ) : null}
 
         {isDrinkCard && feedbackMeta ? (
-          <div className="pointer-events-none absolute bottom-2 right-2 z-10">
-            <div className="flex min-h-[24px] items-center rounded-full border border-[#e5e7eb] bg-white/92 px-2 py-1 text-[10px] leading-none text-[#6b7280] shadow-[0_1px_4px_rgba(15,23,42,0.08)] backdrop-blur-[2px] md:text-[11px]">
+          <div className="pointer-events-none absolute bottom-1.5 right-1.5 z-10 md:bottom-2 md:right-2">
+            <div className="flex min-h-[20px] items-center rounded-full border border-[#e5e7eb] bg-white/90 px-1.5 py-[3px] text-[9px] leading-none text-[#6b7280] shadow-[0_1px_3px_rgba(15,23,42,0.08)] backdrop-blur-[2px] md:min-h-[24px] md:px-2 md:py-1 md:text-[11px]">
               {feedbackMeta.recommendCount > 0 ? (
                 <>
                   <span className="inline-flex items-center gap-1 text-[#2F5D46]">
                     <span aria-hidden="true">👍</span>
                     <span className="font-semibold">{feedbackMeta.recommendCount}</span>
                   </span>
-                  <span className="mx-1.5 text-[#c4c4c4]">·</span>
+                  <span className="mx-1 text-[#c4c4c4] md:mx-1.5">·</span>
                 </>
               ) : null}
               <span className="whitespace-nowrap">
