@@ -141,7 +141,6 @@ export default function ProductCard({
   hideSupplementalBadges,
 }: ProductCardProps) {
   const router = useRouter();
-  const isDrinkCard = productType === "drink";
   const [reviewSummary, setReviewSummary] = useState<ReviewSummary | null>(() =>
     slug ? reviewSummaryCache.get(slug) ?? null : null,
   );
@@ -172,11 +171,10 @@ export default function ProductCard({
     typeof maxVisibleBadges === "number"
       ? visibleGradeTags.slice(0, maxVisibleBadges)
       : visibleGradeTags;
-  const feedbackMeta =
-    isDrinkCard && reviewSummary && reviewSummary.reviewCount > 0 ? reviewSummary : null;
+  const feedbackMeta = reviewSummary && reviewSummary.reviewCount > 0 ? reviewSummary : null;
 
   useEffect(() => {
-    if (!isDrinkCard || !slug) return;
+    if (!slug) return;
 
     let cancelled = false;
 
@@ -187,7 +185,7 @@ export default function ProductCard({
     return () => {
       cancelled = true;
     };
-  }, [isDrinkCard, slug]);
+  }, [slug]);
 
   const shouldIgnoreCardClick = (target: EventTarget | null) => {
     if (!(target instanceof HTMLElement)) return false;
@@ -215,7 +213,7 @@ export default function ProductCard({
 
   const mediaBox = (
     <div
-      className={`product-card__media flex w-full flex-shrink-0 items-center justify-center overflow-hidden rounded-xl border border-[#eee] bg-[#ffffff] p-1 transition-colors duration-200 group-hover:border-[#e2e2e2] md:p-[10px] ${isDrinkCard ? "h-[166px] md:h-[188px]" : "h-[176px] md:h-[200px]"}`}
+      className={`product-card__media flex w-full flex-shrink-0 items-center justify-center overflow-hidden rounded-xl border border-[#eee] bg-[#ffffff] p-1 transition-colors duration-200 group-hover:border-[#e2e2e2] md:p-[10px] ${productType === "drink" ? "h-[166px] md:h-[188px]" : "h-[176px] md:h-[200px]"}`}
       style={{ borderRadius: "12px" }}
     >
       {imageUrl ? (
@@ -258,11 +256,11 @@ export default function ProductCard({
 
         {slug ? (
           <div className="absolute right-1.5 top-1.5 z-10 md:right-2 md:top-2">
-            <FavoriteButton slug={slug} compact={isDrinkCard} />
+            <FavoriteButton slug={slug} compact />
           </div>
         ) : null}
 
-        {isDrinkCard && feedbackMeta ? (
+        {feedbackMeta ? (
           <>
             <div className="pointer-events-none absolute left-1.5 top-1.5 z-10 flex flex-col gap-1 md:hidden">
               {feedbackMeta.recommendCount > 0 ? (
@@ -297,7 +295,7 @@ export default function ProductCard({
 
       <div className="product-card__content flex min-h-0 flex-1 flex-col">
         <p
-          className={`product-card__brand text-xs tracking-wide ${isDrinkCard ? "mt-2 md:mt-3" : "mt-2.5 md:mt-4"}`}
+          className={`product-card__brand text-xs tracking-wide ${productType === "drink" ? "mt-2 md:mt-3" : "mt-2.5 md:mt-4"}`}
           style={{ color: "#7a7a7a" }}
         >
           {brand}
@@ -349,9 +347,9 @@ export default function ProductCard({
           ) : null}
         </MetricBadgeGroup>
 
-        <div className={`mx-1 border-t border-[#e8e6e3] ${isDrinkCard ? "mt-1 md:mt-2.5" : "mt-1.5 md:mt-3"}`} />
+        <div className={`mx-1 border-t border-[#e8e6e3] ${productType === "drink" ? "mt-1 md:mt-2.5" : "mt-1.5 md:mt-3"}`} />
 
-        <div className={`product-card__metrics grid grid-cols-2 gap-1 md:gap-2 ${isDrinkCard ? "mt-1 md:mt-2.5" : "mt-1.5 md:mt-3"}`}>
+        <div className={`product-card__metrics grid grid-cols-2 gap-1 md:gap-2 ${productType === "drink" ? "mt-1 md:mt-2.5" : "mt-1.5 md:mt-3"}`}>
           {[
             { label: "단백질", value: `${proteinPerServing}g`, isDensity: false },
             { label: "칼로리", value: calories != null ? `${calories}` : "-", isDensity: false },
@@ -360,7 +358,7 @@ export default function ProductCard({
           ].map(({ label, value, isDensity }) => (
             <div
               key={label}
-              className={`product-card__metric flex min-w-0 flex-col justify-center rounded-lg border border-[#e8e8e8] bg-white px-2 text-left md:px-2.5 ${isDrinkCard ? "py-1 md:py-1.5" : "py-0 md:py-2"}`}
+              className={`product-card__metric flex min-w-0 flex-col justify-center rounded-lg border border-[#e8e8e8] bg-white px-2 text-left md:px-2.5 ${productType === "drink" ? "py-1 md:py-1.5" : "py-0 md:py-2"}`}
               style={{ borderRadius: "10px" }}
             >
               <span
@@ -386,7 +384,7 @@ export default function ProductCard({
           ))}
         </div>
 
-        <div className={`cta-group ${isDrinkCard ? "mt-1 md:mt-2.5" : "mt-1.5 md:mt-4"}`}>
+        <div className={`cta-group ${productType === "drink" ? "mt-1 md:mt-2.5" : "mt-1.5 md:mt-4"}`}>
           <PurchaseLinkRow
             coupangHref={coupangHref}
             naverHref={naverHref}
@@ -404,9 +402,9 @@ export default function ProductCard({
           />
         </div>
 
-        <div className={`mx-1 border-t border-[#e8e6e3] ${isDrinkCard ? "mt-1 md:mt-2" : "mt-1 md:mt-3"}`} />
+        <div className={`mx-1 border-t border-[#e8e6e3] ${productType === "drink" ? "mt-1 md:mt-2" : "mt-1 md:mt-3"}`} />
 
-        <div className={`product-card__footer-actions flex gap-1.5 md:gap-3 ${isDrinkCard ? "mt-1 md:mt-2.5" : "mt-1 md:mt-3"}`}>
+        <div className={`product-card__footer-actions flex gap-1.5 md:gap-3 ${productType === "drink" ? "mt-1 md:mt-2.5" : "mt-1 md:mt-3"}`}>
           <Link
             href={detailHref}
             className="flex flex-1 items-center justify-center rounded-[10px] border border-[#e2e2e2] bg-white font-medium text-[var(--foreground)] transition-colors hover:border-[var(--accent)] hover:bg-[var(--accent-light)] hover:text-[var(--accent)] active:scale-[0.98]"
