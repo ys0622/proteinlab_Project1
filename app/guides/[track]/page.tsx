@@ -10,13 +10,6 @@ export const dynamic = "force-dynamic";
 
 const deepGreen = "#1f5138";
 
-const clampThreeLines = {
-  display: "-webkit-box",
-  WebkitLineClamp: 3,
-  WebkitBoxOrient: "vertical" as const,
-  overflow: "hidden",
-};
-
 const clampTwoLines = {
   display: "-webkit-box",
   WebkitLineClamp: 2,
@@ -142,24 +135,13 @@ export default async function GuideTrackPage({ params }: { params: Promise<{ tra
                     style={{ background: `linear-gradient(135deg, ${section.accentBg} 0%, #fffdf8 100%)` }}
                   >
                     <div className="flex items-start justify-between gap-3">
-                      <div className="flex flex-1 items-center gap-3">
+                      <div className="flex flex-1 flex-wrap items-center gap-2">
                         <span
                           aria-hidden
                           className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-[#d7e6dd] bg-white text-lg shadow-[0_4px_10px_rgba(20,40,28,0.06)]"
                         >
                           {article.emoji}
                         </span>
-                        <div className="h-px flex-1 bg-[#dfe9e2]" />
-                      </div>
-                      {article.status !== "live" && (
-                        <span className="rounded-full px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wide bg-amber-100 text-amber-700">
-                          Planned
-                        </span>
-                      )}
-                    </div>
-
-                    {article.tags.length > 0 && (
-                      <div className="mt-3 min-h-[28px] flex flex-wrap gap-2">
                         {article.tags.slice(0, 2).map((tag) => (
                           <span
                             key={`${article.slug}-${tag}`}
@@ -169,7 +151,12 @@ export default async function GuideTrackPage({ params }: { params: Promise<{ tra
                           </span>
                         ))}
                       </div>
-                    )}
+                      {article.status !== "live" && (
+                        <span className="rounded-full px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wide bg-amber-100 text-amber-700">
+                          Planned
+                        </span>
+                      )}
+                    </div>
                   </div>
 
                   <div className="flex flex-1 flex-col px-4 pb-4 pt-4 sm:px-5 sm:pb-5">
@@ -190,7 +177,7 @@ export default async function GuideTrackPage({ params }: { params: Promise<{ tra
                       />
                     </div>
 
-                    <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]" style={clampThreeLines}>
+                    <p className="mt-2 min-h-[48px] text-sm leading-6 text-[var(--foreground-muted)]" style={clampTwoLines}>
                       {article.description}
                     </p>
 

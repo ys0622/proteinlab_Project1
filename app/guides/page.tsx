@@ -114,7 +114,7 @@ export default async function GuidesPage() {
                       {track.description}
                     </p>
 
-                    <div className="mt-3">
+                    <div className="mt-4">
                       <p className="text-[11px] font-semibold uppercase tracking-wide text-[#7c8b84]">대표 콘텐츠</p>
 
                       <div className="mt-2 hidden flex-wrap gap-1.5 md:flex">
@@ -144,7 +144,7 @@ export default async function GuidesPage() {
                       </ul>
                     </div>
 
-                    <div className="mt-auto rounded-xl border border-[#d7e6dd] bg-[#f4faf6] px-3 py-2">
+                    <div className="mt-5 rounded-xl border border-[#d7e6dd] bg-[#f4faf6] px-3 py-2">
                       <p className="text-[11px] font-semibold" style={{ color: track.accentColor }}>
                         인기 콘텐츠
                       </p>
