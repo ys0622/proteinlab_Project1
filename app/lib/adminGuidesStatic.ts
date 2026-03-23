@@ -186,6 +186,21 @@ const sections: AdminGuideSection[] = [
       article("protein-density-calculator", "단백질 밀도 계산기", "칼로리 대비 단백질 함량을 계산하는 도구입니다.", "/guides/tools", { emoji: "📊", tags: ["도구", "예정"], status: "planned" }),
     ],
   },
+  {
+    id: "track-g",
+    slug: "ingredients",
+    emoji: "🔬",
+    title: "성분 · 원료 해설",
+    description: "단백질 음료와 바에 들어가는 감미료, 아미노산, 단백질 원료를 성분 데이터와 함께 정리합니다.",
+    trackLabel: "TRACK G",
+    accentColor: "#a05c1a",
+    accentBg: "#fdf3e7",
+    previewHref: "/guides/ingredients",
+    articles: [
+      article("zero-sugar-allulose", "당류 0g인데 왜 달까 — 알룰로스·스테비아·에리스리톨", "당류 0g 단백질 음료에 쓰이는 감미료 종류와 다이어트에 미치는 영향을 정리합니다.", "/guides/ingredients/zero-sugar-allulose", { emoji: "🍃", tags: ["알룰로스", "당류 0g", "감미료"], status: "live" }),
+      article("bcaa-guide", "BCAA란 무엇인가 — 단백질 음료에서 BCAA의 의미", "류신·이소류신·발린의 역할과 단백질 음료에서 BCAA를 어떻게 볼지 정리합니다.", "/guides/ingredients/bcaa-guide", { emoji: "💊", tags: ["BCAA", "류신", "근육 합성"], status: "live" }),
+    ],
+  },
 ];
 
 export function buildAdminGuidesStaticData(): AdminGuidesStaticData {
