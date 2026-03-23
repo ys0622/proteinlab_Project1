@@ -109,6 +109,8 @@ const sections: AdminGuideSection[] = [
       article("nutrition-criteria", "영양성분 기준", "좋은 제품을 고를 때 참고할 최소 기준을 모읍니다.", "/guides/product-selection-comparison/nutrition-criteria", { emoji: "📐", tags: ["기준", "체크리스트"] }),
       article("recommendation-lists", "추천 리스트 활용법", "추천, 큐레이션, picks의 차이와 사용법을 설명합니다.", "/guides/product-selection-comparison/recommendation-lists", { emoji: "🧭", tags: ["추천", "리스트"] }),
       article("ranking-content", "등급 · 랭킹 읽는 법", "등급, 랭킹, 100점 점수를 해석하는 기준을 정리합니다.", "/guides/product-selection-comparison/ranking-content", { emoji: "🏅", tags: ["점수", "랭킹"] }),
+      article("zero-sugar-allulose", "당류 0g인데 왜 달까 — 알룰로스·스테비아·에리스리톨", "당류 0g 단백질 음료에 쓰이는 감미료 종류와 다이어트에 미치는 영향을 정리합니다.", "/guides/product-selection-comparison/zero-sugar-allulose", { emoji: "🍃", tags: ["알룰로스", "당류 0g", "감미료"] }),
+      article("bcaa-guide", "BCAA란 무엇인가 — 단백질 음료에서 BCAA의 의미", "류신·이소류신·발린의 역할과 단백질 음료에서 BCAA를 어떻게 볼지 정리합니다.", "/guides/product-selection-comparison/bcaa-guide", { emoji: "💊", tags: ["BCAA", "류신", "근육 합성"] }),
     ],
   },
   {
@@ -184,21 +186,6 @@ const sections: AdminGuideSection[] = [
       article("daily-protein-calculator", "하루 단백질 섭취량 계산기", "체중과 활동량 기준으로 하루 섭취량을 계산합니다.", "/tools/calculator", { emoji: "📏", tags: ["계산기", "섭취량"], status: "live" }),
       article("protein-drink-count-calculator", "단백질 음료 개수 계산기", "목표 단백질량을 채우기 위해 몇 병이 필요한지 계산하는 도구입니다.", "/guides/tools", { emoji: "🥤", tags: ["도구", "예정"], status: "planned" }),
       article("protein-density-calculator", "단백질 밀도 계산기", "칼로리 대비 단백질 함량을 계산하는 도구입니다.", "/guides/tools", { emoji: "📊", tags: ["도구", "예정"], status: "planned" }),
-    ],
-  },
-  {
-    id: "track-g",
-    slug: "ingredients",
-    emoji: "🔬",
-    title: "성분 · 원료 해설",
-    description: "단백질 음료와 바에 들어가는 감미료, 아미노산, 단백질 원료를 성분 데이터와 함께 정리합니다.",
-    trackLabel: "TRACK G",
-    accentColor: "#a05c1a",
-    accentBg: "#fdf3e7",
-    previewHref: "/guides/ingredients",
-    articles: [
-      article("zero-sugar-allulose", "당류 0g인데 왜 달까 — 알룰로스·스테비아·에리스리톨", "당류 0g 단백질 음료에 쓰이는 감미료 종류와 다이어트에 미치는 영향을 정리합니다.", "/guides/ingredients/zero-sugar-allulose", { emoji: "🍃", tags: ["알룰로스", "당류 0g", "감미료"], status: "live" }),
-      article("bcaa-guide", "BCAA란 무엇인가 — 단백질 음료에서 BCAA의 의미", "류신·이소류신·발린의 역할과 단백질 음료에서 BCAA를 어떻게 볼지 정리합니다.", "/guides/ingredients/bcaa-guide", { emoji: "💊", tags: ["BCAA", "류신", "근육 합성"], status: "live" }),
     ],
   },
 ];
