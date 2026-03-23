@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "eslint",
     "audit:products": "node scripts/audit-product-impact.mjs",
+    "audit:purchase-links": "node scripts/audit-purchase-link-sync.mjs",
     "preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
     "deploy": "opennextjs-cloudflare build && node scripts/patch-worker-robots.mjs && node deploy.cjs",
     "upload": "opennextjs-cloudflare build && opennextjs-cloudflare upload",
