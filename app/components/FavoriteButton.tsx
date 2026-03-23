@@ -21,10 +21,10 @@ export default function FavoriteButton({
       aria-label={favorited ? "즐겨찾기 해제" : "즐겨찾기 추가"}
       className="flex items-center justify-center rounded-[10px] border transition-colors active:scale-[0.98]"
       style={{
-        height: compact ? "30px" : "34px",
-        width: compact ? "32px" : "38px",
+        height: compact ? "27px" : "34px",
+        width: compact ? "29px" : "38px",
         flexShrink: 0,
-        fontSize: compact ? "14px" : "16px",
+        fontSize: compact ? "12px" : "16px",
         ...(favorited
           ? { borderColor: "#e85c5c", background: "#fff5f5", color: "#e85c5c" }
           : { borderColor: "#e2e2e2", background: "white", color: "#bbb" }),

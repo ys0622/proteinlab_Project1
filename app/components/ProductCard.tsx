@@ -255,20 +255,20 @@ export default function ProductCard({
         {mediaBox}
 
         {slug ? (
-          <div className="absolute right-1.5 top-1.5 z-10 md:right-2 md:top-2">
+          <div className="absolute right-1 top-1 z-10 md:right-2 md:top-2">
             <FavoriteButton slug={slug} compact />
           </div>
         ) : null}
 
         {feedbackMeta ? (
           <>
-            <div className="pointer-events-none absolute left-1.5 top-1.5 z-10 flex flex-col gap-1 md:hidden">
+            <div className="pointer-events-none absolute left-1 top-1 z-10 flex flex-col gap-0.5 md:hidden">
               {feedbackMeta.recommendCount > 0 ? (
-                <span className="inline-flex min-h-[18px] items-center self-start rounded-full border border-[#d9e7df] bg-white/92 px-1.5 py-[2px] text-[8px] font-semibold leading-none text-[#2F5D46] shadow-[0_1px_3px_rgba(15,23,42,0.08)]">
+                <span className="inline-flex min-h-[16px] items-center self-start rounded-full border border-[#d9e7df] bg-white/88 px-1 py-[1px] text-[7px] font-semibold leading-none text-[#2F5D46] shadow-[0_1px_2px_rgba(15,23,42,0.08)]">
                   👍 {feedbackMeta.recommendCount}
                 </span>
               ) : null}
-              <span className="inline-flex min-h-[18px] items-center self-start rounded-full border border-[#e5e7eb] bg-white/92 px-1.5 py-[2px] text-[8px] font-semibold leading-none text-[#4b5563] shadow-[0_1px_3px_rgba(15,23,42,0.08)]">
+              <span className="inline-flex min-h-[16px] items-center self-start rounded-full border border-[#e5e7eb] bg-white/88 px-1 py-[1px] text-[7px] font-semibold leading-none text-[#4b5563] shadow-[0_1px_2px_rgba(15,23,42,0.08)]">
                 리뷰 {feedbackMeta.reviewCount}
               </span>
             </div>
