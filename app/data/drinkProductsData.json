@@ -210,6 +210,49 @@
     "officialUrl": "https://brand.naver.com/binggrae/category/54e40c847f15417fae9351c9478ee909?cp=1"
   },
   {
+    "slug": "oneuldanbaek-choco-latte-250",
+    "brand": "오늘단백",
+    "name": "오늘단백 (초코라떼)",
+    "capacity": "250mL",
+    "variant": "일반",
+    "tags": [
+      "팩"
+    ],
+    "proteinPerServing": 21,
+    "calories": 110,
+    "sugar": 0,
+    "density": "8.4g/100ml",
+    "productUrl": "#",
+    "productType": "drink",
+    "gradeTags": [
+      "단백질 밀도 B",
+      "다이어트 B",
+      "퍼포먼스 C"
+    ],
+    "manufacturer": "하림",
+    "flavor": "초코라떼",
+    "bcaa": "4000mg",
+    "proteinSource": "혼합",
+    "fat": 1,
+    "sodium": 80,
+    "calorieDensity": "44.0kcal/100ml",
+    "drinkType": "밀크형",
+    "nutritionPerBottle": {
+      "caloriesKcal": 110,
+      "proteinG": 21,
+      "carbsG": 7,
+      "sugarsG": 0,
+      "fatG": 1,
+      "satFatG": 0.4,
+      "sodiumMg": 80,
+      "fiberG": 1.7,
+      "bcaaMg": 4000
+    },
+    "officialUrl": "https://on-protein.com/",
+    "needsServingCheck": true,
+    "nutritionBasis": "unknown"
+  },
+  {
     "slug": "sellex-profit-milk-vanilla-250",
     "brand": "셀렉스",
     "name": "프로핏 (밀크 바닐라)",
@@ -544,6 +587,88 @@
     "coupangUrl": "https://www.coupang.com/vp/products/7485430091?itemId=19747782140&searchId=55e9e90db5c64461aff14d847aed9fbe&sourceType=brandstore_sdp_atf_topbadge-carousel&storeId=843&subSourceType=brandstore_sdp_atf_topbadge-carousel&vendorId=A00176728&vendorItemId=86851343931",
     "naverUrl": "https://search.shopping.naver.com/search/all?query=%EB%A7%88%EC%9D%B4%EB%B0%80%20%ED%93%A8%EB%A1%9C%ED%8B%B4%20(%EC%B4%88%EC%BD%94%EB%A7%9B)&prevQuery=%EB%A7%88%EC%9D%B4%EB%B0%80%20%EB%89%B4%ED%94%84%EB%A1%9C%ED%8B%B4%20(%EB%B0%94%EB%82%98%EB%82%98)&vertical=search",
     "officialUrl": "https://www.wellife.co.kr/categories/index/102000000000"
+  },
+  {
+    "slug": "mymil-furotein-gosohan-250",
+    "brand": "마이밀",
+    "name": "퓨로틴 (고소한맛)",
+    "capacity": "250mL",
+    "variant": "일반",
+    "tags": [
+      "팩"
+    ],
+    "proteinPerServing": 20,
+    "calories": 130,
+    "sugar": 0,
+    "density": "8.0g/100ml",
+    "productUrl": "#",
+    "productType": "drink",
+    "gradeTags": [
+      "단백질 밀도 C",
+      "다이어트 B",
+      "퍼포먼스 C"
+    ],
+    "manufacturer": "대상웰라이프",
+    "flavor": "고소한맛",
+    "bcaa": "—",
+    "proteinSource": "혼합",
+    "fat": 3.5,
+    "sodium": 230,
+    "calorieDensity": "52.0kcal/100ml",
+    "drinkType": "밀크형",
+    "nutritionPerBottle": {
+      "caloriesKcal": 130,
+      "proteinG": 20,
+      "carbsG": 5,
+      "sugarsG": 0,
+      "fatG": 3.5,
+      "satFatG": 0.5,
+      "sodiumMg": 230
+    },
+    "officialUrl": "https://www.wellife.co.kr/categories/index/102000000000",
+    "needsServingCheck": true,
+    "nutritionBasis": "unknown"
+  },
+  {
+    "slug": "mymil-furotein-goguma-250",
+    "brand": "마이밀",
+    "name": "퓨로틴 (고구마맛)",
+    "capacity": "250mL",
+    "variant": "일반",
+    "tags": [
+      "팩"
+    ],
+    "proteinPerServing": 20,
+    "calories": 130,
+    "sugar": 0,
+    "density": "8.0g/100ml",
+    "productUrl": "#",
+    "productType": "drink",
+    "gradeTags": [
+      "단백질 밀도 C",
+      "다이어트 B",
+      "퍼포먼스 C"
+    ],
+    "manufacturer": "대상웰라이프",
+    "flavor": "고구마맛",
+    "bcaa": "—",
+    "proteinSource": "혼합",
+    "fat": 3.5,
+    "sodium": 230,
+    "calorieDensity": "52.0kcal/100ml",
+    "drinkType": "밀크형",
+    "nutritionPerBottle": {
+      "caloriesKcal": 130,
+      "proteinG": 20,
+      "carbsG": 5,
+      "sugarsG": 0,
+      "fatG": 3.5,
+      "satFatG": 0.5,
+      "sodiumMg": 230
+    },
+    "officialUrl": "https://www.wellife.co.kr/categories/index/102000000000",
+    "needsServingCheck": true,
+    "nutritionBasis": "unknown"
   },
   {
     "slug": "ultive-protein-chestnut-250",
@@ -4096,5 +4221,91 @@
     "coupangUrl": "https://www.coupang.com/vp/products/7345092004?itemId=18143492367&vendorItemId=85293912587&pickType=COU_PICK&q=%EB%A7%88%EC%9D%B4%EB%B0%80%20%EB%89%B4%ED%94%84%EB%A1%9C%ED%8B%B4%20(%EB%B0%94%EB%82%98%EB%82%98)&searchId=071589224984874&sourceType=search&itemsCount=36&searchRank=0&rank=0&traceId=mmyb9rhk",
     "naverUrl": "https://search.shopping.naver.com/search/all?query=%EB%A7%88%EC%9D%B4%EB%B0%",
     "officialUrl": "https://www.wellife.co.kr/categories/index/102000000000"
+  },
+  {
+    "slug": "oneuldanbaek-caramel-latte-250",
+    "brand": "오늘단백",
+    "name": "오늘단백 (카라멜라떼)",
+    "capacity": "250mL",
+    "variant": "일반",
+    "tags": [
+      "팩"
+    ],
+    "proteinPerServing": 21,
+    "calories": 110,
+    "sugar": 0,
+    "density": "8.4g/100ml",
+    "productUrl": "#",
+    "productType": "drink",
+    "gradeTags": [
+      "단백질 밀도 B",
+      "다이어트 B",
+      "퍼포먼스 C"
+    ],
+    "manufacturer": "하림",
+    "flavor": "카라멜라떼",
+    "bcaa": "4000mg",
+    "proteinSource": "혼합",
+    "fat": 1,
+    "sodium": 80,
+    "calorieDensity": "44.0kcal/100ml",
+    "drinkType": "밀크형",
+    "nutritionPerBottle": {
+      "caloriesKcal": 110,
+      "proteinG": 21,
+      "carbsG": 7,
+      "sugarsG": 0,
+      "fatG": 1,
+      "satFatG": 0.4,
+      "sodiumMg": 80,
+      "fiberG": 1.7,
+      "bcaaMg": 4000
+    },
+    "officialUrl": "https://on-protein.com/",
+    "needsServingCheck": true,
+    "nutritionBasis": "unknown"
+  },
+  {
+    "slug": "oneuldanbaek-dolce-latte-250",
+    "brand": "오늘단백",
+    "name": "오늘단백 (돌체라떼)",
+    "capacity": "250mL",
+    "variant": "일반",
+    "tags": [
+      "팩"
+    ],
+    "proteinPerServing": 21,
+    "calories": 110,
+    "sugar": 0,
+    "density": "8.4g/100ml",
+    "productUrl": "#",
+    "productType": "drink",
+    "gradeTags": [
+      "단백질 밀도 B",
+      "다이어트 B",
+      "퍼포먼스 C"
+    ],
+    "manufacturer": "하림",
+    "flavor": "돌체라떼",
+    "bcaa": "4000mg",
+    "proteinSource": "혼합",
+    "fat": 1,
+    "sodium": 80,
+    "calorieDensity": "44.0kcal/100ml",
+    "drinkType": "밀크형",
+    "nutritionPerBottle": {
+      "caloriesKcal": 110,
+      "proteinG": 21,
+      "carbsG": 7,
+      "sugarsG": 0,
+      "fatG": 1,
+      "satFatG": 0.4,
+      "sodiumMg": 80,
+      "fiberG": 1.7,
+      "bcaaMg": 4000
+    },
+    "officialUrl": "https://on-protein.com/",
+    "needsServingCheck": true,
+    "nutritionBasis": "unknown"
   }
 ]
