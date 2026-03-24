@@ -1,8 +1,8 @@
 {
-  "generated_at": "2026-03-23T12:59:37.984Z",
-  "total": 298,
+  "generated_at": "2026-03-24T13:00:31.687Z",
+  "total": 301,
   "categories": {
-    "drinks": 104,
+    "drinks": 107,
     "bars": 80,
     "yogurt": 45,
     "shake": 69
@@ -124,6 +124,15 @@
       "protein": 20,
       "calories": 104,
       "sugar": 0
+    },
+    {
+      "slug": "hymune-balance-active-darkchoco-330",
+      "name": "프로틴 밸런스 액티브 (다크초코)",
+      "brand": "하이뮨",
+      "category": "drinks",
+      "protein": 31,
+      "calories": 220,
+      "sugar": 7
     },
     {
       "slug": "mymil-furotein-choco-250",
@@ -253,11 +262,20 @@
     },
     {
       "slug": "sellex-profit-sports-choco-330",
-      "name": "프로핏 웨이프로틴 (초콜릿)",
+      "name": "프로핏 스포츠 (초콜릿)",
       "brand": "셀렉스",
       "category": "drinks",
       "protein": 20,
       "calories": 99,
+      "sugar": 0
+    },
+    {
+      "slug": "sellex-profit-sports-coconut-330",
+      "name": "프로핏 스포츠 (코코넛)",
+      "brand": "셀렉스",
+      "category": "drinks",
+      "protein": 20,
+      "calories": 90,
       "sugar": 0
     },
     {
@@ -357,6 +375,15 @@
       "category": "drinks",
       "protein": 10,
       "calories": 65,
+      "sugar": 0
+    },
+    {
+      "slug": "hymune-balance-active-plant-protein-250",
+      "name": "프로틴 밸런스 액티브 (식물성 단백질)",
+      "brand": "하이뮨",
+      "category": "drinks",
+      "protein": 20,
+      "calories": 99,
       "sugar": 0
     },
     {
@@ -523,12 +550,12 @@
     },
     {
       "slug": "sellex-profit-peach-icedtea-330",
-      "name": "프로틴 웨이프로핏 (복숭아 아이스티)",
+      "name": "프로핏 스포츠 (복숭아 아이스티)",
       "brand": "셀렉스",
       "category": "drinks",
       "protein": 20,
       "calories": 90,
-      "sugar": 1
+      "sugar": 0.9
     },
     {
       "slug": "greenbia-proteinmeal-active-choco-250",

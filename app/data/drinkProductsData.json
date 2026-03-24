@@ -547,6 +547,46 @@
     "officialUrl": "https://brand.naver.com/ildongfoodis/category/ca3a89b53d1f4aa3bce7f3b70bb97f31?cp=1"
   },
   {
+    "slug": "hymune-balance-active-darkchoco-330",
+    "brand": "하이뮨",
+    "name": "프로틴 밸런스 액티브 (다크초코)",
+    "capacity": "330mL",
+    "variant": "일반",
+    "tags": [
+      "팩"
+    ],
+    "proteinPerServing": 31,
+    "calories": 220,
+    "sugar": 7,
+    "density": "9.4g/100ml",
+    "productUrl": "#",
+    "productType": "drink",
+    "gradeTags": [
+      "단백질 밀도 A",
+      "다이어트 D",
+      "퍼포먼스 A"
+    ],
+    "manufacturer": "일동후디스",
+    "flavor": "다크초코",
+    "proteinSource": "산양유 단백질",
+    "fat": 4,
+    "sodium": 260,
+    "calorieDensity": "66.7kcal/100ml",
+    "drinkType": "밀크형",
+    "nutritionPerBottle": {
+      "caloriesKcal": 220,
+      "proteinG": 31,
+      "carbsG": 15,
+      "sugarsG": 7,
+      "fatG": 4,
+      "satFatG": 3,
+      "cholesterolMg": 25,
+      "sodiumMg": 260
+    },
+    "naverUrl": "https://search.shopping.naver.com/search/all?query=%ED%95%98%EC%9D%B4%EB%AE%A8%20%ED%94%84%EB%A1%9C%ED%8B%B4%20%EB%B0%B8%EB%9F%B0%EC%8A%A4%20%EC%95%A1%ED%8B%B0%EB%B8%8C%20%EB%8B%A4%ED%81%AC%EC%B4%88%EC%BD%94%20330ml&vertical=search",
+    "officialUrl": "https://brand.naver.com/ildongfoodis/category/ca3a89b53d1f4aa3bce7f3b70bb97f31?cp=1"
+  },
+  {
     "slug": "mymil-furotein-choco-250",
     "brand": "마이밀",
     "name": "퓨로틴 (초코맛)",
@@ -1131,7 +1171,7 @@
   {
     "slug": "sellex-profit-sports-choco-330",
     "brand": "셀렉스",
-    "name": "프로핏 웨이프로틴 (초콜릿)",
+    "name": "프로핏 스포츠 (초콜릿)",
     "capacity": "330mL",
     "variant": "일반",
     "tags": [
@@ -1150,10 +1190,10 @@
     ],
     "manufacturer": "매일유업",
     "flavor": "초콜릿",
-    "bcaa": "—",
-    "proteinSource": "혼합",
+    "bcaa": "10250mg",
+    "proteinSource": "WPI",
     "fat": 0.8,
-    "sodium": 380,
+    "sodium": 350,
     "calorieDensity": "30.0kcal/100ml",
     "drinkType": "밀크형",
     "nutritionPerBottle": {
@@ -1163,10 +1203,52 @@
       "sugarsG": 0,
       "fatG": 0.8,
       "satFatG": 0,
-      "sodiumMg": 380
+      "sodiumMg": 350,
+      "bcaaMg": 10250
     },
     "coupangUrl": "https://www.coupang.com/vp/products/8288998337?itemId=17962429189&vendorItemId=94792440684&pickType=COU_PICK&q=%EC%85%80%EB%A0%89%EC%8A%A4+%ED%94%84%EB%A1%9C%ED%8B%B4+%EC%9B%A8%EC%9D%B4%ED%94%84%EB%A1%9C%ED%95%8F+%28%EC%95%84%EB%A9%94%EB%A6%AC%EC%B9%B4%EB%85%B8%29&searchId=55bf0f6a8649403&sourceType=search&itemsCount=36&searchRank=2&rank=2&traceId=mmyb07o1",
     "naverUrl": "https://search.shopping.naver.com/search/all?query=%EB%A7%A4%EC%9D%BC%EC%9C%A0%EC%97%85%20%EC%85%80%EB%A0%89%EC%8A%A4%20%ED%94%84%EB%A1%9C%ED%95%8F%20%EC%9B%A8%EC%9D%B4%ED%94%84%EB%A1%9C%ED%8B%B4%20%EC%B4%88%EC%BD%9C%EB%A6%BF&prevQuery=%EB%A7%A4%EC%9D%BC%EC%9C%A0%EC%97%85%20%EC%85%80%EB%A0%89%EC%8A%A4%20%ED%94%84%EB%A1%9C%ED%95%8F%20%EC%9B%A8%EC%9D%B4%ED%94%84%EB%A1%9C%ED%8B%B4%20%EC%B4%88%EC%BD%9C%EB%A6%BF%20%2C%20330ml%2C%2012%EA%B0%9C&vertical=search",
+    "officialUrl": "https://brand.naver.com/selex/category/85709825a6ff41b7bfdb4b6dbd205dd0?cp=1"
+  },
+  {
+    "slug": "sellex-profit-sports-coconut-330",
+    "brand": "셀렉스",
+    "name": "프로핏 스포츠 (코코넛)",
+    "capacity": "330mL",
+    "variant": "일반",
+    "tags": [
+      "팩"
+    ],
+    "proteinPerServing": 20,
+    "calories": 90,
+    "sugar": 0,
+    "density": "6.1g/100ml",
+    "productUrl": "#",
+    "productType": "drink",
+    "gradeTags": [
+      "단백질 밀도 D",
+      "다이어트 A",
+      "퍼포먼스 C"
+    ],
+    "manufacturer": "매일유업",
+    "flavor": "코코넛",
+    "bcaa": "8850mg",
+    "proteinSource": "WPI",
+    "fat": 0,
+    "sodium": 290,
+    "calorieDensity": "27.3kcal/100ml",
+    "drinkType": "워터형",
+    "nutritionPerBottle": {
+      "caloriesKcal": 90,
+      "proteinG": 20,
+      "carbsG": 4.5,
+      "sugarsG": 0,
+      "fatG": 0,
+      "satFatG": 0,
+      "sodiumMg": 290,
+      "bcaaMg": 8850
+    },
+    "naverUrl": "https://search.shopping.naver.com/search/all?query=%EC%85%80%EB%A0%89%EC%8A%A4%20%ED%94%84%EB%A1%9C%ED%95%8F%20%EC%8A%A4%ED%8F%AC%EC%B8%A0%20%EC%BD%94%EC%BD%94%EB%84%9B%20330ml&vertical=search",
     "officialUrl": "https://brand.naver.com/selex/category/85709825a6ff41b7bfdb4b6dbd205dd0?cp=1"
   },
   {
@@ -1623,6 +1705,48 @@
     },
     "coupangUrl": "https://www.coupang.com/vp/products/9323322421?itemId=27634882124&vendorItemId=94597645720&q=%ED%95%98%EC%9D%B4%EB%AE%A8+%ED%94%84%EB%A1%9C%ED%8B%B4+%EB%B0%B8%EB%9F%B0%EC%8A%A4+%28%EC%8B%9D%EB%AC%BC%EC%84%B1+%EA%B3%A0%EB%8B%A8%EB%B0%B1%29&searchId=5cf797877206842&sourceType=search&itemsCount=36&searchRank=1&rank=1&traceId=mmybi0iy",
     "naverUrl": "https://search.shopping.naver.com/search/all?query=%ED%95%98%EC%9D%B4%EB%AE%A8%20%ED%94%84%EB%A1%9C%ED%8B%B4%20%EB%B0%B8%EB%9F%B0%EC%8A%A4%20%EC%9D%8C%EB%A3%8C%20%EC%8B%9D%EB%AC%BC%EC%84%B1%20%EA%B3%A0%EB%8B%A8%EB%B0%B1%20190ml%2C%2064%EA%B0%9C&prevQuery=%ED%95%98%EC%9D%B4%EB%AE%A8%20%ED%94%84%EB%A1%9C%ED%8B%B4%20%EB%B0%B8%EB%9F%B0%EC%8A%A4%20%EC%8B%9D%EB%AC%BC%EC%84%B1%20%EA%B3%A0%EB%8B%A8%EB%B0%B1&vertical=search",
+    "officialUrl": "https://brand.naver.com/ildongfoodis/category/ca3a89b53d1f4aa3bce7f3b70bb97f31?cp=1"
+  },
+  {
+    "slug": "hymune-balance-active-plant-protein-250",
+    "brand": "하이뮨",
+    "name": "프로틴 밸런스 액티브 (식물성 단백질)",
+    "capacity": "250mL",
+    "variant": "일반",
+    "tags": [
+      "팩"
+    ],
+    "proteinPerServing": 20,
+    "calories": 99,
+    "sugar": 0,
+    "density": "8.0g/100ml",
+    "productUrl": "#",
+    "productType": "drink",
+    "gradeTags": [
+      "단백질 밀도 C",
+      "다이어트 A",
+      "퍼포먼스 C"
+    ],
+    "manufacturer": "일동후디스",
+    "flavor": "식물성 단백질",
+    "bcaa": "8000mg",
+    "proteinSource": "식물성 단백질",
+    "fat": 0.8,
+    "sodium": 220,
+    "calorieDensity": "39.6kcal/100ml",
+    "drinkType": "밀크형",
+    "nutritionPerBottle": {
+      "caloriesKcal": 99,
+      "proteinG": 20,
+      "carbsG": 4,
+      "sugarsG": 0,
+      "fatG": 0.8,
+      "satFatG": 0,
+      "cholesterolMg": 0,
+      "sodiumMg": 220,
+      "bcaaMg": 8000
+    },
+    "naverUrl": "https://search.shopping.naver.com/search/all?query=%ED%95%98%EC%9D%B4%EB%AE%A8%20%ED%94%84%EB%A1%9C%ED%8B%B4%20%EB%B0%B8%EB%9F%B0%EC%8A%A4%20%EC%95%A1%ED%8B%B0%EB%B8%8C%20%EC%8B%9D%EB%AC%BC%EC%84%B1%20%EB%8B%A8%EB%B0%B1%EC%A7%88%20250ml&vertical=search",
     "officialUrl": "https://brand.naver.com/ildongfoodis/category/ca3a89b53d1f4aa3bce7f3b70bb97f31?cp=1"
   },
   {
@@ -2372,7 +2496,7 @@
   {
     "slug": "sellex-profit-peach-icedtea-330",
     "brand": "셀렉스",
-    "name": "프로틴 웨이프로핏 (복숭아 아이스티)",
+    "name": "프로핏 스포츠 (복숭아 아이스티)",
     "capacity": "330mL",
     "variant": "일반",
     "tags": [
@@ -2380,7 +2504,7 @@
     ],
     "proteinPerServing": 20,
     "calories": 90,
-    "sugar": 1,
+    "sugar": 0.9,
     "density": "6.1g/100ml",
     "productUrl": "#",
     "productType": "drink",
@@ -2391,21 +2515,21 @@
     ],
     "manufacturer": "매일유업",
     "flavor": "복숭아 아이스티",
-    "bcaa": "4800mg",
-    "proteinSource": "혼합",
+    "bcaa": "8850mg",
+    "proteinSource": "WPI",
     "fat": 0,
-    "sodium": 230,
+    "sodium": 290,
     "calorieDensity": "27.3kcal/100ml",
     "drinkType": "워터형",
     "nutritionPerBottle": {
       "caloriesKcal": 90,
       "proteinG": 20,
       "carbsG": 2.5,
-      "sugarsG": 1,
+      "sugarsG": 0.9,
       "fatG": 0,
       "satFatG": 0,
-      "sodiumMg": 230,
-      "bcaaMg": 4800
+      "sodiumMg": 290,
+      "bcaaMg": 8850
     },
     "coupangUrl": "https://www.coupang.com/vp/products/7663054897?itemId=20420704500&vendorItemId=84995744560&q=%EC%85%80%EB%A0%89%EC%8A%A4+%ED%94%84%EB%A1%9C%ED%8B%B4+%EC%9B%A8%EC%9D%B4%ED%94%84%EB%A1%9C%ED%95%8F+%28%EB%B3%B5%EC%88%AD%EC%95%84+%EC%95%84%EC%9D%B4%EC%8A%A4%ED%8B%B0%29&searchId=402f1b8c4062488&sourceType=search&itemsCount=36&searchRank=3&rank=3&traceId=mmyb24qh",
     "naverUrl": "https://search.shopping.naver.com/search/all?query=%EB%A7%A4%EC%9D%BC%EC%9C%A0%EC%97%85%20%EC%85%80%EB%A0%89%EC%8A%A4%20%ED%94%84%EB%A1%9C%ED%95%8F%20%EC%9B%A8%EC%9D%B4%ED%94%84%EB%A1%9C%ED%8B%B4%20%EB%B3%B5%EC%88%AD%EC%95%84%20%EC%95%84%EC%9D%B4%EC%8A%A4%ED%8B%B0&prevQuery=%EB%A7%A4%EC%9D%BC%EC%9C%A0%EC%97%85%20%EC%85%80%EB%A0%89%EC%8A%A4%20%ED%94%84%EB%A1%9C%ED%95%8F%20%EC%9B%A8%EC%9D%B4%ED%94%84%EB%A1%9C%ED%8B%B4%20%EC%B4%88%EC%BD%9C%EB%A6%BF&vertical=search",
