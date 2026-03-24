@@ -18,13 +18,6 @@ const clampTwoLines = {
   overflow: "hidden",
 };
 
-const clampThreeLines = {
-  display: "-webkit-box",
-  WebkitLineClamp: 3,
-  WebkitBoxOrient: "vertical" as const,
-  overflow: "hidden",
-};
-
 const clampOneLine = {
   display: "-webkit-box",
   WebkitLineClamp: 1,
@@ -67,13 +60,13 @@ export default async function GuidesPage() {
               <Link
                 key={track.id}
                 href={track.href}
-                className="group grid h-full min-h-[320px] grid-rows-[auto_1fr_auto] overflow-hidden rounded-[24px] border border-[#d8e2da] bg-[#fffdf8] shadow-[0_10px_24px_rgba(20,40,28,0.05)] transition-colors hover:border-[#cfe1d7]"
+                className="group grid h-full min-h-[296px] grid-rows-[auto_1fr_auto] overflow-hidden rounded-[24px] border border-[#d8e2da] bg-[#fffdf8] shadow-[0_10px_24px_rgba(20,40,28,0.05)] transition-colors hover:border-[#cfe1d7]"
               >
                 <div className="h-1.5 w-full" style={{ background: track.accentColor }} />
 
                 <div>
                   <div
-                    className="min-h-[124px] border-b border-[#e7eee9] px-4 py-3.5"
+                    className="min-h-[116px] border-b border-[#e7eee9] px-4 py-3"
                     style={{ background: `linear-gradient(135deg, ${track.accentBg} 0%, #fffdf8 100%)` }}
                   >
                     <div className="flex items-center justify-between gap-3">
@@ -109,8 +102,8 @@ export default async function GuidesPage() {
                     </div>
                   </div>
 
-                  <div className="flex min-h-[156px] flex-col px-4 pb-4 pt-3.5">
-                    <p className="min-h-[63px] text-[13px] leading-[1.6] text-[var(--foreground-muted)]" style={clampThreeLines}>
+                  <div className="flex min-h-[142px] flex-col px-4 pb-4 pt-3">
+                    <p className="min-h-[42px] text-[13px] leading-[1.6] text-[var(--foreground-muted)]" style={clampTwoLines}>
                       {track.description}
                     </p>
 
