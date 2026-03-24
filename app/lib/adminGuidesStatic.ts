@@ -100,6 +100,11 @@ const sections: AdminGuideSection[] = [
     articles: [
       article("protein-drink-guide", "단백질 음료 선택 가이드", "단백질 음료를 볼 때 먼저 체크해야 할 숫자를 정리합니다.", "/guides/product-selection-comparison/protein-drink-guide", { emoji: "🥤", tags: ["음료", "선택"] }),
       article("protein-shake-guide", "단백질 쉐이크 추천 가이드", "간편 섭취형 단백질 쉐이크를 고를 때 먼저 볼 기준을 정리합니다.", "/guides/product-selection-comparison/protein-shake-guide", { emoji: "🥤", tags: ["쉐이크", "선택"] }),
+      article("protein-category-guide", "단백질 카테고리 선택 가이드", "RTD, 쉐이크, 바, 요거트 중 지금 내 목적에 맞는 카테고리를 고르는 법을 정리합니다.", "/guides/product-selection-comparison/protein-category-guide", { emoji: "🧭", tags: ["카테고리", "입문", "허브"] }),
+      article("protein-shake-top7", "단백질 쉐이크 추천 TOP 7", "ProteinLab DB 기준으로 파우치형 단백질 쉐이크 상위 후보를 정리합니다.", "/guides/product-selection-comparison/protein-shake-top7", { emoji: "🥇", tags: ["쉐이크", "랭킹", "다이어트"] }),
+      article("labnosh-lineup", "랩노쉬 제품 종류 전체 정리", "랩노쉬 슬림쉐이크 중심으로 맛과 목적 차이를 정리합니다.", "/guides/product-selection-comparison/labnosh-lineup", { emoji: "🎒", tags: ["랩노쉬", "라인업", "쉐이크"] }),
+      article("diet-protein-shake", "다이어트 단백질 쉐이크 추천", "저칼로리·저당·단백질 20g 이상 기준으로 다이어트용 쉐이크를 고릅니다.", "/guides/product-selection-comparison/diet-protein-shake", { emoji: "🍽️", tags: ["다이어트", "쉐이크", "식사대용"] }),
+      article("protein-shake-calorie-ranking", "단백질 쉐이크 칼로리 순위", "파우치형 쉐이크를 칼로리 낮은 순으로 정리한 데이터 랭킹입니다.", "/guides/product-selection-comparison/protein-shake-calorie-ranking", { emoji: "📉", tags: ["칼로리", "쉐이크", "랭킹"] }),
       article("meal-replacement-protein-shake-guide", "식사대용 단백질 쉐이크", "식사대용 쉐이크를 고를 때 칼로리와 식이섬유를 어떻게 볼지 정리합니다.", "/guides/product-selection-comparison/meal-replacement-protein-shake-guide", { emoji: "🥣", tags: ["쉐이크", "식사대용"] }),
       article("protein-drink-vs-protein-shake", "단백질 음료 vs 단백질 쉐이크", "RTD 음료와 쉐이크를 상황과 용도 기준으로 비교합니다.", "/guides/product-selection-comparison/protein-drink-vs-protein-shake", { emoji: "⚖️", tags: ["비교", "쉐이크"] }),
       article("low-sugar-protein-shake-guide", "저당 단백질 쉐이크", "당류가 낮은 쉐이크를 고를 때 함께 볼 기준을 정리합니다.", "/guides/product-selection-comparison/low-sugar-protein-shake-guide", { emoji: "🍃", tags: ["저당", "쉐이크"] }),
