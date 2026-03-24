@@ -116,6 +116,11 @@ const sections: AdminGuideSection[] = [
       article("protein-density-ranking", "단백질 음료 100mL당 단백질 순위", "ProteinLab DB 기준으로 단백질 밀도 상위 제품을 계산해 정리합니다.", "/guides/product-selection-comparison/protein-density-ranking", { emoji: "📊", tags: ["밀도", "랭킹", "데이터"] }),
       article("selex-vs-takefit-vs-himune", "셀렉스 vs 테이크핏 vs 하이뮨", "대표 20g급 RTD 3종을 한 번에 비교해 목적별로 추천합니다.", "/guides/product-selection-comparison/selex-vs-takefit-vs-himune", { emoji: "🥊", tags: ["3자 비교", "브랜드", "RTD"] }),
       article("lactose-free-protein-drink", "유당불내증인데 단백질 음료 먹을 수 있나", "락토프리와 저부담 후보 제품을 기준으로 실제 선택법을 정리합니다.", "/guides/product-selection-comparison/lactose-free-protein-drink", { emoji: "🥣", tags: ["락토프리", "유당불내증", "문제 해결"] }),
+      article("protein-drink-for-50s", "50대 단백질 음료 추천", "중장년층이 건강 유지 관점에서 단백질 음료를 고를 때 볼 기준을 정리합니다.", "/guides/product-selection-comparison/protein-drink-for-50s", { emoji: "👨", tags: ["50대", "시니어", "건강 유지"] }),
+      article("protein-drink-box-value", "단백질 음료 박스로 사면 얼마", "대표 박스 수량 기준으로 개당 단가와 단백질 1g당 가격을 계산합니다.", "/guides/product-selection-comparison/protein-drink-box-value", { emoji: "📦", tags: ["박스", "가성비", "가격"] }),
+      article("doctoru-40g-vs-takefit-monster-43g", "닥터유 40g vs 테이크핏 몬스터 43g", "40g급 고단백 RTD 2종을 맛과 영양 기준으로 직접 비교합니다.", "/guides/product-selection-comparison/doctoru-40g-vs-takefit-monster-43g", { emoji: "🥤", tags: ["40g", "고단백", "2자 비교"] }),
+      article("protein-drink-for-diabetes", "당뇨 있을 때 단백질 음료 마셔도 될까", "당류·칼로리·탄수화물 기준으로 저당 후보 제품을 정리합니다.", "/guides/product-selection-comparison/protein-drink-for-diabetes", { emoji: "🩺", tags: ["당뇨", "저당", "문제 해결"] }),
+      article("protein-drink-beginners-guide", "단백질 음료 입문 가이드", "처음 마시는 사람이 무엇부터 봐야 하는지 쉬운 언어로 정리합니다.", "/guides/product-selection-comparison/protein-drink-beginners-guide", { emoji: "🌱", tags: ["입문", "처음", "가이드"] }),
     ],
   },
   {
