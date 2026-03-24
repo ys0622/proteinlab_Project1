@@ -583,8 +583,9 @@
       "cholesterolMg": 25,
       "sodiumMg": 260
     },
-    "naverUrl": "https://search.shopping.naver.com/search/all?query=%ED%95%98%EC%9D%B4%EB%AE%A8%20%ED%94%84%EB%A1%9C%ED%8B%B4%20%EB%B0%B8%EB%9F%B0%EC%8A%A4%20%EC%95%A1%ED%8B%B0%EB%B8%8C%20%EB%8B%A4%ED%81%AC%EC%B4%88%EC%BD%94%20330ml&vertical=search",
-    "officialUrl": "https://brand.naver.com/ildongfoodis/category/ca3a89b53d1f4aa3bce7f3b70bb97f31?cp=1"
+    "coupangUrl": "https://www.coupang.com/vp/products/8128946047?itemId=23082203301&vendorItemId=90115704513&q=%ED%94%84%EB%A1%9C%ED%8B%B4%20%EB%B0%B8%EB%9F%B0%EC%8A%A4%20%EC%95%A1%ED%8B%B0%EB%B8%8C%20(%EB%8B%A4%ED%81%AC%EC%B4%88%EC%BD%94)&searchId=65b9d7cb5829787&sourceType=search&itemsCount=36&searchRank=0&rank=0&traceId=mn4pm8kf",
+    "naverUrl": "https://search.shopping.naver.com/search/all?query=%ED%94%84%EB%A1%9C%ED%8B%B4%20%EB%B0%B8%EB%9F%B0%EC%8A%A4%20%EC%95%A1%ED%8B%B0%EB%B8%8C%20(%EB%8B%A4%ED%81%AC%EC%B4%88%EC%BD%94)&prevQuery=%EB%A7%A4%EC%9D%BC%EC%9C%A0%EC%97%85%20%EC%85%80%EB%A0%89%EC%8A%A4%20%ED%94%84%EB%A1%9C%ED%95%8F%20%EC%8A%A4%ED%8F%AC%EC%B8%A0%20(%EC%BD%94%EC%BD%94%EB%84%9B)&vertical=search",
+    "officialUrl": "https://brand.naver.com/ildongfoodis/category/6f55b75ed3724714bb6ff30784aca283?cp=1"
   },
   {
     "slug": "mymil-furotein-choco-250",
@@ -1206,9 +1207,9 @@
       "sodiumMg": 350,
       "bcaaMg": 10250
     },
-    "coupangUrl": "https://www.coupang.com/vp/products/8288998337?itemId=17962429189&vendorItemId=94792440684&pickType=COU_PICK&q=%EC%85%80%EB%A0%89%EC%8A%A4+%ED%94%84%EB%A1%9C%ED%8B%B4+%EC%9B%A8%EC%9D%B4%ED%94%84%EB%A1%9C%ED%95%8F+%28%EC%95%84%EB%A9%94%EB%A6%AC%EC%B9%B4%EB%85%B8%29&searchId=55bf0f6a8649403&sourceType=search&itemsCount=36&searchRank=2&rank=2&traceId=mmyb07o1",
-    "naverUrl": "https://search.shopping.naver.com/search/all?query=%EB%A7%A4%EC%9D%BC%EC%9C%A0%EC%97%85%20%EC%85%80%EB%A0%89%EC%8A%A4%20%ED%94%84%EB%A1%9C%ED%95%8F%20%EC%9B%A8%EC%9D%B4%ED%94%84%EB%A1%9C%ED%8B%B4%20%EC%B4%88%EC%BD%9C%EB%A6%BF&prevQuery=%EB%A7%A4%EC%9D%BC%EC%9C%A0%EC%97%85%20%EC%85%80%EB%A0%89%EC%8A%A4%20%ED%94%84%EB%A1%9C%ED%95%8F%20%EC%9B%A8%EC%9D%B4%ED%94%84%EB%A1%9C%ED%8B%B4%20%EC%B4%88%EC%BD%9C%EB%A6%BF%20%2C%20330ml%2C%2012%EA%B0%9C&vertical=search",
-    "officialUrl": "https://brand.naver.com/selex/category/85709825a6ff41b7bfdb4b6dbd205dd0?cp=1"
+    "coupangUrl": "https://www.coupang.com/vp/products/8288998337?itemId=17962429189&vendorItemId=94792440684&pickType=COU_PICK&q=%EB%A7%A4%EC%9D%BC%EC%9C%A0%EC%97%85+%EC%85%80%EB%A0%89%EC%8A%A4+%ED%94%84%EB%A1%9C%ED%95%8F+%EC%8A%A4%ED%8F%AC%EC%B8%A0+%28%EC%B4%88%EC%BD%9C%EB%A6%BF%29&searchId=0196e6905825886&sourceType=search&itemsCount=36&searchRank=0&rank=0&traceId=mn4plrdl",
+    "naverUrl": "https://search.shopping.naver.com/search/all?query=%EB%A7%A4%EC%9D%BC%EC%9C%A0%EC%97%85%20%EC%85%80%EB%A0%89%EC%8A%A4%20%ED%94%84%EB%A1%9C%ED%95%8F%20%EC%8A%A4%ED%8F%AC%EC%B8%A0%20(%EC%B4%88%EC%BD%9C%EB%A6%BF)&prevQuery=%EB%A7%A4%EC%9D%BC%EC%9C%A0%EC%97%85%20%EC%85%80%EB%A0%89%EC%8A%A4%20%ED%94%84%EB%A1%9C%ED%95%8F%20%EC%8A%A4%ED%8F%AC%EC%B8%A0%20(%EB%B3%B5%EC%88%AD%EC%95%84%20%EC%95%84%EC%9D%B4%EC%8A%A4%ED%8B%B0)&vertical=search",
+    "officialUrl": "https://www.selexmall.com/kr/product/productList?r_ctcode1=024000000000000&r_ctcode2=024000000000000&r_order=1"
   },
   {
     "slug": "sellex-profit-sports-coconut-330",
@@ -1248,8 +1249,9 @@
       "sodiumMg": 290,
       "bcaaMg": 8850
     },
-    "naverUrl": "https://search.shopping.naver.com/search/all?query=%EC%85%80%EB%A0%89%EC%8A%A4%20%ED%94%84%EB%A1%9C%ED%95%8F%20%EC%8A%A4%ED%8F%AC%EC%B8%A0%20%EC%BD%94%EC%BD%94%EB%84%9B%20330ml&vertical=search",
-    "officialUrl": "https://brand.naver.com/selex/category/85709825a6ff41b7bfdb4b6dbd205dd0?cp=1"
+    "coupangUrl": "https://www.coupang.com/vp/products/9197453112?itemId=27323113328&vendorItemId=94305335877&q=%EB%A7%A4%EC%9D%BC%EC%9C%A0%EC%97%85%20%EC%85%80%EB%A0%89%EC%8A%A4%20%ED%94%84%EB%A1%9C%ED%95%8F%20%EC%8A%A4%ED%8F%AC%EC%B8%A0%20(%EC%BD%94%EC%BD%94%EB%84%9B)&searchId=5da522395278485&sourceType=search&itemsCount=36&searchRank=0&rank=0",
+    "naverUrl": "https://search.shopping.naver.com/search/all?query=%EB%A7%A4%EC%9D%BC%EC%9C%A0%EC%97%85%20%EC%85%80%EB%A0%89%EC%8A%A4%20%ED%94%84%EB%A1%9C%ED%95%8F%20%EC%8A%A4%ED%8F%AC%EC%B8%A0%20(%EC%BD%94%EC%BD%94%EB%84%9B)&prevQuery=%EB%A7%A4%EC%9D%BC%EC%9C%A0%EC%97%85%20%EC%85%80%EB%A0%89%EC%8A%A4%20%ED%94%84%EB%A1%9C%ED%95%8F%20%EC%8A%A4%ED%8F%AC%EC%B8%A0%20(%EC%B4%88%EC%BD%9C%EB%A6%BF)&vertical=search",
+    "officialUrl": "https://www.selexmall.com/kr/product/productList?r_ctcode1=024000000000000&r_ctcode2=024000000000000&r_order=1"
   },
   {
     "slug": "calobye-sparkling-grape-340",
@@ -1746,8 +1748,9 @@
       "sodiumMg": 220,
       "bcaaMg": 8000
     },
-    "naverUrl": "https://search.shopping.naver.com/search/all?query=%ED%95%98%EC%9D%B4%EB%AE%A8%20%ED%94%84%EB%A1%9C%ED%8B%B4%20%EB%B0%B8%EB%9F%B0%EC%8A%A4%20%EC%95%A1%ED%8B%B0%EB%B8%8C%20%EC%8B%9D%EB%AC%BC%EC%84%B1%20%EB%8B%A8%EB%B0%B1%EC%A7%88%20250ml&vertical=search",
-    "officialUrl": "https://brand.naver.com/ildongfoodis/category/ca3a89b53d1f4aa3bce7f3b70bb97f31?cp=1"
+    "coupangUrl": "https://www.coupang.com/vp/products/8034447584?itemId=22475130593&vendorItemId=89607429620&q=%ED%94%84%EB%A1%9C%ED%8B%B4+%EB%B0%B8%EB%9F%B0%EC%8A%A4+%EC%95%A1%ED%8B%B0%EB%B8%8C+%28%EC%8B%9D%EB%AC%BC%EC%84%B1+%EB%8B%A8%EB%B0%B1%EC%A7%88%29&searchId=b5ca3fbc5837820&sourceType=search&itemsCount=36&searchRank=0&rank=0&traceId=",
+    "naverUrl": "https://search.shopping.naver.com/search/all?query=%ED%94%84%EB%A1%9C%ED%8B%B4%20%EB%B0%B8%EB%9F%B0%EC%8A%A4%20%EC%95%A1%ED%8B%B0%EB%B8%8C%20(%EC%8B%9D%EB%AC%BC%EC%84%B1%20%EB%8B%A8%EB%B0%B1%EC%A7%88)&prevQuery=%ED%94%84%EB%A1%9C%ED%8B%B4%20%EB%B0%B8%EB%9F%B0%EC%8A%A4%20%EC%95%A1%ED%8B%B0%EB%B8%8C%20(%EB%8B%A4%ED%81%AC%EC%B4%88%EC%BD%94)&vertical=search",
+    "officialUrl": "https://brand.naver.com/ildongfoodis/category/6f55b75ed3724714bb6ff30784aca283?cp=1"
   },
   {
     "slug": "danbaek-drink-banana-250",
@@ -2531,9 +2534,9 @@
       "sodiumMg": 290,
       "bcaaMg": 8850
     },
-    "coupangUrl": "https://www.coupang.com/vp/products/7663054897?itemId=20420704500&vendorItemId=84995744560&q=%EC%85%80%EB%A0%89%EC%8A%A4+%ED%94%84%EB%A1%9C%ED%8B%B4+%EC%9B%A8%EC%9D%B4%ED%94%84%EB%A1%9C%ED%95%8F+%28%EB%B3%B5%EC%88%AD%EC%95%84+%EC%95%84%EC%9D%B4%EC%8A%A4%ED%8B%B0%29&searchId=402f1b8c4062488&sourceType=search&itemsCount=36&searchRank=3&rank=3&traceId=mmyb24qh",
-    "naverUrl": "https://search.shopping.naver.com/search/all?query=%EB%A7%A4%EC%9D%BC%EC%9C%A0%EC%97%85%20%EC%85%80%EB%A0%89%EC%8A%A4%20%ED%94%84%EB%A1%9C%ED%95%8F%20%EC%9B%A8%EC%9D%B4%ED%94%84%EB%A1%9C%ED%8B%B4%20%EB%B3%B5%EC%88%AD%EC%95%84%20%EC%95%84%EC%9D%B4%EC%8A%A4%ED%8B%B0&prevQuery=%EB%A7%A4%EC%9D%BC%EC%9C%A0%EC%97%85%20%EC%85%80%EB%A0%89%EC%8A%A4%20%ED%94%84%EB%A1%9C%ED%95%8F%20%EC%9B%A8%EC%9D%B4%ED%94%84%EB%A1%9C%ED%8B%B4%20%EC%B4%88%EC%BD%9C%EB%A6%BF&vertical=search",
-    "officialUrl": "https://brand.naver.com/selex/category/85709825a6ff41b7bfdb4b6dbd205dd0?cp=1"
+    "coupangUrl": "https://www.coupang.com/vp/products/7663054897?itemId=20420622913&vendorItemId=75935752052&q=%EB%A7%A4%EC%9D%BC%EC%9C%A0%EC%97%85%20%EC%85%80%EB%A0%89%EC%8A%A4%20%ED%94%84%EB%A1%9C%ED%95%8F%20%EC%8A%A4%ED%8F%AC%EC%B8%A0%20(%EB%B3%B5%EC%88%AD%EC%95%84%20%EC%95%84%EC%9D%B4%EC%8A%A4%ED%8B%B0)&searchId=30459123134654&sourceType=search&itemsCount=36&searchRank=0&rank=0&traceId=mn4plejq",
+    "naverUrl": "https://search.shopping.naver.com/search/all?where=all&frm=NVSCTAB&query=%EB%A7%A4%EC%9D%BC%EC%9C%A0%EC%97%85+%EC%85%80%EB%A0%89%EC%8A%A4+%ED%94%84%EB%A1%9C%ED%95%8F+%EC%8A%A4%ED%8F%AC%EC%B8%A0+%28%EB%B3%B5%EC%88%AD%EC%95%84+%EC%95%84%EC%9D%B4%EC%8A%A4%ED%8B%B0%29",
+    "officialUrl": "https://www.selexmall.com/kr/product/productList?r_ctcode1=024000000000000&r_ctcode2=024000000000000&r_order=1"
   },
   {
     "slug": "greenbia-proteinmeal-active-choco-250",
