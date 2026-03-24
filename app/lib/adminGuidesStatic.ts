@@ -111,6 +111,11 @@ const sections: AdminGuideSection[] = [
       article("ranking-content", "등급 · 랭킹 읽는 법", "등급, 랭킹, 100점 점수를 해석하는 기준을 정리합니다.", "/guides/product-selection-comparison/ranking-content", { emoji: "🏅", tags: ["점수", "랭킹"] }),
       article("zero-sugar-allulose", "당류 0g인데 왜 달까 — 알룰로스·스테비아·에리스리톨", "당류 0g 단백질 음료에 쓰이는 감미료 종류와 다이어트에 미치는 영향을 정리합니다.", "/guides/product-selection-comparison/zero-sugar-allulose", { emoji: "🍃", tags: ["알룰로스", "당류 0g", "감미료"] }),
       article("bcaa-guide", "BCAA란 무엇인가 — 단백질 음료에서 BCAA의 의미", "류신·이소류신·발린의 역할과 단백질 음료에서 BCAA를 어떻게 볼지 정리합니다.", "/guides/product-selection-comparison/bcaa-guide", { emoji: "💊", tags: ["BCAA", "류신", "근육 합성"] }),
+      article("selex-vs-himune", "셀렉스 vs 하이뮨 비교", "대표 RTD 20g 제품을 단백질, 당류, 칼로리, 지방 기준으로 직접 비교합니다.", "/guides/product-selection-comparison/selex-vs-himune", { emoji: "🥛", tags: ["브랜드 비교", "RTD", "셀렉스"] }),
+      article("high-protein-40g-comparison", "단백질 음료 40g 이상 3종 비교", "테이크핏 몬스터, 뉴케어 41g, 닥터유 40g을 고단백 기준으로 정리합니다.", "/guides/product-selection-comparison/high-protein-40g-comparison", { emoji: "🏋️", tags: ["40g", "고단백", "비교"] }),
+      article("protein-density-ranking", "단백질 음료 100mL당 단백질 순위", "ProteinLab DB 기준으로 단백질 밀도 상위 제품을 계산해 정리합니다.", "/guides/product-selection-comparison/protein-density-ranking", { emoji: "📊", tags: ["밀도", "랭킹", "데이터"] }),
+      article("selex-vs-takefit-vs-himune", "셀렉스 vs 테이크핏 vs 하이뮨", "대표 20g급 RTD 3종을 한 번에 비교해 목적별로 추천합니다.", "/guides/product-selection-comparison/selex-vs-takefit-vs-himune", { emoji: "🥊", tags: ["3자 비교", "브랜드", "RTD"] }),
+      article("lactose-free-protein-drink", "유당불내증인데 단백질 음료 먹을 수 있나", "락토프리와 저부담 후보 제품을 기준으로 실제 선택법을 정리합니다.", "/guides/product-selection-comparison/lactose-free-protein-drink", { emoji: "🥣", tags: ["락토프리", "유당불내증", "문제 해결"] }),
     ],
   },
   {
