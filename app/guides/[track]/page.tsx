@@ -8,8 +8,6 @@ import { getAdminGuidesStaticRuntimeData } from "@/app/lib/adminGuidesStaticRunt
 
 export const dynamic = "force-dynamic";
 
-const deepGreen = "#1f5138";
-
 const clampTwoLines = {
   display: "-webkit-box",
   WebkitLineClamp: 2,
@@ -47,6 +45,9 @@ export default async function GuideTrackPage({ params }: { params: Promise<{ tra
     section.articles[0]?.title ??
     "대표 콘텐츠 준비 중";
 
+  const accentSoftBg = section.slug === "tools" ? "#f6f0ff" : "#eff7f2";
+  const accentChipBg = section.slug === "tools" ? "#f7f2ff" : "#f4faf6";
+
   return (
     <div className="min-h-screen bg-white">
       <Header />
@@ -78,12 +79,13 @@ export default async function GuideTrackPage({ params }: { params: Promise<{ tra
           <div className="mt-3 flex items-start gap-3">
             <span
               aria-hidden
-              className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-[#d7e6dd] bg-[#eff7f2] text-lg"
+              className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-[#d7e6dd] text-lg"
+              style={{ backgroundColor: accentSoftBg }}
             >
               {section.emoji}
             </span>
             <div className="min-w-0">
-              <h1 className="text-[26px] font-bold leading-tight md:text-[30px]" style={{ color: deepGreen }}>
+              <h1 className="text-[26px] font-bold leading-tight md:text-[30px]" style={{ color: section.accentColor }}>
                 {section.title}
               </h1>
               <p className="mt-1.5 max-w-2xl text-sm leading-6 text-[var(--foreground-muted)]">{section.description}</p>
@@ -115,7 +117,7 @@ export default async function GuideTrackPage({ params }: { params: Promise<{ tra
               <h2 className="text-lg font-bold text-[var(--foreground)]">주제 목록</h2>
               <p className="mt-1 text-xs text-[#8b8b8b]">대표 질문과 핵심 포인트를 먼저 보고 필요한 주제로 이동하세요.</p>
             </div>
-            <div className="hidden rounded-full border border-[#d7e6dd] bg-[#f4faf6] px-3 py-1.5 text-xs font-medium md:block" style={{ color: deepGreen }}>
+            <div className="hidden rounded-full border border-[#d7e6dd] px-3 py-1.5 text-xs font-medium md:block" style={{ color: section.accentColor, backgroundColor: accentChipBg }}>
               인기: {popularTopic}
             </div>
           </div>
@@ -162,7 +164,7 @@ export default async function GuideTrackPage({ params }: { params: Promise<{ tra
                   <div className="flex flex-1 flex-col px-4 pb-4 pt-4 sm:px-5 sm:pb-5">
                     <h3
                       className="min-h-[52px] text-base font-bold leading-7 transition-colors group-hover:text-[var(--accent)]"
-                      style={{ ...clampTwoLines, color: deepGreen }}
+                      style={{ ...clampTwoLines, color: section.accentColor }}
                     >
                       {article.title}
                     </h3>
@@ -190,10 +192,10 @@ export default async function GuideTrackPage({ params }: { params: Promise<{ tra
 
                 <div className="px-4 pb-4 sm:px-5 sm:pb-5">
                   <div className="flex items-center justify-between gap-3">
-                    <span className="rounded-full bg-[#f4faf6] px-2.5 py-1 text-[11px] font-semibold" style={{ color: deepGreen }}>
+                    <span className="rounded-full px-2.5 py-1 text-[11px] font-semibold" style={{ color: section.accentColor, backgroundColor: accentChipBg }}>
                       인기
                     </span>
-                    <span className="inline-flex items-center text-sm font-semibold" style={{ color: deepGreen }}>
+                    <span className="inline-flex items-center text-sm font-semibold" style={{ color: section.accentColor }}>
                       주제 보기
                     </span>
                   </div>

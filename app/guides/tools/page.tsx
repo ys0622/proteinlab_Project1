@@ -33,6 +33,9 @@ export default function ProteinToolsPage() {
   const trackData = getGuideTrack("tools");
 
   if (!trackData) notFound();
+  const accentColor = trackData.accentColor;
+  const accentBg = trackData.accentBg;
+  const accentText = "#5d4b8a";
 
   const visibleSlots = [
     {
@@ -67,7 +70,12 @@ export default function ProteinToolsPage() {
           </div>
 
           <div className="mt-3 flex flex-wrap items-center gap-3">
-            <span className="rounded-md bg-[#eef4ea] px-2 py-0.5 text-[11px] font-semibold tracking-wide text-[#4c7a57]">TRACK F</span>
+            <span
+              className="rounded-md px-2 py-0.5 text-[11px] font-semibold tracking-wide"
+              style={{ background: accentBg, color: accentColor }}
+            >
+              TRACK F
+            </span>
             <span className="text-xs text-[#8b8b8b]">{trackData.slots.length}개 도구 주제</span>
           </div>
 
@@ -87,7 +95,7 @@ export default function ProteinToolsPage() {
                 className="flex h-full flex-col justify-between rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]"
               >
                 <div>
-                  <p className={`text-xs font-semibold tracking-[0.08em] ${slot.active ? "text-[#2d6a4f]" : "text-[#8f8a84]"}`}>
+                  <p className="text-xs font-semibold tracking-[0.08em]" style={{ color: slot.active ? accentText : "#8f8a84" }}>
                     {slot.active ? "AVAILABLE NOW" : "COMING NEXT"}
                   </p>
                   <h2 className="mt-2 text-base font-bold text-[var(--foreground)]">{slot.title}</h2>
@@ -97,7 +105,8 @@ export default function ProteinToolsPage() {
                 {slot.active ? (
                   <Link
                     href="#daily-protein-calculator"
-                    className="mt-5 inline-flex items-center text-sm font-semibold text-[#24543d] hover:text-[#1f5138]"
+                    className="mt-5 inline-flex items-center text-sm font-semibold"
+                    style={{ color: accentText }}
                   >
                     계산기 바로가기
                   </Link>
