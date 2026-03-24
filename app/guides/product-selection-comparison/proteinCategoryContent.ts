@@ -122,6 +122,14 @@ export const proteinCategoryGuideConfig: CategoryGuideConfig = {
         { title: "바·요거트", body: "이동 중 간식형 보충은 단백질 바, 가볍고 덜 부담스러운 식사 보완은 단백질 요거트 쪽으로 좁히면 선택이 훨씬 쉬워집니다." },
       ],
     },
+    {
+      title: "실제 선택 순서",
+      items: [
+        { title: "1단계: 언제 먹을지 먼저 정하기", body: "운동 직후인지, 아침 대용인지, 이동 중 간식인지부터 정하면 카테고리 절반은 자동으로 좁혀집니다. 초보자가 가장 많이 줄이는 시행착오가 이 단계입니다." },
+        { title: "2단계: 포만감이 필요한지 판단하기", body: "배를 채워야 하면 쉐이크와 요거트 쪽, 빨리 마시고 끝내려면 RTD 쪽으로 가는 게 맞습니다. 바는 중간 간식형이라는 점을 따로 기억해두면 편합니다." },
+        { title: "3단계: 마지막에 브랜드 비교로 내려가기", body: "카테고리를 정한 뒤에야 브랜드 비교가 의미가 생깁니다. 카테고리 없이 바로 브랜드부터 보면 자꾸 다른 제품군끼리 비교하게 됩니다." },
+      ],
+    },
   ],
   relatedGuides: [
     { title: "셀렉스 vs 하이뮨", href: "/guides/product-selection-comparison/selex-vs-himune", description: "RTD 음료부터 바로 비교하고 싶다면 이 페이지가 가장 빠릅니다." },
@@ -138,6 +146,7 @@ export const proteinCategoryGuideConfig: CategoryGuideConfig = {
     { question: "완전 초보라면 무엇부터 시작하는 게 가장 쉬운가", answer: "실패가 가장 적은 쪽은 RTD 음료입니다. 바로 마실 수 있고 20g 전후 제품이 많아서 입문 난도가 낮습니다." },
     { question: "다이어트 중이면 음료보다 쉐이크가 더 낫나", answer: "포만감과 식사 대체까지 보려면 쉐이크가 더 유리한 경우가 많습니다. 반대로 운동 후 가볍게 한 팩만 마실 거라면 RTD 음료가 더 편합니다." },
     { question: "단백질 바나 요거트만으로도 충분한가", answer: "간식형 보충에는 괜찮지만 메인 보충용으로는 음료나 쉐이크보다 힘이 약할 수 있습니다. 하루 전체 단백질 목표에 맞춰 같이 보는 편이 좋습니다." },
+    { question: "브랜드를 이미 정해놨는데도 카테고리부터 다시 봐야 하나", answer: "그렇습니다. 같은 브랜드 안에서도 음료와 쉐이크의 쓰임이 달라서, 브랜드를 아는 것과 지금 내 목적에 맞는 카테고리를 아는 것은 다른 문제입니다." },
   ],
 };
 proteinCategoryGuideConfig.jsonLd = [articleJsonLd(proteinCategoryGuideConfig), faqJsonLd(proteinCategoryGuideConfig)];
@@ -194,6 +203,14 @@ export const proteinShakeTop7Config: CategoryGuideConfig = {
         { title: "실제 추천 흐름", body: "운동 보충이 핵심이면 RTD, 식사 대용과 허기 관리가 핵심이면 쉐이크로 들어가면 시행착오가 줄어듭니다." },
       ],
     },
+    {
+      title: "상위권 제품을 고를 때 마지막 체크",
+      items: [
+        { title: "1위만 고집하지 않기", body: "TOP 7은 절대 순위라기보다 상위 후보군에 가깝습니다. 맛 취향과 포만감 체감이 다르면 3위나 5위가 더 잘 맞을 수도 있습니다." },
+        { title: "박스 구매 전에 할 일", body: "쉐이크는 한 번에 여러 팩을 사면 단가가 내려가지만, 맛이 안 맞으면 손실이 큽니다. 소량 테스트 후 박스로 넘어가는 흐름이 가장 안전합니다." },
+        { title: "숫자보다 지속성", body: "다이어트용 쉐이크는 오래 먹을 수 있어야 의미가 있습니다. 그래서 최종 선택은 숫자와 함께 맛, 질림 정도, 마시는 시간대까지 같이 봐야 합니다." },
+      ],
+    },
   ],
   relatedGuides: [
     { title: "카테고리 선택 가이드", href: "/guides/product-selection-comparison/protein-category-guide", description: "음료, 쉐이크, 바, 요거트 중 무엇부터 고를지 먼저 정리합니다." },
@@ -220,6 +237,7 @@ export const proteinShakeTop7Config: CategoryGuideConfig = {
     { question: "여성 다이어트용이면 무조건 쉐이크가 낫나", answer: "아침 대용과 허기 관리가 핵심이면 쉐이크가 잘 맞습니다. 운동 직후 바로 마실 제품이 필요하면 RTD가 더 편할 수 있습니다." },
     { question: "처음이면 어떤 맛부터 시작하는 게 좋나", answer: "초코 계열이 가장 무난합니다. 그 다음이 말차, 밀크티, 곡물 계열 순으로 진입 장벽이 낮은 편입니다." },
     { question: "박스로 바로 사도 되나", answer: "쉐이크는 맛 취향 차이가 큽니다. 처음엔 단품이나 소량 세트로 맛을 확인한 뒤 박스로 넘어가는 편이 안전합니다." },
+    { question: "TOP 7이면 1위 제품만 사면 되는 건가", answer: "아닙니다. 이 페이지는 상위 후보를 좁혀주는 역할이 더 큽니다. 최종 선택은 맛 취향과 식사 대용 여부까지 같이 봐야 합니다." },
   ],
 };
 proteinShakeTop7Config.jsonLd = [articleJsonLd(proteinShakeTop7Config), faqJsonLd(proteinShakeTop7Config)];
@@ -276,6 +294,14 @@ export const labnoshLineupConfig: CategoryGuideConfig = {
         { title: "실제 선택 포인트", body: "맛에 민감하고 꾸준함이 중요하면 랩노쉬가 유리합니다. 숫자 효율만 보면 더 낮은 칼로리 제품이 위로 올라올 수 있지만, 오래 먹는 관점은 다릅니다." },
       ],
     },
+    {
+      title: "랩노쉬에서 자주 갈리는 선택",
+      items: [
+        { title: "말차 vs 얼그레이", body: "말차는 조금 더 가벼운 녹차 계열, 얼그레이는 밀크티 쪽 만족도가 강합니다. 첫 구매라면 둘 중 평소 더 자주 마시는 음료 취향으로 고르는 게 가장 정확합니다." },
+        { title: "더블초코 vs 딸기쿠키크럼블", body: "더블초코는 가장 보편적인 입문형이고, 딸기쿠키크럼블은 디저트 느낌이 강합니다. 호불호는 더 갈리지만 만족도도 높게 느끼는 사람이 많습니다." },
+        { title: "인절미·고구마 계열", body: "곡물형 포만감은 좋지만 취향이 더 갈립니다. 단백질 쉐이크가 처음이라면 디저트형이나 초코형 다음 순서로 보는 편이 실패가 적습니다." },
+      ],
+    },
   ],
   relatedGuides: [
     { title: "단백질 쉐이크 추천 TOP 7", href: "/guides/product-selection-comparison/protein-shake-top7", description: "랩노쉬가 전체 쉐이크 시장에서 어디에 위치하는지 확인합니다." },
@@ -303,6 +329,7 @@ export const labnoshLineupConfig: CategoryGuideConfig = {
     { question: "랩노쉬는 운동용보다 다이어트용에 더 가깝나", answer: "네. ProteinLab 기준으로는 식사 대용과 다이어트 지속성 쪽에 더 잘 맞습니다. 운동 직후 보충만 보면 RTD나 더 가벼운 쉐이크가 더 직관적일 수 있습니다." },
     { question: "랩노쉬에서 가장 무난한 맛은 무엇인가", answer: "더블초코, 얼그레이 밀크티, 제주말차가 가장 무난한 축에 들어갑니다. 인절미와 딸기쿠키크럼블은 취향이 더 갈릴 수 있습니다." },
     { question: "랩노쉬를 박스로 사도 괜찮나", answer: "한 번도 안 마셔봤다면 단품이나 소량 세트가 더 안전합니다. 맛 취향 차이가 분명한 브랜드라서 첫 구매는 테스트가 낫습니다." },
+    { question: "랩노쉬는 왜 숫자보다 맛 이야기가 더 많이 나오나", answer: "랩노쉬의 진짜 강점이 극단적인 고단백이 아니라 맛 다양성과 식대용 지속성이기 때문입니다. 실제 사용자 만족도도 이 지점에서 갈립니다." },
   ],
 };
 labnoshLineupConfig.jsonLd = [articleJsonLd(labnoshLineupConfig), faqJsonLd(labnoshLineupConfig)];
@@ -359,6 +386,14 @@ export const dietProteinShakeConfig: CategoryGuideConfig = {
         { title: "처음 시도", body: "박스보다 올리브영이나 소량 세트로 맛부터 확인하는 게 좋습니다. 맛이 안 맞으면 루틴 자체가 끊깁니다." },
       ],
     },
+    {
+      title: "다이어트에서 자주 하는 실수",
+      items: [
+        { title: "칼로리만 낮은 제품으로 버티기", body: "처음엔 가볍게 느껴져도 단백질과 포만감이 부족하면 결국 다른 간식을 더 먹게 됩니다. 그래서 다이어트용은 숫자 하나가 아니라 조합으로 봐야 합니다." },
+        { title: "하루 두 끼 이상 쉐이크로 바꾸기", body: "초반엔 빠르게 빠지는 것처럼 보여도 오래 유지하기 어렵습니다. 아침 1끼나 간식 대체처럼 실전에서 버틸 수 있는 방식이 더 중요합니다." },
+        { title: "맛 검증 없이 박스 구매", body: "다이어트는 루틴 유지가 핵심이라 맛이 안 맞으면 바로 끊깁니다. 그래서 첫 구매는 반드시 가볍게 테스트하는 편이 낫습니다." },
+      ],
+    },
   ],
   relatedGuides: [
     { title: "랩노쉬 라인업", href: "/guides/product-selection-comparison/labnosh-lineup", description: "식대용으로 꾸준히 먹기 좋은 브랜드를 더 자세히 봅니다." },
@@ -381,6 +416,7 @@ export const dietProteinShakeConfig: CategoryGuideConfig = {
     { question: "다이어트 중이면 무조건 가장 낮은 칼로리를 고르면 되나", answer: "아닙니다. 칼로리가 낮아도 단백질이 부족하면 금방 허기가 옵니다. 단백질과 식이섬유까지 같이 봐야 실제 유지가 쉽습니다." },
     { question: "하루 두 끼를 쉐이크로 바꿔도 되나", answer: "장기적으로는 권하지 않습니다. 다이어트용 쉐이크는 하루 한 끼 또는 간식 대체 정도가 현실적입니다." },
     { question: "운동 안 해도 마셔도 되나", answer: "네. 다이어트 식사 조절이나 아침 대용 목적이라면 운동을 하지 않아도 활용할 수 있습니다." },
+    { question: "다이어트용인데 왜 랩노쉬 같은 160kcal대 제품도 추천되나", answer: "칼로리만 낮은 제품보다 식이섬유와 포만감이 좋은 제품이 실제 유지에는 더 유리하기 때문입니다. 숫자가 조금 높아도 체감 효율은 더 좋을 수 있습니다." },
   ],
 };
 dietProteinShakeConfig.jsonLd = [articleJsonLd(dietProteinShakeConfig), faqJsonLd(dietProteinShakeConfig)];
@@ -437,6 +473,14 @@ export const proteinShakeCalorieRankingConfig: CategoryGuideConfig = {
         { title: "다이어트용 후보를 2~3개로 줄이고 싶은 사람", body: "상위권에서 단백질 20g 이상 제품만 다시 고르면 바로 실전 후보가 나옵니다." },
       ],
     },
+    {
+      title: "이 순위표를 잘못 쓰는 패턴",
+      items: [
+        { title: "1위 제품만 보고 바로 구매", body: "이 표는 저칼로리 후보군을 빠르게 보는 도구입니다. 최종 선택은 당류, 단백질, 맛까지 함께 봐야 합니다." },
+        { title: "칼로리 낮은데 단백질 낮은 제품을 고르기", body: "이런 제품은 숫자는 예뻐 보여도 포만감이 약할 수 있습니다. 다이어트 식대용이라면 오히려 비효율적일 수 있습니다." },
+        { title: "식사 대용과 운동 보충을 같은 기준으로 보기", body: "식사 대용은 포만감이, 운동 보충은 간편함이 더 중요합니다. 그래서 같은 순위라도 상황에 따라 정답이 달라집니다." },
+      ],
+    },
   ],
   relatedGuides: [
     { title: "다이어트 단백질 쉐이크", href: "/guides/product-selection-comparison/diet-protein-shake", description: "칼로리뿐 아니라 당류와 식이섬유를 같이 본 실제 추천 페이지입니다." },
@@ -452,6 +496,7 @@ export const proteinShakeCalorieRankingConfig: CategoryGuideConfig = {
     { question: "가장 낮은 칼로리 제품이 다이어트에 최고인가", answer: "반드시 그렇지는 않습니다. 단백질과 포만감이 받쳐주지 않으면 오히려 금방 허기가 와서 더 먹게 될 수 있습니다." },
     { question: "칼로리 150kcal 아래만 보면 충분한가", answer: "출발점으로는 좋지만 단백질 20g 이상인지도 함께 봐야 합니다. 그래야 실제 다이어트 식대용으로 쓰기 쉽습니다." },
     { question: "식사 대용이면 이 순위표보다 무엇을 봐야 하나", answer: "식이섬유와 맛 지속성을 같이 봐야 해서 다이어트 쉐이크 추천 페이지를 같이 보는 편이 더 좋습니다." },
+    { question: "왜 어떤 제품은 순위가 높은데 추천 페이지에서는 덜 강조되나", answer: "이 표는 칼로리 중심이고, 추천 페이지는 포만감과 지속성까지 같이 보기 때문입니다. 기준이 다르면 상위권 제품도 달라질 수 있습니다." },
   ],
 };
 proteinShakeCalorieRankingConfig.jsonLd = [articleJsonLd(proteinShakeCalorieRankingConfig), faqJsonLd(proteinShakeCalorieRankingConfig)];
