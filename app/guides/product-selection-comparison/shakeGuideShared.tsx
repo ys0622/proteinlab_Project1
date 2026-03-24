@@ -23,6 +23,11 @@ type InternalLinkItem = {
   href: string;
 };
 
+const trackBHubLink: InternalLinkItem = {
+  label: "Track B 전체 허브 보기",
+  href: "/guides/product-selection-comparison",
+};
+
 type ComparisonRow = {
   label: string;
   shake: string;
@@ -73,6 +78,10 @@ export function ShakeGuidePage({
   internalLinks,
   ctaBody,
 }: ShakeGuideConfig) {
+  const internalGuideLinks = [...internalLinks, trackBHubLink].filter(
+    (item, index, array) => array.findIndex((candidate) => candidate.href === item.href) === index,
+  );
+
   return (
     <div className="min-h-screen bg-white">
       <Header />
@@ -254,7 +263,7 @@ export function ShakeGuidePage({
           <section className="rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
             <h2 className="text-xl font-bold text-[var(--foreground)]">내부 링크</h2>
             <ul className="mt-4 space-y-3 text-sm leading-6 text-[var(--foreground-muted)]">
-              {internalLinks.map((item) => (
+              {internalGuideLinks.map((item) => (
                 <li key={item.href}>
                   <Link href={item.href} className="font-semibold text-[#24543d] underline underline-offset-4">
                     {item.label}

@@ -1,5 +1,5 @@
-import { redirect } from "next/navigation";
+import { permanentRedirect } from "next/navigation";
 
 export default function LegacyHymuneLineupPage() {
-  redirect("/guides/product-selection-comparison/himune-lineup");
+  permanentRedirect("/guides/product-selection-comparison/himune-lineup");
 }

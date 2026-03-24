@@ -61,6 +61,12 @@ export interface CategoryGuideConfig {
   jsonLd?: Record<string, unknown>[];
 }
 
+const trackBHubLink: CategoryGuideLink = {
+  title: "Track B 전체 허브 보기",
+  href: "/guides/product-selection-comparison",
+  description: "브랜드 비교, 라인업, 바·요거트·쉐이크 허브를 한 번에 다시 봅니다.",
+};
+
 export function buildCategoryGuideMetadata(config: CategoryGuideConfig): Metadata {
   const canonical = `https://proteinlab.kr/guides/product-selection-comparison/${config.slug}`;
   return {
@@ -133,6 +139,10 @@ function ExternalCards({ links }: { links: CategoryExternalLink[] }) {
 }
 
 export function CategoryGuidePage({ config }: { config: CategoryGuideConfig }) {
+  const relatedGuides = [...config.relatedGuides, trackBHubLink].filter(
+    (item, index, array) => array.findIndex((candidate) => candidate.href === item.href) === index,
+  );
+
   return (
     <div className="min-h-screen bg-white">
       {(config.jsonLd ?? []).map((item, index) => (
@@ -229,8 +239,8 @@ export function CategoryGuidePage({ config }: { config: CategoryGuideConfig }) {
 
           <section className="rounded-[28px] border border-[#d9e4f0] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(32,46,68,0.05)]">
             <h2 className="text-xl font-bold text-[var(--foreground)]">관련 가이드</h2>
-            <div className="mt-5 grid gap-3 md:grid-cols-3">
-              {config.relatedGuides.map((item) => (
+            <div className="mt-5 grid gap-3 md:grid-cols-2 xl:grid-cols-4">
+              {relatedGuides.map((item) => (
                 <Link key={item.href} href={item.href} className="rounded-2xl border border-[#d9e4f0] bg-[#f7f9fc] p-4 transition-colors hover:bg-[#eef3f9]">
                   <p className="text-sm font-semibold text-[#4a6178]">{item.title}</p>
                   <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">{item.description}</p>

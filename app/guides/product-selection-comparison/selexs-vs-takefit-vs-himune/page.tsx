@@ -1,5 +1,5 @@
-import { redirect } from "next/navigation";
+import { permanentRedirect } from "next/navigation";
 
 export default function LegacySelexsVsTakefitVsHimunePage() {
-  redirect("/guides/product-selection-comparison/selex-vs-takefit-vs-himune");
+  permanentRedirect("/guides/product-selection-comparison/selex-vs-takefit-vs-himune");
 }

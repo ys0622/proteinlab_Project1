@@ -1,5 +1,5 @@
-import { redirect } from "next/navigation";
+import { permanentRedirect } from "next/navigation";
 
 export default function LegacyDoctoruLineupPage() {
-  redirect("/guides/product-selection-comparison/dryou-lineup");
+  permanentRedirect("/guides/product-selection-comparison/dryou-lineup");
 }

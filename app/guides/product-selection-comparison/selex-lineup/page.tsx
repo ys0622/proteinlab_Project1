@@ -1,5 +1,5 @@
-import { redirect } from "next/navigation";
+import { permanentRedirect } from "next/navigation";
 
 export default function LegacySelexLineupPage() {
-  redirect("/guides/product-selection-comparison/selexs-lineup");
+  permanentRedirect("/guides/product-selection-comparison/selexs-lineup");
 }

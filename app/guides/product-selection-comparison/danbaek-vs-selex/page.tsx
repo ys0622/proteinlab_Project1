@@ -1,5 +1,5 @@
-import { redirect } from "next/navigation";
+import { permanentRedirect } from "next/navigation";
 
 export default function LegacyDanbaekVsSelexPage() {
-  redirect("/guides/product-selection-comparison/danbaek-vs-selexs");
+  permanentRedirect("/guides/product-selection-comparison/danbaek-vs-selexs");
 }
