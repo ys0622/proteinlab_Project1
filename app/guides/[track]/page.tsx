@@ -15,6 +15,83 @@ const clampTwoLines = {
   overflow: "hidden",
 };
 
+function CuratedGuideGroup({
+  title,
+  description,
+  accentColor,
+  accentBg,
+  items,
+}: {
+  title: string;
+  description: string;
+  accentColor: string;
+  accentBg: string;
+  items: {
+    slug: string;
+    title: string;
+    description: string;
+    href: string;
+    emoji: string;
+    tags: string[];
+  }[];
+}) {
+  if (!items.length) return null;
+
+  return (
+    <section className="rounded-[28px] border border-[#d8e2da] bg-white px-5 py-5 shadow-[0_10px_24px_rgba(20,40,28,0.05)]">
+      <div className="flex items-start justify-between gap-3">
+        <div>
+          <h2 className="text-lg font-bold text-[var(--foreground)]">{title}</h2>
+          <p className="mt-1 text-sm leading-6 text-[var(--foreground-muted)]">{description}</p>
+        </div>
+        <span
+          className="hidden rounded-full px-3 py-1 text-xs font-semibold md:inline-flex"
+          style={{ color: accentColor, backgroundColor: accentBg }}
+        >
+          추천 묶음
+        </span>
+      </div>
+
+      <div className="mt-4 grid gap-3 md:grid-cols-2 xl:grid-cols-4">
+        {items.map((item) => (
+          <Link
+            key={item.slug}
+            href={item.href}
+            className="rounded-2xl border border-[#d9e4dd] bg-[#f7faf8] p-4 transition-colors hover:bg-white"
+          >
+            <div className="flex items-start gap-3">
+              <span
+                aria-hidden
+                className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-[#d7e6dd] bg-white text-lg"
+              >
+                {item.emoji}
+              </span>
+              <div className="min-w-0">
+                <p className="text-sm font-semibold" style={{ color: accentColor }}>
+                  {item.title}
+                </p>
+                <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]" style={clampTwoLines}>
+                  {item.description}
+                </p>
+              </div>
+            </div>
+            <div className="mt-3 flex flex-wrap gap-2">
+              {item.tags.slice(0, 2).map((tag) => (
+                <span
+                  key={`${item.slug}-${tag}`}
+                  className="inline-flex items-center rounded-full border border-[#d9e4dd] bg-white px-2 py-1 text-[11px] font-medium text-[#496555]"
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+          </Link>
+        ))}
+      </div>
+    </section>
+  );
+}
+
 export async function generateStaticParams() {
   return getGuideTracks().map((track) => ({ track: track.slug }));
 }
@@ -40,6 +117,7 @@ export default async function GuideTrackPage({ params }: { params: Promise<{ tra
   if (!section) notFound();
 
   const featuredTopics = section.articles.slice(0, 3).map((article) => article.title);
+  const articleMap = new Map(section.articles.map((article) => [article.slug, article]));
   const popularTopic =
     section.articles.find((article) => article.status === "live")?.title ??
     section.articles[0]?.title ??
@@ -47,6 +125,24 @@ export default async function GuideTrackPage({ params }: { params: Promise<{ tra
 
   const accentSoftBg = section.slug === "tools" ? "#f6f0ff" : "#eff7f2";
   const accentChipBg = section.slug === "tools" ? "#f7f2ff" : "#f4faf6";
+  const lineupArticles =
+    section.slug === "product-selection-comparison"
+      ? ["selexs-lineup", "himune-lineup", "takefit-lineup", "newcare-allprotein", "dryou-lineup", "danbaek-lineup"]
+          .map((slug) => articleMap.get(slug))
+          .filter((item): item is NonNullable<typeof item> => Boolean(item))
+      : [];
+  const starterArticles =
+    section.slug === "product-selection-comparison"
+      ? ["protein-category-guide", "protein-drink-beginners-guide", "protein-shake-top7", "protein-bar-top10"]
+          .map((slug) => articleMap.get(slug))
+          .filter((item): item is NonNullable<typeof item> => Boolean(item))
+      : [];
+  const comparisonArticles =
+    section.slug === "product-selection-comparison"
+      ? ["selex-vs-himune", "selex-vs-takefit-vs-himune", "high-protein-40g-comparison", "protein-drink-by-content"]
+          .map((slug) => articleMap.get(slug))
+          .filter((item): item is NonNullable<typeof item> => Boolean(item))
+      : [];
 
   return (
     <div className="min-h-screen bg-white">
@@ -111,6 +207,31 @@ export default async function GuideTrackPage({ params }: { params: Promise<{ tra
       </section>
 
       <main className="mx-auto max-w-[1200px] px-4 pb-12 md:px-6">
+        {section.slug === "product-selection-comparison" ? (
+          <div className="mt-5 space-y-4">
+            <CuratedGuideGroup
+              title="입문자는 여기부터 보면 됩니다"
+              description="카테고리 선택, 음료 입문, 쉐이크/바 추천처럼 처음 고를 때 필요한 페이지를 먼저 묶었습니다."
+              accentColor={section.accentColor}
+              accentBg={accentChipBg}
+              items={starterArticles}
+            />
+            <CuratedGuideGroup
+              title="브랜드 라인업만 모아보기"
+              description="셀렉스, 하이뮨, 테이크핏, 뉴케어, 닥터유, 더단백처럼 브랜드 내부 차이를 먼저 보고 싶을 때 쓰는 묶음입니다."
+              accentColor={section.accentColor}
+              accentBg={accentChipBg}
+              items={lineupArticles}
+            />
+            <CuratedGuideGroup
+              title="대표 비교 페이지 바로가기"
+              description="브랜드 간 직접 비교와 40g대 비교, 함량대별 큰 그림 페이지를 묶어서 바로 이동할 수 있게 했습니다."
+              accentColor={section.accentColor}
+              accentBg={accentChipBg}
+              items={comparisonArticles}
+            />
+          </div>
+        ) : null}
         <section className="mt-5">
           <div className="flex items-center justify-between gap-3">
             <div>

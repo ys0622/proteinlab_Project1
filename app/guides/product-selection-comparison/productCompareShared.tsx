@@ -54,6 +54,11 @@ export interface ComparePageConfig {
 }
 
 const drinkProducts = getDrinkProducts();
+const trackBHubLink: RelatedGuideLink = {
+  title: "Track B 전체 허브 보기",
+  href: "/guides/product-selection-comparison",
+  description: "브랜드 비교, 라인업, 바·요거트·쉐이크 허브를 한 번에 다시 봅니다.",
+};
 
 export function getDrinkProduct(slug: string): ProductDetailProps {
   const product = drinkProducts.find((item) => item.slug === slug);
@@ -129,6 +134,10 @@ function PurchaseLinks({ links }: { links: PurchaseGuideLink[] }) {
 }
 
 export function ComparisonGuidePage({ config }: { config: ComparePageConfig }) {
+  const relatedGuides = [...config.relatedGuides, trackBHubLink].filter(
+    (item, index, array) => array.findIndex((candidate) => candidate.href === item.href) === index,
+  );
+
   return (
     <div className="min-h-screen bg-white">
       {(config.jsonLd ?? []).map((item, index) => (
@@ -157,10 +166,13 @@ export function ComparisonGuidePage({ config }: { config: ComparePageConfig }) {
       <main className="mx-auto max-w-[1200px] px-4 py-8 md:px-6">
         <div className="space-y-6">
           <section className="rounded-[28px] border border-[#d9e4f0] bg-[#f7f9fc] px-5 py-5 shadow-[0_18px_50px_rgba(32,46,68,0.05)]">
-            <p className="text-xs font-semibold tracking-[0.08em] text-[#4a6178]">30초 요약</p>
-            <ul className="mt-4 space-y-3 text-sm leading-6 text-[var(--foreground-muted)]">
+            <div className="flex items-center justify-between gap-4">
+              <p className="text-xs font-semibold tracking-[0.08em] text-[#4a6178]">30초 요약</p>
+              <span className="text-xs text-[var(--foreground-muted)]">먼저 이 3가지만 보면 됩니다</span>
+            </div>
+            <ul className="mt-4 grid gap-3 text-sm leading-6 text-[var(--foreground-muted)] md:grid-cols-3">
               {config.summary.map((item) => (
-                <li key={item} className="rounded-xl border border-[#d9e4f0] bg-white px-4 py-3">{item}</li>
+                <li key={item} className="rounded-xl border border-[#d9e4f0] bg-white px-4 py-3 md:min-h-[108px]">{item}</li>
               ))}
             </ul>
           </section>
@@ -220,8 +232,8 @@ export function ComparisonGuidePage({ config }: { config: ComparePageConfig }) {
           ) : null}
           <section className="rounded-[28px] border border-[#d9e4f0] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(32,46,68,0.05)]">
             <h2 className="text-xl font-bold text-[var(--foreground)]">관련 가이드</h2>
-            <div className="mt-5 grid gap-3 md:grid-cols-3">
-              {config.relatedGuides.map((item) => (
+            <div className="mt-5 grid gap-3 md:grid-cols-2 xl:grid-cols-4">
+              {relatedGuides.map((item) => (
                 <Link key={item.href} href={item.href} className="rounded-2xl border border-[#d9e4f0] bg-[#f7f9fc] p-4 transition-colors hover:bg-[#eef3f9]">
                   <p className="text-sm font-semibold text-[#4a6178]">{item.title}</p>
                   <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">{item.description}</p>
