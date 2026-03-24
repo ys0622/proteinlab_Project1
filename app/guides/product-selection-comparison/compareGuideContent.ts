@@ -8,6 +8,7 @@ const takefitMonster = getDrinkProduct("takefit-monster-goso-350");
 const newcare41 = getDrinkProduct("newcare-all-protein-41g");
 const dryou40 = getDrinkProduct("dryou-protein-40g-choco-350");
 const newcare25 = getDrinkProduct("newcare-all-protein-choco-245");
+const newcarePlant = getDrinkProduct("newcare-all-protein-plant-savory-250");
 const newcareWater = getDrinkProduct("newcare-olprotein-water-lemon-350");
 const sellexLactoseFree = getDrinkProduct("sellex-protein-lactosefree-original-190");
 const sellexAmericano = getDrinkProduct("sellex-profit-whey-protein-americano-330");
@@ -1241,6 +1242,82 @@ export const newcareAllproteinConfig: ComparePageConfig = {
     { label: "닥터유 40g 보기", slug: dryou40.slug },
   ],
 };
+newcareAllproteinConfig.description =
+  "뉴케어 올프로틴 41g뿐 아니라 25g, 식물성, 워터 라인까지 함께 보고 어떤 라인이 어떤 목적에 맞는지 정리합니다.";
+newcareAllproteinConfig.keywords = [
+  "뉴케어 올프로틴",
+  "뉴케어 올프로틴 41g",
+  "뉴케어 올프로틴 25g",
+  "뉴케어 식물성 단백질",
+  "뉴케어 올프로틴 워터",
+];
+newcareAllproteinConfig.methodologyNote = "ProteinLab DB 뉴케어 올프로틴 41g·25g·식물성·워터 라인 기준";
+newcareAllproteinConfig.summary = [
+  "뉴케어 올프로틴은 41g 한 가지가 아니라 25g, 식물성, 워터까지 목적이 갈리는 라인업입니다.",
+  "41g은 고단백 집중형, 25g은 일상형, 식물성은 원료 민감도 대응형, 워터는 가장 가벼운 음용형으로 읽으면 쉽습니다.",
+  "뉴케어를 고를 때는 단백질 총량보다 내가 원하는 음용감과 소화 부담부터 먼저 정하는 편이 실수가 적습니다.",
+];
+newcareAllproteinConfig.sections.splice(1, 0, {
+  title: "뉴케어 올프로틴 라인업 한눈에 보기",
+  items: [
+    {
+      title: `41g 라인: ${newcare41.proteinPerServing}g 고단백`,
+      body: `${newcare41.calories}kcal에 당류 ${newcare41.sugar}g 수준으로, 단백질 총량을 가장 강하게 챙기고 싶을 때 맞습니다. 유당 부담을 낮춘 고단백 RTD라는 점이 핵심입니다.`,
+    },
+    {
+      title: `25g 라인: ${newcare25.proteinPerServing}g 일상형`,
+      body: `${newcare25.calories}kcal, 당류 ${newcare25.sugar}g로 41g보다 진입 장벽이 낮습니다. 매일 한 병씩 무난하게 챙기거나 식사 사이 보충용으로 보기 좋습니다.`,
+    },
+    {
+      title: `식물성 라인: ${newcarePlant.proteinPerServing}g 대체 옵션`,
+      body: `${newcarePlant.calories}kcal에 당류 ${newcarePlant.sugar}g, 단백질 원료가 식물성으로 잡혀 있습니다. 유제품 기반 음용감이 부담스럽거나 식물성 쪽을 선호할 때 후보가 됩니다.`,
+    },
+    {
+      title: `워터 라인: ${newcareWater.proteinPerServing}g 가벼운 음용형`,
+      body: `${newcareWater.calories}kcal, 당류 ${newcareWater.sugar}g로 가장 가볍습니다. 대신 밀도는 ${formatDensity(newcareWater)} 수준이라 식사 보완보다 산뜻한 보충에 가깝습니다.`,
+    },
+  ],
+});
+newcareAllproteinConfig.sections.splice(3, 0, {
+  title: "라인업별 이렇게 고르면 됩니다",
+  items: [
+    {
+      title: "고단백 한 병으로 끝내고 싶다면",
+      body: "41g 라인이 가장 명확합니다. 운동 후든 건강관리 목적이든 한 번에 단백질 총량을 크게 확보하려는 수요에 맞습니다.",
+    },
+    {
+      title: "매일 부담 없이 마실 뉴케어를 찾는다면",
+      body: "25g 라인이 가장 무난합니다. 칼로리와 음용 부담이 덜해서 입문용이나 일상 루틴용으로 설명하기 쉽습니다.",
+    },
+    {
+      title: "원료 성격이 더 중요하다면",
+      body: "식물성 라인을 먼저 보면 됩니다. 단백질 총량은 41g보다 낮지만, 뉴케어 안에서 식물성 선택지를 찾는 사용자에게는 별도 의미가 있습니다.",
+    },
+    {
+      title: "묵직한 밀크형이 부담스럽다면",
+      body: "워터 라인이 맞습니다. 80kcal 수준이라 가장 가볍지만, 포만감이나 단백질 밀도는 25g·41g 라인보다 확실히 낮습니다.",
+    },
+  ],
+});
+newcareAllproteinConfig.faq = [
+  ...(newcareAllproteinConfig.faq ?? []),
+  {
+    question: "뉴케어 올프로틴은 41g만 있는 브랜드인가요?",
+    answer:
+      "아닙니다. ProteinLab DB 기준으로 41g 고단백 라인 외에 25g 일상형, 식물성 단백질 라인, 워터형 라인이 함께 잡혀 있습니다. 같은 뉴케어라도 목적이 꽤 다릅니다.",
+  },
+  {
+    question: "25g, 식물성, 워터 중에서는 무엇부터 보면 되나요?",
+    answer:
+      "무난한 입문은 25g, 원료 선호가 뚜렷하면 식물성, 가장 가볍게 마시고 싶다면 워터를 먼저 보면 됩니다. 41g은 총량을 최우선으로 둘 때 선택하는 상위 라인으로 보면 됩니다.",
+  },
+];
+newcareAllproteinConfig.purchaseLinks = [
+  { label: "뉴케어 올프로틴 41g 보기", slug: newcare41.slug },
+  { label: "뉴케어 올프로틴 25g 보기", slug: newcare25.slug },
+  { label: "뉴케어 식물성 단백질 보기", slug: newcarePlant.slug },
+  { label: "뉴케어 올프로틴 워터 보기", slug: newcareWater.slug },
+];
 newcareAllproteinConfig.jsonLd = [articleJsonLd(newcareAllproteinConfig), faqJsonLd(newcareAllproteinConfig)];
 
 export const proteinDrinkByContentConfig: ComparePageConfig = {
