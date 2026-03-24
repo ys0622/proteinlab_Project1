@@ -121,6 +121,9 @@ const sections: AdminGuideSection[] = [
       article("doctoru-40g-vs-takefit-monster-43g", "닥터유 40g vs 테이크핏 몬스터 43g", "40g급 고단백 RTD 2종을 맛과 영양 기준으로 직접 비교합니다.", "/guides/product-selection-comparison/doctoru-40g-vs-takefit-monster-43g", { emoji: "🥤", tags: ["40g", "고단백", "2자 비교"] }),
       article("protein-drink-for-diabetes", "당뇨 있을 때 단백질 음료 마셔도 될까", "당류·칼로리·탄수화물 기준으로 저당 후보 제품을 정리합니다.", "/guides/product-selection-comparison/protein-drink-for-diabetes", { emoji: "🩺", tags: ["당뇨", "저당", "문제 해결"] }),
       article("protein-drink-beginners-guide", "단백질 음료 입문 가이드", "처음 마시는 사람이 무엇부터 봐야 하는지 쉬운 언어로 정리합니다.", "/guides/product-selection-comparison/protein-drink-beginners-guide", { emoji: "🌱", tags: ["입문", "처음", "가이드"] }),
+      article("selexs-lineup", "셀렉스 제품 종류 전체 정리", "셀렉스 RTD 라인업을 목적별로 나눠 어떤 제품이 맞는지 정리합니다.", "/guides/product-selection-comparison/selexs-lineup", { emoji: "🥛", tags: ["셀렉스", "라인업", "브랜드"] }),
+      article("protein-drink-by-flavor", "단백질 음료 맛별 추천", "초코, 복숭아, 바나나, 아메리카노처럼 맛 기준으로 고르기 쉽게 정리합니다.", "/guides/product-selection-comparison/protein-drink-by-flavor", { emoji: "🍫", tags: ["맛", "입문", "추천"] }),
+      article("protein-drink-taste-tips", "단백질 음료 맛없다", "맛없게 느껴지는 이유와 더 잘 맞는 제품으로 바꾸는 방법을 정리합니다.", "/guides/product-selection-comparison/protein-drink-taste-tips", { emoji: "🧊", tags: ["맛", "문제 해결", "입문"] }),
     ],
   },
   {
@@ -179,6 +182,7 @@ const sections: AdminGuideSection[] = [
       article("ingredient-trends", "성분 트렌드", "고단백, 저당, 워터형 같은 키워드 트렌드를 정리합니다.", "/guides/market-insights/ingredient-trends", { emoji: "🧪", tags: ["트렌드", "성분"] }),
       article("new-product-analysis", "신제품 분석", "새로 나온 제품을 어떤 기준으로 읽어야 하는지 설명합니다.", "/guides/market-insights/new-product-analysis", { emoji: "🆕", tags: ["신제품", "분석"] }),
       article("global-protein-market", "글로벌 단백질 시장", "해외 시장 흐름과 국내 제품 이해를 연결합니다.", "/guides/market-insights/global-protein-market", { emoji: "🌍", tags: ["글로벌", "시장"] }),
+      article("protein-drink-trend-2026", "2026 단백질 음료 시장 트렌드", "초고단백, 저당, 시니어 타깃 확대 등 2026년 핵심 흐름을 자료 기반으로 정리합니다.", "/guides/market-insights/protein-drink-trend-2026", { emoji: "📈", tags: ["2026", "트렌드", "신제품"] }),
     ],
   },
   {

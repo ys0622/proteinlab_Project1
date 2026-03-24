@@ -786,3 +786,215 @@ export const proteinDrinkBeginnersGuideConfig: ComparePageConfig = {
   ],
 };
 proteinDrinkBeginnersGuideConfig.jsonLd = [articleJsonLd(proteinDrinkBeginnersGuideConfig), faqJsonLd(proteinDrinkBeginnersGuideConfig)];
+
+const sellexProfitSports = getDrinkProduct("sellex-profit-sports-choco-330");
+const sellexPeach = getDrinkProduct("sellex-profit-peach-icedtea-330");
+const sellexLowsugar = getDrinkProduct("sellex-protein-lowsugar-190");
+const dryouChoco = getDrinkProduct("dryou-protein-drink-choco-250");
+const dryouBanana = getDrinkProduct("dryou-protein-drink-banana-250");
+const takefitMonsterChocobanana = getDrinkProduct("takefit-monster-chocobanana-350");
+
+export const selexsLineupConfig: ComparePageConfig = {
+  slug: "selexs-lineup",
+  title: "셀렉스 제품 종류 전체 정리",
+  description: "셀렉스 RTD 라인업을 프로핏, 웨이프로핏, 락토프리, 로우슈거 기준으로 정리하고 어떤 목적에서 고르면 되는지 한 번에 설명합니다.",
+  keywords: ["셀렉스 종류", "셀렉스 라인업", "셀렉스 프로핏 차이", "셀렉스 코어프로틴", "셀렉스 제품 비교"],
+  badge: "브랜드 라인업",
+  readingTime: "5분 읽기",
+  updatedAt: "2026-03-24",
+  methodologyNote: "ProteinLab DB RTD 기준",
+  intro: "셀렉스는 이름이 비슷해서 헷갈리지만 실제로는 운동 보충형, 워터형, 락토프리형, 일반 영양보충형으로 역할이 꽤 다릅니다. ProteinLab DB에 잡힌 RTD 라인업만 기준으로 정리해도 어떤 제품이 본인 목적에 맞는지 빠르게 갈립니다.",
+  summary: [
+    "운동 후 저칼로리 보충은 프로핏 웨이프로틴과 프로핏이 가장 직관적입니다.",
+    "가볍고 상큼하게 마시려면 웨이프로핏, 우유 부담을 줄이고 싶다면 락토프리 라인이 먼저입니다.",
+    "셀렉스 일반 프로틴과 로우슈거는 보충용보다는 일상 영양보완 쪽에 더 가깝습니다.",
+  ],
+  comparisonTitle: "셀렉스 RTD 라인업 비교표",
+  comparisonColumns: ["프로핏 웨이프로틴", "프로틴 웨이프로핏", "프로틴 락토프리", "프로틴 로우슈거"],
+  comparisonRows: buildComparisonRows([
+    { label: "대표 제품", values: [sellexProfitSports.name, sellexAmericano.name, sellexLactoseFree.name, sellexLowsugar.name] },
+    { label: "형태", values: ["RTD 밀크형", "RTD 워터형", "RTD 밀크형", "RTD 밀크형"] },
+    { label: "단백질", values: [`${sellexProfitSports.proteinPerServing}g`, `${sellexAmericano.proteinPerServing}g`, `${sellexLactoseFree.proteinPerServing}g`, `${sellexLowsugar.proteinPerServing}g`] },
+    { label: "칼로리", values: [`${sellexProfitSports.calories}kcal`, `${sellexAmericano.calories}kcal`, `${sellexLactoseFree.calories}kcal`, `${sellexLowsugar.calories}kcal`] },
+    { label: "당류", values: [`${sellexProfitSports.sugar}g`, `${sellexAmericano.sugar}g`, `${sellexLactoseFree.sugar}g`, `${sellexLowsugar.sugar}g`] },
+    { label: "특징", values: ["WPI 20g·운동 보충형", "워터형·깔끔한 목넘김", "락토프리 표기", "일반 영양보완형"] },
+    { label: "추천 목적", values: ["운동 후·다이어트", "가벼운 보충·커피 대체", "유당 부담 낮추기", "일상 보충"] },
+  ]),
+  sections: [
+    {
+      title: "라인별로 보면 이렇게 다릅니다",
+      items: [
+        { title: "프로핏 웨이프로틴", body: "330mL에 단백질 20g, 99kcal라 운동 후 보충용으로 가장 선명합니다. 셀렉스 안에서 가장 스포츠형 메시지가 강한 라인입니다." },
+        { title: "프로틴 웨이프로핏", body: "아메리카노와 복숭아 아이스티처럼 워터형 감각이 강합니다. 90kcal 전후로 가볍고, 단백질 음료 특유의 밀크감을 싫어하는 사람에게 잘 맞습니다." },
+        { title: "프로틴 락토프리·로우슈거", body: "이 라인은 운동 보충보다 일상 영양보완 관점이 더 강합니다. 단백질 총량은 낮지만 속 부담이나 일반식 보완 맥락에서는 여전히 의미가 있습니다." },
+      ],
+    },
+    {
+      title: "목적별 추천",
+      items: [
+        { title: "운동 후 고단백", body: "프로핏 웨이프로틴이 1순위입니다. 20g, 99kcal, 당류 0g이라 목적이 가장 분명합니다." },
+        { title: "출근길·외출 중 간편하게", body: "웨이프로핏 아메리카노나 복숭아 아이스티가 편합니다. 단백질은 20g으로 유지하면서 음용감이 훨씬 가볍습니다." },
+        { title: "유당 부담이 걱정될 때", body: "프로틴 락토프리부터 보는 편이 안전합니다. 셀렉스 안에서도 일반 프로핏보다 우선순위가 올라갑니다." },
+      ],
+    },
+    {
+      title: "고를 때 헷갈리는 포인트",
+      items: [
+        { title: "이름만 보고 전부 운동용으로 생각하기 쉽다", body: "셀렉스는 같은 브랜드 안에서도 스포츠형과 일반 영양보완형이 섞여 있습니다. 제품명보다 단백질 g와 칼로리를 같이 봐야 합니다." },
+        { title: "워터형과 밀크형은 체감이 완전히 다르다", body: "웨이프로핏은 밀크형 RTD와 다르게 깔끔한 음용감이 강합니다. 맛 취향이 갈리면 영양 수치보다 이 차이가 더 크게 느껴집니다." },
+        { title: "분말형·스틱형은 별도 카테고리로 보는 편이 맞다", body: "이 페이지는 ProteinLab DB에 잡힌 RTD 중심 정리입니다. 코어프로틴 같은 분말·스틱형은 음용 맥락이 달라 따로 비교하는 편이 정확합니다." },
+      ],
+    },
+  ],
+  faq: [
+    { question: "셀렉스에서 가장 무난한 첫 제품은 무엇인가", answer: "운동 보충이면 프로핏 웨이프로틴, 가볍게 시작하려면 웨이프로핏 아메리카노가 가장 무난합니다. 둘 다 단백질 20g급이라 출발점으로 좋습니다." },
+    { question: "셀렉스 프로핏과 웨이프로핏 차이는 무엇인가", answer: "프로핏은 밀크형 스포츠 보충 RTD에 가깝고, 웨이프로핏은 워터형 감각이 강합니다. 단백질 총량은 비슷해도 마시는 느낌과 사용 장면이 다릅니다." },
+    { question: "유당불내증이면 셀렉스에서 무엇부터 봐야 하나", answer: "가장 먼저 볼 것은 프로틴 락토프리입니다. 웨이프로핏도 상대적으로 가볍게 느껴질 수 있지만, 락토프리 표기 제품보다 우선 추천하지는 않습니다." },
+  ],
+  relatedGuides: [
+    { title: "셀렉스 vs 하이뮨 비교", href: "/guides/product-selection-comparison/selex-vs-himune", description: "셀렉스를 다른 대표 브랜드와 직접 비교해봅니다." },
+    { title: "셀렉스 vs 테이크핏 vs 하이뮨", href: "/guides/product-selection-comparison/selex-vs-takefit-vs-himune", description: "대표 브랜드 3개를 한 번에 비교합니다." },
+    commonRelated[0],
+  ],
+  purchaseLinks: [
+    { label: "셀렉스 프로핏 웨이프로틴 보기", slug: sellexProfitSports.slug },
+    { label: "셀렉스 프로틴 웨이프로핏 보기", slug: sellexAmericano.slug },
+    { label: "셀렉스 프로틴 락토프리 보기", slug: sellexLactoseFree.slug },
+  ],
+};
+selexsLineupConfig.jsonLd = [articleJsonLd(selexsLineupConfig), faqJsonLd(selexsLineupConfig)];
+
+export const proteinDrinkByFlavorConfig: ComparePageConfig = {
+  slug: "protein-drink-by-flavor",
+  title: "단백질 음료 맛별 추천",
+  description: "초코, 복숭아, 바나나, 아메리카노, 고소한맛 기준으로 실제 마시기 쉬운 단백질 음료를 정리했습니다.",
+  keywords: ["단백질 음료 초코맛 추천", "단백질 음료 맛있는 것", "프로틴 음료 맛 추천", "단백질 음료 복숭아맛"],
+  badge: "맛 기준 추천",
+  readingTime: "4분 읽기",
+  updatedAt: "2026-03-24",
+  methodologyNote: "ProteinLab DB 맛 SKU 기준",
+  intro: "입문자는 단백질 g보다 맛 때문에 계속 마실 수 있는지가 더 중요할 때가 많습니다. 그래서 이 페이지는 영양 수치보다 실제로 고르기 쉬운 맛 카테고리 기준으로 제품을 정리했습니다.",
+  summary: [
+    "처음 마시는 사람에게 가장 무난한 맛은 여전히 초코 계열입니다.",
+    "가볍고 상큼한 쪽은 복숭아와 아메리카노 같은 워터형이 확실히 유리합니다.",
+    "단백질을 크게 챙기면서 맛도 포기하고 싶지 않다면 테이크핏 몬스터 초코바나나가 가장 직관적입니다.",
+  ],
+  comparisonTitle: "맛 카테고리별 추천표",
+  comparisonColumns: ["초코", "복숭아", "바나나", "아메리카노", "고소한맛"],
+  comparisonRows: buildComparisonRows([
+    { label: "추천 제품", values: [dryou40.name, sellexPeach.name, takefitMonsterChocobanana.name, sellexAmericano.name, takefitMonster.name] },
+    { label: "브랜드", values: [dryou40.brand, sellexPeach.brand, takefitMonsterChocobanana.brand, sellexAmericano.brand, takefitMonster.brand] },
+    { label: "단백질", values: [`${dryou40.proteinPerServing}g`, `${sellexPeach.proteinPerServing}g`, `${takefitMonsterChocobanana.proteinPerServing}g`, `${sellexAmericano.proteinPerServing}g`, `${takefitMonster.proteinPerServing}g`] },
+    { label: "특징", values: ["초코우유 스타일", "상큼·가벼움", "고단백+디저트형", "커피 대체 감각", "담백한 곡물 느낌"] },
+    { label: "추천 상황", values: ["처음 시작", "산뜻하게 마시고 싶을 때", "맛과 고단백을 같이 챙길 때", "아침·출근길", "단맛이 싫을 때"] },
+  ]),
+  sections: [
+    {
+      title: "처음 마시는 사람에게 맞는 맛",
+      items: [
+        { title: "가장 무난한 건 초코", body: "초코 계열은 단백질 음료 특유의 맛을 가장 잘 감춰줍니다. 입문자라면 닥터유나 셀렉스 초코 계열부터 시작하는 편이 실패 확률이 낮습니다." },
+        { title: "상큼하게 마시려면 복숭아·아메리카노", body: "셀렉스 웨이프로핏 복숭아와 아메리카노는 워터형이라 훨씬 가볍습니다. 밀크형 RTD가 무거웠던 사람에게 특히 잘 맞습니다." },
+        { title: "고단백도 맛있게 가고 싶다면 바나나", body: "테이크핏 몬스터 초코바나나는 43g급인데도 디저트형 느낌이 있어 고단백 진입 장벽을 낮춰줍니다." },
+      ],
+    },
+    {
+      title: "맛 기준으로 고를 때 놓치기 쉬운 것",
+      items: [
+        { title: "맛이 좋다고 항상 가벼운 건 아니다", body: "닥터유 40g처럼 맛 만족도가 높은 제품은 칼로리와 지방도 함께 올라가는 경우가 많습니다. 체중 관리 중이면 꼭 같이 봐야 합니다." },
+        { title: "워터형은 가볍지만 호불호가 있다", body: "복숭아와 아메리카노처럼 워터형은 산뜻하지만 밀크형 포만감은 적습니다. 식사 보완이 목적이면 기대와 다를 수 있습니다." },
+        { title: "브랜드보다 SKU가 더 중요하다", body: "같은 브랜드라도 초코, 바나나, 고소한맛에 따라 당류와 칼로리가 달라집니다. 맛별 추천은 브랜드보다 SKU 기준으로 봐야 정확합니다." },
+      ],
+    },
+    {
+      title: "이런 사람에게 추천합니다",
+      items: [
+        { title: "처음인데 실패하고 싶지 않은 사람", body: "초코 계열이나 아메리카노처럼 익숙한 맛부터 가면 됩니다. 낯선 곡물향이나 식물성 풍미는 두 번째 단계로 미루는 편이 안전합니다." },
+        { title: "운동용인데 맛도 중요할 때", body: "테이크핏 몬스터 초코바나나처럼 고단백 라인에서도 맛이 좋은 SKU가 있습니다. 무조건 저칼로리만 볼 필요는 없습니다." },
+        { title: "맛없어서 포기 직전인 사람", body: "입맛 문제일 수 있습니다. 초코에서 안 맞았더라도 복숭아나 아메리카노처럼 카테고리를 바꾸면 계속 마실 수 있는 경우가 많습니다." },
+      ],
+    },
+  ],
+  faq: [
+    { question: "입문자에게 가장 무난한 맛은 무엇인가", answer: "대체로 초코 계열이 가장 무난합니다. 단백질 음료 특유의 향을 잘 감춰줘서 첫 진입 장벽이 가장 낮습니다." },
+    { question: "가장 가볍게 마시기 쉬운 맛은 무엇인가", answer: "셀렉스 웨이프로핏 복숭아와 아메리카노 같은 워터형이 가장 가볍습니다. 밀크형 특유의 묵직함이 적습니다." },
+    { question: "고단백인데도 맛있는 제품이 있나", answer: "있습니다. 테이크핏 몬스터 초코바나나와 닥터유 40g 초코가 대표적입니다. 다만 칼로리와 지방은 함께 확인해야 합니다." },
+  ],
+  relatedGuides: [
+    { title: "단백질 음료 입문 가이드", href: "/guides/product-selection-comparison/protein-drink-beginners-guide", description: "처음 마시는 사람이 무엇부터 봐야 하는지 쉬운 언어로 정리합니다." },
+    { title: "단백질 음료 맛없다", href: "/guides/product-selection-comparison/protein-drink-taste-tips", description: "맛없다고 느껴질 때 바꿔볼 수 있는 방법을 정리합니다." },
+    { title: "셀렉스 vs 하이뮨 비교", href: "/guides/product-selection-comparison/selex-vs-himune", description: "브랜드별 대표 RTD 차이도 같이 확인합니다." },
+  ],
+  purchaseLinks: [
+    { label: "닥터유 40g 초코 보기", slug: dryou40.slug },
+    { label: "셀렉스 웨이프로핏 복숭아 보기", slug: sellexPeach.slug },
+    { label: "테이크핏 몬스터 초코바나나 보기", slug: takefitMonsterChocobanana.slug },
+  ],
+};
+proteinDrinkByFlavorConfig.jsonLd = [articleJsonLd(proteinDrinkByFlavorConfig), faqJsonLd(proteinDrinkByFlavorConfig)];
+
+export const proteinDrinkTasteTipsConfig: ComparePageConfig = {
+  slug: "protein-drink-taste-tips",
+  title: "단백질 음료 맛없다",
+  description: "단백질 음료가 맛없게 느껴지는 이유와 더 맛있게 마시는 방법, 입문자가 바꾸기 쉬운 제품 추천을 정리했습니다.",
+  keywords: ["단백질 음료 맛없다", "프로틴 음료 맛없어", "단백질 음료 맛있게 먹는 법", "맛있는 단백질 음료 추천"],
+  badge: "문제 해결",
+  readingTime: "4분 읽기",
+  updatedAt: "2026-03-24",
+  methodologyNote: "ProteinLab DB 맛 경험 중심 정리",
+  intro: "처음 마셨을 때 단백질 음료가 맛없게 느껴지는 건 드문 일이 아닙니다. 대부분은 제품이 완전히 잘못된 게 아니라, 맛 카테고리와 마시는 방식이 본인 취향과 안 맞는 경우가 많습니다.",
+  summary: [
+    "단백질 특유의 향, 감미료 뒷맛, 미지근한 음용감 때문에 맛없다고 느끼는 경우가 많습니다.",
+    "가장 쉬운 해결책은 아주 차갑게 마시고, 안 맞으면 맛 카테고리 자체를 바꾸는 것입니다.",
+    "초코가 안 맞으면 복숭아나 아메리카노 같은 워터형으로 넘어가는 쪽이 성공 확률이 높습니다.",
+  ],
+  comparisonTitle: "맛 개선용 추천 제품",
+  comparisonColumns: ["무난한 초코", "가벼운 워터형", "고단백인데 맛 좋은 편", "부드러운 바나나"],
+  comparisonRows: buildComparisonRows([
+    { label: "추천 제품", values: [dryouChoco.name, sellexPeach.name, "테이크핏 몬스터 (초코바나나)", dryouBanana.name] },
+    { label: "단백질", values: [`${dryouChoco.proteinPerServing}g`, `${sellexPeach.proteinPerServing}g`, "43g", `${dryouBanana.proteinPerServing}g`] },
+    { label: "맛 포인트", values: ["초코우유형", "상큼함", "디저트형 고단백", "부드러운 바나나"] },
+    { label: "추천 이유", values: ["입문 실패 확률 낮음", "밀크향이 부담스러울 때", "맛과 함량을 같이 잡기 쉬움", "초코보다 부드러운 쪽"] },
+  ]),
+  sections: [
+    {
+      title: "맛없게 느껴지는 이유 3가지",
+      items: [
+        { title: "단백질 특유의 향", body: "밀크형 RTD에서는 특유의 유청향이나 텁텁함이 느껴질 수 있습니다. 특히 처음 마시는 사람은 이 부분을 가장 크게 느낍니다." },
+        { title: "감미료 뒷맛", body: "당류를 낮춘 제품일수록 감미료 특유의 끝맛이 도드라질 수 있습니다. 브랜드보다 개별 SKU 차이가 큽니다." },
+        { title: "온도가 높을 때", body: "단백질 음료는 미지근하면 향과 뒷맛이 더 강해집니다. 같은 제품도 차갑게 마시면 인상이 꽤 달라집니다." },
+      ],
+    },
+    {
+      title: "더 맛있게 마시는 방법",
+      items: [
+        { title: "아주 차갑게 마시기", body: "가장 쉬운 해결책입니다. 냉장 보관 후 마시거나 얼음을 더하면 향과 뒷맛이 훨씬 줄어듭니다." },
+        { title: "운동 직후나 공복감 있을 때 마시기", body: "맛 자체보다 보충 목적이 먼저일 때 거부감이 줄어드는 경우가 많습니다. 특히 고단백 RTD는 이 차이가 큽니다." },
+        { title: "맛 카테고리 바꾸기", body: "초코가 안 맞는다고 단백질 음료 전체가 안 맞는 건 아닙니다. 복숭아, 아메리카노, 고소한맛처럼 카테고리를 바꾸면 해결되는 경우가 많습니다." },
+      ],
+    },
+    {
+      title: "계속 마시기 힘들다면",
+      items: [
+        { title: "제품 자체가 안 맞는 것일 수 있다", body: "한 브랜드 한 SKU만 마셔보고 포기하는 경우가 많습니다. 실제로는 브랜드보다 맛 SKU 차이가 더 큽니다." },
+        { title: "워터형으로 이동하는 게 빠르다", body: "밀크형이 계속 부담스럽다면 워터형으로 넘어가는 게 가장 효과적입니다. 셀렉스 웨이프로핏과 뉴케어 워터형이 대표적입니다." },
+        { title: "박스 구매는 잠시 미루는 편이 낫다", body: "맛 적응이 안 된 상태에서 박스 구매를 하면 실패 비용이 커집니다. 단품이나 소량 묶음으로 방향을 먼저 잡는 편이 안전합니다." },
+      ],
+    },
+  ],
+  faq: [
+    { question: "처음 마셨는데 맛없다고 느끼는 게 정상인가", answer: "네. 단백질 특유의 향과 감미료 뒷맛 때문에 처음에는 어색하게 느끼는 경우가 많습니다." },
+    { question: "가장 먼저 바꿔볼 수 있는 방법은 무엇인가", answer: "아주 차갑게 마시는 것이 가장 쉽고 효과적입니다. 그다음은 맛 카테고리를 바꾸는 순서가 좋습니다." },
+    { question: "맛없는 제품을 계속 참고 마셔야 하나", answer: "그럴 필요는 없습니다. 초코, 복숭아, 아메리카노, 바나나처럼 맛 카테고리를 바꾸면 훨씬 쉽게 맞는 제품을 찾을 수 있습니다." },
+  ],
+  relatedGuides: [
+    { title: "단백질 음료 맛별 추천", href: "/guides/product-selection-comparison/protein-drink-by-flavor", description: "맛 카테고리 기준으로 다시 고를 수 있게 정리했습니다." },
+    { title: "단백질 음료 입문 가이드", href: "/guides/product-selection-comparison/protein-drink-beginners-guide", description: "처음 고를 때 실수를 줄이는 기준을 먼저 봅니다." },
+    { title: "셀렉스 vs 하이뮨 비교", href: "/guides/product-selection-comparison/selex-vs-himune", description: "브랜드를 바꿔볼지 고민될 때 같이 읽기 좋습니다." },
+  ],
+  purchaseLinks: [
+    { label: "닥터유 프로 단백질 드링크 초코 보기", slug: dryouChoco.slug },
+    { label: "셀렉스 웨이프로핏 복숭아 보기", slug: sellexPeach.slug },
+    { label: "닥터유 프로 단백질 드링크 바나나 보기", slug: dryouBanana.slug },
+  ],
+};
+proteinDrinkTasteTipsConfig.jsonLd = [articleJsonLd(proteinDrinkTasteTipsConfig), faqJsonLd(proteinDrinkTasteTipsConfig)];
