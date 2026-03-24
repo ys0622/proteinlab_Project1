@@ -461,6 +461,21 @@ export const oliveYoungProteinShakeConfig: CategoryGuideConfig = {
     },
   ],
 };
+oliveYoungProteinShakeConfig.methodologyNote =
+  "ProteinLab DB 기준 · officialUrl에 올리브영 브랜드/채널이 확인되는 제품 중심, 실제 입점/재고는 변동 가능";
+oliveYoungProteinShakeConfig.summary = [
+  "올리브영 쉐이크는 단품 테스트와 당일 구매에 강하고, 쿠팡은 박스 구매 시 개당 단가가 유리합니다.",
+  "현재 로컬 DB 기준으로는 올더배러, 단백하니 계열이 올리브영 채널 접근성이 뚜렷합니다.",
+  "이 페이지는 올리브영 채널에서 접근 가능한 브랜드/제품 후보를 정리한 가이드이고, 실제 오프라인 재고나 입점 상태는 매장별로 달라질 수 있습니다.",
+];
+oliveYoungProteinShakeConfig.faq = [
+  ...(oliveYoungProteinShakeConfig.faq ?? []),
+  {
+    question: "이 페이지에 있으면 올리브영 매장에서 항상 살 수 있나요?",
+    answer:
+      "아닙니다. 이 페이지는 올리브영 채널 기준 접근 가능성이 있는 제품을 정리한 것이고, 실제 입점 여부와 재고는 매장과 시기에 따라 달라질 수 있습니다.",
+  },
+];
 oliveYoungProteinShakeConfig.jsonLd = [
   articleJsonLd(oliveYoungProteinShakeConfig),
   faqJsonLd(oliveYoungProteinShakeConfig),

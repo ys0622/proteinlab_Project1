@@ -241,6 +241,21 @@ export const proteinBarTop10Config: CategoryGuideConfig = {
     },
   ],
 };
+proteinBarTop10Config.methodologyNote =
+  "ProteinLab DB 바 80개 기준 · 단백질/칼로리/당류/밀도 종합 + 브랜드 편중을 줄이기 위해 동일 브랜드 최대 2개 반영";
+proteinBarTop10Config.summary = [
+  "상위권은 170~190kcal 구간에서 단백질 20g 전후, 당류 1~2g대 제품이 주로 차지합니다.",
+  "단백질 바는 저칼로리 간식이 아니라는 점이 핵심입니다. 1개만으로도 180~220kcal를 넘는 경우가 많습니다.",
+  "이번 TOP 10은 순수 숫자 랭킹이라기보다 실제 비교에 쓸 만한 후보군을 보여 주는 큐레이션에 가깝고, 동일 브랜드는 최대 2개까지만 반영했습니다.",
+];
+proteinBarTop10Config.faq = [
+  ...(proteinBarTop10Config.faq ?? []),
+  {
+    question: "TOP 10은 완전히 순수한 숫자 랭킹인가요?",
+    answer:
+      "완전히 그렇지는 않습니다. 기본 점수는 데이터 기준으로 계산하지만, 특정 브랜드가 과도하게 몰리는 걸 막기 위해 동일 브랜드는 최대 2개까지만 반영했습니다.",
+  },
+];
 proteinBarTop10Config.jsonLd = [articleJsonLd(proteinBarTop10Config), faqJsonLd(proteinBarTop10Config)];
 
 export const convenienceProteinBarConfig: CategoryGuideConfig = {
@@ -361,6 +376,21 @@ export const convenienceProteinBarConfig: CategoryGuideConfig = {
     },
   ],
 };
+convenienceProteinBarConfig.methodologyNote =
+  "ProteinLab DB + 기존 편의점 유통 가이드 기준 · 실제 입점/재고는 매장별로 다를 수 있음";
+convenienceProteinBarConfig.summary = [
+  "편의점 바는 단품 접근성이 좋지만 개당 가격은 온라인 박스보다 높습니다.",
+  "닥터유처럼 대형 유통 채널에 강한 제품은 찾기 쉽고, 랩노쉬나 롯데웰푸드는 매장별 편차가 있을 수 있습니다.",
+  "이 페이지는 실제 매장 재고를 보장하는 목록이 아니라 편의점 채널에서 접근할 가능성이 높은 제품을 정리한 가이드로 읽는 편이 맞습니다.",
+];
+convenienceProteinBarConfig.faq = [
+  ...(convenienceProteinBarConfig.faq ?? []),
+  {
+    question: "이 페이지에 있으면 모든 매장에서 바로 살 수 있나요?",
+    answer:
+      "아닙니다. 편의점 상품은 점포별 발주와 재고 차이가 커서 실제 진열 여부는 다를 수 있습니다. 이 페이지는 대표 유통 경향 기준으로 보는 편이 맞습니다.",
+  },
+];
 convenienceProteinBarConfig.jsonLd = [
   articleJsonLd(convenienceProteinBarConfig),
   faqJsonLd(convenienceProteinBarConfig),

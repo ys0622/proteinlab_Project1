@@ -46,10 +46,10 @@ function getBySlug(slug: string) {
 
 const yogurtTopPicks = [
   getBySlug("yopro-plain-150"),
-  getBySlug("lookt-icelandic-mild-100"),
-  getBySlug("greekday-light-100"),
-  getBySlug("greekday-signature-100"),
-  getBySlug("maeil-bio-greek-unsweetened-150"),
+  getBySlug("yoplait-protein-plain-210"),
+  getBySlug("yopro-blueberry-150"),
+  getBySlug("yoplait-protein-plain-100"),
+  getBySlug("yoplait-protein-max-210"),
 ];
 
 const dietYogurtPicks = [getBySlug("yopro-plain-150"), getBySlug("lookt-icelandic-mild-100"), getBySlug("greekday-light-100")];
@@ -191,6 +191,20 @@ export const proteinYogurtTop5Config: CategoryGuideConfig = {
     },
   ],
 };
+proteinYogurtTop5Config.methodologyNote = "ProteinLab DB 요거트 45개 기준 · 프로틴 요거트/드링크 SKU 우선 선정";
+proteinYogurtTop5Config.summary = [
+  "이번 TOP 5는 그릭요거트 전체가 아니라 프로틴 설계형 요거트와 드링크 SKU를 먼저 좁혀서 정리한 리스트입니다.",
+  "요프로는 저당·플레인 쪽, 요플레 프로틴은 드링크와 떠먹는 타입을 함께 비교하기 좋다는 장점이 있습니다.",
+  "그릭요거트 비교가 목적이라면 별도 비교 페이지를 보는 편이 더 정확하고, 이 페이지는 프로틴 요거트 검색 의도에 맞춘 큐레이션으로 읽는 편이 맞습니다.",
+];
+proteinYogurtTop5Config.faq = [
+  ...(proteinYogurtTop5Config.faq ?? []),
+  {
+    question: "이 페이지는 그릭요거트 추천과 같은 페이지인가요?",
+    answer:
+      "아닙니다. 이 페이지는 프로틴 요거트와 프로틴 드링크 계열을 우선으로 좁혀 본 리스트입니다. 그릭요거트와의 차이는 별도 비교 페이지에서 보는 편이 더 정확합니다.",
+  },
+];
 proteinYogurtTop5Config.jsonLd = [articleJsonLd(proteinYogurtTop5Config), faqJsonLd(proteinYogurtTop5Config)];
 
 export const greekVsProteinYogurtConfig: CategoryGuideConfig = {
@@ -292,6 +306,11 @@ export const greekVsProteinYogurtConfig: CategoryGuideConfig = {
     },
   ],
 };
+greekVsProteinYogurtConfig.summary = [
+  `ProteinLab DB 기준으로 그릭·아이슬란딕 계열은 단백질 ${greekProteinRange.proteinMin.toFixed(1)}~${greekProteinRange.proteinMax.toFixed(1)}g, 프로틴 요거트 계열은 ${proteinYogurtRange.proteinMin.toFixed(1)}~${proteinYogurtRange.proteinMax.toFixed(1)}g 범위를 확인할 수 있습니다.`,
+  "그릭요거트는 질감과 포만감이 강하고, 프로틴 요거트는 한 컵 기준으로 숫자를 읽기 쉬운 쪽에 가깝습니다.",
+  "TOP 5 페이지는 프로틴 요거트 검색 의도에 맞춘 큐레이션이고, 카테고리 차이는 이 페이지에서 보는 구조로 이해하면 됩니다.",
+];
 greekVsProteinYogurtConfig.jsonLd = [articleJsonLd(greekVsProteinYogurtConfig), faqJsonLd(greekVsProteinYogurtConfig)];
 
 export const dietProteinYogurtConfig: CategoryGuideConfig = {
