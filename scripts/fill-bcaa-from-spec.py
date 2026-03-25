@@ -16,13 +16,14 @@ ROOT = Path(__file__).resolve().parent.parent
 DRINK_DATA_PATH = ROOT / "app" / "data" / "drinkProductsData.json"
 SPEC_MAP_PATH = ROOT / "app" / "data" / "slugToDrinkSpec.json"
 SPEC_DIR = ROOT / "public" / "rtd-drink-spec"
+SPEC_SOURCE_DIR = ROOT / "RTD drink spec"
 
 
 DIRECT_BCAA_RE = re.compile(r"BCAA[^0-9]{0,12}(\d[\d,\.]*)\s*(mg|g)", re.IGNORECASE)
 
 AMINO_PATTERNS = {
-    "leucine": [r"류신", r"루신", r"LEUCINE"],
-    "isoleucine": [r"이소류신", r"이소루신", r"ISOLEUCINE"],
+    "leucine": [r"류신", r"루신", r"료신", r"LEUCINE"],
+    "isoleucine": [r"이소류신", r"이소루신", r"이소유신", r"ISOLEUCINE"],
     "valine": [r"발린", r"VALINE"],
 }
 
@@ -60,8 +61,7 @@ def preprocess_variants(image_path: Path) -> list[Any]:
     gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
     upscaled = cv2.resize(gray, None, fx=2, fy=2, interpolation=cv2.INTER_CUBIC)
     thresholded = cv2.threshold(upscaled, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)[1]
-    denoised = cv2.fastNlMeansDenoising(upscaled)
-    return [image, gray, upscaled, thresholded, denoised]
+    return [upscaled, thresholded]
 
 
 def read_texts(reader: easyocr.Reader, image_path: Path) -> list[str]:
@@ -82,16 +82,79 @@ def read_texts(reader: easyocr.Reader, image_path: Path) -> list[str]:
     return texts
 
 
+def normalize_name(value: str) -> str:
+    text = Path(value).stem
+    text = re.sub(r"\b\d+(?:\.\d+)?\s*(?:ml|mL|g)\b", "", text, flags=re.IGNORECASE)
+    text = re.sub(r"[^가-힣a-z0-9]+", "", text.lower())
+    return text
+
+
+def build_spec_indexes() -> tuple[dict[str, Path], dict[str, list[Path]]]:
+    exact_by_name: dict[str, Path] = {}
+    normalized_to_paths: dict[str, list[Path]] = {}
+
+    for candidate in SPEC_SOURCE_DIR.rglob("*.png"):
+        exact_by_name[candidate.stem] = candidate
+        key = normalize_name(candidate.name)
+        normalized_to_paths.setdefault(key, []).append(candidate)
+
+    return exact_by_name, normalized_to_paths
+
+
+def find_spec_path(
+    slug: str,
+    product_name: str,
+    exact_by_name: dict[str, Path],
+    normalized_to_paths: dict[str, list[Path]],
+) -> tuple[Path | None, str | None]:
+    mapped_name = spec_map.get(slug)
+    if mapped_name:
+        public_path = SPEC_DIR / mapped_name
+        if public_path.exists():
+            return public_path, mapped_name
+
+    direct_source = exact_by_name.get(product_name)
+    if direct_source:
+        return direct_source, direct_source.name
+
+    normalized_product_name = normalize_name(product_name)
+    candidates = normalized_to_paths.get(normalized_product_name, [])
+    if len(candidates) == 1:
+        return candidates[0], candidates[0].name
+
+    partial_candidates: list[Path] = []
+    for key, paths in normalized_to_paths.items():
+        if normalized_product_name and normalized_product_name in key:
+            partial_candidates.extend(paths)
+    if len(partial_candidates) == 1:
+        return partial_candidates[0], partial_candidates[0].name
+
+    return None, mapped_name
+
+
 def to_mg(raw_value: str, unit: str) -> int | None:
-    try:
-        numeric = float(raw_value.replace(",", ""))
-    except ValueError:
-        return None
-
     if unit.lower() == "g":
-        numeric *= 1000
+        try:
+            numeric = float(raw_value.replace(",", ""))
+        except ValueError:
+            return None
+        return int(round(numeric * 1000))
 
-    return int(round(numeric))
+    normalized = raw_value.strip()
+    normalized = normalized.translate(str.maketrans({
+        "O": "0",
+        "o": "0",
+        "D": "0",
+        "Q": "0",
+        "B": "8",
+        "S": "5",
+        "I": "1",
+        "l": "1",
+    }))
+    digits_only = re.sub(r"[^0-9]", "", normalized)
+    if not digits_only:
+        return None
+    return int(digits_only)
 
 
 def find_direct_bcaa(text_blob: str) -> int | None:
@@ -139,7 +202,9 @@ def main() -> int:
     args = parser.parse_args()
 
     products: list[dict[str, Any]] = load_json(DRINK_DATA_PATH)
-    spec_map: dict[str, str] = load_json(SPEC_MAP_PATH)
+    global spec_map
+    spec_map = load_json(SPEC_MAP_PATH)
+    exact_by_name, normalized_to_paths = build_spec_indexes()
 
     missing_products = [product for product in products if not has_bcaa_value(product)]
     if args.limit > 0:
@@ -152,25 +217,18 @@ def main() -> int:
 
     for product in missing_products:
         slug = product["slug"]
-        spec_name = spec_map.get(slug)
-        if not spec_name:
+        image_path, spec_name = find_spec_path(
+            slug,
+            str(product.get("name", "")),
+            exact_by_name,
+            normalized_to_paths,
+        )
+        if not image_path:
             unresolved.append(
                 {
                     "slug": slug,
                     "name": product.get("name"),
                     "reason": "no_spec_image",
-                }
-            )
-            continue
-
-        image_path = SPEC_DIR / spec_name
-        if not image_path.exists():
-            unresolved.append(
-                {
-                    "slug": slug,
-                    "name": product.get("name"),
-                    "reason": "missing_spec_file",
-                    "specImage": spec_name,
                 }
             )
             continue
