@@ -30,6 +30,8 @@ AMINO_PATTERNS = {
 
 def has_bcaa_value(product: dict[str, Any]) -> bool:
     bcaa = str(product.get("bcaa", "") or "").strip()
+    if bcaa == "-":
+        return True
     if re.search(r"\d", bcaa):
         return True
 
