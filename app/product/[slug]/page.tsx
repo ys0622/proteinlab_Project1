@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import AdminQuickEdit from "../../components/AdminQuickEdit";
+import AffiliateDisclosure from "../../components/AffiliateDisclosure";
 import BackButton from "../../components/BackButton";
 import CompareButton from "../../components/CompareButton";
 import Footer from "../../components/Footer";
@@ -334,6 +335,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
 
       <main className="bg-white">
         <div className="mx-auto max-w-[1200px] px-4 py-8 md:px-6">
+          <AffiliateDisclosure />
           {gradeLabels.length > 0 ? (
             <section>
               <h2 className="text-lg font-semibold text-[var(--foreground)]">등급 요약</h2>
@@ -401,11 +403,6 @@ export default async function ProductDetailPage({ params }: PageProps) {
               officialMallHref={officialMallHref}
               size="md"
             />
-            {resolvedCoupangHref ? (
-              <p className="mt-2 text-[11px] leading-relaxed text-[var(--foreground-muted)]">
-                쿠팡 링크는 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.
-              </p>
-            ) : null}
           </div>
 
           <div className="mt-4 flex flex-wrap gap-3">
