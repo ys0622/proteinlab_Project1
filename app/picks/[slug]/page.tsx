@@ -25,6 +25,7 @@ export async function generateMetadata({ params }: PageProps) {
   return {
     title: `${pick.title} | ProteinLab`,
     description: pick.description,
+    robots: { index: false, follow: false },
     openGraph: {
       title: `${pick.title} | ProteinLab`,
       description: pick.description,

@@ -29,6 +29,7 @@ export async function generateMetadata({ params }: PageProps) {
   return {
     title: `${brand} 단백질 제품 모음 | ProteinLab`,
     description: `${brand} 브랜드의 단백질 음료, 바, 요거트, 쉐이크 제품을 한 곳에서 비교합니다.`,
+    robots: { index: false, follow: false },
   };
 }
 

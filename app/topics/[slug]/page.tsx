@@ -23,6 +23,7 @@ export async function generateMetadata({ params }: PageProps) {
   return {
     title: `${topic.title} | ProteinLab`,
     description: topic.description,
+    robots: { index: false, follow: false },
     openGraph: {
       title: `${topic.title} | ProteinLab`,
       description: topic.description,
