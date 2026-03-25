@@ -148,7 +148,7 @@
     ],
     "manufacturer": "대상웰라이프",
     "flavor": "고소한맛",
-    "bcaa": "—",
+    "bcaa": "2500mg",
     "proteinSource": "식물성",
     "fat": 3.5,
     "sodium": 230,
@@ -161,7 +161,8 @@
       "sugarsG": 0,
       "fatG": 3.5,
       "satFatG": 0.5,
-      "sodiumMg": 230
+      "sodiumMg": 230,
+      "bcaaMg": 2500
     },
     "naverUrl": "https://search.shopping.naver.com/search/all?query=%EB%89%B4%EC%BC%80%EC%96%B4%20%EC%98%AC%ED%94%84%EB%A1%9C%ED%8B%B4%20%EC%8B%9D%EB%AC%BC%EC%84%B1%EB%8B%A8%EB%B0%B1%EC%A7%8820g%20%EA%B3%A0%EC%86%8C%ED%95%9C%EB%A7%9B%20250ml%2024%EC%9E%85%201BOX&prevQuery=%EB%89%B4%EC%BC%80%EC%96%B4%20%EC%98%AC%ED%94%84%EB%A1%9C%ED%8B%B4%20%EC%8B%9D%EB%AC%BC%EC%84%B1%EB%8B%A8%EB%B0%B1%EC%A7%88%20(%EA%B3%A0%EC%86%8C%ED%95%9C%EB%A7%9B)&vertical=search",
     "officialUrl": "https://www.wellife.co.kr/categories/index/101003000000"
@@ -485,7 +486,7 @@
     ],
     "manufacturer": "빙그레",
     "flavor": "복숭아",
-    "bcaa": "—",
+    "bcaa": "755mg",
     "proteinSource": "혼합",
     "fat": 0,
     "sodium": 53,
@@ -498,7 +499,8 @@
       "sugarsG": 0,
       "fatG": 0,
       "satFatG": 0,
-      "sodiumMg": 53
+      "sodiumMg": 53,
+      "bcaaMg": 755
     },
     "coupangUrl": "https://www.coupang.com/vp/products/8710022731?itemId=25295108345&vendorItemId=92290454472&pickType=COU_PICK&q=%EB%8D%94%EB%8B%A8%EB%B0%B1%20%EC%9B%8C%ED%84%B0%20%ED%94%84%EB%A1%9C%ED%8B%B4%20(%EB%B3%B5%EC%88%AD%EC%95%84)&searchId=a9e20e252454241&sourceType=search&itemsCount=36&searchRank=1&rank=1&traceId=mmybr7a7",
     "naverUrl": "https://search.shopping.naver.com/search/all?query=%EB%8D%94%EB%8B%A8%EB%B0%B1%20%EC%9B%8C%ED%84%B0%20%ED%94%84%EB%A1%9C%ED%8B%B4%20(%EB%B3%B5%EC%88%AD%EC%95%84)&prevQuery=%EB%8B%A5%ED%84%B0%EC%9C%A0%20%ED%94%84%EB%A1%9C%20%EB%8B%A8%EB%B0%B1%EC%A7%88%20%EB%93%9C%EB%A7%81%ED%81%AC%2040g%20%EC%B4%88%EC%BD%94%2C%20350ml%2C%2020%EA%B0%9C&vertical=search",
@@ -581,11 +583,13 @@
       "fatG": 4,
       "satFatG": 3,
       "cholesterolMg": 25,
-      "sodiumMg": 260
+      "sodiumMg": 260,
+      "bcaaMg": 6000
     },
     "coupangUrl": "https://www.coupang.com/vp/products/8128946047?itemId=23082203301&vendorItemId=90115704513&q=%ED%94%84%EB%A1%9C%ED%8B%B4%20%EB%B0%B8%EB%9F%B0%EC%8A%A4%20%EC%95%A1%ED%8B%B0%EB%B8%8C%20(%EB%8B%A4%ED%81%AC%EC%B4%88%EC%BD%94)&searchId=65b9d7cb5829787&sourceType=search&itemsCount=36&searchRank=0&rank=0&traceId=mn4pm8kf",
     "naverUrl": "https://search.shopping.naver.com/search/all?query=%ED%94%84%EB%A1%9C%ED%8B%B4%20%EB%B0%B8%EB%9F%B0%EC%8A%A4%20%EC%95%A1%ED%8B%B0%EB%B8%8C%20(%EB%8B%A4%ED%81%AC%EC%B4%88%EC%BD%94)&prevQuery=%EB%A7%A4%EC%9D%BC%EC%9C%A0%EC%97%85%20%EC%85%80%EB%A0%89%EC%8A%A4%20%ED%94%84%EB%A1%9C%ED%95%8F%20%EC%8A%A4%ED%8F%AC%EC%B8%A0%20(%EC%BD%94%EC%BD%94%EB%84%9B)&vertical=search",
-    "officialUrl": "https://brand.naver.com/ildongfoodis/category/6f55b75ed3724714bb6ff30784aca283?cp=1"
+    "officialUrl": "https://brand.naver.com/ildongfoodis/category/6f55b75ed3724714bb6ff30784aca283?cp=1",
+    "bcaa": "6000mg"
   },
   {
     "slug": "mymil-furotein-choco-250",
@@ -609,7 +613,7 @@
     ],
     "manufacturer": "대상웰라이프",
     "flavor": "초코맛",
-    "bcaa": "—",
+    "bcaa": "2500mg",
     "proteinSource": "혼합",
     "fat": 3.5,
     "sodium": 230,
@@ -622,7 +626,8 @@
       "sugarsG": 0,
       "fatG": 3.5,
       "satFatG": 0.5,
-      "sodiumMg": 230
+      "sodiumMg": 230,
+      "bcaaMg": 2500
     },
     "coupangUrl": "https://www.coupang.com/vp/products/7485430091?itemId=19747782140&searchId=55e9e90db5c64461aff14d847aed9fbe&sourceType=brandstore_sdp_atf_topbadge-carousel&storeId=843&subSourceType=brandstore_sdp_atf_topbadge-carousel&vendorId=A00176728&vendorItemId=86851343931",
     "naverUrl": "https://search.shopping.naver.com/search/all?query=%EB%A7%88%EC%9D%B4%EB%B0%80%20%ED%93%A8%EB%A1%9C%ED%8B%B4%20(%EC%B4%88%EC%BD%94%EB%A7%9B)&prevQuery=%EB%A7%88%EC%9D%B4%EB%B0%80%20%EB%89%B4%ED%94%84%EB%A1%9C%ED%8B%B4%20(%EB%B0%94%EB%82%98%EB%82%98)&vertical=search",
@@ -650,7 +655,7 @@
     ],
     "manufacturer": "대상웰라이프",
     "flavor": "고소한맛",
-    "bcaa": "—",
+    "bcaa": "2500mg",
     "proteinSource": "혼합",
     "fat": 3.5,
     "sodium": 230,
@@ -663,7 +668,8 @@
       "sugarsG": 0,
       "fatG": 3.5,
       "satFatG": 0.5,
-      "sodiumMg": 230
+      "sodiumMg": 230,
+      "bcaaMg": 2500
     },
     "officialUrl": "https://www.wellife.co.kr/products/view/G2001003183",
     "needsServingCheck": false,
@@ -691,7 +697,7 @@
     ],
     "manufacturer": "대상웰라이프",
     "flavor": "고구마맛",
-    "bcaa": "—",
+    "bcaa": "2500mg",
     "proteinSource": "혼합",
     "fat": 3.5,
     "sodium": 250,
@@ -704,7 +710,8 @@
       "sugarsG": 0,
       "fatG": 3.5,
       "satFatG": 0.5,
-      "sodiumMg": 250
+      "sodiumMg": 250,
+      "bcaaMg": 2500
     },
     "officialUrl": "https://www.wellife.co.kr/products/view/G2001001820",
     "needsServingCheck": true,
@@ -732,7 +739,7 @@
     ],
     "manufacturer": "CJ제일제당",
     "flavor": "맛밤",
-    "bcaa": "—",
+    "bcaa": "3000mg",
     "proteinSource": "혼합",
     "fat": 3.3,
     "sodium": 320,
@@ -746,7 +753,8 @@
       "fatG": 3.3,
       "satFatG": 0.8,
       "sodiumMg": 320,
-      "fiberG": 0
+      "fiberG": 0,
+      "bcaaMg": 3000
     },
     "coupangUrl": "https://www.coupang.com/vp/products/8005946804?itemId=24153496784&vendorItemId=91172179538&q=얼티브%20프로틴%20(맛밤)&searchId=39706cdb6779340&sourceType=search&itemsCount=36&searchRank=0&rank=0&traceId=mmyaotxk",
     "naverUrl": "https://search.shopping.naver.com/search/all?query=%EC%96%BC%ED%8B%B0%EB%B8%8C%20%EB%B0%A4%EB%A7%9B&prevQuery=%EC%96%BC%ED%8B%B0%EB%B8%8C%20%ED%94%84%EB%A1%9C%ED%8B%B4%20(%EB%A7%9B%EB%B0%A4)&vertical=search",
@@ -774,7 +782,7 @@
     ],
     "manufacturer": "CJ제일제당",
     "flavor": "햇반",
-    "bcaa": "—",
+    "bcaa": "3305mg",
     "proteinSource": "혼합",
     "fat": 3,
     "sodium": 340,
@@ -788,7 +796,8 @@
       "fatG": 3,
       "satFatG": 0.7,
       "sodiumMg": 340,
-      "fiberG": 0
+      "fiberG": 0,
+      "bcaaMg": 3305
     },
     "coupangUrl": "https://www.coupang.com/vp/products/7991437936?itemId=22393032584&vendorItemId=91176568518&pickType=COU_PICK&q=%EC%96%BC%ED%8B%B0%EB%B8%8C+%ED%94%84%EB%A1%9C%ED%8B%B4+%28%ED%96%87%EB%B0%98%29&searchId=94fd22017590122&sourceType=search&itemsCount=36&searchRank=0&rank=0&traceId=mmyan28i",
     "naverUrl": "https://search.shopping.naver.com/search/all?query=%EC%96%BC%ED%8B%B0%EB%B8%8C%ED%94%84%EB%A1%9C%ED%8B%B4%20(%ED%96%87%EB%B0%98)&prevQuery=%EC%96%BC%ED%8B%B0%EB%B8%8C%ED%94%84%EB%A1%9C%ED%8B%B4%20(%EB%A1%9C%EC%96%84%EB%B0%80%ED%81%AC%ED%8B%B0%ED%96%A5)&vertical=search",
@@ -1151,7 +1160,7 @@
     ],
     "manufacturer": "매일유업",
     "flavor": "딸기초코",
-    "bcaa": "—",
+    "bcaa": "4200mg",
     "proteinSource": "혼합",
     "fat": 0.7,
     "sodium": 220,
@@ -1164,7 +1173,8 @@
       "sugarsG": 0,
       "fatG": 0.7,
       "satFatG": 0,
-      "sodiumMg": 220
+      "sodiumMg": 220,
+      "bcaaMg": 4200
     },
     "naverUrl": "https://search.shopping.naver.com/search/all?query=%EC%85%80%EB%A0%89%EC%8A%A4%20%ED%94%84%EB%A1%9C%ED%95%8F%20(%EB%94%B8%EA%B8%B0%EC%B4%88%EC%BD%94)&prevQuery=%EB%A7%A4%EC%9D%BC%EC%9C%A0%EC%97%85%20%EC%85%80%EB%A0%89%EC%8A%A4%20%ED%94%84%EB%A1%9C%ED%95%8F%20%EC%9B%A8%EC%9D%B4%ED%94%84%EB%A1%9C%ED%8B%B4%20%EC%95%84%EB%A9%94%EB%A6%AC%EC%B9%B4%EB%85%B8%20%EB%93%9C%EB%A7%81%ED%81%AC%2C%20330ml%2C%2012%EA%B0%9C&vertical=search",
     "officialUrl": "https://brand.naver.com/selex/category/85709825a6ff41b7bfdb4b6dbd205dd0?cp=1"
@@ -1567,7 +1577,7 @@
     ],
     "manufacturer": "롯데칠성음료",
     "flavor": "고소한맛",
-    "bcaa": "—",
+    "bcaa": "3200mg",
     "proteinSource": "혼합",
     "fat": 1.9,
     "sodium": 365,
@@ -1580,7 +1590,8 @@
       "sugarsG": 0,
       "fatG": 1.9,
       "satFatG": 0.5,
-      "sodiumMg": 365
+      "sodiumMg": 365,
+      "bcaaMg": 3200
     },
     "coupangUrl": "https://www.coupang.com/vp/products/8803306820?itemId=26367320708&vendorItemId=94064662963&q=%EC%98%A4%ED%8A%B8%EB%AA%AC%EB%93%9C+%ED%94%84%EB%A1%9C%ED%8B%B4+%28%EA%B3%A0%EC%86%8C%ED%95%9C%EB%A7%9B%29&searchId=70b54b724102939&sourceType=search&itemsCount=36&searchRank=0&rank=0&traceId=mmyb7b7w",
     "naverUrl": "https://search.shopping.naver.com/search/all?query=%EC%98%A4%ED%8A%B8%EB%AA%AC%EB%93%9C%20%ED%94%84%EB%A1%9C%ED%8B%B4%20(%EA%B3%A0%EC%86%8C%ED%95%9C%EB%A7%9B)&prevQuery=%ED%8C%8C%EC%8A%A4%ED%87%B4%EB%A5%B4%20%EB%A1%AF%EB%8D%B0%20%ED%8C%8C%EC%8A%A4%ED%87%B4%EB%A5%B4%20%EC%9D%B4%EC%A7%80%ED%94%84%EB%A1%9C%ED%8B%B4%20%EC%8B%9C%EB%A6%AC%EC%96%BC%20%EB%93%9C%EB%A7%81%ED%81%AC&vertical=search",
@@ -1608,7 +1619,7 @@
     ],
     "manufacturer": "롯데칠성음료",
     "flavor": "초콜릿",
-    "bcaa": "—",
+    "bcaa": "3200mg",
     "proteinSource": "혼합",
     "fat": 1.7,
     "sodium": 365,
@@ -1621,7 +1632,8 @@
       "sugarsG": 0,
       "fatG": 1.7,
       "satFatG": 0.4,
-      "sodiumMg": 365
+      "sodiumMg": 365,
+      "bcaaMg": 3200
     },
     "coupangUrl": "https://www.coupang.com/vp/products/8822328328?itemId=26179944928&vendorItemId=93159529424&pickType=COU_PICK&q=%EC%98%A4%ED%8A%B8%EB%AA%AC%EB%93%9C+%ED%94%84%EB%A1%9C%ED%8B%B4+%28%EC%B4%88%EC%BD%9C%EB%A6%BF%29&searchId=2bea22e68212787&sourceType=search&itemsCount=36&searchRank=0&rank=0&traceId=mmyb8ah0",
     "naverUrl": "https://search.shopping.naver.com/search/all?query=%EC%98%A4%ED%8A%B8%EB%AA%AC%EB%93%9C%20%ED%94%84%EB%A1%9C%ED%8B%B4%2021g%20%EC%B4%88%EC%BD%94%EB%A7%9B%20250ml%2018%ED%8C%A9&prevQuery=%EC%98%A4%ED%8A%B8%EB%AA%AC%EB%93%9C%20%ED%94%84%EB%A1%9C%ED%8B%B4%20%EC%B4%88%EC%BD%94%2C%20250ml%2C%201%EA%B0%9C&vertical=search",
@@ -1649,7 +1661,7 @@
     ],
     "manufacturer": "롯데칠성음료",
     "flavor": "쿠키앤크림",
-    "bcaa": "—",
+    "bcaa": "3200mg",
     "proteinSource": "혼합",
     "fat": 1.8,
     "sodium": 365,
@@ -1662,7 +1674,8 @@
       "sugarsG": 0,
       "fatG": 1.8,
       "satFatG": 0.5,
-      "sodiumMg": 365
+      "sodiumMg": 365,
+      "bcaaMg": 3200
     },
     "coupangUrl": "https://www.coupang.com/vp/products/8803299277?itemId=25636136133&vendorItemId=93159471879&pickType=COU_PICK&q=%EC%98%A4%ED%8A%B8%EB%AA%AC%EB%93%9C+%ED%94%84%EB%A1%9C%ED%8B%B4+%28%EC%BF%A0%ED%82%A4%EC%95%A4%ED%81%AC%EB%A6%BC%29&searchId=5aa9b4e76272343&sourceType=search&itemsCount=36&searchRank=0&rank=0&traceId=mmyb7ynw",
     "naverUrl": "https://search.shopping.naver.com/search/all?query=%EC%98%A4%ED%8A%B8%EB%AA%AC%EB%93%9C%20%ED%94%84%EB%A1%9C%ED%8B%B4%20(%EC%BF%A0%ED%82%A4%EC%95%A4%ED%81%AC%EB%A6%BC)&prevQuery=%EC%98%A4%ED%8A%B8%EB%AA%AC%EB%93%9C%20%ED%94%84%EB%A1%9C%ED%8B%B4%20(%EA%B3%A0%EC%86%8C%ED%95%9C%EB%A7%9B)&vertical=search",
@@ -1690,7 +1703,7 @@
     ],
     "manufacturer": "일동후디스",
     "flavor": "식물성 고단백",
-    "bcaa": "—",
+    "bcaa": "1500mg",
     "proteinSource": "식물성",
     "fat": 0.85,
     "sodium": 120,
@@ -1703,7 +1716,8 @@
       "sugarsG": 0,
       "fatG": 0.85,
       "satFatG": 0.2,
-      "sodiumMg": 120
+      "sodiumMg": 120,
+      "bcaaMg": 1500
     },
     "coupangUrl": "https://www.coupang.com/vp/products/9323322421?itemId=27634882124&vendorItemId=94597645720&q=%ED%95%98%EC%9D%B4%EB%AE%A8+%ED%94%84%EB%A1%9C%ED%8B%B4+%EB%B0%B8%EB%9F%B0%EC%8A%A4+%28%EC%8B%9D%EB%AC%BC%EC%84%B1+%EA%B3%A0%EB%8B%A8%EB%B0%B1%29&searchId=5cf797877206842&sourceType=search&itemsCount=36&searchRank=1&rank=1&traceId=mmybi0iy",
     "naverUrl": "https://search.shopping.naver.com/search/all?query=%ED%95%98%EC%9D%B4%EB%AE%A8%20%ED%94%84%EB%A1%9C%ED%8B%B4%20%EB%B0%B8%EB%9F%B0%EC%8A%A4%20%EC%9D%8C%EB%A3%8C%20%EC%8B%9D%EB%AC%BC%EC%84%B1%20%EA%B3%A0%EB%8B%A8%EB%B0%B1%20190ml%2C%2064%EA%B0%9C&prevQuery=%ED%95%98%EC%9D%B4%EB%AE%A8%20%ED%94%84%EB%A1%9C%ED%8B%B4%20%EB%B0%B8%EB%9F%B0%EC%8A%A4%20%EC%8B%9D%EB%AC%BC%EC%84%B1%20%EA%B3%A0%EB%8B%A8%EB%B0%B1&vertical=search",
@@ -2154,7 +2168,7 @@
     ],
     "manufacturer": "에스앤푸드",
     "flavor": "초콜릿",
-    "bcaa": "—",
+    "bcaa": "6400mg",
     "proteinSource": "혼합",
     "fat": 1.3,
     "sodium": 210,
@@ -2167,7 +2181,8 @@
       "sugarsG": 0.8,
       "fatG": 1.3,
       "satFatG": 1,
-      "sodiumMg": 210
+      "sodiumMg": 210,
+      "bcaaMg": 6400
     }
   },
   {
@@ -2192,7 +2207,7 @@
     ],
     "manufacturer": "에스앤푸드",
     "flavor": "바닐라",
-    "bcaa": "—",
+    "bcaa": "6400mg",
     "proteinSource": "혼합",
     "fat": 1,
     "sodium": 210,
@@ -2205,7 +2220,8 @@
       "sugarsG": 0.8,
       "fatG": 1,
       "satFatG": 0.7,
-      "sodiumMg": 210
+      "sodiumMg": 210,
+      "bcaaMg": 6400
     }
   },
   {
@@ -2270,7 +2286,7 @@
     ],
     "manufacturer": "빙그레",
     "flavor": "더블초코",
-    "bcaa": "—",
+    "bcaa": "8500mg",
     "proteinSource": "혼합",
     "fat": 0.7,
     "sodium": 50,
@@ -2283,7 +2299,8 @@
       "sugarsG": 0.8,
       "fatG": 0.7,
       "satFatG": 0.4,
-      "sodiumMg": 50
+      "sodiumMg": 50,
+      "bcaaMg": 8500
     },
     "coupangUrl": "https://www.coupang.com/vp/products/9304930044?itemId=27775267630&vendorItemId=94735664101&q=%EB%8D%94%EB%8B%A8%EB%B0%B1+%EB%8D%94%EB%B8%94%EC%B4%88%EC%BD%94&searchId=8baa709b43237&sourceType=search&itemsCount=36&searchRank=0&rank=0&traceId=mmyjfm5v",
     "naverUrl": "https://search.shopping.naver.com/search/all?query=%EB%8D%94%EB%8B%A8%EB%B0%B1%20%EB%93%9C%EB%A7%81%ED%81%AC%20(%EB%8D%94%EB%B8%94%EC%B4%88%EC%BD%94)&prevQuery=%EB%8D%94%EB%8B%A8%EB%B0%B1%20%EB%93%9C%EB%A7%81%ED%81%AC%20(%EB%A9%9C%EB%A1%A0)&vertical=search",
@@ -2560,7 +2577,7 @@
     ],
     "manufacturer": "정식품",
     "flavor": "초콜릿",
-    "bcaa": "—",
+    "bcaa": "3800mg",
     "proteinSource": "혼합",
     "fat": 3,
     "sodium": 250,
@@ -2573,7 +2590,8 @@
       "sugarsG": 1,
       "fatG": 3,
       "satFatG": 1,
-      "sodiumMg": 250
+      "sodiumMg": 250,
+      "bcaaMg": 3800
     },
     "coupangUrl": "https://www.coupang.com/vp/products/8561335269?itemId=25854902107&vendorItemId=94483289470&q=%ED%94%84%EB%A1%9C%ED%8B%B4%EB%B0%80%20%EC%95%A1%ED%8B%B0%EB%B8%8C%20(%EC%B4%88%EC%BD%9C%EB%A6%BF)&searchId=db1f522d1068385&sourceType=search&itemsCount=36&searchRank=0&rank=0&traceId=mmyboemn",
     "naverUrl": "https://search.shopping.naver.com/search/all?query=%ED%94%84%EB%A1%9C%ED%8B%B4%EB%B0%80%20%EC%95%A1%ED%8B%B0%EB%B8%8C%20%EC%B4%88%EC%BD%94&prevQuery=%ED%94%84%EB%A1%9C%ED%8B%B4%EB%B0%80%20%EC%95%A1%ED%8B%B0%EB%B8%8C%20(%EC%B4%88%EC%BD%9C%EB%A6%BF)&vertical=search",
@@ -2601,7 +2619,7 @@
     ],
     "manufacturer": "정식품",
     "flavor": "아몬드&호두",
-    "bcaa": "—",
+    "bcaa": "3800mg",
     "proteinSource": "혼합",
     "fat": 3.5,
     "sodium": 320,
@@ -2614,7 +2632,8 @@
       "sugarsG": 1,
       "fatG": 3.5,
       "satFatG": 1,
-      "sodiumMg": 320
+      "sodiumMg": 320,
+      "bcaaMg": 3800
     },
     "coupangUrl": "https://www.coupang.com/vp/products/8562018353?itemId=24796319587&vendorItemId=91801130482&q=%ED%94%84%EB%A1%9C%ED%8B%B4%EB%B0%80%20%EC%95%A1%ED%8B%B0%EB%B8%8C%20(%EC%95%84%EB%AA%AC%EB%93%9C)&searchId=9dccaf967279888&sourceType=search&itemsCount=36&searchRank=0&rank=0&traceId=mmyboolb",
     "naverUrl": "https://search.shopping.naver.com/search/all?query=%ED%94%84%EB%A1%9C%ED%8B%B4%EB%B0%80%20%EC%95%A1%ED%8B%B0%EB%B8%8C%20%EC%95%84%EB%AA%AC%EB%93%9C%ED%98%B8%EB%91%90&prevQuery=%ED%94%84%EB%A1%9C%ED%8B%B4%EB%B0%80%20%EC%95%A1%ED%8B%B0%EB%B8%8C%20%EC%95%84%EB%AA%AC%EB%93%9C%EC%B4%88%EC%BD%94&vertical=search",
@@ -2642,7 +2661,7 @@
     ],
     "manufacturer": "매일유업",
     "flavor": "오리지널",
-    "bcaa": "—",
+    "bcaa": "1400mg",
     "proteinSource": "혼합",
     "fat": 5,
     "sodium": 130,
@@ -2655,7 +2674,8 @@
       "sugarsG": 1.4,
       "fatG": 5,
       "satFatG": 0.5,
-      "sodiumMg": 130
+      "sodiumMg": 130,
+      "bcaaMg": 1400
     },
     "coupangUrl": "https://www.coupang.com/vp/products/8725170517?itemId=25384290090&searchId=eb82f2ffc7cf4fa5a34b809fd0cb372f&sourceType=brandstore_sdp_atf_topbadge-all_products&storeId=1235&subSourceType=brandstore_sdp_atf_topbadge-all_products&vendorId=A00575434&vendorItemId=92940432253",
     "naverUrl": "https://search.shopping.naver.com/search/all?query=%EC%85%80%EB%A0%89%EC%8A%A4%20%ED%94%84%EB%A1%9C%ED%8B%B4%20%EB%9D%BD%ED%86%A0%ED%94%84%EB%A6%AC%20%EC%98%A4%EB%A6%AC%EC%A7%80%EB%84%90&prevQuery=%EC%85%80%EB%A0%89%EC%8A%A4%20%ED%94%84%EB%A1%9C%ED%8B%B4%20%EB%9D%BD%ED%86%A0%ED%94%84%EB%A6%AC&vertical=search",
@@ -2683,7 +2703,7 @@
     ],
     "manufacturer": "매일유업",
     "flavor": "로우슈거",
-    "bcaa": "—",
+    "bcaa": "1400mg",
     "proteinSource": "혼합",
     "fat": 7,
     "sodium": 120,
@@ -2696,7 +2716,8 @@
       "sugarsG": 2.5,
       "fatG": 7,
       "satFatG": 1.5,
-      "sodiumMg": 120
+      "sodiumMg": 120,
+      "bcaaMg": 1400
     },
     "coupangUrl": "https://www.coupang.com/vp/products/7839893765?itemId=21339632780&searchId=eb82f2ffc7cf4fa5a34b809fd0cb372f&sourceType=brandstore_sdp_atf_topbadge-all_products&storeId=1235&subSourceType=brandstore_sdp_atf_topbadge-all_products&vendorId=A00575434&vendorItemId=84288230465",
     "naverUrl": "https://search.shopping.naver.com/search/all?query=%EC%85%80%EB%A0%89%EC%8A%A4%20%ED%94%84%EB%A1%9C%ED%8B%B4%20(%EB%A1%9C%EC%9A%B0%EC%8A%88%EA%B1%B0)&prevQuery=%EC%85%80%EB%A0%89%EC%8A%A4%20%ED%94%84%EB%A1%9C%ED%8B%B4%20(%EC%98%A4%EB%A6%AC%EC%A7%80%EB%84%90)&vertical=search",
@@ -2848,7 +2869,7 @@
     ],
     "manufacturer": "솔브앤고",
     "flavor": "고소한맛",
-    "bcaa": "—",
+    "bcaa": "4800mg",
     "proteinSource": "혼합",
     "fat": 0.9,
     "sodium": 250,
@@ -2861,7 +2882,8 @@
       "sugarsG": 3,
       "fatG": 0.9,
       "satFatG": 0.6,
-      "sodiumMg": 250
+      "sodiumMg": 250,
+      "bcaaMg": 4800
     },
     "coupangUrl": "https://www.coupang.com/vp/products/8733135748?itemId=25581362102&searchId=d7cf62a0a9794d8a82623a53e8689c0a&sourceType=brandstore_sdp_atf_topbadge-carousel&storeId=192848&subSourceType=brandstore_sdp_atf_topbadge-carousel&vendorId=A00012012&vendorItemId=92572321197",
     "naverUrl": "https://search.shopping.naver.com/search/all?query=%EC%86%94%EB%B8%8C%EC%95%A4%EA%B3%A0%20%ED%94%84%EB%A1%9C%ED%83%80%EB%AF%BC%20(%EA%B3%A0%EC%86%8C%ED%95%9C%EB%A7%9B)&prevQuery=%ED%94%84%EB%A1%9C%ED%83%80%EB%AF%BC%20(%EA%B3%A0%EC%86%8C%ED%95%9C%EB%A7%9B)&vertical=search",
@@ -3056,7 +3078,7 @@
     ],
     "manufacturer": "일동후디스",
     "flavor": "오리지널",
-    "bcaa": "—",
+    "bcaa": "4500mg",
     "proteinSource": "혼합",
     "fat": 2.8,
     "sodium": 165,
@@ -3069,7 +3091,8 @@
       "sugarsG": 4,
       "fatG": 2.8,
       "satFatG": 1.4,
-      "sodiumMg": 165
+      "sodiumMg": 165,
+      "bcaaMg": 4500
     },
     "coupangUrl": "https://www.coupang.com/vp/products/6979534638?itemId=15078790606&vendorItemId=82300980388&pickType=COU_PICK&q=%ED%94%84%EB%A1%9C%ED%8B%B4%20%EB%B0%B8%EB%9F%B0%EC%8A%A4%20%EC%95%A1%ED%8B%B0%EB%B8%8C%20(%EC%98%A4%EB%A6%AC%EC%A7%80%EB%84%90)&searchId=85c625df7676266&sourceType=search&itemsCount=36&searchRank=1&rank=1&traceId=mmybll4w",
     "naverUrl": "https://search.shopping.naver.com/search/all?query=%ED%95%98%EC%9D%B4%EB%AE%A8%20%ED%94%84%EB%A1%9C%ED%8B%B4%20%EB%B0%B8%EB%9F%B0%EC%8A%A4%20%EC%95%A1%ED%8B%B0%EB%B8%8C%20(%EC%98%A4%EB%A6%AC%EC%A7%80%EB%84%90)&prevQuery=%ED%95%98%EC%9D%B4%EB%AE%A8%20%ED%94%84%EB%A1%9C%ED%8B%B4%20%EB%B0%B8%EB%9F%B0%EC%8A%A4%20%EC%95%A1%ED%8B%B0%EB%B8%8C%20(%EB%94%B8%EA%B8%B0)&vertical=search",
@@ -3097,7 +3120,7 @@
     ],
     "manufacturer": "서울우유",
     "flavor": "커피",
-    "bcaa": "—",
+    "bcaa": "3500mg",
     "proteinSource": "혼합",
     "fat": 4,
     "sodium": 200,
@@ -3110,7 +3133,8 @@
       "sugarsG": 4,
       "fatG": 4,
       "satFatG": 2,
-      "sodiumMg": 200
+      "sodiumMg": 200,
+      "bcaaMg": 3500
     },
     "naverUrl": "https://search.shopping.naver.com/search/all?query=%EC%84%9C%EC%9A%B8%EC%9A%B0%EC%9C%A0%20%ED%94%84%EB%A1%9C%ED%8B%B4%20%EC%97%90%EB%84%88%EC%A7%80%20(%EC%BB%A4%ED%94%BC)&prevQuery=%ED%94%84%EB%A1%9C%ED%8B%B4%20%EC%97%90%EB%84%88%EC%A7%80%20(%EC%BB%A4%ED%94%BC)&vertical=search",
     "officialUrl": "https://brand.naver.com/seoulmilk/category/e086f24d6e724ea88028fd47264c1936?cp=1"
@@ -3137,7 +3161,7 @@
     ],
     "manufacturer": "솔브앤고",
     "flavor": "초코맛",
-    "bcaa": "—",
+    "bcaa": "4800mg",
     "proteinSource": "혼합",
     "fat": 1.2,
     "sodium": 260,
@@ -3150,7 +3174,8 @@
       "sugarsG": 4,
       "fatG": 1.2,
       "satFatG": 0.9,
-      "sodiumMg": 260
+      "sodiumMg": 260,
+      "bcaaMg": 4800
     },
     "coupangUrl": "https://www.coupang.com/vp/products/8734625182?itemId=25581362226&searchId=d7cf62a0a9794d8a82623a53e8689c0a&sourceType=brandstore_sdp_atf_topbadge-carousel&storeId=192848&subSourceType=brandstore_sdp_atf_topbadge-carousel&vendorId=A00012012&vendorItemId=92572321255",
     "naverUrl": "https://search.shopping.naver.com/search/all?query=%EC%86%94%EB%B8%8C%EC%95%A4%EA%B3%A0%20%ED%94%84%EB%A1%9C%ED%83%80%EB%AF%BC%20(%EC%B4%88%EC%BD%94%EB%A7%9B)&prevQuery=%EC%86%94%EB%B8%8C%EC%95%A4%EA%B3%A0%20%ED%94%84%EB%A1%9C%ED%83%80%EB%AF%BC%20(%EA%B3%A0%EC%86%8C%ED%95%9C%EB%A7%9B)&vertical=search",
@@ -3178,7 +3203,7 @@
     ],
     "manufacturer": "일동후디스",
     "flavor": "저당",
-    "bcaa": "—",
+    "bcaa": "1500mg",
     "proteinSource": "혼합",
     "fat": 4.5,
     "sodium": 130,
@@ -3191,7 +3216,8 @@
       "sugarsG": 4.5,
       "fatG": 4.5,
       "satFatG": 2,
-      "sodiumMg": 130
+      "sodiumMg": 130,
+      "bcaaMg": 1500
     },
     "coupangUrl": "https://www.coupang.com/vp/products/7030104285?itemId=24536837257&vendorItemId=90571174880&q=%ED%95%98%EC%9D%B4%EB%AE%A8+%ED%94%84%EB%A1%9C%ED%8B%B4+%EB%B0%B8%EB%9F%B0%EC%8A%A4+%28%EC%A0%80%EB%8B%B9%29&searchId=d1696fde8772115&sourceType=search&itemsCount=36&searchRank=1&rank=1&traceId=mmybief5",
     "naverUrl": "https://search.shopping.naver.com/search/all?query=%ED%95%98%EC%9D%B4%EB%AE%A8%20%ED%94%84%EB%A1%9C%ED%8B%B4%20%EB%B0%B8%EB%9F%B0%EC%8A%A4%20(%EC%A0%80%EB%8B%B9)&prevQuery=%ED%95%98%EC%9D%B4%EB%AE%A8%20%ED%94%84%EB%A1%9C%ED%8B%B4%20%EB%B0%B8%EB%9F%B0%EC%8A%A4%20%EC%9D%8C%EB%A3%8C%20%EC%8B%9D%EB%AC%BC%EC%84%B1%20%EA%B3%A0%EB%8B%A8%EB%B0%B1%20190ml%2C%2064%EA%B0%9C&vertical=search",
@@ -3387,7 +3413,7 @@
     ],
     "manufacturer": "일동후디스",
     "flavor": "딸기",
-    "bcaa": "—",
+    "bcaa": "4500mg",
     "proteinSource": "혼합",
     "fat": 3,
     "sodium": 140,
@@ -3400,7 +3426,8 @@
       "sugarsG": 5,
       "fatG": 3,
       "satFatG": 2,
-      "sodiumMg": 140
+      "sodiumMg": 140,
+      "bcaaMg": 4500
     },
     "coupangUrl": "https://www.coupang.com/vp/products/8343273234?itemId=24096630939&vendorItemId=91328698871",
     "naverUrl": "https://search.shopping.naver.com/search/all?query=%ED%95%98%EC%9D%B4%EB%AE%A8%20%ED%94%84%EB%A1%9C%ED%8B%B4%20%EB%B0%B8%EB%9F%B0%EC%8A%A4%20%EC%95%A1%ED%8B%B0%EB%B8%8C%20(%EB%94%B8%EA%B8%B0)&prevQuery=%ED%95%98%EC%9D%B4%EB%AE%A8%20%ED%94%84%EB%A1%9C%ED%8B%B4%20%EB%B0%B8%EB%9F%B0%EC%8A%A4%20%EC%95%A1%ED%8B%B0%EB%B8%8C%20(%EB%B0%94%EB%8B%90%EB%9D%BC%EB%B4%89%EB%B4%89)&vertical=search",
@@ -3428,7 +3455,7 @@
     ],
     "manufacturer": "서울우유",
     "flavor": "초콜릿",
-    "bcaa": "—",
+    "bcaa": "3500mg",
     "proteinSource": "혼합",
     "fat": 4.6,
     "sodium": 170,
@@ -3441,7 +3468,8 @@
       "sugarsG": 5,
       "fatG": 4.6,
       "satFatG": 2.8,
-      "sodiumMg": 170
+      "sodiumMg": 170,
+      "bcaaMg": 3500
     },
     "coupangUrl": "https://www.coupang.com/vp/products/8590463503?itemId=24291974561&vendorItemId=91307098730",
     "naverUrl": "https://search.shopping.naver.com/search/all?query=%EC%84%9C%EC%9A%B8%EC%9A%B0%EC%9C%A0%20%ED%94%84%EB%A1%9C%ED%8B%B4%20%EC%97%90%EB%84%88%EC%A7%80%20(%EC%B4%88%EC%BD%94)&prevQuery=%EC%84%9C%EC%9A%B8%EC%9A%B0%EC%9C%A0%20%ED%94%84%EB%A1%9C%ED%8B%B4%20%EC%97%90%EB%84%88%EC%A7%80%20(%EC%BB%A4%ED%94%BC)&vertical=search",
@@ -3469,7 +3497,7 @@
     ],
     "manufacturer": "일동후디스",
     "flavor": "초콜릿",
-    "bcaa": "—",
+    "bcaa": "1500mg",
     "proteinSource": "혼합",
     "fat": 7,
     "sodium": 110,
@@ -3482,7 +3510,8 @@
       "sugarsG": 5,
       "fatG": 7,
       "satFatG": 1.5,
-      "sodiumMg": 110
+      "sodiumMg": 110,
+      "bcaaMg": 1500
     },
     "naverUrl": "https://search.shopping.naver.com/search/all?query=NEW%20%ED%95%98%EC%9D%B4%EB%AE%A8%20%ED%94%84%EB%A1%9C%ED%8B%B4%20%EB%B0%B8%EB%9F%B0%EC%8A%A4%20%EC%9D%8C%EB%A3%8C%20%EC%B4%88%EC%BD%94%20190ml%2C%2064%EA%B0%9C&prevQuery=%ED%95%98%EC%9D%B4%EB%AE%A8%20%ED%94%84%EB%A1%9C%ED%8B%B4%20%EB%B0%B8%EB%9F%B0%EC%8A%A4%20(%EC%B4%88%EC%BD%9C%EB%A6%BF)&vertical=search",
     "officialUrl": "https://brand.naver.com/ildongfoodis/category/ca3a89b53d1f4aa3bce7f3b70bb97f31?cp=1"
@@ -3964,7 +3993,7 @@
     ],
     "manufacturer": "대상웰라이프",
     "flavor": "오리지널",
-    "bcaa": "—",
+    "bcaa": "1000mg",
     "proteinSource": "혼합",
     "fat": 6,
     "calorieDensity": "78.9kcal/100ml",
@@ -3976,7 +4005,8 @@
       "sugarsG": 10,
       "fatG": 6,
       "satFatG": 1,
-      "sodiumMg": 170
+      "sodiumMg": 170,
+      "bcaaMg": 1000
     },
     "coupangUrl": "https://www.coupang.com/vp/products/7510981160?itemId=19680031614&vendorItemId=86785425845&sourceType=srp_product_ads&clickEventId=c77fdd20-2408-11f1-9c39-be00f8b009f2&korePlacement=15&koreSubPlacement=1&clickEventId=c77fdd20-2408-11f1-9c39-be00f8b009f2&korePlacement=15&koreSubPlacement=1&traceId=mmyb8rig",
     "naverUrl": "https://search.shopping.naver.com/search/all?query=%EB%A7%88%EC%9D%B4%EB%B0%80%20%EB%89%B4%ED%94%84%EB%A1%9C%ED%8B%B4%20(%EC%98%A4%EB%A6%AC%EC%A7%80%EB%84%90)&prevQuery=%EC%98%AC%ED%94%84%EB%A1%9C%ED%8B%B4%2041g%20(%EC%B4%88%EC%BD%94%EB%A7%9B)&vertical=search",
@@ -4004,7 +4034,7 @@
     ],
     "manufacturer": "대상웰라이프",
     "flavor": "딥초코",
-    "bcaa": "—",
+    "bcaa": "1000mg",
     "proteinSource": "혼합",
     "fat": 6,
     "sodium": 170,
@@ -4017,7 +4047,8 @@
       "sugarsG": 10,
       "fatG": 6,
       "satFatG": 1,
-      "sodiumMg": 170
+      "sodiumMg": 170,
+      "bcaaMg": 1000
     },
     "coupangUrl": "https://www.coupang.com/vp/products/7172666535?itemId=20458084207&vendorItemId=85227255723&pickType=COU_PICK&q=%EB%A7%88%EC%9D%B4%EB%B0%80%20%EB%89%B4%ED%94%84%EB%A1%9C%ED%8B%B4%20(%EB%94%A5%EC%B4%88%EC%BD%94)&searchId=b98b627e3824057&sourceType=search&itemsCount=36&searchRank=0&rank=0&traceId=mmyb9inz",
     "naverUrl": "https://search.shopping.naver.com/search/all?query=%EB%A7%88%EC%9D%B4%EB%B0%80%20%EB%89%B4%ED%94%84%EB%A1%9C%ED%8B%B4%20(%EB%94%A5%EC%B4%88%EC%BD%94)&prevQuery=%EB%A7%88%EC%9D%B4%EB%B0%80%20%EB%89%B4%ED%94%84%EB%A1%9C%ED%8B%B4%20(%EC%82%B0%EC%96%91%EC%9C%A0)&vertical=search",
@@ -4045,7 +4076,7 @@
     ],
     "manufacturer": "대상웰라이프",
     "flavor": "산양유",
-    "bcaa": "—",
+    "bcaa": "2000mg",
     "proteinSource": "혼합",
     "fat": 6,
     "sodium": 170,
@@ -4058,7 +4089,8 @@
       "sugarsG": 10,
       "fatG": 6,
       "satFatG": 1,
-      "sodiumMg": 170
+      "sodiumMg": 170,
+      "bcaaMg": 2000
     },
     "coupangUrl": "https://www.coupang.com/vp/products/8203753690?itemId=19942784461&vendorItemId=87041990713&pickType=COU_PICK&q=%EB%A7%88%EC%9D%B4%EB%B0%80+%EB%89%B4%ED%94%84%EB%A1%9C%ED%8B%B4+%28%EC%82%B0%EC%96%91%EC%9C%A0%29&searchId=c19501cc4704385&sourceType=search&itemsCount=36&searchRank=2&rank=2&traceId=mmyb97ca",
     "naverUrl": "https://search.shopping.naver.com/search/all?query=%EB%A7%88%EC%9D%B4%EB%B0%80%20%EB%89%B4%ED%94%84%EB%A1%9C%ED%8B%B4%20(%EC%82%B0%EC%96%91%EC%9C%A0)&prevQuery=%EB%A7%88%EC%9D%B4%EB%B0%80%20%EB%89%B4%ED%94%84%EB%A1%9C%ED%8B%B4%20(%EC%98%A4%EB%A6%AC%EC%A7%80%EB%84%90)&vertical=search",
@@ -4086,7 +4118,7 @@
     ],
     "manufacturer": "일동후디스",
     "flavor": "오리지널",
-    "bcaa": "—",
+    "bcaa": "1500mg",
     "proteinSource": "혼합",
     "fat": 6.5,
     "sodium": 130,
@@ -4099,7 +4131,8 @@
       "sugarsG": 11,
       "fatG": 6.5,
       "satFatG": 2,
-      "sodiumMg": 130
+      "sodiumMg": 130,
+      "bcaaMg": 1500
     },
     "coupangUrl": "https://www.coupang.com/vp/products/9057383530?itemId=25190333018&vendorItemId=91899401612&q=%ED%95%98%EC%9D%B4%EB%AE%A8+%ED%94%84%EB%A1%9C%ED%8B%B4+%EB%B0%B8%EB%9F%B0%EC%8A%A4+%28%EC%98%A4%EB%A6%AC%EC%A7%80%EB%84%90%29&searchId=7b4ee9d38337318&sourceType=search&itemsCount=36&searchRank=3&rank=3&traceId=mmybjty3",
     "naverUrl": "https://search.shopping.naver.com/search/all?query=%ED%95%98%EC%9D%B4%EB%AE%A8%20%ED%94%84%EB%A1%9C%ED%8B%B4%20%EB%B0%B8%EB%9F%B0%EC%8A%A4%20%EC%9D%8C%EB%A3%8C%20%EC%98%A4%EB%A6%AC%EC%A7%80%EB%84%90%20190ml&prevQuery=%ED%95%98%EC%9D%B4%EB%AE%A8%20%ED%94%84%EB%A1%9C%ED%8B%B4%20%EB%B0%B8%EB%9F%B0%EC%8A%A4%20%EC%9D%8C%EB%A3%8C%20%ED%9D%91%EC%9E%84%EC%9E%90%20190ml&vertical=search",
@@ -4168,7 +4201,7 @@
     ],
     "manufacturer": "일동후디스",
     "flavor": "흑임자",
-    "bcaa": "—",
+    "bcaa": "1500mg",
     "proteinSource": "혼합",
     "fat": 5,
     "sodium": 120,
@@ -4181,7 +4214,8 @@
       "sugarsG": 14,
       "fatG": 5,
       "satFatG": 1.5,
-      "sodiumMg": 120
+      "sodiumMg": 120,
+      "bcaaMg": 1500
     },
     "coupangUrl": "https://www.coupang.com/vp/products/7892272743?itemId=21757907659&vendorItemId=88806894780&q=%ED%95%98%EC%9D%B4%EB%AE%A8%20%ED%94%84%EB%A1%9C%ED%8B%B4%20%EB%B0%B8%EB%9F%B0%EC%8A%A4%20(%ED%9D%91%EC%9E%84%EC%9E%90)&searchId=69e4a9eb3926316&sourceType=search&itemsCount=36&searchRank=1&rank=1&traceId=mmybjf76",
     "naverUrl": "https://search.shopping.naver.com/search/all?query=%ED%95%98%EC%9D%B4%EB%AE%A8%20%ED%94%84%EB%A1%9C%ED%8B%B4%20%EB%B0%B8%EB%9F%B0%EC%8A%A4%20%EC%9D%8C%EB%A3%8C%20%ED%9D%91%EC%9E%84%EC%9E%90%20190ml&prevQuery=NEW%20%ED%95%98%EC%9D%B4%EB%AE%A8%20%ED%94%84%EB%A1%9C%ED%8B%B4%20%EB%B0%B8%EB%9F%B0%EC%8A%A4%20%EC%9D%8C%EB%A3%8C%20%EC%B4%88%EC%BD%94%20190ml%2C%2064%EA%B0%9C&vertical=search",
@@ -4209,7 +4243,7 @@
     ],
     "manufacturer": "매일유업",
     "flavor": "오리지널",
-    "bcaa": "—",
+    "bcaa": "1400mg",
     "proteinSource": "혼합",
     "fat": 6,
     "sodium": 170,
@@ -4222,7 +4256,8 @@
       "sugarsG": 14,
       "fatG": 6,
       "satFatG": 0.6,
-      "sodiumMg": 170
+      "sodiumMg": 170,
+      "bcaaMg": 1400
     },
     "coupangUrl": "https://www.coupang.com/vp/products/9334640009?itemId=19428960882&searchId=d01c4db5db21418b8893087c44b71916&sourceType=brandstore_sdp_atf_topbadge-best_products&storeId=1235&subSourceType=brandstore_sdp_atf_topbadge-best_products&vendorId=A00575434&vendorItemId=82914630148",
     "naverUrl": "https://search.shopping.naver.com/search/all?query=%EC%85%80%EB%A0%89%EC%8A%A4%20%ED%94%84%EB%A1%9C%ED%8B%B4%20(%EC%98%A4%EB%A6%AC%EC%A7%80%EB%84%90)&prevQuery=%EC%84%9C%EC%9A%B8%EC%9A%B0%EC%9C%A0%20%ED%94%84%EB%A1%9C%ED%8B%B4%20%EC%97%90%EB%84%88%EC%A7%80%20(%EC%B4%88%EC%BD%94)&vertical=search",
@@ -4250,7 +4285,7 @@
     ],
     "manufacturer": "일동후디스",
     "flavor": "플러스",
-    "bcaa": "—",
+    "bcaa": "1500mg",
     "proteinSource": "혼합",
     "fat": 4,
     "sodium": 180,
@@ -4263,7 +4298,8 @@
       "sugarsG": 14,
       "fatG": 4,
       "satFatG": 1.2,
-      "sodiumMg": 180
+      "sodiumMg": 180,
+      "bcaaMg": 1500
     },
     "naverUrl": "https://search.shopping.naver.com/search/all?query=%ED%95%98%EC%9D%B4%EB%AE%A8%20%ED%94%84%EB%A1%9C%ED%8B%B4%20%EB%B0%B8%EB%9F%B0%EC%8A%A4%20(%ED%94%8C%EB%9F%AC%EC%8A%A4)&prevQuery=%EB%9E%A9%EB%85%B8%EC%89%AC%20%EB%9E%A9%EB%85%B8%EC%89%AC%20%ED%94%84%EB%A1%9C%ED%8B%B4%20%EB%93%9C%EB%A7%81%ED%81%AC%20%EB%A7%88%EC%9D%BC%EB%93%9C%20%EB%B0%94%EB%82%98%EB%82%98%20350ml&vertical=search",
     "officialUrl": "https://brand.naver.com/ildongfoodis/category/ca3a89b53d1f4aa3bce7f3b70bb97f31?cp=1"
@@ -4330,7 +4366,7 @@
     ],
     "manufacturer": "대상웰라이프",
     "flavor": "바나나",
-    "bcaa": "—",
+    "bcaa": "1000mg",
     "proteinSource": "혼합",
     "fat": 6,
     "calorieDensity": "78.9kcal/100ml",
@@ -4342,7 +4378,8 @@
       "sugarsG": 10,
       "fatG": 6,
       "satFatG": 1,
-      "sodiumMg": 170
+      "sodiumMg": 170,
+      "bcaaMg": 1000
     },
     "coupangUrl": "https://www.coupang.com/vp/products/7345092004?itemId=18143492367&vendorItemId=85293912587&pickType=COU_PICK&q=%EB%A7%88%EC%9D%B4%EB%B0%80%20%EB%89%B4%ED%94%84%EB%A1%9C%ED%8B%B4%20(%EB%B0%94%EB%82%98%EB%82%98)&searchId=071589224984874&sourceType=search&itemsCount=36&searchRank=0&rank=0&traceId=mmyb9rhk",
     "naverUrl": "https://search.shopping.naver.com/search/all?query=%EB%A7%88%EC%9D%B4%EB%B0%",
