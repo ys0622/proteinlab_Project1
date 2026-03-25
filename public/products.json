@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-03-25T10:52:28.191Z",
-  "total": 301,
+  "generated_at": "2026-03-25T14:32:29.396Z",
+  "total": 306,
   "categories": {
     "drinks": 107,
-    "bars": 80,
+    "bars": 85,
     "yogurt": 45,
     "shake": 69
   },
@@ -1690,6 +1690,51 @@
       "protein": 9,
       "calories": 195,
       "sugar": 5
+    },
+    {
+      "slug": "hymune-protein-balance-bar",
+      "name": "프로틴밸런스 단백질바",
+      "brand": "하이뮨",
+      "category": "bars",
+      "protein": 8,
+      "calories": 152,
+      "sugar": 9.2
+    },
+    {
+      "slug": "myprotein-6layer-triple-chocolate-fudge-60",
+      "name": "6 레이어 프로틴바 (트리플 초콜릿 퍼지)",
+      "brand": "마이프로틴",
+      "category": "bars",
+      "protein": 20,
+      "calories": 212,
+      "sugar": 1.9
+    },
+    {
+      "slug": "myprotein-protein-wafer-42",
+      "name": "프로틴 와퍼",
+      "brand": "마이프로틴",
+      "category": "bars",
+      "protein": 15,
+      "calories": 195,
+      "sugar": 5.5
+    },
+    {
+      "slug": "balance-meal-protein-bar-matcha-choco-38",
+      "name": "밸런스밀 프로틴바 (말차초코)",
+      "brand": "CJ제일제당",
+      "category": "bars",
+      "protein": 12,
+      "calories": 170,
+      "sugar": 1
+    },
+    {
+      "slug": "balance-meal-protein-bar-peanutbutter-34",
+      "name": "밸런스밀 프로틴바 (피넛버터)",
+      "brand": "CJ제일제당",
+      "category": "bars",
+      "protein": 12,
+      "calories": 140,
+      "sugar": 1.5
     },
     {
       "slug": "yopro-plain-150",
