@@ -3,6 +3,7 @@ import Link from "next/link";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 import GuideVisual from "@/app/components/GuideVisual";
+import { getAllSearchTopics } from "@/app/data/searchTopics";
 import { getGuideTracks, type GuideTrackSlug } from "@/app/data/guidesTracks";
 import { getAdminGuidesStaticRuntimeData } from "@/app/lib/adminGuidesStaticRuntime";
 
@@ -143,6 +144,21 @@ export default async function GuideTrackPage({ params }: { params: Promise<{ tra
           .map((slug) => articleMap.get(slug))
           .filter((item): item is NonNullable<typeof item> => Boolean(item))
       : [];
+  const topicMap = new Map(getAllSearchTopics().map((topic) => [topic.slug, topic]));
+  const searchTopicItems =
+    section.slug === "product-selection-comparison"
+      ? ["protein-drink-recommend", "low-sugar-protein-drink", "high-protein-drink-20g", "lactose-free-protein-drink", "meal-replacement-protein-shake", "high-protein-bar"]
+          .map((slug) => topicMap.get(slug))
+          .filter((item): item is NonNullable<typeof item> => Boolean(item))
+          .map((topic) => ({
+            slug: topic.slug,
+            title: topic.title,
+            description: topic.description,
+            href: `/topics/${topic.slug}`,
+            emoji: "🔎",
+            tags: ["검색형", "허브"],
+          }))
+      : [];
 
   return (
     <div className="min-h-screen bg-white">
@@ -229,6 +245,13 @@ export default async function GuideTrackPage({ params }: { params: Promise<{ tra
               accentColor={section.accentColor}
               accentBg={accentChipBg}
               items={comparisonArticles}
+            />
+            <CuratedGuideGroup
+              title="검색형 주제 허브"
+              description="저당, 고단백, 락토프리, 식사대용처럼 실제 검색어에 가까운 허브 페이지를 먼저 타고 들어갈 수 있게 묶었습니다."
+              accentColor={section.accentColor}
+              accentBg={accentChipBg}
+              items={searchTopicItems}
             />
           </div>
         ) : null}

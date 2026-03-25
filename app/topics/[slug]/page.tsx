@@ -2,6 +2,7 @@
 import { notFound } from "next/navigation";
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
+import RelatedLinkCards from "../../components/RelatedLinkCards";
 import { getAllSearchTopics, getSearchTopicBySlug } from "../../data/searchTopics";
 
 interface PageProps {
@@ -23,7 +24,10 @@ export async function generateMetadata({ params }: PageProps) {
   return {
     title: `${topic.title} | ProteinLab`,
     description: topic.description,
-    robots: { index: false, follow: false },
+    alternates: {
+      canonical: `https://proteinlab.kr/topics/${topic.slug}`,
+    },
+    robots: { index: true, follow: true },
     openGraph: {
       title: `${topic.title} | ProteinLab`,
       description: topic.description,
@@ -115,6 +119,13 @@ export default async function TopicLandingPage({ params }: PageProps) {
             </Link>
           </div>
         </section>
+
+        <RelatedLinkCards
+          title="같이 보는 비교 허브"
+          description="검색 의도가 비슷한 가이드와 허브 페이지로 바로 이어서 비교할 수 있게 묶었습니다."
+          links={topic.relatedLinks}
+          sectionId={`topic-${topic.slug}-related`}
+        />
       </main>
 
       <Footer />
