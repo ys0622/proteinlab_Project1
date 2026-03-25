@@ -10,6 +10,7 @@ import Header from "../../components/Header";
 import MetricBadgeGroup from "../../components/MetricBadgeGroup";
 import NutritionDetailSection from "../../components/NutritionDetailSection";
 import ProductBadge from "../../components/ProductBadge";
+import ProductCard from "../../components/ProductCard";
 import type { ProductDetailProps } from "../../data/products";
 import {
   formatProductBadgeLabel,
@@ -19,16 +20,19 @@ import {
 } from "../../components/productBadgeUtils";
 import ProductReviewSection from "../../components/ProductReviewSection";
 import PurchaseLinkRow from "../../components/PurchaseLinkRow";
+import RelatedLinkCards from "../../components/RelatedLinkCards";
 import ServingBasisNotice from "../../components/ServingBasisNotice";
 import { getNutritionDetail } from "../../data/products";
 import { getCategoryHref, getCategoryLabel } from "../../lib/categories";
-import { getProductBySlugAsync } from "../../lib/productData";
+import { getProductBySlugAsync, getProductsByCategoryAsync } from "../../lib/productData";
 import { getProductImageUrl } from "../../lib/productImage";
 import {
   getCoupangRedirectHref,
   getKnownSourceCoupangUrlBySlug,
   normalizeCoupangUrl,
 } from "../../lib/purchaseLinks";
+import { getSimilarProducts } from "../../lib/similarProducts";
+import { getProductTrafficLinks } from "../../lib/trafficLinks";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -36,6 +40,85 @@ interface PageProps {
 
 function getProductKindLabel(productType?: "drink" | "bar" | "yogurt" | "shake") {
   return getCategoryLabel(productType ?? "drink");
+}
+
+function getMetricLine(product: ProductDetailProps) {
+  const parts = [
+    `단백질 ${product.proteinPerServing}g`,
+    product.calories != null ? `${product.calories}kcal` : null,
+    product.sugar != null ? `당류 ${product.sugar}g` : null,
+    product.density ? product.density : null,
+  ].filter(Boolean);
+
+  return parts.join(" · ");
+}
+
+function getProductSummary(product: ProductDetailProps) {
+  if (product.productType === "drink") {
+    if (product.sugar != null && product.sugar <= 1 && product.calories != null && product.calories <= 120) {
+      return "저당·저칼로리 기준으로 먼저 보기 좋은 RTD 단백질 음료입니다.";
+    }
+    if (product.proteinPerServing >= 30) {
+      return "고단백 보충 중심으로 설계된 RTD 제품이라 운동 후 비교 수요와 잘 맞습니다.";
+    }
+    return "편의성과 영양 균형을 함께 보는 사용자에게 맞는 RTD 단백질 음료입니다.";
+  }
+
+  if (product.productType === "bar") {
+    return "간식처럼 먹기 쉬운 형태인지, 칼로리와 당류가 과하지 않은지 같이 봐야 하는 단백질 바입니다.";
+  }
+
+  if (product.productType === "yogurt") {
+    return "아침 간편식과 간식 수요에서 많이 비교되는 제품이라 단백질과 당류를 함께 보는 편이 좋습니다.";
+  }
+
+  return "식사대용, 다이어트, 아침 간편식 수요에서 많이 비교되는 파우치형 단백질 쉐이크입니다.";
+}
+
+function getProductFitBullets(product: ProductDetailProps) {
+  const bullets: string[] = [];
+
+  if (product.productType === "drink") {
+    if (product.sugar != null && product.sugar <= 1) bullets.push("당류 부담이 낮은 RTD 음료를 찾는 사람");
+    if (product.proteinPerServing >= 30) bullets.push("한 번에 고단백 보충을 원하는 사람");
+    if (product.proteinSource) bullets.push(`${product.proteinSource} 단백질 원료를 우선 보는 사람`);
+  } else if (product.productType === "bar") {
+    bullets.push("이동 중 간단히 단백질을 챙기려는 사람");
+    if ((product.calories ?? 0) <= 200) bullets.push("간식 칼로리를 200kcal 안쪽으로 관리하려는 사람");
+    if ((product.sugar ?? 0) <= 5) bullets.push("당류가 낮은 바를 찾는 사람");
+  } else if (product.productType === "yogurt") {
+    bullets.push("아침이나 간식으로 가볍게 단백질을 보충하려는 사람");
+    if ((product.sugar ?? 0) <= 5) bullets.push("저당 요거트를 우선 보는 사람");
+    if (product.yogurtType) bullets.push(`${product.yogurtType} 타입을 선호하는 사람`);
+  } else {
+    if ((product.nutritionPerBottle?.fiberG ?? 0) >= 4) bullets.push("포만감 있는 식사대용 쉐이크를 찾는 사람");
+    if ((product.sugar ?? 0) <= 5) bullets.push("당류가 낮은 파우치형 쉐이크를 찾는 사람");
+    bullets.push("맛과 꾸준한 섭취 편의성을 같이 보는 사람");
+  }
+
+  bullets.push(`${getMetricLine(product)} 기준으로 비슷한 제품과 비교하려는 사람`);
+
+  return bullets.slice(0, 4);
+}
+
+function getProductFaqs(product: ProductDetailProps) {
+  const categoryHref = getCategoryHref((product.productType ?? "drink") as "drink" | "bar" | "yogurt" | "shake");
+  const categoryLabel = getProductKindLabel(product.productType);
+
+  return [
+    {
+      question: `${product.brand} ${product.name}은 어떤 기준으로 보면 되나요?`,
+      answer: `${product.brand} ${product.name}은 ${getMetricLine(product)} 기준으로 먼저 보는 편이 좋습니다. 같은 ${categoryLabel} 안에서는 단백질 총량, 당류, 칼로리, 용량당 밀도를 같이 비교해야 실제 체감 차이가 잘 보입니다.`,
+    },
+    {
+      question: `이 제품과 비슷한 ${categoryLabel}은 어디서 더 볼 수 있나요?`,
+      answer: `ProteinLab ${categoryLabel} 목록 페이지(${categoryHref})와 비교 페이지에서 비슷한 스펙 제품을 한 번에 볼 수 있습니다. 특히 같은 카테고리 제품끼리 비교하면 목적별 차이가 더 명확합니다.`,
+    },
+    {
+      question: `구매 전에 마지막으로 확인할 포인트는 무엇인가요?`,
+      answer: `제품 자체 스펙만 보지 말고, 박스 가격, 맛 옵션, 구매 채널, 그리고 내 사용 목적에 맞는지까지 같이 보는 편이 좋습니다. 다이어트 목적이면 당류와 칼로리, 운동 목적이면 단백질 총량과 밀도를 우선 확인하면 됩니다.`,
+    },
+  ];
 }
 
 function renderSummaryMetricValue(value: string, isCompact: boolean) {
@@ -88,7 +171,6 @@ function getShakeSummaryNote(product: ProductDetailProps) {
 }
 
 function buildProductDescription(product: ProductDetailProps): string {
-  const kind = getProductKindLabel(product.productType);
   const protein = `단백질 ${product.proteinPerServing}g`;
   const cal = product.calories != null ? `, ${product.calories}kcal` : "";
   const sugar = product.sugar != null ? `, 당류 ${product.sugar}g` : "";
@@ -114,8 +196,14 @@ export async function generateMetadata({ params }: PageProps) {
   return {
     title: buildProductTitle(product),
     description: buildProductDescription(product),
+    alternates: {
+      canonical: `https://proteinlab.kr/product/${slug}`,
+    },
     openGraph: ogImage
       ? {
+          title: buildProductTitle(product),
+          description: buildProductDescription(product),
+          url: `https://proteinlab.kr/product/${slug}`,
           images: [{ url: ogImage, width: 800, height: 800, alt: `${product.brand} ${product.name}` }],
         }
       : undefined,
@@ -139,6 +227,11 @@ export default async function ProductDetailPage({ params }: PageProps) {
   const isYogurt = product.productType === "yogurt";
   const isShake = product.productType === "shake";
   const productImageUrl = getProductImageUrl(product.slug);
+  const category = (product.productType ?? "drink") as "drink" | "bar" | "yogurt" | "shake";
+  const categoryProducts = await getProductsByCategoryAsync(category);
+  const similarProducts = getSimilarProducts(product, categoryProducts, 6);
+  const trafficLinks = getProductTrafficLinks(category, slug);
+  const faqItems = getProductFaqs(product);
   const hasCapacityInName = Boolean(product.capacity && product.name.includes(product.capacity));
   const metaParts = [
     product.manufacturer,
@@ -215,23 +308,61 @@ export default async function ProductDetailPage({ params }: PageProps) {
           { label: "나트륨", value: product.sodium !== undefined ? `${product.sodium}mg` : "-", isCompact: false },
         ];
 
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "Product",
-    name: product.name,
-    brand: { "@type": "Brand", name: product.brand },
-    description: buildProductDescription(product),
-    ...(productImageUrl ? { image: `https://proteinlab.kr${productImageUrl}` } : {}),
-    category: getProductKindLabel(product.productType),
-    nutrition: {
-      "@type": "NutritionInformation",
-      proteinContent: `${product.proteinPerServing} g`,
-      ...(product.calories != null ? { calories: `${product.calories} kcal` } : {}),
-      ...(product.sugar != null ? { sugarContent: `${product.sugar} g` } : {}),
-      ...(product.fat != null ? { fatContent: `${product.fat} g` } : {}),
-      ...(product.sodium != null ? { sodiumContent: `${product.sodium} mg` } : {}),
+  const jsonLd = [
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "ProteinLab",
+          item: "https://proteinlab.kr/",
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: getProductKindLabel(product.productType),
+          item: `https://proteinlab.kr${getCategoryHref(category)}`,
+        },
+        {
+          "@type": "ListItem",
+          position: 3,
+          name: `${product.brand} ${product.name}`,
+          item: `https://proteinlab.kr/product/${slug}`,
+        },
+      ],
     },
-  };
+    {
+      "@context": "https://schema.org",
+      "@type": "Product",
+      name: product.name,
+      brand: { "@type": "Brand", name: product.brand },
+      description: buildProductDescription(product),
+      ...(productImageUrl ? { image: `https://proteinlab.kr${productImageUrl}` } : {}),
+      category: getProductKindLabel(product.productType),
+      nutrition: {
+        "@type": "NutritionInformation",
+        proteinContent: `${product.proteinPerServing} g`,
+        ...(product.calories != null ? { calories: `${product.calories} kcal` } : {}),
+        ...(product.sugar != null ? { sugarContent: `${product.sugar} g` } : {}),
+        ...(product.fat != null ? { fatContent: `${product.fat} g` } : {}),
+        ...(product.sodium != null ? { sodiumContent: `${product.sodium} mg` } : {}),
+      },
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: faqItems.map((item) => ({
+        "@type": "Question",
+        name: item.question,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: item.answer,
+        },
+      })),
+    },
+  ];
 
   return (
     <div className="min-h-screen bg-white">
@@ -273,6 +404,17 @@ export default async function ProductDetailPage({ params }: PageProps) {
 
             <div className="flex flex-1 flex-col gap-4">
               <div>
+                <div className="flex flex-wrap items-center gap-2 text-[12px] text-[#6b6b6b]">
+                  <Link href="/" className="hover:text-[#1a1a1a]">
+                    홈
+                  </Link>
+                  <span>/</span>
+                  <Link href={getCategoryHref(category)} className="hover:text-[#1a1a1a]">
+                    {getProductKindLabel(product.productType)}
+                  </Link>
+                  <span>/</span>
+                  <span className="text-[#3d3d3d]">{product.brand}</span>
+                </div>
                 <p className="text-xs tracking-wide" style={{ color: "#7a7a7a" }}>
                   {product.brand}
                 </p>
@@ -302,6 +444,15 @@ export default async function ProductDetailPage({ params }: PageProps) {
                     ))}
                   </div>
                 ) : null}
+                <div className="mt-4 rounded-xl border border-[#e6e1d8] bg-[#fffaf1] p-4">
+                  <p className="text-[12px] font-semibold tracking-wide text-[#8b6f3d]">한눈에 보기</p>
+                  <p className="mt-2 text-sm leading-6 text-[#4f4a40]">{getProductSummary(product)}</p>
+                  <ul className="mt-3 space-y-1 text-sm leading-6 text-[#5f6258]">
+                    {getProductFitBullets(product).map((bullet) => (
+                      <li key={bullet}>• {bullet}</li>
+                    ))}
+                  </ul>
+                </div>
               </div>
 
               <div className="grid flex-1 grid-cols-3 content-start gap-2 sm:grid-cols-4" style={{ gap: "8px" }}>
@@ -387,6 +538,41 @@ export default async function ProductDetailPage({ params }: PageProps) {
             <ProductReviewSection slug={slug} />
           </div>
 
+          {similarProducts.length > 0 ? (
+            <section className="mt-8">
+              <div className="mb-4 space-y-1">
+                <h2 className="text-lg font-semibold text-[var(--foreground)]">비슷한 제품 비교</h2>
+                <p className="text-sm leading-6 text-[var(--foreground-muted)]">
+                  {getMetricLine(product)} 기준으로 함께 많이 비교되는 같은 카테고리 제품입니다.
+                </p>
+              </div>
+              <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+                {similarProducts.map((item) => (
+                  <ProductCard
+                    key={item.slug}
+                    brand={item.brand}
+                    name={item.name}
+                    capacity={item.capacity}
+                    variant={item.variant}
+                    tags={item.tags}
+                    proteinPerServing={item.proteinPerServing}
+                    calories={item.calories}
+                    sugar={item.sugar}
+                    density={item.density}
+                    coupangUrl={item.coupangUrl}
+                    naverUrl={item.naverUrl}
+                    officialUrl={item.officialUrl}
+                    gradeTags={item.gradeTags}
+                    slug={item.slug}
+                    productType={item.productType}
+                    yogurtType={item.yogurtType}
+                    fixedTitleLines={2}
+                  />
+                ))}
+              </div>
+            </section>
+          ) : null}
+
           <div
             className="mt-6 rounded-xl border border-[#e8e6e3] bg-[#FFFDF8] p-4"
             style={{ borderRadius: "12px" }}
@@ -405,10 +591,38 @@ export default async function ProductDetailPage({ params }: PageProps) {
             />
           </div>
 
+          <section className="mt-8">
+            <div className="mb-4 space-y-1">
+              <h2 className="text-lg font-semibold text-[var(--foreground)]">자주 묻는 질문</h2>
+              <p className="text-sm leading-6 text-[var(--foreground-muted)]">
+                구매 전 많이 확인하는 기준만 빠르게 정리했습니다.
+              </p>
+            </div>
+            <div className="space-y-3">
+              {faqItems.map((item) => (
+                <div
+                  key={item.question}
+                  className="rounded-xl border border-[#e8e6e3] bg-[#FFFDF8] p-4"
+                  style={{ borderRadius: "12px" }}
+                >
+                  <h3 className="text-sm font-semibold text-[var(--foreground)]">{item.question}</h3>
+                  <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">{item.answer}</p>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          <RelatedLinkCards
+            title="다음 탐색 동선"
+            description="이 제품을 본 뒤 바로 이어서 비교하거나, 같은 조건의 제품으로 다시 좁혀볼 수 있습니다."
+            links={trafficLinks}
+            sectionId="product-detail-links"
+          />
+
           <div className="mt-4 flex flex-wrap gap-3">
             <CompareButton slug={slug} detailHref={`/product/${slug}`} />
             <Link
-              href={getCategoryHref((product.productType ?? "drink") as "drink" | "bar" | "yogurt" | "shake")}
+              href={getCategoryHref(category)}
               className="rounded-full border border-[var(--border)] bg-white px-5 py-2.5 text-sm font-medium text-[var(--foreground)] transition-colors hover:bg-[var(--accent-light)]"
             >
               제품 목록으로
