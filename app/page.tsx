@@ -8,7 +8,7 @@ import type { Metadata } from "next";
 import type { ProductCategory } from "./lib/categories";
 
 export const metadata: Metadata = {
-  title: "단백질 제품 비교 추천 | 단백질·당류·가성비 기준 | ProteinLab",
+  title: "단백질 제품 비교 추천 301종 | 음료·바·요거트·쉐이크 성분 기준 (2026) | ProteinLab",
   description:
     "단백질 음료 99개를 단백질 함량, 당류, 칼로리 기준으로 한눈에 비교했습니다. 고단백·저당·가성비 목적에 맞는 제품을 성분 데이터로 바로 선택하세요.",
   alternates: {
