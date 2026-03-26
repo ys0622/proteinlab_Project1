@@ -3,8 +3,8 @@ import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 
 export const metadata = {
-  title: "단백질 RTD 시장 분석 | ProteinLab",
-  description: "RTD 단백질 음료 시장의 성장 배경, 유형별 구조, 브랜드 경쟁 포인트를 정리합니다.",
+  title: "단백질 RTD 시장 분석 | 왜 RTD 음료가 가장 빨리 커졌을까",
+  description: "RTD 단백질 음료 시장이 커진 이유, 워터형·밀크형·식물성 구조, 브랜드 경쟁 포인트까지 한 번에 정리했습니다.",
 };
 
 const growthRows = [
@@ -47,6 +47,24 @@ const readingPoints = [
   "편의점 전용 상품은 접근성이 강점이지만 용량과 가격 구성은 다를 수 있습니다.",
 ];
 
+const relatedLinks = [
+  {
+    href: "/guides/product-selection-comparison/protein-drink-guide",
+    title: "단백질 음료 선택 가이드",
+    body: "시장 구조를 읽었다면 실제 RTD를 어떻게 고를지로 바로 넘어가는 첫 페이지로 가장 적합합니다.",
+  },
+  {
+    href: "/guides/product-selection-comparison/protein-drink-by-content",
+    title: "함량대별 단백질 음료",
+    body: "RTD가 20g대, 30g대, 40g대로 어떻게 나뉘는지 실제 제품 기준으로 보려면 이 페이지가 가장 빠릅니다.",
+  },
+  {
+    href: "/guides/product-selection-comparison/protein-density-ranking",
+    title: "단백질 밀도 순위",
+    body: "시장 흐름이 아니라 실제 효율 순위가 궁금하다면 100mL당 단백질 기준 페이지로 이어서 보는 것이 좋습니다.",
+  },
+];
+
 export default function ProteinRTDMarketPage() {
   return (
     <div className="min-h-screen bg-white">
@@ -69,7 +87,7 @@ export default function ProteinRTDMarketPage() {
           <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
             파우더보다 빠르게 커진 이유는 편의성, 유통 확장, 목적별 제품 분화에 있습니다.
             <br />
-            시장 구조를 이해하면 브랜드와 제품을 읽는 기준도 더 선명해집니다.
+            시장 구조를 이해하면 브랜드와 제품을 읽는 기준도 더 선명해지고, 실제 비교 페이지로 넘어갈 때도 훨씬 덜 헷갈립니다.
           </p>
         </div>
       </section>
@@ -176,6 +194,18 @@ export default function ProteinRTDMarketPage() {
             <blockquote className="mt-5 rounded-xl border border-[#dce8df] bg-[#f7fbf8] px-4 py-4 text-sm leading-6 text-[var(--foreground-muted)]">
               RTD 시장은 이제 하나의 카테고리가 아닙니다. 회복형, 식사보완형, 대안형, 식물성형으로 계속 분화되고 있습니다.
             </blockquote>
+          </section>
+
+          <section className="rounded-[28px] border border-[#e2ebe4] bg-[#f7fbf8] px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
+            <h2 className="text-xl font-bold text-[var(--foreground)]">실제 제품 비교로 이어서 보기</h2>
+            <div className="mt-5 grid gap-3 md:grid-cols-3">
+              {relatedLinks.map((item) => (
+                <Link key={item.href} href={item.href} className="rounded-2xl border border-[#dce8df] bg-white p-4 transition-colors hover:bg-[#fbfdfb]">
+                  <h3 className="text-sm font-semibold text-[#24543d]">{item.title}</h3>
+                  <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">{item.body}</p>
+                </Link>
+              ))}
+            </div>
           </section>
         </div>
       </main>

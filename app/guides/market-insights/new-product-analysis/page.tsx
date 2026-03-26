@@ -3,8 +3,8 @@ import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 
 export const metadata = {
-  title: "신제품 분석 가이드 | ProteinLab",
-  description: "새로 나온 단백질 제품을 어떤 기준으로 읽어야 하는지 포지셔닝, 성분, 가격 관점에서 정리했습니다.",
+  title: "단백질 신제품 분석 가이드 | 새 제품을 볼 때 먼저 확인할 기준",
+  description: "새로 나온 단백질 음료와 바, 쉐이크를 볼 때 포지셔닝, 성분표, 가격, 기존 제품 대비 차이까지 어떻게 읽어야 하는지 정리했습니다.",
 };
 
 const readingFrameCards = [
@@ -42,6 +42,24 @@ const commonMistakes = [
   "마케팅 키워드를 실제 성분 수치와 분리해서 보지 않는 것",
 ];
 
+const relatedLinks = [
+  {
+    href: "/guides/market-insights/protein-drink-trend-2026",
+    title: "2026 단백질 음료 트렌드",
+    body: "개별 신제품보다 시장 전체 흐름이 먼저 궁금하다면 연간 트렌드 페이지로 이어서 보는 편이 좋습니다.",
+  },
+  {
+    href: "/guides/product-selection-comparison/high-protein-40g-comparison",
+    title: "40g 고단백 비교",
+    body: "신제품이 정말 차별적인지 보려면 기존 강자들과 수치 비교를 바로 해보는 것이 가장 빠릅니다.",
+  },
+  {
+    href: "/guides/product-selection-comparison/protein-density-ranking",
+    title: "단백질 밀도 순위",
+    body: "마케팅보다 실제 효율이 궁금하다면 100mL당 단백질 순위 페이지와 같이 보는 흐름이 맞습니다.",
+  },
+];
+
 export default function NewProductAnalysisPage() {
   return (
     <div className="min-h-screen bg-white">
@@ -68,7 +86,7 @@ export default function NewProductAnalysisPage() {
           <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
             신제품은 마케팅 문구가 강해서 비교 기준이 없으면 읽기 어렵습니다.
             <br />
-            포지셔닝, 성분, 유통 채널 관점에서 읽는 법을 정리했습니다.
+            포지셔닝, 성분, 유통 채널 관점에서 읽는 법을 정리했고, 읽은 뒤 바로 기존 비교 페이지로 넘어갈 기준까지 같이 잡을 수 있습니다.
           </p>
         </div>
       </section>
@@ -132,6 +150,18 @@ export default function NewProductAnalysisPage() {
             <blockquote className="mt-5 rounded-xl border border-[#dce8df] bg-[#f7fbf8] px-4 py-4 text-sm leading-6 text-[var(--foreground-muted)]">
               신제품 분석은 새로움 자체를 평가하는 일이 아니라, 기존 제품 대비 실제 차별 포인트가 있는지 확인하는 과정입니다.
             </blockquote>
+          </section>
+
+          <section className="rounded-[28px] border border-[#e2ebe4] bg-[#f7fbf8] px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
+            <h2 className="text-xl font-bold text-[var(--foreground)]">실제 비교로 이어지는 페이지</h2>
+            <div className="mt-5 grid gap-3 md:grid-cols-3">
+              {relatedLinks.map((item) => (
+                <Link key={item.href} href={item.href} className="rounded-2xl border border-[#dce8df] bg-white p-4 transition-colors hover:bg-[#fbfdfb]">
+                  <h3 className="text-sm font-semibold text-[#24543d]">{item.title}</h3>
+                  <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">{item.body}</p>
+                </Link>
+              ))}
+            </div>
           </section>
         </div>
       </main>

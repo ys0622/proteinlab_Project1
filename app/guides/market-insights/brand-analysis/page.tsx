@@ -3,8 +3,8 @@ import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 
 export const metadata = {
-  title: "단백질 브랜드 포지셔닝 분석 | ProteinLab",
-  description: "더단백, 올프로틴, 마이밀, 하이뮨, 셀렉스 등 주요 브랜드의 포지셔닝과 메시지를 비교합니다.",
+  title: "단백질 브랜드 분석 | 셀렉스·하이뮨·더단백 포지셔닝 비교",
+  description: "셀렉스, 하이뮨, 더단백, 뉴케어, 마이밀 등 주요 브랜드가 어떤 타깃과 메시지로 시장을 나누는지 비교합니다.",
 };
 
 const brandRows = [
@@ -47,6 +47,24 @@ const readingPoints = [
   "건강관리형 브랜드는 회복·균형 메시지가 강해 중장년 소비자와 건강 관리 수요에 더 맞습니다.",
 ];
 
+const relatedLinks = [
+  {
+    href: "/guides/product-selection-comparison/selex-vs-himune",
+    title: "셀렉스 vs 하이뮨 비교",
+    body: "브랜드 포지셔닝을 읽었다면, 실제 제품 수치가 어떻게 갈리는지는 이 비교 페이지에서 바로 확인할 수 있습니다.",
+  },
+  {
+    href: "/guides/product-selection-comparison/selexs-lineup",
+    title: "브랜드 라인업 모아보기",
+    body: "같은 브랜드 안에서도 라인이 어떻게 나뉘는지 보고 싶다면 Track B 라인업 페이지로 바로 이어지는 편이 빠릅니다.",
+  },
+  {
+    href: "/guides/product-selection-comparison/protein-category-guide",
+    title: "카테고리 선택 가이드",
+    body: "브랜드보다 먼저 음료, 바, 쉐이크, 요거트 중 어디가 맞는지 다시 정리하고 싶을 때 연결해서 보기 좋습니다.",
+  },
+];
+
 export default function BrandAnalysisPage() {
   return (
     <div className="min-h-screen bg-white">
@@ -69,7 +87,7 @@ export default function BrandAnalysisPage() {
           <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
             같은 단백질 카테고리 안에서도 브랜드는 유통, 가격, 메시지, 제품 구성을 통해 서로 다른 이미지를 만듭니다.
             <br />
-            브랜드 포지셔닝을 읽으면 제품 비교와 시장 해석이 더 쉬워집니다.
+            브랜드 포지셔닝을 읽으면 제품 비교와 시장 해석이 더 쉬워지고, 그다음에 실제 비교 페이지로 넘어갈 기준도 더 또렷해집니다.
           </p>
         </div>
       </section>
@@ -135,6 +153,18 @@ export default function BrandAnalysisPage() {
             <blockquote className="mt-5 rounded-xl border border-[#dce8df] bg-[#f7fbf8] px-4 py-4 text-sm leading-6 text-[var(--foreground-muted)]">
               브랜드 분석의 목적은 브랜드 선호를 고르는 것이 아니라, 제품 비교 전에 어떤 메시지와 타깃으로 구성돼 있는지 이해하는 데 있습니다.
             </blockquote>
+          </section>
+
+          <section className="rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
+            <h2 className="text-xl font-bold text-[var(--foreground)]">바로 이어서 보기 좋은 비교 가이드</h2>
+            <div className="mt-5 grid gap-3 md:grid-cols-3">
+              {relatedLinks.map((item) => (
+                <Link key={item.href} href={item.href} className="rounded-2xl border border-[#dce8df] bg-[#f6fbf7] p-4 transition-colors hover:bg-white">
+                  <h3 className="text-sm font-semibold text-[#24543d]">{item.title}</h3>
+                  <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">{item.body}</p>
+                </Link>
+              ))}
+            </div>
           </section>
         </div>
       </main>

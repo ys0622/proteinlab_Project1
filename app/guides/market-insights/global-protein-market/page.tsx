@@ -3,8 +3,8 @@ import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 
 export const metadata = {
-  title: "글로벌 단백질 시장 비교 | ProteinLab",
-  description: "해외 단백질 시장 흐름과 국내 시장의 차이를 비교하고, 국내 제품 변화 방향을 읽는 기준을 정리했습니다.",
+  title: "글로벌 단백질 시장 비교 | 미국·유럽·일본과 국내 흐름 차이",
+  description: "미국, 유럽, 일본, 국내 단백질 시장이 어떻게 다른지 비교하고 국내에서 다음으로 커질 카테고리를 읽는 기준을 정리했습니다.",
 };
 
 const compareRows = [
@@ -44,6 +44,24 @@ const domesticImplications = [
   "RTD 중심 국내 시장은 앞으로 바·요거트·기능식까지 더 넓게 확장될 가능성이 높습니다.",
 ];
 
+const relatedLinks = [
+  {
+    href: "/guides/market-insights/protein-rtd-market",
+    title: "국내 RTD 시장 분석",
+    body: "글로벌 흐름을 본 뒤 국내에서 가장 먼저 커진 RTD 구조를 바로 확인하면 연결이 더 자연스럽습니다.",
+  },
+  {
+    href: "/guides/market-insights/protein-drink-trend-2026",
+    title: "2026 국내 단백질 음료 트렌드",
+    body: "글로벌 트렌드가 국내에서 지금 어떻게 나타나고 있는지 현재 시점으로 좁혀서 보고 싶다면 이 페이지가 맞습니다.",
+  },
+  {
+    href: "/guides/product-selection-comparison/protein-category-guide",
+    title: "카테고리 선택 가이드",
+    body: "시장 흐름을 읽은 뒤 실제로 음료, 쉐이크, 바, 요거트 중 어디가 커지고 있는지 제품 관점으로 다시 보려면 이 허브가 좋습니다.",
+  },
+];
+
 export default function GlobalProteinMarketPage() {
   return (
     <div className="min-h-screen bg-white">
@@ -70,7 +88,7 @@ export default function GlobalProteinMarketPage() {
           <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
             해외 시장 흐름을 보면 국내 시장이 어디쯤 와 있고, 앞으로 어떤 방향으로 세분화될지 읽을 수 있습니다.
             <br />
-            글로벌 트렌드는 국내 제품 변화의 선행 지표 역할을 합니다.
+            글로벌 트렌드는 국내 제품 변화의 선행 지표 역할을 하고, 실제 국내 비교 페이지를 해석할 때도 기준점이 됩니다.
           </p>
         </div>
       </section>
@@ -137,6 +155,18 @@ export default function GlobalProteinMarketPage() {
             <blockquote className="mt-5 rounded-xl border border-[#dce8df] bg-[#f7fbf8] px-4 py-4 text-sm leading-6 text-[var(--foreground-muted)]">
               글로벌 시장 비교의 목적은 해외 사례를 그대로 따라가는 것이 아니라, 국내에서 다음으로 커질 카테고리를 읽는 데 있습니다.
             </blockquote>
+          </section>
+
+          <section className="rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
+            <h2 className="text-xl font-bold text-[var(--foreground)]">국내 비교로 이어서 보기</h2>
+            <div className="mt-5 grid gap-3 md:grid-cols-3">
+              {relatedLinks.map((item) => (
+                <Link key={item.href} href={item.href} className="rounded-2xl border border-[#dce8df] bg-[#f6fbf7] p-4 transition-colors hover:bg-white">
+                  <h3 className="text-sm font-semibold text-[#24543d]">{item.title}</h3>
+                  <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">{item.body}</p>
+                </Link>
+              ))}
+            </div>
           </section>
         </div>
       </main>

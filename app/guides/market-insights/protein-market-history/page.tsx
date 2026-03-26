@@ -3,8 +3,8 @@ import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 
 export const metadata = {
-  title: "단백질 시장 히스토리 | ProteinLab",
-  description: "국내 단백질 시장이 보충제 중심에서 RTD 대중화, 목적별 세분화 단계로 확장된 흐름을 정리했습니다.",
+  title: "단백질 시장 히스토리 | 보충제에서 RTD 대중화까지",
+  description: "국내 단백질 시장이 보충제 중심에서 RTD 대중화, 저당·워터형·식물성 세분화 단계로 어떻게 이동했는지 정리했습니다.",
 };
 
 const historyRows = [
@@ -43,6 +43,24 @@ const keyInsights = [
   "시장 히스토리를 이해하면 신제품이 어떤 포지셔닝으로 나오는지 더 잘 읽을 수 있습니다.",
 ];
 
+const relatedLinks = [
+  {
+    href: "/guides/market-insights/new-product-analysis",
+    title: "신제품 분석 가이드",
+    body: "시장 흐름을 봤다면 다음 신제품이 왜 그렇게 나오는지 읽는 기준은 이 페이지에서 바로 이어집니다.",
+  },
+  {
+    href: "/guides/market-insights/protein-rtd-market",
+    title: "RTD 시장 분석",
+    body: "보충제 중심에서 RTD 중심으로 옮겨간 흐름을 더 자세히 보려면 이 페이지가 가장 직접적입니다.",
+  },
+  {
+    href: "/guides/product-selection-comparison/protein-category-guide",
+    title: "카테고리 선택 가이드",
+    body: "시장 히스토리를 실제 제품 카테고리 선택으로 연결하고 싶다면 음료, 쉐이크, 바, 요거트 허브를 같이 보는 편이 좋습니다.",
+  },
+];
+
 export default function ProteinMarketHistoryPage() {
   return (
     <div className="min-h-screen bg-white">
@@ -69,7 +87,7 @@ export default function ProteinMarketHistoryPage() {
           <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
             보충제 중심 시장에서 RTD 대중화 시장으로, 다시 목적별 세분화 단계로 이동한 흐름을 정리했습니다.
             <br />
-            시장 구조를 이해하면 브랜드와 제품을 읽는 기준도 더 선명해집니다.
+            시장 구조를 이해하면 브랜드와 제품을 읽는 기준도 더 선명해지고, 현재 비교 페이지에서 왜 이런 제품이 뜨는지도 더 쉽게 읽힙니다.
           </p>
         </div>
       </section>
@@ -160,6 +178,18 @@ export default function ProteinMarketHistoryPage() {
             <blockquote className="mt-5 rounded-xl border border-[#dce8df] bg-[#f7fbf8] px-4 py-4 text-sm leading-6 text-[var(--foreground-muted)]">
               단백질 시장 히스토리는 과거 정리가 아니라, 다음 신제품과 다음 카테고리를 읽는 기준입니다.
             </blockquote>
+          </section>
+
+          <section className="rounded-[28px] border border-[#e2ebe4] bg-[#f7fbf8] px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
+            <h2 className="text-xl font-bold text-[var(--foreground)]">다음으로 이어서 보기 좋은 가이드</h2>
+            <div className="mt-5 grid gap-3 md:grid-cols-3">
+              {relatedLinks.map((item) => (
+                <Link key={item.href} href={item.href} className="rounded-2xl border border-[#dce8df] bg-white p-4 transition-colors hover:bg-[#fbfdfb]">
+                  <h3 className="text-sm font-semibold text-[#24543d]">{item.title}</h3>
+                  <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">{item.body}</p>
+                </Link>
+              ))}
+            </div>
           </section>
         </div>
       </main>
