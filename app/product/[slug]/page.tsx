@@ -171,18 +171,29 @@ function getShakeSummaryNote(product: ProductDetailProps) {
 }
 
 function buildProductDescription(product: ProductDetailProps): string {
-  const protein = `단백질 ${product.proteinPerServing}g`;
-  const cal = product.calories != null ? `, ${product.calories}kcal` : "";
-  const sugar = product.sugar != null ? `, 당류 ${product.sugar}g` : "";
-  const grade = product.gradeTags?.length ? ` · ${product.gradeTags[0]} 등급` : "";
-  return `${product.brand} ${product.name} 성분 정보. ${protein}${cal}${sugar}${grade}. 단백질 밀도·영양 성분을 기준으로 직접 비교해보세요.`;
+  const metrics = [
+    `단백질 ${product.proteinPerServing}g`,
+    product.calories != null ? `${product.calories}kcal` : null,
+    product.sugar != null ? `당류 ${product.sugar}g` : null,
+    product.density ? `밀도 ${product.density}` : null,
+  ].filter(Boolean);
+  const tail =
+    product.productType === "drink"
+      ? "RTD 단백질 음료 비교, 비슷한 제품 추천, 구매 전 체크포인트까지 함께 확인할 수 있습니다."
+      : product.productType === "shake"
+        ? "쉐이크 비교, 다이어트 기준, 비슷한 제품 추천까지 함께 확인할 수 있습니다."
+        : product.productType === "bar"
+          ? "단백질 바 비교, 다이어트 기준, 비슷한 제품 추천까지 함께 확인할 수 있습니다."
+          : "요거트 비교, 당류 기준, 비슷한 제품 추천까지 함께 확인할 수 있습니다.";
+  return `${product.brand} ${product.name} 성분 정보입니다. ${metrics.join(" · ")}. ${tail}`;
 }
 
 function buildProductTitle(product: ProductDetailProps): string {
   const kind = getProductKindLabel(product.productType);
-  const protein = `단백질 ${product.proteinPerServing}g`;
-  const sugar = product.sugar != null ? ` · 당류 ${product.sugar}g` : "";
-  return `${product.brand} ${product.name} | ${protein}${sugar} · ${kind} | ProteinLab`;
+  const headline = [`단백질 ${product.proteinPerServing}g`];
+  if (product.sugar != null) headline.push(`당류 ${product.sugar}g`);
+  else if (product.calories != null) headline.push(`${product.calories}kcal`);
+  return `${product.brand} ${product.name} | ${headline.join(" · ")} | ${kind} 비교`;
 }
 
 export async function generateMetadata({ params }: PageProps) {

@@ -6,9 +6,9 @@ import { getAdminGuidesStaticRuntimeData } from "@/app/lib/adminGuidesStaticRunt
 export const dynamic = "force-dynamic";
 
 export const metadata = {
-  title: "단백질 가이드 | ProteinLab",
+  title: "단백질 가이드 모음 | 음료·쉐이크·바·요거트 선택 가이드",
   description:
-    "단백질 기초, 제품 선택, 섭취 전략, 운동 라이프스타일까지 한 번에 탐색하는 ProteinLab 가이드 허브입니다.",
+    "단백질 음료 비교, 쉐이크 추천, 단백질 바·요거트 선택법까지 한 번에 찾을 수 있는 ProteinLab 가이드 허브입니다.",
 };
 
 const clampTwoLines = {

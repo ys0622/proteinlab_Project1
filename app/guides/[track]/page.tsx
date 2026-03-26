@@ -104,6 +104,14 @@ export async function generateMetadata({ params }: { params: Promise<{ track: st
 
   if (!section) return {};
 
+  if (section.slug === "product-selection-comparison") {
+    return {
+      title: "단백질 음료 비교·추천 가이드 | 셀렉스·하이뮨·테이크핏",
+      description:
+        "셀렉스, 하이뮨, 테이크핏, 뉴케어까지 단백질 음료 비교와 추천 가이드를 한 번에 모았습니다. 입문자, 다이어트, 40g 고단백 비교도 함께 볼 수 있습니다.",
+    };
+  }
+
   return {
     title: `${section.title} | ProteinLab Guides`,
     description: section.description,

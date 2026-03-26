@@ -88,8 +88,8 @@ const commonRelated: RelatedGuideLink[] = [
 
 export const selexVsHimuneConfig: ComparePageConfig = {
   slug: "selex-vs-himune",
-  title: "셀렉스 vs 하이뮨 비교",
-  description: "셀렉스와 하이뮨 대표 RTD 단백질 음료를 단백질, 당류, 칼로리, 지방, 나트륨 기준으로 직접 비교합니다.",
+  title: "셀렉스 vs 하이뮨 | 단백질·당류·칼로리 비교 (2026)",
+  description: "셀렉스와 하이뮨 대표 RTD 단백질 음료를 단백질, 당류, 칼로리, 지방, 나트륨 기준으로 비교했습니다. 다이어트용, 일상용, 맛 선택까지 바로 정리합니다.",
   keywords: ["셀렉스 하이뮨 비교", "셀렉스 vs 하이뮨", "하이뮨 셀렉스 차이", "단백질 음료 비교"],
   badge: "브랜드 비교",
   readingTime: "4분 읽기",
@@ -159,8 +159,8 @@ selexVsHimuneConfig.jsonLd = [articleJsonLd(selexVsHimuneConfig), faqJsonLd(sele
 
 export const highProtein40gConfig: ComparePageConfig = {
   slug: "high-protein-40g-comparison",
-  title: "단백질 음료 40g 이상 3종 비교",
-  description: "테이크핏 몬스터, 뉴케어 올프로틴 41g, 닥터유 프로 단백질 드링크 40g을 단백질, 당류, 칼로리, 밀도 기준으로 비교합니다.",
+  title: "단백질 음료 40g 이상 3종 비교 | 테이크핏·뉴케어·닥터유",
+  description: "테이크핏 몬스터, 뉴케어 올프로틴 41g, 닥터유 40g을 단백질, 당류, 칼로리, 밀도 기준으로 비교했습니다. 운동용, 락토프리, 맛 중심 선택까지 한 번에 정리합니다.",
   keywords: ["단백질 음료 40g", "고단백 단백질 음료 비교", "테이크핏 몬스터", "뉴케어 올프로틴 41g", "닥터유 40g"],
   badge: "고단백 비교",
   readingTime: "5분 읽기",
@@ -230,8 +230,8 @@ highProtein40gConfig.jsonLd = [articleJsonLd(highProtein40gConfig), faqJsonLd(hi
 
 export const proteinDensityRankingConfig: ComparePageConfig = {
   slug: "protein-density-ranking",
-  title: "단백질 음료 100mL당 단백질 함량 순위",
-  description: "ProteinLab DB 기준으로 단백질 음료의 100mL당 단백질 함량을 계산해 상위 제품을 정리했습니다.",
+  title: "단백질 음료 100mL당 단백질 순위 | 104개 전수 계산",
+  description: "ProteinLab DB 기준 104개 단백질 음료의 100mL당 단백질 함량을 전수 계산했습니다. 고단백 RTD 상위권과 밀도 해석까지 한 번에 확인할 수 있습니다.",
   keywords: ["단백질 밀도", "단백질 음료 가성비", "단백질 음료 효율", "100mL당 단백질"],
   badge: "데이터 랭킹",
   readingTime: "5분 읽기",
@@ -722,8 +722,8 @@ proteinDrinkForDiabetesConfig.jsonLd = [articleJsonLd(proteinDrinkForDiabetesCon
 
 export const proteinDrinkBeginnersGuideConfig: ComparePageConfig = {
   slug: "protein-drink-beginners-guide",
-  title: "단백질 음료 처음 마시는 사람을 위한 입문 가이드",
-  description: "단백질 음료를 처음 마시는 사람이 무엇부터 봐야 하는지, 목적별 첫 제품 추천과 자주 하는 실수를 쉬운 언어로 정리했습니다.",
+  title: "단백질 음료 입문 가이드 | 처음이면 뭐부터 마셔야 할까",
+  description: "단백질 음료를 처음 마시는 사람을 위해 20g대 입문 제품, 당류 기준, 맛 선택 순서까지 쉽게 정리했습니다. 첫 제품 추천과 자주 하는 실수도 함께 확인할 수 있습니다.",
   keywords: ["단백질 음료 처음", "단백질 음료 입문", "단백질 음료 뭐 마셔야", "프로틴 음료 뉴비"],
   badge: "입문 가이드",
   readingTime: "5분 읽기",

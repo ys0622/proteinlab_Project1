@@ -81,8 +81,8 @@ const categoryRows: CategoryMetricRow[] = [
 
 export const proteinCategoryGuideConfig: CategoryGuideConfig = {
   slug: "protein-category-guide",
-  title: "단백질 음료 vs 쉐이크 vs 바 vs 요거트",
-  description: "RTD 음료, 파우치 쉐이크, 단백질 바, 단백질 요거트를 한눈에 비교해 지금 내 목적에 맞는 카테고리를 고르는 법을 정리했습니다.",
+  title: "단백질 음료 vs 쉐이크 vs 바 vs 요거트 | 뭐부터 고를까",
+  description: "단백질 음료, 쉐이크, 바, 요거트를 한눈에 비교했습니다. 운동 후 보충, 다이어트, 아침 대용, 간식용까지 목적별로 어떤 카테고리가 맞는지 바로 정리합니다.",
   keywords: ["단백질 음료 쉐이크 차이", "프로틴 뭐 먹어야 해", "단백질 보충제 종류", "단백질 카테고리 비교"],
   badge: "카테고리 허브",
   readingTime: "5분 읽기",
