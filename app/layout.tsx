@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   description:
     "단백질 음료, 단백질 바, 단백질 요거트, 단백질 쉐이크 290개 이상을 단백질·당류·칼로리 성분 기준으로 비교합니다. 목적별 추천과 등급 순위까지 한 번에 확인하세요.",
   icons: {
-    icon: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧪</text></svg>",
+    icon: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💪</text></svg>",
   },
   openGraph: {
     title: "단백질 제품 비교·추천 | ProteinLab",
