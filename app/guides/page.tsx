@@ -6,9 +6,9 @@ import { getAdminGuidesStaticRuntimeData } from "@/app/lib/adminGuidesStaticRunt
 export const dynamic = "force-dynamic";
 
 export const metadata = {
-  title: "단백질 가이드 모음 | 음료·쉐이크·바·요거트 선택 가이드",
+  title: "단백질 가이드 모음 | 음료·쉐이크·바·요거트 비교·추천",
   description:
-    "단백질 음료 비교, 쉐이크 추천, 단백질 바·요거트 선택법까지 한 번에 찾을 수 있는 ProteinLab 가이드 허브입니다.",
+    "단백질 음료 비교, 쉐이크 추천, 단백질 바·요거트 선택법까지 한 번에 찾을 수 있는 ProteinLab 대표 가이드 허브입니다.",
 };
 
 const clampTwoLines = {
@@ -108,7 +108,7 @@ export default async function GuidesPage() {
                     </p>
 
                     <div className="mt-4">
-                      <p className="text-[11px] font-semibold uppercase tracking-wide text-[#7c8b84]">대표 콘텐츠</p>
+                      <p className="text-[11px] font-semibold uppercase tracking-wide text-[#7c8b84]">지금 많이 찾는 주제</p>
 
                       <div className="mt-2 hidden flex-wrap gap-1.5 md:flex">
                         {featuredTopics.map((article) => (
@@ -139,7 +139,7 @@ export default async function GuidesPage() {
 
                     <div className="mt-5 rounded-xl border border-[#d7e6dd] bg-[#f4faf6] px-3 py-2">
                       <p className="text-[11px] font-semibold" style={{ color: track.accentColor }}>
-                        인기 콘텐츠
+                        먼저 보면 좋은 글
                       </p>
                       <p className="mt-1 text-[12px] font-medium leading-5 text-[var(--foreground)]" style={clampOneLine}>
                         {popularTopic}
@@ -156,7 +156,7 @@ export default async function GuidesPage() {
                       color: track.accentColor,
                     }}
                   >
-                    가이드 보기
+                    이 트랙 바로 보기
                   </span>
                 </div>
               </Link>

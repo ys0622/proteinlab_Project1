@@ -22,20 +22,20 @@ export async function generateMetadata({ params }: PageProps) {
   }
 
   return {
-    title: `${topic.title} | ProteinLab`,
-    description: topic.description,
+    title: `${topic.title} | 조건별 단백질 비교 허브`,
+    description: `${topic.description} 실제 비교 페이지와 추천 가이드로 바로 이어질 수 있게 정리했습니다.`,
     alternates: {
       canonical: `https://proteinlab.kr/topics/${topic.slug}`,
     },
     robots: { index: true, follow: true },
     openGraph: {
-      title: `${topic.title} | ProteinLab`,
-      description: topic.description,
+      title: `${topic.title} | 조건별 단백질 비교 허브`,
+      description: `${topic.description} 실제 비교 페이지와 추천 가이드로 바로 이어질 수 있게 정리했습니다.`,
     },
     twitter: {
       card: "summary_large_image",
-      title: `${topic.title} | ProteinLab`,
-      description: topic.description,
+      title: `${topic.title} | 조건별 단백질 비교 허브`,
+      description: `${topic.description} 실제 비교 페이지와 추천 가이드로 바로 이어질 수 있게 정리했습니다.`,
     },
   };
 }
@@ -79,7 +79,7 @@ export default async function TopicLandingPage({ params }: PageProps) {
             {topic.title}
           </h1>
           <p className="mt-2 max-w-[760px] text-sm leading-6 text-[var(--foreground-muted)] md:text-[15px]">
-            {topic.description}
+            {topic.description} 조건을 먼저 좁힌 뒤, 실제 비교 페이지와 추천 가이드로 바로 넘어갈 수 있게 정리했습니다.
           </p>
         </div>
       </section>
@@ -108,7 +108,7 @@ export default async function TopicLandingPage({ params }: PageProps) {
                 바로 비교하러 가기
               </h2>
               <p className="mt-1 text-sm leading-6 text-[var(--foreground-muted)]">
-                조건 설명만 보고 끝나지 않도록 실제 비교 페이지로 바로 연결합니다.
+                조건 설명만 보고 끝나지 않도록, 가장 가까운 실제 비교 페이지로 바로 연결합니다.
               </p>
             </div>
             <Link
@@ -121,8 +121,8 @@ export default async function TopicLandingPage({ params }: PageProps) {
         </section>
 
         <RelatedLinkCards
-          title="같이 보는 비교 허브"
-          description="검색 의도가 비슷한 가이드와 허브 페이지로 바로 이어서 비교할 수 있게 묶었습니다."
+          title="같이 보면 좋은 비교 허브"
+          description="검색 의도가 비슷한 가이드와 허브 페이지를 묶어서 다음 클릭이 바로 이어지도록 정리했습니다."
           links={topic.relatedLinks}
           sectionId={`topic-${topic.slug}-related`}
         />
