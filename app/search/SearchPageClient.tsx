@@ -37,7 +37,7 @@ export default function SearchPageClient({ initialQuery }: { initialQuery: strin
 
   useEffect(() => {
     fetch("/products.json")
-      .then((r) => r.json())
+      .then((response) => response.json())
       .then((data: ProductsJson) => {
         setAllProducts(data.products ?? []);
         setLoaded(true);
@@ -53,16 +53,16 @@ export default function SearchPageClient({ initialQuery }: { initialQuery: strin
   const filtered =
     trimmed.length >= 1
       ? allProducts.filter(
-          (p) =>
-            p.name.toLowerCase().includes(trimmed) ||
-            p.brand.toLowerCase().includes(trimmed),
+          (product) =>
+            product.name.toLowerCase().includes(trimmed) ||
+            product.brand.toLowerCase().includes(trimmed),
         )
       : [];
 
-  const grouped = CATEGORY_ORDER.reduce<Record<string, ProductEntry[]>>((acc, cat) => {
-    const items = filtered.filter((p) => p.category === cat);
-    if (items.length > 0) acc[cat] = items;
-    return acc;
+  const grouped = CATEGORY_ORDER.reduce<Record<string, ProductEntry[]>>((accumulator, category) => {
+    const items = filtered.filter((product) => product.category === category);
+    if (items.length > 0) accumulator[category] = items;
+    return accumulator;
   }, {});
 
   const totalCount = filtered.length;
@@ -76,9 +76,19 @@ export default function SearchPageClient({ initialQuery }: { initialQuery: strin
 
   return (
     <div>
-      <h1 className="text-2xl font-bold text-[var(--foreground)] mb-6">제품 검색</h1>
+      <div className="max-w-3xl">
+        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--accent)]">
+          Search
+        </p>
+        <h1 className="mt-2 text-2xl font-bold text-[var(--foreground)] md:text-3xl">
+          단백질 제품 검색
+        </h1>
+        <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)] md:text-base">
+          브랜드명이나 제품명으로 검색하면 제품 상세와 비교 페이지로 바로 이어서 볼 수 있습니다.
+        </p>
+      </div>
 
-      <div className="relative mb-6">
+      <div className="relative mb-6 mt-6">
         <span className="absolute left-4 top-1/2 -translate-y-1/2 text-[var(--foreground-muted)]">
           <svg width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
             <circle cx="11" cy="11" r="8" />
@@ -90,8 +100,8 @@ export default function SearchPageClient({ initialQuery }: { initialQuery: strin
           type="search"
           value={query}
           onChange={(e) => handleQueryChange(e.target.value)}
-          placeholder="브랜드 또는 제품명으로 검색"
-          className="w-full rounded-xl border border-[#e8e6e3] bg-[#fffdf8] pl-11 pr-4 py-3 text-sm focus:border-[var(--accent)] focus:outline-none focus:ring-1 focus:ring-[var(--accent)]"
+          placeholder="브랜드명 또는 제품명으로 검색"
+          className="w-full rounded-xl border border-[#e8e6e3] bg-[#fffdf8] py-3 pl-11 pr-4 text-sm focus:border-[var(--accent)] focus:outline-none focus:ring-1 focus:ring-[var(--accent)]"
           autoComplete="off"
         />
         {query && (
@@ -101,25 +111,27 @@ export default function SearchPageClient({ initialQuery }: { initialQuery: strin
             className="absolute right-4 top-1/2 -translate-y-1/2 text-[var(--foreground-muted)] hover:text-[var(--foreground)]"
             aria-label="검색어 지우기"
           >
-            ✕
+            ×
           </button>
         )}
       </div>
 
       {!loaded && (
-        <div className="py-20 text-center text-sm text-[var(--foreground-muted)]">로딩 중...</div>
+        <div className="py-20 text-center text-sm text-[var(--foreground-muted)]">불러오는 중입니다.</div>
       )}
 
       {loaded && !trimmed && (
-        <div className="py-16 text-center text-sm text-[var(--foreground-muted)]">
-          브랜드명 또는 제품명을 입력하세요.
+        <div className="rounded-2xl border border-[#ebe5dc] bg-[#fcfaf6] px-5 py-10 text-center text-sm text-[var(--foreground-muted)]">
+          브랜드명 또는 제품명을 입력해보세요. 예: 셀렉스, 하이뮨, 랩노쉬, 뉴케어
         </div>
       )}
 
       {loaded && trimmed && totalCount === 0 && (
         <div className="py-16 text-center">
           <p className="text-base font-semibold text-[var(--foreground)]">검색 결과가 없습니다</p>
-          <p className="mt-1 text-sm text-[var(--foreground-muted)]">다른 키워드로 다시 시도해보세요.</p>
+          <p className="mt-1 text-sm text-[var(--foreground-muted)]">
+            다른 키워드로 다시 검색하거나 브랜드명으로 시도해보세요.
+          </p>
         </div>
       )}
 
@@ -129,11 +141,11 @@ export default function SearchPageClient({ initialQuery }: { initialQuery: strin
             <span className="font-semibold text-[var(--foreground)]">{totalCount}개</span> 결과
           </p>
 
-          {Object.entries(grouped).map(([cat, items]) => (
-            <section key={cat}>
-              <div className="flex items-center justify-between mb-3">
+          {Object.entries(grouped).map(([category, items]) => (
+            <section key={category}>
+              <div className="mb-3 flex items-center justify-between">
                 <h2 className="text-base font-bold text-[var(--foreground)]">
-                  {CATEGORY_LABEL[cat] ?? cat}
+                  {CATEGORY_LABEL[category] ?? category}
                   <span className="ml-1.5 text-sm font-normal text-[var(--foreground-muted)]">
                     {items.length}개
                   </span>
@@ -158,9 +170,12 @@ export default function SearchPageClient({ initialQuery }: { initialQuery: strin
               </div>
               {items.length > 8 && (
                 <p className="mt-3 text-xs text-[var(--foreground-muted)]">
-                  {items.length - 8}개 더 있음 —{" "}
-                  <Link href={`/${cat === "drink" ? "" : cat}`} className="text-[var(--accent)] hover:underline">
-                    전체 {CATEGORY_LABEL[cat]} 보기
+                  {items.length - 8}개가 더 있습니다.{" "}
+                  <Link
+                    href={`/${category === "drink" ? "" : category}`}
+                    className="text-[var(--accent)] hover:underline"
+                  >
+                    전체 {CATEGORY_LABEL[category]} 보기
                   </Link>
                 </p>
               )}

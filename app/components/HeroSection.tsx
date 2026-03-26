@@ -19,7 +19,7 @@ export default function HeroSection() {
             className="mt-0.5 text-[11px] leading-snug text-[var(--foreground-muted)] md:mt-1 md:text-sm md:leading-normal"
             style={{ fontWeight: 400 }}
           >
-            음료·바·요거트·쉐이크 290개 이상 · 단백질·당류·칼로리 성분 기준 직접 비교
+            음료, 바, 요거트, 쉐이크 306종을 단백질, 당류, 칼로리 기준으로 직접 비교합니다.
           </p>
         </div>
       </div>
