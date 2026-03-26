@@ -27,9 +27,12 @@ export async function generateMetadata({ params }: PageProps) {
   }
 
   return {
-    title: `${brand} 단백질 제품 모음 | ProteinLab`,
-    description: `${brand} 브랜드의 단백질 음료, 바, 요거트, 쉐이크 제품을 한 곳에서 비교합니다.`,
-    robots: { index: false, follow: false },
+    title: `${brand} 단백질 제품 모음 | 브랜드별 제품 비교 허브`,
+    description: `${brand} 브랜드의 단백질 음료, 바, 요거트, 쉐이크 제품을 한 곳에서 보고 비교 페이지와 제품 상세로 바로 이동할 수 있습니다.`,
+    alternates: {
+      canonical: `https://proteinlab.kr/brands/${slug}`,
+    },
+    robots: { index: true, follow: true },
   };
 }
 
@@ -62,7 +65,7 @@ export default async function BrandPage({ params }: PageProps) {
             {brand.brand} 단백질 제품 모음
           </h1>
           <p className="mt-2 max-w-[760px] text-sm leading-6 text-[var(--foreground-muted)] md:text-[15px]">
-            {brand.brand} 브랜드 제품 {brand.total}개를 모았습니다. 제품 상세와 비교 페이지로 바로 이동할 수 있게 구성했습니다.
+            {brand.brand} 브랜드 제품 {brand.total}개를 모았습니다. 브랜드명 검색 뒤 바로 제품 상세와 비교 페이지로 넘어갈 수 있게 정리했습니다.
           </p>
         </div>
       </section>
@@ -72,6 +75,9 @@ export default async function BrandPage({ params }: PageProps) {
           <h2 className="text-base font-semibold text-[var(--foreground)]">브랜드 요약</h2>
           <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">
             카테고리: {brand.categories.map((category) => getCategoryLabel(category as ProductCategory)).join(", ")} / 총 제품 수: {brand.total}개
+          </p>
+          <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">
+            제품 수가 많은 브랜드일수록 라인별 차이가 크기 때문에, 상세 페이지와 비교 페이지를 같이 보는 편이 빠릅니다.
           </p>
         </section>
 

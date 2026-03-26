@@ -111,7 +111,7 @@ export default function ComparePage() {
   const compareDescription =
     selectedCategory === "shake"
       ? "파우치형 단백질 쉐이크를 단백질, 당류, 식이섬유, 단백질 밀도 기준으로 비교합니다. 식사대용인지 운동보충용인지도 같이 판단하기 좋게 정리했습니다."
-      : "최대 4개 제품을 한 화면에서 비교합니다.";
+      : "단백질 음료, 바, 요거트, 쉐이크를 최대 4개까지 한 화면에서 비교합니다.";
 
   if (products.length === 0) {
     return (
@@ -121,7 +121,7 @@ export default function ComparePage() {
           <div className="mx-auto max-w-[1200px] px-4 py-8 md:px-6">
             <h1 className="text-2xl font-bold" style={{ color: "#1a1a1a", fontWeight: 700 }}>제품 비교</h1>
             <p className="mt-1 text-sm" style={{ color: "#6b6b6b" }}>
-              비교할 제품을 선택해 주세요. (최대 4개)
+              비교할 제품을 선택해 주세요. 단백질 함량, 당류, 칼로리를 나란히 볼 수 있습니다. (최대 4개)
             </p>
             <Link
               href="/"

@@ -23,11 +23,14 @@ export async function generateMetadata({ params }: PageProps) {
   }
 
   return {
-    title: `${landing.title} | ProteinLab`,
-    description: landing.description,
+    title: `${landing.title} | 단백질 제품 비교표`,
+    description: `${landing.description} 비교표와 제품 상세 페이지로 바로 이어서 확인할 수 있습니다.`,
+    alternates: {
+      canonical: `https://proteinlab.kr/compare/${landing.slug}`,
+    },
     openGraph: {
-      title: `${landing.title} | ProteinLab`,
-      description: landing.description,
+      title: `${landing.title} | 단백질 제품 비교표`,
+      description: `${landing.description} 비교표와 제품 상세 페이지로 바로 이어서 확인할 수 있습니다.`,
     },
   };
 }
@@ -75,7 +78,7 @@ export default async function CompareLandingPage({ params }: PageProps) {
             {landing.title}
           </h1>
           <p className="mt-2 max-w-[760px] text-sm leading-6 text-[var(--foreground-muted)] md:text-[15px]">
-            {landing.description}
+            {landing.description} 조건 설명만 보고 끝나지 않도록 비교표와 제품 상세로 바로 이어질 수 있게 구성했습니다.
           </p>
         </div>
       </section>
@@ -96,7 +99,7 @@ export default async function CompareLandingPage({ params }: PageProps) {
             href={compareHref}
             className="mt-5 inline-flex items-center justify-center rounded-full bg-[var(--accent)] px-5 py-2.5 text-sm font-semibold text-white transition-opacity hover:opacity-90"
           >
-            비교 테이블로 보기
+            비교표 바로 보기
           </Link>
         </section>
 
@@ -104,7 +107,7 @@ export default async function CompareLandingPage({ params }: PageProps) {
           <div className="mb-4 space-y-1">
             <h2 className="text-lg font-bold text-[var(--foreground)]">비교 대상 제품</h2>
             <p className="text-sm leading-6 text-[var(--foreground-muted)]">
-              제품 상세로 들어가거나 비교 테이블에서 수치를 나란히 확인할 수 있습니다.
+              제품 상세로 들어가거나 비교표에서 수치를 나란히 확인할 수 있습니다.
             </p>
           </div>
           <div className="grid grid-cols-2 gap-3 md:gap-6 lg:grid-cols-3">

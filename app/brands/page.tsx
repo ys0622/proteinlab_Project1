@@ -6,9 +6,9 @@ import { getCategoryLabel, type ProductCategory } from "../lib/categories";
 import { getBrandSummary } from "../lib/brandHubs";
 
 export const metadata = {
-  title: "단백질 브랜드 허브 | 셀렉스·하이뮨·랩노쉬 제품 모음 | ProteinLab",
+  title: "단백질 브랜드 모음 | 셀렉스·하이뮨·랩노쉬 제품 비교 허브",
   description:
-    "셀렉스, 하이뮨, 랩노쉬, 더단백, 닥터유 등 주요 단백질 브랜드별 제품을 한곳에서 모아 비교합니다.",
+    "셀렉스, 하이뮨, 랩노쉬, 더단백, 닥터유 등 주요 단백질 브랜드별 제품을 한곳에서 모아 비교할 수 있는 브랜드 허브입니다.",
 };
 
 export default async function BrandsPage() {
@@ -28,8 +28,7 @@ export default async function BrandsPage() {
             단백질 브랜드 허브
           </h1>
           <p className="mt-2 max-w-[760px] text-sm leading-6 text-[var(--foreground-muted)] md:text-[15px]">
-            브랜드별로 제품을 모아 보고 싶은 검색 유입을 위해, 주요 단백질 브랜드를 한곳에
-            정리했습니다.
+            셀렉스, 하이뮨, 랩노쉬, 더단백처럼 브랜드명으로 검색한 뒤 바로 제품 목록과 비교 페이지로 넘어갈 수 있게 정리했습니다.
           </p>
         </div>
       </section>
@@ -47,6 +46,7 @@ export default async function BrandsPage() {
                 제품 {brand.total}개 ·{" "}
                 {brand.categories.map((category) => getCategoryLabel(category as ProductCategory)).join(", ")}
               </p>
+              <p className="mt-3 text-xs font-semibold text-[var(--accent)]">브랜드 제품 바로 보기</p>
             </Link>
           ))}
         </div>
