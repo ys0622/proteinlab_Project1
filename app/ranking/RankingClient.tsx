@@ -30,31 +30,31 @@ const METRICS: { id: GradeMetric; label: string }[] = [
 function getMetricGuide(productType: ProductCategory, metric: GradeMetric) {
   if (productType === "shake") {
     if (metric === "density") {
-      return "칼로리 대비 단백질 효율이 높은 제품이 위로 올라옵니다";
+      return "칼로리 대비 단백질 효율이 높은 쉐이크를 먼저 보고 싶을 때 확인하면 좋습니다.";
     }
     if (metric === "diet") {
-      return "당류, 칼로리, 밀도, 식이섬유 균형을 반영한 상대 점수입니다";
+      return "당류, 칼로리, 단백질 균형을 함께 반영한 다이어트 중심 점수입니다.";
     }
-    return "단백질 함량과 밀도를 중심으로 운동 보충 관점에서 계산합니다";
+    return "단백질 총량과 밀도를 중심으로 운동 직후 보충 관점에서 계산했습니다.";
   }
 
   return metric === "diet"
-    ? "낮을수록 유리한 값을 100점 기준으로 환산"
-    : "높을수록 유리한 값을 100점 기준으로 환산";
+    ? "점수가 낮을수록 더 유리한 값들을 100점 기준으로 환산한 결과입니다."
+    : "점수가 높을수록 더 유리한 값들을 100점 기준으로 환산한 결과입니다.";
 }
 
 function getCategoryRankingDescription(productType: ProductCategory, metric: GradeMetric) {
   if (productType === "shake") {
     if (metric === "density") {
-      return "쉐이크는 칼로리 대비 단백질 효율 차이가 커서 같은 파우치형이라도 만족도가 갈립니다. 밀도 상위권은 운동 보충용으로 비교하기 좋습니다.";
+      return "쉐이크는 칼로리 대비 단백질 효율 차이가 커서, 같은 파우치형이라도 실제 체감이 크게 갈립니다.";
     }
     if (metric === "diet") {
-      return "쉐이크의 다이어트 점수는 당류만 보는 방식이 아니라 칼로리, 단백질 밀도, 식이섬유 균형까지 함께 반영합니다.";
+      return "쉐이크 다이어트 점수는 당류만이 아니라 칼로리, 단백질, 포만감 균형까지 함께 봅니다.";
     }
-    return "쉐이크의 퍼포먼스 점수는 단백질 함량과 밀도를 중심으로 운동 직후 보충 관점에서 계산합니다.";
+    return "쉐이크 퍼포먼스 점수는 단백질 총량과 밀도를 기준으로 운동 후 보충 효율을 계산했습니다.";
   }
 
-  return "단백질 밀도, 다이어트, 퍼포먼스 점수를 모두 100점 기준으로 비교합니다.";
+  return "단백질 밀도, 다이어트, 퍼포먼스 세 기준을 100점 환산으로 비교해 바로 고를 수 있게 정리했습니다.";
 }
 
 export default function RankingClient({ rankings }: RankingClientProps) {
@@ -72,15 +72,18 @@ export default function RankingClient({ rankings }: RankingClientProps) {
 
   return (
     <>
-      <section className="w-full border-b border-t bg-[var(--hero-bg)]" style={{ borderColor: "var(--hero-border)" }}>
+      <section
+        className="w-full border-b border-t bg-[var(--hero-bg)]"
+        style={{ borderColor: "var(--hero-border)" }}
+      >
         <div className="mx-auto max-w-[1200px] px-4 py-4 md:px-6 md:py-5">
           <h1 className="text-2xl font-bold md:text-3xl" style={{ color: "#1a1a1a", fontWeight: 700 }}>
-            등급 순위
+            단백질 랭킹
           </h1>
           <p className="mt-1 text-sm text-[var(--foreground-muted)]" style={{ fontWeight: 400 }}>
             {getCategoryRankingDescription(productType, metric)}
           </p>
-          <AffiliateDisclosure className="mt-2 mb-0" />
+          <AffiliateDisclosure className="mb-0 mt-2" />
         </div>
       </section>
 
@@ -123,7 +126,7 @@ export default function RankingClient({ rankings }: RankingClientProps) {
               {getCategoryLabel(productType)} 랭킹 데이터가 아직 없습니다.
             </p>
             <p className="mt-2 text-sm text-[var(--foreground-muted)]">
-              카테고리 구조는 반영되어 있고, 제품 데이터가 추가되면 같은 기준으로 랭킹이 계산됩니다.
+              카테고리 구조에 반영된 뒤 제품 데이터가 추가되면 같은 기준으로 자동 계산됩니다.
             </p>
           </div>
         ) : (

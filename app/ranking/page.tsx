@@ -7,18 +7,18 @@ import { getProductsByCategoryAsync } from "../lib/productData";
 import RankingClient from "./RankingClient";
 
 export const metadata = {
-  title: "단백질 랭킹 | 음료·바·요거트·쉐이크 추천 순위 | ProteinLab",
+  title: "단백질 랭킹 | 음료·바·요거트·쉐이크 추천 순위",
   description:
-    "단백질 음료, 바, 요거트, 쉐이크 순위를 단백질 밀도, 다이어트, 퍼포먼스 100점 기준으로 비교하는 ProteinLab 랭킹 허브입니다.",
+    "단백질 음료, 바, 요거트, 쉐이크를 단백질 밀도, 다이어트, 퍼포먼스 기준으로 비교한 ProteinLab 랭킹 허브입니다.",
 };
 
 function prepareRankingData(products: ProductDetailProps[], metric: "density" | "diet" | "performance") {
-  const scored = products.map((p) => {
+  const scored = products.map((product) => {
     let rawScore: number;
-    if (metric === "density") rawScore = getDensityValue(p);
-    else if (metric === "diet") rawScore = getDietScore(p);
-    else rawScore = getPerformanceScore(p);
-    return { product: p, rawScore };
+    if (metric === "density") rawScore = getDensityValue(product);
+    else if (metric === "diet") rawScore = getDietScore(product);
+    else rawScore = getPerformanceScore(product);
+    return { product, rawScore };
   });
 
   const higherIsBetter = metric !== "diet";
@@ -68,24 +68,30 @@ export default async function RankingPage() {
     getProductsByCategoryAsync("shake"),
   ]);
 
-  const drinkDensity = prepareRankingData(drinkProducts, "density");
-  const drinkDiet = prepareRankingData(drinkProducts, "diet");
-  const drinkPerf = prepareRankingData(drinkProducts, "performance");
-  const barDensity = prepareRankingData(barProducts, "density");
-  const barDiet = prepareRankingData(barProducts, "diet");
-  const barPerf = prepareRankingData(barProducts, "performance");
-  const yogurtDensity = prepareRankingData(yogurtProducts, "density");
-  const yogurtDiet = prepareRankingData(yogurtProducts, "diet");
-  const yogurtPerf = prepareRankingData(yogurtProducts, "performance");
-  const shakeDensity = prepareRankingData(shakeProducts, "density");
-  const shakeDiet = prepareRankingData(shakeProducts, "diet");
-  const shakePerf = prepareRankingData(shakeProducts, "performance");
-
-  const rankings: Record<ProductCategory, { density: RankingItem[]; diet: RankingItem[]; performance: RankingItem[] }> = {
-    drink: { density: drinkDensity, diet: drinkDiet, performance: drinkPerf },
-    bar: { density: barDensity, diet: barDiet, performance: barPerf },
-    yogurt: { density: yogurtDensity, diet: yogurtDiet, performance: yogurtPerf },
-    shake: { density: shakeDensity, diet: shakeDiet, performance: shakePerf },
+  const rankings: Record<
+    ProductCategory,
+    { density: RankingItem[]; diet: RankingItem[]; performance: RankingItem[] }
+  > = {
+    drink: {
+      density: prepareRankingData(drinkProducts, "density"),
+      diet: prepareRankingData(drinkProducts, "diet"),
+      performance: prepareRankingData(drinkProducts, "performance"),
+    },
+    bar: {
+      density: prepareRankingData(barProducts, "density"),
+      diet: prepareRankingData(barProducts, "diet"),
+      performance: prepareRankingData(barProducts, "performance"),
+    },
+    yogurt: {
+      density: prepareRankingData(yogurtProducts, "density"),
+      diet: prepareRankingData(yogurtProducts, "diet"),
+      performance: prepareRankingData(yogurtProducts, "performance"),
+    },
+    shake: {
+      density: prepareRankingData(shakeProducts, "density"),
+      diet: prepareRankingData(shakeProducts, "diet"),
+      performance: prepareRankingData(shakeProducts, "performance"),
+    },
   };
 
   const categoryLabelMap: Record<ProductCategory, string> = {
@@ -96,11 +102,11 @@ export default async function RankingPage() {
   };
 
   const itemListJsonLd = (Object.entries(rankings) as [ProductCategory, typeof rankings.drink][]).map(
-    ([cat, data]) => ({
+    ([category, data]) => ({
       "@context": "https://schema.org",
       "@type": "ItemList",
-      name: `${categoryLabelMap[cat]} 단백질 밀도 랭킹`,
-      description: `단백질 밀도(g/100kcal) 기준 ${categoryLabelMap[cat]} 순위`,
+      name: `${categoryLabelMap[category]} 단백질 랭킹`,
+      description: `단백질 밀도 기준으로 계산한 ${categoryLabelMap[category]} 추천 순위`,
       url: "https://proteinlab.kr/ranking",
       itemListOrder: "https://schema.org/ItemListOrderDescending",
       numberOfItems: Math.min(10, data.density.length),
