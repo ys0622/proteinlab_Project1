@@ -38,18 +38,18 @@ const seniorChecks = [
 const seniorRelated = [
   {
     href: "/guides/product-selection-comparison/protein-drink-for-50s",
-    title: "50대 단백질 음료 추천",
-    body: "시니어 관점에서 실제 제품까지 바로 좁혀보고 싶다면 이 페이지가 더 빠릅니다.",
+    title: "50대 단백질 음료 추천으로 바로 가기",
+    body: "기준은 알겠고 이제 실제 제품을 고르고 싶다면, 시니어 관점으로 좁혀 놓은 이 비교 페이지가 가장 빠릅니다.",
   },
   {
     href: "/guides/product-selection-comparison/newcare-allprotein",
     title: "뉴케어 올프로틴 분석",
-    body: "락토프리와 균형영양식 관점이 필요한 경우 연결해서 보기 좋습니다.",
+    body: "락토프리, 균형영양, 50대 보완용까지 같이 보려면 뉴케어 페이지를 바로 이어서 보는 편이 좋습니다.",
   },
   {
     href: "/guides/intake-strategy-health/meal-replacement-strategy",
     title: "식사대용 전략",
-    body: "식사를 자주 거르는 루틴이라면 보충용과 식사보완형을 나눠서 보는 게 맞습니다.",
+    body: "식사를 자주 거르거나 한 끼가 약한 루틴이라면 보충용과 식사보완형을 나눠 보는 이 페이지가 같이 필요합니다.",
   },
 ];
 
@@ -75,7 +75,7 @@ export default function SeniorProteinStrategyPage() {
             많이보다 쉽게, 꾸준히가 더 중요합니다
           </h1>
           <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
-            근감소 예방은 한 번에 많이 먹는 것보다 부담 없이 자주 챙기는 루틴에서 갈립니다. 숫자만 높은 제품보다 실제로 계속 먹을 수 있는 방식이 더 중요합니다.
+            근감소 예방은 한 번에 많이 먹는 것보다 부담 없이 자주 챙기는 루틴에서 갈립니다. 숫자만 높은 제품보다 실제로 계속 먹을 수 있는 방식이 더 중요하고, 그다음에 제품 선택이 따라와야 합니다.
           </p>
         </div>
       </section>

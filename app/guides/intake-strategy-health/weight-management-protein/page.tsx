@@ -54,17 +54,17 @@ const weightLinks = [
   {
     href: "/guides/product-selection-comparison/protein-drink-for-diabetes",
     title: "당류 기준 제품 보기",
-    body: "당류를 강하게 관리해야 한다면 저당 기준 페이지를 같이 보는 게 더 정확합니다.",
+    body: "체중 관리에서 당류를 먼저 걸러내고 싶다면 저당 기준으로 정리한 이 비교 페이지가 바로 이어집니다.",
   },
   {
     href: "/guides/product-selection-comparison/diet-protein-shake",
-    title: "다이어트 쉐이크",
-    body: "포만감까지 필요한 경우에는 RTD보다 쉐이크가 더 잘 맞을 수 있습니다.",
+    title: "다이어트 쉐이크 추천",
+    body: "포만감까지 같이 챙겨야 한다면 RTD보다 쉐이크가 더 잘 맞을 수 있어서 이 페이지로 이어지는 흐름이 자연스럽습니다.",
   },
   {
     href: "/guides/product-selection-comparison/protein-drink-by-content",
     title: "함량대별 정리",
-    body: "20g, 30g, 40g대 중 지금 목적에 맞는 구간부터 먼저 좁힐 수 있습니다.",
+    body: "20g, 30g, 40g대 중 지금 체중 관리 단계에 맞는 구간부터 먼저 좁히고 싶다면 이 페이지가 더 빠릅니다.",
   },
 ];
 
@@ -90,7 +90,7 @@ export default function WeightManagementProteinPage() {
             당류와 칼로리까지 같이 봐야 합니다
           </h1>
           <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
-            감량기에 좋은 기준은 조금 다릅니다. 단백질이 높아도 당류와 칼로리가 목적에 맞지 않으면 실제 결과는 달라집니다.
+            감량기에 좋은 기준은 조금 다릅니다. 단백질이 높아도 당류와 칼로리가 목적에 맞지 않으면 실제 결과는 달라지고, 그래서 제품 비교 페이지와 같이 봐야 기준이 더 또렷해집니다.
           </p>
         </div>
       </section>

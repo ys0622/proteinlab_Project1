@@ -39,17 +39,17 @@ const postWorkoutLinks = [
   {
     href: "/guides/product-selection-comparison/high-protein-40g-comparison",
     title: "40g 고단백 비교",
-    body: "운동 직후 단백질 집중 보충용 RTD를 더 강하게 비교하고 싶다면 이 페이지가 맞습니다.",
+    body: "운동 직후 단백질을 강하게 채우는 RTD만 따로 비교하고 싶다면 이 페이지가 바로 이어집니다.",
   },
   {
     href: "/guides/product-selection-comparison/takefit-vs-himune",
     title: "운동용 20g대 비교",
-    body: "가벼운 회복용 20g대 RTD를 고를 때는 이 비교가 더 직관적입니다.",
+    body: "가볍게 회복용으로 마실 20g대 RTD를 고른다면 이 비교 페이지가 가장 직관적입니다.",
   },
   {
     href: "/guides/intake-strategy-health/protein-timing",
     title: "섭취 타이밍 가이드",
-    body: "운동 후만이 아니라 하루 전체 루틴에서 어떻게 분산할지 함께 볼 수 있습니다.",
+    body: "운동 후 한 번에서 끝나지 않고 하루 전체에 어떻게 분산할지까지 이어서 보면 루틴이 더 탄탄해집니다.",
   },
 ];
 
@@ -75,7 +75,7 @@ export default function PostWorkoutProteinPage() {
             회복 루틴의 시작점입니다
           </h1>
           <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
-            운동 후 단백질은 언제, 얼마나, 어떤 제품으로 채우는지까지 함께 봐야 실제 회복 루틴으로 이어집니다.
+            운동 후 단백질은 언제, 얼마나, 어떤 제품으로 채우는지까지 함께 봐야 실제 회복 루틴으로 이어집니다. 기준을 정한 뒤에는 바로 제품 비교까지 연결해야 실행이 빨라집니다.
           </p>
         </div>
       </section>

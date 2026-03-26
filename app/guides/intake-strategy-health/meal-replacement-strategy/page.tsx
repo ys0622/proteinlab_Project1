@@ -54,17 +54,17 @@ const mealLinks = [
   {
     href: "/guides/product-selection-comparison/protein-category-guide",
     title: "카테고리 선택 가이드",
-    body: "음료, 쉐이크, 바 중에서 지금 식사대용에 가장 가까운 카테고리를 먼저 정리할 수 있습니다.",
+    body: "음료, 쉐이크, 바 중에서 지금 식사대용에 가장 가까운 카테고리를 먼저 고르고 싶다면 이 허브가 가장 빠릅니다.",
   },
   {
     href: "/guides/product-selection-comparison/morning-protein-shake",
     title: "아침 대용 쉐이크",
-    body: "바쁜 아침에 실제로 쓰기 좋은 제품 흐름으로 더 좁혀볼 수 있습니다.",
+    body: "바쁜 아침에 바로 적용할 제품 쪽으로 좁혀보고 싶다면 이 페이지가 식사대용 흐름과 가장 잘 연결됩니다.",
   },
   {
     href: "/guides/intake-strategy-health/weight-management-protein",
     title: "체중 관리 전략",
-    body: "식사대용이 감량 목적과 연결될 때는 이 페이지를 함께 보는 게 더 정확합니다.",
+    body: "식사대용을 감량용으로 쓰는 상황이라면 체중 관리 기준을 같이 봐야 판단이 덜 흔들립니다.",
   },
 ];
 
@@ -90,7 +90,7 @@ export default function MealReplacementStrategyPage() {
             보충용과 먼저 구분해야 합니다
           </h1>
           <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
-            모든 단백질 음료가 식사대용은 아닙니다. 포만감과 칼로리, 다음 끼니까지의 거리까지 함께 봐야 기준이 분명해집니다.
+            모든 단백질 음료가 식사대용은 아닙니다. 포만감과 칼로리, 다음 끼니까지의 거리까지 함께 봐야 기준이 분명해지고, 그다음에 카테고리와 제품 비교로 넘어가야 덜 헷갈립니다.
           </p>
         </div>
       </section>

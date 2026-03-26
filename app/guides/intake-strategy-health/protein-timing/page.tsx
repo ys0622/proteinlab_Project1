@@ -40,17 +40,17 @@ const timingLinks = [
   {
     href: "/guides/intake-strategy-health/post-workout-protein",
     title: "운동 후 단백질",
-    body: "운동 직후 루틴만 더 깊게 보고 싶다면 이 페이지로 바로 이어집니다.",
+    body: "운동 직후 루틴만 더 깊게 보고 싶다면 이 페이지로 바로 이어서 판단할 수 있습니다.",
   },
   {
     href: "/guides/intake-strategy-health/meal-replacement-strategy",
     title: "식사대용 전략",
-    body: "아침이나 저녁을 제품으로 대체하는 상황까지 연결해서 볼 수 있습니다.",
+    body: "아침이나 저녁을 제품으로 대체하는 루틴까지 연결해서 보려면 이 페이지가 같이 필요합니다.",
   },
   {
     href: "/guides/product-selection-comparison/protein-drink-beginners-guide",
     title: "입문 제품 추천",
-    body: "타이밍은 알겠는데 어떤 제품부터 마실지 모르겠다면 이 페이지가 더 빠릅니다.",
+    body: "타이밍은 알겠는데 어떤 제품부터 마실지 모르겠다면 입문용 비교 페이지로 바로 넘어가는 편이 더 빠릅니다.",
   },
 ];
 
@@ -76,7 +76,7 @@ export default function ProteinTimingPage() {
             언제 먹을지도 같이 봐야 합니다
           </h1>
           <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
-            운동 후 한 번만 보는 것보다 하루 전체 식사 안에서 단백질이 어떻게 분산되는지 보는 편이 더 실전적입니다.
+            운동 후 한 번만 보는 것보다 하루 전체 식사 안에서 단백질이 어떻게 분산되는지 보는 편이 더 실전적입니다. 기준을 잡고 나면 바로 제품 선택까지 이어질 수 있어야 실행이 쉬워집니다.
           </p>
         </div>
       </section>
