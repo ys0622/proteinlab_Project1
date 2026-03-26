@@ -49,7 +49,7 @@ function CuratedGuideGroup({
           className="hidden rounded-full px-3 py-1 text-xs font-semibold md:inline-flex"
           style={{ color: accentColor, backgroundColor: accentBg }}
         >
-          추천 묶음
+          추천 모음
         </span>
       </div>
 
@@ -108,7 +108,15 @@ export async function generateMetadata({ params }: { params: Promise<{ track: st
     return {
       title: "단백질 음료 비교·추천 가이드 | 셀렉스·하이뮨·테이크핏",
       description:
-        "셀렉스, 하이뮨, 테이크핏, 뉴케어까지 단백질 음료 비교와 추천 가이드를 한 번에 모았습니다. 입문자, 다이어트, 40g 고단백 비교도 함께 볼 수 있습니다.",
+        "셀렉스, 하이뮨, 테이크핏, 뉴케어까지 단백질 음료 비교와 추천 가이드를 한 번에 모았습니다. 입문자, 다이어트, 40g 고단백 비교까지 바로 볼 수 있습니다.",
+    };
+  }
+
+  if (section.slug === "intake-strategy-health") {
+    return {
+      title: "단백질 섭취 전략·건강 가이드 | 타이밍·체중관리·50대 단백질",
+      description:
+        "단백질을 언제, 얼마나, 어떤 상황에서 챙겨야 할지 정리한 섭취 전략 가이드입니다. 체중 관리, 식사대용, 운동 전후, 50대 단백질 전략까지 한 번에 볼 수 있습니다.",
     };
   }
 
@@ -127,6 +135,9 @@ export default async function GuideTrackPage({ params }: { params: Promise<{ tra
 
   const featuredTopics = section.articles.slice(0, 3).map((article) => article.title);
   const articleMap = new Map(section.articles.map((article) => [article.slug, article]));
+  const globalArticleMap = new Map(
+    cms.sections.flatMap((sectionItem) => sectionItem.articles.map((article) => [article.slug, article] as const)),
+  );
   const popularTopic =
     section.articles.find((article) => article.status === "live")?.title ??
     section.articles[0]?.title ??
@@ -134,24 +145,28 @@ export default async function GuideTrackPage({ params }: { params: Promise<{ tra
 
   const accentSoftBg = section.slug === "tools" ? "#f6f0ff" : "#eff7f2";
   const accentChipBg = section.slug === "tools" ? "#f7f2ff" : "#f4faf6";
+
   const lineupArticles =
     section.slug === "product-selection-comparison"
       ? ["selexs-lineup", "himune-lineup", "takefit-lineup", "newcare-allprotein", "dryou-lineup", "danbaek-lineup"]
           .map((slug) => articleMap.get(slug))
           .filter((item): item is NonNullable<typeof item> => Boolean(item))
       : [];
+
   const starterArticles =
     section.slug === "product-selection-comparison"
       ? ["protein-category-guide", "protein-drink-beginners-guide", "protein-shake-top7", "protein-bar-top10"]
           .map((slug) => articleMap.get(slug))
           .filter((item): item is NonNullable<typeof item> => Boolean(item))
       : [];
+
   const comparisonArticles =
     section.slug === "product-selection-comparison"
       ? ["selex-vs-himune", "selex-vs-takefit-vs-himune", "high-protein-40g-comparison", "protein-drink-by-content"]
           .map((slug) => articleMap.get(slug))
           .filter((item): item is NonNullable<typeof item> => Boolean(item))
       : [];
+
   const topicMap = new Map(getAllSearchTopics().map((topic) => [topic.slug, topic]));
   const searchTopicItems =
     section.slug === "product-selection-comparison"
@@ -166,6 +181,27 @@ export default async function GuideTrackPage({ params }: { params: Promise<{ tra
             emoji: "🔎",
             tags: ["검색형", "허브"],
           }))
+      : [];
+
+  const trackCStarterArticles =
+    section.slug === "intake-strategy-health"
+      ? ["protein-timing", "weight-management-protein", "meal-replacement-strategy", "senior-protein-strategy"]
+          .map((slug) => articleMap.get(slug))
+          .filter((item): item is NonNullable<typeof item> => Boolean(item))
+      : [];
+
+  const trackCWorkoutArticles =
+    section.slug === "intake-strategy-health"
+      ? ["post-workout-protein", "pre-workout-protein", "muscle-maintenance-protein"]
+          .map((slug) => articleMap.get(slug))
+          .filter((item): item is NonNullable<typeof item> => Boolean(item))
+      : [];
+
+  const trackCProductBridgeArticles =
+    section.slug === "intake-strategy-health"
+      ? ["protein-drink-for-50s", "diet-protein-shake", "protein-drink-beginners-guide", "protein-drink-by-content"]
+          .map((slug) => globalArticleMap.get(slug))
+          .filter((item): item is NonNullable<typeof item> => Boolean(item))
       : [];
 
   return (
@@ -192,7 +228,7 @@ export default async function GuideTrackPage({ params }: { params: Promise<{ tra
             >
               {section.trackLabel}
             </span>
-            <span className="text-xs text-[#8b8b8b]">대표 콘텐츠와 연결 흐름을 한 번에 정리합니다.</span>
+            <span className="text-xs text-[#8b8b8b]">대표 콘텐츠와 연결 흐름까지 한 번에 정리했습니다.</span>
             <span className="text-xs text-[#8b8b8b]">{section.articles.length}개 주제</span>
           </div>
 
@@ -235,41 +271,71 @@ export default async function GuideTrackPage({ params }: { params: Promise<{ tra
           <div className="mt-5 space-y-4">
             <CuratedGuideGroup
               title="입문자는 여기부터 보면 됩니다"
-              description="카테고리 선택, 음료 입문, 쉐이크/바 추천처럼 처음 고를 때 필요한 페이지를 먼저 묶었습니다."
+              description="카테고리 선택, 단백질 음료 입문, 쉐이크와 바 추천처럼 처음 고를 때 필요한 페이지를 먼저 묶었습니다."
               accentColor={section.accentColor}
               accentBg={accentChipBg}
               items={starterArticles}
             />
             <CuratedGuideGroup
               title="브랜드 라인업만 모아보기"
-              description="셀렉스, 하이뮨, 테이크핏, 뉴케어, 닥터유, 더단백처럼 브랜드 내부 차이를 먼저 보고 싶을 때 쓰는 묶음입니다."
+              description="셀렉스, 하이뮨, 테이크핏, 뉴케어, 닥터유, 더단백 라인 차이를 먼저 보고 싶을 때 보는 묶음입니다."
               accentColor={section.accentColor}
               accentBg={accentChipBg}
               items={lineupArticles}
             />
             <CuratedGuideGroup
               title="대표 비교 페이지 바로가기"
-              description="브랜드 간 직접 비교와 40g대 비교, 함량대별 큰 그림 페이지를 묶어서 바로 이동할 수 있게 했습니다."
+              description="브랜드 직접 비교, 40g대 비교, 함량대별 정리처럼 검색 유입이 큰 비교 페이지를 모았습니다."
               accentColor={section.accentColor}
               accentBg={accentChipBg}
               items={comparisonArticles}
             />
             <CuratedGuideGroup
               title="검색형 주제 허브"
-              description="저당, 고단백, 락토프리, 식사대용처럼 실제 검색어에 가까운 허브 페이지를 먼저 타고 들어갈 수 있게 묶었습니다."
+              description="저당, 고단백, 유당불내증, 식사대용처럼 실제 검색어에 가까운 허브 페이지를 먼저 들어갈 수 있게 묶었습니다."
               accentColor={section.accentColor}
               accentBg={accentChipBg}
               items={searchTopicItems}
             />
           </div>
         ) : null}
+
+        {section.slug === "intake-strategy-health" ? (
+          <div className="mt-5 space-y-4">
+            <CuratedGuideGroup
+              title="가장 많이 찾는 섭취 전략"
+              description="단백질 타이밍, 체중 관리, 식사대용, 50대 전략처럼 실제 검색량이 큰 주제부터 바로 들어갈 수 있게 정리했습니다."
+              accentColor={section.accentColor}
+              accentBg={accentChipBg}
+              items={trackCStarterArticles}
+            />
+            <CuratedGuideGroup
+              title="운동 전후와 근육 유지 전략"
+              description="운동 전, 운동 후, 근육 유지처럼 운동 루틴과 직접 연결되는 섭취 전략만 따로 묶었습니다."
+              accentColor={section.accentColor}
+              accentBg={accentChipBg}
+              items={trackCWorkoutArticles}
+            />
+            <CuratedGuideGroup
+              title="제품 선택으로 바로 이어지는 가이드"
+              description="전략을 읽고 바로 제품까지 고르고 싶을 때 이어서 보기 좋은 Track B 페이지를 같이 묶었습니다."
+              accentColor={section.accentColor}
+              accentBg={accentChipBg}
+              items={trackCProductBridgeArticles}
+            />
+          </div>
+        ) : null}
+
         <section className="mt-5">
           <div className="flex items-center justify-between gap-3">
             <div>
               <h2 className="text-lg font-bold text-[var(--foreground)]">주제 목록</h2>
-              <p className="mt-1 text-xs text-[#8b8b8b]">대표 질문과 핵심 포인트를 먼저 보고 필요한 주제로 이동하세요.</p>
+              <p className="mt-1 text-xs text-[#8b8b8b]">대표 질문과 상황별 고민을 먼저 보고 필요한 주제로 이동해보세요.</p>
             </div>
-            <div className="hidden rounded-full border border-[#d7e6dd] px-3 py-1.5 text-xs font-medium md:block" style={{ color: section.accentColor, backgroundColor: accentChipBg }}>
+            <div
+              className="hidden rounded-full border border-[#d7e6dd] px-3 py-1.5 text-xs font-medium md:block"
+              style={{ color: section.accentColor, backgroundColor: accentChipBg }}
+            >
               인기: {popularTopic}
             </div>
           </div>
@@ -306,7 +372,7 @@ export default async function GuideTrackPage({ params }: { params: Promise<{ tra
                         ))}
                       </div>
                       {article.status !== "live" && (
-                        <span className="rounded-full px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wide bg-amber-100 text-amber-700">
+                        <span className="rounded-full bg-amber-100 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wide text-amber-700">
                           Planned
                         </span>
                       )}
@@ -336,7 +402,7 @@ export default async function GuideTrackPage({ params }: { params: Promise<{ tra
                     </p>
 
                     <div className="mt-4 rounded-xl border border-[#edf3ef] bg-white px-3 py-3">
-                      <p className="text-[11px] font-semibold uppercase tracking-wide text-[#7c8b84]">읽기 시간</p>
+                      <p className="text-[11px] font-semibold uppercase tracking-wide text-[#7c8b84]">읽는 시간</p>
                       <p className="mt-1 text-[13px] leading-5 text-[var(--foreground)]">{article.readTime}</p>
                     </div>
                   </div>
@@ -344,8 +410,11 @@ export default async function GuideTrackPage({ params }: { params: Promise<{ tra
 
                 <div className="px-4 pb-4 sm:px-5 sm:pb-5">
                   <div className="flex items-center justify-between gap-3">
-                    <span className="rounded-full px-2.5 py-1 text-[11px] font-semibold" style={{ color: section.accentColor, backgroundColor: accentChipBg }}>
-                      인기
+                    <span
+                      className="rounded-full px-2.5 py-1 text-[11px] font-semibold"
+                      style={{ color: section.accentColor, backgroundColor: accentChipBg }}
+                    >
+                      바로가기
                     </span>
                     <span className="inline-flex items-center text-sm font-semibold" style={{ color: section.accentColor }}>
                       주제 보기
