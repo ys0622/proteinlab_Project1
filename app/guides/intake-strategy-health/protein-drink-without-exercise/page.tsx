@@ -1,0 +1,140 @@
+import Link from "next/link";
+import Header from "@/app/components/Header";
+import Footer from "@/app/components/Footer";
+
+export const metadata = {
+  title: "운동 안 해도 단백질 음료 마셔도 될까 | ProteinLab",
+  description:
+    "운동을 하지 않아도 단백질 음료를 마셔도 되는지, 어떤 상황에서 도움이 되고 어떤 제품이 부담이 적은지 쉽게 정리합니다.",
+};
+
+const situations = [
+  ["아침을 자주 거를 때", "식사 보완형 또는 저당 제품", "식사 공백이 길어질 때 가장 먼저 도움이 됩니다."],
+  ["단백질 반찬을 자주 못 챙길 때", "20g 전후 RTD", "매일 고기·계란을 충분히 못 먹는 사람에게 실용적입니다."],
+  ["다이어트 중 허기가 심할 때", "저당·저칼로리 제품", "간식 대신 쓰기 좋지만 식사 전체를 대체하진 않는 편이 안전합니다."],
+  ["부모님·중장년층 보완용", "식사 보완형·소화 부담 낮은 제품", "건강 유지 목적이라면 운동용 고단백보다 이쪽이 더 잘 맞습니다."],
+];
+
+const dontNeedCases = [
+  "식사에서 이미 단백질을 충분히 먹고 있다면 굳이 추가로 마실 필요는 없습니다.",
+  "단백질 음료를 물처럼 자주 마시는 습관은 필요 이상 섭취로 이어질 수 있습니다.",
+  "고단백 40g대 제품은 운동 목적이 뚜렷할 때 우선순위가 올라갑니다.",
+];
+
+const compareLinks = [
+  {
+    href: "/guides/product-selection-comparison/protein-drink-beginners-guide",
+    title: "단백질 음료 입문 가이드",
+    body: "운동을 안 해도 부담 없이 시작할 수 있는 제품부터 보고 싶다면 이 페이지가 가장 빠릅니다.",
+  },
+  {
+    href: "/guides/product-selection-comparison/protein-drink-for-50s",
+    title: "50대 단백질 음료 추천",
+    body: "건강 유지와 식사 보완이 목적이라면 50대·중장년 기준 페이지가 바로 이어집니다.",
+  },
+  {
+    href: "/guides/product-selection-comparison/selex-vs-himune",
+    title: "셀렉스 vs 하이뮨 비교",
+    body: "저칼로리형과 식사 보완형 중 어디가 맞는지 두 브랜드를 바로 비교할 수 있습니다.",
+  },
+];
+
+export default function ProteinDrinkWithoutExercisePage() {
+  return (
+    <div className="min-h-screen bg-white">
+      <Header />
+      <section className="w-full border-t border-b bg-[var(--hero-bg)]" style={{ borderColor: "var(--hero-border)" }}>
+        <div className="mx-auto max-w-[1200px] px-4 py-5 md:px-6 md:py-6">
+          <div className="flex flex-wrap items-center gap-1.5 text-xs text-[var(--foreground-muted)]">
+            <Link href="/guides" className="hover:text-[var(--accent)]">Guides</Link>
+            <span>/</span>
+            <Link href="/guides/intake-strategy-health" className="hover:text-[var(--accent)]">섭취 전략·건강</Link>
+            <span>/</span>
+            <span>운동 안 해도 단백질 음료</span>
+          </div>
+          <div className="mt-3">
+            <span className="rounded-md bg-[#f5f0ea] px-2 py-0.5 text-[11px] font-semibold tracking-wide text-[#7a5230]">TRACK C</span>
+          </div>
+          <h1 className="mt-3 text-2xl font-bold leading-tight text-[var(--foreground)] md:text-3xl">
+            운동 안 해도 단백질 음료 마셔도 됩니다.
+            <br />
+            다만 운동용이 아니라 식사 보완용 기준으로 봐야 합니다.
+          </h1>
+          <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
+            단백질 음료는 운동하는 사람만 마시는 제품이 아닙니다. 아침을 자주 거르거나, 식사에서 단백질이 부족하거나,
+            부모님 건강 보완이 필요할 때도 충분히 쓸 수 있습니다. 핵심은 40g 고단백보다 현재 생활에 맞는 제품을 고르는 것입니다.
+          </p>
+        </div>
+      </section>
+
+      <main className="mx-auto max-w-[1200px] px-4 py-8 md:px-6">
+        <div className="space-y-6">
+          <section className="rounded-[28px] border border-[#e2ebe4] bg-[#f7fbf8] px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
+            <h2 className="text-xl font-bold text-[var(--foreground)]">이런 상황이면 단백질 음료가 도움 됩니다</h2>
+            <div className="mt-5 overflow-x-auto">
+              <table className="min-w-full border-collapse text-left text-sm">
+                <thead>
+                  <tr className="border-b border-[#e8e6e3] text-[var(--foreground)]">
+                    <th className="px-3 py-3 font-semibold">상황</th>
+                    <th className="px-3 py-3 font-semibold">우선 기준</th>
+                    <th className="px-3 py-3 font-semibold">이유</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {situations.map((row) => (
+                    <tr key={row[0]} className="border-b border-[#f0eeeb] last:border-b-0">
+                      {row.map((cell) => (
+                        <td key={cell} className="px-3 py-3 text-[var(--foreground-muted)]">{cell}</td>
+                      ))}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <section className="rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
+            <h2 className="text-xl font-bold text-[var(--foreground)]">운동 안 할 때는 무엇부터 보면 되나</h2>
+            <div className="mt-5 grid gap-3 md:grid-cols-3">
+              {[
+                ["1. 단백질 총량", "처음엔 20g 전후 제품부터 보면 충분한 경우가 많습니다."],
+                ["2. 당류와 칼로리", "운동량이 적으면 저당·저칼로리 기준이 더 중요해집니다."],
+                ["3. 포만감과 소화감", "건강 보완용이면 한 번에 많이 마시는 제품보다 편하게 마실 수 있는 제품이 낫습니다."],
+              ].map((item) => (
+                <article key={item[0]} className="rounded-2xl border border-[#dce8df] bg-[#f6fbf7] p-4">
+                  <h3 className="text-sm font-semibold text-[#24543d]">{item[0]}</h3>
+                  <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">{item[1]}</p>
+                </article>
+              ))}
+            </div>
+          </section>
+
+          <section className="rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
+            <h2 className="text-xl font-bold text-[var(--foreground)]">굳이 안 마셔도 되는 경우</h2>
+            <ul className="mt-4 space-y-3 text-sm leading-6 text-[var(--foreground-muted)]">
+              {dontNeedCases.map((item) => (
+                <li key={item} className="flex gap-3 rounded-xl border border-[#dce8df] bg-[#f6fbf7] px-4 py-3">
+                  <span className="mt-1 h-2 w-2 shrink-0 rounded-full bg-[#2d6a4f]" />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </section>
+
+          <section className="rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
+            <h2 className="text-xl font-bold text-[var(--foreground)]">다음으로 보면 좋은 비교 가이드</h2>
+            <div className="mt-5 grid gap-3 md:grid-cols-3">
+              {compareLinks.map((item) => (
+                <Link key={item.href} href={item.href} className="rounded-2xl border border-[#dce8df] bg-[#f6fbf7] p-4 transition-colors hover:bg-white">
+                  <h3 className="text-sm font-semibold text-[#24543d]">{item.title}</h3>
+                  <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">{item.body}</p>
+                </Link>
+              ))}
+            </div>
+          </section>
+        </div>
+      </main>
+      <Footer />
+    </div>
+  );
+}

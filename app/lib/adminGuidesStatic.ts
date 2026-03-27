@@ -85,6 +85,8 @@ const sections: AdminGuideSection[] = [
       article("deficiency-symptoms", "단백질 부족 신호", "피로, 근육 감소, 부종 등 부족 신호를 정리합니다.", "/guides/basics/deficiency-symptoms", { emoji: "🚨", tags: ["결핍", "증상"] }),
       article("daily-requirement", "하루 단백질 섭취량", "체중과 활동량 기준으로 하루 단백질 권장량을 설명합니다.", "/guides/basics/daily-requirement", { emoji: "📏", tags: ["섭취량", "권장량"] }),
       article("digestion", "단백질 소화와 흡수", "단백질이 소화되고 흡수되는 과정을 설명합니다.", "/guides/basics/digestion", { emoji: "🥛", tags: ["소화", "흡수"] }),
+      article("protein-deficiency-self-check", "단백질 부족 자가체크", "생활 패턴 기준으로 단백질 부족 가능성을 빠르게 점검합니다.", "/guides/basics/protein-deficiency-self-check", { emoji: "✅", tags: ["자가체크", "부족"] }),
+      article("protein-drink-vs-powder", "단백질 음료 vs 프로틴 파우더", "간편함, 가성비, 입문 난이도로 두 제품군을 비교합니다.", "/guides/basics/protein-drink-vs-powder", { emoji: "🥤", tags: ["비교", "입문"] }),
     ],
   },
   {
@@ -167,6 +169,8 @@ const sections: AdminGuideSection[] = [
       article("muscle-maintenance-protein", "근육 유지 전략", "감량기와 병행 운동 상황에서 근육을 유지하는 전략입니다.", "/guides/intake-strategy-health/muscle-maintenance-protein", { emoji: "🧱", tags: ["근육 유지", "감량기"] }),
       article("senior-protein-strategy", "노년 단백질 전략", "중장년층이 부담 없이 단백질을 챙기는 기준을 정리합니다.", "/guides/intake-strategy-health/senior-protein-strategy", { emoji: "👵", tags: ["중장년", "건강"] }),
       article("meal-replacement-strategy", "식사대용 전략", "식사대용과 보충용의 차이를 설명합니다.", "/guides/intake-strategy-health/meal-replacement-strategy", { emoji: "🍽️", tags: ["식사대용", "포만감"] }),
+      article("protein-drink-without-exercise", "운동 안 해도 단백질 음료", "운동을 안 해도 단백질 음료가 필요한 상황을 정리합니다.", "/guides/intake-strategy-health/protein-drink-without-exercise", { emoji: "🥛", tags: ["입문", "생활 보완"] }),
+      article("protein-drink-meal-replacement", "단백질 음료 식사대용", "단백질 음료가 한 끼 대체가 되는지 제품군별로 나눠 설명합니다.", "/guides/intake-strategy-health/protein-drink-meal-replacement", { emoji: "🥣", tags: ["식사대용", "보완"] }),
     ],
   },
   {
@@ -186,6 +190,8 @@ const sections: AdminGuideSection[] = [
       article("sports-nutrition-guide", "운동 영양 & 제품 비교", "운동 목적에 맞는 제품 선택 기준을 설명합니다.", "/guides/fitness-lifestyle/sports-nutrition-guide", { emoji: "🥇", tags: ["운동 영양", "제품 비교"] }),
       article("strength-training-protein", "근력운동과 단백질", "근력운동과 러닝 병행 시 단백질 전략을 정리합니다.", "/guides/fitness-lifestyle/strength-training-protein", { emoji: "🏋️", tags: ["근력운동", "병행"] }),
       article("beginner-workout-guide", "운동 초보 가이드", "운동을 시작하는 사람이 보는 단백질 입문 가이드입니다.", "/guides/fitness-lifestyle/beginner-workout-guide", { emoji: "🌱", tags: ["초보", "루틴"] }),
+      article("commute-protein-guide", "출근길 단백질 제품", "출근길과 사무실에서 먹기 좋은 제품군을 상황별로 정리합니다.", "/guides/fitness-lifestyle/commute-protein-guide", { emoji: "💼", tags: ["출근길", "직장인"] }),
+      article("convenience-store-workout-protein", "편의점 운동 전후 단백질", "운동 전후 편의점에서 바로 살 수 있는 제품 기준을 정리합니다.", "/guides/fitness-lifestyle/convenience-store-workout-protein", { emoji: "🏪", tags: ["편의점", "운동 전후"] }),
     ],
   },
   {
