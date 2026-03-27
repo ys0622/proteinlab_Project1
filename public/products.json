@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-03-27T00:04:00.132Z",
-  "total": 306,
+  "generated_at": "2026-03-27T08:50:37.343Z",
+  "total": 322,
   "categories": {
     "drinks": 107,
     "bars": 85,
-    "yogurt": 45,
-    "shake": 69
+    "yogurt": 54,
+    "shake": 76
   },
   "products": [
     {
@@ -2142,6 +2142,87 @@
       "sugar": 4.05
     },
     {
+      "slug": "yozm-blueberry-compote-130",
+      "name": "YOZM 그릭요거트 블루베리 콩포트 130g",
+      "brand": "YOZM",
+      "category": "yogurt",
+      "protein": 13,
+      "calories": 250,
+      "sugar": 12
+    },
+    {
+      "slug": "yozm-strawberry-compote-130",
+      "name": "YOZM 그릭요거트 스트로베리 콩포트 130g",
+      "brand": "YOZM",
+      "category": "yogurt",
+      "protein": 13,
+      "calories": 245,
+      "sugar": 8
+    },
+    {
+      "slug": "yozm-apple-cinnamon-130",
+      "name": "YOZM 그릭요거트 애플시나몬 130g",
+      "brand": "YOZM",
+      "category": "yogurt",
+      "protein": 13,
+      "calories": 205,
+      "sugar": 3
+    },
+    {
+      "slug": "yozm-choco-cranola-120",
+      "name": "YOZM 그릭요거트 초코 크래놀라 120g",
+      "brand": "YOZM",
+      "category": "yogurt",
+      "protein": 8,
+      "calories": 205,
+      "sugar": 7
+    },
+    {
+      "slug": "yozm-cacao-granola-120",
+      "name": "YOZM 그릭요거트 카카오 그래놀라 120g",
+      "brand": "YOZM",
+      "category": "yogurt",
+      "protein": 15,
+      "calories": 280,
+      "sugar": 6
+    },
+    {
+      "slug": "yozm-cafe-latte-100",
+      "name": "YOZM 그릭요거트 카페라떼 100g",
+      "brand": "YOZM",
+      "category": "yogurt",
+      "protein": 12,
+      "calories": 180,
+      "sugar": 2
+    },
+    {
+      "slug": "yozm-crispy-granola-120",
+      "name": "YOZM 그릭요거트 크리스피 그래놀라 120g",
+      "brand": "YOZM",
+      "category": "yogurt",
+      "protein": 10,
+      "calories": 205,
+      "sugar": 5
+    },
+    {
+      "slug": "yozm-oh-granola-low-sugar-115",
+      "name": "YOZM 오! 그래놀라 저당 그릭요거트 115g",
+      "brand": "YOZM",
+      "category": "yogurt",
+      "protein": 14,
+      "calories": 229,
+      "sugar": 3
+    },
+    {
+      "slug": "yozm-low-sugar-matcha-100",
+      "name": "YOZM 저당 그릭요거트 말차 100g",
+      "brand": "YOZM",
+      "category": "yogurt",
+      "protein": 13,
+      "calories": 195,
+      "sugar": 2
+    },
+    {
       "slug": "flymill-proteinshake-choco-45",
       "name": "단백질 쉐이크 (초코)",
       "brand": "플라이밀",
@@ -2761,6 +2842,69 @@
       "protein": 20,
       "calories": 110,
       "sugar": 0.8
+    },
+    {
+      "slug": "fromit-proteinshake-blueberry-greek-yogurt-45",
+      "name": "단백질 쉐이크 (블루베리그릭요거트)",
+      "brand": "프롬잇",
+      "category": "shake",
+      "protein": 18,
+      "calories": 144,
+      "sugar": 3
+    },
+    {
+      "slug": "fromit-proteinshake-grain-black-sesame-45",
+      "name": "단백질 쉐이크 (곡물흑임자)",
+      "brand": "프롬잇",
+      "category": "shake",
+      "protein": 21,
+      "calories": 160,
+      "sugar": 2
+    },
+    {
+      "slug": "fromit-proteinshake-choco-45",
+      "name": "단백질 쉐이크 (초코)",
+      "brand": "프롬잇",
+      "category": "shake",
+      "protein": 22,
+      "calories": 142,
+      "sugar": 2
+    },
+    {
+      "slug": "cruntin-proteinshake-matcha-crush-crunchball-50",
+      "name": "단백질 쉐이크 (말차크러쉬 크런치볼)",
+      "brand": "크런틴",
+      "category": "shake",
+      "protein": 20.2,
+      "calories": 161,
+      "sugar": 0.9
+    },
+    {
+      "slug": "cruntin-proteinshake-ogoknola-50",
+      "name": "단백질 쉐이크 (오곡놀라)",
+      "brand": "크런틴",
+      "category": "shake",
+      "protein": 20.3,
+      "calories": 175,
+      "sugar": 0.7
+    },
+    {
+      "slug": "cruntin-proteinshake-choco-is-back-crunchball-50",
+      "name": "단백질 쉐이크 (초코이즈백 크런치볼)",
+      "brand": "크런틴",
+      "category": "shake",
+      "protein": 21,
+      "calories": 180,
+      "sugar": 0.8
+    },
+    {
+      "slug": "cruntin-proteinshake-cornflaky-55",
+      "name": "단백질 쉐이크 (콘플레이키)",
+      "brand": "크런틴",
+      "category": "shake",
+      "protein": 20.2,
+      "calories": 191,
+      "sugar": 4.3
     }
   ]
 }
