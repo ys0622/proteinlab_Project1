@@ -16,7 +16,7 @@ const searchTopics: SearchTopic[] = [
     title: "단백질 음료 추천",
     description: "단백질 g, 당류, 칼로리, 단백질 밀도를 기준으로 단백질 음료를 비교합니다.",
     intro: "가장 넓은 검색 의도를 받는 허브 페이지입니다. 비교 기준과 추천 흐름, 실제 제품 목록으로 자연스럽게 연결합니다.",
-    bullets: ["처음 보는 사람도 비교 기준부터 이해하기 쉬움", "랭킹과 추천 페이지로 연결하기 좋음", "카테고리 전체 제품 탐색의 출발점 역할"],
+    bullets: ["처음 보는 사람도 비교 기준부터 이해하기 쉬움", "랭킹과 제품 비교로 이어보기 좋음", "카테고리 전체 제품을 훑어보기 좋음"],
     primaryCta: { href: "/", title: "단백질 음료 전체 보기", description: "홈 제품 리스트에서 필터와 정렬을 바로 적용합니다." },
     relatedLinks: [
       { href: "/guides/product-selection-comparison/protein-drink-guide", title: "단백질 음료 선택 가이드", description: "비교 기준과 읽는 순서를 먼저 확인합니다." },
@@ -42,7 +42,7 @@ const searchTopics: SearchTopic[] = [
     title: "다이어트 단백질 음료 추천",
     description: "저칼로리, 저당, 단백질 밀도를 함께 보며 다이어트용 단백질 음료를 비교합니다.",
     intro: "다이어트와 체중 관리 검색은 구매 의도가 높아서 별도 랜딩 가치가 큽니다.",
-    bullets: ["다이어트 검색 CTR이 높은 편", "저당/저칼로리 기준을 한 페이지에서 처리", "추천 페이지와 결합 시 전환 흐름이 좋음"],
+    bullets: ["다이어트 검색 CTR이 높은 편", "저당/저칼로리 기준을 한 페이지에서 처리", "관련 비교 가이드와 함께 보기 좋음"],
     primaryCta: { href: "/guides/product-selection-comparison/diet-protein-drink-guide", title: "다이어트 음료 가이드 보기", description: "칼로리와 당류 기준을 먼저 확인합니다." },
     relatedLinks: [
       { href: "/topics/low-sugar-protein-drink", title: "저당 단백질 음료", description: "당류 중심으로 다시 좁혀 봅니다." },

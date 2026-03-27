@@ -106,7 +106,7 @@ export function getRecommendHubLinks(): TrafficLinkItem[] {
     {
       href: "/guides/product-selection-comparison/recommendation-lists",
       title: "추천 리스트 읽기",
-      description: "추천 페이지를 어떻게 활용하면 좋은지 가이드 형식으로 정리했습니다.",
+      description: "조건별 제품을 더 빠르게 고르는 방법을 가이드 형식으로 정리했습니다.",
     },
     {
       href: "/topics",

@@ -538,15 +538,15 @@ export default function RecommendClient({ categoryCounts }: RecommendClientProps
 
                 {isShakeEmpty ? (
                   <div className="rounded-2xl border border-[var(--border)] bg-[var(--background-card)] px-5 py-5 text-left">
-                    <p className="text-sm font-semibold text-[var(--foreground)]">쉐이크 카테고리 구조는 먼저 반영되었습니다.</p>
+                    <p className="text-sm font-semibold text-[var(--foreground)]">조건에 맞는 쉐이크 추천은 아직 준비 중입니다.</p>
                     <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">
-                      이번 범위에서는 파우치형 중심의 간편 섭취 쉐이크만 포함하며, 파우더형은 제외합니다. 현재 공개 제품 데이터가 없어 추천은 준비 중입니다.
+                      먼저 전체 쉐이크 제품을 비교해보고, 맛과 칼로리, 단백질 기준으로 직접 좁혀보세요.
                     </p>
                     <Link
                       href="/shake"
                       className="mt-4 inline-flex rounded-full border border-[var(--border)] px-4 py-2 text-sm font-semibold text-[var(--foreground)] hover:bg-[var(--accent-light)] hover:text-[var(--accent)]"
                     >
-                      쉐이크 페이지 보기 →
+                      쉐이크 비교하러 가기 →
                     </Link>
                   </div>
                 ) : (

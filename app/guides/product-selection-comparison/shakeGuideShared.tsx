@@ -24,7 +24,7 @@ type InternalLinkItem = {
 };
 
 const trackBHubLink: InternalLinkItem = {
-  label: "Track B 전체 허브 보기",
+  label: "다른 비교 가이드 보기",
   href: "/guides/product-selection-comparison",
 };
 

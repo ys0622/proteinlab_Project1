@@ -110,7 +110,7 @@ const compareLandings: CompareLanding[] = [
     title: "랩노쉬 vs 단백하니 쉐이크 비교",
     description: "랩노쉬와 단백하니 단백질 쉐이크를 단백질, 당류, 식이섬유 기준으로 비교합니다.",
     intro: "국내 파우치형 쉐이크 브랜드 비교 검색을 직접 받는 랜딩입니다.",
-    bullets: ["쉐이크 비교 검색 대응", "식사대용/보충형 판단에 유용", "추천 페이지와 연결하기 좋음"],
+    bullets: ["쉐이크 비교 검색 대응", "식사대용/보충형 판단에 유용", "관련 제품 비교로 이어보기 좋음"],
     productSlugs: ["labnosh-slimshake-injeolmi-45", "danbaekhani-proteinshake-signature-40"],
     relatedLinks: [
       { href: "/topics/meal-replacement-protein-shake", title: "식사대용 쉐이크 추천", description: "식사대용 기준의 전체 후보군을 확인합니다." },
@@ -146,7 +146,7 @@ const compareLandings: CompareLanding[] = [
     title: "뉴케어 vs 셀렉스 단백질 음료 비교",
     description: "뉴케어 올프로틴과 셀렉스 프로핏을 단백질, 당류, 칼로리 기준으로 비교합니다.",
     intro: "온라인 검색에서 자주 겹치는 뉴케어와 셀렉스 대표 음료 조합을 고정 URL로 묶었습니다.",
-    bullets: ["브랜드 검색 유입 대응", "단백질 음료 대표 라인 비교", "상세 페이지와 추천 페이지 연결에 적합"],
+    bullets: ["브랜드 검색 유입 대응", "단백질 음료 대표 라인 비교", "상세 정보와 비교 페이지를 함께 보기 좋음"],
     productSlugs: ["newcare-all-protein-choco-245", "sellex-profit-milk-vanilla-250"],
     relatedLinks: [
       { href: "/topics/protein-drink-recommend", title: "단백질 음료 추천", description: "대표 RTD 음료를 한 번에 다시 비교합니다." },
@@ -218,7 +218,7 @@ const compareLandings: CompareLanding[] = [
     title: "프로티원 vs 잇더핏 단백질 쉐이크 비교",
     description: "프로티원과 잇더핏 쉐이크를 단백질, 당류, 칼로리 기준으로 비교합니다.",
     intro: "국내 파우치형 쉐이크 중 저당 성향 제품을 찾을 때 자주 비교되는 조합입니다.",
-    bullets: ["국내 쉐이크 브랜드 비교", "저당 파우치형 탐색에 적합", "브랜드 허브와 추천 페이지 연결용"],
+    bullets: ["국내 쉐이크 브랜드 비교", "저당 파우치형 탐색에 적합", "브랜드별 제품을 함께 비교하기 좋음"],
     productSlugs: ["proteone-proteinshake-choco-40", "itthefit-proteinshake-double-choco-40"],
     relatedLinks: [
       { href: "/topics/meal-replacement-protein-shake", title: "식사대용 쉐이크", description: "쉐이크 카테고리 전체를 다시 비교합니다." },

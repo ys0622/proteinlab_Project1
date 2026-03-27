@@ -631,16 +631,6 @@ function ProductListWithFiltersInner(props: ProductListWithFiltersInnerProps) {
         </div>
       ) : null}
 
-      {productType === "shake" ? (
-        <div className="mt-4">
-          <Link
-            href="/recommend?category=shake"
-            className="inline-flex rounded-full border border-[var(--border)] bg-white px-4 py-2 text-sm font-medium text-[var(--foreground)] transition-colors hover:bg-[var(--accent-light)]"
-          >
-            추천 페이지에서도 쉐이크 카테고리 구조 확인하기
-          </Link>
-        </div>
-      ) : null}
     </>
   );
 }

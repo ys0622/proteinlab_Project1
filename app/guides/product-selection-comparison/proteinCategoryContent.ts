@@ -483,7 +483,7 @@ export const proteinShakeCalorieRankingConfig: CategoryGuideConfig = {
     },
   ],
   relatedGuides: [
-    { title: "다이어트 단백질 쉐이크", href: "/guides/product-selection-comparison/diet-protein-shake", description: "칼로리뿐 아니라 당류와 식이섬유를 같이 본 실제 추천 페이지입니다." },
+    { title: "다이어트 단백질 쉐이크", href: "/guides/product-selection-comparison/diet-protein-shake", description: "칼로리뿐 아니라 당류와 식이섬유까지 함께 정리한 가이드입니다." },
     { title: "단백질 쉐이크 추천 TOP 7", href: "/guides/product-selection-comparison/protein-shake-top7", description: "종합 점수 기준으로 보면 어떤 제품이 위로 오는지 비교합니다." },
     { title: "랩노쉬 라인업", href: "/guides/product-selection-comparison/labnosh-lineup", description: "맛과 식사 대용 지속성을 중시하는 브랜드를 따로 봅니다." },
   ],
@@ -495,8 +495,8 @@ export const proteinShakeCalorieRankingConfig: CategoryGuideConfig = {
   faq: [
     { question: "가장 낮은 칼로리 제품이 다이어트에 최고인가", answer: "반드시 그렇지는 않습니다. 단백질과 포만감이 받쳐주지 않으면 오히려 금방 허기가 와서 더 먹게 될 수 있습니다." },
     { question: "칼로리 150kcal 아래만 보면 충분한가", answer: "출발점으로는 좋지만 단백질 20g 이상인지도 함께 봐야 합니다. 그래야 실제 다이어트 식대용으로 쓰기 쉽습니다." },
-    { question: "식사 대용이면 이 순위표보다 무엇을 봐야 하나", answer: "식이섬유와 맛 지속성을 같이 봐야 해서 다이어트 쉐이크 추천 페이지를 같이 보는 편이 더 좋습니다." },
-    { question: "왜 어떤 제품은 순위가 높은데 추천 페이지에서는 덜 강조되나", answer: "이 표는 칼로리 중심이고, 추천 페이지는 포만감과 지속성까지 같이 보기 때문입니다. 기준이 다르면 상위권 제품도 달라질 수 있습니다." },
+    { question: "식사 대용이면 이 순위표보다 무엇을 봐야 하나", answer: "식이섬유와 맛 지속성까지 같이 보는 가이드를 함께 보면 더 빠르게 좁힐 수 있습니다." },
+    { question: "왜 어떤 제품은 순위가 높은데 다른 가이드에서는 덜 강조되나", answer: "이 표는 칼로리 중심이고, 다른 가이드는 포만감과 지속성까지 함께 보기 때문입니다. 기준이 다르면 상위권 제품도 달라질 수 있습니다." },
   ],
 };
 proteinShakeCalorieRankingConfig.jsonLd = [articleJsonLd(proteinShakeCalorieRankingConfig), faqJsonLd(proteinShakeCalorieRankingConfig)];

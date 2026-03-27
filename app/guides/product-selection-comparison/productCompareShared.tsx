@@ -55,9 +55,9 @@ export interface ComparePageConfig {
 
 const drinkProducts = getDrinkProducts();
 const trackBHubLink: RelatedGuideLink = {
-  title: "Track B 전체 허브 보기",
+  title: "다른 비교 가이드 더 보기",
   href: "/guides/product-selection-comparison",
-  description: "브랜드 비교, 라인업, 바·요거트·쉐이크 허브를 한 번에 다시 봅니다.",
+  description: "브랜드 비교와 제품 선택 가이드를 이어서 볼 수 있습니다.",
 };
 
 export function getDrinkProduct(slug: string): ProductDetailProps {

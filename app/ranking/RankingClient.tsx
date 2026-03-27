@@ -126,7 +126,7 @@ export default function RankingClient({ rankings }: RankingClientProps) {
               {getCategoryLabel(productType)} 랭킹 데이터가 아직 없습니다.
             </p>
             <p className="mt-2 text-sm text-[var(--foreground-muted)]">
-              카테고리 구조에 반영된 뒤 제품 데이터가 추가되면 같은 기준으로 자동 계산됩니다.
+              제품 데이터가 추가되면 같은 기준으로 자동 계산됩니다.
             </p>
           </div>
         ) : (

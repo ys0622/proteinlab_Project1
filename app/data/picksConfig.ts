@@ -37,7 +37,7 @@ const drinkPicks: PickConfigBase[] = [
   {
     slug: "zero-sugar",
     title: "당류 0g 단백질 음료 추천",
-    description: "당류 0g 단백질 음료만 모아 비교합니다. 다이어트, 혈당 관리, 저당 음료를 찾을 때 보기 좋은 추천 페이지입니다.",
+    description: "당류 0g 단백질 음료만 모아 비교합니다. 다이어트, 혈당 관리, 저당 음료를 찾을 때 한 번에 보기 좋습니다.",
     productType: "drink",
     content: "당을 넣지 않은 단백질 음료는 다이어트 중이거나 당 관리가 필요한 분들에게 적합합니다. 단백질 보충은 하면서 불필요한 당 섭취를 줄일 수 있는 제품들을 소개합니다. (proteinlab.kr 콘텐츠 반영 예정)",
     filterProducts: (list) => list.filter((p) => p.productType !== "bar" && (p.sugar ?? 0) <= 0),
