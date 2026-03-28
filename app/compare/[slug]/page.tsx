@@ -120,6 +120,29 @@ export default async function CompareLandingPage({ params }: PageProps) {
             ))}
           </div>
         </section>
+
+        {landing.relatedLinks.length > 0 ? (
+          <section className="mt-8 rounded-2xl border border-[#e8e6e3] bg-white p-5">
+            <div className="space-y-1">
+              <h2 className="text-lg font-bold text-[var(--foreground)]">비교 전후로 같이 보면 좋은 페이지</h2>
+              <p className="text-sm leading-6 text-[var(--foreground-muted)]">
+                이 비교만 보고 끝내지 않고 브랜드 허브, 주제 허브, 랭킹으로 이어서 보면 판단이 더 빨라집니다.
+              </p>
+            </div>
+            <div className="mt-5 grid gap-3 md:grid-cols-2">
+              {landing.relatedLinks.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className="rounded-2xl border border-[#dce8df] bg-[#f6fbf7] p-4 transition-colors hover:bg-white"
+                >
+                  <h3 className="text-sm font-semibold text-[#24543d]">{item.title}</h3>
+                  <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">{item.description}</p>
+                </Link>
+              ))}
+            </div>
+          </section>
+        ) : null}
       </main>
 
       <Footer />

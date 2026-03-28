@@ -109,7 +109,13 @@ export default function ComparePage() {
       : null;
 
   const compareDescription =
-    selectedCategory === "shake"
+    selectedCategory === "drink"
+      ? "단백질 음료를 단백질, 당류, 칼로리, 단백질 밀도 기준으로 나란히 비교합니다. 저당 제품인지, 식사 보완형인지도 함께 판단하기 좋게 구성했습니다."
+      : selectedCategory === "bar"
+      ? "단백질 바를 단백질 함량, 당류, 칼로리 기준으로 비교합니다. 간식용인지 운동 후 보충용인지도 같이 판단하기 좋게 정리했습니다."
+      : selectedCategory === "yogurt"
+      ? "단백질 요거트를 단백질 밀도, 당류, 칼로리, 용량 기준으로 비교합니다. 떠먹는 타입과 드링킹 타입 차이도 함께 보기 좋게 구성했습니다."
+      : selectedCategory === "shake"
       ? "파우치형 단백질 쉐이크를 단백질, 당류, 식이섬유, 단백질 밀도 기준으로 비교합니다. 식사대용인지 운동보충용인지도 같이 판단하기 좋게 정리했습니다."
       : "단백질 음료, 바, 요거트, 쉐이크를 최대 4개까지 한 화면에서 비교합니다.";
 
@@ -124,7 +130,7 @@ export default function ComparePage() {
               비교할 제품을 선택해 주세요. 단백질 함량, 당류, 칼로리를 나란히 볼 수 있습니다. (최대 4개)
             </p>
             <Link
-              href="/"
+              href="/products"
               className="mt-6 inline-block rounded-lg bg-[var(--accent)] px-5 py-2.5 text-sm font-medium text-white hover:opacity-90"
             >
               제품 목록으로
@@ -170,7 +176,7 @@ export default function ComparePage() {
               </button>
               <button
                 type="button"
-                onClick={() => { clear(); router.push("/"); }}
+                onClick={() => { clear(); router.push("/products"); }}
                 className="rounded-lg border border-[#d9d6cf] bg-white px-4 py-2 text-sm font-medium hover:bg-[#f5f5f5]"
                 style={{ color: "#3d3d3d" }}
               >
@@ -216,7 +222,7 @@ export default function ComparePage() {
               ))}
               {products.length < MAX_PRODUCTS && (
                 <Link
-                  href="/"
+                  href="/products"
                   className="flex h-[72px] w-[140px] flex-shrink-0 items-center justify-center rounded-xl border-2 border-dashed border-[#d9d6cf] text-sm font-medium hover:border-[var(--accent)] hover:text-[var(--accent)]"
                   style={{ borderRadius: "12px", color: "#999", background: "rgba(255,255,255,0.5)" }}
                 >
