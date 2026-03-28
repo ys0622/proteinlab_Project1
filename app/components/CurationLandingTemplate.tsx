@@ -134,6 +134,38 @@ export default function CurationLandingTemplate({
           </div>
         ) : null}
 
+        <section className="mt-6">
+          <div className="grid gap-3 md:grid-cols-3">
+            <Link
+              href="/products"
+              className="rounded-xl border border-[#e8e6e3] bg-[#FFFDF8] px-4 py-4 transition-colors hover:bg-[var(--accent-light)]"
+            >
+              <p className="text-sm font-semibold text-[var(--foreground)]">제품 탐색 허브로 이동</p>
+              <p className="mt-2 text-xs leading-5 text-[var(--foreground-muted)] md:text-sm">
+                큐레이션만 보지 않고 전체 제품군에서 다시 좁혀볼 수 있습니다.
+              </p>
+            </Link>
+            <Link
+              href="/ranking"
+              className="rounded-xl border border-[#e8e6e3] bg-[#FFFDF8] px-4 py-4 transition-colors hover:bg-[var(--accent-light)]"
+            >
+              <p className="text-sm font-semibold text-[var(--foreground)]">전체 순위에서 보기</p>
+              <p className="mt-2 text-xs leading-5 text-[var(--foreground-muted)] md:text-sm">
+                지금 보는 조건의 제품이 전체 카테고리에서 어디쯤인지 확인합니다.
+              </p>
+            </Link>
+            <Link
+              href="/recommend"
+              className="rounded-xl border border-[#e8e6e3] bg-[#FFFDF8] px-4 py-4 transition-colors hover:bg-[var(--accent-light)]"
+            >
+              <p className="text-sm font-semibold text-[var(--foreground)]">맞춤 추천 받기</p>
+              <p className="mt-2 text-xs leading-5 text-[var(--foreground-muted)] md:text-sm">
+                같은 조건이라도 목적과 운동 패턴에 맞춰 다시 추천받을 수 있습니다.
+              </p>
+            </Link>
+          </div>
+        </section>
+
         {isPopularLanding && curation.relatedGuideLinks?.length ? (
           <section className="mt-8">
             <div className="mb-4 space-y-1">

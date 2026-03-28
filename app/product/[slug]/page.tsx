@@ -26,7 +26,7 @@ import { getNutritionDetail } from "../../data/products";
 import { getCategoryHref, getCategoryLabel } from "../../lib/categories";
 import { brandToSlug } from "../../lib/brandHubs";
 import { getProductBySlugAsync, getProductsByCategoryAsync } from "../../lib/productData";
-import { getProductImageUrl } from "../../lib/productImage";
+import { getDrinkSpecImageUrl, getProductImageUrl } from "../../lib/productImage";
 import {
   getCoupangRedirectHref,
   getKnownSourceCoupangUrlBySlug,
@@ -283,6 +283,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
   const isYogurt = product.productType === "yogurt";
   const isShake = product.productType === "shake";
   const productImageUrl = getProductImageUrl(product.slug);
+  const drinkSpecImageUrl = product.productType === "drink" ? getDrinkSpecImageUrl(product.slug) : null;
   const category = (product.productType ?? "drink") as "drink" | "bar" | "yogurt" | "shake";
   const categoryProducts = await getProductsByCategoryAsync(category);
   const sameBrandProducts = getSameBrandProducts(product, categoryProducts, 3);
@@ -608,6 +609,29 @@ export default async function ProductDetailPage({ params }: PageProps) {
           <div className="mt-6">
             <ProductReviewSection slug={slug} />
           </div>
+
+          {drinkSpecImageUrl ? (
+            <section className="mt-8">
+              <div className="mb-4 space-y-1">
+                <h2 className="text-lg font-semibold text-[var(--foreground)]">성분표 이미지</h2>
+                <p className="text-sm leading-6 text-[var(--foreground-muted)]">
+                  구매 전에는 표 숫자뿐 아니라 실제 패키지 성분표도 같이 보는 편이 안전합니다.
+                </p>
+              </div>
+              <div className="overflow-hidden rounded-2xl border border-[#e8e6e3] bg-[#FFFDF8] p-4">
+                <div className="relative mx-auto w-full max-w-[420px] overflow-hidden rounded-xl bg-white">
+                  <Image
+                    src={drinkSpecImageUrl}
+                    alt={`${product.brand} ${product.name} 성분표`}
+                    width={840}
+                    height={1200}
+                    className="h-auto w-full object-contain"
+                    unoptimized
+                  />
+                </div>
+              </div>
+            </section>
+          ) : null}
 
           {sameBrandProducts.length > 0 ? (
             <section className="mt-8">

@@ -3,9 +3,9 @@ import Footer from "../components/Footer";
 import EventsClient from "./EventsClient";
 
 export const metadata = {
-  title: "이벤트/핫딜 | ProteinLab",
+  title: "단백질 이벤트·핫딜 모음 | 브랜드 공식몰 할인·쿠폰 정리",
   description:
-    "단백질 음료, 바, 요거트, 쉐이크 브랜드의 자사몰·공식 스토어 이벤트와 혜택을 한눈에 확인하세요.",
+    "단백질 음료, 바, 요거트, 쉐이크 브랜드의 공식몰·네이버 스토어 할인, 쿠폰, 증정, 무료배송 혜택을 한곳에서 확인하세요.",
 };
 
 export default function OfficialEventsPage() {
@@ -17,4 +17,3 @@ export default function OfficialEventsPage() {
     </div>
   );
 }
-

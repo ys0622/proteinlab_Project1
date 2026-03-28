@@ -553,8 +553,8 @@ function buildDefaultGuideLinks(curation: CurationDefinition): CurationGuideLink
   if (curation.categories.yogurt) {
     links.push({
       href: `/yogurt?curation=${curation.slug}`,
-      title: `${curation.label} ?⑤갚吏??붽굅??鍮꾧탳`,
-      description: `${curation.label} 湲곗???留욌뒗 ?⑤갚吏??붽굅?몃? 諛붾줈 鍮꾧탳?대낫?몄슂.`,
+      title: `${curation.label} 단백질 요거트 비교`,
+      description: `${curation.label} 기준에 맞는 단백질 요거트를 바로 비교해보세요.`,
     });
   }
 
