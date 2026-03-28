@@ -195,6 +195,7 @@ const sections: AdminGuideSection[] = [
       article("commute-protein-guide", "출근길 단백질 제품", "출근길과 사무실에서 먹기 좋은 제품군을 상황별로 정리합니다.", "/guides/fitness-lifestyle/commute-protein-guide", { emoji: "💼", tags: ["출근길", "직장인"] }),
       article("convenience-store-workout-protein", "편의점 운동 전후 단백질", "운동 전후 편의점에서 바로 살 수 있는 제품 기준을 정리합니다.", "/guides/fitness-lifestyle/convenience-store-workout-protein", { emoji: "🏪", tags: ["편의점", "운동 전후"] }),
       article("running-protein-category-guide", "러닝하는 사람은 음료·바·쉐이크 중 뭐가 맞을까", "러닝 전후와 장거리 훈련일에 어떤 카테고리가 맞는지 상황별로 정리합니다.", "/guides/fitness-lifestyle/running-protein-category-guide", { emoji: "🏃", tags: ["러닝", "카테고리", "비교"] }),
+      article("office-worker-protein-routine", "회사원 루틴용 단백질 제품 선택법", "출근 전, 사무실, 퇴근 후 루틴에 맞는 제품군을 상황별로 정리합니다.", "/guides/fitness-lifestyle/office-worker-protein-routine", { emoji: "🏢", tags: ["회사원", "루틴", "비교"] }),
     ],
   },
   {
