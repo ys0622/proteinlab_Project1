@@ -17,6 +17,81 @@ function getListMeta(productType: "drink" | "bar") {
     : { href: "/", label: "단백질 음료" };
 }
 
+function getPickQuickLinks(slug: string, productType: "drink" | "bar") {
+  if (productType === "drink") {
+    if (slug === "zero-sugar" || slug === "diet-a" || slug === "light-protein-under-20") {
+      return [
+        {
+          href: "/guides/product-selection-comparison/selex-vs-himune",
+          title: "대표 저당 RTD 비교 보기",
+          description: "셀렉스와 하이뮨 대표 제품을 바로 비교합니다.",
+        },
+        {
+          href: "/guides/product-selection-comparison/protein-drink-beginners-guide",
+          title: "입문자 가이드 보기",
+          description: "추천 리스트를 본 뒤 어떤 기준으로 고를지 정리합니다.",
+        },
+      ];
+    }
+
+    if (slug === "high-protein-20" || slug === "high-protein" || slug === "fitness-a") {
+      return [
+        {
+          href: "/guides/product-selection-comparison/high-protein-40g-comparison",
+          title: "40g 이상 RTD 비교 보기",
+          description: "고단백 RTD를 더 직접적으로 비교합니다.",
+        },
+        {
+          href: "/guides/product-selection-comparison/protein-density-ranking",
+          title: "단백질 밀도 순위 보기",
+          description: "총량 외에 밀도 기준으로도 같이 읽습니다.",
+        },
+      ];
+    }
+
+    return [
+      {
+        href: "/guides/product-selection-comparison/protein-drink-guide",
+        title: "단백질 음료 선택 가이드",
+        description: "리스트를 본 뒤 비교 기준을 더 자세히 읽습니다.",
+      },
+      {
+        href: "/recommend",
+        title: "맞춤 추천 받기",
+        description: "목적과 조건에 따라 다시 좁혀 봅니다.",
+      },
+    ];
+  }
+
+  if (slug === "bar-low-sugar" || slug === "bar-low-calorie") {
+    return [
+      {
+        href: "/guides/product-selection-comparison/diet-protein-bar",
+        title: "다이어트용 단백질 바 보기",
+        description: "저당·저칼로리 기준으로 더 자세히 확인합니다.",
+      },
+      {
+        href: "/guides/product-selection-comparison/protein-bar-top10",
+        title: "단백질 바 TOP 10 보기",
+        description: "전체 바 추천 리스트와 같이 봅니다.",
+      },
+    ];
+  }
+
+  return [
+    {
+      href: "/guides/product-selection-comparison/protein-bar-top10",
+      title: "단백질 바 TOP 10 보기",
+      description: "큐레이션 외에 전체 바 추천 리스트도 함께 확인합니다.",
+    },
+    {
+      href: "/recommend",
+      title: "맞춤 추천 받기",
+      description: "간식용, 식사보완용, 고단백용으로 다시 분기합니다.",
+    },
+  ];
+}
+
 export async function generateStaticParams() {
   return getAllPickSlugs().map((slug) => ({ slug }));
 }
@@ -71,6 +146,7 @@ export default async function PickDetailPage({ params }: PageProps) {
   const allProducts = await getProductsByCategoryAsync(pick.productType);
   const products = pick.filterProducts(allProducts);
   const listMeta = getListMeta(pick.productType);
+  const quickLinks = getPickQuickLinks(pick.slug, pick.productType);
   const introLines = pick.contentData.description
     .split("\n")
     .map((line) => line.trim())
@@ -140,6 +216,21 @@ export default async function PickDetailPage({ params }: PageProps) {
                 </li>
               ))}
             </ul>
+          </div>
+        </section>
+
+        <section className="mt-6">
+          <div className="grid gap-3 md:grid-cols-2">
+            {quickLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="rounded-[24px] border border-[#ebe5dc] bg-white p-5 transition-colors hover:bg-[var(--accent-light)]"
+              >
+                <p className="text-sm font-semibold text-[#1f2937]">{link.title}</p>
+                <p className="mt-2 text-sm leading-6 text-[#4b5563]">{link.description}</p>
+              </Link>
+            ))}
           </div>
         </section>
 

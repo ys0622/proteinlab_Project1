@@ -50,6 +50,12 @@ interface RecommendResult {
   tips: { icon: string; title: string; desc: string }[];
 }
 
+interface QuickLinkItem {
+  href: string;
+  title: string;
+  desc: string;
+}
+
 interface ConditionOption {
   icon: string;
   label: string;
@@ -319,11 +325,15 @@ function ResultScreen({
   result,
   onReset,
   category,
+  answers,
 }: {
   result: RecommendResult;
   onReset: () => void;
   category: ProductType;
+  answers: QuizAnswers;
 }) {
+  const quickLinks = getRecommendQuickLinks(category, answers);
+
   return (
     <div className="fade-in space-y-5">
       <div className="px-4 py-4 rounded-xl border border-[#e8e6e3] bg-white">
@@ -386,6 +396,19 @@ function ResultScreen({
         ))}
       </div>
 
+      <div className="grid gap-3 md:grid-cols-3">
+        {quickLinks.map((link) => (
+          <Link
+            key={link.href}
+            href={link.href}
+            className="rounded-xl border border-[#e8e6e3] bg-[#FFFDF8] px-4 py-4 transition-colors hover:bg-[var(--accent-light)]"
+          >
+            <p className="text-sm font-semibold text-[#1a1a1a]">{link.title}</p>
+            <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">{link.desc}</p>
+          </Link>
+        ))}
+      </div>
+
       <div className="flex gap-3 pt-2">
         <button
           onClick={onReset}
@@ -424,6 +447,78 @@ function getIntensityLabel(value: string) {
 
 function getConditionLabel(category: ProductType, value: string) {
   return CONDITION_OPTIONS_BY_CATEGORY[category].find((item) => item.value === value)?.label ?? value;
+}
+
+function getRecommendQuickLinks(category: ProductType, answers: QuizAnswers): QuickLinkItem[] {
+  const links: QuickLinkItem[] = [];
+
+  if (category === "drink") {
+    links.push({
+      href: "/guides/product-selection-comparison/protein-drink-guide",
+      title: "단백질 음료 비교 기준 보기",
+      desc: "추천 결과를 본 뒤 당류, 칼로리, 밀도 기준을 더 자세히 읽습니다.",
+    });
+    if (answers.purpose === "diet" || answers.conditions.includes("lowsugar")) {
+      links.push({
+        href: "/guides/product-selection-comparison/selex-vs-himune",
+        title: "대표 저당 RTD 비교 보기",
+        desc: "셀렉스와 하이뮨 대표 제품을 바로 비교합니다.",
+      });
+    } else if (answers.conditions.includes("highpro") || answers.intensity === "hard" || answers.intensity === "extreme") {
+      links.push({
+        href: "/guides/product-selection-comparison/high-protein-40g-comparison",
+        title: "40g 이상 RTD 비교 보기",
+        desc: "고단백 보충용 후보를 더 직접적으로 좁힙니다.",
+      });
+    }
+  } else if (category === "bar") {
+    links.push({
+      href: "/guides/product-selection-comparison/protein-bar-top10",
+      title: "단백질 바 TOP 10 보기",
+      desc: "추천 결과를 본 뒤 전체 바 랭킹과 대표 제품을 함께 확인합니다.",
+    });
+    if (answers.purpose === "diet" || answers.conditions.includes("lowsugar")) {
+      links.push({
+        href: "/guides/product-selection-comparison/diet-protein-bar",
+        title: "다이어트용 단백질 바 보기",
+        desc: "저당·저칼로리 기준으로 다시 좁혀 봅니다.",
+      });
+    }
+  } else if (category === "yogurt") {
+    links.push({
+      href: "/guides/product-selection-comparison/protein-yogurt-top5",
+      title: "단백질 요거트 TOP 5 보기",
+      desc: "추천 결과를 본 뒤 대표 제품군 비교로 이어집니다.",
+    });
+    if (answers.conditions.includes("lowsugar")) {
+      links.push({
+        href: "/guides/product-selection-comparison/diet-protein-yogurt",
+        title: "다이어트용 요거트 보기",
+        desc: "저당과 칼로리 기준으로 다시 좁혀 볼 수 있습니다.",
+      });
+    }
+  } else {
+    links.push({
+      href: "/guides/product-selection-comparison/protein-shake-top7",
+      title: "단백질 쉐이크 TOP 7 보기",
+      desc: "추천 결과를 본 뒤 대표 쉐이크 비교 페이지로 이어집니다.",
+    });
+    if (answers.purpose === "diet" || answers.conditions.includes("meal")) {
+      links.push({
+        href: "/guides/product-selection-comparison/diet-protein-shake",
+        title: "다이어트 쉐이크 보기",
+        desc: "식사대용과 저당 기준을 함께 확인합니다.",
+      });
+    }
+  }
+
+  links.push({
+    href: "/ranking",
+    title: "전체 순위에서 다시 보기",
+    desc: "추천 결과가 전체 제품 중 어디쯤인지 점수 기준으로 확인합니다.",
+  });
+
+  return links.slice(0, 3);
 }
 
 export default function RecommendClient({ categoryCounts }: RecommendClientProps) {
@@ -727,7 +822,7 @@ export default function RecommendClient({ categoryCounts }: RecommendClientProps
               </div>
             ) : result ? (
               <div className="max-w-[980px] mx-auto">
-                <ResultScreen result={result} onReset={reset} category={category} />
+                <ResultScreen result={result} onReset={reset} category={category} answers={answers} />
               </div>
             ) : null)}
         </div>

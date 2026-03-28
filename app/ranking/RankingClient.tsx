@@ -57,12 +57,96 @@ function getCategoryRankingDescription(productType: ProductCategory, metric: Gra
   return "단백질 밀도, 다이어트, 퍼포먼스 세 기준을 100점 환산으로 비교해 바로 고를 수 있게 정리했습니다.";
 }
 
+function getRankingQuickLinks(productType: ProductCategory, metric: GradeMetric) {
+  if (productType === "drink") {
+    return [
+      {
+        href: "/guides/product-selection-comparison/protein-density-ranking",
+        title: metric === "density" ? "단백질 밀도 해석 가이드" : "RTD 대표 비교 보기",
+        desc:
+          metric === "density"
+            ? "밀도 순위를 읽는 기준과 예외 케이스를 같이 확인합니다."
+            : "대표 RTD 브랜드 비교로 바로 이어집니다.",
+      },
+      {
+        href: "/guides/product-selection-comparison/selex-vs-himune",
+        title: "셀렉스 vs 하이뮨 비교",
+        desc: "랭킹만 보고 끝나지 않도록 대표 브랜드 비교로 이어집니다.",
+      },
+      {
+        href: "/recommend",
+        title: "맞춤 추천 받기",
+        desc: "전체 순위 대신 내 목적에 맞는 제품만 다시 좁힙니다.",
+      },
+    ];
+  }
+
+  if (productType === "bar") {
+    return [
+      {
+        href: "/guides/product-selection-comparison/protein-bar-top10",
+        title: "단백질 바 TOP 10 보기",
+        desc: "전체 바 랭킹과 실제 추천 리스트를 같이 확인합니다.",
+      },
+      {
+        href: "/guides/product-selection-comparison/diet-protein-bar",
+        title: "다이어트용 단백질 바 보기",
+        desc: "저당·저칼로리 기준으로 다시 좁힙니다.",
+      },
+      {
+        href: "/recommend",
+        title: "맞춤 추천 받기",
+        desc: "간식용, 식사보완용, 고단백용으로 다시 분기합니다.",
+      },
+    ];
+  }
+
+  if (productType === "yogurt") {
+    return [
+      {
+        href: "/guides/product-selection-comparison/protein-yogurt-top5",
+        title: "단백질 요거트 TOP 5 보기",
+        desc: "랭킹과 별도로 대표 제품 리스트를 같이 확인합니다.",
+      },
+      {
+        href: "/guides/product-selection-comparison/greek-vs-protein-yogurt",
+        title: "그릭 vs 단백질 요거트",
+        desc: "유형 차이를 먼저 읽고 다시 제품을 좁힙니다.",
+      },
+      {
+        href: "/recommend",
+        title: "맞춤 추천 받기",
+        desc: "아침용, 저당용, 고단백용으로 다시 나눠봅니다.",
+      },
+    ];
+  }
+
+  return [
+    {
+      href: "/guides/product-selection-comparison/protein-shake-top7",
+      title: "단백질 쉐이크 TOP 7 보기",
+      desc: "랭킹 외에 대표 쉐이크 리스트로도 이어집니다.",
+    },
+    {
+      href: "/guides/product-selection-comparison/diet-protein-shake",
+      title: "다이어트 쉐이크 보기",
+      desc: "식사대용과 저당 기준을 함께 읽습니다.",
+    },
+    {
+      href: "/recommend",
+      title: "맞춤 추천 받기",
+      desc: "식사대용, 운동보충, 저당 기준으로 다시 좁힙니다.",
+    },
+  ];
+}
+
 export default function RankingClient({ rankings }: RankingClientProps) {
   const [productType, setProductType] = useState<ProductCategory>("drink");
   const [metric, setMetric] = useState<GradeMetric>("density");
 
   const items = rankings[productType][metric];
   const metricLabel = METRICS.find((item) => item.id === metric)?.label ?? "점수";
+  const quickLinks = getRankingQuickLinks(productType, metric);
   const categoryCounts = {
     drink: rankings.drink.density.length,
     bar: rankings.bar.density.length,
@@ -119,6 +203,19 @@ export default function RankingClient({ rankings }: RankingClientProps) {
         <p className="mt-4 text-xs text-[#999]">
           {getMetricGuide(productType, metric)} · 총 {items.length}개 제품
         </p>
+
+        <div className="mt-4 grid gap-3 md:grid-cols-3">
+          {quickLinks.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className="rounded-xl border border-[#e8e6e3] bg-[#FFFDF8] px-4 py-4 transition-colors hover:bg-[var(--accent-light)]"
+            >
+              <p className="text-sm font-semibold text-[var(--foreground)]">{link.title}</p>
+              <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">{link.desc}</p>
+            </Link>
+          ))}
+        </div>
 
         {items.length === 0 ? (
           <div className="mt-4 rounded-2xl border border-[var(--border)] bg-[var(--background-card)] px-5 py-10 text-center">

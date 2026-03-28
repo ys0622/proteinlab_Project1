@@ -7,6 +7,97 @@ import { getAllProducts } from "../../data/products";
 import { getCategoryLabel, type ProductCategory } from "../../lib/categories";
 import { getBrandSummary, slugToBrand } from "../../lib/brandHubs";
 
+function getBrandQuickLinks(brand: string) {
+  const map: Record<string, { href: string; title: string; description: string }[]> = {
+    셀렉스: [
+      {
+        href: "/guides/product-selection-comparison/selexs-lineup",
+        title: "셀렉스 라인업 가이드",
+        description: "프로핏, 코어프로틴, 마이밀 차이를 먼저 읽고 제품을 좁힙니다.",
+      },
+      {
+        href: "/guides/product-selection-comparison/selex-vs-himune",
+        title: "셀렉스 vs 하이뮨 비교",
+        description: "대표 RTD를 직접 비교해 어떤 방향이 맞는지 확인합니다.",
+      },
+    ],
+    하이뮨: [
+      {
+        href: "/guides/product-selection-comparison/himune-lineup",
+        title: "하이뮨 라인업 가이드",
+        description: "액티브, 제로, 다크초코, 프로틴밸런스를 한 번에 정리합니다.",
+      },
+      {
+        href: "/guides/product-selection-comparison/takefit-vs-himune",
+        title: "테이크핏 vs 하이뮨 비교",
+        description: "저당형 RTD와 산양유 RTD 차이를 바로 읽습니다.",
+      },
+    ],
+    테이크핏: [
+      {
+        href: "/guides/product-selection-comparison/takefit-lineup",
+        title: "테이크핏 라인업 가이드",
+        description: "맥스, 몬스터, 프로를 목적별로 나눠 봅니다.",
+      },
+      {
+        href: "/guides/product-selection-comparison/high-protein-40g-comparison",
+        title: "40g 이상 RTD 비교",
+        description: "테이크핏 몬스터가 다른 40g대 제품과 어떻게 다른지 확인합니다.",
+      },
+    ],
+    뉴케어: [
+      {
+        href: "/guides/product-selection-comparison/newcare-allprotein",
+        title: "뉴케어 올프로틴 완전 분석",
+        description: "41g, 25g, 식물성, 워터 라인 차이를 한 페이지에서 봅니다.",
+      },
+      {
+        href: "/guides/product-selection-comparison/protein-drink-for-50s",
+        title: "50대 단백질 음료 가이드",
+        description: "중장년층 관점에서 뉴케어를 어떻게 봐야 하는지 정리했습니다.",
+      },
+    ],
+    더단백: [
+      {
+        href: "/guides/product-selection-comparison/danbaek-lineup",
+        title: "더단백 라인업 가이드",
+        description: "20g부터 40g 라인까지 전체 구성을 빠르게 확인합니다.",
+      },
+      {
+        href: "/guides/product-selection-comparison/danbaek-vs-himune",
+        title: "더단백 vs 하이뮨 비교",
+        description: "저나트륨 RTD와 산양유 RTD 차이를 직접 비교합니다.",
+      },
+    ],
+    닥터유: [
+      {
+        href: "/guides/product-selection-comparison/dryou-lineup",
+        title: "닥터유 라인업 가이드",
+        description: "40g 음료와 바 라인을 브랜드 기준으로 정리합니다.",
+      },
+      {
+        href: "/guides/product-selection-comparison/doctoru-40g-vs-takefit-monster-43g",
+        title: "닥터유 vs 테이크핏 몬스터",
+        description: "맛 중심인지 함량 중심인지 직접 비교합니다.",
+      },
+    ],
+    랩노쉬: [
+      {
+        href: "/guides/product-selection-comparison/labnosh-lineup",
+        title: "랩노쉬 라인업 가이드",
+        description: "슬림쉐이크와 프로틴드링크 차이를 브랜드 기준으로 봅니다.",
+      },
+      {
+        href: "/guides/product-selection-comparison/protein-shake-top7",
+        title: "쉐이크 TOP 7 보기",
+        description: "전체 쉐이크 안에서 랩노쉬 위치를 같이 확인합니다.",
+      },
+    ],
+  };
+
+  return map[brand] ?? [];
+}
+
 interface PageProps {
   params: Promise<{ slug: string }>;
 }
@@ -42,6 +133,7 @@ export default async function BrandPage({ params }: PageProps) {
   const { slug } = await params;
   const brandName = slugToBrand(slug, brands.map((item) => item.brand));
   const brand = brands.find((item) => item.brand === brandName);
+  const quickLinks = brand ? getBrandQuickLinks(brand.brand) : [];
 
   if (!brand) notFound();
 
@@ -80,6 +172,29 @@ export default async function BrandPage({ params }: PageProps) {
             제품 수가 많은 브랜드일수록 라인별 차이가 크기 때문에, 상세 페이지와 비교 페이지를 같이 보는 편이 빠릅니다.
           </p>
         </section>
+
+        {quickLinks.length > 0 ? (
+          <section className="mt-6">
+            <div className="mb-4 space-y-1">
+              <h2 className="text-lg font-bold text-[var(--foreground)]">이 브랜드에서 먼저 보면 좋은 페이지</h2>
+              <p className="text-sm leading-6 text-[var(--foreground-muted)]">
+                제품 목록만 보지 말고, 라인업 차이와 대표 비교 페이지를 같이 보면 선택이 더 빨라집니다.
+              </p>
+            </div>
+            <div className="grid gap-3 md:grid-cols-2">
+              {quickLinks.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className="rounded-2xl border border-[#e8e6e3] bg-[#FFFDF8] p-5 transition-colors hover:bg-[var(--accent-light)]"
+                >
+                  <p className="text-sm font-semibold text-[var(--foreground)]">{link.title}</p>
+                  <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">{link.description}</p>
+                </Link>
+              ))}
+            </div>
+          </section>
+        ) : null}
 
         <section className="mt-8">
           <div className="mb-4 space-y-1">
