@@ -49,6 +49,12 @@ function walkFiles(dirPath) {
 function normalizeText(value) {
   return (value ?? "")
     .toLowerCase()
+    .replace(/단백질/g, "")
+    .replace(/프로틴/g, "")
+    .replace(/쉐이크/g, "")
+    .replace(/요거트/g, "")
+    .replace(/그릭/g, "")
+    .replace(/바$/g, "바")
     .replace(/spec/gi, "")
     .replace(/\.[a-z0-9]+$/i, "")
     .replace(/[()\[\]{}·,&+!.'"`~:/\\_-]/g, "")
@@ -72,6 +78,8 @@ function buildCandidates(product) {
     `${brand} ${name} ${variant}`,
     `${name} ${flavor}`,
     `${brand} ${name} ${flavor}`,
+    `${brand} ${flavor}`,
+    `${name.replace(/\s*\(.+?\)/g, "").trim()} ${flavor}`,
   ]
     .map(normalizeText)
     .filter(Boolean);
@@ -85,7 +93,8 @@ function syncSpecGroup({ rawDir, publicDir, dataFile, outputFile }) {
 
   const normalizedFiles = rawFiles.map((filePath) => {
     const filename = path.basename(filePath);
-    const normalized = normalizeText(filename);
+    const relativePath = path.relative(rawDir, filePath);
+    const normalized = normalizeText(relativePath);
     const targetPath = path.join(publicDir, filename);
     fs.copyFileSync(filePath, targetPath);
     return { filename, normalized };
