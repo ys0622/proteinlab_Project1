@@ -194,6 +194,7 @@ const sections: AdminGuideSection[] = [
       article("beginner-workout-guide", "운동 초보 가이드", "운동을 시작하는 사람이 보는 단백질 입문 가이드입니다.", "/guides/fitness-lifestyle/beginner-workout-guide", { emoji: "🌱", tags: ["초보", "루틴"] }),
       article("commute-protein-guide", "출근길 단백질 제품", "출근길과 사무실에서 먹기 좋은 제품군을 상황별로 정리합니다.", "/guides/fitness-lifestyle/commute-protein-guide", { emoji: "💼", tags: ["출근길", "직장인"] }),
       article("convenience-store-workout-protein", "편의점 운동 전후 단백질", "운동 전후 편의점에서 바로 살 수 있는 제품 기준을 정리합니다.", "/guides/fitness-lifestyle/convenience-store-workout-protein", { emoji: "🏪", tags: ["편의점", "운동 전후"] }),
+      article("running-protein-category-guide", "러닝하는 사람은 음료·바·쉐이크 중 뭐가 맞을까", "러닝 전후와 장거리 훈련일에 어떤 카테고리가 맞는지 상황별로 정리합니다.", "/guides/fitness-lifestyle/running-protein-category-guide", { emoji: "🏃", tags: ["러닝", "카테고리", "비교"] }),
     ],
   },
   {
