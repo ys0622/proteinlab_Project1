@@ -4,7 +4,6 @@ import { notFound } from "next/navigation";
 import AdminQuickEdit from "../../components/AdminQuickEdit";
 import AffiliateDisclosure from "../../components/AffiliateDisclosure";
 import BackButton from "../../components/BackButton";
-import CompareButton from "../../components/CompareButton";
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
 import MetricBadgeGroup from "../../components/MetricBadgeGroup";
@@ -18,22 +17,17 @@ import {
   getMetricBadgeTooltip,
   getProductBadgeTone,
 } from "../../components/productBadgeUtils";
-import ProductReviewSection from "../../components/ProductReviewSection";
 import PurchaseLinkRow from "../../components/PurchaseLinkRow";
-import RelatedLinkCards from "../../components/RelatedLinkCards";
 import ServingBasisNotice from "../../components/ServingBasisNotice";
 import { getNutritionDetail } from "../../data/products";
 import { getCategoryHref, getCategoryLabel } from "../../lib/categories";
-import { brandToSlug } from "../../lib/brandHubs";
-import { getProductBySlugAsync, getProductsByCategoryAsync } from "../../lib/productData";
-import { getProductImageUrl, getProductSpecImageUrl } from "../../lib/productImage";
+import { getProductBySlugAsync } from "../../lib/productData";
+import { getProductImageUrl } from "../../lib/productImage";
 import {
   getCoupangRedirectHref,
   getKnownSourceCoupangUrlBySlug,
   normalizeCoupangUrl,
 } from "../../lib/purchaseLinks";
-import { getSimilarProducts } from "../../lib/similarProducts";
-import { getProductTrafficLinks } from "../../lib/trafficLinks";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -290,19 +284,17 @@ export default async function ProductDetailPage({ params }: PageProps) {
   const product = await getProductBySlugAsync(slug);
   if (!product) notFound();
 
-  const gradeLabels = product.gradeTags ?? [];
-  const gradeDescs = product.gradeDescriptions ?? ["-", "-", "-"];
+  const gradeLabels: string[] = [];
+  const gradeDescs: string[] = [];
   const isBar = product.productType === "bar";
   const isYogurt = product.productType === "yogurt";
   const isShake = product.productType === "shake";
   const productImageUrl = getProductImageUrl(product.slug);
-  const productSpecImageUrl = getProductSpecImageUrl(product.slug, product.productType);
+  const productSpecImageUrl: string | null = null;
   const category = (product.productType ?? "drink") as "drink" | "bar" | "yogurt" | "shake";
-  const categoryProducts = await getProductsByCategoryAsync(category);
-  const sameBrandProducts = getSameBrandProducts(product, categoryProducts, 3);
-  const similarProducts = getSimilarProducts(product, categoryProducts, 6);
-  const trafficLinks = getProductTrafficLinks(product);
-  const faqItems = getProductFaqs(product);
+  const sameBrandProducts: ProductDetailProps[] = [];
+  const similarProducts: ProductDetailProps[] = [];
+  const faqItems: Array<{ question: string; answer: string }> = [];
   const hasCapacityInName = Boolean(product.capacity && product.name.includes(product.capacity));
   const metaParts = [
     product.manufacturer,
@@ -421,18 +413,6 @@ export default async function ProductDetailPage({ params }: PageProps) {
         ...(product.sodium != null ? { sodiumContent: `${product.sodium} mg` } : {}),
       },
     },
-    {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      mainEntity: faqItems.map((item) => ({
-        "@type": "Question",
-        name: item.question,
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: item.answer,
-        },
-      })),
-    },
   ];
 
   return (
@@ -451,9 +431,9 @@ export default async function ProductDetailPage({ params }: PageProps) {
           </div>
 
           <div className="mt-6 flex flex-col gap-6 lg:flex-row lg:items-stretch lg:gap-8">
-            <div className="w-full flex-shrink-0 lg:max-w-[300px]">
+            <div className="w-full flex-shrink-0 lg:max-w-[260px]">
               <div
-                className="relative flex w-full min-h-[260px] items-center justify-center overflow-hidden rounded-2xl border border-[#e8e6e3] bg-white sm:min-h-[280px] lg:h-full lg:min-h-0"
+                className="relative flex w-full min-h-[220px] items-center justify-center overflow-hidden rounded-2xl border border-[#e8e6e3] bg-white sm:min-h-[240px] lg:h-full lg:min-h-0"
                 style={{ borderRadius: "16px" }}
               >
                 {productImageUrl ? (
@@ -462,7 +442,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
                     alt={`${product.brand} ${product.name}`}
                     fill
                     className="object-contain p-4"
-                    sizes="(max-width: 1024px) 100vw, 300px"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 60vw, 260px"
                     unoptimized
                   />
                 ) : (
@@ -498,20 +478,6 @@ export default async function ProductDetailPage({ params }: PageProps) {
                 <p className="mt-1 text-[13px]" style={{ color: "#6b6b6b" }}>
                   {metaLine}
                 </p>
-                <div className="mt-3 flex flex-wrap gap-2">
-                  <Link
-                    href={`/brands/${encodeURIComponent(brandToSlug(product.brand))}`}
-                    className="inline-flex items-center rounded-full border border-[#ddd8cf] bg-white px-3 py-1.5 text-[11px] font-semibold text-[#4f4a40] transition-colors hover:bg-[#f7f4ee]"
-                  >
-                    {product.brand} 브랜드 전체 보기
-                  </Link>
-                  <Link
-                    href={`/compare?slugs=${encodeURIComponent(product.slug)}`}
-                    className="inline-flex items-center rounded-full border border-[#ddd8cf] bg-white px-3 py-1.5 text-[11px] font-semibold text-[#4f4a40] transition-colors hover:bg-[#f7f4ee]"
-                  >
-                    이 제품 기준으로 비교 시작
-                  </Link>
-                </div>
                 {isShake ? (
                   <p className="mt-2 max-w-2xl text-[13px] leading-6 text-[#5f6258]">
                     {getShakeSummaryNote(product)}
@@ -617,10 +583,6 @@ export default async function ProductDetailPage({ params }: PageProps) {
               capacity={product.capacity}
               unit={isBar ? "piece" : isYogurt ? "cup" : isShake ? "pack" : "bottle"}
             />
-          </div>
-
-          <div className="mt-6">
-            <ProductReviewSection slug={slug} />
           </div>
 
           {productSpecImageUrl ? (
@@ -755,15 +717,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
             </div>
           </section>
 
-          <RelatedLinkCards
-            title="다음 탐색 동선"
-            description="같은 브랜드 라인업으로 넓히거나, 대표 비교 가이드와 순위 페이지로 바로 넘어갈 수 있게 정리했습니다."
-            links={trafficLinks}
-            sectionId="product-detail-links"
-          />
-
           <div className="mt-4 flex flex-wrap gap-3">
-            <CompareButton slug={slug} detailHref={`/product/${slug}`} />
             <Link
               href={getCategoryHref(category)}
               className="rounded-full border border-[var(--border)] bg-white px-5 py-2.5 text-sm font-medium text-[var(--foreground)] transition-colors hover:bg-[var(--accent-light)]"
