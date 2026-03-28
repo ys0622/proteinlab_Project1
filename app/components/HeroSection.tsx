@@ -19,12 +19,8 @@ export default function HeroSection() {
             className="mt-0.5 text-[11px] leading-snug text-[var(--foreground-muted)] md:mt-1 md:text-sm md:leading-normal"
             style={{ fontWeight: 400 }}
           >
-            음료, 바, 요거트, 쉐이크를 단백질 함량, 당류, 칼로리 기준으로 비교하고
-            셀렉스 vs 하이뮨, 40g 이상, 다이어트, 50대 기준까지 한 번에 볼 수
-            있습니다.
-          </p>
-          <p className="mt-1 text-[11px] font-semibold leading-snug text-[var(--foreground)] md:text-sm">
-            어디서 시작할지 모르겠다면 많이 찾는 비교와 추천부터 확인해보세요.
+            음료, 바, 요거트, 쉐이크를 단백질, 당류, 칼로리 기준으로 비교하고
+            저당, 40g, 다이어트, 50대 기준까지 한 번에 좁혀볼 수 있습니다.
           </p>
         </div>
       </div>
