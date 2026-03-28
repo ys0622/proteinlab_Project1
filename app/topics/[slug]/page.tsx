@@ -40,11 +40,89 @@ export async function generateMetadata({ params }: PageProps) {
   };
 }
 
+function getTopicQuickLinks(slug: string) {
+  if (
+    [
+      "protein-drink-recommend",
+      "low-sugar-protein-drink",
+      "diet-protein-drink",
+      "high-protein-drink-20g",
+      "protein-water",
+      "lactose-free-protein-drink",
+      "vegan-protein-drink",
+    ].includes(slug)
+  ) {
+    return [
+      { href: "/", title: "음료 전체 제품 보기" },
+      { href: "/guides/product-selection-comparison", title: "음료 비교 가이드 모음" },
+      { href: "/recommend", title: "맞춤 추천 받기" },
+    ];
+  }
+
+  if (
+    [
+      "meal-replacement-protein-shake",
+      "low-sugar-protein-shake",
+      "post-workout-protein-shake",
+    ].includes(slug)
+  ) {
+    return [
+      { href: "/shake", title: "쉐이크 전체 제품 보기" },
+      { href: "/guides/product-selection-comparison/protein-shake-top7", title: "쉐이크 대표 비교 보기" },
+      { href: "/recommend", title: "맞춤 추천 받기" },
+    ];
+  }
+
+  if (
+    ["high-protein-greek-yogurt", "low-sugar-yogurt", "drinking-yogurt-protein", "bulk-yogurt-protein"].includes(
+      slug,
+    )
+  ) {
+    return [
+      { href: "/yogurt", title: "요거트 전체 제품 보기" },
+      { href: "/guides/product-selection-comparison/protein-yogurt-top5", title: "요거트 대표 비교 보기" },
+      { href: "/recommend", title: "맞춤 추천 받기" },
+    ];
+  }
+
+  if (["high-protein-bar", "low-sugar-protein-bar", "low-calorie-protein-bar"].includes(slug)) {
+    return [
+      { href: "/bars", title: "단백질 바 전체 보기" },
+      { href: "/guides/product-selection-comparison/protein-bar-top10", title: "단백질 바 대표 비교 보기" },
+      { href: "/recommend", title: "맞춤 추천 받기" },
+    ];
+  }
+
+  if (slug === "convenience-store-protein") {
+    return [
+      { href: "/products", title: "제품 탐색 허브로 이동" },
+      { href: "/curation/convenience", title: "편의점 큐레이션 보기" },
+      { href: "/recommend", title: "맞춤 추천 받기" },
+    ];
+  }
+
+  if (slug === "running-protein-products") {
+    return [
+      { href: "/curation/running", title: "러닝 큐레이션 보기" },
+      { href: "/guides/fitness-lifestyle", title: "러닝·운동 가이드 보기" },
+      { href: "/recommend", title: "맞춤 추천 받기" },
+    ];
+  }
+
+  return [
+    { href: "/products", title: "제품 탐색 허브로 이동" },
+    { href: "/ranking", title: "순위 보기" },
+    { href: "/recommend", title: "맞춤 추천 받기" },
+  ];
+}
+
 export default async function TopicLandingPage({ params }: PageProps) {
   const { slug } = await params;
   const topic = getSearchTopicBySlug(slug);
 
   if (!topic) notFound();
+
+  const quickLinks = getTopicQuickLinks(topic.slug);
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -117,6 +195,23 @@ export default async function TopicLandingPage({ params }: PageProps) {
             >
               {topic.primaryCta.title}
             </Link>
+          </div>
+        </section>
+
+        <section className="mt-4">
+          <div className="grid gap-3 md:grid-cols-3">
+            {quickLinks.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="rounded-2xl border border-[#e8e6e3] bg-[#FFFDF8] px-4 py-4 transition-colors hover:bg-[var(--accent-light)]"
+              >
+                <p className="text-sm font-semibold text-[var(--foreground)]">{item.title}</p>
+                <p className="mt-2 text-xs leading-5 text-[var(--foreground-muted)]">
+                  조건을 더 좁히거나, 바로 제품 목록과 비교 흐름으로 이어집니다.
+                </p>
+              </Link>
+            ))}
           </div>
         </section>
 
