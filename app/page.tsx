@@ -8,9 +8,9 @@ import type { Metadata } from "next";
 import type { ProductCategory } from "./lib/categories";
 
 export const metadata: Metadata = {
-  title: "단백질 제품 비교 추천 322종 | 음료·바·요거트·쉐이크 성분 비교 (2026)",
+  title: "단백질 제품 비교 추천 322종 | 저당·40g·다이어트·50대까지 바로 찾기 (2026)",
   description:
-    "단백질 음료, 바, 요거트, 쉐이크 322종을 단백질 함량, 당류, 칼로리 기준으로 비교합니다. 저당, 40g, 다이어트, 50대 추천 제품까지 한 번에 찾을 수 있습니다.",
+    "단백질 음료, 바, 요거트, 쉐이크 322종을 단백질 함량, 당류, 칼로리 기준으로 비교합니다. 셀렉스 vs 하이뮨, 40g 이상 비교, 다이어트, 50대 추천까지 바로 시작할 수 있습니다.",
   alternates: {
     canonical: "https://proteinlab.kr",
   },
