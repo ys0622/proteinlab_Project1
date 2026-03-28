@@ -24,6 +24,7 @@ import RelatedLinkCards from "../../components/RelatedLinkCards";
 import ServingBasisNotice from "../../components/ServingBasisNotice";
 import { getNutritionDetail } from "../../data/products";
 import { getCategoryHref, getCategoryLabel } from "../../lib/categories";
+import { brandToSlug } from "../../lib/brandHubs";
 import { getProductBySlugAsync, getProductsByCategoryAsync } from "../../lib/productData";
 import { getProductImageUrl } from "../../lib/productImage";
 import {
@@ -119,6 +120,50 @@ function getProductFaqs(product: ProductDetailProps) {
       answer: `제품 자체 스펙만 보지 말고, 박스 가격, 맛 옵션, 구매 채널, 그리고 내 사용 목적에 맞는지까지 같이 보는 편이 좋습니다. 다이어트 목적이면 당류와 칼로리, 운동 목적이면 단백질 총량과 밀도를 우선 확인하면 됩니다.`,
     },
   ];
+}
+
+function getSameBrandProducts(
+  source: ProductDetailProps,
+  candidates: ProductDetailProps[],
+  limit = 3,
+) {
+  return candidates
+    .filter(
+      (candidate) =>
+        candidate.slug !== source.slug &&
+        candidate.productType === source.productType &&
+        candidate.brand === source.brand,
+    )
+    .sort((a, b) => {
+      const proteinGap =
+        Math.abs((a.proteinPerServing ?? 0) - (source.proteinPerServing ?? 0)) -
+        Math.abs((b.proteinPerServing ?? 0) - (source.proteinPerServing ?? 0));
+      if (proteinGap !== 0) return proteinGap;
+
+      const sugarGap =
+        Math.abs((a.sugar ?? 0) - (source.sugar ?? 0)) -
+        Math.abs((b.sugar ?? 0) - (source.sugar ?? 0));
+      if (sugarGap !== 0) return sugarGap;
+
+      return a.name.localeCompare(b.name);
+    })
+    .slice(0, limit);
+}
+
+function getSimilarSectionDescription(product: ProductDetailProps) {
+  if (product.productType === "drink") {
+    return `${getMetricLine(product)} 기준으로 RTD 안에서 함께 많이 비교되는 제품입니다. 브랜드를 바꿔도 비슷한 스펙인지 바로 확인할 수 있습니다.`;
+  }
+
+  if (product.productType === "bar") {
+    return `${getMetricLine(product)} 기준으로 이동 간식용 단백질 바 안에서 자주 같이 보는 제품입니다.`;
+  }
+
+  if (product.productType === "yogurt") {
+    return `${getMetricLine(product)} 기준으로 아침·간식용 요거트 안에서 함께 비교되는 제품입니다.`;
+  }
+
+  return `${getMetricLine(product)} 기준으로 파우치형 쉐이크 안에서 자주 같이 보는 제품입니다. 식사대용과 저당 기준을 함께 확인하기 좋습니다.`;
 }
 
 function renderSummaryMetricValue(value: string, isCompact: boolean) {
@@ -240,8 +285,9 @@ export default async function ProductDetailPage({ params }: PageProps) {
   const productImageUrl = getProductImageUrl(product.slug);
   const category = (product.productType ?? "drink") as "drink" | "bar" | "yogurt" | "shake";
   const categoryProducts = await getProductsByCategoryAsync(category);
+  const sameBrandProducts = getSameBrandProducts(product, categoryProducts, 3);
   const similarProducts = getSimilarProducts(product, categoryProducts, 6);
-  const trafficLinks = getProductTrafficLinks(category, slug);
+  const trafficLinks = getProductTrafficLinks(product);
   const faqItems = getProductFaqs(product);
   const hasCapacityInName = Boolean(product.capacity && product.name.includes(product.capacity));
   const metaParts = [
@@ -438,6 +484,20 @@ export default async function ProductDetailPage({ params }: PageProps) {
                 <p className="mt-1 text-[13px]" style={{ color: "#6b6b6b" }}>
                   {metaLine}
                 </p>
+                <div className="mt-3 flex flex-wrap gap-2">
+                  <Link
+                    href={`/brands/${encodeURIComponent(brandToSlug(product.brand))}`}
+                    className="inline-flex items-center rounded-full border border-[#ddd8cf] bg-white px-3 py-1.5 text-[11px] font-semibold text-[#4f4a40] transition-colors hover:bg-[#f7f4ee]"
+                  >
+                    {product.brand} 브랜드 전체 보기
+                  </Link>
+                  <Link
+                    href={`/compare?slugs=${encodeURIComponent(product.slug)}`}
+                    className="inline-flex items-center rounded-full border border-[#ddd8cf] bg-white px-3 py-1.5 text-[11px] font-semibold text-[#4f4a40] transition-colors hover:bg-[#f7f4ee]"
+                  >
+                    이 제품 기준으로 비교 시작
+                  </Link>
+                </div>
                 {isShake ? (
                   <p className="mt-2 max-w-2xl text-[13px] leading-6 text-[#5f6258]">
                     {getShakeSummaryNote(product)}
@@ -549,12 +609,47 @@ export default async function ProductDetailPage({ params }: PageProps) {
             <ProductReviewSection slug={slug} />
           </div>
 
+          {sameBrandProducts.length > 0 ? (
+            <section className="mt-8">
+              <div className="mb-4 space-y-1">
+                <h2 className="text-lg font-semibold text-[var(--foreground)]">같은 브랜드에서 같이 보는 제품</h2>
+                <p className="text-sm leading-6 text-[var(--foreground-muted)]">
+                  {product.brand} 안에서 목적이나 맛만 바꿔 보고 싶다면 이 제품들부터 이어서 확인하면 빠릅니다.
+                </p>
+              </div>
+              <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+                {sameBrandProducts.map((item) => (
+                  <ProductCard
+                    key={item.slug}
+                    brand={item.brand}
+                    name={item.name}
+                    capacity={item.capacity}
+                    variant={item.variant}
+                    tags={item.tags}
+                    proteinPerServing={item.proteinPerServing}
+                    calories={item.calories}
+                    sugar={item.sugar}
+                    density={item.density}
+                    coupangUrl={item.coupangUrl}
+                    naverUrl={item.naverUrl}
+                    officialUrl={item.officialUrl}
+                    gradeTags={item.gradeTags}
+                    slug={item.slug}
+                    productType={item.productType}
+                    yogurtType={item.yogurtType}
+                    fixedTitleLines={2}
+                  />
+                ))}
+              </div>
+            </section>
+          ) : null}
+
           {similarProducts.length > 0 ? (
             <section className="mt-8">
               <div className="mb-4 space-y-1">
                 <h2 className="text-lg font-semibold text-[var(--foreground)]">비슷한 제품 비교</h2>
                 <p className="text-sm leading-6 text-[var(--foreground-muted)]">
-                  {getMetricLine(product)} 기준으로 함께 많이 비교되는 같은 카테고리 제품입니다.
+                  {getSimilarSectionDescription(product)}
                 </p>
               </div>
               <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
@@ -625,7 +720,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
 
           <RelatedLinkCards
             title="다음 탐색 동선"
-            description="이 제품을 본 뒤 바로 이어서 비교하거나, 같은 조건의 제품으로 다시 좁혀볼 수 있습니다."
+            description="같은 브랜드 라인업으로 넓히거나, 대표 비교 가이드와 순위 페이지로 바로 넘어갈 수 있게 정리했습니다."
             links={trafficLinks}
             sectionId="product-detail-links"
           />

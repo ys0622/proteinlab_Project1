@@ -1,4 +1,6 @@
+import { brandToSlug } from "./brandHubs";
 import type { ProductCategory } from "./productData";
+import type { ProductDetailProps } from "../data/products";
 
 export interface TrafficLinkItem {
   href: string;
@@ -116,10 +118,119 @@ export function getRecommendHubLinks(): TrafficLinkItem[] {
   ];
 }
 
+const BRAND_PRODUCT_LINKS: Partial<Record<string, TrafficLinkItem[]>> = {
+  셀렉스: [
+    {
+      href: "/guides/product-selection-comparison/selexs-lineup",
+      title: "셀렉스 라인업 보기",
+      description: "프로핏, 코어프로틴, 마이밀까지 한 번에 보고 제품군 차이를 빠르게 확인합니다.",
+    },
+    {
+      href: "/guides/product-selection-comparison/selex-vs-himune",
+      title: "셀렉스 vs 하이뮨 비교",
+      description: "대표 RTD를 단백질, 당류, 칼로리 기준으로 직접 비교합니다.",
+    },
+  ],
+  하이뮨: [
+    {
+      href: "/guides/product-selection-comparison/himune-lineup",
+      title: "하이뮨 라인업 보기",
+      description: "액티브, 제로, 다크초코, 프로틴밸런스 차이를 라인별로 정리했습니다.",
+    },
+    {
+      href: "/guides/product-selection-comparison/takefit-vs-himune",
+      title: "테이크핏 vs 하이뮨 비교",
+      description: "저당형 RTD와 산양유 RTD 차이를 바로 비교합니다.",
+    },
+  ],
+  테이크핏: [
+    {
+      href: "/guides/product-selection-comparison/takefit-lineup",
+      title: "테이크핏 라인업 보기",
+      description: "맥스, 몬스터, 프로 라인을 목적별로 빠르게 나눠 봅니다.",
+    },
+    {
+      href: "/guides/product-selection-comparison/high-protein-40g-comparison",
+      title: "40g 이상 RTD 비교",
+      description: "테이크핏 몬스터가 다른 40g대 제품과 어떻게 다른지 같이 확인합니다.",
+    },
+  ],
+  뉴케어: [
+    {
+      href: "/guides/product-selection-comparison/newcare-allprotein",
+      title: "뉴케어 올프로틴 완전 분석",
+      description: "41g, 25g, 식물성, 워터 라인 차이를 한 페이지에서 확인합니다.",
+    },
+    {
+      href: "/guides/product-selection-comparison/protein-drink-for-50s",
+      title: "50대 단백질 음료 가이드",
+      description: "중장년층이 뉴케어를 어떤 기준으로 보면 좋은지 바로 이어서 확인합니다.",
+    },
+  ],
+  닥터유: [
+    {
+      href: "/guides/product-selection-comparison/dryou-lineup",
+      title: "닥터유 라인업 보기",
+      description: "40g 음료와 바 라인을 브랜드 기준으로 빠르게 비교합니다.",
+    },
+    {
+      href: "/guides/product-selection-comparison/doctoru-40g-vs-takefit-monster-43g",
+      title: "닥터유 40g vs 테이크핏 몬스터",
+      description: "맛 중심인지 함량 중심인지 바로 판단할 수 있게 비교합니다.",
+    },
+  ],
+  더단백: [
+    {
+      href: "/guides/product-selection-comparison/danbaek-lineup",
+      title: "더단백 라인업 보기",
+      description: "20g 드링크부터 35g, 40g 라인까지 한 번에 비교합니다.",
+    },
+    {
+      href: "/guides/product-selection-comparison/danbaek-vs-himune",
+      title: "더단백 vs 하이뮨 비교",
+      description: "저나트륨 RTD와 산양유 RTD의 차이를 직접 비교합니다.",
+    },
+  ],
+  랩노쉬: [
+    {
+      href: "/guides/product-selection-comparison/labnosh-lineup",
+      title: "랩노쉬 라인업 보기",
+      description: "슬림쉐이크와 프로틴드링크 차이를 브랜드 기준으로 정리했습니다.",
+    },
+    {
+      href: "/guides/product-selection-comparison/protein-shake-top7",
+      title: "단백질 쉐이크 TOP 7",
+      description: "랩노쉬가 전체 파우치 쉐이크에서 어떤 위치인지 같이 확인합니다.",
+    },
+  ],
+  YOZM: [
+    {
+      href: "/guides/product-selection-comparison/protein-yogurt-top5",
+      title: "단백질 요거트 TOP 5",
+      description: "요거트 전체 비교 안에서 이 제품이 어느 축에 있는지 바로 확인합니다.",
+    },
+    {
+      href: "/guides/product-selection-comparison/greek-vs-protein-yogurt",
+      title: "그릭요거트 vs 단백질 요거트",
+      description: "자연식, 저당, 고단백 관점에서 어떤 유형이 맞는지 정리했습니다.",
+    },
+  ],
+};
+
+function dedupeLinks(links: TrafficLinkItem[]) {
+  const seen = new Set<string>();
+  return links.filter((link) => {
+    if (seen.has(link.href)) return false;
+    seen.add(link.href);
+    return true;
+  });
+}
+
 export function getProductTrafficLinks(
-  category: ProductCategory,
-  slug: string,
+  product: Pick<ProductDetailProps, "brand" | "productType" | "slug">,
 ): TrafficLinkItem[] {
+  const category = (product.productType ?? "drink") as ProductCategory;
+  const slug = product.slug;
   const common: TrafficLinkItem[] = [
     {
       href: "/ranking",
@@ -135,6 +246,11 @@ export function getProductTrafficLinks(
       href: `/compare?slugs=${encodeURIComponent(slug)}`,
       title: "비교함에 담아 확장 비교",
       description: "현재 제품을 기준점으로 잡고 다른 제품과 숫자를 나란히 봅니다.",
+    },
+    {
+      href: `/brands/${brandToSlug(product.brand)}`,
+      title: `${product.brand} 브랜드 허브`,
+      description: `같은 브랜드 안에서 음료, 바, 요거트, 쉐이크 라인을 한 번에 모아 봅니다.`,
     },
   ];
 
@@ -189,5 +305,9 @@ export function getProductTrafficLinks(
     ],
   };
 
-  return [...categorySpecific[category], ...common];
+  return dedupeLinks([
+    ...(BRAND_PRODUCT_LINKS[product.brand] ?? []),
+    ...categorySpecific[category],
+    ...common,
+  ]);
 }
