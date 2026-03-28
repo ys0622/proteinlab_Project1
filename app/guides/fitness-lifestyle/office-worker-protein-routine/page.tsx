@@ -3,9 +3,9 @@ import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 
 export const metadata = {
-  title: "회사원 루틴용 단백질 제품 선택법 | 출근 전, 사무실, 퇴근 후 기준 | ProteinLab",
+  title: "회사원 루틴용 단백질 제품 선택법 | 아침, 사무실, 퇴근 후 루틴별 정리 | ProteinLab",
   description:
-    "회사원이 아침, 사무실 간식, 점심 대체, 퇴근 후 운동 루틴에서 어떤 단백질 제품을 고르면 좋은지 상황별로 정리합니다.",
+    "회사원이 아침 공백, 오전 간식, 점심 지연, 퇴근 후 운동, 야근 같은 하루 루틴에서 어떤 단백질 제품을 고르면 좋은지 정리합니다.",
 };
 
 const routineRows = [
@@ -19,7 +19,7 @@ const routineRows = [
 const decisionCards = [
   {
     title: "식사 대체가 필요한가",
-    body: "출근 전 아침처럼 식사 빈칸을 메우는 상황이면 포만감 있는 쉐이크나 식사보완형이 먼저입니다.",
+    body: "회사원 루틴에서는 아침과 점심 공백처럼 식사 빈칸을 메우는 장면이 많아서 포만감 있는 쉐이크나 식사보완형을 따로 봐야 합니다.",
   },
   {
     title: "업무 중 조용하게 먹어야 하는가",
@@ -40,7 +40,7 @@ const commonMistakes = [
 const dailyFlow = [
   {
     title: "아침이 자주 비는 직장인",
-    body: "쉐이크나 식사보완형으로 시작하고, 오전 간식은 가벼운 RTD로 이어가는 방식이 안정적입니다.",
+    body: "아침은 쉐이크나 식사보완형으로 채우고, 오전 간식은 가벼운 RTD나 요거트로 분리하는 편이 오래 유지됩니다.",
   },
   {
     title: "점심이 들쭉날쭉한 직장인",
@@ -55,8 +55,8 @@ const dailyFlow = [
 const relatedLinks = [
   {
     href: "/guides/fitness-lifestyle/commute-protein-guide",
-    title: "출근길 제품만 따로 보기",
-    body: "이동 중 무엇을 먹기 좋은지에 집중해서 보고 싶다면 출근길 전용 가이드가 더 바로 맞습니다.",
+    title: "이동 중 먹기 좋은 제품만 따로 보기",
+    body: "지하철, 차 안, 회사 도착 직후처럼 이동 장면 중심으로 보고 싶다면 출근길 전용 가이드가 더 직접적입니다.",
   },
   {
     href: "/guides/fitness-lifestyle/convenience-store-workout-protein",
@@ -64,9 +64,9 @@ const relatedLinks = [
     body: "헬스장 가는 길이나 운동 직후에 바로 살 수 있는 제품군만 따로 비교할 수 있습니다.",
   },
   {
-    href: "/guides/product-selection-comparison/protein-category-guide",
-    title: "음료·바·쉐이크 전체 비교",
-    body: "직장인 루틴에 어떤 카테고리가 더 맞는지 먼저 넓게 보고 싶다면 이 비교 페이지가 출발점입니다.",
+    href: "/guides/product-selection-comparison/protein-yogurt-top5",
+    title: "사무실 간식용 요거트 보기",
+    body: "업무 중 부담 없는 간식이 필요하면 단백질 요거트 상위 후보를 먼저 보는 편이 빠릅니다.",
   },
 ];
 
@@ -89,11 +89,11 @@ export default function OfficeWorkerProteinRoutinePage() {
           <h1 className="mt-3 text-2xl font-bold leading-tight text-[var(--foreground)] md:text-3xl">
             회사원 단백질 제품은
             <br />
-            출근 전, 사무실, 퇴근 후 루틴이 다 다릅니다.
+            출근길보다 하루 루틴 전체를 기준으로 나눠야 맞습니다.
           </h1>
           <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
-            직장인은 한 제품으로 모든 상황을 해결하려고 하면 오래 못 갑니다. 아침 식사 공백, 오전 간식, 점심 지연,
-            퇴근 후 운동처럼 하루 루틴을 나눠서 보면 어떤 카테고리가 맞는지 훨씬 빨리 정리됩니다.
+            출근길 가이드는 이동 중 무엇을 먹기 좋은지에 집중하고, 이 페이지는 아침 공백, 오전 간식, 점심 지연,
+            퇴근 후 운동, 야근까지 하루 루틴 전체를 어떻게 나눌지에 집중합니다.
           </p>
         </div>
       </section>

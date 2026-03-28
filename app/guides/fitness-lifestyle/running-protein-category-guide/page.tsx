@@ -47,6 +47,11 @@ const mistakes = [
 
 const relatedLinks = [
   {
+    href: "/guides/product-selection-comparison/protein-drink-beginners-guide",
+    title: "러닝 후 마시기 쉬운 음료 보기",
+    body: "운동 직후 빠르게 보충할 RTD를 먼저 고르고 싶다면 입문형 음료 비교에서 바로 후보를 좁힐 수 있습니다.",
+  },
+  {
     href: "/guides/product-selection-comparison/protein-category-guide",
     title: "카테고리 전체 비교 보기",
     body: "러닝 말고도 일반 상황에서 음료, 바, 쉐이크가 어떻게 다른지 먼저 넓게 보고 싶다면 이 페이지가 맞습니다.",
