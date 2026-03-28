@@ -15,6 +15,56 @@ interface CurationLandingTemplateProps {
   recommendedShakes: ProductDetailProps[];
 }
 
+function buildQuickLinks(curation: CurationDefinition) {
+  const links: Array<{ href: string; title: string; description: string }> = [];
+
+  if (curation.categories.drink) {
+    links.push({
+      href: `/?curation=${curation.slug}`,
+      title: `${curation.label} 음료 바로 비교`,
+      description: `${curation.label} 기준에 맞는 단백질 음료를 바로 비교합니다.`,
+    });
+  }
+
+  if (curation.categories.bar) {
+    links.push({
+      href: `/bars?curation=${curation.slug}`,
+      title: `${curation.label} 단백질 바 보기`,
+      description: `${curation.label} 기준에 맞는 단백질 바만 모아봅니다.`,
+    });
+  }
+
+  if (curation.categories.yogurt) {
+    links.push({
+      href: `/yogurt?curation=${curation.slug}`,
+      title: `${curation.label} 요거트 보기`,
+      description: `${curation.label} 기준에 맞는 단백질 요거트를 바로 확인합니다.`,
+    });
+  }
+
+  if (curation.categories.shake) {
+    links.push({
+      href: `/shake?curation=${curation.slug}`,
+      title: `${curation.label} 쉐이크 보기`,
+      description: `${curation.label} 기준에 맞는 단백질 쉐이크를 바로 비교합니다.`,
+    });
+  }
+
+  links.push({
+    href: "/ranking",
+    title: "전체 순위에서 확인",
+    description: "지금 보는 조건의 제품이 전체 카테고리에서 어디쯤인지 같이 봅니다.",
+  });
+
+  links.push({
+    href: "/recommend",
+    title: "맞춤 추천 다시 받기",
+    description: "같은 조건이라도 목적과 운동 패턴에 맞춰 다시 좁혀볼 수 있습니다.",
+  });
+
+  return links.slice(0, 3);
+}
+
 function InfoCard({ section }: { section: CurationInfoSection }) {
   return (
     <div className="rounded-xl border border-[#e8e6e3] bg-[#FFFDF8] px-4 py-4">
@@ -91,6 +141,7 @@ export default function CurationLandingTemplate({
   const hasShakeCategory = Boolean(curation.categories.shake);
   const isPopularLanding = curation.slug === "popular";
   const relatedLinksTitle = curation.relatedLinksTitle ?? "관련 가이드";
+  const quickLinks = buildQuickLinks(curation);
 
   return (
     <>
@@ -135,34 +186,27 @@ export default function CurationLandingTemplate({
         ) : null}
 
         <section className="mt-6">
+          <div className="mb-3 flex items-center justify-between gap-3">
+            <div>
+              <h2 className="text-base font-bold text-[var(--foreground)]">바로 이어서 보기</h2>
+              <p className="text-sm leading-6 text-[var(--foreground-muted)]">
+                지금 보는 조건으로 바로 비교하거나 추천 흐름으로 다시 좁혀볼 수 있습니다.
+              </p>
+            </div>
+          </div>
           <div className="grid gap-3 md:grid-cols-3">
-            <Link
-              href="/products"
-              className="rounded-xl border border-[#e8e6e3] bg-[#FFFDF8] px-4 py-4 transition-colors hover:bg-[var(--accent-light)]"
-            >
-              <p className="text-sm font-semibold text-[var(--foreground)]">제품 탐색 허브로 이동</p>
-              <p className="mt-2 text-xs leading-5 text-[var(--foreground-muted)] md:text-sm">
-                큐레이션만 보지 않고 전체 제품군에서 다시 좁혀볼 수 있습니다.
-              </p>
-            </Link>
-            <Link
-              href="/ranking"
-              className="rounded-xl border border-[#e8e6e3] bg-[#FFFDF8] px-4 py-4 transition-colors hover:bg-[var(--accent-light)]"
-            >
-              <p className="text-sm font-semibold text-[var(--foreground)]">전체 순위에서 보기</p>
-              <p className="mt-2 text-xs leading-5 text-[var(--foreground-muted)] md:text-sm">
-                지금 보는 조건의 제품이 전체 카테고리에서 어디쯤인지 확인합니다.
-              </p>
-            </Link>
-            <Link
-              href="/recommend"
-              className="rounded-xl border border-[#e8e6e3] bg-[#FFFDF8] px-4 py-4 transition-colors hover:bg-[var(--accent-light)]"
-            >
-              <p className="text-sm font-semibold text-[var(--foreground)]">맞춤 추천 받기</p>
-              <p className="mt-2 text-xs leading-5 text-[var(--foreground-muted)] md:text-sm">
-                같은 조건이라도 목적과 운동 패턴에 맞춰 다시 추천받을 수 있습니다.
-              </p>
-            </Link>
+            {quickLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="rounded-xl border border-[#e8e6e3] bg-[#FFFDF8] px-4 py-4 transition-colors hover:bg-[var(--accent-light)]"
+              >
+                <p className="text-sm font-semibold text-[var(--foreground)]">{link.title}</p>
+                <p className="mt-2 text-xs leading-5 text-[var(--foreground-muted)] md:text-sm">
+                  {link.description}
+                </p>
+              </Link>
+            ))}
           </div>
         </section>
 
@@ -170,7 +214,9 @@ export default function CurationLandingTemplate({
           <section className="mt-8">
             <div className="mb-4 space-y-1">
               <h2 className="text-lg font-bold text-[var(--foreground)]">{relatedLinksTitle}</h2>
-              <p className="text-sm leading-6 text-[var(--foreground-muted)]">최근 많이 찾은 큐레이션부터 바로 살펴보세요.</p>
+              <p className="text-sm leading-6 text-[var(--foreground-muted)]">
+                이 조건을 본 뒤 많이 이어서 보는 가이드와 비교 페이지입니다.
+              </p>
             </div>
             <div className="grid gap-3 md:grid-cols-3">
               {curation.relatedGuideLinks.map((guide) => (

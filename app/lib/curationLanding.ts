@@ -613,10 +613,10 @@ function normalizeLandingCuration(curation: CurationDefinition): CurationDefinit
         : profile?.relatedGuideLinks?.length
           ? profile.relatedGuideLinks
           : buildDefaultGuideLinks(curation),
-    seoTitle: curation.seoTitle ?? `${curation.label} 큐레이션 | ProteinLab`,
+    seoTitle: curation.seoTitle ?? `${curation.label} 추천·비교 | ProteinLab`,
     seoDescription:
       curation.seoDescription ??
-      `ProteinLab에서 ${curation.label} 기준의 ${categoryLabel}을 비교해보세요.`,
+      `ProteinLab에서 ${curation.label} 기준의 ${categoryLabel}을 바로 비교하고 추천 제품까지 확인해보세요.`,
   };
 }
 
