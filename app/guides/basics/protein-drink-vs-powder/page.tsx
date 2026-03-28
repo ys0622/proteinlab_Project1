@@ -21,6 +21,21 @@ const links = [
   { href: "/guides/product-selection-comparison/protein-drink-vs-protein-shake", title: "음료 vs 쉐이크 비교", body: "RTD와 파우치형 사이에서 고민 중이면 이 비교가 더 직접적입니다." },
 ];
 
+const fitCases = [
+  {
+    title: "음료가 더 잘 맞는 사람",
+    body: "아침 출근길, 운동 직후, 외출 중처럼 바로 마시는 편의성이 가장 중요할 때입니다.",
+  },
+  {
+    title: "파우더가 더 잘 맞는 사람",
+    body: "집이나 헬스장에서 꾸준히 마시고, 가성비와 용량 조절이 중요한 사람에게 더 잘 맞습니다.",
+  },
+  {
+    title: "초보자가 헷갈리는 지점",
+    body: "둘 다 단백질이지만 생활 맥락이 달라서, 가성비만 보면 파우더가 맞고 반복 가능성만 보면 음료가 맞는 경우가 많습니다.",
+  },
+];
+
 export default function ProteinDrinkVsPowderPage() {
   return (
     <div className="min-h-screen bg-white">
@@ -89,6 +104,18 @@ export default function ProteinDrinkVsPowderPage() {
                 </li>
               ))}
             </ul>
+          </section>
+
+          <section className="rounded-[28px] border border-[#e8e6e3] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
+            <h2 className="text-xl font-bold text-[var(--foreground)]">누가 무엇을 고르면 되나</h2>
+            <div className="mt-5 grid gap-3 md:grid-cols-3">
+              {fitCases.map((item) => (
+                <article key={item.title} className="rounded-2xl border border-[#dce8df] bg-[#f6fbf7] p-4">
+                  <h3 className="text-sm font-semibold text-[#24543d]">{item.title}</h3>
+                  <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">{item.body}</p>
+                </article>
+              ))}
+            </div>
           </section>
 
           <section className="rounded-[28px] border border-[#e8e6e3] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">

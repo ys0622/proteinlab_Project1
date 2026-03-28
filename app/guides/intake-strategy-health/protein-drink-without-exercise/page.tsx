@@ -39,6 +39,18 @@ const compareLinks = [
   },
 ];
 
+const commonMistakes = [
+  "운동을 안 하니 무조건 단백질 음료가 불필요하다고 단정하는 경우",
+  "반대로 건강식이라고 생각하고 식사와 별개로 계속 더 마시는 경우",
+  "20g 전후 제품이면 충분한 상황인데 40g대 제품부터 찾는 경우",
+];
+
+const selectionSteps = [
+  ["1단계", "식사에서 실제로 부족한지 확인", "고기, 계란, 유제품, 콩류가 하루에 얼마나 들어가는지 먼저 떠올려봐야 합니다."],
+  ["2단계", "보완용인지 식사대용인지 구분", "가볍게 채울 건지, 한 끼 공백을 막을 건지에 따라 제품군이 달라집니다."],
+  ["3단계", "마지막에 브랜드 비교", "셀렉스, 하이뮨, 뉴케어처럼 브랜드 비교는 목적이 정해진 뒤에 보는 편이 훨씬 쉽습니다."],
+];
+
 export default function ProteinDrinkWithoutExercisePage() {
   return (
     <div className="min-h-screen bg-white">
@@ -110,9 +122,45 @@ export default function ProteinDrinkWithoutExercisePage() {
           </section>
 
           <section className="rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
+            <h2 className="text-xl font-bold text-[var(--foreground)]">실제로는 이 순서로 고르면 됩니다</h2>
+            <div className="mt-5 overflow-x-auto">
+              <table className="min-w-full border-collapse text-left text-sm">
+                <thead>
+                  <tr className="border-b border-[#e8e6e3] text-[var(--foreground)]">
+                    <th className="px-3 py-3 font-semibold">단계</th>
+                    <th className="px-3 py-3 font-semibold">무엇을 볼까</th>
+                    <th className="px-3 py-3 font-semibold">해석</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {selectionSteps.map((row) => (
+                    <tr key={row[0]} className="border-b border-[#f0eeeb] last:border-b-0">
+                      {row.map((cell) => (
+                        <td key={cell} className="px-3 py-3 text-[var(--foreground-muted)]">{cell}</td>
+                      ))}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <section className="rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
             <h2 className="text-xl font-bold text-[var(--foreground)]">굳이 안 마셔도 되는 경우</h2>
             <ul className="mt-4 space-y-3 text-sm leading-6 text-[var(--foreground-muted)]">
               {dontNeedCases.map((item) => (
+                <li key={item} className="flex gap-3 rounded-xl border border-[#dce8df] bg-[#f6fbf7] px-4 py-3">
+                  <span className="mt-1 h-2 w-2 shrink-0 rounded-full bg-[#2d6a4f]" />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </section>
+
+          <section className="rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
+            <h2 className="text-xl font-bold text-[var(--foreground)]">많이 하는 실수</h2>
+            <ul className="mt-4 space-y-3 text-sm leading-6 text-[var(--foreground-muted)]">
+              {commonMistakes.map((item) => (
                 <li key={item} className="flex gap-3 rounded-xl border border-[#dce8df] bg-[#f6fbf7] px-4 py-3">
                   <span className="mt-1 h-2 w-2 shrink-0 rounded-full bg-[#2d6a4f]" />
                   <span>{item}</span>

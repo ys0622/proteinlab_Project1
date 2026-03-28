@@ -20,6 +20,12 @@ const links = [
   { href: "/guides/product-selection-comparison/convenience-protein-bar", title: "편의점 단백질 바", body: "바로 사서 출근길에 먹을 수 있는 제품이 필요하면 이 비교가 이어집니다." },
 ];
 
+const mistakes = [
+  "출근길인데 포만감만 보고 너무 무거운 제품부터 고르는 경우",
+  "사무실에서 먹기 불편한 제품을 골라 결국 반복하지 못하는 경우",
+  "아침 대용과 간식 보완을 같은 기준으로 고르는 경우",
+];
+
 export default function CommuteProteinGuidePage() {
   return (
     <div className="min-h-screen bg-white">
@@ -87,6 +93,18 @@ export default function CommuteProteinGuidePage() {
                 </article>
               ))}
             </div>
+          </section>
+
+          <section className="rounded-[28px] border border-[#e8e6e3] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
+            <h2 className="text-xl font-bold text-[var(--foreground)]">출근길에서 자주 실패하는 이유</h2>
+            <ul className="mt-4 space-y-3 text-sm leading-6 text-[var(--foreground-muted)]">
+              {mistakes.map((item) => (
+                <li key={item} className="flex gap-3 rounded-xl border border-[#ece9e2] bg-white px-4 py-3">
+                  <span className="mt-1 h-2 w-2 shrink-0 rounded-full bg-[#8a4b2f]" />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
           </section>
 
           <section className="rounded-[28px] border border-[#e8e6e3] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">

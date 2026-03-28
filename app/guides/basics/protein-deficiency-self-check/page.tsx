@@ -21,6 +21,12 @@ const nextSteps = [
   { href: "/guides/product-selection-comparison/protein-drink-for-50s", title: "중장년 보완용 제품", body: "시니어·부모님용 보완이 목적이면 이쪽 비교가 더 직접적입니다." },
 ];
 
+const cautionNotes = [
+  "이 페이지는 생활 패턴 점검용이지 의학적 진단 기준은 아닙니다.",
+  "피로, 부종, 회복 저하가 오래 지속되면 다른 원인도 함께 확인해야 합니다.",
+  "체중 감량 중이라면 단백질 부족과 총칼로리 부족이 같이 오는 경우가 많습니다.",
+];
+
 export default function ProteinDeficiencySelfCheckPage() {
   return (
     <div className="min-h-screen bg-white">
@@ -76,6 +82,18 @@ export default function ProteinDeficiencySelfCheckPage() {
                 </article>
               ))}
             </div>
+          </section>
+
+          <section className="rounded-[28px] border border-[#e8e6e3] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
+            <h2 className="text-xl font-bold text-[var(--foreground)]">헷갈리기 쉬운 점</h2>
+            <ul className="mt-4 space-y-3 text-sm leading-6 text-[var(--foreground-muted)]">
+              {cautionNotes.map((item) => (
+                <li key={item} className="flex gap-3 rounded-xl border border-[#ece9e2] bg-white px-4 py-3">
+                  <span className="mt-1 h-2 w-2 shrink-0 rounded-full bg-[#4c7a57]" />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
           </section>
 
           <section className="rounded-[28px] border border-[#e8e6e3] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">

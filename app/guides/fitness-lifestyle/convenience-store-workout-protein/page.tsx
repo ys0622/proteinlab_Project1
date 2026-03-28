@@ -20,6 +20,21 @@ const links = [
   { href: "/guides/product-selection-comparison/high-protein-40g-comparison", title: "40g 고단백 음료 비교", body: "운동 직후 확실한 보충이 필요할 때는 이 비교가 바로 이어집니다." },
 ];
 
+const decisionCards = [
+  {
+    title: "운동 전",
+    body: "가볍고 부담이 적은 쪽이 먼저입니다. 숫자보다 속이 편한지가 중요합니다.",
+  },
+  {
+    title: "운동 후",
+    body: "이때는 단백질 총량과 당류, 칼로리를 같이 보면서 회복용 제품을 고르는 편이 낫습니다.",
+  },
+  {
+    title: "운동 종류에 따라",
+    body: "러닝처럼 가볍게 끝난 날과 근력운동처럼 집중 보충이 필요한 날은 같은 제품이 맞지 않을 수 있습니다.",
+  },
+];
+
 export default function ConvenienceStoreWorkoutProteinPage() {
   return (
     <div className="min-h-screen bg-white">
@@ -87,6 +102,18 @@ export default function ConvenienceStoreWorkoutProteinPage() {
                 </li>
               ))}
             </ul>
+          </section>
+
+          <section className="rounded-[28px] border border-[#e8e6e3] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
+            <h2 className="text-xl font-bold text-[var(--foreground)]">결국은 이렇게 나눠서 보면 됩니다</h2>
+            <div className="mt-5 grid gap-3 md:grid-cols-3">
+              {decisionCards.map((item) => (
+                <article key={item.title} className="rounded-2xl border border-[#d9e7dc] bg-[#f6fbf7] p-4">
+                  <h3 className="text-sm font-semibold text-[#24543d]">{item.title}</h3>
+                  <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">{item.body}</p>
+                </article>
+              ))}
+            </div>
           </section>
 
           <section className="rounded-[28px] border border-[#e8e6e3] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">

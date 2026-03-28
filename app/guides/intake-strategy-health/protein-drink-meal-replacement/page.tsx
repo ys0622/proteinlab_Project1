@@ -26,6 +26,27 @@ const links = [
   { href: "/guides/product-selection-comparison/protein-drink-for-50s", title: "식사 보완형 음료 비교", body: "건강 유지와 식사 보완 중심 제품이 궁금하면 이 비교가 바로 이어집니다." },
 ];
 
+const mistakes = [
+  "단백질 숫자만 보고 식사대용이 될 거라고 생각하는 경우",
+  "가벼운 보충용 RTD를 점심·저녁 전체 대체에 계속 쓰는 경우",
+  "포만감은 부족한데 간식만 늘어나서 총칼로리가 더 올라가는 경우",
+];
+
+const cases = [
+  {
+    title: "아침 대체",
+    body: "짧은 공백을 막는 용도라면 가벼운 제품도 가능하지만, 점심 전 허기를 버틸 정도는 되는지 같이 봐야 합니다.",
+  },
+  {
+    title: "점심 보완",
+    body: "회의나 이동 때문에 제대로 먹기 어려운 날은 포만감이 더 붙은 쉐이크나 균형 영양형이 잘 맞습니다.",
+  },
+  {
+    title: "저녁 대체",
+    body: "체중 관리 목적이라도 너무 가벼우면 밤 간식으로 돌아오기 쉽습니다. 총칼로리보다 지속성이 중요해집니다.",
+  },
+];
+
 export default function ProteinDrinkMealReplacementPage() {
   return (
     <div className="min-h-screen bg-white">
@@ -83,6 +104,30 @@ export default function ProteinDrinkMealReplacementPage() {
             <h2 className="text-xl font-bold text-[var(--foreground)]">실제로는 이렇게 고르면 됩니다</h2>
             <ul className="mt-4 space-y-3 text-sm leading-6 text-[var(--foreground-muted)]">
               {steps.map((item) => (
+                <li key={item} className="flex gap-3 rounded-xl border border-[#dce8df] bg-[#f6fbf7] px-4 py-3">
+                  <span className="mt-1 h-2 w-2 shrink-0 rounded-full bg-[#2d6a4f]" />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </section>
+
+          <section className="rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
+            <h2 className="text-xl font-bold text-[var(--foreground)]">식사대용도 상황별로 다릅니다</h2>
+            <div className="mt-5 grid gap-3 md:grid-cols-3">
+              {cases.map((item) => (
+                <article key={item.title} className="rounded-2xl border border-[#dce8df] bg-[#f6fbf7] p-4">
+                  <h3 className="text-sm font-semibold text-[#24543d]">{item.title}</h3>
+                  <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">{item.body}</p>
+                </article>
+              ))}
+            </div>
+          </section>
+
+          <section className="rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
+            <h2 className="text-xl font-bold text-[var(--foreground)]">실패하는 패턴</h2>
+            <ul className="mt-4 space-y-3 text-sm leading-6 text-[var(--foreground-muted)]">
+              {mistakes.map((item) => (
                 <li key={item} className="flex gap-3 rounded-xl border border-[#dce8df] bg-[#f6fbf7] px-4 py-3">
                   <span className="mt-1 h-2 w-2 shrink-0 rounded-full bg-[#2d6a4f]" />
                   <span>{item}</span>

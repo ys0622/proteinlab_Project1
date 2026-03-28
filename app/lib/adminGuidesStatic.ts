@@ -171,6 +171,8 @@ const sections: AdminGuideSection[] = [
       article("meal-replacement-strategy", "식사대용 전략", "식사대용과 보충용의 차이를 설명합니다.", "/guides/intake-strategy-health/meal-replacement-strategy", { emoji: "🍽️", tags: ["식사대용", "포만감"] }),
       article("protein-drink-without-exercise", "운동 안 해도 단백질 음료", "운동을 안 해도 단백질 음료가 필요한 상황을 정리합니다.", "/guides/intake-strategy-health/protein-drink-without-exercise", { emoji: "🥛", tags: ["입문", "생활 보완"] }),
       article("protein-drink-meal-replacement", "단백질 음료 식사대용", "단백질 음료가 한 끼 대체가 되는지 제품군별로 나눠 설명합니다.", "/guides/intake-strategy-health/protein-drink-meal-replacement", { emoji: "🥣", tags: ["식사대용", "보완"] }),
+      article("night-protein-drink", "밤에 단백질 음료 마셔도 될까", "저녁, 야식, 자기 전 상황에서 어떤 제품이 맞는지 정리합니다.", "/guides/intake-strategy-health/night-protein-drink", { emoji: "🌙", tags: ["저녁", "야식", "저당"] }),
+      article("diet-protein-drink-strategy", "다이어트 중 단백질 음료 어떻게 마실까", "저당, 저칼로리, 포만감 기준으로 감량 중 제품 선택법을 정리합니다.", "/guides/intake-strategy-health/diet-protein-drink-strategy", { emoji: "🥗", tags: ["다이어트", "저당", "포만감"] }),
     ],
   },
   {
