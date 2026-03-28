@@ -27,6 +27,12 @@ const cautionNotes = [
   "체중 감량 중이라면 단백질 부족과 총칼로리 부족이 같이 오는 경우가 많습니다.",
 ];
 
+const scoreGuide = [
+  ["0~1개", "부족 가능성 낮음", "지금은 식사 패턴을 크게 바꿀 단계는 아닐 수 있습니다. 다만 끼니를 자주 거르면 다시 점검할 가치가 있습니다."],
+  ["2개", "생활 패턴 점검 권장", "권장량과 식사 구성을 같이 보면 부족한 부분이 꽤 선명해지는 경우가 많습니다."],
+  ["3개 이상", "보완 전략까지 바로 보기", "식사만으로 채우기 어려운 패턴일 수 있어서 음료·쉐이크 같은 반복 가능한 보완 방식을 같이 보는 편이 빠릅니다."],
+];
+
 export default function ProteinDeficiencySelfCheckPage() {
   return (
     <div className="min-h-screen bg-white">
@@ -66,6 +72,30 @@ export default function ProteinDeficiencySelfCheckPage() {
                 </li>
               ))}
             </ul>
+          </section>
+
+          <section className="rounded-[28px] border border-[#e8e6e3] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
+            <h2 className="text-xl font-bold text-[var(--foreground)]">몇 개 이상이면 부족 가능성을 의심할까</h2>
+            <div className="mt-5 overflow-x-auto">
+              <table className="min-w-full border-collapse text-left text-sm">
+                <thead>
+                  <tr className="border-b border-[#e8e6e3] text-[var(--foreground)]">
+                    <th className="px-3 py-3 font-semibold">해당 개수</th>
+                    <th className="px-3 py-3 font-semibold">판단</th>
+                    <th className="px-3 py-3 font-semibold">다음 행동</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {scoreGuide.map((row) => (
+                    <tr key={row[0]} className="border-b border-[#f0eeeb] last:border-b-0">
+                      {row.map((cell) => (
+                        <td key={cell} className="px-3 py-3 text-[var(--foreground-muted)]">{cell}</td>
+                      ))}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           </section>
 
           <section className="rounded-[28px] border border-[#e8e6e3] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">

@@ -17,7 +17,7 @@ const rows = [
 
 const links = [
   { href: "/guides/product-selection-comparison/protein-drink-beginners-guide", title: "단백질 음료 입문 가이드", body: "바로 마시는 쪽이 맞는 사람이라면 이 페이지부터 시작하는 편이 빠릅니다." },
-  { href: "/guides/product-selection-comparison/protein-shake-guide", title: "단백질 쉐이크 가이드", body: "파우치형 쉐이크까지 포함해 더 가볍게 보고 싶다면 이쪽이 이어집니다." },
+  { href: "/guides/product-selection-comparison/high-protein-40g-comparison", title: "음료 쪽 고단백 비교", body: "RTD 음료 쪽으로 마음이 기울면 실제 음료 후보를 바로 비교하는 편이 더 빠릅니다." },
   { href: "/guides/product-selection-comparison/protein-drink-vs-protein-shake", title: "음료 vs 쉐이크 비교", body: "RTD와 파우치형 사이에서 고민 중이면 이 비교가 더 직접적입니다." },
 ];
 

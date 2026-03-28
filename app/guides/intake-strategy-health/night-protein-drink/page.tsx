@@ -63,6 +63,11 @@ const relatedLinks = [
     body: "밤에 마실 제품은 당류와 칼로리를 먼저 거르는 쪽이 안전합니다. 저당 기준 비교 페이지로 바로 이어집니다.",
   },
   {
+    href: "/guides/intake-strategy-health/post-workout-protein",
+    title: "운동 후 늦은 보충 기준 보기",
+    body: "늦은 시간 운동 후 회복용으로 마실지 고민 중이라면 운동 후 보충 기준 페이지를 같이 보는 편이 더 정확합니다.",
+  },
+  {
     href: "/guides/product-selection-comparison/protein-drink-for-50s",
     title: "중장년용 보완 제품 보기",
     body: "야식이 아니라 건강 보완 목적이면 식사 보완형 제품군을 따로 보는 편이 더 빠릅니다.",

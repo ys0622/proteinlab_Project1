@@ -3,15 +3,15 @@ import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 
 export const metadata = {
-  title: "단백질 음료로 한 끼 대체해도 될까 | ProteinLab",
+  title: "단백질 음료로 한 끼 대체해도 될까 | 식사 보완형 음료 기준 정리 | ProteinLab",
   description:
-    "단백질 음료를 식사 대신 마셔도 되는지, 식사 대용 가능한 제품과 단순 보충용 제품의 차이를 쉽게 정리합니다.",
+    "단백질 음료를 식사 대신 마셔도 되는지, 식사 보완형 음료와 단순 보충용 RTD의 차이, 언제 쉐이크로 넘어가야 하는지 정리합니다.",
 };
 
 const rows = [
-  ["단백질만 높은 RTD", "보충용에 가까움", "칼로리와 포만감이 낮아 한 끼 대체로는 짧게 끝나는 경우가 많습니다."],
-  ["균형 영양형 음료", "식사 보완용", "칼로리와 영양소가 더 붙어 있어 한 끼 대체에 가까운 편입니다."],
-  ["파우치 쉐이크", "식사 대용에 유리", "식이섬유와 포만감 설계가 함께 들어가는 경우가 많습니다."],
+  ["단백질만 높은 RTD", "보충용에 가까움", "칼로리와 포만감이 낮아 한 끼 전체 대체보다는 부족분 보완에 더 가깝습니다."],
+  ["균형 영양형 음료", "식사 보완용", "칼로리와 영양소가 더 붙어 있어 음료 중에서는 한 끼 대체에 가장 가까운 편입니다."],
+  ["파우치 쉐이크", "식사 대용에 유리", "음료만으로 버티기 어렵다면 결국 쉐이크 쪽으로 넘어가는 편이 더 현실적입니다."],
 ];
 
 const steps = [
@@ -21,9 +21,9 @@ const steps = [
 ];
 
 const links = [
-  { href: "/guides/product-selection-comparison/protein-category-guide", title: "음료 vs 쉐이크 vs 바 비교", body: "한 끼 대체가 목적이면 음료보다 쉐이크가 더 맞는지 먼저 좁힐 수 있습니다." },
-  { href: "/guides/product-selection-comparison/meal-replacement-protein-shake-guide", title: "식사대용 단백질 쉐이크", body: "식사 대용에 더 가까운 제품군만 따로 보고 싶다면 이쪽이 더 직접적입니다." },
-  { href: "/guides/product-selection-comparison/protein-drink-for-50s", title: "식사 보완형 음료 비교", body: "건강 유지와 식사 보완 중심 제품이 궁금하면 이 비교가 바로 이어집니다." },
+  { href: "/guides/product-selection-comparison/protein-drink-for-50s", title: "식사 보완형 음료 비교", body: "음료 안에서 한 끼 대체에 가까운 후보를 먼저 좁히고 싶다면 이쪽이 더 직접적입니다." },
+  { href: "/guides/product-selection-comparison/meal-replacement-protein-shake-guide", title: "식사대용 단백질 쉐이크", body: "음료로는 포만감이 부족하다고 느껴지면 쉐이크 비교로 넘어가는 편이 자연스럽습니다." },
+  { href: "/guides/product-selection-comparison/protein-category-guide", title: "음료 vs 쉐이크 vs 바 비교", body: "한 끼 대체가 목적이면 카테고리 전체를 먼저 넓게 비교해도 판단이 빨라집니다." },
 ];
 
 const mistakes = [
@@ -66,7 +66,7 @@ export default function ProteinDrinkMealReplacementPage() {
           <h1 className="mt-3 text-2xl font-bold leading-tight text-[var(--foreground)] md:text-3xl">
             단백질 음료로 한 끼를 대신할 수는 있습니다.
             <br />
-            하지만 모든 단백질 음료가 식사대용은 아닙니다.
+            하지만 식사 보완형 음료와 보충용 RTD는 분리해서 봐야 합니다.
           </h1>
           <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
             식사 대용은 단백질 숫자만 보고 결정하면 실패하기 쉽습니다. 포만감, 칼로리, 다음 끼니까지 버티는 힘까지

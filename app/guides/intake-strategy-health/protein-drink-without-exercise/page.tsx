@@ -28,14 +28,19 @@ const compareLinks = [
     body: "운동을 안 해도 부담 없이 시작할 수 있는 제품부터 보고 싶다면 이 페이지가 가장 빠릅니다.",
   },
   {
+    href: "/guides/intake-strategy-health/diet-protein-drink-strategy",
+    title: "다이어트 중 마시는 기준 보기",
+    body: "운동은 안 하지만 체중 관리 목적이라면 저당·저칼로리 기준을 먼저 보는 편이 더 정확합니다.",
+  },
+  {
     href: "/guides/product-selection-comparison/protein-drink-for-50s",
     title: "50대 단백질 음료 추천",
     body: "건강 유지와 식사 보완이 목적이라면 50대·중장년 기준 페이지가 바로 이어집니다.",
   },
   {
-    href: "/guides/product-selection-comparison/selex-vs-himune",
-    title: "셀렉스 vs 하이뮨 비교",
-    body: "저칼로리형과 식사 보완형 중 어디가 맞는지 두 브랜드를 바로 비교할 수 있습니다.",
+    href: "/guides/intake-strategy-health/protein-drink-meal-replacement",
+    title: "식사 보완형으로 볼지 따로 보기",
+    body: "운동용이 아니라 아침 공백이나 한 끼 보완용인지 더 분명히 나눠서 보고 싶다면 이 페이지가 이어집니다.",
   },
 ];
 
