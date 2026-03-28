@@ -3,9 +3,9 @@ import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 
 export const metadata = {
-  title: "봄 러닝 시작 단백질 가이드 | 입문 러너 회복 전략",
+  title: "봄 러닝 다시 시작할 때 단백질 가이드 | 재개 초반 회복 전략",
   description:
-    "봄에 러닝을 다시 시작하는 사람에게 필요한 단백질 기준, 회복 타이밍, 가벼운 제품 선택 포인트를 정리한 입문 가이드입니다.",
+    "봄에 러닝을 다시 시작하는 사람에게 필요한 단백질 기준, 회복 타이밍, 가벼운 제품 선택 포인트를 재개 초반 기준으로 정리한 가이드입니다.",
 };
 
 const restartCards = [
@@ -54,6 +54,7 @@ export default function SpringRunningStartGuidePage() {
           <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
             겨울 뒤에 러닝을 다시 시작하는 사람이 많아지는 시기입니다.
             <br />
+            이 페이지는 장거리 전략이 아니라 러닝을 다시 붙이는 초반 2~4주에 초점을 둡니다.
             거리보다 먼저 운동 후 단백질, 다음 식사, 주간 총량을 연결하는 회복 루틴을 만드는 것이 중요합니다.
           </p>
         </div>
@@ -98,6 +99,7 @@ export default function SpringRunningStartGuidePage() {
             <div className="mt-5 flex flex-wrap gap-2">
               <Link href="/guides/intake-strategy-health/post-workout-protein" className="rounded-full border border-[#eaded7] bg-white px-3 py-1 text-xs font-semibold text-[#8a4b2f]">관련: 운동 후 단백질</Link>
               <Link href="/guides/fitness-lifestyle/running-protein-guide" className="rounded-full border border-[#eaded7] bg-white px-3 py-1 text-xs font-semibold text-[#8a4b2f]">관련: 러닝 단백질 가이드</Link>
+              <Link href="/guides/product-selection-comparison/protein-drink-beginners-guide" className="rounded-full border border-[#eaded7] bg-white px-3 py-1 text-xs font-semibold text-[#8a4b2f]">관련: 입문용 단백질 음료</Link>
             </div>
           </section>
         </div>

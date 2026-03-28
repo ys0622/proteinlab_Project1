@@ -3,9 +3,9 @@ import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 
 export const metadata = {
-  title: "마라톤 거리별 영양과 훈련 전략 | ProteinLab",
+  title: "마라톤 거리별 영양과 훈련 전략 | 5km·10km·하프·풀 차이 정리",
   description:
-    "5km, 10km, 하프, 풀 마라톤까지 거리별 특성에 맞는 훈련 포인트와 단백질 회복 전략을 정리합니다.",
+    "5km, 10km, 하프, 풀 마라톤까지 거리별 특성에 맞는 훈련 포인트와 단백질 회복 전략을 정리합니다. 레이스 주간 체크리스트는 별도 가이드로 분리해 봅니다.",
 };
 
 const distanceRows = [
@@ -48,7 +48,7 @@ export default function MarathonDistanceStrategyPage() {
           <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
             5km, 10km, 하프, 풀 마라톤은 훈련 목적과 에너지 전략이 서로 다릅니다.
             <br />
-            거리별 특성을 먼저 이해하면 운동 후 단백질 섭취와 회복 루틴도 더 명확하게 설계할 수 있습니다.
+            이 페이지는 거리별 훈련과 회복 기준을 나누는 기본편이고, 레이스 주간 카보 로딩과 체크리스트는 별도 페이지에서 보는 흐름에 맞춰 구성했습니다.
           </p>
         </div>
       </section>
@@ -117,6 +117,7 @@ export default function MarathonDistanceStrategyPage() {
             <h2 className="text-xl font-bold text-[var(--foreground)]">관련 가이드</h2>
             <div className="mt-5 flex flex-wrap gap-3">
               <Link href="/curation/running" className="inline-flex items-center justify-center rounded-xl border border-[#2d6a4f] bg-[#2d6a4f] px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#24543d]">러닝용 단백질 제품 보기</Link>
+              <Link href="/guides/fitness-lifestyle/marathon-protein-guide" className="inline-flex items-center justify-center rounded-xl border border-[#d9e7dc] bg-white px-5 py-3 text-sm font-semibold text-[#24543d] transition-colors hover:bg-[#eef7f1]">레이스 주간 전략 보기</Link>
               <Link href="/guides/product-selection-comparison/protein-drink-guide" className="inline-flex items-center justify-center rounded-xl border border-[#d9e7dc] bg-white px-5 py-3 text-sm font-semibold text-[#24543d] transition-colors hover:bg-[#eef7f1]">단백질 음료 비교 가이드</Link>
             </div>
           </section>

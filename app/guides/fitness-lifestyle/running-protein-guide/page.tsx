@@ -3,9 +3,9 @@ import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 
 export const metadata = {
-  title: "러닝 단백질 가이드 | 러너 회복·섭취량·추천 기준",
+  title: "러닝 단백질 가이드 | 주간 필요량·회복 타이밍 기본편",
   description:
-    "러닝과 마라톤을 하는 사람에게 필요한 단백질 섭취량, 운동 후 회복 타이밍, 식사 분배 기준을 한 번에 정리한 가이드입니다.",
+    "러닝과 마라톤을 하는 사람에게 필요한 단백질 주간 필요량, 운동 후 회복 타이밍, 식사 분배 기준을 기본편 기준으로 정리한 가이드입니다.",
 };
 
 const dailyNeedRows = [
@@ -81,7 +81,8 @@ export default function RunningProteinGuidePage() {
           <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
             러너는 일반 성인보다 회복을 위해 더 많은 단백질이 필요합니다.
             <br />
-            주간 필요량, 1회 섭취 기준, 회복 타이밍을 이해하면 제품 비교도 훨씬 쉬워집니다.
+            이 페이지는 러닝 기본편으로 주간 필요량, 1회 섭취 기준, 회복 타이밍을 먼저 정리하고,
+            봄 재개 루틴이나 마라톤 레이스 주간은 별도 페이지에서 나눠서 보는 흐름에 맞춰 구성했습니다.
           </p>
         </div>
       </section>
@@ -164,6 +165,7 @@ export default function RunningProteinGuidePage() {
 
           <section className="rounded-[28px] border border-[#e8e6e3] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
             <div className="flex flex-wrap gap-3">
+              <Link href="/guides/fitness-lifestyle/spring-running-start-guide" className="inline-flex items-center justify-center rounded-xl border border-[#d9e7dc] bg-white px-5 py-3 text-sm font-semibold text-[#24543d] transition-colors hover:bg-[#eef7f1]">봄 러닝 재개 루틴 보기</Link>
               <Link href="/guides/fitness-lifestyle/marathon-protein-guide" className="inline-flex items-center justify-center rounded-xl border border-[#d9e7dc] bg-white px-5 py-3 text-sm font-semibold text-[#24543d] transition-colors hover:bg-[#eef7f1]">마라톤 주간 전략 보기</Link>
               <Link href="/curation/running" className="inline-flex items-center justify-center rounded-xl border border-[#2d6a4f] bg-[#2d6a4f] px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#24543d]">러닝 큐레이션 보기</Link>
             </div>

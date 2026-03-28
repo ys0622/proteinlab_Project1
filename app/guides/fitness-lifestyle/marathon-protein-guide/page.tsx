@@ -3,9 +3,9 @@ import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 
 export const metadata = {
-  title: "마라톤 레이스 주간 영양 전략 가이드 | ProteinLab",
+  title: "마라톤 레이스 주간 영양 전략 가이드 | 카보 로딩·회복 루틴 정리",
   description:
-    "마라톤 레이스 주간에는 평소 훈련보다 탄수화물 로딩, 수분, 단백질 회복 전략이 더 중요합니다. 레이스 전후 체크리스트를 실전 관점에서 정리합니다.",
+    "마라톤 레이스 주간에는 평소 훈련보다 탄수화물 로딩, 수분, 단백질 회복 전략이 더 중요합니다. 거리별 훈련법이 아니라 대회 전후 체크리스트를 실전 관점에서 정리합니다.",
 };
 
 const checklistItems = [
@@ -64,7 +64,7 @@ export default function MarathonProteinGuidePage() {
           <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
             일반적인 러닝 훈련과 마라톤 대회 전후 영양 전략은 다르게 설계해야 합니다.
             <br />
-            레이스 주간에는 탄수화물 로딩이 중심이 되고, 대회 이후에는 회복 식사 구성도 중요해집니다.
+            이 페이지는 5km, 하프, 풀 같은 거리별 훈련법이 아니라 레이스 주간 카보 로딩과 회복 체크리스트에 집중합니다.
           </p>
         </div>
       </section>
@@ -126,6 +126,7 @@ export default function MarathonProteinGuidePage() {
             <div className="flex flex-wrap gap-3">
               <Link href="/guides/fitness-lifestyle/marathon-distance-strategy" className="inline-flex items-center justify-center rounded-xl border border-[#d9e7dc] bg-white px-5 py-3 text-sm font-semibold text-[#24543d] transition-colors hover:bg-[#eef7f1]">거리별 전략 보기</Link>
               <Link href="/guides/fitness-lifestyle/sports-nutrition-guide" className="inline-flex items-center justify-center rounded-xl border border-[#d9e7dc] bg-white px-5 py-3 text-sm font-semibold text-[#24543d] transition-colors hover:bg-[#eef7f1]">스포츠 영양 가이드 보기</Link>
+              <Link href="/guides/intake-strategy-health/post-workout-protein" className="inline-flex items-center justify-center rounded-xl border border-[#d9e7dc] bg-white px-5 py-3 text-sm font-semibold text-[#24543d] transition-colors hover:bg-[#eef7f1]">운동 후 회복 기준 보기</Link>
               <Link href="/curation/running" className="inline-flex items-center justify-center rounded-xl border border-[#2d6a4f] bg-[#2d6a4f] px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#24543d]">러닝 큐레이션 보기</Link>
             </div>
           </section>

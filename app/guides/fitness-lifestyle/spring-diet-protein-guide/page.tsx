@@ -124,6 +124,9 @@ export default function SpringDietProteinGuidePage() {
               <Link href="/guides/product-selection-comparison/diet-protein-drink-guide" className="rounded-full border border-[#eaded7] bg-white px-3 py-1 text-xs font-semibold text-[#8a4b2f]">
                 관련 다이어트 단백질 음료 기준
               </Link>
+              <Link href="/guides/product-selection-comparison/diet-protein-shake" className="rounded-full border border-[#eaded7] bg-white px-3 py-1 text-xs font-semibold text-[#8a4b2f]">
+                관련 다이어트 쉐이크 비교
+              </Link>
             </div>
           </section>
         </div>

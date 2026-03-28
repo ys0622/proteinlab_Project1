@@ -96,6 +96,9 @@ export default function SpringOutdoorProteinSnackGuidePage() {
               </table>
             </div>
             <div className="mt-5 flex flex-wrap gap-2">
+              <Link href="/guides/product-selection-comparison/protein-drink-beginners-guide" className="rounded-full border border-[#eaded7] bg-white px-3 py-1 text-xs font-semibold text-[#8a4b2f]">
+                관련 가벼운 단백질 음료
+              </Link>
               <Link href="/guides/product-selection-comparison/protein-bar-guide" className="rounded-full border border-[#eaded7] bg-white px-3 py-1 text-xs font-semibold text-[#8a4b2f]">
                 관련 단백질 바 선택 가이드
               </Link>
