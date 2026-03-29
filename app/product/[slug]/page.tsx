@@ -48,54 +48,6 @@ function getMetricLine(product: ProductDetailProps) {
   return parts.join(" · ");
 }
 
-function getProductSummary(product: ProductDetailProps) {
-  if (product.productType === "drink") {
-    if (product.sugar != null && product.sugar <= 1 && product.calories != null && product.calories <= 120) {
-      return "저당·저칼로리 기준으로 먼저 보기 좋은 RTD 단백질 음료입니다.";
-    }
-    if (product.proteinPerServing >= 30) {
-      return "고단백 보충 중심으로 설계된 RTD 제품이라 운동 후 비교 수요와 잘 맞습니다.";
-    }
-    return "편의성과 영양 균형을 함께 보는 사용자에게 맞는 RTD 단백질 음료입니다.";
-  }
-
-  if (product.productType === "bar") {
-    return "간식처럼 먹기 쉬운 형태인지, 칼로리와 당류가 과하지 않은지 같이 봐야 하는 단백질 바입니다.";
-  }
-
-  if (product.productType === "yogurt") {
-    return "아침 간편식과 간식 수요에서 많이 비교되는 제품이라 단백질과 당류를 함께 보는 편이 좋습니다.";
-  }
-
-  return "식사대용, 다이어트, 아침 간편식 수요에서 많이 비교되는 파우치형 단백질 쉐이크입니다.";
-}
-
-function getProductFitBullets(product: ProductDetailProps) {
-  const bullets: string[] = [];
-
-  if (product.productType === "drink") {
-    if (product.sugar != null && product.sugar <= 1) bullets.push("당류 부담이 낮은 RTD 음료를 찾는 사람");
-    if (product.proteinPerServing >= 30) bullets.push("한 번에 고단백 보충을 원하는 사람");
-    if (product.proteinSource) bullets.push(`${product.proteinSource} 단백질 원료를 우선 보는 사람`);
-  } else if (product.productType === "bar") {
-    bullets.push("이동 중 간단히 단백질을 챙기려는 사람");
-    if ((product.calories ?? 0) <= 200) bullets.push("간식 칼로리를 200kcal 안쪽으로 관리하려는 사람");
-    if ((product.sugar ?? 0) <= 5) bullets.push("당류가 낮은 바를 찾는 사람");
-  } else if (product.productType === "yogurt") {
-    bullets.push("아침이나 간식으로 가볍게 단백질을 보충하려는 사람");
-    if ((product.sugar ?? 0) <= 5) bullets.push("저당 요거트를 우선 보는 사람");
-    if (product.yogurtType) bullets.push(`${product.yogurtType} 타입을 선호하는 사람`);
-  } else {
-    if ((product.nutritionPerBottle?.fiberG ?? 0) >= 4) bullets.push("포만감 있는 식사대용 쉐이크를 찾는 사람");
-    if ((product.sugar ?? 0) <= 5) bullets.push("당류가 낮은 파우치형 쉐이크를 찾는 사람");
-    bullets.push("맛과 꾸준한 섭취 편의성을 같이 보는 사람");
-  }
-
-  bullets.push(`${getMetricLine(product)} 기준으로 비슷한 제품과 비교하려는 사람`);
-
-  return bullets.slice(0, 4);
-}
-
 function getProductFaqs(product: ProductDetailProps) {
   const categoryHref = getCategoryHref((product.productType ?? "drink") as "drink" | "bar" | "yogurt" | "shake");
   const categoryLabel = getProductKindLabel(product.productType);
@@ -149,20 +101,6 @@ function getShakePositioning(product: ProductDetailProps) {
     return "저당형";
   }
   return "운동보충형";
-}
-
-function getShakeSummaryNote(product: ProductDetailProps) {
-  const positioning = getShakePositioning(product);
-  const fiber = product.nutritionPerBottle?.fiberG ?? 0;
-  const sugar = product.sugar ?? 0;
-
-  if (positioning === "식사대용형") {
-    return `식이섬유 ${fiber}g와 칼로리 구성이 함께 들어 있어 한 끼 대체 관점에서도 보기 좋은 쉐이크입니다.`;
-  }
-  if (positioning === "저당형") {
-    return `당류 ${sugar}g 기준으로 비교적 깔끔한 편이라 저당 쉐이크 축에서 먼저 보기 좋습니다.`;
-  }
-  return `단백질 ${product.proteinPerServing}g와 단백질 밀도를 먼저 보는 운동보충형 쉐이크에 가깝습니다.`;
 }
 
 function getSpecSectionDescription(product: ProductDetailProps) {
@@ -256,19 +194,6 @@ export default async function ProductDetailPage({ params }: PageProps) {
     product.variant && product.variant !== "일반" ? product.variant : null,
   ].filter(Boolean);
   const metaLine = metaParts.join(" ");
-  const productFacts = isBar
-    ? []
-      : isYogurt
-      ? [
-          product.storageType ? `보관 ${product.storageType}` : null,
-          product.lactoseFree ? "락토프리" : null,
-        ].filter(Boolean)
-      : [
-          product.drinkType ? `유형 ${product.drinkType}` : null,
-          product.proteinSource ? `단백질원 ${product.proteinSource}` : null,
-          product.bcaa ? `BCAA ${product.bcaa}` : null,
-        ].filter(Boolean);
-
   const rawCoupangUrl =
     normalizeCoupangUrl(product.coupangUrl) ??
     getKnownSourceCoupangUrlBySlug(product.slug);
@@ -397,9 +322,9 @@ export default async function ProductDetailPage({ params }: PageProps) {
           </div>
 
           <div className="mt-6 flex flex-col gap-6 lg:flex-row lg:items-stretch lg:gap-8">
-            <div className="w-full flex-shrink-0 lg:max-w-[220px]">
+            <div className="w-full flex-shrink-0 lg:max-w-[280px]">
               <div
-                className="relative flex w-full min-h-[190px] items-center justify-center overflow-hidden rounded-2xl border border-[#e8e6e3] bg-white sm:min-h-[210px] lg:h-full lg:min-h-0"
+                className="relative flex w-full min-h-[220px] items-center justify-center overflow-hidden rounded-2xl border border-[#e8e6e3] bg-white sm:min-h-[240px] lg:h-full lg:min-h-0"
                 style={{ borderRadius: "16px" }}
               >
                 {productImageUrl ? (
@@ -407,8 +332,8 @@ export default async function ProductDetailPage({ params }: PageProps) {
                     src={productImageUrl}
                     alt={`${product.brand} ${product.name}`}
                     fill
-                    className="object-contain p-6 sm:p-7"
-                    sizes="(max-width: 640px) 88vw, (max-width: 1024px) 44vw, 220px"
+                    className="object-contain p-10 sm:p-11"
+                    sizes="(max-width: 640px) 88vw, (max-width: 1024px) 48vw, 280px"
                     unoptimized
                   />
                 ) : (
@@ -432,11 +357,8 @@ export default async function ProductDetailPage({ params }: PageProps) {
                   <span>/</span>
                   <span className="text-[#3d3d3d]">{product.brand}</span>
                 </div>
-                <p className="text-xs tracking-wide" style={{ color: "#7a7a7a" }}>
-                  {product.brand}
-                </p>
                 <h1
-                  className="mt-1 line-clamp-2 font-semibold leading-snug"
+                  className="line-clamp-2 font-semibold leading-snug"
                   style={{ fontSize: "20px", fontWeight: 600, color: "#1a1a1a" }}
                 >
                   {product.name}
@@ -444,32 +366,6 @@ export default async function ProductDetailPage({ params }: PageProps) {
                 <p className="mt-1 text-[13px]" style={{ color: "#6b6b6b" }}>
                   {metaLine}
                 </p>
-                {isShake ? (
-                  <p className="mt-2 max-w-2xl text-[13px] leading-6 text-[#5f6258]">
-                    {getShakeSummaryNote(product)}
-                  </p>
-                ) : null}
-                {productFacts.length > 0 ? (
-                  <div className="mt-3 flex flex-wrap gap-2">
-                    {productFacts.map((fact) => (
-                      <span
-                        key={fact}
-                        className="inline-flex items-center rounded-full border border-[#ddd8cf] bg-[#f7f4ee] px-2.5 py-1 text-[11px] font-medium text-[#5c574f]"
-                      >
-                        {fact}
-                      </span>
-                    ))}
-                  </div>
-                ) : null}
-                <div className="mt-4 rounded-xl border border-[#e6e1d8] bg-[#fffaf1] p-4">
-                  <p className="text-[12px] font-semibold tracking-wide text-[#8b6f3d]">한눈에 보기</p>
-                  <p className="mt-2 text-sm leading-6 text-[#4f4a40]">{getProductSummary(product)}</p>
-                  <ul className="mt-3 space-y-1 text-sm leading-6 text-[#5f6258]">
-                    {getProductFitBullets(product).map((bullet) => (
-                      <li key={bullet}>• {bullet}</li>
-                    ))}
-                  </ul>
-                </div>
               </div>
 
               <div className="grid flex-1 grid-cols-3 content-start gap-2 sm:grid-cols-4" style={{ gap: "8px" }}>
