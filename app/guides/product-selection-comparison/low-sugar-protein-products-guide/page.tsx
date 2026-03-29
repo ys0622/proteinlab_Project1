@@ -36,15 +36,15 @@ function faqJsonLd(config: CategoryGuideConfig) {
 
 const config: CategoryGuideConfig = {
   slug: "low-sugar-protein-products-guide",
-  title: "저당 단백질 제품 추천 | 음료·쉐이크·요거트·바 한눈에 비교",
+  title: "저당 단백질 제품 추천 | 당류 낮은 음료·쉐이크·요거트·바 한눈에 비교",
   description:
-    "당류 낮은 단백질 제품을 찾는 사람을 위해 음료, 쉐이크, 요거트, 바를 한 번에 비교합니다. 다이어트, 혈당 관리, 저당 간식 목적에 맞게 바로 고를 수 있게 정리했습니다.",
+    "당류 낮은 단백질 제품을 찾는 사람을 위해 음료, 쉐이크, 요거트, 바를 한 번에 비교합니다. 다이어트, 혈당 관리, 저당 간식 목적에 맞는 시작 카테고리를 바로 고를 수 있게 정리했습니다.",
   keywords: [
     "저당 단백질",
     "당류 낮은 단백질 제품",
     "저당 단백질 음료",
     "저당 단백질 쉐이크",
-    "당류 0g 단백질",
+    "당류 낮은 단백질 추천",
   ],
   badge: "저당 허브",
   readingTime: "6분 읽기",

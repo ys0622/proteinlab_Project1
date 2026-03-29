@@ -36,15 +36,15 @@ function faqJsonLd(config: CategoryGuideConfig) {
 
 const config: CategoryGuideConfig = {
   slug: "morning-protein-products-guide",
-  title: "아침 대용 단백질 제품 추천 | 음료·쉐이크·요거트·바 비교",
+  title: "아침 대용 단백질 제품 추천 | 출근 전 바로 고르는 음료·쉐이크·요거트·바",
   description:
-    "바쁜 아침에 먹기 좋은 단백질 제품을 음료, 쉐이크, 요거트, 바 기준으로 비교합니다. 포만감, 칼로리, 당류, 휴대성까지 한 번에 정리했습니다.",
+    "바쁜 아침에 먹기 좋은 단백질 제품을 음료, 쉐이크, 요거트, 바 기준으로 비교합니다. 출근 전 3분, 포만감, 칼로리, 휴대성 기준으로 바로 고를 수 있게 정리했습니다.",
   keywords: [
     "아침 대용 단백질",
     "아침 단백질 추천",
     "아침 식사 대용 단백질",
-    "단백질 음료 아침",
-    "단백질 쉐이크 아침",
+    "출근 전 단백질",
+    "아침 단백질 쉐이크",
   ],
   badge: "아침 대용 허브",
   readingTime: "6분 읽기",
