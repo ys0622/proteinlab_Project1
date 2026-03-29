@@ -103,6 +103,7 @@ const sections: AdminGuideSection[] = [
       article("protein-drink-guide", "단백질 음료 선택 가이드", "단백질 음료를 볼 때 먼저 체크해야 할 숫자를 정리합니다.", "/guides/product-selection-comparison/protein-drink-guide", { emoji: "🥤", tags: ["음료", "선택"] }),
       article("protein-shake-guide", "단백질 쉐이크 추천 가이드", "간편 섭취형 단백질 쉐이크를 고를 때 먼저 볼 기준을 정리합니다.", "/guides/product-selection-comparison/protein-shake-guide", { emoji: "🥤", tags: ["쉐이크", "선택"] }),
       article("protein-category-guide", "단백질 카테고리 선택 가이드", "RTD, 쉐이크, 바, 요거트 중 지금 내 목적에 맞는 카테고리를 고르는 법을 정리합니다.", "/guides/product-selection-comparison/protein-category-guide", { emoji: "🧭", tags: ["카테고리", "입문", "허브"] }),
+      article("low-calorie-protein-products-guide", "저칼로리 단백질 제품 추천", "음료, 쉐이크, 요거트, 바를 한 번에 비교하면서 저칼로리 기준으로 어떤 카테고리가 맞는지 정리합니다.", "/guides/product-selection-comparison/low-calorie-protein-products-guide", { emoji: "📉", tags: ["저칼로리", "카테고리", "다이어트"] }),
       article("protein-shake-top7", "단백질 쉐이크 추천 TOP 7", "ProteinLab DB 기준으로 파우치형 단백질 쉐이크 상위 후보를 정리합니다.", "/guides/product-selection-comparison/protein-shake-top7", { emoji: "🥇", tags: ["쉐이크", "랭킹", "다이어트"] }),
       article("labnosh-lineup", "랩노쉬 제품 종류 전체 정리", "랩노쉬 슬림쉐이크 중심으로 맛과 목적 차이를 정리합니다.", "/guides/product-selection-comparison/labnosh-lineup", { emoji: "🎒", tags: ["랩노쉬", "라인업", "쉐이크"] }),
       article("diet-protein-shake", "다이어트 단백질 쉐이크 추천", "저칼로리·저당·단백질 20g 이상 기준으로 다이어트용 쉐이크를 고릅니다.", "/guides/product-selection-comparison/diet-protein-shake", { emoji: "🍽️", tags: ["다이어트", "쉐이크", "식사대용"] }),
