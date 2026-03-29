@@ -332,7 +332,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
                     src={productImageUrl}
                     alt={`${product.brand} ${product.name}`}
                     fill
-                    className="object-contain p-10 sm:p-11"
+                    className="object-contain p-8 sm:p-9"
                     sizes="(max-width: 640px) 88vw, (max-width: 1024px) 48vw, 280px"
                     unoptimized
                   />
