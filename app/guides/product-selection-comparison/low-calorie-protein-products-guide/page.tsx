@@ -160,14 +160,14 @@ const config: CategoryGuideConfig = {
       description: "저칼로리 쉐이크만 따로 깊게 보고 싶다면 이 페이지가 가장 가깝습니다.",
     },
     {
-      title: "다이어트 단백질 바 추천",
-      href: "/guides/product-selection-comparison/diet-protein-bar",
-      description: "바 카테고리 안에서 저당·저칼로리 기준으로 다시 좁혀볼 수 있습니다.",
+      title: "단백질 바 추천 TOP 10",
+      href: "/guides/product-selection-comparison/protein-bar-top10",
+      description: "바 카테고리 전체를 먼저 보고, 그 안에서 저칼로리 후보를 다시 좁히고 싶다면 이쪽이 더 자연스럽습니다.",
     },
     {
-      title: "다이어트 단백질 요거트",
-      href: "/guides/product-selection-comparison/diet-protein-yogurt",
-      description: "요거트를 중심으로 저칼로리 후보를 찾고 있다면 여기부터 보면 됩니다.",
+      title: "단백질 요거트 추천 TOP 5",
+      href: "/guides/product-selection-comparison/protein-yogurt-top5",
+      description: "요거트 카테고리 전체를 먼저 보고, 그 안에서 저칼로리 후보를 찾고 싶다면 여기부터 보면 됩니다.",
     },
     {
       title: "다이어트 단백질 쉐이크 추천",

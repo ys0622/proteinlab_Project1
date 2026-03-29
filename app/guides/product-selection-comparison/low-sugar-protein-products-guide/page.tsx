@@ -170,9 +170,9 @@ const config: CategoryGuideConfig = {
       description: "요거트를 중심으로 저당 후보를 찾고 있다면 이쪽이 더 정확합니다.",
     },
     {
-      title: "다이어트 단백질 바 추천",
-      href: "/guides/product-selection-comparison/diet-protein-bar",
-      description: "바 카테고리에서 저당·다이어트 기준을 함께 보려면 이 페이지가 더 맞습니다.",
+      title: "단백질 바 추천 TOP 10",
+      href: "/guides/product-selection-comparison/protein-bar-top10",
+      description: "바 카테고리 전체를 먼저 본 뒤, 저당 기준으로 다시 걸러보고 싶다면 이 페이지가 더 자연스럽습니다.",
     },
   ],
   purchaseLinks: [

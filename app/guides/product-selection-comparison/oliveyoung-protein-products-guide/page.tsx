@@ -160,9 +160,9 @@ const config: CategoryGuideConfig = {
       description: "올리브영 쉐이크만 따로 깊게 보고 싶다면 이 페이지가 가장 가깝습니다.",
     },
     {
-      title: "단백질 쉐이크 추천 TOP 7",
-      href: "/guides/product-selection-comparison/protein-shake-top7",
-      description: "올리브영 채널에서 본 뒤 전체 쉐이크 후보까지 넓혀보고 싶다면 여기로 이어지면 됩니다.",
+      title: "단백질 요거트 추천 TOP 5",
+      href: "/guides/product-selection-comparison/protein-yogurt-top5",
+      description: "올리브영에서 가볍게 시작할 보조 후보까지 함께 보고 싶다면 요거트 쪽도 같이 확인할 수 있습니다.",
     },
     {
       title: "여성을 위한 단백질 쉐이크",
