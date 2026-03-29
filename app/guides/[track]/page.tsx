@@ -271,7 +271,7 @@ export default async function GuideTrackPage({ params }: { params: Promise<{ tra
           <div className="mt-5 space-y-4">
             <CuratedGuideGroup
               title="입문자는 여기부터 보면 됩니다"
-              description="카테고리 선택, 단백질 음료 입문, 쉐이크와 바 추천처럼 처음 고를 때 필요한 페이지를 먼저 묶었습니다."
+              description="카테고리부터 정하는 입문 허브와, 음료·쉐이크·바 입문용 대표 페이지를 먼저 묶었습니다."
               accentColor={section.accentColor}
               accentBg={accentChipBg}
               items={starterArticles}
@@ -291,8 +291,8 @@ export default async function GuideTrackPage({ params }: { params: Promise<{ tra
               items={comparisonArticles}
             />
             <CuratedGuideGroup
-              title="검색형 주제 허브"
-              description="저당, 고단백, 유당불내증, 식사대용처럼 실제 검색어에 가까운 허브 페이지를 먼저 들어갈 수 있게 묶었습니다."
+              title="상황별 제품 고르기"
+              description="저당, 아침 대용, 저칼로리, 올리브영처럼 조건과 채널 기준으로 바로 들어가는 허브를 묶었습니다."
               accentColor={section.accentColor}
               accentBg={accentChipBg}
               items={searchTopicItems}
