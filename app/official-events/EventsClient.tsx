@@ -78,7 +78,7 @@ const PRODUCT_TYPE_META: Record<
   },
 };
 
-const CHECKED_DATE_LABEL = "2026-03-14 확인";
+const CHECKED_DATE_LABEL = "2026-03-30 확인";
 
 const CATEGORY_EMOJI: Record<EventCategory, string> = {
   할인: "🔖",
