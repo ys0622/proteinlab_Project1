@@ -1,8 +1,8 @@
 import { ShakeGuidePage, buildShakeGuideMetadata } from "../shakeGuideShared";
 
 export const metadata = buildShakeGuideMetadata(
-  "식사대용 단백질 쉐이크",
-  "식사대용 단백질 쉐이크를 고를 때 단백질, 칼로리, 식이섬유, 당류를 어떻게 봐야 하는지 정리한 ProteinLab 가이드입니다.",
+  "식사대용 단백질 쉐이크 추천 | 칼로리·식이섬유 기준 정리",
+  "식사대용 단백질 쉐이크는 단백질만 보면 안 됩니다. 칼로리 150kcal 이상·식이섬유 4g 이상 기준으로 한 끼 대체에 적합한 제품을 정리했습니다.",
 );
 
 export default function MealReplacementProteinShakeGuidePage() {
@@ -47,6 +47,12 @@ export default function MealReplacementProteinShakeGuidePage() {
         { label: "운동 후 섭취 기준이 궁금하다면 → 운동 후 단백질 쉐이크", href: "/guides/product-selection-comparison/post-workout-protein-shake-guide" },
       ]}
       ctaBody="ProteinLab 쉐이크 카테고리에서 식사대용 기준으로 제품을 비교해보세요. 식사대용 큐레이션과 실제 제품 상세를 함께 보면 훨씬 빠르게 좁힐 수 있습니다."
+      faqItems={[
+        { question: "식사대용 단백질 쉐이크는 칼로리가 얼마나 돼야 하나요?", answer: "한 끼 대체 목적이라면 150kcal 이상을 기준으로 보는 편이 실용적입니다. 너무 낮으면 포만감이 부족해 간식을 추가로 찾게 될 수 있습니다." },
+        { question: "식사대용 쉐이크에서 식이섬유가 왜 중요한가요?", answer: "식이섬유는 포만감과 소화 속도에 영향을 줍니다. 식사대용으로 쓰려면 4g 이상 여부를 같이 확인하는 것이 좋습니다." },
+        { question: "운동용 쉐이크와 식사대용 쉐이크는 어떻게 다른가요?", answer: "운동용은 단백질 함량과 밀도를 우선합니다. 식사대용은 칼로리·식이섬유·단백질 균형을 같이 봐야 합니다. 목적에 따라 보는 기준이 달라집니다." },
+        { question: "아침 식사 대신 단백질 쉐이크를 먹어도 되나요?", answer: "단기간 대체는 가능하지만 장기적으로는 다양한 영양소 섭취가 필요합니다. 식이섬유와 칼로리가 충분한 제품을 고르는 것이 중요합니다." },
+      ]}
     />
   );
 }

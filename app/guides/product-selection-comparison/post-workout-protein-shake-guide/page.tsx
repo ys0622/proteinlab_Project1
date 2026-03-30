@@ -1,8 +1,8 @@
 import { ShakeGuidePage, buildShakeGuideMetadata } from "../shakeGuideShared";
 
 export const metadata = buildShakeGuideMetadata(
-  "운동 후 단백질 쉐이크",
-  "운동 후 단백질 쉐이크를 고를 때 단백질 함량, 당류, 칼로리, 단백질 밀도를 어떻게 봐야 하는지 정리한 ProteinLab 가이드입니다.",
+  "운동 후 단백질 쉐이크 추천 | 단백질 밀도·당류 기준 비교",
+  "운동 후 단백질 쉐이크는 단백질 밀도와 당류를 같이 봐야 합니다. 20g 이상 고단백 파우치형 제품을 성분 기준으로 비교했습니다.",
 );
 
 export default function PostWorkoutProteinShakeGuidePage() {
@@ -36,9 +36,9 @@ export default function PostWorkoutProteinShakeGuidePage() {
         { title: "칼로리", body: "운동 직후 가볍게 보충할지, 식사까지 겸할지에 따라 해석이 달라집니다. 목적에 맞지 않게 과도하게 높거나 낮지 않은지 확인해야 합니다." },
       ]}
       products={[
-        { name: "단백하니 단백질쉐이크 시그니처", protein: "22g", feature: "고단백 중심이라 운동 후 보충용 비교에 가장 먼저 넣기 좋은 타입입니다.", recommendedFor: "운동 후 보충 효율을 우선하는 사람" },
-        { name: "플라이밀 프로틴쉐이크 초코", protein: "22g", feature: "단백질과 전체 균형이 무난해 운동 후에 비교하기 편합니다.", recommendedFor: "무난한 운동 후 쉐이크를 찾는 사람" },
-        { name: "프로티원 단백쉐이크 초코", protein: "23g", sugar: "1g", calories: "128kcal", feature: "고단백·저당·저칼로리 균형이 좋아 운동 후 보충용 비교에 잘 들어옵니다.", recommendedFor: "단백질 밀도가 높은 운동 후 쉐이크를 찾는 사람" },
+        { name: "잇더핏 단백질쉐이크 미숫가루", protein: "28.7g", sugar: "0.9g", calories: "154kcal", feature: "단백질 밀도 18.6g/100kcal로 전체 쉐이크 중 최상위권입니다. 운동 후 보충 효율이 가장 높습니다.", recommendedFor: "단백질 밀도를 최우선으로 보는 사람" },
+        { name: "프로티원 단백쉐이크 초코", protein: "23g", sugar: "1g", calories: "128kcal", feature: "단백질 밀도 18.0g/100kcal로 고단백·저칼로리 균형이 뛰어납니다.", recommendedFor: "칼로리 부담 없이 단백질 효율을 높이고 싶은 사람" },
+        { name: "프로티원 단백쉐이크 커피맛", protein: "22g", sugar: "1g", calories: "108kcal", feature: "칼로리 108kcal로 전체 중 가장 낮은 수준이며 단백질 밀도 20.4g/100kcal로 최고 효율입니다.", recommendedFor: "칼로리를 최대한 낮추면서 단백질 효율을 높이고 싶은 사람" },
       ]}
       closing="운동 후 단백질 쉐이크는 단백질 함량만 보지 말고, 당류와 단백질 밀도까지 함께 보는 게 좋습니다. 그래야 같은 쉐이크라도 실제 보충 효율이 더 좋은 제품을 걸러낼 수 있습니다."
       internalLinks={[
@@ -47,6 +47,12 @@ export default function PostWorkoutProteinShakeGuidePage() {
         { label: "섭취 타이밍 전체가 궁금하다면 → 운동 후 단백질 섭취", href: "/guides/intake-strategy-health/post-workout-protein" },
       ]}
       ctaBody="ProteinLab 쉐이크 카테고리에서 운동 후 보충용으로 보기 좋은 제품을 비교해보세요. 고단백, 저당, 단백질 밀도 기준을 빠르게 적용해볼 수 있습니다."
+      faqItems={[
+        { question: "운동 후 단백질 쉐이크는 언제 먹는 게 좋나요?", answer: "운동 후 30분~1시간 이내에 섭취하는 것이 일반적으로 권장됩니다. 이 시간대에 단백질 흡수가 효율적으로 이루어지는 것으로 알려져 있습니다." },
+        { question: "운동 후 쉐이크 단백질 함량은 얼마나 돼야 하나요?", answer: "운동 후 보충 기준으로는 한 팩에 20g 이상을 먼저 비교하는 것이 실용적입니다. 고강도 운동이라면 25g 이상 제품도 고려해볼 수 있습니다." },
+        { question: "단백질 밀도란 무엇인가요?", answer: "칼로리 100kcal당 단백질이 몇 g 들어있는지를 나타내는 수치입니다. 밀도가 높을수록 같은 칼로리 대비 단백질을 더 많이 섭취할 수 있어 효율적입니다." },
+        { question: "운동 후 쉐이크에서 당류가 왜 중요한가요?", answer: "당류가 높으면 불필요한 열량이 늘어나 운동 효과를 상쇄할 수 있습니다. 운동 후 보충 목적이라면 고단백·저당 기준을 같이 보는 것이 좋습니다." },
+      ]}
     />
   );
 }

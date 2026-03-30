@@ -23,6 +23,11 @@ type InternalLinkItem = {
   href: string;
 };
 
+type FaqItem = {
+  question: string;
+  answer: string;
+};
+
 const trackBHubLink: InternalLinkItem = {
   label: "다른 비교 가이드 보기",
   href: "/guides/product-selection-comparison",
@@ -51,6 +56,7 @@ type ShakeGuideConfig = {
   closing: string;
   internalLinks: InternalLinkItem[];
   ctaBody: string;
+  faqItems?: FaqItem[];
 };
 
 export function buildShakeGuideMetadata(title: string, description: string): Metadata {
@@ -77,13 +83,34 @@ export function ShakeGuidePage({
   closing,
   internalLinks,
   ctaBody,
+  faqItems,
 }: ShakeGuideConfig) {
   const internalGuideLinks = [...internalLinks, trackBHubLink].filter(
     (item, index, array) => array.findIndex((candidate) => candidate.href === item.href) === index,
   );
+  const faqJsonLd = faqItems && faqItems.length > 0
+    ? {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": faqItems.map((item) => ({
+          "@type": "Question",
+          "name": item.question,
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": item.answer,
+          },
+        })),
+      }
+    : null;
 
   return (
     <div className="min-h-screen bg-white">
+      {faqJsonLd && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+        />
+      )}
       <Header />
 
       <section
@@ -301,6 +328,20 @@ export function ShakeGuidePage({
               </Link>
             </div>
           </section>
+
+          {faqItems && faqItems.length > 0 && (
+            <section className="rounded-[28px] border border-[#e2ebe4] bg-[#f7fbf8] px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
+              <h2 className="text-xl font-bold text-[var(--foreground)]">자주 묻는 질문</h2>
+              <div className="mt-5 space-y-3">
+                {faqItems.map((item) => (
+                  <article key={item.question} className="rounded-2xl border border-[#dce8df] bg-white px-5 py-4">
+                    <p className="text-sm font-semibold text-[#24543d]">Q. {item.question}</p>
+                    <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">A. {item.answer}</p>
+                  </article>
+                ))}
+              </div>
+            </section>
+          )}
 
           <section className="rounded-[28px] border border-[#dce8df] bg-[#f4faf6] px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
             <h2 className="text-xl font-bold text-[var(--foreground)]">쉐이크 제품 비교 보러가기</h2>
