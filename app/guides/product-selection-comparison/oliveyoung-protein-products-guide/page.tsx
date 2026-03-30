@@ -155,14 +155,19 @@ const config: CategoryGuideConfig = {
   ],
   relatedGuides: [
     {
+      title: "플라이밀 단백질 쉐이크 추천",
+      href: "/guides/product-selection-comparison/flymill-protein-shake",
+      description: "올리브영에서 플라이밀부터 볼지 고민된다면 브랜드 기준으로 먼저 정리한 이 페이지가 가장 빠릅니다.",
+    },
+    {
+      title: "단백하니 단백질 쉐이크 추천",
+      href: "/guides/product-selection-comparison/danbaekhani-protein-shake",
+      description: "단백하니의 시그니처, 초코, 말차 차이를 먼저 보고 싶다면 이 브랜드 가이드가 더 직접적입니다.",
+    },
+    {
       title: "올리브영 단백질 쉐이크 추천",
       href: "/guides/product-selection-comparison/oliveyoung-protein-shake",
       description: "올리브영 쉐이크만 따로 깊게 보고 싶다면 이 페이지가 가장 가깝습니다.",
-    },
-    {
-      title: "단백질 요거트 추천 TOP 5",
-      href: "/guides/product-selection-comparison/protein-yogurt-top5",
-      description: "올리브영에서 가볍게 시작할 보조 후보까지 함께 보고 싶다면 요거트 쪽도 같이 확인할 수 있습니다.",
     },
     {
       title: "여성을 위한 단백질 쉐이크",
