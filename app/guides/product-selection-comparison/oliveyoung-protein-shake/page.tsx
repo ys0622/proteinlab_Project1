@@ -4,7 +4,7 @@ import Footer from "@/app/components/Footer";
 
 export const metadata = {
   title: "올리브영 단백질 쉐이크 추천 | 입점 브랜드 비교 2026 | ProteinLab",
-  description: "올리브영에서 단품 테스트하기 좋은 단백질 쉐이크 브랜드를 정리했습니다. 플라이밀, 단백하니, 딜라이트 프로젝트, 빼르빼르 중 어디부터 보면 좋은지 빠르게 비교해보세요.",
+  description: "올리브영에서 단품 테스트하기 좋은 단백질 쉐이크 브랜드를 정리했습니다. 플라이밀, 단백하니, 딜라이트 프로젝트, 빼르빼르 중 어디부터 보면 좋은지 브랜드 기준으로 빠르게 비교해보세요.",
 };
 
 const brandCards = [
@@ -61,9 +61,9 @@ export default function OliveyoungProteinShakePage() {
             올리브영 단백질 쉐이크 추천
           </h1>
           <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
-            처음 단백질 쉐이크를 사보려면 올리브영처럼 단품 테스트가 쉬운 채널이 편합니다.
+            처음 단백질 쉐이크를 사보려면 올리브영처럼 단품 테스트가 쉬운 채널이 가장 편합니다.
             <br />
-            플라이밀, 단백하니, 딜라이트 프로젝트, 빼르빼르 중 어디부터 보면 좋은지 브랜드 포지션과 성분 기준으로 바로 정리했습니다.
+            플라이밀, 단백하니처럼 성분이 검증된 브랜드부터 볼지, 딜라이트 프로젝트와 빼르빼르처럼 입문형 후보를 볼지 브랜드 포지션과 성분 기준으로 바로 정리했습니다.
           </p>
         </div>
       </section>
