@@ -22,7 +22,7 @@ import ServingBasisNotice from "../../components/ServingBasisNotice";
 import { getNutritionDetail } from "../../data/products";
 import { getCategoryHref, getCategoryLabel } from "../../lib/categories";
 import { getProductBySlugAsync } from "../../lib/productData";
-import { getProductImageUrl, getProductSpecImageUrl } from "../../lib/productImage";
+import { getProductImageUrl } from "../../lib/productImage";
 import {
   getCoupangRedirectHref,
   getKnownSourceCoupangUrlBySlug,
@@ -103,19 +103,6 @@ function getShakePositioning(product: ProductDetailProps) {
   return "운동보충형";
 }
 
-function getSpecSectionDescription(product: ProductDetailProps) {
-  if (product.productType === "drink") {
-    return "실제 패키지 성분표 이미지입니다. 단백질, 당류, 칼로리, 나트륨을 구매 전에 다시 확인할 때 유용합니다.";
-  }
-  if (product.productType === "bar") {
-    return "실제 패키지 성분표 이미지입니다. 간식처럼 보여도 칼로리와 당류 차이가 커서 마지막 확인용으로 보기 좋습니다.";
-  }
-  if (product.productType === "yogurt") {
-    return "실제 패키지 성분표 이미지입니다. 단백질, 당류, 보관 방식까지 같이 확인할 수 있습니다.";
-  }
-  return "실제 패키지 성분표 이미지입니다. 식이섬유, 당류, 칼로리 구성을 구매 전에 한 번 더 확인할 때 유용합니다.";
-}
-
 function buildProductDescription(product: ProductDetailProps): string {
   const metrics = [
     `단백질 ${product.proteinPerServing}g`,
@@ -184,7 +171,6 @@ export default async function ProductDetailPage({ params }: PageProps) {
   const isYogurt = product.productType === "yogurt";
   const isShake = product.productType === "shake";
   const productImageUrl = getProductImageUrl(product.slug);
-  const productSpecImageUrl = getProductSpecImageUrl(product.slug, product.productType);
   const category = (product.productType ?? "drink") as "drink" | "bar" | "yogurt" | "shake";
   const faqItems = getProductFaqs(product);
   const hasCapacityInName = Boolean(product.capacity && product.name.includes(product.capacity));
@@ -450,29 +436,6 @@ export default async function ProductDetailPage({ params }: PageProps) {
           <div className="mt-6">
             <ProductReviewSection slug={slug} />
           </div>
-
-          {productSpecImageUrl ? (
-            <section className="mt-8">
-              <div className="mb-4 space-y-1">
-                <h2 className="text-lg font-semibold text-[var(--foreground)]">성분표 이미지</h2>
-                <p className="text-sm leading-6 text-[var(--foreground-muted)]">
-                  {getSpecSectionDescription(product)}
-                </p>
-              </div>
-              <div className="overflow-hidden rounded-2xl border border-[#e8e6e3] bg-[#FFFDF8] p-4">
-                <div className="relative mx-auto w-full max-w-[420px] overflow-hidden rounded-xl bg-white">
-                  <Image
-                    src={productSpecImageUrl}
-                    alt={`${product.brand} ${product.name} 성분표`}
-                    width={840}
-                    height={1200}
-                    className="h-auto w-full object-contain"
-                    unoptimized
-                  />
-                </div>
-              </div>
-            </section>
-          ) : null}
 
           <div
             className="mt-6 rounded-xl border border-[#e8e6e3] bg-[#FFFDF8] p-4"
