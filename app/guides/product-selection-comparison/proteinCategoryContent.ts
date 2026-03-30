@@ -160,10 +160,10 @@ export const proteinShakeTop7Config: CategoryGuideConfig = {
   readingTime: "6분 읽기",
   updatedAt: "2026-03-24",
   methodologyNote: "ProteinLab DB 파우치형 쉐이크의 단백질·칼로리·당류·식이섬유 종합 점수",
-  intro: "RTD 음료와 달리 파우치형 쉐이크는 아침 대용, 허기 관리, 다이어트 루틴과 더 가까운 제품군입니다. 그래서 단백질만 높다고 상위권이 되는 게 아니라 칼로리, 당류, 식이섬유, 맛 지속성을 같이 봐야 실제로 오래 마시기 쉽습니다.",
+  intro: "RTD 음료와 달리 파우치형 쉐이크는 아침 대용, 허기 관리, 다이어트 루틴과 더 가까운 제품군입니다. 그래서 단백질만 높다고 상위권이 되는 게 아니라 칼로리, 당류, 식이섬유, 맛 지속성을 같이 봐야 실제로 오래 마시기 쉽습니다. 전체 후보를 먼저 좁힌 뒤 플라이밀, 단백하니, 프로티원 같은 브랜드 페이지로 다시 들어가면 선택 속도가 더 빨라집니다.",
   summary: [
     "상위권은 단백질 20g 이상에 당류가 낮고 식이섬유까지 챙긴 제품들입니다.",
-    "랩노쉬 슬림쉐이크는 맛과 포만감 균형, 프로티원은 낮은 칼로리, 잇더핏은 고단백 대비 깔끔한 수치가 강점입니다.",
+    "랩노쉬 슬림쉐이크는 맛과 포만감 균형, 프로티원은 낮은 칼로리, 잇더핏은 고단백 대비 깔끔한 수치가 강점입니다. 플라이밀과 단백하니는 브랜드별로 다시 보면 맛과 칼로리 차이를 더 쉽게 정리할 수 있습니다.",
     "처음 시작이라면 박스보다 단품 또는 소량 세트로 맛을 먼저 확인하는 편이 안전합니다.",
   ],
   comparisonTitle: "TOP 7 순위표",
@@ -212,13 +212,13 @@ export const proteinShakeTop7Config: CategoryGuideConfig = {
       ],
     },
   ],
-  relatedGuides: [
-    { title: "플라이밀 단백질 쉐이크 추천", href: "/guides/product-selection-comparison/flymill-protein-shake", description: "플라이밀 피넛버터와 초코, 쿠키앤크림 중 무엇이 더 맞는지 브랜드 기준으로 먼저 좁힐 수 있습니다." },
-    { title: "단백하니 단백질 쉐이크 추천", href: "/guides/product-selection-comparison/danbaekhani-protein-shake", description: "단백하니 시그니처, 초코, 말차 차이를 저당과 칼로리 기준으로 정리한 브랜드 가이드입니다." },
-    { title: "카테고리 선택 가이드", href: "/guides/product-selection-comparison/protein-category-guide", description: "음료, 쉐이크, 바, 요거트 중 무엇부터 고를지 먼저 정리합니다." },
-    { title: "랩노쉬 라인업", href: "/guides/product-selection-comparison/labnosh-lineup", description: "슬림쉐이크 중심으로 맛과 목적 차이를 더 자세히 봅니다." },
-    { title: "다이어트 단백질 쉐이크", href: "/guides/product-selection-comparison/diet-protein-shake", description: "칼로리, 당류, 식이섬유를 중심으로 다시 좁힙니다." },
-  ],
+    relatedGuides: [
+      { title: "플라이밀 단백질 쉐이크 추천", href: "/guides/product-selection-comparison/flymill-protein-shake", description: "플라이밀 피넛버터와 초코, 쿠키앤크림 중 무엇이 더 맞는지 브랜드 기준으로 먼저 좁힐 수 있습니다." },
+      { title: "단백하니 단백질 쉐이크 추천", href: "/guides/product-selection-comparison/danbaekhani-protein-shake", description: "단백하니 시그니처, 초코, 말차 차이를 저당과 칼로리 기준으로 정리한 브랜드 가이드입니다." },
+      { title: "플라이밀 vs 단백하니", href: "/guides/product-selection-comparison/flymill-vs-danbaekhani", description: "고단백 우선인지, 더 가벼운 저당 균형형이 더 맞는지 두 인기 브랜드를 바로 비교합니다." },
+      { title: "프로티원 단백질 쉐이크 추천", href: "/guides/product-selection-comparison/proteone-protein-shake", description: "초코와 커피맛 중 무엇이 더 가볍고 단백질 밀도가 높은지 브랜드 기준으로 빠르게 볼 수 있습니다." },
+      { title: "랩노쉬 라인업", href: "/guides/product-selection-comparison/labnosh-lineup", description: "슬림쉐이크 중심으로 맛과 목적 차이를 더 자세히 봅니다." },
+    ],
   purchaseLinks: shakeTop7.slice(0, 3).map((product) => ({
     label: `${product.brand} ${product.name} 보기`,
     slug: product.slug,

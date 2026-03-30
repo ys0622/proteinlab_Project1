@@ -84,7 +84,7 @@ export const proteinShakeForWomenConfig: CategoryGuideConfig = {
     "여성용 단백질 쉐이크를 찾는 검색은 운동 보충보다 다이어트, 아침 대용, 체형 유지에 더 가깝습니다. 그래서 이 페이지는 ‘단백질 숫자가 가장 높은가’보다 ‘꾸준히 마시기 쉬운가’를 중심으로 골랐습니다.",
   summary: [
     "여성 타깃 쉐이크는 고단백보다 맛, 칼로리, 포만감의 균형이 더 중요합니다.",
-    "랩노쉬는 맛과 식이섬유, 올더배러는 저당과 올리브영 접근성 쪽에서 강점이 분명합니다.",
+    "랩노쉬는 맛과 식이섬유, 올더배러는 저당과 올리브영 접근성 쪽에서 강점이 분명합니다. 단백하니와 플라이밀은 브랜드별로 다시 보면 맛과 칼로리 차이를 더 쉽게 정리할 수 있습니다.",
     "처음 시작이라면 올리브영 단품 테스트, 정착 후에는 쿠팡 박스 구매로 넘어가는 흐름이 가장 실용적입니다.",
   ],
   comparisonTitle: "여성 추천 제품",
@@ -160,26 +160,26 @@ export const proteinShakeForWomenConfig: CategoryGuideConfig = {
       href: "/guides/product-selection-comparison/danbaekhani-protein-shake",
       description: "올리브영과 여성 타깃 흐름에서 자주 같이 보이는 단백하니 라인을 맛과 칼로리 기준으로 바로 확인할 수 있습니다.",
     },
-    {
-      title: "플라이밀 단백질 쉐이크 추천",
-      href: "/guides/product-selection-comparison/flymill-protein-shake",
-      description: "플라이밀을 브랜드 기준으로 먼저 보고 싶다면 피넛버터, 초코, 쿠키앤크림 차이를 정리한 이 페이지가 더 빠릅니다.",
-    },
-    {
-      title: "다이어트 단백질 쉐이크",
-      href: "/guides/product-selection-comparison/diet-protein-shake",
-      description: "여성 타깃 중에서도 다이어트 숫자 기준을 더 엄격하게 보고 싶다면 이 페이지가 이어집니다.",
-    },
-    {
-      title: "랩노쉬 라인업",
-      href: "/guides/product-selection-comparison/labnosh-lineup",
-      description: "맛 선택지와 브랜드 내 차이를 더 자세히 보고 싶다면 랩노쉬 라인업 페이지가 좋습니다.",
-    },
-    {
-      title: "아침 식사 대용 단백질 쉐이크",
-      href: "/guides/product-selection-comparison/morning-protein-shake",
-      description: "다이어트보다 아침 루틴 쪽이 더 중요하면 이 페이지가 더 잘 맞습니다.",
-    },
+      {
+        title: "플라이밀 단백질 쉐이크 추천",
+        href: "/guides/product-selection-comparison/flymill-protein-shake",
+        description: "플라이밀을 브랜드 기준으로 먼저 보고 싶다면 피넛버터, 초코, 쿠키앤크림 차이를 정리한 이 페이지가 더 빠릅니다.",
+      },
+      {
+        title: "올리브영 단백질 쉐이크 추천",
+        href: "/guides/product-selection-comparison/oliveyoung-protein-shake",
+        description: "올리브영에서 먼저 맛을 테스트하고 싶은 흐름이라면 채널 기준으로 정리한 이 페이지가 가장 가깝습니다.",
+      },
+      {
+        title: "다이어트 단백질 쉐이크",
+        href: "/guides/product-selection-comparison/diet-protein-shake",
+        description: "여성 타깃 중에서도 다이어트 숫자 기준을 더 엄격하게 보고 싶다면 이 페이지가 이어집니다.",
+      },
+      {
+        title: "아침 식사 대용 단백질 쉐이크",
+        href: "/guides/product-selection-comparison/morning-protein-shake",
+        description: "다이어트보다 아침 루틴 쪽이 더 중요하면 이 페이지가 더 잘 맞습니다.",
+      },
   ],
   purchaseLinks: womenShakePicks.slice(0, 3).map((product) => ({
     label: `${product.brand} ${product.name} 보기`,
