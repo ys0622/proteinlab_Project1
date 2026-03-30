@@ -2,20 +2,20 @@ import { ShakeGuidePage, buildShakeGuideMetadata } from "../shakeGuideShared";
 
 export const metadata = buildShakeGuideMetadata(
   "저당 단백질 쉐이크 추천 | 당류 3g 이하 제품 비교",
-  "저당 단백질 쉐이크는 당류 3g 이하부터 먼저 좁히는 게 실용적입니다. 저당이면서 단백질 균형이 좋은 제품을 비교해보세요.",
+  "저당 단백질 쉐이크는 당류 3g 이하부터 먼저 좁히는 게 실용적입니다. 프로티원, 플라이밀, 단백하니처럼 저당이면서 단백질 균형이 좋은 제품을 비교해보세요.",
 );
 
 export default function LowSugarProteinShakeGuidePage() {
   return (
     <ShakeGuidePage
       title="저당 단백질 쉐이크"
-      description="저당 단백질 쉐이크를 찾는 이유는 보통 비슷합니다. 당류 부담은 줄이고 싶지만, 단백질은 충분히 챙기고 싶기 때문입니다. 문제는 당류만 낮고 전체 성분 균형이 아쉬운 제품도 있다는 점입니다."
+      description="저당 단백질 쉐이크를 찾는 이유는 보통 비슷합니다. 당류 부담은 줄이고 싶지만, 단백질은 충분히 챙기고 싶기 때문입니다. 문제는 당류만 낮고 전체 성분 균형이 아쉬운 제품도 있다는 점입니다. 그래서 프로티원, 플라이밀, 단백하니처럼 숫자 차이가 분명한 브랜드를 같이 보면 실제 선택이 훨씬 쉬워집니다."
       breadcrumbLabel="저당 단백질 쉐이크"
       keyword="저당 단백질 쉐이크"
       hook="달지 않은 단백질 쉐이크를 찾고 있다면"
       hookBody={[
         "저당 단백질 쉐이크는 당류만 보고 고르면 오히려 단백질이 부족하거나 식사대용성까지 놓치는 경우가 있습니다.",
-        "그래서 저당 기준은 첫 필터일 뿐이고, 단백질 함량과 전체 균형을 같이 보는 방식이 실제 선택에 더 도움이 됩니다.",
+        "그래서 저당 기준은 첫 필터일 뿐이고, 단백질 함량과 전체 균형을 같이 보는 방식이 실제 선택에 더 도움이 됩니다. 이 단계에서 프로티원, 플라이밀, 단백하니 브랜드 페이지로 다시 들어가면 훨씬 빨리 좁힐 수 있습니다.",
       ]}
       tlDrItems={[
         "저당 단백질 쉐이크는 당류 3g 이하 구간부터 먼저 보는 편이 효율적입니다.",
@@ -42,15 +42,15 @@ export default function LowSugarProteinShakeGuidePage() {
       ]}
       closing="저당 단백질 쉐이크는 당류만 낮다고 좋은 제품이 되는 건 아닙니다. 단백질, 칼로리, 식이섬유까지 함께 봐야 실제로 만족도가 높은 제품을 고를 수 있습니다."
       internalLinks={[
-        { label: "랩노쉬 슬림쉐이크가 궁금하다면 → 랩노쉬 슬림쉐이크 추천", href: "/guides/product-selection-comparison/labnoshe-slim-shake" },
+        { label: "프로티원 저당 라인이 궁금하다면 → 프로티원 단백질 쉐이크 추천", href: "/guides/product-selection-comparison/proteone-protein-shake" },
         { label: "플라이밀 피넛버터 기준이 궁금하다면 → 플라이밀 단백질 쉐이크 추천", href: "/guides/product-selection-comparison/flymill-protein-shake" },
         { label: "단백하니 저당 라인업이 궁금하다면 → 단백하니 단백질 쉐이크 추천", href: "/guides/product-selection-comparison/danbaekhani-protein-shake" },
-        { label: "프로티원 종류가 궁금하다면 → 프로티원 단백질 쉐이크 추천", href: "/guides/product-selection-comparison/proteone-protein-shake" },
+        { label: "랩노쉬 슬림쉐이크가 궁금하다면 → 랩노쉬 슬림쉐이크 추천", href: "/guides/product-selection-comparison/labnoshe-slim-shake" },
         { label: "단백질 쉐이크 추천이 궁금하다면 → 단백질 쉐이크 추천", href: "/guides/product-selection-comparison/protein-shake-guide" },
         { label: "식사대용 기준이 궁금하다면 → 식사대용 단백질 쉐이크", href: "/guides/product-selection-comparison/meal-replacement-protein-shake-guide" },
         { label: "음료와 비교가 궁금하다면 → 단백질 음료 vs 단백질 쉐이크", href: "/guides/product-selection-comparison/protein-drink-vs-protein-shake" },
       ]}
-      ctaBody="ProteinLab 쉐이크 카테고리에서 저당 기준으로 제품을 바로 비교해보세요. 저당 큐레이션과 상세페이지를 같이 보면 당류만 낮은 제품과 균형이 좋은 제품을 구분하기 쉽습니다."
+      ctaBody="ProteinLab 쉐이크 카테고리에서 저당 기준으로 제품을 바로 비교해보세요. 저당 큐레이션과 브랜드 페이지를 같이 보면 당류만 낮은 제품과 균형이 좋은 제품을 훨씬 쉽게 구분할 수 있습니다."
       faqItems={[
         { question: "저당 단백질 쉐이크 기준이 몇 g인가요?", answer: "ProteinLab에서는 당류 3g 이하를 저당 기준으로 분류합니다. 제품마다 저당 표기 기준이 다를 수 있으니 성분표에서 직접 확인하는 것이 정확합니다." },
         { question: "저당 쉐이크는 다이어트에 효과적인가요?", answer: "당류를 줄이는 것은 다이어트에 도움이 될 수 있지만, 전체 칼로리와 단백질 균형도 함께 봐야 합니다. 저당이어도 칼로리가 높으면 효과가 제한될 수 있습니다." },

@@ -2,20 +2,20 @@ import { ShakeGuidePage, buildShakeGuideMetadata } from "../shakeGuideShared";
 
 export const metadata = buildShakeGuideMetadata(
   "식사대용 단백질 쉐이크 추천 | 칼로리·식이섬유 기준 정리",
-  "식사대용 단백질 쉐이크는 단백질만 보면 안 됩니다. 칼로리 150kcal 이상·식이섬유 4g 이상 기준으로 한 끼 대체에 적합한 제품을 정리했습니다.",
+  "식사대용 단백질 쉐이크는 단백질만 보면 안 됩니다. 랩노쉬, 플라이밀, 단백하니처럼 칼로리와 식이섬유 균형이 중요한 제품을 기준으로 한 끼 대체에 적합한 후보를 정리했습니다.",
 );
 
 export default function MealReplacementProteinShakeGuidePage() {
   return (
     <ShakeGuidePage
       title="식사대용 단백질 쉐이크"
-      description="식사대용 단백질 쉐이크는 운동용 보충 쉐이크와 보는 기준이 다릅니다. 단백질이 높아도 칼로리가 너무 낮거나 식이섬유가 부족하면 실제 한 끼 대체 용도로는 아쉬울 수 있습니다."
+      description="식사대용 단백질 쉐이크는 운동용 보충 쉐이크와 보는 기준이 다릅니다. 단백질이 높아도 칼로리가 너무 낮거나 식이섬유가 부족하면 실제 한 끼 대체 용도로는 아쉬울 수 있습니다. 그래서 랩노쉬, 플라이밀, 단백하니처럼 포만감과 맛 지속성을 같이 볼 수 있는 브랜드를 기준으로 보는 편이 더 실용적입니다."
       breadcrumbLabel="식사대용 단백질 쉐이크"
       keyword="식사대용 단백질 쉐이크"
       hook="식사 대신 먹을 쉐이크를 찾고 있다면"
       hookBody={[
         "식사대용 단백질 쉐이크는 단백질만 높다고 끝나는 제품이 아닙니다. 포만감과 섭취 만족도를 생각하면 칼로리와 식이섬유까지 함께 봐야 합니다.",
-        "특히 바쁜 아침이나 점심 대체용으로 고른다면 운동 직후 보충용 제품과 같은 기준으로 보면 오히려 만족도가 떨어질 수 있습니다.",
+        "특히 바쁜 아침이나 점심 대체용으로 고른다면 운동 직후 보충용 제품과 같은 기준으로 보면 오히려 만족도가 떨어질 수 있습니다. 이럴 때는 랩노쉬, 플라이밀, 단백하니 브랜드 페이지로 다시 들어가면 식사대용 후보를 더 빨리 좁힐 수 있습니다.",
       ]}
       tlDrItems={[
         "식사대용 단백질 쉐이크는 단백질만 높다고 끝이 아닙니다.",
@@ -45,11 +45,12 @@ export default function MealReplacementProteinShakeGuidePage() {
         { label: "랩노쉬 슬림쉐이크가 궁금하다면 → 랩노쉬 슬림쉐이크 추천", href: "/guides/product-selection-comparison/labnoshe-slim-shake" },
         { label: "플라이밀 브랜드 정리가 궁금하다면 → 플라이밀 단백질 쉐이크 추천", href: "/guides/product-selection-comparison/flymill-protein-shake" },
         { label: "단백하니 종류가 궁금하다면 → 단백하니 단백질 쉐이크 추천", href: "/guides/product-selection-comparison/danbaekhani-protein-shake" },
+        { label: "프로티원처럼 더 가벼운 대안이 궁금하다면 → 프로티원 단백질 쉐이크 추천", href: "/guides/product-selection-comparison/proteone-protein-shake" },
         { label: "단백질 쉐이크 전체 추천이 궁금하다면 → 단백질 쉐이크 추천", href: "/guides/product-selection-comparison/protein-shake-guide" },
         { label: "저당 기준이 궁금하다면 → 저당 단백질 쉐이크", href: "/guides/product-selection-comparison/low-sugar-protein-shake-guide" },
         { label: "운동 후 섭취 기준이 궁금하다면 → 운동 후 단백질 쉐이크", href: "/guides/product-selection-comparison/post-workout-protein-shake-guide" },
       ]}
-      ctaBody="ProteinLab 쉐이크 카테고리에서 식사대용 기준으로 제품을 비교해보세요. 식사대용 큐레이션과 실제 제품 상세를 함께 보면 훨씬 빠르게 좁힐 수 있습니다."
+      ctaBody="ProteinLab 쉐이크 카테고리에서 식사대용 기준으로 제품을 비교해보세요. 식사대용 큐레이션과 브랜드 페이지를 함께 보면 훨씬 빠르게 좁힐 수 있습니다."
       faqItems={[
         { question: "식사대용 단백질 쉐이크는 칼로리가 얼마나 돼야 하나요?", answer: "한 끼 대체 목적이라면 150kcal 이상을 기준으로 보는 편이 실용적입니다. 너무 낮으면 포만감이 부족해 간식을 추가로 찾게 될 수 있습니다." },
         { question: "식사대용 쉐이크에서 식이섬유가 왜 중요한가요?", answer: "식이섬유는 포만감과 소화 속도에 영향을 줍니다. 식사대용으로 쓰려면 4g 이상 여부를 같이 확인하는 것이 좋습니다." },
