@@ -478,10 +478,10 @@ export default async function ProductDetailPage({ params }: PageProps) {
             className="mt-6 rounded-xl border border-[#e8e6e3] bg-[#FFFDF8] p-4"
             style={{ borderRadius: "12px" }}
           >
-            <h2 className="mb-3 text-base font-semibold text-[var(--foreground)]">구매 링크</h2>
+            <h2 className="mb-3 text-base font-semibold text-[var(--foreground)]">가격·구매 채널 확인</h2>
             {isShake && !resolvedCoupangHref && !naverHref && !officialMallHref ? (
               <p className="mb-3 text-sm leading-6 text-[var(--foreground-muted)]">
-                쉐이크 구매 링크는 브랜드별 공식 링크를 순차 확인 중입니다. 현재는 제품 비교와 상세 성분 확인을 먼저 진행할 수 있습니다.
+                이 쉐이크는 구매 채널 링크를 순차 확인 중입니다. 지금은 제품 비교와 상세 성분부터 확인한 뒤 브랜드 페이지에서 후보를 더 좁혀보는 편이 가장 빠릅니다.
               </p>
             ) : null}
             <PurchaseLinkRow
