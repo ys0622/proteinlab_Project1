@@ -67,12 +67,12 @@ export default function FlymillProteinShakePage() {
             </span>
           </div>
           <h1 className="mt-3 text-2xl font-bold leading-tight text-[var(--foreground)] md:text-3xl">
-            플라이밀 단백질 쉐이크 추천 및 비교
+            플라이밀 단백질 쉐이크 추천 | 피넛버터·초코·쿠키앤크림 비교
           </h1>
           <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
-            플라이밀은 맛 선택 폭이 넓어서 입문자가 가장 많이 비교하는 쉐이크 브랜드 중 하나입니다.
+            플라이밀은 파우치형 쉐이크에서 가장 먼저 비교되는 브랜드 중 하나입니다.
             <br />
-            피넛버터, 초코, 쿠키앤크림 중 무엇이 내 목적에 더 맞는지 성분 기준으로 바로 확인해보세요.
+            피넛버터처럼 고단백·저당 쪽이 더 맞는지, 초코·쿠키앤크림처럼 무난한 입문형이 더 맞는지 성분 기준으로 바로 좁혀보세요.
           </p>
         </div>
       </section>
@@ -147,7 +147,13 @@ export default function FlymillProteinShakePage() {
                 href="/guides/product-selection-comparison/oliveyoung-protein-shake"
                 className="inline-flex items-center justify-center rounded-lg border border-[#d9e7dc] px-5 py-3 text-sm font-semibold text-[#24543d] transition-colors hover:bg-[#eef7f1]"
               >
-                올리브영 쉐이크 기준 보기 →
+                올리브영 쉐이크 추천 보기 →
+              </Link>
+              <Link
+                href="/guides/product-selection-comparison/protein-shake-top7"
+                className="inline-flex items-center justify-center rounded-lg border border-[#d9e7dc] px-5 py-3 text-sm font-semibold text-[#24543d] transition-colors hover:bg-[#eef7f1]"
+              >
+                단백질 쉐이크 TOP 7 보기 →
               </Link>
               <Link
                 href="/shake"

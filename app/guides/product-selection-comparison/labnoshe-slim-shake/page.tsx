@@ -45,7 +45,7 @@ export default function LabNosheLimShakePage() {
             <span className="rounded-md bg-[#eef4ea] px-2 py-0.5 text-[11px] font-semibold tracking-wide text-[#4c7a57]">TRACK B</span>
           </div>
           <h1 className="mt-3 text-2xl font-bold leading-tight text-[var(--foreground)] md:text-3xl">
-            랩노쉬 슬림쉐이크 추천 및 비교
+            랩노쉬 슬림쉐이크 추천 | 저당·식사대용 기준 정리
           </h1>
           <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
             다이어트 중이거나 한 끼를 너무 무겁지 않게 대체하고 싶다면 랩노쉬 슬림쉐이크가 먼저 후보로 들어옵니다.
@@ -88,6 +88,9 @@ export default function LabNosheLimShakePage() {
               </Link>
               <Link href="/guides/product-selection-comparison/meal-replacement-protein-shake-guide" className="inline-flex items-center justify-center rounded-lg border border-[#d9e7dc] px-5 py-3 text-sm font-semibold text-[#24543d] transition-colors hover:bg-[#eef7f1]">
                 식사대용 쉐이크 기준 보기 →
+              </Link>
+              <Link href="/guides/product-selection-comparison/protein-shake-top7" className="inline-flex items-center justify-center rounded-lg border border-[#d9e7dc] px-5 py-3 text-sm font-semibold text-[#24543d] transition-colors hover:bg-[#eef7f1]">
+                단백질 쉐이크 TOP 7 보기 →
               </Link>
               <Link href="/shake" className="inline-flex items-center justify-center rounded-lg border border-[#2d6a4f] bg-[#2d6a4f] px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#24543d]">
                 쉐이크 제품 바로 비교 →

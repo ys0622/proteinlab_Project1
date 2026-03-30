@@ -50,7 +50,7 @@ export default function ProteoneProteinShakePage() {
             <span className="rounded-md bg-[#eef4ea] px-2 py-0.5 text-[11px] font-semibold tracking-wide text-[#4c7a57]">TRACK B</span>
           </div>
           <h1 className="mt-3 text-2xl font-bold leading-tight text-[var(--foreground)] md:text-3xl">
-            프로티원 단백질 쉐이크 종류별 비교
+            프로티원 단백질 쉐이크 추천 | 초코·커피맛 비교
           </h1>
           <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
             저칼로리와 단백질 밀도를 같이 보면 프로티원은 꽤 강한 편입니다.
@@ -119,6 +119,9 @@ export default function ProteoneProteinShakePage() {
             <div className="flex flex-wrap gap-3">
               <Link href="/guides/product-selection-comparison/post-workout-protein-shake-guide" className="inline-flex items-center justify-center rounded-lg border border-[#d9e7dc] px-5 py-3 text-sm font-semibold text-[#24543d] transition-colors hover:bg-[#eef7f1]">
                 운동 후 쉐이크 기준 보기 →
+              </Link>
+              <Link href="/guides/product-selection-comparison/low-sugar-protein-shake-guide" className="inline-flex items-center justify-center rounded-lg border border-[#d9e7dc] px-5 py-3 text-sm font-semibold text-[#24543d] transition-colors hover:bg-[#eef7f1]">
+                저당 쉐이크 기준 보기 →
               </Link>
               <Link href="/shake" className="inline-flex items-center justify-center rounded-lg border border-[#2d6a4f] bg-[#2d6a4f] px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#24543d]">
                 쉐이크 제품 바로 비교 →

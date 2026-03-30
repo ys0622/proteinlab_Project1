@@ -67,12 +67,12 @@ export default function DanbaekhaniProteinShakePage() {
             </span>
           </div>
           <h1 className="mt-3 text-2xl font-bold leading-tight text-[var(--foreground)] md:text-3xl">
-            단백하니 단백질 쉐이크 추천 및 비교
+            단백하니 단백질 쉐이크 추천 | 시그니처·초코·말차 비교
           </h1>
           <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
-            단백하니는 저당 기준을 유지하면서도 맛 선택 폭이 넓어서 입문용 쉐이크로 자주 비교됩니다.
+            단백하니는 저당 기준을 유지하면서도 칼로리와 맛 선택 폭 균형이 좋아 입문용으로 자주 비교됩니다.
             <br />
-            시그니처, 초코, 말차 중 어떤 맛이 더 가볍고 효율적인지 성분 기준으로 바로 확인해보세요.
+            시그니처, 초코, 말차 중 어떤 맛이 더 가볍고 저당 기준에 잘 맞는지 성분 기준으로 바로 확인해보세요.
           </p>
         </div>
       </section>
@@ -147,7 +147,13 @@ export default function DanbaekhaniProteinShakePage() {
                 href="/guides/product-selection-comparison/oliveyoung-protein-shake"
                 className="inline-flex items-center justify-center rounded-lg border border-[#d9e7dc] px-5 py-3 text-sm font-semibold text-[#24543d] transition-colors hover:bg-[#eef7f1]"
               >
-                올리브영 쉐이크 기준 보기 →
+                올리브영 쉐이크 추천 보기 →
+              </Link>
+              <Link
+                href="/guides/product-selection-comparison/protein-shake-for-women"
+                className="inline-flex items-center justify-center rounded-lg border border-[#d9e7dc] px-5 py-3 text-sm font-semibold text-[#24543d] transition-colors hover:bg-[#eef7f1]"
+              >
+                여성용 쉐이크 추천 보기 →
               </Link>
               <Link
                 href="/shake"
