@@ -43,6 +43,7 @@ export default function ProteinDrinkVsProteinShakePage() {
       ]}
       closing="단백질 음료와 단백질 쉐이크는 어느 쪽이 더 좋다고 단정하기보다 목적이 다르다고 보는 편이 맞습니다. 빠르게 마시고 끝내려면 음료, 포만감과 식사대용성까지 보려면 쉐이크가 더 잘 맞을 수 있습니다."
       internalLinks={[
+        { label: "프로티원 쉐이크가 궁금하다면 → 프로티원 단백질 쉐이크 추천", href: "/guides/product-selection-comparison/proteone-protein-shake" },
         { label: "단백질 쉐이크 추천이 궁금하다면 → 단백질 쉐이크 추천", href: "/guides/product-selection-comparison/protein-shake-guide" },
         { label: "단백질 음료 기준이 궁금하다면 → 단백질 음료 선택 가이드", href: "/guides/product-selection-comparison/protein-drink-guide" },
         { label: "운동 후 섭취 기준이 궁금하다면 → 운동 후 단백질 쉐이크", href: "/guides/product-selection-comparison/post-workout-protein-shake-guide" },
