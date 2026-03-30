@@ -3,8 +3,8 @@ import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 
 export const metadata = {
-  title: "랩노쉬 슬림쉐이크 추천 | 성분·종류 비교 | ProteinLab",
-  description: "랩노쉬 슬림쉐이크 종류별 단백질·당류·칼로리·식이섬유를 비교했습니다. 저당·식사대용 기준으로 어떤 제품이 맞는지 확인해보세요.",
+  title: "랩노쉬 슬림쉐이크 추천 | 저당·식사대용 기준 정리 2026 | ProteinLab",
+  description: "랩노쉬 슬림쉐이크를 저당, 식사대용, 다이어트 기준으로 정리했습니다. 당류와 식이섬유를 같이 보면서 한 끼 대체용으로 맞는지 빠르게 확인해보세요.",
 };
 
 const strengthCards = [

@@ -3,8 +3,8 @@ import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 
 export const metadata = {
-  title: "프로티원 단백질 쉐이크 추천 | 성분·종류 비교 | ProteinLab",
-  description: "프로티원 단백질 쉐이크 종류별 단백질·당류·칼로리를 비교했습니다. 초코·커피맛 중 어떤 제품이 내 목적에 맞는지 확인해보세요.",
+  title: "프로티원 단백질 쉐이크 추천 | 초코·커피 성분 비교 2026 | ProteinLab",
+  description: "프로티원 단백쉐이크 초코맛과 커피맛을 단백질, 당류, 칼로리, 단백질 밀도 기준으로 비교했습니다. 저칼로리와 고단백 중 어디에 더 강한지 빠르게 확인해보세요.",
 };
 
 const productRows = [

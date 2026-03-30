@@ -3,8 +3,8 @@ import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 
 export const metadata = {
-  title: "올리브영 단백질 쉐이크 추천 | 입점 브랜드 비교 | ProteinLab",
-  description: "올리브영에서 살 수 있는 단백질 쉐이크를 브랜드별로 정리했습니다. 플라이밀·단백하니·딜라이트 프로젝트 등 성분 기준으로 비교해보세요.",
+  title: "올리브영 단백질 쉐이크 추천 | 입점 브랜드 비교 2026 | ProteinLab",
+  description: "올리브영에서 단품 테스트하기 좋은 단백질 쉐이크 브랜드를 정리했습니다. 플라이밀, 단백하니, 딜라이트 프로젝트, 빼르빼르 중 어디부터 보면 좋은지 빠르게 비교해보세요.",
 };
 
 const brandCards = [
