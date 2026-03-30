@@ -43,6 +43,8 @@ export default function MealReplacementProteinShakeGuidePage() {
       closing="식사대용 단백질 쉐이크는 고단백보다 균형이 더 중요할 때가 많습니다. 칼로리, 식이섬유, 당류, 단백질을 함께 봐야 실제로 한 끼를 대체하기 쉬운 제품을 고를 수 있습니다."
       internalLinks={[
         { label: "랩노쉬 슬림쉐이크가 궁금하다면 → 랩노쉬 슬림쉐이크 추천", href: "/guides/product-selection-comparison/labnoshe-slim-shake" },
+        { label: "플라이밀 브랜드 정리가 궁금하다면 → 플라이밀 단백질 쉐이크 추천", href: "/guides/product-selection-comparison/flymill-protein-shake" },
+        { label: "단백하니 종류가 궁금하다면 → 단백하니 단백질 쉐이크 추천", href: "/guides/product-selection-comparison/danbaekhani-protein-shake" },
         { label: "단백질 쉐이크 전체 추천이 궁금하다면 → 단백질 쉐이크 추천", href: "/guides/product-selection-comparison/protein-shake-guide" },
         { label: "저당 기준이 궁금하다면 → 저당 단백질 쉐이크", href: "/guides/product-selection-comparison/low-sugar-protein-shake-guide" },
         { label: "운동 후 섭취 기준이 궁금하다면 → 운동 후 단백질 쉐이크", href: "/guides/product-selection-comparison/post-workout-protein-shake-guide" },

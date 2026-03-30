@@ -102,8 +102,10 @@ const sections: AdminGuideSection[] = [
     articles: [
       article("protein-drink-guide", "단백질 음료 선택 가이드", "단백질 음료를 볼 때 먼저 체크해야 할 숫자를 정리합니다.", "/guides/product-selection-comparison/protein-drink-guide", { emoji: "🥤", tags: ["음료", "선택"] }),
       article("protein-shake-guide", "단백질 쉐이크 추천 가이드", "간편 섭취형 단백질 쉐이크를 고를 때 먼저 볼 기준을 정리합니다.", "/guides/product-selection-comparison/protein-shake-guide", { emoji: "🥤", tags: ["쉐이크", "선택"] }),
-      article("flymill-vs-danbaekhani", "플라이밀 vs 단백하니", "고단백과 저당, 칼로리 균형 기준으로 두 인기 쉐이크 브랜드를 직접 비교합니다.", "/guides/product-selection-comparison/flymill-vs-danbaekhani", { emoji: "⚖️", tags: ["쉐이크", "비교", "브랜드"] }),
-      article("proteone-protein-shake", "프로티원 단백질 쉐이크 추천", "프로티원 초코맛·커피맛을 단백질 밀도와 저당 기준으로 비교한 브랜드형 가이드입니다.", "/guides/product-selection-comparison/proteone-protein-shake", { emoji: "☕", tags: ["프로티원", "쉐이크", "브랜드"] }),
+        article("flymill-vs-danbaekhani", "플라이밀 vs 단백하니", "고단백과 저당, 칼로리 균형 기준으로 두 인기 쉐이크 브랜드를 직접 비교합니다.", "/guides/product-selection-comparison/flymill-vs-danbaekhani", { emoji: "⚖️", tags: ["쉐이크", "비교", "브랜드"] }),
+        article("flymill-protein-shake", "플라이밀 단백질 쉐이크 추천", "피넛버터, 초코, 쿠키앤크림 중 어떤 제품이 내 목적에 맞는지 성분 기준으로 정리한 브랜드형 가이드입니다.", "/guides/product-selection-comparison/flymill-protein-shake", { emoji: "🥜", tags: ["플라이밀", "쉐이크", "브랜드"] }),
+        article("danbaekhani-protein-shake", "단백하니 단백질 쉐이크 추천", "시그니처, 초코, 말차를 저당과 칼로리 기준으로 비교한 단백하니 브랜드 가이드입니다.", "/guides/product-selection-comparison/danbaekhani-protein-shake", { emoji: "🍵", tags: ["단백하니", "쉐이크", "브랜드"] }),
+        article("proteone-protein-shake", "프로티원 단백질 쉐이크 추천", "프로티원 초코맛·커피맛을 단백질 밀도와 저당 기준으로 비교한 브랜드형 가이드입니다.", "/guides/product-selection-comparison/proteone-protein-shake", { emoji: "☕", tags: ["프로티원", "쉐이크", "브랜드"] }),
       article("labnoshe-slim-shake", "랩노쉬 슬림쉐이크 추천", "저당·식사대용 기준으로 랩노쉬 슬림쉐이크를 빠르게 이해할 수 있는 브랜드형 가이드입니다.", "/guides/product-selection-comparison/labnoshe-slim-shake", { emoji: "🥣", tags: ["랩노쉬", "쉐이크", "식사대용"] }),
       article("protein-category-guide", "단백질 카테고리 선택 가이드", "RTD, 쉐이크, 바, 요거트 중 지금 내 상황에 맞는 시작 카테고리를 먼저 고르는 입문 허브입니다.", "/guides/product-selection-comparison/protein-category-guide", { emoji: "🧭", tags: ["카테고리", "입문", "허브"] }),
       article("low-calorie-protein-products-guide", "저칼로리 단백질 제품 추천", "저칼로리 기준으로 음료, 쉐이크, 요거트, 바 중 어떤 카테고리부터 보면 좋을지 정리합니다.", "/guides/product-selection-comparison/low-calorie-protein-products-guide", { emoji: "📉", tags: ["저칼로리", "카테고리", "다이어트"] }),

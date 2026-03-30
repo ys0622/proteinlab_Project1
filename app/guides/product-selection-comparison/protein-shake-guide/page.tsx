@@ -43,6 +43,8 @@ export default function ProteinShakeGuidePage() {
       closing="단백질 쉐이크 추천은 무조건 단백질이 높은 제품을 고르는 문제가 아니라, 내 목적에 맞게 성분 균형을 보는 문제에 가깝습니다. 운동 후라면 단백질과 밀도, 식사대용이라면 칼로리와 식이섬유, 다이어트라면 당류까지 같이 보는 방식이 가장 실용적입니다."
       internalLinks={[
         { label: "플라이밀과 단백하니 비교가 궁금하다면 → 플라이밀 vs 단백하니", href: "/guides/product-selection-comparison/flymill-vs-danbaekhani" },
+        { label: "플라이밀 브랜드 정리가 궁금하다면 → 플라이밀 단백질 쉐이크 추천", href: "/guides/product-selection-comparison/flymill-protein-shake" },
+        { label: "단백하니 종류가 궁금하다면 → 단백하니 단백질 쉐이크 추천", href: "/guides/product-selection-comparison/danbaekhani-protein-shake" },
         { label: "프로티원 종류가 궁금하다면 → 프로티원 단백질 쉐이크 추천", href: "/guides/product-selection-comparison/proteone-protein-shake" },
         { label: "식사대용 기준이 궁금하다면 → 식사대용 단백질 쉐이크", href: "/guides/product-selection-comparison/meal-replacement-protein-shake-guide" },
         { label: "음료와 차이가 궁금하다면 → 단백질 음료 vs 단백질 쉐이크", href: "/guides/product-selection-comparison/protein-drink-vs-protein-shake" },
