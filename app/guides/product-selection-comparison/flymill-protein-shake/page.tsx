@@ -3,9 +3,9 @@ import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 
 export const metadata = {
-  title: "플라이밀 단백질 쉐이크 추천 | 피넛버터·초코 성분 비교 2026 | ProteinLab",
+  title: "플라이밀 단백질 쉐이크 추천 | 피넛버터·초코·쿠키앤크림 비교 2026 | ProteinLab",
   description:
-    "플라이밀 단백질 쉐이크를 단백질, 당류, 칼로리, 단백질 밀도 기준으로 비교했습니다. 피넛버터, 초코, 쿠키앤크림 중 어떤 제품이 목적에 맞는지 빠르게 확인해보세요.",
+    "플라이밀 단백질 쉐이크를 피넛버터, 초코, 쿠키앤크림 기준으로 직접 비교했습니다. 고단백, 저당, 입문용 중 어떤 맛이 더 맞는지 빠르게 확인해보세요.",
 };
 
 const productRows = [
@@ -70,7 +70,7 @@ export default function FlymillProteinShakePage() {
             플라이밀 단백질 쉐이크 추천 | 피넛버터·초코·쿠키앤크림 비교
           </h1>
           <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
-            플라이밀은 파우치형 쉐이크에서 가장 먼저 비교되는 브랜드 중 하나입니다.
+            플라이밀은 고단백과 저당 기준에서 가장 먼저 비교되는 쉐이크 브랜드 중 하나입니다.
             <br />
             피넛버터처럼 고단백·저당 쪽이 더 맞는지, 초코·쿠키앤크림처럼 무난한 입문형이 더 맞는지 성분 기준으로 바로 좁혀보세요.
           </p>
@@ -141,7 +141,7 @@ export default function FlymillProteinShakePage() {
                 href="/guides/product-selection-comparison/flymill-vs-danbaekhani"
                 className="inline-flex items-center justify-center rounded-lg border border-[#d9e7dc] px-5 py-3 text-sm font-semibold text-[#24543d] transition-colors hover:bg-[#eef7f1]"
               >
-                플라이밀 vs 단백하니 비교 →
+                단백하니와 바로 비교 →
               </Link>
               <Link
                 href="/guides/product-selection-comparison/oliveyoung-protein-shake"
@@ -153,7 +153,7 @@ export default function FlymillProteinShakePage() {
                 href="/guides/product-selection-comparison/protein-shake-top7"
                 className="inline-flex items-center justify-center rounded-lg border border-[#d9e7dc] px-5 py-3 text-sm font-semibold text-[#24543d] transition-colors hover:bg-[#eef7f1]"
               >
-                단백질 쉐이크 TOP 7 보기 →
+                TOP 7에서 위치 보기 →
               </Link>
               <Link
                 href="/shake"

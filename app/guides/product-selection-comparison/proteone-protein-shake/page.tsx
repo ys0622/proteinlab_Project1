@@ -4,7 +4,7 @@ import Footer from "@/app/components/Footer";
 
 export const metadata = {
   title: "프로티원 단백질 쉐이크 추천 | 초코·커피 성분 비교 2026 | ProteinLab",
-  description: "프로티원 단백쉐이크 초코맛과 커피맛을 단백질, 당류, 칼로리, 단백질 밀도 기준으로 비교했습니다. 저칼로리와 고단백 중 어디에 더 강한지 빠르게 확인해보세요.",
+  description: "프로티원 단백쉐이크 초코맛과 커피맛을 단백질, 당류, 칼로리, 단백질 밀도 기준으로 직접 비교했습니다. 저칼로리와 고단백 중 어디에 더 강한지 빠르게 확인해보세요.",
 };
 
 const productRows = [
@@ -53,7 +53,7 @@ export default function ProteoneProteinShakePage() {
             프로티원 단백질 쉐이크 추천 | 초코·커피맛 비교
           </h1>
           <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
-            저칼로리와 단백질 밀도를 같이 보면 프로티원은 꽤 강한 편입니다.
+            프로티원은 저칼로리와 단백질 밀도를 같이 보는 사람에게 가장 먼저 걸리는 브랜드입니다.
             <br />
             초코맛과 커피맛 중 어떤 쪽이 운동 후 보충이나 가벼운 식사 보완에 더 맞는지 바로 비교해보세요.
           </p>
@@ -118,10 +118,10 @@ export default function ProteoneProteinShakePage() {
           <section className="rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
             <div className="flex flex-wrap gap-3">
               <Link href="/guides/product-selection-comparison/post-workout-protein-shake-guide" className="inline-flex items-center justify-center rounded-lg border border-[#d9e7dc] px-5 py-3 text-sm font-semibold text-[#24543d] transition-colors hover:bg-[#eef7f1]">
-                운동 후 쉐이크 기준 보기 →
+                운동 후 기준 보기 →
               </Link>
               <Link href="/guides/product-selection-comparison/low-sugar-protein-shake-guide" className="inline-flex items-center justify-center rounded-lg border border-[#d9e7dc] px-5 py-3 text-sm font-semibold text-[#24543d] transition-colors hover:bg-[#eef7f1]">
-                저당 쉐이크 기준 보기 →
+                저당 기준 보기 →
               </Link>
               <Link href="/shake" className="inline-flex items-center justify-center rounded-lg border border-[#2d6a4f] bg-[#2d6a4f] px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#24543d]">
                 쉐이크 제품 바로 비교 →

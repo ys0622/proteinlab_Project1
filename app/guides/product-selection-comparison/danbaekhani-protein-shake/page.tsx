@@ -5,7 +5,7 @@ import Footer from "@/app/components/Footer";
 export const metadata = {
   title: "단백하니 단백질 쉐이크 추천 | 시그니처·초코·말차 비교 2026 | ProteinLab",
   description:
-    "단백하니 단백질 쉐이크를 시그니처, 초코, 말차 기준으로 비교했습니다. 저당, 칼로리, 단백질 밀도를 함께 보며 어떤 맛이 더 잘 맞는지 확인해보세요.",
+    "단백하니 단백질 쉐이크를 시그니처, 초코, 말차 기준으로 직접 비교했습니다. 저당, 칼로리, 단백질 밀도를 함께 보며 어떤 맛이 더 잘 맞는지 빠르게 확인해보세요.",
 };
 
 const productRows = [
@@ -70,7 +70,7 @@ export default function DanbaekhaniProteinShakePage() {
             단백하니 단백질 쉐이크 추천 | 시그니처·초코·말차 비교
           </h1>
           <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
-            단백하니는 저당 기준을 유지하면서도 칼로리와 맛 선택 폭 균형이 좋아 입문용으로 자주 비교됩니다.
+            단백하니는 저당 기준을 유지하면서도 칼로리와 맛 선택 폭 균형이 좋아 처음 고르는 사람에게 자주 비교됩니다.
             <br />
             시그니처, 초코, 말차 중 어떤 맛이 더 가볍고 저당 기준에 잘 맞는지 성분 기준으로 바로 확인해보세요.
           </p>
@@ -141,7 +141,7 @@ export default function DanbaekhaniProteinShakePage() {
                 href="/guides/product-selection-comparison/flymill-vs-danbaekhani"
                 className="inline-flex items-center justify-center rounded-lg border border-[#d9e7dc] px-5 py-3 text-sm font-semibold text-[#24543d] transition-colors hover:bg-[#eef7f1]"
               >
-                플라이밀 vs 단백하니 비교 →
+                플라이밀과 바로 비교 →
               </Link>
               <Link
                 href="/guides/product-selection-comparison/oliveyoung-protein-shake"
@@ -153,7 +153,7 @@ export default function DanbaekhaniProteinShakePage() {
                 href="/guides/product-selection-comparison/protein-shake-for-women"
                 className="inline-flex items-center justify-center rounded-lg border border-[#d9e7dc] px-5 py-3 text-sm font-semibold text-[#24543d] transition-colors hover:bg-[#eef7f1]"
               >
-                여성용 쉐이크 추천 보기 →
+                여성용 쉐이크 기준 보기 →
               </Link>
               <Link
                 href="/shake"
