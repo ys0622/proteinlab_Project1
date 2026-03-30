@@ -27,6 +27,12 @@ const CATEGORY_LABEL: Record<string, string> = {
 };
 
 const CATEGORY_ORDER = ["drink", "bar", "yogurt", "shake"];
+const START_LINKS = [
+  { href: "/guides/product-selection-comparison/selex-vs-himune", label: "셀렉스 vs 하이뮨", desc: "브랜드 비교부터 시작" },
+  { href: "/guides/product-selection-comparison/high-protein-40g-comparison", label: "40g 이상 비교", desc: "고단백 제품만 보기" },
+  { href: "/guides/product-selection-comparison/morning-protein-products-guide", label: "아침 대용 찾기", desc: "출근 전 바로 고르기" },
+  { href: "/recommend", label: "맞춤 추천 받기", desc: "조건부터 좁히기" },
+] as const;
 
 export default function SearchPageClient({ initialQuery }: { initialQuery: string }) {
   const [query, setQuery] = useState(initialQuery);
@@ -66,6 +72,8 @@ export default function SearchPageClient({ initialQuery }: { initialQuery: strin
   }, {});
 
   const totalCount = filtered.length;
+  const matchedBrands = Array.from(new Set(filtered.map((product) => product.brand))).slice(0, 3);
+  const topCategory = CATEGORY_ORDER.find((category) => grouped[category]?.length);
 
   const handleQueryChange = (value: string) => {
     setQuery(value);
@@ -84,7 +92,7 @@ export default function SearchPageClient({ initialQuery }: { initialQuery: strin
           단백질 제품 검색
         </h1>
         <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)] md:text-base">
-          브랜드명이나 제품명으로 검색하면 제품 상세와 비교 페이지로 바로 이어서 볼 수 있습니다.
+          브랜드명이나 제품명으로 검색하면 제품 상세를 보고, 바로 비교 페이지나 추천 흐름까지 이어서 볼 수 있습니다.
         </p>
       </div>
 
@@ -121,8 +129,22 @@ export default function SearchPageClient({ initialQuery }: { initialQuery: strin
       )}
 
       {loaded && !trimmed && (
-        <div className="rounded-2xl border border-[#ebe5dc] bg-[#fcfaf6] px-5 py-10 text-center text-sm text-[var(--foreground-muted)]">
-          브랜드명 또는 제품명을 입력해보세요. 예: 셀렉스, 하이뮨, 랩노쉬, 뉴케어
+        <div className="space-y-4">
+          <div className="rounded-2xl border border-[#ebe5dc] bg-[#fcfaf6] px-5 py-10 text-center text-sm text-[var(--foreground-muted)]">
+            브랜드명 또는 제품명을 입력해보세요. 예: 셀렉스, 하이뮨, 랩노쉬, 뉴케어
+          </div>
+          <section className="grid gap-3 md:grid-cols-2 xl:grid-cols-4">
+            {START_LINKS.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="rounded-2xl border border-[#e8e6e3] bg-[#fffdf8] px-4 py-4 transition-colors hover:bg-[var(--accent-light)]"
+              >
+                <p className="text-sm font-semibold text-[var(--foreground)]">{link.label}</p>
+                <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">{link.desc}</p>
+              </Link>
+            ))}
+          </section>
         </div>
       )}
 
@@ -137,9 +159,43 @@ export default function SearchPageClient({ initialQuery }: { initialQuery: strin
 
       {loaded && trimmed && totalCount > 0 && (
         <div className="space-y-8">
-          <p className="text-sm text-[var(--foreground-muted)]">
-            <span className="font-semibold text-[var(--foreground)]">{totalCount}개</span> 결과
-          </p>
+          <div className="space-y-3">
+            <p className="text-sm text-[var(--foreground-muted)]">
+              <span className="font-semibold text-[var(--foreground)]">{totalCount}개</span> 결과
+            </p>
+            <div className="rounded-2xl border border-[#ebe5dc] bg-[#fcfaf6] px-4 py-4">
+              <p className="text-sm font-semibold text-[var(--foreground)]">
+                {matchedBrands.length > 0
+                  ? `${matchedBrands.join(", ")} 관련 제품을 먼저 찾았습니다.`
+                  : "검색 결과를 먼저 확인해보세요."}
+              </p>
+              <p className="mt-1 text-sm leading-6 text-[var(--foreground-muted)]">
+                {topCategory
+                  ? `${CATEGORY_LABEL[topCategory]} 카테고리에서 가장 많이 나왔습니다. 제품 상세를 본 뒤 비교나 추천으로 이어가면 더 빠르게 좁힐 수 있습니다.`
+                  : "제품 상세를 본 뒤 비교나 추천으로 이어가면 더 빠르게 좁힐 수 있습니다."}
+              </p>
+              <div className="mt-3 flex flex-wrap gap-2">
+                <Link
+                  href="/products"
+                  className="rounded-full border border-[#d8d5d0] bg-white px-3 py-1.5 text-xs font-semibold text-[var(--foreground)] transition-colors hover:bg-[var(--accent-light)]"
+                >
+                  전체 제품 보기
+                </Link>
+                <Link
+                  href="/compare"
+                  className="rounded-full border border-[#d8d5d0] bg-white px-3 py-1.5 text-xs font-semibold text-[var(--foreground)] transition-colors hover:bg-[var(--accent-light)]"
+                >
+                  비교 시작하기
+                </Link>
+                <Link
+                  href="/recommend"
+                  className="rounded-full border border-[#d8d5d0] bg-white px-3 py-1.5 text-xs font-semibold text-[var(--foreground)] transition-colors hover:bg-[var(--accent-light)]"
+                >
+                  맞춤 추천 받기
+                </Link>
+              </div>
+            </div>
+          </div>
 
           {Object.entries(grouped).map(([category, items]) => (
             <section key={category}>

@@ -4,9 +4,9 @@ import Footer from "../components/Footer";
 import SearchPageClient from "./SearchPageClient";
 
 export const metadata: Metadata = {
-  title: "단백질 제품 검색 | 브랜드·제품명으로 바로 찾기",
+  title: "단백질 제품 검색 | 브랜드명·제품명으로 바로 찾기",
   description:
-    "단백질 음료, 바, 요거트, 쉐이크를 브랜드명과 제품명으로 빠르게 검색해 비교 페이지와 제품 상세로 바로 이동할 수 있습니다.",
+    "셀렉스, 하이뮨, 랩노쉬, 뉴케어처럼 브랜드명과 제품명을 검색해 제품 상세, 비교, 추천 페이지로 바로 이동할 수 있습니다.",
 };
 
 interface SearchPageProps {

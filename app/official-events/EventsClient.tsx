@@ -33,6 +33,13 @@ interface ProductLinkSource {
   coupangUrl?: string;
 }
 
+function getStorePriorityLine(storeType: string) {
+  if (storeType.includes("올리브영")) return "처음이면 올리브영에서 단품 테스트 후 박스 가격을 비교하는 편이 좋습니다.";
+  if (storeType.includes("네이버")) return "네이버 브랜드관은 쿠폰과 장바구니 할인이 같이 붙는지 먼저 보는 편이 좋습니다.";
+  if (storeType.includes("공식몰") || storeType.includes("자사몰")) return "공식몰은 회원가·정기배송·사은품이 붙는지 먼저 확인하는 편이 좋습니다.";
+  return "판매처별 가격 차이가 커서 쿠폰, 배송비, 묶음가를 함께 보는 편이 좋습니다.";
+}
+
 const PRODUCT_TYPE_META: Record<
   ProductType,
   {
@@ -894,7 +901,7 @@ export default function EventsClient() {
             이벤트/핫딜
           </h1>
           <p className="mt-1 text-sm text-[var(--foreground-muted)]">
-            단백질 브랜드의 공식몰·네이버 스토어 혜택을 모았습니다. 할인, 쿠폰, 증정, 무료배송까지 구매 전에 먼저 확인할 수 있게 정리했습니다.
+            단백질 브랜드의 공식몰·네이버 스토어 혜택을 모았습니다. 할인, 쿠폰, 증정, 무료배송 중 무엇부터 보면 되는지까지 한 번에 확인할 수 있게 정리했습니다.
           </p>
         </div>
       </section>
@@ -914,7 +921,7 @@ export default function EventsClient() {
             href="/products"
             className="rounded-2xl border border-[#e8e6e3] bg-[#FFFDF8] px-4 py-4 transition-colors hover:bg-[var(--accent-light)]"
           >
-            <p className="text-sm font-semibold text-[var(--foreground)]">제품 탐색 허브로 이동</p>
+            <p className="text-sm font-semibold text-[var(--foreground)]">행사 본 뒤 제품 비교하기</p>
             <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">
               이벤트를 본 뒤 실제 제품 성분과 비교 페이지까지 바로 이어집니다.
             </p>
@@ -1059,6 +1066,7 @@ function BrandEventCard({ brand, productType }: { brand: BrandCard; productType:
             >
               {brand.storeType}
             </span>
+            <p className="mt-2 text-[12px] leading-5 text-[#657069]">{getStorePriorityLine(brand.storeType)}</p>
           </div>
         </div>
 
