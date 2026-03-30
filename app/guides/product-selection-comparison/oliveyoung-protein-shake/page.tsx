@@ -103,6 +103,12 @@ export default function OliveyoungProteinShakePage() {
 
           <section className="rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
             <div className="flex flex-wrap gap-3">
+              <Link href="/guides/product-selection-comparison/flymill-protein-shake" className="inline-flex items-center justify-center rounded-lg border border-[#d9e7dc] px-5 py-3 text-sm font-semibold text-[#24543d] transition-colors hover:bg-[#eef7f1]">
+                플라이밀 브랜드 먼저 보기 →
+              </Link>
+              <Link href="/guides/product-selection-comparison/danbaekhani-protein-shake" className="inline-flex items-center justify-center rounded-lg border border-[#d9e7dc] px-5 py-3 text-sm font-semibold text-[#24543d] transition-colors hover:bg-[#eef7f1]">
+                단백하니 브랜드 먼저 보기 →
+              </Link>
               <Link href="/guides/product-selection-comparison/flymill-vs-danbaekhani" className="inline-flex items-center justify-center rounded-lg border border-[#d9e7dc] px-5 py-3 text-sm font-semibold text-[#24543d] transition-colors hover:bg-[#eef7f1]">
                 플라이밀 vs 단백하니 바로 비교 →
               </Link>

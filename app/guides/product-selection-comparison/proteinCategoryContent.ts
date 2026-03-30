@@ -213,6 +213,8 @@ export const proteinShakeTop7Config: CategoryGuideConfig = {
     },
   ],
   relatedGuides: [
+    { title: "플라이밀 단백질 쉐이크 추천", href: "/guides/product-selection-comparison/flymill-protein-shake", description: "플라이밀 피넛버터와 초코, 쿠키앤크림 중 무엇이 더 맞는지 브랜드 기준으로 먼저 좁힐 수 있습니다." },
+    { title: "단백하니 단백질 쉐이크 추천", href: "/guides/product-selection-comparison/danbaekhani-protein-shake", description: "단백하니 시그니처, 초코, 말차 차이를 저당과 칼로리 기준으로 정리한 브랜드 가이드입니다." },
     { title: "카테고리 선택 가이드", href: "/guides/product-selection-comparison/protein-category-guide", description: "음료, 쉐이크, 바, 요거트 중 무엇부터 고를지 먼저 정리합니다." },
     { title: "랩노쉬 라인업", href: "/guides/product-selection-comparison/labnosh-lineup", description: "슬림쉐이크 중심으로 맛과 목적 차이를 더 자세히 봅니다." },
     { title: "다이어트 단백질 쉐이크", href: "/guides/product-selection-comparison/diet-protein-shake", description: "칼로리, 당류, 식이섬유를 중심으로 다시 좁힙니다." },

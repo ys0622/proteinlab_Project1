@@ -156,6 +156,16 @@ export const proteinShakeForWomenConfig: CategoryGuideConfig = {
   ],
   relatedGuides: [
     {
+      title: "단백하니 단백질 쉐이크 추천",
+      href: "/guides/product-selection-comparison/danbaekhani-protein-shake",
+      description: "올리브영과 여성 타깃 흐름에서 자주 같이 보이는 단백하니 라인을 맛과 칼로리 기준으로 바로 확인할 수 있습니다.",
+    },
+    {
+      title: "플라이밀 단백질 쉐이크 추천",
+      href: "/guides/product-selection-comparison/flymill-protein-shake",
+      description: "플라이밀을 브랜드 기준으로 먼저 보고 싶다면 피넛버터, 초코, 쿠키앤크림 차이를 정리한 이 페이지가 더 빠릅니다.",
+    },
+    {
       title: "다이어트 단백질 쉐이크",
       href: "/guides/product-selection-comparison/diet-protein-shake",
       description: "여성 타깃 중에서도 다이어트 숫자 기준을 더 엄격하게 보고 싶다면 이 페이지가 이어집니다.",
@@ -414,6 +424,16 @@ export const oliveYoungProteinShakeConfig: CategoryGuideConfig = {
     },
   ],
   relatedGuides: [
+    {
+      title: "플라이밀 단백질 쉐이크 추천",
+      href: "/guides/product-selection-comparison/flymill-protein-shake",
+      description: "올리브영에서 플라이밀이 왜 먼저 비교되는지, 피넛버터와 초코 중 무엇부터 보면 되는지 브랜드 기준으로 정리했습니다.",
+    },
+    {
+      title: "단백하니 단백질 쉐이크 추천",
+      href: "/guides/product-selection-comparison/danbaekhani-protein-shake",
+      description: "올영픽과 저당 기준으로 단백하니를 먼저 보고 싶다면 시그니처, 초코, 말차를 따로 정리한 이 페이지가 더 직접적입니다.",
+    },
     {
       title: "랩노쉬 라인업",
       href: "/guides/product-selection-comparison/labnosh-lineup",
