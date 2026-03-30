@@ -429,18 +429,18 @@ dietProteinShakeConfig.jsonLd = [articleJsonLd(dietProteinShakeConfig), faqJsonL
 
 export const proteinShakeCalorieRankingConfig: CategoryGuideConfig = {
   slug: "protein-shake-calorie-ranking",
-  title: "단백질 쉐이크 칼로리 순위",
-  description: "ProteinLab DB 파우치형 단백질 쉐이크를 칼로리 낮은 순으로 정렬해 TOP 20을 정리했습니다.",
+  title: "단백질 쉐이크 칼로리 순위 | 저칼로리 TOP 20 2026",
+  description: "ProteinLab DB 파우치형 단백질 쉐이크를 칼로리 낮은 순으로 정렬해 TOP 20을 정리했습니다. 저칼로리지만 단백질까지 괜찮은 제품을 빠르게 좁혀볼 수 있습니다.",
   keywords: ["단백질 쉐이크 칼로리", "저칼로리 단백질 쉐이크 순위", "칼로리 낮은 쉐이크", "다이어트 쉐이크 순위"],
   badge: "데이터 랭킹",
   readingTime: "6분 읽기",
   updatedAt: "2026-03-24",
   methodologyNote: "ProteinLab DB 파우치형 쉐이크를 칼로리 오름차순 정렬",
-  intro: "다이어트 관점에서 쉐이크를 볼 때 가장 먼저 찾는 숫자는 칼로리입니다. 다만 칼로리만 낮다고 끝은 아니어서, 실제로는 단백질과 당류까지 같이 읽어야 같은 120kcal 제품 안에서도 더 나은 선택을 할 수 있습니다.",
+  intro: "다이어트용 단백질 쉐이크를 찾을 때 가장 먼저 눈에 들어오는 숫자는 칼로리입니다. 하지만 실제로는 같은 120kcal 제품 안에서도 단백질과 당류 차이가 꽤 큽니다. 그래서 이 페이지는 저칼로리 후보를 빠르게 좁힌 뒤, 그 안에서 실제로 오래 마시기 쉬운 제품을 다시 가려내는 출발점 역할을 합니다.",
   summary: [
     "최저 칼로리권은 프로티원, 더단백 파우더, 베노프, 잇더핏 계열이 차지합니다.",
-    "칼로리만 낮고 단백질이 낮은 제품보다, 20g 이상 단백질을 유지한 저칼로리 제품이 실전 다이어트엔 더 유리합니다.",
-    "결국 이 표는 출발점이고, 최종 선택은 단백질과 당류를 같이 봐야 완성됩니다.",
+    "칼로리만 낮고 단백질이 낮은 제품보다 20g 이상 단백질을 유지한 저칼로리 제품이 실전 다이어트엔 더 유리합니다.",
+    "결국 이 표는 출발점이고 최종 선택은 단백질과 당류, 포만감까지 같이 봐야 완성됩니다.",
   ],
   comparisonTitle: "칼로리 낮은 순 TOP 20",
   comparisonColumns: ["제품명", "칼로리", "단백질", "당류", "메모"],
