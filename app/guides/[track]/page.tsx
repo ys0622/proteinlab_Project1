@@ -160,6 +160,13 @@ export default async function GuideTrackPage({ params }: { params: Promise<{ tra
           .filter((item): item is NonNullable<typeof item> => Boolean(item))
       : [];
 
+  const shakeBrandArticles =
+    section.slug === "product-selection-comparison"
+      ? ["flymill-vs-danbaekhani", "flymill-protein-shake", "danbaekhani-protein-shake", "oliveyoung-protein-shake"]
+          .map((slug) => articleMap.get(slug))
+          .filter((item): item is NonNullable<typeof item> => Boolean(item))
+      : [];
+
   const comparisonArticles =
     section.slug === "product-selection-comparison"
       ? ["selex-vs-himune", "selex-vs-takefit-vs-himune", "high-protein-40g-comparison", "protein-drink-by-content"]
@@ -275,6 +282,13 @@ export default async function GuideTrackPage({ params }: { params: Promise<{ tra
               accentColor={section.accentColor}
               accentBg={accentChipBg}
               items={starterArticles}
+            />
+            <CuratedGuideGroup
+              title="쉐이크 브랜드 바로보기"
+              description="플라이밀, 단백하니, 올리브영 쉐이크처럼 최근 추가한 쉐이크 브랜드와 비교 페이지를 상단에서 바로 볼 수 있게 묶었습니다."
+              accentColor={section.accentColor}
+              accentBg={accentChipBg}
+              items={shakeBrandArticles}
             />
             <CuratedGuideGroup
               title="브랜드 라인업만 모아보기"
