@@ -107,11 +107,12 @@ function PurchaseCards({ links }: { links: CategoryPurchaseLink[] }) {
             target={href ? "_blank" : undefined}
             rel={href ? "noreferrer noopener" : undefined}
           >
-            <p className="text-xs font-semibold tracking-[0.08em] text-[#4a6178]">쿠팡 링크</p>
+            <p className="text-xs font-semibold tracking-[0.08em] text-[#4a6178]">쿠팡에서 가격 확인</p>
             <p className="mt-2 text-sm font-semibold text-[var(--foreground)]">{item.label}</p>
             <p className="mt-1 text-sm leading-6 text-[var(--foreground-muted)]">
               {product.brand} {product.name}
             </p>
+            <p className="mt-3 text-xs font-medium text-[#24543d]">옵션과 최신 가격 보기 →</p>
           </a>
         );
       })}
@@ -260,10 +261,13 @@ export function CategoryGuidePage({ config }: { config: CategoryGuideConfig }) {
 
           <section className="rounded-[28px] border border-[#d9e4f0] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(32,46,68,0.05)]">
             <div className="flex items-center justify-between gap-4">
-              <h2 className="text-xl font-bold text-[var(--foreground)]">쿠팡 추천 링크</h2>
+              <h2 className="text-xl font-bold text-[var(--foreground)]">쿠팡에서 가격 보기</h2>
               <AffiliateDisclosure />
             </div>
-            <div className="mt-3">
+            <p className="mt-3 text-sm leading-6 text-[var(--foreground-muted)]">
+              제품이 어느 정도 좁혀졌다면 쿠팡에서 옵션과 최신 가격을 바로 확인해보세요.
+            </p>
+            <div className="mt-4">
               <PurchaseCards links={config.purchaseLinks} />
             </div>
           </section>
