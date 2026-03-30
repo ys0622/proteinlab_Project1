@@ -48,9 +48,9 @@ export default function LabNosheLimShakePage() {
             랩노쉬 슬림쉐이크 추천 및 비교
           </h1>
           <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
-            랩노쉬 슬림쉐이크는 저당·식사대용 기준으로 설계된 단백질 쉐이크입니다.
+            다이어트 중이거나 한 끼를 너무 무겁지 않게 대체하고 싶다면 랩노쉬 슬림쉐이크가 먼저 후보로 들어옵니다.
             <br />
-            다이어트·식사대용 목적이라면 성분 기준으로 직접 확인해보세요.
+            저당과 식사대용 기준으로 왜 많이 비교되는지 핵심만 빠르게 확인해보세요.
           </p>
         </div>
       </section>
@@ -84,13 +84,13 @@ export default function LabNosheLimShakePage() {
           <section className="rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
             <div className="flex flex-wrap gap-3">
               <Link href="/guides/product-selection-comparison/low-sugar-protein-shake-guide" className="inline-flex items-center justify-center rounded-lg border border-[#d9e7dc] px-5 py-3 text-sm font-semibold text-[#24543d] transition-colors hover:bg-[#eef7f1]">
-                저당 단백질 쉐이크 가이드 →
+                저당 쉐이크 기준 보기 →
               </Link>
               <Link href="/guides/product-selection-comparison/meal-replacement-protein-shake-guide" className="inline-flex items-center justify-center rounded-lg border border-[#d9e7dc] px-5 py-3 text-sm font-semibold text-[#24543d] transition-colors hover:bg-[#eef7f1]">
-                식사대용 쉐이크 가이드 →
+                식사대용 쉐이크 기준 보기 →
               </Link>
               <Link href="/shake" className="inline-flex items-center justify-center rounded-lg border border-[#2d6a4f] bg-[#2d6a4f] px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#24543d]">
-                쉐이크 전체 비교 →
+                쉐이크 제품 바로 비교 →
               </Link>
             </div>
           </section>

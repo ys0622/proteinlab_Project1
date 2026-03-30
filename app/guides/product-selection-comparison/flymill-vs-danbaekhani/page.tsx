@@ -58,9 +58,9 @@ export default function FlymillVsDanbaekhaniPage() {
             플라이밀 vs 단백하니, 어떤 쉐이크가 더 맞을까?
           </h1>
           <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
-            두 브랜드 모두 파우치형 단백질 쉐이크 시장에서 인지도가 높습니다.
+            고단백을 우선하면 플라이밀, 칼로리와 맛 선택 폭까지 같이 보면 단백하니가 더 잘 맞을 수 있습니다.
             <br />
-            단백질·당류·칼로리·단백질 밀도를 직접 비교해서 목적에 맞는 쪽을 고르세요.
+            단백질, 당류, 칼로리, 단백질 밀도를 직접 비교해서 내 목적에 맞는 쪽을 바로 고르세요.
           </p>
         </div>
       </section>
@@ -135,10 +135,10 @@ export default function FlymillVsDanbaekhaniPage() {
           <section className="rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
             <div className="flex flex-wrap gap-3">
               <Link href="/guides/product-selection-comparison/protein-shake-guide" className="inline-flex items-center justify-center rounded-lg border border-[#d9e7dc] px-5 py-3 text-sm font-semibold text-[#24543d] transition-colors hover:bg-[#eef7f1]">
-                단백질 쉐이크 추천 가이드 →
+                쉐이크 전체 추천 기준 보기 →
               </Link>
               <Link href="/shake" className="inline-flex items-center justify-center rounded-lg border border-[#2d6a4f] bg-[#2d6a4f] px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#24543d]">
-                쉐이크 전체 비교 →
+                쉐이크 제품 바로 비교 →
               </Link>
             </div>
           </section>
