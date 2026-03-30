@@ -255,7 +255,7 @@ export const labnoshLineupConfig: CategoryGuideConfig = {
   methodologyNote: "ProteinLab DB 파우치형 랩노쉬 SKU 기준",
   intro: "랩노쉬는 파우치 쉐이크 시장에서 가장 먼저 보는 브랜드 중 하나지만, 실제로는 단백질 함량보다 맛과 식사 대용 지속성이 더 강한 브랜드입니다. 현재 ProteinLab DB 기준으로는 슬림쉐이크 라인이 중심이라, 그 안에서 어떤 맛이 무난하고 어떤 맛이 포만감 쪽으로 강한지 읽는 게 중요합니다.",
   summary: [
-    "랩노쉬의 강점은 극단적 고단백이 아니라 맛 다양성과 식사 대용 지속성입니다.",
+    "랩노쉬의 강점은 극단적 고단백이 아니라 맛 다양성과 식사 대용 지속성입니다. 반대로 플라이밀, 단백하니, 프로티원은 브랜드별 숫자 차이를 더 직접적으로 비교하기 좋습니다.",
     "대부분 20g 전후 단백질에 160~175kcal 구간으로 정리돼 있어 다이어트 쉐이크로 쓰기 쉽습니다.",
     "처음이면 더블초코, 얼그레이 밀크티, 제주말차처럼 거부감이 낮은 맛부터 시작하는 편이 안전합니다.",
   ],
@@ -305,11 +305,13 @@ export const labnoshLineupConfig: CategoryGuideConfig = {
       ],
     },
   ],
-  relatedGuides: [
-    { title: "단백질 쉐이크 추천 TOP 7", href: "/guides/product-selection-comparison/protein-shake-top7", description: "랩노쉬가 전체 쉐이크 시장에서 어디에 위치하는지 확인합니다." },
-    { title: "다이어트 단백질 쉐이크", href: "/guides/product-selection-comparison/diet-protein-shake", description: "칼로리와 당류 기준으로 다시 한 번 좁혀봅니다." },
-    { title: "여성을 위한 단백질 쉐이크", href: "/guides/product-selection-comparison/protein-shake-top7", description: "일상·다이어트 프레임으로 이어서 보기 좋은 쉐이크 페이지입니다." },
-  ],
+    relatedGuides: [
+      { title: "단백질 쉐이크 추천 TOP 7", href: "/guides/product-selection-comparison/protein-shake-top7", description: "랩노쉬가 전체 쉐이크 시장에서 어디에 위치하는지 확인합니다." },
+      { title: "플라이밀 단백질 쉐이크 추천", href: "/guides/product-selection-comparison/flymill-protein-shake", description: "랩노쉬보다 더 고단백 쪽이 궁금하다면 플라이밀 브랜드 가이드로 바로 넘어갈 수 있습니다." },
+      { title: "단백하니 단백질 쉐이크 추천", href: "/guides/product-selection-comparison/danbaekhani-protein-shake", description: "랩노쉬보다 더 가볍고 저당인 브랜드 후보를 보려면 단백하니 브랜드 가이드가 더 직접적입니다." },
+      { title: "다이어트 단백질 쉐이크", href: "/guides/product-selection-comparison/diet-protein-shake", description: "칼로리와 당류 기준으로 다시 한 번 좁혀봅니다." },
+      { title: "여성을 위한 단백질 쉐이크", href: "/guides/product-selection-comparison/protein-shake-for-women", description: "일상·다이어트 프레임으로 이어서 보기 좋은 쉐이크 페이지입니다." },
+    ],
   purchaseLinks: [
     { label: "랩노쉬 더블초코 보기", slug: "labnosh-slimshake-double-choco-45" },
     { label: "랩노쉬 제주말차 보기", slug: "labnosh-slimshake-jeju-matcha-45" },
@@ -348,7 +350,7 @@ export const dietProteinShakeConfig: CategoryGuideConfig = {
   intro: "다이어트용 쉐이크는 단순히 칼로리만 낮으면 끝이 아닙니다. 칼로리가 낮아도 단백질이 부족하면 금방 허기가 오고, 당류가 높으면 체감 만족도가 오히려 떨어질 수 있습니다. 그래서 다이어트용은 칼로리, 당류, 단백질, 식이섬유를 함께 봐야 합니다.",
   summary: [
     "다이어트용 상위권은 110~170kcal 안에서 단백질 20g 이상을 확보한 제품들입니다.",
-    "극저칼로리만 보면 프로티원과 더단백 파우더가 강하고, 포만감까지 같이 보면 랩노쉬가 더 유리합니다.",
+    "극저칼로리만 보면 프로티원과 더단백 파우더가 강하고, 포만감까지 같이 보면 랩노쉬가 더 유리합니다. 플라이밀과 단백하니는 브랜드별로 다시 보면 맛과 칼로리 차이를 더 쉽게 좁힐 수 있습니다.",
     "하루 2끼 이상 대체보다 아침 1끼 또는 간식 대체용으로 쓰는 방식이 가장 안정적입니다.",
   ],
   comparisonTitle: "다이어트 추천 쉐이크",
@@ -397,11 +399,13 @@ export const dietProteinShakeConfig: CategoryGuideConfig = {
       ],
     },
   ],
-  relatedGuides: [
-    { title: "랩노쉬 라인업", href: "/guides/product-selection-comparison/labnosh-lineup", description: "식대용으로 꾸준히 먹기 좋은 브랜드를 더 자세히 봅니다." },
-    { title: "단백질 쉐이크 칼로리 순위", href: "/guides/product-selection-comparison/protein-shake-calorie-ranking", description: "전체 DB에서 칼로리만 놓고 보면 어떤 제품이 더 가벼운지 확인합니다." },
-    { title: "단백질 바 선택 가이드", href: "/guides/product-selection-comparison/protein-bar-guide", description: "허기 관리용 간식 대안으로 바가 더 잘 맞는 경우도 있습니다." },
-  ],
+    relatedGuides: [
+      { title: "프로티원 단백질 쉐이크 추천", href: "/guides/product-selection-comparison/proteone-protein-shake", description: "다이어트용으로 자주 비교되는 프로티원 초코·커피맛 차이를 브랜드 기준으로 먼저 볼 수 있습니다." },
+      { title: "단백하니 단백질 쉐이크 추천", href: "/guides/product-selection-comparison/danbaekhani-protein-shake", description: "저당과 칼로리 균형형 브랜드를 찾는다면 단백하니 브랜드 페이지가 바로 이어집니다." },
+      { title: "랩노쉬 라인업", href: "/guides/product-selection-comparison/labnosh-lineup", description: "식대용으로 꾸준히 먹기 좋은 브랜드를 더 자세히 봅니다." },
+      { title: "단백질 쉐이크 칼로리 순위", href: "/guides/product-selection-comparison/protein-shake-calorie-ranking", description: "전체 DB에서 칼로리만 놓고 보면 어떤 제품이 더 가벼운지 확인합니다." },
+      { title: "플라이밀 단백질 쉐이크 추천", href: "/guides/product-selection-comparison/flymill-protein-shake", description: "조금 더 고단백 쪽 다이어트 쉐이크를 보고 싶다면 플라이밀 브랜드 페이지로 넘어갈 수 있습니다." },
+    ],
   purchaseLinks: [
     { label: "프로티원 커피맛 보기", slug: "proteone-proteinshake-coffee-40" },
     { label: "더단백 파우더 초코 보기", slug: "thedanbaek-proteinshake-powder-choco-32" },

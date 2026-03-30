@@ -225,7 +225,7 @@ export const morningProteinShakeConfig: CategoryGuideConfig = {
   intro:
     "아침용 쉐이크는 다이어트용 쉐이크와 기준이 조금 다릅니다. 가장 낮은 칼로리보다, 공복에 부담이 적고 점심 전까지 버틸 수 있는지가 더 중요합니다. 그래서 이번 리스트는 포만감과 루틴 지속성 중심으로 골랐습니다.",
   summary: [
-    "아침 대용용으로는 식이섬유가 붙은 랩노쉬 슬림쉐이크 계열이 가장 안정적입니다.",
+    "아침 대용용으로는 식이섬유가 붙은 랩노쉬 슬림쉐이크 계열이 가장 안정적입니다. 더 가벼운 숫자를 원하면 프로티원, 저당과 맛 균형을 원하면 단백하니 쪽으로 더 좁힐 수 있습니다.",
     "올더배러 저당 검은콩두유, 저당 17곡 미숫가루는 아침 루틴에 잘 맞는 고소한 계열 대안입니다.",
     "아침 쉐이크는 한 끼를 완전히 대체한다기보다, 굶는 대신 안정적으로 시작하는 보완재로 보는 편이 더 현실적입니다.",
   ],
@@ -296,23 +296,33 @@ export const morningProteinShakeConfig: CategoryGuideConfig = {
       ],
     },
   ],
-  relatedGuides: [
-    {
-      title: "여성을 위한 단백질 쉐이크",
-      href: "/guides/product-selection-comparison/protein-shake-for-women",
-      description: "아침 대용뿐 아니라 다이어트와 체형 유지 중심으로 보고 싶다면 이 페이지가 더 넓은 가이드입니다.",
-    },
-    {
-      title: "다이어트 단백질 쉐이크",
-      href: "/guides/product-selection-comparison/diet-protein-shake",
-      description: "아침보다 숫자 중심의 다이어트 기준을 더 엄격하게 보고 싶다면 다이어트 페이지로 이어집니다.",
-    },
-    {
-      title: "랩노쉬 라인업",
-      href: "/guides/product-selection-comparison/labnosh-lineup",
-      description: "아침용으로 많이 선택되는 랩노쉬 라인을 더 자세히 보고 싶다면 이 페이지를 보세요.",
-    },
-  ],
+    relatedGuides: [
+      {
+        title: "프로티원 단백질 쉐이크 추천",
+        href: "/guides/product-selection-comparison/proteone-protein-shake",
+        description: "아침용 중에서도 더 가볍고 단백질 밀도가 높은 후보를 보고 싶다면 프로티원 브랜드 페이지가 더 직접적입니다.",
+      },
+      {
+        title: "단백하니 단백질 쉐이크 추천",
+        href: "/guides/product-selection-comparison/danbaekhani-protein-shake",
+        description: "아침 대용으로 너무 무겁지 않은 저당 브랜드를 찾는다면 단백하니 브랜드 가이드가 잘 맞습니다.",
+      },
+      {
+        title: "여성을 위한 단백질 쉐이크",
+        href: "/guides/product-selection-comparison/protein-shake-for-women",
+        description: "아침 대용뿐 아니라 다이어트와 체형 유지 중심으로 보고 싶다면 이 페이지가 더 넓은 가이드입니다.",
+      },
+      {
+        title: "랩노쉬 라인업",
+        href: "/guides/product-selection-comparison/labnosh-lineup",
+        description: "아침용으로 많이 선택되는 랩노쉬 라인을 더 자세히 보고 싶다면 이 페이지를 보세요.",
+      },
+      {
+        title: "다이어트 단백질 쉐이크",
+        href: "/guides/product-selection-comparison/diet-protein-shake",
+        description: "아침보다 숫자 중심의 다이어트 기준을 더 엄격하게 보고 싶다면 다이어트 페이지로 이어집니다.",
+      },
+    ],
   purchaseLinks: morningShakePicks.slice(0, 3).map((product) => ({
     label: `${product.brand} ${product.name} 보기`,
     slug: product.slug,
