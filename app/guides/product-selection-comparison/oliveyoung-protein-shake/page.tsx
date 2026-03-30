@@ -63,7 +63,7 @@ export default function OliveyoungProteinShakePage() {
           <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
             처음 단백질 쉐이크를 사보려면 올리브영처럼 단품 테스트가 쉬운 채널이 편합니다.
             <br />
-            플라이밀, 단백하니, 딜라이트 프로젝트 중 어디부터 보면 좋은지 브랜드 포지션과 성분 기준으로 바로 정리했습니다.
+            플라이밀, 단백하니, 딜라이트 프로젝트, 빼르빼르 중 어디부터 보면 좋은지 브랜드 포지션과 성분 기준으로 바로 정리했습니다.
           </p>
         </div>
       </section>
@@ -106,8 +106,8 @@ export default function OliveyoungProteinShakePage() {
               <Link href="/guides/product-selection-comparison/flymill-vs-danbaekhani" className="inline-flex items-center justify-center rounded-lg border border-[#d9e7dc] px-5 py-3 text-sm font-semibold text-[#24543d] transition-colors hover:bg-[#eef7f1]">
                 플라이밀 vs 단백하니 바로 비교 →
               </Link>
-              <Link href="/guides/product-selection-comparison/protein-shake-guide" className="inline-flex items-center justify-center rounded-lg border border-[#d9e7dc] px-5 py-3 text-sm font-semibold text-[#24543d] transition-colors hover:bg-[#eef7f1]">
-                쉐이크 전체 추천 기준 보기 →
+              <Link href="/guides/product-selection-comparison/oliveyoung-protein-products-guide" className="inline-flex items-center justify-center rounded-lg border border-[#d9e7dc] px-5 py-3 text-sm font-semibold text-[#24543d] transition-colors hover:bg-[#eef7f1]">
+                올리브영 제품 전체 기준 보기 →
               </Link>
               <Link href="/shake" className="inline-flex items-center justify-center rounded-lg border border-[#2d6a4f] bg-[#2d6a4f] px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#24543d]">
                 쉐이크 제품 바로 비교 →
