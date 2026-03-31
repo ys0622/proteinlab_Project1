@@ -1,6 +1,5 @@
 ﻿"use client";
 
-import Link from "next/link";
 import { useMemo, useState } from "react";
 import barProductsData from "../data/barProductsData.json";
 import drinkProductsData from "../data/drinkProductsData.json";
@@ -907,36 +906,6 @@ export default function EventsClient() {
       </section>
 
       <main className="mx-auto max-w-[1200px] px-4 pb-12 md:px-6">
-        <section className="mt-5 grid gap-3 md:grid-cols-3">
-          <Link
-            href="/guides/product-selection-comparison/protein-drink-box-value"
-            className="rounded-2xl border border-[#e8e6e3] bg-[#FFFDF8] px-4 py-4 transition-colors hover:bg-[var(--accent-light)]"
-          >
-            <p className="text-sm font-semibold text-[var(--foreground)]">박스 가성비 가이드</p>
-            <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">
-              공식몰 행사만 보지 말고 박스 단가와 1g당 가격도 같이 확인합니다.
-            </p>
-          </Link>
-          <Link
-            href="/products"
-            className="rounded-2xl border border-[#e8e6e3] bg-[#FFFDF8] px-4 py-4 transition-colors hover:bg-[var(--accent-light)]"
-          >
-            <p className="text-sm font-semibold text-[var(--foreground)]">행사 본 뒤 제품 비교하기</p>
-            <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">
-              이벤트를 본 뒤 실제 제품 성분과 비교 페이지까지 바로 이어집니다.
-            </p>
-          </Link>
-          <Link
-            href="/recommend"
-            className="rounded-2xl border border-[#e8e6e3] bg-[#FFFDF8] px-4 py-4 transition-colors hover:bg-[var(--accent-light)]"
-          >
-            <p className="text-sm font-semibold text-[var(--foreground)]">맞춤 추천 받기</p>
-            <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">
-              이벤트를 보고도 고민된다면 목적별 추천 흐름으로 다시 좁혀볼 수 있습니다.
-            </p>
-          </Link>
-        </section>
-
         <div className="flex gap-2 pt-5">
           {(["drink", "bar", "yogurt", "shake"] as const).map((type) => {
             const active = productType === type;
