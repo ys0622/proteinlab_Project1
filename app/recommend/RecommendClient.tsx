@@ -71,20 +71,20 @@ const PURPOSE_OPTIONS = [
   { icon: "💪", label: "근육 증가·운동 보충", desc: "운동 후 단백질 보충이 우선", value: "muscle" },
   { icon: "⚖️", label: "다이어트·체중 관리", desc: "칼로리와 당류 부담을 고려", value: "diet" },
   { icon: "🥤", label: "일상 간편 보충", desc: "바쁜 일상에서 간편하게 섭취", value: "daily" },
-  { icon: "🔄", label: "회복·컨디션", desc: "운동 후 회복과 퍼포먼스 중점", value: "recovery" },
+  { icon: "🏃", label: "회복·컨디션 관리", desc: "운동 후 회복과 퍼포먼스 중심", value: "recovery" },
 ];
 
 const FREQUENCY_OPTIONS = [
-  { icon: "🕒", label: "가끔", desc: "주 0~1회", value: "rarely" },
-  { icon: "📅", label: "보통", desc: "주 2~3회", value: "sometimes" },
+  { icon: "🛋️", label: "거의 안 함", desc: "주 0~1회", value: "rarely" },
+  { icon: "🙂", label: "보통", desc: "주 2~3회", value: "sometimes" },
   { icon: "🔥", label: "자주", desc: "주 4~5회", value: "often" },
-  { icon: "✅", label: "매일", desc: "거의 매일 섭취", value: "daily" },
+  { icon: "📆", label: "매일", desc: "거의 매일 운동", value: "daily" },
 ];
 
 const INTENSITY_OPTIONS = [
   { icon: "🚶", label: "가볍게", desc: "걷기, 스트레칭, 가벼운 운동", value: "light" },
   { icon: "🏃", label: "보통", desc: "유산소나 주기적인 운동", value: "moderate" },
-  { icon: "🏋️", label: "강하게", desc: "고강도 운동이나 웨이트 중점", value: "hard" },
+  { icon: "🏋️", label: "강하게", desc: "고강도 운동이나 웨이트 중심", value: "hard" },
   { icon: "⚡", label: "매우 강하게", desc: "강도 높은 운동 빈도가 많음", value: "extreme" },
 ];
 
@@ -92,33 +92,33 @@ const CONDITION_OPTIONS_BY_CATEGORY: Record<ProductType, ConditionOption[]> = {
   drink: [
     { icon: "🥗", label: "저칼로리", desc: "150kcal 이하 선호", value: "lowcal" },
     { icon: "💪", label: "고단백", desc: "20g 이상 선호", value: "highpro" },
-    { icon: "🌱", label: "식물성", desc: "식물성 단백질 원료 선호", value: "vegan" },
+    { icon: "🌿", label: "식물성", desc: "식물성 단백질 원료 선호", value: "vegan" },
     { icon: "😋", label: "맛 우선", desc: "기호성과 만족감 중시", value: "taste" },
-    { icon: "📊", label: "단백질 밀도", desc: "단백질 효율이 높은 제품 선호", value: "density" },
+    { icon: "📈", label: "단백질 밀도", desc: "칼로리 대비 단백질 효율 중시", value: "density" },
     { icon: "🍬", label: "저당", desc: "당류 2g 이하 선호", value: "lowsugar" },
   ],
   bar: [
     { icon: "💪", label: "고단백", desc: "12g 이상 선호", value: "highpro" },
     { icon: "🍽️", label: "식사 보완", desc: "포만감 있는 제품 선호", value: "meal" },
-    { icon: "🌱", label: "식물성", desc: "식물성 단백질 원료 선호", value: "vegan" },
+    { icon: "🌿", label: "식물성", desc: "식물성 단백질 원료 선호", value: "vegan" },
     { icon: "😋", label: "맛 우선", desc: "식감과 만족감 중시", value: "taste" },
-    { icon: "📊", label: "단백질 밀도", desc: "단백질 효율 우선", value: "density" },
+    { icon: "📈", label: "단백질 밀도", desc: "단백질 효율 우선", value: "density" },
     { icon: "🍬", label: "저당", desc: "당류 5g 이하 선호", value: "lowsugar" },
   ],
   yogurt: [
     { icon: "💪", label: "고단백", desc: "10g 이상 선호", value: "highpro" },
     { icon: "🥣", label: "그릭", desc: "꾸덕한 그릭 계열 선호", value: "greek" },
-    { icon: "🥤", label: "드링크형", desc: "마시기 쉬운 타입 선호", value: "drinking" },
+    { icon: "🥛", label: "드링크형", desc: "마시기 쉬운 타입 선호", value: "drinking" },
     { icon: "📦", label: "대용량", desc: "400g 이상 제품 선호", value: "bulk" },
-    { icon: "📊", label: "단백질 밀도", desc: "단백질 효율이 높은 제품 선호", value: "density" },
+    { icon: "📈", label: "단백질 밀도", desc: "칼로리 대비 단백질 효율 중시", value: "density" },
     { icon: "🍬", label: "저당", desc: "당류 5g 이하 선호", value: "lowsugar" },
   ],
   shake: [
     { icon: "💪", label: "운동 보충", desc: "단백질 20g 이상 제품 위주로 보고 싶어요", value: "highpro" },
     { icon: "🍬", label: "저당", desc: "당류 3g 이하 제품부터 추리고 싶어요", value: "lowsugar" },
-    { icon: "🥣", label: "식사대용", desc: "한 끼 대체용으로 보고 싶어요", value: "meal" },
+    { icon: "🍽️", label: "식사대용", desc: "한 끼 대체용으로 보고 싶어요", value: "meal" },
     { icon: "🌾", label: "식이섬유", desc: "식이섬유 5g 이상 제품을 우선 보고 싶어요", value: "fiber" },
-    { icon: "📊", label: "단백질 밀도", desc: "칼로리 대비 단백질 효율이 높은 제품이 좋아요", value: "density" },
+    { icon: "📈", label: "단백질 밀도", desc: "칼로리 대비 단백질 효율이 높은 제품이 좋아요", value: "density" },
   ],
 };
 
@@ -461,8 +461,8 @@ function getRecommendQuickLinks(category: ProductType, answers: QuizAnswers): Qu
     if (answers.purpose === "diet" || answers.conditions.includes("lowsugar")) {
       links.push({
         href: "/guides/product-selection-comparison/selex-vs-himune",
-        title: "대표 저당 RTD 비교 보기",
-        desc: "셀렉스와 하이뮨 대표 제품을 바로 비교할 수 있습니다.",
+        title: "대표 RTD 브랜드 비교 보기",
+        desc: "셀렉스와 하이뮨 같은 대표 제품을 바로 비교해볼 수 있습니다.",
       });
     } else if (
       answers.conditions.includes("highpro") ||
@@ -472,7 +472,7 @@ function getRecommendQuickLinks(category: ProductType, answers: QuizAnswers): Qu
       links.push({
         href: "/guides/product-selection-comparison/high-protein-40g-comparison",
         title: "40g 이상 RTD 비교 보기",
-        desc: "고단백 보충용 후보를 더 직접적으로 좁힐 수 있습니다.",
+        desc: "고단백 보충용 후보를 더 직접적으로 좁혀볼 수 있습니다.",
       });
     }
   } else if (category === "bar") {
@@ -484,8 +484,8 @@ function getRecommendQuickLinks(category: ProductType, answers: QuizAnswers): Qu
     if (answers.purpose === "diet" || answers.conditions.includes("lowsugar")) {
       links.push({
         href: "/guides/product-selection-comparison/diet-protein-bar",
-        title: "다이어트용 단백질 바 보기",
-        desc: "저당, 저칼로리 기준으로 다시 좁혀볼 수 있습니다.",
+        title: "다이어트 단백질 바 보기",
+        desc: "저당·저칼로리 기준으로 다시 좁혀볼 수 있습니다.",
       });
     }
   } else if (category === "yogurt") {
@@ -497,8 +497,8 @@ function getRecommendQuickLinks(category: ProductType, answers: QuizAnswers): Qu
     if (answers.conditions.includes("lowsugar")) {
       links.push({
         href: "/guides/product-selection-comparison/diet-protein-yogurt",
-        title: "다이어트용 요거트 보기",
-        desc: "당류와 칼로리 기준으로 다시 비교할 수 있습니다.",
+        title: "다이어트 단백질 요거트 보기",
+        desc: "당류와 칼로리 기준으로 다시 비교해볼 수 있습니다.",
       });
     }
   } else {
@@ -510,7 +510,7 @@ function getRecommendQuickLinks(category: ProductType, answers: QuizAnswers): Qu
     if (answers.purpose === "diet" || answers.conditions.includes("meal")) {
       links.push({
         href: "/guides/product-selection-comparison/diet-protein-shake",
-        title: "다이어트 쉐이크 보기",
+        title: "다이어트 단백질 쉐이크 보기",
         desc: "식사대용과 저당 기준을 함께 확인할 수 있습니다.",
       });
     }
