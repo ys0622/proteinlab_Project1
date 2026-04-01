@@ -7,6 +7,7 @@
     "dev": "next dev",
     "start": "next start",
     "lint": "eslint",
+    "audit:assets": "node scripts/audit-asset-coverage.mjs",
     "audit:products": "node scripts/audit-product-impact.mjs",
     "audit:purchase-links": "node scripts/audit-purchase-link-sync.mjs",
     "audit:bcaa": "python scripts/fill-bcaa-from-spec.py",
