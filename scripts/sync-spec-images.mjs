@@ -3,7 +3,14 @@ import path from "node:path";
 
 const rootDir = process.cwd();
 
-const specs = [
+const specGroups = [
+  {
+    rawDir: path.join(rootDir, "RTD drink spec"),
+    publicDir: path.join(rootDir, "public", "rtd-drink-spec"),
+    dataFile: path.join(rootDir, "app", "data", "drinkProductsData.json"),
+    outputFile: path.join(rootDir, "app", "data", "slugToDrinkSpec.json"),
+    preferredBrandFirst: true,
+  },
   {
     rawDir: path.join(rootDir, "Bar spec"),
     publicDir: path.join(rootDir, "public", "bar-spec"),
@@ -47,29 +54,33 @@ function walkFiles(dirPath) {
 }
 
 function normalizeText(value) {
-  return (value ?? "")
+  return String(value ?? "")
     .toLowerCase()
-    .replace(/단백질/g, "")
-    .replace(/프로틴/g, "")
-    .replace(/쉐이크/g, "")
-    .replace(/요거트/g, "")
-    .replace(/그릭/g, "")
-    .replace(/바$/g, "바")
     .replace(/spec/gi, "")
-    .replace(/\.[a-z0-9]+$/i, "")
-    .replace(/[()\[\]{}·,&+!.'"`~:/\\_-]/g, "")
+    .replace(/\b(ml|mL|g)\b/gi, "")
+    .replace(/[0-9]+/g, "")
+    .replace(/&/g, "")
+    .replace(/protein|whey|drink|drinking|shake|bar|greek|yogurt/gi, "")
+    .replace(/프로틴|단백질|웨이|드링크|쉐이크|바|그릭|요거트|요구르트/g, "")
+    .replace(/맛/g, "")
+    .replace(/[()[\]{}'",.+!`~:/\\_|?-]/g, "")
     .replace(/\s+/g, "")
     .trim();
 }
 
-function buildCandidates(product) {
+function unique(values) {
+  return [...new Set(values.filter(Boolean))];
+}
+
+function buildCandidates(product, preferredBrandFirst = false) {
   const brand = product.brand ?? "";
   const name = product.name ?? "";
   const capacity = product.capacity ?? "";
   const variant = product.variant ?? "";
   const flavor = product.flavor ?? "";
+  const plainName = name.replace(/\s*\(.+?\)\s*/g, " ").trim();
 
-  return [
+  const baseCandidates = [
     name,
     `${brand} ${name}`,
     `${name} ${capacity}`,
@@ -79,51 +90,101 @@ function buildCandidates(product) {
     `${name} ${flavor}`,
     `${brand} ${name} ${flavor}`,
     `${brand} ${flavor}`,
-    `${name.replace(/\s*\(.+?\)/g, "").trim()} ${flavor}`,
-  ]
-    .map(normalizeText)
-    .filter(Boolean);
+    `${plainName} ${flavor}`,
+    plainName,
+    `${brand} ${plainName}`,
+    `${plainName} ${capacity}`,
+    `${brand} ${plainName} ${capacity}`,
+    `${plainName} ${variant}`,
+    `${brand} ${plainName} ${variant}`,
+  ];
+
+  const normalized = unique(baseCandidates.map(normalizeText));
+
+  if (!preferredBrandFirst || !brand) {
+    return normalized;
+  }
+
+  return normalized.sort((a, b) => {
+    const aHasBrand = a.includes(normalizeText(brand));
+    const bHasBrand = b.includes(normalizeText(brand));
+    if (aHasBrand === bHasBrand) return b.length - a.length;
+    return aHasBrand ? -1 : 1;
+  });
 }
 
-function syncSpecGroup({ rawDir, publicDir, dataFile, outputFile }) {
-  const products = readJson(dataFile);
+function buildFileEntries(rawDir, publicDir) {
   const rawFiles = walkFiles(rawDir).filter((file) => /\.(png|jpg|jpeg|webp)$/i.test(file));
 
   ensureDir(publicDir);
 
-  const normalizedFiles = rawFiles.map((filePath) => {
+  return rawFiles.map((filePath) => {
     const filename = path.basename(filePath);
     const relativePath = path.relative(rawDir, filePath);
     const normalized = normalizeText(relativePath);
-    const targetPath = path.join(publicDir, filename);
-    fs.copyFileSync(filePath, targetPath);
-    return { filename, normalized };
+    fs.copyFileSync(filePath, path.join(publicDir, filename));
+    return {
+      filename,
+      normalized,
+      relativePath,
+    };
   });
+}
 
-  const mapping = {};
+function scoreMatch(file, candidate) {
+  if (!candidate) return -1;
+  if (file.normalized === candidate) return 1000 + candidate.length;
+  if (file.normalized.includes(candidate)) return 500 + candidate.length;
+  if (candidate.includes(file.normalized)) return 250 + file.normalized.length;
+  return -1;
+}
 
-  for (const product of products) {
-    const candidates = buildCandidates(product);
-    const exactMatch =
-      normalizedFiles.find((file) => candidates.includes(file.normalized)) ??
-      normalizedFiles.find((file) => candidates.some((candidate) => file.normalized.includes(candidate) || candidate.includes(file.normalized)));
+function findBestMatch(files, candidates) {
+  let best = null;
 
-    if (exactMatch) {
-      mapping[product.slug] = exactMatch.filename;
+  for (const file of files) {
+    for (const candidate of candidates) {
+      const score = scoreMatch(file, candidate);
+      if (score < 0) continue;
+      if (!best || score > best.score) {
+        best = { file, score };
+      }
     }
   }
 
-  fs.writeFileSync(outputFile, `${JSON.stringify(mapping, null, 2)}\n`, "utf8");
+  return best?.file ?? null;
+}
+
+function syncSpecGroup(group) {
+  const products = readJson(group.dataFile);
+  const files = buildFileEntries(group.rawDir, group.publicDir);
+  const existingMapping = fs.existsSync(group.outputFile) ? readJson(group.outputFile) : {};
+  const mapping = {};
+
+  for (const product of products) {
+    const candidates = buildCandidates(product, group.preferredBrandFirst);
+    const match = findBestMatch(files, candidates);
+    if (match) {
+      mapping[product.slug] = match.filename;
+      continue;
+    }
+
+    const previousFilename = existingMapping[product.slug];
+    if (previousFilename && fs.existsSync(path.join(group.publicDir, previousFilename))) {
+      mapping[product.slug] = previousFilename;
+    }
+  }
+
+  fs.writeFileSync(group.outputFile, `${JSON.stringify(mapping, null, 2)}\n`, "utf8");
 
   return {
+    outputFile: path.relative(rootDir, group.outputFile),
     totalProducts: products.length,
     matched: Object.keys(mapping).length,
-    files: rawFiles.length,
+    files: files.length,
   };
 }
 
-const summary = specs.map(syncSpecGroup);
-
-for (const item of summary) {
+for (const item of specGroups.map(syncSpecGroup)) {
   console.log(JSON.stringify(item));
 }
