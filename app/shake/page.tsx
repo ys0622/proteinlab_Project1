@@ -1,4 +1,4 @@
-import Footer from "../components/Footer";
+﻿import Footer from "../components/Footer";
 import Header from "../components/Header";
 import HeroSection from "../components/HeroSection";
 import ProductListWithFilters from "../components/ProductListWithFilters";
@@ -6,9 +6,9 @@ import type { ProductCategory } from "../lib/categories";
 import { getProductsByCategoryAsync } from "../lib/productData";
 
 export const metadata = {
-  title: "식사대용 단백질 쉐이크 추천 76종 | 저당·고단백 기준 비교 | 2026 | ProteinLab",
+  title: "단백질 쉐이크 추천 비교 76종 | 저당·고단백·식사대용 기준 2026 | ProteinLab",
   description:
-    "단백질 쉐이크 76종을 단백질 함량, 당류, 칼로리, 식사대용 적합성 기준으로 비교합니다. 아침대용, 다이어트, 운동 후 쉐이크 후보를 한 번에 찾으세요.",
+    "단백질 쉐이크 76종을 단백질 총량, 당류, 칼로리, 식이섬유 기준으로 비교합니다. 플라이밀, 단백하니, 프로티원, 랩노쉬까지 성분 데이터로 바로 좁혀보세요.",
   alternates: {
     canonical: "https://proteinlab.kr/shake",
   },
