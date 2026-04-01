@@ -2,6 +2,10 @@ import fs from "node:fs";
 import path from "node:path";
 
 const rootDir = process.cwd();
+const strictMode = process.argv.includes("--strict");
+const assetSyncConfig = JSON.parse(
+  fs.readFileSync(path.join(rootDir, "app", "data", "assetSyncConfig.json"), "utf8"),
+);
 
 const dataset = JSON.parse(
   fs.readFileSync(path.join(rootDir, "public", "products.json"), "utf8"),
@@ -59,6 +63,8 @@ function printList(title, values) {
 }
 
 function main() {
+  let hasUnexpectedIssue = false;
+
   console.log("Asset coverage audit");
   console.log(
     `Generated: ${new Date().toLocaleString("ko-KR", { timeZone: "Asia/Seoul" })}`,
@@ -68,6 +74,7 @@ function main() {
     const products = dataset.products.filter((product) => product.category === category.key);
     const imageMap = readJson(category.imageMapFile);
     const specMap = readJson(category.specMapFile);
+    const allowedMissingSpec = new Set(assetSyncConfig.allowedMissingSpecSlugs?.[category.key] ?? []);
 
     const missingImageMap = [];
     const missingSpecMap = [];
@@ -91,6 +98,9 @@ function main() {
       }
     }
 
+    const unexpectedMissingSpecMap = missingSpecMap.filter((slug) => !allowedMissingSpec.has(slug));
+    const allowlistedMissingSpecMap = missingSpecMap.filter((slug) => allowedMissingSpec.has(slug));
+
     console.log("");
     console.log(`## ${category.label}`);
     console.log(`products=${products.length}`);
@@ -100,9 +110,23 @@ function main() {
     console.log(`mapped_spec_files_missing=${missingSpecFile.length}`);
 
     printList("missing_image_map", missingImageMap);
-    printList("missing_spec_map", missingSpecMap);
+    printList("missing_spec_map", unexpectedMissingSpecMap);
+    printList("allowlisted_missing_spec_map", allowlistedMissingSpecMap);
     printList("missing_image_file", missingImageFile);
     printList("missing_spec_file", missingSpecFile);
+
+    if (
+      missingImageMap.length > 0 ||
+      unexpectedMissingSpecMap.length > 0 ||
+      missingImageFile.length > 0 ||
+      missingSpecFile.length > 0
+    ) {
+      hasUnexpectedIssue = true;
+    }
+  }
+
+  if (strictMode && hasUnexpectedIssue) {
+    process.exitCode = 1;
   }
 }
 

@@ -1,0 +1,40 @@
+{
+  "allowedMissingSpecSlugs": {
+    "bars": ["crown-highprotein-chocobar"]
+  },
+  "specOverrides": {
+    "bars": {
+      "post-proteinbar": "단백질바.png",
+      "thedanbaek-crunchbar-choco": "더단백 크런치바 (초코).png",
+      "thedanbaek-crunchbar-peanutbutter": "더단백 크런치바 (피넛버터).png",
+      "thedanbaek-mildbar-almondcookie": "더단백 마일드바 (아몬드쿠키).png",
+      "myprotein-soft-lemon-earlgrey": "소프트 단백질 (레몬 얼그레이).png",
+      "myprotein-soft-caramel-choco": "소프트 단백질 (카라멜 초코).png",
+      "myprotein-soft-strawberry-yogurt": "소프트 단백질 (딸기 요거트).png",
+      "oneuldanbaek-milkchoco-cheesecake-bar-48": "오늘단백 밀크초코 치즈케이크.png",
+      "oneuldanbaek-milkchoco-caramel-bar-48": "오늘단백 밀크초코 카라멜.png",
+      "oneuldanbaek-milkchoco-pistachio-bar-48": "오늘단백 밀크초코 피스타치오.png",
+      "kellogg-proteinbark-caramel-nuts": "켈로그 프로틴바K (카라멜&넛).png",
+      "kellogg-proteinbark-hazelnut-darkchoco": "켈로그 프로틴바K (헤이즐넛&다크초코).png",
+      "organica-ola-chewy-protein-bar-peanut-cacao-35": "올라 츄이프로틴바 (피넛카카오).png",
+      "nobrand-proteinbar-mini": "노브랜드 단백질바 미니.png",
+      "myprotein-6layer-triple-chocolate-fudge-60": "마이프로틴 6 레이어 프로틴바 (트리플 초콜릿 퍼지).png",
+      "myprotein-protein-wafer-42": "마이프로틴 프로틴 와퍼.png"
+    },
+    "shake": {
+      "danbaekhani-proteinshake-choco-40": "단백하니 단백질쉐이크 초코.png",
+      "danbaekhani-proteinshake-matcha-40": "단백하니 단백질쉐이크 말차.png",
+      "proteone-proteinshake-choco-40": "프로티원 단백쉐이크 초코맛.png",
+      "proteone-proteinshake-coffee-40": "프로티원 단백쉐이크 커피맛.png",
+      "proteone-proteinshake-strawberry-40": "프로티원 단백쉐이크 딸기맛.png",
+      "proteone-proteinshake-black-sesame-40": "프로티원 단백쉐이크 흑임자맛.png",
+      "proteone-proteinshake-grain-40": "프로티원 단백쉐이크 곡물맛.png",
+      "itthefit-proteinshake-double-choco-40": "잇더핏 단백질 쉐이크 더블초코.png",
+      "itthefit-proteinshake-black-sesame-40": "잇더핏 단백질 쉐이크 흑임자.png",
+      "itthefit-proteinshake-goguma-40": "잇더핏 단백질 쉐이크 고구마.png",
+      "itthefit-proteinshake-misugaru-40": "잇더핏 단백질 쉐이크 미숫가루.png",
+      "itthefit-proteinshake-corn-40": "잇더핏 단백질 쉐이크 옥수수.png",
+      "itthefit-proteinshake-banana-40": "잇더핏 단백질 쉐이크 바나나.png"
+    }
+  }
+}

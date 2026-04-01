@@ -2,9 +2,13 @@ import fs from "node:fs";
 import path from "node:path";
 
 const rootDir = process.cwd();
+const assetSyncConfig = JSON.parse(
+  fs.readFileSync(path.join(rootDir, "app", "data", "assetSyncConfig.json"), "utf8"),
+);
 
 const specGroups = [
   {
+    key: "drinks",
     rawDir: path.join(rootDir, "RTD drink spec"),
     publicDir: path.join(rootDir, "public", "rtd-drink-spec"),
     dataFile: path.join(rootDir, "app", "data", "drinkProductsData.json"),
@@ -12,18 +16,21 @@ const specGroups = [
     preferredBrandFirst: true,
   },
   {
+    key: "bars",
     rawDir: path.join(rootDir, "Bar spec"),
     publicDir: path.join(rootDir, "public", "bar-spec"),
     dataFile: path.join(rootDir, "app", "data", "barProductsData.json"),
     outputFile: path.join(rootDir, "app", "data", "slugToBarSpec.json"),
   },
   {
+    key: "shake",
     rawDir: path.join(rootDir, "Shake spec"),
     publicDir: path.join(rootDir, "public", "shake-spec"),
     dataFile: path.join(rootDir, "app", "data", "shakeProductsData.json"),
     outputFile: path.join(rootDir, "app", "data", "slugToShakeSpec.json"),
   },
   {
+    key: "yogurt",
     rawDir: path.join(rootDir, "Yogurt spec"),
     publicDir: path.join(rootDir, "public", "protein-yogurt-spec"),
     dataFile: path.join(rootDir, "app", "data", "yogurtProductsData.json"),
@@ -51,6 +58,11 @@ function walkFiles(dirPath) {
     results.push(fullPath);
   }
   return results;
+}
+
+function extractSizeToken(value) {
+  const match = String(value ?? "").toLowerCase().match(/(\d+(?:\.\d+)?)\s*(ml|g)/i);
+  return match ? `${match[1]}${match[2].toLowerCase()}` : null;
 }
 
 function normalizeText(value) {
@@ -105,9 +117,10 @@ function buildCandidates(product, preferredBrandFirst = false) {
     return normalized;
   }
 
+  const normalizedBrand = normalizeText(brand);
   return normalized.sort((a, b) => {
-    const aHasBrand = a.includes(normalizeText(brand));
-    const bHasBrand = b.includes(normalizeText(brand));
+    const aHasBrand = a.includes(normalizedBrand);
+    const bHasBrand = b.includes(normalizedBrand);
     if (aHasBrand === bHasBrand) return b.length - a.length;
     return aHasBrand ? -1 : 1;
   });
@@ -121,28 +134,38 @@ function buildFileEntries(rawDir, publicDir) {
   return rawFiles.map((filePath) => {
     const filename = path.basename(filePath);
     const relativePath = path.relative(rawDir, filePath);
-    const normalized = normalizeText(relativePath);
     fs.copyFileSync(filePath, path.join(publicDir, filename));
     return {
       filename,
-      normalized,
+      normalized: normalizeText(relativePath),
       relativePath,
+      sizeToken: extractSizeToken(relativePath),
     };
   });
 }
 
 function scoreMatch(file, candidate) {
   if (!candidate) return -1;
-  if (file.normalized === candidate) return 1000 + candidate.length;
-  if (file.normalized.includes(candidate)) return 500 + candidate.length;
-  if (candidate.includes(file.normalized)) return 250 + file.normalized.length;
-  return -1;
+
+  let score = -1;
+  if (file.normalized === candidate) score = 1000 + candidate.length;
+  else if (file.normalized.includes(candidate)) score = 500 + candidate.length;
+  else if (candidate.includes(file.normalized)) score = 250 + file.normalized.length;
+
+  if (score < 0) return -1;
+  if (file.sizeToken && candidate.includes(file.sizeToken)) score += 50;
+  return score;
 }
 
-function findBestMatch(files, candidates) {
+function findBestMatch(files, candidates, product) {
   let best = null;
+  const productSize = extractSizeToken(product.capacity);
 
   for (const file of files) {
+    if (productSize && file.sizeToken && productSize !== file.sizeToken) {
+      continue;
+    }
+
     for (const candidate of candidates) {
       const score = scoreMatch(file, candidate);
       if (score < 0) continue;
@@ -159,11 +182,18 @@ function syncSpecGroup(group) {
   const products = readJson(group.dataFile);
   const files = buildFileEntries(group.rawDir, group.publicDir);
   const existingMapping = fs.existsSync(group.outputFile) ? readJson(group.outputFile) : {};
+  const overrides = assetSyncConfig.specOverrides?.[group.key] ?? {};
   const mapping = {};
 
   for (const product of products) {
+    const overrideFilename = overrides[product.slug];
+    if (overrideFilename && fs.existsSync(path.join(group.publicDir, overrideFilename))) {
+      mapping[product.slug] = overrideFilename;
+      continue;
+    }
+
     const candidates = buildCandidates(product, group.preferredBrandFirst);
-    const match = findBestMatch(files, candidates);
+    const match = findBestMatch(files, candidates, product);
     if (match) {
       mapping[product.slug] = match.filename;
       continue;
