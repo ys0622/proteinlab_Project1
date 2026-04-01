@@ -118,8 +118,8 @@ export async function generateMetadata({ params }: PageProps) {
   }
 
   return {
-    title: `${brand} 단백질 제품 모음 | 브랜드별 제품 비교 허브`,
-    description: `${brand} 브랜드의 단백질 음료, 바, 요거트, 쉐이크 제품을 한 곳에서 보고 비교 페이지와 제품 상세로 바로 이동할 수 있습니다.`,
+    title: `${brand} 단백질 제품 모음 | 라인업·대표 제품 비교`,
+    description: `${brand} 브랜드 제품을 한 곳에 모았습니다. 라인업 차이, 대표 제품, 비교 가이드까지 함께 보면서 어떤 제품부터 봐야 할지 빠르게 확인해보세요.`,
     alternates: {
       canonical: `https://proteinlab.kr/brands/${slug}`,
     },
@@ -157,7 +157,7 @@ export default async function BrandPage({ params }: PageProps) {
             {brand.brand} 단백질 제품 모음
           </h1>
           <p className="mt-2 max-w-[760px] text-sm leading-6 text-[var(--foreground-muted)] md:text-[15px]">
-            {brand.brand} 브랜드 제품 {brand.total}개를 모았습니다. 브랜드명 검색 뒤 바로 제품 상세와 비교 페이지로 넘어갈 수 있게 정리했습니다.
+            {brand.brand} 브랜드 제품 {brand.total}개를 한 번에 볼 수 있게 정리했습니다. 브랜드명으로 검색해 들어왔다면 라인업 차이와 대표 비교 페이지를 먼저 보고, 그다음 제품 상세를 보는 편이 더 빠릅니다.
           </p>
         </div>
       </section>
@@ -169,7 +169,7 @@ export default async function BrandPage({ params }: PageProps) {
             카테고리: {brand.categories.map((category) => getCategoryLabel(category as ProductCategory)).join(", ")} / 총 제품 수: {brand.total}개
           </p>
           <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">
-            제품 수가 많은 브랜드일수록 라인별 차이가 크기 때문에, 상세 페이지와 비교 페이지를 같이 보는 편이 빠릅니다.
+            제품 수가 많은 브랜드일수록 라인별 포지션 차이가 큽니다. 제품 목록만 보기보다 라인업 가이드와 대표 비교 페이지를 같이 보면 후보를 더 빨리 좁힐 수 있습니다.
           </p>
         </section>
 
@@ -178,7 +178,7 @@ export default async function BrandPage({ params }: PageProps) {
             <div className="mb-4 space-y-1">
               <h2 className="text-lg font-bold text-[var(--foreground)]">이 브랜드에서 먼저 보면 좋은 페이지</h2>
               <p className="text-sm leading-6 text-[var(--foreground-muted)]">
-                제품 목록만 보지 말고, 라인업 차이와 대표 비교 페이지를 같이 보면 선택이 더 빨라집니다.
+                브랜드 검색으로 들어왔다면 제품 목록보다 라인업 차이와 대표 비교 페이지를 먼저 읽는 편이 선택이 더 빠릅니다.
               </p>
             </div>
             <div className="grid gap-3 md:grid-cols-2">
@@ -200,7 +200,7 @@ export default async function BrandPage({ params }: PageProps) {
           <div className="mb-4 space-y-1">
             <h2 className="text-lg font-bold text-[var(--foreground)]">제품 목록</h2>
             <p className="text-sm leading-6 text-[var(--foreground-muted)]">
-              브랜드 검색 후 바로 제품 상세와 비교 페이지로 이동할 수 있게 구성했습니다.
+              브랜드 안에서 실제로 어떤 제품이 있는지 먼저 훑고, 마음에 드는 후보가 생기면 제품 상세로 바로 넘어가면 됩니다.
             </p>
           </div>
           <div className="grid grid-cols-2 gap-3 md:gap-6 lg:grid-cols-3">
