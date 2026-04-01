@@ -78,7 +78,7 @@ export default async function CompareLandingPage({ params }: PageProps) {
             {landing.title}
           </h1>
           <p className="mt-2 max-w-[760px] text-sm leading-6 text-[var(--foreground-muted)] md:text-[15px]">
-            {landing.description} 조건 설명만 보고 끝나지 않도록 비교표와 제품 상세로 바로 이어질 수 있게 구성했습니다.
+            {landing.description} 비교표로 바로 들어가고 제품 상세까지 이어서 확인할 수 있게 정리했습니다.
           </p>
         </div>
       </section>
@@ -107,7 +107,7 @@ export default async function CompareLandingPage({ params }: PageProps) {
           <div className="mb-4 space-y-1">
             <h2 className="text-lg font-bold text-[var(--foreground)]">비교 대상 제품</h2>
             <p className="text-sm leading-6 text-[var(--foreground-muted)]">
-              제품 상세로 들어가거나 비교표에서 수치를 나란히 확인할 수 있습니다.
+              제품 상세를 보거나 비교표에서 수치를 바로 나란히 확인할 수 있습니다.
             </p>
           </div>
           <div className="grid grid-cols-2 gap-3 md:gap-6 lg:grid-cols-3">
@@ -126,7 +126,7 @@ export default async function CompareLandingPage({ params }: PageProps) {
             <div className="space-y-1">
               <h2 className="text-lg font-bold text-[var(--foreground)]">비교 전후로 같이 보면 좋은 페이지</h2>
               <p className="text-sm leading-6 text-[var(--foreground-muted)]">
-                이 비교만 보고 끝내지 않고 브랜드 허브, 주제 허브, 랭킹으로 이어서 보면 판단이 더 빨라집니다.
+                이 비교만 보고 끝내지 않고 브랜드 허브, 주제 허브, 랭킹까지 이어서 보면 후보를 더 빨리 좁힐 수 있습니다.
               </p>
             </div>
             <div className="mt-5 grid gap-3 md:grid-cols-2">

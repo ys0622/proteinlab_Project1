@@ -30,28 +30,28 @@ const METRICS: { id: GradeMetric; label: string }[] = [
 function getMetricGuide(productType: ProductCategory, metric: GradeMetric) {
   if (productType === "shake") {
     if (metric === "density") {
-      return "칼로리 대비 단백질 효율이 높은 쉐이크를 먼저 보고 싶을 때 확인하면 좋습니다.";
+      return "칼로리 대비 단백질 함량이 높은 쉐이크를 먼저 보고 싶을 때 확인하면 좋습니다.";
     }
     if (metric === "diet") {
       return "당류, 칼로리, 단백질 균형을 함께 반영한 다이어트 중심 점수입니다.";
     }
-    return "단백질 총량과 밀도를 중심으로 운동 직후 보충 관점에서 계산했습니다.";
+    return "단백질 총량과 밀도를 중심으로 운동 직후 보충 효율을 계산한 점수입니다.";
   }
 
   return metric === "diet"
-    ? "점수가 낮을수록 더 유리한 값들을 100점 기준으로 환산한 결과입니다."
-    : "점수가 높을수록 더 유리한 값들을 100점 기준으로 환산한 결과입니다.";
+    ? "점수가 높을수록 다이어트 기준에서 더 유리한 제품입니다."
+    : "점수가 높을수록 해당 기준에서 더 유리한 제품입니다.";
 }
 
 function getCategoryRankingDescription(productType: ProductCategory, metric: GradeMetric) {
   if (productType === "shake") {
     if (metric === "density") {
-      return "쉐이크는 칼로리 대비 단백질 효율 차이가 커서, 같은 파우치형이라도 실제 체감이 크게 갈립니다.";
+      return "쉐이크는 칼로리 대비 단백질 함량 차이가 커서, 같은 파우치형이어도 실제 체감이 크게 갈립니다.";
     }
     if (metric === "diet") {
-      return "쉐이크 다이어트 점수는 당류만이 아니라 칼로리, 단백질, 포만감 균형까지 함께 봅니다.";
+      return "쉐이크 다이어트 점수는 당류뿐 아니라 칼로리, 단백질, 포만감 균형까지 함께 봅니다.";
     }
-    return "쉐이크 퍼포먼스 점수는 단백질 총량과 밀도를 기준으로 운동 후 보충 효율을 계산했습니다.";
+    return "쉐이크 퍼포먼스 점수는 단백질 총량과 밀도를 기준으로 운동 후 보충 효율을 계산합니다.";
   }
 
   return "단백질 밀도, 다이어트, 퍼포먼스 세 기준을 100점 환산으로 비교해 바로 고를 수 있게 정리했습니다.";
@@ -65,18 +65,18 @@ function getRankingQuickLinks(productType: ProductCategory, metric: GradeMetric)
         title: metric === "density" ? "단백질 밀도 해석 가이드" : "RTD 대표 비교 보기",
         desc:
           metric === "density"
-            ? "밀도 순위를 읽는 기준과 예외 케이스를 같이 확인합니다."
+            ? "밀도 순위를 읽는 기준과 예외 케이스를 같이 확인할 수 있습니다."
             : "대표 RTD 브랜드 비교로 바로 이어집니다.",
       },
       {
         href: "/guides/product-selection-comparison/selex-vs-himune",
         title: "셀렉스 vs 하이뮨 비교",
-        desc: "랭킹만 보고 끝나지 않도록 대표 브랜드 비교로 이어집니다.",
+        desc: "순위만 보고 끝나지 않도록 대표 브랜드 비교로 이어집니다.",
       },
       {
         href: "/recommend",
         title: "맞춤 추천 받기",
-        desc: "전체 순위 대신 내 목적에 맞는 제품만 다시 좁힙니다.",
+        desc: "전체 순위 외에 목적에 맞는 제품만 다시 좁혀볼 수 있습니다.",
       },
     ];
   }
@@ -86,17 +86,17 @@ function getRankingQuickLinks(productType: ProductCategory, metric: GradeMetric)
       {
         href: "/guides/product-selection-comparison/protein-bar-top10",
         title: "단백질 바 TOP 10 보기",
-        desc: "전체 바 랭킹과 실제 추천 리스트를 같이 확인합니다.",
+        desc: "전체 바 순위와 실제 추천 리스트를 함께 확인할 수 있습니다.",
       },
       {
         href: "/guides/product-selection-comparison/diet-protein-bar",
-        title: "다이어트용 단백질 바 보기",
-        desc: "저당·저칼로리 기준으로 다시 좁힙니다.",
+        title: "다이어트 단백질 바 보기",
+        desc: "저당·저칼로리 기준으로 다시 좁혀볼 수 있습니다.",
       },
       {
         href: "/recommend",
         title: "맞춤 추천 받기",
-        desc: "간식용, 식사보완용, 고단백용으로 다시 분기합니다.",
+        desc: "간식용, 식사보완용, 고단백용으로 다시 나눠볼 수 있습니다.",
       },
     ];
   }
@@ -106,17 +106,17 @@ function getRankingQuickLinks(productType: ProductCategory, metric: GradeMetric)
       {
         href: "/guides/product-selection-comparison/protein-yogurt-top5",
         title: "단백질 요거트 TOP 5 보기",
-        desc: "랭킹과 별도로 대표 제품 리스트를 같이 확인합니다.",
+        desc: "순위와 별도로 대표 제품 리스트를 함께 확인할 수 있습니다.",
       },
       {
         href: "/guides/product-selection-comparison/greek-vs-protein-yogurt",
         title: "그릭 vs 단백질 요거트",
-        desc: "유형 차이를 먼저 읽고 다시 제품을 좁힙니다.",
+        desc: "유형 차이를 먼저 보고 다시 제품을 좁혀볼 수 있습니다.",
       },
       {
         href: "/recommend",
         title: "맞춤 추천 받기",
-        desc: "아침용, 저당용, 고단백용으로 다시 나눠봅니다.",
+        desc: "간편용, 대용량용, 고단백용으로 다시 나눠볼 수 있습니다.",
       },
     ];
   }
@@ -125,17 +125,17 @@ function getRankingQuickLinks(productType: ProductCategory, metric: GradeMetric)
     {
       href: "/guides/product-selection-comparison/protein-shake-top7",
       title: "단백질 쉐이크 TOP 7 보기",
-      desc: "랭킹 외에 대표 쉐이크 리스트로도 이어집니다.",
+      desc: "순위 외에 대표 쉐이크 리스트로 바로 이어집니다.",
     },
     {
       href: "/guides/product-selection-comparison/diet-protein-shake",
-      title: "다이어트 쉐이크 보기",
-      desc: "식사대용과 저당 기준을 함께 읽습니다.",
+      title: "다이어트 단백질 쉐이크 보기",
+      desc: "식사대용과 저당 기준을 함께 확인할 수 있습니다.",
     },
     {
       href: "/recommend",
       title: "맞춤 추천 받기",
-      desc: "식사대용, 운동보충, 저당 기준으로 다시 좁힙니다.",
+      desc: "식사대용, 운동보충, 저당 기준으로 다시 좁혀볼 수 있습니다.",
     },
   ];
 }
@@ -162,7 +162,7 @@ export default function RankingClient({ rankings }: RankingClientProps) {
       >
         <div className="mx-auto max-w-[1200px] px-4 py-4 md:px-6 md:py-5">
           <h1 className="text-2xl font-bold md:text-3xl" style={{ color: "#1a1a1a", fontWeight: 700 }}>
-            단백질 랭킹
+            단백질 제품 순위
           </h1>
           <p className="mt-1 text-sm text-[var(--foreground-muted)]" style={{ fontWeight: 400 }}>
             {getCategoryRankingDescription(productType, metric)}
@@ -220,7 +220,7 @@ export default function RankingClient({ rankings }: RankingClientProps) {
         {items.length === 0 ? (
           <div className="mt-4 rounded-2xl border border-[var(--border)] bg-[var(--background-card)] px-5 py-10 text-center">
             <p className="text-base font-semibold text-[var(--foreground)]">
-              {getCategoryLabel(productType)} 랭킹 데이터가 아직 없습니다.
+              {getCategoryLabel(productType)} 순위 데이터가 아직 없습니다.
             </p>
             <p className="mt-2 text-sm text-[var(--foreground-muted)]">
               제품 데이터가 추가되면 같은 기준으로 자동 계산됩니다.
@@ -258,12 +258,6 @@ export default function RankingClient({ rankings }: RankingClientProps) {
             </div>
           </>
         )}
-
-        <div className="mt-8 text-center">
-          <Link href="/grade-criteria" className="text-sm text-[var(--accent)] hover:underline">
-            등급 산정 기준 보기 →
-          </Link>
-        </div>
       </main>
     </>
   );
