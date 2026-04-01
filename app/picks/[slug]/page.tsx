@@ -23,12 +23,12 @@ function getPickQuickLinks(slug: string, productType: "drink" | "bar") {
       return [
         {
           href: "/guides/product-selection-comparison/selex-vs-himune",
-          title: "대표 저당 RTD 비교 보기",
+          title: "대표 RTD 비교 보기",
           description: "셀렉스와 하이뮨 대표 제품을 바로 비교합니다.",
         },
         {
           href: "/guides/product-selection-comparison/protein-drink-beginners-guide",
-          title: "입문자 가이드 보기",
+          title: "입문용 가이드 보기",
           description: "추천 리스트를 본 뒤 어떤 기준으로 고를지 정리합니다.",
         },
       ];
@@ -44,7 +44,7 @@ function getPickQuickLinks(slug: string, productType: "drink" | "bar") {
         {
           href: "/guides/product-selection-comparison/protein-density-ranking",
           title: "단백질 밀도 순위 보기",
-          description: "총량 외에 밀도 기준으로도 같이 읽습니다.",
+          description: "총량 말고 효율 기준으로도 같이 읽습니다.",
         },
       ];
     }
@@ -67,13 +67,13 @@ function getPickQuickLinks(slug: string, productType: "drink" | "bar") {
     return [
       {
         href: "/guides/product-selection-comparison/diet-protein-bar",
-        title: "다이어트용 단백질 바 보기",
-        description: "저당·저칼로리 기준으로 더 자세히 확인합니다.",
+        title: "다이어트 단백질 바 보기",
+        description: "저당, 저칼로리 기준으로 더 자세히 확인합니다.",
       },
       {
         href: "/guides/product-selection-comparison/protein-bar-top10",
         title: "단백질 바 TOP 10 보기",
-        description: "전체 바 추천 리스트와 같이 봅니다.",
+        description: "전체 바 추천 리스트도 같이 봅니다.",
       },
     ];
   }
@@ -82,12 +82,12 @@ function getPickQuickLinks(slug: string, productType: "drink" | "bar") {
     {
       href: "/guides/product-selection-comparison/protein-bar-top10",
       title: "단백질 바 TOP 10 보기",
-      description: "큐레이션 외에 전체 바 추천 리스트도 함께 확인합니다.",
+      description: "큐레이션 뒤에 전체 바 추천 리스트도 함께 확인합니다.",
     },
     {
       href: "/recommend",
       title: "맞춤 추천 받기",
-      description: "간식용, 식사보완용, 고단백용으로 다시 분기합니다.",
+      description: "간식용인지 식사보완용인지 다시 나눠 봅니다.",
     },
   ];
 }
@@ -103,12 +103,12 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   if (!pick) {
     return {
       title: "큐레이션을 찾을 수 없음 | ProteinLab",
-      description: "요청한 조건별 단백질 큐레이션을 찾을 수 없습니다.",
+      description: "요청한 조건의 단백질 큐레이션을 찾을 수 없습니다.",
     };
   }
 
   const title = `${pick.title} | 조건별 단백질 추천`;
-  const description = `${pick.description} 실제 제품 목록과 제품 상세, 구매 링크까지 한 번에 확인할 수 있습니다.`;
+  const description = `${pick.description} 조건에 맞는 후보를 빠르게 좁히고, 실제 제품 목록과 제품 상세까지 바로 이어서 확인할 수 있습니다.`;
   const canonical = `https://proteinlab.kr/picks/${pick.slug}`;
 
   return {
@@ -181,8 +181,7 @@ export default async function PickDetailPage({ params }: PageProps) {
               {pick.description}
             </p>
             <p className="mt-4 rounded-2xl border border-[#e5efe8] bg-[#f5faf6] px-4 py-3 text-sm leading-6 text-[#355344]">
-              조건이 이미 정해져 있다면 이 큐레이션이 가장 빠릅니다. 아래에서 바로 제품 상세와
-              구매 링크까지 이어서 볼 수 있습니다.
+              저당, 고단백, 가벼운 제품처럼 찾는 조건이 분명하다면 이 큐레이션이 가장 빠릅니다. 아래에서 바로 제품 상세와 구매 링크까지 이어서 볼 수 있습니다.
             </p>
           </div>
 
@@ -197,7 +196,7 @@ export default async function PickDetailPage({ params }: PageProps) {
 
         <section className="mt-6 grid gap-4 md:grid-cols-2">
           <div className="rounded-[24px] border border-[#ebe5dc] bg-white p-5">
-            <h2 className="text-lg font-semibold text-[#1f2937]">이런 분께 추천</h2>
+            <h2 className="text-lg font-semibold text-[#1f2937]">이런 경우에 추천</h2>
             <ul className="mt-3 space-y-2 text-sm leading-6 text-[#4b5563]">
               {pick.contentData.recommendations.map((item) => (
                 <li key={item} className="rounded-2xl bg-[#faf7f1] px-4 py-3">
@@ -208,7 +207,7 @@ export default async function PickDetailPage({ params }: PageProps) {
           </div>
 
           <div className="rounded-[24px] border border-[#ebe5dc] bg-white p-5">
-            <h2 className="text-lg font-semibold text-[#1f2937]">선정 기준</h2>
+            <h2 className="text-lg font-semibold text-[#1f2937]">선택 기준</h2>
             <ul className="mt-3 space-y-2 text-sm leading-6 text-[#4b5563]">
               {pick.contentData.criteria.map((item) => (
                 <li key={item} className="rounded-2xl bg-[#f5f8fb] px-4 py-3">
