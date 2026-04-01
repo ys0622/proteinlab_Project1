@@ -1,8 +1,9 @@
-﻿import Link from "next/link";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
 import RelatedLinkCards from "../../components/RelatedLinkCards";
+import TrackedLink from "../../components/TrackedLink";
 import { getAllSearchTopics, getSearchTopicBySlug } from "../../data/searchTopics";
 
 interface PageProps {
@@ -53,23 +54,21 @@ function getTopicQuickLinks(slug: string) {
     ].includes(slug)
   ) {
     return [
-      { href: "/", title: "음료 전체 제품 보기" },
-      { href: "/guides/product-selection-comparison", title: "음료 비교 가이드 모음" },
-      { href: "/recommend", title: "맞춤 추천 받기" },
+      { href: "/", title: "조건 맞는 단백질 음료 보기" },
+      { href: "/guides/product-selection-comparison", title: "음료 비교 가이드 읽기" },
+      { href: "/recommend", title: "내 기준으로 추천받기" },
     ];
   }
 
   if (
-    [
-      "meal-replacement-protein-shake",
-      "low-sugar-protein-shake",
-      "post-workout-protein-shake",
-    ].includes(slug)
+    ["meal-replacement-protein-shake", "low-sugar-protein-shake", "post-workout-protein-shake"].includes(
+      slug,
+    )
   ) {
     return [
-      { href: "/shake", title: "쉐이크 전체 제품 보기" },
-      { href: "/guides/product-selection-comparison/protein-shake-top7", title: "쉐이크 대표 비교 보기" },
-      { href: "/recommend", title: "맞춤 추천 받기" },
+      { href: "/shake", title: "쉐이크 전체 보기" },
+      { href: "/guides/product-selection-comparison/protein-shake-top7", title: "대표 쉐이크 비교하기" },
+      { href: "/recommend", title: "내 기준으로 추천받기" },
     ];
   }
 
@@ -79,40 +78,40 @@ function getTopicQuickLinks(slug: string) {
     )
   ) {
     return [
-      { href: "/yogurt", title: "요거트 전체 제품 보기" },
-      { href: "/guides/product-selection-comparison/protein-yogurt-top5", title: "요거트 대표 비교 보기" },
-      { href: "/recommend", title: "맞춤 추천 받기" },
+      { href: "/yogurt", title: "요거트 전체 보기" },
+      { href: "/guides/product-selection-comparison/protein-yogurt-top5", title: "대표 요거트 비교하기" },
+      { href: "/recommend", title: "내 기준으로 추천받기" },
     ];
   }
 
   if (["high-protein-bar", "low-sugar-protein-bar", "low-calorie-protein-bar"].includes(slug)) {
     return [
       { href: "/bars", title: "단백질 바 전체 보기" },
-      { href: "/guides/product-selection-comparison/protein-bar-top10", title: "단백질 바 대표 비교 보기" },
-      { href: "/recommend", title: "맞춤 추천 받기" },
+      { href: "/guides/product-selection-comparison/protein-bar-top10", title: "대표 바 비교하기" },
+      { href: "/recommend", title: "내 기준으로 추천받기" },
     ];
   }
 
   if (slug === "convenience-store-protein") {
     return [
-      { href: "/products", title: "제품 탐색 허브로 이동" },
-      { href: "/curation/convenience", title: "편의점 큐레이션 보기" },
-      { href: "/recommend", title: "맞춤 추천 받기" },
+      { href: "/products", title: "전체 제품 허브 보기" },
+      { href: "/curation/convenience", title: "편의점용 제품만 보기" },
+      { href: "/recommend", title: "내 기준으로 추천받기" },
     ];
   }
 
   if (slug === "running-protein-products") {
     return [
-      { href: "/curation/running", title: "러닝 큐레이션 보기" },
-      { href: "/guides/fitness-lifestyle", title: "러닝·운동 가이드 보기" },
-      { href: "/recommend", title: "맞춤 추천 받기" },
+      { href: "/curation/running", title: "러닝용 제품만 보기" },
+      { href: "/guides/fitness-lifestyle", title: "러닝 가이드 읽기" },
+      { href: "/recommend", title: "내 기준으로 추천받기" },
     ];
   }
 
   return [
-    { href: "/products", title: "제품 탐색 허브로 이동" },
-    { href: "/ranking", title: "순위 보기" },
-    { href: "/recommend", title: "맞춤 추천 받기" },
+    { href: "/products", title: "전체 제품 허브 보기" },
+    { href: "/ranking", title: "상위 제품 먼저 보기" },
+    { href: "/recommend", title: "내 기준으로 추천받기" },
   ];
 }
 
@@ -157,8 +156,38 @@ export default async function TopicLandingPage({ params }: PageProps) {
             {topic.title}
           </h1>
           <p className="mt-2 max-w-[760px] text-sm leading-6 text-[var(--foreground-muted)] md:text-[15px]">
-            {topic.description} 조건을 먼저 좁힌 뒤, 실제 비교 페이지와 추천 가이드로 바로 넘어갈 수 있게 정리했습니다.
+            {topic.description} 조건을 먼저 좁힌 뒤, 실제 비교 페이지와 추천 가이드로 바로 넘어갈 수
+            있게 정리했습니다.
           </p>
+          <div className="mt-4 flex flex-wrap gap-2">
+            <TrackedLink
+              href={topic.primaryCta.href}
+              trackingLabel={`${topic.title} 비교 시작하기`}
+              trackingSection="topic_hero_cta"
+              trackingPageType="topic"
+              className="inline-flex min-h-11 min-w-[132px] items-center justify-center rounded-full bg-[var(--accent)] px-4 py-2.5 text-xs font-semibold text-white shadow-[0_10px_24px_rgba(47,111,74,0.18)] transition-all hover:-translate-y-0.5 hover:opacity-95 md:text-sm"
+            >
+              비교 시작하기
+            </TrackedLink>
+            <TrackedLink
+              href="/recommend"
+              trackingLabel={`${topic.title} 맞춤 추천 받기`}
+              trackingSection="topic_hero_cta"
+              trackingPageType="topic"
+              className="inline-flex min-h-9 items-center rounded-full border border-[#d7e4d9] bg-white px-3.5 py-2 text-xs font-semibold text-[#24543d] transition-colors hover:border-[#24543d] hover:bg-[#f3faf5] md:text-sm"
+            >
+              맞춤 추천
+            </TrackedLink>
+            <TrackedLink
+              href="/products"
+              trackingLabel="전체 제품 보기"
+              trackingSection="topic_hero_cta"
+              trackingPageType="topic"
+              className="inline-flex min-h-9 items-center rounded-full border border-[#d7e4d9] bg-white px-3.5 py-2 text-xs font-semibold text-[#24543d] transition-colors hover:border-[#24543d] hover:bg-[#f3faf5] md:text-sm"
+            >
+              전체 제품 보기
+            </TrackedLink>
+          </div>
         </div>
       </section>
 
@@ -182,35 +211,39 @@ export default async function TopicLandingPage({ params }: PageProps) {
         <section className="mt-8 rounded-2xl border border-[#d9e7dc] bg-[#f6fbf7] p-5">
           <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
             <div>
-              <h2 className="text-base font-semibold text-[var(--foreground)]">
-                바로 비교하러 가기
-              </h2>
+              <h2 className="text-base font-semibold text-[var(--foreground)]">바로 비교하러 가기</h2>
               <p className="mt-1 text-sm leading-6 text-[var(--foreground-muted)]">
                 조건 설명만 보고 끝나지 않도록, 가장 가까운 실제 비교 페이지로 바로 연결합니다.
               </p>
             </div>
-            <Link
+            <TrackedLink
               href={topic.primaryCta.href}
+              trackingLabel={topic.primaryCta.title}
+              trackingSection="primary_cta"
+              trackingPageType="topic"
               className="inline-flex items-center justify-center rounded-full bg-[var(--accent)] px-5 py-2.5 text-sm font-semibold text-white transition-opacity hover:opacity-90"
             >
               {topic.primaryCta.title}
-            </Link>
+            </TrackedLink>
           </div>
         </section>
 
         <section className="mt-4">
           <div className="grid gap-3 md:grid-cols-3">
             {quickLinks.map((item) => (
-              <Link
+              <TrackedLink
                 key={item.href}
                 href={item.href}
+                trackingLabel={item.title}
+                trackingSection="quick_links"
+                trackingPageType="topic"
                 className="rounded-2xl border border-[#e8e6e3] bg-[#FFFDF8] px-4 py-4 transition-colors hover:bg-[var(--accent-light)]"
               >
                 <p className="text-sm font-semibold text-[var(--foreground)]">{item.title}</p>
                 <p className="mt-2 text-xs leading-5 text-[var(--foreground-muted)]">
                   조건을 더 좁히거나, 바로 제품 목록과 비교 흐름으로 이어집니다.
                 </p>
-              </Link>
+              </TrackedLink>
             ))}
           </div>
         </section>

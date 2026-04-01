@@ -4,7 +4,7 @@ import { useMemo, useState } from "react";
 import type { BarFilters, DrinkFilters, ShakeFilters, YogurtFilters } from "../lib/productFilters";
 
 const drinkProteinOptions = ["초고단백(30g 이상)", "고단백(20g 이상)", "일반단백(20g 미만)"];
-const drinkSourceOptions = ["식물성", "유청", "혼합"];
+const drinkSourceOptions = ["식물성", "혼합"];
 const drinkTasteOptions = ["고소/견과", "과일맛", "바나나/바닐라", "초콜릿/케이크", "커피", "기타"];
 const drinkVolumeOptions = ["200mL 이하", "200~300mL", "300~400mL", "400mL 이상"];
 

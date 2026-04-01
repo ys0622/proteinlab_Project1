@@ -44,6 +44,8 @@ type ProductClickParams = {
   brand: string;
   category?: string;
   destinationUrl?: string;
+  source?: string;
+  ctaText?: string;
 };
 
 type OutboundClickParams = {
@@ -62,6 +64,14 @@ type PurchaseClickParams = {
   brand: string;
   store: "coupang" | "naver" | "official";
   destinationUrl?: string;
+  placement?: string;
+};
+
+type InternalLinkClickParams = {
+  label: string;
+  destinationUrl: string;
+  section: string;
+  pageType: string;
 };
 
 type FallbackPayload = {
@@ -185,6 +195,8 @@ export function productClick({
   brand,
   category,
   destinationUrl,
+  source,
+  ctaText,
 }: ProductClickParams) {
   return event("product_click", {
     product_id: productId,
@@ -192,6 +204,8 @@ export function productClick({
     brand,
     category,
     destination_url: destinationUrl,
+    source,
+    cta_text: ctaText,
   });
 }
 
@@ -221,6 +235,7 @@ export function purchaseClick({
   brand,
   store,
   destinationUrl,
+  placement,
 }: PurchaseClickParams) {
   outboundClick({
     label: `${productName} | ${store}`,
@@ -238,5 +253,20 @@ export function purchaseClick({
     brand,
     store,
     destination_url: destinationUrl,
+    placement,
+  });
+}
+
+export function internalLinkClick({
+  label,
+  destinationUrl,
+  section,
+  pageType,
+}: InternalLinkClickParams) {
+  return event("internal_link_click", {
+    link_text: label,
+    destination_url: destinationUrl,
+    section,
+    page_type: pageType,
   });
 }

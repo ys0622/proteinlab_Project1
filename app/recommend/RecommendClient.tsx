@@ -1,10 +1,11 @@
-"use client";
+﻿"use client";
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import AffiliateDisclosure from "@/app/components/AffiliateDisclosure";
 import CategoryTabs from "@/app/components/CategoryTabs";
 import ScoredProductCard from "@/app/components/ScoredProductCard";
+import TrackedLink from "@/app/components/TrackedLink";
 import type { ProductCardProps } from "@/app/components/ProductCard";
 import {
   getCategoryDescription,
@@ -398,14 +399,17 @@ function ResultScreen({
 
       <div className="grid gap-3 md:grid-cols-3">
         {quickLinks.map((link) => (
-          <Link
+          <TrackedLink
             key={link.href}
             href={link.href}
+            trackingLabel={link.title}
+            trackingSection="recommend_result_quick_links"
+            trackingPageType="recommend"
             className="rounded-xl border border-[#e8e6e3] bg-[#FFFDF8] px-4 py-4 transition-colors hover:bg-[var(--accent-light)]"
           >
             <p className="text-sm font-semibold text-[#1a1a1a]">{link.title}</p>
             <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">{link.desc}</p>
-          </Link>
+          </TrackedLink>
         ))}
       </div>
 
@@ -417,13 +421,15 @@ function ResultScreen({
         >
           다시 추천받기
         </button>
-        <Link
+        <TrackedLink
           href={getCategoryHref(category)}
-          className="flex-1 rounded-full py-3 text-center text-sm font-semibold transition-opacity hover:opacity-90"
-          style={{ background: "var(--accent)", color: "white" }}
+          trackingLabel={`전체 ${getCategoryLabel(category)} 보기`}
+          trackingSection="recommend_result_primary_cta"
+          trackingPageType="recommend"
+          className="flex-1 rounded-full bg-[var(--accent)] py-3 text-center text-sm font-semibold text-white transition-opacity hover:opacity-90"
         >
           전체 {getCategoryLabel(category)} 보기 →
-        </Link>
+        </TrackedLink>
       </div>
     </div>
   );
@@ -600,6 +606,26 @@ export default function RecommendClient({ categoryCounts }: RecommendClientProps
           <p className="mt-1 text-sm text-[var(--foreground-muted)]" style={{ fontWeight: 400 }}>
             4가지 질문으로 목적, 운동 패턴, 선호 조건에 맞는 카테고리별 제품을 추천합니다.
           </p>
+          <div className="mt-3 flex flex-wrap gap-2">
+            <TrackedLink
+              href="/ranking"
+              trackingLabel="순위 보기"
+              trackingSection="recommend_hero_cta"
+              trackingPageType="recommend"
+              className="inline-flex min-h-11 min-w-[152px] items-center justify-center rounded-full bg-[var(--accent)] px-4 py-2.5 text-xs font-semibold text-white shadow-[0_10px_24px_rgba(47,111,74,0.18)] transition-all hover:-translate-y-0.5 hover:opacity-95 md:text-sm"
+            >
+              순위 보기
+            </TrackedLink>
+            <TrackedLink
+              href="/products"
+              trackingLabel="전체 제품 둘러보기"
+              trackingSection="recommend_hero_cta"
+              trackingPageType="recommend"
+              className="inline-flex min-h-9 items-center rounded-full border border-[#d7e4d9] bg-white px-3.5 py-2 text-xs font-semibold text-[#24543d] transition-colors hover:border-[#24543d] hover:bg-[#f3faf5] md:text-sm"
+            >
+              전체 제품 둘러보기
+            </TrackedLink>
+          </div>
           <AffiliateDisclosure className="mt-2 mb-0" />
         </div>
       </section>

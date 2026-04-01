@@ -1,7 +1,6 @@
 "use client";
 
-import Link from "next/link";
-import { trackNavigationClick } from "../../lib/gtag";
+import TrackedLink from "./TrackedLink";
 import type { TrafficLinkItem } from "../lib/trafficLinks";
 
 interface RelatedLinkCardsProps {
@@ -32,23 +31,19 @@ export default function RelatedLinkCards({
 
       <div className="grid gap-3 md:grid-cols-3">
         {links.map((link) => (
-          <Link
+          <TrackedLink
             key={link.href}
             href={link.href}
-            onClick={() =>
-              trackNavigationClick({
-                section: sectionId ?? title,
-                destination: link.href,
-                label: link.title,
-              })
-            }
+            trackingLabel={link.title}
+            trackingSection={sectionId ?? title}
+            trackingPageType="related_links"
             className="rounded-xl border border-[#e8e6e3] bg-[#FFFDF8] px-4 py-4 transition-colors hover:bg-[var(--accent-light)]"
           >
             <p className="text-sm font-semibold text-[var(--foreground)]">{link.title}</p>
             <p className="mt-2 text-xs leading-5 text-[var(--foreground-muted)] md:text-sm">
               {link.description}
             </p>
-          </Link>
+          </TrackedLink>
         ))}
       </div>
     </section>

@@ -1,4 +1,4 @@
-import Image from "next/image";
+﻿import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import AdminQuickEdit from "../../components/AdminQuickEdit";
@@ -9,6 +9,7 @@ import Header from "../../components/Header";
 import MetricBadgeGroup from "../../components/MetricBadgeGroup";
 import NutritionDetailSection from "../../components/NutritionDetailSection";
 import ProductBadge from "../../components/ProductBadge";
+import TrackedLink from "../../components/TrackedLink";
 import type { ProductDetailProps } from "../../data/products";
 import {
   formatProductBadgeLabel,
@@ -39,13 +40,13 @@ function getProductKindLabel(productType?: "drink" | "bar" | "yogurt" | "shake")
 
 function getMetricLine(product: ProductDetailProps) {
   const parts = [
-    `단백질 ${product.proteinPerServing}g`,
+    `?⑤갚吏?${product.proteinPerServing}g`,
     product.calories != null ? `${product.calories}kcal` : null,
-    product.sugar != null ? `당류 ${product.sugar}g` : null,
+    product.sugar != null ? `?밸쪟 ${product.sugar}g` : null,
     product.density ? product.density : null,
   ].filter(Boolean);
 
-  return parts.join(" · ");
+  return parts.join(" 쨌 ");
 }
 
 function getProductFaqs(product: ProductDetailProps) {
@@ -54,16 +55,16 @@ function getProductFaqs(product: ProductDetailProps) {
 
   return [
     {
-      question: `${product.brand} ${product.name}은 어떤 기준으로 보면 되나요?`,
-      answer: `${product.brand} ${product.name}은 ${getMetricLine(product)} 기준으로 먼저 보는 편이 좋습니다. 같은 ${categoryLabel} 안에서는 단백질 총량, 당류, 칼로리, 용량당 밀도를 같이 비교해야 실제 체감 차이가 잘 보입니다.`,
+      question: `${product.brand} ${product.name}? ?대뼡 湲곗??쇰줈 蹂대㈃ ?섎굹??`,
+      answer: `${product.brand} ${product.name}? ${getMetricLine(product)} 湲곗??쇰줈 癒쇱? 蹂대뒗 ?몄씠 醫뗭뒿?덈떎. 媛숈? ${categoryLabel} ?덉뿉?쒕뒗 ?⑤갚吏?珥앸웾, ?밸쪟, 移쇰줈由? ?⑸웾??諛?꾨? 媛숈씠 鍮꾧탳?댁빞 ?ㅼ젣 泥닿컧 李⑥씠媛 ??蹂댁엯?덈떎.`,
     },
     {
-      question: `이 제품과 비슷한 ${categoryLabel}은 어디서 더 볼 수 있나요?`,
-      answer: `ProteinLab ${categoryLabel} 목록 페이지(${categoryHref})와 비교 페이지에서 비슷한 스펙 제품을 한 번에 볼 수 있습니다. 특히 같은 카테고리 제품끼리 비교하면 목적별 차이가 더 명확합니다.`,
+      question: `???쒗뭹怨?鍮꾩듂??${categoryLabel}? ?대뵒????蹂????덈굹??`,
+      answer: `ProteinLab ${categoryLabel} 紐⑸줉 ?섏씠吏(${categoryHref})? 鍮꾧탳 ?섏씠吏?먯꽌 鍮꾩듂???ㅽ럺 ?쒗뭹????踰덉뿉 蹂????덉뒿?덈떎. ?뱁엳 媛숈? 移댄뀒怨좊━ ?쒗뭹?쇰━ 鍮꾧탳?섎㈃ 紐⑹쟻蹂?李⑥씠媛 ??紐낇솗?⑸땲??`,
     },
     {
-      question: `구매 전에 마지막으로 확인할 포인트는 무엇인가요?`,
-      answer: `제품 자체 스펙만 보지 말고, 박스 가격, 맛 옵션, 구매 채널, 그리고 내 사용 목적에 맞는지까지 같이 보는 편이 좋습니다. 다이어트 목적이면 당류와 칼로리, 운동 목적이면 단백질 총량과 밀도를 우선 확인하면 됩니다.`,
+      question: `援щℓ ?꾩뿉 留덉?留됱쑝濡??뺤씤???ъ씤?몃뒗 臾댁뾿?멸???`,
+      answer: `제품 목록으로 돌아가기?먯껜 ?ㅽ럺留?蹂댁? 留먭퀬, 諛뺤뒪 媛寃? 留??듭뀡, 援щℓ 梨꾨꼸, 洹몃━怨????ъ슜 紐⑹쟻??留욌뒗吏源뚯? 媛숈씠 蹂대뒗 ?몄씠 醫뗭뒿?덈떎. ?ㅼ씠?댄듃 紐⑹쟻?대㈃ ?밸쪟? 移쇰줈由? ?대룞 紐⑹쟻?대㈃ ?⑤갚吏?珥앸웾怨?諛?꾨? ?곗꽑 ?뺤씤?섎㈃ ?⑸땲??`,
     },
   ];
 }
@@ -95,44 +96,44 @@ function getShakePositioning(product: ProductDetailProps) {
   const sugar = product.sugar ?? 0;
 
   if (calories >= 150 && product.proteinPerServing >= 15 && fiber >= 4) {
-    return "식사대용형";
+    return "?앹궗??⑺삎";
   }
   if (sugar <= 3) {
-    return "저당형";
+    return "??뱁삎";
   }
-  return "운동보충형";
+  return "운동보완형";
 }
 
 function buildProductDescription(product: ProductDetailProps): string {
   const metrics = [
-    `단백질 ${product.proteinPerServing}g`,
+    `?⑤갚吏?${product.proteinPerServing}g`,
     product.calories != null ? `${product.calories}kcal` : null,
-    product.sugar != null ? `당류 ${product.sugar}g` : null,
-    product.density ? `밀도 ${product.density}` : null,
+    product.sugar != null ? `?밸쪟 ${product.sugar}g` : null,
+    product.density ? `諛??${product.density}` : null,
   ].filter(Boolean);
   const tail =
     product.productType === "drink"
-      ? "RTD 단백질 음료 비교, 비슷한 제품 추천, 구매 전 체크포인트까지 함께 확인할 수 있습니다."
+      ? "RTD ?⑤갚吏??뚮즺 鍮꾧탳, 鍮꾩듂??제품 목록으로 돌아가기異붿쿇, 援щℓ ??泥댄겕?ъ씤?멸퉴吏 ?④퍡 ?뺤씤?????덉뒿?덈떎."
       : product.productType === "shake"
-        ? "쉐이크 비교, 다이어트 기준, 비슷한 제품 추천까지 함께 확인할 수 있습니다."
+        ? "?먯씠??鍮꾧탳, ?ㅼ씠?댄듃 湲곗?, 鍮꾩듂??제품 목록으로 돌아가기異붿쿇源뚯? ?④퍡 ?뺤씤?????덉뒿?덈떎."
         : product.productType === "bar"
-          ? "단백질 바 비교, 다이어트 기준, 비슷한 제품 추천까지 함께 확인할 수 있습니다."
-          : "요거트 비교, 당류 기준, 비슷한 제품 추천까지 함께 확인할 수 있습니다.";
-  return `${product.brand} ${product.name} 성분 정보입니다. ${metrics.join(" · ")}. ${tail}`;
+          ? "?⑤갚吏?諛?鍮꾧탳, ?ㅼ씠?댄듃 湲곗?, 鍮꾩듂??제품 목록으로 돌아가기異붿쿇源뚯? ?④퍡 ?뺤씤?????덉뒿?덈떎."
+          : "?붽굅??鍮꾧탳, ?밸쪟 湲곗?, 鍮꾩듂??제품 목록으로 돌아가기異붿쿇源뚯? ?④퍡 ?뺤씤?????덉뒿?덈떎.";
+  return `${product.brand} ${product.name} ?깅텇 ?뺣낫?낅땲?? ${metrics.join(" 쨌 ")}. ${tail}`;
 }
 
 function buildProductTitle(product: ProductDetailProps): string {
   const kind = getProductKindLabel(product.productType);
-  const headline = [`단백질 ${product.proteinPerServing}g`];
-  if (product.sugar != null) headline.push(`당류 ${product.sugar}g`);
+  const headline = [`?⑤갚吏?${product.proteinPerServing}g`];
+  if (product.sugar != null) headline.push(`?밸쪟 ${product.sugar}g`);
   else if (product.calories != null) headline.push(`${product.calories}kcal`);
-  return `${product.brand} ${product.name} | ${headline.join(" · ")} | ${kind} 비교`;
+  return `${product.brand} ${product.name} | ${headline.join(" 쨌 ")} | ${kind} 鍮꾧탳`;
 }
 
 export async function generateMetadata({ params }: PageProps) {
   const { slug } = await params;
   const product = await getProductBySlugAsync(slug);
-  if (!product) return { title: "제품을 찾을 수 없음 | ProteinLab" };
+  if (!product) return { title: "?쒗뭹??李얠쓣 ???놁쓬 | ProteinLab" };
 
   const imageUrl = getProductImageUrl(slug);
   const ogImage = imageUrl ? `https://proteinlab.kr${imageUrl}` : undefined;
@@ -177,7 +178,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
   const metaParts = [
     product.manufacturer,
     hasCapacityInName ? null : product.capacity,
-    product.variant && product.variant !== "일반" ? product.variant : null,
+    product.variant && product.variant !== "?쇰컲" ? product.variant : null,
   ].filter(Boolean);
   const metaLine = metaParts.join(" ");
   const rawCoupangUrl =
@@ -191,7 +192,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
   const naverHref = product.naverUrl && product.naverUrl !== "#" && product.naverUrl !== "" ? product.naverUrl : null;
   const officialMallHref = product.officialUrl && product.officialUrl !== "#" && product.officialUrl !== "" ? product.officialUrl : null;
   const isLactoseFreeDrink =
-    product.productType === "drink" && product.variant?.trim() === "락토프리";
+    product.productType === "drink" && product.variant?.trim() === "?쏀넗?꾨━";
 
   const summaryMetrics = isBar
     ? [
@@ -205,8 +206,8 @@ export default async function ProductDetailPage({ params }: PageProps) {
       ]
     : isYogurt
       ? [
-          { label: "단백질", value: `${product.proteinPerServing}g`, isCompact: false },
-          { label: "칼로리", value: product.calories != null ? `${product.calories}kcal` : "-", isCompact: false },
+        { label: "단백질", value: `${product.proteinPerServing}g`, isCompact: false },
+        { label: "칼로리", value: product.calories != null ? `${product.calories}kcal` : "-", isCompact: false },
           { label: "당류", value: product.sugar !== undefined ? `${product.sugar}g` : "-", isCompact: false },
           { label: "단백질 밀도", value: product.density ?? "-", isCompact: true },
           { label: "중량", value: product.capacity ?? "-", isCompact: false },
@@ -216,14 +217,14 @@ export default async function ProductDetailPage({ params }: PageProps) {
         ]
       : isShake
         ? [
-            { label: "단백질", value: `${product.proteinPerServing}g`, isCompact: false },
-            { label: "칼로리", value: product.calories != null ? `${product.calories}kcal` : "-", isCompact: false },
+        { label: "단백질", value: `${product.proteinPerServing}g`, isCompact: false },
+        { label: "칼로리", value: product.calories != null ? `${product.calories}kcal` : "-", isCompact: false },
             { label: "당류", value: product.sugar !== undefined ? `${product.sugar}g` : "-", isCompact: false },
             { label: "단백질 밀도", value: product.density ?? "-", isCompact: true },
             { label: "용량", value: product.capacity ?? "-", isCompact: false },
             { label: "식이섬유", value: product.nutritionPerBottle?.fiberG != null ? `${product.nutritionPerBottle.fiberG}g` : "-", isCompact: false },
             { label: "지방", value: product.fat !== undefined ? `${product.fat}g` : "-", isCompact: false },
-            { label: "섭취 포인트", value: getShakePositioning(product), isCompact: false },
+            { label: "추천 포지션", value: getShakePositioning(product), isCompact: false },
           ]
       : [
           { label: "단백질", value: `${product.proteinPerServing}g`, isCompact: false },
@@ -324,7 +325,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
                   />
                 ) : (
                   <div className="flex h-full min-h-[220px] w-full items-center justify-center bg-[#f7f4ee] text-sm text-[var(--foreground-muted)]">
-                    이미지 준비 중
+                    ?대?吏 以鍮?以?
                   </div>
                 )}
               </div>
@@ -334,7 +335,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
               <div>
                 <div className="flex flex-wrap items-center gap-2 text-[12px] text-[#6b6b6b]">
                   <Link href="/" className="hover:text-[#1a1a1a]">
-                    홈
+                    ??
                   </Link>
                   <span>/</span>
                   <Link href={getCategoryHref(category)} className="hover:text-[#1a1a1a]">
@@ -388,7 +389,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
           <AffiliateDisclosure />
           {gradeLabels.length > 0 ? (
             <section>
-              <h2 className="text-lg font-semibold text-[var(--foreground)]">등급 요약</h2>
+              <h2 className="text-lg font-semibold text-[var(--foreground)]">?깃툒 ?붿빟</h2>
               <div className="mt-4 grid gap-3 sm:grid-cols-3">
                 {gradeLabels.map((label, index) => {
                   const displayLabel = formatProductBadgeLabel(label);
@@ -441,10 +442,10 @@ export default async function ProductDetailPage({ params }: PageProps) {
             className="mt-6 rounded-xl border border-[#e8e6e3] bg-[#FFFDF8] p-4"
             style={{ borderRadius: "12px" }}
           >
-            <h2 className="mb-3 text-base font-semibold text-[var(--foreground)]">가격·구매 채널 확인</h2>
+            <h2 className="mb-3 text-base font-semibold text-[var(--foreground)]">媛寃㈑룰뎄留?梨꾨꼸 ?뺤씤</h2>
             {isShake && !resolvedCoupangHref && !naverHref && !officialMallHref ? (
               <p className="mb-3 text-sm leading-6 text-[var(--foreground-muted)]">
-                이 쉐이크는 구매 채널 링크를 순차 확인 중입니다. 지금은 제품 비교와 상세 성분부터 확인한 뒤 브랜드 페이지에서 후보를 더 좁혀보는 편이 가장 빠릅니다.
+                ???먯씠?щ뒗 援щℓ 梨꾨꼸 留곹겕瑜??쒖감 ?뺤씤 以묒엯?덈떎. 吏湲덉? 제품 목록으로 돌아가기鍮꾧탳? ?곸꽭 ?깅텇遺???뺤씤????釉뚮옖???섏씠吏?먯꽌 ?꾨낫瑜???醫곹?蹂대뒗 ?몄씠 媛??鍮좊쫭?덈떎.
               </p>
             ) : null}
             <PurchaseLinkRow
@@ -453,13 +454,33 @@ export default async function ProductDetailPage({ params }: PageProps) {
               officialMallHref={officialMallHref}
               size="md"
             />
+            <div className="mt-4 flex flex-wrap gap-3">
+              <TrackedLink
+                href={`/compare?slugs=${encodeURIComponent(product.slug)}`}
+                trackingLabel="비교함에 넣기"
+                trackingSection="product_detail_after_purchase"
+                trackingPageType="product_detail"
+                className="inline-flex min-w-[170px] items-center justify-center rounded-full bg-[var(--accent)] px-6 py-3 text-sm font-semibold text-white shadow-[0_10px_24px_rgba(36,84,61,0.18)] transition-all hover:-translate-y-0.5 hover:opacity-95"
+              >
+                비교함에 넣기
+              </TrackedLink>
+              <TrackedLink
+                href={getCategoryHref(category)}
+                trackingLabel="같은 카테고리 보기"
+                trackingSection="product_detail_after_purchase"
+                trackingPageType="product_detail"
+                className="inline-flex items-center justify-center rounded-full border border-[var(--border)] bg-white px-5 py-2.5 text-sm font-medium text-[var(--foreground)] transition-colors hover:bg-[var(--accent-light)]"
+              >
+                같은 카테고리 보기
+              </TrackedLink>
+            </div>
           </div>
 
           <section className="mt-8">
             <div className="mb-4 space-y-1">
-              <h2 className="text-lg font-semibold text-[var(--foreground)]">자주 묻는 질문</h2>
+              <h2 className="text-lg font-semibold text-[var(--foreground)]">?먯＜ 臾삳뒗 吏덈Ц</h2>
               <p className="text-sm leading-6 text-[var(--foreground-muted)]">
-                구매 전 많이 확인하는 기준만 빠르게 정리했습니다.
+                援щℓ ??留롮씠 ?뺤씤?섎뒗 湲곗?留?鍮좊Ⅴ寃??뺣━?덉뒿?덈떎.
               </p>
             </div>
             <div className="space-y-3">
@@ -477,12 +498,15 @@ export default async function ProductDetailPage({ params }: PageProps) {
           </section>
 
           <div className="mt-4 flex flex-wrap gap-3">
-            <Link
+            <TrackedLink
               href={getCategoryHref(category)}
+              trackingLabel="제품 목록으로 돌아가기"
+              trackingSection="product_detail_bottom_cta"
+              trackingPageType="product_detail"
               className="rounded-full border border-[var(--border)] bg-white px-5 py-2.5 text-sm font-medium text-[var(--foreground)] transition-colors hover:bg-[var(--accent-light)]"
             >
-              제품 목록으로
-            </Link>
+              제품 목록으로 돌아가기
+            </TrackedLink>
           </div>
         </div>
       </main>
@@ -491,3 +515,5 @@ export default async function ProductDetailPage({ params }: PageProps) {
     </div>
   );
 }
+
+

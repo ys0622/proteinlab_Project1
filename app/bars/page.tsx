@@ -1,15 +1,15 @@
-import Header from "../components/Header";
 import AffiliateDisclosure from "../components/AffiliateDisclosure";
 import Footer from "../components/Footer";
+import Header from "../components/Header";
 import HeroSection from "../components/HeroSection";
 import ProductListWithFilters from "../components/ProductListWithFilters";
 import type { ProductCategory } from "../lib/categories";
 import { getProductsByCategoryAsync } from "../lib/productData";
 
 export const metadata = {
-  title: "단백질 바 추천 비교 80종 | 고단백·저당 성분 기준 (2026) | ProteinLab",
+  title: "저당 단백질 바 추천 비교 85종 | 고단백·간식형 제품 한눈에 | 2026 | ProteinLab",
   description:
-    "단백질 바 80개를 단백질 함량, 당류, 칼로리, 중량 기준으로 비교합니다. 운동보충·저당·식사보완 목적에 맞는 제품을 성분 데이터로 바로 선택하세요.",
+    "단백질 바 85종을 단백질 함량, 당류, 칼로리 기준으로 비교합니다. 운동 후 보충용, 출근길 간식용, 저당 간식용 단백질 바를 빠르게 좁혀보세요.",
   alternates: {
     canonical: "https://proteinlab.kr/bars",
   },

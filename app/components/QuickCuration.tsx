@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import TrackedLink from "./TrackedLink";
 import { getQuickCurations, type CurationCategory } from "../lib/curationSystem";
 
 interface QuickCurationProps {
@@ -11,14 +11,19 @@ interface QuickCurationProps {
 
 function QuickCurationChip({
   item,
+  productType,
   compact = false,
 }: {
   item: { label: string; href: string; icon: string };
+  productType: CurationCategory;
   compact?: boolean;
 }) {
   return (
-    <Link
+    <TrackedLink
       href={item.href}
+      trackingLabel={item.label}
+      trackingSection={compact ? `quick_curation_inline_${productType}` : `quick_curation_${productType}`}
+      trackingPageType="quick_curation"
       className={`inline-flex shrink-0 items-center justify-center rounded-full border border-[var(--curation-chip-bg)] bg-[var(--curation-chip-bg)] font-medium leading-none text-[var(--curation-chip-text)] transition-opacity hover:opacity-90 ${
         compact ? "h-[26px] px-2 text-[10px] sm:text-[11px]" : "px-2.5 py-1 text-[11px]"
       }`}
@@ -31,7 +36,7 @@ function QuickCurationChip({
         {item.icon}
       </span>
       <span>{item.label}</span>
-    </Link>
+    </TrackedLink>
   );
 }
 
@@ -58,7 +63,7 @@ export default function QuickCuration({
           </div>
           <div className="flex flex-1 flex-wrap items-center gap-1.5">
             {items.map((item) => (
-              <QuickCurationChip key={`${productType}-${item.slug}`} item={item} compact />
+              <QuickCurationChip key={`${productType}-${item.slug}`} item={item} productType={productType} compact />
             ))}
           </div>
         </div>
@@ -77,7 +82,7 @@ export default function QuickCuration({
       <div className="-mx-3 -mb-1 mt-0 overflow-x-auto px-3 pb-1 md:mt-1 md:pb-2">
         <div className="flex min-w-max" style={{ gap: "6px" }}>
           {items.map((item) => (
-            <QuickCurationChip key={`${productType}-${item.slug}`} item={item} />
+            <QuickCurationChip key={`${productType}-${item.slug}`} item={item} productType={productType} />
           ))}
         </div>
       </div>

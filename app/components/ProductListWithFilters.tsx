@@ -1,6 +1,5 @@
 ﻿"use client";
 
-import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
 import type { ProductDetailProps } from "../data/products";
@@ -623,7 +622,16 @@ function ProductListWithFiltersInner(props: ProductListWithFiltersInnerProps) {
         <div className="mt-8 flex justify-center">
           <button
             type="button"
-            onClick={() => setPage((current) => current + 1)}
+            onClick={() => {
+              trackEvent("load_more_click", {
+                category: productType,
+                visible_count: visible.length,
+                total_results: sorted.length,
+                next_page: page + 1,
+                search_query: searchQuery.trim() || undefined,
+              });
+              setPage((current) => current + 1);
+            }}
             className="rounded-full border border-[var(--border)] bg-white px-6 py-2.5 text-sm font-medium text-[var(--foreground)] transition-colors hover:border-[var(--accent)] hover:bg-[var(--accent-light)] hover:text-[var(--accent)]"
           >
             더보기 ({sorted.length - visible.length}개 남음)
@@ -652,4 +660,3 @@ export default function ProductListWithFilters(props: ProductListWithFiltersProp
     />
   );
 }
-

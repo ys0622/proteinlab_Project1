@@ -9,10 +9,11 @@ import Footer from "../components/Footer";
 import CompareTable from "../components/CompareTable";
 import { useCompare } from "../context/CompareContext";
 import { getProductBySlug } from "../data/products";
-import { getProductImageUrl } from "../lib/productImage";
+import type { ProductDetailProps } from "../data/products";
 import type { CompareColumnId } from "../lib/compareColumns";
 import { COMPARE_COLUMNS } from "../lib/compareColumns";
-import type { ProductDetailProps } from "../data/products";
+import { getProductImageUrl } from "../lib/productImage";
+import { event, internalLinkClick } from "../../lib/analytics";
 
 const MAX_PRODUCTS = 4;
 
@@ -45,9 +46,8 @@ export default function ComparePage() {
   );
 
   useEffect(() => {
-    if (selectedSlugs.length === 0) {
-      return;
-    }
+    if (selectedSlugs.length === 0) return;
+
     const slugs = selectedSlugs.join(",");
     let cancelled = false;
 
@@ -92,6 +92,11 @@ export default function ComparePage() {
     const a = document.createElement("a");
     a.href = url;
     a.download = "proteinlab-compare.csv";
+    event("compare_export_click", {
+      product_count: products.length,
+      visible_column_count: visibleIds.length,
+      export_type: "csv",
+    });
     a.click();
     URL.revokeObjectURL(url);
   };
@@ -100,7 +105,11 @@ export default function ComparePage() {
     const path = `/compare?slugs=${selectedSlugs.join(",")}`;
     const url = typeof window !== "undefined" ? window.location.origin + path : "";
     await navigator.clipboard.writeText(url);
-    alert("공유 링크가 복사되었습니다.");
+    event("compare_share_click", {
+      product_count: products.length,
+      share_type: "link_copy",
+    });
+    alert("공유 링크를 복사했습니다.");
   };
 
   const selectedCategory =
@@ -110,13 +119,13 @@ export default function ComparePage() {
 
   const compareDescription =
     selectedCategory === "drink"
-      ? "단백질 음료를 단백질, 당류, 칼로리, 단백질 밀도 기준으로 한 번에 비교합니다. 운동용 제품인지, 식사 보완형인지도 함께 판단하기 좋게 정리했습니다."
+      ? "단백질 음료를 단백질 함량, 당류, 칼로리, 밀도 기준으로 한 번에 비교합니다. 운동 후용인지, 식사 보완용인지 빠르게 구분하기 좋게 정리했습니다."
       : selectedCategory === "bar"
-        ? "단백질 바를 단백질 함량, 당류, 칼로리 기준으로 비교합니다. 간식용인지 이동 중 보완용인지도 함께 판단하기 좋게 정리했습니다."
+        ? "단백질 바를 단백질 함량, 당류, 칼로리 기준으로 비교합니다. 간식용인지 이동 중 보충용인지 빠르게 판단하기 좋게 정리했습니다."
         : selectedCategory === "yogurt"
-          ? "단백질 요거트를 단백질 함량, 당류, 칼로리, 용량 기준으로 비교합니다. 꾸덕한 타입과 드링크형 차이도 함께 보기 좋게 구성했습니다."
+          ? "단백질 요거트를 단백질 함량, 당류, 칼로리, 용량 기준으로 비교합니다. 그릭과 드링킹 타입 차이도 함께 보기 좋게 구성했습니다."
           : selectedCategory === "shake"
-            ? "파우치형 단백질 쉐이크를 단백질, 당류, 식이섬유, 단백질 밀도 기준으로 비교합니다. 식사대용인지 운동 보충용인지도 함께 판단하기 좋게 정리했습니다."
+            ? "단백질 쉐이크를 단백질 함량, 당류, 식사대용 적합성, 밀도 기준으로 비교합니다. 식사대용인지 운동 후 보완용인지 빠르게 구분하기 좋게 정리했습니다."
             : "단백질 음료, 바, 요거트, 쉐이크를 최대 4개까지 한 화면에서 비교합니다.";
 
   if (products.length === 0) {
@@ -129,13 +138,21 @@ export default function ComparePage() {
               제품 비교
             </h1>
             <p className="mt-1 text-sm" style={{ color: "#6b6b6b" }}>
-              비교할 제품을 선택해보세요. 단백질 함량, 당류, 칼로리를 한 화면에서 볼 수 있습니다. (최대 4개)
+              비교할 제품을 먼저 담아보세요. 단백질 함량, 당류, 칼로리를 한 화면에서 바로 볼 수 있습니다. 최대 4개까지 비교할 수 있습니다.
             </p>
             <Link
               href="/products"
+              onClick={() =>
+                internalLinkClick({
+                  label: "제품 고르러 가기",
+                  destinationUrl: "/products",
+                  section: "compare_empty_state",
+                  pageType: "compare",
+                })
+              }
               className="mt-6 inline-block rounded-lg bg-[var(--accent)] px-5 py-2.5 text-sm font-medium text-white hover:opacity-90"
             >
-              제품 목록으로
+              제품 고르러 가기
             </Link>
           </div>
         </section>
@@ -165,8 +182,8 @@ export default function ComparePage() {
                 className="inline-flex items-center gap-1.5 rounded-lg border border-[#d9d6cf] bg-white px-4 py-2 text-sm font-medium hover:bg-[#f5f5f5]"
                 style={{ color: "#3d3d3d" }}
               >
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4" /><polyline points="7 10 12 15 17 10" /><line x1="12" y1="15" x2="12" y2="3" /></svg>
-                CSV 내보내기
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" /><polyline points="7 10 12 15 17 10" /><line x1="12" y1="15" x2="12" y2="3" /></svg>
+                CSV로 내보내기
               </button>
               <button
                 type="button"
@@ -174,19 +191,22 @@ export default function ComparePage() {
                 className="inline-flex items-center gap-1.5 rounded-lg border border-[#d9d6cf] bg-white px-4 py-2 text-sm font-medium hover:bg-[#f5f5f5]"
                 style={{ color: "#3d3d3d" }}
               >
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71" /><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71" /></svg>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" /><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" /></svg>
                 공유 링크 복사
               </button>
               <button
                 type="button"
                 onClick={() => {
+                  event("compare_reset_click", {
+                    product_count: products.length,
+                  });
                   clear();
                   router.push("/products");
                 }}
                 className="rounded-lg border border-[#d9d6cf] bg-white px-4 py-2 text-sm font-medium hover:bg-[#f5f5f5]"
                 style={{ color: "#3d3d3d" }}
               >
-                초기화
+                비교 초기화
               </button>
             </div>
           </div>
@@ -213,7 +233,7 @@ export default function ComparePage() {
                     onClick={() => remove(p.slug)}
                     className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full hover:bg-[#eee]"
                     style={{ color: "#999" }}
-                    aria-label="제거"
+                    aria-label="제품 제거"
                   >
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" /></svg>
                   </button>
@@ -222,6 +242,14 @@ export default function ComparePage() {
               {products.length < MAX_PRODUCTS && (
                 <Link
                   href="/products"
+                  onClick={() =>
+                    internalLinkClick({
+                      label: "제품 추가",
+                      destinationUrl: "/products",
+                      section: "compare_selected_products",
+                      pageType: "compare",
+                    })
+                  }
                   className="flex h-[72px] w-[140px] flex-shrink-0 items-center justify-center rounded-xl border-2 border-dashed border-[#d9d6cf] text-sm font-medium hover:border-[var(--accent)] hover:text-[var(--accent)]"
                   style={{ borderRadius: "12px", color: "#999", background: "rgba(255,255,255,0.5)" }}
                 >
@@ -236,7 +264,7 @@ export default function ComparePage() {
       <main className="mx-auto max-w-[1200px] px-4 py-6 md:px-6">
         <div className="flex flex-col gap-6">
           <div>
-            <p className="mb-2 text-sm font-medium" style={{ color: "#3d3d3d" }}>표시할 항목 선택</p>
+            <p className="mb-2 text-sm font-medium" style={{ color: "#3d3d3d" }}>표시 항목 선택</p>
             <div className="flex flex-wrap gap-2">
               {COMPARE_COLUMNS.map((col) => {
                 const on = visibleIds.includes(col.id);

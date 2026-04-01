@@ -116,6 +116,21 @@ function renderMetricValue(value: string, isDensity: boolean) {
   );
 }
 
+function getDetailCtaLabel(productType?: ProductCardProps["productType"]) {
+  switch (productType) {
+    case "drink":
+      return "성분표 보기";
+    case "bar":
+      return "당류·단백질 보기";
+    case "yogurt":
+      return "그릭·드링킹 비교";
+    case "shake":
+      return "식사대용 적합도 보기";
+    default:
+      return "제품 상세 보기";
+  }
+}
+
 export default function ProductCard({
   brand,
   name,
@@ -172,6 +187,7 @@ export default function ProductCard({
       ? visibleGradeTags.slice(0, maxVisibleBadges)
       : visibleGradeTags;
   const feedbackMeta = reviewSummary && reviewSummary.reviewCount > 0 ? reviewSummary : null;
+  const detailCtaLabel = getDetailCtaLabel(productType);
 
   useEffect(() => {
     if (!slug) return;
@@ -200,6 +216,8 @@ export default function ProductCard({
       brand,
       category: productType,
       destinationUrl: detailHref,
+      source: "card",
+      ctaText: detailCtaLabel,
     });
     router.push(detailHref);
   };
@@ -252,7 +270,7 @@ export default function ProductCard({
       onKeyDown={handleCardKeyDown}
       role={canOpenDetail ? "link" : undefined}
       tabIndex={canOpenDetail ? 0 : undefined}
-      aria-label={canOpenDetail ? `${brand} ${name} 상세 보기` : undefined}
+      aria-label={canOpenDetail ? `${brand} ${name} ${detailCtaLabel}` : undefined}
       style={{
         borderRadius: "16px",
         borderColor: "#e8e6e3",
@@ -404,6 +422,7 @@ export default function ProductCard({
                 store: "coupang",
                 productId,
                 destinationUrl: coupangHref ?? undefined,
+                placement: "product_card_purchase_row",
               })
             }
             onNaverClick={() =>
@@ -413,6 +432,7 @@ export default function ProductCard({
                 store: "naver",
                 productId,
                 destinationUrl: naverHref ?? undefined,
+                placement: "product_card_purchase_row",
               })
             }
             onOfficialClick={() =>
@@ -422,6 +442,7 @@ export default function ProductCard({
                 store: "official",
                 productId,
                 destinationUrl: officialMallHref ?? undefined,
+                placement: "product_card_purchase_row",
               })
             }
           />
@@ -439,12 +460,14 @@ export default function ProductCard({
                 brand,
                 category: productType,
                 destinationUrl: detailHref,
+                source: "detail_cta",
+                ctaText: detailCtaLabel,
               })
             }
             className="flex flex-1 items-center justify-center rounded-[10px] border border-[#e2e2e2] bg-white font-medium text-[var(--foreground)] transition-colors hover:border-[var(--accent)] hover:bg-[var(--accent-light)] hover:text-[var(--accent)] active:scale-[0.98]"
             style={{ height: "34px", fontSize: "12px", borderRadius: "10px" }}
           >
-            상세보기
+            {detailCtaLabel}
           </Link>
           {slug ? (
             <CompareButton slug={slug} detailHref={detailHref} />

@@ -1,11 +1,11 @@
-"use client";
+﻿"use client";
 
 import { useState } from "react";
-import Link from "next/link";
 import AffiliateDisclosure from "../components/AffiliateDisclosure";
 import type { ProductDetailProps } from "../data/products";
 import CategoryTabs from "../components/CategoryTabs";
 import ScoredProductCard from "../components/ScoredProductCard";
+import TrackedLink from "../components/TrackedLink";
 import { getCategoryLabel, type ProductCategory } from "../lib/categories";
 
 type GradeMetric = "density" | "diet" | "performance";
@@ -167,6 +167,26 @@ export default function RankingClient({ rankings }: RankingClientProps) {
           <p className="mt-1 text-sm text-[var(--foreground-muted)]" style={{ fontWeight: 400 }}>
             {getCategoryRankingDescription(productType, metric)}
           </p>
+          <div className="mt-3 flex flex-wrap gap-2">
+            <TrackedLink
+              href="/recommend"
+              trackingLabel="맞춤 추천"
+              trackingSection="ranking_hero_cta"
+              trackingPageType="ranking"
+              className="inline-flex min-h-11 min-w-[152px] items-center justify-center rounded-full bg-[var(--accent)] px-4 py-2.5 text-xs font-semibold text-white shadow-[0_10px_24px_rgba(47,111,74,0.18)] transition-all hover:-translate-y-0.5 hover:opacity-95 md:text-sm"
+            >
+              맞춤 추천
+            </TrackedLink>
+            <TrackedLink
+              href="/compare"
+              trackingLabel="비교함 바로 열기"
+              trackingSection="ranking_hero_cta"
+              trackingPageType="ranking"
+              className="inline-flex min-h-9 items-center rounded-full border border-[#d7e4d9] bg-white px-3.5 py-2 text-xs font-semibold text-[#24543d] transition-colors hover:border-[#24543d] hover:bg-[#f3faf5] md:text-sm"
+            >
+              비교함 바로 열기
+            </TrackedLink>
+          </div>
           <AffiliateDisclosure className="mb-0 mt-2" />
         </div>
       </section>
@@ -206,14 +226,17 @@ export default function RankingClient({ rankings }: RankingClientProps) {
 
         <div className="mt-4 grid gap-3 md:grid-cols-3">
           {quickLinks.map((link) => (
-            <Link
+            <TrackedLink
               key={link.href}
               href={link.href}
+              trackingLabel={link.title}
+              trackingSection="ranking_quick_links"
+              trackingPageType="ranking"
               className="rounded-xl border border-[#e8e6e3] bg-[#FFFDF8] px-4 py-4 transition-colors hover:bg-[var(--accent-light)]"
             >
               <p className="text-sm font-semibold text-[var(--foreground)]">{link.title}</p>
               <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">{link.desc}</p>
-            </Link>
+            </TrackedLink>
           ))}
         </div>
 
