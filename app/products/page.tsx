@@ -10,7 +10,7 @@ import type { ProductCategory } from "../lib/categories";
 export const metadata: Metadata = {
   title: "단백질 제품 322종 비교 | 브랜드·카테고리·목적별로 찾기 | ProteinLab",
   description:
-    "단백질 음료, 바, 요거트, 쉐이크 322종을 브랜드, 단백질 함량, 당류, 칼로리, 목적별로 비교합니다. 저당, 40g, 다이어트, 식사대용, 50대 제품까지 바로 찾을 수 있습니다.",
+    "단백질 음료, 바, 요거트, 쉐이크 322종을 브랜드, 단백질 함량, 당류, 칼로리, 목적별로 바로 비교해보세요. 저당, 40g, 다이어트, 50대 기준도 빠르게 찾을 수 있습니다.",
   alternates: {
     canonical: "https://proteinlab.kr/products",
   },
@@ -20,22 +20,22 @@ const quickEntryLinks = [
   {
     href: "/guides/product-selection-comparison/protein-drink-beginners-guide",
     title: "처음 고른다면",
-    body: "입문용 단백질 음료부터 보고 싶다면 가장 빠른 시작점입니다.",
+    body: "입문자는 단백질 음료부터 보면 가장 빠르게 후보를 좁힐 수 있습니다.",
   },
   {
     href: "/guides/product-selection-comparison/high-protein-40g-comparison",
     title: "고단백 40g대 찾기",
-    body: "테이크핏, 뉴케어, 닥터유처럼 40g대 제품만 바로 비교할 수 있습니다.",
+    body: "테이크핏, 뉴케어, 닥터유 같은 40g대 제품만 빠르게 비교할 수 있습니다.",
   },
   {
     href: "/guides/product-selection-comparison/protein-category-guide",
     title: "음료·바·요거트·쉐이크 비교",
-    body: "카테고리부터 정해야 한다면 제품군 차이부터 보는 편이 빠릅니다.",
+    body: "카테고리부터 정하고 싶다면 제품군 차이부터 보는 편이 가장 빠릅니다.",
   },
   {
     href: "/guides/product-selection-comparison/protein-drink-for-50s",
     title: "50대·중장년용 제품",
-    body: "건강 유지와 식사 보완 중심 후보를 먼저 좁힐 수 있습니다.",
+    body: "건강 관리와 식사 보완 중심으로 먼저 볼 후보를 바로 찾을 수 있습니다.",
   },
 ];
 
@@ -43,22 +43,22 @@ const categoryLinks = [
   {
     href: "/",
     title: "단백질 음료",
-    body: "저당, 20g대, 40g대, 식사보완형까지 가장 넓게 비교할 수 있습니다.",
+    body: "단백질 20g대, 40g대, 식사 보완형까지 가장 넓게 비교할 수 있습니다.",
   },
   {
     href: "/bars",
     title: "단백질 바",
-    body: "휴대성과 간식 대체가 중요하면 바 카테고리부터 보는 편이 빠릅니다.",
+    body: "간식 대체와 휴대성이 중요하다면 바 카테고리부터 보는 편이 빠릅니다.",
   },
   {
     href: "/yogurt",
     title: "단백질 요거트",
-    body: "가벼운 간식, 아침 대체, 저당 요거트를 찾는 흐름에 잘 맞습니다.",
+    body: "가벼운 간식이나 아침 대용으로 요거트를 찾는 경우에 잘 맞습니다.",
   },
   {
     href: "/shake",
     title: "단백질 쉐이크",
-    body: "식사대용, 다이어트, 아침 공백 보완이 목적이면 쉐이크가 더 직접적입니다.",
+    body: "식사대용, 다이어트, 아침 공복 보완이 목적이라면 쉐이크가 더 직접적입니다.",
   },
 ];
 
@@ -105,8 +105,8 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
             브랜드, 카테고리, 목적별로 바로 비교해보세요.
           </h1>
           <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
-            단백질 음료, 바, 요거트, 쉐이크를 한곳에서 검색하고 필터링할 수 있습니다. 저당, 40g,
-            다이어트, 식사대용, 50대용 같은 조건부터 바로 좁히는 흐름으로 설계했습니다.
+            단백질 음료, 바, 요거트, 쉐이크를 한곳에서 찾고 필터링할 수 있습니다. 저당, 40g,
+            다이어트, 식사대용, 50대 같은 조건도 바로 좁혀볼 수 있습니다.
           </p>
         </div>
       </section>

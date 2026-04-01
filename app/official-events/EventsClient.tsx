@@ -900,7 +900,7 @@ export default function EventsClient() {
             이벤트/핫딜
           </h1>
           <p className="mt-1 text-sm text-[var(--foreground-muted)]">
-            단백질 브랜드의 공식몰·네이버 스토어 혜택을 모았습니다. 할인, 쿠폰, 증정, 무료배송 중 무엇부터 보면 되는지까지 한 번에 확인할 수 있게 정리했습니다.
+            단백질 브랜드의 공식몰·네이버 스토어 혜택만 빠르게 모았습니다. 할인, 쿠폰, 증정, 무료배송 중 지금 바로 확인할 포인트를 한 번에 볼 수 있게 정리했습니다.
           </p>
         </div>
       </section>
@@ -1080,7 +1080,11 @@ function BrandEventCard({ brand, productType }: { brand: BrandCard; productType:
             color: meta.accentColor,
           }}
         >
-          {brand.storeType === "네이버 스토어" ? "네이버 스토어 방문" : "판매처 방문"} →
+          {brand.storeType === "네이버 스토어"
+            ? "네이버 혜택 확인"
+            : brand.storeType.includes("올리브영")
+              ? "올리브영 혜택 확인"
+              : "판매처 혜택 확인"} →
         </a>
       </div>
     </div>
