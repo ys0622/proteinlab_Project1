@@ -39,9 +39,9 @@ export default function ComparePage() {
   const fallbackProducts = useMemo(
     () =>
       selectedSlugs
-      .map((slug) => getProductBySlug(slug))
-      .filter((p): p is NonNullable<typeof p> => p != null),
-    [selectedSlugs]
+        .map((slug) => getProductBySlug(slug))
+        .filter((p): p is NonNullable<typeof p> => p != null),
+    [selectedSlugs],
   );
 
   useEffect(() => {
@@ -72,9 +72,7 @@ export default function ComparePage() {
       : fallbackProducts;
 
   const toggleColumn = (id: CompareColumnId) => {
-    setVisibleIds((prev) =>
-      prev.includes(id) ? prev.filter((x) => x !== id) : [...prev, id]
-    );
+    setVisibleIds((prev) => (prev.includes(id) ? prev.filter((x) => x !== id) : [...prev, id]));
   };
 
   const handleExportCSV = () => {
@@ -84,9 +82,11 @@ export default function ComparePage() {
       .map((id) => {
         const col = COMPARE_COLUMNS.find((c) => c.id === id);
         if (!col) return [];
-        return [col.label, ...products.map((p) => String(col.getValue(p) ?? "—"))];
+        return [col.label, ...products.map((p) => String(col.getValue(p) ?? "-"))];
       });
-    const csv = [headers, ...rows].map((r) => r.map((c) => `"${String(c).replace(/"/g, '""')}"`).join(",")).join("\n");
+    const csv = [headers, ...rows]
+      .map((r) => r.map((c) => `"${String(c).replace(/"/g, '""')}"`).join(","))
+      .join("\n");
     const blob = new Blob(["\uFEFF" + csv], { type: "text/csv;charset=utf-8" });
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
@@ -110,14 +110,14 @@ export default function ComparePage() {
 
   const compareDescription =
     selectedCategory === "drink"
-      ? "단백질 음료를 단백질, 당류, 칼로리, 단백질 밀도 기준으로 나란히 비교합니다. 저당 제품인지, 식사 보완형인지도 함께 판단하기 좋게 구성했습니다."
+      ? "단백질 음료를 단백질, 당류, 칼로리, 단백질 밀도 기준으로 한 번에 비교합니다. 운동용 제품인지, 식사 보완형인지도 함께 판단하기 좋게 정리했습니다."
       : selectedCategory === "bar"
-      ? "단백질 바를 단백질 함량, 당류, 칼로리 기준으로 비교합니다. 간식용인지 운동 후 보충용인지도 같이 판단하기 좋게 정리했습니다."
-      : selectedCategory === "yogurt"
-      ? "단백질 요거트를 단백질 밀도, 당류, 칼로리, 용량 기준으로 비교합니다. 떠먹는 타입과 드링킹 타입 차이도 함께 보기 좋게 구성했습니다."
-      : selectedCategory === "shake"
-      ? "파우치형 단백질 쉐이크를 단백질, 당류, 식이섬유, 단백질 밀도 기준으로 비교합니다. 식사대용인지 운동보충용인지도 같이 판단하기 좋게 정리했습니다."
-      : "단백질 음료, 바, 요거트, 쉐이크를 최대 4개까지 한 화면에서 비교합니다.";
+        ? "단백질 바를 단백질 함량, 당류, 칼로리 기준으로 비교합니다. 간식용인지 이동 중 보완용인지도 함께 판단하기 좋게 정리했습니다."
+        : selectedCategory === "yogurt"
+          ? "단백질 요거트를 단백질 함량, 당류, 칼로리, 용량 기준으로 비교합니다. 꾸덕한 타입과 드링크형 차이도 함께 보기 좋게 구성했습니다."
+          : selectedCategory === "shake"
+            ? "파우치형 단백질 쉐이크를 단백질, 당류, 식이섬유, 단백질 밀도 기준으로 비교합니다. 식사대용인지 운동 보충용인지도 함께 판단하기 좋게 정리했습니다."
+            : "단백질 음료, 바, 요거트, 쉐이크를 최대 4개까지 한 화면에서 비교합니다.";
 
   if (products.length === 0) {
     return (
@@ -125,9 +125,11 @@ export default function ComparePage() {
         <Header />
         <section className="bg-[#EFEDE6]">
           <div className="mx-auto max-w-[1200px] px-4 py-8 md:px-6">
-            <h1 className="text-2xl font-bold" style={{ color: "#1a1a1a", fontWeight: 700 }}>제품 비교</h1>
+            <h1 className="text-2xl font-bold" style={{ color: "#1a1a1a", fontWeight: 700 }}>
+              제품 비교
+            </h1>
             <p className="mt-1 text-sm" style={{ color: "#6b6b6b" }}>
-              비교할 제품을 선택해 주세요. 단백질 함량, 당류, 칼로리를 나란히 볼 수 있습니다. (최대 4개)
+              비교할 제품을 선택해보세요. 단백질 함량, 당류, 칼로리를 한 화면에서 볼 수 있습니다. (최대 4개)
             </p>
             <Link
               href="/products"
@@ -145,12 +147,13 @@ export default function ComparePage() {
     <div className="min-h-screen bg-white pb-24">
       <Header />
 
-      {/* 히어로 영역 */}
       <section className="bg-[#EFEDE6]">
         <div className="mx-auto max-w-[1200px] px-4 py-6 md:px-6">
           <div className="flex flex-wrap items-start justify-between gap-4">
             <div>
-              <h1 className="text-2xl font-bold" style={{ color: "#1a1a1a", fontWeight: 700 }}>제품 비교</h1>
+              <h1 className="text-2xl font-bold" style={{ color: "#1a1a1a", fontWeight: 700 }}>
+                제품 비교
+              </h1>
               <p className="mt-1 text-sm" style={{ color: "#6b6b6b" }}>
                 {compareDescription}
               </p>
@@ -176,7 +179,10 @@ export default function ComparePage() {
               </button>
               <button
                 type="button"
-                onClick={() => { clear(); router.push("/products"); }}
+                onClick={() => {
+                  clear();
+                  router.push("/products");
+                }}
                 className="rounded-lg border border-[#d9d6cf] bg-white px-4 py-2 text-sm font-medium hover:bg-[#f5f5f5]"
                 style={{ color: "#3d3d3d" }}
               >
@@ -185,7 +191,6 @@ export default function ComparePage() {
             </div>
           </div>
 
-          {/* 선택된 제품 */}
           <div className="mt-5">
             <div className="flex flex-wrap items-center gap-3">
               {products.map((p) => (
@@ -196,13 +201,7 @@ export default function ComparePage() {
                 >
                   <div className="relative h-12 w-12 flex-shrink-0 overflow-hidden rounded-lg bg-[#f7f7f7]">
                     {getProductImageUrl(p.slug) ? (
-                      <Image
-                        src={getProductImageUrl(p.slug)!}
-                        alt=""
-                        fill
-                        className="object-contain"
-                        unoptimized
-                      />
+                      <Image src={getProductImageUrl(p.slug)!} alt="" fill className="object-contain" unoptimized />
                     ) : null}
                   </div>
                   <div className="min-w-0">
@@ -234,10 +233,8 @@ export default function ComparePage() {
         </div>
       </section>
 
-      {/* 본문 영역 */}
       <main className="mx-auto max-w-[1200px] px-4 py-6 md:px-6">
         <div className="flex flex-col gap-6">
-          {/* 표시할 항목 선택 */}
           <div>
             <p className="mb-2 text-sm font-medium" style={{ color: "#3d3d3d" }}>표시할 항목 선택</p>
             <div className="flex flex-wrap gap-2">
@@ -262,7 +259,6 @@ export default function ComparePage() {
             </div>
           </div>
 
-          {/* 비교 테이블 */}
           <CompareTable products={products} visibleColumnIds={visibleIds} />
         </div>
       </main>
