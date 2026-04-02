@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
+import TrackedLink from "@/app/components/TrackedLink";
 
 export const metadata = {
   title: "하루 단백질 권장량 | 목적·체중·연령별 정리 | ProteinLab",
@@ -54,7 +55,7 @@ const faqs = [
   {
     question: "식사만으로 부족하면 어떻게 보완할까?",
     answer:
-      "계란, 유제품, 두부, 그릭요거트 같은 식품으로 먼저 보완하고, 식사 구성이 어렵거나 일정이 빡쁠 때만 단백질 음료나 바를 보조적으로 더하는 편이 자연스럽습니다.",
+      "계란, 유제품, 두부, 그릭요거트 같은 식품으로 먼저 보완하고, 식사 구성이 어렵거나 일정이 빡빡할 때만 단백질 음료나 바를 보조적으로 더하는 편이 자연스럽습니다.",
   },
 ];
 
@@ -155,6 +156,23 @@ export default function DailyRequirementPage() {
               단백질은 하루 한 번에 몰아 먹기보다 아침, 점심, 저녁, 간식처럼 나눠서 섭취하는 편이
               실제 식사 구조에 더 잘 맞습니다.
             </Callout>
+
+            <div className="mt-5 rounded-2xl border border-[#d7e6da] bg-[#f5fbf6] px-4 py-4">
+              <p className="text-sm font-semibold text-[#24543d]">체중 기준으로 내 목표량을 바로 계산해보려면</p>
+              <p className="mt-1 text-sm leading-6 text-[var(--foreground-muted)]">
+                표로 대략 감을 잡은 뒤에는 계산기에서 체중과 활동량을 넣어 개인 기준치를 바로 확인하는 편이
+                더 정확합니다.
+              </p>
+              <TrackedLink
+                href="/guides/tools#daily-protein-calculator"
+                trackingLabel="하루 단백질 계산기"
+                trackingSection="daily_requirement_calculator_cta"
+                trackingPageType="guide"
+                className="mt-3 inline-flex items-center rounded-xl bg-[#24543d] px-4 py-2 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-[#1d4532]"
+              >
+                하루 단백질 계산기 열기
+              </TrackedLink>
+            </div>
           </section>
 
           <section className="rounded-2xl border border-[#e8e6e3] bg-[#fffdf8] px-5 py-5">
