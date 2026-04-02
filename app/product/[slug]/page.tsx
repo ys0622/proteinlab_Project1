@@ -24,6 +24,7 @@ import { getNutritionDetail } from "../../data/products";
 import { getCategoryHref, getCategoryLabel } from "../../lib/categories";
 import { getProductBySlugAsync } from "../../lib/productData";
 import { getProductImageUrl } from "../../lib/productImage";
+import { getReviews } from "../../lib/reviewData";
 import {
   getCoupangRedirectHref,
   getKnownSourceCoupangUrlBySlug,
@@ -165,6 +166,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
   const { slug } = await params;
   const product = await getProductBySlugAsync(slug);
   if (!product) notFound();
+  const reviews = await getReviews(slug);
 
   const gradeLabels = product.gradeTags ?? [];
   const gradeDescs = product.gradeDescriptions ?? ["-", "-", "-"];
@@ -237,6 +239,17 @@ export default async function ProductDetailPage({ params }: PageProps) {
           { label: "나트륨", value: product.sodium !== undefined ? `${product.sodium}mg` : "-", isCompact: false },
         ];
 
+  const ratingValueMap = {
+    up: 5,
+    mid: 3,
+    down: 1,
+  } as const;
+  const reviewCount = reviews.length;
+  const aggregateRatingValue =
+    reviewCount > 0
+      ? reviews.reduce((sum, review) => sum + ratingValueMap[review.rating], 0) / reviewCount
+      : null;
+
   const jsonLd = [
     {
       "@context": "https://schema.org",
@@ -262,23 +275,32 @@ export default async function ProductDetailPage({ params }: PageProps) {
         },
       ],
     },
-    {
-      "@context": "https://schema.org",
-      "@type": "Product",
-      name: product.name,
-      brand: { "@type": "Brand", name: product.brand },
-      description: buildProductDescription(product),
-      ...(productImageUrl ? { image: `https://proteinlab.kr${productImageUrl}` } : {}),
-      category: getProductKindLabel(product.productType),
-      nutrition: {
-        "@type": "NutritionInformation",
-        proteinContent: `${product.proteinPerServing} g`,
-        ...(product.calories != null ? { calories: `${product.calories} kcal` } : {}),
-        ...(product.sugar != null ? { sugarContent: `${product.sugar} g` } : {}),
-        ...(product.fat != null ? { fatContent: `${product.fat} g` } : {}),
-        ...(product.sodium != null ? { sodiumContent: `${product.sodium} mg` } : {}),
-      },
-    },
+    ...(reviewCount > 0
+      ? [
+          {
+            "@context": "https://schema.org",
+            "@type": "Product",
+            name: product.name,
+            brand: { "@type": "Brand", name: product.brand },
+            description: buildProductDescription(product),
+            ...(productImageUrl ? { image: `https://proteinlab.kr${productImageUrl}` } : {}),
+            category: getProductKindLabel(product.productType),
+            nutrition: {
+              "@type": "NutritionInformation",
+              proteinContent: `${product.proteinPerServing} g`,
+              ...(product.calories != null ? { calories: `${product.calories} kcal` } : {}),
+              ...(product.sugar != null ? { sugarContent: `${product.sugar} g` } : {}),
+              ...(product.fat != null ? { fatContent: `${product.fat} g` } : {}),
+              ...(product.sodium != null ? { sodiumContent: `${product.sodium} mg` } : {}),
+            },
+            aggregateRating: {
+              "@type": "AggregateRating",
+              ratingValue: Number((aggregateRatingValue ?? 0).toFixed(1)),
+              reviewCount,
+            },
+          },
+        ]
+      : []),
     {
       "@context": "https://schema.org",
       "@type": "FAQPage",
