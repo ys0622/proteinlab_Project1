@@ -44,7 +44,7 @@ export const guideTracks: GuideTrack[] = [
     description:
       "단백질의 역할과 기본 개념을 먼저 이해할 수 있도록 Track A를 단일 핵심 주제로 정리했습니다.",
     hubSummary:
-      "단백질 기초 트랙은 지금 단백질이 몸에서 어떤 역할을 하는지 빠르게 이해하는 핵심 카드 1개만 제공합니다.",
+      "단백질 기초 트랙은 지금 단백질이 몸에서 어떤 역할을 하는지 빠르게 이해하는 출발 카드로 구성했습니다.",
     seoFocus: "단백질 역할, 단백질 기초, 단백질 기본 개념",
     accentColor: "#2d6a4f",
     accentBg: "#e7f3ec",
@@ -52,12 +52,12 @@ export const guideTracks: GuideTrack[] = [
       {
         slug: "protein-functions",
         title: "단백질 역할 개요",
-        description: "근육, 면역, 호르몬 관점에서 단백질이 몸에서 어떤 일을 하는지 먼저 이해하는 핵심 안내 카드입니다.",
-        searchIntent: "단백질은 몸에서 어떤 역할을 하나",
-        futureFocus: ["근육과 회복", "면역과 호르몬", "하루 섭취 기준"],
+        description: "근육, 면역, 호르몬 관점에서 단백질이 몸에서 어떤 일을 하는지 먼저 이해하는 기본 안내 카드입니다.",
+        searchIntent: "단백질이 몸에서 어떤 역할을 하나",
+        futureFocus: ["근육과 회복", "면역과 호르몬", "하루 섭취량 기준"],
         internalLinkTargets: [
           { label: "근육과 단백질", href: "/guides/basics/muscle" },
-          { label: "면역호르몬과 단백질", href: "/guides/basics/immunity-hormone" },
+          { label: "면역·호르몬과 단백질", href: "/guides/basics/immunity-hormone" },
         ],
       },
     ],
@@ -303,9 +303,9 @@ export const guideTracks: GuideTrack[] = [
     shortLabel: "섭취 전략 & 건강",
     title: "섭취 전략 & 건강",
     description:
-      "운동 전후, 체중 관리, 노년기, 식사대용 등 상황별 섭취 전략을 건강 관점과 함께 확장하는 허브입니다.",
+      "운동 전후, 체중 관리, 시니어, 식사대용처럼 상황별 섭취 전략과 건강 관점을 함께 확장하는 허브입니다.",
     hubSummary:
-      "기초 정보와 제품 선택 콘텐츠를 실제 섭취 전략으로 연결하는 트랙입니다. 건강 관리형 검색과 실전형 질문을 함께 받도록 설계했습니다.",
+      "기초 정보와 제품 선택 콘텐츠를 실제 섭취 전략으로 연결하는 트랙입니다. 건강 관리형 검색과 실전 질문을 함께 받도록 설계했습니다.",
     seoFocus: "섭취 타이밍, 건강 전략, 실전 활용",
     accentColor: "#7a5230",
     accentBg: "#f5f0ea",
@@ -313,9 +313,9 @@ export const guideTracks: GuideTrack[] = [
       {
         slug: "protein-timing",
         title: "단백질 섭취 타이밍",
-        description: "하루 중 언제 먹는 것이 좋은지 정리할 전략형 페이지 슬롯입니다.",
+        description: "하루 중 언제 먹는 것이 좋은지 정리한 실전 섭취 전략 페이지입니다.",
         searchIntent: "단백질 언제 먹어야 하나",
-        futureFocus: ["시간대별 전략", "생활 패턴별 적용", "제품 연결"],
+        futureFocus: ["시간대별 전략", "생활 루틴별 적용", "제품 연결"],
         internalLinkTargets: [
           { label: "운동 전 섭취", href: "/guides/intake-strategy-health/pre-workout-protein" },
           { label: "운동 후 섭취", href: "/guides/intake-strategy-health/post-workout-protein" },
@@ -324,7 +324,7 @@ export const guideTracks: GuideTrack[] = [
       {
         slug: "pre-workout-protein",
         title: "운동 전 섭취",
-        description: "운동 전에 단백질을 활용하는 방식과 주의점을 담을 페이지 슬롯입니다.",
+        description: "운동 전에 단백질을 활용하는 방법과 주의점을 다루는 페이지입니다.",
         searchIntent: "운동 전 단백질 섭취",
         futureFocus: ["운동 전 전략", "부담 적은 제품", "운동 유형별 연결"],
         internalLinkTargets: [
@@ -335,7 +335,7 @@ export const guideTracks: GuideTrack[] = [
       {
         slug: "post-workout-protein",
         title: "운동 후 섭취",
-        description: "운동 후 회복과 단백질 섭취 전략을 담을 페이지 슬롯입니다.",
+        description: "운동 후 회복과 단백질 섭취 전략을 다루는 페이지입니다.",
         searchIntent: "운동 후 단백질 섭취",
         futureFocus: ["회복 전략", "제품 선택", "타이밍 연결"],
         internalLinkTargets: [
@@ -345,21 +345,21 @@ export const guideTracks: GuideTrack[] = [
       },
       {
         slug: "weight-management-protein",
-        title: "체중 관리",
-        description: "감량·유지 상황에서 단백질을 활용하는 전략을 담을 페이지 슬롯입니다.",
-        searchIntent: "다이어트 단백질 섭취",
+        title: "체중 관리와 단백질",
+        description: "감량과 유지 상황에서 단백질을 활용하는 전략을 정리한 페이지입니다.",
+        searchIntent: "다이어트 단백질 전략",
         futureFocus: ["포만감 활용", "열량 조절", "식사 구조"],
         internalLinkTargets: [
           { label: "식사대용 전략", href: "/guides/intake-strategy-health/meal-replacement-strategy" },
-          { label: "제품 추천 리스트", href: "/guides/product-selection-comparison/recommendation-lists" },
+          { label: "추천 리스트", href: "/guides/product-selection-comparison/recommendation-lists" },
         ],
       },
       {
         slug: "muscle-maintenance-protein",
         title: "근육 유지",
-        description: "근육 유지 관점에서 섭취량과 제품 활용법을 정리할 페이지 슬롯입니다.",
-        searchIntent: "근손실 방지 단백질",
-        futureFocus: ["유지 전략", "활동량별 접근", "식사 보완"],
+        description: "근육 유지 관점에서 섭취량과 제품 활용법을 정리한 페이지입니다.",
+        searchIntent: "근육 유지 단백질",
+        futureFocus: ["유지 전략", "운동과 연결", "식사 보완"],
         internalLinkTargets: [
           { label: "단백질 섭취량", href: "/guides/protein-basics/protein-intake-amount" },
           { label: "운동 후 섭취", href: "/guides/intake-strategy-health/post-workout-protein" },
@@ -367,10 +367,10 @@ export const guideTracks: GuideTrack[] = [
       },
       {
         slug: "senior-protein-strategy",
-        title: "노년 단백질",
-        description: "노년층 단백질 섭취 전략과 제품 선택 포인트를 담을 페이지 슬롯입니다.",
-        searchIntent: "노년층 단백질 섭취",
-        futureFocus: ["고령층 전략", "부담 낮은 선택", "건강 관리 연결"],
+        title: "시니어 단백질 전략",
+        description: "시니어 단백질 섭취 전략과 제품 선택 기준을 다루는 페이지입니다.",
+        searchIntent: "시니어 단백질 전략",
+        futureFocus: ["고령층 전략", "부담 적은 선택", "건강 관리 연결"],
         internalLinkTargets: [
           { label: "단백질 건강 영향", href: "/guides/protein-basics/protein-health-impact" },
           { label: "단백질 음료 선택 가이드", href: "/guides/product-selection-comparison/protein-drink-guide" },
@@ -379,7 +379,7 @@ export const guideTracks: GuideTrack[] = [
       {
         slug: "meal-replacement-strategy",
         title: "식사대용 전략",
-        description: "식사대용과 보충용의 차이를 정리하고 활용법을 넣을 페이지 슬롯입니다.",
+        description: "식사대용과 보충용의 차이를 정리하고 활용법을 다루는 페이지입니다.",
         searchIntent: "단백질 음료 식사대용 가능할까",
         futureFocus: ["식사대용 판단", "보충용과 구분", "제품 연결"],
         internalLinkTargets: [
@@ -590,9 +590,9 @@ export const guideTracks: GuideTrack[] = [
     shortLabel: "계산 & 도구",
     title: "단백질 계산 & 도구",
     description:
-      "체중과 운동량을 기반으로 하루 단백질 섭취량을 계산하고 목표에 맞는 단백질 섭취 전략을 확인할 수 있는 도구 트랙입니다.",
+      "체중과 활동량을 기반으로 하루 단백질 섭취량을 계산하고 목표에 맞는 단백질 전략을 확인할 수 있는 도구 트랙입니다.",
     cardDescription:
-      "체중과 운동량을 기반으로 개인에게 필요한 단백질 섭취량을 계산하고 제품 선택에 활용할 수 있는 다양한 단백질 계산 도구를 제공합니다.",
+      "체중과 활동량을 기반으로 개인에게 필요한 단백질 섭취량을 계산하고 제품 선택과 실사용에 연결할 수 있는 단백질 계산 도구를 제공합니다.",
     cardNote: "하루 단백질 섭취량 계산기 등",
     ctaLabel: "도구 사용하기",
     hubSummary:
@@ -605,9 +605,9 @@ export const guideTracks: GuideTrack[] = [
         slug: "daily-protein-calculator",
         title: "하루 단백질 섭취량 계산기",
         description:
-          "체중과 운동량을 입력하면 하루 단백질 권장량을 바로 계산할 수 있습니다.",
+          "체중과 활동량을 입력하면 하루 단백질 권장량을 바로 계산할 수 있습니다.",
         searchIntent: "하루 단백질 섭취량 계산기",
-        futureFocus: ["체중 기준 계산", "운동량별 계수", "제품 연결"],
+        futureFocus: ["체중 기준 계산", "활동량 계수", "제품 연결"],
         internalLinkTargets: [
           { label: "단백질 섭취량", href: "/guides/protein-basics/protein-intake-amount" },
           { label: "단백질 음료 비교", href: "/products" },
@@ -617,9 +617,9 @@ export const guideTracks: GuideTrack[] = [
         slug: "protein-drink-count-calculator",
         title: "단백질 음료 개수 계산기",
         description:
-          "목표 단백질 섭취량을 기준으로 단백질 음료가 하루 몇 개 필요한지 계산합니다.",
+          "목표 섭취량을 기준으로 단백질 음료가 하루 몇 개 필요한지 계산합니다.",
         searchIntent: "단백질 음료 몇 개 먹어야",
-        futureFocus: ["제품별 단백질 함량 반영", "섭취량 환산", "비교 페이지 연결"],
+        futureFocus: ["제품별 단백질 함량 반영", "총량 역산", "비교 페이지 연결"],
         internalLinkTargets: [
           { label: "단백질 음료 선택 가이드", href: "/guides/product-selection-comparison/protein-drink-guide" },
           { label: "랭킹", href: "/ranking" },
@@ -629,9 +629,9 @@ export const guideTracks: GuideTrack[] = [
         slug: "protein-density-calculator",
         title: "단백질 밀도 계산기",
         description:
-          "칼로리 대비 단백질 효율을 계산해 더 효율적인 제품을 고를 수 있도록 도와줍니다.",
+          "칼로리 대비 단백질 효율을 계산해 더 효율적인 제품을 고를 수 있게 돕습니다.",
         searchIntent: "단백질 밀도 계산기",
-        futureFocus: ["밀도 계산식", "제품 비교", "선택 기준 연결"],
+        futureFocus: ["밀도 계산", "제품 비교", "선택 기준 연결"],
         internalLinkTargets: [
           { label: "영양 성분 기준", href: "/guides/product-selection-comparison/nutrition-criteria" },
           { label: "제품 비교", href: "/compare" },

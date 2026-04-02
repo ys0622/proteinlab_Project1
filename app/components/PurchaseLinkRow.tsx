@@ -39,7 +39,7 @@ export default function PurchaseLinkRow({
         tone="naver"
         size={size}
         onClick={naverHref ? onNaverClick : undefined}
-        title={naverHref ? undefined : "네이버 구매 링크를 아직 확인 중입니다."}
+        title={naverHref ? undefined : "네이버 쇼핑 링크를 아직 확인 중입니다."}
       />
       <PurchaseLinkButton
         href={officialMallHref}
