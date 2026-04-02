@@ -1816,6 +1816,146 @@ export const newcareWaterVsRtdConfig: ComparePageConfig = {
 };
 newcareWaterVsRtdConfig.jsonLd = [articleJsonLd(newcareWaterVsRtdConfig), faqJsonLd(newcareWaterVsRtdConfig)];
 
+export const newcareSugarGuideConfig: ComparePageConfig = {
+  slug: "newcare-low-sugar-guide",
+  title: "뉴케어 저당 선택 가이드",
+  description:
+    "뉴케어 올프로틴 41g, 25g, 워터를 당류, 칼로리, 단백질 밀도 기준으로 비교합니다. 혈당 부담이나 저당 기준으로 뉴케어를 읽을 때 어떤 라인을 먼저 봐야 하는지 정리했습니다.",
+  keywords: ["뉴케어 저당", "뉴케어 당류", "뉴케어 혈당", "뉴케어 올프로틴 워터"],
+  badge: "저당 가이드",
+  readingTime: "4분 읽기",
+  updatedAt: "2026-04-02",
+  methodologyNote: "ProteinLab DB 뉴케어 41g·25g·워터 기준",
+  intro:
+    "뉴케어 브랜드를 찾는 사용자 중에는 고단백보다 저당 구조를 먼저 보는 흐름도 적지 않습니다. 이 경우에는 단백질 총량보다 당류와 칼로리, 그리고 한 병 부담감을 먼저 읽는 편이 더 정확합니다.",
+  summary: [
+    "저당 기준만 보면 뉴케어 워터가 가장 먼저 보입니다.",
+    "고단백을 유지하면서 저당도 같이 보려면 41g 라인이 다음 후보가 됩니다.",
+    "25g 라인은 뉴케어 안에서 가장 무난한 표준형으로 읽는 편이 맞습니다.",
+  ],
+  comparisonTitle: "뉴케어 저당 비교",
+  comparisonColumns: ["뉴케어 워터", "뉴케어 41g", "뉴케어 25g"],
+  comparisonRows: buildComparisonRows([
+    { label: "단백질", values: [`${newcareWater.proteinPerServing}g`, `${newcare41.proteinPerServing}g`, `${newcare25.proteinPerServing}g`] },
+    { label: "당류", values: [`${newcareWater.sugar}g`, `${newcare41.sugar}g`, `${newcare25.sugar}g`] },
+    { label: "칼로리", values: [`${newcareWater.calories}kcal`, `${newcare41.calories}kcal`, `${newcare25.calories}kcal`] },
+    { label: "100mL당 단백질", values: [formatDensity(newcareWater), formatDensity(newcare41), formatDensity(newcare25)] },
+    { label: "칼로리/100mL", values: [formatCalories100(newcareWater), formatCalories100(newcare41), formatCalories100(newcare25)] },
+  ]),
+  sections: [
+    {
+      title: "당류 기준으로 읽는 법",
+      items: [
+        { title: "워터는 저당 축", body: "당류 0g과 낮은 칼로리 구조가 가장 분명합니다. 대신 단백질 총량은 일반 RTD보다 가볍게 읽어야 합니다." },
+        { title: "41g는 예외형", body: "고단백인데도 당류가 낮은 편이라 뉴케어 검색량이 늘 때 같이 주목받기 쉬운 SKU입니다." },
+        { title: "25g는 표준형", body: "저당만 보자면 워터나 41g보다 덜 강하지만, 브랜드 안에서 일상형 RTD 기준점 역할을 합니다." },
+      ],
+    },
+    {
+      title: "어떤 경우에 맞나",
+      items: [
+        { title: "혈당 부담을 우선할 때", body: "워터부터 보고, 부족하면 41g로 넘어가는 흐름이 가장 실용적입니다." },
+        { title: "저당 + 고단백을 같이 볼 때", body: "41g가 뉴케어 안에서는 가장 설명이 쉬운 선택지입니다." },
+        { title: "일상적으로 무난한 뉴케어", body: "25g는 고단백 특수형보다 부담이 낮아 입문형 검색과 잘 맞습니다." },
+      ],
+    },
+    {
+      title: "같이 보면 좋은 페이지",
+      items: [
+        { title: "당뇨 관점으로 넓히기", body: "브랜드를 넓혀 저당형 전체 후보를 보고 싶다면 당뇨/혈당 가이드로 이어지는 편이 좋습니다." },
+        { title: "뉴케어 안에서 더 좁히기", body: "41g와 25g의 차이는 별도 비교 페이지에서 더 선명하게 읽힙니다." },
+        { title: "워터형을 따로 읽기", body: "가벼움 자체가 핵심이면 워터 전용 가이드가 더 직접적입니다." },
+      ],
+    },
+  ],
+  faq: [
+    { question: "뉴케어에서 가장 저당으로 보기 쉬운 제품은 무엇인가요?", answer: "대표적으로는 뉴케어 워터가 가장 먼저 보입니다. 당류 0g 구조가 분명하기 때문입니다." },
+    { question: "저당인데도 단백질을 많이 챙기고 싶다면요?", answer: "뉴케어 41g가 그 예외형에 가깝습니다. 고단백과 저당을 같이 읽을 수 있습니다." },
+    { question: "혈당 관점이면 무조건 워터만 봐야 하나요?", answer: "반드시 그렇지는 않습니다. 총량 보충이 중요하면 41g도 충분히 같이 볼 만합니다." },
+  ],
+  relatedGuides: [
+    { title: "당뇨 단백질 음료 가이드", href: "/guides/product-selection-comparison/protein-drink-for-diabetes", description: "브랜드를 넓혀 저당형 후보 전체를 다시 봅니다." },
+    { title: "뉴케어 41g vs 25g", href: "/guides/product-selection-comparison/newcare-41g-vs-25g", description: "뉴케어 내부 대표 라인의 차이를 더 직접적으로 비교합니다." },
+    { title: "뉴케어 단백질워터 가이드", href: "/guides/product-selection-comparison/newcare-protein-water-guide", description: "워터형 자체를 더 자세히 읽고 싶다면 여기로 이어집니다." },
+  ],
+  purchaseLinks: [
+    { label: "뉴케어 워터 보기", slug: newcareWater.slug },
+    { label: "뉴케어 41g 보기", slug: newcare41.slug },
+    { label: "뉴케어 25g 보기", slug: newcare25.slug },
+  ],
+};
+newcareSugarGuideConfig.jsonLd = [articleJsonLd(newcareSugarGuideConfig), faqJsonLd(newcareSugarGuideConfig)];
+
+export const newcareBoxValueConfig: ComparePageConfig = {
+  slug: "newcare-box-value",
+  title: "뉴케어 박스가성비 가이드",
+  description:
+    "뉴케어 올프로틴 41g, 25g, 워터를 박스 구매 관점에서 비교합니다. 개당 단가와 단백질 1g당 체감 가성비를 기준으로 어떤 라인을 먼저 봐야 하는지 정리했습니다.",
+  keywords: ["뉴케어 박스", "뉴케어 가성비", "뉴케어 41g 박스", "뉴케어 올프로틴 가격"],
+  badge: "박스가성비",
+  readingTime: "4분 읽기",
+  updatedAt: "2026-04-02",
+  methodologyNote: "ProteinLab DB 영양값 + 박스 구매 흐름 기준",
+  intro:
+    "뉴케어는 한 병 기준보다 박스로 비교할 때 체감이 더 갈립니다. 단백질 총량이 높은 41g, 매일 마시기 쉬운 25g, 가볍게 넣기 쉬운 워터가 각각 다른 가성비를 가지기 때문에 개당 단가만 보면 해석이 틀어질 수 있습니다.",
+  summary: [
+    "개당 부담만 보면 25g이나 워터 쪽이 더 편하게 읽힙니다.",
+    "단백질 1g당 효율까지 보면 41g 라인이 다시 강해집니다.",
+    "결국 박스가성비는 가격만이 아니라 얼마나 자주, 어떤 목적으로 마실지까지 같이 봐야 합니다.",
+  ],
+  comparisonTitle: "뉴케어 박스가성비 읽는 법",
+  comparisonColumns: ["뉴케어 25g", "뉴케어 워터", "뉴케어 41g"],
+  comparisonRows: buildComparisonRows([
+    { label: "단백질", values: [`${newcare25.proteinPerServing}g`, `${newcareWater.proteinPerServing}g`, `${newcare41.proteinPerServing}g`] },
+    { label: "칼로리", values: [`${newcare25.calories}kcal`, `${newcareWater.calories}kcal`, `${newcare41.calories}kcal`] },
+    { label: "당류", values: [`${newcare25.sugar}g`, `${newcareWater.sugar}g`, `${newcare41.sugar}g`] },
+    { label: "가성비 읽는 포인트", values: ["일상형", "가벼운 루틴형", "고단백 효율형"] },
+    { label: "추천 흐름", values: ["매일 1병", "부담 적게", "총량 우선"] },
+  ]),
+  sections: [
+    {
+      title: "가성비를 어떻게 읽어야 하나",
+      items: [
+        { title: "개당 단가", body: "매일 한 병씩 루틴으로 넣는다면 개당 단가가 먼저 중요합니다. 이 경우 25g나 워터가 더 쉽게 읽힙니다." },
+        { title: "단백질 1g당 체감", body: "단백질 총량까지 포함하면 41g가 박스가성비 해석에서 다시 올라옵니다." },
+        { title: "실패 비용", body: "입맛이 안 맞으면 박스 구매가 바로 손실로 이어집니다. 뉴케어 검색량이 올 때도 이 포인트를 같이 잡아주는 편이 좋습니다." },
+      ],
+    },
+    {
+      title: "어떤 박스가 맞나",
+      items: [
+        { title: "매일 무난하게", body: "25g가 가장 무난합니다. 일상형 보충 루틴에 맞추기 쉽습니다." },
+        { title: "가볍게 오래 가기", body: "워터는 부담이 적어 박스 구매 심리 장벽이 낮습니다. 다만 보충량 기대치는 낮춰야 합니다." },
+        { title: "한 병 효율 우선", body: "41g는 한 병 만족감이 높아 박스가성비를 단백질 총량 기준으로 읽을 때 유리합니다." },
+      ],
+    },
+    {
+      title: "같이 봐야 하는 것",
+      items: [
+        { title: "맛 적응", body: "뉴케어는 라인마다 체감이 다르기 때문에 박스 전에는 단품이나 소량 경험이 안전합니다." },
+        { title: "저당 여부", body: "가성비만 보다가 당류나 칼로리 기준을 놓치면 실제 만족도가 떨어질 수 있습니다." },
+        { title: "브랜드 내 역할", body: "41g, 25g, 워터는 같은 뉴케어라도 역할이 다릅니다. 같은 카테고리로만 비교하면 판단이 느려집니다." },
+      ],
+    },
+  ],
+  faq: [
+    { question: "뉴케어는 어떤 라인이 박스로 가장 무난한가요?", answer: "대체로는 25g가 가장 무난합니다. 매일 넣기 쉬운 표준형 역할을 하기 때문입니다." },
+    { question: "41g는 비싸도 가성비가 좋다고 볼 수 있나요?", answer: "단백질 1g당 효율과 한 병 총량 기준으로는 충분히 그렇게 읽을 수 있습니다." },
+    { question: "워터를 박스로 사는 건 어떤 경우에 맞나요?", answer: "무거운 밀크형 RTD가 부담스럽고, 가볍게 루틴화하려는 경우에 더 맞습니다." },
+  ],
+  relatedGuides: [
+    { title: "단백질 음료 박스가성비", href: "/guides/product-selection-comparison/protein-drink-box-value", description: "뉴케어를 다른 브랜드 박스가성과 함께 넓게 봅니다." },
+    { title: "뉴케어 올프로틴 완전 분석", href: "/guides/product-selection-comparison/newcare-allprotein", description: "뉴케어 전체 라인업 역할을 먼저 정리합니다." },
+    { title: "뉴케어 저당 선택 가이드", href: "/guides/product-selection-comparison/newcare-low-sugar-guide", description: "가성비와 함께 저당 기준도 같이 확인합니다." },
+  ],
+  purchaseLinks: [
+    { label: "뉴케어 25g 보기", slug: newcare25.slug },
+    { label: "뉴케어 워터 보기", slug: newcareWater.slug },
+    { label: "뉴케어 41g 보기", slug: newcare41.slug },
+  ],
+};
+newcareBoxValueConfig.jsonLd = [articleJsonLd(newcareBoxValueConfig), faqJsonLd(newcareBoxValueConfig)];
+
 export const proteinDrinkByContentConfig: ComparePageConfig = {
   slug: "protein-drink-by-content",
   title: "단백질 음료 함량대별 완전 정리",
