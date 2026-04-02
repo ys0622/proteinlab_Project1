@@ -10,7 +10,13 @@ import MetricBadgeGroup from "../../components/MetricBadgeGroup";
 import NutritionDetailSection from "../../components/NutritionDetailSection";
 import ProductBadge from "../../components/ProductBadge";
 import TrackedLink from "../../components/TrackedLink";
-import type { ProductDetailProps } from "../../data/products";
+import {
+  barProductsWithGrades,
+  mockProducts,
+  shakeProducts,
+  type ProductDetailProps,
+  yogurtProductsWithGrades,
+} from "../../data/products";
 import {
   formatProductBadgeLabel,
   getMetricBadgeAriaLabel,
@@ -33,6 +39,16 @@ import {
 
 interface PageProps {
   params: Promise<{ slug: string }>;
+}
+
+export const dynamicParams = true;
+
+export function generateStaticParams() {
+  return [...mockProducts, ...barProductsWithGrades, ...yogurtProductsWithGrades, ...shakeProducts]
+    .filter((product) => product.slug)
+    .map((product) => ({
+      slug: product.slug,
+    }));
 }
 
 function getProductKindLabel(productType?: "drink" | "bar" | "yogurt" | "shake") {
