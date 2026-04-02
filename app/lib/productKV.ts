@@ -19,7 +19,15 @@ interface KVStore {
   }>;
 }
 
+function isStaticBuildPhase() {
+  return process.env.NEXT_PHASE === "phase-production-build";
+}
+
 export async function getProductKV(): Promise<KVStore | undefined> {
+  if (isStaticBuildPhase()) {
+    return undefined;
+  }
+
   try {
     const { env } = await getCloudflareContext({ async: true });
     const kv = (env as Record<string, unknown>).GUIDES_STATIC_DRAFTS_KV as Partial<KVStore> | undefined;

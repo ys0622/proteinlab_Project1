@@ -11,7 +11,15 @@ export interface ProductReview {
   createdAt: string;
 }
 
+function isStaticBuildPhase() {
+  return process.env.NEXT_PHASE === "phase-production-build";
+}
+
 async function getKV() {
+  if (isStaticBuildPhase()) {
+    return null;
+  }
+
   try {
     const { env } = await getCloudflareContext({ async: true });
     const kv = (env as Record<string, unknown>).GUIDES_STATIC_DRAFTS_KV as

@@ -9,6 +9,7 @@ import Header from "../../components/Header";
 import MetricBadgeGroup from "../../components/MetricBadgeGroup";
 import NutritionDetailSection from "../../components/NutritionDetailSection";
 import ProductBadge from "../../components/ProductBadge";
+import RelatedLinkCards from "../../components/RelatedLinkCards";
 import TrackedLink from "../../components/TrackedLink";
 import {
   barProductsWithGrades,
@@ -27,10 +28,12 @@ import ProductReviewSection from "../../components/ProductReviewSection";
 import PurchaseLinkRow from "../../components/PurchaseLinkRow";
 import ServingBasisNotice from "../../components/ServingBasisNotice";
 import { getNutritionDetail } from "../../data/products";
+import { brandToSlug } from "../../lib/brandHubs";
 import { getCategoryHref, getCategoryLabel } from "../../lib/categories";
-import { getProductBySlugAsync } from "../../lib/productData";
+import { getProductBySlugAsync, getProductsByCategoryAsync } from "../../lib/productData";
 import { getProductImageUrl } from "../../lib/productImage";
 import { getReviews } from "../../lib/reviewData";
+import { getSimilarProducts } from "../../lib/similarProducts";
 import {
   getCoupangRedirectHref,
   getKnownSourceCoupangUrlBySlug,
@@ -147,6 +150,43 @@ function buildProductTitle(product: ProductDetailProps): string {
   return `${product.brand} ${product.name} | ${headline.join(" · ")} | ${kind} 비교`;
 }
 
+function buildProductInternalLinks(product: ProductDetailProps) {
+  const category = (product.productType ?? "drink") as "drink" | "bar" | "yogurt" | "shake";
+  const categoryHref = getCategoryHref(category);
+  const categoryLabel = getProductKindLabel(product.productType);
+  const guideHref =
+    category === "drink"
+      ? "/guides/product-selection-comparison/protein-drink-guide"
+      : category === "bar"
+        ? "/guides/product-selection-comparison/protein-bar-guide"
+        : category === "yogurt"
+          ? "/guides/product-selection-comparison/protein-yogurt-guide"
+          : "/guides/product-selection-comparison/protein-shake-guide";
+
+  return [
+    {
+      href: categoryHref,
+      title: `${categoryLabel} 더 보기`,
+      description: `같은 카테고리 안에서 비슷한 스펙 제품을 한 번에 비교합니다.`,
+    },
+    {
+      href: `/compare?slugs=${encodeURIComponent(product.slug)}`,
+      title: "이 제품으로 비교 시작",
+      description: "현재 제품을 기준으로 다른 제품과 수치를 나란히 비교합니다.",
+    },
+    {
+      href: `/brands/${brandToSlug(product.brand)}`,
+      title: `${product.brand} 브랜드 보기`,
+      description: "같은 브랜드 안에서 라인업 차이를 빠르게 확인합니다.",
+    },
+    {
+      href: guideHref,
+      title: `${categoryLabel} 선택 가이드`,
+      description: "단백질, 당류, 칼로리를 어떤 순서로 볼지 바로 확인합니다.",
+    },
+  ];
+}
+
 export async function generateMetadata({ params }: PageProps) {
   const { slug } = await params;
   const product = await getProductBySlugAsync(slug);
@@ -211,6 +251,9 @@ export default async function ProductDetailPage({ params }: PageProps) {
   const officialMallHref = product.officialUrl && product.officialUrl !== "#" && product.officialUrl !== "" ? product.officialUrl : null;
   const isLactoseFreeDrink =
     product.productType === "drink" && product.variant?.trim() === "락토프리";
+  const categoryProducts = await getProductsByCategoryAsync(category);
+  const similarProducts = getSimilarProducts(product, categoryProducts, 3);
+  const internalLinks = buildProductInternalLinks(product).slice(0, 3);
 
   const summaryMetrics = isBar
     ? [
@@ -534,6 +577,45 @@ export default async function ProductDetailPage({ params }: PageProps) {
               ))}
             </div>
           </section>
+
+          <RelatedLinkCards
+            title="같이 보면 좋은 링크"
+            description="비슷한 제품 비교와 카테고리 이동을 바로 이어갈 수 있습니다."
+            links={internalLinks}
+            sectionId="product_detail_internal_links"
+          />
+
+          {similarProducts.length > 0 ? (
+            <section className="mt-8">
+              <div className="mb-4 space-y-1">
+                <h2 className="text-lg font-semibold text-[var(--foreground)]">비슷한 제품</h2>
+                <p className="text-sm leading-6 text-[var(--foreground-muted)]">
+                  같은 카테고리에서 스펙이 가까운 제품만 먼저 골랐습니다.
+                </p>
+              </div>
+              <div className="grid gap-3 md:grid-cols-3">
+                {similarProducts.map((candidate) => (
+                  <TrackedLink
+                    key={candidate.slug}
+                    href={`/product/${candidate.slug}`}
+                    trackingLabel={`${candidate.brand} ${candidate.name}`}
+                    trackingSection="product_detail_similar_products"
+                    trackingPageType="product_detail"
+                    className="rounded-xl border border-[#e8e6e3] bg-[#FFFDF8] px-4 py-4 transition-colors hover:bg-[var(--accent-light)]"
+                  >
+                    <p className="text-sm font-semibold text-[var(--foreground)]">
+                      {candidate.brand} {candidate.name}
+                    </p>
+                    <p className="mt-2 text-xs leading-5 text-[var(--foreground-muted)] md:text-sm">
+                      단백질 {candidate.proteinPerServing}g
+                      {candidate.sugar != null ? ` · 당류 ${candidate.sugar}g` : ""}
+                      {candidate.calories != null ? ` · ${candidate.calories}kcal` : ""}
+                    </p>
+                  </TrackedLink>
+                ))}
+              </div>
+            </section>
+          ) : null}
 
           <div className="mt-4 flex flex-wrap gap-3">
             <TrackedLink
