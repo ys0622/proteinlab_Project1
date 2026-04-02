@@ -3,6 +3,10 @@
 import type { ProductDetailProps } from "../data/products";
 import { type CompareColumnId, getCompareColumn } from "../lib/compareColumns";
 import {
+  formatCompareDisplayValue,
+  normalizeCompareDisplayValue,
+} from "../lib/compareDisplay";
+import {
   getCoupangRedirectHref,
   getKnownSourceCoupangUrlBySlug,
   normalizeCoupangUrl,
@@ -32,18 +36,40 @@ function getHighlight(
 
   const nums = getNumericValues(products, colId);
   const valid = nums
-    .map((n, i) => ({ n, i }))
-    .filter((x) => x.n != null && !Number.isNaN(x.n)) as { n: number; i: number }[];
+    .map((n, i) => {
+      const display = formatCompareDisplayValue(col.getValue(products[i]), colId);
+      return {
+        n,
+        i,
+        normalizedDisplay: normalizeCompareDisplayValue(display),
+      };
+    })
+    .filter(
+      (x): x is { n: number; i: number; normalizedDisplay: string } =>
+        x.n != null && !Number.isNaN(x.n),
+    );
 
   if (valid.length === 0) return null;
 
   if (col.highlight === "higher") {
     const max = Math.max(...valid.map((x) => x.n));
-    return { type: "highest", indices: valid.filter((x) => x.n === max).map((x) => x.i) };
+    const winners = valid.filter((x) => x.n === max);
+    const displaySet = new Set(winners.map((x) => x.normalizedDisplay));
+    const indices =
+      displaySet.size === 1
+        ? valid.filter((x) => displaySet.has(x.normalizedDisplay)).map((x) => x.i)
+        : winners.map((x) => x.i);
+    return { type: "highest", indices };
   }
 
   const min = Math.min(...valid.map((x) => x.n));
-  return { type: "lowest", indices: valid.filter((x) => x.n === min).map((x) => x.i) };
+  const winners = valid.filter((x) => x.n === min);
+  const displaySet = new Set(winners.map((x) => x.normalizedDisplay));
+  const indices =
+    displaySet.size === 1
+      ? valid.filter((x) => displaySet.has(x.normalizedDisplay)).map((x) => x.i)
+      : winners.map((x) => x.i);
+  return { type: "lowest", indices };
 }
 
 export default function CompareTable({ products, visibleColumnIds }: CompareTableProps) {
@@ -127,8 +153,7 @@ export default function CompareTable({ products, visibleColumnIds }: CompareTabl
                     );
                   }
 
-                  const value = col.getValue(p);
-                  const display = value !== undefined && value !== "" ? String(value) : "-";
+                  const display = formatCompareDisplayValue(col.getValue(p), col.id);
 
                   return (
                     <td

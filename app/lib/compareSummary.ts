@@ -1,5 +1,9 @@
 import type { ProductDetailProps } from "../data/productTypes";
 import { getCompareColumn, type CompareColumnId } from "./compareColumns";
+import {
+  formatCompareDisplayValue,
+  normalizeCompareDisplayValue,
+} from "./compareDisplay";
 
 type DifferenceTone = "strength" | "efficiency" | "mixed";
 
@@ -62,33 +66,6 @@ type RankedDifference = CompareSummaryChip & {
   tone: DifferenceTone;
 };
 
-function formatDisplayValue(value: string | number | undefined, columnId: CompareColumnId) {
-  if (value == null || value === "") return "-";
-  if (typeof value === "number") return String(value);
-  if (columnId === "bcaa" && /^[\d,.]+$/.test(value)) return `${value}mg`;
-  return value;
-}
-
-function normalizeDisplayValue(value: string) {
-  const trimmed = value.trim();
-  if (trimmed === "-") return trimmed;
-
-  const numericMatch = trimmed.match(/^(-?[\d,.]+)([a-zA-Z/%]+)?$/);
-  if (!numericMatch) {
-    return trimmed.replace(/\s+/g, " ");
-  }
-
-  const numericPart = numericMatch[1]?.replace(/,/g, "");
-  const unitPart = numericMatch[2] ?? "";
-  const parsed = Number(numericPart);
-
-  if (!Number.isFinite(parsed)) {
-    return trimmed.replace(/\s+/g, " ");
-  }
-
-  return `${parsed}${unitPart}`;
-}
-
 function getNumericValue(product: ProductDetailProps, columnId: CompareColumnId) {
   const column = getCompareColumn(columnId);
   if (!column?.toNumber) return null;
@@ -117,13 +94,13 @@ function buildRankedDifferences(
 
     const leftValueRaw = column.getValue(products[0]);
     const rightValueRaw = column.getValue(products[1]);
-    const leftDisplay = formatDisplayValue(leftValueRaw, columnId);
-    const rightDisplay = formatDisplayValue(rightValueRaw, columnId);
+    const leftDisplay = formatCompareDisplayValue(leftValueRaw, columnId);
+    const rightDisplay = formatCompareDisplayValue(rightValueRaw, columnId);
     const leftNumeric = getNumericValue(products[0], columnId);
     const rightNumeric = getNumericValue(products[1], columnId);
 
     if (leftNumeric == null || rightNumeric == null) return [];
-    if (normalizeDisplayValue(leftDisplay) === normalizeDisplayValue(rightDisplay)) return [];
+    if (normalizeCompareDisplayValue(leftDisplay) === normalizeCompareDisplayValue(rightDisplay)) return [];
 
     const diff = Math.abs(leftNumeric - rightNumeric);
     const threshold = getMeaningfulThreshold(columnId);
