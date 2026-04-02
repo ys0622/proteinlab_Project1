@@ -1320,6 +1320,502 @@ newcareAllproteinConfig.purchaseLinks = [
 ];
 newcareAllproteinConfig.jsonLd = [articleJsonLd(newcareAllproteinConfig), faqJsonLd(newcareAllproteinConfig)];
 
+export const newcare41Vs25Config: ComparePageConfig = {
+  slug: "newcare-41g-vs-25g",
+  title: "뉴케어 올프로틴 41g vs 25g 비교",
+  description:
+    "뉴케어 올프로틴 41g과 25g 라인을 단백질, 칼로리, 당류, 음용 목적 기준으로 비교합니다. 고단백 보충용인지 일상형인지 빠르게 정리합니다.",
+  keywords: ["뉴케어 올프로틴 41g", "뉴케어 올프로틴 25g", "뉴케어 41g 25g 차이", "뉴케어 올프로틴 비교"],
+  badge: "뉴케어 비교",
+  readingTime: "4분 읽기",
+  updatedAt: "2026-04-02",
+  methodologyNote: "ProteinLab DB 뉴케어 41g·25g 라인 기준",
+  intro:
+    "뉴케어를 찾는 사람도 실제로는 41g과 25g 중 어느 쪽이 맞는지에서 많이 갈립니다. 41g은 고단백 보충용이고, 25g은 매일 마시기 쉬운 일상형에 가깝습니다. 두 라인을 수치와 쓰임새 기준으로 나란히 보면 선택이 훨씬 빨라집니다.",
+  summary: [
+    "단백질 총량을 최우선으로 보면 41g 라인이 더 직접적입니다.",
+    "매일 부담 없이 마실 용도면 25g 라인이 더 무난합니다.",
+    "뉴케어를 고를 때는 총량보다 내가 원하는 음용 강도를 먼저 정하는 편이 정확합니다.",
+  ],
+  comparisonTitle: "뉴케어 41g과 25g 차이",
+  comparisonColumns: ["뉴케어 41g", "뉴케어 25g"],
+  comparisonRows: buildComparisonRows([
+    { label: "단백질", values: [`${newcare41.proteinPerServing}g`, `${newcare25.proteinPerServing}g`] },
+    { label: "용량", values: [newcare41.capacity ?? "-", newcare25.capacity ?? "-"] },
+    { label: "100mL당 단백질", values: [formatDensity(newcare41), formatDensity(newcare25)] },
+    { label: "칼로리", values: [`${newcare41.calories}kcal`, `${newcare25.calories}kcal`] },
+    { label: "당류", values: [`${newcare41.sugar}g`, `${newcare25.sugar}g`] },
+    { label: "지방", values: [`${newcare41.fat ?? "-"}g`, `${newcare25.fat ?? "-"}g`] },
+    { label: "나트륨", values: [`${newcare41.sodium ?? "-"}mg`, `${newcare25.sodium ?? "-"}mg`] },
+  ]),
+  sections: [
+    {
+      title: "핵심 차이",
+      items: [
+        { title: "41g은 고단백 예외 케이스", body: "뉴케어 41g은 같은 RTD 안에서도 총량이 높고 락토프리 포지션이 분명합니다. 운동 보충이나 회복기 보완처럼 한 병의 역할이 커야 할 때 먼저 볼 가치가 있습니다." },
+        { title: "25g은 일상형 라인", body: "뉴케어 25g은 진입 장벽이 더 낮습니다. 매일 한 병 마시거나 식사 사이 보충처럼 과하게 무겁지 않은 선택지가 필요할 때 더 자연스럽습니다." },
+        { title: "브랜드는 같아도 쓰임새는 다름", body: "둘 다 뉴케어지만 41g은 성능형, 25g은 지속형에 가깝습니다. 같은 브랜드 안에서도 무엇을 기대하는지 먼저 정해야 합니다." },
+      ],
+    },
+    {
+      title: "이런 경우에 맞습니다",
+      items: [
+        { title: "41g이 맞는 경우", body: "한 병으로 단백질을 크게 채우고 싶거나 유당 부담을 낮춘 고단백 RTD를 찾는 경우입니다. 40g대 제품군 안에서 비교하는 흐름이 더 맞습니다." },
+        { title: "25g이 맞는 경우", body: "지나치게 무거운 제품은 부담스럽고, 그래도 브랜드 신뢰와 락토프리 성격은 챙기고 싶은 경우입니다. 일상형 RTD 비교와 잘 맞습니다." },
+        { title: "처음이면 어떻게 고를까", body: "처음이라면 25g 쪽이 실수가 적고, 이미 고단백 제품을 찾는 상황이라면 41g으로 바로 올라가는 편이 더 빠릅니다." },
+      ],
+    },
+    {
+      title: "같이 보면 좋은 다음 비교",
+      items: [
+        { title: "41g을 더 넓게 비교", body: "테이크핏 몬스터, 닥터유 40g과 함께 보면 뉴케어 41g의 결이 더 명확해집니다." },
+        { title: "25g을 더 넓게 비교", body: "셀렉스, 하이뮨 같은 20g대 RTD와 같이 보면 뉴케어 25g의 포지션이 더 선명합니다." },
+        { title: "워터형이 더 맞는지 확인", body: "밀크형 RTD가 부담스럽다면 뉴케어 워터 라인으로 넘어가는 흐름도 자연스럽습니다." },
+      ],
+    },
+  ],
+  faq: [
+    { question: "뉴케어는 41g부터 보는 게 맞나요?", answer: "고단백 목적이 분명하면 41g부터 보는 게 맞지만, 매일 한 병씩 무난하게 마실 제품을 찾는다면 25g 라인이 더 실용적입니다." },
+    { question: "뉴케어 25g도 락토프리인가요?", answer: "ProteinLab DB 기준으로 뉴케어 올프로틴 25g 라인도 락토프리 성격으로 같이 묶여 있습니다. 그래서 일반 밀크형 RTD가 부담스러운 사람에게 자주 후보가 됩니다." },
+    { question: "41g과 25g 중 어느 쪽이 더 무난한가요?", answer: "대부분은 25g이 더 무난합니다. 41g은 분명한 고단백 목적이 있을 때 선택 이유가 더 강해집니다." },
+  ],
+  relatedGuides: [
+    { title: "뉴케어 올프로틴 완전 분석", href: "/guides/product-selection-comparison/newcare-allprotein", description: "41g, 25g, 식물성, 워터 라인을 한 번에 정리한 메인 페이지입니다." },
+    { title: "단백질 음료 40g 이상 3종 비교", href: "/guides/product-selection-comparison/high-protein-40g-comparison", description: "41g을 다른 40g대 제품과 나란히 비교합니다." },
+    { title: "단백질 음료 입문 가이드", href: "/guides/product-selection-comparison/protein-drink-beginners-guide", description: "25g급 RTD를 어떻게 보면 되는지 먼저 정리합니다." },
+  ],
+  purchaseLinks: [
+    { label: "뉴케어 올프로틴 41g 보기", slug: newcare41.slug },
+    { label: "뉴케어 올프로틴 25g 보기", slug: newcare25.slug },
+  ],
+};
+newcare41Vs25Config.jsonLd = [articleJsonLd(newcare41Vs25Config), faqJsonLd(newcare41Vs25Config)];
+
+export const newcareWaterConfig: ComparePageConfig = {
+  slug: "newcare-protein-water-guide",
+  title: "뉴케어 올프로틴 워터 정리",
+  description:
+    "뉴케어 올프로틴 워터를 단백질, 당류, 칼로리, 음용감 기준으로 정리합니다. 밀크형 RTD가 부담스러울 때 어떤 대안이 되는지 빠르게 확인할 수 있습니다.",
+  keywords: ["뉴케어 올프로틴 워터", "뉴케어 워터 단백질", "뉴케어 워터 레몬", "뉴케어 워터 사과"],
+  badge: "뉴케어 워터",
+  readingTime: "4분 읽기",
+  updatedAt: "2026-04-02",
+  methodologyNote: "ProteinLab DB 뉴케어 올프로틴 워터 기준",
+  intro:
+    "뉴케어 검색량이 늘 때 같이 붙는 의도 중 하나가 워터형입니다. 올프로틴 워터는 일반 밀크형 RTD와 결이 다르기 때문에 단백질 총량보다도 음용감, 칼로리, 당류, 부담 정도를 먼저 읽는 편이 맞습니다.",
+  summary: [
+    "올프로틴 워터는 무거운 고단백 RTD보다 가볍게 마시는 쪽에 더 가깝습니다.",
+    "당류 0g, 낮은 칼로리 구조라 밀크형이 부담스러운 사람에게 대안이 됩니다.",
+    "식사 보완보다 산뜻한 보충 쪽으로 읽어야 실수가 적습니다.",
+  ],
+  comparisonTitle: "뉴케어 워터 핵심 수치",
+  comparisonColumns: ["뉴케어 워터", "뉴케어 25g", "뉴케어 41g"],
+  comparisonRows: buildComparisonRows([
+    { label: "단백질", values: [`${newcareWater.proteinPerServing}g`, `${newcare25.proteinPerServing}g`, `${newcare41.proteinPerServing}g`] },
+    { label: "용량", values: [newcareWater.capacity ?? "-", newcare25.capacity ?? "-", newcare41.capacity ?? "-"] },
+    { label: "100mL당 단백질", values: [formatDensity(newcareWater), formatDensity(newcare25), formatDensity(newcare41)] },
+    { label: "칼로리", values: [`${newcareWater.calories}kcal`, `${newcare25.calories}kcal`, `${newcare41.calories}kcal`] },
+    { label: "당류", values: [`${newcareWater.sugar}g`, `${newcare25.sugar}g`, `${newcare41.sugar}g`] },
+    { label: "칼로리/100mL", values: [formatCalories100(newcareWater), formatCalories100(newcare25), formatCalories100(newcare41)] },
+  ]),
+  sections: [
+    {
+      title: "워터형을 보는 기준",
+      items: [
+        { title: "가볍게 마시는 쪽", body: "올프로틴 워터는 80kcal 수준이라 밀크형 RTD보다 부담이 낮습니다. 진한 보충감보다 가벼운 음용 경험이 더 중요할 때 맞습니다." },
+        { title: "당류 기준이 분명함", body: "당류 0g 구조라 저당형 검색과도 잘 맞습니다. 다이어트나 혈당 부담을 같이 보는 사용자에게 설명이 쉬운 편입니다." },
+        { title: "총량은 과장하면 안 됨", body: "워터형은 가벼운 대신 41g 같은 고단백 라인과 역할이 다릅니다. 식사 보완이나 고단백 보충의 대체재로 읽으면 과장에 가깝습니다." },
+      ],
+    },
+    {
+      title: "이런 사용자에게 맞습니다",
+      items: [
+        { title: "밀크형 RTD가 부담스러운 경우", body: "음용감이 무겁거나 속이 더부룩한 경험이 있다면 워터형이 더 편할 수 있습니다. 뉴케어 안에서도 가장 가벼운 축입니다." },
+        { title: "당류와 칼로리를 같이 보는 경우", body: "단백질 총량보다도 저당, 저칼로리 구조가 더 중요한 사용자라면 워터형이 명확한 후보가 됩니다." },
+        { title: "운동 직후 가볍게 보충하는 경우", body: "한 병으로 40g급 보충을 노리는 용도는 아니지만, 운동 직후 가볍게 마실 제품을 찾는다면 비교 후보로 충분합니다." },
+      ],
+    },
+    {
+      title: "같이 보면 좋은 비교",
+      items: [
+        { title: "저당 음료 비교", body: "셀렉스 프로핏, 테이크핏 맥스 같은 저당 밀크형 RTD와 비교하면 워터형의 의미가 더 잘 보입니다." },
+        { title: "뉴케어 메인 라인 비교", body: "워터와 25g, 41g을 같이 보면 뉴케어 안에서도 어떤 목적이 갈리는지 금방 정리됩니다." },
+        { title: "락토프리 대안 찾기", body: "워터형이 제일 편한지, 락토프리 밀크형이 더 나은지 같이 보는 흐름이 가장 실용적입니다." },
+      ],
+    },
+  ],
+  faq: [
+    { question: "뉴케어 워터는 단백질이 낮은 편인가요?", answer: "41g 같은 고단백 라인과 비교하면 낮지만, 워터형이라는 목적을 감안하면 역할이 다릅니다. 가벼운 보충 쪽으로 읽는 게 맞습니다." },
+    { question: "뉴케어 워터는 다이어트용으로 보나요?", answer: "당류 0g과 낮은 칼로리 때문에 다이어트 사용자도 많이 봅니다. 다만 총량보다 가벼움이 핵심이라 식사대용처럼 읽으면 과합니다." },
+    { question: "밀크형보다 무조건 더 좋나요?", answer: "아닙니다. 워터형은 가볍고 부담이 낮은 대신, 고단백 보충감은 밀크형 라인이 더 강합니다." },
+  ],
+  relatedGuides: [
+    { title: "뉴케어 올프로틴 완전 분석", href: "/guides/product-selection-comparison/newcare-allprotein", description: "워터를 포함한 전체 뉴케어 라인을 한 번에 봅니다." },
+    { title: "저당 단백질 음료 가이드", href: "/guides/product-selection-comparison/low-sugar-protein-drink-guide", description: "워터형이 저당 기준에서 어떤 위치인지 정리합니다." },
+    { title: "락토프리 단백질 음료", href: "/guides/product-selection-comparison/lactose-free-protein-drink", description: "밀크형 락토프리와 워터형을 같이 비교합니다." },
+  ],
+  purchaseLinks: [
+    { label: "뉴케어 올프로틴 워터 보기", slug: newcareWater.slug },
+    { label: "뉴케어 올프로틴 25g 보기", slug: newcare25.slug },
+  ],
+};
+newcareWaterConfig.jsonLd = [articleJsonLd(newcareWaterConfig), faqJsonLd(newcareWaterConfig)];
+
+export const newcareVsHymuneConfig: ComparePageConfig = {
+  slug: "newcare-vs-hymune",
+  title: "뉴케어 vs 하이뮨 단백질 음료 비교",
+  description:
+    "뉴케어 올프로틴과 하이뮨 프로틴 밸런스를 단백질, 용량, 당류, 브랜드 포지션 기준으로 비교합니다. 50대·시니어·회복기 보완용으로 어떤 흐름이 더 맞는지 정리합니다.",
+  keywords: ["뉴케어 하이뮨 비교", "뉴케어 vs 하이뮨", "시니어 단백질 음료", "하이뮨 뉴케어 차이"],
+  badge: "브랜드 비교",
+  readingTime: "4분 읽기",
+  updatedAt: "2026-04-02",
+  methodologyNote: "ProteinLab DB 뉴케어 41g·하이뮨 프로틴 밸런스 기준",
+  intro:
+    "뉴케어와 하이뮨은 둘 다 건강관리형 검색에서 자주 겹치지만, 실제 제품 결은 꽤 다릅니다. 뉴케어는 고단백 예외 케이스 쪽으로 읽히고, 하이뮨은 조금 더 익숙한 균형형 진입 제품으로 읽히는 편입니다.",
+  summary: [
+    "단백질 총량은 뉴케어 41g이 확실히 높습니다.",
+    "부담 낮은 첫 제품 흐름은 하이뮨이 더 자연스럽습니다.",
+    "시니어·회복기 검색에서는 브랜드보다 용량과 음용 부담을 먼저 보는 편이 더 정확합니다.",
+  ],
+  comparisonTitle: "뉴케어와 하이뮨 차이",
+  comparisonColumns: ["뉴케어 41g", "하이뮨 밸런스"],
+  comparisonRows: buildComparisonRows([
+    { label: "단백질", values: [`${newcare41.proteinPerServing}g`, `${hymuneBalance.proteinPerServing}g`] },
+    { label: "용량", values: [newcare41.capacity ?? "-", hymuneBalance.capacity ?? "-"] },
+    { label: "100mL당 단백질", values: [formatDensity(newcare41), formatDensity(hymuneBalance)] },
+    { label: "칼로리", values: [`${newcare41.calories}kcal`, `${hymuneBalance.calories}kcal`] },
+    { label: "당류", values: [`${newcare41.sugar}g`, `${hymuneBalance.sugar}g`] },
+    { label: "나트륨", values: [`${newcare41.sodium ?? "-"}mg`, `${hymuneBalance.sodium ?? "-"}mg`] },
+  ]),
+  sections: [
+    {
+      title: "브랜드 결 차이",
+      items: [
+        { title: "뉴케어는 고단백 예외형", body: "41g급 뉴케어는 시니어·회복기 브랜드 이미지 안에서도 고단백 예외 케이스에 가깝습니다. 총량이 필요한 상황에서 강점이 큽니다." },
+        { title: "하이뮨은 진입형 균형 라인", body: "하이뮨 프로틴 밸런스는 용량이 작고 접근성이 쉬워 처음 시작하는 사람에게 설명이 더 쉽습니다. 과한 총량보다 부담이 낮은 편이 중요할 때 맞습니다." },
+        { title: "검색 의도는 비슷해도 선택 기준은 다름", body: "브랜드만 보면 비슷해 보이지만, 실제로는 뉴케어는 총량, 하이뮨은 접근성이 먼저입니다. 이 차이를 먼저 보면 선택이 빨라집니다." },
+      ],
+    },
+    {
+      title: "이런 경우에 맞습니다",
+      items: [
+        { title: "뉴케어가 맞는 경우", body: "고단백 보충이 분명히 필요하고, 락토프리 성격까지 같이 보려는 경우입니다. 40g대 제품과 함께 비교해도 됩니다." },
+        { title: "하이뮨이 맞는 경우", body: "처음 시작하거나 한 병이 너무 무거우면 부담스러운 경우입니다. 적응형 첫 제품 흐름으로는 하이뮨이 더 무난합니다." },
+        { title: "보호자 검색 의도", body: "보호자나 가족이 대신 찾는 경우엔 브랜드보다 실제 한 병의 무게감과 음용 부담을 같이 보는 편이 정확합니다." },
+      ],
+    },
+    {
+      title: "같이 보면 좋은 다음 페이지",
+      items: [
+        { title: "뉴케어 전체 라인업", body: "41g만이 아니라 25g, 식물성, 워터 라인까지 같이 보면 뉴케어 내부 선택지가 더 명확합니다." },
+        { title: "50대용 단백질 음료 가이드", body: "브랜드 비교보다 연령대 기준으로 한 번 더 정리하고 싶을 때 자연스럽게 이어집니다." },
+        { title: "락토프리 비교", body: "유당 부담이 핵심이면 락토프리 기준 페이지가 더 직접적인 답이 됩니다." },
+      ],
+    },
+  ],
+  faq: [
+    { question: "50대나 시니어는 뉴케어와 하이뮨 중 뭘 먼저 보나요?", answer: "처음 시작이면 하이뮨이 더 무난하고, 고단백 보충이 분명하면 뉴케어 41g이 더 직접적입니다." },
+    { question: "뉴케어와 하이뮨은 같은 용도인가요?", answer: "검색 의도는 비슷할 수 있지만 결은 다릅니다. 뉴케어는 고단백 예외형, 하이뮨은 진입형 균형 라인에 가깝습니다." },
+    { question: "유당 부담까지 보면 어느 쪽이 낫나요?", answer: "ProteinLab DB 기준으로는 뉴케어 41g이 락토프리 성격으로 읽히기 때문에 그 관점에서 우선순위가 올라갑니다." },
+  ],
+  relatedGuides: [
+    { title: "뉴케어 올프로틴 완전 분석", href: "/guides/product-selection-comparison/newcare-allprotein", description: "뉴케어 라인을 자세히 풀어본 메인 페이지입니다." },
+    { title: "50대 단백질 음료 가이드", href: "/guides/product-selection-comparison/protein-drink-for-50s", description: "브랜드보다 연령대 기준으로 다시 좁혀봅니다." },
+    { title: "락토프리 단백질 음료", href: "/guides/product-selection-comparison/lactose-free-protein-drink", description: "유당 부담 기준으로 비교를 이어갑니다." },
+  ],
+  purchaseLinks: [
+    { label: "뉴케어 올프로틴 41g 보기", slug: newcare41.slug },
+    { label: "하이뮨 프로틴 밸런스 보기", slug: hymuneBalance.slug },
+  ],
+};
+newcareVsHymuneConfig.jsonLd = [articleJsonLd(newcareVsHymuneConfig), faqJsonLd(newcareVsHymuneConfig)];
+
+export const newcareVsSellexConfig: ComparePageConfig = {
+  slug: "newcare-vs-sellex",
+  title: "뉴케어 vs 셀렉스 단백질 음료 비교",
+  description:
+    "뉴케어 올프로틴과 셀렉스 프로핏을 단백질, 당류, 칼로리, 락토프리 관점으로 비교합니다. 고단백 보충형과 대중형 RTD 차이를 빠르게 정리합니다.",
+  keywords: ["뉴케어 셀렉스 비교", "뉴케어 vs 셀렉스", "뉴케어 올프로틴 셀렉스 프로핏", "락토프리 단백질 음료 비교"],
+  badge: "브랜드 비교",
+  readingTime: "4분 읽기",
+  updatedAt: "2026-04-02",
+  methodologyNote: "ProteinLab DB 뉴케어 41g·셀렉스 프로핏 기준",
+  intro:
+    "뉴케어와 셀렉스는 검색에서 자주 겹치지만, 실제로는 고단백 예외형과 대중형 RTD라는 차이가 있습니다. 같은 단백질 음료라도 어떤 목적에 더 가까운지 먼저 정리해 두면 비교 속도가 빨라집니다.",
+  summary: [
+    "고단백 총량은 뉴케어 41g이 더 직접적입니다.",
+    "일상형 RTD 진입과 대중성은 셀렉스가 더 강합니다.",
+    "락토프리와 고단백을 같이 보면 뉴케어 쪽 우선순위가 올라갑니다.",
+  ],
+  comparisonTitle: "뉴케어와 셀렉스 차이",
+  comparisonColumns: ["뉴케어 41g", "셀렉스 프로핏"],
+  comparisonRows: buildComparisonRows([
+    { label: "단백질", values: [`${newcare41.proteinPerServing}g`, `${sellex.proteinPerServing}g`] },
+    { label: "용량", values: [newcare41.capacity ?? "-", sellex.capacity ?? "-"] },
+    { label: "100mL당 단백질", values: [formatDensity(newcare41), formatDensity(sellex)] },
+    { label: "칼로리", values: [`${newcare41.calories}kcal`, `${sellex.calories}kcal`] },
+    { label: "당류", values: [`${newcare41.sugar}g`, `${sellex.sugar}g`] },
+    { label: "나트륨", values: [`${newcare41.sodium ?? "-"}mg`, `${sellex.sodium ?? "-"}mg`] },
+  ]),
+  sections: [
+    {
+      title: "핵심 차이",
+      items: [
+        { title: "뉴케어는 고단백 예외형", body: "뉴케어 41g은 40g대 라인업 안에서 읽어야 성격이 맞습니다. 단백질 총량과 락토프리 관점이 핵심입니다." },
+        { title: "셀렉스는 대중형 RTD", body: "셀렉스 프로핏은 20g대 RTD 대표 축입니다. 입문, 다이어트, 일상형 검색과 더 자주 연결됩니다." },
+        { title: "브랜드 결도 다름", body: "뉴케어는 건강관리형, 셀렉스는 운동 보충과 대중형 RTD 축이 더 강합니다. 숫자만큼 브랜드 프레임 차이도 큽니다." },
+      ],
+    },
+    {
+      title: "어떤 경우에 맞나",
+      items: [
+        { title: "뉴케어가 맞는 경우", body: "고단백 총량과 락토프리 접근성이 같이 중요한 경우입니다. 일반 20g대 RTD로 부족한 사용자에게 더 잘 맞습니다." },
+        { title: "셀렉스가 맞는 경우", body: "처음 시작하거나, 한 병이 너무 무거운 제품은 피하고 싶은 경우입니다. 일상형 RTD 흐름으로 자연스럽습니다." },
+        { title: "결론이 안 나면", body: "뉴케어 25g까지 포함하거나, 셀렉스 락토프리 라인까지 같이 보는 식으로 한 단계 더 넓혀보는 게 좋습니다." },
+      ],
+    },
+    {
+      title: "다음 비교 흐름",
+      items: [
+        { title: "뉴케어를 더 깊게", body: "41g, 25g, 식물성, 워터까지 같이 보면 뉴케어 내부 선택지가 더 잘 보입니다." },
+        { title: "셀렉스를 더 깊게", body: "프로핏과 락토프리, 웨이프로핏까지 같이 보면 셀렉스 쪽 선택지가 더 선명해집니다." },
+        { title: "락토프리 기준으로 재정리", body: "유당 부담이 핵심이면 브랜드 비교보다 락토프리 축이 더 직접적인 답을 줍니다." },
+      ],
+    },
+  ],
+  faq: [
+    { question: "뉴케어와 셀렉스 중 더 고단백인 쪽은 어디인가요?", answer: "ProteinLab DB 기준으로는 뉴케어 41g이 훨씬 직접적입니다. 셀렉스 프로핏은 20g대 일상형 RTD 축입니다." },
+    { question: "일상적으로 마시기 더 쉬운 쪽은 어디인가요?", answer: "대체로 셀렉스 쪽이 더 무난합니다. 뉴케어 41g은 고단백 목적이 분명할 때 선택 이유가 더 강합니다." },
+    { question: "유당 부담까지 보면 어떤 쪽이 낫나요?", answer: "뉴케어 41g은 락토프리 성격으로 읽히기 때문에 그 관점에서 우선순위가 더 올라갑니다." },
+  ],
+  relatedGuides: [
+    { title: "뉴케어 올프로틴 완전 분석", href: "/guides/product-selection-comparison/newcare-allprotein", description: "뉴케어 라인을 더 자세히 봅니다." },
+    { title: "셀렉스 라인업 보기", href: "/guides/product-selection-comparison/selexs-lineup", description: "셀렉스 내부 라인 차이를 이어서 봅니다." },
+    { title: "락토프리 단백질 음료", href: "/guides/product-selection-comparison/lactose-free-protein-drink", description: "락토프리 기준으로 다시 비교합니다." },
+  ],
+  purchaseLinks: [
+    { label: "뉴케어 올프로틴 41g 보기", slug: newcare41.slug },
+    { label: "셀렉스 프로핏 보기", slug: sellex.slug },
+  ],
+};
+newcareVsSellexConfig.jsonLd = [articleJsonLd(newcareVsSellexConfig), faqJsonLd(newcareVsSellexConfig)];
+
+export const newcareFor50sConfig: ComparePageConfig = {
+  slug: "newcare-for-50s",
+  title: "뉴케어 50대 단백질 음료 가이드",
+  description:
+    "50대가 뉴케어 올프로틴을 볼 때 41g, 25g, 워터 중 무엇부터 보면 되는지 정리합니다. 부담감, 음용성, 보충 목적 기준으로 빠르게 판단할 수 있습니다.",
+  keywords: ["뉴케어 50대", "뉴케어 시니어 단백질", "뉴케어 올프로틴 50대", "50대 단백질 음료 뉴케어"],
+  badge: "50대 가이드",
+  readingTime: "4분 읽기",
+  updatedAt: "2026-04-02",
+  methodologyNote: "ProteinLab DB 뉴케어 41g·25g·워터 기준",
+  intro:
+    "50대가 뉴케어를 볼 때는 단백질 총량 하나만 보면 오히려 헷갈립니다. 실제로는 한 병의 무게감, 음용 편의성, 보충 목적이 더 중요합니다. 뉴케어 안에서도 41g, 25g, 워터는 역할이 다르기 때문에 먼저 이 차이를 나눠 읽는 편이 맞습니다.",
+  summary: [
+    "처음이면 25g이나 워터처럼 부담이 낮은 쪽이 더 무난합니다.",
+    "보충 목적이 분명하면 41g이 직접적이지만 진입 장벽도 더 큽니다.",
+    "50대 검색에서는 브랜드보다 한 병의 무게감과 지속 가능성이 더 중요합니다.",
+  ],
+  comparisonTitle: "50대 관점에서 보는 뉴케어",
+  comparisonColumns: ["뉴케어 25g", "뉴케어 워터", "뉴케어 41g"],
+  comparisonRows: buildComparisonRows([
+    { label: "단백질", values: [`${newcare25.proteinPerServing}g`, `${newcareWater.proteinPerServing}g`, `${newcare41.proteinPerServing}g`] },
+    { label: "용량", values: [newcare25.capacity ?? "-", newcareWater.capacity ?? "-", newcare41.capacity ?? "-"] },
+    { label: "칼로리", values: [`${newcare25.calories}kcal`, `${newcareWater.calories}kcal`, `${newcare41.calories}kcal`] },
+    { label: "당류", values: [`${newcare25.sugar}g`, `${newcareWater.sugar}g`, `${newcare41.sugar}g`] },
+    { label: "100mL당 단백질", values: [formatDensity(newcare25), formatDensity(newcareWater), formatDensity(newcare41)] },
+  ]),
+  sections: [
+    {
+      title: "어떤 순서로 보면 좋은가",
+      items: [
+        { title: "처음 시작이면 25g", body: "일상형 RTD로 보기 쉬워서 적응용 첫 제품으로 무난합니다. 뉴케어 안에서도 가장 설명이 쉬운 축입니다." },
+        { title: "밀크형이 부담스러우면 워터", body: "가볍게 마실 수 있는 쪽을 원하면 워터형이 더 잘 맞습니다. 당류 0g 구조도 설명이 쉽습니다." },
+        { title: "보충 목적이 강하면 41g", body: "한 병으로 단백질을 크게 채워야 할 이유가 분명할 때만 41g을 우선순위로 두는 편이 맞습니다." },
+      ],
+    },
+    {
+      title: "실제 판단 기준",
+      items: [
+        { title: "총량보다 지속 가능성", body: "매일 챙길 수 있어야 의미가 있습니다. 너무 무거운 제품은 처음에는 오히려 지속성이 떨어질 수 있습니다." },
+        { title: "한 병의 부담감", body: "용량, 칼로리, 음용감이 함께 작동합니다. 50대 검색에서는 숫자보다 이 체감 차이가 더 중요할 때가 많습니다." },
+        { title: "유당 부담도 같이 보기", body: "뉴케어가 자주 언급되는 이유 중 하나가 락토프리 성격입니다. 일반 밀크형 RTD가 부담스럽다면 우선순위가 올라갑니다." },
+      ],
+    },
+    {
+      title: "같이 보면 좋은 페이지",
+      items: [
+        { title: "50대 단백질 음료 전체 가이드", body: "뉴케어만이 아니라 하이뮨, 셀렉스와 같이 보면 선택 이유가 더 뚜렷해집니다." },
+        { title: "뉴케어 vs 하이뮨", body: "건강관리형 브랜드끼리 비교하면 결 차이를 더 쉽게 읽을 수 있습니다." },
+        { title: "락토프리 비교", body: "유당 부담이 핵심이면 락토프리 기준 페이지가 더 직접적입니다." },
+      ],
+    },
+  ],
+  faq: [
+    { question: "50대는 뉴케어 41g부터 봐야 하나요?", answer: "반드시 그렇진 않습니다. 처음이면 25g이나 워터처럼 부담이 낮은 쪽이 더 실용적일 수 있습니다." },
+    { question: "50대에게 뉴케어가 자주 언급되는 이유는 무엇인가요?", answer: "고단백 보충과 락토프리 성격, 건강관리형 브랜드 이미지가 같이 묶이기 때문입니다." },
+    { question: "하루에 한 병씩 마시기엔 어떤 라인이 무난한가요?", answer: "대체로 25g 쪽이 더 무난합니다. 워터형은 더 가볍고, 41g은 목적이 분명할 때 선택 이유가 더 강합니다." },
+  ],
+  relatedGuides: [
+    { title: "50대 단백질 음료 가이드", href: "/guides/product-selection-comparison/protein-drink-for-50s", description: "뉴케어 외 브랜드까지 같이 봅니다." },
+    { title: "뉴케어 vs 하이뮨", href: "/guides/product-selection-comparison/newcare-vs-hymune", description: "건강관리형 브랜드 비교로 이어집니다." },
+    { title: "뉴케어 올프로틴 완전 분석", href: "/guides/product-selection-comparison/newcare-allprotein", description: "뉴케어 라인 전체를 다시 봅니다." },
+  ],
+  purchaseLinks: [
+    { label: "뉴케어 올프로틴 25g 보기", slug: newcare25.slug },
+    { label: "뉴케어 올프로틴 워터 보기", slug: newcareWater.slug },
+    { label: "뉴케어 올프로틴 41g 보기", slug: newcare41.slug },
+  ],
+};
+newcareFor50sConfig.jsonLd = [articleJsonLd(newcareFor50sConfig), faqJsonLd(newcareFor50sConfig)];
+
+export const newcarePlantVsLactoseFreeConfig: ComparePageConfig = {
+  slug: "newcare-plant-vs-lactosefree",
+  title: "뉴케어 식물성 vs 셀렉스 락토프리 비교",
+  description:
+    "뉴케어 올프로틴 식물성과 셀렉스 락토프리 RTD를 단백질, 당류, 칼로리, 부담감 기준으로 비교합니다. 유당 부담이 있거나 식물성 단백질을 찾는 경우 어떤 쪽이 더 맞는지 정리했습니다.",
+  keywords: ["뉴케어 식물성", "뉴케어 락토프리", "셀렉스 락토프리 비교", "유당 부담 단백질음료"],
+  badge: "식물성·락토프리",
+  readingTime: "4분 읽기",
+  updatedAt: "2026-04-02",
+  methodologyNote: "ProteinLab DB 뉴케어 식물성·셀렉스 락토프리 기준",
+  intro:
+    "뉴케어 검색 흐름에는 41g 고단백 외에도 식물성, 유당 부담, 부드러운 보충 같은 의도가 같이 섞입니다. 그래서 뉴케어 식물성과 셀렉스 락토프리를 같이 보면 숫자만이 아니라 어떤 상황에서 덜 부담스러운지 바로 구분할 수 있습니다.",
+  summary: [
+    "유당 부담을 줄이고 싶다면 두 제품 모두 후보가 되지만, 식물성 원료가 우선이면 뉴케어 식물성이 더 직접적입니다.",
+    "일반적인 RTD 보충 감각과 익숙한 맛 흐름은 셀렉스 락토프리가 더 무난합니다.",
+    "결국 핵심은 식물성 원료를 보느냐, 락토프리 우유 단백질을 보느냐입니다.",
+  ],
+  comparisonTitle: "뉴케어 식물성 vs 셀렉스 락토프리",
+  comparisonColumns: ["뉴케어 식물성", "셀렉스 락토프리"],
+  comparisonRows: buildComparisonRows([
+    { label: "단백질", values: [`${newcarePlant.proteinPerServing}g`, `${sellexLactoseFree.proteinPerServing}g`] },
+    { label: "용량", values: [newcarePlant.capacity ?? "-", sellexLactoseFree.capacity ?? "-"] },
+    { label: "100mL당 단백질", values: [formatDensity(newcarePlant), formatDensity(sellexLactoseFree)] },
+    { label: "당류", values: [`${newcarePlant.sugar}g`, `${sellexLactoseFree.sugar}g`] },
+    { label: "칼로리", values: [`${newcarePlant.calories}kcal`, `${sellexLactoseFree.calories}kcal`] },
+    { label: "나트륨", values: [`${newcarePlant.sodium ?? "-"}mg`, `${sellexLactoseFree.sodium ?? "-"}mg`] },
+    { label: "핵심 포인트", values: ["식물성 단백질", "락토프리 RTD"] },
+  ]),
+  sections: [
+    {
+      title: "핵심 차이",
+      items: [
+        { title: "뉴케어 식물성", body: "식물성 원료를 우선하는 흐름에 직접 맞는 SKU입니다. 유당 부담 회피보다 식물성 선택 자체가 중요한 경우에 더 선명합니다." },
+        { title: "셀렉스 락토프리", body: "RTD 보충 음료 감각은 유지하면서 유당 부담만 덜고 싶은 경우에 자연스럽습니다. 익숙한 셀렉스 계열을 찾는 검색과도 잘 맞습니다." },
+        { title: "검색 의도 분리", body: "둘 다 부담을 낮추는 방향으로 보이지만, 식물성과 락토프리는 목적이 완전히 같지 않습니다. 이 차이를 먼저 구분해야 선택이 빨라집니다." },
+      ],
+    },
+    {
+      title: "어떤 경우에 맞나",
+      items: [
+        { title: "식물성 우선", body: "원료 타입을 먼저 보는 경우에는 뉴케어 식물성이 더 직접적입니다. 브랜드 검색 뒤 세부 니즈를 좁히는 흐름에 맞습니다." },
+        { title: "익숙한 RTD 보충", body: "맛과 섭취감에서 너무 낯선 방향을 피하고 싶다면 셀렉스 락토프리가 무난합니다." },
+        { title: "처음 고르는 경우", body: "식물성 이유가 뚜렷하지 않다면 락토프리 RTD와 비교해 본 뒤 결정하는 편이 실수 확률이 낮습니다." },
+      ],
+    },
+    {
+      title: "같이 보면 좋은 흐름",
+      items: [
+        { title: "뉴케어 안에서 더 보기", body: "41g, 25g, 식물성, 워터까지 함께 보면 뉴케어 내부 선택지가 더 분명해집니다." },
+        { title: "락토프리 축으로 더 보기", body: "브랜드보다 부담 기준이 더 중요하면 락토프리 전용 비교 가이드로 이어서 보는 편이 낫습니다." },
+        { title: "보충 목적 다시 확인", body: "식물성 여부보다 실제 단백질 총량과 보충 목적이 더 중요할 수도 있습니다. 이 경우 41g·25g 비교로 돌아가는 흐름이 좋습니다." },
+      ],
+    },
+  ],
+  faq: [
+    { question: "뉴케어 식물성은 락토프리 대체로 봐도 되나요?", answer: "일부 검색 흐름에서는 겹치지만 완전히 같은 축은 아닙니다. 식물성 원료 자체가 중요하면 뉴케어 식물성, 우유 단백질 RTD 감각을 유지하고 싶으면 셀렉스 락토프리가 더 맞습니다." },
+    { question: "유당 부담만 줄이고 싶다면 어떤 쪽이 더 무난한가요?", answer: "보통은 셀렉스 락토프리가 더 무난합니다. 익숙한 RTD 보충 흐름을 크게 바꾸지 않기 때문입니다." },
+    { question: "뉴케어 검색에서 이 페이지를 왜 같이 봐야 하나요?", answer: "뉴케어 브랜드 검색에는 41g 고단백뿐 아니라 식물성·부담감 관련 의도도 섞입니다. 이 페이지가 그 갈림길을 정리해 줍니다." },
+  ],
+  relatedGuides: [
+    { title: "뉴케어 올프로틴 완전 분석", href: "/guides/product-selection-comparison/newcare-allprotein", description: "뉴케어 전체 흐름을 먼저 보고 싶다면 이 메인 가이드가 출발점입니다." },
+    { title: "락토프리 단백질 음료 가이드", href: "/guides/product-selection-comparison/lactose-free-protein-drink", description: "브랜드보다 유당 부담 기준으로 다시 정리합니다." },
+    { title: "뉴케어 41g vs 25g", href: "/guides/product-selection-comparison/newcare-41g-vs-25g", description: "식물성 대신 일반 뉴케어 라인업 비교가 필요하면 여기로 이어집니다." },
+  ],
+  purchaseLinks: [
+    { label: "뉴케어 식물성 보기", slug: newcarePlant.slug },
+    { label: "셀렉스 락토프리 보기", slug: sellexLactoseFree.slug },
+  ],
+};
+newcarePlantVsLactoseFreeConfig.jsonLd = [
+  articleJsonLd(newcarePlantVsLactoseFreeConfig),
+  faqJsonLd(newcarePlantVsLactoseFreeConfig),
+];
+
+export const newcareWaterVsRtdConfig: ComparePageConfig = {
+  slug: "newcare-water-vs-rtd",
+  title: "뉴케어 단백질워터 vs 일반 RTD 가이드",
+  description:
+    "뉴케어 단백질워터와 일반 RTD 단백질음료를 용량, 단백질 밀도, 당류, 부담감 기준으로 비교합니다. 가볍게 마실 제품을 찾는지, 보충량이 더 중요한지 빠르게 정리했습니다.",
+  keywords: ["뉴케어 단백질워터", "뉴케어 워터형", "뉴케어 RTD 비교", "단백질워터 vs RTD"],
+  badge: "워터형 가이드",
+  readingTime: "4분 읽기",
+  updatedAt: "2026-04-02",
+  methodologyNote: "ProteinLab DB 뉴케어 워터·일반 RTD 기준",
+  intro:
+    "뉴케어 단백질워터는 일반 RTD와 같은 선상에서 검색되지만 실제 체감은 꽤 다릅니다. 한 병으로 단백질을 크게 채우려는지, 가볍게 마시면서 부담을 낮추고 싶은지부터 분리하면 선택이 훨씬 빨라집니다.",
+  summary: [
+    "가볍게 마시는 흐름은 뉴케어 워터가 더 잘 맞습니다.",
+    "단백질 총량과 보충 강도는 일반 RTD가 더 유리합니다.",
+    "워터형은 대체재라기보다 별도 카테고리로 보는 편이 정확합니다.",
+  ],
+  comparisonTitle: "뉴케어 워터 vs 일반 RTD",
+  comparisonColumns: ["뉴케어 워터", "뉴케어 25g", "셀렉스 프로핏"],
+  comparisonRows: buildComparisonRows([
+    { label: "단백질", values: [`${newcareWater.proteinPerServing}g`, `${newcare25.proteinPerServing}g`, `${sellex.proteinPerServing}g`] },
+    { label: "용량", values: [newcareWater.capacity ?? "-", newcare25.capacity ?? "-", sellex.capacity ?? "-"] },
+    { label: "100mL당 단백질", values: [formatDensity(newcareWater), formatDensity(newcare25), formatDensity(sellex)] },
+    { label: "당류", values: [`${newcareWater.sugar}g`, `${newcare25.sugar}g`, `${sellex.sugar}g`] },
+    { label: "칼로리", values: [`${newcareWater.calories}kcal`, `${newcare25.calories}kcal`, `${sellex.calories}kcal`] },
+    { label: "보는 포인트", values: ["가벼움", "뉴케어 표준형", "일반 RTD 입문형"] },
+  ]),
+  sections: [
+    {
+      title: "워터형을 따로 봐야 하는 이유",
+      items: [
+        { title: "체감이 다름", body: "워터형은 일반 RTD보다 훨씬 가볍게 느껴집니다. 그래서 단백질 총량보다 마시기 편한지가 먼저 중요해집니다." },
+        { title: "직접 대체가 아님", body: "한 병 단위 보충량은 일반 RTD가 더 낫습니다. 워터형을 같은 축에서만 보면 기대치가 어긋날 수 있습니다." },
+        { title: "검색 의도도 다름", body: "뉴케어 워터 검색은 '가볍게 마실 수 있나' 쪽이 강하고, 일반 RTD 검색은 '얼마나 채워지나' 쪽이 강합니다." },
+      ],
+    },
+    {
+      title: "어떤 경우에 맞나",
+      items: [
+        { title: "워터형이 맞는 경우", body: "무거운 보충 음료가 부담스럽고, 마시는 편의성이 가장 중요할 때입니다." },
+        { title: "25g가 맞는 경우", body: "뉴케어 브랜드 안에서 조금 더 표준적인 RTD를 찾는 흐름이라면 25g가 중간 지점 역할을 합니다." },
+        { title: "셀렉스 프로핏이 맞는 경우", body: "브랜드를 넓혀서 일반 RTD 입문형까지 비교하고 싶다면 셀렉스 쪽이 기준점이 됩니다." },
+      ],
+    },
+    {
+      title: "다음 비교 흐름",
+      items: [
+        { title: "뉴케어 안에서 더 좁히기", body: "워터가 맞는지, 25g가 맞는지, 41g까지 필요한지 한 번 더 줄여 볼 수 있습니다." },
+        { title: "일반 RTD로 넓히기", body: "워터형보다 보충량이 중요해 보이면 셀렉스·하이뮨 같은 일반 RTD 비교로 넘어가는 편이 낫습니다." },
+        { title: "50대·부담감 기준으로 보기", body: "가벼움이 핵심이면 50대용 가이드나 락토프리/식물성 축과 같이 보는 것도 도움이 됩니다." },
+      ],
+    },
+  ],
+  faq: [
+    { question: "뉴케어 단백질워터는 일반 RTD 대신으로 보면 되나요?", answer: "완전한 대체재로 보기보다는 별도 카테고리로 보는 편이 정확합니다. 마시는 체감과 기대하는 보충량이 다르기 때문입니다." },
+    { question: "보충량이 더 중요하면 어떤 쪽이 맞나요?", answer: "보통은 뉴케어 25g이나 셀렉스 프로핏 같은 일반 RTD가 더 맞습니다." },
+    { question: "뉴케어 검색이 많은데 워터형 페이지가 필요한 이유는 뭔가요?", answer: "브랜드 검색 안에서도 41g 고단백, 표준형 RTD, 워터형이 서로 다른 의도를 가집니다. 이 분기가 콘텐츠로 정리돼야 검색 유입을 놓치지 않습니다." },
+  ],
+  relatedGuides: [
+    { title: "뉴케어 단백질워터 가이드", href: "/guides/product-selection-comparison/newcare-protein-water-guide", description: "워터형 자체를 더 자세히 읽고 싶다면 이 페이지로 이어집니다." },
+    { title: "뉴케어 41g vs 25g", href: "/guides/product-selection-comparison/newcare-41g-vs-25g", description: "워터가 아니라 표준형·고단백형 비교가 필요하면 여기로 이동합니다." },
+    { title: "단백질 음료 입문 가이드", href: "/guides/product-selection-comparison/protein-drink-guide", description: "브랜드를 넓혀 일반 RTD 전체 기준으로 다시 봅니다." },
+  ],
+  purchaseLinks: [
+    { label: "뉴케어 워터 보기", slug: newcareWater.slug },
+    { label: "뉴케어 25g 보기", slug: newcare25.slug },
+    { label: "셀렉스 프로핏 보기", slug: sellex.slug },
+  ],
+};
+newcareWaterVsRtdConfig.jsonLd = [articleJsonLd(newcareWaterVsRtdConfig), faqJsonLd(newcareWaterVsRtdConfig)];
+
 export const proteinDrinkByContentConfig: ComparePageConfig = {
   slug: "protein-drink-by-content",
   title: "단백질 음료 함량대별 완전 정리",
