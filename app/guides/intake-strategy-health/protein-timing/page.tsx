@@ -49,7 +49,7 @@ const timingLinks = [
   },
   {
     href: "/guides/product-selection-comparison/protein-drink-beginners-guide",
-    title: "입문 제품 추천",
+    title: "입문 제품 바로 보기",
     body: "타이밍은 알겠는데 어떤 제품부터 마실지 모르겠다면 입문용 비교 페이지로 바로 넘어가는 편이 더 빠릅니다.",
   },
 ];

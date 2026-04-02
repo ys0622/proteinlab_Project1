@@ -19,6 +19,13 @@ const goalOptions: { value: Goal; label: string }[] = [
   { value: "muscle", label: "근육 증가" },
 ];
 
+const exampleMeals = [
+  ["아침", "계란 2개 + 그릭요거트", "약 20~25g"],
+  ["점심", "닭가슴살 또는 두부 반찬 포함 식사", "약 25~35g"],
+  ["간식", "단백질 음료 1개", "약 20~25g"],
+  ["저녁", "생선·육류 중심 식사", "약 25~35g"],
+];
+
 function roundServings(value: number, base: number) {
   const exact = value / base;
   const min = Math.max(1, Math.floor(exact));
@@ -176,6 +183,35 @@ export default function ProteinToolsClient() {
         >
           단백질 음료 비교 보기
         </Link>
+      </section>
+
+      <section className="rounded-2xl border border-[#e8e6e3] bg-white px-5 py-5">
+        <h2 className="text-lg font-bold text-[var(--foreground)]">대략 이런 식으로 나눠 채우면 됩니다</h2>
+        <p className="mt-3 text-sm leading-6 text-[var(--foreground-muted)]">
+          계산 결과가 예를 들어 90g 전후로 나왔다면, 한 번에 몰아 먹기보다 식사와 간식으로 나눠 채우는 편이 훨씬 현실적입니다.
+        </p>
+        <div className="mt-4 overflow-x-auto">
+          <table className="min-w-full border-collapse text-left text-sm">
+            <thead>
+              <tr className="border-b border-[#e8e6e3] text-[var(--foreground)]">
+                <th className="px-3 py-3 font-semibold">구간</th>
+                <th className="px-3 py-3 font-semibold">예시</th>
+                <th className="px-3 py-3 font-semibold">대략적인 양</th>
+              </tr>
+            </thead>
+            <tbody>
+              {exampleMeals.map((row) => (
+                <tr key={row[0]} className="border-b border-[#f0eeeb] last:border-b-0">
+                  {row.map((cell) => (
+                    <td key={cell} className="px-3 py-3 text-[var(--foreground-muted)]">
+                      {cell}
+                    </td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </section>
 
       <section className="grid gap-4 lg:grid-cols-3">

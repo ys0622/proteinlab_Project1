@@ -58,12 +58,12 @@ const weightLinks = [
   },
   {
     href: "/guides/product-selection-comparison/diet-protein-shake",
-    title: "다이어트 쉐이크 추천",
+    title: "다이어트 쉐이크 보기",
     body: "포만감까지 같이 챙겨야 한다면 RTD보다 쉐이크가 더 잘 맞을 수 있어서 이 페이지로 이어지는 흐름이 자연스럽습니다.",
   },
   {
     href: "/guides/product-selection-comparison/protein-drink-by-content",
-    title: "함량대별 정리",
+    title: "함량대별 제품 보기",
     body: "20g, 30g, 40g대 중 지금 체중 관리 단계에 맞는 구간부터 먼저 좁히고 싶다면 이 페이지가 더 빠릅니다.",
   },
 ];

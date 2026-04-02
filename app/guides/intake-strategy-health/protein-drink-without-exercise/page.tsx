@@ -24,22 +24,22 @@ const dontNeedCases = [
 const compareLinks = [
   {
     href: "/guides/product-selection-comparison/protein-drink-beginners-guide",
-    title: "단백질 음료 입문 가이드",
+    title: "입문 제품 바로 보기",
     body: "운동 안 해도 부담 없이 시작할 수 있는 제품부터 보고 싶다면 이 페이지가 가장 빠릅니다.",
   },
   {
     href: "/guides/intake-strategy-health/diet-protein-drink-strategy",
-    title: "다이어트 중 마시는 기준 보기",
+    title: "다이어트 기준 보기",
     body: "운동은 안 하지만 체중 관리 목적이라면 저당·저칼로리 기준부터 보는 편이 더 정확합니다.",
   },
   {
     href: "/guides/product-selection-comparison/protein-drink-for-50s",
-    title: "50대 단백질 음료 추천",
+    title: "50대 제품 보기",
     body: "건강 유지나 식사 보완 목적이라면 50대·중장년 기준 페이지가 바로 이어집니다.",
   },
   {
     href: "/guides/intake-strategy-health/protein-drink-meal-replacement",
-    title: "식사 보완용으로 볼지 따로 보기",
+    title: "식사 보완 기준 보기",
     body: "운동용이 아니라 아침 공백이나 한 끼 보완용인지 더 분명하게 보고 싶다면 이 페이지가 이어집니다.",
   },
 ];

@@ -38,17 +38,17 @@ const seniorChecks = [
 const seniorRelated = [
   {
     href: "/guides/product-selection-comparison/protein-drink-for-50s",
-    title: "50대 단백질 음료 추천으로 바로 가기",
+    title: "50대 제품 바로 보기",
     body: "기준은 알겠고 이제 실제 제품을 고르고 싶다면, 시니어 관점으로 좁혀 놓은 이 비교 페이지가 가장 빠릅니다.",
   },
   {
     href: "/guides/product-selection-comparison/newcare-allprotein",
-    title: "뉴케어 올프로틴 분석",
+    title: "뉴케어 분석 보기",
     body: "락토프리, 균형영양, 50대 보완용까지 같이 보려면 뉴케어 페이지를 바로 이어서 보는 편이 좋습니다.",
   },
   {
     href: "/guides/intake-strategy-health/meal-replacement-strategy",
-    title: "식사대용 전략",
+    title: "식사대용 전략 보기",
     body: "식사를 자주 거르거나 한 끼가 약한 루틴이라면 보충용과 식사보완형을 나눠 보는 이 페이지가 같이 필요합니다.",
   },
 ];
