@@ -97,10 +97,13 @@ function buildRankedDifferences(
 
     const leftValueRaw = column.getValue(products[0]);
     const rightValueRaw = column.getValue(products[1]);
+    const leftDisplay = formatDisplayValue(leftValueRaw, columnId);
+    const rightDisplay = formatDisplayValue(rightValueRaw, columnId);
     const leftNumeric = getNumericValue(products[0], columnId);
     const rightNumeric = getNumericValue(products[1], columnId);
 
     if (leftNumeric == null || rightNumeric == null) return [];
+    if (leftDisplay === rightDisplay) return [];
 
     const diff = Math.abs(leftNumeric - rightNumeric);
     const threshold = getMeaningfulThreshold(columnId);
@@ -121,9 +124,9 @@ function buildRankedDifferences(
         label,
         winnerIndex,
         winnerName,
-        leftValue: formatDisplayValue(leftValueRaw, columnId),
-        rightValue: formatDisplayValue(rightValueRaw, columnId),
-        differenceText: `${formatDisplayValue(leftValueRaw, columnId)} vs ${formatDisplayValue(rightValueRaw, columnId)}`,
+        leftValue: leftDisplay,
+        rightValue: rightDisplay,
+        differenceText: `${leftDisplay} vs ${rightDisplay}`,
         score,
         tone,
       },
