@@ -41,7 +41,7 @@ const quickEntryLinks = [
 
 const categoryLinks = [
   {
-    href: "/",
+    href: "/drinks",
     title: "단백질 음료",
     body: "단백질 20g대, 40g대, 식사 보완형까지 가장 넓게 비교할 수 있습니다.",
   },
