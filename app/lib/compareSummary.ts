@@ -146,7 +146,7 @@ function createTwoProductHeadline(products: ProductDetailProps[], ranked: Ranked
   }
 
   const winnerMap = new Map<number, RankedDifference[]>();
-  for (const diff of ranked.slice(0, 4)) {
+  for (const diff of ranked.slice(0, 3)) {
     const list = winnerMap.get(diff.winnerIndex) ?? [];
     list.push(diff);
     winnerMap.set(diff.winnerIndex, list);
@@ -194,7 +194,7 @@ export function getCompareSummary(
   if (products.length < 2) return null;
 
   const ranked = buildRankedDifferences(products, visibleIds).sort((a, b) => b.score - a.score);
-  const chips = ranked.slice(0, 4).map((item) => ({
+  const chips = ranked.slice(0, 3).map((item) => ({
     columnId: item.columnId,
     label: item.label,
     winnerName: item.winnerName,
