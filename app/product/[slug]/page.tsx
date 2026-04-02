@@ -154,6 +154,38 @@ function buildProductInternalLinks(product: ProductDetailProps) {
   const category = (product.productType ?? "drink") as "drink" | "bar" | "yogurt" | "shake";
   const categoryHref = getCategoryHref(category);
   const categoryLabel = getProductKindLabel(product.productType);
+  const compareLandingHref =
+    category === "drink"
+      ? "/compare/newcare-vs-sellex-drink"
+      : category === "bar"
+        ? "/compare/doctoru-vs-benof-bar"
+        : category === "yogurt"
+          ? "/compare/greek-yogurt-brand-compare"
+          : "/compare/labnosh-vs-flymill-shake";
+  const compareLandingTitle =
+    category === "drink"
+      ? "음료 비교 랜딩 보기"
+      : category === "bar"
+        ? "바 비교 랜딩 보기"
+        : category === "yogurt"
+          ? "요거트 비교 랜딩 보기"
+          : "쉐이크 비교 랜딩 보기";
+  const topicHref =
+    category === "drink"
+      ? "/topics/protein-drink-recommend"
+      : category === "bar"
+        ? "/topics/high-protein-bar"
+        : category === "yogurt"
+          ? "/topics/high-protein-greek-yogurt"
+          : "/topics/meal-replacement-protein-shake";
+  const topicTitle =
+    category === "drink"
+      ? "단백질 음료 토픽 보기"
+      : category === "bar"
+        ? "고단백 바 토픽 보기"
+        : category === "yogurt"
+          ? "고단백 그릭요거트 토픽 보기"
+          : "식사대용 쉐이크 토픽 보기";
   const guideHref =
     category === "drink"
       ? "/guides/product-selection-comparison/protein-drink-guide"
@@ -173,6 +205,16 @@ function buildProductInternalLinks(product: ProductDetailProps) {
       href: `/compare?slugs=${encodeURIComponent(product.slug)}`,
       title: "이 제품으로 비교 시작",
       description: "현재 제품을 기준으로 다른 제품과 수치를 나란히 비교합니다.",
+    },
+    {
+      href: compareLandingHref,
+      title: compareLandingTitle,
+      description: "대표 비교 조합을 먼저 보고 비슷한 제품 차이를 빠르게 읽습니다.",
+    },
+    {
+      href: topicHref,
+      title: topicTitle,
+      description: "같은 의도로 많이 찾는 제품 묶음을 바로 이어서 확인합니다.",
     },
     {
       href: `/brands/${brandToSlug(product.brand)}`,
@@ -253,7 +295,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
     product.productType === "drink" && product.variant?.trim() === "락토프리";
   const categoryProducts = await getProductsByCategoryAsync(category);
   const similarProducts = getSimilarProducts(product, categoryProducts, 3);
-  const internalLinks = buildProductInternalLinks(product).slice(0, 3);
+  const internalLinks = buildProductInternalLinks(product).slice(0, 4);
 
   const summaryMetrics = isBar
     ? [
