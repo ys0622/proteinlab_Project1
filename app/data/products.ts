@@ -1,53 +1,19 @@
-import type { ProductCardProps } from "../components/ProductCard";
 import { applyBarGrades, applyDrinkGrades, applyShakeGrades, applyYogurtGrades } from "../lib/gradeCalculation";
 import { getBarProducts } from "./barProductsData";
 import { getDrinkProducts } from "./drinkProductsData";
+import type {
+  NutritionDetailRow,
+  ProductDetailProps,
+} from "./productTypes";
 import { getShakeProducts } from "./shakeProductsData";
 import { getYogurtProducts } from "./yogurtProductsData";
 
-export interface NutritionDetailRow {
-  label: string;
-  value: string;
-}
-
-export interface NutritionPerBottle {
-  caloriesKcal?: number;
-  proteinG?: number;
-  carbsG?: number;
-  sugarsG?: number;
-  fatG?: number;
-  satFatG?: number;
-  transFatG?: number;
-  cholesterolMg?: number;
-  sodiumMg?: number;
-  fiberG?: number;
-  bcaaMg?: number;
-}
-
-export interface ProductDetailFields {
-  slug: string;
-  productType?: "drink" | "bar" | "yogurt" | "shake";
-  nutritionBasis?: "per_unit" | "per_pack" | "unknown";
-  needsServingCheck?: boolean;
-  servingCheckNote?: string;
-  manufacturer?: string;
-  flavor?: string;
-  bcaa?: string;
-  proteinSource?: string;
-  fat?: number;
-  sodium?: number;
-  calorieDensity?: string;
-  drinkType?: string;
-  yogurtType?: string;
-  storageType?: string;
-  lactoseFree?: boolean;
-  proteinPer100g?: number;
-  gradeDescriptions?: [string, string, string];
-  nutritionDetail?: NutritionDetailRow[];
-  nutritionPerBottle?: NutritionPerBottle;
-}
-
-export type ProductDetailProps = ProductCardProps & ProductDetailFields;
+export type {
+  NutritionDetailRow,
+  NutritionPerBottle,
+  ProductDetailFields,
+  ProductDetailProps,
+} from "./productTypes";
 
 export const mockProducts: ProductDetailProps[] = applyDrinkGrades(getDrinkProducts());
 export const mockBarProducts: ProductDetailProps[] = getBarProducts();

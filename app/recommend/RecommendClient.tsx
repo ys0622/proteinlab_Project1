@@ -6,7 +6,7 @@ import AffiliateDisclosure from "@/app/components/AffiliateDisclosure";
 import CategoryTabs from "@/app/components/CategoryTabs";
 import ScoredProductCard from "@/app/components/ScoredProductCard";
 import TrackedLink from "@/app/components/TrackedLink";
-import type { ProductCardProps } from "@/app/components/ProductCard";
+import type { ProductCardProps } from "@/app/data/productTypes";
 import {
   getCategoryDescription,
   getCategoryHref,

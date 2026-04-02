@@ -1,4 +1,4 @@
-import type { ProductDetailProps } from "../data/products";
+import type { ProductDetailProps } from "../data/productTypes";
 import { getCompareColumn, type CompareColumnId } from "./compareColumns";
 
 type DifferenceTone = "strength" | "efficiency" | "mixed";

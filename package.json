@@ -12,6 +12,7 @@
     "audit:products": "node scripts/audit-product-impact.mjs",
     "audit:purchase-links": "node scripts/audit-purchase-link-sync.mjs",
     "audit:bcaa": "python scripts/fill-bcaa-from-spec.py",
+    "test:compare-summary": "npx tsc --outDir .tmp-compare-test --module commonjs --moduleResolution node --target es2022 --esModuleInterop --skipLibCheck scripts/compare-summary.test.ts app/lib/compareSummary.ts app/lib/compareColumns.ts app/data/productTypes.ts && node .tmp-compare-test/scripts/compare-summary.test.js",
     "sync:specs": "node scripts/sync-spec-images.mjs && npm run check:assets",
     "predeploy": "npm run check:assets",
     "preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview",

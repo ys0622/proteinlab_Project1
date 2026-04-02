@@ -1,4 +1,4 @@
-import type { ProductDetailProps } from "../data/products";
+import type { ProductDetailProps } from "../data/productTypes";
 
 export type CompareColumnId =
   | "brand"

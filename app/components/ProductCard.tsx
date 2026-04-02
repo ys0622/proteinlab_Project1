@@ -13,7 +13,6 @@ import { getProductImageUrl } from "../lib/productImage";
 import {
   getCoupangRedirectHref,
   getKnownSourceCoupangUrlBySlug,
-  type CoupangLinkCategory,
   normalizeCoupangUrl,
 } from "../lib/purchaseLinks";
 import CompareButton from "./CompareButton";
@@ -27,31 +26,7 @@ import {
   getProductBadgeTone,
 } from "./productBadgeUtils";
 import PurchaseLinkRow from "./PurchaseLinkRow";
-
-export interface ProductCardProps {
-  brand: string;
-  name: string;
-  capacity: string;
-  variant?: string;
-  tags: string[];
-  proteinPerServing: number;
-  calories?: number;
-  sugar?: number;
-  density: string;
-  productUrl?: string;
-  coupangUrl?: string;
-  naverUrl?: string | null;
-  officialUrl?: string | null;
-  gradeTags?: string[];
-  slug?: string;
-  priority?: boolean;
-  productType?: "drink" | "bar" | "yogurt" | "shake";
-  yogurtType?: string;
-  purchaseLinkCategory?: CoupangLinkCategory;
-  maxVisibleBadges?: number;
-  fixedTitleLines?: 1 | 2;
-  hideSupplementalBadges?: boolean;
-}
+import type { ProductCardProps } from "../data/productTypes";
 
 interface Review {
   id: string;

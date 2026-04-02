@@ -11,9 +11,10 @@ export async function GET(request: Request) {
       return NextResponse.json({ products: [] });
     }
 
-    const products = (
-      await Promise.all(slugs.map((slug) => getProductBySlugAsync(slug)))
-    ).filter((p): p is NonNullable<typeof p> => p != null);
+    const results = await Promise.all(slugs.map((slug) => getProductBySlugAsync(slug)));
+    const products = results.filter(
+      (product): product is NonNullable<(typeof results)[number]> => product != null,
+    );
 
     return NextResponse.json({ products });
   } catch {

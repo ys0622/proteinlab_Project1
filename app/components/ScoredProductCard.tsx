@@ -1,7 +1,7 @@
 "use client";
 
 import type { CoupangLinkCategory } from "../lib/purchaseLinks";
-import type { ProductCardProps } from "./ProductCard";
+import type { ProductCardProps } from "../data/productTypes";
 import ProductCard from "./ProductCard";
 
 type ScoredProductCardProps = {
