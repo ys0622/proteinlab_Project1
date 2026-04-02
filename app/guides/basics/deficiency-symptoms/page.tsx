@@ -191,6 +191,15 @@ export default function DeficiencySymptomsPage() {
                 </tbody>
               </table>
             </div>
+
+            <div className="mt-5">
+              <Link
+                href="/guides/basics/daily-requirement"
+                className="inline-flex items-center justify-center rounded-lg border border-[#e8e6e3] px-5 py-3 text-sm font-semibold text-[#374151] transition-colors hover:bg-[var(--accent-light)] hover:text-[var(--accent)]"
+              >
+                내 권장량 먼저 계산하기
+              </Link>
+            </div>
           </section>
         </div>
       </main>

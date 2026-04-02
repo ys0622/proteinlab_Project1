@@ -27,19 +27,19 @@ const roleCards = [
     title: "근육을 만들고 회복시키는 재료",
     body: "운동 후 단백질이 아미노산으로 분해되면 류신 같은 필수 아미노산이 근육 합성 신호를 자극합니다. 손상된 근섬유를 회복하고 다음 훈련을 준비하는 핵심 재료입니다.",
     href: "/guides/basics/muscle",
-    cta: "근육과 단백질 자세히 보기",
+    cta: "근육 가이드 보기",
   },
   {
     title: "면역세포와 항체를 만드는 재료",
     body: "항체, 사이토카인 같은 면역 관련 물질도 단백질을 바탕으로 만들어집니다. 단백질 섭취가 부족하면 방어와 회복 속도 모두 영향을 받을 수 있습니다.",
     href: "/guides/basics/immunity-hormone",
-    cta: "면역과 단백질 보기",
+    cta: "면역 가이드 보기",
   },
   {
     title: "호르몬과 효소를 움직이게 하는 기반",
     body: "인슐린, 성장호르몬, 각종 소화 효소는 모두 단백질 구조를 기반으로 작동합니다. 그래서 단백질 부족은 근육 문제를 넘어 전신 조절에도 영향을 줍니다.",
     href: "/guides/basics/immunity-hormone",
-    cta: "호르몬·효소와 단백질 보기",
+    cta: "호르몬·효소 보기",
   },
 ];
 
@@ -245,10 +245,10 @@ export default function RoleOverviewGuidePage() {
             </p>
             <div className="mt-5">
               <Link
-                href="/recommend"
+                href="/guides/basics/daily-requirement"
                 className="inline-flex items-center justify-center rounded-lg border border-[#e8e6e3] px-5 py-3 text-sm font-semibold text-[#374151] transition-colors hover:bg-[var(--accent-light)] hover:text-[var(--accent)]"
               >
-                내 목표에 맞는 단백질 제품 찾기
+                내 권장량 계산하기
               </Link>
             </div>
           </section>

@@ -16,9 +16,9 @@ const checks = [
 ];
 
 const nextSteps = [
-  { href: "/guides/basics/daily-requirement", title: "하루 단백질 권장량", body: "부족 여부가 헷갈리면 먼저 내 체중 기준 권장량부터 확인하는 것이 정확합니다." },
-  { href: "/guides/product-selection-comparison/protein-drink-beginners-guide", title: "입문용 단백질 음료", body: "식사에서 부족한 단백질을 간단히 보완하고 싶다면 처음 보는 이 페이지가 가장 쉽습니다." },
-  { href: "/guides/product-selection-comparison/protein-drink-for-50s", title: "중장년 보완용 제품", body: "시니어·부모님용 보완이 목적이면 이쪽 비교가 더 직접적입니다." },
+  { href: "/guides/basics/daily-requirement", title: "권장량 먼저 계산하기", body: "부족 여부가 헷갈리면 먼저 내 체중 기준 권장량부터 확인하는 편이 가장 정확합니다." },
+  { href: "/guides/product-selection-comparison/protein-drink-beginners-guide", title: "입문용 제품 바로 보기", body: "식사에서 부족한 단백질을 간단히 보완하고 싶다면 이 페이지부터 보는 편이 가장 쉽습니다." },
+  { href: "/guides/product-selection-comparison/protein-drink-for-50s", title: "50대 보완 제품 보기", body: "중장년·부모님용 보완이 목적이면 이쪽 비교가 더 직접적입니다." },
 ];
 
 const cautionNotes = [
