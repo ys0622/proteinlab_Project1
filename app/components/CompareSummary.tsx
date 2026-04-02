@@ -7,11 +7,13 @@ import { getCompareSummary } from "../lib/compareSummary";
 interface CompareSummaryProps {
   products: ProductDetailProps[];
   visibleColumnIds: CompareColumnId[];
+  onChipSelect?: (columnId: CompareColumnId) => void;
 }
 
 export default function CompareSummary({
   products,
   visibleColumnIds,
+  onChipSelect,
 }: CompareSummaryProps) {
   const summary = getCompareSummary(products, visibleColumnIds);
 
@@ -35,9 +37,11 @@ export default function CompareSummary({
         {summary.chips.length > 0 && (
           <div className="grid gap-2 md:grid-cols-2">
             {summary.chips.map((chip) => (
-              <div
+              <button
                 key={chip.columnId}
-                className="rounded-xl border border-[#e4ddd0] bg-white px-3 py-3"
+                type="button"
+                onClick={() => onChipSelect?.(chip.columnId)}
+                className="rounded-xl border border-[#e4ddd0] bg-white px-3 py-3 text-left transition-colors hover:border-[#d0c6b8] hover:bg-[#fffdf8]"
               >
                 <div className="flex items-center justify-between gap-3">
                   <span className="text-sm font-semibold text-[var(--foreground)]">
@@ -50,7 +54,7 @@ export default function CompareSummary({
                 <p className="mt-1 text-xs text-[var(--foreground-muted)]">
                   {chip.differenceText}
                 </p>
-              </div>
+              </button>
             ))}
           </div>
         )}

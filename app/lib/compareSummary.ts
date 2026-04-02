@@ -104,9 +104,7 @@ function buildRankedDifferences(
 
     const diff = Math.abs(leftNumeric - rightNumeric);
     const threshold = getMeaningfulThreshold(columnId);
-    if (diff < threshold) return [];
-
-    if (leftNumeric === rightNumeric) return [];
+    if (diff < threshold || leftNumeric === rightNumeric) return [];
 
     const higherWins = column.highlight === "higher";
     const leftWins = higherWins ? leftNumeric > rightNumeric : leftNumeric < rightNumeric;
@@ -176,7 +174,7 @@ function createTwoProductHeadline(products: ProductDetailProps[], ranked: Ranked
   return `${dominantProduct.name}가 ${labels}에서 ${ending}`;
 }
 
-function createMultiProductHeadline(products: ProductDetailProps[], ranked: RankedDifference[]) {
+function createMultiProductHeadline(ranked: RankedDifference[]) {
   if (ranked.length === 0) {
     return "선택한 제품들은 핵심 스펙 차이가 크지 않아 표에서 세부 항목을 함께 보는 편이 좋습니다.";
   }
@@ -202,10 +200,11 @@ export function getCompareSummary(
     rightValue: item.rightValue,
     differenceText: item.differenceText,
   }));
+
   const headline =
     products.length === 2
       ? createTwoProductHeadline(products, ranked)
-      : createMultiProductHeadline(products, ranked);
+      : createMultiProductHeadline(ranked);
 
   return { headline, chips };
 }

@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import CompareSummary from "../components/CompareSummary";
 import CompareTable from "../components/CompareTable";
 import Footer from "../components/Footer";
@@ -20,6 +20,7 @@ const MAX_PRODUCTS = 4;
 export default function ComparePage() {
   const router = useRouter();
   const { selectedSlugs, remove, clear } = useCompare();
+  const chipRefs = useRef<Partial<Record<CompareColumnId, HTMLButtonElement | null>>>({});
   const [fetchedState, setFetchedState] = useState<{
     slugs: string;
     products: ProductDetailProps[];
@@ -36,6 +37,7 @@ export default function ComparePage() {
     "density",
     "priceLinks",
   ]);
+  const [focusedColumnId, setFocusedColumnId] = useState<CompareColumnId | null>(null);
 
   const fallbackProducts = useMemo(
     () =>
@@ -65,6 +67,12 @@ export default function ComparePage() {
     };
   }, [selectedSlugs]);
 
+  useEffect(() => {
+    if (!focusedColumnId) return;
+    const timer = window.setTimeout(() => setFocusedColumnId(null), 1800);
+    return () => window.clearTimeout(timer);
+  }, [focusedColumnId]);
+
   const slugsKey = selectedSlugs.join(",");
   const products =
     fetchedState?.slugs === slugsKey && fetchedState.products.length > 0
@@ -73,6 +81,22 @@ export default function ComparePage() {
 
   const toggleColumn = (id: CompareColumnId) => {
     setVisibleIds((prev) => (prev.includes(id) ? prev.filter((x) => x !== id) : [...prev, id]));
+  };
+
+  const handleSummaryChipSelect = (columnId: CompareColumnId) => {
+    if (!visibleIds.includes(columnId)) {
+      setVisibleIds((prev) => [...prev, columnId]);
+    }
+
+    setFocusedColumnId(columnId);
+
+    window.requestAnimationFrame(() => {
+      chipRefs.current[columnId]?.scrollIntoView({
+        behavior: "smooth",
+        block: "nearest",
+        inline: "center",
+      });
+    });
   };
 
   const handleCopyShareLink = async () => {
@@ -228,7 +252,11 @@ export default function ComparePage() {
 
       <main className="mx-auto max-w-[1200px] px-4 py-6 md:px-6">
         <div className="flex flex-col gap-6">
-          <CompareSummary products={products} visibleColumnIds={visibleIds} />
+          <CompareSummary
+            products={products}
+            visibleColumnIds={visibleIds}
+            onChipSelect={handleSummaryChipSelect}
+          />
 
           <div>
             <p className="mb-2 text-sm font-medium" style={{ color: "#3d3d3d" }}>
@@ -237,16 +265,22 @@ export default function ComparePage() {
             <div className="flex flex-wrap gap-2">
               {COMPARE_COLUMNS.map((col) => {
                 const on = visibleIds.includes(col.id);
+                const isFocused = focusedColumnId === col.id;
+
                 return (
                   <button
                     key={col.id}
                     type="button"
+                    ref={(node) => {
+                      chipRefs.current[col.id] = node;
+                    }}
                     onClick={() => toggleColumn(col.id)}
                     className="rounded-full px-3 py-1.5 text-sm font-medium transition-colors"
                     style={{
-                      background: on ? "#2F5D46" : "#f3f3f3",
-                      color: on ? "white" : "#6b6b6b",
-                      border: on ? "none" : "1px solid #e0e0e0",
+                      background: on ? "#2F5D46" : isFocused ? "#eef5ee" : "#f3f3f3",
+                      color: on ? "white" : isFocused ? "#2F5D46" : "#6b6b6b",
+                      border: on ? "none" : isFocused ? "1px solid #9db6a5" : "1px solid #e0e0e0",
+                      boxShadow: isFocused ? "0 0 0 2px rgba(47,93,70,0.12)" : "none",
                     }}
                   >
                     {col.label}
