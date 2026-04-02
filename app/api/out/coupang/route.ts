@@ -47,6 +47,16 @@ function buildCoupangTraceId(params: { pageKey: string; itemId: string; vendorIt
 }
 
 async function getRuntimeCoupangTag(): Promise<string> {
+  const processTag =
+    process.env.NEXT_PUBLIC_COUPANG_LPTAG ??
+    process.env.COUPANG_LPTAG ??
+    process.env.NEXT_PUBLIC_COUPANG_PARTNERS_TAG ??
+    process.env.COUPANG_PARTNERS_TAG;
+
+  if (typeof processTag === "string" && processTag.trim()) {
+    return processTag.trim();
+  }
+
   try {
     const { env } = await getCloudflareContext({ async: true });
     const runtimeEnv = env as Record<string, unknown>;

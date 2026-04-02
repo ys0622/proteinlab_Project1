@@ -31,7 +31,9 @@
     }
   ],
   "vars": {
-    "NEXT_PUBLIC_GA_ID": "G-8QE32NV5GR"
+    "NEXT_PUBLIC_GA_ID": "G-8QE32NV5GR",
+    "NEXT_PUBLIC_COUPANG_PARTNERS_TAG": "AF2667911",
+    "NEXT_PUBLIC_COUPANG_PARTNERS_SUB_ID": "proteinlab"
   },
   "kv_namespaces": [
     {
