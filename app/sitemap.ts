@@ -17,6 +17,7 @@ const APP_DIR = path.join(process.cwd(), "app");
 
 const staticRoutes = [
   "/",
+  "/drinks",
   "/bars",
   "/recommend",
   "/ranking",
@@ -29,8 +30,20 @@ const staticRoutes = [
   "/topics",
   "/brands",
   "/search",
-  "/favorites",
 ] as const;
+
+const REDIRECT_ONLY_ROUTES = new Set([
+  "/curation/running/bar",
+  "/curation/running/drink",
+  "/guides/basics",
+  "/guides/by-goal",
+  "/guides/how-to-choose",
+  "/guides/how-to-choose/checklist",
+  "/guides/ingredients",
+  "/guides/ingredients/bcaa-guide",
+  "/guides/ingredients/zero-sugar-allulose",
+  "/guides/product-selection-comparison/doctoru-lineup",
+]);
 
 async function collectStaticRoutesFromApp(relativeDir: string, basePath: string) {
   const routes = new Set<string>();
@@ -38,9 +51,10 @@ async function collectStaticRoutesFromApp(relativeDir: string, basePath: string)
   async function walk(currentDir: string, segments: string[]) {
     const entries = await fs.readdir(currentDir, { withFileTypes: true });
     const hasPage = entries.some((entry) => entry.isFile() && entry.name === "page.tsx");
+    const route = `${basePath}${segments.length ? `/${segments.join("/")}` : ""}`;
 
-    if (hasPage) {
-      routes.add(`${basePath}${segments.length ? `/${segments.join("/")}` : ""}`);
+    if (hasPage && !REDIRECT_ONLY_ROUTES.has(route)) {
+      routes.add(route);
     }
 
     for (const entry of entries) {

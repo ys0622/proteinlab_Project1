@@ -9,6 +9,7 @@ import { FavoritesProvider } from "./context/FavoritesContext";
 import "./globals.css";
 
 const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
+const isProd = process.env.NODE_ENV === "production";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://proteinlab.kr"),
@@ -45,6 +46,23 @@ export const metadata: Metadata = {
       "naver-site-verification": "4ef87ce2265895dced0d44ac8ed5921f0cef0064",
     },
   },
+  robots: isProd
+    ? {
+        index: true,
+        follow: true,
+        googleBot: {
+          index: true,
+          follow: true,
+        },
+      }
+    : {
+        index: false,
+        follow: false,
+        googleBot: {
+          index: false,
+          follow: false,
+        },
+      },
 };
 
 export default function RootLayout({
