@@ -4,14 +4,14 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
+import CompareSummary from "../components/CompareSummary";
 import CompareTable from "../components/CompareTable";
+import Footer from "../components/Footer";
+import Header from "../components/Header";
 import { useCompare } from "../context/CompareContext";
-import { getProductBySlug } from "../data/products";
 import type { ProductDetailProps } from "../data/products";
-import type { CompareColumnId } from "../lib/compareColumns";
-import { COMPARE_COLUMNS } from "../lib/compareColumns";
+import { getProductBySlug } from "../data/products";
+import { COMPARE_COLUMNS, type CompareColumnId } from "../lib/compareColumns";
 import { getProductImageUrl } from "../lib/productImage";
 import { event, internalLinkClick } from "../../lib/analytics";
 
@@ -73,32 +73,6 @@ export default function ComparePage() {
 
   const toggleColumn = (id: CompareColumnId) => {
     setVisibleIds((prev) => (prev.includes(id) ? prev.filter((x) => x !== id) : [...prev, id]));
-  };
-
-  const handleExportCSV = () => {
-    const headers = ["항목", ...products.map((p) => `${p.brand} ${p.name}`)];
-    const rows = visibleIds
-      .filter((id) => id !== "priceLinks")
-      .map((id) => {
-        const col = COMPARE_COLUMNS.find((c) => c.id === id);
-        if (!col) return [];
-        return [col.label, ...products.map((p) => String(col.getValue(p) ?? "-"))];
-      });
-    const csv = [headers, ...rows]
-      .map((r) => r.map((c) => `"${String(c).replace(/"/g, '""')}"`).join(","))
-      .join("\n");
-    const blob = new Blob(["\uFEFF" + csv], { type: "text/csv;charset=utf-8" });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = "proteinlab-compare.csv";
-    event("compare_export_click", {
-      product_count: products.length,
-      visible_column_count: visibleIds.length,
-      export_type: "csv",
-    });
-    a.click();
-    URL.revokeObjectURL(url);
   };
 
   const handleCopyShareLink = async () => {
@@ -175,16 +149,7 @@ export default function ComparePage() {
                 {compareDescription}
               </p>
             </div>
-            <div className="flex flex-wrap gap-2">
-              <button
-                type="button"
-                onClick={handleExportCSV}
-                className="inline-flex items-center gap-1.5 rounded-lg border border-[#d9d6cf] bg-white px-4 py-2 text-sm font-medium hover:bg-[#f5f5f5]"
-                style={{ color: "#3d3d3d" }}
-              >
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" /><polyline points="7 10 12 15 17 10" /><line x1="12" y1="15" x2="12" y2="3" /></svg>
-                CSV로 내보내기
-              </button>
+            <div className="flex flex-wrap items-center gap-2">
               <button
                 type="button"
                 onClick={handleCopyShareLink}
@@ -263,8 +228,12 @@ export default function ComparePage() {
 
       <main className="mx-auto max-w-[1200px] px-4 py-6 md:px-6">
         <div className="flex flex-col gap-6">
+          <CompareSummary products={products} visibleColumnIds={visibleIds} />
+
           <div>
-            <p className="mb-2 text-sm font-medium" style={{ color: "#3d3d3d" }}>표시 항목 선택</p>
+            <p className="mb-2 text-sm font-medium" style={{ color: "#3d3d3d" }}>
+              표시 항목 선택
+            </p>
             <div className="flex flex-wrap gap-2">
               {COMPARE_COLUMNS.map((col) => {
                 const on = visibleIds.includes(col.id);

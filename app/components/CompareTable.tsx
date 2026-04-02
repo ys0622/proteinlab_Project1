@@ -29,6 +29,7 @@ function getHighlight(
 ): { type: "highest" | "lowest"; indices: number[] } | null {
   const col = getCompareColumn(colId);
   if (!col?.highlight) return null;
+
   const nums = getNumericValues(products, colId);
   const valid = nums
     .map((n, i) => ({ n, i }))
@@ -72,10 +73,7 @@ export default function CompareTable({ products, visibleColumnIds }: CompareTabl
             const isPriceRow = col.id === "priceLinks";
 
             return (
-              <tr
-                key={col.id}
-                className={rowIndex % 2 === 0 ? "bg-white" : "bg-[#fafafa]"}
-              >
+              <tr key={col.id} className={rowIndex % 2 === 0 ? "bg-white" : "bg-[#fafafa]"}>
                 <td className="border-b border-[#eee] px-4 py-3 font-medium text-[var(--foreground-muted)]">
                   {col.label}
                 </td>
