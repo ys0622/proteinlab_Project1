@@ -67,6 +67,29 @@ runTest("Visible fiber tie should not create a winner chip", () => {
   );
 });
 
+runTest("Equivalent display values should not create a winner chip", () => {
+  const left = makeProduct({
+    slug: "left-display-equivalent",
+    name: "Left Product",
+    bcaa: "5,000",
+    nutritionPerBottle: { fiberG: 5.0, bcaaMg: 5000 },
+  });
+  const right = makeProduct({
+    slug: "right-display-equivalent",
+    name: "Right Product",
+    bcaa: "5000",
+    nutritionPerBottle: { fiberG: 5, bcaaMg: 5000 },
+  });
+
+  const summary = getCompareSummary([left, right], BASE_VISIBLE_IDS);
+
+  assert.ok(summary);
+  assert.equal(
+    summary.chips.some((chip) => chip.columnId === "bcaa" || chip.columnId === "fiber"),
+    false,
+  );
+});
+
 runTest("Differences below threshold should be excluded", () => {
   const left = makeProduct({
     slug: "left-small-diff",

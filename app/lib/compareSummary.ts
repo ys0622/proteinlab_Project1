@@ -69,6 +69,26 @@ function formatDisplayValue(value: string | number | undefined, columnId: Compar
   return value;
 }
 
+function normalizeDisplayValue(value: string) {
+  const trimmed = value.trim();
+  if (trimmed === "-") return trimmed;
+
+  const numericMatch = trimmed.match(/^(-?[\d,.]+)([a-zA-Z/%]+)?$/);
+  if (!numericMatch) {
+    return trimmed.replace(/\s+/g, " ");
+  }
+
+  const numericPart = numericMatch[1]?.replace(/,/g, "");
+  const unitPart = numericMatch[2] ?? "";
+  const parsed = Number(numericPart);
+
+  if (!Number.isFinite(parsed)) {
+    return trimmed.replace(/\s+/g, " ");
+  }
+
+  return `${parsed}${unitPart}`;
+}
+
 function getNumericValue(product: ProductDetailProps, columnId: CompareColumnId) {
   const column = getCompareColumn(columnId);
   if (!column?.toNumber) return null;
@@ -103,7 +123,7 @@ function buildRankedDifferences(
     const rightNumeric = getNumericValue(products[1], columnId);
 
     if (leftNumeric == null || rightNumeric == null) return [];
-    if (leftDisplay === rightDisplay) return [];
+    if (normalizeDisplayValue(leftDisplay) === normalizeDisplayValue(rightDisplay)) return [];
 
     const diff = Math.abs(leftNumeric - rightNumeric);
     const threshold = getMeaningfulThreshold(columnId);
