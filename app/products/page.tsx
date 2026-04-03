@@ -91,7 +91,7 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
         className="w-full border-b border-t bg-[var(--hero-bg)]"
         style={{ borderColor: "var(--hero-border)" }}
       >
-        <div className="mx-auto flex min-h-[148px] max-w-[1200px] flex-col justify-center px-4 py-5 md:min-h-[164px] md:px-6 md:py-6">
+        <div className="mx-auto max-w-[1200px] px-4 py-5 md:px-6 md:py-6">
           <div className="flex flex-wrap items-center gap-1.5 text-xs text-[var(--foreground-muted)]">
             <Link href="/" className="hover:text-[var(--accent)]">
               Home

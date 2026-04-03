@@ -599,7 +599,7 @@ export default function RecommendClient({ categoryCounts }: RecommendClientProps
       `}</style>
 
       <section className="w-full border-t border-b bg-[var(--hero-bg)]" style={{ borderColor: "var(--hero-border)" }}>
-        <div className="mx-auto flex min-h-[148px] max-w-[1200px] flex-col justify-center px-4 py-5 md:min-h-[164px] md:px-6 md:py-6">
+        <div className="mx-auto max-w-[1200px] px-4 py-4 md:px-6 md:py-5">
           <h1 className="text-2xl font-bold leading-tight text-[var(--foreground)] md:text-3xl" style={{ fontWeight: 700 }}>
             제품 추천
           </h1>
