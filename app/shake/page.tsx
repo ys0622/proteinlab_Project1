@@ -6,9 +6,9 @@ import type { ProductCategory } from "../lib/categories";
 import { getProductsByCategoryAsync } from "../lib/productData";
 
 export const metadata = {
-  title: "단백질 쉐이크 추천 비교 76종 | 저당·고단백·식사대용 기준 2026 | ProteinLab",
+  title: "단백질 쉐이크 추천 비교 83종 | 저당·고단백·식사대용 기준 2026 | ProteinLab",
   description:
-    "단백질 쉐이크 76종을 단백질 총량, 당류, 칼로리, 식이섬유 기준으로 비교합니다. 플라이밀, 단백하니, 프로티원, 랩노쉬까지 성분 데이터로 바로 좁혀보세요.",
+    "단백질 쉐이크 83종을 단백질 총량, 당류, 칼로리, 식이섬유 기준으로 비교합니다. 플라이밀, 단백하니, 프로티원, 랩노쉬, 바지오까지 성분 데이터로 바로 좁혀보세요.",
   alternates: {
     canonical: "https://proteinlab.kr/shake",
   },

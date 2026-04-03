@@ -8,9 +8,9 @@ import { getProductsByCategoryAsync } from "../lib/productData";
 import type { ProductCategory } from "../lib/categories";
 
 export const metadata: Metadata = {
-  title: "단백질 제품 322종 비교 | 브랜드·카테고리·목적별로 찾기 | ProteinLab",
+  title: "단백질 제품 329종 비교 | 브랜드·카테고리·목적별로 찾기 | ProteinLab",
   description:
-    "단백질 음료, 바, 요거트, 쉐이크 322종을 브랜드, 단백질 함량, 당류, 칼로리, 목적별로 바로 비교해보세요. 저당, 40g, 다이어트, 50대 기준도 빠르게 찾을 수 있습니다.",
+    "단백질 음료, 바, 요거트, 쉐이크 329종을 브랜드, 단백질 함량, 당류, 칼로리, 목적별로 바로 비교해보세요. 저당, 40g, 다이어트, 50대 기준도 빠르게 찾을 수 있습니다.",
   alternates: {
     canonical: "https://proteinlab.kr/products",
   },
@@ -100,7 +100,7 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
             <span>Products</span>
           </div>
           <h1 className="mt-3 text-2xl font-bold leading-tight text-[var(--foreground)] md:text-3xl">
-            단백질 제품 322종을
+            단백질 제품 329종을
             <br />
             브랜드, 카테고리, 목적별로 바로 비교해보세요.
           </h1>

@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-04-01T06:55:01.088Z",
-  "total": 322,
+  "generated_at": "2026-04-03T06:03:16.825Z",
+  "total": 329,
   "categories": {
     "drinks": 107,
     "bars": 85,
     "yogurt": 54,
-    "shake": 76
+    "shake": 83
   },
   "products": [
     {
@@ -2905,6 +2905,69 @@
       "protein": 20.2,
       "calories": 191,
       "sugar": 4.3
+    },
+    {
+      "slug": "baggio-shakeyam-choco-45",
+      "name": "단백질 쉐이크얌 (초코)",
+      "brand": "바지오",
+      "category": "shake",
+      "protein": 21,
+      "calories": 155,
+      "sugar": 2.7
+    },
+    {
+      "slug": "baggio-shakeyam-grain-45",
+      "name": "단백질 쉐이크얌 (곡물)",
+      "brand": "바지오",
+      "category": "shake",
+      "protein": 21,
+      "calories": 172,
+      "sugar": 2.7
+    },
+    {
+      "slug": "baggio-shakeyam-matcha-45",
+      "name": "단백질 쉐이크얌 (말차)",
+      "brand": "바지오",
+      "category": "shake",
+      "protein": 20,
+      "calories": 150,
+      "sugar": 2.7
+    },
+    {
+      "slug": "baggio-shakeyam-matcha-strawberry-latte-45",
+      "name": "단백질 쉐이크얌 (말차 딸기 라떼)",
+      "brand": "바지오",
+      "category": "shake",
+      "protein": 18,
+      "calories": 159,
+      "sugar": 1.6
+    },
+    {
+      "slug": "baggio-shakeyam-matcha-salted-caramel-45",
+      "name": "단백질 쉐이크얌 (말차 솔티드카라멜)",
+      "brand": "바지오",
+      "category": "shake",
+      "protein": 18,
+      "calories": 163,
+      "sugar": 1.3
+    },
+    {
+      "slug": "baggio-shakeyam-corn-45",
+      "name": "단백질 쉐이크얌 (옥수수)",
+      "brand": "바지오",
+      "category": "shake",
+      "protein": 19,
+      "calories": 155,
+      "sugar": 3.6
+    },
+    {
+      "slug": "baggio-shakeyam-oolong-milk-tea-45",
+      "name": "단백질 쉐이크얌 (우롱 밀크티)",
+      "brand": "바지오",
+      "category": "shake",
+      "protein": 18,
+      "calories": 160,
+      "sugar": 1.9
     }
   ]
 }

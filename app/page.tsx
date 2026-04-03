@@ -10,7 +10,7 @@ import type { ProductCategory } from "./lib/categories";
 export const metadata: Metadata = {
   title: "단백질 제품 비교 플랫폼 | 2026 음료·바·요거트·쉐이크 비교",
   description:
-    "단백질 음료, 바, 요거트, 쉐이크 322종을 단백질 함량, 당류, 칼로리 기준으로 비교합니다. 셀렉스 vs 하이뮨, 40g 이상 비교, 다이어트, 50대 추천까지 바로 확인할 수 있습니다.",
+    "단백질 음료, 바, 요거트, 쉐이크 329종을 단백질 함량, 당류, 칼로리 기준으로 비교합니다. 셀렉스 vs 하이뮨, 40g 이상 비교, 다이어트, 50대 추천까지 바로 확인할 수 있습니다.",
   alternates: {
     canonical: "https://proteinlab.kr",
   },
