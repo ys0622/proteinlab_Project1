@@ -606,26 +606,6 @@ export default function RecommendClient({ categoryCounts }: RecommendClientProps
           <p className="mt-1 text-sm text-[var(--foreground-muted)]" style={{ fontWeight: 400 }}>
             4가지 질문으로 목적, 운동 패턴, 선호 조건에 맞는 카테고리별 제품을 추천합니다.
           </p>
-          <div className="mt-3 flex flex-wrap gap-2">
-            <TrackedLink
-              href="/ranking"
-              trackingLabel="순위 보기"
-              trackingSection="recommend_hero_cta"
-              trackingPageType="recommend"
-              className="inline-flex min-h-11 min-w-[152px] items-center justify-center rounded-full bg-[var(--accent)] px-4 py-2.5 text-xs font-semibold text-white shadow-[0_10px_24px_rgba(47,111,74,0.18)] transition-all hover:-translate-y-0.5 hover:opacity-95 md:text-sm"
-            >
-              순위 보기
-            </TrackedLink>
-            <TrackedLink
-              href="/products"
-              trackingLabel="전체 제품 둘러보기"
-              trackingSection="recommend_hero_cta"
-              trackingPageType="recommend"
-              className="inline-flex min-h-9 items-center rounded-full border border-[#d7e4d9] bg-white px-3.5 py-2 text-xs font-semibold text-[#24543d] transition-colors hover:border-[#24543d] hover:bg-[#f3faf5] md:text-sm"
-            >
-              전체 제품 둘러보기
-            </TrackedLink>
-          </div>
           <AffiliateDisclosure className="mt-2 mb-0" />
         </div>
       </section>
