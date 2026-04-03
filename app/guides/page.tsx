@@ -36,7 +36,7 @@ export default async function GuidesPage() {
         className="w-full border-b border-t bg-[var(--hero-bg)]"
         style={{ borderColor: "var(--hero-border)" }}
       >
-        <div className="mx-auto max-w-[1200px] px-4 py-6 md:px-6 md:py-7">
+        <div className="mx-auto flex min-h-[148px] max-w-[1200px] flex-col justify-center px-4 py-5 md:min-h-[164px] md:px-6 md:py-6">
           <h1 className="text-2xl font-bold leading-[1.25] text-[var(--foreground)] md:text-3xl">
             {cms.mainPage.title}
           </h1>
