@@ -13,33 +13,23 @@ const isProd = process.env.NODE_ENV === "production";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://proteinlab.kr"),
-  title: "단백질 제품 비교·추천 | ProteinLab",
-  description:
-    "단백질 음료, 단백질 바, 단백질 요거트, 단백질 쉐이크 322종을 단백질·당류·칼로리 성분 기준으로 비교합니다. 목적별 추천과 등급 순위까지 한 번에 확인하세요.",
+  title: "ProteinLab | 단백질 제품 비교",
+  description: "322개 단백질 음료·바·요거트를 단백질·당류·칼로리 기준으로 바로 비교합니다.",
   icons: {
     icon: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💪</text></svg>",
   },
   openGraph: {
-    title: "단백질 제품 비교·추천 | ProteinLab",
-    description:
-      "단백질 음료, 단백질 바, 단백질 요거트, 단백질 쉐이크 322종을 단백질·당류·칼로리 성분 기준으로 비교합니다. 목적별 추천과 등급 순위까지 한 번에 확인하세요.",
+    title: "ProteinLab | 단백질 제품 비교",
+    description: "322개 단백질 제품을 성분 기준으로 정리해 바로 비교할 수 있습니다.",
     url: "https://proteinlab.kr",
     siteName: "ProteinLab",
     locale: "ko_KR",
     type: "website",
-    images: [
-      {
-        url: "/proteinlab-logo.png",
-        alt: "ProteinLab — 단백질 제품 성분 비교 플랫폼",
-      },
-    ],
   },
   twitter: {
-    card: "summary_large_image",
-    title: "단백질 제품 비교·추천 | ProteinLab",
-    description:
-      "단백질 음료, 단백질 바, 단백질 요거트, 단백질 쉐이크 322종을 단백질·당류·칼로리 성분 기준으로 비교합니다. 목적별 추천과 등급 순위까지 한 번에 확인하세요.",
-    images: ["/proteinlab-logo.png"],
+    card: "summary",
+    title: "ProteinLab | 단백질 제품 비교",
+    description: "단백질·당류·칼로리로 322개 제품을 비교합니다.",
   },
   verification: {
     other: {
