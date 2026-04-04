@@ -20,46 +20,39 @@ function CarouselCard({ product, rank }: { product: ProductDetailProps; rank: nu
 
   return (
     <article
-      className="flex flex-col rounded-[16px] border border-[#e8e6e3] bg-white"
-      style={{ height: "290px" }}
+      className="flex flex-col overflow-hidden rounded-2xl border bg-[#FFFDF8] p-2.5"
+      style={{ borderRadius: "16px", borderColor: "#e8e6e3" }}
     >
-      {/* 이미지 + 순위 뱃지 */}
-      <div
-        className="relative flex-none overflow-hidden rounded-t-[16px] bg-white"
-        style={{ height: "100px" }}
-      >
+      {/* 이미지 영역 — ProductCard 동일 스타일 */}
+      <div className="relative h-[110px] w-full flex-shrink-0 overflow-hidden rounded-xl border border-[#eee] bg-white p-1">
+        {/* 순위 뱃지 */}
         <span
-          className="absolute left-2 top-2 z-10 flex items-center justify-center rounded-full bg-[#2d6a4f] text-[11px] font-bold text-white"
-          style={{ width: "22px", height: "22px" }}
+          className="absolute left-1.5 top-1.5 z-10 flex items-center justify-center rounded-full bg-[#2d6a4f] text-[10px] font-bold text-white"
+          style={{ width: "20px", height: "20px" }}
         >
           {rank}
         </span>
         {imageUrl ? (
-          <Image
-            src={imageUrl}
-            alt={name}
-            fill
-            className="object-contain p-2"
-            unoptimized
-          />
+          <Image src={imageUrl} alt={`${brand} ${name}`} fill className="object-contain" unoptimized />
         ) : (
-          <div className="flex h-full items-center justify-center text-3xl">💪</div>
+          <div className="flex h-full items-center justify-center text-2xl">💪</div>
         )}
       </div>
 
-      {/* 카드 본문 */}
-      <div className="flex min-h-0 flex-1 flex-col gap-1 p-3">
-        <p className="text-[11px] leading-none text-[var(--foreground-muted)]">{brand}</p>
+      {/* 본문 */}
+      <div className="mt-2 flex min-h-0 flex-1 flex-col">
+        <p className="text-xs" style={{ color: "#7a7a7a" }}>{brand}</p>
 
         <p
-          className="text-[13px] font-semibold leading-tight text-[var(--foreground)]"
-          style={{ overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}
+          className="mt-0.5 text-[14px] font-semibold leading-snug"
+          style={{ color: "#1a1a1a", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}
         >
           {name}
         </p>
 
+        {/* 등급 태그 */}
         {gradeTags.length > 0 && (
-          <div className="flex flex-wrap gap-1">
+          <div className="mt-1 flex flex-wrap gap-1">
             {gradeTags.slice(0, 2).map((tag) => (
               <span
                 key={tag}
@@ -71,32 +64,32 @@ function CarouselCard({ product, rank }: { product: ProductDetailProps; rank: nu
           </div>
         )}
 
-        <p className="text-[11px] leading-none text-[var(--foreground-muted)]">
+        <p className="mt-1 text-[11px]" style={{ color: "#7a7a7a" }}>
           단백질 {proteinPerServing}g · {calories ?? "-"}kcal · 당류 {sugar ?? 0}g
         </p>
 
         <div className="flex-1" />
 
-        {/* 스펙 비교 */}
-        <button
-          type="button"
-          onClick={() => slug && toggle(slug)}
-          className={`flex w-full items-center justify-center rounded-full border py-1.5 text-[11px] font-medium transition-colors ${
-            isCompared
-              ? "border-[var(--accent)] bg-[var(--accent-light)] text-[var(--accent)]"
-              : "border-[#e2e2e2] text-[var(--foreground)] hover:border-[var(--accent)] hover:bg-[var(--accent-light)] hover:text-[var(--accent)]"
-          }`}
-        >
-          {isCompared ? "✓ 비교중" : "스펙 비교"}
-        </button>
-
-        {/* 상세보기 */}
-        <Link
-          href={detailHref}
-          className="mt-1 flex w-full items-center justify-center rounded-full border border-[#e2e2e2] py-1.5 text-[11px] font-medium text-[var(--foreground)] transition-colors hover:border-[var(--accent)] hover:bg-[var(--accent-light)] hover:text-[var(--accent)]"
-        >
-          상세보기
-        </Link>
+        {/* 버튼 1열 — 좌: 스펙 비교, 우: 상세보기 */}
+        <div className="mt-2 flex gap-1.5">
+          <button
+            type="button"
+            onClick={() => slug && toggle(slug)}
+            className={`flex flex-1 items-center justify-center rounded-full border py-1.5 text-[11px] font-medium transition-colors ${
+              isCompared
+                ? "border-[var(--accent)] bg-[var(--accent-light)] text-[var(--accent)]"
+                : "border-[#e2e2e2] text-[#454545] hover:border-[var(--accent)] hover:bg-[var(--accent-light)] hover:text-[var(--accent)]"
+            }`}
+          >
+            {isCompared ? "✓ 비교중" : "스펙 비교"}
+          </button>
+          <Link
+            href={detailHref}
+            className="flex flex-1 items-center justify-center rounded-full border border-[#e2e2e2] py-1.5 text-[11px] font-medium text-[#454545] transition-colors hover:border-[var(--accent)] hover:bg-[var(--accent-light)] hover:text-[var(--accent)]"
+          >
+            상세보기
+          </Link>
+        </div>
       </div>
     </article>
   );
@@ -125,24 +118,19 @@ export default function PopularCarousel({ products }: PopularCarouselProps) {
   };
 
   return (
-    <div className="mt-3">
+    <section className="mt-4">
       {/* 섹션 헤더 */}
       <div className="mb-2 flex items-center justify-between">
         <div>
-          <p className="text-sm font-bold text-[var(--foreground)]">🔥 지금 많이 보는 제품</p>
-          <p className="mt-0.5 text-[11px] text-[var(--foreground-muted)]">
-            자주 비교되는 인기 제품
-          </p>
+          <p className="text-sm font-bold" style={{ color: "#1a1a1a" }}>🔥 지금 많이 보는 제품</p>
+          <p className="mt-0.5 text-[11px]" style={{ color: "#7a7a7a" }}>자주 비교되는 인기 음료</p>
         </div>
-        <Link
-          href="/curation/popular"
-          className="text-[11px] font-medium text-[var(--accent)] hover:underline"
-        >
+        <Link href="/curation/popular" className="text-[11px] font-medium text-[var(--accent)] hover:underline">
           전체보기 →
         </Link>
       </div>
 
-      {/* 캐러셀 — PC 화살표 여백 */}
+      {/* 캐러셀 */}
       <div className="relative md:px-8">
         {/* 왼쪽 화살표 (PC only) */}
         {!atStart && (
@@ -154,13 +142,7 @@ export default function PopularCarousel({ products }: PopularCarouselProps) {
             aria-label="이전"
           >
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden>
-              <path
-                d="M8.75 3.5L5.25 7L8.75 10.5"
-                stroke="currentColor"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
+              <path d="M8.75 3.5L5.25 7L8.75 10.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
           </button>
         )}
@@ -191,17 +173,11 @@ export default function PopularCarousel({ products }: PopularCarouselProps) {
             aria-label="다음"
           >
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden>
-              <path
-                d="M5.25 3.5L8.75 7L5.25 10.5"
-                stroke="currentColor"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
+              <path d="M5.25 3.5L8.75 7L5.25 10.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
           </button>
         )}
       </div>
-    </div>
+    </section>
   );
 }

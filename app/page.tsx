@@ -75,6 +75,7 @@ export default async function Home({ searchParams }: HomePageProps) {
 
       <main className="mx-auto max-w-[1200px] px-4 pb-2 pt-0 md:px-6 md:pb-3">
         <AffiliateDisclosure />
+        <PopularCarousel products={popularDrinks} />
         <ProductListWithFilters
           productType="drink"
           products={products}
@@ -82,7 +83,6 @@ export default async function Home({ searchParams }: HomePageProps) {
           categoryCounts={categoryCounts}
           stickyTabs={false}
           tabsPlacement="before_grid"
-          carouselSlot={<PopularCarousel products={popularDrinks} />}
         />
       </main>
 
