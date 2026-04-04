@@ -88,7 +88,13 @@
       "Bash(curl:*)",
       "Bash(gh run:*)",
       "Bash(read f:*)",
-      "Bash(xargs du:*)"
+      "Bash(xargs du:*)",
+      "Bash(cat app/product/[slug]/page.tsx)",
+      "Bash(cat app/picks/[slug]/page.tsx)",
+      "Bash(cat app/topics/[slug]/page.tsx)",
+      "Bash(cat app/brands/[slug]/page.tsx)",
+      "Bash(findstr /n \"grid LIVE emoji\" \"app\\\\guides\\\\product-selection-comparison\\\\page.tsx\")",
+      "Bash(cd:*)"
     ]
   }
 }

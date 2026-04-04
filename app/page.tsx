@@ -2,9 +2,7 @@
 import AffiliateDisclosure from "./components/AffiliateDisclosure";
 import Footer from "./components/Footer";
 import HeroSection from "./components/HeroSection";
-import PopularCarousel from "./components/PopularCarousel";
 import ProductListWithFilters from "./components/ProductListWithFilters";
-import { getPopularityScore } from "./lib/productPopularity";
 import { getProductsByCategoryAsync } from "./lib/productData";
 import type { Metadata } from "next";
 import type { ProductCategory } from "./lib/categories";
@@ -60,10 +58,6 @@ export default async function Home({ searchParams }: HomePageProps) {
     shake: shakes.length,
   };
 
-  const popularDrinks = [...products]
-    .sort((a, b) => (getPopularityScore(b, "drink") ?? 0) - (getPopularityScore(a, "drink") ?? 0))
-    .slice(0, 10);
-
   return (
     <div className="min-h-screen bg-white">
       <script
@@ -75,7 +69,6 @@ export default async function Home({ searchParams }: HomePageProps) {
 
       <main className="mx-auto max-w-[1200px] px-4 pb-2 pt-0 md:px-6 md:pb-3">
         <AffiliateDisclosure />
-        <PopularCarousel products={popularDrinks} />
         <ProductListWithFilters
           productType="drink"
           products={products}
