@@ -101,6 +101,7 @@ export default function PopularCarousel({ products }: PopularCarouselProps) {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [atStart, setAtStart] = useState(true);
   const [atEnd, setAtEnd] = useState(products.length <= 4);
+  const [scrollRatio, setScrollRatio] = useState(0);
 
   if (products.length === 0) return null;
 
@@ -109,6 +110,8 @@ export default function PopularCarousel({ products }: PopularCarouselProps) {
     if (!el) return;
     setAtStart(el.scrollLeft <= 4);
     setAtEnd(el.scrollLeft + el.clientWidth >= el.scrollWidth - 4);
+    const maxScroll = el.scrollWidth - el.clientWidth;
+    setScrollRatio(maxScroll > 0 ? el.scrollLeft / maxScroll : 0);
   };
 
   const scrollPrev = () => {
@@ -129,17 +132,48 @@ export default function PopularCarousel({ products }: PopularCarouselProps) {
         </Link>
       </div>
 
-      {/* 모바일: 가로 스크롤 */}
-      <div
-        ref={scrollRef}
-        onScroll={handleScroll}
-        className="flex gap-3 overflow-x-auto md:hidden [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
-      >
-        {products.map((product, index) => (
-          <div key={product.slug ?? index} className="w-[calc(65%_-_4px)] flex-none">
-            <CarouselCard product={product} rank={index + 1} />
+      {/* 모바일: 가로 스크롤 + 스크롤 힌트 */}
+      <div className="relative md:hidden">
+        {/* 우측 페이드 + 화살표 힌트 */}
+        {!atEnd && (
+          <div className="pointer-events-none absolute right-0 top-0 bottom-0 z-10 flex w-14 items-center justify-end bg-gradient-to-l from-white via-white/70 to-transparent pr-1">
+            <span className="text-[16px] text-[#2d6a4f] opacity-60">›</span>
           </div>
-        ))}
+        )}
+        {/* 좌측 페이드 */}
+        {!atStart && (
+          <div className="pointer-events-none absolute left-0 top-0 bottom-0 z-10 flex w-10 items-center justify-start bg-gradient-to-r from-white via-white/70 to-transparent pl-1">
+            <span className="text-[16px] text-[#2d6a4f] opacity-60">‹</span>
+          </div>
+        )}
+        <div
+          ref={scrollRef}
+          onScroll={handleScroll}
+          className="flex gap-3 overflow-x-auto [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+        >
+          {products.map((product, index) => (
+            <div key={product.slug ?? index} className="w-[calc(65%_-_4px)] flex-none">
+              <CarouselCard product={product} rank={index + 1} />
+            </div>
+          ))}
+        </div>
+        {/* 점 인디케이터 */}
+        <div className="mt-2 flex justify-center gap-1">
+          {Array.from({ length: 5 }).map((_, i) => {
+            const activeDot = Math.round(scrollRatio * 4);
+            return (
+              <span
+                key={i}
+                className="inline-block rounded-full transition-all duration-300"
+                style={{
+                  width: i === activeDot ? "16px" : "6px",
+                  height: "6px",
+                  backgroundColor: i === activeDot ? "#2d6a4f" : "#c8e6d4",
+                }}
+              />
+            );
+          })}
+        </div>
       </div>
 
       {/* PC: 그리드 (5열 2행) + 화살표 */}
