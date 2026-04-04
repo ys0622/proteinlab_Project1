@@ -91,19 +91,8 @@ function renderMetricValue(value: string, isDensity: boolean) {
   );
 }
 
-function getDetailCtaLabel(productType?: ProductCardProps["productType"]) {
-  switch (productType) {
-    case "drink":
-      return "성분표 보기";
-    case "bar":
-      return "당류·단백질 보기";
-    case "yogurt":
-      return "그릭·드링킹 비교";
-    case "shake":
-      return "식사대용 적합도 보기";
-    default:
-      return "제품 상세 보기";
-  }
+function getDetailCtaLabel(_productType?: ProductCardProps["productType"]) {
+  return "성분표 보기";
 }
 
 export default function ProductCard({
@@ -453,7 +442,7 @@ export default function ProductCard({
               className="flex flex-1 items-center justify-center rounded-[10px] border border-[#e2e2e2] bg-white font-medium text-[var(--foreground)] opacity-60"
               style={{ height: "34px", fontSize: "12px", borderRadius: "10px" }}
             >
-              비교
+              스펙 비교
             </button>
           )}
         </div>
