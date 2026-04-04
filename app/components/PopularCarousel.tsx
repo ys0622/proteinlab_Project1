@@ -3,52 +3,30 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useRef, useState } from "react";
+import { useCompare } from "../context/CompareContext";
 import type { ProductDetailProps } from "../data/productTypes";
 import { getProductImageUrl } from "../lib/productImage";
-import {
-  getCoupangRedirectHref,
-  getKnownSourceCoupangUrlBySlug,
-  normalizeCoupangUrl,
-} from "../lib/purchaseLinks";
-import PurchaseLinkRow from "./PurchaseLinkRow";
 
 interface PopularCarouselProps {
   products: ProductDetailProps[];
 }
 
 function CarouselCard({ product, rank }: { product: ProductDetailProps; rank: number }) {
-  const {
-    slug,
-    brand,
-    name,
-    proteinPerServing,
-    calories,
-    sugar,
-    gradeTags = [],
-    coupangUrl,
-    naverUrl,
-    officialUrl,
-    productType,
-  } = product;
-
+  const { slug, brand, name, proteinPerServing, calories, sugar, gradeTags = [] } = product;
+  const { selectedSlugs, toggle } = useCompare();
   const imageUrl = slug ? getProductImageUrl(slug) : null;
   const detailHref = slug ? `/product/${slug}` : "#";
-  const rawCoupangUrl =
-    normalizeCoupangUrl(coupangUrl) ?? (slug ? getKnownSourceCoupangUrlBySlug(slug) : null);
-  const coupangHref = getCoupangRedirectHref(rawCoupangUrl, productType ?? null, slug);
-  const naverHref = naverUrl && naverUrl !== "#" && naverUrl !== "" ? naverUrl : null;
-  const officialMallHref =
-    officialUrl && officialUrl !== "#" && officialUrl !== "" ? officialUrl : null;
+  const isCompared = slug ? selectedSlugs.includes(slug) : false;
 
   return (
     <article
       className="flex flex-col rounded-[16px] border border-[#e8e6e3] bg-white"
-      style={{ height: "360px" }}
+      style={{ height: "290px" }}
     >
       {/* 이미지 + 순위 뱃지 */}
       <div
         className="relative flex-none overflow-hidden rounded-t-[16px] bg-white"
-        style={{ height: "130px" }}
+        style={{ height: "100px" }}
       >
         <span
           className="absolute left-2 top-2 z-10 flex items-center justify-center rounded-full bg-[#2d6a4f] text-[11px] font-bold text-white"
@@ -70,10 +48,9 @@ function CarouselCard({ product, rank }: { product: ProductDetailProps; rank: nu
       </div>
 
       {/* 카드 본문 */}
-      <div className="flex min-h-0 flex-1 flex-col gap-1.5 p-3">
+      <div className="flex min-h-0 flex-1 flex-col gap-1 p-3">
         <p className="text-[11px] leading-none text-[var(--foreground-muted)]">{brand}</p>
 
-        {/* 제품명 — 1줄 말줄임 */}
         <p
           className="text-[13px] font-semibold leading-tight text-[var(--foreground)]"
           style={{ overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}
@@ -81,7 +58,6 @@ function CarouselCard({ product, rank }: { product: ProductDetailProps; rank: nu
           {name}
         </p>
 
-        {/* 등급 태그 */}
         {gradeTags.length > 0 && (
           <div className="flex flex-wrap gap-1">
             {gradeTags.slice(0, 2).map((tag) => (
@@ -95,25 +71,29 @@ function CarouselCard({ product, rank }: { product: ProductDetailProps; rank: nu
           </div>
         )}
 
-        {/* 핵심 스펙 */}
         <p className="text-[11px] leading-none text-[var(--foreground-muted)]">
           단백질 {proteinPerServing}g · {calories ?? "-"}kcal · 당류 {sugar ?? 0}g
         </p>
 
         <div className="flex-1" />
 
-        {/* 구매링크 */}
-        <PurchaseLinkRow
-          coupangHref={coupangHref}
-          naverHref={naverHref}
-          officialMallHref={officialMallHref}
-          size="sm"
-        />
+        {/* 스펙 비교 */}
+        <button
+          type="button"
+          onClick={() => slug && toggle(slug)}
+          className={`flex w-full items-center justify-center rounded-full border py-1.5 text-[11px] font-medium transition-colors ${
+            isCompared
+              ? "border-[var(--accent)] bg-[var(--accent-light)] text-[var(--accent)]"
+              : "border-[#e2e2e2] text-[var(--foreground)] hover:border-[var(--accent)] hover:bg-[var(--accent-light)] hover:text-[var(--accent)]"
+          }`}
+        >
+          {isCompared ? "✓ 비교중" : "스펙 비교"}
+        </button>
 
         {/* 상세보기 */}
         <Link
           href={detailHref}
-          className="mt-0.5 flex w-full items-center justify-center rounded-full border border-[#e2e2e2] py-1.5 text-[11px] font-medium text-[var(--foreground)] transition-colors hover:border-[var(--accent)] hover:bg-[var(--accent-light)] hover:text-[var(--accent)]"
+          className="mt-1 flex w-full items-center justify-center rounded-full border border-[#e2e2e2] py-1.5 text-[11px] font-medium text-[var(--foreground)] transition-colors hover:border-[var(--accent)] hover:bg-[var(--accent-light)] hover:text-[var(--accent)]"
         >
           상세보기
         </Link>
@@ -163,7 +143,7 @@ export default function PopularCarousel({ products }: PopularCarouselProps) {
       </div>
 
       {/* 캐러셀 — PC 화살표 여백 */}
-      <div className="relative md:px-5">
+      <div className="relative md:px-8">
         {/* 왼쪽 화살표 (PC only) */}
         {!atStart && (
           <button
@@ -194,7 +174,7 @@ export default function PopularCarousel({ products }: PopularCarouselProps) {
           {products.map((product, index) => (
             <div
               key={product.slug ?? index}
-              className="w-[calc(65%-4px)] flex-none md:w-[calc(25%-9px)]"
+              className="w-[calc(65%_-_4px)] flex-none md:w-[calc(25%_-_9px)]"
             >
               <CarouselCard product={product} rank={index + 1} />
             </div>
