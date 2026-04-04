@@ -4,7 +4,7 @@ import Footer from "./components/Footer";
 import HeroSection from "./components/HeroSection";
 import PopularCarousel from "./components/PopularCarousel";
 import ProductListWithFilters from "./components/ProductListWithFilters";
-import { getRecommendedProductsForCuration } from "./lib/curationSystem";
+import { getPopularityScore } from "./lib/productPopularity";
 import { getProductsByCategoryAsync } from "./lib/productData";
 import type { Metadata } from "next";
 import type { ProductCategory } from "./lib/categories";
@@ -60,7 +60,9 @@ export default async function Home({ searchParams }: HomePageProps) {
     shake: shakes.length,
   };
 
-  const popularDrinks = getRecommendedProductsForCuration(products, "drink", "popular", 10);
+  const popularDrinks = [...products]
+    .sort((a, b) => (getPopularityScore(b, "drink") ?? 0) - (getPopularityScore(a, "drink") ?? 0))
+    .slice(0, 10);
 
   return (
     <div className="min-h-screen bg-white">

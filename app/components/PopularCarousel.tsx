@@ -47,7 +47,7 @@ function CarouselCard({ product, rank }: { product: ProductDetailProps; rank: nu
     >
       {/* 이미지 + 순위 뱃지 */}
       <div
-        className="relative flex-none overflow-hidden rounded-t-[16px] bg-[#f9f7f4]"
+        className="relative flex-none overflow-hidden rounded-t-[16px] bg-white"
         style={{ height: "130px" }}
       >
         <span
