@@ -513,21 +513,6 @@ function buildDefaultInfoSections(curation: CurationDefinition, categoryKey: Cat
       title: situationTitle,
       bullets: situationBullets,
     },
-    {
-      title: "추천 제품과 전체 비교를 같이 보는 이유",
-      bullets: [
-        "추천 제품 섹션에서는 먼저 볼 가치가 높은 제품을 빠르게 확인할 수 있습니다.",
-        "전체 비교 섹션에서는 같은 기준 안에서 제품 폭을 넓게 확인할 수 있습니다.",
-        "모바일과 PC 모두 같은 데이터 기준으로 제품을 비교할 수 있습니다.",
-      ],
-    },
-    {
-      title: "ProteinLab 데이터 기준",
-      bullets: [
-        "ProteinLab에서는 단백질 함량, 당류, 칼로리, 단백질 밀도 데이터를 기준으로 제품을 비교합니다.",
-        "추천 제품은 strict 조건이 부족할 경우 필터 완화, 단백질 밀도 fallback, 카테고리 상위 제품 순으로 보강합니다.",
-      ],
-    },
   ];
 }
 
