@@ -135,6 +135,7 @@ export const proteinCategoryGuideConfig: CategoryGuideConfig = {
     { title: "셀렉스 vs 하이뮨", href: "/guides/product-selection-comparison/selex-vs-himune", description: "RTD 음료부터 바로 비교하고 싶다면 이 페이지가 가장 빠릅니다." },
     { title: "단백질 쉐이크 추천 TOP 7", href: "/guides/product-selection-comparison/protein-shake-top7", description: "다이어트와 식사 대용에 맞는 파우치 쉐이크를 먼저 좁힙니다." },
     { title: "단백질 바 선택 가이드", href: "/guides/product-selection-comparison/protein-bar-guide", description: "바는 어떤 상황에서 더 잘 맞는지 기준부터 확인합니다." },
+    { title: "단백질 음료 추천 TOP 10", href: "/guides/product-selection-comparison/protein-drink-top10", description: "RTD 음료 상위 후보를 먼저 좁히고 싶다면 TOP 10으로 바로 들어가면 됩니다." },
   ],
   purchaseLinks: [
     { label: "RTD 대표 제품 보기", slug: "sellex-profit-milk-vanilla-250" },

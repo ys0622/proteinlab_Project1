@@ -174,6 +174,11 @@ const config: CategoryGuideConfig = {
       href: "/guides/product-selection-comparison/protein-bar-top10",
       description: "바 카테고리 전체를 먼저 본 뒤, 저당 기준으로 다시 걸러보고 싶다면 이 페이지가 더 자연스럽습니다.",
     },
+    {
+      title: "단백질 음료 추천 TOP 10",
+      href: "/guides/product-selection-comparison/protein-drink-top10",
+      description: "저당 RTD 후보를 포함해 전체 음료 상위권을 먼저 보고 싶다면 음료 TOP 10으로 이어지면 됩니다.",
+    },
   ],
   purchaseLinks: [
     { label: "저당 RTD 대표 후보", slug: "sellex-profit-milk-vanilla-250" },

@@ -147,6 +147,29 @@ export default function ProteinDrinkGuidePage() {
               비교에서 중요한 것은 숫자 하나가 아니라 조합입니다. 단백질이 높아도 당류와 칼로리가 함께 높으면 실제 용도는 달라질 수 있습니다.
             </blockquote>
           </section>
+          <section className="rounded-[28px] border border-[#dce8df] bg-[#f7fbf8] px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
+            <h2 className="text-xl font-bold text-[var(--foreground)]">바로 보는 상위 후보</h2>
+            <div className="mt-5 rounded-2xl border border-[#dce8df] bg-white p-5">
+              <p className="text-sm leading-6 text-[var(--foreground-muted)]">
+                기준을 이해했다면 다음 클릭은 실제 상위 후보 페이지로 넘어가는 편이 가장 자연스럽습니다.
+                음료 카테고리에서는 TOP 10 페이지가 그 출발점 역할을 합니다.
+              </p>
+              <div className="mt-4 flex flex-wrap gap-3">
+                <Link
+                  href="/guides/product-selection-comparison/protein-drink-top10"
+                  className="inline-flex items-center justify-center rounded-full bg-[var(--accent)] px-5 py-3 text-sm font-semibold text-white transition-opacity hover:opacity-90"
+                >
+                  단백질 음료 TOP 10 보기
+                </Link>
+                <Link
+                  href="/guides/product-selection-comparison/protein-drink-beginners-guide"
+                  className="inline-flex items-center justify-center rounded-full border border-[#dce8df] px-5 py-3 text-sm font-semibold text-[#24543d] transition-colors hover:bg-white"
+                >
+                  입문 가이드 보기
+                </Link>
+              </div>
+            </div>
+          </section>
         </div>
       </main>
 

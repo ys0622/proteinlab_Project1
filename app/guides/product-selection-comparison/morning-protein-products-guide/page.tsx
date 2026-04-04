@@ -174,6 +174,11 @@ const config: CategoryGuideConfig = {
       href: "/guides/product-selection-comparison/protein-drink-beginners-guide",
       description: "아침에 마실 RTD 음료를 입문 기준으로 고르고 싶다면 여기부터 보면 됩니다.",
     },
+    {
+      title: "단백질 음료 추천 TOP 10",
+      href: "/guides/product-selection-comparison/protein-drink-top10",
+      description: "아침에 바로 마시기 좋은 RTD 후보를 먼저 좁히고 싶다면 음료 TOP 10이 가장 빠릅니다.",
+    },
   ],
   purchaseLinks: [
     { label: "아침용 RTD 대표 제품", slug: "sellex-profit-milk-vanilla-250" },

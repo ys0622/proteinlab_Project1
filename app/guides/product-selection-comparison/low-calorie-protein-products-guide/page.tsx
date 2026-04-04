@@ -174,6 +174,11 @@ const config: CategoryGuideConfig = {
       href: "/guides/product-selection-comparison/diet-protein-shake",
       description: "식사대용이나 다이어트 루틴형 쉐이크를 바로 비교하고 싶다면 이쪽이 더 맞습니다.",
     },
+    {
+      title: "단백질 음료 추천 TOP 10",
+      href: "/guides/product-selection-comparison/protein-drink-top10",
+      description: "저칼로리 RTD 상위 후보를 먼저 넓게 보고 싶다면 음료 TOP 10으로 시작하는 편이 빠릅니다.",
+    },
   ],
   purchaseLinks: [
     { label: "저칼로리 RTD 대표 후보", slug: "sellex-profit-milk-vanilla-250" },

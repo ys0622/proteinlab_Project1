@@ -100,6 +100,7 @@ const sections: AdminGuideSection[] = [
     accentBg: "#eaf0f6",
     previewHref: "/guides/product-selection-comparison",
     articles: [
+      article("protein-drink-top10", "단백질 음료 추천 TOP 10", "ProteinLab DB 음료 107종 기준으로 지금 고르기 좋은 RTD 상위 후보를 정리합니다.", "/guides/product-selection-comparison/protein-drink-top10", { emoji: "🥤", tags: ["단백질 음료", "랭킹", "입문"] }),
       article("protein-drink-guide", "단백질 음료 선택 가이드", "단백질 음료를 볼 때 먼저 체크해야 할 숫자를 정리합니다.", "/guides/product-selection-comparison/protein-drink-guide", { emoji: "🥤", tags: ["음료", "선택"] }),
       article("protein-shake-guide", "단백질 쉐이크 추천 가이드", "간편 섭취형 단백질 쉐이크를 고를 때 먼저 볼 기준을 정리합니다.", "/guides/product-selection-comparison/protein-shake-guide", { emoji: "🥤", tags: ["쉐이크", "선택"] }),
         article("flymill-vs-danbaekhani", "플라이밀 vs 단백하니", "고단백과 저당, 칼로리 균형 기준으로 두 인기 쉐이크 브랜드를 직접 비교합니다.", "/guides/product-selection-comparison/flymill-vs-danbaekhani", { emoji: "⚖️", tags: ["쉐이크", "비교", "브랜드"] }),
