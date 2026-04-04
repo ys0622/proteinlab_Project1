@@ -116,6 +116,23 @@ export default function FilterSection(props: FilterSectionProps) {
     desktopFooterSlot,
   } = props;
   const [mobileFilterOpen, setMobileFilterOpen] = useState(false);
+  const [pcFilterOpen, setPcFilterOpen] = useState(false);
+
+  const activeChips = useMemo((): string[] => {
+    const chips: string[] = [];
+    for (const [key, value] of Object.entries(filters)) {
+      if (!Array.isArray(value) || value.length === 0) continue;
+      const values = value as string[];
+      if (key === "brand") {
+        const shown = values.slice(0, 2);
+        const extra = values.length - 2;
+        chips.push(`브랜드: ${shown.join(" · ")}${extra > 0 ? ` +${extra}` : ""}`);
+      } else {
+        chips.push(values[0] + (values.length > 1 ? ` +${values.length - 1}` : ""));
+      }
+    }
+    return chips.slice(0, 4);
+  }, [filters]);
 
   const sortedDrinkBrandOptions = useMemo(
     () => [...(props.productType === "drink" ? props.drinkBrandOptions ?? [] : [])].sort((a, b) =>
@@ -411,9 +428,67 @@ export default function FilterSection(props: FilterSectionProps) {
       </div>
 
       <div className="hidden md:block">
-        {filterRows}
+        {/* PC 토글 버튼 + 활성 필터 칩 */}
+        <div className="flex flex-wrap items-center gap-1.5 pl-0.5">
+          <button
+            type="button"
+            onClick={() => setPcFilterOpen((v) => !v)}
+            className="flex items-center gap-1 py-0 text-[11px] font-bold text-[#454545] hover:text-[var(--foreground)]"
+            aria-expanded={pcFilterOpen}
+          >
+            상세 필터
+            <span className={`inline-block transition-transform duration-200 ${pcFilterOpen ? "rotate-180" : ""}`}>
+              ▼
+            </span>
+          </button>
+          {!pcFilterOpen && activeChips.length > 0 && (
+            <>
+              <span className="text-[10px] text-[var(--foreground-muted)]">|</span>
+              {activeChips.map((chip) => (
+                <span
+                  key={chip}
+                  className={`${chipBase} ${chipSelected}`}
+                  style={{ height: "22px" }}
+                >
+                  {chip}
+                </span>
+              ))}
+              <button
+                type="button"
+                onClick={onResetFilters}
+                className="text-[11px] font-medium text-[var(--foreground-muted)] hover:text-[var(--foreground)]"
+                aria-label="필터 초기화"
+              >
+                ×
+              </button>
+            </>
+          )}
+        </div>
+
+        {/* PC 펼쳐진 필터 rows */}
+        {pcFilterOpen && (
+          <div className="mt-2">
+            {filterRows}
+            <div className="mt-1.5 flex items-center justify-between gap-3">
+              <button type="button" onClick={onResetFilters} className="btn-reset">
+                초기화
+              </button>
+              <button
+                type="button"
+                onClick={() => setPcFilterOpen(false)}
+                className="btn-apply inline-flex h-9 items-center justify-center rounded-full bg-[var(--accent)] px-[18px] text-sm font-medium text-white transition-colors hover:bg-[var(--accent-hover)]"
+              >
+                필터 적용
+              </button>
+            </div>
+          </div>
+        )}
+
+        {/* 빠른 큐레이션 — 항상 노출 */}
         {desktopFooterSlot ? (
-          <div className="mt-1.5 border-t border-[var(--border)] pt-1.5">{desktopFooterSlot}</div>
+          <div className={pcFilterOpen ? "mt-1.5 border-t border-[var(--border)] pt-1.5" : "mt-1"}>
+            {desktopFooterSlot}
+          </div>
         ) : null}
       </div>
     </div>

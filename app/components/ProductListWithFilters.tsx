@@ -2,6 +2,7 @@
 
 import { usePathname } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
+import type React from "react";
 import type { ProductDetailProps } from "../data/products";
 import { type ProductCategory } from "../lib/categories";
 import { applyCurationToCategoryProducts } from "../lib/curationSystem";
@@ -41,6 +42,7 @@ type ProductListWithFiltersProps = {
   categoryCounts?: Partial<Record<ProductCategory, number>>;
   stickyTabs?: boolean;
   tabsPlacement?: "top" | "before_grid";
+  carouselSlot?: React.ReactNode;
 };
 
 type PersistedFilterState = {
@@ -228,6 +230,7 @@ function ProductListWithFiltersInner(props: ProductListWithFiltersInnerProps) {
     initialPersistedState,
     stickyTabs = true,
     tabsPlacement = "top",
+    carouselSlot,
   } = props;
   const [drinkFilters, setDrinkFilters] = useState<DrinkFilters>(
     () => initialPersistedState?.drinkFilters ?? defaultDrinkFilters,
@@ -486,6 +489,10 @@ function ProductListWithFiltersInner(props: ProductListWithFiltersInnerProps) {
       <div className="mt-3 md:hidden" style={{ marginTop: "12px" }}>
         <QuickCuration productType={productType} />
       </div>
+
+      {carouselSlot ? (
+        <div style={{ marginTop: isDesktop ? "12px" : "10px" }}>{carouselSlot}</div>
+      ) : null}
 
       <div
         className="mt-3 rounded-xl border border-[var(--border)] bg-[var(--filter-box-bg)]"

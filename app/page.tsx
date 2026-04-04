@@ -2,7 +2,9 @@
 import AffiliateDisclosure from "./components/AffiliateDisclosure";
 import Footer from "./components/Footer";
 import HeroSection from "./components/HeroSection";
+import PopularCarousel from "./components/PopularCarousel";
 import ProductListWithFilters from "./components/ProductListWithFilters";
+import { getRecommendedProductsForCuration } from "./lib/curationSystem";
 import { getProductsByCategoryAsync } from "./lib/productData";
 import type { Metadata } from "next";
 import type { ProductCategory } from "./lib/categories";
@@ -58,6 +60,8 @@ export default async function Home({ searchParams }: HomePageProps) {
     shake: shakes.length,
   };
 
+  const popularDrinks = getRecommendedProductsForCuration(products, "drink", "popular", 10);
+
   return (
     <div className="min-h-screen bg-white">
       <script
@@ -76,6 +80,7 @@ export default async function Home({ searchParams }: HomePageProps) {
           categoryCounts={categoryCounts}
           stickyTabs={false}
           tabsPlacement="before_grid"
+          carouselSlot={<PopularCarousel products={popularDrinks} />}
         />
       </main>
 
