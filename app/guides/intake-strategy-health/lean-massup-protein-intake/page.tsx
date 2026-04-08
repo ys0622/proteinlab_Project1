@@ -101,17 +101,17 @@ const faqItems = [
 const relatedGuides = [
   {
     href: "/guides/intake-strategy-health/post-workout-protein",
-    title: "운동 후 단백질 가이드",
+    title: "운동 직후 보완 기준 보기",
     body: "운동 직후 단백질을 언제, 어떤 방식으로 넣을지부터 정리하고 싶다면 이 페이지가 먼저 맞습니다.",
   },
   {
     href: "/guides/intake-strategy-health/protein-timing",
-    title: "단백질 타이밍 가이드",
+    title: "내 루틴에 맞는 배분법 보기",
     body: "하루 총량뿐 아니라 아침, 간식, 운동 후 배분까지 함께 보고 싶다면 연결해서 보기 좋습니다.",
   },
   {
     href: "/guides/product-selection-comparison/protein-shake-guide",
-    title: "단백질 쉐이크 가이드",
+    title: "보완용 쉐이크 기준 보기",
     body: "식사로 채우기 어려운 날에 어떤 쉐이크를 보완용으로 쓰면 좋을지 제품 기준으로 이어집니다.",
   },
 ];
@@ -119,17 +119,17 @@ const relatedGuides = [
 const actionLinks = [
   {
     href: "/guides/product-selection-comparison/protein-shake-guide",
-    title: "쉐이크 후보 보기",
+    title: "식사 사이 보완용 쉐이크 찾기",
     body: "식사만으로 채우기 어려운 날에 바로 연결할 수 있는 쉐이크 가이드",
   },
   {
     href: "/guides/product-selection-comparison/protein-drink-guide",
-    title: "단백질 음료 비교 보기",
+    title: "운동 직후용 음료 바로 비교하기",
     body: "운동 직후나 간편 보충용으로 맞는 음료 제품군 비교",
   },
   {
     href: "/tools/calculator",
-    title: "계산기로 바로 보기",
+    title: "내 체중 기준 섭취량 다시 계산하기",
     body: "체중, 목표에 맞춰 섭취량 계산부터 다시 확인",
   },
 ];
@@ -163,20 +163,21 @@ export default function LeanMassupProteinIntakePage() {
           </h1>
           <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
             린매스업은 많이 먹는 벌크업보다 단백질 총량과 식사 구조를 더 정교하게 맞추는 방식에 가깝습니다. 이
-            초안에서는 체중별 기준, 쉬는 날 운영, 끼니별 분배, 실제 제품 탐색까지 한 흐름으로 정리합니다.
+            초안에서는 체중별 기준, 쉬는 날 운영, 끼니별 분배, 실제 제품 탐색까지 한 흐름으로 정리합니다. 먼저 기준을
+            잡고, 그다음 내 루틴에 맞는 제품군으로 바로 넘어가는 순서가 가장 편합니다.
           </p>
           <div className="mt-4 flex flex-wrap gap-3">
             <Link
               href="/guides/product-selection-comparison/protein-shake-guide"
               className="inline-flex items-center rounded-full bg-[#24543d] px-4 py-2 text-sm font-semibold text-white transition-transform hover:-translate-y-0.5"
             >
-              쉐이크 후보 바로 보기
+              식사 사이 보완용 쉐이크 찾기
             </Link>
             <Link
               href="/guides/intake-strategy-health/protein-timing"
               className="inline-flex items-center rounded-full border border-[#cfd8d1] bg-white px-4 py-2 text-sm font-semibold text-[#24543d] transition-colors hover:border-[#24543d]"
             >
-              끼니별 배분 가이드 보기
+              내 루틴에 맞는 배분법 보기
             </Link>
           </div>
         </div>
@@ -203,7 +204,7 @@ export default function LeanMassupProteinIntakePage() {
           </section>
 
           <section className="rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
-            <h2 className="text-xl font-bold text-[var(--foreground)]">이 초안이 특히 필요한 사람</h2>
+            <h2 className="text-xl font-bold text-[var(--foreground)]">린매스업 단백질 섭취량이 특히 중요한 사람은 누구일까</h2>
             <div className="mt-5 grid gap-3 md:grid-cols-3">
               {audienceCards.map((item) => (
                 <article key={item.title} className="rounded-2xl border border-[#dce8df] bg-[#f6fbf7] p-4">
@@ -215,7 +216,7 @@ export default function LeanMassupProteinIntakePage() {
           </section>
 
           <section className="rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
-            <h2 className="text-xl font-bold text-[var(--foreground)]">체중별 린매스업 단백질 섭취량 예시</h2>
+            <h2 className="text-xl font-bold text-[var(--foreground)]">체중 60kg, 70kg, 80kg이면 단백질을 얼마나 먹어야 할까</h2>
             <p className="mt-3 text-sm leading-6 text-[var(--foreground-muted)]">
               실전에서는 하루 단백질을 체중 1kg당 1.6~2.2g 범위에서 보고, 대부분은 1.8~2.0g/kg 전후에서 출발하면
               무난합니다. 아래 표는 페이지 초안 기준으로 바로 적용할 수 있는 시작점입니다.
@@ -245,28 +246,28 @@ export default function LeanMassupProteinIntakePage() {
             <div className="mt-5 rounded-2xl border border-[#dce8df] bg-[#f6fbf7] p-4">
               <p className="text-sm font-semibold text-[#24543d]">표에서 본 숫자를 바로 제품 선택으로 연결하려면</p>
               <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">
-                하루 목표량이 잡혔다면 다음은 그 양을 어떤 식사와 제품으로 채울지 정하는 단계입니다. 운동 직후 보완이
-                필요하면 쉐이크, 간편 섭취가 우선이면 RTD 음료부터 보는 편이 빠릅니다.
+                하루 목표량이 잡혔다면 이제는 숫자를 외우는 단계보다, 내 식사 공백을 어떤 제품으로 메울지 고르는 단계가
+                더 중요합니다. 운동 직후 보완이 필요하면 쉐이크, 간편 섭취가 우선이면 RTD 음료부터 보는 편이 가장 빠릅니다.
               </p>
               <div className="mt-4 flex flex-wrap gap-3">
                 <Link
                   href="/guides/product-selection-comparison/protein-shake-guide"
                   className="inline-flex items-center rounded-full bg-[#24543d] px-4 py-2 text-sm font-semibold text-white"
                 >
-                  쉐이크 가이드로 이동
+                  린매스업용 쉐이크 보러가기
                 </Link>
                 <Link
                   href="/guides/product-selection-comparison/protein-drink-guide"
                   className="inline-flex items-center rounded-full border border-[#cfd8d1] bg-white px-4 py-2 text-sm font-semibold text-[#24543d]"
                 >
-                  단백질 음료 가이드로 이동
+                  운동 직후용 음료 비교하기
                 </Link>
               </div>
             </div>
           </section>
 
           <section className="rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
-            <h2 className="text-xl font-bold text-[var(--foreground)]">린매스업 단백질은 이렇게 접근하면 편합니다</h2>
+            <h2 className="text-xl font-bold text-[var(--foreground)]">린매스업 단백질 섭취량은 어떤 순서로 맞추면 쉬울까</h2>
             <div className="mt-5 grid gap-3 md:grid-cols-3">
               {routineCards.map((item) => (
                 <article key={item.title} className="rounded-2xl border border-[#dce8df] bg-[#f6fbf7] p-4">
@@ -278,7 +279,7 @@ export default function LeanMassupProteinIntakePage() {
           </section>
 
           <section className="rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
-            <h2 className="text-xl font-bold text-[var(--foreground)]">하루 식단에 적용하면 이런 그림입니다</h2>
+            <h2 className="text-xl font-bold text-[var(--foreground)]">린매스업 식단에 넣으면 단백질 배분이 어떻게 달라질까</h2>
             <p className="mt-3 text-sm leading-6 text-[var(--foreground-muted)]">
               예를 들어 70kg 기준으로 하루 130~140g 전후를 목표로 잡았다면, 한 번에 몰아넣기보다 아래처럼 식사와 보완
               타이밍을 나눠서 채우는 편이 현실적입니다. 이 표는 정확한 식단표라기보다 배분 감각을 잡기 위한 실전 예시입니다.
@@ -310,7 +311,7 @@ export default function LeanMassupProteinIntakePage() {
 
           <section className="rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
             <div className="flex flex-wrap items-center justify-between gap-3">
-              <h2 className="text-xl font-bold text-[var(--foreground)]">본문 초안</h2>
+              <h2 className="text-xl font-bold text-[var(--foreground)]">린매스업 단백질 섭취량, 실전에서는 어떻게 적용할까</h2>
               <span className="rounded-full border border-[#d7dfda] bg-[#f7fbf8] px-3 py-1 text-[11px] font-semibold text-[#24543d]">
                 초안 검토용
               </span>
@@ -358,8 +359,8 @@ export default function LeanMassupProteinIntakePage() {
             <div className="mt-6 rounded-2xl border border-[#e6ddd0] bg-[#fffaf3] p-4">
               <p className="text-sm font-semibold text-[#7a5230]">다음 행동으로 넘어가기</p>
               <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">
-                이 초안에서 숫자 감이 잡혔다면, 이제 실제 제품군을 보면서 “언제 마실지” 기준으로 고르는 편이 더
-                빠릅니다.
+                이 초안에서 숫자 감이 잡혔다면, 다음은 내 루틴에서 가장 자주 비는 시간을 메울 제품을 고르는 단계입니다.
+                운동 직후인지, 식사 사이인지, 계산부터 다시 필요한지에 따라 바로 아래에서 갈라서 보면 됩니다.
               </p>
               <div className="mt-4 grid gap-3 md:grid-cols-3">
                 {actionLinks.map((item) => (
@@ -377,7 +378,7 @@ export default function LeanMassupProteinIntakePage() {
           </section>
 
           <section className="rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
-            <h2 className="text-xl font-bold text-[var(--foreground)]">린매스업에서 자주 헷갈리는 부분</h2>
+            <h2 className="text-xl font-bold text-[var(--foreground)]">린매스업 때 가장 많이 헷갈리는 3가지는 무엇일까</h2>
             <div className="mt-5 space-y-3">
               <article className="rounded-2xl border border-[#dce8df] bg-[#f6fbf7] p-4">
                 <h3 className="text-sm font-semibold text-[#24543d]">1. 단백질만 많이 먹으면 린매스업이 되는 것은 아닙니다</h3>
