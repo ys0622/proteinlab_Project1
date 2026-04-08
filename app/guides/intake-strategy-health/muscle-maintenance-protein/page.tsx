@@ -38,17 +38,17 @@ const maintenanceSteps = [
 const relatedGuides = [
   {
     href: "/guides/intake-strategy-health/post-workout-protein",
-    title: "운동 후 단백질 가이드",
+    title: "운동 직후 보완 기준 같이 보기",
     body: "근육 유지에 운동 직후 보충이 어느 정도 의미가 있는지 먼저 함께 보면 판단이 쉬워집니다.",
   },
   {
     href: "/guides/intake-strategy-health/protein-timing",
-    title: "단백질 섭취 타이밍",
+    title: "하루 배분 루틴 바로 보기",
     body: "근육 유지 전략은 결국 하루 안에서 어떻게 나눠 먹느냐의 문제라 타이밍 페이지와 연결해서 보는 편이 좋습니다.",
   },
   {
     href: "/guides/product-selection-comparison/protein-drink-by-content",
-    title: "함량대별 단백질 음료",
+    title: "내 상황에 맞는 함량대 고르기",
     body: "유지용으로 20g대가 맞는지, 더 높은 함량이 필요한지 제품 선택 기준까지 바로 이어서 볼 수 있습니다.",
   },
 ];
@@ -82,7 +82,8 @@ export default function MuscleMaintenanceProteinPage() {
           </h1>
           <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
             감량 중이든 운동을 병행하든 근육 유지 전략은 한 번에 몰아 먹는 방식보다 꾸준히 나눠 챙기는 루틴에서 갈립니다.
-            운동 직후 한 번보다 주간 총량과 반복 가능한 구조가 더 중요합니다.
+            운동 직후 한 번보다 주간 총량과 반복 가능한 구조가 더 중요합니다. 기준을 잡은 뒤에는 가장 자주 비는 시간대를
+            메울 제품군으로 바로 이어져야 실행이 쉬워집니다.
           </p>
         </div>
       </section>
@@ -128,7 +129,7 @@ export default function MuscleMaintenanceProteinPage() {
         </section>
 
         <section className="mt-6 rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
-          <h2 className="text-xl font-bold text-[var(--foreground)]">근육 유지용 선택 순서</h2>
+          <h2 className="text-xl font-bold text-[var(--foreground)]">근육 유지는 어떤 순서로 맞추면 덜 흔들릴까</h2>
           <div className="mt-5 grid gap-3 md:grid-cols-3">
             {maintenanceSteps.map((item) => (
               <article key={item.title} className="rounded-2xl border border-[#dce8df] bg-[#f6fbf7] p-4">
@@ -148,7 +149,11 @@ export default function MuscleMaintenanceProteinPage() {
         </section>
 
         <section className="mt-6 rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
-          <h2 className="text-xl font-bold text-[var(--foreground)]">관련 가이드</h2>
+          <h2 className="text-xl font-bold text-[var(--foreground)]">다음으로 어떤 기준을 더 볼지 고르기</h2>
+          <p className="mt-3 text-sm leading-6 text-[var(--foreground-muted)]">
+            근육 유지 전략이 잡혔다면, 이제는 운동 직후 보완을 더 볼지, 하루 배분을 정리할지, 내 상황에 맞는 함량대부터
+            고를지 선택해서 이어보는 편이 더 빠릅니다.
+          </p>
           <div className="mt-5 grid gap-3 md:grid-cols-3">
             {relatedGuides.map((item) => (
               <Link key={item.href} href={item.href} className="rounded-2xl border border-[#dce8df] bg-[#f6fbf7] p-4 transition-colors hover:bg-white">

@@ -38,17 +38,17 @@ const mistakes = [
 const postWorkoutLinks = [
   {
     href: "/guides/product-selection-comparison/high-protein-40g-comparison",
-    title: "40g 고단백 비교",
+    title: "운동 직후 40g대 제품 바로 비교하기",
     body: "운동 직후 단백질을 강하게 채우는 RTD만 따로 비교하고 싶다면 이 페이지가 바로 이어집니다.",
   },
   {
     href: "/guides/product-selection-comparison/takefit-vs-himune",
-    title: "운동용 20g대 비교",
+    title: "가볍게 마실 20g대 제품 찾기",
     body: "가볍게 회복용으로 마실 20g대 RTD를 고른다면 이 비교 페이지가 가장 직관적입니다.",
   },
   {
     href: "/guides/intake-strategy-health/protein-timing",
-    title: "섭취 타이밍 가이드",
+    title: "하루 전체 배분법 이어서 보기",
     body: "운동 후 한 번에서 끝나지 않고 하루 전체에 어떻게 분산할지까지 이어서 보면 루틴이 더 탄탄해집니다.",
   },
 ];
@@ -75,7 +75,8 @@ export default function PostWorkoutProteinPage() {
             회복 루틴의 시작점입니다
           </h1>
           <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
-            운동 후 단백질은 언제, 얼마나, 어떤 제품으로 채우는지까지 함께 봐야 실제 회복 루틴으로 이어집니다. 기준을 정한 뒤에는 바로 제품 비교까지 연결해야 실행이 빨라집니다.
+            운동 후 단백질은 언제, 얼마나, 어떤 제품으로 채우는지까지 함께 봐야 실제 회복 루틴으로 이어집니다. 기준을
+            잡은 뒤에는 내 회복 강도에 맞는 제품군으로 바로 넘어가는 순서가 가장 빠릅니다.
           </p>
         </div>
       </section>
@@ -83,7 +84,7 @@ export default function PostWorkoutProteinPage() {
       <main className="mx-auto max-w-[1200px] px-4 py-8 md:px-6">
         <div className="space-y-6">
           <section className="rounded-[28px] border border-[#e2ebe4] bg-[#f7fbf8] px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
-            <h2 className="text-xl font-bold text-[var(--foreground)]">운동 후 회복 타임라인</h2>
+            <h2 className="text-xl font-bold text-[var(--foreground)]">운동 후 단백질은 언제 넣는 게 가장 먼저일까</h2>
             <p className="mt-3 text-sm leading-6 text-[var(--foreground-muted)]">
               운동 직후 20~30g을 먼저 채우고, 이후 식사에서 탄수화물과 단백질을 함께 보완하는 흐름이 가장 안정적입니다.
             </p>
@@ -110,7 +111,7 @@ export default function PostWorkoutProteinPage() {
           </section>
 
           <section className="rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
-            <h2 className="text-xl font-bold text-[var(--foreground)]">상황별로 고르는 회복 방식</h2>
+            <h2 className="text-xl font-bold text-[var(--foreground)]">운동 후엔 어떤 상황에서 어떤 제품이 더 맞을까</h2>
             <div className="mt-5 grid gap-3 md:grid-cols-3">
               {quickChoices.map((item) => (
                 <article key={item.title} className="rounded-2xl border border-[#dce8df] bg-[#f6fbf7] p-4">
@@ -122,7 +123,7 @@ export default function PostWorkoutProteinPage() {
           </section>
 
           <section className="rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
-            <h2 className="text-xl font-bold text-[var(--foreground)]">운동 후에 자주 놓치는 부분</h2>
+            <h2 className="text-xl font-bold text-[var(--foreground)]">운동 후 단백질에서 가장 자주 놓치는 3가지는 무엇일까</h2>
             <ul className="mt-4 space-y-3 text-sm leading-6 text-[var(--foreground-muted)]">
               {mistakes.map((item) => (
                 <li key={item} className="flex gap-3 rounded-xl border border-[#dce8df] bg-[#f6fbf7] px-4 py-3">
@@ -134,7 +135,11 @@ export default function PostWorkoutProteinPage() {
           </section>
 
           <section className="rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
-            <h2 className="text-xl font-bold text-[var(--foreground)]">관련 가이드</h2>
+            <h2 className="text-xl font-bold text-[var(--foreground)]">다음으로 무엇을 볼지 바로 고르기</h2>
+            <p className="mt-3 text-sm leading-6 text-[var(--foreground-muted)]">
+              운동 직후 기준이 잡혔다면, 이제는 회복 강도를 높일지, 가볍게 마실 제품을 고를지, 하루 전체 배분까지 볼지
+              방향을 나눠서 보는 편이 더 빠릅니다.
+            </p>
             <div className="mt-5 grid gap-3 md:grid-cols-3">
               {postWorkoutLinks.map((item) => (
                 <Link key={item.href} href={item.href} className="rounded-2xl border border-[#dce8df] bg-[#f6fbf7] p-4 transition-colors hover:bg-white">
