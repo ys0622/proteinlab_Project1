@@ -24,22 +24,22 @@ const dontNeedCases = [
 const compareLinks = [
   {
     href: "/guides/product-selection-comparison/protein-drink-beginners-guide",
-    title: "입문 제품 바로 보기",
+    title: "부담 적은 입문 제품부터 보기",
     body: "운동 안 해도 부담 없이 시작할 수 있는 제품부터 보고 싶다면 이 페이지가 가장 빠릅니다.",
   },
   {
     href: "/guides/intake-strategy-health/diet-protein-drink-strategy",
-    title: "다이어트 기준 보기",
+    title: "체중 관리 기준 같이 보기",
     body: "운동은 안 하지만 체중 관리 목적이라면 저당·저칼로리 기준부터 보는 편이 더 정확합니다.",
   },
   {
     href: "/guides/product-selection-comparison/protein-drink-for-50s",
-    title: "50대 제품 보기",
+    title: "중장년 보완용 제품 보기",
     body: "건강 유지나 식사 보완 목적이라면 50대·중장년 기준 페이지가 바로 이어집니다.",
   },
   {
     href: "/guides/intake-strategy-health/protein-drink-meal-replacement",
-    title: "식사 보완 기준 보기",
+    title: "식사 보완 기준 더 보기",
     body: "운동용이 아니라 아침 공백이나 한 끼 보완용인지 더 분명하게 보고 싶다면 이 페이지가 이어집니다.",
   },
 ];
@@ -79,7 +79,8 @@ export default function ProteinDrinkWithoutExercisePage() {
           </h1>
           <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
             단백질 음료는 운동하는 사람만 마시는 제품이 아닙니다. 아침을 자주 거르거나, 식사에서 단백질이 부족하거나,
-            부모님 건강 보완용이 필요할 때도 충분히 쓸 수 있습니다. 다만 40g 고단백 제품보다 현재 생활에 맞는 제품을 고르는 것이 더 중요합니다.
+            부모님 건강 보완용이 필요할 때도 충분히 쓸 수 있습니다. 다만 40g 고단백 제품보다 현재 생활에서 어떤 공백을
+            메울지 먼저 정하고 제품을 고르는 것이 더 중요합니다.
           </p>
         </div>
       </section>
@@ -87,7 +88,7 @@ export default function ProteinDrinkWithoutExercisePage() {
       <main className="mx-auto max-w-[1200px] px-4 py-8 md:px-6">
         <div className="space-y-6">
           <section className="rounded-[28px] border border-[#e2ebe4] bg-[#f7fbf8] px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
-            <h2 className="text-xl font-bold text-[var(--foreground)]">이런 상황이라면 단백질 음료가 도움이 됩니다</h2>
+            <h2 className="text-xl font-bold text-[var(--foreground)]">운동 안 해도 단백질 음료가 도움이 되는 상황은 언제일까</h2>
             <div className="mt-5 overflow-x-auto">
               <table className="min-w-full border-collapse text-left text-sm">
                 <thead>
@@ -111,7 +112,7 @@ export default function ProteinDrinkWithoutExercisePage() {
           </section>
 
           <section className="rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
-            <h2 className="text-xl font-bold text-[var(--foreground)]">운동 안 한다면 무엇부터 보면 되나</h2>
+            <h2 className="text-xl font-bold text-[var(--foreground)]">운동 안 한다면 무엇부터 보면 덜 헷갈릴까</h2>
             <div className="mt-5 grid gap-3 md:grid-cols-3">
               {[
                 ["1. 단백질 총량", "처음엔 20g 전후 제품부터 봐도 충분한 경우가 많습니다."],
@@ -127,7 +128,7 @@ export default function ProteinDrinkWithoutExercisePage() {
           </section>
 
           <section className="rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
-            <h2 className="text-xl font-bold text-[var(--foreground)]">실제로는 이 순서로 고르면 됩니다</h2>
+            <h2 className="text-xl font-bold text-[var(--foreground)]">운동 안 할 때 단백질 음료는 어떤 순서로 고르면 될까</h2>
             <div className="mt-5 overflow-x-auto">
               <table className="min-w-full border-collapse text-left text-sm">
                 <thead>
@@ -151,7 +152,7 @@ export default function ProteinDrinkWithoutExercisePage() {
           </section>
 
           <section className="rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
-            <h2 className="text-xl font-bold text-[var(--foreground)]">굳이 더 마실 필요는 없는 경우</h2>
+            <h2 className="text-xl font-bold text-[var(--foreground)]">운동 안 할 때 굳이 더 마실 필요 없는 경우는 언제일까</h2>
             <ul className="mt-4 space-y-3 text-sm leading-6 text-[var(--foreground-muted)]">
               {dontNeedCases.map((item) => (
                 <li key={item} className="flex gap-3 rounded-xl border border-[#dce8df] bg-[#f6fbf7] px-4 py-3">
@@ -163,7 +164,7 @@ export default function ProteinDrinkWithoutExercisePage() {
           </section>
 
           <section className="rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
-            <h2 className="text-xl font-bold text-[var(--foreground)]">많이 하는 실수</h2>
+            <h2 className="text-xl font-bold text-[var(--foreground)]">운동 안 할 때 단백질 음료에서 많이 하는 실수는 무엇일까</h2>
             <ul className="mt-4 space-y-3 text-sm leading-6 text-[var(--foreground-muted)]">
               {commonMistakes.map((item) => (
                 <li key={item} className="flex gap-3 rounded-xl border border-[#dce8df] bg-[#f6fbf7] px-4 py-3">
@@ -175,7 +176,11 @@ export default function ProteinDrinkWithoutExercisePage() {
           </section>
 
           <section className="rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
-            <h2 className="text-xl font-bold text-[var(--foreground)]">다음으로 보면 좋은 비교 가이드</h2>
+            <h2 className="text-xl font-bold text-[var(--foreground)]">다음으로 무엇을 볼지 바로 고르기</h2>
+            <p className="mt-3 text-sm leading-6 text-[var(--foreground-muted)]">
+              지금 기준이 잡혔다면 다음은 부담 적은 입문 제품부터 볼지, 체중 관리 기준을 같이 볼지, 중장년 보완용으로
+              좁힐지 방향을 정하면 됩니다.
+            </p>
             <div className="mt-5 grid gap-3 md:grid-cols-3">
               {compareLinks.map((item) => (
                 <Link key={item.href} href={item.href} className="rounded-2xl border border-[#dce8df] bg-[#f6fbf7] p-4 transition-colors hover:bg-white">

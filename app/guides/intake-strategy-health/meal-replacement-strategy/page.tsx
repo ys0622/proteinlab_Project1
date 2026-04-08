@@ -53,17 +53,17 @@ const replacementChecks = [
 const mealLinks = [
   {
     href: "/guides/product-selection-comparison/protein-category-guide",
-    title: "카테고리 선택 가이드",
+    title: "식사대용에 맞는 카테고리부터 고르기",
     body: "음료, 쉐이크, 바 중에서 지금 식사대용에 가장 가까운 카테고리를 먼저 고르고 싶다면 이 허브가 가장 빠릅니다.",
   },
   {
     href: "/guides/product-selection-comparison/morning-protein-shake",
-    title: "아침 대용 쉐이크",
+    title: "아침 대용 쉐이크 바로 보기",
     body: "바쁜 아침에 바로 적용할 제품 쪽으로 좁혀보고 싶다면 이 페이지가 식사대용 흐름과 가장 잘 연결됩니다.",
   },
   {
     href: "/guides/intake-strategy-health/weight-management-protein",
-    title: "체중 관리 전략",
+    title: "체중 관리 기준 같이 보기",
     body: "식사대용을 감량용으로 쓰는 상황이라면 체중 관리 기준을 같이 봐야 판단이 덜 흔들립니다.",
   },
 ];
@@ -90,7 +90,8 @@ export default function MealReplacementStrategyPage() {
             보충용과 먼저 구분해야 합니다
           </h1>
           <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
-            모든 단백질 음료가 식사대용은 아닙니다. 포만감과 칼로리, 다음 끼니까지의 거리까지 함께 봐야 기준이 분명해지고, 그다음에 카테고리와 제품 비교로 넘어가야 덜 헷갈립니다.
+            모든 단백질 음료가 식사대용은 아닙니다. 포만감과 칼로리, 다음 끼니까지의 거리까지 함께 봐야 기준이 분명해지고,
+            그다음에 내 상황에 맞는 카테고리와 제품 비교로 넘어가야 덜 헷갈립니다.
           </p>
         </div>
       </section>
@@ -98,7 +99,7 @@ export default function MealReplacementStrategyPage() {
       <main className="mx-auto max-w-[1200px] px-4 py-8 md:px-6">
         <div className="space-y-6">
           <section className="rounded-[28px] border border-[#e2ebe4] bg-[#f7fbf8] px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
-            <h2 className="text-xl font-bold text-[var(--foreground)]">제품 유형별 해석</h2>
+            <h2 className="text-xl font-bold text-[var(--foreground)]">어떤 단백질 제품이 식사대용에 더 가까울까</h2>
             <div className="mt-4 rounded-2xl border border-[#dce8df] bg-white px-4 py-4">
               <p className="text-[11px] font-semibold tracking-[0.08em] text-[#2d6a4f]">MEAL-REPLACEMENT CHECK</p>
               <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">
@@ -128,7 +129,7 @@ export default function MealReplacementStrategyPage() {
           </section>
 
           <section className="rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
-            <h2 className="text-xl font-bold text-[var(--foreground)]">식사대용으로 볼 때 중요한 기준</h2>
+            <h2 className="text-xl font-bold text-[var(--foreground)]">식사대용 단백질은 무엇을 먼저 봐야 덜 헷갈릴까</h2>
             <div className="mt-5 grid gap-3 md:grid-cols-3">
               {keyPoints.map((item) => (
                 <article key={item.title} className="rounded-2xl border border-[#dce8df] bg-[#f6fbf7] p-4">
@@ -140,7 +141,7 @@ export default function MealReplacementStrategyPage() {
           </section>
 
           <section className="rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
-            <h2 className="text-xl font-bold text-[var(--foreground)]">이럴 때 더 실전적으로 쓰입니다</h2>
+            <h2 className="text-xl font-bold text-[var(--foreground)]">식사대용 단백질이 특히 잘 맞는 상황은 언제일까</h2>
             <ul className="mt-4 space-y-3 text-sm leading-6 text-[var(--foreground-muted)]">
               {useCases.map((item) => (
                 <li key={item} className="flex gap-3 rounded-xl border border-[#dce8df] bg-[#f6fbf7] px-4 py-3">
@@ -152,7 +153,7 @@ export default function MealReplacementStrategyPage() {
           </section>
 
           <section className="rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
-            <h2 className="text-xl font-bold text-[var(--foreground)]">식사대용으로 볼 때 더 중요한 기준</h2>
+            <h2 className="text-xl font-bold text-[var(--foreground)]">식사대용으로 볼 때 놓치기 쉬운 기준은 무엇일까</h2>
             <div className="mt-5 grid gap-3 md:grid-cols-3">
               {replacementChecks.map((item) => (
                 <article key={item.title} className="rounded-2xl border border-[#dce8df] bg-[#f6fbf7] p-4">
@@ -164,7 +165,11 @@ export default function MealReplacementStrategyPage() {
           </section>
 
           <section className="rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
-            <h2 className="text-xl font-bold text-[var(--foreground)]">관련 가이드</h2>
+            <h2 className="text-xl font-bold text-[var(--foreground)]">다음으로 무엇을 볼지 바로 고르기</h2>
+            <p className="mt-3 text-sm leading-6 text-[var(--foreground-muted)]">
+              식사대용 기준이 잡혔다면, 이제는 카테고리를 먼저 고를지, 아침 대용 제품으로 바로 좁힐지, 체중 관리 기준까지
+              같이 볼지 방향을 나눠서 보는 편이 더 빠릅니다.
+            </p>
             <div className="mt-5 grid gap-3 md:grid-cols-3">
               {mealLinks.map((item) => (
                 <Link key={item.href} href={item.href} className="rounded-2xl border border-[#dce8df] bg-[#f6fbf7] p-4 transition-colors hover:bg-white">
