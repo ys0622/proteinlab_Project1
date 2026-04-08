@@ -6,14 +6,17 @@ import ProductListWithFilters from "../components/ProductListWithFilters";
 import type { ProductCategory } from "../lib/categories";
 import { getProductsByCategoryAsync } from "../lib/productData";
 
-export const metadata = {
-  title: "단백질 바 추천 비교 80종 | 고단백·저당 성분 기준 (2026) | ProteinLab",
-  description:
-    "단백질 바 80개를 단백질 함량, 당류, 칼로리, 중량 기준으로 비교합니다. 운동보충·저당·식사보완 목적에 맞는 제품을 성분 데이터로 바로 선택하세요.",
-  alternates: {
-    canonical: "https://proteinlab.kr/bars",
-  },
-};
+export async function generateMetadata() {
+  const products = await getProductsByCategoryAsync("bar");
+
+  return {
+    title: `단백질 바 추천 비교 ${products.length}종 | 고단백·저당 성분 기준 (2026) | ProteinLab`,
+    description: `단백질 바 ${products.length}개를 단백질 함량, 당류, 칼로리, 중량 기준으로 비교합니다. 운동보충·저당·식사보완 목적에 맞는 제품을 성분 데이터로 바로 선택하세요.`,
+    alternates: {
+      canonical: "https://proteinlab.kr/bars",
+    },
+  };
+}
 
 interface BarsPageProps {
   searchParams?: Promise<Record<string, string | string[] | undefined>>;
@@ -34,11 +37,12 @@ export default async function BarsPage({ searchParams }: BarsPageProps) {
     yogurt: yogurts.length,
     shake: shakes.length,
   };
+  const totalCount = drinks.length + products.length + yogurts.length + shakes.length;
 
   return (
     <div className="min-h-screen bg-white">
       <Header />
-      <HeroSection />
+      <HeroSection totalCount={totalCount} />
 
       <main className="mx-auto max-w-[1200px] px-4 pb-2 pt-0 md:px-6 md:pb-3">
         <AffiliateDisclosure />

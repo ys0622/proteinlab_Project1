@@ -14,28 +14,28 @@ export const CATEGORY_META: Record<ProductCategory, CategoryMeta> = {
     description: "바로 마실 수 있는 고단백 RTD 제품 비교",
     order: 1,
     href: "/drinks",
-    count: 104,
+    count: 107,
   },
   bar: {
     label: "바",
     description: "간편하게 단백질을 보충할 수 있는 바 형태 제품 비교",
     order: 2,
     href: "/bars",
-    count: 71,
+    count: 100,
   },
   yogurt: {
     label: "요거트",
     description: "그릭요거트, 드링킹 요거트 등 단백질 함량이 강화된 요거트 제품 비교",
     order: 3,
     href: "/yogurt",
-    count: 45,
+    count: 57,
   },
   shake: {
     label: "쉐이크",
     description: "파우치형 중심의 간편 섭취 단백질 쉐이크 비교 (파우더 제외)",
     order: 4,
     href: "/shake",
-    count: 67,
+    count: 88,
   },
 };
 

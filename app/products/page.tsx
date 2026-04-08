@@ -7,14 +7,23 @@ import ProductListWithFilters from "../components/ProductListWithFilters";
 import { getProductsByCategoryAsync } from "../lib/productData";
 import type { ProductCategory } from "../lib/categories";
 
-export const metadata: Metadata = {
-  title: "단백질 제품 329종 비교 | 브랜드·카테고리·목적별로 찾기 | ProteinLab",
-  description:
-    "단백질 음료, 바, 요거트, 쉐이크 329종을 브랜드, 단백질 함량, 당류, 칼로리, 목적별로 바로 비교해보세요. 저당, 40g, 다이어트, 50대 기준도 빠르게 찾을 수 있습니다.",
-  alternates: {
-    canonical: "https://proteinlab.kr/products",
-  },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const [drinks, bars, yogurts, shakes] = await Promise.all([
+    getProductsByCategoryAsync("drink"),
+    getProductsByCategoryAsync("bar"),
+    getProductsByCategoryAsync("yogurt"),
+    getProductsByCategoryAsync("shake"),
+  ]);
+  const totalCount = drinks.length + bars.length + yogurts.length + shakes.length;
+
+  return {
+    title: `단백질 제품 ${totalCount}종 비교 | 브랜드·카테고리·목적별로 찾기 | ProteinLab`,
+    description: `단백질 음료, 바, 요거트, 쉐이크 ${totalCount}종을 브랜드, 단백질 함량, 당류, 칼로리, 목적별로 바로 비교해보세요. 저당, 40g, 다이어트, 50대 기준도 빠르게 찾을 수 있습니다.`,
+    alternates: {
+      canonical: "https://proteinlab.kr/products",
+    },
+  };
+}
 
 const quickEntryLinks = [
   {
@@ -82,6 +91,7 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
     yogurt: yogurts.length,
     shake: shakes.length,
   };
+  const totalCount = drinks.length + bars.length + yogurts.length + shakes.length;
 
   return (
     <div className="min-h-screen bg-white">
@@ -100,7 +110,7 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
             <span>Products</span>
           </div>
           <h1 className="mt-3 text-2xl font-bold leading-tight text-[var(--foreground)] md:text-3xl">
-            단백질 제품 329종을
+            단백질 제품 {totalCount}종을
             <br />
             브랜드, 카테고리, 목적별로 바로 비교해보세요.
           </h1>
