@@ -1662,5 +1662,305 @@
     "coupangUrl": "https://www.coupang.com/vp/products/9238582073?itemId=27316848577&vendorItemId=94995221452&q=CJ+%EB%B0%B8%EB%9F%B0%EC%8A%A4%EB%B0%80&searchId=c14c15382517088&sourceType=search&itemsCount=36&searchRank=2&rank=2&traceId=mn65269h",
     "naverUrl": "https://search.shopping.naver.com/search/all?query=CJ%EC%A0%9C%EC%9D%BC%EC%A0%9C%EB%8B%B9%20%EB%B0%B8%EB%9F%B0%EC%8A%A4%EB%B0%80%20%ED%94%84%EB%A1%9C%ED%8B%B4%EB%B0%94%20%ED%94%BC%EB%84%9B%EB%B2%84%ED%84%B0&prevQuery=CJ%EC%A0%9C%EC%9D%BC%EC%A0%9C%EB%8B%B9%20%EB%B0%B8%EB%9F%B0%EC%8A%A4%EB%B0%80%20%ED%94%84%EB%A1%9C%ED%8B%B4%EB%B0%94%20%EB%A7%90%EC%B0%A8&vertical=search",
     "officialUrl": "https://www.cjthemarket.com/pc/search?beforeAction=%2Fpc%2Fsearch%3Fwid1%3Dgnb_search&sort=RANK&collection=ALL&range=A&searchAction=D&query=%ED%94%84%EB%A1%9C%ED%8B%B4%EB%B0%94"
+  },
+  {
+    "slug": "gomgom-proteinbar-50",
+    "brand": "곰곰",
+    "name": "단백질바 50g",
+    "capacity": "50g",
+    "variant": "일반",
+    "tags": [
+      "바"
+    ],
+    "proteinPerServing": 14,
+    "calories": 260,
+    "sugar": 10,
+    "density": "5.38g/100kcal",
+    "productUrl": "#",
+    "productType": "bar",
+    "gradeTags": [],
+    "coupangUrl": "https://www.coupang.com/vp/products/332471584?itemId=19013180937&vendorItemId=86137801293&q=%EA%B3%B0%EA%B3%B0+%EB%8B%A8%EB%B0%B1%EC%A7%88%EB%B0%94+50g&searchId=e282a455377784&sourceType=search&itemsCount=36&searchRank=1&rank=1&traceId=mnpsjwta",
+    "naverUrl": "https://search.shopping.naver.com/search/all?where=all&frm=NVSCTAB&query=%EA%B3%B0%EA%B3%B0+%EB%8B%A8%EB%B0%B1%EC%A7%88%EB%B0%94+50g",
+    "officialUrl": "https://www.coupang.com/np/search?q=%EA%B3%B0%EA%B3%B0+%EB%8B%A8%EB%B0%B1%EB%B0%94"
+  },
+  {
+    "slug": "ppaeba-realchoco-proteinbar-dark-40",
+    "brand": "빼바",
+    "name": "리얼초콜릿 프로틴바 다크 40g",
+    "capacity": "40g",
+    "variant": "다크",
+    "tags": [
+      "바"
+    ],
+    "proteinPerServing": 12,
+    "calories": 145,
+    "sugar": 0,
+    "density": "8.28g/100kcal",
+    "productUrl": "#",
+    "productType": "bar",
+    "gradeTags": [],
+    "coupangUrl": "https://www.coupang.com/vp/products/9432951607?itemId=28048083464&vendorItemId=87474783162&q=%EB%B9%BC%EB%B0%94+%EB%A6%AC%EC%96%BC%EC%B4%88%EC%BD%9C%EB%A6%BF+%ED%94%84%EB%A1%9C%ED%8B%B4%EB%B0%94+%EB%8B%A4%ED%81%AC+40g&searchId=698d53b811493407&sourceType=search&itemsCount=36&searchRank=1&rank=1&traceId=mnpskbkv",
+    "naverUrl": "https://search.shopping.naver.com/search/all?query=%EB%B9%BC%EB%B0%94%20%EB%A6%AC%EC%96%BC%EC%B4%88%EC%BD%9C%EB%A6%BF%20%ED%94%84%EB%A1%9C%ED%8B%B4%EB%B0%94%20%EB%8B%A4%ED%81%AC%2040g&prevQuery=%EA%B3%B0%EA%B3%B0%20%EB%8B%A8%EB%B0%B1%EC%A7%88%EB%B0%94%2050g&vertical=search",
+    "officialUrl": "https://brand.naver.com/healthyplace/category/3b36ce60b9a9432496484c1ee5855d0c?cp=1"
+  },
+  {
+    "slug": "ppaeba-realchoco-proteinbar-white-40",
+    "brand": "빼바",
+    "name": "리얼초콜릿 프로틴바 화이트 40g",
+    "capacity": "40g",
+    "variant": "화이트",
+    "tags": [
+      "바"
+    ],
+    "proteinPerServing": 12,
+    "calories": 145,
+    "sugar": 1.8,
+    "density": "8.28g/100kcal",
+    "productUrl": "#",
+    "productType": "bar",
+    "gradeTags": [],
+    "coupangUrl": "https://www.coupang.com/vp/products/8203768424?itemId=23713850246&vendorItemId=87474758823&q=%EB%B9%BC%EB%B0%94+%EB%A6%AC%EC%96%BC%EC%B4%88%EC%BD%9C%EB%A6%BF+%ED%94%84%EB%A1%9C%ED%8B%B4%EB%B0%94+%ED%99%94%EC%9D%B4%ED%8A%B8+40g&searchId=24d4a29e10185300&sourceType=search&itemsCount=36&searchRank=3&rank=3&traceId=mnpskrdf",
+    "naverUrl": "https://search.shopping.naver.com/search/all?query=%EB%B9%BC%EB%B0%94%20%EB%A6%AC%EC%96%BC%EC%B4%88%EC%BD%9C%EB%A6%BF%20%ED%94%84%EB%A1%9C%ED%8B%B4%EB%B0%94%20%ED%99%94%EC%9D%B4%ED%8A%B8%2040g&prevQuery=%EB%B9%BC%EB%B0%94%20%EB%A6%AC%EC%96%BC%EC%B4%88%EC%BD%9C%EB%A6%BF%20%ED%94%84%EB%A1%9C%ED%8B%B4%EB%B0%94%20%EB%8B%A4%ED%81%AC%2040g&vertical=search",
+    "officialUrl": "https://brand.naver.com/healthyplace/category/3b36ce60b9a9432496484c1ee5855d0c?cp=1"
+  },
+  {
+    "slug": "ppaeba-realchoco-proteinbar-cookies-cream-40",
+    "brand": "빼바",
+    "name": "리얼초콜릿 프로틴바 쿠키앤크림 40g",
+    "capacity": "40g",
+    "variant": "쿠키앤크림",
+    "tags": [
+      "바"
+    ],
+    "proteinPerServing": 12,
+    "calories": 155,
+    "sugar": 0,
+    "density": "7.74g/100kcal",
+    "productUrl": "#",
+    "productType": "bar",
+    "gradeTags": [],
+    "coupangUrl": "https://www.coupang.com/vp/products/8584694707?itemId=24886271834&vendorItemId=91954107455&q=%EB%B9%BC%EB%B0%94+%EB%A6%AC%EC%96%BC%EC%B4%88%EC%BD%9C%EB%A6%BF+%ED%94%84%EB%A1%9C%ED%8B%B4%EB%B0%94+%EC%BF%A0%ED%82%A4%EC%95%A4%ED%81%AC%EB%A6%BC+40g&searchId=87ed5b4710020506&sourceType=search&itemsCount=36&searchRank=0&rank=0&traceId=mnpsld67",
+    "naverUrl": "https://search.shopping.naver.com/search/all?query=%EB%B9%BC%EB%B0%94%20%EB%A6%AC%EC%96%BC%EC%B4%88%EC%BD%9C%EB%A6%BF%20%ED%94%84%EB%A1%9C%ED%8B%B4%EB%B0%94%20%EC%BF%A0%ED%82%A4%EC%95%A4%ED%81%AC%EB%A6%BC%2040g&prevQuery=%EB%B9%BC%EB%B0%94%20%EB%A6%AC%EC%96%BC%EC%B4%88%EC%BD%9C%EB%A6%BF%20%ED%94%84%EB%A1%9C%ED%8B%B4%EB%B0%94%20%ED%99%94%EC%9D%B4%ED%8A%B8%2040g&vertical=search",
+    "officialUrl": "https://brand.naver.com/healthyplace/category/3b36ce60b9a9432496484c1ee5855d0c?cp=1"
+  },
+  {
+    "slug": "ppaeba-realchoco-proteinbar-greek-yogurt-40",
+    "brand": "빼바",
+    "name": "리얼초콜릿 프로틴바 그릭요거트 40g",
+    "capacity": "40g",
+    "variant": "그릭요거트",
+    "tags": [
+      "바"
+    ],
+    "proteinPerServing": 12,
+    "calories": 160,
+    "sugar": 1,
+    "density": "7.50g/100kcal",
+    "productUrl": "#",
+    "productType": "bar",
+    "gradeTags": [],
+    "coupangUrl": "https://www.coupang.com/vp/products/9083898721?itemId=26688422611&vendorItemId=93660462062&q=%EB%B9%BC%EB%B0%94+%EB%A6%AC%EC%96%BC%EC%B4%88%EC%BD%9C%EB%A6%BF+%ED%94%84%EB%A1%9C%ED%8B%B4%EB%B0%94+%EA%B7%B8%EB%A6%AD%EC%9A%94%EA%B1%B0%ED%8A%B8+40g&searchId=a90cd50d12658696&sourceType=search&itemsCount=36&searchRank=3&rank=3&traceId=mnpslq8v",
+    "naverUrl": "https://search.shopping.naver.com/search/all?query=%EB%B9%BC%EB%B0%94%20%EB%A6%AC%EC%96%BC%EC%B4%88%EC%BD%9C%EB%A6%BF%20%ED%94%84%EB%A1%9C%ED%8B%B4%EB%B0%94%20%EA%B7%B8%EB%A6%AD%EC%9A%94%EA%B1%B0%ED%8A%B8%2040g&prevQuery=%EB%B9%BC%EB%B0%94%20%EB%A6%AC%EC%96%BC%EC%B4%88%EC%BD%9C%EB%A6%BF%20%ED%94%84%EB%A1%9C%ED%8B%B4%EB%B0%94%20%EC%BF%A0%ED%82%A4%EC%95%A4%ED%81%AC%EB%A6%BC%2040g&vertical=search",
+    "officialUrl": "https://brand.naver.com/healthyplace/category/3b36ce60b9a9432496484c1ee5855d0c?cp=1"
+  },
+  {
+    "slug": "cralo-79-corn-yogurt-bar-25",
+    "brand": "씨알로",
+    "name": "79 콘요구르트바 300g",
+    "capacity": "25g",
+    "variant": "일반",
+    "tags": [
+      "바"
+    ],
+    "proteinPerServing": 1,
+    "calories": 100,
+    "sugar": 6,
+    "density": "1.00g/100kcal",
+    "productUrl": "#",
+    "productType": "bar",
+    "gradeTags": [],
+    "coupangUrl": "https://www.coupang.com/vp/products/1141708423?itemId=18775332572&vendorItemId=85906856473&pickType=COU_PICK&q=%EC%94%A8%EC%95%8C%EB%A1%9C%2079%20%EC%BD%98%EC%9A%94%EA%B5%AC%EB%A5%B4%ED%8A%B8%EB%B0%94%20300g&searchId=bad3b84f9523684&sourceType=search&itemsCount=36&searchRank=0&rank=0&traceId=mnpsm3wh",
+    "naverUrl": "https://search.shopping.naver.com/search/all?query=%EC%94%A8%EC%95%8C%EB%A1%9C%2079%20%EC%BD%98%EC%9A%94%EA%B5%AC%EB%A5%B4%ED%8A%B8%EB%B0%94%20300g&prevQuery=%EB%B9%BC%EB%B0%94%20%EB%A6%AC%EC%96%BC%EC%B4%88%EC%BD%9C%EB%A6%BF%20%ED%94%84%EB%A1%9C%ED%8B%B4%EB%B0%94%20%EA%B7%B8%EB%A6%AD%EC%9A%94%EA%B1%B0%ED%8A%B8%2040g&vertical=search",
+    "officialUrl": "https://smartstore.naver.com/crfood/products/4432633289?NaPm=ct%3Dmnpt0g4g%7Cci%3D7301e4dad899e4a70ae55785e9a6f0ff3b506bc3%7Ctr%3Dslsl%7Csn%3D178678%7Chk%3Db2418b2c5cf64c5bf2a335cf316c7d54e4683a60&nl-au=7e701d0cd5da4d4fbaa543e704b6ee66&nl-query=%EC%94%A8%EC%95%8C%EB%A1%9C+79+%EC%BD%98%EC%9A%94%EA%B5%AC%EB%A5%B4%ED%8A%B8%EB%B0%94+300g"
+  },
+  {
+    "slug": "marketo-nature-oh-granola-proteinbar-40",
+    "brand": "마켓오네이처",
+    "name": "오 그래놀라 단백질바 40g",
+    "capacity": "40g",
+    "variant": "일반",
+    "tags": [
+      "바"
+    ],
+    "proteinPerServing": 6,
+    "calories": 183,
+    "sugar": 12,
+    "density": "3.28g/100kcal",
+    "productUrl": "#",
+    "productType": "bar",
+    "gradeTags": [],
+    "coupangUrl": "https://www.coupang.com/vp/products/7209658971?itemId=16063194010&vendorItemId=85762596576&q=%EB%A7%88%EC%BC%93%EC%98%A4%20%EC%98%A4%20%EA%B7%B8%EB%9E%98%EB%86%80%EB%9D%BC%20%EB%8B%A8%EB%B0%B1%EC%A7%88%EB%B0%94%2040g&searchId=d94464779524294&sourceType=search&itemsCount=36&searchRank=2&rank=2&traceId=mnpsmj2a",
+    "naverUrl": "https://search.shopping.naver.com/search/all?query=%EB%A7%88%EC%BC%93%EC%98%A4%20%EC%98%A4%20%EA%B7%B8%EB%9E%98%EB%86%80%EB%9D%BC%20%EB%8B%A8%EB%B0%B1%EC%A7%88%EB%B0%94%2040g&prevQuery=%EC%94%A8%EC%95%8C%EB%A1%9C%2079%20%EC%BD%98%EC%9A%94%EA%B5%AC%EB%A5%B4%ED%8A%B8%EB%B0%94%20300g&vertical=search",
+    "officialUrl": ""
+  },
+  {
+    "slug": "soyjoy-blueberry-30",
+    "brand": "소이조이",
+    "name": "블루베리 30g",
+    "capacity": "30g",
+    "variant": "블루베리",
+    "tags": [
+      "바"
+    ],
+    "proteinPerServing": 4,
+    "calories": 136,
+    "sugar": 9,
+    "density": "2.94g/100kcal",
+    "productUrl": "#",
+    "productType": "bar",
+    "gradeTags": [],
+    "coupangUrl": "https://www.coupang.com/vp/products/8087705163?itemId=22830552798&vendorItemId=91290560503&sourceType=srp_product_ads&clickEventId=f33e7800-3325-11f1-bbfb-8a7bb64ab1a0&korePlacement=15&koreSubPlacement=1&clickEventId=f33e7800-3325-11f1-bbfb-8a7bb64ab1a0&korePlacement=15&koreSubPlacement=1&traceId=mnpsmwk7",
+    "naverUrl": "https://search.shopping.naver.com/search/all?query=%EC%86%8C%EC%9D%B4%EC%A1%B0%EC%9D%B4%20%EB%B8%94%EB%A3%A8%EB%B2%A0%EB%A6%AC%2030g&prevQuery=%EB%A7%88%EC%BC%93%EC%98%A4%20%EC%98%A4%20%EA%B7%B8%EB%9E%98%EB%86%80%EB%9D%BC%20%EB%8B%A8%EB%B0%B1%EC%A7%88%EB%B0%94%2040g&vertical=search",
+    "officialUrl": "https://brand.naver.com/soyjoy"
+  },
+  {
+    "slug": "soyjoy-sweetpotato-30",
+    "brand": "소이조이",
+    "name": "스위트포테이토 30g",
+    "capacity": "30g",
+    "variant": "스위트포테이토",
+    "tags": [
+      "바"
+    ],
+    "proteinPerServing": 4,
+    "calories": 129,
+    "sugar": 8,
+    "density": "3.10g/100kcal",
+    "productUrl": "#",
+    "productType": "bar",
+    "gradeTags": [],
+    "coupangUrl": "https://www.coupang.com/vp/products/8918656263?itemId=24699853362&vendorItemId=91805913013&q=%EC%86%8C%EC%9D%B4%EC%A1%B0%EC%9D%B4+%EC%8A%A4%EC%9C%84%ED%8A%B8%ED%8F%AC%ED%85%8C%EC%9D%B4%ED%86%A0+30g&searchId=93912dec10500038&sourceType=search&itemsCount=36&searchRank=3&rank=3&traceId=mnpsnf27",
+    "naverUrl": "https://search.shopping.naver.com/search/all?query=%EC%86%8C%EC%9D%B4%EC%A1%B0%EC%9D%B4%20%EC%8A%A4%EC%9C%84%ED%8A%B8%ED%8F%AC%ED%85%8C%EC%9D%B4%ED%86%A0%2030g&prevQuery=%EC%86%8C%EC%9D%B4%EC%A1%B0%EC%9D%B4%20%EB%B8%94%EB%A3%A8%EB%B2%A0%EB%A6%AC%2030g&vertical=search",
+    "officialUrl": "https://brand.naver.com/soyjoy"
+  },
+  {
+    "slug": "soyjoy-strawberry-30",
+    "brand": "소이조이",
+    "name": "스트로베리 30g",
+    "capacity": "30g",
+    "variant": "스트로베리",
+    "tags": [
+      "바"
+    ],
+    "proteinPerServing": 4,
+    "calories": 129,
+    "sugar": 8,
+    "density": "3.10g/100kcal",
+    "productUrl": "#",
+    "productType": "bar",
+    "gradeTags": [],
+    "coupangUrl": "https://www.coupang.com/vp/products/8085203903?itemId=22814375277&vendorItemId=91176674892&sourceType=srp_product_ads&clickEventId=1c60b630-3326-11f1-adde-90e5c6ad450c&korePlacement=15&koreSubPlacement=1&clickEventId=1c60b630-3326-11f1-adde-90e5c6ad450c&korePlacement=15&koreSubPlacement=1&traceId=mnpsoc5f",
+    "naverUrl": "https://search.shopping.naver.com/search/all?query=%EC%86%8C%EC%9D%B4%EC%A1%B0%EC%9D%B4%20%EC%8A%A4%ED%8A%B8%EB%A1%9C%EB%B2%A0%EB%A6%AC%2030g&prevQuery=%EC%86%8C%EC%9D%B4%EC%A1%B0%EC%9D%B4%20%EC%8A%A4%EC%9C%84%ED%8A%B8%ED%8F%AC%ED%85%8C%EC%9D%B4%ED%86%A0%2030g&vertical=search",
+    "officialUrl": "https://brand.naver.com/soyjoy"
+  },
+  {
+    "slug": "soyjoy-almond-chocolate-30",
+    "brand": "소이조이",
+    "name": "아몬드&초콜릿 30g",
+    "capacity": "30g",
+    "variant": "아몬드&초콜릿",
+    "tags": [
+      "바"
+    ],
+    "proteinPerServing": 5,
+    "calories": 139,
+    "sugar": 6,
+    "density": "3.59g/100kcal",
+    "productUrl": "#",
+    "productType": "bar",
+    "gradeTags": [],
+    "coupangUrl": "https://www.coupang.com/vp/products/8085180921?itemId=22814287564&vendorItemId=91290564309&q=%EC%86%8C%EC%9D%B4%EC%A1%B0%EC%9D%B4+%EC%95%84%EB%AA%AC%EB%93%9C&%EC%B4%88%EC%BD%9C%EB%A6%BF+30g=&searchId=7ec2732611221401&sourceType=search&itemsCount=36&searchRank=0&rank=0&traceId=mnpsour4",
+    "naverUrl": "https://search.shopping.naver.com/search/all?query=%EC%86%8C%EC%9D%B4%EC%A1%B0%EC%9D%B4%20%EC%95%84%EB%AA%AC%EB%93%9C%26%EC%B4%88%EC%BD%9C%EB%A6%BF%2030g&prevQuery=%EC%86%8C%EC%9D%B4%EC%A1%B0%EC%9D%B4%20%EC%8A%A4%ED%8A%B8%EB%A1%9C%EB%B2%A0%EB%A6%AC%2030g&vertical=search",
+    "officialUrl": "https://brand.naver.com/soyjoy"
+  },
+  {
+    "slug": "soyjoy-apple-30",
+    "brand": "소이조이",
+    "name": "애플 30g",
+    "capacity": "30g",
+    "variant": "애플",
+    "tags": [
+      "바"
+    ],
+    "proteinPerServing": 4,
+    "calories": 127,
+    "sugar": 9,
+    "density": "3.15g/100kcal",
+    "productUrl": "#",
+    "productType": "bar",
+    "gradeTags": [],
+    "coupangUrl": "https://www.coupang.com/vp/products/8085190165?itemId=22814319689&vendorItemId=91290562036&q=%EC%86%8C%EC%9D%B4%EC%A1%B0%EC%9D%B4+%EC%97%90%ED%94%8C+30g&searchId=d11f82a79124840&sourceType=search&itemsCount=36&searchRank=0&rank=0&traceId=mnpsp6h9",
+    "naverUrl": "https://search.shopping.naver.com/search/all?query=%EC%86%8C%EC%9D%B4%EC%A1%B0%EC%9D%B4%20%EC%95%A0%ED%94%8C%2030g&prevQuery=%EC%86%8C%EC%9D%B4%EC%A1%B0%EC%9D%B4%20%EC%95%84%EB%AA%AC%EB%93%9C%26%EC%B4%88%EC%BD%9C%EB%A6%BF%2030g&vertical=search",
+    "officialUrl": "https://brand.naver.com/soyjoy"
+  },
+  {
+    "slug": "soyjoy-plantbased-macadamia-lemon-25",
+    "brand": "소이조이",
+    "name": "플랜트베이스드 마카다미아&레몬 25g",
+    "capacity": "25g",
+    "variant": "플랜트베이스드 마카다미아&레몬",
+    "tags": [
+      "바"
+    ],
+    "proteinPerServing": 6,
+    "calories": 135,
+    "sugar": 5,
+    "density": "4.44g/100kcal",
+    "productUrl": "#",
+    "productType": "bar",
+    "gradeTags": [],
+    "coupangUrl": "https://www.coupang.com/vp/products/8532975077?itemId=27084787758&vendorItemId=91805934156&q=%EC%86%8C%EC%9D%B4%EC%A1%B0%EC%9D%B4+%ED%94%8C%EB%9E%9C%ED%8A%B8%EB%B2%A0%EC%9D%B4%EC%8A%A4%EB%93%9C+%EB%A7%88%EC%B9%B4%EB%8B%A4%EB%AF%B8%EC%95%84&%EB%A0%88%EB%AA%AC+25g=&searchId=dd88d13a12697223&sourceType=search&itemsCount=36&searchRank=0&rank=0&traceId=mnpspmzr",
+    "naverUrl": "https://search.shopping.naver.com/search/all?query=%EC%86%8C%EC%9D%B4%EC%A1%B0%EC%9D%B4%20%ED%94%8C%EB%9E%9C%ED%8A%B8%EB%B2%A0%EC%9D%B4%EC%8A%A4%EB%93%9C%20%EB%A7%88%EC%B9%B4%EB%8B%A4%EB%AF%B8%EC%95%84%26%EB%A0%88%EB%AA%AC%2025g&prevQuery=%EC%86%8C%EC%9D%B4%EC%A1%B0%EC%9D%B4%20%EC%95%A0%ED%94%8C%2030g&vertical=search",
+    "officialUrl": "https://brand.naver.com/soyjoy"
+  },
+  {
+    "slug": "soyjoy-plantbased-banana-25",
+    "brand": "소이조이",
+    "name": "플랜트베이스드 바나나 25g",
+    "capacity": "25g",
+    "variant": "플랜트베이스드 바나나",
+    "tags": [
+      "바"
+    ],
+    "proteinPerServing": 6,
+    "calories": 117,
+    "sugar": 5,
+    "density": "5.13g/100kcal",
+    "productUrl": "#",
+    "productType": "bar",
+    "gradeTags": [],
+    "coupangUrl": "https://www.coupang.com/vp/products/8532976813?itemId=24699868616&vendorItemId=91805941787&q=%EC%86%8C%EC%9D%B4%EC%A1%B0%EC%9D%B4%20%ED%94%8C%EB%9E%9C%ED%8A%B8%EB%B2%A0%EC%9D%B4%EC%8A%A4%EB%93%9C%20%EB%B0%94%EB%82%98%EB%82%98%2025g&searchId=0c75bba810220348&sourceType=search&itemsCount=36&searchRank=0&rank=0&traceId=mnpspxzg",
+    "naverUrl": "https://search.shopping.naver.com/search/all?query=%EC%86%8C%EC%9D%B4%EC%A1%B0%EC%9D%B4%20%ED%94%8C%EB%9E%9C%ED%8A%B8%EB%B2%A0%EC%9D%B4%EC%8A%A4%EB%93%9C%20%EB%B0%94%EB%82%98%EB%82%98%2025g&prevQuery=%EC%86%8C%EC%9D%B4%EC%A1%B0%EC%9D%B4%20%ED%94%8C%EB%9E%9C%ED%8A%B8%EB%B2%A0%EC%9D%B4%EC%8A%A4%EB%93%9C%20%EB%A7%88%EC%B9%B4%EB%8B%A4%EB%AF%B8%EC%95%84%26%EB%A0%88%EB%AA%AC%2025g&vertical=search",
+    "officialUrl": "https://brand.naver.com/soyjoy"
+  },
+  {
+    "slug": "soyjoy-fruits-baked-cheese-30",
+    "brand": "소이조이",
+    "name": "후르츠&베이크드치즈 30g",
+    "capacity": "30g",
+    "variant": "후르츠&베이크드치즈",
+    "tags": [
+      "바"
+    ],
+    "proteinPerServing": 5,
+    "calories": 144,
+    "sugar": 9,
+    "density": "3.47g/100kcal",
+    "productUrl": "#",
+    "productType": "bar",
+    "gradeTags": [],
+    "coupangUrl": "https://www.coupang.com/vp/products/8532971326?itemId=24699847441&vendorItemId=91805928974&q=%EC%86%8C%EC%9D%B4%EC%A1%B0%EC%9D%B4%20%ED%9B%84%EB%A5%B4%EC%B8%A0&%EB%B2%A0%EC%9D%B4%ED%81%AC%EB%93%9C%EC%B9%98%EC%A6%88%2030g&searchId=4c8ae80d203853&sourceType=search&itemsCount=36&searchRank=0&rank=0&traceId=mnpsq8sp",
+    "naverUrl": "https://search.shopping.naver.com/search/all?query=%EC%86%8C%EC%9D%B4%EC%A1%B0%EC%9D%B4%20%ED%9B%84%EB%A5%B4%EC%B8%A0%26%EB%B2%A0%EC%9D%B4%ED%81%AC%EB%93%9C%EC%B9%98%EC%A6%88%2030g&prevQuery=%EC%86%8C%EC%9D%B4%EC%A1%B0%EC%9D%B4%20%ED%94%8C%EB%9E%9C%ED%8A%B8%EB%B2%A0%EC%9D%B4%EC%8A%A4%EB%93%9C%20%EB%B0%94%EB%82%98%EB%82%98%2025g&vertical=search",
+    "officialUrl": "https://brand.naver.com/soyjoy"
   }
 ]

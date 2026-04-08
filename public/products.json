@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-04-04T09:41:34.215Z",
-  "total": 329,
+  "generated_at": "2026-04-08T08:56:33.641Z",
+  "total": 352,
   "categories": {
     "drinks": 107,
-    "bars": 85,
-    "yogurt": 54,
-    "shake": 83
+    "bars": 100,
+    "yogurt": 57,
+    "shake": 88
   },
   "products": [
     {
@@ -1737,6 +1737,141 @@
       "sugar": 1.5
     },
     {
+      "slug": "gomgom-proteinbar-50",
+      "name": "단백질바 50g",
+      "brand": "곰곰",
+      "category": "bars",
+      "protein": 14,
+      "calories": 260,
+      "sugar": 10
+    },
+    {
+      "slug": "ppaeba-realchoco-proteinbar-dark-40",
+      "name": "리얼초콜릿 프로틴바 다크 40g",
+      "brand": "빼바",
+      "category": "bars",
+      "protein": 12,
+      "calories": 145,
+      "sugar": 0
+    },
+    {
+      "slug": "ppaeba-realchoco-proteinbar-white-40",
+      "name": "리얼초콜릿 프로틴바 화이트 40g",
+      "brand": "빼바",
+      "category": "bars",
+      "protein": 12,
+      "calories": 145,
+      "sugar": 1.8
+    },
+    {
+      "slug": "ppaeba-realchoco-proteinbar-cookies-cream-40",
+      "name": "리얼초콜릿 프로틴바 쿠키앤크림 40g",
+      "brand": "빼바",
+      "category": "bars",
+      "protein": 12,
+      "calories": 155,
+      "sugar": 0
+    },
+    {
+      "slug": "ppaeba-realchoco-proteinbar-greek-yogurt-40",
+      "name": "리얼초콜릿 프로틴바 그릭요거트 40g",
+      "brand": "빼바",
+      "category": "bars",
+      "protein": 12,
+      "calories": 160,
+      "sugar": 1
+    },
+    {
+      "slug": "cralo-79-corn-yogurt-bar-25",
+      "name": "79 콘요구르트바 300g",
+      "brand": "씨알로",
+      "category": "bars",
+      "protein": 1,
+      "calories": 100,
+      "sugar": 6
+    },
+    {
+      "slug": "marketo-nature-oh-granola-proteinbar-40",
+      "name": "오 그래놀라 단백질바 40g",
+      "brand": "마켓오네이처",
+      "category": "bars",
+      "protein": 6,
+      "calories": 183,
+      "sugar": 12
+    },
+    {
+      "slug": "soyjoy-blueberry-30",
+      "name": "블루베리 30g",
+      "brand": "소이조이",
+      "category": "bars",
+      "protein": 4,
+      "calories": 136,
+      "sugar": 9
+    },
+    {
+      "slug": "soyjoy-sweetpotato-30",
+      "name": "스위트포테이토 30g",
+      "brand": "소이조이",
+      "category": "bars",
+      "protein": 4,
+      "calories": 129,
+      "sugar": 8
+    },
+    {
+      "slug": "soyjoy-strawberry-30",
+      "name": "스트로베리 30g",
+      "brand": "소이조이",
+      "category": "bars",
+      "protein": 4,
+      "calories": 129,
+      "sugar": 8
+    },
+    {
+      "slug": "soyjoy-almond-chocolate-30",
+      "name": "아몬드&초콜릿 30g",
+      "brand": "소이조이",
+      "category": "bars",
+      "protein": 5,
+      "calories": 139,
+      "sugar": 6
+    },
+    {
+      "slug": "soyjoy-apple-30",
+      "name": "애플 30g",
+      "brand": "소이조이",
+      "category": "bars",
+      "protein": 4,
+      "calories": 127,
+      "sugar": 9
+    },
+    {
+      "slug": "soyjoy-plantbased-macadamia-lemon-25",
+      "name": "플랜트베이스드 마카다미아&레몬 25g",
+      "brand": "소이조이",
+      "category": "bars",
+      "protein": 6,
+      "calories": 135,
+      "sugar": 5
+    },
+    {
+      "slug": "soyjoy-plantbased-banana-25",
+      "name": "플랜트베이스드 바나나 25g",
+      "brand": "소이조이",
+      "category": "bars",
+      "protein": 6,
+      "calories": 117,
+      "sugar": 5
+    },
+    {
+      "slug": "soyjoy-fruits-baked-cheese-30",
+      "name": "후르츠&베이크드치즈 30g",
+      "brand": "소이조이",
+      "category": "bars",
+      "protein": 5,
+      "calories": 144,
+      "sugar": 9
+    },
+    {
       "slug": "yopro-plain-150",
       "name": "요프로 프로틴 설탕무첨가 플레인 요거트 150g",
       "brand": "요프로",
@@ -2221,6 +2356,33 @@
       "protein": 13,
       "calories": 195,
       "sugar": 2
+    },
+    {
+      "slug": "kirkland-greek-plain-907",
+      "name": "커클랜드 그릭요거트 플레인 907g",
+      "brand": "커클랜드",
+      "category": "yogurt",
+      "protein": 90.7,
+      "calories": 498.85,
+      "sugar": 27.21
+    },
+    {
+      "slug": "who-organic-greek-plain-480",
+      "name": "후디스 유기농 그릭요거트 플레인 480g",
+      "brand": "후디스",
+      "category": "yogurt",
+      "protein": 28.8,
+      "calories": 720,
+      "sugar": 66
+    },
+    {
+      "slug": "denmark-high-greek-400",
+      "name": "덴마크 하이 그릭요거트 400g",
+      "brand": "덴마크",
+      "category": "yogurt",
+      "protein": 28,
+      "calories": 300,
+      "sugar": 6
     },
     {
       "slug": "flymill-proteinshake-choco-45",
@@ -2968,6 +3130,51 @@
       "protein": 18,
       "calories": 160,
       "sugar": 1.9
+    },
+    {
+      "slug": "shakebaby-proteinshake-choco-45",
+      "name": "단백질 쉐이크 (초코맛)",
+      "brand": "쉐이크베이비",
+      "category": "shake",
+      "protein": 22,
+      "calories": 163,
+      "sugar": 2
+    },
+    {
+      "slug": "shakebaby-proteinshake-strawberry-45",
+      "name": "단백질 쉐이크 (딸기맛)",
+      "brand": "쉐이크베이비",
+      "category": "shake",
+      "protein": 20,
+      "calories": 167,
+      "sugar": 3
+    },
+    {
+      "slug": "shakebaby-proteinshake-matcha-45",
+      "name": "단백질 쉐이크 (말차맛)",
+      "brand": "쉐이크베이비",
+      "category": "shake",
+      "protein": 21,
+      "calories": 164,
+      "sugar": 2
+    },
+    {
+      "slug": "shakebaby-proteinshake-grain-45",
+      "name": "단백질 쉐이크 (곡물맛)",
+      "brand": "쉐이크베이비",
+      "category": "shake",
+      "protein": 20,
+      "calories": 166,
+      "sugar": 2
+    },
+    {
+      "slug": "shakebaby-proteinshake-sweetcorn-flakes-45",
+      "name": "단백질 쉐이크 (스윗콘 플레이크맛)",
+      "brand": "쉐이크베이비",
+      "category": "shake",
+      "protein": 20,
+      "calories": 163,
+      "sugar": 3
     }
   ]
 }

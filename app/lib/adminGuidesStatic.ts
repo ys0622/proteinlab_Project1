@@ -175,6 +175,7 @@ const sections: AdminGuideSection[] = [
       article("protein-timing", "단백질 섭취 타이밍", "하루 전체 루틴에서 단백질을 배치하는 방법을 설명합니다.", "/guides/intake-strategy-health/protein-timing", { emoji: "⏰", tags: ["타이밍", "루틴"] }),
       article("pre-workout-protein", "운동 전 단백질", "운동 전 섭취가 필요한 상황과 주의점을 정리합니다.", "/guides/intake-strategy-health/pre-workout-protein", { emoji: "🏃", tags: ["운동 전", "소화"] }),
       article("post-workout-protein", "운동 후 단백질", "회복과 적응을 위한 운동 후 단백질 전략을 설명합니다.", "/guides/intake-strategy-health/post-workout-protein", { emoji: "🔋", tags: ["운동 후", "회복"] }),
+      article("lean-massup-protein-intake", "린매스업 단백질 섭취량", "체중별 계산 기준, 쉬는 날 운영, 끼니별 배분까지 린매스업 단백질 전략을 실전형으로 정리합니다.", "/guides/intake-strategy-health/lean-massup-protein-intake", { emoji: "📈", tags: ["린매스업", "근육 증가", "단백질"] }),
       article("weight-management-protein", "체중 관리와 단백질", "다이어트와 체중 관리 상황의 단백질 기준을 정리합니다.", "/guides/intake-strategy-health/weight-management-protein", { emoji: "⚖️", tags: ["체중 관리", "다이어트"] }),
       article("muscle-maintenance-protein", "근육 유지 전략", "감량기와 병행 운동 상황에서 근육을 유지하는 전략입니다.", "/guides/intake-strategy-health/muscle-maintenance-protein", { emoji: "🧱", tags: ["근육 유지", "감량기"] }),
       article("senior-protein-strategy", "노년 단백질 전략", "중장년층이 부담 없이 단백질을 챙기는 기준을 정리합니다.", "/guides/intake-strategy-health/senior-protein-strategy", { emoji: "👵", tags: ["중장년", "건강"] }),

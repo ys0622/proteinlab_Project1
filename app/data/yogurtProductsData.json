@@ -2486,5 +2486,157 @@
     "coupangUrl": "https://www.coupang.com/vp/products/9150768333?itemId=27003096941&vendorItemId=93971799675&pickType=COU_PICK&q=YOZM%20저당%20그릭요거트%20말차%20100g&searchId=0ebe94ef2461572&sourceType=search&itemsCount=36&searchRank=0&rank=0&traceId=mn8nm0lw",
     "naverUrl": "https://search.shopping.naver.com/search/all?query=YOZM%20%EC%A0%80%EB%8B%B9%20%EA%B7%B8%EB%A6%AD%EC%9A%94%EA%B1%B0%ED%8A%B8%20%EB%A7%90%EC%B0%A8%20100g&prevQuery=YOZM%20%EC%98%A4!%20%EA%B7%B8%EB%9E%98%EB%86%80%EB%9D%BC%20%EC%A0%80%EB%8B%B9%20%EA%B7%B8%EB%A6%AD%EC%9A%94%EA%B1%B0%ED%8A%B8%20115g&vertical=search",
     "officialUrl": "https://brand.naver.com/yozmkorea/category/e8210e7f580b4c8b9bdc62a21f8cf7dd?cp=1"
+  },
+  {
+    "slug": "kirkland-greek-plain-907",
+    "brand": "커클랜드",
+    "name": "커클랜드 그릭요거트 플레인 907g",
+    "capacity": "907g",
+    "variant": "플레인",
+    "tags": [
+      "컵"
+    ],
+    "proteinPerServing": 90.7,
+    "calories": 498.85,
+    "sugar": 27.21,
+    "density": "10.0g/100g",
+    "productUrl": "#",
+    "productType": "yogurt",
+    "gradeTags": [
+      "단백질 밀도 A",
+      "다이어트 A",
+      "퍼포먼스 A"
+    ],
+    "gradeDescriptions": [
+      "907g 대용량이지만 100g 기준 단백질 밀도가 높고 지방이 낮아 기본 체급이 좋은 플레인 그릭요거트입니다.",
+      "총량이 큰 만큼 한 번에 전량 섭취보다는 나눠 먹는 전제가 자연스럽습니다.",
+      "대용량 식사 보완용이나 가족형 플레인 그릭요거트 후보로 보기 좋습니다."
+    ],
+    "manufacturer": "Kirkland Signature",
+    "flavor": "플레인",
+    "fat": 0,
+    "sodium": 362.8,
+    "yogurtType": "그릭 요거트",
+    "storageType": "냉장",
+    "lactoseFree": false,
+    "proteinPer100g": 10,
+    "nutritionPerBottle": {
+      "caloriesKcal": 498.85,
+      "proteinG": 90.7,
+      "carbsG": 36.28,
+      "sugarsG": 27.21,
+      "fatG": 0,
+      "satFatG": 0,
+      "transFatG": 0,
+      "cholesterolMg": 45.35,
+      "sodiumMg": 362.8,
+      "calciumMg": 907
+    },
+    "needsServingCheck": true,
+    "nutritionBasis": "per_100g_scaled",
+    "coupangUrl": "https://www.coupang.com/vp/products/249357928?itemId=27274528793&vendorItemId=94241241790&q=%EC%BB%A4%ED%81%B4%EB%9E%9C%EB%93%9C+%EA%B7%B8%EB%A6%AD%EC%9A%94%EA%B1%B0%ED%8A%B8+%ED%94%8C%EB%A0%88%EC%9D%B8+907g&searchId=3cb3be2510324097&sourceType=search&itemsCount=36&searchRank=2&rank=2&traceId=mnpsedw1",
+    "naverUrl": "https://search.shopping.naver.com/search/all?where=all&frm=NVSCTAB&query=%EC%BB%A4%ED%81%B4%EB%9E%9C%EB%93%9C+%EA%B7%B8%EB%A6%AD%EC%9A%94%EA%B1%B0%ED%8A%B8+%ED%94%8C%EB%A0%88%EC%9D%B8+907g",
+    "officialUrl": ""
+  },
+  {
+    "slug": "who-organic-greek-plain-480",
+    "brand": "후디스",
+    "name": "후디스 유기농 그릭요거트 플레인 480g",
+    "capacity": "480g",
+    "variant": "플레인",
+    "tags": [
+      "컵"
+    ],
+    "proteinPerServing": 28.8,
+    "calories": 720,
+    "sugar": 66,
+    "density": "6.0g/100g",
+    "productUrl": "#",
+    "productType": "yogurt",
+    "gradeTags": [
+      "단백질 밀도 C",
+      "다이어트 D",
+      "퍼포먼스 C"
+    ],
+    "gradeDescriptions": [
+      "80g 기준 라벨을 총 480g 용량으로 환산한 대용량 유기농 그릭요거트입니다.",
+      "총 단백질량은 무난하지만 당류와 지방 부담이 커서 다이어트 점수는 보수적으로 보는 편이 맞습니다.",
+      "대용량 플레인 요거트로 나눠 먹는 전제에서 접근하는 편이 안전합니다."
+    ],
+    "manufacturer": "일동후디스",
+    "flavor": "플레인",
+    "fat": 37.2,
+    "sodium": 540,
+    "yogurtType": "그릭 요거트",
+    "storageType": "냉장",
+    "lactoseFree": false,
+    "proteinPer100g": 6,
+    "nutritionPerBottle": {
+      "caloriesKcal": 720,
+      "proteinG": 28.8,
+      "carbsG": 66,
+      "sugarsG": 66,
+      "fatG": 37.2,
+      "satFatG": 23.4,
+      "cholesterolMg": 150,
+      "sodiumMg": 540,
+      "calciumMg": 960
+    },
+    "needsServingCheck": true,
+    "nutritionBasis": "per_80g_scaled",
+    "coupangUrl": "https://www.coupang.com/vp/products/4996524796?itemId=6671892225&vendorItemId=73965622624&pickType=COU_PICK&q=%ED%9B%84%EB%94%94%EC%8A%A4+%EC%9C%A0%EA%B8%B0%EB%86%8D+%EA%B7%B8%EB%A6%AD%EC%9A%94%EA%B1%B0%ED%8A%B8+%ED%94%8C%EB%A0%88%EC%9D%B8+480g&searchId=d1e4709b9159719&sourceType=search&itemsCount=36&searchRank=1&rank=1&traceId=mnpsesqj",
+    "naverUrl": "https://search.shopping.naver.com/search/all?query=%ED%9B%84%EB%94%94%EC%8A%A4%20%EC%9C%A0%EA%B8%B0%EB%86%8D%20%EA%B7%B8%EB%A6%AD%EC%9A%94%EA%B1%B0%ED%8A%B8%20%ED%94%8C%EB%A0%88%EC%9D%B8%20480g&prevQuery=%EC%BB%A4%ED%81%B4%EB%9E%9C%EB%93%9C%20%EA%B7%B8%EB%A6%AD%EC%9A%94%EA%B1%B0%ED%8A%B8%20%ED%94%8C%EB%A0%88%EC%9D%B8%20907g&vertical=search",
+    "officialUrl": ""
+  },
+  {
+    "slug": "denmark-high-greek-400",
+    "brand": "덴마크",
+    "name": "덴마크 하이 그릭요거트 400g",
+    "capacity": "400g",
+    "variant": "플레인",
+    "tags": [
+      "컵"
+    ],
+    "proteinPerServing": 28,
+    "calories": 300,
+    "sugar": 6,
+    "density": "7.0g/100g",
+    "productUrl": "#",
+    "productType": "yogurt",
+    "gradeTags": [
+      "단백질 밀도 B",
+      "다이어트 B",
+      "퍼포먼스 B"
+    ],
+    "gradeDescriptions": [
+      "100g 기준 단백질 7g 수준으로 플레인 계열에서는 무난하게 밀도가 잡히는 대용량 그릭요거트입니다.",
+      "400g 한 통 기준 지방과 열량도 함께 올라가므로 한 번에 전량 섭취보다는 나눠 먹는 전제가 자연스럽습니다.",
+      "플레인 대용량 후보 중에서는 균형형에 가까운 제품으로 보는 편이 맞습니다."
+    ],
+    "manufacturer": "동원F&B",
+    "flavor": "플레인",
+    "fat": 14,
+    "sodium": 180,
+    "yogurtType": "그릭 요거트",
+    "storageType": "냉장",
+    "lactoseFree": false,
+    "proteinPer100g": 7,
+    "nutritionPerBottle": {
+      "caloriesKcal": 300,
+      "proteinG": 28,
+      "carbsG": 16,
+      "sugarsG": 6,
+      "fatG": 14,
+      "satFatG": 9.2,
+      "transFatG": 0,
+      "cholesterolMg": 80,
+      "sodiumMg": 180,
+      "fiberG": 0
+    },
+    "needsServingCheck": true,
+    "nutritionBasis": "per_100g_scaled",
+    "coupangUrl": "https://www.coupang.com/vp/products/8564152398?itemId=24810245578&vendorItemId=91817799894&q=%EB%8D%B4%EB%A7%88%ED%81%AC+%ED%95%98%EC%9D%B4+%EA%B7%B8%EB%A6%AD%EC%9A%94%EA%B1%B0%ED%8A%B8+400g&searchId=54b4925d9456206&sourceType=search&itemsCount=36&searchRank=1&rank=1&traceId=mnpsf9r1",
+    "naverUrl": "https://search.shopping.naver.com/search/all?query=%EB%8D%B4%EB%A7%88%ED%81%AC%20%ED%95%98%EC%9D%B4%20%EA%B7%B8%EB%A6%AD%EC%9A%94%EA%B1%B0%ED%8A%B8%20400g&prevQuery=%ED%9B%84%EB%94%94%EC%8A%A4%20%EC%9C%A0%EA%B8%B0%EB%86%8D%20%EA%B7%B8%EB%A6%AD%EC%9A%94%EA%B1%B0%ED%8A%B8%20%ED%94%8C%EB%A0%88%EC%9D%B8%20480g&vertical=search",
+    "officialUrl": "https://brand.naver.com/denmark/category/67b8ab52f4674b2f88a351f04949ca15?cp=1"
   }
 ]
