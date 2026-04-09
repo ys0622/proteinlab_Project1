@@ -1,6 +1,6 @@
 "use client";
 
-import type { MouseEvent, PointerEvent } from "react";
+import type { MouseEvent } from "react";
 import { useCompare } from "../context/CompareContext";
 
 interface CompareButtonProps {
@@ -28,14 +28,9 @@ export default function CompareButton({
     toggle(slug);
   };
 
-  const handlePointerDown = (event: PointerEvent<HTMLButtonElement>) => {
-    event.stopPropagation();
-  };
-
   return (
     <button
       type="button"
-      onPointerDown={handlePointerDown}
       onClick={handleClick}
       disabled={disabled}
       data-detail-href={detailHref}

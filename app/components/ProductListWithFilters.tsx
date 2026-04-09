@@ -470,7 +470,7 @@ function ProductListWithFiltersInner(props: ProductListWithFiltersInnerProps) {
   );
 
   const categoryTabs = (
-    <div className="mt-2.5 md:mt-3">
+    <div className="mt-2 md:mt-3">
       <CategoryTabs
         activeCategory={productType}
         counts={categoryCounts}

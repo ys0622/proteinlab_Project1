@@ -146,9 +146,8 @@ export default function SortBar({
           </div>
 
           <div className="sort-info-inline">
-            <span className="sort-info-inline__label">추천순</span>
             <SortInfoPopover
-              label="추천순"
+              label="i"
               description={RECOMMENDED_SORT_DESCRIPTION}
             />
           </div>

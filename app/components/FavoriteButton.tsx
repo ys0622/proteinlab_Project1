@@ -1,6 +1,6 @@
 "use client";
 
-import type { MouseEvent, PointerEvent } from "react";
+import type { MouseEvent } from "react";
 import { useFavorites } from "../context/FavoritesContext";
 
 interface FavoriteButtonProps {
@@ -19,14 +19,9 @@ export default function FavoriteButton({
     toggle(slug);
   };
 
-  const handlePointerDown = (event: PointerEvent<HTMLButtonElement>) => {
-    event.stopPropagation();
-  };
-
   return (
     <button
       type="button"
-      onPointerDown={handlePointerDown}
       onClick={handleClick}
       aria-label={favorited ? "즐겨찾기에서 제거" : "즐겨찾기에 추가"}
       className="flex items-center justify-center rounded-[10px] border transition-colors active:scale-[0.98]"
