@@ -403,7 +403,7 @@ export default function ProductCard({
           ))}
         </div>
 
-        <div className="cta-group mt-0.5">
+        <div className="cta-group mt-1.5">
           <PurchaseLinkRow
             coupangHref={coupangHref}
             naverHref={naverHref}
