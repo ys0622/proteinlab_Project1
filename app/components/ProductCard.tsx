@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import type {
@@ -91,8 +90,21 @@ function renderMetricValue(value: string, isDensity: boolean) {
   );
 }
 
-function getDetailCtaLabel(_productType?: ProductCardProps["productType"]) {
-  return "성분표 보기";
+function ActionTooltip({
+  label,
+  children,
+}: {
+  label: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <div className="group/action relative">
+      {children}
+      <span className="pointer-events-none absolute -bottom-8 right-0 whitespace-nowrap rounded-full border border-[#e5e7eb] bg-white px-2 py-1 text-[10px] font-semibold text-[#4b5563] opacity-0 shadow-[0_1px_4px_rgba(15,23,42,0.08)] transition-opacity duration-150 group-hover/action:opacity-100">
+        {label}
+      </span>
+    </div>
+  );
 }
 
 export default function ProductCard({
@@ -152,13 +164,11 @@ export default function ProductCard({
       ? visibleGradeTags.slice(0, maxVisibleBadges)
       : visibleGradeTags;
   const feedbackMeta = reviewSummary && reviewSummary.reviewCount > 0 ? reviewSummary : null;
-  const detailCtaLabel = getDetailCtaLabel(productType);
 
   useEffect(() => {
     if (!slug) return;
 
     let cancelled = false;
-
     void fetchReviewSummary(slug).then((summary) => {
       if (!cancelled) setReviewSummary(summary);
     });
@@ -182,7 +192,7 @@ export default function ProductCard({
       category: productType,
       destinationUrl: detailHref,
       source: "card",
-      ctaText: detailCtaLabel,
+      ctaText: "제품 상세 보기",
     });
     router.push(detailHref);
   };
@@ -194,56 +204,22 @@ export default function ProductCard({
 
   const handleCardKeyDown = (event: ReactKeyboardEvent<HTMLElement>) => {
     if (shouldIgnoreCardClick(event.target)) return;
-
     if (event.key === "Enter" || event.key === " ") {
       event.preventDefault();
       openDetail();
     }
   };
 
-  const mediaBox = (
-    <div
-      className={`product-card__media flex w-full flex-shrink-0 items-center justify-center overflow-hidden bg-[#ffffff] transition-colors duration-200 ${
-        isDrinkCard
-          ? "h-[150px] border-none px-3 pb-2 pt-2 md:h-[170px] md:px-4 md:pb-2 md:pt-3"
-          : "rounded-xl border border-[#eee] p-1 group-hover:border-[#e2e2e2] md:h-[200px] md:p-[10px]"
-      }`}
-      style={{ borderRadius: isDrinkCard ? "0" : "12px" }}
-    >
-      {imageUrl ? (
-        <div
-          className={`product-card__image relative h-full w-full ${
-            isDrinkCard
-              ? "max-w-[158px] md:max-w-[180px]"
-              : "max-w-[180px] md:max-w-[200px]"
-          }`}
-          style={{ minHeight: isDrinkCard ? "124px" : "140px" }}
-        >
-          <Image
-            src={imageUrl}
-            alt={`${brand} ${name}`}
-            fill
-            className="object-contain"
-            sizes="(max-width: 640px) 45vw, (max-width: 1024px) 30vw, 200px"
-            unoptimized
-            priority={priority}
-            loading={priority ? "eager" : "lazy"}
-          />
-        </div>
-      ) : (
-        <div className="h-[140px] w-full max-w-[180px] md:h-[160px] md:max-w-[200px]" />
-      )}
-    </div>
-  );
-
   return (
     <article
-      className={`product-card group flex h-full flex-col overflow-hidden rounded-2xl border bg-[#FFFDF8] p-2.5 transition-all duration-200 ease-out hover:border-[#ddd] focus:outline-none focus:ring-2 focus:ring-[var(--accent)] focus:ring-offset-2 active:shadow-sm md:p-[14px] ${canOpenDetail ? "cursor-pointer" : ""}`}
+      className={`product-card group flex h-full flex-col overflow-hidden rounded-2xl border p-2.5 transition-all duration-200 ease-out hover:border-[#ddd] focus:outline-none focus:ring-2 focus:ring-[var(--accent)] focus:ring-offset-2 active:shadow-sm md:p-[14px] ${
+        canOpenDetail ? "cursor-pointer" : ""
+      }`}
       onClick={handleCardClick}
       onKeyDown={handleCardKeyDown}
       role={canOpenDetail ? "link" : undefined}
       tabIndex={canOpenDetail ? 0 : undefined}
-      aria-label={canOpenDetail ? `${brand} ${name} ${detailCtaLabel}` : undefined}
+      aria-label={canOpenDetail ? `${brand} ${name} 제품 상세 보기` : undefined}
       style={{
         borderRadius: "16px",
         borderColor: isDrinkCard ? "#e9e1d7" : "#e8e6e3",
@@ -255,11 +231,45 @@ export default function ProductCard({
         className={isDrinkCard ? "-mx-2.5 -mt-2.5 relative bg-white md:-mx-[14px] md:-mt-[14px]" : "relative"}
         style={isDrinkCard ? { background: "#ffffff" } : undefined}
       >
-        {mediaBox}
+        <div
+          className={`product-card__media flex w-full flex-shrink-0 items-center justify-center overflow-hidden bg-white ${
+            isDrinkCard
+              ? "h-[150px] px-3 pb-2 pt-2 md:h-[170px] md:px-4 md:pb-2 md:pt-3"
+              : "rounded-xl border border-[#eee] p-1 group-hover:border-[#e2e2e2] md:h-[200px] md:p-[10px]"
+          }`}
+          style={{ borderRadius: isDrinkCard ? "0" : "12px" }}
+        >
+          {imageUrl ? (
+            <div
+              className={`relative h-full w-full ${
+                isDrinkCard ? "max-w-[178px] md:max-w-[202px]" : "max-w-[180px] md:max-w-[200px]"
+              }`}
+              style={{ minHeight: isDrinkCard ? "150px" : "140px" }}
+            >
+              <Image
+                src={imageUrl}
+                alt={`${brand} ${name}`}
+                fill
+                className="object-contain"
+                sizes="(max-width: 640px) 45vw, (max-width: 1024px) 30vw, 200px"
+                unoptimized
+                priority={priority}
+                loading={priority ? "eager" : "lazy"}
+              />
+            </div>
+          ) : (
+            <div className="h-[140px] w-full max-w-[180px] md:h-[160px] md:max-w-[200px]" />
+          )}
+        </div>
 
         {slug ? (
-          <div className="absolute right-1 top-1 z-10 md:right-2 md:top-2">
-            <FavoriteButton slug={slug} compact />
+          <div className="absolute right-1 top-1 z-10 flex items-center gap-1 md:right-2 md:top-2">
+            <ActionTooltip label="즐겨찾기">
+              <FavoriteButton slug={slug} compact />
+            </ActionTooltip>
+            <ActionTooltip label="스펙 비교">
+              <CompareButton slug={slug} detailHref={detailHref} compact />
+            </ActionTooltip>
           </div>
         ) : null}
 
@@ -268,7 +278,7 @@ export default function ProductCard({
             <div className="pointer-events-none absolute left-1 top-1 z-10 flex flex-col gap-0.5 md:hidden">
               {feedbackMeta.recommendCount > 0 ? (
                 <span className="inline-flex min-h-[16px] items-center self-start rounded-full border border-[#d9e7df] bg-white/88 px-1 py-[1px] text-[7px] font-semibold leading-none text-[#2F5D46] shadow-[0_1px_2px_rgba(15,23,42,0.08)]">
-                  👍 {feedbackMeta.recommendCount}
+                  추천 {feedbackMeta.recommendCount}
                 </span>
               ) : null}
               <span className="inline-flex min-h-[16px] items-center self-start rounded-full border border-[#e5e7eb] bg-white/88 px-1 py-[1px] text-[7px] font-semibold leading-none text-[#4b5563] shadow-[0_1px_2px_rgba(15,23,42,0.08)]">
@@ -281,14 +291,13 @@ export default function ProductCard({
                 {feedbackMeta.recommendCount > 0 ? (
                   <>
                     <span className="inline-flex items-center gap-1 text-[#2F5D46]">
-                      <span aria-hidden="true">👍</span>
                       <span className="font-semibold">{feedbackMeta.recommendCount}</span>
                     </span>
                     <span className="mx-1.5 text-[#c4c4c4]">·</span>
                   </>
                 ) : null}
                 <span className="whitespace-nowrap">
-                  <span className="font-semibold text-[#4b5563]">{feedbackMeta.reviewCount}</span>리뷰
+                  <span className="font-semibold text-[#4b5563]">{feedbackMeta.reviewCount}</span> 리뷰
                 </span>
               </div>
             </div>
@@ -297,20 +306,18 @@ export default function ProductCard({
       </div>
 
       <div
-        className={`product-card__content flex min-h-0 flex-1 flex-col ${
-          isDrinkCard ? "-mx-2.5 mt-0 px-2.5 pb-2 md:-mx-[14px] md:px-[14px] md:pb-3" : ""
-        }`}
+        className={`flex min-h-0 flex-1 flex-col ${isDrinkCard ? "-mx-2.5 mt-0 px-2.5 pb-2 md:-mx-[14px] md:px-[14px] md:pb-3" : ""}`}
         style={isDrinkCard ? { background: "var(--hero-bg)" } : undefined}
       >
         <p
-          className={`product-card__brand text-xs tracking-wide ${productType === "drink" ? "mt-1.5 md:mt-2" : "mt-2.5 md:mt-4"}`}
+          className={`text-xs tracking-wide ${productType === "drink" ? "mt-1.5 md:mt-2" : "mt-2.5 md:mt-4"}`}
           style={{ color: "#7a7a7a" }}
         >
           {brand}
         </p>
 
         <h3
-          className={`product-card__title mt-1 font-semibold leading-snug ${
+          className={`mt-1 font-semibold leading-snug ${
             fixedTitleLines === 2 ? "line-clamp-2 min-h-[44px]" : ""
           }`}
           style={{ fontSize: "16px", fontWeight: 600, color: "#1a1a1a" }}
@@ -324,7 +331,7 @@ export default function ProductCard({
           ) : null}
         </h3>
 
-        <MetricBadgeGroup className="product-card__badges mt-0.5">
+        <MetricBadgeGroup className="mt-0.5">
           {limitedGradeTags.map((tag) => {
             const displayTag = formatProductBadgeLabel(tag);
             const tone = getProductBadgeTone(displayTag);
@@ -335,7 +342,7 @@ export default function ProductCard({
                 key={tag}
                 label={displayTag}
                 tone={tone}
-                className="product-card__badge focus:outline-none focus:ring-2 focus:ring-[var(--accent)] focus:ring-offset-1"
+                className="focus:outline-none focus:ring-2 focus:ring-[var(--accent)] focus:ring-offset-1"
                 tooltip={tooltip ?? undefined}
                 tooltipAriaLabel={getMetricBadgeAriaLabel(tag)}
               />
@@ -345,21 +352,18 @@ export default function ProductCard({
             <ProductBadge
               label={variant}
               tone="neutral"
-              className="product-card__badge"
               tooltip={getMetricBadgeTooltip(variant) ?? undefined}
               tooltipAriaLabel={getMetricBadgeAriaLabel(variant)}
             />
           ) : null}
           {yogurtType && productType !== "yogurt" && !hideSupplementalBadges ? (
-            <ProductBadge label={yogurtType} tone="neutral" className="product-card__badge" />
+            <ProductBadge label={yogurtType} tone="neutral" />
           ) : null}
         </MetricBadgeGroup>
 
-        {!isDrinkCard ? (
-          <div className="mx-1 mt-1.5 border-t border-[#e8e6e3] md:mt-3" />
-        ) : null}
+        {!isDrinkCard ? <div className="mx-1 mt-1.5 border-t border-[#e8e6e3] md:mt-3" /> : null}
 
-          <div className={`product-card__metrics grid grid-cols-2 gap-1 md:gap-2 ${productType === "drink" ? "mt-1.5 md:mt-2" : "mt-1.5 md:mt-3"}`}>
+        <div className={`grid grid-cols-2 gap-1 md:gap-2 ${productType === "drink" ? "mt-1.5 md:mt-2" : "mt-1.5 md:mt-3"}`}>
           {[
             { label: "단백질", value: `${proteinPerServing}g`, isDensity: false },
             { label: "칼로리", value: calories != null ? `${calories}` : "-", isDensity: false },
@@ -368,21 +372,15 @@ export default function ProductCard({
           ].map(({ label, value, isDensity }) => (
             <div
               key={label}
-              className={`product-card__metric flex min-w-0 flex-col justify-center rounded-lg px-2 text-left md:px-2.5 ${
+              className={`flex min-w-0 flex-col justify-center rounded-lg px-2 text-left md:px-2.5 ${
                 isDrinkCard
                   ? "border border-[#ebe2d8] bg-[#fffdf9]"
                   : "border border-[#e8e8e8] bg-white"
               } ${productType === "drink" ? "py-1 md:py-1.5" : "py-0 md:py-2"}`}
               style={{ borderRadius: "10px" }}
             >
+              <span style={{ fontSize: "11px", color: "#6b6b6b" }}>{label}</span>
               <span
-                className="product-card__metric-label"
-                style={{ fontSize: "11px", color: "#6b6b6b" }}
-              >
-                {label}
-              </span>
-              <span
-                className={`product-card__metric-value ${isDensity ? "product-card__metric-value--compact" : ""}`}
                 style={{
                   fontSize: isDensity ? "12px" : "13px",
                   fontWeight: 700,
@@ -435,41 +433,6 @@ export default function ProductCard({
               })
             }
           />
-        </div>
-
-        <div className={`mx-1 border-t ${isDrinkCard ? "border-[#decebd]" : "border-[#e8e6e3]"} ${productType === "drink" ? "mt-1 md:mt-1.5" : "mt-1 md:mt-3"}`} />
-
-        <div className={`product-card__footer-actions flex gap-1.5 md:gap-3 ${productType === "drink" ? "mt-1 md:mt-1.5" : "mt-1 md:mt-3"}`}>
-          <Link
-            href={detailHref}
-            onClick={() =>
-              productClick({
-                productId,
-                productName: name,
-                brand,
-                category: productType,
-                destinationUrl: detailHref,
-                source: "detail_cta",
-                ctaText: detailCtaLabel,
-              })
-            }
-            className="flex flex-1 items-center justify-center rounded-[10px] border border-[#e2e2e2] bg-white font-medium text-[var(--foreground)] transition-colors hover:border-[var(--accent)] hover:bg-[var(--accent-light)] hover:text-[var(--accent)] active:scale-[0.98]"
-            style={{ height: "34px", fontSize: "12px", borderRadius: "10px" }}
-          >
-            {detailCtaLabel}
-          </Link>
-          {slug ? (
-            <CompareButton slug={slug} detailHref={detailHref} />
-          ) : (
-            <button
-              type="button"
-              disabled
-              className="flex flex-1 items-center justify-center rounded-[10px] border border-[#e2e2e2] bg-white font-medium text-[var(--foreground)] opacity-60"
-              style={{ height: "34px", fontSize: "12px", borderRadius: "10px" }}
-            >
-              스펙 비교
-            </button>
-          )}
         </div>
       </div>
     </article>
