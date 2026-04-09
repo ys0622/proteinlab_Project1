@@ -307,7 +307,7 @@ export default function ProductCard({
       </div>
 
       <div
-        className={`flex min-h-0 flex-1 flex-col ${isDrinkCard ? "-mx-2.5 mt-0 px-2.5 pb-2 md:-mx-[14px] md:px-[14px] md:pb-2" : ""}`}
+        className={`flex min-h-0 flex-1 flex-col ${isDrinkCard ? "-mx-2.5 mt-0 px-2.5 pb-1 md:-mx-[14px] md:px-[14px] md:pb-1" : ""}`}
         style={isDrinkCard ? { background: drinkSurfaceBg } : undefined}
       >
         <p
@@ -403,7 +403,7 @@ export default function ProductCard({
           ))}
         </div>
 
-        <div className="cta-group mt-1">
+        <div className="cta-group mt-0.5">
           <PurchaseLinkRow
             coupangHref={coupangHref}
             naverHref={naverHref}
