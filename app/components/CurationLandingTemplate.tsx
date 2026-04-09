@@ -86,6 +86,9 @@ export default function CurationLandingTemplate({
   const yogurtCopy = curation.categories.yogurt?.landingCopy;
   const shakeCopy = curation.categories.shake?.landingCopy;
   const infoSections = curation.infoSections ?? [];
+  const heroInfoSections =
+    curation.slug === "convenience" ? infoSections.filter((_, index) => index !== 1) : infoSections;
+  const visibleHeroInfoSections = heroInfoSections.slice(0, 2);
   const hasDrinkCategory = Boolean(curation.categories.drink);
   const hasBarCategory = Boolean(curation.categories.bar);
   const hasYogurtCategory = Boolean(curation.categories.yogurt);
@@ -127,9 +130,9 @@ export default function CurationLandingTemplate({
       </section>
 
       <main className="mx-auto max-w-[1200px] px-4 pb-2 pt-4 md:px-6">
-        {infoSections.length > 0 ? (
+        {visibleHeroInfoSections.length > 0 ? (
           <div className="grid gap-3 md:grid-cols-2">
-            {infoSections.map((section) => (
+            {visibleHeroInfoSections.map((section) => (
               <InfoCard key={section.title} section={section} />
             ))}
           </div>
