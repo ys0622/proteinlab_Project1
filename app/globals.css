@@ -485,14 +485,14 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .purchase-link--official {
-  background: #fff;
-  border-color: #d8dde5;
-  color: #374151;
+  background: color-mix(in srgb, var(--hero-bg) 86%, white);
+  border-color: #d8cfc1;
+  color: #4b5563;
 }
 
 .purchase-link--official:hover {
-  background: #f8fafc;
-  border-color: #bfc7d4;
+  background: color-mix(in srgb, var(--hero-bg) 72%, white);
+  border-color: #cbbca8;
 }
 
 .purchase-link--disabled,

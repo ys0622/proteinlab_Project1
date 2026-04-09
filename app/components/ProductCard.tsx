@@ -6,8 +6,10 @@ import { useEffect, useState } from "react";
 import type {
   KeyboardEvent as ReactKeyboardEvent,
   MouseEvent as ReactMouseEvent,
+  ReactNode,
 } from "react";
 import { productClick, purchaseClick } from "@/lib/analytics";
+import type { ProductCardProps } from "../data/productTypes";
 import { getProductImageUrl } from "../lib/productImage";
 import {
   getCoupangRedirectHref,
@@ -25,7 +27,6 @@ import {
   getProductBadgeTone,
 } from "./productBadgeUtils";
 import PurchaseLinkRow from "./PurchaseLinkRow";
-import type { ProductCardProps } from "../data/productTypes";
 
 interface Review {
   id: string;
@@ -90,13 +91,7 @@ function renderMetricValue(value: string, isDensity: boolean) {
   );
 }
 
-function ActionTooltip({
-  label,
-  children,
-}: {
-  label: string;
-  children: React.ReactNode;
-}) {
+function ActionTooltip({ label, children }: { label: string; children: ReactNode }) {
   return (
     <div className="group/action relative">
       {children}
@@ -232,7 +227,7 @@ export default function ProductCard({
         style={isDrinkCard ? { background: "#ffffff" } : undefined}
       >
         <div
-          className={`product-card__media flex w-full flex-shrink-0 items-center justify-center overflow-hidden bg-white ${
+          className={`flex w-full flex-shrink-0 items-center justify-center overflow-hidden bg-white ${
             isDrinkCard
               ? "h-[150px] px-3 pb-2 pt-2 md:h-[170px] md:px-4 md:pb-2 md:pt-3"
               : "rounded-xl border border-[#eee] p-1 group-hover:border-[#e2e2e2] md:h-[200px] md:p-[10px]"
@@ -278,7 +273,10 @@ export default function ProductCard({
             <div className="pointer-events-none absolute left-1 top-1 z-10 flex flex-col gap-0.5 md:hidden">
               {feedbackMeta.recommendCount > 0 ? (
                 <span className="inline-flex min-h-[16px] items-center self-start rounded-full border border-[#d9e7df] bg-white/88 px-1 py-[1px] text-[7px] font-semibold leading-none text-[#2F5D46] shadow-[0_1px_2px_rgba(15,23,42,0.08)]">
-                  추천 {feedbackMeta.recommendCount}
+                  <span aria-hidden="true" className="mr-0.5">
+                    👍
+                  </span>
+                  {feedbackMeta.recommendCount}
                 </span>
               ) : null}
               <span className="inline-flex min-h-[16px] items-center self-start rounded-full border border-[#e5e7eb] bg-white/88 px-1 py-[1px] text-[7px] font-semibold leading-none text-[#4b5563] shadow-[0_1px_2px_rgba(15,23,42,0.08)]">
@@ -291,6 +289,7 @@ export default function ProductCard({
                 {feedbackMeta.recommendCount > 0 ? (
                   <>
                     <span className="inline-flex items-center gap-1 text-[#2F5D46]">
+                      <span aria-hidden="true">👍</span>
                       <span className="font-semibold">{feedbackMeta.recommendCount}</span>
                     </span>
                     <span className="mx-1.5 text-[#c4c4c4]">·</span>
@@ -374,7 +373,7 @@ export default function ProductCard({
               key={label}
               className={`flex min-w-0 flex-col justify-center rounded-lg px-2 text-left md:px-2.5 ${
                 isDrinkCard
-                  ? "border border-[#ebe2d8] bg-[#fffdf9]"
+                  ? "border border-[#ebe2d8] bg-[color-mix(in_srgb,var(--hero-bg)_76%,white)]"
                   : "border border-[#e8e8e8] bg-white"
               } ${productType === "drink" ? "py-1 md:py-1.5" : "py-0 md:py-2"}`}
               style={{ borderRadius: "10px" }}
@@ -388,9 +387,7 @@ export default function ProductCard({
                   lineHeight: 1.2,
                 }}
               >
-                <span className="block min-w-0 md:text-[14px]">
-                  {renderMetricValue(value, isDensity)}
-                </span>
+                <span className="block min-w-0 md:text-[14px]">{renderMetricValue(value, isDensity)}</span>
               </span>
             </div>
           ))}

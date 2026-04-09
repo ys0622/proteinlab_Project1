@@ -16,7 +16,11 @@ export default function CompareButton({
   const { isSelected, toggle, canAdd } = useCompare();
   const selected = isSelected(slug);
   const disabled = !selected && !canAdd;
-  const label = selected ? "스펙 비교에서 제거" : disabled ? "비교는 최대 4개까지 가능" : "스펙 비교에 추가";
+  const label = selected
+    ? "스펙 비교에서 제거"
+    : disabled
+      ? "비교는 최대 4개까지 가능합니다"
+      : "스펙 비교에 추가";
 
   return (
     <button
