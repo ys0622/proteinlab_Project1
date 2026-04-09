@@ -213,7 +213,9 @@ export default function ProductCard({
       {imageUrl ? (
         <div
           className={`product-card__image relative h-full w-full ${
-            isDrinkCard ? "max-w-[172px] md:max-w-[196px]" : "max-w-[180px] md:max-w-[200px]"
+            isDrinkCard
+              ? "max-w-[172px] translate-x-2 md:max-w-[196px] md:translate-x-3"
+              : "max-w-[180px] md:max-w-[200px]"
           }`}
           style={{ minHeight: isDrinkCard ? "150px" : "140px" }}
         >
@@ -292,6 +294,12 @@ export default function ProductCard({
       </div>
 
       <div className="product-card__content flex min-h-0 flex-1 flex-col">
+      <div
+        className={`product-card__content flex min-h-0 flex-1 flex-col ${
+          isDrinkCard ? "-mx-2.5 mt-0 px-2.5 pb-2.5 md:-mx-[14px] md:px-[14px] md:pb-[14px]" : ""
+        }`}
+        style={isDrinkCard ? { background: "#f4ece2" } : undefined}
+      >
         <p
           className={`product-card__brand text-xs tracking-wide ${productType === "drink" ? "mt-3 md:mt-4" : "mt-2.5 md:mt-4"}`}
           style={{ color: "#7a7a7a" }}
@@ -427,7 +435,7 @@ export default function ProductCard({
           />
         </div>
 
-        <div className={`mx-1 border-t ${isDrinkCard ? "border-[#e6ddd2]" : "border-[#e8e6e3]"} ${productType === "drink" ? "mt-1 md:mt-2" : "mt-1 md:mt-3"}`} />
+        <div className={`mx-1 border-t ${isDrinkCard ? "border-[#decebd]" : "border-[#e8e6e3]"} ${productType === "drink" ? "mt-1 md:mt-2" : "mt-1 md:mt-3"}`} />
 
         <div className={`product-card__footer-actions flex gap-1.5 md:gap-3 ${productType === "drink" ? "mt-1 md:mt-2.5" : "mt-1 md:mt-3"}`}>
           <Link
@@ -461,6 +469,7 @@ export default function ProductCard({
             </button>
           )}
         </div>
+      </div>
       </div>
     </article>
   );
