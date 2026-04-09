@@ -186,6 +186,12 @@ h1, h2, h3, h4, h5, h6 {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 12px;
+  align-items: start;
+}
+
+.product-grid > .product-card {
+  height: auto !important;
+  align-self: start;
 }
 
 .product-card__title {
@@ -1032,7 +1038,7 @@ h1, h2, h3, h4, h5, h6 {
   }
 
   .product-card {
-    min-height: 484px;
+    min-height: auto;
     padding: 10px !important;
   }
 

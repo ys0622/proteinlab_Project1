@@ -208,7 +208,11 @@ export default function ProductCard({
 
   return (
     <article
-      className={`product-card group flex flex-col overflow-hidden rounded-2xl border p-2.5 transition-all duration-200 ease-out hover:border-[#ddd] focus:outline-none focus:ring-2 focus:ring-[var(--accent)] focus:ring-offset-2 active:shadow-sm md:p-[14px] ${
+      className={`product-card group flex flex-col overflow-hidden rounded-2xl border transition-all duration-200 ease-out hover:border-[#ddd] focus:outline-none focus:ring-2 focus:ring-[var(--accent)] focus:ring-offset-2 active:shadow-sm ${
+        isDrinkCard
+          ? "px-2.5 pt-2.5 pb-1 md:px-[14px] md:pt-[14px] md:pb-[6px]"
+          : "p-2.5 md:p-[14px]"
+      } ${
         isDrinkCard ? "self-start" : "h-full"
       } ${
         canOpenDetail ? "cursor-pointer" : ""
@@ -405,7 +409,7 @@ export default function ProductCard({
           ))}
         </div>
 
-        <div className="cta-group mt-auto pt-1.5">
+        <div className="cta-group mt-auto pt-1">
           <PurchaseLinkRow
             coupangHref={coupangHref}
             naverHref={naverHref}

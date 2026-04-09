@@ -601,7 +601,7 @@ function ProductListWithFiltersInner(props: ProductListWithFiltersInnerProps) {
         </div>
       ) : (
         <section
-          className="product-grid mt-3 bg-white"
+          className="product-grid mt-3 items-start bg-white"
           style={{ marginTop: isDesktop ? "12px" : "8px" }}
           aria-label="제품 목록"
         >
