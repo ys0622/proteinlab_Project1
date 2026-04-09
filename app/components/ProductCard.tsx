@@ -205,7 +205,7 @@ export default function ProductCard({
     <div
       className={`product-card__media flex w-full flex-shrink-0 items-center justify-center overflow-hidden bg-[#ffffff] transition-colors duration-200 ${
         isDrinkCard
-          ? "-mx-2.5 -mt-2.5 h-[180px] rounded-none border-none px-4 pb-3 pt-4 md:-mx-[14px] md:-mt-[14px] md:h-[208px] md:px-5 md:pb-4 md:pt-5"
+          ? "h-[150px] border-none px-3 pb-2 pt-2 md:h-[170px] md:px-4 md:pb-2 md:pt-3"
           : "rounded-xl border border-[#eee] p-1 group-hover:border-[#e2e2e2] md:h-[200px] md:p-[10px]"
       }`}
       style={{ borderRadius: isDrinkCard ? "0" : "12px" }}
@@ -214,10 +214,10 @@ export default function ProductCard({
         <div
           className={`product-card__image relative h-full w-full ${
             isDrinkCard
-              ? "max-w-[172px] translate-x-2 md:max-w-[196px] md:translate-x-3"
+              ? "max-w-[158px] md:max-w-[180px]"
               : "max-w-[180px] md:max-w-[200px]"
           }`}
-          style={{ minHeight: isDrinkCard ? "150px" : "140px" }}
+          style={{ minHeight: isDrinkCard ? "124px" : "140px" }}
         >
           <Image
             src={imageUrl}
@@ -251,7 +251,10 @@ export default function ProductCard({
         boxShadow: isDrinkCard ? "0 2px 10px rgba(60,45,30,0.08)" : undefined,
       }}
     >
-      <div className="relative">
+      <div
+        className={isDrinkCard ? "-mx-2.5 -mt-2.5 relative bg-white md:-mx-[14px] md:-mt-[14px]" : "relative"}
+        style={isDrinkCard ? { background: "#ffffff" } : undefined}
+      >
         {mediaBox}
 
         {slug ? (
@@ -293,15 +296,14 @@ export default function ProductCard({
         ) : null}
       </div>
 
-      <div className="product-card__content flex min-h-0 flex-1 flex-col">
       <div
         className={`product-card__content flex min-h-0 flex-1 flex-col ${
-          isDrinkCard ? "-mx-2.5 mt-0 px-2.5 pb-2.5 md:-mx-[14px] md:px-[14px] md:pb-[14px]" : ""
+          isDrinkCard ? "-mx-2.5 mt-0 px-2.5 pb-2 md:-mx-[14px] md:px-[14px] md:pb-3" : ""
         }`}
-        style={isDrinkCard ? { background: "#f4ece2" } : undefined}
+        style={isDrinkCard ? { background: "var(--hero-bg)" } : undefined}
       >
         <p
-          className={`product-card__brand text-xs tracking-wide ${productType === "drink" ? "mt-3 md:mt-4" : "mt-2.5 md:mt-4"}`}
+          className={`product-card__brand text-xs tracking-wide ${productType === "drink" ? "mt-1.5 md:mt-2" : "mt-2.5 md:mt-4"}`}
           style={{ color: "#7a7a7a" }}
         >
           {brand}
@@ -357,7 +359,7 @@ export default function ProductCard({
           <div className="mx-1 mt-1.5 border-t border-[#e8e6e3] md:mt-3" />
         ) : null}
 
-        <div className={`product-card__metrics grid grid-cols-2 gap-1 md:gap-2 ${productType === "drink" ? "mt-2.5 md:mt-3" : "mt-1.5 md:mt-3"}`}>
+          <div className={`product-card__metrics grid grid-cols-2 gap-1 md:gap-2 ${productType === "drink" ? "mt-1.5 md:mt-2" : "mt-1.5 md:mt-3"}`}>
           {[
             { label: "단백질", value: `${proteinPerServing}g`, isDensity: false },
             { label: "칼로리", value: calories != null ? `${calories}` : "-", isDensity: false },
@@ -396,7 +398,7 @@ export default function ProductCard({
           ))}
         </div>
 
-        <div className={`cta-group ${productType === "drink" ? "mt-1 md:mt-2.5" : "mt-1.5 md:mt-4"}`}>
+        <div className={`cta-group ${productType === "drink" ? "mt-1 md:mt-1.5" : "mt-1.5 md:mt-4"}`}>
           <PurchaseLinkRow
             coupangHref={coupangHref}
             naverHref={naverHref}
@@ -435,9 +437,9 @@ export default function ProductCard({
           />
         </div>
 
-        <div className={`mx-1 border-t ${isDrinkCard ? "border-[#decebd]" : "border-[#e8e6e3]"} ${productType === "drink" ? "mt-1 md:mt-2" : "mt-1 md:mt-3"}`} />
+        <div className={`mx-1 border-t ${isDrinkCard ? "border-[#decebd]" : "border-[#e8e6e3]"} ${productType === "drink" ? "mt-1 md:mt-1.5" : "mt-1 md:mt-3"}`} />
 
-        <div className={`product-card__footer-actions flex gap-1.5 md:gap-3 ${productType === "drink" ? "mt-1 md:mt-2.5" : "mt-1 md:mt-3"}`}>
+        <div className={`product-card__footer-actions flex gap-1.5 md:gap-3 ${productType === "drink" ? "mt-1 md:mt-1.5" : "mt-1 md:mt-3"}`}>
           <Link
             href={detailHref}
             onClick={() =>
@@ -469,7 +471,6 @@ export default function ProductCard({
             </button>
           )}
         </div>
-      </div>
       </div>
     </article>
   );
