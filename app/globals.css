@@ -1105,8 +1105,8 @@ h1, h2, h3, h4, h5, h6 {
   }
 
   .cta-group {
-    margin-top: 1px !important;
-    padding-top: 2px !important;
+    margin-top: 4px !important;
+    padding-top: 3px !important;
   }
 
   .purchase-link-row {

@@ -329,11 +329,11 @@ export default function ProductCard({
           className={`product-card__title mt-1 font-semibold leading-snug ${
             fixedTitleLines === 2 ? "line-clamp-2 min-h-[42px]" : ""
           }`}
-          style={{ fontSize: "16px", fontWeight: 600, color: "#1a1a1a" }}
+          style={{ fontWeight: 600, color: "#1a1a1a" }}
         >
-          <span>{titlePrefix}</span>
+          <span className="text-[12px] md:text-[16px]">{titlePrefix}</span>
           {titleCapacityLabel ? (
-            <span className="font-normal" style={{ fontSize: "13px", color: "#6b6b6b" }}>
+            <span className="text-[10px] font-normal md:text-[13px]" style={{ color: "#6b6b6b" }}>
               {" "}
               {titleCapacityLabel}
             </span>
@@ -409,7 +409,7 @@ export default function ProductCard({
           ))}
         </div>
 
-        <div className="cta-group mt-auto pt-1.5 md:pt-2">
+        <div className="cta-group mt-auto pt-1 md:pt-2">
           <PurchaseLinkRow
             coupangHref={coupangHref}
             naverHref={naverHref}
