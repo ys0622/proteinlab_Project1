@@ -20,9 +20,15 @@ export default function FavoriteButton({
     toggle(slug);
   };
 
+  const handlePointerDown = (event: MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+    event.stopPropagation();
+  };
+
   return (
     <button
       type="button"
+      onMouseDown={handlePointerDown}
       onClick={handleClick}
       aria-label={favorited ? "즐겨찾기에서 제거" : "즐겨찾기에 추가"}
       className="flex items-center justify-center rounded-[10px] border transition-colors active:scale-[0.98]"

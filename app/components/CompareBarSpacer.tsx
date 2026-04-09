@@ -4,6 +4,7 @@ import { usePathname } from "next/navigation";
 import { useCompare } from "../context/CompareContext";
 
 const COMPARE_BAR_PATHS = [
+  "/products",
   "/drinks",
   "/bars",
   "/yogurt",

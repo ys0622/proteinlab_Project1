@@ -29,9 +29,15 @@ export default function CompareButton({
     toggle(slug);
   };
 
+  const handlePointerDown = (event: MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+    event.stopPropagation();
+  };
+
   return (
     <button
       type="button"
+      onMouseDown={handlePointerDown}
       onClick={handleClick}
       disabled={disabled}
       data-detail-href={detailHref}
