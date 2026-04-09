@@ -492,7 +492,7 @@ function ProductListWithFiltersInner(props: ProductListWithFiltersInnerProps) {
         style={{
           marginTop: isDesktop ? "12px" : "8px",
           borderRadius: "12px",
-          padding: isDesktop ? "10px 12px" : "2px 5px",
+          padding: isDesktop ? "10px 12px" : "1px 5px",
         }}
       >
         <div className="hidden md:block">

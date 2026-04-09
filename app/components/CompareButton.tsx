@@ -1,5 +1,6 @@
 "use client";
 
+import type { MouseEvent } from "react";
 import { useCompare } from "../context/CompareContext";
 
 interface CompareButtonProps {
@@ -22,10 +23,16 @@ export default function CompareButton({
       ? "비교는 최대 4개까지 가능합니다"
       : "스펙 비교에 추가";
 
+  const handleClick = (event: MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+    event.stopPropagation();
+    toggle(slug);
+  };
+
   return (
     <button
       type="button"
-      onClick={() => toggle(slug)}
+      onClick={handleClick}
       disabled={disabled}
       data-detail-href={detailHref}
       aria-label={label}

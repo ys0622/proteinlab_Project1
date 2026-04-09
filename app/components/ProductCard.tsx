@@ -266,7 +266,7 @@ export default function ProductCard({
         </div>
 
         {slug ? (
-          <div className="absolute right-1 top-1 z-10 flex items-center gap-1 md:right-2 md:top-2">
+          <div className="absolute right-1 top-1 z-10 flex flex-col items-end gap-1 md:right-2 md:top-2 md:flex-row md:items-center">
             <ActionTooltip label="즐겨찾기">
               <FavoriteButton slug={slug} compact />
             </ActionTooltip>
