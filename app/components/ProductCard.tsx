@@ -126,6 +126,7 @@ export default function ProductCard({
   void _productUrl;
 
   const detailHref = slug ? `/product/${slug}` : "#";
+  const isDrinkCard = productType === "drink";
   const imageUrl = slug ? getProductImageUrl(slug) : null;
   const resolvedPurchaseLinkCategory = purchaseLinkCategory ?? productType ?? null;
   const rawCoupangUrl = normalizeCoupangUrl(coupangUrl) ?? getKnownSourceCoupangUrlBySlug(slug);
@@ -202,7 +203,11 @@ export default function ProductCard({
 
   const mediaBox = (
     <div
-      className={`product-card__media flex w-full flex-shrink-0 items-center justify-center overflow-hidden rounded-xl border border-[#eee] bg-[#ffffff] p-1 transition-colors duration-200 group-hover:border-[#e2e2e2] md:p-[10px] ${productType === "drink" ? "h-[166px] md:h-[188px]" : "h-[176px] md:h-[200px]"}`}
+      className={`product-card__media flex w-full flex-shrink-0 items-center justify-center overflow-hidden rounded-xl bg-[#ffffff] p-1 transition-colors duration-200 md:p-[10px] ${
+        isDrinkCard
+          ? "h-[166px] border border-[#f1ede6] shadow-[inset_0_0_0_1px_rgba(255,255,255,0.7)] md:h-[188px]"
+          : "h-[176px] border border-[#eee] group-hover:border-[#e2e2e2] md:h-[200px]"
+      }`}
       style={{ borderRadius: "12px" }}
     >
       {imageUrl ? (
@@ -237,7 +242,9 @@ export default function ProductCard({
       aria-label={canOpenDetail ? `${brand} ${name} ${detailCtaLabel}` : undefined}
       style={{
         borderRadius: "16px",
-        borderColor: "#e8e6e3",
+        borderColor: isDrinkCard ? "#e9e1d7" : "#e8e6e3",
+        background: isDrinkCard ? "#faf8f5" : "#FFFDF8",
+        boxShadow: isDrinkCard ? "0 1px 6px rgba(60,45,30,0.07)" : undefined,
       }}
     >
       <div className="relative">
@@ -336,7 +343,7 @@ export default function ProductCard({
           ) : null}
         </MetricBadgeGroup>
 
-        <div className={`mx-1 border-t border-[#e8e6e3] ${productType === "drink" ? "mt-1 md:mt-2.5" : "mt-1.5 md:mt-3"}`} />
+        <div className={`mx-1 border-t ${isDrinkCard ? "border-[#e6ddd2]" : "border-[#e8e6e3]"} ${productType === "drink" ? "mt-1 md:mt-2.5" : "mt-1.5 md:mt-3"}`} />
 
         <div className={`product-card__metrics grid grid-cols-2 gap-1 md:gap-2 ${productType === "drink" ? "mt-1 md:mt-2.5" : "mt-1.5 md:mt-3"}`}>
           {[
@@ -347,7 +354,11 @@ export default function ProductCard({
           ].map(({ label, value, isDensity }) => (
             <div
               key={label}
-              className={`product-card__metric flex min-w-0 flex-col justify-center rounded-lg border border-[#e8e8e8] bg-white px-2 text-left md:px-2.5 ${productType === "drink" ? "py-1 md:py-1.5" : "py-0 md:py-2"}`}
+              className={`product-card__metric flex min-w-0 flex-col justify-center rounded-lg px-2 text-left md:px-2.5 ${
+                isDrinkCard
+                  ? "border border-[#eee7de] bg-[#fcfaf7]"
+                  : "border border-[#e8e8e8] bg-white"
+              } ${productType === "drink" ? "py-1 md:py-1.5" : "py-0 md:py-2"}`}
               style={{ borderRadius: "10px" }}
             >
               <span
@@ -412,7 +423,7 @@ export default function ProductCard({
           />
         </div>
 
-        <div className={`mx-1 border-t border-[#e8e6e3] ${productType === "drink" ? "mt-1 md:mt-2" : "mt-1 md:mt-3"}`} />
+        <div className={`mx-1 border-t ${isDrinkCard ? "border-[#e6ddd2]" : "border-[#e8e6e3]"} ${productType === "drink" ? "mt-1 md:mt-2" : "mt-1 md:mt-3"}`} />
 
         <div className={`product-card__footer-actions flex gap-1.5 md:gap-3 ${productType === "drink" ? "mt-1 md:mt-2.5" : "mt-1 md:mt-3"}`}>
           <Link
