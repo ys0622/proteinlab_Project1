@@ -208,7 +208,9 @@ export default function ProductCard({
 
   return (
     <article
-      className={`product-card group flex h-full flex-col overflow-hidden rounded-2xl border p-2.5 transition-all duration-200 ease-out hover:border-[#ddd] focus:outline-none focus:ring-2 focus:ring-[var(--accent)] focus:ring-offset-2 active:shadow-sm md:p-[14px] ${
+      className={`product-card group flex flex-col overflow-hidden rounded-2xl border p-2.5 transition-all duration-200 ease-out hover:border-[#ddd] focus:outline-none focus:ring-2 focus:ring-[var(--accent)] focus:ring-offset-2 active:shadow-sm md:p-[14px] ${
+        isDrinkCard ? "self-start" : "h-full"
+      } ${
         canOpenDetail ? "cursor-pointer" : ""
       }`}
       onClick={handleCardClick}
@@ -307,7 +309,7 @@ export default function ProductCard({
       </div>
 
       <div
-        className={`flex min-h-0 flex-1 flex-col ${isDrinkCard ? "-mx-2.5 mt-0 px-2.5 pb-1 md:-mx-[14px] md:px-[14px] md:pb-1" : ""}`}
+        className={`flex min-h-0 flex-1 flex-col ${isDrinkCard ? "-mx-2.5 mt-0 px-2.5 pb-0.5 md:-mx-[14px] md:px-[14px] md:pb-0.5" : ""}`}
         style={isDrinkCard ? { background: drinkSurfaceBg } : undefined}
       >
         <p
@@ -403,7 +405,7 @@ export default function ProductCard({
           ))}
         </div>
 
-        <div className="cta-group mt-1.5">
+        <div className="cta-group mt-auto pt-1.5">
           <PurchaseLinkRow
             coupangHref={coupangHref}
             naverHref={naverHref}
