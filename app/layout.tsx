@@ -2,6 +2,7 @@
 import Script from "next/script";
 import { Suspense } from "react";
 import AnalyticsPageViewTracker from "./components/AnalyticsPageViewTracker";
+import BrowserTabTitle from "./components/BrowserTabTitle";
 import CompareBar from "./components/CompareBar";
 import CompareBarSpacer from "./components/CompareBarSpacer";
 import { CompareProvider } from "./context/CompareContext";
@@ -86,6 +87,9 @@ export default function RootLayout({
           <CompareProvider>
             <Suspense fallback={null}>
               <AnalyticsPageViewTracker />
+            </Suspense>
+            <Suspense fallback={null}>
+              <BrowserTabTitle />
             </Suspense>
             {children}
             <CompareBarSpacer />
