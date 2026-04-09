@@ -205,15 +205,15 @@ export default function ProductCard({
     <div
       className={`product-card__media flex w-full flex-shrink-0 items-center justify-center overflow-hidden rounded-xl bg-[#ffffff] p-1 transition-colors duration-200 md:p-[10px] ${
         isDrinkCard
-          ? "h-[166px] border border-[#f1ede6] shadow-[inset_0_0_0_1px_rgba(255,255,255,0.7)] md:h-[188px]"
+          ? "h-[170px] rounded-[14px_14px_10px_10px] border-transparent bg-[#ffffff] px-3 pb-2 pt-3 md:h-[194px] md:px-4 md:pb-3 md:pt-4"
           : "h-[176px] border border-[#eee] group-hover:border-[#e2e2e2] md:h-[200px]"
       }`}
-      style={{ borderRadius: "12px" }}
+      style={{ borderRadius: isDrinkCard ? "14px 14px 10px 10px" : "12px" }}
     >
       {imageUrl ? (
         <div
-          className="product-card__image relative h-full w-full max-w-[180px] md:max-w-[200px]"
-          style={{ minHeight: "140px" }}
+          className={`product-card__image relative h-full w-full ${isDrinkCard ? "max-w-[168px] md:max-w-[188px]" : "max-w-[180px] md:max-w-[200px]"}`}
+          style={{ minHeight: isDrinkCard ? "146px" : "140px" }}
         >
           <Image
             src={imageUrl}
@@ -244,7 +244,7 @@ export default function ProductCard({
         borderRadius: "16px",
         borderColor: isDrinkCard ? "#e9e1d7" : "#e8e6e3",
         background: isDrinkCard ? "#faf8f5" : "#FFFDF8",
-        boxShadow: isDrinkCard ? "0 1px 6px rgba(60,45,30,0.07)" : undefined,
+        boxShadow: isDrinkCard ? "0 2px 10px rgba(60,45,30,0.08)" : undefined,
       }}
     >
       <div className="relative">
@@ -291,7 +291,7 @@ export default function ProductCard({
 
       <div className="product-card__content flex min-h-0 flex-1 flex-col">
         <p
-          className={`product-card__brand text-xs tracking-wide ${productType === "drink" ? "mt-2 md:mt-3" : "mt-2.5 md:mt-4"}`}
+          className={`product-card__brand text-xs tracking-wide ${productType === "drink" ? "mt-2.5 md:mt-3.5" : "mt-2.5 md:mt-4"}`}
           style={{ color: "#7a7a7a" }}
         >
           {brand}
@@ -343,9 +343,9 @@ export default function ProductCard({
           ) : null}
         </MetricBadgeGroup>
 
-        <div className={`mx-1 border-t ${isDrinkCard ? "border-[#e6ddd2]" : "border-[#e8e6e3]"} ${productType === "drink" ? "mt-1 md:mt-2.5" : "mt-1.5 md:mt-3"}`} />
+        <div className={`mx-1 border-t ${isDrinkCard ? "border-[#e4dacd]" : "border-[#e8e6e3]"} ${productType === "drink" ? "mt-2 md:mt-3" : "mt-1.5 md:mt-3"}`} />
 
-        <div className={`product-card__metrics grid grid-cols-2 gap-1 md:gap-2 ${productType === "drink" ? "mt-1 md:mt-2.5" : "mt-1.5 md:mt-3"}`}>
+        <div className={`product-card__metrics grid grid-cols-2 gap-1 md:gap-2 ${productType === "drink" ? "mt-1.5 md:mt-2.5" : "mt-1.5 md:mt-3"}`}>
           {[
             { label: "단백질", value: `${proteinPerServing}g`, isDensity: false },
             { label: "칼로리", value: calories != null ? `${calories}` : "-", isDensity: false },
@@ -356,7 +356,7 @@ export default function ProductCard({
               key={label}
               className={`product-card__metric flex min-w-0 flex-col justify-center rounded-lg px-2 text-left md:px-2.5 ${
                 isDrinkCard
-                  ? "border border-[#eee7de] bg-[#fcfaf7]"
+                  ? "border border-[#ebe2d8] bg-[#fffdf9]"
                   : "border border-[#e8e8e8] bg-white"
               } ${productType === "drink" ? "py-1 md:py-1.5" : "py-0 md:py-2"}`}
               style={{ borderRadius: "10px" }}
