@@ -470,7 +470,7 @@ function ProductListWithFiltersInner(props: ProductListWithFiltersInnerProps) {
   );
 
   const categoryTabs = (
-    <div className="mt-3">
+    <div className="mt-2.5 md:mt-3">
       <CategoryTabs
         activeCategory={productType}
         counts={categoryCounts}
@@ -483,16 +483,16 @@ function ProductListWithFiltersInner(props: ProductListWithFiltersInnerProps) {
     <>
       {tabsPlacement === "top" ? categoryTabs : null}
 
-      <div className="mt-3 md:hidden" style={{ marginTop: "12px" }}>
+      <div className="mt-2.5 md:hidden" style={{ marginTop: "10px" }}>
         <QuickCuration productType={productType} />
       </div>
 
       <div
-        className="mt-3 rounded-xl border border-[var(--border)] bg-[var(--filter-box-bg)]"
+        className="mt-2.5 rounded-xl border border-[var(--border)] bg-[var(--filter-box-bg)]"
         style={{
-          marginTop: isDesktop ? "12px" : "10px",
+          marginTop: isDesktop ? "12px" : "8px",
           borderRadius: "12px",
-          padding: isDesktop ? "10px 12px" : "3px 6px",
+          padding: isDesktop ? "10px 12px" : "2px 5px",
         }}
       >
         <div className="hidden md:block">
@@ -584,7 +584,7 @@ function ProductListWithFiltersInner(props: ProductListWithFiltersInnerProps) {
         </div>
       ) : null}
 
-      <div className="mt-1.5" style={{ marginTop: isDesktop ? "6px" : "8px" }}>
+      <div className="mt-1.5" style={{ marginTop: isDesktop ? "6px" : "6px" }}>
         <SortBar total={searched.length} sort={sort} onSortChange={handleSortChange} />
       </div>
 

@@ -66,7 +66,7 @@ export default function CategoryTabs({
 
   const wrapperClassName = useMemo(() => {
     const stickyClass = stickyMobile
-      ? "sticky top-14 z-30 -mx-4 bg-white/95 px-4 py-2 backdrop-blur md:static md:mx-0 md:bg-transparent md:px-0 md:py-0 md:backdrop-blur-0"
+      ? "sticky top-14 z-30 -mx-4 bg-white/95 px-4 py-1.5 backdrop-blur md:static md:mx-0 md:bg-transparent md:px-0 md:py-0 md:backdrop-blur-0"
       : "";
     return [stickyClass, className].filter(Boolean).join(" ");
   }, [className, stickyMobile]);
@@ -84,7 +84,7 @@ export default function CategoryTabs({
                 const meta = CATEGORY_META[category];
                 const active = activeCategory === category;
                 const commonClassName =
-                  "rounded-full px-3 py-1 text-[12px] font-medium whitespace-nowrap transition-colors md:px-3.5 md:text-sm";
+                  "rounded-full px-2.5 py-[5px] text-[11px] font-medium whitespace-nowrap transition-colors md:px-3.5 md:py-1 md:text-sm";
                 const toneClassName = active
                   ? "bg-[var(--accent)] text-white"
                   : "border border-[var(--border)] bg-white text-[var(--foreground-muted)] hover:text-[var(--foreground)]";
@@ -133,7 +133,7 @@ export default function CategoryTabs({
                       setMobileInfoOpen((current) => !current);
                     }
                   }}
-                  className="inline-flex h-7 w-7 items-center justify-center rounded-full border border-[var(--border)] bg-white text-[12px] text-[var(--foreground-muted)] transition-colors hover:text-[var(--foreground)] md:h-8 md:w-8 md:text-[13px]"
+                  className="inline-flex h-6 w-6 items-center justify-center rounded-full border border-[var(--border)] bg-white text-[11px] text-[var(--foreground-muted)] transition-colors hover:text-[var(--foreground)] md:h-8 md:w-8 md:text-[13px]"
                   aria-label="카테고리 설명 보기"
                   aria-expanded={isDesktop ? desktopInfoOpen : mobileInfoOpen}
                 >

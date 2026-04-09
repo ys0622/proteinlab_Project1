@@ -331,10 +331,13 @@ export default function ProductCard({
           }`}
           style={{ fontWeight: 600, color: "#1a1a1a" }}
         >
-          <span className="text-[12px] md:text-[16px]">{titlePrefix}</span>
+          <span className="block text-[12px] md:text-[16px]">{titlePrefix}</span>
           {titleCapacityLabel ? (
-            <span className="text-[10px] font-normal md:text-[13px]" style={{ color: "#6b6b6b" }}>
-              {" "}
+            <span
+              className="mt-0.5 block text-[10px] font-normal md:mt-0 md:inline md:text-[13px]"
+              style={{ color: "#6b6b6b" }}
+            >
+              <span className="hidden md:inline"> </span>
               {titleCapacityLabel}
             </span>
           ) : null}
