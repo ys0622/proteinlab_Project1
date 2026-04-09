@@ -137,7 +137,7 @@ export default function CategoryTabs({
                   aria-label="카테고리 설명 보기"
                   aria-expanded={isDesktop ? desktopInfoOpen : mobileInfoOpen}
                 >
-                  ?
+                  !
                 </button>
 
                 {desktopInfoOpen ? (
