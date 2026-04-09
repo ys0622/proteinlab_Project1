@@ -1,32 +1,12 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { useCompare } from "../context/CompareContext";
-
-const COMPARE_BAR_PATHS = [
-  "/products",
-  "/drinks",
-  "/bars",
-  "/yogurt",
-  "/shake",
-  "/recommend",
-  "/ranking",
-  "/search",
-  "/brands",
-  "/picks",
-  "/favorites",
-  "/compare",
-  "/product",
-];
 
 export default function CompareBar() {
   const { selectedSlugs, clear } = useCompare();
-  const pathname = usePathname();
 
-  const isProductPage = COMPARE_BAR_PATHS.some((p) => pathname === p || pathname.startsWith(p + "/"));
-
-  if (selectedSlugs.length === 0 || !isProductPage) return null;
+  if (selectedSlugs.length === 0) return null;
 
   return (
     <div
