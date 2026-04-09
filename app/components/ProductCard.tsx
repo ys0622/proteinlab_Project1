@@ -133,6 +133,7 @@ export default function ProductCard({
   void _productUrl;
 
   const detailHref = slug ? `/product/${slug}` : "#";
+  const usesUnifiedSurface = ["drink", "bar", "yogurt", "shake"].includes(productType ?? "");
   const isDrinkCard = productType === "drink";
   const imageUrl = slug ? getProductImageUrl(slug) : null;
   const resolvedPurchaseLinkCategory = purchaseLinkCategory ?? productType ?? null;
@@ -159,7 +160,7 @@ export default function ProductCard({
       ? visibleGradeTags.slice(0, maxVisibleBadges)
       : visibleGradeTags;
   const feedbackMeta = reviewSummary && reviewSummary.reviewCount > 0 ? reviewSummary : null;
-  const drinkSurfaceBg = "color-mix(in srgb, var(--hero-bg) 64%, white)";
+  const cardSurfaceBg = "color-mix(in srgb, var(--hero-bg) 64%, white)";
 
   useEffect(() => {
     if (!slug) return;
@@ -209,11 +210,11 @@ export default function ProductCard({
   return (
     <article
       className={`product-card group flex flex-col overflow-hidden rounded-2xl border transition-all duration-200 ease-out hover:border-[#ddd] focus:outline-none focus:ring-2 focus:ring-[var(--accent)] focus:ring-offset-2 active:shadow-sm ${
-        isDrinkCard
+        usesUnifiedSurface
           ? "px-2.5 pt-2.5 pb-0.5 md:px-[14px] md:pt-[14px] md:pb-[6px]"
           : "p-2.5 md:p-[14px]"
       } ${
-        isDrinkCard ? "self-start" : "h-full"
+        usesUnifiedSurface ? "self-start" : "h-full"
       } ${
         canOpenDetail ? "cursor-pointer" : ""
       }`}
@@ -224,30 +225,32 @@ export default function ProductCard({
       aria-label={canOpenDetail ? `${brand} ${name} 제품 상세 보기` : undefined}
       style={{
         borderRadius: "16px",
-        borderColor: isDrinkCard ? "#e5ddd1" : "#e8e6e3",
-        background: isDrinkCard ? drinkSurfaceBg : "#FFFDF8",
-        boxShadow: isDrinkCard ? "0 2px 10px rgba(60,45,30,0.08)" : undefined,
+        borderColor: usesUnifiedSurface ? "#e5ddd1" : "#e8e6e3",
+        background: usesUnifiedSurface ? cardSurfaceBg : "#FFFDF8",
+        boxShadow: usesUnifiedSurface ? "0 2px 10px rgba(60,45,30,0.08)" : undefined,
       }}
     >
       <div
         className={
-          isDrinkCard ? "-mx-2.5 -mt-2.5 relative overflow-hidden bg-white md:-mx-[14px] md:-mt-[14px]" : "relative"
+          usesUnifiedSurface
+            ? "-mx-2.5 -mt-2.5 relative overflow-hidden bg-white md:-mx-[14px] md:-mt-[14px]"
+            : "relative"
         }
       >
         <div
           className={`product-card__media flex w-full flex-shrink-0 items-center justify-center overflow-hidden bg-white ${
-            isDrinkCard
+            usesUnifiedSurface
               ? "h-[136px] px-3 pb-1 pt-2 md:h-[170px] md:px-4 md:pb-2 md:pt-3"
               : "rounded-xl border border-[#eee] p-1 group-hover:border-[#e2e2e2] md:h-[200px] md:p-[10px]"
           }`}
-          style={{ borderRadius: isDrinkCard ? "0" : "12px" }}
+          style={{ borderRadius: usesUnifiedSurface ? "0" : "12px" }}
         >
           {imageUrl ? (
             <div
               className={`product-card__image relative h-full w-full ${
-                isDrinkCard ? "max-w-[148px] md:max-w-[202px]" : "max-w-[180px] md:max-w-[200px]"
+                usesUnifiedSurface ? "max-w-[148px] md:max-w-[202px]" : "max-w-[180px] md:max-w-[200px]"
               }`}
-              style={{ minHeight: isDrinkCard ? "118px" : "140px" }}
+              style={{ minHeight: usesUnifiedSurface ? "118px" : "140px" }}
             >
               <Image
                 src={imageUrl}
@@ -313,12 +316,12 @@ export default function ProductCard({
       </div>
 
       <div
-        className={`flex min-h-0 flex-1 flex-col ${isDrinkCard ? "-mx-2.5 mt-0 px-2.5 pb-0.5 md:-mx-[14px] md:px-[14px] md:pb-0.5" : ""}`}
-        style={isDrinkCard ? { background: drinkSurfaceBg } : undefined}
+        className={`flex min-h-0 flex-1 flex-col ${usesUnifiedSurface ? "-mx-2.5 mt-0 px-2.5 pb-0.5 md:-mx-[14px] md:px-[14px] md:pb-0.5" : ""}`}
+        style={usesUnifiedSurface ? { background: cardSurfaceBg } : undefined}
       >
         <p
           className={`product-card__brand text-xs tracking-wide ${
-            productType === "drink" ? "mt-1 md:mt-1.5" : "mt-2 md:mt-3"
+            usesUnifiedSurface ? "mt-1 md:mt-1.5" : "mt-2 md:mt-3"
           }`}
           style={{ color: "#7a7a7a" }}
         >
@@ -374,11 +377,11 @@ export default function ProductCard({
           ) : null}
         </MetricBadgeGroup>
 
-        {!isDrinkCard ? <div className="mx-1 mt-1.5 border-t border-[#e8e6e3] md:mt-3" /> : null}
+        {!usesUnifiedSurface ? <div className="mx-1 mt-1.5 border-t border-[#e8e6e3] md:mt-3" /> : null}
 
         <div
           className={`product-card__metrics grid grid-cols-2 gap-1 md:gap-2 ${
-            productType === "drink" ? "mt-1 md:mt-1.5" : "mt-1.5 md:mt-3"
+            usesUnifiedSurface ? "mt-1 md:mt-1.5" : "mt-1.5 md:mt-3"
           }`}
         >
           {[
@@ -390,8 +393,8 @@ export default function ProductCard({
             <div
               key={label}
               className={`product-card__metric flex min-w-0 flex-col justify-center rounded-lg border px-2 text-left md:px-2.5 ${
-                isDrinkCard ? "border-[#e6ded2] bg-white" : "border-[#e8e8e8] bg-white"
-              } ${productType === "drink" ? "py-1 md:py-1.5" : "py-0 md:py-2"}`}
+                usesUnifiedSurface ? "border-[#e6ded2] bg-white" : "border-[#e8e8e8] bg-white"
+              } ${usesUnifiedSurface ? "py-1 md:py-1.5" : "py-0 md:py-2"}`}
               style={{ borderRadius: "10px" }}
             >
               <span className="product-card__metric-label" style={{ fontSize: "11px", color: "#6b6b6b" }}>
