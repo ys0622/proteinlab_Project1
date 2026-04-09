@@ -159,6 +159,7 @@ export default function ProductCard({
       ? visibleGradeTags.slice(0, maxVisibleBadges)
       : visibleGradeTags;
   const feedbackMeta = reviewSummary && reviewSummary.reviewCount > 0 ? reviewSummary : null;
+  const drinkSurfaceBg = "color-mix(in srgb, var(--hero-bg) 64%, white)";
 
   useEffect(() => {
     if (!slug) return;
@@ -217,43 +218,44 @@ export default function ProductCard({
       aria-label={canOpenDetail ? `${brand} ${name} 제품 상세 보기` : undefined}
       style={{
         borderRadius: "16px",
-        borderColor: isDrinkCard ? "#e9e1d7" : "#e8e6e3",
-        background: isDrinkCard ? "#faf8f5" : "#FFFDF8",
+        borderColor: isDrinkCard ? "#e5ddd1" : "#e8e6e3",
+        background: isDrinkCard ? drinkSurfaceBg : "#FFFDF8",
         boxShadow: isDrinkCard ? "0 2px 10px rgba(60,45,30,0.08)" : undefined,
       }}
     >
       <div
-        className={isDrinkCard ? "-mx-2.5 -mt-2.5 relative bg-white md:-mx-[14px] md:-mt-[14px]" : "relative"}
-        style={isDrinkCard ? { background: "#ffffff" } : undefined}
+        className={
+          isDrinkCard ? "-mx-2.5 -mt-2.5 relative overflow-hidden bg-white md:-mx-[14px] md:-mt-[14px]" : "relative"
+        }
       >
         <div
-          className={`flex w-full flex-shrink-0 items-center justify-center overflow-hidden bg-white ${
+          className={`product-card__media flex w-full flex-shrink-0 items-center justify-center overflow-hidden bg-white ${
             isDrinkCard
-              ? "h-[150px] px-3 pb-2 pt-2 md:h-[170px] md:px-4 md:pb-2 md:pt-3"
+              ? "h-[136px] px-3 pb-1 pt-2 md:h-[170px] md:px-4 md:pb-2 md:pt-3"
               : "rounded-xl border border-[#eee] p-1 group-hover:border-[#e2e2e2] md:h-[200px] md:p-[10px]"
           }`}
           style={{ borderRadius: isDrinkCard ? "0" : "12px" }}
         >
           {imageUrl ? (
             <div
-              className={`relative h-full w-full ${
-                isDrinkCard ? "max-w-[178px] md:max-w-[202px]" : "max-w-[180px] md:max-w-[200px]"
+              className={`product-card__image relative h-full w-full ${
+                isDrinkCard ? "max-w-[148px] md:max-w-[202px]" : "max-w-[180px] md:max-w-[200px]"
               }`}
-              style={{ minHeight: isDrinkCard ? "150px" : "140px" }}
+              style={{ minHeight: isDrinkCard ? "118px" : "140px" }}
             >
               <Image
                 src={imageUrl}
                 alt={`${brand} ${name}`}
                 fill
                 className="object-contain"
-                sizes="(max-width: 640px) 45vw, (max-width: 1024px) 30vw, 200px"
+                sizes="(max-width: 640px) 40vw, (max-width: 1024px) 30vw, 200px"
                 unoptimized
                 priority={priority}
                 loading={priority ? "eager" : "lazy"}
               />
             </div>
           ) : (
-            <div className="h-[140px] w-full max-w-[180px] md:h-[160px] md:max-w-[200px]" />
+            <div className="product-card__image h-[118px] w-full max-w-[148px] md:h-[160px] md:max-w-[200px]" />
           )}
         </div>
 
@@ -305,18 +307,20 @@ export default function ProductCard({
       </div>
 
       <div
-        className={`flex min-h-0 flex-1 flex-col ${isDrinkCard ? "-mx-2.5 mt-0 px-2.5 pb-2 md:-mx-[14px] md:px-[14px] md:pb-3" : ""}`}
-        style={isDrinkCard ? { background: "var(--hero-bg)" } : undefined}
+        className={`flex min-h-0 flex-1 flex-col ${isDrinkCard ? "-mx-2.5 mt-0 px-2.5 pb-2.5 md:-mx-[14px] md:px-[14px] md:pb-3" : ""}`}
+        style={isDrinkCard ? { background: drinkSurfaceBg } : undefined}
       >
         <p
-          className={`text-xs tracking-wide ${productType === "drink" ? "mt-1.5 md:mt-2" : "mt-2.5 md:mt-4"}`}
+          className={`product-card__brand text-xs tracking-wide ${
+            productType === "drink" ? "mt-1.5 md:mt-2" : "mt-2.5 md:mt-4"
+          }`}
           style={{ color: "#7a7a7a" }}
         >
           {brand}
         </p>
 
         <h3
-          className={`mt-1 font-semibold leading-snug ${
+          className={`product-card__title mt-1 font-semibold leading-snug ${
             fixedTitleLines === 2 ? "line-clamp-2 min-h-[44px]" : ""
           }`}
           style={{ fontSize: "16px", fontWeight: 600, color: "#1a1a1a" }}
@@ -330,7 +334,7 @@ export default function ProductCard({
           ) : null}
         </h3>
 
-        <MetricBadgeGroup className="mt-0.5">
+        <MetricBadgeGroup className="product-card__badges mt-0.5">
           {limitedGradeTags.map((tag) => {
             const displayTag = formatProductBadgeLabel(tag);
             const tone = getProductBadgeTone(displayTag);
@@ -341,7 +345,7 @@ export default function ProductCard({
                 key={tag}
                 label={displayTag}
                 tone={tone}
-                className="focus:outline-none focus:ring-2 focus:ring-[var(--accent)] focus:ring-offset-1"
+                className="product-card__badge focus:outline-none focus:ring-2 focus:ring-[var(--accent)] focus:ring-offset-1"
                 tooltip={tooltip ?? undefined}
                 tooltipAriaLabel={getMetricBadgeAriaLabel(tag)}
               />
@@ -351,18 +355,23 @@ export default function ProductCard({
             <ProductBadge
               label={variant}
               tone="neutral"
+              className="product-card__badge"
               tooltip={getMetricBadgeTooltip(variant) ?? undefined}
               tooltipAriaLabel={getMetricBadgeAriaLabel(variant)}
             />
           ) : null}
           {yogurtType && productType !== "yogurt" && !hideSupplementalBadges ? (
-            <ProductBadge label={yogurtType} tone="neutral" />
+            <ProductBadge label={yogurtType} tone="neutral" className="product-card__badge" />
           ) : null}
         </MetricBadgeGroup>
 
         {!isDrinkCard ? <div className="mx-1 mt-1.5 border-t border-[#e8e6e3] md:mt-3" /> : null}
 
-        <div className={`grid grid-cols-2 gap-1 md:gap-2 ${productType === "drink" ? "mt-1.5 md:mt-2" : "mt-1.5 md:mt-3"}`}>
+        <div
+          className={`product-card__metrics grid grid-cols-2 gap-1 md:gap-2 ${
+            productType === "drink" ? "mt-1.5 md:mt-2" : "mt-1.5 md:mt-3"
+          }`}
+        >
           {[
             { label: "단백질", value: `${proteinPerServing}g`, isDensity: false },
             { label: "칼로리", value: calories != null ? `${calories}` : "-", isDensity: false },
@@ -371,15 +380,16 @@ export default function ProductCard({
           ].map(({ label, value, isDensity }) => (
             <div
               key={label}
-              className={`flex min-w-0 flex-col justify-center rounded-lg px-2 text-left md:px-2.5 ${
-                isDrinkCard
-                  ? "border border-[#ebe2d8] bg-[color-mix(in_srgb,var(--hero-bg)_76%,white)]"
-                  : "border border-[#e8e8e8] bg-white"
+              className={`product-card__metric flex min-w-0 flex-col justify-center rounded-lg border px-2 text-left md:px-2.5 ${
+                isDrinkCard ? "border-[#e6ded2] bg-white" : "border-[#e8e8e8] bg-white"
               } ${productType === "drink" ? "py-1 md:py-1.5" : "py-0 md:py-2"}`}
               style={{ borderRadius: "10px" }}
             >
-              <span style={{ fontSize: "11px", color: "#6b6b6b" }}>{label}</span>
+              <span className="product-card__metric-label" style={{ fontSize: "11px", color: "#6b6b6b" }}>
+                {label}
+              </span>
               <span
+                className={`product-card__metric-value ${isDensity ? "product-card__metric-value--compact" : ""}`}
                 style={{
                   fontSize: isDensity ? "12px" : "13px",
                   fontWeight: 700,
@@ -387,13 +397,13 @@ export default function ProductCard({
                   lineHeight: 1.2,
                 }}
               >
-                <span className="block min-w-0 md:text-[14px]">{renderMetricValue(value, isDensity)}</span>
+                {renderMetricValue(value, isDensity)}
               </span>
             </div>
           ))}
         </div>
 
-        <div className={`cta-group ${productType === "drink" ? "mt-1 md:mt-1.5" : "mt-1.5 md:mt-4"}`}>
+        <div className={`cta-group mt-1 md:mt-1.5 ${isDrinkCard ? "pb-0.5" : ""}`}>
           <PurchaseLinkRow
             coupangHref={coupangHref}
             naverHref={naverHref}
