@@ -30,7 +30,7 @@ export default function CompareBar() {
 
   return (
     <div
-      className="fixed bottom-0 left-0 z-50 flex w-full items-center justify-between text-white"
+      className="fixed inset-x-0 bottom-3 z-[90] mx-auto flex w-[min(960px,calc(100%-24px))] items-center justify-between rounded-2xl text-white shadow-[0_16px_40px_rgba(17,24,39,0.22)] md:bottom-4"
       style={{
         background: "#2F5D46",
         padding: "16px 24px",

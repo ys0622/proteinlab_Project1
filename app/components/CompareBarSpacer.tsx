@@ -25,5 +25,5 @@ export default function CompareBarSpacer() {
   const pathname = usePathname();
   const isProductPage = COMPARE_BAR_PATHS.some((p) => pathname === p || pathname.startsWith(p + "/"));
   if (selectedSlugs.length === 0 || !isProductPage) return null;
-  return <div style={{ height: "72px" }} aria-hidden />;
+  return <div style={{ height: "96px" }} aria-hidden />;
 }
