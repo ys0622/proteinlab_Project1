@@ -84,7 +84,7 @@ export default function CategoryTabs({
                 const meta = CATEGORY_META[category];
                 const active = activeCategory === category;
                 const commonClassName =
-                  "rounded-full px-3.5 py-1 text-sm font-medium whitespace-nowrap transition-colors";
+                  "rounded-full px-3 py-1 text-[12px] font-medium whitespace-nowrap transition-colors md:px-3.5 md:text-sm";
                 const toneClassName = active
                   ? "bg-[var(--accent)] text-white"
                   : "border border-[var(--border)] bg-white text-[var(--foreground-muted)] hover:text-[var(--foreground)]";
@@ -133,15 +133,15 @@ export default function CategoryTabs({
                       setMobileInfoOpen((current) => !current);
                     }
                   }}
-                  className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-[var(--border)] bg-white text-[13px] text-[var(--foreground-muted)] transition-colors hover:text-[var(--foreground)]"
+                  className="inline-flex h-7 w-7 items-center justify-center rounded-full border border-[var(--border)] bg-white text-[12px] text-[var(--foreground-muted)] transition-colors hover:text-[var(--foreground)] md:h-8 md:w-8 md:text-[13px]"
                   aria-label="카테고리 설명 보기"
                   aria-expanded={isDesktop ? desktopInfoOpen : mobileInfoOpen}
                 >
-                  ⓘ
+                  ?
                 </button>
 
                 {desktopInfoOpen ? (
-                  <div className="absolute right-0 bottom-full z-[100] mb-3 hidden w-[320px] rounded-xl border border-[var(--border)] bg-white p-3 shadow-lg md:block">
+                  <div className="absolute bottom-full right-0 z-[100] mb-3 hidden w-[320px] rounded-xl border border-[var(--border)] bg-white p-3 shadow-lg md:block">
                     <CategoryInfoPanel counts={counts} />
                   </div>
                 ) : null}

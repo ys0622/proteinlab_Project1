@@ -307,12 +307,12 @@ export default function ProductCard({
       </div>
 
       <div
-        className={`flex min-h-0 flex-1 flex-col ${isDrinkCard ? "-mx-2.5 mt-0 px-2.5 pb-2.5 md:-mx-[14px] md:px-[14px] md:pb-3" : ""}`}
+        className={`flex min-h-0 flex-1 flex-col ${isDrinkCard ? "-mx-2.5 mt-0 px-2.5 pb-2 md:-mx-[14px] md:px-[14px] md:pb-2" : ""}`}
         style={isDrinkCard ? { background: drinkSurfaceBg } : undefined}
       >
         <p
           className={`product-card__brand text-xs tracking-wide ${
-            productType === "drink" ? "mt-1.5 md:mt-2" : "mt-2.5 md:mt-4"
+            productType === "drink" ? "mt-1 md:mt-1.5" : "mt-2 md:mt-3"
           }`}
           style={{ color: "#7a7a7a" }}
         >
@@ -321,7 +321,7 @@ export default function ProductCard({
 
         <h3
           className={`product-card__title mt-1 font-semibold leading-snug ${
-            fixedTitleLines === 2 ? "line-clamp-2 min-h-[44px]" : ""
+            fixedTitleLines === 2 ? "line-clamp-2 min-h-[42px]" : ""
           }`}
           style={{ fontSize: "16px", fontWeight: 600, color: "#1a1a1a" }}
         >
@@ -369,7 +369,7 @@ export default function ProductCard({
 
         <div
           className={`product-card__metrics grid grid-cols-2 gap-1 md:gap-2 ${
-            productType === "drink" ? "mt-1.5 md:mt-2" : "mt-1.5 md:mt-3"
+            productType === "drink" ? "mt-1 md:mt-1.5" : "mt-1.5 md:mt-3"
           }`}
         >
           {[
@@ -403,7 +403,7 @@ export default function ProductCard({
           ))}
         </div>
 
-        <div className={`cta-group mt-1 md:mt-1.5 ${isDrinkCard ? "pb-0.5" : ""}`}>
+        <div className="cta-group mt-1">
           <PurchaseLinkRow
             coupangHref={coupangHref}
             naverHref={naverHref}
