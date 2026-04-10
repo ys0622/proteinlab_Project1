@@ -19,18 +19,31 @@ export default function NutritionDetailSection({
       className="overflow-hidden rounded-2xl border border-[#e8e6e3] bg-[#FFFDF8]"
       style={{ borderRadius: "16px" }}
     >
-      <div className="flex items-center justify-between px-4 py-3">
-        <h2 className="text-sm font-semibold" style={{ color: "#3d3d3d" }}>
-          영양성분 상세 ({unitLabel} 기준)
-        </h2>
-        {capacity ? (
-          <span className="text-xs" style={{ color: "#999" }}>
-            총 내용량 {capacity}
-          </span>
-        ) : null}
+      <div className="flex flex-col gap-2 px-4 py-3 sm:flex-row sm:items-center sm:justify-between">
+        <div>
+          <h2 className="text-sm font-semibold" style={{ color: "#3d3d3d" }}>
+            영양성분 상세 ({unitLabel} 기준)
+          </h2>
+          <p className="mt-1 text-[11px] text-[#8a8a8a] sm:hidden">
+            표가 잘리면 좌우로 밀어서 확인하세요.
+          </p>
+        </div>
+        <div className="flex items-center gap-3">
+          <span className="hidden text-xs text-[#999] sm:inline">좌우로 밀어서 전체 보기</span>
+          {capacity ? (
+            <span className="text-xs" style={{ color: "#999" }}>
+              총 내용량 {capacity}
+            </span>
+          ) : null}
+        </div>
       </div>
 
-      <div className="overflow-x-auto border-t border-[#e8e6e3]">
+      <div className="relative border-t border-[#e8e6e3]">
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute bottom-0 right-0 top-0 z-[1] w-8 bg-gradient-to-l from-[#FFFDF8] to-transparent sm:hidden"
+        />
+        <div className="overflow-x-auto">
         <table className="w-full min-w-[400px] table-fixed border-collapse text-sm">
           <thead>
             <tr>
@@ -59,6 +72,7 @@ export default function NutritionDetailSection({
             </tr>
           </tbody>
         </table>
+        </div>
       </div>
     </section>
   );

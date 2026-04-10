@@ -565,7 +565,12 @@ export default async function ProductDetailPage({ params }: PageProps) {
             className="mt-6 rounded-xl border border-[#e8e6e3] bg-[#FFFDF8] p-4"
             style={{ borderRadius: "12px" }}
           >
-            <h2 className="mb-3 text-base font-semibold text-[var(--foreground)]">가격·구매 채널 확인</h2>
+            <div className="mb-3 space-y-1">
+              <h2 className="text-base font-semibold text-[var(--foreground)]">가격·구매 채널 확인</h2>
+              <p className="text-sm leading-6 text-[var(--foreground-muted)]">
+                먼저 구매 가능한 채널을 확인하고, 비교와 카테고리 이동은 아래에서 이어서 볼 수 있습니다.
+              </p>
+            </div>
             {isShake && !resolvedCoupangHref && !naverHref && !officialMallHref ? (
               <p className="mb-3 text-sm leading-6 text-[var(--foreground-muted)]">
                 이 쉐이크는 구매 채널 링크를 순차 확인 중입니다. 지금은 제품 비교와 상세 성분부터 확인한 뒤 브랜드 페이지에서 후보를 더 좁혀보는 편이 가장 빠릅니다.
@@ -577,13 +582,13 @@ export default async function ProductDetailPage({ params }: PageProps) {
               officialMallHref={officialMallHref}
               size="md"
             />
-            <div className="mt-4 flex flex-wrap gap-3">
+            <div className="mt-4 grid gap-2 sm:grid-cols-2">
               <TrackedLink
                 href={`/compare?slugs=${encodeURIComponent(product.slug)}`}
                 trackingLabel="비교함에 넣기"
                 trackingSection="product_detail_after_purchase"
                 trackingPageType="product_detail"
-                className="inline-flex min-w-[170px] items-center justify-center rounded-full bg-[var(--accent)] px-6 py-3 text-sm font-semibold text-white shadow-[0_10px_24px_rgba(36,84,61,0.18)] transition-all hover:-translate-y-0.5 hover:opacity-95"
+                className="inline-flex w-full items-center justify-center rounded-xl border border-[color-mix(in_srgb,var(--accent)_20%,transparent)] bg-[var(--accent-light)] px-4 py-3 text-sm font-semibold text-[var(--accent)] transition-colors hover:bg-[color-mix(in_srgb,var(--accent-light)_72%,white)]"
               >
                 비교함에 넣기
               </TrackedLink>
@@ -592,7 +597,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
                 trackingLabel="같은 카테고리 보기"
                 trackingSection="product_detail_after_purchase"
                 trackingPageType="product_detail"
-                className="inline-flex items-center justify-center rounded-full border border-[var(--border)] bg-white px-5 py-2.5 text-sm font-medium text-[var(--foreground)] transition-colors hover:bg-[var(--accent-light)]"
+                className="inline-flex w-full items-center justify-center rounded-xl border border-[var(--border)] bg-white px-4 py-3 text-sm font-medium text-[var(--foreground)] transition-colors hover:bg-[var(--accent-light)]"
               >
                 같은 카테고리 보기
               </TrackedLink>
