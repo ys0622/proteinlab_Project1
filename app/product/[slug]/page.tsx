@@ -278,7 +278,6 @@ export default async function ProductDetailPage({ params }: PageProps) {
   const productImageUrl = getProductImageUrl(product.slug);
   const category = (product.productType ?? "drink") as "drink" | "bar" | "yogurt" | "shake";
   const categoryHref = getCategoryHref(category);
-  const categoryLabel = getProductKindLabel(product.productType);
   const faqItems = getProductFaqs(product);
   const hasCapacityInName = Boolean(product.capacity && product.name.includes(product.capacity));
   const metaParts = [
@@ -511,14 +510,11 @@ export default async function ProductDetailPage({ params }: PageProps) {
 
               <ProductDetailPurchaseActions
                 brand={product.brand}
-                categoryHref={categoryHref}
-                categoryLabel={categoryLabel}
                 coupangHref={resolvedCoupangHref}
                 naverHref={naverHref}
                 officialMallHref={officialMallHref}
                 productName={product.name}
                 slug={product.slug}
-                variant="hero"
               />
             </div>
           </div>
@@ -577,19 +573,6 @@ export default async function ProductDetailPage({ params }: PageProps) {
 
           <div className="mt-6">
             <ProductReviewSection slug={slug} />
-          </div>
-
-          <div className="mt-6">
-            <ProductDetailPurchaseActions
-              brand={product.brand}
-              categoryHref={categoryHref}
-              categoryLabel={categoryLabel}
-              coupangHref={resolvedCoupangHref}
-              naverHref={naverHref}
-              officialMallHref={officialMallHref}
-              productName={product.name}
-              slug={product.slug}
-            />
           </div>
 
           <section className="mt-8">
