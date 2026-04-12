@@ -44,13 +44,15 @@ function articleJsonLd(config: ComparePageConfig) {
     description: config.description,
     inLanguage: "ko-KR",
     mainEntityOfPage: `https://proteinlab.kr/guides/product-selection-comparison/${config.slug}`,
-    author: { "@type": "Organization", name: "ProteinLab" },
+    author: { "@type": "Organization", name: "ProteinLab", url: "https://proteinlab.kr" },
     publisher: {
       "@type": "Organization",
       name: "ProteinLab",
-      logo: { "@type": "ImageObject", url: "https://proteinlab.kr/proteinlab-logo.png" },
+      url: "https://proteinlab.kr",
+      logo: { "@type": "ImageObject", url: "https://proteinlab.kr/proteinlab-logo.png", width: 81, height: 88 },
     },
-    dateModified: "2026-03-24",
+    image: { "@type": "ImageObject", url: `https://proteinlab.kr${config.ogImage ?? "/proteinlab-logo.png"}` },
+    ...(config.updatedAt ? { dateModified: config.updatedAt } : {}),
   };
 }
 

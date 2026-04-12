@@ -9,6 +9,7 @@ import Header from "../../components/Header";
 import MetricBadgeGroup from "../../components/MetricBadgeGroup";
 import NutritionDetailSection from "../../components/NutritionDetailSection";
 import ProductBadge from "../../components/ProductBadge";
+import ProductDetailPurchaseActions from "../../components/ProductDetailPurchaseActions";
 import RelatedLinkCards from "../../components/RelatedLinkCards";
 import TrackedLink from "../../components/TrackedLink";
 import {
@@ -25,7 +26,6 @@ import {
   getProductBadgeTone,
 } from "../../components/productBadgeUtils";
 import ProductReviewSection from "../../components/ProductReviewSection";
-import PurchaseLinkRow from "../../components/PurchaseLinkRow";
 import ServingBasisNotice from "../../components/ServingBasisNotice";
 import { getNutritionDetail } from "../../data/products";
 import { brandToSlug } from "../../lib/brandHubs";
@@ -129,25 +129,29 @@ function buildProductDescription(product: ProductDetailProps): string {
     `단백질 ${product.proteinPerServing}g`,
     product.calories != null ? `${product.calories}kcal` : null,
     product.sugar != null ? `당류 ${product.sugar}g` : null,
-    product.density ? `밀도 ${product.density}` : null,
   ].filter(Boolean);
   const tail =
     product.productType === "drink"
-      ? "RTD 단백질 음료 비교, 비슷한 제품 추천, 구매 전 체크포인트까지 함께 확인할 수 있습니다."
+      ? "비슷한 제품과 성분 비교, 구매 전 체크포인트를 바로 확인하세요."
       : product.productType === "shake"
-        ? "쉐이크 비교, 다이어트 기준, 비슷한 제품 추천까지 함께 확인할 수 있습니다."
+        ? "다이어트·벌크업 기준으로 비슷한 쉐이크와 바로 비교해보세요."
         : product.productType === "bar"
-          ? "단백질 바 비교, 다이어트 기준, 비슷한 제품 추천까지 함께 확인할 수 있습니다."
-          : "요거트 비교, 당류 기준, 비슷한 제품 추천까지 함께 확인할 수 있습니다.";
-  return `${product.brand} ${product.name} 성분 정보입니다. ${metrics.join(" · ")}. ${tail}`;
+          ? "칼로리·당류 기준으로 비슷한 단백질 바와 한눈에 비교하세요."
+          : "당류·단백질 기준으로 비슷한 요거트와 한눈에 비교하세요.";
+  return `${product.brand} ${product.name} — ${metrics.join(" · ")}. ${tail}`;
 }
 
 function buildProductTitle(product: ProductDetailProps): string {
   const kind = getProductKindLabel(product.productType);
-  const headline = [`단백질 ${product.proteinPerServing}g`];
-  if (product.sugar != null) headline.push(`당류 ${product.sugar}g`);
-  else if (product.calories != null) headline.push(`${product.calories}kcal`);
-  return `${product.brand} ${product.name} | ${headline.join(" · ")} | ${kind} 비교`;
+  const protein = `단백질 ${product.proteinPerServing}g`;
+  const second =
+    product.sugar != null
+      ? `당류 ${product.sugar}g`
+      : product.calories != null
+        ? `${product.calories}kcal`
+        : null;
+  const metrics = second ? `${protein} · ${second}` : protein;
+  return `${product.brand} ${product.name} ${metrics} — ${kind} 성분 비교`;
 }
 
 function buildProductInternalLinks(product: ProductDetailProps) {
@@ -273,6 +277,8 @@ export default async function ProductDetailPage({ params }: PageProps) {
   const isShake = product.productType === "shake";
   const productImageUrl = getProductImageUrl(product.slug);
   const category = (product.productType ?? "drink") as "drink" | "bar" | "yogurt" | "shake";
+  const categoryHref = getCategoryHref(category);
+  const categoryLabel = getProductKindLabel(product.productType);
   const faqItems = getProductFaqs(product);
   const hasCapacityInName = Boolean(product.capacity && product.name.includes(product.capacity));
   const metaParts = [
@@ -366,7 +372,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
           "@type": "ListItem",
           position: 2,
           name: getProductKindLabel(product.productType),
-          item: `https://proteinlab.kr${getCategoryHref(category)}`,
+          item: `https://proteinlab.kr${categoryHref}`,
         },
         {
           "@type": "ListItem",
@@ -376,32 +382,32 @@ export default async function ProductDetailPage({ params }: PageProps) {
         },
       ],
     },
-    ...(reviewCount > 0
-      ? [
-          {
-            "@context": "https://schema.org",
-            "@type": "Product",
-            name: product.name,
-            brand: { "@type": "Brand", name: product.brand },
-            description: buildProductDescription(product),
-            ...(productImageUrl ? { image: `https://proteinlab.kr${productImageUrl}` } : {}),
-            category: getProductKindLabel(product.productType),
-            nutrition: {
-              "@type": "NutritionInformation",
-              proteinContent: `${product.proteinPerServing} g`,
-              ...(product.calories != null ? { calories: `${product.calories} kcal` } : {}),
-              ...(product.sugar != null ? { sugarContent: `${product.sugar} g` } : {}),
-              ...(product.fat != null ? { fatContent: `${product.fat} g` } : {}),
-              ...(product.sodium != null ? { sodiumContent: `${product.sodium} mg` } : {}),
-            },
+    {
+      "@context": "https://schema.org",
+      "@type": "Product",
+      name: `${product.brand} ${product.name}`,
+      brand: { "@type": "Brand", name: product.brand },
+      description: buildProductDescription(product),
+      ...(productImageUrl ? { image: `https://proteinlab.kr${productImageUrl}` } : {}),
+      category: getProductKindLabel(product.productType),
+      nutrition: {
+        "@type": "NutritionInformation",
+        proteinContent: `${product.proteinPerServing} g`,
+        ...(product.calories != null ? { calories: `${product.calories} kcal` } : {}),
+        ...(product.sugar != null ? { sugarContent: `${product.sugar} g` } : {}),
+        ...(product.fat != null ? { fatContent: `${product.fat} g` } : {}),
+        ...(product.sodium != null ? { sodiumContent: `${product.sodium} mg` } : {}),
+      },
+      ...(reviewCount > 0
+        ? {
             aggregateRating: {
               "@type": "AggregateRating",
               ratingValue: Number((aggregateRatingValue ?? 0).toFixed(1)),
               reviewCount,
             },
-          },
-        ]
-      : []),
+          }
+        : {}),
+    },
     {
       "@context": "https://schema.org",
       "@type": "FAQPage",
@@ -461,7 +467,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
                     홈
                   </Link>
                   <span>/</span>
-                  <Link href={getCategoryHref(category)} className="hover:text-[#1a1a1a]">
+                  <Link href={categoryHref} className="hover:text-[#1a1a1a]">
                     {getProductKindLabel(product.productType)}
                   </Link>
                   <span>/</span>
@@ -502,6 +508,18 @@ export default async function ProductDetailPage({ params }: PageProps) {
                   </div>
                 ))}
               </div>
+
+              <ProductDetailPurchaseActions
+                brand={product.brand}
+                categoryHref={categoryHref}
+                categoryLabel={categoryLabel}
+                coupangHref={resolvedCoupangHref}
+                naverHref={naverHref}
+                officialMallHref={officialMallHref}
+                productName={product.name}
+                slug={product.slug}
+                variant="hero"
+              />
             </div>
           </div>
         </div>
@@ -561,47 +579,17 @@ export default async function ProductDetailPage({ params }: PageProps) {
             <ProductReviewSection slug={slug} />
           </div>
 
-          <div
-            className="mt-6 rounded-xl border border-[#e8e6e3] bg-[#FFFDF8] p-4"
-            style={{ borderRadius: "12px" }}
-          >
-            <div className="mb-3 space-y-1">
-              <h2 className="text-base font-semibold text-[var(--foreground)]">가격·구매 채널 확인</h2>
-              <p className="text-sm leading-6 text-[var(--foreground-muted)]">
-                먼저 구매 가능한 채널을 확인하고, 비교와 카테고리 이동은 아래에서 이어서 볼 수 있습니다.
-              </p>
-            </div>
-            {isShake && !resolvedCoupangHref && !naverHref && !officialMallHref ? (
-              <p className="mb-3 text-sm leading-6 text-[var(--foreground-muted)]">
-                이 쉐이크는 구매 채널 링크를 순차 확인 중입니다. 지금은 제품 비교와 상세 성분부터 확인한 뒤 브랜드 페이지에서 후보를 더 좁혀보는 편이 가장 빠릅니다.
-              </p>
-            ) : null}
-            <PurchaseLinkRow
+          <div className="mt-6">
+            <ProductDetailPurchaseActions
+              brand={product.brand}
+              categoryHref={categoryHref}
+              categoryLabel={categoryLabel}
               coupangHref={resolvedCoupangHref}
               naverHref={naverHref}
               officialMallHref={officialMallHref}
-              size="md"
+              productName={product.name}
+              slug={product.slug}
             />
-            <div className="mt-4 grid gap-2 sm:grid-cols-2">
-              <TrackedLink
-                href={`/compare?slugs=${encodeURIComponent(product.slug)}`}
-                trackingLabel="비교함에 넣기"
-                trackingSection="product_detail_after_purchase"
-                trackingPageType="product_detail"
-                className="inline-flex w-full items-center justify-center rounded-xl border border-[color-mix(in_srgb,var(--accent)_20%,transparent)] bg-[var(--accent-light)] px-4 py-3 text-sm font-semibold text-[var(--accent)] transition-colors hover:bg-[color-mix(in_srgb,var(--accent-light)_72%,white)]"
-              >
-                비교함에 넣기
-              </TrackedLink>
-              <TrackedLink
-                href={getCategoryHref(category)}
-                trackingLabel="같은 카테고리 보기"
-                trackingSection="product_detail_after_purchase"
-                trackingPageType="product_detail"
-                className="inline-flex w-full items-center justify-center rounded-xl border border-[var(--border)] bg-white px-4 py-3 text-sm font-medium text-[var(--foreground)] transition-colors hover:bg-[var(--accent-light)]"
-              >
-                같은 카테고리 보기
-              </TrackedLink>
-            </div>
           </div>
 
           <section className="mt-8">
@@ -666,7 +654,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
 
           <div className="mt-4 flex flex-wrap gap-3">
             <TrackedLink
-              href={getCategoryHref(category)}
+              href={categoryHref}
               trackingLabel="제품 목록으로 돌아가기"
               trackingSection="product_detail_bottom_cta"
               trackingPageType="product_detail"

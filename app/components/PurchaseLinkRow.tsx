@@ -7,6 +7,12 @@ type PurchaseLinkRowProps = {
   naverHref: string | null;
   officialMallHref: string | null;
   size?: "sm" | "md";
+  coupangLabel?: string;
+  coupangMobileLabel?: string;
+  naverLabel?: string;
+  naverMobileLabel?: string;
+  officialLabel?: string;
+  officialMobileLabel?: string;
   onCoupangClick?: () => void;
   onNaverClick?: () => void;
   onOfficialClick?: () => void;
@@ -17,6 +23,12 @@ export default function PurchaseLinkRow({
   naverHref,
   officialMallHref,
   size = "md",
+  coupangLabel = "쿠팡 구매",
+  coupangMobileLabel = "쿠팡",
+  naverLabel = "네이버 쇼핑",
+  naverMobileLabel = "네이버",
+  officialLabel = "공식몰",
+  officialMobileLabel = "공식몰",
   onCoupangClick,
   onNaverClick,
   onOfficialClick,
@@ -25,8 +37,8 @@ export default function PurchaseLinkRow({
     <div className="purchase-link-row">
       <PurchaseLinkButton
         href={coupangHref}
-        label="쿠팡 구매"
-        mobileLabel="쿠팡"
+        label={coupangLabel}
+        mobileLabel={coupangMobileLabel}
         tone="coupang"
         size={size}
         onClick={coupangHref ? onCoupangClick : undefined}
@@ -34,8 +46,8 @@ export default function PurchaseLinkRow({
       />
       <PurchaseLinkButton
         href={naverHref}
-        label="네이버 쇼핑"
-        mobileLabel="네이버"
+        label={naverLabel}
+        mobileLabel={naverMobileLabel}
         tone="naver"
         size={size}
         onClick={naverHref ? onNaverClick : undefined}
@@ -43,8 +55,8 @@ export default function PurchaseLinkRow({
       />
       <PurchaseLinkButton
         href={officialMallHref}
-        label="공식몰"
-        mobileLabel="공식몰"
+        label={officialLabel}
+        mobileLabel={officialMobileLabel}
         tone="official"
         size={size}
         onClick={officialMallHref ? onOfficialClick : undefined}

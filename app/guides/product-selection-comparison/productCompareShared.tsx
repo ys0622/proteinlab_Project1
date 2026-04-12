@@ -31,6 +31,7 @@ export interface ComparePageConfig {
   badge: string;
   readingTime: string;
   updatedAt?: string;
+  ogImage?: string;
   methodologyNote?: string;
   intro: string;
   summary: string[];
@@ -84,25 +85,32 @@ export function formatCalories100(product: ProductDetailProps) {
 
 export function buildGuideMetadata(config: ComparePageConfig): Metadata {
   const canonical = `https://proteinlab.kr/guides/product-selection-comparison/${config.slug}`;
+  const hasLargeOg = !!config.ogImage;
+  const ogImage = config.ogImage ?? "/proteinlab-logo.png";
   return {
-    title: `${config.title} | ProteinLab`,
+    title: config.title,
     description: config.description,
     keywords: config.keywords,
     alternates: { canonical },
     openGraph: {
-      title: `${config.title} | ProteinLab`,
+      title: config.title,
       description: config.description,
       url: canonical,
       type: "article",
       locale: "ko_KR",
       siteName: "ProteinLab",
-      images: [{ url: "/proteinlab-logo.png", alt: `${config.title} - ProteinLab` }],
+      images: [
+        hasLargeOg
+          ? { url: ogImage, width: 1200, height: 630, alt: `${config.title} - ProteinLab` }
+          : { url: ogImage, width: 81, height: 88, alt: "ProteinLab" },
+      ],
+      ...(config.updatedAt ? { modifiedTime: config.updatedAt } : {}),
     },
     twitter: {
-      card: "summary_large_image",
-      title: `${config.title} | ProteinLab`,
+      card: hasLargeOg ? "summary_large_image" : "summary",
+      title: config.title,
       description: config.description,
-      images: ["/proteinlab-logo.png"],
+      images: [ogImage],
     },
   };
 }
@@ -121,11 +129,12 @@ function PurchaseLinks({ links }: { links: PurchaseGuideLink[] }) {
             target={href ? "_blank" : undefined}
             rel={href ? "noreferrer noopener" : undefined}
           >
-            <p className="text-xs font-semibold tracking-[0.08em] text-[#4a6178]">쿠팡 박스 링크</p>
+            <p className="text-xs font-semibold tracking-[0.08em] text-[#4a6178]">쿠팡에서 가격 확인</p>
             <p className="mt-2 text-sm font-semibold text-[var(--foreground)]">{item.label}</p>
             <p className="mt-1 text-sm leading-6 text-[var(--foreground-muted)]">
               {product.brand} {product.name}
             </p>
+            <p className="mt-3 text-xs font-medium text-[#24543d]">옵션과 최신 가격 보기 →</p>
           </a>
         );
       })}
@@ -243,9 +252,12 @@ export function ComparisonGuidePage({ config }: { config: ComparePageConfig }) {
           </section>
           <section className="rounded-[28px] border border-[#d9e4f0] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(32,46,68,0.05)]">
             <div className="flex items-center justify-between gap-4">
-              <h2 className="text-xl font-bold text-[var(--foreground)]">구매 링크</h2>
+              <h2 className="text-xl font-bold text-[var(--foreground)]">쿠팡에서 가격 보기</h2>
               <AffiliateDisclosure />
             </div>
+            <p className="mt-3 text-sm leading-6 text-[var(--foreground-muted)]">
+              후보가 좁혀졌다면 옵션과 최신 가격을 결제 전 한 번 더 확인해보세요.
+            </p>
             <div className="mt-3">
               <PurchaseLinks links={config.purchaseLinks} />
             </div>
