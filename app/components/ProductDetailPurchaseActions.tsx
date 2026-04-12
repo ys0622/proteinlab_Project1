@@ -30,10 +30,14 @@ export default function ProductDetailPurchaseActions({
   const isHero = variant === "hero";
   const placement = isHero ? "product_detail_hero_purchase" : "product_detail_after_purchase";
   const hasPurchaseLink = Boolean(coupangHref || naverHref || officialMallHref);
+  const coupangCta = "오늘 가격 확인";
+  const naverCta = "네이버 최종가 확인";
+  const officialCta = "공식몰 혜택 확인";
 
   const trackPurchase = (
     store: "coupang" | "naver" | "official",
     destinationUrl: string | null,
+    ctaText: string,
   ) =>
     purchaseClick({
       productId: slug,
@@ -42,6 +46,7 @@ export default function ProductDetailPurchaseActions({
       store,
       destinationUrl: destinationUrl ?? undefined,
       placement,
+      ctaText,
     });
 
   return (
@@ -69,7 +74,7 @@ export default function ProductDetailPurchaseActions({
 
       <p className="mb-3 text-xs leading-5 text-[var(--foreground-muted)] md:text-sm">
         {hasPurchaseLink
-          ? "가격과 재고는 수시로 바뀝니다. 결제 전 쿠팡·네이버·공식몰 최종가를 바로 확인하세요."
+          ? "할인·쿠폰·배송비까지 최종 결제 전 한 번에 확인하세요."
           : "구매 채널 링크를 확인 중입니다. 지금은 비교와 카테고리 목록에서 후보를 먼저 좁혀보는 편이 빠릅니다."}
       </p>
 
@@ -78,12 +83,12 @@ export default function ProductDetailPurchaseActions({
         naverHref={naverHref}
         officialMallHref={officialMallHref}
         size="md"
-        coupangLabel="쿠팡 가격 보기"
-        naverLabel="네이버 가격 보기"
-        officialLabel="공식몰 보기"
-        onCoupangClick={() => trackPurchase("coupang", coupangHref)}
-        onNaverClick={() => trackPurchase("naver", naverHref)}
-        onOfficialClick={() => trackPurchase("official", officialMallHref)}
+        coupangLabel={coupangCta}
+        naverLabel={naverCta}
+        officialLabel={officialCta}
+        onCoupangClick={() => trackPurchase("coupang", coupangHref, coupangCta)}
+        onNaverClick={() => trackPurchase("naver", naverHref, naverCta)}
+        onOfficialClick={() => trackPurchase("official", officialMallHref, officialCta)}
       />
 
       {!isHero ? (

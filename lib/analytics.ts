@@ -65,6 +65,7 @@ type PurchaseClickParams = {
   store: "coupang" | "naver" | "official";
   destinationUrl?: string;
   placement?: string;
+  ctaText?: string;
 };
 
 type InternalLinkClickParams = {
@@ -236,9 +237,10 @@ export function purchaseClick({
   store,
   destinationUrl,
   placement,
+  ctaText,
 }: PurchaseClickParams) {
   outboundClick({
-    label: `${productName} | ${store}`,
+    label: ctaText ? `${productName} | ${ctaText}` : `${productName} | ${store}`,
     destinationUrl: destinationUrl ?? "",
     category: "purchase",
     store,
@@ -254,6 +256,7 @@ export function purchaseClick({
     store,
     destination_url: destinationUrl,
     placement,
+    cta_text: ctaText,
   });
 }
 
