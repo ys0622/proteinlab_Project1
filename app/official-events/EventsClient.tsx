@@ -84,7 +84,7 @@ const PRODUCT_TYPE_META: Record<
   },
 };
 
-const CHECKED_DATE_LABEL = "2026-04-06 확인";
+const CHECKED_DATE_LABEL = "2026-04-12 확인";
 
 const CATEGORY_EMOJI: Record<EventCategory, string> = {
   할인: "🔖",
@@ -583,6 +583,10 @@ const additionalDrinkBrands: BrandCard[] = [
 ];
 
 const additionalBarBrands: BrandCard[] = [
+  { brand: "소이조이", storeType: "네이버 브랜드관", storeUrl: "https://brand.naver.com/soyjoy", note: "현재 등록 제품 8개", productCount: 8, events: [{ category: "할인", periodLabel: CHECKED_DATE_LABEL, description: "8종 라인업이라 맛별 묶음과 박스 구성을 먼저 비교하는 편이 좋습니다." }, { category: "쿠폰", periodLabel: CHECKED_DATE_LABEL, description: "네이버 브랜드관 쿠폰과 판매처별 묶음 가격이 함께 달라질 수 있어 최종가 확인이 필요합니다." }] },
+  { brand: "빼바", storeType: "네이버 브랜드관", storeUrl: "https://brand.naver.com/healthyplace/category/3b36ce60b9a9432496484c1ee5855d0c?cp=1", note: "현재 등록 제품 4개", productCount: 4, events: [{ category: "할인", periodLabel: CHECKED_DATE_LABEL, description: "리얼초코 프로틴바 4종은 맛별 재고와 세트 구성에 따라 체감가 차이가 큽니다." }, { category: "쿠폰", periodLabel: CHECKED_DATE_LABEL, description: "브랜드관 쿠폰과 쿠팡 단품가를 함께 비교하면 실구매가 판단이 쉬워집니다." }] },
+  { brand: "CJ제일제당", storeType: "CJ더마켓", storeUrl: "https://www.cjthemarket.com/pc/search?beforeAction=%2Fpc%2Fsearch%3Fwid1%3Dgnb_search&sort=RANK&collection=ALL&range=A&searchAction=D&query=%ED%94%84%EB%A1%9C%ED%8B%B4%EB%B0%94", note: "현재 등록 제품 2개", productCount: 2, events: [{ category: "할인", periodLabel: CHECKED_DATE_LABEL, description: "밸런스밀 프로틴바는 CJ더마켓 행사와 장바구니 쿠폰 적용 여부를 먼저 보는 편이 좋습니다." }, { category: "무료배송", periodLabel: CHECKED_DATE_LABEL, description: "CJ더마켓 합배송 기준과 묶음 구성을 함께 확인하는 편이 좋습니다." }] },
+  { brand: "마켓오네이처", storeType: "공식 판매처", storeUrl: "https://www.coupang.com/", note: "현재 등록 제품 1개", productCount: 1, events: [{ category: "할인", periodLabel: CHECKED_DATE_LABEL, description: "단일 SKU라 쿠팡과 네이버 검색 노출가 차이가 바로 체감가로 이어집니다." }, { category: "무료배송", periodLabel: CHECKED_DATE_LABEL, description: "배송비 포함 최종가와 묶음 수량을 함께 보는 편이 좋습니다." }] },
   { brand: "단백하니", storeType: "올리브영 브랜드관", storeUrl: "https://m.oliveyoung.co.kr/m/mtn/brand/A017276", note: "현재 등록 제품 5개", productCount: 5, events: [{ category: "할인", periodLabel: CHECKED_DATE_LABEL, description: "올영 브랜드전과 묶음 구성에 따라 바 단가 차이가 커지는 편입니다." }, { category: "쿠폰", periodLabel: CHECKED_DATE_LABEL, description: "브랜드관 쿠폰과 장바구니 할인 중복 여부를 결제 직전에 확인하는 편이 좋습니다." }] },
   { brand: "랩노쉬", storeType: "자사몰", storeUrl: "https://labnosh.com/category/%EB%9E%A9%EB%85%B8%EC%89%AC/44/", note: "현재 등록 제품 5개", productCount: 5, events: [{ category: "할인", periodLabel: CHECKED_DATE_LABEL, description: "푸드바는 세트 할인과 맛별 재고 소진형 세일이 자주 보여 단품보다 묶음 가격 비교가 중요합니다." }, { category: "무료배송", periodLabel: CHECKED_DATE_LABEL, description: "자사몰은 금액 조건 무료배송과 함께 보이는 경우가 많아 합배송 기준을 같이 보는 편이 좋습니다." }] },
   { brand: "오늘단백", storeType: "네이버 브랜드관", storeUrl: "https://brand.naver.com/harim/category/1a6d3a6007e143a59ecb3ae9b3418fc2?cp=2", note: "현재 등록 제품 4개", productCount: 4, events: [{ category: "할인", periodLabel: CHECKED_DATE_LABEL, description: "밀크초코 라인 4종은 맛별 세트 가격 차이가 있어 브랜드관 기준 비교가 효율적입니다." }, { category: "쿠폰", periodLabel: CHECKED_DATE_LABEL, description: "네이버 브랜드관 쿠폰과 적립을 함께 반영하면 체감가가 더 내려갈 수 있습니다." }] },
@@ -601,12 +605,18 @@ const additionalBarBrands: BrandCard[] = [
 ];
 
 const additionalYogurtBrands: BrandCard[] = [
+  { brand: "덴마크", storeType: "네이버 브랜드관", storeUrl: "https://brand.naver.com/denmark/category/67b8ab52f4674b2f88a351f04949ca15?cp=1", note: "현재 등록 제품 1개", productCount: 1, events: [{ category: "할인", periodLabel: CHECKED_DATE_LABEL, description: "하이 그릭요거트는 냉장 제품이라 브랜드관 할인과 배송 조건을 같이 확인하는 편이 좋습니다." }, { category: "쿠폰", periodLabel: CHECKED_DATE_LABEL, description: "네이버 브랜드관 쿠폰과 장바구니 최종가를 결제 직전에 다시 보는 편이 안전합니다." }] },
+  { brand: "커클랜드", storeType: "공식 판매처", storeUrl: "https://www.coupang.com/", note: "현재 등록 제품 1개", productCount: 1, events: [{ category: "할인", periodLabel: CHECKED_DATE_LABEL, description: "대용량 그릭요거트는 판매처별 단가와 재고 상황에 따라 가격 차이가 큽니다." }, { category: "무료배송", periodLabel: CHECKED_DATE_LABEL, description: "냉장 배송비 포함 최종가를 기준으로 비교하는 편이 좋습니다." }] },
   { brand: "요플레", storeType: "공식 판매처", storeUrl: "https://www.coupang.com/", note: "현재 등록 제품 5개", productCount: 5, events: [{ category: "할인", periodLabel: CHECKED_DATE_LABEL, description: "프로틴·맥스 라인은 대형 유통몰 행사 빈도가 있어 묶음가 차이를 먼저 보는 편이 좋습니다." }, { category: "무료배송", periodLabel: CHECKED_DATE_LABEL, description: "냉장 제품 특성상 배송비 포함 최종가를 같이 봐야 체감가 판단이 쉽습니다." }] },
   { brand: "요프로", storeType: "공식 판매처", storeUrl: "https://www.coupang.com/", note: "현재 등록 제품 2개", productCount: 2, events: [{ category: "할인", periodLabel: CHECKED_DATE_LABEL, description: "플레인과 블루베리 정도로 SKU가 적어도 행사 시점별 묶음가 차이가 있습니다." }, { category: "무료배송", periodLabel: CHECKED_DATE_LABEL, description: "냉장 배송 조건과 묶음 수량을 함께 보는 편이 좋습니다." }] },
   { brand: "풀무원다논", storeType: "자사몰", storeUrl: "https://shop.pulmuone.com/", note: "현재 등록 제품 1개", productCount: 1, events: [{ category: "할인", periodLabel: CHECKED_DATE_LABEL, description: "소수 SKU라 자사몰 또는 입점몰 프로모션 반영 여부를 먼저 확인하는 편이 좋습니다." }, { category: "무료배송", periodLabel: CHECKED_DATE_LABEL, description: "냉장 합배송 기준을 포함해 최종가를 보는 편이 안전합니다." }] },
 ];
 
 const additionalShakeBrands: BrandCard[] = [
+  { brand: "바지오", storeType: "네이버 스토어", storeUrl: "https://smartstore.naver.com/bbagio/category/d890334c286d4920bbc0c2c0eb8ffd11?cp=1", note: "현재 등록 쉐이크 7개", productCount: 7, events: [{ category: "할인", periodLabel: CHECKED_DATE_LABEL, description: "쉐이크얌 7종은 맛별 세트와 스마트스토어 행사 여부에 따라 박스 단가 차이가 큽니다." }, { category: "쿠폰", periodLabel: CHECKED_DATE_LABEL, description: "네이버 스토어 쿠폰과 쿠팡 단품가를 함께 비교하면 실구매가 판단이 쉬워집니다." }] },
+  { brand: "쉐이크베이비", storeType: "네이버 브랜드관", storeUrl: "https://brand.naver.com/shakebaby/category/177bfd2e1aef4cddb4791fbb385ad53e?cp=1", note: "현재 등록 쉐이크 5개", productCount: 5, events: [{ category: "할인", periodLabel: CHECKED_DATE_LABEL, description: "5종 맛 구성은 박스/맛별 세트 할인 여부에 따라 체감가가 달라집니다." }, { category: "쿠폰", periodLabel: CHECKED_DATE_LABEL, description: "브랜드관 쿠폰과 배송 혜택이 함께 적용되는지 장바구니에서 다시 보는 편이 좋습니다." }] },
+  { brand: "크런틴", storeType: "네이버 스토어", storeUrl: "https://smartstore.naver.com/cruntin/category/5d567d55118a40f29920d1694d67b18c?cp=1", note: "현재 등록 쉐이크 4개", productCount: 4, events: [{ category: "할인", periodLabel: CHECKED_DATE_LABEL, description: "크런치 토핑형 쉐이크는 맛별 세트와 판매처별 재고에 따라 노출가가 달라집니다." }, { category: "쿠폰", periodLabel: CHECKED_DATE_LABEL, description: "스마트스토어 쿠폰과 쿠팡 단품가를 같이 비교하는 편이 좋습니다." }] },
+  { brand: "프롬잇", storeType: "올리브영 브랜드관", storeUrl: "https://www.oliveyoung.co.kr/store/display/getBrandShopDetail.do?onlBrndCd=A003607", note: "현재 등록 쉐이크 3개", productCount: 3, events: [{ category: "할인", periodLabel: CHECKED_DATE_LABEL, description: "올리브영 브랜드관 행사와 단품 테스트 가격을 먼저 확인하는 편이 좋습니다." }, { category: "쿠폰", periodLabel: CHECKED_DATE_LABEL, description: "올영세일과 상품별 쿠폰 적용 범위를 장바구니에서 다시 확인하는 편이 안전합니다." }] },
   { brand: "꼬박꼬밥", storeType: "공식 판매처", storeUrl: "https://www.coupang.com/", note: "현재 등록 쉐이크 6개", productCount: 6, events: [{ category: "할인", periodLabel: CHECKED_DATE_LABEL, description: "고단저당 라인은 맛 수가 다양해 박스 구성과 판매처별 세트가 차이를 만듭니다." }, { category: "무료배송", periodLabel: CHECKED_DATE_LABEL, description: "박스 수량과 배송 조건을 함께 비교하는 편이 좋습니다." }] },
   { brand: "더단백", storeType: "네이버 브랜드관", storeUrl: "https://brand.naver.com/binggrae/category/54e40c847f15417fae9351c9478ee909?cp=1", note: "현재 등록 쉐이크 2개", productCount: 2, events: [{ category: "할인", periodLabel: CHECKED_DATE_LABEL, description: "파우더형 2종이라 브랜드관 할인 반영 여부가 체감가에 바로 드러납니다." }, { category: "쿠폰", periodLabel: CHECKED_DATE_LABEL, description: "브랜드관 쿠폰과 배송 혜택을 함께 확인하는 편이 좋습니다." }] },
   { brand: "룩트", storeType: "공식몰", storeUrl: "https://lukt.co.kr/26", note: "현재 등록 쉐이크 3개", productCount: 3, events: [{ category: "할인", periodLabel: CHECKED_DATE_LABEL, description: "식사대용 계열은 멤버십 할인과 정기배송 문구를 같이 보는 편이 좋습니다." }, { category: "무료배송", periodLabel: CHECKED_DATE_LABEL, description: "공식몰 기준 배송 조건과 세트 구성을 함께 확인하는 편이 좋습니다." }] },
@@ -900,7 +910,7 @@ export default function EventsClient() {
             이벤트/핫딜
           </h1>
           <p className="mt-1 text-sm text-[var(--foreground-muted)]">
-            단백질 브랜드의 공식몰·네이버 스토어 혜택만 빠르게 모았습니다. 할인, 쿠폰, 증정, 무료배송 중 지금 바로 확인할 포인트를 한 번에 볼 수 있게 정리했습니다.
+            등록 제품 352개 기준으로 공식몰·네이버·쿠팡 혜택 확인 우선순위를 정리했습니다. 최근 추가한 바·요거트·쉐이크 브랜드까지 포함해 할인, 쿠폰, 증정, 무료배송 포인트를 빠르게 볼 수 있습니다.
           </p>
         </div>
       </section>
@@ -930,6 +940,11 @@ export default function EventsClient() {
             );
           })}
         </div>
+
+        <p className="mt-3 text-xs leading-5 text-[var(--foreground-muted)]">
+          {PRODUCT_TYPE_META[productType].label} 브랜드 {brands.length}개 · 등록 제품{" "}
+          {brands.reduce((sum, brand) => sum + brand.productCount, 0)}개 · {CHECKED_DATE_LABEL}
+        </p>
 
         <div className="mt-4 flex gap-5 overflow-x-auto border-b border-[#e8e6e3]">
           {FILTER_TABS.map((tab) => {
@@ -1090,4 +1105,3 @@ function BrandEventCard({ brand, productType }: { brand: BrandCard; productType:
     </div>
   );
 }
-
