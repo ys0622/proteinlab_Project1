@@ -17,7 +17,7 @@ function articleJsonLd(config: CategoryGuideConfig) {
       name: "ProteinLab",
       logo: { "@type": "ImageObject", url: "https://proteinlab.kr/proteinlab-logo.png" },
     },
-    dateModified: "2026-04-03",
+    dateModified: "2026-04-13",
   };
 }
 
@@ -123,16 +123,16 @@ function rankingRows(products: typeof drinkTop10): CategoryMetricRow[] {
 
 export const proteinDrinkTop10Config: CategoryGuideConfig = {
   slug: "protein-drink-top10",
-  title: "단백질 음료 추천 TOP 10 | 저당·고단백 RTD 비교 2026",
+  title: "단백질 음료 추천 TOP 10 | 프로틴 음료·저당 RTD 비교 2026",
   description:
-    "ProteinLab DB 음료 107종을 기준으로 단백질 함량, 당류, 칼로리, 단백질 밀도를 함께 비교해 지금 고르기 좋은 단백질 음료 TOP 10을 정리했습니다.",
-  keywords: ["단백질 음료 추천", "단백질 음료 TOP10", "RTD 단백질 음료", "고단백 음료 추천"],
+    "2026년 ProteinLab DB 음료 107종을 기준으로 단백질 함량, 당류, 칼로리, 밀도를 비교해 단백질 음료·프로틴 음료 추천 TOP 10을 정리했습니다.",
+  keywords: ["단백질 음료 추천", "단백질 음료 TOP10", "프로틴 음료 추천", "RTD 단백질 음료", "저당 단백질 음료", "고단백 RTD"],
   badge: "음료 랭킹",
   readingTime: "6분 읽기",
-  updatedAt: "2026-04-03",
+  updatedAt: "2026-04-13",
   methodologyNote: "ProteinLab DB 음료 107종 기준 · 단백질/당류/칼로리/밀도 종합 + 동일 브랜드 최대 2개 반영",
   intro:
-    "ProteinLab DB 음료 107종 중 단백질 20g 이상, 당류 8g 이하, 205kcal 이하 조건을 통과한 제품에 단백질 함량·밀도·칼로리·당류를 종합 점수화했습니다. 테이크핏·더단백·이정후 프로틴·랩노쉬·뉴케어 등 브랜드별 2개까지만 반영해 탐색 폭을 고르게 유지했습니다.",
+    "단백질 음료 추천을 찾는다면 1위만 보는 것보다 단백질 함량, 당류, 칼로리, 단백질 밀도를 함께 보는 편이 정확합니다. ProteinLab DB 음료 107종 중 단백질 20g 이상, 당류 8g 이하, 205kcal 이하 조건을 통과한 제품을 종합 점수화하고 테이크핏·더단백·이정후 프로틴·랩노쉬·뉴케어 등 브랜드별 2개까지만 반영했습니다.",
   summary: [
     "상위권은 단백질 25~43g, 당류 0~1g, 125~186kcal 구간에 몰려 있어 단백질 밀도와 칼로리 조합이 최종 판단 포인트입니다.",
     "테이크핏 43g, 더단백 40g, 이정후 프로틴 33g, 랩노쉬 퍼펙트 27g, 뉴케어 올프로틴 25g처럼 단백질 구간이 넓어 1위보다 자신의 용도에 맞는 구간 선택이 더 중요합니다.",
@@ -264,6 +264,14 @@ export const proteinDrinkTop10Config: CategoryGuideConfig = {
     {
       question: "워터형 RTD는 왜 TOP 10에 없나요?",
       answer: "워터형은 칼로리가 낮은 장점이 있지만 단백질 밀도(100mL당 단백질g) 점수가 일반 RTD보다 낮아 종합 점수에서 밀렸습니다. 가볍고 청량한 음료를 원한다면 워터형 전용 비교를 따로 확인하는 편이 좋습니다.",
+    },
+    {
+      question: "프로틴 음료 추천과 단백질 음료 추천은 같은 의미인가요?",
+      answer: "검색 의도는 거의 같습니다. 다만 프로틴 음료는 RTD, 쉐이크, 파우더까지 넓게 쓰이는 경우가 있어 이 페이지에서는 바로 마시는 RTD 단백질 음료만 기준으로 좁혀 비교했습니다.",
+    },
+    {
+      question: "2026년에 단백질 음료를 고를 때 가장 먼저 볼 기준은 무엇인가요?",
+      answer: "먼저 1회 단백질 함량이 20g 이상인지 확인하고, 그다음 당류와 칼로리를 같이 봐야 합니다. 운동 후 보충이면 고단백형, 매일 가볍게 마실 목적이면 저당·저칼로리형이 더 맞습니다.",
     },
   ],
 };

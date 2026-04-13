@@ -17,7 +17,7 @@ function articleJsonLd(config: CategoryGuideConfig) {
       name: "ProteinLab",
       logo: { "@type": "ImageObject", url: "https://proteinlab.kr/proteinlab-logo.png" },
     },
-    dateModified: "2026-03-24",
+    dateModified: "2026-04-13",
   };
 }
 
@@ -117,16 +117,16 @@ function rankingRows(products: typeof barProducts): CategoryMetricRow[] {
 
 export const proteinBarTop10Config: CategoryGuideConfig = {
   slug: "protein-bar-top10",
-  title: "단백질 바 추천 TOP 10",
+  title: "단백질 바 추천 TOP 10 | 프로틴바·다이어트 간식 비교 2026",
   description:
-    "ProteinLab DB 바 80개를 기준으로 단백질, 칼로리, 당류, 단백질 밀도를 함께 비교해 지금 고르기 좋은 단백질 바 TOP 10을 정리했습니다.",
-  keywords: ["단백질 바 추천", "프로틴바 추천", "단백질 바 순위", "단백질 바 비교"],
+    "2026년 ProteinLab DB 바 100개를 기준으로 단백질, 칼로리, 당류, 밀도를 비교해 프로틴바·다이어트 단백질 바 추천 TOP 10을 정리했습니다.",
+  keywords: ["단백질 바 추천", "프로틴바 추천", "단백질바 추천", "다이어트 단백질 바", "편의점 단백질 바", "단백질 바 비교"],
   badge: "바 랭킹",
   readingTime: "6분 읽기",
-  updatedAt: "2026-03-24",
-  methodologyNote: "ProteinLab DB 바 80개 기준 · 단백질 함량 + 칼로리 + 당류 + 단백질 밀도 종합",
+  updatedAt: "2026-04-13",
+  methodologyNote: "ProteinLab DB 바 100개 기준 · 단백질 함량 + 칼로리 + 당류 + 단백질 밀도 종합",
   intro:
-    "단백질 바는 숫자만 보면 다 비슷해 보이지만 실제로는 결이 꽤 다릅니다. 어떤 제품은 운동 후 보충용에 가깝고, 어떤 제품은 다이어트 간식용으로 더 낫습니다. 그래서 이번 순위는 단백질만 높은 제품이 아니라 당류와 칼로리까지 같이 본, 실제 구매용 리스트로 정리했습니다.",
+    "단백질 바 추천을 찾는다면 단백질 숫자만 보면 부족합니다. 어떤 제품은 운동 후 보충용에 가깝고, 어떤 제품은 다이어트 간식이나 편의점 단품 구매용으로 더 낫습니다. 그래서 이번 TOP 10은 ProteinLab DB 바 100개 중 단백질, 당류, 칼로리, 밀도를 함께 본 실제 구매용 리스트로 정리했습니다.",
   summary: [
     "상위권은 170~190kcal 구간에서 단백질 20g 전후, 당류 1~2g대 제품이 주로 차지합니다.",
     "단백질 바는 저칼로리 간식이 아니라는 점이 핵심입니다. 1개만으로도 180~220kcal를 넘는 경우가 많습니다.",
@@ -242,7 +242,7 @@ export const proteinBarTop10Config: CategoryGuideConfig = {
   ],
 };
 proteinBarTop10Config.methodologyNote =
-  "ProteinLab DB 바 80개 기준 · 단백질/칼로리/당류/밀도 종합 + 브랜드 편중을 줄이기 위해 동일 브랜드 최대 2개 반영";
+  "ProteinLab DB 바 100개 기준 · 단백질/칼로리/당류/밀도 종합 + 브랜드 편중을 줄이기 위해 동일 브랜드 최대 2개 반영";
 proteinBarTop10Config.summary = [
   "상위권은 170~190kcal 구간에서 단백질 20g 전후, 당류 1~2g대 제품이 주로 차지합니다.",
   "단백질 바는 저칼로리 간식이 아니라는 점이 핵심입니다. 1개만으로도 180~220kcal를 넘는 경우가 많습니다.",
@@ -254,6 +254,16 @@ proteinBarTop10Config.faq = [
     question: "TOP 10은 완전히 순수한 숫자 랭킹인가요?",
     answer:
       "완전히 그렇지는 않습니다. 기본 점수는 데이터 기준으로 계산하지만, 특정 브랜드가 과도하게 몰리는 걸 막기 위해 동일 브랜드는 최대 2개까지만 반영했습니다.",
+  },
+  {
+    question: "프로틴바 추천과 단백질 바 추천은 같은 의미인가요?",
+    answer:
+      "대부분 같은 검색 의도로 쓰입니다. 이 페이지에서는 프로틴바, 단백질바, 단백질 바를 모두 같은 카테고리로 보고 단백질 함량과 당류, 칼로리 기준으로 다시 좁혔습니다.",
+  },
+  {
+    question: "다이어트 단백질 바는 어떤 기준으로 골라야 하나요?",
+    answer:
+      "다이어트 목적이면 단백질 15g 이상을 먼저 확인한 뒤 200kcal 이하, 당류 5g 이하 제품부터 보는 편이 안전합니다. 단백질 바는 간식형 제품이라 저당이어도 칼로리는 반드시 같이 확인해야 합니다.",
   },
 ];
 proteinBarTop10Config.jsonLd = [articleJsonLd(proteinBarTop10Config), faqJsonLd(proteinBarTop10Config)];

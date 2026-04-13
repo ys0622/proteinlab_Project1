@@ -17,7 +17,7 @@ function articleJsonLd(config: CategoryGuideConfig) {
       name: "ProteinLab",
       logo: { "@type": "ImageObject", url: "https://proteinlab.kr/proteinlab-logo.png" },
     },
-    dateModified: "2026-03-24",
+    dateModified: "2026-04-13",
   };
 }
 
@@ -154,14 +154,14 @@ proteinCategoryGuideConfig.jsonLd = [articleJsonLd(proteinCategoryGuideConfig), 
 
 export const proteinShakeTop7Config: CategoryGuideConfig = {
   slug: "protein-shake-top7",
-  title: "단백질 쉐이크 추천 TOP 7 | 다이어트·아침대용 비교 2026",
-  description: "파우치형 단백질 쉐이크를 다이어트, 아침 대용, 허기 관리 기준으로 직접 비교했습니다. 상위 후보 7개를 먼저 좁히고 브랜드별 차이까지 빠르게 확인할 수 있습니다.",
-  keywords: ["단백질 쉐이크 추천", "다이어트 쉐이크 추천", "여성 단백질 쉐이크", "파우치 단백질 쉐이크"],
+  title: "단백질 쉐이크 추천 TOP 7 | 프로틴 쉐이크·식사대용 비교 2026",
+  description: "2026년 ProteinLab DB 쉐이크 88개를 기준으로 단백질, 칼로리, 당류, 식이섬유를 비교해 프로틴 쉐이크·식사대용 쉐이크 추천 TOP 7을 정리했습니다.",
+  keywords: ["단백질 쉐이크 추천", "프로틴 쉐이크 추천", "다이어트 단백질 쉐이크", "식사대용 쉐이크", "여성 단백질 쉐이크", "파우치 단백질 쉐이크"],
   badge: "쉐이크 랭킹",
   readingTime: "6분 읽기",
-  updatedAt: "2026-03-24",
-  methodologyNote: "ProteinLab DB 파우치형 쉐이크의 단백질·칼로리·당류·식이섬유 종합 점수",
-  intro: "단백질 쉐이크 추천을 찾는 사람 대부분은 결국 다이어트, 아침 대용, 허기 관리 중 하나를 해결하려고 들어옵니다. 그래서 이 페이지는 숫자만 높은 제품보다 실제로 오래 마시기 쉬운 상위 후보를 먼저 추려 보여주고, 그다음 플라이밀, 단백하니, 프로티원 같은 브랜드 페이지로 다시 들어가 선택 속도를 더 빠르게 만드는 흐름으로 구성했습니다.",
+  updatedAt: "2026-04-13",
+  methodologyNote: "ProteinLab DB 쉐이크 88개 기준 · 단백질·칼로리·당류·식이섬유 종합 점수",
+  intro: "단백질 쉐이크 추천을 찾는 사람 대부분은 결국 다이어트, 아침 대용, 허기 관리 중 하나를 해결하려고 들어옵니다. 그래서 이 페이지는 ProteinLab DB 쉐이크 88개 중 숫자만 높은 제품보다 실제로 오래 마시기 쉬운 상위 후보를 먼저 추려 보여주고, 그다음 플라이밀, 단백하니, 프로티원 같은 브랜드 페이지로 다시 들어가 선택 속도를 더 빠르게 만드는 흐름으로 구성했습니다.",
   summary: [
     "상위권은 단백질 20g 이상에 당류가 낮고 식이섬유까지 챙긴 제품들입니다.",
     "랩노쉬는 맛과 포만감, 프로티원은 저칼로리, 잇더핏은 고단백 효율처럼 브랜드별 강점이 분명히 갈립니다.",
@@ -241,6 +241,8 @@ export const proteinShakeTop7Config: CategoryGuideConfig = {
     { question: "처음이면 어떤 맛부터 시작하는 게 좋나", answer: "초코 계열이 가장 무난합니다. 그 다음이 말차, 밀크티, 곡물 계열 순으로 진입 장벽이 낮은 편입니다." },
     { question: "박스로 바로 사도 되나", answer: "쉐이크는 맛 취향 차이가 큽니다. 처음엔 단품이나 소량 세트로 맛을 확인한 뒤 박스로 넘어가는 편이 안전합니다." },
     { question: "TOP 7이면 1위 제품만 사면 되는 건가", answer: "아닙니다. 이 페이지는 상위 후보를 좁혀주는 역할이 더 큽니다. 최종 선택은 맛 취향과 식사 대용 여부까지 같이 봐야 합니다." },
+    { question: "프로틴 쉐이크 추천과 단백질 쉐이크 추천은 같은 의미인가요?", answer: "대부분 같은 의도로 검색됩니다. 다만 프로틴 쉐이크는 운동 보충용까지 넓게 쓰이고, 이 페이지는 다이어트와 식사대용까지 포함해 실제로 오래 마시기 쉬운 제품을 먼저 좁혔습니다." },
+    { question: "다이어트 단백질 쉐이크는 칼로리와 단백질 중 무엇을 먼저 봐야 하나요?", answer: "둘 다 봐야 하지만 순서는 목적에 따라 다릅니다. 식사대용이면 단백질 20g 전후와 식이섬유를 먼저 보고, 간식 대체라면 칼로리와 당류를 먼저 확인하는 편이 좋습니다." },
   ],
 };
 proteinShakeTop7Config.jsonLd = [articleJsonLd(proteinShakeTop7Config), faqJsonLd(proteinShakeTop7Config)];
