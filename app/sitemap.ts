@@ -5,6 +5,8 @@ import { getAllCompareLandings } from "./data/compareLandings";
 import { getAllSearchTopics } from "./data/searchTopics";
 import { getAllCurations } from "./lib/curationSystem";
 import { getBrandSummary } from "./lib/brandHubs";
+import { getAllPickSlugs } from "./data/picksConfig";
+import { getAllCompareGuideConfigs } from "./guides/product-selection-comparison/compareGuideContent";
 import {
   mockProducts,
   barProductsWithGrades,
@@ -68,6 +70,13 @@ async function collectStaticRoutesFromApp(relativeDir: string, basePath: string)
 }
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const compareGuideLastModified = new Map(
+    getAllCompareGuideConfigs().map((config) => [
+      `/guides/product-selection-comparison/${config.slug}`,
+      config.updatedAt ? new Date(config.updatedAt) : new Date(),
+    ]),
+  );
+
   const [guideRoutes, curationStaticRoutes] = await Promise.all([
     collectStaticRoutesFromApp("guides", "/guides"),
     collectStaticRoutesFromApp("curation", "/curation"),
@@ -76,6 +85,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const curationRoutes = getAllCurations().map((curation) => `/curation/${curation.slug}`);
   const topicRoutes = getAllSearchTopics().map((topic) => `/topics/${topic.slug}`);
   const compareRoutes = getAllCompareLandings().map((landing) => `/compare/${landing.slug}`);
+  const pickRoutes = getAllPickSlugs().map((slug) => `/picks/${slug}`);
   const allRoutes = Array.from(
     new Set([
       ...staticRoutes,
@@ -84,6 +94,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       ...curationRoutes,
       ...topicRoutes,
       ...compareRoutes,
+      ...pickRoutes,
     ]),
   );
 
@@ -105,12 +116,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   const staticEntries: MetadataRoute.Sitemap = allRoutes.map((route) => ({
     url: `${SITE_URL}${route}`,
-    lastModified: new Date(),
+    lastModified: compareGuideLastModified.get(route) ?? new Date(),
     changeFrequency:
       route.startsWith("/guides/") ||
       route.startsWith("/curation/") ||
       route.startsWith("/topics/") ||
-      route.startsWith("/compare/")
+      route.startsWith("/compare/") ||
+      route.startsWith("/picks/")
         ? "weekly"
         : "daily",
     priority:
@@ -120,6 +132,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
           ? 0.9
           : route.startsWith("/curation/")
             ? 0.85
+            : route.startsWith("/picks/")
+              ? 0.84
             : route.startsWith("/topics/")
               ? 0.83
               : route.startsWith("/compare/")

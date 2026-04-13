@@ -107,8 +107,15 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     };
   }
 
-  const title = `${pick.title} | 조건별 단백질 추천`;
-  const description = `${pick.description} 조건에 맞는 후보를 빠르게 좁히고, 실제 제품 목록과 제품 상세까지 바로 이어서 확인할 수 있습니다.`;
+  const products = pick.filterProducts(await getProductsByCategoryAsync(pick.productType));
+  const title =
+    pick.slug === "protein-milky"
+      ? "밀크형 단백질 음료 추천 | 초코·바닐라 RTD 비교 2026"
+      : `${pick.title} | 조건별 단백질 추천 2026`;
+  const description =
+    pick.slug === "protein-milky"
+      ? `초코우유, 바닐라, 밀크티처럼 부드러운 밀크형 단백질 음료 ${products.length}종을 단백질 함량, 당류, 칼로리 기준으로 비교합니다.`
+      : `${pick.description} ProteinLab DB 기준 ${products.length}개 후보를 빠르게 좁히고, 실제 제품 목록과 상세까지 바로 확인할 수 있습니다.`;
   const canonical = `https://proteinlab.kr/picks/${pick.slug}`;
 
   return {

@@ -2396,3 +2396,39 @@ export const danbaekLineupConfig: ComparePageConfig = {
   ],
 };
 danbaekLineupConfig.jsonLd = [articleJsonLd(danbaekLineupConfig), faqJsonLd(danbaekLineupConfig)];
+
+export function getAllCompareGuideConfigs(): ComparePageConfig[] {
+  return [
+    selexVsHimuneConfig,
+    highProtein40gConfig,
+    proteinDensityRankingConfig,
+    selexVsTakefitVsHimuneConfig,
+    lactoseFreeProteinDrinkConfig,
+    proteinDrinkFor50sConfig,
+    proteinDrinkBoxValueConfig,
+    doctoruVsTakefitMonsterConfig,
+    proteinDrinkForDiabetesConfig,
+    proteinDrinkBeginnersGuideConfig,
+    selexsLineupConfig,
+    proteinDrinkByFlavorConfig,
+    proteinDrinkTasteTipsConfig,
+    himuneLineupConfig,
+    takefitLineupConfig,
+    newcareAllproteinConfig,
+    newcare41Vs25Config,
+    newcareWaterConfig,
+    newcareVsHymuneConfig,
+    newcareVsSellexConfig,
+    newcareFor50sConfig,
+    newcarePlantVsLactoseFreeConfig,
+    newcareWaterVsRtdConfig,
+    newcareSugarGuideConfig,
+    newcareBoxValueConfig,
+    proteinDrinkByContentConfig,
+    takefitVsHimuneConfig,
+    danbaekVsSelexsConfig,
+    danbaekVsHimuneConfig,
+    dryouLineupConfig,
+    danbaekLineupConfig,
+  ];
+}
