@@ -3,8 +3,8 @@ import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 
 export const metadata = {
-  title: "2026 단백질 음료 시장 트렌드 | ProteinLab",
-  description: "초고단백 경쟁, 저당 설계 확대, 시니어 타깃 강화 등 2026년 단백질 음료 시장 변화를 자료 기반으로 정리합니다.",
+  title: "2026 단백질 음료 시장 트렌드 | 고단백·저당 RTD 변화",
+  description: "2026년 단백질 음료 시장 트렌드를 초고단백 RTD, 저당 설계, 시니어 건강관리형, 편의점 단품 구매 흐름까지 자료 기반으로 정리합니다.",
 };
 
 const trendCards = [

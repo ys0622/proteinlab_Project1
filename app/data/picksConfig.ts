@@ -75,6 +75,14 @@ const drinkPicks: PickConfigBase[] = [
     filterProducts: (list) => list.filter((p) => p.productType !== "bar" && p.drinkType === "워터형"),
   },
   {
+    slug: "protein-milky",
+    title: "밀크형 단백질 음료 추천",
+    description: "밀크형 단백질 음료를 비교합니다. 초코우유, 바닐라, 밀크티처럼 부드러운 RTD 단백질 음료를 찾을 때 보기 좋습니다.",
+    productType: "drink",
+    content: "밀크형 단백질 음료는 우유 베이스의 부드러운 음용감과 포만감이 강점입니다. (proteinlab.kr 콘텐츠 반영 예정)",
+    filterProducts: (list) => list.filter((p) => p.productType !== "bar" && p.drinkType === "밀크형"),
+  },
+  {
     slug: "lactose-free",
     title: "락토프리 단백질 음료 추천",
     description: "락토프리 단백질 음료를 비교합니다. 유당 불내증, 우유 단백질 음료 부담, 소화가 편한 제품을 찾을 때 보기 좋습니다.",
