@@ -133,9 +133,11 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       description,
       url: canonical,
       type: "article",
+      locale: "ko_KR",
+      siteName: "ProteinLab",
     },
     twitter: {
-      card: "summary_large_image",
+      card: "summary",
       title,
       description,
     },
@@ -159,8 +161,35 @@ export default async function PickDetailPage({ params }: PageProps) {
     .map((line) => line.trim())
     .filter(Boolean);
 
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "ProteinLab", item: "https://proteinlab.kr/" },
+      { "@type": "ListItem", position: 2, name: listMeta.label, item: `https://proteinlab.kr${listMeta.href}` },
+      { "@type": "ListItem", position: 3, name: pick.title, item: `https://proteinlab.kr/picks/${pick.slug}` },
+    ],
+  };
+
+  const faqJsonLd =
+    pick.contentData.faq.length > 0
+      ? {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: pick.contentData.faq.map((item) => ({
+            "@type": "Question",
+            name: item.q,
+            acceptedAnswer: { "@type": "Answer", text: item.a },
+          })),
+        }
+      : null;
+
   return (
     <div className="min-h-screen bg-[#fcfaf6]">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
+      {faqJsonLd ? (
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
+      ) : null}
       <Header />
 
       <main className="mx-auto max-w-[1180px] px-4 py-6 md:px-6 md:py-10">

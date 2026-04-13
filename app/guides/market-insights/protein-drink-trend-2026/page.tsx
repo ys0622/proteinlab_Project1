@@ -5,6 +5,38 @@ import Footer from "@/app/components/Footer";
 export const metadata = {
   title: "2026 단백질 음료 시장 트렌드 | 고단백·저당 RTD 변화",
   description: "2026년 단백질 음료 시장 트렌드를 초고단백 RTD, 저당 설계, 시니어 건강관리형, 편의점 단품 구매 흐름까지 자료 기반으로 정리합니다.",
+  alternates: {
+    canonical: "https://proteinlab.kr/guides/market-insights/protein-drink-trend-2026",
+  },
+  openGraph: {
+    title: "2026 단백질 음료 시장 트렌드 | 고단백·저당 RTD 변화",
+    description: "2026년 단백질 음료 시장 트렌드를 초고단백 RTD, 저당 설계, 시니어 건강관리형, 편의점 단품 구매 흐름까지 자료 기반으로 정리합니다.",
+    url: "https://proteinlab.kr/guides/market-insights/protein-drink-trend-2026",
+    type: "article",
+    locale: "ko_KR",
+    siteName: "ProteinLab",
+  },
+  twitter: {
+    card: "summary",
+    title: "2026 단백질 음료 시장 트렌드 | 고단백·저당 RTD 변화",
+    description: "2026년 단백질 음료 시장 트렌드를 초고단백 RTD, 저당 설계, 시니어 건강관리형, 편의점 단품 구매 흐름까지 자료 기반으로 정리합니다.",
+  },
+};
+
+const articleJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: "2026 단백질 음료 시장 트렌드",
+  description: "2026년 단백질 음료 시장 트렌드를 초고단백 RTD, 저당 설계, 시니어 건강관리형, 편의점 단품 구매 흐름까지 자료 기반으로 정리합니다.",
+  inLanguage: "ko-KR",
+  mainEntityOfPage: "https://proteinlab.kr/guides/market-insights/protein-drink-trend-2026",
+  dateModified: "2026-04-13",
+  author: { "@type": "Organization", name: "ProteinLab" },
+  publisher: {
+    "@type": "Organization",
+    name: "ProteinLab",
+    logo: { "@type": "ImageObject", url: "https://proteinlab.kr/proteinlab-logo.png" },
+  },
 };
 
 const trendCards = [
@@ -68,6 +100,7 @@ const sourceLinks = [
 export default function ProteinDrinkTrend2026Page() {
   return (
     <div className="min-h-screen bg-white">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }} />
       <Header />
       <section className="w-full border-t border-b bg-[var(--hero-bg)]" style={{ borderColor: "var(--hero-border)" }}>
         <div className="mx-auto max-w-[1200px] px-4 py-5 md:px-6 md:py-6">

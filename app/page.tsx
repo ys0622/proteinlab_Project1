@@ -16,11 +16,27 @@ export async function generateMetadata(): Promise<Metadata> {
   ]);
   const totalCount = drinks.length + bars.length + yogurts.length + shakes.length;
 
+  const title = `프로틴랩 ProteinLab | 단백질 음료·바·요거트·쉐이크 ${totalCount}종 비교`;
+  const description = `프로틴랩에서 단백질 음료, 바, 요거트, 쉐이크 ${totalCount}종을 단백질 함량, 당류, 칼로리 기준으로 비교합니다. 단백질 제품 추천, 셀렉스 vs 하이뮨, 40g 이상 비교, 다이어트 추천까지 바로 확인할 수 있습니다.`;
+
   return {
-    title: `프로틴랩 ProteinLab | 단백질 음료·바·요거트·쉐이크 ${totalCount}종 비교`,
-    description: `프로틴랩에서 단백질 음료, 바, 요거트, 쉐이크 ${totalCount}종을 단백질 함량, 당류, 칼로리 기준으로 비교합니다. 단백질 제품 추천, 셀렉스 vs 하이뮨, 40g 이상 비교, 다이어트 추천까지 바로 확인할 수 있습니다.`,
+    title,
+    description,
     alternates: {
       canonical: "https://proteinlab.kr",
+    },
+    openGraph: {
+      title,
+      description,
+      url: "https://proteinlab.kr",
+      type: "website",
+      locale: "ko_KR",
+      siteName: "ProteinLab",
+    },
+    twitter: {
+      card: "summary",
+      title,
+      description,
     },
   };
 }
@@ -34,8 +50,13 @@ const websiteJsonLd = {
       url: "https://proteinlab.kr",
       name: "ProteinLab",
       description:
-        "단백질 음료, 바, 요거트, 쉐이크를 성분 데이터로 비교하고 추천, 계산, 가이드까지 한곳에서 확인하는 ProteinLab입니다.",
+        "단백질 음료, 바, 요거트, 쉐이크를 성분 데이터로 비교하고 추천, 계산, 가이드까지 한곳에서 확인하는 프로틴랩 ProteinLab입니다.",
       inLanguage: "ko",
+      potentialAction: {
+        "@type": "SearchAction",
+        target: "https://proteinlab.kr/search?q={search_term_string}",
+        "query-input": "required name=search_term_string",
+      },
     },
     {
       "@type": "Organization",

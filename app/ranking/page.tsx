@@ -7,9 +7,27 @@ import { getProductsByCategoryAsync } from "../lib/productData";
 import RankingClient from "./RankingClient";
 
 export const metadata = {
-  title: "단백질 랭킹 | 음료·바·요거트·쉐이크 추천 순위",
+  title: "단백질 랭킹 2026 — 밀도·다이어트·퍼포먼스 기준 순위",
   description:
-    "단백질 음료, 바, 요거트, 쉐이크를 단백질 밀도, 다이어트, 퍼포먼스 기준으로 비교한 ProteinLab 랭킹 허브입니다.",
+    "단백질 음료, 바, 요거트, 쉐이크를 단백질 밀도, 다이어트 점수, 퍼포먼스 기준으로 계산한 순위입니다. 카테고리별로 상위 제품을 한눈에 확인하세요.",
+  alternates: {
+    canonical: "https://proteinlab.kr/ranking",
+  },
+  openGraph: {
+    title: "단백질 랭킹 2026 — 밀도·다이어트·퍼포먼스 기준 순위",
+    description:
+      "단백질 음료, 바, 요거트, 쉐이크를 단백질 밀도, 다이어트 점수, 퍼포먼스 기준으로 계산한 순위입니다. 카테고리별로 상위 제품을 한눈에 확인하세요.",
+    url: "https://proteinlab.kr/ranking",
+    type: "website",
+    locale: "ko_KR",
+    siteName: "ProteinLab",
+  },
+  twitter: {
+    card: "summary",
+    title: "단백질 랭킹 2026 — 밀도·다이어트·퍼포먼스 기준 순위",
+    description:
+      "단백질 음료, 바, 요거트, 쉐이크를 단백질 밀도, 다이어트 점수, 퍼포먼스 기준으로 계산한 순위입니다. 카테고리별로 상위 제품을 한눈에 확인하세요.",
+  },
 };
 
 function prepareRankingData(products: ProductDetailProps[], metric: "density" | "diet" | "performance") {

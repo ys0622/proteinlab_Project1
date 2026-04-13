@@ -9,6 +9,24 @@ export const metadata = {
   title: "단백질 가이드 모음 | 음료·쉐이크·바·요거트 비교·추천",
   description:
     "단백질 음료 비교, 쉐이크 추천, 단백질 바·요거트 선택법까지 한 번에 찾을 수 있는 ProteinLab 대표 가이드 허브입니다.",
+  alternates: {
+    canonical: "https://proteinlab.kr/guides",
+  },
+  openGraph: {
+    title: "단백질 가이드 모음 | 음료·쉐이크·바·요거트 비교·추천",
+    description:
+      "단백질 음료 비교, 쉐이크 추천, 단백질 바·요거트 선택법까지 한 번에 찾을 수 있는 ProteinLab 대표 가이드 허브입니다.",
+    url: "https://proteinlab.kr/guides",
+    type: "website",
+    locale: "ko_KR",
+    siteName: "ProteinLab",
+  },
+  twitter: {
+    card: "summary",
+    title: "단백질 가이드 모음 | 음료·쉐이크·바·요거트 비교·추천",
+    description:
+      "단백질 음료 비교, 쉐이크 추천, 단백질 바·요거트 선택법까지 한 번에 찾을 수 있는 ProteinLab 대표 가이드 허브입니다.",
+  },
 };
 
 const clampTwoLines = {

@@ -22,15 +22,25 @@ export async function generateMetadata({ params }: PageProps) {
     return { title: "비교 페이지를 찾을 수 없음 | ProteinLab" };
   }
 
+  const canonical = `https://proteinlab.kr/compare/${landing.slug}`;
+  const title = `${landing.title} — 단백질 성분 비교표`;
+  const description = `${landing.description} 비교표로 수치를 나란히 확인하고 제품 상세까지 바로 이어서 볼 수 있습니다.`;
   return {
-    title: `${landing.title} | 단백질 제품 비교표`,
-    description: `${landing.description} 비교표와 제품 상세 페이지로 바로 이어서 확인할 수 있습니다.`,
-    alternates: {
-      canonical: `https://proteinlab.kr/compare/${landing.slug}`,
-    },
+    title,
+    description,
+    alternates: { canonical },
     openGraph: {
-      title: `${landing.title} | 단백질 제품 비교표`,
-      description: `${landing.description} 비교표와 제품 상세 페이지로 바로 이어서 확인할 수 있습니다.`,
+      title,
+      description,
+      url: canonical,
+      type: "article",
+      locale: "ko_KR",
+      siteName: "ProteinLab",
+    },
+    twitter: {
+      card: "summary",
+      title,
+      description,
     },
   };
 }
@@ -46,20 +56,30 @@ export default async function CompareLandingPage({ params }: PageProps) {
     .filter((item): item is NonNullable<typeof item> => item != null);
 
   const compareHref = `/compare?slugs=${landing.productSlugs.join(",")}`;
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "CollectionPage",
-    name: landing.title,
-    description: landing.description,
-    url: `https://proteinlab.kr/compare/${landing.slug}`,
-  };
+  const jsonLd = [
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "ProteinLab", item: "https://proteinlab.kr/" },
+        { "@type": "ListItem", position: 2, name: "제품 비교", item: "https://proteinlab.kr/compare" },
+        { "@type": "ListItem", position: 3, name: landing.title, item: `https://proteinlab.kr/compare/${landing.slug}` },
+      ],
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      name: landing.title,
+      description: landing.description,
+      url: `https://proteinlab.kr/compare/${landing.slug}`,
+    },
+  ];
 
   return (
     <div className="min-h-screen bg-white">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
+      {jsonLd.map((item, i) => (
+        <script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(item) }} />
+      ))}
       <Header />
 
       <section
