@@ -3,10 +3,25 @@ import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 import { buildGuideJsonLd } from "@/app/lib/guideJsonLd";
 
+const _pageTitle = "운동 목적별 단백질 제품 선택 기준 | 벌크업·다이어트·회복";
+const _pageDesc = "벌크업, 체중 관리, 회복 중심 운동까지 목적에 맞는 단백질 제품을 고르는 기준을 단백질 함량, 당류, 칼로리 중심으로 정리했습니다.";
 export const metadata = {
-  title: "운동 목적별 단백질 제품 선택 기준 | 벌크업·다이어트·회복",
-  description:
-    "벌크업, 체중 관리, 회복 중심 운동까지 목적에 맞는 단백질 제품을 고르는 기준을 단백질 함량, 당류, 칼로리 중심으로 정리했습니다.",
+  title: _pageTitle,
+  description: _pageDesc,
+  alternates: { canonical: "https://proteinlab.kr/guides/fitness-lifestyle/sports-nutrition-guide" },
+  openGraph: {
+    title: _pageTitle,
+    description: _pageDesc,
+    url: "https://proteinlab.kr/guides/fitness-lifestyle/sports-nutrition-guide",
+    type: "website" as const,
+    locale: "ko_KR",
+    siteName: "ProteinLab",
+  },
+  twitter: {
+    card: "summary" as const,
+    title: _pageTitle,
+    description: _pageDesc,
+  },
 };
 
 const productRows = [

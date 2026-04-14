@@ -3,10 +3,25 @@ import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 import TrackedLink from "@/app/components/TrackedLink";
 
+const _pageTitle = "하루 단백질 권장량 | 목적·체중·연령별 정리";
+const _pageDesc = "일반 성인부터 운동 중인 사람, 고령층까지 하루 단백질 권장량과 분산 섭취 원칙을 정리합니다.";
 export const metadata = {
-  title: "하루 단백질 권장량 | 목적·체중·연령별 정리",
-  description:
-    "일반 성인부터 운동 중인 사람, 고령층까지 하루 단백질 권장량과 분산 섭취 원칙을 정리합니다.",
+  title: _pageTitle,
+  description: _pageDesc,
+  alternates: { canonical: "https://proteinlab.kr/guides/basics/daily-requirement" },
+  openGraph: {
+    title: _pageTitle,
+    description: _pageDesc,
+    url: "https://proteinlab.kr/guides/basics/daily-requirement",
+    type: "website" as const,
+    locale: "ko_KR",
+    siteName: "ProteinLab",
+  },
+  twitter: {
+    card: "summary" as const,
+    title: _pageTitle,
+    description: _pageDesc,
+  },
 };
 
 const requirementRows = [

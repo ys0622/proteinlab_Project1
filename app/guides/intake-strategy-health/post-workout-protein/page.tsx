@@ -3,10 +3,25 @@ import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 import { buildGuideJsonLd } from "@/app/lib/guideJsonLd";
 
+const _pageTitle = "운동 후 단백질 가이드 | 언제·얼마나 먹어야 할까";
+const _pageDesc = "운동 후 단백질을 언제, 얼마나, 어떤 제품으로 채워야 하는지 정리했습니다. 회복 루틴과 식사 간격까지 함께 보는 실전 가이드입니다.";
 export const metadata = {
-  title: "운동 후 단백질 가이드 | 언제·얼마나 먹어야 할까",
-  description:
-    "운동 후 단백질을 언제, 얼마나, 어떤 제품으로 채워야 하는지 정리했습니다. 회복 루틴과 식사 간격까지 함께 보는 실전 가이드입니다.",
+  title: _pageTitle,
+  description: _pageDesc,
+  alternates: { canonical: "https://proteinlab.kr/guides/intake-strategy-health/post-workout-protein" },
+  openGraph: {
+    title: _pageTitle,
+    description: _pageDesc,
+    url: "https://proteinlab.kr/guides/intake-strategy-health/post-workout-protein",
+    type: "website" as const,
+    locale: "ko_KR",
+    siteName: "ProteinLab",
+  },
+  twitter: {
+    card: "summary" as const,
+    title: _pageTitle,
+    description: _pageDesc,
+  },
 };
 
 const recoveryTimelineRows = [

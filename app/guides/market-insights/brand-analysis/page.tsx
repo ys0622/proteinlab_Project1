@@ -3,9 +3,25 @@ import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 import { buildGuideJsonLd } from "@/app/lib/guideJsonLd";
 
+const _pageTitle = "단백질 브랜드 분석 | 셀렉스·하이뮨·더단백 포지셔닝 비교";
+const _pageDesc = "셀렉스, 하이뮨, 더단백, 뉴케어, 마이밀 등 주요 브랜드가 어떤 타깃과 메시지로 시장을 나누는지 비교합니다.";
 export const metadata = {
-  title: "단백질 브랜드 분석 | 셀렉스·하이뮨·더단백 포지셔닝 비교",
-  description: "셀렉스, 하이뮨, 더단백, 뉴케어, 마이밀 등 주요 브랜드가 어떤 타깃과 메시지로 시장을 나누는지 비교합니다.",
+  title: _pageTitle,
+  description: _pageDesc,
+  alternates: { canonical: "https://proteinlab.kr/guides/market-insights/brand-analysis" },
+  openGraph: {
+    title: _pageTitle,
+    description: _pageDesc,
+    url: "https://proteinlab.kr/guides/market-insights/brand-analysis",
+    type: "website" as const,
+    locale: "ko_KR",
+    siteName: "ProteinLab",
+  },
+  twitter: {
+    card: "summary" as const,
+    title: _pageTitle,
+    description: _pageDesc,
+  },
 };
 
 const brandRows = [

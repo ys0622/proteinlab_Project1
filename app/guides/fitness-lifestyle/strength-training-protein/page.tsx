@@ -3,10 +3,25 @@ import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 import { buildGuideJsonLd } from "@/app/lib/guideJsonLd";
 
+const _pageTitle = "근력운동 단백질 전략 | 회복·주간 총량·섭취 타이밍";
+const _pageDesc = "러닝과 근력운동을 함께 하는 사람에게 필요한 단백질 총량, 운동 후 섭취 기준, 주간 회복 전략을 정리한 가이드입니다.";
 export const metadata = {
-  title: "근력운동 단백질 전략 | 회복·주간 총량·섭취 타이밍",
-  description:
-    "러닝과 근력운동을 함께 하는 사람에게 필요한 단백질 총량, 운동 후 섭취 기준, 주간 회복 전략을 정리한 가이드입니다.",
+  title: _pageTitle,
+  description: _pageDesc,
+  alternates: { canonical: "https://proteinlab.kr/guides/fitness-lifestyle/strength-training-protein" },
+  openGraph: {
+    title: _pageTitle,
+    description: _pageDesc,
+    url: "https://proteinlab.kr/guides/fitness-lifestyle/strength-training-protein",
+    type: "website" as const,
+    locale: "ko_KR",
+    siteName: "ProteinLab",
+  },
+  twitter: {
+    card: "summary" as const,
+    title: _pageTitle,
+    description: _pageDesc,
+  },
 };
 
 const focusRows = [

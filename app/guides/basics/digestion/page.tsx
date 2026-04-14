@@ -3,10 +3,25 @@ import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 import { buildGuideJsonLd } from "@/app/lib/guideJsonLd";
 
+const _pageTitle = "단백질 소화와 흡수 메커니즘 | 입에서 근육까지";
+const _pageDesc = "단백질이 입, 위, 소장을 거치며 아미노산으로 분해되고 흡수되는 과정과 원료별 흡수 특성 차이를 정리합니다.";
 export const metadata = {
-  title: "단백질 소화와 흡수 메커니즘 | 입에서 근육까지",
-  description:
-    "단백질이 입, 위, 소장을 거치며 아미노산으로 분해되고 흡수되는 과정과 원료별 흡수 특성 차이를 정리합니다.",
+  title: _pageTitle,
+  description: _pageDesc,
+  alternates: { canonical: "https://proteinlab.kr/guides/basics/digestion" },
+  openGraph: {
+    title: _pageTitle,
+    description: _pageDesc,
+    url: "https://proteinlab.kr/guides/basics/digestion",
+    type: "website" as const,
+    locale: "ko_KR",
+    siteName: "ProteinLab",
+  },
+  twitter: {
+    card: "summary" as const,
+    title: _pageTitle,
+    description: _pageDesc,
+  },
 };
 
 const digestionRows = [

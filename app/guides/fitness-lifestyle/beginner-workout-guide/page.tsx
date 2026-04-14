@@ -3,10 +3,25 @@ import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 import { buildGuideJsonLd } from "@/app/lib/guideJsonLd";
 
+const _pageTitle = "운동 초보 단백질 가이드 | 처음 시작할 때 뭘 챙겨야 할까";
+const _pageDesc = "운동을 막 시작한 사람이 단백질을 어떻게 챙기면 좋은지 식사, 간식, 제품 선택 기준까지 쉬운 언어로 정리한 가이드입니다.";
 export const metadata = {
-  title: "운동 초보 단백질 가이드 | 처음 시작할 때 뭘 챙겨야 할까",
-  description:
-    "운동을 막 시작한 사람이 단백질을 어떻게 챙기면 좋은지 식사, 간식, 제품 선택 기준까지 쉬운 언어로 정리한 가이드입니다.",
+  title: _pageTitle,
+  description: _pageDesc,
+  alternates: { canonical: "https://proteinlab.kr/guides/fitness-lifestyle/beginner-workout-guide" },
+  openGraph: {
+    title: _pageTitle,
+    description: _pageDesc,
+    url: "https://proteinlab.kr/guides/fitness-lifestyle/beginner-workout-guide",
+    type: "website" as const,
+    locale: "ko_KR",
+    siteName: "ProteinLab",
+  },
+  twitter: {
+    card: "summary" as const,
+    title: _pageTitle,
+    description: _pageDesc,
+  },
 };
 
 const starterCards = [

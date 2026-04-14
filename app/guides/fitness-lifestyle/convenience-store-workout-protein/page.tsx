@@ -3,10 +3,25 @@ import Link from "next/link";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 
+const _pageTitle = "편의점에서 운동 전후 바로 살 수 있는 단백질 제품";
+const _pageDesc = "운동 전후 편의점에서 바로 살 수 있는 단백질 음료와 바를 상황별로 고르는 기준을 정리합니다.";
 export const metadata = {
-  title: "편의점에서 운동 전후 바로 살 수 있는 단백질 제품",
-  description:
-    "운동 전후 편의점에서 바로 살 수 있는 단백질 음료와 바를 상황별로 고르는 기준을 정리합니다.",
+  title: _pageTitle,
+  description: _pageDesc,
+  alternates: { canonical: "https://proteinlab.kr/guides/fitness-lifestyle/convenience-store-workout-protein" },
+  openGraph: {
+    title: _pageTitle,
+    description: _pageDesc,
+    url: "https://proteinlab.kr/guides/fitness-lifestyle/convenience-store-workout-protein",
+    type: "website" as const,
+    locale: "ko_KR",
+    siteName: "ProteinLab",
+  },
+  twitter: {
+    card: "summary" as const,
+    title: _pageTitle,
+    description: _pageDesc,
+  },
 };
 
 const rows = [

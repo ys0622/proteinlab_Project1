@@ -3,10 +3,25 @@ import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 import { buildGuideJsonLd } from "@/app/lib/guideJsonLd";
 
+const _pageTitle = "봄 러닝 다시 시작할 때 단백질 가이드 | 재개 초반 회복 전략";
+const _pageDesc = "봄에 러닝을 다시 시작하는 사람에게 필요한 단백질 기준, 회복 타이밍, 가벼운 제품 선택 포인트를 재개 초반 기준으로 정리한 가이드입니다.";
 export const metadata = {
-  title: "봄 러닝 다시 시작할 때 단백질 가이드 | 재개 초반 회복 전략",
-  description:
-    "봄에 러닝을 다시 시작하는 사람에게 필요한 단백질 기준, 회복 타이밍, 가벼운 제품 선택 포인트를 재개 초반 기준으로 정리한 가이드입니다.",
+  title: _pageTitle,
+  description: _pageDesc,
+  alternates: { canonical: "https://proteinlab.kr/guides/fitness-lifestyle/spring-running-start-guide" },
+  openGraph: {
+    title: _pageTitle,
+    description: _pageDesc,
+    url: "https://proteinlab.kr/guides/fitness-lifestyle/spring-running-start-guide",
+    type: "website" as const,
+    locale: "ko_KR",
+    siteName: "ProteinLab",
+  },
+  twitter: {
+    card: "summary" as const,
+    title: _pageTitle,
+    description: _pageDesc,
+  },
 };
 
 const restartCards = [

@@ -3,10 +3,25 @@ import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 import { buildGuideJsonLd } from "@/app/lib/guideJsonLd";
 
+const _pageTitle = "마라톤 거리별 영양과 훈련 전략 | 5km·10km·하프·풀 차이 정리";
+const _pageDesc = "5km, 10km, 하프, 풀 마라톤까지 거리별 특성에 맞는 훈련 포인트와 단백질 회복 전략을 정리합니다. 레이스 주간 체크리스트는 별도 가이드로 분리해 봅니다.";
 export const metadata = {
-  title: "마라톤 거리별 영양과 훈련 전략 | 5km·10km·하프·풀 차이 정리",
-  description:
-    "5km, 10km, 하프, 풀 마라톤까지 거리별 특성에 맞는 훈련 포인트와 단백질 회복 전략을 정리합니다. 레이스 주간 체크리스트는 별도 가이드로 분리해 봅니다.",
+  title: _pageTitle,
+  description: _pageDesc,
+  alternates: { canonical: "https://proteinlab.kr/guides/fitness-lifestyle/marathon-distance-strategy" },
+  openGraph: {
+    title: _pageTitle,
+    description: _pageDesc,
+    url: "https://proteinlab.kr/guides/fitness-lifestyle/marathon-distance-strategy",
+    type: "website" as const,
+    locale: "ko_KR",
+    siteName: "ProteinLab",
+  },
+  twitter: {
+    card: "summary" as const,
+    title: _pageTitle,
+    description: _pageDesc,
+  },
 };
 
 const distanceRows = [

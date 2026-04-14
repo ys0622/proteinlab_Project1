@@ -3,9 +3,25 @@ import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 import { buildGuideJsonLd } from "@/app/lib/guideJsonLd";
 
+const _pageTitle = "단백질 시장 히스토리 | 보충제에서 RTD 대중화까지";
+const _pageDesc = "국내 단백질 시장이 보충제 중심에서 RTD 대중화, 저당·워터형·식물성 세분화 단계로 어떻게 이동했는지 정리했습니다.";
 export const metadata = {
-  title: "단백질 시장 히스토리 | 보충제에서 RTD 대중화까지",
-  description: "국내 단백질 시장이 보충제 중심에서 RTD 대중화, 저당·워터형·식물성 세분화 단계로 어떻게 이동했는지 정리했습니다.",
+  title: _pageTitle,
+  description: _pageDesc,
+  alternates: { canonical: "https://proteinlab.kr/guides/market-insights/protein-market-history" },
+  openGraph: {
+    title: _pageTitle,
+    description: _pageDesc,
+    url: "https://proteinlab.kr/guides/market-insights/protein-market-history",
+    type: "website" as const,
+    locale: "ko_KR",
+    siteName: "ProteinLab",
+  },
+  twitter: {
+    card: "summary" as const,
+    title: _pageTitle,
+    description: _pageDesc,
+  },
 };
 
 const historyRows = [

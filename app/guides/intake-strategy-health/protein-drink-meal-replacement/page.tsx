@@ -3,10 +3,25 @@ import Link from "next/link";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 
+const _pageTitle = "단백질 음료로 식사대용 가능할까 | 식사 보완용 음료 기준 정리";
+const _pageDesc = "단백질 음료를 식사 대신 마셔도 되는지, 식사 보완용 음료와 단순 보충용 RTD의 차이, 언제 쉐이크로 넘어가야 하는지 정리했습니다.";
 export const metadata = {
-  title: "단백질 음료로 식사대용 가능할까 | 식사 보완용 음료 기준 정리",
-  description:
-    "단백질 음료를 식사 대신 마셔도 되는지, 식사 보완용 음료와 단순 보충용 RTD의 차이, 언제 쉐이크로 넘어가야 하는지 정리했습니다.",
+  title: _pageTitle,
+  description: _pageDesc,
+  alternates: { canonical: "https://proteinlab.kr/guides/intake-strategy-health/protein-drink-meal-replacement" },
+  openGraph: {
+    title: _pageTitle,
+    description: _pageDesc,
+    url: "https://proteinlab.kr/guides/intake-strategy-health/protein-drink-meal-replacement",
+    type: "website" as const,
+    locale: "ko_KR",
+    siteName: "ProteinLab",
+  },
+  twitter: {
+    card: "summary" as const,
+    title: _pageTitle,
+    description: _pageDesc,
+  },
 };
 
 const rows = [

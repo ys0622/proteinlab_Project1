@@ -130,17 +130,21 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         ? 1
         : route === "/guides" || route === "/recommend" || route === "/ranking"
           ? 0.9
-          : route.startsWith("/curation/")
-            ? 0.85
-            : route.startsWith("/picks/")
-              ? 0.84
-            : route.startsWith("/topics/")
-              ? 0.83
-              : route.startsWith("/compare/")
-                ? 0.82
-            : route.startsWith("/guides/")
-              ? 0.8
-              : 0.7,
+          : route === "/drinks" || route === "/bars" || route === "/yogurt" || route === "/shake"
+            ? 0.88
+            : route === "/products"
+              ? 0.85
+              : route.startsWith("/curation/")
+                ? 0.85
+                : route.startsWith("/picks/")
+                  ? 0.84
+                  : route.startsWith("/topics/")
+                    ? 0.83
+                    : route.startsWith("/compare/")
+                      ? 0.82
+                      : route.startsWith("/guides/")
+                        ? 0.8
+                        : 0.7,
   }));
 
   const productEntries: MetadataRoute.Sitemap = productRoutes.map(({ slug }) => ({

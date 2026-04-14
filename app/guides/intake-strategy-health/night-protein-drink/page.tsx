@@ -3,10 +3,25 @@ import Link from "next/link";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 
+const _pageTitle = "밤에 단백질 음료 마셔도 될까 | 야식·저녁 보충 기준 정리";
+const _pageDesc = "저녁이나 자기 전에 단백질 음료를 마셔도 되는지, 야식처럼 마실 때 주의할 점과 칼로리·당류 기준을 실전적으로 정리했습니다.";
 export const metadata = {
-  title: "밤에 단백질 음료 마셔도 될까 | 야식·저녁 보충 기준 정리",
-  description:
-    "저녁이나 자기 전에 단백질 음료를 마셔도 되는지, 야식처럼 마실 때 주의할 점과 칼로리·당류 기준을 실전적으로 정리했습니다.",
+  title: _pageTitle,
+  description: _pageDesc,
+  alternates: { canonical: "https://proteinlab.kr/guides/intake-strategy-health/night-protein-drink" },
+  openGraph: {
+    title: _pageTitle,
+    description: _pageDesc,
+    url: "https://proteinlab.kr/guides/intake-strategy-health/night-protein-drink",
+    type: "website" as const,
+    locale: "ko_KR",
+    siteName: "ProteinLab",
+  },
+  twitter: {
+    card: "summary" as const,
+    title: _pageTitle,
+    description: _pageDesc,
+  },
 };
 
 const timingRows = [

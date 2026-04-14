@@ -16,7 +16,7 @@ export async function generateMetadata(): Promise<Metadata> {
   ]);
   const totalCount = drinks.length + bars.length + yogurts.length + shakes.length;
 
-  const title = `프로틴랩 ProteinLab | 단백질 음료·바·요거트·쉐이크 ${totalCount}종 비교`;
+  const title = `프로틴랩 ProteinLab — 단백질 음료·바·요거트·쉐이크 ${totalCount}종 비교`;
   const description = `프로틴랩에서 단백질 음료, 바, 요거트, 쉐이크 ${totalCount}종을 단백질 함량, 당류, 칼로리 기준으로 비교합니다. 단백질 제품 추천, 셀렉스 vs 하이뮨, 40g 이상 비교, 다이어트 추천까지 바로 확인할 수 있습니다.`;
 
   return {

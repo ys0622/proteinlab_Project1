@@ -3,10 +3,25 @@ import Link from "next/link";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 
+const _pageTitle = "러닝하는 사람은 음료·바·쉐이크 중 뭐가 맞을까 | 상황별 단백질 선택법";
+const _pageDesc = "러닝 전후와 출근 전, 장거리 훈련일, 가벼운 회복일에 단백질 음료, 바, 쉐이크 중 무엇이 맞는지 상황별로 정리합니다.";
 export const metadata = {
-  title: "러닝하는 사람은 음료·바·쉐이크 중 뭐가 맞을까 | 상황별 단백질 선택법",
-  description:
-    "러닝 전후와 출근 전, 장거리 훈련일, 가벼운 회복일에 단백질 음료, 바, 쉐이크 중 무엇이 맞는지 상황별로 정리합니다.",
+  title: _pageTitle,
+  description: _pageDesc,
+  alternates: { canonical: "https://proteinlab.kr/guides/fitness-lifestyle/running-protein-category-guide" },
+  openGraph: {
+    title: _pageTitle,
+    description: _pageDesc,
+    url: "https://proteinlab.kr/guides/fitness-lifestyle/running-protein-category-guide",
+    type: "website" as const,
+    locale: "ko_KR",
+    siteName: "ProteinLab",
+  },
+  twitter: {
+    card: "summary" as const,
+    title: _pageTitle,
+    description: _pageDesc,
+  },
 };
 
 const categoryRows = [

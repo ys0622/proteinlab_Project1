@@ -3,10 +3,25 @@ import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 import { buildGuideJsonLd } from "@/app/lib/guideJsonLd";
 
+const _pageTitle = "러닝 단백질 가이드 | 주간 필요량·회복 타이밍 기본편";
+const _pageDesc = "러닝과 마라톤을 하는 사람에게 필요한 단백질 주간 필요량, 운동 후 회복 타이밍, 식사 분배 기준을 기본편 기준으로 정리한 가이드입니다.";
 export const metadata = {
-  title: "러닝 단백질 가이드 | 주간 필요량·회복 타이밍 기본편",
-  description:
-    "러닝과 마라톤을 하는 사람에게 필요한 단백질 주간 필요량, 운동 후 회복 타이밍, 식사 분배 기준을 기본편 기준으로 정리한 가이드입니다.",
+  title: _pageTitle,
+  description: _pageDesc,
+  alternates: { canonical: "https://proteinlab.kr/guides/fitness-lifestyle/running-protein-guide" },
+  openGraph: {
+    title: _pageTitle,
+    description: _pageDesc,
+    url: "https://proteinlab.kr/guides/fitness-lifestyle/running-protein-guide",
+    type: "website" as const,
+    locale: "ko_KR",
+    siteName: "ProteinLab",
+  },
+  twitter: {
+    card: "summary" as const,
+    title: _pageTitle,
+    description: _pageDesc,
+  },
 };
 
 const dailyNeedRows = [

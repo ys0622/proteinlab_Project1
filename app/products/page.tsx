@@ -7,7 +7,9 @@ import ProductListWithFilters from "../components/ProductListWithFilters";
 import { getProductsByCategoryAsync } from "../lib/productData";
 import type { ProductCategory } from "../lib/categories";
 
-export async function generateMetadata(): Promise<Metadata> {
+export async function generateMetadata({ searchParams }: ProductsPageProps): Promise<Metadata> {
+  const params = (await searchParams) ?? {};
+  const hasParams = Object.keys(params).length > 0;
   const [drinks, bars, yogurts, shakes] = await Promise.all([
     getProductsByCategoryAsync("drink"),
     getProductsByCategoryAsync("bar"),
@@ -15,13 +17,29 @@ export async function generateMetadata(): Promise<Metadata> {
     getProductsByCategoryAsync("shake"),
   ]);
   const totalCount = drinks.length + bars.length + yogurts.length + shakes.length;
+  const title = `단백질 제품 ${totalCount}종 비교 — 브랜드·카테고리·목적별로 찾기`;
+  const description = `단백질 음료, 바, 요거트, 쉐이크 ${totalCount}종을 브랜드, 단백질 함량, 당류, 칼로리, 목적별로 바로 비교해보세요. 저당, 40g, 다이어트, 50대 기준도 빠르게 찾을 수 있습니다.`;
 
   return {
-    title: `단백질 제품 ${totalCount}종 비교 | 브랜드·카테고리·목적별로 찾기 | ProteinLab`,
-    description: `단백질 음료, 바, 요거트, 쉐이크 ${totalCount}종을 브랜드, 단백질 함량, 당류, 칼로리, 목적별로 바로 비교해보세요. 저당, 40g, 다이어트, 50대 기준도 빠르게 찾을 수 있습니다.`,
+    title,
+    description,
     alternates: {
       canonical: "https://proteinlab.kr/products",
     },
+    openGraph: {
+      title,
+      description,
+      url: "https://proteinlab.kr/products",
+      type: "website",
+      locale: "ko_KR",
+      siteName: "ProteinLab",
+    },
+    twitter: {
+      card: "summary",
+      title,
+      description,
+    },
+    ...(hasParams ? { robots: { index: false, follow: false } } : {}),
   };
 }
 
@@ -93,8 +111,18 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
   };
   const totalCount = drinks.length + bars.length + yogurts.length + shakes.length;
 
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "ProteinLab", item: "https://proteinlab.kr/" },
+      { "@type": "ListItem", position: 2, name: "단백질 제품 비교", item: "https://proteinlab.kr/products" },
+    ],
+  };
+
   return (
     <div className="min-h-screen bg-white">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
       <Header />
 
       <section

@@ -3,10 +3,25 @@ import Link from "next/link";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 
+const _pageTitle = "출근길에 먹기 좋은 단백질 제품";
+const _pageDesc = "출근길이나 이동 중에 먹기 좋은 단백질 음료, 바, 쉐이크를 상황별로 고르는 기준을 정리했습니다.";
 export const metadata = {
-  title: "출근길에 먹기 좋은 단백질 제품",
-  description:
-    "출근길이나 이동 중에 먹기 좋은 단백질 음료, 바, 쉐이크를 상황별로 고르는 기준을 정리했습니다.",
+  title: _pageTitle,
+  description: _pageDesc,
+  alternates: { canonical: "https://proteinlab.kr/guides/fitness-lifestyle/commute-protein-guide" },
+  openGraph: {
+    title: _pageTitle,
+    description: _pageDesc,
+    url: "https://proteinlab.kr/guides/fitness-lifestyle/commute-protein-guide",
+    type: "website" as const,
+    locale: "ko_KR",
+    siteName: "ProteinLab",
+  },
+  twitter: {
+    card: "summary" as const,
+    title: _pageTitle,
+    description: _pageDesc,
+  },
 };
 
 const rows = [

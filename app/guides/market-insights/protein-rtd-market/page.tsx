@@ -3,9 +3,25 @@ import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 import { buildGuideJsonLd } from "@/app/lib/guideJsonLd";
 
+const _pageTitle = "단백질 RTD 시장 분석 | 왜 RTD 음료가 가장 빨리 커졌을까";
+const _pageDesc = "RTD 단백질 음료 시장이 커진 이유, 워터형·밀크형·식물성 구조, 브랜드 경쟁 포인트까지 한 번에 정리했습니다.";
 export const metadata = {
-  title: "단백질 RTD 시장 분석 | 왜 RTD 음료가 가장 빨리 커졌을까",
-  description: "RTD 단백질 음료 시장이 커진 이유, 워터형·밀크형·식물성 구조, 브랜드 경쟁 포인트까지 한 번에 정리했습니다.",
+  title: _pageTitle,
+  description: _pageDesc,
+  alternates: { canonical: "https://proteinlab.kr/guides/market-insights/protein-rtd-market" },
+  openGraph: {
+    title: _pageTitle,
+    description: _pageDesc,
+    url: "https://proteinlab.kr/guides/market-insights/protein-rtd-market",
+    type: "website" as const,
+    locale: "ko_KR",
+    siteName: "ProteinLab",
+  },
+  twitter: {
+    card: "summary" as const,
+    title: _pageTitle,
+    description: _pageDesc,
+  },
 };
 
 const growthRows = [

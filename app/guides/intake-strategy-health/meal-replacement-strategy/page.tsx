@@ -3,10 +3,25 @@ import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 import { buildGuideJsonLd } from "@/app/lib/guideJsonLd";
 
+const _pageTitle = "식사대용 단백질 가이드 | 보충용과 뭐가 다를까";
+const _pageDesc = "식사대용 단백질 제품과 일반 보충용 제품의 차이를 정리했습니다. 포만감, 칼로리, 지속 가능성 기준으로 어떻게 구분해야 하는지 바로 확인할 수 있습니다.";
 export const metadata = {
-  title: "식사대용 단백질 가이드 | 보충용과 뭐가 다를까",
-  description:
-    "식사대용 단백질 제품과 일반 보충용 제품의 차이를 정리했습니다. 포만감, 칼로리, 지속 가능성 기준으로 어떻게 구분해야 하는지 바로 확인할 수 있습니다.",
+  title: _pageTitle,
+  description: _pageDesc,
+  alternates: { canonical: "https://proteinlab.kr/guides/intake-strategy-health/meal-replacement-strategy" },
+  openGraph: {
+    title: _pageTitle,
+    description: _pageDesc,
+    url: "https://proteinlab.kr/guides/intake-strategy-health/meal-replacement-strategy",
+    type: "website" as const,
+    locale: "ko_KR",
+    siteName: "ProteinLab",
+  },
+  twitter: {
+    card: "summary" as const,
+    title: _pageTitle,
+    description: _pageDesc,
+  },
 };
 
 const replacementRows = [

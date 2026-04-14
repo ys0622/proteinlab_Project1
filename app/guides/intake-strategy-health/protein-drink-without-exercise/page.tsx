@@ -3,10 +3,25 @@ import Link from "next/link";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 
+const _pageTitle = "운동 안 해도 단백질 음료 마셔도 될까";
+const _pageDesc = "운동을 안 해도 단백질 음료를 마셔도 되는지, 어떤 상황에서 필요하고 어떤 제품이 부담이 적은지 실용적으로 정리했습니다.";
 export const metadata = {
-  title: "운동 안 해도 단백질 음료 마셔도 될까",
-  description:
-    "운동을 안 해도 단백질 음료를 마셔도 되는지, 어떤 상황에서 필요하고 어떤 제품이 부담이 적은지 실용적으로 정리했습니다.",
+  title: _pageTitle,
+  description: _pageDesc,
+  alternates: { canonical: "https://proteinlab.kr/guides/intake-strategy-health/protein-drink-without-exercise" },
+  openGraph: {
+    title: _pageTitle,
+    description: _pageDesc,
+    url: "https://proteinlab.kr/guides/intake-strategy-health/protein-drink-without-exercise",
+    type: "website" as const,
+    locale: "ko_KR",
+    siteName: "ProteinLab",
+  },
+  twitter: {
+    card: "summary" as const,
+    title: _pageTitle,
+    description: _pageDesc,
+  },
 };
 
 const situations = [

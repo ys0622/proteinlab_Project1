@@ -3,17 +3,25 @@ import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 import { buildGuideJsonLd } from "@/app/lib/guideJsonLd";
 
+const _pageTitle = "린매스업 단백질 섭취량 계산 | 체중별로 몇 g 먹어야 할까";
+const _pageDesc = "린매스업 단백질 섭취량을 체중별로 계산하는 기준을 정리했습니다. 체중 60kg·70kg·80kg 예시, 쉬는 날 운영, 끼니별 배분, 쉐이크 활용법까지 한 번에 확인할 수 있습니다.";
 export const metadata = {
-  title: "린매스업 단백질 섭취량 계산 | 체중별로 몇 g 먹어야 할까",
-  description:
-    "린매스업 단백질 섭취량을 체중별로 계산하는 기준을 정리했습니다. 체중 60kg·70kg·80kg 예시, 쉬는 날 운영, 끼니별 배분, 쉐이크 활용법까지 한 번에 확인할 수 있습니다.",
-  keywords: [
-    "린매스업 단백질 섭취량",
-    "린매스업 단백질 계산",
-    "체중별 단백질 섭취량",
-    "린매스업 식단",
-    "근육 증가 단백질",
-  ],
+  title: _pageTitle,
+  description: _pageDesc,
+  alternates: { canonical: "https://proteinlab.kr/guides/intake-strategy-health/lean-massup-protein-intake" },
+  openGraph: {
+    title: _pageTitle,
+    description: _pageDesc,
+    url: "https://proteinlab.kr/guides/intake-strategy-health/lean-massup-protein-intake",
+    type: "website" as const,
+    locale: "ko_KR",
+    siteName: "ProteinLab",
+  },
+  twitter: {
+    card: "summary" as const,
+    title: _pageTitle,
+    description: _pageDesc,
+  },
 };
 
 const intakeRows = [

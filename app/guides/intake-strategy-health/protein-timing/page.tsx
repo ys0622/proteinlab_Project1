@@ -3,10 +3,25 @@ import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 import { buildGuideJsonLd } from "@/app/lib/guideJsonLd";
 
+const _pageTitle = "단백질 섭취 타이밍 가이드 | 하루에 언제 먹어야 할까";
+const _pageDesc = "단백질을 아침, 운동 후, 간식, 저녁 중 언제 넣어야 할지 정리했습니다. 하루 총량과 분산 섭취 기준으로 바로 적용할 수 있는 루틴 가이드입니다.";
 export const metadata = {
-  title: "단백질 섭취 타이밍 가이드 | 하루에 언제 먹어야 할까",
-  description:
-    "단백질을 아침, 운동 후, 간식, 저녁 중 언제 넣어야 할지 정리했습니다. 하루 총량과 분산 섭취 기준으로 바로 적용할 수 있는 루틴 가이드입니다.",
+  title: _pageTitle,
+  description: _pageDesc,
+  alternates: { canonical: "https://proteinlab.kr/guides/intake-strategy-health/protein-timing" },
+  openGraph: {
+    title: _pageTitle,
+    description: _pageDesc,
+    url: "https://proteinlab.kr/guides/intake-strategy-health/protein-timing",
+    type: "website" as const,
+    locale: "ko_KR",
+    siteName: "ProteinLab",
+  },
+  twitter: {
+    card: "summary" as const,
+    title: _pageTitle,
+    description: _pageDesc,
+  },
 };
 
 const timingRows = [

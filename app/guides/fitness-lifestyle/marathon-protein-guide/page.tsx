@@ -3,10 +3,25 @@ import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 import { buildGuideJsonLd } from "@/app/lib/guideJsonLd";
 
+const _pageTitle = "마라톤 레이스 주간 영양 전략 가이드 | 카보 로딩·회복 루틴 정리";
+const _pageDesc = "마라톤 레이스 주간에는 평소 훈련보다 탄수화물 로딩, 수분, 단백질 회복 전략이 더 중요합니다. 거리별 훈련법이 아니라 대회 전후 체크리스트를 실전 관점에서 정리합니다.";
 export const metadata = {
-  title: "마라톤 레이스 주간 영양 전략 가이드 | 카보 로딩·회복 루틴 정리",
-  description:
-    "마라톤 레이스 주간에는 평소 훈련보다 탄수화물 로딩, 수분, 단백질 회복 전략이 더 중요합니다. 거리별 훈련법이 아니라 대회 전후 체크리스트를 실전 관점에서 정리합니다.",
+  title: _pageTitle,
+  description: _pageDesc,
+  alternates: { canonical: "https://proteinlab.kr/guides/fitness-lifestyle/marathon-protein-guide" },
+  openGraph: {
+    title: _pageTitle,
+    description: _pageDesc,
+    url: "https://proteinlab.kr/guides/fitness-lifestyle/marathon-protein-guide",
+    type: "website" as const,
+    locale: "ko_KR",
+    siteName: "ProteinLab",
+  },
+  twitter: {
+    card: "summary" as const,
+    title: _pageTitle,
+    description: _pageDesc,
+  },
 };
 
 const checklistItems = [

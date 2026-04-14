@@ -3,10 +3,25 @@ import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 import { buildGuideJsonLd } from "@/app/lib/guideJsonLd";
 
+const _pageTitle = "다이어트 단백질 가이드 | 체중 관리 때 먼저 볼 기준";
+const _pageDesc = "다이어트와 체중 관리에서 단백질 제품을 어떻게 골라야 하는지 정리했습니다. 당류, 칼로리, 포만감, 단백질 밀도를 함께 보는 실전 기준입니다.";
 export const metadata = {
-  title: "다이어트 단백질 가이드 | 체중 관리 때 먼저 볼 기준",
-  description:
-    "다이어트와 체중 관리에서 단백질 제품을 어떻게 골라야 하는지 정리했습니다. 당류, 칼로리, 포만감, 단백질 밀도를 함께 보는 실전 기준입니다.",
+  title: _pageTitle,
+  description: _pageDesc,
+  alternates: { canonical: "https://proteinlab.kr/guides/intake-strategy-health/weight-management-protein" },
+  openGraph: {
+    title: _pageTitle,
+    description: _pageDesc,
+    url: "https://proteinlab.kr/guides/intake-strategy-health/weight-management-protein",
+    type: "website" as const,
+    locale: "ko_KR",
+    siteName: "ProteinLab",
+  },
+  twitter: {
+    card: "summary" as const,
+    title: _pageTitle,
+    description: _pageDesc,
+  },
 };
 
 const goalRows = [

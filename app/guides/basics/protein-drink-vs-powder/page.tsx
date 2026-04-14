@@ -3,10 +3,25 @@ import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 import { buildGuideJsonLd } from "@/app/lib/guideJsonLd";
 
+const _pageTitle = "단백질 음료 vs 프로틴 파우더 차이";
+const _pageDesc = "단백질 음료와 프로틴 파우더 중 무엇이 더 맞는지, 편의성·가성비·식사 보완·운동용 기준으로 쉽게 비교합니다.";
 export const metadata = {
-  title: "단백질 음료 vs 프로틴 파우더 차이",
-  description:
-    "단백질 음료와 프로틴 파우더 중 무엇이 더 맞는지, 편의성·가성비·식사 보완·운동용 기준으로 쉽게 비교합니다.",
+  title: _pageTitle,
+  description: _pageDesc,
+  alternates: { canonical: "https://proteinlab.kr/guides/basics/protein-drink-vs-powder" },
+  openGraph: {
+    title: _pageTitle,
+    description: _pageDesc,
+    url: "https://proteinlab.kr/guides/basics/protein-drink-vs-powder",
+    type: "website" as const,
+    locale: "ko_KR",
+    siteName: "ProteinLab",
+  },
+  twitter: {
+    card: "summary" as const,
+    title: _pageTitle,
+    description: _pageDesc,
+  },
 };
 
 const rows = [

@@ -3,10 +3,25 @@ import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 import { buildGuideJsonLd } from "@/app/lib/guideJsonLd";
 
+const _pageTitle = "근육 유지 단백질 전략 | 감량기와 운동 병행 때 먼저 볼 기준";
+const _pageDesc = "감량기나 운동 병행 상황에서 근육량을 지키려면 단백질을 어떻게 나눠 먹어야 하는지, 총량과 분산 기준을 실전 중심으로 정리했습니다.";
 export const metadata = {
-  title: "근육 유지 단백질 전략 | 감량기와 운동 병행 때 먼저 볼 기준",
-  description:
-    "감량기나 운동 병행 상황에서 근육량을 지키려면 단백질을 어떻게 나눠 먹어야 하는지, 총량과 분산 기준을 실전 중심으로 정리했습니다.",
+  title: _pageTitle,
+  description: _pageDesc,
+  alternates: { canonical: "https://proteinlab.kr/guides/intake-strategy-health/muscle-maintenance-protein" },
+  openGraph: {
+    title: _pageTitle,
+    description: _pageDesc,
+    url: "https://proteinlab.kr/guides/intake-strategy-health/muscle-maintenance-protein",
+    type: "website" as const,
+    locale: "ko_KR",
+    siteName: "ProteinLab",
+  },
+  twitter: {
+    card: "summary" as const,
+    title: _pageTitle,
+    description: _pageDesc,
+  },
 };
 
 const maintenancePoints = [

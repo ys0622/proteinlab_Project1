@@ -3,10 +3,25 @@ import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 import { buildGuideJsonLd } from "@/app/lib/guideJsonLd";
 
+const _pageTitle = "운동 전 단백질 가이드 | 먹어야 할 때와 굳이 안 먹어도 될 때";
+const _pageDesc = "운동 전에 단백질을 꼭 먹어야 하는지, 식사 간격과 소화 부담, 운동 강도에 따라 어떻게 판단하면 되는지 실전 기준으로 정리했습니다.";
 export const metadata = {
-  title: "운동 전 단백질 가이드 | 먹어야 할 때와 굳이 안 먹어도 될 때",
-  description:
-    "운동 전에 단백질을 꼭 먹어야 하는지, 식사 간격과 소화 부담, 운동 강도에 따라 어떻게 판단하면 되는지 실전 기준으로 정리했습니다.",
+  title: _pageTitle,
+  description: _pageDesc,
+  alternates: { canonical: "https://proteinlab.kr/guides/intake-strategy-health/pre-workout-protein" },
+  openGraph: {
+    title: _pageTitle,
+    description: _pageDesc,
+    url: "https://proteinlab.kr/guides/intake-strategy-health/pre-workout-protein",
+    type: "website" as const,
+    locale: "ko_KR",
+    siteName: "ProteinLab",
+  },
+  twitter: {
+    card: "summary" as const,
+    title: _pageTitle,
+    description: _pageDesc,
+  },
 };
 
 const beforeWorkoutRows = [

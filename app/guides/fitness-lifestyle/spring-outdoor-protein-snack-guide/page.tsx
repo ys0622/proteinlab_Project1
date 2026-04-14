@@ -3,10 +3,25 @@ import Link from "next/link";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 
+const _pageTitle = "봄 야외활동 단백질 간식 가이드 | 피크닉·러닝용 간식 기준";
+const _pageDesc = "봄철 피크닉, 산책, 야외활동에서 챙기기 좋은 단백질 간식 기준을 휴대성, 당류, 포만감 중심으로 정리합니다.";
 export const metadata = {
-  title: "봄 야외활동 단백질 간식 가이드 | 피크닉·러닝용 간식 기준",
-  description:
-    "봄철 피크닉, 산책, 야외활동에서 챙기기 좋은 단백질 간식 기준을 휴대성, 당류, 포만감 중심으로 정리합니다.",
+  title: _pageTitle,
+  description: _pageDesc,
+  alternates: { canonical: "https://proteinlab.kr/guides/fitness-lifestyle/spring-outdoor-protein-snack-guide" },
+  openGraph: {
+    title: _pageTitle,
+    description: _pageDesc,
+    url: "https://proteinlab.kr/guides/fitness-lifestyle/spring-outdoor-protein-snack-guide",
+    type: "website" as const,
+    locale: "ko_KR",
+    siteName: "ProteinLab",
+  },
+  twitter: {
+    card: "summary" as const,
+    title: _pageTitle,
+    description: _pageDesc,
+  },
 };
 
 const activityCards = [

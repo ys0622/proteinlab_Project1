@@ -3,10 +3,25 @@ import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 import { buildGuideJsonLd } from "@/app/lib/guideJsonLd";
 
+const _pageTitle = "단백질 부족 자가체크";
+const _pageDesc = "단백질이 부족할 때 자주 보이는 신호를 간단히 체크하고, 부족 가능성이 높을 때 무엇부터 봐야 하는지 정리합니다.";
 export const metadata = {
-  title: "단백질 부족 자가체크",
-  description:
-    "단백질이 부족할 때 자주 보이는 신호를 간단히 체크하고, 부족 가능성이 높을 때 무엇부터 봐야 하는지 정리합니다.",
+  title: _pageTitle,
+  description: _pageDesc,
+  alternates: { canonical: "https://proteinlab.kr/guides/basics/protein-deficiency-self-check" },
+  openGraph: {
+    title: _pageTitle,
+    description: _pageDesc,
+    url: "https://proteinlab.kr/guides/basics/protein-deficiency-self-check",
+    type: "website" as const,
+    locale: "ko_KR",
+    siteName: "ProteinLab",
+  },
+  twitter: {
+    card: "summary" as const,
+    title: _pageTitle,
+    description: _pageDesc,
+  },
 };
 
 const checks = [

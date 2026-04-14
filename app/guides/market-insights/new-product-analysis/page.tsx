@@ -3,9 +3,25 @@ import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 import { buildGuideJsonLd } from "@/app/lib/guideJsonLd";
 
+const _pageTitle = "단백질 신제품 분석 가이드 | 새 제품을 볼 때 먼저 확인할 기준";
+const _pageDesc = "새로 나온 단백질 음료와 바, 쉐이크를 볼 때 포지셔닝, 성분표, 가격, 기존 제품 대비 차이까지 어떻게 읽어야 하는지 정리했습니다.";
 export const metadata = {
-  title: "단백질 신제품 분석 가이드 | 새 제품을 볼 때 먼저 확인할 기준",
-  description: "새로 나온 단백질 음료와 바, 쉐이크를 볼 때 포지셔닝, 성분표, 가격, 기존 제품 대비 차이까지 어떻게 읽어야 하는지 정리했습니다.",
+  title: _pageTitle,
+  description: _pageDesc,
+  alternates: { canonical: "https://proteinlab.kr/guides/market-insights/new-product-analysis" },
+  openGraph: {
+    title: _pageTitle,
+    description: _pageDesc,
+    url: "https://proteinlab.kr/guides/market-insights/new-product-analysis",
+    type: "website" as const,
+    locale: "ko_KR",
+    siteName: "ProteinLab",
+  },
+  twitter: {
+    card: "summary" as const,
+    title: _pageTitle,
+    description: _pageDesc,
+  },
 };
 
 const readingFrameCards = [

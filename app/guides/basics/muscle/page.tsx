@@ -4,10 +4,25 @@ import Footer from "@/app/components/Footer";
 import GuideVisual from "@/app/components/GuideVisual";
 import { buildGuideJsonLd } from "@/app/lib/guideJsonLd";
 
+const _pageTitle = "근육 성장에 단백질이 필요한 이유";
+const _pageDesc = "근단백질 합성, 운동 후 회복, 하루 권장량까지. 근육과 단백질의 관계를 기초 기준으로 정리합니다.";
 export const metadata = {
-  title: "근육 성장에 단백질이 필요한 이유",
-  description:
-    "근단백질 합성, 운동 후 회복, 하루 권장량까지. 근육과 단백질의 관계를 기초 기준으로 정리합니다.",
+  title: _pageTitle,
+  description: _pageDesc,
+  alternates: { canonical: "https://proteinlab.kr/guides/basics/muscle" },
+  openGraph: {
+    title: _pageTitle,
+    description: _pageDesc,
+    url: "https://proteinlab.kr/guides/basics/muscle",
+    type: "website" as const,
+    locale: "ko_KR",
+    siteName: "ProteinLab",
+  },
+  twitter: {
+    card: "summary" as const,
+    title: _pageTitle,
+    description: _pageDesc,
+  },
 };
 
 const timingRows = [

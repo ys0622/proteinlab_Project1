@@ -4,10 +4,25 @@ import Footer from "@/app/components/Footer";
 import GuideVisual from "@/app/components/GuideVisual";
 import { buildGuideJsonLd } from "@/app/lib/guideJsonLd";
 
+const _pageTitle = "단백질과 면역·호르몬 | 항체·효소·인슐린까지";
+const _pageDesc = "단백질이 근육만이 아니라 항체, 호르몬, 효소 합성에 어떻게 관여하는지 면역과 대사 관점에서 정리합니다.";
 export const metadata = {
-  title: "단백질과 면역·호르몬 | 항체·효소·인슐린까지",
-  description:
-    "단백질이 근육만이 아니라 항체, 호르몬, 효소 합성에 어떻게 관여하는지 면역과 대사 관점에서 정리합니다.",
+  title: _pageTitle,
+  description: _pageDesc,
+  alternates: { canonical: "https://proteinlab.kr/guides/basics/immunity-hormone" },
+  openGraph: {
+    title: _pageTitle,
+    description: _pageDesc,
+    url: "https://proteinlab.kr/guides/basics/immunity-hormone",
+    type: "website" as const,
+    locale: "ko_KR",
+    siteName: "ProteinLab",
+  },
+  twitter: {
+    card: "summary" as const,
+    title: _pageTitle,
+    description: _pageDesc,
+  },
 };
 
 const functionRows = [

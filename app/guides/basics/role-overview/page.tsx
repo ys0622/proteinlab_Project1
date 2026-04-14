@@ -3,10 +3,25 @@ import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 import { buildGuideJsonLd } from "@/app/lib/guideJsonLd";
 
+const _pageTitle = "단백질은 몸에서 어떤 역할을 할까";
+const _pageDesc = "단백질이 근육, 면역, 호르몬과 효소, 조직 회복에 어떻게 관여하는지 기본 구조부터 정리합니다.";
 export const metadata = {
-  title: "단백질은 몸에서 어떤 역할을 할까",
-  description:
-    "단백질이 근육, 면역, 호르몬과 효소, 조직 회복에 어떻게 관여하는지 기본 구조부터 정리합니다.",
+  title: _pageTitle,
+  description: _pageDesc,
+  alternates: { canonical: "https://proteinlab.kr/guides/basics/role-overview" },
+  openGraph: {
+    title: _pageTitle,
+    description: _pageDesc,
+    url: "https://proteinlab.kr/guides/basics/role-overview",
+    type: "website" as const,
+    locale: "ko_KR",
+    siteName: "ProteinLab",
+  },
+  twitter: {
+    card: "summary" as const,
+    title: _pageTitle,
+    description: _pageDesc,
+  },
 };
 
 const bodyCompositionRows = [

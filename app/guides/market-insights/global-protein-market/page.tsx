@@ -3,9 +3,25 @@ import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 import { buildGuideJsonLd } from "@/app/lib/guideJsonLd";
 
+const _pageTitle = "글로벌 단백질 시장 비교 | 미국·유럽·일본과 국내 흐름 차이";
+const _pageDesc = "미국, 유럽, 일본, 국내 단백질 시장이 어떻게 다른지 비교하고 국내에서 다음으로 커질 카테고리를 읽는 기준을 정리했습니다.";
 export const metadata = {
-  title: "글로벌 단백질 시장 비교 | 미국·유럽·일본과 국내 흐름 차이",
-  description: "미국, 유럽, 일본, 국내 단백질 시장이 어떻게 다른지 비교하고 국내에서 다음으로 커질 카테고리를 읽는 기준을 정리했습니다.",
+  title: _pageTitle,
+  description: _pageDesc,
+  alternates: { canonical: "https://proteinlab.kr/guides/market-insights/global-protein-market" },
+  openGraph: {
+    title: _pageTitle,
+    description: _pageDesc,
+    url: "https://proteinlab.kr/guides/market-insights/global-protein-market",
+    type: "website" as const,
+    locale: "ko_KR",
+    siteName: "ProteinLab",
+  },
+  twitter: {
+    card: "summary" as const,
+    title: _pageTitle,
+    description: _pageDesc,
+  },
 };
 
 const compareRows = [

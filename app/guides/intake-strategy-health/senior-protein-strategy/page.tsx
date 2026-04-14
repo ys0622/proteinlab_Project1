@@ -3,10 +3,25 @@ import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 import { buildGuideJsonLd } from "@/app/lib/guideJsonLd";
 
+const _pageTitle = "50대·시니어 단백질 전략 | 근감소 예방과 쉬운 섭취법";
+const _pageDesc = "50대 이상과 시니어가 단백질을 어떻게 나눠 먹어야 하는지, 근감소 예방과 소화 부담을 함께 고려한 실전 기준을 정리했습니다.";
 export const metadata = {
-  title: "50대·시니어 단백질 전략 | 근감소 예방과 쉬운 섭취법",
-  description:
-    "50대 이상과 시니어가 단백질을 어떻게 나눠 먹어야 하는지, 근감소 예방과 소화 부담을 함께 고려한 실전 기준을 정리했습니다.",
+  title: _pageTitle,
+  description: _pageDesc,
+  alternates: { canonical: "https://proteinlab.kr/guides/intake-strategy-health/senior-protein-strategy" },
+  openGraph: {
+    title: _pageTitle,
+    description: _pageDesc,
+    url: "https://proteinlab.kr/guides/intake-strategy-health/senior-protein-strategy",
+    type: "website" as const,
+    locale: "ko_KR",
+    siteName: "ProteinLab",
+  },
+  twitter: {
+    card: "summary" as const,
+    title: _pageTitle,
+    description: _pageDesc,
+  },
 };
 
 const seniorTips = [
