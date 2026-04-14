@@ -1,10 +1,11 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 import GuideVisual from "@/app/components/GuideVisual";
+import { buildGuideJsonLd } from "@/app/lib/guideJsonLd";
 
 export const metadata = {
-  title: "근육 성장에 단백질이 필요한 이유 | ProteinLab",
+  title: "근육 성장에 단백질이 필요한 이유",
   description:
     "근단백질 합성, 운동 후 회복, 하루 권장량까지. 근육과 단백질의 관계를 기초 기준으로 정리합니다.",
 };
@@ -54,8 +55,10 @@ function Callout({ children }: { children: React.ReactNode }) {
 }
 
 export default function MuscleGuidePage() {
+  const jsonLd = buildGuideJsonLd({ title: (metadata as {title:string;description:string}).title, description: (metadata as {title:string;description:string}).description, url: 'https://proteinlab.kr/guides/basics/muscle' });
   return (
     <div className="min-h-screen bg-white">
+            {jsonLd.map((item, i) => (<script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(item) }} />))}
       <Header />
 
       <section

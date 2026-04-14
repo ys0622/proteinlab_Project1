@@ -1,9 +1,9 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 
 export const metadata = {
-  title: "단백하니 단백질 쉐이크 추천 | 시그니처·초코·말차 비교 2026 | ProteinLab",
+  title: "단백하니 단백질 쉐이크 추천 | 시그니처·초코·말차 비교 2026",
   description:
     "단백하니 단백질 쉐이크를 시그니처, 초코, 말차 기준으로 직접 비교했습니다. 저당, 칼로리, 단백질 밀도를 함께 보며 어떤 맛이 더 잘 맞는지 빠르게 확인해보세요.",
 };

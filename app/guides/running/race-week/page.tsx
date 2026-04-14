@@ -1,9 +1,9 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 
 export const metadata = {
-  title: "마라톤 레이스 주간 영양 전략 | 카보로딩부터 회복까지 | ProteinLab",
+  title: "마라톤 레이스 주간 영양 전략 | 카보로딩부터 회복까지",
   description:
     "대회 전 탄수화물 로딩, 경기 당일 식단, 레이스 후 회복 영양 전략을 단계별로 정리했습니다.",
 };

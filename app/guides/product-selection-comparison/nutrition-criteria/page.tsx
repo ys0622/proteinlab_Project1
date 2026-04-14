@@ -1,9 +1,9 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 
 export const metadata = {
-  title: "영양성분 기준 정리 | 단백질 제품 비교할 때 먼저 볼 숫자 | ProteinLab",
+  title: "영양성분 기준 정리 | 단백질 제품 비교할 때 먼저 볼 숫자",
   description:
     "단백질 제품을 고를 때 먼저 확인할 단백질, 당류, 칼로리, 단백질 바 기준을 목적별로 정리했습니다. 비교 전에 최소 기준부터 빠르게 잡아보세요.",
 };

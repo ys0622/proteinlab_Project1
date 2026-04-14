@@ -1,9 +1,9 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 
 export const metadata = {
-  title: "저당 단백질 요거트 추천 기준 | 당류 5g 이하 비교 | ProteinLab",
+  title: "저당 단백질 요거트 추천 기준 | 당류 5g 이하 비교",
   description:
     "저당 단백질 요거트를 고를 때 당류 5g 이하 기준과 단백질 함량, 칼로리, 제품 유형을 함께 보는 방법을 정리합니다.",
 };

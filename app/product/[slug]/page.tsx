@@ -397,6 +397,17 @@ export default async function ProductDetailPage({ params }: PageProps) {
         ...(product.fat != null ? { fatContent: `${product.fat} g` } : {}),
         ...(product.sodium != null ? { sodiumContent: `${product.sodium} mg` } : {}),
       },
+      ...(resolvedCoupangHref
+        ? {
+            offers: {
+              "@type": "Offer",
+              url: resolvedCoupangHref,
+              priceCurrency: "KRW",
+              availability: "https://schema.org/InStock",
+              seller: { "@type": "Organization", name: "쿠팡" },
+            },
+          }
+        : {}),
       ...(reviewCount > 0
         ? {
             aggregateRating: {

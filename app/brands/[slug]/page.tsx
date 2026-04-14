@@ -118,13 +118,27 @@ export async function generateMetadata({ params }: PageProps) {
     return { title: "브랜드 페이지를 찾을 수 없음 | ProteinLab" };
   }
 
+  const canonical = `https://proteinlab.kr/brands/${slug}`;
+  const title = `${brand} 단백질 제품 라인업 — 성분 비교 모음`;
+  const description = `${brand} 단백질 제품 전체 라인업을 단백질 함량, 당류, 칼로리 기준으로 한눈에 비교합니다. 어떤 제품부터 봐야 할지 바로 확인하세요.`;
   return {
-    title: `${brand} 단백질 제품 모음 | 라인업·대표 제품 비교`,
-    description: `${brand} 브랜드 제품을 한 곳에 모았습니다. 라인업 차이, 대표 제품, 비교 가이드까지 함께 보면서 어떤 제품부터 봐야 할지 빠르게 확인해보세요.`,
-    alternates: {
-      canonical: `https://proteinlab.kr/brands/${slug}`,
-    },
+    title,
+    description,
+    alternates: { canonical },
     robots: { index: true, follow: true },
+    openGraph: {
+      title,
+      description,
+      url: canonical,
+      type: "article",
+      locale: "ko_KR",
+      siteName: "ProteinLab",
+    },
+    twitter: {
+      card: "summary",
+      title,
+      description,
+    },
   };
 }
 
@@ -138,8 +152,19 @@ export default async function BrandPage({ params }: PageProps) {
 
   if (!brand) notFound();
 
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "ProteinLab", item: "https://proteinlab.kr/" },
+      { "@type": "ListItem", position: 2, name: "브랜드", item: "https://proteinlab.kr/brands" },
+      { "@type": "ListItem", position: 3, name: brand.brand, item: `https://proteinlab.kr/brands/${slug}` },
+    ],
+  };
+
   return (
     <div className="min-h-screen bg-white">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
       <Header />
 
       <section

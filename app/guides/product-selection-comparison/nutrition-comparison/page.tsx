@@ -1,9 +1,9 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 
 export const metadata = {
-  title: "영양성분 비교 보는 법 | 단백질·당류·칼로리 해석 가이드 | ProteinLab",
+  title: "영양성분 비교 보는 법 | 단백질·당류·칼로리 해석 가이드",
   description:
     "단백질, 당류, 칼로리, 단백질 바를 어떤 순서로 읽어야 하는지 정리했습니다. 운동 후, 다이어트, 식사 보완 목적별 비교 기준을 빠르게 확인해보세요.",
 };

@@ -1,9 +1,10 @@
+﻿import { buildGuideJsonLd } from "@/app/lib/guideJsonLd";
 import Link from "next/link";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 
 export const metadata = {
-  title: "러닝하는 사람은 음료·바·쉐이크 중 뭐가 맞을까 | 상황별 단백질 선택법 | ProteinLab",
+  title: "러닝하는 사람은 음료·바·쉐이크 중 뭐가 맞을까 | 상황별 단백질 선택법",
   description:
     "러닝 전후와 출근 전, 장거리 훈련일, 가벼운 회복일에 단백질 음료, 바, 쉐이크 중 무엇이 맞는지 상황별로 정리합니다.",
 };
@@ -69,8 +70,10 @@ const relatedLinks = [
 ];
 
 export default function RunningProteinCategoryGuidePage() {
+  const jsonLd = buildGuideJsonLd({ title: (metadata as {title:string;description:string}).title, description: (metadata as {title:string;description:string}).description, url: 'https://proteinlab.kr/guides/fitness-lifestyle/running-protein-category-guide' });
   return (
     <div className="min-h-screen bg-white">
+      {jsonLd.map((item, i) => (<script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(item) }} />))}
       <Header />
       <section className="w-full border-b border-t bg-[var(--hero-bg)]" style={{ borderColor: "var(--hero-border)" }}>
         <div className="mx-auto max-w-[1200px] px-4 py-5 md:px-6 md:py-6">

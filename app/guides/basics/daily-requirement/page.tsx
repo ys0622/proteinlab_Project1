@@ -1,10 +1,10 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 import TrackedLink from "@/app/components/TrackedLink";
 
 export const metadata = {
-  title: "하루 단백질 권장량 | 목적·체중·연령별 정리 | ProteinLab",
+  title: "하루 단백질 권장량 | 목적·체중·연령별 정리",
   description:
     "일반 성인부터 운동 중인 사람, 고령층까지 하루 단백질 권장량과 분산 섭취 원칙을 정리합니다.",
 };

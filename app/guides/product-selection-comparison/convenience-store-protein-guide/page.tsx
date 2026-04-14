@@ -1,9 +1,9 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 
 export const metadata = {
-  title: "편의점 단백질 음료·바 추천 | CU·GS25·세븐일레븐 성분 기준 | ProteinLab",
+  title: "편의점 단백질 음료·바 추천 | CU·GS25·세븐일레븐 성분 기준",
   description:
     "편의점에서 살 수 있는 단백질 음료와 단백질 바를 단백질 함량, 당류, 칼로리 기준으로 비교합니다. 더단백·셀렉스·하이뮨·닥터유·랩노쉬 브랜드를 성분 데이터로 바로 선택하세요.",
   alternates: {

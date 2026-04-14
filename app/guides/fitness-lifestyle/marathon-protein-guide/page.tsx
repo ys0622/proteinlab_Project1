@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
+import { buildGuideJsonLd } from "@/app/lib/guideJsonLd";
 
 export const metadata = {
   title: "마라톤 레이스 주간 영양 전략 가이드 | 카보 로딩·회복 루틴 정리",
@@ -41,8 +42,10 @@ function MacroCard({ title, value, note }: { title: string; value: string; note:
 }
 
 export default function MarathonProteinGuidePage() {
+  const jsonLd = buildGuideJsonLd({ title: (metadata as {title:string;description:string}).title, description: (metadata as {title:string;description:string}).description, url: 'https://proteinlab.kr/guides/fitness-lifestyle/marathon-protein-guide' });
   return (
     <div className="min-h-screen bg-white">
+            {jsonLd.map((item, i) => (<script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(item) }} />))}
       <Header />
       <section className="w-full border-t border-b bg-[var(--hero-bg)]" style={{ borderColor: "var(--hero-border)" }}>
         <div className="mx-auto max-w-[1200px] px-4 py-5 md:px-6 md:py-6">

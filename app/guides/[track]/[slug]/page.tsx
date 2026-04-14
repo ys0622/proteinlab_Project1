@@ -237,43 +237,63 @@ export async function generateMetadata({
 }) {
   const { track, slug } = await params;
 
-  if (track === "protein-basics" && slug === "protein-functions") {
+  function buildBasicsMetadata(title: string, description: string, trackSlug: string, pageSlug: string) {
+    const canonical = `https://proteinlab.kr/guides/${trackSlug}/${pageSlug}`;
     return {
-      title: "단백질, 몸에서 어떤 일을 할까? | ProteinLab",
-      description: "근육, 면역, 호르몬까지 — 단백질이 몸에서 하는 핵심 역할을 데이터 기반으로 정리했습니다.",
+      title,
+      description,
+      alternates: { canonical },
+      openGraph: { title, description, url: canonical, type: "article" as const, locale: "ko_KR", siteName: "ProteinLab" },
+      twitter: { card: "summary" as const, title, description },
     };
+  }
+
+  if (track === "protein-basics" && slug === "protein-functions") {
+    return buildBasicsMetadata(
+      "단백질, 몸에서 어떤 일을 할까?",
+      "근육, 면역, 호르몬까지 — 단백질이 몸에서 하는 핵심 역할을 데이터 기반으로 정리했습니다.",
+      track, slug,
+    );
   }
   if (track === "basics" && slug === "muscle") {
-    return {
-      title: "근육 성장에 단백질이 필요한 이유 | ProteinLab",
-      description: "근단백질 합성(MPS), mTOR 신호경로, 섭취 타이밍까지 — 운동과 단백질의 관계를 정리했습니다.",
-    };
+    return buildBasicsMetadata(
+      "근육 성장에 단백질이 필요한 이유",
+      "근단백질 합성(MPS), mTOR 신호경로, 섭취 타이밍까지 — 운동과 단백질의 관계를 정리했습니다.",
+      track, slug,
+    );
   }
   if (track === "basics" && slug === "immunity-hormone") {
-    return {
-      title: "단백질과 면역·호르몬·효소 | ProteinLab",
-      description: "항체, 사이토카인, 인슐린, 소화효소 — 단백질이 몸의 조절 시스템에 미치는 영향을 정리했습니다.",
-    };
+    return buildBasicsMetadata(
+      "단백질과 면역·호르몬·효소",
+      "항체, 사이토카인, 인슐린, 소화효소 — 단백질이 몸의 조절 시스템에 미치는 영향을 정리했습니다.",
+      track, slug,
+    );
   }
   if (track === "basics" && slug === "daily-requirement") {
-    return {
-      title: "나는 단백질이 얼마나 필요할까? 목적별 권장량 | ProteinLab",
-      description: "일반 성인부터 운동자, 다이어트, 노년기까지 — 목적별 하루 단백질 권장량을 체중 기준으로 정리했습니다.",
-    };
+    return buildBasicsMetadata(
+      "단백질 하루 권장량 — 목적별·체중별 계산",
+      "일반 성인부터 운동자, 다이어트, 노년기까지 — 목적별 하루 단백질 권장량을 체중 기준으로 정리했습니다.",
+      track, slug,
+    );
   }
   if (track === "basics" && slug === "deficiency-symptoms") {
-    return {
-      title: "단백질이 부족하면 몸에 어떤 신호가 올까? | ProteinLab",
-      description: "근육 감소, 피로, 면역 저하, 부종까지 — 단백질 결핍 시 나타나는 신호를 정리했습니다.",
-    };
+    return buildBasicsMetadata(
+      "단백질 부족 신호 — 몸이 보내는 6가지 징후",
+      "근육 감소, 피로, 면역 저하, 부종까지 — 단백질 결핍 시 나타나는 신호를 정리했습니다.",
+      track, slug,
+    );
   }
 
   const trackData = getGuideTrack(track);
   const slot = getGuideSlot(track, slug);
   if (!trackData || !slot) return {};
+  const canonical = `https://proteinlab.kr/guides/${track}/${slug}`;
   return {
-    title: `${slot.title} | ProteinLab`,
+    title: slot.title,
     description: slot.description,
+    alternates: { canonical },
+    openGraph: { title: slot.title, description: slot.description, url: canonical, type: "article" as const, locale: "ko_KR", siteName: "ProteinLab" },
+    twitter: { card: "summary" as const, title: slot.title, description: slot.description },
   };
 }
 

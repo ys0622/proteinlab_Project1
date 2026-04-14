@@ -1,9 +1,10 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
+import { buildGuideJsonLd } from "@/app/lib/guideJsonLd";
 
 export const metadata = {
-  title: "단백질은 몸에서 어떤 역할을 할까 | ProteinLab",
+  title: "단백질은 몸에서 어떤 역할을 할까",
   description:
     "단백질이 근육, 면역, 호르몬과 효소, 조직 회복에 어떻게 관여하는지 기본 구조부터 정리합니다.",
 };
@@ -112,8 +113,10 @@ function ThreeRolesGraphic() {
 }
 
 export default function RoleOverviewGuidePage() {
+  const jsonLd = buildGuideJsonLd({ title: (metadata as {title:string;description:string}).title, description: (metadata as {title:string;description:string}).description, url: 'https://proteinlab.kr/guides/basics/role-overview' });
   return (
     <div className="min-h-screen bg-white">
+            {jsonLd.map((item, i) => (<script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(item) }} />))}
       <Header />
 
       <section

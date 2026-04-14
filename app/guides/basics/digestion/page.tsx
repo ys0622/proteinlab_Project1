@@ -1,9 +1,10 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
+import { buildGuideJsonLd } from "@/app/lib/guideJsonLd";
 
 export const metadata = {
-  title: "단백질 소화와 흡수 메커니즘 | 입에서 근육까지 | ProteinLab",
+  title: "단백질 소화와 흡수 메커니즘 | 입에서 근육까지",
   description:
     "단백질이 입, 위, 소장을 거치며 아미노산으로 분해되고 흡수되는 과정과 원료별 흡수 특성 차이를 정리합니다.",
 };
@@ -118,8 +119,10 @@ function AbsorptionGraphic() {
 }
 
 export default function DigestionGuidePage() {
+  const jsonLd = buildGuideJsonLd({ title: (metadata as {title:string;description:string}).title, description: (metadata as {title:string;description:string}).description, url: 'https://proteinlab.kr/guides/basics/digestion' });
   return (
     <div className="min-h-screen bg-white">
+            {jsonLd.map((item, i) => (<script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(item) }} />))}
       <Header />
 
       <section

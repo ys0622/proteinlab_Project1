@@ -32,11 +32,13 @@ export async function generateMetadata(): Promise<Metadata> {
       type: "website",
       locale: "ko_KR",
       siteName: "ProteinLab",
+      images: [{ url: "https://proteinlab.kr/proteinlab-logo.png", width: 81, height: 88, alt: "ProteinLab" }],
     },
     twitter: {
       card: "summary",
       title,
       description,
+      images: ["https://proteinlab.kr/proteinlab-logo.png"],
     },
   };
 }

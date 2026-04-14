@@ -121,7 +121,7 @@ export async function generateMetadata({ params }: { params: Promise<{ track: st
   }
 
   return {
-    title: `${section.title} | ProteinLab Guides`,
+    title: section.title,
     description: section.description,
   };
 }

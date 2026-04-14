@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
+import { buildGuideJsonLd } from "@/app/lib/guideJsonLd";
 
 export const metadata = {
   title: "운동 전 단백질 가이드 | 먹어야 할 때와 굳이 안 먹어도 될 때",
@@ -54,8 +55,10 @@ const relatedGuides = [
 ];
 
 export default function PreWorkoutProteinPage() {
+  const jsonLd = buildGuideJsonLd({ title: (metadata as {title:string;description:string}).title, description: (metadata as {title:string;description:string}).description, url: 'https://proteinlab.kr/guides/intake-strategy-health/pre-workout-protein' });
   return (
     <div className="min-h-screen bg-white">
+            {jsonLd.map((item, i) => (<script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(item) }} />))}
       <Header />
       <section
         className="w-full border-t border-b bg-[var(--hero-bg)]"

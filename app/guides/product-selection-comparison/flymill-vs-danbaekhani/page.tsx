@@ -1,9 +1,9 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 
 export const metadata = {
-  title: "플라이밀 vs 단백하니 쉐이크 비교 | 단백질·당류·칼로리 기준 2026 | ProteinLab",
+  title: "플라이밀 vs 단백하니 쉐이크 비교 | 단백질·당류·칼로리 기준 2026",
   description: "플라이밀 피넛버터와 단백하니 시그니처·초코·말차를 단백질, 당류, 칼로리, 단백질 밀도 기준으로 직접 비교했습니다. 고단백과 저칼로리 중 무엇이 더 맞는지 바로 확인해보세요.",
 };
 

@@ -1,9 +1,10 @@
+﻿import { buildGuideJsonLd } from "@/app/lib/guideJsonLd";
 import Link from "next/link";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 
 export const metadata = {
-  title: "운동 안 해도 단백질 음료 마셔도 될까 | ProteinLab",
+  title: "운동 안 해도 단백질 음료 마셔도 될까",
   description:
     "운동을 안 해도 단백질 음료를 마셔도 되는지, 어떤 상황에서 필요하고 어떤 제품이 부담이 적은지 실용적으로 정리했습니다.",
 };
@@ -57,8 +58,10 @@ const selectionSteps = [
 ];
 
 export default function ProteinDrinkWithoutExercisePage() {
+  const jsonLd = buildGuideJsonLd({ title: (metadata as {title:string;description:string}).title, description: (metadata as {title:string;description:string}).description, url: 'https://proteinlab.kr/guides/intake-strategy-health/protein-drink-without-exercise' });
   return (
     <div className="min-h-screen bg-white">
+      {jsonLd.map((item, i) => (<script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(item) }} />))}
       <Header />
       <section className="w-full border-t border-b bg-[var(--hero-bg)]" style={{ borderColor: "var(--hero-border)" }}>
         <div className="mx-auto max-w-[1200px] px-4 py-5 md:px-6 md:py-6">

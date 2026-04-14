@@ -1,10 +1,11 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 import GuideVisual from "@/app/components/GuideVisual";
+import { buildGuideJsonLd } from "@/app/lib/guideJsonLd";
 
 export const metadata = {
-  title: "단백질이 부족하면 몸에 어떤 신호가 올까 | ProteinLab",
+  title: "단백질이 부족하면 몸에 어떤 신호가 올까",
   description:
     "근력 감소, 피로, 면역 저하, 상처 회복 지연까지. 단백질 결핍 때 자주 보이는 신호를 정리합니다.",
 };
@@ -58,8 +59,10 @@ function Callout({ children }: { children: React.ReactNode }) {
 }
 
 export default function DeficiencySymptomsPage() {
+  const jsonLd = buildGuideJsonLd({ title: (metadata as {title:string;description:string}).title, description: (metadata as {title:string;description:string}).description, url: 'https://proteinlab.kr/guides/basics/deficiency-symptoms' });
   return (
     <div className="min-h-screen bg-white">
+            {jsonLd.map((item, i) => (<script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(item) }} />))}
       <Header />
 
       <section

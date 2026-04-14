@@ -1,9 +1,9 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 
 export const metadata = {
-  title: "다이어트 단백질 음료 기준 | 저당·저칼로리·단백질 비교 | ProteinLab",
+  title: "다이어트 단백질 음료 기준 | 저당·저칼로리·단백질 비교",
   description:
     "다이어트용 단백질 음료를 고를 때 당류, 칼로리, 단백질, 단백질 밀도를 어떤 순서로 비교해야 하는지 ProteinLab 기준으로 정리합니다.",
 };

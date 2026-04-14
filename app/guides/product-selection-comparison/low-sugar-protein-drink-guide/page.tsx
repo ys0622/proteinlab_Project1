@@ -1,9 +1,9 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 
 export const metadata = {
-  title: "저당 단백질 음료 추천 기준 | 당류 낮은 RTD 비교 | ProteinLab",
+  title: "저당 단백질 음료 추천 기준 | 당류 낮은 RTD 비교",
   description:
     "저당 단백질 음료를 고를 때 당류 컷, 단백질 함량, 칼로리, 단백질 밀도를 어떤 순서로 확인해야 하는지 정리합니다.",
 };

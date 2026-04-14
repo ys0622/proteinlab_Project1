@@ -137,8 +137,18 @@ export default async function RankingPage() {
     }),
   );
 
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "ProteinLab", item: "https://proteinlab.kr/" },
+      { "@type": "ListItem", position: 2, name: "단백질 랭킹", item: "https://proteinlab.kr/ranking" },
+    ],
+  };
+
   return (
     <div className="min-h-screen bg-white">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListJsonLd) }}

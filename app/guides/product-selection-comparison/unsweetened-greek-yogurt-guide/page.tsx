@@ -1,9 +1,9 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 
 export const metadata = {
-  title: "무가당 그릭요거트 추천 기준 | 당류·단백질 밀도 비교 | ProteinLab",
+  title: "무가당 그릭요거트 추천 기준 | 당류·단백질 밀도 비교",
   description:
     "무가당 그릭요거트를 고를 때 당류, 단백질 밀도, 칼로리, 총용량 기준을 어떻게 함께 읽어야 하는지 정리합니다.",
 };

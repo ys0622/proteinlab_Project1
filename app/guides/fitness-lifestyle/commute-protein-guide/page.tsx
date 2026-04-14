@@ -1,9 +1,10 @@
+﻿import { buildGuideJsonLd } from "@/app/lib/guideJsonLd";
 import Link from "next/link";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 
 export const metadata = {
-  title: "출근길에 먹기 좋은 단백질 제품 | ProteinLab",
+  title: "출근길에 먹기 좋은 단백질 제품",
   description:
     "출근길이나 이동 중에 먹기 좋은 단백질 음료, 바, 쉐이크를 상황별로 고르는 기준을 정리했습니다.",
 };
@@ -27,8 +28,10 @@ const mistakes = [
 ];
 
 export default function CommuteProteinGuidePage() {
+  const jsonLd = buildGuideJsonLd({ title: (metadata as {title:string;description:string}).title, description: (metadata as {title:string;description:string}).description, url: 'https://proteinlab.kr/guides/fitness-lifestyle/commute-protein-guide' });
   return (
     <div className="min-h-screen bg-white">
+      {jsonLd.map((item, i) => (<script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(item) }} />))}
       <Header />
       <section className="w-full border-t border-b bg-[var(--hero-bg)]" style={{ borderColor: "var(--hero-border)" }}>
         <div className="mx-auto max-w-[1200px] px-4 py-5 md:px-6 md:py-6">

@@ -1,9 +1,10 @@
+﻿import { buildGuideJsonLd } from "@/app/lib/guideJsonLd";
 import Link from "next/link";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 
 export const metadata = {
-  title: "다이어트 중 단백질 음료 어떻게 마실까 | 저당·저칼로리 기준 정리 | ProteinLab",
+  title: "다이어트 중 단백질 음료 어떻게 마실까 | 저당·저칼로리 기준 정리",
   description:
     "다이어트 중 단백질 음료를 언제, 어떤 기준으로 마셔야 하는지 정리합니다. 저당, 저칼로리, 포만감, 식사대용 기준을 함께 봐야 실패 확률이 줄어듭니다.",
 };
@@ -70,8 +71,10 @@ const relatedLinks = [
 ];
 
 export default function DietProteinDrinkStrategyPage() {
+  const jsonLd = buildGuideJsonLd({ title: (metadata as {title:string;description:string}).title, description: (metadata as {title:string;description:string}).description, url: 'https://proteinlab.kr/guides/intake-strategy-health/diet-protein-drink-strategy' });
   return (
     <div className="min-h-screen bg-white">
+      {jsonLd.map((item, i) => (<script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(item) }} />))}
       <Header />
       <section className="w-full border-t border-b bg-[var(--hero-bg)]" style={{ borderColor: "var(--hero-border)" }}>
         <div className="mx-auto max-w-[1200px] px-4 py-5 md:px-6 md:py-6">

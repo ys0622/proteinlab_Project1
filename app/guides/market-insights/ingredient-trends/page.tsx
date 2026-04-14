@@ -1,9 +1,10 @@
+﻿import { buildGuideJsonLd } from "@/app/lib/guideJsonLd";
 import Link from "next/link";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 
 export const metadata = {
-  title: "단백질 성분 트렌드 | ProteinLab",
+  title: "단백질 성분 트렌드",
   description: "저당, 워터형, 식물성, 고단백 등 주요 성분 트렌드가 왜 중요해졌는지 정리합니다.",
 };
 
@@ -56,8 +57,10 @@ const readingPoints = [
 ];
 
 export default function IngredientTrendsPage() {
+  const jsonLd = buildGuideJsonLd({ title: (metadata as {title:string;description:string}).title, description: (metadata as {title:string;description:string}).description, url: 'https://proteinlab.kr/guides/market-insights/ingredient-trends' });
   return (
     <div className="min-h-screen bg-white">
+      {jsonLd.map((item, i) => (<script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(item) }} />))}
       <Header />
       <section className="w-full border-t border-b bg-[var(--hero-bg)]" style={{ borderColor: "var(--hero-border)" }}>
         <div className="mx-auto max-w-[1200px] px-4 py-5 md:px-6 md:py-6">

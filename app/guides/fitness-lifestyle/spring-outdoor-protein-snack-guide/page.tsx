@@ -1,9 +1,10 @@
+﻿import { buildGuideJsonLd } from "@/app/lib/guideJsonLd";
 import Link from "next/link";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 
 export const metadata = {
-  title: "봄 야외활동 단백질 간식 가이드 | 피크닉·러닝용 간식 기준 | ProteinLab",
+  title: "봄 야외활동 단백질 간식 가이드 | 피크닉·러닝용 간식 기준",
   description:
     "봄철 피크닉, 산책, 야외활동에서 챙기기 좋은 단백질 간식 기준을 휴대성, 당류, 포만감 중심으로 정리합니다.",
 };
@@ -30,8 +31,10 @@ const itemRows = [
 ];
 
 export default function SpringOutdoorProteinSnackGuidePage() {
+  const jsonLd = buildGuideJsonLd({ title: (metadata as {title:string;description:string}).title, description: (metadata as {title:string;description:string}).description, url: 'https://proteinlab.kr/guides/fitness-lifestyle/spring-outdoor-protein-snack-guide' });
   return (
     <div className="min-h-screen bg-white">
+      {jsonLd.map((item, i) => (<script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(item) }} />))}
       <Header />
 
       <section className="w-full border-t border-b bg-[var(--hero-bg)]" style={{ borderColor: "var(--hero-border)" }}>

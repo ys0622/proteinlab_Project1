@@ -1,9 +1,10 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
+import { buildGuideJsonLd } from "@/app/lib/guideJsonLd";
 
 export const metadata = {
-  title: "단백질 음료 vs 프로틴 파우더 차이 | ProteinLab",
+  title: "단백질 음료 vs 프로틴 파우더 차이",
   description:
     "단백질 음료와 프로틴 파우더 중 무엇이 더 맞는지, 편의성·가성비·식사 보완·운동용 기준으로 쉽게 비교합니다.",
 };
@@ -37,8 +38,10 @@ const fitCases = [
 ];
 
 export default function ProteinDrinkVsPowderPage() {
+  const jsonLd = buildGuideJsonLd({ title: (metadata as {title:string;description:string}).title, description: (metadata as {title:string;description:string}).description, url: 'https://proteinlab.kr/guides/basics/protein-drink-vs-powder' });
   return (
     <div className="min-h-screen bg-white">
+            {jsonLd.map((item, i) => (<script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(item) }} />))}
       <Header />
       <section className="w-full border-t border-b bg-[var(--hero-bg)]" style={{ borderColor: "var(--hero-border)" }}>
         <div className="mx-auto max-w-[1200px] px-4 py-5 md:px-6 md:py-6">

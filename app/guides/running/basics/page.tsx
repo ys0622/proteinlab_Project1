@@ -1,9 +1,9 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 
 export const metadata = {
-  title: "러너를 위한 단백질 가이드 | 필요량·타이밍·종류 | ProteinLab",
+  title: "러너를 위한 단백질 가이드 | 필요량·타이밍·종류",
   description:
     "러닝·마라톤 훈련 중 단백질 필요량, 섭취 타이밍, 단백질 종류별 활용법을 과학적 근거로 정리했습니다.",
 };

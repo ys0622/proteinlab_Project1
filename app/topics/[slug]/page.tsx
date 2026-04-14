@@ -22,21 +22,26 @@ export async function generateMetadata({ params }: PageProps) {
     return { title: "검색 주제를 찾을 수 없음 | ProteinLab" };
   }
 
+  const canonical = `https://proteinlab.kr/topics/${topic.slug}`;
+  const title = `${topic.title} — 비교 가이드 모음`;
+  const description = `${topic.description} 관련 비교 페이지와 추천 가이드로 바로 이어서 확인할 수 있습니다.`;
   return {
-    title: `${topic.title} | 조건별 단백질 비교 허브`,
-    description: `${topic.description} 실제 비교 페이지와 추천 가이드로 바로 이어질 수 있게 정리했습니다.`,
-    alternates: {
-      canonical: `https://proteinlab.kr/topics/${topic.slug}`,
-    },
+    title,
+    description,
+    alternates: { canonical },
     robots: { index: true, follow: true },
     openGraph: {
-      title: `${topic.title} | 조건별 단백질 비교 허브`,
-      description: `${topic.description} 실제 비교 페이지와 추천 가이드로 바로 이어질 수 있게 정리했습니다.`,
+      title,
+      description,
+      url: canonical,
+      type: "article",
+      locale: "ko_KR",
+      siteName: "ProteinLab",
     },
     twitter: {
-      card: "summary_large_image",
-      title: `${topic.title} | 조건별 단백질 비교 허브`,
-      description: `${topic.description} 실제 비교 페이지와 추천 가이드로 바로 이어질 수 있게 정리했습니다.`,
+      card: "summary",
+      title,
+      description,
     },
   };
 }
@@ -123,20 +128,30 @@ export default async function TopicLandingPage({ params }: PageProps) {
 
   const quickLinks = getTopicQuickLinks(topic.slug);
 
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "CollectionPage",
-    name: topic.title,
-    description: topic.description,
-    url: `https://proteinlab.kr/topics/${topic.slug}`,
-  };
+  const jsonLd = [
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "ProteinLab", item: "https://proteinlab.kr/" },
+        { "@type": "ListItem", position: 2, name: "검색 주제", item: "https://proteinlab.kr/topics" },
+        { "@type": "ListItem", position: 3, name: topic.title, item: `https://proteinlab.kr/topics/${topic.slug}` },
+      ],
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      name: topic.title,
+      description: topic.description,
+      url: `https://proteinlab.kr/topics/${topic.slug}`,
+    },
+  ];
 
   return (
     <div className="min-h-screen bg-white">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
+      {jsonLd.map((item, i) => (
+        <script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(item) }} />
+      ))}
       <Header />
 
       <section

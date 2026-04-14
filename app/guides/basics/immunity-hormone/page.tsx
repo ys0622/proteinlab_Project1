@@ -1,10 +1,11 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 import GuideVisual from "@/app/components/GuideVisual";
+import { buildGuideJsonLd } from "@/app/lib/guideJsonLd";
 
 export const metadata = {
-  title: "단백질과 면역·호르몬 | 항체·효소·인슐린까지 | ProteinLab",
+  title: "단백질과 면역·호르몬 | 항체·효소·인슐린까지",
   description:
     "단백질이 근육만이 아니라 항체, 호르몬, 효소 합성에 어떻게 관여하는지 면역과 대사 관점에서 정리합니다.",
 };
@@ -48,8 +49,10 @@ function Callout({ children }: { children: React.ReactNode }) {
 }
 
 export default function ImmunityHormonePage() {
+  const jsonLd = buildGuideJsonLd({ title: (metadata as {title:string;description:string}).title, description: (metadata as {title:string;description:string}).description, url: 'https://proteinlab.kr/guides/basics/immunity-hormone' });
   return (
     <div className="min-h-screen bg-white">
+            {jsonLd.map((item, i) => (<script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(item) }} />))}
       <Header />
 
       <section

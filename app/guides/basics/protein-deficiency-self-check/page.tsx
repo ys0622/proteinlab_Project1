@@ -1,9 +1,10 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
+import { buildGuideJsonLd } from "@/app/lib/guideJsonLd";
 
 export const metadata = {
-  title: "단백질 부족 자가체크 | ProteinLab",
+  title: "단백질 부족 자가체크",
   description:
     "단백질이 부족할 때 자주 보이는 신호를 간단히 체크하고, 부족 가능성이 높을 때 무엇부터 봐야 하는지 정리합니다.",
 };
@@ -34,8 +35,10 @@ const scoreGuide = [
 ];
 
 export default function ProteinDeficiencySelfCheckPage() {
+  const jsonLd = buildGuideJsonLd({ title: (metadata as {title:string;description:string}).title, description: (metadata as {title:string;description:string}).description, url: 'https://proteinlab.kr/guides/basics/protein-deficiency-self-check' });
   return (
     <div className="min-h-screen bg-white">
+            {jsonLd.map((item, i) => (<script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(item) }} />))}
       <Header />
       <section className="w-full border-t border-b bg-[var(--hero-bg)]" style={{ borderColor: "var(--hero-border)" }}>
         <div className="mx-auto max-w-[1200px] px-4 py-5 md:px-6 md:py-6">

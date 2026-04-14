@@ -1,9 +1,10 @@
+﻿import { buildGuideJsonLd } from "@/app/lib/guideJsonLd";
 import Link from "next/link";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 
 export const metadata = {
-  title: "편의점에서 운동 전후 바로 살 수 있는 단백질 제품 | ProteinLab",
+  title: "편의점에서 운동 전후 바로 살 수 있는 단백질 제품",
   description:
     "운동 전후 편의점에서 바로 살 수 있는 단백질 음료와 바를 상황별로 고르는 기준을 정리합니다.",
 };
@@ -36,8 +37,10 @@ const decisionCards = [
 ];
 
 export default function ConvenienceStoreWorkoutProteinPage() {
+  const jsonLd = buildGuideJsonLd({ title: (metadata as {title:string;description:string}).title, description: (metadata as {title:string;description:string}).description, url: 'https://proteinlab.kr/guides/fitness-lifestyle/convenience-store-workout-protein' });
   return (
     <div className="min-h-screen bg-white">
+      {jsonLd.map((item, i) => (<script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(item) }} />))}
       <Header />
       <section className="w-full border-t border-b bg-[var(--hero-bg)]" style={{ borderColor: "var(--hero-border)" }}>
         <div className="mx-auto max-w-[1200px] px-4 py-5 md:px-6 md:py-6">

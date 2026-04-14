@@ -1,9 +1,9 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 
 export const metadata = {
-  title: "플라이밀 단백질 쉐이크 추천 | 피넛버터·초코·쿠키앤크림 비교 2026 | ProteinLab",
+  title: "플라이밀 단백질 쉐이크 추천 | 피넛버터·초코·쿠키앤크림 비교 2026",
   description:
     "플라이밀 단백질 쉐이크를 피넛버터, 초코, 쿠키앤크림 기준으로 직접 비교했습니다. 고단백, 저당, 입문용 중 어떤 맛이 더 맞는지 빠르게 확인해보세요.",
 };

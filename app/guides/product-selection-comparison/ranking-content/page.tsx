@@ -1,9 +1,9 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 
 export const metadata = {
-  title: "순위와 점수 보는 법 | 단백질 제품 랭킹 해석 가이드 | ProteinLab",
+  title: "순위와 점수 보는 법 | 단백질 제품 랭킹 해석 가이드",
   description:
     "단백질 제품 순위와 점수가 어떤 기준으로 계산되는지, 랭킹을 어떻게 읽어야 하는지 정리했습니다. 저당, 다이어트, 운동 후 기준까지 함께 확인해보세요.",
 };

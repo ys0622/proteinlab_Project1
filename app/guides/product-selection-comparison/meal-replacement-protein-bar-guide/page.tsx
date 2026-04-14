@@ -1,9 +1,9 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 
 export const metadata = {
-  title: "식사대용 단백질 바 기준 | 포만감·칼로리·단백질 비교 | ProteinLab",
+  title: "식사대용 단백질 바 기준 | 포만감·칼로리·단백질 비교",
   description:
     "식사대용 단백질 바를 고를 때 포만감, 칼로리, 단백질, 당류를 어떤 순서로 확인해야 하는지 정리합니다.",
 };

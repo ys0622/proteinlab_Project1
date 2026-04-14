@@ -41,8 +41,18 @@ export default async function RecommendPage() {
     shake: shakes.length,
   };
 
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "ProteinLab", item: "https://proteinlab.kr/" },
+      { "@type": "ListItem", position: 2, name: "맞춤 추천", item: "https://proteinlab.kr/recommend" },
+    ],
+  };
+
   return (
     <div className="min-h-screen bg-white">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
       <Header />
       <RecommendClient categoryCounts={categoryCounts} />
       <Footer />

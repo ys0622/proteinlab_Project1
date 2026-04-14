@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Link from "next/link";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
@@ -61,7 +61,7 @@ type ShakeGuideConfig = {
 
 export function buildShakeGuideMetadata(title: string, description: string): Metadata {
   return {
-    title: `${title} | ProteinLab`,
+    title: `${title}`,
     description,
   };
 }

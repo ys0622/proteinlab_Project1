@@ -1,9 +1,10 @@
+﻿import { buildGuideJsonLd } from "@/app/lib/guideJsonLd";
 import Link from "next/link";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 
 export const metadata = {
-  title: "단백질 음료로 식사대용 가능할까 | 식사 보완용 음료 기준 정리 | ProteinLab",
+  title: "단백질 음료로 식사대용 가능할까 | 식사 보완용 음료 기준 정리",
   description:
     "단백질 음료를 식사 대신 마셔도 되는지, 식사 보완용 음료와 단순 보충용 RTD의 차이, 언제 쉐이크로 넘어가야 하는지 정리했습니다.",
 };
@@ -48,8 +49,10 @@ const cases = [
 ];
 
 export default function ProteinDrinkMealReplacementPage() {
+  const jsonLd = buildGuideJsonLd({ title: (metadata as {title:string;description:string}).title, description: (metadata as {title:string;description:string}).description, url: 'https://proteinlab.kr/guides/intake-strategy-health/protein-drink-meal-replacement' });
   return (
     <div className="min-h-screen bg-white">
+      {jsonLd.map((item, i) => (<script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(item) }} />))}
       <Header />
       <section className="w-full border-t border-b bg-[var(--hero-bg)]" style={{ borderColor: "var(--hero-border)" }}>
         <div className="mx-auto max-w-[1200px] px-4 py-5 md:px-6 md:py-6">

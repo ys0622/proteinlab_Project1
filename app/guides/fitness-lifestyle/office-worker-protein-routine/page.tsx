@@ -1,9 +1,10 @@
+﻿import { buildGuideJsonLd } from "@/app/lib/guideJsonLd";
 import Link from "next/link";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 
 export const metadata = {
-  title: "직장인 단백질 루틴 제품 선택법 | 아침·사무실·야근 기준 정리 | ProteinLab",
+  title: "직장인 단백질 루틴 제품 선택법 | 아침·사무실·야근 기준 정리",
   description:
     "직장인이 아침 공복, 오전 간식, 점심 공백, 퇴근 후 운동, 야근까지 하루 루틴에서 어떤 단백질 제품을 고르면 좋은지 정리했습니다.",
 };
@@ -71,8 +72,10 @@ const relatedLinks = [
 ];
 
 export default function OfficeWorkerProteinRoutinePage() {
+  const jsonLd = buildGuideJsonLd({ title: (metadata as {title:string;description:string}).title, description: (metadata as {title:string;description:string}).description, url: 'https://proteinlab.kr/guides/fitness-lifestyle/office-worker-protein-routine' });
   return (
     <div className="min-h-screen bg-white">
+      {jsonLd.map((item, i) => (<script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(item) }} />))}
       <Header />
       <section className="w-full border-t border-b bg-[var(--hero-bg)]" style={{ borderColor: "var(--hero-border)" }}>
         <div className="mx-auto max-w-[1200px] px-4 py-5 md:px-6 md:py-6">

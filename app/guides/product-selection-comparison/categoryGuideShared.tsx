@@ -70,24 +70,24 @@ const trackBHubLink: CategoryGuideLink = {
 export function buildCategoryGuideMetadata(config: CategoryGuideConfig): Metadata {
   const canonical = `https://proteinlab.kr/guides/product-selection-comparison/${config.slug}`;
   return {
-    title: `${config.title} | ProteinLab`,
+    title: config.title,
     description: config.description,
     keywords: config.keywords,
     alternates: { canonical },
     openGraph: {
-      title: `${config.title} | ProteinLab`,
+      title: config.title,
       description: config.description,
       url: canonical,
       type: "article",
       locale: "ko_KR",
       siteName: "ProteinLab",
-      images: [{ url: "/proteinlab-logo.png", alt: `${config.title} - ProteinLab` }],
+      images: [{ url: "/proteinlab-logo.png", width: 81, height: 88, alt: "ProteinLab" }],
+      ...(config.updatedAt ? { modifiedTime: config.updatedAt } : {}),
     },
     twitter: {
-      card: "summary_large_image",
-      title: `${config.title} | ProteinLab`,
+      card: "summary",
+      title: config.title,
       description: config.description,
-      images: ["/proteinlab-logo.png"],
     },
   };
 }
