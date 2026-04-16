@@ -1,5 +1,136 @@
 [
   {
+    "slug": "harim-chicken-protein-savory-240",
+    "brand": "하림",
+    "name": "닭가슴살 프로틴 (고소한맛)",
+    "capacity": "240mL",
+    "variant": "일반",
+    "tags": [
+      "PET"
+    ],
+    "proteinPerServing": 21,
+    "calories": 120,
+    "sugar": 3,
+    "density": "8.8g/100ml",
+    "productUrl": "#",
+    "productType": "drink",
+    "gradeTags": [
+      "단백질 밀도 B",
+      "다이어트 B",
+      "퍼포먼스 C"
+    ],
+    "manufacturer": "하림",
+    "flavor": "고소한맛",
+    "bcaa": "3270mg",
+    "proteinSource": "닭가슴살",
+    "fat": 2.3,
+    "sodium": 400,
+    "calorieDensity": "50.0kcal/100ml",
+    "drinkType": "워터형",
+    "nutritionPerBottle": {
+      "caloriesKcal": 120,
+      "proteinG": 21,
+      "carbsG": 4,
+      "sugarsG": 3,
+      "fatG": 2.3,
+      "satFatG": 1.2,
+      "transFatG": 0,
+      "cholesterolMg": 15,
+      "sodiumMg": 400,
+      "calciumMg": 300,
+      "magnesiumMg": 18,
+      "bcaaMg": 3270
+    },
+    "officialUrl": "https://harimmall.com",
+    "needsServingCheck": false
+  },
+  {
+    "slug": "labnosh-protein-max-choco-400",
+    "brand": "랩노쉬",
+    "name": "프로틴 드링크 맥스 (초코)",
+    "capacity": "400mL",
+    "variant": "일반",
+    "tags": [
+      "PET"
+    ],
+    "proteinPerServing": 52,
+    "calories": 235,
+    "sugar": 0,
+    "density": "13.0g/100ml",
+    "productUrl": "#",
+    "productType": "drink",
+    "gradeTags": [
+      "단백질 밀도 A",
+      "다이어트 A",
+      "퍼포먼스 A"
+    ],
+    "manufacturer": "랩노쉬",
+    "flavor": "초코",
+    "bcaa": "9100mg",
+    "proteinSource": "혼합",
+    "fat": 0,
+    "sodium": 250,
+    "calorieDensity": "58.8kcal/100ml",
+    "drinkType": "밀크형",
+    "nutritionPerBottle": {
+      "caloriesKcal": 235,
+      "proteinG": 52,
+      "carbsG": 5,
+      "sugarsG": 0,
+      "fatG": 0,
+      "satFatG": 0.6,
+      "cholesterolMg": 15,
+      "sodiumMg": 250,
+      "bcaaMg": 9100
+    },
+    "coupangUrl": "https://www.coupang.com/np/search?q=%EB%9E%A9%EB%85%B8%EC%89%AC+%ED%94%84%EB%A1%9C%ED%8B%B4+%EB%93%9C%EB%A7%81%ED%81%AC+%EB%A7%A5%EC%8A%A4",
+    "naverUrl": "https://search.shopping.naver.com/search/all?query=%EB%9E%A9%EB%85%B8%EC%89%AC+%ED%94%84%EB%A1%9C%ED%8B%B4+%EB%93%9C%EB%A7%81%ED%81AC+%EB%A7%A5%EC%8A%A4+%EC%B4%88%EC%BD%94",
+    "officialUrl": "https://labnosh.com/category/%EB%9E%A9%EB%85%B8%EC%89%AC/44/"
+  },
+  {
+    "slug": "labnosh-protein-max-strawberry-400",
+    "brand": "랩노쉬",
+    "name": "프로틴 드링크 맥스 (딸기)",
+    "capacity": "400mL",
+    "variant": "일반",
+    "tags": [
+      "PET"
+    ],
+    "proteinPerServing": 52,
+    "calories": 230,
+    "sugar": 0,
+    "density": "13.0g/100ml",
+    "productUrl": "#",
+    "productType": "drink",
+    "gradeTags": [
+      "단백질 밀도 A",
+      "다이어트 A",
+      "퍼포먼스 A"
+    ],
+    "manufacturer": "랩노쉬",
+    "flavor": "딸기",
+    "bcaa": "9100mg",
+    "proteinSource": "혼합",
+    "fat": 0,
+    "sodium": 250,
+    "calorieDensity": "57.5kcal/100ml",
+    "drinkType": "밀크형",
+    "nutritionPerBottle": {
+      "caloriesKcal": 230,
+      "proteinG": 52,
+      "carbsG": 4,
+      "sugarsG": 0,
+      "fatG": 0,
+      "satFatG": 0,
+      "cholesterolMg": 0,
+      "sodiumMg": 250,
+      "bcaaMg": 9100
+    },
+    "coupangUrl": "https://www.coupang.com/np/search?q=%EB%9E%A9%EB%85%B8%EC%89%AC+%ED%94%84%EB%A1%9C%ED%8B%B4+%EB%93%9C%EB%A7%81%ED%81%AC+%EB%A7%A5%EC%8A%A4",
+    "naverUrl": "https://search.shopping.naver.com/search/all?query=%EB%9E%A9%EB%85%B8%EC%89%AC+%ED%94%84%EB%A1%9C%ED%8B%B4+%EB%93%9C%EB%A7%81%ED%81AC+%EB%A7%A5%EC%8A%A4+%EB%94%B8%EA%B8%B0",
+    "officialUrl": "https://labnosh.com/category/%EB%9E%A9%EB%85%B8%EC%89%AC/44/"
+  },
+  {
     "slug": "newcare-all-protein-choco-245",
     "brand": "뉴케어",
     "name": "올프로틴 (초콜릿)",

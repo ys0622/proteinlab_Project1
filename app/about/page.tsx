@@ -1,19 +1,13 @@
 import Link from "next/link";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import { getProductsByCategoryAsync } from "../lib/productData";
 
 export const metadata = {
   title: "ProteinLab 소개 | 단백질 제품 성분 비교 플랫폼",
   description:
-    "ProteinLab은 국내 단백질 음료·바·요거트·쉐이크 300종 이상을 성분 데이터 기준으로 직접 수집·정리한 독립 비교 플랫폼입니다. 데이터 수집 기준, 운영 방침, 업데이트 정책을 안내합니다.",
+    "ProteinLab은 국내 단백질 음료·바·요거트·쉐이크를 성분 데이터 기준으로 직접 수집·정리한 독립 비교 플랫폼입니다. 데이터 수집 기준, 운영 방침, 업데이트 정책을 안내합니다.",
 };
-
-const stats = [
-  { label: "등록 제품", value: "300종+" },
-  { label: "비교 기준 항목", value: "단백질·당류·칼로리·밀도" },
-  { label: "데이터 출처", value: "제조사 공식 자료" },
-  { label: "업데이트", value: "상시 검토" },
-];
 
 const dataSourceList = [
   "제품 라벨(영양성분표) 및 공식 인증 자료",
@@ -41,7 +35,21 @@ const editorialList = [
   },
 ];
 
-export default function AboutPage() {
+export default async function AboutPage() {
+  const [drinks, bars, yogurts, shakes] = await Promise.all([
+    getProductsByCategoryAsync("drink"),
+    getProductsByCategoryAsync("bar"),
+    getProductsByCategoryAsync("yogurt"),
+    getProductsByCategoryAsync("shake"),
+  ]);
+  const totalCount = drinks.length + bars.length + yogurts.length + shakes.length;
+
+  const stats = [
+    { label: "등록 제품", value: `${totalCount}종` },
+    { label: "비교 기준 항목", value: "단백질·당류·칼로리·밀도" },
+    { label: "데이터 출처", value: "제조사 공식 자료" },
+    { label: "업데이트", value: "상시 검토" },
+  ];
   return (
     <div className="min-h-screen bg-white">
       <Header />
@@ -58,7 +66,7 @@ export default function AboutPage() {
             단백질 제품 성분 비교 플랫폼
           </h1>
           <p className="mt-3 max-w-2xl text-sm leading-6 text-[var(--foreground-muted)]">
-            ProteinLab은 국내에서 판매되는 단백질 음료·바·요거트·쉐이크 300종 이상을
+            ProteinLab은 국내에서 판매되는 단백질 음료·바·요거트·쉐이크 {totalCount}종을
             성분 데이터 기준으로 직접 수집·정리한 독립 비교 플랫폼입니다.
             마케팅 문구 대신 영양성분표 수치를 기준으로 소비자가 목적에 맞는 제품을 찾을 수 있도록 돕습니다.
           </p>

@@ -1,13 +1,40 @@
 {
-  "generated_at": "2026-04-16T08:14:58.234Z",
-  "total": 352,
+  "generated_at": "2026-04-16T11:27:57.765Z",
+  "total": 355,
   "categories": {
-    "drinks": 107,
+    "drinks": 110,
     "bars": 100,
     "yogurt": 57,
     "shake": 88
   },
   "products": [
+    {
+      "slug": "harim-chicken-protein-savory-240",
+      "name": "닭가슴살 프로틴 (고소한맛)",
+      "brand": "하림",
+      "category": "drinks",
+      "protein": 21,
+      "calories": 120,
+      "sugar": 3
+    },
+    {
+      "slug": "labnosh-protein-max-choco-400",
+      "name": "프로틴 드링크 맥스 (초코)",
+      "brand": "랩노쉬",
+      "category": "drinks",
+      "protein": 52,
+      "calories": 235,
+      "sugar": 0
+    },
+    {
+      "slug": "labnosh-protein-max-strawberry-400",
+      "name": "프로틴 드링크 맥스 (딸기)",
+      "brand": "랩노쉬",
+      "category": "drinks",
+      "protein": 52,
+      "calories": 230,
+      "sugar": 0
+    },
     {
       "slug": "newcare-all-protein-choco-245",
       "name": "올프로틴 (초콜릿)",

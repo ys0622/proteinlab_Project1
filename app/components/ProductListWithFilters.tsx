@@ -22,7 +22,7 @@ import {
   type ShakeFilters,
   type YogurtFilters,
 } from "../lib/productFilters";
-import { getPopularityScore } from "../lib/productPopularity";
+import { getPopularityScore, PINNED_DRINK_SLUGS } from "../lib/productPopularity";
 import { trackEvent } from "@/lib/gtag";
 import CategoryTabs from "./CategoryTabs";
 import FilterSection from "./FilterSection";
@@ -161,6 +161,14 @@ function getRecommendedScore(
   productType: ProductCategory,
   index: number,
 ): number {
+  // 임시 고정 추천: 데이터 축적 전까지 지정 슬러그를 최상단에 고정
+  if (productType === "drink" && PINNED_DRINK_SLUGS.length > 0) {
+    const pinnedIdx = PINNED_DRINK_SLUGS.indexOf(product.slug ?? "");
+    if (pinnedIdx !== -1) {
+      return 10000 - pinnedIdx * 1000; // 10000 / 9000 / 8000 ...
+    }
+  }
+
   const density = getDensityValue(product);
   const popularity = getPopularityScore(product, productType) ?? getFallbackPopularity(index);
 

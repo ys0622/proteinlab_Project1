@@ -1,8 +1,20 @@
 import type { ProductDetailProps } from "../data/products";
 
+/**
+ * 임시 고정 추천 슬러그 (추천순 최상단에 고정)
+ * 실제 트래픽·판매 데이터가 축적되면 popularitySeeds로 대체하고 이 배열을 비울 것.
+ * 순서대로 1위, 2위, 3위...로 고정됨.
+ */
+export const PINNED_DRINK_SLUGS: string[] = [
+  "labnosh-protein-max-choco-400",
+  "labnosh-protein-max-strawberry-400",
+  "newcare-all-protein-41g",
+];
+
 const popularitySeeds = {
   drink: [
     { score: 1620, matchers: ["셀렉스", "프로핏"] },
+    { score: 2100, matchers: ["랩노쉬", "맥스"] },
     { score: 1540, matchers: ["랩노쉬", "프로틴 드링크"] },
     { score: 1480, matchers: ["뉴케어", "올프로틴"] },
     { score: 1410, matchers: ["더단백"] },
