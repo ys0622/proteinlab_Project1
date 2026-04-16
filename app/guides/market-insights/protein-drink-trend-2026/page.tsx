@@ -3,14 +3,14 @@ import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 
 export const metadata = {
-  title: "2026 단백질 음료 시장 트렌드 | 고단백·저당 RTD 변화",
-  description: "2026년 단백질 음료 시장 트렌드를 초고단백 RTD, 저당 설계, 시니어 건강관리형, 편의점 단품 구매 흐름까지 자료 기반으로 정리합니다.",
+  title: "2026 단백질 음료 시장 트렌드 | 45g·52g 초고단백 경쟁",
+  description: "테이크핏 몬스터 45g 리뉴얼과 랩노쉬 52g 초고함량 제품 출시 준비까지, 2026년 단백질 음료 시장의 초고단백 경쟁과 저당 RTD 흐름을 정리합니다.",
   alternates: {
     canonical: "https://proteinlab.kr/guides/market-insights/protein-drink-trend-2026",
   },
   openGraph: {
-    title: "2026 단백질 음료 시장 트렌드 | 고단백·저당 RTD 변화",
-    description: "2026년 단백질 음료 시장 트렌드를 초고단백 RTD, 저당 설계, 시니어 건강관리형, 편의점 단품 구매 흐름까지 자료 기반으로 정리합니다.",
+    title: "2026 단백질 음료 시장 트렌드 | 45g·52g 초고단백 경쟁",
+    description: "테이크핏 몬스터 45g 리뉴얼과 랩노쉬 52g 초고함량 제품 출시 준비까지, 2026년 단백질 음료 시장의 초고단백 경쟁과 저당 RTD 흐름을 정리합니다.",
     url: "https://proteinlab.kr/guides/market-insights/protein-drink-trend-2026",
     type: "article",
     locale: "ko_KR",
@@ -18,8 +18,8 @@ export const metadata = {
   },
   twitter: {
     card: "summary",
-    title: "2026 단백질 음료 시장 트렌드 | 고단백·저당 RTD 변화",
-    description: "2026년 단백질 음료 시장 트렌드를 초고단백 RTD, 저당 설계, 시니어 건강관리형, 편의점 단품 구매 흐름까지 자료 기반으로 정리합니다.",
+    title: "2026 단백질 음료 시장 트렌드 | 45g·52g 초고단백 경쟁",
+    description: "테이크핏 몬스터 45g 리뉴얼과 랩노쉬 52g 초고함량 제품 출시 준비까지, 2026년 단백질 음료 시장의 초고단백 경쟁과 저당 RTD 흐름을 정리합니다.",
   },
 };
 
@@ -30,7 +30,7 @@ const articleJsonLd = {
   description: "2026년 단백질 음료 시장 트렌드를 초고단백 RTD, 저당 설계, 시니어 건강관리형, 편의점 단품 구매 흐름까지 자료 기반으로 정리합니다.",
   inLanguage: "ko-KR",
   mainEntityOfPage: "https://proteinlab.kr/guides/market-insights/protein-drink-trend-2026",
-  dateModified: "2026-04-13",
+  dateModified: "2026-04-16",
   author: { "@type": "Organization", name: "ProteinLab" },
   publisher: {
     "@type": "Organization",
@@ -41,8 +41,8 @@ const articleJsonLd = {
 
 const trendCards = [
   {
-    title: "40g 이상 초고단백 경쟁",
-    body: "2025년부터 테이크핏 몬스터 43g, 닥터유 40g, 뉴케어 올프로틴 41g 같은 350mL 초고단백 RTD가 한 카테고리처럼 묶이기 시작했습니다.",
+    title: "45g 이상 초고단백 경쟁",
+    body: "2026년에는 테이크핏 몬스터가 45g으로 리뉴얼되고, 랩노쉬도 52g 초고함량 제품 출시를 준비하면서 40g대 경쟁이 50g대까지 확장되는 흐름입니다.",
     tag: "고단백",
   },
   {
@@ -58,7 +58,8 @@ const trendCards = [
 ];
 
 const changeRows = [
-  ["남양유업 테이크핏", "2025-05-02", "테이크핏 몬스터 43g 출시", "40g 이상 초고단백 시장을 본격적으로 열어젖힌 제품군입니다."],
+  ["남양유업 테이크핏", "2026-03-24", "테이크핏 몬스터 45g 리뉴얼", "기존 43g에서 45g으로 높이며 350mL RTD 초고단백 경쟁의 기준선을 다시 끌어올렸습니다."],
+  ["랩노쉬", "2026년 출시 준비", "52g 초고함량 제품 준비", "공개 판매 전 단계지만, 50g대 초고함량 검색 수요를 만들 가능성이 높은 신호입니다."],
   ["오리온 닥터유", "2025년", "프로 단백질 드링크 40g 라인업 확장", "초코 중심에서 딸기 SKU까지 늘리며 맛 진입 장벽을 낮췄습니다."],
   ["대상웰라이프 뉴케어", "2025년", "올프로틴 41g 출시", "균형영양식 브랜드가 초고단백 RTD로 확장한 상징적인 사례입니다."],
   ["매일유업 셀렉스", "2021~2025 누적", "웨이프로핏·WPI RTD 강화", "WPI와 워터형 경험을 먼저 밀어온 브랜드라 저당·가벼운 음용감 트렌드와 연결됩니다."],
@@ -67,7 +68,7 @@ const changeRows = [
 
 const insightPoints = [
   "2026년에는 '단백질 몇 g인가'만으로는 차별화가 어렵고, 당류와 음용감까지 함께 설계한 제품이 유리합니다.",
-  "초고단백 40g대 제품은 운동 보충형으로 세분화되고, 20g 전후 제품은 입문형·일상형으로 더 뚜렷하게 갈립니다.",
+  "초고단백 제품은 40g대에서 45g·52g 경쟁으로 이동하고, 20g 전후 제품은 입문형·일상형으로 더 뚜렷하게 갈립니다.",
   "워터형과 락토프리 키워드는 취향 문제가 아니라 소화 부담과 생활 맥락을 해결하는 포지션으로 읽히고 있습니다.",
   "중장년 타깃은 여전히 중요합니다. 단순 고단백보다 균형 영양, 저당, 소화 부담 완화 메시지가 함께 붙는 흐름이 이어집니다.",
 ];
@@ -80,8 +81,8 @@ const retailRows = [
 
 const sourceLinks = [
   {
-    label: "남양유업 테이크핏 몬스터 43g 출시 기사",
-    href: "https://www.fntimes.com/html/view.php?ud=2025050208361824676febc6baa6_18",
+    label: "남양유업 테이크핏 몬스터 45g 리뉴얼 기사",
+    href: "https://megaeconomy.co.kr/news/newsview.php?dt=m&ncode=1065598767371798",
   },
   {
     label: "일동후디스 하이뮨 액티브 다크초코 31g 출시 기사",
@@ -115,13 +116,13 @@ export default function ProteinDrinkTrend2026Page() {
             <span className="rounded-md bg-[#f1ebf7] px-2 py-0.5 text-[11px] font-semibold tracking-wide text-[#6b4d7c]">TRACK E</span>
             <span className="rounded-md bg-[#f8f4fb] px-2 py-0.5 text-[11px] font-semibold tracking-wide text-[#6b4d7c]">연간 트렌드</span>
             <span className="text-[11px] font-medium text-[var(--foreground-muted)]">6분 읽기</span>
-            <span className="text-[11px] font-medium text-[var(--foreground-muted)]">업데이트 2026-03-24</span>
+            <span className="text-[11px] font-medium text-[var(--foreground-muted)]">업데이트 2026-04-16</span>
           </div>
           <h1 className="mt-3 text-2xl font-bold leading-tight text-[var(--foreground)] md:text-3xl">
             2026 단백질 음료 시장 트렌드
           </h1>
           <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
-            2026년 국내 단백질 음료 시장은 초고단백 경쟁, 저당 설계 확대, 중장년 건강관리형 강화라는 세 축으로 읽는 것이 가장 정확합니다.
+            2026년 국내 단백질 음료 시장은 45g·52g으로 올라가는 초고단백 경쟁, 저당 설계 확대, 중장년 건강관리형 강화라는 세 축으로 읽는 것이 가장 정확합니다.
             <br />
             최근 출시 흐름과 유통 현장 데이터를 함께 보면 브랜드별 다음 움직임도 훨씬 선명해집니다.
           </p>

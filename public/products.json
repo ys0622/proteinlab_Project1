@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-09T04:53:44.774Z",
+  "generated_at": "2026-04-16T08:14:58.234Z",
   "total": 352,
   "categories": {
     "drinks": 107,
@@ -535,8 +535,8 @@
       "name": "테이크핏 몬스터 (고소한맛)",
       "brand": "테이크핏",
       "category": "drinks",
-      "protein": 43,
-      "calories": 186,
+      "protein": 45,
+      "calories": 195,
       "sugar": 1
     },
     {
@@ -544,8 +544,8 @@
       "name": "테이크핏 몬스터 (초코바나나)",
       "brand": "테이크핏",
       "category": "drinks",
-      "protein": 43,
-      "calories": 186,
+      "protein": 45,
+      "calories": 195,
       "sugar": 1
     },
     {

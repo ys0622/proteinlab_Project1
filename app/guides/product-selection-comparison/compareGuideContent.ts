@@ -190,7 +190,7 @@ export const highProtein40gConfig: ComparePageConfig = {
     {
       title: "제품별 포지셔닝",
       items: [
-        { title: "테이크핏 몬스터", body: "43g로 총량 1위입니다. 당류 1g, 지방 1g 수준이라 운동 직후에 단백질만 강하게 채우려는 사용자에게 가장 직관적입니다." },
+        { title: "테이크핏 몬스터", body: "45g으로 리뉴얼되며 총량 기준을 다시 끌어올렸습니다. 당류 1g, 지방 1g 수준이라 운동 직후에 단백질만 강하게 채우려는 사용자에게 가장 직관적입니다." },
         { title: "뉴케어 올프로틴 41g", body: "41g급이면서 락토프리 변형으로 관리되는 점이 강점입니다. 칼로리와 지방은 조금 더 높지만 균형영양식 브랜드 성격이 살아 있습니다." },
         { title: "닥터유 40g", body: "40g급 입문용으로 접근하기 좋지만 지방 6.5g, 258kcal라 다이어트용으로는 덜 유리합니다. 맛 만족도를 우선하면 검토할 가치가 있습니다." },
       ],
@@ -213,7 +213,7 @@ export const highProtein40gConfig: ComparePageConfig = {
     },
   ],
   faq: [
-    { question: "40g 제품 중 운동 직후 한 병만 고르면 무엇이 낫나", answer: "ProteinLab DB 기준으로는 테이크핏 몬스터가 가장 단순명확합니다. 단백질 총량 43g, 밀도 12.3g/100mL, 당류 1g이라 보충 목적에 가장 잘 맞습니다." },
+    { question: "40g 제품 중 운동 직후 한 병만 고르면 무엇이 낫나", answer: "ProteinLab DB 기준으로는 테이크핏 몬스터가 가장 단순명확합니다. 리뉴얼 후 단백질 총량 45g, 밀도 12.9g/100mL, 당류 1g이라 보충 목적에 가장 잘 맞습니다." },
     { question: "뉴케어 올프로틴 41g은 왜 추천되나", answer: "락토프리 변형으로 관리되고 균형형 보충 맥락이 있어 일반 밀크형 RTD가 부담스러운 사용자에게 선택지가 됩니다. 다만 칼로리와 지방은 테이크핏 몬스터보다 높습니다." },
     { question: "닥터유 40g은 다이어트용으로 괜찮나", answer: "1병 기준 258kcal, 지방 6.5g이라 다이어트용으로는 우선순위가 낮습니다. 맛과 포만감은 장점이지만 체중 관리 목적이라면 더 가벼운 제품이 낫습니다." },
   ],
@@ -577,8 +577,8 @@ proteinDrinkBoxValueConfig.jsonLd = [articleJsonLd(proteinDrinkBoxValueConfig), 
 
 export const doctoruVsTakefitMonsterConfig: ComparePageConfig = {
   slug: "doctoru-40g-vs-takefit-monster-43g",
-  title: "닥터유PRO 40g vs 테이크핏 몬스터 43g",
-  description: "닥터유 40g과 테이크핏 몬스터 43g을 단백질, 당류, 칼로리, 지방, 맛 포지셔닝 기준으로 직접 비교합니다.",
+  title: "닥터유PRO 40g vs 테이크핏 몬스터 45g",
+  description: "닥터유 40g과 45g으로 리뉴얼된 테이크핏 몬스터를 단백질, 당류, 칼로리, 지방, 맛 포지셔닝 기준으로 직접 비교합니다.",
   keywords: ["닥터유 40g 테이크핏 비교", "닥터유PRO vs 테이크핏 몬스터", "고단백 단백질 음료"],
   badge: "고단백 2자 비교",
   readingTime: "4분 읽기",
@@ -591,7 +591,7 @@ export const doctoruVsTakefitMonsterConfig: ComparePageConfig = {
     "운동 보충은 테이크핏, 맛 중심 진입은 닥터유로 정리하면 빠릅니다.",
   ],
   comparisonTitle: "핵심 비교표",
-  comparisonColumns: ["닥터유 40g", "테이크핏 몬스터 43g"],
+  comparisonColumns: ["닥터유 40g", "테이크핏 몬스터 45g"],
   comparisonRows: buildComparisonRows([
     { label: "브랜드", values: [dryou40.brand, takefitMonster.brand] },
     { label: "단백질", values: [`${dryou40.proteinPerServing}g`, `${takefitMonster.proteinPerServing}g`] },
@@ -616,7 +616,7 @@ export const doctoruVsTakefitMonsterConfig: ComparePageConfig = {
       title: "목적별 선택",
       items: [
         { title: "맛이 중요한 사람", body: "닥터유 40g이 낫습니다. 초코우유에 가까운 방향이라 40g급 입문 부담을 줄여줍니다." },
-        { title: "단백질 함량 극대화", body: "테이크핏 몬스터가 더 낫습니다. 총량 43g, 밀도 12.3g/100mL라 같은 350mL 안에서 더 공격적입니다." },
+        { title: "단백질 함량 극대화", body: "테이크핏 몬스터가 더 낫습니다. 리뉴얼 후 총량 45g, 밀도 12.9g/100mL라 같은 350mL 안에서 더 공격적입니다." },
         { title: "두 제품 사이에서 고민될 때", body: "운동 목적이 뚜렷하면 테이크핏, 맛 위주 진입이면 닥터유로 고르면 거의 정리됩니다." },
       ],
     },
@@ -897,7 +897,7 @@ export const proteinDrinkByFlavorConfig: ComparePageConfig = {
       items: [
         { title: "가장 무난한 건 초코", body: "초코 계열은 단백질 음료 특유의 맛을 가장 잘 감춰줍니다. 입문자라면 닥터유나 셀렉스 초코 계열부터 시작하는 편이 실패 확률이 낮습니다." },
         { title: "상큼하게 마시려면 복숭아·아메리카노", body: "셀렉스 웨이프로핏 복숭아와 아메리카노는 워터형이라 훨씬 가볍습니다. 밀크형 RTD가 무거웠던 사람에게 특히 잘 맞습니다." },
-        { title: "고단백도 맛있게 가고 싶다면 바나나", body: "테이크핏 몬스터 초코바나나는 43g급인데도 디저트형 느낌이 있어 고단백 진입 장벽을 낮춰줍니다." },
+        { title: "고단백도 맛있게 가고 싶다면 바나나", body: "테이크핏 몬스터 초코바나나는 45g급인데도 디저트형 느낌이 있어 고단백 진입 장벽을 낮춰줍니다." },
       ],
     },
     {
@@ -954,7 +954,7 @@ export const proteinDrinkTasteTipsConfig: ComparePageConfig = {
   comparisonColumns: ["무난한 초코", "가벼운 워터형", "고단백인데 맛 좋은 편", "부드러운 바나나"],
   comparisonRows: buildComparisonRows([
     { label: "추천 제품", values: [dryouChoco.name, sellexPeach.name, "테이크핏 몬스터 (초코바나나)", dryouBanana.name] },
-    { label: "단백질", values: [`${dryouChoco.proteinPerServing}g`, `${sellexPeach.proteinPerServing}g`, "43g", `${dryouBanana.proteinPerServing}g`] },
+    { label: "단백질", values: [`${dryouChoco.proteinPerServing}g`, `${sellexPeach.proteinPerServing}g`, `${takefitMonsterChocobanana.proteinPerServing}g`, `${dryouBanana.proteinPerServing}g`] },
     { label: "맛 포인트", values: ["초코우유형", "상큼함", "디저트형 고단백", "부드러운 바나나"] },
     { label: "추천 이유", values: ["입문 실패 확률 낮음", "밀크향이 부담스러울 때", "맛과 함량을 같이 잡기 쉬움", "초코보다 부드러운 쪽"] },
   ]),
@@ -1114,7 +1114,7 @@ export const takefitLineupConfig: ComparePageConfig = {
     { label: "단백질", values: [`${takefitMax.proteinPerServing}g`, `${takefitMonster.proteinPerServing}g`, `${takefitPro.proteinPerServing}g`] },
     { label: "칼로리", values: [`${takefitMax.calories}kcal`, `${takefitMonster.calories}kcal`, `${takefitPro.calories}kcal`] },
     { label: "당류", values: [`${takefitMax.sugar}g`, `${takefitMonster.sugar}g`, `${takefitPro.sugar}g`] },
-    { label: "특징", values: ["저당 표준형", "43g 초고단백", "워터형 500mL"] },
+    { label: "특징", values: ["저당 표준형", "45g 초고단백", "워터형 500mL"] },
     { label: "추천 목적", values: ["일반 운동·다이어트", "집중 보충", "가벼운 수분형 보충"] },
   ]),
   sections: [
@@ -1122,7 +1122,7 @@ export const takefitLineupConfig: ComparePageConfig = {
       title: "핵심 차이 한 줄 정리",
       items: [
         { title: "맥스", body: "250mL에 24g이라 테이크핏의 표준형입니다. 다이어트와 일반 운동용으로 가장 범용적입니다." },
-        { title: "몬스터", body: "350mL에 43g으로 함량 최우선 라인입니다. 40g대 비교군 안에서도 가장 공격적입니다." },
+        { title: "몬스터", body: "350mL에 45g으로 리뉴얼된 함량 최우선 라인입니다. 40g대 비교군 안에서도 가장 공격적입니다." },
         { title: "프로", body: "500mL 워터형이라 마시는 느낌이 완전히 다릅니다. 단백질 25g인데도 100kcal라 가장 가볍습니다." },
       ],
     },
@@ -1130,7 +1130,7 @@ export const takefitLineupConfig: ComparePageConfig = {
       title: "목적별 추천",
       items: [
         { title: "처음 시작", body: "맥스가 가장 무난합니다. 과하지 않고, 저당·저칼로리 축에 있어서 실패 확률이 낮습니다." },
-        { title: "단백질 함량 극대화", body: "몬스터가 답입니다. 43g, 당류 1g, 186kcal라 고단백 보충 목적이 분명합니다." },
+        { title: "단백질 함량 극대화", body: "몬스터가 답입니다. 리뉴얼 후 45g, 당류 1g, 195kcal라 고단백 보충 목적이 분명합니다." },
         { title: "가볍게 마시고 싶을 때", body: "프로가 가장 편합니다. 워터형이라 밀크형 RTD가 무거운 사람에게 특히 잘 맞습니다." },
       ],
     },
@@ -1153,13 +1153,13 @@ export const takefitLineupConfig: ComparePageConfig = {
   ],
   faq: [
     { question: "테이크핏에서 가장 무난한 첫 제품은 무엇인가", answer: "맥스입니다. 24g급 저당형이라 일반 운동과 다이어트 병행에 가장 무난합니다." },
-    { question: "테이크핏 몬스터는 누구에게 맞나", answer: "한 병에 단백질을 크게 채우고 싶은 사람에게 맞습니다. 43g이라 고강도 운동이나 집중 보충용으로 읽는 편이 맞습니다." },
+    { question: "테이크핏 몬스터는 누구에게 맞나", answer: "한 병에 단백질을 크게 채우고 싶은 사람에게 맞습니다. 리뉴얼 후 45g이라 고강도 운동이나 집중 보충용으로 읽는 편이 맞습니다." },
     { question: "테이크핏 프로는 운동용으로도 괜찮나", answer: "괜찮습니다. 다만 워터형이라 포만감보다 가벼운 수분형 보충에 더 가깝습니다. 밀크형 RTD와는 사용감이 다릅니다." },
   ],
   relatedGuides: [
     { title: "셀렉스 vs 테이크핏 vs 하이뮨", href: "/guides/product-selection-comparison/selex-vs-takefit-vs-himune", description: "대표 브랜드 3파전 속에서 테이크핏 위치를 봅니다." },
     { title: "단백질 음료 40g 이상 3종 비교", href: "/guides/product-selection-comparison/high-protein-40g-comparison", description: "몬스터를 다른 40g대 제품과 직접 비교합니다." },
-    { title: "닥터유 40g vs 테이크핏 몬스터 43g", href: "/guides/product-selection-comparison/doctoru-40g-vs-takefit-monster-43g", description: "몬스터 딥다이브 비교 페이지입니다." },
+    { title: "닥터유 40g vs 테이크핏 몬스터 45g", href: "/guides/product-selection-comparison/doctoru-40g-vs-takefit-monster-43g", description: "몬스터 딥다이브 비교 페이지입니다." },
   ],
   purchaseLinks: [
     { label: "테이크핏 맥스 보기", slug: takefitMax.slug },
@@ -1967,7 +1967,7 @@ export const proteinDrinkByContentConfig: ComparePageConfig = {
   readingTime: "6분 읽기",
   updatedAt: "2026-03-24",
   methodologyNote: "ProteinLab DB 함량대 분류 기준",
-  intro: "단백질 음료는 9g부터 43g까지 범위가 크게 벌어져 있어서 브랜드만 보고 고르면 맞지 않는 제품을 고르기 쉽습니다. 실제로는 운동량, 식사 보완 여부, 다이어트 여부에 따라 적합한 함량대가 달라집니다.",
+  intro: "단백질 음료는 9g부터 45g까지 범위가 크게 벌어져 있어서 브랜드만 보고 고르면 맞지 않는 제품을 고르기 쉽습니다. 실제로는 운동량, 식사 보완 여부, 다이어트 여부에 따라 적합한 함량대가 달라집니다.",
   summary: [
     "20g 미만은 식사 보완형, 20g대는 시장 주류, 30g대부터는 고함량, 40g 이상은 집중 보충형으로 읽는 것이 가장 쉽습니다.",
     "함량이 높을수록 항상 좋은 것은 아닙니다. 칼로리와 포만감도 같이 올라갑니다.",
@@ -2010,7 +2010,7 @@ export const proteinDrinkByContentConfig: ComparePageConfig = {
     {
       title: "40g 이상",
       items: [
-        { title: "대표 제품", body: "테이크핏 몬스터 43g, 뉴케어 올프로틴 41g, 닥터유 40g이 대표적입니다." },
+        { title: "대표 제품", body: "테이크핏 몬스터 45g, 뉴케어 올프로틴 41g, 닥터유 40g이 대표적입니다. 여기에 랩노쉬 52g 제품이 출시되면 50g대 초고함량 구간도 따로 봐야 합니다." },
         { title: "잘 맞는 사람", body: "하루 단백질을 한 번에 크게 채우고 싶은 사람, 고강도 운동 사용자에게 적합합니다." },
         { title: "예외 포인트", body: "뉴케어 41g은 락토프리라 같은 40g대 안에서도 성격이 다릅니다. 고단백이면서 유당 부담을 낮추고 싶을 때 예외적으로 우선순위가 올라갑니다." },
       ],
@@ -2315,7 +2315,7 @@ export const dryouLineupConfig: ComparePageConfig = {
     { question: "닥터유는 왜 40g대에서도 계속 언급되나", answer: "테이크핏이나 뉴케어와 달리 맛 중심 차별점이 뚜렷하기 때문입니다." },
   ],
   relatedGuides: [
-    { title: "닥터유 40g vs 테이크핏 몬스터 43g", href: "/guides/product-selection-comparison/doctoru-40g-vs-takefit-monster-43g", description: "닥터유 40g 라인을 가장 직접적으로 비교한 페이지입니다." },
+    { title: "닥터유 40g vs 테이크핏 몬스터 45g", href: "/guides/product-selection-comparison/doctoru-40g-vs-takefit-monster-43g", description: "닥터유 40g 라인을 가장 직접적으로 비교한 페이지입니다." },
     { title: "단백질 음료 40g 이상 3종 비교", href: "/guides/product-selection-comparison/high-protein-40g-comparison", description: "뉴케어까지 포함한 상위 비교입니다." },
     { title: "단백질 음료 함량대별 완전 정리", href: "/guides/product-selection-comparison/protein-drink-by-content", description: "닥터유가 어떤 함량대에 속하는지 큰 그림에서 다시 봅니다." },
   ],
