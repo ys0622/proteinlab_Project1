@@ -448,9 +448,9 @@ export default async function ProductDetailPage({ params }: PageProps) {
           </div>
 
           <div className="mt-6 flex flex-col gap-6 lg:flex-row lg:items-stretch lg:gap-8">
-            <div className="w-full flex-shrink-0 lg:max-w-[320px]">
+            <div className="w-full flex-shrink-0 lg:max-w-[240px]">
               <div
-                className="relative flex w-full min-h-[220px] items-center justify-center overflow-hidden rounded-2xl border border-[#e8e6e3] bg-white sm:min-h-[240px] lg:h-full lg:min-h-0"
+                className="relative flex w-full min-h-[180px] items-center justify-center overflow-hidden rounded-2xl border border-[#e8e6e3] bg-white sm:min-h-[200px] lg:h-full lg:min-h-0"
                 style={{ borderRadius: "16px" }}
               >
                 {productImageUrl ? (
@@ -459,7 +459,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
                     alt={`${product.brand} ${product.name}`}
                     fill
                     className="object-contain p-1 sm:p-2"
-                    sizes="(max-width: 640px) 88vw, (max-width: 1024px) 48vw, 320px"
+                    sizes="(max-width: 640px) 80vw, (max-width: 1024px) 40vw, 240px"
                     unoptimized
                   />
                 ) : (
