@@ -55,8 +55,6 @@ export default function NewProductPage() {
     tags: "",
     productUrl: "#",
     coupangUrl: "",
-    naverUrl: "",
-    officialUrl: "",
     // Nutrition
     proteinPerServing: "",
     calories: "",
@@ -125,8 +123,6 @@ export default function NewProductPage() {
         tags: form.tags.split(",").map((t) => t.trim()).filter(Boolean),
         productUrl: form.productUrl.trim() || "#",
         coupangUrl: form.coupangUrl?.trim() || undefined,
-        naverUrl: (form as Record<string, string>).naverUrl?.trim() || undefined,
-        officialUrl: (form as Record<string, string>).officialUrl?.trim() || undefined,
         proteinPerServing: n(form.proteinPerServing),
         calories: n(form.calories),
         sugar: n(form.sugar),
@@ -412,41 +408,9 @@ export default function NewProductPage() {
           </div>
         </section>
 
-        {/* C. 구매 링크 */}
+        {/* C. 등급 & 링크 */}
         <section className="rounded-xl border border-[var(--border)] bg-[var(--background-card)] p-5">
-          <h2 className="text-sm font-semibold text-[var(--foreground)] mb-1">C. 구매 링크</h2>
-          <p className="text-xs text-[var(--foreground-muted)] mb-4">제품 등록 시 반드시 쿠팡 링크를 입력하세요. 비워두면 구매 버튼이 비활성화됩니다.</p>
-          <div className="space-y-3">
-            <Field label="쿠팡 링크 ★" hint="필수 — https://www.coupang.com/vp/products/... 또는 파트너스 단축 링크">
-              <input
-                value={form.coupangUrl}
-                onChange={(e) => set("coupangUrl", e.target.value)}
-                className={inputCls}
-                placeholder="https://www.coupang.com/vp/products/12345678"
-              />
-            </Field>
-            <Field label="네이버 링크" hint="선택">
-              <input
-                value={(form as Record<string, string>).naverUrl ?? ""}
-                onChange={(e) => set("naverUrl" as keyof typeof form, e.target.value)}
-                className={inputCls}
-                placeholder="https://search.shopping.naver.com/..."
-              />
-            </Field>
-            <Field label="공식몰 링크" hint="선택">
-              <input
-                value={(form as Record<string, string>).officialUrl ?? ""}
-                onChange={(e) => set("officialUrl" as keyof typeof form, e.target.value)}
-                className={inputCls}
-                placeholder="https://brand.com/product/..."
-              />
-            </Field>
-          </div>
-        </section>
-
-        {/* D. 등급 & 메모 */}
-        <section className="rounded-xl border border-[var(--border)] bg-[var(--background-card)] p-5">
-          <h2 className="text-sm font-semibold text-[var(--foreground)] mb-4">D. 등급 & 메모</h2>
+          <h2 className="text-sm font-semibold text-[var(--foreground)] mb-4">C. 등급 & 링크</h2>
           <div className="space-y-3">
             <Field label="등급 태그 (쉼표 구분)">
               <input
@@ -454,6 +418,14 @@ export default function NewProductPage() {
                 onChange={(e) => set("gradeTags", e.target.value)}
                 className={inputCls}
                 placeholder="단백질 밀도 A, 다이어트 B"
+              />
+            </Field>
+            <Field label="쿠팡 링크 (coupangUrl)" hint="비워두면 쿠팡 버튼 비활성화">
+              <input
+                value={form.coupangUrl}
+                onChange={(e) => set("coupangUrl", e.target.value)}
+                className={inputCls}
+                placeholder="https://link.coupang.com/... 또는 https://www.coupang.com/vp/products/..."
               />
             </Field>
             <Field label="관리자 메모">
