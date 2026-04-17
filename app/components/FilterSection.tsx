@@ -27,6 +27,8 @@ const chipUnselected =
   "border-[var(--border)] bg-white text-[#454545] hover:border-[var(--accent)] hover:bg-[var(--accent-light)] hover:text-[var(--accent)]";
 const chipSelected =
   "border-[var(--accent)] bg-[var(--accent-light)] font-medium text-[var(--accent)]";
+const detailFilterButton =
+  "inline-flex h-7 items-center gap-1.5 rounded-full border border-[#d8d3cc] bg-white px-3 text-[11px] font-bold text-[#454545] shadow-[0_1px_4px_rgba(50,40,30,0.06)] transition-colors hover:border-[var(--accent)] hover:bg-[var(--accent-light)] hover:text-[var(--accent)]";
 
 function FilterRow({ title, children }: { title: string; children: React.ReactNode }) {
   return (
@@ -116,7 +118,7 @@ export default function FilterSection(props: FilterSectionProps) {
     desktopFooterSlot,
   } = props;
   const [mobileFilterOpen, setMobileFilterOpen] = useState(false);
-  const [pcFilterOpen, setPcFilterOpen] = useState(true);
+  const [pcFilterOpen, setPcFilterOpen] = useState(false);
 
   const activeChips = useMemo((): string[] => {
     const chips: string[] = [];
@@ -394,7 +396,7 @@ export default function FilterSection(props: FilterSectionProps) {
           <button
             type="button"
             onClick={() => setMobileFilterOpen((current) => !current)}
-            className="flex items-center gap-1 py-0 pl-0.5 text-[11px] font-bold text-[#454545] hover:text-[var(--foreground)]"
+            className={detailFilterButton}
             aria-expanded={mobileFilterOpen}
           >
             상세 필터
@@ -434,10 +436,15 @@ export default function FilterSection(props: FilterSectionProps) {
             <button
               type="button"
               onClick={() => setPcFilterOpen((v) => !v)}
-              className="flex items-center gap-1 py-0 text-[11px] font-bold text-[#454545] hover:text-[var(--foreground)]"
+              className={detailFilterButton}
               aria-expanded={pcFilterOpen}
             >
               상세 필터
+              {activeChips.length > 0 ? (
+                <span className="inline-flex h-4 min-w-4 items-center justify-center rounded-full bg-[var(--accent)] px-1 text-[10px] leading-none text-white">
+                  {activeChips.length}
+                </span>
+              ) : null}
               <span className={`inline-block transition-transform duration-200 ${pcFilterOpen ? "rotate-180" : ""}`}>
                 ▼
               </span>
