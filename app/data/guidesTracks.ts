@@ -387,6 +387,17 @@ export const guideTracks: GuideTrack[] = [
           { label: "단백질 음료 선택 가이드", href: "/guides/product-selection-comparison/protein-drink-guide" },
         ],
       },
+      {
+        slug: "morning-protein-drink",
+        title: "아침 대용 단백질 음료",
+        description: "공복, 출근길, 점심 전 허기 기준으로 아침 대용 단백질 음료를 고르는 법을 정리합니다.",
+        searchIntent: "아침 대용 단백질 음료 추천",
+        futureFocus: ["공복 부담", "출근길 루틴", "식사대용 연결"],
+        internalLinkTargets: [
+          { label: "식사대용 전략", href: "/guides/intake-strategy-health/meal-replacement-strategy" },
+          { label: "단백질 음료 선택 가이드", href: "/guides/product-selection-comparison/protein-drink-guide" },
+        ],
+      },
     ],
   },
   {

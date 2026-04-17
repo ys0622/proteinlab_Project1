@@ -5,6 +5,7 @@ const sellex = getDrinkProduct("sellex-profit-milk-vanilla-250");
 const hymune = getDrinkProduct("hymune-balance-active-deepchoco-250");
 const takefitMax = getDrinkProduct("takefit-max-choco-250");
 const takefitMonster = getDrinkProduct("takefit-monster-goso-350");
+const labnoshMax = getDrinkProduct("labnosh-protein-max-choco-400");
 const newcare41 = getDrinkProduct("newcare-all-protein-41g");
 const dryou40 = getDrinkProduct("dryou-protein-40g-choco-350");
 const newcare25 = getDrinkProduct("newcare-all-protein-choco-245");
@@ -161,16 +162,17 @@ selexVsHimuneConfig.jsonLd = [articleJsonLd(selexVsHimuneConfig), faqJsonLd(sele
 
 export const highProtein40gConfig: ComparePageConfig = {
   slug: "high-protein-40g-comparison",
-  title: "단백질 음료 40g 이상 추천 비교 | 테이크핏·뉴케어·닥터유 2026",
-  description: "테이크핏 몬스터, 뉴케어 올프로틴 41g, 닥터유 40g을 단백질, 당류, 칼로리, 밀도 기준으로 직접 비교했습니다. 운동용, 락토프리, 맛 중심 중 무엇이 더 맞는지 바로 정리합니다.",
-  keywords: ["단백질 음료 40g", "고단백 단백질 음료 비교", "테이크핏 몬스터", "뉴케어 올프로틴 41g", "닥터유 40g"],
+  title: "단백질 음료 40g 이상 추천 비교 | 45g·52g 초고단백 RTD 2026",
+  description: "테이크핏 몬스터 45g, 뉴케어 올프로틴 41g, 닥터유 40g을 단백질, 당류, 칼로리, 밀도 기준으로 비교하고 랩노쉬 프로틴 맥스 52g까지 초고단백 RTD 흐름을 함께 정리합니다.",
+  keywords: ["단백질 음료 40g", "단백질 음료 45g", "단백질 음료 52g", "고단백 단백질 음료 비교", "테이크핏 몬스터", "랩노쉬 프로틴 맥스", "뉴케어 올프로틴 41g", "닥터유 40g"],
   badge: "고단백 비교",
   readingTime: "5분 읽기",
-  updatedAt: "2026-03-24",
-  methodologyNote: "ProteinLab DB 350mL 40g급 RTD 기준",
-  intro: "40g 이상 단백질 음료를 찾는 사람은 대체로 운동 후 보충 효율을 가장 먼저 봅니다. 하지만 실제로는 40g급끼리도 칼로리, 락토프리 여부, 맛 만족도가 꽤 다릅니다. 그래서 테이크핏, 뉴케어, 닥터유 대표 제품을 나란히 보면 어떤 한 병이 지금 목적에 맞는지 훨씬 빨리 판단할 수 있습니다.",
+  updatedAt: "2026-04-17",
+  methodologyNote: "ProteinLab DB 350mL 이상 40g급 RTD 기준 · 50g대 초고함량 제품은 별도 참고",
+  intro: "40g 이상 단백질 음료를 찾는 사람은 대체로 운동 후 보충 효율을 가장 먼저 봅니다. 2026년에는 테이크핏 몬스터가 45g으로 올라가고 랩노쉬 프로틴 맥스 52g 제품까지 등장하면서 검색 의도가 40g대에서 50g대 초고단백으로 넓어졌습니다. 다만 실제 선택은 총량만으로 끝나지 않고 칼로리, 락토프리 여부, 맛 만족도까지 같이 봐야 합니다.",
   summary: [
-    "운동 직후 단백질 효율만 보면 테이크핏 몬스터가 가장 직선적입니다.",
+    "운동 직후 단백질 효율만 보면 테이크핏 몬스터 45g이 가장 직선적입니다.",
+    `단백질 총량만 보면 ${labnoshMax.brand} ${labnoshMax.name} ${labnoshMax.proteinPerServing}g처럼 50g대 제품도 후보에 들어오지만, 칼로리와 음용 부담은 따로 봐야 합니다.`,
     "락토프리와 균형형 보충까지 같이 보려면 뉴케어 올프로틴 41g이 더 안정적입니다.",
     "맛 위주 첫 진입은 닥터유 40g이 편하지만 칼로리와 지방은 가장 높습니다.",
   ],
@@ -191,6 +193,7 @@ export const highProtein40gConfig: ComparePageConfig = {
       title: "제품별 포지셔닝",
       items: [
         { title: "테이크핏 몬스터", body: "45g으로 리뉴얼되며 총량 기준을 다시 끌어올렸습니다. 당류 1g, 지방 1g 수준이라 운동 직후에 단백질만 강하게 채우려는 사용자에게 가장 직관적입니다." },
+        { title: "랩노쉬 프로틴 맥스 52g", body: "단백질 총량 기준으로는 50g대 초고함량 구간을 여는 제품입니다. 다만 이 페이지의 표는 350mL 40g급 대표 3종을 직접 비교하고, 랩노쉬 맥스는 별도 비교 페이지에서 41g 뉴케어와 함께 읽는 편이 더 정확합니다." },
         { title: "뉴케어 올프로틴 41g", body: "41g급이면서 락토프리 변형으로 관리되는 점이 강점입니다. 칼로리와 지방은 조금 더 높지만 균형영양식 브랜드 성격이 살아 있습니다." },
         { title: "닥터유 40g", body: "40g급 입문용으로 접근하기 좋지만 지방 6.5g, 258kcal라 다이어트용으로는 덜 유리합니다. 맛 만족도를 우선하면 검토할 가치가 있습니다." },
       ],
@@ -198,7 +201,7 @@ export const highProtein40gConfig: ComparePageConfig = {
     {
       title: "목적별 최종 추천",
       items: [
-        { title: "운동 직후 단백질 집중 보충", body: "테이크핏 몬스터가 가장 깔끔합니다. 밀도 12.3g/100mL로 세 제품 중 최고이고 칼로리도 가장 안정적입니다." },
+        { title: "운동 직후 단백질 집중 보충", body: "테이크핏 몬스터가 가장 깔끔합니다. 밀도 12.9g/100mL 수준으로 세 제품 중 최고이고 칼로리도 가장 안정적입니다." },
         { title: "단백질 + 락토프리 접근성", body: "뉴케어 올프로틴 41g이 더 적합합니다. 유당 민감도가 있거나 일반 밀크형 RTD가 부담스러우면 우선순위가 올라갑니다." },
         { title: "맛 위주 첫 진입", body: "닥터유 40g은 초코 음용감 장점이 있지만 칼로리와 지방을 함께 감수해야 합니다. 체중 관리 중이라면 1순위로 두기 어렵습니다." },
       ],
@@ -214,13 +217,14 @@ export const highProtein40gConfig: ComparePageConfig = {
   ],
   faq: [
     { question: "40g 제품 중 운동 직후 한 병만 고르면 무엇이 낫나", answer: "ProteinLab DB 기준으로는 테이크핏 몬스터가 가장 단순명확합니다. 리뉴얼 후 단백질 총량 45g, 밀도 12.9g/100mL, 당류 1g이라 보충 목적에 가장 잘 맞습니다." },
+    { question: "랩노쉬 프로틴 맥스 52g은 40g 제품보다 무조건 좋은가", answer: "무조건 그렇지는 않습니다. 단백질 총량은 52g으로 강하지만, 한 병 칼로리와 포만감 부담까지 같이 봐야 합니다. 고강도 운동 후 한 번에 크게 채우려는 목적이면 후보가 되지만, 매일 가볍게 마실 제품을 찾는다면 20~45g 구간이 더 현실적일 수 있습니다." },
     { question: "뉴케어 올프로틴 41g은 왜 추천되나", answer: "락토프리 변형으로 관리되고 균형형 보충 맥락이 있어 일반 밀크형 RTD가 부담스러운 사용자에게 선택지가 됩니다. 다만 칼로리와 지방은 테이크핏 몬스터보다 높습니다." },
     { question: "닥터유 40g은 다이어트용으로 괜찮나", answer: "1병 기준 258kcal, 지방 6.5g이라 다이어트용으로는 우선순위가 낮습니다. 맛과 포만감은 장점이지만 체중 관리 목적이라면 더 가벼운 제품이 낫습니다." },
   ],
   relatedGuides: [
     { title: "단백질 음료 100mL당 단백질 순위", href: "/guides/product-selection-comparison/protein-density-ranking", description: "40g 제품이 전체 RTD에서 어느 정도 밀도인지 확인합니다." },
+    { title: "뉴케어 41g vs 랩노쉬 맥스 52g", href: "/compare/newcare-41g-vs-labnosh-max-drink", description: "41g과 52g 초고단백 RTD를 성분 기준으로 직접 비교합니다." },
     { title: "셀렉스 vs 테이크핏 vs 하이뮨", href: "/guides/product-selection-comparison/selex-vs-takefit-vs-himune", description: "브랜드 대표 20g급 제품과 비교해 차이를 읽습니다." },
-    commonRelated[1],
   ],
   purchaseLinks: [
     { label: "테이크핏 몬스터 박스 보기", slug: takefitMonster.slug },
@@ -232,17 +236,17 @@ highProtein40gConfig.jsonLd = [articleJsonLd(highProtein40gConfig), faqJsonLd(hi
 
 export const proteinDensityRankingConfig: ComparePageConfig = {
   slug: "protein-density-ranking",
-  title: "단백질 음료 100mL당 단백질 순위 | 104개 전수 계산 2026",
-  description: "ProteinLab DB 기준 104개 단백질 음료의 100mL당 단백질 함량을 직접 계산했습니다. 고단백 RTD 상위권과 실제 밀도 해석까지 한 번에 확인할 수 있습니다.",
+  title: "단백질 음료 100mL당 단백질 순위 | 110개 전수 계산 2026",
+  description: "ProteinLab DB 기준 110개 단백질 음료의 100mL당 단백질 함량을 직접 계산했습니다. 고단백 RTD 상위권과 실제 밀도 해석까지 한 번에 확인할 수 있습니다.",
   keywords: ["단백질 밀도", "단백질 음료 가성비", "단백질 음료 효율", "100mL당 단백질"],
   badge: "데이터 랭킹",
   readingTime: "5분 읽기",
-  updatedAt: "2026-03-24",
+  updatedAt: "2026-04-17",
   methodologyNote: "ProteinLab DB 단백질 ÷ 용량 × 100 계산",
-  intro: "한 병 기준으로만 보면 190mL 제품과 350mL 제품이 뒤섞여서 실제 효율이 잘 안 보입니다. 그래서 ProteinLab DB 음료 104개를 단백질 ÷ 용량 × 100 방식으로 다시 계산했습니다. 이 순위는 같은 양 대비 단백질이 얼마나 들어 있는지 가장 빠르게 확인하려는 사람에게 특히 유용합니다.",
+  intro: "한 병 기준으로만 보면 190mL 제품과 350mL 제품이 뒤섞여서 실제 효율이 잘 안 보입니다. 그래서 ProteinLab DB 음료 110개를 단백질 ÷ 용량 × 100 방식으로 다시 계산했습니다. 이 순위는 같은 양 대비 단백질이 얼마나 들어 있는지 가장 빠르게 확인하려는 사람에게 특히 유용합니다.",
   summary: [
     "현재 상위권은 40g 이상 고단백 RTD가 거의 장악하고 있습니다.",
-    "테이크핏 몬스터는 12.3g/100mL로 전체 최상위권이라 운동 보충용 기준이 분명합니다.",
+    "테이크핏 몬스터 45g은 12.9g/100mL 수준으로 전체 최상위권이라 운동 보충용 기준이 분명합니다.",
     "다만 밀도 1위가 항상 최종 1위는 아니어서 칼로리와 지방까지 같이 봐야 실제 선택이 완성됩니다.",
   ],
   comparisonTitle: "상위 20개 밀도 순위",
@@ -349,7 +353,7 @@ export const selexVsTakefitVsHimuneConfig: ComparePageConfig = {
   ],
   relatedGuides: [
     { title: "셀렉스 vs 하이뮨 비교", href: "/guides/product-selection-comparison/selex-vs-himune", description: "셀렉스와 하이뮨만 좁혀서 더 자세히 봅니다." },
-    { title: "단백질 음료 40g 이상 3종 비교", href: "/guides/product-selection-comparison/high-protein-40g-comparison", description: "20g급보다 더 높은 고단백 라인을 비교합니다." },
+    { title: "단백질 음료 40g 이상 비교", href: "/guides/product-selection-comparison/high-protein-40g-comparison", description: "20g급보다 더 높은 고단백 라인을 비교합니다." },
     commonRelated[0],
   ],
   purchaseLinks: [
@@ -495,7 +499,7 @@ export const proteinDrinkFor50sConfig: ComparePageConfig = {
   ],
   relatedGuides: [
     { title: "셀렉스 vs 하이뮨 비교", href: "/guides/product-selection-comparison/selex-vs-himune", description: "중장년층이 자주 비교하는 두 브랜드를 직접 비교합니다." },
-    { title: "단백질 음료 40g 이상 3종 비교", href: "/guides/product-selection-comparison/high-protein-40g-comparison", description: "초고단백 제품이 왜 중장년층에게는 과할 수 있는지 같이 확인합니다." },
+    { title: "단백질 음료 40g 이상 비교", href: "/guides/product-selection-comparison/high-protein-40g-comparison", description: "초고단백 제품이 왜 중장년층에게는 과할 수 있는지 같이 확인합니다." },
     commonRelated[1],
   ],
   purchaseLinks: [
@@ -632,10 +636,10 @@ export const doctoruVsTakefitMonsterConfig: ComparePageConfig = {
   faq: [
     { question: "3g 차이인데 왜 비교할 가치가 있나", answer: "실제 차이는 단백질 3g보다 칼로리, 지방, 맛 포지셔닝에서 더 크게 납니다. 그래서 체감은 수치 이상으로 갈립니다." },
     { question: "운동 직후에는 어느 쪽이 더 낫나", answer: "ProteinLab DB 기준으로는 테이크핏 몬스터가 더 낫습니다. 단백질 총량이 더 높고 당류와 지방이 더 낮아 보충 목적에 잘 맞습니다." },
-    { question: "뉴케어 올프로틴 41g은 왜 여기서 빠졌나", answer: "뉴케어는 락토프리와 균형형 보충 맥락이 강해 닥터유·테이크핏과 결이 조금 다릅니다. 세 제품 전체 비교는 40g 이상 3종 페이지에서 보는 편이 더 정확합니다." },
+    { question: "뉴케어 올프로틴 41g은 왜 여기서 빠졌나", answer: "뉴케어는 락토프리와 균형형 보충 맥락이 강해 닥터유·테이크핏과 결이 조금 다릅니다. 40g 이상 초고단백 흐름은 전용 비교 페이지에서 보는 편이 더 정확합니다." },
   ],
   relatedGuides: [
-    { title: "단백질 음료 40g 이상 3종 비교", href: "/guides/product-selection-comparison/high-protein-40g-comparison", description: "뉴케어까지 포함한 상위 비교입니다." },
+    { title: "단백질 음료 40g 이상 비교", href: "/guides/product-selection-comparison/high-protein-40g-comparison", description: "뉴케어와 랩노쉬까지 포함한 상위 비교입니다." },
     { title: "단백질 음료 100mL당 단백질 순위", href: "/guides/product-selection-comparison/protein-density-ranking", description: "두 제품이 전체 밀도 순위에서 어디쯤인지 확인합니다." },
     commonRelated[1],
   ],
@@ -767,7 +771,7 @@ export const proteinDrinkBeginnersGuideConfig: ComparePageConfig = {
       title: "다음 단계는 이렇게 가면 됩니다",
       items: [
         { title: "브랜드 비교가 궁금하면", body: "입문 제품을 하나 정한 뒤에는 셀렉스 vs 하이뮨, 셀렉스 vs 테이크핏 vs 하이뮨처럼 브랜드 비교로 넘어가면 됩니다." },
-        { title: "고단백이 궁금해지면", body: "20g급에 익숙해진 뒤 40g 이상 3종 비교로 가는 순서가 가장 자연스럽습니다. 처음부터 초고단백으로 갈 필요는 없습니다." },
+        { title: "고단백이 궁금해지면", body: "20g급에 익숙해진 뒤 40g 이상 비교로 가는 순서가 가장 자연스럽습니다. 처음부터 초고단백으로 갈 필요는 없습니다." },
         { title: "맛이 가장 중요하면", body: "입문자 단계에서는 수치보다 끝까지 마실 수 있는 맛이 더 중요할 수 있습니다. 그래서 단품 테스트가 항상 우선입니다." },
       ],
     },
@@ -1158,7 +1162,7 @@ export const takefitLineupConfig: ComparePageConfig = {
   ],
   relatedGuides: [
     { title: "셀렉스 vs 테이크핏 vs 하이뮨", href: "/guides/product-selection-comparison/selex-vs-takefit-vs-himune", description: "대표 브랜드 3파전 속에서 테이크핏 위치를 봅니다." },
-    { title: "단백질 음료 40g 이상 3종 비교", href: "/guides/product-selection-comparison/high-protein-40g-comparison", description: "몬스터를 다른 40g대 제품과 직접 비교합니다." },
+    { title: "단백질 음료 40g 이상 비교", href: "/guides/product-selection-comparison/high-protein-40g-comparison", description: "몬스터를 다른 40g대 이상 제품과 직접 비교합니다." },
     { title: "닥터유 40g vs 테이크핏 몬스터 45g", href: "/guides/product-selection-comparison/doctoru-40g-vs-takefit-monster-43g", description: "몬스터 딥다이브 비교 페이지입니다." },
   ],
   purchaseLinks: [
@@ -1234,7 +1238,7 @@ export const newcareAllproteinConfig: ComparePageConfig = {
     { question: "유당불내증이면 가장 먼저 볼 만한 40g대 제품인가", answer: "네. 현재 ProteinLab DB 기준으로는 그렇습니다. 락토프리 표기가 분명한 40g대 대표 선택지입니다." },
   ],
   relatedGuides: [
-    { title: "단백질 음료 40g 이상 3종 비교", href: "/guides/product-selection-comparison/high-protein-40g-comparison", description: "뉴케어를 다른 40g대 대표 제품과 나란히 비교합니다." },
+    { title: "단백질 음료 40g 이상 비교", href: "/guides/product-selection-comparison/high-protein-40g-comparison", description: "뉴케어를 다른 40g대 이상 대표 제품과 나란히 비교합니다." },
     { title: "유당불내증인데 단백질 음료 먹을 수 있나", href: "/guides/product-selection-comparison/lactose-free-protein-drink", description: "락토프리 관점에서 다시 좁혀봅니다." },
     { title: "50대 단백질 음료 추천", href: "/guides/product-selection-comparison/protein-drink-for-50s", description: "중장년 건강관리 관점에서 다시 읽습니다." },
   ],
@@ -1383,7 +1387,7 @@ export const newcare41Vs25Config: ComparePageConfig = {
   ],
   relatedGuides: [
     { title: "뉴케어 올프로틴 완전 분석", href: "/guides/product-selection-comparison/newcare-allprotein", description: "41g, 25g, 식물성, 워터 라인을 한 번에 정리한 메인 페이지입니다." },
-    { title: "단백질 음료 40g 이상 3종 비교", href: "/guides/product-selection-comparison/high-protein-40g-comparison", description: "41g을 다른 40g대 제품과 나란히 비교합니다." },
+    { title: "단백질 음료 40g 이상 비교", href: "/guides/product-selection-comparison/high-protein-40g-comparison", description: "41g을 다른 40g대 이상 제품과 나란히 비교합니다." },
     { title: "단백질 음료 입문 가이드", href: "/guides/product-selection-comparison/protein-drink-beginners-guide", description: "25g급 RTD를 어떻게 보면 되는지 먼저 정리합니다." },
   ],
   purchaseLinks: [
@@ -2010,7 +2014,7 @@ export const proteinDrinkByContentConfig: ComparePageConfig = {
     {
       title: "40g 이상",
       items: [
-        { title: "대표 제품", body: "테이크핏 몬스터 45g, 뉴케어 올프로틴 41g, 닥터유 40g이 대표적입니다. 여기에 랩노쉬 52g 제품이 출시되면 50g대 초고함량 구간도 따로 봐야 합니다." },
+        { title: "대표 제품", body: "테이크핏 몬스터 45g, 뉴케어 올프로틴 41g, 닥터유 40g이 대표적입니다. 여기에 랩노쉬 프로틴 맥스 52g까지 더해지면서 50g대 초고함량 구간도 따로 봐야 합니다." },
         { title: "잘 맞는 사람", body: "하루 단백질을 한 번에 크게 채우고 싶은 사람, 고강도 운동 사용자에게 적합합니다." },
         { title: "예외 포인트", body: "뉴케어 41g은 락토프리라 같은 40g대 안에서도 성격이 다릅니다. 고단백이면서 유당 부담을 낮추고 싶을 때 예외적으로 우선순위가 올라갑니다." },
       ],
@@ -2030,7 +2034,7 @@ export const proteinDrinkByContentConfig: ComparePageConfig = {
     { question: "유당불내증인데 고단백을 원하면 어떤 함량대를 봐야 하나", answer: "40g 이상 중에서는 뉴케어 올프로틴 41g이 대표적입니다. 락토프리라서 예외적으로 먼저 볼 가치가 있습니다." },
   ],
   relatedGuides: [
-    { title: "단백질 음료 40g 이상 3종 비교", href: "/guides/product-selection-comparison/high-protein-40g-comparison", description: "40g대 대표 제품만 다시 비교합니다." },
+    { title: "단백질 음료 40g 이상 비교", href: "/guides/product-selection-comparison/high-protein-40g-comparison", description: "40g 이상 대표 제품을 다시 비교합니다." },
     { title: "단백질 음료 100mL당 단백질 순위", href: "/guides/product-selection-comparison/protein-density-ranking", description: "함량이 아니라 밀도 기준으로도 읽어봅니다." },
     { title: "뉴케어 올프로틴 완전 분석", href: "/guides/product-selection-comparison/newcare-allprotein", description: "40g 이상 구간의 예외 케이스를 따로 분석합니다." },
   ],
@@ -2316,7 +2320,7 @@ export const dryouLineupConfig: ComparePageConfig = {
   ],
   relatedGuides: [
     { title: "닥터유 40g vs 테이크핏 몬스터 45g", href: "/guides/product-selection-comparison/doctoru-40g-vs-takefit-monster-43g", description: "닥터유 40g 라인을 가장 직접적으로 비교한 페이지입니다." },
-    { title: "단백질 음료 40g 이상 3종 비교", href: "/guides/product-selection-comparison/high-protein-40g-comparison", description: "뉴케어까지 포함한 상위 비교입니다." },
+    { title: "단백질 음료 40g 이상 비교", href: "/guides/product-selection-comparison/high-protein-40g-comparison", description: "뉴케어와 랩노쉬까지 포함한 상위 비교입니다." },
     { title: "단백질 음료 함량대별 완전 정리", href: "/guides/product-selection-comparison/protein-drink-by-content", description: "닥터유가 어떤 함량대에 속하는지 큰 그림에서 다시 봅니다." },
   ],
   purchaseLinks: [

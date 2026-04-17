@@ -14,7 +14,7 @@ export const CATEGORY_META: Record<ProductCategory, CategoryMeta> = {
     description: "바로 마실 수 있는 고단백 RTD 제품 비교",
     order: 1,
     href: "/drinks",
-    count: 107,
+    count: 110,
   },
   bar: {
     label: "바",

@@ -72,6 +72,7 @@ const changeRows = [
 const insightPoints = [
   "2026년에는 '단백질 몇 g인가'만으로는 차별화가 어렵고, 당류와 음용감까지 함께 설계한 제품이 유리합니다.",
   "초고단백 제품은 40g대에서 45g·52g 경쟁으로 이동하고, 20g 전후 제품은 입문형·일상형으로 더 뚜렷하게 갈립니다.",
+  "국내 RTD 단백질 음료 시장은 글로벌 스포츠 뉴트리션 안에서도 성장성이 높은 축으로 거론되고 있어, 신제품 경쟁은 당분간 함량·저당·편의성 중심으로 이어질 가능성이 큽니다.",
   "워터형과 락토프리 키워드는 취향 문제가 아니라 소화 부담과 생활 맥락을 해결하는 포지션으로 읽히고 있습니다.",
   "중장년 타깃은 여전히 중요합니다. 단순 고단백보다 균형 영양, 저당, 소화 부담 완화 메시지가 함께 붙는 흐름이 이어집니다.",
 ];
@@ -85,7 +86,11 @@ const retailRows = [
 const sourceLinks = [
   {
     label: "남양유업 테이크핏 몬스터 45g 리뉴얼 기사",
-    href: "https://megaeconomy.co.kr/news/newsview.php?dt=m&ncode=1065598767371798",
+    href: "https://www.asiae.co.kr/en/article/2026032408411262181",
+  },
+  {
+    label: "국내 RTD 단백질 음료 시장 성장 기사",
+    href: "https://en.sedaily.com/finance/2026/03/31/korea-ranks-fifth-globally-in-rtd-protein-beverage-market",
   },
   {
     label: "일동후디스 하이뮨 액티브 다크초코 31g 출시 기사",
@@ -227,16 +232,16 @@ export default function ProteinDrinkTrend2026Page() {
             <h2 className="text-xl font-bold text-[var(--foreground)]">이어 읽기</h2>
             <div className="mt-5 grid gap-3 md:grid-cols-3">
               <Link href="/guides/product-selection-comparison/high-protein-40g-comparison" className="rounded-2xl border border-[#e5d8ee] bg-white p-4 transition-colors hover:bg-[#f6f1fa]">
-                <p className="text-sm font-semibold text-[#6b4d7c]">40g 이상 3종 비교</p>
-                <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">초고단백 경쟁이 실제 제품 비교에서 어떻게 보이는지 바로 확인합니다.</p>
+                <p className="text-sm font-semibold text-[#6b4d7c]">40g 이상 RTD 비교</p>
+                <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">45g·52g 초고단백 경쟁이 실제 제품 비교에서 어떻게 보이는지 바로 확인합니다.</p>
+              </Link>
+              <Link href="/compare/newcare-41g-vs-labnosh-max-drink" className="rounded-2xl border border-[#e5d8ee] bg-white p-4 transition-colors hover:bg-[#f6f1fa]">
+                <p className="text-sm font-semibold text-[#6b4d7c]">41g vs 52g 직접 비교</p>
+                <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">뉴케어 올프로틴 41g과 랩노쉬 프로틴 맥스 52g을 성분 기준으로 비교합니다.</p>
               </Link>
               <Link href="/guides/product-selection-comparison/protein-density-ranking" className="rounded-2xl border border-[#e5d8ee] bg-white p-4 transition-colors hover:bg-[#f6f1fa]">
                 <p className="text-sm font-semibold text-[#6b4d7c]">100mL당 단백질 순위</p>
                 <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">브랜드 트렌드가 실제 단백질 밀도 순위에서 어떻게 드러나는지 봅니다.</p>
-              </Link>
-              <Link href="/guides/product-selection-comparison/selexs-lineup" className="rounded-2xl border border-[#e5d8ee] bg-white p-4 transition-colors hover:bg-[#f6f1fa]">
-                <p className="text-sm font-semibold text-[#6b4d7c]">셀렉스 제품 종류 전체 정리</p>
-                <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">브랜드 라인업 차원에서 셀렉스가 어떻게 분화되는지 이어서 확인합니다.</p>
               </Link>
             </div>
           </section>

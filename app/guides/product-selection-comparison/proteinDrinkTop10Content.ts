@@ -17,7 +17,7 @@ function articleJsonLd(config: CategoryGuideConfig) {
       name: "ProteinLab",
       logo: { "@type": "ImageObject", url: "https://proteinlab.kr/proteinlab-logo.png" },
     },
-    dateModified: "2026-04-13",
+    dateModified: "2026-04-17",
   };
 }
 
@@ -123,19 +123,20 @@ function rankingRows(products: typeof drinkTop10): CategoryMetricRow[] {
 
 export const proteinDrinkTop10Config: CategoryGuideConfig = {
   slug: "protein-drink-top10",
-  title: "단백질 음료 추천 TOP 10 | 프로틴 음료·저당 RTD 비교 2026",
+  title: "단백질 음료 추천 TOP 10 | 45g·52g 초고단백 RTD까지 비교 2026",
   description:
-    "2026년 ProteinLab DB 음료 107종을 기준으로 단백질 함량, 당류, 칼로리, 밀도를 비교해 단백질 음료·프로틴 음료 추천 TOP 10을 정리했습니다.",
-  keywords: ["단백질 음료 추천", "단백질 음료 TOP10", "프로틴 음료 추천", "RTD 단백질 음료", "저당 단백질 음료", "고단백 RTD"],
+    "2026년 ProteinLab DB 음료 110종을 기준으로 단백질 함량, 당류, 칼로리, 밀도를 비교해 단백질 음료·프로틴 음료 추천 TOP 10을 정리했습니다. 테이크핏 45g과 랩노쉬 52g 같은 초고단백 RTD도 함께 해석합니다.",
+  keywords: ["단백질 음료 추천", "단백질 음료 TOP10", "프로틴 음료 추천", "RTD 단백질 음료", "저당 단백질 음료", "고단백 RTD", "단백질 음료 45g", "단백질 음료 52g"],
   badge: "음료 랭킹",
   readingTime: "6분 읽기",
-  updatedAt: "2026-04-13",
-  methodologyNote: "ProteinLab DB 음료 107종 기준 · 단백질/당류/칼로리/밀도 종합 + 동일 브랜드 최대 2개 반영",
+  updatedAt: "2026-04-17",
+  methodologyNote: "ProteinLab DB 음료 110종 기준 · 단백질/당류/칼로리/밀도 종합 + 동일 브랜드 최대 2개 반영",
   intro:
-    "단백질 음료 추천을 찾는다면 1위만 보는 것보다 단백질 함량, 당류, 칼로리, 단백질 밀도를 함께 보는 편이 정확합니다. ProteinLab DB 음료 107종 중 단백질 20g 이상, 당류 8g 이하, 205kcal 이하 조건을 통과한 제품을 종합 점수화하고 테이크핏·더단백·이정후 프로틴·랩노쉬·뉴케어 등 브랜드별 2개까지만 반영했습니다.",
+    "단백질 음료 추천을 찾는다면 1위만 보는 것보다 단백질 함량, 당류, 칼로리, 단백질 밀도를 함께 보는 편이 정확합니다. ProteinLab DB 음료 110종 중 단백질 20g 이상, 당류 8g 이하, 205kcal 이하 조건을 통과한 제품을 종합 점수화하고 테이크핏·더단백·이정후 프로틴·랩노쉬·뉴케어 등 브랜드별 2개까지만 반영했습니다.",
   summary: [
-    "상위권은 단백질 25~43g, 당류 0~1g, 125~186kcal 구간에 몰려 있어 단백질 밀도와 칼로리 조합이 최종 판단 포인트입니다.",
-    "테이크핏 43g, 더단백 40g, 이정후 프로틴 33g, 랩노쉬 퍼펙트 27g, 뉴케어 올프로틴 25g처럼 단백질 구간이 넓어 1위보다 자신의 용도에 맞는 구간 선택이 더 중요합니다.",
+    "상위권은 단백질 25~45g, 당류 0~1g, 125~195kcal 구간에 몰려 있어 단백질 밀도와 칼로리 조합이 최종 판단 포인트입니다.",
+    "테이크핏 45g, 더단백 40g, 이정후 프로틴 33g, 랩노쉬 퍼펙트 27g, 뉴케어 올프로틴 25g처럼 단백질 구간이 넓어 1위보다 자신의 용도에 맞는 구간 선택이 더 중요합니다.",
+    "랩노쉬 프로틴 맥스 52g처럼 총량이 높은 제품은 별도 초고단백 후보로 볼 수 있지만, TOP 10에서는 칼로리와 당류까지 반영해 매일 선택하기 쉬운 제품을 우선합니다.",
     "브랜드명보다 먼저 TOP 10 후보를 보여주고, 이후 용도별 가이드나 구매 채널로 넘기는 흐름이 체류와 전환 모두에 유리합니다.",
   ],
   comparisonTitle: "TOP 10 순위표",
@@ -185,7 +186,7 @@ export const proteinDrinkTop10Config: CategoryGuideConfig = {
         },
         {
           title: "운동 직후 고단백만 더 보고 싶다면",
-          body: `${[...new Set(highProteinDrinkPicks.map((p) => p.brand))].slice(0, 3).join(", ")}처럼 24g 이상 구간이 따로 있습니다. 이 경우 40g대 비교나 고단백 브랜드 비교로 이어지는 편이 빠릅니다.`,
+          body: `${[...new Set(highProteinDrinkPicks.map((p) => p.brand))].slice(0, 3).join(", ")}처럼 24g 이상 구간이 따로 있습니다. 최근에는 45g·52g 초고단백 제품까지 생겨 이 경우 40g 이상 비교나 고단백 브랜드 비교로 이어지는 편이 빠릅니다.`,
         },
         {
           title: "워터형만 따로 보고 싶다면",
@@ -225,7 +226,7 @@ export const proteinDrinkTop10Config: CategoryGuideConfig = {
     {
       title: "40g 이상 고단백 음료 비교",
       href: "/guides/product-selection-comparison/high-protein-40g-comparison",
-      description: "운동 직후 보충 목적이라면 40g대 고단백 비교로 바로 넘어가는 편이 빠릅니다.",
+      description: "운동 직후 보충 목적이라면 45g·52g까지 포함한 초고단백 흐름을 같이 보는 편이 빠릅니다.",
     },
     {
       title: "단백질 밀도 순위 가이드",
@@ -251,7 +252,11 @@ export const proteinDrinkTop10Config: CategoryGuideConfig = {
   faq: [
     {
       question: "TOP 10이면 1위 제품만 사면 되나요?",
-      answer: "아닙니다. 1위 테이크핏 몬스터는 단백질 43g의 고강도 보충형입니다. 가볍게 마시고 싶다면 뉴케어 올프로틴 25g이나 랩노쉬 퍼펙트처럼 칼로리가 낮은 제품이 더 맞습니다. 단백질 구간과 칼로리를 같이 보는 것이 먼저입니다.",
+      answer: "아닙니다. 1위권 테이크핏 몬스터는 단백질 45g의 고강도 보충형입니다. 가볍게 마시고 싶다면 뉴케어 올프로틴 25g이나 랩노쉬 퍼펙트처럼 칼로리가 낮은 제품이 더 맞습니다. 단백질 구간과 칼로리를 같이 보는 것이 먼저입니다.",
+    },
+    {
+      question: "랩노쉬 프로틴 맥스 52g은 왜 TOP 10에서 따로 봐야 하나요?",
+      answer: "52g은 총량 기준으로 강한 초고단백 제품이지만 TOP 10은 당류, 칼로리, 단백질 밀도를 함께 봅니다. 한 번에 크게 보충하려는 목적이면 별도 후보가 되고, 매일 마실 제품을 고르는 목적이면 칼로리와 지속 가능성을 같이 비교해야 합니다.",
     },
     {
       question: "셀렉스 프로핏이나 하이뮨은 왜 TOP 10에 없나요?",
