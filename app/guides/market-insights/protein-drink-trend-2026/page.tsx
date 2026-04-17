@@ -1,6 +1,9 @@
 ﻿import Link from "next/link";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
+import AdSenseBlock from "@/components/AdSenseBlock";
+
+const INSIGHT_MID_AD_SLOT = process.env.NEXT_PUBLIC_ADSENSE_INSIGHT_MID_SLOT;
 
 export const metadata = {
   title: "2026 단백질 음료 시장 트렌드 | 45g·52g 초고단백 경쟁",
@@ -173,6 +176,12 @@ export default function ProteinDrinkTrend2026Page() {
               </table>
             </div>
           </section>
+
+          <AdSenseBlock
+            slot={INSIGHT_MID_AD_SLOT}
+            pageType="insight"
+            className="border-[#eadff1] bg-[#fbf8fc]"
+          />
 
           <section className="rounded-[28px] border border-[#eadff1] bg-[#faf7fc] px-5 py-5 shadow-[0_18px_50px_rgba(44,23,58,0.05)]">
             <h2 className="text-xl font-bold text-[var(--foreground)]">유통 현장에서 읽히는 신호</h2>

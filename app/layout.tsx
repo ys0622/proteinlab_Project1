@@ -10,6 +10,7 @@ import { FavoritesProvider } from "./context/FavoritesContext";
 import "./globals.css";
 
 const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
+const ADSENSE_CLIENT_ID = process.env.NEXT_PUBLIC_ADSENSE_CLIENT_ID?.trim();
 const isProd = process.env.NODE_ENV === "production";
 
 export const metadata: Metadata = {
@@ -82,6 +83,14 @@ export default function RootLayout({
               `}
             </Script>
           </>
+        ) : null}
+        {ADSENSE_CLIENT_ID ? (
+          <Script
+            async
+            src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_CLIENT_ID}`}
+            crossOrigin="anonymous"
+            strategy="afterInteractive"
+          />
         ) : null}
         <FavoritesProvider>
           <CompareProvider>

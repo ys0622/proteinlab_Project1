@@ -75,6 +75,15 @@ type InternalLinkClickParams = {
   pageType: string;
 };
 
+export type PageType = "home" | "category" | "compare" | "product" | "guide" | "insight" | "feed";
+
+type AdEventParams = {
+  pageType?: PageType;
+  pagePath: string;
+  adSlot: string;
+  deviceType?: string;
+};
+
 type FallbackPayload = {
   name: string;
   params: AnalyticsParams;
@@ -100,6 +109,23 @@ function getPageLocation(url: string) {
   }
 
   return new URL(url, window.location.origin).toString();
+}
+
+export function getPageType(pathname: string): PageType {
+  if (pathname === "/") return "home";
+  if (pathname.startsWith("/compare")) return "compare";
+  if (pathname.startsWith("/product/")) return "product";
+  if (pathname.startsWith("/guides/market-insights")) return "insight";
+  if (pathname.startsWith("/guides")) return "guide";
+  if (pathname.startsWith("/feed")) return "feed";
+  return "category";
+}
+
+export function getDeviceType() {
+  if (typeof window === "undefined") return "unknown";
+  if (window.matchMedia("(max-width: 767px)").matches) return "mobile";
+  if (window.matchMedia("(max-width: 1023px)").matches) return "tablet";
+  return "desktop";
 }
 
 function randomDigits(length: number) {
@@ -171,6 +197,7 @@ export function pageView(url: string) {
     page_path: url,
     page_location: getPageLocation(url),
     page_title: typeof document !== "undefined" ? document.title : undefined,
+    page_type: getPageType(url),
   };
 
   if (canTrackWithGtag()) {
@@ -271,5 +298,33 @@ export function internalLinkClick({
     destination_url: destinationUrl,
     section,
     page_type: pageType,
+  });
+}
+
+export function adImpression({
+  pageType,
+  pagePath,
+  adSlot,
+  deviceType,
+}: AdEventParams) {
+  return event("ad_impression", {
+    page_type: pageType ?? getPageType(pagePath),
+    page_path: pagePath,
+    ad_slot: adSlot,
+    device_type: deviceType ?? getDeviceType(),
+  });
+}
+
+export function adClick({
+  pageType,
+  pagePath,
+  adSlot,
+  deviceType,
+}: AdEventParams) {
+  return event("ad_click", {
+    page_type: pageType ?? getPageType(pagePath),
+    page_path: pagePath,
+    ad_slot: adSlot,
+    device_type: deviceType ?? getDeviceType(),
   });
 }
