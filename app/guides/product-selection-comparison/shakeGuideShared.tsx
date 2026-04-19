@@ -187,15 +187,16 @@ export function ShakeGuidePage({
 
           <section className="rounded-[28px] border border-[#e2ebe4] bg-[#f7fbf8] px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
             <div className="flex items-center justify-between gap-3">
-              <h2 className="text-xl font-bold text-[var(--foreground)]">핵심 요약</h2>
+              <p className="text-xs font-semibold tracking-[0.08em] text-[#24543d]">📌 핵심 요약</p>
               <span className="rounded-full border border-[#d8e5da] bg-white px-3 py-1 text-[11px] font-semibold text-[#24543d]">
                 {keyword}
               </span>
             </div>
             <ul className="mt-4 space-y-3 text-sm leading-6 text-[var(--foreground-muted)]">
               {tlDrItems.map((item) => (
-                <li key={item} className="rounded-xl border border-[#dce8df] bg-white px-4 py-3">
-                  {item}
+                <li key={item} className="flex items-start gap-2.5 rounded-xl border border-[#dce8df] bg-white px-4 py-3">
+                  <span className="mt-0.5 shrink-0 text-[#4a8c6e]">✓</span>
+                  <span>{item}</span>
                 </li>
               ))}
             </ul>
@@ -267,9 +268,14 @@ export function ShakeGuidePage({
           <section className="rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
             <h2 className="text-xl font-bold text-[var(--foreground)]">{criteriaTitle}</h2>
             <div className="mt-5 grid gap-3 md:grid-cols-2">
-              {criteriaItems.map((item) => (
+              {criteriaItems.map((item, iIdx) => (
                 <article key={item.title} className="rounded-2xl border border-[#dce8df] bg-[#f6fbf7] p-4">
-                  <h3 className="text-sm font-semibold text-[#24543d]">{item.title}</h3>
+                  <div className="flex items-start gap-2.5">
+                    <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#d4e8db] text-[10px] font-bold text-[#24543d]">
+                      {iIdx + 1}
+                    </span>
+                    <h3 className="text-sm font-semibold leading-5 text-[#24543d]">{item.title}</h3>
+                  </div>
                   <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">{item.body}</p>
                 </article>
               ))}
@@ -309,12 +315,12 @@ export function ShakeGuidePage({
           </section>
 
           <section className="rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
-            <h2 className="text-xl font-bold text-[var(--foreground)]">내부 링크</h2>
-            <ul className="mt-4 space-y-3 text-sm leading-6 text-[var(--foreground-muted)]">
+            <h2 className="text-xl font-bold text-[var(--foreground)]">📖 관련 가이드</h2>
+            <ul className="mt-4 space-y-2 text-sm leading-6 text-[var(--foreground-muted)]">
               {internalGuideLinks.map((item) => (
-                <li key={item.href}>
-                  <Link href={item.href} className="font-semibold text-[#24543d] underline underline-offset-4">
-                    {item.label}
+                <li key={item.href} className="rounded-xl border border-[#dce8df] bg-[#f6fbf7] px-4 py-2.5">
+                  <Link href={item.href} className="font-semibold text-[#24543d]">
+                    → {item.label}
                   </Link>
                 </li>
               ))}
@@ -351,13 +357,13 @@ export function ShakeGuidePage({
           </section>
 
           {faqItems && faqItems.length > 0 && (
-            <section className="rounded-[28px] border border-[#e2ebe4] bg-[#f7fbf8] px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
-              <h2 className="text-xl font-bold text-[var(--foreground)]">자주 묻는 질문</h2>
+            <section className="rounded-[28px] border border-[#e5deca] bg-[#fdfaf5] px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
+              <h2 className="text-xl font-bold text-[var(--foreground)]">💬 자주 묻는 질문</h2>
               <div className="mt-5 space-y-3">
                 {faqItems.map((item) => (
-                  <article key={item.question} className="rounded-2xl border border-[#dce8df] bg-white px-5 py-4">
-                    <p className="text-sm font-semibold text-[#24543d]">Q. {item.question}</p>
-                    <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">A. {item.answer}</p>
+                  <article key={item.question} className="rounded-2xl border border-[#e8e3da] bg-white px-5 py-4">
+                    <p className="text-sm font-semibold text-[#6b5a3e]">Q. {item.question}</p>
+                    <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">{item.answer}</p>
                   </article>
                 ))}
               </div>

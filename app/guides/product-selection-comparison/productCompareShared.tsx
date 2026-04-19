@@ -175,13 +175,13 @@ export function ComparisonGuidePage({ config }: { config: ComparePageConfig }) {
       <main className="mx-auto max-w-[1200px] px-4 py-8 md:px-6">
         <div className="space-y-6">
           <section className="rounded-[28px] border border-[#d9e4f0] bg-[#f7f9fc] px-5 py-5 shadow-[0_18px_50px_rgba(32,46,68,0.05)]">
-            <div className="flex items-center justify-between gap-4">
-              <p className="text-xs font-semibold tracking-[0.08em] text-[#4a6178]">30초 요약</p>
-              <span className="text-xs text-[var(--foreground-muted)]">먼저 이 3가지만 보면 됩니다</span>
-            </div>
-            <ul className="mt-4 grid gap-3 text-sm leading-6 text-[var(--foreground-muted)] md:grid-cols-3">
+            <p className="text-xs font-semibold tracking-[0.08em] text-[#4a6178]">📌 핵심 요약</p>
+            <ul className="mt-4 space-y-3 text-sm leading-6 text-[var(--foreground-muted)]">
               {config.summary.map((item) => (
-                <li key={item} className="rounded-xl border border-[#d9e4f0] bg-white px-4 py-3 md:min-h-[108px]">{item}</li>
+                <li key={item} className="flex items-start gap-2.5 rounded-xl border border-[#d9e4f0] bg-white px-4 py-3">
+                  <span className="mt-0.5 shrink-0 text-[#4a8c6e]">✓</span>
+                  <span>{item}</span>
+                </li>
               ))}
             </ul>
           </section>
@@ -236,9 +236,14 @@ export function ComparisonGuidePage({ config }: { config: ComparePageConfig }) {
             <section key={section.title} className="rounded-[28px] border border-[#d9e4f0] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(32,46,68,0.05)]">
               <h2 className="text-xl font-bold text-[var(--foreground)]">{section.title}</h2>
               <div className="mt-5 grid gap-3 md:grid-cols-3">
-                {section.items.map((item) => (
+                {section.items.map((item, iIdx) => (
                   <article key={item.title} className="rounded-2xl border border-[#d9e4f0] bg-[#f7f9fc] p-4">
-                    <h3 className="text-sm font-semibold text-[#4a6178]">{item.title}</h3>
+                    <div className="flex items-start gap-2.5">
+                      <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#ddeaf3] text-[10px] font-bold text-[#4a6178]">
+                        {iIdx + 1}
+                      </span>
+                      <h3 className="text-sm font-semibold leading-5 text-[#4a6178]">{item.title}</h3>
+                    </div>
                     <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">{item.body}</p>
                   </article>
                 ))}
@@ -246,12 +251,12 @@ export function ComparisonGuidePage({ config }: { config: ComparePageConfig }) {
             </section>
           ))}
           {config.faq?.length ? (
-            <section className="rounded-[28px] border border-[#d9e4f0] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(32,46,68,0.05)]">
-              <h2 className="text-xl font-bold text-[var(--foreground)]">자주 묻는 질문</h2>
+            <section className="rounded-[28px] border border-[#e5deca] bg-[#fdfaf5] px-5 py-5 shadow-[0_18px_50px_rgba(32,46,68,0.05)]">
+              <h2 className="text-xl font-bold text-[var(--foreground)]">💬 자주 묻는 질문</h2>
               <div className="mt-5 space-y-3">
                 {config.faq.map((item) => (
-                  <article key={item.question} className="rounded-2xl border border-[#d9e4f0] bg-[#f7f9fc] p-4">
-                    <h3 className="text-sm font-semibold text-[#4a6178]">{item.question}</h3>
+                  <article key={item.question} className="rounded-2xl border border-[#e8e3da] bg-white p-4">
+                    <h3 className="text-sm font-semibold text-[#6b5a3e]">Q. {item.question}</h3>
                     <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">{item.answer}</p>
                   </article>
                 ))}
@@ -259,11 +264,11 @@ export function ComparisonGuidePage({ config }: { config: ComparePageConfig }) {
             </section>
           ) : null}
           <section className="rounded-[28px] border border-[#d9e4f0] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(32,46,68,0.05)]">
-            <h2 className="text-xl font-bold text-[var(--foreground)]">관련 가이드</h2>
+            <h2 className="text-xl font-bold text-[var(--foreground)]">📖 관련 가이드</h2>
             <div className="mt-5 grid gap-3 md:grid-cols-2 xl:grid-cols-4">
               {relatedGuides.map((item) => (
                 <Link key={item.href} href={item.href} className="rounded-2xl border border-[#d9e4f0] bg-[#f7f9fc] p-4 transition-colors hover:bg-[#eef3f9]">
-                  <p className="text-sm font-semibold text-[#4a6178]">{item.title}</p>
+                  <p className="text-sm font-semibold text-[#4a6178]">→ {item.title}</p>
                   <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">{item.description}</p>
                 </Link>
               ))}
@@ -271,7 +276,7 @@ export function ComparisonGuidePage({ config }: { config: ComparePageConfig }) {
           </section>
           <section className="rounded-[28px] border border-[#d9e4f0] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(32,46,68,0.05)]">
             <div className="flex items-center justify-between gap-4">
-              <h2 className="text-xl font-bold text-[var(--foreground)]">쿠팡에서 가격 보기</h2>
+              <h2 className="text-xl font-bold text-[var(--foreground)]">🛒 쿠팡에서 가격 보기</h2>
               <AffiliateDisclosure />
             </div>
             <p className="mt-3 text-sm leading-6 text-[var(--foreground-muted)]">
