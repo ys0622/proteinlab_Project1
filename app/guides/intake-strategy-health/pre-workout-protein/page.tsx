@@ -170,7 +170,7 @@ export default function PreWorkoutProteinPage() {
         </section>
 
         <section className="mt-6 rounded-2xl border border-[#e8e6e3] bg-white px-5 py-5">
-          <h2 className="text-xl font-bold text-[var(--foreground)]">관련 가이드</h2>
+          <h2 className="text-xl font-bold text-[var(--foreground)]">📖 관련 가이드</h2>
           <div className="mt-5 grid gap-3 md:grid-cols-3">
             {relatedGuides.map((item) => (
               <Link

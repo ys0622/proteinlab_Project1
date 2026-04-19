@@ -227,8 +227,8 @@ export default function MorningProteinDrinkPage() {
             </ul>
           </section>
 
-          <section className="rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
-            <h2 className="text-xl font-bold text-[var(--foreground)]">자주 묻는 질문</h2>
+          <section className="rounded-[28px] border border-[#e5deca] bg-[#fdfaf5] px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
+            <h2 className="text-xl font-bold text-[var(--foreground)]">💬 자주 묻는 질문</h2>
             <div className="mt-4 space-y-3">
               {faq.map((item) => (
                 <article key={item.question} className="rounded-2xl border border-[#dce8df] bg-[#f6fbf7] p-4">
@@ -240,7 +240,7 @@ export default function MorningProteinDrinkPage() {
           </section>
 
           <section className="rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
-            <h2 className="text-xl font-bold text-[var(--foreground)]">다음으로 무엇을 볼지 바로 고르기</h2>
+            <h2 className="text-xl font-bold text-[var(--foreground)]">📖 다음으로 무엇을 볼지 바로 고르기</h2>
             <p className="mt-3 text-sm leading-6 text-[var(--foreground-muted)]">
               아침 대용 기준이 잡혔다면 RTD 음료 기준으로 좁힐지, 쉐이크·바·요거트까지 넓힐지, 식사대용 관점으로 다시 볼지 나눠서 보면 됩니다.
             </p>

@@ -173,7 +173,7 @@ export default function ProteinToolsPage() {
         </section>
 
         <section className="mt-6 rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
-          <h2 className="text-xl font-bold text-[var(--foreground)]">계산한 뒤 바로 이어서 하면 좋은 것</h2>
+          <h2 className="text-xl font-bold text-[var(--foreground)]">📖 계산한 뒤 바로 이어서 하면 좋은 것</h2>
           <div className="mt-5 grid gap-3 md:grid-cols-3">
             {usageCards.map((item) => (
               <article key={item.title} className="rounded-2xl border border-[#dce8df] bg-[#f6fbf7] p-4">

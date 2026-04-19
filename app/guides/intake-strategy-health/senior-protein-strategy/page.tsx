@@ -156,7 +156,7 @@ export default function SeniorProteinStrategyPage() {
         </section>
 
         <section className="mt-6 rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
-          <h2 className="text-xl font-bold text-[var(--foreground)]">관련 가이드</h2>
+          <h2 className="text-xl font-bold text-[var(--foreground)]">📖 관련 가이드</h2>
           <div className="mt-5 grid gap-3 md:grid-cols-3">
             {seniorRelated.map((item) => (
               <Link key={item.href} href={item.href} className="rounded-2xl border border-[#dce8df] bg-[#f6fbf7] p-4 transition-colors hover:bg-white">

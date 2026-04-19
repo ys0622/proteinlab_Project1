@@ -153,7 +153,7 @@ export default function DailyRequirementPage() {
                   {requirementRows.map((row) => (
                     <tr key={row[0]} className="border-b border-[#f0eeeb] last:border-b-0">
                       {row.map((cell) => (
-                        <td key={cell} className="whitespace-nowrap px-3 py-3 text-[var(--foreground-muted)]">
+                        <td key={cell} className="px-3 py-3 text-[var(--foreground-muted)]">
                           {cell}
                         </td>
                       ))}
@@ -203,8 +203,8 @@ export default function DailyRequirementPage() {
             </div>
           </section>
 
-          <section className="rounded-2xl border border-[#e8e6e3] bg-[#fffdf8] px-5 py-5">
-            <h2 className="text-xl font-bold text-[var(--foreground)]">자주 묻는 질문</h2>
+          <section className="rounded-2xl border border-[#e5deca] bg-[#fdfaf5] px-5 py-5">
+            <h2 className="text-xl font-bold text-[var(--foreground)]">💬 자주 묻는 질문</h2>
             <div className="mt-5 space-y-4">
               {faqs.map((faq) => (
                 <article key={faq.question} className="rounded-2xl border border-[#e8e6e3] bg-white px-4 py-4">

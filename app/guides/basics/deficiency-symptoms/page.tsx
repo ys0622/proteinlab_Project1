@@ -200,7 +200,7 @@ export default function DeficiencySymptomsPage() {
                   {riskRows.map((row) => (
                     <tr key={row[0]} className="border-b border-[#f0eeeb] last:border-b-0">
                       {row.map((cell) => (
-                        <td key={cell} className="whitespace-nowrap px-3 py-3 text-[var(--foreground-muted)]">
+                        <td key={cell} className="px-3 py-3 text-[var(--foreground-muted)]">
                           {cell}
                         </td>
                       ))}

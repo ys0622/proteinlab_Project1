@@ -103,8 +103,8 @@ export default function ProteoneProteinShakePage() {
             </div>
           </section>
 
-          <section className="rounded-[28px] border border-[#e2ebe4] bg-[#f7fbf8] px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
-            <h2 className="text-xl font-bold text-[var(--foreground)]">자주 묻는 질문</h2>
+          <section className="rounded-[28px] border border-[#e5deca] bg-[#fdfaf5] px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
+            <h2 className="text-xl font-bold text-[var(--foreground)]">💬 자주 묻는 질문</h2>
             <div className="mt-5 space-y-3">
               {faqItems.map((item) => (
                 <article key={item.question} className="rounded-2xl border border-[#dce8df] bg-white px-5 py-4">

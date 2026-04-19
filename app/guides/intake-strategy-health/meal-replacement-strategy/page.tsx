@@ -183,7 +183,7 @@ export default function MealReplacementStrategyPage() {
           </section>
 
           <section className="rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
-            <h2 className="text-xl font-bold text-[var(--foreground)]">다음으로 무엇을 볼지 바로 고르기</h2>
+            <h2 className="text-xl font-bold text-[var(--foreground)]">📖 다음으로 무엇을 볼지 바로 고르기</h2>
             <p className="mt-3 text-sm leading-6 text-[var(--foreground-muted)]">
               식사대용 기준이 잡혔다면, 이제는 카테고리를 먼저 고를지, 아침 대용 제품으로 바로 좁힐지, 체중 관리 기준까지
               같이 볼지 방향을 나눠서 보는 편이 더 빠릅니다.

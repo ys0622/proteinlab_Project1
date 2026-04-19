@@ -163,7 +163,7 @@ export default function ProteinTimingPage() {
           </section>
 
           <section className="rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
-            <h2 className="text-xl font-bold text-[var(--foreground)]">다음 단계로 바로 넘어가기</h2>
+            <h2 className="text-xl font-bold text-[var(--foreground)]">📖 다음 단계로 바로 넘어가기</h2>
             <p className="mt-3 text-sm leading-6 text-[var(--foreground-muted)]">
               타이밍 감이 잡혔다면 다음은 운동 직후 루틴을 더 볼지, 식사대용 여부를 판단할지, 처음 마실 제품부터 고를지
               방향을 정하면 됩니다.

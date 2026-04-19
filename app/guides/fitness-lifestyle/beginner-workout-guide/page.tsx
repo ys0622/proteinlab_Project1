@@ -146,7 +146,7 @@ export default function BeginnerWorkoutGuidePage() {
                   {sampleRows.map((row) => (
                     <tr key={row[0]} className="border-b border-[#f0eeeb] last:border-b-0">
                       {row.map((cell) => (
-                        <td key={cell} className="whitespace-nowrap px-3 py-3 text-[var(--foreground-muted)]">{cell}</td>
+                        <td key={cell} className="px-3 py-3 text-[var(--foreground-muted)]">{cell}</td>
                       ))}
                     </tr>
                   ))}
@@ -173,7 +173,7 @@ export default function BeginnerWorkoutGuidePage() {
                   {starterFlow.map((row) => (
                     <tr key={row[0]} className="border-b border-[#f0eeeb] last:border-b-0">
                       {row.map((cell) => (
-                        <td key={cell} className="whitespace-nowrap px-3 py-3 text-[var(--foreground-muted)]">{cell}</td>
+                        <td key={cell} className="px-3 py-3 text-[var(--foreground-muted)]">{cell}</td>
                       ))}
                     </tr>
                   ))}
@@ -182,8 +182,8 @@ export default function BeginnerWorkoutGuidePage() {
             </div>
           </section>
 
-          <section className="rounded-[28px] border border-[#e8e6e3] bg-[#fffdf8] px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
-            <h2 className="text-xl font-bold text-[var(--foreground)]">초보가 자주 묻는 질문</h2>
+          <section className="rounded-[28px] border border-[#e5deca] bg-[#fdfaf5] px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
+            <h2 className="text-xl font-bold text-[var(--foreground)]">💬 초보가 자주 묻는 질문</h2>
             <div className="mt-5 grid gap-3">
               {beginnerFaq.map((item) => (
                 <article key={item.title} className="rounded-2xl border border-[#eaded7] bg-white p-4 shadow-[0_12px_30px_rgba(111,61,38,0.06)]">

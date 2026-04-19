@@ -179,7 +179,7 @@ export default function DietProteinDrinkStrategyPage() {
           </section>
 
           <section className="rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
-            <h2 className="text-xl font-bold text-[var(--foreground)]">다음으로 무엇을 볼지 바로 고르기</h2>
+            <h2 className="text-xl font-bold text-[var(--foreground)]">📖 다음으로 무엇을 볼지 바로 고르기</h2>
             <p className="mt-3 text-sm leading-6 text-[var(--foreground-muted)]">
               지금 기준이 잡혔다면 다음은 저당 제품부터 거를지, 포만감 중심 쉐이크를 볼지, 체중 관리 기준까지 같이 볼지
               방향을 정하면 됩니다.

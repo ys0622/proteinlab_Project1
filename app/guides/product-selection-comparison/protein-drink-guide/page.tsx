@@ -148,7 +148,7 @@ export default function ProteinDrinkGuidePage() {
             </blockquote>
           </section>
           <section className="rounded-[28px] border border-[#dce8df] bg-[#f7fbf8] px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
-            <h2 className="text-xl font-bold text-[var(--foreground)]">바로 보는 상위 후보</h2>
+            <h2 className="text-xl font-bold text-[var(--foreground)]">📖 바로 보는 상위 후보</h2>
             <div className="mt-5 rounded-2xl border border-[#dce8df] bg-white p-5">
               <p className="text-sm leading-6 text-[var(--foreground-muted)]">
                 기준을 이해했다면 다음 클릭은 실제 상위 후보 페이지로 넘어가는 편이 가장 자연스럽습니다.
