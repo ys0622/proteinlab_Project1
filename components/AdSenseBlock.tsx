@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import Script from "next/script";
 import { usePathname } from "next/navigation";
 import { adClick, adImpression, getDeviceType, getPageType, type PageType } from "@/lib/analytics";
 
@@ -72,29 +73,38 @@ export default function AdSenseBlock({
   if (!ADSENSE_CLIENT_ID || !adSlot) return null;
 
   return (
-    <div
-      ref={wrapperRef}
-      className={`ad-sense-block my-8 min-h-[120px] w-full overflow-hidden rounded-2xl border border-[#e8e2d8] bg-[#fbfaf7] px-3 py-4 md:min-h-[140px] ${className}`}
-      onClick={() => {
-        adClick({
-          pageType: pageType ?? getPageType(pathname),
-          pagePath: pathname,
-          adSlot,
-          deviceType: getDeviceType(),
-        });
-      }}
-    >
-      <p className="mb-2 text-center text-[11px] font-medium tracking-[0.08em] text-[var(--foreground-muted)]">
-        AD
-      </p>
-      <ins
-        className="adsbygoogle block"
-        style={{ display: "block" }}
-        data-ad-client={ADSENSE_CLIENT_ID}
-        data-ad-slot={adSlot}
-        data-ad-format={format}
-        data-full-width-responsive="true"
+    <>
+      <Script
+        id="adsense-script"
+        async
+        src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_CLIENT_ID}`}
+        crossOrigin="anonymous"
+        strategy="afterInteractive"
       />
-    </div>
+      <div
+        ref={wrapperRef}
+        className={`ad-sense-block my-6 min-h-[96px] w-full overflow-hidden rounded-lg border border-[#e8e2d8] bg-[#fbfaf7] px-2 py-3 md:my-8 md:min-h-[140px] md:px-3 md:py-4 ${className}`}
+        onClick={() => {
+          adClick({
+            pageType: pageType ?? getPageType(pathname),
+            pagePath: pathname,
+            adSlot,
+            deviceType: getDeviceType(),
+          });
+        }}
+      >
+        <p className="mb-2 text-center text-[11px] font-medium tracking-[0.08em] text-[var(--foreground-muted)]">
+          AD
+        </p>
+        <ins
+          className="adsbygoogle block"
+          style={{ display: "block" }}
+          data-ad-client={ADSENSE_CLIENT_ID}
+          data-ad-slot={adSlot}
+          data-ad-format={format}
+          data-full-width-responsive="true"
+        />
+      </div>
+    </>
   );
 }
