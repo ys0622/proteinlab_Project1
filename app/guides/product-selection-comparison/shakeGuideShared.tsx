@@ -206,28 +206,49 @@ export function ShakeGuidePage({
               <h2 className="text-xl font-bold text-[var(--foreground)]">{comparisonTitle ?? "핵심 내용"}</h2>
 
               {comparisonRows ? (
-                <div className="mt-5 overflow-x-auto">
-                  <table className="min-w-full border-collapse text-left text-sm">
-                    <thead>
-                      <tr className="border-b border-[#e8e6e3] text-[var(--foreground)]">
-                        <th className="px-3 py-3 font-semibold">항목</th>
-                        <th className="px-3 py-3 font-semibold">단백질 쉐이크</th>
-                        <th className="px-3 py-3 font-semibold">단백질 음료</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {comparisonRows.map((row) => (
-                        <tr key={row.label} className="border-b border-[#f0eeeb] last:border-b-0">
-                          <td className="whitespace-nowrap px-3 py-3 font-medium text-[var(--foreground)]">
-                            {row.label}
-                          </td>
-                          <td className="px-3 py-3 text-[var(--foreground-muted)]">{row.shake}</td>
-                          <td className="px-3 py-3 text-[var(--foreground-muted)]">{row.drink}</td>
+                <>
+                  {/* Mobile: card layout */}
+                  <div className="mt-4 space-y-2.5 md:hidden">
+                    {comparisonRows.map((row) => (
+                      <div key={row.label} className="rounded-xl border border-[#dce8df] bg-[#f6fbf7] px-4 py-3">
+                        <p className="text-xs font-bold text-[#24543d]">{row.label}</p>
+                        <div className="mt-2 grid grid-cols-2 gap-2">
+                          <div>
+                            <p className="text-[11px] font-semibold text-[#24543d]">단백질 쉐이크</p>
+                            <p className="mt-0.5 text-xs leading-5 text-[var(--foreground-muted)]">{row.shake}</p>
+                          </div>
+                          <div>
+                            <p className="text-[11px] font-semibold text-[#24543d]">단백질 음료</p>
+                            <p className="mt-0.5 text-xs leading-5 text-[var(--foreground-muted)]">{row.drink}</p>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                  {/* Desktop: table */}
+                  <div className="mt-5 hidden overflow-x-auto md:block">
+                    <table className="min-w-full border-collapse text-left text-sm">
+                      <thead>
+                        <tr className="border-b border-[#e8e6e3] text-[var(--foreground)]">
+                          <th className="px-3 py-3 font-semibold">항목</th>
+                          <th className="px-3 py-3 font-semibold">단백질 쉐이크</th>
+                          <th className="px-3 py-3 font-semibold">단백질 음료</th>
                         </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
+                      </thead>
+                      <tbody>
+                        {comparisonRows.map((row) => (
+                          <tr key={row.label} className="border-b border-[#f0eeeb] last:border-b-0">
+                            <td className="whitespace-nowrap px-3 py-3 font-medium text-[var(--foreground)]">
+                              {row.label}
+                            </td>
+                            <td className="px-3 py-3 text-[var(--foreground-muted)]">{row.shake}</td>
+                            <td className="px-3 py-3 text-[var(--foreground-muted)]">{row.drink}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                </>
               ) : null}
 
               {comparisonCards ? (

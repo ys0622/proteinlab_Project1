@@ -186,7 +186,26 @@ export function CategoryGuidePage({ config }: { config: CategoryGuideConfig }) {
               <h2 className="text-xl font-bold text-[var(--foreground)]">{config.comparisonTitle}</h2>
               <span className="text-xs text-[var(--foreground-muted)]">{config.methodologyNote ?? "ProteinLab DB 기준"}</span>
             </div>
-            <div className="mt-5 overflow-x-auto">
+            {/* Mobile: card layout */}
+            <div className="mt-4 space-y-2.5 md:hidden">
+              {config.comparisonRows.map((row) => (
+                <div key={row.label} className="rounded-xl border border-[#d9e4f0] bg-[#f7f9fc] px-4 py-3">
+                  <div className="flex items-start gap-2">
+                    <span className="shrink-0 pt-0.5 text-xs font-bold text-[#4a6178]">{row.label}</span>
+                    <p className="text-sm font-semibold leading-5 text-[var(--foreground)]">{row.values[0]}</p>
+                  </div>
+                  <div className="mt-2 flex flex-wrap gap-x-3 gap-y-0.5">
+                    {row.values.slice(1).map((value, i) => (
+                      <span key={i} className="text-xs text-[var(--foreground-muted)]">
+                        <span className="font-medium text-[#4a6178]">{config.comparisonColumns[i + 1]}</span>{" "}{value}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+            {/* Desktop: table */}
+            <div className="mt-5 hidden overflow-x-auto md:block">
               <table className="min-w-full border-collapse text-left text-sm">
                 <thead>
                   <tr className="border-b border-[#e8edf3] text-[var(--foreground)]">
