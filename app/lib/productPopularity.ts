@@ -6,9 +6,9 @@ import type { ProductDetailProps } from "../data/products";
  * 순서대로 1위, 2위, 3위...로 고정됨.
  */
 export const PINNED_DRINK_SLUGS: string[] = [
+  "newcare-all-protein-41g",
   "labnosh-protein-max-choco-400",
   "labnosh-protein-max-strawberry-400",
-  "newcare-all-protein-41g",
 ];
 
 const popularitySeeds = {
@@ -16,7 +16,7 @@ const popularitySeeds = {
     { score: 1620, matchers: ["셀렉스", "프로핏"] },
     { score: 2100, matchers: ["랩노쉬", "맥스"] },
     { score: 1540, matchers: ["랩노쉬", "프로틴 드링크"] },
-    { score: 1480, matchers: ["뉴케어", "올프로틴"] },
+    { score: 2200, matchers: ["뉴케어", "올프로틴"] },
     { score: 1410, matchers: ["더단백"] },
     { score: 1360, matchers: ["마이밀", "프로틴"] },
   ],

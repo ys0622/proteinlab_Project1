@@ -10,6 +10,18 @@ export interface CompareLanding {
 
 const compareLandings: CompareLanding[] = [
   {
+    slug: "newcare-41g-vs-labnosh-max-drink",
+    title: "뉴케어 올프로틴 41g vs 랩노쉬 프로틴 맥스 52g 비교",
+    description: "뉴케어 올프로틴 41g와 랩노쉬 프로틴 맥스 52g를 단백질 함량, 당류, 칼로리, 단백질 밀도 기준으로 비교합니다.",
+    intro: "고단백 RTD 음료에서 가장 주목받는 두 제품을 직접 비교하는 랜딩입니다. 41g vs 52g 차이를 성분 기준으로 확인하세요.",
+    bullets: ["고단백 RTD 음료 탑 티어 비교", "BCAA 9100mg(랩노쉬) vs 완전단백질(뉴케어) 차이", "운동 목적 vs 일상 보충 관점 비교"],
+    productSlugs: ["newcare-all-protein-41g", "labnosh-protein-max-choco-400"],
+    relatedLinks: [
+      { href: "/topics/newcare-all-protein", title: "뉴케어 올프로틴 전용 페이지", description: "뉴케어 올프로틴 라인업과 성분 정보를 상세히 확인합니다." },
+      { href: "/topics/high-protein-drink-20g", title: "고단백 20g 이상 음료", description: "단백질 함량 기준 전체 후보군을 한 번에 봅니다." },
+    ],
+  },
+  {
     slug: "newcare-vs-danbaek-drink",
     title: "뉴케어 올프로틴 vs 더단백 드링크 비교",
     description: "뉴케어 올프로틴과 더단백 드링크를 단백질, 당류, 칼로리, 밀도 기준으로 비교합니다.",

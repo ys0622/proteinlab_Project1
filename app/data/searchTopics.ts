@@ -12,6 +12,19 @@ export interface SearchTopic {
 
 const searchTopics: SearchTopic[] = [
   {
+    slug: "newcare-all-protein",
+    title: "뉴케어 올프로틴 추천 및 비교",
+    description: "뉴케어 올프로틴 41g와 245mL 라인을 단백질 함량, 당류, 칼로리 기준으로 비교합니다.",
+    intro: "뉴케어 올프로틴은 41g의 고단백 함량과 0g 당류로 운동 후 보충부터 일상 단백질 섭취까지 폭넓게 활용되는 RTD 음료입니다.",
+    bullets: ["고단백 41g · 당류 0g 검색 대응", "뉴케어 브랜드 탐색 유입 직접 수용", "다른 고단백 RTD와 비교 흐름 연결"],
+    primaryCta: { href: "/product/newcare-all-protein-41g", title: "뉴케어 올프로틴 41g 상세 보기", description: "성분, 단백질 밀도, 구매 링크를 한 페이지에서 확인합니다." },
+    relatedLinks: [
+      { href: "/compare/newcare-41g-vs-labnosh-max-drink", title: "뉴케어 vs 랩노쉬 맥스 비교", description: "41g vs 52g 고단백 RTD를 성분 기준으로 직접 비교합니다." },
+      { href: "/topics/high-protein-drink-20g", title: "고단백 20g 이상 음료", description: "단백질 20g 이상 RTD 전체 후보군을 함께 봅니다." },
+      { href: "/ranking", title: "단백질 음료 순위", description: "뉴케어 올프로틴이 전체 순위에서 어느 위치인지 확인합니다." },
+    ],
+  },
+  {
     slug: "protein-drink-recommend",
     title: "단백질 음료 추천",
     description: "단백질 g, 당류, 칼로리, 단백질 밀도를 기준으로 단백질 음료를 비교합니다.",
