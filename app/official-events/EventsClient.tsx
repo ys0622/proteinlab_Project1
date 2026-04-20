@@ -167,6 +167,7 @@ const rawDrinkBrands: BrandCard[] = [
     note: "현재 등록 제품 7개",
     productCount: 7,
     events: [
+      { category: "증정", periodLabel: "4월 페스타", description: "뉴케어 올프로틴 페스타 프로모션이 진행 중입니다. 대상웰라이프 공식몰에서 구매 시 사은품 증정 또는 추가 구성 혜택이 붙는지 먼저 확인하는 편이 좋습니다." },
       { category: "할인", periodLabel: "4월 봄 기획", description: "대상웰라이프 공식몰 봄 기획전에서 올프로틴 라인 타임특가가 함께 열리는 경우가 있습니다." },
       { category: "무료배송", periodLabel: "회원 혜택", description: "회원 전용 무료배송 또는 배송비 완화 혜택이 함께 붙는 경우가 있습니다." },
     ],
@@ -834,12 +835,13 @@ function buildBrandCards(productType: ProductType, curatedBrands: BrandCard[]) {
       getMostCommonUrl(brandProducts, "naverUrl") ||
       getMostCommonUrl(brandProducts, "coupangUrl") ||
       "#";
-    const curatedScore = curated?.storeUrl ? classifyStoreUrl(curated.storeUrl).score : 0;
-    const bestDataScore = classifyStoreUrl(bestDataUrl).score;
-    const storeUrl =
-      curated?.storeUrl && curatedScore >= bestDataScore
-        ? curated.storeUrl
-        : bestDataUrl;
+    // If a curated storeUrl is explicitly set (and isn't a generic Coupang/placeholder), use it directly.
+    // Only fall back to DB-computed best URL when no real curated URL was provided.
+    const isPlaceholderUrl =
+      !curated?.storeUrl ||
+      curated.storeUrl === "https://www.coupang.com/" ||
+      curated.storeUrl === "#";
+    const storeUrl = isPlaceholderUrl ? bestDataUrl : curated.storeUrl;
     const storeType = curated?.storeType || inferStoreType(storeUrl);
     const events =
       curated?.events?.length
