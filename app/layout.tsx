@@ -26,11 +26,20 @@ export const metadata: Metadata = {
     siteName: "ProteinLab",
     locale: "ko_KR",
     type: "website",
+    images: [
+      {
+        url: "/opengraph-image",
+        width: 1200,
+        height: 630,
+        alt: "단백질 제품 비교 — ProteinLab",
+      },
+    ],
   },
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
     title: "단백질 제품 비교 — ProteinLab",
     description: "단백질 음료·바·요거트·쉐이크를 단백질 함량, 당류, 칼로리 기준으로 바로 비교합니다.",
+    images: ["/opengraph-image"],
   },
   verification: {
     other: {
