@@ -277,6 +277,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
   const isShake = product.productType === "shake";
   const productImageUrl = getProductImageUrl(product.slug);
   const category = (product.productType ?? "drink") as "drink" | "bar" | "yogurt" | "shake";
+  const isDrink = category === "drink";
   const categoryHref = getCategoryHref(category);
   const faqItems = getProductFaqs(product);
   const hasCapacityInName = Boolean(product.capacity && product.name.includes(product.capacity));
@@ -448,9 +449,11 @@ export default async function ProductDetailPage({ params }: PageProps) {
           </div>
 
           <div className="mt-6 flex flex-col gap-6 lg:flex-row lg:items-stretch lg:gap-8">
-            <div className="w-full flex-shrink-0 lg:max-w-[240px]">
+            <div className={`w-full flex-shrink-0 ${isDrink ? "lg:max-w-[200px]" : "lg:max-w-[240px]"}`}>
               <div
-                className="relative flex w-full min-h-[180px] items-center justify-center overflow-hidden rounded-2xl border border-[#e8e6e3] bg-white sm:min-h-[200px] lg:h-full lg:min-h-0"
+                className={`relative flex w-full items-center justify-center overflow-hidden rounded-2xl border border-[#e8e6e3] bg-white ${
+                  isDrink ? "min-h-[152px] sm:min-h-[176px] lg:h-full lg:min-h-0" : "min-h-[180px] sm:min-h-[200px] lg:h-full lg:min-h-0"
+                }`}
                 style={{ borderRadius: "16px" }}
               >
                 {productImageUrl ? (
@@ -459,7 +462,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
                     alt={`${product.brand} ${product.name}`}
                     fill
                     className="object-contain p-1 sm:p-2"
-                    sizes="(max-width: 640px) 80vw, (max-width: 1024px) 40vw, 240px"
+                    sizes={isDrink ? "(max-width: 640px) 68vw, (max-width: 1024px) 34vw, 200px" : "(max-width: 640px) 80vw, (max-width: 1024px) 40vw, 240px"}
                     unoptimized
                   />
                 ) : (
