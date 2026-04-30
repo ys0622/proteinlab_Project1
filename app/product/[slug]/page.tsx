@@ -449,28 +449,33 @@ export default async function ProductDetailPage({ params }: PageProps) {
           </div>
 
           <div className="mt-6 flex flex-col gap-6 lg:flex-row lg:items-stretch lg:gap-8">
-            <div
-              className={`flex-shrink-0 ${
-                isDrink
-                  ? "mx-auto w-full max-w-[164px] sm:max-w-[184px] lg:mx-0 lg:max-w-[200px]"
-                  : "w-full lg:max-w-[240px]"
-              }`}
-            >
+            <div className="w-full flex-shrink-0 lg:max-w-[240px]">
               <div
-                className={`relative flex w-full items-center justify-center overflow-hidden rounded-2xl border border-[#e8e6e3] bg-white ${
-                  isDrink ? "min-h-[144px] sm:min-h-[168px] lg:h-[220px] lg:min-h-[220px]" : "min-h-[180px] sm:min-h-[200px] lg:h-full lg:min-h-0"
-                }`}
+                className="relative flex w-full min-h-[180px] items-center justify-center overflow-hidden rounded-2xl border border-[#e8e6e3] bg-white sm:min-h-[200px] lg:h-full lg:min-h-0"
                 style={{ borderRadius: "16px" }}
               >
                 {productImageUrl ? (
-                  <Image
-                    src={productImageUrl}
-                    alt={`${product.brand} ${product.name}`}
-                    fill
-                    className="object-contain p-1 sm:p-2"
-                    sizes={isDrink ? "(max-width: 640px) 164px, (max-width: 1024px) 184px, 200px" : "(max-width: 640px) 80vw, (max-width: 1024px) 40vw, 240px"}
-                    unoptimized
-                  />
+                  isDrink ? (
+                    <div className="relative h-[126px] w-[126px] sm:h-[146px] sm:w-[146px] lg:h-[170px] lg:w-[170px]">
+                      <Image
+                        src={productImageUrl}
+                        alt={`${product.brand} ${product.name}`}
+                        fill
+                        className="object-contain"
+                        sizes="(max-width: 640px) 126px, (max-width: 1024px) 146px, 170px"
+                        unoptimized
+                      />
+                    </div>
+                  ) : (
+                    <Image
+                      src={productImageUrl}
+                      alt={`${product.brand} ${product.name}`}
+                      fill
+                      className="object-contain p-1 sm:p-2"
+                      sizes="(max-width: 640px) 80vw, (max-width: 1024px) 40vw, 240px"
+                      unoptimized
+                    />
+                  )
                 ) : (
                   <div className="flex h-full min-h-[220px] w-full items-center justify-center bg-[#f7f4ee] text-sm text-[var(--foreground-muted)]">
                     이미지 준비 중
