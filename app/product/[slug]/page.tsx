@@ -456,16 +456,14 @@ export default async function ProductDetailPage({ params }: PageProps) {
               >
                 {productImageUrl ? (
                   isDrink ? (
-                    <div className="relative h-[126px] w-[126px] sm:h-[146px] sm:w-[146px] lg:h-[188px] lg:w-[188px]">
-                      <Image
-                        src={productImageUrl}
-                        alt={`${product.brand} ${product.name}`}
-                        fill
-                        className="object-contain"
-                        sizes="(max-width: 640px) 126px, (max-width: 1024px) 146px, 188px"
-                        unoptimized
-                      />
-                    </div>
+                    <Image
+                      src={productImageUrl}
+                      alt={`${product.brand} ${product.name}`}
+                      width={220}
+                      height={220}
+                      className="h-[126px] w-auto max-w-none object-contain sm:h-[146px] md:h-[172px] lg:h-[200px]"
+                      unoptimized
+                    />
                   ) : (
                     <Image
                       src={productImageUrl}
