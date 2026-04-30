@@ -458,7 +458,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
             >
               <div
                 className={`relative flex w-full items-center justify-center overflow-hidden rounded-2xl border border-[#e8e6e3] bg-white ${
-                  isDrink ? "min-h-[144px] sm:min-h-[168px] lg:h-full lg:min-h-0" : "min-h-[180px] sm:min-h-[200px] lg:h-full lg:min-h-0"
+                  isDrink ? "min-h-[144px] sm:min-h-[168px] lg:h-[220px] lg:min-h-[220px]" : "min-h-[180px] sm:min-h-[200px] lg:h-full lg:min-h-0"
                 }`}
                 style={{ borderRadius: "16px" }}
               >
