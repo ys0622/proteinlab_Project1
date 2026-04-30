@@ -449,10 +449,16 @@ export default async function ProductDetailPage({ params }: PageProps) {
           </div>
 
           <div className="mt-6 flex flex-col gap-6 lg:flex-row lg:items-stretch lg:gap-8">
-            <div className={`w-full flex-shrink-0 ${isDrink ? "lg:max-w-[200px]" : "lg:max-w-[240px]"}`}>
+            <div
+              className={`flex-shrink-0 ${
+                isDrink
+                  ? "mx-auto w-full max-w-[164px] sm:max-w-[184px] lg:mx-0 lg:max-w-[200px]"
+                  : "w-full lg:max-w-[240px]"
+              }`}
+            >
               <div
                 className={`relative flex w-full items-center justify-center overflow-hidden rounded-2xl border border-[#e8e6e3] bg-white ${
-                  isDrink ? "min-h-[152px] sm:min-h-[176px] lg:h-full lg:min-h-0" : "min-h-[180px] sm:min-h-[200px] lg:h-full lg:min-h-0"
+                  isDrink ? "min-h-[144px] sm:min-h-[168px] lg:h-full lg:min-h-0" : "min-h-[180px] sm:min-h-[200px] lg:h-full lg:min-h-0"
                 }`}
                 style={{ borderRadius: "16px" }}
               >
@@ -462,7 +468,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
                     alt={`${product.brand} ${product.name}`}
                     fill
                     className="object-contain p-1 sm:p-2"
-                    sizes={isDrink ? "(max-width: 640px) 68vw, (max-width: 1024px) 34vw, 200px" : "(max-width: 640px) 80vw, (max-width: 1024px) 40vw, 240px"}
+                    sizes={isDrink ? "(max-width: 640px) 164px, (max-width: 1024px) 184px, 200px" : "(max-width: 640px) 80vw, (max-width: 1024px) 40vw, 240px"}
                     unoptimized
                   />
                 ) : (
