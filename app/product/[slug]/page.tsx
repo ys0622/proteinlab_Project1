@@ -461,7 +461,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
                       alt={`${product.brand} ${product.name}`}
                       width={220}
                       height={220}
-                      className="h-[126px] w-auto max-w-none object-contain sm:h-[146px] md:h-[172px] lg:h-[240px]"
+                      className="h-[126px] w-auto max-w-none object-contain sm:h-[146px] md:h-[172px] lg:h-[248px]"
                       unoptimized
                     />
                   ) : (
