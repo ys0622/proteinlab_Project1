@@ -6,6 +6,7 @@ import { join } from "node:path";
 const root = process.cwd();
 
 const CATEGORY_CONFIGS = [
+  ["drink", "docs/drink-coupang-template.csv", "app/data/drinkProductsData.json"],
   ["bar", "docs/bar-coupang-template.csv", "app/data/barProductsData.json"],
   ["yogurt", "docs/yogurt-coupang-template.csv", "app/data/yogurtProductsData.json"],
   ["shake", "docs/shake-coupang-template.csv", "app/data/shakeProductsData.json"],

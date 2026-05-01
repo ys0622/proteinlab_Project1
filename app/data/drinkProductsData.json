@@ -83,7 +83,7 @@
       "sodiumMg": 250,
       "bcaaMg": 9100
     },
-    "coupangUrl": "https://www.coupang.com/np/search?q=%EB%9E%A9%EB%85%B8%EC%89%AC+%ED%94%84%EB%A1%9C%ED%8B%B4+%EB%93%9C%EB%A7%81%ED%81%AC+%EB%A7%A5%EC%8A%A4",
+    "coupangUrl": "#",
     "naverUrl": "https://search.shopping.naver.com/search/all?query=%EB%9E%A9%EB%85%B8%EC%89%AC+%ED%94%84%EB%A1%9C%ED%8B%B4+%EB%93%9C%EB%A7%81%ED%81AC+%EB%A7%A5%EC%8A%A4+%EC%B4%88%EC%BD%94",
     "officialUrl": "https://labnosh.com/category/%EB%9E%A9%EB%85%B8%EC%89%AC/44/"
   },
@@ -126,7 +126,7 @@
       "sodiumMg": 250,
       "bcaaMg": 9100
     },
-    "coupangUrl": "https://www.coupang.com/np/search?q=%EB%9E%A9%EB%85%B8%EC%89%AC+%ED%94%84%EB%A1%9C%ED%8B%B4+%EB%93%9C%EB%A7%81%ED%81%AC+%EB%A7%A5%EC%8A%A4",
+    "coupangUrl": "#",
     "naverUrl": "https://search.shopping.naver.com/search/all?query=%EB%9E%A9%EB%85%B8%EC%89%AC+%ED%94%84%EB%A1%9C%ED%8B%B4+%EB%93%9C%EB%A7%81%ED%81AC+%EB%A7%A5%EC%8A%A4+%EB%94%B8%EA%B8%B0",
     "officialUrl": "https://labnosh.com/category/%EB%9E%A9%EB%85%B8%EC%89%AC/44/"
   },
@@ -1308,7 +1308,8 @@
       "bcaaMg": 4200
     },
     "naverUrl": "https://search.shopping.naver.com/search/all?query=%EC%85%80%EB%A0%89%EC%8A%A4%20%ED%94%84%EB%A1%9C%ED%95%8F%20(%EB%94%B8%EA%B8%B0%EC%B4%88%EC%BD%94)&prevQuery=%EB%A7%A4%EC%9D%BC%EC%9C%A0%EC%97%85%20%EC%85%80%EB%A0%89%EC%8A%A4%20%ED%94%84%EB%A1%9C%ED%95%8F%20%EC%9B%A8%EC%9D%B4%ED%94%84%EB%A1%9C%ED%8B%B4%20%EC%95%84%EB%A9%94%EB%A6%AC%EC%B9%B4%EB%85%B8%20%EB%93%9C%EB%A7%81%ED%81%AC%2C%20330ml%2C%2012%EA%B0%9C&vertical=search",
-    "officialUrl": "https://brand.naver.com/selex/category/85709825a6ff41b7bfdb4b6dbd205dd0?cp=1"
+    "officialUrl": "https://brand.naver.com/selex/category/85709825a6ff41b7bfdb4b6dbd205dd0?cp=1",
+    "coupangUrl": "https://www.coupang.com/vp/products/8817045827?itemId=26033649782&vendorItemId=93874518918&q=%EC%85%80%EB%A0%89%EC%8A%A4++%ED%94%84%EB%A1%9C%ED%95%8F+%28%EB%94%B8%EA%B8%B0%EC%B4%88%EC%BD%94%29&searchId=ce60a16613085686&sourceType=search&itemsCount=36&searchRank=0&rank=0&traceId=momyk8wx"
   },
   {
     "slug": "sellex-profit-sports-choco-330",
@@ -1392,6 +1393,50 @@
     },
     "coupangUrl": "https://www.coupang.com/vp/products/9197453112?itemId=27323113328&vendorItemId=94305335877&q=%EB%A7%A4%EC%9D%BC%EC%9C%A0%EC%97%85%20%EC%85%80%EB%A0%89%EC%8A%A4%20%ED%94%84%EB%A1%9C%ED%95%8F%20%EC%8A%A4%ED%8F%AC%EC%B8%A0%20(%EC%BD%94%EC%BD%94%EB%84%9B)&searchId=5da522395278485&sourceType=search&itemsCount=36&searchRank=0&rank=0",
     "naverUrl": "https://search.shopping.naver.com/search/all?query=%EB%A7%A4%EC%9D%BC%EC%9C%A0%EC%97%85%20%EC%85%80%EB%A0%89%EC%8A%A4%20%ED%94%84%EB%A1%9C%ED%95%8F%20%EC%8A%A4%ED%8F%AC%EC%B8%A0%20(%EC%BD%94%EC%BD%94%EB%84%9B)&prevQuery=%EB%A7%A4%EC%9D%BC%EC%9C%A0%EC%97%85%20%EC%85%80%EB%A0%89%EC%8A%A4%20%ED%94%84%EB%A1%9C%ED%95%8F%20%EC%8A%A4%ED%8F%AC%EC%B8%A0%20(%EC%B4%88%EC%BD%9C%EB%A6%BF)&vertical=search",
+    "officialUrl": "https://www.selexmall.com/kr/product/productList?r_ctcode1=024000000000000&r_ctcode2=024000000000000&r_order=1"
+  },
+  {
+    "slug": "sellex-profit-sports-wildchoco-350",
+    "brand": "셀렉스",
+    "name": "프로핏 스포츠 와일드 초코",
+    "capacity": "350mL",
+    "variant": "일반",
+    "tags": [
+      "PET"
+    ],
+    "proteinPerServing": 45,
+    "calories": 210,
+    "sugar": 0,
+    "density": "12.9g/100ml",
+    "productUrl": "#",
+    "productType": "drink",
+    "gradeTags": [
+      "단백질 밀도 A",
+      "다이어트 C",
+      "퍼포먼스 A"
+    ],
+    "manufacturer": "매일유업",
+    "flavor": "와일드 초코",
+    "bcaa": "7800mg",
+    "proteinSource": "혼합",
+    "fat": 1.3,
+    "sodium": 300,
+    "calorieDensity": "60.0kcal/100ml",
+    "drinkType": "밀크형",
+    "nutritionPerBottle": {
+      "caloriesKcal": 210,
+      "proteinG": 45,
+      "carbsG": 4,
+      "sugarsG": 0,
+      "fatG": 1.3,
+      "transFatG": 0,
+      "satFatG": 0,
+      "cholesterolMg": 17,
+      "sodiumMg": 300,
+      "bcaaMg": 7800
+    },
+    "coupangUrl": "https://www.coupang.com/vp/products/9481373144?itemId=28230058415&vendorItemId=95183817928&q=%ED%94%84%EB%A1%9C%ED%95%8F+%EC%8A%A4%ED%8F%AC%EC%B8%A0+%EC%99%80%EC%9D%BC%EB%93%9C+%EC%B4%88%EC%BD%94&searchId=b50f61d718767866&sourceType=search&itemsCount=36&searchRank=0&rank=0&traceId=momyndjf",
+    "naverUrl": "https://search.shopping.naver.com/search/all?query=%EC%85%80%EB%A0%89%EC%8A%A4%20%ED%94%84%EB%A1%9C%ED%95%8F%20%EC%8A%A4%ED%8F%AC%EC%B8%A0%20%EC%99%80%EC%9D%BC%EB%93%9C%20%EC%B4%88%EC%BD%94%2045g%20350ml",
     "officialUrl": "https://www.selexmall.com/kr/product/productList?r_ctcode1=024000000000000&r_ctcode2=024000000000000&r_order=1"
   },
   {
@@ -2935,7 +2980,8 @@
       "bcaaMg": 4000
     },
     "naverUrl": "https://search.shopping.naver.com/search/all?query=%EB%8B%A5%ED%84%B0%EC%9C%A0%20%ED%94%84%EB%A1%9C%20%EB%8B%A8%EB%B0%B1%EC%A7%88%20%EB%93%9C%EB%A7%81%ED%81%AC%20%EB%B0%94%EB%82%98%EB%82%98%EB%A7%9B%2C%20250ml%2C%2024%EA%B0%9C&prevQuery=%EB%8B%A5%ED%84%B0%EC%9C%A0%20%ED%94%84%EB%A1%9C%20%EB%8B%A8%EB%B0%B1%EC%A7%88%20%EB%93%9C%EB%A7%81%ED%81%AC%20%EC%B4%88%EC%BD%94%EB%A7%9B%2C%20250ml%2C%2024%EA%B0%9C&vertical=search",
-    "officialUrl": "https://dryoumall.com/product/list.html?cate_no=45"
+    "officialUrl": "https://dryoumall.com/product/list.html?cate_no=45",
+    "coupangUrl": "https://www.coupang.com/vp/products/7344747734?itemId=27932244573&vendorItemId=89216798417&q=%EB%8B%A5%ED%84%B0%EC%9C%A0+%ED%94%84%EB%A1%9C+%EB%8B%A8%EB%B0%B1%EC%A7%88+%EB%93%9C%EB%A7%81%ED%81%AC+%28%EB%B0%94%EB%82%98%EB%82%98%29&searchId=9ef7b7e523112754&sourceType=search&itemsCount=36&searchRank=0&rank=0&traceId=momymwpu"
   },
   {
     "slug": "pasteur-easyprotein-lowsugar-choco-250",
@@ -3143,7 +3189,8 @@
       "bcaaMg": 4000
     },
     "naverUrl": "https://search.shopping.naver.com/search/all?query=%EB%8B%A5%ED%84%B0%EC%9C%A0%20%ED%94%84%EB%A1%9C%20%EB%8B%A8%EB%B0%B1%EC%A7%88%20%EB%93%9C%EB%A7%81%ED%81%AC%20(%EB%94%B8%EA%B8%B0)&prevQuery=%ED%94%84%EB%A1%9C%ED%8B%B4%EB%B0%80%20%EC%95%A1%ED%8B%B0%EB%B8%8C%20%EC%95%84%EB%AA%AC%EB%93%9C%ED%98%B8%EB%91%90&vertical=search",
-    "officialUrl": "https://dryoumall.com/product/list.html?cate_no=45"
+    "officialUrl": "https://dryoumall.com/product/list.html?cate_no=45",
+    "coupangUrl": "https://www.coupang.com/vp/products/8188708203?itemId=23557796394&vendorItemId=92417842541&q=%EB%8B%A5%ED%84%B0%EC%9C%A0+%ED%94%84%EB%A1%9C+%EB%8B%A8%EB%B0%B1%EC%A7%88+%EB%93%9C%EB%A7%81%ED%81%AC+%28%EB%94%B8%EA%B8%B0%29&searchId=86b411ae19199866&sourceType=search&itemsCount=36&searchRank=4&rank=4&traceId=momymfzp"
   },
   {
     "slug": "dryou-protein-40g-strawberry-350",
@@ -3645,7 +3692,8 @@
       "bcaaMg": 1500
     },
     "naverUrl": "https://search.shopping.naver.com/search/all?query=NEW%20%ED%95%98%EC%9D%B4%EB%AE%A8%20%ED%94%84%EB%A1%9C%ED%8B%B4%20%EB%B0%B8%EB%9F%B0%EC%8A%A4%20%EC%9D%8C%EB%A3%8C%20%EC%B4%88%EC%BD%94%20190ml%2C%2064%EA%B0%9C&prevQuery=%ED%95%98%EC%9D%B4%EB%AE%A8%20%ED%94%84%EB%A1%9C%ED%8B%B4%20%EB%B0%B8%EB%9F%B0%EC%8A%A4%20(%EC%B4%88%EC%BD%9C%EB%A6%BF)&vertical=search",
-    "officialUrl": "https://brand.naver.com/ildongfoodis/category/ca3a89b53d1f4aa3bce7f3b70bb97f31?cp=1"
+    "officialUrl": "https://brand.naver.com/ildongfoodis/category/ca3a89b53d1f4aa3bce7f3b70bb97f31?cp=1",
+    "coupangUrl": "https://www.coupang.com/vp/products/9409116061?itemId=27985054988&vendorItemId=94942747967&q=%ED%95%98%EC%9D%B4%EB%AE%A8+%ED%94%84%EB%A1%9C%ED%8B%B4+%EB%B0%B8%EB%9F%B0%EC%8A%A4+%28%EC%B4%88%EC%BD%9C%EB%A6%BF%29&searchId=fff5c3c329189693&sourceType=search&itemsCount=36&searchRank=0&rank=0&traceId=momylexn"
   },
   {
     "slug": "labnosh-protein-cacao-350",
@@ -4100,7 +4148,8 @@
       "sodiumMg": 330,
       "bcaaMg": 5000
     },
-    "naverUrl": "https://search.shopping.naver.com/search/all?query=%EB%AF%B8%EB%8B%88%EC%96%B8%EC%A6%88%20%ED%94%84%EB%A1%9C%ED%8B%B4%EC%95%A1%ED%8A%B8%20%EC%B4%88%EC%BD%94%EB%A7%9B%2024%EA%B0%9C%20330ml&prevQuery=%EB%AF%B8%EB%8B%88%EC%96%B8%EC%A6%88%20%ED%94%84%EB%A1%9C%ED%8B%B4%EC%95%A1%ED%8A%B8%20%EC%9D%8C%EB%A3%8C%20(%EC%B4%88%EC%BD%9C%EB%A6%BF)&vertical=search"
+    "naverUrl": "https://search.shopping.naver.com/search/all?query=%EB%AF%B8%EB%8B%88%EC%96%B8%EC%A6%88%20%ED%94%84%EB%A1%9C%ED%8B%B4%EC%95%A1%ED%8A%B8%20%EC%B4%88%EC%BD%94%EB%A7%9B%2024%EA%B0%9C%20330ml&prevQuery=%EB%AF%B8%EB%8B%88%EC%96%B8%EC%A6%88%20%ED%94%84%EB%A1%9C%ED%8B%B4%EC%95%A1%ED%8A%B8%20%EC%9D%8C%EB%A3%8C%20(%EC%B4%88%EC%BD%9C%EB%A6%BF)&vertical=search",
+    "coupangUrl": "https://www.coupang.com/vp/products/9221550660?itemId=27250231503&vendorItemId=94233315928&q=%EB%AF%B8%EB%8B%88%EC%96%B8%EC%A6%88+%ED%94%84%EB%A1%9C%ED%8B%B4%EC%95%A1%ED%8A%B8+%28%EC%B4%88%EC%BD%9C%EB%A6%BF%29&searchId=6a2715543139011&sourceType=search&itemsCount=36&searchRank=0&rank=0&traceId=momyltht"
   },
   {
     "slug": "mymil-newprotein-original-190",
@@ -4308,7 +4357,8 @@
       "sodiumMg": 150,
       "fiberG": 3
     },
-    "naverUrl": "https://search.shopping.naver.com/search/all?query=%ED%8C%8C%EC%8A%A4%ED%87%B4%EB%A5%B4%20%EB%A1%AF%EB%8D%B0%20%ED%8C%8C%EC%8A%A4%ED%87%B4%EB%A5%B4%20%EC%9D%B4%EC%A7%80%ED%94%84%EB%A1%9C%ED%8B%B4%20%EC%8B%9C%EB%A6%AC%EC%96%BC%20%EB%93%9C%EB%A7%81%ED%81%AC&prevQuery=%ED%8C%8C%EC%8A%A4%ED%87%B4%EB%A5%B4%20%EB%A1%AF%EB%8D%B0%20%ED%8C%8C%EC%8A%A4%ED%87%B4%EB%A5%B4%20%EC%9D%B4%EC%A7%80%ED%94%84%EB%A1%9C%ED%8B%B4%20%EC%8B%9C%EB%A6%AC%EC%96%BC%20%EB%93%9C%EB%A7%81%ED%81%AC250ml24%EA%B0%9C&vertical=search"
+    "naverUrl": "https://search.shopping.naver.com/search/all?query=%ED%8C%8C%EC%8A%A4%ED%87%B4%EB%A5%B4%20%EB%A1%AF%EB%8D%B0%20%ED%8C%8C%EC%8A%A4%ED%87%B4%EB%A5%B4%20%EC%9D%B4%EC%A7%80%ED%94%84%EB%A1%9C%ED%8B%B4%20%EC%8B%9C%EB%A6%AC%EC%96%BC%20%EB%93%9C%EB%A7%81%ED%81%AC&prevQuery=%ED%8C%8C%EC%8A%A4%ED%87%B4%EB%A5%B4%20%EB%A1%AF%EB%8D%B0%20%ED%8C%8C%EC%8A%A4%ED%87%B4%EB%A5%B4%20%EC%9D%B4%EC%A7%80%ED%94%84%EB%A1%9C%ED%8B%B4%20%EC%8B%9C%EB%A6%AC%EC%96%BC%20%EB%93%9C%EB%A7%81%ED%81%AC250ml24%EA%B0%9C&vertical=search",
+    "coupangUrl": "https://www.coupang.com/vp/products/9245971003?itemId=23286008489&vendorItemId=94922461933&sourceType=srp_product_ads&clickEventId=07f9db50-4563-11f1-8518-87f3b131ab5b&korePlacement=15&koreSubPlacement=1&clickEventId=07f9db50-4563-11f1-8518-87f3b131ab5b&korePlacement=15&koreSubPlacement=1&traceId=momykmjs"
   },
   {
     "slug": "hymune-protein-balance-black-sesame-190",
@@ -4433,7 +4483,8 @@
       "bcaaMg": 1500
     },
     "naverUrl": "https://search.shopping.naver.com/search/all?query=%ED%95%98%EC%9D%B4%EB%AE%A8%20%ED%94%84%EB%A1%9C%ED%8B%B4%20%EB%B0%B8%EB%9F%B0%EC%8A%A4%20(%ED%94%8C%EB%9F%AC%EC%8A%A4)&prevQuery=%EB%9E%A9%EB%85%B8%EC%89%AC%20%EB%9E%A9%EB%85%B8%EC%89%AC%20%ED%94%84%EB%A1%9C%ED%8B%B4%20%EB%93%9C%EB%A7%81%ED%81%AC%20%EB%A7%88%EC%9D%BC%EB%93%9C%20%EB%B0%94%EB%82%98%EB%82%98%20350ml&vertical=search",
-    "officialUrl": "https://brand.naver.com/ildongfoodis/category/ca3a89b53d1f4aa3bce7f3b70bb97f31?cp=1"
+    "officialUrl": "https://brand.naver.com/ildongfoodis/category/ca3a89b53d1f4aa3bce7f3b70bb97f31?cp=1",
+    "coupangUrl": "https://www.coupang.com/vp/products/8398569703?itemId=25169050462&vendorItemId=91650631007&pickType=COU_PICK&q=%ED%94%84%EB%A1%9C%ED%8B%B4+%EB%B0%B8%EB%9F%B0%EC%8A%A4+%28%ED%94%8C%EB%9F%AC%EC%8A%A4%29&searchId=7486ea6f15633183&sourceType=search&itemsCount=36&searchRank=0&rank=0&traceId=momyl3gd"
   },
   {
     "slug": "danbaek-water-grapefruit-400",
@@ -4601,5 +4652,48 @@
     "officialUrl": "https://m.harimmall.com/product/list.html?cate_no=520",
     "needsServingCheck": true,
     "nutritionBasis": "unknown"
+  },
+  {
+    "slug": "labnosh-protein-perfect-cookie-cream-350",
+    "brand": "랩노쉬",
+    "name": "프로틴 드링크 퍼펙트 (쿠키앤크림)",
+    "capacity": "350mL",
+    "variant": "일반",
+    "tags": [
+      "PET"
+    ],
+    "proteinPerServing": 27,
+    "calories": 135,
+    "sugar": 0,
+    "density": "7.7g/100ml",
+    "productUrl": "#",
+    "productType": "drink",
+    "gradeTags": [
+      "단백질 밀도 A",
+      "다이어트 A",
+      "퍼포먼스 A"
+    ],
+    "manufacturer": "랩노쉬",
+    "flavor": "쿠키앤크림",
+    "bcaa": "-",
+    "proteinSource": "혼합",
+    "fat": 2.3,
+    "sodium": 330,
+    "calorieDensity": "38.6kcal/100ml",
+    "drinkType": "밀크형",
+    "nutritionPerBottle": {
+      "caloriesKcal": 135,
+      "proteinG": 27,
+      "carbsG": 1,
+      "sugarsG": 0,
+      "fatG": 2.3,
+      "transFatG": 0,
+      "satFatG": 1.4,
+      "cholesterolMg": 10,
+      "sodiumMg": 330
+    },
+    "coupangUrl": "https://www.coupang.com/vp/products/9468118165?itemId=28178882760&vendorItemId=95133548690&q=%ED%94%84%EB%A1%9C%ED%8B%B4+%EB%93%9C%EB%A7%81%ED%81%AC+%ED%8D%BC%ED%8E%99%ED%8A%B8+%28%EC%BF%A0%ED%82%A4%EC%95%A4%ED%81%AC%EB%A6%BC%29&searchId=2185c9017886285&sourceType=search&itemsCount=36&searchRank=0&rank=0&traceId=momynsbg",
+    "naverUrl": "https://search.shopping.naver.com/search/all?query=%ED%94%84%EB%A1%9C%ED%8B%B4%20%EB%93%9C%EB%A7%81%ED%81%AC%20%ED%8D%BC%ED%8E%99%ED%8A%B8%20(%EC%BF%A0%ED%82%A4%EC%95%A4%ED%81%AC%EB%A6%BC)&vertical=search",
+    "officialUrl": "https://labnosh.com/category/%EB%9E%A9%EB%85%B8%EC%89%AC/44/"
   }
 ]

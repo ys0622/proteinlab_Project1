@@ -1,8 +1,8 @@
 {
-  "generated_at": "2026-04-19T00:09:33.347Z",
-  "total": 355,
+  "generated_at": "2026-05-01T13:42:12.231Z",
+  "total": 357,
   "categories": {
-    "drinks": 110,
+    "drinks": 112,
     "bars": 100,
     "yogurt": 57,
     "shake": 88
@@ -303,6 +303,15 @@
       "category": "drinks",
       "protein": 20,
       "calories": 90,
+      "sugar": 0
+    },
+    {
+      "slug": "sellex-profit-sports-wildchoco-350",
+      "name": "프로핏 스포츠 와일드 초코",
+      "brand": "셀렉스",
+      "category": "drinks",
+      "protein": 45,
+      "calories": 210,
       "sugar": 0
     },
     {
@@ -997,6 +1006,15 @@
       "protein": 21,
       "calories": 135,
       "sugar": 4
+    },
+    {
+      "slug": "labnosh-protein-perfect-cookie-cream-350",
+      "name": "프로틴 드링크 퍼펙트 (쿠키앤크림)",
+      "brand": "랩노쉬",
+      "category": "drinks",
+      "protein": 27,
+      "calories": 135,
+      "sugar": 0
     },
     {
       "slug": "dryou-proteinbar-pro-3nuts-crunch",
