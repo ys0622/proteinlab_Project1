@@ -14,21 +14,21 @@ export type NavigationItem = {
 
 export const navigationItems: NavigationItem[] = [
   {
-    label: "제품 목록",
+    label: "제품 카테고리",
     children: ORDERED_CATEGORY_IDS.map((category) => ({
       label: getCategoryLabel(category),
       href: getCategoryHref(category),
     })),
   },
-  { label: "제품 추천", href: "/recommend" },
+  { label: "추천", href: "/recommend" },
   {
-    label: "랭킹 & 등급기준",
+    label: "랭킹과 등급",
     children: [
       { label: "제품 랭킹", href: "/ranking" },
       { label: "등급 기준", href: "/grade-criteria" },
     ],
   },
   { label: "🔥 이벤트/핫딜", href: "/official-events" },
-  { label: "단백질 가이드", href: "/guides" },
+  { label: "가이드", href: "/guides" },
   { label: "문의", href: "/contact" },
 ];
