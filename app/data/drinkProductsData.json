@@ -723,6 +723,56 @@
     "bcaa": "6000mg"
   },
   {
+    "slug": "hymune-ultra-400",
+    "brand": "하이뮨",
+    "name": "하이뮨 울트라",
+    "capacity": "400mL",
+    "variant": "울트라",
+    "tags": [
+      "팩"
+    ],
+    "proteinPerServing": 49,
+    "calories": 250,
+    "sugar": 0.9,
+    "density": "12.3g/100ml",
+    "productUrl": "#",
+    "productType": "drink",
+    "gradeTags": [
+      "단백질 밀도 A",
+      "다이어트 C",
+      "퍼포먼스 A"
+    ],
+    "manufacturer": "일동후디스",
+    "flavor": "초코",
+    "bcaa": "9900mg",
+    "proteinSource": "혼합",
+    "fat": 4.3,
+    "sodium": 480,
+    "calorieDensity": "62.5kcal/100ml",
+    "drinkType": "밀크형",
+    "nutritionPerBottle": {
+      "caloriesKcal": 250,
+      "proteinG": 49,
+      "carbsG": 8,
+      "sugarsG": 0.9,
+      "alluloseG": 4,
+      "fatG": 4.3,
+      "satFatG": 1.1,
+      "transFatG": 0,
+      "cholesterolMg": 45,
+      "sodiumMg": 480,
+      "calciumMg": 315,
+      "magnesiumMg": 80,
+      "vitaminB1Mg": 0.96,
+      "vitaminB2Mg": 0.98,
+      "bcaaMg": 9900,
+      "arginineMg": 2000,
+      "leucineMg": 4600
+    },
+    "naverUrl": "https://search.shopping.naver.com/search/all?query=%ED%95%98%EC%9D%B4%EB%AE%A8%20%EC%9A%B8%ED%8A%B8%EB%9D%BC%2049g%20400ml",
+    "officialUrl": "https://brand.naver.com/ildongfoodis/category/ca3a89b53d1f4aa3bce7f3b70bb97f31?cp=1"
+  },
+  {
     "slug": "mymil-furotein-choco-250",
     "brand": "마이밀",
     "name": "퓨로틴 (초코맛)",
@@ -2280,6 +2330,92 @@
     "officialUrl": "https://www.wellife.co.kr/categories/index/101003000000"
   },
   {
+    "slug": "newcare-all-protein-41g-coffee-350",
+    "brand": "뉴케어",
+    "name": "올프로틴 41g (커피우유맛)",
+    "capacity": "350mL",
+    "variant": "락토프리",
+    "tags": [
+      "팩"
+    ],
+    "proteinPerServing": 41,
+    "calories": 210,
+    "sugar": 0.8,
+    "density": "11.7g/100ml",
+    "productUrl": "#",
+    "productType": "drink",
+    "gradeTags": [
+      "단백질 밀도 A",
+      "다이어트 C",
+      "퍼포먼스 A"
+    ],
+    "manufacturer": "대상웰라이프",
+    "flavor": "커피우유맛",
+    "bcaa": "7200mg",
+    "proteinSource": "혼합",
+    "fat": 3.5,
+    "sodium": 250,
+    "calorieDensity": "60.0kcal/100ml",
+    "drinkType": "밀크형",
+    "nutritionPerBottle": {
+      "caloriesKcal": 210,
+      "proteinG": 41,
+      "carbsG": 4,
+      "sugarsG": 0.8,
+      "fatG": 3.5,
+      "satFatG": 0.6,
+      "transFatG": 0,
+      "cholesterolMg": 30,
+      "sodiumMg": 250,
+      "bcaaMg": 7200
+    },
+    "naverUrl": "https://search.shopping.naver.com/search/all?query=%EB%89%B4%EC%BC%80%EC%96%B4%20%EC%98%AC%ED%94%84%EB%A1%9C%ED%8B%B4%2041g%20%EC%BB%A4%ED%94%BC%EC%9A%B0%EC%9C%A0%EB%A7%9B%20350ml",
+    "officialUrl": "https://www.wellife.co.kr/categories/index/101003000000"
+  },
+  {
+    "slug": "newcare-all-protein-41g-savory-350",
+    "brand": "뉴케어",
+    "name": "올프로틴 41g (고소한맛)",
+    "capacity": "350mL",
+    "variant": "락토프리",
+    "tags": [
+      "팩"
+    ],
+    "proteinPerServing": 41,
+    "calories": 210,
+    "sugar": 0.8,
+    "density": "11.7g/100ml",
+    "productUrl": "#",
+    "productType": "drink",
+    "gradeTags": [
+      "단백질 밀도 A",
+      "다이어트 C",
+      "퍼포먼스 A"
+    ],
+    "manufacturer": "대상웰라이프",
+    "flavor": "고소한맛",
+    "bcaa": "7200mg",
+    "proteinSource": "혼합",
+    "fat": 3.5,
+    "sodium": 250,
+    "calorieDensity": "60.0kcal/100ml",
+    "drinkType": "밀크형",
+    "nutritionPerBottle": {
+      "caloriesKcal": 210,
+      "proteinG": 41,
+      "carbsG": 4,
+      "sugarsG": 0.8,
+      "fatG": 3.5,
+      "satFatG": 0.6,
+      "transFatG": 0,
+      "cholesterolMg": 30,
+      "sodiumMg": 250,
+      "bcaaMg": 7200
+    },
+    "naverUrl": "https://search.shopping.naver.com/search/all?query=%EB%89%B4%EC%BC%80%EC%96%B4%20%EC%98%AC%ED%94%84%EB%A1%9C%ED%8B%B4%2041g%20%EA%B3%A0%EC%86%8C%ED%95%9C%EB%A7%9B%20350ml",
+    "officialUrl": "https://www.wellife.co.kr/categories/index/101003000000"
+  },
+  {
     "slug": "danbaek-drink-chocolate-250",
     "brand": "더단백",
     "name": "더단백 드링크 (초콜릿)",
@@ -2301,7 +2437,7 @@
     ],
     "manufacturer": "빙그레",
     "flavor": "초콜릿",
-    "bcaa": "4200mg",
+    "bcaa": "4000mg",
     "proteinSource": "혼합",
     "fat": 0.6,
     "sodium": 30,
@@ -2316,7 +2452,7 @@
       "satFatG": 0.3,
       "sodiumMg": 30,
       "fiberG": 1.7,
-      "bcaaMg": 4200
+      "bcaaMg": 4000
     },
     "coupangUrl": "https://www.coupang.com/vp/products/7411095382?itemId=13466502453&searchId=820400aef6f542c0960ee8fa489b92d6&sourceType=brandstore_sdp_atf_topbadge-carousel&storeId=113103&subSourceType=brandstore_sdp_atf_topbadge-carousel&vendorId=A00003172&vendorItemId=76137436686",
     "naverUrl": "https://search.shopping.naver.com/search/all?query=%EB%8D%94%EB%8B%A8%EB%B0%B1%20%EB%93%9C%EB%A7%81%ED%81%AC%20(%EC%B4%88%EC%BD%9C%EB%A6%BF)&prevQuery=%EB%8D%94%EB%8B%A8%EB%B0%B1%20%EB%93%9C%EB%A7%81%ED%81%AC%20(%EC%BB%A4%ED%94%BC)&vertical=search",
@@ -2438,7 +2574,9 @@
     },
     "coupangUrl": "https://www.coupang.com/vp/products/8308582418?itemId=23972733461&searchId=820400aef6f542c0960ee8fa489b92d6&sourceType=brandstore_sdp_atf_topbadge-carousel&storeId=113103&subSourceType=brandstore_sdp_atf_topbadge-carousel&vendorId=A00003172&vendorItemId=90994072738",
     "naverUrl": "https://search.shopping.naver.com/search/all?query=%EB%8D%94%EB%8B%A8%EB%B0%B1%20%EB%93%9C%EB%A7%81%ED%81%AC%20(%EB%A9%9C%EB%A1%A0)&prevQuery=%EB%8D%94%EB%8B%A8%EB%B0%B1%20%EB%93%9C%EB%A7%81%ED%81%AC%20(%EB%B0%80%ED%81%AC%ED%8B%B0)&vertical=search",
-    "officialUrl": "https://brand.naver.com/binggrae/category/54e40c847f15417fae9351c9478ee909?cp=1"
+    "officialUrl": "https://brand.naver.com/binggrae/category/54e40c847f15417fae9351c9478ee909?cp=1",
+    "fat": 0.7,
+    "sodium": 23
   },
   {
     "slug": "danbaek-drink-doublechoco-350",
@@ -2546,7 +2684,7 @@
     ],
     "manufacturer": "빙그레",
     "flavor": "카라멜",
-    "bcaa": "4200mg",
+    "bcaa": "4000mg",
     "proteinSource": "혼합",
     "fat": 1,
     "calorieDensity": "42.0kcal/100ml",
@@ -2559,10 +2697,64 @@
       "fatG": 1,
       "satFatG": 0.3,
       "sodiumMg": 60,
-      "bcaaMg": 4200
+      "bcaaMg": 4000
     },
     "coupangUrl": "https://www.coupang.com/vp/products/7616812492?itemId=20184839209&searchId=820400aef6f542c0960ee8fa489b92d6&sourceType=brandstore_sdp_atf_topbadge-carousel&storeId=113103&subSourceType=brandstore_sdp_atf_topbadge-carousel&vendorId=A00003172&vendorItemId=81133193583",
     "naverUrl": "https://search.shopping.naver.com/search/all?query=%EB%8D%94%EB%8B%A8%EB%B0%B1%20%EB%93%9C%EB%A7%81%ED%81%AC%20(%EC%B9%B4%EB%9D%BC%EB%A9%9C)&prevQuery=%EB%8D%94%EB%8B%A8%EB%B0%B1%20%EB%93%9C%EB%A7%81%ED%81%AC%20(%EC%B4%88%EC%BD%9C%EB%A6%BF)&vertical=search",
+    "officialUrl": "https://brand.naver.com/binggrae/category/54e40c847f15417fae9351c9478ee909?cp=1",
+    "sodium": 60
+  },
+  {
+    "slug": "danbaek-drink-mintchoco-250",
+    "brand": "더단백",
+    "name": "더단백 드링크 (민트초코)",
+    "capacity": "250mL",
+    "variant": "일반",
+    "tags": [
+      "팩"
+    ],
+    "proteinPerServing": 20,
+    "calories": 105,
+    "sugar": 0.8,
+    "density": "8.0g/100ml",
+    "productUrl": "#",
+    "productType": "drink",
+    "gradeTags": [
+      "단백질 밀도 B",
+      "다이어트 C",
+      "퍼포먼스 C"
+    ],
+    "manufacturer": "빙그레",
+    "flavor": "민트초코",
+    "bcaa": "4000mg",
+    "proteinSource": "우유",
+    "fat": 0.6,
+    "sodium": 30,
+    "calorieDensity": "42.0kcal/100ml",
+    "drinkType": "밀크형",
+    "nutritionPerBottle": {
+      "caloriesKcal": 105,
+      "proteinG": 20,
+      "carbsG": 7,
+      "sugarsG": 0.8,
+      "alluloseG": 1.7,
+      "fatG": 0.6,
+      "satFatG": 0.3,
+      "transFatG": 0,
+      "cholesterolMg": 15,
+      "sodiumMg": 30,
+      "bcaaMg": 4000,
+      "leucineMg": 2100,
+      "lysineMg": 1500,
+      "valineMg": 1100,
+      "phenylalanineMg": 900,
+      "isoleucineMg": 800,
+      "threonineMg": 800,
+      "arginineMg": 600,
+      "methionineMg": 450,
+      "tryptophanMg": 200
+    },
+    "naverUrl": "https://search.shopping.naver.com/search/all?query=%EB%8D%94%EB%8B%A8%EB%B0%B1%20%EB%93%9C%EB%A7%81%ED%81%AC%20%EB%AF%BC%ED%8A%B8%EC%B4%88%EC%BD%94%2020g%20250ml",
     "officialUrl": "https://brand.naver.com/binggrae/category/54e40c847f15417fae9351c9478ee909?cp=1"
   },
   {
@@ -2603,6 +2795,61 @@
     },
     "coupangUrl": "https://www.coupang.com/vp/products/9165375222?itemId=27003819134&searchId=820400aef6f542c0960ee8fa489b92d6&sourceType=brandstore_sdp_atf_topbadge-carousel&storeId=113103&subSourceType=brandstore_sdp_atf_topbadge-carousel&vendorId=A00003172&vendorItemId=93972516698",
     "naverUrl": "https://search.shopping.naver.com/search/all?query=%EB%8D%94%EB%8B%A8%EB%B0%B1%20%EB%93%9C%EB%A7%81%ED%81%AC%20(%EB%8B%A4%ED%81%AC%EC%B4%88%EC%BD%94)&prevQuery=%EB%8D%94%EB%8B%A8%EB%B0%B1%20%EB%93%9C%EB%A7%81%ED%81%AC%20(%EB%8D%94%EB%B8%94%EC%B4%88%EC%BD%94)&vertical=search",
+    "officialUrl": "https://brand.naver.com/binggrae/category/54e40c847f15417fae9351c9478ee909?cp=1"
+  },
+  {
+    "slug": "danbaek-balance-original-190",
+    "brand": "더단백",
+    "name": "더단백 밸런스 (오리지널)",
+    "capacity": "190mL",
+    "variant": "밸런스",
+    "tags": [
+      "팩"
+    ],
+    "proteinPerServing": 10,
+    "calories": 173,
+    "sugar": 9.5,
+    "density": "5.3g/100ml",
+    "productUrl": "#",
+    "productType": "drink",
+    "gradeTags": [
+      "단백질 밀도 D",
+      "다이어트 D",
+      "퍼포먼스 D"
+    ],
+    "manufacturer": "빙그레",
+    "flavor": "오리지널",
+    "bcaa": "-",
+    "proteinSource": "혼합",
+    "fat": 5,
+    "sodium": 140,
+    "calorieDensity": "91.1kcal/100ml",
+    "drinkType": "밀크형",
+    "nutritionPerBottle": {
+      "caloriesKcal": 173,
+      "proteinG": 10,
+      "carbsG": 22,
+      "sugarsG": 9.5,
+      "fatG": 5,
+      "satFatG": 0.8,
+      "cholesterolMg": 4,
+      "sodiumMg": 140,
+      "calciumMg": 230,
+      "ironMg": 2,
+      "zincMg": 3,
+      "vitaminAMcgRE": 180,
+      "vitaminB1Mg": 0.4,
+      "vitaminB2Mg": 0.5,
+      "vitaminB6Mg": 0.4,
+      "vitaminCMg": 23,
+      "vitaminDMcg": 2,
+      "vitaminEMgATE": 4,
+      "folicAcidMcgDFE": 170,
+      "pantothenicAcidMg": 0.8,
+      "niacinMgNE": 4.5,
+      "biotinMcg": 18
+    },
+    "naverUrl": "https://search.shopping.naver.com/search/all?query=%EB%8D%94%EB%8B%A8%EB%B0%B1%20%EB%B0%B8%EB%9F%B0%EC%8A%A4%20%EC%98%A4%EB%A6%AC%EC%A7%80%EB%84%90%2010g%20190ml",
     "officialUrl": "https://brand.naver.com/binggrae/category/54e40c847f15417fae9351c9478ee909?cp=1"
   },
   {
@@ -2856,6 +3103,96 @@
     "coupangUrl": "https://www.coupang.com/vp/products/8725170517?itemId=25384290090&searchId=eb82f2ffc7cf4fa5a34b809fd0cb372f&sourceType=brandstore_sdp_atf_topbadge-all_products&storeId=1235&subSourceType=brandstore_sdp_atf_topbadge-all_products&vendorId=A00575434&vendorItemId=92940432253",
     "naverUrl": "https://search.shopping.naver.com/search/all?query=%EC%85%80%EB%A0%89%EC%8A%A4%20%ED%94%84%EB%A1%9C%ED%8B%B4%20%EB%9D%BD%ED%86%A0%ED%94%84%EB%A6%AC%20%EC%98%A4%EB%A6%AC%EC%A7%80%EB%84%90&prevQuery=%EC%85%80%EB%A0%89%EC%8A%A4%20%ED%94%84%EB%A1%9C%ED%8B%B4%20%EB%9D%BD%ED%86%A0%ED%94%84%EB%A6%AC&vertical=search",
     "officialUrl": "https://brand.naver.com/selex/category/85709825a6ff41b7bfdb4b6dbd205dd0?cp=1"
+  },
+  {
+    "brand": "셀렉스",
+    "capacity": "190mL",
+    "variant": "당솔브",
+    "tags": [
+      "팩"
+    ],
+    "proteinPerServing": 14,
+    "calories": 150,
+    "sugar": 0.9,
+    "density": "7.4g/100ml",
+    "productUrl": "#",
+    "productType": "drink",
+    "gradeTags": [
+      "단백질 밀도 C",
+      "다이어트 C",
+      "퍼포먼스 C"
+    ],
+    "manufacturer": "매일유업",
+    "bcaa": "-",
+    "proteinSource": "혼합",
+    "fat": 8,
+    "sodium": 250,
+    "calorieDensity": "78.9kcal/100ml",
+    "drinkType": "밀크형",
+    "slug": "sellex-protein-dangsolve-corn-190",
+    "name": "프로틴 당솔브 (초당옥수수맛)",
+    "flavor": "초당옥수수맛",
+    "nutritionPerBottle": {
+      "caloriesKcal": 150,
+      "proteinG": 14,
+      "carbsG": 9,
+      "sugarsG": 0.9,
+      "alluloseG": 2,
+      "fiberG": 2.5,
+      "fatG": 8,
+      "satFatG": 0.8,
+      "transFatG": 0,
+      "cholesterolMg": 0,
+      "sodiumMg": 250,
+      "leucineMg": 1000
+    },
+    "naverUrl": "https://search.shopping.naver.com/search/all?query=%EC%85%80%EB%A0%89%EC%8A%A4%20%ED%94%84%EB%A1%9C%ED%8B%B4%20%EB%8B%B9%EC%86%94%EB%B8%8C%20%EC%B4%88%EB%8B%B9%EC%98%A5%EC%88%98%EC%88%98%EB%A7%9B%2014g%20190ml",
+    "officialUrl": "https://brand.naver.com/selex"
+  },
+  {
+    "brand": "셀렉스",
+    "capacity": "190mL",
+    "variant": "당솔브",
+    "tags": [
+      "팩"
+    ],
+    "proteinPerServing": 14,
+    "calories": 150,
+    "sugar": 0.9,
+    "density": "7.4g/100ml",
+    "productUrl": "#",
+    "productType": "drink",
+    "gradeTags": [
+      "단백질 밀도 C",
+      "다이어트 C",
+      "퍼포먼스 C"
+    ],
+    "manufacturer": "매일유업",
+    "bcaa": "-",
+    "proteinSource": "혼합",
+    "fat": 8,
+    "sodium": 250,
+    "calorieDensity": "78.9kcal/100ml",
+    "drinkType": "밀크형",
+    "slug": "sellex-protein-dangsolve-fivegrain-190",
+    "name": "프로틴 당솔브 (오곡맛)",
+    "flavor": "오곡맛",
+    "nutritionPerBottle": {
+      "caloriesKcal": 150,
+      "proteinG": 14,
+      "carbsG": 9,
+      "sugarsG": 0.9,
+      "alluloseG": 2,
+      "fiberG": 2.5,
+      "fatG": 8,
+      "satFatG": 0.8,
+      "transFatG": 0,
+      "cholesterolMg": 0,
+      "sodiumMg": 250,
+      "leucineMg": 1000
+    },
+    "naverUrl": "https://search.shopping.naver.com/search/all?query=%EC%85%80%EB%A0%89%EC%8A%A4%20%ED%94%84%EB%A1%9C%ED%8B%B4%20%EB%8B%B9%EC%86%94%EB%B8%8C%20%EC%98%A4%EA%B3%A1%EB%A7%9B%2014g%20190ml",
+    "officialUrl": "https://brand.naver.com/selex"
   },
   {
     "slug": "sellex-protein-lowsugar-190",

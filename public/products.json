@@ -1,8 +1,8 @@
 {
-  "generated_at": "2026-05-01T13:42:12.231Z",
-  "total": 357,
+  "generated_at": "2026-05-29T01:08:45.034Z",
+  "total": 364,
   "categories": {
-    "drinks": 112,
+    "drinks": 119,
     "bars": 100,
     "yogurt": 57,
     "shake": 88
@@ -160,6 +160,15 @@
       "protein": 31,
       "calories": 220,
       "sugar": 7
+    },
+    {
+      "slug": "hymune-ultra-400",
+      "name": "하이뮨 울트라",
+      "brand": "하이뮨",
+      "category": "drinks",
+      "protein": 49,
+      "calories": 250,
+      "sugar": 0.9
     },
     {
       "slug": "mymil-furotein-choco-250",
@@ -495,6 +504,24 @@
       "sugar": 0.8
     },
     {
+      "slug": "newcare-all-protein-41g-coffee-350",
+      "name": "올프로틴 41g (커피우유맛)",
+      "brand": "뉴케어",
+      "category": "drinks",
+      "protein": 41,
+      "calories": 210,
+      "sugar": 0.8
+    },
+    {
+      "slug": "newcare-all-protein-41g-savory-350",
+      "name": "올프로틴 41g (고소한맛)",
+      "brand": "뉴케어",
+      "category": "drinks",
+      "protein": 41,
+      "calories": 210,
+      "sugar": 0.8
+    },
+    {
       "slug": "danbaek-drink-chocolate-250",
       "name": "더단백 드링크 (초콜릿)",
       "brand": "더단백",
@@ -558,6 +585,15 @@
       "sugar": 0.9
     },
     {
+      "slug": "danbaek-drink-mintchoco-250",
+      "name": "더단백 드링크 (민트초코)",
+      "brand": "더단백",
+      "category": "drinks",
+      "protein": 20,
+      "calories": 105,
+      "sugar": 0.8
+    },
+    {
       "slug": "danbaek-drink-darkchoco-330",
       "name": "더단백 드링크 (다크초코)",
       "brand": "더단백",
@@ -565,6 +601,15 @@
       "protein": 35,
       "calories": 168,
       "sugar": 0.9
+    },
+    {
+      "slug": "danbaek-balance-original-190",
+      "name": "더단백 밸런스 (오리지널)",
+      "brand": "더단백",
+      "category": "drinks",
+      "protein": 10,
+      "calories": 173,
+      "sugar": 9.5
     },
     {
       "slug": "takefit-monster-goso-350",
@@ -619,6 +664,24 @@
       "protein": 14,
       "calories": 140,
       "sugar": 1.4
+    },
+    {
+      "slug": "sellex-protein-dangsolve-corn-190",
+      "name": "프로틴 당솔브 (초당옥수수맛)",
+      "brand": "셀렉스",
+      "category": "drinks",
+      "protein": 14,
+      "calories": 150,
+      "sugar": 0.9
+    },
+    {
+      "slug": "sellex-protein-dangsolve-fivegrain-190",
+      "name": "프로틴 당솔브 (오곡맛)",
+      "brand": "셀렉스",
+      "category": "drinks",
+      "protein": 14,
+      "calories": 150,
+      "sugar": 0.9
     },
     {
       "slug": "sellex-protein-lowsugar-190",
