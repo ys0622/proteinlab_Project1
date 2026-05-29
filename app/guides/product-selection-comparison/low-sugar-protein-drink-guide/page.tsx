@@ -4,6 +4,7 @@ import Footer from "@/app/components/Footer";
 import GuideBuySection from "@/app/components/GuideBuySection";
 
 export const metadata = {
+  alternates: { canonical: "https://proteinlab.kr/guides/product-selection-comparison/low-sugar-protein-drink-guide" },
   title: "저당 단백질 음료 추천 기준 | 당류 낮은 RTD 비교",
   description:
     "저당 단백질 음료를 고를 때 당류 컷, 단백질 함량, 칼로리, 단백질 밀도를 어떤 순서로 확인해야 하는지 정리합니다.",
@@ -38,8 +39,18 @@ const chartItems = [
 ];
 
 export default function LowSugarProteinDrinkGuidePage() {
+  const jsonLd = buildGuideJsonLd({
+    title: "저당 단백질 음료 추천 기준 | 당류 낮은 RTD 비교",
+    description: "저당 단백질 음료를 고를 때 당류 컷, 단백질 함량, 칼로리, 단백질 밀도를 어떤 순서로 확인해야 하는지 정리합니다.",
+    url: "https://proteinlab.kr/guides/product-selection-comparison/low-sugar-protein-drink-guide",
+    datePublished: "2026-03-01",
+    dateModified: "2026-05-29",
+  });
+
   return (
     <div className="min-h-screen bg-white">
+      {jsonLd.map((item, i) => (<script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(item) }} />))}
+
       <Header />
       <section
         className="w-full border-t border-b bg-[var(--hero-bg)]"

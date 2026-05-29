@@ -139,14 +139,59 @@ function ExternalCards({ links }: { links: CategoryExternalLink[] }) {
   );
 }
 
+function buildCategoryJsonLd(config: CategoryGuideConfig): Record<string, unknown>[] {
+  const canonical = `https://proteinlab.kr/guides/product-selection-comparison/${config.slug}`;
+  const schemas: Record<string, unknown>[] = [
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      headline: config.title,
+      description: config.description,
+      inLanguage: "ko-KR",
+      mainEntityOfPage: canonical,
+      author: { "@type": "Organization", name: "ProteinLab", url: "https://proteinlab.kr" },
+      publisher: {
+        "@type": "Organization",
+        name: "ProteinLab",
+        url: "https://proteinlab.kr",
+        logo: { "@type": "ImageObject", url: "https://proteinlab.kr/proteinlab-logo.png", width: 81, height: 88 },
+      },
+      ...(config.updatedAt ? { dateModified: config.updatedAt } : {}),
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "ProteinLab", item: "https://proteinlab.kr" },
+        { "@type": "ListItem", position: 2, name: "가이드", item: "https://proteinlab.kr/guides" },
+        { "@type": "ListItem", position: 3, name: "제품 선택·비교", item: "https://proteinlab.kr/guides/product-selection-comparison" },
+        { "@type": "ListItem", position: 4, name: config.title, item: canonical },
+      ],
+    },
+  ];
+  if (config.faq && config.faq.length > 0) {
+    schemas.push({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: config.faq.map((item) => ({
+        "@type": "Question",
+        name: item.question,
+        acceptedAnswer: { "@type": "Answer", text: item.answer },
+      })),
+    });
+  }
+  return [...schemas, ...(config.jsonLd ?? [])];
+}
+
 export function CategoryGuidePage({ config }: { config: CategoryGuideConfig }) {
   const relatedGuides = [...config.relatedGuides, trackBHubLink].filter(
     (item, index, array) => array.findIndex((candidate) => candidate.href === item.href) === index,
   );
+  const jsonLd = buildCategoryJsonLd(config);
 
   return (
     <div className="min-h-screen bg-white">
-      {(config.jsonLd ?? []).map((item, index) => (
+      {jsonLd.map((item, index) => (
         <script key={index} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(item) }} />
       ))}
       <Header />

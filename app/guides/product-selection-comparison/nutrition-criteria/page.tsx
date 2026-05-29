@@ -4,6 +4,7 @@ import Footer from "@/app/components/Footer";
 import GuideBuySection from "@/app/components/GuideBuySection";
 
 export const metadata = {
+  alternates: { canonical: "https://proteinlab.kr/guides/product-selection-comparison/nutrition-criteria" },
   title: "영양성분 기준 정리 | 단백질 제품 비교할 때 먼저 볼 숫자",
   description:
     "단백질 제품을 고를 때 먼저 확인할 단백질, 당류, 칼로리, 단백질 바 기준을 목적별로 정리했습니다. 비교 전에 최소 기준부터 빠르게 잡아보세요.",
@@ -23,8 +24,18 @@ const notes = [
 ];
 
 export default function NutritionCriteriaPage() {
+  const jsonLd = buildGuideJsonLd({
+    title: "영양성분 기준 정리 | 단백질 제품 비교할 때 먼저 볼 숫자",
+    description: "단백질 제품을 고를 때 먼저 확인할 단백질, 당류, 칼로리, 단백질 바 기준을 목적별로 정리했습니다. 비교 전에 최소 기준부터 빠르게 잡아보세요.",
+    url: "https://proteinlab.kr/guides/product-selection-comparison/nutrition-criteria",
+    datePublished: "2026-03-01",
+    dateModified: "2026-05-29",
+  });
+
   return (
     <div className="min-h-screen bg-white">
+      {jsonLd.map((item, i) => (<script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(item) }} />))}
+
       <Header />
 
       <section

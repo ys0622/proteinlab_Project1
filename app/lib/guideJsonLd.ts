@@ -4,13 +4,17 @@ export interface GuideJsonLdOptions {
   title: string;
   description: string;
   url: string;
+  datePublished?: string;
+  dateModified?: string;
+  /** @deprecated use dateModified */
   updatedAt?: string;
   faq?: { question: string; answer: string }[];
   breadcrumb?: { name: string; item: string }[];
 }
 
 export function buildGuideJsonLd(options: GuideJsonLdOptions): Record<string, unknown>[] {
-  const { title, description, url, updatedAt, faq, breadcrumb } = options;
+  const { title, description, url, datePublished, dateModified, updatedAt, faq, breadcrumb } = options;
+  const modifiedDate = dateModified ?? updatedAt;
 
   const articleLd: Record<string, unknown> = {
     "@context": "https://schema.org",
@@ -26,7 +30,8 @@ export function buildGuideJsonLd(options: GuideJsonLdOptions): Record<string, un
       url: SITE_URL,
       logo: { "@type": "ImageObject", url: `${SITE_URL}/proteinlab-logo.png`, width: 81, height: 88 },
     },
-    ...(updatedAt ? { dateModified: updatedAt } : {}),
+    ...(datePublished ? { datePublished } : {}),
+    ...(modifiedDate ? { dateModified: modifiedDate } : {}),
   };
 
   const result: Record<string, unknown>[] = [articleLd];

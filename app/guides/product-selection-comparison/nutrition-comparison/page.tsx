@@ -4,6 +4,7 @@ import Footer from "@/app/components/Footer";
 import GuideBuySection from "@/app/components/GuideBuySection";
 
 export const metadata = {
+  alternates: { canonical: "https://proteinlab.kr/guides/product-selection-comparison/nutrition-comparison" },
   title: "영양성분 비교 보는 법 | 단백질·당류·칼로리 해석 가이드",
   description:
     "단백질, 당류, 칼로리, 단백질 바를 어떤 순서로 읽어야 하는지 정리했습니다. 운동 후, 다이어트, 식사 보완 목적별 비교 기준을 빠르게 확인해보세요.",
@@ -31,8 +32,18 @@ const compareTips = [
 ];
 
 export default function NutritionComparisonPage() {
+  const jsonLd = buildGuideJsonLd({
+    title: "영양성분 비교 보는 법 | 단백질·당류·칼로리 해석 가이드",
+    description: "단백질, 당류, 칼로리, 단백질 바를 어떤 순서로 읽어야 하는지 정리했습니다. 운동 후, 다이어트, 식사 보완 목적별 비교 기준을 빠르게 확인해보세요.",
+    url: "https://proteinlab.kr/guides/product-selection-comparison/nutrition-comparison",
+    datePublished: "2026-03-01",
+    dateModified: "2026-05-29",
+  });
+
   return (
     <div className="min-h-screen bg-white">
+      {jsonLd.map((item, i) => (<script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(item) }} />))}
+
       <Header />
 
       <section className="w-full border-t border-b bg-[var(--hero-bg)]" style={{ borderColor: "var(--hero-border)" }}>

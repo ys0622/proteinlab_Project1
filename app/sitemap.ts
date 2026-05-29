@@ -14,6 +14,41 @@ import {
 
 const SITE_URL = "https://proteinlab.kr";
 
+// Known last-modified dates for key pages (avoid lying to Google with new Date())
+const PAGE_DATES: Record<string, string> = {
+  "/": "2026-05-29",
+  "/drinks": "2026-05-29",
+  "/bars": "2026-05-29",
+  "/shake": "2026-05-29",
+  "/yogurt": "2026-05-29",
+  "/products": "2026-05-29",
+  "/ranking": "2026-05-29",
+  "/recommend": "2026-05-29",
+  "/guides": "2026-05-29",
+  "/guides/basics/daily-requirement": "2026-05-29",
+  "/guides/basics/deficiency-symptoms": "2026-04-01",
+  "/guides/basics/digestion": "2026-04-01",
+  "/guides/basics/immunity-hormone": "2026-04-01",
+  "/guides/basics/muscle": "2026-04-01",
+  "/guides/basics/protein-deficiency-self-check": "2026-04-01",
+  "/guides/basics/protein-drink-vs-powder": "2026-04-01",
+  "/guides/basics/role-overview": "2026-04-01",
+  "/official-events": "2026-05-29",
+  "/compare": "2026-03-01",
+  "/topics": "2026-05-29",
+  "/brands": "2026-03-01",
+  "/about": "2026-03-01",
+  "/contact": "2026-03-01",
+  "/privacy": "2026-03-01",
+  "/disclaimer": "2026-03-01",
+  "/cookie-settings": "2026-03-01",
+  "/grade-criteria": "2026-03-01",
+  "/search": "2026-03-01",
+};
+
+const FALLBACK_GUIDE_DATE = "2026-04-15";
+const FALLBACK_PRODUCT_DATE = "2026-05-29";
+
 const staticRoutes = [
   "/",
   "/about",
@@ -216,46 +251,49 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     .map((p) => ({ slug: p.slug! }));
   const brandEntries: MetadataRoute.Sitemap = getBrandSummary(allProducts).map((brand) => ({
     url: `${SITE_URL}/brands/${brand.slug}`,
-    lastModified: new Date(),
-    changeFrequency: "weekly",
+    lastModified: new Date("2026-03-01"),
+    changeFrequency: "monthly" as const,
     priority: 0.72,
   }));
 
-  const staticEntries: MetadataRoute.Sitemap = allRoutes.map((route) => ({
-    url: `${SITE_URL}${route}`,
-    lastModified: compareGuideLastModified.get(route) ?? new Date(),
-    changeFrequency:
-      route.startsWith("/guides/") ||
-      route.startsWith("/curation/") ||
-      route.startsWith("/topics/") ||
-      route.startsWith("/compare/") ||
-      route.startsWith("/picks/")
-        ? "weekly"
-        : "daily",
-    priority:
-      route === "/"
-        ? 1
-        : route === "/guides" || route === "/recommend" || route === "/ranking"
-          ? 0.9
-          : route === "/drinks" || route === "/bars" || route === "/yogurt" || route === "/shake"
-            ? 0.88
-            : route.startsWith("/curation/")
-              ? 0.85
-              : route.startsWith("/picks/")
-                ? 0.84
-                : route.startsWith("/topics/")
-                  ? 0.83
-                  : route.startsWith("/compare/")
-                    ? 0.82
-                    : route.startsWith("/guides/")
-                      ? 0.8
-                      : 0.7,
-  }));
+  const staticEntries: MetadataRoute.Sitemap = allRoutes.map((route) => {
+    const configDate = compareGuideLastModified.get(route);
+    const knownDate = PAGE_DATES[route];
+    const lastModified = configDate ?? (knownDate ? new Date(knownDate) : new Date(FALLBACK_GUIDE_DATE));
+    return {
+      url: `${SITE_URL}${route}`,
+      lastModified,
+      changeFrequency:
+        route === "/" || route === "/drinks" || route === "/bars" || route === "/yogurt" || route === "/shake" || route === "/ranking"
+          ? ("daily" as const)
+          : route.startsWith("/guides/") || route.startsWith("/curation/") || route.startsWith("/topics/") || route.startsWith("/compare/") || route.startsWith("/picks/")
+            ? ("weekly" as const)
+            : ("monthly" as const),
+      priority:
+        route === "/"
+          ? 1
+          : route === "/guides" || route === "/recommend" || route === "/ranking"
+            ? 0.9
+            : route === "/drinks" || route === "/bars" || route === "/yogurt" || route === "/shake"
+              ? 0.88
+              : route.startsWith("/curation/")
+                ? 0.85
+                : route.startsWith("/picks/")
+                  ? 0.84
+                  : route.startsWith("/topics/")
+                    ? 0.83
+                    : route.startsWith("/compare/")
+                      ? 0.82
+                      : route.startsWith("/guides/")
+                        ? 0.8
+                        : 0.7,
+    };
+  });
 
   const productEntries: MetadataRoute.Sitemap = productRoutes.map(({ slug }) => ({
     url: `${SITE_URL}/product/${slug}`,
-    lastModified: new Date(),
-    changeFrequency: "weekly",
+    lastModified: new Date(FALLBACK_PRODUCT_DATE),
+    changeFrequency: "weekly" as const,
     priority: 0.75,
   }));
 

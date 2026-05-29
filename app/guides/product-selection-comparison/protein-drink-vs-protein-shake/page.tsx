@@ -1,4 +1,5 @@
 import { ShakeGuidePage, buildShakeGuideMetadata } from "../shakeGuideShared";
+import { buildGuideJsonLd } from "@/app/lib/guideJsonLd";
 
 export const metadata = buildShakeGuideMetadata(
   "단백질 음료 vs 쉐이크 차이 | 용도별 선택 기준 정리",
@@ -6,6 +7,14 @@ export const metadata = buildShakeGuideMetadata(
 );
 
 export default function ProteinDrinkVsProteinShakePage() {
+  const jsonLd = buildGuideJsonLd({
+    title: "운동 후 빠른 보충",
+    description: "",
+    url: "https://proteinlab.kr/guides/product-selection-comparison/protein-drink-vs-protein-shake",
+    datePublished: "2026-03-01",
+    dateModified: "2026-05-29",
+  });
+
   return (
     <ShakeGuidePage
       title="단백질 음료 vs 단백질 쉐이크"

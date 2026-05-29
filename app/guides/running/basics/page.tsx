@@ -4,6 +4,7 @@ import Footer from "@/app/components/Footer";
 import GuideBuySection from "@/app/components/GuideBuySection";
 
 export const metadata = {
+  alternates: { canonical: "https://proteinlab.kr/guides/running/basics" },
   title: "러너를 위한 단백질 가이드 | 필요량·타이밍·종류",
   description:
     "러닝·마라톤 훈련 중 단백질 필요량, 섭취 타이밍, 단백질 종류별 활용법을 과학적 근거로 정리했습니다.",
@@ -49,8 +50,18 @@ function Callout({ children }: { children: React.ReactNode }) {
 }
 
 export default function RunningBasicsPage() {
+  const jsonLd = buildGuideJsonLd({
+    title: "러너를 위한 단백질 가이드 | 필요량·타이밍·종류",
+    description: "러닝·마라톤 훈련 중 단백질 필요량, 섭취 타이밍, 단백질 종류별 활용법을 과학적 근거로 정리했습니다.",
+    url: "https://proteinlab.kr/guides/running/basics",
+    datePublished: "2026-03-01",
+    dateModified: "2026-05-29",
+  });
+
   return (
     <div className="min-h-screen bg-white">
+      {jsonLd.map((item, i) => (<script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(item) }} />))}
+
       <Header />
 
       <section

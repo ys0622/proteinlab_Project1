@@ -1,4 +1,5 @@
 import { ShakeGuidePage, buildShakeGuideMetadata } from "../shakeGuideShared";
+import { buildGuideJsonLd } from "@/app/lib/guideJsonLd";
 
 export const metadata = buildShakeGuideMetadata(
   "운동 후 단백질 쉐이크 추천 | 단백질 밀도·당류 기준 비교",
@@ -6,6 +7,14 @@ export const metadata = buildShakeGuideMetadata(
 );
 
 export default function PostWorkoutProteinShakeGuidePage() {
+  const jsonLd = buildGuideJsonLd({
+    title: "단백질 20g 전후",
+    description: "",
+    url: "https://proteinlab.kr/guides/product-selection-comparison/post-workout-protein-shake-guide",
+    datePublished: "2026-03-01",
+    dateModified: "2026-05-29",
+  });
+
   return (
     <ShakeGuidePage
       title="운동 후 단백질 쉐이크"

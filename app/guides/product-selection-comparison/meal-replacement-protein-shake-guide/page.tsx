@@ -1,4 +1,5 @@
 import { ShakeGuidePage, buildShakeGuideMetadata } from "../shakeGuideShared";
+import { buildGuideJsonLd } from "@/app/lib/guideJsonLd";
 
 export const metadata = buildShakeGuideMetadata(
   "식사대용 단백질 쉐이크 추천 | 칼로리·식이섬유 기준 정리",
@@ -6,6 +7,14 @@ export const metadata = buildShakeGuideMetadata(
 );
 
 export default function MealReplacementProteinShakeGuidePage() {
+  const jsonLd = buildGuideJsonLd({
+    title: "식사대용 쉐이크",
+    description: "",
+    url: "https://proteinlab.kr/guides/product-selection-comparison/meal-replacement-protein-shake-guide",
+    datePublished: "2026-03-01",
+    dateModified: "2026-05-29",
+  });
+
   return (
     <ShakeGuidePage
       title="식사대용 단백질 쉐이크"

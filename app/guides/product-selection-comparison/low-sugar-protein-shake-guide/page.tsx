@@ -1,4 +1,5 @@
 import { ShakeGuidePage, buildShakeGuideMetadata } from "../shakeGuideShared";
+import { buildGuideJsonLd } from "@/app/lib/guideJsonLd";
 
 export const metadata = buildShakeGuideMetadata(
   "저당 단백질 쉐이크 추천 | 당류 3g 이하 제품 비교",
@@ -6,6 +7,14 @@ export const metadata = buildShakeGuideMetadata(
 );
 
 export default function LowSugarProteinShakeGuidePage() {
+  const jsonLd = buildGuideJsonLd({
+    title: "1단계",
+    description: "",
+    url: "https://proteinlab.kr/guides/product-selection-comparison/low-sugar-protein-shake-guide",
+    datePublished: "2026-03-01",
+    dateModified: "2026-05-29",
+  });
+
   return (
     <ShakeGuidePage
       title="저당 단백질 쉐이크"

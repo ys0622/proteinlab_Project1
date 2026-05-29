@@ -4,6 +4,7 @@ import Footer from "@/app/components/Footer";
 import GuideBuySection from "@/app/components/GuideBuySection";
 
 export const metadata = {
+  alternates: { canonical: "https://proteinlab.kr/guides/product-selection-comparison/proteone-protein-shake" },
   title: "프로티원 단백질 쉐이크 추천 | 초코·커피 성분 비교 2026",
   description: "프로티원 단백쉐이크 초코맛과 커피맛을 단백질, 당류, 칼로리, 단백질 밀도 기준으로 직접 비교했습니다. 저칼로리와 고단백 중 어디에 더 강한지 빠르게 확인해보세요.",
 };
@@ -35,8 +36,18 @@ const faqItems = [
 ];
 
 export default function ProteoneProteinShakePage() {
+  const jsonLd = buildGuideJsonLd({
+    title: "프로티원 단백질 쉐이크 추천 | 초코·커피 성분 비교 2026",
+    description: "프로티원 단백쉐이크 초코맛과 커피맛을 단백질, 당류, 칼로리, 단백질 밀도 기준으로 직접 비교했습니다. 저칼로리와 고단백 중 어디에 더 강한지 빠르게 확인해보세요.",
+    url: "https://proteinlab.kr/guides/product-selection-comparison/proteone-protein-shake",
+    datePublished: "2026-03-01",
+    dateModified: "2026-05-29",
+  });
+
   return (
     <div className="min-h-screen bg-white">
+      {jsonLd.map((item, i) => (<script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(item) }} />))}
+
       <Header />
       <section className="w-full border-t border-b bg-[var(--hero-bg)]" style={{ borderColor: "var(--hero-border)" }}>
         <div className="mx-auto max-w-[1200px] px-4 py-5 md:px-6 md:py-6">

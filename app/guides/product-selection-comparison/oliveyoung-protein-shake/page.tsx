@@ -4,6 +4,7 @@ import Footer from "@/app/components/Footer";
 import GuideBuySection from "@/app/components/GuideBuySection";
 
 export const metadata = {
+  alternates: { canonical: "https://proteinlab.kr/guides/product-selection-comparison/oliveyoung-protein-shake" },
   title: "올리브영 단백질 쉐이크 추천 | 입점 브랜드 비교 2026",
   description: "올리브영에서 단품 테스트하기 좋은 단백질 쉐이크 브랜드를 정리했습니다. 플라이밀, 단백하니, 딜라이트 프로젝트, 빼르빼르 중 어디부터 보면 좋은지 브랜드 기준으로 빠르게 비교해보세요.",
 };
@@ -43,8 +44,18 @@ const buyingTips = [
 ];
 
 export default function OliveyoungProteinShakePage() {
+  const jsonLd = buildGuideJsonLd({
+    title: "올리브영 단백질 쉐이크 추천 | 입점 브랜드 비교 2026",
+    description: "올리브영에서 단품 테스트하기 좋은 단백질 쉐이크 브랜드를 정리했습니다. 플라이밀, 단백하니, 딜라이트 프로젝트, 빼르빼르 중 어디부터 보면 좋은지 브랜드 기준으로 빠르게 비교해보세요.",
+    url: "https://proteinlab.kr/guides/product-selection-comparison/oliveyoung-protein-shake",
+    datePublished: "2026-03-01",
+    dateModified: "2026-05-29",
+  });
+
   return (
     <div className="min-h-screen bg-white">
+      {jsonLd.map((item, i) => (<script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(item) }} />))}
+
       <Header />
       <section className="w-full border-t border-b bg-[var(--hero-bg)]" style={{ borderColor: "var(--hero-border)" }}>
         <div className="mx-auto max-w-[1200px] px-4 py-5 md:px-6 md:py-6">

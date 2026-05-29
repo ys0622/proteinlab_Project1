@@ -4,6 +4,7 @@ import Footer from "@/app/components/Footer";
 import GuideBuySection from "@/app/components/GuideBuySection";
 
 export const metadata = {
+  alternates: { canonical: "https://proteinlab.kr/guides/product-selection-comparison/protein-bar-guide" },
   title: "단백질 바 선택 가이드 | 식사 보완·간식형 비교 기준",
   description:
     "단백질 바를 간식형, 식사 보완형, 운동 후 보충형으로 나눠 보고 당류, 칼로리, 단백질 밀도를 어떤 기준으로 비교해야 하는지 정리합니다.",
@@ -37,8 +38,18 @@ const barMatrix = [
 ];
 
 export default function ProteinBarGuidePage() {
+  const jsonLd = buildGuideJsonLd({
+    title: "단백질 바 선택 가이드 | 식사 보완·간식형 비교 기준",
+    description: "단백질 바를 간식형, 식사 보완형, 운동 후 보충형으로 나눠 보고 당류, 칼로리, 단백질 밀도를 어떤 기준으로 비교해야 하는지 정리합니다.",
+    url: "https://proteinlab.kr/guides/product-selection-comparison/protein-bar-guide",
+    datePublished: "2026-03-01",
+    dateModified: "2026-05-29",
+  });
+
   return (
     <div className="min-h-screen bg-white">
+      {jsonLd.map((item, i) => (<script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(item) }} />))}
+
       <Header />
 
       <section className="w-full border-t border-b bg-[var(--hero-bg)]" style={{ borderColor: "var(--hero-border)" }}>

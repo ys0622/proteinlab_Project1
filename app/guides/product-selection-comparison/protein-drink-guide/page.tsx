@@ -4,6 +4,7 @@ import Footer from "@/app/components/Footer";
 import GuideBuySection from "@/app/components/GuideBuySection";
 
 export const metadata = {
+  alternates: { canonical: "https://proteinlab.kr/guides/product-selection-comparison/protein-drink-guide" },
   title: "단백질 음료 선택 가이드 | 단백질 함량·당류·칼로리 비교 기준",
   description:
     "단백질 음료를 고를 때 단백질 함량, 당류, 칼로리, 단백질 밀도를 어떤 순서로 비교해야 하는지 ProteinLab 기준으로 정리합니다.",
@@ -54,8 +55,18 @@ const comparisonSteps = [
 ];
 
 export default function ProteinDrinkGuidePage() {
+  const jsonLd = buildGuideJsonLd({
+    title: "단백질 음료 선택 가이드 | 단백질 함량·당류·칼로리 비교 기준",
+    description: "단백질 음료를 고를 때 단백질 함량, 당류, 칼로리, 단백질 밀도를 어떤 순서로 비교해야 하는지 ProteinLab 기준으로 정리합니다.",
+    url: "https://proteinlab.kr/guides/product-selection-comparison/protein-drink-guide",
+    datePublished: "2026-03-01",
+    dateModified: "2026-05-29",
+  });
+
   return (
     <div className="min-h-screen bg-white">
+      {jsonLd.map((item, i) => (<script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(item) }} />))}
+
       <Header />
 
       <section className="w-full border-t border-b bg-[var(--hero-bg)]" style={{ borderColor: "var(--hero-border)" }}>

@@ -4,6 +4,7 @@ import Footer from "@/app/components/Footer";
 import GuideBuySection from "@/app/components/GuideBuySection";
 
 export const metadata = {
+  alternates: { canonical: "https://proteinlab.kr/guides/product-selection-comparison/meal-replacement-protein-bar-guide" },
   title: "식사대용 단백질 바 기준 | 포만감·칼로리·단백질 비교",
   description:
     "식사대용 단백질 바를 고를 때 포만감, 칼로리, 단백질, 당류를 어떤 순서로 확인해야 하는지 정리합니다.",
@@ -32,8 +33,18 @@ const matrix = [
 ];
 
 export default function MealReplacementProteinBarGuidePage() {
+  const jsonLd = buildGuideJsonLd({
+    title: "식사대용 단백질 바 기준 | 포만감·칼로리·단백질 비교",
+    description: "식사대용 단백질 바를 고를 때 포만감, 칼로리, 단백질, 당류를 어떤 순서로 확인해야 하는지 정리합니다.",
+    url: "https://proteinlab.kr/guides/product-selection-comparison/meal-replacement-protein-bar-guide",
+    datePublished: "2026-03-01",
+    dateModified: "2026-05-29",
+  });
+
   return (
     <div className="min-h-screen bg-white">
+      {jsonLd.map((item, i) => (<script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(item) }} />))}
+
       <Header />
       <section
         className="w-full border-t border-b bg-[var(--hero-bg)]"

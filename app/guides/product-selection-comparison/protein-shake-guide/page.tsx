@@ -1,4 +1,5 @@
 import { ShakeGuidePage, buildShakeGuideMetadata } from "../shakeGuideShared";
+import { buildGuideJsonLd } from "@/app/lib/guideJsonLd";
 
 export const metadata = buildShakeGuideMetadata(
   "단백질 쉐이크 추천 TOP5 | 성분 기준 직접 비교 2026",
@@ -6,6 +7,14 @@ export const metadata = buildShakeGuideMetadata(
 );
 
 export default function ProteinShakeGuidePage() {
+  const jsonLd = buildGuideJsonLd({
+    title: "운동 후 보충용",
+    description: "",
+    url: "https://proteinlab.kr/guides/product-selection-comparison/protein-shake-guide",
+    datePublished: "2026-03-01",
+    dateModified: "2026-05-29",
+  });
+
   return (
     <ShakeGuidePage
       title="단백질 쉐이크 추천 가이드"

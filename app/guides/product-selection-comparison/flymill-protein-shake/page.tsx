@@ -4,6 +4,7 @@ import Footer from "@/app/components/Footer";
 import GuideBuySection from "@/app/components/GuideBuySection";
 
 export const metadata = {
+  alternates: { canonical: "https://proteinlab.kr/guides/product-selection-comparison/flymill-protein-shake" },
   title: "플라이밀 단백질 쉐이크 추천 | 피넛버터·초코·쿠키앤크림 비교 2026",
   description:
     "플라이밀 단백질 쉐이크를 피넛버터, 초코, 쿠키앤크림 기준으로 직접 비교했습니다. 고단백, 저당, 입문용 중 어떤 맛이 더 맞는지 빠르게 확인해보세요.",
@@ -46,8 +47,18 @@ const faqItems = [
 ];
 
 export default function FlymillProteinShakePage() {
+  const jsonLd = buildGuideJsonLd({
+    title: "플라이밀 단백질 쉐이크 추천 | 피넛버터·초코·쿠키앤크림 비교 2026",
+    description: "플라이밀 단백질 쉐이크를 피넛버터, 초코, 쿠키앤크림 기준으로 직접 비교했습니다. 고단백, 저당, 입문용 중 어떤 맛이 더 맞는지 빠르게 확인해보세요.",
+    url: "https://proteinlab.kr/guides/product-selection-comparison/flymill-protein-shake",
+    datePublished: "2026-03-01",
+    dateModified: "2026-05-29",
+  });
+
   return (
     <div className="min-h-screen bg-white">
+      {jsonLd.map((item, i) => (<script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(item) }} />))}
+
       <Header />
       <section className="w-full border-t border-b bg-[var(--hero-bg)]" style={{ borderColor: "var(--hero-border)" }}>
         <div className="mx-auto max-w-[1200px] px-4 py-5 md:px-6 md:py-6">

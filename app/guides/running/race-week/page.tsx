@@ -4,6 +4,7 @@ import Footer from "@/app/components/Footer";
 import GuideBuySection from "@/app/components/GuideBuySection";
 
 export const metadata = {
+  alternates: { canonical: "https://proteinlab.kr/guides/running/race-week" },
   title: "마라톤 레이스 주간 영양 전략 | 카보로딩부터 회복까지",
   description:
     "대회 전 탄수화물 로딩, 경기 당일 식단, 레이스 후 회복 영양 전략을 단계별로 정리했습니다.",
@@ -64,8 +65,18 @@ function Callout({ children }: { children: React.ReactNode }) {
 }
 
 export default function RaceWeekPage() {
+  const jsonLd = buildGuideJsonLd({
+    title: "마라톤 레이스 주간 영양 전략 | 카보로딩부터 회복까지",
+    description: "대회 전 탄수화물 로딩, 경기 당일 식단, 레이스 후 회복 영양 전략을 단계별로 정리했습니다.",
+    url: "https://proteinlab.kr/guides/running/race-week",
+    datePublished: "2026-03-01",
+    dateModified: "2026-05-29",
+  });
+
   return (
     <div className="min-h-screen bg-white">
+      {jsonLd.map((item, i) => (<script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(item) }} />))}
+
       <Header />
 
       <section

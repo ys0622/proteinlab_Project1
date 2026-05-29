@@ -4,6 +4,7 @@ import Footer from "@/app/components/Footer";
 import GuideBuySection from "@/app/components/GuideBuySection";
 
 export const metadata = {
+  alternates: { canonical: "https://proteinlab.kr/guides/product-selection-comparison/flymill-vs-danbaekhani" },
   title: "플라이밀 vs 단백하니 쉐이크 비교 | 단백질·당류·칼로리 기준 2026",
   description: "플라이밀 피넛버터와 단백하니 시그니처·초코·말차를 단백질, 당류, 칼로리, 단백질 밀도 기준으로 직접 비교했습니다. 고단백과 저칼로리 중 무엇이 더 맞는지 바로 확인해보세요.",
 };
@@ -40,8 +41,18 @@ const recommendCards = [
 ];
 
 export default function FlymillVsDanbaekhaniPage() {
+  const jsonLd = buildGuideJsonLd({
+    title: "플라이밀 vs 단백하니 쉐이크 비교 | 단백질·당류·칼로리 기준 2026",
+    description: "플라이밀 피넛버터와 단백하니 시그니처·초코·말차를 단백질, 당류, 칼로리, 단백질 밀도 기준으로 직접 비교했습니다. 고단백과 저칼로리 중 무엇이 더 맞는지 바로 확인해보세요.",
+    url: "https://proteinlab.kr/guides/product-selection-comparison/flymill-vs-danbaekhani",
+    datePublished: "2026-03-01",
+    dateModified: "2026-05-29",
+  });
+
   return (
     <div className="min-h-screen bg-white">
+      {jsonLd.map((item, i) => (<script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(item) }} />))}
+
       <Header />
       <section className="w-full border-t border-b bg-[var(--hero-bg)]" style={{ borderColor: "var(--hero-border)" }}>
         <div className="mx-auto max-w-[1200px] px-4 py-5 md:px-6 md:py-6">

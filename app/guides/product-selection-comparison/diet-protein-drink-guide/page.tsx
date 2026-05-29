@@ -4,6 +4,7 @@ import Footer from "@/app/components/Footer";
 import GuideBuySection from "@/app/components/GuideBuySection";
 
 export const metadata = {
+  alternates: { canonical: "https://proteinlab.kr/guides/product-selection-comparison/diet-protein-drink-guide" },
   title: "다이어트 단백질 음료 기준 | 저당·저칼로리·단백질 비교",
   description:
     "다이어트용 단백질 음료를 고를 때 당류, 칼로리, 단백질, 단백질 밀도를 어떤 순서로 비교해야 하는지 ProteinLab 기준으로 정리합니다.",
@@ -54,8 +55,18 @@ const flowCards = [
 ];
 
 export default function DietProteinDrinkGuidePage() {
+  const jsonLd = buildGuideJsonLd({
+    title: "다이어트 단백질 음료 기준 | 저당·저칼로리·단백질 비교",
+    description: "다이어트용 단백질 음료를 고를 때 당류, 칼로리, 단백질, 단백질 밀도를 어떤 순서로 비교해야 하는지 ProteinLab 기준으로 정리합니다.",
+    url: "https://proteinlab.kr/guides/product-selection-comparison/diet-protein-drink-guide",
+    datePublished: "2026-03-01",
+    dateModified: "2026-05-29",
+  });
+
   return (
     <div className="min-h-screen bg-white">
+      {jsonLd.map((item, i) => (<script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(item) }} />))}
+
       <Header />
 
       <section

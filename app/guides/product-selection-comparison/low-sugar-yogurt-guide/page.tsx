@@ -4,6 +4,7 @@ import Footer from "@/app/components/Footer";
 import GuideBuySection from "@/app/components/GuideBuySection";
 
 export const metadata = {
+  alternates: { canonical: "https://proteinlab.kr/guides/product-selection-comparison/low-sugar-yogurt-guide" },
   title: "저당 단백질 요거트 추천 기준 | 당류 5g 이하 비교",
   description:
     "저당 단백질 요거트를 고를 때 당류 5g 이하 기준과 단백질 함량, 칼로리, 제품 유형을 함께 보는 방법을 정리합니다.",
@@ -34,8 +35,18 @@ const relatedLinks = [
 ];
 
 export default function LowSugarYogurtGuidePage() {
+  const jsonLd = buildGuideJsonLd({
+    title: "저당 단백질 요거트 추천 기준 | 당류 5g 이하 비교",
+    description: "저당 단백질 요거트를 고를 때 당류 5g 이하 기준과 단백질 함량, 칼로리, 제품 유형을 함께 보는 방법을 정리합니다.",
+    url: "https://proteinlab.kr/guides/product-selection-comparison/low-sugar-yogurt-guide",
+    datePublished: "2026-03-01",
+    dateModified: "2026-05-29",
+  });
+
   return (
     <div className="min-h-screen bg-white">
+      {jsonLd.map((item, i) => (<script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(item) }} />))}
+
       <Header />
       <section
         className="w-full border-t border-b bg-[var(--hero-bg)]"

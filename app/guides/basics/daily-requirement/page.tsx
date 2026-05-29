@@ -84,6 +84,14 @@ function Callout({ children }: { children: React.ReactNode }) {
 }
 
 export default function DailyRequirementPage() {
+  const jsonLd = buildGuideJsonLd({
+    title: "하루 단백질 권장량 | 목적·체중·연령별 정리",
+    description: "일반 성인부터 운동 중인 사람, 고령층까지 하루 단백질 권장량과 분산 섭취 원칙을 정리합니다.",
+    url: "https://proteinlab.kr/guides/basics/daily-requirement",
+    datePublished: "2026-03-01",
+    dateModified: "2026-05-29",
+  });
+
   const faqJsonLd = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -100,6 +108,8 @@ export default function DailyRequirementPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
+      {jsonLd.map((item, i) => (<script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(item) }} />))}
+
       <Header />
 
       <section

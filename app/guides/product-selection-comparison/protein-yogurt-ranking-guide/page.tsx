@@ -4,6 +4,7 @@ import Footer from "@/app/components/Footer";
 import GuideBuySection from "@/app/components/GuideBuySection";
 
 export const metadata = {
+  alternates: { canonical: "https://proteinlab.kr/guides/product-selection-comparison/protein-yogurt-ranking-guide" },
   title: "단백질 요거트 순위 보는 법 | 점수·등급 기준 해석",
   description:
     "단백질 요거트 순위에서 단백질 밀도, 다이어트, 퍼포먼스 점수를 어떻게 읽어야 하는지 정리합니다.",
@@ -34,8 +35,18 @@ const relatedLinks = [
 ];
 
 export default function ProteinYogurtRankingGuidePage() {
+  const jsonLd = buildGuideJsonLd({
+    title: "단백질 요거트 순위 보는 법 | 점수·등급 기준 해석",
+    description: "단백질 요거트 순위에서 단백질 밀도, 다이어트, 퍼포먼스 점수를 어떻게 읽어야 하는지 정리합니다.",
+    url: "https://proteinlab.kr/guides/product-selection-comparison/protein-yogurt-ranking-guide",
+    datePublished: "2026-03-01",
+    dateModified: "2026-05-29",
+  });
+
   return (
     <div className="min-h-screen bg-white">
+      {jsonLd.map((item, i) => (<script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(item) }} />))}
+
       <Header />
       <section
         className="w-full border-t border-b bg-[var(--hero-bg)]"

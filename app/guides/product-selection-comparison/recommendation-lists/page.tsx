@@ -4,6 +4,7 @@ import Footer from "@/app/components/Footer";
 import GuideBuySection from "@/app/components/GuideBuySection";
 
 export const metadata = {
+  alternates: { canonical: "https://proteinlab.kr/guides/product-selection-comparison/recommendation-lists" },
   title: "추천·큐레이션·비교 페이지 차이 | 어디부터 봐야 할까",
   description:
     "추천, 큐레이션, Picks, 비교 페이지가 각각 어떤 상황에서 유용한지 정리했습니다. 단백질 제품을 고를 때 어디부터 봐야 할지 빠르게 확인해보세요.",
@@ -32,8 +33,18 @@ const flow = [
 ];
 
 export default function RecommendationListsPage() {
+  const jsonLd = buildGuideJsonLd({
+    title: "추천·큐레이션·비교 페이지 차이 | 어디부터 봐야 할까",
+    description: "추천, 큐레이션, Picks, 비교 페이지가 각각 어떤 상황에서 유용한지 정리했습니다. 단백질 제품을 고를 때 어디부터 봐야 할지 빠르게 확인해보세요.",
+    url: "https://proteinlab.kr/guides/product-selection-comparison/recommendation-lists",
+    datePublished: "2026-03-01",
+    dateModified: "2026-05-29",
+  });
+
   return (
     <div className="min-h-screen bg-white">
+      {jsonLd.map((item, i) => (<script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(item) }} />))}
+
       <Header />
 
       <section

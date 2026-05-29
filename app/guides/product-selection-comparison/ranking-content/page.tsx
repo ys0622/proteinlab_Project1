@@ -4,6 +4,7 @@ import Footer from "@/app/components/Footer";
 import GuideBuySection from "@/app/components/GuideBuySection";
 
 export const metadata = {
+  alternates: { canonical: "https://proteinlab.kr/guides/product-selection-comparison/ranking-content" },
   title: "순위와 점수 보는 법 | 단백질 제품 랭킹 해석 가이드",
   description:
     "단백질 제품 순위와 점수가 어떤 기준으로 계산되는지, 랭킹을 어떻게 읽어야 하는지 정리했습니다. 저당, 다이어트, 운동 후 기준까지 함께 확인해보세요.",
@@ -31,8 +32,18 @@ const readRows = [
 ];
 
 export default function RankingContentPage() {
+  const jsonLd = buildGuideJsonLd({
+    title: "순위와 점수 보는 법 | 단백질 제품 랭킹 해석 가이드",
+    description: "단백질 제품 순위와 점수가 어떤 기준으로 계산되는지, 랭킹을 어떻게 읽어야 하는지 정리했습니다. 저당, 다이어트, 운동 후 기준까지 함께 확인해보세요.",
+    url: "https://proteinlab.kr/guides/product-selection-comparison/ranking-content",
+    datePublished: "2026-03-01",
+    dateModified: "2026-05-29",
+  });
+
   return (
     <div className="min-h-screen bg-white">
+      {jsonLd.map((item, i) => (<script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(item) }} />))}
+
       <Header />
 
       <section

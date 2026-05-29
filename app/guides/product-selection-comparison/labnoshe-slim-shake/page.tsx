@@ -4,6 +4,7 @@ import Footer from "@/app/components/Footer";
 import GuideBuySection from "@/app/components/GuideBuySection";
 
 export const metadata = {
+  alternates: { canonical: "https://proteinlab.kr/guides/product-selection-comparison/labnoshe-slim-shake" },
   title: "랩노쉬 슬림쉐이크 추천 | 저당·식사대용 기준 정리 2026",
   description: "랩노쉬 슬림쉐이크를 저당, 식사대용, 다이어트 기준으로 직접 정리했습니다. 당류와 식이섬유를 같이 보면서 한 끼 대체용으로 맞는지 빠르게 확인해보세요.",
 };
@@ -30,8 +31,18 @@ const faqItems = [
 ];
 
 export default function LabNosheLimShakePage() {
+  const jsonLd = buildGuideJsonLd({
+    title: "랩노쉬 슬림쉐이크 추천 | 저당·식사대용 기준 정리 2026",
+    description: "랩노쉬 슬림쉐이크를 저당, 식사대용, 다이어트 기준으로 직접 정리했습니다. 당류와 식이섬유를 같이 보면서 한 끼 대체용으로 맞는지 빠르게 확인해보세요.",
+    url: "https://proteinlab.kr/guides/product-selection-comparison/labnoshe-slim-shake",
+    datePublished: "2026-03-01",
+    dateModified: "2026-05-29",
+  });
+
   return (
     <div className="min-h-screen bg-white">
+      {jsonLd.map((item, i) => (<script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(item) }} />))}
+
       <Header />
       <section className="w-full border-t border-b bg-[var(--hero-bg)]" style={{ borderColor: "var(--hero-border)" }}>
         <div className="mx-auto max-w-[1200px] px-4 py-5 md:px-6 md:py-6">
