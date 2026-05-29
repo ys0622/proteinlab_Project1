@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
+import GuideBuySection from "@/app/components/GuideBuySection";
 import { buildGuideJsonLd } from "@/app/lib/guideJsonLd";
 
 const _pageTitle = "근육 유지 단백질 전략 | 감량기와 운동 병행 때 먼저 볼 기준";
@@ -182,6 +183,7 @@ export default function MuscleMaintenanceProteinPage() {
           </div>
         </section>
       </main>
+      <GuideBuySection />
       <Footer />
     </div>
   );

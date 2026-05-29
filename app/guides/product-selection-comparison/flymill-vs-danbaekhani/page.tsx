@@ -1,6 +1,7 @@
 ﻿import Link from "next/link";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
+import GuideBuySection from "@/app/components/GuideBuySection";
 
 export const metadata = {
   title: "플라이밀 vs 단백하니 쉐이크 비교 | 단백질·당류·칼로리 기준 2026",
@@ -147,6 +148,7 @@ export default function FlymillVsDanbaekhaniPage() {
           </section>
         </div>
       </main>
+      <GuideBuySection />
       <Footer />
     </div>
   );

@@ -1,6 +1,7 @@
 ﻿import Link from "next/link";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
+import GuideBuySection from "@/app/components/GuideBuySection";
 
 export const metadata = {
   title: "다이어트 단백질 음료 기준 | 저당·저칼로리·단백질 비교",
@@ -172,6 +173,8 @@ export default function DietProteinDrinkGuidePage() {
           </section>
         </div>
       </main>
+
+      <GuideBuySection />
 
       <Footer />
     </div>

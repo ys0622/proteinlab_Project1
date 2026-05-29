@@ -2,6 +2,7 @@
 import Link from "next/link";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
+import GuideBuySection from "@/app/components/GuideBuySection";
 
 const _pageTitle = "단백질 성분 트렌드";
 const _pageDesc = "저당, 워터형, 식물성, 고단백 등 주요 성분 트렌드가 왜 중요해졌는지 정리합니다.";
@@ -170,6 +171,7 @@ export default function IngredientTrendsPage() {
           </section>
         </div>
       </main>
+      <GuideBuySection />
       <Footer />
     </div>
   );

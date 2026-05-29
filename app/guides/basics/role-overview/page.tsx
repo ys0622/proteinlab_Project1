@@ -1,6 +1,7 @@
 ﻿import Link from "next/link";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
+import GuideBuySection from "@/app/components/GuideBuySection";
 import { buildGuideJsonLd } from "@/app/lib/guideJsonLd";
 
 const _pageTitle = "단백질은 몸에서 어떤 역할을 할까";
@@ -144,7 +145,7 @@ export default function RoleOverviewGuidePage() {
               가이드
             </Link>
             <span>/</span>
-            <Link href="/guides/basics" className="hover:text-[var(--accent)]">
+            <Link href="/guides/protein-basics" className="hover:text-[var(--accent)]">
               단백질 기초
             </Link>
             <span>/</span>
@@ -272,6 +273,8 @@ export default function RoleOverviewGuidePage() {
           </section>
         </div>
       </main>
+
+      <GuideBuySection />
 
       <Footer />
     </div>

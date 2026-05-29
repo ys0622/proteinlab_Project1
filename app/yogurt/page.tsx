@@ -6,13 +6,7 @@ import ProductListWithFilters from "../components/ProductListWithFilters";
 import type { ProductCategory } from "../lib/categories";
 import { getProductsByCategoryAsync } from "../lib/productData";
 
-interface YogurtPageProps {
-  searchParams?: Promise<Record<string, string | string[] | undefined>>;
-}
-
-export async function generateMetadata({ searchParams }: YogurtPageProps) {
-  const params = (await searchParams) ?? {};
-  const hasParams = Object.keys(params).length > 0;
+export async function generateMetadata() {
   const products = await getProductsByCategoryAsync("yogurt");
 
   return {
@@ -21,7 +15,19 @@ export async function generateMetadata({ searchParams }: YogurtPageProps) {
     alternates: {
       canonical: "https://proteinlab.kr/yogurt",
     },
-    ...(hasParams ? { robots: { index: false, follow: false } } : {}),
+    openGraph: {
+      title: `단백질 요거트 추천 비교 ${products.length}종 — 그릭·드링킹·저당 기준 2026`,
+      description: `단백질 요거트 ${products.length}개를 단백질 함량, 당류, 칼로리, 단백질 밀도 기준으로 비교합니다. 그릭요거트, 드링킹 요거트, 대용량 요거트 추천과 순위까지 한 번에 확인하세요.`,
+      url: "https://proteinlab.kr/yogurt",
+      type: "website",
+      locale: "ko_KR",
+      siteName: "ProteinLab",
+    },
+    twitter: {
+      card: "summary",
+      title: `단백질 요거트 추천 비교 ${products.length}종 — 그릭·드링킹·저당 기준 2026`,
+      description: `단백질 요거트 ${products.length}개를 단백질 함량, 당류, 칼로리, 단백질 밀도 기준으로 비교합니다. 그릭요거트, 드링킹 요거트, 대용량 요거트 추천과 순위까지 한 번에 확인하세요.`,
+    },
   };
 }
 

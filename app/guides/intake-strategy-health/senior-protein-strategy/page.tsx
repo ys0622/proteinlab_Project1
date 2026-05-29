@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
+import GuideBuySection from "@/app/components/GuideBuySection";
 import { buildGuideJsonLd } from "@/app/lib/guideJsonLd";
 
 const _pageTitle = "50대·시니어 단백질 전략 | 근감소 예방과 쉬운 섭취법";
@@ -167,6 +168,7 @@ export default function SeniorProteinStrategyPage() {
           </div>
         </section>
       </main>
+      <GuideBuySection />
       <Footer />
     </div>
   );

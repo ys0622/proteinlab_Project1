@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
+import GuideBuySection from "@/app/components/GuideBuySection";
 import { buildGuideJsonLd } from "@/app/lib/guideJsonLd";
 
 const _pageTitle = "아침 대용 단백질 음료 추천 기준 | 공복·출근길에 보는 법";
@@ -255,6 +256,7 @@ export default function MorningProteinDrinkPage() {
           </section>
         </div>
       </main>
+      <GuideBuySection />
       <Footer />
     </div>
   );

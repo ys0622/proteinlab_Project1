@@ -1,10 +1,8 @@
 import Link from "next/link";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
+import GuideBuySection from "@/app/components/GuideBuySection";
 import { buildGuideJsonLd } from "@/app/lib/guideJsonLd";
-import AdSenseBlock from "@/components/AdSenseBlock";
-
-const GUIDE_BOTTOM_AD_SLOT = process.env.NEXT_PUBLIC_ADSENSE_GUIDE_BOTTOM_SLOT;
 
 const _pageTitle = "린매스업 단백질 섭취량 계산 | 체중별로 몇 g 먹어야 할까";
 const _pageDesc = "린매스업 단백질 섭취량을 체중별로 계산하는 기준을 정리했습니다. 체중 60kg·70kg·80kg 예시, 쉬는 날 운영, 끼니별 배분, 쉐이크 활용법까지 한 번에 확인할 수 있습니다.";
@@ -140,7 +138,7 @@ const actionLinks = [
     body: "운동 직후나 간편 보충용으로 맞는 음료 제품군 비교",
   },
   {
-    href: "/tools/calculator",
+    href: "/guides/tools",
     title: "내 체중 기준 섭취량 다시 계산하기",
     body: "체중, 목표에 맞춰 섭취량 계산부터 다시 확인",
   },
@@ -418,12 +416,6 @@ export default function LeanMassupProteinIntakePage() {
             </div>
           </section>
 
-          <AdSenseBlock
-            slot={GUIDE_BOTTOM_AD_SLOT}
-            pageType="guide"
-            className="border-[#e2ebe4] bg-[#fbfaf7]"
-          />
-
           <section className="rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
             <h2 className="text-xl font-bold text-[var(--foreground)]">린매스업 단백질 섭취량 FAQ</h2>
             <div className="mt-5 space-y-3">
@@ -453,6 +445,8 @@ export default function LeanMassupProteinIntakePage() {
           </section>
         </div>
       </main>
+      <GuideBuySection />
+
       <Footer />
     </div>
   );

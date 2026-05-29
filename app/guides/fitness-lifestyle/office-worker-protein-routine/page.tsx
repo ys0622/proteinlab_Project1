@@ -2,6 +2,7 @@
 import Link from "next/link";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
+import GuideBuySection from "@/app/components/GuideBuySection";
 
 const _pageTitle = "직장인 단백질 루틴 제품 선택법 | 아침·사무실·야근 기준 정리";
 const _pageDesc = "직장인이 아침 공복, 오전 간식, 점심 공백, 퇴근 후 운동, 야근까지 하루 루틴에서 어떤 단백질 제품을 고르면 좋은지 정리했습니다.";
@@ -190,6 +191,7 @@ export default function OfficeWorkerProteinRoutinePage() {
           </section>
         </div>
       </main>
+      <GuideBuySection />
       <Footer />
     </div>
   );

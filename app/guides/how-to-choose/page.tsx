@@ -1,5 +1,5 @@
-import { redirect } from "next/navigation";
+import { permanentRedirect } from "next/navigation";
 
 export default function HowToChoosePage() {
-  redirect("/guides/product-selection-comparison");
+  permanentRedirect("/guides/product-selection-comparison");
 }

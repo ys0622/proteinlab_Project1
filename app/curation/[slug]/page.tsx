@@ -3,9 +3,19 @@ import Footer from "../../components/Footer";
 import Header from "../../components/Header";
 import CurationLandingTemplate from "../../components/CurationLandingTemplate";
 import { getCurationLandingData } from "../../lib/curationLanding";
+import { getAllCurations } from "../../lib/curationSystem";
 
 interface CurationPageProps {
   params: Promise<{ slug: string }>;
+}
+
+export const dynamicParams = false;
+export const revalidate = 3600;
+
+export function generateStaticParams() {
+  return getAllCurations().map((curation) => ({
+    slug: curation.slug,
+  }));
 }
 
 export async function generateMetadata({ params }: CurationPageProps) {

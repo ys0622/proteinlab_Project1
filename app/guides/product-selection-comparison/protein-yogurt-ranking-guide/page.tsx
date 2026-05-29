@@ -1,6 +1,7 @@
 ﻿import Link from "next/link";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
+import GuideBuySection from "@/app/components/GuideBuySection";
 
 export const metadata = {
   title: "단백질 요거트 순위 보는 법 | 점수·등급 기준 해석",
@@ -92,6 +93,7 @@ export default function ProteinYogurtRankingGuidePage() {
           </section>
         </div>
       </main>
+      <GuideBuySection />
       <Footer />
     </div>
   );

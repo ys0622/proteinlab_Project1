@@ -1,6 +1,7 @@
 ﻿import Link from "next/link";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
+import GuideBuySection from "@/app/components/GuideBuySection";
 
 export const metadata = {
   title: "단백하니 단백질 쉐이크 추천 | 시그니처·초코·말차 비교 2026",
@@ -165,6 +166,7 @@ export default function DanbaekhaniProteinShakePage() {
           </section>
         </div>
       </main>
+      <GuideBuySection />
       <Footer />
     </div>
   );

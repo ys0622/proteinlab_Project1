@@ -1,6 +1,7 @@
 ﻿import Link from "next/link";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
+import GuideBuySection from "@/app/components/GuideBuySection";
 
 export const metadata = {
   title: "단백질 바 선택 가이드 | 식사 보완·간식형 비교 기준",
@@ -115,6 +116,8 @@ export default function ProteinBarGuidePage() {
           </section>
         </div>
       </main>
+
+      <GuideBuySection />
 
       <Footer />
     </div>

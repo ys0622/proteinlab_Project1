@@ -1,7 +1,7 @@
 ﻿"use client";
 
-import { usePathname } from "next/navigation";
-import { useEffect, useMemo, useState } from "react";
+import { usePathname, useSearchParams } from "next/navigation";
+import { Suspense, useEffect, useMemo, useState } from "react";
 import type { ProductDetailProps } from "../data/products";
 import { type ProductCategory } from "../lib/categories";
 import { applyCurationToCategoryProducts } from "../lib/curationSystem";
@@ -643,11 +643,14 @@ function ProductListWithFiltersInner(props: ProductListWithFiltersInnerProps) {
   );
 }
 
-export default function ProductListWithFilters(props: ProductListWithFiltersProps) {
+function ProductListWithFiltersResolved(props: ProductListWithFiltersProps) {
   const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const resolvedCurationSlug =
+    props.curationSlug ?? (searchParams.get("curation") || undefined);
   const storageKey = useMemo(
-    () => `product-list-state:${pathname}:${props.productType}:${props.curationSlug ?? "all"}`,
-    [pathname, props.curationSlug, props.productType],
+    () => `product-list-state:${pathname}:${props.productType}:${resolvedCurationSlug ?? "all"}`,
+    [pathname, props.productType, resolvedCurationSlug],
   );
   const initialPersistedState = getPersistedFilterState(storageKey);
 
@@ -655,8 +658,17 @@ export default function ProductListWithFilters(props: ProductListWithFiltersProp
     <ProductListWithFiltersInner
       key={storageKey}
       {...props}
+      curationSlug={resolvedCurationSlug}
       storageKey={storageKey}
       initialPersistedState={initialPersistedState}
     />
+  );
+}
+
+export default function ProductListWithFilters(props: ProductListWithFiltersProps) {
+  return (
+    <Suspense fallback={null}>
+      <ProductListWithFiltersResolved {...props} />
+    </Suspense>
   );
 }

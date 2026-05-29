@@ -69,13 +69,7 @@ const websiteJsonLd = {
   ],
 };
 
-interface HomePageProps {
-  searchParams?: Promise<Record<string, string | string[] | undefined>>;
-}
-
-export default async function Home({ searchParams }: HomePageProps) {
-  const params = (await searchParams) ?? {};
-  const curation = typeof params.curation === "string" ? params.curation : undefined;
+export default async function Home() {
   const [products, bars, yogurts, shakes] = await Promise.all([
     getProductsByCategoryAsync("drink"),
     getProductsByCategoryAsync("bar"),
@@ -105,7 +99,6 @@ export default async function Home({ searchParams }: HomePageProps) {
         <ProductListWithFilters
           productType="drink"
           products={products}
-          curationSlug={curation}
           categoryCounts={categoryCounts}
           stickyTabs={false}
           tabsPlacement="before_grid"

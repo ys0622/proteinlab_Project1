@@ -1,6 +1,7 @@
 ﻿import Link from "next/link";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
+import GuideBuySection from "@/app/components/GuideBuySection";
 
 export const metadata = {
   title: "편의점 단백질 음료·바 추천 | CU·GS25·세븐일레븐 성분 기준",
@@ -304,6 +305,8 @@ export default function ConvenienceStoreProteinGuidePage() {
 
         </div>
       </main>
+
+      <GuideBuySection />
 
       <Footer />
     </div>

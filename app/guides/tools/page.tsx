@@ -2,6 +2,7 @@
 import { notFound } from "next/navigation";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
+import GuideBuySection from "@/app/components/GuideBuySection";
 import ProteinToolsClient from "./ProteinToolsClient";
 import { getGuideTrack } from "@/app/data/guidesTracks";
 
@@ -198,6 +199,8 @@ export default function ProteinToolsPage() {
           </div>
         </section>
       </main>
+
+      <GuideBuySection />
 
       <Footer />
     </div>

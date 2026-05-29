@@ -1,5 +1,5 @@
-import { redirect } from "next/navigation";
+import { permanentRedirect } from "next/navigation";
 
 export default function BasicsPage() {
-  redirect("/guides/protein-basics");
+  permanentRedirect("/guides/protein-basics");
 }

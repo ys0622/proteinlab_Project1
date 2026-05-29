@@ -1,6 +1,7 @@
 ﻿import Link from "next/link";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
+import GuideBuySection from "@/app/components/GuideBuySection";
 import { buildGuideJsonLd } from "@/app/lib/guideJsonLd";
 
 const _pageTitle = "단백질 소화와 흡수 메커니즘 | 입에서 근육까지";
@@ -150,7 +151,7 @@ export default function DigestionGuidePage() {
               가이드
             </Link>
             <span>/</span>
-            <Link href="/guides/basics" className="hover:text-[var(--accent)]">
+            <Link href="/guides/protein-basics" className="hover:text-[var(--accent)]">
               단백질 기초
             </Link>
             <span>/</span>
@@ -268,6 +269,8 @@ export default function DigestionGuidePage() {
           </section>
         </div>
       </main>
+
+      <GuideBuySection />
 
       <Footer />
     </div>

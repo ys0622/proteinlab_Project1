@@ -1,6 +1,7 @@
 ﻿import Link from "next/link";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
+import GuideBuySection from "@/app/components/GuideBuySection";
 import TrackedLink from "@/app/components/TrackedLink";
 
 const _pageTitle = "하루 단백질 권장량 | 목적·체중·연령별 정리";
@@ -111,7 +112,7 @@ export default function DailyRequirementPage() {
               가이드
             </Link>
             <span>/</span>
-            <Link href="/guides/basics" className="hover:text-[var(--accent)]">
+            <Link href="/guides/protein-basics" className="hover:text-[var(--accent)]">
               단백질 기초
             </Link>
             <span>/</span>
@@ -223,6 +224,8 @@ export default function DailyRequirementPage() {
           </section>
         </div>
       </main>
+
+      <GuideBuySection />
 
       <Footer />
     </div>

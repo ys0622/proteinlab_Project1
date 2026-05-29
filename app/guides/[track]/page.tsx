@@ -2,11 +2,12 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
+import GuideBuySection from "@/app/components/GuideBuySection";
 import { getAllSearchTopics } from "@/app/data/searchTopics";
 import { getGuideTracks } from "@/app/data/guidesTracks";
 import { getAdminGuidesStaticRuntimeData } from "@/app/lib/adminGuidesStaticRuntime";
 
-export const dynamic = "force-dynamic";
+export const revalidate = 3600;
 
 const clampTwoLines = {
   display: "-webkit-box",
@@ -372,6 +373,7 @@ export default async function GuideTrackPage({ params }: { params: Promise<{ tra
         </section>
       </main>
 
+      <GuideBuySection />
       <Footer />
     </div>
   );

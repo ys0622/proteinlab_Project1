@@ -1,5 +1,5 @@
-import { redirect } from "next/navigation";
+import { permanentRedirect } from "next/navigation";
 
 export default function ZeroSugarAlluloseRedirectPage() {
-  redirect("/guides/product-selection-comparison/zero-sugar-allulose");
+  permanentRedirect("/guides/product-selection-comparison/zero-sugar-allulose");
 }

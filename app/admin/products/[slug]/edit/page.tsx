@@ -70,6 +70,11 @@ function Field({
 const inputCls =
   "w-full rounded-lg border border-[var(--border)] bg-[var(--background)] px-3 py-2 text-sm text-[var(--foreground)] focus:outline-none focus:ring-2 focus:ring-[var(--accent)]";
 
+function buildSearchQuery(brand?: string, name?: string) {
+  const parts = [brand?.trim(), name?.trim()].filter(Boolean);
+  return parts.join(" ");
+}
+
 const numInput = (
   value: number | string | undefined,
   onChange: (v: string) => void
@@ -151,13 +156,13 @@ export default function ProductEditPage({
       formData.append("productType", product.productType ?? "drink");
       const uploadRes = await fetch("/api/admin/images/upload", { method: "POST", body: formData });
       if (uploadRes.ok) {
-        setImgMsg("✅ 이미지 저장 완료");
+        setImgMsg("이미지 저장 완료");
       } else {
         const d = await uploadRes.json();
-        setImgMsg(`❌ ${d.error}`);
+        setImgMsg(d.error ?? "이미지 저장 실패");
       }
     } catch {
-      setImgMsg("❌ 업로드 실패");
+      setImgMsg("업로드 실패");
     } finally {
       setImgUploading(false);
     }
@@ -205,6 +210,22 @@ export default function ProductEditPage({
   }
 
   const n = product.nutritionPerBottle ?? {};
+  const purchaseSearchQuery = buildSearchQuery(product.brand, product.name);
+  const coupangSearchUrl = purchaseSearchQuery
+    ? `https://www.coupang.com/np/search?component=&q=${encodeURIComponent(purchaseSearchQuery)}`
+    : "";
+  const naverSearchUrl = purchaseSearchQuery
+    ? `https://search.shopping.naver.com/search/all?query=${encodeURIComponent(purchaseSearchQuery)}`
+    : "";
+
+  const copySearchQuery = async () => {
+    if (!purchaseSearchQuery) return;
+    try {
+      await navigator.clipboard.writeText(purchaseSearchQuery);
+    } catch {
+      setError("검색어 복사에 실패했습니다.");
+    }
+  };
 
   return (
     <div className="p-6 max-w-3xl mx-auto">
@@ -234,7 +255,7 @@ export default function ProductEditPage({
             disabled={saving}
             className="rounded-full bg-[var(--accent)] px-5 py-2 text-sm font-medium text-white hover:bg-[var(--accent-hover)] disabled:opacity-60"
           >
-            {saving ? "저장 중..." : saved ? "저장됨 ✓" : "저장"}
+            {saving ? "저장 중..." : saved ? "저장됨" : "저장"}
           </button>
         </div>
       </div>
@@ -264,7 +285,7 @@ export default function ProductEditPage({
                 className={inputCls}
               />
             </Field>
-            <Field label="제품명" hint="예: 올프로틴 (초콜릿)">
+            <Field label="상품명" hint="예: 올프로틴 (초콜릿)">
               <input
                 value={product.name ?? ""}
                 onChange={(e) => set("name", e.target.value)}
@@ -378,7 +399,7 @@ export default function ProductEditPage({
           </div>
 
           <div className="mt-4 pt-4 border-t border-[var(--border)] grid grid-cols-2 gap-4">
-            <Field label="단백질/서빙 (g)" hint="카드에 표시되는 핵심 값">
+            <Field label="단백질 수치 (g)" hint="카드에 표시되는 대표 값">
               {numInput(product.proteinPerServing, (v) =>
                 set("proteinPerServing", v === "" ? undefined : Number(v))
               )}
@@ -454,6 +475,50 @@ export default function ProductEditPage({
         {/* D. 링크 */}
         <section className="rounded-xl border border-[var(--border)] bg-[var(--background-card)] p-5">
           <h2 className="text-sm font-semibold text-[var(--foreground)] mb-4">D. 링크</h2>
+          <div className="mb-4 rounded-lg border border-amber-200 bg-amber-50 p-4">
+            <p className="text-sm font-medium text-amber-900">쿠팡 링크 입력 준비</p>
+            <p className="mt-1 text-xs text-amber-900/80">
+              검색 결과 페이지 URL은 수익이 발생하지 않습니다. 상품 상세의
+              `coupang.com/vp/products/...itemId=...vendorItemId=...` 또는
+              `link.coupang.com` 링크만 입력하세요.
+            </p>
+            <div className="mt-3 flex flex-wrap items-center gap-2">
+              <code className="rounded bg-white px-2 py-1 text-xs text-[var(--foreground)]">
+                {purchaseSearchQuery || "브랜드 + 상품명"}
+              </code>
+              <button
+                type="button"
+                onClick={copySearchQuery}
+                className="rounded-lg border border-[var(--border)] bg-white px-3 py-1.5 text-xs font-medium text-[var(--foreground)] hover:bg-[var(--beige-warm)]"
+              >
+                검색어 복사
+              </button>
+              <a
+                href={coupangSearchUrl || "#"}
+                target="_blank"
+                rel="noreferrer"
+                className={`rounded-lg border px-3 py-1.5 text-xs font-medium ${
+                  coupangSearchUrl
+                    ? "border-[var(--border)] bg-white text-[var(--foreground)] hover:bg-[var(--beige-warm)]"
+                    : "pointer-events-none border-[var(--border)] bg-[var(--background)] text-[var(--foreground-muted)]"
+                }`}
+              >
+                쿠팡 검색 열기
+              </a>
+              <a
+                href={naverSearchUrl || "#"}
+                target="_blank"
+                rel="noreferrer"
+                className={`rounded-lg border px-3 py-1.5 text-xs font-medium ${
+                  naverSearchUrl
+                    ? "border-[var(--border)] bg-white text-[var(--foreground)] hover:bg-[var(--beige-warm)]"
+                    : "pointer-events-none border-[var(--border)] bg-[var(--background)] text-[var(--foreground-muted)]"
+                }`}
+              >
+                네이버 검색 열기
+              </a>
+            </div>
+          </div>
           <div className="space-y-4">
             <Field
               label="쿠팡 링크 (coupangUrl)"
@@ -557,7 +622,7 @@ export default function ProductEditPage({
                   disabled={imgUploading}
                   className="rounded-full bg-[var(--accent)] px-4 py-2 text-sm font-medium text-white hover:bg-[var(--accent-hover)] disabled:opacity-60"
                 >
-                  {imgUploading ? "저장 중..." : "이미지 저장"}
+                  {imgUploading ? "업로드 중..." : "이미지 업로드"}
                 </button>
                 <button
                   onClick={() => { setImgPreview(null); setImgMsg(""); }}
@@ -589,7 +654,7 @@ export default function ProductEditPage({
           disabled={saving}
           className="rounded-full bg-[var(--accent)] px-6 py-2 text-sm font-medium text-white hover:bg-[var(--accent-hover)] disabled:opacity-60"
         >
-          {saving ? "저장 중..." : saved ? "저장됨 ✓" : "저장"}
+          {saving ? "저장 중..." : saved ? "저장됨" : "저장"}
         </button>
       </div>
     </div>

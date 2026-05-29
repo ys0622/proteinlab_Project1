@@ -1,9 +1,8 @@
 "use client";
 
-import { useEffect, useState, useCallback, useMemo } from "react";
+import { Suspense, useCallback, useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
-import { Suspense } from "react";
 import { getCategoryLabel, type ProductCategory } from "@/app/lib/categories";
 
 interface Product {
@@ -12,6 +11,8 @@ interface Product {
   brand: string;
   manufacturer?: string;
   productType?: ProductCategory;
+  coupangUrl?: string;
+  productUrl?: string;
   proteinPerServing?: number;
   imageStatus?: string;
   nutritionPerBottle?: Record<string, unknown>;
@@ -21,20 +22,18 @@ interface Product {
 
 function ProductsContent() {
   const searchParams = useSearchParams();
+  const urlFilter = searchParams.get("filter");
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState("");
   const [typeFilter, setTypeFilter] = useState<"all" | ProductCategory>("all");
   const [imageFilter, setImageFilter] = useState<"all" | "no-image" | "has-image">("all");
-  const [reviewFilter, setReviewFilter] = useState(false);
+  const [reviewFilter, setReviewFilter] = useState(() => urlFilter === "review");
+  const [coupangFilter, setCoupangFilter] = useState<"all" | "missing">(() =>
+    urlFilter === "missing-coupang" ? "missing" : "all",
+  );
   const [brandFilter, setBrandFilter] = useState("all");
   const [deleteConfirm, setDeleteConfirm] = useState<string | null>(null);
-
-  const urlFilter = searchParams.get("filter");
-
-  useEffect(() => {
-    if (urlFilter === "review") setReviewFilter(true);
-  }, [urlFilter]);
 
   useEffect(() => {
     fetch("/api/admin/products")
@@ -70,12 +69,18 @@ function ProductsContent() {
     return !n || n.sodiumMg === undefined || n.fatG === undefined || n.carbsG === undefined;
   };
 
+  const hasCoupangLink = (p: Product) => {
+    const value = (p.coupangUrl ?? p.productUrl ?? "").trim();
+    return value !== "" && value !== "#";
+  };
+
   const filtered = products.filter((p) => {
     if (typeFilter !== "all" && p.productType !== typeFilter) return false;
     if (brandFilter !== "all" && p.brand !== brandFilter) return false;
     if (imageFilter === "no-image" && p.imageStatus !== "no-image") return false;
     if (imageFilter === "has-image" && p.imageStatus === "no-image") return false;
     if (reviewFilter && !needsReview(p)) return false;
+    if (coupangFilter === "missing" && hasCoupangLink(p)) return false;
     if (search) {
       const q = search.toLowerCase();
       return (
@@ -104,6 +109,16 @@ function ProductsContent() {
         >
           + 제품 추가
         </Link>
+        <button
+          onClick={() => setCoupangFilter((v) => (v === "missing" ? "all" : "missing"))}
+          className={`rounded-lg border px-3 py-2 text-sm transition-colors ${
+            coupangFilter === "missing"
+              ? "border-amber-300 bg-amber-50 text-amber-800"
+              : "border-[var(--border)] bg-[var(--background)] text-[var(--foreground-muted)]"
+          }`}
+        >
+          쿠팡 링크 비어 있음만
+        </button>
       </div>
 
       {/* Filters */}
@@ -194,13 +209,16 @@ function ProductsContent() {
                 <th className="text-left px-4 py-3 text-xs font-medium text-[var(--foreground-muted)]">
                   상태
                 </th>
+                <th className="text-left px-4 py-3 text-xs font-medium text-[var(--foreground-muted)]">
+                  쿠팡 링크
+                </th>
                 <th className="px-4 py-3"></th>
               </tr>
             </thead>
             <tbody>
               {filtered.length === 0 ? (
                 <tr>
-                  <td colSpan={7} className="px-4 py-8 text-center text-[var(--foreground-muted)]">
+                  <td colSpan={8} className="px-4 py-8 text-center text-[var(--foreground-muted)]">
                     검색 결과가 없습니다.
                   </td>
                 </tr>
@@ -250,6 +268,17 @@ function ProductsContent() {
                           검토 필요
                         </span>
                       )}
+                    </td>
+                    <td className="px-4 py-3">
+                      <span
+                        className={`inline-block rounded-full px-2 py-0.5 text-xs font-medium ${
+                          hasCoupangLink(p)
+                            ? "bg-green-100 text-green-700"
+                            : "bg-amber-100 text-amber-800"
+                        }`}
+                      >
+                        {hasCoupangLink(p) ? "있음" : "비어 있음"}
+                      </span>
                     </td>
                     <td className="px-4 py-3 text-right whitespace-nowrap">
                       <Link

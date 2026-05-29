@@ -1,5 +1,5 @@
-import { redirect } from "next/navigation";
+import { permanentRedirect } from "next/navigation";
 
 export default function ByGoalPage() {
-  redirect("/guides/intake-strategy-health");
+  permanentRedirect("/guides/intake-strategy-health");
 }

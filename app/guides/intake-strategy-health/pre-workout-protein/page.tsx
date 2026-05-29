@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
+import GuideBuySection from "@/app/components/GuideBuySection";
 import { buildGuideJsonLd } from "@/app/lib/guideJsonLd";
 
 const _pageTitle = "운동 전 단백질 가이드 | 먹어야 할 때와 굳이 안 먹어도 될 때";
@@ -185,6 +186,7 @@ export default function PreWorkoutProteinPage() {
           </div>
         </section>
       </main>
+      <GuideBuySection />
       <Footer />
     </div>
   );

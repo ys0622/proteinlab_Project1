@@ -1,11 +1,12 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import Footer from "@/app/components/Footer";
+import GuideBuySection from "@/app/components/GuideBuySection";
 import GuideVisual from "@/app/components/GuideVisual";
 import Header from "@/app/components/Header";
 import { getGuideSlot, getGuideTrack, getGuideTracks } from "@/app/data/guidesTracks";
 
-export const dynamic = "force-dynamic";
+export const revalidate = 3600;
 
 export async function generateStaticParams() {
   return getGuideTracks().flatMap((track) =>
@@ -387,6 +388,7 @@ export default async function GuideSlugPage({
 
           </div>
         </main>
+        <GuideBuySection />
         <Footer />
       </div>
     );
@@ -451,6 +453,7 @@ export default async function GuideSlugPage({
 
           </div>
         </main>
+        <GuideBuySection />
         <Footer />
       </div>
     );
@@ -508,6 +511,7 @@ export default async function GuideSlugPage({
 
           </div>
         </main>
+        <GuideBuySection />
         <Footer />
       </div>
     );
@@ -523,7 +527,7 @@ export default async function GuideSlugPage({
             <div className="flex flex-wrap items-center gap-1.5 text-xs text-[var(--foreground-muted)]">
               <Link href="/guides" className="hover:text-[var(--accent)]">가이드</Link>
               <span>/</span>
-              <Link href="/guides/basics" className="hover:text-[var(--accent)]">단백질 기초</Link>
+              <Link href="/guides/protein-basics" className="hover:text-[var(--accent)]">단백질 기초</Link>
               <span>/</span>
               <span>하루 권장량</span>
             </div>
@@ -579,6 +583,7 @@ export default async function GuideSlugPage({
             </section>
           </div>
         </main>
+        <GuideBuySection />
         <Footer />
       </div>
     );
@@ -632,6 +637,7 @@ export default async function GuideSlugPage({
 
           </div>
         </main>
+        <GuideBuySection />
         <Footer />
       </div>
     );

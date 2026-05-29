@@ -1,21 +1,25 @@
 import Link from "next/link";
+import CommercialAdSection from "../components/CommercialAdSection";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import GuideBuySection from "@/app/components/GuideBuySection";
 import { getAdminGuidesStaticRuntimeData } from "@/app/lib/adminGuidesStaticRuntime";
 
-export const dynamic = "force-dynamic";
+export const revalidate = 3600;
+
+const metadataTitle = "단백질 가이드 모음 | 음료·쉐이크·바·요거트 비교·추천";
+const metadataDescription =
+  "단백질 음료 비교, 쉐이크 추천, 단백질 바와 요거트 선택 기준까지 한 번에 볼 수 있는 ProteinLab 가이드 허브입니다.";
 
 export const metadata = {
-  title: "단백질 가이드 모음 — 음료·쉐이크·바·요거트 비교·추천",
-  description:
-    "단백질 음료 비교, 쉐이크 추천, 단백질 바·요거트 선택법까지 한 번에 찾을 수 있는 ProteinLab 대표 가이드 허브입니다.",
+  title: metadataTitle,
+  description: metadataDescription,
   alternates: {
     canonical: "https://proteinlab.kr/guides",
   },
   openGraph: {
-    title: "단백질 가이드 모음 — 음료·쉐이크·바·요거트 비교·추천",
-    description:
-      "단백질 음료 비교, 쉐이크 추천, 단백질 바·요거트 선택법까지 한 번에 찾을 수 있는 ProteinLab 대표 가이드 허브입니다.",
+    title: metadataTitle,
+    description: metadataDescription,
     url: "https://proteinlab.kr/guides",
     type: "website",
     locale: "ko_KR",
@@ -23,9 +27,8 @@ export const metadata = {
   },
   twitter: {
     card: "summary",
-    title: "단백질 가이드 모음 — 음료·쉐이크·바·요거트 비교·추천",
-    description:
-      "단백질 음료 비교, 쉐이크 추천, 단백질 바·요거트 선택법까지 한 번에 찾을 수 있는 ProteinLab 대표 가이드 허브입니다.",
+    title: metadataTitle,
+    description: metadataDescription,
   },
 };
 
@@ -37,7 +40,7 @@ export default async function GuidesPage() {
     "@type": "BreadcrumbList",
     itemListElement: [
       { "@type": "ListItem", position: 1, name: "ProteinLab", item: "https://proteinlab.kr/" },
-      { "@type": "ListItem", position: 2, name: "Guides", item: "https://proteinlab.kr/guides" },
+      { "@type": "ListItem", position: 2, name: "가이드", item: "https://proteinlab.kr/guides" },
     ],
   };
 
@@ -61,6 +64,13 @@ export default async function GuidesPage() {
       </section>
 
       <main className="mx-auto max-w-[1200px] px-4 pb-12 md:px-6">
+        <CommercialAdSection
+          pageType="guide"
+          className="mt-6"
+          title="가이드를 둘러보기 전 참고 광고"
+          description="광고는 제품 상세나 비교 화면이 아니라 가이드 허브 같은 정보형 섹션에서만 제한적으로 노출합니다."
+        />
+
         <div className="mt-6 grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
           {cms.mainPage.tracks.map((track) => (
             <Link
@@ -98,13 +108,15 @@ export default async function GuidesPage() {
                     color: track.accentColor,
                   }}
                 >
-                  이 트랙 바로 보기
+                  트랙 바로 보기
                 </span>
               </div>
             </Link>
           ))}
         </div>
       </main>
+
+      <GuideBuySection />
 
       <Footer />
     </div>

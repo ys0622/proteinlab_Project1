@@ -242,7 +242,7 @@ const sections: AdminGuideSection[] = [
     accentBg: "#efe9fb",
     previewHref: "/guides/tools",
     articles: [
-      article("daily-protein-calculator", "하루 단백질 섭취량 계산기", "체중과 활동량 기준으로 하루 섭취량을 계산합니다.", "/tools/calculator", { emoji: "📏", tags: ["계산기", "섭취량"], status: "live" }),
+      article("daily-protein-calculator", "하루 단백질 섭취량 계산기", "체중과 활동량 기준으로 하루 섭취량을 계산합니다.", "/guides/tools", { emoji: "📏", tags: ["계산기", "섭취량"], status: "live" }),
       article("protein-drink-count-calculator", "단백질 음료 개수 계산기", "목표 단백질량을 채우기 위해 몇 병이 필요한지 계산하는 도구입니다.", "/guides/tools", { emoji: "🥤", tags: ["도구", "예정"], status: "planned" }),
       article("protein-density-calculator", "단백질 밀도 계산기", "칼로리 대비 단백질 함량을 계산하는 도구입니다.", "/guides/tools", { emoji: "📊", tags: ["도구", "예정"], status: "planned" }),
     ],

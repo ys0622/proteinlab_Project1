@@ -555,8 +555,8 @@ function buildDefaultGuideLinks(curation: CurationDefinition): CurationGuideLink
     href: curation.categories.bar
       ? "/guides/product-selection-comparison/protein-bar-guide"
       : curation.categories.yogurt
-        ? "/guides/how-to-choose/checklist"
-        : "/guides/how-to-choose/checklist",
+        ? "/guides/product-selection-comparison/nutrition-criteria"
+        : "/guides/product-selection-comparison/nutrition-criteria",
     title: curation.categories.bar
       ? "단백질 바 고르는 법"
       : curation.categories.yogurt

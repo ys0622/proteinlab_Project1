@@ -1,6 +1,7 @@
 ﻿import Link from "next/link";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
+import GuideBuySection from "@/app/components/GuideBuySection";
 
 export const metadata = {
   title: "식사대용 단백질 바 기준 | 포만감·칼로리·단백질 비교",
@@ -109,6 +110,7 @@ export default function MealReplacementProteinBarGuidePage() {
           </section>
         </div>
       </main>
+      <GuideBuySection />
       <Footer />
     </div>
   );

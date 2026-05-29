@@ -6,22 +6,31 @@ import ProductListWithFilters from "../components/ProductListWithFilters";
 import type { ProductCategory } from "../lib/categories";
 import { getProductsByCategoryAsync } from "../lib/productData";
 
-interface ShakePageProps {
-  searchParams?: Promise<Record<string, string | string[] | undefined>>;
-}
-
-export async function generateMetadata({ searchParams }: ShakePageProps): Promise<Metadata> {
-  const params = (await searchParams) ?? {};
-  const hasParams = Object.keys(params).length > 0;
+export async function generateMetadata(): Promise<Metadata> {
   const products = await getProductsByCategoryAsync("shake");
 
+  const title = `단백질 쉐이크 추천 비교 ${products.length}종 — 식사대용·저당·고단백 기준 2026`;
+  const description = `단백질 쉐이크 ${products.length}종을 단백질 총량, 당류, 칼로리, 식사대용 적합도 기준으로 비교합니다. 식사대용, 다이어트, 운동 후 보충용 쉐이크를 성분 데이터로 바로 좁혀보세요.`;
+
   return {
-    title: `단백질 쉐이크 추천 비교 ${products.length}종 — 저당·고단백·식사대용 기준 2026`,
-    description: `단백질 쉐이크 ${products.length}종을 단백질 총량, 당류, 칼로리, 식이섬유 기준으로 비교합니다. 플라이밀, 단백하니, 프로티원, 랩노쉬, 바지오까지 성분 데이터로 바로 좁혀보세요.`,
+    title,
+    description,
     alternates: {
       canonical: "https://proteinlab.kr/shake",
     },
-    ...(hasParams ? { robots: { index: false, follow: false } } : {}),
+    openGraph: {
+      title,
+      description,
+      url: "https://proteinlab.kr/shake",
+      type: "website",
+      locale: "ko_KR",
+      siteName: "ProteinLab",
+    },
+    twitter: {
+      card: "summary",
+      title,
+      description,
+    },
   };
 }
 
@@ -73,6 +82,7 @@ export default async function ShakePage() {
           productType="shake"
           products={products}
           categoryCounts={categoryCounts}
+          stickyTabs={false}
           tabsPlacement="before_grid"
         />
       </main>

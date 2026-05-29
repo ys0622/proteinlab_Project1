@@ -1,6 +1,7 @@
 ﻿import Link from "next/link";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
+import GuideBuySection from "@/app/components/GuideBuySection";
 
 export const metadata = {
   title: "영양성분 기준 정리 | 단백질 제품 비교할 때 먼저 볼 숫자",
@@ -92,6 +93,8 @@ export default function NutritionCriteriaPage() {
           </section>
         </div>
       </main>
+
+      <GuideBuySection />
 
       <Footer />
     </div>

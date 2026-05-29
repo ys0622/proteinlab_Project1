@@ -1,6 +1,7 @@
 ﻿import Link from "next/link";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
+import GuideBuySection from "@/app/components/GuideBuySection";
 
 export const metadata = {
   title: "랩노쉬 슬림쉐이크 추천 | 저당·식사대용 기준 정리 2026",
@@ -99,6 +100,7 @@ export default function LabNosheLimShakePage() {
           </section>
         </div>
       </main>
+      <GuideBuySection />
       <Footer />
     </div>
   );

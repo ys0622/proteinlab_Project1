@@ -6,9 +6,7 @@ import ProductListWithFilters from "../components/ProductListWithFilters";
 import type { ProductCategory } from "../lib/categories";
 import { getProductsByCategoryAsync } from "../lib/productData";
 
-export async function generateMetadata({ searchParams }: BarsPageProps) {
-  const params = (await searchParams) ?? {};
-  const hasParams = Object.keys(params).length > 0;
+export async function generateMetadata() {
   const products = await getProductsByCategoryAsync("bar");
 
   return {
@@ -17,17 +15,23 @@ export async function generateMetadata({ searchParams }: BarsPageProps) {
     alternates: {
       canonical: "https://proteinlab.kr/bars",
     },
-    ...(hasParams ? { robots: { index: false, follow: false } } : {}),
+    openGraph: {
+      title: `단백질 바 추천 비교 ${products.length}종 — 고단백·저당 성분 기준 2026`,
+      description: `단백질 바 ${products.length}개를 단백질 함량, 당류, 칼로리, 중량 기준으로 비교합니다. 운동보충·저당·식사보완 목적에 맞는 제품을 성분 데이터로 바로 선택하세요.`,
+      url: "https://proteinlab.kr/bars",
+      type: "website",
+      locale: "ko_KR",
+      siteName: "ProteinLab",
+    },
+    twitter: {
+      card: "summary",
+      title: `단백질 바 추천 비교 ${products.length}종 — 고단백·저당 성분 기준 2026`,
+      description: `단백질 바 ${products.length}개를 단백질 함량, 당류, 칼로리, 중량 기준으로 비교합니다. 운동보충·저당·식사보완 목적에 맞는 제품을 성분 데이터로 바로 선택하세요.`,
+    },
   };
 }
 
-interface BarsPageProps {
-  searchParams?: Promise<Record<string, string | string[] | undefined>>;
-}
-
-export default async function BarsPage({ searchParams }: BarsPageProps) {
-  const params = (await searchParams) ?? {};
-  const curation = typeof params.curation === "string" ? params.curation : undefined;
+export default async function BarsPage() {
   const [drinks, products, yogurts, shakes] = await Promise.all([
     getProductsByCategoryAsync("drink"),
     getProductsByCategoryAsync("bar"),
@@ -75,7 +79,6 @@ export default async function BarsPage({ searchParams }: BarsPageProps) {
         <ProductListWithFilters
           productType="bar"
           products={products}
-          curationSlug={curation}
           categoryCounts={categoryCounts}
           tabsPlacement="before_grid"
         />

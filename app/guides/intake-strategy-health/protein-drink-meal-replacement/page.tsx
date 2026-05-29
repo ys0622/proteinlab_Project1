@@ -2,6 +2,7 @@
 import Link from "next/link";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
+import GuideBuySection from "@/app/components/GuideBuySection";
 
 const _pageTitle = "단백질 음료로 식사대용 가능할까 | 식사 보완용 음료 기준 정리";
 const _pageDesc = "단백질 음료를 식사 대신 마셔도 되는지, 식사 보완용 음료와 단순 보충용 RTD의 차이, 언제 쉐이크로 넘어가야 하는지 정리했습니다.";
@@ -166,6 +167,7 @@ export default function ProteinDrinkMealReplacementPage() {
           </section>
         </div>
       </main>
+      <GuideBuySection />
       <Footer />
     </div>
   );

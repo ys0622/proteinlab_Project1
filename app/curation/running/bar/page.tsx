@@ -1,5 +1,5 @@
-import { redirect } from "next/navigation";
+import { permanentRedirect } from "next/navigation";
 
 export default function RunningBarCurationPage() {
-  redirect("/bars?curation=running");
+  permanentRedirect("/bars?curation=running");
 }

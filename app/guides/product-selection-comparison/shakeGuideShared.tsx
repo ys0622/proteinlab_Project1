@@ -2,6 +2,7 @@
 import Link from "next/link";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
+import GuideBuySection from "@/app/components/GuideBuySection";
 
 type SummaryItem = {
   title: string;
@@ -397,6 +398,7 @@ export function ShakeGuidePage({
         </div>
       </main>
 
+      <GuideBuySection />
       <Footer />
     </div>
   );

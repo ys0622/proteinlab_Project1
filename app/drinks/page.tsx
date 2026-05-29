@@ -7,28 +7,35 @@ import ProductListWithFilters from "../components/ProductListWithFilters";
 import type { ProductCategory } from "../lib/categories";
 import { getProductsByCategoryAsync } from "../lib/productData";
 
-export async function generateMetadata({ searchParams }: DrinksPageProps): Promise<Metadata> {
-  const params = (await searchParams) ?? {};
-  const hasParams = Object.keys(params).length > 0;
+export async function generateMetadata(): Promise<Metadata> {
   const products = await getProductsByCategoryAsync("drink");
 
+  const title = `단백질 음료 추천 비교 ${products.length}종 — 저당·고단백·40g 기준 2026`;
+  const description = `단백질 음료 ${products.length}종을 단백질 함량, 당류, 칼로리, 단백질 밀도 기준으로 비교합니다. 셀렉스, 하이뮨, 뉴케어, 닥터유, 테이크핏 같은 대표 제품을 성분 데이터로 바로 좁혀보세요.`;
+
   return {
-    title: `단백질 음료 추천 비교 ${products.length}종 — 저당·고단백·40g 기준 2026`,
-    description: `단백질 음료 ${products.length}종을 단백질 함량, 당류, 칼로리, 단백질 밀도 기준으로 비교합니다. 셀렉스, 하이뮨, 뉴케어, 닥터유까지 성분 데이터로 바로 좁혀보세요.`,
+    title,
+    description,
     alternates: {
       canonical: "https://proteinlab.kr/drinks",
     },
-    ...(hasParams ? { robots: { index: false, follow: false } } : {}),
+    openGraph: {
+      title,
+      description,
+      url: "https://proteinlab.kr/drinks",
+      type: "website",
+      locale: "ko_KR",
+      siteName: "ProteinLab",
+    },
+    twitter: {
+      card: "summary",
+      title,
+      description,
+    },
   };
 }
 
-interface DrinksPageProps {
-  searchParams?: Promise<Record<string, string | string[] | undefined>>;
-}
-
-export default async function DrinksPage({ searchParams }: DrinksPageProps) {
-  const params = (await searchParams) ?? {};
-  const curation = typeof params.curation === "string" ? params.curation : undefined;
+export default async function DrinksPage() {
   const [products, bars, yogurts, shakes] = await Promise.all([
     getProductsByCategoryAsync("drink"),
     getProductsByCategoryAsync("bar"),
@@ -77,7 +84,6 @@ export default async function DrinksPage({ searchParams }: DrinksPageProps) {
         <ProductListWithFilters
           productType="drink"
           products={products}
-          curationSlug={curation}
           categoryCounts={categoryCounts}
           stickyTabs={false}
           tabsPlacement="before_grid"

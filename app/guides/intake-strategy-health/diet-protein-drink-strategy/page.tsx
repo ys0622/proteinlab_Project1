@@ -2,6 +2,7 @@
 import Link from "next/link";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
+import GuideBuySection from "@/app/components/GuideBuySection";
 
 const _pageTitle = "다이어트 중 단백질 음료 어떻게 마실까 | 저당·저칼로리 기준 정리";
 const _pageDesc = "다이어트 중 단백질 음료를 언제, 어떤 기준으로 마셔야 하는지 정리합니다. 저당, 저칼로리, 포만감, 식사대용 기준을 함께 봐야 실패 확률이 줄어듭니다.";
@@ -195,6 +196,7 @@ export default function DietProteinDrinkStrategyPage() {
           </section>
         </div>
       </main>
+      <GuideBuySection />
       <Footer />
     </div>
   );

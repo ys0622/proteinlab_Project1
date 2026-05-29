@@ -1,6 +1,7 @@
 ﻿import Link from "next/link";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
+import GuideBuySection from "@/app/components/GuideBuySection";
 import { buildGuideJsonLd } from "@/app/lib/guideJsonLd";
 
 const _pageTitle = "단백질 부족 자가체크";
@@ -60,7 +61,7 @@ export default function ProteinDeficiencySelfCheckPage() {
           <div className="flex flex-wrap items-center gap-1.5 text-xs text-[var(--foreground-muted)]">
             <Link href="/guides" className="hover:text-[var(--accent)]">Guides</Link>
             <span>/</span>
-            <Link href="/guides/basics" className="hover:text-[var(--accent)]">단백질 기초</Link>
+            <Link href="/guides/protein-basics" className="hover:text-[var(--accent)]">단백질 기초</Link>
             <span>/</span>
             <span>자가체크</span>
           </div>
@@ -157,6 +158,7 @@ export default function ProteinDeficiencySelfCheckPage() {
           </section>
         </div>
       </main>
+      <GuideBuySection />
       <Footer />
     </div>
   );

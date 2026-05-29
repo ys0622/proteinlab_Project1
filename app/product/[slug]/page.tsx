@@ -13,11 +13,7 @@ import ProductDetailPurchaseActions from "../../components/ProductDetailPurchase
 import RelatedLinkCards from "../../components/RelatedLinkCards";
 import TrackedLink from "../../components/TrackedLink";
 import {
-  barProductsWithGrades,
-  mockProducts,
-  shakeProducts,
   type ProductDetailProps,
-  yogurtProductsWithGrades,
 } from "../../data/products";
 import {
   formatProductBadgeLabel,
@@ -30,9 +26,12 @@ import ServingBasisNotice from "../../components/ServingBasisNotice";
 import { getNutritionDetail } from "../../data/products";
 import { brandToSlug } from "../../lib/brandHubs";
 import { getCategoryHref, getCategoryLabel } from "../../lib/categories";
-import { getProductBySlugAsync, getProductsByCategoryAsync } from "../../lib/productData";
+import {
+  getAllStaticProducts,
+  getStaticProductBySlug,
+  getStaticProductsByCategory,
+} from "../../lib/productDataStatic";
 import { getProductImageUrl } from "../../lib/productImage";
-import { getReviews } from "../../lib/reviewData";
 import { getSimilarProducts } from "../../lib/similarProducts";
 import {
   getCoupangRedirectHref,
@@ -45,9 +44,10 @@ interface PageProps {
 }
 
 export const dynamicParams = true;
+export const revalidate = 3600;
 
 export function generateStaticParams() {
-  return [...mockProducts, ...barProductsWithGrades, ...yogurtProductsWithGrades, ...shakeProducts]
+  return getAllStaticProducts()
     .filter((product) => product.slug)
     .map((product) => ({
       slug: product.slug,
@@ -158,6 +158,9 @@ function buildProductInternalLinks(product: ProductDetailProps) {
   const category = (product.productType ?? "drink") as "drink" | "bar" | "yogurt" | "shake";
   const categoryHref = getCategoryHref(category);
   const categoryLabel = getProductKindLabel(product.productType);
+  const sugar = product.sugar ?? null;
+  const calories = product.calories ?? null;
+  const protein = product.proteinPerServing;
   const compareLandingHref =
     category === "drink"
       ? "/compare/newcare-vs-sellex-drink"
@@ -174,22 +177,78 @@ function buildProductInternalLinks(product: ProductDetailProps) {
         : category === "yogurt"
           ? "요거트 비교 랜딩 보기"
           : "쉐이크 비교 랜딩 보기";
-  const topicHref =
+  const topicLink =
     category === "drink"
-      ? "/topics/protein-drink-recommend"
+      ? product.variant?.trim() === "락토프리"
+        ? {
+            href: "/topics/lactose-free-protein-drink",
+            title: "락토프리 단백질 음료 보기",
+            description: "유당 부담이 적은 제품 후보만 먼저 모아서 비교합니다.",
+          }
+        : sugar != null && sugar <= 1
+          ? {
+              href: "/topics/low-sugar-protein-drink",
+              title: "저당 단백질 음료 보기",
+              description: "당류 기준으로 비슷한 음료만 다시 좁혀서 비교합니다.",
+            }
+          : protein >= 20
+            ? {
+                href: "/topics/high-protein-drink-20g",
+                title: "고단백 단백질 음료 보기",
+                description: "단백질 20g 이상 제품군과 함께 놓고 차이를 확인합니다.",
+              }
+            : {
+                href: "/topics/protein-drink-recommend",
+                title: "단백질 음료 추천 토픽 보기",
+                description: "같은 의도로 많이 찾는 음료 묶음을 바로 이어서 확인합니다.",
+              }
       : category === "bar"
-        ? "/topics/high-protein-bar"
+        ? sugar != null && sugar <= 5
+          ? {
+              href: "/topics/low-sugar-protein-bar",
+              title: "저당 단백질 바 보기",
+              description: "당류 부담이 적은 단백질 바 후보를 먼저 모아서 비교합니다.",
+            }
+          : calories != null && calories <= 200
+            ? {
+                href: "/topics/low-calorie-protein-bar",
+                title: "저칼로리 단백질 바 보기",
+                description: "가벼운 열량 기준으로 비슷한 단백질 바를 다시 좁혀봅니다.",
+              }
+            : {
+                href: "/topics/high-protein-bar",
+                title: "고단백 단백질 바 보기",
+                description: "고단백 바 제품군 안에서 비슷한 후보를 이어서 비교합니다.",
+              }
         : category === "yogurt"
-          ? "/topics/high-protein-greek-yogurt"
-          : "/topics/meal-replacement-protein-shake";
-  const topicTitle =
-    category === "drink"
-      ? "단백질 음료 토픽 보기"
-      : category === "bar"
-        ? "고단백 바 토픽 보기"
-        : category === "yogurt"
-          ? "고단백 그릭요거트 토픽 보기"
-          : "식사대용 쉐이크 토픽 보기";
+          ? sugar != null && sugar <= 5
+            ? {
+                href: "/topics/low-sugar-yogurt",
+                title: "저당 단백질 요거트 보기",
+                description: "당류 기준으로 비슷한 요거트 후보만 먼저 비교합니다.",
+              }
+            : {
+                href: "/topics/high-protein-greek-yogurt",
+                title: "고단백 그릭요거트 보기",
+                description: "고단백 요거트와 그릭요거트 후보를 함께 이어서 볼 수 있습니다.",
+              }
+          : getShakePositioning(product) === "식사대용형"
+            ? {
+                href: "/topics/meal-replacement-protein-shake",
+                title: "식사대용 단백질 쉐이크 보기",
+                description: "포만감과 식사 대용 흐름으로 많이 찾는 쉐이크 후보를 이어서 봅니다.",
+              }
+            : sugar != null && sugar <= 3
+              ? {
+                  href: "/topics/low-sugar-protein-shake",
+                  title: "저당 단백질 쉐이크 보기",
+                  description: "당류 기준으로 더 가벼운 쉐이크 후보를 다시 좁혀봅니다.",
+                }
+              : {
+                  href: "/topics/post-workout-protein-shake",
+                  title: "운동 후 단백질 쉐이크 보기",
+                  description: "운동 후 보충용으로 많이 찾는 쉐이크 후보를 함께 비교합니다.",
+                };
   const guideHref =
     category === "drink"
       ? "/guides/product-selection-comparison/protein-drink-guide"
@@ -205,6 +264,12 @@ function buildProductInternalLinks(product: ProductDetailProps) {
       title: `${categoryLabel} 더 보기`,
       description: `같은 카테고리 안에서 비슷한 스펙 제품을 한 번에 비교합니다.`,
     },
+    topicLink,
+    {
+      href: guideHref,
+      title: `${categoryLabel} 선택 가이드`,
+      description: "단백질, 당류, 칼로리를 어떤 순서로 볼지 바로 확인합니다.",
+    },
     {
       href: `/compare?slugs=${encodeURIComponent(product.slug)}`,
       title: "이 제품으로 비교 시작",
@@ -216,26 +281,16 @@ function buildProductInternalLinks(product: ProductDetailProps) {
       description: "대표 비교 조합을 먼저 보고 비슷한 제품 차이를 빠르게 읽습니다.",
     },
     {
-      href: topicHref,
-      title: topicTitle,
-      description: "같은 의도로 많이 찾는 제품 묶음을 바로 이어서 확인합니다.",
-    },
-    {
       href: `/brands/${brandToSlug(product.brand)}`,
       title: `${product.brand} 브랜드 보기`,
       description: "같은 브랜드 안에서 라인업 차이를 빠르게 확인합니다.",
-    },
-    {
-      href: guideHref,
-      title: `${categoryLabel} 선택 가이드`,
-      description: "단백질, 당류, 칼로리를 어떤 순서로 볼지 바로 확인합니다.",
     },
   ];
 }
 
 export async function generateMetadata({ params }: PageProps) {
   const { slug } = await params;
-  const product = await getProductBySlugAsync(slug);
+  const product = getStaticProductBySlug(slug);
   if (!product) return { title: "제품을 찾을 수 없음 | ProteinLab" };
 
   const imageUrl = getProductImageUrl(slug);
@@ -266,9 +321,8 @@ export async function generateMetadata({ params }: PageProps) {
 
 export default async function ProductDetailPage({ params }: PageProps) {
   const { slug } = await params;
-  const product = await getProductBySlugAsync(slug);
+  const product = getStaticProductBySlug(slug);
   if (!product) notFound();
-  const reviews = await getReviews(slug);
 
   const gradeLabels = product.gradeTags ?? [];
   const gradeDescs = product.gradeDescriptions ?? ["-", "-", "-"];
@@ -299,7 +353,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
   const officialMallHref = product.officialUrl && product.officialUrl !== "#" && product.officialUrl !== "" ? product.officialUrl : null;
   const isLactoseFreeDrink =
     product.productType === "drink" && product.variant?.trim() === "락토프리";
-  const categoryProducts = await getProductsByCategoryAsync(category);
+  const categoryProducts = getStaticProductsByCategory(category);
   const similarProducts = getSimilarProducts(product, categoryProducts, 3);
   const internalLinks = buildProductInternalLinks(product).slice(0, 4);
 
@@ -345,17 +399,6 @@ export default async function ProductDetailPage({ params }: PageProps) {
           { label: "지방", value: product.fat !== undefined ? `${product.fat}g` : "-", isCompact: false },
           { label: "나트륨", value: product.sodium !== undefined ? `${product.sodium}mg` : "-", isCompact: false },
         ];
-
-  const ratingValueMap = {
-    up: 5,
-    mid: 3,
-    down: 1,
-  } as const;
-  const reviewCount = reviews.length;
-  const aggregateRatingValue =
-    reviewCount > 0
-      ? reviews.reduce((sum, review) => sum + ratingValueMap[review.rating], 0) / reviewCount
-      : null;
 
   const jsonLd = [
     {
@@ -406,15 +449,6 @@ export default async function ProductDetailPage({ params }: PageProps) {
               priceCurrency: "KRW",
               availability: "https://schema.org/InStock",
               seller: { "@type": "Organization", name: "쿠팡" },
-            },
-          }
-        : {}),
-      ...(reviewCount > 0
-        ? {
-            aggregateRating: {
-              "@type": "AggregateRating",
-              ratingValue: Number((aggregateRatingValue ?? 0).toFixed(1)),
-              reviewCount,
             },
           }
         : {}),

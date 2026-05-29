@@ -1,6 +1,7 @@
 ﻿import Link from "next/link";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
+import GuideBuySection from "@/app/components/GuideBuySection";
 import GuideVisual from "@/app/components/GuideVisual";
 import { buildGuideJsonLd } from "@/app/lib/guideJsonLd";
 
@@ -90,7 +91,7 @@ export default function DeficiencySymptomsPage() {
               가이드
             </Link>
             <span>/</span>
-            <Link href="/guides/basics" className="hover:text-[var(--accent)]">
+            <Link href="/guides/protein-basics" className="hover:text-[var(--accent)]">
               단백질 기초
             </Link>
             <span>/</span>
@@ -221,6 +222,8 @@ export default function DeficiencySymptomsPage() {
           </section>
         </div>
       </main>
+
+      <GuideBuySection />
 
       <Footer />
     </div>

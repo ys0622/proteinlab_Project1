@@ -1,5 +1,5 @@
-import { redirect } from "next/navigation";
+import { permanentRedirect } from "next/navigation";
 
 export default function BcaaGuideRedirectPage() {
-  redirect("/guides/product-selection-comparison/bcaa-guide");
+  permanentRedirect("/guides/product-selection-comparison/bcaa-guide");
 }

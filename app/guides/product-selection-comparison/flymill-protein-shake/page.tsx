@@ -1,6 +1,7 @@
 ﻿import Link from "next/link";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
+import GuideBuySection from "@/app/components/GuideBuySection";
 
 export const metadata = {
   title: "플라이밀 단백질 쉐이크 추천 | 피넛버터·초코·쿠키앤크림 비교 2026",
@@ -165,6 +166,7 @@ export default function FlymillProteinShakePage() {
           </section>
         </div>
       </main>
+      <GuideBuySection />
       <Footer />
     </div>
   );

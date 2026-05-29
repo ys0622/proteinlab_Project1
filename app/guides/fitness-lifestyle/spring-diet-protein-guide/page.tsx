@@ -2,6 +2,7 @@
 import Link from "next/link";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
+import GuideBuySection from "@/app/components/GuideBuySection";
 
 const _pageTitle = "봄 다이어트 단백질 전략 | 가벼운 감량기 제품 기준";
 const _pageDesc = "봄철 체중 관리 시즌에는 단백질 음료, 단백질 바, 단백질 요거트를 어떤 기준으로 고르면 좋은지 칼로리, 당류, 포만감 중심으로 정리합니다.";
@@ -149,6 +150,8 @@ export default function SpringDietProteinGuidePage() {
           </section>
         </div>
       </main>
+
+      <GuideBuySection />
 
       <Footer />
     </div>

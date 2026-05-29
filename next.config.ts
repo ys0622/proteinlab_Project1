@@ -25,6 +25,31 @@ const nextConfig: NextConfig = {
         destination: "/guides/market-insights/protein-market-history",
         permanent: true,
       },
+      {
+        source: "/guides/protein-basics/protein-absorption",
+        destination: "/guides/basics/digestion",
+        permanent: true,
+      },
+      {
+        source: "/guides/protein-basics/protein-intake-amount",
+        destination: "/guides/basics/daily-requirement",
+        permanent: true,
+      },
+      {
+        source: "/guides/protein-basics/protein-health-impact",
+        destination: "/guides/basics/immunity-hormone",
+        permanent: true,
+      },
+      {
+        source: "/guides/protein-basics/protein-types",
+        destination: "/guides/basics/protein-drink-vs-powder",
+        permanent: true,
+      },
+      {
+        source: "/guides/protein-basics/protein-basics-overview",
+        destination: "/guides/basics/role-overview",
+        permanent: true,
+      },
     ];
   },
 };

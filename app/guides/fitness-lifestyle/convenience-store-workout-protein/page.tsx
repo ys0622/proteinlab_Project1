@@ -2,6 +2,7 @@
 import Link from "next/link";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
+import GuideBuySection from "@/app/components/GuideBuySection";
 
 const _pageTitle = "편의점에서 운동 전후 바로 살 수 있는 단백질 제품";
 const _pageDesc = "운동 전후 편의점에서 바로 살 수 있는 단백질 음료와 바를 상황별로 고르는 기준을 정리합니다.";
@@ -147,6 +148,7 @@ export default function ConvenienceStoreWorkoutProteinPage() {
           </section>
         </div>
       </main>
+      <GuideBuySection />
       <Footer />
     </div>
   );

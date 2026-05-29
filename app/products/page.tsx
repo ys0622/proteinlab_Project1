@@ -7,9 +7,7 @@ import ProductListWithFilters from "../components/ProductListWithFilters";
 import { getProductsByCategoryAsync } from "../lib/productData";
 import type { ProductCategory } from "../lib/categories";
 
-export async function generateMetadata({ searchParams }: ProductsPageProps): Promise<Metadata> {
-  const params = (await searchParams) ?? {};
-  const hasParams = Object.keys(params).length > 0;
+export async function generateMetadata(): Promise<Metadata> {
   const [drinks, bars, yogurts, shakes] = await Promise.all([
     getProductsByCategoryAsync("drink"),
     getProductsByCategoryAsync("bar"),
@@ -39,7 +37,6 @@ export async function generateMetadata({ searchParams }: ProductsPageProps): Pro
       title,
       description,
     },
-    ...(hasParams ? { robots: { index: false, follow: false } } : {}),
   };
 }
 
@@ -89,13 +86,7 @@ const categoryLinks = [
   },
 ];
 
-interface ProductsPageProps {
-  searchParams?: Promise<Record<string, string | string[] | undefined>>;
-}
-
-export default async function ProductsPage({ searchParams }: ProductsPageProps) {
-  const params = (await searchParams) ?? {};
-  const curation = typeof params.curation === "string" ? params.curation : undefined;
+export default async function ProductsPage() {
   const [drinks, bars, yogurts, shakes] = await Promise.all([
     getProductsByCategoryAsync("drink"),
     getProductsByCategoryAsync("bar"),
@@ -188,7 +179,6 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
           <ProductListWithFilters
             productType="drink"
             products={drinks}
-            curationSlug={curation}
             categoryCounts={categoryCounts}
             stickyTabs={false}
             tabsPlacement="before_grid"
