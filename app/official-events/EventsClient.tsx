@@ -84,7 +84,7 @@ const PRODUCT_TYPE_META: Record<
   },
 };
 
-const CHECKED_DATE_LABEL = "2026-05-01 확인";
+const CHECKED_DATE_LABEL = "2026-05-29 확인";
 
 const CATEGORY_EMOJI: Record<EventCategory, string> = {
   할인: "🔖",
@@ -918,7 +918,7 @@ export default function EventsClient() {
             이벤트/핫딜
           </h1>
           <p className="mt-1 text-sm text-[var(--foreground-muted)]">
-            등록 제품 {TOTAL_REGISTERED_PRODUCTS}개 기준으로 공식몰·네이버·쿠팡 혜택 확인 우선순위를 정리했습니다. 2026-05-01 기준으로 확인한 판매처 정보와 할인, 쿠폰, 증정, 무료배송 포인트를 빠르게 볼 수 있습니다.
+            등록 제품 {TOTAL_REGISTERED_PRODUCTS}개 기준으로 공식몰·네이버·쿠팡 혜택 확인 우선순위를 정리했습니다. 2026-05-29 기준으로 확인한 판매처 정보와 할인, 쿠폰, 증정, 무료배송 포인트를 빠르게 볼 수 있습니다.
           </p>
         </div>
       </section>
