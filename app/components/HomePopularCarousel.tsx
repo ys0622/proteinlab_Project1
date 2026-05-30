@@ -1,20 +1,11 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import HomeTrackedLink from "./HomeTrackedLink";
+import type { ProductCardProps } from "../data/productTypes";
+import ProductCard from "./ProductCard";
 
-export type CarouselProduct = {
-  slug: string;
-  name: string;
-  brand: string;
-  proteinPerServing: number;
-  sugar?: number | null;
-  calories?: number | null;
-  imageUrl: string | null;
-  gradeTags?: string[];
-};
+export type CarouselProduct = ProductCardProps & { rank?: number };
 
 type CategoryKey = "drink" | "bar" | "yogurt" | "shake";
 
@@ -25,36 +16,14 @@ const TABS: { key: CategoryKey; label: string; emoji: string; href: string }[] =
   { key: "shake", label: "쉐이크", emoji: "🧃", href: "/shake" },
 ];
 
-const RANK_COLORS = ["#C59B0A", "#7A8C8D", "#8C6548", "#2E6B4F", "#2E6B4F", "#2E6B4F"];
+const RANK_COLORS = ["#C59B0A", "#7A8C8D", "#8C6548", "#2E6B4F", "#2E6B4F", "#2E6B4F", "#2E6B4F", "#2E6B4F", "#2E6B4F", "#2E6B4F"];
 
 interface Props {
   products: Record<CategoryKey, CarouselProduct[]>;
 }
 
-function GradeTag({ tag }: { tag: string }) {
-  const label = tag.startsWith("밀도 ") ? tag.replace("밀도 ", "단백질 밀도 ") : tag;
-  const isPerformance = tag.includes("퍼포먼스") || tag.includes("A등급");
-  const isDiet = tag.includes("다이어트") || tag.includes("저당");
-  return (
-    <span
-      className="inline-flex shrink-0 rounded-full px-1.5 py-px text-[9px] font-semibold"
-      style={{
-        background: isPerformance ? "#DFF0E8" : isDiet ? "#DFE8F4" : "#EEE8E0",
-        color: isPerformance ? "#1A5E3A" : isDiet ? "#2A4B7A" : "#6B5A3A",
-        border: `1px solid ${isPerformance ? "#C0DDD0" : isDiet ? "#C0CEDF" : "#DDD0C0"}`,
-      }}
-    >
-      {label}
-    </span>
-  );
-}
-
 export default function HomePopularCarousel({ products }: Props) {
   const [tabIdx, setTabIdx] = useState(0);
-
-  const handleTabClick = (idx: number) => {
-    setTabIdx(idx);
-  };
 
   const curTab = TABS[tabIdx];
   const curProducts = products[curTab.key] ?? [];
@@ -70,13 +39,12 @@ export default function HomePopularCarousel({ products }: Props) {
           이번 주 인기 제품
         </h2>
         <div className="flex items-center gap-2">
-          {/* Tabs */}
           <div className="flex gap-1">
             {TABS.map((tab, i) => (
               <button
                 key={tab.key}
                 type="button"
-                onClick={() => handleTabClick(i)}
+                onClick={() => setTabIdx(i)}
                 className="inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-[11px] font-bold transition-all"
                 style={
                   tabIdx === i
@@ -95,145 +63,51 @@ export default function HomePopularCarousel({ products }: Props) {
         </div>
       </div>
 
-      {/* Horizontal snap-scroll — 5 cards visible on desktop, ~2.3 on mobile */}
+      {/* Horizontal snap-scroll */}
       <div
-        className="flex gap-2"
+        className="flex gap-3"
         style={{
           overflowX: "auto",
           scrollSnapType: "x mandatory",
           scrollbarWidth: "none",
           WebkitOverflowScrolling: "touch",
-          paddingBottom: "4px",
+          paddingBottom: "6px",
+          alignItems: "stretch",
         } as React.CSSProperties}
       >
         {curProducts.map((product, i) => {
           const rank = i + 1;
-          const visibleGradeTags = (product.gradeTags ?? []).slice(0, 2);
-
           return (
-            <HomeTrackedLink
-              key={product.slug}
-              href={`/product/${product.slug}`}
-              eventName="home_popular_product_click"
-              eventParams={{
-                product_name: product.name,
-                brand_name: product.brand,
-                category: curTab.key,
-                rank,
-                destination_url: `/product/${product.slug}`,
-              }}
-              className="group flex flex-col overflow-hidden rounded-[16px] border transition-all duration-150 hover:-translate-y-0.5 hover:border-[#1F5A3D]/20 hover:shadow-[0_8px_24px_rgba(31,90,61,0.10)]"
+            <div
+              key={product.slug ?? i}
+              className="relative shrink-0"
               style={{
-                width: "clamp(148px, calc(20% - 7px), 200px)",
-                minWidth: "clamp(148px, calc(20% - 7px), 200px)",
-                maxWidth: "clamp(148px, calc(20% - 7px), 200px)",
-                flexShrink: 0,
+                width: "clamp(160px, calc(20% - 10px), 220px)",
                 scrollSnapAlign: "start",
-                background: "#FFFDF7",
-                borderColor: "#E6DDCC",
-                boxShadow: "0 2px 8px rgba(31,90,61,0.06)",
               }}
             >
-              {/* Image — white background required */}
+              {/* Rank badge */}
               <div
-                className="relative flex items-center justify-center"
+                className="absolute left-2 top-2 z-10 flex items-center justify-center rounded-full font-extrabold text-white"
                 style={{
-                  background: "#FFFFFF",
-                  height: 120,
-                  borderBottom: "1px solid #EAE4D8",
-                  flexShrink: 0,
+                  width: 22,
+                  height: 22,
+                  background: RANK_COLORS[rank - 1] ?? "#2E6B4F",
+                  fontSize: "10px",
+                  boxShadow: "0 2px 6px rgba(0,0,0,0.18)",
                 }}
               >
-                {/* Rank badge */}
-                <div
-                  className="absolute left-2 top-2 flex items-center justify-center rounded-full font-extrabold text-white"
-                  style={{
-                    width: 20,
-                    height: 20,
-                    background: RANK_COLORS[rank - 1] ?? "#2E6B4F",
-                    fontSize: "9px",
-                  }}
-                >
-                  {rank}
-                </div>
-                {product.imageUrl ? (
-                  <Image
-                    src={product.imageUrl}
-                    alt={`${product.brand} ${product.name}`}
-                    width={80}
-                    height={100}
-                    style={{
-                      maxHeight: "100px",
-                      maxWidth: "80%",
-                      width: "auto",
-                      objectFit: "contain",
-                    }}
-                    unoptimized
-                  />
-                ) : (
-                  <span style={{ fontSize: "28px" }}>🥤</span>
-                )}
+                {rank}
               </div>
-
-              {/* Card body */}
-              <div className="flex flex-1 flex-col p-3">
-                {/* Brand */}
-                <p
-                  className="truncate text-[10px] font-semibold"
-                  style={{ color: "#7a7a7a" }}
-                >
-                  {product.brand}
-                </p>
-
-                {/* Name */}
-                <p
-                  className="mt-0.5 line-clamp-2 font-bold leading-snug"
-                  style={{ fontSize: "11px", color: "#1a1a1a", height: "30px", overflow: "hidden" }}
-                >
-                  {product.name}
-                </p>
-
-                {/* Grade badges — always rendered to keep uniform height */}
-                <div className="mt-1.5 flex gap-1 overflow-hidden" style={{ height: "18px", flexWrap: "nowrap" }}>
-                  {visibleGradeTags.map((tag) => (
-                    <GradeTag key={tag} tag={tag} />
-                  ))}
-                </div>
-
-                {/* Nutrition — 3-col */}
-                <div
-                  className="mt-2 grid grid-cols-3 divide-x divide-[#EAE4D8] rounded-[8px] border text-center"
-                  style={{ borderColor: "#EAE4D8" }}
-                >
-                  <div className="py-1.5">
-                    <p className="text-[10px] font-extrabold" style={{ color: "#1F5A3D" }}>
-                      {product.proteinPerServing}g
-                    </p>
-                    <p className="text-[9px]" style={{ color: "#9AA39C" }}>단백질</p>
-                  </div>
-                  <div className="py-1.5">
-                    <p className="text-[10px] font-extrabold" style={{ color: "#3d3d3d" }}>
-                      {product.sugar != null ? `${product.sugar}g` : "—"}
-                    </p>
-                    <p className="text-[9px]" style={{ color: "#9AA39C" }}>당류</p>
-                  </div>
-                  <div className="py-1.5">
-                    <p className="text-[10px] font-extrabold" style={{ color: "#3d3d3d" }}>
-                      {product.calories != null ? product.calories : "—"}
-                    </p>
-                    <p className="text-[9px]" style={{ color: "#9AA39C" }}>kcal</p>
-                  </div>
-                </div>
-
-                {/* CTA — single, unified */}
-                <p
-                  className="mt-2 text-center text-[10px] font-bold transition-colors group-hover:text-[#1F5A3D]"
-                  style={{ color: "#B0B8B2" }}
-                >
-                  자세히 보기 →
-                </p>
-              </div>
-            </HomeTrackedLink>
+              <ProductCard
+                {...product}
+                productType={curTab.key}
+                priority={rank <= 3}
+                maxVisibleBadges={2}
+                fixedTitleLines={2}
+                hideSupplementalBadges
+              />
+            </div>
           );
         })}
       </div>
@@ -244,7 +118,7 @@ export default function HomePopularCarousel({ products }: Props) {
           <button
             key={i}
             type="button"
-            onClick={() => handleTabClick(i)}
+            onClick={() => setTabIdx(i)}
             aria-label={`${TABS[i].label} 탭`}
             className="rounded-full transition-all duration-300"
             style={{

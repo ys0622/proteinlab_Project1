@@ -78,11 +78,19 @@ function toCarouselProduct(p: ProductDetailProps): CarouselProduct {
     slug: p.slug ?? "",
     name: p.name,
     brand: p.brand,
+    capacity: p.capacity ?? "",
+    variant: p.variant,
+    tags: p.tags ?? [],
     proteinPerServing: p.proteinPerServing,
     sugar: p.sugar,
     calories: p.calories,
-    imageUrl: p.slug ? getProductImageUrl(p.slug) : null,
+    density: p.density ?? "-",
+    coupangUrl: p.coupangUrl,
+    naverUrl: p.naverUrl,
+    officialUrl: p.officialUrl,
     gradeTags: p.gradeTags ?? [],
+    productType: (p.productType as CarouselProduct["productType"]) ?? undefined,
+    yogurtType: p.yogurtType,
   };
 }
 
