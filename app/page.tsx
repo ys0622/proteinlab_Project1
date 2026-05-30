@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
@@ -109,74 +110,155 @@ export default async function Home() {
     shake: topShakes.map(toCarouselProduct),
   };
 
-  void totalCount;
+  const heroImages = topDrinks.slice(0, 4).map((p) => ({ url: getProductImageUrl(p.slug ?? ""), name: p.name, brand: p.brand }));
 
   return (
     <div className="min-h-screen" style={{ background: "#F3EFE6" }}>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }} />
       <Header />
 
-      {/* ─── 1. Hero (compact) ─── */}
-      <section className="mx-auto max-w-[1180px] px-4 pt-3 md:px-5 md:pt-4">
+      {/* ─── 1. Hero ─── */}
+      <section className="mx-auto max-w-[1180px] px-4 pt-4 md:px-5 md:pt-5">
         <div
           className="relative overflow-hidden"
           style={{
-            background: "linear-gradient(135deg, #EAF4EE 0%, #F2EDE4 60%, #EBF4ED 100%)",
-            border: "1px solid #E0D5C5",
+            background: "linear-gradient(135deg, #1F5A3D 0%, #2A7A54 60%, #1B4F35 100%)",
             borderRadius: "24px",
-            boxShadow: "0 2px 12px rgba(31,90,61,0.06)",
+            boxShadow: "0 8px 32px rgba(31,90,61,0.22)",
           }}
         >
-          <div aria-hidden className="pointer-events-none absolute right-0 top-0 opacity-20" style={{ width: 220, height: 220, background: "radial-gradient(circle, #A8D5B5 0%, transparent 70%)", transform: "translate(30%,-30%)" }} />
-          <div className="relative px-6 py-5 md:px-10 md:py-7">
-            <div className="mb-2 inline-flex items-center rounded-full px-3 py-1" style={{ background: "#C8E6D0", color: "#1A5235" }}>
-              <span className="text-[11px] font-bold tracking-wide">🔬 단백질 제품 비교 플랫폼</span>
-            </div>
-            <h1
-              className="font-extrabold leading-tight"
-              style={{ fontSize: "clamp(20px, 3.5vw, 34px)", color: "#1A2B1E", letterSpacing: "-0.03em" }}
-            >
-              내게 맞는 단백질 제품을 찾아보세요
-            </h1>
-            <p className="mt-1.5 max-w-xl" style={{ fontSize: "clamp(12px, 1.3vw, 14px)", color: "#4E6456", lineHeight: 1.6 }}>
-              단백질·당류·칼로리 기준으로 음료·바·요거트·쉐이크를 비교해보세요.
-            </p>
-            <div className="mt-3 flex flex-wrap items-center gap-2">
-              <Link
-                href="/drink"
-                className="inline-flex items-center rounded-full px-5 text-[13px] font-bold text-white"
-                style={{ background: "#1F5A3D", height: "36px", boxShadow: "0 4px 12px rgba(31,90,61,0.25)" }}
+          {/* decorative circles */}
+          <div aria-hidden className="pointer-events-none absolute -right-12 -top-12 rounded-full opacity-10" style={{ width: 260, height: 260, background: "radial-gradient(circle, #A8D5B5 0%, transparent 70%)" }} />
+          <div aria-hidden className="pointer-events-none absolute -bottom-10 -left-10 rounded-full opacity-10" style={{ width: 180, height: 180, background: "radial-gradient(circle, #A8D5B5 0%, transparent 70%)" }} />
+
+          <div className="relative grid grid-cols-1 items-center gap-0 md:grid-cols-[1fr_auto]">
+            {/* Left: text */}
+            <div className="px-6 py-7 md:px-10 md:py-8">
+              <div className="mb-3 inline-flex items-center gap-1.5 rounded-full px-3 py-1" style={{ background: "rgba(255,255,255,0.15)", border: "1px solid rgba(255,255,255,0.25)" }}>
+                <span style={{ fontSize: "11px", color: "rgba(255,255,255,0.95)", fontWeight: 700, letterSpacing: "0.03em" }}>🔬 단백질 제품 비교 플랫폼</span>
+              </div>
+              <h1
+                className="font-extrabold leading-tight text-white"
+                style={{ fontSize: "clamp(22px, 3.5vw, 36px)", letterSpacing: "-0.03em" }}
               >
-                제품 비교하기
-              </Link>
-              <Link
-                href="/recommend"
-                className="inline-flex items-center rounded-full border px-5 text-[13px] font-bold"
-                style={{ background: "rgba(255,255,255,0.55)", color: "#1F5A3D", borderColor: "#B0CCB8", height: "36px" }}
-              >
-                추천 보러가기
-              </Link>
+                내게 맞는 단백질 제품을<br />찾아보세요
+              </h1>
+              <p className="mt-2 max-w-md" style={{ fontSize: "clamp(12px, 1.3vw, 14px)", color: "rgba(255,255,255,0.78)", lineHeight: 1.65 }}>
+                단백질·당류·칼로리 기준으로 음료·바·요거트·쉐이크를<br className="hidden sm:block" /> 성분 데이터로 비교하고 목적에 맞는 제품을 찾아보세요.
+              </p>
+
+              {/* Stats */}
+              <div className="mt-4 flex flex-wrap gap-4">
+                {[
+                  { value: `${categoryCounts.drink + categoryCounts.bar + categoryCounts.yogurt + categoryCounts.shake}종+`, label: "비교 제품" },
+                  { value: "영양성분", label: "기반 비교" },
+                  { value: "등급·랭킹", label: "시스템" },
+                ].map((s) => (
+                  <div key={s.label} className="flex items-baseline gap-1">
+                    <span className="font-extrabold text-white" style={{ fontSize: "15px" }}>{s.value}</span>
+                    <span style={{ fontSize: "11px", color: "rgba(255,255,255,0.65)" }}>{s.label}</span>
+                  </div>
+                ))}
+              </div>
+
+              {/* CTAs */}
+              <div className="mt-5 flex flex-wrap items-center gap-2.5">
+                <Link
+                  href="/drink"
+                  className="inline-flex items-center rounded-full px-6 text-[13px] font-bold text-[#1A5235]"
+                  style={{ background: "#FFFFFF", height: "40px", boxShadow: "0 4px 14px rgba(0,0,0,0.15)" }}
+                >
+                  제품 비교하기 →
+                </Link>
+                <Link
+                  href="/recommend"
+                  className="inline-flex items-center rounded-full px-6 text-[13px] font-bold"
+                  style={{ background: "rgba(255,255,255,0.14)", color: "#fff", border: "1.5px solid rgba(255,255,255,0.35)", height: "40px" }}
+                >
+                  추천 보러가기
+                </Link>
+              </div>
             </div>
-            <div className="mt-3 flex flex-wrap gap-4">
-              {[
-                { value: `${categoryCounts.drink + categoryCounts.bar + categoryCounts.yogurt + categoryCounts.shake}종+`, label: "비교 제품" },
-                { value: "영양성분", label: "기반 비교" },
-                { value: "목적별", label: "추천 시스템" },
-              ].map((s) => (
-                <div key={s.label} className="flex items-baseline gap-1">
-                  <span className="font-extrabold" style={{ fontSize: "13px", color: "#1F5A3D" }}>{s.value}</span>
-                  <span style={{ fontSize: "10px", color: "#6B7A6D" }}>{s.label}</span>
-                </div>
-              ))}
+
+            {/* Right: product images */}
+            <div className="hidden md:flex md:flex-col md:justify-center md:px-8 md:py-6">
+              <div className="grid grid-cols-2 gap-2.5" style={{ width: 220 }}>
+                {heroImages.map((img, i) => (
+                  <div
+                    key={i}
+                    className="flex items-center justify-center overflow-hidden"
+                    style={{
+                      background: "#FFFFFF",
+                      borderRadius: "16px",
+                      height: 96,
+                      boxShadow: "0 4px 16px rgba(0,0,0,0.12)",
+                    }}
+                  >
+                    {img.url ? (
+                      <Image
+                        src={img.url}
+                        alt={`${img.brand} ${img.name}`}
+                        width={60}
+                        height={78}
+                        style={{ maxHeight: "78px", width: "auto", objectFit: "contain" }}
+                        unoptimized
+                      />
+                    ) : (
+                      <span style={{ fontSize: "28px" }}>🥤</span>
+                    )}
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ─── 2. 카테고리별 비교 ─── */}
-      <section className="mx-auto max-w-[1180px] px-4 pt-5 md:px-5 md:pt-7">
+      {/* ─── 2. 목적별 빠른 이동 ─── */}
+      <section className="mx-auto max-w-[1180px] px-4 pt-5 md:px-5 md:pt-6">
         <div className="mb-3 flex items-center justify-between">
-          <h2 className="font-extrabold" style={{ fontSize: "clamp(15px, 2vw, 18px)", color: "#1A2B1E", letterSpacing: "-0.02em" }}>
+          <h2 className="font-extrabold" style={{ fontSize: "clamp(14px, 2vw, 17px)", color: "#1A2B1E", letterSpacing: "-0.02em" }}>
+            목적별 빠른 선택
+          </h2>
+          <Link href="/recommend" className="text-[11px] font-bold" style={{ color: "#1F5A3D" }}>
+            자세히 보기 →
+          </Link>
+        </div>
+        <div
+          className="flex gap-2.5"
+          style={{ overflowX: "auto", scrollbarWidth: "none", WebkitOverflowScrolling: "touch", paddingBottom: "2px" } as React.CSSProperties}
+        >
+          {[
+            { emoji: "💪", label: "근육 성장", href: "/curation/high-protein", bg: "#D4EDDF", color: "#1A5235" },
+            { emoji: "🏃", label: "운동 퍼포먼스", href: "/curation/performance", bg: "#DDE9E2", color: "#1A5235" },
+            { emoji: "🥗", label: "다이어트", href: "/curation/diet", bg: "#E8F4E8", color: "#1A5235" },
+            { emoji: "🌅", label: "아침 대용", href: "/curation/morning", bg: "#F5E6CE", color: "#7A4A0A" },
+            { emoji: "🍫", label: "간식 대체", href: "/bars", bg: "#F0EBE0", color: "#6B4A2A" },
+            { emoji: "🛒", label: "편의점 구매", href: "/guides/product-selection-comparison/convenience-store-protein-guide", bg: "#E4EDEA", color: "#1A5235" },
+            { emoji: "⭐", label: "전체 랭킹", href: "/ranking", bg: "#FFF3D4", color: "#7A5A0A" },
+          ].map((item) => (
+            <Link
+              key={item.label}
+              href={item.href}
+              className="flex shrink-0 flex-col items-center gap-1.5 rounded-[16px] border p-3 transition-all hover:-translate-y-0.5 hover:shadow-[0_6px_16px_rgba(31,90,61,0.12)]"
+              style={{ background: "#FFFDF7", borderColor: "#E4D9CC", minWidth: 72, boxShadow: "0 1px 4px rgba(60,45,30,0.06)" }}
+            >
+              <div
+                className="flex h-10 w-10 items-center justify-center rounded-[12px]"
+                style={{ background: item.bg }}
+              >
+                <span style={{ fontSize: "20px" }}>{item.emoji}</span>
+              </div>
+              <span className="text-center text-[10px] font-bold leading-tight" style={{ color: "#1A2B1E" }}>{item.label}</span>
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      {/* ─── 3. 카테고리별 비교 ─── */}
+      <section className="mx-auto max-w-[1180px] px-4 pt-5 md:px-5 md:pt-6">
+        <div className="mb-3 flex items-center justify-between">
+          <h2 className="font-extrabold" style={{ fontSize: "clamp(14px, 2vw, 17px)", color: "#1A2B1E", letterSpacing: "-0.02em" }}>
             카테고리별 비교
           </h2>
         </div>
@@ -187,38 +269,40 @@ export default async function Home() {
               href={cat.href}
               eventName="home_category_click"
               eventParams={{ category: cat.countKey, destination_url: cat.href }}
-              className="group flex flex-col rounded-[18px] border p-4 transition-all duration-150 hover:-translate-y-0.5 hover:border-[#1F5A3D]/25 hover:shadow-[0_8px_24px_rgba(31,90,61,0.10)]"
-              style={{ background: "#FFFDF7", borderColor: "#E4D9CC", boxShadow: "0 1px 4px rgba(60,45,30,0.06)" }}
+              className="group relative flex flex-col overflow-hidden rounded-[18px] border p-4 transition-all duration-150 hover:-translate-y-0.5 hover:border-[#1F5A3D]/30 hover:shadow-[0_10px_28px_rgba(31,90,61,0.12)]"
+              style={{ background: "#FFFDF7", borderColor: "#E4D9CC", boxShadow: "0 2px 8px rgba(60,45,30,0.07)" }}
             >
+              {/* color accent bar at top */}
+              <div className="absolute left-0 right-0 top-0 h-1 rounded-t-[18px]" style={{ background: cat.color }} />
               <div
-                className="mb-3 flex h-11 w-11 items-center justify-center rounded-[12px]"
+                className="mb-3 mt-2 flex h-12 w-12 items-center justify-center rounded-[14px]"
                 style={{ background: cat.color }}
               >
-                <span style={{ fontSize: "24px", lineHeight: 1 }}>{cat.emoji}</span>
+                <span style={{ fontSize: "26px", lineHeight: 1 }}>{cat.emoji}</span>
               </div>
-              <p className="font-extrabold leading-tight" style={{ fontSize: "13px", color: "#1A2B1E" }}>{cat.label}</p>
+              <p className="font-extrabold leading-tight" style={{ fontSize: "14px", color: "#1A2B1E" }}>{cat.label}</p>
               <p className="mt-0.5 leading-tight" style={{ fontSize: "10px", color: "#9AA39C" }}>{cat.sub}</p>
               <div className="mt-auto flex items-center justify-between pt-3">
-                <span className="rounded-full px-2 py-0.5 text-[10px] font-bold" style={{ background: "#E4EDEA", color: "#1F5A3D" }}>
+                <span className="rounded-full px-2.5 py-0.5 text-[11px] font-bold" style={{ background: "#1F5A3D", color: "#fff" }}>
                   {categoryCounts[cat.countKey]}종
                 </span>
-                <span className="text-[12px] font-bold transition-colors group-hover:text-[#1F5A3D]" style={{ color: "#C0C8C2" }}>→</span>
+                <span className="text-[13px] font-bold transition-colors group-hover:text-[#1F5A3D]" style={{ color: "#C0C8C2" }}>→</span>
               </div>
             </HomeTrackedLink>
           ))}
         </div>
       </section>
 
-      {/* ─── 3. 이번 주 인기 제품 ─── */}
-      <section className="mx-auto max-w-[1180px] px-4 pt-5 md:px-5 md:pt-7">
+      {/* ─── 4. 이번 주 인기 제품 ─── */}
+      <section className="mx-auto max-w-[1180px] px-4 pt-5 md:px-5 md:pt-6">
         <HomePopularCarousel products={carouselProducts} />
       </section>
 
-      {/* ─── 4. 최신 가이드 & 인사이트 ─── */}
-      <section className="mx-auto max-w-[1180px] px-4 pt-5 md:px-5 md:pt-7">
+      {/* ─── 5. 최신 가이드 & 인사이트 ─── */}
+      <section className="mx-auto max-w-[1180px] px-4 pt-5 md:px-5 md:pt-6">
         <div className="mb-3 flex items-center justify-between">
-          <h2 className="font-extrabold" style={{ fontSize: "clamp(15px, 2vw, 18px)", color: "#1A2B1E", letterSpacing: "-0.02em" }}>
-            최신 가이드 & 인사이트
+          <h2 className="font-extrabold" style={{ fontSize: "clamp(14px, 2vw, 17px)", color: "#1A2B1E", letterSpacing: "-0.02em" }}>
+            가이드 & 인사이트
           </h2>
           <Link
             href="/guides"
@@ -236,57 +320,51 @@ export default async function Home() {
               className="group flex items-center gap-3 overflow-hidden rounded-[14px] border p-3 transition-all duration-150 hover:-translate-y-0.5 hover:border-[#1F5A3D]/25 hover:shadow-[0_6px_20px_rgba(31,90,61,0.10)]"
               style={{ background: "#FFFDF7", borderColor: "#E4D9CC", boxShadow: "0 1px 4px rgba(60,45,30,0.06)" }}
             >
-              {/* Icon square */}
               <div
                 className="flex h-11 w-11 shrink-0 items-center justify-center rounded-[10px]"
                 style={{ background: guide.thumbBg }}
               >
                 <span style={{ fontSize: "22px" }}>{guide.thumbEmoji}</span>
               </div>
-              {/* Text */}
               <div className="min-w-0 flex-1">
                 <p className="truncate text-[9px] font-bold" style={{ color: "#1F5A3D" }}>{guide.category}</p>
                 <p className="mt-0.5 line-clamp-2 font-bold leading-snug" style={{ fontSize: "11px", color: "#1A2B1E" }}>{guide.title}</p>
                 <p className="mt-0.5 truncate text-[9px]" style={{ color: "#8A9A8C" }}>{guide.desc}</p>
               </div>
-              {/* Arrow */}
-              <span
-                className="shrink-0 text-[11px] font-bold transition-colors group-hover:text-[#1F5A3D]"
-                style={{ color: "#C4CEC6" }}
-              >
-                →
-              </span>
+              <span className="shrink-0 text-[11px] font-bold transition-colors group-hover:text-[#1F5A3D]" style={{ color: "#C4CEC6" }}>→</span>
             </Link>
           ))}
         </div>
       </section>
 
-      {/* ─── 5. 신뢰 요소 ─── */}
-      <section className="mx-auto max-w-[1180px] px-4 pb-10 pt-5 md:px-5 md:pb-14 md:pt-7">
-        <div className="grid grid-cols-2 gap-2.5 md:grid-cols-4 md:gap-3">
-          {[
-            { icon: "📋", title: "객관적 비교 데이터", desc: "영양성분 기준으로 정확하게 비교" },
-            { icon: "🔄", title: "최신 정보 업데이트", desc: "신제품·정보를 빠르게 반영" },
-            { icon: "⚖️", title: "브랜드 비교", desc: "여러 브랜드를 한눈에 확인" },
-            { icon: "🗂️", title: "목적별 추천", desc: "운동·다이어트·아침대용 목적별" },
-          ].map((item) => (
-            <div
-              key={item.title}
-              className="flex items-center gap-2.5 rounded-[14px] border p-3"
-              style={{ background: "#FFFDF7", borderColor: "#E4D9CC", boxShadow: "0 1px 4px rgba(60,45,30,0.06)" }}
-            >
-              <div
-                className="flex h-8 w-8 shrink-0 items-center justify-center rounded-[10px]"
-                style={{ background: "#E4EDEA" }}
-              >
-                <span style={{ fontSize: "16px" }}>{item.icon}</span>
+      {/* ─── 6. 플랫폼 특징 ─── */}
+      <section className="mx-auto max-w-[1180px] px-4 pb-12 pt-5 md:px-5 md:pb-16 md:pt-6">
+        <div
+          className="rounded-[20px] border p-5 md:p-6"
+          style={{ background: "#FFFDF7", borderColor: "#E4D9CC", boxShadow: "0 2px 8px rgba(60,45,30,0.07)" }}
+        >
+          <p className="mb-4 text-center text-[12px] font-bold" style={{ color: "#9AA39C", letterSpacing: "0.04em" }}>
+            ProteinLab이 다른 이유
+          </p>
+          <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
+            {[
+              { icon: "📊", title: "성분 기반 비교", desc: "단백질·당류·칼로리 데이터로 객관적 비교" },
+              { icon: "🏅", title: "등급·랭킹 시스템", desc: "밀도·다이어트·퍼포먼스 기준 자체 평가" },
+              { icon: "🎯", title: "목적별 추천", desc: "운동·다이어트·아침대용 등 목적에 맞게" },
+              { icon: "🔄", title: "최신 정보 업데이트", desc: "신제품 출시·영양성분 변경 빠르게 반영" },
+            ].map((item) => (
+              <div key={item.title} className="flex flex-col items-center gap-2 text-center">
+                <div
+                  className="flex h-10 w-10 items-center justify-center rounded-[12px]"
+                  style={{ background: "#E4EDEA" }}
+                >
+                  <span style={{ fontSize: "18px" }}>{item.icon}</span>
+                </div>
+                <p className="font-bold leading-tight" style={{ fontSize: "12px", color: "#1A2B1E" }}>{item.title}</p>
+                <p className="leading-snug" style={{ fontSize: "10px", color: "#9AA39C" }}>{item.desc}</p>
               </div>
-              <div className="min-w-0">
-                <p className="font-bold leading-tight" style={{ fontSize: "11px", color: "#1A2B1E" }}>{item.title}</p>
-                <p className="mt-0.5 leading-tight" style={{ fontSize: "10px", color: "#9AA39C" }}>{item.desc}</p>
-              </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </section>
 
