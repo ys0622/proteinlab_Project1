@@ -518,37 +518,31 @@ export default async function ProductDetailPage({ params }: PageProps) {
       />
       <Header />
 
-      <section
-        className="w-full"
-        style={{ background: "#FBF8F0" }}
-      >
+      <section className="w-full bg-white">
         <div className="mx-auto max-w-[1200px] px-4 py-5 md:px-6 md:py-7">
           <div className="flex items-center justify-between">
             <BackButton />
             <AdminQuickEdit slug={slug} />
           </div>
 
-          <div className="mt-5 grid grid-cols-1 items-start gap-5 lg:grid-cols-[300px_1fr] lg:gap-6">
-            {/* Left: Image card */}
+          <div className="mt-4 grid grid-cols-1 items-start gap-4 lg:grid-cols-[220px_1fr] lg:gap-5">
+            {/* Left: Image — white bg, compact */}
             <div
-              className="flex items-center justify-center overflow-hidden border"
+              className="flex items-center justify-center rounded-[16px] border"
               style={{
-                background: "#FFFFFF",
-                borderRadius: "20px",
-                borderColor: "#E6DDCC",
-                boxShadow: "0 4px 16px rgba(31,90,61,0.07)",
-                padding: "20px",
-                height: "260px",
+                backgroundColor: "#FFFFFF",
+                borderColor: "#E8E4DC",
+                height: "220px",
+                padding: "16px",
               }}
             >
               {productImageUrl ? (
                 <Image
                   src={productImageUrl}
                   alt={`${product.brand} ${product.name}`}
-                  width={200}
-                  height={220}
+                  width={160}
+                  height={188}
                   className="h-full w-auto max-w-full object-contain"
-                  style={{ filter: "drop-shadow(0 6px 14px rgba(31,90,61,0.10))" }}
                   unoptimized
                   priority
                 />
@@ -561,8 +555,8 @@ export default async function ProductDetailPage({ params }: PageProps) {
 
             {/* Right: Info card */}
             <div
-              className="flex flex-col gap-4 rounded-[20px] border bg-white p-5 md:p-6"
-              style={{ borderColor: "#E6DDCC", boxShadow: "0 4px 16px rgba(31,90,61,0.07)" }}
+              className="flex flex-col gap-4 rounded-[16px] border bg-white p-4 md:p-5"
+              style={{ borderColor: "#E8E4DC" }}
             >
               {/* Breadcrumb + title */}
               <div>
