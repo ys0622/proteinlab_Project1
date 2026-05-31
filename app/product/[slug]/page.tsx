@@ -528,46 +528,32 @@ export default async function ProductDetailPage({ params }: PageProps) {
             <AdminQuickEdit slug={slug} />
           </div>
 
-          <div className="mt-5 grid grid-cols-1 gap-5 lg:grid-cols-[36%_1fr] lg:gap-6">
-            {/* Left: Image card — background must be white */}
+          <div className="mt-5 grid grid-cols-1 items-start gap-5 lg:grid-cols-[300px_1fr] lg:gap-6">
+            {/* Left: Image card */}
             <div
-              className="relative flex items-center justify-center overflow-hidden border"
+              className="flex items-center justify-center overflow-hidden border"
               style={{
                 background: "#FFFFFF",
-                borderRadius: "24px",
+                borderRadius: "20px",
                 borderColor: "#E6DDCC",
-                boxShadow: "0 6px 20px rgba(31,90,61,0.06)",
-                padding: "24px",
-                minHeight: "200px",
+                boxShadow: "0 4px 16px rgba(31,90,61,0.07)",
+                padding: "20px",
+                height: "260px",
               }}
             >
               {productImageUrl ? (
-                isDrink ? (
-                  <Image
-                    src={productImageUrl}
-                    alt={`${product.brand} ${product.name}`}
-                    width={200}
-                    height={260}
-                    className="h-[150px] w-auto max-w-none object-contain sm:h-[190px] lg:h-[240px]"
-                    style={{ filter: "drop-shadow(0 8px 18px rgba(31,90,61,0.12))" }}
-                    unoptimized
-                  />
-                ) : (
-                  <Image
-                    src={productImageUrl}
-                    alt={`${product.brand} ${product.name}`}
-                    fill
-                    className="object-contain p-5 sm:p-6"
-                    style={{ filter: "drop-shadow(0 8px 18px rgba(31,90,61,0.10))" }}
-                    sizes="(max-width: 640px) 90vw, (max-width: 1024px) 50vw, 380px"
-                    unoptimized
-                  />
-                )
+                <Image
+                  src={productImageUrl}
+                  alt={`${product.brand} ${product.name}`}
+                  width={200}
+                  height={220}
+                  className="h-full w-auto max-w-full object-contain"
+                  style={{ filter: "drop-shadow(0 6px 14px rgba(31,90,61,0.10))" }}
+                  unoptimized
+                  priority
+                />
               ) : (
-                <div
-                  className="flex h-full w-full items-center justify-center text-sm"
-                  style={{ color: "#8A938B" }}
-                >
+                <div className="flex h-full w-full items-center justify-center text-sm" style={{ color: "#8A938B" }}>
                   이미지 준비 중
                 </div>
               )}
@@ -575,8 +561,8 @@ export default async function ProductDetailPage({ params }: PageProps) {
 
             {/* Right: Info card */}
             <div
-              className="flex flex-col gap-4 rounded-[32px] border bg-white p-5 md:p-6"
-              style={{ borderColor: "#E6DDCC", boxShadow: "0 10px 30px rgba(31,90,61,0.06)" }}
+              className="flex flex-col gap-4 rounded-[20px] border bg-white p-5 md:p-6"
+              style={{ borderColor: "#E6DDCC", boxShadow: "0 4px 16px rgba(31,90,61,0.07)" }}
             >
               {/* Breadcrumb + title */}
               <div>
