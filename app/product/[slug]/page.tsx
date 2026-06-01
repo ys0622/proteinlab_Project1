@@ -527,37 +527,59 @@ export default async function ProductDetailPage({ params }: PageProps) {
 
           {/*
             레이아웃:
-            - 모바일: 이미지(가로 전체, 200px 고정 높이) → 정보 카드
-            - 데스크톱: 좌 20% 이미지 컬럼(세로 직사각형) | 우 80% 정보 카드 (나란히)
+            - 바(가로형 이미지): 상단 가로 이미지 박스 → 하단 정보 카드 (모바일·데스크톱 동일)
+            - 음료·요거트·쉐이크(세로형 이미지): 모바일=세로 스택 / 데스크톱=좌 20% 세로 이미지 | 우 80% 정보
           */}
-          <div className="mt-4 flex flex-col gap-4 lg:flex-row lg:items-stretch lg:gap-4">
+          <div className={`mt-4 flex gap-4 ${isBar ? "flex-col" : "flex-col lg:flex-row lg:items-stretch"}`}>
 
-            {/* ── 이미지 컬럼 (모바일: 가로 전체 200px, 데스크톱: 20% 세로형) ── */}
-            <div
-              className="flex items-center justify-center rounded-[16px] border lg:w-[20%] lg:shrink-0"
-              style={{ backgroundColor: "#FFFFFF", borderColor: "#E8E4DC" }}
-            >
-              {/* 모바일: 고정 높이 / 데스크톱: 최소 380px, 내용에 따라 늘어남 */}
-              <div className="flex h-[200px] w-full items-center justify-center p-5 lg:h-full lg:min-h-[380px] lg:p-6">
+            {/* ── 이미지 영역 ── */}
+            {isBar ? (
+              /* 바: 가로형 — 전체 너비, 낮은 높이로 가로 이미지에 최적화 */
+              <div
+                className="flex w-full items-center justify-center rounded-[16px] border"
+                style={{ backgroundColor: "#FFFFFF", borderColor: "#E8E4DC", height: "160px", padding: "16px" }}
+              >
                 {productImageUrl ? (
                   <Image
                     src={productImageUrl}
                     alt={`${product.brand} ${product.name}`}
-                    width={220}
-                    height={320}
-                    className="h-full w-auto max-h-full max-w-full object-contain"
+                    width={420}
+                    height={128}
+                    className="max-h-full w-auto max-w-full object-contain"
                     unoptimized
                     priority
                   />
                 ) : (
-                  <div className="flex h-full w-full items-center justify-center text-[12px]" style={{ color: "#8A938B" }}>
-                    이미지 준비 중
-                  </div>
+                  <div className="text-[12px]" style={{ color: "#8A938B" }}>이미지 준비 중</div>
                 )}
               </div>
-            </div>
+            ) : (
+              /* 음료·요거트·쉐이크: 세로형 — 모바일 200px, 데스크톱 좌 20% 세로 직사각형 */
+              <div
+                className="flex items-center justify-center rounded-[16px] border lg:w-[20%] lg:shrink-0"
+                style={{ backgroundColor: "#FFFFFF", borderColor: "#E8E4DC" }}
+              >
+                <div className="flex h-[200px] w-full items-center justify-center p-5 lg:h-full lg:min-h-[380px] lg:p-6">
+                  {productImageUrl ? (
+                    <Image
+                      src={productImageUrl}
+                      alt={`${product.brand} ${product.name}`}
+                      width={220}
+                      height={320}
+                      className="h-full w-auto max-h-full max-w-full object-contain"
+                      unoptimized
+                      priority
+                    />
+                  ) : (
+                    <div className="flex h-full w-full items-center justify-center text-[12px]" style={{ color: "#8A938B" }}>
+                      이미지 준비 중
+                    </div>
+                  )}
+                </div>
+              </div>
+            )}
 
-            {/* ── 정보 카드 (데스크톱: 80%) ── */}
+            {/* ── 정보 카드 ── */}
             <div
               className="flex flex-1 flex-col gap-3 rounded-[16px] border bg-white p-4 md:p-5"
               style={{ borderColor: "#E8E4DC" }}
