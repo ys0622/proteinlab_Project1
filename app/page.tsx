@@ -66,12 +66,18 @@ const CATEGORY_CARDS = [
 ] as const;
 
 const GUIDE_CARDS = [
-  { category: "마켓 인사이트", title: "2026 프로틴 음료 트렌드", desc: "단백질 음료 시장 흐름과 신제품 분석", href: "/guides/market-insights/protein-drink-trend-2026", thumbImg: "https://images.unsplash.com/photo-1593095948071-474c5cc2989d?w=600&h=320&fit=crop&crop=center&auto=format", thumbBg: "linear-gradient(135deg, #B8DEC8 0%, #8FC4A8 100%)", thumbEmoji: "📈" },
-  { category: "비교 가이드", title: "셀렉스 vs 하이뮨", desc: "고단백 음료 브랜드 스펙 직접 비교", href: "/guides/product-selection-comparison/selex-vs-himune", thumbImg: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&h=320&fit=crop&crop=center&auto=format", thumbBg: "linear-gradient(135deg, #EED4A8 0%, #DEB87E 100%)", thumbEmoji: "⚖️" },
-  { category: "추천", title: "편의점 단백질 음료 BEST 8", desc: "편의점에서 살 수 있는 고단백 제품 정리", href: "/guides/product-selection-comparison/convenience-store-protein-guide", thumbImg: "https://images.unsplash.com/photo-1604719312566-8912e9c8a213?w=600&h=320&fit=crop&crop=center&auto=format", thumbBg: "linear-gradient(135deg, #A8CCC4 0%, #80B0A8 100%)", thumbEmoji: "🏪" },
-  { category: "섭취 전략", title: "운동 전후 단백질 섭취 가이드", desc: "시간대별 섭취 전략과 추천 제품", href: "/guides/intake-strategy-health/post-workout-protein", thumbImg: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=600&h=320&fit=crop&crop=center&auto=format", thumbBg: "linear-gradient(135deg, #C4D8CC 0%, #9CBCB0 100%)", thumbEmoji: "💪" },
-  { category: "기본 지식", title: "하루 단백질 필요량", desc: "체중과 목적에 따른 단백질 권장량 계산", href: "/guides/basics/daily-requirement", thumbImg: "https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=600&h=320&fit=crop&crop=center&auto=format", thumbBg: "linear-gradient(135deg, #D8CDB8 0%, #C0AF98 100%)", thumbEmoji: "📚" },
-  { category: "제품 선택", title: "단백질 음료 선택 가이드", desc: "성분 기준으로 내게 맞는 음료 고르는 법", href: "/guides/product-selection-comparison/protein-drink-guide", thumbImg: "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=600&h=320&fit=crop&crop=center&auto=format", thumbBg: "linear-gradient(135deg, #C8DDD4 0%, #A0C4B8 100%)", thumbEmoji: "🎯" },
+  // 트렌드 → 단백질 음료 여러 병 나열된 사진
+  { category: "마켓 인사이트", title: "2026 프로틴 음료 트렌드", desc: "단백질 음료 시장 흐름과 신제품 분석", href: "/guides/market-insights/protein-drink-trend-2026", thumbImg: "https://images.unsplash.com/photo-1559181567-c3190ca9959b?w=600&h=320&fit=crop&crop=center&auto=format", thumbBg: "linear-gradient(135deg, #B8DEC8 0%, #8FC4A8 100%)", thumbEmoji: "📈" },
+  // 브랜드 비교 → 단백질 쉐이크/보충제 제품들
+  { category: "비교 가이드", title: "셀렉스 vs 하이뮨", desc: "고단백 음료 브랜드 스펙 직접 비교", href: "/guides/product-selection-comparison/selex-vs-himune", thumbImg: "https://images.unsplash.com/photo-1579722820308-d74e571900a9?w=600&h=320&fit=crop&crop=center&auto=format", thumbBg: "linear-gradient(135deg, #EED4A8 0%, #DEB87E 100%)", thumbEmoji: "⚖️" },
+  // 편의점 → 냉장 음료 진열대
+  { category: "추천", title: "편의점 단백질 음료 BEST 8", desc: "편의점에서 살 수 있는 고단백 제품 정리", href: "/guides/product-selection-comparison/convenience-store-protein-guide", thumbImg: "https://images.unsplash.com/photo-1534723452862-4c874986ebdc?w=600&h=320&fit=crop&crop=center&auto=format", thumbBg: "linear-gradient(135deg, #A8CCC4 0%, #80B0A8 100%)", thumbEmoji: "🏪" },
+  // 운동 전후 → 덤벨 + 운동하는 사람
+  { category: "섭취 전략", title: "운동 전후 단백질 섭취 가이드", desc: "시간대별 섭취 전략과 추천 제품", href: "/guides/intake-strategy-health/post-workout-protein", thumbImg: "https://images.unsplash.com/photo-1517963628607-235ccdd5476c?w=600&h=320&fit=crop&crop=center&auto=format", thumbBg: "linear-gradient(135deg, #C4D8CC 0%, #9CBCB0 100%)", thumbEmoji: "💪" },
+  // 하루 필요량 → 균형 잡힌 건강 식단
+  { category: "기본 지식", title: "하루 단백질 필요량", desc: "체중과 목적에 따른 단백질 권장량 계산", href: "/guides/basics/daily-requirement", thumbImg: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=600&h=320&fit=crop&crop=center&auto=format", thumbBg: "linear-gradient(135deg, #D8CDB8 0%, #C0AF98 100%)", thumbEmoji: "📚" },
+  // 선택 가이드 → 단백질 파우더 스쿱
+  { category: "제품 선택", title: "단백질 음료 선택 가이드", desc: "성분 기준으로 내게 맞는 음료 고르는 법", href: "/guides/product-selection-comparison/protein-drink-guide", thumbImg: "https://images.unsplash.com/photo-1593095948071-474c5cc2989d?w=600&h=320&fit=crop&crop=center&auto=format", thumbBg: "linear-gradient(135deg, #C8DDD4 0%, #A0C4B8 100%)", thumbEmoji: "🎯" },
 ];
 
 function toCarouselProduct(p: ProductDetailProps): CarouselProduct {

@@ -16,7 +16,7 @@ export default function GuideThumbImage({ src, alt, title, desc, fallbackBg, fal
 
   return (
     /* 사진이 카드 전체를 채우고, 하단에 텍스트 오버레이 */
-    <div className="relative flex flex-col overflow-hidden rounded-[16px]" style={{ minHeight: "160px" }}>
+    <div className="relative flex flex-col overflow-hidden rounded-[16px]" style={{ minHeight: "180px" }}>
       {/* 배경: 사진 or 그라디언트 */}
       {!failed ? (
         // eslint-disable-next-line @next/next/no-img-element
@@ -42,11 +42,11 @@ export default function GuideThumbImage({ src, alt, title, desc, fallbackBg, fal
 
       {/* 하단 텍스트 오버레이 */}
       <div
-        className="absolute bottom-0 left-0 right-0 z-10 p-3"
-        style={{ background: "linear-gradient(to top, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0.3) 60%, transparent 100%)" }}
+        className="absolute bottom-0 left-0 right-0 z-10 p-3.5"
+        style={{ background: "linear-gradient(to top, rgba(0,0,0,0.80) 0%, rgba(0,0,0,0.35) 65%, transparent 100%)" }}
       >
-        <p className="line-clamp-2 font-bold leading-snug text-white" style={{ fontSize: "13px" }}>{title}</p>
-        <p className="mt-0.5 line-clamp-1 text-white/70" style={{ fontSize: "10px" }}>{desc}</p>
+        <p className="line-clamp-2 font-bold leading-snug text-white" style={{ fontSize: "15px" }}>{title}</p>
+        <p className="mt-1 line-clamp-1 text-white/75" style={{ fontSize: "12px" }}>{desc}</p>
       </div>
     </div>
   );
