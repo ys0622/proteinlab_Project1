@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
@@ -61,16 +62,16 @@ const CATEGORY_CARDS = [
   { label: "단백질 음료", sub: "RTD 프로틴 드링크", emoji: "🥤", color: "#D4EDDF", href: "/drink", countKey: "drink" as const },
   { label: "단백질 바", sub: "프로틴 바·간식", emoji: "🍫", color: "#F5E6CE", href: "/bars", countKey: "bar" as const },
   { label: "단백질 요거트", sub: "그릭 요거트 포함", emoji: "🥛", color: "#F0EBE0", href: "/yogurt", countKey: "yogurt" as const },
-  { label: "단백질 쉐이크", sub: "파우치·분말형", emoji: "🧃", color: "#DDE9E2", href: "/shake", countKey: "shake" as const },
+  { label: "단백질 쉐이크", sub: "파우치형 (분말 제외)", emoji: "🧃", color: "#DDE9E2", href: "/shake", countKey: "shake" as const },
 ] as const;
 
 const GUIDE_CARDS = [
-  { category: "마켓 인사이트", title: "2026 프로틴 음료 트렌드", desc: "단백질 음료 시장 흐름과 신제품 분석", href: "/guides/market-insights/protein-drink-trend-2026", thumbBg: "linear-gradient(135deg, #B8DEC8 0%, #8FC4A8 100%)", thumbEmoji: "📈" },
-  { category: "비교 가이드", title: "셀렉스 vs 하이뮨", desc: "고단백 음료 브랜드 스펙 직접 비교", href: "/guides/product-selection-comparison/selex-vs-himune", thumbBg: "linear-gradient(135deg, #EED4A8 0%, #DEB87E 100%)", thumbEmoji: "⚖️" },
-  { category: "추천", title: "편의점 단백질 음료 BEST 8", desc: "편의점에서 살 수 있는 고단백 제품 정리", href: "/guides/product-selection-comparison/convenience-store-protein-guide", thumbBg: "linear-gradient(135deg, #A8CCC4 0%, #80B0A8 100%)", thumbEmoji: "🏪" },
-  { category: "섭취 전략", title: "운동 전후 단백질 섭취 가이드", desc: "시간대별 섭취 전략과 추천 제품", href: "/guides/intake-strategy-health/post-workout-protein", thumbBg: "linear-gradient(135deg, #C4D8CC 0%, #9CBCB0 100%)", thumbEmoji: "💪" },
-  { category: "기본 지식", title: "하루 단백질 필요량", desc: "체중과 목적에 따른 단백질 권장량 계산", href: "/guides/basics/daily-requirement", thumbBg: "linear-gradient(135deg, #D8CDB8 0%, #C0AF98 100%)", thumbEmoji: "📚" },
-  { category: "제품 선택", title: "단백질 음료 선택 가이드", desc: "성분 기준으로 내게 맞는 음료 고르는 법", href: "/guides/product-selection-comparison/protein-drink-guide", thumbBg: "linear-gradient(135deg, #C8DDD4 0%, #A0C4B8 100%)", thumbEmoji: "🎯" },
+  { category: "마켓 인사이트", title: "2026 프로틴 음료 트렌드", desc: "단백질 음료 시장 흐름과 신제품 분석", href: "/guides/market-insights/protein-drink-trend-2026", thumbImg: "/guide-thumbnails/trend-2026.jpg", thumbBg: "linear-gradient(135deg, #B8DEC8 0%, #8FC4A8 100%)", thumbEmoji: "📈" },
+  { category: "비교 가이드", title: "셀렉스 vs 하이뮨", desc: "고단백 음료 브랜드 스펙 직접 비교", href: "/guides/product-selection-comparison/selex-vs-himune", thumbImg: "/guide-thumbnails/brand-compare.jpg", thumbBg: "linear-gradient(135deg, #EED4A8 0%, #DEB87E 100%)", thumbEmoji: "⚖️" },
+  { category: "추천", title: "편의점 단백질 음료 BEST 8", desc: "편의점에서 살 수 있는 고단백 제품 정리", href: "/guides/product-selection-comparison/convenience-store-protein-guide", thumbImg: "/guide-thumbnails/convenience-store.jpg", thumbBg: "linear-gradient(135deg, #A8CCC4 0%, #80B0A8 100%)", thumbEmoji: "🏪" },
+  { category: "섭취 전략", title: "운동 전후 단백질 섭취 가이드", desc: "시간대별 섭취 전략과 추천 제품", href: "/guides/intake-strategy-health/post-workout-protein", thumbImg: "/guide-thumbnails/post-workout.jpg", thumbBg: "linear-gradient(135deg, #C4D8CC 0%, #9CBCB0 100%)", thumbEmoji: "💪" },
+  { category: "기본 지식", title: "하루 단백질 필요량", desc: "체중과 목적에 따른 단백질 권장량 계산", href: "/guides/basics/daily-requirement", thumbImg: "/guide-thumbnails/daily-protein.jpg", thumbBg: "linear-gradient(135deg, #D8CDB8 0%, #C0AF98 100%)", thumbEmoji: "📚" },
+  { category: "제품 선택", title: "단백질 음료 선택 가이드", desc: "성분 기준으로 내게 맞는 음료 고르는 법", href: "/guides/product-selection-comparison/protein-drink-guide", thumbImg: "/guide-thumbnails/selection-guide.jpg", thumbBg: "linear-gradient(135deg, #C8DDD4 0%, #A0C4B8 100%)", thumbEmoji: "🎯" },
 ];
 
 function toCarouselProduct(p: ProductDetailProps): CarouselProduct {
@@ -176,7 +177,7 @@ export default async function Home() {
       {/* ─── 2. 카테고리별 비교 ─── */}
       <section className="mx-auto max-w-[1180px] px-4 pt-4 md:px-5 md:pt-5">
         <div className="mb-3 flex items-center justify-between">
-          <h2 className="font-extrabold" style={{ fontSize: "clamp(16px, 2vw, 20px)", color: "#1A2B1E", letterSpacing: "-0.02em" }}>
+          <h2 className="font-extrabold" style={{ fontSize: "clamp(19px, 2.5vw, 24px)", color: "#1A2B1E", letterSpacing: "-0.02em" }}>
             카테고리별 비교
           </h2>
         </div>
@@ -194,8 +195,8 @@ export default async function Home() {
                 <span style={{ fontSize: "24px", lineHeight: 1 }}>{cat.emoji}</span>
               </div>
               <div className="min-w-0 flex-1">
-                <p className="truncate font-extrabold" style={{ fontSize: "14px", color: "#1A2B1E" }}>{cat.label}</p>
-                <p className="truncate" style={{ fontSize: "11px", color: "#9AA39C", marginTop: "2px" }}>{cat.sub} · {categoryCounts[cat.countKey]}종</p>
+                <p className="truncate font-extrabold" style={{ fontSize: "16px", color: "#1A2B1E" }}>{cat.label}</p>
+                <p className="truncate" style={{ fontSize: "12px", color: "#9AA39C", marginTop: "2px" }}>{cat.sub} · {categoryCounts[cat.countKey]}종</p>
               </div>
               <span className="shrink-0 text-[14px] font-bold transition-colors group-hover:text-[#1F5A3D]" style={{ color: "#D0C8BE" }}>→</span>
             </HomeTrackedLink>
@@ -232,15 +233,22 @@ export default async function Home() {
             >
               {/* Thumbnail */}
               <div
-                className="relative flex items-center justify-center"
-                style={{ background: guide.thumbBg, height: "100px", flexShrink: 0 }}
+                className="relative overflow-hidden"
+                style={{ height: "100px", flexShrink: 0 }}
               >
-                <span style={{ fontSize: "42px", lineHeight: 1, filter: "drop-shadow(0 4px 8px rgba(0,0,0,0.12))" }}>
-                  {guide.thumbEmoji}
-                </span>
+                <Image
+                  src={guide.thumbImg}
+                  alt={guide.title}
+                  fill
+                  className="object-cover transition-transform duration-300 group-hover:scale-105"
+                  unoptimized
+                  onError={undefined}
+                />
+                {/* fallback gradient shown behind image */}
+                <div className="absolute inset-0 -z-10" style={{ background: guide.thumbBg }} />
                 <span
                   className="absolute left-2.5 top-2.5 rounded-full px-2 py-0.5 text-[10px] font-bold"
-                  style={{ background: "rgba(255,255,255,0.82)", color: "#1F5A3D", backdropFilter: "blur(4px)" }}
+                  style={{ background: "rgba(255,255,255,0.88)", color: "#1F5A3D", backdropFilter: "blur(4px)" }}
                 >
                   {guide.category}
                 </span>
