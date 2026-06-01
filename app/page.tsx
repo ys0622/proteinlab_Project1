@@ -66,12 +66,12 @@ const CATEGORY_CARDS = [
 ] as const;
 
 const GUIDE_CARDS = [
-  // 트렌드: 활동적인 피트니스 라이프스타일 — 트렌드·시장 흐름 연상
-  { category: "마켓 인사이트", title: "2026 프로틴 음료 트렌드", desc: "단백질 음료 시장 흐름과 신제품 분석", href: "/guides/market-insights/protein-drink-trend-2026", thumbImg: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&h=320&fit=crop&crop=top&auto=format", thumbBg: "linear-gradient(135deg, #B8DEC8 0%, #8FC4A8 100%)", thumbEmoji: "📈" },
+  // 트렌드: 다양한 단백질 음료·보충제 제품들이 모여있는 이미지
+  { category: "마켓 인사이트", title: "2026 프로틴 음료 트렌드", desc: "단백질 음료 시장 흐름과 신제품 분석", href: "/guides/market-insights/protein-drink-trend-2026", thumbImg: "https://images.unsplash.com/photo-1616952733958-29c97e83d073?w=600&h=320&fit=crop&crop=center&auto=format", thumbBg: "linear-gradient(135deg, #B8DEC8 0%, #8FC4A8 100%)", thumbEmoji: "📈" },
   // 비교: 단백질 파우더 스쿱 — 성분·스펙 비교 이미지
   { category: "비교 가이드", title: "셀렉스 vs 하이뮨", desc: "고단백 음료 브랜드 스펙 직접 비교", href: "/guides/product-selection-comparison/selex-vs-himune", thumbImg: "https://images.unsplash.com/photo-1579722820308-d74e571900a9?w=600&h=320&fit=crop&crop=center&auto=format", thumbBg: "linear-gradient(135deg, #EED4A8 0%, #DEB87E 100%)", thumbEmoji: "⚖️" },
-  // 편의점: 음료 캔·병 진열 — 다양한 음료 선택지 연상
-  { category: "추천", title: "편의점 단백질 음료 BEST 8", desc: "편의점에서 살 수 있는 고단백 제품 정리", href: "/guides/product-selection-comparison/convenience-store-protein-guide", thumbImg: "https://images.unsplash.com/photo-1622484211686-c58e7ec0bfb8?w=600&h=320&fit=crop&crop=center&auto=format", thumbBg: "linear-gradient(135deg, #A8CCC4 0%, #80B0A8 100%)", thumbEmoji: "🏪" },
+  // 편의점: 편의점 냉장 음료 매대 — 편의점에서 음료 고르는 장면
+  { category: "추천", title: "편의점 단백질 음료 BEST 8", desc: "편의점에서 살 수 있는 고단백 제품 정리", href: "/guides/product-selection-comparison/convenience-store-protein-guide", thumbImg: "https://images.unsplash.com/photo-1578916171728-46686eac8d58?w=600&h=320&fit=crop&crop=center&auto=format", thumbBg: "linear-gradient(135deg, #A8CCC4 0%, #80B0A8 100%)", thumbEmoji: "🏪" },
   // 운동 전후: 헬스장 덤벨 — 운동 전후 보충 이미지
   { category: "섭취 전략", title: "운동 전후 단백질 섭취 가이드", desc: "시간대별 섭취 전략과 추천 제품", href: "/guides/intake-strategy-health/post-workout-protein", thumbImg: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=600&h=320&fit=crop&crop=center&auto=format", thumbBg: "linear-gradient(135deg, #C4D8CC 0%, #9CBCB0 100%)", thumbEmoji: "💪" },
   // 하루 필요량: 건강한 식단 접시 — 균형 영양 연상
