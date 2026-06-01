@@ -173,25 +173,31 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* ─── 2. 카테고리별 비교 (compact horizontal) ─── */}
-      <section className="mx-auto max-w-[1180px] px-4 pt-3 md:px-5 md:pt-4">
-        <div className="grid grid-cols-4 gap-2 md:gap-2.5">
+      {/* ─── 2. 카테고리별 비교 ─── */}
+      <section className="mx-auto max-w-[1180px] px-4 pt-4 md:px-5 md:pt-5">
+        <div className="mb-3 flex items-center justify-between">
+          <h2 className="font-extrabold" style={{ fontSize: "clamp(16px, 2vw, 20px)", color: "#1A2B1E", letterSpacing: "-0.02em" }}>
+            카테고리별 비교
+          </h2>
+        </div>
+        <div className="grid grid-cols-2 gap-3 md:grid-cols-4 md:gap-3">
           {CATEGORY_CARDS.map((cat) => (
             <HomeTrackedLink
               key={cat.href}
               href={cat.href}
               eventName="home_category_click"
               eventParams={{ category: cat.countKey, destination_url: cat.href }}
-              className="group flex items-center gap-2.5 rounded-[14px] border p-2.5 transition-all duration-150 hover:-translate-y-0.5 hover:border-[#1F5A3D]/30 hover:shadow-[0_6px_18px_rgba(31,90,61,0.10)]"
-              style={{ background: "#FFFDF7", borderColor: "#E4D9CC", boxShadow: "0 1px 4px rgba(60,45,30,0.06)" }}
+              className="group flex items-center gap-3 rounded-[16px] border p-3.5 transition-all duration-150 hover:-translate-y-0.5 hover:border-[#1F5A3D]/30 hover:shadow-[0_8px_24px_rgba(31,90,61,0.12)]"
+              style={{ background: "#FFFDF7", borderColor: "#E4D9CC", boxShadow: "0 2px 8px rgba(60,45,30,0.07)" }}
             >
-              <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-[10px]" style={{ background: cat.color }}>
-                <span style={{ fontSize: "20px", lineHeight: 1 }}>{cat.emoji}</span>
+              <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-[12px]" style={{ background: cat.color }}>
+                <span style={{ fontSize: "24px", lineHeight: 1 }}>{cat.emoji}</span>
               </div>
-              <div className="min-w-0">
-                <p className="truncate font-extrabold leading-tight" style={{ fontSize: "12px", color: "#1A2B1E" }}>{cat.label}</p>
-                <p className="truncate" style={{ fontSize: "9px", color: "#9AA39C" }}>{categoryCounts[cat.countKey]}종</p>
+              <div className="min-w-0 flex-1">
+                <p className="truncate font-extrabold" style={{ fontSize: "14px", color: "#1A2B1E" }}>{cat.label}</p>
+                <p className="truncate" style={{ fontSize: "11px", color: "#9AA39C", marginTop: "2px" }}>{cat.sub} · {categoryCounts[cat.countKey]}종</p>
               </div>
+              <span className="shrink-0 text-[14px] font-bold transition-colors group-hover:text-[#1F5A3D]" style={{ color: "#D0C8BE" }}>→</span>
             </HomeTrackedLink>
           ))}
         </div>
@@ -202,40 +208,40 @@ export default async function Home() {
         <HomePopularCarousel products={carouselProducts} />
       </section>
 
-      {/* ─── 5. 최신 가이드 & 인사이트 ─── */}
+      {/* ─── 5. 가이드 & 인사이트 ─── */}
       <section className="mx-auto max-w-[1180px] px-4 pt-5 md:px-5 md:pt-6">
         <div className="mb-3 flex items-center justify-between">
-          <h2 className="font-extrabold" style={{ fontSize: "clamp(14px, 2vw, 17px)", color: "#1A2B1E", letterSpacing: "-0.02em" }}>
+          <h2 className="font-extrabold" style={{ fontSize: "clamp(16px, 2vw, 20px)", color: "#1A2B1E", letterSpacing: "-0.02em" }}>
             가이드 & 인사이트
           </h2>
           <Link
             href="/guides"
-            className="shrink-0 rounded-full border px-3 py-1 text-[11px] font-bold transition-colors hover:bg-[#E4EDEA]"
+            className="shrink-0 rounded-full border px-3.5 py-1.5 text-[12px] font-bold transition-colors hover:bg-[#E4EDEA]"
             style={{ borderColor: "#C2D4C8", color: "#1F5A3D", background: "#EBF3ED" }}
           >
             전체 보기 →
           </Link>
         </div>
-        <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 md:grid-cols-3">
+        <div className="grid grid-cols-1 gap-2.5 sm:grid-cols-2 md:grid-cols-3">
           {GUIDE_CARDS.map((guide) => (
             <Link
               key={guide.href}
               href={guide.href}
-              className="group flex items-center gap-3 overflow-hidden rounded-[14px] border p-3 transition-all duration-150 hover:-translate-y-0.5 hover:border-[#1F5A3D]/25 hover:shadow-[0_6px_20px_rgba(31,90,61,0.10)]"
-              style={{ background: "#FFFDF7", borderColor: "#E4D9CC", boxShadow: "0 1px 4px rgba(60,45,30,0.06)" }}
+              className="group flex items-center gap-3.5 overflow-hidden rounded-[16px] border p-4 transition-all duration-150 hover:-translate-y-0.5 hover:border-[#1F5A3D]/25 hover:shadow-[0_8px_24px_rgba(31,90,61,0.12)]"
+              style={{ background: "#FFFDF7", borderColor: "#E4D9CC", boxShadow: "0 2px 8px rgba(60,45,30,0.07)" }}
             >
               <div
-                className="flex h-11 w-11 shrink-0 items-center justify-center rounded-[10px]"
+                className="flex h-12 w-12 shrink-0 items-center justify-center rounded-[12px]"
                 style={{ background: guide.thumbBg }}
               >
-                <span style={{ fontSize: "22px" }}>{guide.thumbEmoji}</span>
+                <span style={{ fontSize: "24px" }}>{guide.thumbEmoji}</span>
               </div>
               <div className="min-w-0 flex-1">
-                <p className="truncate text-[9px] font-bold" style={{ color: "#1F5A3D" }}>{guide.category}</p>
-                <p className="mt-0.5 line-clamp-2 font-bold leading-snug" style={{ fontSize: "11px", color: "#1A2B1E" }}>{guide.title}</p>
-                <p className="mt-0.5 truncate text-[9px]" style={{ color: "#8A9A8C" }}>{guide.desc}</p>
+                <p className="text-[11px] font-bold" style={{ color: "#1F5A3D" }}>{guide.category}</p>
+                <p className="mt-0.5 line-clamp-2 font-bold leading-snug" style={{ fontSize: "13px", color: "#1A2B1E" }}>{guide.title}</p>
+                <p className="mt-1 truncate text-[11px]" style={{ color: "#8A9A8C" }}>{guide.desc}</p>
               </div>
-              <span className="shrink-0 text-[11px] font-bold transition-colors group-hover:text-[#1F5A3D]" style={{ color: "#C4CEC6" }}>→</span>
+              <span className="shrink-0 text-[14px] font-bold transition-colors group-hover:text-[#1F5A3D]" style={{ color: "#C4CEC6" }}>→</span>
             </Link>
           ))}
         </div>

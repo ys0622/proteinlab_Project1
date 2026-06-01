@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import type { ProductCardProps } from "../data/productTypes";
 import ProductCard from "./ProductCard";
 
@@ -24,6 +24,21 @@ interface Props {
 
 export default function HomePopularCarousel({ products }: Props) {
   const [tabIdx, setTabIdx] = useState(0);
+  const tabIdxRef = useRef(0);
+
+  useEffect(() => {
+    const id = setInterval(() => {
+      const next = (tabIdxRef.current + 1) % TABS.length;
+      tabIdxRef.current = next;
+      setTabIdx(next);
+    }, 8000);
+    return () => clearInterval(id);
+  }, []);
+
+  const handleTabClick = (idx: number) => {
+    tabIdxRef.current = idx;
+    setTabIdx(idx);
+  };
 
   const curTab = TABS[tabIdx];
   const curProducts = products[curTab.key] ?? [];
@@ -44,7 +59,7 @@ export default function HomePopularCarousel({ products }: Props) {
               <button
                 key={tab.key}
                 type="button"
-                onClick={() => setTabIdx(i)}
+                onClick={() => handleTabClick(i)}
                 className="inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-[11px] font-bold transition-all"
                 style={
                   tabIdx === i
@@ -118,7 +133,7 @@ export default function HomePopularCarousel({ products }: Props) {
           <button
             key={i}
             type="button"
-            onClick={() => setTabIdx(i)}
+            onClick={() => handleTabClick(i)}
             aria-label={`${TABS[i].label} 탭`}
             className="rounded-full transition-all duration-300"
             style={{
