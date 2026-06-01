@@ -525,37 +525,45 @@ export default async function ProductDetailPage({ params }: PageProps) {
             <AdminQuickEdit slug={slug} />
           </div>
 
-          {/* Single unified card: image + all info */}
-          <div
-            className="mt-4 rounded-[16px] border bg-white p-4 md:p-5"
-            style={{ borderColor: "#E8E4DC" }}
-          >
-            {/* Top row: image + title/meta */}
-            <div className="flex gap-3 md:gap-4">
-              {/* Product image — compact left column */}
-              <div
-                className="shrink-0 flex items-center justify-center rounded-[12px] border"
-                style={{ backgroundColor: "#FFFFFF", borderColor: "#E8E4DC", width: "110px", height: "132px", padding: "8px" }}
-              >
+          {/*
+            레이아웃:
+            - 모바일: 이미지(가로 전체, 200px 고정 높이) → 정보 카드
+            - 데스크톱: 좌 20% 이미지 컬럼(세로 직사각형) | 우 80% 정보 카드 (나란히)
+          */}
+          <div className="mt-4 flex flex-col gap-4 lg:flex-row lg:items-stretch lg:gap-4">
+
+            {/* ── 이미지 컬럼 (모바일: 가로 전체 200px, 데스크톱: 20% 세로형) ── */}
+            <div
+              className="flex items-center justify-center rounded-[16px] border lg:w-[20%] lg:shrink-0"
+              style={{ backgroundColor: "#FFFFFF", borderColor: "#E8E4DC" }}
+            >
+              {/* 모바일: 고정 높이 / 데스크톱: 최소 380px, 내용에 따라 늘어남 */}
+              <div className="flex h-[200px] w-full items-center justify-center p-5 lg:h-full lg:min-h-[380px] lg:p-6">
                 {productImageUrl ? (
                   <Image
                     src={productImageUrl}
                     alt={`${product.brand} ${product.name}`}
-                    width={90}
-                    height={116}
-                    className="h-full w-auto max-w-full object-contain"
+                    width={220}
+                    height={320}
+                    className="h-full w-auto max-h-full max-w-full object-contain"
                     unoptimized
                     priority
                   />
                 ) : (
-                  <div className="flex h-full w-full items-center justify-center text-[11px]" style={{ color: "#8A938B" }}>
-                    준비 중
+                  <div className="flex h-full w-full items-center justify-center text-[12px]" style={{ color: "#8A938B" }}>
+                    이미지 준비 중
                   </div>
                 )}
               </div>
+            </div>
 
-              {/* Title + meta */}
-              <div className="flex min-w-0 flex-1 flex-col justify-center">
+            {/* ── 정보 카드 (데스크톱: 80%) ── */}
+            <div
+              className="flex flex-1 flex-col gap-3 rounded-[16px] border bg-white p-4 md:p-5"
+              style={{ borderColor: "#E8E4DC" }}
+            >
+              {/* 브레드크럼 + 제품명 */}
+              <div>
                 <div className="flex flex-wrap items-center gap-1 text-[11px]" style={{ color: "#8A938B" }}>
                   <Link href="/" className="hover:text-[#1F5A3D]">홈</Link>
                   <span>/</span>
@@ -567,7 +575,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
                 </div>
                 <h1
                   className="mt-1.5 line-clamp-2 leading-snug"
-                  style={{ fontSize: "clamp(16px, 3vw, 20px)", fontWeight: 800, color: "#1E2A22", letterSpacing: "-0.02em" }}
+                  style={{ fontSize: "clamp(17px, 2.5vw, 22px)", fontWeight: 800, color: "#1E2A22", letterSpacing: "-0.02em" }}
                 >
                   {product.name}
                 </h1>
@@ -581,7 +589,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
                       return (
                         <span
                           key={label}
-                          className="rounded-full px-2 py-0.5 text-[10px] font-bold"
+                          className="rounded-full px-2.5 py-0.5 text-[11px] font-bold"
                           style={{ background: "#E6F2EC", color: "#1F5A3D" }}
                         >
                           {displayLabel}
@@ -591,112 +599,113 @@ export default async function ProductDetailPage({ params }: PageProps) {
                   </div>
                 )}
               </div>
-            </div>
 
-            {/* Nutrition highlights */}
-            <div className="mt-3 grid grid-cols-3 gap-2">
-              <div
-                className="flex flex-col items-center rounded-[14px] border py-3 text-center"
-                style={{ background: "#F0F6F2", borderColor: "#D6E5DA" }}
-              >
-                <p className="text-[10px] font-bold uppercase tracking-wider" style={{ color: "#1F5A3D" }}>단백질</p>
-                <p className="mt-1 font-extrabold leading-none" style={{ fontSize: "clamp(20px, 4vw, 26px)", color: "#1F5A3D" }}>
-                  {product.proteinPerServing}
-                </p>
-                <p className="text-[10px] font-semibold" style={{ color: "#5F6B61" }}>g</p>
-                <p className="mt-0.5 text-[10px]" style={{ color: "#8A938B" }}>{servingBasisLabel}</p>
-              </div>
-              <div
-                className="flex flex-col items-center rounded-[14px] border py-3 text-center"
-                style={{ background: "#F0F6F2", borderColor: "#D6E5DA" }}
-              >
-                <p className="text-[10px] font-bold uppercase tracking-wider" style={{ color: "#1F5A3D" }}>칼로리</p>
-                {product.calories != null ? (
-                  <>
-                    <p className="mt-1 font-extrabold leading-none" style={{ fontSize: "clamp(20px, 4vw, 26px)", color: "#1E2A22" }}>
-                      {product.calories}
-                    </p>
-                    <p className="text-[10px] font-semibold" style={{ color: "#5F6B61" }}>kcal</p>
-                    <p className="mt-0.5 text-[10px]" style={{ color: "#8A938B" }}>{servingBasisLabel}</p>
-                  </>
-                ) : (
-                  <p className="mt-1 font-extrabold text-[22px] leading-none" style={{ color: "#8A938B" }}>—</p>
-                )}
-              </div>
-              <div
-                className="flex flex-col items-center rounded-[14px] border py-3 text-center"
-                style={{ background: "#F0F6F2", borderColor: "#D6E5DA" }}
-              >
-                <p className="text-[10px] font-bold uppercase tracking-wider" style={{ color: "#1F5A3D" }}>당류</p>
-                {product.sugar != null ? (
-                  <>
-                    <p
-                      className="mt-1 font-extrabold leading-none"
-                      style={{ fontSize: "clamp(20px, 4vw, 26px)", color: product.sugar <= 1 ? "#1B7F5B" : "#1E2A22" }}
-                    >
-                      {product.sugar}
-                    </p>
-                    <p className="text-[10px] font-semibold" style={{ color: "#5F6B61" }}>g</p>
-                    <p className="mt-0.5 text-[10px]" style={{ color: "#8A938B" }}>{servingBasisLabel}</p>
-                  </>
-                ) : (
-                  <p className="mt-1 font-extrabold text-[22px] leading-none" style={{ color: "#8A938B" }}>—</p>
-                )}
-              </div>
-            </div>
-
-            {/* Full metrics grid */}
-            <div className="mt-2 grid grid-cols-4 gap-1.5">
-              {summaryMetrics.map(({ label, value, isCompact }) => (
+              {/* 핵심 영양성분 3종 */}
+              <div className="grid grid-cols-3 gap-2">
                 <div
-                  key={label}
-                  className="flex min-w-0 flex-col justify-center rounded-xl border bg-white px-2 py-1.5 text-left"
-                  style={{ borderColor: "#E6DDCC" }}
+                  className="flex flex-col items-center rounded-[14px] border py-3 text-center"
+                  style={{ background: "#F0F6F2", borderColor: "#D6E5DA" }}
                 >
-                  <span style={{ fontSize: "10px", color: "#8A938B" }}>{label}</span>
-                  <span
-                    style={{
-                      fontSize: isCompact ? "13px" : "14px",
-                      fontWeight: 700,
-                      color: "#1E2A22",
-                      lineHeight: 1.2,
-                    }}
-                  >
-                    {renderSummaryMetricValue(value, isCompact)}
-                  </span>
+                  <p className="text-[10px] font-bold uppercase tracking-wider" style={{ color: "#1F5A3D" }}>단백질</p>
+                  <p className="mt-1 font-extrabold leading-none" style={{ fontSize: "clamp(20px, 3.5vw, 28px)", color: "#1F5A3D" }}>
+                    {product.proteinPerServing}
+                  </p>
+                  <p className="text-[10px] font-semibold" style={{ color: "#5F6B61" }}>g</p>
+                  <p className="mt-0.5 text-[10px]" style={{ color: "#8A938B" }}>{servingBasisLabel}</p>
                 </div>
-              ))}
-            </div>
-
-            {/* 추천 대상 */}
-            {recommendedFor.length > 0 && (
-              <div
-                className="mt-3 rounded-2xl border p-3"
-                style={{ borderColor: "#E6DDCC", background: "#FFFDF7" }}
-              >
-                <p className="mb-1.5 text-[11px] font-semibold uppercase tracking-wider" style={{ color: "#1F5A3D" }}>
-                  추천 대상
-                </p>
-                <ul className="space-y-1">
-                  {recommendedFor.map((rec) => (
-                    <li key={rec} className="flex items-start gap-2 text-[12px]" style={{ color: "#1E2A22" }}>
-                      <span className="mt-0.5 shrink-0 font-bold" style={{ color: "#1F5A3D" }}>✓</span>
-                      <span>{rec}</span>
-                    </li>
-                  ))}
-                </ul>
+                <div
+                  className="flex flex-col items-center rounded-[14px] border py-3 text-center"
+                  style={{ background: "#F0F6F2", borderColor: "#D6E5DA" }}
+                >
+                  <p className="text-[10px] font-bold uppercase tracking-wider" style={{ color: "#1F5A3D" }}>칼로리</p>
+                  {product.calories != null ? (
+                    <>
+                      <p className="mt-1 font-extrabold leading-none" style={{ fontSize: "clamp(20px, 3.5vw, 28px)", color: "#1E2A22" }}>
+                        {product.calories}
+                      </p>
+                      <p className="text-[10px] font-semibold" style={{ color: "#5F6B61" }}>kcal</p>
+                      <p className="mt-0.5 text-[10px]" style={{ color: "#8A938B" }}>{servingBasisLabel}</p>
+                    </>
+                  ) : (
+                    <p className="mt-1 font-extrabold text-[22px] leading-none" style={{ color: "#8A938B" }}>—</p>
+                  )}
+                </div>
+                <div
+                  className="flex flex-col items-center rounded-[14px] border py-3 text-center"
+                  style={{ background: "#F0F6F2", borderColor: "#D6E5DA" }}
+                >
+                  <p className="text-[10px] font-bold uppercase tracking-wider" style={{ color: "#1F5A3D" }}>당류</p>
+                  {product.sugar != null ? (
+                    <>
+                      <p
+                        className="mt-1 font-extrabold leading-none"
+                        style={{ fontSize: "clamp(20px, 3.5vw, 28px)", color: product.sugar <= 1 ? "#1B7F5B" : "#1E2A22" }}
+                      >
+                        {product.sugar}
+                      </p>
+                      <p className="text-[10px] font-semibold" style={{ color: "#5F6B61" }}>g</p>
+                      <p className="mt-0.5 text-[10px]" style={{ color: "#8A938B" }}>{servingBasisLabel}</p>
+                    </>
+                  ) : (
+                    <p className="mt-1 font-extrabold text-[22px] leading-none" style={{ color: "#8A938B" }}>—</p>
+                  )}
+                </div>
               </div>
-            )}
 
-            <div className="mt-3">
-              <ProductDetailPurchaseActions
-                brand={product.brand}
-                coupangHref={resolvedCoupangHref}
-                naverHref={naverHref}
-                officialMallHref={officialMallHref}
-                productName={product.name}
-                slug={product.slug}
-              />
+              {/* 상세 성분 그리드 */}
+              <div className="grid grid-cols-4 gap-1.5">
+                {summaryMetrics.map(({ label, value, isCompact }) => (
+                  <div
+                    key={label}
+                    className="flex min-w-0 flex-col justify-center rounded-xl border bg-white px-2.5 py-2 text-left"
+                    style={{ borderColor: "#E6DDCC" }}
+                  >
+                    <span style={{ fontSize: "10px", color: "#8A938B" }}>{label}</span>
+                    <span
+                      style={{
+                        fontSize: isCompact ? "13px" : "14px",
+                        fontWeight: 700,
+                        color: "#1E2A22",
+                        lineHeight: 1.2,
+                      }}
+                    >
+                      {renderSummaryMetricValue(value, isCompact)}
+                    </span>
+                  </div>
+                ))}
+              </div>
+
+              {/* 추천 대상 */}
+              {recommendedFor.length > 0 && (
+                <div
+                  className="rounded-2xl border p-3"
+                  style={{ borderColor: "#E6DDCC", background: "#FFFDF7" }}
+                >
+                  <p className="mb-1.5 text-[11px] font-semibold uppercase tracking-wider" style={{ color: "#1F5A3D" }}>
+                    추천 대상
+                  </p>
+                  <ul className="space-y-1">
+                    {recommendedFor.map((rec) => (
+                      <li key={rec} className="flex items-start gap-2 text-[12px]" style={{ color: "#1E2A22" }}>
+                        <span className="mt-0.5 shrink-0 font-bold" style={{ color: "#1F5A3D" }}>✓</span>
+                        <span>{rec}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+
+              {/* 구매 버튼 */}
+              <div className="mt-auto">
+                <ProductDetailPurchaseActions
+                  brand={product.brand}
+                  coupangHref={resolvedCoupangHref}
+                  naverHref={naverHref}
+                  officialMallHref={officialMallHref}
+                  productName={product.name}
+                  slug={product.slug}
+                />
+              </div>
             </div>
           </div>
         </div>
