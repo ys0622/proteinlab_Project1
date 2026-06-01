@@ -49,7 +49,7 @@ export default function HomePopularCarousel({ products }: Props) {
       <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
         <h2
           className="font-extrabold"
-          style={{ fontSize: "clamp(15px, 2vw, 18px)", color: "#1A2B1E", letterSpacing: "-0.02em" }}
+          style={{ fontSize: "clamp(19px, 2.5vw, 24px)", color: "#1A2B1E", letterSpacing: "-0.02em" }}
         >
           이번 주 인기 제품
         </h2>

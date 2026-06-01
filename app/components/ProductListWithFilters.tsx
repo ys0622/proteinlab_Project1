@@ -483,9 +483,7 @@ function ProductListWithFiltersInner(props: ProductListWithFiltersInnerProps) {
     <>
       {tabsPlacement === "top" ? categoryTabs : null}
 
-      <div className="mt-2.5 md:hidden" style={{ marginTop: "10px" }}>
-        <QuickCuration productType={productType} />
-      </div>
+      {/* QuickCuration 제거됨 */}
 
       <div
         className="mt-2.5 rounded-xl border border-[var(--border)] bg-[var(--filter-box-bg)]"
@@ -507,7 +505,6 @@ function ProductListWithFiltersInner(props: ProductListWithFiltersInnerProps) {
               onResetFilters={handleResetFilters}
               mobileToolbarSlot={mobileSearchButton}
               drinkBrandOptions={brandOptions}
-              desktopFooterSlot={<QuickCuration productType={productType} variant="inline" />}
             />
           ) : productType === "bar" ? (
             <FilterSection
@@ -517,7 +514,6 @@ function ProductListWithFiltersInner(props: ProductListWithFiltersInnerProps) {
               onResetFilters={handleResetFilters}
               mobileToolbarSlot={mobileSearchButton}
               barBrandOptions={brandOptions}
-              desktopFooterSlot={<QuickCuration productType={productType} variant="inline" />}
             />
           ) : productType === "yogurt" ? (
             <FilterSection
@@ -529,7 +525,6 @@ function ProductListWithFiltersInner(props: ProductListWithFiltersInnerProps) {
               yogurtBrandOptions={brandOptions}
               yogurtTypeOptions={yogurtTypeOptions}
               yogurtFlavorOptions={yogurtFlavorOptions}
-              desktopFooterSlot={<QuickCuration productType={productType} variant="inline" />}
             />
           ) : (
             <FilterSection
@@ -539,7 +534,6 @@ function ProductListWithFiltersInner(props: ProductListWithFiltersInnerProps) {
               onResetFilters={handleResetFilters}
               mobileToolbarSlot={mobileSearchButton}
               shakeBrandOptions={brandOptions}
-              desktopFooterSlot={<QuickCuration productType={productType} variant="inline" />}
             />
           )}
         </div>

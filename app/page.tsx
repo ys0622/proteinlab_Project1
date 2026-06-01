@@ -180,31 +180,86 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* ─── 2. 카테고리별 비교 ─── */}
+      {/* ─── 2. 카테고리 임팩트 카드 ─── */}
       <section className="mx-auto max-w-[1180px] px-4 pt-4 md:px-5 md:pt-5">
-        <div className="mb-3 flex items-center justify-between">
-          <h2 className="font-extrabold" style={{ fontSize: "clamp(19px, 2.5vw, 24px)", color: "#1A2B1E", letterSpacing: "-0.02em" }}>
-            카테고리별 비교
-          </h2>
-        </div>
-        <div className="grid grid-cols-2 gap-3 md:grid-cols-4 md:gap-3">
-          {CATEGORY_CARDS.map((cat) => (
+        <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
+          {([
+            {
+              label: "단백질 음료",
+              sub: "RTD 프로틴 드링크",
+              emoji: "🥤",
+              href: "/drink",
+              countKey: "drink" as const,
+              bg: "linear-gradient(135deg, #1F5A3D 0%, #2E7D52 100%)",
+              textColor: "#ffffff",
+              subColor: "rgba(255,255,255,0.65)",
+              countBg: "rgba(255,255,255,0.15)",
+            },
+            {
+              label: "단백질 바",
+              sub: "프로틴 바·간식",
+              emoji: "🍫",
+              href: "/bars",
+              countKey: "bar" as const,
+              bg: "linear-gradient(135deg, #7A4F2E 0%, #A0693E 100%)",
+              textColor: "#ffffff",
+              subColor: "rgba(255,255,255,0.65)",
+              countBg: "rgba(255,255,255,0.15)",
+            },
+            {
+              label: "단백질 요거트",
+              sub: "그릭 요거트 포함",
+              emoji: "🥛",
+              href: "/yogurt",
+              countKey: "yogurt" as const,
+              bg: "linear-gradient(135deg, #3A5F7A 0%, #4E7D9C 100%)",
+              textColor: "#ffffff",
+              subColor: "rgba(255,255,255,0.65)",
+              countBg: "rgba(255,255,255,0.15)",
+            },
+            {
+              label: "단백질 쉐이크",
+              sub: "파우치형 (분말 제외)",
+              emoji: "🧃",
+              href: "/shake",
+              countKey: "shake" as const,
+              bg: "linear-gradient(135deg, #4A3A6E 0%, #6550A0 100%)",
+              textColor: "#ffffff",
+              subColor: "rgba(255,255,255,0.65)",
+              countBg: "rgba(255,255,255,0.15)",
+            },
+          ] as const).map((cat) => (
             <HomeTrackedLink
               key={cat.href}
               href={cat.href}
               eventName="home_category_click"
               eventParams={{ category: cat.countKey, destination_url: cat.href }}
-              className="group flex items-center gap-3 rounded-[16px] border p-3.5 transition-all duration-150 hover:-translate-y-0.5 hover:border-[#1F5A3D]/30 hover:shadow-[0_8px_24px_rgba(31,90,61,0.12)]"
-              style={{ background: "#FFFDF7", borderColor: "#E4D9CC", boxShadow: "0 2px 8px rgba(60,45,30,0.07)" }}
+              className="group relative flex flex-col justify-between overflow-hidden rounded-[20px] p-4 transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_12px_32px_rgba(0,0,0,0.18)] md:p-5"
+              style={{ background: cat.bg, minHeight: "130px" }}
             >
-              <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-[12px]" style={{ background: cat.color }}>
-                <span style={{ fontSize: "24px", lineHeight: 1 }}>{cat.emoji}</span>
+              {/* 배경 원형 장식 */}
+              <div
+                aria-hidden
+                className="pointer-events-none absolute -right-4 -top-4 rounded-full opacity-20"
+                style={{ width: 90, height: 90, background: "radial-gradient(circle, #fff 0%, transparent 70%)" }}
+              />
+              {/* 이모지 */}
+              <span style={{ fontSize: "36px", lineHeight: 1 }}>{cat.emoji}</span>
+              {/* 하단 텍스트 */}
+              <div>
+                <p className="font-extrabold leading-tight" style={{ fontSize: "clamp(15px, 2vw, 18px)", color: cat.textColor, letterSpacing: "-0.02em" }}>
+                  {cat.label}
+                </p>
+                <div className="mt-1.5 flex items-center justify-between">
+                  <p style={{ fontSize: "11px", color: cat.subColor }}>{cat.sub}</p>
+                  <span
+                    className="rounded-full px-2 py-0.5 text-[10px] font-bold"
+                    style={{ background: cat.countBg, color: cat.textColor }}
+                  >
+                    {categoryCounts[cat.countKey]}종
+                  </span>
+                </div>
               </div>
-              <div className="min-w-0 flex-1">
-                <p className="truncate font-extrabold" style={{ fontSize: "16px", color: "#1A2B1E" }}>{cat.label}</p>
-                <p className="truncate" style={{ fontSize: "12px", color: "#9AA39C", marginTop: "2px" }}>{cat.sub} · {categoryCounts[cat.countKey]}종</p>
-              </div>
-              <span className="shrink-0 text-[14px] font-bold transition-colors group-hover:text-[#1F5A3D]" style={{ color: "#D0C8BE" }}>→</span>
             </HomeTrackedLink>
           ))}
         </div>
@@ -218,7 +273,7 @@ export default async function Home() {
       {/* ─── 5. 가이드 & 인사이트 ─── */}
       <section className="mx-auto max-w-[1180px] px-4 pt-5 md:px-5 md:pt-6">
         <div className="mb-3 flex items-center justify-between">
-          <h2 className="font-extrabold" style={{ fontSize: "clamp(16px, 2vw, 20px)", color: "#1A2B1E", letterSpacing: "-0.02em" }}>
+          <h2 className="font-extrabold" style={{ fontSize: "clamp(19px, 2.5vw, 24px)", color: "#1A2B1E", letterSpacing: "-0.02em" }}>
             가이드 & 인사이트
           </h2>
           <Link
