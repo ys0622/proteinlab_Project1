@@ -66,12 +66,12 @@ const CATEGORY_CARDS = [
 ] as const;
 
 const GUIDE_CARDS = [
-  { category: "마켓 인사이트", title: "2026 프로틴 음료 트렌드", desc: "단백질 음료 시장 흐름과 신제품 분석", href: "/guides/market-insights/protein-drink-trend-2026", thumbImg: "https://images.unsplash.com/photo-1593095948071-474c5cc2989d?w=400&h=200&fit=crop&crop=center", thumbBg: "linear-gradient(135deg, #B8DEC8 0%, #8FC4A8 100%)", thumbEmoji: "📈" },
-  { category: "비교 가이드", title: "셀렉스 vs 하이뮨", desc: "고단백 음료 브랜드 스펙 직접 비교", href: "/guides/product-selection-comparison/selex-vs-himune", thumbImg: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=200&fit=crop&crop=center", thumbBg: "linear-gradient(135deg, #EED4A8 0%, #DEB87E 100%)", thumbEmoji: "⚖️" },
-  { category: "추천", title: "편의점 단백질 음료 BEST 8", desc: "편의점에서 살 수 있는 고단백 제품 정리", href: "/guides/product-selection-comparison/convenience-store-protein-guide", thumbImg: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=200&fit=crop&crop=center", thumbBg: "linear-gradient(135deg, #A8CCC4 0%, #80B0A8 100%)", thumbEmoji: "🏪" },
-  { category: "섭취 전략", title: "운동 전후 단백질 섭취 가이드", desc: "시간대별 섭취 전략과 추천 제품", href: "/guides/intake-strategy-health/post-workout-protein", thumbImg: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=400&h=200&fit=crop&crop=center", thumbBg: "linear-gradient(135deg, #C4D8CC 0%, #9CBCB0 100%)", thumbEmoji: "💪" },
-  { category: "기본 지식", title: "하루 단백질 필요량", desc: "체중과 목적에 따른 단백질 권장량 계산", href: "/guides/basics/daily-requirement", thumbImg: "https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=400&h=200&fit=crop&crop=center", thumbBg: "linear-gradient(135deg, #D8CDB8 0%, #C0AF98 100%)", thumbEmoji: "📚" },
-  { category: "제품 선택", title: "단백질 음료 선택 가이드", desc: "성분 기준으로 내게 맞는 음료 고르는 법", href: "/guides/product-selection-comparison/protein-drink-guide", thumbImg: "https://images.unsplash.com/photo-1622484211686-8b9c6e1e1e2f?w=400&h=200&fit=crop&crop=center", thumbBg: "linear-gradient(135deg, #C8DDD4 0%, #A0C4B8 100%)", thumbEmoji: "🎯" },
+  { category: "마켓 인사이트", title: "2026 프로틴 음료 트렌드", desc: "단백질 음료 시장 흐름과 신제품 분석", href: "/guides/market-insights/protein-drink-trend-2026", thumbImg: "https://images.unsplash.com/photo-1593095948071-474c5cc2989d?w=600&h=320&fit=crop&crop=center&auto=format", thumbBg: "linear-gradient(135deg, #B8DEC8 0%, #8FC4A8 100%)", thumbEmoji: "📈" },
+  { category: "비교 가이드", title: "셀렉스 vs 하이뮨", desc: "고단백 음료 브랜드 스펙 직접 비교", href: "/guides/product-selection-comparison/selex-vs-himune", thumbImg: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&h=320&fit=crop&crop=center&auto=format", thumbBg: "linear-gradient(135deg, #EED4A8 0%, #DEB87E 100%)", thumbEmoji: "⚖️" },
+  { category: "추천", title: "편의점 단백질 음료 BEST 8", desc: "편의점에서 살 수 있는 고단백 제품 정리", href: "/guides/product-selection-comparison/convenience-store-protein-guide", thumbImg: "https://images.unsplash.com/photo-1604719312566-8912e9c8a213?w=600&h=320&fit=crop&crop=center&auto=format", thumbBg: "linear-gradient(135deg, #A8CCC4 0%, #80B0A8 100%)", thumbEmoji: "🏪" },
+  { category: "섭취 전략", title: "운동 전후 단백질 섭취 가이드", desc: "시간대별 섭취 전략과 추천 제품", href: "/guides/intake-strategy-health/post-workout-protein", thumbImg: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=600&h=320&fit=crop&crop=center&auto=format", thumbBg: "linear-gradient(135deg, #C4D8CC 0%, #9CBCB0 100%)", thumbEmoji: "💪" },
+  { category: "기본 지식", title: "하루 단백질 필요량", desc: "체중과 목적에 따른 단백질 권장량 계산", href: "/guides/basics/daily-requirement", thumbImg: "https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=600&h=320&fit=crop&crop=center&auto=format", thumbBg: "linear-gradient(135deg, #D8CDB8 0%, #C0AF98 100%)", thumbEmoji: "📚" },
+  { category: "제품 선택", title: "단백질 음료 선택 가이드", desc: "성분 기준으로 내게 맞는 음료 고르는 법", href: "/guides/product-selection-comparison/protein-drink-guide", thumbImg: "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=600&h=320&fit=crop&crop=center&auto=format", thumbBg: "linear-gradient(135deg, #C8DDD4 0%, #A0C4B8 100%)", thumbEmoji: "🎯" },
 ];
 
 function toCarouselProduct(p: ProductDetailProps): CarouselProduct {
@@ -228,28 +228,18 @@ export default async function Home() {
             <Link
               key={guide.href}
               href={guide.href}
-              className="group flex flex-col overflow-hidden rounded-[16px] border transition-all duration-150 hover:-translate-y-1 hover:border-[#1F5A3D]/25 hover:shadow-[0_10px_28px_rgba(31,90,61,0.13)]"
-              style={{ background: "#FFFDF7", borderColor: "#E4D9CC", boxShadow: "0 2px 8px rgba(60,45,30,0.07)" }}
+              className="group block overflow-hidden rounded-[16px] border transition-all duration-150 hover:-translate-y-1 hover:shadow-[0_10px_28px_rgba(31,90,61,0.18)]"
+              style={{ borderColor: "#E4D9CC", boxShadow: "0 2px 8px rgba(60,45,30,0.07)" }}
             >
-              {/* Thumbnail */}
               <GuideThumbImage
                 src={guide.thumbImg}
                 alt={guide.title}
+                title={guide.title}
+                desc={guide.desc}
                 fallbackBg={guide.thumbBg}
                 fallbackEmoji={guide.thumbEmoji}
                 category={guide.category}
               />
-              {/* Content */}
-              <div className="flex flex-1 flex-col p-3">
-                <p className="line-clamp-2 font-bold leading-snug" style={{ fontSize: "13px", color: "#1A2B1E", minHeight: "38px" }}>{guide.title}</p>
-                <p className="mt-1.5 line-clamp-2 text-[11px] leading-snug" style={{ color: "#8A9A8C" }}>{guide.desc}</p>
-                <span
-                  className="mt-2 text-[11px] font-bold transition-colors group-hover:text-[#1F5A3D]"
-                  style={{ color: "#B8C4BA" }}
-                >
-                  가이드 보기 →
-                </span>
-              </div>
             </Link>
           ))}
         </div>
