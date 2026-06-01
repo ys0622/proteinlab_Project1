@@ -222,26 +222,40 @@ export default async function Home() {
             전체 보기 →
           </Link>
         </div>
-        <div className="grid grid-cols-1 gap-2.5 sm:grid-cols-2 md:grid-cols-3">
+        <div className="grid grid-cols-2 gap-3 md:grid-cols-3 md:gap-3">
           {GUIDE_CARDS.map((guide) => (
             <Link
               key={guide.href}
               href={guide.href}
-              className="group flex items-center gap-3.5 overflow-hidden rounded-[16px] border p-4 transition-all duration-150 hover:-translate-y-0.5 hover:border-[#1F5A3D]/25 hover:shadow-[0_8px_24px_rgba(31,90,61,0.12)]"
+              className="group flex flex-col overflow-hidden rounded-[16px] border transition-all duration-150 hover:-translate-y-1 hover:border-[#1F5A3D]/25 hover:shadow-[0_10px_28px_rgba(31,90,61,0.13)]"
               style={{ background: "#FFFDF7", borderColor: "#E4D9CC", boxShadow: "0 2px 8px rgba(60,45,30,0.07)" }}
             >
+              {/* Thumbnail */}
               <div
-                className="flex h-12 w-12 shrink-0 items-center justify-center rounded-[12px]"
-                style={{ background: guide.thumbBg }}
+                className="relative flex items-center justify-center"
+                style={{ background: guide.thumbBg, height: "100px", flexShrink: 0 }}
               >
-                <span style={{ fontSize: "24px" }}>{guide.thumbEmoji}</span>
+                <span style={{ fontSize: "42px", lineHeight: 1, filter: "drop-shadow(0 4px 8px rgba(0,0,0,0.12))" }}>
+                  {guide.thumbEmoji}
+                </span>
+                <span
+                  className="absolute left-2.5 top-2.5 rounded-full px-2 py-0.5 text-[10px] font-bold"
+                  style={{ background: "rgba(255,255,255,0.82)", color: "#1F5A3D", backdropFilter: "blur(4px)" }}
+                >
+                  {guide.category}
+                </span>
               </div>
-              <div className="min-w-0 flex-1">
-                <p className="text-[11px] font-bold" style={{ color: "#1F5A3D" }}>{guide.category}</p>
-                <p className="mt-0.5 line-clamp-2 font-bold leading-snug" style={{ fontSize: "13px", color: "#1A2B1E" }}>{guide.title}</p>
-                <p className="mt-1 truncate text-[11px]" style={{ color: "#8A9A8C" }}>{guide.desc}</p>
+              {/* Content */}
+              <div className="flex flex-1 flex-col p-3">
+                <p className="line-clamp-2 font-bold leading-snug" style={{ fontSize: "13px", color: "#1A2B1E", minHeight: "38px" }}>{guide.title}</p>
+                <p className="mt-1.5 line-clamp-2 text-[11px] leading-snug" style={{ color: "#8A9A8C" }}>{guide.desc}</p>
+                <span
+                  className="mt-2 text-[11px] font-bold transition-colors group-hover:text-[#1F5A3D]"
+                  style={{ color: "#B8C4BA" }}
+                >
+                  가이드 보기 →
+                </span>
               </div>
-              <span className="shrink-0 text-[14px] font-bold transition-colors group-hover:text-[#1F5A3D]" style={{ color: "#C4CEC6" }}>→</span>
             </Link>
           ))}
         </div>

@@ -118,7 +118,7 @@ export default function HomePopularCarousel({ products }: Props) {
                 {...product}
                 productType={curTab.key}
                 priority={rank <= 3}
-                maxVisibleBadges={2}
+                maxVisibleBadges={3}
                 fixedTitleLines={2}
                 hideSupplementalBadges
               />
