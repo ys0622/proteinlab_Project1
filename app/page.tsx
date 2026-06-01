@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
+import GuideThumbImage from "./components/GuideThumbImage";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import HomePopularCarousel, { type CarouselProduct } from "./components/HomePopularCarousel";
@@ -232,27 +232,13 @@ export default async function Home() {
               style={{ background: "#FFFDF7", borderColor: "#E4D9CC", boxShadow: "0 2px 8px rgba(60,45,30,0.07)" }}
             >
               {/* Thumbnail */}
-              <div
-                className="relative overflow-hidden"
-                style={{ height: "100px", flexShrink: 0 }}
-              >
-                <Image
-                  src={guide.thumbImg}
-                  alt={guide.title}
-                  fill
-                  className="object-cover transition-transform duration-300 group-hover:scale-105"
-                  unoptimized
-                  onError={undefined}
-                />
-                {/* fallback gradient shown behind image */}
-                <div className="absolute inset-0 -z-10" style={{ background: guide.thumbBg }} />
-                <span
-                  className="absolute left-2.5 top-2.5 rounded-full px-2 py-0.5 text-[10px] font-bold"
-                  style={{ background: "rgba(255,255,255,0.88)", color: "#1F5A3D", backdropFilter: "blur(4px)" }}
-                >
-                  {guide.category}
-                </span>
-              </div>
+              <GuideThumbImage
+                src={guide.thumbImg}
+                alt={guide.title}
+                fallbackBg={guide.thumbBg}
+                fallbackEmoji={guide.thumbEmoji}
+                category={guide.category}
+              />
               {/* Content */}
               <div className="flex flex-1 flex-col p-3">
                 <p className="line-clamp-2 font-bold leading-snug" style={{ fontSize: "13px", color: "#1A2B1E", minHeight: "38px" }}>{guide.title}</p>
