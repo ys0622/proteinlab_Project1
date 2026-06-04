@@ -190,7 +190,7 @@ export default async function Home() {
               emoji: "🥤",
               href: "/drink",
               countKey: "drink" as const,
-              bg: "linear-gradient(135deg, #1F5A3D 0%, #2E7D52 100%)",
+              bg: "linear-gradient(135deg, #0D6E8A 0%, #1A90B0 100%)",
               textColor: "#ffffff",
               subColor: "rgba(255,255,255,0.65)",
               countBg: "rgba(255,255,255,0.15)",
@@ -235,7 +235,7 @@ export default async function Home() {
               eventName="home_category_click"
               eventParams={{ category: cat.countKey, destination_url: cat.href }}
               className="group relative flex flex-col justify-between overflow-hidden rounded-[20px] p-4 transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_12px_32px_rgba(0,0,0,0.18)] md:p-5"
-              style={{ background: cat.bg, minHeight: "130px" }}
+              style={{ background: cat.bg, minHeight: "100px" }}
             >
               {/* 배경 원형 장식 */}
               <div
