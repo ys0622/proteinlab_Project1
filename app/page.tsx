@@ -70,14 +70,14 @@ const GUIDE_CARDS = [
   { category: "마켓 인사이트", title: "2026 프로틴 음료 트렌드", desc: "단백질 음료 시장 흐름과 신제품 분석", href: "/guides/market-insights/protein-drink-trend-2026", thumbImg: "https://images.unsplash.com/photo-1595981267035-7b04ca84a82d?w=600&h=400&fit=crop&crop=center&q=80", thumbBg: "linear-gradient(135deg, #1a6b5a 0%, #2d9e7f 100%)", thumbEmoji: "📈" },
   // 비교: 단백질 파우더·보충제 여러 개 — 스펙 비교 연상
   { category: "비교 가이드", title: "셀렉스 vs 하이뮨", desc: "고단백 음료 브랜드 스펙 직접 비교", href: "/guides/product-selection-comparison/selex-vs-himune", thumbImg: "https://images.unsplash.com/photo-1579722820308-d74e571900a9?w=600&h=400&fit=crop&crop=center&q=80", thumbBg: "linear-gradient(135deg, #7a5c2e 0%, #b8843f 100%)", thumbEmoji: "⚖️" },
-  // 편의점: 냉장 음료 진열대에서 선택하는 장면
-  { category: "추천", title: "편의점 단백질 음료 BEST 8", desc: "편의점에서 살 수 있는 고단백 제품 정리", href: "/guides/product-selection-comparison/convenience-store-protein-guide", thumbImg: "https://images.unsplash.com/photo-1604719312566-8912e9c8a213?w=600&h=400&fit=crop&crop=center&q=80", thumbBg: "linear-gradient(135deg, #2a6070 0%, #3d8fa6 100%)", thumbEmoji: "🏪" },
+  // 편의점: 냉장 음료 코너 분위기 — 어두운 톤으로 통일
+  { category: "추천", title: "편의점 단백질 음료 BEST 8", desc: "편의점에서 살 수 있는 고단백 제품 정리", href: "/guides/product-selection-comparison/convenience-store-protein-guide", thumbImg: "https://images.unsplash.com/photo-1534723452862-4c874986ebdc?w=600&h=400&fit=crop&crop=center&q=80", thumbBg: "linear-gradient(135deg, #2a6070 0%, #3d8fa6 100%)", thumbEmoji: "🏪" },
   // 운동 전후: 운동 중 또는 직후 단백질 보충 장면
   { category: "섭취 전략", title: "운동 전후 단백질 섭취 가이드", desc: "시간대별 섭취 전략과 추천 제품", href: "/guides/intake-strategy-health/post-workout-protein", thumbImg: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&h=400&fit=crop&crop=top&q=80", thumbBg: "linear-gradient(135deg, #2c4a2e 0%, #4a7a4e 100%)", thumbEmoji: "💪" },
   // 하루 필요량: 단백질 식품 구성 — 달걀·닭가슴살·견과류 등 고단백 식품
   { category: "기본 지식", title: "하루 단백질 필요량", desc: "체중과 목적에 따른 단백질 권장량 계산", href: "/guides/basics/daily-requirement", thumbImg: "https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=600&h=400&fit=crop&crop=center&q=80", thumbBg: "linear-gradient(135deg, #5a4a2e 0%, #8c7040 100%)", thumbEmoji: "📚" },
-  // 선택 가이드: 깔끔한 단백질 음료 한 잔 — 선택·결정 연상
-  { category: "제품 선택", title: "단백질 음료 선택 가이드", desc: "성분 기준으로 내게 맞는 음료 고르는 법", href: "/guides/product-selection-comparison/protein-drink-guide", thumbImg: "https://images.unsplash.com/photo-1593095948071-474c5cc2989d?w=600&h=400&fit=crop&crop=center&q=80", thumbBg: "linear-gradient(135deg, #1e4a6e 0%, #2d6ea6 100%)", thumbEmoji: "🎯" },
+  // 선택 가이드: RTD 단백질 음료 병 — 음료 선택 직관적으로 연상
+  { category: "제품 선택", title: "단백질 음료 선택 가이드", desc: "성분 기준으로 내게 맞는 음료 고르는 법", href: "/guides/product-selection-comparison/protein-drink-guide", thumbImg: "https://images.unsplash.com/photo-1559181567-c3190ca9959b?w=600&h=400&fit=crop&crop=center&q=80", thumbBg: "linear-gradient(135deg, #1e4a6e 0%, #2d6ea6 100%)", thumbEmoji: "🎯" },
 ];
 
 function toCarouselProduct(p: ProductDetailProps): CarouselProduct {
