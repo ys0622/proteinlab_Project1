@@ -125,6 +125,7 @@ export default function ProductCard({
   maxVisibleBadges,
   fixedTitleLines,
   hideSupplementalBadges,
+  coupangOnly = false,
 }: ProductCardProps) {
   const router = useRouter();
   const [reviewSummary, setReviewSummary] = useState<ReviewSummary | null>(() =>
@@ -418,8 +419,8 @@ export default function ProductCard({
         <div className="cta-group mt-auto pt-1 md:pt-2">
           <PurchaseLinkRow
             coupangHref={coupangHref}
-            naverHref={naverHref}
-            officialMallHref={officialMallHref}
+            naverHref={coupangOnly ? null : naverHref}
+            officialMallHref={coupangOnly ? null : officialMallHref}
             size="sm"
             onCoupangClick={() =>
               purchaseClick({

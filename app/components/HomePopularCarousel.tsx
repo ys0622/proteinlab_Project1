@@ -121,6 +121,7 @@ export default function HomePopularCarousel({ products }: Props) {
                 maxVisibleBadges={3}
                 fixedTitleLines={2}
                 hideSupplementalBadges
+                coupangOnly
               />
             </div>
           );

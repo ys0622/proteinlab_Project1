@@ -23,6 +23,7 @@ export interface ProductCardProps {
   maxVisibleBadges?: number;
   fixedTitleLines?: 1 | 2;
   hideSupplementalBadges?: boolean;
+  coupangOnly?: boolean;
   price?: number;
 }
 
