@@ -36,11 +36,11 @@ export default function PurchaseLinkRow({
   onOfficialClick,
 }: PurchaseLinkRowProps) {
   return (
-    <div className="purchase-link-row">
+    <div className={coupangOnly ? "purchase-link-row purchase-link-row--single" : "purchase-link-row"}>
       <PurchaseLinkButton
         href={coupangHref}
-        label={coupangLabel}
-        mobileLabel={coupangMobileLabel}
+        label={coupangOnly ? "쿠팡에서 구매하기" : coupangLabel}
+        mobileLabel={coupangOnly ? "쿠팡에서 구매" : coupangMobileLabel}
         tone="coupang"
         size={size}
         onClick={coupangHref ? onCoupangClick : undefined}

@@ -420,6 +420,10 @@ h1, h2, h3, h4, h5, h6 {
   gap: 8px;
 }
 
+.purchase-link-row--single {
+  grid-template-columns: 1fr;
+}
+
 .purchase-link {
   display: inline-flex;
   width: 100%;
@@ -1215,4 +1219,13 @@ h1, h2, h3, h4, h5, h6 {
     white-space: pre;
     -webkit-overflow-scrolling: touch;
   }
+}
+
+
+@keyframes carouselSlideIn {
+  from { opacity: 0; transform: translateX(24px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+.carousel-slide-in {
+  animation: carouselSlideIn 0.32s ease;
 }
