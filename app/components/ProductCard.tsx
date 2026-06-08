@@ -419,8 +419,9 @@ export default function ProductCard({
         <div className="cta-group mt-auto pt-1 md:pt-2">
           <PurchaseLinkRow
             coupangHref={coupangHref}
-            naverHref={coupangOnly ? null : naverHref}
-            officialMallHref={coupangOnly ? null : officialMallHref}
+            naverHref={naverHref}
+            officialMallHref={officialMallHref}
+            coupangOnly={coupangOnly}
             size="sm"
             onCoupangClick={() =>
               purchaseClick({

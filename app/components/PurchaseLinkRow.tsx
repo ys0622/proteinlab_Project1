@@ -7,6 +7,7 @@ type PurchaseLinkRowProps = {
   naverHref: string | null;
   officialMallHref: string | null;
   size?: "sm" | "md";
+  coupangOnly?: boolean;
   coupangLabel?: string;
   coupangMobileLabel?: string;
   naverLabel?: string;
@@ -23,6 +24,7 @@ export default function PurchaseLinkRow({
   naverHref,
   officialMallHref,
   size = "md",
+  coupangOnly = false,
   coupangLabel = "쿠팡 구매",
   coupangMobileLabel = "쿠팡",
   naverLabel = "네이버 쇼핑",
@@ -44,24 +46,28 @@ export default function PurchaseLinkRow({
         onClick={coupangHref ? onCoupangClick : undefined}
         title={coupangHref ? undefined : "쿠팡 구매 링크를 아직 확인 중입니다."}
       />
-      <PurchaseLinkButton
-        href={naverHref}
-        label={naverLabel}
-        mobileLabel={naverMobileLabel}
-        tone="naver"
-        size={size}
-        onClick={naverHref ? onNaverClick : undefined}
-        title={naverHref ? undefined : "네이버 쇼핑 링크를 아직 확인 중입니다."}
-      />
-      <PurchaseLinkButton
-        href={officialMallHref}
-        label={officialLabel}
-        mobileLabel={officialMobileLabel}
-        tone="official"
-        size={size}
-        onClick={officialMallHref ? onOfficialClick : undefined}
-        title={officialMallHref ? undefined : "공식몰 구매 링크를 아직 확인 중입니다."}
-      />
+      {!coupangOnly && (
+        <PurchaseLinkButton
+          href={naverHref}
+          label={naverLabel}
+          mobileLabel={naverMobileLabel}
+          tone="naver"
+          size={size}
+          onClick={naverHref ? onNaverClick : undefined}
+          title={naverHref ? undefined : "네이버 쇼핑 링크를 아직 확인 중입니다."}
+        />
+      )}
+      {!coupangOnly && (
+        <PurchaseLinkButton
+          href={officialMallHref}
+          label={officialLabel}
+          mobileLabel={officialMobileLabel}
+          tone="official"
+          size={size}
+          onClick={officialMallHref ? onOfficialClick : undefined}
+          title={officialMallHref ? undefined : "공식몰 구매 링크를 아직 확인 중입니다."}
+        />
+      )}
     </div>
   );
 }
