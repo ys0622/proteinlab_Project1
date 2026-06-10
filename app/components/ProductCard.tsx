@@ -14,6 +14,8 @@ import { getProductImageUrl } from "../lib/productImage";
 import {
   getCoupangRedirectHref,
   getKnownSourceCoupangUrlBySlug,
+  getNaverSearchUrl,
+  getOfficialMallUrl,
   normalizeCoupangUrl,
 } from "../lib/purchaseLinks";
 import CompareButton from "./CompareButton";
@@ -140,8 +142,8 @@ export default function ProductCard({
   const resolvedPurchaseLinkCategory = purchaseLinkCategory ?? productType ?? null;
   const rawCoupangUrl = normalizeCoupangUrl(coupangUrl) ?? getKnownSourceCoupangUrlBySlug(slug);
   const coupangHref = getCoupangRedirectHref(rawCoupangUrl, resolvedPurchaseLinkCategory, slug);
-  const naverHref = naverUrl && naverUrl !== "#" && naverUrl !== "" ? naverUrl : null;
-  const officialMallHref = officialUrl && officialUrl !== "#" && officialUrl !== "" ? officialUrl : null;
+  const naverHref = naverUrl && naverUrl !== "#" && naverUrl !== "" ? naverUrl : getNaverSearchUrl(brand, name);
+  const officialMallHref = officialUrl && officialUrl !== "#" && officialUrl !== "" ? officialUrl : getOfficialMallUrl(brand);
   const productId = slug ?? `${brand}-${name}`;
   const hasCapacityInName = Boolean(capacity && name.includes(capacity));
   const packageTag = tags.find((tag) => ["팩", "PET", "CAN"].includes(tag));

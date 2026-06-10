@@ -37,6 +37,8 @@ import { getSimilarProducts } from "../../lib/similarProducts";
 import {
   getCoupangRedirectHref,
   getKnownSourceCoupangUrlBySlug,
+  getNaverSearchUrl,
+  getOfficialMallUrl,
   normalizeCoupangUrl,
 } from "../../lib/purchaseLinks";
 
@@ -385,8 +387,14 @@ export default async function ProductDetailPage({ params }: PageProps) {
     product.productType ?? null,
     product.slug,
   );
-  const naverHref = product.naverUrl && product.naverUrl !== "#" && product.naverUrl !== "" ? product.naverUrl : null;
-  const officialMallHref = product.officialUrl && product.officialUrl !== "#" && product.officialUrl !== "" ? product.officialUrl : null;
+  const naverHref =
+    product.naverUrl && product.naverUrl !== "#" && product.naverUrl !== ""
+      ? product.naverUrl
+      : getNaverSearchUrl(product.brand, product.name);
+  const officialMallHref =
+    product.officialUrl && product.officialUrl !== "#" && product.officialUrl !== ""
+      ? product.officialUrl
+      : getOfficialMallUrl(product.brand);
   const isLactoseFreeDrink =
     product.productType === "drink" && product.variant?.trim() === "락토프리";
   const detailCategoryHref = getCategoryDetailHref(category);

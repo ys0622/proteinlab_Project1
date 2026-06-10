@@ -22,8 +22,8 @@ export default function ProductDetailPurchaseActions({
 }: ProductDetailPurchaseActionsProps) {
   const placement = "product_detail_hero_purchase";
   const hasPurchaseLink = Boolean(coupangHref || naverHref || officialMallHref);
-  const coupangCta = "오늘 가격 확인";
-  const naverCta = "네이버 최종가 확인";
+  const coupangCta = "쿠팡에서 가격 확인";
+  const naverCta = "네이버 가격 비교";
   const officialCta = "공식몰 혜택 확인";
 
   const trackPurchase = (
@@ -52,7 +52,7 @@ export default function ProductDetailPurchaseActions({
             구매 채널
           </p>
           <h2 className="text-base font-bold text-[var(--foreground)]">
-            최신 가격 바로 확인
+            구매처 바로 확인
           </h2>
         </div>
         <p className="text-[10px] leading-4 text-[#9b9287]">
@@ -62,7 +62,7 @@ export default function ProductDetailPurchaseActions({
 
       <p className="mb-3 text-xs leading-5 text-[var(--foreground-muted)] md:text-sm">
         {hasPurchaseLink
-          ? "할인·쿠폰·배송비까지 최종 결제 전 한 번에 확인하세요."
+          ? "쿠팡·공식몰·네이버 조건을 비교하고 구매처를 바로 확인하세요."
           : "구매 채널 링크를 확인 중입니다. 지금은 비교와 카테고리 목록에서 후보를 먼저 좁혀보는 편이 빠릅니다."}
       </p>
 

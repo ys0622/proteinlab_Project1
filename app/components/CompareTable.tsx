@@ -9,6 +9,8 @@ import {
 import {
   getCoupangRedirectHref,
   getKnownSourceCoupangUrlBySlug,
+  getNaverSearchUrl,
+  getOfficialMallUrl,
   normalizeCoupangUrl,
 } from "../lib/purchaseLinks";
 import PurchaseLinkRow from "./PurchaseLinkRow";
@@ -131,11 +133,13 @@ export default function CompareTable({ products, visibleColumnIds }: CompareTabl
                       p.slug,
                     );
                     const naverHref =
-                      p.naverUrl && p.naverUrl !== "#" && p.naverUrl !== "" ? p.naverUrl : null;
+                      p.naverUrl && p.naverUrl !== "#" && p.naverUrl !== ""
+                        ? p.naverUrl
+                        : getNaverSearchUrl(p.brand, p.name);
                     const officialHref =
                       p.officialUrl && p.officialUrl !== "#" && p.officialUrl !== ""
                         ? p.officialUrl
-                        : null;
+                        : getOfficialMallUrl(p.brand);
 
                     return (
                       <td
