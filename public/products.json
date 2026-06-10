@@ -1,8 +1,8 @@
 {
-  "generated_at": "2026-05-29T02:23:01.851Z",
-  "total": 364,
+  "generated_at": "2026-06-10T08:28:55.185Z",
+  "total": 365,
   "categories": {
-    "drinks": 119,
+    "drinks": 120,
     "bars": 100,
     "yogurt": 57,
     "shake": 88
@@ -1078,6 +1078,15 @@
       "protein": 27,
       "calories": 135,
       "sugar": 0
+    },
+    {
+      "slug": "takefit-extreme-450",
+      "name": "테이크핏 익스트림",
+      "brand": "테이크핏",
+      "category": "drinks",
+      "protein": 60,
+      "calories": 259,
+      "sugar": 1.3
     },
     {
       "slug": "dryou-proteinbar-pro-3nuts-crunch",
