@@ -19,7 +19,7 @@ const SHARE_CHANNELS = [
   },
   {
     key: "kakao",
-    label: "카카오톡",
+    label: "카카오",
     emoji: "💬",
     bg: "#FEE500",
     color: "#191919",
@@ -84,7 +84,10 @@ export default function ShareButton({ url, title, description, compact = false }
         await navigator.clipboard.writeText(fullUrl);
         setCopied(true);
         showToast("링크가 복사되었습니다 ✓");
-        setTimeout(() => setCopied(false), 2000);
+        setTimeout(() => {
+          setCopied(false);
+          setOpen(false);
+        }, 1200);
       } catch {
         showToast("복사에 실패했습니다");
       }
@@ -110,8 +113,10 @@ export default function ShareButton({ url, title, description, compact = false }
       try {
         await navigator.share({ title, text: description ?? title, url: fullUrl });
         return;
-      } catch {
-        // 취소됐거나 실패 → 모달 열기
+      } catch (err) {
+        // AbortError = 사용자가 취소한 것 → 모달 열지 않음
+        if (err instanceof DOMException && err.name === "AbortError") return;
+        // 그 외 실패 → 모달로 폴백
       }
     }
     setOpen(true);
