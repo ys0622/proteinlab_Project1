@@ -18,6 +18,7 @@ import {
   getOfficialMallUrl,
   normalizeCoupangUrl,
 } from "../lib/purchaseLinks";
+import CardShareButton from "./CardShareButton";
 import CompareButton from "./CompareButton";
 import FavoriteButton from "./FavoriteButton";
 import MetricBadgeGroup from "./MetricBadgeGroup";
@@ -278,6 +279,9 @@ export default function ProductCard({
             </ActionTooltip>
             <ActionTooltip label="스펙 비교">
               <CompareButton slug={slug} detailHref={detailHref} compact />
+            </ActionTooltip>
+            <ActionTooltip label="공유하기">
+              <CardShareButton slug={slug} productName={`${brand} ${name}`} proteinG={proteinPerServing} />
             </ActionTooltip>
           </div>
         ) : null}
