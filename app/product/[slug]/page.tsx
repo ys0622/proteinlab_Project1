@@ -2,6 +2,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import AdminQuickEdit from "../../components/AdminQuickEdit";
+import ShareButton from "../../components/ShareButton";
 import AffiliateDisclosure from "../../components/AffiliateDisclosure";
 import BackButton from "../../components/BackButton";
 import Footer from "../../components/Footer";
@@ -522,7 +523,14 @@ export default async function ProductDetailPage({ params }: PageProps) {
         <div className="mx-auto max-w-[1200px] px-4 py-5 md:px-6 md:py-7">
           <div className="flex items-center justify-between">
             <BackButton />
-            <AdminQuickEdit slug={slug} />
+            <div className="flex items-center gap-2">
+              <ShareButton
+                url={`/product/${slug}`}
+                title={`${product.brand} ${product.name} — 단백질 ${product.proteinPerServing}g`}
+                description={buildProductDescription(product)}
+              />
+              <AdminQuickEdit slug={slug} />
+            </div>
           </div>
 
           {/*
