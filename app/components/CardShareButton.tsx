@@ -102,18 +102,18 @@ export default function CardShareButton({ slug, productName, proteinG }: CardSha
       <button
         ref={btnRef}
         onClick={handleOpen}
-        className="flex h-7 w-7 items-center justify-center rounded-full border bg-white/90 transition-colors hover:bg-white"
-        style={{ borderColor: "#E4D9CC" }}
+        className="flex items-center gap-1 rounded-full border px-2 py-1 text-[10px] font-medium transition-colors hover:bg-[#F3F0EA]"
+        style={{ borderColor: "#E4D9CC", color: "#8A938B", background: "transparent" }}
         aria-label="공유하기"
-        title="공유하기"
       >
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#5F6B61" strokeWidth="2.3" strokeLinecap="round" strokeLinejoin="round">
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.3" strokeLinecap="round" strokeLinejoin="round">
           <circle cx="18" cy="5" r="3" />
           <circle cx="6" cy="12" r="3" />
           <circle cx="18" cy="19" r="3" />
           <line x1="8.59" y1="13.51" x2="15.42" y2="17.49" />
           <line x1="15.41" y1="6.51" x2="8.59" y2="10.49" />
         </svg>
+        <span>공유</span>
       </button>
 
       {/* fixed 드롭다운 — overflow:hidden 카드 밖에서 렌더링 */}

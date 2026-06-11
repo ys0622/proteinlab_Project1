@@ -51,14 +51,14 @@ export default function CompareButton({
           className="h-[14px] w-[14px]"
           fill="none"
           stroke="currentColor"
-          strokeWidth="2"
+          strokeWidth="2.2"
           strokeLinecap="round"
           strokeLinejoin="round"
         >
-          <path d="M8 6H5v13h3" />
-          <path d="M19 4h-3v15h3" />
-          <path d="M8 10h8" />
-          <path d="M8 15h8" />
+          <line x1="5" y1="12" x2="19" y2="12" />
+          <line x1="5" y1="7" x2="14" y2="7" />
+          <line x1="5" y1="17" x2="17" y2="17" />
+          <polyline points="16,5 18,7 22,3" />
         </svg>
       ) : (
         <span style={{ height: "34px", fontSize: "12px", lineHeight: "34px" }}>

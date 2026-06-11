@@ -273,15 +273,13 @@ export default function ProductCard({
         </div>
 
         {slug ? (
+          /* 즐겨찾기 + 스펙비교만 이미지 위에 */
           <div className="absolute right-1 top-1 z-10 flex flex-col items-end gap-1 md:right-2 md:top-2 md:flex-row md:items-center">
             <ActionTooltip label="즐겨찾기">
               <FavoriteButton slug={slug} compact />
             </ActionTooltip>
             <ActionTooltip label="스펙 비교">
               <CompareButton slug={slug} detailHref={detailHref} compact />
-            </ActionTooltip>
-            <ActionTooltip label="공유하기">
-              <CardShareButton slug={slug} productName={`${brand} ${name}`} proteinG={proteinPerServing} />
             </ActionTooltip>
           </div>
         ) : null}
@@ -422,7 +420,14 @@ export default function ProductCard({
           ))}
         </div>
 
-        <div className="cta-group mt-auto pt-1 md:pt-2">
+        {/* 공유 버튼 — 이미지 밖, 구매 버튼 위 */}
+        {slug && (
+          <div className="flex justify-end pb-1 pt-0.5">
+            <CardShareButton slug={slug} productName={`${brand} ${name}`} proteinG={proteinPerServing} />
+          </div>
+        )}
+
+        <div className="cta-group mt-auto pt-0 md:pt-1">
           <PurchaseLinkRow
             coupangHref={coupangHref}
             naverHref={naverHref}
