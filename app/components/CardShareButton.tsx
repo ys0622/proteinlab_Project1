@@ -19,21 +19,26 @@ export default function CardShareButton({ slug, productName, proteinG }: CardSha
   const [open, setOpen]     = useState(false);
   const [copied, setCopied] = useState(false);
   const [toast, setToast]   = useState("");
-  const ref = useRef<HTMLDivElement>(null);
+  // fixed 위치 계산용
+  const [dropPos, setDropPos] = useState<{ top: number; left: number } | null>(null);
 
-  const fullUrl     = `https://proteinlab.kr/product/${slug}`;
-  const shareTitle  = `${productName} — 단백질 ${proteinG}g`;
-  const encoded     = encodeURIComponent(fullUrl);
+  const btnRef = useRef<HTMLButtonElement>(null);
+
+  const fullUrl      = `https://proteinlab.kr/product/${slug}`;
+  const shareTitle   = `${productName} — 단백질 ${proteinG}g`;
+  const encoded      = encodeURIComponent(fullUrl);
   const encodedTitle = encodeURIComponent(shareTitle);
 
-  /* 외부 클릭 닫기 */
+  /* 외부 클릭/스크롤 닫기 */
   useEffect(() => {
     if (!open) return;
-    const handler = (e: MouseEvent) => {
-      if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false);
+    const close = () => setOpen(false);
+    document.addEventListener("mousedown", close);
+    document.addEventListener("scroll", close, true);
+    return () => {
+      document.removeEventListener("mousedown", close);
+      document.removeEventListener("scroll", close, true);
     };
-    document.addEventListener("mousedown", handler);
-    return () => document.removeEventListener("mousedown", handler);
   }, [open]);
 
   /* ESC 닫기 */
@@ -49,7 +54,8 @@ export default function CardShareButton({ slug, productName, proteinG }: CardSha
     setTimeout(() => setToast(""), 2000);
   }
 
-  async function handleChannel(key: string) {
+  async function handleChannel(e: React.MouseEvent, key: string) {
+    e.stopPropagation();
     if (key === "copy") {
       try {
         await navigator.clipboard.writeText(fullUrl);
@@ -69,7 +75,9 @@ export default function CardShareButton({ slug, productName, proteinG }: CardSha
   }
 
   async function handleOpen(e: React.MouseEvent) {
-    e.stopPropagation(); // 카드 클릭 이벤트 차단
+    e.stopPropagation();
+    e.preventDefault();
+
     if (navigator.share) {
       try {
         await navigator.share({ title: shareTitle, url: fullUrl });
@@ -78,13 +86,21 @@ export default function CardShareButton({ slug, productName, proteinG }: CardSha
         if (err instanceof DOMException && err.name === "AbortError") return;
       }
     }
+
+    // fixed 위치 계산 — overflow:hidden 카드 밖에 렌더링
+    if (btnRef.current) {
+      const rect = btnRef.current.getBoundingClientRect();
+      const dropWidth = 220;
+      const left = Math.max(8, Math.min(rect.right - dropWidth, window.innerWidth - dropWidth - 8));
+      setDropPos({ top: rect.bottom + 6, left });
+    }
     setOpen((v) => !v);
   }
 
   return (
-    <div ref={ref} className="relative">
-      {/* 아이콘 버튼 — FavoriteButton/CompareButton과 같은 스타일 */}
+    <>
       <button
+        ref={btnRef}
         onClick={handleOpen}
         className="flex h-7 w-7 items-center justify-center rounded-full border bg-white/90 transition-colors hover:bg-white"
         style={{ borderColor: "#E4D9CC" }}
@@ -100,13 +116,17 @@ export default function CardShareButton({ slug, productName, proteinG }: CardSha
         </svg>
       </button>
 
-      {/* 드롭다운 모달 */}
-      {open && (
+      {/* fixed 드롭다운 — overflow:hidden 카드 밖에서 렌더링 */}
+      {open && dropPos && (
         <>
-          <div className="fixed inset-0 z-40" onClick={() => setOpen(false)} />
+          {/* 투명 배경 클릭 차단 */}
           <div
-            className="absolute right-0 top-9 z-50 w-[220px] rounded-[16px] border bg-white p-3 shadow-xl"
-            style={{ borderColor: "#E8E4DC" }}
+            className="fixed inset-0 z-[90]"
+            onClick={(e) => { e.stopPropagation(); setOpen(false); }}
+          />
+          <div
+            className="fixed z-[91] w-[220px] rounded-[16px] border bg-white p-3 shadow-xl"
+            style={{ top: dropPos.top, left: dropPos.left, borderColor: "#E8E4DC" }}
             onClick={(e) => e.stopPropagation()}
           >
             <p className="mb-2.5 text-[12px] font-extrabold" style={{ color: "#1E2A22" }}>공유하기</p>
@@ -115,8 +135,8 @@ export default function CardShareButton({ slug, productName, proteinG }: CardSha
               {CHANNELS.map((ch) => (
                 <button
                   key={ch.key}
-                  onClick={() => handleChannel(ch.key)}
-                  className="flex flex-col items-center gap-1 rounded-[10px] p-1.5 transition-opacity hover:opacity-75"
+                  onClick={(e) => handleChannel(e, ch.key)}
+                  className="flex flex-col items-center gap-1 rounded-[10px] p-1.5 transition-opacity hover:opacity-75 active:scale-95"
                 >
                   <div
                     className="flex h-10 w-10 items-center justify-center rounded-full text-[15px] font-bold"
@@ -138,8 +158,8 @@ export default function CardShareButton({ slug, productName, proteinG }: CardSha
             >
               <p className="flex-1 truncate text-[10px]" style={{ color: "#8A938B" }}>{fullUrl}</p>
               <button
-                onClick={() => handleChannel("copy")}
-                className="shrink-0 rounded-full px-2 py-0.5 text-[10px] font-bold"
+                onClick={(e) => handleChannel(e, "copy")}
+                className="shrink-0 rounded-full px-2 py-0.5 text-[10px] font-bold transition-colors"
                 style={{ background: copied ? "#1F5A3D" : "#1E2A22", color: "#fff" }}
               >
                 {copied ? "✓" : "복사"}
@@ -158,6 +178,6 @@ export default function CardShareButton({ slug, productName, proteinG }: CardSha
           {toast}
         </div>
       )}
-    </div>
+    </>
   );
 }
