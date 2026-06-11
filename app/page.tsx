@@ -8,27 +8,15 @@ import HomeTrackedLink from "./components/HomeTrackedLink";
 import type { ProductDetailProps } from "./data/products";
 import { getProductsByCategoryAsync } from "./lib/productData";
 import { getProductImageUrl } from "./lib/productImage";
-import { getPopularityScore } from "./lib/productPopularity";
 
-export const revalidate = 3600;
+export const revalidate = 300; // 5분마다 재생성 (조회수 반영)
 
-function getCapacityMl(product: ProductDetailProps): number {
-  const cap = product.capacity;
-  if (!cap) return 0;
-  const m = cap.match(/(\d+(?:\.\d+)?)\s*(?:mL|ml|g)/i);
-  return m ? parseFloat(m[1]) : 0;
-}
-
-function getDrinkScore(product: ProductDetailProps, index: number): number {
-  const cap = getCapacityMl(product);
-  const density = cap > 0 ? (product.proteinPerServing / cap) * 100 : 0;
-  const pop = getPopularityScore(product, "drink") ?? Math.max(100, 850 - index * 17);
-  return density * 18 + product.proteinPerServing * 2.5 + pop * 0.01 - (product.sugar ?? 0) * 4 - (product.calories ?? 0) * 0.06;
-}
-
-function getBarScore(product: ProductDetailProps, index: number): number {
-  const pop = getPopularityScore(product, "bar") ?? Math.max(100, 500 - index * 10);
-  return product.proteinPerServing * 3 + pop * 0.01 - (product.sugar ?? 0) * 3;
+// 실제 조회수 기반 점수 계산
+// views: KV에서 읽은 {slug: count} 맵
+// 조회수가 없으면 0으로 처리 (신제품은 초기에 하단에 위치)
+function getViewScore(slug: string | undefined, views: Record<string, number>): number {
+  if (!slug) return 0;
+  return views[slug] ?? 0;
 }
 
 const websiteJsonLd = {
@@ -102,20 +90,36 @@ function toCarouselProduct(p: ProductDetailProps): CarouselProduct {
 }
 
 export default async function Home() {
-  const [drinks, bars, yogurts, shakes] = await Promise.all([
+  const [drinks, bars, yogurts, shakes, popularRes] = await Promise.all([
     getProductsByCategoryAsync("drink"),
     getProductsByCategoryAsync("bar"),
     getProductsByCategoryAsync("yogurt"),
     getProductsByCategoryAsync("shake"),
+    // KV에서 실제 조회수 가져오기 (실패해도 빈 객체로 폴백)
+    fetch(`${process.env.NEXT_PUBLIC_BASE_URL ?? "https://proteinlab.kr"}/api/popular`, {
+      next: { revalidate: 300 },
+    }).then((r) => r.json()).catch(() => ({ views: {} })),
   ]);
+
+  // views: { drink: {slug: count}, bar: {...}, ... }
+  const views = (popularRes as { views: Record<string, Record<string, number>> }).views ?? {};
 
   const categoryCounts = { drink: drinks.length, bar: bars.length, yogurt: yogurts.length, shake: shakes.length };
   const totalCount = drinks.length + bars.length + yogurts.length + shakes.length;
 
-  const topDrinks = drinks.filter((p) => p.slug).map((p, i) => ({ p, score: getDrinkScore(p, i) })).sort((a, b) => b.score - a.score).slice(0, 10).map(({ p }) => p);
-  const topBars = bars.filter((p) => p.slug).map((p, i) => ({ p, score: getBarScore(p, i) })).sort((a, b) => b.score - a.score).slice(0, 10).map(({ p }) => p);
-  const topYogurts = yogurts.filter((p) => p.slug).slice(0, 10);
-  const topShakes = shakes.filter((p) => p.slug).slice(0, 10);
+  // 4개 카테고리 모두 실제 조회수 기준 정렬
+  const sortByViews = (products: ProductDetailProps[], type: string) =>
+    products
+      .filter((p) => p.slug)
+      .map((p) => ({ p, score: getViewScore(p.slug, views[type] ?? {}) }))
+      .sort((a, b) => b.score - a.score)
+      .slice(0, 10)
+      .map(({ p }) => p);
+
+  const topDrinks  = sortByViews(drinks,  "drink");
+  const topBars    = sortByViews(bars,    "bar");
+  const topYogurts = sortByViews(yogurts, "yogurt");
+  const topShakes  = sortByViews(shakes,  "shake");
 
   const carouselProducts = {
     drink: topDrinks.map(toCarouselProduct),

@@ -2,6 +2,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import AdminQuickEdit from "../../components/AdminQuickEdit";
+import ProductViewTracker from "../../components/ProductViewTracker";
 import ShareButton from "../../components/ShareButton";
 import AffiliateDisclosure from "../../components/AffiliateDisclosure";
 import BackButton from "../../components/BackButton";
@@ -525,6 +526,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
+      <ProductViewTracker slug={slug} productType={product.productType ?? "drink"} />
       <Header />
 
       <section className="w-full bg-white">
