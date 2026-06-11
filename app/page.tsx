@@ -59,7 +59,7 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 const CATEGORY_CARDS = [
-  { label: "단백질 음료", sub: "RTD 프로틴 드링크", emoji: "🥤", color: "#D4EDDF", href: "/drink", countKey: "drink" as const },
+  { label: "단백질 음료", sub: "RTD 프로틴 드링크", emoji: "🥤", color: "#D4EDDF", href: "/drinks", countKey: "drink" as const },
   { label: "단백질 바", sub: "프로틴 바·간식", emoji: "🍫", color: "#F5E6CE", href: "/bars", countKey: "bar" as const },
   { label: "단백질 요거트", sub: "그릭 요거트 포함", emoji: "🥛", color: "#F0EBE0", href: "/yogurt", countKey: "yogurt" as const },
   { label: "단백질 쉐이크", sub: "파우치형 (분말 제외)", emoji: "🧃", color: "#DDE9E2", href: "/shake", countKey: "shake" as const },
@@ -188,7 +188,7 @@ export default async function Home() {
               label: "단백질 음료",
               sub: "RTD 프로틴 드링크",
               emoji: "🥤",
-              href: "/drink",
+              href: "/drinks",
               countKey: "drink" as const,
               bg: "linear-gradient(135deg, #0D6E8A 0%, #1A90B0 100%)",
               textColor: "#ffffff",

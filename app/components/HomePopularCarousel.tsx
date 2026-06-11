@@ -10,7 +10,7 @@ export type CarouselProduct = ProductCardProps & { rank?: number };
 type CategoryKey = "drink" | "bar" | "yogurt" | "shake";
 
 const TABS: { key: CategoryKey; label: string; emoji: string; href: string }[] = [
-  { key: "drink", label: "음료", emoji: "🥤", href: "/drink" },
+  { key: "drink", label: "음료", emoji: "🥤", href: "/drinks" },
   { key: "bar", label: "바", emoji: "🍫", href: "/bars" },
   { key: "yogurt", label: "요거트", emoji: "🥛", href: "/yogurt" },
   { key: "shake", label: "쉐이크", emoji: "🧃", href: "/shake" },

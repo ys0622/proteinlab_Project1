@@ -14,6 +14,11 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       {
+        source: "/drink",
+        destination: "/drinks",
+        permanent: true,
+      },
+      {
         source: "/feed",
         destination: "/rss.xml",
         permanent: true,

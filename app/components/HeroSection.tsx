@@ -5,7 +5,6 @@ import ShareButton from "./ShareButton";
 
 const PAGE_META: Record<string, { title: string; desc: string }> = {
   "/drinks": { title: "단백질 음료 비교 | ProteinLab", desc: "RTD 단백질 음료 성분 비교" },
-  "/drink":  { title: "단백질 음료 비교 | ProteinLab", desc: "RTD 단백질 음료 성분 비교" },
   "/bars":   { title: "단백질 바 비교 | ProteinLab",   desc: "단백질 바 성분 비교" },
   "/yogurt": { title: "단백질 요거트 비교 | ProteinLab", desc: "단백질 요거트 성분 비교" },
   "/shake":  { title: "단백질 쉐이크 비교 | ProteinLab", desc: "단백질 쉐이크 성분 비교" },

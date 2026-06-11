@@ -180,7 +180,7 @@ function buildProductTitle(product: ProductDetailProps): string {
 }
 
 function getCategoryDetailHref(category: "drink" | "bar" | "yogurt" | "shake"): string {
-  if (category === "drink") return "/drink";
+  if (category === "drink") return "/drinks";
   return getCategoryHref(category);
 }
 
