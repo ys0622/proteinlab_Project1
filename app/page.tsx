@@ -179,8 +179,8 @@ export default async function Home() {
       </section>
 
       {/* ─── 2. 카테고리 임팩트 카드 ─── */}
-      <section className="mx-auto max-w-[1180px] px-4 pt-4 md:px-5 md:pt-5">
-        <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
+      <section className="mx-auto max-w-[1180px] px-4 pt-3 md:px-5 md:pt-4">
+        <div className="grid grid-cols-2 gap-2 md:grid-cols-4 md:gap-3">
           {([
             {
               label: "단백질 음료",
@@ -232,31 +232,25 @@ export default async function Home() {
               href={cat.href}
               eventName="home_category_click"
               eventParams={{ category: cat.countKey, destination_url: cat.href }}
-              className="group relative flex flex-col justify-between overflow-hidden rounded-[20px] p-4 transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_12px_32px_rgba(0,0,0,0.18)] md:p-5"
-              style={{ background: cat.bg, minHeight: "100px" }}
+              className="group relative flex items-center gap-2.5 overflow-hidden rounded-[16px] px-3 py-2.5 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_8px_20px_rgba(0,0,0,0.15)] md:px-4 md:py-3"
+              style={{ background: cat.bg }}
             >
               {/* 배경 원형 장식 */}
               <div
                 aria-hidden
-                className="pointer-events-none absolute -right-4 -top-4 rounded-full opacity-20"
-                style={{ width: 90, height: 90, background: "radial-gradient(circle, #fff 0%, transparent 70%)" }}
+                className="pointer-events-none absolute -right-3 -top-3 rounded-full opacity-20"
+                style={{ width: 60, height: 60, background: "radial-gradient(circle, #fff 0%, transparent 70%)" }}
               />
               {/* 이모지 */}
-              <span style={{ fontSize: "36px", lineHeight: 1 }}>{cat.emoji}</span>
-              {/* 하단 텍스트 */}
-              <div>
-                <p className="font-extrabold leading-tight" style={{ fontSize: "clamp(15px, 2vw, 18px)", color: cat.textColor, letterSpacing: "-0.02em" }}>
+              <span style={{ fontSize: "24px", lineHeight: 1, flexShrink: 0 }}>{cat.emoji}</span>
+              {/* 텍스트 */}
+              <div className="min-w-0 flex-1">
+                <p className="truncate font-extrabold leading-tight" style={{ fontSize: "13px", color: cat.textColor, letterSpacing: "-0.01em" }}>
                   {cat.label}
                 </p>
-                <div className="mt-1.5 flex items-center justify-between">
-                  <p style={{ fontSize: "11px", color: cat.subColor }}>{cat.sub}</p>
-                  <span
-                    className="rounded-full px-2 py-0.5 text-[10px] font-bold"
-                    style={{ background: cat.countBg, color: cat.textColor }}
-                  >
-                    {categoryCounts[cat.countKey]}종
-                  </span>
-                </div>
+                <p className="truncate" style={{ fontSize: "10px", color: cat.subColor, marginTop: "1px" }}>
+                  {categoryCounts[cat.countKey]}종
+                </p>
               </div>
             </HomeTrackedLink>
           ))}
@@ -264,7 +258,7 @@ export default async function Home() {
       </section>
 
       {/* ─── 4. 이번 주 인기 제품 ─── */}
-      <section className="mx-auto max-w-[1180px] px-4 pt-5 md:px-5 md:pt-6">
+      <section className="mx-auto max-w-[1180px] px-4 pt-3 md:px-5 md:pt-5">
         <HomePopularCarousel products={carouselProducts} />
       </section>
 
