@@ -127,52 +127,35 @@ export default async function Home() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }} />
       <Header />
 
-      {/* ─── 1. Hero (compact) ─── */}
+      {/* ─── 1. Hero (ultra-compact) ─── */}
       <section className="mx-auto max-w-[1180px] px-4 pt-3 md:px-5 md:pt-4">
         <div
           className="relative overflow-hidden"
           style={{
             background: "linear-gradient(135deg, #1F5A3D 0%, #2A7A54 60%, #1B4F35 100%)",
-            borderRadius: "20px",
-            boxShadow: "0 4px 20px rgba(31,90,61,0.20)",
+            borderRadius: "16px",
+            boxShadow: "0 4px 16px rgba(31,90,61,0.20)",
           }}
         >
-          <div aria-hidden className="pointer-events-none absolute -right-8 -top-8 rounded-full opacity-10" style={{ width: 180, height: 180, background: "radial-gradient(circle, #A8D5B5 0%, transparent 70%)" }} />
-          <div className="relative flex flex-wrap items-center justify-between gap-4 px-6 py-4 md:px-8 md:py-5">
-            {/* Text */}
-            <div>
-              <div className="mb-1.5 inline-flex items-center rounded-full px-2.5 py-0.5" style={{ background: "rgba(255,255,255,0.15)", border: "1px solid rgba(255,255,255,0.22)" }}>
-                <span style={{ fontSize: "10px", color: "rgba(255,255,255,0.92)", fontWeight: 700 }}>🔬 단백질 제품 비교 플랫폼</span>
-              </div>
-              <h1 className="font-extrabold leading-tight text-white" style={{ fontSize: "clamp(18px, 3vw, 28px)", letterSpacing: "-0.03em" }}>
-                내게 맞는 단백질 제품을 찾아보세요
+          <div aria-hidden className="pointer-events-none absolute -right-6 -top-6 rounded-full opacity-10" style={{ width: 120, height: 120, background: "radial-gradient(circle, #A8D5B5 0%, transparent 70%)" }} />
+          <div className="relative flex items-center justify-between gap-3 px-4 py-3 md:px-6 md:py-3.5">
+            {/* 좌: 텍스트 */}
+            <div className="min-w-0">
+              <h1 className="font-extrabold leading-tight text-white" style={{ fontSize: "clamp(14px, 2.5vw, 20px)", letterSpacing: "-0.02em" }}>
+                내게 맞는 단백질 제품 찾기
               </h1>
-              <p style={{ fontSize: "12px", color: "rgba(255,255,255,0.72)", marginTop: "4px" }}>
-                단백질·당류·칼로리 기준으로 음료·바·요거트·쉐이크 비교
+              <p style={{ fontSize: "11px", color: "rgba(255,255,255,0.65)", marginTop: "2px" }}>
+                {totalCount}종 · 단백질·당류·칼로리 비교
               </p>
             </div>
-            {/* Right: stats + CTAs */}
-            <div className="flex flex-col gap-2.5">
-              <div className="flex gap-3">
-                {[
-                  { value: `${categoryCounts.drink + categoryCounts.bar + categoryCounts.yogurt + categoryCounts.shake}종+`, label: "비교 제품" },
-                  { value: "등급·랭킹", label: "시스템" },
-                  { value: "목적별", label: "추천" },
-                ].map((s) => (
-                  <div key={s.label} className="text-center">
-                    <p className="font-extrabold text-white" style={{ fontSize: "13px" }}>{s.value}</p>
-                    <p style={{ fontSize: "9px", color: "rgba(255,255,255,0.6)" }}>{s.label}</p>
-                  </div>
-                ))}
-              </div>
-              <div className="flex gap-2">
-                <Link href="/drink" className="inline-flex items-center rounded-full px-4 text-[12px] font-bold text-[#1A5235]" style={{ background: "#FFFFFF", height: "34px" }}>
-                  제품 비교하기 →
-                </Link>
-                <Link href="/recommend" className="inline-flex items-center rounded-full px-4 text-[12px] font-bold text-white" style={{ background: "rgba(255,255,255,0.14)", border: "1px solid rgba(255,255,255,0.3)", height: "34px" }}>
-                  추천 보기
-                </Link>
-              </div>
+            {/* 우: CTA 버튼 */}
+            <div className="flex shrink-0 gap-1.5">
+              <Link href="/drinks" className="inline-flex items-center rounded-full px-3.5 text-[11px] font-bold text-[#1A5235]" style={{ background: "#FFFFFF", height: "30px" }}>
+                비교하기 →
+              </Link>
+              <Link href="/recommend" className="hidden items-center rounded-full px-3.5 text-[11px] font-bold text-white md:inline-flex" style={{ background: "rgba(255,255,255,0.14)", border: "1px solid rgba(255,255,255,0.3)", height: "30px" }}>
+                추천
+              </Link>
             </div>
           </div>
         </div>
