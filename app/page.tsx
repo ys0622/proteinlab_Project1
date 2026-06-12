@@ -137,24 +137,30 @@ export default async function Home() {
             boxShadow: "0 4px 16px rgba(31,90,61,0.20)",
           }}
         >
-          <div aria-hidden className="pointer-events-none absolute -right-6 -top-6 rounded-full opacity-10" style={{ width: 120, height: 120, background: "radial-gradient(circle, #A8D5B5 0%, transparent 70%)" }} />
-          <div className="relative flex items-center justify-between gap-3 px-4 py-3 md:px-6 md:py-3.5">
-            {/* 좌: 텍스트 */}
+          {/* 배경 장식 — 우상단 원 + 좌하단 원 */}
+          <div aria-hidden className="pointer-events-none absolute -right-8 -top-8 rounded-full opacity-[0.12]" style={{ width: 140, height: 140, background: "radial-gradient(circle, #A8D5B5 0%, transparent 70%)" }} />
+          <div aria-hidden className="pointer-events-none absolute -bottom-6 left-1/3 rounded-full opacity-[0.07]" style={{ width: 100, height: 100, background: "radial-gradient(circle, #fff 0%, transparent 70%)" }} />
+
+          <div className="relative flex items-center justify-between gap-3 px-4 py-3 md:px-6 md:py-4">
+            {/* 좌: 뱃지 + 텍스트 */}
             <div className="min-w-0">
-              <h1 className="font-extrabold leading-tight text-white" style={{ fontSize: "clamp(14px, 2.5vw, 20px)", letterSpacing: "-0.02em" }}>
+              <div className="mb-1 inline-flex items-center gap-1 rounded-full px-2 py-0.5" style={{ background: "rgba(255,255,255,0.12)", border: "1px solid rgba(255,255,255,0.18)" }}>
+                <span style={{ fontSize: "9px", color: "rgba(255,255,255,0.85)", fontWeight: 700, letterSpacing: "0.02em" }}>🔬 단백질 비교 플랫폼</span>
+              </div>
+              <h1 className="font-extrabold leading-tight text-white" style={{ fontSize: "clamp(15px, 2.5vw, 22px)", letterSpacing: "-0.02em" }}>
                 내게 맞는 단백질 제품 찾기
               </h1>
-              <p style={{ fontSize: "11px", color: "rgba(255,255,255,0.65)", marginTop: "2px" }}>
-                {totalCount}종 · 단백질·당류·칼로리 비교
+              <p style={{ fontSize: "11px", color: "rgba(255,255,255,0.60)", marginTop: "3px" }}>
+                {totalCount}종 · 단백질·당류·칼로리 기준 비교
               </p>
             </div>
             {/* 우: CTA 버튼 */}
-            <div className="flex shrink-0 gap-1.5">
-              <Link href="/drinks" className="inline-flex items-center rounded-full px-3.5 text-[11px] font-bold text-[#1A5235]" style={{ background: "#FFFFFF", height: "30px" }}>
+            <div className="flex shrink-0 flex-col gap-1.5 md:flex-row">
+              <Link href="/drinks" className="inline-flex items-center justify-center rounded-full px-4 text-[12px] font-bold text-[#1A5235]" style={{ background: "#FFFFFF", height: "32px" }}>
                 비교하기 →
               </Link>
-              <Link href="/recommend" className="hidden items-center rounded-full px-3.5 text-[11px] font-bold text-white md:inline-flex" style={{ background: "rgba(255,255,255,0.14)", border: "1px solid rgba(255,255,255,0.3)", height: "30px" }}>
-                추천
+              <Link href="/recommend" className="hidden items-center justify-center rounded-full px-4 text-[12px] font-bold text-white md:inline-flex" style={{ background: "rgba(255,255,255,0.14)", border: "1px solid rgba(255,255,255,0.28)", height: "32px" }}>
+                추천 보기
               </Link>
             </div>
           </div>
@@ -232,7 +238,7 @@ export default async function Home() {
                   {cat.label}
                 </p>
                 <p className="truncate" style={{ fontSize: "10px", color: cat.subColor, marginTop: "1px" }}>
-                  {categoryCounts[cat.countKey]}종
+                  {cat.sub} · {categoryCounts[cat.countKey]}종
                 </p>
               </div>
             </HomeTrackedLink>
