@@ -420,51 +420,55 @@ export default function ProductCard({
           ))}
         </div>
 
-        {/* 공유 버튼 — 이미지 밖, 구매 버튼 위 */}
-        {slug && (
-          <div className="flex justify-end pb-1 pt-0.5">
-            <CardShareButton slug={slug} productName={`${brand} ${name}`} proteinG={proteinPerServing} />
+        <div className="cta-group mt-auto pt-1 md:pt-2">
+          <div className="flex items-center gap-1.5">
+            <div className="min-w-0 flex-1">
+              <PurchaseLinkRow
+                coupangHref={coupangHref}
+                naverHref={naverHref}
+                officialMallHref={officialMallHref}
+                coupangOnly={coupangOnly}
+                size="sm"
+                onCoupangClick={() =>
+                  purchaseClick({
+                    productName: name,
+                    brand,
+                    store: "coupang",
+                    productId,
+                    destinationUrl: coupangHref ?? undefined,
+                    placement: "product_card_purchase_row",
+                  })
+                }
+                onNaverClick={() =>
+                  purchaseClick({
+                    productName: name,
+                    brand,
+                    store: "naver",
+                    productId,
+                    destinationUrl: naverHref ?? undefined,
+                    placement: "product_card_purchase_row",
+                  })
+                }
+                onOfficialClick={() =>
+                  purchaseClick({
+                    productName: name,
+                    brand,
+                    store: "official",
+                    productId,
+                    destinationUrl: officialMallHref ?? undefined,
+                    placement: "product_card_purchase_row",
+                  })
+                }
+              />
+            </div>
+            {slug && (
+              <CardShareButton
+                slug={slug}
+                productName={`${brand} ${name}`}
+                proteinG={proteinPerServing}
+              />
+            )}
           </div>
-        )}
-
-        <div className="cta-group mt-auto pt-0 md:pt-1">
-          <PurchaseLinkRow
-            coupangHref={coupangHref}
-            naverHref={naverHref}
-            officialMallHref={officialMallHref}
-            coupangOnly={coupangOnly}
-            size="sm"
-            onCoupangClick={() =>
-              purchaseClick({
-                productName: name,
-                brand,
-                store: "coupang",
-                productId,
-                destinationUrl: coupangHref ?? undefined,
-                placement: "product_card_purchase_row",
-              })
-            }
-            onNaverClick={() =>
-              purchaseClick({
-                productName: name,
-                brand,
-                store: "naver",
-                productId,
-                destinationUrl: naverHref ?? undefined,
-                placement: "product_card_purchase_row",
-              })
-            }
-            onOfficialClick={() =>
-              purchaseClick({
-                productName: name,
-                brand,
-                store: "official",
-                productId,
-                destinationUrl: officialMallHref ?? undefined,
-                placement: "product_card_purchase_row",
-              })
-            }
-          />
         </div>
       </div>
     </article>
