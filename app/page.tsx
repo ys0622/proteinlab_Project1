@@ -8,16 +8,9 @@ import HomeTrackedLink from "./components/HomeTrackedLink";
 import type { ProductDetailProps } from "./data/products";
 import { getProductsByCategoryAsync } from "./lib/productData";
 import { getProductImageUrl } from "./lib/productImage";
+import { hybridScore } from "./lib/productScoring";
 
 export const revalidate = 300; // 5분마다 재생성 (조회수 반영)
-
-// 실제 조회수 기반 점수 계산
-// views: KV에서 읽은 {slug: count} 맵
-// 조회수가 없으면 0으로 처리 (신제품은 초기에 하단에 위치)
-function getViewScore(slug: string | undefined, views: Record<string, number>): number {
-  if (!slug) return 0;
-  return views[slug] ?? 0;
-}
 
 const websiteJsonLd = {
   "@context": "https://schema.org",
@@ -107,19 +100,20 @@ export default async function Home() {
   const categoryCounts = { drink: drinks.length, bar: bars.length, yogurt: yogurts.length, shake: shakes.length };
   const totalCount = drinks.length + bars.length + yogurts.length + shakes.length;
 
-  // 4개 카테고리 모두 실제 조회수 기준 정렬
-  const sortByViews = (products: ProductDetailProps[], type: string) =>
+  // 4개 카테고리 모두 하이브리드 점수 기준 정렬
+  // = 실제 조회수 × 10 + 품질 점수(단백질 밀도·당류) + 신제품 보너스(30일 감쇠)
+  const sortByHybrid = (products: ProductDetailProps[], type: string) =>
     products
       .filter((p) => p.slug)
-      .map((p) => ({ p, score: getViewScore(p.slug, views[type] ?? {}) }))
+      .map((p) => ({ p, score: hybridScore(p, views[type]?.[p.slug ?? ""] ?? 0) }))
       .sort((a, b) => b.score - a.score)
       .slice(0, 10)
       .map(({ p }) => p);
 
-  const topDrinks  = sortByViews(drinks,  "drink");
-  const topBars    = sortByViews(bars,    "bar");
-  const topYogurts = sortByViews(yogurts, "yogurt");
-  const topShakes  = sortByViews(shakes,  "shake");
+  const topDrinks  = sortByHybrid(drinks,  "drink");
+  const topBars    = sortByHybrid(bars,    "bar");
+  const topYogurts = sortByHybrid(yogurts, "yogurt");
+  const topShakes  = sortByHybrid(shakes,  "shake");
 
   const carouselProducts = {
     drink: topDrinks.map(toCarouselProduct),
