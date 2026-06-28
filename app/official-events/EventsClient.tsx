@@ -84,7 +84,7 @@ const PRODUCT_TYPE_META: Record<
   },
 };
 
-const CHECKED_DATE_LABEL = "2026-06-02 확인";
+const CHECKED_DATE_LABEL = "2026-06-28 확인";
 
 const CATEGORY_EMOJI: Record<EventCategory, string> = {
   할인: "🔖",
@@ -167,7 +167,7 @@ const rawDrinkBrands: BrandCard[] = [
     note: "현재 등록 제품 7개",
     productCount: 7,
     events: [
-      { category: "증정", periodLabel: "뉴케어 페스타 2026-04-17~2026-06-14", description: "대상웰라이프 공식몰의 뉴케어 페스타가 2026-06-14까지 진행 중입니다. 퀴즈 이벤트와 커피 기프티콘 증정 배너가 함께 노출되며, 페스타 종료 전 기획전 진입가를 먼저 확인하는 편이 좋습니다." },
+      { category: "증정", periodLabel: "수시 진행", description: "대상웰라이프 공식몰에서 세트 구성 구매 시 증정·퀴즈 이벤트가 반복적으로 열립니다. 현재 기획전 진입가와 증정 조건을 먼저 확인하는 편이 좋습니다." },
       { category: "쿠폰", periodLabel: CHECKED_DATE_LABEL, description: "쿠폰존 기준으로 뉴케어 전용 20% 할인 쿠폰이 3만 7천원 이상 결제 조건으로 노출됩니다. 웰페이·네이버페이 적립과 중복 적용 여부를 결제 직전에 확인하는 편이 좋습니다." },
       { category: "할인", periodLabel: CHECKED_DATE_LABEL, description: "뉴케어 전지현 광고제품 PICK 기준으로 올프로틴 고소한맛·초코맛·바나나맛 24팩이 각각 40% 행사로 노출됩니다. 체험팩 3천원 특가와 액티브 행사 상품도 같이 열려 있어 단품보다 기획전 진입가를 먼저 보는 편이 좋습니다." },
       { category: "무료배송", periodLabel: CHECKED_DATE_LABEL, description: "페스타 페이지 기준으로 올프로틴 체험팩, 액티브 체험팩, 주요 24팩 행사 상품에 무료배송 표기가 함께 보입니다. 웰페이·네이버페이 적립과 합쳐 주문 직전 총액 기준을 같이 확인하는 편이 좋습니다." },
@@ -202,7 +202,7 @@ const rawDrinkBrands: BrandCard[] = [
     note: "현재 등록 제품 9개",
     productCount: 9,
     events: [
-      { category: "할인", periodLabel: CHECKED_DATE_LABEL, description: "4월 말 기준 랩노쉬 자사몰에서 프로틴 드링크 퍼펙트 4종 1+1 특가 노출이 확인됩니다. 드링크와 쉐이크를 함께 볼 때는 종료 배지보다 현재 판매 중 행사 상품을 먼저 확인하는 편이 좋습니다." },
+      { category: "할인", periodLabel: CHECKED_DATE_LABEL, description: "랩노쉬 자사몰에서 프로틴 드링크 라인 1+1 특가 및 묶음 구성 노출이 확인됩니다. 드링크와 쉐이크를 함께 볼 때는 종료 배지보다 현재 판매 중 행사 상품을 먼저 확인하는 편이 좋습니다." },
       { category: "쿠폰", periodLabel: "회원 혜택", description: "랩노쉬는 행사 상품과 일반 상품이 섞여 보여 할인 종료 배지가 함께 뜨는 경우가 있습니다. 신규 회원 혜택보다 현재 살아 있는 행사 SKU인지 먼저 구분해서 보는 편이 안전합니다." },
     ],
   },
@@ -362,7 +362,7 @@ const rawShakeBrands: BrandCard[] = [
     note: "현재 등록 쉐이크 9개",
     productCount: 9,
     events: [
-      { category: "할인", periodLabel: CHECKED_DATE_LABEL, description: "4월 말 기준 랩노쉬 자사몰에서 프로틴 드링크 1+1 특가와 일부 할인광 상품 노출이 확인됩니다." },
+      { category: "할인", periodLabel: CHECKED_DATE_LABEL, description: "랩노쉬 자사몰에서 프로틴 드링크 1+1 특가와 묶음 할인 상품 노출이 확인됩니다. 종료 배지와 진행 중 상품을 구분해서 보는 편이 안전합니다." },
       { category: "무료배송", periodLabel: CHECKED_DATE_LABEL, description: "자사몰 상품 페이지 기준 40,000원 이상 무료배송 문구가 확인됩니다. 소량 구매보다 묶음 구성에서 체감가 차이가 더 크게 납니다." },
     ],
   },
