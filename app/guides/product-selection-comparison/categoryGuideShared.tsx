@@ -98,22 +98,36 @@ function PurchaseCards({ links }: { links: CategoryPurchaseLink[] }) {
       {links.map((item) => {
         const product = getProductBySlug(item.slug);
         if (!product) return null;
-        const href = getCoupangRedirectHref(product.coupangUrl, "guide", product.slug);
+        const coupangHref = getCoupangRedirectHref(product.coupangUrl, "guide", product.slug);
+        const detailHref = `/product/${product.slug}`;
         return (
-          <a
+          <div
             key={item.slug}
-            href={href ?? "#"}
-            className="rounded-2xl border border-[#d9e4f0] bg-[#f7f9fc] px-4 py-4 transition-colors hover:bg-[#eef3f9]"
-            target={href ? "_blank" : undefined}
-            rel={href ? "noreferrer noopener" : undefined}
+            className="rounded-2xl border border-[#d9e4f0] bg-[#f7f9fc] px-4 py-4"
           >
-            <p className="text-xs font-semibold tracking-[0.08em] text-[#4a6178]">쿠팡에서 가격 확인</p>
-            <p className="mt-2 text-sm font-semibold text-[var(--foreground)]">{item.label}</p>
+            <p className="text-xs font-semibold tracking-[0.08em] text-[#4a6178]">ProteinLab 추천</p>
+            <Link href={detailHref} className="mt-2 block text-sm font-semibold text-[var(--foreground)] hover:underline">
+              {item.label}
+            </Link>
             <p className="mt-1 text-sm leading-6 text-[var(--foreground-muted)]">
-              {product.brand} {product.name}
+              {product.brand} · 단백질 {product.proteinPerServing}g
             </p>
-            <p className="mt-3 text-xs font-medium text-[#24543d]">옵션과 최신 가격 보기 →</p>
-          </a>
+            <div className="mt-3 flex items-center gap-2">
+              <Link href={detailHref} className="text-xs font-medium text-[var(--accent)] hover:underline">
+                성분 상세 보기 →
+              </Link>
+              {coupangHref && (
+                <a
+                  href={coupangHref}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  className="ml-auto rounded-full bg-[#fee500] px-3 py-1 text-xs font-bold text-[#1a1a1a]"
+                >
+                  최저가 확인
+                </a>
+              )}
+            </div>
+          </div>
         );
       })}
     </div>

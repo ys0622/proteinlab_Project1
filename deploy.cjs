@@ -6,27 +6,17 @@ const path = require('path');
 
 const patchFile = path.resolve(__dirname, 'wrangler-fs-patch.cjs');
 
-const result = spawnSync(
-  process.execPath,
-  ['--require', patchFile, ...process.argv.slice(2)],
-  {
-    stdio: 'inherit',
-    env: {
-      ...process.env,
-      NODE_OPTIONS: (process.env.NODE_OPTIONS || '') + ` --require ${patchFile}`,
-    },
-  }
-);
-
-// Actually just spawn wrangler with the patch
 const wrangler = spawnSync(
   'npx',
   ['wrangler', 'deploy'],
   {
-    stdio: 'inherit',
+    stdio: ['ignore', 'inherit', 'inherit'],
     env: {
       ...process.env,
       NODE_OPTIONS: `--require ${patchFile}`,
+      CI: 'true',
+      WRANGLER_SEND_METRICS: 'false',
+      FORCE_COLOR: '1',
     },
     shell: true,
   }

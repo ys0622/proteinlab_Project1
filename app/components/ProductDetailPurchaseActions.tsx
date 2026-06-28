@@ -22,7 +22,7 @@ export default function ProductDetailPurchaseActions({
 }: ProductDetailPurchaseActionsProps) {
   const placement = "product_detail_hero_purchase";
   const hasPurchaseLink = Boolean(coupangHref || naverHref || officialMallHref);
-  const coupangCta = "쿠팡에서 가격 확인";
+  const coupangCta = "최저가 확인";
   const naverCta = "네이버 가격 비교";
   const officialCta = "공식몰 혜택 확인";
 

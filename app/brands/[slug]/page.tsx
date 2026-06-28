@@ -7,6 +7,7 @@ import TrackedLink from "../../components/TrackedLink";
 import { getAllProducts } from "../../data/products";
 import { getCategoryLabel, type ProductCategory } from "../../lib/categories";
 import { getBrandSummary, slugToBrand } from "../../lib/brandHubs";
+import type { ProductDetailProps } from "../../data/products";
 
 function getBrandQuickLinks(brand: string) {
   const map: Record<string, { href: string; title: string; description: string }[]> = {
@@ -162,9 +163,23 @@ export default async function BrandPage({ params }: PageProps) {
     ],
   };
 
+  const itemListJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: `${brand.brand} 단백질 제품 목록`,
+    numberOfItems: brand.items.length,
+    itemListElement: brand.items.map((p: ProductDetailProps, i: number) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      url: `https://proteinlab.kr/product/${p.slug}`,
+      name: `${p.brand} ${p.name}`,
+    })),
+  };
+
   return (
     <div className="min-h-screen bg-white">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListJsonLd) }} />
       <Header />
 
       <section
@@ -265,6 +280,46 @@ export default async function BrandPage({ params }: PageProps) {
             </div>
           </section>
         ) : null}
+
+        <section className="mt-8">
+          <div className="mb-4 space-y-1">
+            <h2 className="text-lg font-bold text-[var(--foreground)]">성분 비교표</h2>
+            <p className="text-sm leading-6 text-[var(--foreground-muted)]">
+              {brand.brand} 제품 전체를 단백질·칼로리·당류 기준으로 한눈에 비교합니다.
+            </p>
+          </div>
+          <div className="overflow-x-auto rounded-2xl border border-[#e8e6e3]">
+            <table className="min-w-full border-collapse text-left text-sm">
+              <thead className="bg-[#f7f4ee]">
+                <tr>
+                  <th className="px-4 py-3 font-semibold text-[var(--foreground)]">제품명</th>
+                  <th className="px-3 py-3 text-right font-semibold text-[var(--foreground)]">단백질</th>
+                  <th className="px-3 py-3 text-right font-semibold text-[var(--foreground)]">칼로리</th>
+                  <th className="px-3 py-3 text-right font-semibold text-[var(--foreground)]">당류</th>
+                  <th className="px-3 py-3 text-right font-semibold text-[var(--foreground)]">용량</th>
+                </tr>
+              </thead>
+              <tbody>
+                {brand.items
+                  .slice()
+                  .sort((a: ProductDetailProps, b: ProductDetailProps) => b.proteinPerServing - a.proteinPerServing)
+                  .map((p: ProductDetailProps) => (
+                    <tr key={p.slug} className="border-t border-[#e8e6e3] hover:bg-[#fdfaf5]">
+                      <td className="px-4 py-3">
+                        <Link href={`/product/${p.slug}`} className="font-medium text-[var(--foreground)] hover:text-[var(--accent)] hover:underline">
+                          {p.name}
+                        </Link>
+                      </td>
+                      <td className="px-3 py-3 text-right font-bold text-[var(--accent)]">{p.proteinPerServing}g</td>
+                      <td className="px-3 py-3 text-right text-[var(--foreground-muted)]">{p.calories != null ? `${p.calories}kcal` : "-"}</td>
+                      <td className="px-3 py-3 text-right text-[var(--foreground-muted)]">{p.sugar != null ? `${p.sugar}g` : "-"}</td>
+                      <td className="px-3 py-3 text-right text-[var(--foreground-muted)]">{p.capacity ?? "-"}</td>
+                    </tr>
+                  ))}
+              </tbody>
+            </table>
+          </div>
+        </section>
 
         <section className="mt-8">
           <div className="mb-4 space-y-1">

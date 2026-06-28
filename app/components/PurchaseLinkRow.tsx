@@ -25,8 +25,8 @@ export default function PurchaseLinkRow({
   officialMallHref,
   size = "md",
   coupangOnly = false,
-  coupangLabel = "쿠팡 구매",
-  coupangMobileLabel = "쿠팡",
+  coupangLabel = "최저가 확인",
+  coupangMobileLabel = "최저가",
   naverLabel = "네이버 쇼핑",
   naverMobileLabel = "네이버",
   officialLabel = "공식몰",
@@ -39,8 +39,8 @@ export default function PurchaseLinkRow({
     <div className={coupangOnly ? "purchase-link-row purchase-link-row--single" : "purchase-link-row"}>
       <PurchaseLinkButton
         href={coupangHref}
-        label={coupangOnly ? "쿠팡에서 구매하기" : coupangLabel}
-        mobileLabel={coupangOnly ? "쿠팡에서 구매" : coupangMobileLabel}
+        label={coupangOnly ? "최저가 확인" : coupangLabel}
+        mobileLabel={coupangOnly ? "최저가 확인" : coupangMobileLabel}
         tone="coupang"
         size={size}
         onClick={coupangHref ? onCoupangClick : undefined}

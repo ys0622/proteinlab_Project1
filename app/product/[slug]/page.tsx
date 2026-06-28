@@ -3,6 +3,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import AdminQuickEdit from "../../components/AdminQuickEdit";
 import ProductViewTracker from "../../components/ProductViewTracker";
+import RecentlyViewedTracker from "../../components/RecentlyViewedTracker";
+import RecentlyViewedSection from "../../components/RecentlyViewedSection";
 import ShareButton from "../../components/ShareButton";
 import AffiliateDisclosure from "../../components/AffiliateDisclosure";
 import BackButton from "../../components/BackButton";
@@ -906,6 +908,18 @@ export default async function ProductDetailPage({ params }: PageProps) {
         </div>
       </main>
 
+      <RecentlyViewedTracker slug={slug} />
+      <div className="mx-auto max-w-[1200px] px-4 pb-8 md:px-6">
+        <RecentlyViewedSection
+          products={getAllStaticProducts().map((p) => ({
+            slug: p.slug ?? "",
+            brand: p.brand,
+            name: p.name,
+            proteinPerServing: p.proteinPerServing,
+          }))}
+          currentSlug={slug}
+        />
+      </div>
       <Footer />
     </div>
   );
