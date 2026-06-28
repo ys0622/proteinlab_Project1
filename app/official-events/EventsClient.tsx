@@ -634,6 +634,22 @@ const PRODUCT_LINK_SOURCES: Record<ProductType, ProductLinkSource[]> = {
   shake: shakeProductsData as ProductLinkSource[],
 };
 
+function wrapCoupangAffiliate(url: string, category: string): string {
+  if (!url || url === "#") return url;
+  try {
+    const parsed = new URL(url);
+    if (parsed.hostname.includes("coupang.com") && parsed.pathname.includes("/vp/products/")) {
+      const pageKey = parsed.pathname.match(/\/vp\/products\/(\d+)/)?.[1];
+      const itemId = parsed.searchParams.get("itemId");
+      const vendorItemId = parsed.searchParams.get("vendorItemId");
+      if (pageKey && itemId && vendorItemId) {
+        return `/api/out/coupang?pageKey=${pageKey}&itemId=${itemId}&vendorItemId=${vendorItemId}&category=${category}`;
+      }
+    }
+  } catch {}
+  return url;
+}
+
 function getMostCommonUrl(products: ProductLinkSource[], key: keyof ProductLinkSource) {
   const counts = new Map<string, number>();
 
@@ -842,7 +858,8 @@ function buildBrandCards(productType: ProductType, curatedBrands: BrandCard[]) {
       !curated?.storeUrl ||
       curated.storeUrl === "https://www.coupang.com/" ||
       curated.storeUrl === "#";
-    const storeUrl = isPlaceholderUrl ? bestDataUrl : curated.storeUrl;
+    const rawStoreUrl = isPlaceholderUrl ? bestDataUrl : curated.storeUrl;
+    const storeUrl = wrapCoupangAffiliate(rawStoreUrl, productType);
     const storeType = curated?.storeType || inferStoreType(storeUrl);
     const events =
       curated?.events?.length

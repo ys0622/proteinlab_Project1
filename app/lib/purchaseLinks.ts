@@ -209,7 +209,7 @@ function buildCoupangPartnersProductUrl(
     return null;
   }
 
-  const url = new URL("https://link.coupang.com/re/AFFSDP");
+  const url = new URL("https://link.coupang.com/a/AFFSDP");
   url.searchParams.set("lptag", COUPANG_PARTNERS_TAG);
   const subId = getCoupangSubId(category);
   if (subId) {

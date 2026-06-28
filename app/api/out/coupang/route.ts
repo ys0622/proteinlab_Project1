@@ -81,7 +81,7 @@ function buildRuntimePartnersUrl(
   if (!params) return null;
 
   const subId = category ?? "proteinlab";
-  const url = new URL("https://link.coupang.com/re/AFFSDP");
+  const url = new URL("https://link.coupang.com/a/AFFSDP");
   url.searchParams.set("lptag", tag);
   url.searchParams.set("subid", subId);
   url.searchParams.set("pageKey", params.pageKey);

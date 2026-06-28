@@ -16,38 +16,38 @@ const SITE_URL = "https://proteinlab.kr";
 
 // Known last-modified dates for key pages (avoid lying to Google with new Date())
 const PAGE_DATES: Record<string, string> = {
-  "/": "2026-05-29",
-  "/drinks": "2026-05-29",
-  "/bars": "2026-05-29",
-  "/shake": "2026-05-29",
-  "/yogurt": "2026-05-29",
-  "/products": "2026-05-29",
-  "/ranking": "2026-05-29",
-  "/recommend": "2026-05-29",
-  "/guides": "2026-05-29",
-  "/guides/basics/daily-requirement": "2026-05-29",
-  "/guides/basics/deficiency-symptoms": "2026-04-01",
-  "/guides/basics/digestion": "2026-04-01",
-  "/guides/basics/immunity-hormone": "2026-04-01",
-  "/guides/basics/muscle": "2026-04-01",
-  "/guides/basics/protein-deficiency-self-check": "2026-04-01",
-  "/guides/basics/protein-drink-vs-powder": "2026-04-01",
-  "/guides/basics/role-overview": "2026-04-01",
-  "/official-events": "2026-05-29",
-  "/compare": "2026-03-01",
-  "/topics": "2026-05-29",
-  "/brands": "2026-03-01",
+  "/": "2026-06-28",
+  "/drinks": "2026-06-28",
+  "/bars": "2026-06-28",
+  "/shake": "2026-06-28",
+  "/yogurt": "2026-06-28",
+  "/products": "2026-06-28",
+  "/ranking": "2026-06-28",
+  "/recommend": "2026-06-28",
+  "/guides": "2026-06-28",
+  "/guides/basics/daily-requirement": "2026-06-01",
+  "/guides/basics/deficiency-symptoms": "2026-06-01",
+  "/guides/basics/digestion": "2026-06-01",
+  "/guides/basics/immunity-hormone": "2026-06-01",
+  "/guides/basics/muscle": "2026-06-01",
+  "/guides/basics/protein-deficiency-self-check": "2026-06-01",
+  "/guides/basics/protein-drink-vs-powder": "2026-06-01",
+  "/guides/basics/role-overview": "2026-06-01",
+  "/official-events": "2026-06-28",
+  "/compare": "2026-06-01",
+  "/topics": "2026-06-28",
+  "/brands": "2026-06-01",
   "/about": "2026-03-01",
   "/contact": "2026-03-01",
   "/privacy": "2026-03-01",
   "/disclaimer": "2026-03-01",
   "/cookie-settings": "2026-03-01",
-  "/grade-criteria": "2026-03-01",
-  "/search": "2026-03-01",
+  "/grade-criteria": "2026-06-01",
+  "/search": "2026-06-01",
 };
 
-const FALLBACK_GUIDE_DATE = "2026-04-15";
-const FALLBACK_PRODUCT_DATE = "2026-05-29";
+const FALLBACK_GUIDE_DATE = "2026-06-01";
+const FALLBACK_PRODUCT_DATE = "2026-06-28";
 
 const staticRoutes = [
   "/",

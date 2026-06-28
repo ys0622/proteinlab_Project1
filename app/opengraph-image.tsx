@@ -66,7 +66,7 @@ export default async function Image() {
           {/* Category pills */}
           <div style={{ display: "flex", gap: "10px", marginTop: "40px" }}>
             {[
-              { label: "🥤 음료", count: "110" },
+              { label: "🥤 음료", count: "120" },
               { label: "🍫 바", count: "100" },
               { label: "🥣 요거트", count: "57" },
               { label: "🥛 쉐이크", count: "88" },

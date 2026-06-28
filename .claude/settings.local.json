@@ -145,7 +145,11 @@
       "Bash(NODE_OPTIONS=\"--max-old-space-size=3500\" npm run build)",
       "Bash(del scan_guides.js batch_guide_cta.js)",
       "Bash(grep -r \"NEXT_PUBLIC_ADSENSE\" .env* .env.local .env.production)",
-      "Bash(ls .env*)"
+      "Bash(ls .env*)",
+      "Bash(Remove-Item -Recurse -Force .open-next)",
+      "Bash(Remove-Item -Force \"D:\\\\proteinlab\\\\.next\\\\lock\" -ErrorAction SilentlyContinue)",
+      "Bash(Start-Sleep 2)",
+      "Bash(Write-Host \"done\")"
     ]
   }
 }

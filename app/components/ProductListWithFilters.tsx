@@ -1,6 +1,6 @@
 ﻿"use client";
 
-import { usePathname, useSearchParams } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { Suspense, useEffect, useMemo, useState } from "react";
 import type { ProductDetailProps } from "../data/products";
 import { type ProductCategory } from "../lib/categories";
@@ -216,6 +216,7 @@ function applySort(
 type ProductListWithFiltersInnerProps = ProductListWithFiltersProps & {
   storageKey: string;
   initialPersistedState: Partial<PersistedFilterState> | null;
+  onUrlStateChange?: (sort: SortOptionValue, searchQuery: string) => void;
 };
 
 function ProductListWithFiltersInner(props: ProductListWithFiltersInnerProps) {
@@ -226,6 +227,7 @@ function ProductListWithFiltersInner(props: ProductListWithFiltersInnerProps) {
     categoryCounts,
     storageKey,
     initialPersistedState,
+    onUrlStateChange,
     stickyTabs = true,
     tabsPlacement = "top",
   } = props;
@@ -338,6 +340,11 @@ function ProductListWithFiltersInner(props: ProductListWithFiltersInnerProps) {
 
     window.sessionStorage.setItem(storageKey, JSON.stringify(persistedState));
   }, [barFilters, drinkFilters, page, searchQuery, shakeFilters, sort, storageKey, yogurtFilters]);
+
+  useEffect(() => {
+    onUrlStateChange?.(sort, searchQuery);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [sort, searchQuery]);
 
   const visible = useMemo(
     () => (isDesktop ? sorted : sorted.slice(0, page * PAGE_SIZE)),
@@ -639,6 +646,7 @@ function ProductListWithFiltersInner(props: ProductListWithFiltersInnerProps) {
 
 function ProductListWithFiltersResolved(props: ProductListWithFiltersProps) {
   const pathname = usePathname();
+  const router = useRouter();
   const searchParams = useSearchParams();
   const resolvedCurationSlug =
     props.curationSlug ?? (searchParams.get("curation") || undefined);
@@ -648,13 +656,40 @@ function ProductListWithFiltersResolved(props: ProductListWithFiltersProps) {
   );
   const initialPersistedState = getPersistedFilterState(storageKey);
 
+  // URL params take priority over sessionStorage for sort and searchQuery
+  const urlSort = normalizeSortValue(searchParams.get("sort") as SortOptionValue | null);
+  const urlQuery = searchParams.get("q") ?? "";
+  const mergedInitialState: Partial<PersistedFilterState> = {
+    ...initialPersistedState,
+    ...(searchParams.has("sort") ? { sort: urlSort } : {}),
+    ...(searchParams.has("q") ? { searchQuery: urlQuery } : {}),
+  };
+
+  function updateUrlParams(sort: SortOptionValue, searchQuery: string) {
+    const params = new URLSearchParams(searchParams.toString());
+    if (sort && sort !== "recommended") {
+      params.set("sort", sort);
+    } else {
+      params.delete("sort");
+    }
+    if (searchQuery) {
+      params.set("q", searchQuery);
+    } else {
+      params.delete("q");
+    }
+    const newSearch = params.toString();
+    const newUrl = newSearch ? `${pathname}?${newSearch}` : pathname;
+    router.replace(newUrl, { scroll: false });
+  }
+
   return (
     <ProductListWithFiltersInner
       key={storageKey}
       {...props}
       curationSlug={resolvedCurationSlug}
       storageKey={storageKey}
-      initialPersistedState={initialPersistedState}
+      initialPersistedState={mergedInitialState}
+      onUrlStateChange={updateUrlParams}
     />
   );
 }
