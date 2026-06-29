@@ -473,14 +473,16 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .purchase-link--coupang {
-  background: #346aff;
-  border-color: #346aff;
+  background: linear-gradient(135deg, #3a72ff 0%, #2255e8 100%);
+  border-color: #2a5de0;
   color: #fff;
+  box-shadow: 0 2px 8px rgba(52, 106, 255, 0.22);
 }
 
 .purchase-link--coupang:hover {
-  background: #2557de;
-  border-color: #2557de;
+  background: linear-gradient(135deg, #2a5de0 0%, #1a47cc 100%);
+  border-color: #1a47cc;
+  box-shadow: 0 4px 16px rgba(52, 106, 255, 0.38);
 }
 
 .purchase-link--naver {
@@ -1118,9 +1120,9 @@ h1, h2, h3, h4, h5, h6 {
   }
 
   .purchase-link--sm {
-    min-height: 28px;
-    font-size: 8px;
-    padding: 0 4px;
+    min-height: 34px;
+    font-size: 10px;
+    padding: 0 6px;
   }
 
   .purchase-link--md {

@@ -50,9 +50,12 @@ export default function GuideBuySection() {
                 className="flex flex-col rounded-xl border border-[#e8e6e3] bg-white p-3"
               >
                 <p className="text-[11px] text-[var(--foreground-muted)]">{product.brand}</p>
-                <p className="mt-0.5 line-clamp-2 min-h-[2.5rem] text-sm font-semibold leading-tight text-[var(--foreground)]">
+                <Link
+                  href={`/product/${product.slug}`}
+                  className="mt-0.5 line-clamp-2 min-h-[2.5rem] text-sm font-semibold leading-tight text-[var(--foreground)] hover:text-[var(--accent)]"
+                >
                   {product.name}
-                </p>
+                </Link>
                 <p className="mt-1.5 text-xs font-bold text-[var(--accent)]">
                   단백질 {product.proteinPerServing}g
                   {product.sugar != null ? ` · 당류 ${product.sugar}g` : ""}
@@ -62,6 +65,7 @@ export default function GuideBuySection() {
                     coupangHref={coupangHref}
                     naverHref={naverHref}
                     officialMallHref={officialMallHref}
+                    coupangOnly={true}
                     size="sm"
                   />
                 </div>
