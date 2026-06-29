@@ -4859,6 +4859,7 @@
     "bcaa": "-",
     "proteinSource": "혼합",
     "fat": 0,
+    "sodium": 48,
     "calorieDensity": "25.0kcal/100ml",
     "drinkType": "워터형",
     "nutritionPerBottle": {
