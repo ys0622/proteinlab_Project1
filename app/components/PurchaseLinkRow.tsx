@@ -35,17 +35,26 @@ export default function PurchaseLinkRow({
   onNaverClick,
   onOfficialClick,
 }: PurchaseLinkRowProps) {
+  const hasCoupang = Boolean(coupangHref);
+  const rowClass = coupangOnly
+    ? "purchase-link-row purchase-link-row--single"
+    : hasCoupang
+      ? "purchase-link-row"
+      : "purchase-link-row purchase-link-row--two";
+
   return (
-    <div className={coupangOnly ? "purchase-link-row purchase-link-row--single" : "purchase-link-row"}>
-      <PurchaseLinkButton
-        href={coupangHref}
-        label={coupangOnly ? "최저가 확인" : coupangLabel}
-        mobileLabel={coupangOnly ? "최저가 확인" : coupangMobileLabel}
-        tone="coupang"
-        size={size}
-        onClick={coupangHref ? onCoupangClick : undefined}
-        title={coupangHref ? undefined : "쿠팡 구매 링크를 아직 확인 중입니다."}
-      />
+    <div className={rowClass}>
+      {(hasCoupang || coupangOnly) && (
+        <PurchaseLinkButton
+          href={coupangHref}
+          label={coupangOnly ? "최저가 확인" : coupangLabel}
+          mobileLabel={coupangOnly ? "최저가 확인" : coupangMobileLabel}
+          tone="coupang"
+          size={size}
+          onClick={coupangHref ? onCoupangClick : undefined}
+          title={coupangHref ? undefined : "쿠팡 구매 링크를 아직 확인 중입니다."}
+        />
+      )}
       {!coupangOnly && (
         <PurchaseLinkButton
           href={naverHref}
