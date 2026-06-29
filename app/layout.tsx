@@ -1,4 +1,4 @@
-﻿import type { Metadata } from "next";
+﻿import type { Metadata, Viewport } from "next";
 import Script from "next/script";
 import { Suspense } from "react";
 import AnalyticsPageViewTracker from "./components/AnalyticsPageViewTracker";
@@ -11,6 +11,10 @@ import "./globals.css";
 
 const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
 const isProd = process.env.NODE_ENV === "production";
+
+export const viewport: Viewport = {
+  colorScheme: "light",
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://proteinlab.kr"),
@@ -71,10 +75,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ko" style={{ colorScheme: "light" }}>
-      <head>
-        <meta name="color-scheme" content="light" />
-      </head>
+    <html lang="ko">
       <body className="antialiased">
         {GA_ID ? (
           <>
