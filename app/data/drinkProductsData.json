@@ -2800,7 +2800,9 @@
     },
     "coupangUrl": "https://www.coupang.com/vp/products/9165375222?itemId=27003819134&searchId=820400aef6f542c0960ee8fa489b92d6&sourceType=brandstore_sdp_atf_topbadge-carousel&storeId=113103&subSourceType=brandstore_sdp_atf_topbadge-carousel&vendorId=A00003172&vendorItemId=93972516698",
     "naverUrl": "https://search.shopping.naver.com/search/all?query=%EB%8D%94%EB%8B%A8%EB%B0%B1%20%EB%93%9C%EB%A7%81%ED%81%AC%20(%EB%8B%A4%ED%81%AC%EC%B4%88%EC%BD%94)&prevQuery=%EB%8D%94%EB%8B%A8%EB%B0%B1%20%EB%93%9C%EB%A7%81%ED%81%AC%20(%EB%8D%94%EB%B8%94%EC%B4%88%EC%BD%94)&vertical=search",
-    "officialUrl": "https://brand.naver.com/binggrae/category/54e40c847f15417fae9351c9478ee909?cp=1"
+    "officialUrl": "https://brand.naver.com/binggrae/category/54e40c847f15417fae9351c9478ee909?cp=1",
+    "fat": 1,
+    "sodium": 62
   },
   {
     "slug": "danbaek-balance-original-190",
@@ -4521,6 +4523,7 @@
     "bcaa": "1000mg",
     "proteinSource": "혼합",
     "fat": 6,
+    "sodium": 170,
     "calorieDensity": "78.9kcal/100ml",
     "drinkType": "밀크형",
     "nutritionPerBottle": {
@@ -4896,6 +4899,7 @@
     "bcaa": "1000mg",
     "proteinSource": "혼합",
     "fat": 6,
+    "sodium": 170,
     "calorieDensity": "78.9kcal/100ml",
     "drinkType": "밀크형",
     "nutritionPerBottle": {

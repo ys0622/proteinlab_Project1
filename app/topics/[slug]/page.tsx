@@ -129,6 +129,7 @@ export default async function TopicLandingPage({ params }: PageProps) {
 
   const quickLinks = getTopicQuickLinks(topic.slug);
 
+  const topicUrl = `https://proteinlab.kr/topics/${topic.slug}`;
   const jsonLd = [
     {
       "@context": "https://schema.org",
@@ -136,7 +137,7 @@ export default async function TopicLandingPage({ params }: PageProps) {
       itemListElement: [
         { "@type": "ListItem", position: 1, name: "ProteinLab", item: "https://proteinlab.kr/" },
         { "@type": "ListItem", position: 2, name: "검색 주제", item: "https://proteinlab.kr/topics" },
-        { "@type": "ListItem", position: 3, name: topic.title, item: `https://proteinlab.kr/topics/${topic.slug}` },
+        { "@type": "ListItem", position: 3, name: topic.title, item: topicUrl },
       ],
     },
     {
@@ -144,7 +145,29 @@ export default async function TopicLandingPage({ params }: PageProps) {
       "@type": "CollectionPage",
       name: topic.title,
       description: topic.description,
-      url: `https://proteinlab.kr/topics/${topic.slug}`,
+      url: topicUrl,
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: [
+        {
+          "@type": "Question",
+          name: `${topic.title}을 고를 때 가장 중요한 기준은 무엇인가요?`,
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: `${topic.intro} ${topic.bullets[0] ?? "단백질 함량, 당류, 칼로리를 함께 비교하는 것이 좋습니다."}`,
+          },
+        },
+        {
+          "@type": "Question",
+          name: `${topic.title} 비교는 어디서 할 수 있나요?`,
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: `ProteinLab에서 ${topic.title} 관련 제품을 단백질·당류·칼로리 기준으로 바로 비교할 수 있습니다. 비교 페이지와 추천 가이드를 통해 후보를 빠르게 좁힐 수 있습니다.`,
+          },
+        },
+      ],
     },
   ];
 

@@ -56,6 +56,7 @@ export default async function CompareLandingPage({ params }: PageProps) {
     .filter((item): item is NonNullable<typeof item> => item != null);
 
   const compareHref = `/compare?slugs=${landing.productSlugs.join(",")}`;
+  const canonical = `https://proteinlab.kr/compare/${landing.slug}`;
   const jsonLd = [
     {
       "@context": "https://schema.org",
@@ -63,7 +64,7 @@ export default async function CompareLandingPage({ params }: PageProps) {
       itemListElement: [
         { "@type": "ListItem", position: 1, name: "ProteinLab", item: "https://proteinlab.kr/" },
         { "@type": "ListItem", position: 2, name: "제품 비교", item: "https://proteinlab.kr/compare" },
-        { "@type": "ListItem", position: 3, name: landing.title, item: `https://proteinlab.kr/compare/${landing.slug}` },
+        { "@type": "ListItem", position: 3, name: landing.title, item: canonical },
       ],
     },
     {
@@ -71,7 +72,41 @@ export default async function CompareLandingPage({ params }: PageProps) {
       "@type": "CollectionPage",
       name: landing.title,
       description: landing.description,
-      url: `https://proteinlab.kr/compare/${landing.slug}`,
+      url: canonical,
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      name: landing.title,
+      numberOfItems: products.length,
+      itemListElement: products.map((p, i) => ({
+        "@type": "ListItem",
+        position: i + 1,
+        url: `https://proteinlab.kr/product/${p.slug}`,
+        name: `${p.brand} ${p.name}`,
+      })),
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: [
+        {
+          "@type": "Question",
+          name: `${landing.title}에서 가장 중요하게 봐야 할 기준은 무엇인가요?`,
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: `${landing.intro} 단백질 함량, 당류, 칼로리, 단백질 밀도를 함께 비교하면 실제 체감 차이를 더 잘 파악할 수 있습니다.`,
+          },
+        },
+        {
+          "@type": "Question",
+          name: `${landing.title} 중 어떤 제품을 선택해야 하나요?`,
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: `목적에 따라 달라집니다. 운동 후 보충이 목적이면 단백질 함량과 밀도를, 다이어트 목적이면 당류와 칼로리를 우선 기준으로 비교해보세요. ProteinLab 비교표에서 수치를 나란히 확인할 수 있습니다.`,
+          },
+        },
+      ],
     },
   ];
 
