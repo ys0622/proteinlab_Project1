@@ -117,7 +117,13 @@ body {
     --accent-hover: #243d2b;
     --accent-light: #eaf2ec;
   }
-  html, body {
+  html {
+    background: #ffffff !important;
+    color: #1a1a1a !important;
+    filter: none !important;
+    -webkit-filter: none !important;
+  }
+  body {
     background: #ffffff !important;
     color: #1a1a1a !important;
   }

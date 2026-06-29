@@ -96,6 +96,13 @@ export default function RootLayout({
             </Script>
           </>
         ) : null}
+        <Script
+          id="prevent-dark-mode"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `document.documentElement.style.colorScheme='only light';document.documentElement.style.backgroundColor='#ffffff';`,
+          }}
+        />
         <FavoritesProvider>
           <CompareProvider>
             <Suspense fallback={null}>
