@@ -2,7 +2,7 @@
 @import "tailwindcss";
 
 :root {
-  color-scheme: light;
+  color-scheme: only light;
   --font-family: Pretendard, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans KR", sans-serif;
   --background: #ffffff;
   --background-card: #ffffff;
@@ -86,7 +86,7 @@ textarea {
 
 html {
   scrollbar-gutter: stable;
-  color-scheme: light;
+  color-scheme: only light;
 }
 
 body {
@@ -102,7 +102,7 @@ body {
 /* OS 다크모드 완전 무시 — 사이트는 라이트 전용 */
 @media (prefers-color-scheme: dark) {
   :root {
-    color-scheme: light;
+    color-scheme: only light;
     --background: #ffffff;
     --background-card: #ffffff;
     --foreground: #1a1a1a;

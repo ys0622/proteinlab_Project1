@@ -13,7 +13,7 @@ const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
 const isProd = process.env.NODE_ENV === "production";
 
 export const viewport: Viewport = {
-  colorScheme: "light",
+  colorScheme: "only light",
 };
 
 export const metadata: Metadata = {
