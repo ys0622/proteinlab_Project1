@@ -18,6 +18,10 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://proteinlab.kr"),
+  other: {
+    "color-scheme": "light",
+    "supported-color-schemes": "light",
+  },
   title: "단백질 제품 비교 — ProteinLab",
   description: "단백질 음료·바·요거트·쉐이크를 단백질 함량, 당류, 칼로리 기준으로 바로 비교합니다.",
   icons: {

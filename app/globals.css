@@ -116,6 +116,23 @@ body {
     --accent: #2d4a35;
     --accent-hover: #243d2b;
     --accent-light: #eaf2ec;
+    --curation-chip-bg: #eaf2ec;
+    --curation-chip-text: #2d4a35;
+    --white-warm: #fefefc;
+    --metric-value-color: #1b7f5b;
+    --grade-density-bg: #e7f3ec;
+    --grade-diet-bg: #eaf2ff;
+    --grade-performance-bg: #fff1e6;
+    --metric-badge-neutral-bg: #f6f2eb;
+    --metric-badge-neutral-text: #5e5850;
+    --metric-badge-grade-a-bg: #edf5f1;
+    --metric-badge-grade-a-text: #355b4a;
+    --metric-badge-grade-b-bg: #edf3fb;
+    --metric-badge-grade-b-text: #3f5f8d;
+    --metric-badge-grade-c-bg: #fbf3ea;
+    --metric-badge-grade-c-text: #8f6438;
+    --metric-badge-grade-d-bg: #f3f1ee;
+    --metric-badge-grade-d-text: #756d64;
   }
   html {
     background: #ffffff !important;
