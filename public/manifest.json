@@ -1,0 +1,26 @@
+{
+  "name": "ProteinLab — 단백질 제품 비교",
+  "short_name": "ProteinLab",
+  "description": "단백질 음료·바·요거트·쉐이크를 성분 데이터로 비교합니다.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FFFDF8",
+  "theme_color": "#2D4A35",
+  "lang": "ko",
+  "icons": [
+    {
+      "src": "/proteinlab-logo.png",
+      "sizes": "any",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["health", "fitness", "food"],
+  "screenshots": [
+    {
+      "src": "/proteinlab-logo.png",
+      "sizes": "81x88",
+      "type": "image/png"
+    }
+  ]
+}

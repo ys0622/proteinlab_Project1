@@ -7,13 +7,14 @@ import RecentlyViewedTracker from "../../components/RecentlyViewedTracker";
 import RecentlyViewedSection from "../../components/RecentlyViewedSection";
 import ShareButton from "../../components/ShareButton";
 import AffiliateDisclosure from "../../components/AffiliateDisclosure";
+import NewsletterBanner from "../../components/NewsletterBanner";
 import BackButton from "../../components/BackButton";
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
 import MetricBadgeGroup from "../../components/MetricBadgeGroup";
 import NutritionDetailSection from "../../components/NutritionDetailSection";
 import ProductBadge from "../../components/ProductBadge";
-import ProductDetailPurchaseActions from "../../components/ProductDetailPurchaseActions";
+import ProductDetailBuyWrapper from "../../components/ProductDetailBuyWrapper";
 import RelatedLinkCards from "../../components/RelatedLinkCards";
 import TrackedLink from "../../components/TrackedLink";
 import {
@@ -739,13 +740,16 @@ export default async function ProductDetailPage({ params }: PageProps) {
 
               {/* 구매 버튼 */}
               <div className="mt-auto">
-                <ProductDetailPurchaseActions
+                <ProductDetailBuyWrapper
                   brand={product.brand}
                   coupangHref={resolvedCoupangHref}
                   naverHref={naverHref}
                   officialMallHref={officialMallHref}
                   productName={product.name}
                   slug={product.slug}
+                  proteinG={product.proteinPerServing}
+                  imageUrl={productImageUrl ?? undefined}
+                  description={buildProductDescription(product)}
                 />
               </div>
             </div>
@@ -919,6 +923,9 @@ export default async function ProductDetailPage({ params }: PageProps) {
           }))}
           currentSlug={slug}
         />
+      </div>
+      <div className="mx-auto max-w-[1200px] px-4 pb-8 md:px-6">
+        <NewsletterBanner />
       </div>
       <Footer />
     </div>

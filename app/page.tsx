@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import GuideThumbImage from "./components/GuideThumbImage";
+import NewsletterBanner from "./components/NewsletterBanner";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import HomePopularCarousel, { type CarouselProduct } from "./components/HomePopularCarousel";
@@ -24,7 +25,14 @@ const websiteJsonLd = {
       inLanguage: "ko",
       potentialAction: { "@type": "SearchAction", target: "https://proteinlab.kr/search?q={search_term_string}", "query-input": "required name=search_term_string" },
     },
-    { "@type": "Organization", "@id": "https://proteinlab.kr/#organization", name: "ProteinLab", url: "https://proteinlab.kr" },
+    {
+      "@type": "Organization",
+      "@id": "https://proteinlab.kr/#organization",
+      name: "ProteinLab",
+      url: "https://proteinlab.kr",
+      logo: { "@type": "ImageObject", url: "https://proteinlab.kr/proteinlab-logo.png", width: 81, height: 88 },
+      description: "단백질 음료, 바, 요거트, 쉐이크를 성분 데이터로 비교·추천하는 프로틴랩 ProteinLab입니다.",
+    },
   ],
 };
 
@@ -316,6 +324,10 @@ export default async function Home() {
             ))}
           </div>
         </div>
+      </section>
+
+      <section className="mx-auto max-w-[1200px] px-4 pb-8 md:px-6">
+        <NewsletterBanner />
       </section>
 
       <Footer />

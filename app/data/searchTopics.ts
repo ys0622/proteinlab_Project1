@@ -284,6 +284,58 @@ const searchTopics: SearchTopic[] = [
       { href: "/topics/high-protein-greek-yogurt", title: "고단백 그릭요거트", description: "요거트 카테고리 랜딩으로 이동합니다." },
     ],
   },
+  {
+    slug: "protein-yogurt-recommend",
+    title: "단백질 요거트 추천",
+    description: "단백질 함량이 높은 그릭요거트와 드링킹 요거트를 칼로리, 당류 기준으로 비교 추천합니다.",
+    intro: "그릭요거트와 드링킹 요거트 모두 단백질 보충원으로 주목받고 있습니다. 각 제품의 성분을 기준으로 골라드립니다.",
+    bullets: ["그릭요거트·드링킹 요거트 단백질 함량 비교", "다이어트·운동 후 보충 목적별 추천", "편의점·마트 구매 가능 제품 위주"],
+    primaryCta: { href: "/yogurt", title: "단백질 요거트 전체 보기", description: "요거트 카테고리 전체 제품을 성분 기준으로 필터링합니다." },
+    relatedLinks: [
+      { href: "/topics/high-protein-greek-yogurt", title: "고단백 그릭요거트", description: "단백질 함량 기준 상위 제품만 봅니다." },
+      { href: "/topics/low-sugar-yogurt", title: "저당 요거트 추천", description: "당류를 기준으로 요거트를 고릅니다." },
+      { href: "/ranking", title: "단백질 제품 순위", description: "전체 카테고리 순위에서 요거트 위치를 확인합니다." },
+    ],
+  },
+  {
+    slug: "protein-shake-women",
+    title: "여성 단백질 쉐이크 추천",
+    description: "다이어트·체형 관리를 목표로 하는 여성에게 맞는 저당 고단백 쉐이크를 비교합니다.",
+    intro: "여성 운동인과 다이어터가 가장 많이 검색하는 단백질 쉐이크 기준을 정리했습니다.",
+    bullets: ["저당·저칼로리 쉐이크 중심 추천", "식사대용 vs 운동 후 보충 구분", "맛 선택 폭과 포만감 기준 제시"],
+    primaryCta: { href: "/shake", title: "단백질 쉐이크 전체 보기", description: "쉐이크 카테고리 전체 제품을 필터링합니다." },
+    relatedLinks: [
+      { href: "/topics/low-sugar-protein-shake", title: "저당 단백질 쉐이크", description: "당류 0~3g 저당 쉐이크를 모아봅니다." },
+      { href: "/topics/diet-protein-drink", title: "다이어트 단백질 음료", description: "칼로리와 당류를 함께 보는 랜딩입니다." },
+      { href: "/recommend", title: "맞춤 추천", description: "운동 빈도와 목적에 맞는 제품을 추립니다." },
+    ],
+  },
+  {
+    slug: "takefit-recommend",
+    title: "테이크핏 제품 추천 및 비교",
+    description: "테이크핏 맥스, 프로, 몬스터, 익스트림을 단백질·칼로리·용량 기준으로 비교합니다.",
+    intro: "테이크핏 라인 안에서 어떤 제품을 골라야 할지 성분 기준으로 정리했습니다.",
+    bullets: ["테이크핏 전 라인 비교 (맥스/프로/몬스터/익스트림)", "용량·단백질 함량 기준 선택 가이드", "편의점·마트 구매 시 참고 기준"],
+    primaryCta: { href: "/brands/takefit", title: "테이크핏 전 제품 보기", description: "테이크핏 라인업을 성분 기준으로 한 번에 비교합니다." },
+    relatedLinks: [
+      { href: "/compare/takefit-max-vs-takefit-monster", title: "테이크핏 맥스 vs 몬스터 비교", description: "250mL vs 350mL 용량 차이를 성분 기준으로 봅니다." },
+      { href: "/compare/takefit-vs-newcare", title: "테이크핏 vs 뉴케어 비교", description: "RTD 1·2위 제품을 직접 비교합니다." },
+      { href: "/topics/convenience-store-protein", title: "편의점 단백질 제품", description: "편의점 구매 전체 후보군을 봅니다." },
+    ],
+  },
+  {
+    slug: "convenience-store-protein-drink",
+    title: "편의점 단백질 음료 추천",
+    description: "GS25·CU·세븐일레븐·이마트24에서 살 수 있는 단백질 음료를 성분 기준으로 비교합니다.",
+    intro: "편의점에서 쉽게 살 수 있는 단백질 음료를 단백질 함량, 당류, 칼로리 기준으로 정리했습니다.",
+    bullets: ["편의점 구매 가능 제품만 추림", "테이크핏·더단백·뉴케어 등 주요 제품 비교", "가격·용량 대비 가성비 기준 제시"],
+    primaryCta: { href: "/topics/convenience-store-protein", title: "편의점 단백질 제품 전체 보기", description: "편의점 구매 가능 전체 후보를 확인합니다." },
+    relatedLinks: [
+      { href: "/topics/takefit-recommend", title: "테이크핏 추천", description: "편의점 대표 브랜드 테이크핏을 자세히 봅니다." },
+      { href: "/topics/protein-drink-recommend", title: "단백질 음료 전체 허브", description: "편의점 외 온라인 구매까지 포함한 전체 제품을 봅니다." },
+      { href: "/ranking", title: "단백질 제품 순위", description: "전체 순위에서 편의점 제품 위치를 확인합니다." },
+    ],
+  },
 ];
 
 export function getAllSearchTopics() {

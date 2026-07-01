@@ -501,7 +501,7 @@ function ProductListWithFiltersInner(props: ProductListWithFiltersInnerProps) {
         }}
       >
         <div className="hidden md:block">
-          <SearchBar value={searchQuery} onChange={handleSearchChange} />
+          <SearchBar value={searchQuery} onChange={handleSearchChange} onCommit={handleSearchChange} />
         </div>
         <div className={isDesktop ? "mt-1.5" : ""}>
           {productType === "drink" ? (
@@ -559,6 +559,7 @@ function ProductListWithFiltersInner(props: ProductListWithFiltersInnerProps) {
               <SearchBar
                 value={searchQuery}
                 onChange={handleSearchChange}
+                onCommit={handleSearchChange}
                 autoFocus
                 className="flex-1"
               />

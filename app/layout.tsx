@@ -14,6 +14,7 @@ const isProd = process.env.NODE_ENV === "production";
 
 export const viewport: Viewport = {
   colorScheme: "only light",
+  themeColor: "#2D4A35",
 };
 
 export const metadata: Metadata = {
@@ -26,6 +27,13 @@ export const metadata: Metadata = {
   description: "단백질 음료·바·요거트·쉐이크를 단백질 함량, 당류, 칼로리 기준으로 바로 비교합니다.",
   icons: {
     icon: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💪</text></svg>",
+    apple: "/proteinlab-logo.png",
+  },
+  manifest: "/manifest.json",
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "default",
+    title: "ProteinLab",
   },
   openGraph: {
     title: "단백질 제품 비교 — ProteinLab",
