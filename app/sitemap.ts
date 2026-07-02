@@ -109,6 +109,7 @@ const STATIC_GUIDE_ROUTES: string[] = [
   "/guides/fitness-lifestyle/spring-running-start-guide",
   "/guides/fitness-lifestyle/strength-training-protein",
   "/guides/intake-strategy-health/diet-protein-drink-strategy",
+  "/guides/intake-strategy-health/high-protein-side-effects",
   "/guides/intake-strategy-health/lean-massup-protein-intake",
   "/guides/intake-strategy-health/meal-replacement-strategy",
   "/guides/intake-strategy-health/morning-protein-drink",

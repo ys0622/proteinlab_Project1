@@ -322,6 +322,18 @@ const compareLandings: CompareLanding[] = [
     ],
   },
   {
+    slug: "high-protein-vs-moderate-protein",
+    title: "고단백 52g vs 중단백 25g, 나는 어느 쪽이 맞을까",
+    description: "초고단백 52g 음료와 중단백 25g 음료를 비교하며 내게 맞는 단백질 함량 구간을 판단하는 기준을 정리했습니다.",
+    intro: "40g 이상 초고단백 제품이 늘고 있지만, 실제로는 소수의 헤비 유저가 반복 구매하고 대다수는 과다 섭취·소화 부담·맛 피로감 때문에 망설입니다. 두 구간을 직접 비교해 내게 맞는 쪽을 판단해보세요.",
+    bullets: ["초고단백 vs 중단백 판단 기준 제시", "운동 강도·하루 목표량 기준으로 구분", "부담 없이 꾸준히 마실 수 있는 구간 안내"],
+    productSlugs: ["labnosh-protein-max-choco-400", "newcare-all-protein-choco-245"],
+    relatedLinks: [
+      { href: "/guides/intake-strategy-health/high-protein-side-effects", title: "고단백 음료 부담·부작용 가이드", description: "60g대 제품까지 나온 지금, 실제 부담 요인을 정리했습니다." },
+      { href: "/topics/mid-protein-alternatives", title: "중단백 대안 추천", description: "부담 없는 20~29g대 제품만 모아 봅니다." },
+    ],
+  },
+  {
     slug: "drink-vs-bar-post-workout",
     title: "운동 후 단백질 음료 vs 단백질 바 비교",
     description: "운동 후 보충 관점에서 음료와 바를 단백질, 당류, 칼로리 기준으로 비교합니다.",

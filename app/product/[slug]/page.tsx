@@ -760,6 +760,27 @@ export default async function ProductDetailPage({ params }: PageProps) {
       <main style={{ background: "#F7F3EA" }}>
         <div className="mx-auto max-w-[1200px] px-4 py-8 md:px-6">
           <AffiliateDisclosure />
+          {product.proteinPerServing >= 40 ? (
+            <section
+              className="mb-6 rounded-[20px] border px-5 py-4"
+              style={{ borderColor: "#E6DDCC", background: "#FDFAF5" }}
+            >
+              <p className="text-[13px] font-bold" style={{ color: "#7A5230" }}>
+                💡 단백질 {product.proteinPerServing}g, 이런 분께 적합합니다
+              </p>
+              <p className="mt-1.5 text-[13px] leading-6" style={{ color: "#5F6B61" }}>
+                운동 강도가 높고 하루 단백질 목표량이 많은 분에게 적합한 초고단백 제품입니다. 평소 운동을 자주 하지 않거나
+                식사에서 단백질을 충분히 섭취하고 있다면 20~30g대 제품이 더 부담 없을 수 있습니다.
+              </p>
+              <Link
+                href="/guides/intake-strategy-health/high-protein-side-effects"
+                className="mt-2 inline-block text-[12px] font-semibold underline"
+                style={{ color: "#1F5A3D" }}
+              >
+                고단백 음료 부담·부작용 가이드 보기 →
+              </Link>
+            </section>
+          ) : null}
           {gradeLabels.length > 0 ? (
             <section className="rounded-[24px] border bg-white p-5 md:p-6" style={{ borderColor: "#E6DDCC", boxShadow: "0 8px 22px rgba(31,90,61,0.05)" }}>
               <div className="mb-4">

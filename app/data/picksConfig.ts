@@ -67,6 +67,14 @@ const drinkPicks: PickConfigBase[] = [
     filterProducts: (list) => list.filter((p) => p.productType !== "bar" && p.proteinPerServing >= 30),
   },
   {
+    slug: "moderate-protein",
+    title: "부담 없는 중단백 20~29g 음료 추천",
+    description: "단백질 20~29g대로 맛과 양이 부담스럽지 않으면서 충분한 단백질을 챙길 수 있는 음료를 비교합니다. 40g 이상 초고단백이 부담스러울 때 보기 좋습니다.",
+    productType: "drink",
+    content: "20~29g대 음료는 농도가 진하지 않아 매일 마시기 부담이 적으면서도 충분한 단백질을 보충할 수 있습니다. (proteinlab.kr 콘텐츠 반영 예정)",
+    filterProducts: (list) => list.filter((p) => p.productType !== "bar" && p.proteinPerServing >= 20 && p.proteinPerServing < 30),
+  },
+  {
     slug: "protein-water",
     title: "워터형 단백질 음료 추천",
     description: "워터형 단백질 음료를 비교합니다. 가벼운 맛과 낮은 칼로리, 수분·단백질 동시 보충용 제품을 찾을 때 보기 좋습니다.",

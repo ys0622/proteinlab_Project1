@@ -336,6 +336,19 @@ const searchTopics: SearchTopic[] = [
       { href: "/ranking", title: "단백질 제품 순위", description: "전체 순위에서 편의점 제품 위치를 확인합니다." },
     ],
   },
+  {
+    slug: "mid-protein-alternatives",
+    title: "고단백이 부담스럽다면 — 중단백 대안 추천",
+    description: "40~60g 초고단백 음료가 맛이나 양 때문에 부담스러울 때 선택할 수 있는 20~29g대 중단백 음료를 모았습니다.",
+    intro: "초고단백 제품은 일부 헤비 유저에게는 잘 맞지만, 대다수는 과다 섭취 우려·소화 부담·맛 피로감 때문에 손이 잘 안 갑니다. 부담 없이 꾸준히 마실 수 있는 중단백 구간을 정리했습니다.",
+    bullets: ["20~29g대 부담 없는 음료 모음", "고단백 대비 맛·용량 부담 완화", "매일 마셔도 질리지 않는 제품 위주"],
+    primaryCta: { href: "/picks/moderate-protein", title: "중단백 20~29g 음료 보기", description: "부담 없는 단백질 함량대 제품만 필터링해서 봅니다." },
+    relatedLinks: [
+      { href: "/guides/intake-strategy-health/high-protein-side-effects", title: "고단백 음료 부담·부작용 가이드", description: "60g대 제품까지 나온 지금, 실제 부담 요인을 정리했습니다." },
+      { href: "/guides/intake-strategy-health/protein-50g-at-once", title: "단백질 50g 한 번에 먹어도 될까", description: "체중별·타이밍별 적정 섭취 기준을 확인합니다." },
+      { href: "/topics/high-protein-drink-20g", title: "고단백 20g 이상 음료", description: "20g 이상 전체 후보군도 함께 봅니다." },
+    ],
+  },
 ];
 
 export function getAllSearchTopics() {
