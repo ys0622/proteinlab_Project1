@@ -4,10 +4,10 @@ import Footer from "@/app/components/Footer";
 import GuideBuySection from "@/app/components/GuideBuySection";
 import { buildGuideJsonLd } from "@/app/lib/guideJsonLd";
 
-const pageTitle = "고단백 음료 부담·부작용 — 60g 제품까지 나온 지금 알아야 할 것";
+const pageTitle = "단백질 음료, 이제 근육 늘리려고만 마시지 않습니다";
 const pageDescription =
-  "단백질 40~60g대 초고함량 음료가 늘면서 소화 부담, 신장 부담, 과다 섭취 우려가 함께 커지고 있습니다. 실제로 문제가 되는 경우와 아닌 경우를 정리했습니다.";
-const canonical = "https://proteinlab.kr/guides/intake-strategy-health/high-protein-side-effects";
+  "예전에는 근육 생성·근비대 목적의 운동인이 주로 마셨지만, 최근에는 영양 보충과 식사대용 목적으로 마시는 일반 소비자가 크게 늘었습니다. 달라진 소비 이유를 정리했습니다.";
+const canonical = "https://proteinlab.kr/guides/intake-strategy-health/protein-drink-mainstream-shift";
 
 export const metadata = {
   title: pageTitle,
@@ -29,96 +29,91 @@ export const metadata = {
 };
 
 const quickAnswer = [
-  "신장 기능이 정상인 성인이 일시적으로 40~60g을 섭취하는 것 자체는 일반적으로 심각한 위험으로 보지 않습니다.",
-  "다만 소화 부담(더부룩함, 가스, 묽은 변)은 실제로 흔하게 나타나는 반응이며, 한 번에 먹는 양을 줄이면 개선되는 경우가 많습니다.",
-  "기존 신장질환, 당뇨 합병증 등 단백질 제한이 필요한 상태라면 고함량 제품을 임의로 늘리지 말고 반드시 전문가와 먼저 상담해야 합니다.",
+  "과거 단백질 음료는 근력 운동·근비대 목적의 소비자가 중심이었지만, 최근에는 운동 여부와 무관하게 영양 보충·식사대용 목적의 소비가 크게 늘었습니다.",
+  "목적이 다르면 골라야 할 제품도 달라집니다. 근비대 목적이 아니라면 초고단백보다 20~30g대 중단백 제품이 더 현실적인 경우가 많습니다.",
+  "식사대용으로 쓸 경우 단백질 수치만 볼 게 아니라 식이섬유, 포만감, 당류·나트륨까지 함께 확인하는 것이 중요합니다.",
 ];
 
-const concernRows = [
+const shiftRows = [
   [
-    "소화 불편 (더부룩함·가스·묽은 변)",
-    "흔함",
-    "한 번에 흡수 가능한 양을 넘어서면 장에서 미처리 단백질이 늘어나 발생하기 쉽습니다. 20~30g씩 나눠 마시면 대부분 완화됩니다.",
+    "과거 (운동 중심)",
+    "근육 생성·근비대",
+    "운동 후 회복, 고강도 트레이닝 보충 목적. 40g 이상 고단백·저당 제품 선호.",
   ],
   [
-    "신장 부담 우려",
-    "건강한 성인은 낮음",
-    "정상 신기능인 경우 장기간 고단백 식단의 신장 손상 근거는 명확하지 않습니다. 다만 기존 신장질환자는 예외입니다.",
+    "최근 (영양 보충)",
+    "바쁜 일상 속 영양 밸런스",
+    "식사를 거르거나 간단히 때울 때 단백질과 함께 기본 영양을 채우려는 목적. 20~30g대 중단백 선호.",
   ],
   [
-    "칼로리·나트륨 과다",
-    "제품에 따라 다름",
-    "고단백 제품일수록 칼로리·나트륨도 함께 높은 경우가 있어 단백질 수치만 보고 고르면 안 됩니다.",
+    "최근 (식사대용)",
+    "다이어트·시간 절약",
+    "한 끼를 대체하는 목적. 단백질뿐 아니라 포만감, 칼로리 총량, 식이섬유가 함께 중요해짐.",
   ],
   [
-    "맛 피로감으로 인한 중도 포기",
-    "매우 흔함",
-    "고함량 제품은 농도가 진해 단맛·비린맛이 강하게 느껴지는 경우가 많습니다. 완주 못 할 제품보다 매일 마실 수 있는 제품이 낫습니다.",
+    "최근 (시니어·건강관리)",
+    "근손실 예방·일상 관리",
+    "운동 목적이 아니라 나이가 들며 자연스러운 근손실을 막기 위한 예방적 섭취. 소화 부담이 적은 제품 선호.",
   ],
 ];
 
-const whoShouldCareCards = [
+const audienceCards = [
   {
-    title: "이런 분은 60g대도 검토 가능",
-    body: "체중이 많이 나가고 근력 운동 강도가 높으며, 하루 단백질 목표량 자체가 150g을 넘는 경우. 그래도 한 번에 다 마시기보다 나눠 마시는 방법을 권장합니다.",
+    title: "운동을 하지 않는데 마셔도 될까요",
+    body: "네, 다만 목적이 다릅니다. 근비대가 목적이 아니라면 초고단백보다 하루 식단에서 부족한 단백질을 채우는 정도(20~30g대)가 더 현실적입니다.",
   },
   {
-    title: "이런 분은 40g대도 부담일 수 있음",
-    body: "평소 운동을 거의 하지 않거나, 식사에서 이미 단백질을 충분히 섭취하고 있는 경우. 이때 고함량 제품은 필요량을 크게 초과할 수 있습니다.",
+    title: "식사대용으로 쓸 때 확인할 것",
+    body: "단백질 수치만 보지 말고 식이섬유, 포만감, 칼로리, 당류·나트륨을 함께 확인해야 실제 한 끼 대체 효과가 있습니다.",
   },
   {
-    title: "이런 분은 전문가 상담이 먼저",
-    body: "신장질환, 통풍, 특정 대사질환이 있는 경우. 고단백 제품을 스스로 판단해 늘리지 말고 담당 의료진과 먼저 상의해야 합니다.",
+    title: "시니어·영양 관리 목적이라면",
+    body: "고강도 운동 목적 제품보다 소화가 편하고 부담이 적은 제품이 우선입니다. 필요량 이상으로 고단백을 고집할 필요는 없습니다.",
   },
 ];
 
 const faqItems = [
   {
-    question: "프로틴 60g 한 번에 마셔도 되나요?",
+    question: "운동을 안 해도 단백질 음료를 마셔도 되나요?",
     answer:
-      "신장 기능이 정상인 성인이라면 60g을 한 번에 마시는 것 자체가 즉시 위험한 것은 아닙니다. 다만 소화 부담(더부룩함, 가스)이 흔하게 나타날 수 있어 나눠 마시는 것을 권장합니다.",
+      "네, 최근에는 운동 목적이 아니라 영양 보충이나 식사대용으로 마시는 소비자가 늘고 있습니다. 다만 이 경우 초고단백보다 20~30g대 제품이 더 부담 없이 맞습니다.",
   },
   {
-    question: "단백질을 너무 많이 먹으면 부작용이 있나요?",
+    question: "단백질 음료를 식사 대신 먹어도 괜찮나요?",
     answer:
-      "건강한 성인 기준으로는 장기간 고단백 식단이 신장을 손상시킨다는 근거는 명확하지 않습니다. 다만 소화 불편, 칼로리·나트륨 과다 섭취는 실제로 흔히 발생하는 문제입니다.",
+      "단백질 수치만 볼 게 아니라 식이섬유, 포만감, 칼로리, 당류까지 함께 확인해야 합니다. 단백질만 높고 나머지 영양이 부족하면 한 끼 대체로는 부족할 수 있습니다.",
   },
   {
-    question: "40g대 고단백 음료도 부담스러운데 괜찮은 건가요?",
+    question: "근육을 키울 목적이 아니어도 고단백 제품이 필요한가요?",
     answer:
-      "평소 운동을 하지 않거나 식사에서 이미 단백질을 충분히 섭취하고 있다면 40g대도 필요량을 초과할 수 있습니다. 이 경우 20~29g대 중단백 제품이 더 적합할 수 있습니다.",
-  },
-  {
-    question: "신장질환이 있는데 고단백 음료를 먹어도 되나요?",
-    answer:
-      "신장질환, 통풍 등 단백질 섭취 제한이 필요한 상태라면 고함량 제품을 임의로 늘리지 말고 반드시 담당 의료진과 먼저 상담해야 합니다.",
+      "아닙니다. 근비대 목적이 아니라면 40g 이상 초고단백 제품은 대부분 필요량을 초과합니다. 일상 영양 보충 목적이라면 20~30g대가 더 현실적입니다.",
   },
 ];
 
 const relatedLinks = [
   {
-    href: "/guides/intake-strategy-health/protein-50g-at-once",
-    title: "단백질 50g, 한 번에 먹어도 될까",
-    body: "체중별·타이밍별로 50g 섭취가 적절한지 판단하는 기준을 정리했습니다.",
+    href: "/guides/intake-strategy-health/protein-drink-without-exercise",
+    title: "운동 안 해도 단백질 음료 마셔도 될까",
+    body: "비운동자 관점에서 단백질 음료가 필요한 경우를 정리했습니다.",
+  },
+  {
+    href: "/guides/intake-strategy-health/protein-drink-meal-replacement",
+    title: "단백질 음료 식사대용 가능할까",
+    body: "식사대용으로 쓸 때 확인해야 할 영양 구성 기준을 정리했습니다.",
   },
   {
     href: "/topics/mid-protein-alternatives",
-    title: "고단백이 부담스럽다면 — 중단백 대안",
-    body: "맛이나 양이 부담스러울 때 선택할 수 있는 20~25g대 제품을 모았습니다.",
-  },
-  {
-    href: "/guides/product-selection-comparison/high-protein-40g-comparison",
-    title: "40g 이상 고단백 RTD 비교",
-    body: "60g이 과하다고 느껴질 때 바로 아래 구간 제품을 함께 비교합니다.",
+    title: "중단백 대안 추천",
+    body: "근비대 목적이 아닐 때 더 적합한 20~29g대 제품을 모았습니다.",
   },
 ];
 
-export default function HighProteinSideEffectsPage() {
+export default function ProteinDrinkMainstreamShiftPage() {
   const jsonLd = buildGuideJsonLd({
     title: pageTitle,
     description: pageDescription,
     url: canonical,
-    faq: faqItems.map((item) => ({ question: item.question, answer: item.answer })),
+    faq: faqItems,
   });
 
   return (
@@ -134,21 +129,22 @@ export default function HighProteinSideEffectsPage() {
             <span>/</span>
             <Link href="/guides/intake-strategy-health" className="hover:text-[var(--accent)]">섭취 전략 & 건강</Link>
             <span>/</span>
-            <span>고단백 부담·부작용</span>
+            <span>대중화된 단백질 음료</span>
           </div>
           <div className="mt-3 flex flex-wrap items-center gap-2">
             <span className="rounded-md bg-[#f5f0ea] px-2 py-0.5 text-[11px] font-semibold tracking-wide text-[#7a5230]">TRACK C</span>
-            <span className="rounded-md bg-[#fbf7f1] px-2 py-0.5 text-[11px] font-semibold tracking-wide text-[#7a5230]">섭취량 질문</span>
-            <span className="text-[11px] font-medium text-[var(--foreground-muted)]">업데이트 2026-07-01</span>
+            <span className="rounded-md bg-[#fbf7f1] px-2 py-0.5 text-[11px] font-semibold tracking-wide text-[#7a5230]">소비 트렌드</span>
+            <span className="text-[11px] font-medium text-[var(--foreground-muted)]">업데이트 2026-07-02</span>
           </div>
           <h1 className="mt-3 text-2xl font-bold leading-tight text-[var(--foreground)] md:text-3xl">
-            60g 단백질 음료까지 나온 지금,
+            단백질 음료, 이제
             <br />
-            부담과 부작용을 먼저 짚고 갑니다.
+            근육 늘리려고만 마시지 않습니다.
           </h1>
           <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
-            초고함량 제품이 잘 팔린다는 이야기가 나오지만, 실제로는 소수의 헤비 유저가 반복 구매하는 경우가 많고
-            대다수는 과다 섭취·소화 부담·맛 피로감 때문에 선뜻 손이 가지 않습니다. 걱정되는 부분을 하나씩 정리했습니다.
+            예전에는 헬스장 다니는 사람들의 전유물처럼 여겨졌지만, 최근에는 운동 여부와 상관없이
+            바쁜 일상 속 영양 보충이나 한 끼 대용으로 단백질 음료를 찾는 사람이 크게 늘었습니다.
+            목적이 달라졌다면 골라야 할 제품 기준도 달라져야 합니다.
           </p>
         </div>
       </section>
@@ -168,18 +164,22 @@ export default function HighProteinSideEffectsPage() {
           </section>
 
           <section className="rounded-[28px] border border-[#e5deca] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(38,28,18,0.05)]">
-            <h2 className="text-xl font-bold text-[var(--foreground)]">실제로 걱정되는 부분, 하나씩 보면</h2>
+            <h2 className="text-xl font-bold text-[var(--foreground)]">소비 이유가 어떻게 달라졌을까</h2>
+            <p className="mt-3 text-sm leading-6 text-[var(--foreground-muted)]">
+              단백질 음료 시장이 커지면서 "누가, 왜 마시는지"도 함께 다양해졌습니다. 아래 표는 목적별로
+              어떤 소비자가 늘고 있는지, 그에 맞는 제품 방향이 무엇인지 정리한 것입니다.
+            </p>
             <div className="mt-5 overflow-x-auto rounded-2xl border border-[#e8e3da] bg-[#fdfaf5]">
               <table className="min-w-full border-collapse text-left text-sm">
                 <thead>
                   <tr className="border-b border-[#e8e3da] text-[var(--foreground)]">
-                    <th className="px-3 py-3 font-semibold">우려 사항</th>
-                    <th className="px-3 py-3 font-semibold">실제 빈도</th>
+                    <th className="px-3 py-3 font-semibold">구분</th>
+                    <th className="px-3 py-3 font-semibold">주요 목적</th>
                     <th className="px-3 py-3 font-semibold">설명</th>
                   </tr>
                 </thead>
                 <tbody>
-                  {concernRows.map((row) => (
+                  {shiftRows.map((row) => (
                     <tr key={row[0]} className="border-b border-[#f0ece5] last:border-b-0">
                       {row.map((cell) => (
                         <td key={cell} className="px-3 py-3 text-[var(--foreground-muted)]">{cell}</td>
@@ -192,9 +192,9 @@ export default function HighProteinSideEffectsPage() {
           </section>
 
           <section className="rounded-[28px] border border-[#e5deca] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(38,28,18,0.05)]">
-            <h2 className="text-xl font-bold text-[var(--foreground)]">누구에게 필요하고, 누구에게는 과할까</h2>
+            <h2 className="text-xl font-bold text-[var(--foreground)]">운동인이 아니어도 궁금할 질문들</h2>
             <div className="mt-5 grid gap-3 md:grid-cols-3">
-              {whoShouldCareCards.map((item) => (
+              {audienceCards.map((item) => (
                 <article key={item.title} className="rounded-2xl border border-[#e8e3da] bg-[#fdfaf5] p-4">
                   <h3 className="text-sm font-semibold text-[#7a5230]">{item.title}</h3>
                   <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">{item.body}</p>
@@ -206,9 +206,9 @@ export default function HighProteinSideEffectsPage() {
           <section className="rounded-[28px] border border-[#e5deca] bg-[#fdfaf5] px-5 py-5 shadow-[0_18px_50px_rgba(38,28,18,0.05)]">
             <h2 className="text-xl font-bold text-[var(--foreground)]">결론</h2>
             <p className="mt-3 text-sm leading-6 text-[var(--foreground-muted)]">
-              고단백 제품 자체가 위험한 건 아니지만, "많을수록 좋다"는 접근은 대다수에게 맞지 않습니다.
-              소화 부담과 맛 피로감 때문에 완주하지 못하는 경우가 실제로 훨씬 많으므로, 하루 목표량을 먼저 계산하고
-              그 목표에 맞는 구간(20g·30g·40g·50g 이상)을 고르는 순서가 가장 안전하고 꾸준히 지속하기 쉽습니다.
+              단백질 음료는 더 이상 "운동하는 사람만 먹는 것"이 아니라 일상 영양 관리 수단으로 자리잡고 있습니다.
+              내가 운동 목적인지, 영양 보충 목적인지, 식사대용 목적인지에 따라 필요한 단백질 함량과 제품 구성이
+              달라지므로, 제품을 고르기 전에 내 목적부터 명확히 하는 것이 가장 중요합니다.
             </p>
           </section>
 

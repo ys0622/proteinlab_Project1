@@ -185,6 +185,9 @@ const sections: AdminGuideSection[] = [
       article("protein-drink-meal-replacement", "단백질 음료 식사대용", "단백질 음료가 한 끼 대체가 되는지 제품군별로 나눠 설명합니다.", "/guides/intake-strategy-health/protein-drink-meal-replacement", { emoji: "🥣", tags: ["식사대용", "보완"] }),
       article("night-protein-drink", "밤에 단백질 음료 마셔도 될까", "저녁, 야식, 자기 전 상황에서 어떤 제품이 맞는지 정리합니다.", "/guides/intake-strategy-health/night-protein-drink", { emoji: "🌙", tags: ["저녁", "야식", "저당"] }),
       article("diet-protein-drink-strategy", "다이어트 중 단백질 음료 어떻게 마실까", "저당, 저칼로리, 포만감 기준으로 감량 중 제품 선택법을 정리합니다.", "/guides/intake-strategy-health/diet-protein-drink-strategy", { emoji: "🥗", tags: ["다이어트", "저당", "포만감"] }),
+      article("protein-50g-at-once", "단백질 50g 한 번에 먹어도 될까", "체중별·타이밍별로 50g 섭취가 적절한지 판단하는 기준을 정리합니다.", "/guides/intake-strategy-health/protein-50g-at-once", { emoji: "🥤", tags: ["초고단백", "섭취량"] }),
+      article("high-protein-side-effects", "고단백 음료 부담·부작용", "60g대 초고단백 제품까지 나온 지금, 소화 부담·과다 섭취 우려를 정리합니다.", "/guides/intake-strategy-health/high-protein-side-effects", { emoji: "⚠️", tags: ["부작용", "초고단백", "안전"] }),
+      article("protein-drink-mainstream-shift", "단백질 음료, 이제 근육 늘리려고만 마시지 않습니다", "근비대 목적 중심이던 소비가 영양 보충·식사대용으로 확대된 흐름을 정리합니다.", "/guides/intake-strategy-health/protein-drink-mainstream-shift", { emoji: "📊", tags: ["소비 트렌드", "식사대용", "영양 보충"] }),
     ],
   },
   {

@@ -111,6 +111,7 @@ const STATIC_GUIDE_ROUTES: string[] = [
   "/guides/intake-strategy-health/diet-protein-drink-strategy",
   "/guides/intake-strategy-health/high-protein-side-effects",
   "/guides/intake-strategy-health/lean-massup-protein-intake",
+  "/guides/intake-strategy-health/protein-drink-mainstream-shift",
   "/guides/intake-strategy-health/meal-replacement-strategy",
   "/guides/intake-strategy-health/morning-protein-drink",
   "/guides/intake-strategy-health/muscle-maintenance-protein",
