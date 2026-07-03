@@ -102,7 +102,7 @@ function getProductFaqs(product: ProductDetailProps) {
   const categoryHref = getCategoryHref((product.productType ?? "drink") as "drink" | "bar" | "yogurt" | "shake");
   const categoryLabel = getProductKindLabel(product.productType);
 
-  return [
+  const baseFaqs = [
     {
       question: `${product.brand} ${product.name}은 어떤 기준으로 보면 되나요?`,
       answer: `${product.brand} ${product.name}은 ${getMetricLine(product)} 기준으로 먼저 보는 편이 좋습니다. 같은 ${categoryLabel} 안에서는 단백질 총량, 당류, 칼로리, 용량당 밀도를 같이 비교해야 실제 체감 차이가 잘 보입니다.`,
@@ -116,6 +116,15 @@ function getProductFaqs(product: ProductDetailProps) {
       answer: `제품 자체 스펙만 보지 말고, 박스 가격, 맛 옵션, 구매 채널, 그리고 내 사용 목적에 맞는지까지 같이 보는 편이 좋습니다. 다이어트 목적이면 당류와 칼로리, 운동 목적이면 단백질 총량과 밀도를 우선 확인하면 됩니다.`,
     },
   ];
+
+  if ((product.proteinPerServing ?? 0) >= 40) {
+    baseFaqs.push({
+      question: `${product.brand} ${product.name}, 단백질 ${product.proteinPerServing}g을 한 번에 먹어도 되나요?`,
+      answer: `신장 기능이 정상인 성인이라면 일시적으로 섭취하는 것 자체가 즉시 위험하지는 않지만, 소화 부담(더부룩함·가스)이 흔하게 나타날 수 있습니다. 평소 운동을 자주 하지 않거나 식사에서 단백질을 충분히 섭취하고 있다면 20~30g대 제품이 더 부담 없을 수 있습니다. 자세한 기준은 고단백 음료 부담·부작용 가이드(/guides/intake-strategy-health/high-protein-side-effects)에서 확인할 수 있습니다.`,
+    });
+  }
+
+  return baseFaqs;
 }
 
 function renderSummaryMetricValue(value: string, isCompact: boolean) {
