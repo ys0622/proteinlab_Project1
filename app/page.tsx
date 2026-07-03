@@ -54,11 +54,20 @@ const CATEGORY_CARDS = [
   { label: "단백질 쉐이크", sub: "파우치형 (분말 제외)", emoji: "🧃", color: "#DDE9E2", href: "/shake", countKey: "shake" as const },
 ] as const;
 
-const GUIDE_CARDS = [
+const GUIDE_CARDS: {
+  category: string;
+  title: string;
+  desc: string;
+  href: string;
+  thumbImg: string;
+  thumbImg2?: string;
+  thumbBg: string;
+  thumbEmoji: string;
+}[] = [
   // 트렌드: 프리워크아웃·크레아틴·프로틴 등 보충제 라인업 확장 — 시장 트렌드 연상
   { category: "마켓 인사이트", title: "2026 프로틴 음료 트렌드", desc: "단백질 음료 시장 흐름과 신제품 분석", href: "/guides/market-insights/protein-drink-trend-2026", thumbImg: "https://images.unsplash.com/photo-1693996045838-980674653385?w=600&h=400&fit=crop&crop=center&q=80", thumbBg: "linear-gradient(135deg, #1a6b5a 0%, #2d9e7f 100%)", thumbEmoji: "📈" },
-  // 비교: 나란히 놓인 서로 다른 두 잔의 음료 — 브랜드 스펙 비교 연상
-  { category: "비교 가이드", title: "셀렉스 vs 하이뮨", desc: "고단백 음료 브랜드 스펙 직접 비교", href: "/guides/product-selection-comparison/selex-vs-himune", thumbImg: "https://images.unsplash.com/photo-1551265935-b7354f59a3fd?w=600&h=400&fit=crop&crop=center&q=80", thumbBg: "linear-gradient(135deg, #7a5c2e 0%, #b8843f 100%)", thumbEmoji: "⚖️" },
+  // 비교: 실제 셀렉스/하이뮨 제품 사진을 좌우로 — 브랜드 직관적 비교
+  { category: "비교 가이드", title: "셀렉스 vs 하이뮨", desc: "고단백 음료 브랜드 스펙 직접 비교", href: "/guides/product-selection-comparison/selex-vs-himune", thumbImg: "/rtd-drink-image/sellex-profit-milk-vanilla-250.webp", thumbImg2: "/rtd-drink-image/hymune-balance-active-deepchoco-250.webp", thumbBg: "linear-gradient(135deg, #7a5c2e 0%, #b8843f 100%)", thumbEmoji: "⚖️" },
   // 편의점: 마트/편의점 진열대 — 실제 구매 맥락 연상
   { category: "추천", title: "편의점 단백질 음료 BEST 8", desc: "편의점에서 살 수 있는 고단백 제품 정리", href: "/guides/product-selection-comparison/convenience-store-protein-guide", thumbImg: "https://images.unsplash.com/photo-1604719312566-8912e9227c6a?w=600&h=400&fit=crop&crop=center&q=80", thumbBg: "linear-gradient(135deg, #2a6070 0%, #3d8fa6 100%)", thumbEmoji: "🏪" },
   // 운동 전후: 운동 중 또는 직후 단백질 보충 장면
@@ -283,6 +292,7 @@ export default async function Home() {
             >
               <GuideThumbImage
                 src={guide.thumbImg}
+                secondSrc={guide.thumbImg2}
                 alt={guide.title}
                 title={guide.title}
                 desc={guide.desc}
