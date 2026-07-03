@@ -68,6 +68,16 @@ const seniorRelated = [
     title: "식사대용 전략 보기",
     body: "식사를 자주 거르거나 한 끼가 약한 루틴이라면 보충용과 식사보완형을 나눠 보는 이 페이지가 같이 필요합니다.",
   },
+  {
+    href: "/guides/intake-strategy-health/high-protein-side-effects",
+    title: "고단백 음료 부담·부작용 가이드",
+    body: "시니어는 특히 초고단백 제품의 소화 부담이 클 수 있습니다. 40g 이상 제품을 고려 중이라면 먼저 확인하는 것이 좋습니다.",
+  },
+  {
+    href: "/topics/mid-protein-alternatives",
+    title: "중단백 대안 추천",
+    body: "고단백이 부담스럽다면 20~29g대 제품이 시니어에게 더 현실적인 선택일 수 있습니다.",
+  },
 ];
 
 export default function SeniorProteinStrategyPage() {

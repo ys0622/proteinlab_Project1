@@ -128,6 +128,7 @@ const STATIC_GUIDE_ROUTES: string[] = [
   "/guides/market-insights/global-protein-market",
   "/guides/market-insights/ingredient-trends",
   "/guides/market-insights/new-product-analysis",
+  "/guides/market-insights/protein-content-interest-data",
   "/guides/market-insights/protein-drink-trend-2026",
   "/guides/market-insights/protein-market-history",
   "/guides/market-insights/protein-rtd-market",

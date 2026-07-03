@@ -231,6 +231,7 @@ const sections: AdminGuideSection[] = [
       article("new-product-analysis", "신제품 분석", "새로 나온 제품을 어떤 기준으로 읽어야 하는지 설명합니다.", "/guides/market-insights/new-product-analysis", { emoji: "🆕", tags: ["신제품", "분석"] }),
       article("global-protein-market", "글로벌 단백질 시장", "해외 시장 흐름과 국내 제품 이해를 연결합니다.", "/guides/market-insights/global-protein-market", { emoji: "🌍", tags: ["글로벌", "시장"] }),
       article("protein-drink-trend-2026", "2026 단백질 음료 시장 트렌드", "테이크핏 몬스터 45g 리뉴얼과 랩노쉬 52g 출시 준비까지 초고단백 경쟁 흐름을 정리합니다.", "/guides/market-insights/protein-drink-trend-2026", { emoji: "📈", tags: ["2026", "45g", "52g"] }),
+      article("protein-content-interest-data", "단백질 함량별 관심도, 실제 데이터로 보면 다릅니다", "proteinlab.kr 방문 데이터를 기준으로 단백질 함량대별 조회 패턴을 분석합니다.", "/guides/market-insights/protein-content-interest-data", { emoji: "📊", tags: ["데이터", "관심도", "자체 분석"] }),
     ],
   },
   {
