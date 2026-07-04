@@ -24,6 +24,7 @@ export const navigationItems: NavigationItem[] = [
   {
     label: "랭킹과 등급",
     children: [
+      { label: "실시간 인기", href: "/trending" },
       { label: "제품 랭킹", href: "/ranking" },
       { label: "등급 기준", href: "/grade-criteria" },
     ],

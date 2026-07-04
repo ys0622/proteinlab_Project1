@@ -154,6 +154,15 @@ export default async function RankingPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListJsonLd) }}
       />
       <Header />
+      <div className="mx-auto max-w-[1200px] px-4 pt-4 md:px-6">
+        <a
+          href="/trending"
+          className="flex items-center justify-between gap-3 rounded-2xl border border-[#d7e4d9] bg-[#f3faf5] px-4 py-3 text-sm font-semibold text-[#24543d] transition-colors hover:bg-[#e9f5ec]"
+        >
+          <span>🔥 실제 방문자 조회수 기준 실시간 인기 순위도 확인해보세요</span>
+          <span className="shrink-0">바로가기 →</span>
+        </a>
+      </div>
       <RankingClient rankings={rankings} />
       <Footer />
     </div>

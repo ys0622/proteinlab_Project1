@@ -266,6 +266,11 @@ export default async function Home() {
       {/* ─── 4. 이번 주 인기 제품 ─── */}
       <section className="mx-auto max-w-[1180px] px-4 pt-3 md:px-5 md:pt-5">
         <HomePopularCarousel products={carouselProducts} />
+        <div className="mt-2 flex justify-end">
+          <Link href="/trending" className="text-[12px] font-semibold text-[#1F5A3D] hover:underline">
+            카테고리별 실시간 인기 순위 전체 보기 →
+          </Link>
+        </div>
       </section>
 
       {/* ─── 5. 가이드 & 인사이트 ─── */}
