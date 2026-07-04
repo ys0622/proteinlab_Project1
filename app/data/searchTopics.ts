@@ -324,6 +324,19 @@ const searchTopics: SearchTopic[] = [
     ],
   },
   {
+    slug: "summer-diet-protein-drink",
+    title: "여름 다이어트 단백질 음료 추천",
+    description: "여름철 체중 관리와 노출 시즌 대비에 맞는 저칼로리·저당 단백질 음료를 정리했습니다.",
+    intro: "여름은 다이어트 검색이 가장 몰리는 시기입니다. 칼로리와 당류를 함께 낮춘 제품 위주로 빠르게 후보를 좁혀드립니다.",
+    bullets: ["저칼로리·저당 음료 중심 추천", "워터형·탄산형 등 청량감 있는 제품 포함", "식욕 관리와 대체식 목적 함께 고려"],
+    primaryCta: { href: "/topics/diet-protein-drink", title: "다이어트 단백질 음료 전체 보기", description: "칼로리·당류 기준 전체 후보군을 확인합니다." },
+    relatedLinks: [
+      { href: "/topics/protein-water", title: "프로틴 워터 추천", description: "청량감 있는 워터형 음료를 모아봅니다." },
+      { href: "/guides/intake-strategy-health/diet-protein-drink-strategy", title: "다이어트 중 단백질 음료 전략", description: "저당·저칼로리 기준으로 마시는 법을 정리했습니다." },
+      { href: "/recommend", title: "맞춤 추천", description: "목표와 조건에 맞는 제품을 다시 추립니다." },
+    ],
+  },
+  {
     slug: "convenience-store-protein-drink",
     title: "편의점 단백질 음료 추천",
     description: "GS25·CU·세븐일레븐·이마트24에서 살 수 있는 단백질 음료를 성분 기준으로 비교합니다.",

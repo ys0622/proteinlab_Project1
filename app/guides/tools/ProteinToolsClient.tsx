@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useMemo, useState } from "react";
+import KakaoShareButton from "@/app/components/KakaoShareButton";
 
 type ActivityLevel = "none" | "light" | "moderate" | "intense";
 type Goal = "wellness" | "diet" | "muscle";
@@ -154,6 +155,17 @@ export default function ProteinToolsClient() {
               체중과 활동량 조합을 바꾸면 결과도 함께 달라집니다. 목표에 맞는 해석 참고용으로 보면 됩니다.
             </p>
           </div>
+
+          {submitted && calculation.recommendedProtein > 0 && (
+            <div className="mt-4">
+              <KakaoShareButton
+                url="/guides/tools"
+                title={`나의 하루 권장 단백질 섭취량은 ${calculation.recommendedProtein}g!`}
+                description={`체중 ${weight}kg · ${calculation.goalLabel} 목표 기준. ProteinLab 계산기로 확인해보세요.`}
+                className="w-full py-2.5 text-[13px]"
+              />
+            </div>
+          )}
         </section>
       </section>
 
