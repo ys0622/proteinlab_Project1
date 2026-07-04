@@ -188,6 +188,7 @@ const sections: AdminGuideSection[] = [
       article("protein-50g-at-once", "단백질 50g 한 번에 먹어도 될까", "체중별·타이밍별로 50g 섭취가 적절한지 판단하는 기준을 정리합니다.", "/guides/intake-strategy-health/protein-50g-at-once", { emoji: "🥤", tags: ["초고단백", "섭취량"] }),
       article("high-protein-side-effects", "고단백 음료 부담·부작용", "60g대 초고단백 제품까지 나온 지금, 소화 부담·과다 섭취 우려를 정리합니다.", "/guides/intake-strategy-health/high-protein-side-effects", { emoji: "⚠️", tags: ["부작용", "초고단백", "안전"] }),
       article("protein-drink-mainstream-shift", "단백질 음료, 이제 근육 늘리려고만 마시지 않습니다", "근비대 목적 중심이던 소비가 영양 보충·식사대용으로 확대된 흐름을 정리합니다.", "/guides/intake-strategy-health/protein-drink-mainstream-shift", { emoji: "📊", tags: ["소비 트렌드", "식사대용", "영양 보충"] }),
+      article("light-protein-under-20g", "저함량 단백질 음료, 오히려 필요한 사람들이 있습니다", "마이밀·하이뮨·더단백 저함량 라인이 대부분 190mL인 이유와 적합한 대상을 정리합니다.", "/guides/intake-strategy-health/light-protein-under-20g", { emoji: "🌱", tags: ["저함량", "소용량", "시니어"] }),
     ],
   },
   {

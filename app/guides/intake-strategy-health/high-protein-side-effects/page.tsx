@@ -111,6 +111,11 @@ const relatedLinks = [
     title: "40g 이상 고단백 RTD 비교",
     body: "60g이 과하다고 느껴질 때 바로 아래 구간 제품을 함께 비교합니다.",
   },
+  {
+    href: "/guides/intake-strategy-health/light-protein-under-20g",
+    title: "저함량 단백질 음료, 오히려 필요한 사람들",
+    body: "20g 미만 저함량·소용량 라인이 더 잘 맞는 경우를 정리했습니다.",
+  },
 ];
 
 export default function HighProteinSideEffectsPage() {
