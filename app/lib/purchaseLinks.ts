@@ -233,6 +233,13 @@ export function getCoupangRedirectHref(
     return null;
   }
 
+  // 쿠팡 파트너스 사이트에서 직접 발급한 정적 링크(link.coupang.com/a/...)는
+  // 이미 완성된 추적 링크이므로 그대로 사용한다. 짧은 코드라 pageKey 등을
+  // 재추출할 수 없어 우리 리다이렉트 라우트를 거치면 안 된다.
+  if (isCoupangPartnersUrl(sourceUrl)) {
+    return sourceUrl;
+  }
+
   const params = extractCoupangProductParams(sourceUrl);
   if (!params) {
     return null;
