@@ -13,6 +13,12 @@ const DEEPLINK_HOST = "https://api-gateway.coupang.com";
 const DEEPLINK_CACHE_PREFIX = "coupang-deeplink:";
 const DEEPLINK_CACHE_TTL_SECONDS = 60 * 60 * 24 * 25; // 25일 (쿠팡 딥링크 30일 만료보다 여유 있게)
 
+// 임시 검증용: 쿠팡 파트너스 웹사이트에서 "링크 생성"으로 수동 발급한 정적 링크.
+// API 자동생성 링크와 전환 추적 결과를 비교하기 위한 테스트. 결과 확인 후 제거 예정.
+const MANUAL_TEST_STATIC_LINKS: Record<string, string> = {
+  "newcare-all-protein-savory-245": "https://link.coupang.com/a/e8LCv2UaQe",
+};
+
 interface DeeplinkKV {
   get(key: string): Promise<string | null>;
   put(key: string, value: string, options?: { expirationTtl?: number }): Promise<void>;
@@ -173,6 +179,20 @@ export async function GET(request: NextRequest) {
   const slug = searchParams.get("slug");
   const category = toCategory(searchParams.get("category"));
   const debug = searchParams.get("debug") === "1";
+
+  // 임시 검증: 수동 발급 정적 링크가 지정된 상품이면 API 호출 없이 바로 그 링크로 리다이렉트
+  const manualStaticLink = slug ? MANUAL_TEST_STATIC_LINKS[slug] : undefined;
+  if (manualStaticLink) {
+    if (debug) {
+      return NextResponse.json({
+        usedManualStaticLink: true,
+        destination: manualStaticLink,
+        slug,
+        category,
+      });
+    }
+    return NextResponse.redirect(manualStaticLink, 307);
+  }
 
   const normalizedSourceUrl =
     pageKey && itemId && vendorItemId
