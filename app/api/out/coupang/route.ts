@@ -10,6 +10,23 @@ import {
 
 const DEEPLINK_PATH = "/v2/providers/affiliate_open_api/apis/openapi/v1/deeplink";
 const DEEPLINK_HOST = "https://api-gateway.coupang.com";
+const DEEPLINK_CACHE_PREFIX = "coupang-deeplink:";
+const DEEPLINK_CACHE_TTL_SECONDS = 60 * 60 * 24 * 25; // 25일 (쿠팡 딥링크 30일 만료보다 여유 있게)
+
+interface DeeplinkKV {
+  get(key: string): Promise<string | null>;
+  put(key: string, value: string, options?: { expirationTtl?: number }): Promise<void>;
+}
+
+async function getDeeplinkKV(): Promise<DeeplinkKV | null> {
+  try {
+    const { env } = await getCloudflareContext({ async: true });
+    const kv = (env as Record<string, unknown>).GUIDES_STATIC_DRAFTS_KV as DeeplinkKV | undefined;
+    return kv && typeof kv.get === "function" ? kv : null;
+  } catch {
+    return null;
+  }
+}
 
 function toCategory(value: string | null): CoupangLinkCategory | null {
   if (
@@ -175,17 +192,32 @@ export async function GET(request: NextRequest) {
 
   let partnersDestination: string | null = null;
   let deeplinkDebug = "not_attempted";
+  let cacheHit = false;
+  const kv = await getDeeplinkKV();
+
   if (rawProductUrl && accessKey && secretKey) {
     const params = getCoupangProductParams(rawProductUrl);
     if (params) {
-      const result = await fetchCoupangDeeplink(
-        rawProductUrl,
-        accessKey,
-        secretKey,
-        category ?? "proteinlab",
-      );
-      partnersDestination = result.url;
-      deeplinkDebug = result.debug;
+      const cacheKey = `${DEEPLINK_CACHE_PREFIX}${params.pageKey}:${params.itemId}:${params.vendorItemId}:${category ?? "proteinlab"}`;
+
+      const cached = kv ? await kv.get(cacheKey).catch(() => null) : null;
+      if (cached) {
+        partnersDestination = cached;
+        deeplinkDebug = "cache_hit";
+        cacheHit = true;
+      } else {
+        const result = await fetchCoupangDeeplink(
+          rawProductUrl,
+          accessKey,
+          secretKey,
+          category ?? "proteinlab",
+        );
+        partnersDestination = result.url;
+        deeplinkDebug = result.debug;
+        if (result.url && kv) {
+          await kv.put(cacheKey, result.url, { expirationTtl: DEEPLINK_CACHE_TTL_SECONDS }).catch(() => {});
+        }
+      }
     } else {
       deeplinkDebug = "no_params_extracted";
     }
@@ -206,6 +238,7 @@ export async function GET(request: NextRequest) {
       hasRuntimeTag: Boolean(runtimeTag),
       usedPartnersRedirect: Boolean(partnersDestination),
       deeplinkDebug,
+      cacheHit,
       destination,
       fallbackDestination,
       sourceParams: extractCoupangProductParams(normalizedSourceUrl),
