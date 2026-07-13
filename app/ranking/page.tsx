@@ -1,5 +1,6 @@
 ﻿import Header from "../components/Header";
 import Footer from "../components/Footer";
+import CommercialAdSection from "../components/CommercialAdSection";
 import type { ProductDetailProps } from "../data/products";
 import { getDensityValue, getDietScore, getPerformanceScore } from "../lib/gradeCalculation";
 import type { ProductCategory } from "../lib/categories";
@@ -164,6 +165,9 @@ export default async function RankingPage() {
         </a>
       </div>
       <RankingClient rankings={rankings} />
+      <div className="mx-auto max-w-[1200px] px-4 pb-6 md:px-6">
+        <CommercialAdSection pageType="category" />
+      </div>
       <Footer />
     </div>
   );

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import CommercialAdSection from "../components/CommercialAdSection";
 import ProductCard from "../components/ProductCard";
 import type { ProductDetailProps } from "../data/products";
 import { getCategoryHref, getCategoryLabel, type ProductCategory } from "../lib/categories";
@@ -148,6 +149,7 @@ export default async function TrendingPage() {
             </section>
           );
         })}
+        <CommercialAdSection pageType="category" />
       </main>
 
       <Footer />
