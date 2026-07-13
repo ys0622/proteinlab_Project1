@@ -19,18 +19,23 @@ const ROBOTS_INTERCEPTOR = `
         // --- robots.txt ClaudeBot interceptor (patched by scripts/patch-worker-robots.mjs) ---
         if (url.pathname === "/robots.txt") {
             const originalResponse = await env.ASSETS.fetch(request);
-            const text = await originalResponse.text();
-            const cleaned = text
-                .replace(/User-agent:\\s*ClaudeBot[\\s\\S]*?(?=User-agent:|$)/gi, "")
-                .replace(/\\n{3,}/g, "\\n\\n")
-                .trim() + "\\n";
-            return new Response(cleaned, {
-                status: originalResponse.status,
-                headers: {
-                    "content-type": "text/plain; charset=utf-8",
-                    "cache-control": originalResponse.headers.get("cache-control") || "public, max-age=3600",
-                },
-            });
+            if (originalResponse.ok) {
+                const text = await originalResponse.text();
+                const cleaned = text
+                    .replace(/User-agent:\\s*ClaudeBot[\\s\\S]*?(?=User-agent:|$)/gi, "")
+                    .replace(/\\n{3,}/g, "\\n\\n")
+                    .trim() + "\\n";
+                return new Response(cleaned, {
+                    status: originalResponse.status,
+                    headers: {
+                        "content-type": "text/plain; charset=utf-8",
+                        "cache-control": originalResponse.headers.get("cache-control") || "public, max-age=3600",
+                    },
+                });
+            }
+            // ASSETS에 정적 robots.txt가 없으면(404) Next.js의 동적 app/robots.ts 라우트가
+            // 처리하도록 그대로 통과시킨다. 여기서 응답을 반환하면 안 됨 — Cloudflare가
+            // 대신 기본 "content signals" 안내문으로 채워버려 실제 크롤링 규칙이 사라진다.
         }
         // --- end robots.txt interceptor ---`;
 
