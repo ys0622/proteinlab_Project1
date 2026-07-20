@@ -2,7 +2,7 @@
 import Link from "next/link";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
-import GuideBuySection from "@/app/components/GuideBuySection";
+import TrackedLink from "@/app/components/TrackedLink";
 
 const _pageTitle = "밤에 단백질 음료 마셔도 될까 | 야식·저녁 보충 기준 정리";
 const _pageDesc = "저녁이나 자기 전에 단백질 음료를 마셔도 되는지, 야식처럼 마실 때 주의할 점과 칼로리·당류 기준을 실전적으로 정리했습니다.";
@@ -91,6 +91,30 @@ const relatedLinks = [
   },
 ];
 
+const productRecommendations = [
+  {
+    href: "/product/takefit-max-choco-250",
+    productId: "takefit-max-choco-250",
+    title: "테이크핏 맥스 초코",
+    label: "운동 후 가벼운 보충",
+    body: "단백질 24g, 당류 0.7g 제품이라 늦은 시간 운동 뒤에도 당류 부담을 먼저 줄이고 싶은 경우에 비교하기 좋습니다.",
+  },
+  {
+    href: "/product/hymune-balance-active-deepchoco-250",
+    productId: "hymune-balance-active-deepchoco-250",
+    title: "하이뮨 프로틴 밸런스 액티브 딥초코",
+    label: "일상 보완형 후보",
+    body: "단백질 20g 제품군으로, 운동용보다는 저녁 식사에서 부족한 단백질을 보완하는 후보로 먼저 볼 만합니다.",
+  },
+  {
+    href: "/product/sellex-profit-milk-vanilla-250",
+    productId: "sellex-profit-milk-vanilla-250",
+    title: "셀렉스 프로핏 밀크 바닐라",
+    label: "저당·저칼로리 확인",
+    body: "단백질 20g, 당류와 칼로리 부담을 함께 보는 사용자에게 비교 기준점으로 쓰기 좋은 RTD 후보입니다.",
+  },
+];
+
 export default function NightProteinDrinkPage() {
   const jsonLd = buildGuideJsonLd({ title: (metadata as {title:string;description:string}).title, description: (metadata as {title:string;description:string}).description, url: 'https://proteinlab.kr/guides/intake-strategy-health/night-protein-drink' });
   return (
@@ -108,6 +132,7 @@ export default function NightProteinDrinkPage() {
           </div>
           <div className="mt-3">
             <span className="rounded-md bg-[#f5f0ea] px-2 py-0.5 text-[11px] font-semibold tracking-wide text-[#7a5230]">TRACK C</span>
+            <span className="ml-2 text-[11px] font-medium text-[var(--foreground-muted)]">업데이트 2026-07-15</span>
           </div>
           <h1 className="mt-3 text-2xl font-bold leading-tight text-[var(--foreground)] md:text-3xl">
             밤에 단백질 음료를 마셔도 됩니다.
@@ -122,6 +147,16 @@ export default function NightProteinDrinkPage() {
 
       <main className="mx-auto max-w-[1200px] px-4 py-8 md:px-6">
         <div className="space-y-6">
+          <section className="border-y border-[#dce8df] py-5">
+            <h2 className="text-lg font-bold text-[var(--foreground)]">핵심 결론</h2>
+            <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">
+              밤에는 식사 부족분을 보완할 때만 가볍게 선택하고, 야식 목적이라면 당류와 칼로리부터 확인하는 편이 좋습니다.
+            </p>
+            <div className="mt-4 flex flex-wrap gap-2">
+              <TrackedLink href="/topics/low-sugar-protein-drink" trackingLabel="저당 단백질 음료 보기" trackingSection="night_protein_hero" trackingPageType="guide" contentId="plv3:landing:guide:night-protein-drink" linkPosition="hero" ctaType="related_products" className="rounded-full border border-[#dce8df] px-4 py-2 text-sm font-semibold text-[#24543d] hover:bg-[#f6fbf7]">저당 단백질 음료 보기</TrackedLink>
+              <TrackedLink href="/guides/product-selection-comparison/protein-drink-top10" trackingLabel="단백질 음료 후보 비교" trackingSection="night_protein_hero" trackingPageType="guide" contentId="plv3:landing:guide:night-protein-drink" linkPosition="hero" ctaType="compare" className="rounded-full bg-[var(--accent)] px-4 py-2 text-sm font-semibold text-white hover:opacity-90">단백질 음료 후보 비교</TrackedLink>
+            </div>
+          </section>
           <section className="rounded-[28px] border border-[#e2ebe4] bg-[#f7fbf8] px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
             <h2 className="text-xl font-bold text-[var(--foreground)]">밤 시간대에 마셔도 되는 경우</h2>
             <div className="mt-5 overflow-x-auto">
@@ -171,6 +206,34 @@ export default function NightProteinDrinkPage() {
           </section>
 
           <section className="rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
+            <h2 className="text-xl font-bold text-[var(--foreground)]">밤에 마실 제품은 이 후보부터 확인하세요</h2>
+            <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">
+              밤 시간대에는 고함량 제품을 무조건 고르기보다 당류, 칼로리, 마시는 목적을 먼저 맞추는 편이 안전합니다.
+            </p>
+            <div className="mt-5 grid gap-3 md:grid-cols-3">
+              {productRecommendations.map((item) => (
+                <TrackedLink
+                  key={item.href}
+                  href={item.href}
+                  trackingLabel={`${item.title} 상세 보기`}
+                  trackingSection="night_protein_product_recommendations"
+                  trackingPageType="guide"
+                  contentId="plv3:landing:guide:night-protein-drink"
+                  productId={item.productId}
+                  linkPosition="mid_content"
+                  ctaType="product_detail"
+                  className="rounded-2xl border border-[#dce8df] bg-[#f6fbf7] p-4 transition-colors hover:bg-white"
+                >
+                  <span className="text-xs font-semibold text-[#7a5230]">{item.label}</span>
+                  <h3 className="mt-2 text-sm font-semibold text-[#24543d]">{item.title}</h3>
+                  <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">{item.body}</p>
+                  <span className="mt-3 inline-flex text-sm font-semibold text-[var(--accent)]">제품 상세 보기</span>
+                </TrackedLink>
+              ))}
+            </div>
+          </section>
+
+          <section className="rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
             <h2 className="text-xl font-bold text-[var(--foreground)]">많이 하는 실수</h2>
             <ul className="mt-4 space-y-3 text-sm leading-6 text-[var(--foreground-muted)]">
               {mistakeList.map((item) => (
@@ -195,7 +258,6 @@ export default function NightProteinDrinkPage() {
           </section>
         </div>
       </main>
-      <GuideBuySection />
       <Footer />
     </div>
   );

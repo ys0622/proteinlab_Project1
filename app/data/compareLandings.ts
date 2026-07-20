@@ -347,10 +347,75 @@ const compareLandings: CompareLanding[] = [
   },
 ];
 
+const compareLandingOverrides: Record<string, Partial<CompareLanding>> = {
+  "takefit-vs-hymune-drink": {
+    title: "테이크핏 vs 하이뮨 단백질 음료 비교",
+    description: "테이크핏과 하이뮨 단백질 음료를 단백질, 당류, 칼로리, 섭취 목적 기준으로 비교합니다.",
+    intro:
+      "테이크핏은 운동 후 가볍게 마시는 RTD 후보로, 하이뮨은 일상 보완과 중장년 건강관리 니즈까지 함께 비교되는 브랜드입니다. 두 제품은 브랜드 인지도보다 단백질 함량, 당류, 칼로리, 마시는 상황을 나눠 보는 편이 정확합니다.",
+    bullets: [
+      "운동 후 보충용인지, 식사 사이 일상 보완용인지 먼저 구분합니다.",
+      "단백질 총량만 보지 말고 당류와 칼로리 부담을 같이 확인합니다.",
+      "제품 상세에서 용량, 영양성분, 구매 채널까지 이어서 확인하기 좋은 조합입니다.",
+    ],
+    relatedLinks: [
+      {
+        href: "/brands/takefit",
+        title: "테이크핏 전체 제품 보기",
+        description: "테이크핏 라인업을 제품별 단백질, 당류, 칼로리 기준으로 다시 확인합니다.",
+      },
+      {
+        href: "/brands/hymune",
+        title: "하이뮨 전체 제품 보기",
+        description: "하이뮨 음료와 관련 제품을 브랜드 단위로 모아 봅니다.",
+      },
+      {
+        href: "/ranking",
+        title: "단백질 음료 랭킹 보기",
+        description: "두 제품이 전체 음료 후보 안에서 어떤 위치인지 함께 확인합니다.",
+      },
+    ],
+  },
+  "proteone-vs-itthefit-shake": {
+    title: "프로티원 vs 잇더핏 단백질 쉐이크 비교",
+    description: "프로티원과 잇더핏 단백질 쉐이크를 단백질, 당류, 칼로리, 1회 섭취 편의성 기준으로 비교합니다.",
+    intro:
+      "두 제품 모두 파우치형 단백질 쉐이크를 찾는 사람이 자주 비교하는 후보입니다. 식사대용에 가까운 든든함을 원하는지, 당류와 칼로리를 낮춘 가벼운 보충을 원하는지에 따라 선택 기준이 달라집니다.",
+    bullets: [
+      "식사대용에 가까운 포만감이 필요한지, 운동 후 보충용인지 먼저 구분합니다.",
+      "단백질 함량과 함께 당류, 칼로리, 용량을 같이 비교합니다.",
+      "바로 구매하기 전에 각 제품 상세에서 영양성분과 구매 채널을 확인하기 좋은 조합입니다.",
+    ],
+    relatedLinks: [
+      {
+        href: "/topics/meal-replacement-protein-shake",
+        title: "식사대용 단백질 쉐이크 보기",
+        description: "포만감과 섭취 편의성을 우선으로 보는 쉐이크 후보를 다시 좁혀봅니다.",
+      },
+      {
+        href: "/shake",
+        title: "단백질 쉐이크 전체 비교",
+        description: "쉐이크 전체 목록에서 당류, 칼로리, 단백질 기준으로 다른 후보까지 확인합니다.",
+      },
+      {
+        href: "/recommend",
+        title: "내 조건으로 다시 추천받기",
+        description: "섭취 목적과 피하고 싶은 조건을 기준으로 제품 후보를 다시 정리합니다.",
+      },
+    ],
+  },
+};
+
+function applyCompareLandingOverride(item: CompareLanding): CompareLanding {
+  const override = compareLandingOverrides[item.slug];
+  return override ? { ...item, ...override } : item;
+}
+
 export function getAllCompareLandings() {
-  return compareLandings;
+  return compareLandings.map(applyCompareLandingOverride);
 }
 
 export function getCompareLandingBySlug(slug: string) {
-  return compareLandings.find((item) => item.slug === slug) ?? null;
+  const landing = compareLandings.find((item) => item.slug === slug);
+  return landing ? applyCompareLandingOverride(landing) : null;
 }

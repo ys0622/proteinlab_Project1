@@ -937,6 +937,33 @@ export const proteinDrinkByFlavorConfig: ComparePageConfig = {
     { label: "테이크핏 몬스터 초코바나나 보기", slug: takefitMonsterChocobanana.slug },
   ],
 };
+proteinDrinkByFlavorConfig.sections = [
+  ...proteinDrinkByFlavorConfig.sections,
+  {
+    title: "뉴케어 올프로틴 맛 수상 이력도 참고하기",
+    items: [
+      {
+        title: "고소한맛은 외부 미각 평가 신호가 있습니다",
+        body:
+          "2026년 보도 기준 뉴케어 올프로틴 고소한맛은 국제식음료품평원 Superior Taste Award 2스타를 받은 것으로 확인됩니다. 단맛보다 곡물·고소한 계열을 선호한다면 후보에 넣어볼 만합니다.",
+      },
+      {
+        title: "초코맛과 바나나맛도 1스타 수상 이력",
+        body:
+          "뉴케어 올프로틴 초코맛과 바나나맛도 각각 1스타를 받은 것으로 보도됐습니다. 다만 미각상은 맛 평가 참고 자료이지 단백질 효율이나 건강 효과를 뜻하지 않습니다.",
+      },
+    ],
+  },
+];
+proteinDrinkByFlavorConfig.updatedAt = "2026-07-20";
+proteinDrinkByFlavorConfig.relatedGuides = [
+  {
+    title: "뉴케어 올프로틴 완전 분석",
+    href: "/guides/product-selection-comparison/newcare-allprotein",
+    description: "수상 맛과 41g·25g·워터·식물성 라인업을 함께 확인합니다.",
+  },
+  ...proteinDrinkByFlavorConfig.relatedGuides,
+].slice(0, 4);
 proteinDrinkByFlavorConfig.jsonLd = [articleJsonLd(proteinDrinkByFlavorConfig), faqJsonLd(proteinDrinkByFlavorConfig)];
 
 export const proteinDrinkTasteTipsConfig: ComparePageConfig = {
@@ -1248,65 +1275,124 @@ export const newcareAllproteinConfig: ComparePageConfig = {
     { label: "닥터유 40g 보기", slug: dryou40.slug },
   ],
 };
+newcareAllproteinConfig.title = "뉴케어 올프로틴 완전 분석";
+newcareAllproteinConfig.updatedAt = "2026-07-20";
 newcareAllproteinConfig.description =
-  "뉴케어 올프로틴 41g뿐 아니라 25g, 식물성, 워터 라인까지 함께 보고 어떤 라인이 어떤 목적에 맞는지 정리합니다.";
+  "뉴케어 올프로틴 41g뿐 아니라 25g, 식물성, 워터 라인까지 함께 보고 어떤 제품이 어떤 목적에 맞는지 정리합니다.";
 newcareAllproteinConfig.keywords = [
   "뉴케어 올프로틴",
   "뉴케어 올프로틴 41g",
   "뉴케어 올프로틴 25g",
-  "뉴케어 식물성 단백질",
-  "뉴케어 올프로틴 워터",
+  "뉴케어 올프로틴 초코",
+  "뉴케어 국제 우수 미각상",
 ];
-newcareAllproteinConfig.methodologyNote = "ProteinLab DB 뉴케어 올프로틴 41g·25g·식물성·워터 라인 기준";
+newcareAllproteinConfig.methodologyNote =
+  "ProteinLab DB 뉴케어 올프로틴 41g·25g·식물성·워터 라인 기준 + 2026년 국제 우수 미각상 보도 참고";
 newcareAllproteinConfig.summary = [
-  "뉴케어 올프로틴은 41g 한 가지가 아니라 25g, 식물성, 워터까지 목적이 갈리는 라인업입니다.",
-  "41g은 고단백 집중형, 25g은 일상형, 식물성은 원료 민감도 대응형, 워터는 가장 가벼운 음용형으로 읽으면 쉽습니다.",
-  "뉴케어를 고를 때는 단백질 총량보다 내가 원하는 음용감과 소화 부담부터 먼저 정하는 편이 실수가 적습니다.",
+  "뉴케어 올프로틴은 41g 한 가지가 아니라 25g, 식물성, 워터형까지 목적이 나뉘는 라인업입니다.",
+  "41g는 고단백 집중형, 25g는 일상형, 식물성은 원료 민감도 대응형, 워터는 가볍게 마시는 보충형으로 보는 편이 쉽습니다.",
+  "2026년 국제식음료품평원 Superior Taste Award에서 올프로틴 고소한맛은 2스타, 초코맛과 바나나맛은 각각 1스타를 받은 것으로 보도됐습니다. 이는 영양 성분이 아니라 맛 평가 참고 요소로 보는 것이 적절합니다.",
 ];
-newcareAllproteinConfig.sections.splice(1, 0, {
-  title: "뉴케어 올프로틴 라인업 한눈에 보기",
+newcareAllproteinConfig.sections = [
+  newcareAllproteinConfig.sections[0],
+  {
+    title: "뉴케어 올프로틴 라인업 한눈에 보기",
+    items: [
+      {
+        title: `41g 라인: ${newcare41.proteinPerServing}g 고단백`,
+        body: `${newcare41.calories}kcal에 당류 ${newcare41.sugar}g 수준으로, 단백질 총량을 가장 강하게 챙기고 싶을 때 맞습니다. 유당 부담을 낮춘 고단백 RTD라는 점이 핵심입니다.`,
+      },
+      {
+        title: `25g 라인: ${newcare25.proteinPerServing}g 일상형`,
+        body: `${newcare25.calories}kcal, 당류 ${newcare25.sugar}g로 41g보다 진입 장벽이 낮습니다. 매일 한 병씩 무난하게 챙기거나 식사 사이 보충용으로 보기 좋습니다.`,
+      },
+      {
+        title: `식물성 라인: ${newcarePlant.proteinPerServing}g 대체 옵션`,
+        body: `${newcarePlant.calories}kcal에 당류 ${newcarePlant.sugar}g, 단백질 원료가 식물성으로 잡혀 있습니다. 유제품 기반 음용감이 부담스럽거나 식물성 쪽을 선호할 때 후보가 됩니다.`,
+      },
+      {
+        title: `워터 라인: ${newcareWater.proteinPerServing}g 가벼운 음용형`,
+        body: `${newcareWater.calories}kcal, 당류 ${newcareWater.sugar}g로 가장 가볍습니다. 대신 밀도는 ${formatDensity(newcareWater)} 수준이라 식사 보완보다 산뜻한 보충에 가깝습니다.`,
+      },
+    ],
+  },
+  {
+  title: "맛 평가에서 참고할 수 있는 수상 이력",
   items: [
     {
-      title: `41g 라인: ${newcare41.proteinPerServing}g 고단백`,
-      body: `${newcare41.calories}kcal에 당류 ${newcare41.sugar}g 수준으로, 단백질 총량을 가장 강하게 챙기고 싶을 때 맞습니다. 유당 부담을 낮춘 고단백 RTD라는 점이 핵심입니다.`,
+      title: "고소한맛: Superior Taste Award 2스타",
+      body:
+        "2026년 보도 기준 뉴케어 올프로틴 고소한맛은 국제식음료품평원 Superior Taste Award에서 2스타를 받은 것으로 확인됩니다. 곡물·고소한맛 계열을 선호한다면 맛 참고 신호로 볼 수 있습니다.",
     },
     {
-      title: `25g 라인: ${newcare25.proteinPerServing}g 일상형`,
-      body: `${newcare25.calories}kcal, 당류 ${newcare25.sugar}g로 41g보다 진입 장벽이 낮습니다. 매일 한 병씩 무난하게 챙기거나 식사 사이 보충용으로 보기 좋습니다.`,
+      title: "초코맛·바나나맛: Superior Taste Award 1스타",
+      body:
+        "같은 보도에서 뉴케어 올프로틴 초코맛과 바나나맛은 각각 1스타를 받은 것으로 확인됩니다. 입문자가 많이 고르는 익숙한 맛에서도 외부 미각 평가 이력이 있다는 점이 포인트입니다.",
     },
     {
-      title: `식물성 라인: ${newcarePlant.proteinPerServing}g 대체 옵션`,
-      body: `${newcarePlant.calories}kcal에 당류 ${newcarePlant.sugar}g, 단백질 원료가 식물성으로 잡혀 있습니다. 유제품 기반 음용감이 부담스럽거나 식물성 쪽을 선호할 때 후보가 됩니다.`,
+      title: "평가 방식: 블라인드 테스트 기반 품평",
+      body:
+        "Superior Taste Award는 셰프와 소믈리에 등 미각 전문가가 블라인드 테스트로 첫인상, 외관, 향, 맛 등을 평가하는 국제 품평회로 소개됩니다. 제품 선택에서는 맛 참고 자료로만 활용하는 편이 맞습니다.",
     },
     {
-      title: `워터 라인: ${newcareWater.proteinPerServing}g 가벼운 음용형`,
-      body: `${newcareWater.calories}kcal, 당류 ${newcareWater.sugar}g로 가장 가볍습니다. 대신 밀도는 ${formatDensity(newcareWater)} 수준이라 식사 보완보다 산뜻한 보충에 가깝습니다.`,
+      title: "성분 평가와는 별개로 봐야 합니다",
+      body:
+        "미각상은 맛과 풍미 평가이지 단백질 효율이나 건강 효과를 의미하지 않습니다. 제품 선택에서는 단백질, 당류, 칼로리, 용량을 먼저 확인하는 편이 맞습니다.",
+    },
+    {
+      title: "박스 구매 전 실패 비용을 줄이는 힌트",
+      body:
+        "뉴케어처럼 박스 구매 흐름이 있는 제품은 맛 적응이 중요합니다. 수상 이력은 참고할 만하지만, 처음이라면 소량으로 맛을 확인한 뒤 반복 구매로 넘어가는 편이 안전합니다.",
     },
   ],
-});
-newcareAllproteinConfig.sections.splice(3, 0, {
-  title: "라인업별 이렇게 고르면 됩니다",
-  items: [
-    {
-      title: "고단백 한 병으로 끝내고 싶다면",
-      body: "41g 라인이 가장 명확합니다. 운동 후든 건강관리 목적이든 한 번에 단백질 총량을 크게 확보하려는 수요에 맞습니다.",
-    },
-    {
-      title: "매일 부담 없이 마실 뉴케어를 찾는다면",
-      body: "25g 라인이 가장 무난합니다. 칼로리와 음용 부담이 덜해서 입문용이나 일상 루틴용으로 설명하기 쉽습니다.",
-    },
-    {
-      title: "원료 성격이 더 중요하다면",
-      body: "식물성 라인을 먼저 보면 됩니다. 단백질 총량은 41g보다 낮지만, 뉴케어 안에서 식물성 선택지를 찾는 사용자에게는 별도 의미가 있습니다.",
-    },
-    {
-      title: "묵직한 밀크형이 부담스럽다면",
-      body: "워터 라인이 맞습니다. 80kcal 수준이라 가장 가볍지만, 포만감이나 단백질 밀도는 25g·41g 라인보다 확실히 낮습니다.",
-    },
-  ],
-});
+  },
+  newcareAllproteinConfig.sections[1],
+  {
+    title: "라인업별 이렇게 고르면 됩니다",
+    items: [
+      {
+        title: "고단백 한 병으로 끝내고 싶다면",
+        body: "41g 라인이 가장 명확합니다. 운동 후든 건강관리 목적이든 한 번에 단백질 총량을 크게 확보하려는 수요에 맞습니다.",
+      },
+      {
+        title: "매일 부담 없이 마실 뉴케어를 찾는다면",
+        body: "25g 라인이 가장 무난합니다. 칼로리와 음용 부담이 덜해서 입문용이나 일상 루틴용으로 설명하기 쉽습니다.",
+      },
+      {
+        title: "원료 성격이 더 중요하다면",
+        body: "식물성 라인을 먼저 보면 됩니다. 단백질 총량은 41g보다 낮지만, 뉴케어 안에서 식물성 선택지를 찾는 사용자에게는 별도 의미가 있습니다.",
+      },
+      {
+        title: "묵직한 밀크형이 부담스럽다면",
+        body: "워터 라인이 맞습니다. 80kcal 수준이라 가장 가볍지만, 포만감이나 단백질 밀도는 25g·41g 라인보다 확실히 낮습니다.",
+      },
+    ],
+  },
+  ...newcareAllproteinConfig.sections.slice(2),
+];
+newcareAllproteinConfig.relatedGuides = [
+  {
+    title: "뉴케어 41g vs 25g",
+    href: "/guides/product-selection-comparison/newcare-41g-vs-25g",
+    description: "고단백 집중형과 일상형 뉴케어를 직접 비교합니다.",
+  },
+  {
+    title: "뉴케어 박스가성비 가이드",
+    href: "/guides/product-selection-comparison/newcare-box-value",
+    description: "박스 구매 전 개당 단가와 실패 비용을 함께 봅니다.",
+  },
+  {
+    title: "단백질 음료 맛 고르는 법",
+    href: "/guides/product-selection-comparison/protein-drink-taste-tips",
+    description: "맛 때문에 단백질 음료 선택이 어렵다면 이 가이드를 함께 확인하세요.",
+  },
+  {
+    title: "단백질 음료 맛별 추천",
+    href: "/guides/product-selection-comparison/protein-drink-by-flavor",
+    description: "초코, 바나나, 고소한맛처럼 맛 기준으로 후보를 좁힙니다.",
+  },
+];
 newcareAllproteinConfig.faq = [
-  ...(newcareAllproteinConfig.faq ?? []),
   {
     question: "뉴케어 올프로틴은 41g만 있는 브랜드인가요?",
     answer:
@@ -1316,6 +1402,16 @@ newcareAllproteinConfig.faq = [
     question: "25g, 식물성, 워터 중에서는 무엇부터 보면 되나요?",
     answer:
       "무난한 입문은 25g, 원료 선호가 뚜렷하면 식물성, 가장 가볍게 마시고 싶다면 워터를 먼저 보면 됩니다. 41g은 총량을 최우선으로 둘 때 선택하는 상위 라인으로 보면 됩니다.",
+  },
+  {
+    question: "뉴케어 올프로틴이 국제 미각상을 받았나요?",
+    answer:
+      "2026년 보도 기준 뉴케어 올프로틴 고소한맛은 국제식음료품평원 Superior Taste Award 2스타, 초코맛과 바나나맛은 각각 1스타를 받은 것으로 확인됩니다. 다만 이는 맛 평가 참고 요소이며 영양 효과를 의미하지는 않습니다.",
+  },
+  {
+    question: "국제 미각상 수상 제품이면 맛이 무조건 맞나요?",
+    answer:
+      "그렇지는 않습니다. 블라인드 테스트 기반의 외부 품평 이력은 참고할 만하지만 개인 취향, 온도, 음용 빈도에 따라 체감은 달라질 수 있습니다. 박스 구매 전에는 소량으로 맛을 확인하는 편이 안전합니다.",
   },
 ];
 newcareAllproteinConfig.purchaseLinks = [

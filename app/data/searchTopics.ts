@@ -364,10 +364,57 @@ const searchTopics: SearchTopic[] = [
   },
 ];
 
+const searchTopicOverrides: Record<string, Partial<SearchTopic>> = {
+  "newcare-all-protein": {
+    title: "뉴케어 올프로틴 추천 및 라인업 비교",
+    description: "뉴케어 올프로틴 41g, 25g, 워터, 식물성 라인을 단백질 함량, 당류, 칼로리, 섭취 목적 기준으로 비교합니다.",
+    intro:
+      "뉴케어 올프로틴은 41g 고단백형부터 매일 마시기 쉬운 25g, 워터형, 식물성 라인까지 선택지가 넓습니다. 같은 뉴케어라도 운동 후 보충, 저당 관리, 가벼운 수분형 섭취처럼 쓰임이 달라 먼저 라인업을 나눠 보는 편이 정확합니다.",
+    bullets: [
+      "41g 고단백형과 25g 표준형 역할 구분",
+      "워터형·식물성 라인까지 뉴케어 내부 선택지 정리",
+      "국제 미각상 수상 이력은 맛 평가 참고 정보로만 반영",
+    ],
+    primaryCta: {
+      href: "/guides/product-selection-comparison/newcare-allprotein",
+      title: "뉴케어 올프로틴 완전 분석 보기",
+      description: "41g, 25g, 워터, 식물성 라인을 성분과 목적 기준으로 한 번에 비교합니다.",
+    },
+    relatedLinks: [
+      {
+        href: "/product/newcare-all-protein-41g",
+        title: "뉴케어 올프로틴 41g 상세",
+        description: "고단백형의 단백질 밀도와 구매 링크를 확인합니다.",
+      },
+      {
+        href: "/guides/product-selection-comparison/newcare-41g-vs-25g",
+        title: "뉴케어 41g vs 25g",
+        description: "운동 후 보충형과 일상 표준형을 직접 비교합니다.",
+      },
+      {
+        href: "/compare/newcare-41g-vs-labnosh-max-drink",
+        title: "뉴케어 vs 랩노쉬 맥스",
+        description: "41g과 52g 초고단백 RTD를 성분 기준으로 비교합니다.",
+      },
+      {
+        href: "/guides/product-selection-comparison/newcare-box-value",
+        title: "뉴케어 박스가성비",
+        description: "박스 구매 전 라인별 개당 부담과 용도를 확인합니다.",
+      },
+    ],
+  },
+};
+
+function applySearchTopicOverride(topic: SearchTopic): SearchTopic {
+  const override = searchTopicOverrides[topic.slug];
+  return override ? { ...topic, ...override } : topic;
+}
+
 export function getAllSearchTopics() {
-  return searchTopics;
+  return searchTopics.map(applySearchTopicOverride);
 }
 
 export function getSearchTopicBySlug(slug: string) {
-  return searchTopics.find((topic) => topic.slug === slug) ?? null;
+  const topic = searchTopics.find((item) => item.slug === slug);
+  return topic ? applySearchTopicOverride(topic) : null;
 }

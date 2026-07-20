@@ -249,6 +249,15 @@ export const proteinDrinkTop10Config: CategoryGuideConfig = {
       slug: product.slug,
     }));
   })(),
+  showPurchaseLinks: false,
+  conversion: {
+    contentId: "plv3:landing:guide:protein-drink-top10",
+    conclusion: "단백질 음료는 1위보다 섭취 목적에 맞는 단백질 구간을 먼저 고르는 편이 좋습니다. 상위 후보에서 2~3개를 골라 성분표로 좁혀보세요.",
+    products: drinkTop10.slice(0, 3).map((product) => ({
+      slug: product.slug,
+      reason: `단백질 ${product.proteinPerServing}g 기준으로 당류와 칼로리를 함께 비교할 수 있습니다.`,
+    })),
+  },
   faq: [
     {
       question: "TOP 10이면 1위 제품만 사면 되나요?",
@@ -278,6 +287,59 @@ export const proteinDrinkTop10Config: CategoryGuideConfig = {
       question: "2026년에 단백질 음료를 고를 때 가장 먼저 볼 기준은 무엇인가요?",
       answer: "먼저 1회 단백질 함량이 20g 이상인지 확인하고, 그다음 당류와 칼로리를 같이 봐야 합니다. 운동 후 보충이면 고단백형, 매일 가볍게 마실 목적이면 저당·저칼로리형이 더 맞습니다.",
     },
+  ],
+};
+
+proteinDrinkTop10Config.updatedAt = "2026-07-20";
+proteinDrinkTop10Config.summary = [
+  proteinDrinkTop10Config.summary[0],
+  "테이크핏·더단백 같은 상위 고단백 RTD와 함께 뉴케어 올프로틴도 별도 라인업으로 봐야 합니다. 41g, 25g, 워터, 식물성 라인이 서로 다른 목적을 담당하기 때문입니다.",
+  proteinDrinkTop10Config.summary[2],
+  "브랜드명보다 먼저 TOP 10 후보를 보여주고, 이후 용도별 가이드나 뉴케어·고단백 비교 페이지로 넘기는 흐름이 체류와 전환 모두에 유리합니다.",
+];
+proteinDrinkTop10Config.sections = [
+  ...proteinDrinkTop10Config.sections.slice(0, 3),
+  {
+    title: "뉴케어 올프로틴을 따로 봐야 하는 경우",
+    items: [
+      {
+        title: "고단백이지만 락토프리 성격까지 같이 볼 때",
+        body: "뉴케어 올프로틴 41g은 단백질 총량만이 아니라 유당 부담을 낮춘 고단백 RTD 후보로 읽을 수 있습니다. 테이크핏이나 더단백과 단순 순위로만 비교하기보다 목적별 대안으로 따로 확인하는 편이 좋습니다.",
+      },
+      {
+        title: "매일 마실 표준형을 찾을 때",
+        body: "25g 라인은 초고단백형보다 부담이 낮아 일상 보충형 후보로 보기 좋습니다. 칼로리와 당류를 함께 보면 41g과 25g의 역할 차이가 더 분명해집니다.",
+      },
+      {
+        title: "맛 지속성이 걱정될 때",
+        body: "뉴케어 올프로틴 일부 맛은 국제 미각상 수상 이력이 있어 맛 평가 참고 정보로 볼 수 있습니다. 다만 수상 이력은 영양 우수성이나 개인별 선호를 보장하는 근거는 아니므로 성분표와 함께 확인해야 합니다.",
+      },
+    ],
+  },
+  ...proteinDrinkTop10Config.sections.slice(3),
+];
+proteinDrinkTop10Config.relatedGuides = [
+  {
+    title: "뉴케어 올프로틴 완전 분석",
+    href: "/guides/product-selection-comparison/newcare-allprotein",
+    description: "41g, 25g, 워터, 식물성 라인을 한 번에 비교합니다.",
+  },
+  {
+    title: "뉴케어 41g vs 25g",
+    href: "/guides/product-selection-comparison/newcare-41g-vs-25g",
+    description: "운동 후 보충형과 일상 표준형의 차이를 직접 확인합니다.",
+  },
+  ...proteinDrinkTop10Config.relatedGuides,
+].slice(0, 6);
+proteinDrinkTop10Config.conversion = {
+  contentId: "plv3:landing:guide:protein-drink-top10",
+  compareHref: proteinDrinkTop10Config.conversion?.compareHref,
+  conclusion:
+    "단백질 음료는 1위보다 섭취 목적에 맞는 구간을 먼저 고르는 편이 좋습니다. 고단백형은 테이크핏·더단백과 함께 뉴케어 41g까지, 매일형은 뉴케어 25g처럼 부담이 낮은 후보까지 같이 좁혀보세요.",
+  products: [
+    { slug: "newcare-all-protein-41g", reason: "41g 고단백형이면서 뉴케어 라인업의 대표 비교 기준점입니다." },
+    { slug: "newcare-all-protein-choco-245", reason: "25g 표준형으로 매일 마실 제품을 고를 때 비교하기 쉽습니다." },
+    { slug: "takefit-extreme-450", reason: "초고단백 RTD 기준점을 함께 두면 뉴케어 41g의 위치가 더 선명해집니다." },
   ],
 };
 

@@ -1,5 +1,4 @@
 import { ShakeGuidePage, buildShakeGuideMetadata } from "../shakeGuideShared";
-import { buildGuideJsonLd } from "@/app/lib/guideJsonLd";
 
 export const metadata = buildShakeGuideMetadata(
   "단백질 음료 vs 쉐이크 차이 | 용도별 선택 기준 정리",
@@ -7,14 +6,6 @@ export const metadata = buildShakeGuideMetadata(
 );
 
 export default function ProteinDrinkVsProteinShakePage() {
-  const jsonLd = buildGuideJsonLd({
-    title: "운동 후 빠른 보충",
-    description: "",
-    url: "https://proteinlab.kr/guides/product-selection-comparison/protein-drink-vs-protein-shake",
-    datePublished: "2026-03-01",
-    dateModified: "2026-05-29",
-  });
-
   return (
     <ShakeGuidePage
       title="단백질 음료 vs 단백질 쉐이크"
@@ -56,6 +47,8 @@ export default function ProteinDrinkVsProteinShakePage() {
         { label: "단백질 쉐이크 추천이 궁금하다면 → 단백질 쉐이크 추천", href: "/guides/product-selection-comparison/protein-shake-guide" },
         { label: "단백질 음료 기준이 궁금하다면 → 단백질 음료 선택 가이드", href: "/guides/product-selection-comparison/protein-drink-guide" },
         { label: "운동 후 섭취 기준이 궁금하다면 → 운동 후 단백질 쉐이크", href: "/guides/product-selection-comparison/post-workout-protein-shake-guide" },
+        { label: "매일 마실 제품이 궁금하다면 → 단백질 음료 매일 마셔도 되나요", href: "/guides/intake-strategy-health/protein-drink-daily" },
+        { label: "당류 기준이 궁금하다면 → 단백질 음료 당류 얼마나 봐야 하나요", href: "/guides/intake-strategy-health/protein-drink-sugar" },
       ]}
       ctaBody="ProteinLab에서 단백질 음료와 단백질 쉐이크를 각각 비교해보고, 내 목적에 맞는 쪽을 선택해보세요. RTD 음료와 쉐이크를 같은 기준으로 섞어 보지 않도록 카테고리를 나눠서 볼 수 있습니다."
       faqItems={[

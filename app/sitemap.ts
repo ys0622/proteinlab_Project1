@@ -17,15 +17,21 @@ const SITE_URL = "https://proteinlab.kr";
 // Known last-modified dates for key pages (avoid lying to Google with new Date())
 const PAGE_DATES: Record<string, string> = {
   "/": "2026-06-28",
-  "/drinks": "2026-06-28",
-  "/bars": "2026-06-28",
-  "/shake": "2026-06-28",
-  "/yogurt": "2026-06-28",
+  "/drinks": "2026-07-15",
+  "/bars": "2026-07-15",
+  "/shake": "2026-07-15",
+  "/yogurt": "2026-07-15",
   "/products": "2026-06-28",
-  "/ranking": "2026-06-28",
+  "/ranking": "2026-07-15",
   "/trending": "2026-07-03",
-  "/recommend": "2026-06-28",
-  "/guides": "2026-06-28",
+  "/recommend": "2026-07-15",
+  "/guides": "2026-07-20",
+  "/guides/intake-strategy-health/protein-drink-daily": "2026-07-20",
+  "/guides/intake-strategy-health/protein-drink-diarrhea": "2026-07-20",
+  "/guides/intake-strategy-health/protein-drink-empty-stomach": "2026-07-20",
+  "/guides/intake-strategy-health/protein-drink-sugar": "2026-07-20",
+  "/guides/intake-strategy-health/protein-drink-weight-gain": "2026-07-20",
+  "/guides/product-selection-comparison/protein-drink-vs-protein-shake": "2026-07-20",
   "/guides/basics/daily-requirement": "2026-06-01",
   "/guides/basics/deficiency-symptoms": "2026-06-01",
   "/guides/basics/digestion": "2026-06-01",
@@ -35,8 +41,8 @@ const PAGE_DATES: Record<string, string> = {
   "/guides/basics/protein-drink-vs-powder": "2026-06-01",
   "/guides/basics/role-overview": "2026-06-01",
   "/official-events": "2026-06-28",
-  "/compare": "2026-06-01",
-  "/topics": "2026-06-28",
+  "/compare": "2026-07-15",
+  "/topics": "2026-07-20",
   "/brands": "2026-06-01",
   "/about": "2026-03-01",
   "/contact": "2026-03-01",
@@ -48,7 +54,7 @@ const PAGE_DATES: Record<string, string> = {
 };
 
 const FALLBACK_GUIDE_DATE = "2026-06-01";
-const FALLBACK_PRODUCT_DATE = "2026-06-28";
+const FALLBACK_PRODUCT_DATE = "2026-07-15";
 
 const staticRoutes = [
   "/",
@@ -122,7 +128,12 @@ const STATIC_GUIDE_ROUTES: string[] = [
   "/guides/intake-strategy-health/post-workout-protein",
   "/guides/intake-strategy-health/pre-workout-protein",
   "/guides/intake-strategy-health/protein-50g-at-once",
+  "/guides/intake-strategy-health/protein-drink-daily",
+  "/guides/intake-strategy-health/protein-drink-diarrhea",
+  "/guides/intake-strategy-health/protein-drink-empty-stomach",
   "/guides/intake-strategy-health/protein-drink-meal-replacement",
+  "/guides/intake-strategy-health/protein-drink-sugar",
+  "/guides/intake-strategy-health/protein-drink-weight-gain",
   "/guides/intake-strategy-health/protein-drink-without-exercise",
   "/guides/intake-strategy-health/protein-timing",
   "/guides/intake-strategy-health/senior-protein-strategy",
@@ -225,7 +236,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const compareGuideLastModified = new Map(
     getAllCompareGuideConfigs().map((config) => [
       `/guides/product-selection-comparison/${config.slug}`,
-      config.updatedAt ? new Date(config.updatedAt) : new Date(),
+      config.updatedAt ? new Date(config.updatedAt) : new Date(FALLBACK_GUIDE_DATE),
     ]),
   );
 

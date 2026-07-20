@@ -226,6 +226,15 @@ export const proteinBarTop10Config: CategoryGuideConfig = {
     label: `${product.brand} ${product.name} 보기`,
     slug: product.slug,
   })),
+  showPurchaseLinks: false,
+  conversion: {
+    contentId: "plv3:landing:guide:protein-bar-top10",
+    conclusion: "단백질 바는 순위보다 목적이 먼저입니다. 운동 후 보충, 다이어트 간식, 편의점 단품 구매 중 하나를 정한 뒤 2~3개만 비교하세요.",
+    products: barTop10.slice(0, 3).map((product) => ({
+      slug: product.slug,
+      reason: `단백질 ${product.proteinPerServing}g과 칼로리·당류를 함께 확인할 수 있는 상위 후보입니다.`,
+    })),
+  },
   faq: [
     {
       question: "단백질 바는 다이어트 간식으로 괜찮나요?",
@@ -264,6 +273,130 @@ proteinBarTop10Config.faq = [
     question: "다이어트 단백질 바는 어떤 기준으로 골라야 하나요?",
     answer:
       "다이어트 목적이면 단백질 15g 이상을 먼저 확인한 뒤 200kcal 이하, 당류 5g 이하 제품부터 보는 편이 안전합니다. 단백질 바는 간식형 제품이라 저당이어도 칼로리는 반드시 같이 확인해야 합니다.",
+  },
+];
+proteinBarTop10Config.jsonLd = [articleJsonLd(proteinBarTop10Config), faqJsonLd(proteinBarTop10Config)];
+
+proteinBarTop10Config.title = "단백질 바 추천 TOP 10 | 프로틴바·다이어트 간식 비교 2026";
+proteinBarTop10Config.description =
+  "ProteinLab DB 단백질 바 100개를 기준으로 단백질, 칼로리, 당류, 단백질 밀도를 함께 비교해 실제 구매 후보를 좁혀봅니다.";
+proteinBarTop10Config.keywords = [
+  "단백질 바 추천",
+  "프로틴바 추천",
+  "단백질바 추천",
+  "다이어트 단백질 바",
+  "편의점 단백질 바",
+  "단백질 바 비교",
+];
+proteinBarTop10Config.badge = "바 랭킹";
+proteinBarTop10Config.readingTime = "6분 읽기";
+proteinBarTop10Config.updatedAt = "2026-07-20";
+proteinBarTop10Config.methodologyNote =
+  "ProteinLab DB 바 100개 기준 · 단백질 함량, 당류, 칼로리, 식이섬유, 브랜드 편중을 함께 반영";
+proteinBarTop10Config.intro =
+  "단백질 바는 단백질 숫자만 보고 고르면 실패하기 쉽습니다. 운동 후 보충용인지, 다이어트 간식인지, 편의점에서 바로 살 제품인지에 따라 좋은 후보가 달라집니다. 이 페이지는 ProteinLab DB 바 100개 중 단백질, 당류, 칼로리, 식이섬유를 함께 본 구매 후보 리스트입니다.";
+proteinBarTop10Config.summary = [
+  "상위권은 대체로 170~200kcal 구간에서 단백질 15~20g 이상을 제공하는 제품이 많습니다.",
+  "다이어트 간식 목적이라면 단백질보다 먼저 칼로리와 당류를 함께 봐야 합니다.",
+  "처음 사는 제품은 박스 구매보다 단품이나 소량 묶음으로 식감과 단맛을 확인하는 편이 안전합니다.",
+];
+proteinBarTop10Config.comparisonTitle = "단백질 바 TOP 10 후보";
+proteinBarTop10Config.comparisonColumns = ["제품명", "단백질", "칼로리", "당류", "선택 포인트"];
+proteinBarTop10Config.comparisonRows = rankingRows(barTop10);
+proteinBarTop10Config.sections = [
+  {
+    title: "목적별로 먼저 나누세요",
+    items: [
+      {
+        title: "운동 후 보충",
+        body: "단백질 20g 전후 제품이 우선입니다. 음료를 마시기 어려운 상황에서 씹어 먹는 보충 간식으로 쓰기 좋습니다.",
+      },
+      {
+        title: "다이어트 간식",
+        body: "칼로리 200kcal 이하, 당류 5g 이하 제품부터 보는 편이 좋습니다. 단백질이 높아도 열량이 높으면 간식 부담이 커질 수 있습니다.",
+      },
+      {
+        title: "편의점 즉시 구매",
+        body: "성분만큼 구매 접근성이 중요합니다. 바로 먹을 목적이면 오프라인에서 자주 보이는 제품을 후보로 두는 편이 현실적입니다.",
+      },
+    ],
+  },
+  {
+    title: "구매 전 체크포인트",
+    items: [
+      {
+        title: "식감 차이가 큽니다",
+        body: "단백질 바는 꾸덕한 타입, 크런치 타입, 초코바 타입의 체감 차이가 큽니다. 처음부터 대량 구매하면 실패 비용이 커질 수 있습니다.",
+      },
+      {
+        title: "당류와 감미료를 같이 봅니다",
+        body: "당류가 낮아도 단맛 체감은 제품마다 다릅니다. 다이어트 목적이면 당류와 칼로리, 식이섬유를 함께 확인하세요.",
+      },
+      {
+        title: "한 개가 식사 대체는 아닙니다",
+        body: "단백질 바는 보충 간식에 가깝습니다. 끼니를 완전히 대체하기보다 부족한 단백질을 채우는 용도로 보는 편이 맞습니다.",
+      },
+    ],
+  },
+  {
+    title: "실제 구매 흐름",
+    items: [
+      {
+        title: "1단계: TOP 10에서 후보 2~3개만 고르기",
+        body: "순위 전체를 외우기보다 목적에 맞는 후보를 2~3개만 골라 상세 페이지에서 성분을 확인하는 편이 빠릅니다.",
+      },
+      {
+        title: "2단계: 상세에서 식감과 영양 확인",
+        body: "단백질, 당류, 칼로리뿐 아니라 용량과 식이섬유가 있는지 확인합니다. 같은 단백질 20g이어도 체감은 다를 수 있습니다.",
+      },
+      {
+        title: "3단계: 구매처에서 가격과 묶음 구성 확인",
+        body: "바는 단품과 박스 가격 차이가 큽니다. 맛 검증 전에는 단품, 계속 먹을 제품은 박스 구매가 유리한 경우가 많습니다.",
+      },
+    ],
+  },
+];
+proteinBarTop10Config.conversion = {
+  contentId: "plv3:landing:guide:protein-bar-top10",
+  conclusion:
+    "단백질 바는 1위 제품만 고르는 페이지가 아닙니다. 운동 후, 다이어트 간식, 편의점 즉시 구매 중 내 목적에 맞는 후보를 2~3개로 좁히는 것이 먼저입니다.",
+  products: barTop10.slice(0, 3).map((product) => ({
+    slug: product.slug,
+    reason: `단백질 ${product.proteinPerServing}g, ${product.calories}kcal, 당류 ${product.sugar}g 기준으로 먼저 비교해볼 만한 상위 후보입니다.`,
+  })),
+};
+proteinBarTop10Config.relatedGuides = [
+  {
+    title: "편의점 단백질 바 추천",
+    href: "/guides/product-selection-comparison/convenience-protein-bar",
+    description: "오늘 바로 살 수 있는 단백질 바 후보를 따로 보고 싶다면 이어서 확인하세요.",
+  },
+  {
+    title: "다이어트 단백질 바 추천",
+    href: "/guides/product-selection-comparison/diet-protein-bar",
+    description: "칼로리와 당류를 더 엄격하게 보고 싶을 때 적합한 페이지입니다.",
+  },
+  {
+    title: "단백질 제품 카테고리 가이드",
+    href: "/guides/product-selection-comparison/protein-category-guide",
+    description: "바, 음료, 쉐이크 중 무엇이 내 목적에 맞는지 먼저 정리합니다.",
+  },
+];
+proteinBarTop10Config.faq = [
+  {
+    question: "단백질 바는 다이어트 간식으로 괜찮나요?",
+    answer:
+      "가능하지만 무조건 가벼운 간식은 아닙니다. 단백질 15g 이상, 200kcal 이하, 당류 5g 이하 제품부터 보는 편이 안전합니다.",
+  },
+  {
+    question: "프로틴바와 단백질바는 같은 뜻인가요?",
+    answer:
+      "검색어는 다르지만 대부분 같은 카테고리로 쓰입니다. 이 페이지에서는 프로틴바와 단백질바를 같은 단백질 보충 간식으로 보고 비교합니다.",
+  },
+  {
+    question: "처음 구매할 때 박스로 사도 되나요?",
+    answer:
+      "처음이면 단품이나 소량 묶음이 낫습니다. 단백질 바는 식감과 단맛 취향 차이가 커서, 맛이 맞는지 확인한 뒤 박스로 넘어가는 편이 안전합니다.",
   },
 ];
 proteinBarTop10Config.jsonLd = [articleJsonLd(proteinBarTop10Config), faqJsonLd(proteinBarTop10Config)];

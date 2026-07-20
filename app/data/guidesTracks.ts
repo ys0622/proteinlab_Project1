@@ -399,6 +399,17 @@ export const guideTracks: GuideTrack[] = [
         ],
       },
       {
+        slug: "protein-drink-empty-stomach",
+        title: "단백질 음료 공복에 마셔도 되나요",
+        description: "아침 공복, 운동 전 공복, 다이어트 중 공복감 기준으로 단백질 음료 섭취 부담을 줄이는 방법을 정리합니다.",
+        searchIntent: "단백질 음료 공복",
+        futureFocus: ["아침 공복", "운동 전 부담", "소화감"],
+        internalLinkTargets: [
+          { label: "아침 대용 단백질 음료", href: "/guides/intake-strategy-health/morning-protein-drink" },
+          { label: "단백질 음료 설사", href: "/guides/intake-strategy-health/protein-drink-diarrhea" },
+        ],
+      },
+      {
         slug: "protein-50g-at-once",
         title: "단백질 50g 한 번에 먹어도 될까",
         description: "50g 이상 초고함량 단백질 음료를 한 번에 마셔도 되는지 체중별·타이밍별 기준으로 정리합니다.",
@@ -421,6 +432,17 @@ export const guideTracks: GuideTrack[] = [
         ],
       },
       {
+        slug: "protein-drink-diarrhea",
+        title: "단백질 음료 설사",
+        description: "단백질 음료를 마신 뒤 설사·가스·복부 팽만이 생길 때 유당, 감미료, 섭취량 기준으로 원인을 나눠봅니다.",
+        searchIntent: "단백질 음료 설사",
+        futureFocus: ["유당 민감도", "락토프리 대안", "소화 부담"],
+        internalLinkTargets: [
+          { label: "락토프리 단백질 음료", href: "/guides/product-selection-comparison/lactose-free-protein-drink" },
+          { label: "뉴케어 올프로틴", href: "/guides/product-selection-comparison/newcare-allprotein" },
+        ],
+      },
+      {
         slug: "diet-protein-drink-strategy",
         title: "다이어트 중 단백질 음료 전략",
         description: "다이어트 중 단백질 음료를 저당·저칼로리 기준으로 어떻게 마시면 좋을지 정리합니다.",
@@ -429,6 +451,39 @@ export const guideTracks: GuideTrack[] = [
         internalLinkTargets: [
           { label: "체중 관리와 단백질", href: "/guides/intake-strategy-health/weight-management-protein" },
           { label: "다이어트 단백질 음료", href: "/topics/diet-protein-drink" },
+        ],
+      },
+      {
+        slug: "protein-drink-weight-gain",
+        title: "단백질 음료 살찌나요",
+        description: "단백질 음료가 살찌는지 칼로리, 당류, 간식 대체 여부, 운동량 기준으로 판단합니다.",
+        searchIntent: "단백질 음료 살찌나요",
+        futureFocus: ["칼로리 판단", "당류 확인", "간식 대체"],
+        internalLinkTargets: [
+          { label: "다이어트 단백질 음료", href: "/topics/diet-protein-drink" },
+          { label: "저당 단백질 음료", href: "/guides/product-selection-comparison/low-sugar-protein-drink-guide" },
+        ],
+      },
+      {
+        slug: "protein-drink-sugar",
+        title: "단백질 음료 당류 얼마나 봐야 하나요",
+        description: "단백질 음료 당류를 몇 g까지 봐야 하는지, 저당 기준과 칼로리·감미료를 함께 읽는 방법을 정리합니다.",
+        searchIntent: "단백질 음료 당류",
+        futureFocus: ["저당 기준", "라벨 읽기", "맛 SKU 차이"],
+        internalLinkTargets: [
+          { label: "저당 단백질 음료", href: "/guides/product-selection-comparison/low-sugar-protein-drink-guide" },
+          { label: "단백질 음료 살찌나요", href: "/guides/intake-strategy-health/protein-drink-weight-gain" },
+        ],
+      },
+      {
+        slug: "protein-drink-daily",
+        title: "단백질 음료 매일 마셔도 되나요",
+        description: "단백질 음료를 매일 마셔도 되는지 식사 보완, 운동 보충, 추가 칼로리 기준으로 정리합니다.",
+        searchIntent: "단백질 음료 매일 마셔도 되나요",
+        futureFocus: ["매일 섭취", "식사 보완", "제품 선택 기준"],
+        internalLinkTargets: [
+          { label: "입문용 단백질 음료", href: "/guides/product-selection-comparison/protein-drink-beginners-guide" },
+          { label: "단백질 음료 살찌나요", href: "/guides/intake-strategy-health/protein-drink-weight-gain" },
         ],
       },
       {
