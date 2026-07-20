@@ -35,6 +35,8 @@ const nextLinks = [
   { href: "/guides/product-selection-comparison/low-sugar-protein-drink-guide", title: "저당 단백질 음료 가이드", body: "당류 기준으로 제품 후보를 바로 좁힙니다." },
   { href: "/topics/low-sugar-protein-drink", title: "저당 단백질 음료 추천", body: "저당 검색 의도에 맞는 토픽 허브로 이동합니다." },
   { href: "/guides/intake-strategy-health/protein-drink-weight-gain", title: "단백질 음료 살찌나요", body: "당류와 칼로리를 체중 관리 관점에서 함께 봅니다." },
+  { href: "/guides/intake-strategy-health/protein-drink-daily", title: "매일 마셔도 되나요", body: "매일 섭취할 때 당류 누적을 같이 확인합니다." },
+  { href: "/guides/intake-strategy-health/protein-drink-diarrhea", title: "단백질 음료 설사", body: "저당 제품의 감미료가 불편한지도 함께 봅니다." },
 ];
 
 const faq = [
@@ -52,6 +54,16 @@ const faq = [
     question: "맛있는 제품은 당류가 높나요?",
     answer:
       "항상 그렇지는 않지만 맛 제품은 당류나 칼로리가 올라가는 경우가 있습니다. 같은 브랜드라도 맛 SKU별 수치를 다시 확인해야 합니다.",
+  },
+  {
+    question: "매일 마실 단백질 음료는 당류를 얼마나 봐야 하나요?",
+    answer:
+      "매일 섭취 목적이면 0~3g 안쪽부터 보는 편이 무난합니다. 다만 맛과 지속성이 중요하면 5g 이하 제품까지 비교할 수 있습니다.",
+  },
+  {
+    question: "저당 단백질 음료도 속이 불편할 수 있나요?",
+    answer:
+      "개인에 따라 감미료나 당알코올 성분이 장 부담으로 느껴질 수 있습니다. 저당 제품인데도 불편하다면 성분표와 섭취 타이밍을 함께 확인하세요.",
   },
 ];
 

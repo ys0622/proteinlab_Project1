@@ -33,6 +33,16 @@ const rows = [
 
 const nextLinks = [
   {
+    href: "/guides/intake-strategy-health/protein-drink-sugar",
+    title: "단백질 음료 당류 기준",
+    body: "체중 관리 중이면 당류와 칼로리를 같이 봐야 합니다.",
+  },
+  {
+    href: "/guides/intake-strategy-health/protein-drink-daily",
+    title: "매일 마셔도 되나요",
+    body: "매일 섭취할 때 추가 칼로리인지 먼저 구분합니다.",
+  },
+  {
     href: "/topics/diet-protein-drink",
     title: "다이어트 단백질 음료",
     body: "칼로리와 당류 기준으로 다시 좁혀봅니다.",
@@ -64,6 +74,16 @@ const faq = [
     question: "단백질 음료로 식사를 대체해도 되나요?",
     answer:
       "가끔 식사 공백을 줄이는 용도로는 쓸 수 있지만, 계속 한 끼를 대체하면 식이섬유와 다양한 영양소가 부족할 수 있습니다.",
+  },
+  {
+    question: "단백질 음료를 매일 마시면 살이 찔까요?",
+    answer:
+      "매일 마시는 것 자체보다 하루 총칼로리가 늘어나는지가 중요합니다. 식사 보완이나 간식 대체라면 다르게 해석할 수 있습니다.",
+  },
+  {
+    question: "당류 0g 단백질 음료는 체중 관리에 무조건 좋은가요?",
+    answer:
+      "당류는 낮아도 칼로리, 지방, 전체 탄수화물이 높을 수 있습니다. 체중 관리 목적이면 당류와 총열량을 함께 봐야 합니다.",
   },
 ];
 

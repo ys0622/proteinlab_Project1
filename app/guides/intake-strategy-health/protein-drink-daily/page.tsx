@@ -33,6 +33,16 @@ const dailyRows = [
 
 const nextLinks = [
   {
+    href: "/guides/intake-strategy-health/protein-drink-sugar",
+    title: "단백질 음료 당류 기준",
+    body: "매일 마실수록 당류 누적을 먼저 확인합니다.",
+  },
+  {
+    href: "/guides/intake-strategy-health/protein-drink-empty-stomach",
+    title: "단백질 음료 공복",
+    body: "아침 루틴으로 마실 때 속 부담을 줄이는 기준입니다.",
+  },
+  {
     href: "/guides/product-selection-comparison/protein-drink-beginners-guide",
     title: "입문용 단백질 음료",
     body: "매일 마실 제품은 부담 낮은 구간부터 고르는 편이 좋습니다.",
@@ -64,6 +74,16 @@ const faq = [
     question: "매일 단백질 음료로 식사를 대신해도 되나요?",
     answer:
       "가끔 식사 공백을 줄이는 용도는 가능하지만 장기적으로 모든 식사를 대체하는 방식은 권장하기 어렵습니다. 식이섬유와 다양한 영양소를 함께 챙겨야 합니다.",
+  },
+  {
+    question: "단백질 음료를 매일 마시면 살이 찌나요?",
+    answer:
+      "식사에 추가로 마시면 칼로리가 늘 수 있습니다. 반대로 기존 간식이나 부족한 단백질을 보완하는 용도라면 다르게 볼 수 있습니다.",
+  },
+  {
+    question: "매일 마시면 설사나 속 불편이 생길 수 있나요?",
+    answer:
+      "유당, 감미료, 섭취량이 맞지 않으면 반복 섭취 중 불편감이 생길 수 있습니다. 그런 경우 제품군이나 섭취 타이밍을 바꿔보는 편이 좋습니다.",
   },
 ];
 

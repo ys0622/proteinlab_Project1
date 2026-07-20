@@ -33,6 +33,16 @@ const causeRows = [
 
 const nextLinks = [
   {
+    href: "/guides/intake-strategy-health/protein-drink-empty-stomach",
+    title: "단백질 음료 공복",
+    body: "공복에 마실 때 속이 불편한지 먼저 확인합니다.",
+  },
+  {
+    href: "/guides/intake-strategy-health/protein-drink-sugar",
+    title: "단백질 음료 당류 기준",
+    body: "저당 제품의 감미료와 당류 기준을 함께 봅니다.",
+  },
+  {
     href: "/guides/product-selection-comparison/lactose-free-protein-drink",
     title: "락토프리 단백질 음료 보기",
     body: "유당이 의심된다면 락토프리 제품군부터 좁혀보세요.",
@@ -64,6 +74,16 @@ const faq = [
     question: "설사가 계속되면 어떻게 해야 하나요?",
     answer:
       "제품을 바꿔도 증상이 반복되거나 복통, 탈수, 혈변, 체중 감소가 동반되면 단순 제품 문제가 아닐 수 있으므로 의료 전문가와 상담해야 합니다.",
+  },
+  {
+    question: "단백질 음료를 공복에 마셔서 설사가 날 수도 있나요?",
+    answer:
+      "공복에 급하게 마시거나 아주 차갑게 마시면 위장 반응이 커질 수 있습니다. 같은 제품을 식후에 천천히 마셨을 때도 반복되는지 확인해보세요.",
+  },
+  {
+    question: "저당 단백질 음료도 설사를 유발할 수 있나요?",
+    answer:
+      "개인에 따라 감미료나 당알코올 성분이 장 부담으로 느껴질 수 있습니다. 저당 여부만 보지 말고 성분표와 반복 반응을 함께 확인하는 편이 좋습니다.",
   },
 ];
 

@@ -186,7 +186,7 @@ export default async function GuideTrackPage({ params }: { params: Promise<{ tra
 
   const trackCStarterArticles =
     section.slug === "intake-strategy-health"
-      ? ["protein-timing", "weight-management-protein", "meal-replacement-strategy", "senior-protein-strategy"]
+      ? ["protein-drink-diarrhea", "protein-drink-weight-gain", "protein-drink-daily", "protein-drink-empty-stomach", "protein-drink-sugar", "protein-timing"]
           .map((slug) => articleMap.get(slug))
           .filter((item): item is NonNullable<typeof item> => Boolean(item))
       : [];
@@ -297,8 +297,8 @@ export default async function GuideTrackPage({ params }: { params: Promise<{ tra
         {section.slug === "intake-strategy-health" ? (
           <div className="mt-5 space-y-4">
             <CuratedGuideGroup
-              title="가장 많이 찾는 섭취 전략"
-              description="단백질 타이밍, 체중 관리, 식사대용, 50대 전략처럼 실제 검색량이 큰 주제부터 바로 들어갈 수 있게 정리했습니다."
+              title="질문형 롱테일 섭취 가이드"
+              description="설사, 살찌나요, 매일 마셔도 되나요, 공복, 당류처럼 실제 검색창에 그대로 입력되는 질문부터 바로 들어갈 수 있게 묶었습니다."
               accentColor={section.accentColor}
               accentBg={accentChipBg}
               items={trackCStarterArticles}

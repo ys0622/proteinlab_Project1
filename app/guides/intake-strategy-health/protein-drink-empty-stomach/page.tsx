@@ -35,6 +35,8 @@ const nextLinks = [
   { href: "/guides/intake-strategy-health/morning-protein-drink", title: "아침 대용 단백질 음료", body: "출근길과 아침 공복 기준으로 제품을 고릅니다." },
   { href: "/guides/intake-strategy-health/pre-workout-protein", title: "운동 전 단백질 섭취", body: "운동 직전에는 섭취 타이밍과 소화 부담을 같이 봅니다." },
   { href: "/guides/intake-strategy-health/protein-drink-diarrhea", title: "단백질 음료 설사", body: "공복에 불편감이 반복되면 유당·감미료도 확인하세요." },
+  { href: "/guides/intake-strategy-health/protein-drink-daily", title: "매일 마셔도 되나요", body: "아침 루틴으로 매일 넣어도 되는지 함께 봅니다." },
+  { href: "/guides/intake-strategy-health/protein-drink-sugar", title: "당류 기준", body: "공복감 완화 목적이면 당류와 칼로리도 확인하세요." },
 ];
 
 const faq = [
@@ -52,6 +54,16 @@ const faq = [
     question: "운동 전 공복에 마셔도 괜찮나요?",
     answer:
       "운동 강도와 시간에 따라 다릅니다. 고강도 운동 직전에는 속이 불편할 수 있으므로 시간을 두고 마시거나 가벼운 제품을 선택하세요.",
+  },
+  {
+    question: "공복에 마시면 설사가 날 수 있나요?",
+    answer:
+      "일부 사람은 공복, 차가운 음용, 유당이나 감미료 때문에 장이 민감하게 반응할 수 있습니다. 반복된다면 식후 섭취나 다른 제품군을 확인하세요.",
+  },
+  {
+    question: "공복감 때문에 매일 마셔도 괜찮나요?",
+    answer:
+      "간식 대체나 식사 보완용이라면 가능하지만, 식사에 계속 추가하면 칼로리가 늘 수 있습니다. 매일 섭취 기준도 함께 보는 편이 좋습니다.",
   },
 ];
 
