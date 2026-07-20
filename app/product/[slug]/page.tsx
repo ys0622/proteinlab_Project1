@@ -148,6 +148,12 @@ function renderSummaryMetricValue(value: string, isCompact: boolean) {
   );
 }
 
+function getTasteAwardStars(rating?: string) {
+  const count = Number(rating?.match(/\d+/)?.[0] ?? 0);
+  if (!count) return null;
+  return "★".repeat(Math.min(count, 3));
+}
+
 function getShakePositioning(product: ProductDetailProps) {
   const calories = product.calories ?? 0;
   const fiber = product.nutritionPerBottle?.fiberG ?? 0;
@@ -415,6 +421,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
   const similarProducts = getSimilarProducts(product, categoryProducts, 6);
   const internalLinks = buildProductInternalLinks(product).slice(0, 4);
   const recommendedFor = buildRecommendedFor(product);
+  const tasteAwards = product.awards ?? [];
 
   const summaryMetrics = isBar
     ? [
@@ -650,6 +657,23 @@ export default async function ProductDetailPage({ params }: PageProps) {
                     })}
                   </div>
                 )}
+                {tasteAwards.length > 0 ? (
+                  <div className="mt-2 flex flex-wrap gap-1.5">
+                    {tasteAwards.map((award) => {
+                      const awardStars = getTasteAwardStars(award.rating);
+                      return (
+                        <span
+                          key={`${award.organization}-${award.year}-${award.name}`}
+                          className="inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-[11px] font-bold"
+                          style={{ background: "#FFF3D8", color: "#8A5A1D", border: "1px solid #E4BF7C" }}
+                        >
+                          <span>국제미각상</span>
+                          {awardStars ? <span style={{ color: "#B77933" }}>{awardStars}</span> : null}
+                        </span>
+                      );
+                    })}
+                  </div>
+                ) : null}
               </div>
 
               {/* 핵심 영양성분 3종 */}
@@ -769,6 +793,59 @@ export default async function ProductDetailPage({ params }: PageProps) {
       <main style={{ background: "#F7F3EA" }}>
         <div className="mx-auto max-w-[1200px] px-4 py-8 md:px-6">
           <AffiliateDisclosure />
+          {tasteAwards.length > 0 ? (
+            <section
+              className="mb-6 rounded-[20px] border px-5 py-4"
+              style={{ borderColor: "#D6B16F", background: "linear-gradient(135deg, #FFF8EC 0%, #FFFDF9 62%, #F5E2BD 100%)" }}
+            >
+              <p className="text-[12px] font-bold uppercase tracking-wider" style={{ color: "#8A5A1D" }}>
+                맛 수상 이력
+              </p>
+              <div className="mt-3 grid gap-3">
+                {tasteAwards.map((award) => {
+                  const awardStars = getTasteAwardStars(award.rating);
+                  return (
+                    <div key={`${award.organization}-${award.year}-${award.name}`}>
+                      <div className="flex flex-wrap items-center gap-1.5">
+                        <span className="rounded-full px-2 py-0.5 text-[11px] font-bold" style={{ background: "#9C641F", color: "#FFF8EC" }}>
+                          국제미각상
+                        </span>
+                        {award.rating ? (
+                          <span className="rounded-full px-2 py-0.5 text-[11px] font-bold" style={{ background: "#FFFDF8", color: "#8A5A1D", border: "1px solid #E4BF7C" }}>
+                            {awardStars ?? award.rating}
+                          </span>
+                        ) : null}
+                        {award.year ? (
+                          <span className="text-[12px] font-semibold" style={{ color: "#8A6B3D" }}>
+                            {award.year}
+                          </span>
+                        ) : null}
+                      </div>
+                      <h2 className="mt-2 text-[15px] font-bold" style={{ color: "#1E2A22" }}>
+                        {award.organization} {award.name}
+                      </h2>
+                      {award.note ? (
+                        <p className="mt-1.5 text-[13px] leading-6" style={{ color: "#5F4B2E" }}>
+                          {award.note}
+                        </p>
+                      ) : null}
+                      {award.sourceUrl && award.sourceLabel ? (
+                        <a
+                          href={award.sourceUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="mt-2 inline-flex text-[12px] font-semibold underline"
+                          style={{ color: "#7A4F1B" }}
+                        >
+                          {award.sourceLabel}
+                        </a>
+                      ) : null}
+                    </div>
+                  );
+                })}
+              </div>
+            </section>
+          ) : null}
           {product.proteinPerServing >= 40 ? (
             <section
               className="mb-6 rounded-[20px] border px-5 py-4"

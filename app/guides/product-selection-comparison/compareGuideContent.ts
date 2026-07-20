@@ -1420,6 +1420,37 @@ newcareAllproteinConfig.purchaseLinks = [
   { label: "뉴케어 식물성 단백질 보기", slug: newcarePlant.slug },
   { label: "뉴케어 올프로틴 워터 보기", slug: newcareWater.slug },
 ];
+newcareAllproteinConfig.sections = [
+  ...newcareAllproteinConfig.sections,
+  {
+    title: "국제 미각상 수상 이력은 맛 참고 기준입니다",
+    items: [
+      {
+        title: "고소한맛은 2026 Superior Taste Award 2스타",
+        body:
+          "2026년 보도 기준 뉴케어 올프로틴 고소한맛은 International Taste Institute의 Superior Taste Award 2스타를 받은 것으로 확인됩니다. 곡물·고소한맛 계열을 선호한다면 맛 적응 가능성을 판단하는 보조 신호로 볼 수 있습니다.",
+      },
+      {
+        title: "초코맛과 바나나맛은 2026 Superior Taste Award 1스타",
+        body:
+          "같은 보도에서 뉴케어 올프로틴 초코맛과 바나나맛은 각각 1스타 수상 제품으로 언급됐습니다. 처음 구매할 때 맛 실패 가능성을 줄이는 참고 정보가 될 수 있지만, 개인 취향까지 보장하는 근거는 아닙니다.",
+      },
+      {
+        title: "맛 수상과 영양 평가는 분리해서 봐야 합니다",
+        body:
+          "국제 미각상은 외부 미각 전문가의 맛 품질 평가 이력입니다. 단백질 함량, 당류, 칼로리, 유당 부담 같은 영양 기준은 별도로 확인해야 하며 건강 효과를 의미하지 않습니다.",
+      },
+    ],
+  },
+];
+newcareAllproteinConfig.faq = [
+  ...newcareAllproteinConfig.faq,
+  {
+    question: "뉴케어 올프로틴 국제 미각상은 어떤 제품이 받았나요?",
+    answer:
+      "2026년 보도 기준 뉴케어 올프로틴 고소한맛은 Superior Taste Award 2스타, 초코맛과 바나나맛은 각각 1스타 수상 제품으로 언급됐습니다. 이는 맛 평가 참고 정보이며 영양 효과나 개인별 적합성을 의미하지 않습니다.",
+  },
+];
 newcareAllproteinConfig.jsonLd = [articleJsonLd(newcareAllproteinConfig), faqJsonLd(newcareAllproteinConfig)];
 
 export const newcare41Vs25Config: ComparePageConfig = {

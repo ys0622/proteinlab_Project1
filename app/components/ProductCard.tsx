@@ -105,6 +105,12 @@ function ActionTooltip({ label, children }: { label: string; children: ReactNode
   );
 }
 
+function getTasteAwardStars(rating?: string) {
+  const count = Number(rating?.match(/\d+/)?.[0] ?? 0);
+  if (!count) return null;
+  return "★".repeat(Math.min(count, 3));
+}
+
 export default function ProductCard({
   brand,
   name,
@@ -129,6 +135,7 @@ export default function ProductCard({
   fixedTitleLines,
   hideSupplementalBadges,
   coupangOnly = false,
+  awards,
 }: ProductCardProps) {
   const router = useRouter();
   const [reviewSummary, setReviewSummary] = useState<ReviewSummary | null>(() =>
@@ -165,6 +172,8 @@ export default function ProductCard({
       : visibleGradeTags;
   const feedbackMeta = reviewSummary && reviewSummary.reviewCount > 0 ? reviewSummary : null;
   const cardSurfaceBg = "color-mix(in srgb, var(--hero-bg) 64%, white)";
+  const tasteAward = awards?.[0];
+  const tasteAwardStars = getTasteAwardStars(tasteAward?.rating);
 
   useEffect(() => {
     if (!slug) return;
@@ -284,9 +293,28 @@ export default function ProductCard({
           </div>
         ) : null}
 
+        {tasteAward ? (
+          <div
+            className="pointer-events-none absolute left-1 top-1 z-10 rounded-xl px-2 py-1 text-center shadow-sm md:left-2 md:top-2"
+            style={{
+              background: "linear-gradient(135deg, #8a5a2b 0%, #b77933 100%)",
+              border: "1px solid rgba(255,255,255,.72)",
+              color: "#fff8ec",
+            }}
+            aria-label={`${tasteAward.organization} ${tasteAward.name} ${tasteAward.rating ?? ""}`}
+          >
+            <p className="text-[8.5px] font-black leading-none">국제미각상</p>
+            {tasteAwardStars ? (
+              <p className="mt-0.5 text-[10px] font-black leading-none tracking-[0.5px]" style={{ color: "#ffe9a8" }}>
+                {tasteAwardStars}
+              </p>
+            ) : null}
+          </div>
+        ) : null}
+
         {feedbackMeta ? (
           <>
-            <div className="pointer-events-none absolute left-1 top-1 z-10 flex flex-col gap-0.5 md:hidden">
+            <div className={`pointer-events-none absolute left-1 z-10 flex flex-col gap-0.5 md:hidden ${tasteAward ? "top-10" : "top-1"}`}>
               {feedbackMeta.recommendCount > 0 ? (
                 <span className="inline-flex min-h-[16px] items-center self-start rounded-full border border-[#d9e7df] bg-white/88 px-1 py-[1px] text-[7px] font-semibold leading-none text-[#2F5D46] shadow-[0_1px_2px_rgba(15,23,42,0.08)]">
                   <span aria-hidden="true" className="mr-0.5">

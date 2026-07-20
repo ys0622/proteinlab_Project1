@@ -2,17 +2,50 @@
   "newcare-all-protein-choco-245": {
     "coupangUrl": "https://link.coupang.com/a/e8MJ6pkgtV",
     "naverUrl": "https://search.shopping.naver.com/search/all?query=%EB%89%B4%EC%BC%80%EC%96%B4%20%EC%98%AC%ED%94%84%EB%A1%9C%ED%8B%B4%20%EC%B4%88%EC%BD%94%EB%A7%9B%20245%20mL%2024%ED%8C%A9%20%EB%8B%A8%EB%B0%B1%EC%A7%88%EC%9D%8C%EB%A3%8C&prevQuery=%5B%EB%8B%A8%EB%B0%B1%EC%A7%88%2025g%5D%20%EB%89%B4%EC%BC%80%EC%96%B4%20%EC%98%AC%ED%94%84%EB%A1%9C%ED%8B%B4%20%EC%B4%88%EC%BD%94%EB%A7%9B%20245%20mL%2024%ED%8C%A9%20%EB%8B%A8%EB%B0%B1%EC%A7%88%EC%9D%8C%EB%A3%8C&vertical=search",
-    "officialUrl": "https://www.wellife.co.kr/categories/index/101003000000"
+    "officialUrl": "https://www.wellife.co.kr/categories/index/101003000000",
+    "awards": [
+      {
+        "name": "Superior Taste Award",
+        "organization": "International Taste Institute",
+        "rating": "1스타",
+        "year": 2026,
+        "note": "2026년 국제 우수 미각상 수상 이력입니다. 맛 품질 평가 참고 정보이며, 영양 효과나 개인별 선호를 보장하지 않습니다.",
+        "sourceLabel": "뉴스 2026.01.12",
+        "sourceUrl": "https://www.newsis.com/view/NISX20260112_0003472987"
+      }
+    ]
   },
   "newcare-all-protein-banana-245": {
     "coupangUrl": "https://link.coupang.com/a/e8MLDK6g1c",
     "naverUrl": "https://search.shopping.naver.com/search/all?query=%EB%89%B4%EC%BC%80%EC%96%B4%20%EC%98%AC%ED%94%84%EB%A1%9C%ED%8B%B4%2025g%20%EB%B0%94%EB%82%98%EB%82%98&prevQuery=%EC%98%AC%ED%94%84%EB%A1%9C%ED%8B%B4%2025g%20%EB%B0%94%EB%82%98%EB%82%98&vertical=search",
-    "officialUrl": "https://www.wellife.co.kr/categories/index/101003000000"
+    "officialUrl": "https://www.wellife.co.kr/categories/index/101003000000",
+    "awards": [
+      {
+        "name": "Superior Taste Award",
+        "organization": "International Taste Institute",
+        "rating": "1스타",
+        "year": 2026,
+        "note": "2026년 국제 우수 미각상 수상 이력입니다. 맛 품질 평가 참고 정보이며, 영양 효과나 개인별 선호를 보장하지 않습니다.",
+        "sourceLabel": "뉴스 2026.01.12",
+        "sourceUrl": "https://www.newsis.com/view/NISX20260112_0003472987"
+      }
+    ]
   },
   "newcare-all-protein-savory-245": {
     "coupangUrl": "https://link.coupang.com/a/e8MPMNp7tc",
     "naverUrl": "https://search.shopping.naver.com/search/all?query=%EC%98%AC%ED%94%84%EB%A1%9C%ED%8B%B4%2025g%20%EA%B3%A0%EC%86%8C%ED%95%9C%EB%A7%9B&prevQuery=%EC%98%AC%ED%94%84%EB%A1%9C%ED%8B%B4%20%EC%9B%8C%ED%84%B0%20(%EC%82%AC%EA%B3%BC)&vertical=search",
-    "officialUrl": "https://www.wellife.co.kr/categories/index/101003000000"
+    "officialUrl": "https://www.wellife.co.kr/categories/index/101003000000",
+    "awards": [
+      {
+        "name": "Superior Taste Award",
+        "organization": "International Taste Institute",
+        "rating": "2스타",
+        "year": 2026,
+        "note": "2026년 국제 우수 미각상 수상 이력입니다. 맛 품질 평가 참고 정보이며, 영양 효과나 개인별 선호를 보장하지 않습니다.",
+        "sourceLabel": "뉴스 2026.01.12",
+        "sourceUrl": "https://www.newsis.com/view/NISX20260112_0003472987"
+      }
+    ]
   },
   "newcare-all-protein-plant-savory-250": {
     "coupangUrl": "https://link.coupang.com/a/e8MOjG199o",

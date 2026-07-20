@@ -78,6 +78,12 @@ const GUIDE_CARDS: {
   { category: "제품 선택", title: "단백질 음료 선택 가이드", desc: "성분 기준으로 내게 맞는 음료 고르는 법", href: "/guides/product-selection-comparison/protein-drink-guide", thumbImg: "https://images.unsplash.com/photo-1775199603318-7f8a9a63b40d?w=600&h=400&fit=crop&crop=center&q=80", thumbBg: "linear-gradient(135deg, #1e4a6e 0%, #2d6ea6 100%)", thumbEmoji: "🎯" },
 ];
 
+const TEMP_HOME_FEATURED_DRINK_SLUGS = new Set([
+  "newcare-all-protein-savory-245",
+  "newcare-all-protein-choco-245",
+  "newcare-all-protein-banana-245",
+]);
+
 function toCarouselProduct(p: ProductDetailProps): CarouselProduct {
   return {
     slug: p.slug ?? "",
@@ -96,6 +102,7 @@ function toCarouselProduct(p: ProductDetailProps): CarouselProduct {
     gradeTags: p.gradeTags ?? [],
     productType: (p.productType as CarouselProduct["productType"]) ?? undefined,
     yogurtType: p.yogurtType,
+    awards: p.awards,
   };
 }
 
@@ -119,13 +126,19 @@ export default async function Home() {
 
   // 4개 카테고리 모두 하이브리드 점수 기준 정렬
   // = 실제 조회수 × 10 + 품질 점수(단백질 밀도·당류) + 신제품 보너스(30일 감쇠)
-  const sortByHybrid = (products: ProductDetailProps[], type: string) =>
-    products
+  const sortByHybrid = (products: ProductDetailProps[], type: string) => {
+    const sorted = products
       .filter((p) => p.slug)
       .map((p) => ({ p, score: hybridScore(p, views[type]?.[p.slug ?? ""] ?? 0) }))
       .sort((a, b) => b.score - a.score)
-      .slice(0, 10)
       .map(({ p }) => p);
+
+    if (type !== "drink") return sorted.slice(0, 10);
+
+    const featured = sorted.filter((p) => TEMP_HOME_FEATURED_DRINK_SLUGS.has(p.slug ?? ""));
+    const rest = sorted.filter((p) => !TEMP_HOME_FEATURED_DRINK_SLUGS.has(p.slug ?? ""));
+    return [...featured, ...rest].slice(0, 10);
+  };
 
   const topDrinks  = sortByHybrid(drinks,  "drink");
   const topBars    = sortByHybrid(bars,    "bar");

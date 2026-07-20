@@ -25,6 +25,18 @@ export interface ProductCardProps {
   hideSupplementalBadges?: boolean;
   coupangOnly?: boolean;
   price?: number;
+  cardVariant?: "category" | "related" | "ranking" | "recommend" | "compact";
+  awards?: ProductAward[];
+}
+
+export interface ProductAward {
+  name: string;
+  organization: string;
+  rating?: string;
+  year?: number;
+  note?: string;
+  sourceLabel?: string;
+  sourceUrl?: string;
 }
 
 export interface NutritionDetailRow {
