@@ -84,6 +84,21 @@ const relatedLinks = [
     title: "체중 관리 기준 같이 보기",
     body: "제품 하나보다 전체 루틴이 먼저라면 체중 관리용 단백질 기준 페이지를 같이 보는 편이 더 효율적입니다.",
   },
+  {
+    href: "/guides/intake-strategy-health/protein-drink-weight-gain",
+    title: "단백질 음료가 살찌는지 확인하기",
+    body: "다이어트 중에는 단백질보다 총칼로리와 마시는 빈도가 체중 변화에 더 직접적으로 작용합니다.",
+  },
+  {
+    href: "/guides/intake-strategy-health/protein-drink-sugar",
+    title: "당류 기준 먼저 정리하기",
+    body: "저당 제품을 고를 때 어느 정도를 낮은 당류로 볼지 기준을 먼저 잡으면 제품 비교가 쉬워집니다.",
+  },
+  {
+    href: "/guides/intake-strategy-health/protein-drink-daily",
+    title: "매일 마셔도 되는지 보기",
+    body: "다이어트 중 반복 섭취가 고민이라면 식사 대체인지 보충인지부터 구분하는 편이 좋습니다.",
+  },
 ];
 
 export default function DietProteinDrinkStrategyPage() {

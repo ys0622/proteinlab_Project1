@@ -59,6 +59,21 @@ const compareLinks = [
     title: "식사 보완 기준 더 보기",
     body: "운동용이 아니라 아침 공백이나 한 끼 보완용인지 더 분명하게 보고 싶다면 이 페이지가 이어집니다.",
   },
+  {
+    href: "/guides/intake-strategy-health/protein-drink-daily",
+    title: "매일 마셔도 되는지 확인하기",
+    body: "운동 여부보다 반복 섭취가 고민이라면 하루 식사와 당류 기준을 같이 보는 편이 안전합니다.",
+  },
+  {
+    href: "/guides/intake-strategy-health/protein-drink-weight-gain",
+    title: "살찌는지 먼저 확인하기",
+    body: "운동을 안 하는 상태에서 단백질 음료를 마실 때 체중 증가가 걱정된다면 칼로리와 섭취 빈도 기준을 먼저 확인하세요.",
+  },
+  {
+    href: "/guides/intake-strategy-health/protein-drink-sugar",
+    title: "당류 기준 같이 보기",
+    body: "생활 보완용 제품은 단백질 함량만큼 당류와 총칼로리 확인이 중요합니다.",
+  },
 ];
 
 const commonMistakes = [

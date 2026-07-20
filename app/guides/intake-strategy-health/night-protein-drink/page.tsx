@@ -89,6 +89,21 @@ const relatedLinks = [
     title: "중장년용 보완 제품 보기",
     body: "야식이 아니라 건강 보완 목적이라면 식사 보완형 제품군을 따로 보는 편이 더 빠릅니다.",
   },
+  {
+    href: "/guides/intake-strategy-health/protein-drink-daily",
+    title: "매일 마셔도 되는지 확인하기",
+    body: "밤에 자주 마시는 습관이 생긴다면 하루 전체 섭취량과 식사 패턴을 같이 확인해야 합니다.",
+  },
+  {
+    href: "/guides/intake-strategy-health/protein-drink-weight-gain",
+    title: "밤에 마시면 살찌는지 보기",
+    body: "체중 관리가 목적이라면 밤 시간대 섭취보다 총칼로리와 반복 빈도가 더 중요한 판단 기준입니다.",
+  },
+  {
+    href: "/guides/intake-strategy-health/protein-drink-sugar",
+    title: "밤 시간대 당류 기준 보기",
+    body: "야식 대체로 마실 때는 단백질보다 당류와 칼로리를 먼저 확인하는 편이 좋습니다.",
+  },
 ];
 
 const productRecommendations = [
