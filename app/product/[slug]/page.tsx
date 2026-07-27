@@ -20,6 +20,7 @@ import TrackedLink from "../../components/TrackedLink";
 import {
   type ProductDetailProps,
 } from "../../data/products";
+import newProductsRaw from "../../data/newProducts.json";
 import {
   formatProductBadgeLabel,
   getMetricBadgeAriaLabel,
@@ -49,6 +50,8 @@ import {
 interface PageProps {
   params: Promise<{ slug: string }>;
 }
+
+const NEW_PRODUCT_SLUGS = new Set((newProductsRaw as Array<{ slug: string }>).map((item) => item.slug));
 
 export const dynamicParams = true;
 export const revalidate = 3600;
@@ -383,6 +386,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
   if (!product) notFound();
 
   const gradeLabels = product.gradeTags ?? [];
+  const isNewProduct = NEW_PRODUCT_SLUGS.has(product.slug);
   const gradeDescs = product.gradeDescriptions ?? ["-", "-", "-"];
   const isBar = product.productType === "bar";
   const isYogurt = product.productType === "yogurt";
@@ -641,8 +645,16 @@ export default async function ProductDetailPage({ params }: PageProps) {
                 {metaLine && (
                   <p className="mt-0.5 text-[12px]" style={{ color: "#8A938B" }}>{metaLine}</p>
                 )}
-                {gradeLabels.length > 0 && (
+                {(isNewProduct || gradeLabels.length > 0) && (
                   <div className="mt-2 flex flex-wrap gap-1.5">
+                    {isNewProduct ? (
+                      <span
+                        className="rounded-full px-2.5 py-0.5 text-[11px] font-bold"
+                        style={{ background: "#FFF3D8", color: "#8A5A1D" }}
+                      >
+                        new
+                      </span>
+                    ) : null}
                     {gradeLabels.map((label) => {
                       const displayLabel = formatProductBadgeLabel(label);
                       return (

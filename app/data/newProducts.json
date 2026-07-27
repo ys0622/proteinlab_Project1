@@ -24,5 +24,9 @@
   { "slug": "shakebaby-proteinshake-sweetcorn-flakes-45", "addedAt": "2026-06-01" },
   { "slug": "kirkland-greek-plain-907",         "addedAt": "2026-06-01" },
   { "slug": "who-organic-greek-plain-480",      "addedAt": "2026-06-01" },
-  { "slug": "denmark-high-greek-400",           "addedAt": "2026-06-01" }
+  { "slug": "denmark-high-greek-400",           "addedAt": "2026-06-01" },
+  { "slug": "ottogi-dayprotein-choco-250",      "addedAt": "2026-07-27" },
+  { "slug": "ottogi-dayprotein-fivegrain-250",  "addedAt": "2026-07-27" },
+  { "slug": "ottogi-dayprotein-banana-250",     "addedAt": "2026-07-27" },
+  { "slug": "dryou-protein-62g-matcha-450",     "addedAt": "2026-07-27" }
 ]

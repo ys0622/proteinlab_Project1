@@ -115,6 +115,7 @@ export default async function Home() {
     // KV에서 실제 조회수 가져오기 (실패해도 빈 객체로 폴백)
     fetch(`${process.env.NEXT_PUBLIC_BASE_URL ?? "https://proteinlab.kr"}/api/popular`, {
       next: { revalidate: 300 },
+      signal: AbortSignal.timeout(1500),
     }).then((r) => r.json()).catch(() => ({ views: {} })),
   ]);
 

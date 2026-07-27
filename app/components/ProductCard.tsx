@@ -10,6 +10,7 @@ import type {
 } from "react";
 import { productClick, purchaseClick } from "@/lib/analytics";
 import type { ProductCardProps } from "../data/productTypes";
+import newProductsRaw from "../data/newProducts.json";
 import { getProductImageUrl } from "../lib/productImage";
 import {
   getCoupangRedirectHref,
@@ -46,6 +47,7 @@ interface ReviewSummary {
 
 const reviewSummaryCache = new Map<string, ReviewSummary>();
 const pendingReviewSummaryRequests = new Map<string, Promise<ReviewSummary>>();
+const NEW_PRODUCT_SLUGS = new Set((newProductsRaw as Array<{ slug: string }>).map((item) => item.slug));
 
 async function fetchReviewSummary(slug: string): Promise<ReviewSummary> {
   const cached = reviewSummaryCache.get(slug);
@@ -174,6 +176,7 @@ export default function ProductCard({
   const cardSurfaceBg = "color-mix(in srgb, var(--hero-bg) 64%, white)";
   const tasteAward = awards?.[0];
   const tasteAwardStars = getTasteAwardStars(tasteAward?.rating);
+  const isNewProduct = Boolean(slug && NEW_PRODUCT_SLUGS.has(slug));
 
   useEffect(() => {
     if (!slug) return;
@@ -380,6 +383,9 @@ export default function ProductCard({
         </h3>
 
         <MetricBadgeGroup className="product-card__badges mt-0.5">
+          {isNewProduct ? (
+            <ProductBadge label="new" tone="neutral" className="product-card__badge" />
+          ) : null}
           {limitedGradeTags.map((tag) => {
             const displayTag = formatProductBadgeLabel(tag);
             const tone = getProductBadgeTone(displayTag);
