@@ -1,8 +1,8 @@
 {
-  "generated_at": "2026-07-27T13:48:41.677Z",
-  "total": 369,
+  "generated_at": "2026-08-13T08:07:30.185Z",
+  "total": 377,
   "categories": {
-    "drinks": 124,
+    "drinks": 132,
     "bars": 100,
     "yogurt": 57,
     "shake": 88
@@ -56,6 +56,24 @@
     {
       "slug": "newcare-all-protein-savory-245",
       "name": "올프로틴 (고소한맛)",
+      "brand": "뉴케어",
+      "category": "drinks",
+      "protein": 25,
+      "calories": 135,
+      "sugar": 0
+    },
+    {
+      "slug": "newcare-all-protein-black-sesame-245",
+      "name": "올프로틴 (흑임자맛)",
+      "brand": "뉴케어",
+      "category": "drinks",
+      "protein": 25,
+      "calories": 135,
+      "sugar": 0
+    },
+    {
+      "slug": "newcare-all-protein-almond-245",
+      "name": "올프로틴 (아몬드맛)",
       "brand": "뉴케어",
       "category": "drinks",
       "protein": 25,
@@ -199,7 +217,7 @@
     },
     {
       "slug": "ultive-protein-chestnut-250",
-      "name": "프로틴 (맛밤)",
+      "name": "프로틴 (밤맛)",
       "brand": "얼티브",
       "category": "drinks",
       "protein": 21,
@@ -221,7 +239,7 @@
       "brand": "얼티브",
       "category": "drinks",
       "protein": 21,
-      "calories": 115,
+      "calories": 120,
       "sugar": 0
     },
     {
@@ -622,7 +640,7 @@
     },
     {
       "slug": "takefit-monster-chocobanana-350",
-      "name": "테이크핏 몬스터 (초코바나나)",
+      "name": "테이크핏 몬스터 (초코바나나맛)",
       "brand": "테이크핏",
       "category": "drinks",
       "protein": 45,
@@ -1123,6 +1141,60 @@
       "protein": 62,
       "calories": 329,
       "sugar": 3.6
+    },
+    {
+      "slug": "ultive-protein-savory-250",
+      "name": "프로틴 (고소한맛)",
+      "brand": "얼티브",
+      "category": "drinks",
+      "protein": 21,
+      "calories": 110,
+      "sugar": 0
+    },
+    {
+      "slug": "ultive-protein-banana-250",
+      "name": "프로틴 (바나나맛)",
+      "brand": "얼티브",
+      "category": "drinks",
+      "protein": 21,
+      "calories": 115,
+      "sugar": 0
+    },
+    {
+      "slug": "ultive-protein-choco-250",
+      "name": "프로틴 (초코맛)",
+      "brand": "얼티브",
+      "category": "drinks",
+      "protein": 21,
+      "calories": 125,
+      "sugar": 0
+    },
+    {
+      "slug": "labnosh-protein-salted-caramel-350",
+      "name": "프로틴 드링크 (솔티드카라멜)",
+      "brand": "랩노쉬",
+      "category": "drinks",
+      "protein": 27,
+      "calories": 130,
+      "sugar": 0
+    },
+    {
+      "slug": "labnosh-protein-sweet-corn-350",
+      "name": "프로틴 드링크 (초당옥수수)",
+      "brand": "랩노쉬",
+      "category": "drinks",
+      "protein": 27,
+      "calories": 125,
+      "sugar": 0
+    },
+    {
+      "slug": "labnosh-protein-perfect-melon-350",
+      "name": "프로틴 드링크 퍼펙트 (메론)",
+      "brand": "랩노쉬",
+      "category": "drinks",
+      "protein": 27,
+      "calories": 130,
+      "sugar": 0
     },
     {
       "slug": "dryou-proteinbar-pro-3nuts-crunch",

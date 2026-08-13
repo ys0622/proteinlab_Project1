@@ -258,6 +258,88 @@
     "officialUrl": "https://www.wellife.co.kr/categories/index/101003000000"
   },
   {
+    "slug": "newcare-all-protein-black-sesame-245",
+    "brand": "뉴케어",
+    "name": "올프로틴 (흑임자맛)",
+    "capacity": "245mL",
+    "variant": "락토프리",
+    "tags": [
+      "팩"
+    ],
+    "proteinPerServing": 25,
+    "calories": 135,
+    "sugar": 0,
+    "density": "10.2g/100ml",
+    "productUrl": "#",
+    "productType": "drink",
+    "gradeTags": [
+      "단백질 밀도 A",
+      "다이어트 B",
+      "퍼포먼스 A"
+    ],
+    "manufacturer": "대상웰라이프",
+    "flavor": "흑임자맛",
+    "bcaa": "4000mg",
+    "proteinSource": "혼합",
+    "fat": 2.5,
+    "sodium": 250,
+    "calorieDensity": "55.1kcal/100ml",
+    "drinkType": "밀크형",
+    "nutritionPerBottle": {
+      "caloriesKcal": 135,
+      "proteinG": 25,
+      "carbsG": 3,
+      "sugarsG": 0,
+      "fatG": 2.5,
+      "satFatG": 0.5,
+      "sodiumMg": 250,
+      "bcaaMg": 4000
+    },
+    "naverUrl": "https://search.shopping.naver.com/search/all?query=%EB%89%B4%EC%BC%80%EC%96%B4%20%EC%98%AC%ED%94%84%EB%A1%9C%ED%8B%B4%20%ED%9D%91%EC%9E%84%EC%9E%90%EB%A7%9B%2025g%20245ml",
+    "officialUrl": "https://www.wellife.co.kr/categories/index/101003000000"
+  },
+  {
+    "slug": "newcare-all-protein-almond-245",
+    "brand": "뉴케어",
+    "name": "올프로틴 (아몬드맛)",
+    "capacity": "245mL",
+    "variant": "락토프리",
+    "tags": [
+      "팩"
+    ],
+    "proteinPerServing": 25,
+    "calories": 135,
+    "sugar": 0,
+    "density": "10.2g/100ml",
+    "productUrl": "#",
+    "productType": "drink",
+    "gradeTags": [
+      "단백질 밀도 A",
+      "다이어트 B",
+      "퍼포먼스 A"
+    ],
+    "manufacturer": "대상웰라이프",
+    "flavor": "아몬드맛",
+    "bcaa": "4000mg",
+    "proteinSource": "혼합",
+    "fat": 2.5,
+    "sodium": 250,
+    "calorieDensity": "55.1kcal/100ml",
+    "drinkType": "밀크형",
+    "nutritionPerBottle": {
+      "caloriesKcal": 135,
+      "proteinG": 25,
+      "carbsG": 3,
+      "sugarsG": 0,
+      "fatG": 2.5,
+      "satFatG": 0.5,
+      "sodiumMg": 250,
+      "bcaaMg": 4000
+    },
+    "naverUrl": "https://search.shopping.naver.com/search/all?query=%EB%89%B4%EC%BC%80%EC%96%B4%20%EC%98%AC%ED%94%84%EB%A1%9C%ED%8B%B4%20%EC%95%84%EB%AA%AC%EB%93%9C%EB%A7%9B%2025g%20245ml",
+    "officialUrl": "https://www.wellife.co.kr/categories/index/101003000000"
+  },
+  {
     "slug": "newcare-all-protein-plant-savory-250",
     "brand": "뉴케어",
     "name": "올프로틴 식물성단백질 (고소한맛)",
@@ -903,7 +985,7 @@
   {
     "slug": "ultive-protein-chestnut-250",
     "brand": "얼티브",
-    "name": "프로틴 (맛밤)",
+    "name": "프로틴 (밤맛)",
     "capacity": "250mL",
     "variant": "일반",
     "tags": [
@@ -921,27 +1003,28 @@
       "퍼포먼스 B"
     ],
     "manufacturer": "CJ제일제당",
-    "flavor": "맛밤",
-    "bcaa": "3000mg",
+    "flavor": "밤맛",
+    "bcaa": "2920mg",
     "proteinSource": "혼합",
-    "fat": 3.3,
-    "sodium": 320,
-    "calorieDensity": "46.0kcal/100ml",
+    "fat": 3.6,
+    "sodium": 350,
+    "calorieDensity": "46kcal/100ml",
     "drinkType": "밀크형",
     "nutritionPerBottle": {
       "caloriesKcal": 115,
       "proteinG": 21,
-      "carbsG": 1,
+      "carbsG": 0,
       "sugarsG": 0,
-      "fatG": 3.3,
-      "satFatG": 0.8,
-      "sodiumMg": 320,
-      "fiberG": 0,
-      "bcaaMg": 3000
+      "fatG": 3.6,
+      "satFatG": 0.6,
+      "sodiumMg": 350,
+      "cholesterolMg": 0,
+      "calciumMg": 340,
+      "bcaaMg": 2920
     },
-    "coupangUrl": "https://link.coupang.com/a/e8M3xdZDu8",
-    "naverUrl": "https://search.shopping.naver.com/search/all?query=%EC%96%BC%ED%8B%B0%EB%B8%8C%20%EB%B0%A4%EB%A7%9B&prevQuery=%EC%96%BC%ED%8B%B0%EB%B8%8C%20%ED%94%84%EB%A1%9C%ED%8B%B4%20(%EB%A7%9B%EB%B0%A4)&vertical=search",
-    "officialUrl": "https://www.cjthemarket.com/pc/search?beforeAction=%2Fpc%2Fsearch%3Fwid1%3Dgnb_search&sort=RANK&collection=ALL&range=A&searchAction=D&query=%EC%96%BC%ED%8B%B0%EB%B8%8C"
+    "naverUrl": "https://search.shopping.naver.com/search/all?query=%EC%96%BC%ED%8B%B0%EB%B8%8C%20%ED%94%84%EB%A1%9C%ED%8B%B4%20(%EB%B0%A4%EB%A7%9B)%20250mL",
+    "officialUrl": "https://www.cjthemarket.com/pc/search?query=%EC%96%BC%ED%8B%B0%EB%B8%8C",
+    "coupangUrl": "https://link.coupang.com/a/ga7C3V2FcO"
   },
   {
     "slug": "ultive-protein-rice-250",
@@ -996,7 +1079,7 @@
       "팩"
     ],
     "proteinPerServing": 21,
-    "calories": 115,
+    "calories": 120,
     "sugar": 0,
     "density": "8.4g/100ml",
     "productUrl": "#",
@@ -1008,25 +1091,27 @@
     ],
     "manufacturer": "CJ제일제당",
     "flavor": "피스타치오맛",
-    "bcaa": "-",
+    "bcaa": "3224mg",
     "proteinSource": "혼합",
-    "fat": 3.1,
-    "sodium": 420,
-    "calorieDensity": "46.0kcal/100ml",
+    "fat": 3.9,
+    "sodium": 460,
+    "calorieDensity": "48kcal/100ml",
     "drinkType": "밀크형",
     "nutritionPerBottle": {
-      "caloriesKcal": 115,
+      "caloriesKcal": 120,
       "proteinG": 21,
-      "carbsG": 1,
+      "carbsG": 0,
       "sugarsG": 0,
-      "fatG": 3.1,
+      "fatG": 3.9,
       "satFatG": 0.6,
-      "sodiumMg": 420,
-      "fiberG": 0
+      "sodiumMg": 460,
+      "cholesterolMg": 0,
+      "calciumMg": 353,
+      "bcaaMg": 3224
     },
-    "coupangUrl": "https://link.coupang.com/a/e8M56sF71w",
-    "naverUrl": "https://search.shopping.naver.com/search/all?query=%EC%96%BC%ED%8B%B0%EB%B8%8C%ED%94%84%EB%A1%9C%ED%8B%B4%20(%ED%94%BC%EC%8A%A4%ED%83%80%EC%B9%98%EC%98%A4)&prevQuery=%EC%96%BC%ED%8B%B0%EB%B8%8C%ED%94%84%EB%A1%9C%ED%8B%B4%20(%ED%96%87%EB%B0%98)&vertical=search",
-    "officialUrl": "https://www.cjthemarket.com/pc/search?beforeAction=%2Fpc%2Fsearch%3Fwid1%3Dgnb_search&sort=RANK&collection=ALL&range=A&searchAction=D&query=%EC%96%BC%ED%8B%B0%EB%B8%8C"
+    "naverUrl": "https://search.shopping.naver.com/search/all?query=%EC%96%BC%ED%8B%B0%EB%B8%8C%20%ED%94%84%EB%A1%9C%ED%8B%B4%20(%ED%94%BC%EC%8A%A4%ED%83%80%EC%B9%98%EC%98%A4%EB%A7%9B)%20250mL",
+    "officialUrl": "https://www.cjthemarket.com/pc/search?query=%EC%96%BC%ED%8B%B0%EB%B8%8C",
+    "coupangUrl": "https://link.coupang.com/a/ga7FkgdQTQ"
   },
   {
     "slug": "ultive-protein-royalmilktea-250",
@@ -2884,8 +2969,8 @@
     "flavor": "고소한맛",
     "bcaa": "8700mg",
     "proteinSource": "혼합",
-    "fat": 1,
-    "sodium": 220,
+    "fat": 1.1,
+    "sodium": 270,
     "calorieDensity": "55.7kcal/100ml",
     "drinkType": "밀크형",
     "nutritionPerBottle": {
@@ -2893,19 +2978,21 @@
       "proteinG": 45,
       "carbsG": 1.3,
       "sugarsG": 1,
-      "fatG": 1,
+      "fatG": 1.1,
       "satFatG": 0.7,
-      "sodiumMg": 220,
+      "sodiumMg": 270,
+      "cholesterolMg": 15,
+      "calciumMg": 700,
       "bcaaMg": 8700
     },
-    "coupangUrl": "https://link.coupang.com/a/e8NKbDFBEy",
-    "naverUrl": "https://search.shopping.naver.com/search/all?query=%ED%85%8C%EC%9D%B4%ED%81%AC%ED%95%8F%20%EB%AA%AC%EC%8A%A4%ED%84%B0%20(%EA%B3%A0%EC%86%8C%ED%95%9C%EB%A7%9B)&prevQuery=%ED%85%8C%EC%9D%B4%ED%81%AC%ED%95%8F%20%ED%94%84%EB%A1%9C%20(%EB%82%A9%EC%9E%91%EB%B3%B5%EC%88%AD%EC%95%84%EB%A7%9B)&vertical=search",
-    "officialUrl": "https://brand.naver.com/namyang/category/86594242565a4d4d8375f43f388b275d?cp=1"
+    "naverUrl": "https://search.shopping.naver.com/search/all?query=%ED%85%8C%EC%9D%B4%ED%81%AC%ED%95%8F%20%ED%85%8C%EC%9D%B4%ED%81%AC%ED%95%8F%20%EB%AA%AC%EC%8A%A4%ED%84%B0%20(%EA%B3%A0%EC%86%8C%ED%95%9C%EB%A7%9B)%20350mL",
+    "officialUrl": "https://brand.naver.com/namyang/category/86594242565a4d4d8375f43f388b275d?cp=1",
+    "coupangUrl": "https://link.coupang.com/a/ga7JJa6REa"
   },
   {
     "slug": "takefit-monster-chocobanana-350",
     "brand": "테이크핏",
-    "name": "테이크핏 몬스터 (초코바나나)",
+    "name": "테이크핏 몬스터 (초코바나나맛)",
     "capacity": "350mL",
     "variant": "일반",
     "tags": [
@@ -2923,11 +3010,11 @@
       "퍼포먼스 A"
     ],
     "manufacturer": "남양유업",
-    "flavor": "초코바나나",
+    "flavor": "초코바나나맛",
     "bcaa": "8700mg",
     "proteinSource": "혼합",
-    "fat": 1,
-    "sodium": 220,
+    "fat": 1.1,
+    "sodium": 270,
     "calorieDensity": "55.7kcal/100ml",
     "drinkType": "밀크형",
     "nutritionPerBottle": {
@@ -2935,14 +3022,16 @@
       "proteinG": 45,
       "carbsG": 1.3,
       "sugarsG": 1,
-      "fatG": 1,
+      "fatG": 1.1,
       "satFatG": 0.7,
-      "sodiumMg": 220,
+      "sodiumMg": 270,
+      "cholesterolMg": 15,
+      "calciumMg": 700,
       "bcaaMg": 8700
     },
-    "coupangUrl": "https://link.coupang.com/a/e8NK1mDFds",
-    "naverUrl": "https://search.shopping.naver.com/search/all?query=%ED%85%8C%EC%9D%B4%ED%81%AC%ED%95%8F%20%EB%AA%AC%EC%8A%A4%ED%84%B0%20(%EC%B4%88%EC%BD%94%EB%B0%94%EB%82%98%EB%82%98)&prevQuery=%ED%85%8C%EC%9D%B4%ED%81%AC%ED%95%8F%20%EB%AA%AC%EC%8A%A4%ED%84%B0%20(%EA%B3%A0%EC%86%8C%ED%95%9C%EB%A7%9B)&vertical=search",
-    "officialUrl": "https://brand.naver.com/namyang/category/86594242565a4d4d8375f43f388b275d?cp=1"
+    "naverUrl": "https://search.shopping.naver.com/search/all?query=%ED%85%8C%EC%9D%B4%ED%81%AC%ED%95%8F%20%ED%85%8C%EC%9D%B4%ED%81%AC%ED%95%8F%20%EB%AA%AC%EC%8A%A4%ED%84%B0%20(%EC%B4%88%EC%BD%94%EB%B0%94%EB%82%98%EB%82%98%EB%A7%9B)%20350mL",
+    "officialUrl": "https://brand.naver.com/namyang/category/86594242565a4d4d8375f43f388b275d?cp=1",
+    "coupangUrl": "https://link.coupang.com/a/ga7KFpZFBc"
   },
   {
     "slug": "sellex-profit-peach-icedtea-330",
@@ -5259,5 +5348,266 @@
       "다이어트 C",
       "퍼포먼스 A"
     ]
+  },
+  {
+    "slug": "ultive-protein-savory-250",
+    "brand": "얼티브",
+    "name": "프로틴 (고소한맛)",
+    "capacity": "250mL",
+    "variant": "일반",
+    "tags": [
+      "팩"
+    ],
+    "proteinPerServing": 21,
+    "calories": 110,
+    "sugar": 0,
+    "density": "8.4g/100ml",
+    "productUrl": "#",
+    "productType": "drink",
+    "gradeTags": [
+      "단백질 밀도 B",
+      "다이어트 B",
+      "퍼포먼스 B"
+    ],
+    "manufacturer": "CJ제일제당",
+    "flavor": "고소한맛",
+    "bcaa": "3305mg",
+    "proteinSource": "혼합",
+    "fat": 3.1,
+    "sodium": 350,
+    "calorieDensity": "44kcal/100ml",
+    "drinkType": "밀크형",
+    "nutritionPerBottle": {
+      "caloriesKcal": 110,
+      "proteinG": 21,
+      "carbsG": 0,
+      "sugarsG": 0,
+      "fatG": 3.1,
+      "satFatG": 0.7,
+      "sodiumMg": 350,
+      "cholesterolMg": 0,
+      "calciumMg": 290,
+      "bcaaMg": 3305
+    },
+    "naverUrl": "https://search.shopping.naver.com/search/all?query=%EC%96%BC%ED%8B%B0%EB%B8%8C%20%ED%94%84%EB%A1%9C%ED%8B%B4%20(%EA%B3%A0%EC%86%8C%ED%95%9C%EB%A7%9B)%20250mL",
+    "officialUrl": "https://www.cjthemarket.com/pc/search?query=%EC%96%BC%ED%8B%B0%EB%B8%8C",
+    "coupangUrl": "https://link.coupang.com/a/ga7AZpfGvc"
+  },
+  {
+    "slug": "ultive-protein-banana-250",
+    "brand": "얼티브",
+    "name": "프로틴 (바나나맛)",
+    "capacity": "250mL",
+    "variant": "일반",
+    "tags": [
+      "팩"
+    ],
+    "proteinPerServing": 21,
+    "calories": 115,
+    "sugar": 0,
+    "density": "8.4g/100ml",
+    "productUrl": "#",
+    "productType": "drink",
+    "gradeTags": [
+      "단백질 밀도 B",
+      "다이어트 B",
+      "퍼포먼스 B"
+    ],
+    "manufacturer": "CJ제일제당",
+    "flavor": "바나나맛",
+    "bcaa": "2876mg",
+    "proteinSource": "혼합",
+    "fat": 3.4,
+    "sodium": 430,
+    "calorieDensity": "46kcal/100ml",
+    "drinkType": "밀크형",
+    "nutritionPerBottle": {
+      "caloriesKcal": 115,
+      "proteinG": 21,
+      "carbsG": 0,
+      "sugarsG": 0,
+      "fatG": 3.4,
+      "satFatG": 0.6,
+      "sodiumMg": 430,
+      "cholesterolMg": 0,
+      "calciumMg": 317,
+      "bcaaMg": 2876
+    },
+    "naverUrl": "https://search.shopping.naver.com/search/all?query=%EC%96%BC%ED%8B%B0%EB%B8%8C%20%ED%94%84%EB%A1%9C%ED%8B%B4%20(%EB%B0%94%EB%82%98%EB%82%98%EB%A7%9B)%20250mL",
+    "officialUrl": "https://www.cjthemarket.com/pc/search?query=%EC%96%BC%ED%8B%B0%EB%B8%8C",
+    "coupangUrl": "https://link.coupang.com/a/ga7CaxHUse"
+  },
+  {
+    "slug": "ultive-protein-choco-250",
+    "brand": "얼티브",
+    "name": "프로틴 (초코맛)",
+    "capacity": "250mL",
+    "variant": "일반",
+    "tags": [
+      "팩"
+    ],
+    "proteinPerServing": 21,
+    "calories": 125,
+    "sugar": 0,
+    "density": "8.4g/100ml",
+    "productUrl": "#",
+    "productType": "drink",
+    "gradeTags": [
+      "단백질 밀도 B",
+      "다이어트 B",
+      "퍼포먼스 B"
+    ],
+    "manufacturer": "CJ제일제당",
+    "flavor": "초코맛",
+    "bcaa": "3040mg",
+    "proteinSource": "혼합",
+    "fat": 3.6,
+    "sodium": 350,
+    "calorieDensity": "50kcal/100ml",
+    "drinkType": "밀크형",
+    "nutritionPerBottle": {
+      "caloriesKcal": 125,
+      "proteinG": 21,
+      "carbsG": 2,
+      "sugarsG": 0,
+      "fatG": 3.6,
+      "satFatG": 0.9,
+      "sodiumMg": 350,
+      "cholesterolMg": 0,
+      "calciumMg": 288,
+      "bcaaMg": 3040
+    },
+    "naverUrl": "https://search.shopping.naver.com/search/all?query=%EC%96%BC%ED%8B%B0%EB%B8%8C%20%ED%94%84%EB%A1%9C%ED%8B%B4%20(%EC%B4%88%EC%BD%94%EB%A7%9B)%20250mL",
+    "officialUrl": "https://www.cjthemarket.com/pc/search?query=%EC%96%BC%ED%8B%B0%EB%B8%8C",
+    "coupangUrl": "https://link.coupang.com/a/ga7Ejo3xgO"
+  },
+  {
+    "slug": "labnosh-protein-salted-caramel-350",
+    "brand": "랩노쉬",
+    "name": "프로틴 드링크 (솔티드카라멜)",
+    "capacity": "350mL",
+    "variant": "일반",
+    "tags": [
+      "PET"
+    ],
+    "proteinPerServing": 27,
+    "calories": 130,
+    "sugar": 0,
+    "density": "7.7g/100ml",
+    "productUrl": "#",
+    "productType": "drink",
+    "gradeTags": [
+      "단백질 밀도 B",
+      "다이어트 A",
+      "퍼포먼스 A"
+    ],
+    "manufacturer": "랩노쉬",
+    "flavor": "솔티드카라멜",
+    "bcaa": "-",
+    "proteinSource": "혼합",
+    "fat": 1.3,
+    "sodium": 480,
+    "calorieDensity": "37.1kcal/100ml",
+    "drinkType": "밀크형",
+    "nutritionPerBottle": {
+      "caloriesKcal": 130,
+      "proteinG": 27,
+      "carbsG": 2,
+      "sugarsG": 0,
+      "fatG": 1.3,
+      "satFatG": 0.7,
+      "sodiumMg": 480,
+      "cholesterolMg": 10,
+      "calciumMg": 346
+    },
+    "naverUrl": "https://search.shopping.naver.com/search/all?query=%EB%9E%A9%EB%85%B8%EC%89%AC%20%ED%94%84%EB%A1%9C%ED%8B%B4%20%EB%93%9C%EB%A7%81%ED%81%AC%20(%EC%86%94%ED%8B%B0%EB%93%9C%EC%B9%B4%EB%9D%BC%EB%A9%9C)%20350mL",
+    "officialUrl": "https://labnosh.com/category/%EB%9E%A9%EB%85%B8%EC%89%AC/44/",
+    "coupangUrl": "https://link.coupang.com/a/ga7GtIA24O"
+  },
+  {
+    "slug": "labnosh-protein-sweet-corn-350",
+    "brand": "랩노쉬",
+    "name": "프로틴 드링크 (초당옥수수)",
+    "capacity": "350mL",
+    "variant": "일반",
+    "tags": [
+      "PET"
+    ],
+    "proteinPerServing": 27,
+    "calories": 125,
+    "sugar": 0,
+    "density": "7.7g/100ml",
+    "productUrl": "#",
+    "productType": "drink",
+    "gradeTags": [
+      "단백질 밀도 B",
+      "다이어트 A",
+      "퍼포먼스 A"
+    ],
+    "manufacturer": "랩노쉬",
+    "flavor": "초당옥수수",
+    "bcaa": "-",
+    "proteinSource": "혼합",
+    "fat": 1.2,
+    "sodium": 400,
+    "calorieDensity": "35.7kcal/100ml",
+    "drinkType": "밀크형",
+    "nutritionPerBottle": {
+      "caloriesKcal": 125,
+      "proteinG": 27,
+      "carbsG": 2,
+      "sugarsG": 0,
+      "fatG": 1.2,
+      "satFatG": 0.6,
+      "sodiumMg": 400,
+      "cholesterolMg": 10,
+      "calciumMg": 373
+    },
+    "naverUrl": "https://search.shopping.naver.com/search/all?query=%EB%9E%A9%EB%85%B8%EC%89%AC%20%ED%94%84%EB%A1%9C%ED%8B%B4%20%EB%93%9C%EB%A7%81%ED%81%AC%20(%EC%B4%88%EB%8B%B9%EC%98%A5%EC%88%98%EC%88%98)%20350mL",
+    "officialUrl": "https://labnosh.com/category/%EB%9E%A9%EB%85%B8%EC%89%AC/44/",
+    "coupangUrl": "https://link.coupang.com/a/ga7Ho2laCW"
+  },
+  {
+    "slug": "labnosh-protein-perfect-melon-350",
+    "brand": "랩노쉬",
+    "name": "프로틴 드링크 퍼펙트 (메론)",
+    "capacity": "350mL",
+    "variant": "일반",
+    "tags": [
+      "PET"
+    ],
+    "proteinPerServing": 27,
+    "calories": 130,
+    "sugar": 0,
+    "density": "7.7g/100ml",
+    "productUrl": "#",
+    "productType": "drink",
+    "gradeTags": [
+      "단백질 밀도 B",
+      "다이어트 A",
+      "퍼포먼스 A"
+    ],
+    "manufacturer": "랩노쉬",
+    "flavor": "메론",
+    "bcaa": "-",
+    "proteinSource": "혼합",
+    "fat": 1.2,
+    "sodium": 310,
+    "calorieDensity": "37.1kcal/100ml",
+    "drinkType": "밀크형",
+    "nutritionPerBottle": {
+      "caloriesKcal": 130,
+      "proteinG": 27,
+      "carbsG": 3,
+      "sugarsG": 0,
+      "fatG": 1.2,
+      "satFatG": 0.5,
+      "sodiumMg": 310,
+      "cholesterolMg": 10,
+      "calciumMg": 349
+    },
+    "naverUrl": "https://search.shopping.naver.com/search/all?query=%EB%9E%A9%EB%85%B8%EC%89%AC%20%ED%94%84%EB%A1%9C%ED%8B%B4%20%EB%93%9C%EB%A7%81%ED%81%AC%20%ED%8D%BC%ED%8E%99%ED%8A%B8%20(%EB%A9%94%EB%A1%A0)%20350mL",
+    "officialUrl": "https://labnosh.com/category/%EB%9E%A9%EB%85%B8%EC%89%AC/44/",
+    "coupangUrl": "https://link.coupang.com/a/ga7Ity0nIq"
   }
 ]
