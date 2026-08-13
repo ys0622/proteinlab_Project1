@@ -1,8 +1,8 @@
 {
-  "generated_at": "2026-08-13T08:07:30.185Z",
-  "total": 377,
+  "generated_at": "2026-08-13T08:36:54.523Z",
+  "total": 375,
   "categories": {
-    "drinks": 132,
+    "drinks": 130,
     "bars": 100,
     "yogurt": 57,
     "shake": 88
@@ -56,24 +56,6 @@
     {
       "slug": "newcare-all-protein-savory-245",
       "name": "올프로틴 (고소한맛)",
-      "brand": "뉴케어",
-      "category": "drinks",
-      "protein": 25,
-      "calories": 135,
-      "sugar": 0
-    },
-    {
-      "slug": "newcare-all-protein-black-sesame-245",
-      "name": "올프로틴 (흑임자맛)",
-      "brand": "뉴케어",
-      "category": "drinks",
-      "protein": 25,
-      "calories": 135,
-      "sugar": 0
-    },
-    {
-      "slug": "newcare-all-protein-almond-245",
-      "name": "올프로틴 (아몬드맛)",
       "brand": "뉴케어",
       "category": "drinks",
       "protein": 25,
