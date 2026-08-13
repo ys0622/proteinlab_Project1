@@ -28,5 +28,11 @@
   { "slug": "ottogi-dayprotein-choco-250",      "addedAt": "2026-07-27" },
   { "slug": "ottogi-dayprotein-fivegrain-250",  "addedAt": "2026-07-27" },
   { "slug": "ottogi-dayprotein-banana-250",     "addedAt": "2026-07-27" },
-  { "slug": "dryou-protein-62g-matcha-450",     "addedAt": "2026-07-27" }
+  { "slug": "dryou-protein-62g-matcha-450",     "addedAt": "2026-07-27" },
+  { "slug": "ultive-protein-savory-250",        "addedAt": "2026-08-13" },
+  { "slug": "ultive-protein-banana-250",        "addedAt": "2026-08-13" },
+  { "slug": "ultive-protein-choco-250",         "addedAt": "2026-08-13" },
+  { "slug": "labnosh-protein-salted-caramel-350", "addedAt": "2026-08-13" },
+  { "slug": "labnosh-protein-sweet-corn-350",   "addedAt": "2026-08-13" },
+  { "slug": "labnosh-protein-perfect-melon-350", "addedAt": "2026-08-13" }
 ]
