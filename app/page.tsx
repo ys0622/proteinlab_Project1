@@ -175,29 +175,30 @@ export default async function Home() {
             }}
           />
 
-          {/* 모바일: 우측 상단 이미지 (좌·하단 가장자리 블렌딩) */}
-          <div
-            aria-hidden
-            className="pointer-events-none absolute right-0 top-0 h-[150px] w-[52%] md:hidden"
-            style={{
-              backgroundImage: "url(/category-icons/hero-image.png)",
-              backgroundSize: "cover",
-              backgroundPosition: "center",
-              maskImage: "radial-gradient(ellipse 140% 140% at 100% 0%, black 40%, transparent 85%)",
-              WebkitMaskImage: "radial-gradient(ellipse 140% 140% at 100% 0%, black 40%, transparent 85%)",
-            }}
-          />
-
           <div className="relative z-10 px-5 py-6 md:max-w-[56%] md:px-10 md:py-10">
-            <div className="max-w-[68%] md:max-w-none">
-              <h1 className="font-extrabold leading-[1.3] text-[24px] md:text-[40px] md:leading-[1.25]" style={{ color: "#16412D", letterSpacing: "-0.02em" }}>
-                나에게 맞는 단백질 제품,
-                <br />
-                수치로 비교하세요
-              </h1>
-              <p className="mt-2 text-[13px] md:mt-3 md:text-[16px]" style={{ color: "#5E6E61" }}>
-                단백질·당류·칼로리를 한눈에 비교하고 목적에 맞는 제품을 찾아보세요.
-              </p>
+            <div className="flex items-start justify-between gap-3 md:block">
+              <div className="min-w-0 flex-1">
+                <h1 className="font-extrabold leading-[1.3] text-[20px] md:text-[40px] md:leading-[1.25]" style={{ color: "#16412D", letterSpacing: "-0.02em" }}>
+                  나에게 맞는 단백질 제품,
+                  <br />
+                  수치로 비교하세요
+                </h1>
+                <p className="mt-2 text-[13px] md:mt-3 md:text-[16px]" style={{ color: "#5E6E61" }}>
+                  단백질·당류·칼로리를 한눈에 비교하고 목적에 맞는 제품을 찾아보세요.
+                </p>
+              </div>
+              {/* 모바일: 우측 썸네일 이미지 */}
+              <div
+                aria-hidden
+                className="h-[92px] w-[92px] shrink-0 rounded-[12px] md:hidden"
+                style={{
+                  backgroundImage: "url(/category-icons/hero-image.png)",
+                  backgroundSize: "cover",
+                  backgroundPosition: "center",
+                  maskImage: "radial-gradient(ellipse 130% 130% at 100% 0%, black 45%, transparent 85%)",
+                  WebkitMaskImage: "radial-gradient(ellipse 130% 130% at 100% 0%, black 45%, transparent 85%)",
+                }}
+              />
             </div>
             <div className="mt-4 max-w-[560px] md:mt-5">
               <HomeHeroSearch />

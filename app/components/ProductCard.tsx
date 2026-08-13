@@ -306,7 +306,7 @@ export default function ProductCard({
 
         {feedbackMeta ? (
           <>
-            <div className="pointer-events-none absolute left-1 top-1 z-10 flex flex-col gap-0.5 md:hidden">
+            <div className="pointer-events-none absolute bottom-1 left-1 z-10 flex flex-col gap-0.5 md:hidden">
               {feedbackMeta.recommendCount > 0 ? (
                 <span className="inline-flex min-h-[16px] items-center self-start rounded-full border border-[#d9e7df] bg-white/88 px-1 py-[1px] text-[7px] font-semibold leading-none text-[#2F5D46] shadow-[0_1px_2px_rgba(15,23,42,0.08)]">
                   <span aria-hidden="true" className="mr-0.5">
