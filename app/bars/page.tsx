@@ -84,7 +84,7 @@ export default async function BarsPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListJsonLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <Header />
-      <HeroSection totalCount={totalCount} />
+      <HeroSection totalCount={totalCount} categoryCount={products.length} />
 
       <main className="mx-auto max-w-[1200px] px-4 pb-2 pt-0 md:px-6 md:pb-3">
         <AffiliateDisclosure />

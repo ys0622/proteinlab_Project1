@@ -78,6 +78,7 @@ type SharedProps = {
   onResetFilters: () => void;
   mobileToolbarSlot?: React.ReactNode;
   desktopFooterSlot?: React.ReactNode;
+  desktopSearchSlot?: React.ReactNode;
 };
 
 type FilterSectionProps =
@@ -116,6 +117,7 @@ export default function FilterSection(props: FilterSectionProps) {
     onResetFilters,
     mobileToolbarSlot,
     desktopFooterSlot,
+    desktopSearchSlot,
   } = props;
   const [mobileFilterOpen, setMobileFilterOpen] = useState(false);
   const [pcFilterOpen, setPcFilterOpen] = useState(false);
@@ -413,14 +415,18 @@ export default function FilterSection(props: FilterSectionProps) {
           <div className="filter-drawer pt-0">
             <div className="filter-drawer__handle" />
             {filterRows}
-            <div className="filter-drawer__apply mt-0.5 flex items-center justify-between gap-3">
-              <button type="button" onClick={onResetFilters} className="btn-reset">
+            <div className="filter-drawer__apply mt-1.5 flex items-center justify-end gap-1.5">
+              <button
+                type="button"
+                onClick={onResetFilters}
+                className="inline-flex h-7 items-center justify-center rounded-full border border-[var(--border)] bg-white px-3 text-[11px] font-semibold text-[var(--foreground-muted)] transition-colors hover:border-[var(--accent)] hover:text-[var(--accent)]"
+              >
                 초기화
               </button>
               <button
                 type="button"
                 onClick={() => setMobileFilterOpen(false)}
-                className="btn-apply inline-flex h-9 items-center justify-center rounded-full bg-[var(--accent)] px-[18px] text-sm font-medium text-white transition-colors hover:bg-[var(--accent-hover)]"
+                className="inline-flex h-7 items-center justify-center rounded-full bg-[var(--accent)] px-3 text-[11px] font-semibold text-white transition-colors hover:bg-[var(--accent-hover)]"
               >
                 필터 적용
               </button>
@@ -473,24 +479,27 @@ export default function FilterSection(props: FilterSectionProps) {
             )}
           </div>
 
-          {pcFilterOpen ? (
-            <div className="flex shrink-0 items-center gap-1.5">
-              <button
-                type="button"
-                onClick={onResetFilters}
-                className="inline-flex h-7 items-center justify-center rounded-full border border-[var(--border)] bg-white px-3 text-[11px] font-semibold text-[var(--foreground-muted)] transition-colors hover:border-[var(--accent)] hover:text-[var(--accent)]"
-              >
-                초기화
-              </button>
-              <button
-                type="button"
-                onClick={() => setPcFilterOpen(false)}
-                className="inline-flex h-7 items-center justify-center rounded-full bg-[var(--accent)] px-3 text-[11px] font-semibold text-white transition-colors hover:bg-[var(--accent-hover)]"
-              >
-                필터 적용
-              </button>
-            </div>
-          ) : null}
+          <div className="flex shrink-0 items-center gap-1.5">
+            {pcFilterOpen ? (
+              <>
+                <button
+                  type="button"
+                  onClick={onResetFilters}
+                  className="inline-flex h-7 items-center justify-center rounded-full border border-[var(--border)] bg-white px-3 text-[11px] font-semibold text-[var(--foreground-muted)] transition-colors hover:border-[var(--accent)] hover:text-[var(--accent)]"
+                >
+                  초기화
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setPcFilterOpen(false)}
+                  className="inline-flex h-7 items-center justify-center rounded-full bg-[var(--accent)] px-3 text-[11px] font-semibold text-white transition-colors hover:bg-[var(--accent-hover)]"
+                >
+                  필터 적용
+                </button>
+              </>
+            ) : null}
+            {desktopSearchSlot ? <div className="w-[220px]">{desktopSearchSlot}</div> : null}
+          </div>
         </div>
 
         {/* PC 펼쳐진 필터 rows */}

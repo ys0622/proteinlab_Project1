@@ -27,6 +27,7 @@ interface SearchBarProps {
   placeholder?: string;
   autoFocus?: boolean;
   className?: string;
+  compact?: boolean;
 }
 
 export default function SearchBar({
@@ -36,13 +37,18 @@ export default function SearchBar({
   placeholder = "제품명 ∙ 브랜드 ∙ 맛 검색",
   autoFocus = false,
   className = "",
+  compact = false,
 }: SearchBarProps) {
   const [focused, setFocused] = useState(false);
   const [recent, setRecent] = useState<string[]>([]);
   const wrapRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (focused) setRecent(loadRecent());
+    if (focused) {
+      // Recent searches are read from client-only local storage when the input opens.
+      // eslint-disable-next-line react-hooks/set-state-in-effect
+      setRecent(loadRecent());
+    }
   }, [focused]);
 
   useEffect(() => {
@@ -86,10 +92,15 @@ export default function SearchBar({
     <div ref={wrapRef} className="relative w-full">
       <div
         className={`flex w-full items-center gap-2 rounded-lg border border-[var(--border)] bg-white ${className}`.trim()}
-        style={{ height: "34px", paddingLeft: "8px", paddingRight: "8px", borderRadius: "8px" }}
+        style={{
+          height: compact ? "28px" : "34px",
+          paddingLeft: "8px",
+          paddingRight: "8px",
+          borderRadius: "8px",
+        }}
       >
         <span className="shrink-0 text-[var(--foreground-muted-light)]" aria-hidden>
-          <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg className={compact ? "h-3.5 w-3.5" : "h-4 w-4"} fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path
               strokeLinecap="round"
               strokeLinejoin="round"
@@ -106,7 +117,7 @@ export default function SearchBar({
           onKeyDown={handleKeyDown}
           placeholder={placeholder}
           autoFocus={autoFocus}
-          className="w-full border-0 bg-transparent text-[16px] text-[var(--foreground)] placeholder:text-[var(--foreground-muted-light)] focus:outline-none sm:text-[13px]"
+          className={`w-full border-0 bg-transparent text-[16px] text-[var(--foreground)] placeholder:text-[var(--foreground-muted-light)] focus:outline-none ${compact ? "sm:text-[12px]" : "sm:text-[13px]"}`}
           aria-label="제품 검색"
           style={{ fontWeight: 400 }}
         />

@@ -477,12 +477,75 @@ function ProductListWithFiltersInner(props: ProductListWithFiltersInnerProps) {
   );
 
   const categoryTabs = (
-    <div className="mt-2 md:mt-3">
-      <CategoryTabs
-        activeCategory={productType}
-        counts={categoryCounts}
-        stickyMobile={stickyTabs}
-      />
+    <div className="mt-2.5 flex items-center gap-2 md:mt-3">
+      <div className="min-w-0 flex-1">
+        <CategoryTabs
+          activeCategory={productType}
+          counts={categoryCounts}
+          stickyMobile={stickyTabs}
+        />
+      </div>
+      <SortBar sort={sort} onSortChange={handleSortChange} className="shrink-0" />
+    </div>
+  );
+
+  const desktopSearchSlot = (
+    <SearchBar value={searchQuery} onChange={handleSearchChange} onCommit={handleSearchChange} compact />
+  );
+
+  const filterBox = (
+    <div
+      className="rounded-xl border border-[var(--border)] bg-[var(--filter-box-bg)]"
+      style={{
+        borderRadius: "12px",
+        padding: isDesktop ? "12px 14px" : "8px 10px",
+      }}
+    >
+      <div>
+        {productType === "drink" ? (
+          <FilterSection
+            productType="drink"
+            filters={filters as DrinkFilters}
+            onFilterToggle={handleDrinkFilterToggle}
+            onResetFilters={handleResetFilters}
+            mobileToolbarSlot={mobileSearchButton}
+            desktopSearchSlot={desktopSearchSlot}
+            drinkBrandOptions={brandOptions}
+          />
+        ) : productType === "bar" ? (
+          <FilterSection
+            productType="bar"
+            filters={filters as BarFilters}
+            onFilterToggle={handleBarFilterToggle}
+            onResetFilters={handleResetFilters}
+            mobileToolbarSlot={mobileSearchButton}
+            desktopSearchSlot={desktopSearchSlot}
+            barBrandOptions={brandOptions}
+          />
+        ) : productType === "yogurt" ? (
+          <FilterSection
+            productType="yogurt"
+            filters={filters as YogurtFilters}
+            onFilterToggle={handleYogurtFilterToggle}
+            onResetFilters={handleResetFilters}
+            mobileToolbarSlot={mobileSearchButton}
+            desktopSearchSlot={desktopSearchSlot}
+            yogurtBrandOptions={brandOptions}
+            yogurtTypeOptions={yogurtTypeOptions}
+            yogurtFlavorOptions={yogurtFlavorOptions}
+          />
+        ) : (
+          <FilterSection
+            productType="shake"
+            filters={filters as ShakeFilters}
+            onFilterToggle={handleShakeFilterToggle}
+            onResetFilters={handleResetFilters}
+            mobileToolbarSlot={mobileSearchButton}
+            desktopSearchSlot={desktopSearchSlot}
+            shakeBrandOptions={brandOptions}
+          />
+        )}
+      </div>
     </div>
   );
 
@@ -490,63 +553,13 @@ function ProductListWithFiltersInner(props: ProductListWithFiltersInnerProps) {
     <>
       {tabsPlacement === "top" ? categoryTabs : null}
 
-      {/* QuickCuration 제거됨 */}
+      <div style={{ marginTop: isDesktop ? "12px" : "6px" }}>
+        {filterBox}
 
-      <div
-        className="mt-2.5 rounded-xl border border-[var(--border)] bg-[var(--filter-box-bg)]"
-        style={{
-          marginTop: isDesktop ? "12px" : "8px",
-          borderRadius: "12px",
-          padding: isDesktop ? "10px 12px" : "1px 5px",
-        }}
-      >
-        <div className="hidden md:block">
-          <SearchBar value={searchQuery} onChange={handleSearchChange} onCommit={handleSearchChange} />
-        </div>
-        <div className={isDesktop ? "mt-1.5" : ""}>
-          {productType === "drink" ? (
-            <FilterSection
-              productType="drink"
-              filters={filters as DrinkFilters}
-              onFilterToggle={handleDrinkFilterToggle}
-              onResetFilters={handleResetFilters}
-              mobileToolbarSlot={mobileSearchButton}
-              drinkBrandOptions={brandOptions}
-            />
-          ) : productType === "bar" ? (
-            <FilterSection
-              productType="bar"
-              filters={filters as BarFilters}
-              onFilterToggle={handleBarFilterToggle}
-              onResetFilters={handleResetFilters}
-              mobileToolbarSlot={mobileSearchButton}
-              barBrandOptions={brandOptions}
-            />
-          ) : productType === "yogurt" ? (
-            <FilterSection
-              productType="yogurt"
-              filters={filters as YogurtFilters}
-              onFilterToggle={handleYogurtFilterToggle}
-              onResetFilters={handleResetFilters}
-              mobileToolbarSlot={mobileSearchButton}
-              yogurtBrandOptions={brandOptions}
-              yogurtTypeOptions={yogurtTypeOptions}
-              yogurtFlavorOptions={yogurtFlavorOptions}
-            />
-          ) : (
-            <FilterSection
-              productType="shake"
-              filters={filters as ShakeFilters}
-              onFilterToggle={handleShakeFilterToggle}
-              onResetFilters={handleResetFilters}
-              mobileToolbarSlot={mobileSearchButton}
-              shakeBrandOptions={brandOptions}
-            />
-          )}
-        </div>
-      </div>
+        <div>
+          <QuickCuration productType={productType} variant="inline" className="mt-1 mb-1 md:mt-2 md:mb-2" />
 
-      {mobileSearchOpen ? (
+          {mobileSearchOpen ? (
         <div
           className="fixed inset-0 z-[120] bg-black/35 px-4 py-6 md:hidden"
           onClick={() => setMobileSearchOpen(false)}
@@ -586,10 +599,6 @@ function ProductListWithFiltersInner(props: ProductListWithFiltersInnerProps) {
         </div>
       ) : null}
 
-      <div className="mt-1.5" style={{ marginTop: isDesktop ? "6px" : "6px" }}>
-        <SortBar total={searched.length} sort={sort} onSortChange={handleSortChange} />
-      </div>
-
       {tabsPlacement === "before_grid" ? categoryTabs : null}
 
       {visible.length === 0 ? (
@@ -620,27 +629,28 @@ function ProductListWithFiltersInner(props: ProductListWithFiltersInnerProps) {
 
       {productType === "bar" ? <ServingBasisNotice className="mt-4" /> : null}
 
-      {!isDesktop && hasMore ? (
-        <div className="mt-8 flex justify-center">
-          <button
-            type="button"
-            onClick={() => {
-              trackEvent("load_more_click", {
-                category: productType,
-                visible_count: visible.length,
-                total_results: sorted.length,
-                next_page: page + 1,
-                search_query: searchQuery.trim() || undefined,
-              });
-              setPage((current) => current + 1);
-            }}
-            className="rounded-full border border-[var(--border)] bg-white px-6 py-2.5 text-sm font-medium text-[var(--foreground)] transition-colors hover:border-[var(--accent)] hover:bg-[var(--accent-light)] hover:text-[var(--accent)]"
-          >
-            더보기 ({sorted.length - visible.length}개 남음)
-          </button>
+          {!isDesktop && hasMore ? (
+            <div className="mt-8 flex justify-center">
+              <button
+                type="button"
+                onClick={() => {
+                  trackEvent("load_more_click", {
+                    category: productType,
+                    visible_count: visible.length,
+                    total_results: sorted.length,
+                    next_page: page + 1,
+                    search_query: searchQuery.trim() || undefined,
+                  });
+                  setPage((current) => current + 1);
+                }}
+                className="rounded-full border border-[var(--border)] bg-white px-6 py-2.5 text-sm font-medium text-[var(--foreground)] transition-colors hover:border-[var(--accent)] hover:bg-[var(--accent-light)] hover:text-[var(--accent)]"
+              >
+                더보기 ({sorted.length - visible.length}개 남음)
+              </button>
+            </div>
+          ) : null}
         </div>
-      ) : null}
-
+      </div>
     </>
   );
 }

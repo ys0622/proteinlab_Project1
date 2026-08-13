@@ -6,11 +6,10 @@ import SortInfoPopover from "./SortInfoPopover";
 export const sortOptions = [
   { value: "recommended", label: "추천순" },
   { value: "protein_desc", label: "단백질 많은 순" },
-  { value: "density", label: "단백질 밀도순" },
   { value: "sugar_asc", label: "당류 낮은 순" },
-  { value: "sugar_desc", label: "당류 높은 순" },
-  { value: "volume_desc", label: "용량 큰 순" },
-  { value: "volume_asc", label: "용량 작은 순" },
+  { value: "calories_asc", label: "칼로리 낮은 순" },
+  { value: "recent_desc", label: "최근 등록순" },
+  { value: "density", label: "단백질 밀도순" },
 ] as const;
 
 export type SortOptionValue = (typeof sortOptions)[number]["value"];
@@ -18,20 +17,16 @@ export type SortOptionValue = (typeof sortOptions)[number]["value"];
 export const RECOMMENDED_SORT_DESCRIPTION =
   "추천순은 단백질 밀도, 단백질량, 당류, 칼로리, 인기도를 함께 반영한 균형형 정렬입니다.";
 
-function formatComparisonHeadline(total: number) {
-  return `${total}개 상품 비교`;
-}
-
 interface SortBarProps {
-  total?: number;
   sort: SortOptionValue;
   onSortChange: (sort: SortOptionValue) => void;
+  className?: string;
 }
 
 export default function SortBar({
-  total = 101,
   sort,
   onSortChange,
+  className = "",
 }: SortBarProps) {
   const [menuOpen, setMenuOpen] = useState(false);
   const menuButtonRef = useRef<HTMLButtonElement | null>(null);
@@ -73,25 +68,17 @@ export default function SortBar({
   }, [menuOpen]);
 
   return (
-    <div className="flex flex-col gap-0.5 border-b border-transparent py-0.5 md:gap-2 md:border-[var(--border)] md:py-2">
-      <div className="flex items-center justify-between gap-1 md:gap-2">
+    <div className={`flex items-center ${className}`.trim()}>
+      <div className="relative ml-auto flex shrink-0 items-center gap-1 whitespace-nowrap md:gap-1.5">
         <span
-          className="min-w-0 text-[13px] text-[var(--foreground-muted)] md:text-sm"
+          className="hidden text-sm text-[var(--foreground-muted)] sm:inline"
           style={{ fontWeight: 400 }}
         >
-          {formatComparisonHeadline(total)}
+          정렬
         </span>
 
-        <div className="relative ml-auto flex shrink-0 items-center gap-1 whitespace-nowrap md:gap-1.5">
-          <span
-            className="hidden text-sm text-[var(--foreground-muted)] sm:inline"
-            style={{ fontWeight: 400 }}
-          >
-            정렬
-          </span>
-
-          <div className="relative flex shrink-0 items-center gap-1">
-            <button
+        <div className="relative flex shrink-0 items-center gap-1">
+          <button
               ref={menuButtonRef}
               type="button"
               aria-haspopup="listbox"
@@ -145,12 +132,11 @@ export default function SortBar({
             ) : null}
           </div>
 
-          <div className="sort-info-inline">
-            <SortInfoPopover
-              label="i"
-              description={RECOMMENDED_SORT_DESCRIPTION}
-            />
-          </div>
+        <div className="sort-info-inline">
+          <SortInfoPopover
+            label="i"
+            description={RECOMMENDED_SORT_DESCRIPTION}
+          />
         </div>
       </div>
     </div>

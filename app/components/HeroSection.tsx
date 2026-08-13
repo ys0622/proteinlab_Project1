@@ -32,9 +32,10 @@ const PAGE_META: Record<string, { h1: string; sub: string; title: string; desc: 
 
 interface HeroSectionProps {
   totalCount: number;
+  categoryCount?: number;
 }
 
-export default function HeroSection({ totalCount }: HeroSectionProps) {
+export default function HeroSection({ totalCount, categoryCount }: HeroSectionProps) {
   const pathname = usePathname();
   const meta = PAGE_META[pathname] ?? {
     h1: "단백질 제품 추천 비교",
@@ -43,7 +44,7 @@ export default function HeroSection({ totalCount }: HeroSectionProps) {
     desc: "단백질 제품 성분 비교",
   };
 
-  const subText = meta.sub.replace("{count}", String(totalCount));
+  const count = categoryCount ?? totalCount;
 
   return (
     <section
@@ -51,23 +52,15 @@ export default function HeroSection({ totalCount }: HeroSectionProps) {
       style={{ borderColor: "var(--hero-border)" }}
       aria-label="단백질 제품 비교 플랫폼 소개"
     >
-      <div className="mx-auto max-w-[1200px] px-4 pb-1 pt-0 md:px-6 md:py-4">
-        <div className="flex items-start justify-between gap-3">
-          <div>
-            <h1
-              className="text-[19px] font-bold leading-tight text-[var(--foreground)] md:text-3xl"
-              style={{ fontWeight: 700 }}
-            >
-              {meta.h1}
-            </h1>
-            <p
-              className="mt-0.5 text-[11px] leading-snug text-[var(--foreground-muted)] md:mt-1 md:text-sm md:leading-normal"
-              style={{ fontWeight: 400 }}
-            >
-              {subText}
-            </p>
-          </div>
-          <div className="shrink-0 pt-0.5">
+      <div className="mx-auto max-w-[1200px] px-4 py-1.5 md:px-6 md:py-2.5">
+        <div className="flex items-center justify-between gap-3">
+          <h1
+            className="text-[15px] font-bold leading-tight text-[var(--foreground)] md:text-xl"
+            style={{ fontWeight: 700 }}
+          >
+            {meta.h1} <span className="font-medium text-[var(--foreground-muted)]">({count}개 상품)</span>
+          </h1>
+          <div className="shrink-0">
             <ShareButton
               url={pathname}
               title={meta.title}

@@ -2,7 +2,7 @@ import Link from "next/link";
 import ProductCard from "./ProductCard";
 import TrackedLink from "./TrackedLink";
 import type { ProductDetailProps } from "../data/products";
-import type { CurationDefinition, CurationInfoSection } from "../lib/curationSystem";
+import type { CurationDefinition } from "../lib/curationSystem";
 
 interface CurationLandingTemplateProps {
   curation: CurationDefinition;
@@ -16,25 +16,6 @@ interface CurationLandingTemplateProps {
   recommendedShakes: ProductDetailProps[];
 }
 
-function InfoCard({ section }: { section: CurationInfoSection }) {
-  return (
-    <div className="rounded-xl border border-[#e8e6e3] bg-[#FFFDF8] px-4 py-4">
-      <h2 className="text-sm font-semibold text-[var(--foreground)]">{section.title}</h2>
-      <ul className="mt-3 space-y-2">
-        {section.bullets.map((item) => (
-          <li
-            key={item}
-            className="flex items-start gap-2 text-xs leading-5 text-[var(--foreground-muted)] md:text-sm md:leading-6"
-          >
-            <span className="mt-[3px] shrink-0 text-[var(--accent)]">•</span>
-            <span>{item}</span>
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
-}
-
 function ProductSection({
   title,
   note,
@@ -45,14 +26,14 @@ function ProductSection({
   products: ProductDetailProps[];
 }) {
   return (
-    <section className="mt-8">
-      <div className="mb-4 space-y-1">
-        <h2 className="text-lg font-bold text-[var(--foreground)]">{title}</h2>
-        {note ? <p className="text-sm leading-6 text-[var(--foreground-muted)]">{note}</p> : null}
+    <section className="mt-6 md:mt-8">
+      <div className="mb-3 space-y-1 md:mb-4">
+        <h2 className="text-base font-bold text-[var(--foreground)] md:text-lg">{title}</h2>
+        {note ? <p className="text-[13px] leading-6 text-[var(--foreground-muted)] md:text-sm">{note}</p> : null}
       </div>
 
       {products.length > 0 ? (
-        <div className="grid grid-cols-2 gap-3 md:grid-cols-3 md:gap-6 lg:grid-cols-3">
+        <div className="product-grid" aria-label={title}>
           {products.map((product) => (
             <ProductCard
               key={product.slug ?? `${product.brand}-${product.name}`}
@@ -62,7 +43,10 @@ function ProductSection({
           ))}
         </div>
       ) : (
-        <div className="rounded-xl border border-[#e8e6e3] bg-[#FFFDF8] px-4 py-4 text-sm leading-6 text-[var(--foreground-muted)]">
+        <div
+          className="rounded-xl border border-[var(--border)] bg-[var(--background-card)] px-4 py-4 text-sm leading-6 text-[var(--foreground-muted)]"
+          style={{ borderRadius: "12px" }}
+        >
           현재 조건에 맞는 제품이 충분하지 않아 이 구간은 비워 두었습니다.
         </div>
       )}
@@ -85,10 +69,6 @@ export default function CurationLandingTemplate({
   const barCopy = curation.categories.bar?.landingCopy;
   const yogurtCopy = curation.categories.yogurt?.landingCopy;
   const shakeCopy = curation.categories.shake?.landingCopy;
-  const infoSections = curation.infoSections ?? [];
-  const heroInfoSections =
-    curation.slug === "convenience" ? infoSections.filter((_, index) => index !== 1) : infoSections;
-  const visibleHeroInfoSections = heroInfoSections.slice(0, 2);
   const hasDrinkCategory = Boolean(curation.categories.drink);
   const hasBarCategory = Boolean(curation.categories.bar);
   const hasYogurtCategory = Boolean(curation.categories.yogurt);
@@ -103,12 +83,12 @@ export default function CurationLandingTemplate({
         style={{
           background: "var(--hero-bg)",
           borderColor: "var(--hero-border)",
-          paddingTop: "16px",
-          paddingBottom: "20px",
+          paddingTop: "12px",
+          paddingBottom: "14px",
         }}
       >
         <div className="mx-auto max-w-[1200px] px-4 md:px-6">
-          <nav className="mb-3 text-sm text-[var(--foreground-muted)]">
+          <nav className="mb-2 text-[12px] text-[var(--foreground-muted)] md:mb-2.5 md:text-sm">
             <Link href="/" className="hover:text-[var(--accent)]">
               단백질 제품
             </Link>
@@ -116,37 +96,39 @@ export default function CurationLandingTemplate({
             <span className="text-[var(--foreground)]">{curation.label} 큐레이션</span>
           </nav>
 
-          <h1 className="text-2xl font-bold leading-tight text-[var(--foreground)] md:text-3xl">
-            {curation.heroTitle ?? `${curation.label} 큐레이션`}
-          </h1>
+          <div className="flex items-center gap-2.5 md:items-start md:gap-3">
+            <span
+              className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-sm md:mt-0.5 md:h-11 md:w-11 md:text-lg"
+              style={{ background: "var(--curation-chip-bg)" }}
+              aria-hidden
+            >
+              {curation.icon}
+            </span>
+            <div>
+              <h1 className="text-lg font-bold leading-tight text-[var(--foreground)] md:text-3xl">
+                {curation.heroTitle ?? `${curation.label} 큐레이션`}
+              </h1>
 
-          <div className="mt-3 max-w-3xl space-y-3 text-sm leading-6 text-[var(--foreground-muted)]">
-            {curation.heroDescription ? <p>{curation.heroDescription}</p> : null}
-            {curation.introText ? (
-              <p className="font-medium text-[var(--foreground)]">{curation.introText}</p>
-            ) : null}
+              {curation.introText ? (
+                <p className="mt-1.5 max-w-3xl text-[13px] font-medium leading-6 text-[var(--foreground-muted)] md:mt-2 md:text-sm">
+                  {curation.introText}
+                </p>
+              ) : null}
+            </div>
           </div>
         </div>
       </section>
 
       <main className="mx-auto max-w-[1200px] px-4 pb-2 pt-4 md:px-6">
-        {visibleHeroInfoSections.length > 0 ? (
-          <div className="grid gap-3 md:grid-cols-2">
-            {visibleHeroInfoSections.map((section) => (
-              <InfoCard key={section.title} section={section} />
-            ))}
-          </div>
-        ) : null}
-
         {isPopularLanding && curation.relatedGuideLinks?.length ? (
-          <section className="mt-8">
-            <div className="mb-4 space-y-1">
-              <h2 className="text-lg font-bold text-[var(--foreground)]">{relatedLinksTitle}</h2>
-              <p className="text-sm leading-6 text-[var(--foreground-muted)]">
+          <section className="mt-6 md:mt-8">
+            <div className="mb-3 space-y-1 md:mb-4">
+              <h2 className="text-base font-bold text-[var(--foreground)] md:text-lg">{relatedLinksTitle}</h2>
+              <p className="text-[13px] leading-6 text-[var(--foreground-muted)] md:text-sm">
                 이 조건과 함께 많이 보는 비교 페이지와 가이드를 묶어 두었습니다.
               </p>
             </div>
-            <div className="grid gap-3 md:grid-cols-3">
+            <div className="grid gap-2.5 md:grid-cols-3 md:gap-3">
               {curation.relatedGuideLinks.map((guide) => (
                 <TrackedLink
                   key={guide.href}
@@ -154,7 +136,8 @@ export default function CurationLandingTemplate({
                   trackingLabel={guide.title}
                   trackingSection="curation_related_links"
                   trackingPageType="curation"
-                  className="rounded-xl border border-[#e8e6e3] bg-[#FFFDF8] px-4 py-4 transition-colors hover:bg-[var(--accent-light)]"
+                  className="rounded-xl border border-[var(--border)] bg-[var(--background-card)] px-4 py-3.5 transition-colors hover:border-[var(--accent)] hover:bg-[var(--accent-light)] md:py-4"
+                  style={{ borderRadius: "12px" }}
                 >
                   <p className="text-sm font-semibold text-[var(--foreground)]">{guide.title}</p>
                   <p className="mt-2 text-xs leading-5 text-[var(--foreground-muted)] md:text-sm">
@@ -223,9 +206,12 @@ export default function CurationLandingTemplate({
         ) : null}
 
         {!isPopularLanding && curation.relatedGuideLinks?.length ? (
-          <section className="mt-10 rounded-xl border border-[#e8e6e3] bg-[#FFFDF8] px-4 py-4">
+          <section
+            className="mt-8 rounded-xl border border-[var(--border)] bg-[var(--background-card)] px-4 py-4 md:mt-10"
+            style={{ borderRadius: "12px" }}
+          >
             <h2 className="text-sm font-semibold text-[var(--foreground)]">{relatedLinksTitle}</h2>
-            <div className="mt-3 grid gap-3 md:grid-cols-2">
+            <div className="mt-3 grid gap-2.5 md:grid-cols-2 md:gap-3">
               {curation.relatedGuideLinks.map((guide) => (
                 <TrackedLink
                   key={guide.href}
@@ -233,7 +219,8 @@ export default function CurationLandingTemplate({
                   trackingLabel={guide.title}
                   trackingSection="curation_related_links"
                   trackingPageType="curation"
-                  className="rounded-xl border border-[#e8e6e3] bg-white px-4 py-3 transition-colors hover:bg-[var(--accent-light)]"
+                  className="rounded-xl border border-[var(--border)] bg-[var(--filter-box-bg)] px-4 py-3 transition-colors hover:border-[var(--accent)] hover:bg-[var(--accent-light)]"
+                  style={{ borderRadius: "12px" }}
                 >
                   <p className="text-sm font-semibold text-[var(--foreground)]">{guide.title}</p>
                   <p className="mt-1 text-xs leading-5 text-[var(--foreground-muted)] md:text-sm">
