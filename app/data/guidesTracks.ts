@@ -726,6 +726,28 @@ export const guideTracks: GuideTrack[] = [
         ],
       },
       {
+        slug: "seoulmilk-protein-energy",
+        title: "서울우유 프로틴 에너지",
+        description: "광고로 접한 서울우유 프로틴 음료를 성분과 용도 기준으로 읽는 가이드입니다.",
+        searchIntent: "서울우유 프로틴 에너지",
+        futureFocus: ["신제품 검색", "광고 유입", "일상형 단백질 음료"],
+        internalLinkTargets: [
+          { label: "단백질 음료 입문", href: "/guides/product-selection-comparison/protein-drink-beginners-guide" },
+          { label: "저당 단백질 음료", href: "/guides/product-selection-comparison/low-sugar-protein-drink-guide" },
+        ],
+      },
+      {
+        slug: "protein-drink-ad-checklist",
+        title: "단백질 음료 광고 체크리스트",
+        description: "광고를 보고 단백질 음료를 고르기 전 확인할 성분·가격·목적 기준을 정리합니다.",
+        searchIntent: "단백질 음료 광고 구매 기준",
+        futureFocus: ["광고 유입", "구매 전 체크", "성분표 해석"],
+        internalLinkTargets: [
+          { label: "서울우유 프로틴 에너지", href: "/guides/market-insights/seoulmilk-protein-energy" },
+          { label: "단백질 함량별 음료", href: "/guides/product-selection-comparison/protein-drink-by-content" },
+        ],
+      },
+      {
         slug: "global-protein-market",
         title: "글로벌 단백질 시장",
         description: "해외 시장 트렌드와 국내 시장 비교로 확장할 페이지 슬롯입니다.",
