@@ -106,7 +106,7 @@ export default function ProteinDrinkWithoutExercisePage() {
           <div className="mt-3">
             <span className="rounded-md bg-[#f5f0ea] px-2 py-0.5 text-[11px] font-semibold tracking-wide text-[#7a5230]">TRACK C</span>
           </div>
-          <h1 className="mt-3 text-2xl font-bold leading-tight text-[var(--foreground)] md:text-3xl">
+          <h1 className="mt-3 text-2xl font-bold leading-tight text-[#16412D] md:text-3xl">
             운동 안 해도 단백질 음료 마셔도 됩니다.
             <br />
             다만 운동용이 아니라 식사 보완 기준으로 봐야 합니다.

@@ -101,7 +101,7 @@ export default function ProteinToolsPage() {
             <span className="text-xs text-[#8b8b8b]">{trackData.slots.length}개 도구 주제</span>
           </div>
 
-          <h1 className="mt-3 text-2xl font-bold leading-tight text-[var(--foreground)] md:text-3xl">단백질 계산 & 도구</h1>
+          <h1 className="mt-3 text-2xl font-bold leading-tight text-[#16412D] md:text-3xl">단백질 계산 & 도구</h1>
           <p className="mt-2 max-w-2xl text-sm leading-6 text-[var(--foreground-muted)]">
             체중과 활동량을 기준으로 하루 단백질 섭취량을 계산하고, 계산 결과를 실제 식사와 제품 선택에
             바로 연결해보세요.

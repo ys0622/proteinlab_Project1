@@ -94,7 +94,7 @@ export default function MuscleMaintenanceProteinPage() {
               TRACK C
             </span>
           </div>
-          <h1 className="mt-3 text-2xl font-bold leading-tight text-[var(--foreground)] md:text-3xl">
+          <h1 className="mt-3 text-2xl font-bold leading-tight text-[#16412D] md:text-3xl">
             근육 유지는
             <br />
             총량과 분산을 같이 봐야 합니다

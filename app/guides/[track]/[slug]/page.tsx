@@ -98,7 +98,7 @@ function HeroSection({ breadcrumb, h1, lead }: { breadcrumb: string; h1: string;
       <div className="mx-auto max-w-[1200px] px-4 py-5 md:px-6 md:py-6">
         <TrackABreadcrumb current={breadcrumb} />
         <TrackALabel />
-        <h1 className="mt-3 text-2xl font-bold leading-tight text-[var(--foreground)] md:text-3xl">{h1}</h1>
+        <h1 className="mt-3 text-2xl font-bold leading-tight text-[#16412D] md:text-3xl">{h1}</h1>
         <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">{lead}</p>
       </div>
     </section>
@@ -534,7 +534,7 @@ export default async function GuideSlugPage({
             <div className="mt-3">
               <span className="rounded-md bg-[#eef4ea] px-2 py-0.5 text-[11px] font-semibold tracking-wide text-[#4c7a57]">TRACK A</span>
             </div>
-            <h1 className="mt-3 text-2xl font-bold leading-tight text-[var(--foreground)] md:text-3xl">나는 단백질이 얼마나 필요할까?</h1>
+            <h1 className="mt-3 text-2xl font-bold leading-tight text-[#16412D] md:text-3xl">나는 단백질이 얼마나 필요할까?</h1>
             <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
               단백질 권장량은 나이, 체중, 활동 수준에 따라 달라집니다.<br />
               내 상황에 맞는 기준을 확인해보세요.
@@ -669,7 +669,7 @@ export default async function GuideSlugPage({
             </span>
             <span className="text-xs text-[var(--foreground-muted)]">가이드 준비 중</span>
           </div>
-          <h1 className="mt-3 text-2xl font-bold leading-tight text-[var(--foreground)] md:text-3xl">{slot.title}</h1>
+          <h1 className="mt-3 text-2xl font-bold leading-tight text-[#16412D] md:text-3xl">{slot.title}</h1>
           <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">{slot.description}</p>
         </div>
       </section>

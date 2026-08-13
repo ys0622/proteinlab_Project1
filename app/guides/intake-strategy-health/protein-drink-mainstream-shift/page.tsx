@@ -136,7 +136,7 @@ export default function ProteinDrinkMainstreamShiftPage() {
             <span className="rounded-md bg-[#fbf7f1] px-2 py-0.5 text-[11px] font-semibold tracking-wide text-[#7a5230]">소비 트렌드</span>
             <span className="text-[11px] font-medium text-[var(--foreground-muted)]">업데이트 2026-07-02</span>
           </div>
-          <h1 className="mt-3 text-2xl font-bold leading-tight text-[var(--foreground)] md:text-3xl">
+          <h1 className="mt-3 text-2xl font-bold leading-tight text-[#16412D] md:text-3xl">
             단백질 음료, 이제
             <br />
             근육 늘리려고만 마시지 않습니다.

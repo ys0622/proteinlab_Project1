@@ -101,7 +101,7 @@ export default function MuscleGuidePage() {
           </div>
 
           <div className="mt-4">
-            <h1 className="text-2xl font-bold leading-tight text-[var(--foreground)] md:text-3xl">
+            <h1 className="text-2xl font-bold leading-tight text-[#16412D] md:text-3xl">
               근육 성장에 단백질이 필요한 진짜 이유
             </h1>
             <p className="mt-3 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">

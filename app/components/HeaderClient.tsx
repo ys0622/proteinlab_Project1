@@ -17,7 +17,6 @@ function hasActiveChild(pathname: string, children: NavigationChildItem[]): bool
 
 export default function HeaderClient({ isAdmin }: { isAdmin: boolean }) {
   const pathname = usePathname();
-  const isHeroHeaderPage = !pathname.startsWith("/admin");
   const [openPath, setOpenPath] = useState<string | null>(null);
   const [openGroupByPath, setOpenGroupByPath] = useState<Record<string, string | null>>({});
   const open = openPath === pathname;
@@ -33,19 +32,13 @@ export default function HeaderClient({ isAdmin }: { isAdmin: boolean }) {
 
   return (
     <>
-      <header
-        className={`sticky top-0 z-50 border-b ${
-          isHeroHeaderPage
-            ? "border-[var(--hero-border)] bg-[var(--hero-bg)] md:border-[#f0eeeb] md:bg-white"
-            : "border-[#f0eeeb] bg-white"
-        }`}
-      >
-        <div className="mx-auto flex h-14 max-w-[1200px] items-center px-4 md:px-6">
+      <header className="sticky top-0 z-50" style={{ background: "#16412D" }}>
+        <div className="mx-auto flex h-16 max-w-[1180px] items-center px-4 md:px-5">
           <Link
             href="/"
-            className="flex shrink-0 items-center gap-2 text-lg font-bold text-[var(--accent)]"
+            className="flex shrink-0 items-center gap-2 text-lg font-bold text-white"
           >
-            <span className="relative flex h-8 w-8 shrink-0 items-center justify-center overflow-hidden rounded-lg">
+            <span className="relative flex h-8 w-8 shrink-0 items-center justify-center overflow-hidden rounded-lg bg-white/10">
               <Image
                 src="/proteinlab-logo.png"
                 alt=""
@@ -59,7 +52,7 @@ export default function HeaderClient({ isAdmin }: { isAdmin: boolean }) {
           </Link>
 
           <nav
-            className="ml-auto hidden items-center gap-0.5 md:flex"
+            className="ml-auto hidden items-center gap-1 md:flex"
             aria-label="메인 메뉴"
           >
             {visibleNavItems.map((item) => {
@@ -72,10 +65,8 @@ export default function HeaderClient({ isAdmin }: { isAdmin: boolean }) {
                     <button
                       type="button"
                       onClick={() => toggleGroup(item.label)}
-                      className={`inline-flex items-center gap-1 rounded-lg px-2.5 py-1.5 text-sm font-medium transition-colors hover:bg-[var(--accent-light)] hover:text-[var(--accent)] ${
-                        parentActive || groupOpen
-                          ? "bg-[var(--accent-light)] font-semibold text-[var(--accent)]"
-                          : "text-[var(--foreground)]"
+                      className={`inline-flex items-center gap-1 rounded-lg px-3 py-2 text-sm font-medium transition-colors hover:bg-white/10 ${
+                        parentActive || groupOpen ? "bg-white/12 font-semibold text-white" : "text-white/85"
                       }`}
                       aria-haspopup="menu"
                       aria-expanded={groupOpen}
@@ -126,10 +117,8 @@ export default function HeaderClient({ isAdmin }: { isAdmin: boolean }) {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`rounded-lg px-2.5 py-1.5 text-sm font-medium transition-colors hover:bg-[var(--accent-light)] hover:text-[var(--accent)] ${
-                    active
-                      ? "bg-[var(--accent-light)] font-semibold text-[var(--accent)]"
-                      : "text-[var(--foreground)]"
+                  className={`rounded-lg px-3 py-2 text-sm font-medium transition-colors hover:bg-white/10 ${
+                    active ? "bg-white/12 font-semibold text-white" : "text-white/85"
                   }`}
                 >
                   {item.label}
@@ -141,7 +130,7 @@ export default function HeaderClient({ isAdmin }: { isAdmin: boolean }) {
           <div className="ml-auto flex items-center md:hidden">
             <button
               type="button"
-              className="flex h-10 w-10 items-center justify-center rounded-lg text-[var(--foreground)] hover:bg-[var(--accent-light)] md:hidden"
+              className="flex h-10 w-10 items-center justify-center rounded-lg text-white hover:bg-white/10 md:hidden"
               onClick={() => setOpenPath((current) => (current === pathname ? null : pathname))}
               aria-label={open ? "메뉴 닫기" : "메뉴 열기"}
               aria-expanded={open}
@@ -163,7 +152,18 @@ export default function HeaderClient({ isAdmin }: { isAdmin: boolean }) {
         </div>
 
         {open ? (
-          <nav className="border-t border-[#f0eeeb] bg-white px-4 py-2 md:hidden" aria-label="모바일 메뉴">
+          <div
+            className="fixed inset-0 top-16 z-40 bg-black/30 md:hidden"
+            onClick={() => setOpenPath(null)}
+            aria-hidden="true"
+          />
+        ) : null}
+
+        {open ? (
+          <nav
+            className="absolute inset-x-0 top-full z-50 max-h-[calc(100vh-4rem)] overflow-y-auto border-t border-white/10 bg-white px-4 py-2 shadow-lg md:hidden"
+            aria-label="모바일 메뉴"
+          >
             {visibleNavItems.map((item) => {
               if (item.children) {
                 const parentActive = hasActiveChild(pathname, item.children);

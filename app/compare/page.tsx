@@ -4,22 +4,31 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useMemo, useRef, useState } from "react";
+import CommercialAdSection from "../components/CommercialAdSection";
 import CompareSummary from "../components/CompareSummary";
 import CompareTable from "../components/CompareTable";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import { useCompare } from "../context/CompareContext";
 import type { ProductDetailProps } from "../data/products";
-import { getProductBySlug } from "../data/products";
+import { getAllProducts, getProductBySlug } from "../data/products";
+import { getAllCompareLandings } from "../data/compareLandings";
+import { getRecentProducts } from "../components/RecentlyViewedTracker";
 import { COMPARE_COLUMNS, type CompareColumnId } from "../lib/compareColumns";
 import { getProductImageUrl } from "../lib/productImage";
-import { event, internalLinkClick } from "../../lib/analytics";
+import { compareAdd, compareView, internalCtaClick } from "../../lib/analytics";
 
-const MAX_PRODUCTS = 4;
+const MAX_PRODUCTS = 3;
+const OPERATOR_COMPARE_SLUGS = new Set([
+  "proteone-vs-itthefit-shake",
+  "takefit-vs-hymune-drink",
+  "newcare-vs-sellex-drink",
+  "takefit-max-vs-takefit-monster",
+]);
 
 export default function ComparePage() {
   const router = useRouter();
-  const { selectedSlugs, remove, clear } = useCompare();
+  const { selectedSlugs, remove, clear, toggle, canAdd } = useCompare();
   const chipRefs = useRef<Partial<Record<CompareColumnId, HTMLButtonElement | null>>>({});
   const [fetchedState, setFetchedState] = useState<{
     slugs: string;
@@ -38,6 +47,22 @@ export default function ComparePage() {
     "priceLinks",
   ]);
   const [focusedColumnId, setFocusedColumnId] = useState<CompareColumnId | null>(null);
+  const lastTrackedCompareKeyRef = useRef<string | null>(null);
+  const [pickerQuery, setPickerQuery] = useState("");
+  const [pickerCategory, setPickerCategory] = useState<string>("all");
+  const [pickerBrand, setPickerBrand] = useState<string>("all");
+  const [recentSlugs, setRecentSlugs] = useState<string[]>([]);
+  const allProducts = useMemo(() => getAllProducts(), []);
+  const recommendedComparisons = useMemo(
+    () => getAllCompareLandings().filter((item) => OPERATOR_COMPARE_SLUGS.has(item.slug)),
+    [],
+  );
+
+  useEffect(() => {
+    // Recent products are client-only local storage state restored after hydration.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setRecentSlugs(getRecentProducts());
+  }, []);
 
   const fallbackProducts = useMemo(
     () =>
@@ -46,6 +71,15 @@ export default function ComparePage() {
         .filter((p): p is NonNullable<typeof p> => p != null),
     [selectedSlugs],
   );
+  const validSelectedSlugs = useMemo(
+    () => fallbackProducts.map((product) => product.slug).filter((slug): slug is string => Boolean(slug)),
+    [fallbackProducts],
+  );
+
+  useEffect(() => {
+    const invalidSlugs = selectedSlugs.filter((slug) => !getProductBySlug(slug));
+    invalidSlugs.forEach(remove);
+  }, [remove, selectedSlugs]);
 
   useEffect(() => {
     if (selectedSlugs.length === 0) return;
@@ -79,6 +113,44 @@ export default function ComparePage() {
       ? fetchedState.products
       : fallbackProducts;
 
+  const pickerBrands = useMemo(
+    () => [...new Set(allProducts.filter((product) => pickerCategory === "all" || product.productType === pickerCategory).map((product) => product.brand))].sort((a, b) => a.localeCompare(b, "ko")),
+    [allProducts, pickerCategory],
+  );
+  const pickerProducts = useMemo(() => {
+    const query = pickerQuery.trim().toLowerCase();
+    return allProducts
+      .filter((product) => pickerCategory === "all" || product.productType === pickerCategory)
+      .filter((product) => pickerBrand === "all" || product.brand === pickerBrand)
+      .filter((product) => !query || `${product.brand} ${product.name}`.toLowerCase().includes(query))
+      .slice(0, 8);
+  }, [allProducts, pickerBrand, pickerCategory, pickerQuery]);
+  const recentProducts = useMemo(
+    () => recentSlugs.map((slug) => getProductBySlug(slug)).filter((product): product is NonNullable<typeof product> => product != null).slice(0, 4),
+    [recentSlugs],
+  );
+  const addProduct = (slug: string) => {
+    if (!selectedSlugs.includes(slug) && canAdd) {
+      compareAdd(slug, selectedSlugs.length + 1);
+      toggle(slug);
+    }
+  };
+
+  useEffect(() => {
+    const key = products.map((product) => product.slug).join(",");
+    if (products.length < 2 || !key || lastTrackedCompareKeyRef.current === key) return;
+    lastTrackedCompareKeyRef.current = key;
+    compareView(products.length);
+  }, [products]);
+
+  useEffect(() => {
+    if (selectedSlugs.length === 0) return;
+    const next = validSelectedSlugs.length > 0
+      ? `/compare?products=${validSelectedSlugs.join(",")}`
+      : "/compare";
+    router.replace(next, { scroll: false });
+  }, [router, selectedSlugs.length, validSelectedSlugs]);
+
   const toggleColumn = (id: CompareColumnId) => {
     setVisibleIds((prev) => (prev.includes(id) ? prev.filter((x) => x !== id) : [...prev, id]));
   };
@@ -100,13 +172,9 @@ export default function ComparePage() {
   };
 
   const handleCopyShareLink = async () => {
-    const path = `/compare?slugs=${selectedSlugs.join(",")}`;
+    const path = `/compare?products=${products.map((product) => product.slug).join(",")}`;
     const url = typeof window !== "undefined" ? window.location.origin + path : "";
     await navigator.clipboard.writeText(url);
-    event("compare_share_click", {
-      product_count: products.length,
-      share_type: "link_copy",
-    });
     alert("공유 링크를 복사했습니다.");
   };
 
@@ -124,28 +192,45 @@ export default function ComparePage() {
           ? "단백질 요거트를 단백질 함량, 당류, 칼로리, 유형 기준으로 비교합니다. 그릭과 드링킹 차이도 함께 보기 쉽게 구성했습니다."
           : selectedCategory === "shake"
             ? "단백질 쉐이크를 단백질 함량, 당류, 식이섬유, 용도 기준으로 비교합니다. 식사대용인지 운동 후 보완용인지 구분하기 쉽게 정리했습니다."
-            : "단백질 음료, 바, 요거트, 쉐이크를 최대 4개까지 한 화면에서 비교합니다.";
+            : "단백질 음료, 바, 요거트, 쉐이크를 최대 3개까지 한 화면에서 비교합니다.";
 
   if (products.length === 0) {
     return (
       <div className="min-h-screen bg-white">
         <Header />
-        <section className="bg-[#EFEDE6]">
+        <section style={{ background: "#FAF8F3" }}>
           <div className="mx-auto max-w-[1200px] px-4 py-8 md:px-6">
-            <h1 className="text-2xl font-bold" style={{ color: "#1a1a1a", fontWeight: 700 }}>
+            <h1 className="text-2xl font-bold" style={{ color: "#16412D", fontWeight: 700 }}>
               제품 비교
             </h1>
             <p className="mt-1 text-sm" style={{ color: "#6b6b6b" }}>
-              비교할 제품을 먼저 담아보세요. 단백질 함량, 당류, 칼로리를 한 화면에서 바로 볼 수 있습니다. 최대 4개까지 비교할 수 있습니다.
+              비교할 제품을 먼저 담아보세요. 단백질 함량, 당류, 칼로리를 한 화면에서 바로 볼 수 있습니다. 최대 3개까지 비교할 수 있습니다.
             </p>
+            <div className="mt-5 grid gap-3 md:grid-cols-[1fr_160px_160px]">
+              <input value={pickerQuery} onChange={(event) => setPickerQuery(event.target.value)} placeholder="제품명 또는 브랜드 검색" className="min-h-11 rounded-lg border border-[#d9d6cf] bg-white px-3 text-sm" aria-label="비교할 제품 검색" />
+              <select value={pickerCategory} onChange={(event) => { setPickerCategory(event.target.value); setPickerBrand("all"); }} className="min-h-11 rounded-lg border border-[#d9d6cf] bg-white px-3 text-sm" aria-label="카테고리 선택">
+                <option value="all">전체 카테고리</option><option value="drink">음료</option><option value="shake">쉐이크</option><option value="bar">바</option><option value="yogurt">요거트</option>
+              </select>
+              <select value={pickerBrand} onChange={(event) => setPickerBrand(event.target.value)} className="min-h-11 rounded-lg border border-[#d9d6cf] bg-white px-3 text-sm" aria-label="브랜드 선택">
+                <option value="all">전체 브랜드</option>{pickerBrands.map((brand) => <option key={brand} value={brand}>{brand}</option>)}
+              </select>
+            </div>
+            <div className="mt-3 grid gap-2 sm:grid-cols-2">
+              {pickerProducts.map((product) => (
+                <button key={product.slug} type="button" onClick={() => addProduct(product.slug)} disabled={selectedSlugs.includes(product.slug) || !canAdd} className="flex min-h-11 items-center justify-between rounded-lg border border-[#d9d6cf] bg-white px-3 text-left text-sm disabled:opacity-50">
+                  <span className="truncate">{product.brand} {product.name}</span><span className="ml-2 shrink-0 text-[var(--accent)]">비교 추가</span>
+                </button>
+              ))}
+            </div>
+            {recentProducts.length > 0 ? <div className="mt-5"><p className="text-sm font-semibold">최근 본 제품</p><div className="mt-2 flex flex-wrap gap-2">{recentProducts.map((product) => <button key={product.slug} type="button" onClick={() => addProduct(product.slug)} disabled={selectedSlugs.includes(product.slug) || !canAdd} className="min-h-11 rounded-full border border-[#d9d6cf] bg-white px-3 text-xs disabled:opacity-50">{product.brand} {product.name}</button>)}</div></div> : null}
+            <div className="mt-5"><p className="text-sm font-semibold">추천 비교 조합</p><div className="mt-2 grid gap-2 md:grid-cols-2">{recommendedComparisons.map((item) => <Link key={item.slug} href={`/compare?products=${item.productSlugs.join(",")}`} className="rounded-lg border border-[#d9d6cf] bg-white px-3 py-3 text-sm hover:border-[var(--accent)]">{item.title}</Link>)}</div></div>
+            <p className="mt-5 text-xs leading-5 text-[#6b6b6b]">제품을 2개 이상 선택하면 단백질·당류·칼로리·용량·밀도와 구매 채널을 나란히 비교할 수 있습니다.</p>
             <Link
               href="/products"
               onClick={() =>
-                internalLinkClick({
-                  label: "제품 고르러 가기",
+                internalCtaClick({
                   destinationUrl: "/products",
-                  section: "compare_empty_state",
-                  pageType: "compare",
+                  contentId: "compare_empty_state:product_picker",
                 })
               }
               className="mt-6 inline-block rounded-lg bg-[var(--accent)] px-5 py-2.5 text-sm font-medium text-white hover:opacity-90"
@@ -162,11 +247,11 @@ export default function ComparePage() {
     <div className="min-h-screen bg-white pb-24">
       <Header />
 
-      <section className="bg-[#EFEDE6]">
+      <section style={{ background: "#FAF8F3" }}>
         <div className="mx-auto max-w-[1200px] px-4 py-6 md:px-6">
           <div className="flex flex-wrap items-start justify-between gap-4">
             <div>
-              <h1 className="text-2xl font-bold" style={{ color: "#1a1a1a", fontWeight: 700 }}>
+              <h1 className="text-2xl font-bold" style={{ color: "#16412D", fontWeight: 700 }}>
                 제품 비교
               </h1>
               <p className="mt-1 text-sm" style={{ color: "#6b6b6b" }}>
@@ -186,9 +271,6 @@ export default function ComparePage() {
               <button
                 type="button"
                 onClick={() => {
-                  event("compare_reset_click", {
-                    product_count: products.length,
-                  });
                   clear();
                   router.push("/products");
                 }}
@@ -232,11 +314,9 @@ export default function ComparePage() {
                 <Link
                   href="/products"
                   onClick={() =>
-                    internalLinkClick({
-                      label: "제품 추가",
+                    internalCtaClick({
                       destinationUrl: "/products",
-                      section: "compare_selected_products",
-                      pageType: "compare",
+                      contentId: "compare_selected_products:add_product",
                     })
                   }
                   className="flex h-[72px] w-[140px] flex-shrink-0 items-center justify-center rounded-xl border-2 border-dashed border-[#d9d6cf] text-sm font-medium hover:border-[var(--accent)] hover:text-[var(--accent)]"
@@ -277,8 +357,8 @@ export default function ComparePage() {
                     onClick={() => toggleColumn(col.id)}
                     className="rounded-full px-3 py-1.5 text-sm font-medium transition-colors"
                     style={{
-                      background: on ? "#2F5D46" : isFocused ? "#eef5ee" : "#f3f3f3",
-                      color: on ? "white" : isFocused ? "#2F5D46" : "#6b6b6b",
+                      background: on ? "#16412D" : isFocused ? "#E8F0EA" : "#f3f3f3",
+                      color: on ? "white" : isFocused ? "#16412D" : "#6b6b6b",
                       border: on ? "none" : isFocused ? "1px solid #9db6a5" : "1px solid #e0e0e0",
                       boxShadow: isFocused ? "0 0 0 2px rgba(47,93,70,0.12)" : "none",
                     }}
@@ -291,6 +371,9 @@ export default function ComparePage() {
           </div>
 
           <CompareTable products={products} visibleColumnIds={visibleIds} />
+        </div>
+        <div className="mt-6">
+          <CommercialAdSection pageType="compare" />
         </div>
       </main>
       <Footer />

@@ -91,7 +91,7 @@ export default function IngredientTrendsPage() {
           <div className="mt-3">
             <span className="rounded-md bg-[#eef4ea] px-2 py-0.5 text-[11px] font-semibold tracking-wide text-[#4c7a57]">TRACK E</span>
           </div>
-          <h1 className="mt-3 text-2xl font-bold leading-tight text-[var(--foreground)] md:text-3xl">
+          <h1 className="mt-3 text-2xl font-bold leading-tight text-[#16412D] md:text-3xl">
             요즘 단백질 제품은 어떤 성분 키워드로 바뀌고 있을까?
           </h1>
           <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">

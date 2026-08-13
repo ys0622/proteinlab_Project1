@@ -66,7 +66,7 @@ export default function LowSugarYogurtGuidePage() {
               TRACK B
             </span>
           </div>
-          <h1 className="mt-3 text-2xl font-bold leading-tight text-[var(--foreground)] md:text-3xl">
+          <h1 className="mt-3 text-2xl font-bold leading-tight text-[#16412D] md:text-3xl">
             저당 단백질 요거트는 당류만 보면 부족합니다
           </h1>
           <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">

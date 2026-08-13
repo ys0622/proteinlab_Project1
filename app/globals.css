@@ -11,14 +11,14 @@
   --foreground-muted-light: #8a8a8a;
   --border: #e2dfda;
   --beige-warm: #f3f0eb;
-  --hero-bg: #efede6;
-  --hero-border: #eaeaea;
-  --filter-box-bg: #efede6;
-  --accent: #2d4a35;
-  --accent-hover: #243d2b;
-  --accent-light: #eaf2ec;
-  --curation-chip-bg: #eaf2ec;
-  --curation-chip-text: #2d4a35;
+  --hero-bg: #FAF8F3;
+  --hero-border: #E7DFC9;
+  --filter-box-bg: #FAF8F3;
+  --accent: #16412D;
+  --accent-hover: #123D27;
+  --accent-light: #E8F0EA;
+  --curation-chip-bg: #E8F0EA;
+  --curation-chip-text: #16412D;
   --white-warm: #fefefc;
   --container-max: 1200px;
   --filter-gap: 16px;
@@ -110,14 +110,14 @@ body {
     --foreground-muted-light: #8a8a8a;
     --border: #e2dfda;
     --beige-warm: #f3f0eb;
-    --hero-bg: #efede6;
-    --hero-border: #eaeaea;
-    --filter-box-bg: #efede6;
-    --accent: #2d4a35;
-    --accent-hover: #243d2b;
-    --accent-light: #eaf2ec;
-    --curation-chip-bg: #eaf2ec;
-    --curation-chip-text: #2d4a35;
+    --hero-bg: #FAF8F3;
+    --hero-border: #E7DFC9;
+    --filter-box-bg: #FAF8F3;
+    --accent: #16412D;
+    --accent-hover: #123D27;
+    --accent-light: #E8F0EA;
+    --curation-chip-bg: #E8F0EA;
+    --curation-chip-text: #16412D;
     --white-warm: #fefefc;
     --metric-value-color: #1b7f5b;
     --grade-density-bg: #e7f3ec;
@@ -526,16 +526,16 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .purchase-link--coupang {
-  background: linear-gradient(135deg, #3a72ff 0%, #2255e8 100%);
-  border-color: #2a5de0;
+  background: linear-gradient(135deg, #2a7a54 0%, #1a5235 100%);
+  border-color: #184a30;
   color: #fff;
-  box-shadow: 0 2px 8px rgba(52, 106, 255, 0.22);
+  box-shadow: 0 2px 8px rgba(31, 90, 61, 0.22);
 }
 
 .purchase-link--coupang:hover {
-  background: linear-gradient(135deg, #2a5de0 0%, #1a47cc 100%);
-  border-color: #1a47cc;
-  box-shadow: 0 4px 16px rgba(52, 106, 255, 0.38);
+  background: linear-gradient(135deg, #1a5235 0%, #123d27 100%);
+  border-color: #123d27;
+  box-shadow: 0 4px 16px rgba(31, 90, 61, 0.38);
 }
 
 .purchase-link--naver {

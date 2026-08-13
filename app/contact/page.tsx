@@ -55,8 +55,8 @@ export default function ContactPage() {
       >
         <div className="mx-auto max-w-[1200px] px-4 py-4 md:px-6 md:py-5">
           <h1
-            className="text-2xl font-bold leading-tight text-[var(--foreground)] md:text-3xl"
-            style={{ fontWeight: 700 }}
+            className="text-2xl font-bold leading-tight md:text-3xl"
+            style={{ fontWeight: 700, color: "#16412D" }}
           >
             문의
           </h1>
@@ -79,7 +79,7 @@ export default function ContactPage() {
             </p>
             <a
               href={`mailto:${CONTACT_EMAIL}`}
-              className="mt-5 inline-flex items-center gap-2 rounded-full border border-[var(--accent)] bg-white px-5 py-2.5 text-sm font-medium text-[var(--accent)] transition-colors hover:bg-[var(--accent-light)]"
+              className="mt-5 inline-flex items-center gap-2 rounded-[10px] border border-[var(--accent)] bg-white px-5 py-2.5 text-sm font-medium text-[var(--accent)] transition-colors hover:bg-[var(--accent-light)]"
             >
               ✉️ 이메일로 문의하기
             </a>

@@ -149,7 +149,7 @@ export default function NightProteinDrinkPage() {
             <span className="rounded-md bg-[#f5f0ea] px-2 py-0.5 text-[11px] font-semibold tracking-wide text-[#7a5230]">TRACK C</span>
             <span className="ml-2 text-[11px] font-medium text-[var(--foreground-muted)]">업데이트 2026-07-15</span>
           </div>
-          <h1 className="mt-3 text-2xl font-bold leading-tight text-[var(--foreground)] md:text-3xl">
+          <h1 className="mt-3 text-2xl font-bold leading-tight text-[#16412D] md:text-3xl">
             밤에 단백질 음료를 마셔도 됩니다.
             <br />
             다만 야식처럼 마실지, 보충용으로 마실지부터 나눠 봐야 합니다.

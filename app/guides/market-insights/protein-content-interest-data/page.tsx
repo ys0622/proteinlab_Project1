@@ -102,7 +102,7 @@ export default function ProteinContentInterestDataPage() {
             <span className="rounded-md bg-[#f7f3fb] px-2 py-0.5 text-[11px] font-semibold tracking-wide text-[#6b4d7c]">자체 데이터 분석</span>
             <span className="text-[11px] font-medium text-[var(--foreground-muted)]">업데이트 2026-07-02</span>
           </div>
-          <h1 className="mt-3 text-2xl font-bold leading-tight text-[var(--foreground)] md:text-3xl">
+          <h1 className="mt-3 text-2xl font-bold leading-tight text-[#16412D] md:text-3xl">
             단백질 함량별 관심도,
             <br />
             실제 데이터로 보면 다릅니다.

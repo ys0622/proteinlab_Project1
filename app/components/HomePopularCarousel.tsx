@@ -9,47 +9,67 @@ export type CarouselProduct = ProductCardProps & { rank?: number };
 
 type CategoryKey = "drink" | "bar" | "yogurt" | "shake";
 
-const TABS: { key: CategoryKey; label: string; emoji: string; href: string }[] = [
-  { key: "drink", label: "음료", emoji: "🥤", href: "/drinks" },
-  { key: "bar", label: "바", emoji: "🍫", href: "/bars" },
-  { key: "yogurt", label: "요거트", emoji: "🥛", href: "/yogurt" },
-  { key: "shake", label: "쉐이크", emoji: "🧃", href: "/shake" },
+const TABS: { key: CategoryKey; label: string; href: string }[] = [
+  { key: "drink", label: "음료", href: "/drinks" },
+  { key: "bar", label: "바", href: "/bars" },
+  { key: "yogurt", label: "요거트", href: "/yogurt" },
+  { key: "shake", label: "쉐이크", href: "/shake" },
 ];
-
-const RANK_COLORS = ["#C59B0A", "#7A8C8D", "#8C6548", "#2E6B4F", "#2E6B4F", "#2E6B4F", "#2E6B4F", "#2E6B4F", "#2E6B4F", "#2E6B4F"];
 
 interface Props {
   products: Record<CategoryKey, CarouselProduct[]>;
 }
 
+const VISIBLE_COUNT = 4;
+const MAX_PRODUCTS = 10;
+
 export default function HomePopularCarousel({ products }: Props) {
   const [tabIdx, setTabIdx] = useState(0);
   const tabIdxRef = useRef(0);
-
-  useEffect(() => {
-    const id = setInterval(() => {
-      const next = (tabIdxRef.current + 1) % TABS.length;
-      tabIdxRef.current = next;
-      setTabIdx(next);
-    }, 8000);
-    return () => clearInterval(id);
-  }, []);
+  const trackRef = useRef<HTMLDivElement>(null);
+  const stepRef = useRef(0);
 
   const handleTabClick = (idx: number) => {
     tabIdxRef.current = idx;
     setTabIdx(idx);
+    stepRef.current = 0;
+    trackRef.current?.scrollTo({ left: 0, behavior: "smooth" });
   };
 
   const curTab = TABS[tabIdx];
-  const curProducts = products[curTab.key] ?? [];
+  const curProducts = (products[curTab.key] ?? []).slice(0, MAX_PRODUCTS);
+  const stepCount = Math.max(curProducts.length - VISIBLE_COUNT + 1, 1);
+
+  // 한 카테고리의 스크롤 사이클이 전부 끝난 뒤에만 다음 카테고리로 전환한다.
+  useEffect(() => {
+    const id = setInterval(() => {
+      const track = trackRef.current;
+      if (!track) return;
+
+      if (stepRef.current + 1 >= stepCount) {
+        stepRef.current = 0;
+        track.scrollTo({ left: 0, behavior: "smooth" });
+        const nextTab = (tabIdxRef.current + 1) % TABS.length;
+        tabIdxRef.current = nextTab;
+        setTabIdx(nextTab);
+        return;
+      }
+
+      const next = stepRef.current + 1;
+      stepRef.current = next;
+      const cardWidth = track.scrollWidth / curProducts.length;
+      track.scrollTo({ left: next * cardWidth, behavior: "smooth" });
+    }, 3500);
+    return () => clearInterval(id);
+  }, [curProducts.length, stepCount, tabIdx]);
 
   return (
     <div>
       {/* Header */}
       <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
         <h2
-          className="font-extrabold"
-          style={{ fontSize: "clamp(19px, 2.5vw, 24px)", color: "#1A2B1E", letterSpacing: "-0.02em" }}
+          className="font-extrabold text-[17px] md:text-[24px]"
+          style={{ color: "#1A2B1E", letterSpacing: "-0.02em" }}
         >
           이번 주 인기 제품
         </h2>
@@ -60,15 +80,14 @@ export default function HomePopularCarousel({ products }: Props) {
                 key={tab.key}
                 type="button"
                 onClick={() => handleTabClick(i)}
-                className="inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-[11px] font-bold transition-all"
+                className="inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-[11px] font-bold transition-all"
                 style={
                   tabIdx === i
                     ? { background: "#1F5A3D", color: "#fff", boxShadow: "0 2px 6px rgba(31,90,61,0.20)" }
                     : { background: "#FFFDF7", color: "#5E6E61", border: "1px solid #E4D9CC" }
                 }
               >
-                <span style={{ fontSize: "12px" }}>{tab.emoji}</span>
-                <span className="hidden sm:inline">{tab.label}</span>
+                {tab.label}
               </button>
             ))}
           </div>
@@ -78,8 +97,9 @@ export default function HomePopularCarousel({ products }: Props) {
         </div>
       </div>
 
-      {/* Horizontal snap-scroll */}
+      {/* 4개씩 노출, 10위까지 자동 스크롤 */}
       <div
+        ref={trackRef}
         className="flex gap-3"
         style={{
           overflowX: "auto",
@@ -87,7 +107,6 @@ export default function HomePopularCarousel({ products }: Props) {
           scrollbarWidth: "none",
           WebkitOverflowScrolling: "touch",
           paddingBottom: "6px",
-          alignItems: "stretch",
         } as React.CSSProperties}
       >
         {curProducts.map((product, i) => {
@@ -95,24 +114,22 @@ export default function HomePopularCarousel({ products }: Props) {
           return (
             <div
               key={product.slug ?? i}
-              className="relative shrink-0"
-              style={{
-                width: "clamp(160px, calc(20% - 10px), 220px)",
-                scrollSnapAlign: "start",
-              }}
+              className="relative w-[calc((100%-12px)/2)] shrink-0 md:w-[calc((100%-36px)/4)]"
+              style={{ scrollSnapAlign: "start" }}
             >
               {/* Rank badge */}
               <div
-                className="absolute left-2 top-2 z-10 flex items-center justify-center rounded-full font-extrabold text-white"
+                className="absolute left-2 top-2 z-10 flex items-center gap-0.5 rounded-[7px] font-extrabold text-white"
                 style={{
-                  width: 22,
-                  height: 22,
-                  background: RANK_COLORS[rank - 1] ?? "#2E6B4F",
-                  fontSize: "10px",
-                  boxShadow: "0 2px 6px rgba(0,0,0,0.18)",
+                  height: 20,
+                  padding: "0 6px",
+                  background: "#16412D",
+                  fontSize: "11px",
+                  letterSpacing: "-0.02em",
+                  boxShadow: "0 2px 6px rgba(22,65,45,0.28)",
                 }}
               >
-                {rank}
+                {rank}<span style={{ fontSize: "9px", fontWeight: 700, opacity: 0.85 }}>위</span>
               </div>
               <ProductCard
                 {...product}

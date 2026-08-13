@@ -71,7 +71,7 @@ export default function ProteinDrinkVsPowderPage() {
           <div className="mt-3">
             <span className="rounded-md bg-[#eef4ea] px-2 py-0.5 text-[11px] font-semibold tracking-wide text-[#4c7a57]">TRACK A</span>
           </div>
-          <h1 className="mt-3 text-2xl font-bold leading-tight text-[var(--foreground)] md:text-3xl">
+          <h1 className="mt-3 text-2xl font-bold leading-tight text-[#16412D] md:text-3xl">
             단백질 음료와 프로틴 파우더는
             <br />
             같은 단백질이어도 쓰임새가 꽤 다릅니다.

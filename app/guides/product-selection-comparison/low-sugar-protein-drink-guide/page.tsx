@@ -2,7 +2,7 @@ import { buildGuideJsonLd } from "@/app/lib/guideJsonLd";
 ﻿import Link from "next/link";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
-import GuideBuySection from "@/app/components/GuideBuySection";
+import TrackedLink from "@/app/components/TrackedLink";
 
 export const metadata = {
   alternates: { canonical: "https://proteinlab.kr/guides/product-selection-comparison/low-sugar-protein-drink-guide" },
@@ -69,8 +69,9 @@ export default function LowSugarProteinDrinkGuidePage() {
             <span className="rounded-md bg-[#eaf0f6] px-2 py-0.5 text-[11px] font-semibold tracking-wide text-[#4a6178]">
               TRACK B
             </span>
+            <span className="ml-2 text-[11px] font-medium text-[var(--foreground-muted)]">업데이트 2026-07-15</span>
           </div>
-          <h1 className="mt-3 text-2xl font-bold leading-tight text-[var(--foreground)] md:text-3xl">
+          <h1 className="mt-3 text-2xl font-bold leading-tight text-[#16412D] md:text-3xl">
             저당 단백질 음료는 당류 컷부터 정해야 합니다
           </h1>
           <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
@@ -82,6 +83,14 @@ export default function LowSugarProteinDrinkGuidePage() {
 
       <main className="mx-auto max-w-[1200px] px-4 py-8 md:px-6">
         <div className="space-y-6">
+          <section className="border-y border-[#dce8df] py-5">
+            <h2 className="text-lg font-bold text-[var(--foreground)]">핵심 결론</h2>
+            <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">저당 제품은 당류만 보지 말고 단백질, 칼로리, 용량을 함께 비교해야 실제 섭취 목적에 맞는 후보를 고를 수 있습니다.</p>
+            <div className="mt-4 flex flex-wrap gap-2">
+              <TrackedLink href="/product/labnosh-protein-max-choco-400" trackingLabel="랩노쉬 프로틴맥스 성분 상세" trackingSection="low_sugar_hero" trackingPageType="guide" contentId="plv3:landing:guide:low-sugar-protein-drink-guide" productId="labnosh-protein-max-choco-400" linkPosition="hero" ctaType="product_detail" className="rounded-full border border-[#dce8df] px-4 py-2 text-sm font-semibold text-[#24543d] hover:bg-[#f6fbf7]">저당 후보 성분 상세</TrackedLink>
+              <TrackedLink href="/guides/product-selection-comparison/protein-drink-top10" trackingLabel="단백질 음료 후보 비교" trackingSection="low_sugar_hero" trackingPageType="guide" contentId="plv3:landing:guide:low-sugar-protein-drink-guide" linkPosition="hero" ctaType="compare" className="rounded-full bg-[var(--accent)] px-4 py-2 text-sm font-semibold text-white hover:opacity-90">단백질 음료 후보 비교</TrackedLink>
+            </div>
+          </section>
           <section className="rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
             <h2 className="text-xl font-bold text-[var(--foreground)]">저당 음료를 보는 순서</h2>
             <div className="mt-5 grid gap-3 md:grid-cols-3">
@@ -146,7 +155,6 @@ export default function LowSugarProteinDrinkGuidePage() {
           </section>
         </div>
       </main>
-      <GuideBuySection />
       <Footer />
     </div>
   );

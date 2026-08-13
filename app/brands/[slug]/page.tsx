@@ -194,7 +194,7 @@ export default async function BrandPage({ params }: PageProps) {
             <span className="mx-2">/</span>
             <span className="text-[var(--foreground)]">{brand.brand}</span>
           </nav>
-          <h1 className="text-2xl font-bold leading-[1.25] text-[var(--foreground)] md:text-3xl">
+          <h1 className="text-2xl font-bold leading-[1.25] text-[#16412D] md:text-3xl">
             {brand.brand} 단백질 제품 모음
           </h1>
           <p className="mt-2 max-w-[760px] text-sm leading-6 text-[var(--foreground-muted)] md:text-[15px]">

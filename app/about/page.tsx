@@ -62,7 +62,7 @@ export default async function AboutPage() {
           <p className="text-xs font-semibold uppercase tracking-widest text-[var(--foreground-muted)]">
             About ProteinLab
           </p>
-          <h1 className="mt-2 text-2xl font-bold leading-tight text-[var(--foreground)] md:text-3xl">
+          <h1 className="mt-2 text-2xl font-bold leading-tight text-[#16412D] md:text-3xl">
             단백질 제품 성분 비교 플랫폼
           </h1>
           <p className="mt-3 max-w-2xl text-sm leading-6 text-[var(--foreground-muted)]">

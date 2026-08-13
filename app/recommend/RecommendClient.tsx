@@ -1,11 +1,13 @@
 ﻿"use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import AffiliateDisclosure from "@/app/components/AffiliateDisclosure";
 import CategoryTabs from "@/app/components/CategoryTabs";
+import CommercialAdSection from "@/app/components/CommercialAdSection";
 import ScoredProductCard from "@/app/components/ScoredProductCard";
 import TrackedLink from "@/app/components/TrackedLink";
+import { recommendComplete, recommendStart } from "@/lib/analytics";
 import type { ProductCardProps } from "@/app/data/productTypes";
 import {
   getCategoryDescription,
@@ -15,12 +17,11 @@ import {
 } from "@/app/lib/categories";
 
 type ProductType = ProductCategory;
-type Step = 0 | 1 | 2 | 3 | 4 | "loading" | "result";
+type Step = 0 | 1 | 2 | 3 | "loading" | "result";
 
 interface QuizAnswers {
   purpose: string;
-  frequency: string;
-  intensity: string;
+  priority: "protein" | "low_sugar" | "low_calorie" | "density" | "";
   conditions: string[];
 }
 
@@ -75,19 +76,12 @@ const PURPOSE_OPTIONS = [
   { icon: "🏃", label: "회복·컨디션 관리", desc: "운동 후 회복과 퍼포먼스 중심", value: "recovery" },
 ];
 
-const FREQUENCY_OPTIONS = [
-  { icon: "🛋️", label: "거의 안 함", desc: "주 0~1회", value: "rarely" },
-  { icon: "🙂", label: "보통", desc: "주 2~3회", value: "sometimes" },
-  { icon: "🔥", label: "자주", desc: "주 4~5회", value: "often" },
-  { icon: "📆", label: "매일", desc: "거의 매일 운동", value: "daily" },
-];
-
-const INTENSITY_OPTIONS = [
-  { icon: "🚶", label: "가볍게", desc: "걷기, 스트레칭, 가벼운 운동", value: "light" },
-  { icon: "🏃", label: "보통", desc: "유산소나 주기적인 운동", value: "moderate" },
-  { icon: "🏋️", label: "강하게", desc: "고강도 운동이나 웨이트 중심", value: "hard" },
-  { icon: "⚡", label: "매우 강하게", desc: "강도 높은 운동 빈도가 많음", value: "extreme" },
-];
+const PRIORITY_OPTIONS = [
+  { icon: "💪", label: "단백질 함량", desc: "한 번에 보충하는 단백질을 우선", value: "protein" },
+  { icon: "🍬", label: "당류 부담", desc: "당류가 낮은 제품을 우선", value: "low_sugar" },
+  { icon: "🥗", label: "칼로리 부담", desc: "칼로리가 낮은 제품을 우선", value: "low_calorie" },
+  { icon: "📈", label: "단백질 밀도", desc: "칼로리 대비 단백질 효율을 우선", value: "density" },
+] as const;
 
 const CONDITION_OPTIONS_BY_CATEGORY: Record<ProductType, ConditionOption[]> = {
   drink: [
@@ -180,8 +174,8 @@ function OptionButton({
       onClick={onClick}
       className="w-full text-left flex items-center gap-4 transition-all"
       style={{
-        border: `1.5px solid ${selected ? "var(--accent)" : "#e8e6e3"}`,
-        background: selected ? "var(--accent-light)" : "#fff",
+        border: `1.5px solid ${selected ? "#16412D" : "#e8e6e3"}`,
+        background: selected ? "#E8F0EA" : "#fff",
         borderRadius: "12px",
         padding: "16px 20px",
       }}
@@ -213,8 +207,8 @@ function GridOption({
       onClick={onClick}
       className="text-left flex flex-col gap-1 transition-all"
       style={{
-        border: `1.5px solid ${selected ? "var(--accent)" : "#e8e6e3"}`,
-        background: selected ? "var(--accent-light)" : "#fff",
+        border: `1.5px solid ${selected ? "#16412D" : "#e8e6e3"}`,
+        background: selected ? "#E8F0EA" : "#fff",
         borderRadius: "12px",
         padding: "14px 16px",
       }}
@@ -231,9 +225,9 @@ function NextButton({ label, disabled, onClick }: { label: string; disabled: boo
     <button
       onClick={onClick}
       disabled={disabled}
-      className="mt-2 w-full rounded-full py-3 text-sm font-semibold transition-opacity"
+      className="mt-2 w-full rounded-[10px] py-3 text-sm font-semibold transition-opacity"
       style={{
-        background: "var(--accent)",
+        background: "#16412D",
         color: "white",
         opacity: disabled ? 0.4 : 1,
         pointerEvents: disabled ? "none" : "auto",
@@ -249,7 +243,7 @@ function ProgressBar({ step }: { step: number }) {
     <div className="mb-7">
       <div className="flex justify-between text-xs font-semibold mb-2">
         {[1, 2, 3, 4].map((s) => (
-          <span key={s} style={{ color: step >= s ? "var(--accent)" : "#9ca3af" }}>
+          <span key={s} style={{ color: step >= s ? "#16412D" : "#9ca3af" }}>
             STEP {s}
           </span>
         ))}
@@ -258,7 +252,7 @@ function ProgressBar({ step }: { step: number }) {
         <div
           className="absolute left-0 top-0 h-full rounded-full transition-all duration-300"
           style={{
-            background: "var(--accent)",
+            background: "#16412D",
             width: `${((step - 1) / 3) * 100}%`,
           }}
         />
@@ -289,7 +283,7 @@ function LoadingScreen({ onDone }: { onDone: () => void }) {
           height: 40,
           borderRadius: "50%",
           border: "3px solid #e8e6e3",
-          borderTopColor: "var(--accent)",
+          borderTopColor: "#16412D",
           animation: "spin 0.8s linear infinite",
         }}
       />
@@ -363,6 +357,7 @@ function ResultScreen({
               score={product.score}
               scoreCaption="추천 점수"
               metricLabel="맞춤 추천"
+              cardVariant="recommend"
               highlightLabel={product.rank === 1 ? "최고 추천" : `${product.rank}위`}
               reason={product.reason}
               compact
@@ -378,6 +373,7 @@ function ResultScreen({
               score={product.score}
               scoreCaption="추천 점수"
               metricLabel="맞춤 추천"
+              cardVariant="recommend"
               highlightLabel={product.rank === 1 ? "최고 추천" : `${product.rank}위`}
               reason={product.reason}
             />
@@ -405,7 +401,7 @@ function ResultScreen({
             trackingLabel={link.title}
             trackingSection="recommend_result_quick_links"
             trackingPageType="recommend"
-            className="rounded-xl border border-[#e8e6e3] bg-[#FFFDF8] px-4 py-4 transition-colors hover:bg-[var(--accent-light)]"
+            className="rounded-xl border border-[#e8e6e3] bg-[#FFFDF8] px-4 py-4 transition-colors hover:bg-[#E8F0EA]"
           >
             <p className="text-sm font-semibold text-[#1a1a1a]">{link.title}</p>
             <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">{link.desc}</p>
@@ -413,10 +409,12 @@ function ResultScreen({
         ))}
       </div>
 
+      <CommercialAdSection pageType="recommend" />
+
       <div className="flex gap-3 pt-2">
         <button
           onClick={onReset}
-          className="flex-1 rounded-full py-3 text-sm font-semibold transition-colors hover:bg-[var(--accent-light)] hover:text-[var(--accent)]"
+          className="flex-1 rounded-[10px] py-3 text-sm font-semibold transition-colors hover:bg-[#E8F0EA] hover:text-[#16412D]"
           style={{ border: "1px solid #e8e6e3", background: "#fff", color: "#374151" }}
         >
           다시 추천받기
@@ -426,7 +424,7 @@ function ResultScreen({
           trackingLabel={`전체 ${getCategoryLabel(category)} 보기`}
           trackingSection="recommend_result_primary_cta"
           trackingPageType="recommend"
-          className="flex-1 rounded-full bg-[var(--accent)] py-3 text-center text-sm font-semibold text-white transition-opacity hover:opacity-90"
+          className="flex-1 rounded-[10px] bg-[#16412D] py-3 text-center text-sm font-semibold text-white transition-opacity hover:opacity-90"
         >
           전체 {getCategoryLabel(category)} 보기 →
         </TrackedLink>
@@ -443,12 +441,8 @@ function getPurposeLabel(value: string) {
   return PURPOSE_OPTIONS.find((item) => item.value === value)?.label ?? value;
 }
 
-function getFrequencyLabel(value: string) {
-  return FREQUENCY_OPTIONS.find((item) => item.value === value)?.label ?? value;
-}
-
-function getIntensityLabel(value: string) {
-  return INTENSITY_OPTIONS.find((item) => item.value === value)?.label ?? value;
+function getPriorityLabel(value: QuizAnswers["priority"]) {
+  return PRIORITY_OPTIONS.find((item) => item.value === value)?.label ?? value;
 }
 
 function getConditionLabel(category: ProductType, value: string) {
@@ -472,8 +466,7 @@ function getRecommendQuickLinks(category: ProductType, answers: QuizAnswers): Qu
       });
     } else if (
       answers.conditions.includes("highpro") ||
-      answers.intensity === "hard" ||
-      answers.intensity === "extreme"
+      answers.priority === "protein"
     ) {
       links.push({
         href: "/guides/product-selection-comparison/high-protein-40g-comparison",
@@ -534,9 +527,16 @@ function getRecommendQuickLinks(category: ProductType, answers: QuizAnswers): Qu
 export default function RecommendClient({ categoryCounts }: RecommendClientProps) {
   const [category, setCategory] = useState<ProductType>("drink");
   const [step, setStep] = useState<Step>(0);
-  const [answers, setAnswers] = useState<QuizAnswers>({ purpose: "", frequency: "", intensity: "", conditions: [] });
+  const [answers, setAnswers] = useState<QuizAnswers>({ purpose: "", priority: "", conditions: [] });
   const [result, setResult] = useState<RecommendResult | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const completedRecommendationRef = useRef<RecommendResult | null>(null);
+
+  useEffect(() => {
+    if (!result || result.products.length === 0 || completedRecommendationRef.current === result) return;
+    completedRecommendationRef.current = result;
+    recommendComplete(category, `results:${result.products.length}`);
+  }, [category, result]);
 
   const productCount = getProductCount(category, categoryCounts);
   const productLabel = getCategoryLabel(category);
@@ -545,7 +545,7 @@ export default function RecommendClient({ categoryCounts }: RecommendClientProps
 
   function reset() {
     setStep(0);
-    setAnswers({ purpose: "", frequency: "", intensity: "", conditions: [] });
+    setAnswers({ purpose: "", priority: "", conditions: [] });
     setResult(null);
     setError(null);
   }
@@ -553,7 +553,7 @@ export default function RecommendClient({ categoryCounts }: RecommendClientProps
   function handleCategoryChange(nextCategory: ProductType) {
     setCategory(nextCategory);
     setStep(0);
-    setAnswers({ purpose: "", frequency: "", intensity: "", conditions: [] });
+    setAnswers({ purpose: "", priority: "", conditions: [] });
     setResult(null);
     setError(null);
   }
@@ -585,8 +585,7 @@ export default function RecommendClient({ categoryCounts }: RecommendClientProps
 
   const chips = [
     answers.purpose ? getPurposeLabel(answers.purpose) : null,
-    answers.frequency ? getFrequencyLabel(answers.frequency) : null,
-    answers.intensity ? getIntensityLabel(answers.intensity) : null,
+    answers.priority ? getPriorityLabel(answers.priority) : null,
     ...answers.conditions.map((condition) => getConditionLabel(category, condition)),
   ].filter(Boolean) as string[];
 
@@ -598,13 +597,13 @@ export default function RecommendClient({ categoryCounts }: RecommendClientProps
         @keyframes spin { to { transform: rotate(360deg); } }
       `}</style>
 
-      <section className="w-full border-t border-b bg-[var(--hero-bg)]" style={{ borderColor: "var(--hero-border)" }}>
+      <section className="w-full border-t border-b" style={{ background: "#FAF8F3", borderColor: "#E7DFC9" }}>
         <div className="mx-auto max-w-[1200px] px-4 py-4 md:px-6 md:py-5">
-          <h1 className="text-2xl font-bold leading-tight text-[var(--foreground)] md:text-3xl" style={{ fontWeight: 700 }}>
+          <h1 className="text-2xl font-bold leading-tight md:text-3xl" style={{ fontWeight: 700, color: "#16412D" }}>
             제품 추천
           </h1>
           <p className="mt-1 text-sm text-[var(--foreground-muted)]" style={{ fontWeight: 400 }}>
-            4가지 질문으로 목적, 운동 패턴, 선호 조건에 맞는 카테고리별 제품을 추천합니다.
+            제품 형태와 3가지 선택 조건을 기준으로 카테고리별 제품을 추천합니다.
           </p>
           <AffiliateDisclosure className="mt-2 mb-0" />
         </div>
@@ -625,7 +624,7 @@ export default function RecommendClient({ categoryCounts }: RecommendClientProps
               <div className="fade-in text-center py-12">
                 <span
                   className="inline-block text-sm font-semibold px-4 py-1.5 mb-6"
-                  style={{ background: "var(--accent-light)", color: "var(--accent)", borderRadius: "20px" }}
+                  style={{ background: "#E8F0EA", color: "#16412D", borderRadius: "20px" }}
                 >
                   맞춤 추천
                 </span>
@@ -638,7 +637,7 @@ export default function RecommendClient({ categoryCounts }: RecommendClientProps
                   {getCategoryDescription(category)}
                 </p>
                 <p className="text-base mb-8 leading-relaxed text-[#6b6b6b]">
-                  4가지 질문으로 {productCount}개 제품 중 현재 조건에 맞는 {productLabel}을 추천해드립니다.
+                  제품 형태와 3가지 질문으로 {productCount}개 제품 중 현재 조건에 맞는 {productLabel}을 추천해드립니다.
                 </p>
 
                 {isShakeEmpty ? (
@@ -649,7 +648,7 @@ export default function RecommendClient({ categoryCounts }: RecommendClientProps
                     </p>
                     <Link
                       href="/shake"
-                      className="mt-4 inline-flex rounded-full border border-[var(--border)] px-4 py-2 text-sm font-semibold text-[var(--foreground)] hover:bg-[var(--accent-light)] hover:text-[var(--accent)]"
+                      className="mt-4 inline-flex rounded-[10px] border border-[var(--border)] px-4 py-2 text-sm font-semibold text-[var(--foreground)] hover:bg-[#E8F0EA] hover:text-[#16412D]"
                     >
                       쉐이크 비교하러 가기 →
                     </Link>
@@ -657,9 +656,12 @@ export default function RecommendClient({ categoryCounts }: RecommendClientProps
                 ) : (
                   <>
                     <button
-                      onClick={() => setStep(1)}
-                      className="inline-block px-8 py-3 text-base font-semibold rounded-full hover:opacity-90 transition-opacity"
-                      style={{ background: "var(--accent)", color: "white" }}
+                      onClick={() => {
+                        recommendStart(category);
+                        setStep(1);
+                      }}
+                      className="inline-block px-8 py-3 text-base font-semibold rounded-[10px] hover:opacity-90 transition-opacity"
+                      style={{ background: "#16412D", color: "white" }}
                     >
                       시작하기 →
                     </button>
@@ -674,15 +676,15 @@ export default function RecommendClient({ categoryCounts }: RecommendClientProps
             </div>
           )}
 
-          {(step === 1 || step === 2 || step === 3 || step === 4) && (
+          {(step === 1 || step === 2 || step === 3) && (
             <div className="max-w-lg mx-auto">
               <div key={step} className="fade-in">
-                <ProgressBar step={step as number} />
+                <ProgressBar step={(step as number) + 1} />
                 <div className="p-6 space-y-5 border border-[#e8e6e3] rounded-xl bg-white">
                   {step === 1 && (
                     <>
                       <div>
-                        <p className="text-xs font-semibold mb-1 text-[var(--accent)]">STEP 1 / 4</p>
+                        <p className="text-xs font-semibold mb-1 text-[#16412D]">STEP 2 / 4</p>
                         <p className="text-lg font-bold text-[#1a1a1a]">주로 어떤 목적에서 {productLabel}을 찾고 있나요?</p>
                       </div>
                       <div className="space-y-2.5">
@@ -702,48 +704,28 @@ export default function RecommendClient({ categoryCounts }: RecommendClientProps
                   {step === 2 && (
                     <>
                       <div>
-                        <p className="text-xs font-semibold mb-1 text-[var(--accent)]">STEP 2 / 4</p>
-                        <p className="text-lg font-bold text-[#1a1a1a]">운동은 얼마나 자주 하시나요?</p>
+                        <p className="text-xs font-semibold mb-1 text-[#16412D]">STEP 3 / 4</p>
+                        <p className="text-lg font-bold text-[#1a1a1a]">가장 중요한 선택 기준은 무엇인가요?</p>
                       </div>
                       <div className="space-y-2.5">
-                        {FREQUENCY_OPTIONS.map((option) => (
+                        {PRIORITY_OPTIONS.map((option) => (
                           <OptionButton
                             key={option.value}
                             {...option}
-                            selected={answers.frequency === option.value}
-                            onClick={() => setAnswers({ ...answers, frequency: option.value })}
+                            selected={answers.priority === option.value}
+                            onClick={() => setAnswers({ ...answers, priority: option.value })}
                           />
                         ))}
                       </div>
-                      <NextButton label="다음 →" disabled={!answers.frequency} onClick={() => setStep(3)} />
+                      <NextButton label="다음 →" disabled={!answers.priority} onClick={() => setStep(3)} />
                     </>
                   )}
 
                   {step === 3 && (
                     <>
                       <div>
-                        <p className="text-xs font-semibold mb-1 text-[var(--accent)]">STEP 3 / 4</p>
-                        <p className="text-lg font-bold text-[#1a1a1a]">운동 강도는 어느 정도인가요?</p>
-                      </div>
-                      <div className="space-y-2.5">
-                        {INTENSITY_OPTIONS.map((option) => (
-                          <OptionButton
-                            key={option.value}
-                            {...option}
-                            selected={answers.intensity === option.value}
-                            onClick={() => setAnswers({ ...answers, intensity: option.value })}
-                          />
-                        ))}
-                      </div>
-                      <NextButton label="다음 →" disabled={!answers.intensity} onClick={() => setStep(4)} />
-                    </>
-                  )}
-
-                  {step === 4 && (
-                    <>
-                      <div>
-                        <p className="text-xs font-semibold mb-1 text-[var(--accent)]">STEP 4 / 4</p>
-                        <p className="text-lg font-bold text-[#1a1a1a]">중요하게 생각하는 조건을 선택해주세요</p>
+                        <p className="text-xs font-semibold mb-1 text-[#16412D]">STEP 4 / 4</p>
+                        <p className="text-lg font-bold text-[#1a1a1a]">피하고 싶은 조건이나 제한이 있나요?</p>
                         <p className="text-xs mt-0.5 text-[#9ca3af]">복수 선택 가능</p>
                       </div>
                       <div className="grid grid-cols-2 gap-[10px]">
@@ -776,7 +758,7 @@ export default function RecommendClient({ categoryCounts }: RecommendClientProps
                     </>
                   )}
 
-                  {(step === 2 || step === 3 || step === 4) && (
+                  {(step === 2 || step === 3) && (
                     <button
                       onClick={() => setStep((current) => ((current as number) - 1) as Step)}
                       className="text-xs transition-colors hover:opacity-70 text-[#9ca3af]"
@@ -807,7 +789,7 @@ export default function RecommendClient({ categoryCounts }: RecommendClientProps
                     height: 36,
                     borderRadius: "50%",
                     border: "3px solid #e8e6e3",
-                    borderTopColor: "var(--accent)",
+                    borderTopColor: "#16412D",
                     animation: "spin 0.8s linear infinite",
                   }}
                 />
@@ -825,14 +807,31 @@ export default function RecommendClient({ categoryCounts }: RecommendClientProps
                 <button
                   onClick={reset}
                   className="px-6 py-2.5 text-sm font-semibold rounded-xl hover:opacity-90 transition-opacity"
-                  style={{ background: "var(--accent)", color: "white" }}
+                  style={{ background: "#16412D", color: "white" }}
                 >
                   처음으로
                 </button>
               </div>
             ) : result ? (
               <div className="max-w-[980px] mx-auto">
-                <ResultScreen result={result} onReset={reset} category={category} answers={answers} />
+                {result.products.length > 0 ? (
+                  <ResultScreen result={result} onReset={reset} category={category} answers={answers} />
+                ) : (
+                  <div className="fade-in rounded-xl border border-[#e8e6e3] bg-white px-6 py-10 text-center">
+                    <p className="text-base font-bold text-[#1a1a1a]">현재 조건으로는 추천 후보를 찾지 못했습니다.</p>
+                    <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">
+                      피하고 싶은 조건을 한두 개 해제하거나, 전체 {productLabel} 목록에서 필터를 조정해보세요.
+                    </p>
+                    <div className="mt-5 flex flex-wrap justify-center gap-3">
+                      <button onClick={() => setStep(3)} className="rounded-[10px] border border-[#e8e6e3] px-4 py-2.5 text-sm font-semibold text-[#374151] hover:bg-[#E8F0EA] hover:text-[#16412D]">
+                        조건 다시 고르기
+                      </button>
+                      <TrackedLink href={getCategoryHref(category)} trackingLabel={`전체 ${productLabel} 보기`} trackingSection="recommend_empty_result" trackingPageType="recommend" className="rounded-[10px] bg-[#16412D] px-4 py-2.5 text-sm font-semibold text-white hover:opacity-90">
+                        전체 {productLabel} 보기
+                      </TrackedLink>
+                    </div>
+                  </div>
+                )}
               </div>
             ) : null)}
         </div>

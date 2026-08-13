@@ -97,7 +97,7 @@ export default function PreWorkoutProteinPage() {
               TRACK C
             </span>
           </div>
-          <h1 className="mt-3 text-2xl font-bold leading-tight text-[var(--foreground)] md:text-3xl">
+          <h1 className="mt-3 text-2xl font-bold leading-tight text-[#16412D] md:text-3xl">
             운동 전 단백질은
             <br />
             무조건이 아니라 상황 판단이 먼저입니다

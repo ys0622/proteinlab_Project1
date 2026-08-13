@@ -82,7 +82,7 @@ export default function ProteinDrinkMealReplacementPage() {
           <div className="mt-3">
             <span className="rounded-md bg-[#f5f0ea] px-2 py-0.5 text-[11px] font-semibold tracking-wide text-[#7a5230]">TRACK C</span>
           </div>
-          <h1 className="mt-3 text-2xl font-bold leading-tight text-[var(--foreground)] md:text-3xl">
+          <h1 className="mt-3 text-2xl font-bold leading-tight text-[#16412D] md:text-3xl">
             단백질 음료로 한 끼를 대체할 수는 있습니다.
             <br />
             하지만 식사 보완용 음료와 보충용 RTD는 분리해서 봐야 합니다.

@@ -124,7 +124,7 @@ export default function ProteinDrinkTrend2026Page() {
             <span className="text-[11px] font-medium text-[var(--foreground-muted)]">6분 읽기</span>
             <span className="text-[11px] font-medium text-[var(--foreground-muted)]">업데이트 2026-04-16</span>
           </div>
-          <h1 className="mt-3 text-2xl font-bold leading-tight text-[var(--foreground)] md:text-3xl">
+          <h1 className="mt-3 text-2xl font-bold leading-tight text-[#16412D] md:text-3xl">
             2026 단백질 음료 시장 트렌드
           </h1>
           <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">

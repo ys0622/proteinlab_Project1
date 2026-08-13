@@ -7,6 +7,7 @@ import RecentlyViewedTracker from "../../components/RecentlyViewedTracker";
 import RecentlyViewedSection from "../../components/RecentlyViewedSection";
 import ShareButton from "../../components/ShareButton";
 import AffiliateDisclosure from "../../components/AffiliateDisclosure";
+import CommercialAdSection from "../../components/CommercialAdSection";
 import NewsletterBanner from "../../components/NewsletterBanner";
 import BackButton from "../../components/BackButton";
 import Footer from "../../components/Footer";
@@ -544,7 +545,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
   const servingBasisLabel = isBar ? "1개 기준" : isYogurt ? "1컵 기준" : isShake ? "1포 기준" : "1병 기준";
 
   return (
-    <div className="min-h-screen" style={{ background: "#F7F3EA" }}>
+    <div className="min-h-screen" style={{ background: "#FAF8F3" }}>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -638,7 +639,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
                 </div>
                 <h1
                   className="mt-1.5 line-clamp-2 leading-snug"
-                  style={{ fontSize: "clamp(17px, 2.5vw, 22px)", fontWeight: 800, color: "#1E2A22", letterSpacing: "-0.02em" }}
+                  style={{ fontSize: "clamp(17px, 2.5vw, 22px)", fontWeight: 800, color: "#16412D", letterSpacing: "-0.02em" }}
                 >
                   {product.name}
                 </h1>
@@ -802,7 +803,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
         </div>
       </section>
 
-      <main style={{ background: "#F7F3EA" }}>
+      <main style={{ background: "#FAF8F3" }}>
         <div className="mx-auto max-w-[1200px] px-4 py-8 md:px-6">
           <AffiliateDisclosure />
           {tasteAwards.length > 0 ? (
@@ -1042,6 +1043,9 @@ export default async function ProductDetailPage({ params }: PageProps) {
           }))}
           currentSlug={slug}
         />
+      </div>
+      <div className="mx-auto max-w-[1200px] px-4 pb-8 md:px-6">
+        <CommercialAdSection pageType="product" />
       </div>
       <div className="mx-auto max-w-[1200px] px-4 pb-8 md:px-6">
         <NewsletterBanner />

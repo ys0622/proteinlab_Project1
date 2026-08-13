@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import AffiliateDisclosure from "../components/AffiliateDisclosure";
+import CommercialAdSection from "../components/CommercialAdSection";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import HeroSection from "../components/HeroSection";
@@ -99,6 +100,7 @@ export default async function DrinksPage() {
           stickyTabs={false}
           tabsPlacement="before_grid"
         />
+        <CommercialAdSection pageType="category" className="mt-6" />
       </main>
 
       <CategoryFaqSection category="drink" />

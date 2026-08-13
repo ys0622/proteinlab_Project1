@@ -34,7 +34,7 @@ export default function CookieSettingsPage() {
       >
         <div className="mx-auto max-w-[1200px] px-4 py-4 md:px-6 md:py-5">
           <h1
-            className="text-2xl font-bold leading-tight text-[var(--foreground)] md:text-3xl"
+            className="text-2xl font-bold leading-tight text-[#16412D] md:text-3xl"
             style={{ fontWeight: 700 }}
           >
             쿠키 설정

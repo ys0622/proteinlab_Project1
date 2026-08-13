@@ -105,7 +105,7 @@ export default function ProteinDrinkDailyPage() {
             <span>/</span>
             <span>매일 마셔도 되나요</span>
           </div>
-          <h1 className="mt-3 text-2xl font-bold leading-tight text-[var(--foreground)] md:text-3xl">
+          <h1 className="mt-3 text-2xl font-bold leading-tight text-[#16412D] md:text-3xl">
             단백질 음료, 매일 마셔도 됩니다.
             <br />
             다만 식사 보완인지 추가 간식인지가 중요합니다.

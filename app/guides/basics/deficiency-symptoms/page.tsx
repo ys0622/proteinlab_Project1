@@ -105,7 +105,7 @@ export default function DeficiencySymptomsPage() {
           </div>
 
           <div className="mt-4">
-            <h1 className="text-2xl font-bold leading-tight text-[var(--foreground)] md:text-3xl">
+            <h1 className="text-2xl font-bold leading-tight text-[#16412D] md:text-3xl">
               단백질이 부족하면 몸에 어떤 신호가 올까?
             </h1>
             <p className="mt-3 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">

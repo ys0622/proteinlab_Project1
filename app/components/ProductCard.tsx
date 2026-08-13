@@ -20,7 +20,6 @@ import {
 } from "../lib/purchaseLinks";
 import CardShareButton from "./CardShareButton";
 import CompareButton from "./CompareButton";
-import FavoriteButton from "./FavoriteButton";
 import MetricBadgeGroup from "./MetricBadgeGroup";
 import ProductBadge from "./ProductBadge";
 import {
@@ -134,7 +133,6 @@ export default function ProductCard({
   maxVisibleBadges,
   fixedTitleLines,
   hideSupplementalBadges,
-  coupangOnly = false,
   awards,
 }: ProductCardProps) {
   const router = useRouter();
@@ -253,7 +251,9 @@ export default function ProductCard({
         <div
           className={`product-card__media flex w-full flex-shrink-0 items-center justify-center overflow-hidden bg-white ${
             usesUnifiedSurface
-              ? "h-[136px] px-3 pb-1 pt-2 md:h-[170px] md:px-4 md:pb-2 md:pt-3"
+              ? productType === "yogurt"
+                ? "h-[136px] px-3 pb-4 pt-5 md:h-[170px] md:px-4 md:pb-6 md:pt-8"
+                : "h-[136px] px-3 pb-1 pt-2 md:h-[170px] md:px-4 md:pb-2 md:pt-3"
               : "rounded-xl border border-[#eee] p-1 group-hover:border-[#e2e2e2] md:h-[200px] md:p-[10px]"
           }`}
           style={{ borderRadius: usesUnifiedSurface ? "0" : "12px" }}
@@ -261,9 +261,13 @@ export default function ProductCard({
           {imageUrl ? (
             <div
               className={`product-card__image relative h-full w-full ${
-                usesUnifiedSurface ? "max-w-[148px] md:max-w-[202px]" : "max-w-[180px] md:max-w-[200px]"
+                usesUnifiedSurface
+                  ? productType === "yogurt"
+                    ? "max-w-[112px] md:max-w-[154px]"
+                    : "max-w-[148px] md:max-w-[202px]"
+                  : "max-w-[180px] md:max-w-[200px]"
               }`}
-              style={{ minHeight: usesUnifiedSurface ? "118px" : "140px" }}
+              style={{ minHeight: usesUnifiedSurface ? (productType === "yogurt" ? "90px" : "118px") : "140px" }}
             >
               <Image
                 src={imageUrl}
@@ -281,21 +285,9 @@ export default function ProductCard({
           )}
         </div>
 
-        {slug ? (
-          /* 즐겨찾기 + 스펙비교만 이미지 위에 */
-          <div className="absolute right-1 top-1 z-10 flex flex-col items-end gap-1 md:right-2 md:top-2 md:flex-row md:items-center">
-            <ActionTooltip label="즐겨찾기">
-              <FavoriteButton slug={slug} compact />
-            </ActionTooltip>
-            <ActionTooltip label="스펙 비교">
-              <CompareButton slug={slug} detailHref={detailHref} compact />
-            </ActionTooltip>
-          </div>
-        ) : null}
-
         {tasteAward ? (
           <div
-            className="pointer-events-none absolute left-1 top-1 z-10 rounded-xl px-2 py-1 text-center shadow-sm md:left-2 md:top-2"
+            className="pointer-events-none absolute right-1 top-1 z-10 rounded-xl px-2 py-1 text-center shadow-sm md:right-2 md:top-2"
             style={{
               background: "linear-gradient(135deg, #8a5a2b 0%, #b77933 100%)",
               border: "1px solid rgba(255,255,255,.72)",
@@ -314,7 +306,7 @@ export default function ProductCard({
 
         {feedbackMeta ? (
           <>
-            <div className={`pointer-events-none absolute left-1 z-10 flex flex-col gap-0.5 md:hidden ${tasteAward ? "top-10" : "top-1"}`}>
+            <div className="pointer-events-none absolute left-1 top-1 z-10 flex flex-col gap-0.5 md:hidden">
               {feedbackMeta.recommendCount > 0 ? (
                 <span className="inline-flex min-h-[16px] items-center self-start rounded-full border border-[#d9e7df] bg-white/88 px-1 py-[1px] text-[7px] font-semibold leading-none text-[#2F5D46] shadow-[0_1px_2px_rgba(15,23,42,0.08)]">
                   <span aria-hidden="true" className="mr-0.5">
@@ -455,7 +447,7 @@ export default function ProductCard({
                 coupangHref={coupangHref}
                 naverHref={naverHref}
                 officialMallHref={officialMallHref}
-                coupangOnly={coupangOnly}
+                coupangOnly
                 size="sm"
                 onCoupangClick={() =>
                   purchaseClick({
@@ -489,6 +481,13 @@ export default function ProductCard({
                 }
               />
             </div>
+            {slug ? (
+              <div className="flex shrink-0 items-center gap-1">
+                <ActionTooltip label="스펙 비교">
+                  <CompareButton slug={slug} detailHref={detailHref} compact />
+                </ActionTooltip>
+              </div>
+            ) : null}
             {slug && (
               <CardShareButton
                 slug={slug}

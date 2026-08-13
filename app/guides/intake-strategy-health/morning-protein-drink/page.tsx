@@ -145,7 +145,7 @@ export default function MorningProteinDrinkPage() {
           <div className="mt-3">
             <span className="rounded-md bg-[#f5f0ea] px-2 py-0.5 text-[11px] font-semibold tracking-wide text-[#7a5230]">TRACK C</span>
           </div>
-          <h1 className="mt-3 text-2xl font-bold leading-tight text-[var(--foreground)] md:text-3xl">
+          <h1 className="mt-3 text-2xl font-bold leading-tight text-[#16412D] md:text-3xl">
             아침 대용 단백질 음료는
             <br />
             공복 부담과 점심 전 허기까지 같이 봐야 합니다

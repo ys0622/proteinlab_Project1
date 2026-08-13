@@ -75,7 +75,7 @@ export default function MarathonProteinGuidePage() {
           <div className="mt-3">
             <span className="rounded-md bg-[#f8ede7] px-2 py-0.5 text-[11px] font-semibold tracking-wide text-[#8a4b2f]">TRACK D</span>
           </div>
-          <h1 className="mt-3 text-2xl font-bold leading-tight text-[var(--foreground)] md:text-3xl">
+          <h1 className="mt-3 text-2xl font-bold leading-tight text-[#16412D] md:text-3xl">
             마라톤은 레이스 주간 영양 전략이
             <br />
             완주 경험을 좌우합니다

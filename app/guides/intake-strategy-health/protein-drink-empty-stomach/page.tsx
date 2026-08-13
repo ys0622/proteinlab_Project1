@@ -85,7 +85,7 @@ export default function ProteinDrinkEmptyStomachPage() {
             <span>/</span>
             <span>공복 단백질 음료</span>
           </div>
-          <h1 className="mt-3 text-2xl font-bold leading-tight text-[var(--foreground)] md:text-3xl">
+          <h1 className="mt-3 text-2xl font-bold leading-tight text-[#16412D] md:text-3xl">
             단백질 음료를 공복에 마셔도 될까?
             <br />
             가능하지만 제품과 타이밍을 나눠봐야 합니다.

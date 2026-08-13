@@ -119,7 +119,7 @@ export default function DietProteinDrinkStrategyPage() {
           <div className="mt-3">
             <span className="rounded-md bg-[#f5f0ea] px-2 py-0.5 text-[11px] font-semibold tracking-wide text-[#7a5230]">TRACK C</span>
           </div>
-          <h1 className="mt-3 text-2xl font-bold leading-tight text-[var(--foreground)] md:text-3xl">
+          <h1 className="mt-3 text-2xl font-bold leading-tight text-[#16412D] md:text-3xl">
             다이어트 중 단백질 음료는 도움이 됩니다.
             <br />
             다만 저당·저칼로리와 포만감을 함께 봐야 오래 갑니다.

@@ -74,7 +74,7 @@ export default function NewsletterBanner() {
             type="submit"
             disabled={status === "loading"}
             className="shrink-0 rounded-xl px-4 py-2.5 text-[13px] font-semibold text-white transition-opacity hover:opacity-90 disabled:opacity-60"
-            style={{ background: "#2D4A35" }}
+            style={{ background: "#16412D" }}
           >
             {status === "loading" ? "…" : "신청"}
           </button>

@@ -66,7 +66,7 @@ export default function ProteinYogurtRankingGuidePage() {
               TRACK B
             </span>
           </div>
-          <h1 className="mt-3 text-2xl font-bold leading-tight text-[var(--foreground)] md:text-3xl">
+          <h1 className="mt-3 text-2xl font-bold leading-tight text-[#16412D] md:text-3xl">
             단백질 요거트 순위는 점수 기준까지 같이 읽어야 합니다
           </h1>
           <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">

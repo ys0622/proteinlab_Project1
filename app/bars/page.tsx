@@ -1,5 +1,6 @@
 ﻿import Header from "../components/Header";
 import AffiliateDisclosure from "../components/AffiliateDisclosure";
+import CommercialAdSection from "../components/CommercialAdSection";
 import Footer from "../components/Footer";
 import HeroSection from "../components/HeroSection";
 import ProductListWithFilters from "../components/ProductListWithFilters";
@@ -93,6 +94,7 @@ export default async function BarsPage() {
           categoryCounts={categoryCounts}
           tabsPlacement="before_grid"
         />
+        <CommercialAdSection pageType="category" className="mt-6" />
       </main>
 
       <CategoryFaqSection category="bar" />

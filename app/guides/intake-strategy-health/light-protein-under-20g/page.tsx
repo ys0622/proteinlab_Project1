@@ -121,7 +121,7 @@ export default function LightProteinUnder20gPage() {
             <span className="rounded-md bg-[#fbf7f1] px-2 py-0.5 text-[11px] font-semibold tracking-wide text-[#7a5230]">섭취량 질문</span>
             <span className="text-[11px] font-medium text-[var(--foreground-muted)]">업데이트 2026-07-03</span>
           </div>
-          <h1 className="mt-3 text-2xl font-bold leading-tight text-[var(--foreground)] md:text-3xl">
+          <h1 className="mt-3 text-2xl font-bold leading-tight text-[#16412D] md:text-3xl">
             저함량 단백질 음료,
             <br />
             오히려 필요한 사람들이 있습니다.

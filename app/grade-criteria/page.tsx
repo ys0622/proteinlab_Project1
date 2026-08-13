@@ -87,9 +87,9 @@ export default function GradeCriteriaPage() {
     <div className="min-h-screen bg-white">
       <Header />
 
-      <section className="w-full border-t border-b bg-[var(--hero-bg)]" style={{ borderColor: "var(--hero-border)" }}>
+      <section className="w-full border-t border-b" style={{ background: "#FAF8F3", borderColor: "#E7DFC9" }}>
         <div className="mx-auto max-w-[1200px] px-4 py-4 md:px-6 md:py-5">
-          <h1 className="text-2xl font-bold leading-tight text-[var(--foreground)] md:text-3xl">
+          <h1 className="text-2xl font-bold leading-tight md:text-3xl" style={{ color: "#16412D" }}>
             등급 산정 기준
           </h1>
           <p className="mt-1 text-sm text-[var(--foreground-muted)]">

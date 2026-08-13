@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import GuideThumbImage from "./components/GuideThumbImage";
+import HomeHeroSearch from "./components/HomeHeroSearch";
 import NewsletterBanner from "./components/NewsletterBanner";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
@@ -123,7 +125,6 @@ export default async function Home() {
   const views = (popularRes as { views: Record<string, Record<string, number>> }).views ?? {};
 
   const categoryCounts = { drink: drinks.length, bar: bars.length, yogurt: yogurts.length, shake: shakes.length };
-  const totalCount = drinks.length + bars.length + yogurts.length + shakes.length;
 
   // 4개 카테고리 모두 하이브리드 점수 기준 정렬
   // = 실제 조회수 × 10 + 품질 점수(단백질 밀도·당류) + 신제품 보너스(30일 감쇠)
@@ -154,122 +155,82 @@ export default async function Home() {
   };
 
   return (
-    <div className="min-h-screen" style={{ background: "#F3EFE6" }}>
+    <div className="min-h-screen" style={{ background: "#FAF8F3" }}>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }} />
       <Header />
 
-      {/* ─── 1. Hero (ultra-compact) ─── */}
-      <section className="mx-auto max-w-[1180px] px-4 pt-3 md:px-5 md:pt-4">
-        <div
-          className="relative overflow-hidden"
-          style={{
-            background: "linear-gradient(135deg, #1F5A3D 0%, #2A7A54 60%, #1B4F35 100%)",
-            borderRadius: "16px",
-            boxShadow: "0 4px 16px rgba(31,90,61,0.20)",
-          }}
-        >
-          {/* 배경 장식 — 우상단 원 + 좌하단 원 */}
-          <div aria-hidden className="pointer-events-none absolute -right-8 -top-8 rounded-full opacity-[0.12]" style={{ width: 140, height: 140, background: "radial-gradient(circle, #A8D5B5 0%, transparent 70%)" }} />
-          <div aria-hidden className="pointer-events-none absolute -bottom-6 left-1/3 rounded-full opacity-[0.07]" style={{ width: 100, height: 100, background: "radial-gradient(circle, #fff 0%, transparent 70%)" }} />
+      {/* ─── 1. Hero (베이직 톤 박스 + 검색창) ─── */}
+      <section className="mx-auto max-w-[1180px] px-4 pt-4 md:px-5 md:pt-5">
+        <div className="relative overflow-hidden rounded-[16px]" style={{ background: "#F2ECDD" }}>
+          {/* 데스크톱: 우측 배경 블렌딩 이미지 */}
+          <div
+            aria-hidden
+            className="pointer-events-none absolute inset-y-0 right-0 hidden w-[52%] md:block"
+            style={{
+              backgroundImage: "url(/category-icons/hero-image.png)",
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+              maskImage: "linear-gradient(to right, transparent, black 8%)",
+              WebkitMaskImage: "linear-gradient(to right, transparent, black 8%)",
+            }}
+          />
 
-          <div className="relative flex items-center justify-between gap-3 px-4 py-3 md:px-6 md:py-4">
-            {/* 좌: 뱃지 + 텍스트 */}
-            <div className="min-w-0">
-              <div className="mb-1 inline-flex items-center gap-1 rounded-full px-2 py-0.5" style={{ background: "rgba(255,255,255,0.12)", border: "1px solid rgba(255,255,255,0.18)" }}>
-                <span style={{ fontSize: "9px", color: "rgba(255,255,255,0.85)", fontWeight: 700, letterSpacing: "0.02em" }}>🔬 단백질 비교 플랫폼</span>
-              </div>
-              <h1 className="font-extrabold leading-tight text-white" style={{ fontSize: "clamp(15px, 2.5vw, 22px)", letterSpacing: "-0.02em" }}>
-                내게 맞는 단백질 제품 찾기
+          {/* 모바일: 우측 상단 이미지 (좌·하단 가장자리 블렌딩) */}
+          <div
+            aria-hidden
+            className="pointer-events-none absolute right-0 top-0 h-[150px] w-[52%] md:hidden"
+            style={{
+              backgroundImage: "url(/category-icons/hero-image.png)",
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+              maskImage: "radial-gradient(ellipse 140% 140% at 100% 0%, black 40%, transparent 85%)",
+              WebkitMaskImage: "radial-gradient(ellipse 140% 140% at 100% 0%, black 40%, transparent 85%)",
+            }}
+          />
+
+          <div className="relative z-10 px-5 py-6 md:max-w-[56%] md:px-10 md:py-10">
+            <div className="max-w-[68%] md:max-w-none">
+              <h1 className="font-extrabold leading-[1.3] text-[24px] md:text-[40px] md:leading-[1.25]" style={{ color: "#16412D", letterSpacing: "-0.02em" }}>
+                나에게 맞는 단백질 제품,
+                <br />
+                수치로 비교하세요
               </h1>
-              <p style={{ fontSize: "11px", color: "rgba(255,255,255,0.60)", marginTop: "3px" }}>
-                {totalCount}종 · 단백질·당류·칼로리 기준 비교
+              <p className="mt-2 text-[13px] md:mt-3 md:text-[16px]" style={{ color: "#5E6E61" }}>
+                단백질·당류·칼로리를 한눈에 비교하고 목적에 맞는 제품을 찾아보세요.
               </p>
             </div>
-            {/* 우: CTA 버튼 */}
-            <div className="flex shrink-0 flex-col gap-1.5 md:flex-row">
-              <Link href="/drinks" className="inline-flex items-center justify-center rounded-full px-4 text-[12px] font-bold text-[#1A5235]" style={{ background: "#FFFFFF", height: "32px" }}>
-                비교하기 →
-              </Link>
-              <Link href="/recommend" className="hidden items-center justify-center rounded-full px-4 text-[12px] font-bold text-white md:inline-flex" style={{ background: "rgba(255,255,255,0.14)", border: "1px solid rgba(255,255,255,0.28)", height: "32px" }}>
-                추천 보기
-              </Link>
+            <div className="mt-4 max-w-[560px] md:mt-5">
+              <HomeHeroSearch />
             </div>
           </div>
         </div>
       </section>
 
-      {/* ─── 2. 카테고리 임팩트 카드 ─── */}
-      <section className="mx-auto max-w-[1180px] px-4 pt-3 md:px-5 md:pt-4">
-        <div className="grid grid-cols-2 gap-2 md:grid-cols-4 md:gap-3">
+      {/* ─── 2. 카테고리 (센터 정렬 아이콘 카드) ─── */}
+      <section className="mx-auto max-w-[1180px] px-4 pt-4 md:px-5 md:pt-5">
+        <div className="grid grid-cols-2 gap-2 md:gap-3 md:grid-cols-4">
           {([
-            {
-              label: "단백질 음료",
-              sub: "RTD 프로틴 드링크",
-              emoji: "🥤",
-              href: "/drinks",
-              countKey: "drink" as const,
-              bg: "linear-gradient(135deg, #0D6E8A 0%, #1A90B0 100%)",
-              textColor: "#ffffff",
-              subColor: "rgba(255,255,255,0.65)",
-              countBg: "rgba(255,255,255,0.15)",
-            },
-            {
-              label: "단백질 바",
-              sub: "프로틴 바·간식",
-              emoji: "🍫",
-              href: "/bars",
-              countKey: "bar" as const,
-              bg: "linear-gradient(135deg, #7A4F2E 0%, #A0693E 100%)",
-              textColor: "#ffffff",
-              subColor: "rgba(255,255,255,0.65)",
-              countBg: "rgba(255,255,255,0.15)",
-            },
-            {
-              label: "단백질 요거트",
-              sub: "그릭 요거트 포함",
-              emoji: "🥛",
-              href: "/yogurt",
-              countKey: "yogurt" as const,
-              bg: "linear-gradient(135deg, #3A5F7A 0%, #4E7D9C 100%)",
-              textColor: "#ffffff",
-              subColor: "rgba(255,255,255,0.65)",
-              countBg: "rgba(255,255,255,0.15)",
-            },
-            {
-              label: "단백질 쉐이크",
-              sub: "파우치형 (분말 제외)",
-              emoji: "🧃",
-              href: "/shake",
-              countKey: "shake" as const,
-              bg: "linear-gradient(135deg, #4A3A6E 0%, #6550A0 100%)",
-              textColor: "#ffffff",
-              subColor: "rgba(255,255,255,0.65)",
-              countBg: "rgba(255,255,255,0.15)",
-            },
+            { label: "단백질 음료", icon: "drink", href: "/drinks", countKey: "drink" as const },
+            { label: "단백질 바", icon: "bar", href: "/bars", countKey: "bar" as const },
+            { label: "단백질 요거트", icon: "yogurt", href: "/yogurt", countKey: "yogurt" as const },
+            { label: "단백질 쉐이크", icon: "shake", href: "/shake", countKey: "shake" as const },
           ] as const).map((cat) => (
             <HomeTrackedLink
               key={cat.href}
               href={cat.href}
               eventName="home_category_click"
               eventParams={{ category: cat.countKey, destination_url: cat.href }}
-              className="group relative flex items-center gap-2.5 overflow-hidden rounded-[16px] px-3 py-2.5 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_8px_20px_rgba(0,0,0,0.15)] md:px-4 md:py-3"
-              style={{ background: cat.bg }}
+              className="group flex items-center gap-2 rounded-[10px] bg-white px-2.5 py-2.5 text-left shadow-[0_1px_4px_rgba(20,32,26,0.06)] transition-all duration-150 hover:shadow-[0_6px_16px_rgba(20,32,26,0.10)] md:gap-3 md:rounded-[12px] md:px-3.5 md:py-3.5"
             >
-              {/* 배경 원형 장식 */}
-              <div
-                aria-hidden
-                className="pointer-events-none absolute -right-3 -top-3 rounded-full opacity-20"
-                style={{ width: 60, height: 60, background: "radial-gradient(circle, #fff 0%, transparent 70%)" }}
-              />
-              {/* 이모지 */}
-              <span style={{ fontSize: "24px", lineHeight: 1, flexShrink: 0 }}>{cat.emoji}</span>
-              {/* 텍스트 */}
-              <div className="min-w-0 flex-1">
-                <p className="truncate font-extrabold leading-tight" style={{ fontSize: "13px", color: cat.textColor, letterSpacing: "-0.01em" }}>
+              <span className="relative h-9 w-9 shrink-0 overflow-hidden rounded-[8px] transition-transform duration-150 group-hover:scale-105 md:h-14 md:w-14 md:rounded-[10px]">
+                <Image src={`/category-icons/${cat.icon}.jpg`} alt="" fill className="object-cover" sizes="56px" />
+              </span>
+              <div className="min-w-0">
+                <p className="truncate font-bold leading-tight text-[13px] md:text-[18px]" style={{ color: "#14201A", letterSpacing: "-0.01em" }}>
                   {cat.label}
                 </p>
-                <p className="truncate" style={{ fontSize: "10px", color: cat.subColor, marginTop: "1px" }}>
-                  {cat.sub} · {categoryCounts[cat.countKey]}종
+                <p className="mt-0.5 truncate font-semibold text-[11px] md:mt-[3px] md:text-[15px]" style={{ color: "#1F5A3D" }}>
+                  {categoryCounts[cat.countKey]}종
                 </p>
               </div>
             </HomeTrackedLink>
@@ -290,7 +251,7 @@ export default async function Home() {
       {/* ─── 5. 가이드 & 인사이트 ─── */}
       <section className="mx-auto max-w-[1180px] px-4 pt-5 md:px-5 md:pt-6">
         <div className="mb-3 flex items-center justify-between">
-          <h2 className="font-extrabold" style={{ fontSize: "clamp(19px, 2.5vw, 24px)", color: "#1A2B1E", letterSpacing: "-0.02em" }}>
+          <h2 className="font-extrabold text-[17px] md:text-[24px]" style={{ color: "#1A2B1E", letterSpacing: "-0.02em" }}>
             가이드 & 인사이트
           </h2>
           <Link
@@ -355,7 +316,7 @@ export default async function Home() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-[1200px] px-4 pb-8 md:px-6">
+      <section className="mx-auto max-w-[1180px] px-4 pb-8 md:px-5">
         <NewsletterBanner />
       </section>
 

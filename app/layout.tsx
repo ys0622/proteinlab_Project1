@@ -2,7 +2,6 @@
 import Script from "next/script";
 import { Suspense } from "react";
 import AnalyticsPageViewTracker from "./components/AnalyticsPageViewTracker";
-import BrowserTabTitle from "./components/BrowserTabTitle";
 import CompareBar from "./components/CompareBar";
 import CompareBarSpacer from "./components/CompareBarSpacer";
 import { CompareProvider } from "./context/CompareContext";
@@ -14,7 +13,7 @@ const isProd = process.env.NODE_ENV === "production";
 
 export const viewport: Viewport = {
   colorScheme: "only light",
-  themeColor: "#2D4A35",
+  themeColor: "#16412D",
 };
 
 export const metadata: Metadata = {
@@ -89,7 +88,7 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <body className="antialiased">
-        {GA_ID ? (
+        {isProd && GA_ID ? (
           <>
             <Script
               src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
@@ -119,9 +118,6 @@ export default function RootLayout({
           <CompareProvider>
             <Suspense fallback={null}>
               <AnalyticsPageViewTracker />
-            </Suspense>
-            <Suspense fallback={null}>
-              <BrowserTabTitle />
             </Suspense>
             {children}
             <CompareBarSpacer />

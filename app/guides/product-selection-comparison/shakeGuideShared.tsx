@@ -1,6 +1,7 @@
 ﻿import type { Metadata } from "next";
 import Link from "next/link";
 import Header from "@/app/components/Header";
+import CommercialAdSection from "@/app/components/CommercialAdSection";
 import Footer from "@/app/components/Footer";
 import GuideBuySection from "@/app/components/GuideBuySection";
 
@@ -131,7 +132,7 @@ export function ShakeGuidePage({
               TRACK B
             </span>
           </div>
-          <h1 className="mt-3 text-2xl font-bold leading-tight text-[var(--foreground)] md:text-3xl">
+          <h1 className="mt-3 text-2xl font-bold leading-tight text-[#16412D] md:text-3xl">
             {title}
           </h1>
           <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
@@ -395,6 +396,9 @@ export function ShakeGuidePage({
               </Link>
             </div>
           </section>
+        </div>
+        <div className="mt-6">
+          <CommercialAdSection pageType="guide" />
         </div>
       </main>
 

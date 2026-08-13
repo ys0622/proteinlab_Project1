@@ -128,7 +128,7 @@ export default async function ProductsPage() {
             <span>/</span>
             <span>Products</span>
           </div>
-          <h1 className="mt-3 text-2xl font-bold leading-tight text-[var(--foreground)] md:text-3xl">
+          <h1 className="mt-3 text-2xl font-bold leading-tight text-[#16412D] md:text-3xl">
             단백질 제품 {totalCount}종을
             <br />
             브랜드, 카테고리, 목적별로 바로 비교해보세요.

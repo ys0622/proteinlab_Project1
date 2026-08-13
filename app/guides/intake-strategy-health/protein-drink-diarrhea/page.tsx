@@ -105,7 +105,7 @@ export default function ProteinDrinkDiarrheaPage() {
             <span>/</span>
             <span>단백질 음료 설사</span>
           </div>
-          <h1 className="mt-3 text-2xl font-bold leading-tight text-[var(--foreground)] md:text-3xl">
+          <h1 className="mt-3 text-2xl font-bold leading-tight text-[#16412D] md:text-3xl">
             단백질 음료 마시고 설사한다면,
             <br />
             제품보다 원인부터 나눠봐야 합니다.

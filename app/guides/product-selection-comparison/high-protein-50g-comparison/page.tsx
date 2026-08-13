@@ -140,7 +140,7 @@ export default function HighProtein50gComparisonPage() {
             <span className="rounded-md bg-[#f2f6fa] px-2 py-0.5 text-[11px] font-semibold tracking-wide text-[#4a6178]">초고함량 비교</span>
             <span className="text-[11px] font-medium text-[var(--foreground-muted)]">업데이트 2026-07-20</span>
           </div>
-          <h1 className="mt-3 text-2xl font-bold leading-tight text-[var(--foreground)] md:text-3xl">
+          <h1 className="mt-3 text-2xl font-bold leading-tight text-[#16412D] md:text-3xl">
             단백질 음료 50g 이상,
             <br />
             단백질 숫자보다 목적을 먼저 봐야 합니다.

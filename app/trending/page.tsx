@@ -83,14 +83,9 @@ export default async function TrendingPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
       <Header />
 
-      <section className="w-full border-b border-t bg-[var(--hero-bg)]" style={{ borderColor: "var(--hero-border)" }}>
+      <section className="w-full border-b border-t" style={{ background: "#FAF8F3", borderColor: "#E7DFC9" }}>
         <div className="mx-auto max-w-[1200px] px-4 py-6 md:px-6 md:py-7">
-          <nav className="mb-3 text-sm text-[var(--foreground-muted)]">
-            <Link href="/" className="hover:text-[var(--accent)]">홈</Link>
-            <span className="mx-2">/</span>
-            <span className="text-[var(--foreground)]">실시간 인기</span>
-          </nav>
-          <h1 className="text-2xl font-bold leading-[1.25] text-[var(--foreground)] md:text-3xl">
+          <h1 className="text-2xl font-bold leading-[1.25] md:text-3xl" style={{ color: "#16412D" }}>
             실시간 인기 단백질 제품
           </h1>
           <p className="mt-2 max-w-[760px] text-sm leading-6 text-[var(--foreground-muted)] md:text-[15px]">
@@ -100,13 +95,15 @@ export default async function TrendingPage() {
           <div className="mt-4 flex flex-wrap gap-2">
             <Link
               href="/ranking"
-              className="inline-flex min-h-9 items-center rounded-full border border-[#d7e4d9] bg-white px-3.5 py-2 text-xs font-semibold text-[#24543d] transition-colors hover:border-[#24543d] hover:bg-[#f3faf5] md:text-sm"
+              className="inline-flex min-h-9 items-center rounded-[10px] border bg-white px-3.5 py-2 text-xs font-semibold transition-colors hover:bg-[#E8F0EA] md:text-sm"
+              style={{ borderColor: "#DCE6DE", color: "#16412D" }}
             >
               스펙 기준 랭킹 보기
             </Link>
             <Link
               href="/recommend"
-              className="inline-flex min-h-9 items-center rounded-full border border-[#d7e4d9] bg-white px-3.5 py-2 text-xs font-semibold text-[#24543d] transition-colors hover:border-[#24543d] hover:bg-[#f3faf5] md:text-sm"
+              className="inline-flex min-h-9 items-center rounded-[10px] border bg-white px-3.5 py-2 text-xs font-semibold transition-colors hover:bg-[#E8F0EA] md:text-sm"
+              style={{ borderColor: "#DCE6DE", color: "#16412D" }}
             >
               맞춤 추천 받기
             </Link>
@@ -137,10 +134,17 @@ export default async function TrendingPage() {
                 {top.map((product, index) => (
                   <div key={product.slug} className="relative">
                     <span
-                      className="absolute left-2 top-2 z-10 flex h-6 w-6 items-center justify-center rounded-full text-[11px] font-extrabold text-white shadow-sm"
-                      style={{ background: index < 3 ? "#1F5A3D" : "#8A938B" }}
+                      className="absolute left-2 top-2 z-10 flex items-center gap-0.5 rounded-[7px] font-extrabold text-white shadow-sm"
+                      style={{
+                        height: 20,
+                        padding: "0 6px",
+                        background: "#16412D",
+                        fontSize: "11px",
+                        letterSpacing: "-0.02em",
+                        boxShadow: "0 2px 6px rgba(22,65,45,0.28)",
+                      }}
                     >
-                      {index + 1}
+                      {index + 1}<span style={{ fontSize: "9px", fontWeight: 700, opacity: 0.85 }}>위</span>
                     </span>
                     <ProductCard {...product} purchaseLinkCategory="ranking" />
                   </div>

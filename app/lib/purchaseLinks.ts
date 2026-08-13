@@ -62,6 +62,9 @@ const COUPANG_PARTNERS_SUB_ID =
 
 export type CoupangLinkCategory = "drink" | "bar" | "yogurt" | "shake" | "guide" | "ranking";
 
+/** 제품별 쿠팡 파트너스 링크가 없을 때 대신 연결할 기본 홈 링크 */
+const DEFAULT_COUPANG_FALLBACK_URL = "https://link.coupang.com/a/gaIdNRGs2u";
+
 const KNOWN_SOURCE_COUPANG_URLS_BY_SLUG: Record<string, string> = {
   "newcare-all-protein-choco-245":
     "https://www.coupang.com/vp/products/8391141735?itemId=24971392807&vendorItemId=91994723764",
@@ -230,7 +233,7 @@ export function getCoupangRedirectHref(
 ): string | null {
   const sourceUrl = normalizeCoupangUrl(coupangUrl) ?? getKnownSourceCoupangUrlBySlug(slug);
   if (!sourceUrl || !isValidCoupangLink(sourceUrl)) {
-    return null;
+    return DEFAULT_COUPANG_FALLBACK_URL;
   }
 
   // 쿠팡 파트너스 사이트에서 직접 발급한 정적 링크(link.coupang.com/a/...)는

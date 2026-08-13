@@ -102,7 +102,7 @@ export default function RunningProteinCategoryGuidePage() {
           <div className="mt-3">
             <span className="rounded-md bg-[#f8ede7] px-2 py-0.5 text-[11px] font-semibold tracking-wide text-[#8a4b2f]">TRACK D</span>
           </div>
-          <h1 className="mt-3 text-2xl font-bold leading-tight text-[var(--foreground)] md:text-3xl">
+          <h1 className="mt-3 text-2xl font-bold leading-tight text-[#16412D] md:text-3xl">
             러닝하는 사람에게 맞는 단백질 제품은
             <br />
             음료, 바, 쉐이크가 전부 다를 수 있습니다.

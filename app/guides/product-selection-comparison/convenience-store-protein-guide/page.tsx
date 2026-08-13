@@ -2,7 +2,6 @@ import { buildGuideJsonLd } from "@/app/lib/guideJsonLd";
 ﻿import Link from "next/link";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
-import GuideBuySection from "@/app/components/GuideBuySection";
 
 export const metadata = {
   title: "편의점 단백질 음료·바 추천 | CU·GS25·세븐일레븐 성분 기준",
@@ -121,7 +120,7 @@ export default function ConvenienceStoreProteinGuidePage() {
               편의점
             </span>
           </div>
-          <h1 className="mt-3 text-2xl font-bold leading-tight text-[var(--foreground)] md:text-3xl">
+          <h1 className="mt-3 text-2xl font-bold leading-tight text-[#16412D] md:text-3xl">
             편의점 단백질 음료·바, 성분 기준으로 고르는 법
           </h1>
           <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
@@ -316,8 +315,6 @@ export default function ConvenienceStoreProteinGuidePage() {
 
         </div>
       </main>
-
-      <GuideBuySection />
 
       <Footer />
     </div>

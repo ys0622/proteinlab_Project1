@@ -65,7 +65,7 @@ export default function SpringOutdoorProteinSnackGuidePage() {
           <div className="mt-3">
             <span className="rounded-md bg-[#f8ede7] px-2 py-0.5 text-[11px] font-semibold tracking-wide text-[#8a4b2f]">TRACK D</span>
           </div>
-          <h1 className="mt-3 text-2xl font-bold leading-tight text-[var(--foreground)] md:text-3xl">
+          <h1 className="mt-3 text-2xl font-bold leading-tight text-[#16412D] md:text-3xl">
             봄철 야외활동에는
             <br />
             휴대성과 가벼운 포만감이 중요합니다

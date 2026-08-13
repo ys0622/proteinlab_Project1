@@ -105,7 +105,7 @@ export default function ProteinDrinkWeightGainPage() {
             <span>/</span>
             <span>단백질 음료 살찌나요</span>
           </div>
-          <h1 className="mt-3 text-2xl font-bold leading-tight text-[var(--foreground)] md:text-3xl">
+          <h1 className="mt-3 text-2xl font-bold leading-tight text-[#16412D] md:text-3xl">
             단백질 음료는 살찌는 음식일까?
             <br />
             답은 마시는 방식에 따라 달라집니다.

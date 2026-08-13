@@ -85,7 +85,7 @@ export default function ProteinDrinkSugarPage() {
             <span>/</span>
             <span>단백질 음료 당류</span>
           </div>
-          <h1 className="mt-3 text-2xl font-bold leading-tight text-[var(--foreground)] md:text-3xl">
+          <h1 className="mt-3 text-2xl font-bold leading-tight text-[#16412D] md:text-3xl">
             단백질 음료는 단백질 g보다,
             <br />
             당류와 칼로리를 같이 봐야 합니다.

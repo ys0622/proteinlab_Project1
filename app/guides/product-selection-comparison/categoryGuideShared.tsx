@@ -3,6 +3,8 @@ import Link from "next/link";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 import AffiliateDisclosure from "@/app/components/AffiliateDisclosure";
+import CommercialAdSection from "@/app/components/CommercialAdSection";
+import TrackedLink from "@/app/components/TrackedLink";
 import { getProductBySlug } from "@/app/data/products";
 import { getCoupangRedirectHref } from "@/app/lib/purchaseLinks";
 
@@ -53,12 +55,66 @@ export interface CategoryGuideConfig {
   sections: CategoryGuideSection[];
   relatedGuides: CategoryGuideLink[];
   purchaseLinks: CategoryPurchaseLink[];
+  showPurchaseLinks?: boolean;
+  conversion?: {
+    contentId: string;
+    conclusion: string;
+    products: Array<{ slug: string; reason: string }>;
+    compareHref?: string;
+  };
   externalLinks?: CategoryExternalLink[];
   faq?: {
     question: string;
     answer: string;
   }[];
   jsonLd?: Record<string, unknown>[];
+}
+
+function ConversionLinks({ conversion }: { conversion: NonNullable<CategoryGuideConfig["conversion"]> }) {
+  const products = conversion.products
+    .slice(0, 3)
+    .map((item) => ({ ...item, product: getProductBySlug(item.slug) }))
+    .filter((item): item is typeof item & { product: NonNullable<typeof item.product> } => item.product != null);
+
+  return (
+    <section className="border-y border-[#d9e4f0] py-5">
+      <h2 className="text-lg font-bold text-[var(--foreground)]">빠른 선택</h2>
+      <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">{conversion.conclusion}</p>
+      <div className="mt-4 grid gap-3 md:grid-cols-3">
+        {products.map(({ product, reason }) => (
+          <TrackedLink
+            key={product.slug}
+            href={`/product/${product.slug}`}
+            trackingLabel={`${product.brand} ${product.name} 상세 보기`}
+            trackingSection="guide_featured_product"
+            trackingPageType="guide"
+            contentId={conversion.contentId}
+            productId={product.slug}
+            linkPosition="hero"
+            ctaType="product_detail"
+            className="border border-[#d9e4f0] bg-[#f7f9fc] p-4 transition-colors hover:bg-white"
+          >
+            <p className="text-sm font-semibold text-[#4a6178]">{product.brand} {product.name}</p>
+            <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">{reason}</p>
+          </TrackedLink>
+        ))}
+      </div>
+      {conversion.compareHref ? (
+        <TrackedLink
+          href={conversion.compareHref}
+          trackingLabel="선택한 제품 비교하기"
+          trackingSection="guide_featured_compare"
+          trackingPageType="guide"
+          contentId={conversion.contentId}
+          linkPosition="hero"
+          ctaType="compare"
+          className="mt-4 inline-flex text-sm font-semibold text-[var(--accent)] underline"
+        >
+          선택한 제품 비교하기
+        </TrackedLink>
+      ) : null}
+    </section>
+  );
 }
 
 const trackBHubLink: CategoryGuideLink = {
@@ -224,13 +280,14 @@ export function CategoryGuidePage({ config }: { config: CategoryGuideConfig }) {
             <span className="text-[11px] font-medium text-[var(--foreground-muted)]">{config.readingTime}</span>
             {config.updatedAt ? <span className="text-[11px] font-medium text-[var(--foreground-muted)]">업데이트 {config.updatedAt}</span> : null}
           </div>
-          <h1 className="mt-3 text-2xl font-bold leading-tight text-[var(--foreground)] md:text-3xl">{config.title}</h1>
+          <h1 className="mt-3 text-2xl font-bold leading-tight text-[#16412D] md:text-3xl">{config.title}</h1>
           <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">{config.intro}</p>
         </div>
       </section>
 
       <main className="mx-auto max-w-[1200px] px-4 py-8 md:px-6">
         <div className="space-y-6">
+          {config.conversion ? <ConversionLinks conversion={config.conversion} /> : null}
           <section className="rounded-[28px] border border-[#d9e4f0] bg-[#f7f9fc] px-5 py-5 shadow-[0_18px_50px_rgba(32,46,68,0.05)]">
             <p className="text-xs font-semibold tracking-[0.08em] text-[#4a6178]">📌 핵심 요약</p>
             <ul className="mt-4 space-y-3 text-sm leading-6 text-[var(--foreground-muted)]">
@@ -345,7 +402,7 @@ export function CategoryGuidePage({ config }: { config: CategoryGuideConfig }) {
             </section>
           ) : null}
 
-          <section className="rounded-[28px] border border-[#d9e4f0] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(32,46,68,0.05)]">
+          {config.showPurchaseLinks !== false ? <section className="rounded-[28px] border border-[#d9e4f0] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(32,46,68,0.05)]">
             <div className="flex items-center justify-between gap-4">
               <h2 className="text-xl font-bold text-[var(--foreground)]">🛒 쿠팡에서 가격 보기</h2>
               <AffiliateDisclosure />
@@ -356,7 +413,10 @@ export function CategoryGuidePage({ config }: { config: CategoryGuideConfig }) {
             <div className="mt-4">
               <PurchaseCards links={config.purchaseLinks} />
             </div>
-          </section>
+          </section> : null}
+        </div>
+        <div className="mt-6">
+          <CommercialAdSection pageType="guide" />
         </div>
       </main>
       <Footer />

@@ -168,7 +168,7 @@ export default function LeanMassupProteinIntakePage() {
               TRACK C
             </span>
           </div>
-          <h1 className="mt-3 text-2xl font-bold leading-tight text-[var(--foreground)] md:text-3xl">
+          <h1 className="mt-3 text-2xl font-bold leading-tight text-[#16412D] md:text-3xl">
             린매스업 단백질 섭취량,
             <br />
             체중별로 몇 g 먹어야 할까

@@ -191,7 +191,7 @@ export default async function TopicLandingPage({ params }: PageProps) {
             <span className="text-[var(--foreground)]">{topic.title}</span>
           </nav>
 
-          <h1 className="text-2xl font-bold leading-[1.25] text-[var(--foreground)] md:text-3xl">
+          <h1 className="text-2xl font-bold leading-[1.25] text-[#16412D] md:text-3xl">
             {topic.title}
           </h1>
           <p className="mt-2 max-w-[760px] text-sm leading-6 text-[var(--foreground-muted)] md:text-[15px]">

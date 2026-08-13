@@ -24,7 +24,7 @@ export default async function BrandsPage() {
         style={{ borderColor: "var(--hero-border)" }}
       >
         <div className="mx-auto max-w-[1200px] px-4 py-6 md:px-6 md:py-7">
-          <h1 className="text-2xl font-bold leading-[1.25] text-[var(--foreground)] md:text-3xl">
+          <h1 className="text-2xl font-bold leading-[1.25] text-[#16412D] md:text-3xl">
             단백질 브랜드 허브
           </h1>
           <p className="mt-2 max-w-[760px] text-sm leading-6 text-[var(--foreground-muted)] md:text-[15px]">

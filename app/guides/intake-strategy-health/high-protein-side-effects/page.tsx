@@ -146,7 +146,7 @@ export default function HighProteinSideEffectsPage() {
             <span className="rounded-md bg-[#fbf7f1] px-2 py-0.5 text-[11px] font-semibold tracking-wide text-[#7a5230]">섭취량 질문</span>
             <span className="text-[11px] font-medium text-[var(--foreground-muted)]">업데이트 2026-07-01</span>
           </div>
-          <h1 className="mt-3 text-2xl font-bold leading-tight text-[var(--foreground)] md:text-3xl">
+          <h1 className="mt-3 text-2xl font-bold leading-tight text-[#16412D] md:text-3xl">
             60g 단백질 음료까지 나온 지금,
             <br />
             부담과 부작용을 먼저 짚고 갑니다.
