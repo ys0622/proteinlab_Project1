@@ -42,12 +42,12 @@ export function getVolumeRange(product: { capacity: string }): VolumeRange {
 }
 
 export type ProteinRange =
-  | "초고단백(30g 이상)"
+  | "초고단백(40g 이상)"
   | "고단백(20g 이상)"
   | "일반단백(20g 미만)";
 
 export function getProteinRange(product: { proteinPerServing: number }): ProteinRange {
-  if (product.proteinPerServing >= 30) return "초고단백(30g 이상)";
+  if (product.proteinPerServing >= 40) return "초고단백(40g 이상)";
   if (product.proteinPerServing >= 20) return "고단백(20g 이상)";
   return "일반단백(20g 미만)";
 }
