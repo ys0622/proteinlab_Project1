@@ -69,6 +69,12 @@ function parseDensityValue(density?: string): number {
   return match ? parseFloat(match[1]) : 0;
 }
 
+function parseBcaaMg(bcaa?: string): number {
+  if (!bcaa) return 0;
+  const match = bcaa.match(/(\d+(?:\.\d+)?)/);
+  return match ? parseFloat(match[1]) : 0;
+}
+
 function includesAny(text: string, keywords: string[]) {
   return keywords.some((keyword) => text.includes(keyword));
 }
@@ -571,6 +577,34 @@ const curations: CurationDefinition[] = [
     },
   },
   {
+    id: "yogurt-lactose-free",
+    slug: "yogurt-lactose-free",
+    label: "락토프리",
+    icon: "🥛",
+    kind: "ingredient",
+    categoryTargets: ["yogurt"],
+    routeMode: "category-query",
+    seoTitle: "락토프리 단백질 요거트 추천 | ProteinLab",
+    seoDescription:
+      "유당을 제거해 속이 편안한 락토프리 단백질 요거트를 비교합니다. 단백질 함량, 당류, 단백질 밀도 기준으로 확인해보세요.",
+    categories: {
+      yogurt: {
+        category: "yogurt",
+        quickLabel: "락토프리",
+        quickIcon: "🥛",
+        quickOrder: 55,
+        filter: (product) => product.productType === "yogurt" && product.lactoseFree === true,
+        recommend: (products) =>
+          sortYogurtByProtein(products.filter((product) => product.productType === "yogurt" && product.lactoseFree === true)),
+        landingCopy: {
+          recommendationTitle: "추천 락토프리 단백질 요거트",
+          recommendationNote: "유당불내증이 있거나 속이 편안한 제품을 찾을 때 먼저 봅니다.",
+          comparisonTitle: "락토프리 단백질 요거트 비교",
+        },
+      },
+    },
+  },
+  {
     id: "light-protein-under-20",
     slug: "light-protein-under-20",
     label: "라이트 20g 미만",
@@ -627,6 +661,28 @@ const curations: CurationDefinition[] = [
         quickOrder: 40,
         filter: (product) => product.productType === "drink" && (product.proteinPerServing ?? 0) >= 40,
         recommend: (products) => products.filter((product) => (product.proteinPerServing ?? 0) >= 40),
+      },
+    },
+  },
+  {
+    id: "high-bcaa",
+    slug: "high-bcaa",
+    label: "고BCAA 5000mg+",
+    icon: "💥",
+    kind: "ingredient",
+    categoryTargets: ["drink"],
+    routeMode: "category-query",
+    seoTitle: "고BCAA 단백질 음료 추천 | ProteinLab",
+    seoDescription:
+      "BCAA 5000mg 이상 함유된 단백질 음료를 비교합니다. 운동 중 근손실 방지와 회복을 함께 고려할 때 확인해보세요.",
+    categories: {
+      drink: {
+        category: "drink",
+        quickLabel: "고BCAA 5000mg+",
+        quickIcon: "💥",
+        quickOrder: 45,
+        filter: (product) => product.productType === "drink" && parseBcaaMg(product.bcaa) >= 5000,
+        recommend: (products) => products.filter((product) => parseBcaaMg(product.bcaa) >= 5000),
       },
     },
   },
