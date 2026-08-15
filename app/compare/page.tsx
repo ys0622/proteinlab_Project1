@@ -9,13 +9,18 @@ import CompareSummary from "../components/CompareSummary";
 import CompareTable from "../components/CompareTable";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
+import MetricBadgeGroup from "../components/MetricBadgeGroup";
+import ProductBadge from "../components/ProductBadge";
+import { formatProductBadgeLabel, getProductBadgeTone } from "../components/productBadgeUtils";
 import { useCompare } from "../context/CompareContext";
 import type { ProductDetailProps } from "../data/products";
 import { getAllProducts, getProductBySlug } from "../data/products";
 import { getAllCompareLandings } from "../data/compareLandings";
 import { getRecentProducts } from "../components/RecentlyViewedTracker";
 import { COMPARE_COLUMNS, type CompareColumnId } from "../lib/compareColumns";
+import { getQuickCurations, getCurationDefinition, type CurationCategory } from "../lib/curationSystem";
 import { getProductImageUrl } from "../lib/productImage";
+import { hybridScore } from "../lib/productScoring";
 import { compareAdd, compareView, internalCtaClick } from "../../lib/analytics";
 
 const MAX_PRODUCTS = 3;
@@ -51,12 +56,27 @@ export default function ComparePage() {
   const [pickerQuery, setPickerQuery] = useState("");
   const [pickerCategory, setPickerCategory] = useState<string>("all");
   const [pickerBrand, setPickerBrand] = useState<string>("all");
+  const [pickerCurationSlug, setPickerCurationSlug] = useState<string | null>(null);
   const [recentSlugs, setRecentSlugs] = useState<string[]>([]);
+  const [viewCounts, setViewCounts] = useState<Record<string, Record<string, number>>>({});
   const allProducts = useMemo(() => getAllProducts(), []);
   const recommendedComparisons = useMemo(
     () => getAllCompareLandings().filter((item) => OPERATOR_COMPARE_SLUGS.has(item.slug)),
     [],
   );
+
+  useEffect(() => {
+    // 인기순 정렬을 위한 실제 조회수 — 없어도 품질 점수만으로 동작하므로 실패해도 무방.
+    fetch("/api/popular")
+      .then((res) => res.json())
+      .then((data) => setViewCounts(data.views ?? {}))
+      .catch(() => setViewCounts({}));
+  }, []);
+
+  const quickCurationChips = useMemo(() => {
+    if (pickerCategory === "all") return [];
+    return getQuickCurations(pickerCategory as CurationCategory).filter((item) => item.slug !== "popular");
+  }, [pickerCategory]);
 
   useEffect(() => {
     // Recent products are client-only local storage state restored after hydration.
@@ -117,14 +137,34 @@ export default function ComparePage() {
     () => [...new Set(allProducts.filter((product) => pickerCategory === "all" || product.productType === pickerCategory).map((product) => product.brand))].sort((a, b) => a.localeCompare(b, "ko")),
     [allProducts, pickerCategory],
   );
+  const pickerCurationFilter = useMemo(() => {
+    if (!pickerCurationSlug) return null;
+    const curation = getCurationDefinition(pickerCurationSlug);
+    const categoryConfig = curation?.categories[pickerCategory as CurationCategory];
+    return categoryConfig?.filter ?? null;
+  }, [pickerCurationSlug, pickerCategory]);
+
   const pickerProducts = useMemo(() => {
     const query = pickerQuery.trim().toLowerCase();
-    return allProducts
+    const filtered = allProducts
       .filter((product) => pickerCategory === "all" || product.productType === pickerCategory)
       .filter((product) => pickerBrand === "all" || product.brand === pickerBrand)
       .filter((product) => !query || `${product.brand} ${product.name}`.toLowerCase().includes(query))
-      .slice(0, 8);
-  }, [allProducts, pickerBrand, pickerCategory, pickerQuery]);
+      .filter((product) => !pickerCurationFilter || pickerCurationFilter(product));
+
+    // 검색어가 없을 땐 홈 화면과 동일한 인기순(하이브리드 점수) 정렬로 매력적인 제품부터 보여준다.
+    if (!query) {
+      return [...filtered]
+        .sort((a, b) => {
+          const viewsA = viewCounts[a.productType ?? ""]?.[a.slug ?? ""] ?? 0;
+          const viewsB = viewCounts[b.productType ?? ""]?.[b.slug ?? ""] ?? 0;
+          return hybridScore(b, viewsB) - hybridScore(a, viewsA);
+        })
+        .slice(0, 8);
+    }
+
+    return filtered.slice(0, 8);
+  }, [allProducts, pickerBrand, pickerCategory, pickerCurationFilter, pickerQuery, viewCounts]);
   const recentProducts = useMemo(
     () => recentSlugs.map((slug) => getProductBySlug(slug)).filter((product): product is NonNullable<typeof product> => product != null).slice(0, 4),
     [recentSlugs],
@@ -203,28 +243,86 @@ export default function ComparePage() {
             <h1 className="text-2xl font-bold" style={{ color: "#16412D", fontWeight: 700 }}>
               제품 비교
             </h1>
-            <p className="mt-1 text-sm" style={{ color: "#6b6b6b" }}>
+            <p className="mt-1 text-sm" style={{ color: "var(--foreground-muted)" }}>
               비교할 제품을 먼저 담아보세요. 단백질 함량, 당류, 칼로리를 한 화면에서 바로 볼 수 있습니다. 최대 3개까지 비교할 수 있습니다.
             </p>
+
             <div className="mt-5 grid gap-3 md:grid-cols-[1fr_160px_160px]">
-              <input value={pickerQuery} onChange={(event) => setPickerQuery(event.target.value)} placeholder="제품명 또는 브랜드 검색" className="min-h-11 rounded-lg border border-[#d9d6cf] bg-white px-3 text-sm" aria-label="비교할 제품 검색" />
-              <select value={pickerCategory} onChange={(event) => { setPickerCategory(event.target.value); setPickerBrand("all"); }} className="min-h-11 rounded-lg border border-[#d9d6cf] bg-white px-3 text-sm" aria-label="카테고리 선택">
+              <input value={pickerQuery} onChange={(event) => setPickerQuery(event.target.value)} placeholder="제품명 또는 브랜드 검색" className="min-h-11 rounded-lg border px-3 text-sm" style={{ borderColor: "var(--border)" }} aria-label="비교할 제품 검색" />
+              <select value={pickerCategory} onChange={(event) => { setPickerCategory(event.target.value); setPickerBrand("all"); setPickerCurationSlug(null); }} className="min-h-11 rounded-lg border bg-white px-3 text-sm" style={{ borderColor: "var(--border)" }} aria-label="카테고리 선택">
                 <option value="all">전체 카테고리</option><option value="drink">음료</option><option value="shake">쉐이크</option><option value="bar">바</option><option value="yogurt">요거트</option>
               </select>
-              <select value={pickerBrand} onChange={(event) => setPickerBrand(event.target.value)} className="min-h-11 rounded-lg border border-[#d9d6cf] bg-white px-3 text-sm" aria-label="브랜드 선택">
+              <select value={pickerBrand} onChange={(event) => setPickerBrand(event.target.value)} className="min-h-11 rounded-lg border bg-white px-3 text-sm" style={{ borderColor: "var(--border)" }} aria-label="브랜드 선택">
                 <option value="all">전체 브랜드</option>{pickerBrands.map((brand) => <option key={brand} value={brand}>{brand}</option>)}
               </select>
             </div>
-            <div className="mt-3 grid gap-2 sm:grid-cols-2">
-              {pickerProducts.map((product) => (
-                <button key={product.slug} type="button" onClick={() => addProduct(product.slug)} disabled={selectedSlugs.includes(product.slug) || !canAdd} className="flex min-h-11 items-center justify-between rounded-lg border border-[#d9d6cf] bg-white px-3 text-left text-sm disabled:opacity-50">
-                  <span className="truncate">{product.brand} {product.name}</span><span className="ml-2 shrink-0 text-[var(--accent)]">비교 추가</span>
-                </button>
-              ))}
+
+            {quickCurationChips.length > 0 ? (
+              <div className="mt-3 flex flex-wrap items-center gap-1.5">
+                <span className="mr-1 shrink-0 text-xs font-semibold" style={{ color: "var(--foreground-muted)" }}>
+                  빠른 필터
+                </span>
+                {quickCurationChips.map((chip) => {
+                  const active = pickerCurationSlug === chip.slug;
+                  return (
+                    <button
+                      key={chip.slug}
+                      type="button"
+                      onClick={() => setPickerCurationSlug(active ? null : chip.slug)}
+                      className="inline-flex items-center gap-1 rounded-full border px-2.5 py-1 text-[11px] font-medium transition-colors"
+                      style={
+                        active
+                          ? { background: "var(--accent)", borderColor: "var(--accent)", color: "#fff" }
+                          : { background: "#fff", borderColor: "var(--border)", color: "var(--foreground-muted)" }
+                      }
+                      aria-pressed={active}
+                    >
+                      <span aria-hidden>{chip.icon}</span>
+                      {chip.label}
+                    </button>
+                  );
+                })}
+              </div>
+            ) : null}
+
+            <p className="mt-4 text-xs font-semibold" style={{ color: "var(--foreground-muted)" }}>
+              {pickerQuery.trim() || pickerCurationFilter ? "검색 결과" : "인기 제품부터 담아보세요"}
+            </p>
+            <div className="mt-2 grid gap-2 sm:grid-cols-2">
+              {pickerProducts.map((product) => {
+                const gradeTags = (product.gradeTags ?? []).slice(0, 2);
+                return (
+                  <button
+                    key={product.slug}
+                    type="button"
+                    onClick={() => addProduct(product.slug!)}
+                    disabled={selectedSlugs.includes(product.slug!) || !canAdd}
+                    className="flex min-h-11 items-center justify-between gap-2 rounded-lg border bg-white px-3 py-2 text-left text-sm transition-colors hover:border-[var(--accent)] disabled:opacity-50"
+                    style={{ borderColor: "var(--border)" }}
+                  >
+                    <span className="min-w-0 flex-1">
+                      <span className="block truncate">{product.brand} {product.name}</span>
+                      {gradeTags.length > 0 ? (
+                        <MetricBadgeGroup className="mt-1">
+                          {gradeTags.map((tag) => (
+                            <ProductBadge
+                              key={tag}
+                              label={formatProductBadgeLabel(tag)}
+                              tone={getProductBadgeTone(formatProductBadgeLabel(tag))}
+                              className="pointer-events-none"
+                            />
+                          ))}
+                        </MetricBadgeGroup>
+                      ) : null}
+                    </span>
+                    <span className="shrink-0 text-[var(--accent)]">비교 추가</span>
+                  </button>
+                );
+              })}
             </div>
-            {recentProducts.length > 0 ? <div className="mt-5"><p className="text-sm font-semibold">최근 본 제품</p><div className="mt-2 flex flex-wrap gap-2">{recentProducts.map((product) => <button key={product.slug} type="button" onClick={() => addProduct(product.slug)} disabled={selectedSlugs.includes(product.slug) || !canAdd} className="min-h-11 rounded-full border border-[#d9d6cf] bg-white px-3 text-xs disabled:opacity-50">{product.brand} {product.name}</button>)}</div></div> : null}
-            <div className="mt-5"><p className="text-sm font-semibold">추천 비교 조합</p><div className="mt-2 grid gap-2 md:grid-cols-2">{recommendedComparisons.map((item) => <Link key={item.slug} href={`/compare?products=${item.productSlugs.join(",")}`} className="rounded-lg border border-[#d9d6cf] bg-white px-3 py-3 text-sm hover:border-[var(--accent)]">{item.title}</Link>)}</div></div>
-            <p className="mt-5 text-xs leading-5 text-[#6b6b6b]">제품을 2개 이상 선택하면 단백질·당류·칼로리·용량·밀도와 구매 채널을 나란히 비교할 수 있습니다.</p>
+            {recentProducts.length > 0 ? <div className="mt-5"><p className="text-sm font-semibold">최근 본 제품</p><div className="mt-2 flex flex-wrap gap-2">{recentProducts.map((product) => <button key={product.slug} type="button" onClick={() => addProduct(product.slug)} disabled={selectedSlugs.includes(product.slug) || !canAdd} className="min-h-11 rounded-full border bg-white px-3 text-xs disabled:opacity-50" style={{ borderColor: "var(--border)" }}>{product.brand} {product.name}</button>)}</div></div> : null}
+            <div className="mt-5"><p className="text-sm font-semibold">추천 비교 조합</p><div className="mt-2 grid gap-2 md:grid-cols-2">{recommendedComparisons.map((item) => <Link key={item.slug} href={`/compare?products=${item.productSlugs.join(",")}`} className="rounded-lg border bg-white px-3 py-3 text-sm hover:border-[var(--accent)]" style={{ borderColor: "var(--border)" }}>{item.title}</Link>)}</div></div>
+            <p className="mt-5 text-xs leading-5" style={{ color: "var(--foreground-muted)" }}>제품을 2개 이상 선택하면 단백질·당류·칼로리·용량·밀도와 구매 채널을 나란히 비교할 수 있습니다.</p>
             <Link
               href="/products"
               onClick={() =>
