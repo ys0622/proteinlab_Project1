@@ -152,18 +152,28 @@ export default function ComparePage() {
       .filter((product) => !query || `${product.brand} ${product.name}`.toLowerCase().includes(query))
       .filter((product) => !pickerCurationFilter || pickerCurationFilter(product));
 
-    // 검색어가 없을 땐 홈 화면과 동일한 인기순(하이브리드 점수) 정렬로 매력적인 제품부터 보여준다.
-    if (!query) {
-      return [...filtered]
-        .sort((a, b) => {
-          const viewsA = viewCounts[a.productType ?? ""]?.[a.slug ?? ""] ?? 0;
-          const viewsB = viewCounts[b.productType ?? ""]?.[b.slug ?? ""] ?? 0;
-          return hybridScore(b, viewsB) - hybridScore(a, viewsA);
-        })
-        .slice(0, 8);
+    if (query) return filtered.slice(0, 8);
+
+    const byHybridScore = (a: ProductDetailProps, b: ProductDetailProps) => {
+      const viewsA = viewCounts[a.productType ?? ""]?.[a.slug ?? ""] ?? 0;
+      const viewsB = viewCounts[b.productType ?? ""]?.[b.slug ?? ""] ?? 0;
+      return hybridScore(b, viewsB) - hybridScore(a, viewsA);
+    };
+
+    // "전체" 탭에서는 조회수가 많은 한 카테고리(대개 음료)가 8개를 다 차지하지 않도록
+    // 카테고리별 인기 상위 2개씩 고르게 섞어서 보여준다.
+    if (pickerCategory === "all") {
+      const categories: CurationCategory[] = ["drink", "bar", "yogurt", "shake"];
+      return categories.flatMap((category) =>
+        filtered
+          .filter((product) => product.productType === category)
+          .sort(byHybridScore)
+          .slice(0, 2),
+      );
     }
 
-    return filtered.slice(0, 8);
+    // 특정 카테고리를 골랐을 땐 그 카테고리 안에서 인기순으로 8개.
+    return [...filtered].sort(byHybridScore).slice(0, 8);
   }, [allProducts, pickerBrand, pickerCategory, pickerCurationFilter, pickerQuery, viewCounts]);
   const recentProducts = useMemo(
     () => recentSlugs.map((slug) => getProductBySlug(slug)).filter((product): product is NonNullable<typeof product> => product != null).slice(0, 4),
