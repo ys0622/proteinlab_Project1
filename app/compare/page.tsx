@@ -247,11 +247,43 @@ export default function ComparePage() {
               비교할 제품을 먼저 담아보세요. 단백질 함량, 당류, 칼로리를 한 화면에서 바로 볼 수 있습니다. 최대 3개까지 비교할 수 있습니다.
             </p>
 
-            <div className="mt-5 grid gap-3 md:grid-cols-[1fr_160px_160px]">
+            <div className="mt-5 flex flex-wrap gap-1.5" role="tablist" aria-label="비교 카테고리 선택">
+              {(
+                [
+                  { value: "all", label: "전체" },
+                  { value: "drink", label: "음료" },
+                  { value: "bar", label: "바" },
+                  { value: "yogurt", label: "요거트" },
+                  { value: "shake", label: "쉐이크" },
+                ] as const
+              ).map((tab) => {
+                const active = pickerCategory === tab.value;
+                return (
+                  <button
+                    key={tab.value}
+                    type="button"
+                    role="tab"
+                    aria-selected={active}
+                    onClick={() => {
+                      setPickerCategory(tab.value);
+                      setPickerBrand("all");
+                      setPickerCurationSlug(null);
+                    }}
+                    className="rounded-full px-3.5 py-1.5 text-sm font-semibold transition-colors"
+                    style={
+                      active
+                        ? { background: "var(--accent)", color: "#fff" }
+                        : { background: "#fff", color: "var(--foreground-muted)", border: "1px solid var(--border)" }
+                    }
+                  >
+                    {tab.label}
+                  </button>
+                );
+              })}
+            </div>
+
+            <div className="mt-3 grid gap-3 md:grid-cols-[1fr_160px]">
               <input value={pickerQuery} onChange={(event) => setPickerQuery(event.target.value)} placeholder="제품명 또는 브랜드 검색" className="min-h-11 rounded-lg border px-3 text-sm" style={{ borderColor: "var(--border)" }} aria-label="비교할 제품 검색" />
-              <select value={pickerCategory} onChange={(event) => { setPickerCategory(event.target.value); setPickerBrand("all"); setPickerCurationSlug(null); }} className="min-h-11 rounded-lg border bg-white px-3 text-sm" style={{ borderColor: "var(--border)" }} aria-label="카테고리 선택">
-                <option value="all">전체 카테고리</option><option value="drink">음료</option><option value="shake">쉐이크</option><option value="bar">바</option><option value="yogurt">요거트</option>
-              </select>
               <select value={pickerBrand} onChange={(event) => setPickerBrand(event.target.value)} className="min-h-11 rounded-lg border bg-white px-3 text-sm" style={{ borderColor: "var(--border)" }} aria-label="브랜드 선택">
                 <option value="all">전체 브랜드</option>{pickerBrands.map((brand) => <option key={brand} value={brand}>{brand}</option>)}
               </select>
