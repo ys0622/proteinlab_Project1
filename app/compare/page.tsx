@@ -54,7 +54,7 @@ export default function ComparePage() {
   const [focusedColumnId, setFocusedColumnId] = useState<CompareColumnId | null>(null);
   const lastTrackedCompareKeyRef = useRef<string | null>(null);
   const [pickerQuery, setPickerQuery] = useState("");
-  const [pickerCategory, setPickerCategory] = useState<string>("all");
+  const [pickerCategory, setPickerCategory] = useState<string>("drink");
   const [pickerBrand, setPickerBrand] = useState<string>("all");
   const [pickerCurationSlug, setPickerCurationSlug] = useState<string | null>(null);
   const [recentSlugs, setRecentSlugs] = useState<string[]>([]);
@@ -73,10 +73,10 @@ export default function ComparePage() {
       .catch(() => setViewCounts({}));
   }, []);
 
-  const quickCurationChips = useMemo(() => {
-    if (pickerCategory === "all") return [];
-    return getQuickCurations(pickerCategory as CurationCategory).filter((item) => item.slug !== "popular");
-  }, [pickerCategory]);
+  const quickCurationChips = useMemo(
+    () => getQuickCurations(pickerCategory as CurationCategory).filter((item) => item.slug !== "popular"),
+    [pickerCategory],
+  );
 
   useEffect(() => {
     // Recent products are client-only local storage state restored after hydration.
@@ -134,7 +134,7 @@ export default function ComparePage() {
       : fallbackProducts;
 
   const pickerBrands = useMemo(
-    () => [...new Set(allProducts.filter((product) => pickerCategory === "all" || product.productType === pickerCategory).map((product) => product.brand))].sort((a, b) => a.localeCompare(b, "ko")),
+    () => [...new Set(allProducts.filter((product) => product.productType === pickerCategory).map((product) => product.brand))].sort((a, b) => a.localeCompare(b, "ko")),
     [allProducts, pickerCategory],
   );
   const pickerCurationFilter = useMemo(() => {
@@ -147,33 +147,21 @@ export default function ComparePage() {
   const pickerProducts = useMemo(() => {
     const query = pickerQuery.trim().toLowerCase();
     const filtered = allProducts
-      .filter((product) => pickerCategory === "all" || product.productType === pickerCategory)
+      .filter((product) => product.productType === pickerCategory)
       .filter((product) => pickerBrand === "all" || product.brand === pickerBrand)
       .filter((product) => !query || `${product.brand} ${product.name}`.toLowerCase().includes(query))
       .filter((product) => !pickerCurationFilter || pickerCurationFilter(product));
 
     if (query) return filtered.slice(0, 8);
 
-    const byHybridScore = (a: ProductDetailProps, b: ProductDetailProps) => {
-      const viewsA = viewCounts[a.productType ?? ""]?.[a.slug ?? ""] ?? 0;
-      const viewsB = viewCounts[b.productType ?? ""]?.[b.slug ?? ""] ?? 0;
-      return hybridScore(b, viewsB) - hybridScore(a, viewsA);
-    };
-
-    // "전체" 탭에서는 조회수가 많은 한 카테고리(대개 음료)가 8개를 다 차지하지 않도록
-    // 카테고리별 인기 상위 2개씩 고르게 섞어서 보여준다.
-    if (pickerCategory === "all") {
-      const categories: CurationCategory[] = ["drink", "bar", "yogurt", "shake"];
-      return categories.flatMap((category) =>
-        filtered
-          .filter((product) => product.productType === category)
-          .sort(byHybridScore)
-          .slice(0, 2),
-      );
-    }
-
-    // 특정 카테고리를 골랐을 땐 그 카테고리 안에서 인기순으로 8개.
-    return [...filtered].sort(byHybridScore).slice(0, 8);
+    // 검색어가 없을 땐 선택한 카테고리 안에서 인기순(하이브리드 점수)으로 보여준다.
+    return [...filtered]
+      .sort((a, b) => {
+        const viewsA = viewCounts[a.productType ?? ""]?.[a.slug ?? ""] ?? 0;
+        const viewsB = viewCounts[b.productType ?? ""]?.[b.slug ?? ""] ?? 0;
+        return hybridScore(b, viewsB) - hybridScore(a, viewsA);
+      })
+      .slice(0, 8);
   }, [allProducts, pickerBrand, pickerCategory, pickerCurationFilter, pickerQuery, viewCounts]);
   const recentProducts = useMemo(
     () => recentSlugs.map((slug) => getProductBySlug(slug)).filter((product): product is NonNullable<typeof product> => product != null).slice(0, 4),
@@ -260,7 +248,6 @@ export default function ComparePage() {
             <div className="mt-5 flex flex-wrap gap-1.5" role="tablist" aria-label="비교 카테고리 선택">
               {(
                 [
-                  { value: "all", label: "전체" },
                   { value: "drink", label: "음료" },
                   { value: "bar", label: "바" },
                   { value: "yogurt", label: "요거트" },
