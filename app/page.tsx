@@ -160,7 +160,7 @@ export default async function Home() {
       <Header />
 
       {/* ─── 1. Hero (베이직 톤 박스 + 검색창) ─── */}
-      <section className="mx-auto max-w-[1180px] px-4 pt-4 md:px-5 md:pt-5">
+      <section className="mx-auto max-w-[1180px] px-4 pt-3 md:px-5 md:pt-4">
         <div className="relative overflow-hidden rounded-[16px]" style={{ background: "#F2ECDD" }}>
           {/* 데스크톱: 우측 배경 블렌딩 이미지 */}
           <div
@@ -175,32 +175,32 @@ export default async function Home() {
             }}
           />
 
-          <div className="relative z-10 px-5 py-6 md:max-w-[56%] md:px-10 md:py-10">
+          <div className="relative z-10 px-5 py-5 md:max-w-[56%] md:px-10 md:py-8">
             <div className="flex items-start justify-between gap-3 md:block">
               <div className="min-w-0 flex-1">
-                <h1 className="font-extrabold leading-[1.3] text-[20px] md:text-[40px] md:leading-[1.25]" style={{ color: "#16412D", letterSpacing: "-0.02em" }}>
+                <h1 className="font-extrabold leading-[1.3] text-[20px] md:text-[38px] md:leading-[1.25]" style={{ color: "#16412D", letterSpacing: "-0.02em" }}>
                   나에게 맞는 단백질 제품,
                   <br />
                   수치로 비교하세요
                 </h1>
-                <p className="mt-2 text-[13px] md:mt-3 md:text-[16px]" style={{ color: "#5E6E61" }}>
+                <p className="mt-1.5 text-[13px] md:mt-2.5 md:text-[16px]" style={{ color: "#5E6E61" }}>
                   단백질·당류·칼로리를 한눈에 비교하고 목적에 맞는 제품을 찾아보세요.
                 </p>
               </div>
               {/* 모바일: 우측 썸네일 이미지 */}
               <div
                 aria-hidden
-                className="h-[92px] w-[92px] shrink-0 rounded-[12px] md:hidden"
+                className="h-[92px] w-[92px] shrink-0 overflow-hidden rounded-[12px] md:hidden"
                 style={{
                   backgroundImage: "url(/category-icons/hero-image.png)",
-                  backgroundSize: "cover",
-                  backgroundPosition: "center",
-                  maskImage: "radial-gradient(ellipse 130% 130% at 100% 0%, black 45%, transparent 85%)",
-                  WebkitMaskImage: "radial-gradient(ellipse 130% 130% at 100% 0%, black 45%, transparent 85%)",
+                  backgroundSize: "266% auto",
+                  backgroundPosition: "73.5% 64%",
+                  backgroundRepeat: "no-repeat",
+                  boxShadow: "inset 0 0 0 1px rgba(20,32,26,0.06)",
                 }}
               />
             </div>
-            <div className="mt-4 max-w-[560px] md:mt-5">
+            <div className="mt-3 max-w-[560px] md:mt-4">
               <HomeHeroSearch />
             </div>
           </div>
@@ -208,7 +208,7 @@ export default async function Home() {
       </section>
 
       {/* ─── 2. 카테고리 (센터 정렬 아이콘 카드) ─── */}
-      <section className="mx-auto max-w-[1180px] px-4 pt-4 md:px-5 md:pt-5">
+      <section className="mx-auto max-w-[1180px] px-4 pt-3 md:px-5 md:pt-4">
         <div className="grid grid-cols-2 gap-2 md:gap-3 md:grid-cols-4">
           {([
             { label: "단백질 음료", icon: "drink", href: "/drinks", countKey: "drink" as const },
@@ -221,7 +221,7 @@ export default async function Home() {
               href={cat.href}
               eventName="home_category_click"
               eventParams={{ category: cat.countKey, destination_url: cat.href }}
-              className="group flex items-center gap-2 rounded-[10px] bg-white px-2.5 py-2.5 text-left shadow-[0_1px_4px_rgba(20,32,26,0.06)] transition-all duration-150 hover:shadow-[0_6px_16px_rgba(20,32,26,0.10)] md:gap-3 md:rounded-[12px] md:px-3.5 md:py-3.5"
+              className="group flex items-center gap-2 rounded-[10px] bg-white px-2.5 py-2 text-left shadow-[0_1px_4px_rgba(20,32,26,0.06)] transition-all duration-150 hover:shadow-[0_6px_16px_rgba(20,32,26,0.10)] md:gap-3 md:rounded-[12px] md:px-3.5 md:py-3"
             >
               <span className="relative h-9 w-9 shrink-0 overflow-hidden rounded-[8px] transition-transform duration-150 group-hover:scale-105 md:h-14 md:w-14 md:rounded-[10px]">
                 <Image src={`/category-icons/${cat.icon}.jpg`} alt="" fill className="object-cover" sizes="56px" />
@@ -240,7 +240,7 @@ export default async function Home() {
       </section>
 
       {/* ─── 4. 이번 주 인기 제품 ─── */}
-      <section className="mx-auto max-w-[1180px] px-4 pt-3 md:px-5 md:pt-5">
+      <section className="mx-auto max-w-[1180px] px-4 pt-2 md:px-5 md:pt-4">
         <HomePopularCarousel products={carouselProducts} />
         <div className="mt-2 flex justify-end">
           <Link href="/trending" className="text-[12px] font-semibold text-[#1F5A3D] hover:underline">
