@@ -66,21 +66,21 @@ export default function HomePopularCarousel({ products }: Props) {
   return (
     <div>
       {/* Header */}
-      <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
+      <div className="mb-3 flex flex-nowrap items-center justify-between gap-1.5 md:gap-2">
         <h2
-          className="font-extrabold text-[17px] md:text-[24px]"
+          className="shrink-0 font-extrabold text-[15px] md:text-[24px]"
           style={{ color: "#1A2B1E", letterSpacing: "-0.02em" }}
         >
-          이번 주 인기 제품
+          인기 제품
         </h2>
-        <div className="flex items-center gap-2">
+        <div className="flex min-w-0 shrink-0 items-center gap-1.5 md:gap-2">
           <div className="flex gap-1">
             {TABS.map((tab, i) => (
               <button
                 key={tab.key}
                 type="button"
                 onClick={() => handleTabClick(i)}
-                className="inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-[11px] font-bold transition-all"
+                className="inline-flex items-center gap-1.5 rounded-full px-1.5 py-0.5 text-[10px] font-bold transition-all md:px-2.5 md:py-1 md:text-[11px]"
                 style={
                   tabIdx === i
                     ? { background: "#1F5A3D", color: "#fff", boxShadow: "0 2px 6px rgba(31,90,61,0.20)" }
@@ -91,8 +91,9 @@ export default function HomePopularCarousel({ products }: Props) {
               </button>
             ))}
           </div>
-          <Link href={curTab.href} className="shrink-0 text-[11px] font-bold" style={{ color: "#1F5A3D" }}>
-            전체 보기 →
+          <Link href={curTab.href} className="shrink-0 text-[10px] font-bold md:text-[11px]" style={{ color: "#1F5A3D" }}>
+            <span className="md:hidden">전체 →</span>
+            <span className="hidden md:inline">전체 보기 →</span>
           </Link>
         </div>
       </div>

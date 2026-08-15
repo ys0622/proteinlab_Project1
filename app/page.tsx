@@ -196,7 +196,8 @@ export default async function Home() {
                   backgroundSize: "266% auto",
                   backgroundPosition: "73.5% 64%",
                   backgroundRepeat: "no-repeat",
-                  boxShadow: "inset 0 0 0 1px rgba(20,32,26,0.06)",
+                  maskImage: "radial-gradient(ellipse 120% 120% at 50% 50%, black 70%, transparent 100%)",
+                  WebkitMaskImage: "radial-gradient(ellipse 120% 120% at 50% 50%, black 70%, transparent 100%)",
                 }}
               />
             </div>
