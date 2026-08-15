@@ -183,8 +183,10 @@ export default async function Home() {
                   <br />
                   수치로 비교하세요
                 </h1>
-                <p className="mt-1.5 text-[13px] md:mt-2.5 md:text-[16px]" style={{ color: "#5E6E61" }}>
-                  단백질·당류·칼로리를 한눈에 비교하고 목적에 맞는 제품을 찾아보세요.
+                <p className="mt-1.5 break-keep text-[13px] leading-[1.5] md:mt-2.5 md:text-[16px]" style={{ color: "#5E6E61" }}>
+                  단백질·당류·칼로리를 한눈에 비교하고
+                  <br className="md:hidden" />
+                  목적에 맞는 제품을 찾아보세요.
                 </p>
               </div>
               {/* 모바일: 우측 썸네일 이미지 */}

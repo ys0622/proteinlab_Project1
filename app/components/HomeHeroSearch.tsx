@@ -17,10 +17,10 @@ export default function HomeHeroSearch() {
     <form
       role="search"
       onSubmit={handleSubmit}
-      className="flex h-[52px] w-full items-center gap-2 rounded-[12px] border bg-white pl-5 pr-1.5 shadow-sm md:h-14"
+      className="flex h-[42px] w-full items-center gap-1.5 rounded-[10px] border bg-white pl-3.5 pr-1 shadow-sm md:h-14 md:gap-2 md:rounded-[12px] md:pl-5 md:pr-1.5"
       style={{ borderColor: "#E2DFD8" }}
     >
-      <svg className="h-5 w-5 shrink-0" style={{ color: "#8A968F" }} fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+      <svg className="h-4 w-4 shrink-0 md:h-5 md:w-5" style={{ color: "#8A968F" }} fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
       </svg>
       <input
@@ -33,10 +33,11 @@ export default function HomeHeroSearch() {
       />
       <button
         type="submit"
-        className="shrink-0 rounded-[8px] px-6 text-[13px] font-bold text-white transition-colors hover:opacity-90 md:h-11"
-        style={{ background: "#1F5A3D", height: "40px" }}
+        className="h-8 shrink-0 rounded-[7px] px-4 text-[12px] font-bold text-white transition-colors hover:opacity-90 md:h-11 md:rounded-[8px] md:px-6 md:text-[13px]"
+        style={{ background: "#1F5A3D" }}
       >
-        제품 비교하기
+        <span className="md:hidden">검색</span>
+        <span className="hidden md:inline">제품 비교하기</span>
       </button>
     </form>
   );
