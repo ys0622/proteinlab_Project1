@@ -280,7 +280,7 @@ export default function ComparePage() {
             </div>
 
             <div className="mt-3 grid grid-cols-[1fr_100px] gap-2 md:grid-cols-[1fr_160px] md:gap-3">
-              <input value={pickerQuery} onChange={(event) => setPickerQuery(event.target.value)} placeholder="제품명 또는 브랜드 검색" className="min-h-11 min-w-0 rounded-lg border px-3 text-sm" style={{ borderColor: "var(--border)" }} aria-label="비교할 제품 검색" />
+              <input value={pickerQuery} onChange={(event) => setPickerQuery(event.target.value)} placeholder="제품명 또는 브랜드 검색" className="min-h-11 min-w-0 rounded-lg border bg-white px-3 text-sm" style={{ borderColor: "var(--border)" }} aria-label="비교할 제품 검색" />
               <select value={pickerBrand} onChange={(event) => setPickerBrand(event.target.value)} className="min-h-11 min-w-0 rounded-lg border bg-white px-2 text-sm md:px-3" style={{ borderColor: "var(--border)" }} aria-label="브랜드 선택">
                 <option value="all">전체 브랜드</option>{pickerBrands.map((brand) => <option key={brand} value={brand}>{brand}</option>)}
               </select>
