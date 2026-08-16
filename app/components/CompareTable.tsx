@@ -1,11 +1,14 @@
 "use client";
 
+import Image from "next/image";
+import Link from "next/link";
 import type { ProductDetailProps } from "../data/products";
 import { type CompareColumnId, getCompareColumn } from "../lib/compareColumns";
 import {
   formatCompareDisplayValue,
   normalizeCompareDisplayValue,
 } from "../lib/compareDisplay";
+import { getProductImageUrl } from "../lib/productImage";
 import {
   getCoupangRedirectHref,
   getKnownSourceCoupangUrlBySlug,
@@ -13,6 +16,9 @@ import {
   getOfficialMallUrl,
   normalizeCoupangUrl,
 } from "../lib/purchaseLinks";
+import MetricBadgeGroup from "./MetricBadgeGroup";
+import ProductBadge from "./ProductBadge";
+import { formatProductBadgeLabel, getProductBadgeTone } from "./productBadgeUtils";
 import PurchaseLinkRow from "./PurchaseLinkRow";
 
 interface CompareTableProps {
@@ -87,12 +93,39 @@ export default function CompareTable({ products, visibleColumnIds }: CompareTabl
             <th className="px-4 py-3 font-semibold text-[var(--foreground)]" style={{ width: "140px" }}>
               항목
             </th>
-            {products.map((p) => (
-              <th key={p.slug} className="border-l border-[#e8e8e8] px-4 py-3 text-center">
-                <div className="font-medium text-[var(--foreground)]">{p.name}</div>
-                <div className="mt-0.5 text-xs text-[var(--foreground-muted)]">{p.brand}</div>
-              </th>
-            ))}
+            {products.map((p) => {
+              const imageUrl = getProductImageUrl(p.slug);
+              const gradeTags = (p.gradeTags ?? []).slice(0, 2);
+
+              return (
+                <th key={p.slug} className="border-l border-[#e8e8e8] px-4 py-3 text-center align-top font-normal">
+                  <Link
+                    href={`/product/${p.slug}`}
+                    className="mx-auto mb-2 block h-16 w-16 overflow-hidden rounded-lg bg-[#f7f7f7]"
+                  >
+                    {imageUrl ? (
+                      <div className="relative h-full w-full">
+                        <Image src={imageUrl} alt="" fill className="object-contain" unoptimized />
+                      </div>
+                    ) : null}
+                  </Link>
+                  <div className="font-medium text-[var(--foreground)]">{p.name}</div>
+                  <div className="mt-0.5 text-xs text-[var(--foreground-muted)]">{p.brand}</div>
+                  {gradeTags.length > 0 ? (
+                    <MetricBadgeGroup className="mt-1.5 justify-center">
+                      {gradeTags.map((tag) => (
+                        <ProductBadge
+                          key={tag}
+                          label={formatProductBadgeLabel(tag)}
+                          tone={getProductBadgeTone(formatProductBadgeLabel(tag))}
+                          className="pointer-events-none"
+                        />
+                      ))}
+                    </MetricBadgeGroup>
+                  ) : null}
+                </th>
+              );
+            })}
           </tr>
         </thead>
         <tbody>
