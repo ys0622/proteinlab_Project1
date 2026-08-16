@@ -101,7 +101,7 @@ export default function CompareTable({ products, visibleColumnIds }: CompareTabl
                 <th key={p.slug} className="border-l border-[#e8e8e8] px-4 py-3 text-center align-top font-normal">
                   <Link
                     href={`/product/${p.slug}`}
-                    className="mx-auto mb-2 block h-16 w-16 overflow-hidden rounded-lg bg-[#f7f7f7]"
+                    className="mx-auto mb-2 block h-16 w-16 overflow-hidden rounded-lg bg-white"
                   >
                     {imageUrl ? (
                       <div className="relative h-full w-full">

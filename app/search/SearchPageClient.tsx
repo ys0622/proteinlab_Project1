@@ -132,7 +132,7 @@ export default function SearchPageClient({ initialQuery }: { initialQuery: strin
           value={query}
           onChange={(e) => handleQueryChange(e.target.value)}
           placeholder="브랜드명 또는 제품명으로 검색"
-          className="w-full rounded-xl border border-[#e8e6e3] bg-[#fffdf8] py-3 pl-11 pr-4 text-sm focus:border-[var(--accent)] focus:outline-none focus:ring-1 focus:ring-[var(--accent)]"
+          className="w-full rounded-xl border border-[#e8e6e3] bg-white py-3 pl-11 pr-4 text-sm focus:border-[var(--accent)] focus:outline-none focus:ring-1 focus:ring-[var(--accent)]"
           autoComplete="off"
         />
         {query ? (

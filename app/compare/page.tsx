@@ -330,7 +330,7 @@ export default function ComparePage() {
                     className="flex min-h-11 items-center justify-between gap-2.5 rounded-lg border bg-white px-3 py-2 text-left text-sm transition-colors hover:border-[var(--accent)] disabled:opacity-50"
                     style={{ borderColor: "var(--border)" }}
                   >
-                    <span className="relative h-10 w-10 shrink-0 overflow-hidden rounded-md bg-[#f7f7f7]">
+                    <span className="relative h-10 w-10 shrink-0 overflow-hidden rounded-md bg-white">
                       {imageUrl ? (
                         <Image src={imageUrl} alt="" fill className="object-contain" unoptimized />
                       ) : null}
@@ -423,7 +423,7 @@ export default function ComparePage() {
                   className="flex items-center gap-3 rounded-xl border border-[#e8e6e3] bg-white p-3 pr-2"
                   style={{ borderRadius: "12px" }}
                 >
-                  <div className="relative h-12 w-12 flex-shrink-0 overflow-hidden rounded-lg bg-[#f7f7f7]">
+                  <div className="relative h-12 w-12 flex-shrink-0 overflow-hidden rounded-lg bg-white">
                     {getProductImageUrl(p.slug) ? (
                       <Image src={getProductImageUrl(p.slug)!} alt="" fill className="object-contain" unoptimized />
                     ) : null}
