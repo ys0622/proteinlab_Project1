@@ -152,7 +152,7 @@ export default function ComparePage() {
       .filter((product) => !query || `${product.brand} ${product.name}`.toLowerCase().includes(query))
       .filter((product) => !pickerCurationFilter || pickerCurationFilter(product));
 
-    if (query) return filtered.slice(0, 8);
+    if (query) return filtered;
 
     // 검색어가 없을 땐 선택한 카테고리 안에서 인기순(하이브리드 점수)으로 보여준다.
     return [...filtered]
