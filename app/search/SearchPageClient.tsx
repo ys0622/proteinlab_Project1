@@ -21,13 +21,20 @@ interface ProductsJson {
 }
 
 const CATEGORY_LABEL: Record<string, string> = {
-  drink: "음료",
-  bar: "바",
+  drinks: "음료",
+  bars: "바",
   yogurt: "요거트",
   shake: "쉐이크",
 };
 
-const CATEGORY_ORDER = ["drink", "bar", "yogurt", "shake"];
+const CATEGORY_ORDER = ["drinks", "bars", "yogurt", "shake"];
+
+const PRODUCT_CARD_TYPE: Record<string, "drink" | "bar" | "yogurt" | "shake"> = {
+  drinks: "drink",
+  bars: "bar",
+  yogurt: "yogurt",
+  shake: "shake",
+};
 
 const START_LINKS = [
   {
@@ -103,8 +110,7 @@ export default function SearchPageClient({ initialQuery }: { initialQuery: strin
   return (
     <div>
       <div className="max-w-3xl">
-        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--accent)]">Search</p>
-        <h1 className="mt-2 text-2xl font-bold text-[var(--foreground)] md:text-3xl">
+        <h1 className="text-2xl font-bold text-[var(--foreground)] md:text-3xl">
           단백질 제품 검색
         </h1>
         <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)] md:text-base">
@@ -269,7 +275,7 @@ export default function SearchPageClient({ initialQuery }: { initialQuery: strin
                     calories={product.calories ?? undefined}
                     sugar={product.sugar ?? undefined}
                     density="-"
-                    productType={product.category as "drink" | "bar" | "yogurt" | "shake"}
+                    productType={PRODUCT_CARD_TYPE[category]}
                   />
                 ))}
               </div>
@@ -277,7 +283,7 @@ export default function SearchPageClient({ initialQuery }: { initialQuery: strin
                 <p className="mt-3 text-xs text-[var(--foreground-muted)]">
                   {items.length - 8}개가 더 있습니다.{" "}
                   <Link
-                    href={`/${category === "drink" ? "" : category}`}
+                    href={`/${category}`}
                     className="text-[var(--accent)] hover:underline"
                   >
                     전체 {CATEGORY_LABEL[category]} 보기
