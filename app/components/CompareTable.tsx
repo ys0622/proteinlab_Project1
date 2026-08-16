@@ -152,6 +152,7 @@ export default function CompareTable({ products, visibleColumnIds }: CompareTabl
                           naverHref={naverHref}
                           officialMallHref={officialHref}
                           size="sm"
+                          coupangOnly
                         />
                       </td>
                     );

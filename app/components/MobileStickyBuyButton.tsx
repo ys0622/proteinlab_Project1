@@ -1,21 +1,19 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { purchaseClick } from "@/lib/analytics";
 
 type Props = {
   coupangHref: string | null;
-  naverHref: string | null;
   brand: string;
   productName: string;
   slug: string;
-  /** 이 ref가 뷰포트에 보이는 동안은 sticky 버튼을 숨김 */
+  /** Hide the sticky button while the main purchase block is visible. */
   anchorRef: React.RefObject<HTMLElement | null>;
 };
 
 export default function MobileStickyBuyButton({
   coupangHref,
-  naverHref,
   brand,
   productName,
   slug,
@@ -29,7 +27,6 @@ export default function MobileStickyBuyButton({
 
     const observer = new IntersectionObserver(
       ([entry]) => {
-        // 원본 구매 버튼이 화면에서 벗어나면 sticky 버튼 표시
         setVisible(!entry.isIntersecting);
       },
       { threshold: 0 },
@@ -39,7 +36,7 @@ export default function MobileStickyBuyButton({
     return () => observer.disconnect();
   }, [anchorRef]);
 
-  if (!coupangHref && !naverHref) return null;
+  if (!coupangHref) return null;
 
   return (
     <div
@@ -54,7 +51,7 @@ export default function MobileStickyBuyButton({
         boxShadow: "0 -4px 16px rgba(0,0,0,0.08)",
       }}
     >
-      <div className={`grid gap-2 ${coupangHref ? "grid-cols-1" : "grid-cols-1"}`}>
+      <div className="grid grid-cols-1 gap-2">
         {coupangHref && (
           <a
             href={coupangHref}
@@ -91,26 +88,6 @@ export default function MobileStickyBuyButton({
               <path d="M16 10a4 4 0 0 1-8 0" />
             </svg>
             쿠팡 최저가 확인
-          </a>
-        )}
-        {!coupangHref && naverHref && (
-          <a
-            href={naverHref}
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              background: "#628c78",
-              color: "#fff",
-              borderRadius: "12px",
-              fontWeight: 700,
-              fontSize: "15px",
-              padding: "13px 0",
-            }}
-          >
-            네이버 가격 비교
           </a>
         )}
       </div>

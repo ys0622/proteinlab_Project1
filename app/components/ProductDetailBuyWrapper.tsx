@@ -42,7 +42,6 @@ export default function ProductDetailBuyWrapper(props: Props) {
 
       <MobileStickyBuyButton
         coupangHref={props.coupangHref}
-        naverHref={props.naverHref}
         brand={props.brand}
         productName={props.productName}
         slug={props.slug}
