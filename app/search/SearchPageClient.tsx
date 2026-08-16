@@ -2,7 +2,6 @@
 
 import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
-import Link from "next/link";
 import ProductCard from "../components/ProductCard";
 import TrackedLink from "../components/TrackedLink";
 
@@ -263,7 +262,7 @@ export default function SearchPageClient({ initialQuery }: { initialQuery: strin
                 </h2>
               </div>
               <div className="grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-4 md:gap-4">
-                {items.slice(0, 8).map((product) => (
+                {items.map((product) => (
                   <ProductCard
                     key={product.slug}
                     slug={product.slug}
@@ -279,17 +278,6 @@ export default function SearchPageClient({ initialQuery }: { initialQuery: strin
                   />
                 ))}
               </div>
-              {items.length > 8 ? (
-                <p className="mt-3 text-xs text-[var(--foreground-muted)]">
-                  {items.length - 8}개가 더 있습니다.{" "}
-                  <Link
-                    href={`/${category}`}
-                    className="text-[var(--accent)] hover:underline"
-                  >
-                    전체 {CATEGORY_LABEL[category]} 보기
-                  </Link>
-                </p>
-              ) : null}
             </section>
           ))}
         </div>
