@@ -190,18 +190,23 @@ export default async function Home() {
                 </p>
               </div>
               {/* 모바일: 우측 썸네일 이미지 */}
-              <div
-                aria-hidden
-                className="h-[92px] w-[92px] shrink-0 overflow-hidden rounded-[12px] md:hidden"
-                style={{
-                  backgroundImage: "url(/category-icons/hero-image.png)",
-                  backgroundSize: "266% auto",
-                  backgroundPosition: "73.5% 64%",
-                  backgroundRepeat: "no-repeat",
-                  maskImage: "radial-gradient(ellipse 120% 120% at 50% 50%, black 70%, transparent 100%)",
-                  WebkitMaskImage: "radial-gradient(ellipse 120% 120% at 50% 50%, black 70%, transparent 100%)",
-                }}
-              />
+              <div aria-hidden className="relative h-[92px] w-[92px] shrink-0 overflow-hidden rounded-[12px] md:hidden">
+                <div
+                  className="absolute inset-0"
+                  style={{
+                    backgroundImage: "url(/category-icons/hero-image.png)",
+                    backgroundSize: "266% auto",
+                    backgroundPosition: "73.5% 64%",
+                    backgroundRepeat: "no-repeat",
+                  }}
+                />
+                <div
+                  className="absolute inset-0"
+                  style={{
+                    background: "radial-gradient(ellipse 75% 75% at 50% 50%, transparent 45%, #F2ECDD 100%)",
+                  }}
+                />
+              </div>
             </div>
             <div className="mt-2.5 max-w-[560px] md:mt-4">
               <HomeHeroSearch />
