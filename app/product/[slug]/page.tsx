@@ -979,6 +979,9 @@ export default async function ProductDetailPage({ params }: PageProps) {
                     candidate.productType ?? null,
                     candidate.slug,
                   );
+                  const candidateLabel = candidate.name.startsWith(candidate.brand)
+                    ? candidate.name
+                    : `${candidate.brand} ${candidate.name}`;
                   return (
                     <div
                       key={candidate.slug}
@@ -986,13 +989,13 @@ export default async function ProductDetailPage({ params }: PageProps) {
                     >
                       <TrackedLink
                         href={`/product/${candidate.slug}`}
-                        trackingLabel={`${candidate.brand} ${candidate.name}`}
+                        trackingLabel={candidateLabel}
                         trackingSection="product_detail_similar_products"
                         trackingPageType="product_detail"
                         className="flex-1"
                       >
                         <p className="text-[13px] font-bold leading-tight" style={{ color: "#1E2A22" }}>
-                          {candidate.brand} {candidate.name}
+                          {candidateLabel}
                         </p>
                         <p className="mt-1.5 text-[12px] leading-5" style={{ color: "#5F6B61" }}>
                           단백질 {candidate.proteinPerServing}g
