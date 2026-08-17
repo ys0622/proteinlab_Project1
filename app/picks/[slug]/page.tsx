@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import Footer from "@/app/components/Footer";
 import Header from "@/app/components/Header";
+import CommercialAdSection from "@/app/components/CommercialAdSection";
 import ProductCard from "@/app/components/ProductCard";
 import { getAllPickSlugs, getPickBySlug } from "@/app/data/picksConfig";
 import { getProductsByCategoryAsync } from "@/app/lib/productData";
@@ -326,6 +327,7 @@ export default async function PickDetailPage({ params }: PageProps) {
             홈으로
           </Link>
         </div>
+        <CommercialAdSection pageType="feed" className="mt-6" />
       </main>
 
       <Footer />

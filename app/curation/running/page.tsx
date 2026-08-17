@@ -1,5 +1,6 @@
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
+import CommercialAdSection from "../../components/CommercialAdSection";
 import CurationLandingTemplate from "../../components/CurationLandingTemplate";
 import { getCurationLandingData } from "../../lib/curationLanding";
 import { notFound } from "next/navigation";
@@ -44,6 +45,9 @@ export default function RunningCurationPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
       <Header />
       <CurationLandingTemplate {...data} />
+      <div className="mx-auto max-w-[1200px] px-4 pb-8 md:px-6">
+        <CommercialAdSection pageType="feed" />
+      </div>
       <Footer />
     </div>
   );

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import CommercialAdSection from "../components/CommercialAdSection";
 import { getAllProducts } from "../data/products";
 import { getCategoryLabel, type ProductCategory } from "../lib/categories";
 import { getBrandSummary } from "../lib/brandHubs";
@@ -50,6 +51,7 @@ export default async function BrandsPage() {
             </Link>
           ))}
         </div>
+        <CommercialAdSection pageType="feed" className="mt-6" />
       </main>
 
       <Footer />

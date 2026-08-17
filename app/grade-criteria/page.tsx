@@ -4,6 +4,7 @@ import { useState } from "react";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import CategoryTabs from "../components/CategoryTabs";
+import CommercialAdSection from "../components/CommercialAdSection";
 import type { ProductCategory } from "../lib/categories";
 
 const GRADE_COLORS: Record<string, { color: string; bg: string; border: string }> = {
@@ -224,6 +225,7 @@ export default function GradeCriteriaPage() {
             </div>
           ))}
         </div>
+        <CommercialAdSection pageType="feed" className="mt-6" />
       </main>
 
       <Footer />

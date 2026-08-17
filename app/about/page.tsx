@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import CommercialAdSection from "../components/CommercialAdSection";
 import { getProductsByCategoryAsync } from "../lib/productData";
 
 export const metadata = {
@@ -201,6 +202,7 @@ export default async function AboutPage() {
           </section>
 
         </article>
+        <CommercialAdSection pageType="feed" className="mt-6" />
       </main>
 
       <Footer />

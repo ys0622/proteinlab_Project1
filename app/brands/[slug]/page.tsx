@@ -2,6 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
+import CommercialAdSection from "../../components/CommercialAdSection";
 import ProductCard from "../../components/ProductCard";
 import TrackedLink from "../../components/TrackedLink";
 import { getAllProducts } from "../../data/products";
@@ -335,6 +336,7 @@ export default async function BrandPage({ params }: PageProps) {
             ))}
           </div>
         </section>
+        <CommercialAdSection pageType="feed" className="mt-6" />
       </main>
 
       <Footer />

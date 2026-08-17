@@ -1,5 +1,6 @@
 ﻿import Header from "../components/Header";
 import Footer from "../components/Footer";
+import CommercialAdSection from "../components/CommercialAdSection";
 import EventsClient from "./EventsClient";
 
 export const metadata = {
@@ -13,7 +14,11 @@ export default function OfficialEventsPage() {
     <div className="min-h-screen bg-white">
       <Header />
       <EventsClient />
+      <div className="mx-auto max-w-[1200px] px-4 pb-8 md:px-6">
+        <CommercialAdSection pageType="feed" />
+      </div>
       <Footer />
     </div>
   );
 }
+

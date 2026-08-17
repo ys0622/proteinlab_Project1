@@ -1,6 +1,7 @@
 ﻿import type { Metadata } from "next";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import CommercialAdSection from "../components/CommercialAdSection";
 import SearchPageClient from "./SearchPageClient";
 
 interface SearchPageProps {
@@ -28,6 +29,7 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
       <Header />
       <main className="mx-auto max-w-[1200px] px-4 py-8 md:px-6">
         <SearchPageClient initialQuery={q} />
+        <CommercialAdSection pageType="feed" className="mt-6" />
       </main>
       <Footer />
     </div>

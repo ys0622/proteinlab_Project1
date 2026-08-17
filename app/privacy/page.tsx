@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import CommercialAdSection from "../components/CommercialAdSection";
 
 export const metadata = {
   title: "Privacy Policy | ProteinLab",
@@ -97,6 +98,9 @@ export default function PrivacyPage() {
           </p>
         </article>
       </main>
+      <div className="mx-auto max-w-[1200px] px-4 pb-8 md:px-6">
+        <CommercialAdSection pageType="feed" />
+      </div>
 
       <Footer />
     </div>

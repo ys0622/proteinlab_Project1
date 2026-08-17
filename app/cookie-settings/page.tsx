@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import CommercialAdSection from "../components/CommercialAdSection";
 
 const COOKIE_CONSENT_KEY = "proteinlab_cookie_consent";
 
@@ -135,6 +136,9 @@ export default function CookieSettingsPage() {
           브라우저 설정에서 쿠키를 거부하거나 삭제할 수도 있습니다. 쿠키를 비활성화해도 사이트의 주요 기능은 정상 이용 가능합니다.
         </p>
       </main>
+      <div className="mx-auto max-w-[1200px] px-4 pb-8 md:px-6">
+        <CommercialAdSection pageType="feed" />
+      </div>
 
       <Footer />
     </div>

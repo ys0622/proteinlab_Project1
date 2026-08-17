@@ -2,6 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
+import CommercialAdSection from "../../components/CommercialAdSection";
 import RelatedLinkCards from "../../components/RelatedLinkCards";
 import TrackedLink from "../../components/TrackedLink";
 import { getAllSearchTopics, getSearchTopicBySlug } from "../../data/searchTopics";
@@ -293,6 +294,7 @@ export default async function TopicLandingPage({ params }: PageProps) {
           links={topic.relatedLinks}
           sectionId={`topic-${topic.slug}-related`}
         />
+        <CommercialAdSection pageType="feed" className="mt-6" />
       </main>
 
       <Footer />

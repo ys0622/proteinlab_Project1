@@ -3,6 +3,7 @@ import Link from "next/link";
 import Header from "../components/Header";
 import AffiliateDisclosure from "../components/AffiliateDisclosure";
 import Footer from "../components/Footer";
+import CommercialAdSection from "../components/CommercialAdSection";
 import ProductListWithFilters from "../components/ProductListWithFilters";
 import { getProductsByCategoryAsync } from "../lib/productData";
 import type { ProductCategory } from "../lib/categories";
@@ -184,6 +185,7 @@ export default async function ProductsPage() {
             tabsPlacement="before_grid"
           />
         </section>
+        <CommercialAdSection pageType="category" className="mt-6" />
       </main>
 
       <Footer />
