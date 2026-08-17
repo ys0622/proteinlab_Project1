@@ -189,21 +189,20 @@ export default async function Home() {
                   목적에 맞는 제품을 찾아보세요.
                 </p>
               </div>
-              {/* 모바일: 우측 썸네일 이미지 */}
+              {/* 모바일: 우측 썸네일 이미지 (PC와 동일한 크롭·블렌딩) */}
               <div aria-hidden className="relative h-[92px] w-[92px] shrink-0 overflow-hidden rounded-[12px] md:hidden">
                 <div
                   className="absolute inset-0"
                   style={{
                     backgroundImage: "url(/category-icons/hero-image.png)",
-                    backgroundSize: "266% auto",
-                    backgroundPosition: "73.5% 64%",
-                    backgroundRepeat: "no-repeat",
+                    backgroundSize: "cover",
+                    backgroundPosition: "center",
                   }}
                 />
                 <div
                   className="absolute inset-0"
                   style={{
-                    background: "radial-gradient(ellipse 75% 75% at 50% 50%, transparent 72%, #F2ECDD 100%)",
+                    background: "linear-gradient(to right, #F2ECDD, transparent 30%)",
                   }}
                 />
               </div>
