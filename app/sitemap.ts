@@ -26,6 +26,7 @@ const PAGE_DATES: Record<string, string> = {
   "/trending": "2026-07-03",
   "/recommend": "2026-07-15",
   "/guides": "2026-07-20",
+  "/guides/market-insights/new-product-analysis": "2026-08-17",
   "/guides/intake-strategy-health/protein-drink-daily": "2026-07-20",
   "/guides/intake-strategy-health/protein-drink-diarrhea": "2026-07-20",
   "/guides/intake-strategy-health/protein-drink-empty-stomach": "2026-07-20",

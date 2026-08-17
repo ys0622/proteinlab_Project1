@@ -235,6 +235,10 @@ export default function ProteinDrinkTrend2026Page() {
                 <p className="text-sm font-semibold text-[#6b4d7c]">100mL당 단백질 순위</p>
                 <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">브랜드 트렌드가 실제 단백질 밀도 순위에서 어떻게 드러나는지 봅니다.</p>
               </Link>
+              <Link href="/guides/market-insights/new-product-analysis" className="rounded-2xl border border-[#e5d8ee] bg-white p-4 transition-colors hover:bg-[#f6f1fa]">
+                <p className="text-sm font-semibold text-[#6b4d7c]">신제품 분석 기준</p>
+                <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">뉴케어, 테이크핏, 랩노쉬처럼 최근 제품을 어떤 기준으로 읽어야 하는지 이어서 확인합니다.</p>
+              </Link>
             </div>
           </section>
 

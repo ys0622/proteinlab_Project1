@@ -16,6 +16,7 @@ import MetricBadgeGroup from "../../components/MetricBadgeGroup";
 import NutritionDetailSection from "../../components/NutritionDetailSection";
 import ProductBadge from "../../components/ProductBadge";
 import ProductDetailBuyWrapper from "../../components/ProductDetailBuyWrapper";
+import PurchaseLinkButton from "../../components/PurchaseLinkButton";
 import RelatedLinkCards from "../../components/RelatedLinkCards";
 import TrackedLink from "../../components/TrackedLink";
 import {
@@ -1003,15 +1004,14 @@ export default async function ProductDetailPage({ params }: PageProps) {
                         </p>
                       </TrackedLink>
                       {candidateCoupangHref && (
-                        <a
-                          href={candidateCoupangHref}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="mt-3 block rounded-lg py-1.5 text-center text-[12px] font-semibold transition-colors"
-                          style={{ background: "#fee500", color: "#191919" }}
-                        >
-                          쿠팡 구매
-                        </a>
+                        <div className="mt-3">
+                          <PurchaseLinkButton
+                            href={candidateCoupangHref}
+                            label="쿠팡 구매"
+                            tone="coupang"
+                            size="sm"
+                          />
+                        </div>
                       )}
                     </div>
                   );
