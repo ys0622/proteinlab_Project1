@@ -168,6 +168,11 @@ export default function ProductReviewSection({ slug }: Props) {
               {r.comment && <p className="mt-1.5 text-xs leading-5 text-[var(--foreground-muted)]">{r.comment}</p>}
             </div>
           ))}
+          {reviews.length > 5 && (
+            <p className="pt-1 text-xs text-[var(--foreground-muted)]">
+              최근 5개만 표시했어요. 총 {reviews.length}개의 의견이 있습니다.
+            </p>
+          )}
         </div>
       )}
     </section>
