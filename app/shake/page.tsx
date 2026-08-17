@@ -7,6 +7,7 @@ import ProductListWithFilters from "../components/ProductListWithFilters";
 import CategoryFaqSection, { getCategoryFaqs } from "../components/CategoryFaqSection";
 import type { ProductCategory } from "../lib/categories";
 import { getProductsByCategoryAsync } from "../lib/productData";
+import { formatProductLabel } from "../lib/productLabel";
 
 export async function generateMetadata(): Promise<Metadata> {
   const products = await getProductsByCategoryAsync("shake");
@@ -68,7 +69,7 @@ export default async function ShakePage() {
       "@type": "ListItem",
       position: i + 1,
       url: `https://proteinlab.kr/product/${p.slug}`,
-      name: `${p.brand} ${p.name}`,
+      name: formatProductLabel(p.brand, p.name),
     })),
   };
 

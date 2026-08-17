@@ -1,5 +1,6 @@
 import type { CategoryGuideConfig, CategoryMetricRow } from "./categoryGuideShared";
 import { getShakeProducts } from "@/app/data/shakeProductsData";
+import { formatProductLabel } from "@/app/lib/productLabel";
 
 const shakeProducts = getShakeProducts();
 
@@ -172,7 +173,7 @@ export const proteinShakeTop7Config: CategoryGuideConfig = {
   comparisonRows: shakeTop7.map((product, index) => ({
     label: `${index + 1}위`,
     values: [
-      `${product.brand} ${product.name}`,
+      formatProductLabel(product.brand, product.name),
       `${product.proteinPerServing}g`,
       `${product.calories}kcal`,
       `${product.sugar}g`,
@@ -221,7 +222,7 @@ export const proteinShakeTop7Config: CategoryGuideConfig = {
       { title: "랩노쉬 라인업", href: "/guides/product-selection-comparison/labnosh-lineup", description: "슬림쉐이크 중심으로 맛과 목적 차이를 더 자세히 봅니다." },
     ],
   purchaseLinks: shakeTop7.slice(0, 3).map((product) => ({
-    label: `${product.brand} ${product.name} 보기`,
+    label: `${formatProductLabel(product.brand, product.name)} 보기`,
     slug: product.slug,
   })),
   externalLinks: [
@@ -363,7 +364,7 @@ export const dietProteinShakeConfig: CategoryGuideConfig = {
   comparisonRows: dietShakeTop.map((product, index) => ({
     label: `${index + 1}순위`,
     values: [
-      `${product.brand} ${product.name}`,
+      formatProductLabel(product.brand, product.name),
       `${product.proteinPerServing}g`,
       `${product.calories}kcal`,
       `${product.sugar}g`,
@@ -452,7 +453,7 @@ export const proteinShakeCalorieRankingConfig: CategoryGuideConfig = {
   comparisonRows: shakeCalorieTop20.map((product, index) => ({
     label: `${index + 1}위`,
     values: [
-      `${product.brand} ${product.name}`,
+      formatProductLabel(product.brand, product.name),
       `${product.calories}kcal`,
       `${product.proteinPerServing}g`,
       `${product.sugar}g`,

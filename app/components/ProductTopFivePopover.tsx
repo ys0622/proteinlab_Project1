@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
 import type { ProductDetailProps } from "../data/products";
 import { getPopularProducts } from "../lib/productPopularity";
+import { formatProductLabel } from "../lib/productLabel";
 
 interface ProductTopFivePopoverProps {
   productType: "drink" | "bar" | "yogurt" | "shake";
@@ -91,7 +92,7 @@ export default function ProductTopFivePopover({
                     {index + 1}.
                   </span>
                   <span className="min-w-0 truncate">
-                    {product.brand} {product.name}
+                    {formatProductLabel(product.brand, product.name)}
                   </span>
                 </Link>
               </li>

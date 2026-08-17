@@ -6,6 +6,7 @@ import CommercialAdSection from "../../components/CommercialAdSection";
 import ProductCard from "../../components/ProductCard";
 import TrackedLink from "../../components/TrackedLink";
 import { getCompareLandingBySlug, getAllCompareLandings } from "../../data/compareLandings";
+import { formatProductLabel } from "../../lib/productLabel";
 import { getAllProducts } from "../../data/products";
 
 interface PageProps {
@@ -105,7 +106,7 @@ export default async function CompareLandingPage({ params }: PageProps) {
         "@type": "ListItem",
         position: i + 1,
         url: `https://proteinlab.kr/product/${p.slug}`,
-        name: `${p.brand} ${p.name}`,
+        name: formatProductLabel(p.brand, p.name),
       })),
     },
     {
@@ -171,7 +172,7 @@ export default async function CompareLandingPage({ params }: PageProps) {
                 <TrackedLink
                   key={product.slug}
                   href={`/product/${product.slug}`}
-                  trackingLabel={`${product.brand} ${product.name} 상세 보기`}
+                  trackingLabel={`${formatProductLabel(product.brand, product.name)} 상세 보기`}
                   trackingSection="compare_hero_product"
                   trackingPageType="compare_landing"
                   contentId={conversionPlan.contentId}
@@ -180,7 +181,7 @@ export default async function CompareLandingPage({ params }: PageProps) {
                   ctaType="product_detail"
                   className="rounded-full border border-[#dce8df] px-4 py-2 text-sm font-semibold text-[#24543d] hover:bg-[#f6fbf7]"
                 >
-                  {product.brand} {product.name} 상세
+                  {formatProductLabel(product.brand, product.name)} 상세
                 </TrackedLink>
               ))}
               <TrackedLink

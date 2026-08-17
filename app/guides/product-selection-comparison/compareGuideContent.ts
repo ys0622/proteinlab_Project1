@@ -1,5 +1,6 @@
 import type { CompareMetricRow, ComparePageConfig, RelatedGuideLink } from "./productCompareShared";
 import { formatCalories100, formatDensity, getDrinkProduct } from "./productCompareShared";
+import { formatProductLabel } from "../../lib/productLabel";
 
 const sellex = getDrinkProduct("sellex-profit-milk-vanilla-250");
 const hymune = getDrinkProduct("hymune-balance-active-deepchoco-250");
@@ -172,7 +173,7 @@ export const highProtein40gConfig: ComparePageConfig = {
   intro: "40g 이상 단백질 음료를 찾는 사람은 대체로 운동 후 보충 효율을 가장 먼저 봅니다. 2026년에는 테이크핏 몬스터가 45g으로 올라가고 랩노쉬 프로틴 맥스 52g 제품까지 등장하면서 검색 의도가 40g대에서 50g대 초고단백으로 넓어졌습니다. 다만 실제 선택은 총량만으로 끝나지 않고 칼로리, 락토프리 여부, 맛 만족도까지 같이 봐야 합니다.",
   summary: [
     "운동 직후 단백질 효율만 보면 테이크핏 몬스터 45g이 가장 직선적입니다.",
-    `단백질 총량만 보면 ${labnoshMax.brand} ${labnoshMax.name} ${labnoshMax.proteinPerServing}g처럼 50g대 제품도 후보에 들어오지만, 칼로리와 음용 부담은 따로 봐야 합니다.`,
+    `단백질 총량만 보면 ${formatProductLabel(labnoshMax.brand, labnoshMax.name)} ${labnoshMax.proteinPerServing}g처럼 50g대 제품도 후보에 들어오지만, 칼로리와 음용 부담은 따로 봐야 합니다.`,
     "락토프리와 균형형 보충까지 같이 보려면 뉴케어 올프로틴 41g이 더 안정적입니다.",
     "맛 위주 첫 진입은 닥터유 40g이 편하지만 칼로리와 지방은 가장 높습니다.",
   ],
@@ -254,7 +255,7 @@ export const proteinDensityRankingConfig: ComparePageConfig = {
   comparisonRows: buildComparisonRows(
     rankingRows.map((product, index) => ({
       label: `${index + 1}위`,
-      values: [`${product.brand} ${product.name}`, formatDensity(product), product.capacity ?? "-", formatCalories100(product)],
+      values: [formatProductLabel(product.brand, product.name), formatDensity(product), product.capacity ?? "-", formatCalories100(product)],
     })),
   ),
   sections: [

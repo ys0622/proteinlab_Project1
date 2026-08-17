@@ -39,6 +39,7 @@ import {
   getStaticProductsByCategory,
 } from "../../lib/productDataStatic";
 import { getProductImageUrl } from "../../lib/productImage";
+import { formatProductLabel } from "../../lib/productLabel";
 import { getSimilarProducts } from "../../lib/similarProducts";
 import {
   getCoupangRedirectHref,
@@ -108,8 +109,8 @@ function getProductFaqs(product: ProductDetailProps) {
 
   const baseFaqs = [
     {
-      question: `${product.brand} ${product.name}은 어떤 기준으로 보면 되나요?`,
-      answer: `${product.brand} ${product.name}은 ${getMetricLine(product)} 기준으로 먼저 보는 편이 좋습니다. 같은 ${categoryLabel} 안에서는 단백질 총량, 당류, 칼로리, 용량당 밀도를 같이 비교해야 실제 체감 차이가 잘 보입니다.`,
+      question: `${formatProductLabel(product.brand, product.name)}은 어떤 기준으로 보면 되나요?`,
+      answer: `${formatProductLabel(product.brand, product.name)}은 ${getMetricLine(product)} 기준으로 먼저 보는 편이 좋습니다. 같은 ${categoryLabel} 안에서는 단백질 총량, 당류, 칼로리, 용량당 밀도를 같이 비교해야 실제 체감 차이가 잘 보입니다.`,
     },
     {
       question: `이 제품과 비슷한 ${categoryLabel}은 어디서 더 볼 수 있나요?`,
@@ -123,7 +124,7 @@ function getProductFaqs(product: ProductDetailProps) {
 
   if ((product.proteinPerServing ?? 0) >= 40) {
     baseFaqs.push({
-      question: `${product.brand} ${product.name}, 단백질 ${product.proteinPerServing}g을 한 번에 먹어도 되나요?`,
+      question: `${formatProductLabel(product.brand, product.name)}, 단백질 ${product.proteinPerServing}g을 한 번에 먹어도 되나요?`,
       answer: `신장 기능이 정상인 성인이라면 일시적으로 섭취하는 것 자체가 즉시 위험하지는 않지만, 소화 부담(더부룩함·가스)이 흔하게 나타날 수 있습니다. 평소 운동을 자주 하지 않거나 식사에서 단백질을 충분히 섭취하고 있다면 20~30g대 제품이 더 부담 없을 수 있습니다. 자세한 기준은 고단백 음료 부담·부작용 가이드(/guides/intake-strategy-health/high-protein-side-effects)에서 확인할 수 있습니다.`,
     });
   }
@@ -186,7 +187,7 @@ function buildProductDescription(product: ProductDetailProps): string {
         : product.productType === "bar"
           ? "칼로리·당류 기준으로 비슷한 단백질 바와 한눈에 비교하세요."
           : "당류·단백질 기준으로 비슷한 요거트와 한눈에 비교하세요.";
-  return `${product.brand} ${product.name} — ${metrics.join(" · ")}. ${tail}`;
+  return `${formatProductLabel(product.brand, product.name)} — ${metrics.join(" · ")}. ${tail}`;
 }
 
 function buildProductTitle(product: ProductDetailProps): string {
@@ -199,7 +200,7 @@ function buildProductTitle(product: ProductDetailProps): string {
         ? `${product.calories}kcal`
         : null;
   const metrics = second ? `${protein} · ${second}` : protein;
-  return `${product.brand} ${product.name} ${metrics} — ${kind} 성분 비교`;
+  return `${formatProductLabel(product.brand, product.name)} ${metrics} — ${kind} 성분 비교`;
 }
 
 function getCategoryDetailHref(category: "drink" | "bar" | "yogurt" | "shake"): string {
@@ -369,7 +370,7 @@ export async function generateMetadata({ params }: PageProps) {
           title: buildProductTitle(product),
           description: buildProductDescription(product),
           url: `https://proteinlab.kr/product/${slug}`,
-          images: [{ url: ogImage, width: 800, height: 800, alt: `${product.brand} ${product.name}` }],
+          images: [{ url: ogImage, width: 800, height: 800, alt: formatProductLabel(product.brand, product.name) }],
         }
       : undefined,
     twitter: {
@@ -491,7 +492,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
         {
           "@type": "ListItem",
           position: 3,
-          name: `${product.brand} ${product.name}`,
+          name: formatProductLabel(product.brand, product.name),
           item: `https://proteinlab.kr/product/${slug}`,
         },
       ],
@@ -499,7 +500,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
     {
       "@context": "https://schema.org",
       "@type": "Product",
-      name: `${product.brand} ${product.name}`,
+      name: formatProductLabel(product.brand, product.name),
       brand: { "@type": "Brand", name: product.brand },
       description: buildProductDescription(product),
       ...(productImageUrl ? { image: `https://proteinlab.kr${productImageUrl}` } : {}),
@@ -560,7 +561,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
             <div className="flex items-center gap-2">
               <ShareButton
                 url={`/product/${slug}`}
-                title={`${product.brand} ${product.name} — 단백질 ${product.proteinPerServing}g`}
+                title={`${formatProductLabel(product.brand, product.name)} — 단백질 ${product.proteinPerServing}g`}
                 description={buildProductDescription(product)}
               />
               <AdminQuickEdit slug={slug} />
@@ -584,7 +585,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
                 {productImageUrl ? (
                   <Image
                     src={productImageUrl}
-                    alt={`${product.brand} ${product.name}`}
+                    alt={formatProductLabel(product.brand, product.name)}
                     width={420}
                     height={128}
                     className="max-h-full w-auto max-w-full object-contain"
@@ -605,7 +606,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
                   {productImageUrl ? (
                     <Image
                       src={productImageUrl}
-                      alt={`${product.brand} ${product.name}`}
+                      alt={formatProductLabel(product.brand, product.name)}
                       width={220}
                       height={320}
                       className="h-full w-auto max-h-full max-w-full object-contain"
@@ -979,9 +980,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
                     candidate.productType ?? null,
                     candidate.slug,
                   );
-                  const candidateLabel = candidate.name.startsWith(candidate.brand)
-                    ? candidate.name
-                    : `${candidate.brand} ${candidate.name}`;
+                  const candidateLabel = formatProductLabel(candidate.brand, candidate.name);
                   return (
                     <div
                       key={candidate.slug}

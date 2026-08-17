@@ -1,5 +1,6 @@
 import type { CategoryGuideConfig } from "./categoryGuideShared";
 import { getShakeProducts } from "@/app/data/shakeProductsData";
+import { formatProductLabel } from "@/app/lib/productLabel";
 
 const shakeProducts = getShakeProducts();
 
@@ -182,7 +183,7 @@ export const proteinShakeForWomenConfig: CategoryGuideConfig = {
       },
   ],
   purchaseLinks: womenShakePicks.slice(0, 3).map((product) => ({
-    label: `${product.brand} ${product.name} 보기`,
+    label: `${formatProductLabel(product.brand, product.name)} 보기`,
     slug: product.slug,
   })),
   externalLinks: [
@@ -324,7 +325,7 @@ export const morningProteinShakeConfig: CategoryGuideConfig = {
       },
     ],
   purchaseLinks: morningShakePicks.slice(0, 3).map((product) => ({
-    label: `${product.brand} ${product.name} 보기`,
+    label: `${formatProductLabel(product.brand, product.name)} 보기`,
     slug: product.slug,
   })),
   externalLinks: [
@@ -461,7 +462,7 @@ export const oliveYoungProteinShakeConfig: CategoryGuideConfig = {
     },
   ],
   purchaseLinks: oliveYoungShakePicks.slice(0, 3).map((product) => ({
-    label: `${product.brand} ${product.name} 보기`,
+    label: `${formatProductLabel(product.brand, product.name)} 보기`,
     slug: product.slug,
   })),
   externalLinks: [

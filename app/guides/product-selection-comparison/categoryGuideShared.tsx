@@ -7,6 +7,7 @@ import CommercialAdSection from "@/app/components/CommercialAdSection";
 import TrackedLink from "@/app/components/TrackedLink";
 import { getProductBySlug } from "@/app/data/products";
 import { getCoupangRedirectHref } from "@/app/lib/purchaseLinks";
+import { formatProductLabel } from "@/app/lib/productLabel";
 
 export interface CategoryGuideLink {
   title: string;
@@ -85,7 +86,7 @@ function ConversionLinks({ conversion }: { conversion: NonNullable<CategoryGuide
           <TrackedLink
             key={product.slug}
             href={`/product/${product.slug}`}
-            trackingLabel={`${product.brand} ${product.name} 상세 보기`}
+            trackingLabel={`${formatProductLabel(product.brand, product.name)} 상세 보기`}
             trackingSection="guide_featured_product"
             trackingPageType="guide"
             contentId={conversion.contentId}
@@ -94,7 +95,7 @@ function ConversionLinks({ conversion }: { conversion: NonNullable<CategoryGuide
             ctaType="product_detail"
             className="border border-[#d9e4f0] bg-[#f7f9fc] p-4 transition-colors hover:bg-white"
           >
-            <p className="text-sm font-semibold text-[#4a6178]">{product.brand} {product.name}</p>
+            <p className="text-sm font-semibold text-[#4a6178]">{formatProductLabel(product.brand, product.name)}</p>
             <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">{reason}</p>
           </TrackedLink>
         ))}

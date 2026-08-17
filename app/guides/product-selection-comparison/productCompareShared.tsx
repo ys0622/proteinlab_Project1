@@ -7,6 +7,7 @@ import CommercialAdSection from "@/app/components/CommercialAdSection";
 import { getDrinkProducts } from "@/app/data/drinkProductsData";
 import type { ProductDetailProps } from "@/app/data/products";
 import { getCoupangRedirectHref } from "@/app/lib/purchaseLinks";
+import { formatProductLabel } from "@/app/lib/productLabel";
 
 export interface RelatedGuideLink {
   title: string;
@@ -133,7 +134,7 @@ function PurchaseLinks({ links }: { links: PurchaseGuideLink[] }) {
             <p className="text-xs font-semibold tracking-[0.08em] text-[#4a6178]">쿠팡에서 가격 확인</p>
             <p className="mt-2 text-sm font-semibold text-[var(--foreground)]">{item.label}</p>
             <p className="mt-1 text-sm leading-6 text-[var(--foreground-muted)]">
-              {product.brand} {product.name}
+              {formatProductLabel(product.brand, product.name)}
             </p>
             <p className="mt-3 text-xs font-medium text-[#24543d]">옵션과 최신 가격 보기 →</p>
           </a>

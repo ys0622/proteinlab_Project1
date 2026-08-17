@@ -5,6 +5,7 @@ import type { ProductDetailProps } from "../data/products";
 import { getDensityValue, getDietScore, getPerformanceScore } from "../lib/gradeCalculation";
 import type { ProductCategory } from "../lib/categories";
 import { getProductsByCategoryAsync } from "../lib/productData";
+import { formatProductLabel } from "../lib/productLabel";
 import RankingClient from "./RankingClient";
 
 export const metadata = {
@@ -132,7 +133,7 @@ export default async function RankingPage() {
       itemListElement: data.density.slice(0, 10).map((item) => ({
         "@type": "ListItem",
         position: item.rank,
-        name: `${item.product.brand} ${item.product.name}`,
+        name: formatProductLabel(item.product.brand, item.product.name),
         url: `https://proteinlab.kr/product/${item.product.slug}`,
       })),
     }),

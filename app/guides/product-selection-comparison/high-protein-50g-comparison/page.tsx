@@ -6,6 +6,7 @@ import TrackedLink from "@/app/components/TrackedLink";
 import { buildGuideJsonLd } from "@/app/lib/guideJsonLd";
 import drinkProductsData from "@/app/data/drinkProductsData.json";
 import type { ProductDetailProps } from "@/app/data/products";
+import { formatProductLabel } from "@/app/lib/productLabel";
 
 const pageTitle = "단백질 음료 50g 이상 비교 | 52g 초고함량 제품까지";
 const pageDescription =
@@ -215,7 +216,7 @@ export default function HighProtein50gComparisonPage() {
                     <tr key={row.slug} className="border-b border-[#eef2f6] last:border-b-0">
                       <td className="px-3 py-3">
                         <Link href={`/product/${row.slug}`} className="font-medium text-[#314f68] hover:underline">
-                          {row.brand} {row.name}
+                          {formatProductLabel(row.brand, row.name)}
                         </Link>
                       </td>
                       <td className="px-3 py-3 text-[var(--foreground-muted)]">{row.protein}</td>

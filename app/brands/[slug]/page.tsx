@@ -8,6 +8,7 @@ import TrackedLink from "../../components/TrackedLink";
 import { getAllProducts } from "../../data/products";
 import { getCategoryLabel, type ProductCategory } from "../../lib/categories";
 import { getBrandSummary, slugToBrand } from "../../lib/brandHubs";
+import { formatProductLabel } from "../../lib/productLabel";
 import type { ProductDetailProps } from "../../data/products";
 
 function getBrandQuickLinks(brand: string) {
@@ -173,7 +174,7 @@ export default async function BrandPage({ params }: PageProps) {
       "@type": "ListItem",
       position: i + 1,
       url: `https://proteinlab.kr/product/${p.slug}`,
-      name: `${p.brand} ${p.name}`,
+      name: formatProductLabel(p.brand, p.name),
     })),
   };
 

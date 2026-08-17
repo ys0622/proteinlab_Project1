@@ -19,6 +19,7 @@ import { getAllCompareLandings } from "../data/compareLandings";
 import { getRecentProducts } from "../components/RecentlyViewedTracker";
 import { COMPARE_COLUMNS, type CompareColumnId } from "../lib/compareColumns";
 import { getQuickCurations, getCurationDefinition, type CurationCategory } from "../lib/curationSystem";
+import { formatProductLabel } from "../lib/productLabel";
 import { getProductImageUrl } from "../lib/productImage";
 import { hybridScore } from "../lib/productScoring";
 import { compareAdd, compareView, internalCtaClick } from "../../lib/analytics";
@@ -336,7 +337,7 @@ export default function ComparePage() {
                       ) : null}
                     </span>
                     <span className="min-w-0 flex-1">
-                      <span className="block truncate">{product.brand} {product.name}</span>
+                      <span className="block truncate">{formatProductLabel(product.brand, product.name)}</span>
                       {gradeTags.length > 0 ? (
                         <MetricBadgeGroup className="mt-1">
                           {gradeTags.map((tag) => (
@@ -355,7 +356,7 @@ export default function ComparePage() {
                 );
               })}
             </div>
-            {recentProducts.length > 0 ? <div className="mt-5"><p className="text-sm font-semibold">최근 본 제품</p><div className="mt-2 flex flex-wrap gap-2">{recentProducts.map((product) => <button key={product.slug} type="button" onClick={() => addProduct(product.slug)} disabled={selectedSlugs.includes(product.slug) || !canAdd} className="min-h-11 rounded-full border bg-white px-3 text-xs disabled:opacity-50" style={{ borderColor: "var(--border)" }}>{product.brand} {product.name}</button>)}</div></div> : null}
+            {recentProducts.length > 0 ? <div className="mt-5"><p className="text-sm font-semibold">최근 본 제품</p><div className="mt-2 flex flex-wrap gap-2">{recentProducts.map((product) => <button key={product.slug} type="button" onClick={() => addProduct(product.slug)} disabled={selectedSlugs.includes(product.slug) || !canAdd} className="min-h-11 rounded-full border bg-white px-3 text-xs disabled:opacity-50" style={{ borderColor: "var(--border)" }}>{formatProductLabel(product.brand, product.name)}</button>)}</div></div> : null}
             <div className="mt-5"><p className="text-sm font-semibold">추천 비교 조합</p><div className="mt-2 grid gap-2 md:grid-cols-2">{recommendedComparisons.map((item) => <Link key={item.slug} href={`/compare?products=${item.productSlugs.join(",")}`} className="rounded-lg border bg-white px-3 py-3 text-sm hover:border-[var(--accent)]" style={{ borderColor: "var(--border)" }}>{item.title}</Link>)}</div></div>
             <p className="mt-5 text-xs leading-5" style={{ color: "var(--foreground-muted)" }}>제품을 2개 이상 선택하면 단백질·당류·칼로리·용량·밀도와 구매 채널을 나란히 비교할 수 있습니다.</p>
             <Link

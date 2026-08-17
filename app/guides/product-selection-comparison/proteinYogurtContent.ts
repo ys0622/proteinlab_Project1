@@ -1,5 +1,6 @@
 import type { CategoryGuideConfig } from "./categoryGuideShared";
 import { getYogurtProducts } from "@/app/data/yogurtProductsData";
+import { formatProductLabel } from "@/app/lib/productLabel";
 
 const yogurtProducts = getYogurtProducts();
 
@@ -91,7 +92,7 @@ export const proteinYogurtTop5Config: CategoryGuideConfig = {
   comparisonRows: yogurtTopPicks.map((product, index) => ({
     label: `${index + 1}위`,
     values: [
-      `${product.brand} ${product.name}`,
+      formatProductLabel(product.brand, product.name),
       `${product.proteinPerServing}g`,
       `${product.calories}kcal`,
       `${product.sugar}g`,
@@ -173,7 +174,7 @@ export const proteinYogurtTop5Config: CategoryGuideConfig = {
     },
   ],
   purchaseLinks: yogurtTopPicks.slice(0, 3).map((product) => ({
-    label: `${product.brand} ${product.name} 보기`,
+    label: `${formatProductLabel(product.brand, product.name)} 보기`,
     slug: product.slug,
   })),
   faq: [
@@ -423,7 +424,7 @@ export const dietProteinYogurtConfig: CategoryGuideConfig = {
     },
   ],
   purchaseLinks: dietYogurtPicks.map((product) => ({
-    label: `${product.brand} ${product.name} 보기`,
+    label: `${formatProductLabel(product.brand, product.name)} 보기`,
     slug: product.slug,
   })),
   faq: [

@@ -1,5 +1,6 @@
 import type { CategoryGuideConfig, CategoryMetricRow } from "./categoryGuideShared";
 import { getDrinkProducts } from "@/app/data/drinkProductsData";
+import { formatProductLabel } from "@/app/lib/productLabel";
 
 const drinkProducts = getDrinkProducts();
 
@@ -106,7 +107,7 @@ function rankingRows(products: typeof drinkTop10): CategoryMetricRow[] {
   return products.map((product, index) => ({
     label: `${index + 1}위`,
     values: [
-      `${product.brand} ${product.name}`,
+      formatProductLabel(product.brand, product.name),
       `${product.proteinPerServing}g`,
       `${product.calories}kcal`,
       `${product.sugar}g`,
@@ -245,7 +246,7 @@ export const proteinDrinkTop10Config: CategoryGuideConfig = {
       }
     }
     return picks.map((product) => ({
-      label: `${product.brand} ${product.name} 보기`,
+      label: `${formatProductLabel(product.brand, product.name)} 보기`,
       slug: product.slug,
     }));
   })(),
