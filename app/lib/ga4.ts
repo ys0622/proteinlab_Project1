@@ -34,12 +34,17 @@ const KST_TIME_ZONE = "Asia/Seoul";
 const CACHE_TTL_MS = 5 * 60 * 1000;
 const STALE_TTL_MS = 30 * 60 * 1000;
 const CTR_EVENT_NAMES = [
-  "product_click",
-  "purchase_click",
-  "internal_link_click",
-  "compare_export_click",
-  "compare_share_click",
-  "compare_reset_click",
+  "product_card_click",
+  "product_detail_view",
+  "internal_cta_click",
+  "compare_add",
+  "compare_view",
+  "affiliate_click",
+  "retailer_click",
+  "filter_apply",
+  "sort_apply",
+  "recommend_start",
+  "recommend_complete",
 ] as const;
 
 let statsCache: CacheEntry | null = null;
@@ -219,18 +224,17 @@ function sanitizeSourceMedium(source: string | undefined, medium: string | undef
 
 function formatEventLabel(eventName: string | undefined) {
   switch (eventName ?? "") {
-    case "product_click":
-      return "제품 클릭";
-    case "purchase_click":
-      return "구매 CTA 클릭";
-    case "internal_link_click":
-      return "내부 링크 클릭";
-    case "compare_export_click":
-      return "비교표 CSV 내보내기";
-    case "compare_share_click":
-      return "비교표 공유 링크 복사";
-    case "compare_reset_click":
-      return "비교표 초기화";
+    case "product_card_click": return "제품 카드 클릭";
+    case "product_detail_view": return "제품 상세 조회";
+    case "internal_cta_click": return "내부 CTA 클릭";
+    case "compare_add": return "비교 추가";
+    case "compare_view": return "비교 결과 조회";
+    case "affiliate_click": return "제휴 링크 클릭";
+    case "retailer_click": return "판매처 링크 클릭";
+    case "filter_apply": return "필터 적용";
+    case "sort_apply": return "정렬 적용";
+    case "recommend_start": return "추천 시작";
+    case "recommend_complete": return "추천 완료";
     default:
       return eventName || "이벤트 없음";
   }
