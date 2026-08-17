@@ -2,6 +2,7 @@
 import { notFound } from "next/navigation";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
+import CommercialAdSection from "../../components/CommercialAdSection";
 import ProductCard from "../../components/ProductCard";
 import TrackedLink from "../../components/TrackedLink";
 import { getCompareLandingBySlug, getAllCompareLandings } from "../../data/compareLandings";
@@ -269,6 +270,7 @@ export default async function CompareLandingPage({ params }: PageProps) {
             </div>
           </section>
         ) : null}
+        <CommercialAdSection pageType="compare" className="mt-6" />
       </main>
 
       <Footer />
