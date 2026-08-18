@@ -142,17 +142,17 @@ async function walkPages(dir) {
   return files;
 }
 
-function getMissingRequiredFields(products, options = {}) {
-  const { requireGrades = false } = options;
+function getMissingRequiredFields(products) {
+  // gradeTags is intentionally absent from the raw JSON: it's computed at
+  // runtime by applyDrinkGrades/applyBarGrades (app/lib/gradeCalculation.ts),
+  // not authored data, so it isn't checked here.
   return products.filter(
     (product) =>
       typeof product.proteinPerServing !== "number" ||
       typeof product.calories !== "number" ||
       typeof product.sugar !== "number" ||
       !product.density ||
-      parseDensityValue(product.density) <= 0 ||
-      (requireGrades &&
-        (!Array.isArray(product.gradeTags) || product.gradeTags.length === 0)),
+      parseDensityValue(product.density) <= 0,
   );
 }
 
@@ -189,8 +189,8 @@ async function main() {
   console.log(`- 단백질 바: ${formatNumber(bars.length)}개`);
   console.log(`- 전체: ${formatNumber(drinks.length + bars.length)}개`);
 
-  const drinkMissing = getMissingRequiredFields(drinks, { requireGrades: true });
-  const barMissing = getMissingRequiredFields(bars, { requireGrades: false });
+  const drinkMissing = getMissingRequiredFields(drinks);
+  const barMissing = getMissingRequiredFields(bars);
 
   printSection("2. 제품 추천 / 랭킹 & 등급 기준 점검");
   console.log(`- 음료 필수 데이터 누락: ${drinkMissing.length}개`);
