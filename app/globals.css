@@ -936,6 +936,15 @@ h1, h2, h3, h4, h5, h6 {
   box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--guide-article-accent) 4%, transparent);
 }
 
+/* Hint that wide tables inside guide/article content scroll horizontally
+   on touch screens. Scoped to <main> to avoid admin tables and card-row
+   carousels, which already show a partial next item as their own hint. */
+@media (max-width: 767px) {
+  main .overflow-x-auto:has(> table) {
+    box-shadow: inset -14px 0 12px -12px rgba(20, 32, 24, 0.16);
+  }
+}
+
 .guide-article-page section > .flex.flex-wrap.gap-3 a.rounded-lg,
 .guide-article-page section > .flex.flex-wrap.gap-3 a.rounded-xl {
   border-width: 1px;
