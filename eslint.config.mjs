@@ -8,6 +8,12 @@ const eslintConfig = defineConfig([
   {
     files: ["app/**/*.{js,jsx,ts,tsx}", "components/**/*.{js,jsx,ts,tsx}", "lib/**/*.{js,jsx,ts,tsx}", "scripts/**/*.{js,mjs,ts}"],
   },
+  {
+    files: ["app/guides/**/*.tsx"],
+    rules: {
+      "react/no-unescaped-entities": "off",
+    },
+  },
   // Override default ignores of eslint-config-next.
   globalIgnores([
     // Default ignores of eslint-config-next:
@@ -20,6 +26,7 @@ const eslintConfig = defineConfig([
     ".deploy-wsl-*/**",
     ".open-next/**",
     ".wrangler/**",
+    ".tmp-*/**",
     "node_modules/**",
     "public/**",
     "docs/**",
@@ -31,6 +38,8 @@ const eslintConfig = defineConfig([
     "Shake spec/**",
     "yogurt image/**",
     "Yogurt spec/**",
+    "deploy.cjs",
+    "wrangler-fs-patch.cjs",
   ]),
 ]);
 

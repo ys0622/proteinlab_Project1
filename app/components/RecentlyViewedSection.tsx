@@ -22,6 +22,8 @@ export default function RecentlyViewedSection({
   const [recentSlugs, setRecentSlugs] = useState<string[]>([]);
 
   useEffect(() => {
+    // Recent products are client-only local storage state restored after hydration.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setRecentSlugs(getRecentProducts());
   }, []);
 

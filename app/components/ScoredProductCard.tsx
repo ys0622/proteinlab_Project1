@@ -15,6 +15,7 @@ type ScoredProductCardProps = {
   reason?: string;
   compact?: boolean;
   purchaseLinkCategory?: CoupangLinkCategory;
+  cardVariant?: "ranking" | "recommend";
 };
 
 const GRADE_COLORS: Record<string, { bg: string; color: string; border: string }> = {
@@ -35,6 +36,7 @@ export default function ScoredProductCard({
   reason,
   compact = false,
   purchaseLinkCategory = "ranking",
+  cardVariant = "ranking",
 }: ScoredProductCardProps) {
   const gradeColor = grade ? GRADE_COLORS[grade] ?? GRADE_COLORS.D : null;
 
@@ -96,6 +98,7 @@ export default function ScoredProductCard({
         <ProductCard
           {...product}
           purchaseLinkCategory={purchaseLinkCategory}
+          cardVariant={cardVariant}
           fixedTitleLines={2}
           maxVisibleBadges={compact ? 2 : 3}
           hideSupplementalBadges

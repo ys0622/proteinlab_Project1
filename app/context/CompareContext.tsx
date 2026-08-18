@@ -3,7 +3,7 @@
 import { createContext, useCallback, useContext, useEffect, useState } from "react";
 
 const STORAGE_KEY = "proteinlab-compare-slugs";
-const MAX_COMPARE = 4;
+const MAX_COMPARE = 3;
 
 function loadSlugs(): string[] {
   if (typeof window === "undefined") return [];
@@ -43,16 +43,19 @@ export function CompareProvider({ children }: { children: React.ReactNode }) {
     let initial = loadSlugs();
     if (typeof window !== "undefined" && window.location.pathname === "/compare") {
       const params = new URLSearchParams(window.location.search);
-      const fromUrl = params.get("slugs");
+      const fromUrl = params.get("products") ?? params.get("slugs");
       if (fromUrl) {
-        const slugs = fromUrl.split(",").map((s) => s.trim()).filter(Boolean).slice(0, MAX_COMPARE);
+        const slugs = [...new Set(fromUrl.split(",").map((s) => s.trim()).filter(Boolean))].slice(0, MAX_COMPARE);
         if (slugs.length > 0) {
           initial = slugs;
           saveSlugs(slugs);
         }
       }
     }
+    // Compare selections are client-only local storage and URL state restored after hydration.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setSelectedSlugs(initial);
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setMounted(true);
   }, []);
 

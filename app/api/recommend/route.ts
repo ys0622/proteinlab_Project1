@@ -7,8 +7,7 @@ import { getProductsByCategoryAsync } from "../../lib/productData";
 interface RecommendRequest {
   category: "drink" | "bar" | "yogurt" | "shake";
   purpose: string;
-  frequency: string;
-  intensity: string;
+  priority: "protein" | "low_sugar" | "low_calorie" | "density" | "";
   conditions: string[];
 }
 
@@ -194,6 +193,28 @@ function buildReason(reasons: string[], fallback: string) {
   return `${content}.`;
 }
 
+function applyPriorityScore(item: ScoredProduct, priority: RecommendRequest["priority"]): ScoredProduct {
+  const protein = item.product.proteinPerServing ?? 0;
+  const calories = item.product.calories ?? 300;
+  const sugar = item.product.sugar ?? 30;
+  const density = getDensityValue(item.product);
+
+  if (priority === "protein") {
+    return { ...item, score: item.score + protein * 2, reason: `${item.reason} 단백질 함량을 우선으로 반영했습니다.` };
+  }
+  if (priority === "low_sugar") {
+    return { ...item, score: item.score + Math.max(0, 30 - sugar) * 2, reason: `${item.reason} 당류 부담이 낮은 제품을 우선으로 반영했습니다.` };
+  }
+  if (priority === "low_calorie") {
+    return { ...item, score: item.score + Math.max(0, 300 - calories), reason: `${item.reason} 칼로리 부담이 낮은 제품을 우선으로 반영했습니다.` };
+  }
+  if (priority === "density") {
+    return { ...item, score: item.score + density * 8, reason: `${item.reason} 칼로리 대비 단백질 밀도를 우선으로 반영했습니다.` };
+  }
+
+  return item;
+}
+
 function scoreDrinkProduct(product: ProductDetailProps, req: RecommendRequest): ScoredProduct {
   let score = 0;
   const reasons: string[] = [];
@@ -217,17 +238,6 @@ function scoreDrinkProduct(product: ProductDetailProps, req: RecommendRequest): 
   } else if (req.purpose === "recovery") {
     score += performance * 3 + protein * 2;
     if (protein >= 20) reasons.push("운동 후 회복용 단백질 보충에 적합합니다");
-  }
-
-  if (req.frequency === "daily" || req.frequency === "often") {
-    score += protein * 1.5;
-  }
-
-  if (req.intensity === "extreme" || req.intensity === "hard") {
-    score += protein * 1.5;
-    if (protein >= 30) score += 15;
-  } else if (req.intensity === "light") {
-    score += 200 - calories;
   }
 
   for (const condition of req.conditions) {
@@ -290,16 +300,6 @@ function scoreBarProduct(product: ProductDetailProps, req: RecommendRequest): Sc
   } else if (req.purpose === "recovery") {
     score += performance * 2.4 + protein * 2;
     if (protein >= 12) reasons.push("운동 후 보충용 단백질 바로 무난합니다");
-  }
-
-  if (req.frequency === "daily" || req.frequency === "often") {
-    score += protein;
-  }
-
-  if (req.intensity === "extreme" || req.intensity === "hard") {
-    score += protein * 1.2;
-  } else if (req.intensity === "light") {
-    score += 220 - calories;
   }
 
   for (const condition of req.conditions) {
@@ -365,16 +365,6 @@ function scoreYogurtProduct(product: ProductDetailProps, req: RecommendRequest):
   } else if (req.purpose === "recovery") {
     score += performance * 2.2 + protein * 2;
     if (greek) reasons.push("꾸덕한 그릭 타입으로 포만감과 단백질 효율이 좋습니다");
-  }
-
-  if (req.frequency === "daily" || req.frequency === "often") {
-    score += density * 2;
-  }
-
-  if (req.intensity === "extreme" || req.intensity === "hard") {
-    score += protein;
-  } else if (req.intensity === "light") {
-    score += 180 - calories;
   }
 
   for (const condition of req.conditions) {
@@ -443,16 +433,6 @@ function scoreShakeProduct(product: ProductDetailProps, req: RecommendRequest): 
     if (protein >= 20) reasons.push(`단백질 ${protein}g와 밀도 구성이 회복용 보충 기준에 무난합니다`);
   }
 
-  if (req.frequency === "daily" || req.frequency === "often") {
-    score += density * 2 + fiber * 2;
-  }
-
-  if (req.intensity === "extreme" || req.intensity === "hard") {
-    score += protein * 1.5;
-  } else if (req.intensity === "light") {
-    score += 220 - calories;
-  }
-
   for (const condition of req.conditions) {
     if (condition === "highpro" && protein >= 20) {
       score += 26;
@@ -507,22 +487,12 @@ function getPurposeLabel(value: string) {
   return map[value] ?? value;
 }
 
-function getFrequencyLabel(value: string) {
+function getPriorityLabel(value: RecommendRequest["priority"]) {
   const map: Record<string, string> = {
-    rarely: "거의 안함 (주 0~1회)",
-    sometimes: "가끔 (주 2~3회)",
-    often: "자주 (주 4~5회)",
-    daily: "매일",
-  };
-  return map[value] ?? value;
-}
-
-function getIntensityLabel(value: string) {
-  const map: Record<string, string> = {
-    light: "가볍게",
-    moderate: "적당히",
-    hard: "강하게",
-    extreme: "매우 강하게",
+    protein: "단백질 함량 우선",
+    low_sugar: "당류 부담 우선",
+    low_calorie: "칼로리 부담 우선",
+    density: "단백질 밀도 우선",
   };
   return map[value] ?? value;
 }
@@ -654,14 +624,6 @@ function getTips(req: RecommendRequest) {
     });
   }
 
-  if (req.intensity === "hard" || req.intensity === "extreme") {
-    tips.push({
-      icon: "⚡",
-      title: "고강도일수록 단백질 기준 우선",
-      desc: "운동 강도가 높으면 단백질 함량과 퍼포먼스 지표를 먼저 보는 편이 좋습니다.",
-    });
-  }
-
   if (req.conditions.includes("vegan")) {
     tips.push({
       icon: "🌿",
@@ -693,7 +655,7 @@ export async function POST(request: Request) {
       if (veganOnly.length >= 3) products = veganOnly;
     }
 
-    const scored = products.map((product) => scoreProduct(product, body));
+    const scored = products.map((product) => applyPriorityScore(scoreProduct(product, body), body.priority));
     scored.sort((a, b) => b.score - a.score);
     const selectedProducts = selectTopProductsWithDiversity(scored, 6, body.category);
 
@@ -746,8 +708,7 @@ export async function POST(request: Request) {
 
     const profileChips = [
       getPurposeLabel(body.purpose),
-      getFrequencyLabel(body.frequency),
-      getIntensityLabel(body.intensity),
+      getPriorityLabel(body.priority),
       ...body.conditions.map((condition) => getConditionLabel(body.category, condition)),
     ];
 

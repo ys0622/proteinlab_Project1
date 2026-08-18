@@ -1,8 +1,8 @@
 {
-  "generated_at": "2026-08-13T08:36:54.523Z",
-  "total": 375,
+  "generated_at": "2026-08-18T01:04:01.768Z",
+  "total": 378,
   "categories": {
-    "drinks": 130,
+    "drinks": 133,
     "bars": 100,
     "yogurt": 57,
     "shake": 88
@@ -628,6 +628,33 @@
       "protein": 45,
       "calories": 195,
       "sugar": 1
+    },
+    {
+      "slug": "takefit-monster-strawberry-350",
+      "name": "테이크핏 몬스터 (딸기맛)",
+      "brand": "테이크핏",
+      "category": "drinks",
+      "protein": 47,
+      "calories": 204,
+      "sugar": 1.2
+    },
+    {
+      "slug": "puretein-choco-330",
+      "name": "퓨어틴 초코 쉐이크",
+      "brand": "퓨어틴",
+      "category": "drinks",
+      "protein": 23,
+      "calories": 150,
+      "sugar": 6
+    },
+    {
+      "slug": "puretein-coffee-330",
+      "name": "퓨어틴 커피 쉐이크",
+      "brand": "퓨어틴",
+      "category": "drinks",
+      "protein": 23,
+      "calories": 150,
+      "sugar": 6
     },
     {
       "slug": "sellex-profit-peach-icedtea-330",

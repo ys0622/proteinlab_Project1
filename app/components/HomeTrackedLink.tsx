@@ -1,8 +1,7 @@
 "use client";
 
-import Link from "next/link";
-import { trackEvent } from "@/lib/gtag";
 import type { ReactNode } from "react";
+import TrackedLink from "./TrackedLink";
 
 interface HomeTrackedLinkProps {
   href: string;
@@ -22,15 +21,16 @@ export default function HomeTrackedLink({
   children,
 }: HomeTrackedLinkProps) {
   return (
-    <Link
+    <TrackedLink
       href={href}
+      trackingLabel={eventName}
+      trackingSection={eventParams?.category ?? "home"}
+      trackingPageType="home"
+      linkPosition="home_featured"
       className={className}
       style={style}
-      onClick={() => {
-        trackEvent(eventName, eventParams ?? {});
-      }}
     >
       {children}
-    </Link>
+    </TrackedLink>
   );
 }

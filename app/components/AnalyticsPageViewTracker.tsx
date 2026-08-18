@@ -8,11 +8,12 @@ export default function AnalyticsPageViewTracker() {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const lastTrackedUrlRef = useRef<string | null>(null);
+  const lastTrackedLocationRef = useRef<string | null>(null);
+  const query = searchParams?.toString() ?? "";
 
   useEffect(() => {
     if (!pathname) return;
 
-    const query = searchParams?.toString();
     const url = query ? `${pathname}?${query}` : pathname;
 
     if (lastTrackedUrlRef.current === url) return;
@@ -23,8 +24,10 @@ export default function AnalyticsPageViewTracker() {
     const track = () => {
       if (cancelled || lastTrackedUrlRef.current === url) return;
 
-      if (pageView(url)) {
+      const pageReferrer = lastTrackedLocationRef.current ?? document.referrer;
+      if (pageView(url, pageReferrer)) {
         lastTrackedUrlRef.current = url;
+        lastTrackedLocationRef.current = window.location.href;
         return;
       }
 
@@ -39,7 +42,7 @@ export default function AnalyticsPageViewTracker() {
     return () => {
       cancelled = true;
     };
-  }, [pathname, searchParams]);
+  }, [pathname, query]);
 
   return null;
 }

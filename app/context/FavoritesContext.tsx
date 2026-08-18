@@ -37,7 +37,10 @@ export function FavoritesProvider({ children }: { children: React.ReactNode }) {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    // Favorites are client-only local storage state restored after hydration.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setFavoriteSlugs(loadSlugs());
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setMounted(true);
   }, []);
 

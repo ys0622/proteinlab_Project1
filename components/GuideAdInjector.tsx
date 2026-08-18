@@ -82,18 +82,22 @@ export default function GuideAdInjector({ guideSlot, insightSlot }: GuideAdInjec
     document.querySelectorAll("[data-guide-auto-ad]").forEach((element) => element.remove());
 
     if (!canAutoInsertAds(pathname)) {
+      // This state mirrors the DOM placement cleanup for client-side guide navigation.
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setPlacements([]);
       return;
     }
 
     const main = document.querySelector("main");
     if (!(main instanceof HTMLElement)) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setPlacements([]);
       return;
     }
 
     const sections = getContentSections(main);
     if (sections.length < 3) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setPlacements([]);
       return;
     }
@@ -101,6 +105,7 @@ export default function GuideAdInjector({ guideSlot, insightSlot }: GuideAdInjec
     const pageType: PageType = pathname.startsWith("/guides/market-insights") ? "insight" : "guide";
     const slot = pageType === "insight" ? insightSlot : guideSlot;
     if (!slot?.trim()) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setPlacements([]);
       return;
     }
@@ -127,6 +132,7 @@ export default function GuideAdInjector({ guideSlot, insightSlot }: GuideAdInjec
 
     return () => {
       document.querySelectorAll("[data-guide-auto-ad]").forEach((element) => element.remove());
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setPlacements([]);
     };
   }, [guideSlot, insightSlot]);

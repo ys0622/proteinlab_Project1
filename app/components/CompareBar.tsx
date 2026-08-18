@@ -17,7 +17,7 @@ export default function CompareBar() {
       }}
     >
       <span className="text-sm font-medium">
-        {selectedSlugs.length}개 선택됨 (최대 4개)
+        {selectedSlugs.length}개 선택됨 (최대 3개)
       </span>
       <div className="flex items-center gap-3">
         <button
