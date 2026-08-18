@@ -102,6 +102,7 @@ const convenienceStoreMap: Record<string, string> = {
 function rankingRows(products: typeof barProducts): CategoryMetricRow[] {
   return products.map((product, index) => ({
     label: `${index + 1}위`,
+    slug: product.slug,
     values: [
       formatProductLabel(product.brand, product.name),
       `${product.proteinPerServing}g`,

@@ -29,6 +29,7 @@ export interface CategoryExternalLink {
 export interface CategoryMetricRow {
   label: string;
   values: string[];
+  slug?: string;
 }
 
 export interface CategoryGuideSection {
@@ -321,9 +322,26 @@ export function CategoryGuidePage({ config }: { config: CategoryGuideConfig }) {
                   {config.comparisonRows.map((row) => (
                     <tr key={row.label} className="border-b border-[#eef2f6] last:border-b-0">
                       <td className="whitespace-nowrap px-3 py-2 font-medium text-[var(--foreground)]">{row.label}</td>
-                      {row.values.map((value, index) => (
-                        <td key={`${row.label}-${index}`} className="px-3 py-2 leading-5 text-[var(--foreground-muted)]">{value}</td>
-                      ))}
+                      {row.values.map((value, index) =>
+                        index === 0 && row.slug ? (
+                          <td key={`${row.label}-${index}`} className="px-3 py-2 leading-5">
+                            <TrackedLink
+                              href={`/product/${row.slug}`}
+                              trackingLabel={value}
+                              trackingSection="category_guide_ranking_table"
+                              trackingPageType="guide"
+                              linkPosition="ranking"
+                              ctaType="product_detail"
+                              productId={row.slug}
+                              className="font-medium text-[var(--accent)] hover:underline"
+                            >
+                              {value}
+                            </TrackedLink>
+                          </td>
+                        ) : (
+                          <td key={`${row.label}-${index}`} className="px-3 py-2 leading-5 text-[var(--foreground-muted)]">{value}</td>
+                        ),
+                      )}
                     </tr>
                   ))}
                 </tbody>
@@ -344,9 +362,26 @@ export function CategoryGuidePage({ config }: { config: CategoryGuideConfig }) {
                   {config.comparisonRows.map((row) => (
                     <tr key={row.label} className="border-b border-[#eef2f6] last:border-b-0">
                       <td className="whitespace-nowrap px-3 py-3 font-medium text-[var(--foreground)]">{row.label}</td>
-                      {row.values.map((value, index) => (
-                        <td key={`${row.label}-${index}`} className="px-3 py-3 text-[var(--foreground-muted)]">{value}</td>
-                      ))}
+                      {row.values.map((value, index) =>
+                        index === 0 && row.slug ? (
+                          <td key={`${row.label}-${index}`} className="px-3 py-3">
+                            <TrackedLink
+                              href={`/product/${row.slug}`}
+                              trackingLabel={value}
+                              trackingSection="category_guide_ranking_table"
+                              trackingPageType="guide"
+                              linkPosition="ranking"
+                              ctaType="product_detail"
+                              productId={row.slug}
+                              className="font-medium text-[var(--accent)] hover:underline"
+                            >
+                              {value}
+                            </TrackedLink>
+                          </td>
+                        ) : (
+                          <td key={`${row.label}-${index}`} className="px-3 py-3 text-[var(--foreground-muted)]">{value}</td>
+                        ),
+                      )}
                     </tr>
                   ))}
                 </tbody>

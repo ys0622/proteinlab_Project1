@@ -106,6 +106,7 @@ const waterDrinkPicks = [...drinkProducts]
 function rankingRows(products: typeof drinkTop10): CategoryMetricRow[] {
   return products.map((product, index) => ({
     label: `${index + 1}위`,
+    slug: product.slug,
     values: [
       formatProductLabel(product.brand, product.name),
       `${product.proteinPerServing}g`,
