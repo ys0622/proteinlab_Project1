@@ -200,7 +200,7 @@ export default function HighProtein50gComparisonPage() {
               50g 이상 제품만 보면 후보가 좁습니다. 실제 선택에서는 45~49g 제품까지 함께 보면 총량과 부담 사이의 균형을 잡기 쉽습니다.
             </p>
             <div className="mt-5 overflow-x-auto rounded-2xl border border-[#e8edf3] bg-[#f7f9fc]">
-              <table className="min-w-full border-collapse text-left text-sm">
+              <table className="min-w-[780px] border-collapse text-left text-sm">
                 <thead>
                   <tr className="border-b border-[#dce5ef] text-[var(--foreground)]">
                     <th className="px-3 py-3 font-semibold">제품</th>
@@ -234,7 +234,7 @@ export default function HighProtein50gComparisonPage() {
           <section className="rounded-[28px] border border-[#d9e4f0] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(32,46,68,0.05)]">
             <h2 className="text-xl font-bold text-[var(--foreground)]">누가 50g 이상을 보면 좋을까</h2>
             <div className="mt-5 overflow-x-auto rounded-2xl border border-[#e8edf3] bg-[#f7f9fc]">
-              <table className="min-w-full border-collapse text-left text-sm">
+              <table className="min-w-[680px] border-collapse text-left text-sm">
                 <thead>
                   <tr className="border-b border-[#dce5ef] text-[var(--foreground)]">
                     <th className="px-3 py-3 font-semibold">상황</th>

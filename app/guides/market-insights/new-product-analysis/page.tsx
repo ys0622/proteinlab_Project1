@@ -62,7 +62,7 @@ const recentProductRows = [
   [
     "뉴케어 올프로틴 워터",
     "워터형 보충",
-    "350mL · 단백질 10g · 저칼로리",
+    "350mL · 단백질 20g · 저칼로리",
     "묵직한 밀크형 RTD가 부담스러운 사용자를 위한 가벼운 보충형입니다. 식사대용보다 수분감 있는 보완에 가깝습니다.",
     "/guides/product-selection-comparison/newcare-protein-water-guide",
   ],
@@ -72,6 +72,13 @@ const recentProductRows = [
     "500mL · 과일맛 워터형",
     "레몬·납작복숭아·샤인머스캣처럼 음용감 중심으로 확장되는 라인입니다. 고단백보다는 저당·가벼움 키워드와 맞습니다.",
     "/guides/product-selection-comparison/takefit-lineup",
+  ],
+  [
+    "닥터유 62g·테이크핏 익스트림 60g",
+    "초고함량 RTD",
+    "450mL 전후 · 단백질 60g 이상",
+    "단백질 총량만 보면 가장 강한 구간입니다. 다만 매일용이라기보다 고강도 운동 후 부족분을 크게 채우는 목적형 후보로 봐야 합니다.",
+    "/guides/product-selection-comparison/high-protein-50g-comparison",
   ],
   [
     "하이뮨 액티브·제로 라인",
@@ -92,7 +99,7 @@ const recentProductRows = [
 const professionalSignals = [
   {
     title: "신제품은 총량보다 포지션을 먼저 봅니다",
-    body: "25g 제품과 41g 제품은 같은 브랜드라도 해결하는 문제가 다릅니다. 일상 보충형, 초고단백형, 워터형, 식사대용형을 먼저 나눠야 비교가 정확합니다.",
+    body: "25g, 41g, 52g, 60g 이상 제품은 같은 단백질 음료라도 해결하는 문제가 다릅니다. 일상 보충형, 초고단백형, 워터형, 식사대용형을 먼저 나눠야 비교가 정확합니다.",
   },
   {
     title: "맛 수상 이력은 영양 근거가 아닙니다",
@@ -178,7 +185,7 @@ export default function NewProductAnalysisPage() {
           </div>
           <div className="mt-3">
             <span className="rounded-md bg-[#eef4ea] px-2 py-0.5 text-[11px] font-semibold tracking-wide text-[#4c7a57]">TRACK E</span>
-            <span className="ml-2 text-[11px] font-medium text-[var(--foreground-muted)]">업데이트 2026-08-17</span>
+            <span className="ml-2 text-[11px] font-medium text-[var(--foreground-muted)]">업데이트 2026-08-18</span>
           </div>
           <h1 className="mt-3 text-2xl font-bold leading-tight text-[#16412D] md:text-3xl">
             2026년 단백질 신제품, 어떤 기준으로 읽어야 할까?
@@ -199,7 +206,7 @@ export default function NewProductAnalysisPage() {
               최근 출시·등록 제품은 크게 일상형 RTD, 초고단백 RTD, 워터형, 건강관리형, 파우치 쉐이크로 나뉩니다. 같은 단백질 제품이라도 비교 기준이 서로 다릅니다.
             </p>
             <div className="mt-5 overflow-x-auto rounded-2xl border border-[#ece9e2] bg-white">
-              <table className="min-w-full border-collapse text-left text-sm">
+              <table className="min-w-[860px] border-collapse text-left text-sm">
                 <thead>
                   <tr className="border-b border-[#e8e6e3] text-[var(--foreground)]">
                     <th className="px-3 py-3 font-semibold">제품·라인</th>
@@ -233,9 +240,9 @@ export default function NewProductAnalysisPage() {
             <p className="mt-3 text-sm leading-6 text-[var(--foreground-muted)]">
               새 제품일수록 메시지가 강합니다. 아래 4가지 관점으로 보면 해석이 빨라집니다.
             </p>
-            <div className="mt-5 grid gap-3 md:grid-cols-2">
+            <div className="-mx-1 mt-4 flex gap-2 overflow-x-auto px-1 pb-1 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:mx-0 md:mt-5 md:grid md:grid-cols-2 md:gap-3 md:overflow-visible md:px-0 md:pb-0">
               {readingFrameCards.map((card) => (
-                <article key={card.title} className="rounded-2xl border border-[#dce8df] bg-[#f6fbf7] p-4">
+                <article key={card.title} className="min-w-[78vw] shrink-0 rounded-2xl border border-[#dce8df] bg-[#f6fbf7] p-4 md:min-w-0">
                   <p className="text-sm font-semibold text-[#24543d]">{card.title}</p>
                   <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">{card.body}</p>
                 </article>
@@ -245,9 +252,9 @@ export default function NewProductAnalysisPage() {
 
           <section className="rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
             <h2 className="text-xl font-bold text-[var(--foreground)]">전문적으로 보면 갈리는 지점</h2>
-            <div className="mt-5 grid gap-3 md:grid-cols-2">
+            <div className="-mx-1 mt-4 flex gap-2 overflow-x-auto px-1 pb-1 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:mx-0 md:mt-5 md:grid md:grid-cols-2 md:gap-3 md:overflow-visible md:px-0 md:pb-0">
               {professionalSignals.map((item) => (
-                <article key={item.title} className="rounded-2xl border border-[#dce8df] bg-[#f6fbf7] p-4">
+                <article key={item.title} className="min-w-[78vw] shrink-0 rounded-2xl border border-[#dce8df] bg-[#f6fbf7] p-4 md:min-w-0">
                   <h3 className="text-sm font-semibold text-[#24543d]">{item.title}</h3>
                   <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">{item.body}</p>
                 </article>
@@ -261,7 +268,7 @@ export default function NewProductAnalysisPage() {
               새 제품은 아래 항목을 순서대로 보면 판단이 빨라집니다.
             </p>
             <div className="mt-5 overflow-x-auto rounded-2xl border border-[#ece9e2] bg-white">
-              <table className="min-w-full border-collapse text-left text-sm">
+              <table className="min-w-[680px] border-collapse text-left text-sm">
                 <thead>
                   <tr className="border-b border-[#e8e6e3] text-[var(--foreground)]">
                     <th className="px-3 py-3 font-semibold">항목</th>
@@ -304,14 +311,14 @@ export default function NewProductAnalysisPage() {
             <p className="mt-3 text-sm leading-6 text-[var(--foreground-muted)]">
               제품 수치와 라인업은 ProteinLab DB를 우선 기준으로 사용하고, 출시·수상 이력은 공개 보도와 제품 등록 정보를 참고했습니다.
             </p>
-            <div className="mt-4 grid gap-3 md:grid-cols-3">
+            <div className="-mx-1 mt-4 flex gap-2 overflow-x-auto px-1 pb-1 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:mx-0 md:grid md:grid-cols-3 md:gap-3 md:overflow-visible md:px-0 md:pb-0">
               {sourceLinks.map((item) => (
                 <a
                   key={item.href}
                   href={item.href}
                   target="_blank"
                   rel="noreferrer noopener"
-                  className="rounded-2xl border border-[#dce8df] bg-[#f6fbf7] p-4 text-sm font-semibold text-[#24543d] transition-colors hover:bg-white"
+                  className="min-w-[76vw] shrink-0 rounded-2xl border border-[#dce8df] bg-[#f6fbf7] p-4 text-sm font-semibold text-[#24543d] transition-colors hover:bg-white md:min-w-0"
                 >
                   {item.label}
                 </a>
@@ -321,9 +328,9 @@ export default function NewProductAnalysisPage() {
 
           <section className="rounded-[28px] border border-[#e2ebe4] bg-[#f7fbf8] px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
             <h2 className="text-xl font-bold text-[var(--foreground)]">실제 비교로 이어지는 페이지</h2>
-            <div className="mt-5 grid gap-3 md:grid-cols-3">
+            <div className="-mx-1 mt-4 flex gap-2 overflow-x-auto px-1 pb-1 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:mx-0 md:mt-5 md:grid md:grid-cols-3 md:gap-3 md:overflow-visible md:px-0 md:pb-0">
               {relatedLinks.map((item) => (
-                <Link key={item.href} href={item.href} className="rounded-2xl border border-[#dce8df] bg-white p-4 transition-colors hover:bg-[#fbfdfb]">
+                <Link key={item.href} href={item.href} className="min-w-[76vw] shrink-0 rounded-2xl border border-[#dce8df] bg-white p-4 transition-colors hover:bg-[#fbfdfb] md:min-w-0">
                   <h3 className="text-sm font-semibold text-[#24543d]">{item.title}</h3>
                   <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">{item.body}</p>
                 </Link>

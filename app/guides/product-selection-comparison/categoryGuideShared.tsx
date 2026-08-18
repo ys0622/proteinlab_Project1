@@ -81,7 +81,7 @@ function ConversionLinks({ conversion }: { conversion: NonNullable<CategoryGuide
     <section className="border-y border-[#d9e4f0] py-5">
       <h2 className="text-lg font-bold text-[var(--foreground)]">빠른 선택</h2>
       <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">{conversion.conclusion}</p>
-      <div className="mt-4 grid gap-3 md:grid-cols-3">
+      <div className="-mx-1 mt-4 flex gap-2 overflow-x-auto px-1 pb-1 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:mx-0 md:grid md:grid-cols-3 md:gap-3 md:overflow-visible md:px-0 md:pb-0">
         {products.map(({ product, reason }) => (
           <TrackedLink
             key={product.slug}
@@ -93,7 +93,7 @@ function ConversionLinks({ conversion }: { conversion: NonNullable<CategoryGuide
             productId={product.slug}
             linkPosition="hero"
             ctaType="product_detail"
-            className="border border-[#d9e4f0] bg-[#f7f9fc] p-4 transition-colors hover:bg-white"
+            className="min-w-[74vw] shrink-0 border border-[#d9e4f0] bg-[#f7f9fc] p-4 transition-colors hover:bg-white md:min-w-0"
           >
             <p className="text-sm font-semibold text-[#4a6178]">{formatProductLabel(product.brand, product.name)}</p>
             <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">{reason}</p>
@@ -151,7 +151,7 @@ export function buildCategoryGuideMetadata(config: CategoryGuideConfig): Metadat
 
 function PurchaseCards({ links }: { links: CategoryPurchaseLink[] }) {
   return (
-    <div className="grid gap-3 md:grid-cols-3">
+    <div className="-mx-1 flex gap-2 overflow-x-auto px-1 pb-1 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:mx-0 md:grid md:grid-cols-3 md:gap-3 md:overflow-visible md:px-0 md:pb-0">
       {links.map((item) => {
         const product = getProductBySlug(item.slug);
         if (!product) return null;
@@ -160,7 +160,7 @@ function PurchaseCards({ links }: { links: CategoryPurchaseLink[] }) {
         return (
           <div
             key={item.slug}
-            className="rounded-2xl border border-[#d9e4f0] bg-[#f7f9fc] px-4 py-4"
+            className="min-w-[74vw] shrink-0 rounded-2xl border border-[#d9e4f0] bg-[#f7f9fc] px-4 py-4 md:min-w-0"
           >
             <p className="text-xs font-semibold tracking-[0.08em] text-[#4a6178]">ProteinLab 추천</p>
             <Link href={detailHref} className="mt-2 block text-sm font-semibold text-[var(--foreground)] hover:underline">
@@ -193,12 +193,12 @@ function PurchaseCards({ links }: { links: CategoryPurchaseLink[] }) {
 
 function ExternalCards({ links }: { links: CategoryExternalLink[] }) {
   return (
-    <div className="grid gap-3 md:grid-cols-2">
+    <div className="-mx-1 flex gap-2 overflow-x-auto px-1 pb-1 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:mx-0 md:grid md:grid-cols-2 md:gap-3 md:overflow-visible md:px-0 md:pb-0">
       {links.map((item) => (
         <a
           key={item.href}
           href={item.href}
-          className="rounded-2xl border border-[#d9e4f0] bg-white px-4 py-4 transition-colors hover:bg-[#f7f9fc]"
+          className="min-w-[76vw] shrink-0 rounded-2xl border border-[#d9e4f0] bg-white px-4 py-4 transition-colors hover:bg-[#f7f9fc] md:min-w-0"
           target="_blank"
           rel="noreferrer noopener"
         >
@@ -291,9 +291,9 @@ export function CategoryGuidePage({ config }: { config: CategoryGuideConfig }) {
           {config.conversion ? <ConversionLinks conversion={config.conversion} /> : null}
           <section className="rounded-[28px] border border-[#d9e4f0] bg-[#f7f9fc] px-5 py-5 shadow-[0_18px_50px_rgba(32,46,68,0.05)]">
             <p className="text-xs font-semibold tracking-[0.08em] text-[#4a6178]">📌 핵심 요약</p>
-            <ul className="mt-4 space-y-3 text-sm leading-6 text-[var(--foreground-muted)]">
+            <ul className="mt-3 grid gap-2 text-sm leading-6 text-[var(--foreground-muted)] md:mt-4 md:gap-3">
               {config.summary.map((item) => (
-                <li key={item} className="flex items-start gap-2.5 rounded-xl border border-[#d9e4f0] bg-white px-4 py-3">
+                <li key={item} className="flex items-start gap-2.5 rounded-xl border border-[#d9e4f0] bg-white px-3 py-2.5 md:px-4 md:py-3">
                   <span className="mt-0.5 shrink-0 text-[#4a8c6e]">✓</span>
                   <span>{item}</span>
                 </li>
@@ -306,23 +306,28 @@ export function CategoryGuidePage({ config }: { config: CategoryGuideConfig }) {
               <h2 className="text-xl font-bold text-[var(--foreground)]">{config.comparisonTitle}</h2>
               <span className="text-xs text-[var(--foreground-muted)]">{config.methodologyNote ?? "ProteinLab DB 기준"}</span>
             </div>
-            {/* Mobile: card layout */}
-            <div className="mt-4 space-y-2.5 md:hidden">
-              {config.comparisonRows.map((row) => (
-                <div key={row.label} className="rounded-xl border border-[#d9e4f0] bg-[#f7f9fc] px-4 py-3">
-                  <div className="flex items-start gap-2">
-                    <span className="shrink-0 pt-0.5 text-xs font-bold text-[#4a6178]">{row.label}</span>
-                    <p className="text-sm font-semibold leading-5 text-[var(--foreground)]">{row.values[0]}</p>
-                  </div>
-                  <div className="mt-2 flex flex-wrap gap-x-3 gap-y-0.5">
-                    {row.values.slice(1).map((value, i) => (
-                      <span key={i} className="text-xs text-[var(--foreground-muted)]">
-                        <span className="font-medium text-[#4a6178]">{config.comparisonColumns[i + 1]}</span>{" "}{value}
-                      </span>
+            {/* Mobile: compact scroll table */}
+            <div className="mt-4 overflow-x-auto rounded-2xl border border-[#d9e4f0] bg-[#f7f9fc] md:hidden">
+              <table className="min-w-[640px] border-collapse text-left text-xs">
+                <thead>
+                  <tr className="border-b border-[#e8edf3] text-[var(--foreground)]">
+                    <th className="whitespace-nowrap px-3 py-2 font-semibold">항목</th>
+                    {config.comparisonColumns.map((column) => (
+                      <th key={column} className="whitespace-nowrap px-3 py-2 font-semibold">{column}</th>
                     ))}
-                  </div>
-                </div>
-              ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {config.comparisonRows.map((row) => (
+                    <tr key={row.label} className="border-b border-[#eef2f6] last:border-b-0">
+                      <td className="whitespace-nowrap px-3 py-2 font-medium text-[var(--foreground)]">{row.label}</td>
+                      {row.values.map((value, index) => (
+                        <td key={`${row.label}-${index}`} className="px-3 py-2 leading-5 text-[var(--foreground-muted)]">{value}</td>
+                      ))}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
             </div>
             {/* Desktop: table */}
             <div className="mt-5 hidden overflow-x-auto md:block">
@@ -352,9 +357,9 @@ export function CategoryGuidePage({ config }: { config: CategoryGuideConfig }) {
           {config.sections.map((section, sIdx) => (
             <section key={section.title} className="rounded-[28px] border border-[#d9e4f0] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(32,46,68,0.05)]">
               <h2 className="text-xl font-bold text-[var(--foreground)]">{section.title}</h2>
-              <div className="mt-5 grid gap-3 md:grid-cols-3">
+              <div className="-mx-1 mt-4 flex gap-2 overflow-x-auto px-1 pb-1 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:mx-0 md:mt-5 md:grid md:grid-cols-3 md:gap-3 md:overflow-visible md:px-0 md:pb-0">
                 {section.items.map((item, iIdx) => (
-                  <article key={item.title} className="rounded-2xl border border-[#d9e4f0] bg-[#f7f9fc] p-4">
+                  <article key={item.title} className="min-w-[78vw] shrink-0 rounded-2xl border border-[#d9e4f0] bg-[#f7f9fc] p-4 md:min-w-0">
                     <div className="flex items-start gap-2.5">
                       <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#ddeaf3] text-[10px] font-bold text-[#4a6178]">
                         {iIdx + 1}
@@ -384,9 +389,9 @@ export function CategoryGuidePage({ config }: { config: CategoryGuideConfig }) {
 
           <section className="rounded-[28px] border border-[#d9e4f0] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(32,46,68,0.05)]">
             <h2 className="text-xl font-bold text-[var(--foreground)]">📖 관련 가이드</h2>
-            <div className="mt-5 grid gap-3 md:grid-cols-2 xl:grid-cols-4">
+            <div className="-mx-1 mt-4 flex gap-2 overflow-x-auto px-1 pb-1 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:mx-0 md:mt-5 md:grid md:grid-cols-2 md:gap-3 md:overflow-visible md:px-0 md:pb-0 xl:grid-cols-4">
               {relatedGuides.map((item) => (
-                <Link key={item.href} href={item.href} className="rounded-2xl border border-[#d9e4f0] bg-[#f7f9fc] p-4 transition-colors hover:bg-[#eef3f9]">
+                <Link key={item.href} href={item.href} className="min-w-[76vw] shrink-0 rounded-2xl border border-[#d9e4f0] bg-[#f7f9fc] p-4 transition-colors hover:bg-[#eef3f9] md:min-w-0">
                   <p className="text-sm font-semibold text-[#4a6178]">→ {item.title}</p>
                   <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">{item.description}</p>
                 </Link>

@@ -23,6 +23,7 @@ export default function PurchaseLinkButton({
   title,
 }: PurchaseLinkButtonProps) {
   const hasValidHref = href && href !== "#" && href !== "";
+  const accessibleLabel = label;
   const className = [
     "purchase-link",
     `purchase-link--${size}`,
@@ -34,9 +35,9 @@ export default function PurchaseLinkButton({
 
   if (!hasValidHref) {
     return (
-      <span className={className} title={title}>
-        <span className="purchase-link__label purchase-link__label--desktop">{label}</span>
-        <span className="purchase-link__label purchase-link__label--mobile">
+      <span className={className} title={title} aria-label={accessibleLabel}>
+        <span className="purchase-link__label purchase-link__label--desktop" aria-hidden="true">{label}</span>
+        <span className="purchase-link__label purchase-link__label--mobile" aria-hidden="true">
           {mobileLabel ?? label}
         </span>
       </span>
@@ -51,6 +52,7 @@ export default function PurchaseLinkButton({
       className={className}
       onClick={onClick}
       title={title}
+      aria-label={accessibleLabel}
     >
       {tone === "coupang" && (
         <svg
@@ -70,8 +72,8 @@ export default function PurchaseLinkButton({
           <path d="M16 10a4 4 0 0 1-8 0" />
         </svg>
       )}
-      <span className="purchase-link__label purchase-link__label--desktop">{label}</span>
-      <span className="purchase-link__label purchase-link__label--mobile">
+      <span className="purchase-link__label purchase-link__label--desktop" aria-hidden="true">{label}</span>
+      <span className="purchase-link__label purchase-link__label--mobile" aria-hidden="true">
         {mobileLabel ?? label}
       </span>
     </a>
