@@ -9,6 +9,9 @@ const takefitMonster = getDrinkProduct("takefit-monster-goso-350");
 const labnoshMax = getDrinkProduct("labnosh-protein-max-choco-400");
 const newcare41 = getDrinkProduct("newcare-all-protein-41g");
 const dryou40 = getDrinkProduct("dryou-protein-40g-choco-350");
+const dryou62 = getDrinkProduct("dryou-protein-62g-matcha-450");
+const takefitExtreme = getDrinkProduct("takefit-extreme-450");
+const takefitPro = getDrinkProduct("takefit-pro-lemon-500");
 const newcare25 = getDrinkProduct("newcare-all-protein-choco-245");
 const newcarePlant = getDrinkProduct("newcare-all-protein-plant-savory-250");
 const newcareWater = getDrinkProduct("newcare-olprotein-water-lemon-350");
@@ -168,11 +171,12 @@ export const highProtein40gConfig: ComparePageConfig = {
   keywords: ["단백질 음료 40g", "단백질 음료 45g", "단백질 음료 52g", "고단백 단백질 음료 비교", "테이크핏 몬스터", "랩노쉬 프로틴 맥스", "뉴케어 올프로틴 41g", "닥터유 40g"],
   badge: "고단백 비교",
   readingTime: "5분 읽기",
-  updatedAt: "2026-04-17",
+  updatedAt: "2026-08-18",
   methodologyNote: "ProteinLab DB 350mL 이상 40g급 RTD 기준 · 50g대 초고함량 제품은 별도 참고",
   intro: "40g 이상 단백질 음료를 찾는 사람은 대체로 운동 후 보충 효율을 가장 먼저 봅니다. 2026년에는 테이크핏 몬스터가 45g으로 올라가고 랩노쉬 프로틴 맥스 52g 제품까지 등장하면서 검색 의도가 40g대에서 50g대 초고단백으로 넓어졌습니다. 다만 실제 선택은 총량만으로 끝나지 않고 칼로리, 락토프리 여부, 맛 만족도까지 같이 봐야 합니다.",
   summary: [
     "운동 직후 단백질 효율만 보면 테이크핏 몬스터 45g이 가장 직선적입니다.",
+    `초고함량까지 넓히면 ${formatProductLabel(dryou62.brand, dryou62.name)} ${dryou62.proteinPerServing}g, ${formatProductLabel(takefitExtreme.brand, takefitExtreme.name)} ${takefitExtreme.proteinPerServing}g도 함께 확인해야 합니다.`,
     `단백질 총량만 보면 ${formatProductLabel(labnoshMax.brand, labnoshMax.name)} ${labnoshMax.proteinPerServing}g처럼 50g대 제품도 후보에 들어오지만, 칼로리와 음용 부담은 따로 봐야 합니다.`,
     "락토프리와 균형형 보충까지 같이 보려면 뉴케어 올프로틴 41g이 더 안정적입니다.",
     "맛 위주 첫 진입은 닥터유 40g이 편하지만 칼로리와 지방은 가장 높습니다.",
@@ -195,6 +199,7 @@ export const highProtein40gConfig: ComparePageConfig = {
       items: [
         { title: "테이크핏 몬스터", body: "45g으로 리뉴얼되며 총량 기준을 다시 끌어올렸습니다. 당류 1g, 지방 1g 수준이라 운동 직후에 단백질만 강하게 채우려는 사용자에게 가장 직관적입니다." },
         { title: "랩노쉬 프로틴 맥스 52g", body: "단백질 총량 기준으로는 50g대 초고함량 구간을 여는 제품입니다. 다만 이 페이지의 표는 350mL 40g급 대표 3종을 직접 비교하고, 랩노쉬 맥스는 별도 비교 페이지에서 41g 뉴케어와 함께 읽는 편이 더 정확합니다." },
+        { title: "닥터유 62g·테이크핏 익스트림", body: "최근 등록 제품까지 포함하면 60g대 제품도 비교 후보에 들어옵니다. 다만 이 구간은 일반적인 매일 보충보다 고강도 운동 후, 하루 목표량 부족분 보완처럼 사용 상황이 더 분명해야 합니다." },
         { title: "뉴케어 올프로틴 41g", body: "41g급이면서 락토프리 변형으로 관리되는 점이 강점입니다. 칼로리와 지방은 조금 더 높지만 균형영양식 브랜드 성격이 살아 있습니다." },
         { title: "닥터유 40g", body: "40g급 입문용으로 접근하기 좋지만 지방 6.5g, 258kcal라 다이어트용으로는 덜 유리합니다. 맛 만족도를 우선하면 검토할 가치가 있습니다." },
       ],
@@ -203,6 +208,7 @@ export const highProtein40gConfig: ComparePageConfig = {
       title: "목적별 최종 추천",
       items: [
         { title: "운동 직후 단백질 집중 보충", body: "테이크핏 몬스터가 가장 깔끔합니다. 밀도 12.9g/100mL 수준으로 세 제품 중 최고이고 칼로리도 가장 안정적입니다." },
+        { title: "50g 이상 초고함량 비교", body: "한 병 기준 총량을 더 높이고 싶다면 닥터유 62g, 테이크핏 익스트림 60g, 랩노쉬 맥스 52g을 별도 후보로 두고 칼로리와 당류까지 같이 봐야 합니다." },
         { title: "단백질 + 락토프리 접근성", body: "뉴케어 올프로틴 41g이 더 적합합니다. 유당 민감도가 있거나 일반 밀크형 RTD가 부담스러우면 우선순위가 올라갑니다." },
         { title: "맛 위주 첫 진입", body: "닥터유 40g은 초코 음용감 장점이 있지만 칼로리와 지방을 함께 감수해야 합니다. 체중 관리 중이라면 1순위로 두기 어렵습니다." },
       ],
@@ -224,6 +230,7 @@ export const highProtein40gConfig: ComparePageConfig = {
   ],
   relatedGuides: [
     { title: "단백질 음료 100mL당 단백질 순위", href: "/guides/product-selection-comparison/protein-density-ranking", description: "40g 제품이 전체 RTD에서 어느 정도 밀도인지 확인합니다." },
+    { title: "50g 이상 초고단백 음료 비교", href: "/guides/product-selection-comparison/high-protein-50g-comparison", description: "닥터유 62g, 테이크핏 익스트림 60g, 랩노쉬 맥스 52g처럼 초고함량 후보만 따로 봅니다." },
     { title: "뉴케어 41g vs 랩노쉬 맥스 52g", href: "/compare/newcare-41g-vs-labnosh-max-drink", description: "41g과 52g 초고단백 RTD를 성분 기준으로 직접 비교합니다." },
     { title: "셀렉스 vs 테이크핏 vs 하이뮨", href: "/guides/product-selection-comparison/selex-vs-takefit-vs-himune", description: "브랜드 대표 20g급 제품과 비교해 차이를 읽습니다." },
   ],
@@ -424,7 +431,7 @@ export const lactoseFreeProteinDrinkConfig: ComparePageConfig = {
   relatedGuides: [
     commonRelated[1],
     { title: "셀렉스 vs 테이크핏 vs 하이뮨", href: "/guides/product-selection-comparison/selex-vs-takefit-vs-himune", description: "유당 부담 외에 브랜드별 일반 RTD 차이도 같이 확인합니다." },
-    { title: "BCAA란 무엇인가", href: "/guides/product-selection-comparison/bcaa-guide", description: "원료와 아미노산 표기를 어떻게 해석할지 함께 읽어두면 좋습니다." },
+    { title: "BCAA란 무엇인가", href: "/guides/ingredients/bcaa-guide", description: "원료와 아미노산 표기를 어떻게 해석할지 함께 읽어두면 좋습니다." },
   ],
   purchaseLinks: [
     { label: "뉴케어 올프로틴 박스 보기", slug: newcare25.slug },
@@ -1038,7 +1045,6 @@ const hymuneOriginal = getDrinkProduct("hymune-balance-active-original-250");
 const hymuneZeroTiramisu = getDrinkProduct("hymune-balance-active-night-tiramisu-zero-250");
 const hymuneBalancePlus = getDrinkProduct("hymune-protein-balance-plus-190");
 const hymunePlant = getDrinkProduct("hymune-protein-balance-plant-highprotein-190");
-const takefitPro = getDrinkProduct("takefit-pro-lemon-500");
 const danbaekDrinkChoco = getDrinkProduct("danbaek-drink-chocolate-250");
 const danbaekDoubleChoco = getDrinkProduct("danbaek-drink-doublechoco-350");
 const danbaekDarkChoco = getDrinkProduct("danbaek-drink-darkchoco-330");
@@ -1533,12 +1539,13 @@ export const newcareWaterConfig: ComparePageConfig = {
   keywords: ["뉴케어 올프로틴 워터", "뉴케어 워터 단백질", "뉴케어 워터 레몬", "뉴케어 워터 사과"],
   badge: "뉴케어 워터",
   readingTime: "4분 읽기",
-  updatedAt: "2026-04-02",
+  updatedAt: "2026-08-18",
   methodologyNote: "ProteinLab DB 뉴케어 올프로틴 워터 기준",
   intro:
     "뉴케어 검색량이 늘 때 같이 붙는 의도 중 하나가 워터형입니다. 올프로틴 워터는 일반 밀크형 RTD와 결이 다르기 때문에 단백질 총량보다도 음용감, 칼로리, 당류, 부담 정도를 먼저 읽는 편이 맞습니다.",
   summary: [
     "올프로틴 워터는 무거운 고단백 RTD보다 가볍게 마시는 쪽에 더 가깝습니다.",
+    `워터형 후보를 넓히면 ${formatProductLabel(takefitPro.brand, takefitPro.name)}처럼 500mL 대용량 저당 제품도 같이 비교해야 합니다.`,
     "당류 0g, 낮은 칼로리 구조라 밀크형이 부담스러운 사람에게 대안이 됩니다.",
     "식사 보완보다 산뜻한 보충 쪽으로 읽어야 실수가 적습니다.",
   ],
@@ -1558,6 +1565,7 @@ export const newcareWaterConfig: ComparePageConfig = {
       items: [
         { title: "가볍게 마시는 쪽", body: "올프로틴 워터는 80kcal 수준이라 밀크형 RTD보다 부담이 낮습니다. 진한 보충감보다 가벼운 음용 경험이 더 중요할 때 맞습니다." },
         { title: "당류 기준이 분명함", body: "당류 0g 구조라 저당형 검색과도 잘 맞습니다. 다이어트나 혈당 부담을 같이 보는 사용자에게 설명이 쉬운 편입니다." },
+        { title: "테이크핏 프로와 비교하기", body: "뉴케어 워터가 350mL에 단백질 20g이라면, 테이크핏 프로는 500mL에 단백질 25g인 워터형 후보입니다. 둘 다 저당·저칼로리 흐름이지만 용량과 음용 목적이 달라 같이 보면 선택이 빨라집니다." },
         { title: "총량은 과장하면 안 됨", body: "워터형은 가벼운 대신 41g 같은 고단백 라인과 역할이 다릅니다. 식사 보완이나 고단백 보충의 대체재로 읽으면 과장에 가깝습니다." },
       ],
     },
@@ -1585,11 +1593,13 @@ export const newcareWaterConfig: ComparePageConfig = {
   ],
   relatedGuides: [
     { title: "뉴케어 올프로틴 완전 분석", href: "/guides/product-selection-comparison/newcare-allprotein", description: "워터를 포함한 전체 뉴케어 라인을 한 번에 봅니다." },
+    { title: "워터형 vs 밀크형 단백질 음료", href: "/compare/protein-water-vs-rtd-drink", description: "뉴케어 워터와 테이크핏 프로 같은 가벼운 제품을 밀크형 RTD와 비교합니다." },
     { title: "저당 단백질 음료 가이드", href: "/guides/product-selection-comparison/low-sugar-protein-drink-guide", description: "워터형이 저당 기준에서 어떤 위치인지 정리합니다." },
     { title: "락토프리 단백질 음료", href: "/guides/product-selection-comparison/lactose-free-protein-drink", description: "밀크형 락토프리와 워터형을 같이 비교합니다." },
   ],
   purchaseLinks: [
     { label: "뉴케어 올프로틴 워터 보기", slug: newcareWater.slug },
+    { label: "테이크핏 프로 워터형 보기", slug: takefitPro.slug },
     { label: "뉴케어 올프로틴 25g 보기", slug: newcare25.slug },
   ],
 };

@@ -18,7 +18,7 @@ function articleJsonLd(config: CategoryGuideConfig) {
       name: "ProteinLab",
       logo: { "@type": "ImageObject", url: "https://proteinlab.kr/proteinlab-logo.png" },
     },
-    dateModified: "2026-04-13",
+    ...(config.updatedAt ? { dateModified: config.updatedAt } : {}),
   };
 }
 
@@ -160,7 +160,7 @@ export const proteinShakeTop7Config: CategoryGuideConfig = {
   keywords: ["단백질 쉐이크 추천", "프로틴 쉐이크 추천", "다이어트 단백질 쉐이크", "식사대용 쉐이크", "여성 단백질 쉐이크", "파우치 단백질 쉐이크"],
   badge: "쉐이크 랭킹",
   readingTime: "6분 읽기",
-  updatedAt: "2026-04-13",
+  updatedAt: "2026-08-18",
   methodologyNote: "ProteinLab DB 쉐이크 88개 기준 · 단백질·칼로리·당류·식이섬유 종합 점수",
   intro: "단백질 쉐이크 추천을 찾는 사람 대부분은 결국 다이어트, 아침 대용, 허기 관리 중 하나를 해결하려고 들어옵니다. 그래서 이 페이지는 ProteinLab DB 쉐이크 88개 중 숫자만 높은 제품보다 실제로 오래 마시기 쉬운 상위 후보를 먼저 추려 보여주고, 그다음 플라이밀, 단백하니, 프로티원 같은 브랜드 페이지로 다시 들어가 선택 속도를 더 빠르게 만드는 흐름으로 구성했습니다.",
   summary: [
@@ -211,6 +211,14 @@ export const proteinShakeTop7Config: CategoryGuideConfig = {
         { title: "1위만 고집하지 않기", body: "TOP 7은 절대 순위라기보다 상위 후보군에 가깝습니다. 맛 취향과 포만감 체감이 다르면 3위나 5위가 더 잘 맞을 수도 있습니다." },
         { title: "박스 구매 전에 할 일", body: "쉐이크는 한 번에 여러 팩을 사면 단가가 내려가지만, 맛이 안 맞으면 손실이 큽니다. 소량 테스트 후 박스로 넘어가는 흐름이 가장 안전합니다." },
         { title: "숫자보다 지속성", body: "다이어트용 쉐이크는 오래 먹을 수 있어야 의미가 있습니다. 그래서 최종 선택은 숫자와 함께 맛, 질림 정도, 마시는 시간대까지 같이 봐야 합니다." },
+      ],
+    },
+    {
+      title: "최근 등록 제품까지 같이 보면 좋은 후보",
+      items: [
+        { title: "랩노쉬 슬림쉐이크 신규 맛", body: "랩노쉬는 초당옥수수, 딸기쿠키크럼블, 얼그레이밀크티처럼 맛 선택 폭이 넓습니다. 단백질 총량보다 맛 지속성과 포만감을 우선하는 사용자에게 비교 가치가 큽니다." },
+        { title: "플라이밀 피스타치오·쿠키앤크림", body: "플라이밀은 등록 맛이 많아 취향 기반 검색을 받기 좋습니다. 피스타치오, 쿠키앤크림, 콘시리얼처럼 디저트형 맛은 박스 구매 전에 칼로리와 당류를 같이 확인하는 편이 안전합니다." },
+        { title: "프로티원·잇더핏·단백하니 40g 파우치", body: "프로티원, 잇더핏, 단백하니는 40g 전후 파우치형으로 등록되어 있어 저당·고단백 쉐이크 비교 검색에 묶기 좋습니다. 브랜드별 맛보다 단백질·칼로리·당류 차이를 먼저 보는 흐름이 맞습니다." },
       ],
     },
   ],
