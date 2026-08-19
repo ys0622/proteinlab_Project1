@@ -175,7 +175,7 @@ export default async function Home() {
             }}
           />
 
-          <div className="relative z-10 px-4 py-3.5 md:max-w-[56%] md:px-10 md:py-8">
+          <div className="relative z-10 px-4 py-3 md:max-w-[56%] md:px-10 md:py-8">
             <div className="flex items-start justify-between gap-3 md:block">
               <div className="min-w-0 flex-1">
                 <h1 className="font-extrabold leading-[1.3] text-[20px] md:text-[38px] md:leading-[1.25]" style={{ color: "#16412D", letterSpacing: "-0.02em" }}>
@@ -207,7 +207,7 @@ export default async function Home() {
                 />
               </div>
             </div>
-            <div className="mt-2.5 max-w-[560px] md:mt-4">
+            <div className="mt-2 max-w-[560px] md:mt-4">
               <HomeHeroSearch />
             </div>
           </div>
