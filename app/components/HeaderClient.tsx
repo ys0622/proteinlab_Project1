@@ -33,7 +33,7 @@ export default function HeaderClient({ isAdmin }: { isAdmin: boolean }) {
   return (
     <>
       <header className="sticky top-0 z-50" style={{ background: "#16412D" }}>
-        <div className="mx-auto flex h-11 max-w-[1180px] items-center px-4 md:h-16 md:px-5">
+        <div className="mx-auto flex h-10 max-w-[1180px] items-center px-4 md:h-16 md:px-5">
           <Link
             href="/"
             className="flex shrink-0 items-center gap-2 text-lg font-bold text-white"
@@ -130,7 +130,7 @@ export default function HeaderClient({ isAdmin }: { isAdmin: boolean }) {
           <div className="ml-auto flex items-center md:hidden">
             <button
               type="button"
-              className="flex h-10 w-10 items-center justify-center rounded-lg text-white hover:bg-white/10 md:hidden"
+              className="flex h-9 w-9 items-center justify-center rounded-lg text-white hover:bg-white/10 md:hidden"
               onClick={() => setOpenPath((current) => (current === pathname ? null : pathname))}
               aria-label={open ? "메뉴 닫기" : "메뉴 열기"}
               aria-expanded={open}
@@ -153,7 +153,7 @@ export default function HeaderClient({ isAdmin }: { isAdmin: boolean }) {
 
         {open ? (
           <div
-            className="fixed inset-0 top-11 z-40 bg-black/30 md:hidden"
+            className="fixed inset-0 top-10 z-40 bg-black/30 md:hidden"
             onClick={() => setOpenPath(null)}
             aria-hidden="true"
           />
@@ -161,7 +161,7 @@ export default function HeaderClient({ isAdmin }: { isAdmin: boolean }) {
 
         {open ? (
           <nav
-            className="absolute inset-x-0 top-full z-50 max-h-[calc(100vh-2.75rem)] overflow-y-auto border-t border-white/10 bg-white px-4 py-2 shadow-lg md:hidden"
+            className="absolute inset-x-0 top-full z-50 max-h-[calc(100vh-2.5rem)] overflow-y-auto border-t border-white/10 bg-white px-4 py-2 shadow-lg md:hidden"
             aria-label="모바일 메뉴"
           >
             {visibleNavItems.map((item) => {
