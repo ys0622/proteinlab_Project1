@@ -228,9 +228,9 @@ export default async function Home() {
               href={cat.href}
               eventName="home_category_click"
               eventParams={{ category: cat.countKey, destination_url: cat.href }}
-              className="group flex items-center gap-2 rounded-[10px] bg-white px-2.5 py-1.5 text-left shadow-[0_1px_4px_rgba(20,32,26,0.06)] transition-all duration-150 hover:shadow-[0_6px_16px_rgba(20,32,26,0.10)] md:gap-3 md:rounded-[12px] md:px-3.5 md:py-3"
+              className="group flex items-center gap-2 rounded-[10px] bg-white px-2.5 py-1 text-left shadow-[0_1px_4px_rgba(20,32,26,0.06)] transition-all duration-150 hover:shadow-[0_6px_16px_rgba(20,32,26,0.10)] md:gap-3 md:rounded-[12px] md:px-3.5 md:py-3"
             >
-              <span className="relative h-9 w-9 shrink-0 overflow-hidden rounded-[8px] transition-transform duration-150 group-hover:scale-105 md:h-14 md:w-14 md:rounded-[10px]">
+              <span className="relative h-8 w-8 shrink-0 overflow-hidden rounded-[8px] transition-transform duration-150 group-hover:scale-105 md:h-14 md:w-14 md:rounded-[10px]">
                 <Image src={`/category-icons/${cat.icon}.jpg`} alt="" fill className="object-cover" sizes="56px" />
               </span>
               <div className="min-w-0">
