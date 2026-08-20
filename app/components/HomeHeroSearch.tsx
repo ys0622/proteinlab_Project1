@@ -19,7 +19,7 @@ export default function HomeHeroSearch() {
       <form
         role="search"
         onSubmit={handleSubmit}
-        className="flex h-9 min-w-0 flex-1 items-center gap-1.5 rounded-[9px] border bg-white pl-3 pr-1 shadow-sm md:h-14 md:gap-2 md:rounded-[12px] md:pl-5 md:pr-1.5"
+        className="flex h-8 min-w-0 flex-1 items-center gap-1.5 rounded-[9px] border bg-white pl-3 pr-1 shadow-sm md:h-14 md:gap-2 md:rounded-[12px] md:pl-5 md:pr-1.5"
         style={{ borderColor: "#E2DFD8" }}
       >
         <svg className="h-3.5 w-3.5 shrink-0 md:h-5 md:w-5" style={{ color: "#8A968F" }} fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
@@ -48,7 +48,7 @@ export default function HomeHeroSearch() {
         href="/compare"
         eventName="home_hero_compare_click"
         eventParams={{ category: "compare" }}
-        className="flex h-9 shrink-0 items-center justify-center rounded-[9px] border px-3 text-[12px] font-bold whitespace-nowrap transition-colors hover:bg-[#EBF3ED] md:h-14 md:rounded-[12px] md:px-6 md:text-[14px]"
+        className="flex h-8 shrink-0 items-center justify-center rounded-[9px] border px-3 text-[12px] font-bold whitespace-nowrap transition-colors hover:bg-[#EBF3ED] md:h-14 md:rounded-[12px] md:px-6 md:text-[14px]"
         style={{ borderColor: "#1F5A3D", color: "#1F5A3D" }}
       >
         제품 비교

@@ -160,7 +160,7 @@ export default async function Home() {
       <Header />
 
       {/* ─── 1. Hero (베이직 톤 박스 + 검색창) ─── */}
-      <section className="mx-auto max-w-[1180px] px-4 pt-2 md:px-5 md:pt-4">
+      <section className="mx-auto max-w-[1180px] px-4 pt-1.5 md:px-5 md:pt-4">
         <div className="relative overflow-hidden rounded-[16px]" style={{ background: "#F2ECDD" }}>
           {/* 데스크톱: 우측 배경 블렌딩 이미지 */}
           <div
@@ -175,7 +175,7 @@ export default async function Home() {
             }}
           />
 
-          <div className="relative z-10 px-4 py-3 md:max-w-[56%] md:px-10 md:py-8">
+          <div className="relative z-10 px-4 py-2.5 md:max-w-[56%] md:px-10 md:py-8">
             <div className="flex items-start justify-between gap-3 md:block">
               <div className="min-w-0 flex-1">
                 <h1 className="font-extrabold leading-[1.3] text-[20px] md:text-[38px] md:leading-[1.25]" style={{ color: "#16412D", letterSpacing: "-0.02em" }}>
@@ -207,7 +207,7 @@ export default async function Home() {
                 />
               </div>
             </div>
-            <div className="mt-2 max-w-[560px] md:mt-4">
+            <div className="mt-1.5 max-w-[560px] md:mt-4">
               <HomeHeroSearch />
             </div>
           </div>
@@ -215,7 +215,7 @@ export default async function Home() {
       </section>
 
       {/* ─── 2. 카테고리 (센터 정렬 아이콘 카드) ─── */}
-      <section className="mx-auto max-w-[1180px] px-4 pt-2.5 md:px-5 md:pt-4">
+      <section className="mx-auto max-w-[1180px] px-4 pt-2 md:px-5 md:pt-4">
         <div className="grid grid-cols-2 gap-2 md:gap-3 md:grid-cols-4">
           {([
             { label: "단백질 음료", icon: "drink", href: "/drinks", countKey: "drink" as const },
@@ -247,7 +247,7 @@ export default async function Home() {
       </section>
 
       {/* ─── 4. 이번 주 인기 제품 ─── */}
-      <section className="mx-auto max-w-[1180px] px-4 pt-1.5 md:px-5 md:pt-4">
+      <section className="mx-auto max-w-[1180px] px-4 pt-1 md:px-5 md:pt-4">
         <HomePopularCarousel products={carouselProducts} />
         <div className="mt-2 flex justify-end">
           <Link href="/trending" className="text-[12px] font-semibold text-[#1F5A3D] hover:underline">
@@ -257,7 +257,7 @@ export default async function Home() {
       </section>
 
       {/* ─── 5. 가이드 & 인사이트 ─── */}
-      <section className="mx-auto max-w-[1180px] px-4 pt-5 md:px-5 md:pt-6">
+      <section className="mx-auto max-w-[1180px] px-4 pt-4 md:px-5 md:pt-6">
         <div className="mb-3 flex items-center justify-between">
           <h2 className="font-extrabold text-[17px] md:text-[24px]" style={{ color: "#1A2B1E", letterSpacing: "-0.02em" }}>
             가이드 & 인사이트
@@ -294,7 +294,7 @@ export default async function Home() {
       </section>
 
       {/* ─── 6. 플랫폼 특징 ─── */}
-      <section className="mx-auto max-w-[1180px] px-4 pb-12 pt-5 md:px-5 md:pb-16 md:pt-6">
+      <section className="mx-auto max-w-[1180px] px-4 pb-8 pt-4 md:px-5 md:pb-16 md:pt-6">
         <div
           className="rounded-[20px] border p-5 md:p-6"
           style={{ background: "#FFFDF7", borderColor: "#E4D9CC", boxShadow: "0 2px 8px rgba(60,45,30,0.07)" }}
@@ -324,7 +324,7 @@ export default async function Home() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-[1180px] px-4 pb-8 md:px-5">
+      <section className="mx-auto max-w-[1180px] px-4 pb-6 md:px-5">
         <NewsletterBanner />
       </section>
 
