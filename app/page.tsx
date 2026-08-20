@@ -189,8 +189,8 @@ export default async function Home() {
                   목적에 맞는 제품을 찾아보세요.
                 </p>
               </div>
-              {/* 모바일: 우측 썸네일 이미지 (PC와 동일한 크롭·블렌딩) */}
-              <div aria-hidden className="relative h-[92px] w-[92px] shrink-0 overflow-hidden rounded-[12px] md:hidden">
+              {/* 모바일: 우측 썸네일 이미지 (네 방향 전부 배경색으로 블렌딩되는 비네트) */}
+              <div aria-hidden className="relative h-[96px] w-[96px] shrink-0 md:hidden">
                 <div
                   className="absolute inset-0"
                   style={{
@@ -202,7 +202,7 @@ export default async function Home() {
                 <div
                   className="absolute inset-0"
                   style={{
-                    background: "linear-gradient(to right, #F2ECDD, transparent 30%)",
+                    background: "radial-gradient(ellipse farthest-corner at 50% 50%, transparent 38%, #F2ECDD 92%)",
                   }}
                 />
               </div>
