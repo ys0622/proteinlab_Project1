@@ -28,7 +28,7 @@ export function buildGuideJsonLd(options: GuideJsonLdOptions): Record<string, un
       "@type": "Organization",
       name: "ProteinLab",
       url: SITE_URL,
-      logo: { "@type": "ImageObject", url: `${SITE_URL}/proteinlab-logo.png`, width: 81, height: 88 },
+      logo: { "@type": "ImageObject", url: `${SITE_URL}/proteinlab-logo.png`, width: 715, height: 717 },
     },
     ...(datePublished ? { datePublished } : {}),
     ...(modifiedDate ? { dateModified: modifiedDate } : {}),

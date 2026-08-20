@@ -54,7 +54,7 @@ function articleJsonLd(config: ComparePageConfig) {
       "@type": "Organization",
       name: "ProteinLab",
       url: "https://proteinlab.kr",
-      logo: { "@type": "ImageObject", url: "https://proteinlab.kr/proteinlab-logo.png", width: 81, height: 88 },
+      logo: { "@type": "ImageObject", url: "https://proteinlab.kr/proteinlab-logo.png", width: 715, height: 717 },
     },
     image: { "@type": "ImageObject", url: `https://proteinlab.kr${config.ogImage ?? "/proteinlab-logo.png"}` },
     ...(config.updatedAt ? { dateModified: config.updatedAt } : {}),

@@ -139,7 +139,7 @@ export function buildCategoryGuideMetadata(config: CategoryGuideConfig): Metadat
       type: "article",
       locale: "ko_KR",
       siteName: "ProteinLab",
-      images: [{ url: "/proteinlab-logo.png", width: 81, height: 88, alt: "ProteinLab" }],
+      images: [{ url: "/proteinlab-logo.png", width: 715, height: 717, alt: "ProteinLab" }],
       ...(config.updatedAt ? { modifiedTime: config.updatedAt } : {}),
     },
     twitter: {
@@ -226,7 +226,7 @@ function buildCategoryJsonLd(config: CategoryGuideConfig): Record<string, unknow
         "@type": "Organization",
         name: "ProteinLab",
         url: "https://proteinlab.kr",
-        logo: { "@type": "ImageObject", url: "https://proteinlab.kr/proteinlab-logo.png", width: 81, height: 88 },
+        logo: { "@type": "ImageObject", url: "https://proteinlab.kr/proteinlab-logo.png", width: 715, height: 717 },
       },
       ...(config.updatedAt ? { dateModified: config.updatedAt } : {}),
     },

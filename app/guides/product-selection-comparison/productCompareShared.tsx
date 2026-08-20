@@ -104,7 +104,7 @@ export function buildGuideMetadata(config: ComparePageConfig): Metadata {
       images: [
         hasLargeOg
           ? { url: ogImage, width: 1200, height: 630, alt: `${config.title} - ProteinLab` }
-          : { url: ogImage, width: 81, height: 88, alt: "ProteinLab" },
+          : { url: ogImage, width: 715, height: 717, alt: "ProteinLab" },
       ],
       ...(config.updatedAt ? { modifiedTime: config.updatedAt } : {}),
     },
@@ -159,7 +159,7 @@ function buildCompareJsonLd(config: ComparePageConfig): Record<string, unknown>[
         "@type": "Organization",
         name: "ProteinLab",
         url: "https://proteinlab.kr",
-        logo: { "@type": "ImageObject", url: "https://proteinlab.kr/proteinlab-logo.png", width: 81, height: 88 },
+        logo: { "@type": "ImageObject", url: "https://proteinlab.kr/proteinlab-logo.png", width: 715, height: 717 },
       },
       ...(config.updatedAt ? { dateModified: config.updatedAt } : {}),
     },

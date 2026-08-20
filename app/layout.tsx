@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   title: "단백질 제품 비교 — ProteinLab",
   description: "단백질 음료·바·요거트·쉐이크를 단백질 함량, 당류, 칼로리 기준으로 바로 비교합니다.",
   icons: {
-    icon: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💪</text></svg>",
+    icon: "/proteinlab-logo.png",
     apple: "/proteinlab-logo.png",
   },
   manifest: "/manifest.json",

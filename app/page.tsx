@@ -32,7 +32,7 @@ const websiteJsonLd = {
       "@id": "https://proteinlab.kr/#organization",
       name: "ProteinLab",
       url: "https://proteinlab.kr",
-      logo: { "@type": "ImageObject", url: "https://proteinlab.kr/proteinlab-logo.png", width: 81, height: 88 },
+      logo: { "@type": "ImageObject", url: "https://proteinlab.kr/proteinlab-logo.png", width: 715, height: 717 },
       description: "단백질 음료, 바, 요거트, 쉐이크를 성분 데이터로 비교·추천하는 프로틴랩 ProteinLab입니다.",
     },
   ],
@@ -44,7 +44,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title, description,
     alternates: { canonical: "https://proteinlab.kr" },
-    openGraph: { title, description, url: "https://proteinlab.kr", type: "website", locale: "ko_KR", siteName: "ProteinLab", images: [{ url: "https://proteinlab.kr/proteinlab-logo.png", width: 81, height: 88, alt: "ProteinLab" }] },
+    openGraph: { title, description, url: "https://proteinlab.kr", type: "website", locale: "ko_KR", siteName: "ProteinLab", images: [{ url: "https://proteinlab.kr/proteinlab-logo.png", width: 715, height: 717, alt: "ProteinLab" }] },
     twitter: { card: "summary", title, description, images: ["https://proteinlab.kr/proteinlab-logo.png"] },
   };
 }
