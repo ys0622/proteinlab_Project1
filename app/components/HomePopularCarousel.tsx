@@ -66,7 +66,7 @@ export default function HomePopularCarousel({ products }: Props) {
   return (
     <div>
       {/* Header */}
-      <div className="mb-1.5 flex flex-nowrap items-center justify-between gap-1.5 md:mb-3 md:gap-2">
+      <div className="mb-0.5 flex flex-nowrap items-center justify-between gap-1.5 md:mb-3 md:gap-2">
         <h2
           className="shrink-0 font-extrabold text-[15px] md:text-[24px]"
           style={{ color: "#1A2B1E", letterSpacing: "-0.02em" }}
