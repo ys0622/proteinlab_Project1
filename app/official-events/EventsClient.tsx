@@ -84,7 +84,7 @@ const PRODUCT_TYPE_META: Record<
   },
 };
 
-const CHECKED_DATE_LABEL = "2026-08-12 업데이트";
+const CHECKED_DATE_LABEL = "2026-08-24 업데이트";
 
 const CATEGORY_EMOJI: Record<EventCategory, string> = {
   할인: "🔖",
@@ -151,12 +151,12 @@ const rawDrinkBrands: BrandCard[] = [
   },
   {
     brand: "테이크핏",
-    storeType: "자사몰",
-    storeUrl: "https://mshopping.namyangi.com/item/list/1002",
+    storeType: "네이버 브랜드관",
+    storeUrl: "https://brand.naver.com/namyang",
     note: "현재 등록 제품 9개",
     productCount: 9,
     events: [
-      { category: "할인", periodLabel: CHECKED_DATE_LABEL, description: "현재 기준으로 남양몰에서 몬스터 43g·맥스 24g 라인은 대량 구매 구성 반영 여부에 따라 체감가 차이가 납니다." },
+      { category: "할인", periodLabel: CHECKED_DATE_LABEL, description: "남양몰이 종료되어 네이버 남양 스토어로 판매 채널이 이전되었습니다. 몬스터 딸기맛 47g·맥스 24g 라인은 대량 구매 구성 반영 여부에 따라 체감가 차이가 납니다." },
       { category: "무료배송", periodLabel: "조건부 상시", description: "세트 단위로 담으면 배송비 조건을 넘기기 쉬운 편입니다." },
     ],
   },
@@ -245,7 +245,7 @@ const rawBarBrands: BrandCard[] = [
   {
     brand: "베노프",
     storeType: "자사몰",
-    storeUrl: "https://benof.co.kr/",
+    storeUrl: "https://benope.com/",
     note: "현재 등록 제품 10개",
     productCount: 10,
     events: [
@@ -267,7 +267,7 @@ const rawBarBrands: BrandCard[] = [
   {
     brand: "프로틴방앗간",
     storeType: "공식몰",
-    storeUrl: "https://proteinbangatgan.com/",
+    storeUrl: "https://dailyprotein.co.kr/",
     note: "현재 등록 제품 4개",
     productCount: 4,
     events: [
@@ -595,7 +595,7 @@ const additionalBarBrands: BrandCard[] = [
   { brand: "셀렉스", storeType: "네이버 브랜드관", storeUrl: "https://brand.naver.com/selex/category/85709825a6ff41b7bfdb4b6dbd205dd0?cp=1", note: "현재 등록 제품 2개", productCount: 2, events: [{ category: "할인", periodLabel: CHECKED_DATE_LABEL, description: "셀렉스 바는 SKU 수는 적지만 브랜드전 여부에 따라 묶음 체감가가 달라집니다." }, { category: "쿠폰", periodLabel: CHECKED_DATE_LABEL, description: "브랜드관 쿠폰과 무료배송 조건을 함께 확인하는 편이 좋습니다." }] },
   { brand: "커클랜드", storeType: "공식 판매처", storeUrl: "https://www.costco.co.kr/", note: "현재 등록 제품 2개", productCount: 2, events: [{ category: "할인", periodLabel: CHECKED_DATE_LABEL, description: "대용량 박스 판매 비중이 높아 행사 시점별 단가 차이가 큰 편입니다." }, { category: "무료배송", periodLabel: CHECKED_DATE_LABEL, description: "판매처별 배송 조건이 달라 박스 수량과 배송비 포함 총액을 함께 보는 편이 좋습니다." }] },
   { brand: "포스트", storeType: "자사몰", storeUrl: "https://www.postmall.co.kr/", note: "현재 등록 제품 2개", productCount: 2, events: [{ category: "할인", periodLabel: CHECKED_DATE_LABEL, description: "프로틴 그래놀라바는 프로모션이 붙을 때 묶음 단가 차이가 분명해집니다." }, { category: "무료배송", periodLabel: CHECKED_DATE_LABEL, description: "자사몰 합배송 기준을 함께 보면 단품보다 묶음 구매의 체감가를 판단하기 쉽습니다." }] },
-  { brand: "온단백", storeType: "자사몰", storeUrl: "https://dailyprotein.co.kr/", note: "현재 등록 제품 2개", productCount: 2, events: [{ category: "할인", periodLabel: CHECKED_DATE_LABEL, description: "소수 SKU 중심이라 자사몰 행사 반영 여부에 따라 체감가 차이가 커집니다." }, { category: "무료배송", periodLabel: CHECKED_DATE_LABEL, description: "합배송 조건과 세트 구성을 함께 보는 편이 좋습니다." }] },
+  { brand: "온단백", storeType: "쿠팡", storeUrl: "https://www.coupang.com/", note: "현재 등록 제품 2개", productCount: 2, events: [{ category: "할인", periodLabel: CHECKED_DATE_LABEL, description: "소수 SKU 중심이라 판매처 행사 반영 여부에 따라 체감가 차이가 커집니다." }, { category: "무료배송", periodLabel: CHECKED_DATE_LABEL, description: "로켓배송 여부와 배송비 조건을 함께 보는 편이 좋습니다." }] },
   { brand: "올가니카", storeType: "공식몰", storeUrl: "https://www.organica.co.kr/", note: "현재 등록 제품 2개", productCount: 2, events: [{ category: "할인", periodLabel: CHECKED_DATE_LABEL, description: "간식형 라인은 기획전 반영 여부에 따라 단가 차이가 자주 납니다." }, { category: "무료배송", periodLabel: CHECKED_DATE_LABEL, description: "공식몰 배송 조건과 묶음 구성을 같이 확인하는 편이 좋습니다." }] },
   { brand: "곰곰", storeType: "쿠팡", storeUrl: "https://www.coupang.com/", note: "현재 등록 제품 1개", productCount: 1, events: [{ category: "할인", periodLabel: CHECKED_DATE_LABEL, description: "단일 SKU라도 쿠팡 판매처와 재고 상황에 따라 노출가 차이가 생깁니다." }, { category: "무료배송", periodLabel: CHECKED_DATE_LABEL, description: "로켓배송 여부와 배송비 조건을 함께 보는 편이 좋습니다." }] },
   { brand: "노브랜드", storeType: "공식 판매처", storeUrl: "https://emart.ssg.com/", note: "현재 등록 제품 2개", productCount: 2, events: [{ category: "할인", periodLabel: CHECKED_DATE_LABEL, description: "이마트 계열 행사 주기에 따라 체감가 차이가 커져 행사 시점 체크 가치가 높습니다." }, { category: "증정", periodLabel: CHECKED_DATE_LABEL, description: "대형마트형 증정 행사나 묶음 구성이 붙는지 같이 보는 편이 좋습니다." }] },
@@ -939,7 +939,7 @@ export default function EventsClient() {
             이벤트/핫딜
           </h1>
           <p className="mt-1 text-sm text-[var(--foreground-muted)]">
-            등록 제품 {TOTAL_REGISTERED_PRODUCTS}개 기준으로 공식몰·네이버·쿠팡 혜택 확인 우선순위를 정리했습니다. 2026-08-12 업데이트 기준으로 할인, 쿠폰, 증정, 무료배송 체크 포인트를 빠르게 볼 수 있습니다.
+            등록 제품 {TOTAL_REGISTERED_PRODUCTS}개 기준으로 공식몰·네이버·쿠팡 혜택 확인 우선순위를 정리했습니다. 2026-08-24 업데이트 기준으로 할인, 쿠폰, 증정, 무료배송 체크 포인트를 빠르게 볼 수 있습니다.
           </p>
         </div>
       </section>
