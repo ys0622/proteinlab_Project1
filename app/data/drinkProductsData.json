@@ -2966,6 +2966,11 @@
     "density": "13.4g/100ml",
     "productUrl": "#",
     "productType": "drink",
+    "gradeTags": [
+      "단백질 밀도 A",
+      "다이어트 B",
+      "퍼포먼스 A"
+    ],
     "manufacturer": "남양유업",
     "flavor": "딸기맛",
     "bcaa": "9000mg",
@@ -2985,7 +2990,9 @@
       "sodiumMg": 285,
       "cholesterolMg": 22,
       "calciumMg": 700,
-      "bcaaMg": 9000
+      "bcaaMg": 9000,
+      "eaaMg": 19000,
+      "arginineMg": 1800
     }
   },
   {

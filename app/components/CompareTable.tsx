@@ -16,6 +16,7 @@ import {
   getOfficialMallUrl,
   normalizeCoupangUrl,
 } from "../lib/purchaseLinks";
+import { purchaseClick } from "@/lib/analytics";
 import MetricBadgeGroup from "./MetricBadgeGroup";
 import ProductBadge from "./ProductBadge";
 import { formatProductBadgeLabel, getProductBadgeTone } from "./productBadgeUtils";
@@ -186,6 +187,16 @@ export default function CompareTable({ products, visibleColumnIds }: CompareTabl
                           officialMallHref={officialHref}
                           size="sm"
                           coupangOnly
+                          onCoupangClick={() =>
+                            purchaseClick({
+                              productId: p.slug,
+                              productName: p.name,
+                              brand: p.brand,
+                              store: "coupang",
+                              destinationUrl: coupangHref ?? undefined,
+                              placement: "comparison_result",
+                            })
+                          }
                         />
                       </td>
                     );

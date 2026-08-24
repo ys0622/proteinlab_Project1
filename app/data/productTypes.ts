@@ -55,7 +55,10 @@ export interface NutritionPerBottle {
   cholesterolMg?: number;
   sodiumMg?: number;
   fiberG?: number;
+  calciumMg?: number;
   bcaaMg?: number;
+  eaaMg?: number;
+  arginineMg?: number;
 }
 
 export interface ProductDetailFields {

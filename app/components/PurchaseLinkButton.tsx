@@ -1,5 +1,7 @@
 "use client";
 
+import { affiliateClick, type LinkPosition } from "@/lib/analytics";
+
 type PurchaseLinkTone = "coupang" | "naver" | "official";
 type PurchaseLinkSize = "sm" | "md";
 
@@ -11,6 +13,13 @@ type PurchaseLinkButtonProps = {
   size: PurchaseLinkSize;
   onClick?: () => void;
   title?: string;
+  tracking?: {
+    productId?: string;
+    productName?: string;
+    productBrand?: string;
+    productCategory?: string;
+    linkPosition: LinkPosition;
+  };
 };
 
 export default function PurchaseLinkButton({
@@ -21,6 +30,7 @@ export default function PurchaseLinkButton({
   size,
   onClick,
   title,
+  tracking,
 }: PurchaseLinkButtonProps) {
   const hasValidHref = href && href !== "#" && href !== "";
   const accessibleLabel = label;
@@ -44,13 +54,28 @@ export default function PurchaseLinkButton({
     );
   }
 
+  const handleClick = () => {
+    if (tone === "coupang" && href && tracking) {
+      affiliateClick({
+        productId: tracking.productId,
+        productName: tracking.productName,
+        productBrand: tracking.productBrand,
+        productCategory: tracking.productCategory,
+        retailer: "coupang",
+        destinationUrl: href,
+        linkPosition: tracking.linkPosition,
+      });
+    }
+    onClick?.();
+  };
+
   return (
     <a
       href={href}
       target="_blank"
       rel="noopener noreferrer"
       className={className}
-      onClick={onClick}
+      onClick={handleClick}
       title={title}
       aria-label={accessibleLabel}
     >

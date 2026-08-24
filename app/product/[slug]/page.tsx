@@ -1010,6 +1010,13 @@ export default async function ProductDetailPage({ params }: PageProps) {
                             label="쿠팡 구매"
                             tone="coupang"
                             size="sm"
+                            tracking={{
+                              productId: candidate.slug,
+                              productName: candidate.name,
+                              productBrand: candidate.brand,
+                              productCategory: candidate.productType,
+                              linkPosition: "related_product",
+                            }}
                           />
                         </div>
                       )}

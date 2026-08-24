@@ -57,7 +57,10 @@ export function getNutritionDetail(p: ProductDetailProps): NutritionDetailRow[] 
     if (n.cholesterolMg != null) rows.push({ label: "콜레스테롤", value: `${n.cholesterolMg}mg` });
     rows.push({ label: "나트륨", value: formatValue(n.sodiumMg, "mg") });
     if (n.fiberG != null) rows.push({ label: "식이섬유", value: `${n.fiberG}g` });
+    if (n.calciumMg != null) rows.push({ label: "칼슘", value: `${n.calciumMg}mg` });
     rows.push({ label: "BCAA", value: `${n.bcaaMg ?? 0}mg` });
+    if (n.eaaMg != null) rows.push({ label: "EAA", value: `${n.eaaMg}mg` });
+    if (n.arginineMg != null) rows.push({ label: "아르기닌", value: `${n.arginineMg}mg` });
     return rows;
   }
 

@@ -4,6 +4,7 @@ import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 import AffiliateDisclosure from "@/app/components/AffiliateDisclosure";
 import CommercialAdSection from "@/app/components/CommercialAdSection";
+import TrackedCoupangLink from "@/app/components/TrackedCoupangLink";
 import { getDrinkProducts } from "@/app/data/drinkProductsData";
 import type { ProductDetailProps } from "@/app/data/products";
 import { getCoupangRedirectHref } from "@/app/lib/purchaseLinks";
@@ -124,12 +125,15 @@ function PurchaseLinks({ links }: { links: PurchaseGuideLink[] }) {
         const product = getDrinkProduct(item.slug);
         const href = getCoupangRedirectHref(product.coupangUrl, "guide", product.slug);
         return (
-          <a
+          <TrackedCoupangLink
             key={item.slug}
-            href={href ?? "#"}
+            href={href}
+            productId={product.slug}
+            productName={formatProductLabel(product.brand, product.name)}
+            productBrand={product.brand}
+            productCategory={product.productType ?? "drink"}
+            linkPosition="mid_content"
             className="min-w-[74vw] shrink-0 rounded-2xl border border-[#d9e4f0] bg-[#f7f9fc] px-4 py-4 transition-colors hover:bg-[#eef3f9] md:min-w-0"
-            target={href ? "_blank" : undefined}
-            rel={href ? "noreferrer noopener" : undefined}
           >
             <p className="text-xs font-semibold tracking-[0.08em] text-[#4a6178]">쿠팡에서 가격 확인</p>
             <p className="mt-2 text-sm font-semibold text-[var(--foreground)]">{item.label}</p>
@@ -137,7 +141,7 @@ function PurchaseLinks({ links }: { links: PurchaseGuideLink[] }) {
               {formatProductLabel(product.brand, product.name)}
             </p>
             <p className="mt-3 text-xs font-medium text-[#24543d]">옵션과 최신 가격 보기 →</p>
-          </a>
+          </TrackedCoupangLink>
         );
       })}
     </div>

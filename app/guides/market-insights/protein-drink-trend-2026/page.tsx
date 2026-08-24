@@ -4,14 +4,14 @@ import Footer from "@/app/components/Footer";
 import GuideBuySection from "@/app/components/GuideBuySection";
 
 export const metadata = {
-  title: "2026 단백질 음료 시장 트렌드 | 45g·52g 초고단백 경쟁",
-  description: "테이크핏 몬스터 45g 리뉴얼과 랩노쉬 52g 초고함량 제품 출시 준비까지, 2026년 단백질 음료 시장의 초고단백 경쟁과 저당 RTD 흐름을 정리합니다.",
+  title: "2026 단백질 음료 시장 트렌드 | 47g·52g 초고단백 경쟁",
+  description: "테이크핏 몬스터 딸기맛 47g 리뉴얼과 랩노쉬 52g 초고함량 제품 출시 준비까지, 2026년 단백질 음료 시장의 초고단백 경쟁과 저당 RTD 흐름을 정리합니다.",
   alternates: {
     canonical: "https://proteinlab.kr/guides/market-insights/protein-drink-trend-2026",
   },
   openGraph: {
-    title: "2026 단백질 음료 시장 트렌드 | 45g·52g 초고단백 경쟁",
-    description: "테이크핏 몬스터 45g 리뉴얼과 랩노쉬 52g 초고함량 제품 출시 준비까지, 2026년 단백질 음료 시장의 초고단백 경쟁과 저당 RTD 흐름을 정리합니다.",
+    title: "2026 단백질 음료 시장 트렌드 | 47g·52g 초고단백 경쟁",
+    description: "테이크핏 몬스터 딸기맛 47g 리뉴얼과 랩노쉬 52g 초고함량 제품 출시 준비까지, 2026년 단백질 음료 시장의 초고단백 경쟁과 저당 RTD 흐름을 정리합니다.",
     url: "https://proteinlab.kr/guides/market-insights/protein-drink-trend-2026",
     type: "article",
     locale: "ko_KR",
@@ -19,8 +19,8 @@ export const metadata = {
   },
   twitter: {
     card: "summary",
-    title: "2026 단백질 음료 시장 트렌드 | 45g·52g 초고단백 경쟁",
-    description: "테이크핏 몬스터 45g 리뉴얼과 랩노쉬 52g 초고함량 제품 출시 준비까지, 2026년 단백질 음료 시장의 초고단백 경쟁과 저당 RTD 흐름을 정리합니다.",
+    title: "2026 단백질 음료 시장 트렌드 | 47g·52g 초고단백 경쟁",
+    description: "테이크핏 몬스터 딸기맛 47g 리뉴얼과 랩노쉬 52g 초고함량 제품 출시 준비까지, 2026년 단백질 음료 시장의 초고단백 경쟁과 저당 RTD 흐름을 정리합니다.",
   },
 };
 
@@ -42,8 +42,8 @@ const articleJsonLd = {
 
 const trendCards = [
   {
-    title: "45g 이상 초고단백 경쟁",
-    body: "2026년에는 테이크핏 몬스터가 45g으로 리뉴얼되고, 랩노쉬도 52g 초고함량 제품 출시를 준비하면서 40g대 경쟁이 50g대까지 확장되는 흐름입니다.",
+    title: "47g 이상 초고단백 경쟁",
+    body: "2026년에는 테이크핏 몬스터가 딸기맛 47g으로 확장되고, 랩노쉬도 52g 초고함량 제품 출시를 준비하면서 40g대 경쟁이 50g대까지 확장되는 흐름입니다.",
     tag: "고단백",
   },
   {
@@ -59,7 +59,7 @@ const trendCards = [
 ];
 
 const changeRows = [
-  ["남양유업 테이크핏", "2026-03-24", "테이크핏 몬스터 45g 리뉴얼", "기존 43g에서 45g으로 높이며 350mL RTD 초고단백 경쟁의 기준선을 다시 끌어올렸습니다."],
+  ["남양유업 테이크핏", "2026-07-30", "테이크핏 몬스터 딸기맛 47g 추가", "350mL 기준 단백질 47g, BCAA 9,000mg, EAA 19,000mg으로 초고단백 RTD 경쟁의 기준선을 다시 끌어올렸습니다."],
   ["랩노쉬", "2026년 출시 준비", "52g 초고함량 제품 준비", "공개 판매 전 단계지만, 50g대 초고함량 검색 수요를 만들 가능성이 높은 신호입니다."],
   ["오리온 닥터유", "2025년", "프로 단백질 드링크 40g 라인업 확장", "초코 중심에서 딸기 SKU까지 늘리며 맛 진입 장벽을 낮췄습니다."],
   ["대상웰라이프 뉴케어", "2025년", "올프로틴 41g 출시", "균형영양식 브랜드가 초고단백 RTD로 확장한 상징적인 사례입니다."],
@@ -69,7 +69,7 @@ const changeRows = [
 
 const insightPoints = [
   "2026년에는 '단백질 몇 g인가'만으로는 차별화가 어렵고, 당류와 음용감까지 함께 설계한 제품이 유리합니다.",
-  "초고단백 제품은 40g대에서 45g·52g 경쟁으로 이동하고, 20g 전후 제품은 입문형·일상형으로 더 뚜렷하게 갈립니다.",
+  "초고단백 제품은 40g대에서 47g·52g 경쟁으로 이동하고, 20g 전후 제품은 입문형·일상형으로 더 뚜렷하게 갈립니다.",
   "국내 RTD 단백질 음료 시장은 글로벌 스포츠 뉴트리션 안에서도 성장성이 높은 축으로 거론되고 있어, 신제품 경쟁은 당분간 함량·저당·편의성 중심으로 이어질 가능성이 큽니다.",
   "워터형과 락토프리 키워드는 취향 문제가 아니라 소화 부담과 생활 맥락을 해결하는 포지션으로 읽히고 있습니다.",
   "중장년 타깃은 여전히 중요합니다. 단순 고단백보다 균형 영양, 저당, 소화 부담 완화 메시지가 함께 붙는 흐름이 이어집니다.",
@@ -83,7 +83,7 @@ const retailRows = [
 
 const sourceLinks = [
   {
-    label: "남양유업 테이크핏 몬스터 45g 리뉴얼 기사",
+    label: "남양유업 테이크핏 몬스터 리뉴얼 기사",
     href: "https://www.asiae.co.kr/en/article/2026032408411262181",
   },
   {
@@ -128,7 +128,7 @@ export default function ProteinDrinkTrend2026Page() {
             2026 단백질 음료 시장 트렌드
           </h1>
           <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
-            2026년 국내 단백질 음료 시장은 45g·52g으로 올라가는 초고단백 경쟁, 저당 설계 확대, 중장년 건강관리형 강화라는 세 축으로 읽는 것이 가장 정확합니다.
+            2026년 국내 단백질 음료 시장은 47g·52g으로 올라가는 초고단백 경쟁, 저당 설계 확대, 중장년 건강관리형 강화라는 세 축으로 읽는 것이 가장 정확합니다.
             <br />
             최근 출시 흐름과 유통 현장 데이터를 함께 보면 브랜드별 다음 움직임도 훨씬 선명해집니다.
           </p>
@@ -225,7 +225,7 @@ export default function ProteinDrinkTrend2026Page() {
             <div className="mt-5 grid gap-3 md:grid-cols-3">
               <Link href="/guides/product-selection-comparison/high-protein-40g-comparison" className="rounded-2xl border border-[#e5d8ee] bg-white p-4 transition-colors hover:bg-[#f6f1fa]">
                 <p className="text-sm font-semibold text-[#6b4d7c]">40g 이상 RTD 비교</p>
-                <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">45g·52g 초고단백 경쟁이 실제 제품 비교에서 어떻게 보이는지 바로 확인합니다.</p>
+                <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">47g·52g 초고단백 경쟁이 실제 제품 비교에서 어떻게 보이는지 바로 확인합니다.</p>
               </Link>
               <Link href="/compare/newcare-41g-vs-labnosh-max-drink" className="rounded-2xl border border-[#e5d8ee] bg-white p-4 transition-colors hover:bg-[#f6f1fa]">
                 <p className="text-sm font-semibold text-[#6b4d7c]">41g vs 52g 직접 비교</p>

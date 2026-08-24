@@ -5,6 +5,7 @@ import Footer from "@/app/components/Footer";
 import AffiliateDisclosure from "@/app/components/AffiliateDisclosure";
 import CommercialAdSection from "@/app/components/CommercialAdSection";
 import TrackedLink from "@/app/components/TrackedLink";
+import TrackedCoupangLink from "@/app/components/TrackedCoupangLink";
 import { getProductBySlug } from "@/app/data/products";
 import { getCoupangRedirectHref } from "@/app/lib/purchaseLinks";
 import { formatProductLabel } from "@/app/lib/productLabel";
@@ -175,14 +176,17 @@ function PurchaseCards({ links }: { links: CategoryPurchaseLink[] }) {
                 성분 상세 보기 →
               </Link>
               {coupangHref && (
-                <a
+                <TrackedCoupangLink
                   href={coupangHref}
-                  target="_blank"
-                  rel="noreferrer noopener"
+                  productId={product.slug}
+                  productName={`${product.brand} ${product.name}`}
+                  productBrand={product.brand}
+                  productCategory={product.productType}
+                  linkPosition="mid_content"
                   className="ml-auto rounded-full bg-[#fee500] px-3 py-1 text-xs font-bold text-[#1a1a1a]"
                 >
                   최저가 확인
-                </a>
+                </TrackedCoupangLink>
               )}
             </div>
           </div>

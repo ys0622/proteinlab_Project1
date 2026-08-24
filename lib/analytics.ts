@@ -160,6 +160,57 @@ function productFields(product: ProductParams) {
   };
 }
 
+function parseAnalyticsUrl(destinationUrl?: string) {
+  if (!destinationUrl) return null;
+  try {
+    const base = typeof window !== "undefined" ? window.location.origin : "https://proteinlab.kr";
+    return new URL(destinationUrl, base);
+  } catch {
+    return null;
+  }
+}
+
+function isCoupangDestination(destinationUrl?: string) {
+  const url = parseAnalyticsUrl(destinationUrl);
+  if (!url) return false;
+  const hostname = url.hostname.toLowerCase();
+  return url.pathname === "/api/out/coupang" || hostname === "coupang.com" || hostname.endsWith(".coupang.com");
+}
+
+function getCoupangSubId(destinationUrl?: string) {
+  const url = parseAnalyticsUrl(destinationUrl);
+  if (!url) return undefined;
+  return url.searchParams.get("subid") ?? url.searchParams.get("subId") ?? url.searchParams.get("category") ?? undefined;
+}
+
+function getCoupangAffiliateLinkId(destinationUrl?: string, productId?: string) {
+  const url = parseAnalyticsUrl(destinationUrl);
+  if (!url) return productId ? `coupang:${productId}` : undefined;
+
+  if (url.pathname === "/api/out/coupang") {
+    const slug = url.searchParams.get("slug");
+    const pageKey = url.searchParams.get("pageKey");
+    const category = url.searchParams.get("category") ?? "proteinlab";
+    return `coupang:${slug ?? productId ?? pageKey ?? "unknown"}:${category}`;
+  }
+
+  const shortPath = url.pathname.replace(/^\/+/, "");
+  if (shortPath) return `coupang:${shortPath}`;
+  return productId ? `coupang:${productId}` : "coupang:unknown";
+}
+
+function normalizeLinkPosition(placement?: string): LinkPosition {
+  if (!placement) return "hero";
+  if (placement === "mobile_sticky_bar") return "sticky_mobile";
+  if (placement.includes("product_card")) return "product_card";
+  if (placement.includes("comparison") || placement.includes("compare")) return "comparison_result";
+  if (placement.includes("recommend")) return "recommend_result";
+  if (placement.includes("ranking")) return "ranking";
+  if (placement.includes("guide") || placement.includes("content")) return "mid_content";
+  if (placement.includes("bottom")) return "bottom_cta";
+  return "hero";
+}
+
 export function pageView(url: string, pageReferrer?: string) {
   const params = {
     page_path: url,
@@ -227,15 +278,35 @@ export function compareView(compareCount: number) {
   return sendEvent("compare_view", { compare_count: compareCount, link_position: "comparison_result" });
 }
 
-export function affiliateClick(product: ProductParams & { retailer: Retailer; destinationUrl: string; affiliateLinkId: string; linkPosition: LinkPosition }) {
-  if (!product.affiliateLinkId || !product.destinationUrl) return false;
+export function affiliateClick(
+  product: ProductParams & {
+    retailer: Retailer;
+    destinationUrl: string;
+    affiliateLinkId?: string;
+    subId?: string;
+    linkPosition: LinkPosition;
+  },
+) {
+  if (!product.destinationUrl) return false;
+  const affiliateLinkId =
+    product.affiliateLinkId ??
+    (product.retailer === "coupang" ? getCoupangAffiliateLinkId(product.destinationUrl, product.productId) : undefined);
+  const subId = product.subId ?? (product.retailer === "coupang" ? getCoupangSubId(product.destinationUrl) : undefined);
   return sendEvent("affiliate_click", {
     ...productFields(product), retailer: product.retailer, destination_url: product.destinationUrl,
-    affiliate_link_id: product.affiliateLinkId, link_position: product.linkPosition,
+    affiliate_link_id: affiliateLinkId, subid: subId, link_position: product.linkPosition,
   });
 }
 
 export function retailerClick(product: ProductParams & { retailer: Retailer; destinationUrl: string; linkPosition: LinkPosition }) {
+  if (product.retailer === "coupang" && isCoupangDestination(product.destinationUrl)) {
+    return affiliateClick({
+      ...product,
+      affiliateLinkId: getCoupangAffiliateLinkId(product.destinationUrl, product.productId),
+      subId: getCoupangSubId(product.destinationUrl),
+    });
+  }
+
   return sendEvent("retailer_click", {
     ...productFields(product), retailer: product.retailer, destination_url: product.destinationUrl, link_position: product.linkPosition,
   });
@@ -256,7 +327,7 @@ export function purchaseClick(params: {
     productBrand: params.brand,
     retailer: params.store,
     destinationUrl: params.destinationUrl ?? "",
-    linkPosition: params.placement === "mobile_sticky_bar" ? "sticky_mobile" : "hero",
+    linkPosition: normalizeLinkPosition(params.placement),
   });
 }
 
