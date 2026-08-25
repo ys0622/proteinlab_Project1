@@ -54,7 +54,7 @@ export default function ScoredProductCard({
             >
               {rank}
             </span>
-            <span className={`${compact ? "text-[11px]" : "text-xs"} font-semibold text-[#6b7280] whitespace-nowrap`}>
+            <span className={`${compact ? "text-[11px]" : "text-xs"} break-keep font-semibold text-[#6b7280]`}>
               {highlightLabel ?? `${rank}위`}
             </span>
           </div>
@@ -69,7 +69,7 @@ export default function ScoredProductCard({
         </div>
         {metricLabel || grade ? (
           <div className="mt-2 flex items-center justify-between gap-2 border-t border-[#ece7dd] pt-2">
-            <span className={`${compact ? "text-[11px]" : "text-xs"} min-w-0 font-semibold text-[#374151] whitespace-nowrap`}>
+            <span className={`${compact ? "text-[11px]" : "text-xs"} min-w-0 break-keep font-semibold text-[#374151]`}>
               {metricLabel ?? "추천 제품"}
             </span>
             {grade ? (
@@ -91,8 +91,8 @@ export default function ScoredProductCard({
       <div
         className={`[&_article]:h-full [&_article]:rounded-none [&_article]:border-0 [&_article]:bg-transparent [&_article]:shadow-none [&_.product-card__content]:justify-between [&_.product-card__brand]:min-h-[16px] [&_.product-card__badges]:content-start [&_.product-card__footer-actions]:mt-auto ${
           compact
-            ? "[&_.product-card__badges]:h-[48px] [&_.product-card__badges]:overflow-hidden [&_.product-card__title]:min-h-[40px]"
-            : "[&_.product-card__badges]:h-[52px] [&_.product-card__badges]:overflow-hidden [&_.product-card__title]:min-h-[48px]"
+            ? "[&_.product-card__badges]:min-h-[48px] [&_.product-card__title]:min-h-[40px]"
+            : "[&_.product-card__badges]:min-h-[52px] [&_.product-card__title]:min-h-[48px]"
         }`}
       >
         <ProductCard
