@@ -1,4 +1,5 @@
 import { ImageResponse } from "next/og";
+import { getCategoryProductCountsAsync } from "./lib/productCounts";
 
 export const alt = "단백질 제품 비교 — ProteinLab";
 export const size = { width: 1200, height: 630 };
@@ -16,6 +17,8 @@ function b64ToBuffer(b64: string): ArrayBuffer {
 }
 
 export default async function Image() {
+  const counts = await getCategoryProductCountsAsync();
+
   return new ImageResponse(
     (
       <div
@@ -66,10 +69,10 @@ export default async function Image() {
           {/* Category pills */}
           <div style={{ display: "flex", gap: "10px", marginTop: "40px" }}>
             {[
-              { label: "🥤 음료", count: "120" },
-              { label: "🍫 바", count: "100" },
-              { label: "🥣 요거트", count: "57" },
-              { label: "🥛 쉐이크", count: "88" },
+              { label: "🥤 음료", count: String(counts.drink) },
+              { label: "🍫 바", count: String(counts.bar) },
+              { label: "🥣 요거트", count: String(counts.yogurt) },
+              { label: "🥛 쉐이크", count: String(counts.shake) },
             ].map((cat) => (
               <div key={cat.label} style={{ display: "flex", alignItems: "center", gap: "6px", background: "rgba(255,255,255,0.08)", border: "1px solid rgba(255,255,255,0.15)", borderRadius: "40px", padding: "8px 18px" }}>
                 <span style={{ color: "rgba(255,255,255,0.9)", fontSize: "16px", fontWeight: 700 }}>{cat.label}</span>

@@ -10,7 +10,7 @@ import HomePopularCarousel, { type CarouselProduct } from "./components/HomePopu
 import HomeTrackedLink from "./components/HomeTrackedLink";
 import type { ProductDetailProps } from "./data/products";
 import { getProductsByCategoryAsync } from "./lib/productData";
-import { getProductImageUrl } from "./lib/productImage";
+import { getCategoryProductCounts } from "./lib/productCounts";
 import { hybridScore } from "./lib/productScoring";
 
 export const revalidate = 300; // 5분마다 재생성 (조회수 반영)
@@ -48,13 +48,6 @@ export async function generateMetadata(): Promise<Metadata> {
     twitter: { card: "summary", title, description, images: ["https://proteinlab.kr/proteinlab-logo.png"] },
   };
 }
-
-const CATEGORY_CARDS = [
-  { label: "단백질 음료", sub: "RTD 프로틴 드링크", emoji: "🥤", color: "#D4EDDF", href: "/drinks", countKey: "drink" as const },
-  { label: "단백질 바", sub: "프로틴 바·간식", emoji: "🍫", color: "#F5E6CE", href: "/bars", countKey: "bar" as const },
-  { label: "단백질 요거트", sub: "그릭 요거트 포함", emoji: "🥛", color: "#F0EBE0", href: "/yogurt", countKey: "yogurt" as const },
-  { label: "단백질 쉐이크", sub: "파우치형 (분말 제외)", emoji: "🧃", color: "#DDE9E2", href: "/shake", countKey: "shake" as const },
-] as const;
 
 const GUIDE_CARDS: {
   category: string;
@@ -124,7 +117,7 @@ export default async function Home() {
   // views: { drink: {slug: count}, bar: {...}, ... }
   const views = (popularRes as { views: Record<string, Record<string, number>> }).views ?? {};
 
-  const categoryCounts = { drink: drinks.length, bar: bars.length, yogurt: yogurts.length, shake: shakes.length };
+  const categoryCounts = getCategoryProductCounts({ drink: drinks, bar: bars, yogurt: yogurts, shake: shakes });
 
   // 4개 카테고리 모두 하이브리드 점수 기준 정렬
   // = 실제 조회수 × 10 + 품질 점수(단백질 밀도·당류) + 신제품 보너스(30일 감쇠)

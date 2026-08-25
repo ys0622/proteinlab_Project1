@@ -39,6 +39,7 @@ const CTR_EVENT_NAMES = [
   "internal_cta_click",
   "compare_add",
   "compare_view",
+  "compare_complete",
   "affiliate_click",
   "retailer_click",
   "filter_apply",
@@ -229,6 +230,7 @@ function formatEventLabel(eventName: string | undefined) {
     case "internal_cta_click": return "내부 CTA 클릭";
     case "compare_add": return "비교 추가";
     case "compare_view": return "비교 결과 조회";
+    case "compare_complete": return "비교 완료";
     case "affiliate_click": return "제휴 링크 클릭";
     case "retailer_click": return "판매처 링크 클릭";
     case "filter_apply": return "필터 적용";

@@ -6,8 +6,8 @@ import Header from "../components/Header";
 import HeroSection from "../components/HeroSection";
 import ProductListWithFilters from "../components/ProductListWithFilters";
 import CategoryFaqSection, { getCategoryFaqs } from "../components/CategoryFaqSection";
-import type { ProductCategory } from "../lib/categories";
 import { getProductsByCategoryAsync } from "../lib/productData";
+import { getCategoryProductsWithCountsAsync } from "../lib/productCounts";
 import { formatProductLabel } from "../lib/productLabel";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -39,20 +39,8 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function DrinksPage() {
-  const [products, bars, yogurts, shakes] = await Promise.all([
-    getProductsByCategoryAsync("drink"),
-    getProductsByCategoryAsync("bar"),
-    getProductsByCategoryAsync("yogurt"),
-    getProductsByCategoryAsync("shake"),
-  ]);
-
-  const categoryCounts: Record<ProductCategory, number> = {
-    drink: products.length,
-    bar: bars.length,
-    yogurt: yogurts.length,
-    shake: shakes.length,
-  };
-  const totalCount = products.length + bars.length + yogurts.length + shakes.length;
+  const { products, categoryCounts, totalCount } =
+    await getCategoryProductsWithCountsAsync("drink");
 
   const breadcrumbJsonLd = {
     "@context": "https://schema.org",

@@ -22,7 +22,7 @@ import { getQuickCurations, getCurationDefinition, type CurationCategory } from 
 import { formatProductLabel } from "../lib/productLabel";
 import { getProductImageUrl } from "../lib/productImage";
 import { hybridScore } from "../lib/productScoring";
-import { compareAdd, compareView, internalCtaClick } from "../../lib/analytics";
+import { compareAdd, compareComplete, compareView, internalCtaClick } from "../../lib/analytics";
 
 const MAX_PRODUCTS = 3;
 const OPERATOR_COMPARE_SLUGS = new Set([
@@ -180,6 +180,7 @@ export default function ComparePage() {
     if (products.length < 2 || !key || lastTrackedCompareKeyRef.current === key) return;
     lastTrackedCompareKeyRef.current = key;
     compareView(products.length);
+    compareComplete(products.length, products.map((product) => product.slug).filter((slug): slug is string => Boolean(slug)));
   }, [products]);
 
   useEffect(() => {

@@ -26,22 +26,22 @@ export default function TrackedCoupangLink({
   children,
   "aria-label": ariaLabel,
 }: TrackedCoupangLinkProps) {
-  const hasHref = Boolean(href && href !== "#");
+  const safeHref = href && href !== "#" ? href : undefined;
 
   const handleClick = () => {
-    if (!hasHref || !href) return;
+    if (!safeHref) return;
     affiliateClick({
       productId,
       productName,
       productBrand,
       productCategory,
       retailer: "coupang",
-      destinationUrl: href,
+      destinationUrl: safeHref,
       linkPosition,
     });
   };
 
-  if (!hasHref) {
+  if (!safeHref) {
     return (
       <span className={className} aria-disabled="true">
         {children}
@@ -51,7 +51,7 @@ export default function TrackedCoupangLink({
 
   return (
     <a
-      href={href}
+      href={safeHref}
       target="_blank"
       rel="noreferrer noopener"
       className={className}

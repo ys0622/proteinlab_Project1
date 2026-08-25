@@ -194,12 +194,6 @@ function applySort(
       return arr.sort((a, b) => getDensityValue(b) - getDensityValue(a));
     case "sugar_asc":
       return arr.sort((a, b) => (a.sugar ?? 0) - (b.sugar ?? 0));
-    case "sugar_desc":
-      return arr.sort((a, b) => (b.sugar ?? 0) - (a.sugar ?? 0));
-    case "volume_desc":
-      return arr.sort((a, b) => getCapacityMl(b) - getCapacityMl(a));
-    case "volume_asc":
-      return arr.sort((a, b) => getCapacityMl(a) - getCapacityMl(b));
     case "recommended":
     default:
       return arr.sort((a, b) => {

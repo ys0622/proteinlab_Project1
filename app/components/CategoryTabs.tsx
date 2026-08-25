@@ -27,12 +27,13 @@ function CategoryInfoPanel({
     <div className="space-y-2.5">
       {ORDERED_CATEGORY_IDS.map((category) => {
         const meta = CATEGORY_META[category];
-        const count = counts?.[category] ?? meta.count;
+        const count = counts?.[category];
 
         return (
           <div key={category}>
             <p className="text-xs font-semibold text-[var(--foreground)]">
-              {meta.label} ({count}개 제품)
+              {meta.label}
+              {typeof count === "number" ? ` (${count}개 제품)` : null}
             </p>
             <p className="mt-0.5 text-xs leading-5 text-[var(--foreground-muted)]">
               {meta.description}

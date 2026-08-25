@@ -25,14 +25,15 @@ export default function AnalyticsPageViewTracker() {
       if (cancelled || lastTrackedUrlRef.current === url) return;
 
       const pageReferrer = lastTrackedLocationRef.current ?? document.referrer;
-      if (pageView(url, pageReferrer)) {
+      const shouldUseFallback = attempts >= 20;
+      if (pageView(url, pageReferrer, shouldUseFallback)) {
         lastTrackedUrlRef.current = url;
         lastTrackedLocationRef.current = window.location.href;
         return;
       }
 
       attempts += 1;
-      if (attempts >= 20 || isAnalyticsReady()) return;
+      if (attempts > 20 || isAnalyticsReady()) return;
 
       window.setTimeout(track, 250);
     };

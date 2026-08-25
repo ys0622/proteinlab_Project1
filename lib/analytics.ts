@@ -38,6 +38,7 @@ export type StandardEventName =
   | "internal_cta_click"
   | "compare_add"
   | "compare_view"
+  | "compare_complete"
   | "affiliate_click"
   | "retailer_click"
   | "filter_apply"
@@ -211,7 +212,7 @@ function normalizeLinkPosition(placement?: string): LinkPosition {
   return "hero";
 }
 
-export function pageView(url: string, pageReferrer?: string) {
+export function pageView(url: string, pageReferrer?: string, allowFallback = false) {
   const params = {
     page_path: url,
     page_location: getPageLocation(url),
@@ -225,7 +226,7 @@ export function pageView(url: string, pageReferrer?: string) {
     return true;
   }
 
-  return sendEvent("page_view", params, false);
+  return sendEvent("page_view", params, allowFallback);
 }
 
 /** Generic helper retained for non-standard events such as ad telemetry. */
@@ -276,6 +277,14 @@ export function compareAdd(productId: string, compareCount: number) {
 
 export function compareView(compareCount: number) {
   return sendEvent("compare_view", { compare_count: compareCount, link_position: "comparison_result" });
+}
+
+export function compareComplete(compareCount: number, productIds?: string[]) {
+  return sendEvent("compare_complete", {
+    compare_count: compareCount,
+    product_ids: productIds?.join(","),
+    link_position: "comparison_result",
+  });
 }
 
 export function affiliateClick(

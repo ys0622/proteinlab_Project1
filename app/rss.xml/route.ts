@@ -1,3 +1,5 @@
+import { getCategoryProductCountsAsync } from "../lib/productCounts";
+
 const SITE_URL = "https://proteinlab.kr";
 
 type FeedItem = {
@@ -6,7 +8,8 @@ type FeedItem = {
   path: string;
 };
 
-const feedItems: FeedItem[] = [
+function getFeedItems(yogurtCount: number): FeedItem[] {
+  return [
   {
     title: "ProteinLab 홈",
     description: "단백질 음료, 단백질 바, 단백질 요거트 비교 페이지입니다.",
@@ -14,7 +17,7 @@ const feedItems: FeedItem[] = [
   },
   {
     title: "단백질 요거트 비교",
-    description: "단백질 요거트 45개를 단백질 함량, 당류, 칼로리, 단백질 밀도 기준으로 비교합니다.",
+    description: `단백질 요거트 ${yogurtCount}개를 단백질 함량, 당류, 칼로리, 단백질 밀도 기준으로 비교합니다.`,
     path: "/yogurt",
   },
   {
@@ -102,7 +105,8 @@ const feedItems: FeedItem[] = [
     description: "단백질 요거트 랭킹과 등급 기준을 해석하는 방법을 정리합니다.",
     path: "/guides/product-selection-comparison/protein-yogurt-ranking-guide",
   },
-];
+  ];
+}
 
 function escapeXml(value: string) {
   return value
@@ -114,8 +118,9 @@ function escapeXml(value: string) {
 }
 
 export async function GET() {
+  const counts = await getCategoryProductCountsAsync();
   const now = new Date().toUTCString();
-  const itemsXml = feedItems
+  const itemsXml = getFeedItems(counts.yogurt)
     .map((item) => {
       const url = `${SITE_URL}${item.path}`;
       return [
