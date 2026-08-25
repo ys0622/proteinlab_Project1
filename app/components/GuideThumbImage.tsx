@@ -80,8 +80,8 @@ export default function GuideThumbImage({ src, alt, title, desc, fallbackBg, fal
         className="absolute bottom-0 left-0 right-0 z-10 px-4 pb-4 pt-10"
         style={{ background: "linear-gradient(to top, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.5) 55%, transparent 100%)" }}
       >
-        <p className="line-clamp-2 font-extrabold leading-snug text-white" style={{ fontSize: "15px", letterSpacing: "-0.02em" }}>{title}</p>
-        <p className="mt-1.5 line-clamp-1 text-white/70" style={{ fontSize: "12px" }}>{desc}</p>
+        <p className="break-keep font-extrabold leading-snug text-white" style={{ fontSize: "15px", letterSpacing: "-0.02em" }}>{title}</p>
+        <p className="mt-1.5 break-keep leading-snug text-white/70" style={{ fontSize: "12px" }}>{desc}</p>
       </div>
     </div>
   );

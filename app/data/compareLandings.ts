@@ -406,6 +406,14 @@ const compareLandingOverrides: Record<string, Partial<CompareLanding>> = {
   },
 };
 
+const compareLandingAliases: Record<string, string> = {
+  // GA4/Search Console에서 유입이 확인된 기존 URL입니다.
+  // 내부 데이터 slug는 제품 ID와 맞춰 hymune을 쓰지만, 사용자는 보통 브랜드명을 himune으로 검색합니다.
+  "takefit-vs-himune-drink": "takefit-vs-hymune-drink",
+  "sellex-vs-himune-drink": "sellex-vs-hymune-drink",
+  "newcare-vs-himune": "newcare-vs-hymune",
+};
+
 function applyCompareLandingOverride(item: CompareLanding): CompareLanding {
   const override = compareLandingOverrides[item.slug];
   return override ? { ...item, ...override } : item;
@@ -415,7 +423,13 @@ export function getAllCompareLandings() {
   return compareLandings.map(applyCompareLandingOverride);
 }
 
+export function getAllCompareLandingStaticSlugs() {
+  const canonicalSlugs = compareLandings.map((item) => item.slug);
+  return [...canonicalSlugs, ...Object.keys(compareLandingAliases)];
+}
+
 export function getCompareLandingBySlug(slug: string) {
-  const landing = compareLandings.find((item) => item.slug === slug);
+  const canonicalSlug = compareLandingAliases[slug] ?? slug;
+  const landing = compareLandings.find((item) => item.slug === canonicalSlug);
   return landing ? applyCompareLandingOverride(landing) : null;
 }

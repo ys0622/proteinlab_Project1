@@ -5,9 +5,10 @@ import Footer from "../../components/Footer";
 import CommercialAdSection from "../../components/CommercialAdSection";
 import ProductCard from "../../components/ProductCard";
 import TrackedLink from "../../components/TrackedLink";
-import { getCompareLandingBySlug, getAllCompareLandings } from "../../data/compareLandings";
+import { getCompareLandingBySlug, getAllCompareLandingStaticSlugs } from "../../data/compareLandings";
 import { formatProductLabel } from "../../lib/productLabel";
 import { getAllProducts } from "../../data/products";
+import type { ProductDetailProps } from "../../data/products";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -22,6 +23,10 @@ const priorityConversionPlans: Record<string, { contentId: string; conclusion: s
     contentId: "plv3:landing:compare:takefit-vs-hymune-drink",
     conclusion: "운동 후 보충과 일상 보완은 기준이 다릅니다. 단백질 함량과 당류, 칼로리를 표에서 나란히 확인한 뒤 선택하세요.",
   },
+  "takefit-vs-himune-drink": {
+    contentId: "plv3:landing:compare:takefit-vs-hymune-drink",
+    conclusion: "운동 후 보충과 일상 보완은 기준이 다릅니다. 단백질 함량과 당류, 칼로리를 표에서 나란히 확인한 뒤 선택하세요.",
+  },
   "newcare-vs-sellex-drink": {
     contentId: "plv3:landing:compare:newcare-vs-sellex-drink",
     conclusion: "식사 보완 목적이라면 총 영양과 섭취 상황을, 단백질 보충 목적이라면 단백질과 당류를 우선해 비교하는 것이 좋습니다.",
@@ -32,8 +37,138 @@ const priorityConversionPlans: Record<string, { contentId: string; conclusion: s
   },
 };
 
+type CompareMetric = {
+  id: string;
+  label: string;
+  direction: "higher" | "lower";
+  getValue: (product: ProductDetailProps) => number | null;
+  format: (value: number) => string;
+  threshold: number;
+  reason: string;
+};
+
+type DifferenceCard = {
+  id: string;
+  label: string;
+  winnerName: string;
+  winnerValue: string;
+  comparisonText: string;
+  deltaText: string;
+  reason: string;
+  direction: "higher" | "lower";
+  score: number;
+};
+
+const compareMetrics: CompareMetric[] = [
+  {
+    id: "protein",
+    label: "단백질",
+    direction: "higher",
+    getValue: (product) => product.proteinPerServing ?? null,
+    format: (value) => `${value}g`,
+    threshold: 2,
+    reason: "운동 후 보충이나 포만감 기준에서 먼저 보는 수치입니다.",
+  },
+  {
+    id: "sugar",
+    label: "당류",
+    direction: "lower",
+    getValue: (product) => product.sugar ?? null,
+    format: (value) => `${value}g`,
+    threshold: 1,
+    reason: "저당 설계나 야간 섭취 기준에서 차이를 크게 만듭니다.",
+  },
+  {
+    id: "calories",
+    label: "칼로리",
+    direction: "lower",
+    getValue: (product) => product.calories ?? null,
+    format: (value) => `${value}kcal`,
+    threshold: 15,
+    reason: "다이어트나 간식 대체 목적이면 총열량 차이를 함께 봐야 합니다.",
+  },
+  {
+    id: "density",
+    label: "단백질 밀도",
+    direction: "higher",
+    getValue: (product) => {
+      if (typeof product.density === "number") return product.density;
+      if (typeof product.density === "string") {
+        const parsed = Number.parseFloat(product.density.replace(/[^\d.]/g, ""));
+        return Number.isFinite(parsed) ? parsed : null;
+      }
+      const capacity = Number.parseFloat(String(product.capacity ?? "").replace(/[^\d.]/g, ""));
+      return product.proteinPerServing != null && capacity > 0
+        ? Number(((product.proteinPerServing / capacity) * 100).toFixed(1))
+        : null;
+    },
+    format: (value) => `${value.toFixed(1)}g/100mL`,
+    threshold: 0.8,
+    reason: "같은 용량 대비 단백질이 얼마나 압축되어 있는지 보여줍니다.",
+  },
+  {
+    id: "bcaa",
+    label: "BCAA",
+    direction: "higher",
+    getValue: (product) => {
+      const raw = product.nutritionPerBottle?.bcaaMg ?? product.bcaa;
+      if (typeof raw === "number") return raw;
+      if (typeof raw === "string") {
+        const parsed = Number.parseFloat(raw.replace(/[^\d.]/g, ""));
+        return Number.isFinite(parsed) ? parsed : null;
+      }
+      return null;
+    },
+    format: (value) => `${Math.round(value).toLocaleString("ko-KR")}mg`,
+    threshold: 500,
+    reason: "운동 보충 목적에서 참고할 수 있는 보조 지표입니다.",
+  },
+];
+
+function buildDifferenceCards(products: ProductDetailProps[]): DifferenceCard[] {
+  if (products.length < 2) return [];
+  const pair = products.slice(0, 2);
+
+  return compareMetrics
+    .flatMap((metric) => {
+      const values = pair.map((product) => metric.getValue(product));
+      if (values.some((value) => value == null)) return [];
+
+      const [left, right] = values as [number, number];
+      const delta = Math.abs(left - right);
+      if (delta < metric.threshold || left === right) return [];
+
+      const winnerIndex =
+        metric.direction === "higher"
+          ? left > right ? 0 : 1
+          : left < right ? 0 : 1;
+      const loserIndex = winnerIndex === 0 ? 1 : 0;
+      const winner = pair[winnerIndex];
+      const loser = pair[loserIndex];
+      const winnerValue = values[winnerIndex] as number;
+      const loserValue = values[loserIndex] as number;
+      const deltaPrefix = metric.direction === "higher" ? "+" : "-";
+
+      return [
+        {
+          id: metric.id,
+          label: metric.label,
+          winnerName: formatProductLabel(winner.brand, winner.name),
+          winnerValue: metric.format(winnerValue),
+          comparisonText: `${formatProductLabel(winner.brand, winner.name)} ${metric.format(winnerValue)} / ${formatProductLabel(loser.brand, loser.name)} ${metric.format(loserValue)}`,
+          deltaText: `${deltaPrefix}${metric.format(delta)}`,
+          reason: metric.reason,
+          direction: metric.direction,
+          score: compareMetrics.length - compareMetrics.findIndex((item) => item.id === metric.id) + delta / Math.max(metric.threshold, 1),
+        },
+      ];
+    })
+    .sort((a, b) => b.score - a.score)
+    .slice(0, 3);
+}
+
 export async function generateStaticParams() {
-  return getAllCompareLandings().map((item) => ({ slug: item.slug }));
+  return getAllCompareLandingStaticSlugs().map((slug) => ({ slug }));
 }
 
 export async function generateMetadata({ params }: PageProps) {
@@ -79,6 +214,7 @@ export default async function CompareLandingPage({ params }: PageProps) {
 
   const compareHref = `/compare?slugs=${landing.productSlugs.join(",")}`;
   const conversionPlan = priorityConversionPlans[landing.slug];
+  const differenceCards = buildDifferenceCards(products);
   const canonical = `https://proteinlab.kr/compare/${landing.slug}`;
   const jsonLd = [
     {
@@ -196,6 +332,53 @@ export default async function CompareLandingPage({ params }: PageProps) {
               >
                 비교표 확인
               </TrackedLink>
+            </div>
+          </section>
+        ) : null}
+        {differenceCards.length > 0 ? (
+          <section className="mb-6 rounded-2xl border border-[#dce8df] bg-white p-4 md:p-5">
+            <div className="space-y-1" style={{ wordBreak: "keep-all" }}>
+              <p className="text-xs font-semibold text-[#1B7F5B]">차이 먼저 보기</p>
+              <h2 className="text-lg font-bold leading-snug text-[var(--foreground)]">
+                두 제품은 이 지표에서 차이가 큽니다
+              </h2>
+              <p className="text-sm leading-6 text-[var(--foreground-muted)]">
+                동일한 숫자 나열보다 선택에 영향을 주는 차이만 먼저 추렸습니다.
+              </p>
+            </div>
+            <div className="mt-4 grid gap-3 md:grid-cols-3">
+              {differenceCards.map((item) => (
+                <article
+                  key={item.id}
+                  className="rounded-2xl border border-[#e7eee9] bg-[#f8fbf8] p-4"
+                  style={{ wordBreak: "keep-all" }}
+                >
+                  <div className="flex items-start justify-between gap-3">
+                    <div>
+                      <p className="text-xs font-semibold text-[var(--foreground-muted)]">{item.label}</p>
+                      <p className="mt-1 text-xl font-bold leading-tight text-[#16412D]">{item.winnerValue}</p>
+                    </div>
+                    <span
+                      className="shrink-0 rounded-full px-2.5 py-1 text-xs font-bold"
+                      style={{
+                        background: item.direction === "higher" ? "#16412D" : "#F3EFE6",
+                        color: item.direction === "higher" ? "#fff" : "#16412D",
+                      }}
+                    >
+                      {item.deltaText}
+                    </span>
+                  </div>
+                  <p className="mt-3 text-sm font-semibold leading-5 text-[var(--foreground)]">
+                    {item.winnerName}
+                  </p>
+                  <p className="mt-2 text-xs leading-5 text-[var(--foreground-muted)]">
+                    {item.comparisonText}
+                  </p>
+                  <p className="mt-3 border-t border-[#e0ebe4] pt-3 text-xs leading-5 text-[var(--foreground-muted)]">
+                    {item.reason}
+                  </p>
+                </article>
+              ))}
             </div>
           </section>
         ) : null}

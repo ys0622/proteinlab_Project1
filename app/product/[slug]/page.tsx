@@ -146,7 +146,7 @@ function renderSummaryMetricValue(value: string, isCompact: boolean) {
 
   return (
     <span className="flex min-w-0 flex-col">
-      <span className="truncate">{metricValue}</span>
+      <span>{metricValue}</span>
       <span className="text-[11px] font-semibold leading-tight text-[#6b6b6b]">
         /{metricUnit}
       </span>
@@ -396,7 +396,6 @@ export default async function ProductDetailPage({ params }: PageProps) {
   const isShake = product.productType === "shake";
   const productImageUrl = getProductImageUrl(product.slug);
   const category = (product.productType ?? "drink") as "drink" | "bar" | "yogurt" | "shake";
-  const isDrink = category === "drink";
   const faqItems = getProductFaqs(product);
   const hasCapacityInName = Boolean(product.capacity && product.name.includes(product.capacity));
   const metaParts = [
@@ -640,7 +639,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
                   <span style={{ color: "#5F6B61" }}>{product.brand}</span>
                 </div>
                 <h1
-                  className="mt-1.5 line-clamp-2 leading-snug"
+                  className="mt-1.5 break-keep leading-snug"
                   style={{ fontSize: "clamp(17px, 2.5vw, 22px)", fontWeight: 800, color: "#16412D", letterSpacing: "-0.02em" }}
                 >
                   {product.name}

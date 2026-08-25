@@ -338,7 +338,7 @@ export default function ComparePage() {
                       ) : null}
                     </span>
                     <span className="min-w-0 flex-1">
-                      <span className="block truncate">{formatProductLabel(product.brand, product.name)}</span>
+                      <span className="block break-keep leading-snug">{formatProductLabel(product.brand, product.name)}</span>
                       {gradeTags.length > 0 ? (
                         <MetricBadgeGroup className="mt-1">
                           {gradeTags.map((tag) => (
@@ -432,7 +432,7 @@ export default function ComparePage() {
                   </div>
                   <div className="min-w-0">
                     <p className="text-xs" style={{ color: "#7a7a7a" }}>{p.brand}</p>
-                    <p className="truncate text-sm font-medium" style={{ color: "#1a1a1a" }}>{p.name}</p>
+                    <p className="break-keep text-sm font-medium leading-snug" style={{ color: "#1a1a1a" }}>{p.name}</p>
                   </div>
                   <button
                     type="button"

@@ -85,7 +85,7 @@ function renderMetricValue(value: string, isDensity: boolean) {
 
   return (
     <span className="flex min-w-0 flex-col">
-      <span className="truncate">{metricValue}</span>
+      <span>{metricValue}</span>
       <span className="text-[10px] font-semibold leading-tight text-[#6b6b6b] md:text-[11px]">
         /{metricUnit}
       </span>
@@ -143,7 +143,6 @@ export default function ProductCard({
 
   const detailHref = slug ? `/product/${slug}` : "#";
   const usesUnifiedSurface = ["drink", "bar", "yogurt", "shake"].includes(productType ?? "");
-  const isDrinkCard = productType === "drink";
   const imageUrl = slug ? getProductImageUrl(slug) : null;
   const resolvedPurchaseLinkCategory = purchaseLinkCategory ?? productType ?? null;
   const rawCoupangUrl = normalizeCoupangUrl(coupangUrl) ?? getKnownSourceCoupangUrlBySlug(slug);
@@ -355,7 +354,7 @@ export default function ProductCard({
 
         <h3
           className={`product-card__title mt-1 font-semibold leading-snug ${
-            fixedTitleLines === 2 ? "line-clamp-2 min-h-[42px]" : ""
+            fixedTitleLines === 2 ? "product-card__title--fixed" : ""
           }`}
           style={{ fontWeight: 600, color: "#1a1a1a" }}
         >

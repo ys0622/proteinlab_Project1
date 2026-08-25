@@ -227,10 +227,10 @@ export default async function Home() {
                 <Image src={`/category-icons/${cat.icon}.jpg`} alt="" fill className="object-cover" sizes="56px" />
               </span>
               <div className="min-w-0">
-                <p className="truncate font-bold leading-tight text-[13px] md:text-[18px]" style={{ color: "#14201A", letterSpacing: "-0.01em" }}>
+                <p className="break-keep font-bold leading-tight text-[13px] md:text-[18px]" style={{ color: "#14201A", letterSpacing: "-0.01em" }}>
                   {cat.label}
                 </p>
-                <p className="mt-0.5 truncate font-semibold text-[11px] md:mt-[3px] md:text-[15px]" style={{ color: "#1F5A3D" }}>
+                <p className="mt-0.5 break-keep font-semibold text-[11px] md:mt-[3px] md:text-[15px]" style={{ color: "#1F5A3D" }}>
                   {categoryCounts[cat.countKey]}종
                 </p>
               </div>

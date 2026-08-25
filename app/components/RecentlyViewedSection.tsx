@@ -46,7 +46,7 @@ export default function RecentlyViewedSection({
             className="flex flex-col rounded-xl border border-[#e8e6e3] bg-white p-3 hover:border-[var(--accent)] hover:bg-[var(--accent-light)]"
           >
             <p className="text-[10px] text-[var(--foreground-muted)]">{p.brand}</p>
-            <p className="mt-0.5 line-clamp-2 min-h-[2.4rem] text-xs font-semibold leading-tight text-[var(--foreground)]">
+            <p className="mt-0.5 min-h-[2.4rem] break-keep text-xs font-semibold leading-tight text-[var(--foreground)]">
               {p.name}
             </p>
             <p className="mt-1.5 text-xs font-bold text-[var(--accent)]">단백질 {p.proteinPerServing}g</p>

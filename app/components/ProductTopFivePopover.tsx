@@ -91,7 +91,7 @@ export default function ProductTopFivePopover({
                   <span className="w-4 shrink-0 text-xs font-semibold text-[#8b8b8b]">
                     {index + 1}.
                   </span>
-                  <span className="min-w-0 truncate">
+                  <span className="min-w-0 break-keep leading-snug">
                     {formatProductLabel(product.brand, product.name)}
                   </span>
                 </Link>

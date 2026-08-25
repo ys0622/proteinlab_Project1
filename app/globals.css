@@ -244,10 +244,12 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .product-card__title {
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+
+.product-card__title--fixed {
+  min-height: 42px;
 }
 
 .product-card__image {
