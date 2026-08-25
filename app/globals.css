@@ -182,8 +182,6 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 14px;
   font-weight: 600;
   white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
   text-decoration: none;
   transition: background-color 0.2s ease;
 }
@@ -210,8 +208,6 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 12px;
   font-weight: 500;
   white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
   text-align: center;
   text-decoration: none;
   transition: background-color 0.2s ease, color 0.2s ease;
@@ -485,15 +481,13 @@ h1, h2, h3, h4, h5, h6 {
   min-width: 0;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
   border: 1px solid #d7d2ca;
   border-radius: var(--purchase-link-radius);
   padding: 0 10px;
   text-align: center;
   font-weight: 700;
-  line-height: 1;
+  line-height: 1.12;
   white-space: nowrap;
-  text-overflow: ellipsis;
   transition:
     background-color 0.2s ease,
     border-color 0.2s ease,
@@ -503,9 +497,9 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .purchase-link__label {
-  min-width: 0;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  flex: 0 1 auto;
+  min-width: max-content;
+  white-space: nowrap;
 }
 
 .purchase-link__label--mobile {
@@ -1185,8 +1179,12 @@ h1, h2, h3, h4, h5, h6 {
 
   .purchase-link--sm {
     min-height: 38px;
-    font-size: 10px;
-    padding: 0 6px;
+    font-size: 11px;
+    padding: 0 4px;
+  }
+
+  .purchase-link--sm svg {
+    display: none;
   }
 
   .purchase-link--md {
