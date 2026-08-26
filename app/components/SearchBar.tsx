@@ -151,12 +151,12 @@ export default function SearchBar({
               onClick={() => handleSelectRecent(q)}
               className="flex w-full items-center justify-between px-3 py-2 text-left text-sm text-[var(--foreground)] hover:bg-[var(--accent-light)]"
             >
-              <span className="flex items-center gap-2">
+              <span className="flex min-w-0 flex-1 items-start gap-2 leading-snug">
                 <svg className="h-3.5 w-3.5 shrink-0 text-[var(--foreground-muted-light)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
                   <circle cx="12" cy="12" r="10" />
                   <polyline points="12 6 12 12 16 14" />
                 </svg>
-                {q}
+                <span className="min-w-0 break-keep [overflow-wrap:anywhere]">{q}</span>
               </span>
               <span
                 role="button"
