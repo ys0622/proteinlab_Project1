@@ -9,13 +9,6 @@ import { getAdminGuidesStaticRuntimeData } from "@/app/lib/adminGuidesStaticRunt
 
 export const revalidate = 3600;
 
-const clampTwoLines = {
-  display: "-webkit-box",
-  WebkitLineClamp: 2,
-  WebkitBoxOrient: "vertical" as const,
-  overflow: "hidden",
-};
-
 function CuratedGuideGroup({
   title,
   description,
@@ -63,7 +56,7 @@ function CuratedGuideGroup({
             <p className="text-sm font-semibold" style={{ color: accentColor }}>
               {item.title}
             </p>
-            <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]" style={clampTwoLines}>
+            <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">
               {item.description}
             </p>
           </Link>
@@ -351,11 +344,11 @@ export default async function GuideTrackPage({ params }: { params: Promise<{ tra
                   </div>
                   <h3
                     className="text-base font-bold leading-7 transition-colors group-hover:text-[var(--accent)]"
-                    style={{ ...clampTwoLines, color: section.accentColor }}
+                    style={{ color: section.accentColor }}
                   >
                     {article.title}
                   </h3>
-                  <p className="mt-2 flex-1 text-sm leading-6 text-[var(--foreground-muted)]" style={clampTwoLines}>
+                  <p className="mt-2 flex-1 text-sm leading-6 text-[var(--foreground-muted)]">
                     {article.description}
                   </p>
                 </div>

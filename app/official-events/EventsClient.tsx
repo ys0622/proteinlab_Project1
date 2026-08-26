@@ -108,13 +108,6 @@ const FILTER_TABS: { key: FilterType; emoji: string }[] = [
   { key: "무료배송", emoji: "🚚" },
 ];
 
-const clampThreeLines = {
-  display: "-webkit-box",
-  WebkitLineClamp: 3,
-  WebkitBoxOrient: "vertical" as const,
-  overflow: "hidden",
-};
-
 const rawDrinkBrands: BrandCard[] = [
   {
     brand: "하이뮨",
@@ -1104,7 +1097,7 @@ function BrandEventCard({ brand, productType }: { brand: BrandCard; productType:
                   </span>
                   <span className="text-[11px] font-medium text-[#7a837d]">업데이트: {event.periodLabel}</span>
                 </div>
-                <p className="mt-1.5 text-[13px] leading-[1.55] text-[var(--foreground)]" style={clampThreeLines}>
+                <p className="mt-1.5 text-[13px] leading-[1.55] text-[var(--foreground)]">
                   {event.description}
                 </p>
               </li>
