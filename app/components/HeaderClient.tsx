@@ -38,7 +38,7 @@ export default function HeaderClient({ isAdmin }: { isAdmin: boolean }) {
             href="/"
             className="flex shrink-0 items-center gap-2 text-lg font-bold text-white"
           >
-            <span className="relative flex h-8 w-8 shrink-0 items-center justify-center overflow-hidden rounded-lg bg-white/10">
+            <span className="relative flex h-8 w-8 shrink-0 items-center justify-center overflow-hidden rounded-lg" style={{ background: "#16412D" }}>
               <Image
                 src="/proteinlab-logo.png"
                 alt=""
