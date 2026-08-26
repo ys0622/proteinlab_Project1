@@ -43,7 +43,7 @@ export default function ScoredProductCard({
   return (
     <div className="min-w-0 overflow-hidden rounded-2xl border border-[#e8e6e3] bg-[#FFFDF8]">
       <div className={`border-b border-[#ece7dd] bg-[#faf8f2] ${compact ? "px-2.5 py-2" : "px-3 py-2.5"}`}>
-        <div className="flex items-center justify-between gap-2">
+        <div className="flex items-start justify-between gap-2">
           <div className="flex min-w-0 items-center gap-2">
             <span
               className={`inline-flex items-center justify-center rounded-full font-extrabold ${compact ? "h-6 min-w-6 px-1.5 text-[11px]" : "h-7 min-w-7 px-2 text-xs"}`}
@@ -58,7 +58,7 @@ export default function ScoredProductCard({
               {highlightLabel ?? `${rank}위`}
             </span>
           </div>
-          <div className="text-right">
+          <div className="shrink-0 text-right">
             <p className={`${compact ? "text-[10px]" : "text-[11px]"} leading-none text-[#7a7a7a]`}>
               {scoreCaption}
             </p>
@@ -68,13 +68,13 @@ export default function ScoredProductCard({
           </div>
         </div>
         {metricLabel || grade ? (
-          <div className="mt-2 flex items-center justify-between gap-2 border-t border-[#ece7dd] pt-2">
+          <div className="mt-2 flex items-start justify-between gap-2 border-t border-[#ece7dd] pt-2">
             <span className={`${compact ? "text-[11px]" : "text-xs"} min-w-0 break-keep font-semibold text-[#374151]`}>
               {metricLabel ?? "추천 제품"}
             </span>
             {grade ? (
               <span
-                className={`${compact ? "text-[11px]" : "text-xs"} shrink-0 rounded-full px-2.5 py-1 font-bold whitespace-nowrap`}
+                className={`${compact ? "text-[11px]" : "text-xs"} max-w-[45%] rounded-full px-2.5 py-1 text-center font-bold leading-tight`}
                 style={{
                   background: gradeColor?.bg,
                   color: gradeColor?.color,
