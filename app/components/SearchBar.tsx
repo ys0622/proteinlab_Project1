@@ -79,8 +79,7 @@ export default function SearchBar({
     onCommit?.(query);
   };
 
-  const handleRemoveRecent = (e: React.MouseEvent, query: string) => {
-    e.stopPropagation();
+  const handleRemoveRecent = (query: string) => {
     const updated = loadRecent().filter((q) => q !== query);
     localStorage.setItem(RECENT_KEY, JSON.stringify(updated));
     setRecent(updated);
@@ -145,32 +144,33 @@ export default function SearchBar({
             <span className="text-xs font-semibold text-[var(--foreground-muted)]">최근 검색</span>
           </div>
           {recent.map((q) => (
-            <button
+            <div
               key={q}
-              type="button"
-              onClick={() => handleSelectRecent(q)}
-              className="flex w-full items-center justify-between px-3 py-2 text-left text-sm text-[var(--foreground)] hover:bg-[var(--accent-light)]"
+              className="flex w-full items-stretch border-t border-[var(--border)] first:border-t-0"
             >
-              <span className="flex min-w-0 flex-1 items-start gap-2 leading-snug">
-                <svg className="h-3.5 w-3.5 shrink-0 text-[var(--foreground-muted-light)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
+              <button
+                type="button"
+                onClick={() => handleSelectRecent(q)}
+                className="flex min-w-0 flex-1 items-start gap-2 px-3 py-2 text-left text-sm leading-snug text-[var(--foreground)] hover:bg-[var(--accent-light)]"
+              >
+                <svg className="mt-0.5 h-3.5 w-3.5 shrink-0 text-[var(--foreground-muted-light)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
                   <circle cx="12" cy="12" r="10" />
                   <polyline points="12 6 12 12 16 14" />
                 </svg>
-                <span className="min-w-0 break-keep [overflow-wrap:anywhere]">{q}</span>
-              </span>
-              <span
-                role="button"
-                tabIndex={0}
-                onClick={(e) => handleRemoveRecent(e, q)}
-                className="ml-2 shrink-0 text-[var(--foreground-muted-light)] hover:text-[var(--foreground)]"
+                <span className="min-w-0 flex-1 break-keep [overflow-wrap:anywhere]">{q}</span>
+              </button>
+              <button
+                type="button"
+                onClick={() => handleRemoveRecent(q)}
+                className="flex min-h-10 w-10 shrink-0 items-center justify-center text-[var(--foreground-muted-light)] hover:bg-[var(--accent-light)] hover:text-[var(--foreground)]"
                 aria-label={`${q} 삭제`}
               >
-                <svg className="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5}>
+                <svg className="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5}>
                   <line x1="18" y1="6" x2="6" y2="18" />
                   <line x1="6" y1="6" x2="18" y2="18" />
                 </svg>
-              </span>
-            </button>
+              </button>
+            </div>
           ))}
         </div>
       )}
