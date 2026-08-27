@@ -2128,7 +2128,7 @@ export const proteinDrinkByContentConfig: ComparePageConfig = {
   keywords: ["단백질 음료 함량 비교", "단백질 음료 몇g", "단백질 음료 20g 30g 차이", "단백질 음료 함량대"],
   badge: "허브 가이드",
   readingTime: "6분 읽기",
-  updatedAt: "2026-03-24",
+  updatedAt: "2026-08-26",
   methodologyNote: "ProteinLab DB 함량대 분류 기준",
   intro: "단백질 음료는 9g부터 45g까지 범위가 크게 벌어져 있어서 브랜드만 보고 고르면 맞지 않는 제품을 고르기 쉽습니다. 실제로는 운동량, 식사 보완 여부, 다이어트 여부에 따라 적합한 함량대가 달라집니다.",
   summary: [
@@ -2173,7 +2173,7 @@ export const proteinDrinkByContentConfig: ComparePageConfig = {
     {
       title: "40g 이상",
       items: [
-        { title: "대표 제품", body: "테이크핏 몬스터 47g, 뉴케어 올프로틴 41g, 닥터유 40g이 대표적입니다. 여기에 랩노쉬 프로틴 맥스 52g까지 더해지면서 50g대 초고함량 구간도 따로 봐야 합니다." },
+        { title: "대표 제품", body: "테이크핏 몬스터 47g, 뉴케어 올프로틴 41g, 닥터유 40g이 대표적입니다. 여기에 랩노쉬 프로틴 맥스 52g, 테이크핏 익스트림, 닥터유 62g까지 더해지면서 50g~60g대 초고함량 구간도 따로 봐야 합니다." },
         { title: "잘 맞는 사람", body: "하루 단백질을 한 번에 크게 채우고 싶은 사람, 고강도 운동 사용자에게 적합합니다." },
         { title: "예외 포인트", body: "뉴케어 41g은 락토프리라 같은 40g대 안에서도 성격이 다릅니다. 고단백이면서 유당 부담을 낮추고 싶을 때 예외적으로 우선순위가 올라갑니다." },
       ],
