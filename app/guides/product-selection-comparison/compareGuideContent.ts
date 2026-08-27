@@ -10,6 +10,7 @@ const labnoshMax = getDrinkProduct("labnosh-protein-max-choco-400");
 const newcare41 = getDrinkProduct("newcare-all-protein-41g");
 const dryou40 = getDrinkProduct("dryou-protein-40g-choco-350");
 const dryou62 = getDrinkProduct("dryou-protein-62g-matcha-450");
+const danbaekBalanceOriginal = getDrinkProduct("danbaek-balance-original-190");
 const takefitExtreme = getDrinkProduct("takefit-extreme-450");
 const takefitPro = getDrinkProduct("takefit-pro-lemon-500");
 const newcare25 = getDrinkProduct("newcare-all-protein-choco-245");
@@ -806,6 +807,7 @@ proteinDrinkBeginnersGuideConfig.jsonLd = [articleJsonLd(proteinDrinkBeginnersGu
 const sellexProfitSports = getDrinkProduct("sellex-profit-sports-choco-330");
 const sellexPeach = getDrinkProduct("sellex-profit-peach-icedtea-330");
 const sellexLowsugar = getDrinkProduct("sellex-protein-lowsugar-190");
+const sellexDangsolveFivegrain = getDrinkProduct("sellex-protein-dangsolve-fivegrain-190");
 const dryouChoco = getDrinkProduct("dryou-protein-drink-choco-250");
 const dryouBanana = getDrinkProduct("dryou-protein-drink-banana-250");
 const takefitMonsterChocobanana = getDrinkProduct("takefit-monster-chocobanana-350");
@@ -813,28 +815,28 @@ const takefitMonsterChocobanana = getDrinkProduct("takefit-monster-chocobanana-3
 export const selexsLineupConfig: ComparePageConfig = {
   slug: "selexs-lineup",
   title: "셀렉스 제품 종류 전체 정리",
-  description: "셀렉스 RTD 라인업을 프로핏, 웨이프로핏, 락토프리, 로우슈거 기준으로 정리하고 어떤 목적에서 고르면 되는지 한 번에 설명합니다.",
-  keywords: ["셀렉스 종류", "셀렉스 라인업", "셀렉스 프로핏 차이", "셀렉스 코어프로틴", "셀렉스 제품 비교"],
+  description: "셀렉스 RTD 라인업을 프로핏, 웨이프로핏, 락토프리, 로우슈거, 당솔브 기준으로 정리하고 어떤 목적에서 고르면 되는지 한 번에 설명합니다.",
+  keywords: ["셀렉스 종류", "셀렉스 라인업", "셀렉스 프로핏 차이", "셀렉스 코어프로틴", "셀렉스 제품 비교", "셀렉스 당솔브"],
   badge: "브랜드 라인업",
   readingTime: "5분 읽기",
-  updatedAt: "2026-03-24",
+  updatedAt: "2026-08-26",
   methodologyNote: "ProteinLab DB RTD 기준",
-  intro: "셀렉스는 이름이 비슷해서 헷갈리지만 실제로는 운동 보충형, 워터형, 락토프리형, 일반 영양보충형으로 역할이 꽤 다릅니다. ProteinLab DB에 잡힌 RTD 라인업만 기준으로 정리해도 어떤 제품이 본인 목적에 맞는지 빠르게 갈립니다.",
+  intro: "셀렉스는 이름이 비슷해서 헷갈리지만 실제로는 운동 보충형, 워터형, 락토프리형, 혈당 관리형, 일반 영양보충형으로 역할이 꽤 다릅니다. ProteinLab DB에 잡힌 RTD 라인업만 기준으로 정리해도 어떤 제품이 본인 목적에 맞는지 빠르게 갈립니다.",
   summary: [
     "운동 후 저칼로리 보충은 프로핏 웨이프로틴과 프로핏이 가장 직관적입니다.",
     "가볍고 상큼하게 마시려면 웨이프로핏, 우유 부담을 줄이고 싶다면 락토프리 라인이 먼저입니다.",
-    "셀렉스 일반 프로틴과 로우슈거는 보충용보다는 일상 영양보완 쪽에 더 가깝습니다.",
+    "당류를 최대한 낮추고 싶다면 신제품 당솔브가 로우슈거보다도 더 확실한 선택지입니다.",
   ],
   comparisonTitle: "셀렉스 RTD 라인업 비교표",
-  comparisonColumns: ["프로핏 웨이프로틴", "프로틴 웨이프로핏", "프로틴 락토프리", "프로틴 로우슈거"],
+  comparisonColumns: ["프로핏 웨이프로틴", "프로틴 웨이프로핏", "프로틴 락토프리", "프로틴 로우슈거", "프로틴 당솔브"],
   comparisonRows: buildComparisonRows([
-    { label: "대표 제품", values: [sellexProfitSports.name, sellexAmericano.name, sellexLactoseFree.name, sellexLowsugar.name] },
-    { label: "형태", values: ["RTD 밀크형", "RTD 워터형", "RTD 밀크형", "RTD 밀크형"] },
-    { label: "단백질", values: [`${sellexProfitSports.proteinPerServing}g`, `${sellexAmericano.proteinPerServing}g`, `${sellexLactoseFree.proteinPerServing}g`, `${sellexLowsugar.proteinPerServing}g`] },
-    { label: "칼로리", values: [`${sellexProfitSports.calories}kcal`, `${sellexAmericano.calories}kcal`, `${sellexLactoseFree.calories}kcal`, `${sellexLowsugar.calories}kcal`] },
-    { label: "당류", values: [`${sellexProfitSports.sugar}g`, `${sellexAmericano.sugar}g`, `${sellexLactoseFree.sugar}g`, `${sellexLowsugar.sugar}g`] },
-    { label: "특징", values: ["WPI 20g·운동 보충형", "워터형·깔끔한 목넘김", "락토프리 표기", "일반 영양보완형"] },
-    { label: "추천 목적", values: ["운동 후·다이어트", "가벼운 보충·커피 대체", "유당 부담 낮추기", "일상 보충"] },
+    { label: "대표 제품", values: [sellexProfitSports.name, sellexAmericano.name, sellexLactoseFree.name, sellexLowsugar.name, sellexDangsolveFivegrain.name] },
+    { label: "형태", values: ["RTD 밀크형", "RTD 워터형", "RTD 밀크형", "RTD 밀크형", "RTD 밀크형"] },
+    { label: "단백질", values: [`${sellexProfitSports.proteinPerServing}g`, `${sellexAmericano.proteinPerServing}g`, `${sellexLactoseFree.proteinPerServing}g`, `${sellexLowsugar.proteinPerServing}g`, `${sellexDangsolveFivegrain.proteinPerServing}g`] },
+    { label: "칼로리", values: [`${sellexProfitSports.calories}kcal`, `${sellexAmericano.calories}kcal`, `${sellexLactoseFree.calories}kcal`, `${sellexLowsugar.calories}kcal`, `${sellexDangsolveFivegrain.calories}kcal`] },
+    { label: "당류", values: [`${sellexProfitSports.sugar}g`, `${sellexAmericano.sugar}g`, `${sellexLactoseFree.sugar}g`, `${sellexLowsugar.sugar}g`, `${sellexDangsolveFivegrain.sugar}g`] },
+    { label: "특징", values: ["WPI 20g·운동 보충형", "워터형·깔끔한 목넘김", "락토프리 표기", "일반 영양보완형", "오곡맛·당류 1g 미만"] },
+    { label: "추천 목적", values: ["운동 후·다이어트", "가벼운 보충·커피 대체", "유당 부담 낮추기", "일상 보충", "혈당 신경 쓰일 때"] },
   ]),
   sections: [
     {
@@ -843,6 +845,7 @@ export const selexsLineupConfig: ComparePageConfig = {
         { title: "프로핏 웨이프로틴", body: "330mL에 단백질 20g, 99kcal라 운동 후 보충용으로 가장 선명합니다. 셀렉스 안에서 가장 스포츠형 메시지가 강한 라인입니다." },
         { title: "프로틴 웨이프로핏", body: "아메리카노와 복숭아 아이스티처럼 워터형 감각이 강합니다. 90kcal 전후로 가볍고, 단백질 음료 특유의 밀크감을 싫어하는 사람에게 잘 맞습니다." },
         { title: "프로틴 락토프리·로우슈거", body: "이 라인은 운동 보충보다 일상 영양보완 관점이 더 강합니다. 단백질 총량은 낮지만 속 부담이나 일반식 보완 맥락에서는 여전히 의미가 있습니다." },
+        { title: "프로틴 당솔브", body: "190mL에 단백질 14g, 150kcal, 당류 1g 미만으로 로우슈거보다도 당 관리에 더 초점을 맞춘 신규 라인입니다. 오곡맛·초당옥수수맛 2종으로 나왔습니다." },
       ],
     },
     {
@@ -851,6 +854,7 @@ export const selexsLineupConfig: ComparePageConfig = {
         { title: "운동 후 고단백", body: "프로핏 웨이프로틴이 1순위입니다. 20g, 99kcal, 당류 0g이라 목적이 가장 분명합니다." },
         { title: "출근길·외출 중 간편하게", body: "웨이프로핏 아메리카노나 복숭아 아이스티가 편합니다. 단백질은 20g으로 유지하면서 음용감이 훨씬 가볍습니다." },
         { title: "유당 부담이 걱정될 때", body: "프로틴 락토프리부터 보는 편이 안전합니다. 셀렉스 안에서도 일반 프로핏보다 우선순위가 올라갑니다." },
+        { title: "당류를 최대한 줄이고 싶을 때", body: "프로틴 당솔브가 가장 확실합니다. 당류 1g 미만이면서 단백질 14g은 유지해 혈당이 신경 쓰이는 상황에서 선택지가 됩니다." },
       ],
     },
     {
@@ -858,6 +862,7 @@ export const selexsLineupConfig: ComparePageConfig = {
       items: [
         { title: "이름만 보고 전부 운동용으로 생각하기 쉽다", body: "셀렉스는 같은 브랜드 안에서도 스포츠형과 일반 영양보완형이 섞여 있습니다. 제품명보다 단백질 g와 칼로리를 같이 봐야 합니다." },
         { title: "워터형과 밀크형은 체감이 완전히 다르다", body: "웨이프로핏은 밀크형 RTD와 다르게 깔끔한 음용감이 강합니다. 맛 취향이 갈리면 영양 수치보다 이 차이가 더 크게 느껴집니다." },
+        { title: "로우슈거와 당솔브는 이름이 비슷해도 다르다", body: "둘 다 당류를 낮춘 라인이지만 당솔브가 더 최근에 나온 제품으로 당류 수치가 더 낮습니다. 당 관리가 우선이면 당솔브부터 확인하는 편이 정확합니다." },
         { title: "분말형·스틱형은 별도 카테고리로 보는 편이 맞다", body: "이 페이지는 ProteinLab DB에 잡힌 RTD 중심 정리입니다. 코어프로틴 같은 분말·스틱형은 음용 맥락이 달라 따로 비교하는 편이 정확합니다." },
       ],
     },
@@ -866,16 +871,19 @@ export const selexsLineupConfig: ComparePageConfig = {
     { question: "셀렉스에서 가장 무난한 첫 제품은 무엇인가", answer: "운동 보충이면 프로핏 웨이프로틴, 가볍게 시작하려면 웨이프로핏 아메리카노가 가장 무난합니다. 둘 다 단백질 20g급이라 출발점으로 좋습니다." },
     { question: "셀렉스 프로핏과 웨이프로핏 차이는 무엇인가", answer: "프로핏은 밀크형 스포츠 보충 RTD에 가깝고, 웨이프로핏은 워터형 감각이 강합니다. 단백질 총량은 비슷해도 마시는 느낌과 사용 장면이 다릅니다." },
     { question: "유당불내증이면 셀렉스에서 무엇부터 봐야 하나", answer: "가장 먼저 볼 것은 프로틴 락토프리입니다. 웨이프로핏도 상대적으로 가볍게 느껴질 수 있지만, 락토프리 표기 제품보다 우선 추천하지는 않습니다." },
+    { question: "셀렉스 당솔브는 로우슈거와 무엇이 다른가", answer: "당솔브는 로우슈거보다 더 최근에 나온 라인으로 당류가 1g 미만입니다. 단백질은 14g으로 비슷하게 유지하면서 당류를 더 낮춘 것이 핵심 차이입니다." },
   ],
   relatedGuides: [
     { title: "셀렉스 vs 하이뮨 비교", href: "/guides/product-selection-comparison/selex-vs-himune", description: "셀렉스를 다른 대표 브랜드와 직접 비교해봅니다." },
     { title: "셀렉스 vs 테이크핏 vs 하이뮨", href: "/guides/product-selection-comparison/selex-vs-takefit-vs-himune", description: "대표 브랜드 3개를 한 번에 비교합니다." },
+    { title: "당뇨·혈당 관리용 단백질 음료", href: "/guides/product-selection-comparison/protein-drink-for-diabetes", description: "당류를 낮춘 단백질 음료를 혈당 관리 관점에서 정리합니다." },
     commonRelated[0],
   ],
   purchaseLinks: [
     { label: "셀렉스 프로핏 웨이프로틴 보기", slug: sellexProfitSports.slug },
     { label: "셀렉스 프로틴 웨이프로핏 보기", slug: sellexAmericano.slug },
     { label: "셀렉스 프로틴 락토프리 보기", slug: sellexLactoseFree.slug },
+    { label: "셀렉스 프로틴 당솔브 (오곡맛) 보기", slug: sellexDangsolveFivegrain.slug },
   ],
 };
 selexsLineupConfig.jsonLd = [articleJsonLd(selexsLineupConfig), faqJsonLd(selexsLineupConfig)];
@@ -1046,6 +1054,7 @@ const hymuneOriginal = getDrinkProduct("hymune-balance-active-original-250");
 const hymuneZeroTiramisu = getDrinkProduct("hymune-balance-active-night-tiramisu-zero-250");
 const hymuneBalancePlus = getDrinkProduct("hymune-protein-balance-plus-190");
 const hymunePlant = getDrinkProduct("hymune-protein-balance-plant-highprotein-190");
+const hymuneUltra = getDrinkProduct("hymune-ultra-400");
 const danbaekDrinkChoco = getDrinkProduct("danbaek-drink-chocolate-250");
 const danbaekDoubleChoco = getDrinkProduct("danbaek-drink-doublechoco-350");
 const danbaekDarkChoco = getDrinkProduct("danbaek-drink-darkchoco-330");
@@ -1055,28 +1064,29 @@ const dryou40Strawberry = getDrinkProduct("dryou-protein-40g-strawberry-350");
 export const himuneLineupConfig: ComparePageConfig = {
   slug: "himune-lineup",
   title: "하이뮨 제품 종류 전체 정리",
-  description: "하이뮨 RTD 라인업을 프로틴 밸런스, 액티브, 액티브 제로, 식물성 고단백 기준으로 정리하고 목적별 추천까지 바로 연결합니다.",
-  keywords: ["하이뮨 종류", "하이뮨 라인업", "하이뮨 프로틴밸런스 액티브 차이", "하이뮨 액티브 제로"],
+  description: "하이뮨 RTD 라인업을 프로틴 밸런스, 액티브, 액티브 제로, 식물성 고단백, 울트라 기준으로 정리하고 목적별 추천까지 바로 연결합니다.",
+  keywords: ["하이뮨 종류", "하이뮨 라인업", "하이뮨 프로틴밸런스 액티브 차이", "하이뮨 액티브 제로", "하이뮨 울트라"],
   badge: "브랜드 라인업",
   readingTime: "5분 읽기",
-  updatedAt: "2026-03-24",
+  updatedAt: "2026-08-26",
   methodologyNote: "ProteinLab DB RTD 기준",
-  intro: "하이뮨은 산양유 단백질 이미지가 강하지만 실제 라인업은 일상 영양보완형, 운동 보충형, 제로형, 식물성형으로 분화돼 있습니다. ProteinLab DB에 잡힌 RTD 라인업 기준으로 정리하면 어떤 목적에 어떤 제품이 맞는지 훨씬 선명해집니다.",
+  intro: "하이뮨은 산양유 단백질 이미지가 강하지만 실제 라인업은 일상 영양보완형, 운동 보충형, 제로형, 식물성형, 초고단백형으로 분화돼 있습니다. ProteinLab DB에 잡힌 RTD 라인업 기준으로 정리하면 어떤 목적에 어떤 제품이 맞는지 훨씬 선명해집니다.",
   summary: [
     "하이뮨은 운동용 한 가지만 있는 브랜드가 아니라 일상 보완형과 액티브형이 분리되어 있습니다.",
     "가장 무난한 표준형은 액티브, 더 가볍게 가려면 액티브 제로, 식사 보완 쪽은 프로틴 밸런스 계열이 더 잘 맞습니다.",
+    `단백질 총량을 최대로 채우고 싶다면 ${hymuneUltra.proteinPerServing}g인 울트라가 브랜드 내 최상위 라인입니다.`,
     "하이뮨의 핵심 차별점은 산양유 기반 이미지와 다양한 맛, 그리고 일상용 저부담 포지셔닝입니다.",
   ],
   comparisonTitle: "하이뮨 RTD 라인업 비교표",
-  comparisonColumns: ["프로틴 밸런스", "프로틴 밸런스 플러스", "액티브", "액티브 제로", "식물성 고단백"],
+  comparisonColumns: ["프로틴 밸런스", "프로틴 밸런스 플러스", "액티브", "액티브 제로", "식물성 고단백", "울트라"],
   comparisonRows: buildComparisonRows([
-    { label: "대표 제품", values: [hymuneBalance.name, hymuneBalancePlus.name, hymuneOriginal.name, hymuneZeroTiramisu.name, hymunePlant.name] },
-    { label: "형태", values: ["RTD 밀크형", "RTD 밀크형", "RTD 밀크형", "RTD 밀크형", "RTD 밀크형"] },
-    { label: "단백질", values: [`${hymuneBalance.proteinPerServing}g`, `${hymuneBalancePlus.proteinPerServing}g`, `${hymuneOriginal.proteinPerServing}g`, `${hymuneZeroTiramisu.proteinPerServing}g`, `${hymunePlant.proteinPerServing}g`] },
-    { label: "칼로리", values: [`${hymuneBalance.calories}kcal`, `${hymuneBalancePlus.calories}kcal`, `${hymuneOriginal.calories}kcal`, `${hymuneZeroTiramisu.calories}kcal`, `${hymunePlant.calories}kcal`] },
-    { label: "당류", values: [`${hymuneBalance.sugar}g`, `${hymuneBalancePlus.sugar}g`, `${hymuneOriginal.sugar}g`, `${hymuneZeroTiramisu.sugar}g`, `${hymunePlant.sugar}g`] },
-    { label: "특징", values: ["일상 보완형", "단백질 소폭 상향", "표준 액티브형", "제로·저칼로리", "식물성·락토프리"] },
-    { label: "추천 목적", values: ["일상 보충", "조금 더 채우고 싶을 때", "운동 후", "다이어트·저당", "유제품 부담 완화"] },
+    { label: "대표 제품", values: [hymuneBalance.name, hymuneBalancePlus.name, hymuneOriginal.name, hymuneZeroTiramisu.name, hymunePlant.name, hymuneUltra.name] },
+    { label: "형태", values: ["RTD 밀크형", "RTD 밀크형", "RTD 밀크형", "RTD 밀크형", "RTD 밀크형", "RTD 밀크형"] },
+    { label: "단백질", values: [`${hymuneBalance.proteinPerServing}g`, `${hymuneBalancePlus.proteinPerServing}g`, `${hymuneOriginal.proteinPerServing}g`, `${hymuneZeroTiramisu.proteinPerServing}g`, `${hymunePlant.proteinPerServing}g`, `${hymuneUltra.proteinPerServing}g`] },
+    { label: "칼로리", values: [`${hymuneBalance.calories}kcal`, `${hymuneBalancePlus.calories}kcal`, `${hymuneOriginal.calories}kcal`, `${hymuneZeroTiramisu.calories}kcal`, `${hymunePlant.calories}kcal`, `${hymuneUltra.calories}kcal`] },
+    { label: "당류", values: [`${hymuneBalance.sugar}g`, `${hymuneBalancePlus.sugar}g`, `${hymuneOriginal.sugar}g`, `${hymuneZeroTiramisu.sugar}g`, `${hymunePlant.sugar}g`, `${hymuneUltra.sugar}g`] },
+    { label: "특징", values: ["일상 보완형", "단백질 소폭 상향", "표준 액티브형", "제로·저칼로리", "식물성·락토프리", "브랜드 내 최상위 초고단백"] },
+    { label: "추천 목적", values: ["일상 보충", "조금 더 채우고 싶을 때", "운동 후", "다이어트·저당", "유제품 부담 완화", "고강도 운동·집중 보충"] },
   ]),
   sections: [
     {
@@ -1085,6 +1095,7 @@ export const himuneLineupConfig: ComparePageConfig = {
         { title: "프로틴 밸런스 계열", body: "190mL 소용량에 10~13g 수준이라 일상 영양보완형에 가깝습니다. 운동용 고단백보다는 중장년층이나 식사 사이 보완에 더 어울립니다." },
         { title: "액티브 계열", body: "250mL에 20g 전후로 맞춘 하이뮨의 표준 운동 보충형입니다. 편의점 접근성과 다양한 맛이 강점입니다." },
         { title: "액티브 제로·식물성", body: "액티브 제로는 당류 0g과 99kcal가 강점이고, 식물성 고단백은 유제품이 부담스러운 사람에게 대안이 됩니다." },
+        { title: "울트라", body: `단백질 ${hymuneUltra.proteinPerServing}g으로 하이뮨 라인업 중 총량이 가장 높습니다. 일상용 액티브와는 포지션이 달라 고강도 운동이나 집중 보충 목적일 때 검토하는 편이 맞습니다.` },
       ],
     },
     {
@@ -1116,16 +1127,19 @@ export const himuneLineupConfig: ComparePageConfig = {
     { question: "하이뮨에서 가장 무난한 첫 제품은 무엇인가", answer: "운동 보충이면 액티브 딥초코나 오리지널, 일상 보완이면 프로틴 밸런스 플러스가 무난합니다. 두 라인의 역할이 다르니 목적부터 정하는 편이 좋습니다." },
     { question: "하이뮨 액티브 제로는 어떤 사람에게 맞나", answer: "당류와 칼로리를 더 낮게 보고 싶은 사람에게 맞습니다. 22g, 99kcal, 당류 0g이라 하이뮨 안에서 가장 가벼운 축입니다." },
     { question: "하이뮨은 왜 시니어용 이미지가 강한가", answer: "산양유와 건강관리 메시지가 강하고, 프로틴 밸런스처럼 일상 보완형 제품 비중도 있기 때문입니다. 그래서 운동 전용 브랜드보다 폭이 넓게 읽힙니다." },
+    { question: "하이뮨 울트라는 액티브랑 뭐가 다른가", answer: `단백질 총량 자체가 다릅니다. 액티브가 하이뮨의 표준 운동 보충형이라면, 울트라는 ${hymuneUltra.proteinPerServing}g으로 브랜드 내 가장 높은 총량을 채울 때 선택하는 라인입니다.` },
   ],
   relatedGuides: [
     { title: "셀렉스 vs 하이뮨 비교", href: "/guides/product-selection-comparison/selex-vs-himune", description: "하이뮨을 셀렉스 대표 RTD와 직접 비교합니다." },
     { title: "셀렉스 vs 테이크핏 vs 하이뮨", href: "/guides/product-selection-comparison/selex-vs-takefit-vs-himune", description: "대표 브랜드 3파전을 한 번에 비교합니다." },
     { title: "단백질 음료 입문 가이드", href: "/guides/product-selection-comparison/protein-drink-beginners-guide", description: "처음 마시는 사람 기준에서 다시 좁혀봅니다." },
+    { title: "50g 이상 초고단백 음료 비교", href: "/guides/product-selection-comparison/high-protein-50g-comparison", description: "울트라를 다른 50g 안팎 초고단백 제품과 비교합니다." },
   ],
   purchaseLinks: [
     { label: "하이뮨 액티브 보기", slug: hymuneOriginal.slug },
     { label: "하이뮨 액티브 제로 보기", slug: hymuneZeroTiramisu.slug },
     { label: "하이뮨 프로틴 밸런스 보기", slug: hymuneBalance.slug },
+    { label: "하이뮨 울트라 보기", slug: hymuneUltra.slug },
   ],
 };
 himuneLineupConfig.jsonLd = [articleJsonLd(himuneLineupConfig), faqJsonLd(himuneLineupConfig)];
@@ -1133,28 +1147,29 @@ himuneLineupConfig.jsonLd = [articleJsonLd(himuneLineupConfig), faqJsonLd(himune
 export const takefitLineupConfig: ComparePageConfig = {
   slug: "takefit-lineup",
   title: "테이크핏 제품 종류 전체 정리",
-  description: "테이크핏 맥스, 몬스터, 프로 라인의 차이를 단백질, 칼로리, 음용감 기준으로 정리하고 목적별 추천까지 연결합니다.",
-  keywords: ["테이크핏 종류", "테이크핏 맥스 몬스터 차이", "테이크핏 라인업", "테이크핏 프로"],
+  description: "테이크핏 맥스, 몬스터, 프로, 익스트림 라인의 차이를 단백질, 칼로리, 음용감 기준으로 정리하고 목적별 추천까지 연결합니다.",
+  keywords: ["테이크핏 종류", "테이크핏 맥스 몬스터 차이", "테이크핏 라인업", "테이크핏 프로", "테이크핏 익스트림"],
   badge: "브랜드 라인업",
   readingTime: "5분 읽기",
-  updatedAt: "2026-03-24",
+  updatedAt: "2026-08-26",
   methodologyNote: "ProteinLab DB RTD 기준",
-  intro: "테이크핏은 이름이 다른 만큼 목적도 분명하게 갈립니다. 맥스는 표준 고단백, 몬스터는 40g 이상 초고단백, 프로는 워터형이라서 같은 브랜드라도 고르는 기준이 완전히 다릅니다.",
+  intro: "테이크핏은 이름이 다른 만큼 목적도 분명하게 갈립니다. 맥스는 표준 고단백, 몬스터는 40g대 초고단백, 프로는 워터형, 익스트림은 60g대 최상위 라인이라서 같은 브랜드라도 고르는 기준이 완전히 다릅니다.",
   summary: [
     "처음 시작하기 가장 무난한 건 테이크핏 맥스입니다.",
-    "단백질 함량을 극대화하려면 몬스터가 답이고, 가볍게 마시고 싶다면 프로가 가장 편합니다.",
+    "단백질 함량을 극대화하려면 몬스터나 익스트림이 답이고, 가볍게 마시고 싶다면 프로가 가장 편합니다.",
+    "익스트림은 60g대로 몬스터보다 한 단계 위 초고단백 구간이라 매일용보다는 목적형으로 접근하는 편이 맞습니다.",
     "테이크핏 라인업은 숫자와 용량이 다르면 사실상 용도도 달라진다고 보면 됩니다.",
   ],
   comparisonTitle: "테이크핏 라인업 비교표",
-  comparisonColumns: ["맥스", "몬스터", "프로"],
+  comparisonColumns: ["맥스", "몬스터", "프로", "익스트림"],
   comparisonRows: buildComparisonRows([
-    { label: "대표 제품", values: [takefitMax.name, takefitMonster.name, takefitPro.name] },
-    { label: "형태", values: ["RTD 밀크형", "RTD 밀크형", "RTD 워터형"] },
-    { label: "단백질", values: [`${takefitMax.proteinPerServing}g`, `${takefitMonster.proteinPerServing}g`, `${takefitPro.proteinPerServing}g`] },
-    { label: "칼로리", values: [`${takefitMax.calories}kcal`, `${takefitMonster.calories}kcal`, `${takefitPro.calories}kcal`] },
-    { label: "당류", values: [`${takefitMax.sugar}g`, `${takefitMonster.sugar}g`, `${takefitPro.sugar}g`] },
-    { label: "특징", values: ["저당 표준형", "45g 초고단백", "워터형 500mL"] },
-    { label: "추천 목적", values: ["일반 운동·다이어트", "집중 보충", "가벼운 수분형 보충"] },
+    { label: "대표 제품", values: [takefitMax.name, takefitMonster.name, takefitPro.name, takefitExtreme.name] },
+    { label: "형태", values: ["RTD 밀크형", "RTD 밀크형", "RTD 워터형", "RTD 밀크형"] },
+    { label: "단백질", values: [`${takefitMax.proteinPerServing}g`, `${takefitMonster.proteinPerServing}g`, `${takefitPro.proteinPerServing}g`, `${takefitExtreme.proteinPerServing}g`] },
+    { label: "칼로리", values: [`${takefitMax.calories}kcal`, `${takefitMonster.calories}kcal`, `${takefitPro.calories}kcal`, `${takefitExtreme.calories}kcal`] },
+    { label: "당류", values: [`${takefitMax.sugar}g`, `${takefitMonster.sugar}g`, `${takefitPro.sugar}g`, `${takefitExtreme.sugar}g`] },
+    { label: "특징", values: ["저당 표준형", "45g대 초고단백", "워터형 500mL", "60g대 최상위 초고단백"] },
+    { label: "추천 목적", values: ["일반 운동·다이어트", "집중 보충", "가벼운 수분형 보충", "고강도 운동·부족분 집중 보완"] },
   ]),
   sections: [
     {
@@ -1163,6 +1178,7 @@ export const takefitLineupConfig: ComparePageConfig = {
         { title: "맥스", body: "250mL에 24g이라 테이크핏의 표준형입니다. 다이어트와 일반 운동용으로 가장 범용적입니다." },
         { title: "몬스터", body: "350mL에 딸기맛 47g까지 확장된 함량 최우선 라인입니다. 40g대 비교군 안에서도 가장 공격적입니다." },
         { title: "프로", body: "500mL 워터형이라 마시는 느낌이 완전히 다릅니다. 단백질 25g인데도 100kcal라 가장 가볍습니다." },
+        { title: "익스트림", body: `450mL에 단백질 ${takefitExtreme.proteinPerServing}g까지 올라간 브랜드 내 최상위 라인입니다. 몬스터보다 한 단계 위 총량이 필요할 때만 검토하는 편이 맞습니다.` },
       ],
     },
     {
@@ -1171,6 +1187,7 @@ export const takefitLineupConfig: ComparePageConfig = {
         { title: "처음 시작", body: "맥스가 가장 무난합니다. 과하지 않고, 저당·저칼로리 축에 있어서 실패 확률이 낮습니다." },
         { title: "단백질 함량 극대화", body: "몬스터가 답입니다. 딸기맛 기준 47g, 당류 1.2g, 204kcal라 고단백 보충 목적이 분명합니다." },
         { title: "가볍게 마시고 싶을 때", body: "프로가 가장 편합니다. 워터형이라 밀크형 RTD가 무거운 사람에게 특히 잘 맞습니다." },
+        { title: "총량을 최대로 채우고 싶을 때", body: `익스트림이 가장 위입니다. 단백질 ${takefitExtreme.proteinPerServing}g까지 올라가지만 고강도 운동이나 하루 목표량이 큰 경우로 용도를 좁혀서 보는 편이 좋습니다.` },
       ],
     },
     {
@@ -1194,16 +1211,19 @@ export const takefitLineupConfig: ComparePageConfig = {
     { question: "테이크핏에서 가장 무난한 첫 제품은 무엇인가", answer: "맥스입니다. 24g급 저당형이라 일반 운동과 다이어트 병행에 가장 무난합니다." },
     { question: "테이크핏 몬스터는 누구에게 맞나", answer: "한 병에 단백질을 크게 채우고 싶은 사람에게 맞습니다. 딸기맛 리뉴얼 후 47g이라 고강도 운동이나 집중 보충용으로 읽는 편이 맞습니다." },
     { question: "테이크핏 프로는 운동용으로도 괜찮나", answer: "괜찮습니다. 다만 워터형이라 포만감보다 가벼운 수분형 보충에 더 가깝습니다. 밀크형 RTD와는 사용감이 다릅니다." },
+    { question: "테이크핏 익스트림은 몬스터보다 무조건 좋은가", answer: `아닙니다. 단백질 총량은 익스트림(${takefitExtreme.proteinPerServing}g)이 더 높지만, 매일 마시는 용도라면 몬스터로도 충분한 경우가 많습니다. 익스트림은 고강도 운동이나 하루 부족분이 큰 날처럼 목적이 분명할 때 검토하는 편이 맞습니다.` },
   ],
   relatedGuides: [
     { title: "셀렉스 vs 테이크핏 vs 하이뮨", href: "/guides/product-selection-comparison/selex-vs-takefit-vs-himune", description: "대표 브랜드 3파전 속에서 테이크핏 위치를 봅니다." },
     { title: "단백질 음료 40g 이상 비교", href: "/guides/product-selection-comparison/high-protein-40g-comparison", description: "몬스터를 다른 40g대 이상 제품과 직접 비교합니다." },
     { title: "닥터유 40g vs 테이크핏 몬스터 47g", href: "/guides/product-selection-comparison/doctoru-40g-vs-takefit-monster-43g", description: "몬스터 딥다이브 비교 페이지입니다." },
+    { title: "50g 이상 초고단백 음료 비교", href: "/guides/product-selection-comparison/high-protein-50g-comparison", description: "익스트림을 다른 50g대 이상 초고단백 제품과 비교합니다." },
   ],
   purchaseLinks: [
     { label: "테이크핏 맥스 보기", slug: takefitMax.slug },
     { label: "테이크핏 몬스터 보기", slug: takefitMonster.slug },
     { label: "테이크핏 프로 보기", slug: takefitPro.slug },
+    { label: "테이크핏 익스트림 보기", slug: takefitExtreme.slug },
   ],
 };
 takefitLineupConfig.jsonLd = [articleJsonLd(takefitLineupConfig), faqJsonLd(takefitLineupConfig)];
@@ -2404,27 +2424,27 @@ export const dryouLineupConfig: ComparePageConfig = {
   slug: "dryou-lineup",
   title: "닥터유 제품 종류 전체 정리",
   description: "닥터유 PRO 단백질 드링크와 40g 라인업을 중심으로 어떤 제품이 어떤 목적에 맞는지 정리했습니다.",
-  keywords: ["닥터유 단백질 종류", "닥터유PRO 라인업", "닥터유 프로틴 차이"],
+  keywords: ["닥터유 단백질 종류", "닥터유PRO 라인업", "닥터유 프로틴 차이", "닥터유 62g"],
   badge: "브랜드 라인업",
   readingTime: "5분 읽기",
-  updatedAt: "2026-03-24",
+  updatedAt: "2026-08-26",
   methodologyNote: "ProteinLab DB 음료 중심 정리",
-  intro: "닥터유는 맛 완성도를 앞세운 고단백 라인업이 특징입니다. 일반 프로 단백질 드링크 24g 라인과 40g 고단백 라인이 분리돼 있어, 입문용인지 집중 보충용인지부터 나눠 보는 편이 가장 정확합니다.",
+  intro: "닥터유는 맛 완성도를 앞세운 고단백 라인업이 특징입니다. 일반 프로 단백질 드링크 24g 라인, 40g 고단백 라인에 더해 62g 초고단백 라인까지 나오면서 입문용인지 집중 보충용인지부터 나눠 보는 편이 가장 정확해졌습니다.",
   summary: [
     "닥터유는 24g 일반 라인과 40g 고단백 라인이 뚜렷하게 나뉩니다.",
     "맛으로 시작하려면 24g 라인, 함량을 바로 끌어올리려면 40g 라인으로 보면 됩니다.",
-    "같은 브랜드 안에서도 초코와 딸기, 바나나처럼 맛별 체감 차이가 꽤 큽니다.",
+    "62g 라인은 하루 단백질 목표를 한 병으로 크게 채우고 싶을 때만 고려하면 됩니다.",
   ],
   comparisonTitle: "닥터유 라인업 비교표",
-  comparisonColumns: ["프로 단백질 드링크", "프로 단백질 드링크 40g", "프로 단백질 드링크 40g 딸기"],
+  comparisonColumns: ["프로 단백질 드링크", "프로 단백질 드링크 40g", "프로 단백질 드링크 40g 딸기", "프로틴 62g 말차"],
   comparisonRows: buildComparisonRows([
-    { label: "대표 제품", values: [dryouChoco.name, dryou40.name, dryou40Strawberry.name] },
-    { label: "형태", values: ["RTD 밀크형", "RTD 밀크형", "RTD 밀크형"] },
-    { label: "단백질", values: [`${dryouChoco.proteinPerServing}g`, `${dryou40.proteinPerServing}g`, `${dryou40Strawberry.proteinPerServing}g`] },
-    { label: "칼로리", values: [`${dryouChoco.calories}kcal`, `${dryou40.calories}kcal`, `${dryou40Strawberry.calories}kcal`] },
-    { label: "당류", values: [`${dryouChoco.sugar}g`, `${dryou40.sugar}g`, `${dryou40Strawberry.sugar}g`] },
-    { label: "특징", values: ["24g 입문형", "40g 초코", "40g 딸기"] },
-    { label: "추천 목적", values: ["맛 중심 입문", "고단백 집중", "맛 변화가 필요한 40g대"] },
+    { label: "대표 제품", values: [dryouChoco.name, dryou40.name, dryou40Strawberry.name, dryou62.name] },
+    { label: "형태", values: ["RTD 밀크형", "RTD 밀크형", "RTD 밀크형", "RTD 밀크형"] },
+    { label: "단백질", values: [`${dryouChoco.proteinPerServing}g`, `${dryou40.proteinPerServing}g`, `${dryou40Strawberry.proteinPerServing}g`, `${dryou62.proteinPerServing}g`] },
+    { label: "칼로리", values: [`${dryouChoco.calories}kcal`, `${dryou40.calories}kcal`, `${dryou40Strawberry.calories}kcal`, `${dryou62.calories}kcal`] },
+    { label: "당류", values: [`${dryouChoco.sugar}g`, `${dryou40.sugar}g`, `${dryou40Strawberry.sugar}g`, `${dryou62.sugar}g`] },
+    { label: "특징", values: ["24g 입문형", "40g 초코", "40g 딸기", "62g 말차·초고단백"] },
+    { label: "추천 목적", values: ["맛 중심 입문", "고단백 집중", "맛 변화가 필요한 40g대", "한 병으로 크게 채우기"] },
   ]),
   sections: [
     {
@@ -2433,13 +2453,14 @@ export const dryouLineupConfig: ComparePageConfig = {
         { title: "맛 완성도", body: "오리온 브랜드 특성상 초코우유처럼 익숙한 맛 방향이 강합니다. 그래서 40g대 입문 장벽을 낮추는 데 강점이 있습니다." },
         { title: "24g와 40g의 이중 구조", body: "일반 24g 라인은 입문자와 일상 보충용, 40g 라인은 집중 보충용으로 읽는 편이 맞습니다." },
         { title: "맛 변형으로 확장", body: "초코뿐 아니라 딸기, 바나나 등 맛 확장이 있어 같은 브랜드 안에서도 선택 폭이 있습니다." },
+        { title: "62g 초고단백 라인 추가", body: "말차맛 62g 라인이 새로 나오면서 40g대보다 더 위쪽 함량대까지 닥터유 안에서 커버하게 됐습니다." },
       ],
     },
     {
       title: "목적별 추천",
       items: [
         { title: "맛있게 시작하고 싶을 때", body: "24g 초콜릿 라인이 가장 무난합니다. 단백질 함량은 충분하면서 40g대보다 부담이 적습니다." },
-        { title: "한 병으로 크게 채우고 싶을 때", body: "40g 초코가 기준점입니다. 다만 258kcal, 지방 6.5g은 같이 감수해야 합니다." },
+        { title: "한 병으로 크게 채우고 싶을 때", body: "62g 말차가 가장 확실합니다. 40g 초코보다도 단백질 총량이 크게 앞섭니다." },
         { title: "40g대에서 맛 변화를 주고 싶을 때", body: "딸기 40g이 대안입니다. 초코에 피로가 올 때 비교적 자연스럽게 이동할 수 있습니다." },
       ],
     },
@@ -2456,6 +2477,7 @@ export const dryouLineupConfig: ComparePageConfig = {
     { question: "닥터유에서 가장 무난한 첫 제품은 무엇인가", answer: "대체로 24g 초콜릿 라인이 가장 무난합니다. 40g 라인보다 부담이 적고 맛 만족도가 높습니다." },
     { question: "닥터유 40g은 누가 마시기 좋나", answer: "고단백을 원하지만 맛 때문에 40g대가 부담스러웠던 사람에게 잘 맞습니다." },
     { question: "닥터유는 왜 40g대에서도 계속 언급되나", answer: "테이크핏이나 뉴케어와 달리 맛 중심 차별점이 뚜렷하기 때문입니다." },
+    { question: "닥터유 62g은 누구에게 맞나", answer: "하루 단백질 목표를 한 병으로 크게 채우고 싶은 사람에게 맞습니다. 40g대보다도 단백질 총량이 크게 앞서는 만큼 칼로리도 함께 확인해야 합니다." },
   ],
   relatedGuides: [
     { title: "닥터유 40g vs 테이크핏 몬스터 47g", href: "/guides/product-selection-comparison/doctoru-40g-vs-takefit-monster-43g", description: "닥터유 40g 라인을 가장 직접적으로 비교한 페이지입니다." },
@@ -2466,6 +2488,7 @@ export const dryouLineupConfig: ComparePageConfig = {
     { label: "닥터유 프로 단백질 드링크 보기", slug: dryouChoco.slug },
     { label: "닥터유 40g 초코 보기", slug: dryou40.slug },
     { label: "닥터유 40g 딸기 보기", slug: dryou40Strawberry.slug },
+    { label: "닥터유 62g 말차 보기", slug: dryou62.slug },
   ],
 };
 dryouLineupConfig.jsonLd = [articleJsonLd(dryouLineupConfig), faqJsonLd(dryouLineupConfig)];
@@ -2474,27 +2497,27 @@ export const danbaekLineupConfig: ComparePageConfig = {
   slug: "danbaek-lineup",
   title: "더단백 제품 종류 전체 정리",
   description: "더단백 드링크, 다크초코, 더블초코, 워터 프로틴 라인업을 저나트륨 강점 중심으로 정리합니다.",
-  keywords: ["더단백 종류", "더단백 라인업", "더단백 더블초코 차이", "더단백 저나트륨"],
+  keywords: ["더단백 종류", "더단백 라인업", "더단백 더블초코 차이", "더단백 저나트륨", "더단백 밸런스"],
   badge: "브랜드 라인업",
   readingTime: "5분 읽기",
-  updatedAt: "2026-03-24",
+  updatedAt: "2026-08-26",
   methodologyNote: "ProteinLab DB 음료 중심 정리",
-  intro: "더단백은 조용하지만 숫자가 깔끔한 브랜드입니다. 20g대 일반 드링크, 35g 다크초코, 40g 더블초코, 워터형까지 갖추고 있어서 저나트륨과 가벼운 설계를 축으로 확장하고 있습니다.",
+  intro: "더단백은 조용하지만 숫자가 깔끔한 브랜드입니다. 20g대 일반 드링크, 35g 다크초코, 40g 더블초코, 워터형에 이어 밸런스 라인까지 나오면서 저나트륨과 가벼운 설계를 축으로 계속 확장하고 있습니다.",
   summary: [
     "더단백의 핵심 차별점은 낮은 나트륨과 무난한 수치입니다.",
     "일반 보충은 20g 드링크, 고단백은 다크초코와 더블초코, 가볍게는 워터 프로틴으로 정리하면 쉽습니다.",
-    "더단백은 비교 페이지에서 숫자로 강하고, 라인업을 보면 그 방향성이 더 분명하게 보입니다.",
+    "신제품 밸런스는 고단백보다 식사 보완 관점의 균형형 제품이라 다른 라인과 목적이 다릅니다.",
   ],
   comparisonTitle: "더단백 라인업 비교표",
-  comparisonColumns: ["드링크 20g", "다크초코 35g", "더블초코 40g", "워터 프로틴"],
+  comparisonColumns: ["드링크 20g", "다크초코 35g", "더블초코 40g", "워터 프로틴", "밸런스"],
   comparisonRows: buildComparisonRows([
-    { label: "대표 제품", values: [danbaekDrinkChoco.name, danbaekDarkChoco.name, danbaekDoubleChoco.name, danbaekWaterApple.name] },
-    { label: "형태", values: ["RTD 밀크형", "RTD 밀크형", "RTD 밀크형", "RTD 워터형"] },
-    { label: "단백질", values: [`${danbaekDrinkChoco.proteinPerServing}g`, `${danbaekDarkChoco.proteinPerServing}g`, `${danbaekDoubleChoco.proteinPerServing}g`, `${danbaekWaterApple.proteinPerServing}g`] },
-    { label: "칼로리", values: [`${danbaekDrinkChoco.calories}kcal`, `${danbaekDarkChoco.calories}kcal`, `${danbaekDoubleChoco.calories}kcal`, `${danbaekWaterApple.calories}kcal`] },
-    { label: "당류", values: [`${danbaekDrinkChoco.sugar}g`, `${danbaekDarkChoco.sugar}g`, `${danbaekDoubleChoco.sugar}g`, `${danbaekWaterApple.sugar}g`] },
-    { label: "나트륨", values: [`${danbaekDrinkChoco.sodium ?? "-"}mg`, `${danbaekDarkChoco.sodium ?? "-"}mg`, `${danbaekDoubleChoco.sodium ?? "-"}mg`, `${danbaekWaterApple.sodium ?? "-"}mg`] },
-    { label: "추천 목적", values: ["일반 보충", "중간 고단백", "고단백 집중", "가벼운 수분형"] },
+    { label: "대표 제품", values: [danbaekDrinkChoco.name, danbaekDarkChoco.name, danbaekDoubleChoco.name, danbaekWaterApple.name, danbaekBalanceOriginal.name] },
+    { label: "형태", values: ["RTD 밀크형", "RTD 밀크형", "RTD 밀크형", "RTD 워터형", "RTD 밀크형"] },
+    { label: "단백질", values: [`${danbaekDrinkChoco.proteinPerServing}g`, `${danbaekDarkChoco.proteinPerServing}g`, `${danbaekDoubleChoco.proteinPerServing}g`, `${danbaekWaterApple.proteinPerServing}g`, `${danbaekBalanceOriginal.proteinPerServing}g`] },
+    { label: "칼로리", values: [`${danbaekDrinkChoco.calories}kcal`, `${danbaekDarkChoco.calories}kcal`, `${danbaekDoubleChoco.calories}kcal`, `${danbaekWaterApple.calories}kcal`, `${danbaekBalanceOriginal.calories}kcal`] },
+    { label: "당류", values: [`${danbaekDrinkChoco.sugar}g`, `${danbaekDarkChoco.sugar}g`, `${danbaekDoubleChoco.sugar}g`, `${danbaekWaterApple.sugar}g`, `${danbaekBalanceOriginal.sugar}g`] },
+    { label: "나트륨", values: [`${danbaekDrinkChoco.sodium ?? "-"}mg`, `${danbaekDarkChoco.sodium ?? "-"}mg`, `${danbaekDoubleChoco.sodium ?? "-"}mg`, `${danbaekWaterApple.sodium ?? "-"}mg`, `${danbaekBalanceOriginal.sodium ?? "-"}mg`] },
+    { label: "추천 목적", values: ["일반 보충", "중간 고단백", "고단백 집중", "가벼운 수분형", "식사 보완형"] },
   ]),
   sections: [
     {
@@ -2503,12 +2526,13 @@ export const danbaekLineupConfig: ComparePageConfig = {
         { title: "저나트륨", body: "일반 드링크 초코 기준 30mg, 워터 프로틴은 47mg 수준이라 같은 카테고리 내에서 매우 낮은 편입니다." },
         { title: "20g부터 40g까지 고르게 있다", body: "입문용 20g, 중간 고단백 35g, 고단백 40g까지 단계적으로 올라갈 수 있습니다." },
         { title: "빙그레 기반의 무난한 맛", body: "과하게 자극적이기보다 안정적이고 담백한 쪽입니다. 그래서 일상용으로 정착하기 쉽습니다." },
+        { title: "밸런스 라인 추가", body: "단백질 10g대로 낮지만 나트륨은 140mg으로 다른 라인보다 높습니다. 고단백 보충용이 아니라 식사 보완용 포지션에 가깝습니다." },
       ],
     },
     {
       title: "목적별 추천",
       items: [
-        { title: "나트륨 신경 쓰는 사람", body: "더단백은 어떤 라인을 보든 우선순위가 높습니다. 브랜드 방향성이 일관됩니다." },
+        { title: "나트륨 신경 쓰는 사람", body: "20g 드링크부터 워터 프로틴까지는 우선순위가 높습니다. 다만 밸런스는 상대적으로 나트륨이 높아 이 기준에서는 제외하는 편이 낫습니다." },
         { title: "일반 보충", body: "20g 드링크가 가장 무난합니다. 숫자와 음용감 균형이 좋습니다." },
         { title: "고단백 원할 때", body: "더블초코 40g이 답입니다. 다크초코 35g은 그 중간 단계로 보기 좋습니다." },
       ],
@@ -2526,6 +2550,7 @@ export const danbaekLineupConfig: ComparePageConfig = {
     { question: "더단백에서 가장 무난한 첫 제품은 무엇인가", answer: "20g 드링크 초코가 가장 무난합니다. 숫자도 깔끔하고 일상 보충용으로 쓰기 쉽습니다." },
     { question: "고단백으로 바로 가고 싶으면 무엇을 보면 되나", answer: "더블초코 40g을 보면 됩니다. 35g 다크초코는 그 사이 단계입니다." },
     { question: "더단백의 가장 큰 장점은 무엇인가", answer: "저나트륨과 전반적으로 깔끔한 영양 설계입니다. 다른 브랜드와 나란히 놓으면 이 점이 가장 먼저 보입니다." },
+    { question: "더단백 밸런스는 다른 라인과 무엇이 다른가", answer: "단백질은 10g대로 낮은 대신 나트륨이 140mg으로 다른 더단백 제품보다 높습니다. 고단백 보충보다는 식사 대용에 가까운 포지션입니다." },
   ],
   relatedGuides: [
     { title: "더단백 vs 셀렉스 비교", href: "/guides/product-selection-comparison/danbaek-vs-selexs", description: "셀렉스와의 차이를 직접 비교합니다." },
@@ -2536,6 +2561,7 @@ export const danbaekLineupConfig: ComparePageConfig = {
     { label: "더단백 드링크 보기", slug: danbaekDrinkChoco.slug },
     { label: "더단백 다크초코 보기", slug: danbaekDarkChoco.slug },
     { label: "더단백 더블초코 보기", slug: danbaekDoubleChoco.slug },
+    { label: "더단백 밸런스 보기", slug: danbaekBalanceOriginal.slug },
   ],
 };
 danbaekLineupConfig.jsonLd = [articleJsonLd(danbaekLineupConfig), faqJsonLd(danbaekLineupConfig)];
