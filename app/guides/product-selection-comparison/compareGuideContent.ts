@@ -665,25 +665,25 @@ export const proteinDrinkForDiabetesConfig: ComparePageConfig = {
   slug: "protein-drink-for-diabetes",
   title: "당뇨 있을 때 단백질 음료 마셔도 될까",
   description: "당뇨가 있어도 단백질 음료를 마실 수 있는지, ProteinLab DB 기준으로 당류·칼로리·탄수화물 관점에서 선택 기준과 후보 제품을 정리했습니다.",
-  keywords: ["당뇨 단백질 음료", "당뇨 단백질 보충", "혈당 단백질 음료", "셀렉스 당솔브"],
+  keywords: ["당뇨 단백질 음료", "당뇨 단백질 보충", "혈당 단백질 음료"],
   badge: "문제 해결",
   readingTime: "5분 읽기",
-  updatedAt: "2026-08-26",
+  updatedAt: "2026-03-24",
   methodologyNote: "ProteinLab DB 저당·저칼로리 RTD 기준",
   intro: "당뇨가 있어도 단백질 음료를 무조건 피할 필요는 없습니다. 다만 단백질 g보다 먼저 당류, 전체 탄수화물, 칼로리를 봐야 하고, 같은 브랜드라도 맛에 따라 차이가 커서 대표 제품 기준으로 좁혀 보는 편이 안전합니다.",
   summary: [
     "당뇨가 있어도 단백질 음료를 마실 수 있습니다. 다만 당류·칼로리 확인이 먼저입니다.",
     "대표적으로는 셀렉스 프로핏, 테이크핏 맥스, 뉴케어 올프로틴 워터처럼 당류가 낮은 제품이 유리합니다.",
-    "신제품 중에서는 셀렉스 당솔브가 당류 1g 미만으로 나와 이 목적에 가장 정면으로 맞는 제품입니다.",
+    "당류 5g 이상이거나 단맛이 강한 제품은 우선순위를 낮추는 편이 안전합니다.",
   ],
   comparisonTitle: "당뇨 고려 추천 제품",
-  comparisonColumns: ["셀렉스 프로핏", "테이크핏 맥스", "뉴케어 올프로틴 워터", "테이크핏 몬스터", "셀렉스 당솔브"],
+  comparisonColumns: ["셀렉스 프로핏", "테이크핏 맥스", "뉴케어 올프로틴 워터", "테이크핏 몬스터"],
   comparisonRows: buildComparisonRows([
-    { label: "단백질", values: [`${sellex.proteinPerServing}g`, `${takefitMax.proteinPerServing}g`, `${newcareWater.proteinPerServing}g`, `${takefitMonster.proteinPerServing}g`, `${sellexDangsolveFivegrain.proteinPerServing}g`] },
-    { label: "당류", values: [`${sellex.sugar}g`, `${takefitMax.sugar}g`, `${newcareWater.sugar}g`, `${takefitMonster.sugar}g`, `${sellexDangsolveFivegrain.sugar}g`] },
-    { label: "칼로리", values: [`${sellex.calories}kcal`, `${takefitMax.calories}kcal`, `${newcareWater.calories}kcal`, `${takefitMonster.calories}kcal`, `${sellexDangsolveFivegrain.calories}kcal`] },
-    { label: "탄수화물", values: ["4g", "1g", "0g", "1.3g", "-"] },
-    { label: "해석", values: ["무난한 저당형", "고단백 저당형", "가장 가벼운 워터형", "고단백이지만 열량 높음", "당류 1g 미만·신제품"] },
+    { label: "단백질", values: [`${sellex.proteinPerServing}g`, `${takefitMax.proteinPerServing}g`, `${newcareWater.proteinPerServing}g`, `${takefitMonster.proteinPerServing}g`] },
+    { label: "당류", values: [`${sellex.sugar}g`, `${takefitMax.sugar}g`, `${newcareWater.sugar}g`, `${takefitMonster.sugar}g`] },
+    { label: "칼로리", values: [`${sellex.calories}kcal`, `${takefitMax.calories}kcal`, `${newcareWater.calories}kcal`, `${takefitMonster.calories}kcal`] },
+    { label: "탄수화물", values: ["4g", "1g", "0g", "1.3g"] },
+    { label: "해석", values: ["무난한 저당형", "고단백 저당형", "가장 가벼운 워터형", "고단백이지만 열량 높음"] },
   ]),
   sections: [
     {
@@ -716,25 +716,23 @@ export const proteinDrinkForDiabetesConfig: ComparePageConfig = {
         { title: "대표 제품 먼저 기억하기", body: "셀렉스 프로핏, 테이크핏 맥스, 뉴케어 올프로틴 워터처럼 당류가 낮은 대표 SKU 몇 개를 먼저 기억해 두는 방식이 가장 실용적입니다." },
         { title: "맛 SKU를 항상 다시 확인", body: "같은 브랜드라도 딸기, 바나나, 쿠키앤크림처럼 맛에 따라 당류가 확 올라갈 수 있습니다. 브랜드보다 SKU 확인이 먼저입니다." },
         { title: "워터형도 대안이 됩니다", body: "밀크형이 부담스럽다면 워터형이 더 나을 수 있습니다. 뉴케어 올프로틴 워터는 이 관점에서 좋은 비교 기준이 됩니다." },
-        { title: "당류를 최우선으로 낮추고 싶다면 신제품도 확인", body: "셀렉스 당솔브는 오곡맛·초당옥수수맛 모두 당류 1g 미만으로 나온 신제품입니다. 기존 로우슈거보다도 당류가 더 낮아 이 목적에서는 먼저 확인할 가치가 있습니다." },
       ],
     },
   ],
   faq: [
     { question: "당뇨가 있어도 단백질 음료를 마셔도 되나", answer: "대체로 가능합니다. 다만 당류, 전체 탄수화물, 칼로리를 먼저 확인하고 개인 혈당 반응을 같이 봐야 합니다." },
     { question: "당류 0g이면 무조건 안전한가", answer: "그렇지는 않습니다. 당류가 낮아도 칼로리나 전체 탄수화물이 높을 수 있어 함께 봐야 합니다." },
-    { question: "가장 가벼운 후보는 무엇인가", answer: "ProteinLab DB 기준으로는 뉴케어 올프로틴 워터가 가장 가볍고, 셀렉스 프로핏과 테이크핏 맥스도 저당형 후보로 보기 좋습니다. 신제품 중에서는 셀렉스 당솔브가 당류 1g 미만으로 가장 낮습니다." },
+    { question: "가장 가벼운 후보는 무엇인가", answer: "ProteinLab DB 기준으로는 뉴케어 올프로틴 워터가 가장 가볍고, 셀렉스 프로핏과 테이크핏 맥스도 저당형 후보로 보기 좋습니다." },
   ],
   relatedGuides: [
     { title: "셀렉스 vs 하이뮨 비교", href: "/guides/product-selection-comparison/selex-vs-himune", description: "브랜드 대표 RTD의 당류·칼로리 차이를 같이 봅니다." },
-    { title: "셀렉스 제품 종류 전체 정리", href: "/guides/product-selection-comparison/selexs-lineup", description: "당솔브를 포함한 셀렉스 라인업 전체를 확인합니다." },
     commonRelated[1],
+    commonRelated[0],
   ],
   purchaseLinks: [
     { label: "셀렉스 프로핏 보기", slug: sellex.slug },
     { label: "테이크핏 맥스 보기", slug: takefitMax.slug },
     { label: "뉴케어 올프로틴 워터 보기", slug: newcareWater.slug },
-    { label: "셀렉스 당솔브 (오곡맛) 보기", slug: sellexDangsolveFivegrain.slug },
   ],
 };
 proteinDrinkForDiabetesConfig.jsonLd = [articleJsonLd(proteinDrinkForDiabetesConfig), faqJsonLd(proteinDrinkForDiabetesConfig)];
@@ -823,7 +821,7 @@ export const selexsLineupConfig: ComparePageConfig = {
   readingTime: "5분 읽기",
   updatedAt: "2026-08-26",
   methodologyNote: "ProteinLab DB RTD 기준",
-  intro: "셀렉스는 이름이 비슷해서 헷갈리지만 실제로는 운동 보충형, 워터형, 락토프리형, 혈당 관리형, 일반 영양보충형으로 역할이 꽤 다릅니다. ProteinLab DB에 잡힌 RTD 라인업만 기준으로 정리해도 어떤 제품이 본인 목적에 맞는지 빠르게 갈립니다.",
+  intro: "셀렉스는 이름이 비슷해서 헷갈리지만 실제로는 운동 보충형, 워터형, 락토프리형, 저당형, 일반 영양보충형으로 역할이 꽤 다릅니다. ProteinLab DB에 잡힌 RTD 라인업만 기준으로 정리해도 어떤 제품이 본인 목적에 맞는지 빠르게 갈립니다.",
   summary: [
     "운동 후 저칼로리 보충은 프로핏 웨이프로틴과 프로핏이 가장 직관적입니다.",
     "가볍고 상큼하게 마시려면 웨이프로핏, 우유 부담을 줄이고 싶다면 락토프리 라인이 먼저입니다.",
@@ -838,7 +836,7 @@ export const selexsLineupConfig: ComparePageConfig = {
     { label: "칼로리", values: [`${sellexProfitSports.calories}kcal`, `${sellexAmericano.calories}kcal`, `${sellexLactoseFree.calories}kcal`, `${sellexLowsugar.calories}kcal`, `${sellexDangsolveFivegrain.calories}kcal`] },
     { label: "당류", values: [`${sellexProfitSports.sugar}g`, `${sellexAmericano.sugar}g`, `${sellexLactoseFree.sugar}g`, `${sellexLowsugar.sugar}g`, `${sellexDangsolveFivegrain.sugar}g`] },
     { label: "특징", values: ["WPI 20g·운동 보충형", "워터형·깔끔한 목넘김", "락토프리 표기", "일반 영양보완형", "오곡맛·당류 1g 미만"] },
-    { label: "추천 목적", values: ["운동 후·다이어트", "가벼운 보충·커피 대체", "유당 부담 낮추기", "일상 보충", "혈당 신경 쓰일 때"] },
+    { label: "추천 목적", values: ["운동 후·다이어트", "가벼운 보충·커피 대체", "유당 부담 낮추기", "일상 보충", "당류 최소화"] },
   ]),
   sections: [
     {
@@ -847,7 +845,7 @@ export const selexsLineupConfig: ComparePageConfig = {
         { title: "프로핏 웨이프로틴", body: "330mL에 단백질 20g, 99kcal라 운동 후 보충용으로 가장 선명합니다. 셀렉스 안에서 가장 스포츠형 메시지가 강한 라인입니다." },
         { title: "프로틴 웨이프로핏", body: "아메리카노와 복숭아 아이스티처럼 워터형 감각이 강합니다. 90kcal 전후로 가볍고, 단백질 음료 특유의 밀크감을 싫어하는 사람에게 잘 맞습니다." },
         { title: "프로틴 락토프리·로우슈거", body: "이 라인은 운동 보충보다 일상 영양보완 관점이 더 강합니다. 단백질 총량은 낮지만 속 부담이나 일반식 보완 맥락에서는 여전히 의미가 있습니다." },
-        { title: "프로틴 당솔브", body: "190mL에 단백질 14g, 150kcal, 당류 1g 미만으로 로우슈거보다도 당 관리에 더 초점을 맞춘 신규 라인입니다. 오곡맛·초당옥수수맛 2종으로 나왔습니다." },
+        { title: "프로틴 당솔브", body: "190mL에 단백질 14g, 150kcal, 당류 1g 미만으로 로우슈거보다도 당류를 더 낮춘 신규 라인입니다. 오곡맛·초당옥수수맛 2종으로 나왔습니다." },
       ],
     },
     {
@@ -856,7 +854,7 @@ export const selexsLineupConfig: ComparePageConfig = {
         { title: "운동 후 고단백", body: "프로핏 웨이프로틴이 1순위입니다. 20g, 99kcal, 당류 0g이라 목적이 가장 분명합니다." },
         { title: "출근길·외출 중 간편하게", body: "웨이프로핏 아메리카노나 복숭아 아이스티가 편합니다. 단백질은 20g으로 유지하면서 음용감이 훨씬 가볍습니다." },
         { title: "유당 부담이 걱정될 때", body: "프로틴 락토프리부터 보는 편이 안전합니다. 셀렉스 안에서도 일반 프로핏보다 우선순위가 올라갑니다." },
-        { title: "당류를 최대한 줄이고 싶을 때", body: "프로틴 당솔브가 가장 확실합니다. 당류 1g 미만이면서 단백질 14g은 유지해 혈당이 신경 쓰이는 상황에서 선택지가 됩니다." },
+        { title: "당류를 최대한 줄이고 싶을 때", body: "프로틴 당솔브가 가장 확실합니다. 당류 1g 미만이면서 단백질 14g은 유지해 당류를 우선 낮추고 싶은 상황에서 선택지가 됩니다." },
       ],
     },
     {
@@ -864,7 +862,7 @@ export const selexsLineupConfig: ComparePageConfig = {
       items: [
         { title: "이름만 보고 전부 운동용으로 생각하기 쉽다", body: "셀렉스는 같은 브랜드 안에서도 스포츠형과 일반 영양보완형이 섞여 있습니다. 제품명보다 단백질 g와 칼로리를 같이 봐야 합니다." },
         { title: "워터형과 밀크형은 체감이 완전히 다르다", body: "웨이프로핏은 밀크형 RTD와 다르게 깔끔한 음용감이 강합니다. 맛 취향이 갈리면 영양 수치보다 이 차이가 더 크게 느껴집니다." },
-        { title: "로우슈거와 당솔브는 이름이 비슷해도 다르다", body: "둘 다 당류를 낮춘 라인이지만 당솔브가 더 최근에 나온 제품으로 당류 수치가 더 낮습니다. 당 관리가 우선이면 당솔브부터 확인하는 편이 정확합니다." },
+        { title: "로우슈거와 당솔브는 이름이 비슷해도 다르다", body: "둘 다 당류를 낮춘 라인이지만 당솔브가 더 최근에 나온 제품으로 당류 수치가 더 낮습니다. 당류를 우선으로 보면 당솔브부터 확인하는 편이 정확합니다." },
         { title: "분말형·스틱형은 별도 카테고리로 보는 편이 맞다", body: "이 페이지는 ProteinLab DB에 잡힌 RTD 중심 정리입니다. 코어프로틴 같은 분말·스틱형은 음용 맥락이 달라 따로 비교하는 편이 정확합니다." },
       ],
     },
@@ -878,7 +876,6 @@ export const selexsLineupConfig: ComparePageConfig = {
   relatedGuides: [
     { title: "셀렉스 vs 하이뮨 비교", href: "/guides/product-selection-comparison/selex-vs-himune", description: "셀렉스를 다른 대표 브랜드와 직접 비교해봅니다." },
     { title: "셀렉스 vs 테이크핏 vs 하이뮨", href: "/guides/product-selection-comparison/selex-vs-takefit-vs-himune", description: "대표 브랜드 3개를 한 번에 비교합니다." },
-    { title: "당뇨·혈당 관리용 단백질 음료", href: "/guides/product-selection-comparison/protein-drink-for-diabetes", description: "당류를 낮춘 단백질 음료를 혈당 관리 관점에서 정리합니다." },
     commonRelated[0],
   ],
   purchaseLinks: [
