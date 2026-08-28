@@ -157,7 +157,7 @@ export default function DanbaekhaniProteinShakePage() {
                 플라이밀과 바로 비교 →
               </Link>
               <Link
-                href="/guides/product-selection-comparison/shakebaby-protein-shake"
+                href="/guides/product-selection-comparison/shakebaby-vs-danbaekhani"
                 className="inline-flex items-center justify-center rounded-lg border border-[#d9e7dc] px-5 py-3 text-sm font-semibold text-[#24543d] transition-colors hover:bg-[#eef7f1]"
               >
                 쉐이크베이비와 비교 →

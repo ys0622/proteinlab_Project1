@@ -154,7 +154,7 @@ export default function ShakebabyProteinShakePage() {
           <section className="rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
             <div className="flex flex-wrap gap-3">
               <Link
-                href="/guides/product-selection-comparison/danbaekhani-protein-shake"
+                href="/guides/product-selection-comparison/shakebaby-vs-danbaekhani"
                 className="inline-flex items-center justify-center rounded-lg border border-[#d9e7dc] px-5 py-3 text-sm font-semibold text-[#24543d] transition-colors hover:bg-[#eef7f1]"
               >
                 단백하니와 바로 비교 →
