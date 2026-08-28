@@ -411,7 +411,7 @@ export const convenienceProteinBarConfig: CategoryGuideConfig = {
   keywords: ["편의점 단백질 바", "편의점 프로틴바", "CU 단백질 바", "GS25 단백질 바"],
   badge: "편의점 바",
   readingTime: "4분 읽기",
-  updatedAt: "2026-03-24",
+  updatedAt: "2026-08-26",
   methodologyNote: "ProteinLab DB + 기존 편의점 유통 가이드 기준 · 매장별 입점은 상이할 수 있음",
   intro:
     "지금 당장 바 하나를 사야 할 때는 온라인 랭킹보다 편의점 접근성이 더 중요합니다. 이 페이지는 온라인 전용 제품을 빼고, 실제로 편의점에서 볼 가능성이 높은 단백질 바만 따로 골라 정리한 버전입니다.",
@@ -549,7 +549,7 @@ export const dietProteinBarConfig: CategoryGuideConfig = {
   keywords: ["다이어트 단백질 바", "저당 단백질 바", "저칼로리 프로틴바", "다이어트 프로틴바"],
   badge: "다이어트 바",
   readingTime: "5분 읽기",
-  updatedAt: "2026-03-24",
+  updatedAt: "2026-08-26",
   methodologyNote: "ProteinLab DB 필터 · 당류 5g 이하 + 칼로리 200kcal 이하 + 단백질 15g 이상",
   intro:
     "다이어트용 단백질 바는 단순히 가벼운 바가 아니라, 허기를 눌러 주면서도 칼로리 부담이 과하지 않은 제품이어야 합니다. 그래서 이번 리스트는 ‘단백질이 높다’보다 ‘계속 먹을 수 있는 조합인가’에 더 초점을 맞췄습니다.",
