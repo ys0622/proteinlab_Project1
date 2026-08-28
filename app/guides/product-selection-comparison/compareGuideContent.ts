@@ -3,6 +3,7 @@ import { formatCalories100, formatDensity, getDrinkProduct } from "./productComp
 import { formatProductLabel } from "../../lib/productLabel";
 
 const sellex = getDrinkProduct("sellex-profit-milk-vanilla-250");
+const sellexDangsolveFivegrain = getDrinkProduct("sellex-protein-dangsolve-fivegrain-190");
 const hymune = getDrinkProduct("hymune-balance-active-deepchoco-250");
 const takefitMax = getDrinkProduct("takefit-max-choco-250");
 const takefitMonster = getDrinkProduct("takefit-monster-strawberry-350");
@@ -596,7 +597,7 @@ export const doctoruVsTakefitMonsterConfig: ComparePageConfig = {
   keywords: ["닥터유 40g 테이크핏 비교", "닥터유PRO vs 테이크핏 몬스터", "고단백 단백질 음료"],
   badge: "고단백 2자 비교",
   readingTime: "4분 읽기",
-  updatedAt: "2026-03-24",
+  updatedAt: "2026-08-26",
   methodologyNote: "ProteinLab DB 350mL 고단백 RTD 기준",
   intro: "둘 다 350mL 한 병에 40g 전후 단백질을 담았지만, 실제 체감은 꽤 다릅니다. 단순히 3g 차이만 볼 게 아니라 맛, 칼로리, 지방, 포지셔닝까지 같이 봐야 선택이 쉬워집니다.",
   summary: [
@@ -639,7 +640,7 @@ export const doctoruVsTakefitMonsterConfig: ComparePageConfig = {
       items: [
         { title: "한 병을 끝까지 마시기 쉬운 쪽", body: "진한 초코형을 좋아하면 닥터유가 더 편할 수 있고, 깔끔한 보충형을 원하면 테이크핏 쪽이 부담이 덜합니다." },
         { title: "체중 관리 병행 여부", body: "같은 고단백이라도 닥터유 40g은 지방과 칼로리가 더 높아 감량기에는 우선순위가 내려갑니다." },
-        { title: "다음 단계 비교로 넘어갈 때", body: "둘만으로 결론이 안 나면 뉴케어 41g까지 포함한 3종 비교로 올라가 보는 흐름이 가장 자연스럽습니다." },
+        { title: "다음 단계 비교로 넘어갈 때", body: "둘만으로 결론이 안 나면 뉴케어 41g, 나아가 닥터유 62g과 테이크핏 익스트림까지 포함한 초고단백 비교로 올라가 보는 흐름이 가장 자연스럽습니다." },
       ],
     },
   ],
@@ -664,25 +665,25 @@ export const proteinDrinkForDiabetesConfig: ComparePageConfig = {
   slug: "protein-drink-for-diabetes",
   title: "당뇨 있을 때 단백질 음료 마셔도 될까",
   description: "당뇨가 있어도 단백질 음료를 마실 수 있는지, ProteinLab DB 기준으로 당류·칼로리·탄수화물 관점에서 선택 기준과 후보 제품을 정리했습니다.",
-  keywords: ["당뇨 단백질 음료", "당뇨 단백질 보충", "혈당 단백질 음료"],
+  keywords: ["당뇨 단백질 음료", "당뇨 단백질 보충", "혈당 단백질 음료", "셀렉스 당솔브"],
   badge: "문제 해결",
   readingTime: "5분 읽기",
-  updatedAt: "2026-03-24",
+  updatedAt: "2026-08-26",
   methodologyNote: "ProteinLab DB 저당·저칼로리 RTD 기준",
   intro: "당뇨가 있어도 단백질 음료를 무조건 피할 필요는 없습니다. 다만 단백질 g보다 먼저 당류, 전체 탄수화물, 칼로리를 봐야 하고, 같은 브랜드라도 맛에 따라 차이가 커서 대표 제품 기준으로 좁혀 보는 편이 안전합니다.",
   summary: [
     "당뇨가 있어도 단백질 음료를 마실 수 있습니다. 다만 당류·칼로리 확인이 먼저입니다.",
     "대표적으로는 셀렉스 프로핏, 테이크핏 맥스, 뉴케어 올프로틴 워터처럼 당류가 낮은 제품이 유리합니다.",
-    "당류 5g 이상이거나 단맛이 강한 제품은 우선순위를 낮추는 편이 안전합니다.",
+    "신제품 중에서는 셀렉스 당솔브가 당류 1g 미만으로 나와 이 목적에 가장 정면으로 맞는 제품입니다.",
   ],
   comparisonTitle: "당뇨 고려 추천 제품",
-  comparisonColumns: ["셀렉스 프로핏", "테이크핏 맥스", "뉴케어 올프로틴 워터", "테이크핏 몬스터"],
+  comparisonColumns: ["셀렉스 프로핏", "테이크핏 맥스", "뉴케어 올프로틴 워터", "테이크핏 몬스터", "셀렉스 당솔브"],
   comparisonRows: buildComparisonRows([
-    { label: "단백질", values: [`${sellex.proteinPerServing}g`, `${takefitMax.proteinPerServing}g`, `${newcareWater.proteinPerServing}g`, `${takefitMonster.proteinPerServing}g`] },
-    { label: "당류", values: [`${sellex.sugar}g`, `${takefitMax.sugar}g`, `${newcareWater.sugar}g`, `${takefitMonster.sugar}g`] },
-    { label: "칼로리", values: [`${sellex.calories}kcal`, `${takefitMax.calories}kcal`, `${newcareWater.calories}kcal`, `${takefitMonster.calories}kcal`] },
-    { label: "탄수화물", values: ["4g", "1g", "0g", "1.3g"] },
-    { label: "해석", values: ["무난한 저당형", "고단백 저당형", "가장 가벼운 워터형", "고단백이지만 열량 높음"] },
+    { label: "단백질", values: [`${sellex.proteinPerServing}g`, `${takefitMax.proteinPerServing}g`, `${newcareWater.proteinPerServing}g`, `${takefitMonster.proteinPerServing}g`, `${sellexDangsolveFivegrain.proteinPerServing}g`] },
+    { label: "당류", values: [`${sellex.sugar}g`, `${takefitMax.sugar}g`, `${newcareWater.sugar}g`, `${takefitMonster.sugar}g`, `${sellexDangsolveFivegrain.sugar}g`] },
+    { label: "칼로리", values: [`${sellex.calories}kcal`, `${takefitMax.calories}kcal`, `${newcareWater.calories}kcal`, `${takefitMonster.calories}kcal`, `${sellexDangsolveFivegrain.calories}kcal`] },
+    { label: "탄수화물", values: ["4g", "1g", "0g", "1.3g", "-"] },
+    { label: "해석", values: ["무난한 저당형", "고단백 저당형", "가장 가벼운 워터형", "고단백이지만 열량 높음", "당류 1g 미만·신제품"] },
   ]),
   sections: [
     {
@@ -715,23 +716,25 @@ export const proteinDrinkForDiabetesConfig: ComparePageConfig = {
         { title: "대표 제품 먼저 기억하기", body: "셀렉스 프로핏, 테이크핏 맥스, 뉴케어 올프로틴 워터처럼 당류가 낮은 대표 SKU 몇 개를 먼저 기억해 두는 방식이 가장 실용적입니다." },
         { title: "맛 SKU를 항상 다시 확인", body: "같은 브랜드라도 딸기, 바나나, 쿠키앤크림처럼 맛에 따라 당류가 확 올라갈 수 있습니다. 브랜드보다 SKU 확인이 먼저입니다." },
         { title: "워터형도 대안이 됩니다", body: "밀크형이 부담스럽다면 워터형이 더 나을 수 있습니다. 뉴케어 올프로틴 워터는 이 관점에서 좋은 비교 기준이 됩니다." },
+        { title: "당류를 최우선으로 낮추고 싶다면 신제품도 확인", body: "셀렉스 당솔브는 오곡맛·초당옥수수맛 모두 당류 1g 미만으로 나온 신제품입니다. 기존 로우슈거보다도 당류가 더 낮아 이 목적에서는 먼저 확인할 가치가 있습니다." },
       ],
     },
   ],
   faq: [
     { question: "당뇨가 있어도 단백질 음료를 마셔도 되나", answer: "대체로 가능합니다. 다만 당류, 전체 탄수화물, 칼로리를 먼저 확인하고 개인 혈당 반응을 같이 봐야 합니다." },
     { question: "당류 0g이면 무조건 안전한가", answer: "그렇지는 않습니다. 당류가 낮아도 칼로리나 전체 탄수화물이 높을 수 있어 함께 봐야 합니다." },
-    { question: "가장 가벼운 후보는 무엇인가", answer: "ProteinLab DB 기준으로는 뉴케어 올프로틴 워터가 가장 가볍고, 셀렉스 프로핏과 테이크핏 맥스도 저당형 후보로 보기 좋습니다." },
+    { question: "가장 가벼운 후보는 무엇인가", answer: "ProteinLab DB 기준으로는 뉴케어 올프로틴 워터가 가장 가볍고, 셀렉스 프로핏과 테이크핏 맥스도 저당형 후보로 보기 좋습니다. 신제품 중에서는 셀렉스 당솔브가 당류 1g 미만으로 가장 낮습니다." },
   ],
   relatedGuides: [
     { title: "셀렉스 vs 하이뮨 비교", href: "/guides/product-selection-comparison/selex-vs-himune", description: "브랜드 대표 RTD의 당류·칼로리 차이를 같이 봅니다." },
+    { title: "셀렉스 제품 종류 전체 정리", href: "/guides/product-selection-comparison/selexs-lineup", description: "당솔브를 포함한 셀렉스 라인업 전체를 확인합니다." },
     commonRelated[1],
-    commonRelated[0],
   ],
   purchaseLinks: [
     { label: "셀렉스 프로핏 보기", slug: sellex.slug },
     { label: "테이크핏 맥스 보기", slug: takefitMax.slug },
     { label: "뉴케어 올프로틴 워터 보기", slug: newcareWater.slug },
+    { label: "셀렉스 당솔브 (오곡맛) 보기", slug: sellexDangsolveFivegrain.slug },
   ],
 };
 proteinDrinkForDiabetesConfig.jsonLd = [articleJsonLd(proteinDrinkForDiabetesConfig), faqJsonLd(proteinDrinkForDiabetesConfig)];
@@ -807,7 +810,6 @@ proteinDrinkBeginnersGuideConfig.jsonLd = [articleJsonLd(proteinDrinkBeginnersGu
 const sellexProfitSports = getDrinkProduct("sellex-profit-sports-choco-330");
 const sellexPeach = getDrinkProduct("sellex-profit-peach-icedtea-330");
 const sellexLowsugar = getDrinkProduct("sellex-protein-lowsugar-190");
-const sellexDangsolveFivegrain = getDrinkProduct("sellex-protein-dangsolve-fivegrain-190");
 const dryouChoco = getDrinkProduct("dryou-protein-drink-choco-250");
 const dryouBanana = getDrinkProduct("dryou-protein-drink-banana-250");
 const takefitMonsterChocobanana = getDrinkProduct("takefit-monster-chocobanana-350");
@@ -2213,7 +2215,7 @@ export const takefitVsHimuneConfig: ComparePageConfig = {
   keywords: ["테이크핏 하이뮨 비교", "테이크핏 vs 하이뮨", "테이크핏 하이뮨 차이"],
   badge: "브랜드 비교",
   readingTime: "4분 읽기",
-  updatedAt: "2026-03-24",
+  updatedAt: "2026-08-26",
   methodologyNote: "ProteinLab DB 대표 RTD 기준",
   intro: "테이크핏과 하이뮨은 모두 편의점에서 자주 보이지만 결은 꽤 다릅니다. 테이크핏 맥스는 저당·고밀도 쪽이고, 하이뮨 액티브는 건강관리형 일상 RTD 쪽에 더 가깝습니다.",
   summary: [
@@ -2246,7 +2248,7 @@ export const takefitVsHimuneConfig: ComparePageConfig = {
       items: [
         { title: "당·칼로리 관리", body: "테이크핏 맥스가 낫습니다. 저당·고밀도라 다이어트와 운동 병행에 더 잘 맞습니다." },
         { title: "소화 부담과 일상 루틴", body: "하이뮨 쪽이 더 편하게 느껴질 수 있습니다. 건강관리형 이미지와 맛 폭도 강점입니다." },
-        { title: "고단백 집중", body: "이 경우에는 맥스가 아니라 테이크핏 몬스터까지 같이 보는 편이 맞습니다." },
+        { title: "고단백 집중", body: "이 경우에는 맥스가 아니라 테이크핏 몬스터, 더 나아가 익스트림까지 같이 보는 편이 맞습니다." },
       ],
     },
     {
@@ -2269,12 +2271,12 @@ export const takefitVsHimuneConfig: ComparePageConfig = {
   faq: [
     { question: "다이어트 중이면 어느 쪽이 낫나", answer: "ProteinLab DB 대표 SKU 기준으로는 테이크핏 맥스가 더 유리합니다. 칼로리와 당류가 더 낮고 단백질 밀도는 더 높습니다." },
     { question: "하이뮨은 왜 계속 비교 대상이 되나", answer: "수치만이 아니라 산양유와 건강관리형 이미지가 강해서 일상형 RTD를 찾는 사용자에게 계속 선택지로 올라오기 때문입니다." },
-    { question: "고단백까지 원하면 무엇을 봐야 하나", answer: "테이크핏 안에서는 맥스보다 몬스터를 같이 봐야 합니다. 하이뮨과는 결이 달라집니다." },
+    { question: "고단백까지 원하면 무엇을 봐야 하나", answer: "테이크핏 안에서는 맥스보다 몬스터, 익스트림을 같이 봐야 합니다. 하이뮨 쪽은 울트라가 신규 초고단백 라인입니다." },
   ],
   relatedGuides: [
     { title: "셀렉스 vs 테이크핏 vs 하이뮨", href: "/guides/product-selection-comparison/selex-vs-takefit-vs-himune", description: "대표 3파전 비교 페이지입니다." },
-    { title: "테이크핏 제품 종류 전체 정리", href: "/guides/product-selection-comparison/takefit-lineup", description: "테이크핏 맥스·몬스터·프로 차이를 따로 봅니다." },
-    { title: "하이뮨 제품 종류 전체 정리", href: "/guides/product-selection-comparison/himune-lineup", description: "하이뮨 라인업 차이를 따로 봅니다." },
+    { title: "테이크핏 제품 종류 전체 정리", href: "/guides/product-selection-comparison/takefit-lineup", description: "테이크핏 맥스·몬스터·익스트림 차이를 따로 봅니다." },
+    { title: "하이뮨 제품 종류 전체 정리", href: "/guides/product-selection-comparison/himune-lineup", description: "하이뮨 액티브·울트라 라인업 차이를 따로 봅니다." },
   ],
   purchaseLinks: [
     { label: "테이크핏 맥스 보기", slug: takefitMax.slug },
@@ -2290,7 +2292,7 @@ export const danbaekVsSelexsConfig: ComparePageConfig = {
   keywords: ["더단백 셀렉스 비교", "더단백 vs 셀렉스", "빙그레 단백질 매일유업 단백질"],
   badge: "브랜드 비교",
   readingTime: "4분 읽기",
-  updatedAt: "2026-03-24",
+  updatedAt: "2026-08-26",
   methodologyNote: "ProteinLab DB 대표 RTD 기준",
   intro: "더단백과 셀렉스는 둘 다 20g대 대표 RTD지만 결이 다릅니다. 셀렉스는 저칼로리와 대중성이 강점이고, 더단백은 저나트륨과 깔끔한 설계가 가장 먼저 눈에 들어옵니다.",
   summary: [
@@ -2331,7 +2333,7 @@ export const danbaekVsSelexsConfig: ComparePageConfig = {
       items: [
         { title: "숫자 우선이면 더단백", body: "저염, 저당, 낮은 지방처럼 라벨에서 바로 보이는 장점은 더단백 쪽이 더 분명합니다." },
         { title: "브랜드 친숙함과 스포츠 이미지면 셀렉스", body: "셀렉스는 유통 인지도와 운동 보충형 이미지가 강해 첫 선택에서 심리적 장벽이 낮습니다." },
-        { title: "한 번에 결론이 안 나면 라인업으로 올라가기", body: "더단백은 저나트륨 축, 셀렉스는 라인 다양성 축이 강합니다. 그래서 브랜드 비교 뒤에는 라인업 페이지로 이어보는 편이 좋습니다." },
+        { title: "한 번에 결론이 안 나면 라인업으로 올라가기", body: "더단백은 밸런스 라인까지 더해 저나트륨과 식사 보완을 함께 커버하고, 셀렉스는 당솔브 라인이 추가되며 라인 다양성이 더 넓어졌습니다. 그래서 브랜드 비교 뒤에는 라인업 페이지로 이어보는 편이 좋습니다." },
       ],
     },
   ],
@@ -2359,7 +2361,7 @@ export const danbaekVsHimuneConfig: ComparePageConfig = {
   keywords: ["더단백 하이뮨 비교", "더단백 vs 하이뮨 차이"],
   badge: "브랜드 비교",
   readingTime: "4분 읽기",
-  updatedAt: "2026-03-24",
+  updatedAt: "2026-08-26",
   methodologyNote: "ProteinLab DB 대표 RTD 기준",
   intro: "더단백과 하이뮨은 둘 다 일상형 단백질 음료로 자주 비교되지만 숫자는 꽤 다릅니다. 더단백은 저나트륨·저칼로리 설계가 강하고, 하이뮨은 산양유 건강관리형 이미지가 강합니다.",
   summary: [
@@ -2405,7 +2407,7 @@ export const danbaekVsHimuneConfig: ComparePageConfig = {
   ],
   faq: [
     { question: "숫자만 보면 어느 쪽이 더 좋은가", answer: "대표 초코 기준으로는 더단백이 더 낮은 칼로리, 당류, 지방, 나트륨을 보여줍니다." },
-    { question: "하이뮨은 왜 여전히 선택할 이유가 있나", answer: "산양유와 건강관리형 브랜드 이미지, 다양한 맛, 중장년 친화적 포지셔닝 때문입니다." },
+    { question: "하이뮨은 왜 여전히 선택할 이유가 있나", answer: "산양유와 건강관리형 브랜드 이미지, 다양한 맛, 중장년 친화적 포지셔닝, 그리고 최근 추가된 울트라 초고단백 라인 때문입니다." },
     { question: "다이어트 중이면 어느 쪽이 낫나", answer: "일반적으로는 더단백이 더 유리합니다. 다만 개인 취향과 포만감 선호는 같이 보아야 합니다." },
   ],
   relatedGuides: [

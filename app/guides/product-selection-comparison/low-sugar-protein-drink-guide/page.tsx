@@ -39,13 +39,20 @@ const chartItems = [
   { label: "고단백 RTD", width: "61%", note: "제품별 당류와 칼로리 차이가 큼" },
 ];
 
+const newSugarFreeItems = [
+  { slug: "labnosh-protein-salted-caramel-350", label: "랩노쉬 프로틴 드링크 (솔티드카라멜)", protein: "27g", sugar: "0g", calories: "130kcal" },
+  { slug: "labnosh-protein-sweet-corn-350", label: "랩노쉬 프로틴 드링크 (초당옥수수)", protein: "27g", sugar: "0g", calories: "125kcal" },
+  { slug: "labnosh-protein-perfect-melon-350", label: "랩노쉬 프로틴 드링크 퍼펙트 (메론)", protein: "27g", sugar: "0g", calories: "130kcal" },
+  { slug: "labnosh-protein-perfect-cookie-cream-350", label: "랩노쉬 프로틴 드링크 퍼펙트 (쿠키앤크림)", protein: "27g", sugar: "0g", calories: "135kcal" },
+];
+
 export default function LowSugarProteinDrinkGuidePage() {
   const jsonLd = buildGuideJsonLd({
     title: "저당 단백질 음료 추천 기준 | 당류 낮은 RTD 비교",
     description: "저당 단백질 음료를 고를 때 당류 컷, 단백질 함량, 칼로리, 단백질 밀도를 어떤 순서로 확인해야 하는지 정리합니다.",
     url: "https://proteinlab.kr/guides/product-selection-comparison/low-sugar-protein-drink-guide",
     datePublished: "2026-03-01",
-    dateModified: "2026-05-29",
+    dateModified: "2026-08-26",
   });
 
   return (
@@ -69,7 +76,7 @@ export default function LowSugarProteinDrinkGuidePage() {
             <span className="rounded-md bg-[#eaf0f6] px-2 py-0.5 text-[11px] font-semibold tracking-wide text-[#4a6178]">
               TRACK B
             </span>
-            <span className="ml-2 text-[11px] font-medium text-[var(--foreground-muted)]">업데이트 2026-07-15</span>
+            <span className="ml-2 text-[11px] font-medium text-[var(--foreground-muted)]">업데이트 2026-08-26</span>
           </div>
           <h1 className="mt-3 text-2xl font-bold leading-tight text-[#16412D] md:text-3xl">
             저당 단백질 음료는 당류 컷부터 정해야 합니다
@@ -151,6 +158,49 @@ export default function LowSugarProteinDrinkGuidePage() {
                   </div>
                 </div>
               ))}
+            </div>
+          </section>
+
+          <section className="rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
+            <h2 className="text-xl font-bold text-[var(--foreground)]">최근 늘어난 당류 0g 신제품</h2>
+            <p className="mt-3 text-sm leading-6 text-[var(--foreground-muted)]">
+              27g대 단백질을 유지하면서 당류 0g으로 나온 신제품이 늘고 있습니다. 랩노쉬가 솔티드카라멜, 초당옥수수, 퍼펙트 멜론, 퍼펙트 쿠키앤크림 4종을 당류 0g으로 새로 내면서 저당 RTD 안에서도 맛 선택 폭이 넓어졌습니다.
+            </p>
+            <div className="mt-5 overflow-x-auto">
+              <table className="min-w-full border-collapse text-left text-sm">
+                <thead>
+                  <tr className="border-b border-[#e8e6e3] text-[var(--foreground)]">
+                    <th className="px-3 py-3 font-semibold">제품</th>
+                    <th className="px-3 py-3 font-semibold">단백질</th>
+                    <th className="px-3 py-3 font-semibold">당류</th>
+                    <th className="px-3 py-3 font-semibold">칼로리</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {newSugarFreeItems.map((item) => (
+                    <tr key={item.slug} className="border-b border-[#f0eeeb] last:border-b-0">
+                      <td className="px-3 py-3">
+                        <TrackedLink
+                          href={`/product/${item.slug}`}
+                          trackingLabel={`${item.label} 상세`}
+                          trackingSection="low_sugar_new_products"
+                          trackingPageType="guide"
+                          contentId="plv3:landing:guide:low-sugar-protein-drink-guide"
+                          productId={item.slug}
+                          linkPosition="mid_content"
+                          ctaType="product_detail"
+                          className="font-medium text-[#24543d] hover:underline"
+                        >
+                          {item.label}
+                        </TrackedLink>
+                      </td>
+                      <td className="px-3 py-3 text-[var(--foreground-muted)]">{item.protein}</td>
+                      <td className="px-3 py-3 text-[var(--foreground-muted)]">{item.sugar}</td>
+                      <td className="px-3 py-3 text-[var(--foreground-muted)]">{item.calories}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
             </div>
           </section>
         </div>
