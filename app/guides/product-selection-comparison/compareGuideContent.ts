@@ -102,7 +102,7 @@ export const selexVsHimuneConfig: ComparePageConfig = {
   keywords: ["셀렉스 하이뮨 비교", "셀렉스 vs 하이뮨", "하이뮨 셀렉스 차이", "단백질 음료 비교"],
   badge: "브랜드 비교",
   readingTime: "4분 읽기",
-  updatedAt: "2026-03-24",
+  updatedAt: "2026-08-26",
   methodologyNote: "ProteinLab DB 대표 RTD 250mL 기준",
   intro: "셀렉스와 하이뮨은 둘 다 단백질 20g급 RTD라서 처음 보면 거의 비슷해 보입니다. 하지만 실제로는 운동 후 보충, 일상용 저부담, 맛 선택 폭에서 체감이 갈립니다. ProteinLab DB 기준 대표 제품만 바로 맞붙여 보면 어떤 사람이 어느 쪽을 고르면 되는지 훨씬 빨리 정리됩니다.",
   summary: [
@@ -146,6 +146,7 @@ export const selexVsHimuneConfig: ComparePageConfig = {
         { title: "바나나·딸기 계열을 고를 때", body: "같은 브랜드라도 맛에 따라 당류와 칼로리가 더 올라갈 수 있습니다. 대표 RTD 1종 비교 결과를 전체 라인업 전체에 그대로 적용하면 안 됩니다." },
         { title: "식사대용으로 마실 때", body: "두 제품 모두 기본적으로는 보충용 RTD에 가깝습니다. 포만감과 총열량이 먼저라면 식사보완형 라인을 따로 보는 편이 더 정확합니다." },
         { title: "박스 가격을 중시할 때", body: "실구매가는 프로모션과 묶음 수량에 따라 변동폭이 큽니다. 그래서 이 페이지는 영양 기준 중심으로 먼저 비교하고, 가격은 구매 링크에서 최종 확인하는 흐름이 맞습니다." },
+        { title: "더 높은 단백질을 원할 때", body: "대표 제품끼리는 20g급으로 비슷하지만, 각 브랜드 라인업 안에는 셀렉스 당솔브(저당형)와 하이뮨 울트라(49g 초고단백)처럼 결이 다른 신규 라인도 있습니다. 대표 제품 비교만으로 부족하면 라인업 페이지로 넘어가는 편이 정확합니다." },
       ],
     },
   ],
@@ -157,6 +158,7 @@ export const selexVsHimuneConfig: ComparePageConfig = {
   relatedGuides: [
     commonRelated[0],
     { title: "셀렉스 vs 테이크핏 vs 하이뮨", href: "/guides/product-selection-comparison/selex-vs-takefit-vs-himune", description: "테이크핏까지 포함해 3개 브랜드를 한 번에 비교합니다." },
+    { title: "하이뮨 제품 종류 전체 정리", href: "/guides/product-selection-comparison/himune-lineup", description: "액티브 외에 울트라 등 다른 하이뮨 라인을 확인합니다." },
     commonRelated[1],
   ],
   purchaseLinks: [
@@ -310,7 +312,7 @@ export const selexVsTakefitVsHimuneConfig: ComparePageConfig = {
   keywords: ["셀렉스 테이크핏 하이뮨 비교", "단백질 음료 3종 비교", "셀렉스 vs 테이크핏 vs 하이뮨"],
   badge: "3자 비교",
   readingTime: "5분 읽기",
-  updatedAt: "2026-03-24",
+  updatedAt: "2026-08-26",
   methodologyNote: "ProteinLab DB 대표 20g급 RTD 기준",
   intro: "국내 RTD에서 가장 많이 겹쳐 비교되는 세 브랜드를 대표 20g급 라인으로 맞췄습니다. 단백질 총량은 비슷하지만 밀도, 나트륨, 맛 폭에서 차이가 분명합니다.",
   summary: [
@@ -353,6 +355,7 @@ export const selexVsTakefitVsHimuneConfig: ComparePageConfig = {
         { title: "밀도 우선이면 테이크핏", body: "단백질 총량과 밀도는 테이크핏 맥스가 가장 명확합니다. 운동 보충 목적이 뚜렷하면 가장 후회가 적습니다." },
         { title: "저부담 일상용이면 하이뮨", body: "칼로리, 당류, 나트륨 밸런스가 가볍습니다. 하루 한 병 루틴으로 넣기에는 하이뮨이 가장 무난합니다." },
         { title: "브랜드 안정감이면 셀렉스", body: "운동 후 보충용 이미지, 유통 인지도, 맛 무난함까지 포함하면 셀렉스가 가장 범용적입니다." },
+        { title: "20g급보다 더 높은 함량을 원하면", body: "세 브랜드 모두 최근 초고단백 라인이 추가됐습니다. 셀렉스는 당솔브(저당형), 테이크핏은 익스트림(60g), 하이뮨은 울트라(49g)로 확장돼 20g급 비교로 부족하면 각 라인업 페이지로 넘어가는 편이 좋습니다." },
       ],
     },
   ],
