@@ -149,7 +149,7 @@ export default async function GuideTrackPage({ params }: { params: Promise<{ tra
 
   const shakeBrandArticles =
     section.slug === "product-selection-comparison"
-      ? ["flymill-vs-danbaekhani", "flymill-protein-shake", "danbaekhani-protein-shake", "oliveyoung-protein-shake"]
+      ? ["flymill-vs-danbaekhani", "flymill-protein-shake", "danbaekhani-protein-shake", "shakebaby-protein-shake", "oliveyoung-protein-shake"]
           .map((slug) => articleMap.get(slug))
           .filter((item): item is NonNullable<typeof item> => Boolean(item))
       : [];

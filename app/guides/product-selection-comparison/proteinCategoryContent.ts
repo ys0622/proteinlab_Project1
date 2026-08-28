@@ -228,6 +228,7 @@ export const proteinShakeTop7Config: CategoryGuideConfig = {
       { title: "단백하니 단백질 쉐이크 추천", href: "/guides/product-selection-comparison/danbaekhani-protein-shake", description: "단백하니 시그니처, 초코, 말차 차이를 저당과 칼로리 기준으로 정리한 브랜드 가이드입니다." },
       { title: "플라이밀 vs 단백하니", href: "/guides/product-selection-comparison/flymill-vs-danbaekhani", description: "고단백 우선인지, 더 가벼운 저당 균형형이 더 맞는지 두 인기 브랜드를 바로 비교합니다." },
       { title: "프로티원 단백질 쉐이크 추천", href: "/guides/product-selection-comparison/proteone-protein-shake", description: "초코와 커피맛 중 무엇이 더 가볍고 단백질 밀도가 높은지 브랜드 기준으로 빠르게 볼 수 있습니다." },
+      { title: "쉐이크베이비 단백질 쉐이크 추천", href: "/guides/product-selection-comparison/shakebaby-protein-shake", description: "초코, 딸기, 말차, 곡물, 스윗콘 플레이크 5종을 성분 기준으로 비교한 신규 브랜드 가이드입니다." },
       { title: "랩노쉬 라인업", href: "/guides/product-selection-comparison/labnosh-lineup", description: "슬림쉐이크 중심으로 맛과 목적 차이를 더 자세히 봅니다." },
     ],
   purchaseLinks: shakeTop7.slice(0, 3).map((product) => ({

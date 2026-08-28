@@ -227,6 +227,7 @@ const STATIC_GUIDE_ROUTES: string[] = [
   "/guides/product-selection-comparison/selexs-lineup",
   "/guides/product-selection-comparison/selex-vs-himune",
   "/guides/product-selection-comparison/selex-vs-takefit-vs-himune",
+  "/guides/product-selection-comparison/shakebaby-protein-shake",
   "/guides/product-selection-comparison/takefit-lineup",
   "/guides/product-selection-comparison/takefit-vs-himune",
   "/guides/product-selection-comparison/unsweetened-greek-yogurt-guide",
