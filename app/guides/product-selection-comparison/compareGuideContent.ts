@@ -21,9 +21,14 @@ const sellexLactoseFree = getDrinkProduct("sellex-protein-lactosefree-original-1
 const sellexAmericano = getDrinkProduct("sellex-profit-whey-protein-americano-330");
 const hymuneBalance = getDrinkProduct("hymune-protein-balance-190");
 const rankingRows = [
+  dryou62,
   takefitMonster,
+  takefitExtreme,
+  labnoshMax,
+  getDrinkProduct("labnosh-protein-max-strawberry-400"),
   getDrinkProduct("takefit-monster-goso-350"),
   getDrinkProduct("takefit-monster-chocobanana-350"),
+  getDrinkProduct("hymune-ultra-400"),
   newcare41,
   getDrinkProduct("danbaek-drink-doublechoco-350"),
   getDrinkProduct("dryou-protein-40g-strawberry-350"),
@@ -36,12 +41,6 @@ const rankingRows = [
   getDrinkProduct("7eleven-junghoo-vanilla-protein-330"),
   getDrinkProduct("takefit-max-goso-250"),
   takefitMax,
-  getDrinkProduct("takefit-max-banana-250"),
-  getDrinkProduct("takefit-max-pumpkin-250"),
-  getDrinkProduct("dryou-protein-drink-choco-250"),
-  getDrinkProduct("dryou-protein-drink-banana-250"),
-  getDrinkProduct("solveandgo-protamin-savory-250"),
-  getDrinkProduct("dryou-protein-drink-strawberry-250"),
 ];
 
 function articleJsonLd(config: ComparePageConfig) {
@@ -252,12 +251,12 @@ export const proteinDensityRankingConfig: ComparePageConfig = {
   keywords: ["단백질 밀도", "단백질 음료 가성비", "단백질 음료 효율", "100mL당 단백질"],
   badge: "데이터 랭킹",
   readingTime: "5분 읽기",
-  updatedAt: "2026-04-17",
+  updatedAt: "2026-08-26",
   methodologyNote: "ProteinLab DB 단백질 ÷ 용량 × 100 계산",
   intro: "한 병 기준으로만 보면 190mL 제품과 350mL 제품이 뒤섞여서 실제 효율이 잘 안 보입니다. 그래서 ProteinLab DB 음료 110개를 단백질 ÷ 용량 × 100 방식으로 다시 계산했습니다. 이 순위는 같은 양 대비 단백질이 얼마나 들어 있는지 가장 빠르게 확인하려는 사람에게 특히 유용합니다.",
   summary: [
     "현재 상위권은 40g 이상 고단백 RTD가 거의 장악하고 있습니다.",
-    "테이크핏 몬스터 딸기맛 47g은 13.4g/100mL 수준으로 전체 최상위권이라 운동 보충용 기준이 분명합니다.",
+    "닥터유 62g 말차맛은 13.8g/100mL로 새로 등장한 전체 1위이고, 테이크핏 익스트림과 랩노쉬 맥스도 13g대 상위권에 새로 들어왔습니다.",
     "다만 밀도 1위가 항상 최종 1위는 아니어서 칼로리와 지방까지 같이 봐야 실제 선택이 완성됩니다.",
   ],
   comparisonTitle: "상위 20개 밀도 순위",
@@ -2159,6 +2158,7 @@ export const proteinDrinkByContentConfig: ComparePageConfig = {
         { title: "시장 주류", body: "셀렉스 프로핏, 하이뮨 액티브, 테이크핏 맥스, 더단백 드링크 같은 제품이 여기에 몰려 있습니다." },
         { title: "잘 맞는 사람", body: "일반 운동, 체중 관리, 단백질 음료 입문자에게 가장 무난합니다." },
         { title: "왜 가장 대중적인가", body: "단백질, 칼로리, 음용감이 가장 균형적이기 때문입니다. 편의점 주류 라인도 대부분 이 구간입니다." },
+        { title: "새로 들어온 브랜드도 이 구간부터 시작한다", body: "하림 오늘단백, 오뚜기 데이프로틴처럼 최근 진입한 식품기업 브랜드도 21g대로 시작했습니다. 신규 브랜드일수록 검증된 20g대 구간에 먼저 자리를 잡는 경향이 있습니다." },
       ],
     },
     {
