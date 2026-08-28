@@ -453,7 +453,7 @@ export const proteinDrinkFor50sConfig: ComparePageConfig = {
   keywords: ["50대 단백질 음료", "중장년 단백질 추천", "근감소증 단백질", "시니어 단백질 음료"],
   badge: "연령 맞춤",
   readingTime: "4분 읽기",
-  updatedAt: "2026-03-24",
+  updatedAt: "2026-08-26",
   methodologyNote: "ProteinLab DB 중장년 관점 후보 제품 기준",
   intro: "50대 이후에는 근육량이 서서히 줄기 시작하고, 식사량이나 소화 부담 때문에 단백질을 꾸준히 챙기기 더 어려워집니다. 그래서 단순히 고단백만 보기보다 소화 부담, 당류, 나트륨, 균형영양 성격을 함께 보는 편이 더 현실적입니다.",
   summary: [
@@ -746,7 +746,7 @@ export const proteinDrinkBeginnersGuideConfig: ComparePageConfig = {
   keywords: ["단백질 음료 처음", "단백질 음료 입문", "단백질 음료 뭐 마셔야", "프로틴 음료 뉴비"],
   badge: "입문 가이드",
   readingTime: "5분 읽기",
-  updatedAt: "2026-03-24",
+  updatedAt: "2026-08-26",
   methodologyNote: "ProteinLab DB 입문자용 대표 RTD 기준",
   intro: "종류가 너무 많아서 뭘 골라야 할지 모르겠다면, 처음에는 복잡하게 생각할 필요 없습니다. 단백질 20g 전후, 당류 낮은 제품, 무난한 맛부터 보면 대부분의 실수를 줄일 수 있습니다.",
   summary: [
@@ -784,7 +784,7 @@ export const proteinDrinkBeginnersGuideConfig: ComparePageConfig = {
       title: "다음 단계는 이렇게 가면 됩니다",
       items: [
         { title: "브랜드 비교가 궁금하면", body: "입문 제품을 하나 정한 뒤에는 셀렉스 vs 하이뮨, 셀렉스 vs 테이크핏 vs 하이뮨처럼 브랜드 비교로 넘어가면 됩니다." },
-        { title: "고단백이 궁금해지면", body: "20g급에 익숙해진 뒤 40g 이상 비교로 가는 순서가 가장 자연스럽습니다. 처음부터 초고단백으로 갈 필요는 없습니다." },
+        { title: "고단백이 궁금해지면", body: "20g급에 익숙해진 뒤 40g 이상 비교로 가는 순서가 가장 자연스럽습니다. 최근에는 60g대 초고단백 라인도 나왔지만, 처음부터 그렇게 갈 필요는 없습니다." },
         { title: "맛이 가장 중요하면", body: "입문자 단계에서는 수치보다 끝까지 마실 수 있는 맛이 더 중요할 수 있습니다. 그래서 단품 테스트가 항상 우선입니다." },
       ],
     },
@@ -991,7 +991,7 @@ export const proteinDrinkTasteTipsConfig: ComparePageConfig = {
   keywords: ["단백질 음료 맛없다", "프로틴 음료 맛없어", "단백질 음료 맛있게 먹는 법", "맛있는 단백질 음료 추천"],
   badge: "문제 해결",
   readingTime: "4분 읽기",
-  updatedAt: "2026-03-24",
+  updatedAt: "2026-08-26",
   methodologyNote: "ProteinLab DB 맛 경험 중심 정리",
   intro: "처음 마셨을 때 단백질 음료가 맛없게 느껴지는 건 드문 일이 아닙니다. 대부분은 제품이 완전히 잘못된 게 아니라, 맛 카테고리와 마시는 방식이 본인 취향과 안 맞는 경우가 많습니다.",
   summary: [
