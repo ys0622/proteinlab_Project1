@@ -2993,7 +2993,8 @@
       "bcaaMg": 9000,
       "eaaMg": 19000,
       "arginineMg": 1800
-    }
+    },
+    "coupangUrl": "https://link.coupang.com/a/gaIdNRGs2u"
   },
   {
     "slug": "puretein-choco-330",
@@ -3027,7 +3028,8 @@
       "sodiumMg": 160,
       "cholesterolMg": 15,
       "calciumMg": 685
-    }
+    },
+    "coupangUrl": "https://link.coupang.com/a/gaIdNRGs2u"
   },
   {
     "slug": "puretein-coffee-330",
@@ -3061,7 +3063,8 @@
       "sodiumMg": 185,
       "cholesterolMg": 15,
       "calciumMg": 685
-    }
+    },
+    "coupangUrl": "https://link.coupang.com/a/gaIdNRGs2u"
   },
   {
     "slug": "sellex-profit-peach-icedtea-330",
@@ -5077,7 +5080,8 @@
     },
     "officialUrl": "https://harimmall.com/product/%ED%95%98%EB%A6%BC-%EC%98%A4%EB%8A%98%EB%8B%A8%EB%B0%B1-%EC%B9%B4%EB%9D%BC%EB%A9%9C%EB%9D%BC%EB%96%BC-250ml-15%EA%B0%9C/1501/",
     "needsServingCheck": true,
-    "nutritionBasis": "unknown"
+    "nutritionBasis": "unknown",
+    "coupangUrl": "https://link.coupang.com/a/gaIdNRGs2u"
   },
   {
     "slug": "oneuldanbaek-dolce-latte-250",
@@ -5120,7 +5124,8 @@
     },
     "officialUrl": "https://m.harimmall.com/product/list.html?cate_no=520",
     "needsServingCheck": true,
-    "nutritionBasis": "unknown"
+    "nutritionBasis": "unknown",
+    "coupangUrl": "https://link.coupang.com/a/gaIdNRGs2u"
   },
   {
     "slug": "labnosh-protein-perfect-cookie-cream-350",
@@ -5246,7 +5251,8 @@
       "단백질 밀도 B",
       "다이어트 A",
       "퍼포먼스 C"
-    ]
+    ],
+    "coupangUrl": "https://link.coupang.com/a/gaIdNRGs2u"
   },
   {
     "slug": "ottogi-dayprotein-fivegrain-250",
@@ -5290,7 +5296,8 @@
       "단백질 밀도 B",
       "다이어트 A",
       "퍼포먼스 C"
-    ]
+    ],
+    "coupangUrl": "https://link.coupang.com/a/gaIdNRGs2u"
   },
   {
     "slug": "ottogi-dayprotein-banana-250",
@@ -5334,7 +5341,8 @@
       "단백질 밀도 B",
       "다이어트 A",
       "퍼포먼스 C"
-    ]
+    ],
+    "coupangUrl": "https://link.coupang.com/a/gaIdNRGs2u"
   },
   {
     "slug": "dryou-protein-62g-matcha-450",
@@ -5377,7 +5385,8 @@
       "단백질 밀도 A",
       "다이어트 C",
       "퍼포먼스 A"
-    ]
+    ],
+    "coupangUrl": "https://link.coupang.com/a/gaIdNRGs2u"
   },
   {
     "slug": "ultive-protein-savory-250",
