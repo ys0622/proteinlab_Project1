@@ -23,6 +23,7 @@ import {
   type ProductDetailProps,
 } from "../../data/products";
 import newProductsRaw from "../../data/newProducts.json";
+import tvAdProductsRaw from "../../data/tvAdProducts.json";
 import {
   formatProductBadgeLabel,
   getMetricBadgeAriaLabel,
@@ -55,6 +56,12 @@ interface PageProps {
 }
 
 const NEW_PRODUCT_SLUGS = new Set((newProductsRaw as Array<{ slug: string }>).map((item) => item.slug));
+const TV_AD_PRODUCTS_MAP = new Map(
+  (tvAdProductsRaw as Array<{ slug: string; model: string; year: number; adUrl?: string }>).map((item) => [
+    item.slug,
+    item,
+  ]),
+);
 
 export const dynamicParams = true;
 export const revalidate = 3600;
@@ -390,6 +397,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
 
   const gradeLabels = product.gradeTags ?? [];
   const isNewProduct = NEW_PRODUCT_SLUGS.has(product.slug);
+  const tvAdInfo = TV_AD_PRODUCTS_MAP.get(product.slug);
   const gradeDescs = product.gradeDescriptions ?? ["-", "-", "-"];
   const isBar = product.productType === "bar";
   const isYogurt = product.productType === "yogurt";
@@ -647,7 +655,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
                 {metaLine && (
                   <p className="mt-0.5 text-[12px]" style={{ color: "#8A938B" }}>{metaLine}</p>
                 )}
-                {(isNewProduct || gradeLabels.length > 0) && (
+                {(isNewProduct || Boolean(tvAdInfo) || gradeLabels.length > 0) && (
                   <div className="mt-2 flex flex-wrap gap-1.5">
                     {isNewProduct ? (
                       <span
@@ -655,6 +663,14 @@ export default async function ProductDetailPage({ params }: PageProps) {
                         style={{ background: "#FFF3D8", color: "#8A5A1D" }}
                       >
                         new
+                      </span>
+                    ) : null}
+                    {tvAdInfo ? (
+                      <span
+                        className="rounded-full px-2.5 py-0.5 text-[11px] font-bold"
+                        style={{ background: "#FDECEC", color: "#B3261E" }}
+                      >
+                        📺 TV 광고 {tvAdInfo.year}
                       </span>
                     ) : null}
                     {gradeLabels.map((label) => {
@@ -687,6 +703,17 @@ export default async function ProductDetailPage({ params }: PageProps) {
                       );
                     })}
                   </div>
+                ) : null}
+                {tvAdInfo?.adUrl ? (
+                  <a
+                    href={tvAdInfo.adUrl}
+                    target="_blank"
+                    rel="noreferrer noopener"
+                    className="mt-2 inline-flex items-center gap-1 text-[12px] font-semibold hover:underline"
+                    style={{ color: "#B3261E" }}
+                  >
+                    ▶ {tvAdInfo.model} 광고 영상 보기
+                  </a>
                 ) : null}
               </div>
 

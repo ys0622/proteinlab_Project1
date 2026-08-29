@@ -9,7 +9,10 @@ import type {
   ReactNode,
 } from "react";
 import { productClick, purchaseClick } from "@/lib/analytics";
+import tvAdProductsRaw from "../data/tvAdProducts.json";
 import type { ProductCardProps } from "../data/productTypes";
+
+const TV_AD_SLUGS = new Set((tvAdProductsRaw as Array<{ slug: string }>).map((item) => item.slug));
 import { getProductImageUrl } from "../lib/productImage";
 import {
   getCoupangRedirectHref,
@@ -170,6 +173,7 @@ export default function ProductCard({
   const feedbackMeta = reviewSummary && reviewSummary.reviewCount > 0 ? reviewSummary : null;
   const cardSurfaceBg = "color-mix(in srgb, var(--hero-bg) 64%, white)";
   const tasteAward = awards?.[0];
+  const isTvAdProduct = Boolean(slug && TV_AD_SLUGS.has(slug));
   const tasteAwardStars = getTasteAwardStars(tasteAward?.rating);
 
   useEffect(() => {
@@ -283,6 +287,16 @@ export default function ProductCard({
             <div className="product-card__image h-[118px] w-full max-w-[148px] md:h-[160px] md:max-w-[200px]" />
           )}
         </div>
+
+        {isTvAdProduct ? (
+          <div
+            className="pointer-events-none absolute left-1 top-1 z-10 rounded-full px-1.5 py-0.5 text-[8px] font-bold shadow-sm md:left-2 md:top-2 md:px-2 md:text-[10px]"
+            style={{ background: "#FDECEC", color: "#B3261E", border: "1px solid rgba(179,38,30,0.18)" }}
+            aria-label="TV 광고 중"
+          >
+            📺 TV 광고
+          </div>
+        ) : null}
 
         {tasteAward ? (
           <div

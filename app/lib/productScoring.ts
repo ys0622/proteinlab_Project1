@@ -1,12 +1,35 @@
 import type { ProductDetailProps } from "../data/products";
 import newProductsRaw from "../data/newProducts.json";
+import tvAdProductsRaw from "../data/tvAdProducts.json";
 
 interface NewProductEntry {
   slug: string;
   addedAt: string; // "YYYY-MM-DD"
 }
 
+interface TvAdProductEntry {
+  slug: string;
+  model: string;
+  year: number;
+}
+
 const NEW_PRODUCTS: NewProductEntry[] = newProductsRaw as NewProductEntry[];
+const TV_AD_PRODUCTS: TvAdProductEntry[] = tvAdProductsRaw as TvAdProductEntry[];
+const TV_AD_SLUGS = new Set(TV_AD_PRODUCTS.map((p) => p.slug));
+
+// TV 광고 중인 제품에 주는 고정 보너스 (조회수 20회 수준)
+const TV_AD_BONUS = 200;
+
+/** 현재 TV 광고 중인 제품인지 확인 */
+export function isTvAdProduct(slug: string | undefined): boolean {
+  if (!slug) return false;
+  return TV_AD_SLUGS.has(slug);
+}
+
+/** TV 광고 보너스 — 신제품 감쇠와 달리 광고 기간 동안 고정 */
+export function getTvAdBonus(slug: string | undefined): number {
+  return isTvAdProduct(slug) ? TV_AD_BONUS : 0;
+}
 
 // 신제품 보너스 유효 기간 (일)
 const NEW_PRODUCT_WINDOW_DAYS = 30;
@@ -64,5 +87,8 @@ export function hybridScore(
   // ── 신제품 보너스 ─────────────────────────────────
   const newBonus = getNewProductBonus(product.slug);
 
-  return viewScore + qualityScore + newBonus;
+  // ── TV 광고 보너스 ────────────────────────────────
+  const adBonus = getTvAdBonus(product.slug);
+
+  return viewScore + qualityScore + newBonus + adBonus;
 }
