@@ -826,17 +826,19 @@ export default async function ProductDetailPage({ params }: PageProps) {
           <AffiliateDisclosure />
           {tvAdInfo?.adUrl ? (
             <section
-              className="mb-6 rounded-[20px] border px-5 py-4"
+              className="mb-6 flex flex-col gap-4 rounded-[20px] border px-5 py-4 sm:flex-row sm:items-center"
               style={{ borderColor: "#F1D3D1", background: "#FFF8F7" }}
             >
-              <p className="text-[13px] font-bold" style={{ color: "#B3261E" }}>
-                📺 {product.brand} {tvAdInfo.year}년 TV 광고 방영
-              </p>
-              <p className="mt-1 text-[12px]" style={{ color: "#8A5A57" }}>
-                {tvAdInfo.model} 광고 캠페인
-              </p>
-              <div className="mt-3 w-full max-w-[280px] sm:max-w-[320px]">
+              <div className="w-full sm:w-[380px] sm:shrink-0 md:w-[440px]">
                 <YoutubeLiteEmbed url={tvAdInfo.adUrl} title={`${product.brand} ${tvAdInfo.year}년 TV 광고`} />
+              </div>
+              <div>
+                <p className="text-[14px] font-bold" style={{ color: "#B3261E" }}>
+                  📺 {product.brand} {tvAdInfo.year}년 TV 광고 방영
+                </p>
+                <p className="mt-1 text-[13px]" style={{ color: "#8A5A57" }}>
+                  {tvAdInfo.model} 광고 캠페인
+                </p>
               </div>
             </section>
           ) : null}
