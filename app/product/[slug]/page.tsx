@@ -608,17 +608,17 @@ export default async function ProductDetailPage({ params }: PageProps) {
             ) : (
               /* 음료·요거트·쉐이크: 세로형 — 모바일 200px, 데스크톱 좌 20% 세로 직사각형 */
               <div
-                className="flex items-center justify-center self-start rounded-[16px] border lg:w-[20%] lg:shrink-0"
+                className="flex items-center justify-center rounded-[16px] border lg:w-[32%] lg:shrink-0"
                 style={{ backgroundColor: "#FFFFFF", borderColor: "#E8E4DC" }}
               >
-                <div className="flex h-[200px] w-full items-center justify-center p-5 lg:h-[380px] lg:p-6">
+                <div className="flex h-[200px] w-full items-center justify-center p-5 lg:h-full lg:min-h-[380px] lg:p-6">
                   {productImageUrl ? (
                     <Image
                       src={productImageUrl}
                       alt={formatProductLabel(product.brand, product.name)}
                       width={220}
                       height={320}
-                      className="h-full w-auto max-h-full max-w-full object-contain"
+                      className="h-auto max-h-[300px] w-auto max-w-full object-contain lg:max-h-[340px]"
                       unoptimized
                       priority
                     />
