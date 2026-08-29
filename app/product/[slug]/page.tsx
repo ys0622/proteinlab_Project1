@@ -19,6 +19,7 @@ import ProductDetailBuyWrapper from "../../components/ProductDetailBuyWrapper";
 import PurchaseLinkButton from "../../components/PurchaseLinkButton";
 import RelatedLinkCards from "../../components/RelatedLinkCards";
 import TrackedLink from "../../components/TrackedLink";
+import YoutubeLiteEmbed from "../../components/YoutubeLiteEmbed";
 import {
   type ProductDetailProps,
 } from "../../data/products";
@@ -704,18 +705,21 @@ export default async function ProductDetailPage({ params }: PageProps) {
                     })}
                   </div>
                 ) : null}
-                {tvAdInfo?.adUrl ? (
-                  <a
-                    href={tvAdInfo.adUrl}
-                    target="_blank"
-                    rel="noreferrer noopener"
-                    className="mt-2 inline-flex items-center gap-1 text-[12px] font-semibold hover:underline"
-                    style={{ color: "#B3261E" }}
-                  >
-                    ▶ {tvAdInfo.model} 광고 영상 보기
-                  </a>
-                ) : null}
               </div>
+
+              {tvAdInfo?.adUrl ? (
+                <div className="rounded-2xl border p-3" style={{ borderColor: "#F1D3D1", background: "#FFF8F7" }}>
+                  <p className="text-[12px] font-bold" style={{ color: "#B3261E" }}>
+                    📺 {product.brand} {tvAdInfo.year}년 TV 광고 방영
+                  </p>
+                  <p className="mt-0.5 text-[11px]" style={{ color: "#8A5A57" }}>
+                    {tvAdInfo.model} 광고 캠페인
+                  </p>
+                  <div className="mt-2">
+                    <YoutubeLiteEmbed url={tvAdInfo.adUrl} title={`${product.brand} ${tvAdInfo.year}년 TV 광고`} />
+                  </div>
+                </div>
+              ) : null}
 
               {/* 핵심 영양성분 3종 */}
               <div className="grid grid-cols-3 gap-2">
