@@ -802,20 +802,6 @@ export default async function ProductDetailPage({ params }: PageProps) {
                 </div>
               )}
 
-              {tvAdInfo?.adUrl ? (
-                <div className="rounded-2xl border p-3" style={{ borderColor: "#F1D3D1", background: "#FFF8F7" }}>
-                  <p className="text-[12px] font-bold" style={{ color: "#B3261E" }}>
-                    📺 {product.brand} {tvAdInfo.year}년 TV 광고 방영
-                  </p>
-                  <p className="mt-0.5 text-[11px]" style={{ color: "#8A5A57" }}>
-                    {tvAdInfo.model} 광고 캠페인
-                  </p>
-                  <div className="mt-2 w-full max-w-[240px] sm:max-w-[280px]">
-                    <YoutubeLiteEmbed url={tvAdInfo.adUrl} title={`${product.brand} ${tvAdInfo.year}년 TV 광고`} />
-                  </div>
-                </div>
-              ) : null}
-
               {/* 구매 버튼 */}
               <div className="mt-auto">
                 <ProductDetailBuyWrapper
@@ -838,6 +824,22 @@ export default async function ProductDetailPage({ params }: PageProps) {
       <main style={{ background: "#FAF8F3" }}>
         <div className="mx-auto max-w-[1200px] px-4 py-8 md:px-6">
           <AffiliateDisclosure />
+          {tvAdInfo?.adUrl ? (
+            <section
+              className="mb-6 rounded-[20px] border px-5 py-4"
+              style={{ borderColor: "#F1D3D1", background: "#FFF8F7" }}
+            >
+              <p className="text-[13px] font-bold" style={{ color: "#B3261E" }}>
+                📺 {product.brand} {tvAdInfo.year}년 TV 광고 방영
+              </p>
+              <p className="mt-1 text-[12px]" style={{ color: "#8A5A57" }}>
+                {tvAdInfo.model} 광고 캠페인
+              </p>
+              <div className="mt-3 w-full max-w-[280px] sm:max-w-[320px]">
+                <YoutubeLiteEmbed url={tvAdInfo.adUrl} title={`${product.brand} ${tvAdInfo.year}년 TV 광고`} />
+              </div>
+            </section>
+          ) : null}
           {tasteAwards.length > 0 ? (
             <section
               className="mb-6 rounded-[20px] border px-5 py-4"
