@@ -11,24 +11,27 @@ interface TvAdProductEntry {
   slug: string;
   model: string;
   year: number;
+  boostRanking?: boolean;
 }
 
 const NEW_PRODUCTS: NewProductEntry[] = newProductsRaw as NewProductEntry[];
 const TV_AD_PRODUCTS: TvAdProductEntry[] = tvAdProductsRaw as TvAdProductEntry[];
 const TV_AD_SLUGS = new Set(TV_AD_PRODUCTS.map((p) => p.slug));
+const TV_AD_BOOST_SLUGS = new Set(TV_AD_PRODUCTS.filter((p) => p.boostRanking).map((p) => p.slug));
 
 // TV 광고 중인 제품에 주는 고정 보너스 (조회수 20회 수준)
 const TV_AD_BONUS = 200;
 
-/** 현재 TV 광고 중인 제품인지 확인 */
+/** 현재 TV 광고 중인 제품인지 확인 (배지 표시용 — 순위 반영 여부와 무관) */
 export function isTvAdProduct(slug: string | undefined): boolean {
   if (!slug) return false;
   return TV_AD_SLUGS.has(slug);
 }
 
-/** TV 광고 보너스 — 신제품 감쇠와 달리 광고 기간 동안 고정 */
+/** TV 광고 보너스 — boostRanking이 true인 제품만 순위에 반영 (신제품 감쇠와 달리 광고 기간 동안 고정) */
 export function getTvAdBonus(slug: string | undefined): number {
-  return isTvAdProduct(slug) ? TV_AD_BONUS : 0;
+  if (!slug) return 0;
+  return TV_AD_BOOST_SLUGS.has(slug) ? TV_AD_BONUS : 0;
 }
 
 // 신제품 보너스 유효 기간 (일)

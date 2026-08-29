@@ -1,11 +1,13 @@
 [
-  { "slug": "newcare-all-protein-choco-245", "model": "전지현", "year": 2026, "adUrl": "https://www.youtube.com/watch?v=iAMil8GpNi4" },
-  { "slug": "newcare-all-protein-banana-245", "model": "전지현", "year": 2026, "adUrl": "https://www.youtube.com/watch?v=iAMil8GpNi4" },
-  { "slug": "newcare-all-protein-savory-245", "model": "전지현", "year": 2026, "adUrl": "https://www.youtube.com/watch?v=iAMil8GpNi4" },
-  { "slug": "newcare-all-protein-plant-savory-250", "model": "전지현", "year": 2026, "adUrl": "https://www.youtube.com/watch?v=iAMil8GpNi4" },
-  { "slug": "newcare-olprotein-water-lemon-350", "model": "전지현", "year": 2026, "adUrl": "https://www.youtube.com/watch?v=iAMil8GpNi4" },
-  { "slug": "newcare-olprotein-water-apple-350", "model": "전지현", "year": 2026, "adUrl": "https://www.youtube.com/watch?v=iAMil8GpNi4" },
-  { "slug": "newcare-all-protein-41g", "model": "전지현", "year": 2026, "adUrl": "https://www.youtube.com/watch?v=iAMil8GpNi4" },
-  { "slug": "newcare-all-protein-41g-coffee-350", "model": "전지현", "year": 2026, "adUrl": "https://www.youtube.com/watch?v=iAMil8GpNi4" },
-  { "slug": "newcare-all-protein-41g-savory-350", "model": "전지현", "year": 2026, "adUrl": "https://www.youtube.com/watch?v=iAMil8GpNi4" }
+  { "slug": "newcare-all-protein-choco-245", "model": "전지현", "year": 2026, "adUrl": "https://www.youtube.com/watch?v=iAMil8GpNi4", "boostRanking": false },
+  { "slug": "newcare-all-protein-banana-245", "model": "전지현", "year": 2026, "adUrl": "https://www.youtube.com/watch?v=iAMil8GpNi4", "boostRanking": false },
+  { "slug": "newcare-all-protein-savory-245", "model": "전지현", "year": 2026, "adUrl": "https://www.youtube.com/watch?v=iAMil8GpNi4", "boostRanking": true },
+  { "slug": "newcare-all-protein-plant-savory-250", "model": "전지현", "year": 2026, "adUrl": "https://www.youtube.com/watch?v=iAMil8GpNi4", "boostRanking": false },
+  { "slug": "newcare-olprotein-water-lemon-350", "model": "전지현", "year": 2026, "adUrl": "https://www.youtube.com/watch?v=iAMil8GpNi4", "boostRanking": false },
+  { "slug": "newcare-olprotein-water-apple-350", "model": "전지현", "year": 2026, "adUrl": "https://www.youtube.com/watch?v=iAMil8GpNi4", "boostRanking": false },
+  { "slug": "newcare-all-protein-41g", "model": "전지현", "year": 2026, "adUrl": "https://www.youtube.com/watch?v=iAMil8GpNi4", "boostRanking": true },
+  { "slug": "newcare-all-protein-41g-coffee-350", "model": "전지현", "year": 2026, "adUrl": "https://www.youtube.com/watch?v=iAMil8GpNi4", "boostRanking": true },
+  { "slug": "newcare-all-protein-41g-savory-350", "model": "전지현", "year": 2026, "adUrl": "https://www.youtube.com/watch?v=iAMil8GpNi4", "boostRanking": true },
+  { "slug": "newcare-all-protein-almond-245", "model": "전지현", "year": 2026, "adUrl": "https://www.youtube.com/watch?v=iAMil8GpNi4", "boostRanking": true },
+  { "slug": "newcare-all-protein-blacksesame-245", "model": "전지현", "year": 2026, "adUrl": "https://www.youtube.com/watch?v=iAMil8GpNi4", "boostRanking": true }
 ]
