@@ -608,7 +608,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
             ) : (
               /* 음료·요거트·쉐이크: 세로형 — 모바일 200px, 데스크톱 좌 20% 세로 직사각형 */
               <div
-                className="flex items-center justify-center rounded-[16px] border lg:w-[20%] lg:shrink-0"
+                className="flex items-center justify-center rounded-[16px] border lg:w-[30%] lg:shrink-0"
                 style={{ backgroundColor: "#FFFFFF", borderColor: "#E8E4DC" }}
               >
                 <div className="flex h-[200px] w-full items-center justify-center p-5 lg:h-full lg:min-h-[380px] lg:p-6">
@@ -707,20 +707,6 @@ export default async function ProductDetailPage({ params }: PageProps) {
                 ) : null}
               </div>
 
-              {tvAdInfo?.adUrl ? (
-                <div className="rounded-2xl border p-3" style={{ borderColor: "#F1D3D1", background: "#FFF8F7" }}>
-                  <p className="text-[12px] font-bold" style={{ color: "#B3261E" }}>
-                    📺 {product.brand} {tvAdInfo.year}년 TV 광고 방영
-                  </p>
-                  <p className="mt-0.5 text-[11px]" style={{ color: "#8A5A57" }}>
-                    {tvAdInfo.model} 광고 캠페인
-                  </p>
-                  <div className="mt-2">
-                    <YoutubeLiteEmbed url={tvAdInfo.adUrl} title={`${product.brand} ${tvAdInfo.year}년 TV 광고`} />
-                  </div>
-                </div>
-              ) : null}
-
               {/* 핵심 영양성분 3종 */}
               <div className="grid grid-cols-3 gap-2">
                 <div
@@ -815,6 +801,20 @@ export default async function ProductDetailPage({ params }: PageProps) {
                   </ul>
                 </div>
               )}
+
+              {tvAdInfo?.adUrl ? (
+                <div className="rounded-2xl border p-3" style={{ borderColor: "#F1D3D1", background: "#FFF8F7" }}>
+                  <p className="text-[12px] font-bold" style={{ color: "#B3261E" }}>
+                    📺 {product.brand} {tvAdInfo.year}년 TV 광고 방영
+                  </p>
+                  <p className="mt-0.5 text-[11px]" style={{ color: "#8A5A57" }}>
+                    {tvAdInfo.model} 광고 캠페인
+                  </p>
+                  <div className="mt-2 w-full max-w-[240px] sm:max-w-[280px]">
+                    <YoutubeLiteEmbed url={tvAdInfo.adUrl} title={`${product.brand} ${tvAdInfo.year}년 TV 광고`} />
+                  </div>
+                </div>
+              ) : null}
 
               {/* 구매 버튼 */}
               <div className="mt-auto">
