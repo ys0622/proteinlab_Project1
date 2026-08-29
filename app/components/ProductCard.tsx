@@ -288,31 +288,34 @@ export default function ProductCard({
           )}
         </div>
 
-        {isTvAdProduct ? (
-          <div
-            className="pointer-events-none absolute left-1 top-1 z-10 rounded-full px-1.5 py-0.5 text-[8px] font-bold shadow-sm md:left-2 md:top-2 md:px-2 md:text-[10px]"
-            style={{ background: "#FDECEC", color: "#B3261E", border: "1px solid rgba(179,38,30,0.18)" }}
-            aria-label="TV 광고 중"
-          >
-            📺 TV 광고
-          </div>
-        ) : null}
-
-        {tasteAward ? (
-          <div
-            className="pointer-events-none absolute right-1 top-1 z-10 rounded-xl px-2 py-1 text-center shadow-sm md:right-2 md:top-2"
-            style={{
-              background: "linear-gradient(135deg, #8a5a2b 0%, #b77933 100%)",
-              border: "1px solid rgba(255,255,255,.72)",
-              color: "#fff8ec",
-            }}
-            aria-label={`${tasteAward.organization} ${tasteAward.name} ${tasteAward.rating ?? ""}`}
-          >
-            <p className="text-[8.5px] font-black leading-none">국제미각상</p>
-            {tasteAwardStars ? (
-              <p className="mt-0.5 text-[10px] font-black leading-none tracking-[0.5px]" style={{ color: "#ffe9a8" }}>
-                {tasteAwardStars}
-              </p>
+        {isTvAdProduct || tasteAward ? (
+          <div className="pointer-events-none absolute right-1 top-1 z-10 flex flex-col items-end gap-1 md:right-2 md:top-2">
+            {isTvAdProduct ? (
+              <div
+                className="rounded-full px-1.5 py-0.5 text-[8px] font-bold shadow-sm md:px-2 md:text-[10px]"
+                style={{ background: "#FDECEC", color: "#B3261E", border: "1px solid rgba(179,38,30,0.18)" }}
+                aria-label="TV 광고 중"
+              >
+                📺 TV 광고
+              </div>
+            ) : null}
+            {tasteAward ? (
+              <div
+                className="rounded-xl px-2 py-1 text-center shadow-sm"
+                style={{
+                  background: "linear-gradient(135deg, #8a5a2b 0%, #b77933 100%)",
+                  border: "1px solid rgba(255,255,255,.72)",
+                  color: "#fff8ec",
+                }}
+                aria-label={`${tasteAward.organization} ${tasteAward.name} ${tasteAward.rating ?? ""}`}
+              >
+                <p className="text-[8.5px] font-black leading-none">국제미각상</p>
+                {tasteAwardStars ? (
+                  <p className="mt-0.5 text-[10px] font-black leading-none tracking-[0.5px]" style={{ color: "#ffe9a8" }}>
+                    {tasteAwardStars}
+                  </p>
+                ) : null}
+              </div>
             ) : null}
           </div>
         ) : null}
