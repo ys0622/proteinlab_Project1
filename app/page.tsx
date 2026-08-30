@@ -59,18 +59,19 @@ const GUIDE_CARDS: {
   thumbBg: string;
   thumbEmoji: string;
 }[] = [
-  // 트렌드: 프리워크아웃·크레아틴·프로틴 등 보충제 라인업 확장 — 시장 트렌드 연상
-  { category: "마켓 인사이트", title: "2026 프로틴 음료 트렌드", desc: "단백질 음료 시장 흐름과 신제품 분석", href: "/guides/market-insights/protein-drink-trend-2026", thumbImg: "https://images.unsplash.com/photo-1693996045838-980674653385?w=600&h=400&fit=crop&crop=center&q=80", thumbBg: "linear-gradient(135deg, #1a6b5a 0%, #2d9e7f 100%)", thumbEmoji: "📈" },
-  // 비교: 고단백 대표 제품(셀렉스 프로핏 스포츠 45g / 하이뮨 울트라 49g) 실물 사진
-  { category: "비교 가이드", title: "셀렉스 vs 하이뮨", desc: "고단백 음료 브랜드 스펙 직접 비교", href: "/guides/product-selection-comparison/selex-vs-himune", thumbImg: "/rtd-drink-image/" + encodeURIComponent("매일유업 셀렉스 프로핏 스포츠 와일드 초코 45g 350ml.png"), thumbImg2: "/rtd-drink-image/hymune-ultra-400.png", thumbBg: "linear-gradient(135deg, #7a5c2e 0%, #b8843f 100%)", thumbEmoji: "⚖️" },
-  // 편의점: 마트/편의점 진열대 — 실제 구매 맥락 연상
-  { category: "추천", title: "편의점 단백질 음료 BEST 8", desc: "편의점에서 살 수 있는 고단백 제품 정리", href: "/guides/product-selection-comparison/convenience-store-protein-guide", thumbImg: "https://images.unsplash.com/photo-1604719312566-8912e9227c6a?w=600&h=400&fit=crop&crop=center&q=80", thumbBg: "linear-gradient(135deg, #2a6070 0%, #3d8fa6 100%)", thumbEmoji: "🏪" },
-  // 운동 전후: 운동 중 또는 직후 단백질 보충 장면
-  { category: "섭취 전략", title: "운동 전후 단백질 섭취 가이드", desc: "시간대별 섭취 전략과 추천 제품", href: "/guides/intake-strategy-health/post-workout-protein", thumbImg: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&h=400&fit=crop&crop=top&q=80", thumbBg: "linear-gradient(135deg, #2c4a2e 0%, #4a7a4e 100%)", thumbEmoji: "💪" },
-  // 하루 필요량: 단백질 식품 구성 — 달걀·닭가슴살·견과류 등 고단백 식품
-  { category: "기본 지식", title: "하루 단백질 필요량", desc: "체중과 목적에 따른 단백질 권장량 계산", href: "/guides/basics/daily-requirement", thumbImg: "https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=600&h=400&fit=crop&crop=center&q=80", thumbBg: "linear-gradient(135deg, #5a4a2e 0%, #8c7040 100%)", thumbEmoji: "📚" },
-  // 선택 가이드: 웨이프로틴 통 + 쉐이커 + 스쿱 — 제품 선택 직관적으로 연상
-  { category: "제품 선택", title: "단백질 음료 선택 가이드", desc: "성분 기준으로 내게 맞는 음료 고르는 법", href: "/guides/product-selection-comparison/protein-drink-guide", thumbImg: "https://images.unsplash.com/photo-1775199603318-7f8a9a63b40d?w=600&h=400&fit=crop&crop=center&q=80", thumbBg: "linear-gradient(135deg, #1e4a6e 0%, #2d6ea6 100%)", thumbEmoji: "🎯" },
+  // 2026-08-30 GA4 최근 28일 데이터 기준 실제 인기 콘텐츠 TOP5 + 신규 가이드 1개로 재구성
+  // 1위: 셀렉스 vs 테이크핏 vs 하이뮨 비교 (177 views)
+  { category: "3자 비교", title: "셀렉스 vs 테이크핏 vs 하이뮨", desc: "대표 브랜드 3개를 한 번에 비교", href: "/guides/product-selection-comparison/selex-vs-takefit-vs-himune", thumbImg: "/rtd-drink-image/" + encodeURIComponent("매일유업 셀렉스 프로핏 스포츠 와일드 초코 45g 350ml.png"), thumbImg2: "/rtd-drink-image/takefit-max-choco-250.webp", thumbBg: "linear-gradient(135deg, #7a5c2e 0%, #b8843f 100%)", thumbEmoji: "⚖️" },
+  // 2위: 프로티원 vs 잇더핏 단백질 쉐이크 비교 (152 views)
+  { category: "쉐이크 비교", title: "프로티원 vs 잇더핏", desc: "저당 파우치형 쉐이크 성분 비교", href: "/compare/proteone-vs-itthefit-shake", thumbImg: "/shake-image/proteone-proteinshake-choco-40.webp", thumbImg2: "/shake-image/itthefit-proteinshake-double-choco-40.webp", thumbBg: "linear-gradient(135deg, #6b4a2e 0%, #a67c4a 100%)", thumbEmoji: "🥤" },
+  // 3위: 단백질 랭킹 2026 (126 views)
+  { category: "데이터 랭킹", title: "단백질 랭킹 2026", desc: "밀도·다이어트·퍼포먼스 기준 순위", href: "/ranking", thumbImg: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&h=400&fit=crop&crop=top&q=80", thumbBg: "linear-gradient(135deg, #1a6b5a 0%, #2d9e7f 100%)", thumbEmoji: "🏆" },
+  // 4위: 테이크핏 vs 하이뮨 단백질 음료 비교 (61 views)
+  { category: "브랜드 비교", title: "테이크핏 vs 하이뮨", desc: "대중형 RTD 음료 브랜드 직접 비교", href: "/compare/takefit-vs-hymune-drink", thumbImg: "/rtd-drink-image/takefit-max-choco-250.webp", thumbImg2: "/rtd-drink-image/hymune-balance-active-deepchoco-250.webp", thumbBg: "linear-gradient(135deg, #2a6070 0%, #3d8fa6 100%)", thumbEmoji: "🆚" },
+  // 5위: 뉴케어 vs 하이뮨 단백질 음료 비교 (60 views)
+  { category: "브랜드 비교", title: "뉴케어 vs 하이뮨", desc: "시니어·회복기 보완용 브랜드 비교", href: "/guides/product-selection-comparison/newcare-vs-hymune", thumbImg: "/rtd-drink-image/newcare-all-protein-41g.webp", thumbImg2: "/rtd-drink-image/hymune-protein-balance-190.webp", thumbBg: "linear-gradient(135deg, #2c4a2e 0%, #4a7a4e 100%)", thumbEmoji: "🆚" },
+  // 신규: 단백질 급원 종류 완전정리 — 갓 배포된 가이드, 트래픽 데이터는 아직 없지만 노출 확보 목적
+  { category: "기본 지식", title: "단백질 급원 종류 완전정리", desc: "WPI·WPC부터 카제인·식물성까지", href: "/guides/basics/protein-source-types", thumbImg: "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=600&h=400&fit=crop&crop=center&q=80", thumbBg: "linear-gradient(135deg, #5a4a2e 0%, #8c7040 100%)", thumbEmoji: "🧪" },
 ];
 
 function toCarouselProduct(p: ProductDetailProps): CarouselProduct {
