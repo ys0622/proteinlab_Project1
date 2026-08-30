@@ -87,6 +87,7 @@ const sections: AdminGuideSection[] = [
       article("digestion", "단백질 소화와 흡수", "단백질이 소화되고 흡수되는 과정을 설명합니다.", "/guides/basics/digestion", { emoji: "🥛", tags: ["소화", "흡수"] }),
       article("protein-deficiency-self-check", "단백질 부족 자가체크", "생활 패턴 기준으로 단백질 부족 가능성을 빠르게 점검합니다.", "/guides/basics/protein-deficiency-self-check", { emoji: "✅", tags: ["자가체크", "부족"] }),
       article("protein-drink-vs-powder", "단백질 음료 vs 프로틴 파우더", "간편함, 가성비, 입문 난이도로 두 제품군을 비교합니다.", "/guides/basics/protein-drink-vs-powder", { emoji: "🥤", tags: ["비교", "입문"] }),
+      article("protein-source-types", "단백질 급원 종류 완전정리", "WPH·WPI·WPC부터 카제인·식물성·콜라겐까지 급원별 특징과 연구 근거를 정리합니다.", "/guides/basics/protein-source-types", { emoji: "🧪", tags: ["급원", "유청", "카제인"] }),
     ],
   },
   {
