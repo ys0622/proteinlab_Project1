@@ -69,7 +69,7 @@ const GUIDE_CARDS: {
   // 4위: 테이크핏 vs 하이뮨 단백질 음료 비교 (61 views)
   { category: "브랜드 비교", title: "테이크핏 vs 하이뮨", desc: "대중형 RTD 음료 브랜드 직접 비교", href: "/compare/takefit-vs-hymune-drink", thumbImg: "/rtd-drink-image/takefit-max-choco-250.webp", thumbImg2: "/rtd-drink-image/hymune-balance-active-deepchoco-250.webp", thumbBg: "linear-gradient(135deg, #2a6070 0%, #3d8fa6 100%)", thumbEmoji: "🆚" },
   // 5위: 뉴케어 vs 하이뮨 단백질 음료 비교 (60 views)
-  { category: "브랜드 비교", title: "뉴케어 vs 하이뮨", desc: "시니어·회복기 보완용 브랜드 비교", href: "/guides/product-selection-comparison/newcare-vs-hymune", thumbImg: "/rtd-drink-image/newcare-all-protein-41g.webp", thumbImg2: "/rtd-drink-image/hymune-protein-balance-190.webp", thumbBg: "linear-gradient(135deg, #2c4a2e 0%, #4a7a4e 100%)", thumbEmoji: "🆚" },
+  { category: "브랜드 비교", title: "뉴케어 vs 하이뮨", desc: "시니어·회복기 보완용 브랜드 비교", href: "/guides/product-selection-comparison/newcare-vs-hymune", thumbImg: "/rtd-drink-image/newcare-all-protein-choco-245.webp", thumbImg2: "/rtd-drink-image/hymune-balance-active-original-250.webp", thumbBg: "linear-gradient(135deg, #2c4a2e 0%, #4a7a4e 100%)", thumbEmoji: "🆚" },
   // 신규: 단백질 급원 종류 완전정리 — 갓 배포된 가이드, 트래픽 데이터는 아직 없지만 노출 확보 목적
   { category: "기본 지식", title: "단백질 급원 종류 완전정리", desc: "WPI·WPC부터 카제인·식물성까지", href: "/guides/basics/protein-source-types", thumbImg: "/guide-thumbnails/protein-source-types-v1.png", thumbBg: "linear-gradient(135deg, #5a4a2e 0%, #8c7040 100%)", thumbEmoji: "🧪" },
 ];
