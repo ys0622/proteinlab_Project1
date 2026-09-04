@@ -171,6 +171,15 @@ export async function generateStaticParams() {
   return getAllCompareLandingStaticSlugs().map((slug) => ({ slug }));
 }
 
+// 같은 브랜드 조합을 더 깊은 콘텐츠(FAQ·섹션)로 이미 다루는 /guides/product-selection-comparison
+// 페이지가 있는 경우, 검색엔진에 중복 콘텐츠로 잡히지 않도록 그쪽을 canonical로 지정한다.
+const canonicalOverrides: Record<string, string> = {
+  "sellex-vs-hymune-drink": "https://proteinlab.kr/guides/product-selection-comparison/selex-vs-himune",
+  "takefit-vs-hymune-drink": "https://proteinlab.kr/guides/product-selection-comparison/takefit-vs-himune",
+  "danbaek-vs-sellex-drink": "https://proteinlab.kr/guides/product-selection-comparison/danbaek-vs-selexs",
+  "newcare-vs-hymune": "https://proteinlab.kr/guides/product-selection-comparison/newcare-vs-hymune",
+};
+
 export async function generateMetadata({ params }: PageProps) {
   const { slug } = await params;
   const landing = getCompareLandingBySlug(slug);
@@ -179,7 +188,7 @@ export async function generateMetadata({ params }: PageProps) {
     return { title: "비교 페이지를 찾을 수 없음 | ProteinLab" };
   }
 
-  const canonical = `https://proteinlab.kr/compare/${landing.slug}`;
+  const canonical = canonicalOverrides[landing.slug] ?? `https://proteinlab.kr/compare/${landing.slug}`;
   const title = `${landing.title} — 단백질 성분 비교표`;
   const description = `${landing.description} 비교표로 수치를 나란히 확인하고 제품 상세까지 바로 이어서 볼 수 있습니다.`;
   return {
