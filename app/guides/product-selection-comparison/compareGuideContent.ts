@@ -513,6 +513,7 @@ export const proteinDrinkFor50sConfig: ComparePageConfig = {
   relatedGuides: [
     { title: "셀렉스 vs 하이뮨 비교", href: "/guides/product-selection-comparison/selex-vs-himune", description: "중장년층이 자주 비교하는 두 브랜드를 직접 비교합니다." },
     { title: "단백질 음료 40g 이상 비교", href: "/guides/product-selection-comparison/high-protein-40g-comparison", description: "초고단백 제품이 왜 중장년층에게는 과할 수 있는지 같이 확인합니다." },
+    { title: "근력 저하·근감소증 영양음료 기준", href: "https://caremap.co.kr/criteria/muscleHealth", description: "케어맵에서 근감소증 관점의 영양음료 선택 기준을 더 자세히 확인합니다." },
     commonRelated[1],
   ],
   purchaseLinks: [
@@ -2558,6 +2559,7 @@ export const danbaekLineupConfig: ComparePageConfig = {
     { title: "더단백 vs 셀렉스 비교", href: "/guides/product-selection-comparison/danbaek-vs-selexs", description: "셀렉스와의 차이를 직접 비교합니다." },
     { title: "더단백 vs 하이뮨 비교", href: "/guides/product-selection-comparison/danbaek-vs-himune", description: "하이뮨과의 차이를 직접 비교합니다." },
     { title: "단백질 음료 함량대별 완전 정리", href: "/guides/product-selection-comparison/protein-drink-by-content", description: "더단백 라인이 전체 시장에서 어디쯤인지 봅니다." },
+    { title: "입맛 없을 때 영양음료 선택 기준", href: "https://caremap.co.kr/criteria/appetiteLoss", description: "케어맵에서 식사 보완용 영양음료를 고르는 기준을 더 자세히 확인합니다." },
   ],
   purchaseLinks: [
     { label: "더단백 드링크 보기", slug: danbaekDrinkChoco.slug },

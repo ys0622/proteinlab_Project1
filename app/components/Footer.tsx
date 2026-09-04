@@ -5,6 +5,7 @@ const FOOTER_LINKS = [
   { label: "Privacy Policy", href: "/privacy" },
   { label: "Disclaimer", href: "/disclaimer" },
   { label: "Contact", href: "/contact" },
+  { label: "블로그", href: "https://blog.naver.com/proteinlab2026", external: true },
 ];
 
 export default function Footer() {
@@ -13,15 +14,27 @@ export default function Footer() {
       <div className="mx-auto max-w-[1200px] px-4 md:px-6">
         {/* 링크 */}
         <nav className="flex flex-wrap justify-center gap-x-6 gap-y-1 text-sm" aria-label="푸터 메뉴">
-          {FOOTER_LINKS.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className="text-[var(--foreground-muted)] hover:text-[var(--accent)] hover:underline"
-            >
-              {item.label}
-            </Link>
-          ))}
+          {FOOTER_LINKS.map((item) =>
+            item.external ? (
+              <a
+                key={item.href}
+                href={item.href}
+                target="_blank"
+                rel="noreferrer noopener"
+                className="text-[var(--foreground-muted)] hover:text-[var(--accent)] hover:underline"
+              >
+                {item.label}
+              </a>
+            ) : (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="text-[var(--foreground-muted)] hover:text-[var(--accent)] hover:underline"
+              >
+                {item.label}
+              </Link>
+            ),
+          )}
         </nav>
 
         {/* 안내 문구 */}
