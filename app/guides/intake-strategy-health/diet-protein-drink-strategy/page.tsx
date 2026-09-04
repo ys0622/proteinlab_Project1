@@ -101,8 +101,23 @@ const relatedLinks = [
   },
 ];
 
+const faqItems = [
+  {
+    question: "다이어트 중에는 무조건 칼로리가 가장 낮은 제품을 골라야 하나요?",
+    answer: "아닙니다. 칼로리만 낮고 포만감이 없으면 오히려 다른 간식으로 이어지기 쉽습니다. 상황에 따라 저당·저칼로리 RTD와 포만감 있는 식사대용형 쉐이크를 구분해서 선택하는 것이 더 효과적입니다.",
+  },
+  {
+    question: "보충용 RTD와 식사대용 쉐이크를 같은 기준으로 골라도 되나요?",
+    answer: "역할이 다르기 때문에 같은 기준으로 고르면 실패하기 쉽습니다. 간식 대체나 운동 후 보충은 저당·저칼로리 RTD가 맞고, 한 끼 대체가 목적이라면 포만감과 식이섬유가 있는 식사대용형 쉐이크가 더 적합합니다.",
+  },
+  {
+    question: "다이어트용 단백질 음료를 고를 때 가장 중요한 기준은 무엇인가요?",
+    answer: "감량 단계인지 유지 단계인지 먼저 구분한 뒤, 당류와 총칼로리, 포만감을 함께 보고 마지막으로 반복해서 마실 수 있는 맛인지 확인하는 순서가 실패 확률을 줄입니다.",
+  },
+];
+
 export default function DietProteinDrinkStrategyPage() {
-  const jsonLd = buildGuideJsonLd({ title: (metadata as {title:string;description:string}).title, description: (metadata as {title:string;description:string}).description, url: 'https://proteinlab.kr/guides/intake-strategy-health/diet-protein-drink-strategy' });
+  const jsonLd = buildGuideJsonLd({ title: (metadata as {title:string;description:string}).title, description: (metadata as {title:string;description:string}).description, url: 'https://proteinlab.kr/guides/intake-strategy-health/diet-protein-drink-strategy', faq: faqItems });
   return (
     <div className="min-h-screen bg-white">
       {jsonLd.map((item, i) => (<script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(item) }} />))}
@@ -192,6 +207,18 @@ export default function DietProteinDrinkStrategyPage() {
                 </li>
               ))}
             </ul>
+          </section>
+
+          <section className="rounded-[28px] border border-[#e2ebe4] bg-[#f7fbf8] px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
+            <h2 className="text-xl font-bold text-[var(--foreground)]">💬 자주 묻는 질문</h2>
+            <div className="mt-5 space-y-3">
+              {faqItems.map((item) => (
+                <div key={item.question} className="rounded-xl border border-[#dce8df] bg-white px-4 py-4">
+                  <p className="text-sm font-semibold text-[var(--foreground)]">Q. {item.question}</p>
+                  <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">A. {item.answer}</p>
+                </div>
+              ))}
+            </div>
           </section>
 
           <section className="rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">

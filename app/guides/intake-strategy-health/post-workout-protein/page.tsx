@@ -70,8 +70,23 @@ const postWorkoutLinks = [
   },
 ];
 
+const faqItems = [
+  {
+    question: "운동 직후 단백질은 얼마나 먹어야 하나요?",
+    answer: "운동 직후 0~1시간 사이에 20~30g을 먼저 채우고, 1~2시간 내 식사에서 탄수화물과 함께 보완하는 흐름이 가장 안정적입니다.",
+  },
+  {
+    question: "운동 직후 한 번만 챙기면 충분한가요?",
+    answer: "운동 직후 한 번으로 끝내지 말고 하루 전체 식사에 단백질을 분산해서 채우는 것이 중요합니다. 회복은 하루 총량이 함께 맞아야 합니다.",
+  },
+  {
+    question: "운동 후 식사까지 시간이 길면 어떻게 해야 하나요?",
+    answer: "바나 RTD처럼 바로 영양을 보완할 수 있는 형태가 실전적입니다. 이때도 단백질 수치만 보지 말고 당류와 칼로리를 함께 확인해야 합니다.",
+  },
+];
+
 export default function PostWorkoutProteinPage() {
-  const jsonLd = buildGuideJsonLd({ title: (metadata as {title:string;description:string}).title, description: (metadata as {title:string;description:string}).description, url: 'https://proteinlab.kr/guides/intake-strategy-health/post-workout-protein' });
+  const jsonLd = buildGuideJsonLd({ title: (metadata as {title:string;description:string}).title, description: (metadata as {title:string;description:string}).description, url: 'https://proteinlab.kr/guides/intake-strategy-health/post-workout-protein', faq: faqItems });
   return (
     <div className="min-h-screen bg-white">
             {jsonLd.map((item, i) => (<script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(item) }} />))}
@@ -151,6 +166,18 @@ export default function PostWorkoutProteinPage() {
                 </li>
               ))}
             </ul>
+          </section>
+
+          <section className="rounded-[28px] border border-[#e2ebe4] bg-[#f7fbf8] px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
+            <h2 className="text-xl font-bold text-[var(--foreground)]">💬 자주 묻는 질문</h2>
+            <div className="mt-5 space-y-3">
+              {faqItems.map((item) => (
+                <div key={item.question} className="rounded-xl border border-[#dce8df] bg-white px-4 py-4">
+                  <p className="text-sm font-semibold text-[var(--foreground)]">Q. {item.question}</p>
+                  <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">A. {item.answer}</p>
+                </div>
+              ))}
+            </div>
           </section>
 
           <section className="rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">

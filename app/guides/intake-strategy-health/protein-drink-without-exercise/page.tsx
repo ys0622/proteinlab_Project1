@@ -88,8 +88,23 @@ const selectionSteps = [
   ["3단계", "마지막에 브랜드 비교", "셀렉스, 하이뮨, 뉴케어 같은 브랜드 비교는 목적을 먼저 정한 뒤에 보는 편이 더 빠릅니다."],
 ];
 
+const faqItems = [
+  {
+    question: "운동을 하지 않는데 단백질 음료를 마셔도 되나요?",
+    answer: "네, 괜찮습니다. 아침을 자주 거르거나 식사에서 단백질이 부족한 경우, 부모님 건강 보완용으로도 충분히 쓸 수 있습니다. 다만 운동용 고단백 제품보다 생활 보완형 제품이 더 맞습니다.",
+  },
+  {
+    question: "운동을 안 하면 어떤 함량대 제품을 골라야 하나요?",
+    answer: "처음에는 20g 전후 제품부터 봐도 충분한 경우가 많습니다. 운동 목적이 아니라면 40g 같은 초고단백 제품부터 찾을 필요는 거의 없습니다.",
+  },
+  {
+    question: "운동을 안 하는데도 굳이 단백질 음료가 필요 없는 경우도 있나요?",
+    answer: "네. 식사에서 이미 단백질을 충분히 먹고 있다면 추가로 마실 필요는 없습니다. 무조건 자주 마시는 습관은 오히려 필요 이상의 칼로리로 이어질 수 있습니다.",
+  },
+];
+
 export default function ProteinDrinkWithoutExercisePage() {
-  const jsonLd = buildGuideJsonLd({ title: (metadata as {title:string;description:string}).title, description: (metadata as {title:string;description:string}).description, url: 'https://proteinlab.kr/guides/intake-strategy-health/protein-drink-without-exercise' });
+  const jsonLd = buildGuideJsonLd({ title: (metadata as {title:string;description:string}).title, description: (metadata as {title:string;description:string}).description, url: 'https://proteinlab.kr/guides/intake-strategy-health/protein-drink-without-exercise', faq: faqItems });
   return (
     <div className="min-h-screen bg-white">
       {jsonLd.map((item, i) => (<script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(item) }} />))}
@@ -207,6 +222,18 @@ export default function ProteinDrinkWithoutExercisePage() {
                 </li>
               ))}
             </ul>
+          </section>
+
+          <section className="rounded-[28px] border border-[#e2ebe4] bg-[#f7fbf8] px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
+            <h2 className="text-xl font-bold text-[var(--foreground)]">💬 자주 묻는 질문</h2>
+            <div className="mt-5 space-y-3">
+              {faqItems.map((item) => (
+                <div key={item.question} className="rounded-xl border border-[#dce8df] bg-white px-4 py-4">
+                  <p className="text-sm font-semibold text-[var(--foreground)]">Q. {item.question}</p>
+                  <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">A. {item.answer}</p>
+                </div>
+              ))}
+            </div>
           </section>
 
           <section className="rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">

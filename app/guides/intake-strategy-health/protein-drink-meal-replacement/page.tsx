@@ -64,8 +64,23 @@ const cases = [
   },
 ];
 
+const faqItems = [
+  {
+    question: "단백질 음료만으로 한 끼를 대체할 수 있나요?",
+    answer: "단백질만 높은 RTD는 칼로리와 포만감이 낮아 보충용에 가깝습니다. 한 끼를 완전히 대체하려면 균형 영양형 음료나 파우치형 쉐이크처럼 칼로리와 포만감이 더 있는 제품이 적합합니다.",
+  },
+  {
+    question: "점심이나 저녁도 단백질 음료로 대체해도 되나요?",
+    answer: "아침처럼 짧은 대체는 가벼운 제품도 가능하지만, 점심·저녁 대체는 식사 보완형 음료나 쉐이크가 더 잘 맞습니다. 가벼운 RTD로 계속 대체하면 허기가 빨리 와서 간식을 찾게 될 수 있습니다.",
+  },
+  {
+    question: "다이어트 중 식사 대체용으로 단백질 음료를 써도 되나요?",
+    answer: "가능하지만 너무 가벼운 제품은 다시 간식으로 이어지기 쉽습니다. 총칼로리를 낮추는 것보다 포만감과 지속 가능성을 함께 보는 것이 더 중요합니다.",
+  },
+];
+
 export default function ProteinDrinkMealReplacementPage() {
-  const jsonLd = buildGuideJsonLd({ title: (metadata as {title:string;description:string}).title, description: (metadata as {title:string;description:string}).description, url: 'https://proteinlab.kr/guides/intake-strategy-health/protein-drink-meal-replacement' });
+  const jsonLd = buildGuideJsonLd({ title: (metadata as {title:string;description:string}).title, description: (metadata as {title:string;description:string}).description, url: 'https://proteinlab.kr/guides/intake-strategy-health/protein-drink-meal-replacement', faq: faqItems });
   return (
     <div className="min-h-screen bg-white">
       {jsonLd.map((item, i) => (<script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(item) }} />))}
@@ -152,6 +167,18 @@ export default function ProteinDrinkMealReplacementPage() {
                 </li>
               ))}
             </ul>
+          </section>
+
+          <section className="rounded-[28px] border border-[#e2ebe4] bg-[#f7fbf8] px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
+            <h2 className="text-xl font-bold text-[var(--foreground)]">💬 자주 묻는 질문</h2>
+            <div className="mt-5 space-y-3">
+              {faqItems.map((item) => (
+                <div key={item.question} className="rounded-xl border border-[#dce8df] bg-white px-4 py-4">
+                  <p className="text-sm font-semibold text-[var(--foreground)]">Q. {item.question}</p>
+                  <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">A. {item.answer}</p>
+                </div>
+              ))}
+            </div>
           </section>
 
           <section className="rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">

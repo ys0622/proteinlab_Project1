@@ -80,8 +80,23 @@ const seniorRelated = [
   },
 ];
 
+const faqItems = [
+  {
+    question: "시니어는 단백질을 한 번에 많이 먹는 것이 좋은가요?",
+    answer: "아닙니다. 아침, 간식, 저녁으로 나눠 넣는 쪽이 실제 루틴 유지에 더 유리합니다. 근감소 예방은 한 번에 많이 먹는 것보다 부담 없이 자주 챙기는 방식에서 갈립니다.",
+  },
+  {
+    question: "시니어에게는 어떤 형태의 단백질 제품이 더 잘 맞나요?",
+    answer: "딱딱한 바나 무거운 식감보다 RTD, 요거트, 가벼운 식사보완형이 더 잘 맞는 경우가 많습니다. 목넘김과 위 부담까지 함께 고려하는 것이 좋습니다.",
+  },
+  {
+    question: "시니어도 고단백 제품을 먹어도 되나요?",
+    answer: "가능하지만 40g 이상 초고단백 제품은 소화 부담이 클 수 있습니다. 고단백이 부담스럽다면 20~29g대 중단백 제품이 더 현실적인 선택일 수 있습니다.",
+  },
+];
+
 export default function SeniorProteinStrategyPage() {
-  const jsonLd = buildGuideJsonLd({ title: (metadata as {title:string;description:string}).title, description: (metadata as {title:string;description:string}).description, url: 'https://proteinlab.kr/guides/intake-strategy-health/senior-protein-strategy' });
+  const jsonLd = buildGuideJsonLd({ title: (metadata as {title:string;description:string}).title, description: (metadata as {title:string;description:string}).description, url: 'https://proteinlab.kr/guides/intake-strategy-health/senior-protein-strategy', faq: faqItems });
   return (
     <div className="min-h-screen bg-white">
             {jsonLd.map((item, i) => (<script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(item) }} />))}
@@ -164,6 +179,18 @@ export default function SeniorProteinStrategyPage() {
           <p className="mt-3 text-sm leading-6 text-[var(--foreground-muted)]">
             시니어 루틴에서는 숫자보다 부담 없이 반복할 수 있는 방식이 더 중요합니다. 그래서 맛과 위장 부담까지 함께 확인하는 편이 좋습니다.
           </p>
+        </section>
+
+        <section className="mt-6 rounded-[28px] border border-[#e2ebe4] bg-[#f7fbf8] px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
+          <h2 className="text-xl font-bold text-[var(--foreground)]">💬 자주 묻는 질문</h2>
+          <div className="mt-5 space-y-3">
+            {faqItems.map((item) => (
+              <div key={item.question} className="rounded-xl border border-[#dce8df] bg-white px-4 py-4">
+                <p className="text-sm font-semibold text-[var(--foreground)]">Q. {item.question}</p>
+                <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">A. {item.answer}</p>
+              </div>
+            ))}
+          </div>
         </section>
 
         <section className="mt-6 rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">

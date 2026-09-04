@@ -70,8 +70,23 @@ const relatedGuides = [
   },
 ];
 
+const faqItems = [
+  {
+    question: "운동 전에는 단백질을 꼭 챙겨야 하나요?",
+    answer: "필수는 아닙니다. 마지막 식사와 운동 사이 간격이 짧다면 굳이 추가로 챙기지 않아도 되고, 공복이 길거나 식사량이 부족했을 때 의미가 큽니다.",
+  },
+  {
+    question: "운동 직전에는 어떤 형태가 더 부담이 적나요?",
+    answer: "무거운 식감보다 RTD나 가벼운 쉐이크처럼 소화가 편한 형태가 더 잘 맞습니다. 위에 오래 남는 제품은 운동 효율을 떨어뜨릴 수 있습니다.",
+  },
+  {
+    question: "운동 전에는 단백질과 탄수화물 중 무엇이 더 중요한가요?",
+    answer: "고강도 운동을 앞두고 있다면 단백질보다 탄수화물과 전체 에너지 상태가 더 중요한 경우가 많습니다. 운동 전은 숫자보다 컨디션 유지가 우선입니다.",
+  },
+];
+
 export default function PreWorkoutProteinPage() {
-  const jsonLd = buildGuideJsonLd({ title: (metadata as {title:string;description:string}).title, description: (metadata as {title:string;description:string}).description, url: 'https://proteinlab.kr/guides/intake-strategy-health/pre-workout-protein' });
+  const jsonLd = buildGuideJsonLd({ title: (metadata as {title:string;description:string}).title, description: (metadata as {title:string;description:string}).description, url: 'https://proteinlab.kr/guides/intake-strategy-health/pre-workout-protein', faq: faqItems });
   return (
     <div className="min-h-screen bg-white">
             {jsonLd.map((item, i) => (<script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(item) }} />))}
@@ -168,6 +183,18 @@ export default function PreWorkoutProteinPage() {
             운동 전 단백질은 필수 항목이 아니라 선택지입니다. 이미 식사를 했거나 위장 부담이 크다면 굳이 추가하지 않는 편이 더 나을 수 있습니다.
             운동 전 보충은 불안해서 챙기는 습관보다 실제 컨디션을 기준으로 판단하는 쪽이 오래 갑니다.
           </p>
+        </section>
+
+        <section className="mt-6 rounded-2xl border border-[#e8e6e3] bg-[#f7fbf8] px-5 py-5">
+          <h2 className="text-xl font-bold text-[var(--foreground)]">💬 자주 묻는 질문</h2>
+          <div className="mt-5 space-y-3">
+            {faqItems.map((item) => (
+              <div key={item.question} className="rounded-xl border border-[#dce8df] bg-white px-4 py-4">
+                <p className="text-sm font-semibold text-[var(--foreground)]">Q. {item.question}</p>
+                <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">A. {item.answer}</p>
+              </div>
+            ))}
+          </div>
         </section>
 
         <section className="mt-6 rounded-2xl border border-[#e8e6e3] bg-white px-5 py-5">

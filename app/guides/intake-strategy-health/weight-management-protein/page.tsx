@@ -85,8 +85,23 @@ const weightLinks = [
   },
 ];
 
+const faqItems = [
+  {
+    question: "체중 관리 중에는 저칼로리 제품만 고르면 되나요?",
+    answer: "아닙니다. 칼로리가 너무 낮으면 허기가 빨리 올 수 있습니다. 감량 초반에는 당류와 칼로리를 먼저 보되, 포만감이 유지되는지도 함께 확인해야 합니다.",
+  },
+  {
+    question: "단백질 함량만 높으면 다이어트에 좋은 제품인가요?",
+    answer: "아닙니다. 단백질 양만 보고 당류를 확인하지 않으면 체중 관리가 흔들리기 쉽습니다. 같은 20g 제품이라도 당류 차이가 결과에 크게 작용합니다.",
+  },
+  {
+    question: "보충용 RTD와 식사대용 제품을 같은 기준으로 비교해도 되나요?",
+    answer: "아닙니다. 역할이 다르기 때문에 먼저 감량기인지 유지기인지, 보충용인지 식사대용인지 구분한 뒤에 비교해야 판단이 흔들리지 않습니다.",
+  },
+];
+
 export default function WeightManagementProteinPage() {
-  const jsonLd = buildGuideJsonLd({ title: (metadata as {title:string;description:string}).title, description: (metadata as {title:string;description:string}).description, url: 'https://proteinlab.kr/guides/intake-strategy-health/weight-management-protein' });
+  const jsonLd = buildGuideJsonLd({ title: (metadata as {title:string;description:string}).title, description: (metadata as {title:string;description:string}).description, url: 'https://proteinlab.kr/guides/intake-strategy-health/weight-management-protein', faq: faqItems });
   return (
     <div className="min-h-screen bg-white">
             {jsonLd.map((item, i) => (<script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(item) }} />))}
@@ -174,6 +189,18 @@ export default function WeightManagementProteinPage() {
                 </li>
               ))}
             </ul>
+          </section>
+
+          <section className="rounded-[28px] border border-[#e2ebe4] bg-[#f7fbf8] px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
+            <h2 className="text-xl font-bold text-[var(--foreground)]">💬 자주 묻는 질문</h2>
+            <div className="mt-5 space-y-3">
+              {faqItems.map((item) => (
+                <div key={item.question} className="rounded-xl border border-[#dce8df] bg-white px-4 py-4">
+                  <p className="text-sm font-semibold text-[var(--foreground)]">Q. {item.question}</p>
+                  <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">A. {item.answer}</p>
+                </div>
+              ))}
+            </div>
           </section>
 
           <section className="rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">

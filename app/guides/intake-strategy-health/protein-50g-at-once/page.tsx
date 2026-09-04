@@ -81,11 +81,27 @@ const relatedLinks = [
   },
 ];
 
+const faqItems = [
+  {
+    question: "단백질 50g을 한 번에 먹어도 되나요?",
+    answer: "운동량이 많고 하루 단백질 목표가 높은 사람에게는 선택지가 될 수 있습니다. 다만 아침 대용이나 가벼운 간식 목적이라면 20~30g 제품이 더 현실적인 경우가 많습니다.",
+  },
+  {
+    question: "50g 제품은 아무 때나 마셔도 되나요?",
+    answer: "근력 운동 직후처럼 하루 총량이 높은 상황에서는 의미가 있지만, 아침 공복이나 잠들기 직전에는 소화·칼로리 부담이 커질 수 있어 보수적으로 접근하는 편이 안전합니다.",
+  },
+  {
+    question: "신장질환 등 단백질 섭취 제한이 있으면 어떻게 해야 하나요?",
+    answer: "고함량 제품을 임의로 늘리지 말고 전문가 상담을 먼저 거치는 것이 안전합니다. 일반적인 섭취 기준을 그대로 적용해서는 안 됩니다.",
+  },
+];
+
 export default function Protein50gAtOncePage() {
   const jsonLd = buildGuideJsonLd({
     title: pageTitle,
     description: pageDescription,
     url: canonical,
+    faq: faqItems,
   });
 
   return (
@@ -205,6 +221,18 @@ export default function Protein50gAtOncePage() {
               “식사를 자주 놓쳐서 보완하는 목적”인지, “이미 식사에서 충분히 먹고 있는데 추가하는 것”인지에 따라 판단이 달라집니다.
               제품을 고르기 전에는 하루 목표량을 먼저 잡고, 그 다음 20g·40g·50g 중 어떤 구간이 필요한지 좁히는 순서가 가장 안정적입니다.
             </p>
+          </section>
+
+          <section className="rounded-[28px] border border-[#e5deca] bg-[#fdfaf5] px-5 py-5 shadow-[0_18px_50px_rgba(38,28,18,0.05)]">
+            <h2 className="text-xl font-bold text-[var(--foreground)]">💬 자주 묻는 질문</h2>
+            <div className="mt-5 space-y-3">
+              {faqItems.map((item) => (
+                <div key={item.question} className="rounded-xl border border-[#e8e3da] bg-white px-4 py-4">
+                  <p className="text-sm font-semibold text-[var(--foreground)]">Q. {item.question}</p>
+                  <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">A. {item.answer}</p>
+                </div>
+              ))}
+            </div>
           </section>
 
           <section className="rounded-[28px] border border-[#e5deca] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(38,28,18,0.05)]">

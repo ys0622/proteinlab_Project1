@@ -71,8 +71,23 @@ const timingLinks = [
   },
 ];
 
+const faqItems = [
+  {
+    question: "단백질은 운동 후에만 챙기면 되나요?",
+    answer: "운동 후 보충은 중요하지만 실제 결과는 하루 총량과 분산 섭취가 더 크게 좌우합니다. 아침, 간식, 저녁까지 나눠서 채우는 것이 더 효과적입니다.",
+  },
+  {
+    question: "단백질을 하루 몇 번에 나눠 먹는 것이 좋나요?",
+    answer: "한 번에 몰아먹기보다 아침, 운동 후, 간식·저녁처럼 여러 끼에 나눠 먹는 편이 유지하기도 쉽고 생활 루틴에도 자연스럽게 녹아듭니다.",
+  },
+  {
+    question: "아침 운동과 저녁 운동은 단백질 타이밍이 다른가요?",
+    answer: "네. 아침 운동형은 기상 후 가벼운 보충과 운동 후 보충으로 회복 루틴을 빠르게 만드는 것이 좋고, 저녁 운동형은 점심·간식에서 미리 총량을 확보해두는 편이 과식이나 결식을 막는 데 유리합니다.",
+  },
+];
+
 export default function ProteinTimingPage() {
-  const jsonLd = buildGuideJsonLd({ title: (metadata as {title:string;description:string}).title, description: (metadata as {title:string;description:string}).description, url: 'https://proteinlab.kr/guides/intake-strategy-health/protein-timing' });
+  const jsonLd = buildGuideJsonLd({ title: (metadata as {title:string;description:string}).title, description: (metadata as {title:string;description:string}).description, url: 'https://proteinlab.kr/guides/intake-strategy-health/protein-timing', faq: faqItems });
   return (
     <div className="min-h-screen bg-white">
             {jsonLd.map((item, i) => (<script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(item) }} />))}
@@ -160,6 +175,18 @@ export default function ProteinTimingPage() {
                   ))}
                 </tbody>
               </table>
+            </div>
+          </section>
+
+          <section className="rounded-[28px] border border-[#e2ebe4] bg-[#f7fbf8] px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
+            <h2 className="text-xl font-bold text-[var(--foreground)]">💬 자주 묻는 질문</h2>
+            <div className="mt-5 space-y-3">
+              {faqItems.map((item) => (
+                <div key={item.question} className="rounded-xl border border-[#dce8df] bg-white px-4 py-4">
+                  <p className="text-sm font-semibold text-[var(--foreground)]">Q. {item.question}</p>
+                  <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">A. {item.answer}</p>
+                </div>
+              ))}
             </div>
           </section>
 

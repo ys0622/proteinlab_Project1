@@ -130,8 +130,23 @@ const productRecommendations = [
   },
 ];
 
+const faqItems = [
+  {
+    question: "자기 전에 단백질 음료를 마셔도 괜찮나요?",
+    answer: "저녁 식사에서 단백질이 부족했다면 가벼운 보충용 RTD는 괜찮습니다. 다만 40g 고단백 제품은 소화·칼로리 부담이 같이 커질 수 있어 목적이 분명할 때만 고려하는 편이 좋습니다.",
+  },
+  {
+    question: "야식 대신 단백질 음료를 마셔도 되나요?",
+    answer: "배고픔 해소용으로 당류·칼로리가 있는 제품을 반복하면 체중 관리가 흔들리기 쉽습니다. 야식 대체가 목적이라면 저당·저칼로리 제품을 먼저 확인하는 것이 안전합니다.",
+  },
+  {
+    question: "운동을 늦게 끝냈을 때도 밤에 마셔도 되나요?",
+    answer: "운동 직후 회복 목적이라면 늦은 시간이어도 보충 자체가 더 중요할 수 있습니다. 다만 자기 직전이라면 너무 무겁지 않은 제품을 고르는 것이 낫습니다.",
+  },
+];
+
 export default function NightProteinDrinkPage() {
-  const jsonLd = buildGuideJsonLd({ title: (metadata as {title:string;description:string}).title, description: (metadata as {title:string;description:string}).description, url: 'https://proteinlab.kr/guides/intake-strategy-health/night-protein-drink' });
+  const jsonLd = buildGuideJsonLd({ title: (metadata as {title:string;description:string}).title, description: (metadata as {title:string;description:string}).description, url: 'https://proteinlab.kr/guides/intake-strategy-health/night-protein-drink', faq: faqItems });
   return (
     <div className="min-h-screen bg-white">
       {jsonLd.map((item, i) => (<script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(item) }} />))}
@@ -258,6 +273,18 @@ export default function NightProteinDrinkPage() {
                 </li>
               ))}
             </ul>
+          </section>
+
+          <section className="rounded-[28px] border border-[#e2ebe4] bg-[#f7fbf8] px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
+            <h2 className="text-xl font-bold text-[var(--foreground)]">💬 자주 묻는 질문</h2>
+            <div className="mt-5 space-y-3">
+              {faqItems.map((item) => (
+                <div key={item.question} className="rounded-xl border border-[#dce8df] bg-white px-4 py-4">
+                  <p className="text-sm font-semibold text-[var(--foreground)]">Q. {item.question}</p>
+                  <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">A. {item.answer}</p>
+                </div>
+              ))}
+            </div>
           </section>
 
           <section className="rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">

@@ -85,8 +85,23 @@ const mealLinks = [
   },
 ];
 
+const faqItems = [
+  {
+    question: "단백질 함량이 높으면 식사대용으로 봐도 되나요?",
+    answer: "아닙니다. 단백질 수치가 높아도 포만감과 총열량이 부족하면 다음 끼니 전까지 버티기 어렵습니다. 식사대용 여부는 단백질 양이 아니라 포만감과 칼로리 균형으로 판단해야 합니다.",
+  },
+  {
+    question: "가벼운 RTD도 식사대용으로 쓸 수 있나요?",
+    answer: "가벼운 RTD는 단백질이 충분해도 칼로리와 포만감이 낮아 보충용에 가깝습니다. 식사대용이 목적이라면 바 형태나 바+음료 조합처럼 포만감이 더 있는 구성이 적합합니다.",
+  },
+  {
+    question: "식사대용 단백질은 매일 먹어도 괜찮은가요?",
+    answer: "매일 반복하는 루틴이라면 포만감과 칼로리뿐 아니라 위장 부담과 맛 지속 가능성까지 함께 확인해야 합니다. 한 번은 괜찮아도 오래 유지하기 어려우면 실제 대체 효과가 떨어집니다.",
+  },
+];
+
 export default function MealReplacementStrategyPage() {
-  const jsonLd = buildGuideJsonLd({ title: (metadata as {title:string;description:string}).title, description: (metadata as {title:string;description:string}).description, url: 'https://proteinlab.kr/guides/intake-strategy-health/meal-replacement-strategy' });
+  const jsonLd = buildGuideJsonLd({ title: (metadata as {title:string;description:string}).title, description: (metadata as {title:string;description:string}).description, url: 'https://proteinlab.kr/guides/intake-strategy-health/meal-replacement-strategy', faq: faqItems });
   return (
     <div className="min-h-screen bg-white">
             {jsonLd.map((item, i) => (<script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(item) }} />))}
@@ -179,6 +194,18 @@ export default function MealReplacementStrategyPage() {
                   <h3 className="text-sm font-semibold text-[#24543d]">{item.title}</h3>
                   <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">{item.body}</p>
                 </article>
+              ))}
+            </div>
+          </section>
+
+          <section className="rounded-[28px] border border-[#e2ebe4] bg-[#f7fbf8] px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
+            <h2 className="text-xl font-bold text-[var(--foreground)]">💬 자주 묻는 질문</h2>
+            <div className="mt-5 space-y-3">
+              {faqItems.map((item) => (
+                <div key={item.question} className="rounded-xl border border-[#dce8df] bg-white px-4 py-4">
+                  <p className="text-sm font-semibold text-[var(--foreground)]">Q. {item.question}</p>
+                  <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">A. {item.answer}</p>
+                </div>
               ))}
             </div>
           </section>

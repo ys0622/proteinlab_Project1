@@ -70,8 +70,23 @@ const relatedGuides = [
   },
 ];
 
+const faqItems = [
+  {
+    question: "감량 중에도 근육 유지를 위해 단백질을 계속 챙겨야 하나요?",
+    answer: "네. 감량 중에는 오히려 근육이 함께 빠지기 쉬워서, 운동 직후 한 번보다 주간 단백질 총량을 무너뜨리지 않는 것이 더 중요합니다.",
+  },
+  {
+    question: "운동을 쉬는 날에도 단백질을 챙겨야 하나요?",
+    answer: "쉬는 날에도 근육 유지 루틴은 이어가는 편이 좋습니다. 운동하는 날만 챙기면 주간 단위에서 총량이 쉽게 흔들립니다.",
+  },
+  {
+    question: "근육 유지에는 운동 직후 섭취가 가장 중요한가요?",
+    answer: "운동 직후 한 번보다 하루 전체에 걸친 분산이 더 중요합니다. 아침, 간식, 저녁 전처럼 자주 비는 시간대를 먼저 메우는 편이 실전적입니다.",
+  },
+];
+
 export default function MuscleMaintenanceProteinPage() {
-  const jsonLd = buildGuideJsonLd({ title: (metadata as {title:string;description:string}).title, description: (metadata as {title:string;description:string}).description, url: 'https://proteinlab.kr/guides/intake-strategy-health/muscle-maintenance-protein' });
+  const jsonLd = buildGuideJsonLd({ title: (metadata as {title:string;description:string}).title, description: (metadata as {title:string;description:string}).description, url: 'https://proteinlab.kr/guides/intake-strategy-health/muscle-maintenance-protein', faq: faqItems });
   return (
     <div className="min-h-screen bg-white">
             {jsonLd.map((item, i) => (<script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(item) }} />))}
@@ -165,6 +180,18 @@ export default function MuscleMaintenanceProteinPage() {
             근육 유지 전략은 고단백 제품을 많이 먹는 것이 아니라, 부족한 시간대를 계속 메우는 루틴을 만드는 데서 시작합니다.
             그래서 운동 후 한 번보다 아침, 간식, 저녁 전 공백을 먼저 보는 편이 더 실전적입니다.
           </p>
+        </section>
+
+        <section className="mt-6 rounded-[28px] border border-[#e2ebe4] bg-[#f7fbf8] px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
+          <h2 className="text-xl font-bold text-[var(--foreground)]">💬 자주 묻는 질문</h2>
+          <div className="mt-5 space-y-3">
+            {faqItems.map((item) => (
+              <div key={item.question} className="rounded-xl border border-[#dce8df] bg-white px-4 py-4">
+                <p className="text-sm font-semibold text-[var(--foreground)]">Q. {item.question}</p>
+                <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">A. {item.answer}</p>
+              </div>
+            ))}
+          </div>
         </section>
 
         <section className="mt-6 rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
