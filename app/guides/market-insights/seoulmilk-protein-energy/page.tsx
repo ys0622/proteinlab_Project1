@@ -66,11 +66,27 @@ const relatedLinks = [
   },
 ];
 
+const faqItems = [
+  {
+    question: "서울우유 프로틴 에너지는 단백질 함량이 높은 편인가요?",
+    answer: "240mL에 단백질 21g으로, 초고함량 보충형보다는 일상적으로 챙기기 좋은 구간입니다. 운동 직후 고함량 보충이 목적이라면 40g 이상 제품과 비교하는 편이 더 정확합니다.",
+  },
+  {
+    question: "커피맛과 초콜릿맛 중 당류 차이가 있나요?",
+    answer: "커피맛은 당류 4g, 초콜릿맛은 5g으로 큰 차이는 아니지만, 저당을 최우선으로 본다면 당류 0~1g 제품군과 별도로 비교하는 것이 좋습니다.",
+  },
+  {
+    question: "식사 대용으로 마셔도 되나요?",
+    answer: "단백질 보충에는 유용하지만 한 끼 전체를 대신하기에는 탄수화물, 지방, 식이섬유, 미량영양소가 부족할 수 있어 별도 확인이 필요합니다.",
+  },
+];
+
 export default function SeoulmilkProteinEnergyGuidePage() {
   const jsonLd = buildGuideJsonLd({
     title: pageTitle,
     description: pageDesc,
     url: canonical,
+    faq: faqItems,
   });
 
   return (
@@ -169,6 +185,18 @@ export default function SeoulmilkProteinEnergyGuidePage() {
                 다이어트 목적이라면 당류와 칼로리를 함께 보세요. 당류 4~5g은 과한 수치는 아니지만, 0g 저당 음료를
                 찾는 사용자에게는 별도 비교가 필요합니다.
               </p>
+            </div>
+          </section>
+
+          <section className="rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
+            <h2 className="text-xl font-bold text-[var(--foreground)]">💬 자주 묻는 질문</h2>
+            <div className="mt-5 space-y-3">
+              {faqItems.map((item) => (
+                <div key={item.question} className="rounded-xl border border-[#dce8df] bg-[#f7fbf8] px-4 py-4">
+                  <p className="text-sm font-semibold text-[var(--foreground)]">Q. {item.question}</p>
+                  <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">A. {item.answer}</p>
+                </div>
+              ))}
             </div>
           </section>
 

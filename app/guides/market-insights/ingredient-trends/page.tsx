@@ -73,8 +73,28 @@ const readingPoints = [
   "여러 트렌드를 동시에 만족하는 제품일수록 가격이 높아지는 경향이 있습니다.",
 ];
 
+const faqItems = [
+  {
+    question: "저당과 워터형 중 어떤 트렌드가 더 큰가요?",
+    answer: "둘 다 최근 성장세가 뚜렷합니다. 저당은 체중 관리·일상 간식 수요와, 워터형은 운동 후 가벼운 보충 수요와 맞물려 각각 다른 상황에서 선택됩니다.",
+  },
+  {
+    question: "성분 트렌드 키워드만 보고 골라도 되나요?",
+    answer: "아닙니다. 트렌드 키워드는 마케팅 문구로 쓰이는 경우가 많아서, 실제 단백질·당류·칼로리 수치를 직접 확인한 뒤 선택하는 것이 안전합니다.",
+  },
+  {
+    question: "여러 트렌드를 동시에 만족하는 제품이 항상 좋은가요?",
+    answer: "저당+고단백+락토프리처럼 여러 조건을 동시에 만족할수록 가격이 높아지는 경향이 있습니다. 모든 조건을 다 채우기보다 본인에게 가장 중요한 기준 1~2개를 우선하는 편이 실용적입니다.",
+  },
+];
+
 export default function IngredientTrendsPage() {
-  const jsonLd = buildGuideJsonLd({ title: (metadata as {title:string;description:string}).title, description: (metadata as {title:string;description:string}).description, url: 'https://proteinlab.kr/guides/market-insights/ingredient-trends' });
+  const jsonLd = buildGuideJsonLd({
+    title: (metadata as {title:string;description:string}).title,
+    description: (metadata as {title:string;description:string}).description,
+    url: 'https://proteinlab.kr/guides/market-insights/ingredient-trends',
+    faq: faqItems,
+  });
   return (
     <div className="min-h-screen bg-white">
       {jsonLd.map((item, i) => (<script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(item) }} />))}
@@ -168,6 +188,18 @@ export default function IngredientTrendsPage() {
             <blockquote className="mt-5 rounded-xl border border-[#dce8df] bg-[#f7fbf8] px-4 py-4 text-sm leading-6 text-[var(--foreground-muted)]">
               트렌드 키워드는 검색에는 강하지만, 실제 선택에서는 단백질, 당류, 칼로리, 포만감 기준으로 다시 해석해야 합니다.
             </blockquote>
+          </section>
+
+          <section className="rounded-[28px] border border-[#e2ebe4] bg-[#f7fbf8] px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
+            <h2 className="text-xl font-bold text-[var(--foreground)]">💬 자주 묻는 질문</h2>
+            <div className="mt-5 space-y-3">
+              {faqItems.map((item) => (
+                <div key={item.question} className="rounded-xl border border-[#dce8df] bg-white px-4 py-4">
+                  <p className="text-sm font-semibold text-[var(--foreground)]">Q. {item.question}</p>
+                  <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">A. {item.answer}</p>
+                </div>
+              ))}
+            </div>
           </section>
         </div>
       </main>

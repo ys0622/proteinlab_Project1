@@ -80,8 +80,28 @@ const relatedLinks = [
   },
 ];
 
+const faqItems = [
+  {
+    question: "국내 단백질 시장은 해외와 비교했을 때 어떤 특징이 있나요?",
+    answer: "국내는 RTD(즉석 음료) 중심으로 대중화됐고 편의점 채널과 워터형 확장 속도가 빠른 편입니다. 미국은 보충제·RTD·바가 모두 성숙했고, 유럽은 식물성·클린라벨, 일본은 시니어 건강 중심으로 결이 다릅니다.",
+  },
+  {
+    question: "식물성 단백질이 국내에서도 커질까요?",
+    answer: "미국·유럽에서 먼저 성장한 흐름이라 국내에도 시차를 두고 유입될 가능성이 높습니다. 다만 아직은 초기 단계라 주류로 자리 잡기까지 2~3년 정도는 걸릴 수 있습니다.",
+  },
+  {
+    question: "고령화가 국내 단백질 시장에 어떤 영향을 주나요?",
+    answer: "일본·유럽처럼 고령화가 빠른 지역에서 시니어 단백질 제품이 먼저 발달한 사례를 보면, 국내도 시니어 단백질 시장이 앞으로 더 크게 확장될 가능성이 높습니다.",
+  },
+];
+
 export default function GlobalProteinMarketPage() {
-  const jsonLd = buildGuideJsonLd({ title: (metadata as {title:string;description:string}).title, description: (metadata as {title:string;description:string}).description, url: 'https://proteinlab.kr/guides/market-insights/global-protein-market' });
+  const jsonLd = buildGuideJsonLd({
+    title: (metadata as {title:string;description:string}).title,
+    description: (metadata as {title:string;description:string}).description,
+    url: 'https://proteinlab.kr/guides/market-insights/global-protein-market',
+    faq: faqItems,
+  });
   return (
     <div className="min-h-screen bg-white">
             {jsonLd.map((item, i) => (<script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(item) }} />))}
@@ -175,6 +195,18 @@ export default function GlobalProteinMarketPage() {
             <blockquote className="mt-5 rounded-xl border border-[#dce8df] bg-[#f7fbf8] px-4 py-4 text-sm leading-6 text-[var(--foreground-muted)]">
               글로벌 시장 비교의 목적은 해외 사례를 그대로 따라가는 것이 아니라, 국내에서 다음으로 커질 카테고리를 읽는 데 있습니다.
             </blockquote>
+          </section>
+
+          <section className="rounded-[28px] border border-[#e2ebe4] bg-[#f7fbf8] px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
+            <h2 className="text-xl font-bold text-[var(--foreground)]">💬 자주 묻는 질문</h2>
+            <div className="mt-5 space-y-3">
+              {faqItems.map((item) => (
+                <div key={item.question} className="rounded-xl border border-[#dce8df] bg-white px-4 py-4">
+                  <p className="text-sm font-semibold text-[var(--foreground)]">Q. {item.question}</p>
+                  <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">A. {item.answer}</p>
+                </div>
+              ))}
+            </div>
           </section>
 
           <section className="rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">

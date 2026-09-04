@@ -71,11 +71,27 @@ const relatedLinks = [
   },
 ];
 
+const faqItems = [
+  {
+    question: "광고에서 단백질 함량만 강조하는 제품은 믿어도 되나요?",
+    answer: "단백질 g만 보지 말고 당류, 칼로리, 지방까지 함께 확인해야 합니다. 단백질이 높아도 칼로리와 당류가 같이 올라가는 경우가 많습니다.",
+  },
+  {
+    question: "광고 속 상황과 제가 마시는 상황이 다르면 어떻게 하나요?",
+    answer: "운동 후 보충, 아침 대용, 간식 대체는 서로 다른 목적입니다. 광고 장면을 그대로 따라가기보다 본인의 실제 섭취 타이밍을 먼저 정한 뒤 그에 맞는 함량대를 고르는 편이 정확합니다.",
+  },
+  {
+    question: "구매 전 가장 먼저 확인해야 할 항목은 무엇인가요?",
+    answer: "단백질 함량, 당류, 칼로리, 용량 4가지를 먼저 확인하는 것이 기본입니다. 용량이 크다면 100mL당 단백질 밀도까지 같이 봐야 실제 효율을 알 수 있습니다.",
+  },
+];
+
 export default function ProteinDrinkAdChecklistPage() {
   const jsonLd = buildGuideJsonLd({
     title: pageTitle,
     description: pageDesc,
     url: canonical,
+    faq: faqItems,
   });
 
   return (
@@ -156,6 +172,18 @@ export default function ProteinDrinkAdChecklistPage() {
                 <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">{card.body}</p>
               </article>
             ))}
+          </section>
+
+          <section className="rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
+            <h2 className="text-xl font-bold text-[var(--foreground)]">💬 자주 묻는 질문</h2>
+            <div className="mt-5 space-y-3">
+              {faqItems.map((item) => (
+                <div key={item.question} className="rounded-xl border border-[#dce8df] bg-[#f7fbf8] px-4 py-4">
+                  <p className="text-sm font-semibold text-[var(--foreground)]">Q. {item.question}</p>
+                  <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">A. {item.answer}</p>
+                </div>
+              ))}
+            </div>
           </section>
 
           <section className="rounded-[28px] border border-[#e2ebe4] bg-[#f7fbf8] px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">

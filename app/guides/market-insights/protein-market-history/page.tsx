@@ -79,8 +79,23 @@ const relatedLinks = [
   },
 ];
 
+const faqItems = [
+  {
+    question: "국내 단백질 시장은 왜 이렇게 빠르게 커졌나요?",
+    answer: "편의점 채널 확장과 함께 RTD 제품이 접근성을 높인 것이 가장 큰 이유입니다. 운동용 보충제에서 일상 관리 제품으로 인식이 바뀌면서 소비층 자체가 넓어졌습니다.",
+  },
+  {
+    question: "지금은 시장이 어떤 단계인가요?",
+    answer: "고단백만 강조하던 단계를 지나 저당, 워터형, 식물성처럼 목적별로 세분화되는 단계입니다. 단순 비교보다 목적에 맞는 카테고리를 먼저 정하는 것이 중요해졌습니다.",
+  },
+  {
+    question: "시장 히스토리를 알면 제품 선택에 어떤 도움이 되나요?",
+    answer: "시장이 어떤 방향으로 움직이는지 알면 신제품이 어떤 포지셔닝으로 나오는지 더 빨리 읽을 수 있습니다. 브랜드 메시지와 실제 성분 차이를 구분하는 데도 도움이 됩니다.",
+  },
+];
+
 export default function ProteinMarketHistoryPage() {
-  const jsonLd = buildGuideJsonLd({ title: (metadata as {title:string;description:string}).title, description: (metadata as {title:string;description:string}).description, url: 'https://proteinlab.kr/guides/market-insights/protein-market-history' });
+  const jsonLd = buildGuideJsonLd({ title: (metadata as {title:string;description:string}).title, description: (metadata as {title:string;description:string}).description, url: 'https://proteinlab.kr/guides/market-insights/protein-market-history', faq: faqItems });
   return (
     <div className="min-h-screen bg-white">
             {jsonLd.map((item, i) => (<script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(item) }} />))}
@@ -198,6 +213,18 @@ export default function ProteinMarketHistoryPage() {
             <blockquote className="mt-5 rounded-xl border border-[#dce8df] bg-[#f7fbf8] px-4 py-4 text-sm leading-6 text-[var(--foreground-muted)]">
               단백질 시장 히스토리는 과거 정리가 아니라, 다음 신제품과 다음 카테고리를 읽는 기준입니다.
             </blockquote>
+          </section>
+
+          <section className="rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
+            <h2 className="text-xl font-bold text-[var(--foreground)]">💬 자주 묻는 질문</h2>
+            <div className="mt-5 space-y-3">
+              {faqItems.map((item) => (
+                <div key={item.question} className="rounded-xl border border-[#dce8df] bg-[#f7fbf8] px-4 py-4">
+                  <p className="text-sm font-semibold text-[var(--foreground)]">Q. {item.question}</p>
+                  <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">A. {item.answer}</p>
+                </div>
+              ))}
+            </div>
           </section>
 
           <section className="rounded-[28px] border border-[#e2ebe4] bg-[#f7fbf8] px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">

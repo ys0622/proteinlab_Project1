@@ -75,11 +75,27 @@ const relatedLinks = [
   },
 ];
 
+const faqItems = [
+  {
+    question: "가장 조회수가 높은 단백질 함량대는 어디인가요?",
+    answer: "제품당 평균 조회수 기준으로는 50g 이상 초고단백 구간이 가장 높습니다. 다만 등록 제품 수 자체가 적어서 전체 조회량 점유율은 낮습니다.",
+  },
+  {
+    question: "실제로 가장 많이 비교되는 구간은 어디인가요?",
+    answer: "20~29g대입니다. 등록 제품 수가 가장 많고 전체 조회량의 절반 이상을 차지해서, 실제 제품 간 비교가 가장 활발하게 일어나는 구간입니다.",
+  },
+  {
+    question: "조회수가 높으면 실제로도 많이 팔리나요?",
+    answer: "꼭 그렇지는 않습니다. 조회수는 관심의 크기이지 구매 의사의 크기가 아닙니다. 초고단백 제품을 궁금해서 눌러본 뒤 부담을 느껴 중단백 제품으로 이동하는 경우가 있을 수 있습니다.",
+  },
+];
+
 export default function ProteinContentInterestDataPage() {
   const jsonLd = buildGuideJsonLd({
     title: pageTitle,
     description: pageDescription,
     url: canonical,
+    faq: faqItems,
   });
 
   return (
@@ -180,6 +196,18 @@ export default function ProteinContentInterestDataPage() {
               선택 단계에서 작용하고 있다는 신호로 해석할 수 있습니다. 신제품을 기획하거나 제품을 고를 때
               "관심도"와 "실사용 적합도"를 구분해서 보는 것이 중요합니다.
             </p>
+          </section>
+
+          <section className="rounded-[28px] border border-[#e3dceb] bg-[#f9f7fb] px-5 py-5 shadow-[0_18px_50px_rgba(38,18,38,0.05)]">
+            <h2 className="text-xl font-bold text-[var(--foreground)]">💬 자주 묻는 질문</h2>
+            <div className="mt-5 space-y-3">
+              {faqItems.map((item) => (
+                <div key={item.question} className="rounded-xl border border-[#e5dfec] bg-white px-4 py-4">
+                  <p className="text-sm font-semibold text-[var(--foreground)]">Q. {item.question}</p>
+                  <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">A. {item.answer}</p>
+                </div>
+              ))}
+            </div>
           </section>
 
           <section className="rounded-[28px] border border-[#e3dceb] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(38,18,38,0.05)]">

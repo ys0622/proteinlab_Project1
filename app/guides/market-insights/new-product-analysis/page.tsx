@@ -164,8 +164,28 @@ const relatedLinks = [
   },
 ];
 
+const faqItems = [
+  {
+    question: "신제품이 나오면 무조건 기존 제품보다 좋은가요?",
+    answer: "아닙니다. 신제품이라는 이유만으로 우수하다고 보면 안 되고, 단백질·당류·칼로리 같은 실제 수치와 기존 SKU 대비 차별 포인트가 있는지 확인해야 합니다.",
+  },
+  {
+    question: "국제 미각상 같은 수상 이력은 얼마나 신뢰할 수 있나요?",
+    answer: "맛 실패 가능성을 줄이는 참고 정보 정도로 보는 게 정확합니다. 영양 효율이나 건강 효과를 보증하는 것은 아니라서, 단백질 효율·당류·칼로리는 별도로 확인해야 합니다.",
+  },
+  {
+    question: "워터형과 파우치 쉐이크는 같은 기준으로 비교해도 되나요?",
+    answer: "아닙니다. 워터형은 음용감과 저당이 핵심이고, 파우치 쉐이크는 식이섬유·포만감·한 끼 대체 가능성이 핵심이라 서로 다른 기준으로 봐야 합니다.",
+  },
+];
+
 export default function NewProductAnalysisPage() {
-  const jsonLd = buildGuideJsonLd({ title: (metadata as {title:string;description:string}).title, description: (metadata as {title:string;description:string}).description, url: 'https://proteinlab.kr/guides/market-insights/new-product-analysis' });
+  const jsonLd = buildGuideJsonLd({
+    title: (metadata as {title:string;description:string}).title,
+    description: (metadata as {title:string;description:string}).description,
+    url: 'https://proteinlab.kr/guides/market-insights/new-product-analysis',
+    faq: faqItems,
+  });
   return (
     <div className="min-h-screen bg-white">
             {jsonLd.map((item, i) => (<script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(item) }} />))}
@@ -322,6 +342,18 @@ export default function NewProductAnalysisPage() {
                 >
                   {item.label}
                 </a>
+              ))}
+            </div>
+          </section>
+
+          <section className="rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
+            <h2 className="text-xl font-bold text-[var(--foreground)]">💬 자주 묻는 질문</h2>
+            <div className="mt-5 space-y-3">
+              {faqItems.map((item) => (
+                <div key={item.question} className="rounded-xl border border-[#dce8df] bg-[#f6fbf7] px-4 py-4">
+                  <p className="text-sm font-semibold text-[var(--foreground)]">Q. {item.question}</p>
+                  <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">A. {item.answer}</p>
+                </div>
               ))}
             </div>
           </section>

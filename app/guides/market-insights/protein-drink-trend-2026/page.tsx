@@ -81,6 +81,31 @@ const retailRows = [
   ["브랜드 공통", "2025~2026", "맛 SKU 다변화", "초코 일변도에서 복숭아, 커피, 바나나, 고소한맛으로 선택지가 넓어지고 있습니다."],
 ];
 
+const faqItems = [
+  {
+    question: "2026년 단백질 음료 시장의 가장 큰 변화는 무엇인가요?",
+    answer: "40g대였던 초고단백 경쟁이 47g·52g대까지 올라간 것이 가장 큰 변화입니다. 여기에 당류 0g 저당 설계와 중장년 건강관리형 메시지가 함께 강화되고 있습니다.",
+  },
+  {
+    question: "초고단백 제품만 좋은 건가요?",
+    answer: "아닙니다. 20g 전후 입문형·일상형 제품도 여전히 시장 주류이고, 오히려 함량대가 더 뚜렷하게 갈리는 추세입니다. 목적에 맞는 함량대를 고르는 것이 중요합니다.",
+  },
+  {
+    question: "저당 설계가 왜 중요한 구매 기준이 되었나요?",
+    answer: "단백질 총량만으로는 제품 차별화가 어려워지면서, 당류 0g 같은 저당 설계가 소비자의 실질적인 구매 결정 기준으로 자리 잡았기 때문입니다.",
+  },
+];
+
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqItems.map((item) => ({
+    "@type": "Question",
+    name: item.question,
+    acceptedAnswer: { "@type": "Answer", text: item.answer },
+  })),
+};
+
 const sourceLinks = [
   {
     label: "남양유업 테이크핏 몬스터 리뉴얼 기사",
@@ -108,6 +133,7 @@ export default function ProteinDrinkTrend2026Page() {
   return (
     <div className="min-h-screen bg-white">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <Header />
       <section className="w-full border-t border-b bg-[var(--hero-bg)]" style={{ borderColor: "var(--hero-border)" }}>
         <div className="mx-auto max-w-[1200px] px-4 py-5 md:px-6 md:py-6">
@@ -239,6 +265,18 @@ export default function ProteinDrinkTrend2026Page() {
                 <p className="text-sm font-semibold text-[#6b4d7c]">신제품 분석 기준</p>
                 <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">뉴케어, 테이크핏, 랩노쉬처럼 최근 제품을 어떤 기준으로 읽어야 하는지 이어서 확인합니다.</p>
               </Link>
+            </div>
+          </section>
+
+          <section className="rounded-[28px] border border-[#eadff1] bg-[#faf7fc] px-5 py-5 shadow-[0_18px_50px_rgba(44,23,58,0.05)]">
+            <h2 className="text-xl font-bold text-[var(--foreground)]">💬 자주 묻는 질문</h2>
+            <div className="mt-5 space-y-3">
+              {faqItems.map((item) => (
+                <div key={item.question} className="rounded-xl border border-[#e5d8ee] bg-white px-4 py-4">
+                  <p className="text-sm font-semibold text-[var(--foreground)]">Q. {item.question}</p>
+                  <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">A. {item.answer}</p>
+                </div>
+              ))}
             </div>
           </section>
 
