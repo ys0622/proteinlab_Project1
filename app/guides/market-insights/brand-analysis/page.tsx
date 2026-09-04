@@ -91,8 +91,28 @@ const relatedLinks = [
   },
 ];
 
+const faqItems = [
+  {
+    question: "단백질 브랜드를 고를 때 브랜드 이미지만 보고 골라도 되나요?",
+    answer: "아닙니다. 브랜드 포지셔닝은 참고용이고, 실제 구매 결정은 단백질·당류·칼로리 같은 제품 수치를 직접 비교한 뒤 내리는 편이 정확합니다.",
+  },
+  {
+    question: "최근 단백질 시장에 새로 진입한 브랜드는 어디인가요?",
+    answer: "하림의 오늘단백, 오뚜기의 데이프로틴처럼 기존에 단백질 전문이 아니었던 축산·종합식품 기업들이 최근 RTD 단백질 시장에 새로 진입하고 있습니다.",
+  },
+  {
+    question: "대중형 브랜드와 건강관리형 브랜드는 어떻게 다른가요?",
+    answer: "더단백·셀렉스 같은 대중형 브랜드는 접근성과 일상형 RTD 이미지가 강점이고, 하이뮨·올프로틴 같은 건강관리형 브랜드는 회복·균형 영양 메시지로 중장년층을 겨냥합니다.",
+  },
+];
+
 export default function BrandAnalysisPage() {
-  const jsonLd = buildGuideJsonLd({ title: (metadata as {title:string;description:string}).title, description: (metadata as {title:string;description:string}).description, url: 'https://proteinlab.kr/guides/market-insights/brand-analysis' });
+  const jsonLd = buildGuideJsonLd({
+    title: (metadata as {title:string;description:string}).title,
+    description: (metadata as {title:string;description:string}).description,
+    url: 'https://proteinlab.kr/guides/market-insights/brand-analysis',
+    faq: faqItems,
+  });
   return (
     <div className="min-h-screen bg-white">
             {jsonLd.map((item, i) => (<script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(item) }} />))}
@@ -181,6 +201,18 @@ export default function BrandAnalysisPage() {
             <blockquote className="mt-5 rounded-xl border border-[#dce8df] bg-[#f7fbf8] px-4 py-4 text-sm leading-6 text-[var(--foreground-muted)]">
               브랜드 분석의 목적은 브랜드 선호를 고르는 것이 아니라, 제품 비교 전에 어떤 메시지와 타깃으로 구성돼 있는지 이해하는 데 있습니다.
             </blockquote>
+          </section>
+
+          <section className="rounded-[28px] border border-[#e2ebe4] bg-[#f7fbf8] px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
+            <h2 className="text-xl font-bold text-[var(--foreground)]">💬 자주 묻는 질문</h2>
+            <div className="mt-5 space-y-3">
+              {faqItems.map((item) => (
+                <div key={item.question} className="rounded-xl border border-[#dce8df] bg-white px-4 py-4">
+                  <p className="text-sm font-semibold text-[var(--foreground)]">Q. {item.question}</p>
+                  <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">A. {item.answer}</p>
+                </div>
+              ))}
+            </div>
           </section>
 
           <section className="rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">

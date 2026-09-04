@@ -85,8 +85,28 @@ const relatedLinks = [
   },
 ];
 
+const faqItems = [
+  {
+    question: "RTD 단백질 음료 시장이 파우더보다 빠르게 커진 이유는 무엇인가요?",
+    answer: "즉시 섭취 가능한 편의성, 편의점·대형 채널로의 유통 확장, 워터형·식물성 등 목적별 제품 분화가 함께 맞물리면서 파우더보다 진입 장벽이 낮아졌기 때문입니다.",
+  },
+  {
+    question: "워터형과 발효유형 RTD는 어떤 차이가 있나요?",
+    answer: "워터형은 저칼로리 중심으로 가볍게 마시기 좋고, 발효유·밀크형은 포만감과 칼로리가 상대적으로 높아 식사 보완이나 간식 대용으로 더 적합합니다.",
+  },
+  {
+    question: "최근 RTD 단백질 시장에 새로 진입한 기업이 있나요?",
+    answer: "네. 하림의 오늘단백처럼 기존에 유제품·건기식 중심이 아니었던 축산·종합식품 기업들이 RTD 단백질 시장에 새로 진입하며 카테고리가 계속 커지고 있습니다.",
+  },
+];
+
 export default function ProteinRTDMarketPage() {
-  const jsonLd = buildGuideJsonLd({ title: (metadata as {title:string;description:string}).title, description: (metadata as {title:string;description:string}).description, url: 'https://proteinlab.kr/guides/market-insights/protein-rtd-market' });
+  const jsonLd = buildGuideJsonLd({
+    title: (metadata as {title:string;description:string}).title,
+    description: (metadata as {title:string;description:string}).description,
+    url: 'https://proteinlab.kr/guides/market-insights/protein-rtd-market',
+    faq: faqItems,
+  });
   return (
     <div className="min-h-screen bg-white">
             {jsonLd.map((item, i) => (<script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(item) }} />))}
@@ -216,6 +236,18 @@ export default function ProteinRTDMarketPage() {
             <blockquote className="mt-5 rounded-xl border border-[#dce8df] bg-[#f7fbf8] px-4 py-4 text-sm leading-6 text-[var(--foreground-muted)]">
               RTD 시장은 이제 하나의 카테고리가 아닙니다. 회복형, 식사보완형, 대안형, 식물성형으로 계속 분화되고 있습니다.
             </blockquote>
+          </section>
+
+          <section className="rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
+            <h2 className="text-xl font-bold text-[var(--foreground)]">💬 자주 묻는 질문</h2>
+            <div className="mt-5 space-y-3">
+              {faqItems.map((item) => (
+                <div key={item.question} className="rounded-xl border border-[#dce8df] bg-[#f7fbf8] px-4 py-4">
+                  <p className="text-sm font-semibold text-[var(--foreground)]">Q. {item.question}</p>
+                  <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">A. {item.answer}</p>
+                </div>
+              ))}
+            </div>
           </section>
 
           <section className="rounded-[28px] border border-[#e2ebe4] bg-[#f7fbf8] px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
