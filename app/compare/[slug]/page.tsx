@@ -178,6 +178,7 @@ const canonicalOverrides: Record<string, string> = {
   "takefit-vs-hymune-drink": "https://proteinlab.kr/guides/product-selection-comparison/takefit-vs-himune",
   "danbaek-vs-sellex-drink": "https://proteinlab.kr/guides/product-selection-comparison/danbaek-vs-selexs",
   "newcare-vs-hymune": "https://proteinlab.kr/guides/product-selection-comparison/newcare-vs-hymune",
+  "newcare-vs-sellex-drink": "https://proteinlab.kr/guides/product-selection-comparison/newcare-vs-sellex",
 };
 
 export async function generateMetadata({ params }: PageProps) {
