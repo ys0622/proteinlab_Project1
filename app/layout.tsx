@@ -10,6 +10,10 @@ import "./globals.css";
 
 const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
 const isProd = process.env.NODE_ENV === "production";
+// robots는 NODE_ENV에 기대지 않는다: 엣지/워커 런타임에서 NODE_ENV가 기대와 다르게 평가되면
+// 사이트 전체가 noindex로 나가는 사고로 이어질 수 있다(실제로 겪음). 명시적으로 "true"를 켤 때만
+// 색인을 막고, 그 외에는 항상 색인 허용으로 안전하게 기본값을 둔다.
+const shouldIndex = process.env.NEXT_PUBLIC_DISABLE_INDEXING !== "true";
 
 export const viewport: Viewport = {
   colorScheme: "only light",
@@ -61,7 +65,7 @@ export const metadata: Metadata = {
       "naver-site-verification": "4ef87ce2265895dced0d44ac8ed5921f0cef0064",
     },
   },
-  robots: isProd
+  robots: shouldIndex
     ? {
         index: true,
         follow: true,
