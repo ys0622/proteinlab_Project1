@@ -34,8 +34,6 @@ export const metadata: Metadata = {
   },
 };
 
-const EXCLUDED_SLUGS = new Set(["newcare-all-protein-savory-245", "newcare-all-protein-41g"]);
-
 const CATEGORIES: { type: ProductCategory; emoji: string }[] = [
   { type: "drink", emoji: "🥤" },
   { type: "bar", emoji: "🍫" },
@@ -65,7 +63,7 @@ export default async function TrendingPage() {
 
   const topByCategory = (type: ProductCategory) =>
     byCategory[type]
-      .filter((p) => p.slug && !EXCLUDED_SLUGS.has(p.slug))
+      .filter((p) => p.slug)
       .map((p) => ({ p, score: hybridScore(p, views[type]?.[p.slug ?? ""] ?? 0) }))
       .sort((a, b) => b.score - a.score)
       .slice(0, 8)

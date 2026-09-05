@@ -1,13 +1,11 @@
 import type { ProductDetailProps } from "../data/products";
 
-const excludedSlugs = ["newcare-all-protein-savory-245", "newcare-all-protein-41g"];
-
 const popularitySeeds = {
   drink: [
     { score: 1620, matchers: ["셀렉스", "프로핏"] },
     { score: 2100, matchers: ["랩노쉬", "맥스"] },
     { score: 1540, matchers: ["랩노쉬", "프로틴 드링크"] },
-    { score: 2200, matchers: ["뉴케어", "올프로틴"], excludeSlugs: excludedSlugs },
+    { score: 2200, matchers: ["뉴케어", "올프로틴"] },
     { score: 1410, matchers: ["더단백"] },
     { score: 1360, matchers: ["마이밀", "프로틴"] },
   ],
@@ -34,12 +32,9 @@ export function getPopularityScore(
   productType: "drink" | "bar" | "yogurt" | "shake",
 ): number | null {
   const haystack = `${product.brand} ${product.name}`.toLowerCase();
-  const seed = popularitySeeds[productType].find((entry) => {
-    if ("excludeSlugs" in entry && entry.excludeSlugs.includes(product.slug)) {
-      return false;
-    }
-    return entry.matchers.every((matcher) => haystack.includes(matcher.toLowerCase()));
-  });
+  const seed = popularitySeeds[productType].find((entry) =>
+    entry.matchers.every((matcher) => haystack.includes(matcher.toLowerCase())),
+  );
 
   return seed?.score ?? null;
 }
