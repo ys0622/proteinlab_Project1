@@ -34,6 +34,15 @@ export const metadata: Metadata = {
   },
 };
 
+// 뉴케어 올프로틴 라인업 중 순위에 남겨둘 SKU (25g 고소한맛, 41g 초코맛) — 나머지 올프로틴 SKU는 순위 노출에서 제외
+const NEWCARE_ALL_PROTEIN_KEEP_SLUGS = new Set(["newcare-all-protein-savory-245", "newcare-all-protein-41g"]);
+
+function isExcludedFromTrending(product: ProductDetailProps): boolean {
+  if (product.brand !== "뉴케어") return false;
+  if (!product.name.includes("올프로틴")) return false;
+  return !NEWCARE_ALL_PROTEIN_KEEP_SLUGS.has(product.slug ?? "");
+}
+
 const CATEGORIES: { type: ProductCategory; emoji: string }[] = [
   { type: "drink", emoji: "🥤" },
   { type: "bar", emoji: "🍫" },
@@ -63,7 +72,7 @@ export default async function TrendingPage() {
 
   const topByCategory = (type: ProductCategory) =>
     byCategory[type]
-      .filter((p) => p.slug)
+      .filter((p) => p.slug && !isExcludedFromTrending(p))
       .map((p) => ({ p, score: hybridScore(p, views[type]?.[p.slug ?? ""] ?? 0) }))
       .sort((a, b) => b.score - a.score)
       .slice(0, 8)
