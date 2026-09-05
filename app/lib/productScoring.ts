@@ -1,6 +1,7 @@
 import type { ProductDetailProps } from "../data/products";
 import newProductsRaw from "../data/newProducts.json";
 import tvAdProductsRaw from "../data/tvAdProducts.json";
+import coupangBestSellersRaw from "../data/coupangBestSellers.json";
 
 interface NewProductEntry {
   slug: string;
@@ -14,10 +15,17 @@ interface TvAdProductEntry {
   boostRanking?: boolean;
 }
 
+interface CoupangBestSellerEntry {
+  slug: string;
+  rank: number; // 캡처 시점 쿠팡 카테고리 베스트 순위 (1이 가장 높음)
+  capturedAt: string; // "YYYY-MM-DD" — 스콧이 캡처를 준 날짜
+}
+
 const NEW_PRODUCTS: NewProductEntry[] = newProductsRaw as NewProductEntry[];
 const TV_AD_PRODUCTS: TvAdProductEntry[] = tvAdProductsRaw as TvAdProductEntry[];
 const TV_AD_SLUGS = new Set(TV_AD_PRODUCTS.map((p) => p.slug));
 const TV_AD_BOOST_SLUGS = new Set(TV_AD_PRODUCTS.filter((p) => p.boostRanking).map((p) => p.slug));
+const COUPANG_BEST_SELLERS: CoupangBestSellerEntry[] = coupangBestSellersRaw as CoupangBestSellerEntry[];
 
 // TV 광고 중인 제품에 주는 고정 보너스 (조회수 20회 수준)
 const TV_AD_BONUS = 200;
@@ -56,6 +64,26 @@ export function getNewProductBonus(slug: string | undefined): number {
   return Math.round(NEW_PRODUCT_MAX_BONUS * ratio);
 }
 
+// 쿠팡 베스트 캡처 데이터의 유효 기간 (일) — 스냅샷이라 오래되면 감쇠시켜 자동으로 사라지게 함
+const COUPANG_BEST_WINDOW_DAYS = 21;
+
+/** 쿠팡 베스트 순위 보너스 — 캡처 당시 순위가 높을수록 크고, 21일에 걸쳐 선형 감소 */
+export function getCoupangBestSellerBonus(slug: string | undefined): number {
+  if (!slug) return 0;
+  const entry = COUPANG_BEST_SELLERS.find((p) => p.slug === slug);
+  if (!entry) return 0;
+
+  const capturedAt = new Date(entry.capturedAt);
+  const now = new Date();
+  const daysSinceCapture = Math.floor((now.getTime() - capturedAt.getTime()) / (1000 * 60 * 60 * 24));
+
+  if (daysSinceCapture >= COUPANG_BEST_WINDOW_DAYS || daysSinceCapture < 0) return 0;
+
+  const baseBonus = Math.max(100, 450 - entry.rank * 30);
+  const ratio = 1 - daysSinceCapture / COUPANG_BEST_WINDOW_DAYS;
+  return Math.round(baseBonus * ratio);
+}
+
 /** 용량(mL/g) 파싱 */
 function parseCapacityMl(capacity: string | undefined): number {
   if (!capacity) return 0;
@@ -69,6 +97,7 @@ function parseCapacityMl(capacity: string | undefined): number {
  *   = 실제 조회수 × 10          (조회수가 쌓일수록 비중 ↑)
  *   + 품질 점수                 (단백질 밀도, 단백질량, 당류 기반)
  *   + 신제품 감쇠 보너스        (추가 후 30일간 최대 300점)
+ *   + 쿠팡 베스트 감쇠 보너스   (캡처 후 21일간 순위 기반 최대 420점)
  */
 export function hybridScore(
   product: ProductDetailProps,
@@ -93,5 +122,8 @@ export function hybridScore(
   // ── TV 광고 보너스 ────────────────────────────────
   const adBonus = getTvAdBonus(product.slug);
 
-  return viewScore + qualityScore + newBonus + adBonus;
+  // ── 쿠팡 베스트 보너스 ────────────────────────────
+  const coupangBonus = getCoupangBestSellerBonus(product.slug);
+
+  return viewScore + qualityScore + newBonus + adBonus + coupangBonus;
 }
