@@ -11,7 +11,7 @@ import HomeTrackedLink from "./components/HomeTrackedLink";
 import type { ProductDetailProps } from "./data/products";
 import { getProductsByCategoryAsync } from "./lib/productData";
 import { getCategoryProductCounts } from "./lib/productCounts";
-import { hybridScore } from "./lib/productScoring";
+import { hybridScore, isExcludedFromPopularityRanking } from "./lib/productScoring";
 
 export const revalidate = 300; // 5분마다 재생성 (조회수 반영)
 
@@ -118,7 +118,7 @@ export default async function Home() {
   // = 실제 조회수 × 10 + 품질 점수(단백질 밀도·당류) + 신제품 보너스(30일 감쇠)
   const sortByHybrid = (products: ProductDetailProps[], type: string) => {
     return products
-      .filter((p) => p.slug)
+      .filter((p) => p.slug && !isExcludedFromPopularityRanking(p))
       .map((p) => ({ p, score: hybridScore(p, views[type]?.[p.slug ?? ""] ?? 0) }))
       .sort((a, b) => b.score - a.score)
       .map(({ p }) => p)
