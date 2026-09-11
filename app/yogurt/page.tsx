@@ -9,6 +9,8 @@ import { getProductsByCategoryAsync } from "../lib/productData";
 import { getCategoryProductsWithCountsAsync } from "../lib/productCounts";
 import { formatProductLabel } from "../lib/productLabel";
 
+export const revalidate = 300; // 5분마다 재생성 — 이게 없으면 완전 정적 페이지로 캐시되어 새 배포 후에도 Cloudflare 엣지 캐시가 갱신되지 않는다
+
 export async function generateMetadata() {
   const products = await getProductsByCategoryAsync("yogurt");
 

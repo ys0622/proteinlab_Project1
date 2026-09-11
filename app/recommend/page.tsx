@@ -3,6 +3,8 @@ import Footer from "../components/Footer";
 import RecommendClient from "./RecommendClient";
 import { getProductsByCategoryAsync } from "../lib/productData";
 
+export const revalidate = 300; // 5분마다 재생성 — 이게 없으면 완전 정적 페이지로 캐시되어 새 배포 후에도 Cloudflare 엣지 캐시가 갱신되지 않는다
+
 export const metadata = {
   title: "단백질 제품 맞춤 추천 — 목적별·조건별로 바로 좁히기",
   description:

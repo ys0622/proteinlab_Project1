@@ -8,6 +8,8 @@ import { getProductsByCategoryAsync } from "../lib/productData";
 import { formatProductLabel } from "../lib/productLabel";
 import RankingClient from "./RankingClient";
 
+export const revalidate = 300; // 5분마다 재생성 — 이게 없으면 완전 정적 페이지로 캐시되어 새 배포 후에도 Cloudflare 엣지 캐시가 갱신되지 않는다
+
 export const metadata = {
   title: "단백질 랭킹 2026 — 밀도·다이어트·퍼포먼스 기준 순위",
   description:
