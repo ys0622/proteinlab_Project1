@@ -340,11 +340,13 @@ function ProductListWithFiltersInner(props: ProductListWithFiltersInnerProps) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [sort, searchQuery]);
 
-  const visible = useMemo(
-    () => (isDesktop ? sorted : sorted.slice(0, page * PAGE_SIZE)),
-    [isDesktop, page, sorted],
-  );
-  const hasMore = visible.length < sorted.length;
+  // 항상 전체 목록을 렌더링한다 — 모바일 "더보기" 이전 항목은 개수만 slice로 줄이지 않고
+  // CSS로 숨긴다. 예전에는 sorted.slice(...)로 배열 자체를 잘라서, 서버 렌더링(첫 HTML
+  // 응답) 시점에 모바일 뷰(SSR 기본값) 기준 20개만 DOM에 존재해 나머지 제품 링크를
+  // 구글이 전혀 발견할 수 없었다. 이제는 항상 전체가 DOM에 있고 시각적으로만 숨긴다.
+  const visible = sorted;
+  const mobileVisibleCount = page * PAGE_SIZE;
+  const hasMore = !isDesktop && mobileVisibleCount < sorted.length;
 
   const handleDrinkFilterToggle = (key: keyof DrinkFilters, value: string) => {
     setPage(1);
@@ -605,20 +607,32 @@ function ProductListWithFiltersInner(props: ProductListWithFiltersInnerProps) {
           </p>
         </div>
       ) : (
-        <section
-          className="product-grid mt-3 items-start bg-white"
-          style={{ marginTop: isDesktop ? "12px" : "8px" }}
-          aria-label="제품 목록"
-        >
-          {visible.map((product, idx) => (
-            <ProductCard
-              key={product.slug ?? `${product.brand}-${product.name}`}
-              {...product}
-              priority={idx < 4}
-              productType={productType}
-            />
-          ))}
-        </section>
+        <>
+          {/* 모바일에서만 mobileVisibleCount 이후 카드를 CSS로 숨긴다. 배열을 자르지 않고
+              항상 전체를 렌더링해서, 서버가 보내는 첫 HTML에도 모든 제품 링크가 존재하도록 한다. */}
+          <style>{`
+            @media (max-width: 767px) {
+              .product-grid[data-mobile-count="${mobileVisibleCount}"] > .product-card:nth-child(n+${mobileVisibleCount + 1}) {
+                display: none;
+              }
+            }
+          `}</style>
+          <section
+            className="product-grid mt-3 items-start bg-white"
+            data-mobile-count={mobileVisibleCount}
+            style={{ marginTop: isDesktop ? "12px" : "8px" }}
+            aria-label="제품 목록"
+          >
+            {visible.map((product, idx) => (
+              <ProductCard
+                key={product.slug ?? `${product.brand}-${product.name}`}
+                {...product}
+                priority={idx < 4}
+                productType={productType}
+              />
+            ))}
+          </section>
+        </>
       )}
 
       {productType === "bar" ? <ServingBasisNotice className="mt-4" /> : null}
@@ -630,7 +644,7 @@ function ProductListWithFiltersInner(props: ProductListWithFiltersInnerProps) {
                 onClick={() => {
                   trackEvent("load_more_click", {
                     category: productType,
-                    visible_count: visible.length,
+                    visible_count: mobileVisibleCount,
                     total_results: sorted.length,
                     next_page: page + 1,
                     search_query: searchQuery.trim() || undefined,
@@ -639,7 +653,7 @@ function ProductListWithFiltersInner(props: ProductListWithFiltersInnerProps) {
                 }}
                 className="rounded-full border border-[var(--border)] bg-white px-6 py-2.5 text-sm font-medium text-[var(--foreground)] transition-colors hover:border-[var(--accent)] hover:bg-[var(--accent-light)] hover:text-[var(--accent)]"
               >
-                더보기 ({sorted.length - visible.length}개 남음)
+                더보기 ({sorted.length - mobileVisibleCount}개 남음)
               </button>
             </div>
           ) : null}

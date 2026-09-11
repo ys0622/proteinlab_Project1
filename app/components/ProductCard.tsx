@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import type {
@@ -375,16 +376,38 @@ export default function ProductCard({
           }`}
           style={{ fontWeight: 600, color: "#1a1a1a" }}
         >
-          <span className="block text-[12px] md:text-[16px]">{titlePrefix}</span>
-          {titleCapacityLabel ? (
-            <span
-              className="mt-0.5 block text-[10px] font-normal md:mt-0 md:inline md:text-[13px]"
-              style={{ color: "#6b6b6b" }}
+          {canOpenDetail ? (
+            <Link
+              href={detailHref}
+              tabIndex={-1}
+              className="no-underline"
+              style={{ color: "inherit", textDecoration: "none" }}
             >
-              <span className="hidden md:inline"> </span>
-              {titleCapacityLabel}
-            </span>
-          ) : null}
+              <span className="block text-[12px] md:text-[16px]">{titlePrefix}</span>
+              {titleCapacityLabel ? (
+                <span
+                  className="mt-0.5 block text-[10px] font-normal md:mt-0 md:inline md:text-[13px]"
+                  style={{ color: "#6b6b6b" }}
+                >
+                  <span className="hidden md:inline"> </span>
+                  {titleCapacityLabel}
+                </span>
+              ) : null}
+            </Link>
+          ) : (
+            <>
+              <span className="block text-[12px] md:text-[16px]">{titlePrefix}</span>
+              {titleCapacityLabel ? (
+                <span
+                  className="mt-0.5 block text-[10px] font-normal md:mt-0 md:inline md:text-[13px]"
+                  style={{ color: "#6b6b6b" }}
+                >
+                  <span className="hidden md:inline"> </span>
+                  {titleCapacityLabel}
+                </span>
+              ) : null}
+            </>
+          )}
         </h3>
 
         <MetricBadgeGroup className="product-card__badges mt-0.5">
