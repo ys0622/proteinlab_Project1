@@ -33,6 +33,21 @@ const matrix = [
   ["식이섬유/포만감", "추가 체크", "브랜드별 차이를 참고하기 좋음"],
 ];
 
+const faqItems = [
+  {
+    question: "단백질 바로 한 끼를 완전히 대체할 수 있나요?",
+    answer: "가능하지만 간식형 바로는 부족할 수 있습니다. 식사대용이 목적이라면 칼로리와 포만감이 어느 정도 있는 제품을 골라야 하며, 너무 가벼운 제품은 식사 보완용으로 부족합니다.",
+  },
+  {
+    question: "식사대용 바는 단백질 함량이 몇 g 이상이어야 하나요?",
+    answer: "보통 12g 이상을 우선 기준으로 보는 것이 실용적입니다. 포만감이 있어도 단백질이 너무 낮으면 보충용으로서 의미가 약해집니다.",
+  },
+  {
+    question: "식사대용 바도 당류를 신경 써야 하나요?",
+    answer: "네. 식사대용형이라고 해서 당류가 높아도 되는 것은 아닙니다. 포만감과 당류 균형을 함께 확인하는 것이 좋습니다.",
+  },
+];
+
 export default function MealReplacementProteinBarGuidePage() {
   const jsonLd = buildGuideJsonLd({
     title: "식사대용 단백질 바 기준 | 포만감·칼로리·단백질 비교",
@@ -40,6 +55,7 @@ export default function MealReplacementProteinBarGuidePage() {
     url: "https://proteinlab.kr/guides/product-selection-comparison/meal-replacement-protein-bar-guide",
     datePublished: "2026-03-01",
     dateModified: "2026-05-29",
+    faq: faqItems,
   });
 
   return (
@@ -118,6 +134,18 @@ export default function MealReplacementProteinBarGuidePage() {
                   ))}
                 </tbody>
               </table>
+            </div>
+          </section>
+
+          <section className="rounded-[28px] border border-[#e2ebe4] bg-[#f7fbf8] px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
+            <h2 className="text-xl font-bold text-[var(--foreground)]">💬 자주 묻는 질문</h2>
+            <div className="mt-5 space-y-3">
+              {faqItems.map((item) => (
+                <div key={item.question} className="rounded-xl border border-[#dce8df] bg-white px-4 py-4">
+                  <p className="text-sm font-semibold text-[var(--foreground)]">Q. {item.question}</p>
+                  <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">A. {item.answer}</p>
+                </div>
+              ))}
             </div>
           </section>
         </div>

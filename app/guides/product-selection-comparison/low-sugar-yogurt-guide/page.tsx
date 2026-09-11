@@ -35,6 +35,21 @@ const relatedLinks = [
   },
 ];
 
+const faqItems = [
+  {
+    question: "저당 요거트는 당류가 몇 g 이하면 안전한가요?",
+    answer: "다이어트 목적이라면 보통 당류 5g 이하 제품을 먼저 추려 보는 것이 실용적인 기준입니다. 다만 절대적인 기준은 아니므로 개인 목표에 맞춰 조정할 수 있습니다.",
+  },
+  {
+    question: "당류만 낮으면 좋은 저당 요거트인가요?",
+    answer: "아닙니다. 당류만 낮고 단백질 함량이 낮으면 단백질 요거트로서의 장점이 줄어듭니다. 당류와 단백질 함량을 함께 확인해야 실제로 의미 있는 제품을 고를 수 있습니다.",
+  },
+  {
+    question: "바나나맛, 과일맛 요거트도 저당 기준으로 볼 수 있나요?",
+    answer: "맛이 첨가된 제품은 기본적으로 당류가 높아지기 쉬워서, 플레인 제품과는 별도로 비교하는 편이 안전합니다. 저당을 우선한다면 플레인 위주로 먼저 좁히는 것을 추천합니다.",
+  },
+];
+
 export default function LowSugarYogurtGuidePage() {
   const jsonLd = buildGuideJsonLd({
     title: "저당 단백질 요거트 추천 기준 | 당류 5g 이하 비교",
@@ -42,6 +57,7 @@ export default function LowSugarYogurtGuidePage() {
     url: "https://proteinlab.kr/guides/product-selection-comparison/low-sugar-yogurt-guide",
     datePublished: "2026-03-01",
     dateModified: "2026-05-29",
+    faq: faqItems,
   });
 
   return (
@@ -86,6 +102,18 @@ export default function LowSugarYogurtGuidePage() {
                   <h3 className="text-sm font-semibold text-[#24543d]">{item[0]}</h3>
                   <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">{item[1]}</p>
                 </article>
+              ))}
+            </div>
+          </section>
+
+          <section className="rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
+            <h2 className="text-xl font-bold text-[var(--foreground)]">💬 자주 묻는 질문</h2>
+            <div className="mt-5 space-y-3">
+              {faqItems.map((item) => (
+                <div key={item.question} className="rounded-xl border border-[#dce8df] bg-[#f7fbf8] px-4 py-4">
+                  <p className="text-sm font-semibold text-[var(--foreground)]">Q. {item.question}</p>
+                  <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">A. {item.answer}</p>
+                </div>
               ))}
             </div>
           </section>

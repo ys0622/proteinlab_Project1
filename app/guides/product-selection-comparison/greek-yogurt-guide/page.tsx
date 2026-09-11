@@ -44,6 +44,21 @@ const relatedLinks = [
   },
 ];
 
+const faqItems = [
+  {
+    question: "그릭요거트는 총단백질만 보고 골라도 되나요?",
+    answer: "아닙니다. 450g, 800g처럼 총용량이 큰 제품은 총단백질만 크게 보이는 착시가 생길 수 있습니다. 100g 기준 밀도를 함께 확인해야 정확하게 비교할 수 있습니다.",
+  },
+  {
+    question: "그릭요거트는 원래 당류가 낮은 편인가요?",
+    answer: "꾸덕한 식감과 고단백 이미지가 강하지만 제품에 따라 당류 차이가 큽니다. 다이어트 목적이라면 그릭요거트라도 당류 수치를 별도로 확인하는 것이 안전합니다.",
+  },
+  {
+    question: "대용량 그릭요거트를 고를 때 특히 주의할 점은?",
+    answer: "총용량과 1회 섭취 기준을 같이 봐야 합니다. 큰 용량 제품은 전체 단백질 총량은 높아 보여도 1회 섭취량 기준으로는 다른 제품보다 낮을 수 있습니다.",
+  },
+];
+
 export default function GreekYogurtGuidePage() {
   const jsonLd = buildGuideJsonLd({
     title: "그릭요거트 추천 기준 | 단백질 함량·밀도 비교",
@@ -51,6 +66,7 @@ export default function GreekYogurtGuidePage() {
     url: "https://proteinlab.kr/guides/product-selection-comparison/greek-yogurt-guide",
     datePublished: "2026-03-01",
     dateModified: "2026-05-29",
+    faq: faqItems,
   });
 
   return (
@@ -100,6 +116,18 @@ export default function GreekYogurtGuidePage() {
                     {item.body}
                   </p>
                 </article>
+              ))}
+            </div>
+          </section>
+
+          <section className="rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
+            <h2 className="text-xl font-bold text-[var(--foreground)]">💬 자주 묻는 질문</h2>
+            <div className="mt-5 space-y-3">
+              {faqItems.map((item) => (
+                <div key={item.question} className="rounded-xl border border-[#dce8df] bg-[#f7fbf8] px-4 py-4">
+                  <p className="text-sm font-semibold text-[var(--foreground)]">Q. {item.question}</p>
+                  <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">A. {item.answer}</p>
+                </div>
               ))}
             </div>
           </section>

@@ -35,6 +35,21 @@ const relatedLinks = [
   },
 ];
 
+const faqItems = [
+  {
+    question: "드링킹 요거트는 일반 떠먹는 요거트보다 단백질이 낮은가요?",
+    answer: "제품마다 다릅니다. 마시기 편한 형태라도 단백질 밀도가 낮으면 일반 요거트와 차이가 크지 않으므로, 용량 대비 단백질 그램 수를 직접 비교하는 것이 중요합니다.",
+  },
+  {
+    question: "190mL와 210mL 제품은 단순히 용량 차이만 있나요?",
+    answer: "아닙니다. 비슷한 용량이라도 제품마다 총단백질과 칼로리가 다르게 설계되어 있어서, 용량만 보고 고르면 실제 섭취량이 기대와 달라질 수 있습니다.",
+  },
+  {
+    question: "맛있는 드링킹 요거트는 당류가 높은 편인가요?",
+    answer: "맛을 강조한 제품일수록 당류가 높아지는 경향이 있습니다. 다이어트 목적이라면 맛보다 당류 수치를 먼저 확인하고 후보를 좁히는 것이 안전합니다.",
+  },
+];
+
 export default function DrinkingYogurtGuidePage() {
   const jsonLd = buildGuideJsonLd({
     title: "드링킹 단백질 요거트 추천 기준 | 마시는 요거트 비교",
@@ -42,6 +57,7 @@ export default function DrinkingYogurtGuidePage() {
     url: "https://proteinlab.kr/guides/product-selection-comparison/drinking-yogurt-guide",
     datePublished: "2026-03-01",
     dateModified: "2026-05-29",
+    faq: faqItems,
   });
 
   return (
@@ -86,6 +102,18 @@ export default function DrinkingYogurtGuidePage() {
                   <h3 className="text-sm font-semibold text-[#24543d]">{item[0]}</h3>
                   <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">{item[1]}</p>
                 </article>
+              ))}
+            </div>
+          </section>
+
+          <section className="rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
+            <h2 className="text-xl font-bold text-[var(--foreground)]">💬 자주 묻는 질문</h2>
+            <div className="mt-5 space-y-3">
+              {faqItems.map((item) => (
+                <div key={item.question} className="rounded-xl border border-[#dce8df] bg-[#f7fbf8] px-4 py-4">
+                  <p className="text-sm font-semibold text-[var(--foreground)]">Q. {item.question}</p>
+                  <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">A. {item.answer}</p>
+                </div>
               ))}
             </div>
           </section>

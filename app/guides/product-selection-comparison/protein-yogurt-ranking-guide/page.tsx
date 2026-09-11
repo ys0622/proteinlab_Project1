@@ -35,6 +35,21 @@ const relatedLinks = [
   },
 ];
 
+const faqItems = [
+  {
+    question: "요거트 랭킹에서 순위가 높다고 무조건 좋은 제품인가요?",
+    answer: "아닙니다. 랭킹은 단백질 밀도, 다이어트, 퍼포먼스 중 하나의 지표를 기준으로 매겨집니다. 어떤 지표에서 상위인지에 따라 해석이 달라지므로, 순위보다 내 목적에 맞는 지표를 먼저 확인하는 것이 중요합니다.",
+  },
+  {
+    question: "단백질 밀도와 단백질 총량 중 무엇을 더 봐야 하나요?",
+    answer: "같은 용량이라도 밀도가 높은 제품이 더 효율적으로 단백질을 채울 수 있습니다. 다만 총량이 중요한 상황(운동 후 보충 등)이라면 밀도보다 실제 단백질 그램 수를 우선 확인하는 편이 좋습니다.",
+  },
+  {
+    question: "다이어트 지표와 퍼포먼스 지표는 어떻게 다른가요?",
+    answer: "다이어트 지표는 칼로리와 당류 부담을 줄인 제품을 우선하고, 퍼포먼스 지표는 운동 후 보충처럼 단백질 활용도가 높은 제품을 우선합니다. 목적이 체중 관리인지 운동 회복인지에 따라 봐야 할 지표가 달라집니다.",
+  },
+];
+
 export default function ProteinYogurtRankingGuidePage() {
   const jsonLd = buildGuideJsonLd({
     title: "단백질 요거트 순위 보는 법 | 점수·등급 기준 해석",
@@ -42,6 +57,7 @@ export default function ProteinYogurtRankingGuidePage() {
     url: "https://proteinlab.kr/guides/product-selection-comparison/protein-yogurt-ranking-guide",
     datePublished: "2026-03-01",
     dateModified: "2026-05-29",
+    faq: faqItems,
   });
 
   return (
@@ -88,6 +104,18 @@ export default function ProteinYogurtRankingGuidePage() {
               ))}
             </div>
           </section>
+          <section className="rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
+            <h2 className="text-xl font-bold text-[var(--foreground)]">💬 자주 묻는 질문</h2>
+            <div className="mt-5 space-y-3">
+              {faqItems.map((item) => (
+                <div key={item.question} className="rounded-xl border border-[#dce8df] bg-[#f7fbf8] px-4 py-4">
+                  <p className="text-sm font-semibold text-[var(--foreground)]">Q. {item.question}</p>
+                  <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">A. {item.answer}</p>
+                </div>
+              ))}
+            </div>
+          </section>
+
           <section className="rounded-[28px] border border-[#e2ebe4] bg-[#f7fbf8] px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
             <h2 className="text-xl font-bold text-[var(--foreground)]">📖 다음으로 보기 좋은 페이지</h2>
             <div className="mt-5 grid gap-3 md:grid-cols-3">

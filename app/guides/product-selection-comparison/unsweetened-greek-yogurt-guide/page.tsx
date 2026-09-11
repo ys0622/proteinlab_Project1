@@ -33,6 +33,21 @@ const compareRows = [
   ["용량", "100g 기준 병행", "대용량 착시를 줄이기 위한 포인트"],
 ];
 
+const faqItems = [
+  {
+    question: "플레인이라고 적혀 있으면 무조건 무가당인가요?",
+    answer: "아닙니다. 플레인처럼 보여도 실제로는 당류가 포함된 제품인 경우가 있어서, 제품명만 보지 말고 영양성분표의 당류 수치를 직접 확인해야 합니다.",
+  },
+  {
+    question: "그릭요거트는 단백질 총량과 밀도 중 무엇이 더 중요한가요?",
+    answer: "그릭요거트는 100g당 단백질 밀도를 먼저 보는 것이 중요합니다. 총단백질 g만 보면 대용량 제품이 무조건 유리해 보이는 착시가 생길 수 있습니다.",
+  },
+  {
+    question: "450g, 800g 같은 대용량 제품은 어떻게 비교해야 하나요?",
+    answer: "총단백질만 보지 말고 100g 기준 밀도와 1회 섭취 기준을 함께 확인해야 합니다. 대용량 제품은 총량이 커 보여도 실제 밀도는 낮을 수 있습니다.",
+  },
+];
+
 export default function UnsweetenedGreekYogurtGuidePage() {
   const jsonLd = buildGuideJsonLd({
     title: "무가당 그릭요거트 추천 기준 | 당류·단백질 밀도 비교",
@@ -40,6 +55,7 @@ export default function UnsweetenedGreekYogurtGuidePage() {
     url: "https://proteinlab.kr/guides/product-selection-comparison/unsweetened-greek-yogurt-guide",
     datePublished: "2026-03-01",
     dateModified: "2026-05-29",
+    faq: faqItems,
   });
 
   return (
@@ -109,6 +125,18 @@ export default function UnsweetenedGreekYogurtGuidePage() {
                   ))}
                 </tbody>
               </table>
+            </div>
+          </section>
+
+          <section className="rounded-[28px] border border-[#e2ebe4] bg-[#f7fbf8] px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
+            <h2 className="text-xl font-bold text-[var(--foreground)]">💬 자주 묻는 질문</h2>
+            <div className="mt-5 space-y-3">
+              {faqItems.map((item) => (
+                <div key={item.question} className="rounded-xl border border-[#dce8df] bg-white px-4 py-4">
+                  <p className="text-sm font-semibold text-[var(--foreground)]">Q. {item.question}</p>
+                  <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">A. {item.answer}</p>
+                </div>
+              ))}
             </div>
           </section>
         </div>
