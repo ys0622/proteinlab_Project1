@@ -1065,9 +1065,9 @@ const dryou40Strawberry = getDrinkProduct("dryou-protein-40g-strawberry-350");
 
 export const himuneLineupConfig: ComparePageConfig = {
   slug: "himune-lineup",
-  title: "하이뮨 제품 종류 전체 정리",
-  description: "하이뮨 RTD 라인업을 프로틴 밸런스, 액티브, 액티브 제로, 식물성 고단백, 울트라 기준으로 정리하고 목적별 추천까지 바로 연결합니다.",
-  keywords: ["하이뮨 종류", "하이뮨 라인업", "하이뮨 프로틴밸런스 액티브 차이", "하이뮨 액티브 제로", "하이뮨 울트라"],
+  title: "하이뮨 단백질음료 종류·성분 비교 | 프로틴밸런스·액티브·울트라 차이",
+  description: "하이뮨 단백질음료 라인업(프로틴 밸런스, 액티브, 액티브 제로, 식물성 고단백, 울트라)의 성분과 맛별 차이를 표로 비교하고 목적별 추천까지 정리했습니다.",
+  keywords: ["하이뮨 단백질음료", "하이뮨 성분", "하이뮨 종류", "하이뮨 라인업", "하이뮨 프로틴밸런스 액티브 차이", "하이뮨 액티브 제로", "하이뮨 울트라"],
   badge: "브랜드 라인업",
   readingTime: "5분 읽기",
   updatedAt: "2026-08-26",
@@ -1148,9 +1148,9 @@ himuneLineupConfig.jsonLd = [articleJsonLd(himuneLineupConfig), faqJsonLd(himune
 
 export const takefitLineupConfig: ComparePageConfig = {
   slug: "takefit-lineup",
-  title: "테이크핏 제품 종류 전체 정리",
-  description: "테이크핏 맥스, 몬스터, 프로, 익스트림 라인의 차이를 단백질, 칼로리, 음용감 기준으로 정리하고 목적별 추천까지 연결합니다.",
-  keywords: ["테이크핏 종류", "테이크핏 맥스 몬스터 차이", "테이크핏 라인업", "테이크핏 프로", "테이크핏 익스트림"],
+  title: "테이크핏 맥스·몬스터·프로 성분 비교 | 라인업별 단백질·당류 차이",
+  description: "테이크핏 맥스, 몬스터, 프로, 익스트림의 성분(단백질·칼로리·당류)과 맛별 차이를 표로 비교합니다. 어떤 라인을 골라야 하는지 목적별로 정리했습니다.",
+  keywords: ["테이크핏 맥스", "테이크핏 맥스 성분", "테이크핏 몬스터 성분", "테이크핏 종류", "테이크핏 맥스 몬스터 차이", "테이크핏 라인업", "테이크핏 프로", "테이크핏 익스트림"],
   badge: "브랜드 라인업",
   readingTime: "5분 읽기",
   updatedAt: "2026-08-26",
@@ -1485,10 +1485,10 @@ newcareAllproteinConfig.jsonLd = [articleJsonLd(newcareAllproteinConfig), faqJso
 
 export const newcare41Vs25Config: ComparePageConfig = {
   slug: "newcare-41g-vs-25g",
-  title: "뉴케어 올프로틴 41g vs 25g 비교",
+  title: "뉴케어 올프로틴 41g 성분·맛 비교 | 25g과 뭐가 다를까",
   description:
-    "뉴케어 올프로틴 41g과 25g 라인을 단백질, 칼로리, 당류, 음용 목적 기준으로 비교합니다. 고단백 보충용인지 일상형인지 빠르게 정리합니다.",
-  keywords: ["뉴케어 올프로틴 41g", "뉴케어 올프로틴 25g", "뉴케어 41g 25g 차이", "뉴케어 올프로틴 비교"],
+    "뉴케어 올프로틴 41g(초코·커피우유·고소한맛)과 25g 라인의 단백질, 칼로리, 당류 성분을 표로 비교합니다. 고단백 보충용인지 일상형인지 바로 정리합니다.",
+  keywords: ["뉴케어 올프로틴 41g", "뉴케어 올프로틴 성분", "뉴케어 올프로틴 25g", "뉴케어 41g 25g 차이", "뉴케어 올프로틴 비교"],
   badge: "뉴케어 비교",
   readingTime: "4분 읽기",
   updatedAt: "2026-04-02",
