@@ -61,8 +61,29 @@ export async function getProductBySlugAsync(
   return null;
 }
 
-/** 카테고리별 제품 목록 (JSON + KV 신규, JSON 제품에 override 적용) */
-export async function getProductsByCategoryAsync(
+// 목록 페이지는 요청마다 제품 override를 KV에서 1건씩(전체 ~380회) 읽고 신규 제품도 순차 조회해서
+// TTFB가 1~4초로 늘어졌다. Worker 인스턴스는 요청 사이에 살아 있으므로 결과를 짧게 메모리에 둔다.
+// admin 화면은 이 함수를 쓰지 않아 override 수정은 최대 60초 안에 목록에 반영된다.
+const CATEGORY_CACHE_TTL_MS = 60_000;
+const categoryCache = new Map<
+  ProductCategory,
+  { at: number; value: Promise<ProductDetailProps[]> }
+>();
+
+/** 카테고리별 제품 목록 (JSON + KV 신규, JSON 제품에 override 적용, 60초 메모리 캐시) */
+export function getProductsByCategoryAsync(
+  category: ProductCategory
+): Promise<ProductDetailProps[]> {
+  const hit = categoryCache.get(category);
+  if (hit && Date.now() - hit.at < CATEGORY_CACHE_TTL_MS) return hit.value;
+
+  const value = loadProductsByCategory(category);
+  categoryCache.set(category, { at: Date.now(), value });
+  value.catch(() => categoryCache.delete(category));
+  return value;
+}
+
+async function loadProductsByCategory(
   category: ProductCategory
 ): Promise<ProductDetailProps[]> {
   const base =
