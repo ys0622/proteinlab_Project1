@@ -125,6 +125,51 @@ const compareMetrics: CompareMetric[] = [
   },
 ];
 
+type SpecRow = {
+  label: string;
+  unit: string;
+  better: "higher" | "lower" | null;
+  value: (p: ProductDetailProps) => number | undefined;
+};
+
+const SPEC_ROWS: SpecRow[] = [
+  { label: "단백질", unit: "g", better: "higher", value: (p) => p.proteinPerServing },
+  { label: "칼로리", unit: "kcal", better: "lower", value: (p) => p.calories },
+  { label: "당류", unit: "g", better: "lower", value: (p) => p.sugar },
+  { label: "지방", unit: "g", better: "lower", value: (p) => p.fat },
+  { label: "나트륨", unit: "mg", better: "lower", value: (p) => p.sodium },
+];
+
+const fmt = (n: number) => `${Math.round(n * 10) / 10}`;
+
+const hasBatchim = (text: string) => {
+  const code = text.trim().charCodeAt(text.trim().length - 1) - 0xac00;
+  return code >= 0 && code <= 11171 && code % 28 !== 0;
+};
+
+/** 두 제품의 실제 수치 차이를 한 문장씩 이어 붙인 결론 (수치가 없거나 같으면 생략) */
+function buildVerdict(products: ProductDetailProps[]): string | null {
+  if (products.length !== 2) return null;
+  const [a, b] = products;
+  const parts: string[] = [];
+  for (const row of SPEC_ROWS.slice(0, 3)) {
+    const av = row.value(a);
+    const bv = row.value(b);
+    if (av === undefined || bv === undefined || av === bv) continue;
+    const diff = fmt(Math.abs(av - bv));
+    const aWins = row.better === "higher" ? av > bv : av < bv;
+    const winner = aWins ? a : b;
+    const word = row.better === "higher" ? "더 많고" : "더 낮고";
+    const name = formatProductLabel(winner.brand, winner.name);
+    const topic = `${row.label}${hasBatchim(row.label) ? "은" : "는"}`;
+    parts.push(`${topic} ${name}${hasBatchim(name) ? "이" : "가"} ${diff}${row.unit} ${word}`);
+  }
+  if (parts.length === 0) return null;
+  const last = parts.length - 1;
+  parts[last] = parts[last].replace(/더 많고$/, "더 많습니다").replace(/더 낮고$/, "더 낮습니다");
+  return `${parts.join(", ")}.`;
+}
+
 function buildDifferenceCards(products: ProductDetailProps[]): DifferenceCard[] {
   if (products.length < 2) return [];
   const pair = products.slice(0, 2);
@@ -225,6 +270,8 @@ export default async function CompareLandingPage({ params }: PageProps) {
   const compareHref = `/compare?slugs=${landing.productSlugs.join(",")}`;
   const conversionPlan = priorityConversionPlans[landing.slug];
   const differenceCards = buildDifferenceCards(products);
+  const verdict = buildVerdict(products);
+  const specRows = SPEC_ROWS.filter((row) => products.some((p) => row.value(p) !== undefined));
   const canonical = `https://proteinlab.kr/compare/${landing.slug}`;
   const jsonLd = [
     {
@@ -309,6 +356,65 @@ export default async function CompareLandingPage({ params }: PageProps) {
       </section>
 
       <main className="mx-auto max-w-[1200px] px-4 pb-12 pt-6 md:px-6">
+        {products.length >= 2 ? (
+          <section className="mb-6 rounded-2xl border border-[#dce8df] bg-white p-4 md:p-5" style={{ wordBreak: "keep-all" }}>
+            <h2 className="text-lg font-bold leading-snug text-[var(--foreground)]">성분 한눈에 비교</h2>
+            {verdict ? (
+              <p className="mt-2 text-sm font-semibold leading-6 text-[#16412D] md:text-[15px]">{verdict}</p>
+            ) : null}
+            <div className="mt-3 overflow-x-auto">
+              <table className="w-full min-w-[420px] border-collapse text-sm">
+                <thead>
+                  <tr className="border-b border-[#e8e6e3] text-left">
+                    <th className="w-[72px] py-2 pr-2 text-xs font-semibold text-[var(--foreground-muted)]">항목</th>
+                    {products.map((product) => (
+                      <th key={product.slug} className="px-2 py-2 align-bottom">
+                        <Link
+                          href={`/product/${product.slug}`}
+                          className="text-sm font-semibold leading-snug text-[#24543d] hover:underline"
+                        >
+                          {formatProductLabel(product.brand, product.name)}
+                        </Link>
+                      </th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {specRows.map((row) => {
+                    const values = products.map((p) => row.value(p));
+                    const defined = values.filter((v): v is number => v !== undefined);
+                    const best =
+                      row.better && defined.length >= 2 && new Set(defined).size > 1
+                        ? row.better === "higher"
+                          ? Math.max(...defined)
+                          : Math.min(...defined)
+                        : null;
+                    return (
+                      <tr key={row.label} className="border-b border-[#f0eeeb]">
+                        <th className="py-2.5 pr-2 text-left text-xs font-semibold text-[var(--foreground-muted)]">{row.label}</th>
+                        {values.map((v, i) => (
+                          <td
+                            key={products[i].slug}
+                            className={`px-2 py-2.5 ${best !== null && v === best ? "font-bold text-[#1B7F5B]" : "text-[var(--foreground)]"}`}
+                          >
+                            {v === undefined ? "-" : `${fmt(v)}${row.unit}`}
+                          </td>
+                        ))}
+                      </tr>
+                    );
+                  })}
+                  <tr>
+                    <th className="py-2.5 pr-2 text-left text-xs font-semibold text-[var(--foreground-muted)]">용량</th>
+                    {products.map((p) => (
+                      <td key={p.slug} className="px-2 py-2.5 text-[var(--foreground)]">{p.capacity || "-"}</td>
+                    ))}
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p className="mt-2 text-xs text-[var(--foreground-muted)]">1회(1개) 제공량 기준, 제품 표기 수치입니다. 초록색은 해당 항목에서 더 유리한 쪽입니다.</p>
+          </section>
+        ) : null}
         {conversionPlan ? (
           <section className="mb-6 border-y border-[#dce8df] py-5">
             <h2 className="text-base font-semibold text-[var(--foreground)]">핵심 결론</h2>
