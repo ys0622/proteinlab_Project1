@@ -275,7 +275,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const productRoutes = allProducts
     .filter((p) => p.slug)
     .map((p) => ({ slug: p.slug! }));
-  const brandEntries: MetadataRoute.Sitemap = getBrandSummary(allProducts).map((brand) => ({
+  // 제품 1~2개짜리 브랜드 페이지는 내용이 얇아 사이트맵에서 뺀다(페이지 자체는 유지). 구글이 이미
+  // 발견됨-크롤링 안 됨 상태로 쌓아 둔 URL이 많아, 색인될 가능성이 높은 페이지에 크롤링을 집중시킨다.
+  const brandEntries: MetadataRoute.Sitemap = getBrandSummary(allProducts)
+    .filter((brand) => brand.total >= 3)
+    .map((brand) => ({
     url: `${SITE_URL}/brands/${brand.slug}`,
     lastModified: new Date("2026-03-01"),
     changeFrequency: "monthly" as const,
