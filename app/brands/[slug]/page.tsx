@@ -122,8 +122,28 @@ export async function generateMetadata({ params }: PageProps) {
   }
 
   const canonical = `https://proteinlab.kr/brands/${slug}`;
-  const title = `${brand} 단백질 제품 라인업 — 성분 비교 모음`;
-  const description = `${brand} 단백질 제품 전체 라인업을 단백질 함량, 당류, 칼로리 기준으로 한눈에 비교합니다. 어떤 제품부터 봐야 할지 바로 확인하세요.`;
+  const items = products.filter((item) => item.brand === brand);
+  const range = (values: Array<number | undefined>, unit: string) => {
+    const nums = values.filter((v): v is number => typeof v === "number" && Number.isFinite(v));
+    if (nums.length === 0) return null;
+    const min = Math.min(...nums);
+    const max = Math.max(...nums);
+    return min === max ? `${min}${unit}` : `${min}~${max}${unit}`;
+  };
+  const proteinRange = range(items.map((item) => item.proteinPerServing), "g");
+  const sugarRange = range(items.map((item) => item.sugar), "g");
+  const calorieRange = range(items.map((item) => item.calories), "kcal");
+  const facts = [
+    proteinRange && `단백질 ${proteinRange}`,
+    sugarRange && `당류 ${sugarRange}`,
+    calorieRange && `${calorieRange}`,
+  ].filter(Boolean);
+  // 검색어가 "○○ 성분"·"○○ 성분표" 형태라 제목에 그대로 넣고, 설명에는 실제 수치 범위를 넣는다.
+  const title = `${brand} 성분표 — 단백질·당류·칼로리 ${items.length}종 한눈에 비교`;
+  const description =
+    `${brand} 단백질 제품 ${items.length}종의 성분표를 표로 비교합니다.` +
+    (facts.length ? ` 1회 기준 ${facts.join(" · ")}.` : "") +
+    ` 어떤 제품부터 봐야 할지 바로 확인하세요.`;
   return {
     title,
     description,
