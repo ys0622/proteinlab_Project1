@@ -142,9 +142,12 @@ const SPEC_ROWS: SpecRow[] = [
 
 const fmt = (n: number) => `${Math.round(n * 10) / 10}`;
 
+// 괄호 등 뒤에 붙은 기호는 건너뛰고 마지막 한글 글자의 받침으로 판정한다.
 const hasBatchim = (text: string) => {
-  const code = text.trim().charCodeAt(text.trim().length - 1) - 0xac00;
-  return code >= 0 && code <= 11171 && code % 28 !== 0;
+  const syllables = text.match(/[가-힣]/g);
+  if (!syllables) return false;
+  const code = syllables[syllables.length - 1].charCodeAt(0) - 0xac00;
+  return code % 28 !== 0;
 };
 
 /** 두 제품의 실제 수치 차이를 한 문장씩 이어 붙인 결론 (수치가 없거나 같으면 생략) */
