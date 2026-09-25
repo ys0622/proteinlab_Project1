@@ -63,15 +63,15 @@ const GUIDE_CARDS: {
 }[] = [
   // 2026-08-30 GA4 최근 28일 데이터 기준 실제 인기 콘텐츠 TOP5 + 신규 가이드 1개로 재구성
   // 1위: 셀렉스 vs 테이크핏 vs 하이뮨 비교 (177 views)
-  { category: "3자 비교", title: "셀렉스 vs 테이크핏 vs 하이뮨", desc: "대표 브랜드 3개를 한 번에 비교", href: "/guides/product-selection-comparison/selex-vs-takefit-vs-himune", thumbImg: "/rtd-drink-image/" + encodeURIComponent("매일유업 셀렉스 프로핏 스포츠 와일드 초코 45g 350ml.png"), thumbImg2: "/rtd-drink-image/takefit-max-choco-250.webp", thumbBg: "linear-gradient(135deg, #7a5c2e 0%, #b8843f 100%)", thumbEmoji: "⚖️" },
+  { category: "3자 비교", title: "셀렉스 vs 테이크핏 vs 하이뮨", desc: "대표 브랜드 3개를 한 번에 비교", href: "/guides/product-selection-comparison/selex-vs-takefit-vs-himune", thumbImg: "/rtd-drink-image/" + encodeURIComponent("매일유업 셀렉스 프로핏 스포츠 와일드 초코 45g 350ml.webp"), thumbImg2: "/rtd-drink-image/takefit-max-choco-250.webp", thumbBg: "linear-gradient(135deg, #7a5c2e 0%, #b8843f 100%)", thumbEmoji: "⚖️" },
   // 2위: 프로티원 vs 잇더핏 단백질 쉐이크 비교 (152 views)
   { category: "쉐이크 비교", title: "프로티원 vs 잇더핏", desc: "저당 파우치형 쉐이크 성분 비교", href: "/compare/proteone-vs-itthefit-shake", thumbImg: "/shake-image/proteone-proteinshake-choco-40.webp", thumbImg2: "/shake-image/itthefit-proteinshake-double-choco-40.webp", thumbBg: "linear-gradient(135deg, #6b4a2e 0%, #a67c4a 100%)", thumbEmoji: "🥤" },
   // 3위: 단백질 랭킹 2026 (126 views)
   { category: "데이터 랭킹", title: "단백질 랭킹 2026", desc: "밀도·다이어트·퍼포먼스 기준 순위", href: "/ranking", thumbImg: "/guide-thumbnails/protein-ranking-2026-v1.png", thumbBg: "linear-gradient(135deg, #1a6b5a 0%, #2d9e7f 100%)", thumbEmoji: "🏆" },
-  // 4위: 테이크핏 vs 하이뮨 단백질 음료 비교 (61 views)
-  { category: "브랜드 비교", title: "테이크핏 vs 하이뮨", desc: "대중형 RTD 음료 브랜드 직접 비교", href: "/compare/takefit-vs-hymune-drink", thumbImg: "/rtd-drink-image/takefit-max-choco-250.webp", thumbImg2: "/rtd-drink-image/hymune-balance-active-deepchoco-250.webp", thumbBg: "linear-gradient(135deg, #2a6070 0%, #3d8fa6 100%)", thumbEmoji: "🆚" },
-  // 5위: 뉴케어 vs 하이뮨 단백질 음료 비교 (60 views)
-  { category: "브랜드 비교", title: "뉴케어 vs 하이뮨", desc: "시니어·회복기 보완용 브랜드 비교", href: "/guides/product-selection-comparison/newcare-vs-hymune", thumbImg: "/rtd-drink-image/newcare-all-protein-choco-245.webp", thumbImg2: "/rtd-drink-image/hymune-balance-active-original-250.webp", thumbBg: "linear-gradient(135deg, #2c4a2e 0%, #4a7a4e 100%)", thumbEmoji: "🆚" },
+  // 단백질바 TOP10 — GA4 28일 107 views(가이드 상위권), 네이버 "단백질바 추천" 노출 1,241
+  { category: "바 랭킹", title: "단백질 바 추천 TOP 10", desc: "운동 후·다이어트 간식 기준으로 골랐어요", href: "/guides/product-selection-comparison/protein-bar-top10", thumbImg: "/bar-image/benof-proteinbar-chunky-choco.webp", thumbImg2: "/bar-image/dryou-proteinbar-bite-crunch.webp", thumbBg: "linear-gradient(135deg, #6a4a2a 0%, #a8763c 100%)", thumbEmoji: "🍫" },
+  // 프로틴 요거트 TOP5 — 네이버 "프로틴 요거트" 노출 606, 요거트 카테고리 진입점
+  { category: "요거트 랭킹", title: "단백질 요거트 추천 TOP 5", desc: "그릭·프로틴 요거트 1회 기준 비교", href: "/guides/product-selection-comparison/protein-yogurt-top5", thumbImg: "/protein-yogurt-image/yopro-plain-150.webp", thumbImg2: "/protein-yogurt-image/greekday-light-450.webp", thumbBg: "linear-gradient(135deg, #3d5a80 0%, #6c8fb8 100%)", thumbEmoji: "🥛" },
   // 신규: 단백질 급원 종류 완전정리 — 갓 배포된 가이드, 트래픽 데이터는 아직 없지만 노출 확보 목적
   { category: "기본 지식", title: "단백질 급원 종류 완전정리", desc: "WPI·WPC부터 카제인·식물성까지", href: "/guides/basics/protein-source-types", thumbImg: "/guide-thumbnails/protein-source-types-v1.png", thumbBg: "linear-gradient(135deg, #5a4a2e 0%, #8c7040 100%)", thumbEmoji: "🧪" },
 ];
