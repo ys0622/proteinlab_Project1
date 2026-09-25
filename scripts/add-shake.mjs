@@ -7,7 +7,8 @@
  *
  * 하는 일: 사진을 흰 배경 WebP로 정리(여백 제거 후 패딩) → public/shake-image,
  *          성분표를 public/shake-spec 로 복사, slugToShakeImage/Spec 갱신,
- *          shakeProductsData.json 에 제품 추가(밀도·네이버 링크·공식몰·태그는 자동 채움).
+ *          shakeProductsData.json 에 제품 추가(밀도·네이버 링크·공식몰·태그는 자동 채움),
+ *          newProducts.json 에 등록일 기록(홈 "새로 등록된 제품"과 신제품 가산점에 사용).
  *
  * JSON 형식(제품 1개 또는 배열):
  * {
@@ -28,6 +29,7 @@ const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const dataPath = resolve(root, "app/data/shakeProductsData.json");
 const imgMapPath = resolve(root, "app/data/slugToShakeImage.json");
 const specMapPath = resolve(root, "app/data/slugToShakeSpec.json");
+const newProductsPath = resolve(root, "app/data/newProducts.json");
 const imgDir = resolve(root, "public/shake-image");
 const specDir = resolve(root, "public/shake-spec");
 
@@ -50,6 +52,8 @@ const baseDir = dirname(resolve(root, inputPath));
 const data = load(dataPath);
 const imgMap = load(imgMapPath);
 const specMap = load(specMapPath);
+const newProducts = load(newProductsPath);
+const today = new Date().toISOString().slice(0, 10);
 
 const REQUIRED_NUTRITION = ["calories", "protein", "carbs", "sugars", "fat", "sodium"];
 const errors = [];
@@ -149,11 +153,13 @@ for (const it of items) {
   imgMap[it.slug] = `${it.slug}.webp`;
   specMap[it.slug] = specName;
   data.push(product);
+  newProducts.push({ slug: it.slug, addedAt: today });
 }
 
 if (!dryRun) {
   save(dataPath, data);
   save(imgMapPath, imgMap);
   save(specMapPath, specMap);
+  save(newProductsPath, newProducts);
   console.log(`\n완료: ${items.length}개 등록. 다음 단계 → 타입체크 후 커밋·배포`);
 }

@@ -8,6 +8,8 @@ import Footer from "./components/Footer";
 import Header from "./components/Header";
 import HomePopularCarousel, { type CarouselProduct } from "./components/HomePopularCarousel";
 import HomeTrackedLink from "./components/HomeTrackedLink";
+import ProductCard from "./components/ProductCard";
+import newProductsRaw from "./data/newProducts.json";
 import type { ProductDetailProps } from "./data/products";
 import { getProductsByCategoryAsync } from "./lib/productData";
 import { getCategoryProductCounts } from "./lib/productCounts";
@@ -130,6 +132,16 @@ export default async function Home() {
   const topYogurts = sortByHybrid(yogurts, "yogurt");
   const topShakes  = sortByHybrid(shakes,  "shake");
 
+  // 최근 등록 순으로 4개 — 재방문할 이유(새로 올라온 제품)를 홈에서 바로 보여준다.
+  const productBySlug = new Map(
+    [...drinks, ...bars, ...yogurts, ...shakes].map((p) => [p.slug ?? "", p] as const),
+  );
+  const newlyAdded = [...(newProductsRaw as { slug: string; addedAt: string }[])]
+    .sort((a, b) => b.addedAt.localeCompare(a.addedAt))
+    .map((entry) => ({ entry, product: productBySlug.get(entry.slug) }))
+    .filter((item): item is { entry: { slug: string; addedAt: string }; product: ProductDetailProps } => item.product != null)
+    .slice(0, 4);
+
   const carouselProducts = {
     drink: topDrinks.map(toCarouselProduct),
     bar: topBars.map(toCarouselProduct),
@@ -238,6 +250,31 @@ export default async function Home() {
           </Link>
         </div>
       </section>
+
+      {newlyAdded.length > 0 ? (
+        <section className="mx-auto max-w-[1180px] px-4 pt-4 md:px-5 md:pt-6">
+          <div className="mb-3 flex items-baseline justify-between">
+            <h2 className="font-extrabold text-[17px] md:text-[24px]" style={{ color: "#1A2B1E", letterSpacing: "-0.02em" }}>
+              새로 등록된 제품
+            </h2>
+            <span className="text-[11px] font-medium text-[#6b7a70] md:text-[12px]">
+              {newlyAdded[0].entry.addedAt} 업데이트
+            </span>
+          </div>
+          <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
+            {newlyAdded.map(({ product }) => (
+              <ProductCard
+                key={product.slug}
+                {...toCarouselProduct(product)}
+                maxVisibleBadges={3}
+                fixedTitleLines={2}
+                hideSupplementalBadges
+                coupangOnly
+              />
+            ))}
+          </div>
+        </section>
+      ) : null}
 
       {/* ─── 5. 가이드 & 인사이트 ─── */}
       <section className="mx-auto max-w-[1180px] px-4 pt-4 md:px-5 md:pt-6">

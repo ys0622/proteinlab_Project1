@@ -33,7 +33,8 @@ import {
 } from "../../components/productBadgeUtils";
 import ProductReviewSection from "../../components/ProductReviewSection";
 import ServingBasisNotice from "../../components/ServingBasisNotice";
-import { getNutritionDetail } from "../../data/products";
+import { getAllProducts, getNutritionDetail } from "../../data/products";
+import { getAllCompareLandings } from "../../data/compareLandings";
 import { brandToSlug } from "../../lib/brandHubs";
 import { getCategoryHref, getCategoryLabel } from "../../lib/categories";
 import {
@@ -226,7 +227,19 @@ function buildRecommendedFor(product: ProductDetailProps): string[] {
   return recs.slice(0, 3);
 }
 
+/** 이 제품(없으면 같은 브랜드 제품)이 들어간 비교 랜딩을 찾는다. 예전에는 카테고리마다 랜딩 1개로 고정돼 있었다. */
+function findRelevantCompareLanding(product: ProductDetailProps) {
+  const landings = getAllCompareLandings();
+  const exact = landings.find((landing) => landing.productSlugs.includes(product.slug));
+  if (exact) return exact;
+  const brandBySlug = new Map(getAllProducts().map((item) => [item.slug, item.brand]));
+  return (
+    landings.find((landing) => landing.productSlugs.some((slug) => brandBySlug.get(slug) === product.brand)) ?? null
+  );
+}
+
 function buildProductInternalLinks(product: ProductDetailProps) {
+  const relevantLanding = findRelevantCompareLanding(product);
   const category = (product.productType ?? "drink") as "drink" | "bar" | "yogurt" | "shake";
   const categoryHref = getCategoryDetailHref(category);
   const categoryLabel = getProductKindLabel(product.productType);
@@ -347,11 +360,17 @@ function buildProductInternalLinks(product: ProductDetailProps) {
       title: "이 제품으로 비교 시작",
       description: "현재 제품을 기준으로 다른 제품과 수치를 나란히 비교합니다.",
     },
-    {
-      href: compareLandingHref,
-      title: compareLandingTitle,
-      description: "대표 비교 조합을 먼저 보고 비슷한 제품 차이를 빠르게 읽습니다.",
-    },
+    relevantLanding
+      ? {
+          href: `/compare/${relevantLanding.slug}`,
+          title: relevantLanding.title,
+          description: "이 제품이 들어간 대표 비교입니다. 수치를 나란히 보고 차이를 바로 읽습니다.",
+        }
+      : {
+          href: compareLandingHref,
+          title: compareLandingTitle,
+          description: "대표 비교 조합을 먼저 보고 비슷한 제품 차이를 빠르게 읽습니다.",
+        },
     {
       href: `/brands/${brandToSlug(product.brand)}`,
       title: `${product.brand} 브랜드 보기`,
