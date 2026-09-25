@@ -53,7 +53,7 @@ export default function TrackedCoupangLink({
     <a
       href={safeHref}
       target="_blank"
-      rel="noreferrer noopener"
+      rel="sponsored noreferrer noopener"
       className={className}
       aria-label={ariaLabel}
       onClick={handleClick}

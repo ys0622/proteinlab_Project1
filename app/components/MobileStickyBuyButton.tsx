@@ -56,7 +56,7 @@ export default function MobileStickyBuyButton({
           <a
             href={coupangHref}
             target="_blank"
-            rel="noopener noreferrer"
+            rel="sponsored noopener noreferrer"
             onClick={() =>
               purchaseClick({
                 productId: slug,

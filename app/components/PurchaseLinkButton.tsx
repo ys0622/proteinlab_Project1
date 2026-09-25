@@ -73,7 +73,7 @@ export default function PurchaseLinkButton({
     <a
       href={href}
       target="_blank"
-      rel="noopener noreferrer"
+      rel={tone === "coupang" ? "sponsored noopener noreferrer" : "noopener noreferrer"}
       className={className}
       onClick={handleClick}
       title={title}
