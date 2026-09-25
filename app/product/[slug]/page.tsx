@@ -453,7 +453,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
   const detailCategoryHref = getCategoryDetailHref(category);
   const categoryProducts = getStaticProductsByCategory(category);
   const similarProducts = getSimilarProducts(product, categoryProducts, 6);
-  const internalLinks = buildProductInternalLinks(product).slice(0, 4);
+  const internalLinks = buildProductInternalLinks(product).slice(0, 6);
   const recommendedFor = buildRecommendedFor(product);
   const tasteAwards = product.awards ?? [];
 
