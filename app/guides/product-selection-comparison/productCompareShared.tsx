@@ -197,6 +197,11 @@ export function ComparisonGuidePage({ config }: { config: ComparePageConfig }) {
     (item, index, array) => array.findIndex((candidate) => candidate.href === item.href) === index,
   );
   const jsonLd = buildCompareJsonLd(config);
+  // 열이 3개 이하이고 값이 짧으면 모바일에서도 옆 스크롤 없이 모든 제품이 한 화면에 보이게 한다.
+  // (예전에는 min-w-[640px]로 고정돼 390px 화면에서 첫 제품 하나만 보이고 나머지는 스크롤해야 했다.)
+  const columnCount = (config.comparisonColumns ?? []).length;
+  const longestValue = Math.max(0, ...config.comparisonRows.flatMap((row) => row.values.map((value) => value.length)));
+  const compactMobileTable = columnCount > 0 && columnCount <= 3 && longestValue <= 16;
 
   return (
     <div className="min-h-screen bg-white">
@@ -242,22 +247,22 @@ export function ComparisonGuidePage({ config }: { config: ComparePageConfig }) {
               <span className="text-xs text-[var(--foreground-muted)]">{config.methodologyNote ?? "ProteinLab DB 기준"}</span>
             </div>
             {/* Mobile: compact scroll table */}
-            <div className="mt-4 overflow-x-auto rounded-2xl border border-[#d9e4f0] bg-[#f7f9fc] md:hidden">
-              <table className="min-w-[640px] border-collapse text-left text-xs">
+            <div className={`mt-4 rounded-2xl border border-[#d9e4f0] bg-[#f7f9fc] md:hidden ${compactMobileTable ? "" : "overflow-x-auto"}`}>
+              <table className={`border-collapse text-left text-xs ${compactMobileTable ? "w-full table-fixed" : "min-w-[640px]"}`}>
                 <thead>
                   <tr className="border-b border-[#e8edf3] text-[var(--foreground)]">
-                    <th className="whitespace-nowrap px-3 py-2 font-semibold">항목</th>
+                    <th className={`px-2 py-2 font-semibold ${compactMobileTable ? "w-[64px]" : "whitespace-nowrap px-3"}`}>항목</th>
                     {(config.comparisonColumns ?? []).map((column) => (
-                      <th key={column} className="whitespace-nowrap px-3 py-2 font-semibold">{column}</th>
+                      <th key={column} className={`px-2 py-2 font-semibold ${compactMobileTable ? "break-keep leading-4" : "whitespace-nowrap px-3"}`}>{column}</th>
                     ))}
                   </tr>
                 </thead>
                 <tbody>
                   {config.comparisonRows.map((row) => (
                     <tr key={row.label} className="border-b border-[#eef2f6] last:border-b-0">
-                      <td className="whitespace-nowrap px-3 py-2 font-medium text-[var(--foreground)]">{row.label}</td>
+                      <td className={`px-2 py-2 font-medium text-[var(--foreground)] ${compactMobileTable ? "break-keep" : "whitespace-nowrap px-3"}`}>{row.label}</td>
                       {row.values.map((value, index) => (
-                        <td key={`${row.label}-${index}`} className="px-3 py-2 leading-5 text-[var(--foreground-muted)]">{value}</td>
+                        <td key={`${row.label}-${index}`} className={`px-2 py-2 leading-5 text-[var(--foreground-muted)] ${compactMobileTable ? "break-keep" : "px-3"}`}>{value}</td>
                       ))}
                     </tr>
                   ))}
@@ -291,9 +296,10 @@ export function ComparisonGuidePage({ config }: { config: ComparePageConfig }) {
           {config.sections.map((section) => (
             <section key={section.title} className="rounded-[28px] border border-[#d9e4f0] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(32,46,68,0.05)]">
               <h2 className="text-xl font-bold text-[var(--foreground)]">{section.title}</h2>
-              <div className="-mx-1 mt-4 flex gap-2 overflow-x-auto px-1 pb-1 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:mx-0 md:mt-5 md:grid md:grid-cols-3 md:gap-3 md:overflow-visible md:px-0 md:pb-0">
+              {/* 모바일에서 가로 스와이프 카드로 두면 첫 카드만 보이고 나머지 결론이 숨는다. 세로로 쌓아 모두 보이게 한다. */}
+              <div className="mt-4 grid gap-3 md:mt-5 md:grid-cols-3">
                 {section.items.map((item, iIdx) => (
-                  <article key={item.title} className="min-w-[78vw] shrink-0 rounded-2xl border border-[#d9e4f0] bg-[#f7f9fc] p-4 md:min-w-0">
+                  <article key={item.title} className="rounded-2xl border border-[#d9e4f0] bg-[#f7f9fc] p-4">
                     <div className="flex items-start gap-2.5">
                       <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#ddeaf3] text-[10px] font-bold text-[#4a6178]">
                         {iIdx + 1}
