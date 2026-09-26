@@ -144,6 +144,7 @@ export function buildCategoryGuideMetadata(config: CategoryGuideConfig): Metadat
       ...(config.updatedAt ? { modifiedTime: config.updatedAt } : {}),
     },
     twitter: {
+    images: ["https://proteinlab.kr/opengraph-image"],
       card: "summary",
       title: config.title,
       description: config.description,

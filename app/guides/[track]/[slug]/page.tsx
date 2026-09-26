@@ -244,8 +244,8 @@ export async function generateMetadata({
       title,
       description,
       alternates: { canonical },
-      openGraph: { title, description, url: canonical, type: "article" as const, locale: "ko_KR", siteName: "ProteinLab" },
-      twitter: { card: "summary" as const, title, description },
+      openGraph: { images: [{ url: "https://proteinlab.kr/opengraph-image", width: 1200, height: 630, alt: "ProteinLab 단백질 제품 비교" }], title, description, url: canonical, type: "article" as const, locale: "ko_KR", siteName: "ProteinLab" },
+      twitter: { images: ["https://proteinlab.kr/opengraph-image"], card: "summary" as const, title, description },
     };
   }
 
@@ -293,8 +293,8 @@ export async function generateMetadata({
     title: slot.title,
     description: slot.description,
     alternates: { canonical },
-    openGraph: { title: slot.title, description: slot.description, url: canonical, type: "article" as const, locale: "ko_KR", siteName: "ProteinLab" },
-    twitter: { card: "summary" as const, title: slot.title, description: slot.description },
+    openGraph: { images: [{ url: "https://proteinlab.kr/opengraph-image", width: 1200, height: 630, alt: "ProteinLab 단백질 제품 비교" }], title: slot.title, description: slot.description, url: canonical, type: "article" as const, locale: "ko_KR", siteName: "ProteinLab" },
+    twitter: { images: ["https://proteinlab.kr/opengraph-image"], card: "summary" as const, title: slot.title, description: slot.description },
   };
 }
 

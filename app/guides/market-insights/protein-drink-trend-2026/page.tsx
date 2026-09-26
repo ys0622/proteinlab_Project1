@@ -10,6 +10,7 @@ export const metadata = {
     canonical: "https://proteinlab.kr/guides/market-insights/protein-drink-trend-2026",
   },
   openGraph: {
+    images: [{ url: "https://proteinlab.kr/opengraph-image", width: 1200, height: 630, alt: "ProteinLab 단백질 제품 비교" }],
     title: "2026 단백질 음료 시장 트렌드 | 47g·52g 초고단백 경쟁",
     description: "테이크핏 몬스터 딸기맛 47g 리뉴얼과 랩노쉬 52g 초고함량 제품 출시 준비까지, 2026년 단백질 음료 시장의 초고단백 경쟁과 저당 RTD 흐름을 정리합니다.",
     url: "https://proteinlab.kr/guides/market-insights/protein-drink-trend-2026",
@@ -18,6 +19,7 @@ export const metadata = {
     siteName: "ProteinLab",
   },
   twitter: {
+    images: ["https://proteinlab.kr/opengraph-image"],
     card: "summary",
     title: "2026 단백질 음료 시장 트렌드 | 47g·52g 초고단백 경쟁",
     description: "테이크핏 몬스터 딸기맛 47g 리뉴얼과 랩노쉬 52g 초고함량 제품 출시 준비까지, 2026년 단백질 음료 시장의 초고단백 경쟁과 저당 RTD 흐름을 정리합니다.",

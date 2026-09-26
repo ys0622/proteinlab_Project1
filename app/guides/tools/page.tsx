@@ -18,11 +18,13 @@ export const metadata = {
     "체중별 단백질 섭취량",
   ],
   openGraph: {
+    images: [{ url: "https://proteinlab.kr/opengraph-image", width: 1200, height: 630, alt: "ProteinLab 단백질 제품 비교" }],
     title: "하루 단백질 섭취량 계산기",
     description:
       "체중과 활동량을 기준으로 하루 단백질 권장량을 계산해보세요. ProteinLab 계산기로 나에게 맞는 단백질 섭취 기준을 빠르게 확인할 수 있습니다.",
   },
   twitter: {
+    images: ["https://proteinlab.kr/opengraph-image"],
     card: "summary",
     title: "하루 단백질 섭취량 계산기",
     description:

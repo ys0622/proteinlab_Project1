@@ -130,6 +130,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       follow: true,
     },
     openGraph: {
+    images: [{ url: "https://proteinlab.kr/opengraph-image", width: 1200, height: 630, alt: "ProteinLab 단백질 제품 비교" }],
       title,
       description,
       url: canonical,
@@ -138,6 +139,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       siteName: "ProteinLab",
     },
     twitter: {
+    images: ["https://proteinlab.kr/opengraph-image"],
       card: "summary",
       title,
       description,

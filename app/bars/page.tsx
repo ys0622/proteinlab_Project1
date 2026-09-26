@@ -25,6 +25,7 @@ export async function generateMetadata() {
       canonical: "https://proteinlab.kr/bars",
     },
     openGraph: {
+    images: [{ url: "https://proteinlab.kr/opengraph-image", width: 1200, height: 630, alt: "ProteinLab 단백질 제품 비교" }],
       title: `단백질 바 추천 비교 ${products.length}종 — 고단백·저당 성분 기준 2026`,
       description: `단백질 바 ${products.length}개를 단백질 함량, 당류, 칼로리, 중량 기준으로 비교합니다. 운동보충·저당·식사보완 목적에 맞는 제품을 성분 데이터로 바로 선택하세요.`,
       url: "https://proteinlab.kr/bars",
@@ -33,6 +34,7 @@ export async function generateMetadata() {
       siteName: "ProteinLab",
     },
     twitter: {
+    images: ["https://proteinlab.kr/opengraph-image"],
       card: "summary",
       title: `단백질 바 추천 비교 ${products.length}종 — 고단백·저당 성분 기준 2026`,
       description: `단백질 바 ${products.length}개를 단백질 함량, 당류, 칼로리, 중량 기준으로 비교합니다. 운동보충·저당·식사보완 목적에 맞는 제품을 성분 데이터로 바로 선택하세요.`,

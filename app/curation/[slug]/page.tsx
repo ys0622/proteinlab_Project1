@@ -30,8 +30,8 @@ export async function generateMetadata({ params }: CurationPageProps) {
       title: fallbackTitle,
       description: fallbackDesc,
       alternates: { canonical: "https://proteinlab.kr/curation" },
-      openGraph: { title: fallbackTitle, description: fallbackDesc, url: "https://proteinlab.kr/curation", type: "website" as const, locale: "ko_KR", siteName: "ProteinLab" },
-      twitter: { card: "summary" as const, title: fallbackTitle, description: fallbackDesc },
+      openGraph: { images: [{ url: "https://proteinlab.kr/opengraph-image", width: 1200, height: 630, alt: "ProteinLab 단백질 제품 비교" }], title: fallbackTitle, description: fallbackDesc, url: "https://proteinlab.kr/curation", type: "website" as const, locale: "ko_KR", siteName: "ProteinLab" },
+      twitter: { images: ["https://proteinlab.kr/opengraph-image"], card: "summary" as const, title: fallbackTitle, description: fallbackDesc },
     };
   }
 
@@ -47,8 +47,8 @@ export async function generateMetadata({ params }: CurationPageProps) {
     title,
     description,
     alternates: { canonical: url },
-    openGraph: { title, description, url, type: "website" as const, locale: "ko_KR", siteName: "ProteinLab" },
-    twitter: { card: "summary" as const, title, description },
+    openGraph: { images: [{ url: "https://proteinlab.kr/opengraph-image", width: 1200, height: 630, alt: "ProteinLab 단백질 제품 비교" }], title, description, url, type: "website" as const, locale: "ko_KR", siteName: "ProteinLab" },
+    twitter: { images: ["https://proteinlab.kr/opengraph-image"], card: "summary" as const, title, description },
   };
 }
 

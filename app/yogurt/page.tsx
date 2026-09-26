@@ -25,6 +25,7 @@ export async function generateMetadata() {
       canonical: "https://proteinlab.kr/yogurt",
     },
     openGraph: {
+    images: [{ url: "https://proteinlab.kr/opengraph-image", width: 1200, height: 630, alt: "ProteinLab 단백질 제품 비교" }],
       title: `단백질 요거트 추천 비교 ${products.length}종 — 그릭·드링킹·저당 기준 2026`,
       description: `단백질 요거트 ${products.length}개를 단백질 함량, 당류, 칼로리, 단백질 밀도 기준으로 비교합니다. 그릭요거트, 드링킹 요거트, 대용량 요거트 추천과 순위까지 한 번에 확인하세요.`,
       url: "https://proteinlab.kr/yogurt",
@@ -33,6 +34,7 @@ export async function generateMetadata() {
       siteName: "ProteinLab",
     },
     twitter: {
+    images: ["https://proteinlab.kr/opengraph-image"],
       card: "summary",
       title: `단백질 요거트 추천 비교 ${products.length}종 — 그릭·드링킹·저당 기준 2026`,
       description: `단백질 요거트 ${products.length}개를 단백질 함량, 당류, 칼로리, 단백질 밀도 기준으로 비교합니다. 그릭요거트, 드링킹 요거트, 대용량 요거트 추천과 순위까지 한 번에 확인하세요.`,

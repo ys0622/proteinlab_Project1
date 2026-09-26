@@ -12,6 +12,7 @@ export const metadata = {
   description: _pageDesc,
   alternates: { canonical: "https://proteinlab.kr/guides/basics/immunity-hormone" },
   openGraph: {
+    images: [{ url: "https://proteinlab.kr/opengraph-image", width: 1200, height: 630, alt: "ProteinLab 단백질 제품 비교" }],
     title: _pageTitle,
     description: _pageDesc,
     url: "https://proteinlab.kr/guides/basics/immunity-hormone",
@@ -20,6 +21,7 @@ export const metadata = {
     siteName: "ProteinLab",
   },
   twitter: {
+    images: ["https://proteinlab.kr/opengraph-image"],
     card: "summary" as const,
     title: _pageTitle,
     description: _pageDesc,

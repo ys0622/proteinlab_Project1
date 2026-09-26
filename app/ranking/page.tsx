@@ -18,6 +18,7 @@ export const metadata = {
     canonical: "https://proteinlab.kr/ranking",
   },
   openGraph: {
+    images: [{ url: "https://proteinlab.kr/opengraph-image", width: 1200, height: 630, alt: "ProteinLab 단백질 제품 비교" }],
     title: "단백질 랭킹 2026 — 밀도·다이어트·퍼포먼스 기준 순위",
     description:
       "단백질 음료, 바, 요거트, 쉐이크를 단백질 밀도, 다이어트 점수, 퍼포먼스 기준으로 계산한 순위입니다. 카테고리별로 상위 제품을 한눈에 확인하세요.",
@@ -27,6 +28,7 @@ export const metadata = {
     siteName: "ProteinLab",
   },
   twitter: {
+    images: ["https://proteinlab.kr/opengraph-image"],
     card: "summary",
     title: "단백질 랭킹 2026 — 밀도·다이어트·퍼포먼스 기준 순위",
     description:

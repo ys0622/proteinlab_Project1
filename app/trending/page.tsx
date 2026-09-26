@@ -20,6 +20,7 @@ export const metadata: Metadata = {
   description,
   alternates: { canonical },
   openGraph: {
+    images: [{ url: "https://proteinlab.kr/opengraph-image", width: 1200, height: 630, alt: "ProteinLab 단백질 제품 비교" }],
     title,
     description,
     url: canonical,
@@ -28,6 +29,7 @@ export const metadata: Metadata = {
     siteName: "ProteinLab",
   },
   twitter: {
+    images: ["https://proteinlab.kr/opengraph-image"],
     card: "summary",
     title,
     description,

@@ -17,6 +17,7 @@ export const metadata = {
     canonical: "https://proteinlab.kr/recommend",
   },
   openGraph: {
+    images: [{ url: "https://proteinlab.kr/opengraph-image", width: 1200, height: 630, alt: "ProteinLab 단백질 제품 비교" }],
     title: "단백질 제품 맞춤 추천 — 목적별·조건별로 바로 좁히기",
     description:
       "저당·고단백·식사대용 등 내 조건에 맞는 단백질 음료, 바, 요거트, 쉐이크를 빠르게 추려드립니다. 목적만 선택하면 바로 제품 목록이 나옵니다.",
@@ -26,6 +27,7 @@ export const metadata = {
     siteName: "ProteinLab",
   },
   twitter: {
+    images: ["https://proteinlab.kr/opengraph-image"],
     card: "summary",
     title: "단백질 제품 맞춤 추천 — 목적별·조건별로 바로 좁히기",
     description:

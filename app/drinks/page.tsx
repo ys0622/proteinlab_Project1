@@ -29,6 +29,7 @@ export async function generateMetadata(): Promise<Metadata> {
       canonical: "https://proteinlab.kr/drinks",
     },
     openGraph: {
+    images: [{ url: "https://proteinlab.kr/opengraph-image", width: 1200, height: 630, alt: "ProteinLab 단백질 제품 비교" }],
       title,
       description,
       url: "https://proteinlab.kr/drinks",
@@ -37,6 +38,7 @@ export async function generateMetadata(): Promise<Metadata> {
       siteName: "ProteinLab",
     },
     twitter: {
+    images: ["https://proteinlab.kr/opengraph-image"],
       card: "summary",
       title,
       description,
