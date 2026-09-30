@@ -817,14 +817,14 @@ const takefitMonsterChocobanana = getDrinkProduct("takefit-monster-chocobanana-3
 
 export const selexsLineupConfig: ComparePageConfig = {
   slug: "selexs-lineup",
-  title: "셀렉스 종류·성분 비교 | 프로핏·락토프리·당솔브 차이",
-  description: "셀렉스 프로핏, 웨이프로핏, 락토프리, 로우슈거, 당솔브의 단백질·당류·칼로리를 표로 비교하고 운동 후, 저당, 일상용 선택 기준을 정리합니다.",
+  title: "셀렉스 단백질음료 추천 (2026) | 프로핏·락토프리·당솔브 비교",
+  description: "셀렉스 프로핏, 웨이프로핏, 락토프리, 로우슈거, 당솔브의 단백질·당류·칼로리를 비교해 운동 후·저당·유당 부담 목적별 추천을 정리했습니다.",
   keywords: ["셀렉스 종류", "셀렉스 라인업", "셀렉스 프로핏 차이", "셀렉스 코어프로틴", "셀렉스 제품 비교", "셀렉스 당솔브"],
   badge: "브랜드 라인업",
   readingTime: "5분 읽기",
   updatedAt: "2026-09-30",
   methodologyNote: "ProteinLab DB RTD 기준",
-  intro: "셀렉스 종류는 이름이 비슷하지만 프로핏, 웨이프로핏, 락토프리, 로우슈거, 당솔브의 단백질·당류·칼로리와 음용 형태가 서로 다릅니다. ProteinLab DB에 등록된 RTD 라인업을 같은 표에 놓고 운동 후, 저당, 유당 부담, 일상 보충 목적별 선택 기준을 정리했습니다.",
+  intro: "셀렉스 단백질음료는 이름이 비슷하지만 운동 후에는 프로핏, 가벼운 워터형은 웨이프로핏, 유당 부담은 락토프리, 당류 최소화는 당솔브처럼 목적별 추천이 달라집니다. ProteinLab DB의 RTD 라인업을 같은 표에 놓고 제품명보다 단백질·당류·칼로리와 음용 형태로 고를 수 있게 정리했습니다.",
   summary: [
     "운동 후 저칼로리 보충은 프로핏 웨이프로틴과 프로핏이 가장 직관적입니다.",
     "가볍고 상큼하게 마시려면 웨이프로핏, 우유 부담을 줄이고 싶다면 락토프리 라인이 먼저입니다.",
@@ -877,6 +877,8 @@ export const selexsLineupConfig: ComparePageConfig = {
     { question: "셀렉스 당솔브는 로우슈거와 무엇이 다른가", answer: "당솔브는 로우슈거보다 더 최근에 나온 라인으로 당류가 1g 미만입니다. 단백질은 14g으로 비슷하게 유지하면서 당류를 더 낮춘 것이 핵심 차이입니다." },
   ],
   relatedGuides: [
+    { title: "저당 단백질 음료 추천", href: "/guides/product-selection-comparison/low-sugar-protein-drink-guide", description: "당솔브와 프로핏을 다른 저당 RTD 후보까지 넓혀서 비교합니다." },
+    { title: "락토프리 단백질 음료", href: "/guides/product-selection-comparison/lactose-free-protein-drink", description: "셀렉스 락토프리를 다른 유당 부담 완화형 제품과 비교합니다." },
     { title: "셀렉스 vs 하이뮨 비교", href: "/guides/product-selection-comparison/selex-vs-himune", description: "셀렉스를 다른 대표 브랜드와 직접 비교해봅니다." },
     { title: "셀렉스 vs 테이크핏 vs 하이뮨", href: "/guides/product-selection-comparison/selex-vs-takefit-vs-himune", description: "대표 브랜드 3개를 한 번에 비교합니다." },
     { title: "MPI·WPI·WPC 단백질 차이", href: "/guides/basics/protein-source-types", description: "셀렉스 제품명과 원료표에 나오는 우유·유청 단백질 약어를 구분합니다." },
@@ -1633,16 +1635,16 @@ newcareWaterConfig.jsonLd = [articleJsonLd(newcareWaterConfig), faqJsonLd(newcar
 
 export const newcareVsHymuneConfig: ComparePageConfig = {
   slug: "newcare-vs-hymune",
-  title: "뉴케어 vs 하이뮨 비교 | 부모님·50대 단백질 음료 차이",
+  title: "뉴케어 41g vs 하이뮨 10g 차이 (2026) | 부모님 단백질음료 비교",
   description:
-    "뉴케어 올프로틴 41g과 하이뮨 프로틴 밸런스의 단백질·용량·당류·칼로리를 비교합니다. 부모님과 50대가 총량과 음용 부담을 기준으로 고르는 법을 정리했습니다.",
+    "뉴케어 올프로틴 41g과 하이뮨 프로틴 밸런스 10g의 용량·칼로리·당류를 비교해 부모님과 50대가 고단백형과 일상 보완형을 고르는 법을 정리했습니다.",
   keywords: ["뉴케어 하이뮨 비교", "뉴케어 vs 하이뮨", "시니어 단백질 음료", "하이뮨 뉴케어 차이", "부모님 단백질 음료", "50대 단백질 음료"],
   badge: "브랜드 비교",
   readingTime: "4분 읽기",
   updatedAt: "2026-09-30",
   methodologyNote: "ProteinLab DB 뉴케어 41g·하이뮨 프로틴 밸런스 기준",
   intro:
-    "부모님이나 50대용 단백질 음료를 찾을 때 뉴케어와 하이뮨이 자주 함께 비교되지만, 대표 제품의 단백질 총량과 용량은 크게 다릅니다. 뉴케어 올프로틴 41g과 하이뮨 프로틴 밸런스를 같은 기준으로 놓고, 많이 채우는 선택과 부담을 낮춘 선택을 구분했습니다.",
+    "부모님이나 50대용 단백질음료로 뉴케어와 하이뮨을 비교할 때는 브랜드 이미지보다 제품군 차이를 먼저 봐야 합니다. 이 페이지는 뉴케어 올프로틴 41g 고단백형과 하이뮨 프로틴 밸런스 10g 일상 영양보완형을 같은 기준으로 놓고, 많이 채우는 선택과 한 병 부담을 낮춘 선택을 구분했습니다.",
   summary: [
     "단백질 총량은 뉴케어 41g이 확실히 높습니다.",
     "부담 낮은 첫 제품 흐름은 하이뮨이 더 자연스럽습니다.",
@@ -1691,6 +1693,8 @@ export const newcareVsHymuneConfig: ComparePageConfig = {
   ],
   relatedGuides: [
     { title: "뉴케어 올프로틴 완전 분석", href: "/guides/product-selection-comparison/newcare-allprotein", description: "뉴케어 라인을 자세히 풀어본 메인 페이지입니다." },
+    { title: "하이뮨 제품 종류 전체 비교", href: "/guides/product-selection-comparison/himune-lineup", description: "프로틴 밸런스 외에 액티브·제로·울트라까지 하이뮨 내부 선택지를 확인합니다." },
+    { title: "뉴케어 25g vs 하이뮨 액티브 20g", href: "/compare/newcare-vs-hymune", description: "시니어 영양보완형이 아니라 비슷한 용량의 운동 보충 RTD끼리 비교합니다." },
     { title: "50대 단백질 음료 가이드", href: "/guides/product-selection-comparison/protein-drink-for-50s", description: "브랜드보다 연령대 기준으로 다시 좁혀봅니다." },
     { title: "락토프리 단백질 음료", href: "/guides/product-selection-comparison/lactose-free-protein-drink", description: "유당 부담 기준으로 비교를 이어갑니다." },
   ],

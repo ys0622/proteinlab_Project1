@@ -289,14 +289,15 @@ const compareLandings: CompareLanding[] = [
   },
   {
     slug: "newcare-vs-hymune",
-    title: "뉴케어 올프로틴 vs 하이뮨 프로틴 밸런스 비교",
-    description: "뉴케어 올프로틴과 하이뮨 프로틴 밸런스를 단백질, 당류, 칼로리 기준으로 비교합니다.",
-    intro: "중장년·회복기 시장에서 경쟁하는 뉴케어와 하이뮨의 대표 제품을 직접 비교합니다.",
-    bullets: ["매일유업 뉴케어 vs 일동후디스 하이뮨 비교", "회복기·시니어 영양 보충 관점 제시", "단백질·칼로리 밀도 차이 한눈에 확인"],
+    title: "뉴케어 올프로틴 25g vs 하이뮨 액티브 20g | RTD 성분 비교",
+    description: "뉴케어 올프로틴 초콜릿 25g과 하이뮨 액티브 딥초코 20g의 칼로리·당류·단백질 밀도를 비교해 운동 후 RTD 선택 차이를 정리합니다.",
+    intro: "이 페이지는 뉴케어와 하이뮨의 전체 브랜드 비교가 아니라, 뉴케어 올프로틴 초콜릿 245mL·25g과 하이뮨 액티브 딥초코 250mL·20g 두 RTD의 직접 비교입니다. 비슷한 용량에서 단백질 총량과 칼로리 차이를 확인할 수 있습니다.",
+    bullets: ["뉴케어 25g vs 하이뮨 액티브 20g", "245mL vs 250mL 비슷한 용량 비교", "칼로리·당류·단백질 밀도 차이"],
     productSlugs: ["newcare-all-protein-choco-245", "hymune-balance-active-deepchoco-250"],
     relatedLinks: [
       { href: "/brands/newcare", title: "뉴케어 브랜드 허브", description: "뉴케어 전 제품을 확인합니다." },
       { href: "/brands/hymune", title: "하이뮨 브랜드 허브", description: "하이뮨 전 제품을 확인합니다." },
+      { href: "/guides/product-selection-comparison/newcare-vs-hymune", title: "뉴케어 41g vs 하이뮨 10g 시니어 비교", description: "부모님·50대 검색 의도라면 고단백형과 일상 영양보완형 차이를 확인합니다." },
     ],
   },
   {

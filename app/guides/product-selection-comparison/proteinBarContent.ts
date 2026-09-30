@@ -279,9 +279,9 @@ proteinBarTop10Config.faq = [
 ];
 proteinBarTop10Config.jsonLd = [articleJsonLd(proteinBarTop10Config), faqJsonLd(proteinBarTop10Config)];
 
-proteinBarTop10Config.title = "단백질바 추천 TOP 10 (2026) | 저당·고단백·다이어트 비교";
+proteinBarTop10Config.title = "단백질바 추천 순위 TOP 10 (2026) | 100개 성분 비교";
 proteinBarTop10Config.description =
-  "ProteinLab DB 단백질바 100개의 단백질·칼로리·당류·밀도를 비교해 2026년 추천 TOP 10을 선정하고 운동 후, 다이어트, 편의점용 선택 기준을 정리했습니다.";
+  "ProteinLab DB 단백질바 100개의 단백질·칼로리·당류·식이섬유를 종합 비교해 추천 순위 TOP 10을 선정하고 운동 후·다이어트·편의점용 후보를 구분했습니다.";
 proteinBarTop10Config.keywords = [
   "단백질 바 추천",
   "프로틴바 추천",
@@ -296,13 +296,13 @@ proteinBarTop10Config.updatedAt = "2026-09-30";
 proteinBarTop10Config.methodologyNote =
   "ProteinLab DB 바 100개 기준 · 단백질 함량, 당류, 칼로리, 식이섬유, 브랜드 편중을 함께 반영";
 proteinBarTop10Config.intro =
-  "단백질 바는 단백질 숫자만 보고 고르면 실패하기 쉽습니다. 운동 후 보충용인지, 다이어트 간식인지, 편의점에서 바로 살 제품인지에 따라 좋은 후보가 달라집니다. 이 페이지는 ProteinLab DB 바 100개 중 단백질, 당류, 칼로리, 식이섬유를 함께 본 구매 후보 리스트입니다.";
+  "이 페이지는 다이어트 조건만 적용한 순위가 아니라 ProteinLab DB 단백질바 100개 전체에서 단백질, 당류, 칼로리, 식이섬유와 브랜드 편중을 함께 본 종합 추천 TOP 10입니다. 운동 후 보충용인지, 다이어트 간식인지, 편의점에서 바로 살 제품인지에 따라 상위 후보 중 맞는 제품을 다시 고를 수 있습니다.";
 proteinBarTop10Config.summary = [
   "상위권은 대체로 170~200kcal 구간에서 단백질 15~20g 이상을 제공하는 제품이 많습니다.",
   "다이어트 간식 목적이라면 단백질보다 먼저 칼로리와 당류를 함께 봐야 합니다.",
   "처음 사는 제품은 박스 구매보다 단품이나 소량 묶음으로 식감과 단맛을 확인하는 편이 안전합니다.",
 ];
-proteinBarTop10Config.comparisonTitle = "단백질 바 TOP 10 후보";
+proteinBarTop10Config.comparisonTitle = "단백질바 종합 추천 순위 TOP 10";
 proteinBarTop10Config.comparisonColumns = ["제품명", "단백질", "칼로리", "당류", "선택 포인트"];
 proteinBarTop10Config.comparisonRows = rankingRows(barTop10);
 proteinBarTop10Config.sections = [
