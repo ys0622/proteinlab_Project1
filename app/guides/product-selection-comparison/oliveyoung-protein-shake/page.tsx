@@ -4,10 +4,13 @@ import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 import GuideBuySection from "@/app/components/GuideBuySection";
 
+const pageTitle = "올리브영 단백질쉐이크 추천 (2026) | 플라이밀·단백하니 비교";
+const pageDescription = "올리브영에서 단품으로 확인하기 쉬운 플라이밀·단백하니 등 단백질쉐이크의 단백질·당류·칼로리를 비교하고 첫 구매 기준을 정리합니다.";
+
 export const metadata = {
   alternates: { canonical: "https://proteinlab.kr/guides/product-selection-comparison/oliveyoung-protein-shake" },
-  title: "올리브영 단백질 쉐이크 추천 | 입점 브랜드 비교 2026",
-  description: "올리브영에서 단품 테스트하기 좋은 단백질 쉐이크 브랜드를 정리했습니다. 플라이밀, 단백하니, 딜라이트 프로젝트, 빼르빼르 중 어디부터 보면 좋은지 브랜드 기준으로 빠르게 비교해보세요.",
+  title: pageTitle,
+  description: pageDescription,
 };
 
 const brandCards = [
@@ -46,11 +49,11 @@ const buyingTips = [
 
 export default function OliveyoungProteinShakePage() {
   const jsonLd = buildGuideJsonLd({
-    title: "올리브영 단백질 쉐이크 추천 | 입점 브랜드 비교 2026",
-    description: "올리브영에서 단품 테스트하기 좋은 단백질 쉐이크 브랜드를 정리했습니다. 플라이밀, 단백하니, 딜라이트 프로젝트, 빼르빼르 중 어디부터 보면 좋은지 브랜드 기준으로 빠르게 비교해보세요.",
+    title: pageTitle,
+    description: pageDescription,
     url: "https://proteinlab.kr/guides/product-selection-comparison/oliveyoung-protein-shake",
     datePublished: "2026-03-01",
-    dateModified: "2026-05-29",
+    dateModified: "2026-09-30",
   });
 
   return (

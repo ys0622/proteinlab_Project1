@@ -2360,14 +2360,14 @@ danbaekVsSelexsConfig.jsonLd = [articleJsonLd(danbaekVsSelexsConfig), faqJsonLd(
 
 export const danbaekVsHimuneConfig: ComparePageConfig = {
   slug: "danbaek-vs-himune",
-  title: "더단백 vs 하이뮨 비교",
-  description: "더단백 드링크와 하이뮨 액티브를 칼로리, 당류, 지방, 나트륨, 브랜드 포지셔닝 기준으로 직접 비교합니다.",
-  keywords: ["더단백 하이뮨 비교", "더단백 vs 하이뮨 차이"],
+  title: "더단백 vs 하이뮨 차이 | 단백질·당류·칼로리 비교",
+  description: "더단백 드링크와 하이뮨 액티브의 단백질·당류·칼로리·나트륨을 한 표로 비교하고 다이어트, 운동 후, 일상용 선택 기준을 정리합니다.",
+  keywords: ["더단백 하이뮨 비교", "더단백 vs 하이뮨 차이", "더단백 하이뮨 성분", "단백질 음료 비교"],
   badge: "브랜드 비교",
   readingTime: "4분 읽기",
-  updatedAt: "2026-08-26",
+  updatedAt: "2026-09-30",
   methodologyNote: "ProteinLab DB 대표 RTD 기준",
-  intro: "더단백과 하이뮨은 둘 다 일상형 단백질 음료로 자주 비교되지만 숫자는 꽤 다릅니다. 더단백은 저나트륨·저칼로리 설계가 강하고, 하이뮨은 산양유 건강관리형 이미지가 강합니다.",
+  intro: "더단백과 하이뮨은 편의점 단백질 음료로 자주 함께 비교되지만 대표 제품의 당류·칼로리·나트륨과 브랜드 성격은 다릅니다. 더단백 드링크와 하이뮨 액티브를 같은 기준으로 놓고 숫자와 사용 목적을 함께 비교했습니다.",
   summary: [
     "칼로리, 당류, 지방, 나트륨은 더단백이 더 낮습니다.",
     "하이뮨은 산양유와 건강관리형 메시지가 강해서 일상 보완용으로 읽히기 쉽습니다.",
