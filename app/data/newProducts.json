@@ -1,41 +1,254 @@
 [
-  { "slug": "takefit-extreme-450",              "addedAt": "2026-05-20" },
-  { "slug": "labnosh-protein-perfect-cookie-cream-350", "addedAt": "2026-05-20" },
-  { "slug": "oneuldanbaek-caramel-latte-250",   "addedAt": "2026-05-20" },
-  { "slug": "oneuldanbaek-dolce-latte-250",     "addedAt": "2026-05-20" },
-  { "slug": "mymil-newprotein-banana-190",      "addedAt": "2026-05-20" },
-  { "slug": "danbaek-water-grapefruit-400",     "addedAt": "2026-05-20" },
-  { "slug": "hymune-protein-balance-plus-190",  "addedAt": "2026-05-20" },
-  { "slug": "sellex-protein-original-190",      "addedAt": "2026-05-20" },
-  { "slug": "hymune-ultra-400",                 "addedAt": "2026-06-01" },
-  { "slug": "danbaek-balance-original-190",     "addedAt": "2026-06-01" },
-  { "slug": "sellex-protein-dangsolve-fivegrain-190", "addedAt": "2026-06-01" },
-  { "slug": "sellex-protein-dangsolve-corn-190","addedAt": "2026-06-01" },
-  { "slug": "harim-chicken-protein-savory-240", "addedAt": "2026-06-01" },
-  { "slug": "labnosh-protein-max-choco-400",    "addedAt": "2026-06-01" },
-  { "slug": "labnosh-protein-max-strawberry-400","addedAt": "2026-06-01" },
-  { "slug": "soyjoy-plantbased-macadamia-lemon-25", "addedAt": "2026-06-01" },
-  { "slug": "soyjoy-plantbased-banana-25",      "addedAt": "2026-06-01" },
-  { "slug": "soyjoy-fruits-baked-cheese-30",    "addedAt": "2026-06-01" },
-  { "slug": "shakebaby-proteinshake-choco-45",  "addedAt": "2026-06-01" },
-  { "slug": "shakebaby-proteinshake-strawberry-45", "addedAt": "2026-06-01" },
-  { "slug": "shakebaby-proteinshake-matcha-45", "addedAt": "2026-06-01" },
-  { "slug": "shakebaby-proteinshake-grain-45",  "addedAt": "2026-06-01" },
-  { "slug": "shakebaby-proteinshake-sweetcorn-flakes-45", "addedAt": "2026-06-01" },
-  { "slug": "kirkland-greek-plain-907",         "addedAt": "2026-06-01" },
-  { "slug": "who-organic-greek-plain-480",      "addedAt": "2026-06-01" },
-  { "slug": "denmark-high-greek-400",           "addedAt": "2026-06-01" },
-  { "slug": "ottogi-dayprotein-choco-250",      "addedAt": "2026-07-27" },
-  { "slug": "ottogi-dayprotein-fivegrain-250",  "addedAt": "2026-07-27" },
-  { "slug": "ottogi-dayprotein-banana-250",     "addedAt": "2026-07-27" },
-  { "slug": "dryou-protein-62g-matcha-450",     "addedAt": "2026-07-27" },
-  { "slug": "ultive-protein-savory-250",        "addedAt": "2026-08-13" },
-  { "slug": "ultive-protein-banana-250",        "addedAt": "2026-08-13" },
-  { "slug": "ultive-protein-choco-250",         "addedAt": "2026-08-13" },
-  { "slug": "labnosh-protein-salted-caramel-350", "addedAt": "2026-08-13" },
-  { "slug": "labnosh-protein-sweet-corn-350",   "addedAt": "2026-08-13" },
-  { "slug": "labnosh-protein-perfect-melon-350", "addedAt": "2026-08-13" },
-  { "slug": "takefit-monster-strawberry-350",    "addedAt": "2026-08-14" },
-  { "slug": "puretein-choco-330",                "addedAt": "2026-08-14" },
-  { "slug": "puretein-coffee-330",               "addedAt": "2026-08-14" }
+  {
+    "slug": "takefit-extreme-450",
+    "addedAt": "2026-05-20"
+  },
+  {
+    "slug": "labnosh-protein-perfect-cookie-cream-350",
+    "addedAt": "2026-05-20"
+  },
+  {
+    "slug": "oneuldanbaek-caramel-latte-250",
+    "addedAt": "2026-05-20"
+  },
+  {
+    "slug": "oneuldanbaek-dolce-latte-250",
+    "addedAt": "2026-05-20"
+  },
+  {
+    "slug": "mymil-newprotein-banana-190",
+    "addedAt": "2026-05-20"
+  },
+  {
+    "slug": "danbaek-water-grapefruit-400",
+    "addedAt": "2026-05-20"
+  },
+  {
+    "slug": "hymune-protein-balance-plus-190",
+    "addedAt": "2026-05-20"
+  },
+  {
+    "slug": "sellex-protein-original-190",
+    "addedAt": "2026-05-20"
+  },
+  {
+    "slug": "hymune-ultra-400",
+    "addedAt": "2026-06-01"
+  },
+  {
+    "slug": "danbaek-balance-original-190",
+    "addedAt": "2026-06-01"
+  },
+  {
+    "slug": "sellex-protein-dangsolve-fivegrain-190",
+    "addedAt": "2026-06-01"
+  },
+  {
+    "slug": "sellex-protein-dangsolve-corn-190",
+    "addedAt": "2026-06-01"
+  },
+  {
+    "slug": "harim-chicken-protein-savory-240",
+    "addedAt": "2026-06-01"
+  },
+  {
+    "slug": "labnosh-protein-max-choco-400",
+    "addedAt": "2026-06-01"
+  },
+  {
+    "slug": "labnosh-protein-max-strawberry-400",
+    "addedAt": "2026-06-01"
+  },
+  {
+    "slug": "soyjoy-plantbased-macadamia-lemon-25",
+    "addedAt": "2026-06-01"
+  },
+  {
+    "slug": "soyjoy-plantbased-banana-25",
+    "addedAt": "2026-06-01"
+  },
+  {
+    "slug": "soyjoy-fruits-baked-cheese-30",
+    "addedAt": "2026-06-01"
+  },
+  {
+    "slug": "shakebaby-proteinshake-choco-45",
+    "addedAt": "2026-06-01"
+  },
+  {
+    "slug": "shakebaby-proteinshake-strawberry-45",
+    "addedAt": "2026-06-01"
+  },
+  {
+    "slug": "shakebaby-proteinshake-matcha-45",
+    "addedAt": "2026-06-01"
+  },
+  {
+    "slug": "shakebaby-proteinshake-grain-45",
+    "addedAt": "2026-06-01"
+  },
+  {
+    "slug": "shakebaby-proteinshake-sweetcorn-flakes-45",
+    "addedAt": "2026-06-01"
+  },
+  {
+    "slug": "kirkland-greek-plain-907",
+    "addedAt": "2026-06-01"
+  },
+  {
+    "slug": "who-organic-greek-plain-480",
+    "addedAt": "2026-06-01"
+  },
+  {
+    "slug": "denmark-high-greek-400",
+    "addedAt": "2026-06-01"
+  },
+  {
+    "slug": "ottogi-dayprotein-choco-250",
+    "addedAt": "2026-07-27"
+  },
+  {
+    "slug": "ottogi-dayprotein-fivegrain-250",
+    "addedAt": "2026-07-27"
+  },
+  {
+    "slug": "ottogi-dayprotein-banana-250",
+    "addedAt": "2026-07-27"
+  },
+  {
+    "slug": "dryou-protein-62g-matcha-450",
+    "addedAt": "2026-07-27"
+  },
+  {
+    "slug": "ultive-protein-savory-250",
+    "addedAt": "2026-08-13"
+  },
+  {
+    "slug": "ultive-protein-banana-250",
+    "addedAt": "2026-08-13"
+  },
+  {
+    "slug": "ultive-protein-choco-250",
+    "addedAt": "2026-08-13"
+  },
+  {
+    "slug": "labnosh-protein-salted-caramel-350",
+    "addedAt": "2026-08-13"
+  },
+  {
+    "slug": "labnosh-protein-sweet-corn-350",
+    "addedAt": "2026-08-13"
+  },
+  {
+    "slug": "labnosh-protein-perfect-melon-350",
+    "addedAt": "2026-08-13"
+  },
+  {
+    "slug": "takefit-monster-strawberry-350",
+    "addedAt": "2026-08-14"
+  },
+  {
+    "slug": "puretein-choco-330",
+    "addedAt": "2026-08-14"
+  },
+  {
+    "slug": "puretein-coffee-330",
+    "addedAt": "2026-08-14"
+  },
+  {
+    "slug": "delight-project-shake-nutty-choco-45",
+    "addedAt": "2026-09-30"
+  },
+  {
+    "slug": "delight-project-shake-black-sesame-injeolmi-45",
+    "addedAt": "2026-09-30"
+  },
+  {
+    "slug": "delight-project-shake-sweet-potato-misutgaru-45",
+    "addedAt": "2026-09-30"
+  },
+  {
+    "slug": "delight-project-shake-corn-castella-45",
+    "addedAt": "2026-09-30"
+  },
+  {
+    "slug": "delight-project-shake-pistachio-choco-45",
+    "addedAt": "2026-09-30"
+  },
+  {
+    "slug": "delight-project-shake-strawberry-yogurt-45",
+    "addedAt": "2026-09-30"
+  },
+  {
+    "slug": "delight-project-shake-blueberry-yogurt-45",
+    "addedAt": "2026-09-30"
+  },
+  {
+    "slug": "delight-project-shake-melon-milk-45",
+    "addedAt": "2026-09-30"
+  },
+  {
+    "slug": "hansonhankki-petit-shake-pistachio-choco-40",
+    "addedAt": "2026-09-30"
+  },
+  {
+    "slug": "hansonhankki-petit-shake-strawberry-40",
+    "addedAt": "2026-09-30"
+  },
+  {
+    "slug": "hansonhankki-petit-shake-chestnut-latte-40",
+    "addedAt": "2026-09-30"
+  },
+  {
+    "slug": "hansonhankki-petit-shake-choco-40",
+    "addedAt": "2026-09-30"
+  },
+  {
+    "slug": "hansonhankki-petit-shake-grain-40",
+    "addedAt": "2026-09-30"
+  },
+  {
+    "slug": "maeilhankki-shake-strawberry-40",
+    "addedAt": "2026-09-30"
+  },
+  {
+    "slug": "maeilhankki-shake-purple-sweet-potato-40",
+    "addedAt": "2026-09-30"
+  },
+  {
+    "slug": "maeilhankki-shake-sweet-corn-40",
+    "addedAt": "2026-09-30"
+  },
+  {
+    "slug": "maeilhankki-shake-grain-40",
+    "addedAt": "2026-09-30"
+  },
+  {
+    "slug": "maeilhankki-shake-choco-40",
+    "addedAt": "2026-09-30"
+  },
+  {
+    "slug": "takefit-breadmeal-shake-choco-brownie-45",
+    "addedAt": "2026-09-30"
+  },
+  {
+    "slug": "takefit-breadmeal-shake-banana-brulee-45",
+    "addedAt": "2026-09-30"
+  },
+  {
+    "slug": "takefit-breadmeal-shake-savory-oat-bread-45",
+    "addedAt": "2026-09-30"
+  },
+  {
+    "slug": "takefit-breadmeal-shake-sweet-potato-soboro-45",
+    "addedAt": "2026-09-30"
+  },
+  {
+    "slug": "sportsix-protein-shake-nutty-choco-45",
+    "addedAt": "2026-09-30"
+  },
+  {
+    "slug": "sportsix-protein-shake-savory-yulmu-45",
+    "addedAt": "2026-09-30"
+  }
 ]
