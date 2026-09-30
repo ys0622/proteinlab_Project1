@@ -6,7 +6,7 @@ import AffiliateDisclosure from "@/app/components/AffiliateDisclosure";
 import CommercialAdSection from "@/app/components/CommercialAdSection";
 import TrackedCoupangLink from "@/app/components/TrackedCoupangLink";
 import { getDrinkProducts } from "@/app/data/drinkProductsData";
-import type { ProductDetailProps } from "@/app/data/products";
+import { shakeProducts, type ProductDetailProps } from "@/app/data/products";
 import { getCoupangRedirectHref } from "@/app/lib/purchaseLinks";
 import { formatProductLabel } from "@/app/lib/productLabel";
 
@@ -58,6 +58,7 @@ export interface ComparePageConfig {
 }
 
 const drinkProducts = getDrinkProducts();
+const purchasableProducts = [...drinkProducts, ...shakeProducts];
 const trackBHubLink: RelatedGuideLink = {
   title: "다른 비교 가이드 더 보기",
   href: "/guides/product-selection-comparison",
@@ -65,8 +66,8 @@ const trackBHubLink: RelatedGuideLink = {
 };
 
 export function getDrinkProduct(slug: string): ProductDetailProps {
-  const product = drinkProducts.find((item) => item.slug === slug);
-  if (!product) throw new Error(`Unknown drink product slug: ${slug}`);
+  const product = purchasableProducts.find((item) => item.slug === slug);
+  if (!product) throw new Error(`Unknown purchasable product slug: ${slug}`);
   return product;
 }
 

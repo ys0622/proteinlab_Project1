@@ -39,6 +39,11 @@ function getBrandQuickLinks(brand: string) {
     ],
     테이크핏: [
       {
+        href: "/guides/product-selection-comparison/protein-shake-new-products-2026",
+        title: "브레드밀 신제품 비교 보기",
+        description: "브레드밀 4종을 다른 신규 쉐이크와 단백질·당류 기준으로 비교합니다.",
+      },
+      {
         href: "/guides/product-selection-comparison/takefit-lineup",
         title: "테이크핏 라인업 차이 보기",
         description: "맥스, 몬스터, 프로 라인을 목적별로 빠르게 구분해봅니다.",
@@ -95,6 +100,39 @@ function getBrandQuickLinks(brand: string) {
         href: "/guides/product-selection-comparison/protein-shake-top7",
         title: "쉐이크 상위 제품 보기",
         description: "전체 쉐이크 안에서 랩노쉬 위치를 함께 확인합니다.",
+      },
+    ],
+    "딜라이트 프로젝트": [
+      {
+        href: "/guides/product-selection-comparison/delight-project-shake-flavors",
+        title: "딜라이트 프로젝트 8종 맛 비교",
+        description: "8가지 맛의 단백질·당류·칼로리를 나란히 확인합니다.",
+      },
+      {
+        href: "/guides/product-selection-comparison/protein-shake-new-products-2026",
+        title: "2026 쉐이크 신제품 비교",
+        description: "다른 신규 브랜드와 성분 포지션을 비교합니다.",
+      },
+    ],
+    한손한끼: [
+      {
+        href: "/guides/product-selection-comparison/hansonhankki-vs-maeilhankki-shake",
+        title: "한손한끼 vs 매일한끼 비교",
+        description: "같은 40g 파우치 5종씩의 단백질·당류 차이를 확인합니다.",
+      },
+    ],
+    매일한끼: [
+      {
+        href: "/guides/product-selection-comparison/hansonhankki-vs-maeilhankki-shake",
+        title: "매일한끼 vs 한손한끼 비교",
+        description: "고단백·저당 수치와 맛 구성을 직접 비교합니다.",
+      },
+    ],
+    스포식스: [
+      {
+        href: "/guides/product-selection-comparison/protein-shake-new-products-2026",
+        title: "2026 쉐이크 신제품 비교",
+        description: "당류 1g 스포식스 2종을 다른 신규 쉐이크와 비교합니다.",
       },
     ],
   };

@@ -46,6 +46,10 @@ proteinlab_source.html
 # OpenNext
 .open-next
 
+# Local deployment worktrees (not application source)
+/.deploy-worktree-*/
+/.hotfix-card-links/
+
 # wrangler files
 .wrangler
 .dev.vars*

@@ -1,5 +1,8 @@
 @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css");
 @import "tailwindcss";
+@source not "../docs";
+@source not "../.deploy-worktree-*";
+@source not "../.hotfix-card-links";
 
 :root {
   color-scheme: only light;
