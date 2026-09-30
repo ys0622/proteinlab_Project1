@@ -1066,14 +1066,14 @@ const dryou40Strawberry = getDrinkProduct("dryou-protein-40g-strawberry-350");
 
 export const himuneLineupConfig: ComparePageConfig = {
   slug: "himune-lineup",
-  title: "하이뮨 단백질음료 종류·성분 비교 | 프로틴밸런스·액티브·울트라 차이",
-  description: "하이뮨 단백질음료 라인업(프로틴 밸런스, 액티브, 액티브 제로, 식물성 고단백, 울트라)의 성분과 맛별 차이를 표로 비교하고 목적별 추천까지 정리했습니다.",
+  title: "하이뮨 단백질음료 추천 (2026) | 액티브·제로·울트라 종류 비교",
+  description: "하이뮨 프로틴 밸런스, 액티브, 액티브 제로, 식물성 고단백, 울트라의 단백질·당류·칼로리를 비교하고 운동·저당·일상 보충 목적별 추천을 정리했습니다.",
   keywords: ["하이뮨 단백질음료", "하이뮨 성분", "하이뮨 종류", "하이뮨 라인업", "하이뮨 프로틴밸런스 액티브 차이", "하이뮨 액티브 제로", "하이뮨 울트라"],
   badge: "브랜드 라인업",
   readingTime: "5분 읽기",
   updatedAt: "2026-09-30",
   methodologyNote: "ProteinLab DB RTD 기준",
-  intro: "하이뮨 단백질음료는 프로틴 밸런스, 액티브, 액티브 제로, 식물성, 울트라처럼 종류가 많고 단백질·당류·칼로리 차이도 큽니다. ProteinLab DB의 RTD 라인업을 같은 표에 놓고 일상 보충, 운동 후, 저당, 초고단백 목적별 선택 기준을 정리했습니다.",
+  intro: "하이뮨 단백질음료는 프로틴 밸런스, 액티브, 액티브 제로, 식물성, 울트라처럼 종류가 많아 제품명만으로 고르기 어렵습니다. ProteinLab DB의 RTD 라인업을 같은 표에 놓고 일상 보충은 프로틴 밸런스, 운동 후는 액티브, 저당은 액티브 제로, 초고단백은 울트라처럼 목적별 추천을 바로 구분했습니다.",
   summary: [
     "하이뮨은 운동용 한 가지만 있는 브랜드가 아니라 일상 보완형과 액티브형이 분리되어 있습니다.",
     "가장 무난한 표준형은 액티브, 더 가볍게 가려면 액티브 제로, 식사 보완 쪽은 프로틴 밸런스 계열이 더 잘 맞습니다.",
@@ -1133,6 +1133,7 @@ export const himuneLineupConfig: ComparePageConfig = {
     { question: "하이뮨 울트라는 액티브랑 뭐가 다른가", answer: `단백질 총량 자체가 다릅니다. 액티브가 하이뮨의 표준 운동 보충형이라면, 울트라는 ${hymuneUltra.proteinPerServing}g으로 브랜드 내 가장 높은 총량을 채울 때 선택하는 라인입니다.` },
   ],
   relatedGuides: [
+    { title: "테이크핏 vs 하이뮨 비교", href: "/guides/product-selection-comparison/takefit-vs-himune", description: "운동용 대표 RTD 기준으로 하이뮨 액티브와 테이크핏을 직접 비교합니다." },
     { title: "셀렉스 vs 하이뮨 비교", href: "/guides/product-selection-comparison/selex-vs-himune", description: "하이뮨을 셀렉스 대표 RTD와 직접 비교합니다." },
     { title: "셀렉스 vs 테이크핏 vs 하이뮨", href: "/guides/product-selection-comparison/selex-vs-takefit-vs-himune", description: "대표 브랜드 3파전을 한 번에 비교합니다." },
     { title: "MPI·WPI·WPC 단백질 차이", href: "/guides/basics/protein-source-types", description: "산양유 이미지와 실제 단백질 원료 표기를 구분해서 읽는 기준입니다." },

@@ -185,12 +185,12 @@ function getShakePositioning(product: ProductDetailProps) {
 
 const PRODUCT_SEO_OVERRIDES: Record<string, { title: string; description: string }> = {
   "labnosh-protein-perfect-choco-350": {
-    title: "랩노쉬 프로틴 드링크 퍼펙트 초코 성분 | 단백질 27g·당류 0g",
-    description: "랩노쉬 프로틴 드링크 퍼펙트 초코 350mL의 단백질 27g, 125kcal, 당류 0g 성분을 확인하고 다른 랩노쉬 맛과 비슷한 단백질 음료를 비교합니다.",
+    title: "랩노쉬 프로틴 드링크 퍼펙트 초코 | 27g·125kcal·당류 0g",
+    description: "랩노쉬 프로틴 드링크 퍼펙트 초코 350mL의 단백질 27g·125kcal·당류 0g 성분과 저당 운동 보충 적합성을 확인하고 다른 맛과 비교합니다.",
   },
   "labnosh-protein-perfect-cookie-cream-350": {
-    title: "랩노쉬 프로틴 드링크 퍼펙트 쿠키앤크림 성분 | 단백질 27g",
-    description: "랩노쉬 프로틴 드링크 퍼펙트 쿠키앤크림 350mL의 단백질 27g, 135kcal, 당류 0g 성분을 확인하고 초코 등 다른 맛과 비슷한 제품을 비교합니다.",
+    title: "랩노쉬 프로틴 드링크 퍼펙트 쿠키앤크림 | 27g·135kcal·당류 0g",
+    description: "랩노쉬 프로틴 드링크 퍼펙트 쿠키앤크림 350mL의 단백질 27g·135kcal·당류 0g 성분과 저당 운동 보충 적합성을 확인하고 초코 등 다른 맛과 비교합니다.",
   },
 };
 
@@ -359,6 +359,14 @@ function buildProductInternalLinks(product: ProductDetailProps) {
         : category === "yogurt"
           ? "/guides/product-selection-comparison/protein-yogurt-guide"
           : "/guides/product-selection-comparison/protein-shake-guide";
+  const brandGuideLink =
+    product.brand === "랩노쉬"
+      ? {
+          href: "/guides/product-selection-comparison/labnosh-lineup",
+          title: "랩노쉬 단백질 제품 종류 비교",
+          description: "퍼펙트 맛별 차이와 프로틴 MAX·슬림쉐이크까지 랩노쉬 라인업을 함께 비교합니다.",
+        }
+      : null;
 
   return [
     {
@@ -393,6 +401,7 @@ function buildProductInternalLinks(product: ProductDetailProps) {
       title: `${product.brand} 브랜드 보기`,
       description: "같은 브랜드 안에서 라인업 차이를 빠르게 확인합니다.",
     },
+    ...(brandGuideLink ? [brandGuideLink] : []),
   ];
 }
 

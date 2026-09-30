@@ -543,25 +543,25 @@ convenienceProteinBarConfig.jsonLd = [
 
 export const dietProteinBarConfig: CategoryGuideConfig = {
   slug: "diet-protein-bar",
-  title: "다이어트 단백질바 추천 | 200kcal·당류 5g 이하 제품 비교",
+  title: "다이어트 단백질바 추천 순위 (2026) | 200kcal·당류 5g 이하",
   description:
-    "ProteinLab DB에서 200kcal 이하, 당류 5g 이하, 단백질 15g 이상을 모두 충족한 다이어트 단백질바를 비교하고 간식용 선택 기준을 정리했습니다.",
+    "ProteinLab DB에서 200kcal 이하·당류 5g 이하·단백질 15g 이상을 모두 충족한 제품만 추려 다이어트 단백질바 추천 순위와 간식용 선택 기준을 정리했습니다.",
   keywords: ["다이어트 단백질 바", "저당 단백질 바", "저칼로리 프로틴바", "다이어트 프로틴바", "200칼로리 이하 단백질바", "당류 낮은 단백질바"],
   badge: "다이어트 바",
   readingTime: "5분 읽기",
   updatedAt: "2026-09-30",
   methodologyNote: "ProteinLab DB 필터 · 당류 5g 이하 + 칼로리 200kcal 이하 + 단백질 15g 이상",
   intro:
-    "다이어트 단백질바를 고를 때는 저당 문구 하나보다 칼로리·당류·단백질을 함께 봐야 합니다. 이 페이지는 ProteinLab DB에서 200kcal 이하, 당류 5g 이하, 단백질 15g 이상을 모두 충족한 제품만 추려 간식으로 꾸준히 먹기 좋은 후보를 비교했습니다.",
+    "이 페이지는 전체 단백질바 인기 순위가 아니라 다이어트 조건을 통과한 제품만 보여주는 필터형 순위입니다. ProteinLab DB에서 200kcal 이하·당류 5g 이하·단백질 15g 이상을 모두 충족한 후보를 추려, 간식으로 꾸준히 먹기 좋은 순서로 비교했습니다.",
   summary: [
     "이 조건을 통과한 바는 생각보다 많지 않습니다. 그래서 다이어트 바는 일반 단백질 바보다 선택지가 좁습니다.",
     "프로틴방앗간, 오늘단백처럼 160~175kcal 구간의 제품이 다이어트 간식용으로 균형이 좋습니다.",
     "단백질 바도 과식하면 충분히 칼로리가 높아지므로 하루 1개 전후 기준으로 보는 편이 현실적입니다.",
   ],
-  comparisonTitle: "다이어트 추천 제품",
+  comparisonTitle: "다이어트 조건 통과 추천 순위",
   comparisonColumns: ["제품명", "단백질", "칼로리", "당류", "포인트"],
-  comparisonRows: dietBarProducts.map((product) => ({
-    label: product.brand,
+  comparisonRows: dietBarProducts.map((product, index) => ({
+    label: `${index + 1}위`,
     values: [
       product.name,
       `${product.proteinPerServing}g`,
