@@ -4,8 +4,8 @@ import Footer from "@/app/components/Footer";
 import GuideBuySection from "@/app/components/GuideBuySection";
 import { buildGuideJsonLd } from "@/app/lib/guideJsonLd";
 
-const _pageTitle = "단백질 급원 종류 완전정리 | WPH·WPI·WPC부터 카제인·식물성까지";
-const _pageDesc = "유청(WPH·WPI·WPC), 우유(MPC·MPI), 카제인, 식물성(ISP), 콜라겐까지 단백질 급원별 특징, 소화도, 장단점, 섭취 목적을 연구 근거와 함께 정리했습니다.";
+const _pageTitle = "MPI·WPI·WPC 단백질 차이 | MPC·카제인·식물성 원료 비교";
+const _pageDesc = "MPI·MPC 우유단백과 WPI·WPC·WPH 유청단백의 차이, 유당 여부, 소화 특성과 용도를 비교하고 카제인·식물성·콜라겐 원료까지 정리합니다.";
 export const metadata = {
   title: _pageTitle,
   description: _pageDesc,
@@ -177,7 +177,7 @@ export default function ProteinSourceTypesGuidePage() {
             <span className="rounded-md bg-[#eef4ea] px-2 py-0.5 text-[11px] font-semibold tracking-wide text-[#4c7a57]">TRACK A</span>
           </div>
           <h1 className="mt-3 text-2xl font-bold leading-tight text-[#16412D] md:text-3xl">
-            단백질도 원료에 따라 역할이 다릅니다
+            MPI·WPI·WPC, 이름이 비슷해도 원료와 특징은 다릅니다
           </h1>
           <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
             같은 "단백질"이라도 유청, 우유, 카제인, 식물성, 콜라겐은 소화 속도와 아미노산 구성이 전혀 다릅니다.

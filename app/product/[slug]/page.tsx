@@ -183,7 +183,21 @@ function getShakePositioning(product: ProductDetailProps) {
   return "운동보충형";
 }
 
+const PRODUCT_SEO_OVERRIDES: Record<string, { title: string; description: string }> = {
+  "labnosh-protein-perfect-choco-350": {
+    title: "랩노쉬 프로틴 드링크 퍼펙트 초코 성분 | 단백질 27g·당류 0g",
+    description: "랩노쉬 프로틴 드링크 퍼펙트 초코 350mL의 단백질 27g, 125kcal, 당류 0g 성분을 확인하고 다른 랩노쉬 맛과 비슷한 단백질 음료를 비교합니다.",
+  },
+  "labnosh-protein-perfect-cookie-cream-350": {
+    title: "랩노쉬 프로틴 드링크 퍼펙트 쿠키앤크림 성분 | 단백질 27g",
+    description: "랩노쉬 프로틴 드링크 퍼펙트 쿠키앤크림 350mL의 단백질 27g, 135kcal, 당류 0g 성분을 확인하고 초코 등 다른 맛과 비슷한 제품을 비교합니다.",
+  },
+};
+
 function buildProductDescription(product: ProductDetailProps): string {
+  const override = PRODUCT_SEO_OVERRIDES[product.slug];
+  if (override) return override.description;
+
   const metrics = [
     `단백질 ${product.proteinPerServing}g`,
     product.calories != null ? `${product.calories}kcal` : null,
@@ -201,6 +215,9 @@ function buildProductDescription(product: ProductDetailProps): string {
 }
 
 function buildProductTitle(product: ProductDetailProps): string {
+  const override = PRODUCT_SEO_OVERRIDES[product.slug];
+  if (override) return override.title;
+
   const kind = getProductKindLabel(product.productType);
   const protein = `단백질 ${product.proteinPerServing}g`;
   const second =

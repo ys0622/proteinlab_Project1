@@ -119,13 +119,13 @@ function rankingRows(products: typeof barProducts): CategoryMetricRow[] {
 
 export const proteinBarTop10Config: CategoryGuideConfig = {
   slug: "protein-bar-top10",
-  title: "단백질 바 추천 TOP 10 | 프로틴바·다이어트 간식 비교 2026",
+  title: "단백질바 추천 TOP 10 (2026) | 저당·고단백·다이어트 비교",
   description:
-    "2026년 ProteinLab DB 바 100개를 기준으로 단백질, 칼로리, 당류, 밀도를 비교해 프로틴바·다이어트 단백질 바 추천 TOP 10을 정리했습니다.",
+    "ProteinLab DB 단백질바 100개의 단백질·칼로리·당류·밀도를 비교해 2026년 추천 TOP 10을 선정하고 운동 후, 다이어트, 편의점용 선택 기준을 정리했습니다.",
   keywords: ["단백질 바 추천", "프로틴바 추천", "단백질바 추천", "다이어트 단백질 바", "편의점 단백질 바", "단백질 바 비교"],
   badge: "바 랭킹",
   readingTime: "6분 읽기",
-  updatedAt: "2026-04-13",
+  updatedAt: "2026-09-30",
   methodologyNote: "ProteinLab DB 바 100개 기준 · 단백질 함량 + 칼로리 + 당류 + 단백질 밀도 종합",
   intro:
     "단백질 바 추천을 찾는다면 단백질 숫자만 보면 부족합니다. 어떤 제품은 운동 후 보충용에 가깝고, 어떤 제품은 다이어트 간식이나 편의점 단품 구매용으로 더 낫습니다. 그래서 이번 TOP 10은 ProteinLab DB 바 100개 중 단백질, 당류, 칼로리, 밀도를 함께 본 실제 구매용 리스트로 정리했습니다.",
@@ -543,16 +543,16 @@ convenienceProteinBarConfig.jsonLd = [
 
 export const dietProteinBarConfig: CategoryGuideConfig = {
   slug: "diet-protein-bar",
-  title: "다이어트 단백질 바 추천",
+  title: "다이어트 단백질바 추천 | 200kcal·당류 5g 이하 제품 비교",
   description:
-    "ProteinLab DB 기준으로 당류 5g 이하, 칼로리 200kcal 이하, 단백질 15g 이상 조건을 통과한 다이어트용 단백질 바를 정리했습니다.",
-  keywords: ["다이어트 단백질 바", "저당 단백질 바", "저칼로리 프로틴바", "다이어트 프로틴바"],
+    "ProteinLab DB에서 200kcal 이하, 당류 5g 이하, 단백질 15g 이상을 모두 충족한 다이어트 단백질바를 비교하고 간식용 선택 기준을 정리했습니다.",
+  keywords: ["다이어트 단백질 바", "저당 단백질 바", "저칼로리 프로틴바", "다이어트 프로틴바", "200칼로리 이하 단백질바", "당류 낮은 단백질바"],
   badge: "다이어트 바",
   readingTime: "5분 읽기",
-  updatedAt: "2026-08-26",
+  updatedAt: "2026-09-30",
   methodologyNote: "ProteinLab DB 필터 · 당류 5g 이하 + 칼로리 200kcal 이하 + 단백질 15g 이상",
   intro:
-    "다이어트용 단백질 바는 단순히 가벼운 바가 아니라, 허기를 눌러 주면서도 칼로리 부담이 과하지 않은 제품이어야 합니다. 그래서 이번 리스트는 ‘단백질이 높다’보다 ‘계속 먹을 수 있는 조합인가’에 더 초점을 맞췄습니다.",
+    "다이어트 단백질바를 고를 때는 저당 문구 하나보다 칼로리·당류·단백질을 함께 봐야 합니다. 이 페이지는 ProteinLab DB에서 200kcal 이하, 당류 5g 이하, 단백질 15g 이상을 모두 충족한 제품만 추려 간식으로 꾸준히 먹기 좋은 후보를 비교했습니다.",
   summary: [
     "이 조건을 통과한 바는 생각보다 많지 않습니다. 그래서 다이어트 바는 일반 단백질 바보다 선택지가 좁습니다.",
     "프로틴방앗간, 오늘단백처럼 160~175kcal 구간의 제품이 다이어트 간식용으로 균형이 좋습니다.",

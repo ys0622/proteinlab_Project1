@@ -251,10 +251,10 @@ const compareLandings: CompareLanding[] = [
   },
   {
     slug: "takefit-max-vs-takefit-monster",
-    title: "테이크핏 맥스 vs 테이크핏 몬스터 비교",
-    description: "테이크핏 맥스 250mL와 테이크핏 몬스터 350mL를 단백질, 당류, 칼로리 기준으로 비교합니다.",
-    intro: "같은 테이크핏 브랜드 안에서 용량·단백질 함량이 다른 두 제품을 성분 기준으로 직접 비교합니다.",
-    bullets: ["테이크핏 맥스 vs 몬스터 차이 한눈에 확인", "250mL vs 350mL 용량 선택 기준 제시", "단백질 밀도와 가성비 비교"],
+    title: "테이크핏 맥스 vs 몬스터 차이 | 단백질 24g·45g 비교",
+    description: "테이크핏 맥스 250mL 24g과 몬스터 350mL 45g의 단백질·당류·칼로리·밀도를 비교하고 운동량과 음용 부담에 맞는 선택 기준을 정리합니다.",
+    intro: "테이크핏 맥스와 몬스터는 같은 브랜드지만 250mL·단백질 24g과 350mL·45g으로 용량과 총량 차이가 큽니다. 두 제품의 영양성분과 단백질 밀도를 나란히 비교해 매일 마시는 용도와 고강도 운동 후 보충 용도를 구분했습니다.",
+    bullets: ["테이크핏 맥스 24g vs 몬스터 45g 차이", "250mL vs 350mL 용량 선택 기준", "칼로리·당류·단백질 밀도 비교"],
     productSlugs: ["takefit-max-goso-250", "takefit-monster-goso-350"],
     relatedLinks: [
       { href: "/brands/takefit", title: "테이크핏 브랜드 허브", description: "테이크핏 전 제품 라인업을 확인합니다." },

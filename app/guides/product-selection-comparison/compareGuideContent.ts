@@ -307,14 +307,14 @@ proteinDensityRankingConfig.jsonLd = [articleJsonLd(proteinDensityRankingConfig)
 
 export const selexVsTakefitVsHimuneConfig: ComparePageConfig = {
   slug: "selex-vs-takefit-vs-himune",
-  title: "셀렉스 vs 테이크핏 vs 하이뮨 비교",
-  description: "셀렉스 프로핏, 테이크핏 맥스, 하이뮨 액티브를 단백질, 칼로리, 당류, 지방, 나트륨 기준으로 직접 비교합니다.",
-  keywords: ["셀렉스 테이크핏 하이뮨 비교", "단백질 음료 3종 비교", "셀렉스 vs 테이크핏 vs 하이뮨"],
+  title: "셀렉스 vs 테이크핏 vs 하이뮨 비교 | 단백질·당류·칼로리 차이",
+  description: "셀렉스 프로핏, 테이크핏 맥스, 하이뮨 액티브의 단백질·당류·칼로리·나트륨을 한 표로 비교하고 다이어트, 운동 후, 일상용 선택 기준을 정리합니다.",
+  keywords: ["셀렉스 테이크핏 하이뮨 비교", "단백질 음료 3종 비교", "셀렉스 vs 테이크핏 vs 하이뮨", "셀렉스 테이크핏 차이", "테이크핏 하이뮨 차이"],
   badge: "3자 비교",
   readingTime: "5분 읽기",
-  updatedAt: "2026-08-26",
+  updatedAt: "2026-09-30",
   methodologyNote: "ProteinLab DB 대표 20g급 RTD 기준",
-  intro: "국내 RTD에서 가장 많이 겹쳐 비교되는 세 브랜드를 대표 20g급 라인으로 맞췄습니다. 단백질 총량은 비슷하지만 밀도, 나트륨, 맛 폭에서 차이가 분명합니다.",
+  intro: "셀렉스·테이크핏·하이뮨 중 무엇을 고를지 고민된다면 브랜드 이미지보다 영양성분 차이를 먼저 보는 편이 빠릅니다. 대표 20g급 RTD인 셀렉스 프로핏, 테이크핏 맥스, 하이뮨 액티브를 같은 표에 놓고 단백질·당류·칼로리·나트륨과 목적별 선택 기준을 비교했습니다.",
   summary: [
     "다이어트와 무난한 입문은 셀렉스 또는 하이뮨이 편합니다.",
     "단백질 총량과 밀도만 보면 테이크핏 맥스가 가장 공격적입니다.",
@@ -817,14 +817,14 @@ const takefitMonsterChocobanana = getDrinkProduct("takefit-monster-chocobanana-3
 
 export const selexsLineupConfig: ComparePageConfig = {
   slug: "selexs-lineup",
-  title: "셀렉스 제품 종류 전체 정리",
-  description: "셀렉스 RTD 라인업을 프로핏, 웨이프로핏, 락토프리, 로우슈거, 당솔브 기준으로 정리하고 어떤 목적에서 고르면 되는지 한 번에 설명합니다.",
+  title: "셀렉스 종류·성분 비교 | 프로핏·락토프리·당솔브 차이",
+  description: "셀렉스 프로핏, 웨이프로핏, 락토프리, 로우슈거, 당솔브의 단백질·당류·칼로리를 표로 비교하고 운동 후, 저당, 일상용 선택 기준을 정리합니다.",
   keywords: ["셀렉스 종류", "셀렉스 라인업", "셀렉스 프로핏 차이", "셀렉스 코어프로틴", "셀렉스 제품 비교", "셀렉스 당솔브"],
   badge: "브랜드 라인업",
   readingTime: "5분 읽기",
-  updatedAt: "2026-08-26",
+  updatedAt: "2026-09-30",
   methodologyNote: "ProteinLab DB RTD 기준",
-  intro: "셀렉스는 이름이 비슷해서 헷갈리지만 실제로는 운동 보충형, 워터형, 락토프리형, 저당형, 일반 영양보충형으로 역할이 꽤 다릅니다. ProteinLab DB에 잡힌 RTD 라인업만 기준으로 정리해도 어떤 제품이 본인 목적에 맞는지 빠르게 갈립니다.",
+  intro: "셀렉스 종류는 이름이 비슷하지만 프로핏, 웨이프로핏, 락토프리, 로우슈거, 당솔브의 단백질·당류·칼로리와 음용 형태가 서로 다릅니다. ProteinLab DB에 등록된 RTD 라인업을 같은 표에 놓고 운동 후, 저당, 유당 부담, 일상 보충 목적별 선택 기준을 정리했습니다.",
   summary: [
     "운동 후 저칼로리 보충은 프로핏 웨이프로틴과 프로핏이 가장 직관적입니다.",
     "가볍고 상큼하게 마시려면 웨이프로핏, 우유 부담을 줄이고 싶다면 락토프리 라인이 먼저입니다.",
@@ -879,6 +879,7 @@ export const selexsLineupConfig: ComparePageConfig = {
   relatedGuides: [
     { title: "셀렉스 vs 하이뮨 비교", href: "/guides/product-selection-comparison/selex-vs-himune", description: "셀렉스를 다른 대표 브랜드와 직접 비교해봅니다." },
     { title: "셀렉스 vs 테이크핏 vs 하이뮨", href: "/guides/product-selection-comparison/selex-vs-takefit-vs-himune", description: "대표 브랜드 3개를 한 번에 비교합니다." },
+    { title: "MPI·WPI·WPC 단백질 차이", href: "/guides/basics/protein-source-types", description: "셀렉스 제품명과 원료표에 나오는 우유·유청 단백질 약어를 구분합니다." },
     commonRelated[0],
   ],
   purchaseLinks: [
@@ -1070,9 +1071,9 @@ export const himuneLineupConfig: ComparePageConfig = {
   keywords: ["하이뮨 단백질음료", "하이뮨 성분", "하이뮨 종류", "하이뮨 라인업", "하이뮨 프로틴밸런스 액티브 차이", "하이뮨 액티브 제로", "하이뮨 울트라"],
   badge: "브랜드 라인업",
   readingTime: "5분 읽기",
-  updatedAt: "2026-08-26",
+  updatedAt: "2026-09-30",
   methodologyNote: "ProteinLab DB RTD 기준",
-  intro: "하이뮨은 산양유 단백질 이미지가 강하지만 실제 라인업은 일상 영양보완형, 운동 보충형, 제로형, 식물성형, 초고단백형으로 분화돼 있습니다. ProteinLab DB에 잡힌 RTD 라인업 기준으로 정리하면 어떤 목적에 어떤 제품이 맞는지 훨씬 선명해집니다.",
+  intro: "하이뮨 단백질음료는 프로틴 밸런스, 액티브, 액티브 제로, 식물성, 울트라처럼 종류가 많고 단백질·당류·칼로리 차이도 큽니다. ProteinLab DB의 RTD 라인업을 같은 표에 놓고 일상 보충, 운동 후, 저당, 초고단백 목적별 선택 기준을 정리했습니다.",
   summary: [
     "하이뮨은 운동용 한 가지만 있는 브랜드가 아니라 일상 보완형과 액티브형이 분리되어 있습니다.",
     "가장 무난한 표준형은 액티브, 더 가볍게 가려면 액티브 제로, 식사 보완 쪽은 프로틴 밸런스 계열이 더 잘 맞습니다.",
@@ -1134,6 +1135,7 @@ export const himuneLineupConfig: ComparePageConfig = {
   relatedGuides: [
     { title: "셀렉스 vs 하이뮨 비교", href: "/guides/product-selection-comparison/selex-vs-himune", description: "하이뮨을 셀렉스 대표 RTD와 직접 비교합니다." },
     { title: "셀렉스 vs 테이크핏 vs 하이뮨", href: "/guides/product-selection-comparison/selex-vs-takefit-vs-himune", description: "대표 브랜드 3파전을 한 번에 비교합니다." },
+    { title: "MPI·WPI·WPC 단백질 차이", href: "/guides/basics/protein-source-types", description: "산양유 이미지와 실제 단백질 원료 표기를 구분해서 읽는 기준입니다." },
     { title: "단백질 음료 입문 가이드", href: "/guides/product-selection-comparison/protein-drink-beginners-guide", description: "처음 마시는 사람 기준에서 다시 좁혀봅니다." },
     { title: "50g 이상 초고단백 음료 비교", href: "/guides/product-selection-comparison/high-protein-50g-comparison", description: "울트라를 다른 50g 안팎 초고단백 제품과 비교합니다." },
   ],
@@ -1153,9 +1155,9 @@ export const takefitLineupConfig: ComparePageConfig = {
   keywords: ["테이크핏 맥스", "테이크핏 맥스 성분", "테이크핏 몬스터 성분", "테이크핏 종류", "테이크핏 맥스 몬스터 차이", "테이크핏 라인업", "테이크핏 프로", "테이크핏 익스트림"],
   badge: "브랜드 라인업",
   readingTime: "5분 읽기",
-  updatedAt: "2026-08-26",
+  updatedAt: "2026-09-30",
   methodologyNote: "ProteinLab DB RTD 기준",
-  intro: "테이크핏은 이름이 다른 만큼 목적도 분명하게 갈립니다. 맥스는 표준 고단백, 몬스터는 40g대 초고단백, 프로는 워터형, 익스트림은 60g대 최상위 라인이라서 같은 브랜드라도 고르는 기준이 완전히 다릅니다.",
+  intro: "테이크핏 종류는 맥스, 몬스터, 프로, 익스트림으로 나뉘며 용량과 단백질·당류·칼로리 차이가 큽니다. 맥스는 표준 고단백, 몬스터는 40g대, 프로는 워터형, 익스트림은 60g대이므로 같은 브랜드라도 운동량과 음용 부담에 맞춰 골라야 합니다.",
   summary: [
     "처음 시작하기 가장 무난한 건 테이크핏 맥스입니다.",
     "단백질 함량을 극대화하려면 몬스터나 익스트림이 답이고, 가볍게 마시고 싶다면 프로가 가장 편합니다.",
@@ -1630,16 +1632,16 @@ newcareWaterConfig.jsonLd = [articleJsonLd(newcareWaterConfig), faqJsonLd(newcar
 
 export const newcareVsHymuneConfig: ComparePageConfig = {
   slug: "newcare-vs-hymune",
-  title: "뉴케어 vs 하이뮨 단백질 음료 비교",
+  title: "뉴케어 vs 하이뮨 비교 | 부모님·50대 단백질 음료 차이",
   description:
-    "뉴케어 올프로틴과 하이뮨 프로틴 밸런스를 단백질, 용량, 당류, 브랜드 포지션 기준으로 비교합니다. 50대·시니어·회복기 보완용으로 어떤 흐름이 더 맞는지 정리합니다.",
-  keywords: ["뉴케어 하이뮨 비교", "뉴케어 vs 하이뮨", "시니어 단백질 음료", "하이뮨 뉴케어 차이"],
+    "뉴케어 올프로틴 41g과 하이뮨 프로틴 밸런스의 단백질·용량·당류·칼로리를 비교합니다. 부모님과 50대가 총량과 음용 부담을 기준으로 고르는 법을 정리했습니다.",
+  keywords: ["뉴케어 하이뮨 비교", "뉴케어 vs 하이뮨", "시니어 단백질 음료", "하이뮨 뉴케어 차이", "부모님 단백질 음료", "50대 단백질 음료"],
   badge: "브랜드 비교",
   readingTime: "4분 읽기",
-  updatedAt: "2026-04-02",
+  updatedAt: "2026-09-30",
   methodologyNote: "ProteinLab DB 뉴케어 41g·하이뮨 프로틴 밸런스 기준",
   intro:
-    "뉴케어와 하이뮨은 둘 다 건강관리형 검색에서 자주 겹치지만, 실제 제품 결은 꽤 다릅니다. 뉴케어는 고단백 예외 케이스 쪽으로 읽히고, 하이뮨은 조금 더 익숙한 균형형 진입 제품으로 읽히는 편입니다.",
+    "부모님이나 50대용 단백질 음료를 찾을 때 뉴케어와 하이뮨이 자주 함께 비교되지만, 대표 제품의 단백질 총량과 용량은 크게 다릅니다. 뉴케어 올프로틴 41g과 하이뮨 프로틴 밸런스를 같은 기준으로 놓고, 많이 채우는 선택과 부담을 낮춘 선택을 구분했습니다.",
   summary: [
     "단백질 총량은 뉴케어 41g이 확실히 높습니다.",
     "부담 낮은 첫 제품 흐름은 하이뮨이 더 자연스럽습니다.",
@@ -2211,14 +2213,14 @@ proteinDrinkByContentConfig.jsonLd = [articleJsonLd(proteinDrinkByContentConfig)
 
 export const takefitVsHimuneConfig: ComparePageConfig = {
   slug: "takefit-vs-himune",
-  title: "테이크핏 vs 하이뮨 비교 (2026)",
-  description: "테이크핏 맥스와 하이뮨 액티브를 단백질, 당류, 칼로리, 지방, 나트륨 기준으로 직접 비교합니다.",
-  keywords: ["테이크핏 하이뮨 비교", "테이크핏 vs 하이뮨", "테이크핏 하이뮨 차이"],
+  title: "테이크핏 vs 하이뮨 차이 | 단백질·당류·칼로리 비교",
+  description: "테이크핏 맥스와 하이뮨 액티브의 단백질·당류·칼로리·나트륨·밀도를 비교하고 운동 후, 다이어트, 일상용으로 무엇이 맞는지 정리합니다.",
+  keywords: ["테이크핏 하이뮨 비교", "테이크핏 vs 하이뮨", "테이크핏 하이뮨 차이", "테이크핏 하이뮨 성분", "단백질 음료 비교"],
   badge: "브랜드 비교",
   readingTime: "4분 읽기",
-  updatedAt: "2026-08-26",
+  updatedAt: "2026-09-30",
   methodologyNote: "ProteinLab DB 대표 RTD 기준",
-  intro: "테이크핏과 하이뮨은 모두 편의점에서 자주 보이지만 결은 꽤 다릅니다. 테이크핏 맥스는 저당·고밀도 쪽이고, 하이뮨 액티브는 건강관리형 일상 RTD 쪽에 더 가깝습니다.",
+  intro: "테이크핏과 하이뮨은 편의점 단백질 음료로 자주 함께 비교되지만 대표 제품의 단백질·당류·칼로리와 브랜드 포지션은 다릅니다. 테이크핏 맥스와 하이뮨 액티브를 같은 기준으로 놓고 운동 후 보충, 다이어트, 일상 루틴 중 어떤 목적에 맞는지 비교했습니다.",
   summary: [
     "저당·고밀도 쪽은 테이크핏 맥스가 더 강합니다.",
     "산양유 이미지와 일상형 부담은 하이뮨 액티브 쪽이 더 직관적입니다.",
@@ -2278,6 +2280,7 @@ export const takefitVsHimuneConfig: ComparePageConfig = {
     { title: "셀렉스 vs 테이크핏 vs 하이뮨", href: "/guides/product-selection-comparison/selex-vs-takefit-vs-himune", description: "대표 3파전 비교 페이지입니다." },
     { title: "테이크핏 제품 종류 전체 정리", href: "/guides/product-selection-comparison/takefit-lineup", description: "테이크핏 맥스·몬스터·익스트림 차이를 따로 봅니다." },
     { title: "하이뮨 제품 종류 전체 정리", href: "/guides/product-selection-comparison/himune-lineup", description: "하이뮨 액티브·울트라 라인업 차이를 따로 봅니다." },
+    { title: "MPI·WPI·WPC 단백질 차이", href: "/guides/basics/protein-source-types", description: "두 브랜드의 수치 비교 다음에 단백질 원료 차이를 이어서 확인합니다." },
   ],
   purchaseLinks: [
     { label: "테이크핏 맥스 보기", slug: takefitMax.slug },
