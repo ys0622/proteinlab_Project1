@@ -1,13 +1,26 @@
 import { ShakeGuidePage, buildShakeGuideMetadata } from "../shakeGuideShared";
+import { buildGuideJsonLd } from "@/app/lib/guideJsonLd";
 
-export const metadata = buildShakeGuideMetadata(
-  "단백질 음료 vs 쉐이크 차이 | 용도별 선택 기준 정리",
-  "RTD 단백질 음료와 파우치형 쉐이크는 용도가 다릅니다. 운동 후·식사대용·저당 기준으로 어떤 상황에 무엇이 맞는지 정리했습니다.",
-);
+const pageTitle = "단백질 음료 vs 쉐이크 차이 | RTD·파우치 용도 비교";
+const pageDescription = "RTD 단백질 음료와 파우치형 쉐이크의 형태·편의성·포만감 차이를 비교하고 운동 후 보충과 식사대용 중 어떤 상황에 맞는지 정리했습니다.";
+
+export const metadata = buildShakeGuideMetadata(pageTitle, pageDescription);
 
 export default function ProteinDrinkVsProteinShakePage() {
+  const jsonLd = buildGuideJsonLd({
+    title: pageTitle,
+    description: pageDescription,
+    url: "https://proteinlab.kr/guides/product-selection-comparison/protein-drink-vs-protein-shake",
+    datePublished: "2026-03-01",
+    dateModified: "2026-09-30",
+  });
+
   return (
-    <ShakeGuidePage
+    <>
+      {jsonLd.map((item, index) => (
+        <script key={index} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(item) }} />
+      ))}
+      <ShakeGuidePage
       title="단백질 음료 vs 단백질 쉐이크"
       description="단백질 음료와 단백질 쉐이크는 비슷해 보여도 섭취 방식과 성분 구성이 다릅니다. ProteinLab에서는 단백질 음료는 RTD 제품, 단백질 쉐이크는 파우치형 중심의 간편 섭취형으로 나눠서 봅니다."
       breadcrumbLabel="단백질 음료 vs 단백질 쉐이크"
@@ -46,6 +59,8 @@ export default function ProteinDrinkVsProteinShakePage() {
         { label: "프로티원 쉐이크가 궁금하다면 → 프로티원 단백질 쉐이크 추천", href: "/guides/product-selection-comparison/proteone-protein-shake" },
         { label: "단백질 쉐이크 추천이 궁금하다면 → 단백질 쉐이크 추천", href: "/guides/product-selection-comparison/protein-shake-guide" },
         { label: "단백질 음료 기준이 궁금하다면 → 단백질 음료 선택 가이드", href: "/guides/product-selection-comparison/protein-drink-guide" },
+        { label: "쉐이크 추천 후보를 보고 싶다면 → 단백질 쉐이크 추천 TOP 7", href: "/guides/product-selection-comparison/protein-shake-top7" },
+        { label: "저칼로리 쉐이크가 궁금하다면 → 단백질 쉐이크 칼로리 순위", href: "/guides/product-selection-comparison/protein-shake-calorie-ranking" },
         { label: "운동 후 섭취 기준이 궁금하다면 → 운동 후 단백질 쉐이크", href: "/guides/product-selection-comparison/post-workout-protein-shake-guide" },
         { label: "매일 마실 제품이 궁금하다면 → 단백질 음료 매일 마셔도 되나요", href: "/guides/intake-strategy-health/protein-drink-daily" },
         { label: "당류 기준이 궁금하다면 → 단백질 음료 당류 얼마나 봐야 하나요", href: "/guides/intake-strategy-health/protein-drink-sugar" },
@@ -55,8 +70,9 @@ export default function ProteinDrinkVsProteinShakePage() {
         { question: "단백질 음료와 단백질 쉐이크 중 뭐가 더 좋은가요?", answer: "어느 쪽이 무조건 더 좋다고 할 수 없습니다. 운동 후 빠르게 보충하려면 RTD 음료가 편하고, 식사대용이나 포만감이 필요하면 쉐이크가 더 잘 맞습니다." },
         { question: "RTD 단백질 음료는 어떤 상황에 적합한가요?", answer: "바로 마실 수 있어 운동 직후, 외출 중, 간편하게 보충할 때 적합합니다. 별도로 준비할 필요 없이 바로 섭취할 수 있다는 게 가장 큰 장점입니다." },
         { question: "파우치형 쉐이크는 어떻게 먹나요?", answer: "파우치에 든 분말을 물이나 우유에 타서 마십니다. 물에 타면 칼로리가 낮고, 우유에 타면 단백질과 칼로리가 추가됩니다. 목적에 따라 선택하면 됩니다." },
-        { question: "단백질 음료와 쉐이크의 가격 차이가 있나요?", answer: "일반적으로 RTD 음료가 편의점 기준 1,500~2,500원 수준이고, 파우치형 쉐이크는 1,000~2,000원 수준입니다. 용량과 구매 채널에 따라 차이가 있으니 단위 가격으로 비교하는 게 좋습니다." },
+        { question: "단백질 음료와 쉐이크의 가격 차이가 있나요?", answer: "가격은 구매 채널과 묶음 수량에 따라 달라집니다. RTD는 편의성이, 파우치형은 묶음 구매 단가가 장점일 수 있으므로 1회 섭취 기준 가격을 비교하세요." },
       ]}
-    />
+      />
+    </>
   );
 }

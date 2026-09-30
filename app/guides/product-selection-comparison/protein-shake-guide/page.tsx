@@ -1,22 +1,29 @@
 import { ShakeGuidePage, buildShakeGuideMetadata } from "../shakeGuideShared";
 import { buildGuideJsonLd } from "@/app/lib/guideJsonLd";
 
+const pageTitle = "단백질쉐이크 고르는 법 | 단백질·당류·칼로리·식이섬유 기준";
+const pageDescription = "단백질쉐이크를 고를 때 확인할 단백질·당류·칼로리·식이섬유 기준을 운동 후 보충, 식사대용, 저당 목적별로 정리했습니다.";
+
 export const metadata = buildShakeGuideMetadata(
-  "단백질 쉐이크 추천 TOP5 | 성분 기준 직접 비교 2026",
-  "단백하니·플라이밀·프로티원 등 파우치형 단백질 쉐이크를 단백질·당류·칼로리 기준으로 직접 비교했습니다. 전체 후보를 먼저 좁히고 브랜드별 차이까지 빠르게 확인해보세요.",
+  pageTitle,
+  pageDescription,
 );
 
 export default function ProteinShakeGuidePage() {
   const jsonLd = buildGuideJsonLd({
-    title: "운동 후 보충용",
-    description: "",
+    title: pageTitle,
+    description: pageDescription,
     url: "https://proteinlab.kr/guides/product-selection-comparison/protein-shake-guide",
     datePublished: "2026-03-01",
-    dateModified: "2026-05-29",
+    dateModified: "2026-09-30",
   });
 
   return (
-    <ShakeGuidePage
+    <>
+      {jsonLd.map((item, index) => (
+        <script key={index} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(item) }} />
+      ))}
+      <ShakeGuidePage
       title="단백질 쉐이크 추천 가이드"
       description="단백질 쉐이크는 제품마다 성분 차이가 커서 단백질 함량만 보고 고르면 목적과 맞지 않는 제품을 고르기 쉽습니다. 이 페이지는 파우치형 쉐이크 전체 기준을 먼저 정리하고, 그다음 플라이밀·단백하니·프로티원 같은 브랜드 페이지로 더 빠르게 좁혀볼 수 있게 구성했습니다."
       breadcrumbLabel="단백질 쉐이크 추천 가이드"
@@ -57,6 +64,8 @@ export default function ProteinShakeGuidePage() {
         { label: "프로티원 종류가 궁금하다면 → 프로티원 단백질 쉐이크 추천", href: "/guides/product-selection-comparison/proteone-protein-shake" },
         { label: "식사대용 기준이 궁금하다면 → 식사대용 단백질 쉐이크", href: "/guides/product-selection-comparison/meal-replacement-protein-shake-guide" },
         { label: "음료와 차이가 궁금하다면 → 단백질 음료 vs 단백질 쉐이크", href: "/guides/product-selection-comparison/protein-drink-vs-protein-shake" },
+        { label: "추천 후보를 바로 보고 싶다면 → 단백질 쉐이크 추천 TOP 7", href: "/guides/product-selection-comparison/protein-shake-top7" },
+        { label: "칼로리 낮은 순서가 궁금하다면 → 단백질 쉐이크 칼로리 순위", href: "/guides/product-selection-comparison/protein-shake-calorie-ranking" },
       ]}
       ctaBody="ProteinLab 쉐이크 카테고리에서 파우치형 중심의 간편 섭취 단백질 쉐이크를 한 번에 비교해보세요. 추천, 큐레이션, 등급 정보까지 연결해서 볼 수 있습니다."
       faqItems={[
@@ -65,6 +74,7 @@ export default function ProteinShakeGuidePage() {
         { question: "단백질 쉐이크는 운동 안 해도 먹어도 되나요?", answer: "네, 운동 여부와 관계없이 단백질 보충이 필요하면 섭취할 수 있습니다. 다만 칼로리가 있기 때문에 하루 총 칼로리 섭취량을 고려해야 합니다." },
         { question: "저당 단백질 쉐이크 기준은 당류 몇 g인가요?", answer: "ProteinLab 기준으로는 당류 3g 이하를 저당으로 분류합니다. 제품마다 기준이 다를 수 있으니 성분표에서 직접 확인하는 것이 정확합니다." },
       ]}
-    />
+      />
+    </>
   );
 }
