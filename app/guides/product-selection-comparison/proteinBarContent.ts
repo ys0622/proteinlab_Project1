@@ -279,9 +279,9 @@ proteinBarTop10Config.faq = [
 ];
 proteinBarTop10Config.jsonLd = [articleJsonLd(proteinBarTop10Config), faqJsonLd(proteinBarTop10Config)];
 
-proteinBarTop10Config.title = "단백질 바 추천 TOP 10 | 프로틴바·다이어트 간식 비교 2026";
+proteinBarTop10Config.title = "단백질바 추천 TOP 10 (2026) | 저당·고단백·다이어트 비교";
 proteinBarTop10Config.description =
-  "ProteinLab DB 단백질 바 100개를 기준으로 단백질, 칼로리, 당류, 단백질 밀도를 함께 비교해 실제 구매 후보를 좁혀봅니다.";
+  "ProteinLab DB 단백질바 100개의 단백질·칼로리·당류·밀도를 비교해 2026년 추천 TOP 10을 선정하고 운동 후, 다이어트, 편의점용 선택 기준을 정리했습니다.";
 proteinBarTop10Config.keywords = [
   "단백질 바 추천",
   "프로틴바 추천",
@@ -292,7 +292,7 @@ proteinBarTop10Config.keywords = [
 ];
 proteinBarTop10Config.badge = "바 랭킹";
 proteinBarTop10Config.readingTime = "6분 읽기";
-proteinBarTop10Config.updatedAt = "2026-07-20";
+proteinBarTop10Config.updatedAt = "2026-09-30";
 proteinBarTop10Config.methodologyNote =
   "ProteinLab DB 바 100개 기준 · 단백질 함량, 당류, 칼로리, 식이섬유, 브랜드 편중을 함께 반영";
 proteinBarTop10Config.intro =
