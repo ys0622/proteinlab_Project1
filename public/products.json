@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-08-29T12:59:03.666Z",
-  "total": 380,
+  "generated_at": "2026-09-30T13:41:44.289Z",
+  "total": 404,
   "categories": {
     "drinks": 135,
     "bars": 100,
     "yogurt": 57,
-    "shake": 88
+    "shake": 112
   },
   "products": [
     {
@@ -3427,6 +3427,222 @@
       "protein": 20,
       "calories": 163,
       "sugar": 3
+    },
+    {
+      "slug": "delight-project-shake-nutty-choco-45",
+      "name": "단백질 쉐이크 (너티초코)",
+      "brand": "딜라이트 프로젝트",
+      "category": "shake",
+      "protein": 19,
+      "calories": 180,
+      "sugar": 3
+    },
+    {
+      "slug": "delight-project-shake-black-sesame-injeolmi-45",
+      "name": "단백질 쉐이크 (흑임자인절미)",
+      "brand": "딜라이트 프로젝트",
+      "category": "shake",
+      "protein": 19,
+      "calories": 160,
+      "sugar": 3
+    },
+    {
+      "slug": "delight-project-shake-sweet-potato-misutgaru-45",
+      "name": "단백질 쉐이크 (고구마미숫가루)",
+      "brand": "딜라이트 프로젝트",
+      "category": "shake",
+      "protein": 19,
+      "calories": 165,
+      "sugar": 4
+    },
+    {
+      "slug": "delight-project-shake-corn-castella-45",
+      "name": "단백질 쉐이크 (옥수수카스테라)",
+      "brand": "딜라이트 프로젝트",
+      "category": "shake",
+      "protein": 18,
+      "calories": 170,
+      "sugar": 6
+    },
+    {
+      "slug": "delight-project-shake-pistachio-choco-45",
+      "name": "단백질 쉐이크 (피스타치오초코)",
+      "brand": "딜라이트 프로젝트",
+      "category": "shake",
+      "protein": 22,
+      "calories": 185,
+      "sugar": 2
+    },
+    {
+      "slug": "delight-project-shake-strawberry-yogurt-45",
+      "name": "단백질 쉐이크 (딸기요거트)",
+      "brand": "딜라이트 프로젝트",
+      "category": "shake",
+      "protein": 20,
+      "calories": 175,
+      "sugar": 6
+    },
+    {
+      "slug": "delight-project-shake-blueberry-yogurt-45",
+      "name": "단백질 쉐이크 (블루베리요거트)",
+      "brand": "딜라이트 프로젝트",
+      "category": "shake",
+      "protein": 18,
+      "calories": 180,
+      "sugar": 4
+    },
+    {
+      "slug": "delight-project-shake-melon-milk-45",
+      "name": "단백질 쉐이크 (멜론밀크)",
+      "brand": "딜라이트 프로젝트",
+      "category": "shake",
+      "protein": 21,
+      "calories": 160,
+      "sugar": 3
+    },
+    {
+      "slug": "hansonhankki-petit-shake-pistachio-choco-40",
+      "name": "Petit 단백질 쉐이크 (피스타치오 초코)",
+      "brand": "한손한끼",
+      "category": "shake",
+      "protein": 13.8,
+      "calories": 158,
+      "sugar": 6.5
+    },
+    {
+      "slug": "hansonhankki-petit-shake-strawberry-40",
+      "name": "Petit 단백질 쉐이크 (딸기)",
+      "brand": "한손한끼",
+      "category": "shake",
+      "protein": 15.2,
+      "calories": 151,
+      "sugar": 1.8
+    },
+    {
+      "slug": "hansonhankki-petit-shake-chestnut-latte-40",
+      "name": "Petit 단백질 쉐이크 (밤라떼맛)",
+      "brand": "한손한끼",
+      "category": "shake",
+      "protein": 15.6,
+      "calories": 155,
+      "sugar": 7.7
+    },
+    {
+      "slug": "hansonhankki-petit-shake-choco-40",
+      "name": "Petit 단백질 쉐이크 (초코)",
+      "brand": "한손한끼",
+      "category": "shake",
+      "protein": 14,
+      "calories": 157,
+      "sugar": 7
+    },
+    {
+      "slug": "hansonhankki-petit-shake-grain-40",
+      "name": "Petit 단백질 쉐이크 (곡물)",
+      "brand": "한손한끼",
+      "category": "shake",
+      "protein": 16.5,
+      "calories": 156,
+      "sugar": 5.6
+    },
+    {
+      "slug": "maeilhankki-shake-strawberry-40",
+      "name": "단백질 쉐이크 (딸기)",
+      "brand": "매일한끼",
+      "category": "shake",
+      "protein": 20,
+      "calories": 152,
+      "sugar": 4.8
+    },
+    {
+      "slug": "maeilhankki-shake-purple-sweet-potato-40",
+      "name": "단백질 쉐이크 (자색고구마)",
+      "brand": "매일한끼",
+      "category": "shake",
+      "protein": 20,
+      "calories": 153,
+      "sugar": 4
+    },
+    {
+      "slug": "maeilhankki-shake-sweet-corn-40",
+      "name": "단백질 쉐이크 (스윗콘)",
+      "brand": "매일한끼",
+      "category": "shake",
+      "protein": 20,
+      "calories": 152,
+      "sugar": 4
+    },
+    {
+      "slug": "maeilhankki-shake-grain-40",
+      "name": "단백질 쉐이크 (곡물)",
+      "brand": "매일한끼",
+      "category": "shake",
+      "protein": 20,
+      "calories": 145,
+      "sugar": 1
+    },
+    {
+      "slug": "maeilhankki-shake-choco-40",
+      "name": "단백질 쉐이크 (초코)",
+      "brand": "매일한끼",
+      "category": "shake",
+      "protein": 20,
+      "calories": 144,
+      "sugar": 2
+    },
+    {
+      "slug": "takefit-breadmeal-shake-choco-brownie-45",
+      "name": "브레드밀 단백질 쉐이크 (초코 브라우니)",
+      "brand": "테이크핏",
+      "category": "shake",
+      "protein": 24,
+      "calories": 170,
+      "sugar": 1.9
+    },
+    {
+      "slug": "takefit-breadmeal-shake-banana-brulee-45",
+      "name": "브레드밀 단백질 쉐이크 (바나나브륄레)",
+      "brand": "테이크핏",
+      "category": "shake",
+      "protein": 20,
+      "calories": 176,
+      "sugar": 1.9
+    },
+    {
+      "slug": "takefit-breadmeal-shake-savory-oat-bread-45",
+      "name": "브레드밀 단백질 쉐이크 (고소오트식빵)",
+      "brand": "테이크핏",
+      "category": "shake",
+      "protein": 24,
+      "calories": 172,
+      "sugar": 1.9
+    },
+    {
+      "slug": "takefit-breadmeal-shake-sweet-potato-soboro-45",
+      "name": "브레드밀 단백질 쉐이크 (고구마소보로)",
+      "brand": "테이크핏",
+      "category": "shake",
+      "protein": 20,
+      "calories": 174,
+      "sugar": 1.9
+    },
+    {
+      "slug": "sportsix-protein-shake-nutty-choco-45",
+      "name": "프로틴쉐이크 (너티초코)",
+      "brand": "스포식스",
+      "category": "shake",
+      "protein": 22,
+      "calories": 175,
+      "sugar": 1
+    },
+    {
+      "slug": "sportsix-protein-shake-savory-yulmu-45",
+      "name": "프로틴쉐이크 (고쇼율무)",
+      "brand": "스포식스",
+      "category": "shake",
+      "protein": 22,
+      "calories": 170,
+      "sugar": 1
     }
   ]
 }
