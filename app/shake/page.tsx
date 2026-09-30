@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import CommercialAdSection from "../components/CommercialAdSection";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
@@ -8,6 +9,8 @@ import CategoryFaqSection, { getCategoryFaqs } from "../components/CategoryFaqSe
 import { getProductsByCategoryAsync } from "../lib/productData";
 import { getCategoryProductsWithCountsAsync } from "../lib/productCounts";
 import { formatProductLabel } from "../lib/productLabel";
+import { brandToSlug } from "../lib/brandHubs";
+import newProductsRaw from "../data/newProducts.json";
 
 // ProductListWithFilters가 useSearchParams()를 쓰기 때문에, 정적/ISR로 렌더링하면
 // Next.js가 그 부분을 Suspense fallback(null)으로 대체해버려 실제 제품 카드가
@@ -48,6 +51,20 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function ShakePage() {
   const { products, categoryCounts, totalCount } =
     await getCategoryProductsWithCountsAsync("shake");
+  const recentlyAddedSlugs = new Set(
+    (newProductsRaw as Array<{ slug: string; addedAt: string }>)
+      .filter((item) => item.addedAt === "2026-09-30")
+      .map((item) => item.slug),
+  );
+  const recentlyAddedGroups = [...new Set(products
+    .filter((product) => product.slug && recentlyAddedSlugs.has(product.slug))
+    .map((product) => product.brand))]
+    .map((brand) => ({
+      brand,
+      products: products.filter(
+        (product) => product.brand === brand && product.slug && recentlyAddedSlugs.has(product.slug),
+      ),
+    }));
 
   const breadcrumbJsonLd = {
     "@context": "https://schema.org",
@@ -89,6 +106,44 @@ export default async function ShakePage() {
       <HeroSection totalCount={totalCount} categoryCount={products.length} />
 
       <main className="mx-auto max-w-[1200px] px-4 pb-2 pt-0 md:px-6 md:pb-3">
+        <section className="mb-6 rounded-2xl border border-[#dfe8df] bg-[#f7fbf7] p-5 md:p-6">
+          <div className="flex flex-col gap-2 md:flex-row md:items-end md:justify-between">
+            <div>
+              <p className="text-xs font-semibold text-[var(--accent)]">2026년 9월 신규 등록</p>
+              <h2 className="mt-1 text-lg font-bold text-[var(--foreground)]">새로 비교할 수 있는 단백질 쉐이크 24종</h2>
+              <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">
+                딜라이트 프로젝트, 한손한끼, 매일한끼, 테이크핏 브레드밀, 스포식스 제품을 맛별 성분표와 함께 추가했습니다.
+              </p>
+            </div>
+            <Link href="/brands" className="text-sm font-semibold text-[var(--accent)] hover:underline">
+              전체 브랜드 보기
+            </Link>
+          </div>
+          <div className="mt-5 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+            {recentlyAddedGroups.map((group) => (
+              <div key={group.brand} className="rounded-xl border border-[#e4ebe4] bg-white p-4">
+                <Link
+                  href={`/brands/${brandToSlug(group.brand)}`}
+                  className="font-bold text-[var(--foreground)] hover:text-[var(--accent)] hover:underline"
+                >
+                  {group.brand} {group.products.length}종
+                </Link>
+                <ul className="mt-3 space-y-2">
+                  {group.products.map((product) => (
+                    <li key={product.slug}>
+                      <Link
+                        href={`/product/${product.slug}`}
+                        className="text-sm leading-5 text-[var(--foreground-muted)] hover:text-[var(--accent)] hover:underline"
+                      >
+                        {product.name}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </section>
         <ProductListWithFilters
           productType="shake"
           products={products}
