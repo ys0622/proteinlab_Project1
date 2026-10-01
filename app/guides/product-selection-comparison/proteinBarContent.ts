@@ -119,9 +119,9 @@ function rankingRows(products: typeof barProducts): CategoryMetricRow[] {
 
 export const proteinBarTop10Config: CategoryGuideConfig = {
   slug: "protein-bar-top10",
-  title: "단백질바 추천 TOP 10 (2026) | 저당·고단백·다이어트 비교",
+  title: "단백질바 추천 TOP 10 (2026) | 100종 비교·목적별 추천",
   description:
-    "ProteinLab DB 단백질바 100개의 단백질·칼로리·당류·밀도를 비교해 2026년 추천 TOP 10을 선정하고 운동 후, 다이어트, 편의점용 선택 기준을 정리했습니다.",
+    "단백질바 100개의 단백질·칼로리·당류를 비교해 TOP 10을 선정했습니다. 운동 후·다이어트·편의점 구매 목적별 추천과 고르는 기준을 확인하세요.",
   keywords: ["단백질 바 추천", "프로틴바 추천", "단백질바 추천", "다이어트 단백질 바", "편의점 단백질 바", "단백질 바 비교"],
   badge: "바 랭킹",
   readingTime: "6분 읽기",

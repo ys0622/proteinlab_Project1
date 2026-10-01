@@ -7,6 +7,11 @@ const GUIDE_THUMBNAIL_SLUGS = new Set([
   "low-sugar-protein-shake-guide",
   "protein-shake-flavor-guide",
   "protein-shake-nutrition-label-guide",
+  "selex-vs-takefit-vs-himune",
+  "newcare-vs-hymune",
+  "takefit-max-vs-takefit-monster",
+  "takefit-vs-hymune-drink",
+  "protein-bar-top10",
 ]);
 
 export function getGuideThumbnailUrl(slug: string) {

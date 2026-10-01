@@ -9,6 +9,7 @@ import { getCompareLandingBySlug, getAllCompareLandingStaticSlugs } from "../../
 import { formatProductLabel } from "../../lib/productLabel";
 import { getAllProducts } from "../../data/products";
 import type { ProductDetailProps } from "../../data/products";
+import { getGuideThumbnailUrl } from "../../lib/guideThumbnails";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -229,6 +230,17 @@ const canonicalOverrides: Record<string, string> = {
   "newcare-vs-sellex-drink": "https://proteinlab.kr/guides/product-selection-comparison/newcare-vs-sellex",
 };
 
+const searchSnippetOverrides: Record<string, { title: string; description: string }> = {
+  "takefit-max-vs-takefit-monster": {
+    title: "테이크핏 맥스 vs 몬스터 차이 | 단백질 24g·45g 비교",
+    description: "테이크핏 맥스 24g과 몬스터 45g의 칼로리·당류·용량을 비교했습니다. 매일 마실 제품과 운동 후 집중 보충용 중 빠르게 골라보세요.",
+  },
+  "takefit-vs-hymune-drink": {
+    title: "테이크핏 vs 하이뮨 차이 | 단백질·당류·칼로리 비교",
+    description: "테이크핏 맥스와 하이뮨 액티브의 단백질·당류·칼로리를 한 표로 비교했습니다. 운동 후 고단백과 가벼운 일상용 중 맞는 제품을 확인하세요.",
+  },
+};
+
 export async function generateMetadata({ params }: PageProps) {
   const { slug } = await params;
   const landing = getCompareLandingBySlug(slug);
@@ -238,14 +250,16 @@ export async function generateMetadata({ params }: PageProps) {
   }
 
   const canonical = canonicalOverrides[landing.slug] ?? `https://proteinlab.kr/compare/${landing.slug}`;
-  const title = `${landing.title} — 단백질 성분 비교표`;
-  const description = `${landing.description} 비교표로 수치를 나란히 확인하고 제품 상세까지 바로 이어서 볼 수 있습니다.`;
+  const snippetOverride = searchSnippetOverrides[landing.slug];
+  const title = snippetOverride?.title ?? `${landing.title} — 단백질 성분 비교표`;
+  const description = snippetOverride?.description ?? `${landing.description} 비교표로 수치를 나란히 확인하고 제품 상세까지 바로 이어서 볼 수 있습니다.`;
+  const thumbnail = getGuideThumbnailUrl(landing.slug);
   return {
     title,
     description,
     alternates: { canonical },
     openGraph: {
-    images: [{ url: "https://proteinlab.kr/opengraph-image", width: 1200, height: 630, alt: "ProteinLab 단백질 제품 비교" }],
+      images: [{ url: thumbnail ?? "https://proteinlab.kr/opengraph-image", width: 1200, height: 630, alt: title }],
       title,
       description,
       url: canonical,
@@ -254,8 +268,8 @@ export async function generateMetadata({ params }: PageProps) {
       siteName: "ProteinLab",
     },
     twitter: {
-    images: ["https://proteinlab.kr/opengraph-image"],
-      card: "summary",
+      images: [thumbnail ?? "https://proteinlab.kr/opengraph-image"],
+      card: thumbnail ? "summary_large_image" : "summary",
       title,
       description,
     },
