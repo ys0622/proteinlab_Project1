@@ -176,7 +176,7 @@ export default async function Home() {
               >
                 나에게 맞는 단백질 제품, 수치로 비교하세요
               </h1>
-              <div className="mt-1 grid grid-cols-[minmax(0,1fr)_108px] items-center gap-x-2">
+              <div className="mt-0.5 grid grid-cols-[minmax(0,1fr)_108px] items-start gap-x-2">
                 <div className="min-w-0">
                   <p className="break-keep text-[12px] leading-[1.4]" style={{ color: "#5E6E61" }}>
                     단백질·당류·칼로리를 한눈에 비교하고
