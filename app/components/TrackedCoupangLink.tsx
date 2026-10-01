@@ -1,7 +1,7 @@
 "use client";
 
-import type { ReactNode } from "react";
-import { affiliateClick, type LinkPosition } from "@/lib/analytics";
+import { useEffect, useRef, type ReactNode } from "react";
+import { affiliateClick, affiliateImpression, type LinkPosition } from "@/lib/analytics";
 
 type TrackedCoupangLinkProps = {
   href: string | null;
@@ -27,6 +27,32 @@ export default function TrackedCoupangLink({
   "aria-label": ariaLabel,
 }: TrackedCoupangLinkProps) {
   const safeHref = href && href !== "#" ? href : undefined;
+  const linkRef = useRef<HTMLAnchorElement>(null);
+  const impressionSent = useRef(false);
+
+  useEffect(() => {
+    const element = linkRef.current;
+    if (!element || !safeHref) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting || impressionSent.current) return;
+        impressionSent.current = true;
+        affiliateImpression({
+          productId,
+          productName,
+          productBrand,
+          productCategory,
+          retailer: "coupang",
+          destinationUrl: safeHref,
+          linkPosition,
+        });
+        observer.disconnect();
+      },
+      { threshold: 0.4 },
+    );
+    observer.observe(element);
+    return () => observer.disconnect();
+  }, [safeHref, productId, productName, productBrand, productCategory, linkPosition]);
 
   const handleClick = () => {
     if (!safeHref) return;
@@ -51,6 +77,7 @@ export default function TrackedCoupangLink({
 
   return (
     <a
+      ref={linkRef}
       href={safeHref}
       target="_blank"
       rel="sponsored noreferrer noopener"

@@ -40,6 +40,7 @@ export type StandardEventName =
   | "compare_view"
   | "compare_complete"
   | "affiliate_click"
+  | "affiliate_impression"
   | "retailer_click"
   | "filter_apply"
   | "sort_apply"
@@ -304,6 +305,25 @@ export function affiliateClick(
   return sendEvent("affiliate_click", {
     ...productFields(product), retailer: product.retailer, destination_url: product.destinationUrl,
     affiliate_link_id: affiliateLinkId, subid: subId, link_position: product.linkPosition,
+  });
+}
+
+export function affiliateImpression(
+  product: ProductParams & {
+    retailer: Retailer;
+    destinationUrl: string;
+    linkPosition: LinkPosition;
+  },
+) {
+  return sendEvent("affiliate_impression", {
+    ...productFields(product),
+    retailer: product.retailer,
+    destination_url: product.destinationUrl,
+    affiliate_link_id:
+      product.retailer === "coupang"
+        ? getCoupangAffiliateLinkId(product.destinationUrl, product.productId)
+        : undefined,
+    link_position: product.linkPosition,
   });
 }
 

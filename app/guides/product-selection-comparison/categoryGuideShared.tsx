@@ -59,6 +59,7 @@ export interface CategoryGuideConfig {
   relatedGuides: CategoryGuideLink[];
   purchaseLinks: CategoryPurchaseLink[];
   showPurchaseLinks?: boolean;
+  promoteAffiliateCtas?: boolean;
   conversion?: {
     contentId: string;
     conclusion: string;
@@ -152,7 +153,7 @@ export function buildCategoryGuideMetadata(config: CategoryGuideConfig): Metadat
   };
 }
 
-function PurchaseCards({ links }: { links: CategoryPurchaseLink[] }) {
+function PurchaseCards({ links, linkPosition = "mid_content" }: { links: CategoryPurchaseLink[]; linkPosition?: "hero" | "mid_content" | "bottom_cta" }) {
   return (
     <div className="-mx-1 flex gap-2 overflow-x-auto px-1 pb-1 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:mx-0 md:grid md:grid-cols-3 md:gap-3 md:overflow-visible md:px-0 md:pb-0">
       {links.map((item) => {
@@ -183,10 +184,10 @@ function PurchaseCards({ links }: { links: CategoryPurchaseLink[] }) {
                   productName={`${product.brand} ${product.name}`}
                   productBrand={product.brand}
                   productCategory={product.productType}
-                  linkPosition="mid_content"
+                  linkPosition={linkPosition}
                   className="ml-auto rounded-full bg-[#fee500] px-3 py-1 text-xs font-bold text-[#1a1a1a]"
                 >
-                  최저가 확인
+                  가격·옵션 확인
                 </TrackedCoupangLink>
               )}
             </div>
@@ -307,6 +308,17 @@ export function CategoryGuidePage({ config }: { config: CategoryGuideConfig }) {
             </ul>
           </section>
 
+          {config.promoteAffiliateCtas && config.purchaseLinks.length > 0 ? (
+            <section className="rounded-[28px] border border-[#d9e4f0] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(32,46,68,0.05)]">
+              <div className="flex flex-wrap items-center justify-between gap-2">
+                <h2 className="text-lg font-bold text-[var(--foreground)]">추천 제품 가격·옵션 빠르게 확인</h2>
+                <AffiliateDisclosure className="mb-0" />
+              </div>
+              <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">비교 기준에 맞는 대표 후보입니다. 판매 구성과 현재 가격은 쿠팡에서 확인할 수 있습니다.</p>
+              <div className="mt-4"><PurchaseCards links={config.purchaseLinks} linkPosition="hero" /></div>
+            </section>
+          ) : null}
+
           <section className="rounded-[28px] border border-[#d9e4f0] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(32,46,68,0.05)]">
             <div className="flex items-center justify-between gap-4">
               <h2 className="text-xl font-bold text-[var(--foreground)]">{config.comparisonTitle}</h2>
@@ -394,7 +406,7 @@ export function CategoryGuidePage({ config }: { config: CategoryGuideConfig }) {
             </div>
           </section>
 
-          {config.sections.map((section, sIdx) => (
+          {config.sections.map((section) => (
             <section key={section.title} className="rounded-[28px] border border-[#d9e4f0] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(32,46,68,0.05)]">
               <h2 className="text-xl font-bold text-[var(--foreground)]">{section.title}</h2>
               <div className="-mx-1 mt-4 flex gap-2 overflow-x-auto px-1 pb-1 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:mx-0 md:mt-5 md:grid md:grid-cols-3 md:gap-3 md:overflow-visible md:px-0 md:pb-0">
@@ -457,7 +469,7 @@ export function CategoryGuidePage({ config }: { config: CategoryGuideConfig }) {
               제품이 어느 정도 좁혀졌다면 쿠팡에서 옵션과 최신 가격을 바로 확인해보세요.
             </p>
             <div className="mt-4">
-              <PurchaseCards links={config.purchaseLinks} />
+              <PurchaseCards links={config.purchaseLinks} linkPosition="bottom_cta" />
             </div>
           </section> : null}
         </div>

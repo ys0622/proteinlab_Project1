@@ -8,6 +8,7 @@ const config: ComparePageConfig = {
   badge: "브랜드 비교",
   readingTime: "약 5분",
   updatedAt: "2026-10-01",
+  promoteAffiliateCtas: true,
   methodologyNote: "제품 영양정보 기준 · 1포 45g 비교",
   intro: "테이크핏 브레드밀은 빵과 디저트를 연상시키는 4가지 맛으로 구성되지만, 단백질은 맛에 따라 20g과 24g으로 차이가 있습니다. 네 제품 모두 당류 1.9g으로 같기 때문에 단백질 총량과 맛 취향을 중심으로 고르면 비교가 빠릅니다.",
   summary: [

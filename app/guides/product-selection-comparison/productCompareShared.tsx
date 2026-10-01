@@ -54,6 +54,7 @@ export interface ComparePageConfig {
   }[];
   relatedGuides: RelatedGuideLink[];
   purchaseLinks: PurchaseGuideLink[];
+  promoteAffiliateCtas?: boolean;
   jsonLd?: Record<string, unknown>[];
 }
 
@@ -119,7 +120,7 @@ export function buildGuideMetadata(config: ComparePageConfig): Metadata {
   };
 }
 
-function PurchaseLinks({ links }: { links: PurchaseGuideLink[] }) {
+function PurchaseLinks({ links, linkPosition = "mid_content" }: { links: PurchaseGuideLink[]; linkPosition?: "hero" | "mid_content" | "bottom_cta" }) {
   return (
     <div className="-mx-1 flex gap-2 overflow-x-auto px-1 pb-1 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:mx-0 md:grid md:grid-cols-3 md:gap-3 md:overflow-visible md:px-0 md:pb-0">
       {links.map((item) => {
@@ -133,7 +134,7 @@ function PurchaseLinks({ links }: { links: PurchaseGuideLink[] }) {
             productName={formatProductLabel(product.brand, product.name)}
             productBrand={product.brand}
             productCategory={product.productType ?? "drink"}
-            linkPosition="mid_content"
+            linkPosition={linkPosition}
             className="min-w-[74vw] shrink-0 rounded-2xl border border-[#d9e4f0] bg-[#f7f9fc] px-4 py-4 transition-colors hover:bg-[#eef3f9] md:min-w-0"
           >
             <p className="text-xs font-semibold tracking-[0.08em] text-[#4a6178]">쿠팡에서 가격 확인</p>
@@ -242,6 +243,16 @@ export function ComparisonGuidePage({ config }: { config: ComparePageConfig }) {
               ))}
             </ul>
           </section>
+          {config.promoteAffiliateCtas && config.purchaseLinks.length > 0 ? (
+            <section className="rounded-[28px] border border-[#d9e4f0] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(32,46,68,0.05)]">
+              <div className="flex flex-wrap items-center justify-between gap-2">
+                <h2 className="text-lg font-bold text-[var(--foreground)]">추천 제품 가격·옵션 빠르게 확인</h2>
+                <AffiliateDisclosure className="mb-0" />
+              </div>
+              <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">비교표의 대표 후보를 바로 확인할 수 있습니다.</p>
+              <div className="mt-4"><PurchaseLinks links={config.purchaseLinks} linkPosition="hero" /></div>
+            </section>
+          ) : null}
           <section className="rounded-[28px] border border-[#d9e4f0] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(32,46,68,0.05)]">
             <div className="flex items-center justify-between gap-4">
               <h2 className="text-xl font-bold text-[var(--foreground)]">{config.comparisonTitle}</h2>
@@ -346,7 +357,7 @@ export function ComparisonGuidePage({ config }: { config: ComparePageConfig }) {
               후보가 좁혀졌다면 옵션과 최신 가격을 결제 전 한 번 더 확인해보세요.
             </p>
             <div className="mt-3">
-              <PurchaseLinks links={config.purchaseLinks} />
+              <PurchaseLinks links={config.purchaseLinks} linkPosition="bottom_cta" />
             </div>
           </section>
         </div>

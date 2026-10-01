@@ -138,7 +138,11 @@ export default function OliveyoungProteinShakePage() {
           </section>
         </div>
       </main>
-      <GuideBuySection />
+      <GuideBuySection slugs={[
+        "flymill-proteinshake-peanut-butter-45",
+        "danbaekhani-proteinshake-choco-40",
+        "delight-project-shake-pistachio-choco-45",
+      ]} />
       <Footer />
     </div>
   );

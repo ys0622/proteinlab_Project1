@@ -161,6 +161,7 @@ export const proteinShakeTop7Config: CategoryGuideConfig = {
   badge: "쉐이크 랭킹",
   readingTime: "6분 읽기",
   updatedAt: "2026-10-01",
+  promoteAffiliateCtas: true,
   methodologyNote: "ProteinLab DB 쉐이크 88개 기준 · 단백질·칼로리·당류·식이섬유 종합 점수",
   intro: "이 페이지는 단백질쉐이크를 고르는 일반 기준이 아니라, ProteinLab DB 파우치형 쉐이크 88개에서 다이어트·아침 대용·허기 관리에 유리한 상위 후보 7개를 빠르게 확인하는 순위표입니다. 단백질·칼로리·당류·식이섬유를 종합해 후보를 줄인 뒤 브랜드별 맛과 성분 차이까지 이어서 비교할 수 있습니다.",
   summary: [
@@ -470,6 +471,7 @@ export const proteinShakeCalorieRankingConfig: CategoryGuideConfig = {
   badge: "데이터 랭킹",
   readingTime: "6분 읽기",
   updatedAt: "2026-10-01",
+  promoteAffiliateCtas: true,
   methodologyNote: "ProteinLab DB 파우치형 쉐이크를 칼로리 오름차순 정렬",
   intro: "다이어트용 단백질 쉐이크를 찾을 때 가장 먼저 눈에 들어오는 숫자는 칼로리입니다. 하지만 실제로는 같은 120kcal 제품 안에서도 단백질과 당류 차이가 꽤 큽니다. 그래서 이 페이지는 저칼로리 후보를 빠르게 좁힌 뒤, 그 안에서 실제로 오래 마시기 쉬운 제품을 다시 가려내는 출발점 역할을 합니다.",
   summary: [
