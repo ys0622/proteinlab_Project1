@@ -10,6 +10,7 @@ import { getProductsByCategoryAsync } from "../lib/productData";
 import { getCategoryProductsWithCountsAsync } from "../lib/productCounts";
 import { formatProductLabel } from "../lib/productLabel";
 import { brandToSlug } from "../lib/brandHubs";
+import { applyCurationToCategoryProducts, getCurationDefinition, getQuickCurations } from "../lib/curationSystem";
 import newProductsRaw from "../data/newProducts.json";
 
 // ProductListWithFilters가 useSearchParams()를 쓰기 때문에, 정적/ISR로 렌더링하면
@@ -65,6 +66,16 @@ export default async function ShakePage() {
         (product) => product.brand === brand && product.slug && recentlyAddedSlugs.has(product.slug),
       ),
     }));
+  const intentLinks = getQuickCurations("shake")
+    .filter((item) => item.slug !== "popular")
+    .map((item) => {
+      const definition = getCurationDefinition(item.slug);
+      return {
+        ...item,
+        count: applyCurationToCategoryProducts(products, "shake", item.slug).length,
+        description: definition?.seoDescription ?? "조건에 맞는 단백질 쉐이크를 성분 기준으로 비교합니다.",
+      };
+    });
 
   const breadcrumbJsonLd = {
     "@context": "https://schema.org",
@@ -106,6 +117,37 @@ export default async function ShakePage() {
       <HeroSection totalCount={totalCount} categoryCount={products.length} />
 
       <main className="mx-auto max-w-[1200px] px-4 pb-2 pt-0 md:px-6 md:pb-3">
+        <section className="mb-6 rounded-2xl border border-[#e4e9e4] bg-white p-5 md:p-6">
+          <div className="flex flex-col gap-2 md:flex-row md:items-end md:justify-between">
+            <div>
+              <p className="text-xs font-semibold text-[var(--accent)]">112개 성분 DB 자동 분류</p>
+              <h2 className="mt-1 text-lg font-bold text-[var(--foreground)]">목적과 맛으로 쉐이크 좁혀보기</h2>
+              <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">
+                제품명만 나열하지 않고 단백질·당류·칼로리·식이섬유와 맛 계열을 기준으로 후보를 나눴습니다.
+              </p>
+            </div>
+            <Link href="/guides/product-selection-comparison/protein-shake-guide" className="text-sm font-semibold text-[var(--accent)] hover:underline">
+              쉐이크 선택 기준 보기
+            </Link>
+          </div>
+          <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+            {intentLinks.map((item) => (
+              <Link
+                key={item.slug}
+                href={item.href}
+                className="group rounded-xl border border-[#e4e9e4] bg-[#fbfdfb] p-4 transition-all hover:-translate-y-0.5 hover:border-[#95b9a0] hover:bg-[#f3faf5]"
+              >
+                <div className="flex items-center justify-between gap-3">
+                  <span className="text-xl" aria-hidden>{item.icon}</span>
+                  <span className="rounded-full bg-white px-2.5 py-1 text-xs font-bold text-[#24543d] shadow-sm">{item.count}종</span>
+                </div>
+                <h3 className="mt-3 text-sm font-bold text-[var(--foreground)] group-hover:text-[var(--accent)]">{item.label} 쉐이크</h3>
+                <p className="mt-1 line-clamp-2 text-xs leading-5 text-[var(--foreground-muted)]">{item.description}</p>
+              </Link>
+            ))}
+          </div>
+        </section>
+
         <section className="mb-6 rounded-2xl border border-[#dfe8df] bg-[#f7fbf7] p-5 md:p-6">
           <div className="flex flex-col gap-2 md:flex-row md:items-end md:justify-between">
             <div>

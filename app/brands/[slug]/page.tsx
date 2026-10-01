@@ -102,6 +102,61 @@ function getBrandQuickLinks(brand: string) {
         description: "전체 쉐이크 안에서 랩노쉬 위치를 함께 확인합니다.",
       },
     ],
+    플라이밀: [
+      {
+        href: "/guides/product-selection-comparison/flymill-protein-shake",
+        title: "플라이밀 쉐이크 맛·성분 비교",
+        description: "플라이밀 쉐이크 라인업을 단백질·당류·칼로리 기준으로 먼저 정리합니다.",
+      },
+      {
+        href: "/guides/product-selection-comparison/flymill-vs-danbaekhani",
+        title: "플라이밀 vs 단백하니 비교",
+        description: "맛 구성과 저당·칼로리 차이를 브랜드 단위로 비교합니다.",
+      },
+    ],
+    잇더핏: [
+      {
+        href: "/compare/proteone-vs-itthefit-shake",
+        title: "프로티원 vs 잇더핏 쉐이크",
+        description: "대표 제품의 단백질·당류·칼로리를 직접 비교합니다.",
+      },
+      {
+        href: "/guides/product-selection-comparison/protein-shake-flavor-guide",
+        title: "쉐이크 맛 선택 가이드",
+        description: "초코·곡물·커피·디저트 계열 중 취향에 맞는 맛을 좁혀봅니다.",
+      },
+    ],
+    밀잇: [
+      {
+        href: "/guides/product-selection-comparison/protein-shake-flavor-guide",
+        title: "쉐이크 맛 선택 가이드",
+        description: "밀잇을 포함한 초코·곡물·디저트형 쉐이크를 맛 계열별로 비교합니다.",
+      },
+      {
+        href: "/guides/product-selection-comparison/diet-protein-shake",
+        title: "다이어트 쉐이크 기준 보기",
+        description: "단백질뿐 아니라 당류와 칼로리까지 함께 보는 선택 기준입니다.",
+      },
+    ],
+    올더배러: [
+      {
+        href: "/compare/flymill-vs-allthebetter-shake",
+        title: "플라이밀 vs 올더배러 쉐이크",
+        description: "두 브랜드의 대표 맛과 영양성분을 직접 비교합니다.",
+      },
+    ],
+    프로티원: [
+      {
+        href: "/guides/product-selection-comparison/proteone-protein-shake",
+        title: "프로티원 쉐이크 라인업",
+        description: "프로티원 맛별 단백질 밀도와 저당 여부를 한 번에 확인합니다.",
+      },
+      {
+        href: "/compare/proteone-vs-itthefit-shake",
+        title: "프로티원 vs 잇더핏 쉐이크",
+        description: "대표 파우치 쉐이크를 성분 기준으로 직접 비교합니다.",
+      },
+    ],
     "딜라이트 프로젝트": [
       {
         href: "/guides/product-selection-comparison/delight-project-shake-flavors",
@@ -140,6 +195,31 @@ function getBrandQuickLinks(brand: string) {
   return map[brand] ?? [];
 }
 
+function getShakeHighlights(items: ProductDetailProps[]) {
+  const used = new Set<string>();
+  const pick = (
+    label: string,
+    description: string,
+    value: (product: ProductDetailProps) => number,
+    direction: "asc" | "desc",
+    display: (product: ProductDetailProps) => string,
+  ) => {
+    const product = items
+      .filter((item) => Number.isFinite(value(item)))
+      .sort((a, b) => (direction === "asc" ? value(a) - value(b) : value(b) - value(a)))
+      .find((item) => !used.has(item.slug));
+    if (!product) return null;
+    used.add(product.slug);
+    return { label, description, display: display(product), product };
+  };
+
+  return [
+    pick("고단백", "운동 후 단백질 총량을 우선할 때", (item) => item.proteinPerServing, "desc", (item) => `${item.proteinPerServing}g`),
+    pick("저당", "당류 부담이 적은 맛부터 고를 때", (item) => item.sugar ?? Number.POSITIVE_INFINITY, "asc", (item) => `당류 ${item.sugar ?? 0}g`),
+    pick("저칼로리", "가벼운 간식형 쉐이크를 찾을 때", (item) => item.calories ?? Number.POSITIVE_INFINITY, "asc", (item) => `${item.calories ?? 0}kcal`),
+  ].filter((item): item is NonNullable<typeof item> => item !== null);
+}
+
 interface PageProps {
   params: Promise<{ slug: string }>;
 }
@@ -161,6 +241,7 @@ export async function generateMetadata({ params }: PageProps) {
 
   const canonical = `https://proteinlab.kr/brands/${slug}`;
   const items = products.filter((item) => item.brand === brand);
+  const shakeItems = items.filter((item) => item.productType === "shake");
   const range = (values: Array<number | undefined>, unit: string) => {
     const nums = values.filter((v): v is number => typeof v === "number" && Number.isFinite(v));
     if (nums.length === 0) return null;
@@ -177,9 +258,12 @@ export async function generateMetadata({ params }: PageProps) {
     calorieRange && `${calorieRange}`,
   ].filter(Boolean);
   // 검색어가 "○○ 성분"·"○○ 성분표" 형태라 제목에 그대로 넣고, 설명에는 실제 수치 범위를 넣는다.
-  const title = `${brand} 성분표 — 단백질·당류·칼로리 ${items.length}종 한눈에 비교`;
+  const title =
+    shakeItems.length >= 2
+      ? `${brand} 단백질 쉐이크 성분 비교 — 맛·단백질·칼로리 ${shakeItems.length}종`
+      : `${brand} 성분표 — 단백질·당류·칼로리 ${items.length}종 한눈에 비교`;
   const description =
-    `${brand} 단백질 제품 ${items.length}종의 성분표를 표로 비교합니다.` +
+    `${brand} ${shakeItems.length >= 2 ? `단백질 쉐이크 ${shakeItems.length}종` : `단백질 제품 ${items.length}종`}의 성분표를 표로 비교합니다.` +
     (facts.length ? ` 1회 기준 ${facts.join(" · ")}.` : "") +
     ` 어떤 제품부터 봐야 할지 바로 확인하세요.`;
   return {
@@ -214,6 +298,10 @@ export default async function BrandPage({ params }: PageProps) {
   const quickLinks = brand ? getBrandQuickLinks(brand.brand) : [];
 
   if (!brand) notFound();
+
+  const shakeItems = brand.items.filter((item) => item.productType === "shake");
+  const shakeHighlights = getShakeHighlights(shakeItems);
+  const shakeFlavors = [...new Set(shakeItems.map((item) => item.flavor).filter((flavor): flavor is string => Boolean(flavor)))];
 
   const breadcrumbJsonLd = {
     "@context": "https://schema.org",
@@ -343,9 +431,52 @@ export default async function BrandPage({ params }: PageProps) {
           </section>
         ) : null}
 
+        {shakeItems.length >= 2 ? (
+          <section className="mt-8 rounded-3xl border border-[#dce9df] bg-[#f5faf6] p-5 md:p-6">
+            <div className="space-y-1">
+              <h2 className="text-lg font-bold text-[var(--foreground)]">
+                {brand.brand} 단백질 쉐이크 빠른 선택
+              </h2>
+              <p className="text-sm leading-6 text-[var(--foreground-muted)]">
+                등록된 {shakeItems.length}종 중 고단백·저당·저칼로리 기준의 대표 제품입니다. 수치는 1회 섭취량 기준이며, 제품 상세에서 성분표와 구매 링크를 함께 확인할 수 있습니다.
+              </p>
+            </div>
+            <div className="mt-4 grid gap-3 md:grid-cols-3">
+              {shakeHighlights.map(({ label, description, display, product }) => (
+                <Link
+                  key={`${label}-${product.slug}`}
+                  href={`/product/${product.slug}`}
+                  className="rounded-2xl border border-[#dce9df] bg-white p-4 transition-all hover:-translate-y-0.5 hover:border-[#8eb79a] hover:shadow-sm"
+                >
+                  <div className="flex items-center justify-between gap-3">
+                    <span className="rounded-full bg-[#e5f3e8] px-2.5 py-1 text-xs font-bold text-[#24543d]">{label}</span>
+                    <strong className="text-sm text-[var(--accent)]">{display}</strong>
+                  </div>
+                  <p className="mt-3 font-semibold leading-6 text-[var(--foreground)]">{product.name}</p>
+                  <p className="mt-1 text-xs leading-5 text-[var(--foreground-muted)]">{description}</p>
+                </Link>
+              ))}
+            </div>
+            {shakeFlavors.length > 0 ? (
+              <div className="mt-5 border-t border-[#dce9df] pt-4">
+                <p className="text-xs font-semibold text-[#356149]">등록된 맛 {shakeFlavors.length}가지</p>
+                <div className="mt-2 flex flex-wrap gap-2">
+                  {shakeFlavors.map((flavor) => (
+                    <span key={flavor} className="rounded-full border border-[#d7e4d9] bg-white px-3 py-1.5 text-xs text-[var(--foreground-muted)]">
+                      {flavor}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            ) : null}
+          </section>
+        ) : null}
+
         <section className="mt-8">
           <div className="mb-4 space-y-1">
-            <h2 className="text-lg font-bold text-[var(--foreground)]">성분 비교표</h2>
+            <h2 className="text-lg font-bold text-[var(--foreground)]">
+              {shakeItems.length >= 2 ? `${brand.brand} 쉐이크 성분 비교표` : "성분 비교표"}
+            </h2>
             <p className="text-sm leading-6 text-[var(--foreground-muted)]">
               {brand.brand} 제품 전체를 단백질·칼로리·당류 기준으로 한눈에 비교합니다.
             </p>
