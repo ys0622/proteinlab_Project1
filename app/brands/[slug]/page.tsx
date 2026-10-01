@@ -113,6 +113,11 @@ function getBrandQuickLinks(brand: string) {
         title: "플라이밀 vs 단백하니 비교",
         description: "맛 구성과 저당·칼로리 차이를 브랜드 단위로 비교합니다.",
       },
+      {
+        href: "/compare/flymill-vs-itthefit-shake",
+        title: "플라이밀 vs 잇더핏 초코",
+        description: "초코 계열 대표 제품의 단백질·당류·칼로리를 직접 비교합니다.",
+      },
     ],
     잇더핏: [
       {
@@ -125,6 +130,11 @@ function getBrandQuickLinks(brand: string) {
         title: "쉐이크 맛 선택 가이드",
         description: "초코·곡물·커피·디저트 계열 중 취향에 맞는 맛을 좁혀봅니다.",
       },
+      {
+        href: "/compare/labnosh-vs-itthefit-shake",
+        title: "랩노쉬 vs 잇더핏 더블초코",
+        description: "같은 더블초코 맛의 열량과 당류 차이를 직접 비교합니다.",
+      },
     ],
     밀잇: [
       {
@@ -136,6 +146,11 @@ function getBrandQuickLinks(brand: string) {
         href: "/guides/product-selection-comparison/diet-protein-shake",
         title: "다이어트 쉐이크 기준 보기",
         description: "단백질뿐 아니라 당류와 칼로리까지 함께 보는 선택 기준입니다.",
+      },
+      {
+        href: "/compare/milit-vs-kkobak-shake",
+        title: "밀잇 vs 꼬박꼬밥 커피맛",
+        description: "커피맛 쉐이크의 단백질과 당류 차이를 직접 비교합니다.",
       },
     ],
     올더배러: [
@@ -167,6 +182,11 @@ function getBrandQuickLinks(brand: string) {
         href: "/guides/product-selection-comparison/protein-shake-new-products-2026",
         title: "2026 쉐이크 신제품 비교",
         description: "다른 신규 브랜드와 성분 포지션을 비교합니다.",
+      },
+      {
+        href: "/compare/delight-project-vs-shakebaby-shake",
+        title: "딜라이트 프로젝트 vs 쉐이크베이비",
+        description: "초코 계열 대표 제품의 단백질·당류·칼로리를 직접 비교합니다.",
       },
     ],
     한손한끼: [

@@ -102,7 +102,7 @@ const compareMetrics: CompareMetric[] = [
         ? Number(((product.proteinPerServing / capacity) * 100).toFixed(1))
         : null;
     },
-    format: (value) => `${value.toFixed(1)}g/100mL`,
+    format: (value) => `${value.toFixed(1)}g/100kcal`,
     threshold: 0.8,
     reason: "같은 용량 대비 단백질이 얼마나 압축되어 있는지 보여줍니다.",
   },
