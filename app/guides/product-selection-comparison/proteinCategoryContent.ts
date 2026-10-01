@@ -236,6 +236,8 @@ export const proteinShakeTop7Config: CategoryGuideConfig = {
       { title: "쉐이크베이비 단백질 쉐이크 추천", href: "/guides/product-selection-comparison/shakebaby-protein-shake", description: "초코, 딸기, 말차, 곡물, 스윗콘 플레이크 5종을 성분 기준으로 비교한 신규 브랜드 가이드입니다." },
       { title: "테이크핏 브레드밀 4종 비교", href: "/guides/product-selection-comparison/takefit-breadmeal-protein-shake", description: "초코 브라우니·바나나브륄레·고소오트식빵·고구마소보로를 단백질과 당류 기준으로 비교합니다." },
       { title: "2026 쉐이크 신제품 24종", href: "/guides/product-selection-comparison/protein-shake-new-products-2026", description: "최근 등록된 다섯 브랜드 24종의 대표 성분과 목적별 후보를 확인합니다." },
+      { title: "단백질 쉐이크 맛 추천", href: "/guides/product-selection-comparison/protein-shake-flavor-guide", description: "초코·곡물·과일·디저트 계열 중 오래 먹기 편한 맛을 먼저 좁힙니다." },
+      { title: "쉐이크 성분표 보는 법", href: "/guides/product-selection-comparison/protein-shake-nutrition-label-guide", description: "단백질·당류·칼로리·식이섬유를 목적별 순서로 확인합니다." },
       { title: "랩노쉬 라인업", href: "/guides/product-selection-comparison/labnosh-lineup", description: "슬림쉐이크 중심으로 맛과 목적 차이를 더 자세히 봅니다." },
     ],
   purchaseLinks: shakeTop7.slice(0, 3).map((product) => ({

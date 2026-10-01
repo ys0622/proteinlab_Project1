@@ -156,6 +156,12 @@ export default async function ShakePage() {
             <Link href="/guides/product-selection-comparison/takefit-breadmeal-protein-shake" className="rounded-full border border-[#cadbcd] bg-white px-4 py-2 text-xs font-semibold text-[#24543d] hover:bg-[#eef7f1]">
               테이크핏 브레드밀 4종
             </Link>
+            <Link href="/guides/product-selection-comparison/protein-shake-flavor-guide" className="rounded-full border border-[#cadbcd] bg-white px-4 py-2 text-xs font-semibold text-[#24543d] hover:bg-[#eef7f1]">
+              맛별 쉐이크 추천
+            </Link>
+            <Link href="/guides/product-selection-comparison/protein-shake-nutrition-label-guide" className="rounded-full border border-[#cadbcd] bg-white px-4 py-2 text-xs font-semibold text-[#24543d] hover:bg-[#eef7f1]">
+              성분표 보는 법
+            </Link>
           </div>
         </section>
         <ProductListWithFilters
