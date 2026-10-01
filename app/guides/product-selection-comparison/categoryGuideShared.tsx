@@ -9,6 +9,7 @@ import TrackedCoupangLink from "@/app/components/TrackedCoupangLink";
 import { getProductBySlug } from "@/app/data/products";
 import { getCoupangRedirectHref } from "@/app/lib/purchaseLinks";
 import { formatProductLabel } from "@/app/lib/productLabel";
+import { getGuideThumbnailUrl } from "@/app/lib/guideThumbnails";
 
 export interface CategoryGuideLink {
   title: string;
@@ -129,6 +130,7 @@ const trackBHubLink: CategoryGuideLink = {
 
 export function buildCategoryGuideMetadata(config: CategoryGuideConfig): Metadata {
   const canonical = `https://proteinlab.kr/guides/product-selection-comparison/${config.slug}`;
+  const thumbnail = getGuideThumbnailUrl(config.slug);
   return {
     title: config.title,
     description: config.description,
@@ -141,12 +143,12 @@ export function buildCategoryGuideMetadata(config: CategoryGuideConfig): Metadat
       type: "article",
       locale: "ko_KR",
       siteName: "ProteinLab",
-      images: [{ url: "/proteinlab-logo.png", width: 715, height: 717, alt: "ProteinLab" }],
+      images: thumbnail ? [{ url: thumbnail, width: 1200, height: 630, alt: config.title }] : [{ url: "/proteinlab-logo.png", width: 715, height: 717, alt: "ProteinLab" }],
       ...(config.updatedAt ? { modifiedTime: config.updatedAt } : {}),
     },
     twitter: {
-    images: ["https://proteinlab.kr/opengraph-image"],
-      card: "summary",
+    images: [thumbnail ?? "https://proteinlab.kr/opengraph-image"],
+      card: thumbnail ? "summary_large_image" : "summary",
       title: config.title,
       description: config.description,
     },

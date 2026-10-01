@@ -4,6 +4,7 @@ import Header from "@/app/components/Header";
 import CommercialAdSection from "@/app/components/CommercialAdSection";
 import Footer from "@/app/components/Footer";
 import GuideBuySection from "@/app/components/GuideBuySection";
+import { getGuideThumbnailUrl } from "@/app/lib/guideThumbnails";
 
 type SummaryItem = {
   title: string;
@@ -61,10 +62,35 @@ type ShakeGuideConfig = {
   faqItems?: FaqItem[];
 };
 
-export function buildShakeGuideMetadata(title: string, description: string): Metadata {
+export function buildShakeGuideMetadata(title: string, description: string, slug?: string): Metadata {
+  const canonical = slug
+    ? `https://proteinlab.kr/guides/product-selection-comparison/${slug}`
+    : undefined;
+  const thumbnail = slug ? getGuideThumbnailUrl(slug) : null;
+
   return {
     title: `${title}`,
     description,
+    ...(canonical ? { alternates: { canonical } } : {}),
+    ...(thumbnail
+      ? {
+          openGraph: {
+            title,
+            description,
+            url: canonical,
+            type: "article",
+            locale: "ko_KR",
+            siteName: "ProteinLab",
+            images: [{ url: thumbnail, width: 1200, height: 630, alt: title }],
+          },
+          twitter: {
+            card: "summary_large_image",
+            title,
+            description,
+            images: [thumbnail],
+          },
+        }
+      : {}),
   };
 }
 

@@ -37,6 +37,20 @@ function mergeSavedGuidesData(saved: AdminGuidesStaticData): AdminGuidesStaticDa
             accentBg: fallback.accentBg,
             emoji: fallback.emoji,
             trackLabel: fallback.trackLabel,
+            articles: [
+              ...section.articles.map((savedArticle) => {
+                const bundledArticle = fallback.articles.find((item) => item.slug === savedArticle.slug);
+                return bundledArticle
+                  ? {
+                      ...savedArticle,
+                      heroImage: savedArticle.heroImage || bundledArticle.heroImage,
+                    }
+                  : savedArticle;
+              }),
+              ...fallback.articles.filter(
+                (bundledArticle) => !section.articles.some((savedArticle) => savedArticle.slug === bundledArticle.slug),
+              ),
+            ],
           }
         : section;
     }),

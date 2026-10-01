@@ -6,6 +6,7 @@ import GuideBuySection from "@/app/components/GuideBuySection";
 import { getAllSearchTopics } from "@/app/data/searchTopics";
 import { getGuideTracks } from "@/app/data/guidesTracks";
 import { getAdminGuidesStaticRuntimeData } from "@/app/lib/adminGuidesStaticRuntime";
+import { getGuideThumbnailUrl } from "@/app/lib/guideThumbnails";
 
 export const revalidate = 3600;
 
@@ -51,14 +52,16 @@ function CuratedGuideGroup({
           <Link
             key={item.slug}
             href={item.href}
-            className="rounded-2xl border border-[#d9e4dd] bg-[#f7faf8] p-4 transition-colors hover:bg-white"
+            className="group overflow-hidden rounded-2xl border border-[#d9e4dd] bg-[#f7faf8] transition-colors hover:bg-white"
           >
-            <p className="text-sm font-semibold" style={{ color: accentColor }}>
-              {item.title}
-            </p>
-            <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">
-              {item.description}
-            </p>
+            {getGuideThumbnailUrl(item.slug) ? (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img src={getGuideThumbnailUrl(item.slug) ?? ""} alt="" className="aspect-[3/2] w-full object-cover transition-transform duration-300 group-hover:scale-[1.02]" loading="lazy" />
+            ) : null}
+            <div className="p-4">
+              <p className="text-sm font-semibold" style={{ color: accentColor }}>{item.title}</p>
+              <p className="mt-2 line-clamp-2 text-sm leading-6 text-[var(--foreground-muted)]">{item.description}</p>
+            </div>
           </Link>
         ))}
       </div>
@@ -336,6 +339,15 @@ export default async function GuideTrackPage({ params }: { params: Promise<{ tra
                 href={article.href}
                 className="group flex h-full flex-col overflow-hidden rounded-[24px] border border-[#d8e2da] bg-[#fffdf8] shadow-[0_10px_24px_rgba(20,40,28,0.05)] transition-colors hover:border-[#cfe1d7]"
               >
+                {article.heroImage || getGuideThumbnailUrl(article.slug) ? (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img
+                    src={article.heroImage || getGuideThumbnailUrl(article.slug) || ""}
+                    alt=""
+                    className="aspect-[3/2] w-full object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+                    loading="lazy"
+                  />
+                ) : null}
                 <div className="flex flex-1 flex-col px-5 py-5">
                   <div className="flex items-center justify-between gap-2">
                     {article.status !== "live" && (

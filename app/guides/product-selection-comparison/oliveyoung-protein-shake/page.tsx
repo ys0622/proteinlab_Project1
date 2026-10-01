@@ -3,14 +3,32 @@ import { buildGuideJsonLd } from "@/app/lib/guideJsonLd";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 import GuideBuySection from "@/app/components/GuideBuySection";
+import { getGuideThumbnailUrl } from "@/app/lib/guideThumbnails";
 
 const pageTitle = "올리브영 단백질쉐이크 추천 (2026) | 플라이밀·단백하니 비교";
 const pageDescription = "올리브영에서 단품으로 확인하기 쉬운 플라이밀·단백하니 등 단백질쉐이크의 단백질·당류·칼로리를 비교하고 첫 구매 기준을 정리합니다.";
+const canonical = "https://proteinlab.kr/guides/product-selection-comparison/oliveyoung-protein-shake";
+const thumbnail = getGuideThumbnailUrl("oliveyoung-protein-shake");
 
 export const metadata = {
-  alternates: { canonical: "https://proteinlab.kr/guides/product-selection-comparison/oliveyoung-protein-shake" },
+  alternates: { canonical },
   title: pageTitle,
   description: pageDescription,
+  openGraph: {
+    title: pageTitle,
+    description: pageDescription,
+    url: canonical,
+    type: "article" as const,
+    locale: "ko_KR",
+    siteName: "ProteinLab",
+    images: thumbnail ? [{ url: thumbnail, width: 1200, height: 630, alt: pageTitle }] : [],
+  },
+  twitter: {
+    card: "summary_large_image" as const,
+    title: pageTitle,
+    description: pageDescription,
+    images: thumbnail ? [thumbnail] : [],
+  },
 };
 
 const brandCards = [

@@ -4,6 +4,7 @@ import { buildGuideJsonLd } from "@/app/lib/guideJsonLd";
 export const metadata = buildShakeGuideMetadata(
   "저당 단백질 쉐이크 추천 | 당류 3g 이하 제품 비교",
   "저당 단백질 쉐이크는 당류 3g 이하부터 좁히는 게 실용적입니다. 프로티원·플라이밀과 신규 매일한끼·테이크핏·스포식스 제품을 비교해보세요.",
+  "low-sugar-protein-shake-guide",
 );
 
 export default function LowSugarProteinShakeGuidePage() {

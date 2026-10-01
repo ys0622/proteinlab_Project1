@@ -9,6 +9,7 @@ import { getDrinkProducts } from "@/app/data/drinkProductsData";
 import { shakeProducts, type ProductDetailProps } from "@/app/data/products";
 import { getCoupangRedirectHref } from "@/app/lib/purchaseLinks";
 import { formatProductLabel } from "@/app/lib/productLabel";
+import { getGuideThumbnailUrl } from "@/app/lib/guideThumbnails";
 
 export interface RelatedGuideLink {
   title: string;
@@ -90,8 +91,9 @@ export function formatCalories100(product: ProductDetailProps) {
 
 export function buildGuideMetadata(config: ComparePageConfig): Metadata {
   const canonical = `https://proteinlab.kr/guides/product-selection-comparison/${config.slug}`;
-  const hasLargeOg = !!config.ogImage;
-  const ogImage = config.ogImage ?? "/proteinlab-logo.png";
+  const generatedThumbnail = getGuideThumbnailUrl(config.slug);
+  const hasLargeOg = !!config.ogImage || !!generatedThumbnail;
+  const ogImage = config.ogImage ?? generatedThumbnail ?? "/proteinlab-logo.png";
   return {
     title: config.title,
     description: config.description,
