@@ -169,21 +169,27 @@ export default async function Home() {
           />
 
           <div className="relative z-10 px-4 py-2 md:max-w-[56%] md:px-10 md:py-8">
-            <div className="flex items-start justify-between gap-3 md:block">
-              <div className="min-w-0 flex-1">
-                <h1 className="font-extrabold leading-[1.32] text-[18px] md:text-[38px] md:leading-[1.25]" style={{ color: "#16412D", letterSpacing: "-0.02em" }}>
+            <h1
+              className="whitespace-nowrap text-[16px] font-extrabold leading-tight md:hidden"
+              style={{ color: "#16412D", letterSpacing: "-0.04em" }}
+            >
+              나에게 맞는 단백질 제품, 수치로 비교하세요
+            </h1>
+            <div className="mt-0.5 md:mt-0 md:block">
+              <div className="min-w-0 pr-[76px] md:pr-0">
+                <h1 className="hidden font-extrabold text-[38px] leading-[1.25] md:block" style={{ color: "#16412D", letterSpacing: "-0.02em" }}>
                   나에게 맞는 단백질 제품,
                   <br />
                   수치로 비교하세요
                 </h1>
-                <p className="mt-1 break-keep text-[13px] leading-[1.4] md:mt-2.5 md:text-[16px] md:leading-[1.5]" style={{ color: "#5E6E61" }}>
+                <p className="break-keep text-[12px] leading-[1.4] md:mt-2.5 md:text-[16px] md:leading-[1.5]" style={{ color: "#5E6E61" }}>
                   단백질·당류·칼로리를 한눈에 비교하고
                   <br className="md:hidden" />
                   목적에 맞는 제품을 찾아보세요.
                 </p>
               </div>
               {/* 모바일: 우측 썸네일 이미지 (네 방향 전부 배경색으로 블렌딩되는 비네트) */}
-              <div aria-hidden className="relative h-[84px] w-[84px] shrink-0 md:hidden">
+              <div aria-hidden className="absolute right-1 -top-0.5 h-[108px] w-[108px] md:hidden">
                 <div
                   className="absolute inset-0"
                   style={{
@@ -200,7 +206,7 @@ export default async function Home() {
                 />
               </div>
             </div>
-            <div className="mt-1.5 max-w-[560px] md:mt-4">
+            <div className="relative z-10 mt-1 max-w-[560px] md:mt-4">
               <HomeHeroSearch />
             </div>
           </div>
