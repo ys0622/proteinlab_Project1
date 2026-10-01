@@ -218,6 +218,7 @@ const STATIC_GUIDE_ROUTES: string[] = [
   "/guides/product-selection-comparison/protein-shake-for-women",
   "/guides/product-selection-comparison/protein-shake-guide",
   "/guides/product-selection-comparison/protein-shake-top7",
+  "/guides/product-selection-comparison/takefit-breadmeal-protein-shake",
   "/guides/product-selection-comparison/protein-yogurt-guide",
   "/guides/product-selection-comparison/protein-yogurt-ranking-guide",
   "/guides/product-selection-comparison/protein-yogurt-top5",

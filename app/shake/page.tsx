@@ -153,6 +153,9 @@ export default async function ShakePage() {
             <Link href="/guides/product-selection-comparison/hansonhankki-vs-maeilhankki-shake" className="rounded-full border border-[#cadbcd] bg-white px-4 py-2 text-xs font-semibold text-[#24543d] hover:bg-[#eef7f1]">
               한손한끼 vs 매일한끼
             </Link>
+            <Link href="/guides/product-selection-comparison/takefit-breadmeal-protein-shake" className="rounded-full border border-[#cadbcd] bg-white px-4 py-2 text-xs font-semibold text-[#24543d] hover:bg-[#eef7f1]">
+              테이크핏 브레드밀 4종
+            </Link>
           </div>
         </section>
         <ProductListWithFilters

@@ -46,6 +46,7 @@ const config: ComparePageConfig = {
     { question: "당류가 가장 낮은 신제품은 무엇인가요?", answer: "매일한끼 곡물, 스포식스 너티초코와 고쇼율무가 각각 당류 1g입니다." },
   ],
   relatedGuides: [
+    { title: "테이크핏 브레드밀 4종 비교", href: "/guides/product-selection-comparison/takefit-breadmeal-protein-shake", description: "단백질 20~24g인 네 가지 맛을 자세히 비교합니다." },
     { title: "쉐이크 전체 비교", href: "/shake", description: "전체 등록 쉐이크를 필터로 비교합니다." },
     { title: "쉐이크 TOP 7", href: "/guides/product-selection-comparison/protein-shake-top7", description: "기존 인기 제품과 함께 비교합니다." },
     { title: "쉐이크 칼로리 순위", href: "/guides/product-selection-comparison/protein-shake-calorie-ranking", description: "칼로리 기준으로 후보를 좁힙니다." },

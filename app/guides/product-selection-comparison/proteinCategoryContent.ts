@@ -160,7 +160,7 @@ export const proteinShakeTop7Config: CategoryGuideConfig = {
   keywords: ["단백질 쉐이크 추천", "프로틴 쉐이크 추천", "다이어트 단백질 쉐이크", "식사대용 쉐이크", "여성 단백질 쉐이크", "파우치 단백질 쉐이크"],
   badge: "쉐이크 랭킹",
   readingTime: "6분 읽기",
-  updatedAt: "2026-09-30",
+  updatedAt: "2026-10-01",
   methodologyNote: "ProteinLab DB 쉐이크 88개 기준 · 단백질·칼로리·당류·식이섬유 종합 점수",
   intro: "이 페이지는 단백질쉐이크를 고르는 일반 기준이 아니라, ProteinLab DB 파우치형 쉐이크 88개에서 다이어트·아침 대용·허기 관리에 유리한 상위 후보 7개를 빠르게 확인하는 순위표입니다. 단백질·칼로리·당류·식이섬유를 종합해 후보를 줄인 뒤 브랜드별 맛과 성분 차이까지 이어서 비교할 수 있습니다.",
   summary: [
@@ -216,6 +216,8 @@ export const proteinShakeTop7Config: CategoryGuideConfig = {
     {
       title: "최근 등록 제품까지 같이 보면 좋은 후보",
       items: [
+        { title: "테이크핏 브레드밀 4종", body: "초코 브라우니와 고소오트식빵은 단백질 24g·당류 1.9g으로 고단백·저당 후보입니다. 바나나브륄레와 고구마소보로는 단백질 20g으로 맛 선택 폭을 넓힙니다." },
+        { title: "매일한끼·스포식스 저당 후보", body: "매일한끼 곡물은 145kcal·당류 1g, 스포식스 2종은 단백질 22g·당류 1g입니다. 신규 제품 중 저당을 먼저 보는 경우 비교 가치가 높습니다." },
         { title: "랩노쉬 슬림쉐이크 신규 맛", body: "랩노쉬는 초당옥수수, 딸기쿠키크럼블, 얼그레이밀크티처럼 맛 선택 폭이 넓습니다. 단백질 총량보다 맛 지속성과 포만감을 우선하는 사용자에게 비교 가치가 큽니다." },
         { title: "플라이밀 피스타치오·쿠키앤크림", body: "플라이밀은 등록 맛이 많아 취향 기반 검색을 받기 좋습니다. 피스타치오, 쿠키앤크림, 콘시리얼처럼 디저트형 맛은 박스 구매 전에 칼로리와 당류를 같이 확인하는 편이 안전합니다." },
         { title: "프로티원·잇더핏·단백하니 40g 파우치", body: "프로티원, 잇더핏, 단백하니는 40g 전후 파우치형으로 등록되어 있어 저당·고단백 쉐이크 비교 검색에 묶기 좋습니다. 브랜드별 맛보다 단백질·칼로리·당류 차이를 먼저 보는 흐름이 맞습니다." },
@@ -232,6 +234,8 @@ export const proteinShakeTop7Config: CategoryGuideConfig = {
       { title: "플라이밀 vs 단백하니", href: "/guides/product-selection-comparison/flymill-vs-danbaekhani", description: "고단백 우선인지, 더 가벼운 저당 균형형이 더 맞는지 두 인기 브랜드를 바로 비교합니다." },
       { title: "프로티원 단백질 쉐이크 추천", href: "/guides/product-selection-comparison/proteone-protein-shake", description: "초코와 커피맛 중 무엇이 더 가볍고 단백질 밀도가 높은지 브랜드 기준으로 빠르게 볼 수 있습니다." },
       { title: "쉐이크베이비 단백질 쉐이크 추천", href: "/guides/product-selection-comparison/shakebaby-protein-shake", description: "초코, 딸기, 말차, 곡물, 스윗콘 플레이크 5종을 성분 기준으로 비교한 신규 브랜드 가이드입니다." },
+      { title: "테이크핏 브레드밀 4종 비교", href: "/guides/product-selection-comparison/takefit-breadmeal-protein-shake", description: "초코 브라우니·바나나브륄레·고소오트식빵·고구마소보로를 단백질과 당류 기준으로 비교합니다." },
+      { title: "2026 쉐이크 신제품 24종", href: "/guides/product-selection-comparison/protein-shake-new-products-2026", description: "최근 등록된 다섯 브랜드 24종의 대표 성분과 목적별 후보를 확인합니다." },
       { title: "랩노쉬 라인업", href: "/guides/product-selection-comparison/labnosh-lineup", description: "슬림쉐이크 중심으로 맛과 목적 차이를 더 자세히 봅니다." },
     ],
   purchaseLinks: shakeTop7.slice(0, 3).map((product) => ({
@@ -364,7 +368,7 @@ export const dietProteinShakeConfig: CategoryGuideConfig = {
   keywords: ["다이어트 단백질 쉐이크", "저칼로리 단백질 쉐이크", "식사대용 쉐이크 추천", "다이어트 쉐이크 여성"],
   badge: "다이어트 쉐이크",
   readingTime: "5분 읽기",
-  updatedAt: "2026-03-24",
+  updatedAt: "2026-10-01",
   methodologyNote: "ProteinLab DB 파우치형 쉐이크 중 180kcal 이하 · 당류 5g 이하 · 단백질 20g 이상",
   intro: "다이어트용 쉐이크를 찾을 때 가장 많이 하는 실수가 칼로리만 보고 고르는 것입니다. 실제로는 칼로리가 낮아도 단백질과 식이섬유가 부족하면 금방 허기가 오고, 당류가 높으면 체감 만족도도 떨어집니다. 그래서 이 페이지는 살 빼면서도 오래 버티기 쉬운 후보를 빠르게 걸러낼 수 있도록 칼로리, 당류, 단백질, 식이섬유를 함께 보게 구성했습니다.",
   summary: [
@@ -417,6 +421,14 @@ export const dietProteinShakeConfig: CategoryGuideConfig = {
         { title: "맛 검증 없이 박스 구매", body: "다이어트는 루틴 유지가 핵심이라 맛이 안 맞으면 바로 끊깁니다. 그래서 첫 구매는 반드시 가볍게 테스트하는 편이 낫습니다." },
       ],
     },
+    {
+      title: "2026년 신규 저당 후보",
+      items: [
+        { title: "매일한끼 곡물·초코", body: "곡물은 145kcal·당류 1g, 초코는 144kcal·당류 2g이며 두 제품 모두 단백질 20g입니다. 저칼로리와 저당을 함께 보는 후보입니다." },
+        { title: "스포식스 2종", body: "너티초코와 고쇼율무 모두 단백질 22g·당류 1g입니다. 칼로리는 각각 175kcal와 170kcal로 고단백·저당 균형형에 가깝습니다." },
+        { title: "테이크핏 브레드밀", body: "네 맛 모두 당류 1.9g이며 초코 브라우니와 고소오트식빵은 단백질 24g입니다. 맛과 단백질 총량을 동시에 보는 후보입니다." },
+      ],
+    },
   ],
     relatedGuides: [
       { title: "프로티원 단백질 쉐이크 추천", href: "/guides/product-selection-comparison/proteone-protein-shake", description: "다이어트용으로 자주 비교되는 프로티원 초코·커피맛 차이를 브랜드 기준으로 먼저 볼 수 있습니다." },
@@ -424,6 +436,8 @@ export const dietProteinShakeConfig: CategoryGuideConfig = {
       { title: "랩노쉬 라인업", href: "/guides/product-selection-comparison/labnosh-lineup", description: "식대용으로 꾸준히 먹기 좋은 브랜드를 더 자세히 봅니다." },
       { title: "단백질 쉐이크 칼로리 순위", href: "/guides/product-selection-comparison/protein-shake-calorie-ranking", description: "전체 DB에서 칼로리만 놓고 보면 어떤 제품이 더 가벼운지 확인합니다." },
       { title: "플라이밀 단백질 쉐이크 추천", href: "/guides/product-selection-comparison/flymill-protein-shake", description: "조금 더 고단백 쪽 다이어트 쉐이크를 보고 싶다면 플라이밀 브랜드 페이지로 넘어갈 수 있습니다." },
+      { title: "테이크핏 브레드밀 4종 비교", href: "/guides/product-selection-comparison/takefit-breadmeal-protein-shake", description: "당류 1.9g인 네 가지 맛을 단백질과 칼로리 기준으로 비교합니다." },
+      { title: "2026 쉐이크 신제품 24종", href: "/guides/product-selection-comparison/protein-shake-new-products-2026", description: "매일한끼와 스포식스를 포함한 신규 저당 후보를 한 번에 확인합니다." },
     ],
   purchaseLinks: [
     { label: "프로티원 커피맛 보기", slug: "proteone-proteinshake-coffee-40" },
@@ -453,7 +467,7 @@ export const proteinShakeCalorieRankingConfig: CategoryGuideConfig = {
   keywords: ["단백질 쉐이크 칼로리", "저칼로리 단백질 쉐이크 순위", "칼로리 낮은 쉐이크", "다이어트 쉐이크 순위"],
   badge: "데이터 랭킹",
   readingTime: "6분 읽기",
-  updatedAt: "2026-09-30",
+  updatedAt: "2026-10-01",
   methodologyNote: "ProteinLab DB 파우치형 쉐이크를 칼로리 오름차순 정렬",
   intro: "다이어트용 단백질 쉐이크를 찾을 때 가장 먼저 눈에 들어오는 숫자는 칼로리입니다. 하지만 실제로는 같은 120kcal 제품 안에서도 단백질과 당류 차이가 꽤 큽니다. 그래서 이 페이지는 저칼로리 후보를 빠르게 좁힌 뒤, 그 안에서 실제로 오래 마시기 쉬운 제품을 다시 가려내는 출발점 역할을 합니다.",
   summary: [
@@ -511,6 +525,8 @@ export const proteinShakeCalorieRankingConfig: CategoryGuideConfig = {
     { title: "다이어트 단백질 쉐이크", href: "/guides/product-selection-comparison/diet-protein-shake", description: "칼로리뿐 아니라 당류와 식이섬유까지 함께 정리한 가이드입니다." },
     { title: "단백질 쉐이크 추천 TOP 7", href: "/guides/product-selection-comparison/protein-shake-top7", description: "종합 점수 기준으로 보면 어떤 제품이 위로 오는지 비교합니다." },
     { title: "랩노쉬 라인업", href: "/guides/product-selection-comparison/labnosh-lineup", description: "맛과 식사 대용 지속성을 중시하는 브랜드를 따로 봅니다." },
+    { title: "2026 쉐이크 신제품 24종", href: "/guides/product-selection-comparison/protein-shake-new-products-2026", description: "새로 등록된 제품 중 칼로리와 당류가 낮은 후보를 함께 확인합니다." },
+    { title: "테이크핏 브레드밀 4종 비교", href: "/guides/product-selection-comparison/takefit-breadmeal-protein-shake", description: "170~176kcal 네 가지 맛의 단백질과 당류 차이를 비교합니다." },
   ],
   purchaseLinks: [
     { label: "프로티원 커피맛 보기", slug: "proteone-proteinshake-coffee-40" },
