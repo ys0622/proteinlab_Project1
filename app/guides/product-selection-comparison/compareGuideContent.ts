@@ -307,8 +307,8 @@ proteinDensityRankingConfig.jsonLd = [articleJsonLd(proteinDensityRankingConfig)
 
 export const selexVsTakefitVsHimuneConfig: ComparePageConfig = {
   slug: "selex-vs-takefit-vs-himune",
-  title: "셀렉스·테이크핏·하이뮨 비교 (2026) | 목적별 추천",
-  description: "셀렉스 프로핏·테이크핏 맥스·하이뮨 액티브 20g급 3종을 한 표로 비교했습니다. 다이어트·운동 후·매일 섭취 목적별로 맞는 제품을 확인하세요.",
+  title: "셀렉스 vs 테이크핏 vs 하이뮨 비교 | 단백질·당류·칼로리 차이",
+  description: "셀렉스 프로핏, 테이크핏 맥스, 하이뮨 액티브의 단백질·당류·칼로리·나트륨을 한 표로 비교하고 다이어트, 운동 후, 일상용 선택 기준을 정리합니다.",
   keywords: ["셀렉스 테이크핏 하이뮨 비교", "단백질 음료 3종 비교", "셀렉스 vs 테이크핏 vs 하이뮨", "셀렉스 테이크핏 차이", "테이크핏 하이뮨 차이"],
   badge: "3자 비교",
   readingTime: "5분 읽기",
@@ -1635,9 +1635,9 @@ newcareWaterConfig.jsonLd = [articleJsonLd(newcareWaterConfig), faqJsonLd(newcar
 
 export const newcareVsHymuneConfig: ComparePageConfig = {
   slug: "newcare-vs-hymune",
-  title: "뉴케어 vs 하이뮨 비교 (2026) | 부모님용·고단백 차이",
+  title: "뉴케어 41g vs 하이뮨 10g 차이 (2026) | 부모님 단백질음료 비교",
   description:
-    "뉴케어 올프로틴 41g과 하이뮨 프로틴 밸런스 10g을 비교했습니다. 부모님·50대가 고단백 보충형과 부담 낮은 일상 영양형 중 고르는 기준을 확인하세요.",
+    "뉴케어 올프로틴 41g과 하이뮨 프로틴 밸런스 10g의 용량·칼로리·당류를 비교해 부모님과 50대가 고단백형과 일상 보완형을 고르는 법을 정리했습니다.",
   keywords: ["뉴케어 하이뮨 비교", "뉴케어 vs 하이뮨", "시니어 단백질 음료", "하이뮨 뉴케어 차이", "부모님 단백질 음료", "50대 단백질 음료"],
   badge: "브랜드 비교",
   readingTime: "4분 읽기",
