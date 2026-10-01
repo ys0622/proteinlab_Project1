@@ -255,6 +255,91 @@ function findRelevantCompareLanding(product: ProductDetailProps) {
   );
 }
 
+function getShakeGuideLink(product: ProductDetailProps) {
+  const brandGuides: Record<string, { href: string; title: string; description: string }> = {
+    "랩노쉬": {
+      href: "/guides/product-selection-comparison/labnosh-lineup",
+      title: "랩노쉬 쉐이크 라인업 비교",
+      description: "랩노쉬 쉐이크와 고단백 제품군의 차이를 한 번에 확인합니다.",
+    },
+    "플라이밀": {
+      href: "/guides/product-selection-comparison/flymill-protein-shake",
+      title: "플라이밀 쉐이크 맛별 비교",
+      description: "플라이밀 맛별 단백질·당류·칼로리 차이를 확인합니다.",
+    },
+    "단백하니": {
+      href: "/guides/product-selection-comparison/danbaekhani-protein-shake",
+      title: "단백하니 쉐이크 맛별 비교",
+      description: "단백하니 라인업을 저당과 칼로리 기준으로 비교합니다.",
+    },
+    "쉐이크베이비": {
+      href: "/guides/product-selection-comparison/shakebaby-protein-shake",
+      title: "쉐이크베이비 5종 비교",
+      description: "쉐이크베이비 맛별 성분과 선택 기준을 확인합니다.",
+    },
+    "프로티원": {
+      href: "/guides/product-selection-comparison/proteone-protein-shake",
+      title: "프로티원 쉐이크 비교",
+      description: "프로티원 맛별 단백질 밀도와 저당 기준을 확인합니다.",
+    },
+    "테이크핏": {
+      href: "/guides/product-selection-comparison/takefit-breadmeal-protein-shake",
+      title: "테이크핏 브레드밀 4종 비교",
+      description: "브레드밀 맛별 단백질·당류·칼로리를 비교합니다.",
+    },
+    "딜라이트 프로젝트": {
+      href: "/guides/product-selection-comparison/delight-project-shake-flavors",
+      title: "딜라이트 프로젝트 맛별 비교",
+      description: "딜라이트 프로젝트 쉐이크의 맛과 성분 차이를 확인합니다.",
+    },
+    "매일한끼": {
+      href: "/guides/product-selection-comparison/hansonhankki-vs-maeilhankki-shake",
+      title: "매일한끼 vs 한손한끼 비교",
+      description: "두 한 끼형 쉐이크 브랜드의 성분과 맛 구성을 비교합니다.",
+    },
+    "한손한끼": {
+      href: "/guides/product-selection-comparison/hansonhankki-vs-maeilhankki-shake",
+      title: "한손한끼 vs 매일한끼 비교",
+      description: "두 한 끼형 쉐이크 브랜드의 성분과 맛 구성을 비교합니다.",
+    },
+    "스포식스": {
+      href: "/guides/product-selection-comparison/protein-shake-new-products-2026",
+      title: "2026 쉐이크 신제품 비교",
+      description: "스포식스를 포함한 신규 쉐이크 24종을 함께 비교합니다.",
+    },
+  };
+
+  if (brandGuides[product.brand]) return brandGuides[product.brand];
+
+  const fiber = product.nutritionPerBottle?.fiberG ?? 0;
+  if ((product.sugar ?? 99) <= 3) {
+    return {
+      href: "/guides/product-selection-comparison/low-sugar-protein-shake-guide",
+      title: "저당 단백질 쉐이크 추천",
+      description: "당류 3g 이하 제품군에서 비슷한 후보를 비교합니다.",
+    };
+  }
+  if ((product.calories ?? 0) >= 150 && fiber >= 4) {
+    return {
+      href: "/guides/product-selection-comparison/meal-replacement-protein-shake-guide",
+      title: "식사대용 단백질 쉐이크 가이드",
+      description: "칼로리와 식이섬유를 함께 보고 식사대용 적합성을 확인합니다.",
+    };
+  }
+  if ((product.calories ?? 999) <= 150) {
+    return {
+      href: "/guides/product-selection-comparison/protein-shake-calorie-ranking",
+      title: "단백질 쉐이크 칼로리 순위",
+      description: "저칼로리 쉐이크 안에서 이 제품의 위치를 확인합니다.",
+    };
+  }
+  return {
+    href: "/guides/product-selection-comparison/protein-shake-flavor-guide",
+    title: "단백질 쉐이크 맛 추천",
+    description: "초코·곡물·과일·디저트 계열별 제품을 함께 비교합니다.",
+  };
+}
+
 function buildProductInternalLinks(product: ProductDetailProps) {
   const relevantLanding = findRelevantCompareLanding(product);
   const category = (product.productType ?? "drink") as "drink" | "bar" | "yogurt" | "shake";
@@ -359,14 +444,13 @@ function buildProductInternalLinks(product: ProductDetailProps) {
         : category === "yogurt"
           ? "/guides/product-selection-comparison/protein-yogurt-guide"
           : "/guides/product-selection-comparison/protein-shake-guide";
-  const brandGuideLink =
-    product.brand === "랩노쉬"
-      ? {
-          href: "/guides/product-selection-comparison/labnosh-lineup",
-          title: "랩노쉬 단백질 제품 종류 비교",
-          description: "퍼펙트 맛별 차이와 프로틴 MAX·슬림쉐이크까지 랩노쉬 라인업을 함께 비교합니다.",
-        }
-      : null;
+  const guideLink = category === "shake"
+    ? getShakeGuideLink(product)
+    : {
+        href: guideHref,
+        title: `${categoryLabel} 선택 가이드`,
+        description: "단백질, 당류, 칼로리를 어떤 순서로 볼지 바로 확인합니다.",
+      };
 
   return [
     {
@@ -375,11 +459,7 @@ function buildProductInternalLinks(product: ProductDetailProps) {
       description: `같은 카테고리 안에서 비슷한 스펙 제품을 한 번에 비교합니다.`,
     },
     topicLink,
-    {
-      href: guideHref,
-      title: `${categoryLabel} 선택 가이드`,
-      description: "단백질, 당류, 칼로리를 어떤 순서로 볼지 바로 확인합니다.",
-    },
+    guideLink,
     {
       href: `/compare?slugs=${encodeURIComponent(product.slug)}`,
       title: "이 제품으로 비교 시작",
@@ -401,7 +481,6 @@ function buildProductInternalLinks(product: ProductDetailProps) {
       title: `${product.brand} 브랜드 보기`,
       description: "같은 브랜드 안에서 라인업 차이를 빠르게 확인합니다.",
     },
-    ...(brandGuideLink ? [brandGuideLink] : []),
   ];
 }
 
