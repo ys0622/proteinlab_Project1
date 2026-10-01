@@ -1,8 +1,6 @@
 import { ImageResponse } from "next/og";
 import { GUIDE_THUMBNAILS } from "@/app/lib/guideThumbnails";
 
-export const runtime = "edge";
-
 const palettes = {
   ranking: { bg: "#102f26", accent: "#b8f26d", soft: "#285b49" },
   comparison: { bg: "#19364d", accent: "#b9e5ff", soft: "#315d79" },
