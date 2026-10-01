@@ -13,7 +13,7 @@ import newProductsRaw from "./data/newProducts.json";
 import type { ProductDetailProps } from "./data/products";
 import { getProductsByCategoryAsync } from "./lib/productData";
 import { getCategoryProductCounts } from "./lib/productCounts";
-import { hybridScore, isExcludedFromPopularityRanking } from "./lib/productScoring";
+import { isExcludedFromPopularityRanking } from "./lib/productScoring";
 
 export const revalidate = 300; // 5분마다 재생성 (조회수 반영)
 
@@ -116,23 +116,21 @@ export default async function Home() {
 
   const categoryCounts = getCategoryProductCounts({ drink: drinks, bar: bars, yogurt: yogurts, shake: shakes });
 
-  // 4개 카테고리 모두 하이브리드 점수 기준 정렬
-  // = 실제 조회수 × 10 + 품질 점수(단백질 밀도·당류) + 신제품 보너스(30일 감쇠)
-  const sortByHybrid = (products: ProductDetailProps[], type: string) => {
+  // 홈 인기 제품은 실제 상세 페이지 조회수만 기준으로 정렬한다.
+  const sortByViews = (products: ProductDetailProps[], type: string) => {
     return products
       .filter((p) => p.slug && !isExcludedFromPopularityRanking(p))
-      .map((p) => ({ p, score: hybridScore(p, views[type]?.[p.slug ?? ""] ?? 0) }))
-      .sort((a, b) => b.score - a.score)
+      .map((p) => ({ p, viewCount: views[type]?.[p.slug ?? ""] ?? 0 }))
+      .sort((a, b) => b.viewCount - a.viewCount)
       .map(({ p }) => p)
       .slice(0, 10);
   };
 
-  const topDrinks  = sortByHybrid(drinks,  "drink");
-  const topBars    = sortByHybrid(bars,    "bar");
-  const topYogurts = sortByHybrid(yogurts, "yogurt");
-  const topShakes  = sortByHybrid(shakes,  "shake");
+  const topDrinks  = sortByViews(drinks,  "drink");
+  const topBars    = sortByViews(bars,    "bar");
+  const topYogurts = sortByViews(yogurts, "yogurt");
+  const topShakes  = sortByViews(shakes,  "shake");
 
-  // 최근 등록 순으로 4개 — 재방문할 이유(새로 올라온 제품)를 홈에서 바로 보여준다.
   const productBySlug = new Map(
     [...drinks, ...bars, ...yogurts, ...shakes].map((p) => [p.slug ?? "", p] as const),
   );
@@ -173,7 +171,7 @@ export default async function Home() {
           <div className="relative z-10 px-4 py-2 md:max-w-[56%] md:px-10 md:py-8">
             <div className="flex items-start justify-between gap-3 md:block">
               <div className="min-w-0 flex-1">
-                <h1 className="font-extrabold leading-[1.3] text-[20px] md:text-[38px] md:leading-[1.25]" style={{ color: "#16412D", letterSpacing: "-0.02em" }}>
+                <h1 className="font-extrabold leading-[1.32] text-[18px] md:text-[38px] md:leading-[1.25]" style={{ color: "#16412D", letterSpacing: "-0.02em" }}>
                   나에게 맞는 단백질 제품,
                   <br />
                   수치로 비교하세요
@@ -211,7 +209,7 @@ export default async function Home() {
 
       {/* ─── 2. 카테고리 (센터 정렬 아이콘 카드) ─── */}
       <section className="mx-auto max-w-[1180px] px-4 pt-2 md:px-5 md:pt-4">
-        <div className="grid grid-cols-2 gap-2 md:gap-3 md:grid-cols-4">
+        <div className="grid grid-cols-4 gap-1.5 md:gap-3">
           {([
             { label: "단백질 음료", icon: "drink", href: "/drinks", countKey: "drink" as const },
             { label: "단백질 바", icon: "bar", href: "/bars", countKey: "bar" as const },
@@ -223,16 +221,17 @@ export default async function Home() {
               href={cat.href}
               eventName="home_category_click"
               eventParams={{ category: cat.countKey, destination_url: cat.href }}
-              className="group flex items-center gap-2 rounded-[10px] bg-white px-2.5 py-1 text-left shadow-[0_1px_4px_rgba(20,32,26,0.06)] transition-all duration-150 hover:shadow-[0_6px_16px_rgba(20,32,26,0.10)] md:gap-3 md:rounded-[12px] md:px-3.5 md:py-3"
+              className="group flex min-w-0 items-center justify-center gap-1 rounded-[10px] bg-white px-1 py-1.5 text-left shadow-[0_1px_4px_rgba(20,32,26,0.06)] transition-all duration-150 hover:shadow-[0_6px_16px_rgba(20,32,26,0.10)] md:justify-start md:gap-3 md:rounded-[12px] md:px-3.5 md:py-3"
             >
-              <span className="relative h-8 w-8 shrink-0 overflow-hidden rounded-[8px] transition-transform duration-150 group-hover:scale-105 md:h-14 md:w-14 md:rounded-[10px]">
+              <span className="relative h-7 w-7 shrink-0 overflow-hidden rounded-[7px] transition-transform duration-150 group-hover:scale-105 md:h-14 md:w-14 md:rounded-[10px]">
                 <Image src={`/category-icons/${cat.icon}.jpg`} alt="" fill className="object-cover" sizes="56px" />
               </span>
               <div className="min-w-0">
-                <p className="break-keep font-bold leading-tight text-[13px] md:text-[18px]" style={{ color: "#14201A", letterSpacing: "-0.01em" }}>
-                  {cat.label}
+                <p className="break-keep font-bold leading-tight text-[10px] md:text-[18px]" style={{ color: "#14201A", letterSpacing: "-0.01em" }}>
+                  <span className="md:hidden">{cat.label.replace("단백질 ", "")}</span>
+                  <span className="hidden md:inline">{cat.label}</span>
                 </p>
-                <p className="mt-0.5 break-keep font-semibold text-[11px] md:mt-[3px] md:text-[15px]" style={{ color: "#1F5A3D" }}>
+                <p className="mt-0.5 break-keep font-semibold text-[9px] md:mt-[3px] md:text-[15px]" style={{ color: "#1F5A3D" }}>
                   {categoryCounts[cat.countKey]}종
                 </p>
               </div>
@@ -242,9 +241,9 @@ export default async function Home() {
       </section>
 
       {/* ─── 4. 이번 주 인기 제품 ─── */}
-      <section className="mx-auto max-w-[1180px] px-4 pt-1 md:px-5 md:pt-4">
+      <section className="mx-auto max-w-[1180px] px-4 pt-3 md:px-5 md:pt-4">
         <HomePopularCarousel products={carouselProducts} />
-        <div className="mt-2 flex justify-end">
+        <div className="mt-2 hidden justify-end md:flex">
           <Link href="/trending" className="text-[12px] font-semibold text-[#1F5A3D] hover:underline">
             카테고리별 실시간 인기 순위 전체 보기 →
           </Link>
@@ -252,16 +251,16 @@ export default async function Home() {
       </section>
 
       {newlyAdded.length > 0 ? (
-        <section className="mx-auto max-w-[1180px] px-4 pt-4 md:px-5 md:pt-6">
+        <section className="mx-auto hidden max-w-[1180px] px-4 pt-4 md:block md:px-5 md:pt-6">
           <div className="mb-3 flex items-baseline justify-between">
-            <h2 className="font-extrabold text-[17px] md:text-[24px]" style={{ color: "#1A2B1E", letterSpacing: "-0.02em" }}>
+            <h2 className="font-extrabold text-[24px]" style={{ color: "#1A2B1E", letterSpacing: "-0.02em" }}>
               새로 등록된 제품
             </h2>
-            <span className="text-[11px] font-medium text-[#6b7a70] md:text-[12px]">
+            <span className="text-[12px] font-medium text-[#6b7a70]">
               {newlyAdded[0].entry.addedAt} 업데이트
             </span>
           </div>
-          <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
+          <div className="grid grid-cols-4 gap-3">
             {newlyAdded.map(({ product }) => (
               <ProductCard
                 key={product.slug}

@@ -102,7 +102,7 @@ export default function CardShareButton({ slug, productName, proteinG }: CardSha
       <button
         ref={btnRef}
         onClick={handleOpen}
-        className="flex h-9 w-9 shrink-0 items-center justify-center rounded-[10px] border transition-colors hover:bg-[#F3F0EA] active:scale-95"
+        className="flex h-8 w-8 shrink-0 items-center justify-center rounded-[10px] border transition-colors hover:bg-[#F3F0EA] active:scale-95 md:h-9 md:w-9"
         style={{ borderColor: "#E4D9CC", color: "#8A938B", background: "white" }}
         aria-label="공유하기"
         title="공유하기"

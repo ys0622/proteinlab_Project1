@@ -38,7 +38,7 @@ export default function CompareButton({
       data-detail-href={detailHref}
       aria-label={label}
       className={`flex items-center justify-center whitespace-nowrap border font-medium transition-colors active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-60 ${
-        compact ? "h-9 w-9 rounded-[10px]" : "flex-1 rounded-[10px]"
+        compact ? "h-8 w-8 rounded-[10px] md:h-9 md:w-9" : "flex-1 rounded-[10px]"
       }`}
       style={
         selected
