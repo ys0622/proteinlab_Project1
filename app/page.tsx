@@ -169,45 +169,58 @@ export default async function Home() {
           />
 
           <div className="relative z-10 px-4 py-2 md:max-w-[56%] md:px-10 md:py-8">
-            <h1
-              className="whitespace-nowrap text-[16px] font-extrabold leading-tight md:hidden"
-              style={{ color: "#16412D", letterSpacing: "-0.04em" }}
-            >
-              나에게 맞는 단백질 제품, 수치로 비교하세요
-            </h1>
-            <div className="mt-0.5 md:mt-0 md:block">
-              <div className="min-w-0 pr-[76px] md:pr-0">
-                <h1 className="hidden font-extrabold text-[38px] leading-[1.25] md:block" style={{ color: "#16412D", letterSpacing: "-0.02em" }}>
-                  나에게 맞는 단백질 제품,
-                  <br />
-                  수치로 비교하세요
-                </h1>
-                <p className="break-keep text-[12px] leading-[1.4] md:mt-2.5 md:text-[16px] md:leading-[1.5]" style={{ color: "#5E6E61" }}>
-                  단백질·당류·칼로리를 한눈에 비교하고
-                  <br className="md:hidden" />
-                  목적에 맞는 제품을 찾아보세요.
-                </p>
-              </div>
-              {/* 모바일: 우측 썸네일 이미지 (네 방향 전부 배경색으로 블렌딩되는 비네트) */}
-              <div aria-hidden className="absolute right-1 -top-0.5 h-[108px] w-[108px] md:hidden">
-                <div
-                  className="absolute inset-0"
-                  style={{
-                    backgroundImage: "url(/category-icons/hero-image.png)",
-                    backgroundSize: "cover",
-                    backgroundPosition: "center",
-                  }}
-                />
-                <div
-                  className="absolute inset-0"
-                  style={{
-                    background: "radial-gradient(ellipse farthest-corner at 50% 50%, transparent 38%, #F2ECDD 92%)",
-                  }}
-                />
+            <div className="md:hidden">
+              <h1
+                className="whitespace-nowrap text-[16px] font-extrabold leading-tight"
+                style={{ color: "#16412D", letterSpacing: "-0.04em" }}
+              >
+                나에게 맞는 단백질 제품, 수치로 비교하세요
+              </h1>
+              <div className="mt-1 grid grid-cols-[minmax(0,1fr)_108px] items-center gap-x-2">
+                <div className="min-w-0">
+                  <p className="break-keep text-[12px] leading-[1.4]" style={{ color: "#5E6E61" }}>
+                    단백질·당류·칼로리를 한눈에 비교하고
+                    <br />
+                    목적에 맞는 제품을 찾아보세요.
+                  </p>
+                  <div className="mt-1">
+                    <HomeHeroSearch />
+                  </div>
+                </div>
+                {/* 모바일: 별도 열에 고정해 검색·비교 버튼과 절대 겹치지 않는다. */}
+                <div aria-hidden className="relative h-[108px] w-[108px]">
+                  <div
+                    className="absolute inset-0"
+                    style={{
+                      backgroundImage: "url(/category-icons/hero-image.png)",
+                      backgroundSize: "cover",
+                      backgroundPosition: "center",
+                    }}
+                  />
+                  <div
+                    className="absolute inset-0"
+                    style={{
+                      background: "radial-gradient(ellipse farthest-corner at 50% 50%, transparent 38%, #F2ECDD 92%)",
+                    }}
+                  />
+                </div>
               </div>
             </div>
-            <div className="relative z-10 mt-1 max-w-[560px] md:mt-4">
-              <HomeHeroSearch />
+
+            <div className="hidden md:block">
+              <h1 className="text-[38px] font-extrabold leading-[1.25]" style={{ color: "#16412D", letterSpacing: "-0.02em" }}>
+                나에게 맞는 단백질 제품,
+                <br />
+                수치로 비교하세요
+              </h1>
+              <p className="mt-2.5 break-keep text-[16px] leading-[1.5]" style={{ color: "#5E6E61" }}>
+                단백질·당류·칼로리를 한눈에 비교하고
+                <br />
+                목적에 맞는 제품을 찾아보세요.
+              </p>
+              <div className="mt-4 max-w-[560px]">
+                <HomeHeroSearch />
+              </div>
             </div>
           </div>
         </div>

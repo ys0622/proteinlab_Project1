@@ -265,9 +265,11 @@ export default function ProductCard({
           {imageUrl ? (
             <div
               className={`product-card__image relative h-full w-full ${
+                productType === "yogurt" ? "product-card__image--yogurt " : ""
+              }${
                 usesUnifiedSurface
                   ? productType === "yogurt"
-                    ? "max-w-[112px] md:max-w-[154px]"
+                    ? "max-w-[96px] md:max-w-[132px]"
                     : "max-w-[148px] md:max-w-[202px]"
                   : "max-w-[180px] md:max-w-[200px]"
               }`}
@@ -290,7 +292,7 @@ export default function ProductCard({
         </div>
 
         {isTvAdProduct || tasteAward ? (
-          <div className="pointer-events-none absolute right-1 top-1 z-10 flex flex-col items-end gap-1 md:right-2 md:top-2">
+          <div className="pointer-events-none absolute right-2 top-2 z-10 hidden flex-col items-end gap-1 md:flex">
             {isTvAdProduct ? (
               <div
                 className="rounded-full px-1.5 py-0.5 text-[8px] font-bold shadow-sm md:px-2 md:text-[10px]"

@@ -84,7 +84,7 @@ export default function HomePopularCarousel({ products }: Props) {
       </div>
       <div className="mb-3 hidden flex-nowrap items-center justify-between gap-2 md:flex">
         <h2 className="shrink-0 text-[24px] font-extrabold" style={{ color: "#1A2B1E", letterSpacing: "-0.02em" }}>
-          인기 제품
+          조회 많은 제품
         </h2>
         <div className="flex min-w-0 shrink-0 items-center gap-2">
           <div className="flex gap-1">

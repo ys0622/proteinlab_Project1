@@ -15,7 +15,7 @@ export default function HomeHeroSearch() {
   };
 
   return (
-    <div className="grid w-fit grid-cols-[190px_62px] items-center gap-1.5 md:flex md:w-full md:gap-2">
+    <div className="grid w-full grid-cols-[minmax(0,1fr)_52px] items-center gap-1.5 md:flex md:gap-2">
       <form
         role="search"
         onSubmit={handleSubmit}
@@ -48,10 +48,11 @@ export default function HomeHeroSearch() {
         href="/compare"
         eventName="home_hero_compare_click"
         eventParams={{ category: "compare" }}
-        className="flex h-9 w-[62px] shrink-0 items-center justify-center whitespace-nowrap rounded-[8px] border text-[10px] font-bold transition-colors hover:bg-[#EBF3ED] md:h-14 md:w-auto md:rounded-[12px] md:px-6 md:text-[14px]"
+        className="flex h-8 w-[52px] shrink-0 items-center justify-center whitespace-nowrap rounded-[8px] border text-[9px] font-bold transition-colors hover:bg-[#EBF3ED] md:h-14 md:w-auto md:rounded-[12px] md:px-6 md:text-[14px]"
         style={{ borderColor: "#1F5A3D", color: "#1F5A3D" }}
       >
-        제품 비교
+        <span className="md:hidden">제품비교</span>
+        <span className="hidden md:inline">제품 비교</span>
       </HomeTrackedLink>
     </div>
   );

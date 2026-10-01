@@ -265,6 +265,10 @@ h1, h2, h3, h4, h5, h6 {
   object-fit: contain;
 }
 
+.product-card__image--yogurt {
+  max-width: 132px !important;
+}
+
 .product-card__badges {
   align-content: flex-start;
 }
@@ -1139,6 +1143,11 @@ h1, h2, h3, h4, h5, h6 {
   .product-card__image {
     min-height: 82px !important;
     max-width: 100px !important;
+  }
+
+  .product-card__image--yogurt {
+    min-height: 72px !important;
+    max-width: 84px !important;
   }
 
   .product-card__badges {
