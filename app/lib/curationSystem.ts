@@ -208,6 +208,7 @@ function isShakeCoffeeFlavor(product: ProductDetailProps) {
     "milk tea",
     "earl",
     "얼그레이",
+    "라떼",
     "녹차라떼",
     "말차라떼",
     "green tea latte",
@@ -217,12 +218,12 @@ function isShakeCoffeeFlavor(product: ProductDetailProps) {
 
 function isShakeGrainFlavor(product: ProductDetailProps) {
   const text = getShakeFlavorText(product);
-  return includesAny(text, ["곡물", "미숫", "인절미", "흑임자", "참깨", "서리태", "콩", "grain", "cereal", "corn", "sesame", "고구마"]);
+  return includesAny(text, ["곡물", "미숫", "인절미", "흑임자", "참깨", "서리태", "콩", "옥수수", "오트", "율무", "grain", "cereal", "corn", "sesame", "oat", "고구마"]);
 }
 
 function isShakeDessertFlavor(product: ProductDetailProps) {
   const text = getShakeFlavorText(product);
-  return includesAny(text, ["초코", "초콜릿", "쿠키", "크림", "바나나", "딸기", "멜론", "피스타치오", "초코무스", "berry", "cookie", "cream", "choco", "banana", "strawberry", "melon", "pistachio"]);
+  return includesAny(text, ["초코", "초콜릿", "쿠키", "크림", "바나나", "딸기", "멜론", "블루베리", "요거트", "피스타치오", "카스테라", "브라우니", "브륄레", "카라멜", "캐러멜", "초코무스", "berry", "yogurt", "cookie", "cream", "choco", "banana", "strawberry", "melon", "pistachio"]);
 }
 
 function sortShakeByProtein(products: ProductDetailProps[]) {

@@ -6,6 +6,7 @@ import Header from "../components/Header";
 import CategoryTabs from "../components/CategoryTabs";
 import CommercialAdSection from "../components/CommercialAdSection";
 import type { ProductCategory } from "../lib/categories";
+import productCategoryCounts from "../data/productCategoryCounts.json";
 
 const GRADE_COLORS: Record<string, { color: string; bg: string; border: string }> = {
   A: { color: "#1B7F5B", bg: "#E7F3EC", border: "#1B7F5B" },
@@ -74,7 +75,7 @@ const FAQ = [
 
 export default function GradeCriteriaPage() {
   const [productType, setProductType] = useState<ProductCategory>("drink");
-  const categoryCounts = { drink: 104, bar: 71, yogurt: 45, shake: 67 };
+  const categoryCounts = productCategoryCounts;
   const rows =
     productType === "drink"
       ? DRINK_ROWS
@@ -177,7 +178,7 @@ export default function GradeCriteriaPage() {
           <div className="mt-4 rounded-xl border border-[#e8e6e3] bg-[#FFFDF8] px-4 py-3.5" style={{ borderRadius: "16px" }}>
             <p className="text-xs font-semibold" style={{ color: "#6b6b6b" }}>쉐이크 등급 산정 기준 안내</p>
             <ul className="mt-1.5 space-y-1 text-xs leading-relaxed" style={{ color: "#6b6b6b" }}>
-              <li>쉐이크 등급은 1포(40~45g)당 영양성분 기준으로 카테고리 내 상대 비교입니다.</li>
+              <li>쉐이크 등급은 현재 등록된 1포 32~60g 제품의 영양성분을 기준으로 카테고리 내에서 상대 비교합니다.</li>
               <li>단백질 밀도는 100kcal당 단백질(g) 기준으로 산출됩니다.</li>
               <li>음료(100mL 기준)와 직접 비교되지 않으며, 쉐이크 제품 간 상대 평가입니다.</li>
             </ul>

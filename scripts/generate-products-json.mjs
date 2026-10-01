@@ -55,6 +55,20 @@ const output = {
 };
 
 writeFileSync(resolve(root, "public/products.json"), JSON.stringify(output, null, 2), "utf-8");
+writeFileSync(
+  resolve(root, "app/data/productCategoryCounts.json"),
+  JSON.stringify(
+    {
+      drink: drinks.length,
+      bar: bars.length,
+      yogurt: yogurts.length,
+      shake: shakes.length,
+    },
+    null,
+    2,
+  ) + "\n",
+  "utf-8",
+);
 
 console.log("✅ products.json 생성 완료");
 console.log(
