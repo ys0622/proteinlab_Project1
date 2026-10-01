@@ -677,16 +677,16 @@ export default async function ProductDetailPage({ params }: PageProps) {
             {isBar ? (
               /* 바: 가로형 — 전체 너비, 낮은 높이로 가로 이미지에 최적화 */
               <div
-                className="flex w-full items-center justify-center rounded-[16px] border"
-                style={{ backgroundColor: "#FFFFFF", borderColor: "#E8E4DC", height: "160px", padding: "16px" }}
+                className="relative h-[160px] w-full overflow-hidden rounded-[16px] border"
+                style={{ backgroundColor: "#FFFFFF", borderColor: "#E8E4DC" }}
               >
                 {productImageUrl ? (
                   <Image
                     src={productImageUrl}
                     alt={formatProductLabel(product.brand, product.name)}
-                    width={420}
-                    height={128}
-                    className="max-h-full w-auto max-w-full object-contain"
+                    fill
+                    sizes="(max-width: 1024px) calc(100vw - 40px), 1120px"
+                    className="object-contain p-4"
                     unoptimized
                     priority
                   />
@@ -700,14 +700,14 @@ export default async function ProductDetailPage({ params }: PageProps) {
                 className="flex items-center justify-center overflow-hidden rounded-[16px] border lg:w-[32%] lg:shrink-0"
                 style={{ backgroundColor: "#FFFFFF", borderColor: "#E8E4DC" }}
               >
-                <div className="flex h-[200px] w-full items-center justify-center p-5 lg:h-full lg:min-h-[380px] lg:p-6">
+                <div className="relative h-[200px] w-full lg:h-[380px]">
                   {productImageUrl ? (
                     <Image
                       src={productImageUrl}
                       alt={formatProductLabel(product.brand, product.name)}
-                      width={220}
-                      height={320}
-                      className="h-auto max-h-full w-auto max-w-full object-contain lg:max-h-[340px]"
+                      fill
+                      sizes="(max-width: 1024px) calc(100vw - 40px), 320px"
+                      className="object-contain p-5 lg:p-6"
                       unoptimized
                       priority
                     />
