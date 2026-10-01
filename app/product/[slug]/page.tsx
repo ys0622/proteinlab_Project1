@@ -80,28 +80,6 @@ function getProductKindLabel(productType?: "drink" | "bar" | "yogurt" | "shake")
   return getCategoryLabel(productType ?? "drink");
 }
 
-function gradeToScore(grade: string): number | null {
-  const match = grade.match(/([A-F])([+-]?)$/);
-  if (!match) return null;
-  const base: Record<string, number> = { A: 5, B: 4, C: 3, D: 2, F: 1 };
-  const mod = match[2] === "+" ? 0.3 : match[2] === "-" ? -0.3 : 0;
-  return (base[match[1]] ?? null) !== null ? base[match[1]] + mod : null;
-}
-
-function buildAggregateRating(gradeTags: string[]): Record<string, unknown> | null {
-  const scores = gradeTags.map(gradeToScore).filter((s): s is number => s !== null);
-  if (scores.length === 0) return null;
-  const avg = Math.round((scores.reduce((a, b) => a + b, 0) / scores.length) * 10) / 10;
-  return {
-    "@type": "AggregateRating",
-    ratingValue: avg,
-    bestRating: 5,
-    worstRating: 1,
-    ratingCount: scores.length,
-    reviewCount: 1,
-  };
-}
-
 function getMetricLine(product: ProductDetailProps) {
   const parts = [
     `단백질 ${product.proteinPerServing}g`,
@@ -634,6 +612,8 @@ export default async function ProductDetailPage({ params }: PageProps) {
       "@context": "https://schema.org",
       "@type": "Product",
       name: formatProductLabel(product.brand, product.name),
+      url: `https://proteinlab.kr/product/${slug}`,
+      sku: slug,
       brand: { "@type": "Brand", name: product.brand },
       description: buildProductDescription(product),
       ...(productImageUrl ? { image: `https://proteinlab.kr${productImageUrl}` } : {}),
@@ -646,21 +626,6 @@ export default async function ProductDetailPage({ params }: PageProps) {
         ...(product.fat != null ? { fatContent: `${product.fat} g` } : {}),
         ...(product.sodium != null ? { sodiumContent: `${product.sodium} mg` } : {}),
       },
-      ...(() => {
-        const rating = buildAggregateRating(product.gradeTags ?? []);
-        return rating ? { aggregateRating: rating } : {};
-      })(),
-      ...(resolvedCoupangHref
-        ? {
-            offers: {
-              "@type": "Offer",
-              url: resolvedCoupangHref,
-              priceCurrency: "KRW",
-              availability: "https://schema.org/InStock",
-              seller: { "@type": "Organization", name: "쿠팡" },
-            },
-          }
-        : {}),
     },
     {
       "@context": "https://schema.org",
