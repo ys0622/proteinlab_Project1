@@ -240,17 +240,17 @@ export default async function Home() {
               href={cat.href}
               eventName="home_category_click"
               eventParams={{ category: cat.countKey, destination_url: cat.href }}
-              className="group flex min-w-0 items-center justify-center gap-1 rounded-[10px] bg-white px-1 py-1.5 text-left shadow-[0_1px_4px_rgba(20,32,26,0.06)] transition-all duration-150 hover:shadow-[0_6px_16px_rgba(20,32,26,0.10)] md:justify-start md:gap-3 md:rounded-[12px] md:px-3.5 md:py-3"
+              className="group flex min-w-0 items-center justify-center gap-1 rounded-[10px] border border-[#E3E8E4] bg-white px-1 py-1.5 text-left shadow-[0_2px_6px_rgba(20,32,26,0.07)] transition-all duration-150 hover:shadow-[0_6px_16px_rgba(20,32,26,0.10)] md:justify-start md:gap-3 md:rounded-[12px] md:border-0 md:px-3.5 md:py-3"
             >
               <span className="relative h-7 w-7 shrink-0 overflow-hidden rounded-[7px] transition-transform duration-150 group-hover:scale-105 md:h-14 md:w-14 md:rounded-[10px]">
                 <Image src={`/category-icons/${cat.icon}.jpg`} alt="" fill className="object-cover" sizes="56px" />
               </span>
               <div className="min-w-0">
-                <p className="break-keep font-bold leading-tight text-[10px] md:text-[18px]" style={{ color: "#14201A", letterSpacing: "-0.01em" }}>
+                <p className="break-keep text-[11px] font-extrabold leading-tight md:text-[18px]" style={{ color: "#14201A", letterSpacing: "-0.02em" }}>
                   <span className="md:hidden">{cat.label.replace("단백질 ", "")}</span>
                   <span className="hidden md:inline">{cat.label}</span>
                 </p>
-                <p className="mt-0.5 break-keep font-semibold text-[9px] md:mt-[3px] md:text-[15px]" style={{ color: "#1F5A3D" }}>
+                <p className="mt-0.5 break-keep text-[10px] font-bold md:mt-[3px] md:text-[15px]" style={{ color: "#1F5A3D" }}>
                   {categoryCounts[cat.countKey]}종
                 </p>
               </div>
