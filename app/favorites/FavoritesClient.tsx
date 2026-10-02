@@ -4,16 +4,14 @@ import Link from "next/link";
 import { useFavorites } from "../context/FavoritesContext";
 import { useEffect, useState } from "react";
 import ProductCard from "../components/ProductCard";
+import type { ProductCardProps } from "../data/productTypes";
 
-interface ProductEntry {
-  slug: string;
-  name: string;
-  brand: string;
+type ProductEntry = Omit<ProductCardProps, "calories" | "sugar"> & {
   category: string;
-  protein: number;
+  protein: number | null;
   calories: number | null;
   sugar: number | null;
-}
+};
 
 interface ProductsJson {
   products: ProductEntry[];
@@ -80,16 +78,9 @@ export default function FavoritesClient() {
         {favorites.map((product) => (
           <ProductCard
             key={product.slug}
-            slug={product.slug}
-            brand={product.brand}
-            name={product.name}
-            capacity=""
-            tags={[]}
-            proteinPerServing={product.protein}
+            {...product}
             calories={product.calories ?? undefined}
             sugar={product.sugar ?? undefined}
-            density="-"
-            productType={product.category as "drink" | "bar" | "yogurt" | "shake"}
           />
         ))}
       </div>

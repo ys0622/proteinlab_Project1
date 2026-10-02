@@ -29,9 +29,23 @@ function mapProducts(list, category) {
     name: p.name,
     brand: p.brand,
     category,
+    productType:
+      p.productType ??
+      ({ drinks: "drink", bars: "bar", yogurt: "yogurt", shake: "shake" }[category]),
+    capacity: p.capacity ?? "",
+    variant: p.variant ?? "",
+    tags: Array.isArray(p.tags) ? p.tags : [],
     protein: p.proteinPerServing ?? null,
+    proteinPerServing: p.proteinPerServing ?? 0,
     calories: p.calories ?? null,
     sugar: p.sugar ?? null,
+    density: p.density ?? "-",
+    productUrl: p.productUrl ?? "#",
+    coupangUrl: p.coupangUrl ?? null,
+    naverUrl: p.naverUrl ?? null,
+    officialUrl: p.officialUrl ?? null,
+    gradeTags: Array.isArray(p.gradeTags) ? p.gradeTags : [],
+    yogurtType: p.yogurtType ?? null,
   }));
 }
 
