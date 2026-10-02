@@ -19,10 +19,10 @@ export default function CompareButton({
   const selected = isSelected(slug);
   const disabled = !selected && !canAdd;
   const label = selected
-    ? "스펙 비교에서 제거"
+    ? "비교 목록에서 제거"
     : disabled
       ? "비교는 최대 3개까지 가능합니다"
-      : "스펙 비교에 추가";
+      : "비교 목록에 추가";
 
   const handleClick = (event: MouseEvent<HTMLButtonElement>) => {
     event.stopPropagation();
@@ -64,7 +64,7 @@ export default function CompareButton({
         </svg>
       ) : (
         <span style={{ height: "34px", fontSize: "12px", lineHeight: "34px" }}>
-          {selected ? "스펙 비교 해제" : "스펙 비교"}
+          {selected ? "비교 해제" : "비교 담기"}
         </span>
       )}
     </button>

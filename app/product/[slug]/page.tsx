@@ -440,7 +440,7 @@ function buildProductInternalLinks(product: ProductDetailProps) {
     guideLink,
     {
       href: `/compare?slugs=${encodeURIComponent(product.slug)}`,
-      title: "이 제품으로 비교 시작",
+      title: "이 제품과 비교",
       description: "현재 제품을 기준으로 다른 제품과 수치를 나란히 비교합니다.",
     },
     relevantLanding
@@ -531,8 +531,6 @@ export default async function ProductDetailPage({ params }: PageProps) {
     product.officialUrl && product.officialUrl !== "#" && product.officialUrl !== ""
       ? product.officialUrl
       : getOfficialMallUrl(product.brand);
-  const isLactoseFreeDrink =
-    product.productType === "drink" && product.variant?.trim() === "락토프리";
   const detailCategoryHref = getCategoryDetailHref(category);
   const categoryProducts = getStaticProductsByCategory(category);
   const similarProducts = getSimilarProducts(product, categoryProducts, 6);
@@ -542,9 +540,6 @@ export default async function ProductDetailPage({ params }: PageProps) {
 
   const summaryMetrics = isBar
     ? [
-        { label: "단백질", value: `${product.proteinPerServing}g`, isCompact: false },
-        { label: "칼로리", value: product.calories != null ? `${product.calories}kcal` : "-", isCompact: false },
-        { label: "당류", value: product.sugar !== undefined ? `${product.sugar}g` : "-", isCompact: false },
         { label: "단백질 밀도", value: product.density ?? "-", isCompact: true },
         { label: "중량", value: product.capacity ?? "-", isCompact: false },
         { label: "지방", value: product.fat !== undefined ? `${product.fat}g` : "-", isCompact: false },
@@ -552,33 +547,21 @@ export default async function ProductDetailPage({ params }: PageProps) {
       ]
     : isYogurt
       ? [
-          { label: "단백질", value: `${product.proteinPerServing}g`, isCompact: false },
-          { label: "칼로리", value: product.calories != null ? `${product.calories}kcal` : "-", isCompact: false },
-          { label: "당류", value: product.sugar !== undefined ? `${product.sugar}g` : "-", isCompact: false },
           { label: "단백질 밀도", value: product.density ?? "-", isCompact: true },
           { label: "중량", value: product.capacity ?? "-", isCompact: false },
           { label: "요거트 유형", value: product.yogurtType ?? "-", isCompact: false },
           { label: "지방", value: product.fat !== undefined ? `${product.fat}g` : "-", isCompact: false },
-          { label: "나트륨", value: product.sodium !== undefined ? `${product.sodium}mg` : "-", isCompact: false },
         ]
       : isShake
         ? [
-            { label: "단백질", value: `${product.proteinPerServing}g`, isCompact: false },
-            { label: "칼로리", value: product.calories != null ? `${product.calories}kcal` : "-", isCompact: false },
-            { label: "당류", value: product.sugar !== undefined ? `${product.sugar}g` : "-", isCompact: false },
             { label: "단백질 밀도", value: product.density ?? "-", isCompact: true },
             { label: "용량", value: product.capacity ?? "-", isCompact: false },
             { label: "식이섬유", value: product.nutritionPerBottle?.fiberG != null ? `${product.nutritionPerBottle.fiberG}g` : "-", isCompact: false },
             { label: "지방", value: product.fat !== undefined ? `${product.fat}g` : "-", isCompact: false },
-            { label: "섭취 포인트", value: getShakePositioning(product), isCompact: false },
           ]
       : [
-          { label: "단백질", value: `${product.proteinPerServing}g`, isCompact: false },
-          { label: "칼로리", value: product.calories != null ? `${product.calories}kcal` : "-", isCompact: false },
-          { label: "당류", value: product.sugar !== undefined ? `${product.sugar}g` : "-", isCompact: false },
           { label: "단백질 밀도", value: product.density ?? "-", isCompact: true },
           { label: "용량", value: product.capacity ?? "-", isCompact: false },
-          { label: "락토프리", value: isLactoseFreeDrink ? "O" : "X", isCompact: false },
           { label: "지방", value: product.fat !== undefined ? `${product.fat}g` : "-", isCompact: false },
           { label: "나트륨", value: product.sodium !== undefined ? `${product.sodium}mg` : "-", isCompact: false },
         ];

@@ -94,9 +94,6 @@ export default function SearchPageClient({ initialQuery }: { initialQuery: strin
   }, {});
 
   const totalCount = filtered.length;
-  const matchedBrands = Array.from(new Set(filtered.map((product) => product.brand))).slice(0, 3);
-  const topCategory = CATEGORY_ORDER.find((category) => grouped[category]?.length);
-
   const handleQueryChange = (value: string) => {
     setQuery(value);
     const params = new URLSearchParams();
@@ -106,7 +103,7 @@ export default function SearchPageClient({ initialQuery }: { initialQuery: strin
 
   return (
     <div>
-      <div className="max-w-3xl">
+      <div className={trimmed ? "hidden max-w-3xl md:block" : "max-w-3xl"}>
         <h1 className="text-2xl font-bold text-[var(--foreground)] md:text-3xl">
           단백질 제품 검색
         </h1>
@@ -116,7 +113,7 @@ export default function SearchPageClient({ initialQuery }: { initialQuery: strin
         </p>
       </div>
 
-      <div className="relative mb-6 mt-6">
+      <div className={`relative ${trimmed ? "mb-4 mt-0 md:mb-6 md:mt-6" : "mb-6 mt-6"}`}>
         <span className="absolute left-4 top-1/2 -translate-y-1/2 text-[var(--foreground-muted)]">
           <svg width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
             <circle cx="11" cy="11" r="8" />
@@ -201,51 +198,31 @@ export default function SearchPageClient({ initialQuery }: { initialQuery: strin
       ) : null}
 
       {loaded && trimmed && totalCount > 0 ? (
-        <div className="space-y-8">
-          <div className="space-y-3">
+        <div className="space-y-5 md:space-y-8">
+          <div className="flex flex-wrap items-center justify-between gap-2 rounded-xl border border-[#e3e8e4] bg-[#fcfaf6] px-3 py-2.5 md:rounded-2xl md:px-4 md:py-3">
             <p className="text-sm text-[var(--foreground-muted)]">
-              <span className="font-semibold text-[var(--foreground)]">{totalCount}개</span> 결과
+              <span className="font-semibold text-[var(--foreground)]">“{query.trim()}”</span> 검색 결과
+              <span className="ml-1 font-bold text-[var(--accent)]">{totalCount}개</span>
             </p>
-            <div className="rounded-2xl border border-[#ebe5dc] bg-[#fcfaf6] px-4 py-4">
-              <p className="text-sm font-semibold text-[var(--foreground)]">
-                {matchedBrands.length > 0
-                  ? `${matchedBrands.join(", ")} 관련 제품을 먼저 찾았습니다.`
-                  : "검색 결과를 먼저 확인해보세요."}
-              </p>
-              <p className="mt-1 text-sm leading-6 text-[var(--foreground-muted)]">
-                {topCategory
-                  ? `${CATEGORY_LABEL[topCategory]} 카테고리에서 가장 많이 나왔습니다. 제품 상세를 본 뒤 비교나 추천으로 이어가면 더 빨리 좁힐 수 있습니다.`
-                  : "제품 상세를 본 뒤 비교나 추천으로 이어가면 더 빨리 좁힐 수 있습니다."}
-              </p>
-              <div className="mt-3 flex flex-wrap gap-2">
+            <div className="flex gap-1.5">
                 <TrackedLink
                   href="/compare"
-                  trackingLabel="비교 시작"
+                  trackingLabel="제품 비교"
                   trackingSection="search_result_summary"
                   trackingPageType="search"
-                  className="inline-flex min-w-[108px] items-center justify-center rounded-full bg-[var(--accent)] px-4 py-2 text-xs font-semibold text-white shadow-[0_10px_24px_rgba(36,84,61,0.16)] transition-all hover:-translate-y-0.5 hover:opacity-95"
+                  className="inline-flex h-8 items-center justify-center rounded-full bg-[var(--accent)] px-3.5 text-xs font-bold text-white shadow-[0_6px_16px_rgba(36,84,61,0.12)] transition-all hover:-translate-y-0.5 hover:opacity-95"
                 >
-                  비교 시작
-                </TrackedLink>
-                <TrackedLink
-                  href="/products"
-                  trackingLabel="전체 보기"
-                  trackingSection="search_result_summary"
-                  trackingPageType="search"
-                  className="rounded-full border border-[#d8d5d0] bg-white px-3 py-1.5 text-xs font-semibold text-[var(--foreground)] transition-colors hover:bg-[var(--accent-light)]"
-                >
-                  전체 보기
+                  제품 비교
                 </TrackedLink>
                 <TrackedLink
                   href="/recommend"
                   trackingLabel="추천 받기"
                   trackingSection="search_result_summary"
                   trackingPageType="search"
-                  className="rounded-full border border-[#d8d5d0] bg-white px-3 py-1.5 text-xs font-semibold text-[var(--foreground)] transition-colors hover:bg-[var(--accent-light)]"
+                  className="inline-flex h-8 items-center rounded-full border border-[#d8d5d0] bg-white px-3 text-xs font-semibold text-[var(--foreground)] transition-colors hover:bg-[var(--accent-light)]"
                 >
                   추천 받기
                 </TrackedLink>
-              </div>
             </div>
           </div>
 

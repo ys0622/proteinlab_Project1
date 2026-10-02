@@ -27,7 +27,7 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
   return (
     <div className="min-h-screen bg-white">
       <Header />
-      <main className="mx-auto max-w-[1200px] px-4 py-8 md:px-6">
+      <main className="mx-auto max-w-[1200px] px-4 py-4 md:px-6 md:py-8">
         <SearchPageClient initialQuery={q} />
         <CommercialAdSection pageType="feed" className="mt-6" />
       </main>

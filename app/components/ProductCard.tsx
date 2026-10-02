@@ -524,7 +524,7 @@ export default function ProductCard({
             </div>
             {slug ? (
               <div className="flex shrink-0 items-center gap-1">
-                <ActionTooltip label="스펙 비교">
+                <ActionTooltip label="비교 담기">
                   <CompareButton slug={slug} detailHref={detailHref} compact />
                 </ActionTooltip>
               </div>
