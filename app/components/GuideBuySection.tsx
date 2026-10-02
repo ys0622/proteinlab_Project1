@@ -4,13 +4,18 @@ import { getProductBySlug } from "@/app/data/products";
 import { getCoupangRedirectHref } from "@/app/lib/purchaseLinks";
 import { formatProductLabel } from "@/app/lib/productLabel";
 
-export default function GuideBuySection({ slugs = [] }: { slugs?: string[] }) {
+export default function GuideBuySection({
+  slugs = [],
+  embedded = false,
+}: {
+  slugs?: string[];
+  embedded?: boolean;
+}) {
   const products = slugs.map((slug) => getProductBySlug(slug)).filter((product) => product?.coupangUrl);
   if (products.length === 0) return null;
 
-  return (
-    <section className="mx-auto mb-8 max-w-[1200px] px-4 md:px-6">
-      <div className="rounded-[28px] border border-[#d9e4f0] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(32,46,68,0.05)]">
+  const content = (
+    <div className="rounded-[28px] border border-[#d9e4f0] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(32,46,68,0.05)]">
         <div className="flex flex-wrap items-center justify-between gap-2">
           <h2 className="text-xl font-bold text-[var(--foreground)]">제품 가격·옵션 확인</h2>
           <AffiliateDisclosure className="mb-0" />
@@ -37,7 +42,14 @@ export default function GuideBuySection({ slugs = [] }: { slugs?: string[] }) {
             );
           })}
         </div>
-      </div>
+    </div>
+  );
+
+  if (embedded) return content;
+
+  return (
+    <section className="mx-auto mb-8 max-w-[1200px] px-4 md:px-6">
+      {content}
     </section>
   );
 }

@@ -60,6 +60,7 @@ type ShakeGuideConfig = {
   internalLinks: InternalLinkItem[];
   ctaBody: string;
   faqItems?: FaqItem[];
+  buyProductSlugs?: string[];
 };
 
 export function buildShakeGuideMetadata(title: string, description: string, slug?: string): Metadata {
@@ -112,6 +113,7 @@ export function ShakeGuidePage({
   internalLinks,
   ctaBody,
   faqItems,
+  buyProductSlugs,
 }: ShakeGuideConfig) {
   const internalGuideLinks = [...internalLinks, trackBHubLink].filter(
     (item, index, array) => array.findIndex((candidate) => candidate.href === item.href) === index,
@@ -173,6 +175,10 @@ export function ShakeGuidePage({
 
       <main className="mx-auto max-w-[1200px] px-4 py-8 md:px-6">
         <div className="space-y-6">
+          {buyProductSlugs?.length ? (
+            <GuideBuySection slugs={buyProductSlugs} embedded />
+          ) : null}
+
           <section className="grid gap-3 md:grid-cols-4">
             <Link
               href="/shake"
@@ -428,7 +434,6 @@ export function ShakeGuidePage({
         </div>
       </main>
 
-      <GuideBuySection />
       <Footer />
     </div>
   );

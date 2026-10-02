@@ -3,10 +3,13 @@ import { notFound } from "next/navigation";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import CommercialAdSection from "../../components/CommercialAdSection";
+import AffiliateDisclosure from "../../components/AffiliateDisclosure";
 import ProductCard from "../../components/ProductCard";
+import TrackedCoupangLink from "../../components/TrackedCoupangLink";
 import TrackedLink from "../../components/TrackedLink";
 import { getCompareLandingBySlug, getAllCompareLandingStaticSlugs } from "../../data/compareLandings";
 import { formatProductLabel } from "../../lib/productLabel";
+import { getCoupangRedirectHref } from "../../lib/purchaseLinks";
 import { getAllProducts } from "../../data/products";
 import type { ProductDetailProps } from "../../data/products";
 
@@ -418,6 +421,39 @@ export default async function CompareLandingPage({ params }: PageProps) {
               </table>
             </div>
             <p className="mt-2 text-xs text-[var(--foreground-muted)]">1회(1개) 제공량 기준, 제품 표기 수치입니다. 초록색은 해당 항목에서 더 유리한 쪽입니다.</p>
+            <div className="mt-4 border-t border-[#edf1ee] pt-4">
+              <div className="flex items-center justify-between gap-3">
+                <p className="text-sm font-semibold text-[var(--foreground)]">현재 가격·옵션 확인</p>
+                <AffiliateDisclosure className="mb-0" />
+              </div>
+              <div className="mt-3 grid grid-cols-2 gap-2">
+                {products.slice(0, 2).map((product) => {
+                  const href = getCoupangRedirectHref(
+                    product.coupangUrl,
+                    product.productType ?? null,
+                    product.slug,
+                  );
+
+                  return (
+                    <TrackedCoupangLink
+                      key={product.slug}
+                      href={href}
+                      productId={product.slug}
+                      productName={formatProductLabel(product.brand, product.name)}
+                      productBrand={product.brand}
+                      productCategory={product.productType}
+                      linkPosition="hero"
+                      className="flex min-h-14 flex-col justify-center rounded-xl border border-[#cfe0d4] bg-[#f6fbf7] px-3 py-2.5 transition-colors hover:bg-[#eaf5ed]"
+                    >
+                      <span className="line-clamp-1 text-xs font-medium text-[var(--foreground-muted)]">
+                        {formatProductLabel(product.brand, product.name)}
+                      </span>
+                      <span className="mt-1 text-sm font-bold text-[#1B684A]">가격 보기 →</span>
+                    </TrackedCoupangLink>
+                  );
+                })}
+              </div>
+            </div>
           </section>
         ) : null}
         {conversionPlan ? (

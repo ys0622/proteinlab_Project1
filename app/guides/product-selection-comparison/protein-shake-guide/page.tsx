@@ -74,6 +74,11 @@ export default function ProteinShakeGuidePage() {
         { question: "단백질 쉐이크는 운동 안 해도 먹어도 되나요?", answer: "네, 운동 여부와 관계없이 단백질 보충이 필요하면 섭취할 수 있습니다. 다만 칼로리가 있기 때문에 하루 총 칼로리 섭취량을 고려해야 합니다." },
         { question: "저당 단백질 쉐이크 기준은 당류 몇 g인가요?", answer: "ProteinLab 기준으로는 당류 3g 이하를 저당으로 분류합니다. 제품마다 기준이 다를 수 있으니 성분표에서 직접 확인하는 것이 정확합니다." },
       ]}
+      buyProductSlugs={[
+        "proteone-proteinshake-choco-40",
+        "danbaekhani-proteinshake-signature-40",
+        "itthefit-proteinshake-misugaru-40",
+      ]}
       />
     </>
   );

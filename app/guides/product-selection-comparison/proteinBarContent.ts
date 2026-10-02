@@ -228,6 +228,7 @@ export const proteinBarTop10Config: CategoryGuideConfig = {
     label: `${formatProductLabel(product.brand, product.name)} 보기`,
     slug: product.slug,
   })),
+  promoteAffiliateCtas: true,
   showPurchaseLinks: false,
   conversion: {
     contentId: "plv3:landing:guide:protein-bar-top10",

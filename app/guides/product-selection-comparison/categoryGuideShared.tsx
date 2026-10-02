@@ -298,6 +298,16 @@ export function CategoryGuidePage({ config }: { config: CategoryGuideConfig }) {
       <main className="mx-auto max-w-[1200px] px-4 py-8 md:px-6">
         <div className="space-y-6">
           {config.conversion ? <ConversionLinks conversion={config.conversion} /> : null}
+          {config.promoteAffiliateCtas && config.purchaseLinks.length > 0 ? (
+            <section className="rounded-[28px] border border-[#d9e4f0] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(32,46,68,0.05)]">
+              <div className="flex flex-wrap items-center justify-between gap-2">
+                <h2 className="text-lg font-bold text-[var(--foreground)]">추천 제품 가격·옵션 빠르게 확인</h2>
+                <AffiliateDisclosure className="mb-0" />
+              </div>
+              <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">비교 기준에 맞는 대표 후보입니다. 판매 구성과 현재 가격은 쿠팡에서 확인할 수 있습니다.</p>
+              <div className="mt-4"><PurchaseCards links={config.purchaseLinks} linkPosition="hero" /></div>
+            </section>
+          ) : null}
           <section className="rounded-[28px] border border-[#d9e4f0] bg-[#f7f9fc] px-5 py-5 shadow-[0_18px_50px_rgba(32,46,68,0.05)]">
             <p className="text-xs font-semibold tracking-[0.08em] text-[#4a6178]">📌 핵심 요약</p>
             <ul className="mt-3 grid gap-2 text-sm leading-6 text-[var(--foreground-muted)] md:mt-4 md:gap-3">
@@ -309,17 +319,6 @@ export function CategoryGuidePage({ config }: { config: CategoryGuideConfig }) {
               ))}
             </ul>
           </section>
-
-          {config.promoteAffiliateCtas && config.purchaseLinks.length > 0 ? (
-            <section className="rounded-[28px] border border-[#d9e4f0] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(32,46,68,0.05)]">
-              <div className="flex flex-wrap items-center justify-between gap-2">
-                <h2 className="text-lg font-bold text-[var(--foreground)]">추천 제품 가격·옵션 빠르게 확인</h2>
-                <AffiliateDisclosure className="mb-0" />
-              </div>
-              <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">비교 기준에 맞는 대표 후보입니다. 판매 구성과 현재 가격은 쿠팡에서 확인할 수 있습니다.</p>
-              <div className="mt-4"><PurchaseCards links={config.purchaseLinks} linkPosition="hero" /></div>
-            </section>
-          ) : null}
 
           <section className="rounded-[28px] border border-[#d9e4f0] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(32,46,68,0.05)]">
             <div className="flex items-center justify-between gap-4">
