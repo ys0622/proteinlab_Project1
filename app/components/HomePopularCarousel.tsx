@@ -152,6 +152,8 @@ export default function HomePopularCarousel({ products }: Props) {
                 fixedTitleLines={2}
                 hideSupplementalBadges
                 coupangOnly
+                analyticsSource={`home_popular_${curTab.key}`}
+                analyticsPosition={rank}
               />
             </div>
           );

@@ -8,6 +8,7 @@ type Props = {
   brand: string;
   productName: string;
   slug: string;
+  productType?: "drink" | "bar" | "yogurt" | "shake";
   /** Hide the sticky button while the main purchase block is visible. */
   anchorRef: React.RefObject<HTMLElement | null>;
 };
@@ -17,6 +18,7 @@ export default function MobileStickyBuyButton({
   brand,
   productName,
   slug,
+  productType,
   anchorRef,
 }: Props) {
   const [visible, setVisible] = useState(false);
@@ -66,6 +68,8 @@ export default function MobileStickyBuyButton({
                 destinationUrl: coupangHref,
                 placement: "mobile_sticky_bar",
                 ctaText: "최저가 확인",
+                category: productType,
+                source: "product_detail_mobile_sticky",
               })
             }
             style={{

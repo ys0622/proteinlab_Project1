@@ -5,6 +5,7 @@ import { useCompare } from "../context/CompareContext";
 
 export default function CompareBar() {
   const { selectedSlugs, clear } = useCompare();
+  const canCompare = selectedSlugs.length >= 2;
 
   if (selectedSlugs.length === 0) return null;
 
@@ -27,14 +28,20 @@ export default function CompareBar() {
         >
           초기화
         </button>
-        <Link
-          href="/compare"
-          className="flex min-h-10 items-center justify-center rounded-lg bg-white px-3 py-2 text-xs font-medium leading-tight transition-opacity hover:opacity-90 md:px-4 md:text-sm"
-          style={{ color: "#2F5D46" }}
-        >
-          비교하기
-          <span className="hidden md:inline"> ({selectedSlugs.length})</span>
-        </Link>
+        {canCompare ? (
+          <Link
+            href="/compare"
+            className="flex min-h-10 items-center justify-center rounded-lg bg-white px-3 py-2 text-xs font-bold leading-tight transition-opacity hover:opacity-90 md:px-4 md:text-sm"
+            style={{ color: "#2F5D46" }}
+          >
+            제품 비교하기
+            <span className="hidden md:inline"> ({selectedSlugs.length})</span>
+          </Link>
+        ) : (
+          <span className="flex min-h-10 items-center justify-center rounded-lg bg-white/15 px-3 py-2 text-xs font-semibold leading-tight text-white md:px-4 md:text-sm">
+            하나 더 담아주세요
+          </span>
+        )}
       </div>
     </div>
   );

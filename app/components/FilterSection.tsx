@@ -28,7 +28,7 @@ const chipUnselected =
 const chipSelected =
   "border-[var(--accent)] bg-[var(--accent-light)] font-medium text-[var(--accent)]";
 const detailFilterButton =
-  "inline-flex h-7 items-center gap-1.5 rounded-full border border-[#d8d3cc] bg-white px-3 text-[11px] font-bold text-[#454545] shadow-[0_1px_4px_rgba(50,40,30,0.06)] transition-colors hover:border-[var(--accent)] hover:bg-[var(--accent-light)] hover:text-[var(--accent)]";
+  "inline-flex h-9 items-center gap-1.5 rounded-[10px] border border-[#d8d3cc] bg-white px-3 text-[12px] font-bold text-[#454545] shadow-[0_1px_4px_rgba(50,40,30,0.06)] transition-colors hover:border-[var(--accent)] hover:bg-[var(--accent-light)] hover:text-[var(--accent)] md:h-7 md:rounded-full md:text-[11px]";
 
 function FilterRow({ title, children }: { title: string; children: React.ReactNode }) {
   return (
@@ -402,6 +402,11 @@ export default function FilterSection(props: FilterSectionProps) {
             aria-expanded={mobileFilterOpen}
           >
             상세 필터
+            {activeChips.length > 0 ? (
+              <span className="inline-flex h-4 min-w-4 items-center justify-center rounded-full bg-[var(--accent)] px-1 text-[10px] leading-none text-white">
+                {activeChips.length}
+              </span>
+            ) : null}
             <span
               className={`inline-block transition-transform duration-200 ${mobileFilterOpen ? "rotate-180" : ""}`}
             >

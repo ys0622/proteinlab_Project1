@@ -26,6 +26,8 @@ export interface ProductCardProps {
   coupangOnly?: boolean;
   price?: number;
   cardVariant?: "category" | "related" | "ranking" | "recommend" | "compact";
+  analyticsSource?: string;
+  analyticsPosition?: number;
   awards?: ProductAward[];
 }
 

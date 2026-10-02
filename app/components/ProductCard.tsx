@@ -137,6 +137,8 @@ export default function ProductCard({
   maxVisibleBadges,
   fixedTitleLines,
   hideSupplementalBadges,
+  analyticsSource,
+  analyticsPosition,
   awards,
 }: ProductCardProps) {
   const router = useRouter();
@@ -176,6 +178,7 @@ export default function ProductCard({
   const tasteAward = awards?.[0];
   const isTvAdProduct = Boolean(slug && TV_AD_SLUGS.has(slug));
   const tasteAwardStars = getTasteAwardStars(tasteAward?.rating);
+  const isCompactSquareImage = productType === "yogurt" || productType === "shake";
 
   useEffect(() => {
     if (!slug) return;
@@ -203,7 +206,7 @@ export default function ProductCard({
       brand,
       category: productType,
       destinationUrl: detailHref,
-      source: "card",
+      source: analyticsSource ?? cardVariant ?? "card",
       ctaText: "제품 상세 보기",
     });
     router.push(detailHref);
@@ -257,6 +260,8 @@ export default function ProductCard({
             usesUnifiedSurface
               ? productType === "yogurt"
                 ? "h-[136px] px-3 pb-4 pt-5 md:h-[170px] md:px-4 md:pb-6 md:pt-8"
+                : productType === "shake"
+                  ? "h-[136px] px-4 py-3 md:h-[170px] md:px-6 md:py-5"
                 : "h-[136px] px-3 pb-1 pt-2 md:h-[170px] md:px-4 md:pb-2 md:pt-3"
               : "rounded-xl border border-[#eee] p-1 group-hover:border-[#e2e2e2] md:h-[200px] md:p-[10px]"
           }`}
@@ -265,15 +270,17 @@ export default function ProductCard({
           {imageUrl ? (
             <div
               className={`product-card__image relative h-full w-full ${
-                productType === "yogurt" ? "product-card__image--yogurt " : ""
+                isCompactSquareImage ? "product-card__image--square " : ""
               }${
                 usesUnifiedSurface
                   ? productType === "yogurt"
                     ? "max-w-[96px] md:max-w-[132px]"
+                    : productType === "shake"
+                      ? "max-w-[112px] md:max-w-[148px]"
                     : "max-w-[148px] md:max-w-[202px]"
                   : "max-w-[180px] md:max-w-[200px]"
               }`}
-              style={{ minHeight: usesUnifiedSurface ? (productType === "yogurt" ? "90px" : "118px") : "140px" }}
+              style={{ minHeight: usesUnifiedSurface ? (isCompactSquareImage ? "96px" : "118px") : "140px" }}
             >
               <Image
                 src={imageUrl}
@@ -498,6 +505,9 @@ export default function ProductCard({
                     productId,
                     destinationUrl: coupangHref ?? undefined,
                     placement: "product_card_purchase_row",
+                    category: productType,
+                    source: analyticsSource ?? cardVariant ?? "product_card",
+                    position: analyticsPosition,
                   })
                 }
                 onNaverClick={() =>
@@ -508,6 +518,9 @@ export default function ProductCard({
                     productId,
                     destinationUrl: naverHref ?? undefined,
                     placement: "product_card_purchase_row",
+                    category: productType,
+                    source: analyticsSource ?? cardVariant ?? "product_card",
+                    position: analyticsPosition,
                   })
                 }
                 onOfficialClick={() =>
@@ -518,6 +531,9 @@ export default function ProductCard({
                     productId,
                     destinationUrl: officialMallHref ?? undefined,
                     placement: "product_card_purchase_row",
+                    category: productType,
+                    source: analyticsSource ?? cardVariant ?? "product_card",
+                    position: analyticsPosition,
                   })
                 }
               />

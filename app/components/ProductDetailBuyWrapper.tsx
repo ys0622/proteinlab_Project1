@@ -15,6 +15,7 @@ type Props = {
   proteinG?: number;
   imageUrl?: string;
   description?: string;
+  productType?: "drink" | "bar" | "yogurt" | "shake";
 };
 
 export default function ProductDetailBuyWrapper(props: Props) {
@@ -45,6 +46,7 @@ export default function ProductDetailBuyWrapper(props: Props) {
         brand={props.brand}
         productName={props.productName}
         slug={props.slug}
+        productType={props.productType}
         anchorRef={anchorRef}
       />
     </>

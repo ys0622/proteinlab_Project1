@@ -636,7 +636,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
       <Header />
 
       <section className="w-full bg-white">
-        <div className="mx-auto max-w-[1200px] px-4 py-5 md:px-6 md:py-7">
+        <div className="mx-auto max-w-[1200px] px-4 py-3 md:px-6 md:py-7">
           <div className="flex items-center justify-between">
             <BackButton />
             <div className="flex items-center gap-2">
@@ -654,13 +654,13 @@ export default async function ProductDetailPage({ params }: PageProps) {
             - 바(가로형 이미지): 상단 가로 이미지 박스 → 하단 정보 카드 (모바일·데스크톱 동일)
             - 음료·요거트·쉐이크(세로형 이미지): 모바일=세로 스택 / 데스크톱=좌 20% 세로 이미지 | 우 80% 정보
           */}
-          <div className={`mt-4 flex gap-4 ${isBar ? "flex-col" : "flex-col lg:flex-row lg:items-stretch"}`}>
+          <div className={`mt-3 flex gap-3 md:mt-4 md:gap-4 ${isBar ? "flex-col" : "flex-col lg:flex-row lg:items-stretch"}`}>
 
             {/* ── 이미지 영역 ── */}
             {isBar ? (
               /* 바: 가로형 — 전체 너비, 낮은 높이로 가로 이미지에 최적화 */
               <div
-                className="relative h-[160px] w-full overflow-hidden rounded-[16px] border"
+                className="relative h-[128px] w-full overflow-hidden rounded-[16px] border md:h-[160px]"
                 style={{ backgroundColor: "#FFFFFF", borderColor: "#E8E4DC" }}
               >
                 {productImageUrl ? (
@@ -669,7 +669,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
                     alt={formatProductLabel(product.brand, product.name)}
                     fill
                     sizes="(max-width: 1024px) calc(100vw - 40px), 1120px"
-                    className="object-contain p-4"
+                    className="object-contain p-3 md:p-4"
                     unoptimized
                     priority
                   />
@@ -683,14 +683,14 @@ export default async function ProductDetailPage({ params }: PageProps) {
                 className="flex items-center justify-center overflow-hidden rounded-[16px] border lg:w-[32%] lg:shrink-0"
                 style={{ backgroundColor: "#FFFFFF", borderColor: "#E8E4DC" }}
               >
-                <div className="relative h-[200px] w-full lg:h-[380px]">
+                <div className="relative h-[156px] w-full sm:h-[180px] lg:h-[380px]">
                   {productImageUrl ? (
                     <Image
                       src={productImageUrl}
                       alt={formatProductLabel(product.brand, product.name)}
                       fill
                       sizes="(max-width: 1024px) calc(100vw - 40px), 320px"
-                      className="object-contain p-5 lg:p-6"
+                      className="object-contain p-3 lg:p-6"
                       unoptimized
                       priority
                     />
@@ -705,7 +705,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
 
             {/* ── 정보 카드 ── */}
             <div
-              className="flex flex-1 flex-col gap-3 rounded-[16px] border bg-white p-4 md:p-5"
+              className="flex flex-1 flex-col gap-2.5 rounded-[16px] border bg-white p-3 md:gap-3 md:p-5"
               style={{ borderColor: "#E8E4DC" }}
             >
               {/* 브레드크럼 + 제품명 */}
@@ -782,7 +782,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
               {/* 핵심 영양성분 3종 */}
               <div className="grid grid-cols-3 gap-2">
                 <div
-                  className="flex flex-col items-center rounded-[14px] border py-3 text-center"
+                  className="flex flex-col items-center rounded-[14px] border py-2.5 text-center md:py-3"
                   style={{ background: "#F0F6F2", borderColor: "#D6E5DA" }}
                 >
                   <p className="text-[10px] font-bold uppercase tracking-wider" style={{ color: "#1F5A3D" }}>단백질</p>
@@ -793,7 +793,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
                   <p className="mt-0.5 text-[10px]" style={{ color: "#8A938B" }}>{servingBasisLabel}</p>
                 </div>
                 <div
-                  className="flex flex-col items-center rounded-[14px] border py-3 text-center"
+                  className="flex flex-col items-center rounded-[14px] border py-2.5 text-center md:py-3"
                   style={{ background: "#F0F6F2", borderColor: "#D6E5DA" }}
                 >
                   <p className="text-[10px] font-bold uppercase tracking-wider" style={{ color: "#1F5A3D" }}>칼로리</p>
@@ -810,7 +810,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
                   )}
                 </div>
                 <div
-                  className="flex flex-col items-center rounded-[14px] border py-3 text-center"
+                  className="flex flex-col items-center rounded-[14px] border py-2.5 text-center md:py-3"
                   style={{ background: "#F0F6F2", borderColor: "#D6E5DA" }}
                 >
                   <p className="text-[10px] font-bold uppercase tracking-wider" style={{ color: "#1F5A3D" }}>당류</p>
@@ -854,6 +854,22 @@ export default async function ProductDetailPage({ params }: PageProps) {
                 ))}
               </div>
 
+              {/* 구매 버튼 */}
+              <div className="mt-auto">
+                <ProductDetailBuyWrapper
+                  brand={product.brand}
+                  coupangHref={resolvedCoupangHref}
+                  naverHref={naverHref}
+                  officialMallHref={officialMallHref}
+                  productName={product.name}
+                  slug={product.slug}
+                  proteinG={product.proteinPerServing}
+                  imageUrl={productImageUrl ?? undefined}
+                  description={buildProductDescription(product)}
+                  productType={category}
+                />
+              </div>
+
               {/* 추천 대상 */}
               {recommendedFor.length > 0 && (
                 <div
@@ -873,21 +889,6 @@ export default async function ProductDetailPage({ params }: PageProps) {
                   </ul>
                 </div>
               )}
-
-              {/* 구매 버튼 */}
-              <div className="mt-auto">
-                <ProductDetailBuyWrapper
-                  brand={product.brand}
-                  coupangHref={resolvedCoupangHref}
-                  naverHref={naverHref}
-                  officialMallHref={officialMallHref}
-                  productName={product.name}
-                  slug={product.slug}
-                  proteinG={product.proteinPerServing}
-                  imageUrl={productImageUrl ?? undefined}
-                  description={buildProductDescription(product)}
-                />
-              </div>
             </div>
           </div>
         </div>

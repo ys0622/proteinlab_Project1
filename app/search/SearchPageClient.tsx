@@ -237,13 +237,15 @@ export default function SearchPageClient({ initialQuery }: { initialQuery: strin
                 </h2>
               </div>
               <div className="grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-4 md:gap-4">
-                {items.map((product) => (
+                {items.map((product, index) => (
                   <ProductCard
                     key={product.slug}
                     {...product}
                     calories={product.calories ?? undefined}
                     sugar={product.sugar ?? undefined}
                     productType={product.productType ?? PRODUCT_CARD_TYPE[category]}
+                    analyticsSource="search_results"
+                    analyticsPosition={index + 1}
                   />
                 ))}
               </div>

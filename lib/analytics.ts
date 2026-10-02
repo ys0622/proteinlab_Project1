@@ -295,6 +295,8 @@ export function affiliateClick(
     affiliateLinkId?: string;
     subId?: string;
     linkPosition: LinkPosition;
+    contentId?: string;
+    itemPosition?: number;
   },
 ) {
   if (!product.destinationUrl) return false;
@@ -305,6 +307,7 @@ export function affiliateClick(
   return sendEvent("affiliate_click", {
     ...productFields(product), retailer: product.retailer, destination_url: product.destinationUrl,
     affiliate_link_id: affiliateLinkId, subid: subId, link_position: product.linkPosition,
+    content_id: product.contentId, item_position: product.itemPosition,
   });
 }
 
@@ -327,7 +330,7 @@ export function affiliateImpression(
   });
 }
 
-export function retailerClick(product: ProductParams & { retailer: Retailer; destinationUrl: string; linkPosition: LinkPosition }) {
+export function retailerClick(product: ProductParams & { retailer: Retailer; destinationUrl: string; linkPosition: LinkPosition; contentId?: string; itemPosition?: number }) {
   if (product.retailer === "coupang" && isCoupangDestination(product.destinationUrl)) {
     return affiliateClick({
       ...product,
@@ -338,6 +341,7 @@ export function retailerClick(product: ProductParams & { retailer: Retailer; des
 
   return sendEvent("retailer_click", {
     ...productFields(product), retailer: product.retailer, destination_url: product.destinationUrl, link_position: product.linkPosition,
+    content_id: product.contentId, item_position: product.itemPosition,
   });
 }
 
@@ -349,14 +353,20 @@ export function purchaseClick(params: {
   destinationUrl?: string;
   placement?: string;
   ctaText?: string;
+  category?: string;
+  source?: string;
+  position?: number;
 }) {
   return retailerClick({
     productId: params.productId,
     productName: params.productName,
     productBrand: params.brand,
+    productCategory: params.category,
     retailer: params.store,
     destinationUrl: params.destinationUrl ?? "",
     linkPosition: normalizeLinkPosition(params.placement),
+    contentId: params.source,
+    itemPosition: params.position,
   });
 }
 

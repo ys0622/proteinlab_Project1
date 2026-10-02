@@ -10,6 +10,7 @@ type ProductDetailPurchaseActionsProps = {
   officialMallHref: string | null;
   productName: string;
   slug: string;
+  productType?: "drink" | "bar" | "yogurt" | "shake";
 };
 
 export default function ProductDetailPurchaseActions({
@@ -19,6 +20,7 @@ export default function ProductDetailPurchaseActions({
   officialMallHref,
   productName,
   slug,
+  productType,
 }: ProductDetailPurchaseActionsProps) {
   const placement = "product_detail_hero_purchase";
   const hasPurchaseLink = Boolean(coupangHref);
@@ -37,6 +39,8 @@ export default function ProductDetailPurchaseActions({
       destinationUrl: destinationUrl ?? undefined,
       placement,
       ctaText,
+      category: productType,
+      source: "product_detail_hero",
     });
 
   return (

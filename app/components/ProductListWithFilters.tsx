@@ -491,10 +491,10 @@ function ProductListWithFiltersInner(props: ProductListWithFiltersInnerProps) {
 
   const filterBox = (
     <div
-      className="rounded-xl border border-[var(--border)] bg-[var(--filter-box-bg)]"
+      className="bg-transparent md:rounded-xl md:border md:border-[var(--border)] md:bg-[var(--filter-box-bg)]"
       style={{
-        borderRadius: "12px",
-        padding: isDesktop ? "12px 14px" : "8px 10px",
+        borderRadius: isDesktop ? "12px" : "0",
+        padding: isDesktop ? "12px 14px" : "0",
       }}
     >
       <div>
@@ -549,11 +549,11 @@ function ProductListWithFiltersInner(props: ProductListWithFiltersInnerProps) {
     <>
       {tabsPlacement === "top" ? categoryTabs : null}
 
-      <div style={{ marginTop: isDesktop ? "12px" : "6px" }}>
+      <div style={{ marginTop: isDesktop ? "12px" : "4px" }}>
         {filterBox}
 
         <div>
-          <QuickCuration productType={productType} variant="inline" className="mt-1 mb-1 md:mt-2 md:mb-2" />
+          <QuickCuration productType={productType} variant="inline" className="mt-1.5 mb-1 md:mt-2 md:mb-2" />
 
           {mobileSearchOpen ? (
         <div
@@ -629,6 +629,8 @@ function ProductListWithFiltersInner(props: ProductListWithFiltersInnerProps) {
                 {...product}
                 priority={idx < 4}
                 productType={productType}
+                analyticsSource={`category_${productType}`}
+                analyticsPosition={idx + 1}
               />
             ))}
           </section>
