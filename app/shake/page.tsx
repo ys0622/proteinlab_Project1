@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import AffiliateDisclosure from "../components/AffiliateDisclosure";
 import CommercialAdSection from "../components/CommercialAdSection";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
@@ -117,6 +118,15 @@ export default async function ShakePage() {
       <HeroSection totalCount={totalCount} categoryCount={products.length} />
 
       <main className="mx-auto max-w-[1200px] px-4 pb-2 pt-0 md:px-6 md:pb-3">
+        <AffiliateDisclosure />
+        <ProductListWithFilters
+          productType="shake"
+          products={products}
+          categoryCounts={categoryCounts}
+          stickyTabs={false}
+          tabsPlacement="before_grid"
+        />
+
         <section className="mb-6 rounded-2xl border border-[#e4e9e4] bg-white p-5 md:p-6">
           <div className="flex flex-col gap-2 md:flex-row md:items-end md:justify-between">
             <div>
@@ -206,13 +216,6 @@ export default async function ShakePage() {
             </Link>
           </div>
         </section>
-        <ProductListWithFilters
-          productType="shake"
-          products={products}
-          categoryCounts={categoryCounts}
-          stickyTabs={false}
-          tabsPlacement="before_grid"
-        />
         <CommercialAdSection pageType="category" className="mt-6" />
       </main>
 

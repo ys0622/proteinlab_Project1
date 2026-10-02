@@ -172,7 +172,11 @@ export default function ProductCard({
   const limitedGradeTags =
     typeof maxVisibleBadges === "number"
       ? visibleGradeTags.slice(0, maxVisibleBadges)
-      : visibleGradeTags;
+      : usesUnifiedSurface
+        ? visibleGradeTags.slice(0, 3)
+        : visibleGradeTags;
+  const canShowSupplementalBadge = limitedGradeTags.length < 3;
+  const hasVisibleVariant = Boolean(variant && variant !== "일반" && productType !== "yogurt");
   const feedbackMeta = reviewSummary && reviewSummary.reviewCount > 0 ? reviewSummary : null;
   const cardSurfaceBg = "color-mix(in srgb, var(--hero-bg) 64%, white)";
   const tasteAward = awards?.[0];
@@ -381,7 +385,7 @@ export default function ProductCard({
 
         <h3
           className={`product-card__title mt-1 font-semibold leading-snug ${
-            fixedTitleLines === 2 ? "product-card__title--fixed" : ""
+            fixedTitleLines === 2 || usesUnifiedSurface ? "product-card__title--fixed" : ""
           }`}
           style={{ fontWeight: 600, color: "#1a1a1a" }}
         >
@@ -436,7 +440,7 @@ export default function ProductCard({
               />
             );
           })}
-          {variant && variant !== "일반" && productType !== "yogurt" && !hideSupplementalBadges ? (
+          {variant && variant !== "일반" && productType !== "yogurt" && !hideSupplementalBadges && canShowSupplementalBadge ? (
             <ProductBadge
               label={variant}
               tone="neutral"
@@ -445,7 +449,7 @@ export default function ProductCard({
               tooltipAriaLabel={getMetricBadgeAriaLabel(variant)}
             />
           ) : null}
-          {yogurtType && productType !== "yogurt" && !hideSupplementalBadges ? (
+          {yogurtType && productType !== "yogurt" && !hideSupplementalBadges && canShowSupplementalBadge && !hasVisibleVariant ? (
             <ProductBadge label={yogurtType} tone="neutral" className="product-card__badge" />
           ) : null}
         </MetricBadgeGroup>

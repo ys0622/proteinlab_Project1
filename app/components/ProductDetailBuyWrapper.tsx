@@ -31,13 +31,14 @@ export default function ProductDetailBuyWrapper(props: Props) {
       </div>
 
       {/* 카카오톡 공유 */}
-      <div className="mt-3">
+      <div className="mt-2 flex justify-end">
         <KakaoShareButton
           url={shareUrl}
           title={shareTitle}
           description={props.description ?? `ProteinLab에서 ${props.brand} ${props.productName} 성분을 확인했어요.`}
           imageUrl={props.imageUrl}
-          className="w-full py-3 text-[14px]"
+          className="min-h-9 px-3 py-2 text-[12px]"
+          variant="secondary"
         />
       </div>
 

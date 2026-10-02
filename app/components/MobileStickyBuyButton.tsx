@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { purchaseClick } from "@/lib/analytics";
+import { useCompare } from "../context/CompareContext";
 
 type Props = {
   coupangHref: string | null;
@@ -22,6 +23,7 @@ export default function MobileStickyBuyButton({
   anchorRef,
 }: Props) {
   const [visible, setVisible] = useState(false);
+  const { selectedSlugs } = useCompare();
 
   useEffect(() => {
     const el = anchorRef.current;
@@ -38,7 +40,7 @@ export default function MobileStickyBuyButton({
     return () => observer.disconnect();
   }, [anchorRef]);
 
-  if (!coupangHref) return null;
+  if (!coupangHref || selectedSlugs.length > 0) return null;
 
   return (
     <div
