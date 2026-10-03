@@ -21,6 +21,7 @@ declare global {
 
 type AnalyticsParams = Record<string, unknown>;
 type Retailer = "coupang" | "naver" | "official";
+export type AffiliateLinkType = "product_specific" | "generic_fallback";
 export type PageType = "home" | "category" | "compare" | "product" | "guide" | "insight" | "feed" | "recommend" | "ranking";
 export type LinkPosition =
   | "hero"
@@ -203,6 +204,22 @@ function getCoupangAffiliateLinkId(destinationUrl?: string, productId?: string) 
   return productId ? `coupang:${productId}` : "coupang:unknown";
 }
 
+export function getAffiliateLinkType(destinationUrl?: string): AffiliateLinkType {
+  const url = parseAnalyticsUrl(destinationUrl);
+  if (!url) return "generic_fallback";
+
+  const hostname = url.hostname.toLowerCase();
+  const pathname = url.pathname.replace(/\/$/, "");
+  if (
+    (hostname === "link.coupang.com" || hostname.endsWith(".link.coupang.com")) &&
+    pathname === "/a/gaIdNRGs2u"
+  ) {
+    return "generic_fallback";
+  }
+
+  return "product_specific";
+}
+
 function normalizeLinkPosition(placement?: string): LinkPosition {
   if (!placement) return "hero";
   if (placement === "mobile_sticky_bar") return "sticky_mobile";
@@ -309,7 +326,9 @@ export function affiliateClick(
   return sendEvent("affiliate_click", {
     ...productFields(product), retailer: product.retailer, destination_url: product.destinationUrl,
     affiliate_link_id: affiliateLinkId, subid: subId, link_position: product.linkPosition,
-    content_id: product.contentId, item_position: product.itemPosition,
+    affiliate_link_type:
+      product.retailer === "coupang" ? getAffiliateLinkType(product.destinationUrl) : "product_specific",
+    device_type: getDeviceType(), content_id: product.contentId, item_position: product.itemPosition,
   });
 }
 
@@ -330,6 +349,10 @@ export function affiliateImpression(
       product.retailer === "coupang"
         ? getCoupangAffiliateLinkId(product.destinationUrl, product.productId)
         : undefined,
+    subid: product.retailer === "coupang" ? getCoupangSubId(product.destinationUrl) : undefined,
+    affiliate_link_type:
+      product.retailer === "coupang" ? getAffiliateLinkType(product.destinationUrl) : "product_specific",
+    device_type: getDeviceType(),
     link_position: product.linkPosition,
     content_id: product.contentId,
     item_position: product.itemPosition,

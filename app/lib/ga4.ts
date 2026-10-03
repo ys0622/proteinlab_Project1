@@ -299,11 +299,58 @@ function buildTopCtaPages(report: Ga4ReportResponse | undefined) {
   });
 }
 
+function buildAffiliateTotals(report: Ga4ReportResponse | undefined) {
+  let impressions = 0;
+  let clicks = 0;
+
+  for (const row of report?.rows ?? []) {
+    const eventName = row.dimensionValues?.[0]?.value ?? "";
+    const eventCount = Number(row.metricValues?.[0]?.value ?? 0);
+    if (eventName === "affiliate_impression") impressions += eventCount;
+    if (eventName === "affiliate_click") clicks += eventCount;
+  }
+
+  return { impressions, clicks, ctr: impressions > 0 ? (clicks / impressions) * 100 : 0 };
+}
+
+function buildAffiliatePageCtr(report: Ga4ReportResponse | undefined) {
+  const pages = new Map<string, { impressions: number; clicks: number }>();
+
+  for (const row of report?.rows ?? []) {
+    const path = sanitizePagePath(row.dimensionValues?.[0]?.value);
+    const eventName = row.dimensionValues?.[1]?.value ?? "";
+    const eventCount = Number(row.metricValues?.[0]?.value ?? 0);
+    const current = pages.get(path) ?? { impressions: 0, clicks: 0 };
+    if (eventName === "affiliate_impression") current.impressions += eventCount;
+    if (eventName === "affiliate_click") current.clicks += eventCount;
+    pages.set(path, current);
+  }
+
+  return [...pages.entries()]
+    .map(([path, counts]) => ({
+      path,
+      ...counts,
+      ctr: counts.impressions > 0 ? (counts.clicks / counts.impressions) * 100 : 0,
+    }))
+    .filter((row) => row.impressions > 0 || row.clicks > 0)
+    .sort((a, b) => b.clicks - a.clicks || b.impressions - a.impressions)
+    .slice(0, 20);
+}
+
 function buildEventNameFilterExpression() {
   return {
     filter: {
       fieldName: "eventName",
       inListFilter: { values: [...CTR_EVENT_NAMES] },
+    },
+  };
+}
+
+function buildAffiliateEventNameFilterExpression() {
+  return {
+    filter: {
+      fieldName: "eventName",
+      inListFilter: { values: ["affiliate_impression", "affiliate_click"] },
     },
   };
 }
@@ -335,11 +382,15 @@ export type AdminStatsData =
       last7DaysVisitors: number;
       last30DaysPageViews: number;
       last30DaysCtaClicks: number;
+      last30DaysAffiliateImpressions: number;
+      last30DaysAffiliateClicks: number;
+      last30DaysAffiliateCtr: number;
       dailyTrend: Array<{ date: string; label: string; visitors: number; pageViews: number }>;
       topPages: Array<{ rank: number; path: string; pageViews: number }>;
       topSources: Array<{ rank: number; sourceMedium: string; visitors: number }>;
       topCtaEvents: Array<{ rank: number; eventName: string; label: string; eventCount: number }>;
       topCtaPages: Array<{ rank: number; path: string; eventName: string; label: string; eventCount: number }>;
+      affiliatePageCtr: Array<{ path: string; impressions: number; clicks: number; ctr: number }>;
     };
 
 async function fetchGa4DashboardData(config: Ga4Config): Promise<AdminStatsData> {
@@ -364,6 +415,12 @@ async function fetchGa4DashboardData(config: Ga4Config): Promise<AdminStatsData>
       dateRanges: [{ startDate: last30Start, endDate: today }],
       metrics: [{ name: "eventCount" }],
       dimensionFilter: buildEventNameFilterExpression(),
+    },
+    {
+      dateRanges: [{ startDate: last30Start, endDate: today }],
+      dimensions: [{ name: "eventName" }],
+      metrics: [{ name: "eventCount" }],
+      dimensionFilter: buildAffiliateEventNameFilterExpression(),
     },
   ]);
 
@@ -398,7 +455,17 @@ async function fetchGa4DashboardData(config: Ga4Config): Promise<AdminStatsData>
       orderBys: [{ metric: { metricName: "eventCount" }, desc: true }],
       limit: 12,
     },
+    {
+      dateRanges: [{ startDate: last30Start, endDate: today }],
+      dimensions: [{ name: "pagePath" }, { name: "eventName" }],
+      metrics: [{ name: "eventCount" }],
+      dimensionFilter: buildAffiliateEventNameFilterExpression(),
+      orderBys: [{ metric: { metricName: "eventCount" }, desc: true }],
+      limit: 100,
+    },
   ]);
+
+  const affiliateTotals = buildAffiliateTotals(summaryBatch.reports?.[6]);
 
   return {
     state: "ready",
@@ -413,10 +480,14 @@ async function fetchGa4DashboardData(config: Ga4Config): Promise<AdminStatsData>
     last30DaysPageViews: readMetric(summaryBatch.reports?.[3], 0, 0),
     dailyTrend: buildDailyRows(summaryBatch.reports?.[4]),
     last30DaysCtaClicks: readMetric(summaryBatch.reports?.[5], 0, 0),
+    last30DaysAffiliateImpressions: affiliateTotals.impressions,
+    last30DaysAffiliateClicks: affiliateTotals.clicks,
+    last30DaysAffiliateCtr: affiliateTotals.ctr,
     topPages: buildTopPages(detailBatch.reports?.[0]),
     topSources: buildTopSources(detailBatch.reports?.[1]),
     topCtaEvents: buildTopCtaEvents(detailBatch.reports?.[2]),
     topCtaPages: buildTopCtaPages(detailBatch.reports?.[3]),
+    affiliatePageCtr: buildAffiliatePageCtr(detailBatch.reports?.[4]),
   };
 }
 

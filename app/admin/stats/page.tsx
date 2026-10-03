@@ -10,6 +10,10 @@ function formatNumber(value: number) {
   return new Intl.NumberFormat("ko-KR").format(value);
 }
 
+function formatPercent(value: number) {
+  return new Intl.NumberFormat("ko-KR", { maximumFractionDigits: 1 }).format(value) + "%";
+}
+
 function SparkBars({ values, color }: { values: number[]; color: string }) {
   const max = Math.max(...values, 1);
 
@@ -296,6 +300,9 @@ export default async function StatsPage({
     { label: "오늘 페이지뷰", value: formatNumber(stats.todayPageViews) },
     { label: "최근 7일 방문자", value: formatNumber(stats.last7DaysVisitors) },
     { label: "최근 30일 CTA 클릭", value: formatNumber(stats.last30DaysCtaClicks) },
+    { label: "제휴 버튼 노출", value: formatNumber(stats.last30DaysAffiliateImpressions) },
+    { label: "제휴 링크 클릭", value: formatNumber(stats.last30DaysAffiliateClicks) },
+    { label: "제휴 CTR", value: formatPercent(stats.last30DaysAffiliateCtr) },
   ];
 
   const candidates = buildCandidates(stats.topCtaPages, stats.topCtaEvents);
@@ -333,6 +340,48 @@ export default async function StatsPage({
           </div>
         ))}
       </div>
+
+      <section className="mt-6 rounded-2xl border border-[var(--border)] bg-[var(--background-card)] p-5">
+        <div className="flex flex-col gap-1 sm:flex-row sm:items-end sm:justify-between">
+          <div>
+            <h2 className="text-base font-semibold text-[var(--foreground)]">페이지별 제휴 CTR</h2>
+            <p className="mt-1 text-xs text-[var(--foreground-muted)]">
+              최근 30일 · 버튼이 실제 화면에 보인 횟수 대비 쿠팡 링크 클릭
+            </p>
+          </div>
+          <p className="text-xs text-[var(--foreground-muted)]">CTR = 클릭 ÷ 노출</p>
+        </div>
+        {stats.affiliatePageCtr.length > 0 ? (
+          <div className="mt-4 overflow-x-auto">
+            <table className="min-w-full text-sm">
+              <thead>
+                <tr className="border-b border-[var(--border)] text-left text-xs text-[var(--foreground-muted)]">
+                  <th className="pb-3 pr-4">페이지</th>
+                  <th className="pb-3 pr-4 text-right">노출</th>
+                  <th className="pb-3 pr-4 text-right">클릭</th>
+                  <th className="pb-3 text-right">CTR</th>
+                </tr>
+              </thead>
+              <tbody>
+                {stats.affiliatePageCtr.map((row) => (
+                  <tr key={row.path} className="border-t border-[var(--border)]">
+                    <td className="max-w-[34rem] truncate py-3 pr-4 text-[var(--foreground)]" title={row.path}>
+                      {row.path}
+                    </td>
+                    <td className="py-3 pr-4 text-right text-[var(--foreground)]">{formatNumber(row.impressions)}</td>
+                    <td className="py-3 pr-4 text-right font-medium text-[var(--foreground)]">{formatNumber(row.clicks)}</td>
+                    <td className="py-3 text-right font-semibold text-[var(--accent)]">{formatPercent(row.ctr)}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        ) : (
+          <p className="mt-4 text-sm text-[var(--foreground-muted)]">
+            제휴 노출 데이터가 쌓이면 페이지별 CTR이 표시됩니다.
+          </p>
+        )}
+      </section>
 
       {candidates.length > 0 ? (
         <div className="mt-6 grid gap-4 xl:grid-cols-3">
