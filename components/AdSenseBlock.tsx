@@ -83,7 +83,7 @@ export default function AdSenseBlock({
       />
       <div
         ref={wrapperRef}
-        className={`ad-sense-block my-6 min-h-[96px] w-full overflow-hidden rounded-lg border border-[#e8e2d8] bg-[#fbfaf7] px-2 py-3 md:my-8 md:min-h-[140px] md:px-3 md:py-4 ${className}`}
+        className={`ad-sense-block relative my-6 box-border min-h-[96px] w-full min-w-0 max-w-full overflow-hidden rounded-lg border border-[#e8e2d8] bg-[#fbfaf7] px-2 py-3 md:my-8 md:min-h-[140px] md:px-3 md:py-4 ${className}`}
         onClick={() => {
           adClick({
             pageType: pageType ?? getPageType(pathname),
@@ -98,11 +98,11 @@ export default function AdSenseBlock({
         </p>
         <ins
           className="adsbygoogle block"
-          style={{ display: "block" }}
+          style={{ display: "block", width: "100%", maxWidth: "100%", minWidth: 0 }}
           data-ad-client={ADSENSE_CLIENT_ID}
           data-ad-slot={adSlot}
           data-ad-format={format}
-          data-full-width-responsive="true"
+          data-full-width-responsive="false"
         />
       </div>
     </>

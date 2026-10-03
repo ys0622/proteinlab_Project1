@@ -418,26 +418,30 @@ export default function ComparePage() {
           </div>
 
           <div className="mt-5">
-            <div className="flex flex-wrap items-center gap-3">
+            <div
+              className={`grid items-stretch gap-2 md:flex md:flex-wrap md:items-center md:gap-3 ${
+                products.length >= 3 ? "grid-cols-3" : "grid-cols-2"
+              }`}
+            >
               {products.map((p) => (
                 <div
                   key={p.slug}
-                  className="flex items-center gap-3 rounded-xl border border-[#e8e6e3] bg-white p-3 pr-2"
+                  className="relative flex min-w-0 flex-col items-center gap-1 rounded-xl border border-[#e8e6e3] bg-white p-2 text-center md:flex-row md:gap-3 md:p-3 md:pr-2 md:text-left"
                   style={{ borderRadius: "12px" }}
                 >
-                  <div className="relative h-12 w-12 flex-shrink-0 overflow-hidden rounded-lg bg-white">
+                  <div className="relative h-10 w-10 flex-shrink-0 overflow-hidden rounded-lg bg-white md:h-12 md:w-12">
                     {getProductImageUrl(p.slug) ? (
                       <Image src={getProductImageUrl(p.slug)!} alt="" fill className="object-contain" unoptimized />
                     ) : null}
                   </div>
                   <div className="min-w-0">
-                    <p className="text-xs" style={{ color: "#7a7a7a" }}>{p.brand}</p>
-                    <p className="break-keep text-sm font-medium leading-snug" style={{ color: "#1a1a1a" }}>{p.name}</p>
+                    <p className="truncate text-[10px] md:text-xs" style={{ color: "#7a7a7a" }}>{p.brand}</p>
+                    <p className="line-clamp-2 break-keep text-[11px] font-semibold leading-snug md:text-sm md:font-medium" style={{ color: "#1a1a1a" }}>{p.name}</p>
                   </div>
                   <button
                     type="button"
                     onClick={() => remove(p.slug)}
-                    className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full hover:bg-[#eee]"
+                    className="absolute right-1 top-1 flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full bg-white/90 hover:bg-[#eee] md:static md:h-8 md:w-8 md:bg-transparent"
                     style={{ color: "#999" }}
                     aria-label="제품 제거"
                   >
@@ -454,7 +458,7 @@ export default function ComparePage() {
                       contentId: "compare_selected_products:add_product",
                     })
                   }
-                  className="flex h-[72px] w-[140px] flex-shrink-0 items-center justify-center rounded-xl border-2 border-dashed border-[#d9d6cf] text-sm font-medium hover:border-[var(--accent)] hover:text-[var(--accent)]"
+                  className="flex min-h-[88px] min-w-0 items-center justify-center rounded-xl border-2 border-dashed border-[#d9d6cf] px-2 text-center text-xs font-medium hover:border-[var(--accent)] hover:text-[var(--accent)] md:h-[72px] md:min-h-0 md:w-[140px] md:flex-shrink-0 md:text-sm"
                   style={{ borderRadius: "12px", color: "#999", background: "rgba(255,255,255,0.5)" }}
                 >
                   + 제품 추가
@@ -465,8 +469,8 @@ export default function ComparePage() {
         </div>
       </section>
 
-      <main className="mx-auto max-w-[1200px] px-4 py-6 md:px-6">
-        <div className="flex flex-col gap-6">
+      <main className="mx-auto max-w-[1200px] px-4 py-4 md:px-6 md:py-6">
+        <div className="flex flex-col gap-4 md:gap-6">
           <CompareSummary
             products={products}
             visibleColumnIds={visibleIds}
@@ -477,7 +481,7 @@ export default function ComparePage() {
             <p className="mb-2 text-sm font-medium" style={{ color: "#3d3d3d" }}>
               표시 항목 선택
             </p>
-            <div className="flex flex-wrap gap-2">
+            <div className="-mx-4 flex gap-2 overflow-x-auto px-4 pb-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:mx-0 md:flex-wrap md:overflow-visible md:px-0">
               {COMPARE_COLUMNS.map((col) => {
                 const on = visibleIds.includes(col.id);
                 const isFocused = focusedColumnId === col.id;
@@ -490,7 +494,7 @@ export default function ComparePage() {
                       chipRefs.current[col.id] = node;
                     }}
                     onClick={() => toggleColumn(col.id)}
-                    className="rounded-full px-3 py-1.5 text-sm font-medium transition-colors"
+                    className="shrink-0 rounded-full px-3 py-1.5 text-sm font-medium transition-colors"
                     style={{
                       background: on ? "#16412D" : isFocused ? "#E8F0EA" : "#f3f3f3",
                       color: on ? "white" : isFocused ? "#16412D" : "#6b6b6b",

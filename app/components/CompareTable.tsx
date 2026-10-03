@@ -147,16 +147,169 @@ export default function CompareTable({ products, visibleColumnIds }: CompareTabl
   const visibleRows = [...significantRows, ...standardRows, ...purchaseRows];
 
   return (
-    <div className="rounded-xl border border-[#e8e8e8] bg-white">
+    <div id="comparison-table" className="scroll-mt-4 rounded-xl border border-[#e8e8e8] bg-white">
       {significantRows.length > 0 ? (
-        <div className="border-b border-[#e8e8e8] px-4 py-3">
-          <p className="text-sm font-semibold text-[var(--foreground)]">차이가 큰 항목 먼저 보기</p>
-          <p className="mt-1 text-xs text-[var(--foreground-muted)]">
+        <div className="border-b border-[#e8e8e8] px-3 py-2 md:px-4 md:py-3">
+          <p className="text-xs font-semibold text-[var(--foreground)] md:text-sm">차이가 큰 항목부터 표시</p>
+          <p className="mt-0.5 text-[10px] text-[var(--foreground-muted)] md:mt-1 md:text-xs">
             비교 제품 간 수치 차이가 30% 이상 나는 항목을 상단에 배치했습니다.
           </p>
         </div>
       ) : null}
-      <div className="overflow-x-auto">
+      <div className="md:hidden">
+        <div
+          className="grid border-b border-[#e8e8e8] bg-[#f7f7f7]"
+          style={{ gridTemplateColumns: `72px repeat(${products.length}, minmax(0, 1fr))` }}
+        >
+          <div className="flex items-center px-2 text-[11px] font-bold text-[var(--foreground-muted)]">
+            항목
+          </div>
+          {products.map((product, productIndex) => {
+            const imageUrl = getProductImageUrl(product.slug);
+
+            return (
+              <Link
+                key={product.slug}
+                href={`/product/${product.slug}`}
+                className="min-w-0 border-l border-[#e8e8e8] px-1 py-1.5 text-center transition-colors hover:bg-white"
+              >
+                <span className="mx-auto flex h-8 w-8 items-center justify-center overflow-hidden rounded-md bg-white">
+                  {imageUrl ? (
+                    <span className="relative block h-full w-full">
+                      <Image src={imageUrl} alt="" fill className="object-contain" unoptimized />
+                    </span>
+                  ) : null}
+                </span>
+                <span className="mt-0.5 block text-[9px] font-semibold text-[#1F5A3D]">
+                  제품 {productIndex + 1}
+                </span>
+                <span className="line-clamp-2 block break-keep text-[10px] font-semibold leading-[1.25] text-[var(--foreground)]">
+                  {product.name}
+                </span>
+              </Link>
+            );
+          })}
+        </div>
+
+        <div>
+          {visibleRows.map(({ col, analysis }) => {
+            const highlight = getHighlight(products, col.id);
+            const isPriceRow = col.id === "priceLinks";
+
+            return (
+              <section
+                key={col.id}
+                className="grid border-b border-[#eceae6] last:border-b-0"
+                style={{ gridTemplateColumns: `72px repeat(${products.length}, minmax(0, 1fr))` }}
+                aria-label={col.label}
+              >
+                <div className="flex min-w-0 flex-col justify-center bg-[#fcfbf8] px-2 py-2">
+                  <h3 className="break-keep text-[11px] font-bold leading-tight text-[var(--foreground)]">{col.label}</h3>
+                  {analysis.isSignificant ? (
+                    <span className="mt-0.5 text-[8px] font-bold text-[#1B7F5B]">
+                      {Math.round(analysis.diffRatio * 100)}% 차이
+                    </span>
+                  ) : null}
+                </div>
+                {products.map((product, productIndex) => {
+                    const isHighlighted = highlight?.indices.includes(productIndex);
+                    const highlightType = isHighlighted ? highlight?.type : null;
+                    const cellStyle =
+                      highlightType === "highest"
+                        ? { background: "#FFF3D6", borderColor: "#F0D89E" }
+                        : highlightType === "lowest"
+                          ? { background: "#E7F3EC", borderColor: "#C5DFCF" }
+                          : undefined;
+                    const highlightLabel =
+                      highlightType === "highest"
+                        ? highlight?.indices.length === 1
+                          ? "최고"
+                          : "공동 최고"
+                        : highlightType === "lowest"
+                          ? highlight?.indices.length === 1
+                            ? "최저"
+                            : "공동 최저"
+                          : null;
+
+                    if (isPriceRow) {
+                      const rawCoupangUrl =
+                        normalizeCoupangUrl(product.coupangUrl) ??
+                        getKnownSourceCoupangUrlBySlug(product.slug);
+                      const coupangHref = getCoupangRedirectHref(
+                        rawCoupangUrl,
+                        product.productType ?? null,
+                        product.slug,
+                      );
+                      const naverHref =
+                        product.naverUrl && product.naverUrl !== "#" && product.naverUrl !== ""
+                          ? product.naverUrl
+                          : getNaverSearchUrl(product.brand, product.name);
+                      const officialHref =
+                        product.officialUrl && product.officialUrl !== "#" && product.officialUrl !== ""
+                          ? product.officialUrl
+                          : getOfficialMallUrl(product.brand);
+
+                      return (
+                        <div key={product.slug} className="flex min-w-0 items-center border-l border-[#eceae6] px-1 py-1.5">
+                          <PurchaseLinkRow
+                            coupangHref={coupangHref}
+                            naverHref={naverHref}
+                            officialMallHref={officialHref}
+                            size="sm"
+                            coupangOnly
+                            coupangImpressionTracking={{
+                              productId: product.slug,
+                              productName: product.name,
+                              productBrand: product.brand,
+                              productCategory: product.productType,
+                              linkPosition: "comparison_result",
+                              contentId: "compare_table_mobile",
+                              itemPosition: productIndex + 1,
+                            }}
+                            onCoupangClick={() =>
+                              purchaseClick({
+                                productId: product.slug,
+                                productName: product.name,
+                                brand: product.brand,
+                                store: "coupang",
+                                destinationUrl: coupangHref ?? undefined,
+                                placement: "comparison_result",
+                              })
+                            }
+                          />
+                        </div>
+                      );
+                    }
+
+                    const display = formatCompareDisplayValue(col.getValue(product), col.id);
+
+                    return (
+                      <div
+                        key={product.slug}
+                        className="flex min-w-0 flex-wrap items-center justify-center border-l border-[#eceae6] px-1 py-2 text-center"
+                        style={cellStyle}
+                      >
+                        <span className="break-words text-[11px] font-semibold leading-tight text-[var(--foreground)]">
+                          {display}
+                        </span>
+                        {highlightLabel ? (
+                          <span
+                            className="ml-0.5 text-[8px] font-bold"
+                            style={{ color: highlightType === "highest" ? "#B45309" : "#1B7F5B" }}
+                          >
+                            {highlightLabel}
+                          </span>
+                        ) : null}
+                      </div>
+                    );
+                  })}
+              </section>
+            );
+          })}
+        </div>
+      </div>
+
+      <div className="hidden overflow-x-auto md:block">
         <table className="w-full min-w-[600px] border-collapse text-left text-sm">
           <thead>
             <tr className="border-b border-[#e8e8e8] bg-[#f7f7f7]">

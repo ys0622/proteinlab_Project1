@@ -1,13 +1,15 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useCompare } from "../context/CompareContext";
 
 export default function CompareBar() {
   const { selectedSlugs, clear } = useCompare();
+  const pathname = usePathname();
   const canCompare = selectedSlugs.length >= 2;
 
-  if (selectedSlugs.length === 0) return null;
+  if (selectedSlugs.length === 0 || pathname === "/compare") return null;
 
   return (
     <div

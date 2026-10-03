@@ -37,7 +37,7 @@ export default function CommercialAdSection({
 
   return (
     <section
-      className={`rounded-[24px] border border-[#e6dfd4] bg-[#fffdf8] px-4 py-4 shadow-[0_12px_28px_rgba(37,32,24,0.05)] md:px-5 md:py-5 ${className}`}
+      className={`box-border min-w-0 max-w-full overflow-hidden rounded-[24px] border border-[#e6dfd4] bg-[#fffdf8] px-4 py-4 shadow-[0_12px_28px_rgba(37,32,24,0.05)] md:px-5 md:py-5 ${className}`}
     >
       <div className="mb-3">
         <h2 className="text-base font-semibold text-[var(--foreground)] md:text-lg">{title}</h2>
