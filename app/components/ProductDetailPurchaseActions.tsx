@@ -75,6 +75,14 @@ export default function ProductDetailPurchaseActions({
         size="md"
         coupangOnly
         coupangLabel={coupangCta}
+        coupangImpressionTracking={{
+          productId: slug,
+          productName,
+          productBrand: brand,
+          productCategory: productType,
+          linkPosition: "hero",
+          contentId: "product_detail_hero",
+        }}
         onCoupangClick={() => trackPurchase("coupang", coupangHref, coupangCta)}
       />
     </div>

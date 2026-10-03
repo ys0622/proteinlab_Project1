@@ -32,6 +32,14 @@ export default function GuidePurchaseLinkRow(props: GuidePurchaseLinkRowProps) {
       officialMallHref={props.officialMallHref}
       coupangOnly
       size="sm"
+      coupangImpressionTracking={{
+        productId: props.productId,
+        productName: props.productName,
+        productBrand: props.brand,
+        productCategory: props.category,
+        linkPosition: "related_product",
+        contentId: "guide_purchase_row",
+      }}
       onCoupangClick={() => track("coupang", props.coupangHref)}
       onNaverClick={() => track("naver", props.naverHref)}
       onOfficialClick={() => track("official", props.officialMallHref)}

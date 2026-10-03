@@ -124,7 +124,7 @@ const searchTopics: SearchTopic[] = [
     primaryCta: { href: "/guides/product-selection-comparison/meal-replacement-protein-shake-guide", title: "식사대용 쉐이크 가이드", description: "선택 기준과 함께 추천 흐름을 확인합니다." },
     relatedLinks: [
       { href: "/shake?curation=shake-meal-replacement", title: "식사대용 쉐이크 목록", description: "카테고리 필터 결과를 바로 봅니다." },
-      { href: "/topics/low-sugar-protein-shake", title: "저당 단백질 쉐이크", description: "당류 기준으로 다시 좁혀 볼 수 있습니다." },
+      { href: "/guides/product-selection-comparison/low-sugar-protein-shake-guide", title: "저당 단백질 쉐이크", description: "당류 기준으로 다시 좁혀 볼 수 있습니다." },
       { href: "/recommend", title: "맞춤 추천", description: "실사용 조건에 맞춰 다시 후보를 추립니다." },
     ],
   },
@@ -305,7 +305,7 @@ const searchTopics: SearchTopic[] = [
     bullets: ["저당·저칼로리 쉐이크 중심 추천", "식사대용 vs 운동 후 보충 구분", "맛 선택 폭과 포만감 기준 제시"],
     primaryCta: { href: "/shake", title: "단백질 쉐이크 전체 보기", description: "쉐이크 카테고리 전체 제품을 필터링합니다." },
     relatedLinks: [
-      { href: "/topics/low-sugar-protein-shake", title: "저당 단백질 쉐이크", description: "당류 0~3g 저당 쉐이크를 모아봅니다." },
+      { href: "/guides/product-selection-comparison/low-sugar-protein-shake-guide", title: "저당 단백질 쉐이크", description: "당류 0~3g 저당 쉐이크를 모아봅니다." },
       { href: "/topics/diet-protein-drink", title: "다이어트 단백질 음료", description: "칼로리와 당류를 함께 보는 랜딩입니다." },
       { href: "/recommend", title: "맞춤 추천", description: "운동 빈도와 목적에 맞는 제품을 추립니다." },
     ],

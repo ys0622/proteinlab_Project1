@@ -1,15 +1,23 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { usePathname, useSearchParams } from "next/navigation";
 import { isAnalyticsReady, pageView } from "@/lib/analytics";
+import { COOKIE_CONSENT_EVENT } from "@/lib/cookieConsent";
 
 export default function AnalyticsPageViewTracker() {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const lastTrackedUrlRef = useRef<string | null>(null);
   const lastTrackedLocationRef = useRef<string | null>(null);
+  const [consentRevision, setConsentRevision] = useState(0);
   const query = searchParams?.toString() ?? "";
+
+  useEffect(() => {
+    const retryAfterConsentChange = () => setConsentRevision((value) => value + 1);
+    window.addEventListener(COOKIE_CONSENT_EVENT, retryAfterConsentChange);
+    return () => window.removeEventListener(COOKIE_CONSENT_EVENT, retryAfterConsentChange);
+  }, []);
 
   useEffect(() => {
     if (!pathname) return;
@@ -43,7 +51,7 @@ export default function AnalyticsPageViewTracker() {
     return () => {
       cancelled = true;
     };
-  }, [pathname, query]);
+  }, [pathname, query, consentRevision]);
 
   return null;
 }

@@ -1,9 +1,20 @@
 "use client";
 
-import { affiliateClick, type LinkPosition } from "@/lib/analytics";
+import { useEffect, useRef } from "react";
+import { affiliateClick, affiliateImpression, type LinkPosition } from "@/lib/analytics";
 
 type PurchaseLinkTone = "coupang" | "naver" | "official";
 type PurchaseLinkSize = "sm" | "md";
+
+export type PurchaseLinkTracking = {
+  productId?: string;
+  productName?: string;
+  productBrand?: string;
+  productCategory?: string;
+  linkPosition: LinkPosition;
+  contentId?: string;
+  itemPosition?: number;
+};
 
 type PurchaseLinkButtonProps = {
   href?: string | null;
@@ -13,13 +24,8 @@ type PurchaseLinkButtonProps = {
   size: PurchaseLinkSize;
   onClick?: () => void;
   title?: string;
-  tracking?: {
-    productId?: string;
-    productName?: string;
-    productBrand?: string;
-    productCategory?: string;
-    linkPosition: LinkPosition;
-  };
+  tracking?: PurchaseLinkTracking;
+  impressionTracking?: PurchaseLinkTracking;
 };
 
 export default function PurchaseLinkButton({
@@ -31,8 +37,12 @@ export default function PurchaseLinkButton({
   onClick,
   title,
   tracking,
+  impressionTracking,
 }: PurchaseLinkButtonProps) {
+  const linkRef = useRef<HTMLAnchorElement>(null);
+  const impressionSent = useRef(false);
   const hasValidHref = href && href !== "#" && href !== "";
+  const resolvedImpressionTracking = impressionTracking ?? tracking;
   const accessibleLabel = label;
   const className = [
     "purchase-link",
@@ -42,6 +52,28 @@ export default function PurchaseLinkButton({
   ]
     .filter(Boolean)
     .join(" ");
+
+  useEffect(() => {
+    const element = linkRef.current;
+    if (!element || !hasValidHref || !resolvedImpressionTracking || tone !== "coupang") return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting || impressionSent.current) return;
+        impressionSent.current = true;
+        affiliateImpression({
+          ...resolvedImpressionTracking,
+          retailer: "coupang",
+          destinationUrl: href,
+        });
+        observer.disconnect();
+      },
+      { threshold: 0.5 },
+    );
+
+    observer.observe(element);
+    return () => observer.disconnect();
+  }, [hasValidHref, href, resolvedImpressionTracking, tone]);
 
   if (!hasValidHref) {
     return (
@@ -64,6 +96,8 @@ export default function PurchaseLinkButton({
         retailer: "coupang",
         destinationUrl: href,
         linkPosition: tracking.linkPosition,
+        contentId: tracking.contentId,
+        itemPosition: tracking.itemPosition,
       });
     }
     onClick?.();
@@ -71,6 +105,7 @@ export default function PurchaseLinkButton({
 
   return (
     <a
+      ref={linkRef}
       href={href}
       target="_blank"
       rel={tone === "coupang" ? "sponsored noopener noreferrer" : "noopener noreferrer"}

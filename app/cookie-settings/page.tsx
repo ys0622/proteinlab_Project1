@@ -1,25 +1,29 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
+import { readCookieConsent, saveCookieConsent } from "@/lib/cookieConsent";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import CommercialAdSection from "../components/CommercialAdSection";
 
-const COOKIE_CONSENT_KEY = "proteinlab_cookie_consent";
-
 export default function CookieSettingsPage() {
-  const [functional, setFunctional] = useState(true);
   const [analytics, setAnalytics] = useState(false);
   const [advertising, setAdvertising] = useState(false);
   const [saved, setSaved] = useState(false);
 
+  useEffect(() => {
+    const timer = window.setTimeout(() => {
+      const consent = readCookieConsent();
+      setAnalytics(consent.analytics);
+      setAdvertising(consent.advertising);
+    }, 0);
+    return () => window.clearTimeout(timer);
+  }, []);
+
   const handleSave = () => {
     if (typeof window !== "undefined") {
-      localStorage.setItem(
-        COOKIE_CONSENT_KEY,
-        JSON.stringify({ functional, analytics, advertising, timestamp: Date.now() })
-      );
+      saveCookieConsent({ functional: true, analytics, advertising });
       setSaved(true);
       setTimeout(() => setSaved(false), 3000);
     }
@@ -62,8 +66,8 @@ export default function CookieSettingsPage() {
             <label className="flex cursor-pointer items-center gap-2">
               <input
                 type="checkbox"
-                checked={functional}
-                onChange={(e) => setFunctional(e.target.checked)}
+                checked
+                disabled
                 className="h-4 w-4 rounded border-[var(--border)] text-[var(--accent)] focus:ring-[var(--accent)]"
               />
               <span className="text-sm font-medium text-[var(--foreground)]">필수</span>

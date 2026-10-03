@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import type {
   KeyboardEvent as ReactKeyboardEvent,
   MouseEvent as ReactMouseEvent,
@@ -137,11 +137,13 @@ export default function ProductCard({
   maxVisibleBadges,
   fixedTitleLines,
   hideSupplementalBadges,
+  cardVariant,
   analyticsSource,
   analyticsPosition,
   awards,
 }: ProductCardProps) {
   const router = useRouter();
+  const cardRef = useRef<HTMLElement>(null);
   const [reviewSummary, setReviewSummary] = useState<ReviewSummary | null>(() =>
     slug ? reviewSummaryCache.get(slug) ?? null : null,
   );
@@ -156,6 +158,15 @@ export default function ProductCard({
   const naverHref = naverUrl && naverUrl !== "#" && naverUrl !== "" ? naverUrl : getNaverSearchUrl(brand, name);
   const officialMallHref = officialUrl && officialUrl !== "#" && officialUrl !== "" ? officialUrl : getOfficialMallUrl(brand);
   const productId = slug ?? `${brand}-${name}`;
+  const affiliateLinkPosition = analyticsSource?.startsWith("home_")
+    ? "home_featured"
+    : cardVariant === "ranking"
+      ? "ranking"
+      : cardVariant === "recommend"
+        ? "recommend_result"
+        : cardVariant === "related"
+          ? "related_product"
+          : "product_card";
   const hasCapacityInName = Boolean(capacity && name.includes(capacity));
   const packageTag = tags.find((tag) => ["팩", "PET", "CAN"].includes(tag));
   const capacitySuffix = packageTag ? `, ${packageTag}` : "";
@@ -188,12 +199,36 @@ export default function ProductCard({
     if (!slug) return;
 
     let cancelled = false;
-    void fetchReviewSummary(slug).then((summary) => {
-      if (!cancelled) setReviewSummary(summary);
-    });
+    let requested = false;
+    const loadSummary = () => {
+      if (requested) return;
+      requested = true;
+      void fetchReviewSummary(slug).then((summary) => {
+        if (!cancelled) setReviewSummary(summary);
+      });
+    };
+
+    const element = cardRef.current;
+    if (!element || typeof IntersectionObserver === "undefined") {
+      loadSummary();
+      return () => {
+        cancelled = true;
+      };
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) return;
+        loadSummary();
+        observer.disconnect();
+      },
+      { rootMargin: "200px 0px" },
+    );
+    observer.observe(element);
 
     return () => {
       cancelled = true;
+      observer.disconnect();
     };
   }, [slug]);
 
@@ -231,6 +266,7 @@ export default function ProductCard({
 
   return (
     <article
+      ref={cardRef}
       className={`product-card group flex flex-col overflow-hidden rounded-2xl border transition-all duration-200 ease-out hover:border-[#ddd] focus:outline-none focus:ring-2 focus:ring-[var(--accent)] focus:ring-offset-2 active:shadow-sm ${
         usesUnifiedSurface
           ? "px-2.5 pt-2.5 pb-0.5 md:px-[14px] md:pt-[14px] md:pb-[6px]"
@@ -501,6 +537,15 @@ export default function ProductCard({
                 officialMallHref={officialMallHref}
                 coupangOnly
                 size="sm"
+                coupangImpressionTracking={{
+                  productId,
+                  productName: name,
+                  productBrand: brand,
+                  productCategory: productType,
+                  linkPosition: affiliateLinkPosition,
+                  contentId: analyticsSource ?? cardVariant ?? "product_card",
+                  itemPosition: analyticsPosition,
+                }}
                 onCoupangClick={() =>
                   purchaseClick({
                     productName: name,

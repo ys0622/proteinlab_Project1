@@ -8,15 +8,13 @@ interface SearchPageProps {
   searchParams?: Promise<Record<string, string | string[] | undefined>>;
 }
 
-export async function generateMetadata({ searchParams }: SearchPageProps): Promise<Metadata> {
-  const params = (await searchParams) ?? {};
-  const hasQuery = typeof params.q === "string" && params.q.trim().length > 0;
+export async function generateMetadata(): Promise<Metadata> {
   return {
     title: "단백질 제품 검색 — 브랜드명·제품명으로 바로 찾기",
     description:
       "셀렉스, 하이뮨, 랩노쉬, 테이크핏 같은 브랜드명과 제품명으로 검색해 제품 상세, 비교, 추천 페이지로 바로 이동해보세요.",
     alternates: { canonical: "https://proteinlab.kr/search" },
-    robots: hasQuery ? { index: false, follow: false } : { index: true, follow: true },
+    robots: { index: false, follow: true },
   };
 }
 

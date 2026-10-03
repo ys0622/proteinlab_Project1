@@ -1,9 +1,11 @@
 ﻿import type { Metadata, Viewport } from "next";
 import Script from "next/script";
 import { Suspense } from "react";
+import AnalyticsConsentManager from "./components/AnalyticsConsentManager";
 import AnalyticsPageViewTracker from "./components/AnalyticsPageViewTracker";
 import CompareBar from "./components/CompareBar";
 import CompareBarSpacer from "./components/CompareBarSpacer";
+import CookieConsentBanner from "./components/CookieConsentBanner";
 import { CompareProvider } from "./context/CompareContext";
 import { FavoritesProvider } from "./context/FavoritesContext";
 import "./globals.css";
@@ -92,25 +94,7 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <body className="antialiased">
-        {isProd && GA_ID ? (
-          <>
-            <Script
-              src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
-              strategy="afterInteractive"
-            />
-            <Script id="ga4-init" strategy="afterInteractive">
-              {`
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){dataLayer.push(arguments);}
-                window.gtag = gtag;
-                gtag('js', new Date());
-                gtag('config', '${GA_ID}', {
-                  send_page_view: false,
-                });
-              `}
-            </Script>
-          </>
-        ) : null}
+        {isProd && GA_ID ? <AnalyticsConsentManager measurementId={GA_ID} /> : null}
         <Script
           id="prevent-dark-mode"
           strategy="beforeInteractive"
@@ -124,6 +108,7 @@ export default function RootLayout({
               <AnalyticsPageViewTracker />
             </Suspense>
             {children}
+            <CookieConsentBanner />
             <CompareBarSpacer />
             <CompareBar />
           </CompareProvider>

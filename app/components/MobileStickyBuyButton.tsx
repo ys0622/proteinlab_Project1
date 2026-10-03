@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { purchaseClick } from "@/lib/analytics";
+import { useEffect, useRef, useState } from "react";
+import { affiliateImpression, purchaseClick } from "@/lib/analytics";
 import { useCompare } from "../context/CompareContext";
 
 type Props = {
@@ -23,6 +23,7 @@ export default function MobileStickyBuyButton({
   anchorRef,
 }: Props) {
   const [visible, setVisible] = useState(false);
+  const impressionSent = useRef(false);
   const { selectedSlugs } = useCompare();
 
   useEffect(() => {
@@ -39,6 +40,21 @@ export default function MobileStickyBuyButton({
     observer.observe(el);
     return () => observer.disconnect();
   }, [anchorRef]);
+
+  useEffect(() => {
+    if (!visible || !coupangHref || selectedSlugs.length > 0 || impressionSent.current) return;
+    impressionSent.current = true;
+    affiliateImpression({
+      productId: slug,
+      productName,
+      productBrand: brand,
+      productCategory: productType,
+      retailer: "coupang",
+      destinationUrl: coupangHref,
+      linkPosition: "sticky_mobile",
+      contentId: "product_detail_mobile_sticky",
+    });
+  }, [brand, coupangHref, productName, productType, selectedSlugs.length, slug, visible]);
 
   if (!coupangHref || selectedSlugs.length > 0) return null;
 

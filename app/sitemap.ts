@@ -6,6 +6,17 @@ import { getBrandSummary } from "./lib/brandHubs";
 import { getAllPickSlugs } from "./data/picksConfig";
 import { getAllCompareGuideConfigs } from "./guides/product-selection-comparison/compareGuideContent";
 import {
+  dietProteinShakeConfig,
+  labnoshLineupConfig,
+  proteinCategoryGuideConfig,
+  proteinShakeCalorieRankingConfig,
+  proteinShakeTop7Config,
+} from "./guides/product-selection-comparison/proteinCategoryContent";
+import { proteinDrinkTop10Config } from "./guides/product-selection-comparison/proteinDrinkTop10Content";
+import { convenienceProteinBarConfig, dietProteinBarConfig, proteinBarTop10Config } from "./guides/product-selection-comparison/proteinBarContent";
+import { dietProteinYogurtConfig, greekVsProteinYogurtConfig, proteinYogurtTop5Config } from "./guides/product-selection-comparison/proteinYogurtContent";
+import { morningProteinShakeConfig, oliveYoungProteinShakeConfig, proteinShakeForWomenConfig } from "./guides/product-selection-comparison/proteinShakeLifestyleContent";
+import {
   mockProducts,
   barProductsWithGrades,
   shakeProducts,
@@ -16,11 +27,11 @@ const SITE_URL = "https://proteinlab.kr";
 
 // Known last-modified dates for key pages (avoid lying to Google with new Date())
 const PAGE_DATES: Record<string, string> = {
-  "/": "2026-06-28",
-  "/drinks": "2026-07-15",
-  "/bars": "2026-07-15",
-  "/shake": "2026-07-15",
-  "/yogurt": "2026-07-15",
+  "/": "2026-10-02",
+  "/drinks": "2026-08-29",
+  "/bars": "2026-08-28",
+  "/shake": "2026-09-30",
+  "/yogurt": "2026-08-28",
   "/products": "2026-06-28",
   "/ranking": "2026-07-15",
   "/trending": "2026-07-03",
@@ -30,7 +41,8 @@ const PAGE_DATES: Record<string, string> = {
   "/guides/product-selection-comparison/high-protein-40g-comparison": "2026-08-18",
   "/guides/product-selection-comparison/high-protein-50g-comparison": "2026-08-18",
   "/guides/product-selection-comparison/newcare-protein-water-guide": "2026-08-18",
-  "/guides/product-selection-comparison/protein-shake-top7": "2026-08-18",
+  "/guides/product-selection-comparison/protein-shake-top7": "2026-10-01",
+  "/guides/product-selection-comparison/protein-shake-guide": "2026-09-30",
   "/guides/intake-strategy-health/protein-drink-daily": "2026-07-20",
   "/guides/intake-strategy-health/protein-drink-diarrhea": "2026-07-20",
   "/guides/intake-strategy-health/protein-drink-empty-stomach": "2026-07-20",
@@ -60,6 +72,30 @@ const PAGE_DATES: Record<string, string> = {
 
 const FALLBACK_GUIDE_DATE = "2026-06-01";
 const FALLBACK_PRODUCT_DATE = "2026-07-15";
+const PRODUCT_DATES: Record<string, string> = {
+  drink: "2026-08-29",
+  bar: "2026-08-28",
+  yogurt: "2026-08-28",
+  shake: "2026-09-30",
+};
+
+const CATEGORY_GUIDE_CONFIGS = [
+  proteinCategoryGuideConfig,
+  proteinShakeTop7Config,
+  labnoshLineupConfig,
+  dietProteinShakeConfig,
+  proteinShakeCalorieRankingConfig,
+  proteinDrinkTop10Config,
+  proteinBarTop10Config,
+  convenienceProteinBarConfig,
+  dietProteinBarConfig,
+  proteinYogurtTop5Config,
+  greekVsProteinYogurtConfig,
+  dietProteinYogurtConfig,
+  proteinShakeForWomenConfig,
+  morningProteinShakeConfig,
+  oliveYoungProteinShakeConfig,
+];
 
 const staticRoutes = [
   "/",
@@ -81,7 +117,6 @@ const staticRoutes = [
   "/yogurt",
   "/topics",
   "/brands",
-  "/search",
 ] as const;
 
 const REDIRECT_ONLY_ROUTES = new Set([
@@ -254,9 +289,19 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       config.updatedAt ? new Date(config.updatedAt) : new Date(FALLBACK_GUIDE_DATE),
     ]),
   );
+  for (const config of CATEGORY_GUIDE_CONFIGS) {
+    if (config.updatedAt) {
+      compareGuideLastModified.set(
+        `/guides/product-selection-comparison/${config.slug}`,
+        new Date(config.updatedAt),
+      );
+    }
+  }
 
   const curationRoutes = getAllCurations().map((curation) => `/curation/${curation.slug}`);
-  const topicRoutes = getAllSearchTopics().map((topic) => `/topics/${topic.slug}`);
+  const topicRoutes = getAllSearchTopics()
+    .filter((topic) => topic.slug !== "low-sugar-protein-shake")
+    .map((topic) => `/topics/${topic.slug}`);
   const compareRoutes = getAllCompareLandings().map((landing) => `/compare/${landing.slug}`);
   const pickRoutes = getAllPickSlugs().map((slug) => `/picks/${slug}`);
 
@@ -280,7 +325,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   ];
   const productRoutes = allProducts
     .filter((p) => p.slug)
-    .map((p) => ({ slug: p.slug! }));
+    .map((p) => ({ slug: p.slug!, productType: p.productType }));
   // 제품 1~2개짜리 브랜드 페이지는 내용이 얇아 사이트맵에서 뺀다(페이지 자체는 유지). 구글이 이미
   // 발견됨-크롤링 안 됨 상태로 쌓아 둔 URL이 많아, 색인될 가능성이 높은 페이지에 크롤링을 집중시킨다.
   const brandEntries: MetadataRoute.Sitemap = getBrandSummary(allProducts)
@@ -326,9 +371,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     };
   });
 
-  const productEntries: MetadataRoute.Sitemap = productRoutes.map(({ slug }) => ({
+  const productEntries: MetadataRoute.Sitemap = productRoutes.map(({ slug, productType }) => ({
     url: `${SITE_URL}/product/${slug}`,
-    lastModified: new Date(FALLBACK_PRODUCT_DATE),
+    lastModified: new Date(PRODUCT_DATES[productType ?? ""] ?? FALLBACK_PRODUCT_DATE),
     changeFrequency: "weekly" as const,
     priority: 0.75,
   }));

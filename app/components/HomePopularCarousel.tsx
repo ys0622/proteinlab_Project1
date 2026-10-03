@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import type { ProductCardProps } from "../data/productTypes";
 import ProductCard from "./ProductCard";
 
@@ -20,48 +20,19 @@ interface Props {
   products: Record<CategoryKey, CarouselProduct[]>;
 }
 
-const VISIBLE_COUNT = 4;
 const MAX_PRODUCTS = 10;
 
 export default function HomePopularCarousel({ products }: Props) {
   const [tabIdx, setTabIdx] = useState(0);
-  const tabIdxRef = useRef(0);
   const trackRef = useRef<HTMLDivElement>(null);
-  const stepRef = useRef(0);
 
   const handleTabClick = (idx: number) => {
-    tabIdxRef.current = idx;
     setTabIdx(idx);
-    stepRef.current = 0;
     trackRef.current?.scrollTo({ left: 0, behavior: "smooth" });
   };
 
   const curTab = TABS[tabIdx];
   const curProducts = (products[curTab.key] ?? []).slice(0, MAX_PRODUCTS);
-  const stepCount = Math.max(curProducts.length - VISIBLE_COUNT + 1, 1);
-
-  // 한 카테고리의 스크롤 사이클이 전부 끝난 뒤에만 다음 카테고리로 전환한다.
-  useEffect(() => {
-    const id = setInterval(() => {
-      const track = trackRef.current;
-      if (!track) return;
-
-      if (stepRef.current + 1 >= stepCount) {
-        stepRef.current = 0;
-        track.scrollTo({ left: 0, behavior: "smooth" });
-        const nextTab = (tabIdxRef.current + 1) % TABS.length;
-        tabIdxRef.current = nextTab;
-        setTabIdx(nextTab);
-        return;
-      }
-
-      const next = stepRef.current + 1;
-      stepRef.current = next;
-      const cardWidth = track.scrollWidth / curProducts.length;
-      track.scrollTo({ left: next * cardWidth, behavior: "smooth" });
-    }, 3500);
-    return () => clearInterval(id);
-  }, [curProducts.length, stepCount, tabIdx]);
 
   return (
     <div>
@@ -110,7 +81,7 @@ export default function HomePopularCarousel({ products }: Props) {
         </div>
       </div>
 
-      {/* 4개씩 노출, 10위까지 자동 스크롤 */}
+      {/* 사용자가 직접 스와이프해 10위까지 탐색한다. */}
       <div
         ref={trackRef}
         className="flex gap-3"

@@ -298,7 +298,7 @@ const compareLandings: CompareLanding[] = [
     productSlugs: ["flymill-proteinshake-choco-45", "allthebetter-proteinshake-low-sugar-chocolate-mousse-45"],
     relatedLinks: [
       { href: "/brands/flymill", title: "플라이밀 브랜드 허브", description: "플라이밀 쉐이크 라인을 브랜드 단위로 봅니다." },
-      { href: "/topics/low-sugar-protein-shake", title: "저당 단백질 쉐이크", description: "당류 기준으로 다시 제품을 비교합니다." },
+      { href: "/guides/product-selection-comparison/low-sugar-protein-shake-guide", title: "저당 단백질 쉐이크", description: "당류 기준으로 다시 제품을 비교합니다." },
     ],
   },
   {

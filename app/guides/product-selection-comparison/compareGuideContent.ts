@@ -1,6 +1,9 @@
 import type { CompareMetricRow, ComparePageConfig, RelatedGuideLink } from "./productCompareShared";
 import { formatCalories100, formatDensity, getDrinkProduct } from "./productCompareShared";
 import { formatProductLabel } from "../../lib/productLabel";
+import { getDrinkProducts } from "@/app/data/drinkProductsData";
+
+const drinkProductCount = getDrinkProducts().length;
 
 const sellex = getDrinkProduct("sellex-profit-milk-vanilla-250");
 const sellexDangsolveFivegrain = getDrinkProduct("sellex-protein-dangsolve-fivegrain-190");
@@ -102,7 +105,7 @@ export const selexVsHimuneConfig: ComparePageConfig = {
   keywords: ["셀렉스 하이뮨 비교", "셀렉스 vs 하이뮨", "하이뮨 셀렉스 차이", "단백질 음료 비교"],
   badge: "브랜드 비교",
   readingTime: "4분 읽기",
-  updatedAt: "2026-08-26",
+  updatedAt: "2026-10-03",
   methodologyNote: "ProteinLab DB 대표 RTD 250mL 기준",
   intro: "셀렉스와 하이뮨은 둘 다 단백질 20g급 RTD라서 처음 보면 거의 비슷해 보입니다. 하지만 실제로는 운동 후 보충, 일상용 저부담, 맛 선택 폭에서 체감이 갈립니다. ProteinLab DB 기준 대표 제품만 바로 맞붙여 보면 어떤 사람이 어느 쪽을 고르면 되는지 훨씬 빨리 정리됩니다.",
   summary: [
@@ -248,14 +251,14 @@ highProtein40gConfig.jsonLd = [articleJsonLd(highProtein40gConfig), faqJsonLd(hi
 
 export const proteinDensityRankingConfig: ComparePageConfig = {
   slug: "protein-density-ranking",
-  title: "단백질 음료 100mL당 단백질 순위 | 110개 전수 계산 2026",
-  description: "ProteinLab DB 기준 110개 단백질 음료의 100mL당 단백질 함량을 직접 계산했습니다. 고단백 RTD 상위권과 실제 밀도 해석까지 한 번에 확인할 수 있습니다.",
+  title: `단백질 음료 100mL당 단백질 순위 | ${drinkProductCount}개 전수 계산 2026`,
+  description: `ProteinLab DB 기준 ${drinkProductCount}개 단백질 음료의 100mL당 단백질 함량을 직접 계산했습니다. 고단백 RTD 상위권과 실제 밀도 해석까지 한 번에 확인할 수 있습니다.`,
   keywords: ["단백질 밀도", "단백질 음료 가성비", "단백질 음료 효율", "100mL당 단백질"],
   badge: "데이터 랭킹",
   readingTime: "5분 읽기",
   updatedAt: "2026-08-26",
   methodologyNote: "ProteinLab DB 단백질 ÷ 용량 × 100 계산",
-  intro: "한 병 기준으로만 보면 190mL 제품과 350mL 제품이 뒤섞여서 실제 효율이 잘 안 보입니다. 그래서 ProteinLab DB 음료 110개를 단백질 ÷ 용량 × 100 방식으로 다시 계산했습니다. 이 순위는 같은 양 대비 단백질이 얼마나 들어 있는지 가장 빠르게 확인하려는 사람에게 특히 유용합니다.",
+  intro: `한 병 기준으로만 보면 190mL 제품과 350mL 제품이 뒤섞여서 실제 효율이 잘 안 보입니다. 그래서 ProteinLab DB 음료 ${drinkProductCount}개를 단백질 ÷ 용량 × 100 방식으로 다시 계산했습니다. 이 순위는 같은 양 대비 단백질이 얼마나 들어 있는지 가장 빠르게 확인하려는 사람에게 특히 유용합니다.`,
   summary: [
     "현재 상위권은 40g 이상 고단백 RTD가 거의 장악하고 있습니다.",
     "닥터유 62g 말차맛은 13.8g/100mL로 새로 등장한 전체 1위이고, 테이크핏 익스트림과 랩노쉬 맥스도 13g대 상위권에 새로 들어왔습니다.",

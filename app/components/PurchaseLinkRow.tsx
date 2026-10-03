@@ -1,6 +1,7 @@
 "use client";
 
 import PurchaseLinkButton from "./PurchaseLinkButton";
+import type { PurchaseLinkTracking } from "./PurchaseLinkButton";
 
 type PurchaseLinkRowProps = {
   coupangHref: string | null;
@@ -17,6 +18,7 @@ type PurchaseLinkRowProps = {
   onCoupangClick?: () => void;
   onNaverClick?: () => void;
   onOfficialClick?: () => void;
+  coupangImpressionTracking?: PurchaseLinkTracking;
 };
 
 export default function PurchaseLinkRow({
@@ -34,6 +36,7 @@ export default function PurchaseLinkRow({
   onCoupangClick,
   onNaverClick,
   onOfficialClick,
+  coupangImpressionTracking,
 }: PurchaseLinkRowProps) {
   const hasCoupang = Boolean(coupangHref);
   const rowClass = coupangOnly
@@ -52,6 +55,7 @@ export default function PurchaseLinkRow({
           tone="coupang"
           size={size}
           onClick={coupangHref ? onCoupangClick : undefined}
+          impressionTracking={coupangImpressionTracking}
           title={coupangHref ? undefined : "쿠팡 구매 링크를 아직 확인 중입니다."}
         />
       )}

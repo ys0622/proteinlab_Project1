@@ -11,6 +11,10 @@ interface PageProps {
   params: Promise<{ slug: string }>;
 }
 
+const TOPIC_CANONICAL_TARGETS: Record<string, string> = {
+  "low-sugar-protein-shake": "/guides/product-selection-comparison/low-sugar-protein-shake-guide",
+};
+
 export async function generateStaticParams() {
   return getAllSearchTopics().map((topic) => ({ slug: topic.slug }));
 }
@@ -23,7 +27,8 @@ export async function generateMetadata({ params }: PageProps) {
     return { title: "검색 주제를 찾을 수 없음 | ProteinLab" };
   }
 
-  const canonical = `https://proteinlab.kr/topics/${topic.slug}`;
+  const canonicalPath = TOPIC_CANONICAL_TARGETS[topic.slug] ?? `/topics/${topic.slug}`;
+  const canonical = `https://proteinlab.kr${canonicalPath}`;
   const title = `${topic.title} | 비교 가이드 모음`;
   const description = `${topic.description} 관련 비교 페이지와 추천 가이드로 바로 이어서 확인할 수 있습니다.`;
 
@@ -31,7 +36,9 @@ export async function generateMetadata({ params }: PageProps) {
     title,
     description,
     alternates: { canonical },
-    robots: { index: true, follow: true },
+    robots: TOPIC_CANONICAL_TARGETS[topic.slug]
+      ? { index: false, follow: true }
+      : { index: true, follow: true },
     openGraph: {
     images: [{ url: "https://proteinlab.kr/opengraph-image", width: 1200, height: 630, alt: "ProteinLab 단백질 제품 비교" }],
       title,

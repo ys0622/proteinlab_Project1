@@ -261,6 +261,14 @@ export default function CompareTable({ products, visibleColumnIds }: CompareTabl
                             officialMallHref={officialHref}
                             size="sm"
                             coupangOnly
+                            coupangImpressionTracking={{
+                              productId: p.slug,
+                              productName: p.name,
+                              productBrand: p.brand,
+                              productCategory: p.productType,
+                              linkPosition: "comparison_result",
+                              contentId: "compare_table",
+                            }}
                             onCoupangClick={() =>
                               purchaseClick({
                                 productId: p.slug,

@@ -405,7 +405,7 @@ function buildProductInternalLinks(product: ProductDetailProps) {
               }
             : sugar != null && sugar <= 3
               ? {
-                  href: "/topics/low-sugar-protein-shake",
+                  href: "/guides/product-selection-comparison/low-sugar-protein-shake-guide",
                   title: "저당 단백질 쉐이크 보기",
                   description: "당류 기준으로 더 가벼운 쉐이크 후보를 다시 좁혀봅니다.",
                 }
