@@ -241,8 +241,10 @@ export async function generateMetadata({ params }: PageProps) {
   }
 
   const canonical = canonicalOverrides[landing.slug] ?? `https://proteinlab.kr/compare/${landing.slug}`;
-  const title = `${landing.title} — 단백질 성분 비교표`;
-  const description = `${landing.description} 비교표로 수치를 나란히 확인하고 제품 상세까지 바로 이어서 볼 수 있습니다.`;
+  // 각 랜딩 제목과 설명 자체에 비교 대상·핵심 수치·검색 의도가 이미 들어 있다.
+  // 공통 문구를 덧붙이면 모바일 검색결과에서 핵심 제품명이 잘리고 설명도 반복된다.
+  const title = landing.title;
+  const description = landing.description;
   return {
     title,
     description,
