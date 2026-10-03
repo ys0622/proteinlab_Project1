@@ -14,6 +14,7 @@
     "audit:purchase-links": "node scripts/audit-purchase-link-sync.mjs",
     "audit:internal-links": "node scripts/audit-internal-links.mjs",
     "audit:affiliate-links": "node scripts/audit-proteinlab-affiliate-links.mjs",
+    "repair:purchase-links": "node scripts/clear-non-product-coupang-links.mjs",
     "generate:affiliate-link-input": "node scripts/generate-proteinlab-affiliate-link-input.mjs",
     "generate:affiliate-link-priority": "node scripts/generate-proteinlab-affiliate-priority-list.mjs",
     "generate:light-monetization-reports": "node scripts/generate-light-monetization-reports.mjs",
