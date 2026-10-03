@@ -62,8 +62,8 @@ const COUPANG_PARTNERS_SUB_ID =
 
 export type CoupangLinkCategory = "drink" | "bar" | "yogurt" | "shake" | "guide" | "ranking";
 
-/** 상품 상세이 아닌 쿠팡 홈으로 연결되는 과거 공용 링크. 구매 링크로 노출하지 않는다. */
-const NON_PRODUCT_COUPANG_URLS = new Set(["https://link.coupang.com/a/gaIdNRGs2u"]);
+/** 제품별 쿠팡 파트너스 링크가 없을 때 대신 연결할 기본 홈 링크 */
+const DEFAULT_COUPANG_FALLBACK_URL = "https://link.coupang.com/a/gaIdNRGs2u";
 
 const KNOWN_SOURCE_COUPANG_URLS_BY_SLUG: Record<string, string> = {
   "newcare-all-protein-choco-245":
@@ -231,13 +231,9 @@ export function getCoupangRedirectHref(
   category?: CoupangLinkCategory | null,
   slug?: string | null,
 ): string | null {
-  const normalizedUrl = normalizeCoupangUrl(coupangUrl);
-  const sourceUrl =
-    normalizedUrl && isValidCoupangLink(normalizedUrl)
-      ? normalizedUrl
-      : getKnownSourceCoupangUrlBySlug(slug);
+  const sourceUrl = normalizeCoupangUrl(coupangUrl) ?? getKnownSourceCoupangUrlBySlug(slug);
   if (!sourceUrl || !isValidCoupangLink(sourceUrl)) {
-    return null;
+    return DEFAULT_COUPANG_FALLBACK_URL;
   }
 
   // 쿠팡 파트너스 사이트에서 직접 발급한 정적 링크(link.coupang.com/a/...)는
@@ -277,8 +273,6 @@ export function isValidCoupangLink(value?: string | null): boolean {
   if (!value || value === "#") return false;
   try {
     const url = new URL(value);
-    const canonicalUrl = `${url.origin}${url.pathname.replace(/\/$/, "")}`;
-    if (NON_PRODUCT_COUPANG_URLS.has(canonicalUrl)) return false;
     const host = url.hostname.toLowerCase();
     if (host.includes("link.coupang.com")) return true;
     if (host.includes("coupang.com") && url.pathname.includes("/vp/products/")) {

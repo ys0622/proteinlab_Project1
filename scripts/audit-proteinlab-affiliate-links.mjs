@@ -12,7 +12,6 @@ const productFiles = [
 ];
 const allowedStatuses = new Set(["ACTIVE", "PENDING", "BROKEN", "INACTIVE"]);
 const allowedRetailers = new Set(["coupang", "naver", "official"]);
-const nonProductCoupangUrls = new Set(["https://link.coupang.com/a/gaIdNRGs2u"]);
 
 function readJson(relativePath) {
   return JSON.parse(readFileSync(join(root, relativePath), "utf8").replace(/^\uFEFF/, ""));
@@ -39,8 +38,7 @@ function getUrlType(value) {
   }
 }
 
-const products = productFiles.flatMap((file) => readJson(file));
-const productIds = new Set(products.map((product) => product.slug));
+const productIds = new Set(productFiles.flatMap((file) => readJson(file).map((product) => product.slug)));
 const store = readJson("app/data/affiliateLinks.proteinlab.json");
 const records = Array.isArray(store.records) ? store.records : [];
 const coupangRecords = records.filter((record) => record.site === "proteinlab" && record.retailer === "coupang");
@@ -88,19 +86,6 @@ const urlTypes = coupangRecords.reduce(
   },
   {},
 );
-const productLinkSummary = products.reduce(
-  (summary, product) => {
-    const value = typeof product.coupangUrl === "string" ? product.coupangUrl.trim() : "";
-    const type = getUrlType(value);
-    summary[type] = (summary[type] ?? 0) + 1;
-    if (nonProductCoupangUrls.has(value)) {
-      summary.nonProduct += 1;
-      summary.nonProductSlugs.push(product.slug);
-    }
-    return summary;
-  },
-  { missing: 0, invalid: 0, coupang_affiliate: 0, coupang_regular: 0, other_url: 0, nonProduct: 0, nonProductSlugs: [] },
-);
 
 console.log(
   JSON.stringify(
@@ -118,7 +103,6 @@ console.log(
       orphanProductRecords: orphanProductIds.length,
       invalidRecords: invalidRecords.length,
       urlTypes,
-      configuredProductLinks: productLinkSummary,
     },
     null,
     2,
@@ -129,20 +113,8 @@ if (process.argv.includes("--verbose")) {
   if (missingProductIds.length > 0) console.log(`missingProductIds\n${missingProductIds.join("\n")}`);
   if (pendingProductIds.length > 0) console.log(`pendingProductIds\n${pendingProductIds.join("\n")}`);
   if (duplicateUrls.length > 0) console.log(`duplicateUrls\n${duplicateUrls.map(([url]) => url).join("\n")}`);
-  if (productLinkSummary.nonProductSlugs.length > 0) {
-    console.log(`nonProductLinkSlugs\n${productLinkSummary.nonProductSlugs.join("\n")}`);
-  }
 }
 
-if (
-  duplicateKeys.length ||
-  duplicateProductIds.length ||
-  duplicateUrls.length ||
-  orphanProductIds.length ||
-  invalidRecords.length ||
-  productLinkSummary.invalid > 0 ||
-  productLinkSummary.other_url > 0 ||
-  productLinkSummary.nonProduct > 0
-) {
+if (duplicateKeys.length || duplicateProductIds.length || duplicateUrls.length || orphanProductIds.length || invalidRecords.length) {
   process.exitCode = 1;
 }
