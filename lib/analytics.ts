@@ -1,7 +1,5 @@
 /** Centralized GA4 event contract for ProteinLab. */
 
-import { hasAnalyticsConsent } from "./cookieConsent";
-
 export const GA_ID = process.env.NEXT_PUBLIC_GA_ID?.trim() ?? "";
 
 const ANALYTICS_ENDPOINT = "/api/analytics";
@@ -59,11 +57,11 @@ type ProductParams = {
 type FallbackPayload = { name: string; params: AnalyticsParams; clientId: string; sessionId: string };
 
 function canTrackWithGtag() {
-  return process.env.NODE_ENV === "production" && typeof window !== "undefined" && hasAnalyticsConsent() && typeof window.gtag === "function" && Boolean(GA_ID);
+  return process.env.NODE_ENV === "production" && typeof window !== "undefined" && typeof window.gtag === "function" && Boolean(GA_ID);
 }
 
 function canUseFallback() {
-  return process.env.NODE_ENV === "production" && typeof window !== "undefined" && hasAnalyticsConsent() && Boolean(GA_ID);
+  return process.env.NODE_ENV === "production" && typeof window !== "undefined" && Boolean(GA_ID);
 }
 
 export function isAnalyticsReady() {
