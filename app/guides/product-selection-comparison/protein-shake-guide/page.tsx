@@ -1,8 +1,8 @@
 import { ShakeGuidePage, buildShakeGuideMetadata } from "../shakeGuideShared";
 import { buildGuideJsonLd } from "@/app/lib/guideJsonLd";
 
-const pageTitle = "단백질쉐이크 고르는 법 | 단백질·당류·칼로리·식이섬유 기준";
-const pageDescription = "단백질쉐이크를 고를 때 확인할 단백질·당류·칼로리·식이섬유 기준을 운동 후 보충, 식사대용, 저당 목적별로 정리했습니다.";
+const pageTitle = "단백질쉐이크 추천·고르는 법 | 아침·운동·다이어트 기준";
+const pageDescription = "단백질쉐이크를 아침 식사대용, 운동 전후, 다이어트 식단, 간식·야식 목적별로 비교하고 물과 우유 선택법까지 정리했습니다.";
 
 export const metadata = buildShakeGuideMetadata(
   pageTitle,
@@ -15,7 +15,7 @@ export default function ProteinShakeGuidePage() {
     description: pageDescription,
     url: "https://proteinlab.kr/guides/product-selection-comparison/protein-shake-guide",
     datePublished: "2026-03-01",
-    dateModified: "2026-09-30",
+    dateModified: "2026-10-04",
   });
 
   return (
@@ -66,6 +66,9 @@ export default function ProteinShakeGuidePage() {
         { label: "음료와 차이가 궁금하다면 → 단백질 음료 vs 단백질 쉐이크", href: "/guides/product-selection-comparison/protein-drink-vs-protein-shake" },
         { label: "추천 후보를 바로 보고 싶다면 → 단백질 쉐이크 추천 TOP 7", href: "/guides/product-selection-comparison/protein-shake-top7" },
         { label: "칼로리 낮은 순서가 궁금하다면 → 단백질 쉐이크 칼로리 순위", href: "/guides/product-selection-comparison/protein-shake-calorie-ranking" },
+        { label: "아침에 먹을 제품이 궁금하다면 → 아침 식사대용 단백질 쉐이크", href: "/guides/product-selection-comparison/morning-protein-shake" },
+        { label: "운동 전후 기준이 궁금하다면 → 운동 후 단백질 쉐이크", href: "/guides/product-selection-comparison/post-workout-protein-shake-guide" },
+        { label: "다이어트 식단용이 궁금하다면 → 다이어트 단백질 쉐이크", href: "/guides/product-selection-comparison/diet-protein-shake" },
       ]}
       ctaBody="ProteinLab 쉐이크 카테고리에서 파우치형 중심의 간편 섭취 단백질 쉐이크를 한 번에 비교해보세요. 추천, 큐레이션, 등급 정보까지 연결해서 볼 수 있습니다."
       faqItems={[
@@ -73,6 +76,8 @@ export default function ProteinShakeGuidePage() {
         { question: "단백질 쉐이크 하루에 몇 개까지 먹어도 되나요?", answer: "일반적으로 하루 단백질 권장량(체중 1kg당 1.2~2.0g)을 기준으로 식사로 채우지 못하는 부분을 보충하는 용도로 사용합니다. 보통 하루 1~2팩이 적절합니다." },
         { question: "단백질 쉐이크는 운동 안 해도 먹어도 되나요?", answer: "네, 운동 여부와 관계없이 단백질 보충이 필요하면 섭취할 수 있습니다. 다만 칼로리가 있기 때문에 하루 총 칼로리 섭취량을 고려해야 합니다." },
         { question: "저당 단백질 쉐이크 기준은 당류 몇 g인가요?", answer: "ProteinLab 기준으로는 당류 3g 이하를 저당으로 분류합니다. 제품마다 기준이 다를 수 있으니 성분표에서 직접 확인하는 것이 정확합니다." },
+        { question: "단백질쉐이크는 물과 우유 중 무엇에 타 먹나요?", answer: "칼로리를 낮추고 제품 자체 성분을 비교하려면 물이 편합니다. 포만감과 단백질을 더하려면 우유나 무가당 두유를 사용할 수 있지만, 추가되는 칼로리와 당류를 함께 계산해야 합니다." },
+        { question: "단백질쉐이크를 간식이나 야식으로 먹어도 되나요?", answer: "기존 간식이나 야식을 대체하는 용도라면 가능합니다. 식사에 추가로 마시면 총칼로리가 늘 수 있으므로 다이어트 목적과는 맞지 않을 수 있습니다." },
       ]}
       buyProductSlugs={[
         "proteone-proteinshake-choco-40",

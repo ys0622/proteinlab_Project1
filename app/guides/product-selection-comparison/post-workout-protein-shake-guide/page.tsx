@@ -2,21 +2,25 @@ import { ShakeGuidePage, buildShakeGuideMetadata } from "../shakeGuideShared";
 import { buildGuideJsonLd } from "@/app/lib/guideJsonLd";
 
 export const metadata = buildShakeGuideMetadata(
-  "운동 후 단백질 쉐이크 추천 | 단백질 밀도·당류 기준 비교",
-  "운동 후 단백질 쉐이크는 단백질 밀도와 당류를 같이 봐야 합니다. 20g 이상 고단백 파우치형 제품을 성분 기준으로 비교했습니다.",
+  "운동 후 단백질쉐이크 추천 | 운동 전후·단백질 밀도 비교",
+  "운동 전후 단백질쉐이크를 단백질 밀도·당류·칼로리로 비교하고 물과 우유 중 어떤 방식이 목적에 맞는지 정리했습니다.",
 );
 
 export default function PostWorkoutProteinShakeGuidePage() {
   const jsonLd = buildGuideJsonLd({
-    title: "단백질 20g 전후",
-    description: "",
+    title: "운동 후 단백질쉐이크 추천 | 운동 전후·단백질 밀도 비교",
+    description: "운동 전후 단백질쉐이크를 단백질 밀도·당류·칼로리로 비교하고 물과 우유 중 어떤 방식이 목적에 맞는지 정리했습니다.",
     url: "https://proteinlab.kr/guides/product-selection-comparison/post-workout-protein-shake-guide",
     datePublished: "2026-03-01",
-    dateModified: "2026-05-29",
+    dateModified: "2026-10-04",
   });
 
   return (
-    <ShakeGuidePage
+    <>
+      {jsonLd.map((item, index) => (
+        <script key={index} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(item) }} />
+      ))}
+      <ShakeGuidePage
       title="운동 후 단백질 쉐이크"
       description="운동 후 단백질 쉐이크는 편하게 먹을 수 있느냐도 중요하지만, 결국은 성분이 더 중요합니다. 단백질이 충분한지, 당류가 과하지 않은지, 칼로리 대비 단백질 효율이 괜찮은지를 같이 봐야 실제 보충용으로 적합한 제품을 고를 수 있습니다."
       breadcrumbLabel="운동 후 단백질 쉐이크"
@@ -55,14 +59,18 @@ export default function PostWorkoutProteinShakeGuidePage() {
         { label: "단백질 쉐이크 추천이 궁금하다면 → 단백질 쉐이크 추천", href: "/guides/product-selection-comparison/protein-shake-guide" },
         { label: "저당 기준이 궁금하다면 → 저당 단백질 쉐이크", href: "/guides/product-selection-comparison/low-sugar-protein-shake-guide" },
         { label: "섭취 타이밍 전체가 궁금하다면 → 운동 후 단백질 섭취", href: "/guides/intake-strategy-health/post-workout-protein" },
+        { label: "식사대용 기준이 궁금하다면 → 식사대용 단백질 쉐이크", href: "/guides/product-selection-comparison/meal-replacement-protein-shake-guide" },
+        { label: "다이어트 식단 기준이 궁금하다면 → 다이어트 단백질 쉐이크", href: "/guides/product-selection-comparison/diet-protein-shake" },
       ]}
       ctaBody="ProteinLab 쉐이크 카테고리에서 운동 후 보충용으로 보기 좋은 제품을 비교해보세요. 고단백, 저당, 단백질 밀도 기준을 빠르게 적용해볼 수 있습니다."
       faqItems={[
-        { question: "운동 후 단백질 쉐이크는 언제 먹는 게 좋나요?", answer: "운동 후 30분~1시간 이내에 섭취하는 것이 일반적으로 권장됩니다. 이 시간대에 단백질 흡수가 효율적으로 이루어지는 것으로 알려져 있습니다." },
+        { question: "운동 후 단백질 쉐이크는 언제 먹는 게 좋나요?", answer: "특정 30분에 맞추는 것보다 하루 전체 단백질 섭취가 우선입니다. 운동 전 식사를 오래 비웠다면 운동 후 몇 시간 안에 편하게 보충하고, 이미 단백질이 포함된 식사를 했다면 지나치게 서두를 필요는 없습니다." },
         { question: "운동 후 쉐이크 단백질 함량은 얼마나 돼야 하나요?", answer: "운동 후 보충 기준으로는 한 팩에 20g 이상을 먼저 비교하는 것이 실용적입니다. 고강도 운동이라면 25g 이상 제품도 고려해볼 수 있습니다." },
         { question: "단백질 밀도란 무엇인가요?", answer: "칼로리 100kcal당 단백질이 몇 g 들어있는지를 나타내는 수치입니다. 밀도가 높을수록 같은 칼로리 대비 단백질을 더 많이 섭취할 수 있어 효율적입니다." },
         { question: "운동 후 쉐이크에서 당류가 왜 중요한가요?", answer: "당류가 높으면 불필요한 열량이 늘어나 운동 효과를 상쇄할 수 있습니다. 운동 후 보충 목적이라면 고단백·저당 기준을 같이 보는 것이 좋습니다." },
+        { question: "운동 후 단백질쉐이크는 물과 우유 중 무엇이 좋나요?", answer: "가볍고 빠른 보충이 목적이면 물이 편하고, 추가 단백질과 에너지가 필요하면 우유가 맞습니다. 다이어트 중이라면 우유로 늘어나는 칼로리와 당류까지 함께 계산하세요." },
       ]}
-    />
+      />
+    </>
   );
 }

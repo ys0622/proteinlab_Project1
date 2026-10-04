@@ -2,21 +2,25 @@ import { ShakeGuidePage, buildShakeGuideMetadata } from "../shakeGuideShared";
 import { buildGuideJsonLd } from "@/app/lib/guideJsonLd";
 
 export const metadata = buildShakeGuideMetadata(
-  "식사대용 단백질 쉐이크 추천 | 칼로리·식이섬유 기준 정리",
-  "식사대용 단백질 쉐이크는 단백질만 보면 안 됩니다. 랩노쉬, 플라이밀, 단백하니처럼 칼로리와 식이섬유 균형이 중요한 제품을 기준으로 한 끼 대체에 적합한 후보를 정리했습니다.",
+  "식사대용 단백질쉐이크 추천 | 아침·간식·야식 기준 비교",
+  "식사대용 단백질쉐이크를 단백질·칼로리·식이섬유로 비교하고 바쁜 아침, 간식과 야식 대체에 맞는 선택 기준을 정리했습니다.",
 );
 
 export default function MealReplacementProteinShakeGuidePage() {
   const jsonLd = buildGuideJsonLd({
-    title: "식사대용 쉐이크",
-    description: "",
+    title: "식사대용 단백질쉐이크 추천 | 아침·간식·야식 기준 비교",
+    description: "식사대용 단백질쉐이크를 단백질·칼로리·식이섬유로 비교하고 바쁜 아침, 간식과 야식 대체에 맞는 선택 기준을 정리했습니다.",
     url: "https://proteinlab.kr/guides/product-selection-comparison/meal-replacement-protein-shake-guide",
     datePublished: "2026-03-01",
-    dateModified: "2026-05-29",
+    dateModified: "2026-10-04",
   });
 
   return (
-    <ShakeGuidePage
+    <>
+      {jsonLd.map((item, index) => (
+        <script key={index} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(item) }} />
+      ))}
+      <ShakeGuidePage
       title="식사대용 단백질 쉐이크"
       description="식사대용 단백질 쉐이크는 운동용 보충 쉐이크와 보는 기준이 다릅니다. 단백질이 높아도 칼로리가 너무 낮거나 식이섬유가 부족하면 실제 한 끼 대체 용도로는 아쉬울 수 있습니다. 그래서 랩노쉬, 플라이밀, 단백하니처럼 포만감과 맛 지속성을 같이 볼 수 있는 브랜드를 기준으로 보는 편이 더 실용적입니다."
       breadcrumbLabel="식사대용 단백질 쉐이크"
@@ -58,6 +62,8 @@ export default function MealReplacementProteinShakeGuidePage() {
         { label: "단백질 쉐이크 전체 추천이 궁금하다면 → 단백질 쉐이크 추천", href: "/guides/product-selection-comparison/protein-shake-guide" },
         { label: "저당 기준이 궁금하다면 → 저당 단백질 쉐이크", href: "/guides/product-selection-comparison/low-sugar-protein-shake-guide" },
         { label: "운동 후 섭취 기준이 궁금하다면 → 운동 후 단백질 쉐이크", href: "/guides/product-selection-comparison/post-workout-protein-shake-guide" },
+        { label: "아침 전용 기준이 궁금하다면 → 아침 식사대용 단백질 쉐이크", href: "/guides/product-selection-comparison/morning-protein-shake" },
+        { label: "다이어트 식단 기준이 궁금하다면 → 다이어트 단백질 쉐이크", href: "/guides/product-selection-comparison/diet-protein-shake" },
       ]}
       ctaBody="ProteinLab 쉐이크 카테고리에서 식사대용 기준으로 제품을 비교해보세요. 식사대용 큐레이션과 브랜드 페이지를 함께 보면 훨씬 빠르게 좁힐 수 있습니다."
       faqItems={[
@@ -65,7 +71,10 @@ export default function MealReplacementProteinShakeGuidePage() {
         { question: "식사대용 쉐이크에서 식이섬유가 왜 중요한가요?", answer: "식이섬유는 포만감과 소화 속도에 영향을 줍니다. 식사대용으로 쓰려면 4g 이상 여부를 같이 확인하는 것이 좋습니다." },
         { question: "운동용 쉐이크와 식사대용 쉐이크는 어떻게 다른가요?", answer: "운동용은 단백질 함량과 밀도를 우선합니다. 식사대용은 칼로리·식이섬유·단백질 균형을 같이 봐야 합니다. 목적에 따라 보는 기준이 달라집니다." },
         { question: "아침 식사 대신 단백질 쉐이크를 먹어도 되나요?", answer: "단기간 대체는 가능하지만 장기적으로는 다양한 영양소 섭취가 필요합니다. 식이섬유와 칼로리가 충분한 제품을 고르는 것이 중요합니다." },
+        { question: "단백질쉐이크를 간식이나 야식 대신 먹어도 되나요?", answer: "가능합니다. 다만 식사에 추가하는 것이 아니라 기존 간식이나 야식을 대체해야 총칼로리 관리에 도움이 됩니다. 야식용은 저당 제품을 고르고 취침 직전 과량 섭취는 피하세요." },
+        { question: "식사대용 쉐이크는 물과 우유 중 어디에 타야 하나요?", answer: "칼로리를 낮추려면 물, 포만감과 단백질을 보완하려면 우유나 무가당 두유가 적합합니다. 우유를 넣으면 제품 표기 영양성분보다 실제 섭취 칼로리가 높아집니다." },
       ]}
-    />
+      />
+    </>
   );
 }

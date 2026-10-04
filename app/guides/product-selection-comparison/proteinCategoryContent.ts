@@ -366,12 +366,12 @@ labnoshLineupConfig.jsonLd = [articleJsonLd(labnoshLineupConfig), faqJsonLd(labn
 
 export const dietProteinShakeConfig: CategoryGuideConfig = {
   slug: "diet-protein-shake",
-  title: "다이어트 단백질 쉐이크 추천 | 저칼로리·저당 비교 2026",
-  description: "다이어트용 단백질 쉐이크를 저칼로리, 저당, 단백질 20g 이상 기준으로 직접 비교했습니다. 살 빼면서 허기까지 줄일 후보를 빠르게 좁혀볼 수 있습니다.",
-  keywords: ["다이어트 단백질 쉐이크", "저칼로리 단백질 쉐이크", "식사대용 쉐이크 추천", "다이어트 쉐이크 여성"],
+  title: "다이어트 단백질쉐이크 추천 (2026) | 식단·간식·저당 비교",
+  description: "다이어트 식단용 단백질쉐이크를 저칼로리·저당·단백질 20g 기준으로 비교하고 아침, 간식과 야식 대체에 맞는 활용법을 정리했습니다.",
+  keywords: ["다이어트 단백질 쉐이크", "다이어트 단백질쉐이크 추천", "단백질 쉐이크 식단", "단백질 쉐이크 간식", "단백질 쉐이크 야식", "저칼로리 단백질 쉐이크", "식사대용 쉐이크 추천"],
   badge: "다이어트 쉐이크",
   readingTime: "5분 읽기",
-  updatedAt: "2026-10-01",
+  updatedAt: "2026-10-04",
   methodologyNote: "ProteinLab DB 파우치형 쉐이크 중 180kcal 이하 · 당류 5g 이하 · 단백질 20g 이상",
   intro: "다이어트용 쉐이크를 찾을 때 가장 많이 하는 실수가 칼로리만 보고 고르는 것입니다. 실제로는 칼로리가 낮아도 단백질과 식이섬유가 부족하면 금방 허기가 오고, 당류가 높으면 체감 만족도도 떨어집니다. 그래서 이 페이지는 살 빼면서도 오래 버티기 쉬운 후보를 빠르게 걸러낼 수 있도록 칼로리, 당류, 단백질, 식이섬유를 함께 보게 구성했습니다.",
   summary: [
@@ -405,6 +405,7 @@ export const dietProteinShakeConfig: CategoryGuideConfig = {
       items: [
         { title: "가장 쉬운 사용법", body: "아침 한 끼 대체가 가장 실용적입니다. 저녁까지 밀어붙이는 것보다 루틴 유지가 쉽습니다." },
         { title: "운동 전후 간식", body: "운동 전후 가벼운 간식용으로도 쓸 수 있지만, 운동 직후 단백질 집중 보충만 원하면 RTD가 더 편합니다." },
+        { title: "늦은 밤 야식 대체", body: "야식 대신 사용할 때는 저당·저칼로리 제품을 고르고, 취침 직전보다는 소화할 시간을 두는 편이 좋습니다. 습관적인 야식에 쉐이크를 추가하는 것이 아니라 기존 간식을 바꾸는 방식이어야 합니다." },
         { title: "주의할 점", body: "쉐이크만으로 하루를 버티는 식으로 가면 오래 못 갑니다. 다이어트용 쉐이크는 대체재이지 만능식이 아닙니다." },
       ],
     },
@@ -441,6 +442,8 @@ export const dietProteinShakeConfig: CategoryGuideConfig = {
       { title: "플라이밀 단백질 쉐이크 추천", href: "/guides/product-selection-comparison/flymill-protein-shake", description: "조금 더 고단백 쪽 다이어트 쉐이크를 보고 싶다면 플라이밀 브랜드 페이지로 넘어갈 수 있습니다." },
       { title: "테이크핏 브레드밀 4종 비교", href: "/guides/product-selection-comparison/takefit-breadmeal-protein-shake", description: "당류 1.9g인 네 가지 맛을 단백질과 칼로리 기준으로 비교합니다." },
       { title: "2026 쉐이크 신제품 24종", href: "/guides/product-selection-comparison/protein-shake-new-products-2026", description: "매일한끼와 스포식스를 포함한 신규 저당 후보를 한 번에 확인합니다." },
+      { title: "아침 식사대용 단백질쉐이크", href: "/guides/product-selection-comparison/morning-protein-shake", description: "다이어트보다 아침 포만감과 공복 부담이 중요하다면 아침 전용 기준으로 비교합니다." },
+      { title: "식사대용 단백질쉐이크", href: "/guides/product-selection-comparison/meal-replacement-protein-shake-guide", description: "한 끼를 대신할 때 필요한 칼로리와 식이섬유 기준을 확인합니다." },
     ],
   purchaseLinks: [
     { label: "프로티원 커피맛 보기", slug: "proteone-proteinshake-coffee-40" },
@@ -459,6 +462,7 @@ export const dietProteinShakeConfig: CategoryGuideConfig = {
     { question: "하루 두 끼를 쉐이크로 바꿔도 되나", answer: "장기적으로는 권하지 않습니다. 다이어트용 쉐이크는 하루 한 끼 또는 간식 대체 정도가 현실적입니다." },
     { question: "운동 안 해도 마셔도 되나", answer: "네. 다이어트 식사 조절이나 아침 대용 목적이라면 운동을 하지 않아도 활용할 수 있습니다." },
     { question: "다이어트용인데 왜 랩노쉬 같은 160kcal대 제품도 추천되나", answer: "칼로리만 낮은 제품보다 식이섬유와 포만감이 좋은 제품이 실제 유지에는 더 유리하기 때문입니다. 숫자가 조금 높아도 체감 효율은 더 좋을 수 있습니다." },
+    { question: "단백질쉐이크를 간식이나 야식 대신 먹어도 되나", answer: "가능하지만 기존 식사에 추가하면 총칼로리가 늘어납니다. 간식이나 야식을 실제로 대체하고, 늦은 밤에는 저당·저칼로리 제품을 적당량 먹는 방식이 좋습니다." },
   ],
 };
 dietProteinShakeConfig.jsonLd = [articleJsonLd(dietProteinShakeConfig), faqJsonLd(dietProteinShakeConfig)];
