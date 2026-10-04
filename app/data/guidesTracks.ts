@@ -498,6 +498,17 @@ export const guideTracks: GuideTrack[] = [
         ],
       },
       {
+        slug: "protein-drink-with-meals",
+        title: "단백질 음료와 식사 같이 먹어도 될까",
+        description: "단백질 음료를 식사와 함께 먹을 때 채소·탄수화물·지방·식이섬유를 어떻게 조합할지 정리합니다.",
+        searchIntent: "단백질 음료 식사 같이",
+        futureFocus: ["식사 조합", "간식 대체", "채소·탄수화물"],
+        internalLinkTargets: [
+          { label: "단백질 음료 식사대용", href: "/guides/intake-strategy-health/protein-drink-meal-replacement" },
+          { label: "단백질 음료 매일 마셔도 될까", href: "/guides/intake-strategy-health/protein-drink-daily" },
+        ],
+      },
+      {
         slug: "protein-drink-without-exercise",
         title: "운동 안 해도 단백질 음료 마셔도 될까",
         description: "운동을 하지 않는 경우에도 단백질 음료가 필요한지, 어떤 경우에 도움이 되는지 정리합니다.",

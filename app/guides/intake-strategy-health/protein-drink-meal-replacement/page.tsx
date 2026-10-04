@@ -40,6 +40,7 @@ const steps = [
 ];
 
 const links = [
+  { href: "/guides/intake-strategy-health/protein-drink-with-meals", title: "단백질 음료와 식사 조합", body: "음료에 채소·탄수화물·식이섬유를 어떻게 곁들일지 상황별 예시로 확인합니다." },
   { href: "/guides/product-selection-comparison/protein-drink-for-50s", title: "식사 보완용 음료 비교", body: "음료 안에서도 식사 대체에 가까운 후보를 먼저 좁히고 싶다면 이쪽이 더 직접적입니다." },
   { href: "/guides/product-selection-comparison/meal-replacement-protein-shake-guide", title: "식사대용 단백질 쉐이크", body: "음료로는 포만감이 부족하다면 결국 쉐이크 비교로 넘어가는 편이 자연스럽습니다." },
   { href: "/guides/product-selection-comparison/protein-category-guide", title: "음료 vs 쉐이크 vs 바 비교", body: "한 끼 대체가 목적이라면 카테고리 전체를 먼저 비교하는 편이 더 빠릅니다." },

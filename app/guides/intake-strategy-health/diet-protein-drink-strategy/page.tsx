@@ -72,6 +72,11 @@ const caseCards = [
 
 const relatedLinks = [
   {
+    href: "/guides/intake-strategy-health/protein-drink-with-meals",
+    title: "식사와 같이 먹는 조합 보기",
+    body: "단백질 음료를 간식이나 식사 보완으로 쓸 때 채소와 탄수화물을 어떻게 구성할지 확인합니다.",
+  },
+  {
     href: "/guides/product-selection-comparison/protein-drink-for-diabetes",
     title: "저당 제품부터 바로 비교하기",
     body: "다이어트 중에는 결국 당류를 먼저 거르는 쪽이 빠릅니다. 저당 기준 제품 비교 페이지로 이어집니다.",

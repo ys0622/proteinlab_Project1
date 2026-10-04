@@ -190,6 +190,7 @@ const sections: AdminGuideSection[] = [
       article("morning-protein-drink", "아침 대용 단백질 음료", "공복과 출근길 기준으로 아침 대용 단백질 음료를 고르는 법을 정리합니다.", "/guides/intake-strategy-health/morning-protein-drink", { emoji: "🌅", tags: ["아침", "음료", "식사대용"] }),
       article("protein-drink-without-exercise", "운동 안 해도 단백질 음료", "운동을 안 해도 단백질 음료가 필요한 상황을 정리합니다.", "/guides/intake-strategy-health/protein-drink-without-exercise", { emoji: "🥛", tags: ["입문", "생활 보완"] }),
       article("protein-drink-meal-replacement", "단백질 음료 식사대용", "단백질 음료가 한 끼 대체가 되는지 제품군별로 나눠 설명합니다.", "/guides/intake-strategy-health/protein-drink-meal-replacement", { emoji: "🥣", tags: ["식사대용", "보완"] }),
+      article("protein-drink-with-meals", "단백질 음료와 식사 조합", "단백질 음료에 채소·탄수화물·식이섬유를 어떻게 조합할지 아침·간식·운동 후 상황별로 정리합니다.", "/guides/intake-strategy-health/protein-drink-with-meals", { emoji: "🍽️", tags: ["식사", "음료", "간식"] }),
       article("night-protein-drink", "밤에 단백질 음료 마셔도 될까", "저녁, 야식, 자기 전 상황에서 어떤 제품이 맞는지 정리합니다.", "/guides/intake-strategy-health/night-protein-drink", { emoji: "🌙", tags: ["저녁", "야식", "저당"] }),
       article("diet-protein-drink-strategy", "다이어트 중 단백질 음료 어떻게 마실까", "저당, 저칼로리, 포만감 기준으로 감량 중 제품 선택법을 정리합니다.", "/guides/intake-strategy-health/diet-protein-drink-strategy", { emoji: "🥗", tags: ["다이어트", "저당", "포만감"] }),
       article("protein-50g-at-once", "단백질 50g 한 번에 먹어도 될까", "체중별·타이밍별로 50g 섭취가 적절한지 판단하는 기준을 정리합니다.", "/guides/intake-strategy-health/protein-50g-at-once", { emoji: "🥤", tags: ["초고단백", "섭취량"] }),
