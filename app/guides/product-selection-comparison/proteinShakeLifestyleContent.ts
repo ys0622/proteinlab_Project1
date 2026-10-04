@@ -18,7 +18,7 @@ function articleJsonLd(config: CategoryGuideConfig) {
       name: "ProteinLab",
       logo: { "@type": "ImageObject", url: "https://proteinlab.kr/proteinlab-logo.png" },
     },
-    dateModified: "2026-03-24",
+    dateModified: config.updatedAt ?? "2026-03-24",
   };
 }
 
@@ -61,15 +61,15 @@ const morningShakePicks = [
   getBySlug("allthebetter-proteinshake-low-sugar-17grain-misugaru-45"),
 ];
 
-const oliveYoungShakePicks = shakeProducts
+const oliveYoungShakeProducts = shakeProducts
   .filter((product) => product.officialUrl?.includes("oliveyoung.co.kr"))
   .sort(
     (a, b) =>
       (a.calories ?? 999) - (b.calories ?? 999) ||
       (a.sugar ?? 99) - (b.sugar ?? 99) ||
       b.proteinPerServing - a.proteinPerServing,
-  )
-  .slice(0, 6);
+  );
+const oliveYoungShakePicks = oliveYoungShakeProducts.slice(0, 6);
 
 export const proteinShakeForWomenConfig: CategoryGuideConfig = {
   slug: "protein-shake-for-women",
@@ -354,22 +354,22 @@ morningProteinShakeConfig.jsonLd = [articleJsonLd(morningProteinShakeConfig), fa
 
 export const oliveYoungProteinShakeConfig: CategoryGuideConfig = {
   slug: "oliveyoung-protein-shake",
-  title: "올리브영 단백질 쉐이크 추천 | 단품 테스트하기 좋은 브랜드 비교",
+  title: "올리브영 단백질쉐이크 추천 (2026) | 올더배러·프롬잇 성분 비교",
   description:
-    "올리브영에서 먼저 사보기 좋은 단백질 쉐이크 브랜드를 정리했습니다. 단품 테스트, 당일 픽업, 쿠팡 박스 구매와의 차이까지 한 번에 비교할 수 있습니다.",
-  keywords: ["올리브영 단백질 쉐이크", "올리브영 프로틴", "올리브영 단백질 추천", "올리브영 쉐이크"],
+    `올리브영 채널이 확인된 단백질쉐이크 ${oliveYoungShakeProducts.length}종 중 올더배러·프롬잇 대표 제품의 단백질·칼로리·당류를 비교하고 다이어트 식단과 식사대용 선택 기준을 정리했습니다.`,
+  keywords: ["올리브영 단백질 쉐이크", "올리브영 단백질쉐이크 추천", "올리브영 프로틴쉐이크", "다이어트 단백질 쉐이크", "식사대용 쉐이크"],
   badge: "올리브영 쉐이크",
   readingTime: "4분 읽기",
-  updatedAt: "2026-03-24",
-  methodologyNote: "ProteinLab DB 기준 · officialUrl에 올리브영 브랜드/채널이 확인되는 제품 중심",
+  updatedAt: "2026-10-04",
+  methodologyNote: `ProteinLab DB ${oliveYoungShakeProducts.length}종 기준 · officialUrl에 올리브영 브랜드/채널이 확인되는 제품 중심`,
   intro:
-    "쉐이크를 처음 사는 사람에게는 숫자보다 어디서 첫 구매를 시작할지가 더 중요할 때가 많습니다. 올리브영은 단품 테스트와 오프라인 픽업이 가능해서 박스 구매 전 맛을 확인하는 단계에 특히 강합니다. 이 페이지는 그 기준으로 브랜드 후보를 먼저 좁혀보게 만드는 채널형 가이드입니다.",
+    "올리브영 단백질쉐이크를 찾는 사람은 단순 고단백보다 다이어트 식단, 바쁜 아침 식사대용, 맛 테스트까지 함께 보는 경우가 많습니다. 올리브영 공식 자료에서도 2026년 1~7월 파우치형 단백질 쉐이크 매출이 전년 동기 대비 두 배 이상 성장했다고 설명합니다. 이 페이지는 올리브영 채널이 확인된 제품을 단백질·칼로리·당류로 좁히고, 단품 테스트 후 반복 구매로 넘어가는 기준을 정리했습니다.",
   summary: [
-    "올리브영 쉐이크는 단품 테스트와 당일 구매에 강하고, 쿠팡은 박스 구매 시 개당 단가가 더 유리합니다.",
-    "현재 로컬 DB 기준으로는 올더배러, 단백하니 계열이 올리브영 채널 접근성이 뚜렷합니다.",
-    "채널형 페이지에서는 순수 스펙보다 처음 시작하기 쉬운 브랜드인가가 더 중요합니다.",
+    `ProteinLab DB에서 올리브영 채널이 확인된 제품은 현재 ${oliveYoungShakeProducts.length}종이며 대표 후보는 올더배러와 프롬잇입니다.`,
+    "다이어트 식단이면 칼로리와 당류를, 아침 식사대용이면 단백질과 포만감을 먼저 봐야 합니다.",
+    "처음에는 올리브영 단품으로 맛을 확인하고, 정착한 제품은 박스 단가를 비교하는 흐름이 효율적입니다.",
   ],
-  comparisonTitle: "올리브영 입점 쉐이크",
+  comparisonTitle: `올리브영 채널 확인 ${oliveYoungShakeProducts.length}종 중 대표 6종`,
   comparisonColumns: ["제품명", "단백질", "칼로리", "당류", "채널 메모"],
   comparisonRows: oliveYoungShakePicks.map((product) => ({
     label: product.brand,
@@ -382,6 +382,23 @@ export const oliveYoungProteinShakeConfig: CategoryGuideConfig = {
     ],
   })),
   sections: [
+    {
+      title: "2026년 올리브영 쉐이크 수요",
+      items: [
+        {
+          title: "운동 보충에서 일상 식사대용으로 확대",
+          body: "올리브영 공식 자료는 파우치형 단백질 쉐이크가 운동 전후 보충을 넘어 바쁜 아침과 점심용으로 확장됐다고 설명합니다. 검색에서도 다이어트 식단과 식사대용 의도를 함께 봐야 하는 이유입니다.",
+        },
+        {
+          title: "단백질 숫자만으로 고르지 않기",
+          body: "반복해서 먹는 제품은 단백질 함량 외에도 당류, 칼로리, 토핑 식감과 포만감이 중요합니다. 같은 20g대 제품이라도 쓰임이 달라질 수 있습니다.",
+        },
+        {
+          title: "검색 화제어와 구매 키워드 구분",
+          body: "SNS에는 연예인 이름이나 유행 해시태그가 함께 뜨지만, 실제 제품 선택 페이지는 단백질쉐이크 추천·다이어트 식단·프로틴쉐이크처럼 지속적인 문제 해결 키워드를 우선하는 편이 안전합니다.",
+        },
+      ],
+    },
     {
       title: "올리브영이 유리한 이유",
       items: [
@@ -460,6 +477,11 @@ export const oliveYoungProteinShakeConfig: CategoryGuideConfig = {
       href: "/guides/product-selection-comparison/protein-shake-top7",
       description: "채널이 아니라 전체 쉐이크 시장 기준 상위권 제품을 보고 싶다면 TOP 7으로 이어집니다.",
     },
+    {
+      title: "2026 단백질 쉐이크 신제품 24종",
+      href: "/guides/product-selection-comparison/protein-shake-new-products-2026",
+      description: "딜라이트 프로젝트와 테이크핏 브레드밀 등 최근 등록 제품을 브랜드별로 비교합니다.",
+    },
   ],
   purchaseLinks: oliveYoungShakePicks.slice(0, 3).map((product) => ({
     label: `${formatProductLabel(product.brand, product.name)} 보기`,
@@ -475,6 +497,11 @@ export const oliveYoungProteinShakeConfig: CategoryGuideConfig = {
       label: "올더배러 올리브영 브랜드 페이지",
       href: "https://m.oliveyoung.co.kr/m/mtn/brand/allthebetter",
       description: "올리브영 채널에서 저당 쉐이크를 중심으로 비교해 보기 좋은 브랜드입니다.",
+    },
+    {
+      label: "올리브영 공식 단백질 쉐이크 트렌드",
+      href: "https://corp.oliveyoung.com/ko/newsroom/editorial/143",
+      description: "2026년 파우치형 단백질 쉐이크 성장과 식사대용·원료·포만감 선택 기준을 설명한 올리브영 공식 자료입니다.",
     },
   ],
   faq: [
@@ -493,11 +520,11 @@ export const oliveYoungProteinShakeConfig: CategoryGuideConfig = {
   ],
 };
 oliveYoungProteinShakeConfig.methodologyNote =
-  "ProteinLab DB 기준 · officialUrl에 올리브영 브랜드/채널이 확인되는 제품 중심, 실제 입점/재고는 변동 가능";
+  `ProteinLab DB ${oliveYoungShakeProducts.length}종 기준 · officialUrl에 올리브영 브랜드/채널이 확인되는 제품 중심, 실제 입점/재고는 변동 가능`;
 oliveYoungProteinShakeConfig.summary = [
-  "올리브영 쉐이크는 단품 테스트와 당일 구매에 강하고, 쿠팡은 박스 구매 시 개당 단가가 유리합니다.",
-  "현재 로컬 DB 기준으로는 올더배러, 단백하니 계열이 올리브영 채널 접근성이 뚜렷합니다.",
-  "이 페이지는 올리브영 채널에서 접근 가능한 브랜드/제품 후보를 정리한 가이드이고, 실제 오프라인 재고나 입점 상태는 매장별로 달라질 수 있습니다.",
+  `ProteinLab DB에서 올리브영 채널이 확인된 제품은 현재 ${oliveYoungShakeProducts.length}종이며 대표 후보는 올더배러와 프롬잇입니다.`,
+  "다이어트 식단이면 칼로리와 당류를, 아침 식사대용이면 단백질과 포만감을 먼저 봐야 합니다.",
+  "입점과 재고는 매장별로 달라질 수 있으므로 단품 테스트 전 올리브영 앱에서 재고를 확인하는 편이 안전합니다.",
 ];
 oliveYoungProteinShakeConfig.faq = [
   ...(oliveYoungProteinShakeConfig.faq ?? []),
