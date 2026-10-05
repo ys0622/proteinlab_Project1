@@ -1,7 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { useRef, useState } from "react";
+import { useState } from "react";
+import AutoProductCarousel from "./AutoProductCarousel";
 import type { ProductCardProps } from "../data/productTypes";
 import ProductCard from "./ProductCard";
 
@@ -24,11 +25,9 @@ const MAX_PRODUCTS = 10;
 
 export default function HomePopularCarousel({ products }: Props) {
   const [tabIdx, setTabIdx] = useState(0);
-  const trackRef = useRef<HTMLDivElement>(null);
 
   const handleTabClick = (idx: number) => {
     setTabIdx(idx);
-    trackRef.current?.scrollTo({ left: 0, behavior: "smooth" });
   };
 
   const curTab = TABS[tabIdx];
@@ -81,18 +80,7 @@ export default function HomePopularCarousel({ products }: Props) {
         </div>
       </div>
 
-      {/* 사용자가 직접 스와이프해 10위까지 탐색한다. */}
-      <div
-        ref={trackRef}
-        className="flex gap-3"
-        style={{
-          overflowX: "auto",
-          scrollSnapType: "x mandatory",
-          scrollbarWidth: "none",
-          WebkitOverflowScrolling: "touch",
-          paddingBottom: "6px",
-        } as React.CSSProperties}
-      >
+      <AutoProductCarousel key={curTab.key} label="조회 많은 제품">
         {curProducts.map((product, i) => {
           const rank = i + 1;
           return (
@@ -129,7 +117,7 @@ export default function HomePopularCarousel({ products }: Props) {
             </div>
           );
         })}
-      </div>
+      </AutoProductCarousel>
 
       {/* Mobile category selector */}
       <div className="mt-2 flex items-center justify-center gap-1.5 md:hidden">

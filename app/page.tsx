@@ -7,8 +7,10 @@ import NewsletterBanner from "./components/NewsletterBanner";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import HomePopularCarousel, { type CarouselProduct } from "./components/HomePopularCarousel";
+import GoldboxEntry from "./components/GoldboxEntry";
 import HomeTrackedLink from "./components/HomeTrackedLink";
 import ProductCard from "./components/ProductCard";
+import AutoProductCarousel from "./components/AutoProductCarousel";
 import newProductsRaw from "./data/newProducts.json";
 import type { ProductDetailProps } from "./data/products";
 import { getProductsByCategoryAsync } from "./lib/productData";
@@ -138,7 +140,7 @@ export default async function Home() {
     .sort((a, b) => b.addedAt.localeCompare(a.addedAt))
     .map((entry) => ({ entry, product: productBySlug.get(entry.slug) }))
     .filter((item): item is { entry: { slug: string; addedAt: string }; product: ProductDetailProps } => item.product != null)
-    .slice(0, 4);
+    .slice(0, 12);
 
   const carouselProducts = {
     drink: topDrinks.map(toCarouselProduct),
@@ -147,10 +149,12 @@ export default async function Home() {
     shake: topShakes.map(toCarouselProduct),
   };
 
+
   return (
     <div className="min-h-screen" style={{ background: "#FAF8F3" }}>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }} />
       <Header />
+      <GoldboxEntry />
 
       {/* ─── 1. Hero (베이직 톤 박스 + 검색창) ─── */}
       <section className="mx-auto max-w-[1180px] px-4 pt-1.5 md:px-5 md:pt-4">
@@ -259,6 +263,7 @@ export default async function Home() {
         </div>
       </section>
 
+
       {/* ─── 4. 이번 주 인기 제품 ─── */}
       <section className="mx-auto max-w-[1180px] px-4 pt-3 md:px-5 md:pt-4">
         <HomePopularCarousel products={carouselProducts} />
@@ -279,8 +284,9 @@ export default async function Home() {
               {newlyAdded[0].entry.addedAt} 업데이트
             </span>
           </div>
-          <div className="grid grid-cols-4 gap-3">
+          <AutoProductCarousel label="새로 등록된 제품">
             {newlyAdded.map(({ product }) => (
+              <div key={product.slug} className="flex w-[calc((100%-36px)/4)] shrink-0 snap-start">
               <ProductCard
                 key={product.slug}
                 {...toCarouselProduct(product)}
@@ -289,8 +295,9 @@ export default async function Home() {
                 hideSupplementalBadges
                 coupangOnly
               />
+              </div>
             ))}
-          </div>
+          </AutoProductCarousel>
         </section>
       ) : null}
 

@@ -32,7 +32,9 @@ export type LinkPosition =
   | "comparison_result"
   | "recommend_result"
   | "ranking"
-  | "home_featured";
+  | "home_featured"
+  | "goldbox_entry"
+  | "goldbox_deal";
 export type StandardEventName =
   | "product_card_click"
   | "product_detail_view"

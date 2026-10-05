@@ -1,0 +1,31 @@
+name: Refresh Goldbox
+
+on:
+  schedule:
+    # UTC: daily 07:35 and 08:05 Asia/Seoul.
+    - cron: '35 22 * * *'
+    - cron: '5 23 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: goldbox-refresh
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - name: Refresh live Goldbox snapshot and check availability
+        shell: bash
+        run: |
+          curl --fail --silent --show-error --location --max-time 45 \
+            --retry 2 --retry-delay 15 \
+            https://proteinlab.kr/goldbox -o /tmp/goldbox.html
+          if ! grep -q 'data-goldbox-status="ready"' /tmp/goldbox.html; then
+            echo "::error::Goldbox data unavailable; check Partners API credentials and connectivity."
+            exit 1
+          fi
