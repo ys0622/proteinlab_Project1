@@ -154,10 +154,12 @@ export default async function Home() {
     <div className="min-h-screen" style={{ background: "#FAF8F3" }}>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }} />
       <Header />
-      <GoldboxEntry />
 
       {/* ─── 1. Hero (베이직 톤 박스 + 검색창) ─── */}
       <section className="mx-auto max-w-[1180px] px-4 pt-1.5 md:px-5 md:pt-4">
+        <div className="md:mb-2 md:flex md:justify-end">
+          <GoldboxEntry />
+        </div>
         <div className="relative overflow-hidden rounded-[16px]" style={{ background: "#F2ECDD" }}>
           {/* 데스크톱: 우측 배경 블렌딩 이미지 */}
           <div
