@@ -27,18 +27,18 @@ export default async function GoldboxPage({ searchParams }: { searchParams: Prom
       offerName: "화면 예시 · 판매 구성 확인 전", price: [19900, 15900, 12900, 24900][index], href: null,
     }));
   }
-  // App-confirmed offer omitted by the API; midnight is an editorial cutoff.
-  const manualProduct = products.find(product => product.slug === "hymune-balance-active-original-250");
+  // App-confirmed offer omitted by the Partners API; midnight is an editorial cutoff.
+  const manualProduct = products.find(product => product.slug === "hymune-protein-balance-choco-190");
   // Dynamic server response: evaluate the editorial expiry on each request.
   // eslint-disable-next-line react-hooks/purity
-  const manualOfferActive = Date.now() >= Date.parse("2026-10-06T08:10:00+09:00") && Date.now() < Date.parse("2026-10-07T00:00:00+09:00");
+  const manualOfferActive = Date.now() >= Date.parse("2026-10-07T07:33:00+09:00") && Date.now() < Date.parse("2026-10-08T00:00:00+09:00");
   if (!preview && manualProduct && manualOfferActive && !cards.some(card => card.slug === manualProduct.slug)) {
     cards.unshift({
-      id: "app-confirmed-6979534638-15078790606", slug: manualProduct.slug,
+      id: "app-confirmed-9409116061-27985054988", slug: manualProduct.slug,
       name: manualProduct.name, brand: manualProduct.brand, category: "drink",
       image: getProductImageUrl(manualProduct.slug) ?? "",
-      offerName: "250mL × 18개 · 와우회원 할인 · 10/6 08:10 쿠팡 앱 확인",
-      price: 23800, href: "https://link.coupang.com/a/e8NY4Oy9YW",
+      offerName: "190mL × 24개 · 와우회원 할인 · 10/7 07:33 쿠팡 앱 확인",
+      price: 19360, href: manualProduct.coupangUrl,
     });
   }
   return <div className="min-h-screen bg-[#faf8f3]"><Header />
