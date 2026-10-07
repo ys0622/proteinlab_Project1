@@ -8,6 +8,7 @@ import type { ProductDetailProps } from "../data/products";
 import { getCategoryHref, getCategoryLabel, type ProductCategory } from "../lib/categories";
 import { getProductsByCategoryAsync } from "../lib/productData";
 import { isExcludedFromPopularityRanking } from "../lib/productScoring";
+import { getRecentPopularity } from "../lib/recentPopularity";
 
 export const revalidate = 300; // 5분마다 재생성 (조회수 실시간 반영)
 
@@ -49,19 +50,10 @@ export default async function TrendingPage() {
     getProductsByCategoryAsync("bar"),
     getProductsByCategoryAsync("yogurt"),
     getProductsByCategoryAsync("shake"),
-    fetch(`${process.env.NEXT_PUBLIC_BASE_URL ?? "https://proteinlab.kr"}/api/popular`, {
-      next: { revalidate: 300 },
-      signal: AbortSignal.timeout(4000),
-    }).then((r) => {
-      if (!r.ok) throw new Error(`Popular views unavailable: ${r.status}`);
-      return r.json();
-    }).catch(() => ({ views: {}, available: false })),
+    getRecentPopularity(),
   ]);
 
-  const { views = {}, available = false } = popularRes as {
-    views?: Record<string, Record<string, number>>;
-    available?: boolean;
-  };
+  const { views, available } = popularRes;
 
   const byCategory: Record<ProductCategory, ProductDetailProps[]> = {
     drink: drinks,
@@ -100,7 +92,7 @@ export default async function TrendingPage() {
             최근 7일 많이 본 단백질 제품
           </h1>
           <p className="mt-2 max-w-[760px] text-sm leading-6 text-[var(--foreground-muted)] md:text-[15px]">
-            제품 상세페이지를 방문한 세션당 1회 조회를 최근 7일 기준으로 집계합니다. 순위는 약 30분 간격으로 갱신됩니다.
+            같은 브라우저 탭에서 제품별 반복 방문을 한 번으로 세어 최근 7일 조회를 집계합니다. 순위는 약 30분 간격으로 갱신됩니다.
           </p>
           <div className="mt-4 flex flex-wrap gap-2">
             <Link

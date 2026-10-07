@@ -16,6 +16,7 @@ import type { ProductDetailProps } from "./data/products";
 import { getProductsByCategoryAsync } from "./lib/productData";
 import { getCategoryProductCounts } from "./lib/productCounts";
 import { isExcludedFromPopularityRanking } from "./lib/productScoring";
+import { getRecentPopularity } from "./lib/recentPopularity";
 
 export const revalidate = 300; // 5분마다 재생성 (조회수 반영)
 
@@ -106,26 +107,17 @@ export default async function Home() {
     getProductsByCategoryAsync("bar"),
     getProductsByCategoryAsync("yogurt"),
     getProductsByCategoryAsync("shake"),
-    // 최근 7일 상세페이지 조회수. 실패 시 임의 순위를 만들지 않는다.
-    fetch(`${process.env.NEXT_PUBLIC_BASE_URL ?? "https://proteinlab.kr"}/api/popular`, {
-      next: { revalidate: 300 },
-      signal: AbortSignal.timeout(4000),
-    }).then((r) => {
-      if (!r.ok) throw new Error(`Popular views unavailable: ${r.status}`);
-      return r.json();
-    }).catch(() => ({ views: {}, available: false })),
+    // Worker 자기 호출 대신 공유 KV 스냅샷을 직접 읽는다.
+    getRecentPopularity(),
   ]);
 
   // views: { drink: {slug: count}, bar: {...}, ... }
-  const { views = {}, available = false } = popularRes as {
-    views?: Record<string, Record<string, number>>;
-    available?: boolean;
-  };
+  const { views, available } = popularRes;
 
   const categoryCounts = getCategoryProductCounts({ drink: drinks, bar: bars, yogurt: yogurts, shake: shakes });
 
   // 홈 인기 제품은 실제 상세 페이지 조회수만 기준으로 정렬한다.
-  const sortByViews = (products: ProductDetailProps[], type: string) => {
+  const sortByViews = (products: ProductDetailProps[], type: "drink" | "bar" | "yogurt" | "shake") => {
     return products
       .filter((p) => p.slug && !isExcludedFromPopularityRanking(p))
       .map((p) => ({ p, viewCount: views[type]?.[p.slug ?? ""] ?? 0 }))
