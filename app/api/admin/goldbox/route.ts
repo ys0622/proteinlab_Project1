@@ -33,7 +33,7 @@ export async function GET() {
   ]);
   const matchedIds = new Set(matchRegisteredProductsToGoldbox(products, snapshot.products).map(item => item.deal.productId));
   const unmatchedCandidates = snapshot.products
-    .filter(item => !matchedIds.has(item.productId) && /단백질|프로틴|protein|쉐이크|요거트/i.test(item.productName))
+    .filter(item => !matchedIds.has(item.productId) && /단백질|프로틴|protein|쉐이크|요거트|두유/i.test(item.productName))
     .slice(0, 30)
     .map(item => ({ productId: item.productId, name: item.productName, price: item.productPrice, href: item.productUrl }));
   return NextResponse.json({ offers, unmatchedCandidates }, { headers: { "Cache-Control": "no-store" } });

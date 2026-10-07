@@ -111,7 +111,7 @@ export default function AdminGoldboxPage() {
       {offers.length === 0 && <p className="mt-3 text-sm text-[#66736a]">게시 중인 확인 특가가 없습니다.</p>}
     </section>
     <section className="rounded-xl border bg-white p-5"><h2 className="font-bold">API에는 있지만 등록 제품과 매칭되지 않은 후보</h2>
-      <p className="mt-1 text-xs text-[#66736a]">상품명에 단백질·프로틴·쉐이크·요거트가 들어간 후보만 표시합니다. 동일 제품인지 옵션과 구성을 확인하세요.</p>
+      <p className="mt-1 text-xs text-[#66736a]">상품명에 단백질·프로틴·쉐이크·요거트·두유가 들어간 후보만 표시합니다. 동일 제품인지 옵션과 구성을 확인하세요.</p>
       <ul className="mt-3 space-y-2 text-sm">{candidates.map(item => <li key={item.productId} className="rounded border p-3"><a href={item.href} target="_blank" rel="sponsored noreferrer noopener" className="font-semibold text-[#16412d] underline">{item.name}</a><p className="mt-1 text-xs">ID {item.productId} · {item.price.toLocaleString("ko-KR")}원</p></li>)}</ul>
       {candidates.length === 0 && <p className="mt-3 text-sm text-[#66736a]">현재 확인할 후보가 없습니다.</p>}
     </section>
