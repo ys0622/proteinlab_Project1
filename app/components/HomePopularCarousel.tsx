@@ -19,11 +19,12 @@ const TABS: { key: CategoryKey; label: string; href: string }[] = [
 
 interface Props {
   products: Record<CategoryKey, CarouselProduct[]>;
+  available: boolean;
 }
 
 const MAX_PRODUCTS = 10;
 
-export default function HomePopularCarousel({ products }: Props) {
+export default function HomePopularCarousel({ products, available }: Props) {
   const [tabIdx, setTabIdx] = useState(0);
 
   const handleTabClick = (idx: number) => {
@@ -42,7 +43,7 @@ export default function HomePopularCarousel({ products }: Props) {
             className="shrink-0 font-extrabold text-[15px] md:text-[24px]"
             style={{ color: "#1A2B1E", letterSpacing: "-0.02em" }}
           >
-            조회 많은 제품
+            최근 7일 많이 본 제품
           </h2>
           <span className="rounded-full bg-[#EEF3EF] px-2 py-0.5 text-[10px] font-bold text-[#5E6E61] md:text-[11px]">
             {curTab.label}
@@ -54,7 +55,7 @@ export default function HomePopularCarousel({ products }: Props) {
       </div>
       <div className="mb-3 hidden flex-nowrap items-center justify-between gap-2 md:flex">
         <h2 className="shrink-0 text-[24px] font-extrabold" style={{ color: "#1A2B1E", letterSpacing: "-0.02em" }}>
-          조회 많은 제품
+          최근 7일 많이 본 제품
         </h2>
         <div className="flex min-w-0 shrink-0 items-center gap-2">
           <div className="flex gap-1">
@@ -80,7 +81,11 @@ export default function HomePopularCarousel({ products }: Props) {
         </div>
       </div>
 
-      <AutoProductCarousel key={curTab.key} label="조회 많은 제품">
+      {curProducts.length === 0 ? (
+        <div className="rounded-xl border border-[#E3E8E4] bg-white px-4 py-6 text-center text-sm text-[#5E6E61]">
+          {available ? "최근 7일 조회 기록이 없습니다." : "조회 순위를 잠시 불러올 수 없습니다."}
+        </div>
+      ) : <AutoProductCarousel key={curTab.key} label="최근 7일 많이 본 제품">
         {curProducts.map((product, i) => {
           const rank = i + 1;
           return (
@@ -117,7 +122,7 @@ export default function HomePopularCarousel({ products }: Props) {
             </div>
           );
         })}
-      </AutoProductCarousel>
+      </AutoProductCarousel>}
 
       {/* Mobile category selector */}
       <div className="mt-2 flex items-center justify-center gap-1.5 md:hidden">

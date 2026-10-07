@@ -106,15 +106,21 @@ export default async function Home() {
     getProductsByCategoryAsync("bar"),
     getProductsByCategoryAsync("yogurt"),
     getProductsByCategoryAsync("shake"),
-    // KV에서 실제 조회수 가져오기 (실패해도 빈 객체로 폴백)
+    // 최근 7일 상세페이지 조회수. 실패 시 임의 순위를 만들지 않는다.
     fetch(`${process.env.NEXT_PUBLIC_BASE_URL ?? "https://proteinlab.kr"}/api/popular`, {
       next: { revalidate: 300 },
-      signal: AbortSignal.timeout(1500),
-    }).then((r) => r.json()).catch(() => ({ views: {} })),
+      signal: AbortSignal.timeout(4000),
+    }).then((r) => {
+      if (!r.ok) throw new Error(`Popular views unavailable: ${r.status}`);
+      return r.json();
+    }).catch(() => ({ views: {}, available: false })),
   ]);
 
   // views: { drink: {slug: count}, bar: {...}, ... }
-  const views = (popularRes as { views: Record<string, Record<string, number>> }).views ?? {};
+  const { views = {}, available = false } = popularRes as {
+    views?: Record<string, Record<string, number>>;
+    available?: boolean;
+  };
 
   const categoryCounts = getCategoryProductCounts({ drink: drinks, bar: bars, yogurt: yogurts, shake: shakes });
 
@@ -123,7 +129,8 @@ export default async function Home() {
     return products
       .filter((p) => p.slug && !isExcludedFromPopularityRanking(p))
       .map((p) => ({ p, viewCount: views[type]?.[p.slug ?? ""] ?? 0 }))
-      .sort((a, b) => b.viewCount - a.viewCount)
+      .filter(({ viewCount }) => viewCount > 0)
+      .sort((a, b) => b.viewCount - a.viewCount || a.p.name.localeCompare(b.p.name))
       .map(({ p }) => p)
       .slice(0, 10);
   };
@@ -268,7 +275,7 @@ export default async function Home() {
 
       {/* ─── 4. 이번 주 인기 제품 ─── */}
       <section className="mx-auto max-w-[1180px] px-4 pt-3 md:px-5 md:pt-4">
-        <HomePopularCarousel products={carouselProducts} />
+        <HomePopularCarousel products={carouselProducts} available={available} />
         <div className="mt-2 hidden justify-end md:flex">
           <Link href="/trending" className="text-[12px] font-semibold text-[#1F5A3D] hover:underline">
             카테고리별 실시간 인기 순위 전체 보기 →
