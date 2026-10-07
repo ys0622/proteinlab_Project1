@@ -278,7 +278,7 @@ export default async function Home() {
         <HomePopularCarousel products={carouselProducts} available={available} />
         <div className="mt-2 hidden justify-end md:flex">
           <Link href="/trending" className="text-[12px] font-semibold text-[#1F5A3D] hover:underline">
-            카테고리별 실시간 인기 순위 전체 보기 →
+            카테고리별 최근 7일 조회 순위 보기 →
           </Link>
         </div>
       </section>

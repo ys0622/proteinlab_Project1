@@ -7,13 +7,13 @@ import ProductCard from "../components/ProductCard";
 import type { ProductDetailProps } from "../data/products";
 import { getCategoryHref, getCategoryLabel, type ProductCategory } from "../lib/categories";
 import { getProductsByCategoryAsync } from "../lib/productData";
-import { hybridScore, isExcludedFromPopularityRanking } from "../lib/productScoring";
+import { isExcludedFromPopularityRanking } from "../lib/productScoring";
 
 export const revalidate = 300; // 5분마다 재생성 (조회수 실시간 반영)
 
 const canonical = "https://proteinlab.kr/trending";
-const title = "실시간 인기 단백질 제품 순위 — 이번 주 가장 많이 본 제품";
-const description = "방문자 실제 조회수를 기준으로 지금 가장 관심을 받고 있는 단백질 음료, 바, 요거트, 쉐이크를 카테고리별로 확인합니다.";
+const title = "최근 7일 많이 본 단백질 제품 순위";
+const description = "최근 7일간 방문자가 상세페이지에서 실제로 조회한 단백질 음료, 바, 요거트, 쉐이크 순위를 카테고리별로 확인합니다.";
 
 export const metadata: Metadata = {
   title,
@@ -51,10 +51,17 @@ export default async function TrendingPage() {
     getProductsByCategoryAsync("shake"),
     fetch(`${process.env.NEXT_PUBLIC_BASE_URL ?? "https://proteinlab.kr"}/api/popular`, {
       next: { revalidate: 300 },
-    }).then((r) => r.json()).catch(() => ({ views: {} })),
+      signal: AbortSignal.timeout(4000),
+    }).then((r) => {
+      if (!r.ok) throw new Error(`Popular views unavailable: ${r.status}`);
+      return r.json();
+    }).catch(() => ({ views: {}, available: false })),
   ]);
 
-  const views = (popularRes as { views: Record<string, Record<string, number>> }).views ?? {};
+  const { views = {}, available = false } = popularRes as {
+    views?: Record<string, Record<string, number>>;
+    available?: boolean;
+  };
 
   const byCategory: Record<ProductCategory, ProductDetailProps[]> = {
     drink: drinks,
@@ -66,17 +73,19 @@ export default async function TrendingPage() {
   const topByCategory = (type: ProductCategory) =>
     byCategory[type]
       .filter((p) => p.slug && !isExcludedFromPopularityRanking(p))
-      .map((p) => ({ p, score: hybridScore(p, views[type]?.[p.slug ?? ""] ?? 0) }))
-      .sort((a, b) => b.score - a.score)
+      .map((p) => ({ p, viewCount: views[type]?.[p.slug ?? ""] ?? 0 }))
+      .filter(({ viewCount }) => viewCount > 0)
+      .sort((a, b) => b.viewCount - a.viewCount || a.p.name.localeCompare(b.p.name))
       .slice(0, 8)
       .map(({ p }) => p);
+  const hasRankedProducts = CATEGORIES.some(({ type }) => topByCategory(type).length > 0);
 
   const breadcrumbJsonLd = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
       { "@type": "ListItem", position: 1, name: "ProteinLab", item: "https://proteinlab.kr/" },
-      { "@type": "ListItem", position: 2, name: "실시간 인기", item: canonical },
+      { "@type": "ListItem", position: 2, name: "최근 7일 조회 순위", item: canonical },
     ],
   };
 
@@ -88,11 +97,10 @@ export default async function TrendingPage() {
       <section className="w-full border-b border-t" style={{ background: "#FAF8F3", borderColor: "#E7DFC9" }}>
         <div className="mx-auto max-w-[1200px] px-4 py-6 md:px-6 md:py-7">
           <h1 className="text-2xl font-bold leading-[1.25] md:text-3xl" style={{ color: "#16412D" }}>
-            실시간 인기 단백질 제품
+            최근 7일 많이 본 단백질 제품
           </h1>
           <p className="mt-2 max-w-[760px] text-sm leading-6 text-[var(--foreground-muted)] md:text-[15px]">
-            방문자들이 실제로 가장 많이 조회한 제품을 카테고리별로 보여줍니다. 5분마다 자동으로 갱신되며,
-            단순 조회수뿐 아니라 단백질 밀도·당류 같은 품질 지표도 함께 반영합니다.
+            제품 상세페이지를 방문한 세션당 1회 조회를 최근 7일 기준으로 집계합니다. 순위는 약 30분 간격으로 갱신됩니다.
           </p>
           <div className="mt-4 flex flex-wrap gap-2">
             <Link
@@ -114,6 +122,11 @@ export default async function TrendingPage() {
       </section>
 
       <main className="mx-auto max-w-[1200px] px-4 pb-12 pt-6 md:px-6">
+        {!hasRankedProducts ? (
+          <div className="rounded-xl border border-[#E3E8E4] bg-white px-4 py-8 text-center text-sm text-[#5E6E61]">
+            {available ? "최근 7일 조회 기록이 없습니다." : "조회 순위를 잠시 불러올 수 없습니다."}
+          </div>
+        ) : null}
         {CATEGORIES.map(({ type, emoji }) => {
           const top = topByCategory(type);
           if (top.length === 0) return null;

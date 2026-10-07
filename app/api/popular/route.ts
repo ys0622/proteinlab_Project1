@@ -13,6 +13,13 @@ interface KVNamespace {
 
 const VALID_TYPES = ["drink", "bar", "yogurt", "shake"] as const;
 type ProductType = (typeof VALID_TYPES)[number];
+type ViewCounts = Record<ProductType, Record<string, number>>;
+type PopularSnapshot = { views: ViewCounts; generatedAt: string; periodDays: 7 };
+
+const SNAPSHOT_KEY = "popular:views:7d:v1";
+const FRESH_MS = 30 * 60 * 1000;
+const MAX_STALE_MS = 60 * 60 * 1000;
+let backgroundRefresh: Promise<unknown> | undefined;
 
 // UTC 날짜는 조회 기록을 저장할 때 쓰는 기준과 동일하다.
 function last7DayKeys(): Set<string> {
@@ -36,7 +43,7 @@ async function recentViewsForType(kv: KVNamespace, type: ProductType, days: Set<
     cursor = page.list_complete ? undefined : page.cursor;
   } while (cursor);
 
-  const counts: Record<string, number> = {};
+  const counts: Record<string, number> = Object.create(null);
   // KV 조회를 직렬로 수행하면 수십 초가 걸린다. 제한된 배치로 병렬 조회한다.
   for (let offset = 0; offset < keys.length; offset += 50) {
     const batch = keys.slice(offset, offset + 50);
@@ -50,24 +57,54 @@ async function recentViewsForType(kv: KVNamespace, type: ProductType, days: Set<
   return counts;
 }
 
+async function buildSnapshot(kv: KVNamespace): Promise<PopularSnapshot> {
+  const days = last7DayKeys();
+  const entries = await Promise.all(
+    VALID_TYPES.map(async (type) => [type, await recentViewsForType(kv, type, days)] as const),
+  );
+  const snapshot: PopularSnapshot = {
+    views: Object.fromEntries(entries) as ViewCounts,
+    generatedAt: new Date().toISOString(),
+    periodDays: 7,
+  };
+  await kv.put(SNAPSHOT_KEY, JSON.stringify(snapshot));
+  return snapshot;
+}
+
+function snapshotResponse(snapshot: PopularSnapshot) {
+  return NextResponse.json({ ...snapshot, available: true }, {
+    headers: { "Cache-Control": "s-maxage=60, stale-while-revalidate=120" },
+  });
+}
+
 export async function GET() {
   try {
-    const { env } = await getCloudflareContext({ async: true });
+    const { env, ctx } = await getCloudflareContext({ async: true });
     const kv = (env as Record<string, KVNamespace>).GUIDES_STATIC_DRAFTS_KV;
 
     if (!kv) {
       return NextResponse.json({ views: {}, available: false }, { status: 503 });
     }
 
-    const days = last7DayKeys();
-    const entries = await Promise.all(
-      VALID_TYPES.map(async (type) => [type, await recentViewsForType(kv, type, days)] as const),
-    );
-    const result = Object.fromEntries(entries) as Record<ProductType, Record<string, number>>;
+    const cached = await kv.get(SNAPSHOT_KEY);
+    if (cached) {
+      const snapshot = JSON.parse(cached) as PopularSnapshot;
+      const age = Date.now() - Date.parse(snapshot.generatedAt);
+      if (snapshot.periodDays === 7 && snapshot.views && Number.isFinite(age) && age >= 0) {
+        if (age < FRESH_MS) return snapshotResponse(snapshot);
+        if (age < MAX_STALE_MS) {
+          if (!backgroundRefresh) {
+            backgroundRefresh = buildSnapshot(kv)
+              .catch((error) => { console.error("[popular] refresh", error); })
+              .finally(() => { backgroundRefresh = undefined; });
+            ctx.waitUntil(backgroundRefresh);
+          }
+          return snapshotResponse(snapshot);
+        }
+      }
+    }
 
-    return NextResponse.json({ views: result, available: true, periodDays: 7 }, {
-      headers: { "Cache-Control": "s-maxage=60, stale-while-revalidate=120" },
-    });
+    return snapshotResponse(await buildSnapshot(kv));
   } catch (err) {
     console.error("[popular]", err);
     return NextResponse.json({ views: {}, available: false }, { status: 503 });
