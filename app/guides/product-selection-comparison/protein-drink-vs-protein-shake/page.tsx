@@ -4,7 +4,7 @@ import { buildGuideJsonLd } from "@/app/lib/guideJsonLd";
 const pageTitle = "단백질 음료 vs 쉐이크 차이 | RTD·파우치 용도 비교";
 const pageDescription = "RTD 단백질 음료와 파우치형 쉐이크의 형태·편의성·포만감 차이를 비교하고 운동 후 보충과 식사대용 중 어떤 상황에 맞는지 정리했습니다.";
 
-export const metadata = buildShakeGuideMetadata(pageTitle, pageDescription);
+export const metadata = buildShakeGuideMetadata(pageTitle, pageDescription, "protein-drink-vs-protein-shake");
 
 export default function ProteinDrinkVsProteinShakePage() {
   const jsonLd = buildGuideJsonLd({

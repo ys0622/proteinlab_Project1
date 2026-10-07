@@ -4,6 +4,7 @@ import { buildGuideJsonLd } from "@/app/lib/guideJsonLd";
 export const metadata = buildShakeGuideMetadata(
   "운동 후 단백질쉐이크 추천 | 운동 전후·단백질 밀도 비교",
   "운동 전후 단백질쉐이크를 단백질 밀도·당류·칼로리로 비교하고 물과 우유 중 어떤 방식이 목적에 맞는지 정리했습니다.",
+  "post-workout-protein-shake-guide",
 );
 
 export default function PostWorkoutProteinShakeGuidePage() {

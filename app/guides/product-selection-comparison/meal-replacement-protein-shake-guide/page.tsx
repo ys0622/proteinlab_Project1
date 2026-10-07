@@ -4,6 +4,7 @@ import { buildGuideJsonLd } from "@/app/lib/guideJsonLd";
 export const metadata = buildShakeGuideMetadata(
   "식사대용 단백질쉐이크 추천 | 아침·간식·야식 기준 비교",
   "식사대용 단백질쉐이크를 단백질·칼로리·식이섬유로 비교하고 바쁜 아침, 간식과 야식 대체에 맞는 선택 기준을 정리했습니다.",
+  "meal-replacement-protein-shake-guide",
 );
 
 export default function MealReplacementProteinShakeGuidePage() {

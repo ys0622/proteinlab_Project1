@@ -7,6 +7,7 @@ const pageDescription = "단백질쉐이크를 아침 식사대용, 운동 전�
 export const metadata = buildShakeGuideMetadata(
   pageTitle,
   pageDescription,
+  "protein-shake-guide",
 );
 
 export default function ProteinShakeGuidePage() {
