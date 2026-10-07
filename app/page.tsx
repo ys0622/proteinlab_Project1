@@ -74,8 +74,8 @@ const GUIDE_CARDS: {
   { category: "바 랭킹", title: "단백질 바 추천 TOP 10", desc: "운동 후·다이어트 간식 기준으로 골랐어요", href: "/guides/product-selection-comparison/protein-bar-top10", thumbImg: "/bar-image/benof-proteinbar-chunky-choco.webp", thumbImg2: "/bar-image/dryou-proteinbar-bite-crunch.webp", thumbBg: "linear-gradient(135deg, #6a4a2a 0%, #a8763c 100%)", thumbEmoji: "🍫" },
   // 프로틴 요거트 TOP5 — 네이버 "프로틴 요거트" 노출 606, 요거트 카테고리 진입점
   { category: "요거트 랭킹", title: "단백질 요거트 추천 TOP 5", desc: "그릭·프로틴 요거트 1회 기준 비교", href: "/guides/product-selection-comparison/protein-yogurt-top5", thumbImg: "/protein-yogurt-image/yopro-plain-150.webp", thumbImg2: "/protein-yogurt-image/greekday-light-450.webp", thumbBg: "linear-gradient(135deg, #3d5a80 0%, #6c8fb8 100%)", thumbEmoji: "🥛" },
-  // 신규: 단백질 급원 종류 완전정리 — 갓 배포된 가이드, 트래픽 데이터는 아직 없지만 노출 확보 목적
-  { category: "기본 지식", title: "단백질 급원 종류 완전정리", desc: "WPI·WPC부터 카제인·식물성까지", href: "/guides/basics/protein-source-types", thumbImg: "/guide-thumbnails/protein-source-types-v1.png", thumbBg: "linear-gradient(135deg, #5a4a2e 0%, #8c7040 100%)", thumbEmoji: "🧪" },
+  // 쉐이크 핵심 검색어의 허브 가이드로 연결한다. 카드 수와 홈 세로 길이는 유지한다.
+  { category: "쉐이크 가이드", title: "단백질 쉐이크 추천·고르는 법", desc: "아침·운동·다이어트 목적별 선택 기준", href: "/guides/product-selection-comparison/protein-shake-guide", thumbImg: "/guide-thumbnails/protein-shake-top7.png", thumbBg: "linear-gradient(135deg, #486a54 0%, #85a58a 100%)", thumbEmoji: "🥤" },
 ];
 
 function toCarouselProduct(p: ProductDetailProps): CarouselProduct {

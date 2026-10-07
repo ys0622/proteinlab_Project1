@@ -27,7 +27,7 @@ const SITE_URL = "https://proteinlab.kr";
 
 // Known last-modified dates for key pages (avoid lying to Google with new Date())
 const PAGE_DATES: Record<string, string> = {
-  "/": "2026-10-02",
+  "/": "2026-10-07",
   "/drinks": "2026-08-29",
   "/bars": "2026-08-28",
   "/shake": "2026-09-30",
@@ -42,7 +42,8 @@ const PAGE_DATES: Record<string, string> = {
   "/guides/product-selection-comparison/high-protein-50g-comparison": "2026-08-18",
   "/guides/product-selection-comparison/newcare-protein-water-guide": "2026-08-18",
   "/guides/product-selection-comparison/protein-shake-top7": "2026-10-01",
-  "/guides/product-selection-comparison/protein-shake-guide": "2026-09-30",
+  "/guides/product-selection-comparison/protein-shake-guide": "2026-10-04",
+  "/compare/proteone-vs-itthefit-shake": "2026-10-07",
   "/guides/intake-strategy-health/protein-drink-daily": "2026-07-20",
   "/guides/intake-strategy-health/protein-drink-with-meals": "2026-10-04",
   "/guides/intake-strategy-health/protein-drink-diarrhea": "2026-07-20",
