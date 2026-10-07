@@ -317,7 +317,7 @@ export const selexVsTakefitVsHimuneConfig: ComparePageConfig = {
   readingTime: "5분 읽기",
   updatedAt: "2026-10-07",
   methodologyNote: "ProteinLab DB 대표 20g급 RTD 기준",
-  intro: "셀렉스·테이크핏·하이뮨 중 무엇을 고를지 고민된다면 브랜드 이미지보다 영양성분 차이를 먼저 보는 편이 빠릅니다. 대표 20g급 RTD인 셀렉스 프로핏, 테이크핏 맥스, 하이뮨 액티브를 같은 표에 놓고 단백질·당류·칼로리·나트륨과 목적별 선택 기준을 비교했습니다.",
+  intro: "셀렉스 프로핏·테이크핏 맥스·하이뮨 액티브의 단백질·당류·칼로리·나트륨을 같은 기준으로 비교했습니다. 핵심 차이를 확인하고 목적에 맞게 고르세요.",
   summary: [
     `단백질 양 우선: 테이크핏 맥스 ${takefitMax.proteinPerServing}g. 셀렉스와 하이뮨은 각각 ${sellex.proteinPerServing}g입니다.`,
     `당류·열량 우선: 하이뮨 ${hymune.sugar}g·${hymune.calories}kcal, 셀렉스 ${sellex.sugar}g·${sellex.calories}kcal입니다.`,

@@ -215,6 +215,7 @@ export function ComparisonGuidePage({ config }: { config: ComparePageConfig }) {
   const columnCount = (config.comparisonColumns ?? []).length;
   const longestValue = Math.max(0, ...config.comparisonRows.flatMap((row) => row.values.map((value) => value.length)));
   const compactMobileTable = columnCount > 0 && columnCount <= 3 && longestValue <= 16;
+  const compactPriorityMobile = config.slug === "selex-vs-takefit-vs-himune";
 
   return (
     <div className="min-h-screen bg-white">
@@ -243,11 +244,11 @@ export function ComparisonGuidePage({ config }: { config: ComparePageConfig }) {
       </section>
       <main className="mx-auto max-w-[1200px] px-4 py-8 md:px-6">
         <div className="space-y-6">
-          <section className="rounded-[28px] border border-[#d9e4f0] bg-[#f7f9fc] px-5 py-5 shadow-[0_18px_50px_rgba(32,46,68,0.05)]">
+          <section className={`rounded-[28px] border border-[#d9e4f0] bg-[#f7f9fc] shadow-[0_18px_50px_rgba(32,46,68,0.05)] ${compactPriorityMobile ? "px-4 py-4 md:px-5 md:py-5" : "px-5 py-5"}`}>
             <p className="text-xs font-semibold tracking-[0.08em] text-[#4a6178]">📌 핵심 요약</p>
-            <ul className="mt-3 grid gap-2 text-sm leading-6 text-[var(--foreground-muted)] md:mt-4 md:gap-3">
+            <ul className={`grid text-[var(--foreground-muted)] md:mt-4 md:gap-3 ${compactPriorityMobile ? "mt-2 gap-1.5 text-[13px] leading-5 md:text-sm md:leading-6" : "mt-3 gap-2 text-sm leading-6"}`}>
               {config.summary.map((item) => (
-                <li key={item} className="flex items-start gap-2.5 rounded-xl border border-[#d9e4f0] bg-white px-3 py-2.5 md:px-4 md:py-3">
+                <li key={item} className={`flex items-start gap-2.5 rounded-xl border border-[#d9e4f0] bg-white px-3 md:px-4 md:py-3 ${compactPriorityMobile ? "py-2" : "py-2.5"}`}>
                   <span className="mt-0.5 shrink-0 text-[#4a8c6e]">✓</span>
                   <span>{item}</span>
                 </li>
@@ -368,7 +369,7 @@ export function ComparisonGuidePage({ config }: { config: ComparePageConfig }) {
               후보가 좁혀졌다면 옵션과 최신 가격을 결제 전 한 번 더 확인해보세요.
             </p>
             <div className="mt-3">
-              <PurchaseLinks links={config.purchaseLinks} linkPosition="bottom_cta" />
+              <PurchaseLinks links={config.purchaseLinks} linkPosition="bottom_cta" compactMobile={config.slug === "selex-vs-takefit-vs-himune"} />
             </div>
           </section>
         </div>
