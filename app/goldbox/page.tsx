@@ -3,6 +3,7 @@ import Footer from "@/app/components/Footer";
 import { getProductsByCategoryAsync } from "@/app/lib/productData";
 import { fetchGoldboxSnapshot, matchRegisteredProductsToGoldbox } from "@/app/lib/coupangGoldbox";
 import { getProductImageUrl } from "@/app/lib/productImage";
+import { getVerifiedGoldboxOffers } from "@/app/lib/goldboxVerifiedOffers";
 import GoldboxCatalog, { type GoldboxCard } from "./GoldboxCatalog";
 
 export const dynamic = "force-dynamic";
@@ -13,7 +14,10 @@ export default async function GoldboxPage({ searchParams }: { searchParams: Prom
   const preview = process.env.NODE_ENV === "development" ? params.preview : undefined;
   const groups = await Promise.all(["drink", "bar", "yogurt", "shake"].map(category => getProductsByCategoryAsync(category as "drink" | "bar" | "yogurt" | "shake")));
   const products = groups.flat();
-  const snapshot = preview ? { status: "ready" as const, products: [], checkedAt: null } : await fetchGoldboxSnapshot();
+  const [snapshot, verifiedOffers] = await Promise.all([
+    preview ? Promise.resolve({ status: "ready" as const, products: [], checkedAt: null }) : fetchGoldboxSnapshot(),
+    preview ? Promise.resolve([]) : getVerifiedGoldboxOffers(),
+  ]);
   const matches = matchRegisteredProductsToGoldbox(products, snapshot.products);
   let cards: GoldboxCard[] = matches.map(({ product, deal }) => ({
     id: String(deal.productId), slug: product.slug, name: product.name, brand: product.brand,
@@ -27,18 +31,15 @@ export default async function GoldboxPage({ searchParams }: { searchParams: Prom
       offerName: "화면 예시 · 판매 구성 확인 전", price: [19900, 15900, 12900, 24900][index], href: null,
     }));
   }
-  // App-confirmed offer omitted by the Partners API; midnight is an editorial cutoff.
-  const manualProduct = products.find(product => product.slug === "hymune-protein-balance-choco-190");
-  // Dynamic server response: evaluate the editorial expiry on each request.
-  // eslint-disable-next-line react-hooks/purity
-  const manualOfferActive = Date.now() >= Date.parse("2026-10-07T07:33:00+09:00") && Date.now() < Date.parse("2026-10-08T00:00:00+09:00");
-  if (!preview && manualProduct && manualOfferActive && !cards.some(card => card.slug === manualProduct.slug)) {
+  for (const offer of verifiedOffers) {
+    if (cards.some(card => card.slug === offer.slug)) continue;
+    const product = products.find(item => item.slug === offer.slug);
+    if (!product) continue;
     cards.unshift({
-      id: "app-confirmed-9409116061-27985054988", slug: manualProduct.slug,
-      name: manualProduct.name, brand: manualProduct.brand, category: "drink",
-      image: getProductImageUrl(manualProduct.slug) ?? "",
-      offerName: "190mL × 24개 · 와우회원 할인 · 10/7 07:33 쿠팡 앱 확인",
-      price: 19360, href: manualProduct.coupangUrl ?? null,
+      id: `verified-${offer.slug}`, slug: product.slug,
+      name: product.name, brand: product.brand, category: product.productType ?? "drink",
+      image: getProductImageUrl(product.slug) ?? "",
+      offerName: offer.offerName, price: offer.price, href: offer.href || product.coupangUrl || null,
     });
   }
   return <div className="min-h-screen bg-[#faf8f3]"><Header />

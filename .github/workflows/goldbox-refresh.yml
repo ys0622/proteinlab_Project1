@@ -2,9 +2,11 @@ name: Refresh Goldbox
 
 on:
   schedule:
-    # UTC: daily 07:35 and 08:05 Asia/Seoul.
+    # UTC: 07:35, 08:05, 12:05 and 18:05 Asia/Seoul.
     - cron: '35 22 * * *'
     - cron: '5 23 * * *'
+    - cron: '5 3 * * *'
+    - cron: '5 9 * * *'
   workflow_dispatch:
 
 permissions:
@@ -19,13 +21,32 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 3
     steps:
-      - name: Refresh live Goldbox snapshot and check availability
+      - name: Refresh and inspect Goldbox coverage
         shell: bash
         run: |
           curl --fail --silent --show-error --location --max-time 45 \
             --retry 2 --retry-delay 15 \
-            https://proteinlab.kr/goldbox -o /tmp/goldbox.html
-          if ! grep -q 'data-goldbox-status="ready"' /tmp/goldbox.html; then
-            echo "::error::Goldbox data unavailable; check Partners API credentials and connectivity."
+            https://proteinlab.kr/api/goldbox/health -o /tmp/goldbox-health.json
+          jq -r '"checkedAt=\(.checkedAt) status=\(.status) source=\(.sourceCount) valid=\(.validCount) baseline=\(.dailyBaselineCount) matched=\(.matchedCount) verified=\(.verifiedCount) gap=\(.verifiedMissingFromApiCount)"' /tmp/goldbox-health.json
+          if [ "$(jq -r '.status' /tmp/goldbox-health.json)" != "ready" ]; then
+            echo "::error::Goldbox API unavailable: $(jq -r '.error' /tmp/goldbox-health.json)"
             exit 1
+          fi
+          if [ "$(jq -r '.sourceCount' /tmp/goldbox-health.json)" -eq 0 ]; then
+            echo "::error::Goldbox API returned zero products; verify the source feed."
+            exit 1
+          fi
+          if [ "$(jq -r '.suspiciousDrop' /tmp/goldbox-health.json)" = "true" ]; then
+            echo "::error::Goldbox API product count dropped by more than 50% from today's first healthy response."
+            exit 1
+          fi
+          if [ "$(jq -r '.verifiedMissingFromApiCount' /tmp/goldbox-health.json)" -gt 0 ]; then
+            echo "::warning::Confirmed Coupang app/web offers are missing from the Partners API; verified fallback cards remain active until expiry."
+            if [ "${{ github.event.schedule }}" = "5 23 * * *" ]; then
+              echo "::error::08:05 KST verification found a confirmed API coverage gap. Review /admin/goldbox."
+              exit 1
+            fi
+          fi
+          if [ "$(jq -r '.matchedCount' /tmp/goldbox-health.json)" -eq 0 ]; then
+            echo "::warning::No registered ProteinLab products matched the API feed; this may be a genuinely empty day or a matching gap."
           fi

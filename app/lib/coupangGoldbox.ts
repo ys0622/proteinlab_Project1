@@ -11,7 +11,8 @@ import {
 const COUPANG_API_HOST = "https://api-gateway.coupang.com";
 const GOLDBOX_PATH = "/v2/providers/affiliate_open_api/apis/openapi/v1/products/goldbox";
 const GOLDBOX_CACHE_KEY = "coupang-goldbox:proteinlab:v2";
-const GOLDBOX_CACHE_TTL_SECONDS = 60 * 30;
+const GOLDBOX_CACHE_TTL_SECONDS = 60 * 10;
+const GOLDBOX_DIAGNOSTIC_KEY = "coupang-goldbox:proteinlab:diagnostic:v1";
 
 interface GoldboxKV {
   get(key: string): Promise<string | null>;
@@ -114,11 +115,38 @@ export interface GoldboxSnapshot {
   products: CoupangGoldboxProduct[];
   checkedAt: string | null;
   status: "ready" | "unavailable";
+  sourceCount?: number;
+  invalidCount?: number;
+  error?: "credentials" | "http" | "payload" | "empty" | "network";
+  dailyBaselineCount?: number;
+  suspiciousDrop?: boolean;
+}
+
+export async function getLastGoldboxDiagnostic(): Promise<GoldboxSnapshot | null> {
+  const kv = await getGoldboxKV();
+  if (!kv) return null;
+  const raw = await kv.get(GOLDBOX_DIAGNOSTIC_KEY).catch(() => null);
+  if (!raw) return null;
+  try {
+    const parsed = JSON.parse(raw) as GoldboxSnapshot;
+    return parsed && typeof parsed.status === "string" ? parsed : null;
+  } catch {
+    return null;
+  }
 }
 
 export async function fetchGoldboxSnapshot(): Promise<GoldboxSnapshot> {
-  const unavailable: GoldboxSnapshot = { products: [], checkedAt: null, status: "unavailable" };
   const kv = await getGoldboxKV();
+  const record = async (snapshot: GoldboxSnapshot) => {
+    if (kv) {
+      // Keep a small, short-lived audit of the actual API response, not just a page status.
+      await kv.put(GOLDBOX_DIAGNOSTIC_KEY, JSON.stringify(snapshot), { expirationTtl: 60 * 60 * 48 }).catch(() => undefined);
+    }
+    return snapshot;
+  };
+  const unavailable = (error: GoldboxSnapshot["error"]): GoldboxSnapshot => ({
+    products: [], checkedAt: new Date().toISOString(), status: "unavailable", error,
+  });
   const cached = kv ? await kv.get(GOLDBOX_CACHE_KEY).catch(() => null) : null;
   if (cached) {
     try {
@@ -136,7 +164,7 @@ export async function fetchGoldboxSnapshot(): Promise<GoldboxSnapshot> {
     getRuntimeEnvValue("COUPANG_SECRET_KEY"),
     getRuntimeEnvValue("COUPANG_GOLDBOX_SUB_ID", "NEXT_PUBLIC_COUPANG_PARTNERS_SUB_ID", "COUPANG_PARTNERS_SUB_ID"),
   ]);
-  if (!accessKey || !secretKey) return unavailable;
+  if (!accessKey || !secretKey) return record(unavailable("credentials"));
 
   const queryParams = new URLSearchParams({
     subId: subId || "proteinlab",
@@ -154,21 +182,34 @@ export async function fetchGoldboxSnapshot(): Promise<GoldboxSnapshot> {
       cache: "no-store",
       signal: AbortSignal.timeout(3500),
     });
-    if (!response.ok) return unavailable;
+    if (!response.ok) return record(unavailable("http"));
 
     const payload = (await response.json()) as { rCode?: string; data?: unknown };
-    if (payload.rCode !== "0" || !Array.isArray(payload.data)) return unavailable;
+    if (payload.rCode !== "0" || !Array.isArray(payload.data)) return record(unavailable("payload"));
     const products = payload.data.filter(isGoldboxProduct);
-    const snapshot: GoldboxSnapshot = { products, checkedAt: new Date().toISOString(), status: "ready" };
+    if (products.length === 0) {
+      return record({ ...unavailable("empty"), sourceCount: payload.data.length, invalidCount: payload.data.length });
+    }
+    const kstDay = new Date(goldboxRefreshBoundary() + 9 * 60 * 60 * 1000).toISOString().slice(0, 10);
+    const baselineKey = `coupang-goldbox:baseline:${kstDay}`;
+    const baselineRaw = kv ? await kv.get(baselineKey).catch(() => null) : null;
+    const priorBaseline = baselineRaw ? Number(baselineRaw) : 0;
+    const dailyBaselineCount = priorBaseline > 0 ? priorBaseline : products.length;
+    const snapshot: GoldboxSnapshot = {
+      products, checkedAt: new Date().toISOString(), status: "ready",
+      sourceCount: payload.data.length, invalidCount: payload.data.length - products.length,
+      dailyBaselineCount, suspiciousDrop: products.length < dailyBaselineCount * 0.5,
+    };
 
     if (kv) {
-      await kv
-        .put(GOLDBOX_CACHE_KEY, JSON.stringify(snapshot), { expirationTtl: GOLDBOX_CACHE_TTL_SECONDS })
-        .catch(() => undefined);
+      await Promise.all([
+        kv.put(GOLDBOX_CACHE_KEY, JSON.stringify(snapshot), { expirationTtl: GOLDBOX_CACHE_TTL_SECONDS }),
+        ...(priorBaseline > 0 ? [] : [kv.put(baselineKey, String(products.length), { expirationTtl: 60 * 60 * 30 })]),
+      ]).catch(() => undefined);
     }
-    return snapshot;
+    return record(snapshot);
   } catch {
-    return unavailable;
+    return record(unavailable("network"));
   }
 }
 

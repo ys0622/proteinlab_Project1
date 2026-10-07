@@ -20,7 +20,7 @@ declare global {
 type AnalyticsParams = Record<string, unknown>;
 type Retailer = "coupang" | "naver" | "official";
 export type AffiliateLinkType = "product_specific" | "generic_fallback";
-export type PageType = "home" | "category" | "compare" | "product" | "guide" | "insight" | "feed" | "recommend" | "ranking";
+export type PageType = "home" | "category" | "compare" | "product" | "guide" | "insight" | "feed" | "recommend" | "ranking" | "goldbox";
 export type LinkPosition =
   | "hero"
   | "product_card"
@@ -72,6 +72,7 @@ export function isAnalyticsReady() {
 
 export function getPageType(pathname: string): PageType {
   if (pathname === "/") return "home";
+  if (pathname.startsWith("/goldbox")) return "goldbox";
   if (pathname.startsWith("/compare")) return "compare";
   if (pathname.startsWith("/product/")) return "product";
   if (pathname.startsWith("/recommend")) return "recommend";

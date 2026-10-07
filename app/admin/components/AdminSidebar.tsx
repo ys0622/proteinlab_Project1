@@ -7,6 +7,7 @@ import { useState } from "react";
 const navItems = [
   { href: "/admin", label: "대시보드", icon: "⊞" },
   { href: "/admin/products", label: "제품 관리", icon: "◫" },
+  { href: "/admin/goldbox", label: "골드박스 점검", icon: "▣" },
   { href: "/admin/images", label: "이미지 작업", icon: "◻" },
   { href: "/admin/guides", label: "가이드 CMS", icon: "≡" },
   { href: "/admin/stats", label: "통계", icon: "↗" },
