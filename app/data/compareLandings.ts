@@ -432,34 +432,6 @@ const compareLandingOverrides: Record<string, Partial<CompareLanding>> = {
       },
     ],
   },
-  "proteone-vs-itthefit-shake": {
-    title: "프로티원 vs 잇더핏 단백질 쉐이크 비교",
-    description: "프로티원과 잇더핏 단백질 쉐이크를 단백질, 당류, 칼로리, 1회 섭취 편의성 기준으로 비교합니다.",
-    intro:
-      "두 제품 모두 파우치형 단백질 쉐이크를 찾는 사람이 자주 비교하는 후보입니다. 식사대용에 가까운 든든함을 원하는지, 당류와 칼로리를 낮춘 가벼운 보충을 원하는지에 따라 선택 기준이 달라집니다.",
-    bullets: [
-      "식사대용에 가까운 포만감이 필요한지, 운동 후 보충용인지 먼저 구분합니다.",
-      "단백질 함량과 함께 당류, 칼로리, 용량을 같이 비교합니다.",
-      "바로 구매하기 전에 각 제품 상세에서 영양성분과 구매 채널을 확인하기 좋은 조합입니다.",
-    ],
-    relatedLinks: [
-      {
-        href: "/topics/meal-replacement-protein-shake",
-        title: "식사대용 단백질 쉐이크 보기",
-        description: "포만감과 섭취 편의성을 우선으로 보는 쉐이크 후보를 다시 좁혀봅니다.",
-      },
-      {
-        href: "/shake",
-        title: "단백질 쉐이크 전체 비교",
-        description: "쉐이크 전체 목록에서 당류, 칼로리, 단백질 기준으로 다른 후보까지 확인합니다.",
-      },
-      {
-        href: "/recommend",
-        title: "내 조건으로 다시 추천받기",
-        description: "섭취 목적과 피하고 싶은 조건을 기준으로 제품 후보를 다시 정리합니다.",
-      },
-    ],
-  },
 };
 
 const compareLandingAliases: Record<string, string> = {
