@@ -44,6 +44,9 @@ const PAGE_DATES: Record<string, string> = {
   "/guides/product-selection-comparison/newcare-protein-water-guide": "2026-08-18",
   "/guides/product-selection-comparison/protein-shake-top7": "2026-10-01",
   "/guides/product-selection-comparison/protein-shake-guide": "2026-10-04",
+  "/guides/product-selection-comparison/protein-shake-new-products-2026": "2026-09-30",
+  "/guides/product-selection-comparison/delight-project-shake-flavors": "2026-09-30",
+  "/guides/product-selection-comparison/hansonhankki-vs-maeilhankki-shake": "2026-09-30",
   "/compare/proteone-vs-itthefit-shake": "2026-10-07",
   "/guides/intake-strategy-health/protein-drink-daily": "2026-07-20",
   "/guides/intake-strategy-health/protein-drink-with-meals": "2026-10-04",
@@ -73,7 +76,6 @@ const PAGE_DATES: Record<string, string> = {
   "/search": "2026-06-01",
 };
 
-const FALLBACK_GUIDE_DATE = "2026-06-01";
 const FALLBACK_PRODUCT_DATE = "2026-07-15";
 const PRODUCT_DATES: Record<string, string> = {
   drink: "2026-08-29",
@@ -288,10 +290,12 @@ const STATIC_CURATION_ROUTES: string[] = [
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const compareGuideLastModified = new Map(
-    getAllCompareGuideConfigs().map((config) => [
-      `/guides/product-selection-comparison/${config.slug}`,
-      config.updatedAt ? new Date(config.updatedAt) : new Date(FALLBACK_GUIDE_DATE),
-    ]),
+    getAllCompareGuideConfigs()
+      .filter((config) => Boolean(config.updatedAt))
+      .map((config) => [
+        `/guides/product-selection-comparison/${config.slug}`,
+        new Date(config.updatedAt!),
+      ]),
   );
   for (const config of CATEGORY_GUIDE_CONFIGS) {
     if (config.updatedAt) {
@@ -346,7 +350,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const staticEntries: MetadataRoute.Sitemap = allRoutes.map((route) => {
     const configDate = compareGuideLastModified.get(route);
     const knownDate = PAGE_DATES[route];
-    const lastModified = configDate ?? (knownDate ? new Date(knownDate) : new Date(FALLBACK_GUIDE_DATE));
+    // Google only uses lastmod when it reflects a real content update. Omit unknown dates.
+    const lastModified = configDate ?? (knownDate ? new Date(knownDate) : undefined);
     return {
       url: `${SITE_URL}${route}`,
       lastModified,

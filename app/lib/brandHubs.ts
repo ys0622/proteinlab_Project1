@@ -67,6 +67,8 @@ const BRAND_SLUG_MAP: Record<string, string> = {
   풀무원다논: "pulmuone-dannon",
   그릭데이: "greekday",
   덴마크: "denmark",
+  오뚜기: "ottogi",
+  퓨어틴: "puretein",
 };
 
 export function brandToSlug(brand: string) {
