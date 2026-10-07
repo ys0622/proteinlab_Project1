@@ -1,0 +1,178 @@
+﻿import Header from "../components/Header";
+import Footer from "../components/Footer";
+import CommercialAdSection from "../components/CommercialAdSection";
+import type { ProductDetailProps } from "../data/products";
+import { getDensityValue, getDietScore, getPerformanceScore } from "../lib/gradeCalculation";
+import type { ProductCategory } from "../lib/categories";
+import { getProductsByCategoryAsync } from "../lib/productData";
+import { formatProductLabel } from "../lib/productLabel";
+import RankingClient from "./RankingClient";
+import { notFound } from "next/navigation";
+
+type GradeMetric = "density" | "diet" | "performance";
+const PAGE_SIZE = 16;
+
+export const metadata = {
+  title: "단백질 랭킹 2026 — 밀도·다이어트·퍼포먼스 기준 순위",
+  description:
+    "단백질 음료, 바, 요거트, 쉐이크를 단백질 밀도, 다이어트 점수, 퍼포먼스 기준으로 계산한 순위입니다. 카테고리별로 상위 제품을 한눈에 확인하세요.",
+  alternates: {
+    canonical: "https://proteinlab.kr/ranking",
+  },
+  openGraph: {
+    images: [{ url: "https://proteinlab.kr/opengraph-image", width: 1200, height: 630, alt: "ProteinLab 단백질 제품 비교" }],
+    title: "단백질 랭킹 2026 — 밀도·다이어트·퍼포먼스 기준 순위",
+    description:
+      "단백질 음료, 바, 요거트, 쉐이크를 단백질 밀도, 다이어트 점수, 퍼포먼스 기준으로 계산한 순위입니다. 카테고리별로 상위 제품을 한눈에 확인하세요.",
+    url: "https://proteinlab.kr/ranking",
+    type: "website",
+    locale: "ko_KR",
+    siteName: "ProteinLab",
+  },
+  twitter: {
+    images: ["https://proteinlab.kr/opengraph-image"],
+    card: "summary",
+    title: "단백질 랭킹 2026 — 밀도·다이어트·퍼포먼스 기준 순위",
+    description:
+      "단백질 음료, 바, 요거트, 쉐이크를 단백질 밀도, 다이어트 점수, 퍼포먼스 기준으로 계산한 순위입니다. 카테고리별로 상위 제품을 한눈에 확인하세요.",
+  },
+};
+
+function prepareRankingData(products: ProductDetailProps[], metric: "density" | "diet" | "performance") {
+  const scored = products.map((product) => {
+    let rawScore: number;
+    if (metric === "density") rawScore = getDensityValue(product);
+    else if (metric === "diet") rawScore = getDietScore(product);
+    else rawScore = getPerformanceScore(product);
+    return { product, rawScore };
+  });
+
+  const higherIsBetter = metric !== "diet";
+  scored.sort((a, b) => (higherIsBetter ? b.rawScore - a.rawScore : a.rawScore - b.rawScore));
+  const scoreByRawValue = new Map<number, number>();
+  const denominator = Math.max(scored.length - 1, 1);
+
+  let groupStart = 0;
+  while (groupStart < scored.length) {
+    let groupEnd = groupStart;
+    while (
+      groupEnd + 1 < scored.length &&
+      scored[groupEnd + 1]?.rawScore === scored[groupStart]?.rawScore
+    ) {
+      groupEnd += 1;
+    }
+
+    const averageRankIndex = (groupStart + groupEnd) / 2;
+    const percentile = scored.length === 1 ? 1 : 1 - averageRankIndex / denominator;
+    const displayScore = Math.max(0, Math.min(100, Math.round(percentile * 100)));
+    scoreByRawValue.set(scored[groupStart].rawScore, displayScore);
+    groupStart = groupEnd + 1;
+  }
+
+  const len = scored.length;
+  return scored.map((item, idx) => {
+    const pct = idx / len;
+    const grade = pct < 0.2 ? "A" : pct < 0.5 ? "B" : pct < 0.8 ? "C" : "D";
+    const score = scoreByRawValue.get(item.rawScore) ?? 0;
+
+    return { ...item, score, grade, rank: idx + 1 };
+  });
+}
+
+export type RankingItem = {
+  product: ProductDetailProps;
+  score: number;
+  grade: string;
+  rank: number;
+};
+
+export async function renderRankingPage(category: ProductCategory, metric: GradeMetric, requestedPage: number) {
+  const page = Number.isSafeInteger(requestedPage) && requestedPage > 0 ? requestedPage : 1;
+  const [drinkProducts, barProducts, yogurtProducts, shakeProducts] = await Promise.all([
+    getProductsByCategoryAsync("drink"),
+    getProductsByCategoryAsync("bar"),
+    getProductsByCategoryAsync("yogurt"),
+    getProductsByCategoryAsync("shake"),
+  ]);
+
+  const productsByCategory = { drink: drinkProducts, bar: barProducts, yogurt: yogurtProducts, shake: shakeProducts };
+  const categoryCounts = {
+    drink: drinkProducts.length,
+    bar: barProducts.length,
+    yogurt: yogurtProducts.length,
+    shake: shakeProducts.length,
+  };
+  const allItems = prepareRankingData(productsByCategory[category], metric);
+  const totalPages = Math.max(1, Math.ceil(allItems.length / PAGE_SIZE));
+  if (page > totalPages) notFound();
+  const currentPage = page;
+  const items = allItems.slice((currentPage - 1) * PAGE_SIZE, currentPage * PAGE_SIZE);
+
+  const categoryLabelMap: Record<ProductCategory, string> = {
+    drink: "단백질 음료",
+    bar: "단백질 바",
+    yogurt: "단백질 요거트",
+    shake: "단백질 쉐이크",
+  };
+
+  const itemListJsonLd = (Object.entries(productsByCategory) as [ProductCategory, ProductDetailProps[]][]).map(
+    ([categoryKey, products]) => ({
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      name: `${categoryLabelMap[categoryKey]} 단백질 랭킹`,
+      description: `단백질 밀도 기준으로 계산한 ${categoryLabelMap[categoryKey]} 추천 순위`,
+      url: "https://proteinlab.kr/ranking",
+      itemListOrder: "https://schema.org/ItemListOrderDescending",
+      numberOfItems: Math.min(10, products.length),
+      itemListElement: prepareRankingData(products, "density").slice(0, 10).map((item) => ({
+        "@type": "ListItem",
+        position: item.rank,
+        name: formatProductLabel(item.product.brand, item.product.name),
+        url: `https://proteinlab.kr/product/${item.product.slug}`,
+      })),
+    }),
+  );
+
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "ProteinLab", item: "https://proteinlab.kr/" },
+      { "@type": "ListItem", position: 2, name: "단백질 랭킹", item: "https://proteinlab.kr/ranking" },
+    ],
+  };
+
+  return (
+    <div className="min-h-screen bg-white">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListJsonLd) }}
+      />
+      <Header />
+      <div className="mx-auto max-w-[1200px] px-4 pt-4 md:px-6">
+        <a
+          href="/trending"
+          className="flex items-center justify-between gap-3 rounded-[10px] border px-4 py-3 text-sm font-semibold transition-colors hover:bg-[#E8F0EA]"
+          style={{ borderColor: "#DCE6DE", background: "#F5F8F5", color: "#16412D" }}
+        >
+          <span>🔥 최근 7일 실제 방문자 조회 순위도 확인해보세요</span>
+          <span className="shrink-0">바로가기 →</span>
+        </a>
+      </div>
+      <RankingClient
+        category={category}
+        metric={metric}
+        items={items}
+        categoryCounts={categoryCounts}
+        totalCount={allItems.length}
+        currentPage={currentPage}
+        totalPages={totalPages}
+      />
+      <div className="mx-auto max-w-[1200px] px-4 pb-6 md:px-6">
+        <CommercialAdSection pageType="category" />
+      </div>
+      <Footer />
+    </div>
+  );
+}

@@ -20,10 +20,14 @@ function ProductSection({
   title,
   note,
   products,
+  totalCount,
+  allProductsHref,
 }: {
   title: string;
   note?: string;
   products: ProductDetailProps[];
+  totalCount?: number;
+  allProductsHref?: string;
 }) {
   return (
     <section className="mt-6 md:mt-8">
@@ -50,6 +54,11 @@ function ProductSection({
           현재 조건에 맞는 제품이 충분하지 않아 이 구간은 비워 두었습니다.
         </div>
       )}
+      {allProductsHref && totalCount && totalCount > products.length ? (
+        <Link href={allProductsHref} className="mt-4 inline-flex rounded-lg border border-[#DCE6DE] bg-white px-4 py-2 text-sm font-semibold text-[#16412D] hover:bg-[#F5F8F5]">
+          전체 {totalCount}개 제품 보기 →
+        </Link>
+      ) : null}
     </section>
   );
 }
@@ -158,7 +167,9 @@ export default function CurationLandingTemplate({
             />
             <ProductSection
               title={drinkCopy?.comparisonTitle ?? "단백질 음료 비교"}
-              products={drinkProducts}
+              products={isPopularLanding ? drinkProducts.slice(0, 12) : drinkProducts}
+              totalCount={drinkProducts.length}
+              allProductsHref={isPopularLanding ? "/drinks?curation=popular" : undefined}
             />
           </>
         ) : null}
@@ -172,7 +183,9 @@ export default function CurationLandingTemplate({
             />
             <ProductSection
               title={barCopy?.comparisonTitle ?? "단백질 바 비교"}
-              products={barProducts}
+              products={isPopularLanding ? barProducts.slice(0, 12) : barProducts}
+              totalCount={barProducts.length}
+              allProductsHref={isPopularLanding ? "/bars?curation=popular" : undefined}
             />
           </>
         ) : null}
@@ -186,7 +199,9 @@ export default function CurationLandingTemplate({
             />
             <ProductSection
               title={yogurtCopy?.comparisonTitle ?? "단백질 요거트 비교"}
-              products={yogurtProducts}
+              products={isPopularLanding ? yogurtProducts.slice(0, 12) : yogurtProducts}
+              totalCount={yogurtProducts.length}
+              allProductsHref={isPopularLanding ? "/yogurt?curation=popular" : undefined}
             />
           </>
         ) : null}
@@ -200,7 +215,9 @@ export default function CurationLandingTemplate({
             />
             <ProductSection
               title={shakeCopy?.comparisonTitle ?? "단백질 쉐이크 비교"}
-              products={shakeProducts}
+              products={isPopularLanding ? shakeProducts.slice(0, 12) : shakeProducts}
+              totalCount={shakeProducts.length}
+              allProductsHref={isPopularLanding ? "/shake?curation=popular" : undefined}
             />
           </>
         ) : null}
