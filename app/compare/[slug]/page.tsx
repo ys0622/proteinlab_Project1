@@ -8,6 +8,7 @@ import ProductCard from "../../components/ProductCard";
 import TrackedCoupangLink from "../../components/TrackedCoupangLink";
 import TrackedLink from "../../components/TrackedLink";
 import { getCompareLandingBySlug, getAllCompareLandingStaticSlugs } from "../../data/compareLandings";
+import { compareCanonicalOverrides } from "../../data/compareCanonicalOverrides";
 import { formatProductLabel } from "../../lib/productLabel";
 import { getCoupangRedirectHref } from "../../lib/purchaseLinks";
 import { getAllProducts } from "../../data/products";
@@ -224,14 +225,6 @@ export async function generateStaticParams() {
 
 // 같은 브랜드 조합을 더 깊은 콘텐츠(FAQ·섹션)로 이미 다루는 /guides/product-selection-comparison
 // 페이지가 있는 경우, 검색엔진에 중복 콘텐츠로 잡히지 않도록 그쪽을 canonical로 지정한다.
-const canonicalOverrides: Record<string, string> = {
-  "sellex-vs-hymune-drink": "https://proteinlab.kr/guides/product-selection-comparison/selex-vs-himune",
-  "takefit-vs-hymune-drink": "https://proteinlab.kr/guides/product-selection-comparison/takefit-vs-himune",
-  "danbaek-vs-sellex-drink": "https://proteinlab.kr/guides/product-selection-comparison/danbaek-vs-selexs",
-  "newcare-vs-hymune": "https://proteinlab.kr/guides/product-selection-comparison/newcare-vs-hymune",
-  "newcare-vs-sellex-drink": "https://proteinlab.kr/guides/product-selection-comparison/newcare-vs-sellex",
-};
-
 export async function generateMetadata({ params }: PageProps) {
   const { slug } = await params;
   const landing = getCompareLandingBySlug(slug);
@@ -240,7 +233,7 @@ export async function generateMetadata({ params }: PageProps) {
     return { title: "비교 페이지를 찾을 수 없음 | ProteinLab" };
   }
 
-  const canonical = canonicalOverrides[landing.slug] ?? `https://proteinlab.kr/compare/${landing.slug}`;
+  const canonical = compareCanonicalOverrides[landing.slug] ?? `https://proteinlab.kr/compare/${landing.slug}`;
   // 각 랜딩 제목과 설명 자체에 비교 대상·핵심 수치·검색 의도가 이미 들어 있다.
   // 공통 문구를 덧붙이면 모바일 검색결과에서 핵심 제품명이 잘리고 설명도 반복된다.
   const title = landing.title;

@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { getAllCompareLandings } from "./data/compareLandings";
+import { compareCanonicalOverrides } from "./data/compareCanonicalOverrides";
 import { getAllSearchTopics } from "./data/searchTopics";
 import { getAllCurations } from "./lib/curationSystem";
 import { getBrandSummary } from "./lib/brandHubs";
@@ -305,7 +306,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const topicRoutes = getAllSearchTopics()
     .filter((topic) => topic.slug !== "low-sugar-protein-shake")
     .map((topic) => `/topics/${topic.slug}`);
-  const compareRoutes = getAllCompareLandings().map((landing) => `/compare/${landing.slug}`);
+  const compareRoutes = getAllCompareLandings()
+    .filter((landing) => !(landing.slug in compareCanonicalOverrides))
+    .map((landing) => `/compare/${landing.slug}`);
   const pickRoutes = getAllPickSlugs().map((slug) => `/picks/${slug}`);
 
   const allRoutes = Array.from(
