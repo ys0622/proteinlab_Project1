@@ -33,19 +33,10 @@ const GA_SCOPE = "https://www.googleapis.com/auth/analytics.readonly";
 const KST_TIME_ZONE = "Asia/Seoul";
 const CACHE_TTL_MS = 5 * 60 * 1000;
 const STALE_TTL_MS = 30 * 60 * 1000;
-const CTR_EVENT_NAMES = [
-  "product_card_click",
-  "product_detail_view",
+const CTA_CLICK_EVENT_NAMES = [
   "internal_cta_click",
-  "compare_add",
-  "compare_view",
-  "compare_complete",
   "affiliate_click",
   "retailer_click",
-  "filter_apply",
-  "sort_apply",
-  "recommend_start",
-  "recommend_complete",
 ] as const;
 
 let statsCache: CacheEntry | null = null;
@@ -189,23 +180,36 @@ async function getAccessToken(clientEmail: string, privateKey: string) {
 }
 
 async function runBatchReports(propertyId: string, accessToken: string, requests: Array<Record<string, unknown>>) {
-  const response = await fetch(`${GOOGLE_ANALYTICS_DATA_API}/properties/${propertyId}:batchRunReports`, {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${accessToken}`,
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ requests }),
-    cache: "no-store",
-  });
-
-  if (!response.ok) {
-    const text = await response.text();
-    console.error("[ga4] batchRunReports failed", { status: response.status, body: text.slice(0, 500), propertyId });
-    throw new Error(createErrorMessage(response.status, text));
+  const batches: Array<Array<Record<string, unknown>>> = [];
+  for (let index = 0; index < requests.length; index += 5) {
+    batches.push(requests.slice(index, index + 5));
   }
 
-  return (await response.json()) as Ga4BatchResponse;
+  const responses = await Promise.all(batches.map(async (batch) => {
+    const response = await fetch(`${GOOGLE_ANALYTICS_DATA_API}/properties/${propertyId}:batchRunReports`, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ requests: batch }),
+      cache: "no-store",
+    });
+
+    if (!response.ok) {
+      const body = await response.text();
+      console.error("[ga4] batchRunReports failed", { status: response.status, body: body.slice(0, 500), propertyId });
+      throw new Error(createErrorMessage(response.status, body));
+    }
+
+    const data = (await response.json()) as Ga4BatchResponse;
+    if (data.reports?.length !== batch.length) {
+      throw new Error("GA4 report response count did not match request count.");
+    }
+    return data;
+  }));
+
+  return { reports: responses.flatMap((response) => response.reports ?? []) };
 }
 
 function readMetric(report: Ga4ReportResponse | undefined, rowIndex: number, metricIndex: number) {
@@ -252,6 +256,7 @@ function buildDailyRows(report: Ga4ReportResponse | undefined) {
         label: isoDate ? formatKstLabel(isoDate) : "-",
         visitors: Number(row.metricValues?.[0]?.value ?? 0),
         pageViews: Number(row.metricValues?.[1]?.value ?? 0),
+        newVisitors: Number(row.metricValues?.[2]?.value ?? 0),
       };
     })
     .sort((a, b) => a.date.localeCompare(b.date));
@@ -310,10 +315,10 @@ function buildAffiliateTotals(report: Ga4ReportResponse | undefined) {
     if (eventName === "affiliate_click") clicks += eventCount;
   }
 
-  return { impressions, clicks, ctr: impressions > 0 ? (clicks / impressions) * 100 : 0 };
+  return { impressions, clicks };
 }
 
-function buildAffiliatePageCtr(report: Ga4ReportResponse | undefined) {
+function buildAffiliatePageCounts(report: Ga4ReportResponse | undefined) {
   const pages = new Map<string, { impressions: number; clicks: number }>();
 
   for (const row of report?.rows ?? []) {
@@ -330,7 +335,6 @@ function buildAffiliatePageCtr(report: Ga4ReportResponse | undefined) {
     .map(([path, counts]) => ({
       path,
       ...counts,
-      ctr: counts.impressions > 0 ? (counts.clicks / counts.impressions) * 100 : 0,
     }))
     .filter((row) => row.impressions > 0 || row.clicks > 0)
     .sort((a, b) => b.clicks - a.clicks || b.impressions - a.impressions)
@@ -341,7 +345,7 @@ function buildEventNameFilterExpression() {
   return {
     filter: {
       fieldName: "eventName",
-      inListFilter: { values: [...CTR_EVENT_NAMES] },
+      inListFilter: { values: [...CTA_CLICK_EVENT_NAMES] },
     },
   };
 }
@@ -380,17 +384,18 @@ export type AdminStatsData =
       todayVisitors: number;
       todayPageViews: number;
       last7DaysVisitors: number;
+      last7DaysNewVisitors: number;
+      previous7DaysNewVisitors: number;
       last30DaysPageViews: number;
       last30DaysCtaClicks: number;
       last30DaysAffiliateImpressions: number;
       last30DaysAffiliateClicks: number;
-      last30DaysAffiliateCtr: number;
-      dailyTrend: Array<{ date: string; label: string; visitors: number; pageViews: number }>;
+      dailyTrend: Array<{ date: string; label: string; visitors: number; pageViews: number; newVisitors: number }>;
       topPages: Array<{ rank: number; path: string; pageViews: number }>;
       topSources: Array<{ rank: number; sourceMedium: string; visitors: number }>;
       topCtaEvents: Array<{ rank: number; eventName: string; label: string; eventCount: number }>;
       topCtaPages: Array<{ rank: number; path: string; eventName: string; label: string; eventCount: number }>;
-      affiliatePageCtr: Array<{ path: string; impressions: number; clicks: number; ctr: number }>;
+      affiliatePageCounts: Array<{ path: string; impressions: number; clicks: number }>;
     };
 
 async function fetchGa4DashboardData(config: Ga4Config): Promise<AdminStatsData> {
@@ -403,12 +408,12 @@ async function fetchGa4DashboardData(config: Ga4Config): Promise<AdminStatsData>
   const summaryBatch = await runBatchReports(config.propertyId, accessToken, [
     { dateRanges: [{ startDate: today, endDate: today }], metrics: [{ name: "activeUsers" }] },
     { dateRanges: [{ startDate: today, endDate: today }], metrics: [{ name: "screenPageViews" }] },
-    { dateRanges: [{ startDate: last7Start, endDate: today }], metrics: [{ name: "activeUsers" }] },
+    { dateRanges: [{ startDate: last7Start, endDate: today }], metrics: [{ name: "activeUsers" }, { name: "newUsers" }] },
     { dateRanges: [{ startDate: last30Start, endDate: today }], metrics: [{ name: "screenPageViews" }] },
     {
       dateRanges: [{ startDate: last14Start, endDate: today }],
       dimensions: [{ name: "date" }],
-      metrics: [{ name: "activeUsers" }, { name: "screenPageViews" }],
+      metrics: [{ name: "activeUsers" }, { name: "screenPageViews" }, { name: "newUsers" }],
       orderBys: [{ dimension: { dimensionName: "date" } }],
     },
     {
@@ -422,6 +427,7 @@ async function fetchGa4DashboardData(config: Ga4Config): Promise<AdminStatsData>
       metrics: [{ name: "eventCount" }],
       dimensionFilter: buildAffiliateEventNameFilterExpression(),
     },
+    { dateRanges: [{ startDate: last14Start, endDate: shiftDate(today, -7) }], metrics: [{ name: "newUsers" }] },
   ]);
 
   const detailBatch = await runBatchReports(config.propertyId, accessToken, [
@@ -477,17 +483,18 @@ async function fetchGa4DashboardData(config: Ga4Config): Promise<AdminStatsData>
     todayVisitors: readMetric(summaryBatch.reports?.[0], 0, 0),
     todayPageViews: readMetric(summaryBatch.reports?.[1], 0, 0),
     last7DaysVisitors: readMetric(summaryBatch.reports?.[2], 0, 0),
+    last7DaysNewVisitors: readMetric(summaryBatch.reports?.[2], 0, 1),
+    previous7DaysNewVisitors: readMetric(summaryBatch.reports?.[7], 0, 0),
     last30DaysPageViews: readMetric(summaryBatch.reports?.[3], 0, 0),
     dailyTrend: buildDailyRows(summaryBatch.reports?.[4]),
     last30DaysCtaClicks: readMetric(summaryBatch.reports?.[5], 0, 0),
     last30DaysAffiliateImpressions: affiliateTotals.impressions,
     last30DaysAffiliateClicks: affiliateTotals.clicks,
-    last30DaysAffiliateCtr: affiliateTotals.ctr,
     topPages: buildTopPages(detailBatch.reports?.[0]),
     topSources: buildTopSources(detailBatch.reports?.[1]),
     topCtaEvents: buildTopCtaEvents(detailBatch.reports?.[2]),
     topCtaPages: buildTopCtaPages(detailBatch.reports?.[3]),
-    affiliatePageCtr: buildAffiliatePageCtr(detailBatch.reports?.[4]),
+    affiliatePageCounts: buildAffiliatePageCounts(detailBatch.reports?.[4]),
   };
 }
 

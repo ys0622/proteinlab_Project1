@@ -20,7 +20,7 @@ interface PageProps {
 const priorityConversionPlans: Record<string, { contentId: string; conclusion: string }> = {
   "proteone-vs-itthefit-shake": {
     contentId: "plv3:landing:compare:proteone-vs-itthefit-shake",
-    conclusion: "두 제품은 단백질 수치만으로 고르기보다 당류, 칼로리, 1회 섭취량을 함께 비교해 목적에 맞는 쪽을 고르는 편이 좋습니다.",
+    conclusion: "같은 40g 파우치 기준, 단백질은 프로티원 23g·잇더핏 21.3g입니다. 당류와 열량은 잇더핏 0.6g·122kcal로 프로티원 1g·128kcal보다 낮습니다.",
   },
   "takefit-vs-hymune-drink": {
     contentId: "plv3:landing:compare:takefit-vs-hymune-drink",
@@ -359,9 +359,9 @@ export default async function CompareLandingPage({ params }: PageProps) {
             {landing.title}
           </h1>
           <p className="mt-2 max-w-[760px] text-sm leading-6 text-[var(--foreground-muted)] md:text-[15px]">
-            {landing.description} 비교표로 바로 들어가고 제품 상세까지 이어서 확인할 수 있게 정리했습니다.
+            {conversionPlan?.conclusion ?? `${landing.description} 비교표로 바로 들어가고 제품 상세까지 이어서 확인할 수 있게 정리했습니다.`}
           </p>
-          {conversionPlan ? <p className="mt-2 text-xs text-[var(--foreground-muted)]">업데이트 2026-07-15</p> : null}
+          {conversionPlan ? <p className="mt-2 text-xs text-[var(--foreground-muted)]">업데이트 {landing.slug === "proteone-vs-itthefit-shake" ? "2026-10-07" : "2026-07-15"}</p> : null}
         </div>
       </section>
 
@@ -460,9 +460,8 @@ export default async function CompareLandingPage({ params }: PageProps) {
         ) : null}
         {conversionPlan ? (
           <section className="mb-6 border-y border-[#dce8df] py-5">
-            <h2 className="text-base font-semibold text-[var(--foreground)]">핵심 결론</h2>
-            <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">{conversionPlan.conclusion}</p>
-            <div className="mt-4 flex flex-wrap gap-2">
+            <h2 className="text-base font-semibold text-[var(--foreground)]">제품 상세와 전체 비교표</h2>
+            <div className="mt-3 flex flex-wrap gap-2">
               {products.slice(0, 2).map((product) => (
                 <TrackedLink
                   key={product.slug}

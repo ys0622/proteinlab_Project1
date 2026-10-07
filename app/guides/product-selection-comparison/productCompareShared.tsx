@@ -122,9 +122,9 @@ export function buildGuideMetadata(config: ComparePageConfig): Metadata {
   };
 }
 
-function PurchaseLinks({ links, linkPosition = "mid_content" }: { links: PurchaseGuideLink[]; linkPosition?: "hero" | "mid_content" | "bottom_cta" }) {
+function PurchaseLinks({ links, linkPosition = "mid_content", compactMobile = false }: { links: PurchaseGuideLink[]; linkPosition?: "hero" | "mid_content" | "bottom_cta"; compactMobile?: boolean }) {
   return (
-    <div className="-mx-1 flex gap-2 overflow-x-auto px-1 pb-1 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:mx-0 md:grid md:grid-cols-3 md:gap-3 md:overflow-visible md:px-0 md:pb-0">
+    <div className={compactMobile ? "grid gap-2 md:grid-cols-3 md:gap-3" : "-mx-1 flex gap-2 overflow-x-auto px-1 pb-1 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:mx-0 md:grid md:grid-cols-3 md:gap-3 md:overflow-visible md:px-0 md:pb-0"}>
       {links.map((item) => {
         const product = getDrinkProduct(item.slug);
         const href = getCoupangRedirectHref(product.coupangUrl, "guide", product.slug);
@@ -137,14 +137,23 @@ function PurchaseLinks({ links, linkPosition = "mid_content" }: { links: Purchas
             productBrand={product.brand}
             productCategory={product.productType ?? "drink"}
             linkPosition={linkPosition}
-            className="min-w-[74vw] shrink-0 rounded-2xl border border-[#d9e4f0] bg-[#f7f9fc] px-4 py-4 transition-colors hover:bg-[#eef3f9] md:min-w-0"
+            className={compactMobile ? "flex min-h-12 items-center justify-between gap-2 rounded-xl border border-[#d9e4f0] bg-[#f7f9fc] px-3 py-2.5 transition-colors hover:bg-[#eef3f9] md:block md:p-4" : "min-w-[74vw] shrink-0 rounded-2xl border border-[#d9e4f0] bg-[#f7f9fc] px-4 py-4 transition-colors hover:bg-[#eef3f9] md:min-w-0"}
           >
-            <p className="text-xs font-semibold tracking-[0.08em] text-[#4a6178]">쿠팡에서 가격 확인</p>
-            <p className="mt-2 text-sm font-semibold text-[var(--foreground)]">{item.label}</p>
-            <p className="mt-1 text-sm leading-6 text-[var(--foreground-muted)]">
-              {formatProductLabel(product.brand, product.name)}
-            </p>
-            <p className="mt-3 text-xs font-medium text-[#24543d]">옵션과 최신 가격 보기 →</p>
+            {compactMobile ? (
+              <>
+                <span className="min-w-0 flex-1 truncate text-sm font-semibold text-[var(--foreground)]">{item.label.replace(" 박스 보기", "")}</span>
+                <span className="shrink-0 text-xs font-bold text-[#24543d]">가격 보기 →</span>
+              </>
+            ) : (
+              <>
+                <p className="text-xs font-semibold tracking-[0.08em] text-[#4a6178]">쿠팡에서 가격 확인</p>
+                <p className="mt-2 text-sm font-semibold text-[var(--foreground)]">{item.label}</p>
+                <p className="mt-1 text-sm leading-6 text-[var(--foreground-muted)]">
+                  {formatProductLabel(product.brand, product.name)}
+                </p>
+                <p className="mt-3 text-xs font-medium text-[#24543d]">옵션과 최신 가격 보기 →</p>
+              </>
+            )}
           </TrackedCoupangLink>
         );
       })}
@@ -252,7 +261,7 @@ export function ComparisonGuidePage({ config }: { config: ComparePageConfig }) {
                 <AffiliateDisclosure className="mb-0" />
               </div>
               <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">비교표의 대표 후보를 바로 확인할 수 있습니다.</p>
-              <div className="mt-4"><PurchaseLinks links={config.purchaseLinks} linkPosition="hero" /></div>
+              <div className="mt-4"><PurchaseLinks links={config.purchaseLinks} linkPosition="hero" compactMobile={config.slug === "selex-vs-takefit-vs-himune"} /></div>
             </section>
           ) : null}
           <section className="rounded-[28px] border border-[#d9e4f0] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(32,46,68,0.05)]">

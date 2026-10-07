@@ -38,7 +38,7 @@ export default async function GoldboxPage({ searchParams }: { searchParams: Prom
       name: manualProduct.name, brand: manualProduct.brand, category: "drink",
       image: getProductImageUrl(manualProduct.slug) ?? "",
       offerName: "190mL × 24개 · 와우회원 할인 · 10/7 07:33 쿠팡 앱 확인",
-      price: 19360, href: manualProduct.coupangUrl,
+      price: 19360, href: manualProduct.coupangUrl ?? null,
     });
   }
   return <div className="min-h-screen bg-[#faf8f3]"><Header />

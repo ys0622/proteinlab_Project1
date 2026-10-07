@@ -10,10 +10,6 @@ function formatNumber(value: number) {
   return new Intl.NumberFormat("ko-KR").format(value);
 }
 
-function formatPercent(value: number) {
-  return new Intl.NumberFormat("ko-KR", { maximumFractionDigits: 1 }).format(value) + "%";
-}
-
 function SparkBars({ values, color }: { values: number[]; color: string }) {
   const max = Math.max(...values, 1);
 
@@ -64,7 +60,7 @@ function CandidateCard({
   return (
     <div className="rounded-2xl border border-[var(--border)] bg-[var(--background-card)] p-5">
       <p className="text-xs font-semibold uppercase tracking-[0.08em] text-[var(--foreground-muted)]">
-        우선 개선 후보
+        CTA 클릭 현황
       </p>
       <h3 className="mt-2 text-base font-semibold text-[var(--foreground)]">{title}</h3>
       <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">{body}</p>
@@ -87,7 +83,7 @@ function SegmentCard({
   return (
     <div className="rounded-2xl border border-[var(--border)] bg-[var(--background-card)] p-5">
       <p className="text-xs font-semibold uppercase tracking-[0.08em] text-[var(--foreground-muted)]">
-        CTR 구간
+        CTA 클릭 구간
       </p>
       <h3 className="mt-2 text-base font-semibold text-[var(--foreground)]">{title}</h3>
       <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">{description}</p>
@@ -118,35 +114,32 @@ function buildCandidates(
   }
 
   const sortedPaths = [...pathCounts.entries()].sort((a, b) => a[1] - b[1]);
-  const weakestPath = sortedPaths[0];
+  const lowestCountPath = sortedPaths[0];
   const strongestPath = [...pathCounts.entries()].sort((a, b) => b[1] - a[1])[0];
-  const weakestEvent = [...topCtaEvents].sort((a, b) => a.eventCount - b.eventCount)[0];
+  const lowestCountEvent = [...topCtaEvents].sort((a, b) => a.eventCount - b.eventCount)[0];
 
   const candidates: Array<{ title: string; body: string; metric: string }> = [];
 
-  if (weakestPath) {
+  if (lowestCountPath) {
     candidates.push({
-      title: `${weakestPath[0]} 구간 CTA 조정`,
-      body:
-        "최근 30일 기준 클릭이 가장 약한 페이지입니다. 첫 CTA 문구를 더 직접적으로 바꾸거나, 첫 버튼만 시각적으로 더 강조하는 실험이 우선순위가 높습니다.",
-      metric: `최근 30일 클릭 ${formatNumber(weakestPath[1])}`,
+      title: `${lowestCountPath[0]} 클릭 수 확인`,
+      body: "집계된 경로 중 클릭 수가 가장 적습니다. 유입이나 버튼 노출 수도 함께 확인한 뒤 개선 여부를 판단하세요.",
+      metric: `최근 30일 클릭 ${formatNumber(lowestCountPath[1])}`,
     });
   }
 
-  if (weakestEvent) {
+  if (lowestCountEvent) {
     candidates.push({
-      title: `${weakestEvent.label} 문구 점검`,
-      body:
-        "이벤트 단위로 봤을 때 반응이 가장 약합니다. 버튼 텍스트를 더 짧은 명령형으로 줄이거나, 같은 의미의 CTA가 여러 곳에 퍼져 있다면 하나만 더 강하게 남기는 편이 좋습니다.",
-      metric: `최근 30일 클릭 ${formatNumber(weakestEvent.eventCount)}`,
+      title: `${lowestCountEvent.label} 집계 확인`,
+      body: "클릭 이벤트별 단순 건수입니다. 버튼별 노출·유입량이 달라 이 수치만으로 성과를 비교할 수 없습니다.",
+      metric: `최근 30일 클릭 ${formatNumber(lowestCountEvent.eventCount)}`,
     });
   }
 
   if (strongestPath) {
     candidates.push({
-      title: `${strongestPath[0]} 패턴 복제`,
-      body:
-        "이미 클릭이 잘 나오는 구간입니다. 여기서 쓰는 문구 구조와 CTA 배치를 클릭이 약한 구간에 복제하는 방식이 가장 빠른 개선 루프입니다.",
+      title: `${strongestPath[0]} 클릭 수 확인`,
+      body: "집계된 경로 중 클릭 수가 가장 많습니다. 방문량 대비 클릭률을 확인하기 전에는 성과가 가장 좋다고 단정하지 않습니다.",
       metric: `최근 30일 클릭 ${formatNumber(strongestPath[1])}`,
     });
   }
@@ -299,10 +292,11 @@ export default async function StatsPage({
     { label: "오늘 방문자", value: formatNumber(stats.todayVisitors) },
     { label: "오늘 페이지뷰", value: formatNumber(stats.todayPageViews) },
     { label: "최근 7일 방문자", value: formatNumber(stats.last7DaysVisitors) },
-    { label: "최근 30일 CTA 클릭", value: formatNumber(stats.last30DaysCtaClicks) },
-    { label: "제휴 버튼 노출", value: formatNumber(stats.last30DaysAffiliateImpressions) },
-    { label: "제휴 링크 클릭", value: formatNumber(stats.last30DaysAffiliateClicks) },
-    { label: "제휴 CTR", value: formatPercent(stats.last30DaysAffiliateCtr) },
+    { label: "최근 7일 신규 사용자", value: formatNumber(stats.last7DaysNewVisitors) },
+    { label: "이전 7일 신규 사용자", value: formatNumber(stats.previous7DaysNewVisitors) },
+    { label: "최근 30일 CTA 링크 클릭", value: formatNumber(stats.last30DaysCtaClicks) },
+    { label: "기록된 제휴 버튼 노출", value: formatNumber(stats.last30DaysAffiliateImpressions) },
+    { label: "최근 30일 제휴 링크 클릭", value: formatNumber(stats.last30DaysAffiliateClicks) },
   ];
 
   const candidates = buildCandidates(stats.topCtaPages, stats.topCtaEvents);
@@ -344,14 +338,13 @@ export default async function StatsPage({
       <section className="mt-6 rounded-2xl border border-[var(--border)] bg-[var(--background-card)] p-5">
         <div className="flex flex-col gap-1 sm:flex-row sm:items-end sm:justify-between">
           <div>
-            <h2 className="text-base font-semibold text-[var(--foreground)]">페이지별 제휴 CTR</h2>
+            <h2 className="text-base font-semibold text-[var(--foreground)]">페이지별 제휴 클릭과 노출</h2>
             <p className="mt-1 text-xs text-[var(--foreground-muted)]">
-              최근 30일 · 버튼이 실제 화면에 보인 횟수 대비 쿠팡 링크 클릭
+              최근 30일 · 노출 이벤트는 일부 버튼에만 적용되어 클릭률 계산에는 사용할 수 없습니다.
             </p>
           </div>
-          <p className="text-xs text-[var(--foreground-muted)]">CTR = 클릭 ÷ 노출</p>
         </div>
-        {stats.affiliatePageCtr.length > 0 ? (
+        {stats.affiliatePageCounts.length > 0 ? (
           <div className="mt-4 overflow-x-auto">
             <table className="min-w-full text-sm">
               <thead>
@@ -359,18 +352,16 @@ export default async function StatsPage({
                   <th className="pb-3 pr-4">페이지</th>
                   <th className="pb-3 pr-4 text-right">노출</th>
                   <th className="pb-3 pr-4 text-right">클릭</th>
-                  <th className="pb-3 text-right">CTR</th>
                 </tr>
               </thead>
               <tbody>
-                {stats.affiliatePageCtr.map((row) => (
+                {stats.affiliatePageCounts.map((row) => (
                   <tr key={row.path} className="border-t border-[var(--border)]">
                     <td className="max-w-[34rem] truncate py-3 pr-4 text-[var(--foreground)]" title={row.path}>
                       {row.path}
                     </td>
                     <td className="py-3 pr-4 text-right text-[var(--foreground)]">{formatNumber(row.impressions)}</td>
                     <td className="py-3 pr-4 text-right font-medium text-[var(--foreground)]">{formatNumber(row.clicks)}</td>
-                    <td className="py-3 text-right font-semibold text-[var(--accent)]">{formatPercent(row.ctr)}</td>
                   </tr>
                 ))}
               </tbody>
@@ -378,7 +369,7 @@ export default async function StatsPage({
           </div>
         ) : (
           <p className="mt-4 text-sm text-[var(--foreground-muted)]">
-            제휴 노출 데이터가 쌓이면 페이지별 CTR이 표시됩니다.
+            기록된 제휴 노출과 클릭이 없습니다.
           </p>
         )}
       </section>
@@ -434,6 +425,7 @@ export default async function StatsPage({
                   <tr className="border-b border-[var(--border)] text-left text-xs text-[var(--foreground-muted)]">
                     <th className="pb-3 pr-4">날짜</th>
                     <th className="pb-3 pr-4 text-right">방문자</th>
+                    <th className="pb-3 pr-4 text-right">신규</th>
                     <th className="pb-3 pr-4 text-right">페이지뷰</th>
                     <th className="pb-3">추이</th>
                   </tr>
@@ -444,6 +436,9 @@ export default async function StatsPage({
                       <td className="py-3 pr-4 text-[var(--foreground)]">{row.label}</td>
                       <td className="py-3 pr-4 text-right font-medium text-[var(--foreground)]">
                         {formatNumber(row.visitors)}
+                      </td>
+                      <td className="py-3 pr-4 text-right font-medium text-[var(--foreground)]">
+                        {formatNumber(row.newVisitors)}
                       </td>
                       <td className="py-3 pr-4 text-right font-medium text-[var(--foreground)]">
                         {formatNumber(row.pageViews)}
@@ -495,8 +490,8 @@ export default async function StatsPage({
 
       <div className="mt-6 grid gap-6 xl:grid-cols-2">
         <section className="rounded-2xl border border-[var(--border)] bg-[var(--background-card)] p-5">
-          <h2 className="text-base font-semibold text-[var(--foreground)]">CTR 이벤트 Top 10</h2>
-          <p className="mt-1 text-xs text-[var(--foreground-muted)]">최근 30일 클릭 이벤트 기준</p>
+          <h2 className="text-base font-semibold text-[var(--foreground)]">CTA 링크 클릭 유형</h2>
+          <p className="mt-1 text-xs text-[var(--foreground-muted)]">최근 30일 내부 CTA·제휴·판매처 링크 클릭</p>
           {stats.topCtaEvents.length > 0 ? (
             <div className="mt-4 overflow-x-auto">
               <table className="min-w-full text-sm">

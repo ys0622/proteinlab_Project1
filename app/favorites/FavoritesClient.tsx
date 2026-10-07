@@ -32,7 +32,7 @@ export default function FavoritesClient() {
       .catch(() => setLoaded(true));
   }, []);
 
-  const favorites = allProducts.filter((p) => favoriteSlugs.includes(p.slug));
+  const favorites = allProducts.filter((p) => typeof p.slug === "string" && favoriteSlugs.includes(p.slug));
 
   if (!loaded) {
     return (
