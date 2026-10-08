@@ -70,7 +70,15 @@ function CuratedGuideGroup({
 }
 
 export async function generateStaticParams() {
-  return getGuideTracks().map((track) => ({ track: track.slug }));
+  const explicitHubs = new Set([
+    "product-selection-comparison",
+    "intake-strategy-health",
+    "fitness-lifestyle",
+    "market-insights",
+  ]);
+  return getGuideTracks()
+    .filter((track) => !explicitHubs.has(track.slug))
+    .map((track) => ({ track: track.slug }));
 }
 
 export default async function GuideTrackPage({ params }: { params: Promise<{ track: string }> }) {
