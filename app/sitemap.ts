@@ -62,7 +62,7 @@ const PAGE_DATES: Record<string, string> = {
   "/guides/basics/muscle": "2026-06-01",
   "/guides/basics/protein-deficiency-self-check": "2026-06-01",
   "/guides/basics/protein-drink-vs-powder": "2026-06-01",
-  "/guides/basics/protein-source-types": "2026-08-30",
+  "/guides/basics/protein-source-types": "2026-10-08",
   "/guides/basics/role-overview": "2026-06-01",
   "/official-events": "2026-09-05",
   "/compare": "2026-07-15",

@@ -4,8 +4,8 @@ import Footer from "@/app/components/Footer";
 import GuideBuySection from "@/app/components/GuideBuySection";
 import { buildGuideJsonLd } from "@/app/lib/guideJsonLd";
 
-const _pageTitle = "MPI·WPI·WPC 단백질 차이 | MPC·카제인·식물성 원료 비교";
-const _pageDesc = "MPI·MPC 우유단백과 WPI·WPC·WPH 유청단백의 차이, 유당 여부, 소화 특성과 용도를 비교하고 카제인·식물성·콜라겐 원료까지 정리합니다.";
+const _pageTitle = "MPI 단백질이란? WPI·WPC·MPC 차이와 유당 비교";
+const _pageDesc = "MPI는 카제인과 유청을 함께 담은 분리우유단백입니다. WPI·WPC·MPC와 원료, 단백질 비율, 유당 함량이 어떻게 다른지 비교하고 제품 표시를 읽는 기준을 정리했습니다.";
 export const metadata = {
   title: _pageTitle,
   description: _pageDesc,
@@ -31,65 +31,65 @@ const sourceTable = [
   {
     group: "Whey",
     type: "WPH (가수분해유청)",
-    feature: "WPI를 한 번 더 가수분해",
-    digestion: "매우 높음",
-    pros: "흡수율 최고, 유당 없음",
-    cons: "비쌈",
-    purpose: "흡수가 빨라 근육 합성에 직합",
+    feature: "유청단백을 효소 등으로 가수분해",
+    digestion: "제품·개인차",
+    pros: "단백질을 작은 조각으로 나눈 형태",
+    cons: "가격이 높은 편",
+    purpose: "가수분해 유청 원료를 찾을 때",
   },
   {
     group: "Whey",
     type: "WPI (분리유청)",
-    feature: "유청 → 유당을 제거한 버전 (단백질 비중 90%)",
-    digestion: "높음",
-    pros: "흡수 우수, 유당 없음",
-    cons: "비쌈",
-    purpose: "흡수가 빨라 근육 합성에 직합",
+    feature: "유청에서 단백질을 분리·농축 (원료 기준 약 90% 이상)",
+    digestion: "빠른 편",
+    pros: "WPC보다 유당이 적은 편",
+    cons: "가격이 높은 편",
+    purpose: "유청 중심 원료와 낮은 유당 함량을 찾을 때",
   },
   {
     group: "Whey",
     type: "WPC (농축유청)",
-    feature: "우유에서 유청만 남김 (단백질 비중 70~80%)",
-    digestion: "보통~높음",
-    pros: "풍미가 좋고 저렴함",
-    cons: "유당 포함 → 소화 불편",
-    purpose: "흡수가 빨라 근육 합성에 직합",
+    feature: "유청을 농축 (단백질·유당 비율은 등급별로 다름)",
+    digestion: "빠른 편",
+    pros: "원료 등급에 따라 선택 폭이 넓음",
+    cons: "WPI보다 유당이 많을 수 있음",
+    purpose: "제품별 원료 함량과 가격을 함께 볼 때",
   },
   {
     group: "Milk",
     type: "MPC (농축우유)",
     feature: "유청:카제인(2:8) 자연 비율",
-    digestion: "보통~높음",
-    pros: "우유 본연의 단백질 비중 유지",
-    cons: "단백질 비율이 낮고, 유당 포함",
-    purpose: "우유와 가장 근접한 관능으로 맛있게 단백질 섭취 가능",
+    digestion: "상대적으로 느린 편",
+    pros: "우유의 카제인·유청 비율 유지",
+    cons: "등급에 따라 유당 함량이 다름",
+    purpose: "우유단백 혼합 원료를 찾을 때",
   },
   {
     group: "Milk",
     type: "MPI (분리우유)",
-    feature: "유청:카제인(2:8) 자연 비율 → 유당 제거",
-    digestion: "높음",
-    pros: "유당 없음",
-    cons: "비쌈",
-    purpose: "우유와 가장 근접한 관능으로 맛있게 단백질 섭취 가능",
+    feature: "우유의 카제인·유청을 함께 분리 (단백질 약 90% 이상)",
+    digestion: "상대적으로 느린 편",
+    pros: "MPC보다 단백질 비율이 높고 유당은 적은 편",
+    cons: "유당이 완전히 0은 아님",
+    purpose: "우유단백 비율을 유지한 고단백 원료를 찾을 때",
   },
   {
     group: "Casein",
     type: "Casein",
     feature: "우유(유청+카제인)에서 카제인을 발라냄",
-    digestion: "중간",
-    pros: "소화가 느려 포만감 높음",
-    cons: "근육 합성엔 부적합",
-    purpose: "포만감, 묵직함",
+    digestion: "상대적으로 느린 편",
+    pros: "아미노산이 비교적 천천히 공급됨",
+    cons: "유청과 반응 시간대가 다름",
+    purpose: "식사 사이·취침 전 보충을 고려할 때",
   },
   {
     group: "식물성",
     type: "ISP (Isolated Soy)",
     feature: "콩에서 추출한 단백질",
     digestion: "높음",
-    pros: "맛, 저렴함",
-    cons: "아미노산 부족",
-    purpose: "맛, 포만감",
+    pros: "유당이 없는 식물성 원료",
+    cons: "유청과 아미노산 구성·함량이 다름",
+    purpose: "유제품을 피하려는 식단에서",
   },
   {
     group: "Collagen",
@@ -97,7 +97,7 @@ const sourceTable = [
     feature: "콜라겐(생선/동물 등)에서 추출한 단백질",
     digestion: "높음",
     pros: "소화, 흡수 빠름",
-    cons: "아미노산 부족",
+    cons: "필수아미노산 구성이 근육 보충용 단백질과 다름",
     purpose: "깔끔한 목넘김",
   },
 ];
@@ -111,26 +111,25 @@ const groupColors: Record<string, { bg: string; text: string }> = {
 };
 
 const purposeRows = [
-  ["운동 직후, 빠른 근육 합성이 목표", "WPH · WPI", "류신 함량이 높고 소화·흡수가 빨라 운동 직후 근단백 합성 반응이 가장 즉각적입니다."],
-  ["가성비와 맛을 같이 보고 싶을 때", "WPC", "유당이 남아있어 풍미가 좋고 가격이 낮은 편이지만, 유당불내증이 있으면 속이 부대낄 수 있습니다."],
-  ["우유 본연의 맛에 가깝게 마시고 싶을 때", "MPC · MPI", "유청과 카제인이 우유 속 자연 비율(2:8)로 들어 있어 밀크 셰이크에 가까운 관능을 냅니다."],
-  ["식사 대용, 포만감이 우선일 때", "Casein", "소화가 느려 포만감이 오래가고, 자는 동안 아미노산을 천천히 공급합니다."],
-  ["유당 부담을 피하고 싶을 때", "ISP (식물성)", "유제품이 아니라서 유당 문제가 없고 상대적으로 저렴하지만, 필수아미노산 구성이 동물성보다 불균형합니다."],
+  ["유청 중심 단백질을 찾을 때", "WPI · WPC", "유당 함량과 단백질 비율은 원료 등급 및 완제품 배합에 따라 달라집니다. 원재료명과 영양표를 함께 확인하세요."],
+  ["우유단백의 원래 비율을 원할 때", "MPC · MPI", "두 원료 모두 카제인과 유청을 함께 담습니다. MPI는 단백질 비율이 더 높지만 유당이 완전히 없는 것은 아닙니다."],
+  ["식사 사이 또는 취침 전 보충을 고려할 때", "Casein", "아미노산 공급이 상대적으로 느린 특성이 있습니다. 근육 합성에 부적합한 단백질이라는 뜻은 아닙니다."],
+  ["유제품을 피하고 싶을 때", "ISP (식물성)", "대두단백은 유당이 없고 필수아미노산을 포함합니다. 다만 제품별 원료 조합과 단백질 함량을 확인하세요."],
   ["깔끔한 목넘김, 피부·관절 관리가 목적일 때", "Collagen", "근육 합성용 단백질로는 적합하지 않지만, 흡수가 빠르고 비타민C와 함께 먹으면 콜라겐 합성에 도움이 됩니다."],
 ];
 
 const faqItems = [
   {
     q: "WPI와 WPC 중 뭘 먼저 골라야 하나요?",
-    a: "유당불내증이 있거나 흡수 속도를 최우선으로 본다면 WPI, 가격과 맛을 더 중요하게 본다면 WPC가 무난합니다. 단백질 비중 자체는 WPI(약 90%)가 WPC(약 70~80%)보다 높습니다.",
+    a: "WPI는 일반적으로 WPC보다 단백질 비율이 높고 유당 함량이 낮습니다. 다만 어느 쪽도 이름만으로 완제품의 유당이 0이라고 단정할 수 없으니, 원재료명과 영양표를 함께 확인하세요.",
   },
   {
     q: "카제인은 근육 합성에 정말 안 좋은가요?",
-    a: "빠른 근단백 합성 반응만 보면 유청보다 느린 것은 사실입니다. 다만 이는 '나쁘다'가 아니라 '역할이 다르다'에 가깝습니다. 천천히 흡수되는 특성 덕분에 포만감 유지, 취침 전 보충, 식사 대용 목적에는 오히려 유리하게 쓰일 수 있습니다.",
+    a: "아닙니다. 카제인도 운동 후 근단백 합성을 높일 수 있습니다. 유청과 아미노산이 공급되는 시간대가 다르므로, 한 원료를 근육 합성에 부적합하다고 단정하면 안 됩니다.",
   },
   {
     q: "식물성 단백질(ISP)만으로 근육을 만들 수 있나요?",
-    a: "가능하지만 동물성보다 총 섭취량을 조금 더 늘리는 편이 안전합니다. 콩 단백질은 메티오닌 같은 일부 필수아미노산이 상대적으로 부족해서, 같은 g수라도 동물성 단백질보다 근단백 합성 반응이 약간 낮게 나타나는 경향이 보고되어 있습니다. 이 차이는 섭취량을 늘리거나 다른 식물성 단백질과 조합하면 상당 부분 보완할 수 있습니다.",
+    a: "가능합니다. 대두단백에도 필수아미노산이 들어 있습니다. 원료마다 아미노산 구성과 단백질 함량은 다르므로, 특정 원료의 우열보다 하루 총 섭취량과 식단 전체를 함께 보세요.",
   },
   {
     q: "콜라겐을 먹으면 근육에도 도움이 되나요?",
@@ -155,6 +154,7 @@ export default function ProteinSourceTypesGuidePage() {
     title: (metadata as { title: string; description: string }).title,
     description: (metadata as { title: string; description: string }).description,
     url: "https://proteinlab.kr/guides/basics/protein-source-types",
+    dateModified: "2026-10-08",
   });
 
   return (
@@ -177,17 +177,28 @@ export default function ProteinSourceTypesGuidePage() {
             <span className="rounded-md bg-[#eef4ea] px-2 py-0.5 text-[11px] font-semibold tracking-wide text-[#4c7a57]">TRACK A</span>
           </div>
           <h1 className="mt-3 text-2xl font-bold leading-tight text-[#16412D] md:text-3xl">
-            MPI·WPI·WPC, 이름이 비슷해도 원료와 특징은 다릅니다
+            MPI 단백질이란? WPI·WPC와 원료부터 다릅니다
           </h1>
           <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
-            같은 "단백질"이라도 유청, 우유, 카제인, 식물성, 콜라겐은 소화 속도와 아미노산 구성이 전혀 다릅니다.
-            원료를 이해하면 운동 직후·취침 전·식사 대용처럼 목적에 맞는 제품을 훨씬 정확하게 고를 수 있습니다.
+            MPI는 우유의 카제인과 유청을 함께 담은 분리우유단백입니다. WPI·WPC는 유청 단백질이므로
+            이름이 비슷해도 원료 구성이 다릅니다. 유당 함량은 원료명만으로 단정하지 말고 완제품 표시를 확인하세요.
           </p>
         </div>
       </section>
 
       <main className="mx-auto max-w-[1200px] px-4 py-8 md:px-6">
         <div className="space-y-6">
+          <section className="rounded-2xl border border-[#cddfd2] bg-[#f5faf6] px-5 py-5" aria-labelledby="mpi-answer-title">
+            <h2 id="mpi-answer-title" className="text-lg font-bold text-[#16412D]">MPI 단백질, 핵심만 먼저</h2>
+            <ul className="mt-3 list-disc space-y-2 pl-5 text-sm leading-6 text-[var(--foreground-muted)]">
+              <li>MPI는 카제인 약 80%와 유청 약 20%라는 우유의 단백질 비율을 유지한 원료입니다.</li>
+              <li>원료의 단백질 비율은 약 90% 이상이지만, 유당이 반드시 0인 것은 아닙니다.</li>
+              <li>WPI는 분리유청단백입니다. 유당 부담이 있다면 MPI·WPI라는 약어보다 완제품의 유당·원재료 표시를 확인하세요.</li>
+            </ul>
+            <p className="mt-3 text-xs leading-5 text-[var(--foreground-muted)]">
+              원료 기준: <a href="https://www.thinkusadairy.org/products/milk-proteins/milk-protein-categories/milk-protein-isolate" target="_blank" rel="noopener noreferrer" className="underline underline-offset-2">미국 유제품 수출협의회 MPI 성분 자료</a>
+            </p>
+          </section>
           <section className="rounded-2xl border border-[#e8e6e3] bg-[#fffdf8] px-5 py-5">
             <h2 className="text-xl font-bold text-[var(--foreground)]">단백질 급원 특징 한눈에 보기</h2>
             <p className="mt-3 text-sm leading-6 text-[var(--foreground-muted)]">
@@ -228,8 +239,8 @@ export default function ProteinSourceTypesGuidePage() {
             <h2 className="text-xl font-bold text-[var(--foreground)]">유청(Whey) 3형제 — WPH·WPI·WPC 차이</h2>
             <p className="mt-4 text-sm leading-6 text-[var(--foreground-muted)]">
               셋 다 우유에서 카제인을 뺀 &ldquo;유청&rdquo;이 원료지만, 가공 단계가 다릅니다. WPC는 우유에서 유청만 분리한
-              기본형(단백질 비중 70~80%)이고, WPI는 여기서 유당과 지방을 더 걸러내 단백질 비중을 약 90%까지 끌어올린
-              버전입니다. WPH는 WPI를 한 번 더 가수분해(단백질을 미리 잘게 쪼갬)해 소화·흡수 속도를 극대화한 최상위 등급입니다.
+              농축형으로 단백질·유당 비율은 등급에 따라 다릅니다. WPI는 유당과 지방을 더 줄여 원료의 단백질 비율을
+              대체로 90% 이상으로 높인 형태입니다. WPH는 유청단백을 가수분해한 원료로, 반드시 WPI를 가공한 것은 아닙니다.
             </p>
             <p className="mt-3 text-sm leading-6 text-[var(--foreground-muted)]">
               유청 단백질이 운동 직후 보충용으로 자주 추천되는 이유는 류신을 포함한 필수아미노산(BCAA) 비중이 높고
@@ -243,12 +254,12 @@ export default function ProteinSourceTypesGuidePage() {
             <h2 className="text-xl font-bold text-[var(--foreground)]">우유(Milk) 계열 — MPC·MPI는 왜 다른가</h2>
             <p className="mt-4 text-sm leading-6 text-[var(--foreground-muted)]">
               우유 단백질은 원래 유청 20%, 카제인 80% 비율로 구성돼 있습니다. MPC(농축우유단백)는 이 자연 비율을
-              그대로 유지한 채 우유에서 수분과 당질 일부만 덜어낸 형태이고, MPI(분리우유단백)는 여기서 유당까지
-              제거한 버전입니다. 그래서 MPC·MPI는 유청 단독 제품보다 우유 본연의 맛과 질감에 가장 가깝게 느껴집니다.
+              대체로 유지하며 단백질을 농축한 원료입니다. MPI(분리우유단백)는 단백질 비율을 약 90% 이상으로 높인
+              원료입니다. 두 원료 모두 유당이 남을 수 있고, 함량은 원료 등급과 완제품 배합에 따라 달라집니다.
             </p>
             <p className="mt-3 text-sm leading-6 text-[var(--foreground-muted)]">
-              대신 유청 비중이 낮고 카제인 비중이 높아, WPI·WPH만큼 흡수가 빠르지는 않습니다. &ldquo;맛있게, 골고루&rdquo;
-              단백질을 채우고 싶을 때 적합한 선택지로 보는 것이 정확합니다.
+              MPI와 MPC는 유청만 분리한 WPI와 달리 카제인도 함께 담습니다. 어느 원료가 더 낫다고 단정하기보다
+              단백질 총량, 유당 표시, 가격과 맛을 함께 비교하는 편이 실용적입니다.
             </p>
           </section>
 
@@ -257,8 +268,8 @@ export default function ProteinSourceTypesGuidePage() {
             <p className="mt-4 text-sm leading-6 text-[var(--foreground-muted)]">
               카제인은 위산을 만나면 젤(gel) 형태로 뭉쳐 위에 오래 머무릅니다. 그래서 Boirie(1997) 연구 이후로
               &ldquo;유청 = 빠르고 근육에 좋은 단백질&rdquo;, &ldquo;카제인 = 느리고 근육 합성엔 상대적으로 약한 단백질&rdquo;이라는
-              이분법이 보디빌딩·운동 커뮤니티에서 오래 굳어졌습니다. 실제로 같은 시간 안에 나타나는 근단백 합성
-              반응만 비교하면 카제인이 유청보다 낮게 나타나는 경향은 여러 연구에서 반복 확인됩니다.
+              이분법이 보디빌딩·운동 커뮤니티에서 오래 굳어졌습니다. 하지만 반응은 연구 대상과 관찰 시간에 따라
+              달라집니다. 운동 후 유청과 카제인을 비교한 인체 연구에서는 둘 다 근단백 합성을 높였습니다.
             </p>
             <p className="mt-3 text-sm leading-6 text-[var(--foreground-muted)]">
               하지만 최근 10여 년 사이 연구 흐름은 이 특성을 &ldquo;단점&rdquo;이 아니라 &ldquo;다른 쓰임새&rdquo;로 재해석하는
@@ -271,9 +282,8 @@ export default function ProteinSourceTypesGuidePage() {
             <div className="mt-4 rounded-xl border border-[#dce8df] bg-white px-4 py-4">
               <p className="text-sm font-semibold text-[#24543d]">정리하면</p>
               <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">
-                &ldquo;운동 직후 빠르게 근육을 채운다&rdquo;는 기준으로 보면 카제인은 여전히 유청보다 불리합니다.
-                하지만 최근 단백질 제품 소비층이 운동 전용에서 다이어트·식사 대용까지 넓어지면서,
-                천천히 소화되고 포만감이 오래가는 카제인의 특성 자체가 오히려 강점이 되는 시장이 커지고 있습니다.
+                카제인은 근육 합성에 부적합한 원료가 아닙니다. 유청과 아미노산이 공급되는 시간대가 다르며,
+                제품을 고를 때는 하루 단백질 섭취량과 함께 식사 간격·맛·포만감도 고려할 수 있습니다.
                 더단백 밸런스, 하이뮨 프로틴 밸런스처럼 &ldquo;근육 증량용&rdquo;보다 &ldquo;식사 보완용&rdquo;을 표방하는
                 제품들이 카제인·우유 단백질 비중을 상대적으로 높게 가져가는 것도 이런 맥락과 맞닿아 있습니다.
               </p>
@@ -283,8 +293,8 @@ export default function ProteinSourceTypesGuidePage() {
           <section className="rounded-2xl border border-[#e8e6e3] bg-[#fffdf8] px-5 py-5">
             <h2 className="text-xl font-bold text-[var(--foreground)]">식물성(ISP)과 콜라겐 — 근육보다 다른 목적</h2>
             <p className="mt-4 text-sm leading-6 text-[var(--foreground-muted)]">
-              분리대두단백(ISP)은 유당 문제가 없고 가격이 낮은 것이 강점이지만, 메티오닌 같은 일부 필수아미노산
-              함량이 동물성 단백질보다 낮습니다. van Vliet 등(2015)의 리뷰는 식물성 단백질이 같은 g수 기준으로는
+              분리대두단백(ISP)은 유당이 없는 식물성 원료이며 필수아미노산을 포함합니다. 원료별 아미노산 구성은
+              다릅니다. van Vliet 등(2015)의 리뷰는 일부 식물성 단백질이 같은 g수 기준으로는
               동물성보다 근단백 합성 반응이 다소 낮게 나타날 수 있다고 보고하면서도, 섭취량을 늘리거나 여러
               식물성 단백질을 조합하면 이 차이를 상당 부분 보완할 수 있다고 정리합니다.
             </p>
@@ -352,6 +362,9 @@ export default function ProteinSourceTypesGuidePage() {
           </section>
 
           <p className="text-xs leading-5 text-[var(--foreground-muted)]">
+            원료·연구 자료: <a href="https://www.thinkusadairy.org/products/milk-proteins/milk-protein-categories/milk-protein-isolate" target="_blank" rel="noopener noreferrer" className="underline underline-offset-2">MPI 성분</a> ·{" "}
+            <a href="https://www.usdec.org/assets/documents/Customer%20Site/C3-Using%20Dairy/C3.7-Resources%20and%20Insights/03-Application%20and%20Technical%20Materials/Whey_Spec.pdf" target="_blank" rel="noopener noreferrer" className="underline underline-offset-2">WPI·WPC 성분</a> ·{" "}
+            <a href="https://pubmed.ncbi.nlm.nih.gov/21045172/" target="_blank" rel="noopener noreferrer" className="underline underline-offset-2">유청·카제인 운동 후 비교 연구</a>.{" "}
             참고 문헌: Boirie Y, et al. (1997) PNAS · Res PT, et al. (2012) Med Sci Sports Exerc ·
             Trommelen J, van Loon LJ. (2016) Nutrients · Veldhorst MA, et al. (2009) Am J Clin Nutr ·
             Bendtsen LQ, et al. (2013) Nutrients · van Vliet S, et al. (2015) J Nutr · Shaw G, et al. (2017) Am J Clin Nutr.
