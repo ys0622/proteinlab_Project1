@@ -18,7 +18,7 @@ function articleJsonLd(config: CategoryGuideConfig) {
       name: "ProteinLab",
       logo: { "@type": "ImageObject", url: "https://proteinlab.kr/proteinlab-logo.png" },
     },
-    dateModified: "2026-04-13",
+    ...(config.updatedAt ? { dateModified: config.updatedAt } : {}),
   };
 }
 
