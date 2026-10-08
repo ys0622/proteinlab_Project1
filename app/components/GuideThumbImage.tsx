@@ -30,7 +30,7 @@ export default function GuideThumbImage({ src, alt, title, desc, fallbackBg, fal
                 src={productSrc}
                 alt=""
                 loading="lazy"
-                className={`h-full min-w-0 flex-1 object-contain mix-blend-multiply ${index === 0 ? "hidden sm:block" : ""}`}
+                className={`h-full min-w-0 flex-1 object-contain mix-blend-multiply ${productSrcs.length > 2 && index === 0 ? "hidden sm:block" : ""}`}
               />
             ))}
           </div>

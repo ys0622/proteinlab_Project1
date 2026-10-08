@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import GuideThumbImage from "./components/GuideThumbImage";
+import HomeGuideCardLink from "./components/HomeGuideCardLink";
 import HomeHeroSearch from "./components/HomeHeroSearch";
 import NewsletterBanner from "./components/NewsletterBanner";
 import Footer from "./components/Footer";
@@ -64,19 +65,14 @@ const GUIDE_CARDS: {
   thumbBg: string;
   thumbEmoji: string;
 }[] = [
-  // 2026-08-30 GA4 최근 28일 데이터 기준 실제 인기 콘텐츠 TOP5 + 신규 가이드 1개로 재구성
-  // 1위: 셀렉스 vs 테이크핏 vs 하이뮨 비교 (177 views)
+  // 검색 유입 실적과 분야 균형을 함께 반영한 수동 큐레이션: 음료 2·바 1·쉐이크 1·가이드 1·랭킹 1.
+  // 홈 카드 클릭률 순 자동 정렬은 아니며, 카드별 성과 측정 후 재편한다.
   { category: "3자 비교", title: "셀렉스 vs 테이크핏 vs 하이뮨", desc: "대표 브랜드 3개를 한 번에 비교", href: "/guides/product-selection-comparison/selex-vs-takefit-vs-himune", thumbImg: "/guide-thumbnails/home-threeway-v2.webp", thumbBg: "linear-gradient(135deg, #7a5c2e 0%, #b8843f 100%)", thumbEmoji: "⚖️" },
-  // 2위: 프로티원 vs 잇더핏 단백질 쉐이크 비교 (152 views)
-  { category: "쉐이크 비교", title: "프로티원 vs 잇더핏", desc: "저당 파우치형 쉐이크 성분 비교", href: "/compare/proteone-vs-itthefit-shake", thumbImg: "/guide-thumbnails/home-shake-compare-v3.webp", thumbBg: "linear-gradient(135deg, #6b4a2e 0%, #a67c4a 100%)", thumbEmoji: "🥤" },
-  // 3위: 단백질 랭킹 2026 (126 views)
-  { category: "데이터 랭킹", title: "단백질 랭킹 2026", desc: "밀도·다이어트·퍼포먼스 기준 순위", href: "/ranking", thumbImg: "/guide-thumbnails/home-ranking-v3.webp", thumbBg: "linear-gradient(135deg, #1a6b5a 0%, #2d9e7f 100%)", thumbEmoji: "🏆" },
-  // 단백질바 TOP10 — GA4 28일 107 views(가이드 상위권), 네이버 "단백질바 추천" 노출 1,241
+  { category: "음료 비교", title: "뉴케어 vs 하이뮨", desc: "41g 고단백형과 10g 균형형 비교", href: "/guides/product-selection-comparison/newcare-vs-hymune", thumbImg: "/rtd-drink-image/newcare-all-protein-41g.webp", thumbProductImgs: ["/rtd-drink-image/newcare-all-protein-41g.webp", "/rtd-drink-image/hymune-protein-balance-190.webp"], thumbBg: "linear-gradient(135deg, #d9e9e5 0%, #f5eee2 100%)", thumbEmoji: "🥛" },
   { category: "바 랭킹", title: "단백질 바 추천 TOP 10", desc: "운동 후·다이어트 간식 기준으로 골랐어요", href: "/guides/product-selection-comparison/protein-bar-top10", thumbImg: "/guide-thumbnails/home-bar-top10-v2.webp", thumbBg: "linear-gradient(135deg, #6a4a2a 0%, #a8763c 100%)", thumbEmoji: "🍫" },
-  // 검색 유입 상위 가이드를 카드 수를 늘리지 않고 첫 화면 진입점에 복원한다.
+  { category: "쉐이크 비교", title: "프로티원 vs 잇더핏", desc: "저당 파우치형 쉐이크 성분 비교", href: "/compare/proteone-vs-itthefit-shake", thumbImg: "/guide-thumbnails/home-shake-compare-v3.webp", thumbBg: "linear-gradient(135deg, #6b4a2e 0%, #a67c4a 100%)", thumbEmoji: "🥤" },
   { category: "성분 가이드", title: "MPI·WPI·WPC 단백질 차이", desc: "우유·유청 단백질 원료별 특징 비교", href: "/guides/basics/protein-source-types", thumbImg: "/guide-thumbnails/protein-source-types-v1.png", thumbBg: "linear-gradient(135deg, #5a4a2e 0%, #8c7040 100%)", thumbEmoji: "🧪" },
-  // 쉐이크 핵심 검색어의 허브 가이드로 연결한다. 카드 수와 홈 세로 길이는 유지한다.
-  { category: "쉐이크 가이드", title: "단백질 쉐이크 추천·고르는 법", desc: "아침·운동·다이어트 목적별 선택 기준", href: "/guides/product-selection-comparison/protein-shake-guide", thumbImg: "/shake-image/proteone-proteinshake-choco-40.webp", thumbProductImgs: ["/shake-image/proteone-proteinshake-choco-40.webp", "/shake-image/danbaekhani-proteinshake-signature-40.webp", "/shake-image/itthefit-proteinshake-misugaru-40.webp"], thumbBg: "linear-gradient(135deg, #486a54 0%, #85a58a 100%)", thumbEmoji: "🥤" },
+  { category: "데이터 랭킹", title: "단백질 랭킹 2026", desc: "밀도·다이어트·퍼포먼스 기준 순위", href: "/ranking", thumbImg: "/guide-thumbnails/home-ranking-v3.webp", thumbBg: "linear-gradient(135deg, #1a6b5a 0%, #2d9e7f 100%)", thumbEmoji: "🏆" },
 ];
 
 function toCarouselProduct(p: ProductDetailProps): CarouselProduct {
@@ -318,9 +314,10 @@ export default async function Home() {
         </div>
         <div className="grid grid-cols-2 gap-3 md:grid-cols-3 md:gap-3">
           {GUIDE_CARDS.map((guide) => (
-            <Link
+            <HomeGuideCardLink
               key={guide.href}
               href={guide.href}
+              category={guide.category}
               className="group block overflow-hidden rounded-[16px] border transition-all duration-150 hover:-translate-y-1 hover:shadow-[0_10px_28px_rgba(31,90,61,0.18)]"
               style={{ borderColor: "#E4D9CC", boxShadow: "0 2px 8px rgba(60,45,30,0.07)" }}
             >
@@ -334,7 +331,7 @@ export default async function Home() {
                 fallbackEmoji={guide.thumbEmoji}
                 category={guide.category}
               />
-            </Link>
+            </HomeGuideCardLink>
           ))}
         </div>
       </section>
