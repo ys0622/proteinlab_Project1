@@ -5,6 +5,7 @@ import CommercialAdSection from "../components/CommercialAdSection";
 export const metadata = {
   title: "Disclaimer | ProteinLab",
   description: "프로틴 비교 면책 고지",
+  alternates: { canonical: "https://proteinlab.kr/disclaimer" },
 };
 
 export default function DisclaimerPage() {

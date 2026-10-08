@@ -17,6 +17,7 @@ export const metadata = {
     "단백질 얼마나 먹어야 하나",
     "체중별 단백질 섭취량",
   ],
+  alternates: { canonical: "https://proteinlab.kr/guides/tools" },
   openGraph: {
     images: [{ url: "https://proteinlab.kr/opengraph-image", width: 1200, height: 630, alt: "ProteinLab 단백질 제품 비교" }],
     title: "하루 단백질 섭취량 계산기",

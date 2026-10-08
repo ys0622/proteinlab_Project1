@@ -6,6 +6,7 @@ import CommercialAdSection from "../components/CommercialAdSection";
 export const metadata = {
   title: "Privacy Policy | ProteinLab",
   description: "프로틴 비교 개인정보 처리방침",
+  alternates: { canonical: "https://proteinlab.kr/privacy" },
 };
 
 export default function PrivacyPage() {

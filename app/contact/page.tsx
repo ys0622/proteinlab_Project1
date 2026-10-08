@@ -5,6 +5,7 @@ import CommercialAdSection from "../components/CommercialAdSection";
 export const metadata = {
   title: "문의 | ProteinLab",
   description: "ProteinLab 문의 — 오류 제보, 광고·제휴 문의, 제품 등록 요청",
+  alternates: { canonical: "https://proteinlab.kr/contact" },
 };
 
 const CONTACT_EMAIL = "ys0622@naver.com";

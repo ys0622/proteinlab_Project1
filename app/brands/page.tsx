@@ -10,6 +10,7 @@ export const metadata = {
   title: "단백질 브랜드 모음 | 셀렉스·하이뮨·랩노쉬 제품 비교 허브",
   description:
     "셀렉스, 하이뮨, 랩노쉬, 더단백, 닥터유 등 주요 단백질 브랜드별 제품을 한곳에서 모아 비교할 수 있는 브랜드 허브입니다.",
+  alternates: { canonical: "https://proteinlab.kr/brands" },
 };
 
 export default async function BrandsPage() {

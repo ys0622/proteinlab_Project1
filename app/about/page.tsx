@@ -8,6 +8,7 @@ export const metadata = {
   title: "ProteinLab 소개 | 단백질 제품 성분 비교 플랫폼",
   description:
     "ProteinLab은 국내 단백질 음료·바·요거트·쉐이크를 성분 데이터 기준으로 직접 수집·정리한 독립 비교 플랫폼입니다. 데이터 수집 기준, 운영 방침, 업데이트 정책을 안내합니다.",
+  alternates: { canonical: "https://proteinlab.kr/about" },
 };
 
 const dataSourceList = [

@@ -4,7 +4,7 @@ import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 import GuideBuySection from "@/app/components/GuideBuySection";
 import { getAllSearchTopics } from "@/app/data/searchTopics";
-import { getGuideTracks } from "@/app/data/guidesTracks";
+import { getGuideTrack, getGuideTracks } from "@/app/data/guidesTracks";
 import { getAdminGuidesStaticRuntimeData } from "@/app/lib/adminGuidesStaticRuntime";
 import { getGuideThumbnailUrl } from "@/app/lib/guideThumbnails";
 
@@ -75,8 +75,7 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: { params: Promise<{ track: string }> }) {
   const { track } = await params;
-  const cms = await getAdminGuidesStaticRuntimeData();
-  const section = cms.sections.find((item) => item.slug === track);
+  const section = getGuideTrack(track);
 
   if (!section) return {};
 

@@ -7,6 +7,7 @@ export const metadata = {
   title: "단백질 이벤트·핫딜 모음 | 공식몰·네이버 할인 한눈에 보기",
   description:
     "단백질 음료, 바, 요거트, 쉐이크 브랜드의 공식몰·네이버 스토어 할인, 쿠폰, 증정, 무료배송 혜택을 한곳에서 바로 확인하세요.",
+  alternates: { canonical: "https://proteinlab.kr/official-events" },
 };
 
 export default function OfficialEventsPage() {
