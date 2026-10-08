@@ -9,16 +9,33 @@ interface GuideThumbImageProps {
   fallbackBg: string;
   fallbackEmoji: string;
   category: string;
+  productSrcs?: readonly string[];
 }
 
-export default function GuideThumbImage({ src, alt, title, desc, fallbackBg, fallbackEmoji, category }: GuideThumbImageProps) {
+export default function GuideThumbImage({ src, alt, title, desc, fallbackBg, fallbackEmoji, category, productSrcs }: GuideThumbImageProps) {
   const [failed, setFailed] = useState(false);
 
   return (
     /* 사진이 카드 전체를 채우고, 하단에 텍스트 오버레이 */
     <div className="relative flex flex-col overflow-hidden rounded-[16px]" style={{ minHeight: "200px" }}>
       {/* 배경: 에디토리얼 이미지 또는 그라디언트 */}
-      {!failed ? (
+      {productSrcs?.length ? (
+        <div className="absolute inset-0 isolate overflow-hidden bg-[#f4efe3]">
+          <div className="absolute -right-10 -top-20 h-56 w-56 rounded-full bg-[#e1ead8]" />
+          <div className="absolute inset-x-2 top-2 flex h-[174px] items-start justify-center gap-1.5 sm:inset-x-3 sm:gap-3">
+            {productSrcs.map((productSrc, index) => (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img
+                key={productSrc}
+                src={productSrc}
+                alt=""
+                loading="lazy"
+                className={`h-full min-w-0 flex-1 object-contain mix-blend-multiply ${index === 0 ? "hidden sm:block" : ""}`}
+              />
+            ))}
+          </div>
+        </div>
+      ) : !failed ? (
         // eslint-disable-next-line @next/next/no-img-element
         <img
           src={src}

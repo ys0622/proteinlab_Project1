@@ -60,6 +60,7 @@ const GUIDE_CARDS: {
   desc: string;
   href: string;
   thumbImg: string;
+  thumbProductImgs?: readonly string[];
   thumbBg: string;
   thumbEmoji: string;
 }[] = [
@@ -75,7 +76,7 @@ const GUIDE_CARDS: {
   // 검색 유입 상위 가이드를 카드 수를 늘리지 않고 첫 화면 진입점에 복원한다.
   { category: "성분 가이드", title: "MPI·WPI·WPC 단백질 차이", desc: "우유·유청 단백질 원료별 특징 비교", href: "/guides/basics/protein-source-types", thumbImg: "/guide-thumbnails/protein-source-types-v1.png", thumbBg: "linear-gradient(135deg, #5a4a2e 0%, #8c7040 100%)", thumbEmoji: "🧪" },
   // 쉐이크 핵심 검색어의 허브 가이드로 연결한다. 카드 수와 홈 세로 길이는 유지한다.
-  { category: "쉐이크 가이드", title: "단백질 쉐이크 추천·고르는 법", desc: "아침·운동·다이어트 목적별 선택 기준", href: "/guides/product-selection-comparison/protein-shake-guide", thumbImg: "/guide-thumbnails/home-shake-guide-v4.webp", thumbBg: "linear-gradient(135deg, #486a54 0%, #85a58a 100%)", thumbEmoji: "🥤" },
+  { category: "쉐이크 가이드", title: "단백질 쉐이크 추천·고르는 법", desc: "아침·운동·다이어트 목적별 선택 기준", href: "/guides/product-selection-comparison/protein-shake-guide", thumbImg: "/shake-image/proteone-proteinshake-choco-40.webp", thumbProductImgs: ["/shake-image/proteone-proteinshake-choco-40.webp", "/shake-image/danbaekhani-proteinshake-signature-40.webp", "/shake-image/itthefit-proteinshake-misugaru-40.webp"], thumbBg: "linear-gradient(135deg, #486a54 0%, #85a58a 100%)", thumbEmoji: "🥤" },
 ];
 
 function toCarouselProduct(p: ProductDetailProps): CarouselProduct {
@@ -325,6 +326,7 @@ export default async function Home() {
             >
               <GuideThumbImage
                 src={guide.thumbImg}
+                productSrcs={guide.thumbProductImgs}
                 alt={guide.title}
                 title={guide.title}
                 desc={guide.desc}
