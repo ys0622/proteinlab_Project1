@@ -574,7 +574,7 @@ export default async function GuideSlugPage({
               <blockquote className="mt-4 rounded-xl border border-[#eef1f3] bg-white px-4 py-4 text-sm leading-6 text-[var(--foreground-muted)]">
                 한 끼에 20–30g씩 나눠 먹는 것이 한 번에 몰아 먹는 것보다 흡수에 유리합니다.
               </blockquote>
-              <p className="mt-4 text-sm leading-6 text-[var(--foreground-muted)]">단백질은 한 번에 흡수할 수 있는 양이 제한적입니다. 아침·점심·저녁에 고르게 분산하고, 운동 후 30–45분 이내에 보충하면 효율이 높아집니다.</p>
+              <p className="mt-4 text-sm leading-6 text-[var(--foreground-muted)]">한 번에 20~40g(체중 1kg당 약 0.25g) 정도가 근육 합성에 쓰이는 일반적인 1회 기준으로 제시됩니다(ISSN 2017). 아침·점심·저녁에 고르게 분산하고, 운동 전후에 보충하되 시간보다 하루 총량이 더 중요합니다.</p>
               <p className="mt-3 text-xs text-[var(--foreground-muted)]">출처: ISSN Position Stand</p>
               <div className="mt-5 flex flex-wrap gap-3">
                 <Link href="/guides/basics/deficiency-symptoms" className="inline-flex items-center justify-center rounded-lg border border-[#e8e6e3] px-5 py-3 text-sm font-semibold text-[#374151] transition-colors hover:bg-[var(--accent-light)] hover:text-[var(--accent)]">단백질 부족 신호 확인하기 →</Link>

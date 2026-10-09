@@ -37,10 +37,10 @@ const quickAnswer = [
 ];
 
 const bodyWeightRows = [
-  ["50kg", "60~80g", "50g 한 병은 하루 목표의 상당 부분을 차지합니다."],
-  ["60kg", "72~96g", "식사 단백질까지 고려하면 50g은 목적형 보충에 가깝습니다."],
-  ["70kg", "84~112g", "운동량이 큰 날에는 후보가 될 수 있지만 매일용인지는 따져봐야 합니다."],
-  ["80kg", "96~128g", "근력 운동량이 많다면 한 번 보충량으로 검토할 수 있습니다."],
+  ["50kg", "70~100g", "50g 한 병은 하루 목표의 상당 부분을 차지합니다."],
+  ["60kg", "84~120g", "식사 단백질까지 고려하면 50g은 목적형 보충에 가깝습니다."],
+  ["70kg", "98~140g", "운동량이 큰 날에는 후보가 될 수 있지만 매일용인지는 따져봐야 합니다."],
+  ["80kg", "112~160g", "근력 운동량이 많다면 한 번 보충량으로 검토할 수 있습니다."],
 ];
 
 const timingRows = [
@@ -155,7 +155,7 @@ export default function Protein50gAtOncePage() {
           <section className="rounded-[28px] border border-[#e5deca] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(38,28,18,0.05)]">
             <h2 className="text-xl font-bold text-[var(--foreground)]">체중별로 보면 50g은 어느 정도일까</h2>
             <p className="mt-3 text-sm leading-6 text-[var(--foreground-muted)]">
-              아래 표는 운동량이 있는 성인이 하루 체중 1kg당 약 1.2~1.6g을 목표로 잡는 경우를 단순 계산한 예시입니다.
+              아래 표는 운동량이 있는 성인이 하루 체중 1kg당 1.4~2.0g(ISSN 2017)을 목표로 잡는 경우를 단순 계산한 예시입니다.
               개인 질환, 식단, 운동량에 따라 달라질 수 있습니다.
             </p>
             <div className="mt-5 overflow-x-auto rounded-2xl border border-[#e8e3da] bg-[#fdfaf5]">

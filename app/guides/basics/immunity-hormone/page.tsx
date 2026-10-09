@@ -142,6 +142,7 @@ export default function ImmunityHormonePage() {
 
             <Callout>
               단백질 결핍이 심해지면 면역세포 유지와 항체 생성이 줄고, 감염 이후 회복도 늦어질 수 있습니다.
+              이는 부족할 때의 영향을 설명하는 내용이며, 이미 충분히 섭취 중인 사람이 더 먹는다고 면역이나 호르몬 상태가 좋아진다는 뜻은 아닙니다.
             </Callout>
           </section>
 
