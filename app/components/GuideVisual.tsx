@@ -120,10 +120,10 @@ function ProteinBasicsVisual({
           주의 기준
         </text>
         <text x="182" y="76" fontSize="22" fill={accentColor} fontWeight="800">
-          0.8 g/kg
+          0.91 g/kg
         </text>
         <text x="182" y="100" fontSize="11" fill="#7d8b84">
-          이하라면 점검 필요
+          미만이면 점검 필요
         </text>
         <circle cx="262" cy="120" r="18" fill={accentBg} />
         <path d="M262 110v12" stroke={accentColor} strokeWidth="4" strokeLinecap="round" />

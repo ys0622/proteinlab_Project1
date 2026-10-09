@@ -39,7 +39,7 @@ const summaryRows = [
 
 const riskRows = [
   ["다이어트·식사 조절 중", "칼로리 제한으로 단백질 총량이 부족해지기 쉬움", "끼니마다 단백질 식품을 우선 배치"],
-  ["고령층", "흡수 효율과 합성 반응 저하로 결핍 위험이 높음", "체중당 1.2g/kg 이상 목표 확인"],
+  ["고령층", "흡수 효율과 합성 반응 저하로 결핍 위험이 높음", "체중당 1.0~1.2g/kg 목표 확인(활동적이면 1.2 이상)"],
   ["채식·비건 식단", "필수 아미노산 균형이 무너지기 쉬움", "콩류와 곡류를 함께 구성"],
   ["불규칙한 식사", "공급 간격이 길어 총 섭취량이 줄기 쉬움", "하루 3회 이상 분산 섭취"],
 ];
@@ -183,7 +183,7 @@ export default function DeficiencySymptomsPage() {
           <section className="rounded-[28px] border border-[#e8e6e3] bg-[#fffdf8] px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
             <h2 className="text-xl font-bold text-[var(--foreground)]">누가 단백질이 부족해지기 쉬울까?</h2>
             <Callout>
-              하루 단백질 섭취량이 체중(kg) x 0.8g 이하로 오래 유지되면 결핍 위험 구간으로 볼 수 있습니다.
+              하루 단백질 섭취량이 한국인 권장섭취량(체중 kg × 0.91g)에 못 미치는 상태가 오래 이어지면 부족 가능성을 점검해 볼 수 있습니다. 다만 부족 여부는 식사 전체와 건강 상태를 함께 봐야 하며, 증상이 있으면 의료진과 상담하세요.
             </Callout>
 
             <p className="mt-4 text-sm leading-6 text-[var(--foreground-muted)]">

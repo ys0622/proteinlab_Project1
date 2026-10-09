@@ -15,7 +15,7 @@ export const metadata = {
 const intakeRows = [
   ["일반 훈련", "1.6 g/kg", "96g", "112g", "128g"],
   ["고강도 훈련", "1.8~2.0 g/kg", "108~120g", "126~140g", "144~160g"],
-  ["일반 성인(비교)", "0.8 g/kg", "48g", "56g", "64g"],
+  ["일반 성인(한국 권장섭취량)", "0.91 g/kg", "55g", "64g", "73g"],
 ];
 
 const timingRows = [
@@ -104,9 +104,9 @@ export default function RunningBasicsPage() {
           <section className="rounded-2xl border border-[#e8e6e3] bg-[#fffdf8] px-5 py-5">
             <h2 className="text-xl font-bold text-[var(--foreground)]">러너의 하루 단백질 권장량</h2>
             <p className="mt-4 text-sm leading-6 text-[var(--foreground-muted)]">
-              장거리 러닝 훈련 중 권장 단백질 섭취량은 체중 1kg당 1.6~2.0g/day로, 일반 성인
-              (0.8g/kg)의 약 2배 수준입니다. 고강도 훈련기나 탄수화물 제한 시에는 2.0g/kg 이상이
-              필요할 수 있습니다.
+              운동하는 성인의 하루 단백질 섭취 범위로는 체중 1kg당 1.4~2.0g(ISSN 2017)이 자주 인용되며,
+              한국 성인 권장섭취량(0.91g/kg)의 약 1.5~2.2배 수준입니다. 종목과 훈련량, 개인에 따라 달라지므로
+              범위 안에서 식사 전체와 함께 조절하세요.
             </p>
 
             <div className="mt-5 overflow-x-auto">

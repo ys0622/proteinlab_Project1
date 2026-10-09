@@ -28,7 +28,7 @@ const bodyCompositionRows = [
 ];
 
 const intakeRows = [
-  ["일반 성인", "0.8 g/kg", "48 g", "56 g", "64 g"],
+  ["일반 성인(한국 권장섭취량)", "0.91 g/kg", "55 g", "64 g", "73 g"],
   ["중등도 운동", "1.2–1.6 g/kg", "72–96 g", "84–112 g", "96–128 g"],
   ["고강도·근성장", "1.6–2.0 g/kg", "96–120 g", "112–140 g", "128–160 g"],
 ];
@@ -40,7 +40,7 @@ const muscleTimingRows = [
 ];
 
 const muscleIntakeRows = [
-  ["일반 성인", "0.8 g/kg", "48 g", "56 g", "64 g"],
+  ["일반 성인(한국 권장섭취량)", "0.91 g/kg", "55 g", "64 g", "73 g"],
   ["중등도 운동", "1.2–1.6 g/kg", "72–96 g", "84–112 g", "96–128 g"],
   ["고강도·근성장", "1.6–2.0 g/kg", "96–120 g", "112–140 g", "128–160 g"],
 ];
@@ -52,7 +52,7 @@ const immunityRows = [
 ];
 
 const dailyRequirementRows = [
-  ["일반 성인", "0.8 g/kg", "48g", "56g", "64g"],
+  ["일반 성인(한국 권장섭취량)", "0.91 g/kg", "55g", "64g", "73g"],
   ["다이어트 중", "1.2–1.6 g/kg", "72–96g", "84–112g", "96–128g"],
   ["중등도 운동", "1.2–1.6 g/kg", "72–96g", "84–112g", "96–128g"],
   ["고강도·근성장", "1.6–2.0 g/kg", "96–120g", "112–140g", "128–160g"],
@@ -375,7 +375,7 @@ export default async function GuideSlugPage({
                 headers={["활동 수준", "권장량", "60 kg", "70 kg", "80 kg"]}
                 rows={intakeRows}
               />
-              <p className="mt-3 text-xs text-[var(--foreground-muted)]">출처: WHO·한국영양학회(일반 성인), ISSN Position Stand(운동인)</p>
+              <p className="mt-3 text-xs text-[var(--foreground-muted)]">출처: 한국영양학회 2020 한국인 영양소 섭취기준(일반 성인), ISSN Position Stand 2017(운동인)</p>
               <p className="mt-4 text-sm leading-6 text-[var(--foreground-muted)]">
                 권장량을 알았다면 다음 단계는 내 목적에 맞는 제품을 고르는 것입니다.
                 단백질 함량, 당류, 유형까지 한 번에 비교할 수 있습니다.
@@ -444,7 +444,7 @@ export default async function GuideSlugPage({
                 headers={["활동 수준", "권장량", "60 kg", "70 kg", "80 kg"]}
                 rows={muscleIntakeRows}
               />
-              <p className="mt-3 text-xs text-[var(--foreground-muted)]">출처: WHO·한국영양학회(2015), ISSN Position Stand(운동인)</p>
+              <p className="mt-3 text-xs text-[var(--foreground-muted)]">출처: 한국영양학회 2020 한국인 영양소 섭취기준(일반 성인), ISSN Position Stand 2017(운동인)</p>
               <div className="mt-5 flex flex-wrap gap-3">
                 <CtaButton href="/picks/high-protein-20">고단백 20g+ 제품 바로 보기 →</CtaButton>
                 <CtaButton href="/recommend">내 목적에 맞는 제품 찾기 →</CtaButton>
@@ -567,7 +567,7 @@ export default async function GuideSlugPage({
                   </tbody>
                 </table>
               </div>
-              <p className="mt-4 text-xs text-[var(--foreground-muted)]">출처: WHO·한국영양학회(2015), ISSN Position Stand</p>
+              <p className="mt-4 text-xs text-[var(--foreground-muted)]">출처: 한국영양학회 2020 한국인 영양소 섭취기준(일반 성인), ISSN Position Stand 2017</p>
             </section>
             <section className="rounded-2xl border border-[#e8e6e3] bg-[#fffdf8] px-5 py-5">
               <h2 className="text-xl font-bold text-[var(--foreground)]">단백질 섭취, 이것만 기억하세요</h2>
@@ -623,7 +623,7 @@ export default async function GuideSlugPage({
             <section className="rounded-2xl border border-[#e8e6e3] bg-[#fffdf8] px-5 py-5">
               <h2 className="text-xl font-bold text-[var(--foreground)]">나는 단백질이 부족할까?</h2>
               <Callout>
-                하루 단백질 섭취량이 체중(kg) × 0.8 g 이하라면 결핍 위험 구간입니다.
+                하루 단백질 섭취량이 한국인 권장섭취량(체중 kg × 0.91g)에 못 미치는 상태가 오래 이어지면 부족 가능성을 점검해 볼 수 있습니다. 다만 부족 여부는 식사 전체와 건강 상태를 함께 봐야 하며, 증상이 있으면 의료진과 상담하세요.
               </Callout>
               <p className="mt-4 text-sm leading-6 text-[var(--foreground-muted)]">
                 식단에서 육류·생선·달걀·두부·유제품 비중이 낮거나, 다이어트로 칼로리를 과하게 제한하는 경우 단백질 부족 신호가 더 쉽게 나타납니다.

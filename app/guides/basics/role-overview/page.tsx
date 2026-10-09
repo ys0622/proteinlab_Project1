@@ -36,7 +36,7 @@ const bodyCompositionRows = [
 ];
 
 const intakeRows = [
-  ["일반 성인", "0.8 g/kg", "48g", "56g", "64g"],
+  ["일반 성인(한국 권장섭취량)", "0.91 g/kg", "55g", "64g", "73g"],
   ["중강도 이상 운동", "1.2~1.6 g/kg", "72~96g", "84~112g", "96~128g"],
   ["고강도 운동", "1.6~2.0 g/kg", "96~120g", "112~140g", "128~160g"],
 ];
@@ -262,7 +262,7 @@ export default function RoleOverviewGuidePage() {
               </table>
             </div>
             <p className="mt-4 text-xs text-[var(--foreground-muted)]">
-              출처: WHO, 대한영양사협회, ISSN Position Stand
+              출처: 한국인 영양소 섭취기준(2020), 대한영양사협회, ISSN Position Stand(2017)
             </p>
             <div className="mt-5">
               <Link
