@@ -1,7 +1,6 @@
 import type { MetadataRoute } from "next";
 import { getAllCompareLandings } from "./data/compareLandings";
 import { compareCanonicalOverrides } from "./data/compareCanonicalOverrides";
-import { getAllSearchTopics } from "./data/searchTopics";
 import { getAllCurations } from "./lib/curationSystem";
 import { getBrandSummary } from "./lib/brandHubs";
 import { getAllPickSlugs } from "./data/picksConfig";
@@ -120,7 +119,6 @@ const staticRoutes = [
   "/compare",
   "/shake",
   "/yogurt",
-  "/topics",
   "/brands",
 ] as const;
 
@@ -307,9 +305,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   }
 
   const curationRoutes = getAllCurations().map((curation) => `/curation/${curation.slug}`);
-  const topicRoutes = getAllSearchTopics()
-    .filter((topic) => topic.slug !== "low-sugar-protein-shake")
-    .map((topic) => `/topics/${topic.slug}`);
+  // /topics/* 는 얇은 랜딩이라 noindex 처리했으므로 사이트맵에서 제외한다
+  const topicRoutes: string[] = [];
   const compareRoutes = getAllCompareLandings()
     .filter((landing) => !(landing.slug in compareCanonicalOverrides))
     .map((landing) => `/compare/${landing.slug}`);

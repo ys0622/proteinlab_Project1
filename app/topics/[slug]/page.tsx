@@ -36,9 +36,8 @@ export async function generateMetadata({ params }: PageProps) {
     title,
     description,
     alternates: { canonical },
-    robots: TOPIC_CANONICAL_TARGETS[topic.slug]
-      ? { index: false, follow: true }
-      : { index: true, follow: true },
+    // 검색 유입용 얇은 랜딩이라 색인 대상에서 제외(링크는 따라가게 둔다)
+    robots: { index: false, follow: true },
     openGraph: {
     images: [{ url: "https://proteinlab.kr/opengraph-image", width: 1200, height: 630, alt: "ProteinLab 단백질 제품 비교" }],
       title,

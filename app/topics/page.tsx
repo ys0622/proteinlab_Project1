@@ -78,6 +78,7 @@ const metadataDescription =
 export const metadata = {
   title: metadataTitle,
   description: metadataDescription,
+  robots: { index: false, follow: true },
   alternates: {
     canonical: "https://proteinlab.kr/topics",
   },
