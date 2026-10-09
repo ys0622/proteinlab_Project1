@@ -47,7 +47,7 @@ export default async function Image() {
         </div>
 
         {/* Main content — left column */}
-        <div style={{ display: "flex", flexDirection: "column", position: "absolute", left: "64px", top: "118px" }}>
+        <div style={{ display: "flex", flexDirection: "column", position: "absolute", left: "64px", top: "200px" }}>
           {/* Logo row */}
           <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
             <div style={{ width: "64px", height: "64px", background: "linear-gradient(135deg, #2db872 0%, #1a8c52 100%)", borderRadius: "18px", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "36px" }}>
@@ -65,37 +65,23 @@ export default async function Image() {
           <div style={{ marginTop: "8px", fontSize: "22px", fontWeight: 700, color: "rgba(74,200,130,0.9)", display: "flex" }}>
             함량 · 칼로리 · 당류 기준 비교
           </div>
-
-          {/* Category pills */}
-          <div style={{ display: "flex", gap: "10px", marginTop: "40px" }}>
-            {[
-              { label: "🥤 음료", count: String(counts.drink) },
-              { label: "🍫 바", count: String(counts.bar) },
-              { label: "🥣 요거트", count: String(counts.yogurt) },
-              { label: "🥛 쉐이크", count: String(counts.shake) },
-            ].map((cat) => (
-              <div key={cat.label} style={{ display: "flex", alignItems: "center", gap: "6px", background: "rgba(255,255,255,0.08)", border: "1px solid rgba(255,255,255,0.15)", borderRadius: "40px", padding: "8px 18px" }}>
-                <span style={{ color: "rgba(255,255,255,0.9)", fontSize: "16px", fontWeight: 700 }}>{cat.label}</span>
-                <span style={{ background: "rgba(74,180,120,0.25)", color: "#6de0a0", borderRadius: "20px", padding: "1px 8px", fontSize: "13px", fontWeight: 700 }}>{cat.count}</span>
-              </div>
-            ))}
-          </div>
         </div>
 
-        {/* Right side stat cards */}
-        <div style={{ display: "flex", flexDirection: "column", gap: "14px", position: "absolute", right: "64px", top: "118px" }}>
+        {/* Right side: 실제 등록 제품 수 */}
+        <div style={{ display: "flex", flexDirection: "column", gap: "14px", position: "absolute", right: "64px", top: "150px" }}>
           {[
-            { label: "단백질", value: "25g", color: "#4ac882" },
-            { label: "칼로리", value: "130kcal", color: "#72b8e8" },
-            { label: "당류", value: "0g", color: "#f0b84a" },
+            { label: "음료", value: String(counts.drink), color: "#4ac882" },
+            { label: "바", value: String(counts.bar), color: "#72b8e8" },
+            { label: "요거트", value: String(counts.yogurt), color: "#f0b84a" },
+            { label: "쉐이크", value: String(counts.shake), color: "#e88a9c" },
           ].map((stat) => (
-            <div key={stat.label} style={{ width: "220px", background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.12)", borderRadius: "16px", padding: "16px 20px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-              <span style={{ color: "rgba(255,255,255,0.65)", fontSize: "16px", fontWeight: 700 }}>{stat.label}</span>
-              <span style={{ color: stat.color, fontSize: "22px", fontWeight: 700 }}>{stat.value}</span>
+            <div key={stat.label} style={{ width: "260px", background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.12)", borderRadius: "16px", padding: "16px 22px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+              <span style={{ color: "rgba(255,255,255,0.75)", fontSize: "20px", fontWeight: 700 }}>{stat.label}</span>
+              <span style={{ color: stat.color, fontSize: "28px", fontWeight: 700 }}>{stat.value}</span>
             </div>
           ))}
-          <div style={{ width: "220px", background: "linear-gradient(135deg, rgba(45,184,114,0.2) 0%, rgba(26,140,82,0.2) 100%)", border: "1px solid rgba(74,180,120,0.35)", borderRadius: "16px", padding: "16px 20px", display: "flex", alignItems: "center", justifyContent: "center" }}>
-            <span style={{ color: "#6de0a0", fontSize: "15px", fontWeight: 700 }}>proteinlab.kr</span>
+          <div style={{ width: "260px", background: "linear-gradient(135deg, rgba(45,184,114,0.2) 0%, rgba(26,140,82,0.2) 100%)", border: "1px solid rgba(74,180,120,0.35)", borderRadius: "16px", padding: "16px 20px", display: "flex", alignItems: "center", justifyContent: "center" }}>
+            <span style={{ color: "#6de0a0", fontSize: "16px", fontWeight: 700 }}>proteinlab.kr</span>
           </div>
         </div>
 

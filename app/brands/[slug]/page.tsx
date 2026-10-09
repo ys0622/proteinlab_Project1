@@ -9,6 +9,7 @@ import { getAllProducts } from "../../data/products";
 import { getCategoryLabel, type ProductCategory } from "../../lib/categories";
 import { getBrandSummary, slugToBrand } from "../../lib/brandHubs";
 import { formatProductLabel } from "../../lib/productLabel";
+import { getBrandProfile } from "@/app/lib/brandProfile";
 import type { ProductDetailProps } from "../../data/products";
 
 function getBrandQuickLinks(brand: string) {
@@ -319,6 +320,9 @@ export default async function BrandPage({ params }: PageProps) {
 
   if (!brand) notFound();
 
+  const profileGroups = getBrandProfile(brand.brand, brand.items, products);
+  const rankBySlug = new Map(profileGroups.flatMap((g) => g.rows.map((r) => [r.slug, `${r.proteinRank}위 / ${g.poolSize}종`] as const)));
+
   const shakeItems = brand.items.filter((item) => item.productType === "shake");
   const shakeHighlights = getShakeHighlights(shakeItems);
   const shakeFlavors = [...new Set(shakeItems.map((item) => item.flavor).filter((flavor): flavor is string => Boolean(flavor)))];
@@ -420,6 +424,20 @@ export default async function BrandPage({ params }: PageProps) {
           </p>
         </section>
 
+        {profileGroups.length > 0 ? (
+          <section className="mt-6 rounded-2xl border border-[#e8e6e3] bg-white p-5">
+            <p className="text-[12px] font-bold uppercase tracking-wider text-[#1F5A3D]">ProteinLab 분석</p>
+            <h2 className="mt-0.5 text-lg font-bold text-[var(--foreground)]">수치로 보는 {brand.brand}</h2>
+            <p className="mt-1 text-sm text-[var(--foreground-muted)]">1회 제공량(1병·1개) 기준이며, 순위는 ProteinLab에 등록된 같은 카테고리 제품 안에서의 순위입니다.</p>
+            {profileGroups.map((group) => (
+              <div key={group.kind} className="mt-5">
+                <h3 className="text-base font-semibold text-[var(--foreground)]">{group.kindLabel} · {group.rows.length}종</h3>
+                <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">{group.summary}</p>
+              </div>
+            ))}
+          </section>
+        ) : null}
+
         {quickLinks.length > 0 ? (
           <section className="mt-6">
             <div className="mb-4 space-y-1">
@@ -510,6 +528,7 @@ export default async function BrandPage({ params }: PageProps) {
                   <th className="px-3 py-3 text-right font-semibold text-[var(--foreground)]">칼로리</th>
                   <th className="px-3 py-3 text-right font-semibold text-[var(--foreground)]">당류</th>
                   <th className="px-3 py-3 text-right font-semibold text-[var(--foreground)]">용량</th>
+                  <th className="px-3 py-3 text-right font-semibold text-[var(--foreground)]">단백질 순위</th>
                 </tr>
               </thead>
               <tbody>
@@ -527,6 +546,7 @@ export default async function BrandPage({ params }: PageProps) {
                       <td className="px-3 py-3 text-right text-[var(--foreground-muted)]">{p.calories != null ? `${p.calories}kcal` : "-"}</td>
                       <td className="px-3 py-3 text-right text-[var(--foreground-muted)]">{p.sugar != null ? `${p.sugar}g` : "-"}</td>
                       <td className="px-3 py-3 text-right text-[var(--foreground-muted)]">{p.capacity ?? "-"}</td>
+                      <td className="px-3 py-3 text-right text-[var(--foreground-muted)]">{rankBySlug.get(p.slug) ?? "-"}</td>
                     </tr>
                   ))}
               </tbody>
