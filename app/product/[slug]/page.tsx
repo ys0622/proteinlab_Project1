@@ -45,6 +45,7 @@ import {
 import { getProductImageUrl } from "../../lib/productImage";
 import { formatProductLabel } from "../../lib/productLabel";
 import { getSimilarProducts } from "../../lib/similarProducts";
+import { getProductPosition } from "../../lib/productPosition";
 import {
   getCoupangRedirectHref,
   getKnownSourceCoupangUrlBySlug,
@@ -101,7 +102,7 @@ function getProductFaqs(product: ProductDetailProps) {
       answer: `${formatProductLabel(product.brand, product.name)}은 ${getMetricLine(product)} 기준으로 먼저 보는 편이 좋습니다. 같은 ${categoryLabel} 안에서는 단백질 총량, 당류, 칼로리, 용량당 밀도를 같이 비교해야 실제 체감 차이가 잘 보입니다.`,
     },
     {
-      question: `이 제품과 비슷한 ${categoryLabel}은 어디서 더 볼 수 있나요?`,
+      question: `이 제품과 비슷한 ${categoryLabel}은(는) 어디서 더 볼 수 있나요?`,
       answer: `ProteinLab ${categoryLabel} 목록 페이지(${categoryHref})와 비교 페이지에서 비슷한 스펙 제품을 한 번에 볼 수 있습니다. 특히 같은 카테고리 제품끼리 비교하면 목적별 차이가 더 명확합니다.`,
     },
     {
@@ -534,6 +535,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
   const detailCategoryHref = getCategoryDetailHref(category);
   const categoryProducts = getStaticProductsByCategory(category);
   const similarProducts = getSimilarProducts(product, categoryProducts, 6);
+  const position = getProductPosition(product, categoryProducts);
   const internalLinks = buildProductInternalLinks(product).slice(0, 6);
   const recommendedFor = buildRecommendedFor(product);
   const tasteAwards = product.awards ?? [];
@@ -1043,6 +1045,35 @@ export default async function ProductDetailPage({ params }: PageProps) {
           <div className="mt-6">
             <ProductReviewSection slug={slug} />
           </div>
+
+          {position ? (
+            <section className="mt-8 rounded-[24px] border bg-white p-5 md:p-6" style={{ borderColor: "#E6DDCC", boxShadow: "0 8px 22px rgba(31,90,61,0.05)" }}>
+              <div className="mb-4">
+                <p className="mb-0.5 text-[12px] font-bold uppercase tracking-wider" style={{ color: "#1F5A3D" }}>ProteinLab 분석</p>
+                <h2 className="font-bold" style={{ fontSize: "17px", color: "#1E2A22" }}>카테고리 내 위치</h2>
+                <p className="mt-0.5 text-[13px]" style={{ color: "#5F6B61" }}>1회 제공량(1병·1개) 기준, 같은 카테고리 {position.total}종과 비교한 순위입니다.</p>
+              </div>
+              <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
+                {position.rows.map((row) => (
+                  <div key={row.label} className="rounded-[16px] border p-3" style={{ borderColor: "#E6DDCC", background: "#FFFDF8" }}>
+                    <p className="text-[12px]" style={{ color: "#5F6B61" }}>{row.label}</p>
+                    <p className="mt-1 text-[16px] font-bold" style={{ color: "#1E2A22" }}>{row.value}</p>
+                    <p className="mt-0.5 text-[12px]" style={{ color: "#1F5A3D" }}>{row.note}</p>
+                  </div>
+                ))}
+              </div>
+              <p className="mt-4 text-[13px] leading-6" style={{ color: "#5F6B61" }}>{position.summary}</p>
+              {position.alternative ? (
+                <p className="mt-2 text-[13px] leading-6" style={{ color: "#5F6B61" }}>
+                  단백질 함량이 비슷하고 열량이 더 낮은 대안:{" "}
+                  <Link href={`/product/${position.alternative.slug}`} className="font-semibold underline" style={{ color: "#1F5A3D" }}>
+                    {position.alternative.label}
+                  </Link>{" "}
+                  ({position.alternative.detail})
+                </p>
+              ) : null}
+            </section>
+          ) : null}
 
           <section className="mt-8 rounded-[24px] border bg-white p-5 md:p-6" style={{ borderColor: "#E6DDCC", boxShadow: "0 8px 22px rgba(31,90,61,0.05)" }}>
             <div className="mb-4">
