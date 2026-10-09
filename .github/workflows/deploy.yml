@@ -19,6 +19,10 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      # NEXT_PUBLIC_* 는 빌드 시점에 번들로 인라인된다. CI에는 .env.local이 없어 GA4·애드센스 값이 비던 문제를 막는다.
+      - name: Export public build env from wrangler.jsonc
+        run: node scripts/write-public-env.mjs
+
       - name: Deploy to Cloudflare
         run: npm run deploy
         env:
