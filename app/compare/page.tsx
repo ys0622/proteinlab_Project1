@@ -24,6 +24,31 @@ import { getProductImageUrl } from "../lib/productImage";
 import { hybridScore } from "../lib/productScoring";
 import { compareAdd, compareComplete, compareView, internalCtaClick } from "../../lib/analytics";
 
+const compareFaqItems = [
+  {
+    question: "몇 개까지 한 번에 비교할 수 있나요?",
+    answer: "최대 3개까지 나란히 비교할 수 있습니다. 4개 이상 후보가 있다면 먼저 2개씩 겨루듯 좁혀 나가는 편이 더 빠르게 결정됩니다.",
+  },
+  {
+    question: "표시 항목은 어떤 기준으로 골라야 하나요?",
+    answer: "다이어트가 목적이면 당류·칼로리를, 운동 후 보충이 목적이면 단백질 함량과 밀도(100mL당 단백질)를 먼저 켜서 보는 것이 좋습니다. 나트륨이나 BCAA는 필요할 때만 추가로 확인하면 됩니다.",
+  },
+  {
+    question: "비교 링크를 공유하면 어떻게 되나요?",
+    answer: "'공유 링크 복사'를 누르면 지금 선택한 제품 조합이 그대로 담긴 주소가 만들어집니다. 그 링크를 열면 누구나 같은 비교표를 바로 볼 수 있어 대화방에서 의견을 나눌 때 유용합니다.",
+  },
+];
+
+const compareFaqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: compareFaqItems.map((item) => ({
+    "@type": "Question",
+    name: item.question,
+    acceptedAnswer: { "@type": "Answer", text: item.answer },
+  })),
+};
+
 const MAX_PRODUCTS = 3;
 const OPERATOR_COMPARE_SLUGS = new Set([
   "proteone-vs-itthefit-shake",
@@ -510,11 +535,33 @@ export default function ComparePage() {
           </div>
 
           <CompareTable products={products} visibleColumnIds={visibleIds} />
+
+          <section className="rounded-2xl border p-5 md:p-6" style={{ borderColor: "#e8e6e3" }}>
+            <h2 className="text-lg font-bold" style={{ color: "#16412D" }}>비교표는 이렇게 보면 편합니다</h2>
+            <ul className="mt-3 space-y-2 text-sm leading-6" style={{ color: "#5B6660" }}>
+              <li>• 목적부터 정하기: 다이어트면 당류·칼로리, 운동 후 보충이면 단백질과 밀도를 먼저 켜세요.</li>
+              <li>• 숫자만 보지 말고 원료(단백질 종류)와 나트륨까지 같이 보면 실제 체감 차이가 더 잘 보입니다.</li>
+              <li>• 후보가 4개 이상이면 2개씩 먼저 겨루듯 좁힌 뒤, 남은 후보로 다시 비교하세요.</li>
+            </ul>
+          </section>
+
+          <section className="rounded-2xl border p-5 md:p-6" style={{ borderColor: "#e8e6e3", background: "#FAF8F3" }}>
+            <h2 className="text-lg font-bold" style={{ color: "#16412D" }}>💬 자주 묻는 질문</h2>
+            <div className="mt-4 space-y-3">
+              {compareFaqItems.map((item) => (
+                <div key={item.question} className="rounded-xl border bg-white p-4" style={{ borderColor: "#e8e6e3" }}>
+                  <p className="text-sm font-semibold" style={{ color: "#1a1a1a" }}>Q. {item.question}</p>
+                  <p className="mt-2 text-sm leading-6" style={{ color: "#5B6660" }}>A. {item.answer}</p>
+                </div>
+              ))}
+            </div>
+          </section>
         </div>
         <div className="mt-6">
           <CommercialAdSection pageType="compare" />
         </div>
       </main>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(compareFaqJsonLd) }} />
       <Footer />
     </div>
   );
