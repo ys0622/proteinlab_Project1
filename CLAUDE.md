@@ -15,7 +15,7 @@ proteinlab.kr — 단백질 음료·바·요거트·쉐이크 제품 비교 서�
 2. 로컬 서버가 떠 있으면 먼저 종료한다(`.open-next`가 잠겨 삭제가 실패한다).
 3. `rm -rf .open-next` 후 `npm run deploy`를 백그라운드로 실행하고 로그에서 `Current Version ID`를 확인한다. `predeploy`가 `check:assets`를 먼저 돌린다.
 4. 라이브 URL을 curl로 확인한다(전파 지연으로 직후 404가 나면 한 번 재시도).
-5. `git push origin master`. push하면 `.github/workflows/deploy.yml`이 같은 커밋을 다시 배포한다(같은 코드면 사이트는 달라지지 않는다). 배포하면 push까지 같이 한다.
+5. `git push origin master`. push하면 `.github/workflows/deploy.yml`이 같은 커밋을 **CI에서 새로 빌드해 다시 배포한다. 로컬 빌드를 덮어쓴다.** CI에는 `.env.local`이 없으므로 워크플로의 `write-public-env.mjs` 단계가 `wrangler.jsonc`의 `NEXT_PUBLIC_*`를 `.env.production`으로 내보낸다. 이 단계가 빠지면 GA4 직접 전송 이벤트와 애드센스가 번들에서 조용히 사라진다(2026-10-06~10-09에 실제로 발생). `predeploy`의 `check-build-env.mjs`가 값이 비면 배포를 막는다. push 후 CI 재배포가 끝나면 라이브 제품 페이지에서 `window.dataLayer`에 `page_view`, `product_detail_view`가 쌓이는지 확인한다. 배포하면 push까지 같이 한다.
 - 커밋은 파일을 하나씩 지정해서 `git add` 한다(`git add -A` 금지). 작업 트리에 내가 만들지 않은 변경(`.claude/settings.local.json`, `app/official-events/EventsClient.tsx`, `public/products.json`, `app/sitemap.ts`의 날짜 변경 등)이 있을 수 있다.
 - 커밋 전에 `git fetch origin master`로 어긋남을 확인한다.
 
@@ -30,7 +30,8 @@ proteinlab.kr — 단백질 음료·바·요거트·쉐이크 제품 비교 서�
 - `link.coupang.com/a/gaIdNRGs2u`는 쿠팡 **홈**으로 가는 공용 폴백이다. 현재 15개 제품(모두 단종 확인)이 이 링크를 쓴다. 실제 구매 링크가 아니다.
 - 링크를 지어내지 않는다. 쿠팡에 없는 제품은 링크 없이 둔다. 검색 URL은 수익이 나지 않는다.
 - **구매 버튼 같은 수익 진입점은 개편하면서 빼지 않는다.**
-- 쿠팡파트너스 계정과 GA4 계정은 케어맵과 공용이다. 쿠팡 보고서 수치는 사이트별로 분리되지 않는다. 채널 ID(subId) 분리는 아직 안 됐다.
+- 쿠팡파트너스 계정은 케어맵과 공용이다. 쿠팡 보고서 수치는 사이트별로 분리되지 않는다. GA4는 계정(`proteinlab`)만 같고 **속성은 분리**돼 있다(프로틴랩 526849422, 케어맵 531248967, 키즈픽 533061815). 프로틴랩 데이터는 반드시 `proteinlab` 속성에서 본다.
+- 코드는 딥링크 변환 시 `subId=proteinlab`을 붙인다(`NEXT_PUBLIC_COUPANG_PARTNERS_SUB_ID`). 이미 만들어진 `link.coupang.com/a/...` 단축 링크의 subId는 쿠팡파트너스에서 만들 때 정해져 있어 미검증이다.
 - 골드박스 API는 두 사이트가 같은 키를 쓰므로 호출량 한도를 공유한다. 케어맵과 코드를 합치지 않는다.
 
 ## 일하는 원칙
