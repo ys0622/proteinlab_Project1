@@ -49,6 +49,34 @@ const compareFaqJsonLd = {
   })),
 };
 
+function CompareInfoSections() {
+  return (
+    <>
+      <section className="rounded-2xl border p-5 md:p-6" style={{ borderColor: "#e8e6e3" }}>
+        <h2 className="text-lg font-bold" style={{ color: "#16412D" }}>비교표는 이렇게 보면 편합니다</h2>
+        <ul className="mt-3 space-y-2 text-sm leading-6" style={{ color: "#5B6660" }}>
+          <li>• 목적부터 정하기: 다이어트면 당류·칼로리, 운동 후 보충이면 단백질과 밀도를 먼저 켜세요.</li>
+          <li>• 숫자만 보지 말고 원료(단백질 종류)와 나트륨까지 같이 보면 실제 체감 차이가 더 잘 보입니다.</li>
+          <li>• 후보가 4개 이상이면 2개씩 먼저 겨루듯 좁힌 뒤, 남은 후보로 다시 비교하세요.</li>
+        </ul>
+      </section>
+
+      <section className="rounded-2xl border p-5 md:p-6" style={{ borderColor: "#e8e6e3", background: "#FAF8F3" }}>
+        <h2 className="text-lg font-bold" style={{ color: "#16412D" }}>💬 자주 묻는 질문</h2>
+        <div className="mt-4 space-y-3">
+          {compareFaqItems.map((item) => (
+            <div key={item.question} className="rounded-xl border bg-white p-4" style={{ borderColor: "#e8e6e3" }}>
+              <p className="text-sm font-semibold" style={{ color: "#1a1a1a" }}>Q. {item.question}</p>
+              <p className="mt-2 text-sm leading-6" style={{ color: "#5B6660" }}>A. {item.answer}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(compareFaqJsonLd) }} />
+    </>
+  );
+}
+
 const MAX_PRODUCTS = 3;
 const OPERATOR_COMPARE_SLUGS = new Set([
   "proteone-vs-itthefit-shake",
@@ -399,6 +427,9 @@ export default function ComparePage() {
             </Link>
           </div>
         </section>
+        <div className="mx-auto flex max-w-[1200px] flex-col gap-6 px-4 pb-12 md:px-6">
+          <CompareInfoSections />
+        </div>
       </div>
     );
   }
@@ -536,32 +567,12 @@ export default function ComparePage() {
 
           <CompareTable products={products} visibleColumnIds={visibleIds} />
 
-          <section className="rounded-2xl border p-5 md:p-6" style={{ borderColor: "#e8e6e3" }}>
-            <h2 className="text-lg font-bold" style={{ color: "#16412D" }}>비교표는 이렇게 보면 편합니다</h2>
-            <ul className="mt-3 space-y-2 text-sm leading-6" style={{ color: "#5B6660" }}>
-              <li>• 목적부터 정하기: 다이어트면 당류·칼로리, 운동 후 보충이면 단백질과 밀도를 먼저 켜세요.</li>
-              <li>• 숫자만 보지 말고 원료(단백질 종류)와 나트륨까지 같이 보면 실제 체감 차이가 더 잘 보입니다.</li>
-              <li>• 후보가 4개 이상이면 2개씩 먼저 겨루듯 좁힌 뒤, 남은 후보로 다시 비교하세요.</li>
-            </ul>
-          </section>
-
-          <section className="rounded-2xl border p-5 md:p-6" style={{ borderColor: "#e8e6e3", background: "#FAF8F3" }}>
-            <h2 className="text-lg font-bold" style={{ color: "#16412D" }}>💬 자주 묻는 질문</h2>
-            <div className="mt-4 space-y-3">
-              {compareFaqItems.map((item) => (
-                <div key={item.question} className="rounded-xl border bg-white p-4" style={{ borderColor: "#e8e6e3" }}>
-                  <p className="text-sm font-semibold" style={{ color: "#1a1a1a" }}>Q. {item.question}</p>
-                  <p className="mt-2 text-sm leading-6" style={{ color: "#5B6660" }}>A. {item.answer}</p>
-                </div>
-              ))}
-            </div>
-          </section>
+          <CompareInfoSections />
         </div>
         <div className="mt-6">
           <CommercialAdSection pageType="compare" />
         </div>
       </main>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(compareFaqJsonLd) }} />
       <Footer />
     </div>
   );
