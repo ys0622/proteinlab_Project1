@@ -44,7 +44,7 @@ export default function HomePopularCarousel({ products, available }: Props) {
             className="shrink-0 font-extrabold text-[15px] md:text-[24px]"
             style={{ color: "#1A2B1E", letterSpacing: "-0.02em" }}
           >
-            요즘 주목받는 제품
+            지금 인기 제품
           </h2>
           <span className="rounded-full bg-[#EEF3EF] px-2 py-0.5 text-[10px] font-bold text-[#5E6E61] md:text-[11px]">
             {curTab.label}
@@ -56,7 +56,7 @@ export default function HomePopularCarousel({ products, available }: Props) {
       </div>
       <div className="mb-3 hidden flex-nowrap items-center justify-between gap-2 md:flex">
         <h2 className="shrink-0 text-[24px] font-extrabold" style={{ color: "#1A2B1E", letterSpacing: "-0.02em" }}>
-          요즘 주목받는 제품
+          지금 인기 제품
         </h2>
         <div className="flex min-w-0 shrink-0 items-center gap-2">
           <div className="flex gap-1">
@@ -85,7 +85,7 @@ export default function HomePopularCarousel({ products, available }: Props) {
         <div className="rounded-xl border border-[#E3E8E4] bg-white px-4 py-6 text-center text-sm text-[#5E6E61]">
           {available ? "최근 7일 조회 기록이 없습니다." : "조회 순위를 잠시 불러올 수 없습니다."}
         </div>
-      ) : <AutoProductCarousel key={curTab.key} label="요즘 주목받는 제품">
+      ) : <AutoProductCarousel key={curTab.key} label="지금 인기 제품">
         {curProducts.map((product, i) => {
           const reasonLabel = product.discoveryReason === "coupang_best" ? "쿠팡 베스트"
             : product.discoveryReason === "recently_added" ? "새로 등록" : null;

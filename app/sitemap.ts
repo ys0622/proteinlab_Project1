@@ -75,12 +75,98 @@ const PAGE_DATES: Record<string, string> = {
   "/search": "2026-06-01",
 };
 
-const FALLBACK_PRODUCT_DATE = "2026-07-15";
+// 2026-10-09에 본문(구매 섹션·데이터 표·수치 정정)이 실제로 바뀐 가이드. 실제 수정일만 lastmod로 쓴다.
+const REVISED_2026_10_09 = new Set<string>([
+  "/guides/basics/daily-requirement",
+  "/guides/basics/deficiency-symptoms",
+  "/guides/basics/digestion",
+  "/guides/basics/immunity-hormone",
+  "/guides/basics/muscle",
+  "/guides/basics/protein-deficiency-self-check",
+  "/guides/basics/protein-drink-vs-powder",
+  "/guides/basics/protein-source-types",
+  "/guides/basics/role-overview",
+  "/guides/fitness-lifestyle/beginner-workout-guide",
+  "/guides/fitness-lifestyle/commute-protein-guide",
+  "/guides/fitness-lifestyle/convenience-store-workout-protein",
+  "/guides/fitness-lifestyle/marathon-distance-strategy",
+  "/guides/fitness-lifestyle/marathon-protein-guide",
+  "/guides/fitness-lifestyle/office-worker-protein-routine",
+  "/guides/fitness-lifestyle/running-protein-guide",
+  "/guides/fitness-lifestyle/sports-nutrition-guide",
+  "/guides/fitness-lifestyle/spring-diet-protein-guide",
+  "/guides/fitness-lifestyle/spring-outdoor-protein-snack-guide",
+  "/guides/fitness-lifestyle/spring-running-start-guide",
+  "/guides/fitness-lifestyle/strength-training-protein",
+  "/guides/intake-strategy-health/diet-protein-drink-strategy",
+  "/guides/intake-strategy-health/high-protein-side-effects",
+  "/guides/intake-strategy-health/lean-massup-protein-intake",
+  "/guides/intake-strategy-health/light-protein-under-20g",
+  "/guides/intake-strategy-health/meal-replacement-strategy",
+  "/guides/intake-strategy-health/morning-protein-drink",
+  "/guides/intake-strategy-health/muscle-maintenance-protein",
+  "/guides/intake-strategy-health/night-protein-drink",
+  "/guides/intake-strategy-health/post-workout-protein",
+  "/guides/intake-strategy-health/pre-workout-protein",
+  "/guides/intake-strategy-health/protein-50g-at-once",
+  "/guides/intake-strategy-health/protein-drink-daily",
+  "/guides/intake-strategy-health/protein-drink-diarrhea",
+  "/guides/intake-strategy-health/protein-drink-empty-stomach",
+  "/guides/intake-strategy-health/protein-drink-mainstream-shift",
+  "/guides/intake-strategy-health/protein-drink-meal-replacement",
+  "/guides/intake-strategy-health/protein-drink-sugar",
+  "/guides/intake-strategy-health/protein-drink-weight-gain",
+  "/guides/intake-strategy-health/protein-drink-with-meals",
+  "/guides/intake-strategy-health/protein-drink-without-exercise",
+  "/guides/intake-strategy-health/protein-timing",
+  "/guides/intake-strategy-health/senior-protein-strategy",
+  "/guides/intake-strategy-health/weight-management-protein",
+  "/guides/market-insights/brand-analysis",
+  "/guides/market-insights/global-protein-market",
+  "/guides/market-insights/ingredient-trends",
+  "/guides/market-insights/new-product-analysis",
+  "/guides/market-insights/protein-content-interest-data",
+  "/guides/market-insights/protein-drink-ad-checklist",
+  "/guides/market-insights/protein-drink-trend-2026",
+  "/guides/market-insights/protein-market-history",
+  "/guides/market-insights/protein-rtd-market",
+  "/guides/market-insights/seoulmilk-protein-energy",
+  "/guides/product-selection-comparison/convenience-protein-bar",
+  "/guides/product-selection-comparison/danbaekhani-protein-shake",
+  "/guides/product-selection-comparison/diet-protein-bar",
+  "/guides/product-selection-comparison/diet-protein-drink-guide",
+  "/guides/product-selection-comparison/diet-protein-yogurt",
+  "/guides/product-selection-comparison/drinking-yogurt-guide",
+  "/guides/product-selection-comparison/flymill-protein-shake",
+  "/guides/product-selection-comparison/greek-yogurt-guide",
+  "/guides/product-selection-comparison/high-protein-50g-comparison",
+  "/guides/product-selection-comparison/labnoshe-slim-shake",
+  "/guides/product-selection-comparison/low-sugar-protein-drink-guide",
+  "/guides/product-selection-comparison/low-sugar-yogurt-guide",
+  "/guides/product-selection-comparison/meal-replacement-protein-bar-guide",
+  "/guides/product-selection-comparison/nutrition-comparison",
+  "/guides/product-selection-comparison/nutrition-criteria",
+  "/guides/product-selection-comparison/protein-bar-guide",
+  "/guides/product-selection-comparison/protein-drink-guide",
+  "/guides/product-selection-comparison/protein-yogurt-guide",
+  "/guides/product-selection-comparison/protein-yogurt-ranking-guide",
+  "/guides/product-selection-comparison/proteone-protein-shake",
+  "/guides/product-selection-comparison/ranking-content",
+  "/guides/product-selection-comparison/recommendation-lists",
+  "/guides/product-selection-comparison/shakebaby-protein-shake",
+  "/guides/product-selection-comparison/unsweetened-greek-yogurt-guide",
+  "/guides/running/basics",
+  "/guides/running/race-week",
+  "/guides/tools",
+]);
+const REVISED_DATE = new Date("2026-10-09");
+
+const FALLBACK_PRODUCT_DATE = "2026-10-09";
 const PRODUCT_DATES: Record<string, string> = {
-  drink: "2026-08-29",
-  bar: "2026-08-28",
-  yogurt: "2026-08-28",
-  shake: "2026-09-30",
+  drink: "2026-10-09",
+  bar: "2026-10-09",
+  yogurt: "2026-10-09",
+  shake: "2026-10-09",
 };
 
 const CATEGORY_GUIDE_CONFIGS = [
@@ -339,7 +425,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     .filter((brand) => brand.total >= 3)
     .map((brand) => ({
     url: `${SITE_URL}/brands/${brand.slug}`,
-    lastModified: new Date("2026-03-01"),
+    lastModified: new Date("2026-10-09"),
     changeFrequency: "monthly" as const,
     priority: 0.72,
   }));
@@ -348,7 +434,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const configDate = compareGuideLastModified.get(route);
     const knownDate = PAGE_DATES[route];
     // Google only uses lastmod when it reflects a real content update. Omit unknown dates.
-    const lastModified = configDate ?? (knownDate ? new Date(knownDate) : undefined);
+    const lastModified = REVISED_2026_10_09.has(route) ? REVISED_DATE : (configDate ?? (knownDate ? new Date(knownDate) : undefined));
     return {
       url: `${SITE_URL}${route}`,
       lastModified,

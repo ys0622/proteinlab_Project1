@@ -101,6 +101,19 @@ function parseCapacityMl(capacity: string | undefined): number {
   return m ? parseFloat(m[1]) : 0;
 }
 
+/** 영양 품질 점수(단백질 밀도·총량·당류·칼로리). 카테고리 안에서 상대 비교용이다. */
+export function getQualityScore(product: ProductDetailProps): number {
+  const ml = parseCapacityMl(product.capacity);
+  const density = ml > 0 ? (product.proteinPerServing / ml) * 100 : 0;
+
+  return (
+    density * 15                        // 단백질 밀도 (핵심 지표)
+    + product.proteinPerServing * 2     // 단백질 총량
+    - (product.sugar ?? 5) * 3         // 당류 패널티
+    - (product.calories ?? 150) * 0.04 // 칼로리 패널티
+  );
+}
+
 /**
  * 하이브리드 점수
  *
@@ -114,14 +127,7 @@ export function hybridScore(
   views: number,
 ): number {
   // ── 품질 점수 ──────────────────────────────────────
-  const ml = parseCapacityMl(product.capacity);
-  const density = ml > 0 ? (product.proteinPerServing / ml) * 100 : 0;
-
-  const qualityScore =
-    density * 15                        // 단백질 밀도 (핵심 지표)
-    + product.proteinPerServing * 2     // 단백질 총량
-    - (product.sugar ?? 5) * 3         // 당류 패널티
-    - (product.calories ?? 150) * 0.04;// 칼로리 패널티
+  const qualityScore = getQualityScore(product);
 
   // ── 조회수 점수 ───────────────────────────────────
   const viewScore = views * 10;
