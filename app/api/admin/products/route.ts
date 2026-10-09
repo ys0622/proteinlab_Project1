@@ -125,6 +125,7 @@ export async function POST(request: Request) {
       ...body,
       slug,
       productType,
+      createdAt: new Date().toISOString(),
       updatedAt: new Date().toISOString(),
     };
 

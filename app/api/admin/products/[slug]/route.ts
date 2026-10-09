@@ -103,7 +103,7 @@ export async function PUT(
   }
 
   const productType = (body.productType as string) || (newProduct.productType as string) || "drink";
-  const safeBody = { ...body, slug, productType, updatedAt };
+  const safeBody = { ...body, slug, productType, createdAt: newProduct.createdAt, updatedAt };
   await kv.put(kvKeyNew(slug), JSON.stringify(safeBody));
   return NextResponse.json({ ok: true, savedAt: updatedAt, storageMode: "kv" });
 }

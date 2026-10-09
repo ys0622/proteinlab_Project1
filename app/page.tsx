@@ -16,8 +16,9 @@ import newProductsRaw from "./data/newProducts.json";
 import type { ProductDetailProps } from "./data/products";
 import { getProductsByCategoryAsync } from "./lib/productData";
 import { getCategoryProductCounts } from "./lib/productCounts";
-import { isExcludedFromPopularityRanking } from "./lib/productScoring";
 import { getRecentPopularity } from "./lib/recentPopularity";
+import { getCoupangCategoryBest, matchCoupangCategoryBest } from "./lib/coupangCategoryBest";
+import { selectHomeDiscovery } from "./lib/homeDiscovery";
 
 export const revalidate = 300; // 5분마다 재생성 (조회수 반영)
 
@@ -98,13 +99,14 @@ function toCarouselProduct(p: ProductDetailProps): CarouselProduct {
 }
 
 export default async function Home() {
-  const [drinks, bars, yogurts, shakes, popularRes] = await Promise.all([
+  const [drinks, bars, yogurts, shakes, popularRes, bestSnapshot] = await Promise.all([
     getProductsByCategoryAsync("drink"),
     getProductsByCategoryAsync("bar"),
     getProductsByCategoryAsync("yogurt"),
     getProductsByCategoryAsync("shake"),
     // Worker 자기 호출 대신 공유 KV 스냅샷을 직접 읽는다.
     getRecentPopularity(),
+    getCoupangCategoryBest(),
   ]);
 
   // views: { drink: {slug: count}, bar: {...}, ... }
@@ -112,21 +114,11 @@ export default async function Home() {
 
   const categoryCounts = getCategoryProductCounts({ drink: drinks, bar: bars, yogurt: yogurts, shake: shakes });
 
-  // 홈 인기 제품은 실제 상세 페이지 조회수만 기준으로 정렬한다.
-  const sortByViews = (products: ProductDetailProps[], type: "drink" | "bar" | "yogurt" | "shake") => {
-    return products
-      .filter((p) => p.slug && !isExcludedFromPopularityRanking(p))
-      .map((p) => ({ p, viewCount: views[type]?.[p.slug ?? ""] ?? 0 }))
-      .filter(({ viewCount }) => viewCount > 0)
-      .sort((a, b) => b.viewCount - a.viewCount || a.p.name.localeCompare(b.p.name))
-      .map(({ p }) => p)
-      .slice(0, 10);
-  };
-
-  const topDrinks  = sortByViews(drinks,  "drink");
-  const topBars    = sortByViews(bars,    "bar");
-  const topYogurts = sortByViews(yogurts, "yogurt");
-  const topShakes  = sortByViews(shakes,  "shake");
+  const coupangRanks = matchCoupangCategoryBest([...drinks, ...bars, ...yogurts, ...shakes], bestSnapshot);
+  const topDrinks = selectHomeDiscovery(drinks, views.drink ?? {}, coupangRanks);
+  const topBars = selectHomeDiscovery(bars, views.bar ?? {}, coupangRanks);
+  const topYogurts = selectHomeDiscovery(yogurts, views.yogurt ?? {}, coupangRanks);
+  const topShakes = selectHomeDiscovery(shakes, views.shake ?? {}, coupangRanks);
 
   const productBySlug = new Map(
     [...drinks, ...bars, ...yogurts, ...shakes].map((p) => [p.slug ?? "", p] as const),
@@ -138,10 +130,10 @@ export default async function Home() {
     .slice(0, 12);
 
   const carouselProducts = {
-    drink: topDrinks.map(toCarouselProduct),
-    bar: topBars.map(toCarouselProduct),
-    yogurt: topYogurts.map(toCarouselProduct),
-    shake: topShakes.map(toCarouselProduct),
+    drink: topDrinks.map(({ product, reason }) => ({ ...toCarouselProduct(product), discoveryReason: reason })),
+    bar: topBars.map(({ product, reason }) => ({ ...toCarouselProduct(product), discoveryReason: reason })),
+    yogurt: topYogurts.map(({ product, reason }) => ({ ...toCarouselProduct(product), discoveryReason: reason })),
+    shake: topShakes.map(({ product, reason }) => ({ ...toCarouselProduct(product), discoveryReason: reason })),
   };
 
 

@@ -65,6 +65,8 @@ export interface NutritionPerBottle {
 
 export interface ProductDetailFields {
   slug: string;
+  /** First registration in ProteinLab; not necessarily the market launch date. */
+  createdAt?: string;
   productType?: "drink" | "bar" | "yogurt" | "shake";
   nutritionBasis?: "per_unit" | "per_pack" | "unknown";
   needsServingCheck?: boolean;
