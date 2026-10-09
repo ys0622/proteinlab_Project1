@@ -226,7 +226,7 @@ export default function MuscleGuidePage() {
         </div>
       </main>
 
-      <GuideBuySection />
+      <GuideBuySection topic="general" />
 
       <Footer />
     </div>

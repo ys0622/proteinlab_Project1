@@ -224,7 +224,7 @@ export default function GlobalProteinMarketPage() {
           </section>
         </div>
       </main>
-      <GuideBuySection />
+      <GuideBuySection topic="general" />
       <Footer />
     </div>
   );

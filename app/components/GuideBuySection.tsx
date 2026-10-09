@@ -3,15 +3,21 @@ import TrackedCoupangLink from "./TrackedCoupangLink";
 import { getProductBySlug } from "@/app/data/products";
 import { getCoupangRedirectHref } from "@/app/lib/purchaseLinks";
 import { formatProductLabel } from "@/app/lib/productLabel";
+import { GUIDE_BUY_PICKS, type GuideBuyTopic } from "@/app/lib/guideBuyPicks";
 
 export default function GuideBuySection({
   slugs = [],
+  topic,
   embedded = false,
 }: {
   slugs?: string[];
+  topic?: GuideBuyTopic;
   embedded?: boolean;
 }) {
-  const products = slugs.map((slug) => getProductBySlug(slug)).filter((product) => product?.coupangUrl);
+  const picks = topic ? GUIDE_BUY_PICKS[topic] : undefined;
+  const targetSlugs = slugs.length > 0 ? slugs : picks?.slugs ?? [];
+  const caption = slugs.length > 0 ? undefined : picks?.caption;
+  const products = targetSlugs.map((slug) => getProductBySlug(slug)).filter((product) => product?.coupangUrl);
   if (products.length === 0) return null;
 
   const content = (
@@ -20,6 +26,7 @@ export default function GuideBuySection({
           <h2 className="text-xl font-bold text-[var(--foreground)]">제품 가격·옵션 확인</h2>
           <AffiliateDisclosure className="mb-0" />
         </div>
+        {caption && <p className="mt-2 text-sm text-[var(--foreground-muted)]">{caption}</p>}
         <div className="mt-4 grid gap-3 md:grid-cols-3">
           {products.map((product) => {
             if (!product) return null;

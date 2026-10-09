@@ -388,7 +388,7 @@ export default async function GuideSlugPage({
 
           </div>
         </main>
-        <GuideBuySection />
+        <GuideBuySection topic="general" />
         <Footer />
       </div>
     );
@@ -453,7 +453,7 @@ export default async function GuideSlugPage({
 
           </div>
         </main>
-        <GuideBuySection />
+        <GuideBuySection topic="general" />
         <Footer />
       </div>
     );
@@ -511,7 +511,7 @@ export default async function GuideSlugPage({
 
           </div>
         </main>
-        <GuideBuySection />
+        <GuideBuySection topic="general" />
         <Footer />
       </div>
     );
@@ -583,7 +583,7 @@ export default async function GuideSlugPage({
             </section>
           </div>
         </main>
-        <GuideBuySection />
+        <GuideBuySection topic="general" />
         <Footer />
       </div>
     );
@@ -637,7 +637,7 @@ export default async function GuideSlugPage({
 
           </div>
         </main>
-        <GuideBuySection />
+        <GuideBuySection topic="general" />
         <Footer />
       </div>
     );

@@ -300,7 +300,7 @@ export default function ProteinDrinkTrend2026Page() {
           </section>
         </div>
       </main>
-      <GuideBuySection />
+      <GuideBuySection topic="general" />
       <Footer />
     </div>
   );

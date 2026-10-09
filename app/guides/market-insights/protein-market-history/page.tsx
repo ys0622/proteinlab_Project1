@@ -242,7 +242,7 @@ export default function ProteinMarketHistoryPage() {
           </section>
         </div>
       </main>
-      <GuideBuySection />
+      <GuideBuySection topic="general" />
       <Footer />
     </div>
   );

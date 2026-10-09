@@ -218,7 +218,7 @@ export default function StrengthTrainingProteinPage() {
           </section>
         </div>
       </main>
-      <GuideBuySection />
+      <GuideBuySection topic="workout" />
       <Footer />
     </div>
   );

@@ -244,7 +244,7 @@ export default function HighProteinSideEffectsPage() {
           </section>
         </div>
       </main>
-      <GuideBuySection />
+      <GuideBuySection topic="general" />
       <Footer />
     </div>
   );

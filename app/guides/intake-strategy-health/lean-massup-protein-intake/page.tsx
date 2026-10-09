@@ -447,7 +447,7 @@ export default function LeanMassupProteinIntakePage() {
           </section>
         </div>
       </main>
-      <GuideBuySection />
+      <GuideBuySection topic="workout" />
 
       <Footer />
     </div>

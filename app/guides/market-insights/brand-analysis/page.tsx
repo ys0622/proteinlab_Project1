@@ -230,7 +230,7 @@ export default function BrandAnalysisPage() {
           </section>
         </div>
       </main>
-      <GuideBuySection />
+      <GuideBuySection topic="general" />
       <Footer />
     </div>
   );

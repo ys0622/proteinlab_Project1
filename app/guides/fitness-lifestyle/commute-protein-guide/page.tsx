@@ -140,7 +140,7 @@ export default function CommuteProteinGuidePage() {
           </section>
         </div>
       </main>
-      <GuideBuySection />
+      <GuideBuySection topic="general" />
       <Footer />
     </div>
   );

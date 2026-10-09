@@ -178,7 +178,7 @@ export default function ImmunityHormonePage() {
         </div>
       </main>
 
-      <GuideBuySection />
+      <GuideBuySection topic="general" />
 
       <Footer />
     </div>

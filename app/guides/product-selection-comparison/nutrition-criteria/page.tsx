@@ -106,7 +106,7 @@ export default function NutritionCriteriaPage() {
         </div>
       </main>
 
-      <GuideBuySection />
+      <GuideBuySection topic="general" />
 
       <Footer />
     </div>

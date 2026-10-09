@@ -128,7 +128,7 @@ export default function NutritionComparisonPage() {
         </div>
       </main>
 
-      <GuideBuySection />
+      <GuideBuySection topic="general" />
 
       <Footer />
     </div>

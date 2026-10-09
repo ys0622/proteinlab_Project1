@@ -215,7 +215,7 @@ export default function SeoulmilkProteinEnergyGuidePage() {
           </section>
         </div>
       </main>
-      <GuideBuySection />
+      <GuideBuySection topic="general" />
       <Footer />
     </div>
   );

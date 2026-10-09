@@ -104,7 +104,7 @@ export default function RecommendationListsPage() {
         </div>
       </main>
 
-      <GuideBuySection />
+      <GuideBuySection topic="general" />
 
       <Footer />
     </div>

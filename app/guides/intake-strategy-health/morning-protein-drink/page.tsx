@@ -258,7 +258,7 @@ export default function MorningProteinDrinkPage() {
           </section>
         </div>
       </main>
-      <GuideBuySection />
+      <GuideBuySection topic="general" />
       <Footer />
     </div>
   );

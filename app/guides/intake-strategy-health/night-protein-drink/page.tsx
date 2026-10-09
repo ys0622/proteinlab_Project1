@@ -2,6 +2,7 @@
 import Link from "next/link";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
+import GuideBuySection from "@/app/components/GuideBuySection";
 import TrackedLink from "@/app/components/TrackedLink";
 
 const _pageTitle = "밤에 단백질 음료 마셔도 될까 | 야식·저녁 보충 기준 정리";
@@ -302,6 +303,7 @@ export default function NightProteinDrinkPage() {
           </section>
         </div>
       </main>
+      <GuideBuySection topic="night" />
       <Footer />
     </div>
   );

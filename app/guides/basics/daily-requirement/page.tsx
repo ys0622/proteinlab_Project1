@@ -238,7 +238,7 @@ export default function DailyRequirementPage() {
         </div>
       </main>
 
-      <GuideBuySection />
+      <GuideBuySection topic="general" />
 
       <Footer />
     </div>

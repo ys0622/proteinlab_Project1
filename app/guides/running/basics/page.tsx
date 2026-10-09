@@ -232,7 +232,7 @@ export default function RunningBasicsPage() {
         </div>
       </main>
 
-      <GuideBuySection />
+      <GuideBuySection topic="workout" />
 
       <Footer />
     </div>

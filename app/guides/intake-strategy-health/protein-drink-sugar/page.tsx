@@ -158,7 +158,7 @@ export default function ProteinDrinkSugarPage() {
           </section>
         </div>
       </main>
-      <GuideBuySection />
+      <GuideBuySection topic="lowSugar" />
       <Footer />
     </div>
   );

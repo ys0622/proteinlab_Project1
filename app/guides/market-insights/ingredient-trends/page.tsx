@@ -205,7 +205,7 @@ export default function IngredientTrendsPage() {
           </section>
         </div>
       </main>
-      <GuideBuySection />
+      <GuideBuySection topic="general" />
       <Footer />
     </div>
   );

@@ -199,7 +199,7 @@ export default function PostWorkoutProteinPage() {
           </section>
         </div>
       </main>
-      <GuideBuySection />
+      <GuideBuySection topic="workout" />
       <Footer />
     </div>
   );

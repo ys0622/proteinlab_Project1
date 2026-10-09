@@ -203,7 +203,7 @@ export default function ProteinToolsPage() {
         </section>
       </main>
 
-      <GuideBuySection />
+      <GuideBuySection topic="general" />
 
       <Footer />
     </div>

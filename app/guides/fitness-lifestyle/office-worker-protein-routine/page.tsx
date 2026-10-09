@@ -193,7 +193,7 @@ export default function OfficeWorkerProteinRoutinePage() {
           </section>
         </div>
       </main>
-      <GuideBuySection />
+      <GuideBuySection topic="general" />
       <Footer />
     </div>
   );

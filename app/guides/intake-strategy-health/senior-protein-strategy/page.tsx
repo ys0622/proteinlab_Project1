@@ -207,7 +207,7 @@ export default function SeniorProteinStrategyPage() {
           </div>
         </section>
       </main>
-      <GuideBuySection />
+      <GuideBuySection topic="general" />
       <Footer />
     </div>
   );

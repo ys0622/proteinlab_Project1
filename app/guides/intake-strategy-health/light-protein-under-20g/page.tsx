@@ -224,7 +224,7 @@ export default function LightProteinUnder20gPage() {
           </section>
         </div>
       </main>
-      <GuideBuySection />
+      <GuideBuySection topic="general" />
       <Footer />
     </div>
   );

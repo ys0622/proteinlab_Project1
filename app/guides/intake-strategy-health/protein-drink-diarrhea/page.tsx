@@ -178,7 +178,7 @@ export default function ProteinDrinkDiarrheaPage() {
           </section>
         </div>
       </main>
-      <GuideBuySection />
+      <GuideBuySection topic="general" />
       <Footer />
     </div>
   );

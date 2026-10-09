@@ -229,7 +229,7 @@ export default function MealReplacementStrategyPage() {
           </section>
         </div>
       </main>
-      <GuideBuySection />
+      <GuideBuySection topic="diet" />
       <Footer />
     </div>
   );

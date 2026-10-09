@@ -150,7 +150,7 @@ export default function ConvenienceStoreWorkoutProteinPage() {
           </section>
         </div>
       </main>
-      <GuideBuySection />
+      <GuideBuySection topic="workout" />
       <Footer />
     </div>
   );

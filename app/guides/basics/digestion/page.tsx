@@ -272,7 +272,7 @@ export default function DigestionGuidePage() {
         </div>
       </main>
 
-      <GuideBuySection />
+      <GuideBuySection topic="general" />
 
       <Footer />
     </div>

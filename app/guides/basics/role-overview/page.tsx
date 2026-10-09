@@ -276,7 +276,7 @@ export default function RoleOverviewGuidePage() {
         </div>
       </main>
 
-      <GuideBuySection />
+      <GuideBuySection topic="general" />
 
       <Footer />
     </div>

@@ -186,7 +186,7 @@ export default function ProteinDrinkGuidePage() {
         </div>
       </main>
 
-      <GuideBuySection />
+      <GuideBuySection topic="general" />
 
       <Footer />
     </div>

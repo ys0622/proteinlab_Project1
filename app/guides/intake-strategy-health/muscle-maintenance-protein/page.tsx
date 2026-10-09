@@ -212,7 +212,7 @@ export default function MuscleMaintenanceProteinPage() {
           </div>
         </section>
       </main>
-      <GuideBuySection />
+      <GuideBuySection topic="workout" />
       <Footer />
     </div>
   );

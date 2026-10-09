@@ -153,7 +153,7 @@ export default function MarathonProteinGuidePage() {
           </section>
         </div>
       </main>
-      <GuideBuySection />
+      <GuideBuySection topic="workout" />
       <Footer />
     </div>
   );

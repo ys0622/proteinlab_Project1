@@ -245,7 +245,7 @@ export default function DietProteinDrinkStrategyPage() {
           </section>
         </div>
       </main>
-      <GuideBuySection />
+      <GuideBuySection topic="diet" />
       <Footer />
     </div>
   );

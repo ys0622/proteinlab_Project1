@@ -373,7 +373,7 @@ export default function NewProductAnalysisPage() {
           </section>
         </div>
       </main>
-      <GuideBuySection />
+      <GuideBuySection topic="general" />
       <Footer />
     </div>
   );

@@ -220,7 +220,7 @@ export default function BeginnerWorkoutGuidePage() {
           </section>
         </div>
       </main>
-      <GuideBuySection />
+      <GuideBuySection topic="workout" />
       <Footer />
     </div>
   );

@@ -201,7 +201,7 @@ export default function ProteinDrinkAdChecklistPage() {
           </section>
         </div>
       </main>
-      <GuideBuySection />
+      <GuideBuySection topic="general" />
       <Footer />
     </div>
   );

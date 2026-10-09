@@ -229,7 +229,7 @@ export default function ProteinDrinkWithMealsPage() {
           </section>
         </div>
       </main>
-      <GuideBuySection />
+      <GuideBuySection topic="general" />
       <Footer />
     </div>
   );

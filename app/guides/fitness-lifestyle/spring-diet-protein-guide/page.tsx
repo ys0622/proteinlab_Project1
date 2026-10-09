@@ -153,7 +153,7 @@ export default function SpringDietProteinGuidePage() {
         </div>
       </main>
 
-      <GuideBuySection />
+      <GuideBuySection topic="diet" />
 
       <Footer />
     </div>

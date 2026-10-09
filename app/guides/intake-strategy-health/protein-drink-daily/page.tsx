@@ -185,7 +185,7 @@ export default function ProteinDrinkDailyPage() {
           </section>
         </div>
       </main>
-      <GuideBuySection />
+      <GuideBuySection topic="general" />
       <Footer />
     </div>
   );

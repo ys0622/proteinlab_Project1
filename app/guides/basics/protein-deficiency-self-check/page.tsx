@@ -160,7 +160,7 @@ export default function ProteinDeficiencySelfCheckPage() {
           </section>
         </div>
       </main>
-      <GuideBuySection />
+      <GuideBuySection topic="general" />
       <Footer />
     </div>
   );

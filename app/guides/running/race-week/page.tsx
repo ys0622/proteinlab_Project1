@@ -227,7 +227,7 @@ export default function RaceWeekPage() {
         </div>
       </main>
 
-      <GuideBuySection />
+      <GuideBuySection topic="workout" />
 
       <Footer />
     </div>

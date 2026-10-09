@@ -341,7 +341,7 @@ export default async function GuideTrackPage({ params }: { params: Promise<{ tra
         </section>
       </main>
 
-      <GuideBuySection />
+      <GuideBuySection topic="general" />
       <Footer />
     </div>
   );

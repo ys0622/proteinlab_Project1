@@ -218,7 +218,7 @@ export default function WeightManagementProteinPage() {
           </section>
         </div>
       </main>
-      <GuideBuySection />
+      <GuideBuySection topic="diet" />
       <Footer />
     </div>
   );

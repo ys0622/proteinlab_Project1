@@ -265,7 +265,7 @@ export default function ProteinRTDMarketPage() {
           </section>
         </div>
       </main>
-      <GuideBuySection />
+      <GuideBuySection topic="general" />
       <Footer />
     </div>
   );

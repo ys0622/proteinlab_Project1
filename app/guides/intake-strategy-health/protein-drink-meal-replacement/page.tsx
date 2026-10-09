@@ -197,7 +197,7 @@ export default function ProteinDrinkMealReplacementPage() {
           </section>
         </div>
       </main>
-      <GuideBuySection />
+      <GuideBuySection topic="diet" />
       <Footer />
     </div>
   );

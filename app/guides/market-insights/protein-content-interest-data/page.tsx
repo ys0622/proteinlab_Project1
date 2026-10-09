@@ -225,7 +225,7 @@ export default function ProteinContentInterestDataPage() {
           </section>
         </div>
       </main>
-      <GuideBuySection />
+      <GuideBuySection topic="general" />
       <Footer />
     </div>
   );

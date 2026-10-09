@@ -287,7 +287,7 @@ export default function HighProtein50gComparisonPage() {
           </section>
         </div>
       </main>
-      <GuideBuySection />
+      <GuideBuySection topic="highProtein" />
       <Footer />
     </div>
   );

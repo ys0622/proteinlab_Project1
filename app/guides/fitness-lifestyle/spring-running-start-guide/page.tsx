@@ -126,7 +126,7 @@ export default function SpringRunningStartGuidePage() {
         </div>
       </main>
 
-      <GuideBuySection />
+      <GuideBuySection topic="workout" />
 
       <Footer />
     </div>

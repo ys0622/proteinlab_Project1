@@ -158,7 +158,7 @@ export default function ProteinDrinkEmptyStomachPage() {
           </section>
         </div>
       </main>
-      <GuideBuySection />
+      <GuideBuySection topic="general" />
       <Footer />
     </div>
   );

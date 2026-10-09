@@ -225,7 +225,7 @@ export default function DeficiencySymptomsPage() {
         </div>
       </main>
 
-      <GuideBuySection />
+      <GuideBuySection topic="general" />
 
       <Footer />
     </div>

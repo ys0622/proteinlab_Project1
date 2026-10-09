@@ -193,7 +193,7 @@ export default function RunningProteinGuidePage() {
           </section>
         </div>
       </main>
-      <GuideBuySection />
+      <GuideBuySection topic="workout" />
       <Footer />
     </div>
   );

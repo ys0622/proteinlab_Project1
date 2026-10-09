@@ -144,7 +144,7 @@ export default function MarathonDistanceStrategyPage() {
           </section>
         </div>
       </main>
-      <GuideBuySection />
+      <GuideBuySection topic="workout" />
       <Footer />
     </div>
   );

@@ -131,7 +131,7 @@ export default function SpringOutdoorProteinSnackGuidePage() {
         </div>
       </main>
 
-      <GuideBuySection />
+      <GuideBuySection topic="workout" />
 
       <Footer />
     </div>

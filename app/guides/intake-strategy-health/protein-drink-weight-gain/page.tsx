@@ -185,7 +185,7 @@ export default function ProteinDrinkWeightGainPage() {
           </section>
         </div>
       </main>
-      <GuideBuySection />
+      <GuideBuySection topic="workout" />
       <Footer />
     </div>
   );

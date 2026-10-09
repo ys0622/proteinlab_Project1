@@ -373,7 +373,7 @@ export default function ProteinSourceTypesGuidePage() {
         </div>
       </main>
 
-      <GuideBuySection />
+      <GuideBuySection topic="general" />
       <Footer />
     </div>
   );

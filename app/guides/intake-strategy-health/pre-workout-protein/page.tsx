@@ -215,7 +215,7 @@ export default function PreWorkoutProteinPage() {
           </div>
         </section>
       </main>
-      <GuideBuySection />
+      <GuideBuySection topic="workout" />
       <Footer />
     </div>
   );

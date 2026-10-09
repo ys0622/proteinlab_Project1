@@ -250,7 +250,7 @@ export default function Protein50gAtOncePage() {
           </section>
         </div>
       </main>
-      <GuideBuySection />
+      <GuideBuySection topic="highProtein" />
       <Footer />
     </div>
   );
