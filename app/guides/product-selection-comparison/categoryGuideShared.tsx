@@ -4,6 +4,7 @@ import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 import AffiliateDisclosure from "@/app/components/AffiliateDisclosure";
 import CommercialAdSection from "@/app/components/CommercialAdSection";
+import CategoryDataSection from "@/app/components/CategoryDataSection";
 import TrackedLink from "@/app/components/TrackedLink";
 import TrackedCoupangLink from "@/app/components/TrackedCoupangLink";
 import { getProductBySlug } from "@/app/data/products";
@@ -68,6 +69,12 @@ export interface CategoryGuideConfig {
     compareHref?: string;
   };
   externalLinks?: CategoryExternalLink[];
+  // 지정하면 제품 데이터로 계산한 순위표 섹션을 본문 아래에 붙인다.
+  dataSection?: {
+    category: "drink" | "bar" | "yogurt" | "shake";
+    mode: "protein" | "lowSugar" | "lowCalorie" | "density";
+    brand?: string;
+  };
   faq?: {
     question: string;
     answer: string;
@@ -478,6 +485,9 @@ export function CategoryGuidePage({ config }: { config: CategoryGuideConfig }) {
           <CommercialAdSection pageType="guide" />
         </div>
       </main>
+      {config.dataSection ? (
+        <CategoryDataSection category={config.dataSection.category} mode={config.dataSection.mode} brand={config.dataSection.brand} />
+      ) : null}
       <Footer />
     </div>
   );

@@ -3,6 +3,7 @@ import { buildGuideJsonLd } from "@/app/lib/guideJsonLd";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 import GuideBuySection from "@/app/components/GuideBuySection";
+import CategoryDataSection from "@/app/components/CategoryDataSection";
 
 export const metadata = {
   alternates: { canonical: "https://proteinlab.kr/guides/running/race-week" },
@@ -226,6 +227,7 @@ export default function RaceWeekPage() {
           </section>
         </div>
       </main>
+      <CategoryDataSection category="drink" mode="density" />
 
       <GuideBuySection topic="workout" />
 

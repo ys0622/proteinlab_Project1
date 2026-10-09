@@ -2,6 +2,7 @@ import Link from "next/link";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 import GuideBuySection from "@/app/components/GuideBuySection";
+import CategoryDataSection from "@/app/components/CategoryDataSection";
 import { buildGuideJsonLd } from "@/app/lib/guideJsonLd";
 
 const pageTitle = "단백질 음료 공복에 마셔도 되나요? | 아침·운동 전 부담 줄이는 기준";
@@ -158,6 +159,7 @@ export default function ProteinDrinkEmptyStomachPage() {
           </section>
         </div>
       </main>
+      <CategoryDataSection category="drink" mode="lowSugar" />
       <GuideBuySection topic="general" />
       <Footer />
     </div>

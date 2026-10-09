@@ -3,6 +3,7 @@ import Link from "next/link";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 import GuideBuySection from "@/app/components/GuideBuySection";
+import CategoryDataSection from "@/app/components/CategoryDataSection";
 
 const _pageTitle = "출근길에 먹기 좋은 단백질 제품";
 const _pageDesc = "출근길이나 이동 중에 먹기 좋은 단백질 음료, 바, 쉐이크를 상황별로 고르는 기준을 정리했습니다.";
@@ -140,6 +141,7 @@ export default function CommuteProteinGuidePage() {
           </section>
         </div>
       </main>
+      <CategoryDataSection category="drink" mode="lowSugar" />
       <GuideBuySection topic="general" />
       <Footer />
     </div>

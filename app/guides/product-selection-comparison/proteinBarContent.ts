@@ -541,6 +541,7 @@ convenienceProteinBarConfig.jsonLd = [
   articleJsonLd(convenienceProteinBarConfig),
   faqJsonLd(convenienceProteinBarConfig),
 ];
+convenienceProteinBarConfig.dataSection = { category: "bar", mode: "protein" };
 
 export const dietProteinBarConfig: CategoryGuideConfig = {
   slug: "diet-protein-bar",
@@ -663,3 +664,4 @@ export const dietProteinBarConfig: CategoryGuideConfig = {
   ],
 };
 dietProteinBarConfig.jsonLd = [articleJsonLd(dietProteinBarConfig), faqJsonLd(dietProteinBarConfig)];
+dietProteinBarConfig.dataSection = { category: "bar", mode: "lowCalorie" };

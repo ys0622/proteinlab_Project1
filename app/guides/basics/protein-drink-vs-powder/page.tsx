@@ -2,6 +2,7 @@
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 import GuideBuySection from "@/app/components/GuideBuySection";
+import CategoryDataSection from "@/app/components/CategoryDataSection";
 import { buildGuideJsonLd } from "@/app/lib/guideJsonLd";
 
 const _pageTitle = "단백질 음료 vs 프로틴 파우더 차이";
@@ -152,6 +153,7 @@ export default function ProteinDrinkVsPowderPage() {
           </section>
         </div>
       </main>
+      <CategoryDataSection category="drink" mode="density" />
       <GuideBuySection topic="general" />
       <Footer />
     </div>

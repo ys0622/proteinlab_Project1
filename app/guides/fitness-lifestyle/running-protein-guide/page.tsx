@@ -2,6 +2,7 @@ import Link from "next/link";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 import GuideBuySection from "@/app/components/GuideBuySection";
+import CategoryDataSection from "@/app/components/CategoryDataSection";
 import { buildGuideJsonLd } from "@/app/lib/guideJsonLd";
 
 const _pageTitle = "러닝 단백질 가이드 | 주간 필요량·회복 타이밍 기본편";
@@ -193,6 +194,7 @@ export default function RunningProteinGuidePage() {
           </section>
         </div>
       </main>
+      <CategoryDataSection category="drink" mode="protein" />
       <GuideBuySection topic="workout" />
       <Footer />
     </div>

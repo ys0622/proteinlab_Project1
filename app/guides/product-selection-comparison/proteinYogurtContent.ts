@@ -443,3 +443,4 @@ export const dietProteinYogurtConfig: CategoryGuideConfig = {
   ],
 };
 dietProteinYogurtConfig.jsonLd = [articleJsonLd(dietProteinYogurtConfig), faqJsonLd(dietProteinYogurtConfig)];
+dietProteinYogurtConfig.dataSection = { category: "yogurt", mode: "lowCalorie" };

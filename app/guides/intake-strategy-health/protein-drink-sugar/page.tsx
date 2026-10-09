@@ -2,6 +2,7 @@ import Link from "next/link";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 import GuideBuySection from "@/app/components/GuideBuySection";
+import CategoryDataSection from "@/app/components/CategoryDataSection";
 import { buildGuideJsonLd } from "@/app/lib/guideJsonLd";
 
 const pageTitle = "단백질 음료 당류 얼마나 봐야 하나요? | 저당 기준과 라벨 읽기";
@@ -158,6 +159,7 @@ export default function ProteinDrinkSugarPage() {
           </section>
         </div>
       </main>
+      <CategoryDataSection category="drink" mode="lowSugar" />
       <GuideBuySection topic="lowSugar" />
       <Footer />
     </div>

@@ -3,6 +3,7 @@ import Link from "next/link";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 import GuideBuySection from "@/app/components/GuideBuySection";
+import CategoryDataSection from "@/app/components/CategoryDataSection";
 
 const _pageTitle = "봄 야외활동 단백질 간식 가이드 | 피크닉·러닝용 간식 기준";
 const _pageDesc = "봄철 피크닉, 산책, 야외활동에서 챙기기 좋은 단백질 간식 기준을 휴대성, 당류, 포만감 중심으로 정리합니다.";
@@ -130,6 +131,7 @@ export default function SpringOutdoorProteinSnackGuidePage() {
           </section>
         </div>
       </main>
+      <CategoryDataSection category="bar" mode="protein" />
 
       <GuideBuySection topic="workout" />
 

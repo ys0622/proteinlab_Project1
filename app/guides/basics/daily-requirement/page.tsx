@@ -3,6 +3,7 @@ import { buildGuideJsonLd } from "@/app/lib/guideJsonLd";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 import GuideBuySection from "@/app/components/GuideBuySection";
+import CategoryDataSection from "@/app/components/CategoryDataSection";
 import TrackedLink from "@/app/components/TrackedLink";
 
 const _pageTitle = "하루 단백질 권장량 | 목적·체중·연령별 정리";
@@ -237,6 +238,7 @@ export default function DailyRequirementPage() {
           </section>
         </div>
       </main>
+      <CategoryDataSection category="drink" mode="protein" />
 
       <GuideBuySection topic="general" />
 

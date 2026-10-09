@@ -2,6 +2,7 @@
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 import GuideBuySection from "@/app/components/GuideBuySection";
+import CategoryDataSection from "@/app/components/CategoryDataSection";
 import GuideVisual from "@/app/components/GuideVisual";
 import { buildGuideJsonLd } from "@/app/lib/guideJsonLd";
 
@@ -225,6 +226,7 @@ export default function MuscleGuidePage() {
           </section>
         </div>
       </main>
+      <CategoryDataSection category="drink" mode="protein" />
 
       <GuideBuySection topic="general" />
 
