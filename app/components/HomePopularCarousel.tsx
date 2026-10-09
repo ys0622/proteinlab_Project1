@@ -81,10 +81,6 @@ export default function HomePopularCarousel({ products, available }: Props) {
           </Link>
         </div>
       </div>
-      <p className="mb-2 text-[11px] leading-4 text-[#68776b] md:mb-3 md:text-xs">
-        확인된 쿠팡 베스트·최근 등록·사이트 관심을 함께 반영합니다. 판매량 순위는 아닙니다.
-      </p>
-
       {curProducts.length === 0 ? (
         <div className="rounded-xl border border-[#E3E8E4] bg-white px-4 py-6 text-center text-sm text-[#5E6E61]">
           {available ? "최근 7일 조회 기록이 없습니다." : "조회 순위를 잠시 불러올 수 없습니다."}
@@ -92,15 +88,14 @@ export default function HomePopularCarousel({ products, available }: Props) {
       ) : <AutoProductCarousel key={curTab.key} label="요즘 주목받는 제품">
         {curProducts.map((product, i) => {
           const reasonLabel = product.discoveryReason === "coupang_best" ? "쿠팡 베스트"
-            : product.discoveryReason === "recently_added" ? "새로 등록" : "사이트 관심";
+            : product.discoveryReason === "recently_added" ? "새로 등록" : null;
           return (
             <div
               key={product.slug ?? i}
               className="home-popular-carousel-card relative flex w-[41.5%] shrink-0 md:w-[calc((100%-36px)/4)]"
               style={{ scrollSnapAlign: "start" }}
             >
-              {/* Evidence badge: this mixed shelf is not a sales or view ranking. */}
-              <div
+              {reasonLabel && <div
                 className="absolute left-2 top-2 z-10 flex items-center gap-0.5 rounded-[7px] font-extrabold text-white"
                 style={{
                   height: 20,
@@ -112,7 +107,7 @@ export default function HomePopularCarousel({ products, available }: Props) {
                 }}
               >
                 {reasonLabel}
-              </div>
+              </div>}
               <ProductCard
                 {...product}
                 productType={curTab.key}
