@@ -3,6 +3,7 @@ import { buildGuideJsonLd } from "@/app/lib/guideJsonLd";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 import GuideBuySection from "@/app/components/GuideBuySection";
+import CategoryDataSection from "@/app/components/CategoryDataSection";
 
 export const metadata = {
   alternates: { canonical: "https://proteinlab.kr/guides/product-selection-comparison/flymill-protein-shake" },
@@ -178,6 +179,7 @@ export default function FlymillProteinShakePage() {
           </section>
         </div>
       </main>
+      <CategoryDataSection category="shake" mode="protein" brand="플라이밀" />
       <GuideBuySection />
       <Footer />
     </div>

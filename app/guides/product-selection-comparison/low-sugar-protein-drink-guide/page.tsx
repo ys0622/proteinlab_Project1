@@ -2,6 +2,7 @@ import { buildGuideJsonLd } from "@/app/lib/guideJsonLd";
 ﻿import Link from "next/link";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
+import CategoryDataSection from "@/app/components/CategoryDataSection";
 import TrackedLink from "@/app/components/TrackedLink";
 
 export const metadata = {
@@ -205,6 +206,7 @@ export default function LowSugarProteinDrinkGuidePage() {
           </section>
         </div>
       </main>
+      <CategoryDataSection category="drink" mode="lowSugar" />
       <Footer />
     </div>
   );

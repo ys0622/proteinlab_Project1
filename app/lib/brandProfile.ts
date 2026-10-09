@@ -1,5 +1,7 @@
 import type { ProductDetailProps } from "../data/products";
 import { formatProductLabel } from "./productLabel";
+import { isComparableServing } from "./servingScope";
+import { withTopic } from "./koreanParticle";
 
 const KIND_LABEL = { drink: "단백질 음료", bar: "단백질 바", yogurt: "단백질 요거트", shake: "단백질 쉐이크" } as const;
 type Kind = keyof typeof KIND_LABEL;
@@ -22,13 +24,6 @@ export type BrandProfileGroup = {
   summary: string;
 };
 
-// 괄호 등은 건너뛰고 마지막 한글 글자의 받침으로 은/는을 정한다.
-function withTopic(text: string) {
-  const syllables = text.match(/[가-힣]/g);
-  const batchim = syllables ? (syllables[syllables.length - 1].charCodeAt(0) - 0xac00) % 28 !== 0 : false;
-  return `${text}${batchim ? "은" : "는"}`;
-}
-
 function n(value: unknown): number | null {
   return typeof value === "number" && Number.isFinite(value) ? value : null;
 }
@@ -39,7 +34,8 @@ function hasNumbers(p: ProductDetailProps) {
     n(p.calories) !== null &&
     n(p.sugar) !== null &&
     (p.proteinPerServing ?? 0) > 0 &&
-    (p.calories ?? 0) > 0
+    (p.calories ?? 0) > 0 &&
+    isComparableServing(p)
   );
 }
 
@@ -64,7 +60,7 @@ export function getBrandProfile(
   for (const kind of Object.keys(KIND_LABEL) as Kind[]) {
     const items = brandItems.filter((p) => (p.productType ?? "drink") === kind && usable(p));
     if (items.length === 0) continue;
-    const pool = allProducts.filter((p) => (p.productType ?? "drink") === kind && hasNumbers(p));
+    const pool = allProducts.filter((p) => (p.productType ?? "drink") === kind && usable(p));
     const per100 = (p: ProductDetailProps) => ((p.proteinPerServing ?? 0) / (p.calories ?? 1)) * 100;
 
     const rows: BrandProfileRow[] = items

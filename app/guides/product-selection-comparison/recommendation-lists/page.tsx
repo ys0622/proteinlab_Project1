@@ -3,6 +3,7 @@ import { buildGuideJsonLd } from "@/app/lib/guideJsonLd";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 import GuideBuySection from "@/app/components/GuideBuySection";
+import CategoryDataSection from "@/app/components/CategoryDataSection";
 
 export const metadata = {
   alternates: { canonical: "https://proteinlab.kr/guides/product-selection-comparison/recommendation-lists" },
@@ -103,6 +104,7 @@ export default function RecommendationListsPage() {
           </section>
         </div>
       </main>
+      <CategoryDataSection category="drink" mode="protein" />
 
       <GuideBuySection topic="general" />
 

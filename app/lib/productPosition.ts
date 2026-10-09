@@ -1,5 +1,7 @@
 import type { ProductDetailProps } from "../data/products";
 import { formatProductLabel } from "./productLabel";
+import { isComparableServing } from "./servingScope";
+import { withTopic } from "./koreanParticle";
 
 export type ProductPositionRow = { label: string; value: string; note: string };
 export type ProductPosition = {
@@ -10,13 +12,6 @@ export type ProductPosition = {
 };
 
 const KIND_LABEL = { drink: "단백질 음료", bar: "단백질 바", yogurt: "단백질 요거트", shake: "단백질 쉐이크" } as const;
-
-// 괄호 등은 건너뛰고 마지막 한글 글자의 받침으로 은/는을 정한다.
-function withTopic(text: string) {
-  const syllables = text.match(/[가-힣]/g);
-  const batchim = syllables ? (syllables[syllables.length - 1].charCodeAt(0) - 0xac00) % 28 !== 0 : false;
-  return `${text}${batchim ? "은" : "는"}`;
-}
 
 type Metric = "proteinPerServing" | "calories" | "sugar";
 
@@ -46,10 +41,16 @@ export function getProductPosition(
   const calories = num(product.calories);
   const sugar = num(product.sugar);
   if (protein === null || calories === null || sugar === null || protein <= 0 || calories <= 0) return null;
-  if (product.needsServingCheck) return null;
+  if (product.needsServingCheck || !isComparableServing(product)) return null;
 
   const usable = pool.filter(
-    (p) => num(p.proteinPerServing) !== null && num(p.calories) !== null && num(p.sugar) !== null && (p.proteinPerServing ?? 0) > 0,
+    (p) =>
+      num(p.proteinPerServing) !== null &&
+      num(p.calories) !== null &&
+      num(p.sugar) !== null &&
+      (p.proteinPerServing ?? 0) > 0 &&
+      !p.needsServingCheck &&
+      isComparableServing(p),
   );
   if (usable.length < 10) return null;
 
