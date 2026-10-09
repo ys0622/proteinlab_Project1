@@ -602,7 +602,7 @@ function getTips(req: RecommendRequest) {
     tips.push({
       icon: "💪",
       title: "운동 후 30분 이내 섭취",
-      desc: "근합성 골든타임에 빠르게 단백질을 보충하는 편이 효율적입니다.",
+      desc: "운동 전후에 단백질을 보충하되, 하루 총량과 분산 섭취가 더 중요합니다.",
     });
   } else if (req.purpose === "diet") {
     tips.push({
