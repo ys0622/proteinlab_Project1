@@ -38,7 +38,9 @@ export default function GoldboxCatalog({ cards, status, checkedAt, preview }: { 
             <p className="text-[11px] text-[#6b756c]">{card.brand}</p>
             <h2 className="mt-1 min-h-10 text-sm font-bold leading-5 text-[#193c2b]">{card.name}</h2>
             <p className="mt-2 text-[11px] leading-4 text-[#6b756c]">{card.offerName}</p>
-            <p className="mb-3 mt-3 text-xl font-extrabold tracking-tight text-[#9a5b08]">{card.price.toLocaleString("ko-KR")}<span className="ml-0.5 text-sm">원</span></p>
+            {card.price > 0
+              ? <p className="mb-3 mt-3 text-xl font-extrabold tracking-tight text-[#9a5b08]">{card.price.toLocaleString("ko-KR")}<span className="ml-0.5 text-sm">원</span></p>
+              : <div className="mb-3 mt-3" />}
             <div className="mt-auto"><TrackedCoupangLink href={card.href} productId={card.slug} productName={card.name} productBrand={card.brand} productCategory={card.category} linkPosition="goldbox_deal" className="flex min-h-11 items-center justify-center rounded-lg bg-[#16412d] px-2 text-xs font-bold text-white aria-disabled:opacity-50">{preview ? "구매 버튼 예시" : "쿠팡에서 특가 보기 ↗"}</TrackedCoupangLink>
               <Link href={`/product/${card.slug}`} className="mt-1 flex min-h-9 items-center justify-center text-xs text-[#5c7060] underline underline-offset-2">제품 정보</Link>
             </div>

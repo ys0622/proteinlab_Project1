@@ -32,6 +32,17 @@ const EXPIRING_SEED: VerifiedGoldboxOffer[] = [{
   verifiedAt: "2026-10-07T07:33:00+09:00",
   startsAt: "2026-10-07T07:33:00+09:00",
   expiresAt: "2026-10-08T00:00:00+09:00",
+}, {
+  // 2026-10-10 08:12 쿠팡 앱 골드박스에서 사용자가 확인. 화면의 "22:47:18 남음"으로 계산한 종료 시각(10/11 07:00).
+  // 가격은 앱 전용 값이라 웹에서 확인되지 않아 표시하지 않는다(price 0 = 가격 줄 숨김). 링크는 제품 데이터의 쿠팡 링크(같은 상품 확인).
+  slug: "hymune-protein-balance-lowsugar-190",
+  offerName: "190mL × 24개 · 와우회원 할인 · 쿠팡 앱 확인",
+  price: 0,
+  href: "",
+  source: "coupang_app",
+  verifiedAt: "2026-10-10T08:12:00+09:00",
+  startsAt: "2026-10-10T08:12:00+09:00",
+  expiresAt: "2026-10-11T07:00:00+09:00",
 }];
 
 async function getKV(): Promise<OfferKV | null> {
