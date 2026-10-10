@@ -5,6 +5,7 @@ import {
   getQualityScore,
   isExcludedFromPopularityRanking,
 } from "./productScoring";
+import { isComparableServing } from "./servingScope";
 
 // reason은 카드에 붙는 배지 근거다. site_interest는 배지를 달지 않는다.
 export type DiscoveryReason = "coupang_best" | "recently_added" | "site_interest";
@@ -45,7 +46,14 @@ export function selectHomeDiscovery(
   now = Date.now(),
   limit = 10,
 ): DiscoveryProduct[] {
-  const eligible = products.filter((product) => product.slug && !isExcludedFromPopularityRanking(product));
+  // 대용량 통(예: 요거트 800g)과 1회분 불명 제품은 용기 전체 수치라 1회 기준 순위·품질 비교에 쓰지 않는다(상품·가이드·큐레이션과 같은 기준).
+  const eligible = products.filter(
+    (product) =>
+      product.slug &&
+      !isExcludedFromPopularityRanking(product) &&
+      !product.needsServingCheck &&
+      isComparableServing(product),
+  );
   if (eligible.length === 0) return [];
 
   const maxViews = Math.max(1, ...eligible.map((product) => views[product.slug] ?? 0));

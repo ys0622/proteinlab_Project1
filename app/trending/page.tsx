@@ -7,14 +7,14 @@ import ProductCard from "../components/ProductCard";
 import type { ProductDetailProps } from "../data/products";
 import { getCategoryHref, getCategoryLabel, type ProductCategory } from "../lib/categories";
 import { getProductsByCategoryAsync } from "../lib/productData";
-import { isExcludedFromPopularityRanking } from "../lib/productScoring";
+import { selectHomeDiscovery } from "../lib/homeDiscovery";
 import { getRecentPopularity } from "../lib/recentPopularity";
 
 export const revalidate = 300; // 5분마다 재생성 (조회수 실시간 반영)
 
 const canonical = "https://proteinlab.kr/trending";
-const title = "최근 7일 많이 본 단백질 제품 순위";
-const description = "최근 7일간 방문자가 상세페이지에서 실제로 조회한 단백질 음료, 바, 요거트, 쉐이크 순위를 카테고리별로 확인합니다.";
+const title = "최근 7일 인기 단백질 제품 순위";
+const description = "최근 7일 상세페이지 조회수에 단백질 밀도·당류·칼로리 기준을 함께 반영한 단백질 음료, 바, 요거트, 쉐이크 인기 순위를 카테고리별로 확인해보세요.";
 
 export const metadata: Metadata = {
   title,
@@ -62,14 +62,9 @@ export default async function TrendingPage() {
     shake: shakes,
   };
 
+  // 홈 "지금 인기 제품"과 같은 기준: 최근 7일 조회수 + 영양 품질 + 쿠팡 순위(확인될 때) + 신제품 소량 가점, 브랜드당 최대 2개.
   const topByCategory = (type: ProductCategory) =>
-    byCategory[type]
-      .filter((p) => p.slug && !isExcludedFromPopularityRanking(p))
-      .map((p) => ({ p, viewCount: views[type]?.[p.slug ?? ""] ?? 0 }))
-      .filter(({ viewCount }) => viewCount > 0)
-      .sort((a, b) => b.viewCount - a.viewCount || a.p.name.localeCompare(b.p.name))
-      .slice(0, 8)
-      .map(({ p }) => p);
+    selectHomeDiscovery(byCategory[type], views[type] ?? {}, {}).slice(0, 8).map(({ product }) => product);
   const hasRankedProducts = CATEGORIES.some(({ type }) => topByCategory(type).length > 0);
 
   const breadcrumbJsonLd = {
@@ -92,7 +87,7 @@ export default async function TrendingPage() {
             최근 7일 많이 본 단백질 제품
           </h1>
           <p className="mt-2 max-w-[760px] text-sm leading-6 text-[var(--foreground-muted)] md:text-[15px]">
-            같은 브라우저 탭에서 제품별 반복 방문을 한 번으로 세어 최근 7일 조회를 집계합니다. 순위는 약 30분 간격으로 갱신됩니다.
+            최근 7일 조회수(같은 브라우저 탭의 반복 방문은 한 번으로 집계)를 중심으로, 단백질 밀도·당류·칼로리 기준과 신제품을 소량 반영해 정합니다. 한 브랜드가 순위를 독점하지 않도록 브랜드당 최대 2개까지만 보여줍니다. 순위는 약 30분 간격으로 갱신됩니다.
           </p>
           <div className="mt-4 flex flex-wrap gap-2">
             <Link
@@ -124,7 +119,7 @@ export default async function TrendingPage() {
           if (top.length === 0) return null;
 
           return (
-            <section key={type} className="mb-10">
+            <section key={type} id={type} className="mb-10 scroll-mt-20">
               <div className="mb-4 flex items-center justify-between gap-3">
                 <h2 className="flex items-center gap-2 text-lg font-bold text-[var(--foreground)]">
                   <span>{emoji}</span>

@@ -4,6 +4,7 @@ import CommercialAdSection from "../../components/CommercialAdSection";
 import CurationLandingTemplate from "../../components/CurationLandingTemplate";
 import { getCurationLandingData } from "../../lib/curationLanding";
 import { notFound } from "next/navigation";
+import type { CurationCategory } from "../../lib/curationSystem";
 
 const _pageTitle = "러닝 후 단백질 제품 추천 — 회복에 맞는 음료·바 비교";
 const _pageDesc = "러닝과 마라톤 후 회복에 적합한 단백질 음료와 단백질 바를 성분 데이터 기준으로 비교합니다.";
@@ -28,7 +29,11 @@ export const metadata = {
   },
 };
 
-export default function RunningCurationPage() {
+const CATEGORIES: CurationCategory[] = ["drink", "bar", "yogurt", "shake"];
+
+export default async function RunningCurationPage({ searchParams }: { searchParams?: Promise<{ category?: string }> }) {
+  const requested = (await searchParams)?.category;
+  const focusCategory = CATEGORIES.find((category) => category === requested);
   const data = getCurationLandingData("running");
   if (!data) notFound();
 
@@ -46,7 +51,7 @@ export default function RunningCurationPage() {
     <div className="min-h-screen bg-white">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
       <Header />
-      <CurationLandingTemplate {...data} />
+      <CurationLandingTemplate {...data} focusCategory={focusCategory} />
       <div className="mx-auto max-w-[1200px] px-4 pb-8 md:px-6">
         <CommercialAdSection pageType="feed" />
       </div>

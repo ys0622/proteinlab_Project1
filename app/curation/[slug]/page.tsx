@@ -4,14 +4,17 @@ import Header from "../../components/Header";
 import CommercialAdSection from "../../components/CommercialAdSection";
 import CurationLandingTemplate from "../../components/CurationLandingTemplate";
 import { getCurationLandingData } from "../../lib/curationLanding";
-import { getAllCurations } from "../../lib/curationSystem";
+import { getAllCurations, type CurationCategory } from "../../lib/curationSystem";
+import { getRecentPopularity } from "../../lib/recentPopularity";
 
 interface CurationPageProps {
   params: Promise<{ slug: string }>;
+  searchParams?: Promise<{ category?: string }>;
 }
 
+const CATEGORIES: CurationCategory[] = ["drink", "bar", "yogurt", "shake"];
+
 export const dynamicParams = true;
-export const revalidate = 3600;
 
 export function generateStaticParams() {
   return getAllCurations().map((curation) => ({
@@ -52,9 +55,13 @@ export async function generateMetadata({ params }: CurationPageProps) {
   };
 }
 
-export default async function CurationPage({ params }: CurationPageProps) {
+export default async function CurationPage({ params, searchParams }: CurationPageProps) {
   const { slug } = await params;
-  const data = getCurationLandingData(slug);
+  const requested = (await searchParams)?.category;
+  const focusCategory = CATEGORIES.find((category) => category === requested);
+  // 인기 큐레이션은 실제 조회수로 순위를 매기므로 조회수 스냅샷을 함께 넘긴다.
+  const popularity = slug === "popular" ? await getRecentPopularity() : null;
+  const data = getCurationLandingData(slug, popularity?.views);
   if (!data) notFound();
 
   const breadcrumbJsonLd = {
@@ -71,7 +78,7 @@ export default async function CurationPage({ params }: CurationPageProps) {
     <div className="min-h-screen bg-white">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
       <Header />
-      <CurationLandingTemplate {...data} />
+      <CurationLandingTemplate {...data} focusCategory={focusCategory} />
       <div className="mx-auto max-w-[1200px] px-4 pb-8 md:px-6">
         <CommercialAdSection pageType="feed" />
       </div>

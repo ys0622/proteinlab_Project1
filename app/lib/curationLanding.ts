@@ -1,6 +1,8 @@
 import { barProductsWithGrades, mockProducts, shakeProducts, yogurtProducts } from "../data/products";
+import type { ProductDetailProps } from "../data/products";
+import { selectHomeDiscovery } from "./homeDiscovery";
 import type { CurationDefinition, CurationGuideLink, CurationInfoSection } from "./curationSystem";
-import { getCurationDefinition, getPopularCurations } from "./curationSystem";
+import { getCurationDefinition, getPopularCurations, getRecommendedProductsForCuration } from "./curationSystem";
 
 type CategoryKey = "drink" | "bar" | "yogurt" | "shake" | "both";
 
@@ -605,7 +607,7 @@ function normalizeLandingCuration(curation: CurationDefinition): CurationDefinit
   };
 }
 
-export function getCurationLandingData(slug: string) {
+export function getCurationLandingData(slug: string, views?: Record<string, Record<string, number>>) {
   const definition = getCurationDefinition(slug);
   if (!definition) return null;
 
@@ -636,17 +638,23 @@ export function getCurationLandingData(slug: string) {
     ? shakeProducts.filter(curation.categories.shake.filter)
     : [];
 
+  // 인기 랜딩은 정적 점수 대신 홈·트렌딩과 같은 블렌딩 순위를 쓴다(조회수 데이터가 넘어온 경우).
+  const popularPick = (products: ProductDetailProps[], category: "drink" | "bar" | "yogurt" | "shake") =>
+    slug === "popular" && views
+      ? selectHomeDiscovery(products, views[category] ?? {}, {}, Date.now(), 6).map(({ product }) => product)
+      : null;
+
   const recommendedDrinks = curation.categories.drink
-    ? curation.categories.drink.recommend(mockProducts).slice(0, 6)
+    ? (popularPick(mockProducts, "drink") ?? getRecommendedProductsForCuration(mockProducts, "drink", curation.slug, 6))
     : [];
   const recommendedBars = curation.categories.bar
-    ? curation.categories.bar.recommend(barProductsWithGrades).slice(0, 6)
+    ? (popularPick(barProductsWithGrades, "bar") ?? getRecommendedProductsForCuration(barProductsWithGrades, "bar", curation.slug, 6))
     : [];
   const recommendedYogurts = curation.categories.yogurt
-    ? curation.categories.yogurt.recommend(yogurtProducts).slice(0, 6)
+    ? (popularPick(yogurtProducts, "yogurt") ?? getRecommendedProductsForCuration(yogurtProducts, "yogurt", curation.slug, 6))
     : [];
   const recommendedShakes = curation.categories.shake
-    ? curation.categories.shake.recommend(shakeProducts).slice(0, 6)
+    ? (popularPick(shakeProducts, "shake") ?? getRecommendedProductsForCuration(shakeProducts, "shake", curation.slug, 6))
     : [];
 
   return {

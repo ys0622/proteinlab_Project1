@@ -1,5 +1,6 @@
 import { type ProductDetailProps } from "../data/products";
 import { getPopularityScore } from "./productPopularity";
+import { isComparableServing } from "./servingScope";
 
 export type CurationCategory = "drink" | "bar" | "yogurt" | "shake";
 export type CurationKind = "ingredient" | "goal" | "context";
@@ -1550,7 +1551,11 @@ export function getQuickCurations(category: CurationCategory) {
         slug: curation.slug,
         label: categoryConfig.quickLabel,
         icon: categoryConfig.quickIcon,
-        href: `/curation/${curation.slug}`,
+        // 여러 카테고리에 걸친 큐레이션은 ?category= 로 지금 보던 카테고리만 보여준다(안 그러면 음료부터 나온다).
+        href:
+          Object.keys(curation.categories).length > 1
+            ? `/curation/${curation.slug}?category=${category}`
+            : `/curation/${curation.slug}`,
         order: categoryConfig.quickOrder ?? 999,
       };
     })
@@ -1565,7 +1570,8 @@ export function getQuickCurations(category: CurationCategory) {
       slug: "popular",
       label: "인기",
       icon: "🔥",
-      href: "/curation/popular",
+      // 카테고리별 인기 순위 섹션으로 바로 이동한다(/curation/popular는 음료부터 보여준다).
+      href: `/trending#${category}`,
       order: -1,
     },
     ...items,
@@ -1620,5 +1626,9 @@ export function getRecommendedProductsForCuration(
   const definition = getCurationDefinition(slug);
   const categoryConfig = definition?.categories[category];
   if (!categoryConfig) return [];
-  return categoryConfig.recommend(products).slice(0, limit);
+  // 대용량 통(예: 요거트 800g)은 용기 전체 수치라 1회분 기준 추천에서 제외한다. 대용량 큐레이션만 예외.
+  const comparable = slug === "yogurt-bulk"
+    ? products
+    : products.filter((product) => !product.needsServingCheck && isComparableServing(product));
+  return categoryConfig.recommend(comparable).slice(0, limit);
 }

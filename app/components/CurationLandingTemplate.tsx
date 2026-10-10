@@ -14,6 +14,7 @@ interface CurationLandingTemplateProps {
   recommendedYogurts: ProductDetailProps[];
   shakeProducts: ProductDetailProps[];
   recommendedShakes: ProductDetailProps[];
+  focusCategory?: "drink" | "bar" | "yogurt" | "shake";
 }
 
 function ProductSection({
@@ -22,13 +23,16 @@ function ProductSection({
   products,
   totalCount,
   allProductsHref,
+  hideWhenEmpty = false,
 }: {
   title: string;
   note?: string;
   products: ProductDetailProps[];
   totalCount?: number;
   allProductsHref?: string;
+  hideWhenEmpty?: boolean;
 }) {
+  if (hideWhenEmpty && products.length === 0) return null;
   return (
     <section className="mt-6 md:mt-8">
       <div className="mb-3 space-y-1 md:mb-4">
@@ -63,6 +67,13 @@ function ProductSection({
   );
 }
 
+/** 비교 목록에서 위 '추천' 섹션에 이미 나온 제품을 빼고(필요하면 개수를 제한해) 돌려준다. */
+function restOf(list: ProductDetailProps[], recommended: ProductDetailProps[], limit?: number) {
+  const shown = new Set(recommended.map((product) => product.slug));
+  const rest = list.filter((product) => !shown.has(product.slug));
+  return limit ? rest.slice(0, limit) : rest;
+}
+
 export default function CurationLandingTemplate({
   curation,
   drinkProducts,
@@ -73,6 +84,7 @@ export default function CurationLandingTemplate({
   recommendedYogurts,
   shakeProducts,
   recommendedShakes,
+  focusCategory,
 }: CurationLandingTemplateProps) {
   const drinkCopy = curation.categories.drink?.landingCopy;
   const barCopy = curation.categories.bar?.landingCopy;
@@ -83,6 +95,8 @@ export default function CurationLandingTemplate({
   const hasYogurtCategory = Boolean(curation.categories.yogurt);
   const hasShakeCategory = Boolean(curation.categories.shake);
   const isPopularLanding = curation.slug === "popular";
+  // ?category= 로 들어온 경우 그 카테고리만 보여준다(큐레이션이 지원하지 않는 카테고리면 무시하고 전체를 보여준다).
+  const focus = focusCategory && curation.categories[focusCategory] ? focusCategory : undefined;
   const relatedLinksTitle = curation.relatedLinksTitle ?? "관련 가이드";
 
   return (
@@ -158,7 +172,7 @@ export default function CurationLandingTemplate({
           </section>
         ) : null}
 
-        {hasDrinkCategory ? (
+        {hasDrinkCategory && (!focus || focus === "drink") ? (
           <>
             <ProductSection
               title={drinkCopy?.recommendationTitle ?? "추천 단백질 음료"}
@@ -167,14 +181,16 @@ export default function CurationLandingTemplate({
             />
             <ProductSection
               title={drinkCopy?.comparisonTitle ?? "단백질 음료 비교"}
-              products={isPopularLanding ? drinkProducts.slice(0, 12) : drinkProducts}
+              products={restOf(drinkProducts, recommendedDrinks, isPopularLanding ? 12 : undefined)}
+              hideWhenEmpty
+              note={recommendedDrinks.length > 0 ? "위 추천 제품을 제외한 나머지입니다." : undefined}
               totalCount={drinkProducts.length}
               allProductsHref={isPopularLanding ? "/drinks?curation=popular" : undefined}
             />
           </>
         ) : null}
 
-        {hasBarCategory ? (
+        {hasBarCategory && (!focus || focus === "bar") ? (
           <>
             <ProductSection
               title={barCopy?.recommendationTitle ?? "추천 단백질 바"}
@@ -183,14 +199,16 @@ export default function CurationLandingTemplate({
             />
             <ProductSection
               title={barCopy?.comparisonTitle ?? "단백질 바 비교"}
-              products={isPopularLanding ? barProducts.slice(0, 12) : barProducts}
+              products={restOf(barProducts, recommendedBars, isPopularLanding ? 12 : undefined)}
+              hideWhenEmpty
+              note={recommendedBars.length > 0 ? "위 추천 제품을 제외한 나머지입니다." : undefined}
               totalCount={barProducts.length}
               allProductsHref={isPopularLanding ? "/bars?curation=popular" : undefined}
             />
           </>
         ) : null}
 
-        {hasYogurtCategory ? (
+        {hasYogurtCategory && (!focus || focus === "yogurt") ? (
           <>
             <ProductSection
               title={yogurtCopy?.recommendationTitle ?? "추천 단백질 요거트"}
@@ -199,14 +217,16 @@ export default function CurationLandingTemplate({
             />
             <ProductSection
               title={yogurtCopy?.comparisonTitle ?? "단백질 요거트 비교"}
-              products={isPopularLanding ? yogurtProducts.slice(0, 12) : yogurtProducts}
+              products={restOf(yogurtProducts, recommendedYogurts, isPopularLanding ? 12 : undefined)}
+              hideWhenEmpty
+              note={recommendedYogurts.length > 0 ? "위 추천 제품을 제외한 나머지입니다." : undefined}
               totalCount={yogurtProducts.length}
               allProductsHref={isPopularLanding ? "/yogurt?curation=popular" : undefined}
             />
           </>
         ) : null}
 
-        {hasShakeCategory ? (
+        {hasShakeCategory && (!focus || focus === "shake") ? (
           <>
             <ProductSection
               title={shakeCopy?.recommendationTitle ?? "추천 단백질 쉐이크"}
@@ -215,7 +235,9 @@ export default function CurationLandingTemplate({
             />
             <ProductSection
               title={shakeCopy?.comparisonTitle ?? "단백질 쉐이크 비교"}
-              products={isPopularLanding ? shakeProducts.slice(0, 12) : shakeProducts}
+              products={restOf(shakeProducts, recommendedShakes, isPopularLanding ? 12 : undefined)}
+              hideWhenEmpty
+              note={recommendedShakes.length > 0 ? "위 추천 제품을 제외한 나머지입니다." : undefined}
               totalCount={shakeProducts.length}
               allProductsHref={isPopularLanding ? "/shake?curation=popular" : undefined}
             />
