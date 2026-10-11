@@ -26,11 +26,11 @@ export interface VerifiedGoldboxOffer {
 const EXPIRING_SEED: VerifiedGoldboxOffer[] = [{
   // 2026-10-11 09:32 쿠팡 앱 골드박스에서 사용자가 확인. 화면의 "21:27:44 남음"으로 계산한 종료 시각(10/12 07:00).
   // 가격은 앱 전용 값이라 웹에서 확인되지 않아 표시하지 않는다(price 0 = 가격 줄 숨김).
-  // 제품 데이터의 쿠팡 링크는 125ml 옵션으로 열리므로, 190ml × 24개 옵션을 직접 선택해야 한다.
+  // 링크는 190ml × 24개 옵션으로 만든 쿠팡파트너스 단축 링크(제품 데이터와 동일).
   slug: "sellex-protein-lowsugar-190",
   offerName: "190mL × 24개 · 와우회원 할인 · 쿠팡 앱 확인",
   price: 0,
-  href: "",
+  href: "https://link.coupang.com/a/hKSkkBL9UG",
   source: "coupang_app",
   verifiedAt: "2026-10-11T09:32:00+09:00",
   startsAt: "2026-10-11T09:32:00+09:00",

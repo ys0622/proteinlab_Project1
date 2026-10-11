@@ -110,6 +110,14 @@ export default async function ProductsPage() {
     shake: shakes.length,
   };
   const totalCount = drinks.length + bars.length + yogurts.length + shakes.length;
+  const byBrand = (list: typeof drinks) =>
+    [...list].filter((product) => product.slug).sort((a, b) => a.brand.localeCompare(b.brand, "ko") || a.name.localeCompare(b.name, "ko"));
+  const allGroups = [
+    { href: "/drinks", title: "단백질 음료", products: byBrand(drinks) },
+    { href: "/bars", title: "단백질 바", products: byBrand(bars) },
+    { href: "/yogurt", title: "단백질 요거트", products: byBrand(yogurts) },
+    { href: "/shake", title: "단백질 쉐이크", products: byBrand(shakes) },
+  ];
 
   const breadcrumbJsonLd = {
     "@context": "https://schema.org",
@@ -192,6 +200,33 @@ export default async function ProductsPage() {
             stickyTabs={false}
             tabsPlacement="before_grid"
           />
+        </section>
+        <section className="mt-8 rounded-[28px] border border-[#e8e6e3] bg-white px-5 py-5" aria-label="전체 제품 목록">
+          <h2 className="text-xl font-bold text-[var(--foreground)]">전체 제품 {totalCount}종 한눈에 보기</h2>
+          <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">
+            카테고리별로 모든 제품을 브랜드순으로 모았습니다. 제품명을 누르면 성분과 구매 정보를 볼 수 있습니다.
+          </p>
+          {allGroups.map((group) => (
+            <div key={group.href} className="mt-6">
+              <h3 className="text-base font-semibold text-[#24543d]">
+                <Link href={group.href} className="hover:underline">
+                  {group.title} {group.products.length}종
+                </Link>
+              </h3>
+              <ul className="mt-3 grid gap-x-6 gap-y-1.5 text-sm md:grid-cols-2">
+                {group.products.map((product) => (
+                  <li key={product.slug} className="min-w-0">
+                    <Link href={`/product/${product.slug}`} className="block truncate hover:text-[var(--accent)]">
+                      {product.brand} {product.name}
+                      {product.proteinPerServing ? (
+                        <span className="text-[var(--foreground-muted)]"> · 단백질 {product.proteinPerServing}g</span>
+                      ) : null}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
         </section>
         <CommercialAdSection pageType="category" className="mt-6" />
       </main>
