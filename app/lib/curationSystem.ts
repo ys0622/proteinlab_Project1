@@ -1138,7 +1138,7 @@ const curations: CurationDefinition[] = [
     routeMode: "category-query",
     seoTitle: "식사대용 단백질 쉐이크 추천 | ProteinLab",
     seoDescription:
-      "포만감과 성분 균형을 고려해 식사대용으로 보기 좋은 파우치형 단백질 쉐이크를 비교합니다.",
+      "포만감과 성분 균형을 고려해 식사대용으로 보기 좋은 파우치형 단백질 쉐이크를 비교합니다. 단백질, 당류, 칼로리를 기준으로 확인해보세요.",
     categories: {
       shake: {
         category: "shake",

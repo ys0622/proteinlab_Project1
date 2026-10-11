@@ -600,7 +600,8 @@ function normalizeLandingCuration(curation: CurationDefinition): CurationDefinit
         : profile?.relatedGuideLinks?.length
           ? profile.relatedGuideLinks
           : buildDefaultGuideLinks(curation),
-    seoTitle: curation.seoTitle ?? `${curation.label} 추천·비교 | ProteinLab`,
+    // 같은 조건명이 카테고리마다 있으므로(예: 고단백 20g+ 음료/바) 제목에 카테고리를 넣어 구분한다.
+    seoTitle: curation.seoTitle ?? `${curation.label} ${categoryLabel} 추천·비교 | ProteinLab`,
     seoDescription:
       curation.seoDescription ??
       `ProteinLab에서 ${curation.label} 기준의 ${categoryLabel}을 바로 비교하고 추천 제품까지 확인해보세요.`,
