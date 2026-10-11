@@ -5,7 +5,7 @@ import { Suspense, useEffect, useMemo, useState } from "react";
 import type { ProductDetailProps } from "../data/products";
 import newProductsRaw from "../data/newProducts.json";
 import { type ProductCategory } from "../lib/categories";
-import { applyCurationToCategoryProducts } from "../lib/curationSystem";
+import { applyCurationToCategoryProducts, getCurationDefinition } from "../lib/curationSystem";
 import {
   defaultBarFilters,
   defaultDrinkFilters,
@@ -619,6 +619,15 @@ function ProductListWithFiltersInner(props: ProductListWithFiltersInnerProps) {
       ) : null}
 
       {tabsPlacement === "before_grid" ? categoryTabs : null}
+
+      {sorted.length !== products.length ? (
+        <p className="mt-3 px-1 text-xs text-[var(--foreground-muted)]" aria-live="polite">
+          {curationSlug && getCurationDefinition(curationSlug)?.categories[productType]
+            ? `'${getCurationDefinition(curationSlug)?.label}' 조건 · `
+            : ""}
+          조건에 맞는 제품 {sorted.length}개 (전체 {products.length}개)
+        </p>
+      ) : null}
 
       {visible.length === 0 ? (
         <div className="mt-4 rounded-2xl border border-[var(--border)] bg-[var(--background-card)] px-5 py-8 text-center">
