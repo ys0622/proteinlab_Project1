@@ -5,6 +5,23 @@ export const RECENT_REVISIONS: { date: string; paths: string[] }[] = [
   {
     date: "2026-10-11",
     paths: [
+      "/guides/product-selection-comparison/takefit-lineup",
+      "/guides/product-selection-comparison/himune-lineup",
+      "/guides/product-selection-comparison/newcare-41g-vs-25g",
+      "/guides/product-selection-comparison/newcare-for-50s",
+      "/guides/product-selection-comparison/selexs-lineup",
+      "/guides/product-selection-comparison/newcare-vs-sellex",
+      "/guides/product-selection-comparison/selex-vs-himune",
+      "/guides/product-selection-comparison/takefit-vs-himune",
+      "/guides/product-selection-comparison/danbaek-vs-himune",
+      "/guides/product-selection-comparison/newcare-vs-hymune",
+      "/guides/product-selection-comparison/selex-vs-takefit-vs-himune",
+      "/guides/basics/protein-source-types"
+    ],
+  },
+  {
+    date: "2026-10-11",
+    paths: [
       "/products",
       "/ranking",
       "/trending",

@@ -2,6 +2,7 @@ import Link from "next/link";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 import GuideBuySection from "@/app/components/GuideBuySection";
+import MpiDrinkList from "@/app/components/MpiDrinkList";
 import { buildGuideJsonLd } from "@/app/lib/guideJsonLd";
 
 const _pageTitle = "MPI 단백질이란? WPI·WPC·MPC 차이와 유당 비교";
@@ -370,6 +371,7 @@ export default function ProteinSourceTypesGuidePage() {
             Bendtsen LQ, et al. (2013) Nutrients · van Vliet S, et al. (2015) J Nutr · Shaw G, et al. (2017) Am J Clin Nutr.
             본 페이지는 각 연구의 결론을 일반 대중 눈높이로 요약한 것으로, 특정 제품의 의학적 효능을 보증하지 않습니다.
           </p>
+          <MpiDrinkList />
         </div>
       </main>
 

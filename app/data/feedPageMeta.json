@@ -230,5 +230,53 @@
   "/guides/product-selection-comparison/protein-drink-for-50s": {
     "title": "50대 단백질 음료 추천 | 건강 유지·근감소증 예방 기준",
     "description": "50대 이상이 건강 유지와 근감소증 예방 관점에서 단백질 음료를 고를 때 무엇을 봐야 하는지, 부담이 덜한 후보 제품을 ProteinLab DB 기준으로 정리했습니다."
+  },
+  "/guides/product-selection-comparison/takefit-lineup": {
+    "title": "테이크핏 맥스·몬스터·프로 성분 비교 | 라인업별 단백질·당류 차이",
+    "description": "테이크핏 맥스, 몬스터, 프로, 익스트림의 성분(단백질·칼로리·당류)과 맛별 차이를 표로 비교합니다. 어떤 라인을 골라야 하는지 목적별로 정리했습니다."
+  },
+  "/guides/product-selection-comparison/himune-lineup": {
+    "title": "하이뮨 단백질음료 추천 (2026) | 액티브·제로·울트라 종류 비교",
+    "description": "하이뮨 프로틴 밸런스, 액티브, 액티브 제로, 식물성 고단백, 울트라의 단백질·당류·칼로리를 비교하고 운동·저당·일상 보충 목적별 추천을 정리했습니다."
+  },
+  "/guides/product-selection-comparison/newcare-41g-vs-25g": {
+    "title": "뉴케어 올프로틴 41g 성분·맛 비교 | 25g과 뭐가 다를까",
+    "description": "뉴케어 올프로틴 41g(초코·커피우유·고소한맛)과 25g 라인의 단백질, 칼로리, 당류 성분을 표로 비교합니다. 고단백 보충용인지 일상형인지 바로 정리합니다."
+  },
+  "/guides/product-selection-comparison/newcare-for-50s": {
+    "title": "뉴케어 50대 단백질 음료 가이드",
+    "description": "50대가 뉴케어 올프로틴을 볼 때 41g, 25g, 워터 중 무엇부터 보면 되는지 정리합니다. 부담감, 음용성, 보충 목적 기준으로 빠르게 판단할 수 있습니다."
+  },
+  "/guides/product-selection-comparison/selexs-lineup": {
+    "title": "셀렉스 단백질음료 추천 (2026) | 프로핏·락토프리·당솔브 비교",
+    "description": "셀렉스 프로핏, 웨이프로핏, 락토프리, 로우슈거, 당솔브의 단백질·당류·칼로리를 비교해 운동 후·저당·유당 부담 목적별 추천을 정리했습니다."
+  },
+  "/guides/product-selection-comparison/newcare-vs-sellex": {
+    "title": "뉴케어 vs 셀렉스 단백질 음료 비교",
+    "description": "뉴케어 올프로틴과 셀렉스 프로핏을 단백질, 당류, 칼로리, 락토프리 관점으로 비교합니다. 고단백 보충형과 대중형 RTD 차이를 빠르게 정리합니다."
+  },
+  "/guides/product-selection-comparison/selex-vs-himune": {
+    "title": "셀렉스 vs 하이뮨 | 뭐가 더 나을까? 단백질 음료 비교 2026",
+    "description": "셀렉스와 하이뮨 대표 RTD 단백질 음료를 단백질, 당류, 칼로리, 나트륨 기준으로 직접 비교했습니다. 운동 후, 다이어트, 일상용 중 어디에 더 맞는지 빠르게 정리합니다."
+  },
+  "/guides/product-selection-comparison/takefit-vs-himune": {
+    "title": "테이크핏 vs 하이뮨 차이 | 단백질·당류·칼로리 비교",
+    "description": "테이크핏 맥스와 하이뮨 액티브의 단백질·당류·칼로리·나트륨·밀도를 비교하고 운동 후, 다이어트, 일상용으로 무엇이 맞는지 정리합니다."
+  },
+  "/guides/product-selection-comparison/danbaek-vs-himune": {
+    "title": "더단백 vs 하이뮨 차이 | 단백질·당류·칼로리 비교",
+    "description": "더단백 드링크와 하이뮨 액티브의 단백질·당류·칼로리·나트륨을 한 표로 비교하고 다이어트, 운동 후, 일상용 선택 기준을 정리합니다."
+  },
+  "/guides/product-selection-comparison/newcare-vs-hymune": {
+    "title": "뉴케어 41g vs 하이뮨 10g 차이 (2026) | 부모님 단백질음료 비교",
+    "description": "뉴케어 올프로틴 41g과 하이뮨 프로틴 밸런스 10g의 용량·칼로리·당류를 비교해 부모님과 50대가 고단백형과 일상 보완형을 고르는 법을 정리했습니다."
+  },
+  "/guides/product-selection-comparison/selex-vs-takefit-vs-himune": {
+    "title": "셀렉스 vs 테이크핏 vs 하이뮨 비교 | 단백질·당류·칼로리 차이",
+    "description": "셀렉스 프로핏, 테이크핏 맥스, 하이뮨 액티브의 단백질·당류·칼로리·나트륨을 한 표로 비교하고 다이어트, 운동 후, 일상용 선택 기준을 정리합니다."
+  },
+  "/guides/basics/protein-source-types": {
+    "title": "MPI 단백질이란? WPI·WPC·MPC 차이와 유당 비교",
+    "description": "MPI는 카제인과 유청을 함께 담은 분리우유단백입니다. WPI·WPC·MPC와 원료, 단백질 비율, 유당 함량이 어떻게 다른지 비교하고 제품 표시를 읽는 기준을 정리했습니다."
   }
 }
