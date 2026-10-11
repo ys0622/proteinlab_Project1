@@ -1,5 +1,6 @@
 import { type ProductDetailProps } from "../data/products";
 import { getPopularityScore } from "./productPopularity";
+import { hasNoPurchasableCoupangLink } from "./purchaseLinks";
 import { isComparableServing } from "./servingScope";
 
 export type CurationCategory = "drink" | "bar" | "yogurt" | "shake";
@@ -1630,5 +1631,7 @@ export function getRecommendedProductsForCuration(
   const comparable = slug === "yogurt-bulk"
     ? products
     : products.filter((product) => !product.needsServingCheck && isComparableServing(product));
-  return categoryConfig.recommend(comparable).slice(0, limit);
+  // 추천에는 구매 링크가 없는 단종 제품을 넣지 않는다(목록 비교에는 남는다).
+  const purchasable = comparable.filter((product) => !hasNoPurchasableCoupangLink(product.coupangUrl, product.slug));
+  return categoryConfig.recommend(purchasable).slice(0, limit);
 }

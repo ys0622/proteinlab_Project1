@@ -5,6 +5,7 @@ import {
   getQualityScore,
   isExcludedFromPopularityRanking,
 } from "./productScoring";
+import { hasNoPurchasableCoupangLink } from "./purchaseLinks";
 import { isComparableServing } from "./servingScope";
 
 // reason은 카드에 붙는 배지 근거다. site_interest는 배지를 달지 않는다.
@@ -52,7 +53,9 @@ export function selectHomeDiscovery(
       product.slug &&
       !isExcludedFromPopularityRanking(product) &&
       !product.needsServingCheck &&
-      isComparableServing(product),
+      isComparableServing(product) &&
+      // 단종·구매 링크 없는 제품은 인기 순위에 올리지 않는다(눌러도 살 수 없다).
+      !hasNoPurchasableCoupangLink(product.coupangUrl, product.slug),
   );
   if (eligible.length === 0) return [];
 

@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import PurchaseLinkRow from "./PurchaseLinkRow";
 import { purchaseClick } from "../../lib/analytics";
 
@@ -25,6 +26,7 @@ export default function ProductDetailPurchaseActions({
   const placement = "product_detail_hero_purchase";
   const hasPurchaseLink = Boolean(coupangHref);
   const coupangCta = "최저가 확인";
+  const categoryHref = { drink: "/drinks", bar: "/bars", yogurt: "/yogurt", shake: "/shake" }[productType ?? "drink"];
 
   const trackPurchase = (
     store: "coupang" | "naver" | "official",
@@ -42,6 +44,28 @@ export default function ProductDetailPurchaseActions({
       category: productType,
       source: "product_detail_hero",
     });
+
+  if (!hasPurchaseLink) {
+    return (
+      <div
+        className="rounded-2xl border border-[#ded8cf] bg-white/72 p-3 md:p-4"
+        style={{ borderRadius: "16px" }}
+      >
+        <p className="text-[11px] font-bold tracking-[0.08em] text-[#9b9287]">판매 정보</p>
+        <h2 className="text-base font-bold text-[var(--foreground)]">현재 쿠팡에서 판매가 확인되지 않습니다</h2>
+        <p className="mt-2 text-xs leading-5 text-[var(--foreground-muted)] md:text-sm">
+          단종되었거나 판매가 중단된 제품으로 확인되어 구매 링크를 제공하지 않습니다. 성분 정보는 참고용으로 남겨두었으니,
+          비슷한 조건의 판매 중인 제품은 아래 비교 제품이나 카테고리 목록에서 확인해보세요.
+        </p>
+        <Link
+          href={categoryHref}
+          className="mt-3 inline-flex min-h-11 items-center rounded-full border border-[var(--border)] bg-white px-4 text-sm font-semibold text-[var(--accent)] hover:border-[var(--accent)]"
+        >
+          같은 카테고리 제품 보기 →
+        </Link>
+      </div>
+    );
+  }
 
   return (
     <div
