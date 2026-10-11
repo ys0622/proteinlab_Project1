@@ -1579,7 +1579,7 @@ export const newcareWaterConfig: ComparePageConfig = {
   updatedAt: "2026-08-18",
   methodologyNote: "ProteinLab DB 뉴케어 올프로틴 워터 기준",
   intro:
-    "뉴케어 검색량이 늘 때 같이 붙는 의도 중 하나가 워터형입니다. 올프로틴 워터는 일반 밀크형 RTD와 결이 다르기 때문에 단백질 총량보다도 음용감, 칼로리, 당류, 부담 정도를 먼저 읽는 편이 맞습니다.",
+    "뉴케어를 고르는 분들이 함께 고민하는 선택지 중 하나가 워터형입니다. 올프로틴 워터는 일반 밀크형 RTD와 결이 다르기 때문에 단백질 총량보다도 음용감, 칼로리, 당류, 부담 정도를 먼저 읽는 편이 맞습니다.",
   summary: [
     "올프로틴 워터는 무거운 고단백 RTD보다 가볍게 마시는 쪽에 더 가깝습니다.",
     `워터형 후보를 넓히면 ${formatProductLabel(takefitPro.brand, takefitPro.name)}처럼 500mL 대용량 저당 제품도 같이 비교해야 합니다.`,
@@ -1984,7 +1984,7 @@ export const newcareWaterVsRtdConfig: ComparePageConfig = {
   faq: [
     { question: "뉴케어 단백질워터는 일반 RTD 대신으로 보면 되나요?", answer: "완전한 대체재로 보기보다는 별도 카테고리로 보는 편이 정확합니다. 마시는 체감과 기대하는 보충량이 다르기 때문입니다." },
     { question: "보충량이 더 중요하면 어떤 쪽이 맞나요?", answer: "보통은 뉴케어 25g이나 셀렉스 프로핏 같은 일반 RTD가 더 맞습니다." },
-    { question: "뉴케어 검색이 많은데 워터형 페이지가 필요한 이유는 뭔가요?", answer: "브랜드 검색 안에서도 41g 고단백, 표준형 RTD, 워터형이 서로 다른 의도를 가집니다. 이 분기가 콘텐츠로 정리돼야 검색 유입을 놓치지 않습니다." },
+    { question: "뉴케어에서 워터형을 따로 봐야 하는 이유는 뭔가요?", answer: "같은 뉴케어여도 41g 고단백, 표준형 RTD, 워터형은 마시는 목적이 다릅니다. 단백질 총량이 먼저인지, 가볍게 마시는 것이 먼저인지에 따라 고르는 라인이 달라집니다." },
   ],
   relatedGuides: [
     { title: "뉴케어 단백질워터 가이드", href: "/guides/product-selection-comparison/newcare-protein-water-guide", description: "워터형 자체를 더 자세히 읽고 싶다면 이 페이지로 이어집니다." },
@@ -2031,7 +2031,7 @@ export const newcareSugarGuideConfig: ComparePageConfig = {
       title: "당류 기준으로 읽는 법",
       items: [
         { title: "워터는 저당 축", body: "당류 0g과 낮은 칼로리 구조가 가장 분명합니다. 대신 단백질 총량은 일반 RTD보다 가볍게 읽어야 합니다." },
-        { title: "41g는 예외형", body: "고단백인데도 당류가 낮은 편이라 뉴케어 검색량이 늘 때 같이 주목받기 쉬운 SKU입니다." },
+        { title: "41g는 예외형", body: "고단백인데도 당류가 낮은 편이라 뉴케어 라인 중 눈여겨볼 만한 제품입니다." },
         { title: "25g는 표준형", body: "저당만 보자면 워터나 41g보다 덜 강하지만, 브랜드 안에서 일상형 RTD 기준점 역할을 합니다." },
       ],
     },
@@ -2103,7 +2103,7 @@ export const newcareBoxValueConfig: ComparePageConfig = {
       items: [
         { title: "개당 단가", body: "매일 한 병씩 루틴으로 넣는다면 개당 단가가 먼저 중요합니다. 이 경우 25g나 워터가 더 쉽게 읽힙니다." },
         { title: "단백질 1g당 체감", body: "단백질 총량까지 포함하면 41g가 박스가성비 해석에서 다시 올라옵니다." },
-        { title: "실패 비용", body: "입맛이 안 맞으면 박스 구매가 바로 손실로 이어집니다. 뉴케어 검색량이 올 때도 이 포인트를 같이 잡아주는 편이 좋습니다." },
+        { title: "실패 비용", body: "입맛이 안 맞으면 박스 구매가 바로 손실로 이어지므로, 박스로 사기 전에 낱개나 소량으로 맛과 속을 먼저 확인하는 편이 좋습니다." },
       ],
     },
     {

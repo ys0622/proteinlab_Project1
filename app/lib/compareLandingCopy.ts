@@ -11,9 +11,13 @@ function round1(value: number) {
   return Math.round(value * 10) / 10;
 }
 
+// 문장 안에서는 브랜드가 다르면 브랜드명만, 같으면 제품명으로 구분해 짧게 쓴다.
+function shortNames(a: ProductDetailProps, b: ProductDetailProps): [string, string] {
+  return a.brand !== b.brand ? [a.brand, b.brand] : [a.name, b.name];
+}
+
 function diffLine(label: string, unit: string, a: ProductDetailProps, b: ProductDetailProps, av: number, bv: number, lowerIsBetter: boolean) {
-  const aName = formatProductLabel(a.brand, a.name);
-  const bName = formatProductLabel(b.brand, b.name);
+  const [aName, bName] = shortNames(a, b);
   const gap = round1(Math.abs(av - bv));
   const base = `${label}: ${aName} ${round1(av)}${unit}, ${bName} ${round1(bv)}${unit}`;
   if (gap === 0) return `${base} (같음)`;
@@ -41,7 +45,10 @@ export function resolveLandingCopy(landing: CompareLanding, products: ProductDet
       diffLine("100kcal당 단백질", "g", a, b, (a.proteinPerServing / a.calories) * 100, (b.proteinPerServing / b.calories) * 100, false),
     );
   }
-  if (a.capacity && b.capacity) bullets.push(`용량: ${aName} ${a.capacity}, ${bName} ${b.capacity}`);
+  if (a.capacity && b.capacity) {
+    const [aShort, bShort] = shortNames(a, b);
+    bullets.push(`용량: ${aShort} ${a.capacity}, ${bShort} ${b.capacity}`);
+  }
 
   return { intro, bullets: bullets.length > 0 ? bullets : landing.bullets };
 }
