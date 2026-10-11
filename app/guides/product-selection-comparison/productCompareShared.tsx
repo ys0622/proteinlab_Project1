@@ -30,6 +30,8 @@ export interface CompareMetricRow {
 export interface ComparePageConfig {
   slug: string;
   title: string;
+  /** 검색 결과·공유에 쓰는 제목. 없으면 title을 쓴다(title은 본문 H1에도 쓰여서 짧게 두는 경우). */
+  seoTitle?: string;
   description: string;
   keywords: string[];
   badge: string;
@@ -95,12 +97,12 @@ export function buildGuideMetadata(config: ComparePageConfig): Metadata {
   const hasLargeOg = !!config.ogImage || !!generatedThumbnail;
   const ogImage = config.ogImage ?? generatedThumbnail ?? "/proteinlab-logo.png";
   return {
-    title: config.title,
+    title: config.seoTitle ?? config.title,
     description: config.description,
     keywords: config.keywords,
     alternates: { canonical },
     openGraph: {
-      title: config.title,
+      title: config.seoTitle ?? config.title,
       description: config.description,
       url: canonical,
       type: "article",
@@ -115,7 +117,7 @@ export function buildGuideMetadata(config: ComparePageConfig): Metadata {
     },
     twitter: {
       card: hasLargeOg ? "summary_large_image" : "summary",
-      title: config.title,
+      title: config.seoTitle ?? config.title,
       description: config.description,
       images: [ogImage],
     },

@@ -2,6 +2,7 @@
 import Link from "next/link";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
+import GuideNextReads from "@/app/components/GuideNextReads";
 import GuideBuySection from "@/app/components/GuideBuySection";
 
 const _pageTitle = "단백질 성분 트렌드";
@@ -206,6 +207,7 @@ export default function IngredientTrendsPage() {
         </div>
       </main>
       <GuideBuySection topic="general" />
+      <GuideNextReads path="/guides/market-insights/ingredient-trends" />
       <Footer />
     </div>
   );

@@ -1,6 +1,7 @@
 ﻿import Link from "next/link";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
+import GuideNextReads from "@/app/components/GuideNextReads";
 import GuideBuySection from "@/app/components/GuideBuySection";
 import GuideVisual from "@/app/components/GuideVisual";
 import { buildGuideJsonLd } from "@/app/lib/guideJsonLd";
@@ -181,6 +182,7 @@ export default function ImmunityHormonePage() {
 
       <GuideBuySection topic="general" />
 
+      <GuideNextReads path="/guides/basics/immunity-hormone" />
       <Footer />
     </div>
   );

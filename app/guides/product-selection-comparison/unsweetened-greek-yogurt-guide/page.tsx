@@ -2,6 +2,7 @@ import { buildGuideJsonLd } from "@/app/lib/guideJsonLd";
 ﻿import Link from "next/link";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
+import GuideNextReads from "@/app/components/GuideNextReads";
 import GuideBuySection from "@/app/components/GuideBuySection";
 import CategoryDataSection from "@/app/components/CategoryDataSection";
 
@@ -144,6 +145,7 @@ export default function UnsweetenedGreekYogurtGuidePage() {
       </main>
       <CategoryDataSection category="yogurt" mode="lowSugar" />
       <GuideBuySection slugs={["maeil-bio-greek-unsweetened-150", "yozm-low-sugar-matcha-100", "greekday-signature-100"]} />
+      <GuideNextReads path="/guides/product-selection-comparison/unsweetened-greek-yogurt-guide" />
       <Footer />
     </div>
   );

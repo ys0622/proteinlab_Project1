@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
+import GuideNextReads from "@/app/components/GuideNextReads";
 import GuideBuySection from "@/app/components/GuideBuySection";
 import CategoryDataSection from "@/app/components/CategoryDataSection";
 import { buildGuideJsonLd } from "@/app/lib/guideJsonLd";
@@ -175,6 +176,7 @@ export default function SportsNutritionGuidePage() {
 
       <GuideBuySection topic="general" />
 
+      <GuideNextReads path="/guides/fitness-lifestyle/sports-nutrition-guide" />
       <Footer />
     </div>
   );

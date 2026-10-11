@@ -407,6 +407,7 @@ proteinBarTop10Config.jsonLd = [articleJsonLd(proteinBarTop10Config), faqJsonLd(
 export const convenienceProteinBarConfig: CategoryGuideConfig = {
   slug: "convenience-protein-bar",
   title: "편의점 단백질 바 추천",
+  seoTitle: "편의점 단백질 바 추천 | CU·GS25·세븐일레븐 비교",
   description:
     "CU, GS25, 세븐일레븐 등 오프라인에서 바로 사기 쉬운 단백질 바만 따로 정리했습니다. 편의점 구매와 온라인 박스 구매 차이도 함께 설명합니다.",
   keywords: ["편의점 단백질 바", "편의점 프로틴바", "CU 단백질 바", "GS25 단백질 바"],

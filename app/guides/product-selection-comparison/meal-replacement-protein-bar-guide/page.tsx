@@ -2,6 +2,7 @@ import { buildGuideJsonLd } from "@/app/lib/guideJsonLd";
 ﻿import Link from "next/link";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
+import GuideNextReads from "@/app/components/GuideNextReads";
 import GuideBuySection from "@/app/components/GuideBuySection";
 import CategoryDataSection from "@/app/components/CategoryDataSection";
 
@@ -153,6 +154,7 @@ export default function MealReplacementProteinBarGuidePage() {
       </main>
       <CategoryDataSection category="bar" mode="density" />
       <GuideBuySection slugs={["dryou-proteinbar-pro-3nuts-crunch", "kirkland-proteinbar-choco-chip-cookie-dough-60", "quest-nutrition-protein-bar-deep-dish-cookie-cream-60"]} />
+      <GuideNextReads path="/guides/product-selection-comparison/meal-replacement-protein-bar-guide" />
       <Footer />
     </div>
   );

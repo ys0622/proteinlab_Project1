@@ -452,6 +452,7 @@ lactoseFreeProteinDrinkConfig.jsonLd = [articleJsonLd(lactoseFreeProteinDrinkCon
 export const proteinDrinkFor50sConfig: ComparePageConfig = {
   slug: "protein-drink-for-50s",
   title: "50대 단백질 음료 추천",
+  seoTitle: "50대 단백질 음료 추천 | 건강 유지·근감소증 예방 기준",
   description: "50대 이상이 건강 유지와 근감소증 예방 관점에서 단백질 음료를 고를 때 무엇을 봐야 하는지, 부담이 덜한 후보 제품을 ProteinLab DB 기준으로 정리했습니다.",
   keywords: ["50대 단백질 음료", "중장년 단백질 추천", "근감소증 단백질", "시니어 단백질 음료"],
   badge: "연령 맞춤",
@@ -530,6 +531,7 @@ proteinDrinkFor50sConfig.jsonLd = [articleJsonLd(proteinDrinkFor50sConfig), faqJ
 export const proteinDrinkBoxValueConfig: ComparePageConfig = {
   slug: "protein-drink-box-value",
   title: "단백질 음료 박스로 사면 얼마",
+  seoTitle: "단백질 음료 박스로 사면 개당 얼마? 브랜드별 가성비 비교",
   description: "단백질 음료를 박스로 사면 개당 얼마가 되는지, 최근 쿠팡 노출가 기준으로 대표 브랜드 박스 가성비와 단백질 1g당 가격을 정리했습니다.",
   keywords: ["단백질 음료 박스", "단백질 음료 30팩", "단백질 음료 가성비", "단백질 음료 대용량"],
   badge: "가격 비교",
@@ -899,6 +901,7 @@ selexsLineupConfig.jsonLd = [articleJsonLd(selexsLineupConfig), faqJsonLd(selexs
 export const proteinDrinkByFlavorConfig: ComparePageConfig = {
   slug: "protein-drink-by-flavor",
   title: "단백질 음료 맛별 추천",
+  seoTitle: "단백질 음료 맛별 추천 | 초코·바나나·아메리카노 기준",
   description: "초코, 복숭아, 바나나, 아메리카노, 고소한맛 기준으로 실제 마시기 쉬운 단백질 음료를 정리했습니다.",
   keywords: ["단백질 음료 초코맛 추천", "단백질 음료 맛있는 것", "프로틴 음료 맛 추천", "단백질 음료 복숭아맛"],
   badge: "맛 기준 추천",
@@ -994,6 +997,7 @@ proteinDrinkByFlavorConfig.jsonLd = [articleJsonLd(proteinDrinkByFlavorConfig), 
 export const proteinDrinkTasteTipsConfig: ComparePageConfig = {
   slug: "protein-drink-taste-tips",
   title: "단백질 음료 맛없다",
+  seoTitle: "단백질 음료 맛없다면? 맛있게 마시는 방법과 제품 추천",
   description: "단백질 음료가 맛없게 느껴지는 이유와 더 맛있게 마시는 방법, 입문자가 바꾸기 쉬운 제품 추천을 정리했습니다.",
   keywords: ["단백질 음료 맛없다", "프로틴 음료 맛없어", "단백질 음료 맛있게 먹는 법", "맛있는 단백질 음료 추천"],
   badge: "문제 해결",
@@ -1241,6 +1245,7 @@ takefitLineupConfig.jsonLd = [articleJsonLd(takefitLineupConfig), faqJsonLd(take
 export const newcareAllproteinConfig: ComparePageConfig = {
   slug: "newcare-allprotein",
   title: "뉴케어 올프로틴 완전 분석",
+  seoTitle: "뉴케어 올프로틴 완전 분석 | 41g·25g·식물성·워터 라인",
   description: "뉴케어 올프로틴 41g을 락토프리, 칼로리, 단백질 밀도 기준으로 분석하고 다른 40g대 제품과 무엇이 다른지 정리합니다.",
   keywords: ["뉴케어 올프로틴", "뉴케어 올프로틴 41g", "뉴케어 락토프리 단백질", "뉴케어 고단백"],
   badge: "브랜드 딥다이브",
@@ -1565,6 +1570,7 @@ newcare41Vs25Config.jsonLd = [articleJsonLd(newcare41Vs25Config), faqJsonLd(newc
 export const newcareWaterConfig: ComparePageConfig = {
   slug: "newcare-protein-water-guide",
   title: "뉴케어 올프로틴 워터 정리",
+  seoTitle: "뉴케어 올프로틴 워터 정리 | 단백질·당류·칼로리 비교",
   description:
     "뉴케어 올프로틴 워터를 단백질, 당류, 칼로리, 음용감 기준으로 정리합니다. 밀크형 RTD가 부담스러울 때 어떤 대안이 되는지 빠르게 확인할 수 있습니다.",
   keywords: ["뉴케어 올프로틴 워터", "뉴케어 워터 단백질", "뉴케어 워터 레몬", "뉴케어 워터 사과"],
@@ -1996,6 +2002,7 @@ newcareWaterVsRtdConfig.jsonLd = [articleJsonLd(newcareWaterVsRtdConfig), faqJso
 export const newcareSugarGuideConfig: ComparePageConfig = {
   slug: "newcare-low-sugar-guide",
   title: "뉴케어 저당 선택 가이드",
+  seoTitle: "뉴케어 저당 선택 가이드 | 당류·칼로리·단백질 밀도 비교",
   description:
     "뉴케어 올프로틴 41g, 25g, 워터를 당류, 칼로리, 단백질 밀도 기준으로 비교합니다. 혈당 부담이나 저당 기준으로 뉴케어를 읽을 때 어떤 라인을 먼저 봐야 하는지 정리했습니다.",
   keywords: ["뉴케어 저당", "뉴케어 당류", "뉴케어 혈당", "뉴케어 올프로틴 워터"],
@@ -2066,6 +2073,7 @@ newcareSugarGuideConfig.jsonLd = [articleJsonLd(newcareSugarGuideConfig), faqJso
 export const newcareBoxValueConfig: ComparePageConfig = {
   slug: "newcare-box-value",
   title: "뉴케어 박스가성비 가이드",
+  seoTitle: "뉴케어 올프로틴 박스 가성비 | 개당 단가·단백질 1g당 비교",
   description:
     "뉴케어 올프로틴 41g, 25g, 워터를 박스 구매 관점에서 비교합니다. 개당 단가와 단백질 1g당 체감 가성비를 기준으로 어떤 라인을 먼저 봐야 하는지 정리했습니다.",
   keywords: ["뉴케어 박스", "뉴케어 가성비", "뉴케어 41g 박스", "뉴케어 올프로틴 가격"],
@@ -2136,6 +2144,7 @@ newcareBoxValueConfig.jsonLd = [articleJsonLd(newcareBoxValueConfig), faqJsonLd(
 export const proteinDrinkByContentConfig: ComparePageConfig = {
   slug: "protein-drink-by-content",
   title: "단백질 음료 함량대별 완전 정리",
+  seoTitle: "단백질 음료 함량대별 정리 | 20g 미만부터 40g 이상까지",
   description: "단백질 음료를 20g 미만, 20g대, 30g대, 40g 이상으로 나눠 어떤 사람이 어떤 함량대를 고르면 되는지 정리했습니다.",
   keywords: ["단백질 음료 함량 비교", "단백질 음료 몇g", "단백질 음료 20g 30g 차이", "단백질 음료 함량대"],
   badge: "허브 가이드",
@@ -2300,6 +2309,7 @@ takefitVsHimuneConfig.jsonLd = [articleJsonLd(takefitVsHimuneConfig), faqJsonLd(
 export const danbaekVsSelexsConfig: ComparePageConfig = {
   slug: "danbaek-vs-selexs",
   title: "더단백 vs 셀렉스 비교",
+  seoTitle: "더단백 vs 셀렉스 프로핏 비교 | 칼로리·당류·나트륨",
   description: "더단백 드링크와 셀렉스 프로핏 대표 제품을 칼로리, 당류, 지방, 나트륨 기준으로 직접 비교합니다.",
   keywords: ["더단백 셀렉스 비교", "더단백 vs 셀렉스", "빙그레 단백질 매일유업 단백질"],
   badge: "브랜드 비교",
@@ -2437,6 +2447,7 @@ danbaekVsHimuneConfig.jsonLd = [articleJsonLd(danbaekVsHimuneConfig), faqJsonLd(
 export const dryouLineupConfig: ComparePageConfig = {
   slug: "dryou-lineup",
   title: "닥터유 제품 종류 전체 정리",
+  seoTitle: "닥터유 단백질 제품 종류 정리 | PRO·40g 라인업 비교",
   description: "닥터유 PRO 단백질 드링크와 40g 라인업을 중심으로 어떤 제품이 어떤 목적에 맞는지 정리했습니다.",
   keywords: ["닥터유 단백질 종류", "닥터유PRO 라인업", "닥터유 프로틴 차이", "닥터유 62g"],
   badge: "브랜드 라인업",
@@ -2510,6 +2521,7 @@ dryouLineupConfig.jsonLd = [articleJsonLd(dryouLineupConfig), faqJsonLd(dryouLin
 export const danbaekLineupConfig: ComparePageConfig = {
   slug: "danbaek-lineup",
   title: "더단백 제품 종류 전체 정리",
+  seoTitle: "더단백 제품 종류 전체 정리 | 드링크·워터·다크초코 라인업",
   description: "더단백 드링크, 다크초코, 더블초코, 워터 프로틴 라인업을 저나트륨 강점 중심으로 정리합니다.",
   keywords: ["더단백 종류", "더단백 라인업", "더단백 더블초코 차이", "더단백 저나트륨", "더단백 밸런스"],
   badge: "브랜드 라인업",

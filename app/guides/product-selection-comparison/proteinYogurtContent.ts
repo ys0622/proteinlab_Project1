@@ -221,6 +221,7 @@ proteinYogurtTop5Config.jsonLd = [articleJsonLd(proteinYogurtTop5Config), faqJso
 export const greekVsProteinYogurtConfig: CategoryGuideConfig = {
   slug: "greek-vs-protein-yogurt",
   title: "그릭요거트 vs 단백질 요거트",
+  seoTitle: "그릭요거트 vs 단백질 요거트 차이 | 단백질·칼로리 비교",
   description:
     "그릭요거트와 단백질 요거트의 차이를 제조 방식, 단백질 함량, 칼로리, 용도 기준으로 쉽게 정리했습니다. 입문자가 어떤 카테고리를 먼저 골라야 하는지도 설명합니다.",
   keywords: ["그릭요거트 단백질 요거트 차이", "그릭요거트 단백질", "단백질 요거트 뭐가 다른가"],
@@ -327,6 +328,7 @@ greekVsProteinYogurtConfig.jsonLd = [articleJsonLd(greekVsProteinYogurtConfig), 
 export const dietProteinYogurtConfig: CategoryGuideConfig = {
   slug: "diet-protein-yogurt",
   title: "다이어트 단백질 요거트 추천",
+  seoTitle: "다이어트 단백질 요거트 추천 | 100kcal 이하·당류 5g 이하",
   description:
     "ProteinLab DB 기준으로 칼로리 100kcal 이하, 당류 5g 이하, 단백질 10g 이상 조건을 통과한 다이어트용 요거트만 골라 정리했습니다.",
   keywords: ["다이어트 요거트", "저칼로리 단백질 요거트", "다이어트 그릭요거트", "저당 요거트"],

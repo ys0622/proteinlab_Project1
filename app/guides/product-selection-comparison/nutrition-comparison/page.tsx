@@ -2,6 +2,7 @@ import { buildGuideJsonLd } from "@/app/lib/guideJsonLd";
 ﻿import Link from "next/link";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
+import GuideNextReads from "@/app/components/GuideNextReads";
 import GuideBuySection from "@/app/components/GuideBuySection";
 import CategoryDataSection from "@/app/components/CategoryDataSection";
 
@@ -132,6 +133,7 @@ export default function NutritionComparisonPage() {
 
       <GuideBuySection topic="general" />
 
+      <GuideNextReads path="/guides/product-selection-comparison/nutrition-comparison" />
       <Footer />
     </div>
   );

@@ -2,6 +2,7 @@ import { buildGuideJsonLd } from "@/app/lib/guideJsonLd";
 ﻿import Link from "next/link";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
+import GuideNextReads from "@/app/components/GuideNextReads";
 import GuideBuySection from "@/app/components/GuideBuySection";
 import CategoryDataSection from "@/app/components/CategoryDataSection";
 
@@ -231,6 +232,7 @@ export default function RaceWeekPage() {
 
       <GuideBuySection topic="workout" />
 
+      <GuideNextReads path="/guides/running/race-week" />
       <Footer />
     </div>
   );

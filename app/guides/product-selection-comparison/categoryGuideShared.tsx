@@ -46,6 +46,8 @@ export interface CategoryGuideSection {
 export interface CategoryGuideConfig {
   slug: string;
   title: string;
+  /** 검색 결과·공유에 쓰는 제목. 없으면 title을 쓴다. */
+  seoTitle?: string;
   description: string;
   keywords: string[];
   badge: string;
@@ -139,12 +141,12 @@ export function buildCategoryGuideMetadata(config: CategoryGuideConfig): Metadat
   const canonical = `https://proteinlab.kr/guides/product-selection-comparison/${config.slug}`;
   const thumbnail = getGuideThumbnailUrl(config.slug);
   return {
-    title: config.title,
+    title: config.seoTitle ?? config.title,
     description: config.description,
     keywords: config.keywords,
     alternates: { canonical },
     openGraph: {
-      title: config.title,
+      title: config.seoTitle ?? config.title,
       description: config.description,
       url: canonical,
       type: "article",
@@ -156,7 +158,7 @@ export function buildCategoryGuideMetadata(config: CategoryGuideConfig): Metadat
     twitter: {
     images: [thumbnail ?? "https://proteinlab.kr/opengraph-image"],
       card: thumbnail ? "summary_large_image" : "summary",
-      title: config.title,
+      title: config.seoTitle ?? config.title,
       description: config.description,
     },
   };
