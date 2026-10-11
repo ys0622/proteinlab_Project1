@@ -28,21 +28,45 @@ export default function AdSenseBlock({
 }: AdSenseBlockProps) {
   const pathname = usePathname();
   const wrapperRef = useRef<HTMLDivElement | null>(null);
+  const insRef = useRef<HTMLModElement | null>(null);
   const pushedRef = useRef(false);
   const impressionTrackedRef = useRef(false);
   const adSlot = slot?.trim() ?? "";
 
   useEffect(() => {
     if (!ADSENSE_CLIENT_ID || !adSlot || pushedRef.current) return;
+    const ins = insRef.current;
+    if (!ins) return;
 
-    pushedRef.current = true;
+    // 폭이 0인 상태(레이아웃 전, 숨김 상태)에서 push하면 "No slot size for availableWidth=0" 오류가 나므로
+    // 슬롯에 실제 폭이 생긴 뒤에 한 번만 push한다.
+    const push = () => {
+      if (pushedRef.current) return;
+      pushedRef.current = true;
+      try {
+        window.adsbygoogle = window.adsbygoogle || [];
+        window.adsbygoogle.push({});
+      } catch {
+        // Ad blockers or AdSense script delays must not break page rendering.
+      }
+    };
 
-    try {
-      window.adsbygoogle = window.adsbygoogle || [];
-      window.adsbygoogle.push({});
-    } catch {
-      // Ad blockers or AdSense script delays must not break page rendering.
+    if (ins.offsetWidth > 0) {
+      push();
+      return;
     }
+    if (typeof ResizeObserver === "undefined") {
+      push();
+      return;
+    }
+    const observer = new ResizeObserver(() => {
+      if (ins.offsetWidth > 0) {
+        observer.disconnect();
+        push();
+      }
+    });
+    observer.observe(ins);
+    return () => observer.disconnect();
   }, [adSlot]);
 
   useEffect(() => {
@@ -97,6 +121,7 @@ export default function AdSenseBlock({
           AD
         </p>
         <ins
+          ref={insRef}
           className="adsbygoogle block"
           style={{ display: "block", width: "100%", maxWidth: "100%", minWidth: 0 }}
           data-ad-client={ADSENSE_CLIENT_ID}
