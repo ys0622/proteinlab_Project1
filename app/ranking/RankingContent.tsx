@@ -6,6 +6,7 @@ import { getDensityValue, getDietScore, getPerformanceScore } from "../lib/grade
 import type { ProductCategory } from "../lib/categories";
 import { getProductsByCategoryAsync } from "../lib/productData";
 import { formatProductLabel } from "../lib/productLabel";
+import { isComparableServing } from "../lib/servingScope";
 import RankingClient from "./RankingClient";
 import { notFound } from "next/navigation";
 
@@ -39,7 +40,9 @@ export const metadata = {
 };
 
 function prepareRankingData(products: ProductDetailProps[], metric: "density" | "diet" | "performance") {
-  const scored = products.map((product) => {
+  // 대용량 통(예: 요거트 800g)과 1회분 불명 제품은 용기 전체 수치라 1회 기준 순위에서 제외한다(상품·큐레이션과 같은 기준).
+  const comparable = products.filter((product) => !product.needsServingCheck && isComparableServing(product));
+  const scored = comparable.map((product) => {
     let rawScore: number;
     if (metric === "density") rawScore = getDensityValue(product);
     else if (metric === "diet") rawScore = getDietScore(product);

@@ -3,6 +3,7 @@ import type { ProductDetailProps } from "../../data/products";
 import { getDensityValue, getDietScore, getPerformanceScore } from "../../lib/gradeCalculation";
 import { getProductImageUrl } from "../../lib/productImage";
 import { getProductsByCategoryAsync } from "../../lib/productData";
+import { isComparableServing } from "../../lib/servingScope";
 
 interface RecommendRequest {
   category: "drink" | "bar" | "yogurt" | "shake";
@@ -641,7 +642,11 @@ export async function POST(request: Request) {
     const { category } = body;
 
     const categoryProducts = await getProductsByCategoryAsync(category);
-    let products = [...categoryProducts];
+    // 대용량 통과 1회분 불명 제품은 용기 전체 수치라 점수 비교에서 제외한다. 사용자가 '대용량'을 직접 고른 경우만 포함한다.
+    const wantsBulk = body.conditions.includes("bulk");
+    let products = categoryProducts.filter(
+      (product) => wantsBulk || (!product.needsServingCheck && isComparableServing(product)),
+    );
 
     products = applyConditionPrefilters(products, body);
 
