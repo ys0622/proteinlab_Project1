@@ -4,6 +4,7 @@ import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 import AffiliateDisclosure from "@/app/components/AffiliateDisclosure";
 import CommercialAdSection from "@/app/components/CommercialAdSection";
+import CategoryDataSection from "@/app/components/CategoryDataSection";
 import TrackedCoupangLink from "@/app/components/TrackedCoupangLink";
 import { getDrinkProducts } from "@/app/data/drinkProductsData";
 import { shakeProducts, type ProductDetailProps } from "@/app/data/products";
@@ -32,6 +33,8 @@ export interface ComparePageConfig {
   title: string;
   /** 검색 결과·공유에 쓰는 제목. 없으면 title을 쓴다(title은 본문 H1에도 쓰여서 짧게 두는 경우). */
   seoTitle?: string;
+  /** 라인업 가이드 하단에 붙이는 브랜드 전체 수치표(제품 데이터에서 계산). */
+  dataSection?: { category: "drink" | "bar" | "yogurt" | "shake"; brand: string; limit?: number };
   description: string;
   keywords: string[];
   badge: string;
@@ -379,6 +382,9 @@ export function ComparisonGuidePage({ config }: { config: ComparePageConfig }) {
           <CommercialAdSection pageType="guide" />
         </div>
       </main>
+      {config.dataSection ? (
+        <CategoryDataSection category={config.dataSection.category} mode="protein" brand={config.dataSection.brand} limit={config.dataSection.limit ?? 20} />
+      ) : null}
       <Footer />
     </div>
   );

@@ -1075,6 +1075,7 @@ const dryou40Strawberry = getDrinkProduct("dryou-protein-40g-strawberry-350");
 
 export const himuneLineupConfig: ComparePageConfig = {
   slug: "himune-lineup",
+  dataSection: { category: "drink", brand: "하이뮨", limit: 20 },
   title: "하이뮨 단백질음료 추천 (2026) | 액티브·제로·울트라 종류 비교",
   description: "하이뮨 프로틴 밸런스, 액티브, 액티브 제로, 식물성 고단백, 울트라의 단백질·당류·칼로리를 비교하고 운동·저당·일상 보충 목적별 추천을 정리했습니다.",
   keywords: ["하이뮨 단백질음료", "하이뮨 성분", "하이뮨 종류", "하이뮨 라인업", "하이뮨 프로틴밸런스 액티브 차이", "하이뮨 액티브 제로", "하이뮨 울트라"],
@@ -1160,6 +1161,7 @@ himuneLineupConfig.jsonLd = [articleJsonLd(himuneLineupConfig), faqJsonLd(himune
 
 export const takefitLineupConfig: ComparePageConfig = {
   slug: "takefit-lineup",
+  dataSection: { category: "drink", brand: "테이크핏", limit: 20 },
   title: "테이크핏 맥스·몬스터·프로 성분 비교 | 라인업별 단백질·당류 차이",
   description: "테이크핏 맥스, 몬스터, 프로, 익스트림의 성분(단백질·칼로리·당류)과 맛별 차이를 표로 비교합니다. 어떤 라인을 골라야 하는지 목적별로 정리했습니다.",
   keywords: ["테이크핏 맥스", "테이크핏 맥스 성분", "테이크핏 몬스터 성분", "테이크핏 종류", "테이크핏 맥스 몬스터 차이", "테이크핏 라인업", "테이크핏 프로", "테이크핏 익스트림"],
@@ -1244,6 +1246,7 @@ takefitLineupConfig.jsonLd = [articleJsonLd(takefitLineupConfig), faqJsonLd(take
 
 export const newcareAllproteinConfig: ComparePageConfig = {
   slug: "newcare-allprotein",
+  dataSection: { category: "drink", brand: "뉴케어", limit: 20 },
   title: "뉴케어 올프로틴 완전 분석",
   seoTitle: "뉴케어 올프로틴 완전 분석 | 41g·25g·식물성·워터 라인",
   description: "뉴케어 올프로틴 41g을 락토프리, 칼로리, 단백질 밀도 기준으로 분석하고 다른 40g대 제품과 무엇이 다른지 정리합니다.",
@@ -1498,6 +1501,7 @@ newcareAllproteinConfig.jsonLd = [articleJsonLd(newcareAllproteinConfig), faqJso
 
 export const newcare41Vs25Config: ComparePageConfig = {
   slug: "newcare-41g-vs-25g",
+  dataSection: { category: "drink", brand: "뉴케어", limit: 20 },
   title: "뉴케어 올프로틴 41g 성분·맛 비교 | 25g과 뭐가 다를까",
   description:
     "뉴케어 올프로틴 41g(초코·커피우유·고소한맛)과 25g 라인의 단백질, 칼로리, 당류 성분을 표로 비교합니다. 고단백 보충용인지 일상형인지 바로 정리합니다.",
@@ -1786,6 +1790,7 @@ newcareVsSellexConfig.jsonLd = [articleJsonLd(newcareVsSellexConfig), faqJsonLd(
 
 export const newcareFor50sConfig: ComparePageConfig = {
   slug: "newcare-for-50s",
+  dataSection: { category: "drink", brand: "뉴케어", limit: 20 },
   title: "뉴케어 50대 단백질 음료 가이드",
   description:
     "50대가 뉴케어 올프로틴을 볼 때 41g, 25g, 워터 중 무엇부터 보면 되는지 정리합니다. 부담감, 음용성, 보충 목적 기준으로 빠르게 판단할 수 있습니다.",
@@ -2001,6 +2006,7 @@ newcareWaterVsRtdConfig.jsonLd = [articleJsonLd(newcareWaterVsRtdConfig), faqJso
 
 export const newcareSugarGuideConfig: ComparePageConfig = {
   slug: "newcare-low-sugar-guide",
+  dataSection: { category: "drink", brand: "뉴케어", limit: 20 },
   title: "뉴케어 저당 선택 가이드",
   seoTitle: "뉴케어 저당 선택 가이드 | 당류·칼로리·단백질 밀도 비교",
   description:
@@ -2072,6 +2078,7 @@ newcareSugarGuideConfig.jsonLd = [articleJsonLd(newcareSugarGuideConfig), faqJso
 
 export const newcareBoxValueConfig: ComparePageConfig = {
   slug: "newcare-box-value",
+  dataSection: { category: "drink", brand: "뉴케어", limit: 20 },
   title: "뉴케어 박스가성비 가이드",
   seoTitle: "뉴케어 올프로틴 박스 가성비 | 개당 단가·단백질 1g당 비교",
   description:
@@ -2446,6 +2453,7 @@ danbaekVsHimuneConfig.jsonLd = [articleJsonLd(danbaekVsHimuneConfig), faqJsonLd(
 
 export const dryouLineupConfig: ComparePageConfig = {
   slug: "dryou-lineup",
+  dataSection: { category: "drink", brand: "닥터유", limit: 20 },
   title: "닥터유 제품 종류 전체 정리",
   seoTitle: "닥터유 단백질 제품 종류 정리 | PRO·40g 라인업 비교",
   description: "닥터유 PRO 단백질 드링크와 40g 라인업을 중심으로 어떤 제품이 어떤 목적에 맞는지 정리했습니다.",
@@ -2520,6 +2528,7 @@ dryouLineupConfig.jsonLd = [articleJsonLd(dryouLineupConfig), faqJsonLd(dryouLin
 
 export const danbaekLineupConfig: ComparePageConfig = {
   slug: "danbaek-lineup",
+  dataSection: { category: "drink", brand: "더단백", limit: 20 },
   title: "더단백 제품 종류 전체 정리",
   seoTitle: "더단백 제품 종류 전체 정리 | 드링크·워터·다크초코 라인업",
   description: "더단백 드링크, 다크초코, 더블초코, 워터 프로틴 라인업을 저나트륨 강점 중심으로 정리합니다.",
