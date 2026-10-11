@@ -180,7 +180,7 @@ export default function FlymillProteinShakePage() {
         </div>
       </main>
       <CategoryDataSection category="shake" mode="protein" brand="플라이밀" />
-      <GuideBuySection />
+      <GuideBuySection slugs={["flymill-proteinshake-peanut-butter-45", "flymill-proteinshake-choco-45", "flymill-proteinshake-banana-45"]} />
       <Footer />
     </div>
   );

@@ -164,7 +164,7 @@ export default function ProteinYogurtGuidePage() {
         </div>
       </main>
       <CategoryDataSection category="yogurt" mode="protein" />
-      <GuideBuySection />
+      <GuideBuySection slugs={["yopro-plain-150", "yoplait-protein-max-210", "yozm-cacao-granola-120"]} />
       <Footer />
     </div>
   );

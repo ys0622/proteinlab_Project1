@@ -145,7 +145,7 @@ export default function ProteoneProteinShakePage() {
         </div>
       </main>
       <CategoryDataSection category="shake" mode="protein" brand="프로티원" />
-      <GuideBuySection />
+      <GuideBuySection slugs={["proteone-proteinshake-choco-40", "proteone-proteinshake-coffee-40", "proteone-proteinshake-strawberry-40"]} />
       <Footer />
     </div>
   );

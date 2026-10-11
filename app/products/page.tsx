@@ -216,7 +216,7 @@ export default async function ProductsPage() {
               <ul className="mt-3 grid gap-x-6 gap-y-1.5 text-sm md:grid-cols-2">
                 {group.products.map((product) => (
                   <li key={product.slug} className="min-w-0">
-                    <Link href={`/product/${product.slug}`} className="block truncate hover:text-[var(--accent)]">
+                    <Link href={`/product/${product.slug}`} className="block break-keep hover:text-[var(--accent)]">
                       {product.brand} {product.name}
                       {product.proteinPerServing ? (
                         <span className="text-[var(--foreground-muted)]"> · 단백질 {product.proteinPerServing}g</span>

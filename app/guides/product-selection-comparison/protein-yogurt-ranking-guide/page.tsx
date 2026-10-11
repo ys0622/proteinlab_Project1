@@ -135,7 +135,7 @@ export default function ProteinYogurtRankingGuidePage() {
         </div>
       </main>
       <CategoryDataSection category="yogurt" mode="density" />
-      <GuideBuySection />
+      <GuideBuySection slugs={["yoplait-protein-max-210", "yopro-plain-150", "yozm-cacao-granola-120"]} />
       <Footer />
     </div>
   );

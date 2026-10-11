@@ -137,7 +137,7 @@ export default function LowSugarYogurtGuidePage() {
         </div>
       </main>
       <CategoryDataSection category="yogurt" mode="lowSugar" />
-      <GuideBuySection />
+      <GuideBuySection slugs={["yopro-plain-150", "yozm-low-sugar-matcha-100", "lookt-icelandic-thick-100"]} />
       <Footer />
     </div>
   );

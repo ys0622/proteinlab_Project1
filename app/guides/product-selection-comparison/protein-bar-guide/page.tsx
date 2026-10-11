@@ -131,7 +131,7 @@ export default function ProteinBarGuidePage() {
       </main>
       <CategoryDataSection category="bar" mode="protein" />
 
-      <GuideBuySection />
+      <GuideBuySection slugs={["kirkland-proteinbar-choco-brownie", "quest-nutrition-protein-bar-cookie-cream-60", "dryou-proteinbar-pro-3nuts-crunch"]} />
 
       <Footer />
     </div>

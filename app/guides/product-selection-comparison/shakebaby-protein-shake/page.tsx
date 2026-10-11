@@ -183,7 +183,7 @@ export default function ShakebabyProteinShakePage() {
         </div>
       </main>
       <CategoryDataSection category="shake" mode="protein" brand="쉐이크베이비" />
-      <GuideBuySection />
+      <GuideBuySection slugs={["shakebaby-proteinshake-choco-45", "shakebaby-proteinshake-strawberry-45", "shakebaby-proteinshake-matcha-45"]} />
       <Footer />
     </div>
   );

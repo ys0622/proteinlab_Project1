@@ -75,6 +75,7 @@ export default function MealReplacementProteinShakeGuidePage() {
         { question: "단백질쉐이크를 간식이나 야식 대신 먹어도 되나요?", answer: "가능합니다. 다만 식사에 추가하는 것이 아니라 기존 간식이나 야식을 대체해야 총칼로리 관리에 도움이 됩니다. 야식용은 저당 제품을 고르고 취침 직전 과량 섭취는 피하세요." },
         { question: "식사대용 쉐이크는 물과 우유 중 어디에 타야 하나요?", answer: "칼로리를 낮추려면 물, 포만감과 단백질을 보완하려면 우유나 무가당 두유가 적합합니다. 우유를 넣으면 제품 표기 영양성분보다 실제 섭취 칼로리가 높아집니다." },
       ]}
+      buyProductSlugs={["itthefit-proteinshake-misugaru-40", "flymill-proteinshake-peanut-butter-45", "takefit-breadmeal-shake-choco-brownie-45"]}
       />
     </>
   );

@@ -114,7 +114,7 @@ export default function LabNosheLimShakePage() {
         </div>
       </main>
       <CategoryDataSection category="shake" mode="protein" brand="랩노쉬" />
-      <GuideBuySection />
+      <GuideBuySection slugs={["labnosh-slimshake-double-choco-45", "labnosh-slimshake-injeolmi-45", "labnosh-slimshake-goguma-45"]} />
       <Footer />
     </div>
   );

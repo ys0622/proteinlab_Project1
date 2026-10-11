@@ -71,6 +71,7 @@ export default function PostWorkoutProteinShakeGuidePage() {
         { question: "운동 후 쉐이크에서 당류가 왜 중요한가요?", answer: "당류가 높으면 불필요한 열량이 늘어나 운동 효과를 상쇄할 수 있습니다. 운동 후 보충 목적이라면 고단백·저당 기준을 같이 보는 것이 좋습니다." },
         { question: "운동 후 단백질쉐이크는 물과 우유 중 무엇이 좋나요?", answer: "가볍고 빠른 보충이 목적이면 물이 편하고, 추가 단백질과 에너지가 필요하면 우유가 맞습니다. 다이어트 중이라면 우유로 늘어나는 칼로리와 당류까지 함께 계산하세요." },
       ]}
+      buyProductSlugs={["itthefit-proteinshake-misugaru-40", "allthebetter-proteinshake-low-sugar-chocolate-mousse-45", "flymill-proteinshake-peanut-butter-45"]}
       />
     </>
   );

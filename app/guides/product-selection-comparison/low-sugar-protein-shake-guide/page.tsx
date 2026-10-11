@@ -9,15 +9,19 @@ export const metadata = buildShakeGuideMetadata(
 
 export default function LowSugarProteinShakeGuidePage() {
   const jsonLd = buildGuideJsonLd({
-    title: "1단계",
-    description: "",
+    title: "저당 단백질 쉐이크 추천 | 당류 3g 이하 제품 비교",
+    description: "저당 단백질 쉐이크는 당류 3g 이하부터 좁히는 게 실용적입니다. 프로티원·플라이밀과 신규 매일한끼·테이크핏·스포식스 제품을 비교해보세요.",
     url: "https://proteinlab.kr/guides/product-selection-comparison/low-sugar-protein-shake-guide",
     datePublished: "2026-03-01",
     dateModified: "2026-10-01",
   });
 
   return (
-    <ShakeGuidePage
+    <>
+      {jsonLd.map((item, index) => (
+        <script key={index} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(item) }} />
+      ))}
+      <ShakeGuidePage
       title="저당 단백질 쉐이크"
       description="저당 단백질 쉐이크를 찾는 이유는 보통 비슷합니다. 당류 부담은 줄이고 싶지만, 단백질은 충분히 챙기고 싶기 때문입니다. 문제는 당류만 낮고 전체 성분 균형이 아쉬운 제품도 있다는 점입니다. 그래서 프로티원, 플라이밀, 단백하니처럼 숫자 차이가 분명한 브랜드를 같이 보면 실제 선택이 훨씬 쉬워집니다."
       breadcrumbLabel="저당 단백질 쉐이크"
@@ -72,6 +76,8 @@ export default function LowSugarProteinShakeGuidePage() {
         { question: "저당이라고 표시된 제품은 모두 믿어도 되나요?", answer: "저당 표기 기준이 제품마다 다를 수 있습니다. 반드시 영양성분표에서 당류 절대값(g)을 직접 확인하는 것이 중요합니다." },
         { question: "단백질이 높으면서 당류도 낮은 제품이 있나요?", answer: "있습니다. 잇더핏 더블초코(당류 0.6g·단백질 21.3g), 프로티원 초코(당류 1g·단백질 23g) 등이 고단백·저당 기준을 동시에 만족하는 제품입니다." },
       ]}
-    />
+      buyProductSlugs={["itthefit-proteinshake-misugaru-40", "allthebetter-proteinshake-low-sugar-chocolate-mousse-45", "allthebetter-proteinshake-low-sugar-17grain-misugaru-45"]}
+      />
+    </>
   );
 }

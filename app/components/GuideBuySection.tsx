@@ -1,7 +1,7 @@
 import AffiliateDisclosure from "./AffiliateDisclosure";
 import TrackedCoupangLink from "./TrackedCoupangLink";
 import { getProductBySlug } from "@/app/data/products";
-import { getCoupangRedirectHref } from "@/app/lib/purchaseLinks";
+import { getCoupangRedirectHref, hasNoPurchasableCoupangLink } from "@/app/lib/purchaseLinks";
 import { formatProductLabel } from "@/app/lib/productLabel";
 import { GUIDE_BUY_PICKS, type GuideBuyTopic } from "@/app/lib/guideBuyPicks";
 
@@ -17,7 +17,7 @@ export default function GuideBuySection({
   const picks = topic ? GUIDE_BUY_PICKS[topic] : undefined;
   const targetSlugs = slugs.length > 0 ? slugs : picks?.slugs ?? [];
   const caption = slugs.length > 0 ? undefined : picks?.caption;
-  const products = targetSlugs.map((slug) => getProductBySlug(slug)).filter((product) => product?.coupangUrl);
+  const products = targetSlugs.map((slug) => getProductBySlug(slug)).filter((product) => product && !hasNoPurchasableCoupangLink(product.coupangUrl, product.slug));
   if (products.length === 0) return null;
 
   const content = (

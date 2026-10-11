@@ -153,7 +153,7 @@ export default function GreekYogurtGuidePage() {
         </div>
       </main>
       <CategoryDataSection category="yogurt" mode="protein" />
-      <GuideBuySection />
+      <GuideBuySection slugs={["yozm-low-sugar-matcha-100", "yozm-apple-cinnamon-130", "greekday-signature-100"]} />
       <Footer />
     </div>
   );

@@ -137,7 +137,7 @@ export default function DrinkingYogurtGuidePage() {
         </div>
       </main>
       <CategoryDataSection category="yogurt" mode="protein" />
-      <GuideBuySection />
+      <GuideBuySection slugs={["yoplait-protein-plain-210", "yoplait-protein-max-210", "maeil-bio-greek-drink-banana-190"]} />
       <Footer />
     </div>
   );

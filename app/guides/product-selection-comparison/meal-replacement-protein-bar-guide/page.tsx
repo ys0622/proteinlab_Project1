@@ -152,7 +152,7 @@ export default function MealReplacementProteinBarGuidePage() {
         </div>
       </main>
       <CategoryDataSection category="bar" mode="density" />
-      <GuideBuySection />
+      <GuideBuySection slugs={["dryou-proteinbar-pro-3nuts-crunch", "kirkland-proteinbar-choco-chip-cookie-dough-60", "quest-nutrition-protein-bar-deep-dish-cookie-cream-60"]} />
       <Footer />
     </div>
   );

@@ -143,7 +143,7 @@ export default function UnsweetenedGreekYogurtGuidePage() {
         </div>
       </main>
       <CategoryDataSection category="yogurt" mode="lowSugar" />
-      <GuideBuySection />
+      <GuideBuySection slugs={["maeil-bio-greek-unsweetened-150", "yozm-low-sugar-matcha-100", "greekday-signature-100"]} />
       <Footer />
     </div>
   );

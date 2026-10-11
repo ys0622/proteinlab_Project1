@@ -160,7 +160,7 @@ export default function FlymillVsDanbaekhaniPage() {
           </section>
         </div>
       </main>
-      <GuideBuySection />
+      <GuideBuySection slugs={["flymill-proteinshake-peanut-butter-45", "danbaekhani-proteinshake-signature-40", "flymill-proteinshake-choco-45"]} />
       <Footer />
     </div>
   );

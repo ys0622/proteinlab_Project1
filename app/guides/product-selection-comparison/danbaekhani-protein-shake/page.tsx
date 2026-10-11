@@ -186,7 +186,7 @@ export default function DanbaekhaniProteinShakePage() {
         </div>
       </main>
       <CategoryDataSection category="shake" mode="protein" brand="단백하니" />
-      <GuideBuySection />
+      <GuideBuySection slugs={["danbaekhani-proteinshake-signature-40", "danbaekhani-proteinshake-choco-40", "danbaekhani-proteinshake-matcha-40"]} />
       <Footer />
     </div>
   );

@@ -161,7 +161,7 @@ export default function ShakebabyVsDanbaekhaniPage() {
           </section>
         </div>
       </main>
-      <GuideBuySection />
+      <GuideBuySection slugs={["shakebaby-proteinshake-choco-45", "danbaekhani-proteinshake-choco-40", "shakebaby-proteinshake-matcha-45"]} />
       <Footer />
     </div>
   );

@@ -72,6 +72,7 @@ export default function ProteinDrinkVsProteinShakePage() {
         { question: "파우치형 쉐이크는 어떻게 먹나요?", answer: "파우치에 든 분말을 물이나 우유에 타서 마십니다. 물에 타면 칼로리가 낮고, 우유에 타면 단백질과 칼로리가 추가됩니다. 목적에 따라 선택하면 됩니다." },
         { question: "단백질 음료와 쉐이크의 가격 차이가 있나요?", answer: "가격은 구매 채널과 묶음 수량에 따라 달라집니다. RTD는 편의성이, 파우치형은 묶음 구매 단가가 장점일 수 있으므로 1회 섭취 기준 가격을 비교하세요." },
       ]}
+      buyProductSlugs={["proteone-proteinshake-choco-40", "itthefit-proteinshake-misugaru-40", "takefit-breadmeal-shake-choco-brownie-45"]}
       />
     </>
   );
