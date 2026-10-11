@@ -100,6 +100,7 @@ const commonRelated: RelatedGuideLink[] = [
 
 export const selexVsHimuneConfig: ComparePageConfig = {
   slug: "selex-vs-himune",
+  dataSection: [{ category: "drink", brand: "셀렉스", limit: 10 }, { category: "drink", brand: "하이뮨", limit: 10 }],
   title: "셀렉스 vs 하이뮨 | 뭐가 더 나을까? 단백질 음료 비교 2026",
   description: "셀렉스와 하이뮨 대표 RTD 단백질 음료를 단백질, 당류, 칼로리, 나트륨 기준으로 직접 비교했습니다. 운동 후, 다이어트, 일상용 중 어디에 더 맞는지 빠르게 정리합니다.",
   keywords: ["셀렉스 하이뮨 비교", "셀렉스 vs 하이뮨", "하이뮨 셀렉스 차이", "단백질 음료 비교"],
@@ -310,6 +311,7 @@ proteinDensityRankingConfig.jsonLd = [articleJsonLd(proteinDensityRankingConfig)
 
 export const selexVsTakefitVsHimuneConfig: ComparePageConfig = {
   slug: "selex-vs-takefit-vs-himune",
+  dataSection: [{ category: "drink", brand: "셀렉스", limit: 8 }, { category: "drink", brand: "테이크핏", limit: 8 }, { category: "drink", brand: "하이뮨", limit: 8 }],
   title: "셀렉스 vs 테이크핏 vs 하이뮨 비교 | 단백질·당류·칼로리 차이",
   description: "셀렉스 프로핏, 테이크핏 맥스, 하이뮨 액티브의 단백질·당류·칼로리·나트륨을 한 표로 비교하고 다이어트, 운동 후, 일상용 선택 기준을 정리합니다.",
   keywords: ["셀렉스 테이크핏 하이뮨 비교", "단백질 음료 3종 비교", "셀렉스 vs 테이크핏 vs 하이뮨", "셀렉스 테이크핏 차이", "테이크핏 하이뮨 차이"],
@@ -822,6 +824,7 @@ const takefitMonsterChocobanana = getDrinkProduct("takefit-monster-chocobanana-3
 
 export const selexsLineupConfig: ComparePageConfig = {
   slug: "selexs-lineup",
+  dataSection: { category: "drink", brand: "셀렉스", limit: 20 },
   title: "셀렉스 단백질음료 추천 (2026) | 프로핏·락토프리·당솔브 비교",
   description: "셀렉스 프로핏, 웨이프로핏, 락토프리, 로우슈거, 당솔브의 단백질·당류·칼로리를 비교해 운동 후·저당·유당 부담 목적별 추천을 정리했습니다.",
   keywords: ["셀렉스 종류", "셀렉스 라인업", "셀렉스 프로핏 차이", "셀렉스 코어프로틴", "셀렉스 제품 비교", "셀렉스 당솔브"],
@@ -1573,6 +1576,7 @@ newcare41Vs25Config.jsonLd = [articleJsonLd(newcare41Vs25Config), faqJsonLd(newc
 
 export const newcareWaterConfig: ComparePageConfig = {
   slug: "newcare-protein-water-guide",
+  dataSection: { category: "drink", brand: "뉴케어", limit: 12 },
   title: "뉴케어 올프로틴 워터 정리",
   seoTitle: "뉴케어 올프로틴 워터 정리 | 단백질·당류·칼로리 비교",
   description:
@@ -1648,6 +1652,7 @@ newcareWaterConfig.jsonLd = [articleJsonLd(newcareWaterConfig), faqJsonLd(newcar
 
 export const newcareVsHymuneConfig: ComparePageConfig = {
   slug: "newcare-vs-hymune",
+  dataSection: [{ category: "drink", brand: "뉴케어", limit: 10 }, { category: "drink", brand: "하이뮨", limit: 10 }],
   title: "뉴케어 41g vs 하이뮨 10g 차이 (2026) | 부모님 단백질음료 비교",
   description:
     "뉴케어 올프로틴 41g과 하이뮨 프로틴 밸런스 10g의 용량·칼로리·당류를 비교해 부모님과 50대가 고단백형과 일상 보완형을 고르는 법을 정리했습니다.",
@@ -1720,6 +1725,7 @@ newcareVsHymuneConfig.jsonLd = [articleJsonLd(newcareVsHymuneConfig), faqJsonLd(
 
 export const newcareVsSellexConfig: ComparePageConfig = {
   slug: "newcare-vs-sellex",
+  dataSection: [{ category: "drink", brand: "뉴케어", limit: 10 }, { category: "drink", brand: "셀렉스", limit: 10 }],
   title: "뉴케어 vs 셀렉스 단백질 음료 비교",
   description:
     "뉴케어 올프로틴과 셀렉스 프로핏을 단백질, 당류, 칼로리, 락토프리 관점으로 비교합니다. 고단백 보충형과 대중형 RTD 차이를 빠르게 정리합니다.",
@@ -2237,6 +2243,7 @@ proteinDrinkByContentConfig.jsonLd = [articleJsonLd(proteinDrinkByContentConfig)
 
 export const takefitVsHimuneConfig: ComparePageConfig = {
   slug: "takefit-vs-himune",
+  dataSection: [{ category: "drink", brand: "테이크핏", limit: 10 }, { category: "drink", brand: "하이뮨", limit: 10 }],
   title: "테이크핏 vs 하이뮨 차이 | 단백질·당류·칼로리 비교",
   description: "테이크핏 맥스와 하이뮨 액티브의 단백질·당류·칼로리·나트륨·밀도를 비교하고 운동 후, 다이어트, 일상용으로 무엇이 맞는지 정리합니다.",
   keywords: ["테이크핏 하이뮨 비교", "테이크핏 vs 하이뮨", "테이크핏 하이뮨 차이", "테이크핏 하이뮨 성분", "단백질 음료 비교"],
@@ -2315,6 +2322,7 @@ takefitVsHimuneConfig.jsonLd = [articleJsonLd(takefitVsHimuneConfig), faqJsonLd(
 
 export const danbaekVsSelexsConfig: ComparePageConfig = {
   slug: "danbaek-vs-selexs",
+  dataSection: [{ category: "drink", brand: "더단백", limit: 10 }, { category: "drink", brand: "셀렉스", limit: 10 }],
   title: "더단백 vs 셀렉스 비교",
   seoTitle: "더단백 vs 셀렉스 프로핏 비교 | 칼로리·당류·나트륨",
   description: "더단백 드링크와 셀렉스 프로핏 대표 제품을 칼로리, 당류, 지방, 나트륨 기준으로 직접 비교합니다.",
@@ -2385,6 +2393,7 @@ danbaekVsSelexsConfig.jsonLd = [articleJsonLd(danbaekVsSelexsConfig), faqJsonLd(
 
 export const danbaekVsHimuneConfig: ComparePageConfig = {
   slug: "danbaek-vs-himune",
+  dataSection: [{ category: "drink", brand: "더단백", limit: 10 }, { category: "drink", brand: "하이뮨", limit: 10 }],
   title: "더단백 vs 하이뮨 차이 | 단백질·당류·칼로리 비교",
   description: "더단백 드링크와 하이뮨 액티브의 단백질·당류·칼로리·나트륨을 한 표로 비교하고 다이어트, 운동 후, 일상용 선택 기준을 정리합니다.",
   keywords: ["더단백 하이뮨 비교", "더단백 vs 하이뮨 차이", "더단백 하이뮨 성분", "단백질 음료 비교"],
