@@ -287,9 +287,6 @@ function ProductListWithFiltersInner(props: ProductListWithFiltersInnerProps) {
           : shakeFilters;
 
   const curationFiltered = useMemo(() => {
-    if (productType === "yogurt") {
-      return products;
-    }
     return applyCurationToCategoryProducts(products, productType, curationSlug);
   }, [curationSlug, productType, products]);
 
