@@ -14,6 +14,7 @@ export default function MpiDrinkList() {
   const groups = (mpiDrinks.groups as Group[]).filter((group) => group.items.length > 0);
   if (groups.length === 0) return null;
   const total = groups.reduce((sum, group) => sum + group.items.length, 0);
+  const stats = mpiDrinks.stats;
 
   return (
     <section className="rounded-2xl border border-[#e2ebe4] bg-white px-5 py-5" aria-labelledby="mpi-drinks-title">
@@ -25,6 +26,23 @@ export default function MpiDrinkList() {
         {mpiDrinks.source}에서 제조원이 신고한 원재료명에 &quot;분리유단백&quot;(분리우유단백, MPI)이 적힌 ProteinLab 등록 음료 {total}종을
         제품군별로 모았습니다. {mpiDrinks.checkedAt} 기준으로 확인했습니다.
       </p>
+      <div className="mt-4 rounded-xl border border-[#e8e6e3] bg-[#FFFDF8] px-4 py-3">
+        <h3 className="text-sm font-bold text-[var(--foreground)]">조사 기준</h3>
+        <ul className="mt-2 list-disc space-y-1 pl-5 text-xs leading-5 text-[var(--foreground-muted)]">
+          <li>
+            <span className="font-semibold text-[var(--foreground)]">대상:</span> ProteinLab에 등록된 단백질 음료 {stats.studied}종입니다. 시중에 판매되는 모든 제품이 아니라, 이 사이트에 정보가 있는 제품만 조사했습니다.
+          </li>
+          <li>
+            <span className="font-semibold text-[var(--foreground)]">자료:</span> 식약처 품목제조보고(원재료)에서 제품의 브랜드와 맛이 품목명과 일치하는 신고를 찾았습니다.
+          </li>
+          <li>
+            <span className="font-semibold text-[var(--foreground)]">포함 기준:</span> 일치한 신고의 원재료명에 &quot;분리유단백&quot;(분리우유단백)이 적혀 있고, 제조원이 여럿이면 모든 신고에서 같을 때만 넣었습니다. 이 표의 {stats.included}종입니다.
+          </li>
+          <li>
+            <span className="font-semibold text-[var(--foreground)]">제외:</span> 신고는 확인됐지만 MPI 표기가 없는 제품 {stats.notMpiConfirmed}종, 제조원마다 원재료가 달랐던 제품 {stats.mixedMakers}종, 제품명이 일부만 일치한 제품 {stats.partialName}종, 신고에서 찾지 못한 제품 {stats.unmatched}종은 표에서 뺐습니다. 찾지 못했거나 일부만 일치한 제품은 MPI 여부를 알 수 없는 상태입니다.
+          </li>
+        </ul>
+      </div>
       <div className="mt-4 overflow-x-auto">
         <table className="w-full min-w-[560px] border-collapse text-left text-sm">
           <thead>

@@ -225,5 +225,13 @@
       ],
       "reportDate": "2026-06-17"
     }
-  ]
+  ],
+  "stats": {
+    "studied": 135,
+    "included": 27,
+    "mixedMakers": 6,
+    "unmatched": 37,
+    "partialName": 8,
+    "notMpiConfirmed": 57
+  }
 }
