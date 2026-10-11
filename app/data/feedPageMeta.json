@@ -1,0 +1,234 @@
+{
+  "/products": {
+    "title": "단백질 제품 404종 비교 — 브랜드·카테고리·목적별로 찾기",
+    "description": "단백질 음료, 바, 요거트, 쉐이크 404종을 브랜드, 단백질 함량, 당류, 칼로리, 목적별로 바로 비교해보세요. 저당, 40g, 다이어트, 50대 기준도 빠르게 찾을 수 있습니다."
+  },
+  "/ranking": {
+    "title": "단백질 랭킹 2026 — 밀도·다이어트·퍼포먼스 기준 순위",
+    "description": "단백질 음료, 바, 요거트, 쉐이크를 단백질 밀도, 다이어트 점수, 퍼포먼스 기준으로 계산한 순위입니다. 카테고리별로 상위 제품을 한눈에 확인하세요."
+  },
+  "/trending": {
+    "title": "최근 7일 인기 단백질 제품 순위",
+    "description": "최근 7일 상세페이지 조회수에 단백질 밀도·당류·칼로리 기준을 함께 반영한 단백질 음료, 바, 요거트, 쉐이크 인기 순위를 카테고리별로 확인해보세요."
+  },
+  "/drinks": {
+    "title": "단백질 음료 추천 비교 135종 — 저당·고단백·40g 기준 2026",
+    "description": "단백질 음료 135종을 단백질 함량, 당류, 칼로리, 단백질 밀도 기준으로 비교합니다. 셀렉스, 하이뮨, 뉴케어, 닥터유, 테이크핏 같은 대표 제품을 성분 데이터로 바로 좁혀보세요."
+  },
+  "/bars": {
+    "title": "단백질 바 추천 비교 100종 — 고단백·저당 성분 기준 2026",
+    "description": "단백질 바 100개를 단백질 함량, 당류, 칼로리, 중량 기준으로 비교합니다. 운동보충·저당·식사보완 목적에 맞는 제품을 성분 데이터로 바로 선택하세요."
+  },
+  "/yogurt": {
+    "title": "단백질 요거트 추천 비교 57종 — 그릭·드링킹·저당 기준 2026",
+    "description": "단백질 요거트 57개를 단백질 함량, 당류, 칼로리, 단백질 밀도 기준으로 비교합니다. 그릭요거트, 드링킹 요거트, 대용량 요거트 추천과 순위까지 한 번에 확인하세요."
+  },
+  "/shake": {
+    "title": "단백질 쉐이크 추천 비교 112종 — 식사대용·저당·고단백 기준 2026",
+    "description": "단백질 쉐이크 112종을 단백질 총량, 당류, 칼로리, 식사대용 적합도 기준으로 비교합니다. 식사대용, 다이어트, 운동 후 보충용 쉐이크를 성분 데이터로 바로 좁혀보세요."
+  },
+  "/guides/basics/daily-requirement": {
+    "title": "하루 단백질 권장량 | 목적·체중·연령별 정리",
+    "description": "일반 성인부터 운동 중인 사람, 고령층까지 하루 단백질 권장량과 분산 섭취 원칙을 정리합니다."
+  },
+  "/guides/basics/deficiency-symptoms": {
+    "title": "단백질이 부족하면 몸에 어떤 신호가 올까",
+    "description": "근력 감소, 피로, 면역 저하, 상처 회복 지연까지. 단백질 결핍 때 자주 보이는 신호를 정리합니다."
+  },
+  "/guides/basics/digestion": {
+    "title": "단백질 소화와 흡수 메커니즘 | 입에서 근육까지",
+    "description": "단백질이 입, 위, 소장을 거치며 아미노산으로 분해되고 흡수되는 과정과 원료별 흡수 특성 차이를 정리합니다."
+  },
+  "/guides/basics/immunity-hormone": {
+    "title": "단백질과 면역·호르몬 | 항체·효소·인슐린까지",
+    "description": "단백질이 근육만이 아니라 항체, 호르몬, 효소 합성에 어떻게 관여하는지 면역과 대사 관점에서 정리합니다."
+  },
+  "/guides/basics/muscle": {
+    "title": "근육 성장에 단백질이 필요한 이유",
+    "description": "근단백질 합성, 운동 후 회복, 하루 권장량까지. 근육과 단백질의 관계를 기초 기준으로 정리합니다."
+  },
+  "/guides/fitness-lifestyle/sports-nutrition-guide": {
+    "title": "운동 목적별 단백질 제품 선택 기준 | 벌크업·다이어트·회복",
+    "description": "벌크업, 체중 관리, 회복 중심 운동까지 목적에 맞는 단백질 제품을 고르는 기준을 단백질 함량, 당류, 칼로리 중심으로 정리했습니다."
+  },
+  "/guides/market-insights/ingredient-trends": {
+    "title": "단백질 성분 트렌드",
+    "description": "저당, 워터형, 식물성, 고단백 등 주요 성분 트렌드가 왜 중요해졌는지 정리합니다."
+  },
+  "/guides/product-selection-comparison/diet-protein-drink-guide": {
+    "title": "다이어트 단백질 음료 기준 | 저당·저칼로리·단백질 비교",
+    "description": "다이어트용 단백질 음료를 고를 때 당류, 칼로리, 단백질, 단백질 밀도를 어떤 순서로 비교해야 하는지 ProteinLab 기준으로 정리합니다."
+  },
+  "/guides/product-selection-comparison/low-sugar-protein-drink-guide": {
+    "title": "저당 단백질 음료 추천 기준 | 당류 낮은 RTD 비교",
+    "description": "저당 단백질 음료를 고를 때 당류 컷, 단백질 함량, 칼로리, 단백질 밀도를 어떤 순서로 확인해야 하는지 정리합니다."
+  },
+  "/guides/product-selection-comparison/meal-replacement-protein-bar-guide": {
+    "title": "식사대용 단백질 바 기준 | 포만감·칼로리·단백질 비교",
+    "description": "식사대용 단백질 바를 고를 때 포만감, 칼로리, 단백질, 당류를 어떤 순서로 확인해야 하는지 정리합니다."
+  },
+  "/guides/product-selection-comparison/nutrition-comparison": {
+    "title": "영양성분 비교 보는 법 | 단백질·당류·칼로리 해석 가이드",
+    "description": "단백질, 당류, 칼로리, 단백질 바를 어떤 순서로 읽어야 하는지 정리했습니다. 운동 후, 다이어트, 식사 보완 목적별 비교 기준을 빠르게 확인해보세요."
+  },
+  "/guides/product-selection-comparison/nutrition-criteria": {
+    "title": "영양성분 기준 정리 | 단백질 제품 비교할 때 먼저 볼 숫자",
+    "description": "단백질 제품을 고를 때 먼저 확인할 단백질, 당류, 칼로리, 단백질 바 기준을 목적별로 정리했습니다. 비교 전에 최소 기준부터 빠르게 잡아보세요."
+  },
+  "/guides/product-selection-comparison/protein-bar-guide": {
+    "title": "단백질 바 선택 가이드 | 식사 보완·간식형 비교 기준",
+    "description": "단백질 바를 간식형, 식사 보완형, 운동 후 보충형으로 나눠 보고 당류, 칼로리, 단백질 밀도를 어떤 기준으로 비교해야 하는지 정리합니다."
+  },
+  "/guides/product-selection-comparison/protein-yogurt-ranking-guide": {
+    "title": "단백질 요거트 순위 보는 법 | 점수·등급 기준 해석",
+    "description": "단백질 요거트 순위에서 단백질 밀도, 다이어트, 퍼포먼스 점수를 어떻게 읽어야 하는지 정리합니다."
+  },
+  "/guides/product-selection-comparison/ranking-content": {
+    "title": "순위와 점수 보는 법 | 단백질 제품 랭킹 해석 가이드",
+    "description": "단백질 제품 순위와 점수가 어떤 기준으로 계산되는지, 랭킹을 어떻게 읽어야 하는지 정리했습니다. 저당, 다이어트, 운동 후 기준까지 함께 확인해보세요."
+  },
+  "/guides/product-selection-comparison/recommendation-lists": {
+    "title": "추천·큐레이션·비교 페이지 차이 | 어디부터 봐야 할까",
+    "description": "추천, 큐레이션, Picks, 비교 페이지가 각각 어떤 상황에서 유용한지 정리했습니다. 단백질 제품을 고를 때 어디부터 봐야 할지 빠르게 확인해보세요."
+  },
+  "/guides/product-selection-comparison/unsweetened-greek-yogurt-guide": {
+    "title": "무가당 그릭요거트 추천 기준 | 당류·단백질 밀도 비교",
+    "description": "무가당 그릭요거트를 고를 때 당류, 단백질 밀도, 칼로리, 총용량 기준을 어떻게 함께 읽어야 하는지 정리합니다."
+  },
+  "/guides/running/basics": {
+    "title": "러너를 위한 단백질 가이드 | 필요량·타이밍·종류",
+    "description": "러닝·마라톤 훈련 중 단백질 필요량, 섭취 타이밍, 단백질 종류별 활용법을 과학적 근거로 정리했습니다."
+  },
+  "/guides/running/race-week": {
+    "title": "마라톤 레이스 주간 영양 전략 | 카보로딩부터 회복까지",
+    "description": "대회 전 탄수화물 로딩, 경기 당일 식단, 레이스 후 회복 영양 전략을 단계별로 정리했습니다."
+  },
+  "/guides/tools": {
+    "title": "하루 단백질 섭취량 계산기",
+    "description": "체중과 활동량을 기준으로 하루 단백질 권장량을 계산해보세요. ProteinLab 계산기로 나에게 맞는 단백질 섭취 기준을 빠르게 확인할 수 있습니다."
+  },
+  "/guides/product-selection-comparison/danbaekhani-protein-shake": {
+    "title": "단백하니 단백질 쉐이크 추천 | 시그니처·초코·말차 비교 2026",
+    "description": "단백하니 단백질 쉐이크를 시그니처, 초코, 말차 기준으로 직접 비교했습니다. 저당, 칼로리, 단백질 밀도를 함께 보며 어떤 맛이 더 잘 맞는지 빠르게 확인해보세요."
+  },
+  "/guides/product-selection-comparison/flymill-protein-shake": {
+    "title": "플라이밀 단백질 쉐이크 추천 | 피넛버터·초코·쿠키앤크림 비교 2026",
+    "description": "플라이밀 단백질 쉐이크를 피넛버터, 초코, 쿠키앤크림 기준으로 직접 비교했습니다. 고단백, 저당, 입문용 중 어떤 맛이 더 맞는지 빠르게 확인해보세요."
+  },
+  "/guides/product-selection-comparison/flymill-vs-danbaekhani": {
+    "title": "플라이밀 vs 단백하니 쉐이크 비교 | 단백질·당류·칼로리 기준 2026",
+    "description": "플라이밀 피넛버터와 단백하니 시그니처·초코·말차를 단백질, 당류, 칼로리, 단백질 밀도 기준으로 직접 비교했습니다. 고단백과 저칼로리 중 무엇이 더 맞는지 바로 확인해보세요."
+  },
+  "/guides/product-selection-comparison/labnoshe-slim-shake": {
+    "title": "랩노쉬 슬림쉐이크 추천 | 저당·식사대용 기준 정리 2026",
+    "description": "랩노쉬 슬림쉐이크를 저당, 식사대용, 다이어트 기준으로 직접 정리했습니다. 당류와 식이섬유를 같이 보면서 한 끼 대체용으로 맞는지 빠르게 확인해보세요."
+  },
+  "/guides/product-selection-comparison/proteone-protein-shake": {
+    "title": "프로티원 단백질 쉐이크 추천 | 초코·커피 성분 비교 2026",
+    "description": "프로티원 단백쉐이크 초코맛과 커피맛을 단백질, 당류, 칼로리, 단백질 밀도 기준으로 직접 비교했습니다. 저칼로리와 고단백 중 어디에 더 강한지 빠르게 확인해보세요."
+  },
+  "/guides/product-selection-comparison/shakebaby-protein-shake": {
+    "title": "쉐이크베이비 단백질 쉐이크 추천 | 초코·딸기·말차·곡물·스윗콘 비교 2026",
+    "description": "쉐이크베이비 단백질 쉐이크 5종을 초코, 딸기, 말차, 곡물, 스윗콘 플레이크 기준으로 직접 비교했습니다. 단백질, 당류, 칼로리, 단백질 밀도를 함께 보며 어떤 맛이 더 잘 맞는지 빠르게 확인해보세요."
+  },
+  "/guides/product-selection-comparison/shakebaby-vs-danbaekhani": {
+    "title": "쉐이크베이비 vs 단백하니 쉐이크 비교 | 단백질·당류·칼로리 기준 2026",
+    "description": "쉐이크베이비 초코·말차와 단백하니 시그니처·초코·말차를 단백질, 당류, 칼로리, 단백질 밀도 기준으로 직접 비교했습니다. 맛 선택 폭과 칼로리 효율 중 무엇이 더 맞는지 바로 확인해보세요."
+  },
+  "/guides/product-selection-comparison/drinking-yogurt-guide": {
+    "title": "드링킹 단백질 요거트 추천 기준 | 마시는 요거트 비교",
+    "description": "드링킹 단백질 요거트를 비교할 때 용량, 단백질 함량, 당류, 휴대성을 어떻게 함께 봐야 하는지 정리합니다."
+  },
+  "/guides/product-selection-comparison/greek-yogurt-guide": {
+    "title": "그릭요거트 추천 기준 | 단백질 함량·밀도 비교",
+    "description": "그릭요거트를 고를 때 단백질 함량, 단백질 밀도, 당류, 총용량 차이를 어떻게 함께 읽어야 하는지 정리합니다."
+  },
+  "/guides/product-selection-comparison/low-sugar-yogurt-guide": {
+    "title": "저당 단백질 요거트 추천 기준 | 당류 5g 이하 비교",
+    "description": "저당 단백질 요거트를 고를 때 당류 5g 이하 기준과 단백질 함량, 칼로리, 제품 유형을 함께 보는 방법을 정리합니다."
+  },
+  "/guides/product-selection-comparison/protein-yogurt-guide": {
+    "title": "단백질 요거트 추천 기준 | 그릭·드링킹·대용량 비교",
+    "description": "단백질 요거트를 고를 때 그릭, 드링킹, 대용량 제품을 어떻게 나눠 보고 단백질 함량, 당류, 칼로리를 어떤 기준으로 비교해야 하는지 정리합니다."
+  },
+  "/guides/product-selection-comparison/low-sugar-protein-shake-guide": {
+    "title": "저당 단백질 쉐이크 추천 | 당류 3g 이하 제품 비교",
+    "description": "저당 단백질 쉐이크는 당류 3g 이하부터 좁히는 게 실용적입니다. 프로티원·플라이밀과 신규 매일한끼·테이크핏·스포식스 제품을 비교해보세요."
+  },
+  "/guides/product-selection-comparison/meal-replacement-protein-shake-guide": {
+    "title": "식사대용 단백질쉐이크 추천 | 아침·간식·야식 기준 비교",
+    "description": "식사대용 단백질쉐이크를 단백질·칼로리·식이섬유로 비교하고 바쁜 아침, 간식과 야식 대체에 맞는 선택 기준을 정리했습니다."
+  },
+  "/guides/product-selection-comparison/post-workout-protein-shake-guide": {
+    "title": "운동 후 단백질쉐이크 추천 | 운동 전후·단백질 밀도 비교",
+    "description": "운동 전후 단백질쉐이크를 단백질 밀도·당류·칼로리로 비교하고 물과 우유 중 어떤 방식이 목적에 맞는지 정리했습니다."
+  },
+  "/guides/product-selection-comparison/protein-drink-vs-protein-shake": {
+    "title": "단백질 음료 vs 쉐이크 차이 | RTD·파우치 용도 비교",
+    "description": "RTD 단백질 음료와 파우치형 쉐이크의 형태·편의성·포만감 차이를 비교하고 운동 후 보충과 식사대용 중 어떤 상황에 맞는지 정리했습니다."
+  },
+  "/guides/fitness-lifestyle/running-protein-category-guide": {
+    "title": "러닝하는 사람은 음료·바·쉐이크 중 뭐가 맞을까 | 상황별 단백질 선택법",
+    "description": "러닝 전후와 출근 전, 장거리 훈련일, 가벼운 회복일에 단백질 음료, 바, 쉐이크 중 무엇이 맞는지 상황별로 정리합니다."
+  },
+  "/guides/product-selection-comparison/protein-drink-taste-tips": {
+    "title": "단백질 음료 맛없다면? 맛있게 마시는 방법과 제품 추천",
+    "description": "단백질 음료가 맛없게 느껴지는 이유와 더 맛있게 마시는 방법, 입문자가 바꾸기 쉬운 제품 추천을 정리했습니다."
+  },
+  "/guides/product-selection-comparison/convenience-protein-bar": {
+    "title": "편의점 단백질 바 추천 | CU·GS25·세븐일레븐 비교",
+    "description": "CU, GS25, 세븐일레븐 등 오프라인에서 바로 사기 쉬운 단백질 바만 따로 정리했습니다. 편의점 구매와 온라인 박스 구매 차이도 함께 설명합니다."
+  },
+  "/guides/product-selection-comparison/danbaek-lineup": {
+    "title": "더단백 제품 종류 전체 정리 | 드링크·워터·다크초코 라인업",
+    "description": "더단백 드링크, 다크초코, 더블초코, 워터 프로틴 라인업을 저나트륨 강점 중심으로 정리합니다."
+  },
+  "/guides/product-selection-comparison/danbaek-vs-selexs": {
+    "title": "더단백 vs 셀렉스 프로핏 비교 | 칼로리·당류·나트륨",
+    "description": "더단백 드링크와 셀렉스 프로핏 대표 제품을 칼로리, 당류, 지방, 나트륨 기준으로 직접 비교합니다."
+  },
+  "/guides/product-selection-comparison/diet-protein-yogurt": {
+    "title": "다이어트 단백질 요거트 추천 | 100kcal 이하·당류 5g 이하",
+    "description": "ProteinLab DB 기준으로 칼로리 100kcal 이하, 당류 5g 이하, 단백질 10g 이상 조건을 통과한 다이어트용 요거트만 골라 정리했습니다."
+  },
+  "/guides/product-selection-comparison/dryou-lineup": {
+    "title": "닥터유 단백질 제품 종류 정리 | PRO·40g 라인업 비교",
+    "description": "닥터유 PRO 단백질 드링크와 40g 라인업을 중심으로 어떤 제품이 어떤 목적에 맞는지 정리했습니다."
+  },
+  "/guides/product-selection-comparison/greek-vs-protein-yogurt": {
+    "title": "그릭요거트 vs 단백질 요거트 차이 | 단백질·칼로리 비교",
+    "description": "그릭요거트와 단백질 요거트의 차이를 제조 방식, 단백질 함량, 칼로리, 용도 기준으로 쉽게 정리했습니다. 입문자가 어떤 카테고리를 먼저 골라야 하는지도 설명합니다."
+  },
+  "/guides/product-selection-comparison/newcare-allprotein": {
+    "title": "뉴케어 올프로틴 완전 분석 | 41g·25g·식물성·워터 라인",
+    "description": "뉴케어 올프로틴 41g뿐 아니라 25g, 식물성, 워터 라인까지 함께 보고 어떤 제품이 어떤 목적에 맞는지 정리합니다."
+  },
+  "/guides/product-selection-comparison/newcare-box-value": {
+    "title": "뉴케어 올프로틴 박스 가성비 | 개당 단가·단백질 1g당 비교",
+    "description": "뉴케어 올프로틴 41g, 25g, 워터를 박스 구매 관점에서 비교합니다. 개당 단가와 단백질 1g당 체감 가성비를 기준으로 어떤 라인을 먼저 봐야 하는지 정리했습니다."
+  },
+  "/guides/product-selection-comparison/newcare-low-sugar-guide": {
+    "title": "뉴케어 저당 선택 가이드 | 당류·칼로리·단백질 밀도 비교",
+    "description": "뉴케어 올프로틴 41g, 25g, 워터를 당류, 칼로리, 단백질 밀도 기준으로 비교합니다. 혈당 부담이나 저당 기준으로 뉴케어를 읽을 때 어떤 라인을 먼저 봐야 하는지 정리했습니다."
+  },
+  "/guides/product-selection-comparison/newcare-protein-water-guide": {
+    "title": "뉴케어 올프로틴 워터 정리 | 단백질·당류·칼로리 비교",
+    "description": "뉴케어 올프로틴 워터를 단백질, 당류, 칼로리, 음용감 기준으로 정리합니다. 밀크형 RTD가 부담스러울 때 어떤 대안이 되는지 빠르게 확인할 수 있습니다."
+  },
+  "/guides/product-selection-comparison/protein-drink-box-value": {
+    "title": "단백질 음료 박스로 사면 개당 얼마? 브랜드별 가성비 비교",
+    "description": "단백질 음료를 박스로 사면 개당 얼마가 되는지, 최근 쿠팡 노출가 기준으로 대표 브랜드 박스 가성비와 단백질 1g당 가격을 정리했습니다."
+  },
+  "/guides/product-selection-comparison/protein-drink-by-content": {
+    "title": "단백질 음료 함량대별 정리 | 20g 미만부터 40g 이상까지",
+    "description": "단백질 음료를 20g 미만, 20g대, 30g대, 40g 이상으로 나눠 어떤 사람이 어떤 함량대를 고르면 되는지 정리했습니다."
+  },
+  "/guides/product-selection-comparison/protein-drink-by-flavor": {
+    "title": "단백질 음료 맛별 추천 | 초코·바나나·아메리카노 기준",
+    "description": "초코, 복숭아, 바나나, 아메리카노, 고소한맛 기준으로 실제 마시기 쉬운 단백질 음료를 정리했습니다."
+  },
+  "/guides/product-selection-comparison/protein-drink-for-50s": {
+    "title": "50대 단백질 음료 추천 | 건강 유지·근감소증 예방 기준",
+    "description": "50대 이상이 건강 유지와 근감소증 예방 관점에서 단백질 음료를 고를 때 무엇을 봐야 하는지, 부담이 덜한 후보 제품을 ProteinLab DB 기준으로 정리했습니다."
+  }
+}

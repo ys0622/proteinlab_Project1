@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import { RECENT_REVISIONS } from "./lib/recentRevisions";
 import { getAllCompareLandings } from "./data/compareLandings";
 import { compareCanonicalOverrides } from "./data/compareCanonicalOverrides";
 import { getAllCurations } from "./lib/curationSystem";
@@ -160,6 +161,12 @@ const REVISED_2026_10_09 = new Set<string>([
   "/guides/tools",
 ]);
 const REVISED_DATE = new Date("2026-10-09");
+
+// recentRevisions.ts에 기록된 실제 수정일(RSS와 공유). REVISED_2026_10_09보다 우선한다.
+const RECENT_REVISION_DATES = new Map<string, Date>();
+for (const batch of [...RECENT_REVISIONS].sort((a, b) => a.date.localeCompare(b.date))) {
+  for (const path of batch.paths) RECENT_REVISION_DATES.set(path, new Date(batch.date));
+}
 
 const FALLBACK_PRODUCT_DATE = "2026-10-09";
 const PRODUCT_DATES: Record<string, string> = {
@@ -434,7 +441,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const configDate = compareGuideLastModified.get(route);
     const knownDate = PAGE_DATES[route];
     // Google only uses lastmod when it reflects a real content update. Omit unknown dates.
-    const lastModified = REVISED_2026_10_09.has(route) ? REVISED_DATE : (configDate ?? (knownDate ? new Date(knownDate) : undefined));
+    const lastModified = RECENT_REVISION_DATES.get(route) ?? (REVISED_2026_10_09.has(route) ? REVISED_DATE : (configDate ?? (knownDate ? new Date(knownDate) : undefined)));
     return {
       url: `${SITE_URL}${route}`,
       lastModified,

@@ -1,112 +1,10 @@
-import { getCategoryProductCountsAsync } from "../lib/productCounts";
+import feedPageMeta from "../data/feedPageMeta.json";
+import { RECENT_REVISIONS } from "../lib/recentRevisions";
 
 const SITE_URL = "https://proteinlab.kr";
+const MAX_ITEMS = 60;
 
-type FeedItem = {
-  title: string;
-  description: string;
-  path: string;
-};
-
-function getFeedItems(yogurtCount: number): FeedItem[] {
-  return [
-  {
-    title: "ProteinLab 홈",
-    description: "단백질 음료, 단백질 바, 단백질 요거트 비교 페이지입니다.",
-    path: "/",
-  },
-  {
-    title: "단백질 요거트 비교",
-    description: `단백질 요거트 ${yogurtCount}개를 단백질 함량, 당류, 칼로리, 단백질 밀도 기준으로 비교합니다.`,
-    path: "/yogurt",
-  },
-  {
-    title: "단백질 랭킹",
-    description: "단백질 음료, 단백질 바, 단백질 요거트 순위를 비교합니다.",
-    path: "/ranking",
-  },
-  {
-    title: "단백질 추천",
-    description: "나에게 맞는 단백질 음료, 바, 요거트를 추천합니다.",
-    path: "/recommend",
-  },
-  {
-    title: "고단백 단백질 요거트 추천",
-    description: "단백질 함량이 높은 단백질 요거트를 비교합니다.",
-    path: "/curation/yogurt-high-protein",
-  },
-  {
-    title: "저당 단백질 요거트 추천",
-    description: "당류 부담이 적은 단백질 요거트를 비교합니다.",
-    path: "/curation/yogurt-low-sugar",
-  },
-  {
-    title: "그릭 단백질 요거트 추천",
-    description: "그릭 타입 단백질 요거트를 비교합니다.",
-    path: "/curation/yogurt-greek",
-  },
-  {
-    title: "드링킹 단백질 요거트 추천",
-    description: "마시는 단백질 요거트를 비교합니다.",
-    path: "/curation/yogurt-drinking",
-  },
-  {
-    title: "대용량 단백질 요거트 추천",
-    description: "400g 이상 대용량 단백질 요거트를 비교합니다.",
-    path: "/curation/yogurt-bulk",
-  },
-  {
-    title: "단백질 요거트 추천 기준",
-    description: "단백질 요거트를 고를 때 그릭, 드링킹, 대용량을 어떻게 나눠 봐야 하는지 정리합니다.",
-    path: "/guides/product-selection-comparison/protein-yogurt-guide",
-  },
-  {
-    title: "단백질 쉐이크 추천 가이드",
-    description: "파우치형 중심의 간편 섭취 단백질 쉐이크를 고를 때 단백질, 당류, 칼로리, 식이섬유를 어떻게 봐야 하는지 정리했습니다.",
-    path: "/guides/product-selection-comparison/protein-shake-guide",
-  },
-  {
-    title: "식사대용 단백질 쉐이크",
-    description: "식사대용 단백질 쉐이크를 고를 때 단백질, 칼로리, 식이섬유를 함께 보는 기준을 정리했습니다.",
-    path: "/guides/product-selection-comparison/meal-replacement-protein-shake-guide",
-  },
-  {
-    title: "단백질 음료 vs 단백질 쉐이크",
-    description: "RTD 단백질 음료와 파우치형 단백질 쉐이크의 차이를 용도와 성분 기준으로 비교했습니다.",
-    path: "/guides/product-selection-comparison/protein-drink-vs-protein-shake",
-  },
-  {
-    title: "저당 단백질 쉐이크",
-    description: "당류가 낮은 단백질 쉐이크를 고를 때 단백질과 칼로리, 식이섬유까지 함께 보는 기준을 정리했습니다.",
-    path: "/guides/product-selection-comparison/low-sugar-protein-shake-guide",
-  },
-  {
-    title: "운동 후 단백질 쉐이크",
-    description: "운동 후 단백질 쉐이크를 고를 때 단백질 함량, 당류, 단백질 밀도를 어떻게 봐야 하는지 정리했습니다.",
-    path: "/guides/product-selection-comparison/post-workout-protein-shake-guide",
-  },
-  {
-    title: "그릭요거트 추천 기준",
-    description: "그릭요거트의 단백질 함량, 단백질 밀도, 당류 기준을 정리합니다.",
-    path: "/guides/product-selection-comparison/greek-yogurt-guide",
-  },
-  {
-    title: "저당 단백질 요거트 추천 기준",
-    description: "당류 5g 이하 기준으로 저당 단백질 요거트를 비교하는 방법을 정리합니다.",
-    path: "/guides/product-selection-comparison/low-sugar-yogurt-guide",
-  },
-  {
-    title: "드링킹 단백질 요거트 추천 기준",
-    description: "드링킹 단백질 요거트의 용량, 단백질, 당류 비교 기준을 정리합니다.",
-    path: "/guides/product-selection-comparison/drinking-yogurt-guide",
-  },
-  {
-    title: "단백질 요거트 순위 읽는 법",
-    description: "단백질 요거트 랭킹과 등급 기준을 해석하는 방법을 정리합니다.",
-    path: "/guides/product-selection-comparison/protein-yogurt-ranking-guide",
-  },
-  ];
-}
+const META = feedPageMeta as Record<string, { title: string; description: string }>;
 
 function escapeXml(value: string) {
   return value
@@ -117,10 +15,26 @@ function escapeXml(value: string) {
     .replaceAll("'", "&apos;");
 }
 
+// 실제로 내용이 바뀐 페이지만, 최근 수정일 순으로 낸다. pubDate는 요청 시각이 아니라 기록된 수정일이다.
+function getFeedItems() {
+  const latest = new Map<string, string>();
+  for (const batch of RECENT_REVISIONS) {
+    for (const path of batch.paths) {
+      const current = latest.get(path);
+      if (!current || batch.date > current) latest.set(path, batch.date);
+    }
+  }
+  return [...latest.entries()]
+    .filter(([path]) => META[path]?.title)
+    .sort((a, b) => b[1].localeCompare(a[1]) || a[0].localeCompare(b[0]))
+    .slice(0, MAX_ITEMS)
+    .map(([path, date]) => ({ path, date, ...META[path] }));
+}
+
 export async function GET() {
-  const counts = await getCategoryProductCountsAsync();
-  const now = new Date().toUTCString();
-  const itemsXml = getFeedItems(counts.yogurt)
+  const items = getFeedItems();
+  const lastBuild = items.length > 0 ? new Date(items[0].date + "T00:00:00+09:00") : new Date("2026-10-11T00:00:00+09:00");
+  const itemsXml = items
     .map((item) => {
       const url = `${SITE_URL}${item.path}`;
       return [
@@ -129,7 +43,7 @@ export async function GET() {
         `<link>${url}</link>`,
         `<guid>${url}</guid>`,
         `<description>${escapeXml(item.description)}</description>`,
-        `<pubDate>${now}</pubDate>`,
+        `<pubDate>${new Date(item.date + "T00:00:00+09:00").toUTCString()}</pubDate>`,
         "</item>",
       ].join("");
     })
@@ -142,7 +56,7 @@ export async function GET() {
 <link>${SITE_URL}</link>
 <description>단백질 음료, 단백질 바, 단백질 요거트 비교 및 가이드</description>
 <language>ko</language>
-<lastBuildDate>${now}</lastBuildDate>
+<lastBuildDate>${lastBuild.toUTCString()}</lastBuildDate>
 ${itemsXml}
 </channel>
 </rss>`;
