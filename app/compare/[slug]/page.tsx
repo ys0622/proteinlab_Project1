@@ -8,6 +8,7 @@ import ProductCard from "../../components/ProductCard";
 import TrackedCoupangLink from "../../components/TrackedCoupangLink";
 import TrackedLink from "../../components/TrackedLink";
 import { getCompareLandingBySlug, getAllCompareLandingStaticSlugs } from "../../data/compareLandings";
+import { resolveLandingCopy } from "../../lib/compareLandingCopy";
 import { compareCanonicalOverrides } from "../../data/compareCanonicalOverrides";
 import { formatProductLabel } from "../../lib/productLabel";
 import { getCoupangRedirectHref } from "../../lib/purchaseLinks";
@@ -270,6 +271,7 @@ export default async function CompareLandingPage({ params }: PageProps) {
     .map((productSlug) => allProducts.find((item) => item.slug === productSlug))
     .filter((item): item is NonNullable<typeof item> => item != null);
 
+  const landingCopy = resolveLandingCopy(landing, products);
   const compareHref = `/compare?slugs=${landing.productSlugs.join(",")}`;
   const conversionPlan = priorityConversionPlans[landing.slug];
   const differenceCards = buildDifferenceCards(products);
@@ -314,7 +316,7 @@ export default async function CompareLandingPage({ params }: PageProps) {
           name: `${landing.title}에서 가장 중요하게 봐야 할 기준은 무엇인가요?`,
           acceptedAnswer: {
             "@type": "Answer",
-            text: `${landing.intro} 단백질 함량, 당류, 칼로리, 단백질 밀도를 함께 비교하면 실제 체감 차이를 더 잘 파악할 수 있습니다.`,
+            text: `${landingCopy.intro} 단백질 함량, 당류, 칼로리, 단백질 밀도를 함께 비교하면 실제 체감 차이를 더 잘 파악할 수 있습니다.`,
           },
         },
         {
@@ -535,9 +537,9 @@ export default async function CompareLandingPage({ params }: PageProps) {
         ) : null}
         <section className="rounded-2xl border border-[#e8e6e3] bg-[#FFFDF8] p-5">
           <h2 className="text-base font-semibold text-[var(--foreground)]">비교 포인트</h2>
-          <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">{landing.intro}</p>
+          <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">{landingCopy.intro}</p>
           <ul className="mt-4 space-y-2">
-            {landing.bullets.map((bullet) => (
+            {landingCopy.bullets.map((bullet) => (
               <li key={bullet} className="flex items-start gap-2 text-sm leading-6 text-[var(--foreground-muted)]">
                 <span className="mt-[6px] h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--accent)]" />
                 <span>{bullet}</span>
