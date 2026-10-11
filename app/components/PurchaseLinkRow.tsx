@@ -10,6 +10,8 @@ type PurchaseLinkRowProps = {
   size?: "sm" | "md";
   coupangOnly?: boolean;
   coupangLabel?: string;
+  /** coupangOnly일 때 기본 "가격 보기" 대신 쓸 문구 */
+  coupangOnlyLabel?: string;
   coupangMobileLabel?: string;
   naverLabel?: string;
   naverMobileLabel?: string;
@@ -28,6 +30,7 @@ export default function PurchaseLinkRow({
   size = "md",
   coupangOnly = false,
   coupangLabel = "가격 보기",
+  coupangOnlyLabel = "가격 보기",
   coupangMobileLabel = "가격 보기",
   naverLabel = "네이버 쇼핑",
   naverMobileLabel = "네이버",
@@ -50,8 +53,8 @@ export default function PurchaseLinkRow({
       {(hasCoupang || coupangOnly) && (
         <PurchaseLinkButton
           href={coupangHref}
-          label={coupangOnly ? "가격 보기" : coupangLabel}
-          mobileLabel={coupangOnly ? "가격 보기" : coupangMobileLabel}
+          label={coupangOnly ? coupangOnlyLabel : coupangLabel}
+          mobileLabel={coupangOnly ? coupangOnlyLabel : coupangMobileLabel}
           tone="coupang"
           size={size}
           onClick={coupangHref ? onCoupangClick : undefined}

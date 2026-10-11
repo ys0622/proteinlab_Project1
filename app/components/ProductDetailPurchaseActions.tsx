@@ -12,6 +12,8 @@ type ProductDetailPurchaseActionsProps = {
   productName: string;
   slug: string;
   productType?: "drink" | "bar" | "yogurt" | "shake";
+  /** 버튼 위에 보여줄 핵심 수치(예: "단백질 10g"). 1회 기준 비교가 가능한 제품만 넘긴다. */
+  quickFacts?: string[];
 };
 
 export default function ProductDetailPurchaseActions({
@@ -22,10 +24,11 @@ export default function ProductDetailPurchaseActions({
   productName,
   slug,
   productType,
+  quickFacts,
 }: ProductDetailPurchaseActionsProps) {
   const placement = "product_detail_hero_purchase";
   const hasPurchaseLink = Boolean(coupangHref);
-  const coupangCta = "최저가 확인";
+  const coupangCta = "쿠팡에서 최저가 확인하기 →";
   const categoryHref = { drink: "/drinks", bar: "/bars", yogurt: "/yogurt", shake: "/shake" }[productType ?? "drink"];
 
   const trackPurchase = (
@@ -86,11 +89,18 @@ export default function ProductDetailPurchaseActions({
         </p>
       </div>
 
-      <p className="mb-3 text-xs leading-5 text-[var(--foreground-muted)] md:text-sm">
-        {hasPurchaseLink
-          ? "쿠팡 최저가를 바로 확인하세요."
-          : "구매 채널 링크를 확인 중입니다. 지금은 카테고리 목록에서 후보를 먼저 비교해보는 편이 좋습니다."}
-      </p>
+      {quickFacts && quickFacts.length > 0 ? (
+        <div className="mb-3 flex flex-wrap gap-1.5">
+          {quickFacts.map((fact) => (
+            <span
+              key={fact}
+              className="rounded-full bg-[var(--accent-light)] px-2.5 py-1 text-xs font-semibold text-[var(--accent)]"
+            >
+              {fact}
+            </span>
+          ))}
+        </div>
+      ) : null}
 
       <PurchaseLinkRow
         coupangHref={coupangHref}
@@ -99,6 +109,7 @@ export default function ProductDetailPurchaseActions({
         size="md"
         coupangOnly
         coupangLabel={coupangCta}
+        coupangOnlyLabel={coupangCta}
         coupangImpressionTracking={{
           productId: slug,
           productName,
@@ -109,6 +120,9 @@ export default function ProductDetailPurchaseActions({
         }}
         onCoupangClick={() => trackPurchase("coupang", coupangHref, coupangCta)}
       />
+      <p className="mt-2 text-xs leading-5 text-[var(--foreground-muted)]">
+        할인·묶음 옵션은 쿠팡 페이지에서 바뀔 수 있어요.
+      </p>
     </div>
   );
 }

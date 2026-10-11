@@ -13,6 +13,7 @@ type Props = {
   productName: string;
   slug: string;
   proteinG?: number;
+  quickFacts?: string[];
   imageUrl?: string;
   description?: string;
   productType?: "drink" | "bar" | "yogurt" | "shake";

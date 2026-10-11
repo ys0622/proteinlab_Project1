@@ -53,6 +53,7 @@ import {
   getOfficialMallUrl,
   normalizeCoupangUrl,
 } from "../../lib/purchaseLinks";
+import { isComparableServing } from "../../lib/servingScope";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -524,6 +525,15 @@ export default async function ProductDetailPage({ params }: PageProps) {
     product.productType ?? null,
     product.slug,
   );
+  // 1회 기준 비교가 가능한 제품만 버튼 위에 핵심 수치를 보여준다(대용량 통은 용기 전체 수치라 제외).
+  const quickFacts =
+    !product.needsServingCheck && isComparableServing(product)
+      ? [
+          product.proteinPerServing != null ? `단백질 ${product.proteinPerServing}g` : null,
+          product.sugar != null ? `당류 ${product.sugar}g` : null,
+          product.calories != null ? `${product.calories}kcal` : null,
+        ].filter((fact): fact is string => Boolean(fact))
+      : [];
   const naverHref =
     product.naverUrl && product.naverUrl !== "#" && product.naverUrl !== ""
       ? product.naverUrl
@@ -866,6 +876,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
                   productName={product.name}
                   slug={product.slug}
                   proteinG={product.proteinPerServing}
+                  quickFacts={quickFacts}
                   imageUrl={productImageUrl ?? undefined}
                   description={buildProductDescription(product)}
                   productType={category}
