@@ -3,6 +3,7 @@
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { Suspense, useEffect, useMemo, useState } from "react";
 import type { ProductDetailProps } from "../data/products";
+import newProductsRaw from "../data/newProducts.json";
 import { type ProductCategory } from "../lib/categories";
 import { applyCurationToCategoryProducts } from "../lib/curationSystem";
 import {
@@ -179,6 +180,23 @@ function getRecommendedScore(
   return density * 18 + protein * 2.5 + popularity * 0.01 - sugar * 4 - calories * 0.06;
 }
 
+const addedDates = new Map(
+  (newProductsRaw as { slug: string; addedAt: string }[]).map(({ slug, addedAt }) => [slug, Date.parse(addedAt)]),
+);
+
+// 등록일: 서버가 기록한 createdAt이 있으면 우선, 없으면 신제품 목록의 addedAt. 날짜 기록이 없는 제품은 0(가장 뒤).
+function getAddedTime(product: ProductDetailProps): number {
+  const created = product.createdAt ? Date.parse(product.createdAt) : NaN;
+  if (Number.isFinite(created)) return created;
+  const added = addedDates.get(product.slug);
+  return added !== undefined && Number.isFinite(added) ? added : 0;
+}
+
+// 요거트는 통 크기가 제각각이라 100g/mL 기준으로 비교한다(추천순과 같은 기준). 나머지는 1회 제공량 기준이다.
+function getComparableValue(value: number | undefined, product: ProductDetailProps, productType: ProductCategory): number {
+  return productType === "yogurt" ? getPer100UnitValue(value, product) : (value ?? 0);
+}
+
 function applySort(
   products: ProductDetailProps[],
   sort: SortOptionValue,
@@ -193,7 +211,15 @@ function applySort(
     case "density":
       return arr.sort((a, b) => getDensityValue(b) - getDensityValue(a));
     case "sugar_asc":
-      return arr.sort((a, b) => (a.sugar ?? 0) - (b.sugar ?? 0));
+      return arr.sort(
+        (a, b) => getComparableValue(a.sugar, a, productType) - getComparableValue(b.sugar, b, productType),
+      );
+    case "calories_asc":
+      return arr.sort(
+        (a, b) => getComparableValue(a.calories, a, productType) - getComparableValue(b.calories, b, productType),
+      );
+    case "recent_desc":
+      return arr.sort((a, b) => getAddedTime(b) - getAddedTime(a));
     case "recommended":
     default:
       return arr.sort((a, b) => {
