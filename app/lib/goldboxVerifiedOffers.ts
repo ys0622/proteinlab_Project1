@@ -25,7 +25,7 @@ export interface VerifiedGoldboxOffer {
 // Future confirmations are stored in KV through /admin/goldbox without a deployment.
 const EXPIRING_SEED: VerifiedGoldboxOffer[] = [{
   // 2026-10-12 사용자가 쿠팡 골드박스 상품으로 확인해 알려 준 제품(링크 hL84FefD7k, 125ml 24개 옵션). 웹 상품 페이지에는 와우쿠폰 할인가가 보이나
-  // 종료 시각 표시가 없어, 확인된 날의 자정(10/13 00:00)까지만 노출한다. 앱의 남은 시간을 받으면 실제 종료 시각으로 조정한다.
+  // 종료 시각은 사용자가 보낸 앱 골드박스 화면(09:33, 남은 시간 21:26:27, "매일 아침 7시에 시작")으로 계산한 10/13 07:00. 화면에 이 제품 카드는 없고 골드박스 전체 타이머 기준이다.
   // 가격은 표시하지 않는다(price 0 = 가격 줄 숨김).
   slug: "hymune-drinking-protein-balance-125",
   offerName: "125mL × 24개 · 와우회원 할인 · 쿠팡 확인",
@@ -34,7 +34,7 @@ const EXPIRING_SEED: VerifiedGoldboxOffer[] = [{
   source: "coupang_app",
   verifiedAt: "2026-10-12T09:02:00+09:00",
   startsAt: "2026-10-12T09:02:00+09:00",
-  expiresAt: "2026-10-13T00:00:00+09:00",
+  expiresAt: "2026-10-13T07:00:00+09:00",
 }];
 
 async function getKV(): Promise<OfferKV | null> {
