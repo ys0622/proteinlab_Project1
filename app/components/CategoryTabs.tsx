@@ -66,8 +66,11 @@ export default function CategoryTabs({
     if (!active) return;
     const navRect = nav.getBoundingClientRect();
     const activeRect = active.getBoundingClientRect();
-    const target = nav.scrollLeft + (activeRect.left - navRect.left) - (navRect.width - activeRect.width) / 2;
-    nav.scrollTo({ left: Math.max(0, target) });
+    // 가운데 맞춤이 아니라 활성 탭이 보일 만큼만 최소로 이동한다(첫 탭이 가려지는 것을 줄인다).
+    const overflowRight = activeRect.right - navRect.right + 8;
+    const overflowLeft = navRect.left - activeRect.left + 8;
+    if (overflowRight > 0) nav.scrollTo({ left: nav.scrollLeft + overflowRight });
+    else if (overflowLeft > 0) nav.scrollTo({ left: Math.max(0, nav.scrollLeft - overflowLeft) });
   }, [activeCategory]);
 
   useEffect(() => {
