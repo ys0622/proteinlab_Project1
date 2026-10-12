@@ -46,6 +46,7 @@ proteinlab.kr — 단백질 음료·바·요거트·쉐이크 제품 비교 서�
 8. GA4 일반 보고서는 하루 이상 늦게 채워진다. 실시간 화면으로 수집 여부를 먼저 보고, 일 단위 수치는 24~48시간 뒤에 판단한다.
 
 ## Windows 주의점
+- 로컬 개발 서버(`next dev`)가 페이지 컴파일에서 멈추면 Tailwind v4가 프로젝트 전체를 스캔하는 것이 원인이다(크롬 임시 폴더·로그·워크트리 등). `app/globals.css`에서 `@import "tailwindcss" source(none)`와 `@source "../app"` 등으로 스캔 범위를 제한해 두었다. 새 소스 폴더에서 클래스를 쓰면 `@source`에 추가한다. 개발 서버는 `npx next dev --webpack -p 3111`로 띄우면 `/soymilk`가 7초 안에 열린다.
 - 사용자에게 터미널 명령을 줄 때 Git Bash용인지 PowerShell용인지 구분한다. PowerShell에는 `&&`와 `/d/...` 경로가 없다.
 - Git Bash의 `curl`로 한글 URL을 부르면 인코딩이 깨져 가짜 500이 난다. Python `urllib.parse.quote`를 쓰고 브라우저 User-Agent를 붙인다(Cloudflare가 기본 Python UA를 403한다).
 - Node 스크립트에는 `C:/...` 형태의 Windows 경로를 넘긴다(`/c/...`는 인식하지 못한다).
