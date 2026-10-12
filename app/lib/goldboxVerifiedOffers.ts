@@ -24,17 +24,17 @@ export interface VerifiedGoldboxOffer {
 // One already-confirmed offer is retained through its original editorial cutoff.
 // Future confirmations are stored in KV through /admin/goldbox without a deployment.
 const EXPIRING_SEED: VerifiedGoldboxOffer[] = [{
-  // 2026-10-11 09:32 쿠팡 앱 골드박스에서 사용자가 확인. 화면의 "21:27:44 남음"으로 계산한 종료 시각(10/12 07:00).
-  // 가격은 앱 전용 값이라 웹에서 확인되지 않아 표시하지 않는다(price 0 = 가격 줄 숨김).
-  // 링크는 190ml × 24개 옵션으로 만든 쿠팡파트너스 단축 링크(제품 데이터와 동일).
-  slug: "sellex-protein-lowsugar-190",
-  offerName: "190mL × 24개 · 와우회원 할인 · 쿠팡 앱 확인",
+  // 2026-10-12 사용자가 쿠팡 골드박스 상품으로 확인해 알려 준 제품(링크 hL84FefD7k, 125ml 24개 옵션). 웹 상품 페이지에는 와우쿠폰 할인가가 보이나
+  // 종료 시각 표시가 없어, 확인된 날의 자정(10/13 00:00)까지만 노출한다. 앱의 남은 시간을 받으면 실제 종료 시각으로 조정한다.
+  // 가격은 표시하지 않는다(price 0 = 가격 줄 숨김).
+  slug: "hymune-drinking-protein-balance-125",
+  offerName: "125mL × 24개 · 와우회원 할인 · 쿠팡 확인",
   price: 0,
-  href: "https://link.coupang.com/a/hKSkkBL9UG",
+  href: "https://link.coupang.com/a/hL84FefD7k",
   source: "coupang_app",
-  verifiedAt: "2026-10-11T09:32:00+09:00",
-  startsAt: "2026-10-11T09:32:00+09:00",
-  expiresAt: "2026-10-12T07:00:00+09:00",
+  verifiedAt: "2026-10-12T09:02:00+09:00",
+  startsAt: "2026-10-12T09:02:00+09:00",
+  expiresAt: "2026-10-13T00:00:00+09:00",
 }];
 
 async function getKV(): Promise<OfferKV | null> {
