@@ -89,11 +89,11 @@ export default function HomePopularCarousel({ products, available }: Props) {
       ) : <AutoProductCarousel key={curTab.key} label="지금 인기 제품">
         {curProducts.map((product, i) => {
           const reasonLabel = product.discoveryReason === "coupang_best" ? "쿠팡 베스트"
-            : product.discoveryReason === "recently_added" ? "새로 등록" : null;
+            : product.discoveryReason === "recently_added" ? "NEW" : null;
           return (
             <div
               key={product.slug ?? i}
-              className="home-popular-carousel-card relative flex w-[41.5%] shrink-0 md:w-[calc((100%-36px)/4)]"
+              className="home-popular-carousel-card relative flex w-[41.5%] shrink-0 md:w-[calc((100%-36px)/4)] [&>:last-child]:min-w-0 [&>:last-child]:flex-1 [&>:last-child]:self-stretch"
               style={{ scrollSnapAlign: "start" }}
             >
               {reasonLabel && <div
