@@ -8,7 +8,7 @@ interface KVNamespace {
   list(options?: { prefix?: string }): Promise<{ keys: Array<{ name: string }> }>;
 }
 
-const VALID_TYPES = ["drink", "bar", "yogurt", "shake"] as const;
+const VALID_TYPES = ["drink", "bar", "yogurt", "shake", "soymilk"] as const;
 type ProductType = (typeof VALID_TYPES)[number];
 
 function isValidType(v: string | null): v is ProductType {

@@ -11,7 +11,7 @@ type ProductDetailPurchaseActionsProps = {
   officialMallHref: string | null;
   productName: string;
   slug: string;
-  productType?: "drink" | "bar" | "yogurt" | "shake";
+  productType?: "drink" | "bar" | "yogurt" | "shake" | "soymilk";
   /** 버튼 위에 보여줄 핵심 수치(예: "단백질 10g"). 1회 기준 비교가 가능한 제품만 넘긴다. */
   quickFacts?: string[];
 };
@@ -29,7 +29,7 @@ export default function ProductDetailPurchaseActions({
   const placement = "product_detail_hero_purchase";
   const hasPurchaseLink = Boolean(coupangHref);
   const coupangCta = "쿠팡에서 최저가 확인하기 →";
-  const categoryHref = { drink: "/drinks", bar: "/bars", yogurt: "/yogurt", shake: "/shake" }[productType ?? "drink"];
+  const categoryHref = { drink: "/drinks", bar: "/bars", yogurt: "/yogurt", shake: "/shake", soymilk: "/soymilk" }[productType ?? "drink"];
 
   const trackPurchase = (
     store: "coupang" | "naver" | "official",

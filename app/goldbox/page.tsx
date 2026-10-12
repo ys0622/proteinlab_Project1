@@ -12,7 +12,7 @@ export const metadata = { title: "오늘의 골드박스 | ProteinLab", robots: 
 export default async function GoldboxPage({ searchParams }: { searchParams: Promise<{ preview?: string }> }) {
   const params = await searchParams;
   const preview = process.env.NODE_ENV === "development" ? params.preview : undefined;
-  const groups = await Promise.all(["drink", "bar", "yogurt", "shake"].map(category => getProductsByCategoryAsync(category as "drink" | "bar" | "yogurt" | "shake")));
+  const groups = await Promise.all(["drink", "bar", "yogurt", "shake", "soymilk"].map(category => getProductsByCategoryAsync(category as "drink" | "bar" | "yogurt" | "shake" | "soymilk")));
   const products = groups.flat();
   const [snapshot, verifiedOffers] = await Promise.all([
     preview ? Promise.resolve({ status: "ready" as const, products: [], checkedAt: null }) : fetchGoldboxSnapshot(),

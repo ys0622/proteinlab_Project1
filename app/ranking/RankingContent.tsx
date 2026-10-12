@@ -16,7 +16,7 @@ const PAGE_SIZE = 16;
 export const metadata = {
   title: "단백질 랭킹 2026 — 밀도·다이어트·퍼포먼스 기준 순위",
   description:
-    "단백질 음료, 바, 요거트, 쉐이크를 단백질 밀도, 다이어트 점수, 퍼포먼스 기준으로 계산한 순위입니다. 카테고리별로 상위 제품을 한눈에 확인하세요.",
+    "단백질 음료, 바, 요거트, 쉐이크, 두유를 단백질 밀도, 다이어트 점수, 퍼포먼스 기준으로 계산한 순위입니다. 카테고리별로 상위 제품을 한눈에 확인하세요.",
   alternates: {
     canonical: "https://proteinlab.kr/ranking",
   },
@@ -24,7 +24,7 @@ export const metadata = {
     images: [{ url: "https://proteinlab.kr/opengraph-image", width: 1200, height: 630, alt: "ProteinLab 단백질 제품 비교" }],
     title: "단백질 랭킹 2026 — 밀도·다이어트·퍼포먼스 기준 순위",
     description:
-      "단백질 음료, 바, 요거트, 쉐이크를 단백질 밀도, 다이어트 점수, 퍼포먼스 기준으로 계산한 순위입니다. 카테고리별로 상위 제품을 한눈에 확인하세요.",
+      "단백질 음료, 바, 요거트, 쉐이크, 두유를 단백질 밀도, 다이어트 점수, 퍼포먼스 기준으로 계산한 순위입니다. 카테고리별로 상위 제품을 한눈에 확인하세요.",
     url: "https://proteinlab.kr/ranking",
     type: "website",
     locale: "ko_KR",
@@ -35,7 +35,7 @@ export const metadata = {
     card: "summary",
     title: "단백질 랭킹 2026 — 밀도·다이어트·퍼포먼스 기준 순위",
     description:
-      "단백질 음료, 바, 요거트, 쉐이크를 단백질 밀도, 다이어트 점수, 퍼포먼스 기준으로 계산한 순위입니다. 카테고리별로 상위 제품을 한눈에 확인하세요.",
+      "단백질 음료, 바, 요거트, 쉐이크, 두유를 단백질 밀도, 다이어트 점수, 퍼포먼스 기준으로 계산한 순위입니다. 카테고리별로 상위 제품을 한눈에 확인하세요.",
   },
 };
 
@@ -91,19 +91,21 @@ export type RankingItem = {
 
 export async function renderRankingPage(category: ProductCategory, metric: GradeMetric, requestedPage: number) {
   const page = Number.isSafeInteger(requestedPage) && requestedPage > 0 ? requestedPage : 1;
-  const [drinkProducts, barProducts, yogurtProducts, shakeProducts] = await Promise.all([
+  const [drinkProducts, barProducts, yogurtProducts, shakeProducts, soymilkProducts] = await Promise.all([
     getProductsByCategoryAsync("drink"),
     getProductsByCategoryAsync("bar"),
     getProductsByCategoryAsync("yogurt"),
     getProductsByCategoryAsync("shake"),
+    getProductsByCategoryAsync("soymilk"),
   ]);
 
-  const productsByCategory = { drink: drinkProducts, bar: barProducts, yogurt: yogurtProducts, shake: shakeProducts };
+  const productsByCategory = { drink: drinkProducts, bar: barProducts, yogurt: yogurtProducts, shake: shakeProducts, soymilk: soymilkProducts };
   const categoryCounts = {
     drink: drinkProducts.length,
     bar: barProducts.length,
     yogurt: yogurtProducts.length,
     shake: shakeProducts.length,
+    soymilk: soymilkProducts.length,
   };
   const allItems = prepareRankingData(productsByCategory[category], metric);
   const totalPages = Math.max(1, Math.ceil(allItems.length / PAGE_SIZE));
@@ -116,6 +118,7 @@ export async function renderRankingPage(category: ProductCategory, metric: Grade
     bar: "단백질 바",
     yogurt: "단백질 요거트",
     shake: "단백질 쉐이크",
+    soymilk: "고단백 두유",
   };
 
   const itemListJsonLd = (Object.entries(productsByCategory) as [ProductCategory, ProductDetailProps[]][]).map(

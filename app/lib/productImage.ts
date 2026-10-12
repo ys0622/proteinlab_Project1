@@ -2,6 +2,8 @@ import slugToImage from "../data/slugToImage.json";
 import slugToBarImage from "../data/slugToBarImage.json";
 import slugToShakeImage from "../data/slugToShakeImage.json";
 import slugToYogurtImage from "../data/slugToYogurtImage.json";
+import slugToSoymilkImage from "../data/slugToSoymilkImage.json";
+import slugToSoymilkSpec from "../data/slugToSoymilkSpec.json";
 import slugToBarSpec from "../data/slugToBarSpec.json";
 import slugToDrinkSpec from "../data/slugToDrinkSpec.json";
 import slugToShakeSpec from "../data/slugToShakeSpec.json";
@@ -11,6 +13,8 @@ const drinkImageMap: Record<string, string> = slugToImage;
 const barImageMap: Record<string, string> = slugToBarImage;
 const shakeImageMap: Record<string, string> = slugToShakeImage;
 const yogurtImageMap: Record<string, string> = slugToYogurtImage;
+const soymilkImageMap: Record<string, string> = slugToSoymilkImage;
+const soymilkSpecImageMap: Record<string, string> = slugToSoymilkSpec;
 const barSpecImageMap: Record<string, string> = slugToBarSpec;
 const drinkSpecImageMap: Record<string, string> = slugToDrinkSpec;
 const shakeSpecImageMap: Record<string, string> = slugToShakeSpec;
@@ -24,9 +28,11 @@ const SHAKE_IMAGE_BASE = "/shake-image";
 const SHAKE_SPEC_IMAGE_BASE = "/shake-spec";
 const YOGURT_IMAGE_BASE = "/protein-yogurt-image";
 const YOGURT_SPEC_IMAGE_BASE = "/protein-yogurt-spec";
+const SOYMILK_IMAGE_BASE = "/soymilk-image";
+const SOYMILK_SPEC_IMAGE_BASE = "/soymilk-spec";
 
 export function getProductImageFilename(slug: string): string | null {
-  return drinkImageMap[slug] ?? barImageMap[slug] ?? shakeImageMap[slug] ?? yogurtImageMap[slug] ?? null;
+  return drinkImageMap[slug] ?? barImageMap[slug] ?? shakeImageMap[slug] ?? yogurtImageMap[slug] ?? soymilkImageMap[slug] ?? null;
 }
 
 /** 제품 상세/카드에서 쓸 이미지 URL. 없으면 null */
@@ -42,6 +48,9 @@ export function getProductImageUrl(slug: string): string | null {
   }
   if (yogurtImageMap[slug]) {
     return `${YOGURT_IMAGE_BASE}/${encodeURIComponent(yogurtImageMap[slug])}`;
+  }
+  if (soymilkImageMap[slug]) {
+    return `${SOYMILK_IMAGE_BASE}/${encodeURIComponent(soymilkImageMap[slug])}`;
   }
   return null;
 }
@@ -70,13 +79,20 @@ export function getYogurtSpecImageUrl(slug: string): string | null {
   return `${YOGURT_SPEC_IMAGE_BASE}/${encodeURIComponent(filename)}`;
 }
 
+export function getSoymilkSpecImageUrl(slug: string): string | null {
+  const filename = soymilkSpecImageMap[slug];
+  if (!filename) return null;
+  return `${SOYMILK_SPEC_IMAGE_BASE}/${encodeURIComponent(filename)}`;
+}
+
 export function getProductSpecImageUrl(
   slug: string,
-  productType?: "drink" | "bar" | "yogurt" | "shake",
+  productType?: "drink" | "bar" | "yogurt" | "shake" | "soymilk",
 ): string | null {
   if (productType === "drink") return getDrinkSpecImageUrl(slug);
   if (productType === "bar") return getBarSpecImageUrl(slug);
   if (productType === "yogurt") return getYogurtSpecImageUrl(slug);
   if (productType === "shake") return getShakeSpecImageUrl(slug);
+  if (productType === "soymilk") return getSoymilkSpecImageUrl(slug);
   return null;
 }

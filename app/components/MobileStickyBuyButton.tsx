@@ -9,7 +9,7 @@ type Props = {
   brand: string;
   productName: string;
   slug: string;
-  productType?: "drink" | "bar" | "yogurt" | "shake";
+  productType?: "drink" | "bar" | "yogurt" | "shake" | "soymilk";
   /** Hide the sticky button while the main purchase block is visible. */
   anchorRef: React.RefObject<HTMLElement | null>;
 };

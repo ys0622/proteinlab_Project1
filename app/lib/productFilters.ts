@@ -162,6 +162,59 @@ export function getShakeUseCase(product: ProductDetailProps): ShakeUseCase[] {
   return useCases;
 }
 
+export type SoymilkProteinRange = "고단백(12g 이상)" | "중간단백(10~12g)" | "기본(8~10g)";
+export type SoymilkSugarRange = "저당(3g 미만)" | "보통당(3~6g)" | "고당(6g 이상)";
+
+export function getSoymilkProteinRange(product: { proteinPerServing: number }): SoymilkProteinRange {
+  if (product.proteinPerServing >= 12) return "고단백(12g 이상)";
+  if (product.proteinPerServing >= 10) return "중간단백(10~12g)";
+  return "기본(8~10g)";
+}
+
+export function getSoymilkSugarRange(product: { sugar?: number }): SoymilkSugarRange {
+  const sugar = product.sugar ?? 0;
+  if (sugar < 3) return "저당(3g 미만)";
+  if (sugar <= 6) return "보통당(3~6g)";
+  return "고당(6g 이상)";
+}
+
+export function getSoymilkFlavorCategory(product: ProductDetailProps): string {
+  const haystack = [product.name, product.flavor].filter(Boolean).join(" ");
+  if (/초코|초콜릿/.test(haystack)) return "초코";
+  if (/검은콩|서리태/.test(haystack)) return "검은콩";
+  if (/아몬드|잣|견과|땅콩/.test(haystack)) return "견과";
+  if (/렌틸|약콩|곡물/.test(haystack)) return "기타";
+  return "플레인";
+}
+
+export interface SoymilkFilters {
+  brand: string[];
+  protein: string[];
+  sugar: string[];
+  flavor: string[];
+}
+
+export const defaultSoymilkFilters: SoymilkFilters = {
+  brand: [],
+  protein: [],
+  sugar: [],
+  flavor: [],
+};
+
+export function filterSoymilkProducts(
+  products: ProductDetailProps[],
+  filters: SoymilkFilters,
+): ProductDetailProps[] {
+  return products.filter((product) => {
+    if (product.productType !== "soymilk") return false;
+    if (filters.brand.length > 0 && !filters.brand.includes(product.brand)) return false;
+    if (filters.protein.length > 0 && !filters.protein.includes(getSoymilkProteinRange(product))) return false;
+    if (filters.sugar.length > 0 && !filters.sugar.includes(getSoymilkSugarRange(product))) return false;
+    if (filters.flavor.length > 0 && !filters.flavor.includes(getSoymilkFlavorCategory(product))) return false;
+    return true;
+  });
+}
+
 export interface DrinkFilters {
   brand: string[];
   protein: string[];

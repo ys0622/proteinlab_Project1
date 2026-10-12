@@ -4,7 +4,7 @@ import type { ProductDetailProps } from "@/app/data/products";
 import { formatProductLabel } from "@/app/lib/productLabel";
 import { isComparableServing } from "@/app/lib/servingScope";
 
-type Category = "drink" | "bar" | "yogurt" | "shake";
+type Category = "drink" | "bar" | "yogurt" | "shake" | "soymilk";
 type Mode = "protein" | "lowSugar" | "lowCalorie" | "density";
 
 const KIND_LABEL: Record<Category, string> = {
@@ -12,6 +12,7 @@ const KIND_LABEL: Record<Category, string> = {
   bar: "단백질 바",
   yogurt: "단백질 요거트",
   shake: "단백질 쉐이크",
+  soymilk: "고단백 두유",
 };
 
 const MODE_TITLE: Record<Mode, string> = {
@@ -136,7 +137,7 @@ export default function CategoryDataSection({
           </table>
         </div>
         <p className="mt-3 text-sm">
-          <Link href={category === "drink" ? "/drinks" : category === "bar" ? "/bars" : category === "yogurt" ? "/yogurt" : "/shake"} className="font-semibold text-[#24543d] underline">
+          <Link href={category === "drink" ? "/drinks" : category === "bar" ? "/bars" : category === "yogurt" ? "/yogurt" : category === "soymilk" ? "/soymilk" : "/shake"} className="font-semibold text-[#24543d] underline">
             {kind} 전체 {pool.length}종 비교하기 →
           </Link>
         </p>

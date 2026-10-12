@@ -99,11 +99,12 @@ function toCarouselProduct(p: ProductDetailProps): CarouselProduct {
 }
 
 export default async function Home() {
-  const [drinks, bars, yogurts, shakes, popularRes, bestSnapshot] = await Promise.all([
+  const [drinks, bars, yogurts, shakes, soymilks, popularRes, bestSnapshot] = await Promise.all([
     getProductsByCategoryAsync("drink"),
     getProductsByCategoryAsync("bar"),
     getProductsByCategoryAsync("yogurt"),
     getProductsByCategoryAsync("shake"),
+    getProductsByCategoryAsync("soymilk"),
     // Worker 자기 호출 대신 공유 KV 스냅샷을 직접 읽는다.
     getRecentPopularity(),
     getCoupangCategoryBest(),
@@ -112,16 +113,17 @@ export default async function Home() {
   // views: { drink: {slug: count}, bar: {...}, ... }
   const { views, available } = popularRes;
 
-  const categoryCounts = getCategoryProductCounts({ drink: drinks, bar: bars, yogurt: yogurts, shake: shakes });
+  const categoryCounts = getCategoryProductCounts({ drink: drinks, bar: bars, yogurt: yogurts, shake: shakes, soymilk: soymilks });
 
-  const coupangRanks = matchCoupangCategoryBest([...drinks, ...bars, ...yogurts, ...shakes], bestSnapshot);
+  const coupangRanks = matchCoupangCategoryBest([...drinks, ...bars, ...yogurts, ...shakes, ...soymilks], bestSnapshot);
   const topDrinks = selectHomeDiscovery(drinks, views.drink ?? {}, coupangRanks);
   const topBars = selectHomeDiscovery(bars, views.bar ?? {}, coupangRanks);
   const topYogurts = selectHomeDiscovery(yogurts, views.yogurt ?? {}, coupangRanks);
   const topShakes = selectHomeDiscovery(shakes, views.shake ?? {}, coupangRanks);
+  const topSoymilks = selectHomeDiscovery(soymilks, views.soymilk ?? {}, coupangRanks);
 
   const productBySlug = new Map(
-    [...drinks, ...bars, ...yogurts, ...shakes].map((p) => [p.slug ?? "", p] as const),
+    [...drinks, ...bars, ...yogurts, ...shakes, ...soymilks].map((p) => [p.slug ?? "", p] as const),
   );
   const newlyAdded = [...(newProductsRaw as { slug: string; addedAt: string }[])]
     .sort((a, b) => b.addedAt.localeCompare(a.addedAt))
@@ -134,6 +136,7 @@ export default async function Home() {
     bar: topBars.map(({ product, reason }) => ({ ...toCarouselProduct(product), discoveryReason: reason })),
     yogurt: topYogurts.map(({ product, reason }) => ({ ...toCarouselProduct(product), discoveryReason: reason })),
     shake: topShakes.map(({ product, reason }) => ({ ...toCarouselProduct(product), discoveryReason: reason })),
+    soymilk: topSoymilks.map(({ product, reason }) => ({ ...toCarouselProduct(product), discoveryReason: reason })),
   };
 
 
@@ -220,27 +223,28 @@ export default async function Home() {
       </section>
 
       {/* ─── 2. 카테고리 (센터 정렬 아이콘 카드) ─── */}
-      <section className="mx-auto max-w-[1180px] px-4 pt-2 md:px-5 md:pt-4">
-        <div className="grid grid-cols-4 gap-1.5 md:gap-3">
+      <section className="mx-auto max-w-[1180px] px-2.5 pt-2 min-[400px]:px-4 md:px-5 md:pt-4">
+        <div className="grid grid-cols-5 gap-1 min-[400px]:gap-1.5 md:gap-3">
           {([
             { label: "단백질 음료", icon: "drink", href: "/drinks", countKey: "drink" as const },
             { label: "단백질 바", icon: "bar", href: "/bars", countKey: "bar" as const },
             { label: "단백질 요거트", icon: "yogurt", href: "/yogurt", countKey: "yogurt" as const },
             { label: "단백질 쉐이크", icon: "shake", href: "/shake", countKey: "shake" as const },
+            { label: "고단백 두유", icon: "soymilk", href: "/soymilk", countKey: "soymilk" as const },
           ] as const).map((cat) => (
             <HomeTrackedLink
               key={cat.href}
               href={cat.href}
               eventName="home_category_click"
               eventParams={{ category: cat.countKey, destination_url: cat.href }}
-              className="group flex min-w-0 items-center justify-center gap-1 rounded-[10px] border border-[#E3E8E4] bg-white px-1 py-1.5 text-left shadow-[0_2px_6px_rgba(20,32,26,0.07)] transition-all duration-150 hover:shadow-[0_6px_16px_rgba(20,32,26,0.10)] md:justify-start md:gap-3 md:rounded-[12px] md:border-0 md:px-3.5 md:py-3"
+              className="group flex min-w-0 items-center justify-center gap-[3px] rounded-[10px] border border-[#E3E8E4] bg-white px-[3px] py-1.5 text-left min-[400px]:gap-1 min-[400px]:px-1 shadow-[0_2px_6px_rgba(20,32,26,0.07)] transition-all duration-150 hover:shadow-[0_6px_16px_rgba(20,32,26,0.10)] md:justify-start md:gap-3 md:rounded-[12px] md:border-0 md:px-3.5 md:py-3"
             >
-              <span className="relative h-7 w-7 shrink-0 overflow-hidden rounded-[7px] transition-transform duration-150 group-hover:scale-105 md:h-14 md:w-14 md:rounded-[10px]">
-                <Image src={`/category-icons/${cat.icon}.jpg`} alt="" fill className="object-cover" sizes="56px" />
+              <span className="relative h-[26px] w-[26px] shrink-0 overflow-hidden rounded-[7px] min-[400px]:h-7 min-[400px]:w-7 transition-transform duration-150 group-hover:scale-105 md:h-14 md:w-14 md:rounded-[10px]">
+                <Image src={`/category-icons/${cat.icon}-v2.jpg`} alt="" fill className="object-cover" sizes="56px" />
               </span>
               <div className="min-w-0">
-                <p className="break-keep text-[11px] font-extrabold leading-tight md:text-[18px]" style={{ color: "#14201A", letterSpacing: "-0.02em" }}>
-                  <span className="md:hidden">{cat.label.replace("단백질 ", "")}</span>
+                <p className="break-keep text-[11px] font-extrabold leading-tight tracking-[-0.04em] md:text-[18px] md:tracking-[-0.02em]" style={{ color: "#14201A" }}>
+                  <span className="md:hidden">{cat.label.replace("단백질 ", "").replace("고단백 ", "")}</span>
                   <span className="hidden md:inline">{cat.label}</span>
                 </p>
                 <p className="mt-0.5 break-keep text-[10px] font-bold md:mt-[3px] md:text-[15px]" style={{ color: "#1F5A3D" }}>

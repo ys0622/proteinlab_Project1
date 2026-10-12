@@ -115,6 +115,13 @@ const CONDITION_OPTIONS_BY_CATEGORY: Record<ProductType, ConditionOption[]> = {
     { icon: "🌾", label: "식이섬유", desc: "식이섬유 5g 이상 제품을 우선 보고 싶어요", value: "fiber" },
     { icon: "📈", label: "단백질 밀도", desc: "칼로리 대비 단백질 효율이 높은 제품이 좋아요", value: "density" },
   ],
+  soymilk: [
+    { icon: "💪", label: "고단백", desc: "1팩 12g 이상 선호", value: "highpro" },
+    { icon: "🍬", label: "저당", desc: "당류 3g 미만 선호", value: "lowsugar" },
+    { icon: "🥗", label: "저칼로리", desc: "100kcal 이하 선호", value: "lowcal" },
+    { icon: "🫘", label: "검은콩", desc: "고소한 검은콩 맛 선호", value: "blackbean" },
+    { icon: "📈", label: "단백질 밀도", desc: "용량 대비 단백질 효율 중시", value: "density" },
+  ],
 };
 
 const LOADING_STEPS = [
@@ -498,6 +505,19 @@ function getRecommendQuickLinks(category: ProductType, answers: QuizAnswers): Qu
         href: "/guides/product-selection-comparison/diet-protein-yogurt",
         title: "다이어트 단백질 요거트 보기",
         desc: "당류와 칼로리 기준으로 다시 비교해볼 수 있습니다.",
+      });
+    }
+  } else if (category === "soymilk") {
+    links.push({
+      href: "/guides/product-selection-comparison/high-protein-soymilk-guide",
+      title: "고단백 두유 고르는 법",
+      desc: "추천 결과를 본 뒤 단백질, 당류, 칼로리 기준을 자세히 확인할 수 있습니다.",
+    });
+    if (answers.conditions.includes("lowsugar") || answers.purpose === "diet") {
+      links.push({
+        href: "/curation/soymilk-low-sugar",
+        title: "저당 고단백 두유 보기",
+        desc: "당류 3g 미만 두유만 모아 비교할 수 있습니다.",
       });
     }
   } else {

@@ -22,15 +22,17 @@ const CATEGORY_LABEL: Record<string, string> = {
   bars: "바",
   yogurt: "요거트",
   shake: "쉐이크",
+  soymilk: "두유",
 };
 
-const CATEGORY_ORDER = ["drinks", "bars", "yogurt", "shake"];
+const CATEGORY_ORDER = ["drinks", "bars", "yogurt", "shake", "soymilk"];
 
-const PRODUCT_CARD_TYPE: Record<string, "drink" | "bar" | "yogurt" | "shake"> = {
+const PRODUCT_CARD_TYPE: Record<string, "drink" | "bar" | "yogurt" | "shake" | "soymilk"> = {
   drinks: "drink",
   bars: "bar",
   yogurt: "yogurt",
   shake: "shake",
+  soymilk: "soymilk",
 };
 
 const START_LINKS = [

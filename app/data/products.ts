@@ -6,6 +6,7 @@ import type {
   ProductDetailProps,
 } from "./productTypes";
 import { getShakeProducts } from "./shakeProductsData";
+import { getSoymilkProducts } from "./soymilkProductsData";
 import { getYogurtProducts } from "./yogurtProductsData";
 
 export type {
@@ -21,6 +22,7 @@ export const barProductsWithGrades: ProductDetailProps[] = applyBarGrades(mockBa
 export const yogurtProducts: ProductDetailProps[] = getYogurtProducts();
 export const yogurtProductsWithGrades: ProductDetailProps[] = applyYogurtGrades(yogurtProducts);
 export const shakeProducts: ProductDetailProps[] = applyShakeGrades(getShakeProducts());
+export const soymilkProducts: ProductDetailProps[] = getSoymilkProducts();
 
 function formatValue(value: number | undefined, unit: string) {
   return value != null ? `${value}${unit}` : "-";
@@ -61,6 +63,23 @@ export function getNutritionDetail(p: ProductDetailProps): NutritionDetailRow[] 
     rows.push({ label: "BCAA", value: `${n.bcaaMg ?? 0}mg` });
     if (n.eaaMg != null) rows.push({ label: "EAA", value: `${n.eaaMg}mg` });
     if (n.arginineMg != null) rows.push({ label: "아르기닌", value: `${n.arginineMg}mg` });
+    return rows;
+  }
+
+  if (n && p.productType === "soymilk") {
+    const rows: NutritionDetailRow[] = [
+      { label: "칼로리", value: formatValue(n.caloriesKcal, "kcal") },
+      { label: "탄수화물", value: formatValue(n.carbsG, "g") },
+      { label: "당류", value: formatValue(n.sugarsG, "g") },
+      { label: "단백질", value: formatValue(n.proteinG, "g") },
+      { label: "지방", value: formatValue(n.fatG, "g") },
+      { label: "포화지방", value: formatValue(n.satFatG, "g") },
+      { label: "트랜스지방", value: formatValue(n.transFatG, "g") },
+      { label: "콜레스테롤", value: formatValue(n.cholesterolMg, "mg") },
+      { label: "나트륨", value: formatValue(n.sodiumMg, "mg") },
+    ];
+    if (n.fiberG != null) rows.push({ label: "식이섬유", value: `${n.fiberG}g` });
+    if (n.calciumMg != null) rows.push({ label: "칼슘", value: `${n.calciumMg}mg` });
     return rows;
   }
 
@@ -132,7 +151,7 @@ export function getNutritionDetail(p: ProductDetailProps): NutritionDetailRow[] 
 }
 
 export function getAllProducts(): ProductDetailProps[] {
-  return [...mockProducts, ...barProductsWithGrades, ...yogurtProductsWithGrades, ...shakeProducts];
+  return [...mockProducts, ...barProductsWithGrades, ...yogurtProductsWithGrades, ...shakeProducts, ...soymilkProducts];
 }
 
 export function getProductBySlug(slug: string): ProductDetailProps | null {
@@ -142,6 +161,8 @@ export function getProductBySlug(slug: string): ProductDetailProps | null {
   if (yogurt) return yogurt;
   const shake = shakeProducts.find((p) => p.slug === slug);
   if (shake) return shake;
+  const soymilk = soymilkProducts.find((p) => p.slug === slug);
+  if (soymilk) return soymilk;
   return mockProducts.find((p) => p.slug === slug) ?? null;
 }
 

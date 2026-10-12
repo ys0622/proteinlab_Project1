@@ -17,7 +17,7 @@ export interface ProductCardProps {
   gradeTags?: string[];
   slug?: string;
   priority?: boolean;
-  productType?: "drink" | "bar" | "yogurt" | "shake";
+  productType?: "drink" | "bar" | "yogurt" | "shake" | "soymilk";
   yogurtType?: string;
   purchaseLinkCategory?: CoupangLinkCategory | null;
   maxVisibleBadges?: number;
@@ -67,7 +67,7 @@ export interface ProductDetailFields {
   slug: string;
   /** First registration in ProteinLab; not necessarily the market launch date. */
   createdAt?: string;
-  productType?: "drink" | "bar" | "yogurt" | "shake";
+  productType?: "drink" | "bar" | "yogurt" | "shake" | "soymilk";
   nutritionBasis?: "per_unit" | "per_pack" | "unknown";
   needsServingCheck?: boolean;
   servingCheckNote?: string;
@@ -80,6 +80,7 @@ export interface ProductDetailFields {
   calorieDensity?: string;
   drinkType?: string;
   yogurtType?: string;
+  soymilkType?: string;
   storageType?: string;
   lactoseFree?: boolean;
   proteinPer100g?: number;

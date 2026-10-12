@@ -250,7 +250,7 @@ export function getProductTrafficLinks(
     {
       href: `/brands/${brandToSlug(product.brand)}`,
       title: `${product.brand} 브랜드 허브`,
-      description: `같은 브랜드 안에서 음료, 바, 요거트, 쉐이크 라인을 한 번에 모아 봅니다.`,
+      description: `같은 브랜드 안에서 음료, 바, 요거트, 쉐이크, 두유 라인을 한 번에 모아 봅니다.`,
     },
   ];
 
@@ -289,6 +289,18 @@ export function getProductTrafficLinks(
         href: "/topics/high-protein-greek-yogurt",
         title: "고단백 그릭요거트 랜딩",
         description: "단백질 밀도와 당류를 기준으로 그릭요거트만 다시 봅니다.",
+      },
+    ],
+    soymilk: [
+      {
+        href: "/guides/product-selection-comparison/high-protein-soymilk-guide",
+        title: "고단백 두유 선택 가이드",
+        description: "1팩 단백질, 당류, 열량을 어떤 순서로 비교하면 좋은지 정리했습니다.",
+      },
+      {
+        href: "/curation/soymilk-low-sugar",
+        title: "저당 고단백 두유 랜딩",
+        description: "당류 3g 미만 두유만 모아 단백질과 함께 다시 비교합니다.",
       },
     ],
     shake: [

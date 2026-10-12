@@ -21,6 +21,7 @@ import {
   mockProducts,
   barProductsWithGrades,
   shakeProducts,
+  soymilkProducts,
   yogurtProductsWithGrades,
 } from "./data/products";
 
@@ -174,6 +175,7 @@ const PRODUCT_DATES: Record<string, string> = {
   bar: "2026-10-09",
   yogurt: "2026-10-09",
   shake: "2026-10-09",
+  soymilk: "2026-10-12",
 };
 
 const CATEGORY_GUIDE_CONFIGS = [
@@ -211,6 +213,7 @@ const staticRoutes = [
   "/official-events",
   "/compare",
   "/shake",
+  "/soymilk",
   "/yogurt",
   "/brands",
 ] as const;
@@ -311,6 +314,7 @@ const STATIC_GUIDE_ROUTES: string[] = [
   "/guides/product-selection-comparison/low-calorie-protein-products-guide",
   "/guides/product-selection-comparison/low-sugar-protein-drink-guide",
   "/guides/product-selection-comparison/low-sugar-protein-products-guide",
+  "/guides/product-selection-comparison/high-protein-soymilk-guide",
   "/guides/product-selection-comparison/low-sugar-protein-shake-guide",
   "/guides/product-selection-comparison/low-sugar-yogurt-guide",
   "/guides/product-selection-comparison/meal-replacement-protein-bar-guide",
@@ -421,6 +425,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...mockProducts,
     ...barProductsWithGrades,
     ...shakeProducts,
+    ...soymilkProducts,
     ...yogurtProductsWithGrades,
   ];
   const productRoutes = allProducts
@@ -446,7 +451,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       url: `${SITE_URL}${route}`,
       lastModified,
       changeFrequency:
-        route === "/" || route === "/drinks" || route === "/bars" || route === "/yogurt" || route === "/shake" || route === "/ranking"
+        route === "/" || route === "/drinks" || route === "/bars" || route === "/yogurt" || route === "/shake" || route === "/soymilk" || route === "/ranking"
           ? ("daily" as const)
           : route.startsWith("/guides/") || route.startsWith("/curation/") || route.startsWith("/topics/") || route.startsWith("/compare/") || route.startsWith("/picks/")
             ? ("weekly" as const)
@@ -456,7 +461,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
           ? 1
           : route === "/guides" || route === "/recommend" || route === "/ranking"
             ? 0.9
-            : route === "/drinks" || route === "/bars" || route === "/yogurt" || route === "/shake"
+            : route === "/drinks" || route === "/bars" || route === "/yogurt" || route === "/shake" || route === "/soymilk"
               ? 0.88
               : route.startsWith("/curation/")
                 ? 0.85

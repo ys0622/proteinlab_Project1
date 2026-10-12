@@ -57,7 +57,7 @@ export default function RankingClient({ category, metric, items, categoryCounts,
       </section>
       <main className="mx-auto max-w-[1200px] px-4 py-6 md:px-6">
         <nav aria-label="제품 종류" className="mb-4 flex flex-wrap gap-2">
-          {(["drink", "bar", "yogurt", "shake"] as ProductCategory[]).map((categoryKey) => (
+          {(["drink", "bar", "yogurt", "shake", "soymilk"] as ProductCategory[]).map((categoryKey) => (
             <Link key={categoryKey} href={rankingHref(categoryKey, "density")} prefetch={false}
               aria-current={category === categoryKey ? "page" : undefined}
               className={`rounded-full border px-4 py-2 text-sm font-semibold transition-colors ${category === categoryKey ? "border-[#16412D] bg-[#16412D] text-white" : "border-[#DCE6DE] bg-white text-[#16412D] hover:bg-[#F5F8F5]"}`}>

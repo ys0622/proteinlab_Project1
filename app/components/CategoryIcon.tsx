@@ -1,4 +1,4 @@
-type CategoryIconType = "drink" | "bar" | "yogurt" | "shake";
+type CategoryIconType = "drink" | "bar" | "yogurt" | "shake" | "soymilk";
 
 function Svg({ children }: { children: React.ReactNode }) {
   return (
@@ -77,6 +77,24 @@ function ShakeIcon({ color }: { color: string }) {
   );
 }
 
+/** 두유: 빨대 꽂힌 팩 */
+function SoymilkIcon({ color }: { color: string }) {
+  return (
+    <Svg>
+      <path d="M12.6 7.4 14 3.6h2.6" stroke={color} strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
+      <path
+        d="M7.2 7.4h9.6l.9 2.4v9.2a1.4 1.4 0 0 1-1.4 1.4H7.7a1.4 1.4 0 0 1-1.4-1.4V9.8l.9-2.4Z"
+        stroke={color}
+        strokeWidth="1.5"
+        strokeLinejoin="round"
+      />
+      <path d="M6.3 9.8h11.4" stroke={color} strokeWidth="1.2" strokeLinecap="round" opacity="0.65" />
+      <ellipse cx="10.4" cy="14.2" rx="1.5" ry="2" stroke={color} strokeWidth="1.2" />
+      <ellipse cx="13.6" cy="16.2" rx="1.5" ry="2" stroke={color} strokeWidth="1.2" />
+    </Svg>
+  );
+}
+
 export default function CategoryIcon({ type, color = "rgba(255,255,255,0.92)" }: { type: CategoryIconType; color?: string }) {
   switch (type) {
     case "drink":
@@ -87,6 +105,8 @@ export default function CategoryIcon({ type, color = "rgba(255,255,255,0.92)" }:
       return <YogurtIcon color={color} />;
     case "shake":
       return <ShakeIcon color={color} />;
+    case "soymilk":
+      return <SoymilkIcon color={color} />;
     default:
       return null;
   }

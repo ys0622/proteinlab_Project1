@@ -16,7 +16,7 @@ type Props = {
   quickFacts?: string[];
   imageUrl?: string;
   description?: string;
-  productType?: "drink" | "bar" | "yogurt" | "shake";
+  productType?: "drink" | "bar" | "yogurt" | "shake" | "soymilk";
 };
 
 export default function ProductDetailBuyWrapper(props: Props) {

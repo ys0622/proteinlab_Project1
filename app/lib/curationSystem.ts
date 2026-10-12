@@ -3,7 +3,7 @@ import { getPopularityScore } from "./productPopularity";
 import { hasNoPurchasableCoupangLink } from "./purchaseLinks";
 import { isComparableServing } from "./servingScope";
 
-export type CurationCategory = "drink" | "bar" | "yogurt" | "shake";
+export type CurationCategory = "drink" | "bar" | "yogurt" | "shake" | "soymilk";
 export type CurationKind = "ingredient" | "goal" | "context";
 
 type CurationFilter = (product: ProductDetailProps) => boolean;
@@ -183,6 +183,22 @@ function sortYogurtByLowSugar(products: ProductDetailProps[]) {
     if (densityDelta !== 0) return densityDelta;
 
     return (b.proteinPerServing ?? 0) - (a.proteinPerServing ?? 0);
+  });
+}
+
+function sortSoymilkByCalories(products: ProductDetailProps[]) {
+  return [...products].sort((a, b) => {
+    const calorieDelta = (a.calories ?? 999) - (b.calories ?? 999);
+    if (calorieDelta !== 0) return calorieDelta;
+    return (b.proteinPerServing ?? 0) - (a.proteinPerServing ?? 0);
+  });
+}
+
+function sortSoymilkByProtein(products: ProductDetailProps[]) {
+  return [...products].sort((a, b) => {
+    const proteinDelta = (b.proteinPerServing ?? 0) - (a.proteinPerServing ?? 0);
+    if (proteinDelta !== 0) return proteinDelta;
+    return (a.sugar ?? 999) - (b.sugar ?? 999);
   });
 }
 
@@ -409,6 +425,17 @@ const curations: CurationDefinition[] = [
           comparisonTitle: "인기 단백질 쉐이크 비교",
         },
       },
+      soymilk: {
+        category: "soymilk",
+        filter: (product) => product.productType === "soymilk",
+        recommend: (products) =>
+          sortByPopularity(products.filter((product) => product.productType === "soymilk"), "soymilk"),
+        landingCopy: {
+          recommendationTitle: "인기 고단백 두유 추천",
+          recommendationNote: "최근 많이 찾는 고단백 두유를 먼저 보여줍니다.",
+          comparisonTitle: "인기 고단백 두유 비교",
+        },
+      },
     },
   },
   {
@@ -428,6 +455,96 @@ const curations: CurationDefinition[] = [
         quickOrder: 10,
         filter: (product) => product.productType === "drink" && (product.sugar ?? 0) <= 0,
         recommend: (products) => products.filter((product) => (product.sugar ?? 0) <= 0),
+      },
+    },
+  },
+  {
+    id: "soymilk-low-sugar",
+    slug: "soymilk-low-sugar",
+    label: "저당",
+    icon: "🍃",
+    kind: "ingredient",
+    categoryTargets: ["soymilk"],
+    routeMode: "category-query",
+    seoTitle: "저당 고단백 두유 추천 | ProteinLab",
+    seoDescription:
+      "당류 3g 미만의 고단백 두유를 단백질, 칼로리와 함께 비교합니다. 설탕무첨가·저당 두유를 성분표 기준으로 확인해보세요.",
+    categories: {
+      soymilk: {
+        category: "soymilk",
+        quickLabel: "저당",
+        quickIcon: "🍃",
+        quickOrder: 10,
+        filter: (product) => product.productType === "soymilk" && (product.sugar ?? 999) < 3,
+        recommend: (products) =>
+          sortYogurtByLowSugar(
+            products.filter((product) => product.productType === "soymilk" && (product.sugar ?? 999) < 3),
+          ),
+        landingCopy: {
+          recommendationTitle: "추천 저당 고단백 두유",
+          recommendationNote: "당류 3g 미만이면서 단백질 8g 이상인 제품 중심입니다.",
+          comparisonTitle: "저당 고단백 두유 비교",
+        },
+      },
+    },
+  },
+  {
+    id: "soymilk-low-calorie",
+    slug: "soymilk-low-calorie",
+    label: "저칼로리",
+    icon: "🪶",
+    kind: "ingredient",
+    categoryTargets: ["soymilk"],
+    routeMode: "category-query",
+    seoTitle: "저칼로리 고단백 두유 추천 | ProteinLab",
+    seoDescription:
+      "1팩 100kcal 이하의 고단백 두유를 단백질, 당류와 함께 비교합니다.",
+    categories: {
+      soymilk: {
+        category: "soymilk",
+        quickLabel: "저칼로리",
+        quickIcon: "🪶",
+        quickOrder: 20,
+        filter: (product) => product.productType === "soymilk" && (product.calories ?? 999) <= 100,
+        recommend: (products) =>
+          sortSoymilkByCalories(
+            products.filter((product) => product.productType === "soymilk" && (product.calories ?? 999) <= 100),
+          ),
+        landingCopy: {
+          recommendationTitle: "추천 저칼로리 고단백 두유",
+          recommendationNote: "열량이 낮으면서 단백질을 챙기기 좋은 제품 중심입니다.",
+          comparisonTitle: "저칼로리 고단백 두유 비교",
+        },
+      },
+    },
+  },
+  {
+    id: "soymilk-blackbean",
+    slug: "soymilk-blackbean",
+    label: "검은콩",
+    icon: "🫘",
+    kind: "ingredient",
+    categoryTargets: ["soymilk"],
+    routeMode: "category-query",
+    seoTitle: "검은콩 고단백 두유 추천 | ProteinLab",
+    seoDescription:
+      "검은콩 맛 고단백 두유를 단백질, 당류, 칼로리 기준으로 비교합니다.",
+    categories: {
+      soymilk: {
+        category: "soymilk",
+        quickLabel: "검은콩",
+        quickIcon: "🫘",
+        quickOrder: 30,
+        filter: (product) => product.productType === "soymilk" && /검은콩|서리태/.test(`${product.name} ${product.flavor ?? ""}`),
+        recommend: (products) =>
+          sortSoymilkByProtein(
+            products.filter((product) => product.productType === "soymilk" && /검은콩|서리태/.test(`${product.name} ${product.flavor ?? ""}`)),
+          ),
+        landingCopy: {
+          recommendationTitle: "추천 검은콩 고단백 두유",
+          recommendationNote: "단백질 함량을 우선으로 본 검은콩 제품입니다.",
+          comparisonTitle: "검은콩 고단백 두유 비교",
+        },
       },
     },
   },
@@ -1603,6 +1720,7 @@ export function buildCategoryCurationHref(category: CurationCategory, slug: stri
   if (category === "bar") return `/bars?curation=${slug}`;
   if (category === "yogurt") return `/yogurt?curation=${slug}`;
   if (category === "shake") return `/shake?curation=${slug}`;
+  if (category === "soymilk") return `/soymilk?curation=${slug}`;
   return `/?curation=${slug}`;
 }
 

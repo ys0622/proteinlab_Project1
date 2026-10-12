@@ -2,13 +2,14 @@ import {
   barProductsWithGrades,
   mockProducts,
   shakeProducts,
+  soymilkProducts,
   type ProductDetailProps,
   yogurtProductsWithGrades,
 } from "@/app/data/products";
 import localOverrideData from "@/app/data/productOverrideLocal.json";
 import { normalizeCoupangUrl } from "./purchaseLinks";
 
-export type ProductCategory = "drink" | "bar" | "yogurt" | "shake";
+export type ProductCategory = "drink" | "bar" | "yogurt" | "shake" | "soymilk";
 
 type ProductOverrideRecord = Record<string, Record<string, unknown>>;
 
@@ -36,6 +37,7 @@ const staticProductsByCategory: Record<ProductCategory, ProductDetailProps[]> = 
   bar: barProductsWithGrades.map(applyLocalOverride),
   yogurt: yogurtProductsWithGrades.map(applyLocalOverride),
   shake: shakeProducts.map(applyLocalOverride),
+  soymilk: soymilkProducts.map(applyLocalOverride),
 };
 
 const allStaticProducts = [
@@ -43,6 +45,7 @@ const allStaticProducts = [
   ...staticProductsByCategory.bar,
   ...staticProductsByCategory.yogurt,
   ...staticProductsByCategory.shake,
+  ...staticProductsByCategory.soymilk,
 ];
 
 export function getStaticProductsByCategory(category: ProductCategory): ProductDetailProps[] {

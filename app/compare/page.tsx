@@ -285,7 +285,9 @@ export default function ComparePage() {
           ? "단백질 요거트를 단백질 함량, 당류, 칼로리, 유형 기준으로 비교합니다. 그릭과 드링킹 차이도 함께 보기 쉽게 구성했습니다."
           : selectedCategory === "shake"
             ? "단백질 쉐이크를 단백질 함량, 당류, 식이섬유, 용도 기준으로 비교합니다. 식사대용인지 운동 후 보완용인지 구분하기 쉽게 정리했습니다."
-            : "단백질 음료, 바, 요거트, 쉐이크를 최대 3개까지 한 화면에서 비교합니다.";
+            : selectedCategory === "soymilk"
+              ? "고단백 두유를 1팩 단백질, 당류, 칼로리 기준으로 비교합니다. 플레인과 검은콩, 저당 제품 차이를 한눈에 볼 수 있게 정리했습니다."
+              : "단백질 음료, 바, 요거트, 쉐이크, 두유를 최대 3개까지 한 화면에서 비교합니다.";
 
   if (products.length === 0) {
     return (
@@ -307,6 +309,7 @@ export default function ComparePage() {
                   { value: "bar", label: "바" },
                   { value: "yogurt", label: "요거트" },
                   { value: "shake", label: "쉐이크" },
+                  { value: "soymilk", label: "두유" },
                 ] as const
               ).map((tab) => {
                 const active = pickerCategory === tab.value;

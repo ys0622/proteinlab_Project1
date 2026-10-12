@@ -1,4 +1,4 @@
-export type ProductCategory = "drink" | "bar" | "yogurt" | "shake";
+export type ProductCategory = "drink" | "bar" | "yogurt" | "shake" | "soymilk";
 
 export interface CategoryMeta {
   label: string;
@@ -10,7 +10,7 @@ export interface CategoryMeta {
 export const CATEGORY_META: Record<ProductCategory, CategoryMeta> = {
   drink: {
     label: "음료",
-    description: "바로 마실 수 있는 고단백 RTD 제품 비교",
+    description: "바로 마실 수 있는 단백질 RTD 음료 비교 (두유는 별도 카테고리)",
     order: 1,
     href: "/drinks",
   },
@@ -31,6 +31,12 @@ export const CATEGORY_META: Record<ProductCategory, CategoryMeta> = {
     description: "파우치형 중심의 간편 섭취 단백질 쉐이크 비교 (파우더 제외)",
     order: 4,
     href: "/shake",
+  },
+  soymilk: {
+    label: "두유",
+    description: "1팩 단백질 8g 이상인 고단백 두유만 등록 (일반 두유 제외, 함량 g 기준)",
+    order: 5,
+    href: "/soymilk",
   },
 };
 

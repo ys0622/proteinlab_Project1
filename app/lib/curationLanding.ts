@@ -1,10 +1,10 @@
-import { barProductsWithGrades, mockProducts, shakeProducts, yogurtProducts } from "../data/products";
+import { barProductsWithGrades, mockProducts, shakeProducts, soymilkProducts, yogurtProducts } from "../data/products";
 import type { ProductDetailProps } from "../data/products";
 import { selectHomeDiscovery } from "./homeDiscovery";
 import type { CurationDefinition, CurationGuideLink, CurationInfoSection } from "./curationSystem";
 import { getCurationDefinition, getPopularCurations, getRecommendedProductsForCuration } from "./curationSystem";
 
-type CategoryKey = "drink" | "bar" | "yogurt" | "shake" | "both";
+type CategoryKey = "drink" | "bar" | "yogurt" | "shake" | "soymilk" | "both";
 
 interface LandingProfile {
   heroTitle?: string;
@@ -19,7 +19,9 @@ function getCategoryKey(curation: CurationDefinition): CategoryKey {
   const hasBar = Boolean(curation.categories.bar);
   const hasYogurt = Boolean(curation.categories.yogurt);
   const hasShake = Boolean(curation.categories.shake);
+  const hasSoymilk = Boolean(curation.categories.soymilk);
   if (hasDrink && hasBar) return "both";
+  if (hasSoymilk) return "soymilk";
   if (hasShake) return "shake";
   if (hasYogurt) return "yogurt";
   return hasDrink ? "drink" : "bar";
@@ -30,6 +32,7 @@ function getCategoryLabel(categoryKey: CategoryKey) {
   if (categoryKey === "drink") return "단백질 음료";
   if (categoryKey === "bar") return "단백질 바";
   if (categoryKey === "shake") return "단백질 쉐이크";
+  if (categoryKey === "soymilk") return "고단백 두유";
   return "단백질 요거트";
 }
 
@@ -553,13 +556,25 @@ function buildDefaultGuideLinks(curation: CurationDefinition): CurationGuideLink
     });
   }
 
+  if (curation.categories.soymilk) {
+    links.push({
+      href: `/soymilk?curation=${curation.slug}`,
+      title: `${curation.label} 고단백 두유 비교`,
+      description: `${curation.label} 기준에 맞는 고단백 두유를 바로 비교해보세요.`,
+    });
+  }
+
   links.push({
-    href: curation.categories.bar
+    href: curation.categories.soymilk
+      ? "/guides/product-selection-comparison/high-protein-soymilk-guide"
+      : curation.categories.bar
       ? "/guides/product-selection-comparison/protein-bar-guide"
       : curation.categories.yogurt
         ? "/guides/product-selection-comparison/nutrition-criteria"
         : "/guides/product-selection-comparison/nutrition-criteria",
-    title: curation.categories.bar
+    title: curation.categories.soymilk
+      ? "고단백 두유 고르는 법"
+      : curation.categories.bar
       ? "단백질 바 고르는 법"
       : curation.categories.yogurt
         ? "단백질 요거트 고르는 법"
@@ -638,9 +653,12 @@ export function getCurationLandingData(slug: string, views?: Record<string, Reco
   const shakeProductsForCuration = curation.categories.shake
     ? shakeProducts.filter(curation.categories.shake.filter)
     : [];
+  const soymilkProductsForCuration = curation.categories.soymilk
+    ? soymilkProducts.filter(curation.categories.soymilk.filter)
+    : [];
 
   // 인기 랜딩은 정적 점수 대신 홈·트렌딩과 같은 블렌딩 순위를 쓴다(조회수 데이터가 넘어온 경우).
-  const popularPick = (products: ProductDetailProps[], category: "drink" | "bar" | "yogurt" | "shake") =>
+  const popularPick = (products: ProductDetailProps[], category: "drink" | "bar" | "yogurt" | "shake" | "soymilk") =>
     slug === "popular" && views
       ? selectHomeDiscovery(products, views[category] ?? {}, {}, Date.now(), 6).map(({ product }) => product)
       : null;
@@ -657,6 +675,9 @@ export function getCurationLandingData(slug: string, views?: Record<string, Reco
   const recommendedShakes = curation.categories.shake
     ? (popularPick(shakeProducts, "shake") ?? getRecommendedProductsForCuration(shakeProducts, "shake", curation.slug, 6))
     : [];
+  const recommendedSoymilks = curation.categories.soymilk
+    ? (popularPick(soymilkProducts, "soymilk") ?? getRecommendedProductsForCuration(soymilkProducts, "soymilk", curation.slug, 6))
+    : [];
 
   return {
     curation,
@@ -668,5 +689,7 @@ export function getCurationLandingData(slug: string, views?: Record<string, Reco
     recommendedYogurts,
     shakeProducts: shakeProductsForCuration,
     recommendedShakes,
+    soymilkProducts: soymilkProductsForCuration,
+    recommendedSoymilks,
   };
 }

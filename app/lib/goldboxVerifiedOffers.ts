@@ -35,6 +35,17 @@ const EXPIRING_SEED: VerifiedGoldboxOffer[] = [{
   verifiedAt: "2026-10-12T09:02:00+09:00",
   startsAt: "2026-10-12T09:02:00+09:00",
   expiresAt: "2026-10-13T07:00:00+09:00",
+}, {
+  // 2026-10-12 사용자가 쿠팡 골드박스 화면(상품 카드 타이머 14:19:51 남음, 16:40경)으로 확인해 알려 준 제품(링크 hMGhgfxaj6, 190ml 24개 옵션).
+  // 남은 시간 14:19:51 = 10/13 07:00 종료로 계산했다(위 항목과 같은 골드박스 종료 시각). 가격은 표시하지 않는다(price 0 = 가격 줄 숨김).
+  slug: "maeil-999-plain-unsweetened-190",
+  offerName: "190mL × 24개 · 와우회원 쿠폰 할인 · 쿠팡 확인",
+  price: 0,
+  href: "https://link.coupang.com/a/hMGhgfxaj6",
+  source: "coupang_app",
+  verifiedAt: "2026-10-12T16:40:00+09:00",
+  startsAt: "2026-10-12T16:40:00+09:00",
+  expiresAt: "2026-10-13T07:00:00+09:00",
 }];
 
 async function getKV(): Promise<OfferKV | null> {

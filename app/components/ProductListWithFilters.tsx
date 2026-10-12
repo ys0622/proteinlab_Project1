@@ -10,10 +10,12 @@ import {
   defaultBarFilters,
   defaultDrinkFilters,
   defaultShakeFilters,
+  defaultSoymilkFilters,
   defaultYogurtFilters,
   filterBarProducts,
   filterDrinkProducts,
   filterShakeProducts,
+  filterSoymilkProducts,
   filterYogurtProducts,
   getCapacityMl,
   getYogurtFlavorCategory,
@@ -21,6 +23,7 @@ import {
   type BarFilters,
   type DrinkFilters,
   type ShakeFilters,
+  type SoymilkFilters,
   type YogurtFilters,
 } from "../lib/productFilters";
 import { getPopularityScore } from "../lib/productPopularity";
@@ -49,6 +52,7 @@ type PersistedFilterState = {
   barFilters: BarFilters;
   yogurtFilters: YogurtFilters;
   shakeFilters: ShakeFilters;
+  soymilkFilters: SoymilkFilters;
   sort: SortOptionValue;
   page: number;
   searchQuery: string;
@@ -113,6 +117,16 @@ function normalizeShakeFilters(value: unknown): ShakeFilters {
   };
 }
 
+function normalizeSoymilkFilters(value: unknown): SoymilkFilters {
+  const candidate = (value ?? {}) as Partial<Record<keyof SoymilkFilters, unknown>>;
+  return {
+    brand: toStringArray(candidate.brand),
+    protein: toStringArray(candidate.protein),
+    sugar: toStringArray(candidate.sugar),
+    flavor: toStringArray(candidate.flavor),
+  };
+}
+
 function getPersistedFilterState(storageKey: string): Partial<PersistedFilterState> | null {
   if (typeof window === "undefined") return null;
 
@@ -128,6 +142,7 @@ function getPersistedFilterState(storageKey: string): Partial<PersistedFilterSta
       barFilters: normalizeBarFilters(parsed.barFilters),
       yogurtFilters: normalizeYogurtFilters(parsed.yogurtFilters),
       shakeFilters: normalizeShakeFilters(parsed.shakeFilters),
+      soymilkFilters: normalizeSoymilkFilters(parsed.soymilkFilters),
       sort: normalizeSortValue(parsed.sort),
       page: typeof parsed.page === "number" && Number.isFinite(parsed.page) && parsed.page > 0 ? parsed.page : 1,
       searchQuery: typeof parsed.searchQuery === "string" ? parsed.searchQuery : "",
@@ -263,6 +278,9 @@ function ProductListWithFiltersInner(props: ProductListWithFiltersInnerProps) {
   const [shakeFilters, setShakeFilters] = useState<ShakeFilters>(
     () => initialPersistedState?.shakeFilters ?? defaultShakeFilters,
   );
+  const [soymilkFilters, setSoymilkFilters] = useState<SoymilkFilters>(
+    () => initialPersistedState?.soymilkFilters ?? defaultSoymilkFilters,
+  );
   const [sort, setSort] = useState<SortOptionValue>(
     () => normalizeSortValue(initialPersistedState?.sort),
   );
@@ -284,7 +302,9 @@ function ProductListWithFiltersInner(props: ProductListWithFiltersInnerProps) {
         ? barFilters
         : productType === "yogurt"
           ? yogurtFilters
-          : shakeFilters;
+          : productType === "soymilk"
+            ? soymilkFilters
+            : shakeFilters;
 
   const curationFiltered = useMemo(() => {
     return applyCurationToCategoryProducts(products, productType, curationSlug);
@@ -299,6 +319,9 @@ function ProductListWithFiltersInner(props: ProductListWithFiltersInnerProps) {
     }
     if (productType === "yogurt") {
       return filterYogurtProducts(curationFiltered, filters as YogurtFilters);
+    }
+    if (productType === "soymilk") {
+      return filterSoymilkProducts(curationFiltered, filters as SoymilkFilters);
     }
     return filterShakeProducts(curationFiltered, filters as ShakeFilters);
   }, [curationFiltered, filters, productType]);
@@ -350,13 +373,14 @@ function ProductListWithFiltersInner(props: ProductListWithFiltersInnerProps) {
       barFilters,
       yogurtFilters,
       shakeFilters,
+      soymilkFilters,
       sort,
       page,
       searchQuery,
     };
 
     window.sessionStorage.setItem(storageKey, JSON.stringify(persistedState));
-  }, [barFilters, drinkFilters, page, searchQuery, shakeFilters, sort, storageKey, yogurtFilters]);
+  }, [barFilters, drinkFilters, page, searchQuery, shakeFilters, soymilkFilters, sort, storageKey, yogurtFilters]);
 
   useEffect(() => {
     onUrlStateChange?.(sort, searchQuery);
@@ -415,6 +439,17 @@ function ProductListWithFiltersInner(props: ProductListWithFiltersInnerProps) {
     });
   };
 
+  const handleSoymilkFilterToggle = (key: keyof SoymilkFilters, value: string) => {
+    setPage(1);
+    setSoymilkFilters((prev) => {
+      const current = prev[key];
+      const next = current.includes(value)
+        ? current.filter((item) => item !== value)
+        : [...current, value];
+      return { ...prev, [key]: next };
+    });
+  };
+
   const handleResetFilters = () => {
     setPage(1);
     setSearchQuery("");
@@ -428,6 +463,10 @@ function ProductListWithFiltersInner(props: ProductListWithFiltersInnerProps) {
     }
     if (productType === "yogurt") {
       setYogurtFilters(defaultYogurtFilters);
+      return;
+    }
+    if (productType === "soymilk") {
+      setSoymilkFilters(defaultSoymilkFilters);
       return;
     }
     setShakeFilters(defaultShakeFilters);
@@ -552,6 +591,16 @@ function ProductListWithFiltersInner(props: ProductListWithFiltersInnerProps) {
             yogurtBrandOptions={brandOptions}
             yogurtTypeOptions={yogurtTypeOptions}
             yogurtFlavorOptions={yogurtFlavorOptions}
+          />
+        ) : productType === "soymilk" ? (
+          <FilterSection
+            productType="soymilk"
+            filters={filters as SoymilkFilters}
+            onFilterToggle={handleSoymilkFilterToggle}
+            onResetFilters={handleResetFilters}
+            mobileToolbarSlot={mobileSearchButton}
+            desktopSearchSlot={desktopSearchSlot}
+            soymilkBrandOptions={brandOptions}
           />
         ) : (
           <FilterSection

@@ -15,15 +15,16 @@ import type { ProductCategory } from "../lib/categories";
 export const dynamic = "force-dynamic";
 
 export async function generateMetadata(): Promise<Metadata> {
-  const [drinks, bars, yogurts, shakes] = await Promise.all([
+  const [drinks, bars, yogurts, shakes, soymilks] = await Promise.all([
     getProductsByCategoryAsync("drink"),
     getProductsByCategoryAsync("bar"),
     getProductsByCategoryAsync("yogurt"),
     getProductsByCategoryAsync("shake"),
+    getProductsByCategoryAsync("soymilk"),
   ]);
-  const totalCount = drinks.length + bars.length + yogurts.length + shakes.length;
+  const totalCount = drinks.length + bars.length + yogurts.length + shakes.length + soymilks.length;
   const title = `단백질 제품 ${totalCount}종 비교 — 브랜드·카테고리·목적별로 찾기`;
-  const description = `단백질 음료, 바, 요거트, 쉐이크 ${totalCount}종을 브랜드, 단백질 함량, 당류, 칼로리, 목적별로 바로 비교해보세요. 저당, 40g, 다이어트, 50대 기준도 빠르게 찾을 수 있습니다.`;
+  const description = `단백질 음료, 바, 요거트, 쉐이크, 두유 ${totalCount}종을 브랜드, 단백질 함량, 당류, 칼로리, 목적별로 바로 비교해보세요. 저당, 40g, 다이어트, 50대 기준도 빠르게 찾을 수 있습니다.`;
 
   return {
     title,
@@ -93,14 +94,20 @@ const categoryLinks = [
     title: "단백질 쉐이크",
     body: "식사대용, 다이어트, 아침 공복 보완이 목적이라면 쉐이크가 더 직접적입니다.",
   },
+  {
+    href: "/soymilk",
+    title: "고단백 두유",
+    body: "식물성 단백질 음료를 찾는다면 단백질 8g 이상 두유부터 당류까지 비교해보세요.",
+  },
 ];
 
 export default async function ProductsPage() {
-  const [drinks, bars, yogurts, shakes] = await Promise.all([
+  const [drinks, bars, yogurts, shakes, soymilks] = await Promise.all([
     getProductsByCategoryAsync("drink"),
     getProductsByCategoryAsync("bar"),
     getProductsByCategoryAsync("yogurt"),
     getProductsByCategoryAsync("shake"),
+    getProductsByCategoryAsync("soymilk"),
   ]);
 
   const categoryCounts: Record<ProductCategory, number> = {
@@ -108,8 +115,9 @@ export default async function ProductsPage() {
     bar: bars.length,
     yogurt: yogurts.length,
     shake: shakes.length,
+    soymilk: soymilks.length,
   };
-  const totalCount = drinks.length + bars.length + yogurts.length + shakes.length;
+  const totalCount = drinks.length + bars.length + yogurts.length + shakes.length + soymilks.length;
   const byBrand = (list: typeof drinks) =>
     [...list].filter((product) => product.slug).sort((a, b) => a.brand.localeCompare(b.brand, "ko") || a.name.localeCompare(b.name, "ko"));
   const allGroups = [
@@ -117,6 +125,7 @@ export default async function ProductsPage() {
     { href: "/bars", title: "단백질 바", products: byBrand(bars) },
     { href: "/yogurt", title: "단백질 요거트", products: byBrand(yogurts) },
     { href: "/shake", title: "단백질 쉐이크", products: byBrand(shakes) },
+    { href: "/soymilk", title: "고단백 두유", products: byBrand(soymilks) },
   ];
 
   const breadcrumbJsonLd = {
@@ -151,7 +160,7 @@ export default async function ProductsPage() {
             브랜드, 카테고리, 목적별로 바로 비교해보세요.
           </h1>
           <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
-            단백질 음료, 바, 요거트, 쉐이크를 한곳에서 찾고 필터링할 수 있습니다. 저당, 40g,
+            단백질 음료, 바, 요거트, 쉐이크, 두유를 한곳에서 찾고 필터링할 수 있습니다. 저당, 40g,
             다이어트, 식사대용, 50대 같은 조건도 바로 좁혀볼 수 있습니다.
           </p>
         </div>

@@ -9,13 +9,14 @@ import type { DiscoveryReason } from "../lib/homeDiscovery";
 
 export type CarouselProduct = ProductCardProps & { rank?: number; discoveryReason?: DiscoveryReason };
 
-type CategoryKey = "drink" | "bar" | "yogurt" | "shake";
+type CategoryKey = "drink" | "bar" | "yogurt" | "shake" | "soymilk";
 
 const TABS: { key: CategoryKey; label: string; href: string }[] = [
   { key: "drink", label: "음료", href: "/drinks" },
   { key: "bar", label: "바", href: "/bars" },
   { key: "yogurt", label: "요거트", href: "/yogurt" },
   { key: "shake", label: "쉐이크", href: "/shake" },
+  { key: "soymilk", label: "두유", href: "/soymilk" },
 ];
 
 interface Props {

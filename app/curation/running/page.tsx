@@ -29,7 +29,7 @@ export const metadata = {
   },
 };
 
-const CATEGORIES: CurationCategory[] = ["drink", "bar", "yogurt", "shake"];
+const CATEGORIES: CurationCategory[] = ["drink", "bar", "yogurt", "shake", "soymilk"];
 
 export default async function RunningCurationPage({ searchParams }: { searchParams?: Promise<{ category?: string }> }) {
   const requested = (await searchParams)?.category;

@@ -28,6 +28,12 @@ const PAGE_META: Record<string, { h1: string; sub: string; title: string; desc: 
     title: "단백질 쉐이크 비교 | ProteinLab",
     desc: "단백질 쉐이크 성분 비교",
   },
+  "/soymilk": {
+    h1: "고단백 두유 추천 비교",
+    sub: "고단백 두유 {count}종 · 1팩 단백질·당류·칼로리 성분 기준 직접 비교",
+    title: "고단백 두유 비교 | ProteinLab",
+    desc: "고단백 두유 성분 비교",
+  },
 };
 
 interface HeroSectionProps {
@@ -39,7 +45,7 @@ export default function HeroSection({ totalCount, categoryCount }: HeroSectionPr
   const pathname = usePathname();
   const meta = PAGE_META[pathname] ?? {
     h1: "단백질 제품 추천 비교",
-    sub: "음료·바·요거트·쉐이크 {count}종 · 단백질·당류·칼로리 성분 기준 직접 비교",
+    sub: "음료·바·요거트·쉐이크·두유 {count}종 · 단백질·당류·칼로리 성분 기준 직접 비교",
     title: "단백질 제품 비교 | ProteinLab",
     desc: "단백질 제품 성분 비교",
   };

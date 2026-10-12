@@ -150,7 +150,7 @@ export default function ProductCard({
   void _productUrl;
 
   const detailHref = slug ? `/product/${slug}` : "#";
-  const usesUnifiedSurface = ["drink", "bar", "yogurt", "shake"].includes(productType ?? "");
+  const usesUnifiedSurface = ["drink", "bar", "yogurt", "shake", "soymilk"].includes(productType ?? "");
   const imageUrl = slug ? getProductImageUrl(slug) : null;
   const resolvedPurchaseLinkCategory = purchaseLinkCategory ?? productType ?? null;
   const rawCoupangUrl = normalizeCoupangUrl(coupangUrl) ?? getKnownSourceCoupangUrlBySlug(slug);

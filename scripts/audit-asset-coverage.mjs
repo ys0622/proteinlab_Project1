@@ -44,6 +44,14 @@ const categories = [
     imageDir: path.join(rootDir, "public", "shake-image"),
     specDir: path.join(rootDir, "public", "shake-spec"),
   },
+  {
+    key: "soymilk",
+    label: "soymilk",
+    imageMapFile: path.join(rootDir, "app", "data", "slugToSoymilkImage.json"),
+    specMapFile: path.join(rootDir, "app", "data", "slugToSoymilkSpec.json"),
+    imageDir: path.join(rootDir, "public", "soymilk-image"),
+    specDir: path.join(rootDir, "public", "soymilk-spec"),
+  },
 ];
 
 function readJson(filePath) {

@@ -34,6 +34,7 @@ function toCategory(value: string | null): CoupangLinkCategory | null {
     value === "bar" ||
     value === "yogurt" ||
     value === "shake" ||
+    value === "soymilk" ||
     value === "guide" ||
     value === "ranking"
   ) {

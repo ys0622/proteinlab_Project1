@@ -186,6 +186,17 @@ export const guideTracks: GuideTrack[] = [
         ],
       },
       {
+        slug: "high-protein-soymilk-guide",
+        title: "고단백 두유 고르는 법",
+        description: "단백질 8g 이상 고단백 두유를 1팩 단백질, 당류, 열량 기준으로 비교하는 방법을 정리합니다.",
+        searchIntent: "고단백 두유 추천",
+        futureFocus: ["고단백 두유 비교", "저당 두유", "검은콩 두유"],
+        internalLinkTargets: [
+          { label: "고단백 두유 비교", href: "/soymilk" },
+          { label: "저당 고단백 두유", href: "/curation/soymilk-low-sugar" },
+        ],
+      },
+      {
         slug: "protein-yogurt-guide",
         title: "단백질 요거트 선택 가이드",
         description: "단백질 요거트를 그릭, 드링킹, 대용량 기준으로 나눠 보는 선택 가이드입니다.",

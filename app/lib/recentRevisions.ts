@@ -3,6 +3,14 @@
 // 제목·설명은 app/data/feedPageMeta.json에서 가져온다.
 export const RECENT_REVISIONS: { date: string; paths: string[] }[] = [
   {
+    date: "2026-10-12",
+    paths: [
+      "/soymilk",
+      "/guides/product-selection-comparison/high-protein-soymilk-guide",
+      "/products"
+    ],
+  },
+  {
     date: "2026-10-11",
     paths: [
       "/guides/product-selection-comparison/takefit-lineup",

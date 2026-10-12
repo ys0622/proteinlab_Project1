@@ -7,7 +7,7 @@ import TrackedCoupangLink from "@/app/components/TrackedCoupangLink";
 import GoldboxIcon from "@/app/components/GoldboxIcon";
 
 export type GoldboxCard = { id: string; slug: string; name: string; brand: string; category: string; image: string; offerName: string; price: number; href: string | null };
-const categories = [{ id: "all", name: "전체" }, { id: "drink", name: "음료" }, { id: "bar", name: "바" }, { id: "yogurt", name: "요거트" }, { id: "shake", name: "쉐이크" }];
+const categories = [{ id: "all", name: "전체" }, { id: "drink", name: "음료" }, { id: "bar", name: "바" }, { id: "yogurt", name: "요거트" }, { id: "shake", name: "쉐이크" }, { id: "soymilk", name: "두유" }];
 
 export default function GoldboxCatalog({ cards, status, checkedAt, preview }: { cards: GoldboxCard[]; status: "ready" | "unavailable"; checkedAt: string | null; preview: boolean }) {
   const [active, setActive] = useState("all");

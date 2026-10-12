@@ -5,7 +5,7 @@ proteinlab.kr — 단백질 음료·바·요거트·쉐이크 제품 비교 서�
 
 ## 구조
 - Next.js 16 App Router, TypeScript, Cloudflare Workers(OpenNext), Windows에서 개발·배포. 빌드는 `next build --webpack`.
-- 제품 데이터: `app/data/{drink,bar,shake,yogurt}ProductsData.json` (음료 135, 바 100, 쉐이크 112, 요거트 57). 이미지 매핑은 `slugTo*Image.json`, 성분표 원본 이미지는 `public/*-spec/`.
+- 제품 데이터: `app/data/{drink,bar,shake,yogurt,soymilk}ProductsData.json` (음료 136, 바 100, 쉐이크 112, 요거트 57, 두유 22). 이미지 매핑은 `slugTo*Image.json`, 성분표 원본 이미지는 `public/*-spec/`.
 - 가이드는 대부분 `app/guides/**`에 있고, 비교 가이드는 `app/guides/product-selection-comparison/*Content.ts`의 config를 공통 템플릿이 렌더링한다. 비교 랜딩은 `app/data/compareLandings.ts`.
 - 쿠팡 골드박스: `/goldbox`, 상태 확인 `/api/goldbox/health`, 로직은 `app/lib/coupangGoldbox.ts`, 갱신 워크플로우 `.github/workflows/goldbox-refresh.yml`.
 - 신규 쉐이크 등록은 `scripts/add-shake.mjs`(사진·성분표를 `inbox/shake/`에 넣고 실행). 다른 카테고리용 스크립트는 없다.

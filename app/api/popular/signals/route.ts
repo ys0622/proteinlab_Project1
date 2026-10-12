@@ -11,7 +11,7 @@ export async function GET() {
     getCoupangCategoryBest(true), getAllProductsAsync(), getRecentPopularity(true),
   ]);
   const matches = matchCoupangCategoryBest(products, snapshot);
-  const categories = ["drink", "bar", "yogurt", "shake"] as const;
+  const categories = ["drink", "bar", "yogurt", "shake", "soymilk"] as const;
   const discovery = Object.fromEntries(categories.map((category) => [
     category,
     selectHomeDiscovery(

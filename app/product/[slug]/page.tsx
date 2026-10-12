@@ -78,7 +78,7 @@ export function generateStaticParams() {
     }));
 }
 
-function getProductKindLabel(productType?: "drink" | "bar" | "yogurt" | "shake") {
+function getProductKindLabel(productType?: "drink" | "bar" | "yogurt" | "shake" | "soymilk") {
   return getCategoryLabel(productType ?? "drink");
 }
 
@@ -94,7 +94,7 @@ function getMetricLine(product: ProductDetailProps) {
 }
 
 function getProductFaqs(product: ProductDetailProps) {
-  const categoryHref = getCategoryHref((product.productType ?? "drink") as "drink" | "bar" | "yogurt" | "shake");
+  const categoryHref = getCategoryHref((product.productType ?? "drink") as "drink" | "bar" | "yogurt" | "shake" | "soymilk");
   const categoryLabel = getProductKindLabel(product.productType);
 
   const baseFaqs = [
@@ -190,7 +190,9 @@ function buildProductDescription(product: ProductDetailProps): string {
         ? "다이어트·벌크업 기준으로 비슷한 쉐이크와 바로 비교해보세요."
         : product.productType === "bar"
           ? "칼로리·당류 기준으로 비슷한 단백질 바와 한눈에 비교하세요."
-          : "당류·단백질 기준으로 비슷한 요거트와 한눈에 비교하세요.";
+          : product.productType === "soymilk"
+            ? "단백질·당류 기준으로 비슷한 고단백 두유와 한눈에 비교하세요."
+            : "당류·단백질 기준으로 비슷한 요거트와 한눈에 비교하세요.";
   return `${formatProductLabel(product.brand, product.name)} — ${metrics.join(" · ")}. ${tail}`;
 }
 
@@ -210,7 +212,7 @@ function buildProductTitle(product: ProductDetailProps): string {
   return `${formatProductLabel(product.brand, product.name)} ${metrics} — ${kind} 성분 비교`;
 }
 
-function getCategoryDetailHref(category: "drink" | "bar" | "yogurt" | "shake"): string {
+function getCategoryDetailHref(category: "drink" | "bar" | "yogurt" | "shake" | "soymilk"): string {
   if (category === "drink") return "/drinks";
   return getCategoryHref(category);
 }
@@ -322,7 +324,7 @@ function getShakeGuideLink(product: ProductDetailProps) {
 
 function buildProductInternalLinks(product: ProductDetailProps) {
   const relevantLanding = findRelevantCompareLanding(product);
-  const category = (product.productType ?? "drink") as "drink" | "bar" | "yogurt" | "shake";
+  const category = (product.productType ?? "drink") as "drink" | "bar" | "yogurt" | "shake" | "soymilk";
   const categoryHref = getCategoryDetailHref(category);
   const categoryLabel = getProductKindLabel(product.productType);
   const sugar = product.sugar ?? null;
@@ -335,7 +337,9 @@ function buildProductInternalLinks(product: ProductDetailProps) {
         ? "/compare/doctoru-vs-benof-bar"
         : category === "yogurt"
           ? "/compare/greek-yogurt-brand-compare"
-          : "/compare/labnosh-vs-flymill-shake";
+          : category === "soymilk"
+            ? "/compare"
+            : "/compare/labnosh-vs-flymill-shake";
   const compareLandingTitle =
     category === "drink"
       ? "음료 비교 랜딩 보기"
@@ -343,7 +347,9 @@ function buildProductInternalLinks(product: ProductDetailProps) {
         ? "바 비교 랜딩 보기"
         : category === "yogurt"
           ? "요거트 비교 랜딩 보기"
-          : "쉐이크 비교 랜딩 보기";
+          : category === "soymilk"
+            ? "두유 비교하기"
+            : "쉐이크 비교 랜딩 보기";
   const topicLink =
     category === "drink"
       ? product.variant?.trim() === "락토프리"
@@ -399,6 +405,18 @@ function buildProductInternalLinks(product: ProductDetailProps) {
                 title: "고단백 그릭요거트 보기",
                 description: "고단백 요거트와 그릭요거트 후보를 함께 이어서 볼 수 있습니다.",
               }
+          : category === "soymilk"
+            ? sugar != null && sugar <= 3
+              ? {
+                  href: "/curation/soymilk-low-sugar",
+                  title: "저당 고단백 두유 보기",
+                  description: "당류 3g 이하 두유만 모아 단백질과 함께 비교합니다.",
+                }
+              : {
+                  href: "/curation/popular?category=soymilk",
+                  title: "인기 고단백 두유 보기",
+                  description: "많이 찾는 고단백 두유를 이어서 비교합니다.",
+                }
           : getShakePositioning(product) === "식사대용형"
             ? {
                 href: "/topics/meal-replacement-protein-shake",
@@ -423,7 +441,9 @@ function buildProductInternalLinks(product: ProductDetailProps) {
         ? "/guides/product-selection-comparison/protein-bar-guide"
         : category === "yogurt"
           ? "/guides/product-selection-comparison/protein-yogurt-guide"
-          : "/guides/product-selection-comparison/protein-shake-guide";
+          : category === "soymilk"
+            ? "/guides/product-selection-comparison/high-protein-soymilk-guide"
+            : "/guides/product-selection-comparison/protein-shake-guide";
   const guideLink = category === "shake"
     ? getShakeGuideLink(product)
     : {
@@ -508,7 +528,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
   const isYogurt = product.productType === "yogurt";
   const isShake = product.productType === "shake";
   const productImageUrl = getProductImageUrl(product.slug);
-  const category = (product.productType ?? "drink") as "drink" | "bar" | "yogurt" | "shake";
+  const category = (product.productType ?? "drink") as "drink" | "bar" | "yogurt" | "shake" | "soymilk";
   const faqItems = getProductFaqs(product);
   const hasCapacityInName = Boolean(product.capacity && product.name.includes(product.capacity));
   const metaParts = [

@@ -36,17 +36,19 @@ export const metadata = {
 };
 
 export default async function RecommendPage() {
-  const [drinks, bars, yogurts, shakes] = await Promise.all([
+  const [drinks, bars, yogurts, shakes, soymilks] = await Promise.all([
     getProductsByCategoryAsync("drink"),
     getProductsByCategoryAsync("bar"),
     getProductsByCategoryAsync("yogurt"),
     getProductsByCategoryAsync("shake"),
+    getProductsByCategoryAsync("soymilk"),
   ]);
   const categoryCounts = {
     drink: drinks.length,
     bar: bars.length,
     yogurt: yogurts.length,
     shake: shakes.length,
+    soymilk: soymilks.length,
   };
 
   const breadcrumbJsonLd = {

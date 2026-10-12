@@ -42,14 +42,16 @@ const CATEGORIES: { type: ProductCategory; emoji: string }[] = [
   { type: "bar", emoji: "🍫" },
   { type: "yogurt", emoji: "🥛" },
   { type: "shake", emoji: "🥣" },
+  { type: "soymilk", emoji: "🫘" },
 ];
 
 export default async function TrendingPage() {
-  const [drinks, bars, yogurts, shakes, popularRes] = await Promise.all([
+  const [drinks, bars, yogurts, shakes, soymilks, popularRes] = await Promise.all([
     getProductsByCategoryAsync("drink"),
     getProductsByCategoryAsync("bar"),
     getProductsByCategoryAsync("yogurt"),
     getProductsByCategoryAsync("shake"),
+    getProductsByCategoryAsync("soymilk"),
     getRecentPopularity(),
   ]);
 
@@ -60,6 +62,7 @@ export default async function TrendingPage() {
     bar: bars,
     yogurt: yogurts,
     shake: shakes,
+    soymilk: soymilks,
   };
 
   // 홈 "지금 인기 제품"과 같은 기준: 최근 7일 조회수 + 영양 품질 + 쿠팡 순위(확인될 때) + 신제품 소량 가점, 브랜드당 최대 2개.

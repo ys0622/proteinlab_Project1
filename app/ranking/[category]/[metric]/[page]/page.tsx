@@ -26,7 +26,7 @@ export async function generateMetadata({ params }: PageProps) {
 export default async function RankingDetailPage({ params }: PageProps) {
   const { category, metric, page } = await params;
   const pageNumber = Number(page);
-  if (!["drink", "bar", "yogurt", "shake"].includes(category)
+  if (!["drink", "bar", "yogurt", "shake", "soymilk"].includes(category)
     || !["density", "diet", "performance"].includes(metric)
     || !Number.isSafeInteger(pageNumber) || pageNumber < 1) notFound();
 

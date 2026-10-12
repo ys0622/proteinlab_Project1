@@ -7,7 +7,7 @@ import { hasNoPurchasableCoupangLink } from "../../lib/purchaseLinks";
 import { isComparableServing } from "../../lib/servingScope";
 
 interface RecommendRequest {
-  category: "drink" | "bar" | "yogurt" | "shake";
+  category: "drink" | "bar" | "yogurt" | "shake" | "soymilk";
   purpose: string;
   priority: "protein" | "low_sugar" | "low_calorie" | "density" | "";
   conditions: string[];
@@ -32,6 +32,12 @@ function getSubtypeKey(product: ProductDetailProps) {
     if (tagText.includes("meal") || product.calories && product.calories >= 200) return "bar-meal";
     if ((product.sugar ?? 0) <= 5) return "bar-low-sugar";
     return "bar-default";
+  }
+
+  if (product.productType === "soymilk") {
+    if ((product.sugar ?? 0) < 3) return "soymilk-low-sugar";
+    if (/검은콩|서리태/.test(`${product.name} ${product.flavor ?? ""}`)) return "soymilk-blackbean";
+    return "soymilk-default";
   }
 
   if (product.productType === "shake") {
@@ -166,6 +172,21 @@ function applyConditionPrefilters(products: ProductDetailProps[], req: Recommend
     }
     if (req.conditions.includes("fiber")) {
       filtered = filterIfEnough(filtered, (product) => (product.nutritionPerBottle?.fiberG ?? 0) >= 5, 5);
+    }
+  }
+
+  if (req.category === "soymilk") {
+    if (req.conditions.includes("highpro")) {
+      filtered = filterIfEnough(filtered, (product) => product.proteinPerServing >= 12);
+    }
+    if (req.conditions.includes("lowsugar")) {
+      filtered = filterIfEnough(filtered, (product) => (product.sugar ?? 999) < 3, 3);
+    }
+    if (req.conditions.includes("lowcal")) {
+      filtered = filterIfEnough(filtered, (product) => (product.calories ?? 999) <= 100, 3);
+    }
+    if (req.conditions.includes("blackbean")) {
+      filtered = filterIfEnough(filtered, (product) => /검은콩|서리태/.test(`${product.name} ${product.flavor ?? ""}`), 2);
     }
   }
 
@@ -472,7 +493,49 @@ function scoreShakeProduct(product: ProductDetailProps, req: RecommendRequest): 
   };
 }
 
+function scoreSoymilkProduct(product: ProductDetailProps, req: RecommendRequest): ScoredProduct {
+  const protein = product.proteinPerServing ?? 0;
+  const sugar = product.sugar ?? 0;
+  const calories = product.calories ?? 0;
+  const density = getDensityValue(product);
+  let score = protein * 2 + density * 6 - sugar * 3 - calories * 0.05;
+  const reasons: string[] = [];
+
+  for (const condition of req.conditions) {
+    if (condition === "highpro" && protein >= 12) {
+      score += 20;
+      reasons.push(`1팩 단백질 ${protein}g으로 고단백 기준을 충족합니다`);
+    }
+    if (condition === "lowsugar" && sugar < 3) {
+      score += 24;
+      reasons.push(`당류 ${sugar}g으로 저당 구간에 들어옵니다`);
+    }
+    if (condition === "lowcal" && calories <= 100) {
+      score += 22;
+      reasons.push(`${calories}kcal로 열량 부담이 낮은 편입니다`);
+    }
+    if (condition === "blackbean" && /검은콩|서리태/.test(`${product.name} ${product.flavor ?? ""}`)) {
+      score += 18;
+      reasons.push("검은콩 맛 제품입니다");
+    }
+    if (condition === "density") {
+      score += density * 4;
+      if (density >= 6) reasons.push("용량 대비 단백질 효율이 높은 편입니다");
+    }
+  }
+
+  return {
+    product,
+    score,
+    reason: buildReason(
+      reasons,
+      `1팩 단백질 ${protein}g, 당류 ${sugar}g, ${calories}kcal 구성의 고단백 두유입니다`,
+    ),
+  };
+}
+
 function scoreProduct(product: ProductDetailProps, req: RecommendRequest): ScoredProduct {
+  if (req.category === "soymilk") return scoreSoymilkProduct(product, req);
   if (req.category === "bar") return scoreBarProduct(product, req);
   if (req.category === "yogurt") return scoreYogurtProduct(product, req);
   if (req.category === "shake") return scoreShakeProduct(product, req);
@@ -532,6 +595,13 @@ function getConditionLabel(category: RecommendRequest["category"], value: string
       fiber: "식이섬유",
       density: "밀도 우선",
     },
+    soymilk: {
+      highpro: "고단백",
+      lowsugar: "저당",
+      lowcal: "저칼로리",
+      blackbean: "검은콩",
+      density: "단백질 밀도",
+    },
   };
 
   return map[category][value] ?? value;
@@ -579,6 +649,21 @@ function getCategoryTips(req: RecommendRequest) {
         icon: "📊",
         title: "당류와 밀도를 함께 비교",
         desc: "같은 파우치형 쉐이크라도 당류와 단백질 밀도 차이가 커서 목적별 체감이 달라집니다.",
+      },
+    ];
+  }
+
+  if (req.category === "soymilk") {
+    return [
+      {
+        icon: "🫘",
+        title: "당류는 제품마다 차이가 큼",
+        desc: "같은 고단백 두유라도 당류가 1g대부터 7g대까지 다양해서 성분표 확인이 필요합니다.",
+      },
+      {
+        icon: "📦",
+        title: "대용량 묶음으로 구매",
+        desc: "190mL 팩은 24~96개 묶음으로 파는 경우가 많아 1팩 기준 단가로 비교하는 편이 좋습니다.",
       },
     ];
   }

@@ -10,7 +10,7 @@ interface KVNamespace {
   }>;
 }
 
-const VALID_TYPES = ["drink", "bar", "yogurt", "shake"] as const;
+const VALID_TYPES = ["drink", "bar", "yogurt", "shake", "soymilk"] as const;
 type ProductType = (typeof VALID_TYPES)[number];
 type ViewCounts = Record<ProductType, Record<string, number>>;
 type PopularSnapshot = { views: ViewCounts; generatedAt: string; periodDays: 7 };
