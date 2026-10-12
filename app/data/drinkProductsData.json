@@ -5739,5 +5739,42 @@
     "naverUrl": "https://search.shopping.naver.com/search/all?query=%EB%9E%A9%EB%85%B8%EC%89%AC%20%ED%94%84%EB%A1%9C%ED%8B%B4%20%EB%93%9C%EB%A7%81%ED%81%AC%20%ED%8D%BC%ED%8E%99%ED%8A%B8%20(%EB%A9%94%EB%A1%A0)%20350mL",
     "officialUrl": "https://labnosh.com/category/%EB%9E%A9%EB%85%B8%EC%89%AC/44/",
     "coupangUrl": "https://link.coupang.com/a/ga7Ity0nIq"
+  },
+  {
+    "slug": "hymune-drinking-protein-balance-125",
+    "brand": "하이뮨",
+    "name": "마시는 프로틴 밸런스",
+    "capacity": "125mL",
+    "variant": "일반",
+    "tags": [
+      "팩"
+    ],
+    "proteinPerServing": 8,
+    "calories": 125,
+    "sugar": 9,
+    "density": "6.4g/100ml",
+    "productUrl": "#",
+    "productType": "drink",
+    "gradeTags": [],
+    "manufacturer": "일동후디스",
+    "bcaa": "1900mg",
+    "proteinSource": "혼합",
+    "fat": 5,
+    "sodium": 85,
+    "calorieDensity": "100.0kcal/100ml",
+    "drinkType": "밀크형",
+    "nutritionPerBottle": {
+      "caloriesKcal": 125,
+      "proteinG": 8,
+      "carbsG": 12,
+      "sugarsG": 9,
+      "fatG": 5,
+      "satFatG": 1,
+      "sodiumMg": 85,
+      "bcaaMg": 1900
+    },
+    "naverUrl": "https://search.shopping.naver.com/search/all?query=%ED%95%98%EC%9D%B4%EB%AE%A8%20%EB%A7%88%EC%8B%9C%EB%8A%94%20%ED%94%84%EB%A1%9C%ED%8B%B4%20%EB%B0%B8%EB%9F%B0%EC%8A%A4%20125ml&vertical=search",
+    "officialUrl": "https://brand.naver.com/ildongfoodis/category/ca3a89b53d1f4aa3bce7f3b70bb97f31?cp=1",
+    "coupangUrl": "https://link.coupang.com/a/hL84FefD7k"
   }
 ]
