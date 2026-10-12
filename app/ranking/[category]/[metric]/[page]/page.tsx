@@ -28,6 +28,7 @@ export default async function RankingDetailPage({ params }: PageProps) {
   const pageNumber = Number(page);
   if (!["drink", "bar", "yogurt", "shake", "soymilk"].includes(category)
     || !["density", "diet", "performance"].includes(metric)
+    || (category === "soymilk" && metric !== "density")
     || !Number.isSafeInteger(pageNumber) || pageNumber < 1) notFound();
 
   return renderRankingPage(category as ProductCategory, metric as GradeMetric, pageNumber);

@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import {
   CATEGORY_META,
   ORDERED_CATEGORY_IDS,
@@ -56,6 +56,19 @@ export default function CategoryTabs({
   const [desktopInfoOpen, setDesktopInfoOpen] = useState(false);
   const [mobileInfoOpen, setMobileInfoOpen] = useState(false);
   const [isDesktop, setIsDesktop] = useState(false);
+  const navRef = useRef<HTMLElement>(null);
+
+  // 탭이 5개가 되면서 모바일에서 오른쪽 탭(두유)이 정렬 버튼 뒤로 잘렸다. 활성 탭을 보이는 영역 안으로 가져온다.
+  useEffect(() => {
+    const nav = navRef.current;
+    if (!nav || nav.scrollWidth <= nav.clientWidth + 1) return;
+    const active = nav.querySelector<HTMLElement>('[aria-current="page"], [aria-pressed="true"]');
+    if (!active) return;
+    const navRect = nav.getBoundingClientRect();
+    const activeRect = active.getBoundingClientRect();
+    const target = nav.scrollLeft + (activeRect.left - navRect.left) - (navRect.width - activeRect.width) / 2;
+    nav.scrollTo({ left: Math.max(0, target) });
+  }, [activeCategory]);
 
   useEffect(() => {
     const mediaQuery = window.matchMedia("(min-width: 768px)");
@@ -77,6 +90,7 @@ export default function CategoryTabs({
       <div className="relative">
         <div className="flex items-center">
           <nav
+            ref={navRef}
             aria-label={ariaLabel}
             className="min-w-0 flex-1 overflow-x-auto overflow-y-visible pb-1 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:overflow-visible"
           >

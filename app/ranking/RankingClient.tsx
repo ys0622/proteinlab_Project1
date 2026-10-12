@@ -26,6 +26,7 @@ function rankingHref(category: ProductCategory, metric: GradeMetric, page = 1) {
   return `/ranking/${category}/${metric}/${page}`;
 }
 function getMetricGuide(category: ProductCategory, metric: GradeMetric) {
+  if (category === "soymilk") return "점수가 높을수록 용량 대비 단백질 함량이 높은 두유입니다.";
   if (category === "shake") {
     if (metric === "density") return "칼로리 대비 단백질 함량이 높은 쉐이크를 먼저 보고 싶을 때 확인하면 좋습니다.";
     if (metric === "diet") return "당류, 칼로리, 단백질 균형을 함께 반영한 다이어트 중심 점수입니다.";
@@ -36,6 +37,7 @@ function getMetricGuide(category: ProductCategory, metric: GradeMetric) {
     : "점수가 높을수록 해당 기준에서 더 유리한 제품입니다.";
 }
 function getCategoryRankingDescription(category: ProductCategory, metric: GradeMetric) {
+  if (category === "soymilk") return "두유는 1팩 용량 대비 단백질(g/100mL)이 높은 순서로 정리했습니다. 단백질 구간(고단백·강화·일반)은 상품 카드와 목록 필터에서 확인할 수 있습니다.";
   if (category === "shake") {
     if (metric === "density") return "쉐이크는 칼로리 대비 단백질 함량 차이가 커서, 같은 파우치형이어도 실제 체감이 크게 갈립니다.";
     if (metric === "diet") return "쉐이크 다이어트 점수는 당류뿐 아니라 칼로리, 단백질, 포만감 균형까지 함께 봅니다.";
@@ -44,6 +46,8 @@ function getCategoryRankingDescription(category: ProductCategory, metric: GradeM
   return "단백질 밀도, 다이어트, 퍼포먼스 세 기준을 100점 환산으로 비교해 바로 고를 수 있게 정리했습니다.";
 }
 export default function RankingClient({ category, metric, items, categoryCounts, totalCount, currentPage, totalPages }: RankingClientProps) {
+  // 두유는 단백질 밀도 기준만 제공한다(다이어트·퍼포먼스 점수와 A~D 등급은 음료·바 기준이라 두유에는 쓰지 않는다).
+  const metrics = category === "soymilk" ? METRICS.filter((item) => item.id === "density") : METRICS;
   const metricLabel = METRICS.find((item) => item.id === metric)?.label ?? "점수";
   return (
     <>
@@ -70,7 +74,7 @@ export default function RankingClient({ category, metric, items, categoryCounts,
           <TrackedLink href="/trending" trackingLabel="실시간 인기 순위 보기" trackingSection="ranking_methodology" trackingPageType="ranking" className="shrink-0 font-semibold text-[#16412D] hover:underline">실시간 인기 보기</TrackedLink>
         </div>
         <nav aria-label="평가 기준" className="flex gap-2 rounded-[10px] border border-[#DCE6DE] bg-[#F5F8F5] p-1.5">
-          {METRICS.map((item) => (
+          {metrics.map((item) => (
             <Link key={item.id} href={rankingHref(category, item.id)} prefetch={false} aria-current={metric === item.id ? "page" : undefined}
               className={`rounded-[8px] px-3 py-2 text-sm font-semibold transition-colors ${metric === item.id ? "bg-[#E8F0EA] text-[#16412D]" : "text-[#6b7280]"}`}>
               {item.label}
@@ -87,7 +91,7 @@ export default function RankingClient({ category, metric, items, categoryCounts,
           <div className="mt-4 grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-4">
             {items.map((item) => (
               <ScoredProductCard key={item.product.slug} product={item.product} rank={item.rank} score={item.score}
-                metricLabel={metricLabel} grade={item.grade} scoreCaption="100점 환산" compact />
+                metricLabel={metricLabel} grade={category === "soymilk" ? undefined : item.grade} scoreCaption="100점 환산" compact />
             ))}
           </div>
         )}

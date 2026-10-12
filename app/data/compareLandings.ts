@@ -10,6 +10,19 @@ export interface CompareLanding {
 
 const compareLandings: CompareLanding[] = [
   {
+    slug: "maeil-vs-vegemil-soymilk",
+    title: "매일두유 vs 베지밀 고단백 두유 플레인 비교",
+    description: "매일두유 고단백 플레인과 베지밀 고단백두유 플레인을 1팩 단백질, 당류, 칼로리, 나트륨, 칼슘 표기 기준으로 비교합니다.",
+    intro: "고단백 두유에서 가장 자주 비교되는 두 브랜드의 플레인 제품을 성분표 수치로 직접 비교하는 랜딩입니다. 두 제품은 단백질 12g, 열량 90kcal, 당류 1.2g이 같아서 나머지 표기 차이를 확인하는 것이 핵심입니다.",
+    bullets: ["1팩(190mL) 기준 단백질·열량·당류가 같은 두 플레인 제품", "지방 4.1g(매일) vs 4g(베지밀), 나트륨 200mg으로 비슷함", "칼슘은 베지밀 성분표에 110mg이 표기되어 있고, 알룰로오스는 매일두유 성분표에 4g이 별도 표기됨"],
+    productSlugs: ["maeil-soymilk-protein-plain-190", "vegemil-protein-plain-190"],
+    relatedLinks: [
+      { href: "/soymilk", title: "두유 전체 비교", description: "등록된 두유를 단백질 구간, 당류, 열량 기준으로 한 화면에서 비교합니다." },
+      { href: "/curation/soymilk-high-protein", title: "고단백 두유 보기", description: "1팩 단백질 11g 이상 두유만 모아서 비교합니다." },
+      { href: "/guides/product-selection-comparison/high-protein-soymilk-guide", title: "고단백 두유 고르는 법", description: "단백질, 당류, 열량을 어떤 순서로 보면 좋은지 정리했습니다." },
+    ],
+  },
+  {
     slug: "newcare-41g-vs-labnosh-max-drink",
     title: "뉴케어 올프로틴 41g vs 랩노쉬 프로틴 맥스 52g 비교",
     description: "뉴케어 올프로틴 41g와 랩노쉬 프로틴 맥스 52g를 단백질 함량, 당류, 칼로리, 단백질 밀도 기준으로 비교합니다.",

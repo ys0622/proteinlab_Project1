@@ -339,7 +339,7 @@ function buildProductInternalLinks(product: ProductDetailProps) {
         : category === "yogurt"
           ? "/compare/greek-yogurt-brand-compare"
           : category === "soymilk"
-            ? "/compare"
+            ? "/compare/maeil-vs-vegemil-soymilk"
             : "/compare/labnosh-vs-flymill-shake";
   const compareLandingTitle =
     category === "drink"
@@ -349,7 +349,7 @@ function buildProductInternalLinks(product: ProductDetailProps) {
         : category === "yogurt"
           ? "요거트 비교 랜딩 보기"
           : category === "soymilk"
-            ? "두유 비교하기"
+            ? "매일 vs 베지밀 두유 비교 보기"
             : "쉐이크 비교 랜딩 보기";
   const topicLink =
     category === "drink"
