@@ -29,10 +29,10 @@ const PAGE_META: Record<string, { h1: string; sub: string; title: string; desc: 
     desc: "단백질 쉐이크 성분 비교",
   },
   "/soymilk": {
-    h1: "고단백 두유 추천 비교",
-    sub: "고단백 두유 {count}종 · 1팩 단백질·당류·칼로리 성분 기준 직접 비교",
-    title: "고단백 두유 비교 | ProteinLab",
-    desc: "고단백 두유 성분 비교",
+    h1: "두유 추천 비교",
+    sub: "두유 {count}종 · 1팩 단백질(고단백 11g+)·당류·칼로리 성분 기준 직접 비교",
+    title: "두유 비교 | ProteinLab",
+    desc: "두유 성분 비교",
   },
 };
 

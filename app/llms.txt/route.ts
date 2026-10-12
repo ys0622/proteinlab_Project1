@@ -9,7 +9,7 @@ export async function GET() {
 
   const body = `# ProteinLab
 
-> 국내에서 판매되는 단백질 음료, 단백질 바, 단백질 요거트, 단백질 쉐이크, 고단백 두유의 성분을 제조사 표기 기준으로 비교하는 서비스입니다. 등록 제품 ${total}종(음료 ${counts.drink}, 바 ${counts.bar}, 요거트 ${counts.yogurt}, 쉐이크 ${counts.shake}, 두유 ${counts.soymilk}).
+> 국내에서 판매되는 단백질 음료, 단백질 바, 단백질 요거트, 단백질 쉐이크, 두유의 성분을 제조사 표기 기준으로 비교하는 서비스입니다. 등록 제품 ${total}종(음료 ${counts.drink}, 바 ${counts.bar}, 요거트 ${counts.yogurt}, 쉐이크 ${counts.shake}, 두유 ${counts.soymilk}).
 
 ## 데이터 기준
 - 수치(단백질, 열량, 당류 등)는 제품 성분표의 제조사 표기를 1회 제공량(1병·1개) 기준으로 옮긴 값입니다. 요거트 대용량 통(250g 초과)은 용기 전체 수치라 1회분 비교에서 제외합니다.
@@ -18,7 +18,7 @@ export async function GET() {
 
 ## 주요 페이지
 - [전체 제품 목록](${SITE_URL}/products): 등록된 모든 제품을 카테고리별로 모았습니다.
-- [단백질 음료](${SITE_URL}/drinks), [단백질 바](${SITE_URL}/bars), [단백질 요거트](${SITE_URL}/yogurt), [단백질 쉐이크](${SITE_URL}/shake), [고단백 두유](${SITE_URL}/soymilk): 카테고리별 비교와 필터
+- [단백질 음료](${SITE_URL}/drinks), [단백질 바](${SITE_URL}/bars), [단백질 요거트](${SITE_URL}/yogurt), [단백질 쉐이크](${SITE_URL}/shake), [두유](${SITE_URL}/soymilk): 카테고리별 비교와 필터
 - [랭킹](${SITE_URL}/ranking): 단백질 밀도, 다이어트, 퍼포먼스 기준 순위(1회 제공량 비교가 가능한 제품만)
 - [실시간 인기](${SITE_URL}/trending): 최근 7일 조회 기반 인기 제품
 - [제품 비교](${SITE_URL}/compare): 제품 2~3개를 나란히 비교

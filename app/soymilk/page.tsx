@@ -19,15 +19,15 @@ export async function generateMetadata() {
   const products = await getProductsByCategoryAsync("soymilk");
 
   return {
-    title: `고단백 두유 추천 비교 ${products.length}종 — 단백질 8g 이상·저당 기준 2026`,
-    description: `단백질 8g 이상 고단백 두유 ${products.length}개를 1팩 단백질, 당류, 칼로리, 단백질 밀도 기준으로 비교합니다. 플레인·검은콩·저당 두유 추천과 순위까지 한 번에 확인하세요.`,
+    title: `두유 추천 비교 ${products.length}종 — 고단백·저당 기준 2026`,
+    description: `소포장 두유 ${products.length}개를 1팩 단백질(고단백 11g 이상), 당류, 칼로리, 단백질 밀도 기준으로 비교합니다. 고단백·플레인·검은콩·저당 두유 추천과 순위까지 한 번에 확인하세요.`,
     alternates: {
       canonical: "https://proteinlab.kr/soymilk",
     },
     openGraph: {
     images: [{ url: "https://proteinlab.kr/opengraph-image", width: 1200, height: 630, alt: "ProteinLab 단백질 제품 비교" }],
-      title: `고단백 두유 추천 비교 ${products.length}종 — 단백질 8g 이상·저당 기준 2026`,
-      description: `단백질 8g 이상 고단백 두유 ${products.length}개를 1팩 단백질, 당류, 칼로리, 단백질 밀도 기준으로 비교합니다. 플레인·검은콩·저당 두유 추천과 순위까지 한 번에 확인하세요.`,
+      title: `두유 추천 비교 ${products.length}종 — 고단백·저당 기준 2026`,
+      description: `소포장 두유 ${products.length}개를 1팩 단백질(고단백 11g 이상), 당류, 칼로리, 단백질 밀도 기준으로 비교합니다. 고단백·플레인·검은콩·저당 두유 추천과 순위까지 한 번에 확인하세요.`,
       url: "https://proteinlab.kr/soymilk",
       type: "website",
       locale: "ko_KR",
@@ -36,8 +36,8 @@ export async function generateMetadata() {
     twitter: {
     images: ["https://proteinlab.kr/opengraph-image"],
       card: "summary",
-      title: `고단백 두유 추천 비교 ${products.length}종 — 단백질 8g 이상·저당 기준 2026`,
-      description: `단백질 8g 이상 고단백 두유 ${products.length}개를 1팩 단백질, 당류, 칼로리, 단백질 밀도 기준으로 비교합니다. 플레인·검은콩·저당 두유 추천과 순위까지 한 번에 확인하세요.`,
+      title: `두유 추천 비교 ${products.length}종 — 고단백·저당 기준 2026`,
+      description: `소포장 두유 ${products.length}개를 1팩 단백질(고단백 11g 이상), 당류, 칼로리, 단백질 밀도 기준으로 비교합니다. 고단백·플레인·검은콩·저당 두유 추천과 순위까지 한 번에 확인하세요.`,
     },
   };
 }
@@ -50,13 +50,13 @@ export default async function SoymilkPage() {
     "@type": "BreadcrumbList",
     itemListElement: [
       { "@type": "ListItem", position: 1, name: "ProteinLab", item: "https://proteinlab.kr/" },
-      { "@type": "ListItem", position: 2, name: "고단백 두유", item: "https://proteinlab.kr/soymilk" },
+      { "@type": "ListItem", position: 2, name: "두유", item: "https://proteinlab.kr/soymilk" },
     ],
   };
   const itemListJsonLd = {
     "@context": "https://schema.org",
     "@type": "ItemList",
-    name: "고단백 두유 비교 목록",
+    name: "두유 비교 목록",
     numberOfItems: products.length,
     itemListElement: products.slice(0, 20).map((p, i) => ({
       "@type": "ListItem",

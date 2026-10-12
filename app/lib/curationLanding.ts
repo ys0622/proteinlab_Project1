@@ -32,7 +32,7 @@ function getCategoryLabel(categoryKey: CategoryKey) {
   if (categoryKey === "drink") return "단백질 음료";
   if (categoryKey === "bar") return "단백질 바";
   if (categoryKey === "shake") return "단백질 쉐이크";
-  if (categoryKey === "soymilk") return "고단백 두유";
+  if (categoryKey === "soymilk") return "두유";
   return "단백질 요거트";
 }
 
@@ -559,8 +559,8 @@ function buildDefaultGuideLinks(curation: CurationDefinition): CurationGuideLink
   if (curation.categories.soymilk) {
     links.push({
       href: `/soymilk?curation=${curation.slug}`,
-      title: `${curation.label} 고단백 두유 비교`,
-      description: `${curation.label} 기준에 맞는 고단백 두유를 바로 비교해보세요.`,
+      title: `${curation.label} 두유 비교`,
+      description: `${curation.label} 기준에 맞는 두유를 바로 비교해보세요.`,
     });
   }
 
@@ -573,7 +573,7 @@ function buildDefaultGuideLinks(curation: CurationDefinition): CurationGuideLink
         ? "/guides/product-selection-comparison/nutrition-criteria"
         : "/guides/product-selection-comparison/nutrition-criteria",
     title: curation.categories.soymilk
-      ? "고단백 두유 고르는 법"
+      ? "두유 고르는 법"
       : curation.categories.bar
       ? "단백질 바 고르는 법"
       : curation.categories.yogurt

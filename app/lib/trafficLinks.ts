@@ -294,12 +294,12 @@ export function getProductTrafficLinks(
     soymilk: [
       {
         href: "/guides/product-selection-comparison/high-protein-soymilk-guide",
-        title: "고단백 두유 선택 가이드",
+        title: "두유 선택 가이드",
         description: "1팩 단백질, 당류, 열량을 어떤 순서로 비교하면 좋은지 정리했습니다.",
       },
       {
         href: "/curation/soymilk-low-sugar",
-        title: "저당 고단백 두유 랜딩",
+        title: "저당 두유 랜딩",
         description: "당류 3g 미만 두유만 모아 단백질과 함께 다시 비교합니다.",
       },
     ],

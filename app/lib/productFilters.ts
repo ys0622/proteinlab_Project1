@@ -162,13 +162,22 @@ export function getShakeUseCase(product: ProductDetailProps): ShakeUseCase[] {
   return useCases;
 }
 
-export type SoymilkProteinRange = "고단백(12g 이상)" | "중간단백(10~12g)" | "기본(8~10g)";
+export type SoymilkProteinRange = "고단백(11g 이상)" | "단백질 강화(8~10g)" | "일반(5~7g)";
+export type SoymilkTier = "고단백" | "단백질 강화" | "일반";
+
+// 11g = 1일 영양성분 기준치(55g)의 20%. 등록 기준은 1팩 5g 이상.
+export function getSoymilkTier(product: { proteinPerServing: number }): SoymilkTier {
+  if (product.proteinPerServing >= 11) return "고단백";
+  if (product.proteinPerServing >= 8) return "단백질 강화";
+  return "일반";
+}
 export type SoymilkSugarRange = "저당(3g 미만)" | "보통당(3~6g)" | "고당(6g 이상)";
 
 export function getSoymilkProteinRange(product: { proteinPerServing: number }): SoymilkProteinRange {
-  if (product.proteinPerServing >= 12) return "고단백(12g 이상)";
-  if (product.proteinPerServing >= 10) return "중간단백(10~12g)";
-  return "기본(8~10g)";
+  const tier = getSoymilkTier(product);
+  if (tier === "고단백") return "고단백(11g 이상)";
+  if (tier === "단백질 강화") return "단백질 강화(8~10g)";
+  return "일반(5~7g)";
 }
 
 export function getSoymilkSugarRange(product: { sugar?: number }): SoymilkSugarRange {

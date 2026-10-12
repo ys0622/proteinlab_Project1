@@ -177,7 +177,7 @@ function applyConditionPrefilters(products: ProductDetailProps[], req: Recommend
 
   if (req.category === "soymilk") {
     if (req.conditions.includes("highpro")) {
-      filtered = filterIfEnough(filtered, (product) => product.proteinPerServing >= 12);
+      filtered = filterIfEnough(filtered, (product) => product.proteinPerServing >= 11);
     }
     if (req.conditions.includes("lowsugar")) {
       filtered = filterIfEnough(filtered, (product) => (product.sugar ?? 999) < 3, 3);
@@ -326,7 +326,7 @@ function scoreBarProduct(product: ProductDetailProps, req: RecommendRequest): Sc
   }
 
   for (const condition of req.conditions) {
-    if (condition === "highpro" && protein >= 12) {
+    if (condition === "highpro" && protein >= 11) {
       score += 24;
       reasons.push("12g 이상 단백질을 담고 있습니다");
     }
@@ -529,7 +529,7 @@ function scoreSoymilkProduct(product: ProductDetailProps, req: RecommendRequest)
     score,
     reason: buildReason(
       reasons,
-      `1팩 단백질 ${protein}g, 당류 ${sugar}g, ${calories}kcal 구성의 고단백 두유입니다`,
+      `1팩 단백질 ${protein}g, 당류 ${sugar}g, ${calories}kcal 구성의 두유입니다`,
     ),
   };
 }
@@ -658,7 +658,7 @@ function getCategoryTips(req: RecommendRequest) {
       {
         icon: "🫘",
         title: "당류는 제품마다 차이가 큼",
-        desc: "같은 고단백 두유라도 당류가 1g대부터 7g대까지 다양해서 성분표 확인이 필요합니다.",
+        desc: "같은 두유라도 당류가 1g대부터 7g대까지 다양해서 성분표 확인이 필요합니다.",
       },
       {
         icon: "📦",

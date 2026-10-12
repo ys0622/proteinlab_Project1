@@ -7,9 +7,9 @@ import { buildGuideJsonLd } from "@/app/lib/guideJsonLd";
 import { soymilkProducts } from "@/app/data/products";
 import { getCapacityMl } from "@/app/lib/productFilters";
 
-const TITLE = "고단백 두유 고르는 법 | 단백질 8g 이상 두유 비교 기준";
+const TITLE = "고단백 두유 고르는 법 | 단백질 11g 이상 두유 비교 기준";
 const DESCRIPTION =
-  "단백질 8g 이상 고단백 두유를 1팩 단백질, 당류, 열량, 맛(플레인·검은콩·견과) 기준으로 비교하는 방법을 성분표 수치와 함께 정리합니다.";
+  "1팩 단백질 11g 이상 고단백 두유를 포함해 두유를 단백질 구간(고단백·강화·일반), 당류, 열량, 맛 기준으로 비교하는 방법을 성분표 수치와 함께 정리합니다.";
 const URL = "https://proteinlab.kr/guides/product-selection-comparison/high-protein-soymilk-guide";
 
 export const metadata = {
@@ -32,7 +32,7 @@ const otherSizes = soymilkProducts
 const criteria = [
   {
     title: "1팩 단백질",
-    body: `ProteinLab에 등록된 고단백 두유는 190mL 1팩 기준 단백질 ${stdProtein.min}~${stdProtein.max}g입니다. 용량이 다른 제품(${otherSizes})은 따로 구분해서 봐야 합니다. 팩 용량이 다르면 총량만 비교하지 말고 100mL당 단백질도 함께 보세요.`,
+    body: `ProteinLab은 소포장 두유를 1팩 단백질 기준으로 고단백(11g 이상), 단백질 강화(8~10g), 일반(5~7g)으로 나눕니다. 등록된 190mL 두유는 1팩 단백질 ${stdProtein.min}~${stdProtein.max}g입니다. 용량이 다른 제품(${otherSizes})은 따로 구분해서 봐야 합니다. 팩 용량이 다르면 총량만 비교하지 말고 100mL당 단백질도 함께 보세요.`,
   },
   {
     title: "당류",
@@ -61,17 +61,17 @@ const checks = [
 const relatedLinks = [
   {
     href: "/soymilk",
-    title: "고단백 두유 전체 비교",
-    description: "등록된 고단백 두유를 단백질, 당류, 열량 기준으로 한 화면에서 비교합니다.",
+    title: "두유 전체 비교",
+    description: "등록된 두유를 단백질 구간, 당류, 열량 기준으로 한 화면에서 비교합니다.",
   },
   {
     href: "/curation/soymilk-low-sugar",
-    title: "저당 고단백 두유 보기",
+    title: "저당 두유 보기",
     description: "당류 3g 미만 두유만 모아서 단백질과 함께 비교합니다.",
   },
   {
     href: "/ranking/soymilk/density/1",
-    title: "고단백 두유 순위",
+    title: "두유 순위",
     description: "단백질 밀도 기준으로 계산한 두유 순위를 확인합니다.",
   },
 ];
@@ -103,7 +103,7 @@ export default function HighProteinSoymilkGuidePage() {
             고단백 두유는 1팩 단백질과 당류부터 봅니다
           </h1>
           <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
-            단백질 8g 이상 두유는 이름이 비슷해도 당류와 열량 차이가 큽니다.
+            이름이 비슷한 두유도 단백질과 당류, 열량 차이가 큽니다.
             <br />
             성분표 수치를 기준으로 어떤 순서로 비교하면 좋은지 정리했습니다.
           </p>

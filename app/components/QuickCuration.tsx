@@ -1,7 +1,11 @@
 "use client";
 
+import { useEffect, useRef, useState } from "react";
 import TrackedLink from "./TrackedLink";
 import { getQuickCurations, type CurationCategory } from "../lib/curationSystem";
+
+// 모바일 인라인 큐레이션: 칩 3줄(24px × 3 + 간격 5px × 2)까지만 보여주고 나머지는 "더보기"로 펼친다.
+const MOBILE_COLLAPSED_MAX_HEIGHT = 82;
 
 interface QuickCurationProps {
   productType: CurationCategory;
@@ -25,7 +29,7 @@ function QuickCurationChip({
       trackingSection={compact ? `quick_curation_inline_${productType}` : `quick_curation_${productType}`}
       trackingPageType="quick_curation"
       className={`inline-flex shrink-0 items-center justify-center rounded-full border border-[var(--curation-chip-bg)] bg-[var(--curation-chip-bg)] font-medium leading-none text-[var(--curation-chip-text)] transition-opacity hover:opacity-90 ${
-        compact ? "h-[22px] px-1.5 text-[10px] sm:text-[11px]" : "px-2.5 py-1 text-[11px]"
+        compact ? "h-6 px-[7px] text-[10.5px] md:h-[22px] md:px-1.5 md:text-[11px]" : "px-2.5 py-1 text-[11px]"
       }`}
     >
       <span
@@ -46,14 +50,36 @@ export default function QuickCuration({
   variant = "card",
 }: QuickCurationProps) {
   const items = getQuickCurations(productType);
+  const chipsRef = useRef<HTMLDivElement>(null);
+  const [expanded, setExpanded] = useState(false);
+  const [hiddenCount, setHiddenCount] = useState(0);
+
+  useEffect(() => {
+    const el = chipsRef.current;
+    if (!el || variant !== "inline") return;
+    const measure = () => {
+      if (window.innerWidth >= 768) {
+        setHiddenCount(0);
+        return;
+      }
+      const top = el.getBoundingClientRect().top;
+      const hidden = [...el.children].filter(
+        (child) => child.getBoundingClientRect().bottom - top > MOBILE_COLLAPSED_MAX_HEIGHT + 1,
+      ).length;
+      setHiddenCount(hidden);
+    };
+    measure();
+    window.addEventListener("resize", measure);
+    return () => window.removeEventListener("resize", measure);
+  }, [items.length, variant]);
 
   if (variant === "inline") {
     return (
       <div
-        className={`rounded-xl border border-[var(--border)] bg-[var(--background-card)] px-2.5 py-1 md:px-3 md:py-2 ${className}`.trim()}
+        className={`rounded-xl border border-[var(--border)] bg-[var(--background-card)] px-2.5 py-1.5 md:px-3 md:py-2 ${className}`.trim()}
       >
-        <div className="flex items-start gap-1.5 md:items-center">
-          <div className="flex h-[22px] min-w-[56px] shrink-0 items-center md:min-w-[75px]">
+        <div className="flex flex-col gap-1 md:flex-row md:items-center md:gap-1.5">
+          <div className="flex h-[18px] shrink-0 items-center md:h-[22px] md:min-w-[75px]">
             <p
               className="text-[10px] font-bold leading-none text-[var(--foreground-muted)] md:text-[11px]"
               style={{ margin: 0 }}
@@ -61,17 +87,27 @@ export default function QuickCuration({
               빠른 큐레이션
             </p>
           </div>
-          <div className="relative -mr-2.5 min-w-0 flex-1 md:mr-0">
-            <div className="flex items-center gap-1.5 overflow-x-auto pr-2.5 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:max-h-[50px] md:flex-wrap md:gap-y-1.5 md:overflow-hidden md:pr-0">
+          <div className="min-w-0 flex-1">
+            <div
+              ref={chipsRef}
+              className={`flex flex-wrap items-center gap-[5px] overflow-hidden md:max-h-[50px] md:gap-1.5 md:gap-y-1.5 ${
+                expanded ? "" : "max-h-[82px]"
+              }`}
+            >
               {items.map((item) => (
                 <QuickCurationChip key={`${productType}-${item.slug}`} item={item} productType={productType} compact />
               ))}
             </div>
-            <div
-              aria-hidden
-              className="pointer-events-none absolute right-0 top-0 bottom-0 w-7 md:hidden"
-              style={{ background: "linear-gradient(to left, var(--background-card) 25%, transparent)" }}
-            />
+            {hiddenCount > 0 || expanded ? (
+              <button
+                type="button"
+                onClick={() => setExpanded((current) => !current)}
+                aria-expanded={expanded}
+                className="mt-1 py-0.5 text-[10.5px] font-bold text-[var(--accent)] md:hidden"
+              >
+                {expanded ? "접기 ▴" : `더보기 +${hiddenCount} ▾`}
+              </button>
+            ) : null}
           </div>
         </div>
       </div>

@@ -118,7 +118,7 @@ export async function renderRankingPage(category: ProductCategory, metric: Grade
     bar: "단백질 바",
     yogurt: "단백질 요거트",
     shake: "단백질 쉐이크",
-    soymilk: "고단백 두유",
+    soymilk: "두유",
   };
 
   const itemListJsonLd = (Object.entries(productsByCategory) as [ProductCategory, ProductDetailProps[]][]).map(

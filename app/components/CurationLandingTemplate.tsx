@@ -253,12 +253,12 @@ export default function CurationLandingTemplate({
         {hasSoymilkCategory && (!focus || focus === "soymilk") ? (
           <>
             <ProductSection
-              title={soymilkCopy?.recommendationTitle ?? "추천 고단백 두유"}
+              title={soymilkCopy?.recommendationTitle ?? "추천 두유"}
               note={soymilkCopy?.recommendationNote}
               products={recommendedSoymilks}
             />
             <ProductSection
-              title={soymilkCopy?.comparisonTitle ?? "고단백 두유 비교"}
+              title={soymilkCopy?.comparisonTitle ?? "두유 비교"}
               products={restOf(soymilkProducts, recommendedSoymilks, isPopularLanding ? 12 : undefined)}
               hideWhenEmpty
               note={recommendedSoymilks.length > 0 ? "위 추천 제품을 제외한 나머지입니다." : undefined}

@@ -223,27 +223,27 @@ export default async function Home() {
       </section>
 
       {/* ─── 2. 카테고리 (센터 정렬 아이콘 카드) ─── */}
-      <section className="mx-auto max-w-[1180px] px-2.5 pt-2 min-[400px]:px-4 md:px-5 md:pt-4">
-        <div className="grid grid-cols-5 gap-1 min-[400px]:gap-1.5 md:gap-3">
+      <section className="mx-auto max-w-[1180px] px-2.5 pt-2 md:px-5 md:pt-4">
+        <div className="grid grid-cols-5 gap-1 md:gap-3">
           {([
             { label: "단백질 음료", icon: "drink", href: "/drinks", countKey: "drink" as const },
             { label: "단백질 바", icon: "bar", href: "/bars", countKey: "bar" as const },
             { label: "단백질 요거트", icon: "yogurt", href: "/yogurt", countKey: "yogurt" as const },
             { label: "단백질 쉐이크", icon: "shake", href: "/shake", countKey: "shake" as const },
-            { label: "고단백 두유", icon: "soymilk", href: "/soymilk", countKey: "soymilk" as const },
+            { label: "두유", icon: "soymilk", href: "/soymilk", countKey: "soymilk" as const },
           ] as const).map((cat) => (
             <HomeTrackedLink
               key={cat.href}
               href={cat.href}
               eventName="home_category_click"
               eventParams={{ category: cat.countKey, destination_url: cat.href }}
-              className="group flex min-w-0 items-center justify-center gap-[3px] rounded-[10px] border border-[#E3E8E4] bg-white px-[3px] py-1.5 text-left min-[400px]:gap-1 min-[400px]:px-1 shadow-[0_2px_6px_rgba(20,32,26,0.07)] transition-all duration-150 hover:shadow-[0_6px_16px_rgba(20,32,26,0.10)] md:justify-start md:gap-3 md:rounded-[12px] md:border-0 md:px-3.5 md:py-3"
+              className="group flex min-w-0 items-center justify-center gap-[3px] rounded-[10px] border border-[#E3E8E4] bg-white px-[3px] py-1.5 text-left shadow-[0_2px_6px_rgba(20,32,26,0.07)] transition-all duration-150 hover:shadow-[0_6px_16px_rgba(20,32,26,0.10)] md:justify-start md:gap-3 md:rounded-[12px] md:border-0 md:px-3.5 md:py-3"
             >
-              <span className="relative h-[26px] w-[26px] shrink-0 overflow-hidden rounded-[7px] min-[400px]:h-7 min-[400px]:w-7 transition-transform duration-150 group-hover:scale-105 md:h-14 md:w-14 md:rounded-[10px]">
+              <span className="relative h-[clamp(26px,7.4vw,36px)] w-[clamp(26px,7.4vw,36px)] shrink-0 overflow-hidden rounded-[7px] transition-transform duration-150 group-hover:scale-105 md:h-14 md:w-14 md:rounded-[10px]">
                 <Image src={`/category-icons/${cat.icon}-v2.jpg`} alt="" fill className="object-cover" sizes="56px" />
               </span>
               <div className="min-w-0">
-                <p className="break-keep text-[11px] font-extrabold leading-tight tracking-[-0.04em] md:text-[18px] md:tracking-[-0.02em]" style={{ color: "#14201A" }}>
+                <p className="break-keep text-[clamp(11px,2.6vw,12px)] font-extrabold leading-tight tracking-[-0.04em] md:text-[18px] md:tracking-[-0.02em]" style={{ color: "#14201A" }}>
                   <span className="md:hidden">{cat.label.replace("단백질 ", "").replace("고단백 ", "")}</span>
                   <span className="hidden md:inline">{cat.label}</span>
                 </p>
@@ -279,7 +279,7 @@ export default async function Home() {
           </div>
           <AutoProductCarousel label="새로 등록된 제품">
             {newlyAdded.map(({ product }) => (
-              <div key={product.slug} className="flex w-[calc((100%-36px)/4)] shrink-0 snap-start">
+              <div key={product.slug} className="flex w-[calc((100%-36px)/4)] shrink-0 snap-start [&>*]:min-w-0 [&>*]:flex-1 [&>*]:self-stretch">
               <ProductCard
                 key={product.slug}
                 {...toCarouselProduct(product)}

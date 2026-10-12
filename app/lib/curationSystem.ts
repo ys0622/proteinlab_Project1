@@ -431,9 +431,9 @@ const curations: CurationDefinition[] = [
         recommend: (products) =>
           sortByPopularity(products.filter((product) => product.productType === "soymilk"), "soymilk"),
         landingCopy: {
-          recommendationTitle: "인기 고단백 두유 추천",
+          recommendationTitle: "인기 두유 추천",
           recommendationNote: "최근 많이 찾는 고단백 두유를 먼저 보여줍니다.",
-          comparisonTitle: "인기 고단백 두유 비교",
+          comparisonTitle: "인기 두유 비교",
         },
       },
     },
@@ -459,6 +459,36 @@ const curations: CurationDefinition[] = [
     },
   },
   {
+    id: "soymilk-high-protein",
+    slug: "soymilk-high-protein",
+    label: "고단백",
+    icon: "💪",
+    kind: "ingredient",
+    categoryTargets: ["soymilk"],
+    routeMode: "category-query",
+    seoTitle: "고단백 두유 추천 (단백질 11g 이상) | ProteinLab",
+    seoDescription:
+      "1팩 단백질 11g 이상 고단백 두유를 단백질, 당류, 칼로리와 함께 비교합니다. 매일·베지밀·연세·이롬 등 고단백 라인을 성분표 기준으로 확인해보세요.",
+    categories: {
+      soymilk: {
+        category: "soymilk",
+        quickLabel: "고단백",
+        quickIcon: "💪",
+        quickOrder: 5,
+        filter: (product) => product.productType === "soymilk" && (product.proteinPerServing ?? 0) >= 11,
+        recommend: (products) =>
+          sortSoymilkByProtein(
+            products.filter((product) => product.productType === "soymilk" && (product.proteinPerServing ?? 0) >= 11),
+          ),
+        landingCopy: {
+          recommendationTitle: "추천 고단백 두유",
+          recommendationNote: "1팩 단백질 11g 이상 제품을 단백질 함량 순으로 보여줍니다.",
+          comparisonTitle: "고단백 두유 비교",
+        },
+      },
+    },
+  },
+  {
     id: "soymilk-low-sugar",
     slug: "soymilk-low-sugar",
     label: "저당",
@@ -466,9 +496,9 @@ const curations: CurationDefinition[] = [
     kind: "ingredient",
     categoryTargets: ["soymilk"],
     routeMode: "category-query",
-    seoTitle: "저당 고단백 두유 추천 | ProteinLab",
+    seoTitle: "저당 두유 추천 | ProteinLab",
     seoDescription:
-      "당류 3g 미만의 고단백 두유를 단백질, 칼로리와 함께 비교합니다. 설탕무첨가·저당 두유를 성분표 기준으로 확인해보세요.",
+      "당류 3g 미만의 두유를 단백질, 칼로리와 함께 비교합니다. 설탕무첨가·저당 두유를 성분표 기준으로 확인해보세요.",
     categories: {
       soymilk: {
         category: "soymilk",
@@ -481,9 +511,9 @@ const curations: CurationDefinition[] = [
             products.filter((product) => product.productType === "soymilk" && (product.sugar ?? 999) < 3),
           ),
         landingCopy: {
-          recommendationTitle: "추천 저당 고단백 두유",
-          recommendationNote: "당류 3g 미만이면서 단백질 8g 이상인 제품 중심입니다.",
-          comparisonTitle: "저당 고단백 두유 비교",
+          recommendationTitle: "추천 저당 두유",
+          recommendationNote: "당류 3g 미만이면서 단백질이 높은 제품 순으로 보여줍니다.",
+          comparisonTitle: "저당 두유 비교",
         },
       },
     },
@@ -496,9 +526,9 @@ const curations: CurationDefinition[] = [
     kind: "ingredient",
     categoryTargets: ["soymilk"],
     routeMode: "category-query",
-    seoTitle: "저칼로리 고단백 두유 추천 | ProteinLab",
+    seoTitle: "저칼로리 두유 추천 | ProteinLab",
     seoDescription:
-      "1팩 100kcal 이하의 고단백 두유를 단백질, 당류와 함께 비교합니다.",
+      "1팩 100kcal 이하의 두유를 단백질, 당류와 함께 비교합니다.",
     categories: {
       soymilk: {
         category: "soymilk",
@@ -511,9 +541,9 @@ const curations: CurationDefinition[] = [
             products.filter((product) => product.productType === "soymilk" && (product.calories ?? 999) <= 100),
           ),
         landingCopy: {
-          recommendationTitle: "추천 저칼로리 고단백 두유",
+          recommendationTitle: "추천 저칼로리 두유",
           recommendationNote: "열량이 낮으면서 단백질을 챙기기 좋은 제품 중심입니다.",
-          comparisonTitle: "저칼로리 고단백 두유 비교",
+          comparisonTitle: "저칼로리 두유 비교",
         },
       },
     },
@@ -526,9 +556,9 @@ const curations: CurationDefinition[] = [
     kind: "ingredient",
     categoryTargets: ["soymilk"],
     routeMode: "category-query",
-    seoTitle: "검은콩 고단백 두유 추천 | ProteinLab",
+    seoTitle: "검은콩 두유 추천 | ProteinLab",
     seoDescription:
-      "검은콩 맛 고단백 두유를 단백질, 당류, 칼로리 기준으로 비교합니다.",
+      "검은콩 맛 두유를 단백질, 당류, 칼로리 기준으로 비교합니다.",
     categories: {
       soymilk: {
         category: "soymilk",
@@ -541,9 +571,9 @@ const curations: CurationDefinition[] = [
             products.filter((product) => product.productType === "soymilk" && /검은콩|서리태/.test(`${product.name} ${product.flavor ?? ""}`)),
           ),
         landingCopy: {
-          recommendationTitle: "추천 검은콩 고단백 두유",
+          recommendationTitle: "추천 검은콩 두유",
           recommendationNote: "단백질 함량을 우선으로 본 검은콩 제품입니다.",
-          comparisonTitle: "검은콩 고단백 두유 비교",
+          comparisonTitle: "검은콩 두유 비교",
         },
       },
     },

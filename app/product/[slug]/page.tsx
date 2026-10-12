@@ -14,6 +14,7 @@ import Footer from "../../components/Footer";
 import Header from "../../components/Header";
 import MetricBadgeGroup from "../../components/MetricBadgeGroup";
 import NutritionDetailSection from "../../components/NutritionDetailSection";
+import { withTopic } from "../../lib/koreanParticle";
 import ProductBadge from "../../components/ProductBadge";
 import ProductDetailBuyWrapper from "../../components/ProductDetailBuyWrapper";
 import PurchaseLinkButton from "../../components/PurchaseLinkButton";
@@ -103,7 +104,7 @@ function getProductFaqs(product: ProductDetailProps) {
       answer: `${formatProductLabel(product.brand, product.name)}은 ${getMetricLine(product)} 기준으로 먼저 보는 편이 좋습니다. 같은 ${categoryLabel} 안에서는 단백질 총량, 당류, 칼로리, 용량당 밀도를 같이 비교해야 실제 체감 차이가 잘 보입니다.`,
     },
     {
-      question: `이 제품과 비슷한 ${categoryLabel}은(는) 어디서 더 볼 수 있나요?`,
+      question: `이 제품과 비슷한 ${withTopic(categoryLabel)} 어디서 더 볼 수 있나요?`,
       answer: `ProteinLab ${categoryLabel} 목록 페이지(${categoryHref})와 비교 페이지에서 비슷한 스펙 제품을 한 번에 볼 수 있습니다. 특히 같은 카테고리 제품끼리 비교하면 목적별 차이가 더 명확합니다.`,
     },
     {
@@ -191,7 +192,7 @@ function buildProductDescription(product: ProductDetailProps): string {
         : product.productType === "bar"
           ? "칼로리·당류 기준으로 비슷한 단백질 바와 한눈에 비교하세요."
           : product.productType === "soymilk"
-            ? "단백질·당류 기준으로 비슷한 고단백 두유와 한눈에 비교하세요."
+            ? "단백질·당류 기준으로 비슷한 두유와 한눈에 비교하세요."
             : "당류·단백질 기준으로 비슷한 요거트와 한눈에 비교하세요.";
   return `${formatProductLabel(product.brand, product.name)} — ${metrics.join(" · ")}. ${tail}`;
 }
@@ -409,13 +410,13 @@ function buildProductInternalLinks(product: ProductDetailProps) {
             ? sugar != null && sugar <= 3
               ? {
                   href: "/curation/soymilk-low-sugar",
-                  title: "저당 고단백 두유 보기",
-                  description: "당류 3g 이하 두유만 모아 단백질과 함께 비교합니다.",
+                  title: "저당 두유 보기",
+                  description: "당류 3g 미만 두유만 모아 단백질과 함께 비교합니다.",
                 }
               : {
                   href: "/curation/popular?category=soymilk",
-                  title: "인기 고단백 두유 보기",
-                  description: "많이 찾는 고단백 두유를 이어서 비교합니다.",
+                  title: "인기 두유 보기",
+                  description: "많이 찾는 두유를 이어서 비교합니다.",
                 }
           : getShakePositioning(product) === "식사대용형"
             ? {
@@ -656,7 +657,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
     },
   ];
 
-  const servingBasisLabel = isBar ? "1개 기준" : isYogurt ? "1컵 기준" : isShake ? "1포 기준" : "1병 기준";
+  const servingBasisLabel = isBar ? "1개 기준" : isYogurt ? "1컵 기준" : isShake ? "1포 기준" : product.productType === "soymilk" ? "1팩 기준" : "1병 기준";
 
   return (
     <div className="min-h-screen" style={{ background: "#FAF8F3" }}>
@@ -1069,7 +1070,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
             <NutritionDetailSection
               rows={getNutritionDetail(product)}
               capacity={product.capacity}
-              unit={isBar ? "piece" : isYogurt ? "cup" : isShake ? "pack" : "bottle"}
+              unit={isBar ? "piece" : isYogurt ? "cup" : isShake || product.productType === "soymilk" ? "pack" : "bottle"}
             />
           </div>
 
@@ -1082,7 +1083,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
               <div className="mb-4">
                 <p className="mb-0.5 text-[12px] font-bold uppercase tracking-wider" style={{ color: "#1F5A3D" }}>ProteinLab 분석</p>
                 <h2 className="font-bold" style={{ fontSize: "17px", color: "#1E2A22" }}>카테고리 내 위치</h2>
-                <p className="mt-0.5 text-[13px]" style={{ color: "#5F6B61" }}>1회 제공량(1병·1개) 기준, 같은 카테고리 {position.total}종과 비교한 순위입니다.</p>
+                <p className="mt-0.5 text-[13px]" style={{ color: "#5F6B61" }}>{product.productType === "soymilk" ? "1회 제공량(1팩)" : "1회 제공량(1병·1개)"} 기준, 같은 카테고리 {position.total}종과 비교한 순위입니다.</p>
               </div>
               <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
                 {position.rows.map((row) => (

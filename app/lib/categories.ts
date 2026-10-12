@@ -34,7 +34,7 @@ export const CATEGORY_META: Record<ProductCategory, CategoryMeta> = {
   },
   soymilk: {
     label: "두유",
-    description: "1팩 단백질 8g 이상인 고단백 두유만 등록 (일반 두유 제외, 함량 g 기준)",
+    description: "소포장 두유를 1팩 단백질(g) 기준으로 비교 · 등록 기준 5g 이상 (고단백 11g+ / 강화 8~10g / 일반 5~7g)",
     order: 5,
     href: "/soymilk",
   },

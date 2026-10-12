@@ -16,7 +16,7 @@ const yogurtProteinOptions = ["고단백(15g 이상)", "중간단백(10~15g)", "
 const yogurtSugarOptions = ["당류 0g", "저당(5g 미만)", "보통당(5~10g)", "고당(10g 이상)"];
 const yogurtTypeOptions = ["Greek yogurt", "Drinking yogurt", "Protein yogurt"];
 const yogurtFlavorOptions = ["플레인", "초코", "바나나", "베리", "기타"];
-const soymilkProteinOptions = ["고단백(12g 이상)", "중간단백(10~12g)", "기본(8~10g)"];
+const soymilkProteinOptions = ["고단백(11g 이상)", "단백질 강화(8~10g)", "일반(5~7g)"];
 const soymilkSugarOptions = ["저당(3g 미만)", "보통당(3~6g)", "고당(6g 이상)"];
 const soymilkFlavorOptions = ["플레인", "검은콩", "초코", "견과", "기타"];
 const shakeUseCaseOptions = ["운동보충형", "식사대용형", "저당형"];
@@ -31,7 +31,7 @@ const chipUnselected =
 const chipSelected =
   "border-[var(--accent)] bg-[var(--accent-light)] font-medium text-[var(--accent)]";
 const detailFilterButton =
-  "inline-flex h-9 items-center gap-1.5 rounded-[10px] border border-[#d8d3cc] bg-white px-3 text-[12px] font-bold text-[#454545] shadow-[0_1px_4px_rgba(50,40,30,0.06)] transition-colors hover:border-[var(--accent)] hover:bg-[var(--accent-light)] hover:text-[var(--accent)] md:h-7 md:rounded-full md:text-[11px]";
+  "inline-flex h-7 items-center gap-1.5 rounded-full border border-[#d8d3cc] bg-white px-2.5 text-[11px] font-bold text-[#454545] shadow-[0_1px_4px_rgba(50,40,30,0.06)] transition-colors hover:border-[var(--accent)] hover:bg-[var(--accent-light)] hover:text-[var(--accent)] md:px-3";
 
 function FilterRow({ title, children }: { title: string; children: React.ReactNode }) {
   return (

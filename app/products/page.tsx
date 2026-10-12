@@ -96,8 +96,8 @@ const categoryLinks = [
   },
   {
     href: "/soymilk",
-    title: "고단백 두유",
-    body: "식물성 단백질 음료를 찾는다면 단백질 8g 이상 두유부터 당류까지 비교해보세요.",
+    title: "두유",
+    body: "두유를 찾는다면 고단백(11g 이상)부터 저당까지 1팩 기준으로 비교해보세요.",
   },
 ];
 
@@ -125,7 +125,7 @@ export default async function ProductsPage() {
     { href: "/bars", title: "단백질 바", products: byBrand(bars) },
     { href: "/yogurt", title: "단백질 요거트", products: byBrand(yogurts) },
     { href: "/shake", title: "단백질 쉐이크", products: byBrand(shakes) },
-    { href: "/soymilk", title: "고단백 두유", products: byBrand(soymilks) },
+    { href: "/soymilk", title: "두유", products: byBrand(soymilks) },
   ];
 
   const breadcrumbJsonLd = {

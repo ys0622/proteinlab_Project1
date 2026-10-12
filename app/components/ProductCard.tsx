@@ -476,6 +476,14 @@ export default function ProductCard({
               />
             );
           })}
+          {productType === "soymilk" ? (
+            <>
+              {proteinPerServing >= 8 ? (
+                <ProductBadge label={proteinPerServing >= 11 ? "고단백" : "단백질 강화"} tone={proteinPerServing >= 11 ? "grade-a" : "grade-b"} className="product-card__badge" />
+              ) : null}
+              {sugar != null && sugar < 3 ? <ProductBadge label="저당" tone="neutral" className="product-card__badge" /> : null}
+            </>
+          ) : null}
           {variant && variant !== "일반" && productType !== "yogurt" && !hideSupplementalBadges && canShowSupplementalBadge ? (
             <ProductBadge
               label={variant}
