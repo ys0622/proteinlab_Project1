@@ -9,6 +9,7 @@ import TrackedCoupangLink from "../../components/TrackedCoupangLink";
 import TrackedLink from "../../components/TrackedLink";
 import { getCompareLandingBySlug, getAllCompareLandingStaticSlugs } from "../../data/compareLandings";
 import { resolveLandingCopy } from "../../lib/compareLandingCopy";
+import { buildCompareFaqs } from "../../lib/compareLandingFaq";
 import { compareCanonicalOverrides } from "../../data/compareCanonicalOverrides";
 import { formatProductLabel } from "../../lib/productLabel";
 import { getCoupangRedirectHref } from "../../lib/purchaseLinks";
@@ -272,6 +273,7 @@ export default async function CompareLandingPage({ params }: PageProps) {
     .filter((item): item is NonNullable<typeof item> => item != null);
 
   const landingCopy = resolveLandingCopy(landing, products);
+  const faqs = buildCompareFaqs(landing.title, landingCopy.intro, products);
   const compareHref = `/compare?slugs=${landing.productSlugs.join(",")}`;
   const conversionPlan = priorityConversionPlans[landing.slug];
   const differenceCards = buildDifferenceCards(products);
@@ -310,24 +312,11 @@ export default async function CompareLandingPage({ params }: PageProps) {
     {
       "@context": "https://schema.org",
       "@type": "FAQPage",
-      mainEntity: [
-        {
-          "@type": "Question",
-          name: `${landing.title}에서 가장 중요하게 봐야 할 기준은 무엇인가요?`,
-          acceptedAnswer: {
-            "@type": "Answer",
-            text: `${landingCopy.intro} 단백질 함량, 당류, 칼로리, 단백질 밀도를 함께 비교하면 실제 체감 차이를 더 잘 파악할 수 있습니다.`,
-          },
-        },
-        {
-          "@type": "Question",
-          name: `${landing.title} 중 어떤 제품을 선택해야 하나요?`,
-          acceptedAnswer: {
-            "@type": "Answer",
-            text: `목적에 따라 달라집니다. 운동 후 보충이 목적이면 단백질 함량과 밀도를, 다이어트 목적이면 당류와 칼로리를 우선 기준으로 비교해보세요. ProteinLab 비교표에서 수치를 나란히 확인할 수 있습니다.`,
-          },
-        },
-      ],
+      mainEntity: faqs.map((item) => ({
+        "@type": "Question",
+        name: item.question,
+        acceptedAnswer: { "@type": "Answer", text: item.answer },
+      })),
     },
   ];
 
@@ -575,6 +564,18 @@ export default async function CompareLandingPage({ params }: PageProps) {
                 purchaseLinkCategory="ranking"
                 cardVariant="related"
               />
+            ))}
+          </div>
+        </section>
+
+        <section className="mt-8">
+          <h2 className="mb-3 text-lg font-bold text-[var(--foreground)]">자주 묻는 질문</h2>
+          <div className="space-y-3">
+            {faqs.map((item) => (
+              <div key={item.question} className="rounded-2xl border border-[#e8e6e3] bg-[#FFFDF8] px-5 py-4" style={{ wordBreak: "keep-all" }}>
+                <h3 className="text-sm font-semibold text-[var(--foreground)]">Q. {item.question}</h3>
+                <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">{item.answer}</p>
+              </div>
             ))}
           </div>
         </section>
