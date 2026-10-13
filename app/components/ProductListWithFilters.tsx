@@ -543,7 +543,7 @@ function ProductListWithFiltersInner(props: ProductListWithFiltersInnerProps) {
           stickyMobile={stickyTabs}
         />
       </div>
-      <SortBar sort={sort} onSortChange={handleSortChange} className="shrink-0" />
+      <SortBar sort={sort} onSortChange={handleSortChange} className="relative z-[31] shrink-0" />
     </div>
   );
 
