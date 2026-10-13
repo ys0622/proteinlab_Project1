@@ -46,6 +46,17 @@ const EXPIRING_SEED: VerifiedGoldboxOffer[] = [{
   verifiedAt: "2026-10-12T16:40:00+09:00",
   startsAt: "2026-10-12T16:40:00+09:00",
   expiresAt: "2026-10-13T07:00:00+09:00",
+}, {
+  // 2026-10-14 사용자가 쿠팡 앱 골드박스 화면(07:27, 상품 카드 타이머 23:32:42 남음)으로 확인해 알려 준 제품(링크 hMB2VuJloO, 240ml 16개 옵션).
+  // 07:27 + 23:32:42 = 10/15 07:00 종료로 계산했다. 가격은 표시하지 않는다(price 0 = 가격 줄 숨김).
+  slug: "yonsei-protein-pro-plain-240",
+  offerName: "240mL × 16개 · 와우회원 할인 · 쿠팡 확인",
+  price: 0,
+  href: "https://link.coupang.com/a/hMB2VuJloO",
+  source: "coupang_app",
+  verifiedAt: "2026-10-14T07:27:00+09:00",
+  startsAt: "2026-10-14T07:27:00+09:00",
+  expiresAt: "2026-10-15T07:00:00+09:00",
 }];
 
 async function getKV(): Promise<OfferKV | null> {

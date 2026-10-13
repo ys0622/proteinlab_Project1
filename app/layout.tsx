@@ -104,6 +104,12 @@ export default function RootLayout({
                 function gtag(){dataLayer.push(arguments);}
                 window.gtag = gtag;
                 gtag('js', new Date());
+                try {
+                  var internalFlag = new URLSearchParams(location.search).get('internal');
+                  if (internalFlag === '1') localStorage.setItem('pl_internal', '1');
+                  if (internalFlag === '0') localStorage.removeItem('pl_internal');
+                  if (localStorage.getItem('pl_internal') === '1') gtag('set', { traffic_type: 'internal' });
+                } catch (e) {}
                 gtag('config', '${GA_ID}', {
                   send_page_view: false,
                 });

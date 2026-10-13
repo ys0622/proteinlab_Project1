@@ -135,12 +135,22 @@ function postFallback(name: string, params: AnalyticsParams) {
   return true;
 }
 
+function isInternalTraffic() {
+  if (typeof window === "undefined") return false;
+  try {
+    return window.localStorage.getItem("pl_internal") === "1";
+  } catch {
+    return false;
+  }
+}
+
 function withCommonParams(params: AnalyticsParams = {}) {
   const pagePath = typeof params.page_path === "string" ? params.page_path : getCurrentPagePath();
   return {
     site_name: "proteinlab",
     page_type: typeof params.page_type === "string" ? params.page_type : getPageType(pagePath),
     page_path: pagePath,
+    ...(isInternalTraffic() ? { traffic_type: "internal" } : {}),
     ...params,
   };
 }
