@@ -2,6 +2,7 @@ import { ComparisonGuidePage, buildGuideMetadata, type ComparePageConfig } from 
 
 const config: ComparePageConfig = {
   slug: "protein-shake-nutrition-label-guide",
+  dataSection: [{category: "shake", mode: "lowSugar"}],
   title: "단백질 쉐이크 성분표 보는 법 | 단백질·당류·칼로리 기준",
   description: "단백질 쉐이크 영양성분표에서 단백질, 당류, 칼로리, 식이섬유, 나트륨을 어떤 순서로 확인해야 하는지 목적별 기준과 함께 설명합니다.",
   keywords: ["단백질 쉐이크 성분", "프로틴 쉐이크 성분", "단백질 쉐이크 영양성분", "단백질 쉐이크 고르는 법", "단백질 쉐이크 당류"],

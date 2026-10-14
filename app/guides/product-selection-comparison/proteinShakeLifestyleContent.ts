@@ -73,6 +73,7 @@ const oliveYoungShakePicks = oliveYoungShakeProducts.slice(0, 6);
 
 export const proteinShakeForWomenConfig: CategoryGuideConfig = {
   slug: "protein-shake-for-women",
+  dataSection: {category: "shake", mode: "lowCalorie"},
   title: "여성을 위한 단백질 쉐이크 추천 | 다이어트·아침대용 비교 2026",
   description:
     "여성용 단백질 쉐이크를 다이어트, 아침 대용, 체형 유지 기준으로 직접 비교했습니다. 맛, 칼로리, 포만감까지 같이 보고 입문용 후보를 빠르게 좁혀볼 수 있습니다.",

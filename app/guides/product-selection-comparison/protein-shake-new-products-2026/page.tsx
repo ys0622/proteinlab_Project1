@@ -2,6 +2,7 @@ import { ComparisonGuidePage, buildGuideMetadata, type ComparePageConfig } from 
 
 const config: ComparePageConfig = {
   slug: "protein-shake-new-products-2026",
+  dataSection: [{category: "shake", mode: "protein"}],
   title: "2026 단백질 쉐이크 신제품 24종 비교 — 저당·고단백·맛 기준",
   description: "딜라이트 프로젝트, 한손한끼, 매일한끼, 테이크핏 브레드밀, 스포식스 신제품 24종을 단백질·당류·칼로리와 용도 기준으로 비교합니다.",
   keywords: ["단백질 쉐이크 신제품", "단백질 쉐이크 비교", "저당 단백질 쉐이크", "고단백 쉐이크"],

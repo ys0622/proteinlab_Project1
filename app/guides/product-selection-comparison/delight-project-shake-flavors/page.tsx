@@ -2,6 +2,7 @@ import { ComparisonGuidePage, buildGuideMetadata, type ComparePageConfig } from 
 
 const config: ComparePageConfig = {
   slug: "delight-project-shake-flavors",
+  dataSection: [{category: "shake", brand: "딜라이트 프로젝트"}],
   title: "딜라이트 프로젝트 단백질 쉐이크 8종 비교 — 맛·단백질·당류",
   description: "딜라이트 프로젝트 단백질 쉐이크 8종을 단백질, 당류, 칼로리 기준으로 비교하고 저당·고단백·요거트 계열 추천 맛을 정리했습니다.",
   keywords: ["딜라이트 프로젝트 단백질 쉐이크", "딜라이트 프로젝트 쉐이크 맛", "딜라이트 프로젝트 성분"],

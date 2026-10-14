@@ -220,6 +220,7 @@ proteinYogurtTop5Config.jsonLd = [articleJsonLd(proteinYogurtTop5Config), faqJso
 
 export const greekVsProteinYogurtConfig: CategoryGuideConfig = {
   slug: "greek-vs-protein-yogurt",
+  dataSection: {category: "yogurt", mode: "protein"},
   title: "그릭요거트 vs 단백질 요거트",
   seoTitle: "그릭요거트 vs 단백질 요거트 차이 | 단백질·칼로리 비교",
   description:
@@ -327,6 +328,7 @@ greekVsProteinYogurtConfig.jsonLd = [articleJsonLd(greekVsProteinYogurtConfig), 
 
 export const dietProteinYogurtConfig: CategoryGuideConfig = {
   slug: "diet-protein-yogurt",
+  dataSection: {category: "yogurt", mode: "lowSugar"},
   title: "다이어트 단백질 요거트 추천",
   seoTitle: "다이어트 단백질 요거트 추천 | 100kcal 이하·당류 5g 이하",
   description:

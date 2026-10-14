@@ -2,6 +2,7 @@ import { ComparisonGuidePage, buildGuideMetadata, type ComparePageConfig } from 
 
 const config: ComparePageConfig = {
   slug: "protein-shake-flavor-guide",
+  dataSection: [{category: "shake", mode: "density"}],
   title: "단백질 쉐이크 맛 추천 | 초코·곡물·과일·디저트 비교 2026",
   description: "단백질 쉐이크를 초코, 곡물, 과일·요거트, 고구마·옥수수, 디저트 계열로 나눠 맛 취향과 단백질·당류 기준으로 추천합니다.",
   keywords: ["단백질 쉐이크 맛 추천", "맛있는 단백질 쉐이크", "프로틴 쉐이크 맛", "단백질 쉐이크 초코", "곡물 단백질 쉐이크"],

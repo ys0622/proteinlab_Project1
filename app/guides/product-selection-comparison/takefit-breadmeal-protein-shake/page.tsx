@@ -2,6 +2,7 @@ import { ComparisonGuidePage, buildGuideMetadata, type ComparePageConfig } from 
 
 const config: ComparePageConfig = {
   slug: "takefit-breadmeal-protein-shake",
+  dataSection: [{category: "shake", brand: "테이크핏"}],
   title: "테이크핏 브레드밀 단백질 쉐이크 4종 비교 | 맛·단백질·당류",
   description: "테이크핏 브레드밀 초코 브라우니, 바나나브륄레, 고소오트식빵, 고구마소보로 4종의 단백질·칼로리·당류를 비교하고 목적별 추천을 정리합니다.",
   keywords: ["테이크핏 브레드밀", "테이크핏 쉐이크", "테이크핏 단백질 쉐이크", "브레드밀 맛 추천", "브레드밀 성분"],

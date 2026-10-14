@@ -453,6 +453,7 @@ lactoseFreeProteinDrinkConfig.jsonLd = [articleJsonLd(lactoseFreeProteinDrinkCon
 
 export const proteinDrinkFor50sConfig: ComparePageConfig = {
   slug: "protein-drink-for-50s",
+  dataSection: [{category: "drink", mode: "protein"}],
   title: "50대 단백질 음료 추천",
   seoTitle: "50대 단백질 음료 추천 | 건강 유지·근감소증 예방 기준",
   description: "50대 이상이 건강 유지와 근감소증 예방 관점에서 단백질 음료를 고를 때 무엇을 봐야 하는지, 부담이 덜한 후보 제품을 ProteinLab DB 기준으로 정리했습니다.",
@@ -532,6 +533,7 @@ proteinDrinkFor50sConfig.jsonLd = [articleJsonLd(proteinDrinkFor50sConfig), faqJ
 
 export const proteinDrinkBoxValueConfig: ComparePageConfig = {
   slug: "protein-drink-box-value",
+  dataSection: [{category: "drink", mode: "protein"}],
   title: "단백질 음료 박스로 사면 얼마",
   seoTitle: "단백질 음료 박스로 사면 개당 얼마? 브랜드별 가성비 비교",
   description: "단백질 음료를 박스로 사면 개당 얼마가 되는지, 최근 쿠팡 노출가 기준으로 대표 브랜드 박스 가성비와 단백질 1g당 가격을 정리했습니다.",
@@ -602,6 +604,7 @@ proteinDrinkBoxValueConfig.jsonLd = [articleJsonLd(proteinDrinkBoxValueConfig), 
 
 export const doctoruVsTakefitMonsterConfig: ComparePageConfig = {
   slug: "doctoru-40g-vs-takefit-monster-43g",
+  dataSection: [{category: "drink", brand: "닥터유", limit: 10}, {category: "drink", brand: "테이크핏", limit: 10}],
   title: "닥터유PRO 40g vs 테이크핏 몬스터 47g",
   description: "닥터유 40g과 딸기맛 47g으로 리뉴얼된 테이크핏 몬스터를 단백질, 당류, 칼로리, 지방, 맛 포지셔닝 기준으로 직접 비교합니다.",
   keywords: ["닥터유 40g 테이크핏 비교", "닥터유PRO vs 테이크핏 몬스터", "고단백 단백질 음료"],
@@ -673,6 +676,7 @@ doctoruVsTakefitMonsterConfig.jsonLd = [articleJsonLd(doctoruVsTakefitMonsterCon
 
 export const proteinDrinkForDiabetesConfig: ComparePageConfig = {
   slug: "protein-drink-for-diabetes",
+  dataSection: [{category: "drink", mode: "lowSugar"}],
   title: "당뇨 있을 때 단백질 음료 마셔도 될까",
   description: "당뇨가 있어도 단백질 음료를 마실 수 있는지, ProteinLab DB 기준으로 당류·칼로리·탄수화물 관점에서 선택 기준과 후보 제품을 정리했습니다.",
   keywords: ["당뇨 단백질 음료", "당뇨 단백질 보충", "혈당 단백질 음료"],
@@ -749,6 +753,7 @@ proteinDrinkForDiabetesConfig.jsonLd = [articleJsonLd(proteinDrinkForDiabetesCon
 
 export const proteinDrinkBeginnersGuideConfig: ComparePageConfig = {
   slug: "protein-drink-beginners-guide",
+  dataSection: [{category: "drink", mode: "lowSugar"}],
   title: "단백질 음료 입문 가이드 | 처음이면 뭐부터 마셔야 할까",
   description: "단백질 음료를 처음 마시는 사람을 위해 20g대 입문 제품, 당류 기준, 맛 선택 순서까지 쉽게 정리했습니다. 첫 제품 추천과 자주 하는 실수도 함께 확인할 수 있습니다.",
   keywords: ["단백질 음료 처음", "단백질 음료 입문", "단백질 음료 뭐 마셔야", "프로틴 음료 뉴비"],
@@ -903,6 +908,7 @@ selexsLineupConfig.jsonLd = [articleJsonLd(selexsLineupConfig), faqJsonLd(selexs
 
 export const proteinDrinkByFlavorConfig: ComparePageConfig = {
   slug: "protein-drink-by-flavor",
+  dataSection: [{category: "drink", mode: "density"}],
   title: "단백질 음료 맛별 추천",
   seoTitle: "단백질 음료 맛별 추천 | 초코·바나나·아메리카노 기준",
   description: "초코, 복숭아, 바나나, 아메리카노, 고소한맛 기준으로 실제 마시기 쉬운 단백질 음료를 정리했습니다.",
@@ -999,6 +1005,7 @@ proteinDrinkByFlavorConfig.jsonLd = [articleJsonLd(proteinDrinkByFlavorConfig), 
 
 export const proteinDrinkTasteTipsConfig: ComparePageConfig = {
   slug: "protein-drink-taste-tips",
+  dataSection: [{category: "drink", mode: "protein"}],
   title: "단백질 음료 맛없다",
   seoTitle: "단백질 음료 맛없다면? 맛있게 마시는 방법과 제품 추천",
   description: "단백질 음료가 맛없게 느껴지는 이유와 더 맛있게 마시는 방법, 입문자가 바꾸기 쉬운 제품 추천을 정리했습니다.",
@@ -1867,6 +1874,7 @@ newcareFor50sConfig.jsonLd = [articleJsonLd(newcareFor50sConfig), faqJsonLd(newc
 
 export const newcarePlantVsLactoseFreeConfig: ComparePageConfig = {
   slug: "newcare-plant-vs-lactosefree",
+  dataSection: [{category: "drink", brand: "뉴케어"}],
   title: "뉴케어 식물성 vs 셀렉스 락토프리 비교",
   description:
     "뉴케어 올프로틴 식물성과 셀렉스 락토프리 RTD를 단백질, 당류, 칼로리, 부담감 기준으로 비교합니다. 유당 부담이 있거나 식물성 단백질을 찾는 경우 어떤 쪽이 더 맞는지 정리했습니다.",
@@ -1941,6 +1949,7 @@ newcarePlantVsLactoseFreeConfig.jsonLd = [
 
 export const newcareWaterVsRtdConfig: ComparePageConfig = {
   slug: "newcare-water-vs-rtd",
+  dataSection: [{category: "drink", brand: "뉴케어"}],
   title: "뉴케어 단백질워터 vs 일반 RTD 가이드",
   description:
     "뉴케어 단백질워터와 일반 RTD 단백질음료를 용량, 단백질 밀도, 당류, 부담감 기준으로 비교합니다. 가볍게 마실 제품을 찾는지, 보충량이 더 중요한지 빠르게 정리했습니다.",
@@ -2156,6 +2165,7 @@ newcareBoxValueConfig.jsonLd = [articleJsonLd(newcareBoxValueConfig), faqJsonLd(
 
 export const proteinDrinkByContentConfig: ComparePageConfig = {
   slug: "protein-drink-by-content",
+  dataSection: [{category: "drink", mode: "protein"}],
   title: "단백질 음료 함량대별 완전 정리",
   seoTitle: "단백질 음료 함량대별 정리 | 20g 미만부터 40g 이상까지",
   description: "단백질 음료를 20g 미만, 20g대, 30g대, 40g 이상으로 나눠 어떤 사람이 어떤 함량대를 고르면 되는지 정리했습니다.",

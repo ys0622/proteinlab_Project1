@@ -3,6 +3,7 @@ import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 import GuideBuySection from "@/app/components/GuideBuySection";
 import TrackedLink from "@/app/components/TrackedLink";
+import CategoryDataSection from "@/app/components/CategoryDataSection";
 import { buildGuideJsonLd } from "@/app/lib/guideJsonLd";
 import drinkProductsData from "@/app/data/drinkProductsData.json";
 import type { ProductDetailProps } from "@/app/data/products";
@@ -287,6 +288,7 @@ export default function HighProtein50gComparisonPage() {
           </section>
         </div>
       </main>
+      <CategoryDataSection category="drink" mode="protein" />
       <GuideBuySection topic="highProtein" />
       <Footer />
     </div>

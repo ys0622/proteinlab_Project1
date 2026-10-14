@@ -2,6 +2,7 @@ import { ComparisonGuidePage, buildGuideMetadata, type ComparePageConfig } from 
 
 const config: ComparePageConfig = {
   slug: "hansonhankki-vs-maeilhankki-shake",
+  dataSection: [{category: "shake", brand: "한손한끼"}, {category: "shake", brand: "매일한끼"}],
   title: "한손한끼 vs 매일한끼 단백질 쉐이크 비교 — 단백질·당류·칼로리",
   description: "한손한끼 Petit과 매일한끼 단백질 쉐이크 각 5종을 직접 비교합니다. 단백질, 당류, 칼로리와 맛별 차이를 확인하세요.",
   keywords: ["한손한끼 단백질 쉐이크", "매일한끼 단백질 쉐이크", "한손한끼 매일한끼 비교"],

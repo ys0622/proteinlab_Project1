@@ -73,7 +73,7 @@ export interface CategoryGuideConfig {
   externalLinks?: CategoryExternalLink[];
   // 지정하면 제품 데이터로 계산한 순위표 섹션을 본문 아래에 붙인다.
   dataSection?: {
-    category: "drink" | "bar" | "yogurt" | "shake";
+    category: "drink" | "bar" | "yogurt" | "shake" | "soymilk";
     mode: "protein" | "lowSugar" | "lowCalorie" | "density";
     brand?: string;
   };

@@ -28,7 +28,12 @@ export interface CompareMetricRow {
   values: string[];
 }
 
-type DataSectionSpec = { category: "drink" | "bar" | "yogurt" | "shake"; brand: string; limit?: number };
+type DataSectionSpec = {
+  category: "drink" | "bar" | "yogurt" | "shake" | "soymilk";
+  brand?: string;
+  mode?: "protein" | "lowSugar" | "lowCalorie" | "density";
+  limit?: number;
+};
 
 export interface ComparePageConfig {
   slug: string;
@@ -386,7 +391,13 @@ export function ComparisonGuidePage({ config }: { config: ComparePageConfig }) {
       </main>
       {config.dataSection
         ? (Array.isArray(config.dataSection) ? config.dataSection : [config.dataSection]).map((spec) => (
-            <CategoryDataSection key={spec.brand} category={spec.category} mode="protein" brand={spec.brand} limit={spec.limit ?? 20} />
+            <CategoryDataSection
+              key={`${spec.category}-${spec.brand ?? spec.mode ?? "protein"}`}
+              category={spec.category}
+              mode={spec.mode ?? "protein"}
+              brand={spec.brand}
+              limit={spec.limit ?? (spec.brand ? 20 : 8)}
+            />
           ))
         : null}
       <Footer />
