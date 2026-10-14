@@ -23,6 +23,33 @@ const compareLandings: CompareLanding[] = [
     ],
   },
   {
+    slug: "yonsei-pro-vs-erom-pro-soymilk",
+    title: "연세두유 고단백 Pro vs 이롬 고단백 두유 Pro 24g 비교",
+    description: "1팩 단백질 24g인 연세두유 고단백 Pro 플레인과 이롬 고단백 두유 Pro 24g를 당류, 열량, 지방, 나트륨 기준으로 비교합니다.",
+    intro: "두유 중 1팩 단백질이 가장 높은 두 제품(240mL, 24g)을 성분표 수치로 직접 비교하는 랜딩입니다. 단백질은 같고 당류·열량·지방·나트륨이 갈립니다.",
+    bullets: ["둘 다 240mL 1팩 단백질 24g", "당류는 이롬 1g, 연세두유 2.2g이고 열량은 이롬 175kcal, 연세두유 180kcal", "지방은 연세두유 5.3g, 이롬 7g이고 나트륨은 연세두유 200mg, 이롬 320mg"],
+    productSlugs: ["yonsei-protein-pro-plain-240", "erom-protein-pro-plain-240"],
+    relatedLinks: [
+      { href: "/guides/product-selection-comparison/soymilk-protein-ranking", title: "두유 단백질 함량 순위", description: "1팩 단백질 높은 순으로 두유를 정리했습니다." },
+      { href: "/guides/product-selection-comparison/soymilk-brand-comparison", title: "두유 브랜드 비교", description: "매일두유·베지밀·연세두유·이롬의 수치 범위를 비교합니다." },
+      { href: "/soymilk", title: "두유 전체 비교", description: "등록된 두유를 한 화면에서 비교합니다." },
+    ],
+  },
+  {
+    slug: "maeil-vs-vegemil-blackbean-soymilk",
+    title: "매일두유 vs 베지밀 고단백 검은콩 두유 비교",
+    description: "매일두유 고단백 검은콩과 베지밀 고단백두유 검은콩을 1팩 단백질, 당류, 열량, 지방 기준으로 비교합니다.",
+    intro: "같은 190mL 단백질 12g 검은콩 두유인데 당류가 크게 갈리는 두 제품을 성분표 수치로 비교하는 랜딩입니다.",
+    bullets: ["둘 다 190mL 1팩 단백질 12g", "당류는 매일두유 1.7g, 베지밀 7.5g이고 열량은 매일두유 105kcal, 베지밀 135kcal", "지방은 매일두유 4.8g, 베지밀 5.5g이고 나트륨은 200mg, 210mg으로 비슷함"],
+    productSlugs: ["maeil-soymilk-protein-blackbean-190", "vegemil-protein-blackbean-190"],
+    relatedLinks: [
+      { href: "/guides/product-selection-comparison/blackbean-soymilk-guide", title: "검은콩 두유 비교", description: "검은콩·서리태 두유를 단백질·당류로 비교합니다." },
+      { href: "/compare/maeil-vs-vegemil-soymilk", title: "매일두유 vs 베지밀 플레인", description: "플레인 두 제품도 비교해 보세요." },
+      { href: "/soymilk", title: "두유 전체 비교", description: "등록된 두유를 한 화면에서 비교합니다." },
+    ],
+  },
+
+  {
     slug: "newcare-41g-vs-labnosh-max-drink",
     title: "뉴케어 올프로틴 41g vs 랩노쉬 프로틴 맥스 52g 비교",
     description: "뉴케어 올프로틴 41g와 랩노쉬 프로틴 맥스 52g를 단백질 함량, 당류, 칼로리, 단백질 밀도 기준으로 비교합니다.",

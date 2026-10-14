@@ -258,8 +258,196 @@ export const soymilkVsProteinDrinkConfig: ComparePageConfig = {
 };
 soymilkVsProteinDrinkConfig.jsonLd = [articleJsonLd(soymilkVsProteinDrinkConfig), faqJsonLd(soymilkVsProteinDrinkConfig)];
 
+// ---------- 4) 다이어트 두유 (열량 기준) ----------
+const lowKcal = soy.filter((p) => (p.calories ?? 999) <= 100);
+const lowKcalSorted = [...lowKcal].sort((a, b) => (a.calories ?? 0) - (b.calories ?? 0) || proteinOf(b) - proteinOf(a));
+const lowKcalTop = [...lowKcal].sort((a, b) => proteinOf(b) - proteinOf(a) || (a.calories ?? 0) - (b.calories ?? 0)).slice(0, 3);
+const lowKcalLowSugar = lowKcal.filter((p) => sugarOf(p) <= 2);
+const kcalMedianAll = median(soy.map((p) => p.calories ?? 0));
+const highKcal = soy.filter((p) => (p.calories ?? 0) >= 150);
+
+export const dietSoymilkConfig: ComparePageConfig = {
+  slug: "diet-soymilk-guide",
+  dataSection: { category: "soymilk", mode: "lowCalorie", limit: 12 },
+  title: "다이어트 두유 추천 | 100kcal 이하 두유 비교",
+  seoTitle: `다이어트 두유 추천 | 100kcal 이하 두유 ${lowKcal.length}종 비교`,
+  description: `ProteinLab 등록 두유 ${soy.length}종 중 1팩 100kcal 이하 ${lowKcal.length}종을 단백질·당류와 함께 비교합니다. 열량이 낮아도 단백질이 낮을 수 있어, 열량 대비 단백질까지 읽는 법을 정리했습니다.`,
+  keywords: ["다이어트 두유", "저칼로리 두유", "두유 칼로리", "100kcal 이하 두유", "두유 열량 비교"],
+  badge: "다이어트 두유",
+  readingTime: "4분 읽기",
+  updatedAt: UPDATED,
+  methodologyNote: `ProteinLab 두유 ${soy.length}종 성분표 기준 · 1팩 열량 100kcal 이하`,
+  intro: `등록된 두유 ${soy.length}종의 1팩 열량은 ${Math.min(...soy.map((p) => p.calories ?? 0))}kcal부터 ${Math.max(...soy.map((p) => p.calories ?? 0))}kcal까지이고 중앙값은 ${fmt(kcalMedianAll)}kcal입니다. 열량만 보면 낮은 제품을 고르기 쉽지만, 팩 용량과 단백질이 달라서 단백질까지 함께 봐야 비교가 됩니다.`,
+  summary: [
+    `1팩 100kcal 이하 두유는 ${soy.length}종 중 ${lowKcal.length}종이고, 이 중 당류 2g 이하는 ${lowKcalLowSugar.length}종입니다.`,
+    `열량이 가장 낮은 제품은 ${label(lowKcalSorted[0])}(${lowKcalSorted[0].calories}kcal, 단백질 ${fmt(proteinOf(lowKcalSorted[0]))}g)입니다.`,
+    `150kcal 이상 두유는 ${highKcal.length}종으로, 단백질이 높은 제품들입니다.`,
+  ],
+  comparisonTitle: "100kcal 이하 · 단백질 상위 3종",
+  comparisonColumns: lowKcalTop.map(label),
+  comparisonRows: [
+    { label: "1팩 열량", values: lowKcalTop.map((p) => `${p.calories}kcal`) },
+    { label: "1팩 단백질", values: lowKcalTop.map((p) => `${fmt(proteinOf(p))}g`) },
+    { label: "100kcal당 단백질", values: lowKcalTop.map((p) => `${fmt((proteinOf(p) / (p.calories ?? 1)) * 100)}g`) },
+    { label: "당류", values: lowKcalTop.map((p) => `${fmt(sugarOf(p))}g`) },
+    { label: "용량", values: lowKcalTop.map((p) => p.capacity ?? "-") },
+  ],
+  sections: [
+    {
+      title: "열량으로 두유 고르는 순서",
+      items: [
+        { title: "1. 1팩 열량으로 후보 줄이기", body: `100kcal 이하만 남기면 ${soy.length}종이 ${lowKcal.length}종으로 줄어듭니다.` },
+        { title: "2. 100kcal당 단백질 보기", body: `열량이 같아도 단백질은 ${fmt(Math.min(...lowKcal.map(proteinOf)))}~${fmt(Math.max(...lowKcal.map(proteinOf)))}g로 갈립니다. 열량 대비 단백질(100kcal당)로 보면 효율 차이가 드러납니다.` },
+        { title: "3. 당류 확인", body: `100kcal 이하여도 당류가 높은 제품이 있습니다. 위 ${lowKcal.length}종 중 당류 2g 이하는 ${lowKcalLowSugar.length}종입니다.` },
+      ],
+    },
+    {
+      title: "열량이 높은 두유는 무엇이 다른가",
+      items: [
+        { title: "용량이 큽니다", body: `150kcal 이상 ${highKcal.length}종은 ${highKcal.map(label).join(", ")}입니다. 단백질 12~24g 제품이라 열량도 함께 높습니다.` },
+        { title: "1팩 열량만 비교하지 마세요", body: "190mL와 240mL 제품은 팩 크기가 달라 1팩 열량을 그대로 비교하기 어렵습니다. 100mL당 열량도 같이 보세요." },
+      ],
+    },
+  ],
+  faq: [
+    { question: "100kcal 이하 두유는 몇 종인가요?", answer: `ProteinLab 등록 ${soy.length}종 중 ${lowKcal.length}종입니다. 이 중 단백질이 가장 높은 제품은 ${label(lowKcalTop[0])}(${fmt(proteinOf(lowKcalTop[0]))}g, ${lowKcalTop[0].calories}kcal)입니다.` },
+    { question: "열량이 낮으면 단백질도 낮은가요?", answer: `반드시 그렇지는 않습니다. 100kcal 이하 ${lowKcal.length}종의 단백질은 ${fmt(Math.min(...lowKcal.map(proteinOf)))}~${fmt(Math.max(...lowKcal.map(proteinOf)))}g로 폭이 넓습니다. 100kcal당 단백질을 같이 보세요.` },
+    { question: "다이어트 중에는 두유를 어떻게 골라야 하나요?", answer: "이 가이드는 성분표 수치로 후보를 고르는 방법만 다룹니다. 개인에게 맞는 열량과 단백질 양은 식단 전체와 건강 상태에 따라 다르므로 필요하면 전문가와 상담하세요." },
+  ],
+  relatedGuides: related([
+    { title: "저당 두유 추천", href: `${BASE}/low-sugar-soymilk-guide`, description: "당류 2g 이하 두유를 단백질·열량과 함께 봅니다." },
+    { title: "저칼로리 두유 큐레이션", href: "/curation/soymilk-low-calorie", description: "열량이 낮은 두유만 모아 표로 봅니다." },
+  ]),
+  purchaseLinks: lowKcalTop.map((p) => ({ label: `${label(p)} 보기`, slug: p.slug })),
+};
+dietSoymilkConfig.jsonLd = [articleJsonLd(dietSoymilkConfig), faqJsonLd(dietSoymilkConfig)];
+
+// ---------- 5) 두유 단백질 높은 순 ----------
+const byProtein = [...soy].sort((a, b) => proteinOf(b) - proteinOf(a) || sugarOf(a) - sugarOf(b));
+const proteinTop = byProtein.slice(0, 4);
+const protein24 = soy.filter((p) => proteinOf(p) >= 20);
+const protein11 = soy.filter((p) => proteinOf(p) >= 11);
+
+export const proteinRankSoymilkConfig: ComparePageConfig = {
+  slug: "soymilk-protein-ranking",
+  dataSection: { category: "soymilk", mode: "protein", limit: 10 },
+  title: "두유 단백질 함량 순위 | 1팩 단백질 높은 순 TOP 10",
+  seoTitle: `두유 단백질 함량 순위 | 1팩 ${fmt(proteinOf(byProtein[0]))}g부터 TOP 10`,
+  description: `ProteinLab 등록 두유 ${soy.length}종을 1팩 단백질 높은 순으로 정리했습니다. 20g 이상 ${protein24.length}종, 11g 이상 ${protein11.length}종이며 당류·열량·용량을 함께 보는 법을 안내합니다.`,
+  keywords: ["두유 단백질 순위", "두유 단백질 함량", "단백질 높은 두유", "고단백 두유 순위", "두유 단백질 비교"],
+  badge: "단백질 순위",
+  readingTime: "4분 읽기",
+  updatedAt: UPDATED,
+  methodologyNote: `ProteinLab 두유 ${soy.length}종 1팩 단백질(g) 기준 · 성분표 수치`,
+  intro: `두유 1팩 단백질은 ${fmt(Math.min(...soy.map(proteinOf)))}g부터 ${fmt(Math.max(...soy.map(proteinOf)))}g까지입니다. 등록 ${soy.length}종 중 20g 이상은 ${protein24.length}종, 11g 이상은 ${protein11.length}종입니다. 용량이 190mL부터 250mL까지 달라서, 1팩 단백질 순위와 100mL당 단백질을 같이 봐야 합니다.`,
+  summary: [
+    `1팩 단백질 1위는 ${label(proteinTop[0])}(${fmt(proteinOf(proteinTop[0]))}g, ${proteinTop[0].capacity})입니다.`,
+    `단백질 20g 이상 두유는 ${protein24.length}종이고 모두 240mL 이상 팩입니다.`,
+    `같은 12g이라도 당류는 0.5g부터 7.5g까지 차이가 납니다. 순위와 함께 당류를 확인하세요.`,
+  ],
+  comparisonTitle: "1팩 단백질 상위 4종",
+  comparisonColumns: proteinTop.map(label),
+  comparisonRows: [
+    { label: "1팩 단백질", values: proteinTop.map((p) => `${fmt(proteinOf(p))}g`) },
+    { label: "용량", values: proteinTop.map((p) => p.capacity ?? "-") },
+    { label: "100mL당 단백질", values: proteinTop.map((p) => `${fmt((proteinOf(p) / (parseFloat(p.capacity ?? "190") || 190)) * 100)}g`) },
+    { label: "당류", values: proteinTop.map((p) => `${fmt(sugarOf(p))}g`) },
+    { label: "열량", values: proteinTop.map((p) => `${p.calories}kcal`) },
+  ],
+  sections: [
+    {
+      title: "순위를 읽는 법",
+      items: [
+        { title: "1팩 단백질과 100mL당 단백질은 다릅니다", body: "240mL 제품은 팩이 커서 1팩 단백질이 높게 나옵니다. 팩 크기가 다른 제품끼리는 100mL당 단백질로 다시 비교하세요." },
+        { title: "단백질이 같다면 당류와 열량", body: "12g 제품만 해도 당류 0.5~7.5g, 열량 85~135kcal로 갈립니다. 단백질 순위가 같을 때는 당류와 열량으로 가르면 됩니다." },
+        { title: "등록 기준", body: "ProteinLab은 소포장(250mL 이하) 대두 기반 두유 중 1팩 단백질이 g으로 표기된 5g 이상 제품만 등록합니다. %만 표기된 제품과 대용량은 제외합니다." },
+      ],
+    },
+  ],
+  faq: [
+    { question: "단백질이 가장 높은 두유는 무엇인가요?", answer: `등록 기준 1팩 단백질 1위는 ${label(proteinTop[0])}(${fmt(proteinOf(proteinTop[0]))}g, ${proteinTop[0].capacity})입니다. 같은 24g 제품이 더 있어 당류·열량으로 비교해야 합니다.` },
+    { question: "고단백 두유는 단백질이 몇 g부터인가요?", answer: `ProteinLab은 1팩 기준 11g 이상을 고단백(기준치 55g의 20%), 8~10g을 단백질 강화로 나눕니다. 11g 이상 등록 제품은 ${protein11.length}종입니다.` },
+    { question: "190mL와 240mL 두유는 어떻게 비교하나요?", answer: "팩 크기가 달라 1팩 단백질을 그대로 비교하면 큰 팩이 유리합니다. 100mL당 단백질을 같이 확인하세요." },
+  ],
+  relatedGuides: related([
+    { title: "두유 단백질 밀도 순위", href: "/ranking/soymilk/density/1", description: "100mL당 단백질 기준으로 계산한 순위를 봅니다." },
+    { title: "저당 두유 추천", href: `${BASE}/low-sugar-soymilk-guide`, description: "당류 2g 이하 두유를 봅니다." },
+  ]),
+  purchaseLinks: proteinTop.slice(0, 3).map((p) => ({ label: `${label(p)} 보기`, slug: p.slug })),
+};
+proteinRankSoymilkConfig.jsonLd = [articleJsonLd(proteinRankSoymilkConfig), faqJsonLd(proteinRankSoymilkConfig)];
+
+// ---------- 6) 두유 브랜드 비교 ----------
+const brandNames = ["매일두유", "베지밀", "연세두유", "이롬"];
+const brandItems = brandNames.map((brand) => ({ brand, list: soy.filter((p) => p.brand === brand) }));
+const range = (list: typeof soy, f: (p: (typeof soy)[number]) => number, unit: string) => {
+  const v = list.map(f);
+  return Math.min(...v) === Math.max(...v) ? `${fmt(v[0])}${unit}` : `${fmt(Math.min(...v))}~${fmt(Math.max(...v))}${unit}`;
+};
+
+export const soymilkBrandCompareConfig: ComparePageConfig = {
+  slug: "soymilk-brand-comparison",
+  dataSection: [
+    { category: "soymilk", brand: "매일두유", limit: 6 },
+    { category: "soymilk", brand: "베지밀", limit: 6 },
+    { category: "soymilk", brand: "연세두유", limit: 6 },
+    { category: "soymilk", brand: "이롬", limit: 6 },
+  ],
+  title: "두유 브랜드 비교 | 매일두유·베지밀·연세두유·이롬 단백질·당류",
+  seoTitle: "두유 브랜드 비교 | 매일두유·베지밀·연세두유·이롬 성분 차이",
+  description: "매일두유·베지밀·연세두유·이롬의 등록 두유를 1팩 단백질, 당류, 열량 범위로 비교합니다. 브랜드 안에서도 제품마다 수치가 크게 다르다는 점을 성분표 기준으로 정리했습니다.",
+  keywords: ["두유 브랜드 비교", "매일두유 베지밀 연세두유", "이롬 두유 비교", "고단백 두유 브랜드", "두유 브랜드 추천"],
+  badge: "브랜드 비교",
+  readingTime: "4분 읽기",
+  updatedAt: UPDATED,
+  methodologyNote: "ProteinLab 등록 두유 중 4개 브랜드 성분표 기준(브랜드별 등록 제품 수는 표 참조)",
+  intro: "고단백 두유를 고를 때 브랜드부터 정하는 경우가 많지만, 같은 브랜드 안에서도 단백질은 6~24g, 당류는 0.8~10g처럼 크게 갈립니다. 4개 브랜드의 등록 제품 수치 범위를 나란히 놓고, 브랜드보다 제품 라인을 봐야 하는 이유를 정리했습니다.",
+  summary: [
+    "브랜드별 수치 범위가 넓어서, 브랜드명보다 제품 라인(고단백·저당·고칼슘)을 먼저 봐야 합니다.",
+    `1팩 단백질 최고는 ${label([...soy].filter((p) => brandNames.includes(p.brand)).sort((a, b) => proteinOf(b) - proteinOf(a))[0])}입니다.`,
+    "단백질 24g 제품은 연세두유와 이롬에 있고, 190mL 12g 제품은 네 브랜드 모두 있습니다.",
+  ],
+  comparisonTitle: "브랜드별 등록 두유 수치 범위",
+  comparisonColumns: brandNames,
+  comparisonRows: [
+    { label: "등록 제품 수", values: brandItems.map((b) => `${b.list.length}종`) },
+    { label: "1팩 단백질", values: brandItems.map((b) => range(b.list, proteinOf, "g")) },
+    { label: "당류", values: brandItems.map((b) => range(b.list, sugarOf, "g")) },
+    { label: "열량", values: brandItems.map((b) => range(b.list, (p) => p.calories ?? 0, "kcal")) },
+  ],
+  sections: [
+    {
+      title: "브랜드보다 라인을 먼저 보는 이유",
+      items: [
+        { title: "고단백 라인", body: "단백질 12g(190mL)부터 24g(240mL)까지가 한 브랜드 안에 함께 있습니다. 이름에 '고단백'이 있어도 g 수가 다릅니다." },
+        { title: "저당·무가당 라인", body: "같은 브랜드의 플레인이라도 당류가 1g대인 제품과 4g 안팎인 제품이 있습니다." },
+        { title: "고칼슘 라인", body: "고칼슘 표기 제품은 단백질이 낮고 당류가 높은 경우가 있습니다. 성분표의 당류 줄을 먼저 확인하세요." },
+      ],
+    },
+    {
+      title: "브랜드별 허브",
+      items: brandItems.map((b) => ({ title: `${b.brand} ${b.list.length}종`, body: `단백질 ${range(b.list, proteinOf, "g")}, 당류 ${range(b.list, sugarOf, "g")}. 브랜드 허브에서 전체 제품을 표로 볼 수 있습니다.` })),
+    },
+  ],
+  faq: [
+    { question: "두유는 어느 브랜드가 단백질이 가장 높은가요?", answer: "브랜드가 아니라 제품 라인에 따라 다릅니다. 등록 기준 단백질 24g 제품은 연세두유와 이롬에 있고, 190mL 12g 제품은 매일두유·베지밀·연세두유·이롬 모두 있습니다." },
+    { question: "브랜드마다 당류 차이가 큰가요?", answer: "브랜드 안에서도 제품별 편차가 큽니다. 같은 브랜드의 플레인과 검은콩, 고칼슘 라인의 당류가 크게 다를 수 있어 제품별 성분표를 확인해야 합니다." },
+    { question: "브랜드 비교는 어디서 더 자세히 볼 수 있나요?", answer: "매일두유 vs 베지밀 고단백 플레인은 별도 비교 페이지가 있고, 각 브랜드 허브에서 등록 제품 전체를 표로 볼 수 있습니다." },
+  ],
+  relatedGuides: related([
+    { title: "매일두유 vs 베지밀", href: "/compare/maeil-vs-vegemil-soymilk", description: "고단백 플레인 두 제품을 직접 비교합니다." },
+    { title: "매일두유 브랜드 허브", href: "/brands/maeil-soymilk", description: "매일두유 등록 제품을 한 표로 봅니다." },
+    { title: "베지밀 브랜드 허브", href: "/brands/vegemil", description: "베지밀 등록 제품을 한 표로 봅니다." },
+  ]),
+  purchaseLinks: brandItems.map((b) => [...b.list].sort((x, y) => proteinOf(y) - proteinOf(x))[0]).filter(Boolean).slice(0, 3).map((p) => ({ label: `${label(p)} 보기`, slug: p.slug })),
+};
+soymilkBrandCompareConfig.jsonLd = [articleJsonLd(soymilkBrandCompareConfig), faqJsonLd(soymilkBrandCompareConfig)];
+
 export const soymilkGuideConfigs: ComparePageConfig[] = [
   lowSugarSoymilkConfig,
   blackbeanSoymilkConfig,
   soymilkVsProteinDrinkConfig,
+  dietSoymilkConfig,
+  proteinRankSoymilkConfig,
+  soymilkBrandCompareConfig,
 ];

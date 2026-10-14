@@ -35,3 +35,12 @@ https://proteinlab.kr/products
 /guides/product-selection-comparison/blackbean-soymilk-guide
 /guides/product-selection-comparison/soymilk-vs-protein-drink
 ```
+
+## 두유 콘텐츠 추가분 (2차)
+```
+/guides/product-selection-comparison/diet-soymilk-guide
+/guides/product-selection-comparison/soymilk-protein-ranking
+/guides/product-selection-comparison/soymilk-brand-comparison
+/compare/yonsei-pro-vs-erom-pro-soymilk
+/compare/maeil-vs-vegemil-blackbean-soymilk
+```
