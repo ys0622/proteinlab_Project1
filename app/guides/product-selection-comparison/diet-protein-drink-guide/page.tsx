@@ -5,6 +5,7 @@ import Footer from "@/app/components/Footer";
 import GuideNextReads from "@/app/components/GuideNextReads";
 import GuideBuySection from "@/app/components/GuideBuySection";
 import CategoryDataSection from "@/app/components/CategoryDataSection";
+import BrandDataFaq from "@/app/components/BrandDataFaq";
 
 export const metadata = {
   alternates: { canonical: "https://proteinlab.kr/guides/product-selection-comparison/diet-protein-drink-guide" },
@@ -57,13 +58,28 @@ const flowCards = [
   },
 ];
 
+const faqItems = [
+  {
+    question: "다이어트 중에는 무조건 칼로리가 가장 낮은 제품을 골라야 하나요?",
+    answer: "아닙니다. 칼로리만 낮고 포만감이 없으면 오히려 다른 간식으로 이어지기 쉽습니다. 상황에 따라 저당·저칼로리 RTD와 포만감 있는 식사대용형 쉐이크를 구분해서 선택하는 것이 더 효과적입니다.",
+  },
+  {
+    question: "보충용 RTD와 식사대용 쉐이크를 같은 기준으로 골라도 되나요?",
+    answer: "역할이 다르기 때문에 같은 기준으로 고르면 실패하기 쉽습니다. 간식 대체나 운동 후 보충은 저당·저칼로리 RTD가 맞고, 한 끼 대체가 목적이라면 포만감과 식이섬유가 있는 식사대용형 쉐이크가 더 적합합니다.",
+  },
+  {
+    question: "다이어트용 단백질 음료를 고를 때 가장 중요한 기준은 무엇인가요?",
+    answer: "감량 단계인지 유지 단계인지 먼저 구분한 뒤, 당류와 총칼로리, 포만감을 함께 보고 마지막으로 반복해서 마실 수 있는 맛인지 확인하는 순서가 실패 확률을 줄입니다.",
+  },
+];
 export default function DietProteinDrinkGuidePage() {
   const jsonLd = buildGuideJsonLd({
     title: "다이어트 단백질 음료 기준 | 저당·저칼로리·단백질 비교",
     description: "다이어트용 단백질 음료를 고를 때 당류, 칼로리, 단백질, 단백질 밀도를 어떤 순서로 비교해야 하는지 ProteinLab 기준으로 정리합니다.",
     url: "https://proteinlab.kr/guides/product-selection-comparison/diet-protein-drink-guide",
     datePublished: "2026-03-01",
-    dateModified: "2026-05-29",
+    dateModified: "2026-10-14",
+    faq: faqItems,
   });
 
   return (
@@ -189,6 +205,7 @@ export default function DietProteinDrinkGuidePage() {
       </main>
       <CategoryDataSection category="drink" mode="lowCalorie" />
 
+      <BrandDataFaq faqs={faqItems} eyebrow="FAQ" title="자주 묻는 질문" />
       <GuideBuySection topic="diet" />
 
       <GuideNextReads path="/guides/product-selection-comparison/diet-protein-drink-guide" />

@@ -187,7 +187,7 @@ export default function RunningProteinGuidePage() {
 
           <section className="rounded-[28px] border border-[#e8e6e3] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
             <div className="flex flex-wrap gap-3">
-              <Link href="/guides/fitness-lifestyle/spring-running-start-guide" className="inline-flex items-center justify-center rounded-xl border border-[#d9e7dc] bg-white px-5 py-3 text-sm font-semibold text-[#24543d] transition-colors hover:bg-[#eef7f1]">봄 러닝 재개 루틴 보기</Link>
+              <Link href="/guides/running/basics" className="inline-flex items-center justify-center rounded-xl border border-[#d9e7dc] bg-white px-5 py-3 text-sm font-semibold text-[#24543d] transition-colors hover:bg-[#eef7f1]">봄 러닝 재개 루틴 보기</Link>
               <Link href="/guides/fitness-lifestyle/marathon-protein-guide" className="inline-flex items-center justify-center rounded-xl border border-[#d9e7dc] bg-white px-5 py-3 text-sm font-semibold text-[#24543d] transition-colors hover:bg-[#eef7f1]">마라톤 주간 전략 보기</Link>
               <Link href="/curation/running" className="inline-flex items-center justify-center rounded-xl border border-[#2d6a4f] bg-[#2d6a4f] px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#24543d]">러닝 큐레이션 보기</Link>
             </div>

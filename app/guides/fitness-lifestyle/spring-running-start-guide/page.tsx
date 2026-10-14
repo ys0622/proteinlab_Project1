@@ -120,7 +120,7 @@ export default function SpringRunningStartGuidePage() {
             </div>
             <div className="mt-5 flex flex-wrap gap-2">
               <Link href="/guides/intake-strategy-health/post-workout-protein" className="rounded-full border border-[#eaded7] bg-white px-3 py-1 text-xs font-semibold text-[#8a4b2f]">관련: 운동 후 단백질</Link>
-              <Link href="/guides/fitness-lifestyle/running-protein-guide" className="rounded-full border border-[#eaded7] bg-white px-3 py-1 text-xs font-semibold text-[#8a4b2f]">관련: 러닝 단백질 가이드</Link>
+              <Link href="/guides/running/basics" className="rounded-full border border-[#eaded7] bg-white px-3 py-1 text-xs font-semibold text-[#8a4b2f]">관련: 러닝 단백질 가이드</Link>
               <Link href="/guides/product-selection-comparison/protein-drink-beginners-guide" className="rounded-full border border-[#eaded7] bg-white px-3 py-1 text-xs font-semibold text-[#8a4b2f]">관련: 입문용 단백질 음료</Link>
             </div>
           </section>

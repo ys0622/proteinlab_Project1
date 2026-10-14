@@ -11,7 +11,7 @@
       "description": "체중과 활동량을 기준으로 하루 단백질 권장량을 계산해보세요. ProteinLab 계산기로 나에게 맞는 단백질 섭취 기준을 빠르게 확인할 수 있습니다."
     },
     {
-      "href": "/guides/basics/protein-deficiency-self-check",
+      "href": "/guides/basics/deficiency-symptoms",
       "title": "단백질 부족 자가체크",
       "description": "단백질이 부족할 때 자주 보이는 신호를 간단히 체크하고, 부족 가능성이 높을 때 무엇부터 봐야 하는지 정리합니다."
     },
@@ -22,11 +22,6 @@
     }
   ],
   "/guides/basics/deficiency-symptoms": [
-    {
-      "href": "/guides/basics/protein-deficiency-self-check",
-      "title": "단백질 부족 자가체크",
-      "description": "단백질이 부족할 때 자주 보이는 신호를 간단히 체크하고, 부족 가능성이 높을 때 무엇부터 봐야 하는지 정리합니다."
-    },
     {
       "href": "/guides/basics/daily-requirement",
       "title": "하루 단백질 권장량 | 목적·체중·연령별 정리",
@@ -133,7 +128,7 @@
       "description": "국내 단백질 시장이 보충제 중심에서 RTD 대중화, 저당·워터형·식물성 세분화 단계로 어떻게 이동했는지 정리했습니다."
     },
     {
-      "href": "/guides/intake-strategy-health/protein-drink-mainstream-shift",
+      "href": "/guides/market-insights/protein-drink-trend-2026",
       "title": "단백질 음료, 이제 근육 늘리려고만 마시지 않습니다",
       "description": "예전에는 근육 생성·근비대 목적의 운동인이 주로 마셨지만, 최근에는 영양 보충과 식사대용 목적으로 마시는 일반 소비자가 크게 늘었습니다. 달라진 소비 이유를 정리했습니다."
     },
@@ -194,7 +189,7 @@
   ],
   "/guides/product-selection-comparison/meal-replacement-protein-bar-guide": [
     {
-      "href": "/guides/product-selection-comparison/protein-bar-guide",
+      "href": "/guides/product-selection-comparison/protein-bar-top10",
       "title": "단백질 바 선택 가이드 | 식사 보완·간식형 비교 기준",
       "description": "단백질 바를 간식형, 식사 보완형, 운동 후 보충형으로 나눠 보고 당류, 칼로리, 단백질 밀도를 어떤 기준으로 비교해야 하는지 정리합니다."
     },
@@ -207,41 +202,9 @@
       "href": "/guides/product-selection-comparison/convenience-protein-bar",
       "title": "편의점 단백질 바 추천",
       "description": "CU, GS25, 세븐일레븐 등 오프라인에서 바로 사기 쉬운 단백질 바만 따로 정리했습니다. 편의점 구매와 온라인 박스 구매 차이도 함께 설명합니다."
-    },
-    {
-      "href": "/guides/product-selection-comparison/protein-bar-top10",
-      "title": "단백질바 추천 순위 TOP 10 (2026) | 100개 성분 비교",
-      "description": "ProteinLab DB 단백질바 100개의 단백질·칼로리·당류·식이섬유를 종합 비교해 추천 순위 TOP 10을 선정하고 운동 후·다이어트·편의점용 후보를 구분했습니다."
-    }
-  ],
-  "/guides/product-selection-comparison/nutrition-comparison": [
-    {
-      "href": "/guides/product-selection-comparison/nutrition-criteria",
-      "title": "영양성분 기준 정리 | 단백질 제품 비교할 때 먼저 볼 숫자",
-      "description": "단백질 제품을 고를 때 먼저 확인할 단백질, 당류, 칼로리, 단백질 바 기준을 목적별로 정리했습니다. 비교 전에 최소 기준부터 빠르게 잡아보세요."
-    },
-    {
-      "href": "/guides/product-selection-comparison/protein-drink-by-content",
-      "title": "단백질 음료 함량대별 완전 정리",
-      "description": "단백질 음료를 20g 미만, 20g대, 30g대, 40g 이상으로 나눠 어떤 사람이 어떤 함량대를 고르면 되는지 정리했습니다."
-    },
-    {
-      "href": "/guides/product-selection-comparison/ranking-content",
-      "title": "순위와 점수 보는 법 | 단백질 제품 랭킹 해석 가이드",
-      "description": "단백질 제품 순위와 점수가 어떤 기준으로 계산되는지, 랭킹을 어떻게 읽어야 하는지 정리했습니다. 저당, 다이어트, 운동 후 기준까지 함께 확인해보세요."
-    },
-    {
-      "href": "/guides/product-selection-comparison/recommendation-lists",
-      "title": "추천·큐레이션·비교 페이지 차이 | 어디부터 봐야 할까",
-      "description": "추천, 큐레이션, Picks, 비교 페이지가 각각 어떤 상황에서 유용한지 정리했습니다. 단백질 제품을 고를 때 어디부터 봐야 할지 빠르게 확인해보세요."
     }
   ],
   "/guides/product-selection-comparison/nutrition-criteria": [
-    {
-      "href": "/guides/product-selection-comparison/nutrition-comparison",
-      "title": "영양성분 비교 보는 법 | 단백질·당류·칼로리 해석 가이드",
-      "description": "단백질, 당류, 칼로리, 단백질 바를 어떤 순서로 읽어야 하는지 정리했습니다. 운동 후, 다이어트, 식사 보완 목적별 비교 기준을 빠르게 확인해보세요."
-    },
     {
       "href": "/guides/market-insights/protein-drink-ad-checklist",
       "title": "단백질 음료 광고 보고 살 때 체크할 7가지",
@@ -256,45 +219,6 @@
       "href": "/guides/product-selection-comparison/ranking-content",
       "title": "순위와 점수 보는 법 | 단백질 제품 랭킹 해석 가이드",
       "description": "단백질 제품 순위와 점수가 어떤 기준으로 계산되는지, 랭킹을 어떻게 읽어야 하는지 정리했습니다. 저당, 다이어트, 운동 후 기준까지 함께 확인해보세요."
-    }
-  ],
-  "/guides/product-selection-comparison/protein-bar-guide": [
-    {
-      "href": "/guides/product-selection-comparison/meal-replacement-protein-bar-guide",
-      "title": "식사대용 단백질 바 기준 | 포만감·칼로리·단백질 비교",
-      "description": "식사대용 단백질 바를 고를 때 포만감, 칼로리, 단백질, 당류를 어떤 순서로 확인해야 하는지 정리합니다."
-    },
-    {
-      "href": "/guides/product-selection-comparison/convenience-protein-bar",
-      "title": "편의점 단백질 바 추천",
-      "description": "CU, GS25, 세븐일레븐 등 오프라인에서 바로 사기 쉬운 단백질 바만 따로 정리했습니다. 편의점 구매와 온라인 박스 구매 차이도 함께 설명합니다."
-    },
-    {
-      "href": "/guides/product-selection-comparison/protein-bar-top10",
-      "title": "단백질바 추천 순위 TOP 10 (2026) | 100개 성분 비교",
-      "description": "ProteinLab DB 단백질바 100개의 단백질·칼로리·당류·식이섬유를 종합 비교해 추천 순위 TOP 10을 선정하고 운동 후·다이어트·편의점용 후보를 구분했습니다."
-    }
-  ],
-  "/guides/product-selection-comparison/protein-yogurt-ranking-guide": [
-    {
-      "href": "/guides/product-selection-comparison/protein-yogurt-guide",
-      "title": "단백질 요거트 추천 기준 | 그릭·드링킹·대용량 비교",
-      "description": "단백질 요거트를 고를 때 그릭, 드링킹, 대용량 제품을 어떻게 나눠 보고 단백질 함량, 당류, 칼로리를 어떤 기준으로 비교해야 하는지 정리합니다."
-    },
-    {
-      "href": "/guides/product-selection-comparison/greek-yogurt-guide",
-      "title": "그릭요거트 추천 기준 | 단백질 함량·밀도 비교",
-      "description": "그릭요거트를 고를 때 단백질 함량, 단백질 밀도, 당류, 총용량 차이를 어떻게 함께 읽어야 하는지 정리합니다."
-    },
-    {
-      "href": "/guides/product-selection-comparison/diet-protein-yogurt",
-      "title": "다이어트 단백질 요거트 추천",
-      "description": "ProteinLab DB 기준으로 칼로리 100kcal 이하, 당류 5g 이하, 단백질 10g 이상 조건을 통과한 다이어트용 요거트만 골라 정리했습니다."
-    },
-    {
-      "href": "/guides/product-selection-comparison/greek-vs-protein-yogurt",
-      "title": "그릭요거트 vs 단백질 요거트",
-      "description": "그릭요거트와 단백질 요거트의 차이를 제조 방식, 단백질 함량, 칼로리, 용도 기준으로 쉽게 정리했습니다. 입문자가 어떤 카테고리를 먼저 골라야 하는지도 설명합니다."
     }
   ],
   "/guides/product-selection-comparison/ranking-content": [
@@ -314,7 +238,7 @@
       "description": "추천, 큐레이션, Picks, 비교 페이지가 각각 어떤 상황에서 유용한지 정리했습니다. 단백질 제품을 고를 때 어디부터 봐야 할지 빠르게 확인해보세요."
     },
     {
-      "href": "/guides/product-selection-comparison/protein-yogurt-ranking-guide",
+      "href": "/guides/product-selection-comparison/protein-yogurt-top5",
       "title": "단백질 요거트 순위 보는 법 | 점수·등급 기준 해석",
       "description": "단백질 요거트 순위에서 단백질 밀도, 다이어트, 퍼포먼스 점수를 어떻게 읽어야 하는지 정리합니다."
     }
@@ -414,7 +338,7 @@
       "description": "근단백질 합성, 운동 후 회복, 하루 권장량까지. 근육과 단백질의 관계를 기초 기준으로 정리합니다."
     },
     {
-      "href": "/guides/basics/protein-deficiency-self-check",
+      "href": "/guides/basics/deficiency-symptoms",
       "title": "단백질 부족 자가체크",
       "description": "단백질이 부족할 때 자주 보이는 신호를 간단히 체크하고, 부족 가능성이 높을 때 무엇부터 봐야 하는지 정리합니다."
     },

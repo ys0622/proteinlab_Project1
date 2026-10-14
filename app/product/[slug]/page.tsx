@@ -439,9 +439,9 @@ function buildProductInternalLinks(product: ProductDetailProps) {
     category === "drink"
       ? "/guides/product-selection-comparison/protein-drink-guide"
       : category === "bar"
-        ? "/guides/product-selection-comparison/protein-bar-guide"
+        ? "/guides/product-selection-comparison/protein-bar-top10"
         : category === "yogurt"
-          ? "/guides/product-selection-comparison/protein-yogurt-guide"
+          ? "/guides/product-selection-comparison/protein-yogurt-top5"
           : category === "soymilk"
             ? "/guides/product-selection-comparison/high-protein-soymilk-guide"
             : "/guides/product-selection-comparison/protein-shake-guide";

@@ -67,21 +67,9 @@
     "title": "식사대용 단백질 바 기준 | 포만감·칼로리·단백질 비교",
     "description": "식사대용 단백질 바를 고를 때 포만감, 칼로리, 단백질, 당류를 어떤 순서로 확인해야 하는지 정리합니다."
   },
-  "/guides/product-selection-comparison/nutrition-comparison": {
-    "title": "영양성분 비교 보는 법 | 단백질·당류·칼로리 해석 가이드",
-    "description": "단백질, 당류, 칼로리, 단백질 바를 어떤 순서로 읽어야 하는지 정리했습니다. 운동 후, 다이어트, 식사 보완 목적별 비교 기준을 빠르게 확인해보세요."
-  },
   "/guides/product-selection-comparison/nutrition-criteria": {
     "title": "영양성분 기준 정리 | 단백질 제품 비교할 때 먼저 볼 숫자",
     "description": "단백질 제품을 고를 때 먼저 확인할 단백질, 당류, 칼로리, 단백질 바 기준을 목적별로 정리했습니다. 비교 전에 최소 기준부터 빠르게 잡아보세요."
-  },
-  "/guides/product-selection-comparison/protein-bar-guide": {
-    "title": "단백질 바 선택 가이드 | 식사 보완·간식형 비교 기준",
-    "description": "단백질 바를 간식형, 식사 보완형, 운동 후 보충형으로 나눠 보고 당류, 칼로리, 단백질 밀도를 어떤 기준으로 비교해야 하는지 정리합니다."
-  },
-  "/guides/product-selection-comparison/protein-yogurt-ranking-guide": {
-    "title": "단백질 요거트 순위 보는 법 | 점수·등급 기준 해석",
-    "description": "단백질 요거트 순위에서 단백질 밀도, 다이어트, 퍼포먼스 점수를 어떻게 읽어야 하는지 정리합니다."
   },
   "/guides/product-selection-comparison/ranking-content": {
     "title": "순위와 점수 보는 법 | 단백질 제품 랭킹 해석 가이드",
@@ -146,10 +134,6 @@
   "/guides/product-selection-comparison/low-sugar-yogurt-guide": {
     "title": "저당 단백질 요거트 추천 기준 | 당류 5g 이하 비교",
     "description": "저당 단백질 요거트를 고를 때 당류 5g 이하 기준과 단백질 함량, 칼로리, 제품 유형을 함께 보는 방법을 정리합니다."
-  },
-  "/guides/product-selection-comparison/protein-yogurt-guide": {
-    "title": "단백질 요거트 추천 기준 | 그릭·드링킹·대용량 비교",
-    "description": "단백질 요거트를 고를 때 그릭, 드링킹, 대용량 제품을 어떻게 나눠 보고 단백질 함량, 당류, 칼로리를 어떤 기준으로 비교해야 하는지 정리합니다."
   },
   "/guides/product-selection-comparison/low-sugar-protein-shake-guide": {
     "title": "저당 단백질 쉐이크 추천 | 당류 3g 이하 제품 비교",

@@ -78,7 +78,7 @@ const relatedLinks = [
     body: "지하철, 차 안, 회사 도착 직후처럼 이동 상황 중심으로 보고 싶다면 출근길 가이드가 더 직접적입니다.",
   },
   {
-    href: "/guides/fitness-lifestyle/convenience-store-workout-protein",
+    href: "/guides/product-selection-comparison/convenience-store-protein-guide",
     title: "운동 후 편의점 제품 보기",
     body: "헬스장 가는 길이나 운동 직후 바로 살 수 있는 제품군만 따로 비교했습니다.",
   },

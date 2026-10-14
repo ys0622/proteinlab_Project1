@@ -93,7 +93,7 @@ const commonRelated: RelatedGuideLink[] = [
   },
   {
     title: "영양성분 비교",
-    href: "/guides/product-selection-comparison/nutrition-comparison",
+    href: "/guides/product-selection-comparison/nutrition-criteria",
     description: "단백질, 당류, 칼로리, 지방을 읽는 순서를 먼저 정리합니다.",
   },
 ];
@@ -1639,6 +1639,9 @@ export const newcareWaterConfig: ComparePageConfig = {
     },
   ],
   faq: [
+    { question: "뉴케어 단백질워터는 일반 RTD 대신으로 보면 되나요?", answer: "완전한 대체재로 보기보다는 별도 카테고리로 보는 편이 정확합니다. 마시는 체감과 기대하는 보충량이 다르기 때문입니다." },
+    { question: "보충량이 더 중요하면 어떤 쪽이 맞나요?", answer: "보통은 뉴케어 25g이나 셀렉스 프로핏 같은 일반 RTD가 더 맞습니다." },
+    { question: "뉴케어에서 워터형을 따로 봐야 하는 이유는 뭔가요?", answer: "같은 뉴케어여도 41g 고단백, 표준형 RTD, 워터형은 마시는 목적이 다릅니다. 단백질 총량이 먼저인지, 가볍게 마시는 것이 먼저인지에 따라 고르는 라인이 달라집니다." },
     { question: "뉴케어 워터는 단백질이 낮은 편인가요?", answer: "41g 같은 고단백 라인과 비교하면 낮지만, 워터형이라는 목적을 감안하면 역할이 다릅니다. 가벼운 보충 쪽으로 읽는 게 맞습니다." },
     { question: "뉴케어 워터는 다이어트용으로 보나요?", answer: "당류 0g과 낮은 칼로리 때문에 다이어트 사용자도 많이 봅니다. 다만 총량보다 가벼움이 핵심이라 식사대용처럼 읽으면 과합니다." },
     { question: "밀크형보다 무조건 더 좋나요?", answer: "아닙니다. 워터형은 가볍고 부담이 낮은 대신, 고단백 보충감은 밀크형 라인이 더 강합니다." },
@@ -2645,7 +2648,6 @@ export function getAllCompareGuideConfigs(): ComparePageConfig[] {
     newcareVsSellexConfig,
     newcareFor50sConfig,
     newcarePlantVsLactoseFreeConfig,
-    newcareWaterVsRtdConfig,
     newcareSugarGuideConfig,
     newcareBoxValueConfig,
     proteinDrinkByContentConfig,

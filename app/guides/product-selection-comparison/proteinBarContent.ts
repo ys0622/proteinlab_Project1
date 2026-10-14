@@ -218,11 +218,6 @@ export const proteinBarTop10Config: CategoryGuideConfig = {
       href: "/guides/product-selection-comparison/convenience-protein-bar",
       description: "오늘 바로 살 수 있는 바만 따로 보고 싶다면 이 페이지가 더 빠릅니다.",
     },
-    {
-      title: "단백질 바 선택 가이드",
-      href: "/guides/product-selection-comparison/protein-bar-guide",
-      description: "숫자를 어떤 순서로 읽어야 하는지 먼저 이해하고 싶다면 기본 가이드를 보세요.",
-    },
   ],
   purchaseLinks: barTop10.slice(0, 3).map((product) => ({
     label: `${formatProductLabel(product.brand, product.name)} 보기`,

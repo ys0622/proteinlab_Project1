@@ -78,6 +78,18 @@ function Callout({ children }: { children: React.ReactNode }) {
   );
 }
 
+const selfChecks = [
+  "아침이나 점심을 자주 대충 넘기고 단백질 반찬을 잘 못 챙긴다.",
+  "자주 피곤하고, 운동 후 회복이 전보다 느리게 느껴진다.",
+  "체중 감량 중인데 배고픔이 심하고 근력 유지가 어렵다.",
+  "부모님이나 본인이 나이가 들수록 식사량이 줄어 단백질 섭취가 불안하다.",
+];
+
+const selfCheckScores = [
+  ["0~1개", "부족 가능성 낮음", "지금은 식사 패턴을 크게 바꿀 단계는 아닐 수 있습니다. 다만 끼니를 자주 거르면 다시 점검할 가치가 있습니다."],
+  ["2개", "생활 패턴 점검 권장", "권장량과 식사 구성을 같이 보면 부족한 부분이 꽤 선명해지는 경우가 많습니다."],
+  ["3개 이상", "보완 전략까지 바로 보기", "식사만으로 채우기 어려운 패턴일 수 있어서 음료·쉐이크 같은 반복 가능한 보완 방식을 같이 보는 편이 빠릅니다."],
+];
 export default function DeficiencySymptomsPage() {
   const jsonLd = buildGuideJsonLd({ title: (metadata as {title:string;description:string}).title, description: (metadata as {title:string;description:string}).description, url: 'https://proteinlab.kr/guides/basics/deficiency-symptoms' });
   return (
@@ -227,6 +239,30 @@ export default function DeficiencySymptomsPage() {
         </div>
       </main>
 
+      <section className="mx-auto mb-8 max-w-[1200px] px-4 md:px-6">
+        <div className="rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5" style={{ wordBreak: "keep-all" }}>
+          <p className="text-[12px] font-bold uppercase tracking-wider text-[#1F5A3D]">자가체크</p>
+          <h2 className="mt-0.5 text-xl font-bold text-[var(--foreground)]">생활 패턴으로 먼저 점검해 보기</h2>
+          <ul className="mt-3 list-disc space-y-1.5 pl-5 text-sm leading-6 text-[var(--foreground-muted)]">
+            {selfChecks.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
+          <div className="mt-4 space-y-2">
+            {selfCheckScores.map(([count, label, body]) => (
+              <div key={count} className="rounded-2xl border border-[#e8e6e3] bg-[#FFFDF8] px-4 py-3">
+                <p className="text-sm font-semibold text-[var(--foreground)]">
+                  {count} · {label}
+                </p>
+                <p className="mt-1 text-sm leading-6 text-[var(--foreground-muted)]">{body}</p>
+              </div>
+            ))}
+          </div>
+          <p className="mt-3 text-xs leading-5 text-[var(--foreground-muted)]">
+            생활 패턴 점검용이며 의학적 진단 기준이 아닙니다. 피로·부종·회복 저하가 오래 이어지면 다른 원인도 함께 확인하세요.
+          </p>
+        </div>
+      </section>
       <ProteinDailyContext />
       <GuideBuySection topic="general" />
 

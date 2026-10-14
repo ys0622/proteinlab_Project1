@@ -214,7 +214,7 @@ const searchTopics: SearchTopic[] = [
     bullets: ["고단백 바 검색 대응", "식사대용/저당 바와 자연스럽게 연결", "상세 페이지 유입 확장에 유리"],
     primaryCta: { href: "/picks/bar-high-protein-20", title: "20g 이상 단백질 바 보기", description: "고단백 바만 추린 페이지로 이동합니다." },
     relatedLinks: [
-      { href: "/guides/product-selection-comparison/protein-bar-guide", title: "단백질 바 선택 가이드", description: "총량과 밀도를 함께 보는 기준을 설명합니다." },
+      { href: "/guides/product-selection-comparison/protein-bar-top10", title: "단백질바 추천 TOP 10", description: "총량과 밀도를 함께 보는 기준을 설명합니다." },
       { href: "/topics/low-sugar-protein-bar", title: "저당 단백질 바", description: "당류 기준으로 다시 좁힙니다." },
       { href: "/bars", title: "단백질 바 전체 보기", description: "전체 바 목록에서 추가 탐색이 가능합니다." },
     ],
@@ -266,8 +266,8 @@ const searchTopics: SearchTopic[] = [
     bullets: ["러닝/마라톤 검색 대응", "운동 후 보충 콘텐츠와 연결", "음료와 바를 함께 묶기 좋음"],
     primaryCta: { href: "/curation/running", title: "러닝 큐레이션 보기", description: "러닝 관점으로 추린 제품 페이지입니다." },
     relatedLinks: [
-      { href: "/guides/fitness-lifestyle/running-protein-guide", title: "러닝 단백질 가이드", description: "러닝 루틴에서 단백질을 보는 기준을 정리했습니다." },
-      { href: "/guides/fitness-lifestyle/marathon-protein-guide", title: "마라톤 단백질 가이드", description: "장거리 러너 관점의 내용을 봅니다." },
+      { href: "/guides/running/basics", title: "러닝 단백질 가이드", description: "러닝 루틴에서 단백질을 보는 기준을 정리했습니다." },
+      { href: "/guides/running/race-week", title: "마라톤 단백질 가이드", description: "장거리 러너 관점의 내용을 봅니다." },
       { href: "/recommend", title: "맞춤 추천", description: "개인 운동 빈도와 강도를 반영합니다." },
     ],
   },
@@ -332,7 +332,7 @@ const searchTopics: SearchTopic[] = [
     primaryCta: { href: "/topics/diet-protein-drink", title: "다이어트 단백질 음료 전체 보기", description: "칼로리·당류 기준 전체 후보군을 확인합니다." },
     relatedLinks: [
       { href: "/topics/protein-water", title: "프로틴 워터 추천", description: "청량감 있는 워터형 음료를 모아봅니다." },
-      { href: "/guides/intake-strategy-health/diet-protein-drink-strategy", title: "다이어트 중 단백질 음료 전략", description: "저당·저칼로리 기준으로 마시는 법을 정리했습니다." },
+      { href: "/guides/product-selection-comparison/diet-protein-drink-guide", title: "다이어트 단백질 음료 기준", description: "저당·저칼로리 기준으로 마시는 법을 정리했습니다." },
       { href: "/recommend", title: "맞춤 추천", description: "목표와 조건에 맞는 제품을 다시 추립니다." },
     ],
   },

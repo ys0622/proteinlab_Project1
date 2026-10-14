@@ -248,8 +248,8 @@ export default function ConvenienceStoreProteinGuidePage() {
                 </Link>
               </li>
               <li>
-                <Link href="/guides/product-selection-comparison/protein-bar-guide" className="font-semibold text-[#24543d] underline underline-offset-4">
-                  단백질 바 선택 가이드 — 간식·식사 보완·운동 후 기준 정리
+                <Link href="/guides/product-selection-comparison/protein-bar-top10" className="font-semibold text-[#24543d] underline underline-offset-4">
+                  단백질바 추천 TOP 10 — 100개 제품 성분 비교
                 </Link>
               </li>
             </ul>

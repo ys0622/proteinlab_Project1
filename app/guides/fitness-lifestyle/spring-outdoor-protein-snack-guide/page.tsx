@@ -8,6 +8,8 @@ import CategoryDataSection from "@/app/components/CategoryDataSection";
 const _pageTitle = "봄 야외활동 단백질 간식 가이드 | 피크닉·러닝용 간식 기준";
 const _pageDesc = "봄철 피크닉, 산책, 야외활동에서 챙기기 좋은 단백질 간식 기준을 휴대성, 당류, 포만감 중심으로 정리합니다.";
 export const metadata = {
+  // 2026-10-14 검색 수요가 낮은 계절성·사이트 안내 페이지라 색인에서 뺀다(링크는 따라가게 둔다).
+  robots: { index: false, follow: true },
   title: _pageTitle,
   description: _pageDesc,
   alternates: { canonical: "https://proteinlab.kr/guides/fitness-lifestyle/spring-outdoor-protein-snack-guide" },
@@ -121,7 +123,7 @@ export default function SpringOutdoorProteinSnackGuidePage() {
               <Link href="/guides/product-selection-comparison/protein-drink-beginners-guide" className="rounded-full border border-[#eaded7] bg-white px-3 py-1 text-xs font-semibold text-[#8a4b2f]">
                 관련 가벼운 단백질 음료
               </Link>
-              <Link href="/guides/product-selection-comparison/protein-bar-guide" className="rounded-full border border-[#eaded7] bg-white px-3 py-1 text-xs font-semibold text-[#8a4b2f]">
+              <Link href="/guides/product-selection-comparison/protein-bar-top10" className="rounded-full border border-[#eaded7] bg-white px-3 py-1 text-xs font-semibold text-[#8a4b2f]">
                 관련 단백질 바 선택 가이드
               </Link>
               <Link href="/guides/product-selection-comparison/drinking-yogurt-guide" className="rounded-full border border-[#eaded7] bg-white px-3 py-1 text-xs font-semibold text-[#8a4b2f]">

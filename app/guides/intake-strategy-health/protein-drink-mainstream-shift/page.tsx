@@ -99,7 +99,7 @@ const relatedLinks = [
     body: "비운동자 관점에서 단백질 음료가 필요한 경우를 정리했습니다.",
   },
   {
-    href: "/guides/intake-strategy-health/protein-drink-meal-replacement",
+    href: "/guides/intake-strategy-health/meal-replacement-strategy",
     title: "단백질 음료 식사대용 가능할까",
     body: "식사대용으로 쓸 때 확인해야 할 영양 구성 기준을 정리했습니다.",
   },

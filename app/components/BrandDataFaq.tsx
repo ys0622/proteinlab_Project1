@@ -101,14 +101,22 @@ export function buildBrandDataFaqs(options: { brands?: string[]; productType: Pr
   return out;
 }
 
-/** 가이드 하단 데이터 FAQ. 수치는 제품 데이터에서 계산한다. */
-export default function BrandDataFaq({ faqs }: { faqs: DataFaq[] }) {
+/** 가이드 하단 데이터 FAQ. 수치는 제품 데이터에서 계산한다. eyebrow·title로 일반 FAQ에도 쓴다. */
+export default function BrandDataFaq({
+  faqs,
+  eyebrow = "ProteinLab 데이터",
+  title = "데이터로 보는 자주 묻는 질문",
+}: {
+  faqs: DataFaq[];
+  eyebrow?: string;
+  title?: string;
+}) {
   if (faqs.length === 0) return null;
   return (
     <section className="mx-auto mb-8 max-w-[1200px] px-4 md:px-6">
       <div className="rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5">
-        <p className="text-[12px] font-bold uppercase tracking-wider text-[#1F5A3D]">ProteinLab 데이터</p>
-        <h2 className="mt-0.5 text-xl font-bold text-[var(--foreground)]">데이터로 보는 자주 묻는 질문</h2>
+        <p className="text-[12px] font-bold uppercase tracking-wider text-[#1F5A3D]">{eyebrow}</p>
+        <h2 className="mt-0.5 text-xl font-bold text-[var(--foreground)]">{title}</h2>
         <div className="mt-4 space-y-3">
           {faqs.map((item) => (
             <div key={item.question} className="rounded-2xl border border-[#e8e6e3] bg-[#FFFDF8] px-5 py-4" style={{ wordBreak: "keep-all" }}>

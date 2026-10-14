@@ -34,8 +34,8 @@ const relatedLinks = [
     description: "현재 데이터 기준으로 그릭 타입 제품만 바로 모아볼 수 있습니다.",
   },
   {
-    href: "/guides/product-selection-comparison/protein-yogurt-guide",
-    title: "단백질 요거트 선택 가이드",
+    href: "/guides/product-selection-comparison/protein-yogurt-top5",
+    title: "프로틴 요거트 추천 TOP 5",
     description: "그릭, 드링킹, 대용량을 포함한 전체 흐름으로 다시 비교할 수 있습니다.",
   },
   {

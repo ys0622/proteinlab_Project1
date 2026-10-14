@@ -25,8 +25,8 @@ const relatedLinks = [
     description: "당류 기준으로 먼저 좁힌 추천 제품군을 바로 확인할 수 있습니다.",
   },
   {
-    href: "/guides/product-selection-comparison/protein-yogurt-guide",
-    title: "단백질 요거트 선택 가이드",
+    href: "/guides/product-selection-comparison/protein-yogurt-top5",
+    title: "프로틴 요거트 추천 TOP 5",
     description: "유형 전체를 먼저 이해한 뒤 저당 기준으로 다시 비교할 때 유용합니다.",
   },
   {

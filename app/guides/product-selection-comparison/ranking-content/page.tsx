@@ -7,6 +7,8 @@ import GuideBuySection from "@/app/components/GuideBuySection";
 import CategoryDataSection from "@/app/components/CategoryDataSection";
 
 export const metadata = {
+  // 2026-10-14 검색 수요가 낮은 계절성·사이트 안내 페이지라 색인에서 뺀다(링크는 따라가게 둔다).
+  robots: { index: false, follow: true },
   alternates: { canonical: "https://proteinlab.kr/guides/product-selection-comparison/ranking-content" },
   title: "순위와 점수 보는 법 | 단백질 제품 랭킹 해석 가이드",
   description:

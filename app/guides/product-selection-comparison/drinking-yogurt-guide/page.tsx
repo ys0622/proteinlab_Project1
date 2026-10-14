@@ -25,14 +25,9 @@ const relatedLinks = [
     description: "마시기 편한 제품만 별도로 모은 큐레이션으로 바로 이동할 수 있습니다.",
   },
   {
-    href: "/guides/product-selection-comparison/protein-yogurt-guide",
-    title: "단백질 요거트 선택 가이드",
+    href: "/guides/product-selection-comparison/protein-yogurt-top5",
+    title: "프로틴 요거트 추천 TOP 5",
     description: "드링킹을 포함한 전체 요거트 유형을 다시 비교할 수 있습니다.",
-  },
-  {
-    href: "/guides/product-selection-comparison/protein-yogurt-ranking-guide",
-    title: "단백질 요거트 순위 보는 법",
-    description: "드링킹 타입이 랭킹에서 어떻게 보이는지도 이어서 확인할 수 있습니다.",
   },
 ];
 

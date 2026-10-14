@@ -59,6 +59,22 @@ const nextConfig: NextConfig = {
         destination: "/guides/basics/role-overview",
         permanent: true,
       },
+      // 2026-10-14 가이드 통합: 같은 주제 페이지를 대표 페이지로 모은다(docs/guide-consolidation-plan-2026-10-14.md).
+      { source: "/guides/fitness-lifestyle/marathon-protein-guide", destination: "/guides/running/race-week", permanent: true },
+      { source: "/guides/fitness-lifestyle/running-protein-guide", destination: "/guides/running/basics", permanent: true },
+      { source: "/guides/basics/protein-deficiency-self-check", destination: "/guides/basics/deficiency-symptoms", permanent: true },
+      { source: "/guides/product-selection-comparison/nutrition-comparison", destination: "/guides/product-selection-comparison/nutrition-criteria", permanent: true },
+      { source: "/guides/fitness-lifestyle/convenience-store-workout-protein", destination: "/guides/product-selection-comparison/convenience-store-protein-guide", permanent: true },
+      { source: "/guides/intake-strategy-health/protein-drink-meal-replacement", destination: "/guides/intake-strategy-health/meal-replacement-strategy", permanent: true },
+      { source: "/guides/intake-strategy-health/diet-protein-drink-strategy", destination: "/guides/product-selection-comparison/diet-protein-drink-guide", permanent: true },
+      { source: "/guides/product-selection-comparison/protein-bar-guide", destination: "/guides/product-selection-comparison/protein-bar-top10", permanent: true },
+      { source: "/guides/product-selection-comparison/protein-yogurt-guide", destination: "/guides/product-selection-comparison/protein-yogurt-top5", permanent: true },
+      { source: "/guides/product-selection-comparison/protein-yogurt-ranking-guide", destination: "/guides/product-selection-comparison/protein-yogurt-top5", permanent: true },
+      { source: "/guides/product-selection-comparison/newcare-water-vs-rtd", destination: "/guides/product-selection-comparison/newcare-protein-water-guide", permanent: true },
+      { source: "/compare/doctoru-vs-benof-softbar", destination: "/compare/doctoru-vs-benof-bar", permanent: true },
+      { source: "/guides/fitness-lifestyle/spring-diet-protein-guide", destination: "/guides/intake-strategy-health/weight-management-protein", permanent: true },
+      { source: "/guides/fitness-lifestyle/spring-running-start-guide", destination: "/guides/running/basics", permanent: true },
+      { source: "/guides/intake-strategy-health/protein-drink-mainstream-shift", destination: "/guides/market-insights/protein-drink-trend-2026", permanent: true },
     ];
   },
 };

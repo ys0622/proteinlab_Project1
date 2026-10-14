@@ -139,7 +139,7 @@ export default function MarathonDistanceStrategyPage() {
             <h2 className="text-xl font-bold text-[var(--foreground)]">📖 관련 가이드</h2>
             <div className="mt-5 flex flex-wrap gap-3">
               <Link href="/curation/running" className="inline-flex items-center justify-center rounded-xl border border-[#2d6a4f] bg-[#2d6a4f] px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#24543d]">러닝용 단백질 제품 보기</Link>
-              <Link href="/guides/fitness-lifestyle/marathon-protein-guide" className="inline-flex items-center justify-center rounded-xl border border-[#d9e7dc] bg-white px-5 py-3 text-sm font-semibold text-[#24543d] transition-colors hover:bg-[#eef7f1]">레이스 주간 전략 보기</Link>
+              <Link href="/guides/running/race-week" className="inline-flex items-center justify-center rounded-xl border border-[#d9e7dc] bg-white px-5 py-3 text-sm font-semibold text-[#24543d] transition-colors hover:bg-[#eef7f1]">레이스 주간 전략 보기</Link>
               <Link href="/guides/product-selection-comparison/protein-drink-guide" className="inline-flex items-center justify-center rounded-xl border border-[#d9e7dc] bg-white px-5 py-3 text-sm font-semibold text-[#24543d] transition-colors hover:bg-[#eef7f1]">단백질 음료 비교 가이드</Link>
             </div>
           </section>

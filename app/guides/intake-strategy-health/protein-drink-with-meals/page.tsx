@@ -73,7 +73,7 @@ const mistakes = [
 
 const links = [
   {
-    href: "/guides/intake-strategy-health/protein-drink-meal-replacement",
+    href: "/guides/intake-strategy-health/meal-replacement-strategy",
     title: "단백질 음료 식사대용",
     body: "한 병이 식사를 대신할 수 있는지 제품 유형부터 구분합니다.",
   },
@@ -83,7 +83,7 @@ const links = [
     body: "매일 섭취할 때 당류·칼로리·소화 부담을 확인합니다.",
   },
   {
-    href: "/guides/intake-strategy-health/diet-protein-drink-strategy",
+    href: "/guides/product-selection-comparison/diet-protein-drink-guide",
     title: "다이어트 중 단백질 음료",
     body: "간식 대체와 식사 보완을 체중 관리 관점에서 구분합니다.",
   },

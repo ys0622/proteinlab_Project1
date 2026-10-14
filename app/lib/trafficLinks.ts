@@ -269,8 +269,8 @@ export function getProductTrafficLinks(
     ],
     bar: [
       {
-        href: "/guides/product-selection-comparison/protein-bar-guide",
-        title: "단백질 바 선택 가이드",
+        href: "/guides/product-selection-comparison/protein-bar-top10",
+        title: "단백질바 추천 TOP 10",
         description: "총 단백질, 당류, 칼로리, 중량을 함께 보는 기준을 정리했습니다.",
       },
       {
@@ -281,8 +281,8 @@ export function getProductTrafficLinks(
     ],
     yogurt: [
       {
-        href: "/guides/product-selection-comparison/protein-yogurt-guide",
-        title: "단백질 요거트 비교 가이드",
+        href: "/guides/product-selection-comparison/protein-yogurt-top5",
+        title: "프로틴 요거트 추천 TOP 5",
         description: "그릭, 드링킹, 대용량 요거트를 목적에 맞게 나누는 기준입니다.",
       },
       {

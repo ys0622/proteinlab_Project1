@@ -164,17 +164,6 @@ export const guideTracks: GuideTrack[] = [
         ],
       },
       {
-        slug: "protein-bar-guide",
-        title: "단백질 바 선택 가이드",
-        description: "단백질 바를 목적별로 구분해 선택 기준을 담을 페이지 슬롯입니다.",
-        searchIntent: "단백질 바 고르는 법",
-        futureFocus: ["간식형 제품 구분", "당류·칼로리 비교", "바 제품 연결"],
-        internalLinkTargets: [
-          { label: "단백질 바 목록", href: "/bars" },
-          { label: "성분 비교", href: "/guides/product-selection-comparison/nutrition-comparison" },
-        ],
-      },
-      {
         slug: "meal-replacement-protein-bar-guide",
         title: "식사대용 단백질 바 기준",
         description: "포만감과 칼로리, 단백질을 같이 보며 식사대용 단백질 바를 고르는 기준을 정리합니다.",
@@ -182,7 +171,7 @@ export const guideTracks: GuideTrack[] = [
         futureFocus: ["식사보완형 바", "포만감 기준", "총열량 비교"],
         internalLinkTargets: [
           { label: "단백질 바 목록", href: "/bars" },
-          { label: "단백질 바 선택 가이드", href: "/guides/product-selection-comparison/protein-bar-guide" },
+          { label: "단백질바 추천 TOP 10", href: "/guides/product-selection-comparison/protein-bar-top10" },
         ],
       },
       {
@@ -194,17 +183,6 @@ export const guideTracks: GuideTrack[] = [
         internalLinkTargets: [
           { label: "두유 비교", href: "/soymilk" },
           { label: "저당 두유", href: "/curation/soymilk-low-sugar" },
-        ],
-      },
-      {
-        slug: "protein-yogurt-guide",
-        title: "단백질 요거트 선택 가이드",
-        description: "단백질 요거트를 그릭, 드링킹, 대용량 기준으로 나눠 보는 선택 가이드입니다.",
-        searchIntent: "단백질 요거트 고르는 법",
-        futureFocus: ["그릭요거트 비교", "드링킹 요거트 비교", "요거트 DB 연결"],
-        internalLinkTargets: [
-          { label: "단백질 요거트 비교", href: "/yogurt" },
-          { label: "요거트 랭킹", href: "/ranking" },
         ],
       },
       {
@@ -249,28 +227,6 @@ export const guideTracks: GuideTrack[] = [
         internalLinkTargets: [
           { label: "드링킹 요거트 큐레이션", href: "/curation/yogurt-drinking" },
           { label: "단백질 요거트 비교", href: "/yogurt?curation=yogurt-drinking" },
-        ],
-      },
-      {
-        slug: "protein-yogurt-ranking-guide",
-        title: "단백질 요거트 순위 읽는 법",
-        description: "단백질 요거트 랭킹의 단백질 밀도, 다이어트, 퍼포먼스 점수 읽는 법을 정리합니다.",
-        searchIntent: "단백질 요거트 순위",
-        futureFocus: ["랭킹 해석", "등급 기준 연결", "요거트 추천 연결"],
-        internalLinkTargets: [
-          { label: "요거트 랭킹", href: "/ranking" },
-          { label: "등급 기준", href: "/grade-criteria" },
-        ],
-      },
-      {
-        slug: "nutrition-comparison",
-        title: "성분 비교",
-        description: "단백질, 당류, 칼로리, 지방, 나트륨 등을 비교하는 페이지 슬롯입니다.",
-        searchIntent: "단백질 제품 성분 비교",
-        futureFocus: ["핵심 지표 비교", "제품 필터 연결", "사용자 비교 프레임"],
-        internalLinkTargets: [
-          { label: "영양 성분 기준", href: "/guides/product-selection-comparison/nutrition-criteria" },
-          { label: "제품 비교", href: "/compare" },
         ],
       },
       {
@@ -454,17 +410,6 @@ export const guideTracks: GuideTrack[] = [
         ],
       },
       {
-        slug: "diet-protein-drink-strategy",
-        title: "다이어트 중 단백질 음료 전략",
-        description: "다이어트 중 단백질 음료를 저당·저칼로리 기준으로 어떻게 마시면 좋을지 정리합니다.",
-        searchIntent: "다이어트 단백질 음료 어떻게",
-        futureFocus: ["저당 기준", "저칼로리 판단", "체중 관리 연결"],
-        internalLinkTargets: [
-          { label: "체중 관리와 단백질", href: "/guides/intake-strategy-health/weight-management-protein" },
-          { label: "다이어트 단백질 음료", href: "/topics/diet-protein-drink" },
-        ],
-      },
-      {
         slug: "protein-drink-weight-gain",
         title: "단백질 음료 살찌나요",
         description: "단백질 음료가 살찌는지 칼로리, 당류, 간식 대체 여부, 운동량 기준으로 판단합니다.",
@@ -498,24 +443,13 @@ export const guideTracks: GuideTrack[] = [
         ],
       },
       {
-        slug: "protein-drink-meal-replacement",
-        title: "단백질 음료 식사대용 가능할까",
-        description: "단백질 음료를 식사 대용으로 써도 되는지 영양 구성 기준으로 판단하는 방법을 정리합니다.",
-        searchIntent: "단백질 음료 식사대용 가능할까",
-        futureFocus: ["영양 구성 판단", "식사대용 기준", "제품 연결"],
-        internalLinkTargets: [
-          { label: "식사대용 전략", href: "/guides/intake-strategy-health/meal-replacement-strategy" },
-          { label: "아침 대용 단백질 음료", href: "/guides/intake-strategy-health/morning-protein-drink" },
-        ],
-      },
-      {
         slug: "protein-drink-with-meals",
         title: "단백질 음료와 식사 같이 먹어도 될까",
         description: "단백질 음료를 식사와 함께 먹을 때 채소·탄수화물·지방·식이섬유를 어떻게 조합할지 정리합니다.",
         searchIntent: "단백질 음료 식사 같이",
         futureFocus: ["식사 조합", "간식 대체", "채소·탄수화물"],
         internalLinkTargets: [
-          { label: "단백질 음료 식사대용", href: "/guides/intake-strategy-health/protein-drink-meal-replacement" },
+          { label: "단백질 음료 식사대용", href: "/guides/intake-strategy-health/meal-replacement-strategy" },
           { label: "단백질 음료 매일 마셔도 될까", href: "/guides/intake-strategy-health/protein-drink-daily" },
         ],
       },
@@ -552,17 +486,6 @@ export const guideTracks: GuideTrack[] = [
           { label: "단백질 50g 한 번에", href: "/guides/intake-strategy-health/protein-50g-at-once" },
         ],
       },
-      {
-        slug: "protein-drink-mainstream-shift",
-        title: "단백질 음료, 이제 근육 늘리려고만 마시지 않습니다",
-        description: "근비대 목적 중심이던 소비가 영양 보충·식사대용 목적으로 확대된 흐름과 그에 맞는 선택 기준을 정리합니다.",
-        searchIntent: "단백질 음료 운동 안해도",
-        futureFocus: ["소비 목적 다양화", "비운동자 기준", "식사대용 연결"],
-        internalLinkTargets: [
-          { label: "운동 안 해도 단백질 음료", href: "/guides/intake-strategy-health/protein-drink-without-exercise" },
-          { label: "식사대용 가능할까", href: "/guides/intake-strategy-health/protein-drink-meal-replacement" },
-        ],
-      },
     ],
   },
   {
@@ -578,28 +501,6 @@ export const guideTracks: GuideTrack[] = [
     accentColor: "#8a4b2f",
     accentBg: "#f8ede7",
     slots: [
-      {
-        slug: "running-protein-guide",
-        title: "러닝",
-        description: "러너를 위한 단백질 섭취 포인트를 다룰 페이지 슬롯입니다.",
-        searchIntent: "러닝 단백질 섭취",
-        futureFocus: ["지구력 운동 맥락", "회복 포인트", "간편 제품 연결"],
-        internalLinkTargets: [
-          { label: "운동 후 섭취", href: "/guides/intake-strategy-health/post-workout-protein" },
-          { label: "운동 영양", href: "/guides/fitness-lifestyle/sports-nutrition-guide" },
-        ],
-      },
-      {
-        slug: "marathon-protein-guide",
-        title: "마라톤",
-        description: "장거리 훈련과 레이스 준비 상황을 반영한 페이지 슬롯입니다.",
-        searchIntent: "마라톤 단백질 전략",
-        futureFocus: ["장거리 훈련", "회복 관리", "시즌성 콘텐츠"],
-        internalLinkTargets: [
-          { label: "러닝", href: "/guides/fitness-lifestyle/running-protein-guide" },
-          { label: "운동 영양", href: "/guides/fitness-lifestyle/sports-nutrition-guide" },
-        ],
-      },
       {
         slug: "strength-training-protein",
         title: "근력 운동",
@@ -641,29 +542,7 @@ export const guideTracks: GuideTrack[] = [
         futureFocus: ["시즌성 허브", "이벤트 확장", "운동 트렌드 연결"],
         internalLinkTargets: [
           { label: "공식 이벤트", href: "/official-events" },
-          { label: "마라톤", href: "/guides/fitness-lifestyle/marathon-protein-guide" },
-        ],
-      },
-      {
-        slug: "spring-diet-protein-guide",
-        title: "봄 다이어트 단백질 전략",
-        description: "봄철 체중 관리 시즌에 맞는 단백질 음료, 바, 요거트 선택 기준을 정리합니다.",
-        searchIntent: "봄 다이어트 단백질",
-        futureFocus: ["봄 다이어트", "저당 제품 기준", "가벼운 감량 루틴"],
-        internalLinkTargets: [
-          { label: "체중 관리와 단백질", href: "/guides/intake-strategy-health/weight-management-protein" },
-          { label: "다이어트 단백질 음료 기준", href: "/guides/product-selection-comparison/diet-protein-drink-guide" },
-        ],
-      },
-      {
-        slug: "spring-running-start-guide",
-        title: "봄 러닝 시작 단백질 가이드",
-        description: "봄에 러닝을 다시 시작할 때 회복 루틴과 제품 선택 기준을 정리합니다.",
-        searchIntent: "봄 러닝 단백질",
-        futureFocus: ["러닝 재개", "회복 루틴", "가벼운 RTD"],
-        internalLinkTargets: [
-          { label: "러닝 단백질 가이드", href: "/guides/fitness-lifestyle/running-protein-guide" },
-          { label: "운동 후 단백질", href: "/guides/intake-strategy-health/post-workout-protein" },
+          { label: "마라톤", href: "/guides/running/race-week" },
         ],
       },
       {
@@ -673,7 +552,7 @@ export const guideTracks: GuideTrack[] = [
         searchIntent: "봄 단백질 간식",
         futureFocus: ["야외활동 간식", "피크닉 단백질", "휴대성"],
         internalLinkTargets: [
-          { label: "단백질 바 선택 가이드", href: "/guides/product-selection-comparison/protein-bar-guide" },
+          { label: "단백질바 추천 TOP 10", href: "/guides/product-selection-comparison/protein-bar-top10" },
           { label: "드링킹 요거트 비교 가이드", href: "/guides/product-selection-comparison/drinking-yogurt-guide" },
         ],
       },
@@ -732,7 +611,7 @@ export const guideTracks: GuideTrack[] = [
         searchIntent: "단백질 제품 성분 트렌드",
         futureFocus: ["성분 흐름", "소비자 선호", "제품 DB 연결"],
         internalLinkTargets: [
-          { label: "성분 비교", href: "/guides/product-selection-comparison/nutrition-comparison" },
+          { label: "성분 비교", href: "/guides/product-selection-comparison/nutrition-criteria" },
           { label: "단백질 종류", href: "/guides/protein-basics/protein-types" },
         ],
       },

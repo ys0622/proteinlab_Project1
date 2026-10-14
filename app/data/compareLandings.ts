@@ -191,18 +191,6 @@ const compareLandings: CompareLanding[] = [
     ],
   },
   {
-    slug: "doctoru-vs-benof-softbar",
-    title: "닥터유 vs 베노프 소프트바 비교",
-    description: "닥터유 프로틴바와 베노프 소프트바를 단백질, 당류, 칼로리 기준으로 비교합니다.",
-    intro: "보다 부드러운 식감을 찾는 사용자에게 맞는 바 비교 랜딩입니다.",
-    bullets: ["소프트바 수요 대응", "간식형 단백질 바 비교", "상세 페이지 진입용 고정 랜딩"],
-    productSlugs: ["dryou-proteinbar-pro-choco-classic", "benof-softbar-chocolate-caramel"],
-    relatedLinks: [
-      { href: "/topics/high-protein-bar", title: "고단백 바 주제 랜딩", description: "단백질 함량이 높은 바만 다시 모아 봅니다." },
-      { href: "/recommend", title: "맞춤 추천", description: "사용 목적에 맞는 카테고리별 제품을 다시 추립니다." },
-    ],
-  },
-  {
     slug: "yopro-vs-maeilbio-yogurt",
     title: "요프로 vs 매일 바이오 단백질 요거트 비교",
     description: "요프로와 매일 바이오 그릭 요거트를 단백질, 당류, 용량 기준으로 비교합니다.",

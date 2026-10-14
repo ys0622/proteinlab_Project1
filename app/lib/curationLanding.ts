@@ -568,7 +568,7 @@ function buildDefaultGuideLinks(curation: CurationDefinition): CurationGuideLink
     href: curation.categories.soymilk
       ? "/guides/product-selection-comparison/high-protein-soymilk-guide"
       : curation.categories.bar
-      ? "/guides/product-selection-comparison/protein-bar-guide"
+      ? "/guides/product-selection-comparison/protein-bar-top10"
       : curation.categories.yogurt
         ? "/guides/product-selection-comparison/nutrition-criteria"
         : "/guides/product-selection-comparison/nutrition-criteria",
