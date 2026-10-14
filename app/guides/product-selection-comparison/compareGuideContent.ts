@@ -1433,9 +1433,9 @@ newcareAllproteinConfig.relatedGuides = [
     description: "고단백 집중형과 일상형 뉴케어를 직접 비교합니다.",
   },
   {
-    title: "뉴케어 박스가성비 가이드",
-    href: "/guides/product-selection-comparison/newcare-box-value",
-    description: "박스 구매 전 개당 단가와 실패 비용을 함께 봅니다.",
+    title: "단백질 음료 박스가성비",
+    href: "/guides/product-selection-comparison/protein-drink-box-value",
+    description: "뉴케어를 다른 브랜드 박스와 함께 개당 단가·단백질 1g당으로 비교합니다.",
   },
   {
     title: "단백질 음료 맛 고르는 법",
@@ -2156,7 +2156,6 @@ export const newcareBoxValueConfig: ComparePageConfig = {
   relatedGuides: [
     { title: "단백질 음료 박스가성비", href: "/guides/product-selection-comparison/protein-drink-box-value", description: "뉴케어를 다른 브랜드 박스가성과 함께 넓게 봅니다." },
     { title: "뉴케어 올프로틴 완전 분석", href: "/guides/product-selection-comparison/newcare-allprotein", description: "뉴케어 전체 라인업 역할을 먼저 정리합니다." },
-    { title: "뉴케어 저당 선택 가이드", href: "/guides/product-selection-comparison/newcare-low-sugar-guide", description: "가성비와 함께 저당 기준도 같이 확인합니다." },
   ],
   purchaseLinks: [
     { label: "뉴케어 25g 보기", slug: newcare25.slug },
@@ -2165,6 +2164,19 @@ export const newcareBoxValueConfig: ComparePageConfig = {
   ],
 };
 newcareBoxValueConfig.jsonLd = [articleJsonLd(newcareBoxValueConfig), faqJsonLd(newcareBoxValueConfig)];
+
+// 2026-10-14 저당·박스가성비 가이드를 올프로틴 완전 분석으로 통합(두 URL은 301). 고유 섹션과 FAQ를 옮긴다.
+newcareAllproteinConfig.sections = [
+  ...newcareAllproteinConfig.sections,
+  { ...newcareSugarGuideConfig.sections[0], title: "저당 기준으로 뉴케어 고르기" },
+  { ...newcareBoxValueConfig.sections[0], title: "박스로 살 때 가성비 읽는 법" },
+];
+newcareAllproteinConfig.faq = [
+  ...(newcareAllproteinConfig.faq ?? []),
+  ...(newcareSugarGuideConfig.faq ?? []),
+  ...(newcareBoxValueConfig.faq ?? []),
+];
+newcareAllproteinConfig.jsonLd = [articleJsonLd(newcareAllproteinConfig), faqJsonLd(newcareAllproteinConfig)];
 
 export const proteinDrinkByContentConfig: ComparePageConfig = {
   slug: "protein-drink-by-content",
@@ -2648,8 +2660,6 @@ export function getAllCompareGuideConfigs(): ComparePageConfig[] {
     newcareVsSellexConfig,
     newcareFor50sConfig,
     newcarePlantVsLactoseFreeConfig,
-    newcareSugarGuideConfig,
-    newcareBoxValueConfig,
     proteinDrinkByContentConfig,
     takefitVsHimuneConfig,
     danbaekVsSelexsConfig,

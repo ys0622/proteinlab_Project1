@@ -75,6 +75,8 @@ const nextConfig: NextConfig = {
       { source: "/guides/fitness-lifestyle/spring-diet-protein-guide", destination: "/guides/intake-strategy-health/weight-management-protein", permanent: true },
       { source: "/guides/fitness-lifestyle/spring-running-start-guide", destination: "/guides/running/basics", permanent: true },
       { source: "/guides/intake-strategy-health/protein-drink-mainstream-shift", destination: "/guides/market-insights/protein-drink-trend-2026", permanent: true },
+      { source: "/guides/product-selection-comparison/newcare-low-sugar-guide", destination: "/guides/product-selection-comparison/newcare-allprotein", permanent: true },
+      { source: "/guides/product-selection-comparison/newcare-box-value", destination: "/guides/product-selection-comparison/newcare-allprotein", permanent: true },
     ];
   },
 };

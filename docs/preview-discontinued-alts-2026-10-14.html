@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>단종 제품 대체 추천 미리보기</title>
+<style>
+  :root { --fg:#1f2a24; --muted:#6b6560; --accent:#1F5A3D; --accent-light:#e7f1eb; --border:#e8e6e3; }
+  body { margin:0; background:#f4f1ec; font-family: -apple-system, "Pretendard", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif; color:var(--fg); }
+  .wrap { display:flex; gap:32px; flex-wrap:wrap; justify-content:center; padding:24px 16px; }
+  .col { width:375px; max-width:100%; }
+  .label { font-size:12px; font-weight:700; color:#8a8178; margin:0 0 8px; }
+  .phone { background:#FFFDF8; border:1px solid var(--border); border-radius:24px; padding:16px; }
+  .hero { display:flex; gap:12px; align-items:center; margin-bottom:12px; }
+  .hero img { width:72px; height:72px; object-fit:contain; background:#fff; border-radius:12px; border:1px solid var(--border); }
+  .hero h1 { font-size:16px; margin:0; }
+  .hero p { margin:2px 0 0; font-size:12px; color:var(--muted); }
+  .box { border:1px solid #ded8cf; background:rgba(255,255,255,.72); border-radius:16px; padding:12px; }
+  .eyebrow { font-size:11px; font-weight:700; letter-spacing:.08em; color:#9b9287; margin:0; }
+  .box h2 { font-size:16px; margin:2px 0 0; color:var(--muted); }
+  .box .desc { font-size:12px; line-height:20px; color:var(--muted); margin:8px 0 0; }
+  .new { border-top:1px dashed #d6cfc4; margin-top:12px; padding-top:12px; }
+  .new .eyebrow { color:var(--accent); }
+  .new h3 { font-size:15px; margin:2px 0 8px; }
+  .alt { display:flex; gap:10px; align-items:center; border:1px solid var(--border); background:#fff; border-radius:14px; padding:8px; margin-bottom:8px; }
+  .alt img { width:52px; height:52px; object-fit:contain; flex-shrink:0; }
+  .alt .info { flex:1; min-width:0; }
+  .alt .name { font-size:13px; font-weight:600; margin:0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .chips { display:flex; gap:4px; flex-wrap:wrap; margin-top:4px; }
+  .chip { font-size:11px; font-weight:600; color:var(--accent); background:var(--accent-light); border-radius:999px; padding:2px 8px; }
+  .why { font-size:11px; color:#9b9287; margin:3px 0 0; }
+  .buy { flex-shrink:0; font-size:12px; font-weight:700; color:#fff; background:#c8102e; border-radius:999px; padding:8px 10px; text-decoration:none; white-space:nowrap; }
+  .more { display:inline-flex; align-items:center; min-height:44px; border:1px solid var(--border); border-radius:999px; background:#fff; padding:0 16px; font-size:14px; font-weight:600; color:var(--accent); text-decoration:none; margin-top:4px; }
+  .note { font-size:10px; color:#9b9287; margin:6px 0 0; }
+  .old .more { margin-top:12px; }
+  .caption { max-width:800px; margin:0 auto; padding:0 16px 24px; font-size:13px; line-height:22px; color:var(--muted); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="col old">
+    <p class="label">지금 (판매 중단 제품)</p>
+    <div class="phone">
+      <div class="hero"><img src="https://proteinlab.kr/rtd-drink-image/mymil-furotein-goguma-250.webp" alt="" /><div><h1>마이밀 퓨로틴 (고구마맛)</h1><p>단백질 20g · 당류 0g · 130kcal · 250mL</p></div></div>
+      <div class="box">
+        <p class="eyebrow">판매 정보</p>
+        <h2>현재 쿠팡에서 판매가 확인되지 않습니다</h2>
+        <p class="desc">단종되었거나 판매가 중단된 제품으로 확인되어 구매 링크를 제공하지 않습니다. 성분 정보는 참고용으로 남겨두었으니, 비슷한 조건의 판매 중인 제품은 아래 비교 제품이나 카테고리 목록에서 확인해보세요.</p>
+        <a class="more" href="#">같은 카테고리 제품 보기 →</a>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <p class="label">바꾼 뒤</p>
+    <div class="phone">
+      <div class="hero"><img src="https://proteinlab.kr/rtd-drink-image/mymil-furotein-goguma-250.webp" alt="" /><div><h1>마이밀 퓨로틴 (고구마맛)</h1><p>단백질 20g · 당류 0g · 130kcal · 250mL</p></div></div>
+      <div class="box">
+        <p class="eyebrow">판매 정보</p>
+        <h2>현재 쿠팡에서 판매가 확인되지 않습니다</h2>
+        <p class="desc">단종되었거나 판매가 중단된 제품이라 구매 링크를 제공하지 않습니다. 성분 정보는 참고용으로 남겨두었습니다.</p>
+        <div class="new">
+          <p class="eyebrow">판매 중인 비슷한 제품</p>
+          <h3>지금 살 수 있는 대체 후보</h3>
+          <div class="alt">
+            <img src="https://proteinlab.kr/rtd-drink-image/mymil-furotein-choco-250.webp" alt="" />
+            <div class="info"><p class="name">마이밀 퓨로틴 (초코맛)</p><div class="chips"><span class="chip">단백질 20g</span><span class="chip">당류 0g</span></div><p class="why">같은 브랜드 · 같은 라인</p></div>
+            <a class="buy" href="#">쿠팡 보기</a>
+          </div>
+          <div class="alt">
+            <img src="https://proteinlab.kr/rtd-drink-image/mymil-furotein-gosohan-250.webp" alt="" />
+            <div class="info"><p class="name">마이밀 퓨로틴 (고소한맛)</p><div class="chips"><span class="chip">단백질 20g</span><span class="chip">당류 0g</span></div><p class="why">같은 브랜드 · 같은 라인</p></div>
+            <a class="buy" href="#">쿠팡 보기</a>
+          </div>
+          <div class="alt">
+            <img src="https://proteinlab.kr/rtd-drink-image/newcare-all-protein-plant-savory-250.webp" alt="" />
+            <div class="info"><p class="name">뉴케어 올프로틴 식물성단백질 (고소한맛)</p><div class="chips"><span class="chip">단백질 20g</span><span class="chip">당류 0g</span></div><p class="why">단백질·당류가 비슷한 다른 브랜드</p></div>
+            <a class="buy" href="#">쿠팡 보기</a>
+          </div>
+          <p class="note">쿠팡 파트너스 링크가 포함될 수 있습니다.</p>
+          <a class="more" href="#">같은 카테고리 제품 보기 →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<p class="caption">
+  대상: 실제 구매 링크가 없는 7개 제품(오늘단백 3종, 마이밀 퓨로틴 고구마, 이정후 프로틴 2종, 마이프로틴 6레이어).<br />
+  후보 선정: 같은 카테고리에서 실제 쿠팡 링크가 있는 제품 중 같은 브랜드를 먼저, 그다음 1회 단백질 차이가 작고 당류가 더 높지 않은 순으로 3개. 수치는 ProteinLab 데이터 그대로입니다.<br />
+  클릭은 기존과 같은 구매 클릭 이벤트로 기록하고, 위치는 "단종 대체 추천"으로 구분합니다.
+</p>
+</body>
+</html>

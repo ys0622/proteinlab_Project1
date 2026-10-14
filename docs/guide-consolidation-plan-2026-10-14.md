@@ -82,3 +82,4 @@
 - 검증: 15개 URL 모두 308 → 대표 페이지, 대표 페이지 13개 200·index, noindex 3개 확인, 사이트맵 728개 중 흡수·noindex URL 0개, 상품 링크 수 회귀 없음.
 - 흡수된 페이지 파일은 아직 저장소에 남아 있다(폴더 삭제가 자동 권한 검사에 막힘). 리다이렉트가 먼저 처리돼 접근은 안 된다. 사용자가 원하면 나중에 지운다.
 - **C(뉴케어)**: `newcare-41g-vs-25g`는 네이버 클릭 30(22위)이라 흡수 대상에서 뺀다. 나머지(box-value, low-sugar-guide) 흡수는 보류.
+- **C 진행(2026-10-14, 배포 786ce658)**: `newcare-low-sugar-guide`, `newcare-box-value` → `newcare-allprotein` 308. 저당·박스 섹션 1개씩과 FAQ 6개를 옮겼다. `newcare-41g-vs-25g`는 유지.

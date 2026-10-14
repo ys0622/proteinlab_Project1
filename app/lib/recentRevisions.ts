@@ -77,8 +77,6 @@ export const RECENT_REVISIONS: { date: string; paths: string[] }[] = [
       "/guides/product-selection-comparison/dryou-lineup",
       "/guides/product-selection-comparison/greek-vs-protein-yogurt",
       "/guides/product-selection-comparison/newcare-allprotein",
-      "/guides/product-selection-comparison/newcare-box-value",
-      "/guides/product-selection-comparison/newcare-low-sugar-guide",
       "/guides/product-selection-comparison/newcare-protein-water-guide",
       "/guides/product-selection-comparison/protein-drink-box-value",
       "/guides/product-selection-comparison/protein-drink-by-content",

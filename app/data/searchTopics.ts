@@ -397,9 +397,9 @@ const searchTopicOverrides: Record<string, Partial<SearchTopic>> = {
         description: "41g과 52g 초고단백 RTD를 성분 기준으로 비교합니다.",
       },
       {
-        href: "/guides/product-selection-comparison/newcare-box-value",
-        title: "뉴케어 박스가성비",
-        description: "박스 구매 전 라인별 개당 부담과 용도를 확인합니다.",
+        href: "/guides/product-selection-comparison/newcare-allprotein",
+        title: "뉴케어 올프로틴 완전 분석",
+        description: "41g·25g·워터 라인과 저당·박스 구매 기준을 한 번에 봅니다.",
       },
     ],
   },
