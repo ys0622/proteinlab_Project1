@@ -7,7 +7,7 @@ import CommercialAdSection from "@/app/components/CommercialAdSection";
 import CategoryDataSection from "@/app/components/CategoryDataSection";
 import TrackedCoupangLink from "@/app/components/TrackedCoupangLink";
 import { getDrinkProducts } from "@/app/data/drinkProductsData";
-import { shakeProducts, type ProductDetailProps } from "@/app/data/products";
+import { shakeProducts, soymilkProducts, type ProductDetailProps } from "@/app/data/products";
 import { getCoupangRedirectHref } from "@/app/lib/purchaseLinks";
 import { formatProductLabel } from "@/app/lib/productLabel";
 import { getGuideThumbnailUrl } from "@/app/lib/guideThumbnails";
@@ -72,7 +72,7 @@ export interface ComparePageConfig {
 }
 
 const drinkProducts = getDrinkProducts();
-const purchasableProducts = [...drinkProducts, ...shakeProducts];
+const purchasableProducts = [...drinkProducts, ...shakeProducts, ...soymilkProducts];
 const trackBHubLink: RelatedGuideLink = {
   title: "다른 비교 가이드 더 보기",
   href: "/guides/product-selection-comparison",

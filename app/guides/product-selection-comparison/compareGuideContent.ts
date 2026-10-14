@@ -2,6 +2,7 @@ import type { CompareMetricRow, ComparePageConfig, RelatedGuideLink } from "./pr
 import { formatCalories100, formatDensity, getDrinkProduct } from "./productCompareShared";
 import { formatProductLabel } from "../../lib/productLabel";
 import { getDrinkProducts } from "@/app/data/drinkProductsData";
+import { soymilkGuideConfigs } from "./soymilkGuideContent";
 
 const drinkProductCount = getDrinkProducts().length;
 
@@ -2638,6 +2639,7 @@ danbaekLineupConfig.jsonLd = [articleJsonLd(danbaekLineupConfig), faqJsonLd(danb
 
 export function getAllCompareGuideConfigs(): ComparePageConfig[] {
   return [
+    ...soymilkGuideConfigs,
     selexVsHimuneConfig,
     highProtein40gConfig,
     proteinDensityRankingConfig,
