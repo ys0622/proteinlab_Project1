@@ -18,6 +18,8 @@
 - [ ] 네이버 서치어드바이저 "웹 페이지 수집 요청": `/brands/takefit`, `/brands/hymune`, 테이크핏·하이뮨·뉴케어 41g 라인업 가이드.
 - [ ] `D:\proteinlab\.cc-wt` 폴더 삭제(비어 있는 임시 폴더, 에이전트는 지우지 않는다).
 - [ ] 구글 서치콘솔 색인 리포트를 2~4주 뒤 다시 캡처해 변화 확인.
+- [ ] **가이드 통합안 승인** (`docs/guide-consolidation-plan-2026-10-14.md`): A묶음(중복 13개를 301로 통합), B묶음(계절성·안내 페이지 6개), C 뉴케어 묶음 중 무엇을 진행할지.
+- [ ] 네이버 웹 페이지 수집 요청 직접 제출: `/soymilk`, 두유 가이드, `/compare/maeil-vs-vegemil-soymilk`, MPI 가이드(`/guides/basics/protein-source-types`), `/products`.
 
 ## 정보가 필요한 것
 
