@@ -1276,7 +1276,8 @@
       "sodiumMg": 160,
       "calciumMg": 140
     },
-    "naverUrl": "https://search.shopping.naver.com/search/all?query=%EC%82%BC%EC%9C%A1%EB%91%90%EC%9C%A0%20%EA%B2%80%EC%9D%80%EC%BD%A9%20%ED%98%B8%EB%91%90%EC%99%80%20%EC%95%84%EB%AA%AC%EB%93%9C%20190ml&vertical=search"
+    "naverUrl": "https://search.shopping.naver.com/search/all?query=%EC%82%BC%EC%9C%A1%EB%91%90%EC%9C%A0%20%EA%B2%80%EC%9D%80%EC%BD%A9%20%ED%98%B8%EB%91%90%EC%99%80%20%EC%95%84%EB%AA%AC%EB%93%9C%20190ml&vertical=search",
+    "coupangUrl": "https://link.coupang.com/a/hQr0dP3KNg"
   },
   {
     "slug": "sahmyook-blackbean-calcium-pouch-190",
@@ -1312,7 +1313,8 @@
       "sodiumMg": 180,
       "calciumMg": 160
     },
-    "naverUrl": "https://search.shopping.naver.com/search/all?query=%EC%82%BC%EC%9C%A1%EB%91%90%EC%9C%A0%20%EA%B2%80%EC%9D%80%EC%BD%A9%26%EC%B9%BC%EC%8A%98%20%ED%8C%8C%EC%9A%B0%EC%B9%98%20190ml&vertical=search"
+    "naverUrl": "https://search.shopping.naver.com/search/all?query=%EC%82%BC%EC%9C%A1%EB%91%90%EC%9C%A0%20%EA%B2%80%EC%9D%80%EC%BD%A9%26%EC%B9%BC%EC%8A%98%20%ED%8C%8C%EC%9A%B0%EC%B9%98%20190ml&vertical=search",
+    "coupangUrl": "https://link.coupang.com/a/hQr3xBeo5k"
   },
   {
     "slug": "yonsei-unsweetened-kukkong-yakkong-190",
@@ -1348,7 +1350,8 @@
       "sodiumMg": 100,
       "calciumMg": 200
     },
-    "naverUrl": "https://search.shopping.naver.com/search/all?query=%EC%97%B0%EC%84%B8%EB%91%90%EC%9C%A0%20%EB%AC%B4%EA%B0%80%EB%8B%B9%20%EA%B5%AD%EC%82%B0%EC%95%BD%EC%BD%A9%20190ml&vertical=search"
+    "naverUrl": "https://search.shopping.naver.com/search/all?query=%EC%97%B0%EC%84%B8%EB%91%90%EC%9C%A0%20%EB%AC%B4%EA%B0%80%EB%8B%B9%20%EA%B5%AD%EC%82%B0%EC%95%BD%EC%BD%A9%20190ml&vertical=search",
+    "coupangUrl": "https://link.coupang.com/a/hQr43f0wY8"
   },
   {
     "slug": "vegemil-blackbean-blacksesame-190",
@@ -1384,7 +1387,8 @@
       "sodiumMg": 160,
       "calciumMg": 120
     },
-    "naverUrl": "https://search.shopping.naver.com/search/all?query=%EB%B2%A0%EC%A7%80%EB%B0%80%20%EA%B2%80%EC%9D%80%EC%BD%A9%EA%B3%BC%20%EA%B2%80%EC%9D%80%EC%B0%B8%EA%B9%A8%20%EB%91%90%EC%9C%A0%20190ml&vertical=search"
+    "naverUrl": "https://search.shopping.naver.com/search/all?query=%EB%B2%A0%EC%A7%80%EB%B0%80%20%EA%B2%80%EC%9D%80%EC%BD%A9%EA%B3%BC%20%EA%B2%80%EC%9D%80%EC%B0%B8%EA%B9%A8%20%EB%91%90%EC%9C%A0%20190ml&vertical=search",
+    "coupangUrl": "https://link.coupang.com/a/hQr57JzCdo"
   },
   {
     "slug": "vegemil-calcium-blackbean-sesame-rice-190",
@@ -1420,6 +1424,7 @@
       "sodiumMg": 140,
       "calciumMg": 200
     },
-    "naverUrl": "https://search.shopping.naver.com/search/all?query=%EB%B2%A0%EC%A7%80%EB%B0%80%20%EB%BC%88%EC%97%90%EC%A2%8B%EC%9D%80%20%EC%B9%BC%EC%8A%98%EB%91%90%EC%9C%A0%20%EA%B2%80%EC%9D%80%EC%BD%A9%C2%B7%EA%B2%80%EC%9D%80%EA%B9%A8%C2%B7%EA%B2%80%EC%9D%80%EC%8C%80%20190ml&vertical=search"
+    "naverUrl": "https://search.shopping.naver.com/search/all?query=%EB%B2%A0%EC%A7%80%EB%B0%80%20%EB%BC%88%EC%97%90%EC%A2%8B%EC%9D%80%20%EC%B9%BC%EC%8A%98%EB%91%90%EC%9C%A0%20%EA%B2%80%EC%9D%80%EC%BD%A9%C2%B7%EA%B2%80%EC%9D%80%EA%B9%A8%C2%B7%EA%B2%80%EC%9D%80%EC%8C%80%20190ml&vertical=search",
+    "coupangUrl": "https://link.coupang.com/a/hQr78XNy56"
   }
 ]
