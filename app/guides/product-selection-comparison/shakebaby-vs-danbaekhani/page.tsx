@@ -1,5 +1,6 @@
 import { buildGuideJsonLd } from "@/app/lib/guideJsonLd";
 import BrandDataFaq, { buildBrandDataFaqs } from "@/app/components/BrandDataFaq";
+import CategoryDataSection from "@/app/components/CategoryDataSection";
 import Link from "next/link";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
@@ -164,6 +165,8 @@ export default function ShakebabyVsDanbaekhaniPage() {
           </section>
         </div>
       </main>
+      <CategoryDataSection category="shake" mode="protein" brand="쉐이크베이비" />
+      <CategoryDataSection category="shake" mode="protein" brand="단백하니" />
       <BrandDataFaq faqs={dataFaqs} />
       <GuideBuySection slugs={["shakebaby-proteinshake-choco-45", "danbaekhani-proteinshake-choco-40", "shakebaby-proteinshake-matcha-45"]} />
       <Footer />

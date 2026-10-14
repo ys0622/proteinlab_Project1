@@ -1,5 +1,6 @@
 import { buildGuideJsonLd } from "@/app/lib/guideJsonLd";
 import BrandDataFaq, { buildBrandDataFaqs } from "@/app/components/BrandDataFaq";
+import CategoryDataSection from "@/app/components/CategoryDataSection";
 ﻿import Link from "next/link";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
@@ -189,6 +190,8 @@ export default function ProteinDrinkGuidePage() {
         </div>
       </main>
 
+      <CategoryDataSection category="drink" mode="protein" />
+      <CategoryDataSection category="drink" mode="lowSugar" />
       <BrandDataFaq faqs={dataFaqs} />
       <GuideBuySection topic="general" />
 
