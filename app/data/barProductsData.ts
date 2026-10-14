@@ -681,13 +681,20 @@ function roundToSingleDecimal(value: number) {
 }
 
 function buildNutrition(product: BarProduct): NutritionPerBottle {
-  const patch = nutritionBySlug.get(product.slug) ?? {};
+  const rawPatch = nutritionBySlug.get(product.slug) ?? {};
+  // 2026-10-14 성분표 대조(docs/bar-label-audit-2026-10-14.md): JSON에 지방이 들어 있으면 라벨로 확인한 값이라
+  // 열량·단백질·당류·지방·나트륨은 JSON을 우선한다. 묶음(addGroup) 보정값은 맛별 라벨이 아니라 탄수화물 등도 쓰지 않는다.
+  const labelVerified = product.fat != null;
+  const isGroupPatch = !(product.slug in exactNutritionBySlug);
+  const patch: NutritionPatch = labelVerified && isGroupPatch ? {} : rawPatch;
+  const pick = <T,>(fromJson: T | undefined, fromPatch: T | undefined) =>
+    labelVerified ? (fromJson ?? fromPatch) : (fromPatch ?? fromJson);
 
-  const caloriesKcal = patch.caloriesKcal ?? product.calories;
-  const proteinG = patch.proteinG ?? product.proteinPerServing;
-  const sugarsG = patch.sugarsG ?? product.sugar;
-  const fatG = patch.fatG ?? product.fat;
-  const sodiumMg = patch.sodiumMg ?? product.sodium;
+  const caloriesKcal = pick(product.calories, patch.caloriesKcal);
+  const proteinG = pick(product.proteinPerServing, patch.proteinG);
+  const sugarsG = pick(product.sugar, patch.sugarsG);
+  const fatG = pick(product.fat, patch.fatG);
+  const sodiumMg = pick(product.sodium, patch.sodiumMg);
 
   const derivedCarbs =
     caloriesKcal != null && proteinG != null && fatG != null

@@ -17,7 +17,9 @@
     "gradeTags": [],
     "coupangUrl": "https://link.coupang.com/a/fg1IDrJsAu",
     "naverUrl": "https://search.shopping.naver.com/search/all?query=%EB%8B%A5%ED%84%B0%EC%9C%A0%20%ED%94%84%EB%A1%9C%20%EB%8B%A8%EB%B0%B1%EC%A7%88%EB%B0%94%20(3%EB%84%9B%EC%B8%A0%20%ED%81%AC%EB%9F%B0%EC%B9%98)&prevQuery=%EB%8B%A5%ED%84%B0%EC%9C%A0%20%EB%8B%A8%EB%B0%B1%EC%A7%88%EB%B0%94%2050g%2C%201%EA%B0%9C%EC%9E%85%2C%201%EA%B0%9C&vertical=search",
-    "officialUrl": "https://dryoumall.com/product/list.html?cate_no=44"
+    "officialUrl": "https://dryoumall.com/product/list.html?cate_no=44",
+    "fat": 18,
+    "sodium": 170
   },
   {
     "slug": "dryou-proteinbar-pro-choco-classic",
@@ -37,7 +39,9 @@
     "gradeTags": [],
     "coupangUrl": "https://link.coupang.com/a/fg1JsDzqWy",
     "naverUrl": "https://search.shopping.naver.com/search/all?query=%EC%98%A4%EB%A6%AC%EC%98%A8%20%EB%8B%A5%ED%94%84%EB%A1%9C%20%EB%8B%A8%EB%B0%B1%EC%A7%88%EB%B0%94%20(%EC%B4%88%EC%BD%94%20%ED%81%B4%EB%9E%98%EC%8B%9D)&prevQuery=%EC%98%A4%EB%A6%AC%EC%98%A8%20%EB%8B%A5%ED%84%B0%EC%9C%A0%20%ED%94%84%EB%A1%9C%20%EB%8B%A8%EB%B0%B1%EC%A7%88%EB%B0%94%20%ED%95%9C%EC%9E%85%EC%8F%99%20(%EC%95%BD34%EA%B0%9C%EC%9E%85%20%EC%B4%9D420g)%203%EA%B0%9C&vertical=search",
-    "officialUrl": "https://dryoumall.com/product/list.html?cate_no=44"
+    "officialUrl": "https://dryoumall.com/product/list.html?cate_no=44",
+    "fat": 12,
+    "sodium": 210
   },
   {
     "slug": "dryou-proteinbar-pro-crunch",
@@ -57,7 +61,9 @@
     "gradeTags": [],
     "coupangUrl": "https://link.coupang.com/a/fg1Kf9RGzA",
     "naverUrl": "https://search.shopping.naver.com/search/all?query=%EB%8B%A5%ED%84%B0%EC%9C%A0%20%ED%94%84%EB%A1%9C%20%EB%8B%A8%EB%B0%B1%EC%A7%88%EB%B0%94%20%ED%81%AC%EB%9F%B0%EC%B9%98%2070g%2C%201%EA%B0%9C%EC%9E%85%2C%201%EA%B0%9C&prevQuery=%EC%98%A4%EB%A6%AC%EC%98%A8%20%ED%94%84%EB%A1%9C%20%EB%8B%A8%EB%B0%B1%EC%A7%88%EB%B0%94%20(%ED%81%AC%EB%9F%B0%EC%B9%98)&vertical=search",
-    "officialUrl": "https://dryoumall.com/product/list.html?cate_no=44"
+    "officialUrl": "https://dryoumall.com/product/list.html?cate_no=44",
+    "fat": 19,
+    "sodium": 200
   },
   {
     "slug": "kirkland-proteinbar-choco-brownie",
@@ -70,13 +76,15 @@
     ],
     "proteinPerServing": 21,
     "calories": 190,
-    "sugar": 2,
+    "sugar": 1,
     "density": "11.05g/100kcal",
     "productUrl": "#",
     "productType": "bar",
     "gradeTags": [],
     "coupangUrl": "https://link.coupang.com/a/fg1Lfdn0z6",
-    "naverUrl": "https://search.shopping.naver.com/search/all?query=%EC%BB%A4%ED%81%B4%EB%9E%9C%EB%93%9C%20%ED%94%84%EB%A1%9C%ED%8B%B4%EB%B0%94%20%EC%B4%88%EC%BD%9C%EB%A6%BF%20%EB%B8%8C%EB%9D%BC%EC%9A%B0%EB%8B%88&prevQuery=%EC%BC%88%EB%A1%9C%EA%B7%B8%20%ED%94%84%EB%A1%9C%ED%8B%B4%20%EA%B7%B8%EB%9E%98%EB%86%80%EB%9D%BC%EB%B0%94%20(%EA%B3%A0%EC%86%8C%ED%95%9C%EB%A7%9B)&vertical=search"
+    "naverUrl": "https://search.shopping.naver.com/search/all?query=%EC%BB%A4%ED%81%B4%EB%9E%9C%EB%93%9C%20%ED%94%84%EB%A1%9C%ED%8B%B4%EB%B0%94%20%EC%B4%88%EC%BD%9C%EB%A6%BF%20%EB%B8%8C%EB%9D%BC%EC%9A%B0%EB%8B%88&prevQuery=%EC%BC%88%EB%A1%9C%EA%B7%B8%20%ED%94%84%EB%A1%9C%ED%8B%B4%20%EA%B7%B8%EB%9E%98%EB%86%80%EB%9D%BC%EB%B0%94%20(%EA%B3%A0%EC%86%8C%ED%95%9C%EB%A7%9B)&vertical=search",
+    "fat": 7,
+    "sodium": 170
   },
   {
     "slug": "kirkland-proteinbar-choco-chip-cookie-dough-60",
@@ -88,14 +96,16 @@
       "바"
     ],
     "proteinPerServing": 21,
-    "calories": 220,
-    "sugar": 5,
-    "density": "9.55g/100kcal",
+    "calories": 190,
+    "sugar": 1,
+    "density": "11.05g/100kcal",
     "productUrl": "#",
     "productType": "bar",
     "gradeTags": [],
     "coupangUrl": "https://link.coupang.com/a/fg1LOeuvnM",
-    "naverUrl": "https://search.shopping.naver.com/search/all?query=%EC%BB%A4%ED%81%B4%EB%9E%9C%EB%93%9C%20%ED%94%84%EB%A1%9C%ED%8B%B4%EB%B0%94%20%EC%B4%88%EC%BD%9C%EB%A6%BF%20%EB%B8%8C%EB%9D%BC%EC%9A%B0%EB%8B%88&prevQuery=%EC%BC%88%EB%A1%9C%EA%B7%B8%20%ED%94%84%EB%A1%9C%ED%8B%B4%20%EA%B7%B8%EB%9E%98%EB%86%80%EB%9D%BC%EB%B0%94%20(%EA%B3%A0%EC%86%8C%ED%95%9C%EB%A7%9B)&vertical=search"
+    "naverUrl": "https://search.shopping.naver.com/search/all?query=%EC%BB%A4%ED%81%B4%EB%9E%9C%EB%93%9C%20%ED%94%84%EB%A1%9C%ED%8B%B4%EB%B0%94%20%EC%B4%88%EC%BD%9C%EB%A6%BF%20%EB%B8%8C%EB%9D%BC%EC%9A%B0%EB%8B%88&prevQuery=%EC%BC%88%EB%A1%9C%EA%B7%B8%20%ED%94%84%EB%A1%9C%ED%8B%B4%20%EA%B7%B8%EB%9E%98%EB%86%80%EB%9D%BC%EB%B0%94%20(%EA%B3%A0%EC%86%8C%ED%95%9C%EB%A7%9B)&vertical=search",
+    "fat": 7,
+    "sodium": 190
   },
   {
     "slug": "benof-proteinbar-chunky-choco",
@@ -115,7 +125,9 @@
     "gradeTags": [],
     "coupangUrl": "https://link.coupang.com/a/fg1Mvt8ki4",
     "naverUrl": "https://search.shopping.naver.com/search/all?where=all&frm=NVSCTAB&query=%EB%B2%A0%EB%85%B8%ED%94%84+%EB%8B%A8%EB%B0%B1%EC%A7%88%EB%B0%94+%28%EC%B2%AD%ED%82%A4%EC%B4%88%EC%BD%9C%EB%A6%BF%29",
-    "officialUrl": "https://benope.com/product/list_thumb.html?cate_no=46"
+    "officialUrl": "https://benope.com/product/list_thumb.html?cate_no=46",
+    "fat": 7,
+    "sodium": 140
   },
   {
     "slug": "benof-proteinbar-truffle-peanutbutter-choco",
@@ -135,7 +147,9 @@
     "gradeTags": [],
     "coupangUrl": "https://link.coupang.com/a/fg1M1Cq2VM",
     "naverUrl": "https://search.shopping.naver.com/search/all?query=%EB%B2%A0%EB%85%B8%ED%94%84%20%EB%8B%A8%EB%B0%B1%EC%A7%88%EB%B0%94%20(%ED%8A%B8%EB%9F%AC%ED%94%8C%ED%94%BC%EB%84%9B%EB%B2%84%ED%84%B0%EC%B4%88%EC%BD%9C%EB%A6%BF)&prevQuery=%EB%B2%A0%EB%85%B8%ED%94%84%20%EB%8B%A8%EB%B0%B1%EC%A7%88%EB%B0%94%20(%EC%B2%AD%ED%82%A4%EC%B4%88%EC%BD%9C%EB%A6%BF)&vertical=search",
-    "officialUrl": "https://benope.com/product/list_thumb.html?cate_no=46"
+    "officialUrl": "https://benope.com/product/list_thumb.html?cate_no=46",
+    "fat": 7,
+    "sodium": 170
   },
   {
     "slug": "benof-softbar-peanutbutter",
@@ -147,15 +161,17 @@
       "바"
     ],
     "proteinPerServing": 20,
-    "calories": 172,
-    "sugar": 2,
-    "density": "11.6g/100kcal",
+    "calories": 171,
+    "sugar": 2.2,
+    "density": "11.7g/100kcal",
     "productUrl": "#",
     "productType": "bar",
     "gradeTags": [],
     "coupangUrl": "https://link.coupang.com/a/fg1OnW0gSa",
     "naverUrl": "https://search.shopping.naver.com/search/all?query=%EB%B2%A0%EB%85%B8%ED%94%84%20%EC%86%8C%ED%94%84%ED%8A%B8%EB%B0%94%20%ED%94%84%EB%A1%9C%ED%8B%B4%EB%B0%94%20%ED%94%BC%EB%84%9B%EB%B2%84%ED%84%B0%2010%EA%B0%9C%EC%9E%85&prevQuery=%EB%B2%A0%EB%85%B8%ED%94%84%20%EC%86%8C%ED%94%84%ED%8A%B8%EB%B0%94%20%ED%94%84%EB%A1%9C%ED%8B%B4%EB%B0%94%20%ED%94%BC%EB%84%9B%EB%B2%84%ED%84%B0%2010&vertical=search",
-    "officialUrl": "https://benope.com/product/list_thumb.html?cate_no=46"
+    "officialUrl": "https://benope.com/product/list_thumb.html?cate_no=46",
+    "fat": 3.6,
+    "sodium": 193
   },
   {
     "slug": "benof-softbar-cookie-cream",
@@ -167,15 +183,17 @@
       "바"
     ],
     "proteinPerServing": 20,
-    "calories": 172,
-    "sugar": 2,
-    "density": "11.6g/100kcal",
+    "calories": 174,
+    "sugar": 3.2,
+    "density": "11.5g/100kcal",
     "productUrl": "#",
     "productType": "bar",
     "gradeTags": [],
     "coupangUrl": "https://link.coupang.com/a/fg1OWqXsOq",
     "naverUrl": "https://search.shopping.naver.com/search/all?query=%EB%B2%A0%EB%85%B8%ED%94%84%20%EC%86%8C%ED%94%84%ED%8A%B8%EB%B0%94%20%ED%94%84%EB%A1%9C%ED%8B%B4%EB%B0%94%20%EC%BF%A0%ED%82%A4%EC%95%A4%ED%81%AC%EB%A6%BC%2010%EA%B0%9C%EC%9E%85&prevQuery=%EB%B2%A0%EB%85%B8%ED%94%84%20%EC%86%8C%ED%94%84%ED%8A%B8%EB%B0%94%20%ED%94%84%EB%A1%9C%ED%8B%B4%EB%B0%94%20%EC%BF%A0%ED%82%A4%EC%95%A4%ED%81%AC%EB%A6%BC&vertical=searchv",
-    "officialUrl": "https://benope.com/product/list_thumb.html?cate_no=46"
+    "officialUrl": "https://benope.com/product/list_thumb.html?cate_no=46",
+    "fat": 3.4,
+    "sodium": 179
   },
   {
     "slug": "benof-softbar-chocolate-caramel",
@@ -195,7 +213,9 @@
     "gradeTags": [],
     "coupangUrl": "https://link.coupang.com/a/fg1PrFQPq8",
     "naverUrl": "https://search.shopping.naver.com/search/all?query=%EB%B2%A0%EB%85%B8%ED%94%84%20%EC%86%8C%ED%94%84%ED%8A%B8%EB%B0%94%20%ED%94%84%EB%A1%9C%ED%8B%B4%EB%B0%94%20%EC%B4%88%EC%BD%9C%EB%A6%BF%EC%B9%B4%EB%9D%BC%EB%A9%9C&prevQuery=%EB%B2%A0%EB%85%B8%ED%94%84%20%EC%86%8C%ED%94%84%ED%8A%B8%EB%B0%94%20%ED%94%84%EB%A1%9C%ED%8B%B4%EB%B0%94%20%EC%B9%B4%EC%B9%B4%EC%98%A4&vertical=search",
-    "officialUrl": "https://benope.com/product/list_thumb.html?cate_no=46"
+    "officialUrl": "https://benope.com/product/list_thumb.html?cate_no=46",
+    "fat": 3.3,
+    "sodium": 178
   },
   {
     "slug": "benof-softbar-cacao",
@@ -207,15 +227,17 @@
       "바"
     ],
     "proteinPerServing": 20,
-    "calories": 172,
-    "sugar": 2,
-    "density": "11.6g/100kcal",
+    "calories": 177,
+    "sugar": 3.5,
+    "density": "11.3g/100kcal",
     "productUrl": "#",
     "productType": "bar",
     "gradeTags": [],
     "coupangUrl": "https://link.coupang.com/a/fg1P38dl24",
     "naverUrl": "https://search.shopping.naver.com/search/all?query=%EB%B2%A0%EB%85%B8%ED%94%84%20%EC%86%8C%ED%94%84%ED%8A%B8%EB%B0%94%20%ED%94%84%EB%A1%9C%ED%8B%B4%EB%B0%94%20%EC%B9%B4%EC%B9%B4%EC%98%A4&prevQuery=%EB%B2%A0%EB%85%B8%ED%94%84%20%EC%86%8C%ED%94%84%ED%8A%B8%EB%B0%94%20%ED%94%84%EB%A1%9C%ED%8B%B4%EB%B0%94%20%ED%9D%91%EC%9E%84%EC%9E%90%2010p%20600g%201%EA%B0%9C&vertical=search",
-    "officialUrl": "https://benope.com/product/list_thumb.html?cate_no=46"
+    "officialUrl": "https://benope.com/product/list_thumb.html?cate_no=46",
+    "fat": 3.1,
+    "sodium": 132
   },
   {
     "slug": "benof-softbar-black-sesame",
@@ -227,15 +249,17 @@
       "바"
     ],
     "proteinPerServing": 20,
-    "calories": 172,
-    "sugar": 2,
-    "density": "11.6g/100kcal",
+    "calories": 171,
+    "sugar": 1.9,
+    "density": "11.7g/100kcal",
     "productUrl": "#",
     "productType": "bar",
     "gradeTags": [],
     "coupangUrl": "https://link.coupang.com/a/fg1QWzVZDw",
     "naverUrl": "https://search.shopping.naver.com/search/all?query=%EB%B2%A0%EB%85%B8%ED%94%84%20%EC%86%8C%ED%94%84%ED%8A%B8%EB%B0%94%20%ED%94%84%EB%A1%9C%ED%8B%B4%EB%B0%94%20%ED%9D%91%EC%9E%84%EC%9E%90%2010p%20600g%201%EA%B0%9C&prevQuery=%EB%B2%A0%EB%85%B8%ED%94%84%20%EC%86%8C%ED%94%84%ED%8A%B8%EB%B0%94%20%ED%9D%91%EC%9E%84%EC%9E%90&vertical=search",
-    "officialUrl": "https://benope.com/product/list_thumb.html?cate_no=46"
+    "officialUrl": "https://benope.com/product/list_thumb.html?cate_no=46",
+    "fat": 3.7,
+    "sodium": 173
   },
   {
     "slug": "benof-softbar-injeolmi",
@@ -247,15 +271,17 @@
       "바"
     ],
     "proteinPerServing": 20,
-    "calories": 172,
-    "sugar": 2,
+    "calories": 173,
+    "sugar": 2.1,
     "density": "11.6g/100kcal",
     "productUrl": "#",
     "productType": "bar",
     "gradeTags": [],
     "coupangUrl": "https://link.coupang.com/a/fg1RwhLmqO",
     "naverUrl": "https://search.shopping.naver.com/search/all?query=%EB%B2%A0%EB%85%B8%ED%94%84%20%EC%86%8C%ED%94%84%ED%8A%B8%EB%B0%94%20%ED%94%84%EB%A1%9C%ED%8B%B4%EB%B0%94%20%EC%9D%B8%EC%A0%88%EB%AF%B8&prevQuery=%EB%B2%A0%EB%85%B8%ED%94%84%20%EC%86%8C%ED%94%84%ED%8A%B8%EB%B0%94%20%ED%94%84%EB%A1%9C%ED%8B%B4%EB%B0%94%20%EC%BF%A0%ED%82%A4%EC%95%A4%ED%81%AC%EB%A6%BC%2010%EA%B0%9C%EC%9E%85&vertical=search",
-    "officialUrl": "https://benope.com/product/list_thumb.html?cate_no=46"
+    "officialUrl": "https://benope.com/product/list_thumb.html?cate_no=46",
+    "fat": 3.4,
+    "sodium": 172
   },
   {
     "slug": "benof-softbar-roasted-sweetpotato",
@@ -268,14 +294,16 @@
     ],
     "proteinPerServing": 20,
     "calories": 172,
-    "sugar": 2,
+    "sugar": 2.4,
     "density": "11.6g/100kcal",
     "productUrl": "#",
     "productType": "bar",
     "gradeTags": [],
     "coupangUrl": "https://link.coupang.com/a/fg1RZCYw4i",
     "naverUrl": "https://search.shopping.naver.com/search/all?query=%EB%B2%A0%EB%85%B8%ED%94%84%20%EC%86%8C%ED%94%84%ED%8A%B8%EB%B0%94%20%ED%94%84%EB%A1%9C%ED%8B%B4%EB%B0%94%20%EA%B5%B0%EA%B3%A0%EA%B5%AC%EB%A7%88&prevQuery=%EB%B2%A0%EB%85%B8%ED%94%84%20%EC%86%8C%ED%94%84%ED%8A%B8%EB%B0%94%20%ED%94%84%EB%A1%9C%ED%8B%B4%EB%B0%94%20%EA%B5%B0%EA%B3%A0%EA%B5%AC%EB%A7%88%2010p%20600g%201%EA%B0%9C&vertical=search",
-    "officialUrl": "https://benope.com/product/list_thumb.html?cate_no=46"
+    "officialUrl": "https://benope.com/product/list_thumb.html?cate_no=46",
+    "fat": 3.1,
+    "sodium": 178
   },
   {
     "slug": "benof-softbar-berry-cheesecake",
@@ -287,15 +315,17 @@
       "바"
     ],
     "proteinPerServing": 20,
-    "calories": 172,
+    "calories": 171,
     "sugar": 2,
-    "density": "11.6g/100kcal",
+    "density": "11.7g/100kcal",
     "productUrl": "#",
     "productType": "bar",
     "gradeTags": [],
     "coupangUrl": "https://link.coupang.com/a/fg1SyycJgq",
     "naverUrl": "https://search.shopping.naver.com/search/all?query=%EB%B2%A0%EB%85%B8%ED%94%84%20%EC%86%8C%ED%94%84%ED%8A%B8%EB%B0%94%20(%EB%B2%A0%EB%A6%AC%EB%B2%A0%EB%A6%AC%EC%B9%98%EC%A6%88%EC%BC%80%EC%9D%B4%ED%81%AC)&prevQuery=%EB%B2%A0%EB%85%B8%ED%94%84%20%EB%8B%A8%EB%B0%B1%EC%A7%88%EB%B0%94%20(%ED%8A%B8%EB%9F%AC%ED%94%8C%ED%94%BC%EB%84%9B%EB%B2%84%ED%84%B0%EC%B4%88%EC%BD%9C%EB%A6%BF)&vertical=search",
-    "officialUrl": "https://benope.com/product/list_thumb.html?cate_no=46"
+    "officialUrl": "https://benope.com/product/list_thumb.html?cate_no=46",
+    "fat": 3.8,
+    "sodium": 390
   },
   {
     "slug": "syntha6-crispy-choco",
@@ -352,7 +382,9 @@
     "productType": "bar",
     "gradeTags": [],
     "coupangUrl": "https://link.coupang.com/a/fg1UR5U9rU",
-    "naverUrl": "https://search.shopping.naver.com/search/all?query=bsn%20%ED%94%84%EB%A1%9C%ED%8B%B4%20%ED%81%AC%EB%A6%AC%EC%8A%A4%ED%94%84%20%EB%8B%A8%EB%B0%B1%EC%A7%88%EB%B0%94%20(%EC%86%94%ED%8B%B0%EB%93%9C)&prevQuery=bsn%20%ED%94%84%EB%A1%9C%ED%8B%B4%20%ED%81%AC%EB%A6%AC%EC%8A%A4%ED%94%84%20%EB%8B%A8%EB%B0%B1%EC%A7%88%EB%B0%94%20(%ED%94%BC%EB%84%9B%20%EB%B2%84%ED%84%B0%20%ED%81%AC%EB%9F%B0%EC%B9%98)&vertical=search"
+    "naverUrl": "https://search.shopping.naver.com/search/all?query=bsn%20%ED%94%84%EB%A1%9C%ED%8B%B4%20%ED%81%AC%EB%A6%AC%EC%8A%A4%ED%94%84%20%EB%8B%A8%EB%B0%B1%EC%A7%88%EB%B0%94%20(%EC%86%94%ED%8B%B0%EB%93%9C)&prevQuery=bsn%20%ED%94%84%EB%A1%9C%ED%8B%B4%20%ED%81%AC%EB%A6%AC%EC%8A%A4%ED%94%84%20%EB%8B%A8%EB%B0%B1%EC%A7%88%EB%B0%94%20(%ED%94%BC%EB%84%9B%20%EB%B2%84%ED%84%B0%20%ED%81%AC%EB%9F%B0%EC%B9%98)&vertical=search",
+    "fat": 6,
+    "sodium": 230
   },
   {
     "slug": "quest-nutrition-protein-bar-double-chocolate-chunk-60",
@@ -364,14 +396,16 @@
       "바"
     ],
     "proteinPerServing": 20,
-    "calories": 170,
+    "calories": 180,
     "sugar": 1,
-    "density": "11.76g/100kcal",
+    "density": "11.11g/100kcal",
     "productUrl": "#",
     "productType": "bar",
     "gradeTags": [],
     "coupangUrl": "https://link.coupang.com/a/fg1Vxxl8RU",
-    "naverUrl": "https://search.shopping.naver.com/search/all?query=%ED%80%98%EC%8A%A4%ED%8A%B8%EB%89%B4%ED%8A%B8%EB%A6%AC%EC%85%98%20%EB%8B%A8%EB%B0%B1%EC%A7%88%EB%B0%94%20(%EB%8D%94%EB%B8%94%20%EC%B4%88%EC%BD%9C%EB%A6%BF%20%EC%B2%AD%ED%81%AC)&prevQuery=%ED%80%98%EC%8A%A4%ED%8A%B8%EB%89%B4%ED%8A%B8%EB%A6%AC%EC%85%98%20%ED%94%84%EB%A1%9C%ED%8B%B4%EB%B0%94%20%EB%94%A5%20%EC%BF%A0%ED%82%A4%20%EC%95%A4%20%ED%81%AC%EB%A6%BC%2050g%20%EB%8B%A8%EB%B0%B1%EC%A7%88%EB%B0%94%2012%EA%B0%9C%EC%9E%85&vertical=search"
+    "naverUrl": "https://search.shopping.naver.com/search/all?query=%ED%80%98%EC%8A%A4%ED%8A%B8%EB%89%B4%ED%8A%B8%EB%A6%AC%EC%85%98%20%EB%8B%A8%EB%B0%B1%EC%A7%88%EB%B0%94%20(%EB%8D%94%EB%B8%94%20%EC%B4%88%EC%BD%9C%EB%A6%BF%20%EC%B2%AD%ED%81%AC)&prevQuery=%ED%80%98%EC%8A%A4%ED%8A%B8%EB%89%B4%ED%8A%B8%EB%A6%AC%EC%85%98%20%ED%94%84%EB%A1%9C%ED%8B%B4%EB%B0%94%20%EB%94%A5%20%EC%BF%A0%ED%82%A4%20%EC%95%A4%20%ED%81%AC%EB%A6%BC%2050g%20%EB%8B%A8%EB%B0%B1%EC%A7%88%EB%B0%94%2012%EA%B0%9C%EC%9E%85&vertical=search",
+    "fat": 7,
+    "sodium": 220
   },
   {
     "slug": "quest-nutrition-protein-bar-chocolate-peanutbutter-60",
@@ -390,7 +424,9 @@
     "productType": "bar",
     "gradeTags": [],
     "coupangUrl": "https://link.coupang.com/a/fg1WbRVWFM",
-    "naverUrl": "https://search.shopping.naver.com/search/all?query=%ED%80%98%EC%8A%A4%ED%8A%B8%20%EB%8B%A8%EB%B0%B1%EC%A7%88%EB%B0%94%20(%EC%B4%88%EC%BD%9C%EB%A6%BF%20%ED%94%BC%EB%84%9B%EB%B2%84%ED%84%B0)&prevQuery=%ED%80%98%EC%8A%A4%ED%8A%B8%20%EB%8B%A8%EB%B0%B1%EC%A7%88%EB%B0%94%20(%EC%B4%88%EC%BD%94%EC%B9%A9%20%EC%BF%A0%ED%82%A4%EB%8F%84%EC%9A%B0)&vertical=search"
+    "naverUrl": "https://search.shopping.naver.com/search/all?query=%ED%80%98%EC%8A%A4%ED%8A%B8%20%EB%8B%A8%EB%B0%B1%EC%A7%88%EB%B0%94%20(%EC%B4%88%EC%BD%9C%EB%A6%BF%20%ED%94%BC%EB%84%9B%EB%B2%84%ED%84%B0)&prevQuery=%ED%80%98%EC%8A%A4%ED%8A%B8%20%EB%8B%A8%EB%B0%B1%EC%A7%88%EB%B0%94%20(%EC%B4%88%EC%BD%94%EC%B9%A9%20%EC%BF%A0%ED%82%A4%EB%8F%84%EC%9A%B0)&vertical=search",
+    "fat": 9,
+    "sodium": 220
   },
   {
     "slug": "quest-nutrition-protein-bar-oatmeal-chocolate-chip-60",
@@ -401,15 +437,17 @@
     "tags": [
       "바"
     ],
-    "proteinPerServing": 18,
-    "calories": 170,
+    "proteinPerServing": 20,
+    "calories": 180,
     "sugar": 1,
-    "density": "10.59g/100kcal",
+    "density": "11.11g/100kcal",
     "productUrl": "#",
     "productType": "bar",
     "gradeTags": [],
     "coupangUrl": "https://link.coupang.com/a/fg1WPtlsVE",
-    "naverUrl": "https://search.shopping.naver.com/search/all?query=%ED%80%98%EC%8A%A4%ED%8A%B8%EB%89%B4%ED%8A%B8%EB%A6%AC%EC%85%98%20%EB%8B%A8%EB%B0%B1%EC%A7%88%EB%B0%94%20(%EC%98%A4%ED%8A%B8%EB%B0%80%20%EC%B4%88%EC%BD%9C%EB%A6%BF%20%EC%B9%A9)&prevQuery=%ED%80%98%EC%8A%A4%ED%8A%B8%EB%89%B4%ED%8A%B8%EB%A6%AC%EC%85%98%20%EB%8B%A8%EB%B0%B1%EC%A7%88%EB%B0%94%20(%EB%AF%BC%ED%8A%B8%20%EC%B4%88%EC%BD%9C%EB%A6%BF%20%EC%B2%AD%ED%81%AC)&vertical=search"
+    "naverUrl": "https://search.shopping.naver.com/search/all?query=%ED%80%98%EC%8A%A4%ED%8A%B8%EB%89%B4%ED%8A%B8%EB%A6%AC%EC%85%98%20%EB%8B%A8%EB%B0%B1%EC%A7%88%EB%B0%94%20(%EC%98%A4%ED%8A%B8%EB%B0%80%20%EC%B4%88%EC%BD%9C%EB%A6%BF%20%EC%B9%A9)&prevQuery=%ED%80%98%EC%8A%A4%ED%8A%B8%EB%89%B4%ED%8A%B8%EB%A6%AC%EC%85%98%20%EB%8B%A8%EB%B0%B1%EC%A7%88%EB%B0%94%20(%EB%AF%BC%ED%8A%B8%20%EC%B4%88%EC%BD%9C%EB%A6%BF%20%EC%B2%AD%ED%81%AC)&vertical=search",
+    "fat": 7,
+    "sodium": 210
   },
   {
     "slug": "quest-nutrition-protein-bar-deep-chocolate-chip-cookie-dough-60",
@@ -420,15 +458,17 @@
     "tags": [
       "바"
     ],
-    "proteinPerServing": 20,
-    "calories": 170,
+    "proteinPerServing": 21,
+    "calories": 190,
     "sugar": 1,
-    "density": "11.76g/100kcal",
+    "density": "11.05g/100kcal",
     "productUrl": "#",
     "productType": "bar",
     "gradeTags": [],
     "coupangUrl": "https://link.coupang.com/a/fg1XtIkg8W",
-    "naverUrl": "https://search.shopping.naver.com/search/all?query=%ED%80%98%EC%8A%A4%ED%8A%B8%20%EB%8B%A8%EB%B0%B1%EC%A7%88%EB%B0%94%20(%EB%94%A5%20%EC%B4%88%EC%BD%9C%EB%A6%BF%EC%B9%A9%20%EC%BF%A0%ED%82%A4%EB%8F%84%EC%9A%B0)&prevQuery=%ED%80%98%EC%8A%A4%ED%8A%B8%20%EB%8B%A8%EB%B0%B1%EC%A7%88%EB%B0%94%20(%EB%94%A5%EB%94%94%EC%89%AC%20%EC%BF%A0%ED%82%A4%20%EC%95%A4%20%ED%81%AC%EB%A6%BC)&vertical=search"
+    "naverUrl": "https://search.shopping.naver.com/search/all?query=%ED%80%98%EC%8A%A4%ED%8A%B8%20%EB%8B%A8%EB%B0%B1%EC%A7%88%EB%B0%94%20(%EB%94%A5%20%EC%B4%88%EC%BD%9C%EB%A6%BF%EC%B9%A9%20%EC%BF%A0%ED%82%A4%EB%8F%84%EC%9A%B0)&prevQuery=%ED%80%98%EC%8A%A4%ED%8A%B8%20%EB%8B%A8%EB%B0%B1%EC%A7%88%EB%B0%94%20(%EB%94%A5%EB%94%94%EC%89%AC%20%EC%BF%A0%ED%82%A4%20%EC%95%A4%20%ED%81%AC%EB%A6%BC)&vertical=search",
+    "fat": 9,
+    "sodium": 220
   },
   {
     "slug": "quest-nutrition-protein-bar-lemon-cake-60",
@@ -440,14 +480,16 @@
       "바"
     ],
     "proteinPerServing": 20,
-    "calories": 170,
+    "calories": 180,
     "sugar": 1,
-    "density": "11.76g/100kcal",
+    "density": "11.11g/100kcal",
     "productUrl": "#",
     "productType": "bar",
     "gradeTags": [],
     "coupangUrl": "https://link.coupang.com/a/fg1X8kYz24",
-    "naverUrl": "https://search.shopping.naver.com/search/all?query=%ED%80%98%EC%8A%A4%ED%8A%B8%EB%89%B4%ED%8A%B8%EB%A6%AC%EC%85%98%20%EB%8B%A8%EB%B0%B1%EC%A7%88%EB%B0%94%20(%EB%A0%88%EB%AA%AC%20%EC%BC%80%EC%9D%B4%ED%81%AC)&prevQuery=%ED%80%98%EC%8A%A4%ED%8A%B8%EB%89%B4%ED%8A%B8%EB%A6%AC%EC%85%98%20%EB%8B%A8%EB%B0%B1%EC%A7%88%EB%B0%94%20(%EB%8D%94%EB%B8%94%20%EC%B4%88%EC%BD%9C%EB%A6%BF%20%EC%B2%AD%ED%81%AC)&vertical=search"
+    "naverUrl": "https://search.shopping.naver.com/search/all?query=%ED%80%98%EC%8A%A4%ED%8A%B8%EB%89%B4%ED%8A%B8%EB%A6%AC%EC%85%98%20%EB%8B%A8%EB%B0%B1%EC%A7%88%EB%B0%94%20(%EB%A0%88%EB%AA%AC%20%EC%BC%80%EC%9D%B4%ED%81%AC)&prevQuery=%ED%80%98%EC%8A%A4%ED%8A%B8%EB%89%B4%ED%8A%B8%EB%A6%AC%EC%85%98%20%EB%8B%A8%EB%B0%B1%EC%A7%88%EB%B0%94%20(%EB%8D%94%EB%B8%94%20%EC%B4%88%EC%BD%9C%EB%A6%BF%20%EC%B2%AD%ED%81%AC)&vertical=search",
+    "fat": 6,
+    "sodium": 190
   },
   {
     "slug": "quest-nutrition-protein-bar-mint-chocolate-chunk-60",
@@ -459,14 +501,16 @@
       "바"
     ],
     "proteinPerServing": 20,
-    "calories": 170,
+    "calories": 180,
     "sugar": 1,
-    "density": "11.76g/100kcal",
+    "density": "11.11g/100kcal",
     "productUrl": "#",
     "productType": "bar",
     "gradeTags": [],
     "coupangUrl": "https://link.coupang.com/a/fg1YOovAfQ",
-    "naverUrl": "https://search.shopping.naver.com/search/all?query=%ED%80%98%EC%8A%A4%ED%8A%B8%EB%89%B4%ED%8A%B8%EB%A6%AC%EC%85%98%20%EB%8B%A8%EB%B0%B1%EC%A7%88%EB%B0%94%20(%EB%AF%BC%ED%8A%B8%20%EC%B4%88%EC%BD%9C%EB%A6%BF%20%EC%B2%AD%ED%81%AC)&prevQuery=%ED%80%98%EC%8A%A4%ED%8A%B8%EB%89%B4%ED%8A%B8%EB%A6%AC%EC%85%98%20%EB%8B%A8%EB%B0%B1%EC%A7%88%EB%B0%94%20(%EB%A0%88%EB%AA%AC%20%EC%BC%80%EC%9D%B4%ED%81%AC)&vertical=search"
+    "naverUrl": "https://search.shopping.naver.com/search/all?query=%ED%80%98%EC%8A%A4%ED%8A%B8%EB%89%B4%ED%8A%B8%EB%A6%AC%EC%85%98%20%EB%8B%A8%EB%B0%B1%EC%A7%88%EB%B0%94%20(%EB%AF%BC%ED%8A%B8%20%EC%B4%88%EC%BD%9C%EB%A6%BF%20%EC%B2%AD%ED%81%AC)&prevQuery=%ED%80%98%EC%8A%A4%ED%8A%B8%EB%89%B4%ED%8A%B8%EB%A6%AC%EC%85%98%20%EB%8B%A8%EB%B0%B1%EC%A7%88%EB%B0%94%20(%EB%A0%88%EB%AA%AC%20%EC%BC%80%EC%9D%B4%ED%81%AC)&vertical=search",
+    "fat": 7,
+    "sodium": 230
   },
   {
     "slug": "quest-nutrition-protein-bar-cookie-cream-60",
@@ -485,7 +529,9 @@
     "productType": "bar",
     "gradeTags": [],
     "coupangUrl": "https://link.coupang.com/a/fg1ZqHiJsi",
-    "naverUrl": "https://search.shopping.naver.com/search/all?query=%ED%80%98%EC%8A%A4%ED%8A%B8%20%ED%94%84%EB%A1%9C%ED%8B%B4%EB%B0%94%20%EC%BF%A0%ED%82%A4%EC%95%A4%ED%81%AC%EB%A6%BC%2060g%2012%ED%8C%A9&prevQuery=%5B%EC%95%84%EB%A7%88%EC%A1%B4%20%EA%B3%B5%EC%8B%9D%5D%ED%80%98%EC%8A%A4%ED%8A%B8%20%ED%94%84%EB%A1%9C%ED%8B%B4%EB%B0%94%20%EC%BF%A0%ED%82%A4%EC%95%A4%ED%81%AC%EB%A6%BC%2060g%2012%ED%8C%A9&vertical=search"
+    "naverUrl": "https://search.shopping.naver.com/search/all?query=%ED%80%98%EC%8A%A4%ED%8A%B8%20%ED%94%84%EB%A1%9C%ED%8B%B4%EB%B0%94%20%EC%BF%A0%ED%82%A4%EC%95%A4%ED%81%AC%EB%A6%BC%2060g%2012%ED%8C%A9&prevQuery=%5B%EC%95%84%EB%A7%88%EC%A1%B4%20%EA%B3%B5%EC%8B%9D%5D%ED%80%98%EC%8A%A4%ED%8A%B8%20%ED%94%84%EB%A1%9C%ED%8B%B4%EB%B0%94%20%EC%BF%A0%ED%82%A4%EC%95%A4%ED%81%AC%EB%A6%BC%2060g%2012%ED%8C%A9&vertical=search",
+    "fat": 8,
+    "sodium": 290
   },
   {
     "slug": "quest-nutrition-protein-bar-chocolate-chip-cookie-dough-60",
@@ -496,15 +542,17 @@
     "tags": [
       "바"
     ],
-    "proteinPerServing": 20,
-    "calories": 170,
+    "proteinPerServing": 21,
+    "calories": 200,
     "sugar": 1,
-    "density": "11.76g/100kcal",
+    "density": "10.50g/100kcal",
     "productUrl": "#",
     "productType": "bar",
     "gradeTags": [],
     "coupangUrl": "https://link.coupang.com/a/fg1Z1J4xRQ",
-    "naverUrl": "https://search.shopping.naver.com/search/all?query=%ED%80%98%EC%8A%A4%ED%8A%B8%20%EB%8B%A8%EB%B0%B1%EC%A7%88%EB%B0%94%20(%EC%B4%88%EC%BD%94%EC%B9%A9%20%EC%BF%A0%ED%82%A4%EB%8F%84%EC%9A%B0)&prevQuery=%ED%80%98%EC%8A%A4%ED%8A%B8%20%EB%8B%A8%EB%B0%B1%EC%A7%88%EB%B0%94%20(%EB%B8%94%EB%A3%A8%EB%B2%A0%EB%A6%AC%20%EB%A8%B8%ED%95%80)&vertical=search"
+    "naverUrl": "https://search.shopping.naver.com/search/all?query=%ED%80%98%EC%8A%A4%ED%8A%B8%20%EB%8B%A8%EB%B0%B1%EC%A7%88%EB%B0%94%20(%EC%B4%88%EC%BD%94%EC%B9%A9%20%EC%BF%A0%ED%82%A4%EB%8F%84%EC%9A%B0)&prevQuery=%ED%80%98%EC%8A%A4%ED%8A%B8%20%EB%8B%A8%EB%B0%B1%EC%A7%88%EB%B0%94%20(%EB%B8%94%EB%A3%A8%EB%B2%A0%EB%A6%AC%20%EB%A8%B8%ED%95%80)&vertical=search",
+    "fat": 9,
+    "sodium": 190
   },
   {
     "slug": "quest-nutrition-protein-bar-blueberry-muffin-60",
@@ -516,14 +564,16 @@
       "바"
     ],
     "proteinPerServing": 21,
-    "calories": 180,
-    "sugar": 1,
-    "density": "11.67g/100kcal",
+    "calories": 190,
+    "sugar": 2,
+    "density": "11.05g/100kcal",
     "productUrl": "#",
     "productType": "bar",
     "gradeTags": [],
     "coupangUrl": "https://link.coupang.com/a/fg10AtFbJk",
-    "naverUrl": "https://search.shopping.naver.com/search/all?query=%ED%80%98%EC%8A%A4%ED%8A%B8%20%EB%8B%A8%EB%B0%B1%EC%A7%88%EB%B0%94%20(%EB%B8%94%EB%A3%A8%EB%B2%A0%EB%A6%AC%20%EB%A8%B8%ED%95%80)&prevQuery=%ED%95%98%EB%A3%A8%EB%8B%A8%EB%B0%B1%EB%B0%94%20(%EC%A0%9C%ED%8A%B8%EC%B4%88%EC%BD%94%EC%BC%80%EC%9D%B4%ED%81%AC)&vertical=search"
+    "naverUrl": "https://search.shopping.naver.com/search/all?query=%ED%80%98%EC%8A%A4%ED%8A%B8%20%EB%8B%A8%EB%B0%B1%EC%A7%88%EB%B0%94%20(%EB%B8%94%EB%A3%A8%EB%B2%A0%EB%A6%AC%20%EB%A8%B8%ED%95%80)&prevQuery=%ED%95%98%EB%A3%A8%EB%8B%A8%EB%B0%B1%EB%B0%94%20(%EC%A0%9C%ED%8A%B8%EC%B4%88%EC%BD%94%EC%BC%80%EC%9D%B4%ED%81%AC)&vertical=search",
+    "fat": 7,
+    "sodium": 210
   },
   {
     "slug": "quest-nutrition-protein-bar-white-chocolate-raspberry-60",
@@ -542,7 +592,9 @@
     "productType": "bar",
     "gradeTags": [],
     "coupangUrl": "https://link.coupang.com/a/fg11eGcoFw",
-    "naverUrl": "https://search.shopping.naver.com/search/all?query=%ED%80%98%EC%8A%A4%ED%8A%B8%EB%89%B4%ED%8A%B8%EB%A6%AC%EC%85%98%20%EB%8B%A8%EB%B0%B1%EC%A7%88%EB%B0%94%20(%ED%99%94%EC%9D%B4%ED%8A%B8%20%EC%B4%88%EC%BD%9C%EB%A6%BF%20%EB%9D%BC%EC%A6%88%EB%B2%A0%EB%A6%AC)&prevQuery=%ED%80%98%EC%8A%A4%ED%8A%B8%EB%89%B4%ED%8A%B8%EB%A6%AC%EC%85%98%20%EB%8B%A8%EB%B0%B1%EC%A7%88%EB%B0%94%20(%EC%8A%A4%EB%AA%A8%EC%96%B4)&vertical=search"
+    "naverUrl": "https://search.shopping.naver.com/search/all?query=%ED%80%98%EC%8A%A4%ED%8A%B8%EB%89%B4%ED%8A%B8%EB%A6%AC%EC%85%98%20%EB%8B%A8%EB%B0%B1%EC%A7%88%EB%B0%94%20(%ED%99%94%EC%9D%B4%ED%8A%B8%20%EC%B4%88%EC%BD%9C%EB%A6%BF%20%EB%9D%BC%EC%A6%88%EB%B2%A0%EB%A6%AC)&prevQuery=%ED%80%98%EC%8A%A4%ED%8A%B8%EB%89%B4%ED%8A%B8%EB%A6%AC%EC%85%98%20%EB%8B%A8%EB%B0%B1%EC%A7%88%EB%B0%94%20(%EC%8A%A4%EB%AA%A8%EC%96%B4)&vertical=search",
+    "fat": 8,
+    "sodium": 240
   },
   {
     "slug": "quest-nutrition-protein-bar-deep-dish-cookie-cream-60",
@@ -580,7 +632,9 @@
     "productType": "bar",
     "gradeTags": [],
     "coupangUrl": "https://link.coupang.com/a/fg12mQAtwr",
-    "naverUrl": "https://search.shopping.naver.com/search/all?query=%ED%80%98%EC%8A%A4%ED%8A%B8%EB%89%B4%ED%8A%B8%EB%A6%AC%EC%85%98%20%EB%8B%A8%EB%B0%B1%EC%A7%88%EB%B0%94%20(%EC%8A%A4%EB%AA%A8%EC%96%B4)&prevQuery=%ED%80%98%EC%8A%A4%ED%8A%B8%EB%89%B4%ED%8A%B8%EB%A6%AC%EC%85%98%20%EB%8B%A8%EB%B0%B1%EC%A7%88%EB%B0%94%20(%EC%98%A4%ED%8A%B8%EB%B0%80%20%EC%B4%88%EC%BD%9C%EB%A6%BF%20%EC%B9%A9)&vertical=search"
+    "naverUrl": "https://search.shopping.naver.com/search/all?query=%ED%80%98%EC%8A%A4%ED%8A%B8%EB%89%B4%ED%8A%B8%EB%A6%AC%EC%85%98%20%EB%8B%A8%EB%B0%B1%EC%A7%88%EB%B0%94%20(%EC%8A%A4%EB%AA%A8%EC%96%B4)&prevQuery=%ED%80%98%EC%8A%A4%ED%8A%B8%EB%89%B4%ED%8A%B8%EB%A6%AC%EC%85%98%20%EB%8B%A8%EB%B0%B1%EC%A7%88%EB%B0%94%20(%EC%98%A4%ED%8A%B8%EB%B0%80%20%EC%B4%88%EC%BD%9C%EB%A6%BF%20%EC%B9%A9)&vertical=search",
+    "fat": 7,
+    "sodium": 210
   },
   {
     "slug": "post-proteinbar",
@@ -600,7 +654,9 @@
     "gradeTags": [],
     "coupangUrl": "https://link.coupang.com/a/fg12TVZwyG",
     "naverUrl": "https://search.shopping.naver.com/search/all?query=%ED%8F%AC%EC%8A%A4%ED%8A%B8%20%EB%8B%A8%EB%B0%B1%EC%A7%88%EB%B0%94%2050g%2C%2010%EA%B0%9C%EC%9E%85%2C%203%EA%B0%9C&prevQuery=%ED%8F%AC%EC%8A%A4%ED%8A%B8%20%EB%8B%A8%EB%B0%B1%EC%A7%88%EB%B0%94&vertical=search",
-    "officialUrl": "https://brand.naver.com/dongsuh/category/9816c4067d6c4d9db2e7b9ef54a6a93a?cp=1"
+    "officialUrl": "https://brand.naver.com/dongsuh/category/9816c4067d6c4d9db2e7b9ef54a6a93a?cp=1",
+    "fat": 13,
+    "sodium": 200
   },
   {
     "slug": "proteinbangatgan-harudanbaekbar-blacksesame",
@@ -612,15 +668,17 @@
       "바"
     ],
     "proteinPerServing": 15,
-    "calories": 129,
-    "sugar": 4.7,
-    "density": "11.63g/100kcal",
+    "calories": 116.1,
+    "sugar": 3,
+    "density": "12.92g/100kcal",
     "productUrl": "#",
     "productType": "bar",
     "gradeTags": [],
     "coupangUrl": "https://link.coupang.com/a/fg13A7upps",
     "naverUrl": "https://search.shopping.naver.com/search/all?query=%ED%95%98%EB%A3%A8%EB%8B%A8%EB%B0%B1%EB%B0%94%20(%ED%9D%91%EC%9E%84%EC%9E%90)&prevQuery=%ED%8F%AC%EC%8A%A4%ED%8A%B8%20%EB%8B%A8%EB%B0%B1%EC%A7%88%EB%B0%94%20%EB%AF%B8%EB%8B%88%2011g%2C%2021%EA%B0%9C%EC%9E%85%2C%206%EA%B0%9C&vertical=search",
-    "officialUrl": "https://dailyprotein.co.kr/product/list.html?cate_no=57"
+    "officialUrl": "https://dailyprotein.co.kr/product/list.html?cate_no=57",
+    "fat": 3.7,
+    "sodium": 87
   },
   {
     "slug": "ondanbaek-protein-bar-apple-cranberry-50",
@@ -633,13 +691,15 @@
     ],
     "proteinPerServing": 15,
     "calories": 151,
-    "sugar": 6,
+    "sugar": 4.4,
     "density": "9.93g/100kcal",
     "productUrl": "#",
     "productType": "bar",
     "gradeTags": [],
     "coupangUrl": "https://www.coupang.com/vp/products/9004312871?itemId=26388106664&vendorItemId=93364470969&q=%EC%98%A8%EB%8B%A8%EB%B0%B1+%ED%94%84%EB%A1%9C%ED%8B%B4%EB%B0%94+%28%EC%95%A0%ED%94%8C%ED%81%AC%EB%9E%9C%EB%B2%A0%EB%A6%AC%29&searchId=57088303446478&sourceType=search&itemsCount=36&searchRank=0&rank=0&traceId=mmyluhz1",
-    "naverUrl": "https://search.shopping.naver.com/search/all?query=%EC%98%A4%EB%8A%98%EB%8B%A8%EB%B0%B1%20%ED%94%84%EB%A1%9C%ED%8B%B4%EB%B0%94%20(%EC%95%A0%ED%94%8C%ED%81%AC%EB%9E%9C%EB%B2%A0%EB%A6%AC)&prevQuery=%EB%85%B8%EB%B8%8C%EB%9E%9C%EB%93%9C%20%EB%8B%A8%EB%B0%B1%EC%A7%88%EB%B0%94%20%EB%AF%B8%EB%8B%88&vertical=search"
+    "naverUrl": "https://search.shopping.naver.com/search/all?query=%EC%98%A4%EB%8A%98%EB%8B%A8%EB%B0%B1%20%ED%94%84%EB%A1%9C%ED%8B%B4%EB%B0%94%20(%EC%95%A0%ED%94%8C%ED%81%AC%EB%9E%9C%EB%B2%A0%EB%A6%AC)&prevQuery=%EB%85%B8%EB%B8%8C%EB%9E%9C%EB%93%9C%20%EB%8B%A8%EB%B0%B1%EC%A7%88%EB%B0%94%20%EB%AF%B8%EB%8B%88&vertical=search",
+    "fat": 4.3,
+    "sodium": 117
   },
   {
     "slug": "ondanbaek-protein-bar-chocolate-fudge-50",
@@ -652,13 +712,15 @@
     ],
     "proteinPerServing": 15,
     "calories": 169,
-    "sugar": 11,
+    "sugar": 1.6,
     "density": "8.88g/100kcal",
     "productUrl": "#",
     "productType": "bar",
     "gradeTags": [],
     "coupangUrl": "https://www.coupang.com/vp/products/9004389967?itemId=26388520629&vendorItemId=93364878631&q=%EC%98%A8%EB%8B%A8%EB%B0%B1+%ED%94%84%EB%A1%9C%ED%8B%B4%EB%B0%94+%28%EC%B4%88%EC%BD%9C%EB%A0%9B%ED%8D%BC%EC%A7%80%29&searchId=04036658951213&sourceType=search&itemsCount=36&searchRank=1&rank=1&traceId=mmyluv1y",
-    "naverUrl": "https://search.shopping.naver.com/search/all?query=%EC%98%A4%EB%8A%98%EB%8B%A8%EB%B0%B1%20%ED%94%84%EB%A1%9C%ED%8B%B4%EB%B0%94%20(%EC%B4%88%EC%BD%9C%EB%A6%BF%ED%8D%BC%EC%A7%80)&prevQuery=%EC%98%A4%EB%8A%98%EB%8B%A8%EB%B0%B1%20%ED%94%84%EB%A1%9C%ED%8B%B4%EB%B0%94%20(%EC%B4%88%EC%BD%94%ED%8D%BC%EC%A7%80)&vertical=search"
+    "naverUrl": "https://search.shopping.naver.com/search/all?query=%EC%98%A4%EB%8A%98%EB%8B%A8%EB%B0%B1%20%ED%94%84%EB%A1%9C%ED%8B%B4%EB%B0%94%20(%EC%B4%88%EC%BD%9C%EB%A6%BF%ED%8D%BC%EC%A7%80)&prevQuery=%EC%98%A4%EB%8A%98%EB%8B%A8%EB%B0%B1%20%ED%94%84%EB%A1%9C%ED%8B%B4%EB%B0%94%20(%EC%B4%88%EC%BD%94%ED%8D%BC%EC%A7%80)&vertical=search",
+    "fat": 6.1,
+    "sodium": 106
   },
   {
     "slug": "proteinbangatgan-harudanbaekbar-cheeseberry",
@@ -670,15 +732,17 @@
       "바"
     ],
     "proteinPerServing": 14,
-    "calories": 160,
-    "sugar": 3,
-    "density": "8.75g/100kcal",
+    "calories": 153,
+    "sugar": 8,
+    "density": "9.15g/100kcal",
     "productUrl": "#",
     "productType": "bar",
     "gradeTags": [],
     "coupangUrl": "https://link.coupang.com/a/fg157rmiCi",
     "naverUrl": "https://search.shopping.naver.com/search/all?query=%ED%95%98%EB%A3%A8%EB%8B%A8%EB%B0%B1%EB%B0%94%20(%EC%B9%98%EC%A6%88%EB%B2%A0%EB%A6%AC)&prevQuery=%ED%95%98%EB%A3%A8%EB%8B%A8%EB%B0%B1%EB%B0%94%20(%ED%9D%91%EC%9E%84%EC%9E%90)&vertical=search",
-    "officialUrl": "https://dailyprotein.co.kr/product/list.html?cate_no=57"
+    "officialUrl": "https://dailyprotein.co.kr/product/list.html?cate_no=57",
+    "fat": 5,
+    "sodium": 110
   },
   {
     "slug": "himnaego-protein-bar-dark-chocolate-50",
@@ -696,7 +760,9 @@
     "productUrl": "#",
     "productType": "bar",
     "gradeTags": [],
-    "coupangUrl": "https://www.coupang.com/vp/products/7714630927?itemId=20688361215&vendorItemId=87999990294&q=%ED%9E%98%EB%82%B4%EA%B3%A0+%EB%8B%A8%EC%A7%88%EB%B0%94+%28%EB%8B%A4%ED%81%AC+%EC%B4%88%EC%BD%9C%EB%A6%BF%29&searchId=c449fd41844298&sourceType=search&itemsCount=36&searchRank=15&rank=15&traceId=mmylluzq"
+    "coupangUrl": "https://www.coupang.com/vp/products/7714630927?itemId=20688361215&vendorItemId=87999990294&q=%ED%9E%98%EB%82%B4%EA%B3%A0+%EB%8B%A8%EC%A7%88%EB%B0%94+%28%EB%8B%A4%ED%81%AC+%EC%B4%88%EC%BD%9C%EB%A6%BF%29&searchId=c449fd41844298&sourceType=search&itemsCount=36&searchRank=15&rank=15&traceId=mmylluzq",
+    "fat": 12,
+    "sodium": 210
   },
   {
     "slug": "nobrand-proteinbar-choco",
@@ -728,14 +794,16 @@
     ],
     "proteinPerServing": 15,
     "calories": 185,
-    "sugar": 8,
+    "sugar": 7,
     "density": "8.11g/100kcal",
     "productUrl": "#",
     "productType": "bar",
     "gradeTags": [],
     "coupangUrl": "https://link.coupang.com/a/fg18UVoms0",
     "naverUrl": "https://search.shopping.naver.com/search/all?query=%EB%8D%94%EB%8B%A8%EB%B0%B1%20%ED%81%AC%EB%9F%B0%EC%B9%98%EB%B0%94%20(%EC%B4%88%EC%BD%94)&prevQuery=%ED%81%AC%EB%9F%B0%EC%B9%98%EB%B0%94%20(%EC%B4%88%EC%BD%94)&vertical=search",
-    "officialUrl": "https://brand.naver.com/binggrae/category/049c9ae6a1d6408fa9162ecf9c2cf05d?cp=1"
+    "officialUrl": "https://brand.naver.com/binggrae/category/049c9ae6a1d6408fa9162ecf9c2cf05d?cp=1",
+    "fat": 7,
+    "sodium": 200
   },
   {
     "slug": "selex-proteinbar-berryoat",
@@ -755,7 +823,9 @@
     "gradeTags": [],
     "coupangUrl": "https://link.coupang.com/a/fg19zNImSO",
     "naverUrl": "https://search.shopping.naver.com/search/all?query=%EC%85%80%EB%A0%89%EC%8A%A4%20%ED%94%84%EB%A1%9C%ED%8B%B4%EB%B0%94%20%EB%B2%A0%EB%A6%AC%EC%98%A4%ED%8A%B8&prevQuery=%ED%80%98%EC%8A%A4%ED%8A%B8%EB%89%B4%ED%8A%B8%EB%A6%AC%EC%85%98%20%EB%8B%A8%EB%B0%B1%EC%A7%88%EB%B0%94%20(%ED%99%94%EC%9D%B4%ED%8A%B8%20%EC%B4%88%EC%BD%9C%EB%A6%BF%20%EB%9D%BC%EC%A6%88%EB%B2%A0%EB%A6%AC)&vertical=search",
-    "officialUrl": "https://brand.naver.com/selex/category/8dad6b63c9314e51921ff5c3af1d0586?cp=1"
+    "officialUrl": "https://brand.naver.com/selex/category/8dad6b63c9314e51921ff5c3af1d0586?cp=1",
+    "fat": 11,
+    "sodium": 95
   },
   {
     "slug": "selex-protein-nutsbar",
@@ -775,7 +845,9 @@
     "gradeTags": [],
     "coupangUrl": "https://link.coupang.com/a/fg2adLWQqi",
     "naverUrl": "https://search.shopping.naver.com/search/all?where=all&frm=NVSCTAB&query=%EC%85%80%EB%A0%89%EC%8A%A4+%ED%94%84%EB%A1%9C%ED%8B%B4+%EB%84%88%EC%B8%A0%EB%B0%94",
-    "officialUrl": "https://brand.naver.com/selex/category/8dad6b63c9314e51921ff5c3af1d0586?cp=1"
+    "officialUrl": "https://brand.naver.com/selex/category/8dad6b63c9314e51921ff5c3af1d0586?cp=1",
+    "fat": 14,
+    "sodium": 105
   },
   {
     "slug": "thedanbaek-crunchbar-peanutbutter",
@@ -795,7 +867,9 @@
     "gradeTags": [],
     "coupangUrl": "https://link.coupang.com/a/fg2aVNVstg",
     "naverUrl": "https://search.shopping.naver.com/search/all?query=%EB%8D%94%EB%8B%A8%EB%B0%B1%20%ED%81%AC%EB%9F%B0%EC%B9%98%EB%B0%94%20(%EC%B4%88%EC%BD%94)&prevQuery=%ED%81%AC%EB%9F%B0%EC%B9%98%EB%B0%94%20(%EC%B4%88%EC%BD%94)&vertical=search",
-    "officialUrl": "https://brand.naver.com/binggrae/category/049c9ae6a1d6408fa9162ecf9c2cf05d?cp=1"
+    "officialUrl": "https://brand.naver.com/binggrae/category/049c9ae6a1d6408fa9162ecf9c2cf05d?cp=1",
+    "fat": 7,
+    "sodium": 180
   },
   {
     "slug": "thedanbaek-mildbar-almondcookie",
@@ -815,7 +889,9 @@
     "gradeTags": [],
     "coupangUrl": "https://link.coupang.com/a/fg2b6dldHE",
     "naverUrl": "https://search.shopping.naver.com/search/all?query=%EB%8D%94%EB%8B%A8%EB%B0%B1%20%EB%A7%88%EC%9D%BC%EB%93%9C%EB%B0%94%20(%EC%95%84%EB%AA%AC%EB%93%9C%EC%BF%A0%ED%82%A4)&prevQuery=%EB%8D%94%EB%8B%A8%EB%B0%B1%20%ED%81%AC%EB%9F%B0%EC%B9%98%EB%B0%94%20(%EC%B4%88%EC%BD%94)&vertical=search",
-    "officialUrl": "https://brand.naver.com/binggrae/category/049c9ae6a1d6408fa9162ecf9c2cf05d?cp=1"
+    "officialUrl": "https://brand.naver.com/binggrae/category/049c9ae6a1d6408fa9162ecf9c2cf05d?cp=1",
+    "fat": 8,
+    "sodium": 170
   },
   {
     "slug": "hymune-activebar-nuts",
@@ -835,7 +911,9 @@
     "gradeTags": [],
     "coupangUrl": "https://link.coupang.com/a/fg2cJ4hoZg",
     "naverUrl": "https://search.shopping.naver.com/search/all?query=%ED%95%98%EC%9D%B4%EB%AE%A8%20%EC%95%A1%ED%8B%B0%EB%B8%8C%EB%B0%94%20(%EB%84%9B%EC%B8%A0)&prevQuery=%ED%9E%98%EB%82%B4%EA%B3%A0%20%EB%8B%A8%EB%B0%B1%EC%A7%88%EB%B0%94%20(%EB%8B%A4%ED%81%AC%20%EC%B4%88%EC%BD%9C%EB%A6%BF)&vertical=search",
-    "officialUrl": "https://brand.naver.com/ildongfoodis/category/1468a477805243ed98aec5dee0fc616c?cp=1"
+    "officialUrl": "https://brand.naver.com/ildongfoodis/category/1468a477805243ed98aec5dee0fc616c?cp=1",
+    "fat": 14,
+    "sodium": 115
   },
   {
     "slug": "mymil-new-proteinbar",
@@ -861,61 +939,67 @@
     "slug": "myprotein-soft-lemon-earlgrey",
     "brand": "마이프로틴",
     "name": "소프트 단백질바 (레몬 얼그레이)",
-    "capacity": "50g",
+    "capacity": "45g",
     "variant": "일반",
     "tags": [
       "바"
     ],
-    "proteinPerServing": 12,
-    "calories": 210,
-    "sugar": 8,
-    "density": "5.71g/100kcal",
+    "proteinPerServing": 15,
+    "calories": 127,
+    "sugar": 1,
+    "density": "11.81g/100kcal",
     "productUrl": "#",
     "productType": "bar",
     "gradeTags": [],
     "coupangUrl": "https://link.coupang.com/a/fg2d57avQW",
     "naverUrl": "https://search.shopping.naver.com/search/all?query=%EB%A7%88%EC%9D%B4%ED%94%84%EB%A1%9C%ED%8B%B4%20%EC%86%8C%ED%94%84%ED%8A%B8%20%EB%8B%A8%EB%B0%B1%EC%A7%88%20(%EB%A0%88%EB%AA%AC%20%EC%96%BC%EA%B7%B8%EB%A0%88%EC%9D%B4)&prevQuery=%EB%A7%88%EC%9D%B4%ED%94%84%EB%A1%9C%ED%8B%B4%20%EC%86%8C%ED%94%84%ED%8A%B8%20%EB%8B%A8%EB%B0%B1%EC%A7%88%20(%EC%B9%B4%EB%9D%BC%EB%A9%9C%20%EC%B4%88%EC%BD%94)&vertical=search",
-    "officialUrl": "https://www.myprotein.co.kr/c/nutrition/kr-healthy-food-drinks/?utm_source=naver&utm_medium=cpc&affil=mpppc"
+    "officialUrl": "https://www.myprotein.co.kr/c/nutrition/kr-healthy-food-drinks/?utm_source=naver&utm_medium=cpc&affil=mpppc",
+    "fat": 3.1,
+    "sodium": 200
   },
   {
     "slug": "myprotein-soft-caramel-choco",
     "brand": "마이프로틴",
     "name": "소프트 단백질바 (카라멜 초코)",
-    "capacity": "50g",
+    "capacity": "45g",
     "variant": "일반",
     "tags": [
       "바"
     ],
-    "proteinPerServing": 12,
-    "calories": 210,
-    "sugar": 8,
-    "density": "5.71g/100kcal",
+    "proteinPerServing": 16,
+    "calories": 125,
+    "sugar": 1,
+    "density": "12.80g/100kcal",
     "productUrl": "#",
     "productType": "bar",
     "gradeTags": [],
     "coupangUrl": "https://link.coupang.com/a/fg2eFA6KVE",
     "naverUrl": "https://search.shopping.naver.com/search/all?query=%EB%A7%88%EC%9D%B4%ED%94%84%EB%A1%9C%ED%8B%B4%20%EC%86%8C%ED%94%84%ED%8A%B8%20%EB%8B%A8%EB%B0%B1%EC%A7%88%20(%EC%B9%B4%EB%9D%BC%EB%A9%9C%20%EC%B4%88%EC%BD%94)&prevQuery=%EB%A7%88%EC%9D%B4%EB%B0%80%20%EB%89%B4%ED%94%84%EB%A1%9C%ED%8B%B4%EB%B0%94&vertical=search",
-    "officialUrl": "https://www.myprotein.co.kr/c/nutrition/kr-healthy-food-drinks/?utm_source=naver&utm_medium=cpc&affil=mpppc"
+    "officialUrl": "https://www.myprotein.co.kr/c/nutrition/kr-healthy-food-drinks/?utm_source=naver&utm_medium=cpc&affil=mpppc",
+    "fat": 2.6,
+    "sodium": 220
   },
   {
     "slug": "myprotein-soft-strawberry-yogurt",
     "brand": "마이프로틴",
     "name": "소프트 단백질바 (딸기 요거트)",
-    "capacity": "50g",
+    "capacity": "45g",
     "variant": "일반",
     "tags": [
       "바"
     ],
-    "proteinPerServing": 12,
-    "calories": 210,
-    "sugar": 8,
-    "density": "5.71g/100kcal",
+    "proteinPerServing": 15,
+    "calories": 127,
+    "sugar": 1,
+    "density": "11.81g/100kcal",
     "productUrl": "#",
     "productType": "bar",
     "gradeTags": [],
     "coupangUrl": "https://link.coupang.com/a/fg2fgPewxM",
     "naverUrl": "https://search.shopping.naver.com/search/all?query=%EB%A7%88%EC%9D%B4%ED%94%84%EB%A1%9C%ED%8B%B4%20%EC%86%8C%ED%94%84%ED%8A%B8%20%EB%8B%A8%EB%B0%B1%EC%A7%88%20(%EB%94%B8%EA%B8%B0%20%EC%9A%94%EA%B1%B0%ED%8A%B8)&prevQuery=%EB%A7%88%EC%9D%B4%ED%94%84%EB%A1%9C%ED%8B%B4%20%EC%86%8C%ED%94%84%ED%8A%B8%20%EB%8B%A8%EB%B0%B1%EC%A7%88%20(%EB%A0%88%EB%AA%AC%20%EC%96%BC%EA%B7%B8%EB%A0%88%EC%9D%B4)&vertical=search",
-    "officialUrl": "https://www.myprotein.co.kr/c/nutrition/kr-healthy-food-drinks/?utm_source=naver&utm_medium=cpc&affil=mpppc"
+    "officialUrl": "https://www.myprotein.co.kr/c/nutrition/kr-healthy-food-drinks/?utm_source=naver&utm_medium=cpc&affil=mpppc",
+    "fat": 2.7,
+    "sodium": 190
   },
   {
     "slug": "proteinbangatgan-harudanbaekbar-jetchococake",
@@ -927,15 +1011,17 @@
       "바"
     ],
     "proteinPerServing": 12,
-    "calories": 138,
+    "calories": 148,
     "sugar": 3,
-    "density": "8.7g/100kcal",
+    "density": "8.1g/100kcal",
     "productUrl": "#",
     "productType": "bar",
     "gradeTags": [],
     "coupangUrl": "https://link.coupang.com/a/fg2fSavbyu",
     "naverUrl": "https://search.shopping.naver.com/search/all?query=%ED%95%98%EB%A3%A8%EB%8B%A8%EB%B0%B1%EB%B0%94%20(%EC%A0%9C%ED%8A%B8%EC%B4%88%EC%BD%94%EC%BC%80%EC%9D%B4%ED%81%AC)&prevQuery=%ED%95%98%EB%A3%A8%EB%8B%A8%EB%B0%B1%EB%B0%94%20(%EC%B9%98%EC%A6%88%EB%B2%A0%EB%A6%AC)&vertical=search",
-    "officialUrl": "https://dailyprotein.co.kr/product/list.html?cate_no=57"
+    "officialUrl": "https://dailyprotein.co.kr/product/list.html?cate_no=57",
+    "fat": 8,
+    "sodium": 105
   },
   {
     "slug": "dryou-proteinbar-bite-crunch",
@@ -967,15 +1053,17 @@
       "바"
     ],
     "proteinPerServing": 12,
-    "calories": 230,
-    "sugar": 9,
-    "density": "5.22g/100kcal",
+    "calories": 249,
+    "sugar": 10,
+    "density": "4.82g/100kcal",
     "productUrl": "#",
     "productType": "bar",
     "gradeTags": [],
     "coupangUrl": "https://link.coupang.com/a/fg2gS63kyG",
     "naverUrl": "https://search.shopping.naver.com/search/all?query=%EB%8B%A5%ED%84%B0%EC%9C%A0%20%EB%8B%A8%EB%B0%B1%EC%A7%88%EB%B0%94%2050g%2C%201%EA%B0%9C%EC%9E%85%2C%201%EA%B0%9C&prevQuery=%EB%8B%A5%ED%84%B0%EC%9C%A0%20%EB%8B%A8%EB%B0%B1%EC%A7%88%EB%B0%94&vertical=search",
-    "officialUrl": "https://dryoumall.com/product/list.html?cate_no=44"
+    "officialUrl": "https://dryoumall.com/product/list.html?cate_no=44",
+    "fat": 13,
+    "sodium": 105
   },
   {
     "slug": "dryou-proteinbar-pro-bite-choco-classic",
@@ -1014,7 +1102,9 @@
     "productType": "bar",
     "gradeTags": [],
     "coupangUrl": "https://www.coupang.com/vp/products/8802152487?itemId=25631675250&vendorItemId=92621811720&q=%EB%8B%A8%EB%B0%B1%ED%95%98%EB%8B%88%20%ED%94%84%EB%A1%9C%ED%8B%B4%EB%B0%94%20(%EC%B4%88%EC%BD%94)&searchId=b7e3ca38724376&sourceType=search&itemsCount=36&searchRank=0&rank=0&traceId=mmyla392",
-    "naverUrl": "https://search.shopping.naver.com/search/all?query=%EB%8B%A8%EB%B0%B1%ED%95%98%EB%8B%88%20%ED%94%84%EB%A1%9C%ED%8B%B4%EB%B0%94%203%EC%A2%85%20%ED%83%9D12%EA%B0%9C%20%EC%8B%9C%EA%B7%B8%EB%8B%88%EC%B2%98%20%EB%B2%A0%EB%A6%AC%20%EC%B4%88%EC%BD%94&prevQuery=%EB%8B%A8%EB%B0%B1%ED%95%98%EB%8B%88%20%ED%94%84%EB%A1%9C%ED%8B%B4%EB%B0%94%20%EB%B2%A0%EB%A6%AC&vertical=search"
+    "naverUrl": "https://search.shopping.naver.com/search/all?query=%EB%8B%A8%EB%B0%B1%ED%95%98%EB%8B%88%20%ED%94%84%EB%A1%9C%ED%8B%B4%EB%B0%94%203%EC%A2%85%20%ED%83%9D12%EA%B0%9C%20%EC%8B%9C%EA%B7%B8%EB%8B%88%EC%B2%98%20%EB%B2%A0%EB%A6%AC%20%EC%B4%88%EC%BD%94&prevQuery=%EB%8B%A8%EB%B0%B1%ED%95%98%EB%8B%88%20%ED%94%84%EB%A1%9C%ED%8B%B4%EB%B0%94%20%EB%B2%A0%EB%A6%AC&vertical=search",
+    "fat": 4.6,
+    "sodium": 190
   },
   {
     "slug": "danbaekhani-protein-bar-signature-31",
@@ -1033,7 +1123,9 @@
     "productType": "bar",
     "gradeTags": [],
     "coupangUrl": "https://www.coupang.com/vp/products/8802146213?itemId=25631627100&vendorItemId=92621759636&q=%EB%8B%A8%EB%B0%B1%ED%95%98%EB%8B%88+%ED%94%84%EB%A1%9C%ED%8B%B4%EB%B0%94+%EC%8B%9C%EA%B7%B8%EB%8B%88%EC%B2%98&searchId=eed4cf69728656&sourceType=search&itemsCount=36&searchRank=0&rank=0&traceId=mmylbilt",
-    "naverUrl": "https://search.shopping.naver.com/search/all?query=%EB%8B%A8%EB%B0%B1%ED%95%98%EB%8B%88%20%ED%94%84%EB%A1%9C%ED%8B%B4%EB%B0%94%20%EC%8B%9C%EA%B7%B8%EB%8B%88%EC%B2%98%2031g&prevQuery=%EB%8B%A8%EB%B0%B1%ED%95%98%EB%8B%88%20%ED%94%84%EB%A1%9C%ED%8B%B4%EB%B0%94%20%EC%8B%9C%EA%B7%B8%EB%8B%88%EC%B2%98&vertical=search"
+    "naverUrl": "https://search.shopping.naver.com/search/all?query=%EB%8B%A8%EB%B0%B1%ED%95%98%EB%8B%88%20%ED%94%84%EB%A1%9C%ED%8B%B4%EB%B0%94%20%EC%8B%9C%EA%B7%B8%EB%8B%88%EC%B2%98%2031g&prevQuery=%EB%8B%A8%EB%B0%B1%ED%95%98%EB%8B%88%20%ED%94%84%EB%A1%9C%ED%8B%B4%EB%B0%94%20%EC%8B%9C%EA%B7%B8%EB%8B%88%EC%B2%98&vertical=search",
+    "fat": 2.3,
+    "sodium": 175
   },
   {
     "slug": "oneuldanbaek-milkchoco-strawberry-bar-48",
@@ -1053,7 +1145,9 @@
     "gradeTags": [],
     "coupangUrl": "https://link.coupang.com/a/fg2kIuOQPQ",
     "naverUrl": "https://search.shopping.naver.com/search/all?query=%EC%98%A4%EB%8A%98%EB%8B%A8%EB%B0%B1%20%EB%B0%80%ED%81%AC%EC%B4%88%EC%BD%94%20%EC%8A%A4%ED%8A%B8%EB%A1%9C%EB%B2%A0%EB%A6%AC%EB%B0%94&prevQuery=%EC%98%A4%EB%8A%98%EB%8B%A8%EB%B0%B1%20%EB%B0%80%ED%81%AC%EC%B4%88%EC%BD%94%20%EC%8A%A4%ED%8A%B8%EB%A1%9C%EB%B2%A0%EB%A6%AC&vertical=search",
-    "officialUrl": "https://brand.naver.com/harim/category/1a6d3a6007e143a59ecb3ae9b3418fc2?cp=2"
+    "officialUrl": "https://brand.naver.com/harim/category/1a6d3a6007e143a59ecb3ae9b3418fc2?cp=2",
+    "fat": 7,
+    "sodium": 280
   },
   {
     "slug": "oneuldanbaek-milkchoco-cheesecake-bar-48",
@@ -1073,7 +1167,9 @@
     "gradeTags": [],
     "coupangUrl": "https://link.coupang.com/a/fg2luAbzlB",
     "naverUrl": "https://search.shopping.naver.com/search/all?query=%EC%98%A4%EB%8A%98%EB%8B%A8%EB%B0%B1%20%EB%B0%80%ED%81%AC%EC%B4%88%EC%BD%94%20%EC%B9%98%EC%A6%88%EC%BC%80%EC%9D%B4%ED%81%AC&prevQuery=%EC%98%A4%EB%8A%98%EB%8B%A8%EB%B0%B1%20%EB%B0%80%ED%81%AC%EC%B4%88%EC%BD%94%20%EC%B9%B4%EB%9D%BC%EB%A9%9C%EB%B0%94&vertical=search",
-    "officialUrl": "https://brand.naver.com/harim/category/1a6d3a6007e143a59ecb3ae9b3418fc2?cp=2"
+    "officialUrl": "https://brand.naver.com/harim/category/1a6d3a6007e143a59ecb3ae9b3418fc2?cp=2",
+    "fat": 6,
+    "sodium": 270
   },
   {
     "slug": "oneuldanbaek-milkchoco-caramel-bar-48",
@@ -1093,7 +1189,9 @@
     "gradeTags": [],
     "coupangUrl": "https://link.coupang.com/a/fg2l1yzC8W",
     "naverUrl": "https://search.shopping.naver.com/search/all?query=%EC%98%A4%EB%8A%98%EB%8B%A8%EB%B0%B1%20%EB%B0%80%ED%81%AC%EC%B4%88%EC%BD%94%20%EC%B9%B4%EB%9D%BC%EB%A9%9C%EB%B0%94&prevQuery=%EC%98%A4%EB%8A%98%EB%8B%A8%EB%B0%B1%20%EB%B0%80%ED%81%AC%EC%B4%88%EC%BD%94%20%ED%94%BC%EC%8A%A4%ED%83%80%EC%B9%98%EC%98%A4&vertical=search",
-    "officialUrl": "https://brand.naver.com/harim/category/1a6d3a6007e143a59ecb3ae9b3418fc2?cp=2"
+    "officialUrl": "https://brand.naver.com/harim/category/1a6d3a6007e143a59ecb3ae9b3418fc2?cp=2",
+    "fat": 7,
+    "sodium": 270
   },
   {
     "slug": "oneuldanbaek-milkchoco-pistachio-bar-48",
@@ -1113,7 +1211,9 @@
     "gradeTags": [],
     "coupangUrl": "https://link.coupang.com/a/fg2mRMldv2",
     "naverUrl": "https://search.shopping.naver.com/search/all?query=%EC%98%A4%EB%8A%98%EB%8B%A8%EB%B0%B1%20%EB%B0%80%ED%81%AC%EC%B4%88%EC%BD%94%20%ED%94%BC%EC%8A%A4%ED%83%80%EC%B9%98%EC%98%A4&prevQuery=%EC%98%A4%EB%8A%98%EB%8B%A8%EB%B0%B1%20%EB%B0%80%ED%81%AC%EC%B4%88%EC%BD%94&vertical=search",
-    "officialUrl": "https://brand.naver.com/harim/category/1a6d3a6007e143a59ecb3ae9b3418fc2?cp=2"
+    "officialUrl": "https://brand.naver.com/harim/category/1a6d3a6007e143a59ecb3ae9b3418fc2?cp=2",
+    "fat": 7,
+    "sodium": 250
   },
   {
     "slug": "danbaekhani-protein-bar-berry-30",
@@ -1124,15 +1224,17 @@
     "tags": [
       "바"
     ],
-    "proteinPerServing": 10,
+    "proteinPerServing": 12,
     "calories": 120,
-    "sugar": 3,
-    "density": "8.33g/100kcal",
+    "sugar": 1,
+    "density": "10.00g/100kcal",
     "productUrl": "#",
     "productType": "bar",
     "gradeTags": [],
     "coupangUrl": "https://www.coupang.com/vp/products/8802155167?itemId=26192923642&vendorItemId=93172255273&q=%EB%8B%A8%EB%B0%B1%ED%95%98%EB%8B%88+%ED%94%84%EB%A1%9C%ED%8B%B4%EB%B0%94+%28%EB%B2%A0%EB%A6%AC%29&searchId=2540a897729015&sourceType=search&itemsCount=36&searchRank=0&rank=0&traceId=mmyl9t83",
-    "naverUrl": "https://search.shopping.naver.com/search/all?query=%EB%8B%A8%EB%B0%B1%ED%95%98%EB%8B%88%20%ED%94%84%EB%A1%9C%ED%8B%B4%EB%B0%94%20%EB%B2%A0%EB%A6%AC%2C%2033g%2C%2020%EA%B0%9C&prevQuery=%EB%8B%A8%EB%B0%B1%ED%95%98%EB%8B%88%20%ED%94%84%EB%A1%9C%ED%8B%B4%EB%B0%94%20(%EB%B2%A0%EB%A6%AC)&vertical=search"
+    "naverUrl": "https://search.shopping.naver.com/search/all?query=%EB%8B%A8%EB%B0%B1%ED%95%98%EB%8B%88%20%ED%94%84%EB%A1%9C%ED%8B%B4%EB%B0%94%20%EB%B2%A0%EB%A6%AC%2C%2033g%2C%2020%EA%B0%9C&prevQuery=%EB%8B%A8%EB%B0%B1%ED%95%98%EB%8B%88%20%ED%94%84%EB%A1%9C%ED%8B%B4%EB%B0%94%20(%EB%B2%A0%EB%A6%AC)&vertical=search",
+    "fat": 2,
+    "sodium": 200
   },
   {
     "slug": "danbaekhani-protein-bar-peanutbutter-38",
@@ -1145,12 +1247,14 @@
     ],
     "proteinPerServing": 12,
     "calories": 170,
-    "sugar": 4,
+    "sugar": 1,
     "density": "7.06g/100kcal",
     "productUrl": "#",
     "productType": "bar",
     "gradeTags": [],
-    "coupangUrl": "https://www.coupang.com/vp/products/9183196271?itemId=27283149526&vendorItemId=94249810713"
+    "coupangUrl": "https://www.coupang.com/vp/products/9183196271?itemId=27283149526&vendorItemId=94249810713",
+    "fat": 6,
+    "sodium": 180
   },
   {
     "slug": "danbaekhani-protein-bar-matcha-choco-38",
@@ -1208,7 +1312,9 @@
     "gradeTags": [],
     "coupangUrl": "https://link.coupang.com/a/fg2ra3wwpg",
     "naverUrl": "https://search.shopping.naver.com/search/all?query=%EB%9E%A9%EB%85%B8%EC%89%AC%20%EB%8B%A8%EB%B0%B1%EC%BF%A0%ED%82%A4%EB%B0%94%20%EB%B0%80%ED%81%AC%ED%8B%B0&prevQuery=%EC%85%80%EB%A0%89%EC%8A%A4%20%ED%94%84%EB%A1%9C%ED%8B%B4%20%EB%84%88%EC%B8%A0%EB%B0%94&vertical=search",
-    "officialUrl": "https://labnosh.com/category/%EA%B0%80%EB%B2%BC%EC%9A%B4-%EA%B0%84%EC%8B%9D/63/"
+    "officialUrl": "https://labnosh.com/category/%EA%B0%80%EB%B2%BC%EC%9A%B4-%EA%B0%84%EC%8B%9D/63/",
+    "fat": 4,
+    "sodium": 115
   },
   {
     "slug": "labnosh-cookiebar-blackcookie-35",
@@ -1228,7 +1334,9 @@
     "gradeTags": [],
     "coupangUrl": "https://link.coupang.com/a/fg2qdoyDpQ",
     "naverUrl": "https://search.shopping.naver.com/search/all?query=%EB%9E%A9%EB%85%B8%EC%89%AC%20%EB%8B%A8%EB%B0%B1%EC%BF%A0%ED%82%A4%EB%B0%94%20%EB%B8%94%EB%9E%99%EC%BF%A0%ED%82%A4&prevQuery=%EB%9E%A9%EB%85%B8%EC%89%AC%20%EB%8B%A8%EB%B0%B1%EC%BF%A0%ED%82%A4%EB%B0%94%20%EB%B0%80%ED%81%AC%ED%8B%B0&vertical=search",
-    "officialUrl": "https://labnosh.com/category/%EA%B0%80%EB%B2%BC%EC%9A%B4-%EA%B0%84%EC%8B%9D/63/"
+    "officialUrl": "https://labnosh.com/category/%EA%B0%80%EB%B2%BC%EC%9A%B4-%EA%B0%84%EC%8B%9D/63/",
+    "fat": 3.7,
+    "sodium": 55
   },
   {
     "slug": "labnosh-cookiebar-cookie-cream-35",
@@ -1248,7 +1356,9 @@
     "gradeTags": [],
     "coupangUrl": "https://link.coupang.com/a/fg2rPsrAhU",
     "naverUrl": "https://search.shopping.naver.com/search/all?query=%EB%9E%A9%EB%85%B8%EC%89%AC%20%EB%8B%A8%EB%B0%B1%EC%BF%A0%ED%82%A4%EB%B0%94%20%EC%BF%A0%ED%82%A4%EC%95%A4%ED%81%AC%EB%A6%BC&prevQuery=%EB%9E%A9%EB%85%B8%EC%89%AC%20%EB%8B%A8%EB%B0%B1%EC%BF%A0%ED%82%A4%EB%B0%94%20%EB%B8%94%EB%9E%99%EC%BF%A0%ED%82%A4&vertical=search",
-    "officialUrl": "https://labnosh.com/category/%EA%B0%80%EB%B2%BC%EC%9A%B4-%EA%B0%84%EC%8B%9D/63/"
+    "officialUrl": "https://labnosh.com/category/%EA%B0%80%EB%B2%BC%EC%9A%B4-%EA%B0%84%EC%8B%9D/63/",
+    "fat": 3.2,
+    "sodium": 55
   },
   {
     "slug": "labnosh-cookiebar-peanutbutter-35",
@@ -1268,7 +1378,9 @@
     "gradeTags": [],
     "coupangUrl": "https://link.coupang.com/a/fg2swO2kYS",
     "naverUrl": "https://search.shopping.naver.com/search/all?query=%EB%9E%A9%EB%85%B8%EC%89%AC%20%EB%8B%A8%EB%B0%B1%EC%BF%A0%ED%82%A4%EB%B0%94%20%ED%94%BC%EB%84%9B%EB%B2%84%ED%84%B0%2035g&prevQuery=%EB%9E%A9%EB%85%B8%EC%89%AC%20%EB%8B%A8%EB%B0%B1%EC%BF%A0%ED%82%A4%EB%B0%94%20%ED%94%BC%EB%84%9B%EB%B2%84%ED%84%B0%2035g%20x%2012%EA%B0%9C%EC%9E%85%2012%EA%B0%9C%20%EB%8B%A8%EB%B0%B1%EB%B0%94%20%ED%94%84%EB%A1%9C%ED%8B%B4%EB%B0%94&vertical=search",
-    "officialUrl": "https://labnosh.com/category/%EA%B0%80%EB%B2%BC%EC%9A%B4-%EA%B0%84%EC%8B%9D/63/"
+    "officialUrl": "https://labnosh.com/category/%EA%B0%80%EB%B2%BC%EC%9A%B4-%EA%B0%84%EC%8B%9D/63/",
+    "fat": 6,
+    "sodium": 105
   },
   {
     "slug": "cralo-plant-proteinbar",
@@ -1280,15 +1392,17 @@
       "바"
     ],
     "proteinPerServing": 10,
-    "calories": 185,
-    "sugar": 7,
-    "density": "5.41g/100kcal",
+    "calories": 240,
+    "sugar": 9,
+    "density": "4.17g/100kcal",
     "productUrl": "#",
     "productType": "bar",
     "gradeTags": [],
     "coupangUrl": "https://www.coupang.com/vp/products/6204369926?itemId=12329742710&vendorItemId=92437079941&q=%EC%94%A8%EC%95%8C%EB%A1%9C+%EC%8B%9D%EB%AC%BC%EC%84%B1%EB%8B%A8%EB%B0%B1%EC%A7%88%EB%B0%94&searchId=61f0177e910252&sourceType=search&itemsCount=36&searchRank=0&rank=0&traceId=mmyl8rat",
     "naverUrl": "https://search.shopping.naver.com/search/all?query=%EC%94%A8%EC%95%8C%EB%A1%9C%20%EC%8B%9D%EB%AC%BC%EC%84%B1%EB%8B%A8%EB%B0%B1%EC%A7%88%EB%B0%94&prevQuery=%EC%8B%9D%EB%AC%BC%EC%84%B1%EB%8B%A8%EB%B0%B1%EC%A7%88%EB%B0%94&vertical=search",
-    "officialUrl": "https://smartstore.naver.com/crfood/search?q=%EC%8B%9D%EB%AC%BC%EC%84%B1"
+    "officialUrl": "https://smartstore.naver.com/crfood/search?q=%EC%8B%9D%EB%AC%BC%EC%84%B1",
+    "fat": 16,
+    "sodium": 58
   },
   {
     "slug": "crown-highprotein-chocobar",
@@ -1348,7 +1462,9 @@
     "gradeTags": [],
     "coupangUrl": "https://link.coupang.com/a/fg2vkuGroy",
     "naverUrl": "https://search.shopping.naver.com/search/all?query=%EC%98%AC%EB%9D%BC%20%EC%B8%84%EC%9D%B4%ED%94%84%EB%A1%9C%ED%8B%B4%EB%B0%94%20(%EB%B2%A0%EB%A6%AC%EC%95%84%EB%AA%AC%EB%93%9C)&prevQuery=%EC%98%A4%EB%8A%98%EB%8B%A8%EB%B0%B1%20%ED%94%84%EB%A1%9C%ED%8B%B4%EB%B0%94%20(%EC%B4%88%EC%BD%9C%EB%A6%BF%ED%8D%BC%EC%A7%80)&vertical=search",
-    "officialUrl": "https://organica.kr/product/list.html?cate_no=29"
+    "officialUrl": "https://organica.kr/product/list.html?cate_no=29",
+    "fat": 5,
+    "sodium": 169
   },
   {
     "slug": "kellogg-protein-granolabar-savory",
@@ -1468,7 +1584,9 @@
     "gradeTags": [],
     "coupangUrl": "https://link.coupang.com/a/fg2Ac4fOx2",
     "naverUrl": "https://search.shopping.naver.com/search/all?query=%EC%98%AC%EB%9D%BC%20%EC%B8%84%EC%9D%B4%ED%94%84%EB%A1%9C%ED%8B%B4%EB%B0%94%20(%ED%94%BC%EB%84%9B%EC%B9%B4%EC%B9%B4%EC%98%A4)&prevQuery=%EC%98%AC%EB%9D%BC%20%EC%B8%84%EC%9D%B4%ED%94%84%EB%A1%9C%ED%8B%B4%EB%B0%94%20(%EB%B2%A0%EB%A6%AC%EC%95%84%EB%AA%AC%EB%93%9C)&vertical=search",
-    "officialUrl": "https://organica.kr/product/list.html?cate_no=29"
+    "officialUrl": "https://organica.kr/product/list.html?cate_no=29",
+    "fat": 3.9,
+    "sodium": 154
   },
   {
     "slug": "post-proteinbar-mini",
@@ -1488,7 +1606,9 @@
     "gradeTags": [],
     "coupangUrl": "https://link.coupang.com/a/fg2AN90mC4",
     "naverUrl": "https://search.shopping.naver.com/search/all?query=%ED%8F%AC%EC%8A%A4%ED%8A%B8%20%EB%8B%A8%EB%B0%B1%EC%A7%88%EB%B0%94%20%EB%AF%B8%EB%8B%88%2011g%2C%2021%EA%B0%9C%EC%9E%85%2C%206%EA%B0%9C&prevQuery=%ED%8F%AC%EC%8A%A4%ED%8A%B8%20%EB%8B%A8%EB%B0%B1%EC%A7%88%EB%B0%94%20%EB%AF%B8%EB%8B%88&vertical=search",
-    "officialUrl": "https://brand.naver.com/dongsuh/category/9816c4067d6c4d9db2e7b9ef54a6a93a?cp=1"
+    "officialUrl": "https://brand.naver.com/dongsuh/category/9816c4067d6c4d9db2e7b9ef54a6a93a?cp=1",
+    "fat": 2.8,
+    "sodium": 45
   },
   {
     "slug": "gomgom-proteinbar-mini",
@@ -1507,7 +1627,9 @@
     "productType": "bar",
     "gradeTags": [],
     "coupangUrl": "https://link.coupang.com/a/fg2BkG9d3k",
-    "naverUrl": "https://search.shopping.naver.com/search/all?query=%EA%B3%B0%EA%B3%B0%20%EB%8B%A8%EB%B0%B1%EC%A7%88%EB%B0%94%20%EB%AF%B8%EB%8B%88&prevQuery=%EB%8B%A5%ED%84%B0%EC%9C%A0%20%ED%94%84%EB%A1%9C%20%EB%8B%A8%EB%B0%B1%EC%A7%88%EB%B0%94%20%ED%81%AC%EB%9F%B0%EC%B9%98%2070g%2C%201%EA%B0%9C%EC%9E%85%2C%201%EA%B0%9C&vertical=search"
+    "naverUrl": "https://search.shopping.naver.com/search/all?query=%EA%B3%B0%EA%B3%B0%20%EB%8B%A8%EB%B0%B1%EC%A7%88%EB%B0%94%20%EB%AF%B8%EB%8B%88&prevQuery=%EB%8B%A5%ED%84%B0%EC%9C%A0%20%ED%94%84%EB%A1%9C%20%EB%8B%A8%EB%B0%B1%EC%A7%88%EB%B0%94%20%ED%81%AC%EB%9F%B0%EC%B9%98%2070g%2C%201%EA%B0%9C%EC%9E%85%2C%201%EA%B0%9C&vertical=search",
+    "fat": 3,
+    "sodium": 15
   },
   {
     "slug": "nobrand-proteinbar-mini",
@@ -1527,7 +1649,9 @@
     "gradeTags": [],
     "coupangUrl": "https://link.coupang.com/a/fg2BRZBO4y",
     "naverUrl": "https://search.shopping.naver.com/search/all?query=%EB%85%B8%EB%B8%8C%EB%9E%9C%EB%93%9C%20%EB%8B%A8%EB%B0%B1%EC%A7%88%EB%B0%94%20%EB%AF%B8%EB%8B%88&prevQuery=%EB%85%B8%EB%B8%8C%EB%9E%9C%EB%93%9C%20%EB%8B%A8%EB%B0%B1%EC%A7%88%EB%B0%94%20%EC%B4%88%EC%BD%94&vertical=search",
-    "officialUrl": "https://emart.ssg.com/entity/nobrands.ssg"
+    "officialUrl": "https://emart.ssg.com/entity/nobrands.ssg",
+    "fat": 8.1,
+    "sodium": 105
   },
   {
     "slug": "lottewellfood-easyprotein-highprotein-crispy",
@@ -1547,7 +1671,9 @@
     "gradeTags": [],
     "coupangUrl": "https://link.coupang.com/a/fg2Dx7tij6",
     "naverUrl": "https://search.shopping.naver.com/search/all?query=%EC%9D%B4%EC%A7%80%ED%94%84%EB%A1%9C%ED%8B%B4%20%EA%B3%A0%EB%8B%A8%EB%B0%B1%EC%A7%88%EB%B0%94%20(%ED%81%AC%EB%A6%AC%EC%8A%A4%ED%94%BC)&prevQuery=%EC%9D%B4%EC%A7%80%ED%94%84%EB%A1%9C%ED%8B%B4%20%EC%97%90%EB%84%88%EC%A7%80%EB%8B%A8%EB%B0%B1%EC%A7%88%EB%B0%94&vertical=search",
-    "officialUrl": "https://www.lottemart.com/"
+    "officialUrl": "https://www.lottemart.com/",
+    "fat": 7,
+    "sodium": 300
   },
   {
     "slug": "lottewellfood-easyprotein-energy-bar",
@@ -1567,7 +1693,9 @@
     "gradeTags": [],
     "coupangUrl": "https://link.coupang.com/a/fg2D9gXEDk",
     "naverUrl": "https://search.shopping.naver.com/search/all?query=%EC%9D%B4%EC%A7%80%ED%94%84%EB%A1%9C%ED%8B%B4%20%EC%97%90%EB%84%88%EC%A7%80%EB%8B%A8%EB%B0%B1%EC%A7%88%EB%B0%94&prevQuery=%EB%9E%A9%EB%85%B8%EC%89%AC%20%ED%91%B8%EB%93%9C%EB%B0%94%20%EB%A7%88%EC%9D%BC%EB%93%9C%20%EC%B4%88%EC%BD%94&vertical=search",
-    "officialUrl": "https://www.lottemart.com/"
+    "officialUrl": "https://www.lottemart.com/",
+    "fat": 11,
+    "sodium": 120
   },
   {
     "slug": "hymune-protein-balance-bar",
@@ -1587,7 +1715,9 @@
     "gradeTags": [],
     "coupangUrl": "https://link.coupang.com/a/fg2EKN2Ykm",
     "naverUrl": "https://search.shopping.naver.com/search/all?query=%ED%95%98%EC%9D%B4%EB%AE%A8%20%ED%94%84%EB%A1%9C%ED%8B%B4%20%EB%B0%B8%EB%9F%B0%EC%8A%A4%20%EB%8B%A8%EB%B0%B1%EC%A7%88%EB%B0%94%20300g%2C%201%EA%B0%9C%EC%9E%85%2C%201%EA%B0%9C&prevQuery=%ED%95%98%EC%9D%B4%EB%AE%A8%20%ED%94%84%EB%A1%9C%ED%8B%B4%EB%B0%B8%EB%9F%B0%EC%8A%A4%20%EB%8B%A8%EB%B0%B1%EC%A7%88%EB%B0%94&vertical=search",
-    "officialUrl": "https://brand.naver.com/ildongfoodis/search?q=%ED%94%84%EB%A1%9C%ED%8B%B4%EB%B0%94"
+    "officialUrl": "https://brand.naver.com/ildongfoodis/search?q=%ED%94%84%EB%A1%9C%ED%8B%B4%EB%B0%94",
+    "fat": 4,
+    "sodium": 124
   },
   {
     "slug": "myprotein-6layer-triple-chocolate-fudge-60",
@@ -1607,7 +1737,9 @@
     "gradeTags": [],
     "naverUrl": "https://search.shopping.naver.com/search/all?query=%EB%A7%88%EC%9D%B4%ED%94%84%EB%A1%9C%ED%8B%B4%206%20%EB%A0%88%EC%9D%B4%EC%96%B4%20%ED%94%84%EB%A1%9C%ED%8B%B4%EB%B0%94%20(%ED%8A%B8%EB%A6%AC%ED%94%8C%20%EC%B4%88%EC%BD%9C%EB%A6%BF%20%ED%8D%BC%EC%A7%80)&prevQuery=%ED%95%98%EC%9D%B4%EB%AE%A8%20%ED%94%84%EB%A1%9C%ED%8B%B4%20%EB%B0%B8%EB%9F%B0%EC%8A%A4%20%EB%8B%A8%EB%B0%B1%EC%A7%88%EB%B0%94%20300g%2C%201%EA%B0%9C%EC%9E%85%2C%201%EA%B0%9C&vertical=search",
     "officialUrl": "https://www.myprotein.co.kr/c/nutrition/healthy-food-drinks/protein-bars/?utm_source=naver&utm_medium=cpc&affil=mpppc",
-    "coupangUrl": "https://link.coupang.com/a/gaIdNRGs2u"
+    "coupangUrl": "https://link.coupang.com/a/gaIdNRGs2u",
+    "fat": 6.2,
+    "sodium": 84
   },
   {
     "slug": "myprotein-protein-wafer-42",
@@ -1627,7 +1759,8 @@
     "gradeTags": [],
     "coupangUrl": "https://link.coupang.com/a/fg2FwFnOKG",
     "naverUrl": "https://search.shopping.naver.com/search/all?query=%EB%A7%88%EC%9D%B4%ED%94%84%EB%A1%9C%ED%8B%B4%20%ED%94%84%EB%A1%9C%ED%8B%B4%20%EC%99%80%ED%8D%BC&prevQuery=%EB%A7%88%EC%9D%B4%ED%94%84%EB%A1%9C%ED%8B%B4%206%20%EB%A0%88%EC%9D%B4%EC%96%B4%20%ED%94%84%EB%A1%9C%ED%8B%B4%EB%B0%94%20(%ED%8A%B8%EB%A6%AC%ED%94%8C%20%EC%B4%88%EC%BD%9C%EB%A6%BF%20%ED%8D%BC%EC%A7%80)&vertical=search",
-    "officialUrl": "https://www.myprotein.co.kr/c/nutrition/healthy-food-drinks/protein-bars/?utm_source=naver&utm_medium=cpc&affil=mpppc"
+    "officialUrl": "https://www.myprotein.co.kr/c/nutrition/healthy-food-drinks/protein-bars/?utm_source=naver&utm_medium=cpc&affil=mpppc",
+    "fat": 9
   },
   {
     "slug": "balance-meal-protein-bar-matcha-choco-38",
@@ -1647,7 +1780,9 @@
     "gradeTags": [],
     "coupangUrl": "https://link.coupang.com/a/fg2GbhI0K4",
     "naverUrl": "https://search.shopping.naver.com/search/all?query=CJ%EC%A0%9C%EC%9D%BC%EC%A0%9C%EB%8B%B9%20%EB%B0%B8%EB%9F%B0%EC%8A%A4%EB%B0%80%20%ED%94%84%EB%A1%9C%ED%8B%B4%EB%B0%94%20%EB%A7%90%EC%B0%A8&prevQuery=CJ%EC%A0%9C%EC%9D%BC%EC%A0%9C%EB%8B%B9%20%EB%B0%B8%EB%9F%B0%EC%8A%A4%EB%B0%80%20%ED%94%84%EB%A1%9C%ED%8B%B4%EB%B0%94&vertical=search",
-    "officialUrl": "https://www.cjthemarket.com/pc/search?beforeAction=%2Fpc%2Fsearch%3Fwid1%3Dgnb_search&sort=RANK&collection=ALL&range=A&searchAction=D&query=%ED%94%84%EB%A1%9C%ED%8B%B4%EB%B0%94"
+    "officialUrl": "https://www.cjthemarket.com/pc/search?beforeAction=%2Fpc%2Fsearch%3Fwid1%3Dgnb_search&sort=RANK&collection=ALL&range=A&searchAction=D&query=%ED%94%84%EB%A1%9C%ED%8B%B4%EB%B0%94",
+    "fat": 6,
+    "sodium": 180
   },
   {
     "slug": "balance-meal-protein-bar-peanutbutter-34",
@@ -1667,7 +1802,9 @@
     "gradeTags": [],
     "coupangUrl": "https://link.coupang.com/a/fg2GVwHnQO",
     "naverUrl": "https://search.shopping.naver.com/search/all?query=CJ%EC%A0%9C%EC%9D%BC%EC%A0%9C%EB%8B%B9%20%EB%B0%B8%EB%9F%B0%EC%8A%A4%EB%B0%80%20%ED%94%84%EB%A1%9C%ED%8B%B4%EB%B0%94%20%ED%94%BC%EB%84%9B%EB%B2%84%ED%84%B0&prevQuery=CJ%EC%A0%9C%EC%9D%BC%EC%A0%9C%EB%8B%B9%20%EB%B0%B8%EB%9F%B0%EC%8A%A4%EB%B0%80%20%ED%94%84%EB%A1%9C%ED%8B%B4%EB%B0%94%20%EB%A7%90%EC%B0%A8&vertical=search",
-    "officialUrl": "https://www.cjthemarket.com/pc/search?beforeAction=%2Fpc%2Fsearch%3Fwid1%3Dgnb_search&sort=RANK&collection=ALL&range=A&searchAction=D&query=%ED%94%84%EB%A1%9C%ED%8B%B4%EB%B0%94"
+    "officialUrl": "https://www.cjthemarket.com/pc/search?beforeAction=%2Fpc%2Fsearch%3Fwid1%3Dgnb_search&sort=RANK&collection=ALL&range=A&searchAction=D&query=%ED%94%84%EB%A1%9C%ED%8B%B4%EB%B0%94",
+    "fat": 4.7,
+    "sodium": 190
   },
   {
     "slug": "gomgom-proteinbar-50",
@@ -1687,7 +1824,9 @@
     "gradeTags": [],
     "coupangUrl": "https://link.coupang.com/a/fg2HvwlIt2",
     "naverUrl": "https://search.shopping.naver.com/search/all?where=all&frm=NVSCTAB&query=%EA%B3%B0%EA%B3%B0+%EB%8B%A8%EB%B0%B1%EC%A7%88%EB%B0%94+50g",
-    "officialUrl": "https://www.coupang.com/np/search?q=%EA%B3%B0%EA%B3%B0+%EB%8B%A8%EB%B0%B1%EB%B0%94"
+    "officialUrl": "https://www.coupang.com/np/search?q=%EA%B3%B0%EA%B3%B0+%EB%8B%A8%EB%B0%B1%EB%B0%94",
+    "fat": 14,
+    "sodium": 90
   },
   {
     "slug": "ppaeba-realchoco-proteinbar-dark-40",
@@ -1699,15 +1838,17 @@
       "바"
     ],
     "proteinPerServing": 12,
-    "calories": 145,
+    "calories": 150,
     "sugar": 0,
-    "density": "8.28g/100kcal",
+    "density": "8.00g/100kcal",
     "productUrl": "#",
     "productType": "bar",
     "gradeTags": [],
     "coupangUrl": "https://link.coupang.com/a/fg2IbmLplI",
     "naverUrl": "https://search.shopping.naver.com/search/all?query=%EB%B9%BC%EB%B0%94%20%EB%A6%AC%EC%96%BC%EC%B4%88%EC%BD%9C%EB%A6%BF%20%ED%94%84%EB%A1%9C%ED%8B%B4%EB%B0%94%20%EB%8B%A4%ED%81%AC%2040g&prevQuery=%EA%B3%B0%EA%B3%B0%20%EB%8B%A8%EB%B0%B1%EC%A7%88%EB%B0%94%2050g&vertical=search",
-    "officialUrl": "https://brand.naver.com/healthyplace/category/3b36ce60b9a9432496484c1ee5855d0c?cp=1"
+    "officialUrl": "https://brand.naver.com/healthyplace/category/3b36ce60b9a9432496484c1ee5855d0c?cp=1",
+    "fat": 6,
+    "sodium": 135
   },
   {
     "slug": "ppaeba-realchoco-proteinbar-white-40",
@@ -1727,7 +1868,9 @@
     "gradeTags": [],
     "coupangUrl": "https://link.coupang.com/a/fg2JbiVgYK",
     "naverUrl": "https://search.shopping.naver.com/search/all?query=%EB%B9%BC%EB%B0%94%20%EB%A6%AC%EC%96%BC%EC%B4%88%EC%BD%9C%EB%A6%BF%20%ED%94%84%EB%A1%9C%ED%8B%B4%EB%B0%94%20%ED%99%94%EC%9D%B4%ED%8A%B8%2040g&prevQuery=%EB%B9%BC%EB%B0%94%20%EB%A6%AC%EC%96%BC%EC%B4%88%EC%BD%9C%EB%A6%BF%20%ED%94%84%EB%A1%9C%ED%8B%B4%EB%B0%94%20%EB%8B%A4%ED%81%AC%2040g&vertical=search",
-    "officialUrl": "https://brand.naver.com/healthyplace/category/3b36ce60b9a9432496484c1ee5855d0c?cp=1"
+    "officialUrl": "https://brand.naver.com/healthyplace/category/3b36ce60b9a9432496484c1ee5855d0c?cp=1",
+    "fat": 7,
+    "sodium": 183
   },
   {
     "slug": "ppaeba-realchoco-proteinbar-cookies-cream-40",
@@ -1747,7 +1890,9 @@
     "gradeTags": [],
     "coupangUrl": "https://link.coupang.com/a/fg2J2if8c8",
     "naverUrl": "https://search.shopping.naver.com/search/all?query=%EB%B9%BC%EB%B0%94%20%EB%A6%AC%EC%96%BC%EC%B4%88%EC%BD%9C%EB%A6%BF%20%ED%94%84%EB%A1%9C%ED%8B%B4%EB%B0%94%20%EC%BF%A0%ED%82%A4%EC%95%A4%ED%81%AC%EB%A6%BC%2040g&prevQuery=%EB%B9%BC%EB%B0%94%20%EB%A6%AC%EC%96%BC%EC%B4%88%EC%BD%9C%EB%A6%BF%20%ED%94%84%EB%A1%9C%ED%8B%B4%EB%B0%94%20%ED%99%94%EC%9D%B4%ED%8A%B8%2040g&vertical=search",
-    "officialUrl": "https://brand.naver.com/healthyplace/category/3b36ce60b9a9432496484c1ee5855d0c?cp=1"
+    "officialUrl": "https://brand.naver.com/healthyplace/category/3b36ce60b9a9432496484c1ee5855d0c?cp=1",
+    "fat": 4.4,
+    "sodium": 220
   },
   {
     "slug": "ppaeba-realchoco-proteinbar-greek-yogurt-40",
@@ -1760,14 +1905,16 @@
     ],
     "proteinPerServing": 12,
     "calories": 160,
-    "sugar": 1,
+    "sugar": 1.9,
     "density": "7.50g/100kcal",
     "productUrl": "#",
     "productType": "bar",
     "gradeTags": [],
     "coupangUrl": "https://link.coupang.com/a/fg2KHk8LGm",
     "naverUrl": "https://search.shopping.naver.com/search/all?query=%EB%B9%BC%EB%B0%94%20%EB%A6%AC%EC%96%BC%EC%B4%88%EC%BD%9C%EB%A6%BF%20%ED%94%84%EB%A1%9C%ED%8B%B4%EB%B0%94%20%EA%B7%B8%EB%A6%AD%EC%9A%94%EA%B1%B0%ED%8A%B8%2040g&prevQuery=%EB%B9%BC%EB%B0%94%20%EB%A6%AC%EC%96%BC%EC%B4%88%EC%BD%9C%EB%A6%BF%20%ED%94%84%EB%A1%9C%ED%8B%B4%EB%B0%94%20%EC%BF%A0%ED%82%A4%EC%95%A4%ED%81%AC%EB%A6%BC%2040g&vertical=search",
-    "officialUrl": "https://brand.naver.com/healthyplace/category/3b36ce60b9a9432496484c1ee5855d0c?cp=1"
+    "officialUrl": "https://brand.naver.com/healthyplace/category/3b36ce60b9a9432496484c1ee5855d0c?cp=1",
+    "fat": 8,
+    "sodium": 169
   },
   {
     "slug": "cralo-79-corn-yogurt-bar-25",
@@ -1787,7 +1934,9 @@
     "gradeTags": [],
     "coupangUrl": "https://link.coupang.com/a/fg2LkxujmK",
     "naverUrl": "https://search.shopping.naver.com/search/all?query=%EC%94%A8%EC%95%8C%EB%A1%9C%2079%20%EC%BD%98%EC%9A%94%EA%B5%AC%EB%A5%B4%ED%8A%B8%EB%B0%94%20300g&prevQuery=%EB%B9%BC%EB%B0%94%20%EB%A6%AC%EC%96%BC%EC%B4%88%EC%BD%9C%EB%A6%BF%20%ED%94%84%EB%A1%9C%ED%8B%B4%EB%B0%94%20%EA%B7%B8%EB%A6%AD%EC%9A%94%EA%B1%B0%ED%8A%B8%2040g&vertical=search",
-    "officialUrl": "https://smartstore.naver.com/crfood/products/4432633289?NaPm=ct%3Dmnpt0g4g%7Cci%3D7301e4dad899e4a70ae55785e9a6f0ff3b506bc3%7Ctr%3Dslsl%7Csn%3D178678%7Chk%3Db2418b2c5cf64c5bf2a335cf316c7d54e4683a60&nl-au=7e701d0cd5da4d4fbaa543e704b6ee66&nl-query=%EC%94%A8%EC%95%8C%EB%A1%9C+79+%EC%BD%98%EC%9A%94%EA%B5%AC%EB%A5%B4%ED%8A%B8%EB%B0%94+300g"
+    "officialUrl": "https://smartstore.naver.com/crfood/products/4432633289?NaPm=ct%3Dmnpt0g4g%7Cci%3D7301e4dad899e4a70ae55785e9a6f0ff3b506bc3%7Ctr%3Dslsl%7Csn%3D178678%7Chk%3Db2418b2c5cf64c5bf2a335cf316c7d54e4683a60&nl-au=7e701d0cd5da4d4fbaa543e704b6ee66&nl-query=%EC%94%A8%EC%95%8C%EB%A1%9C+79+%EC%BD%98%EC%9A%94%EA%B5%AC%EB%A5%B4%ED%8A%B8%EB%B0%94+300g",
+    "fat": 2.2,
+    "sodium": 35
   },
   {
     "slug": "marketo-nature-oh-granola-proteinbar-40",
@@ -1807,7 +1956,9 @@
     "gradeTags": [],
     "coupangUrl": "https://link.coupang.com/a/fg2LOWn92G",
     "naverUrl": "https://search.shopping.naver.com/search/all?query=%EB%A7%88%EC%BC%93%EC%98%A4%20%EC%98%A4%20%EA%B7%B8%EB%9E%98%EB%86%80%EB%9D%BC%20%EB%8B%A8%EB%B0%B1%EC%A7%88%EB%B0%94%2040g&prevQuery=%EC%94%A8%EC%95%8C%EB%A1%9C%2079%20%EC%BD%98%EC%9A%94%EA%B5%AC%EB%A5%B4%ED%8A%B8%EB%B0%94%20300g&vertical=search",
-    "officialUrl": ""
+    "officialUrl": "",
+    "fat": 7,
+    "sodium": 55
   },
   {
     "slug": "soyjoy-blueberry-30",
@@ -1827,7 +1978,9 @@
     "gradeTags": [],
     "coupangUrl": "https://link.coupang.com/a/fg2Mm06zaS",
     "naverUrl": "https://search.shopping.naver.com/search/all?query=%EC%86%8C%EC%9D%B4%EC%A1%B0%EC%9D%B4%20%EB%B8%94%EB%A3%A8%EB%B2%A0%EB%A6%AC%2030g&prevQuery=%EB%A7%88%EC%BC%93%EC%98%A4%20%EC%98%A4%20%EA%B7%B8%EB%9E%98%EB%86%80%EB%9D%BC%20%EB%8B%A8%EB%B0%B1%EC%A7%88%EB%B0%94%2040g&vertical=search",
-    "officialUrl": "https://brand.naver.com/soyjoy"
+    "officialUrl": "https://brand.naver.com/soyjoy",
+    "fat": 8,
+    "sodium": 41
   },
   {
     "slug": "soyjoy-sweetpotato-30",
@@ -1847,7 +2000,9 @@
     "gradeTags": [],
     "coupangUrl": "https://link.coupang.com/a/fg2M5TSzpQ",
     "naverUrl": "https://search.shopping.naver.com/search/all?query=%EC%86%8C%EC%9D%B4%EC%A1%B0%EC%9D%B4%20%EC%8A%A4%EC%9C%84%ED%8A%B8%ED%8F%AC%ED%85%8C%EC%9D%B4%ED%86%A0%2030g&prevQuery=%EC%86%8C%EC%9D%B4%EC%A1%B0%EC%9D%B4%20%EB%B8%94%EB%A3%A8%EB%B2%A0%EB%A6%AC%2030g&vertical=search",
-    "officialUrl": "https://brand.naver.com/soyjoy"
+    "officialUrl": "https://brand.naver.com/soyjoy",
+    "fat": 7,
+    "sodium": 36
   },
   {
     "slug": "soyjoy-strawberry-30",
@@ -1867,7 +2022,9 @@
     "gradeTags": [],
     "coupangUrl": "https://link.coupang.com/a/fg2NGUGHGC",
     "naverUrl": "https://search.shopping.naver.com/search/all?query=%EC%86%8C%EC%9D%B4%EC%A1%B0%EC%9D%B4%20%EC%8A%A4%ED%8A%B8%EB%A1%9C%EB%B2%A0%EB%A6%AC%2030g&prevQuery=%EC%86%8C%EC%9D%B4%EC%A1%B0%EC%9D%B4%20%EC%8A%A4%EC%9C%84%ED%8A%B8%ED%8F%AC%ED%85%8C%EC%9D%B4%ED%86%A0%2030g&vertical=search",
-    "officialUrl": "https://brand.naver.com/soyjoy"
+    "officialUrl": "https://brand.naver.com/soyjoy",
+    "fat": 7,
+    "sodium": 40
   },
   {
     "slug": "soyjoy-almond-chocolate-30",
@@ -1887,7 +2044,9 @@
     "gradeTags": [],
     "coupangUrl": "https://link.coupang.com/a/fg2OdpfFaC",
     "naverUrl": "https://search.shopping.naver.com/search/all?query=%EC%86%8C%EC%9D%B4%EC%A1%B0%EC%9D%B4%20%EC%95%84%EB%AA%AC%EB%93%9C%26%EC%B4%88%EC%BD%9C%EB%A6%BF%2030g&prevQuery=%EC%86%8C%EC%9D%B4%EC%A1%B0%EC%9D%B4%20%EC%8A%A4%ED%8A%B8%EB%A1%9C%EB%B2%A0%EB%A6%AC%2030g&vertical=search",
-    "officialUrl": "https://brand.naver.com/soyjoy"
+    "officialUrl": "https://brand.naver.com/soyjoy",
+    "fat": 9,
+    "sodium": 48
   },
   {
     "slug": "soyjoy-apple-30",
@@ -1907,7 +2066,9 @@
     "gradeTags": [],
     "coupangUrl": "https://link.coupang.com/a/fg2OTKGCd2",
     "naverUrl": "https://search.shopping.naver.com/search/all?query=%EC%86%8C%EC%9D%B4%EC%A1%B0%EC%9D%B4%20%EC%95%A0%ED%94%8C%2030g&prevQuery=%EC%86%8C%EC%9D%B4%EC%A1%B0%EC%9D%B4%20%EC%95%84%EB%AA%AC%EB%93%9C%26%EC%B4%88%EC%BD%9C%EB%A6%BF%2030g&vertical=search",
-    "officialUrl": "https://brand.naver.com/soyjoy"
+    "officialUrl": "https://brand.naver.com/soyjoy",
+    "fat": 7,
+    "sodium": 58
   },
   {
     "slug": "soyjoy-plantbased-macadamia-lemon-25",
@@ -1927,7 +2088,9 @@
     "gradeTags": [],
     "coupangUrl": "https://link.coupang.com/a/fg2PBlV0TY",
     "naverUrl": "https://search.shopping.naver.com/search/all?query=%EC%86%8C%EC%9D%B4%EC%A1%B0%EC%9D%B4%20%ED%94%8C%EB%9E%9C%ED%8A%B8%EB%B2%A0%EC%9D%B4%EC%8A%A4%EB%93%9C%20%EB%A7%88%EC%B9%B4%EB%8B%A4%EB%AF%B8%EC%95%84%26%EB%A0%88%EB%AA%AC%2025g&prevQuery=%EC%86%8C%EC%9D%B4%EC%A1%B0%EC%9D%B4%20%EC%95%A0%ED%94%8C%2030g&vertical=search",
-    "officialUrl": "https://brand.naver.com/soyjoy"
+    "officialUrl": "https://brand.naver.com/soyjoy",
+    "fat": 9,
+    "sodium": 39
   },
   {
     "slug": "soyjoy-plantbased-banana-25",
@@ -1947,7 +2110,9 @@
     "gradeTags": [],
     "coupangUrl": "https://link.coupang.com/a/fg2P8yq2bQ",
     "naverUrl": "https://search.shopping.naver.com/search/all?query=%EC%86%8C%EC%9D%B4%EC%A1%B0%EC%9D%B4%20%ED%94%8C%EB%9E%9C%ED%8A%B8%EB%B2%A0%EC%9D%B4%EC%8A%A4%EB%93%9C%20%EB%B0%94%EB%82%98%EB%82%98%2025g&prevQuery=%EC%86%8C%EC%9D%B4%EC%A1%B0%EC%9D%B4%20%ED%94%8C%EB%9E%9C%ED%8A%B8%EB%B2%A0%EC%9D%B4%EC%8A%A4%EB%93%9C%20%EB%A7%88%EC%B9%B4%EB%8B%A4%EB%AF%B8%EC%95%84%26%EB%A0%88%EB%AA%AC%2025g&vertical=search",
-    "officialUrl": "https://brand.naver.com/soyjoy"
+    "officialUrl": "https://brand.naver.com/soyjoy",
+    "fat": 7,
+    "sodium": 36
   },
   {
     "slug": "soyjoy-fruits-baked-cheese-30",
@@ -1967,6 +2132,8 @@
     "gradeTags": [],
     "coupangUrl": "https://link.coupang.com/a/fg2QGkMMZE",
     "naverUrl": "https://search.shopping.naver.com/search/all?query=%EC%86%8C%EC%9D%B4%EC%A1%B0%EC%9D%B4%20%ED%9B%84%EB%A5%B4%EC%B8%A0%26%EB%B2%A0%EC%9D%B4%ED%81%AC%EB%93%9C%EC%B9%98%EC%A6%88%2030g&prevQuery=%EC%86%8C%EC%9D%B4%EC%A1%B0%EC%9D%B4%20%ED%94%8C%EB%9E%9C%ED%8A%B8%EB%B2%A0%EC%9D%B4%EC%8A%A4%EB%93%9C%20%EB%B0%94%EB%82%98%EB%82%98%2025g&vertical=search",
-    "officialUrl": "https://brand.naver.com/soyjoy"
+    "officialUrl": "https://brand.naver.com/soyjoy",
+    "fat": 8,
+    "sodium": 79
   }
 ]
