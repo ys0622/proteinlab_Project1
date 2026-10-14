@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { notFound } from "next/navigation";
+import { notFound, permanentRedirect } from "next/navigation";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import CommercialAdSection from "../../components/CommercialAdSection";
@@ -7,7 +7,7 @@ import ProductCard from "../../components/ProductCard";
 import TrackedLink from "../../components/TrackedLink";
 import { getAllProducts } from "../../data/products";
 import { getCategoryLabel, type ProductCategory } from "../../lib/categories";
-import { getBrandSummary, slugToBrand } from "../../lib/brandHubs";
+import { brandToSlug, getBrandSummary, slugToBrand } from "../../lib/brandHubs";
 import { formatProductLabel } from "../../lib/productLabel";
 import { getBrandProfile } from "@/app/lib/brandProfile";
 import type { ProductDetailProps } from "../../data/products";
@@ -318,7 +318,16 @@ export default async function BrandPage({ params }: PageProps) {
   const brand = brands.find((item) => item.brand === brandName);
   const quickLinks = brand ? getBrandQuickLinks(brand.brand) : [];
 
-  if (!brand) notFound();
+  if (!brand) {
+    // 예전 한글 슬러그(/brands/매일두유 등)로 수집된 URL은 ASCII 슬러그로 영구 이동한다.
+    let decoded = slug;
+    try {
+      decoded = decodeURIComponent(slug);
+    } catch {}
+    const legacy = brands.find((item) => item.brand === decoded);
+    if (legacy) permanentRedirect(`/brands/${brandToSlug(legacy.brand)}`);
+    notFound();
+  }
 
   const profileGroups = getBrandProfile(brand.brand, brand.items, products);
   const rankBySlug = new Map(profileGroups.flatMap((g) => g.rows.map((r) => [r.slug, `${r.proteinRank}위 / ${g.poolSize}종`] as const)));

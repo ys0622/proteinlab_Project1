@@ -69,6 +69,18 @@ const BRAND_SLUG_MAP: Record<string, string> = {
   덴마크: "denmark",
   오뚜기: "ottogi",
   퓨어틴: "puretein",
+  매일두유: "maeil-soymilk",
+  베지밀: "vegemil",
+  맛있는두유: "gt-soymilk",
+  클릭유: "clickyou",
+  연세두유: "yonsei-soymilk",
+  이롬: "erom",
+  그레인랩: "grainlab",
+  밥스누: "bobsnu",
+  케어웰: "carewell",
+  콩앤콩: "kongnkong",
+  완전두유: "wanjeon-soymilk",
+  소이비랩: "soybilab",
 };
 
 export function brandToSlug(brand: string) {
