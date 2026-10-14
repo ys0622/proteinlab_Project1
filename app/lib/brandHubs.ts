@@ -81,6 +81,7 @@ const BRAND_SLUG_MAP: Record<string, string> = {
   콩앤콩: "kongnkong",
   완전두유: "wanjeon-soymilk",
   소이비랩: "soybilab",
+  삼육두유: "sahmyook-soymilk",
 };
 
 export function brandToSlug(brand: string) {
