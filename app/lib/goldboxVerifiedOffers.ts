@@ -57,6 +57,17 @@ const EXPIRING_SEED: VerifiedGoldboxOffer[] = [{
   verifiedAt: "2026-10-14T07:27:00+09:00",
   startsAt: "2026-10-14T07:27:00+09:00",
   expiresAt: "2026-10-15T07:00:00+09:00",
+}, {
+  // 2026-10-15 사용자가 쿠팡 앱 골드박스 화면(07:26, 상품 카드 타이머 23:33:45 남음)으로 확인해 알려 준 제품(하이뮨 프로틴 울트라 블랙초코 400ml 6개).
+  // 07:26 + 23:33:45 = 10/16 07:00 종료. 골드박스 전용 링크를 받기 전이라 등록된 제품의 기존 파트너스 링크를 쓴다. 가격은 표시하지 않는다(price 0).
+  slug: "hymune-ultra-400",
+  offerName: "400mL × 6개 · 와우회원 할인 · 쿠팡 확인",
+  price: 0,
+  href: "https://link.coupang.com/a/e8M0byZ67g",
+  source: "coupang_app",
+  verifiedAt: "2026-10-15T07:26:00+09:00",
+  startsAt: "2026-10-15T07:26:00+09:00",
+  expiresAt: "2026-10-16T07:00:00+09:00",
 }];
 
 async function getKV(): Promise<OfferKV | null> {
