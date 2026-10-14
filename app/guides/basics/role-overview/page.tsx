@@ -2,6 +2,7 @@
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 import GuideBuySection from "@/app/components/GuideBuySection";
+import ProteinDailyContext from "@/app/components/ProteinDailyContext";
 import { buildGuideJsonLd } from "@/app/lib/guideJsonLd";
 
 const _pageTitle = "단백질은 몸에서 어떤 역할을 할까";
@@ -276,6 +277,7 @@ export default function RoleOverviewGuidePage() {
         </div>
       </main>
 
+      <ProteinDailyContext />
       <GuideBuySection topic="general" />
 
       <Footer />

@@ -2,6 +2,7 @@ import Link from "next/link";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 import GuideBuySection from "@/app/components/GuideBuySection";
+import ProteinDailyContext from "@/app/components/ProteinDailyContext";
 import { buildGuideJsonLd } from "@/app/lib/guideJsonLd";
 
 const _pageTitle = "운동 후 단백질 가이드 | 언제·얼마나 먹어야 할까";
@@ -199,6 +200,7 @@ export default function PostWorkoutProteinPage() {
           </section>
         </div>
       </main>
+      <ProteinDailyContext />
       <GuideBuySection topic="workout" />
       <Footer />
     </div>

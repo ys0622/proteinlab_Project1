@@ -2,6 +2,7 @@
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 import GuideBuySection from "@/app/components/GuideBuySection";
+import ProteinDailyContext from "@/app/components/ProteinDailyContext";
 import { buildGuideJsonLd } from "@/app/lib/guideJsonLd";
 
 const _pageTitle = "단백질 부족 자가체크";
@@ -160,6 +161,7 @@ export default function ProteinDeficiencySelfCheckPage() {
           </section>
         </div>
       </main>
+      <ProteinDailyContext />
       <GuideBuySection topic="general" />
       <Footer />
     </div>

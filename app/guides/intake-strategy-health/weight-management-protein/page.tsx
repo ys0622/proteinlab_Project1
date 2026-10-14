@@ -2,6 +2,7 @@ import Link from "next/link";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 import GuideBuySection from "@/app/components/GuideBuySection";
+import ProteinDailyContext from "@/app/components/ProteinDailyContext";
 import { buildGuideJsonLd } from "@/app/lib/guideJsonLd";
 
 const _pageTitle = "다이어트 단백질 가이드 | 체중 관리 때 먼저 볼 기준";
@@ -218,6 +219,7 @@ export default function WeightManagementProteinPage() {
           </section>
         </div>
       </main>
+      <ProteinDailyContext />
       <GuideBuySection topic="diet" />
       <Footer />
     </div>
