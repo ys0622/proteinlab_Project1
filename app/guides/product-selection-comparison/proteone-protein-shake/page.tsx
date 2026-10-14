@@ -1,4 +1,5 @@
 import { buildGuideJsonLd } from "@/app/lib/guideJsonLd";
+import BrandDataFaq, { buildBrandDataFaqs } from "@/app/components/BrandDataFaq";
 ﻿import Link from "next/link";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
@@ -38,10 +39,12 @@ const faqItems = [
 ];
 
 export default function ProteoneProteinShakePage() {
+  const dataFaqs = buildBrandDataFaqs({ brands: ["프로티원"], productType: "shake" });
   const jsonLd = buildGuideJsonLd({
     title: "프로티원 단백질 쉐이크 추천 | 초코·커피 성분 비교 2026",
     description: "프로티원 단백쉐이크 초코맛과 커피맛을 단백질, 당류, 칼로리, 단백질 밀도 기준으로 직접 비교했습니다. 저칼로리와 고단백 중 어디에 더 강한지 빠르게 확인해보세요.",
     url: "https://proteinlab.kr/guides/product-selection-comparison/proteone-protein-shake",
+    faq: [...faqItems, ...dataFaqs],
     datePublished: "2026-03-01",
     dateModified: "2026-05-29",
   });
@@ -145,6 +148,7 @@ export default function ProteoneProteinShakePage() {
         </div>
       </main>
       <CategoryDataSection category="shake" mode="protein" brand="프로티원" />
+      <BrandDataFaq faqs={dataFaqs} />
       <GuideBuySection slugs={["proteone-proteinshake-choco-40", "proteone-proteinshake-coffee-40", "proteone-proteinshake-strawberry-40"]} />
       <Footer />
     </div>

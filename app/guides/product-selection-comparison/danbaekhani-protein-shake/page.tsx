@@ -1,4 +1,5 @@
 import { buildGuideJsonLd } from "@/app/lib/guideJsonLd";
+import BrandDataFaq, { buildBrandDataFaqs } from "@/app/components/BrandDataFaq";
 ﻿import Link from "next/link";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
@@ -49,10 +50,12 @@ const faqItems = [
 ];
 
 export default function DanbaekhaniProteinShakePage() {
+  const dataFaqs = buildBrandDataFaqs({ brands: ["단백하니"], productType: "shake" });
   const jsonLd = buildGuideJsonLd({
     title: "단백하니 단백질 쉐이크 추천 | 시그니처·초코·말차 비교 2026",
     description: "단백하니 단백질 쉐이크를 시그니처, 초코, 말차 기준으로 직접 비교했습니다. 저당, 칼로리, 단백질 밀도를 함께 보며 어떤 맛이 더 잘 맞는지 빠르게 확인해보세요.",
     url: "https://proteinlab.kr/guides/product-selection-comparison/danbaekhani-protein-shake",
+    faq: [...faqItems, ...dataFaqs],
     datePublished: "2026-03-01",
     dateModified: "2026-05-29",
   });
@@ -186,6 +189,7 @@ export default function DanbaekhaniProteinShakePage() {
         </div>
       </main>
       <CategoryDataSection category="shake" mode="protein" brand="단백하니" />
+      <BrandDataFaq faqs={dataFaqs} />
       <GuideBuySection slugs={["danbaekhani-proteinshake-signature-40", "danbaekhani-proteinshake-choco-40", "danbaekhani-proteinshake-matcha-40"]} />
       <Footer />
     </div>

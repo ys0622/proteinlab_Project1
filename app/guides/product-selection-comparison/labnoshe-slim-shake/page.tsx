@@ -1,4 +1,5 @@
 import { buildGuideJsonLd } from "@/app/lib/guideJsonLd";
+import BrandDataFaq, { buildBrandDataFaqs } from "@/app/components/BrandDataFaq";
 ﻿import Link from "next/link";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
@@ -33,10 +34,12 @@ const faqItems = [
 ];
 
 export default function LabNosheLimShakePage() {
+  const dataFaqs = buildBrandDataFaqs({ brands: ["랩노쉬"], productType: "shake" });
   const jsonLd = buildGuideJsonLd({
     title: "랩노쉬 슬림쉐이크 추천 | 저당·식사대용 기준 정리 2026",
     description: "랩노쉬 슬림쉐이크를 저당, 식사대용, 다이어트 기준으로 직접 정리했습니다. 당류와 식이섬유를 같이 보면서 한 끼 대체용으로 맞는지 빠르게 확인해보세요.",
     url: "https://proteinlab.kr/guides/product-selection-comparison/labnoshe-slim-shake",
+    faq: [...faqItems, ...dataFaqs],
     datePublished: "2026-03-01",
     dateModified: "2026-05-29",
   });
@@ -114,6 +117,7 @@ export default function LabNosheLimShakePage() {
         </div>
       </main>
       <CategoryDataSection category="shake" mode="protein" brand="랩노쉬" />
+      <BrandDataFaq faqs={dataFaqs} />
       <GuideBuySection slugs={["labnosh-slimshake-double-choco-45", "labnosh-slimshake-injeolmi-45", "labnosh-slimshake-goguma-45"]} />
       <Footer />
     </div>

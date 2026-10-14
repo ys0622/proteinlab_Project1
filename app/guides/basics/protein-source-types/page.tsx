@@ -1,7 +1,6 @@
 import Link from "next/link";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
-import GuideBuySection from "@/app/components/GuideBuySection";
 import MpiDrinkList from "@/app/components/MpiDrinkList";
 import { buildGuideJsonLd } from "@/app/lib/guideJsonLd";
 
@@ -375,7 +374,6 @@ export default function ProteinSourceTypesGuidePage() {
         </div>
       </main>
 
-      <GuideBuySection topic="general" />
       <Footer />
     </div>
   );

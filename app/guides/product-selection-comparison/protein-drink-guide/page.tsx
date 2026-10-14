@@ -1,4 +1,5 @@
 import { buildGuideJsonLd } from "@/app/lib/guideJsonLd";
+import BrandDataFaq, { buildBrandDataFaqs } from "@/app/components/BrandDataFaq";
 ﻿import Link from "next/link";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
@@ -56,10 +57,12 @@ const comparisonSteps = [
 ];
 
 export default function ProteinDrinkGuidePage() {
+  const dataFaqs = buildBrandDataFaqs({ productType: "drink", category: true });
   const jsonLd = buildGuideJsonLd({
     title: "단백질 음료 선택 가이드 | 단백질 함량·당류·칼로리 비교 기준",
     description: "단백질 음료를 고를 때 단백질 함량, 당류, 칼로리, 단백질 밀도를 어떤 순서로 비교해야 하는지 ProteinLab 기준으로 정리합니다.",
     url: "https://proteinlab.kr/guides/product-selection-comparison/protein-drink-guide",
+    faq: dataFaqs,
     datePublished: "2026-03-01",
     dateModified: "2026-05-29",
   });
@@ -186,6 +189,7 @@ export default function ProteinDrinkGuidePage() {
         </div>
       </main>
 
+      <BrandDataFaq faqs={dataFaqs} />
       <GuideBuySection topic="general" />
 
       <Footer />
