@@ -546,6 +546,36 @@ export default async function ProductDetailPage({ params }: PageProps) {
     product.productType ?? null,
     product.slug,
   );
+  // 판매 중단(쿠팡 링크 없음) 제품: 같은 카테고리에서 실제 쿠팡 링크가 있는 대체 후보 3개.
+  // 같은 브랜드 우선, 1회 단백질 차이가 작은 순, 당류가 더 높으면 감점. 두유는 링크 준비 중이라 제외.
+  const discontinuedAlternatives =
+    !resolvedCoupangHref && category !== "soymilk"
+      ? getAllProducts()
+          .filter((item) => item.slug !== product.slug && (item.productType ?? "drink") === category && !item.needsServingCheck)
+          .map((item) => ({
+            item,
+            href: getCoupangRedirectHref(normalizeCoupangUrl(item.coupangUrl) ?? getKnownSourceCoupangUrlBySlug(item.slug), item.productType ?? null, item.slug),
+          }))
+          .filter((entry): entry is { item: ProductDetailProps; href: string } => Boolean(entry.href))
+          .map((entry) => ({
+            ...entry,
+            score:
+              (entry.item.brand === product.brand ? 0 : 10) +
+              Math.abs(entry.item.proteinPerServing - product.proteinPerServing) +
+              Math.max(0, (entry.item.sugar ?? 0) - (product.sugar ?? 0)) * 0.5,
+          }))
+          .sort((x, y) => x.score - y.score)
+          .slice(0, 3)
+          .map(({ item, href }) => ({
+            slug: item.slug,
+            brand: item.brand,
+            name: formatProductLabel(item.brand, item.name),
+            imageUrl: getProductImageUrl(item.slug) ?? null,
+            href,
+            facts: [`단백질 ${item.proteinPerServing}g`, item.sugar != null ? `당류 ${item.sugar}g` : null].filter((x): x is string => Boolean(x)),
+            reason: item.brand === product.brand ? "같은 브랜드" : "단백질·당류가 비슷한 다른 브랜드",
+          }))
+      : [];
   // 1회 기준 비교가 가능한 제품만 버튼 위에 핵심 수치를 보여준다(대용량 통은 용기 전체 수치라 제외).
   const quickFacts =
     !product.needsServingCheck && isComparableServing(product)
@@ -901,6 +931,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
                   imageUrl={productImageUrl ?? undefined}
                   description={buildProductDescription(product)}
                   productType={category}
+                  alternatives={discontinuedAlternatives}
                 />
               </div>
 

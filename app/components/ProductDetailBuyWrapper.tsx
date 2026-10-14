@@ -3,7 +3,7 @@
 import { useRef } from "react";
 import KakaoShareButton from "./KakaoShareButton";
 import MobileStickyBuyButton from "./MobileStickyBuyButton";
-import ProductDetailPurchaseActions from "./ProductDetailPurchaseActions";
+import ProductDetailPurchaseActions, { type DiscontinuedAlternative } from "./ProductDetailPurchaseActions";
 
 type Props = {
   brand: string;
@@ -17,6 +17,7 @@ type Props = {
   imageUrl?: string;
   description?: string;
   productType?: "drink" | "bar" | "yogurt" | "shake" | "soymilk";
+  alternatives?: DiscontinuedAlternative[];
 };
 
 export default function ProductDetailBuyWrapper(props: Props) {
