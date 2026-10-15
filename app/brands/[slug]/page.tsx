@@ -245,6 +245,26 @@ interface PageProps {
   params: Promise<{ slug: string }>;
 }
 
+const BRAND_TITLE_CATEGORY_LABEL: Record<ProductCategory, string> = {
+  drink: "단백질 음료",
+  shake: "단백질 쉐이크",
+  bar: "단백질바",
+  yogurt: "단백질 요거트",
+  soymilk: "두유",
+};
+
+function getBrandMainCategory(brand: string, items: { productType?: string }[]) {
+  const counts = new Map<ProductCategory, number>();
+  for (const item of items) {
+    const category = (item.productType ?? "drink") as ProductCategory;
+    counts.set(category, (counts.get(category) ?? 0) + 1);
+  }
+  const [category, count] = [...counts.entries()].sort((a, b) => b[1] - a[1])[0] ?? ["drink", 0];
+  // "매일두유 두유 성분표"처럼 브랜드명에 이미 제품군이 들어 있으면 빼고 쓴다.
+  const label = BRAND_TITLE_CATEGORY_LABEL[category];
+  return { category, count, label: brand.includes(label) ? "" : label };
+}
+
 export async function generateStaticParams() {
   const products = getAllProducts();
   return getBrandSummary(products).map((brand) => ({ slug: brand.slug }));
@@ -262,7 +282,6 @@ export async function generateMetadata({ params }: PageProps) {
 
   const canonical = `https://proteinlab.kr/brands/${slug}`;
   const items = products.filter((item) => item.brand === brand);
-  const shakeItems = items.filter((item) => item.productType === "shake");
   const range = (values: Array<number | undefined>, unit: string) => {
     const nums = values.filter((v): v is number => typeof v === "number" && Number.isFinite(v));
     if (nums.length === 0) return null;
@@ -278,13 +297,15 @@ export async function generateMetadata({ params }: PageProps) {
     sugarRange && `당류 ${sugarRange}`,
     calorieRange && `${calorieRange}`,
   ].filter(Boolean);
-  // 검색어가 "○○ 성분"·"○○ 성분표" 형태라 제목에 그대로 넣고, 설명에는 실제 수치 범위를 넣는다.
-  const title =
-    shakeItems.length >= 2
-      ? `${brand} 단백질 쉐이크 성분 비교 — 맛·단백질·칼로리 ${shakeItems.length}종`
-      : `${brand} 성분표 — 단백질·당류·칼로리 ${items.length}종 한눈에 비교`;
+  // 검색어가 "○○ 성분"·"○○ 성분표" 형태라 제목 맨 앞에 "브랜드 + 성분표"를 둔다. 제품군 이름은 브랜드에서 가장 많은
+  // 카테고리를 쓴다(테이크핏·랩노쉬처럼 음료가 많은 브랜드가 쉐이크 몇 개 때문에 "쉐이크 성분 비교"로 잡히던 문제, 2026-10-15).
+  const { label: mainLabel, count: mainCount } = getBrandMainCategory(brand, items);
+  const isSingleCategory = mainCount === items.length;
+  const title = isSingleCategory
+    ? `${brand}${mainLabel ? ` ${mainLabel}` : ""} 성분표 — 맛별 단백질·당류·칼로리 ${items.length}종 비교`
+    : `${brand} 성분표 — ${mainLabel} ${mainCount}종 포함 ${items.length}종 단백질·당류 비교`;
   const description =
-    `${brand} ${shakeItems.length >= 2 ? `단백질 쉐이크 ${shakeItems.length}종` : `단백질 제품 ${items.length}종`}의 성분표를 표로 비교합니다.` +
+    `${brand} ${isSingleCategory ? `${mainLabel || "제품"} ${items.length}종` : `제품 ${items.length}종(${mainLabel} ${mainCount}종 포함)`}의 성분표를 표로 비교합니다.` +
     (facts.length ? ` 1회 기준 ${facts.join(" · ")}.` : "") +
     ` 어떤 제품부터 봐야 할지 바로 확인하세요.`;
   return {
@@ -378,7 +399,7 @@ export default async function BrandPage({ params }: PageProps) {
             <span className="text-[var(--foreground)]">{brand.brand}</span>
           </nav>
           <h1 className="text-2xl font-bold leading-[1.25] text-[#16412D] md:text-3xl">
-            {brand.brand} 단백질 제품 모음
+            {brand.brand} 성분표 · 제품 {brand.total}종 비교
           </h1>
           <p className="mt-2 max-w-[760px] text-sm leading-6 text-[var(--foreground-muted)] md:text-[15px]">
             {brand.brand} 브랜드 제품 {brand.total}개를 한 번에 볼 수 있게 정리했습니다. 브랜드명으로
