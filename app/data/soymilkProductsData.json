@@ -1426,5 +1426,43 @@
     },
     "naverUrl": "https://search.shopping.naver.com/search/all?query=%EB%B2%A0%EC%A7%80%EB%B0%80%20%EB%BC%88%EC%97%90%EC%A2%8B%EC%9D%80%20%EC%B9%BC%EC%8A%98%EB%91%90%EC%9C%A0%20%EA%B2%80%EC%9D%80%EC%BD%A9%C2%B7%EA%B2%80%EC%9D%80%EA%B9%A8%C2%B7%EA%B2%80%EC%9D%80%EC%8C%80%20190ml&vertical=search",
     "coupangUrl": "https://link.coupang.com/a/hQr78XNy56"
+  },
+  {
+    "slug": "absolli-quinoa-yakkong-unsweetened-190",
+    "brand": "앱솔리",
+    "name": "퀴노아 약콩두유 무가당",
+    "capacity": "190mL",
+    "variant": "약콩",
+    "tags": [
+      "팩"
+    ],
+    "proteinPerServing": 6,
+    "calories": 55,
+    "sugar": 0,
+    "density": "3.2g/100ml",
+    "productUrl": "#",
+    "productType": "soymilk",
+    "gradeTags": [],
+    "flavor": "약콩",
+    "proteinSource": "대두",
+    "fat": 1.7,
+    "sodium": 85,
+    "calorieDensity": "28.9kcal/100ml",
+    "soymilkType": "두유",
+    "nutritionPerBottle": {
+      "caloriesKcal": 55,
+      "proteinG": 6,
+      "carbsG": 5,
+      "sugarsG": 0,
+      "fatG": 1.7,
+      "satFatG": 0,
+      "transFatG": 0,
+      "cholesterolMg": 0,
+      "sodiumMg": 85,
+      "calciumMg": 126,
+      "fiberG": 2.5
+    },
+    "naverUrl": "https://search.shopping.naver.com/search/all?query=%EC%95%B1%EC%86%94%EB%A6%AC%20%ED%80%B4%EB%85%B8%EC%95%84%20%EC%95%BD%EC%BD%A9%EB%91%90%EC%9C%A0%20%EB%AC%B4%EA%B0%80%EB%8B%B9%20190ml&vertical=search",
+    "coupangUrl": "https://www.coupang.com/vp/products/7297343190?itemId=17834583104&vendorItemId=95893832724"
   }
 ]
