@@ -279,6 +279,11 @@ h1, h2, h3, h4, h5, h6 {
 
 .product-card__badges {
   align-content: flex-start;
+  /* 뱃지 유무와 개수에 상관없이 카드 높이·수치 칸 위치를 맞춘다(뱃지 없는 카드가 한 줄 짧아지던 문제). 모바일은 아래 미디어쿼리에서 2줄 고정. */
+  flex-wrap: nowrap;
+  min-height: var(--metric-badge-height);
+  max-height: var(--metric-badge-height);
+  overflow: hidden;
 }
 
 .product-card__metric-value {
@@ -1159,6 +1164,7 @@ h1, h2, h3, h4, h5, h6 {
   }
 
   .product-card__badges {
+    flex-wrap: wrap;
     min-height: 40px;
     max-height: 40px;
     overflow: hidden;
