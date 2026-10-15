@@ -1,0 +1,137 @@
+slug	label_kcal	label_protein	label_sugar	label_fat	label_sodium	label_basis	live_kcal	live_protein	live_sugar	live_fat	live_sodium	status	note
+harim-chicken-protein-savory-240	120	21	3	2.3	400	total	120	21	3	2.3	400	OK	
+labnosh-protein-max-choco-400	235	52	0	0	250	total	235	52	0	0	250	OK	
+labnosh-protein-max-strawberry-400	230	52	0	0	250	total	230	52	0	0	250	OK	
+newcare-all-protein-choco-245	135	25	0	2.5	250	total	135	25	0	2.5	250	OK	
+newcare-all-protein-banana-245	135	25	0	2.5	250	total	135	25	0	2.5	250	OK	
+newcare-all-protein-savory-245	135	25	0	2.5	250	total	135	25	0	2.5	250	OK	
+newcare-all-protein-almond-245	135	25	0	2.5	250	total	135	25	0	2.5	250	OK	
+newcare-all-protein-blacksesame-245	135	25	0	2.5	250	total	135	25	0	2.5	250	OK	
+newcare-all-protein-plant-savory-250	130	20	0	3.5	230	total	130	20	0	3.5	230	OK	
+danbaek-drink-coffee-250	110	20	0.9	1	60	total	110	20	0	1	80	MISMATCH	MISMATCH: sugar (0.9 vs 0); sodium (60 vs 80)
+oneuldanbaek-choco-latte-250	135	21	3	2	100	total	135	21	3	2	100	OK	SHARED_LABEL: 동일 이미지가 카라멜라떼·돌체라떼에도 매핑됨; 이 행은 초코라떼와 일치
+sellex-profit-milk-vanilla-250	105	20	0	0.8	300	total	105	20	0	0.8	300	OK	
+sellex-profit-mocha-chocolate-250	105	20	0	0.8	220	total	105	20	0	0.8	220	OK	
+sellex-profit-banana-250	100	20	0	0.7	300	total	135	20	0	4	300	MISMATCH	MISMATCH: calories (100 vs 135); fat (0.7 vs 4)
+danbaek-water-apple-400	100	25	0	0	47	total	100	25	0	0	47	OK	
+hymune-balance-active-milkshake-deepchoco-250	110	20	0	0.8	150	per_serving	104	20	0	0.8	150	MISMATCH	MISMATCH: calories (110 vs 104)
+danbaek-water-peach-250	48	12	0	0	27	total	55	12	0	0	53	MISMATCH	MISMATCH: calories (48 vs 55); sodium (27 vs 53)
+hymune-balance-active-deepchoco-250	110	20	0	0.7	150	per_serving	104	20	0	0.7	150	MISMATCH	MISMATCH: calories (110 vs 104)
+hymune-balance-active-darkchoco-330	220	31	7	4	260	per_serving	220	31	7	4	260	OK	
+hymune-ultra-400	250	49	<1	4.3	480	total	250	49	0.9	4.3	480	OK	라벨 미만 표기 보존
+mymil-furotein-choco-250	130	20	0	3.5	230	total	130	20	0	3.5	230	OK	
+mymil-furotein-gosohan-250	130	20	0	3.5	230	per_serving	130	20	0	3.5	230	OK	SHARED_LABEL: 동일 이미지가 고구마맛에도 매핑됨; 이 행은 고소한맛과 일치
+mymil-furotein-goguma-250	130	20	0	3.5	230	per_serving	130	20	0	3.5	250	WRONG_LABEL	WRONG_LABEL: SHARED_LABEL; 고구마맛 slug에 고소한맛 라벨 연결
+ultive-protein-chestnut-250	115	21	0	3.6	350	total	115	21	0	3.6	350	OK	
+ultive-protein-rice-250	110	21	0	3.1	350	total	110	21	0	3	340	MISMATCH	MISMATCH: sodium (350 vs 340)
+ultive-protein-pistachio-250	120	21	0	3.9	460	total	120	21	0	3.9	460	OK	
+ultive-protein-royalmilktea-250	115	20	0	3.3	380	total	115	20	0	3.3	380	OK	
+ultive-vegan-protein-banana-250	115	21	0	3.6	410	total	115	21	0	3.6	410	OK	
+ultive-vegan-protein-choco-250	130	21	0	3.6	340	total	130	21	0	3.6	340	OK	
+hymune-balance-active-night-tiramisu-zero-250	99	22	0	0.6	175	per_serving	99	22	0	0.8	170	MISMATCH	MISMATCH: fat (0.6 vs 0.8); sodium (175 vs 170)
+hymune-balance-active-vanilla-bonbon-zero-250	99	22	0	0.6	175	per_serving	99	22	0	0.6	175	OK	
+hymune-balance-active-double-shot-coffee-250	104	20	0	0.8	150	per_serving	104	20	0	0.8	150	OK	
+sellex-profit-whey-protein-americano-330	90	20	0	0	200	total	90	20	0	0	200	OK	
+sellex-profit-strawberry-choco-250	100	20	0	0.7	220	total	100	20	0	0.7	220	OK	
+sellex-profit-sports-choco-330	99	20	0	0.8	350	total	99	20	0	0.8	350	OK	
+sellex-profit-sports-coconut-330	90	20	0	0	290	total	90	20	0	0	290	OK	
+sellex-profit-sports-wildchoco-350	210	45	0	1.3	300	total	210	45	0	1.3	300	OK	
+calobye-sparkling-grape-340	85	18	0	0	50	total	85	18	0	0	50	OK	
+calobye-sparkling-pinkgrapefruit-340	85	18	0	0	50	total	85	18	0	0	50	OK	
+takefit-pro-lemon-500	100	25	0	0	160	total	100	25	0	0	160	OK	
+takefit-pro-flatpeach-500	100	25	0	0	160	total	100	25	0	0	160	OK	
+takefit-pro-shinemuscato-500	100	25	0	0	160	total	100	25	0	0	160	OK	
+newcare-olprotein-water-lemon-350	80	20	0	0	170	total	80	20	0	0	170	OK	
+newcare-olprotein-water-apple-350	80	20	0	0	170	total	80	20	0	0	170	OK	
+oatmont-protein-savory-250	105	21	0	1.9	365	total	105	21	0	1.9	365	OK	
+oatmont-protein-choco-250	107	21	0	1.7	365	total	107	21	0	1.7	365	OK	
+oatmont-protein-cookiecream-250	103	21	0	1.7	365	total	103	21	0	1.8	365	OK	
+hymune-protein-balance-plant-highprotein-190	65	10	0	0.85	120	total	65	10	0	0.85	120	OK	
+hymune-balance-active-plant-protein-250	99	20	0	0.8	220	per_serving	99	20	0	0.8	220	OK	
+danbaek-drink-banana-250	105	20	0.7	0.5	20	total	105	20	0.7	0.5	20	OK	
+danbaek-drink-milktea-250	98	20	0.7	0.6	20	total	110	20	0.7	0.6	20	MISMATCH	MISMATCH: calories (98 vs 110)
+danbaek-drink-strawberry-250	105	20	0.7	0.6	25	total	105	20	0.7	0.6	25	OK	
+takefit-max-goso-250	105	24	0.7	0.5	210	total	105	24	0.7	0.5	210	OK	
+takefit-max-choco-250	106	24	0.7	0.7	210	total	106	24	0.7	0.7	210	OK	
+takefit-max-banana-250	105	24	0.7	0.5	200	total	105	24	0.7	0.5	200	OK	
+takefit-max-pumpkin-250	105	24	0.7	0.5	210	total	105	24	0.7	0.5	210	OK	
+newcare-all-protein-41g	210	41	0.8	3.5	250	total	210	41	0.8	3.5	250	OK	
+newcare-all-protein-41g-coffee-350	210	41	0.8	3.5	250	total	210	41	0.8	3.5	250	OK	
+newcare-all-protein-41g-savory-350	210	41	0.8	3.5	250	total	210	41	0.8	3.5	250	OK	
+danbaek-drink-chocolate-250	105	20	0.8	0.6	30	total	105	20	0.8	0.6	30	OK	
+7eleven-junghoo-choco-protein-330	150	33	0.8	1.3	210	total	150	33	0.8	1.3	210	OK	
+7eleven-junghoo-vanilla-protein-330	146	33	0.8	1	210	total	146	33	0.8	1	210	OK	
+danbaek-drink-melon-250	109	20	0.8	0.7	23	total	109	20	0.8	0.7	23	OK	
+danbaek-drink-doublechoco-350	182	40	0.8	0.7	50	total	182	40	0.8	0.7	50	OK	
+dryou-protein-drink-choco-250	151	24	0.9	3.9	120	total	151	24	0.9	3.9	120	OK	
+danbaek-drink-caramel-250	105	20	0.9	1	60	total	105	20	0.9	1	60	OK	
+danbaek-drink-mintchoco-250	105	20	<1	0.6	30	total	105	20	0.8	0.6	30	OK	라벨 미만 표기 보존; live 0.8g은 <1g 범위
+danbaek-drink-darkchoco-330	168	35	0.9	1	62	total	168	35	0.9	1	62	OK	
+danbaek-balance-original-190	173	10	9.5	5	140	total	173	10	9.5	5	140	OK	
+takefit-monster-goso-350	195	45	1	1.1	270	total	195	45	1	1.1	270	OK	
+takefit-monster-chocobanana-350	195	45	1	1.1	270	total	195	45	1	1.1	270	OK	
+takefit-monster-strawberry-350	204	47	1.2	1.1	285	total	204	47	1.2	1.1	285	OK	
+puretein-choco-330	150	23	6	0.9	160	total	150	23	6	0.9	160	OK	
+puretein-coffee-330	150	23	6	0.5	185	total	150	23	6	0.5	185	OK	
+sellex-profit-peach-icedtea-330	90	20	<1	0	290	total	90	20	0.9	0	290	OK	라벨 미만 표기 보존
+greenbia-proteinmeal-active-choco-250	120	20	1	3	250	total	120	20	1	3	250	OK	
+greenbia-proteinmeal-active-almond-walnut-250	120	20	1	3.5	320	total	120	20	1	3.5	320	OK	
+sellex-protein-lactosefree-original-190	140	14	1.4	5	130	total	140	14	1.4	5	130	OK	
+sellex-protein-dangsolve-corn-190	150	14	<1	8	250	total	150	14	0.9	8	250	OK	라벨 미만 표기 보존
+sellex-protein-dangsolve-fivegrain-190	150	14	<1	8	250	total	150	14	0.9	8	250	OK	라벨 미만 표기 보존
+sellex-protein-lowsugar-190	160	12	2.5	7	120	total	160	12	2.5	7	120	OK	
+hymune-balance-active-banana-250	99	20	0	0	130	per_serving	140	20	3	3.7	175	MISMATCH	MISMATCH: calories (99 vs 140); sugar (0 vs 3); fat (0 vs 3.7); sodium (130 vs 175)
+dryou-protein-drink-banana-250	143	24	3	2.5	100	total	143	24	3	2.5	100	OK	
+pasteur-easyprotein-lowsugar-choco-250	110	20	3	0.6	120	total	110	20	3	0.6	120	OK	
+solveandgo-protamin-savory-250	130	24	3	0.9	250	total	130	24	3	0.9	250	OK	
+yonsei-severance-a2-protein-choco-190	90	12	3.5	2.7	100	total	90	12	3.5	2.7	100	OK	
+yonsei-severance-a2-protein-coffee-190	85	12	3.5	2.5	150	total	85	12	3.5	2.5	150	OK	
+dryou-protein-drink-strawberry-250	142	24	3.8	2	100	total	142	24	3.8	2	100	OK	
+dryou-protein-40g-strawberry-350	244	40	4	4	170	total	244	40	4	4	170	OK	
+hymune-balance-active-original-250	130	20	4	2.8	165	per_serving	130	20	4	2.8	165	OK	
+seoulmilk-protein-energy-coffee-240	135	21	4	4	200	total	135	21	4	4	200	OK	
+solveandgo-protamin-choco-250	135	24	4	1.2	260	total	135	24	4	1.2	260	OK	
+hymune-protein-balance-lowsugar-190	130	10	4.5	4.5	130	per_serving	130	10	4.5	4.5	130	OK	
+dryou-protein-40g-choco-350	247	40	4.2	5.3	120	total	258	40	4.8	6.5	120	MISMATCH	MISMATCH: calories (247 vs 258); sugar (4.2 vs 4.8); fat (5.3 vs 6.5)
+hymune-balance-active-cookie-cream-250	130	20	5	3	175	per_serving	130	20	5	3	175	OK	
+labnosh-protein-latte-350	170	27	5	0.8	210	total	170	27	5	0	210	MISMATCH	MISMATCH: fat (0.8 vs 0)
+labnosh-protein-melon-350	170	27	5	1.2	125	total	170	27	5	1.2	125	OK	
+hymune-balance-active-strawberry-250	140	20	5	3	140	per_serving	140	20	5	3	140	OK	
+seoulmilk-protein-energy-choco-240	145	21	5	4.6	170	total	145	21	5	4.6	170	OK	
+hymune-protein-balance-choco-190	140	10	5	7	110	per_serving	140	10	5	7	110	OK	
+labnosh-protein-cacao-350	165	27	6	0.8	190	total	175	27	6	0.8	190	MISMATCH	MISMATCH: calories (165 vs 175)
+labnosh-protein-strawberry-350	165	27	6	0.5	150	total	175	27	6	0.5	150	MISMATCH	MISMATCH: calories (165 vs 175)
+calobye-perfect-powershake-strawberry-250	115	20	6	0	190	total	115	20	6	0	190	OK	
+yonsei-severance-a2-protein-original-190	145	12	6	5	180	total	145	12	6	5	180	OK	
+labnosh-protein-banana-350	160	<27	6	0	160	total	190	25	8	3.2	280	WRONG_LABEL	WRONG_LABEL: 라벨은 355mL이나 제품 capacity는 350mL
+labnosh-protein-cookie-cream-350	165	27	8	0.9	140	total	165	27	8	0.9	140	OK	
+labnosh-protein-perfect-grain-350	125	27	0	0.6	380	total	125	27	0	0.5	190	MISMATCH	MISMATCH: sodium (380 vs 190)
+labnosh-protein-perfect-choco-350	135	27	0	0.6	510	total	125	27	0	0.5	190	MISMATCH	MISMATCH: calories (135 vs 125); sodium (510 vs 190)
+labnosh-protein-perfect-banana-350	125	27	0	0.5	370	total	125	27	0	0.5	190	MISMATCH	MISMATCH: sodium (370 vs 190)
+calobye-perfect-powershake-choco-250	115	20	8	0	170	total	115	20	8	0	170	OK	
+hamsoa-minions-proteinact-choco-330	205	30	8	2.3	330	total	205	30	8	2.3	330	OK	
+mymil-newprotein-original-190	150	9	10	6	170	total	150	9	10	6	170	OK	
+mymil-newprotein-deepchoco-190	150	9	8	6	150	total	150	9	10	6	170	MISMATCH	MISMATCH: sugar (8 vs 10); sodium (150 vs 170)
+mymil-newprotein-goatmilk-190	150	9	8	6	130	total	150	9	10	6	170	MISMATCH	MISMATCH: sugar (8 vs 10); sodium (130 vs 170)
+hymune-protein-balance-190	165	10	11	6.5	130	per_serving	165	10	11	6.5	130	OK	
+pasteur-easyprotein-cereal-250	165	20	11	1.5	150	total	165	20	11	1.5	150	OK	
+hymune-protein-balance-black-sesame-190	165	10	14	5	120	total	165	10	14	5	120	OK	
+sellex-protein-original-190	190	12	14	6	170	total	190	12	14	6	170	OK	
+hymune-protein-balance-plus-190	150	13	14	4	180	per_serving	150	13	14	4	180	OK	
+danbaek-water-grapefruit-400	100	25	0	0	48	total	100	25	0	0	48	OK	
+mymil-newprotein-banana-190	99	10	4.5	2	170	total	150	9	10	6	170	MISMATCH	MISMATCH: calories (99 vs 150); protein (10 vs 9); sugar (4.5 vs 10); fat (2 vs 6)
+oneuldanbaek-caramel-latte-250	135	21	3	2	100	total	158	21	6	2	200	WRONG_LABEL	WRONG_LABEL: SHARED_LABEL; 카라멜라떼 slug에 초코라떼 라벨 연결
+oneuldanbaek-dolce-latte-250	135	21	3	2	100	total	135	21	4	1.4	100	WRONG_LABEL	WRONG_LABEL: SHARED_LABEL; 돌체라떼 slug에 초코라떼 라벨 연결
+labnosh-protein-perfect-cookie-cream-350	135	27	0	2.3	330	total	135	27	0	2.3	330	OK	
+takefit-extreme-450	259	60	1.3	1.4	350	total	259	60	1.3	1.4	350	OK	
+ottogi-dayprotein-choco-250	135	21	0.6	1.4	90	total	135	21	0.6	1.4	90	OK	
+ottogi-dayprotein-fivegrain-250	125	21	0.9	0.8	240	total	125	21	0.9	0.8	240	OK	
+ottogi-dayprotein-banana-250	120	21	0.8	1	85	total	120	21	0.8	1	85	OK	
+dryou-protein-62g-matcha-450	329	62	3.6	3.7	350	total	329	62	3.6	3.7	800	MISMATCH	MISMATCH: sodium (350 vs 800)
+ultive-protein-savory-250	110	21	0	3.1	350	total	110	21	0	3.1	350	OK	
+ultive-protein-banana-250	115	21	0	3.4	430	total	115	21	0	3.4	430	OK	
+ultive-protein-choco-250	125	21	0	3.6	350	total	125	21	0	3.6	350	OK	
+labnosh-protein-salted-caramel-350	130	27	0	1.3	480	total	130	27	0	1.3	480	OK	
+labnosh-protein-sweet-corn-350	125	27	0	1.2	400	total	125	27	0	1.2	400	OK	
+labnosh-protein-perfect-melon-350	130	27	0	1.2	310	total	130	27	0	1.2	310	OK	
+hymune-drinking-protein-balance-125	125	8	9	5	85	total	125	8	9	5	85	OK	

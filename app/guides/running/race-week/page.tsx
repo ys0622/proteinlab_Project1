@@ -35,7 +35,7 @@ const runnerProductRows = [
     name: "셀렉스 프로핏",
     href: "/product/sellex-profit-milk-vanilla-250",
     protein: "20g",
-    feature: "당류 0g, 125kcal",
+    feature: "당류 0g, 105kcal",
   },
   {
     purpose: "식물성 선호",

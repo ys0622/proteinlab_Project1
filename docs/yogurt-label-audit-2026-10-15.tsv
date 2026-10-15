@@ -1,0 +1,58 @@
+slug	label_kcal	label_protein	label_sugar	label_fat	label_sodium	label_basis	live_kcal	live_protein	live_sugar	live_fat	live_sodium	status	note
+yopro-plain-150	84	15	2.3	0	85	total	84	15	2.3	0	85	OK	-
+yopro-blueberry-150	105	13.5	10	0	80	total	105	13.5	10	0	80	OK	-
+yoplait-protein-blueberry-100	112	9	12	2.2	70	total	112	9	12	2.2	70	OK	-
+yoplait-protein-plain-210	180	17	16.5	3.3	130	total	125	15	4	1.8	95	WRONG_LABEL	WRONG_LABEL: 플레인 210mL 파일이 딸기바나나 210mL 라벨임
+yoplait-protein-strawberry-banana-210	190	17	18	3.1	120	total	190	17	18	3.1	120	OK	-
+yoplait-protein-max-210	188	23	12	4	180	total	188	23	12	4	180	OK	-
+who-greek-plain-80	105	4.8	7.2	6.2	90	per_serving	125	4.8	12	6.2	90	WRONG_LABEL	WRONG_LABEL: 일반 플레인 80g 파일이 유기농 달지않은 플레인 80g(총 320g, 80g×4개) 라벨임
+who-greek-plain-450	720	27	72	35.1	504	per_100g	360	27	42.8	9	495	MISMATCH	100g 표기 160kcal/단백질6g/당류16g/지방7.8g/나트륨112mg을 450g으로 환산; MISMATCH: kcal, sugar, fat, sodium
+maeil-bio-greek-unsweetened-150	135	10	2.5	7	120	total	140.63	10.5	2.63	7.13	121.88	MISMATCH	MISMATCH: kcal, protein
+sangha-organic-greek-unsweetened-80	87.5	5.5	2.5	5.5	40	total	90	5.5	2.5	5.5	40	MISMATCH	라벨 총 320g 값 350kcal/단백질22g/당류10g/지방22g/나트륨160mg을 80g으로 환산; MISMATCH: kcal
+pulmuone-dannon-greek-unsweetened-90	70	6	6	1.6	45	per_serving	64	6.1	3.3	2	50	MISMATCH	라벨 1컵(90g) 기준; MISMATCH: kcal, sugar, fat, sodium
+yoplait-protein-plain-100	105	10.4	8.5	2.5	80	total	105	10.4	8.5	2.5	80	OK	-
+sangha-organic-greek-plain-80	100	5.3	7	5	35	total	100	5.3	7	5	35	OK	라벨 총 320g 값을 80g으로 환산
+sangha-organic-greek-unsweetened-400	360	28	7.2	20	200	per_100g	360	28	7.2	20	200	OK	100g 표기 90kcal/단백질7g/당류1.8g/지방5g/나트륨50mg을 400g으로 환산
+who-highprotein-greek-unsweetened-400	580	40	28	24	400	per_100g	580	40	28	24	400	OK	100g 표기 145kcal/단백질10g/당류7g/지방6g/나트륨100mg을 400g으로 환산
+yozm-plain-greek-450	810	54	4.5	45	112.5	per_100g	810	54	4.5	45	112.5	OK	100g 표기 180kcal/단백질12g/당류1g/지방10g/나트륨25mg을 450g으로 환산
+yozm-plain-greek-800	1440	96	8	80	200	per_100g	1440	96	8	80	200	OK	100g 표기 180kcal/단백질12g/당류1g/지방10g/나트륨25mg을 800g으로 환산
+yozm-soft-plain-500	580	35	10	40	155	per_100g	580	35	10	40	155	OK	100g 표기 116kcal/단백질7g/당류2g/지방8g/나트륨31mg을 500g으로 환산
+greekday-light-100	100	6.75	2.46	6.97	30.5	per_100g	90	11	3.5	3.2	45	MISMATCH	100g 표기이며 제품 용량도 100g; MISMATCH: kcal, protein, sugar, fat, sodium
+greekday-light-450	450	30.375	11.07	31.365	137.25	per_100g	405	49.5	15.75	14.4	202.5	MISMATCH	100g 표기 100kcal/단백질6.75g/당류2.46g/지방6.97g/나트륨30.5mg을 450g으로 환산; MISMATCH: kcal, protein, sugar, fat, sodium
+greekday-light-800	800	54	19.68	55.76	244	per_100g	720	88	28	25.6	360	MISMATCH	100g 표기 100kcal/단백질6.75g/당류2.46g/지방6.97g/나트륨30.5mg을 800g으로 환산; MISMATCH: kcal, protein, sugar, fat, sodium
+greekday-signature-100	160	11.42	1.86	10.69	29.87	per_100g	160	11.42	1.86	10.69	29.87	OK	100g 표기이며 제품 용량도 100g
+greekday-signature-450	720	51.39	8.37	48.105	134.415	per_100g	720	51.39	8.37	48.1	134.4	OK	100g 표기 160kcal/단백질11.42g/당류1.86g/지방10.69g/나트륨29.87mg을 450g으로 환산
+greekday-signature-800	1280	91.36	14.88	85.52	238.96	per_100g	1280	91.36	14.88	85.5	239	OK	100g 표기 160kcal/단백질11.42g/당류1.86g/지방10.69g/나트륨29.87mg을 800g으로 환산
+greekday-signature-yuja-100	200	8	16	8	35	total	200	8	16	8	35	OK	-
+maeil-bio-greek-unsweetened-400	360	28	7.2	19.2	320	per_100g	375.01	28	7.01	19.01	325.01	MISMATCH	100g 표기 90kcal/단백질7g/당류1.8g/지방4.8g/나트륨80mg을 400g으로 환산; MISMATCH: kcal, sugar, fat, sodium
+maeil-bio-greek-unsweetened-80	75	5.6	1.4	3.8	65	total	75	5.6	1.4	3.8	65	OK	-
+maeil-bio-greek-unsweetened-800	720	56	14.4	38.4	640	per_100g	750.03	56	14.03	38.03	650.03	MISMATCH	100g 표기 90kcal/단백질7g/당류1.8g/지방4.8g/나트륨80mg을 800g으로 환산; MISMATCH: kcal, sugar, fat, sodium
+maeil-bio-greek-plain-150	135	10	2.5	7	120	total	135	9	5.5	6.5	110	WRONG_LABEL	WRONG_LABEL; SHARED_LABEL: 무가당 플레인 150g 라벨과 동일한 성분표로 보이며 플레인 라이브값과 다름
+maeil-bio-greek-plain-400	360	28	7.2	19.2	320	per_100g	360	24	14.67	17.33	293.33	WRONG_LABEL	WRONG_LABEL; SHARED_LABEL: 무가당 플레인 400g 라벨과 동일한 성분표로 보이며 플레인 라이브값과 다름; 100g 값을 400g으로 환산
+maeil-bio-greek-delight-banana-80	70	5	6	2.6	50	total	80	5	6	1.5	50	MISMATCH	MISMATCH: kcal, fat
+maeil-bio-greek-togo-plain-120	120	7	8	5	100	total	120	7	8	5	100	OK	-
+maeil-bio-greek-togo-honey-120	130	6	12	4	90	total	130	6	12	4	90	OK	-
+maeil-bio-greek-drink-plain-190	132	8.3	12.5	3.4	94	total	132	8.3	12.5	3.4	64	MISMATCH	MISMATCH: sodium
+maeil-bio-greek-drink-banana-190	132	8.3	12.5	3.4	105	total	132	8.3	12.5	3.4	105	OK	-
+maeil-bio-greek-drink-unsweetened-710	362.1	34.79	10.65	13.49	362.1	per_100ml	493.26	31.02	46.71	12.71	239.16	MISMATCH	100mL 표기 51kcal/단백질4.9g/당류1.5g/지방1.9g/나트륨51mg을 710mL로 환산; MISMATCH: kcal, protein, sugar, fat, sodium
+maeil-bio-greek-drink-plain-710	497	31.24	46.15	12.78	355	per_100ml	493.26	31.02	46.71	12.71	239.16	MISMATCH	100mL 표기 70kcal/단백질4.4g/당류6.5g/지방1.8g/나트륨50mg을 710mL로 환산; MISMATCH: kcal, protein, sugar, sodium
+maeil-bio-greek-drink-banana-710	497	31.24	46.15	12.78	390.5	per_100ml	493.26	31.02	46.71	12.71	239.16	MISMATCH	100mL 표기 70kcal/단백질4.4g/당류6.5g/지방1.8g/나트륨55mg을 710mL로 환산; MISMATCH: kcal, protein, sugar, sodium
+sangha-organic-greek-apple-kale-120	125	7	10	5	60	total	125	7	10	5	60	OK	-
+sangha-organic-greek-blueberry-kale-120	125	7	10	5	60	total	125	7	10	5	60	OK	-
+who-organic-greek-unsweetened-450	565	27	36	35.1	517.5	per_100g	565	27	36	35.1	517.5	OK	100g 표기 125kcal/단백질6g/당류8g/지방7.8g/나트륨115mg을 450g으로 환산(산술 열량 562.5kcal, 라벨 전면 총 열량 565kcal를 기록)
+lookt-icelandic-mild-100	81	10	3	2.8	40	total	81	10	3	2.8	40	OK	-
+lookt-icelandic-thick-100	188	12	<1	12	32	total	188	12	0.9	12	32	OK	라벨 당류 <1g이며 라이브 0.9g는 범위 내
+lookt-icelandic-mild-450	364.5	45	13.5	12.6	180	per_100g	364.5	45	13.5	12.6	180	OK	100g 표기 81kcal/단백질10g/당류3g/지방2.8g/나트륨40mg을 450g으로 환산
+lookt-icelandic-thick-450	846	54	3.7	54	144	per_100g	846	54	4.05	54	144	MISMATCH	100g당 188kcal/단백질12g/당류<1g/지방12g/나트륨32mg 표기, 총내용량 열에는 당류3.7g; MISMATCH: sugar
+yozm-blueberry-compote-130	250	13	12	11	30	total	250	13	12	11	30	OK	-
+yozm-strawberry-compote-130	245	13	8	11	30	total	245	13	8	11	30	OK	-
+yozm-apple-cinnamon-130	205	13	3	16	32	total	205	13	3	16	32	OK	-
+yozm-choco-cranola-120	205	8	7	9	80	total	205	8	7	9	80	OK	-
+yozm-cacao-granola-120	280	15	6	14	40	total	280	15	6	14	40	OK	-
+yozm-cafe-latte-100	180	12	2	13	25	total	180	12	2	13	25	OK	-
+yozm-crispy-granola-120	205	10	5	11	85	total	205	10	5	11	85	OK	-
+yozm-oh-granola-low-sugar-115	229	14	3	9	60	total	229	14	3	9	60	OK	-
+yozm-low-sugar-matcha-100	195	13	2	15	25	total	195	13	2	15	25	OK	-
+kirkland-greek-plain-907	498.85	90.7	27.21	0	362.8	per_100g	498.85	90.7	27.21	0	362.8	OK	100g 표기 55kcal/단백질10g/당류3g/지방0g/나트륨40mg을 907g으로 환산
+who-organic-greek-plain-480	120	4.8	11	6.2	90	per_serving	720	28.8	66	37.2	540	WRONG_LABEL	WRONG_LABEL: 480g 제품 파일이 총 320g(80g×4개) 라벨이며 기록값은 라벨의 1개(80g) 기준
+denmark-high-greek-400	300	28	6	14	180	per_100g	300	28	6	14	180	OK	100g 표기 75kcal/단백질7g/당류1.5g/지방3.5g/나트륨45mg을 400g으로 환산
