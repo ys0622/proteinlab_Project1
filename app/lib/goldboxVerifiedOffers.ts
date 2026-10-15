@@ -70,11 +70,11 @@ const EXPIRING_SEED: VerifiedGoldboxOffer[] = [{
   expiresAt: "2026-10-16T07:00:00+09:00",
 }, {
   // 2026-10-16 사용자가 쿠팡 앱 골드박스로 알려 준 제품(앱솔리 퀴노아 약콩두유 무가당 190ml 20개, 상품 7297343190 · 옵션 17834583104/95893832724).
-  // 골드박스는 매일 07:00 시작이라 10/17 07:00 종료로 둔다. 파트너스 단축 링크를 받기 전이라 사이트 딥링크 변환 경로(subId=proteinlab)를 쓴다. 가격은 표시하지 않는다(price 0).
+  // 골드박스는 매일 07:00 시작이라 10/17 07:00 종료로 둔다. 링크는 사용자가 준 파트너스 단축 링크 hSJmyGz6bI. 가격은 표시하지 않는다(price 0).
   slug: "absolli-quinoa-yakkong-unsweetened-190",
   offerName: "190mL × 20개 · 와우회원 할인 · 쿠팡 확인",
   price: 0,
-  href: "/api/out/coupang?pageKey=7297343190&itemId=17834583104&vendorItemId=95893832724&category=soymilk&slug=absolli-quinoa-yakkong-unsweetened-190",
+  href: "https://link.coupang.com/a/hSJmyGz6bI",
   source: "coupang_app",
   verifiedAt: "2026-10-16T07:21:00+09:00",
   startsAt: "2026-10-16T07:00:00+09:00",
