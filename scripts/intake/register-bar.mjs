@@ -80,10 +80,14 @@ for (const it of items) {
   console.log(`  exactNutritionBySlug: ${JSON.stringify({ caloriesKcal: n.kcal, proteinG: n.protein_g, carbsG: n.carbs_g, sugarsG: n.sugar_g, fatG: n.fat_g, satFatG: n.sat_fat_g, sodiumMg: n.sodium_mg, fiberG: n.fiber_g })}`);
   if (dryRun) continue;
 
-  const flat = await sharp(join(dir, "product.png")).flatten({ background: "#ffffff" }).toBuffer();
+  // 사이트의 바 사진은 대부분 가로로 누운 포장이다. 세로 사진은 카드에서 가늘고 작게 보이니 90도 돌린다
+  // (세로 포장의 글자는 아래→위로 인쇄돼 있어 시계 방향으로 돌리면 바로 읽힌다).
+  const src = sharp(join(dir, "product.png"));
+  const { width: w, height: h } = await src.metadata();
+  const flat = await src.flatten({ background: "#ffffff" }).rotate(h > w * 1.4 ? 90 : 0, { background: "#ffffff" }).toBuffer();
   const trimmed = await sharp(flat).trim({ background: "#ffffff", threshold: 14 }).toBuffer();
   await sharp(trimmed)
-    .resize({ height: 732, width: 600, fit: "inside", withoutEnlargement: true })
+    .resize({ width: 900, height: 420, fit: "inside", withoutEnlargement: true })
     .extend({ top: 12, bottom: 12, left: 12, right: 12, background: "#ffffff" })
     .webp({ quality: 85 })
     .toFile(resolve(root, "public/bar-image", imgFile));

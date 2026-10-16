@@ -26,6 +26,17 @@ def main(src: str, dst: str) -> None:
         arr = np.array(cut)
         arr[~keep, 3] = 0
         cut = Image.fromarray(arr)
+    # 포장 안의 흰 글자를 배경으로 오인해 구멍이 나는 경우가 있다. 바깥과 이어지지 않은 투명 영역은 채운다.
+    arr = np.array(cut)
+    solid = (arr[:, :, 3] > 40).astype(np.uint8)
+    flood = np.pad(solid, 1)  # 테두리를 비워 두면 (0,0)에서 바깥 영역 전체를 채울 수 있다.
+    h, w = flood.shape
+    cv2.floodFill(flood, np.zeros((h + 2, w + 2), np.uint8), (0, 0), 2)
+    holes = flood[1:-1, 1:-1] == 0
+    arr[holes, 3] = 255
+    # 경계에 원본 배경색(어두운 띠)이 남지 않도록 투명도 경계를 2px 안쪽으로 깎는다.
+    arr[:, :, 3] = cv2.erode(arr[:, :, 3], np.ones((3, 3), np.uint8), iterations=2)
+    cut = Image.fromarray(arr)
     bbox = cut.getbbox()
     if bbox:
         cut = cut.crop(bbox)
