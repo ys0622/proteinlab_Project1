@@ -79,6 +79,28 @@ const EXPIRING_SEED: VerifiedGoldboxOffer[] = [{
   verifiedAt: "2026-10-16T07:21:00+09:00",
   startsAt: "2026-10-16T07:00:00+09:00",
   expiresAt: "2026-10-17T07:00:00+09:00",
+}, {
+  // 2026-10-17 사용자가 쿠팡 앱 골드박스로 알려 준 제품 2개(매일 07:00 시작, 10/18 07:00 종료).
+  // 링크는 골드박스 구성(입수) 옵션의 쿠팡 상품 ID를 /api/out/coupang 으로 넘겨 파트너스 딥링크로 바꾼다.
+  // 매일두유 렌틸콩 저당두유 190ml 24개: 상품 8890159701 · 옵션 25954822614/92929093931.
+  slug: "maeil-lentil-lowsugar-190",
+  offerName: "190mL × 24개 · 와우회원 할인 · 쿠팡 확인",
+  price: 0,
+  href: "/api/out/coupang?pageKey=8890159701&itemId=25954822614&vendorItemId=92929093931&category=soymilk&slug=maeil-lentil-lowsugar-190",
+  source: "coupang_app",
+  verifiedAt: "2026-10-17T08:00:00+09:00",
+  startsAt: "2026-10-17T07:00:00+09:00",
+  expiresAt: "2026-10-18T07:00:00+09:00",
+}, {
+  // 밥스누 약콩두유 오리지널 190ml 16개: 상품 293207724 · 옵션 282799371/3693311847.
+  slug: "bobsnu-yakkong-original-190",
+  offerName: "190mL × 16개 · 와우회원 할인 · 쿠팡 확인",
+  price: 0,
+  href: "/api/out/coupang?pageKey=293207724&itemId=282799371&vendorItemId=3693311847&category=soymilk&slug=bobsnu-yakkong-original-190",
+  source: "coupang_app",
+  verifiedAt: "2026-10-17T07:59:00+09:00",
+  startsAt: "2026-10-17T07:00:00+09:00",
+  expiresAt: "2026-10-18T07:00:00+09:00",
 }];
 
 async function getKV(): Promise<OfferKV | null> {
