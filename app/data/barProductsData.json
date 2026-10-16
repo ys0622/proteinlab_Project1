@@ -2177,5 +2177,131 @@
     "naverUrl": "https://search.shopping.naver.com/search/all?query=%EB%B2%A0%EC%96%B4%EB%B2%A8%EC%A6%88%20%EC%86%8C%ED%94%84%ED%8A%B8%20%ED%94%84%EB%A1%9C%ED%8B%B4%EB%B0%94%20(%EB%A7%88%EC%8B%9C%EB%A9%9C%EB%A1%9C%20%EB%A1%9D%ED%82%A4%EB%A1%9C%EB%93%9C)",
     "fat": 9.7,
     "sodium": 188
+  },
+  {
+    "slug": "barebells-proteinbar-white-chocolate-almond-55",
+    "brand": "베어벨즈",
+    "name": "프로틴바 (화이트 초콜릿 아몬드)",
+    "capacity": "55g",
+    "variant": "일반",
+    "tags": [
+      "바"
+    ],
+    "proteinPerServing": 20,
+    "calories": 203,
+    "sugar": 1.6,
+    "density": "9.85g/100kcal",
+    "productUrl": "#",
+    "productType": "bar",
+    "gradeTags": [],
+    "coupangUrl": "https://www.coupang.com/vp/products/7130331137?itemId=11691042156&vendorItemId=91681420313",
+    "naverUrl": "https://search.shopping.naver.com/search/all?query=%EB%B2%A0%EC%96%B4%EB%B2%A8%EC%A6%88%20%ED%94%84%EB%A1%9C%ED%8B%B4%EB%B0%94%20(%ED%99%94%EC%9D%B4%ED%8A%B8%20%EC%B4%88%EC%BD%9C%EB%A6%BF%20%EC%95%84%EB%AA%AC%EB%93%9C)",
+    "fat": 8.7,
+    "sodium": 100
+  },
+  {
+    "slug": "barebells-proteinbar-cookies-cream-55",
+    "brand": "베어벨즈",
+    "name": "프로틴바 (쿠키 앤 크림)",
+    "capacity": "55g",
+    "variant": "일반",
+    "tags": [
+      "바"
+    ],
+    "proteinPerServing": 20,
+    "calories": 200,
+    "sugar": 1,
+    "density": "10g/100kcal",
+    "productUrl": "#",
+    "productType": "bar",
+    "gradeTags": [],
+    "coupangUrl": "https://www.coupang.com/vp/products/8520980337?itemId=24671172663&vendorItemId=96085462576",
+    "naverUrl": "https://search.shopping.naver.com/search/all?query=%EB%B2%A0%EC%96%B4%EB%B2%A8%EC%A6%88%20%ED%94%84%EB%A1%9C%ED%8B%B4%EB%B0%94%20(%EC%BF%A0%ED%82%A4%20%EC%95%A4%20%ED%81%AC%EB%A6%BC)",
+    "fat": 7,
+    "sodium": 75
+  },
+  {
+    "slug": "barebells-proteinbar-salty-peanut-55",
+    "brand": "베어벨즈",
+    "name": "프로틴바 (솔티 피넛)",
+    "capacity": "55g",
+    "variant": "일반",
+    "tags": [
+      "바"
+    ],
+    "proteinPerServing": 20,
+    "calories": 201,
+    "sugar": 1.5,
+    "density": "9.95g/100kcal",
+    "productUrl": "#",
+    "productType": "bar",
+    "gradeTags": [],
+    "coupangUrl": "https://www.coupang.com/vp/products/8203799566?itemId=28977197309&vendorItemId=95906698968",
+    "naverUrl": "https://search.shopping.naver.com/search/all?query=%EB%B2%A0%EC%96%B4%EB%B2%A8%EC%A6%88%20%ED%94%84%EB%A1%9C%ED%8B%B4%EB%B0%94%20(%EC%86%94%ED%8B%B0%20%ED%94%BC%EB%84%9B)",
+    "fat": 8.3,
+    "sodium": 104
+  },
+  {
+    "slug": "barebells-soft-proteinbar-lemon-cheesecake-55",
+    "brand": "베어벨즈",
+    "name": "소프트 프로틴바 (레몬 치즈케이크)",
+    "capacity": "55g",
+    "variant": "일반",
+    "tags": [
+      "바"
+    ],
+    "proteinPerServing": 16,
+    "calories": 196,
+    "sugar": 2,
+    "density": "8.16g/100kcal",
+    "productUrl": "#",
+    "productType": "bar",
+    "gradeTags": [],
+    "coupangUrl": "https://www.coupang.com/vp/products/8520980231?itemId=24885751609&vendorItemId=93971024233",
+    "naverUrl": "https://search.shopping.naver.com/search/all?query=%EB%B2%A0%EC%96%B4%EB%B2%A8%EC%A6%88%20%EC%86%8C%ED%94%84%ED%8A%B8%20%ED%94%84%EB%A1%9C%ED%8B%B4%EB%B0%94%20(%EB%A0%88%EB%AA%AC%20%EC%B9%98%EC%A6%88%EC%BC%80%EC%9D%B4%ED%81%AC)",
+    "fat": 8.5,
+    "sodium": 164
+  },
+  {
+    "slug": "barebells-proteinbar-peanut-butter-55",
+    "brand": "베어벨즈",
+    "name": "프로틴바 (피넛 버터)",
+    "capacity": "55g",
+    "variant": "일반",
+    "tags": [
+      "바"
+    ],
+    "proteinPerServing": 20,
+    "calories": 203,
+    "sugar": 1.5,
+    "density": "9.85g/100kcal",
+    "productUrl": "#",
+    "productType": "bar",
+    "gradeTags": [],
+    "coupangUrl": "https://www.coupang.com/vp/products/8982161223?itemId=26298699642&vendorItemId=93971023549",
+    "naverUrl": "https://search.shopping.naver.com/search/all?query=%EB%B2%A0%EC%96%B4%EB%B2%A8%EC%A6%88%20%ED%94%84%EB%A1%9C%ED%8B%B4%EB%B0%94%20(%ED%94%BC%EB%84%9B%20%EB%B2%84%ED%84%B0)",
+    "fat": 8.3,
+    "sodium": 204
+  },
+  {
+    "slug": "grenade-carbkilla-peanut-nutter-60",
+    "brand": "그레네이드",
+    "name": "카브킬라 프로틴바 (피넛 너터)",
+    "capacity": "60g",
+    "variant": "일반",
+    "tags": [
+      "바"
+    ],
+    "proteinPerServing": 21,
+    "calories": 223,
+    "sugar": 2,
+    "density": "9.42g/100kcal",
+    "productUrl": "#",
+    "productType": "bar",
+    "gradeTags": [],
+    "coupangUrl": "https://www.coupang.com/vp/products/5613757276?itemId=9078242439&vendorItemId=88131580057",
+    "naverUrl": "https://search.shopping.naver.com/search/all?query=%EA%B7%B8%EB%A0%88%EB%84%A4%EC%9D%B4%EB%93%9C%20%EC%B9%B4%EB%B8%8C%ED%82%AC%EB%9D%BC%20%ED%94%84%EB%A1%9C%ED%8B%B4%EB%B0%94%20(%ED%94%BC%EB%84%9B%20%EB%84%88%ED%84%B0)",
+    "fat": 9.3,
+    "sodium": 136
   }
 ]

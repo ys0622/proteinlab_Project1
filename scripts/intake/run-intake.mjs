@@ -50,11 +50,17 @@ function findAgy() {
 
 // 1. collect
 function collect(todo) {
+  // 한 번에 많이 넣으면 aside repl 이 결과 없이 끝난 적이 있어 4개씩 나눠 돈다.
+  for (let i = 0; i < todo.length; i += 4) collectBatch(todo.slice(i, i + 4));
+}
+
+function collectBatch(todo) {
   if (!todo.length) return;
   const tpl = readFileSync(resolve(root, "scripts/intake/collect-coupang.aside.js"), "utf-8");
   const code = tpl.replace("__ITEMS__", JSON.stringify(todo.map(({ id, url }) => ({ id, url }))));
   const res = spawnSync(join(process.env.LOCALAPPDATA, "Aside/CLI/current/aside.exe"), ["repl", code], { encoding: "utf-8", maxBuffer: 64 * 1024 * 1024, timeout: 60_000 * (2 + todo.length) });
   const lines = (res.stdout || "").split(/\r?\n/).filter((l) => l.startsWith("RESULT "));
+  if (!lines.length) console.error(`collect 결과 없음 (${todo.map((x) => x.id).join(",")}): status=${res.status} ${res.error ? res.error.message : ""} ${(res.stdout || "").slice(-300)} ${(res.stderr || "").slice(-300)}`);
   for (const line of lines) {
     const r = JSON.parse(line.slice(7));
     const it = todo.find((x) => x.id === r.id);
