@@ -127,6 +127,27 @@ addGroup(kelloggSlugs, {
 });
 
 const exactNutritionBySlug: Record<string, NutritionPatch> = {
+  // 베어벨즈: 쿠팡 상세의 유럽식 성분표(1개 55g). 나트륨은 소금 g × 400 환산.
+  "barebells-soft-proteinbar-caramel-choco-55": {
+    caloriesKcal: 203,
+    proteinG: 16,
+    carbsG: 17,
+    sugarsG: 2,
+    fatG: 9.1,
+    satFatG: 4.3,
+    sodiumMg: 156,
+    fiberG: 7,
+  },
+  "barebells-soft-proteinbar-marshmallow-rocky-road-55": {
+    caloriesKcal: 209,
+    proteinG: 17,
+    carbsG: 17,
+    sugarsG: 2,
+    fatG: 9.7,
+    satFatG: 4.7,
+    sodiumMg: 188,
+    fiberG: 3.9,
+  },
   "dryou-proteinbar-pro-3nuts-crunch": {
     caloriesKcal: 334,
     proteinG: 25,
