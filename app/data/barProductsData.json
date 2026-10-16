@@ -155,7 +155,7 @@
     "slug": "benof-softbar-peanutbutter",
     "brand": "베노프",
     "name": "소프트바 (피넛버터)",
-    "capacity": "50g",
+    "capacity": "60g",
     "variant": "일반",
     "tags": [
       "바"
@@ -177,7 +177,7 @@
     "slug": "benof-softbar-cookie-cream",
     "brand": "베노프",
     "name": "소프트바 (쿠키앤크림)",
-    "capacity": "50g",
+    "capacity": "60g",
     "variant": "일반",
     "tags": [
       "바"
@@ -199,7 +199,7 @@
     "slug": "benof-softbar-chocolate-caramel",
     "brand": "베노프",
     "name": "소프트바 (초콜릿카라멜)",
-    "capacity": "50g",
+    "capacity": "60g",
     "variant": "일반",
     "tags": [
       "바"
@@ -221,7 +221,7 @@
     "slug": "benof-softbar-cacao",
     "brand": "베노프",
     "name": "소프트바 (카카오)",
-    "capacity": "50g",
+    "capacity": "60g",
     "variant": "일반",
     "tags": [
       "바"
@@ -243,7 +243,7 @@
     "slug": "benof-softbar-black-sesame",
     "brand": "베노프",
     "name": "소프트바 (흑임자)",
-    "capacity": "50g",
+    "capacity": "60g",
     "variant": "일반",
     "tags": [
       "바"
@@ -265,7 +265,7 @@
     "slug": "benof-softbar-injeolmi",
     "brand": "베노프",
     "name": "소프트바 (인절미)",
-    "capacity": "50g",
+    "capacity": "60g",
     "variant": "일반",
     "tags": [
       "바"
@@ -287,7 +287,7 @@
     "slug": "benof-softbar-roasted-sweetpotato",
     "brand": "베노프",
     "name": "소프트바 (군고구마)",
-    "capacity": "50g",
+    "capacity": "60g",
     "variant": "일반",
     "tags": [
       "바"
@@ -309,7 +309,7 @@
     "slug": "benof-softbar-berry-cheesecake",
     "brand": "베노프",
     "name": "소프트바 (베리베리치즈케이크)",
-    "capacity": "50g",
+    "capacity": "60g",
     "variant": "일반",
     "tags": [
       "바"
@@ -1386,7 +1386,7 @@
     "slug": "cralo-plant-proteinbar",
     "brand": "씨알로",
     "name": "식물성단백질바",
-    "capacity": "45g",
+    "capacity": "43g",
     "variant": "일반",
     "tags": [
       "바"

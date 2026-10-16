@@ -37,7 +37,7 @@ const quickAnswer = [
 ];
 
 const brandRows = [
-  ["마이밀 뉴프로틴", "9g", "190mL", "산양유 등 소화 편의성 강조, 가장 가벼운 라인"],
+  ["마이밀 뉴프로틴", "9~10g", "190mL", "산양유 등 소화 편의성 강조, 가장 가벼운 라인"],
   ["하이뮨 프로틴 밸런스", "10~13g", "190mL", "오리지널·저당·플러스 등 라인 세분화"],
   ["더단백 밸런스", "10g", "190mL", "빙그레 더단백의 저함량 버전"],
   ["셀렉스 프로틴 (로우슈거·당솔브 등)", "12~14g", "190mL", "당 관리와 저함량을 함께 고려한 라인"],
@@ -152,7 +152,7 @@ export default function LightProteinUnder20gPage() {
           <section className="rounded-[28px] border border-[#e5deca] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(38,28,18,0.05)]">
             <h2 className="text-xl font-bold text-[var(--foreground)]">주요 저함량 라인 비교</h2>
             <p className="mt-3 text-sm leading-6 text-[var(--foreground-muted)]">
-              등록된 20g 미만 제품 22개 중 19개(86%)가 190mL입니다. 소용량 설계가 우연이 아니라
+              등록된 20g 미만 음료 23개 중 19개(83%)가 190mL입니다. 소용량 설계가 우연이 아니라
               "부담 없이 자주" 마시게 하려는 의도적인 구성이라는 뜻입니다.
             </p>
             <div className="mt-5 overflow-x-auto rounded-2xl border border-[#e8e3da] bg-[#fdfaf5]">

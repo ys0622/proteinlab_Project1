@@ -57,7 +57,7 @@ const warningPoints = [
   },
   {
     title: "면역과 컨디션 저하",
-    body: "감기, 피로, 붓기가 반복된다면 단백질과 전체 식사 구성을 같이 점검해야 합니다.",
+    body: "잦은 컨디션 저하, 피로, 붓기가 반복된다면 단백질과 전체 식사 구성을 같이 점검해야 합니다.",
   },
 ];
 
@@ -125,7 +125,7 @@ export default function DeficiencySymptomsPage() {
               단백질이 부족하면 몸에 어떤 신호가 올까?
             </h1>
             <p className="mt-3 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
-              피로, 근력 감소, 잦은 감기, 붓기.
+              피로, 근력 감소, 잦은 컨디션 저하, 붓기.
               <br />
               단백질 부족은 갑자기 심해지기보다 작은 신호가 반복되는 형태로 먼저 드러나는 경우가 많습니다.
             </p>

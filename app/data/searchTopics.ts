@@ -319,7 +319,7 @@ const searchTopics: SearchTopic[] = [
     primaryCta: { href: "/brands/takefit", title: "테이크핏 전 제품 보기", description: "테이크핏 라인업을 성분 기준으로 한 번에 비교합니다." },
     relatedLinks: [
       { href: "/compare/takefit-max-vs-takefit-monster", title: "테이크핏 맥스 vs 몬스터 비교", description: "250mL vs 350mL 용량 차이를 성분 기준으로 봅니다." },
-      { href: "/compare/takefit-vs-newcare", title: "테이크핏 vs 뉴케어 비교", description: "RTD 1·2위 제품을 직접 비교합니다." },
+      { href: "/compare/takefit-vs-newcare", title: "테이크핏 vs 뉴케어 비교", description: "대표 RTD 단백질 음료 두 제품을 직접 비교합니다." },
       { href: "/topics/convenience-store-protein", title: "편의점 단백질 제품", description: "편의점 구매 전체 후보군을 봅니다." },
     ],
   },

@@ -348,8 +348,8 @@ const compareLandings: CompareLanding[] = [
     slug: "takefit-vs-newcare",
     title: "테이크핏 vs 뉴케어 올프로틴 비교",
     description: "테이크핏 맥스와 뉴케어 올프로틴을 단백질 함량, 당류, 칼로리, 가격 기준으로 비교합니다.",
-    intro: "편의점·마트에서 가장 많이 팔리는 두 RTD 단백질 음료를 성분 기준으로 직접 비교합니다.",
-    bullets: ["국내 RTD 단백질 음료 1·2위 비교", "남양유업 vs 매일유업 브랜드 대결", "운동 후 보충·일상 섭취 관점 모두 제시"],
+    intro: "편의점·마트에서 쉽게 볼 수 있는 두 RTD 단백질 음료를 성분 기준으로 직접 비교합니다.",
+    bullets: ["국내 대표 RTD 단백질 음료 비교", "남양유업 vs 대상웰라이프 브랜드 대결", "운동 후 보충·일상 섭취 관점 모두 제시"],
     productSlugs: ["takefit-max-goso-250", "newcare-all-protein-choco-245"],
     relatedLinks: [
       { href: "/brands/takefit", title: "테이크핏 브랜드 허브", description: "테이크핏 전 제품을 한 번에 봅니다." },
