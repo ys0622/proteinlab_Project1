@@ -1,17 +1,21 @@
-"""inbox/intake/<id>/ 결과를 한 장짜리 미리보기 PNG로 합친다. 사용법: python scripts/intake/preview_sheet.py B1 B2 ..."""
+"""inbox/intake/<id>/ 결과를 한 장짜리 미리보기 PNG로 합친다."""
+import argparse
 import json
 import os
-import sys
 
 from PIL import Image, ImageDraw, ImageFont
 
 ROOT = os.path.join(os.path.dirname(__file__), "..", "..", "inbox", "intake")
 FONT = ImageFont.truetype("C:/Windows/Fonts/malgun.ttf", 20)
 SMALL = ImageFont.truetype("C:/Windows/Fonts/malgun.ttf", 16)
-cands = {c["id"]: c for c in json.load(open(os.path.join(ROOT, "bar-candidates.json"), encoding="utf-8"))}
+parser = argparse.ArgumentParser()
+parser.add_argument("ids", nargs="+")
+parser.add_argument("--candidates", default=os.path.join(ROOT, "bar-candidates.json"))
+args = parser.parse_args()
+cands = {c["id"]: c for c in json.load(open(args.candidates, encoding="utf-8"))}
 
 rows = []
-for pid in sys.argv[1:]:
+for pid in args.ids:
     d = os.path.join(ROOT, pid)
     g = json.load(open(os.path.join(d, "gemini.json"), encoding="utf-8"))
     m = json.load(open(os.path.join(d, "meta.json"), encoding="utf-8"))

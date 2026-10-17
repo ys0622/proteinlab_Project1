@@ -3,7 +3,7 @@
  *
  * 사용법:
  *   node scripts/intake/run-intake.mjs <후보.json> [--ids B1,B2] [--force]
- *   후보.json: [{ id, brand, name, capacity, url }]  (docs/new-product-candidates-*.md 의 표에서 만든다)
+ *   후보.json: [{ id, category?, brand, name, capacity, url }]  (category 기본값: bar)
  *
  * 단계(제품별 폴더 inbox/intake/<id>/ 에 결과를 남기고, 있으면 건너뛴다):
  *   1. collect  aside repl 로 상품 페이지를 열어 제목·productId·itemId·vendorItemId·대표/상세 이미지 주소 수집 → meta.json
@@ -33,7 +33,9 @@ if (!listPath) {
   process.exit(1);
 }
 
-const all = JSON.parse(readFileSync(resolve(root, listPath), "utf-8"));
+const categories = new Set(["drink", "bar", "shake", "yogurt", "soymilk"]);
+const all = JSON.parse(readFileSync(resolve(root, listPath), "utf-8")).map((item) => ({ ...item, category: item.category ?? "bar" }));
+for (const item of all) if (!categories.has(item.category)) throw new Error(`${item.id}: 지원하지 않는 category '${item.category}'`);
 const wanted = idsArg ? new Set(idsArg.split(",")) : null;
 const items = all.filter((x) => !wanted || wanted.has(x.id));
 const UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130 Safari/537.36";
@@ -101,18 +103,19 @@ async function gemini(it) {
     lines.push(`- ${join(imgDir, f).replace(/\\/g, "/")} (${m.width}x${m.height})`);
   }
   const meta = load(join(dir, "meta.json"));
+  const unitLabel = { drink: "1팩/1병", bar: "1개", shake: "1회 제공량", yogurt: "1개(용량 전체)", soymilk: "1팩/1병" }[it.category];
   const prompt = `너는 식품 상세페이지 이미지 분석기다. **셸/터미널 명령 실행 금지, 파일 수정 금지. 이미지는 파일 보기 도구로만 연다.**
-등록하려는 제품: ${it.brand} ${it.name} (1개 ${it.capacity})
+등록하려는 제품: ${it.brand} ${it.name} (${unitLabel} ${it.capacity})
 쿠팡 상품명: ${meta.title}
 아래 이미지(대표 사진 main.jpg와 상세 이미지들)를 모두 열어 보고 JSON 하나만 출력하라(코드블록·설명 없이).
 ${lines.join("\n")}
 출력 형식:
-{"title_matches":true,"title_note":"쿠팡 상품명의 맛·용량이 등록하려는 제품과 같은지","product_image":"파일명","product_bbox_px":[x0,y0,x1,y1],"spec_image":"파일명 또는 null","spec_bbox_px":[x0,y0,x1,y1],"spec_language":"ko|en|other","nutrition_per_unit":{"basis":"1개 55g 등","kcal":null,"protein_g":null,"carbs_g":null,"sugar_g":null,"fat_g":null,"sat_fat_g":null,"trans_fat_g":null,"cholesterol_mg":null,"sodium_mg":null,"fiber_g":null},"note":"짧게"}
+{"title_matches":true,"title_note":"쿠팡 상품명의 맛·용량이 등록하려는 제품과 같은지","product_image":"파일명","product_bbox_px":[x0,y0,x1,y1],"spec_image":"파일명 또는 null","spec_bbox_px":[x0,y0,x1,y1],"spec_language":"ko|en|other","nutrition_per_unit":{"basis":"${unitLabel} ${it.capacity} 등","kcal":null,"protein_g":null,"carbs_g":null,"sugar_g":null,"fat_g":null,"sat_fat_g":null,"trans_fat_g":null,"cholesterol_mg":null,"sodium_mg":null,"fiber_g":null},"note":"짧게"}
 규칙:
-- product_image: 이 맛의 **낱개 1개 포장이 다른 물체(박스·다른 바·글자 띠)와 겹치지 않고 통째로 보이는** 이미지를 고른다. 대표 사진에 박스와 겹쳐 있으면 상세 이미지에서 낱개만 있는 것을 고른다. 배경색은 상관없다.
-- product_bbox_px: 그 이미지 원본 픽셀 좌표로 낱개 포장 전체를 감싸는 사각형(가장자리 2~3% 여유).
+- product_image: 이 맛의 **${unitLabel} 제품 포장이 다른 물체(박스·다른 제품·글자 띠)와 겹치지 않고 통째로 보이는** 이미지를 고른다. 대표 사진에 박스와 겹쳐 있으면 상세 이미지에서 단일 제품만 있는 것을 고른다. 배경색은 상관없다.
+- product_bbox_px: 그 이미지 원본 픽셀 좌표로 단일 제품 포장 전체를 감싸는 사각형(가장자리 2~3% 여유).
 - spec_image/spec_bbox_px: 영양정보 표 전체(제목·기준량 포함)를 감싸는 사각형. 한국어 영양정보 표가 있으면 그것을 우선한다.
-- nutrition_per_unit: 1개(낱개) 기준 값. 표가 100g 기준만 있으면 1개 중량으로 환산하고 note에 적는다. 나트륨 대신 소금(salt)만 있으면 sodium_mg = salt_g × 400 으로 환산하고 note에 적는다.
+- nutrition_per_unit: ${unitLabel} 기준 값. 표가 100g/100mL 기준만 있으면 등록 용량으로 환산하고 note에 적는다. 나트륨 대신 소금(salt)만 있으면 sodium_mg = salt_g × 400 으로 환산하고 note에 적는다.
 - 읽을 수 없는 값은 null. 추측 금지.`;
   const agy = findAgy();
   const out = execFileSync(agy, ["--model", "gemini-3.8-flash-high", "--mode", "plan", "--print-timeout", "800s", "-p", prompt], { encoding: "utf-8", cwd: root, maxBuffer: 16 * 1024 * 1024, timeout: 900_000 });
@@ -164,7 +167,7 @@ function preview(list) {
     const link = meta.itemId ? `https://www.coupang.com/vp/products/${meta.productId}?itemId=${meta.itemId}&vendorItemId=${meta.vendorItemId}` : "(ID 없음)";
     const img = (f) => (existsSync(join(dir, f)) ? `<img src="${it.id}/${f}">` : "<em>없음</em>");
     const cell = (k, unit) => (n[k] == null ? "?" : `${n[k]}${unit}`);
-    return `<section><h2>${it.id} ${it.brand} ${it.name} <small>${it.capacity}</small></h2>
+    return `<section><h2>${it.id} ${it.brand} ${it.name} <small>[${it.category}] ${it.capacity}</small></h2>
 <p class="t">쿠팡: ${meta.title || "?"} ${g.title_matches === false ? '<b class="warn">상품명 불일치: ' + (g.title_note || "") + "</b>" : ""}</p>
 <div class="g"><div>${img("product.png")}</div><div>${img("spec.png")}</div>
 <table><tr><th>기준</th><td>${n.basis || "?"}</td></tr><tr><th>열량</th><td>${cell("kcal", "kcal")}</td></tr><tr><th>단백질</th><td>${cell("protein_g", "g")}</td></tr><tr><th>당류</th><td>${cell("sugar_g", "g")}</td></tr><tr><th>지방</th><td>${cell("fat_g", "g")}</td></tr><tr><th>나트륨</th><td>${cell("sodium_mg", "mg")}</td></tr><tr><th>후보표 값</th><td>${it.protein} / ${it.sugar} / ${it.kcal}</td></tr><tr><th>성분표 언어</th><td>${g.spec_language || "?"}</td></tr><tr><th>메모</th><td>${g.note || ""}</td></tr><tr><th>링크</th><td style="word-break:break-all">${link}${idNote}</td></tr></table></div></section>`;
