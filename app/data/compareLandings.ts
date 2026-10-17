@@ -1,3 +1,5 @@
+import { getBarProducts } from "./barProductsData";
+
 export interface CompareLanding {
   slug: string;
   title: string;
@@ -6,6 +8,56 @@ export interface CompareLanding {
   bullets: string[];
   productSlugs: string[];
   relatedLinks: { href: string; title: string; description: string }[];
+}
+
+const barProductsBySlug = new Map(getBarProducts().map((product) => [product.slug, product]));
+
+function getRequiredBarProduct(slug: string) {
+  const product = barProductsBySlug.get(slug);
+  if (!product) throw new Error(`비교 랜딩에 등록되지 않은 단백질바 slug: ${slug}`);
+  return product;
+}
+
+function formatRange(values: number[]) {
+  const min = Math.min(...values);
+  const max = Math.max(...values);
+  return min === max ? `${min}` : `${min}~${max}`;
+}
+
+function formatBarNutrition(label: string, product: ReturnType<typeof getRequiredBarProduct>) {
+  return `${label} 1개(${product.capacity}): 단백질 ${product.proteinPerServing}g·당류 ${product.sugar}g·${product.calories}kcal`;
+}
+
+const barebellsQuestProducts = {
+  barebells: getRequiredBarProduct("barebells-proteinbar-cookies-cream-55"),
+  quest: getRequiredBarProduct("quest-nutrition-protein-bar-cookie-cream-60"),
+};
+
+const barebellsGrenadeProducts = {
+  barebells: getRequiredBarProduct("barebells-proteinbar-peanut-butter-55"),
+  grenade: getRequiredBarProduct("grenade-carbkilla-peanut-nutter-60"),
+};
+
+const barebellsRegularProducts = [
+  "barebells-proteinbar-white-chocolate-almond-55",
+  "barebells-proteinbar-cookies-cream-55",
+  "barebells-proteinbar-salty-peanut-55",
+  "barebells-proteinbar-peanut-butter-55",
+].map(getRequiredBarProduct);
+
+const barebellsSoftProducts = [
+  "barebells-soft-proteinbar-caramel-choco-55",
+  "barebells-soft-proteinbar-marshmallow-rocky-road-55",
+  "barebells-soft-proteinbar-lemon-cheesecake-55",
+].map(getRequiredBarProduct);
+
+const barebellsFlavorProducts = [...barebellsRegularProducts, ...barebellsSoftProducts];
+
+function formatProductRange(
+  products: ReturnType<typeof getRequiredBarProduct>[],
+  selector: (product: ReturnType<typeof getRequiredBarProduct>) => number,
+) {
+  return formatRange(products.map(selector));
 }
 
 const compareLandings: CompareLanding[] = [
@@ -583,6 +635,57 @@ const compareLandings: CompareLanding[] = [
       { href: "/brands/proteone", title: "프로티원 브랜드 허브", description: "프로티원 쉐이크 맛별 제품을 확인합니다." },
       { href: "/brands/labnosh", title: "랩노쉬 브랜드 허브", description: "랩노쉬 쉐이크와 음료를 확인합니다." },
       { href: "/guides/product-selection-comparison/low-sugar-protein-shake-guide", title: "저당 단백질 쉐이크 가이드", description: "당류가 낮은 쉐이크 후보를 이어서 비교합니다." },
+    ],
+  },
+  {
+    slug: "barebells-vs-quest-proteinbar",
+    title: "베어벨즈 vs 퀘스트 단백질바 비교 | 성분·당류·칼로리",
+    description: `${formatBarNutrition("베어벨즈 쿠키 앤 크림", barebellsQuestProducts.barebells)}, ${formatBarNutrition("퀘스트 쿠키 앤 크림", barebellsQuestProducts.quest)}입니다.`,
+    intro: `베어벨즈와 퀘스트의 쿠키 앤 크림 제품을 1개 기준으로 비교합니다. 표시 단백질은 각각 ${barebellsQuestProducts.barebells.proteinPerServing}g과 ${barebellsQuestProducts.quest.proteinPerServing}g이며, 당류는 각각 ${barebellsQuestProducts.barebells.sugar}g과 ${barebellsQuestProducts.quest.sugar}g입니다.`,
+    bullets: [
+      formatBarNutrition("베어벨즈 쿠키 앤 크림", barebellsQuestProducts.barebells),
+      formatBarNutrition("퀘스트 쿠키 앤 크림", barebellsQuestProducts.quest),
+      `1개 중량 비교: 베어벨즈 ${barebellsQuestProducts.barebells.capacity}·퀘스트 ${barebellsQuestProducts.quest.capacity}`,
+    ],
+    productSlugs: [barebellsQuestProducts.barebells.slug, barebellsQuestProducts.quest.slug],
+    relatedLinks: [
+      { href: "/brands/barebells", title: "베어벨즈 브랜드 허브", description: "베어벨즈 일반·소프트 프로틴바를 확인합니다." },
+      { href: "/brands/quest-nutrition", title: "퀘스트 뉴트리션 브랜드 허브", description: "퀘스트 프로틴바 맛별 제품을 확인합니다." },
+      { href: "/compare/barebells-proteinbar-flavor-comparison", title: "베어벨즈 맛별 비교", description: "베어벨즈 일반·소프트 라인의 성분 범위를 비교합니다." },
+    ],
+  },
+  {
+    slug: "barebells-vs-grenade-proteinbar",
+    title: "베어벨즈 vs 그레네이드 카브킬라 비교 | 성분·당류·칼로리",
+    description: `${formatBarNutrition("베어벨즈 피넛 버터", barebellsGrenadeProducts.barebells)}, ${formatBarNutrition("그레네이드 카브킬라 피넛 너터", barebellsGrenadeProducts.grenade)}입니다.`,
+    intro: `베어벨즈 피넛 버터와 그레네이드 카브킬라 피넛 너터를 1개 기준으로 비교합니다. 표시 단백질은 각각 ${barebellsGrenadeProducts.barebells.proteinPerServing}g과 ${barebellsGrenadeProducts.grenade.proteinPerServing}g이며, 당류는 각각 ${barebellsGrenadeProducts.barebells.sugar}g과 ${barebellsGrenadeProducts.grenade.sugar}g입니다.`,
+    bullets: [
+      formatBarNutrition("베어벨즈 피넛 버터", barebellsGrenadeProducts.barebells),
+      formatBarNutrition("그레네이드 카브킬라 피넛 너터", barebellsGrenadeProducts.grenade),
+      `1개 중량 비교: 베어벨즈 ${barebellsGrenadeProducts.barebells.capacity}·그레네이드 ${barebellsGrenadeProducts.grenade.capacity}`,
+    ],
+    productSlugs: [barebellsGrenadeProducts.barebells.slug, barebellsGrenadeProducts.grenade.slug],
+    relatedLinks: [
+      { href: "/brands/barebells", title: "베어벨즈 브랜드 허브", description: "베어벨즈 일반·소프트 프로틴바를 확인합니다." },
+      { href: "/brands/grenade", title: "그레네이드 브랜드 허브", description: "등록된 그레네이드 카브킬라 제품을 확인합니다." },
+      { href: "/bars", title: "단백질 바 전체 비교", description: "등록된 단백질 바를 같은 항목으로 비교합니다." },
+    ],
+  },
+  {
+    slug: "barebells-proteinbar-flavor-comparison",
+    title: "베어벨즈 프로틴바 맛별 비교 | 일반·소프트 성분·당류·칼로리",
+    description: `등록된 베어벨즈 ${barebellsFlavorProducts.length}종을 비교합니다. 일반 프로틴바는 단백질 ${formatProductRange(barebellsRegularProducts, (product) => product.proteinPerServing)}g, 소프트 프로틴바는 ${formatProductRange(barebellsSoftProducts, (product) => product.proteinPerServing)}g입니다.`,
+    intro: `베어벨즈 일반 프로틴바 ${barebellsRegularProducts.length}종과 소프트 프로틴바 ${barebellsSoftProducts.length}종을 1개(${barebellsFlavorProducts[0].capacity}) 기준으로 비교합니다. 일반 라인과 소프트 라인의 단백질·당류·칼로리 범위를 함께 확인할 수 있습니다.`,
+    bullets: [
+      `일반 프로틴바 ${barebellsRegularProducts.length}종: 단백질 ${formatProductRange(barebellsRegularProducts, (product) => product.proteinPerServing)}g·당류 ${formatProductRange(barebellsRegularProducts, (product) => product.sugar ?? 0)}g·${formatProductRange(barebellsRegularProducts, (product) => product.calories ?? 0)}kcal`,
+      `소프트 프로틴바 ${barebellsSoftProducts.length}종: 단백질 ${formatProductRange(barebellsSoftProducts, (product) => product.proteinPerServing)}g·당류 ${formatProductRange(barebellsSoftProducts, (product) => product.sugar ?? 0)}g·${formatProductRange(barebellsSoftProducts, (product) => product.calories ?? 0)}kcal`,
+      `등록 제품 ${barebellsFlavorProducts.length}종은 모두 1개 ${barebellsFlavorProducts[0].capacity} 기준으로 비교합니다.`,
+    ],
+    productSlugs: barebellsFlavorProducts.map((product) => product.slug),
+    relatedLinks: [
+      { href: "/brands/barebells", title: "베어벨즈 브랜드 허브", description: "베어벨즈 등록 제품의 상세 성분을 확인합니다." },
+      { href: "/compare/barebells-vs-quest-proteinbar", title: "베어벨즈 vs 퀘스트", description: "쿠키 앤 크림 제품의 성분표를 비교합니다." },
+      { href: "/compare/barebells-vs-grenade-proteinbar", title: "베어벨즈 vs 그레네이드", description: "피넛 계열 제품의 성분표를 비교합니다." },
     ],
   },
 ];

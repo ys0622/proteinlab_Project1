@@ -101,6 +101,27 @@ const EXPIRING_SEED: VerifiedGoldboxOffer[] = [{
   verifiedAt: "2026-10-17T07:59:00+09:00",
   startsAt: "2026-10-17T07:00:00+09:00",
   expiresAt: "2026-10-18T07:00:00+09:00",
+}, {
+  // 2026-10-18 사용자가 쿠팡 앱 골드박스로 알려 준 제품 2개(10/19 07:00 종료). 앱 가격과 같은 판매 옵션을 쿠팡 검색에서 골랐다.
+  // 연세두유 고단백 검은콩&고칼슘 190ml 16개(앱 9,170원): 상품 9779896678 · 옵션 29278489381/95213908095.
+  slug: "yonsei-protein-blackbean-calcium-190",
+  offerName: "190mL × 16개 · 와우회원 할인 · 쿠팡 확인",
+  price: 0,
+  href: "/api/out/coupang?pageKey=9779896678&itemId=29278489381&vendorItemId=95213908095&category=soymilk&slug=yonsei-protein-blackbean-calcium-190",
+  source: "coupang_app",
+  verifiedAt: "2026-10-18T08:00:00+09:00",
+  startsAt: "2026-10-18T07:00:00+09:00",
+  expiresAt: "2026-10-19T07:00:00+09:00",
+}, {
+  // 셀렉스 프로틴 락토프리 음료 190ml 24개(앱 정가 31,900원, 로켓): 상품 8725170517 · 옵션 25384290090/92940432253.
+  slug: "sellex-protein-lactosefree-original-190",
+  offerName: "190mL × 24개 · 와우회원 할인 · 쿠팡 확인",
+  price: 0,
+  href: "/api/out/coupang?pageKey=8725170517&itemId=25384290090&vendorItemId=92940432253&category=drink&slug=sellex-protein-lactosefree-original-190",
+  source: "coupang_app",
+  verifiedAt: "2026-10-18T08:01:00+09:00",
+  startsAt: "2026-10-18T07:00:00+09:00",
+  expiresAt: "2026-10-19T07:00:00+09:00",
 }];
 
 async function getKV(): Promise<OfferKV | null> {

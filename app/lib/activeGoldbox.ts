@@ -1,5 +1,5 @@
 import { getProductsByCategoryAsync } from "@/app/lib/productData";
-import { fetchGoldboxSnapshot, matchRegisteredProductsToGoldbox } from "@/app/lib/coupangGoldbox";
+import { fetchGoldboxSnapshot, matchRegisteredProductsToGoldbox, type GoldboxSnapshot } from "@/app/lib/coupangGoldbox";
 import { getVerifiedGoldboxOffers } from "@/app/lib/goldboxVerifiedOffers";
 import { getProductImageUrl } from "@/app/lib/productImage";
 import { getCoupangRedirectHref } from "@/app/lib/purchaseLinks";
@@ -24,7 +24,7 @@ export interface ActiveGoldboxCard {
  * 지금 유효한 골드박스 카드: 쿠팡 골드박스 API 피드에서 등록 제품과 맞은 것 + 사용자가 앱에서 확인해 넣은 수동 특가.
  * /goldbox, /api/goldbox/active 가 같이 쓴다. 수동 특가 href가 없으면 제품 쿠팡 링크를 딥링크 경로로 바꿔 쓴다.
  */
-export async function getActiveGoldboxCards(): Promise<{ cards: ActiveGoldboxCard[]; status: string; checkedAt: string | null }> {
+export async function getActiveGoldboxCards(): Promise<{ cards: ActiveGoldboxCard[]; status: GoldboxSnapshot["status"]; checkedAt: string | null }> {
   const groups = await Promise.all(GOLDBOX_CATEGORIES.map((category) => getProductsByCategoryAsync(category)));
   const products = groups.flat();
   const [snapshot, verifiedOffers] = await Promise.all([fetchGoldboxSnapshot(), getVerifiedGoldboxOffers()]);

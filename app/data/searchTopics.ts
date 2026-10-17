@@ -215,6 +215,7 @@ const searchTopics: SearchTopic[] = [
     primaryCta: { href: "/picks/bar-high-protein-20", title: "20g 이상 단백질 바 보기", description: "고단백 바만 추린 페이지로 이동합니다." },
     relatedLinks: [
       { href: "/guides/product-selection-comparison/protein-bar-top10", title: "단백질바 추천 TOP 10", description: "총량과 밀도를 함께 보는 기준을 설명합니다." },
+      { href: "/compare/barebells-vs-quest-proteinbar", title: "베어벨즈 vs 퀘스트", description: "두 브랜드의 쿠키 앤 크림 제품을 성분표로 비교합니다." },
       { href: "/topics/low-sugar-protein-bar", title: "저당 단백질 바", description: "당류 기준으로 다시 좁힙니다." },
       { href: "/bars", title: "단백질 바 전체 보기", description: "전체 바 목록에서 추가 탐색이 가능합니다." },
     ],
@@ -228,6 +229,7 @@ const searchTopics: SearchTopic[] = [
     primaryCta: { href: "/picks/bar-low-sugar", title: "저당 단백질 바 보기", description: "저당 기준 제품만 모아 둔 페이지입니다." },
     relatedLinks: [
       { href: "/topics/high-protein-bar", title: "고단백 단백질 바", description: "함량 중심 제품군도 함께 볼 수 있습니다." },
+      { href: "/compare/barebells-proteinbar-flavor-comparison", title: "베어벨즈 맛별 비교", description: "일반·소프트 라인의 당류와 칼로리 범위를 확인합니다." },
       { href: "/guides/product-selection-comparison/meal-replacement-protein-bar-guide", title: "식사대용 바 가이드", description: "포만감과 칼로리 기준을 함께 봅니다." },
       { href: "/recommend", title: "맞춤 추천", description: "목적에 따라 다른 카테고리 후보도 추천합니다." },
     ],

@@ -365,6 +365,16 @@ proteinBarTop10Config.conversion = {
 };
 proteinBarTop10Config.relatedGuides = [
   {
+    title: "베어벨즈 프로틴바 맛별 비교",
+    href: "/compare/barebells-proteinbar-flavor-comparison",
+    description: "베어벨즈 일반·소프트 라인의 단백질, 당류, 칼로리 범위를 맛별로 확인합니다.",
+  },
+  {
+    title: "베어벨즈 vs 퀘스트 단백질바",
+    href: "/compare/barebells-vs-quest-proteinbar",
+    description: "두 브랜드의 쿠키 앤 크림 제품을 1개 기준 성분표로 비교합니다.",
+  },
+  {
     title: "편의점 단백질 바 추천",
     href: "/guides/product-selection-comparison/convenience-protein-bar",
     description: "오늘 바로 살 수 있는 단백질 바 후보를 따로 보고 싶다면 이어서 확인하세요.",
