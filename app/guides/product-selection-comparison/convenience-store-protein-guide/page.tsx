@@ -15,30 +15,30 @@ export const metadata = {
 const drinkBrands = [
   {
     title: "더단백",
-    body: "빙그레 브랜드. 편의점에서 가장 흔하게 볼 수 있는 RTD 단백질 음료 중 하나로, 250mL·330mL 등 다양한 용량이 유통됩니다.",
+    body: "빙그레 브랜드입니다. 제품별 용량과 단백질·당류·열량이 다르므로 매장에 놓인 제품의 영양정보를 기준으로 비교합니다.",
   },
   {
     title: "셀렉스",
-    body: "매일유업 브랜드. 단백질 함량과 저당 구성이 안정적으로 잡혀 있어 편의점 단백질 음료 중 반복 구매율이 높은 편입니다.",
+    body: "매일유업 브랜드입니다. 같은 브랜드 안에서도 제품 라인에 따라 단백질과 당류가 달라 개별 성분표 확인이 필요합니다.",
   },
   {
     title: "하이뮨",
-    body: "일동후디스 브랜드. 중·장년층 타깃 제품군이 많고 편의점 유통도 꾸준히 이뤄집니다.",
+    body: "일동후디스 브랜드입니다. 제품 이름이나 대상 표현보다 한 병의 단백질·당류·열량과 원재료를 확인합니다.",
   },
   {
     title: "랩노쉬",
-    body: "음료·바 모두 편의점 유통이 있습니다. 단백질 밀도 기준으로 비교적 효율이 좋은 편에 속합니다.",
+    body: "음료와 바 제품이 등록되어 있습니다. 서로 형태가 다르므로 같은 카테고리 안에서 단백질·당류·열량을 비교합니다.",
   },
   {
     title: "닥터유 프로틴 드링크",
-    body: "오리온 브랜드. 편의점 채널 중심으로 유통되며 용량 대비 단백질 구성을 먼저 확인하는 것이 좋습니다.",
+    body: "오리온 브랜드입니다. 용량 대비 단백질과 한 병의 당류·열량을 함께 확인합니다.",
   },
 ];
 
 const barBrands = [
   {
     title: "닥터유 단백질바",
-    body: "오리온 브랜드로 편의점 접근성이 가장 높습니다. 맛 종류가 다양하며 당류와 칼로리를 함께 확인하는 것이 좋습니다.",
+    body: "오리온 브랜드입니다. 맛과 제품 규격에 따라 당류와 열량이 달라 개별 영양정보를 확인합니다.",
   },
   {
     title: "랩노쉬 프로틴바",
@@ -46,7 +46,7 @@ const barBrands = [
   },
   {
     title: "롯데 프로틴바",
-    body: "롯데웰푸드 브랜드. 편의점 유통 비중이 높고 중량 대비 단백질·당류 구성을 먼저 확인하는 흐름이 실용적입니다.",
+    body: "롯데웰푸드 브랜드입니다. 중량 대비 단백질과 한 개당 당류·열량을 함께 비교합니다.",
   },
 ];
 
@@ -59,12 +59,12 @@ const selectionSteps = [
   {
     step: "2단계",
     title: "단백질 함량 확인",
-    body: "편의점 제품은 단백질 10~25g 범위가 대부분입니다. 운동 후 보충 목적이면 20g 이상부터, 간식 보완이면 10~15g도 충분합니다.",
+    body: "제품 라벨의 한 병 또는 한 개 기준 단백질을 확인합니다. 용량이 다르면 총량뿐 아니라 용량당 수치도 같이 봅니다.",
   },
   {
     step: "3단계",
     title: "당류·칼로리 체크",
-    body: "편의점 단백질 제품 중 당류가 생각보다 높은 제품이 있습니다. 다이어트 목적이라면 당류 5g 이하 제품을 먼저 걸러내는 게 유리합니다.",
+    body: "당류와 열량은 같은 브랜드 안에서도 제품별로 다를 수 있습니다. 제품명보다 영양정보를 직접 확인합니다.",
   },
   {
     step: "4단계",
@@ -76,7 +76,7 @@ const selectionSteps = [
 const commonMistakes = [
   {
     title: "단백질 g만 보고 고르는 경우",
-    body: "단백질이 20g이어도 당류가 15g이면 체중 관리 목적과는 맞지 않을 수 있습니다. 반드시 당류를 함께 확인하세요.",
+    body: "단백질 총량만으로 제품의 전체 영양 구성을 판단할 수 없습니다. 당류와 열량, 용량을 함께 확인하세요.",
   },
   {
     title: "음료와 바를 같은 기준으로 비교하는 경우",
@@ -88,13 +88,29 @@ const commonMistakes = [
   },
 ];
 
+const faqItems = [
+  {
+    question: "편의점 단백질 음료는 무엇부터 비교하나요?",
+    answer: "한 병 기준 단백질, 당류, 열량, 용량을 먼저 확인하세요. 병 크기가 다르면 총량과 용량당 수치를 함께 보는 편이 정확합니다.",
+  },
+  {
+    question: "같은 브랜드면 편의점 단백질 음료 성분도 비슷한가요?",
+    answer: "제품 라인과 맛에 따라 영양정보가 달라질 수 있습니다. 브랜드 이름만 보지 말고 매장에 놓인 개별 제품의 라벨을 확인하세요.",
+  },
+  {
+    question: "편의점마다 같은 제품을 판매하나요?",
+    answer: "매장과 시점에 따라 취급 품목이 다를 수 있습니다. 이 페이지는 등록 제품의 성분 비교 기준을 제공하며 특정 매장의 재고를 보장하지 않습니다.",
+  },
+];
+
 export default function ConvenienceStoreProteinGuidePage() {
   const jsonLd = buildGuideJsonLd({
     title: "편의점 단백질 음료·바 추천 | CU·GS25·세븐일레븐 성분 기준",
     description: "편의점에서 살 수 있는 단백질 음료와 단백질 바를 단백질 함량, 당류, 칼로리 기준으로 비교합니다. 더단백·셀렉스·하이뮨·닥터유·랩노쉬 브랜드를 성분 데이터로 바로 선택하세요.",
     url: "https://proteinlab.kr/guides/product-selection-comparison/convenience-store-protein-guide",
     datePublished: "2026-03-01",
-    dateModified: "2026-05-29",
+    dateModified: "2026-10-18",
+    faq: faqItems,
   });
 
   return (
@@ -233,6 +249,37 @@ export default function ConvenienceStoreProteinGuidePage() {
             </div>
           </section>
 
+          <section className="rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
+            <h2 className="text-xl font-bold text-[var(--foreground)]">편의점 단백질 음료 라벨 빠른 확인</h2>
+            <div className="mt-5 grid gap-3 md:grid-cols-3">
+              <article className="rounded-2xl border border-[#dce8df] bg-[#f6fbf7] p-4">
+                <h3 className="text-sm font-semibold text-[#24543d]">한 병 기준</h3>
+                <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">단백질·당류·열량이 한 병 전체 기준인지 영양정보에서 확인합니다.</p>
+              </article>
+              <article className="rounded-2xl border border-[#dce8df] bg-[#f6fbf7] p-4">
+                <h3 className="text-sm font-semibold text-[#24543d]">원재료</h3>
+                <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">우유·대두 등 단백질 원료와 알레르기 표시를 제품별로 확인합니다.</p>
+              </article>
+              <article className="rounded-2xl border border-[#dce8df] bg-[#f6fbf7] p-4">
+                <h3 className="text-sm font-semibold text-[#24543d]">재고와 성분 구분</h3>
+                <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">등록 성분 정보는 매장 재고를 뜻하지 않습니다. 실제 취급 여부는 방문 매장에서 확인합니다.</p>
+              </article>
+            </div>
+          </section>
+
+          {/* FAQ */}
+          <section className="rounded-[28px] border border-[#e2ebe4] bg-[#f7fbf8] px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
+            <h2 className="text-xl font-bold text-[var(--foreground)]">자주 묻는 질문</h2>
+            <div className="mt-5 space-y-3">
+              {faqItems.map((item) => (
+                <article key={item.question} className="rounded-2xl border border-[#dce8df] bg-white p-4">
+                  <h3 className="text-sm font-semibold text-[#24543d]">{item.question}</h3>
+                  <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">{item.answer}</p>
+                </article>
+              ))}
+            </div>
+          </section>
+
           {/* 내부 링크 */}
           <section className="rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
             <h2 className="text-xl font-bold text-[var(--foreground)]">📖 관련 가이드</h2>
@@ -250,6 +297,11 @@ export default function ConvenienceStoreProteinGuidePage() {
               <li>
                 <Link href="/guides/product-selection-comparison/protein-bar-top10" className="font-semibold text-[#24543d] underline underline-offset-4">
                   단백질바 추천 TOP 10 — 100개 제품 성분 비교
+                </Link>
+              </li>
+              <li>
+                <Link href="/guides/intake-strategy-health/senior-protein-strategy" className="font-semibold text-[#24543d] underline underline-offset-4">
+                  노인 단백질 보충 — 음료·두유·요거트 성분 비교
                 </Link>
               </li>
             </ul>

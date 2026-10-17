@@ -5,6 +5,7 @@ import { soymilkProducts } from "@/app/data/products";
 
 // 두유 가이드 3편. 수치는 전부 ProteinLab 두유·음료 데이터에서 계산한다(성분표 기준).
 const UPDATED = "2026-10-14";
+const KEYWORD_UPDATED = "2026-10-18";
 const BASE = "/guides/product-selection-comparison";
 
 const fmt = (n: number) => (Math.round(n * 10) / 10).toString();
@@ -21,6 +22,7 @@ const soy = soymilkProducts;
 const drinks = getDrinkProducts().filter((p) => !p.needsServingCheck);
 
 function articleJsonLd(config: ComparePageConfig) {
+  const publishedAt = config.updatedAt ?? UPDATED;
   return {
     "@context": "https://schema.org",
     "@type": "Article",
@@ -36,8 +38,8 @@ function articleJsonLd(config: ComparePageConfig) {
       logo: { "@type": "ImageObject", url: "https://proteinlab.kr/proteinlab-logo.png", width: 715, height: 717 },
     },
     image: { "@type": "ImageObject", url: "https://proteinlab.kr/proteinlab-logo.png" },
-    datePublished: UPDATED,
-    dateModified: UPDATED,
+    datePublished: publishedAt,
+    dateModified: publishedAt,
   };
 }
 
@@ -70,13 +72,13 @@ const highSugar = soy.filter((p) => sugarOf(p) >= 7);
 export const lowSugarSoymilkConfig: ComparePageConfig = {
   slug: "low-sugar-soymilk-guide",
   dataSection: { category: "soymilk", mode: "lowSugar", limit: 12 },
-  title: "저당 두유 추천 | 당류 2g 이하 두유 비교",
-  seoTitle: `저당 두유 추천 | 당류 2g 이하 두유 ${lowSugar.length}종 비교`,
-  description: `ProteinLab에 등록된 두유 ${soy.length}종 중 당류 2g 이하 ${lowSugar.length}종을 단백질·열량과 함께 비교합니다. 무가당과 저당의 차이, 성분표에서 확인할 것을 정리했습니다.`,
-  keywords: ["저당 두유", "무가당 두유", "당류 낮은 두유", "저당 두유 추천", "고단백 저당 두유"],
+  title: "무가당 두유 추천 | 성분·당류 비교",
+  seoTitle: `무가당 두유 추천 | 당류 2g 이하 두유 ${lowSugar.length}종 비교`,
+  description: `무가당 두유 추천을 찾을 때 확인할 표시 문구와 성분표 기준을 정리했습니다. ProteinLab 등록 두유 ${soy.length}종 중 당류 2g 이하 ${lowSugar.length}종을 단백질·열량과 함께 비교합니다.`,
+  keywords: ["무가당 두유 추천", "저당 두유", "무가당 두유", "당류 낮은 두유", "저당 두유 추천", "고단백 저당 두유"],
   badge: "저당 두유",
   readingTime: "4분 읽기",
-  updatedAt: UPDATED,
+  updatedAt: KEYWORD_UPDATED,
   methodologyNote: `ProteinLab 두유 ${soy.length}종 성분표 기준 · 1팩 기준 당류 2g 이하`,
   intro: `두유는 이름이 비슷해도 1팩 당류가 ${fmt(Math.min(...soy.map(sugarOf)))}g부터 ${fmt(Math.max(...soy.map(sugarOf)))}g까지 차이가 납니다. 등록된 ${soy.length}종의 당류 중앙값은 ${fmt(sugarMedianAll)}g이고, 7g 이상인 제품도 ${highSugar.length}종 있습니다. 저당을 찾는다면 단백질 총량보다 당류를 먼저 걸러내는 편이 빠릅니다.`,
   summary: [
@@ -110,11 +112,21 @@ export const lowSugarSoymilkConfig: ComparePageConfig = {
         { title: "당류 7g 이상 제품", body: `${highSugar.map(label).join(", ")}은 당류가 7g 이상입니다. 저당 기준에서는 제외하고 보는 편이 맞습니다.` },
       ],
     },
+    {
+      title: "무가당 두유 추천 검색에서 확인할 표시",
+      items: [
+        { title: "제품명보다 영양정보", body: "무가당이나 플레인이라는 제품명만으로 당류 수치를 판단하지 말고, 영양정보의 당류와 원재료명을 함께 확인하세요." },
+        { title: "같은 브랜드도 제품별 확인", body: "같은 브랜드 안에서도 맛과 제품 라인에 따라 당류와 열량이 다르므로 개별 제품 성분표를 기준으로 비교해야 합니다." },
+        { title: "단백질은 당류 확인 뒤 비교", body: `등록 제품 중 당류 2g 이하 후보를 먼저 남긴 뒤 한 팩 단백질을 비교하면 ${lowSugar.length}종 안에서 목적에 맞게 범위를 좁힐 수 있습니다.` },
+      ],
+    },
   ],
   faq: [
     { question: "저당 두유는 당류가 몇 g 이하인가요?", answer: `법적으로 정해진 단일 기준을 쓰기보다, ProteinLab은 1팩 당류 2g 이하를 저당 두유로 묶어 비교합니다. 이 기준에 맞는 등록 제품은 ${lowSugar.length}종입니다.` },
     { question: "무가당 두유는 당류가 0g인가요?", answer: `아닙니다. 무가당 표기 제품도 콩에서 오는 당류가 성분표에 표시됩니다. 등록된 무가당 계열 제품의 당류는 0.5~1.8g 범위입니다.` },
     { question: "저당이면서 단백질이 높은 두유가 있나요?", answer: `당류 2g 이하이면서 단백질 11g 이상인 제품은 등록 기준 ${lowSugarHighProtein}종입니다. 가장 단백질이 높은 제품은 ${label(lowSugarTop[0])}(${fmt(proteinOf(lowSugarTop[0]))}g, 당류 ${fmt(sugarOf(lowSugarTop[0]))}g)입니다.` },
+    { question: "무가당 두유 추천 제품은 제품명만 보고 골라도 되나요?", answer: "아닙니다. 무가당·플레인 표기와 실제 당류 수치는 같은 뜻이 아니므로 영양정보의 당류와 원재료명을 제품별로 확인해야 합니다." },
+    { question: "무가당 두유끼리는 무엇을 더 비교해야 하나요?", answer: "당류를 확인한 뒤 한 팩 단백질, 열량, 용량을 함께 보세요. 팩 크기가 다르면 총량뿐 아니라 용량당 수치도 같이 비교하는 편이 정확합니다." },
   ],
   relatedGuides: related([
     { title: "저당 두유 큐레이션", href: "/curation/soymilk-low-sugar", description: "당류 기준으로 걸러낸 두유만 모아 표로 봅니다." },
@@ -443,6 +455,114 @@ export const soymilkBrandCompareConfig: ComparePageConfig = {
 };
 soymilkBrandCompareConfig.jsonLd = [articleJsonLd(soymilkBrandCompareConfig), faqJsonLd(soymilkBrandCompareConfig)];
 
+// ---------- 7) 아침 두유 ----------
+const morningSoymilkCandidates = [...lowSugar]
+  .sort((a, b) => proteinOf(b) - proteinOf(a) || (a.calories ?? 0) - (b.calories ?? 0))
+  .slice(0, 3);
+
+export const morningSoymilkConfig: ComparePageConfig = {
+  slug: "morning-soymilk-guide",
+  dataSection: { category: "soymilk", mode: "protein", limit: 12 },
+  title: "아침 두유 추천 | 단백질·당류 비교",
+  seoTitle: "아침 두유 추천 | 한 팩 단백질·당류·열량 비교",
+  description: `아침 두유 추천을 찾을 때 한 팩 단백질, 당류, 열량, 보관 방식을 확인하는 순서를 정리했습니다. 등록 두유 ${soy.length}종의 성분표를 기준으로 비교합니다.`,
+  keywords: ["아침 두유 추천", "아침 두유", "아침 고단백 두유", "아침 무가당 두유", "두유 성분 비교"],
+  badge: "아침 두유",
+  readingTime: "4분 읽기",
+  updatedAt: KEYWORD_UPDATED,
+  methodologyNote: `ProteinLab 등록 두유 ${soy.length}종 성분표 기준 · 당류 2g 이하 후보 중 단백질 순 비교`,
+  intro: `아침에 마실 두유는 제품명보다 한 팩의 단백질·당류·열량을 먼저 비교해야 합니다. 등록 두유 ${soy.length}종 가운데 ProteinLab의 저당 비교 기준에 맞는 ${lowSugar.length}종을 추린 뒤 단백질과 용량을 함께 확인했습니다.`,
+  summary: [
+    `당류 2g 이하 후보는 등록 두유 ${soy.length}종 중 ${lowSugar.length}종입니다.`,
+    "같은 단백질 수치라도 팩 용량과 열량이 다를 수 있어 한 팩 기준과 용량당 수치를 함께 봐야 합니다.",
+    "두유만으로 식사를 대신할지는 개인의 식사 구성에 따라 달라지므로 이 페이지는 제품 성분 비교만 제공합니다.",
+  ],
+  comparisonTitle: "아침용 성분 비교 후보",
+  comparisonColumns: morningSoymilkCandidates.map(label),
+  comparisonRows: [
+    { label: "한 팩 단백질", values: morningSoymilkCandidates.map((p) => `${fmt(proteinOf(p))}g`) },
+    { label: "당류", values: morningSoymilkCandidates.map((p) => `${fmt(sugarOf(p))}g`) },
+    { label: "열량", values: morningSoymilkCandidates.map((p) => `${p.calories}kcal`) },
+    { label: "용량", values: morningSoymilkCandidates.map((p) => p.capacity ?? "-") },
+  ],
+  sections: [
+    {
+      title: "아침 두유를 비교하는 순서",
+      items: [
+        { title: "한 팩 영양정보 확인", body: "단백질, 당류, 열량은 한 팩 기준으로 나란히 보고 팩 크기가 다르면 용량당 수치도 확인하세요." },
+        { title: "제품 유형 확인", body: "플레인·검은콩·초코처럼 맛 유형이 달라지면 같은 브랜드 안에서도 당류와 열량이 달라질 수 있습니다." },
+        { title: "식사 전체와 구분", body: "두유 한 팩의 영양정보와 아침 식사 전체의 구성은 같은 개념이 아닙니다. 이 표는 두유 제품끼리의 성분 차이만 비교합니다." },
+      ],
+    },
+  ],
+  faq: [
+    { question: "아침 두유는 단백질이 높은 제품만 고르면 되나요?", answer: "단백질만으로 고르기보다 당류, 열량, 팩 용량을 함께 비교하세요. 같은 단백질이라도 맛과 제품 라인에 따라 다른 항목이 달라질 수 있습니다." },
+    { question: "아침에는 무가당 두유가 더 낫나요?", answer: "개인에게 더 낫다고 단정할 수는 없습니다. 무가당 표기만 보지 말고 실제 당류 수치와 원재료명, 식사 전체 구성을 함께 확인하세요." },
+    { question: "두유 한 팩으로 아침 식사를 대신할 수 있나요?", answer: "이 페이지는 두유의 영양성분 비교만 제공합니다. 식사 대체 여부는 개인의 식사 구성과 건강 상태에 따라 달라질 수 있습니다." },
+  ],
+  relatedGuides: related([
+    { title: "무가당 두유 추천", href: `${BASE}/low-sugar-soymilk-guide`, description: "무가당 표시와 실제 당류 수치를 구분해 봅니다." },
+    { title: "임산부 두유 성분 비교", href: `${BASE}/pregnancy-soymilk-guide`, description: "임신 중 두유를 찾을 때 확인할 원재료와 영양정보를 정리합니다." },
+  ]),
+  purchaseLinks: morningSoymilkCandidates.map((p) => ({ label: `${label(p)} 보기`, slug: p.slug })),
+};
+morningSoymilkConfig.jsonLd = [articleJsonLd(morningSoymilkConfig), faqJsonLd(morningSoymilkConfig)];
+
+// ---------- 8) 임산부 두유 검색 가이드 ----------
+const pregnancySoymilkExamples = [...soy]
+  .filter((p) => p.flavor === "플레인")
+  .sort((a, b) => sugarOf(a) - sugarOf(b) || proteinOf(b) - proteinOf(a))
+  .slice(0, 3);
+
+export const pregnancySoymilkConfig: ComparePageConfig = {
+  slug: "pregnancy-soymilk-guide",
+  dataSection: { category: "soymilk", mode: "lowSugar", limit: 12 },
+  title: "임산부 두유 추천 검색 가이드 | 원재료·당류 비교",
+  seoTitle: "임산부 두유 추천 | 원재료·단백질·당류 비교",
+  description: `임산부 두유 추천을 검색할 때 제품명보다 원재료, 알레르기 표시, 한 팩 단백질·당류·열량을 확인하는 방법을 정리했습니다. 등록 두유 ${soy.length}종의 성분표 비교 정보이며 개인별 섭취 권고는 제공하지 않습니다.`,
+  keywords: ["임산부 두유 추천", "임신 중 두유", "임산부 두유 성분", "무가당 두유", "두유 원재료"],
+  badge: "성분표 확인",
+  readingTime: "4분 읽기",
+  updatedAt: KEYWORD_UPDATED,
+  methodologyNote: `ProteinLab 등록 두유 ${soy.length}종 중 플레인 제품 성분표 비교 · 개인별 섭취 권고 아님`,
+  intro: "임신 중 식품 선택은 개인의 알레르기, 식사 구성, 진료 내용에 따라 달라질 수 있습니다. 이 페이지는 의학적 판단이나 특정 제품의 섭취 권고를 제공하지 않고, 두유 라벨에서 원재료와 영양정보를 비교하는 방법만 정리합니다.",
+  summary: [
+    "대두 알레르기 표시와 원재료명을 먼저 확인합니다.",
+    "무가당·플레인 같은 제품명과 실제 당류 수치는 별개이므로 영양정보를 직접 봅니다.",
+    "개인별 섭취 가능 여부나 양은 제품 비교표로 판단하지 말고 담당 의료진의 안내를 따릅니다.",
+  ],
+  comparisonTitle: "플레인 두유 성분표 확인 예시",
+  comparisonColumns: pregnancySoymilkExamples.map(label),
+  comparisonRows: [
+    { label: "단백질 원료", values: pregnancySoymilkExamples.map((p) => p.proteinSource ?? "대두") },
+    { label: "한 팩 단백질", values: pregnancySoymilkExamples.map((p) => `${fmt(proteinOf(p))}g`) },
+    { label: "당류", values: pregnancySoymilkExamples.map((p) => `${fmt(sugarOf(p))}g`) },
+    { label: "열량", values: pregnancySoymilkExamples.map((p) => `${p.calories}kcal`) },
+    { label: "용량", values: pregnancySoymilkExamples.map((p) => p.capacity ?? "-") },
+  ],
+  sections: [
+    {
+      title: "임신 중 두유 라벨에서 확인할 항목",
+      items: [
+        { title: "원재료와 알레르기 표시", body: "두유는 대두 기반 식품이므로 원재료명과 알레르기 표시를 먼저 확인합니다. 다른 원료가 함께 들어간 제품도 제품별 라벨로 구분하세요." },
+        { title: "당류와 열량", body: "무가당이나 플레인이라는 이름만으로 영양성분을 판단하지 말고 한 팩 당류와 열량을 직접 비교합니다." },
+        { title: "개인별 안내 우선", body: "알레르기, 질환, 복용 중인 약, 의료진이 안내한 식사 기준이 있다면 일반 제품 비교보다 그 안내를 우선해야 합니다." },
+      ],
+    },
+  ],
+  faq: [
+    { question: "임산부에게 특정 두유를 추천하나요?", answer: "아니요. 이 페이지는 특정 제품의 섭취를 권하지 않고 등록 제품의 원재료와 영양성분을 비교하는 일반 정보만 제공합니다." },
+    { question: "임신 중에는 무가당 두유만 골라야 하나요?", answer: "무가당 여부만으로 개인에게 맞는 제품을 정할 수 없습니다. 실제 당류, 원재료, 알레르기 표시와 개인별 식사 안내를 함께 확인하세요." },
+    { question: "대두 알레르기가 있으면 어떻게 확인하나요?", answer: "제품의 원재료명과 알레르기 표시를 확인하고, 섭취 가능 여부는 담당 의료진과 상의하세요." },
+  ],
+  relatedGuides: related([
+    { title: "무가당 두유 추천", href: `${BASE}/low-sugar-soymilk-guide`, description: "무가당 표시와 실제 당류 수치를 구분해 비교합니다." },
+    { title: "아침 두유 추천", href: `${BASE}/morning-soymilk-guide`, description: "아침에 마실 두유를 단백질·당류·열량 기준으로 비교합니다." },
+  ]),
+  purchaseLinks: [],
+};
+pregnancySoymilkConfig.jsonLd = [articleJsonLd(pregnancySoymilkConfig), faqJsonLd(pregnancySoymilkConfig)];
+
 export const soymilkGuideConfigs: ComparePageConfig[] = [
   lowSugarSoymilkConfig,
   blackbeanSoymilkConfig,
@@ -450,4 +570,6 @@ export const soymilkGuideConfigs: ComparePageConfig[] = [
   dietSoymilkConfig,
   proteinRankSoymilkConfig,
   soymilkBrandCompareConfig,
+  morningSoymilkConfig,
+  pregnancySoymilkConfig,
 ];

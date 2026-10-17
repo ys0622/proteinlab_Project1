@@ -7,9 +7,9 @@ import { buildGuideJsonLd } from "@/app/lib/guideJsonLd";
 import { soymilkProducts } from "@/app/data/products";
 import { getCapacityMl } from "@/app/lib/productFilters";
 
-const TITLE = "고단백 두유 고르는 법 | 단백질 11g 이상 두유 비교 기준";
+const TITLE = "단백질 두유 추천 | 성분·당류 비교";
 const DESCRIPTION =
-  "1팩 단백질 11g 이상 고단백 두유를 포함해 두유를 단백질 구간(고단백·강화·일반), 당류, 열량, 맛 기준으로 비교하는 방법을 성분표 수치와 함께 정리합니다.";
+  "단백질 두유 추천을 찾을 때 한 팩 단백질, 당류, 열량, 용량을 비교하는 순서를 등록 제품 성분표 수치로 정리합니다.";
 const URL = "https://proteinlab.kr/guides/product-selection-comparison/high-protein-soymilk-guide";
 
 export const metadata = {
@@ -70,9 +70,24 @@ const relatedLinks = [
     description: "당류 3g 미만 두유만 모아서 단백질과 함께 비교합니다.",
   },
   {
-    href: "/ranking/soymilk/density/1",
-    title: "두유 순위",
-    description: "단백질 밀도 기준으로 계산한 두유 순위를 확인합니다.",
+    href: "/guides/product-selection-comparison/morning-soymilk-guide",
+    title: "아침 두유 추천",
+    description: "아침에 마실 두유를 단백질·당류·열량 기준으로 비교합니다.",
+  },
+];
+
+const faqItems = [
+  {
+    question: "단백질 두유 추천 제품은 단백질 수치만 보면 되나요?",
+    answer: "단백질만으로 고르지 말고 당류, 열량, 팩 용량을 함께 비교하세요. 용량이 다른 제품은 한 팩 총량과 용량당 수치를 같이 확인해야 합니다.",
+  },
+  {
+    question: "고단백 두유와 일반 두유는 어떻게 구분하나요?",
+    answer: `ProteinLab은 등록 제품을 한 팩 단백질 기준으로 구분합니다. 현재 고단백 구간에 해당하는 제품 수는 ${soymilkProducts.filter((p) => p.proteinPerServing >= 11).length}종이며, 개별 수치는 아래 데이터 표에서 확인할 수 있습니다.`,
+  },
+  {
+    question: "단백질이 같으면 어떤 항목을 비교하나요?",
+    answer: "한 팩 당류와 열량, 용량, 맛 유형을 비교하세요. 같은 단백질 수치라도 제품 라인에 따라 다른 영양정보가 달라질 수 있습니다.",
   },
 ];
 
@@ -82,7 +97,8 @@ export default function HighProteinSoymilkGuidePage() {
     description: DESCRIPTION,
     url: URL,
     datePublished: "2026-10-12",
-    dateModified: "2026-10-12",
+    dateModified: "2026-10-18",
+    faq: faqItems,
   });
 
   return (
@@ -157,6 +173,36 @@ export default function HighProteinSoymilkGuidePage() {
                 <li key={item}>- {item}</li>
               ))}
             </ul>
+          </section>
+
+          <section className="rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
+            <h2 className="text-xl font-bold text-[var(--foreground)]">단백질 두유 추천 검색에서 후보를 좁히는 법</h2>
+            <div className="mt-5 grid gap-3 md:grid-cols-3">
+              <article className="rounded-2xl border border-[#dce8df] bg-[#f6fbf7] p-4">
+                <h3 className="text-sm font-semibold text-[#24543d]">한 팩 단백질</h3>
+                <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">제품별 표시 단백질을 먼저 확인하고, 팩 크기가 다르면 용량당 단백질도 함께 봅니다.</p>
+              </article>
+              <article className="rounded-2xl border border-[#dce8df] bg-[#f6fbf7] p-4">
+                <h3 className="text-sm font-semibold text-[#24543d]">당류와 열량</h3>
+                <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">단백질이 같은 후보는 당류와 열량을 나란히 놓으면 제품 라인의 차이를 확인하기 쉽습니다.</p>
+              </article>
+              <article className="rounded-2xl border border-[#dce8df] bg-[#f6fbf7] p-4">
+                <h3 className="text-sm font-semibold text-[#24543d]">원료와 맛 유형</h3>
+                <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">플레인·검은콩·초코처럼 맛이 다르면 영양정보도 달라질 수 있어 개별 성분표를 확인합니다.</p>
+              </article>
+            </div>
+          </section>
+
+          <section className="rounded-[28px] border border-[#e2ebe4] bg-[#f7fbf8] px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
+            <h2 className="text-xl font-bold text-[var(--foreground)]">자주 묻는 질문</h2>
+            <div className="mt-5 space-y-3">
+              {faqItems.map((item) => (
+                <article key={item.question} className="rounded-2xl border border-[#dce8df] bg-white p-4">
+                  <h3 className="text-sm font-semibold text-[#24543d]">{item.question}</h3>
+                  <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">{item.answer}</p>
+                </article>
+              ))}
+            </div>
           </section>
 
           <section className="rounded-[28px] border border-[#e2ebe4] bg-[#f7fbf8] px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">

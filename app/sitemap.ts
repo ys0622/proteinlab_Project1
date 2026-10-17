@@ -294,6 +294,8 @@ const STATIC_GUIDE_ROUTES: string[] = [
   "/guides/product-selection-comparison/diet-soymilk-guide",
   "/guides/product-selection-comparison/soymilk-protein-ranking",
   "/guides/product-selection-comparison/soymilk-brand-comparison",
+  "/guides/product-selection-comparison/morning-soymilk-guide",
+  "/guides/product-selection-comparison/pregnancy-soymilk-guide",
   "/guides/product-selection-comparison/low-sugar-protein-shake-guide",
   "/guides/product-selection-comparison/low-sugar-yogurt-guide",
   "/guides/product-selection-comparison/meal-replacement-protein-bar-guide",

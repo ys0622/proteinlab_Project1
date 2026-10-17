@@ -53,6 +53,11 @@ const barebellsSoftProducts = [
 
 const barebellsFlavorProducts = [...barebellsRegularProducts, ...barebellsSoftProducts];
 
+const kirklandFlavorProducts = [
+  "kirkland-proteinbar-choco-brownie",
+  "kirkland-proteinbar-choco-chip-cookie-dough-60",
+].map(getRequiredBarProduct);
+
 function formatProductRange(
   products: ReturnType<typeof getRequiredBarProduct>[],
   selector: (product: ReturnType<typeof getRequiredBarProduct>) => number,
@@ -169,6 +174,7 @@ const compareLandings: CompareLanding[] = [
     bullets: ["국내/해외 대표 프로틴바 비교", "고단백 바 검색어 대응", "상세 페이지 진입 유도에 적합"],
     productSlugs: ["dryou-proteinbar-pro-choco-classic", "kirkland-proteinbar-choco-brownie"],
     relatedLinks: [
+      { href: "/compare/kirkland-proteinbar-flavor-comparison", title: "커클랜드 맛별 비교", description: "초콜릿 브라우니와 초코칩 쿠키도우의 성분을 비교합니다." },
       { href: "/topics/high-protein-bar", title: "고단백 단백질 바", description: "단백질 높은 바만 다시 좁혀 봅니다." },
       { href: "/ranking", title: "랭킹 페이지", description: "바 전체 순위도 함께 확인합니다." },
     ],
@@ -554,6 +560,7 @@ const compareLandings: CompareLanding[] = [
     bullets: ["커클랜드 초콜릿 브라우니 1개(60g): 단백질 21g·당류 1g·190kcal", "퀘스트 더블 초콜릿 청크 1개(60g): 단백질 20g·당류 1g·180kcal", "1개 중량 비교: 커클랜드 60g·퀘스트 60g"],
     productSlugs: ["kirkland-proteinbar-choco-brownie", "quest-nutrition-protein-bar-double-chocolate-chunk-60"],
     relatedLinks: [
+      { href: "/compare/kirkland-proteinbar-flavor-comparison", title: "커클랜드 맛별 비교", description: "커클랜드 두 가지 맛의 성분과 열량을 확인합니다." },
       { href: "/brands/kirkland", title: "커클랜드 브랜드 허브", description: "커클랜드 등록 제품을 확인합니다." },
       { href: "/brands/quest-nutrition", title: "퀘스트 뉴트리션 브랜드 허브", description: "퀘스트 프로틴바 맛별 제품을 확인합니다." },
       { href: "/bars", title: "단백질 바 전체 비교", description: "등록된 단백질 바를 같은 항목으로 비교합니다." },
@@ -686,6 +693,19 @@ const compareLandings: CompareLanding[] = [
       { href: "/brands/barebells", title: "베어벨즈 브랜드 허브", description: "베어벨즈 등록 제품의 상세 성분을 확인합니다." },
       { href: "/compare/barebells-vs-quest-proteinbar", title: "베어벨즈 vs 퀘스트", description: "쿠키 앤 크림 제품의 성분표를 비교합니다." },
       { href: "/compare/barebells-vs-grenade-proteinbar", title: "베어벨즈 vs 그레네이드", description: "피넛 계열 제품의 성분표를 비교합니다." },
+    ],
+  },
+  {
+    slug: "kirkland-proteinbar-flavor-comparison",
+    title: "커클랜드 프로틴바 맛별 비교 | 성분·칼로리·맛",
+    description: `등록된 커클랜드 프로틴바 ${kirklandFlavorProducts.length}종을 비교합니다. 한 개 기준 단백질 ${formatProductRange(kirklandFlavorProducts, (product) => product.proteinPerServing)}g, 당류 ${formatProductRange(kirklandFlavorProducts, (product) => product.sugar ?? 0)}g, 열량 ${formatProductRange(kirklandFlavorProducts, (product) => product.calories ?? 0)}kcal입니다.`,
+    intro: `커클랜드 초콜릿 브라우니와 초코칩 쿠키도우를 한 개 기준으로 비교합니다. 두 제품의 단백질·당류·칼로리와 맛 이름을 등록 성분 데이터로 확인할 수 있습니다.`,
+    bullets: kirklandFlavorProducts.map((product) => formatBarNutrition(product.name, product)),
+    productSlugs: kirklandFlavorProducts.map((product) => product.slug),
+    relatedLinks: [
+      { href: "/brands/kirkland", title: "커클랜드 브랜드 허브", description: "커클랜드 등록 제품의 상세 성분을 확인합니다." },
+      { href: "/compare/kirkland-vs-quest-proteinbar", title: "커클랜드 vs 퀘스트", description: "초콜릿 계열 프로틴바의 성분을 비교합니다." },
+      { href: "/compare/doctoru-vs-kirkland-bar", title: "닥터유 vs 커클랜드", description: "국내외 프로틴바의 단백질·당류를 비교합니다." },
     ],
   },
 ];

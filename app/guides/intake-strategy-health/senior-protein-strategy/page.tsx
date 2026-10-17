@@ -4,8 +4,8 @@ import Footer from "@/app/components/Footer";
 import GuideBuySection from "@/app/components/GuideBuySection";
 import { buildGuideJsonLd } from "@/app/lib/guideJsonLd";
 
-const _pageTitle = "50대·시니어 단백질 전략 | 근감소 예방과 쉬운 섭취법";
-const _pageDesc = "50대 이상과 시니어가 단백질을 어떻게 나눠 먹어야 하는지, 근감소 예방과 소화 부담을 함께 고려한 실전 기준을 정리했습니다.";
+const _pageTitle = "노인 단백질 보충 | 음료·두유 성분 비교";
+const _pageDesc = "노인 단백질 보충 제품을 찾을 때 음료·두유·요거트의 단백질, 당류, 열량, 원재료와 섭취 형태를 비교하는 방법을 정리했습니다.";
 export const metadata = {
   title: _pageTitle,
   description: _pageDesc,
@@ -28,72 +28,72 @@ export const metadata = {
 };
 
 const seniorTips = [
-  "한 번에 많이 먹기보다 아침, 간식, 저녁으로 나눠 넣는 쪽이 실제 루틴 유지에 더 유리합니다.",
-  "단백질 수치만 높다고 좋은 게 아니라 목넘김, 위 부담, 맛 적응까지 같이 봐야 오래 갑니다.",
-  "건강 유지 목적이라면 당류, 칼로리, 나트륨까지 함께 봐야 매일 반복하기 쉽습니다.",
+  "제품 형태를 먼저 정한 뒤 한 회 제공량의 단백질·당류·열량을 비교합니다.",
+  "음료·두유·요거트는 원재료와 용량이 다르므로 같은 카테고리 안에서 먼저 비교합니다.",
+  "질환, 알레르기, 삼킴 곤란, 복용 중인 약이 있다면 일반 제품 비교보다 의료진의 안내를 우선합니다.",
 ];
 
 const seniorRows = [
-  ["아침", "부담 적은 시작", "공복 시간이 길었다면 아침에 가볍게 단백질을 넣어 하루 루틴을 안정적으로 시작하는 쪽이 좋습니다."],
-  ["오후 간식", "소량 보완", "점심과 저녁 사이가 길다면 간식 구간에 소량 보완을 넣는 것이 총량 유지에 유리합니다."],
-  ["저녁", "과하지 않게 마무리", "하루 총량이 부족할 때 저녁에 보완하되, 위 부담이 적은 제품을 고르는 편이 좋습니다."],
+  ["아침", "제품 형태 확인", "바로 마시는 음료인지, 냉장 보관이 필요한 요거트인지 생활 환경에 맞춰 확인합니다."],
+  ["간식", "한 회 제공량 확인", "한 병이나 한 팩에 표시된 단백질·당류·열량과 용량을 함께 봅니다."],
+  ["식사와 함께", "식사 전체와 구분", "보충 제품의 영양정보와 식사 전체의 영양 구성은 별도로 확인합니다."],
 ];
 
 const seniorChecks = [
   {
-    title: "나눠 먹는 루틴 만들기",
-    body: "시니어는 한 번에 몰아 먹기보다 생활 안에 자연스럽게 나눠 넣는 방식이 더 현실적입니다. 총량도 결국 이 방식이 더 잘 채워집니다.",
+    title: "한 회 제공량 확인",
+    body: "제품마다 한 병·한 팩의 용량과 단백질이 다릅니다. 총량과 함께 당류·열량·나트륨 표시를 확인합니다.",
   },
   {
-    title: "부드러운 형태부터 보기",
-    body: "딱딱한 바나 무거운 식감보다 RTD, 요거트, 가벼운 식사보완형이 더 잘 맞는 경우가 많습니다.",
+    title: "섭취 형태 구분",
+    body: "RTD 음료, 두유, 요거트, 바는 질감과 보관 방식이 다릅니다. 씹기나 삼키기 어려움이 있다면 제품을 고르기 전에 의료진과 상의합니다.",
   },
   {
-    title: "당류와 나트륨도 같이 확인",
-    body: "건강 유지 목적이라면 단백질만 높다고 끝이 아닙니다. 매일 마실 제품이라면 당류와 나트륨 차이가 누적됩니다.",
+    title: "원재료와 알레르기 표시",
+    body: "유단백 기반 음료와 대두 기반 두유는 원료가 다릅니다. 원재료명과 알레르기 표시를 제품별로 확인합니다.",
   },
 ];
 
 const seniorRelated = [
   {
     href: "/guides/product-selection-comparison/protein-drink-for-50s",
-    title: "50대 제품 바로 보기",
-    body: "기준은 알겠고 이제 실제 제품을 고르고 싶다면, 시니어 관점으로 좁혀 놓은 이 비교 페이지가 가장 빠릅니다.",
+    title: "50대 단백질 음료 비교",
+    body: "등록 음료의 단백질·당류·열량과 제품 형태를 비교합니다.",
   },
   {
     href: "/guides/product-selection-comparison/newcare-allprotein",
     title: "뉴케어 분석 보기",
-    body: "락토프리, 균형영양, 50대 보완용까지 같이 보려면 뉴케어 페이지를 바로 이어서 보는 편이 좋습니다.",
+    body: "뉴케어 등록 제품의 원재료와 영양성분 차이를 확인합니다.",
   },
   {
     href: "/guides/intake-strategy-health/meal-replacement-strategy",
     title: "식사대용 전략 보기",
-    body: "식사를 자주 거르거나 한 끼가 약한 루틴이라면 보충용과 식사보완형을 나눠 보는 이 페이지가 같이 필요합니다.",
+    body: "보충용 제품과 식사보완형 제품의 표시 항목 차이를 확인합니다.",
   },
   {
     href: "/guides/intake-strategy-health/high-protein-side-effects",
-    title: "고단백 음료 부담·부작용 가이드",
-    body: "시니어는 특히 초고단백 제품의 소화 부담이 클 수 있습니다. 40g 이상 제품을 고려 중이라면 먼저 확인하는 것이 좋습니다.",
+    title: "고단백 음료 확인 항목",
+    body: "고함량 제품을 볼 때 한 회 제공량과 원재료, 영양정보를 확인하는 기준을 정리합니다.",
   },
   {
-    href: "/topics/mid-protein-alternatives",
-    title: "중단백 대안 추천",
-    body: "고단백이 부담스럽다면 20~29g대 제품이 시니어에게 더 현실적인 선택일 수 있습니다.",
+    href: "/guides/product-selection-comparison/high-protein-soymilk-guide",
+    title: "단백질 두유 성분 비교",
+    body: "대두 기반 제품을 찾는 경우 두유의 단백질·당류·열량을 비교합니다.",
   },
 ];
 
 const faqItems = [
   {
-    question: "시니어는 단백질을 한 번에 많이 먹는 것이 좋은가요?",
-    answer: "아닙니다. 아침, 간식, 저녁으로 나눠 넣는 쪽이 실제 루틴 유지에 더 유리합니다. 근감소 예방은 한 번에 많이 먹는 것보다 부담 없이 자주 챙기는 방식에서 갈립니다.",
+    question: "노인 단백질 보충 제품은 무엇부터 확인하나요?",
+    answer: "제품 형태와 한 회 제공량을 정한 뒤 단백질, 당류, 열량, 나트륨, 원재료와 알레르기 표시를 확인하세요.",
   },
   {
-    question: "시니어에게는 어떤 형태의 단백질 제품이 더 잘 맞나요?",
-    answer: "딱딱한 바나 무거운 식감보다 RTD, 요거트, 가벼운 식사보완형이 더 잘 맞는 경우가 많습니다. 목넘김과 위 부담까지 함께 고려하는 것이 좋습니다.",
+    question: "노인 단백질 음료와 두유는 어떻게 다른가요?",
+    answer: "일반 단백질 음료는 유단백 등 여러 원료를 쓸 수 있고, 두유는 대두 기반입니다. 제품별 단백질·당류·열량과 원재료명을 같은 항목으로 비교하세요.",
   },
   {
-    question: "시니어도 고단백 제품을 먹어도 되나요?",
-    answer: "가능하지만 40g 이상 초고단백 제품은 소화 부담이 클 수 있습니다. 고단백이 부담스럽다면 20~29g대 중단백 제품이 더 현실적인 선택일 수 있습니다.",
+    question: "질환이나 삼킴 곤란이 있어도 일반 제품 비교로 고를 수 있나요?",
+    answer: "일반 성분 비교만으로 섭취 가능 여부를 판단할 수 없습니다. 질환, 알레르기, 삼킴 곤란, 복용 약이 있다면 담당 의료진의 안내를 우선하세요.",
   },
 ];
 
@@ -110,18 +110,18 @@ export default function SeniorProteinStrategyPage() {
             <span>/</span>
             <Link href="/guides/intake-strategy-health" className="hover:text-[var(--accent)]">섭취 전략·건강</Link>
             <span>/</span>
-            <span>50대·시니어 단백질 전략</span>
+            <span>노인 단백질 보충</span>
           </div>
           <div className="mt-3">
             <span className="rounded-md bg-[#f5f0ea] px-2 py-0.5 text-[11px] font-semibold tracking-wide text-[#7a5230]">TRACK C</span>
           </div>
           <h1 className="mt-3 text-2xl font-bold leading-tight text-[#16412D] md:text-3xl">
-            50대 이후 단백질은
+            노인 단백질 보충 제품은
             <br />
-            많이보다 쉽게, 꾸준히가 더 중요합니다
+            형태와 성분표를 함께 비교합니다
           </h1>
           <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
-            근감소 예방은 한 번에 많이 먹는 것보다 부담 없이 자주 챙기는 루틴에서 갈립니다. 숫자만 높은 제품보다 실제로 계속 먹을 수 있는 방식이 더 중요하고, 그다음에 제품 선택이 따라와야 합니다.
+            음료·두유·요거트는 원재료와 용량이 다릅니다. 의학적 판단 없이 한 회 제공량의 단백질·당류·열량과 표시사항만 비교합니다.
           </p>
         </div>
       </section>
@@ -131,7 +131,7 @@ export default function SeniorProteinStrategyPage() {
           <div className="rounded-2xl border border-[#dce8df] bg-[#f7fbf8] px-4 py-4">
             <p className="text-[11px] font-semibold tracking-[0.08em] text-[#2d6a4f]">SENIOR ROUTINE</p>
             <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">
-              시니어 전략은 수치 경쟁보다 반복 가능한 루틴을 만드는 쪽에 가깝습니다. 아침, 간식, 저녁으로 나눠 넣는 흐름이 가장 현실적입니다.
+              이 페이지는 노인에게 특정 제품을 권하거나 질병 관련 판단을 제공하지 않습니다. 등록 제품의 형태와 영양성분을 읽는 일반 정보만 제공합니다.
             </p>
           </div>
           <ul className="mt-5 space-y-3 text-sm leading-6 text-[var(--foreground-muted)]">
@@ -165,6 +165,24 @@ export default function SeniorProteinStrategyPage() {
         </section>
 
         <section className="mt-6 rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
+          <h2 className="text-xl font-bold text-[var(--foreground)]">음료·두유·요거트 비교 항목</h2>
+          <div className="mt-5 grid gap-3 md:grid-cols-3">
+            <article className="rounded-2xl border border-[#dce8df] bg-[#f6fbf7] p-4">
+              <h3 className="text-sm font-semibold text-[#24543d]">단백질 음료</h3>
+              <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">한 병 단백질·당류·열량과 유단백 여부, 유당 관련 표시를 확인합니다.</p>
+            </article>
+            <article className="rounded-2xl border border-[#dce8df] bg-[#f6fbf7] p-4">
+              <h3 className="text-sm font-semibold text-[#24543d]">두유</h3>
+              <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">대두 원료와 알레르기 표시, 한 팩 단백질·당류·열량을 확인합니다.</p>
+            </article>
+            <article className="rounded-2xl border border-[#dce8df] bg-[#f6fbf7] p-4">
+              <h3 className="text-sm font-semibold text-[#24543d]">요거트</h3>
+              <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">떠먹는 형태와 마시는 형태를 구분하고 냉장 보관 여부와 영양정보를 확인합니다.</p>
+            </article>
+          </div>
+        </section>
+
+        <section className="mt-6 rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
           <h2 className="text-xl font-bold text-[var(--foreground)]">시니어가 특히 먼저 봐야 할 포인트</h2>
           <div className="mt-5 grid gap-3 md:grid-cols-3">
             {seniorChecks.map((item) => (
@@ -179,7 +197,7 @@ export default function SeniorProteinStrategyPage() {
         <section className="mt-6 rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
           <p className="text-[11px] font-semibold tracking-[0.08em] text-[#2d6a4f]">SENIOR NOTE</p>
           <p className="mt-3 text-sm leading-6 text-[var(--foreground-muted)]">
-            시니어 루틴에서는 숫자보다 부담 없이 반복할 수 있는 방식이 더 중요합니다. 그래서 맛과 위장 부담까지 함께 확인하는 편이 좋습니다.
+            제품 라벨 비교는 일반 정보입니다. 개인의 섭취 가능 여부와 적정량은 건강 상태와 식사 구성에 따라 달라질 수 있습니다.
           </p>
         </section>
 

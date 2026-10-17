@@ -352,5 +352,77 @@
       "title": "단백질 음료 함량대별 완전 정리",
       "description": "단백질 음료를 20g 미만, 20g대, 30g대, 40g 이상으로 나눠 어떤 사람이 어떤 함량대를 고르면 되는지 정리했습니다."
     }
+  ],
+  "/guides/product-selection-comparison/low-sugar-soymilk-guide": [
+    {
+      "href": "/guides/product-selection-comparison/morning-soymilk-guide",
+      "title": "아침 두유 추천",
+      "description": "아침에 마실 두유를 단백질·당류·열량 기준으로 비교합니다."
+    },
+    {
+      "href": "/guides/product-selection-comparison/pregnancy-soymilk-guide",
+      "title": "임산부 두유 성분 비교",
+      "description": "임신 중 두유를 찾을 때 원재료와 알레르기 표시, 영양정보를 확인하는 방법을 봅니다."
+    }
+  ],
+  "/guides/product-selection-comparison/high-protein-soymilk-guide": [
+    {
+      "href": "/guides/product-selection-comparison/low-sugar-soymilk-guide",
+      "title": "무가당 두유 추천",
+      "description": "무가당 표시와 실제 당류를 구분해 단백질·열량과 함께 비교합니다."
+    },
+    {
+      "href": "/guides/product-selection-comparison/morning-soymilk-guide",
+      "title": "아침 두유 추천",
+      "description": "아침 두유 후보를 성분표 기준으로 좁혀 봅니다."
+    }
+  ],
+  "/guides/product-selection-comparison/morning-soymilk-guide": [
+    {
+      "href": "/guides/product-selection-comparison/low-sugar-soymilk-guide",
+      "title": "무가당 두유 추천",
+      "description": "무가당·저당 두유의 표시와 영양정보를 비교합니다."
+    },
+    {
+      "href": "/guides/product-selection-comparison/pregnancy-soymilk-guide",
+      "title": "임산부 두유 성분 비교",
+      "description": "개인별 권고가 아닌 원재료·영양성분표 확인 기준을 봅니다."
+    }
+  ],
+  "/guides/product-selection-comparison/pregnancy-soymilk-guide": [
+    {
+      "href": "/guides/product-selection-comparison/low-sugar-soymilk-guide",
+      "title": "무가당 두유 추천",
+      "description": "제품명과 실제 당류 수치의 차이를 확인합니다."
+    },
+    {
+      "href": "/guides/product-selection-comparison/morning-soymilk-guide",
+      "title": "아침 두유 추천",
+      "description": "아침에 마실 두유의 단백질·당류·열량을 비교합니다."
+    }
+  ],
+  "/guides/intake-strategy-health/senior-protein-strategy": [
+    {
+      "href": "/guides/product-selection-comparison/high-protein-soymilk-guide",
+      "title": "단백질 두유 성분 비교",
+      "description": "대두 기반 제품의 단백질·당류·열량을 확인합니다."
+    },
+    {
+      "href": "/guides/product-selection-comparison/convenience-store-protein-guide",
+      "title": "편의점 단백질 음료",
+      "description": "매장에서 제품을 고를 때 확인할 라벨 항목을 정리합니다."
+    }
+  ],
+  "/guides/product-selection-comparison/convenience-store-protein-guide": [
+    {
+      "href": "/guides/intake-strategy-health/senior-protein-strategy",
+      "title": "노인 단백질 보충 성분 비교",
+      "description": "음료·두유·요거트의 원재료와 영양정보를 비교합니다."
+    },
+    {
+      "href": "/guides/product-selection-comparison/protein-drink-guide",
+      "title": "단백질 음료 선택 가이드",
+      "description": "단백질·당류·열량을 비교하는 기본 순서를 확인합니다."
+    }
   ]
 }
