@@ -20,7 +20,8 @@ interface KakaoShareButtonProps {
   description?: string;
   imageUrl?: string;
   className?: string;
-  variant?: "primary" | "secondary";
+  /** icon: 노란 동그라미 아이콘만(상품 상세 구매 카드 제목 줄). */
+  variant?: "primary" | "secondary" | "icon";
 }
 
 export default function KakaoShareButton({
@@ -90,6 +91,23 @@ export default function KakaoShareButton({
       `https://story.kakao.com/s/share?url=${encodeURIComponent(fullUrl)}`,
       "_blank",
       "width=600,height=500,noopener,noreferrer",
+    );
+  }
+
+  if (variant === "icon") {
+    return (
+      <button
+        type="button"
+        onClick={handleShare}
+        title="카카오톡으로 공유"
+        aria-label="카카오톡으로 공유"
+        className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full shadow-[0_2px_6px_rgba(0,0,0,0.12)] transition-transform active:scale-95 ${className}`}
+        style={{ background: "#FEE500", color: "#191919" }}
+      >
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="currentColor" aria-hidden="true">
+          <path d="M9 1.5C4.582 1.5 1 4.373 1 7.917c0 2.18 1.31 4.1 3.3 5.278L3.6 16.3a.25.25 0 0 0 .373.28L7.53 14.3a9.7 9.7 0 0 0 1.47.117c4.418 0 8-2.873 8-6.417C17 4.373 13.418 1.5 9 1.5z" />
+        </svg>
+      </button>
     );
   }
 

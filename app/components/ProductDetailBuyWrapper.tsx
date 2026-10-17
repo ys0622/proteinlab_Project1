@@ -29,18 +29,18 @@ export default function ProductDetailBuyWrapper(props: Props) {
   return (
     <>
       <div ref={anchorRef}>
-        <ProductDetailPurchaseActions {...props} />
-      </div>
-
-      {/* 카카오톡 공유 */}
-      <div className="mt-2 flex justify-end">
-        <KakaoShareButton
-          url={shareUrl}
-          title={shareTitle}
-          description={props.description ?? `ProteinLab에서 ${props.brand} ${props.productName} 성분을 확인했어요.`}
-          imageUrl={props.imageUrl}
-          className="min-h-9 px-3 py-2 text-[12px]"
-          variant="secondary"
+        <ProductDetailPurchaseActions
+          {...props}
+          headerAction={
+            // 카카오톡 공유: 따로 한 줄을 차지하지 않게 구매 카드 제목 줄 오른쪽 노란 동그라미로 둔다.
+            <KakaoShareButton
+              url={shareUrl}
+              title={shareTitle}
+              description={props.description ?? `ProteinLab에서 ${props.brand} ${props.productName} 성분을 확인했어요.`}
+              imageUrl={props.imageUrl}
+              variant="icon"
+            />
+          }
         />
       </div>
 

@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import type { ReactNode } from "react";
 import PurchaseLinkRow from "./PurchaseLinkRow";
 import { purchaseClick } from "../../lib/analytics";
 
@@ -26,6 +27,8 @@ type ProductDetailPurchaseActionsProps = {
   quickFacts?: string[];
   /** 판매 중단 제품일 때 보여줄 판매 중인 대체 후보(서버에서 계산). */
   alternatives?: DiscontinuedAlternative[];
+  /** 제목 줄 오른쪽에 붙일 작은 버튼(카카오톡 공유 아이콘). */
+  headerAction?: ReactNode;
 };
 
 export default function ProductDetailPurchaseActions({
@@ -38,6 +41,7 @@ export default function ProductDetailPurchaseActions({
   productType,
   quickFacts,
   alternatives = [],
+  headerAction,
 }: ProductDetailPurchaseActionsProps) {
   const placement = "product_detail_hero_purchase";
   const hasPurchaseLink = Boolean(coupangHref);
@@ -146,13 +150,16 @@ export default function ProductDetailPurchaseActions({
       style={{ borderRadius: "16px" }}
     >
       <div className="mb-3 flex flex-col gap-1 sm:flex-row sm:items-end sm:justify-between">
-        <div>
-          <p className="text-[11px] font-bold tracking-[0.08em] text-[var(--accent)]">
-            구매 채널
-          </p>
-          <h2 className="text-base font-bold text-[var(--foreground)]">
-            구매처 바로 확인
-          </h2>
+        <div className="flex items-start justify-between gap-2">
+          <div>
+            <p className="text-[11px] font-bold tracking-[0.08em] text-[var(--accent)]">
+              구매 채널
+            </p>
+            <h2 className="text-base font-bold text-[var(--foreground)]">
+              구매처 바로 확인
+            </h2>
+          </div>
+          {headerAction}
         </div>
         <p className="text-[10px] leading-4 text-[#9b9287]">
           쿠팡 파트너스 링크가 포함될 수 있습니다.
