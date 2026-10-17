@@ -17,6 +17,7 @@ import NutritionDetailSection from "../../components/NutritionDetailSection";
 import { withTopic } from "../../lib/koreanParticle";
 import ProductBadge from "../../components/ProductBadge";
 import ProductDetailBuyWrapper from "../../components/ProductDetailBuyWrapper";
+import GoldboxStrip from "../../components/GoldboxStrip";
 import PurchaseLinkButton from "../../components/PurchaseLinkButton";
 import RelatedLinkCards from "../../components/RelatedLinkCards";
 import TrackedLink from "../../components/TrackedLink";
@@ -934,6 +935,9 @@ export default async function ProductDetailPage({ params }: PageProps) {
                   alternatives={discontinuedAlternatives}
                 />
               </div>
+
+              {/* 오늘의 골드박스: 같은 카테고리 특가(이 제품이 특가면 강조). 특가가 없으면 그리지 않는다. */}
+              <GoldboxStrip category={category} currentSlug={product.slug} placement="product" />
 
               {/* 추천 대상 */}
               {recommendedFor.length > 0 && (

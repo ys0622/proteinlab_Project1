@@ -34,7 +34,9 @@ export type LinkPosition =
   | "ranking"
   | "home_featured"
   | "goldbox_entry"
-  | "goldbox_deal";
+  | "goldbox_deal"
+  | "goldbox_strip_product"
+  | "goldbox_strip_category";
 export type StandardEventName =
   | "product_card_click"
   | "product_detail_view"

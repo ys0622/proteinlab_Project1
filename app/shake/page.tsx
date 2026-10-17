@@ -13,6 +13,7 @@ import { formatProductLabel } from "../lib/productLabel";
 import { brandToSlug } from "../lib/brandHubs";
 import { applyCurationToCategoryProducts, getCurationDefinition, getQuickCurations } from "../lib/curationSystem";
 import newProductsRaw from "../data/newProducts.json";
+import GoldboxStrip from "../components/GoldboxStrip";
 
 // ProductListWithFilters가 useSearchParams()를 쓰기 때문에, 정적/ISR로 렌더링하면
 // Next.js가 그 부분을 Suspense fallback(null)으로 대체해버려 실제 제품 카드가
@@ -119,6 +120,7 @@ export default async function ShakePage() {
 
       <main className="mx-auto max-w-[1200px] px-4 pb-2 pt-0 md:px-6 md:pb-3">
         <AffiliateDisclosure />
+        <GoldboxStrip category="shake" placement="category" className="mb-3 mt-1" />
         <ProductListWithFilters
           productType="shake"
           products={products}
