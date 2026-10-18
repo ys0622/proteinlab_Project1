@@ -13,6 +13,8 @@ import { buildCompareFaqs } from "../../lib/compareLandingFaq";
 import { compareCanonicalOverrides } from "../../data/compareCanonicalOverrides";
 import { formatProductLabel } from "../../lib/productLabel";
 import { getCoupangRedirectHref } from "../../lib/purchaseLinks";
+import { getProductImageUrl } from "../../lib/productImage";
+import Image from "next/image";
 import { getAllProducts } from "../../data/products";
 import type { ProductDetailProps } from "../../data/products";
 
@@ -342,6 +344,43 @@ export default async function CompareLandingPage({ params }: PageProps) {
           <h1 className="text-2xl font-bold leading-[1.25] text-[#16412D] md:text-3xl">
             {landing.title}
           </h1>
+          {products.length >= 2 ? (
+            <>
+              {/* 비교 랜딩은 제품 사진이 먼저 보여야 한다: 제목 바로 아래 두 제품 사진과 쿠팡 가격 버튼(신규 방문자 대부분이 모바일로 이 페이지에 바로 들어온다). */}
+              <div className="mt-3 grid max-w-[560px] grid-cols-2 gap-2">
+                {products.slice(0, 2).map((product) => {
+                  const href = getCoupangRedirectHref(product.coupangUrl, product.productType ?? null, product.slug);
+                  const image = getProductImageUrl(product.slug);
+                  return (
+                    <div key={product.slug} className="flex flex-col rounded-xl border border-[#e3ebe5] bg-white p-2">
+                      <a href={`/product/${product.slug}`} className="flex h-28 items-center justify-center overflow-hidden rounded-lg bg-white md:h-36">
+                        {image ? <Image src={image} alt={formatProductLabel(product.brand, product.name)} width={200} height={144} className="h-full w-full object-contain" /> : null}
+                      </a>
+                      <a href={`/product/${product.slug}`} className="mt-1.5 line-clamp-2 min-h-[2.5rem] text-xs font-semibold leading-5 text-[#24543d] hover:underline">
+                        {formatProductLabel(product.brand, product.name)}
+                      </a>
+                      {href ? (
+                        <TrackedCoupangLink
+                          href={href}
+                          productId={product.slug}
+                          productName={formatProductLabel(product.brand, product.name)}
+                          productBrand={product.brand}
+                          productCategory={product.productType}
+                          linkPosition="hero"
+                          className="mt-1.5 flex min-h-10 items-center justify-center rounded-lg bg-[#1F5A3D] px-2 text-xs font-bold text-white transition-colors hover:bg-[#16412D]"
+                        >
+                          쿠팡 가격 보기 →
+                        </TrackedCoupangLink>
+                      ) : (
+                        <span className="mt-1.5 flex min-h-10 items-center justify-center rounded-lg bg-[#f1f1ef] px-2 text-xs font-semibold text-[#8a8f8b]">판매처 확인 중</span>
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
+              <AffiliateDisclosure className="mb-0 mt-2" />
+            </>
+          ) : null}
           <p className="mt-2 max-w-[760px] text-sm leading-6 text-[var(--foreground-muted)] md:text-[15px]">
             {conversionPlan?.conclusion ?? `${landing.description} 비교표로 바로 들어가고 제품 상세까지 이어서 확인할 수 있게 정리했습니다.`}
           </p>
@@ -357,10 +396,10 @@ export default async function CompareLandingPage({ params }: PageProps) {
               <p className="mt-2 text-sm font-semibold leading-6 text-[#16412D] md:text-[15px]">{verdict}</p>
             ) : null}
             <div className="mt-3 overflow-x-auto">
-              <table className="w-full min-w-[420px] border-collapse text-sm">
+              <table className={`w-full border-collapse text-sm ${products.length > 2 ? "min-w-[420px]" : ""}`}>
                 <thead>
                   <tr className="border-b border-[#e8e6e3] text-left">
-                    <th className="w-[72px] py-2 pr-2 text-xs font-semibold text-[var(--foreground-muted)]">항목</th>
+                    <th className="w-[56px] py-2 pr-1 text-xs font-semibold text-[var(--foreground-muted)] md:w-[72px] md:pr-2">항목</th>
                     {products.map((product) => (
                       <th key={product.slug} className="px-2 py-2 align-bottom">
                         <Link
@@ -407,39 +446,6 @@ export default async function CompareLandingPage({ params }: PageProps) {
               </table>
             </div>
             <p className="mt-2 text-xs text-[var(--foreground-muted)]">1회(1개) 제공량 기준, 제품 표기 수치입니다. 초록색은 해당 항목에서 더 유리한 쪽입니다.</p>
-            <div className="mt-4 border-t border-[#edf1ee] pt-4">
-              <div className="flex items-center justify-between gap-3">
-                <p className="text-sm font-semibold text-[var(--foreground)]">현재 가격·옵션 확인</p>
-                <AffiliateDisclosure className="mb-0" />
-              </div>
-              <div className="mt-3 grid grid-cols-2 gap-2">
-                {products.slice(0, 2).map((product) => {
-                  const href = getCoupangRedirectHref(
-                    product.coupangUrl,
-                    product.productType ?? null,
-                    product.slug,
-                  );
-
-                  return (
-                    <TrackedCoupangLink
-                      key={product.slug}
-                      href={href}
-                      productId={product.slug}
-                      productName={formatProductLabel(product.brand, product.name)}
-                      productBrand={product.brand}
-                      productCategory={product.productType}
-                      linkPosition="hero"
-                      className="flex min-h-14 flex-col justify-center rounded-xl border border-[#cfe0d4] bg-[#f6fbf7] px-3 py-2.5 transition-colors hover:bg-[#eaf5ed]"
-                    >
-                      <span className="line-clamp-1 text-xs font-medium text-[var(--foreground-muted)]">
-                        {formatProductLabel(product.brand, product.name)}
-                      </span>
-                      <span className="mt-1 text-sm font-bold text-[#1B684A]">가격 보기 →</span>
-                    </TrackedCoupangLink>
-                  );
-                })}
-              </div>
-            </div>
           </section>
         ) : null}
         {conversionPlan ? (
