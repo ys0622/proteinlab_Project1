@@ -122,6 +122,17 @@ const EXPIRING_SEED: VerifiedGoldboxOffer[] = [{
   verifiedAt: "2026-10-18T08:01:00+09:00",
   startsAt: "2026-10-18T07:00:00+09:00",
   expiresAt: "2026-10-19T07:00:00+09:00",
+}, {
+  // 2026-10-20 사용자가 쿠팡 앱 골드박스로 알려 준 제품(10/21 07:00 종료).
+  // 셀렉스 식물성 고단백 프로틴 당솔브 초당옥수수맛 190ml 24개: 상품 9519322287 · 옵션 28375919548/96035458577.
+  slug: "sellex-protein-dangsolve-corn-190",
+  offerName: "190mL × 24개 · 와우회원 할인 · 쿠팡 확인",
+  price: 0,
+  href: "/api/out/coupang?pageKey=9519322287&itemId=28375919548&vendorItemId=96035458577&category=drink&slug=sellex-protein-dangsolve-corn-190",
+  source: "coupang_app",
+  verifiedAt: "2026-10-20T07:25:00+09:00",
+  startsAt: "2026-10-20T07:00:00+09:00",
+  expiresAt: "2026-10-21T07:00:00+09:00",
 }];
 
 async function getKV(): Promise<OfferKV | null> {
