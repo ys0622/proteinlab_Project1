@@ -52,7 +52,8 @@ function brandHub(brand: string) {
 }
 
 type PairSpec = { slug: string; a: string; b: string; titleA: string; titleB: string; topic?: string };
-type LineSpec = { slug: string; title: string; filter: (p: ProductDetailProps) => boolean; lineName: string };
+// itemWord: 맛이 아니라 크기·라인이 다른 묶음은 "제품"으로 쓴다(기본 "맛").
+type LineSpec = { slug: string; title: string; filter: (p: ProductDetailProps) => boolean; lineName: string; itemWord?: string };
 
 const PAIRS: PairSpec[] = [
   { slug: "maeil-vs-yonsei-protein-soymilk", a: "maeil-soymilk-protein-plain-190", b: "yonsei-protein-plain-unsweetened-190", titleA: "매일두유 고단백", titleB: "연세두유 고단백" },
@@ -68,13 +69,24 @@ const PAIRS: PairSpec[] = [
 ];
 
 const LINES: LineSpec[] = [
-  { slug: "quest-proteinbar-flavor-comparison", title: "퀘스트 프로틴바 맛별 비교", lineName: "퀘스트 프로틴바", filter: (p) => p.productType === "bar" && p.brand === "퀘스트 뉴트리션" },
+  { slug: "quest-proteinbar-flavor-comparison", title: "퀘스트바 맛별 성분 비교 (퀘스트 프로틴바)", lineName: "퀘스트 프로틴바", filter: (p) => p.productType === "bar" && p.brand === "퀘스트 뉴트리션" },
   { slug: "flymill-shake-flavor-comparison", title: "플라이밀 단백질 쉐이크 맛별 비교", lineName: "플라이밀 쉐이크", filter: (p) => p.productType === "shake" && p.brand === "플라이밀" },
   { slug: "itthefit-shake-flavor-comparison", title: "잇더핏 단백질 쉐이크 맛별 비교", lineName: "잇더핏 쉐이크", filter: (p) => p.productType === "shake" && p.brand === "잇더핏" },
   { slug: "soyjoy-flavor-comparison", title: "소이조이 맛별 비교", lineName: "소이조이", filter: (p) => p.productType === "bar" && p.brand === "소이조이" },
   { slug: "benof-proteinbar-flavor-comparison", title: "베노프 단백질바 맛별 비교", lineName: "베노프 단백질바", filter: (p) => p.productType === "bar" && p.brand === "베노프" },
   { slug: "ultive-protein-flavor-comparison", title: "얼티브 프로틴 맛별 비교", lineName: "얼티브 프로틴", filter: (p) => p.productType === "drink" && p.brand === "얼티브" },
   { slug: "vegemil-soymilk-flavor-comparison", title: "베지밀 두유 맛별 비교", lineName: "베지밀 두유", filter: (p) => p.productType === "soymilk" && p.brand === "베지밀" },
+  // 2026-10-20 네이버 자동완성(닥터유 단백질바 미니·24g·칼로리, 하이뮨 액티브, 더단백 초코·커피·딸기, 마이밀 뉴프로틴·퓨로틴,
+  // 오트몬드 초코·쿠키앤크림, 요즘 그릭요거트 블루베리·말차·플레인, 그릭데이 시그니처·라이트·유자, 매일 두유 종류 차이)에 맞춘 묶음.
+  { slug: "dryou-proteinbar-lineup-comparison", title: "닥터유 단백질바 종류별 비교 (프로·미니·한입쏙)", lineName: "닥터유 단백질바", itemWord: "제품", filter: (p) => p.productType === "bar" && p.brand === "닥터유" },
+  { slug: "hymune-balance-active-flavor-comparison", title: "하이뮨 프로틴 밸런스 액티브 맛별 비교", lineName: "하이뮨 프로틴 밸런스 액티브", filter: (p) => p.productType === "drink" && p.brand === "하이뮨" && p.name.includes("액티브") },
+  { slug: "hymune-protein-balance-190-flavor-comparison", title: "하이뮨 프로틴 밸런스 190mL 맛별 비교", lineName: "하이뮨 프로틴 밸런스 190mL", filter: (p) => p.productType === "drink" && p.brand === "하이뮨" && p.name.startsWith("프로틴 밸런스 (") && p.capacity === "190mL" },
+  { slug: "danbaek-drink-flavor-comparison", title: "더단백 드링크 맛별 비교", lineName: "더단백 드링크", filter: (p) => p.productType === "drink" && p.brand === "더단백" && p.name.includes("더단백 드링크") },
+  { slug: "mymil-protein-lineup-comparison", title: "마이밀 뉴프로틴·퓨로틴 종류별 비교", lineName: "마이밀 프로틴 음료", itemWord: "제품", filter: (p) => p.productType === "drink" && p.brand === "마이밀" },
+  { slug: "oatmont-protein-flavor-comparison", title: "오트몬드 프로틴 맛별 비교", lineName: "오트몬드 프로틴", filter: (p) => p.productType === "drink" && p.brand === "오트몬드" },
+  { slug: "yozm-greek-yogurt-flavor-comparison", title: "요즘(YOZM) 그릭요거트 맛별 비교", lineName: "요즘(YOZM) 그릭요거트", filter: (p) => p.productType === "yogurt" && p.brand === "YOZM" },
+  { slug: "greekday-greek-yogurt-lineup-comparison", title: "그릭데이 그릭요거트 종류별 비교 (시그니처·라이트·유자)", lineName: "그릭데이 그릭요거트", itemWord: "제품", filter: (p) => p.productType === "yogurt" && p.brand === "그릭데이" },
+  { slug: "maeil-soymilk-lineup-comparison", title: "매일두유 종류별 비교 (고단백·99.9·렌틸콩)", lineName: "매일두유", itemWord: "제품", filter: (p) => p.productType === "soymilk" && p.brand === "매일두유" },
 ];
 
 function buildPair(spec: PairSpec, bySlug: Map<string, ProductDetailProps>): CompareLanding | null {
@@ -106,15 +118,16 @@ function buildLine(spec: LineSpec, products: ProductDetailProps[]): CompareLandi
   const byProtein = [...items].sort((x, y) => (y.proteinPerServing ?? 0) - (x.proteinPerServing ?? 0))[0];
   const bySugar = [...items].sort((x, y) => (x.sugar ?? 99) - (y.sugar ?? 99))[0];
   const byKcal = [...items].sort((x, y) => (x.calories ?? 9999) - (y.calories ?? 9999))[0];
+  const word = spec.itemWord ?? "맛";
   return {
     slug: spec.slug,
     title: `${spec.title} | 단백질·당류·칼로리`,
     description: `등록된 ${spec.lineName} ${items.length}종을 비교합니다. 단백질 ${range(items, (p) => p.proteinPerServing)}g, 당류 ${range(items, (p) => p.sugar)}g, 열량 ${range(items, (p) => p.calories)}kcal 범위입니다.`,
-    intro: `${spec.lineName} ${items.length}종의 표시 기준량 성분을 한 번에 비교합니다. 맛마다 단백질·당류·칼로리가 어떻게 다른지 확인하고 제품 상세로 이어서 볼 수 있습니다.`,
+    intro: `${spec.lineName} ${items.length}종의 표시 기준량 성분을 한 번에 비교합니다. ${word}마다 단백질·당류·칼로리가 어떻게 다른지 확인하고 제품 상세로 이어서 볼 수 있습니다.`,
     bullets: [
-      `단백질이 가장 높은 맛: ${nutrition(byProtein)}`,
-      `당류가 가장 낮은 맛: ${nutrition(bySugar)}`,
-      `열량이 가장 낮은 맛: ${nutrition(byKcal)}`,
+      `단백질이 가장 높은 ${word}: ${nutrition(byProtein)}`,
+      `당류가 가장 낮은 ${word}: ${nutrition(bySugar)}`,
+      `열량이 가장 낮은 ${word}: ${nutrition(byKcal)}`,
     ],
     productSlugs: items.map((p) => p.slug),
     relatedLinks: [brandHub(brand), { href: category.href, title: category.title, description: "다른 브랜드 제품과 같은 항목으로 비교합니다." }],
