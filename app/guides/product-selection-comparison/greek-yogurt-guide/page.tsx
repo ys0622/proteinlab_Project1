@@ -7,7 +7,8 @@ import CategoryDataSection from "@/app/components/CategoryDataSection";
 
 export const metadata = {
   alternates: { canonical: "https://proteinlab.kr/guides/product-selection-comparison/greek-yogurt-guide" },
-  title: "그릭요거트 추천 기준 | 단백질 함량·밀도 비교",
+  // 네이버 자동완성 "그릭요거트 단백질 함량·비교·순위"(2026-10-20)에 맞춘 검색 제목.
+  title: "그릭요거트 단백질 함량 비교 | 브랜드별 단백질·밀도·당류 기준",
   description:
     "그릭요거트를 고를 때 단백질 함량, 단백질 밀도, 당류, 총용량 차이를 어떻게 함께 읽어야 하는지 정리합니다.",
 };
@@ -62,7 +63,8 @@ const faqItems = [
 
 export default function GreekYogurtGuidePage() {
   const jsonLd = buildGuideJsonLd({
-    title: "그릭요거트 추천 기준 | 단백질 함량·밀도 비교",
+    // 네이버 자동완성 "그릭요거트 단백질 함량·비교·순위"(2026-10-20)에 맞춘 검색 제목.
+  title: "그릭요거트 단백질 함량 비교 | 브랜드별 단백질·밀도·당류 기준",
     description: "그릭요거트를 고를 때 단백질 함량, 단백질 밀도, 당류, 총용량 차이를 어떻게 함께 읽어야 하는지 정리합니다.",
     url: "https://proteinlab.kr/guides/product-selection-comparison/greek-yogurt-guide",
     datePublished: "2026-03-01",

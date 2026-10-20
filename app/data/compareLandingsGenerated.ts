@@ -87,6 +87,28 @@ const LINES: LineSpec[] = [
   { slug: "yozm-greek-yogurt-flavor-comparison", title: "요즘(YOZM) 그릭요거트 맛별 비교", lineName: "요즘(YOZM) 그릭요거트", filter: (p) => p.productType === "yogurt" && p.brand === "YOZM" },
   { slug: "greekday-greek-yogurt-lineup-comparison", title: "그릭데이 그릭요거트 종류별 비교 (시그니처·라이트·유자)", lineName: "그릭데이 그릭요거트", itemWord: "제품", filter: (p) => p.productType === "yogurt" && p.brand === "그릭데이" },
   { slug: "maeil-soymilk-lineup-comparison", title: "매일두유 종류별 비교 (고단백·99.9·렌틸콩)", lineName: "매일두유", itemWord: "제품", filter: (p) => p.productType === "soymilk" && p.brand === "매일두유" },
+  // 2026-10-20 2차 자동완성(쉐이크·바·요거트·두유 브랜드 + 맛/성분/종류) 묶음. 랩노쉬 슬림쉐이크는 전용 가이드(labnoshe-slim-shake)가 있어 뺐다.
+  { slug: "milit-shake-flavor-comparison", title: "밀잇 쉐이크 맛별 비교", lineName: "밀잇 쉐이크", filter: (p) => p.productType === "shake" && p.brand === "밀잇" },
+  { slug: "kkobak-shake-flavor-comparison", title: "꼬박꼬밥 고단저당 쉐이크 맛별 비교", lineName: "꼬박꼬밥 쉐이크", filter: (p) => p.productType === "shake" && p.brand === "꼬박꼬밥" },
+  { slug: "shakebaby-flavor-comparison", title: "쉐이크베이비 맛별 비교", lineName: "쉐이크베이비", filter: (p) => p.productType === "shake" && p.brand === "쉐이크베이비" },
+  { slug: "hansonhankki-shake-flavor-comparison", title: "한손한끼 쉐이크 맛별 비교", lineName: "한손한끼 쉐이크", filter: (p) => p.productType === "shake" && p.brand === "한손한끼" },
+  { slug: "maeilhankki-shake-flavor-comparison", title: "매일한끼 쉐이크 맛별 비교", lineName: "매일한끼 쉐이크", filter: (p) => p.productType === "shake" && p.brand === "매일한끼" },
+  { slug: "cruntin-shake-flavor-comparison", title: "크런틴 쉐이크 맛별 비교", lineName: "크런틴 쉐이크", filter: (p) => p.productType === "shake" && p.brand === "크런틴" },
+  { slug: "oneuldanbaek-bar-flavor-comparison", title: "오늘단백 단백질바 맛별 비교", lineName: "오늘단백 단백질바", filter: (p) => p.productType === "bar" && p.brand === "오늘단백" },
+  { slug: "proteinbangatgan-bar-flavor-comparison", title: "프로틴방앗간 하루단백바 맛별 비교", lineName: "프로틴방앗간 하루단백바", filter: (p) => p.productType === "bar" && p.brand === "프로틴방앗간" },
+  { slug: "myprotein-bar-comparison", title: "마이프로틴 프로틴바 종류별 비교", lineName: "마이프로틴 프로틴바", itemWord: "제품", filter: (p) => p.productType === "bar" && p.brand === "마이프로틴" },
+  { slug: "ppaeba-proteinbar-flavor-comparison", title: "빼바 프로틴바 맛별 비교", lineName: "빼바 프로틴바", filter: (p) => p.productType === "bar" && p.brand === "빼바" },
+  { slug: "kellogg-proteinbar-comparison", title: "켈로그 프로틴바 종류별 비교", lineName: "켈로그 프로틴바", itemWord: "제품", filter: (p) => p.productType === "bar" && p.brand === "켈로그" },
+  { slug: "maeilbio-greek-yogurt-lineup-comparison", title: "매일 바이오 그릭요거트 종류별 비교 (무가당·투고·드링크)", lineName: "매일 바이오 그릭요거트", itemWord: "제품", filter: (p) => p.productType === "yogurt" && p.brand === "매일 바이오" },
+  { slug: "yoplait-protein-yogurt-comparison", title: "요플레 프로틴 종류별 비교 (떠먹는·드링크·MAX)", lineName: "요플레 프로틴", itemWord: "제품", filter: (p) => p.productType === "yogurt" && p.brand === "요플레" },
+  { slug: "foodis-greek-yogurt-comparison", title: "후디스 그릭요거트 종류별 비교", lineName: "후디스 그릭요거트", itemWord: "제품", filter: (p) => p.productType === "yogurt" && p.brand === "후디스" },
+  { slug: "sangha-greek-yogurt-comparison", title: "상하목장 그릭요거트 종류별 비교", lineName: "상하목장 그릭요거트", itemWord: "제품", filter: (p) => p.productType === "yogurt" && p.brand === "상하목장" },
+  { slug: "lookt-yogurt-comparison", title: "룩트 그릭요거트 종류별 비교 (마일드·띠크)", lineName: "룩트 요거트", itemWord: "제품", filter: (p) => p.productType === "yogurt" && p.brand === "룩트" },
+  { slug: "yonsei-soymilk-lineup-comparison", title: "연세두유 고단백 종류별 비교", lineName: "연세두유", itemWord: "제품", filter: (p) => p.productType === "soymilk" && p.brand === "연세두유" },
+  { slug: "erom-soymilk-lineup-comparison", title: "이롬 황성주 두유 종류별 비교", lineName: "이롬 두유", itemWord: "제품", filter: (p) => p.productType === "soymilk" && p.brand === "이롬" },
+  { slug: "bobsnu-soymilk-lineup-comparison", title: "밥스누 약콩두유 종류별 비교", lineName: "밥스누 약콩두유", itemWord: "제품", filter: (p) => p.productType === "soymilk" && p.brand === "밥스누" },
+  { slug: "wanjeon-soymilk-lineup-comparison", title: "완전두유 종류별 비교 (국산콩·서리태·검은콩)", lineName: "완전두유", itemWord: "제품", filter: (p) => p.productType === "soymilk" && p.brand === "완전두유" },
+  { slug: "calobye-protein-drink-comparison", title: "칼로바이 프로틴 음료 종류별 비교 (스파클링·파워쉐이크)", lineName: "칼로바이 프로틴 음료", itemWord: "제품", filter: (p) => p.productType === "drink" && p.brand === "칼로바이" },
 ];
 
 function buildPair(spec: PairSpec, bySlug: Map<string, ProductDetailProps>): CompareLanding | null {
