@@ -8,7 +8,7 @@ import CategoryDataSection from "@/app/components/CategoryDataSection";
 
 export const metadata = {
   alternates: { canonical: "https://proteinlab.kr/guides/product-selection-comparison/proteone-protein-shake" },
-  title: "프로티원 단백질 쉐이크 추천 | 초코·커피 성분 비교 2026",
+  title: "프로티원 쉐이크 성분표·칼로리 | 초코·커피 맛별 비교 (2026)",
   description: "프로티원 단백쉐이크 초코맛과 커피맛을 단백질, 당류, 칼로리, 단백질 밀도 기준으로 직접 비교했습니다. 저칼로리와 고단백 중 어디에 더 강한지 빠르게 확인해보세요.",
 };
 
@@ -41,7 +41,7 @@ const faqItems = [
 export default function ProteoneProteinShakePage() {
   const dataFaqs = buildBrandDataFaqs({ brands: ["프로티원"], productType: "shake" });
   const jsonLd = buildGuideJsonLd({
-    title: "프로티원 단백질 쉐이크 추천 | 초코·커피 성분 비교 2026",
+    title: "프로티원 쉐이크 성분표·칼로리 | 초코·커피 맛별 비교 (2026)",
     description: "프로티원 단백쉐이크 초코맛과 커피맛을 단백질, 당류, 칼로리, 단백질 밀도 기준으로 직접 비교했습니다. 저칼로리와 고단백 중 어디에 더 강한지 빠르게 확인해보세요.",
     url: "https://proteinlab.kr/guides/product-selection-comparison/proteone-protein-shake",
     faq: [...faqItems, ...dataFaqs],
@@ -67,7 +67,7 @@ export default function ProteoneProteinShakePage() {
             <span className="rounded-md bg-[#eef4ea] px-2 py-0.5 text-[11px] font-semibold tracking-wide text-[#4c7a57]">TRACK B</span>
           </div>
           <h1 className="mt-3 text-2xl font-bold leading-tight text-[#16412D] md:text-3xl">
-            프로티원 단백질 쉐이크 추천 | 초코·커피맛 비교
+            프로티원 쉐이크 성분표·칼로리 | 초코·커피 맛별 비교
           </h1>
           <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
             프로티원은 저칼로리와 단백질 밀도를 같이 보는 사람에게 가장 먼저 걸리는 브랜드입니다.

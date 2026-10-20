@@ -169,7 +169,7 @@ const compareLandings: CompareLanding[] = [
   },
   {
     slug: "doctoru-vs-kirkland-bar",
-    title: "닥터유 프로틴바 vs 커클랜드 프로틴바 비교",
+    title: "커클랜드 프로틴바 성분·칼로리 | 닥터유 단백질바와 비교",
     description: "국내 대표 프로틴바와 커클랜드 프로틴바를 단백질 총량과 당류 기준으로 비교합니다.",
     intro: "단백질 바 검색에서 자주 비교되는 조합을 고정 URL로 만든 랜딩입니다.",
     bullets: ["국내/해외 대표 프로틴바 비교", "고단백 바 검색어 대응", "상세 페이지 진입 유도에 적합"],
@@ -290,7 +290,7 @@ const compareLandings: CompareLanding[] = [
   },
   {
     slug: "greekday-vs-maeilbio-yogurt",
-    title: "그릭데이 vs 매일 바이오 그릭요거트 비교",
+    title: "매일 바이오 그릭요거트 성분·칼로리 | 그릭데이와 비교",
     description: "그릭데이와 매일 바이오 그릭요거트를 단백질, 당류, 용량 기준으로 비교합니다.",
     intro: "대용량 그릭요거트와 일반 그릭요거트 브랜드를 함께 비교하는 랜딩입니다.",
     bullets: ["그릭요거트 브랜드 비교", "대용량 구매 전 탐색용", "주제 랜딩과 브랜드 허브 연결에 적합"],
@@ -314,7 +314,7 @@ const compareLandings: CompareLanding[] = [
   },
   {
     slug: "proteone-vs-itthefit-shake",
-    title: "프로티원 쉐이크 vs 잇더핏 비교 | 성분·당류·칼로리",
+    title: "프로티원 쉐이크 성분·칼로리 | 잇더핏과 맛별 비교",
     description: "40g 파우치 기준 프로티원은 단백질 23g·당류 1g·128kcal, 잇더핏은 21.3g·0.6g·122kcal입니다. 저당 쉐이크 선택 기준과 제품별 가격 확인 링크를 함께 정리했습니다.",
     intro: "같은 40g 파우치형 초코 쉐이크라도 단백질은 프로티원이 1.7g 많고, 당류와 열량은 잇더핏이 더 낮습니다. 목적에 따라 어느 차이를 먼저 볼지 정리했습니다.",
     bullets: ["단백질 우선: 프로티원 23g, 잇더핏 21.3g", "당류·열량 우선: 잇더핏 0.6g·122kcal", "두 제품의 성분표와 판매 구성을 각각 확인"],

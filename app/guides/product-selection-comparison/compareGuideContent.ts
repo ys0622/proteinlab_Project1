@@ -1087,7 +1087,7 @@ const dryou40Strawberry = getDrinkProduct("dryou-protein-40g-strawberry-350");
 export const himuneLineupConfig: ComparePageConfig = {
   slug: "himune-lineup",
   dataSection: { category: "drink", brand: "하이뮨", limit: 20 },
-  title: "하이뮨 단백질음료 추천 (2026) | 액티브·제로·울트라 종류 비교",
+  title: "하이뮨 프로틴 성분표 | 액티브·밸런스·울트라 종류별 단백질·당류 비교",
   description: "하이뮨 프로틴 밸런스, 액티브, 액티브 제로, 식물성 고단백, 울트라의 단백질·당류·칼로리를 비교하고 운동·저당·일상 보충 목적별 추천을 정리했습니다.",
   keywords: ["하이뮨 단백질음료", "하이뮨 성분", "하이뮨 종류", "하이뮨 라인업", "하이뮨 프로틴밸런스 액티브 차이", "하이뮨 액티브 제로", "하이뮨 울트라"],
   badge: "브랜드 라인업",
@@ -1664,7 +1664,7 @@ newcareWaterConfig.jsonLd = [articleJsonLd(newcareWaterConfig), faqJsonLd(newcar
 export const newcareVsHymuneConfig: ComparePageConfig = {
   slug: "newcare-vs-hymune",
   dataSection: [{ category: "drink", brand: "뉴케어", limit: 10 }, { category: "drink", brand: "하이뮨", limit: 10 }],
-  title: "뉴케어 41g vs 하이뮨 10g 차이 (2026) | 부모님 단백질음료 비교",
+  title: "뉴케어 vs 하이뮨 비교 | 단백질 41g·10g 성분 차이 (부모님 단백질음료)",
   description:
     "뉴케어 올프로틴 41g과 하이뮨 프로틴 밸런스 10g의 용량·칼로리·당류를 비교해 부모님과 50대가 고단백형과 일상 보완형을 고르는 법을 정리했습니다.",
   keywords: ["뉴케어 하이뮨 비교", "뉴케어 vs 하이뮨", "시니어 단백질 음료", "하이뮨 뉴케어 차이", "부모님 단백질 음료", "50대 단백질 음료"],
