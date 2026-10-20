@@ -129,3 +129,33 @@ export function getGeneratedCompareLandings(): CompareLanding[] {
     ...LINES.map((spec) => buildLine(spec, products)),
   ].filter((item): item is CompareLanding => item !== null);
 }
+
+/**
+ * 비교 랜딩끼리 이어 주는 링크(2026-10-20). 신규 방문자가 비교 페이지 하나만 보고 나가는 경우가 많아,
+ * 같은 브랜드 제품이 들어간 비교를 먼저, 그다음 같은 제품군 비교를 relatedLinks 뒤에 최대 limit개 붙인다.
+ */
+export function withAutoRelatedLandings(landing: CompareLanding, all: CompareLanding[], limit = 3): CompareLanding {
+  const products = getAllProducts();
+  const bySlug = new Map(products.map((p) => [p.slug, p]));
+  const brandsOf = (item: CompareLanding) => new Set(item.productSlugs.map((s) => bySlug.get(s)?.brand).filter(Boolean));
+  const categoryOf = (item: CompareLanding) => bySlug.get(item.productSlugs[0] ?? "")?.productType;
+  const myBrands = brandsOf(landing);
+  const myCategory = categoryOf(landing);
+  const existing = new Set(landing.relatedLinks.map((link) => link.href));
+  const candidates = all.filter((item) => item.slug !== landing.slug && !existing.has(`/compare/${item.slug}`));
+  const sameBrand = candidates.filter((item) => [...brandsOf(item)].some((b) => myBrands.has(b)));
+  const sameCategory = candidates.filter((item) => !sameBrand.includes(item) && categoryOf(item) === myCategory);
+  const picks = [...sameBrand, ...sameCategory].slice(0, limit);
+  if (!picks.length) return landing;
+  return {
+    ...landing,
+    relatedLinks: [
+      ...landing.relatedLinks,
+      ...picks.map((item) => ({
+        href: `/compare/${item.slug}`,
+        title: item.title.split(" | ")[0],
+        description: "같은 브랜드·제품군의 다른 비교를 이어서 확인합니다.",
+      })),
+    ],
+  };
+}

@@ -1,5 +1,5 @@
 import { getBarProducts } from "./barProductsData";
-import { getGeneratedCompareLandings } from "./compareLandingsGenerated";
+import { getGeneratedCompareLandings, withAutoRelatedLandings } from "./compareLandingsGenerated";
 
 export interface CompareLanding {
   slug: string;
@@ -777,5 +777,5 @@ export function getAllCompareLandingStaticSlugs() {
 export function getCompareLandingBySlug(slug: string) {
   const canonicalSlug = compareLandingAliases[slug] ?? slug;
   const landing = allLandings().find((item) => item.slug === canonicalSlug);
-  return landing ? applyCompareLandingOverride(landing) : null;
+  return landing ? withAutoRelatedLandings(applyCompareLandingOverride(landing), allLandings()) : null;
 }
