@@ -205,13 +205,12 @@ function buildProductTitle(product: ProductDetailProps): string {
 
   const kind = getProductKindLabel(product.productType);
   const protein = `단백질 ${product.proteinPerServing}g`;
-  const second =
-    product.sugar != null
-      ? `당류 ${product.sugar}g`
-      : product.calories != null
-        ? `${product.calories}kcal`
-        : null;
-  const metrics = second ? `${protein} · ${second}` : protein;
+  // 네이버 자동완성에 "○○ 칼로리"가 많아(닥터유 단백질바·커클랜드 프로틴바·그릭요거트, 2026-10-20) 칼로리도 같이 넣는다.
+  const metrics = [
+    protein,
+    product.sugar != null ? `당류 ${product.sugar}g` : null,
+    product.calories != null ? `${product.calories}kcal` : null,
+  ].filter(Boolean).join(" · ");
   return `${labelWithSearchAlias(formatProductLabel(product.brand, product.name), product.brand)} ${metrics} — ${kind} 성분 비교`;
 }
 
