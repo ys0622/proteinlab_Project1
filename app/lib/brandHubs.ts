@@ -84,6 +84,7 @@ const BRAND_SLUG_MAP: Record<string, string> = {
   삼육두유: "sahmyook-soymilk",
   앱솔리: "absolli",
   베어벨즈: "barebells",
+  곡물도감: "gokmuldogam",
   그레네이드: "grenade",
 };
 
