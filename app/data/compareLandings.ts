@@ -1,4 +1,5 @@
 import { getBarProducts } from "./barProductsData";
+import { getGeneratedCompareLandings } from "./compareLandingsGenerated";
 
 export interface CompareLanding {
   slug: string;
@@ -754,17 +755,27 @@ function applyCompareLandingOverride(item: CompareLanding): CompareLanding {
   return override ? { ...item, ...override } : item;
 }
 
+// 손으로 쓴 랜딩 + 데이터로 만드는 랜딩(compareLandingsGenerated.ts). 같은 slug면 손으로 쓴 쪽을 쓴다.
+let mergedLandings: CompareLanding[] | null = null;
+function allLandings(): CompareLanding[] {
+  if (!mergedLandings) {
+    const own = new Set(compareLandings.map((item) => item.slug));
+    mergedLandings = [...compareLandings, ...getGeneratedCompareLandings().filter((item) => !own.has(item.slug))];
+  }
+  return mergedLandings;
+}
+
 export function getAllCompareLandings() {
-  return compareLandings.map(applyCompareLandingOverride);
+  return allLandings().map(applyCompareLandingOverride);
 }
 
 export function getAllCompareLandingStaticSlugs() {
-  const canonicalSlugs = compareLandings.map((item) => item.slug);
+  const canonicalSlugs = allLandings().map((item) => item.slug);
   return [...canonicalSlugs, ...Object.keys(compareLandingAliases)];
 }
 
 export function getCompareLandingBySlug(slug: string) {
   const canonicalSlug = compareLandingAliases[slug] ?? slug;
-  const landing = compareLandings.find((item) => item.slug === canonicalSlug);
+  const landing = allLandings().find((item) => item.slug === canonicalSlug);
   return landing ? applyCompareLandingOverride(landing) : null;
 }
