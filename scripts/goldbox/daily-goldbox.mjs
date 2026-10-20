@@ -8,9 +8,12 @@
  *               일부만 맞는 후보는 "확인 필요"로 남긴다.
  *   3. report   .goldbox-auto/<날짜>.json, .goldbox-auto/latest.txt, 등록안 .goldbox-auto/<날짜>-offers.json
  *
- * 운영 저장소(KV·코드)에는 쓰지 않는다. 등록은 등록안을 보고 따로 한다.
+ *   4. write    --write 일 때만 일치 제품을 KV(coupang-goldbox:verified-offers:v1)에 기록한다(2026-10-20 사용자 승인).
+ *               배포 없이 /api/goldbox/active 에 5분 안에 반영된다. 만료된 항목은 지우고 같은 slug는 새 것으로 바꾼다.
+ *               수집 0건(페이지 구조 변경 의심)이거나 "확인 필요" 후보는 쓰지 않는다.
  *
- * 사용: node scripts/goldbox/daily-goldbox.mjs [--from <collect json>]
+ * 사용: node scripts/goldbox/daily-goldbox.mjs [--write] [--from <collect json>]
+ * 매일 07:10 Windows 작업 스케줄러 "ProteinLab Goldbox Daily"가 scripts/goldbox/run-daily.cmd 로 --write 실행한다.
  */
 import { spawnSync } from "node:child_process";
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
@@ -21,6 +24,9 @@ const root = resolve(dirname(fileURLToPath(import.meta.url)), "../..");
 const args = process.argv.slice(2);
 const fromIdx = args.indexOf("--from");
 const fromFile = fromIdx >= 0 ? args[fromIdx + 1] : null;
+const write = args.includes("--write");
+const KV_NAMESPACE_ID = "cb0554d5dbaf413d8fe971f91d1d968c"; // GUIDES_STATIC_DRAFTS_KV (wrangler.jsonc)
+const KV_KEY = "coupang-goldbox:verified-offers:v1";
 
 const CATEGORIES = ["drink", "bar", "shake", "yogurt", "soymilk"];
 // 제품명에서 구분 단어로 보지 않는 말(어느 제품에나 붙는다).
@@ -162,6 +168,31 @@ function toOffer({ item, title, product }) {
   };
 }
 
+// ---------- 4. write ----------
+function wrangler(argv) {
+  const res = spawnSync("npx", ["wrangler", ...argv], { cwd: root, encoding: "utf-8", shell: true, maxBuffer: 16 * 1024 * 1024, timeout: 180_000 });
+  return { ok: res.status === 0, out: (res.stdout || "").trim(), err: (res.stderr || "").trim() };
+}
+
+function readKvOffers() {
+  const r = wrangler(["kv", "key", "get", `"${KV_KEY}"`, `--namespace-id=${KV_NAMESPACE_ID}`, "--remote", "--text"]);
+  if (!r.ok) {
+    if (/not found/i.test(r.out + r.err)) return [];
+    throw new Error("KV 읽기 실패: " + r.err.slice(0, 300));
+  }
+  const start = r.out.indexOf("[");
+  if (start < 0) return [];
+  const parsed = JSON.parse(r.out.slice(start, r.out.lastIndexOf("]") + 1));
+  return Array.isArray(parsed) ? parsed : [];
+}
+
+function writeKvOffers(list) {
+  const file = join(outDir, `${kstDate}-kv.json`);
+  writeFileSync(file, JSON.stringify(list));
+  const r = wrangler(["kv", "key", "put", `"${KV_KEY}"`, `--path="${file}"`, `--namespace-id=${KV_NAMESPACE_ID}`, "--remote"]);
+  if (!r.ok) throw new Error("KV 쓰기 실패: " + r.err.slice(0, 300));
+}
+
 // ---------- run ----------
 const data = collect();
 const items = Object.values(data.tabs || {}).filter(Array.isArray).flat();
@@ -176,12 +207,29 @@ const report = {
   matched: matched.map((m, i) => ({ slug: m.product.slug, title: m.title, via: m.via, expiresAt: offers[i].expiresAt })),
   review,
 };
+let kvResult = "기록 안 함(--write 없음)";
+if (write) {
+  if (!items.length) kvResult = "수집 0건 — KV 미변경";
+  else if (!offers.length) kvResult = "일치 제품 없음 — KV 미변경";
+  else {
+    try {
+      const keep = readKvOffers().filter((o) => o && Date.parse(o.expiresAt) > now.getTime() && !offers.some((n) => n.slug === o.slug));
+      writeKvOffers([...keep, ...offers]);
+      kvResult = `기록 ${offers.length}건(기존 유지 ${keep.length}건)`;
+    } catch (e) {
+      kvResult = "실패 — " + e.message;
+      process.exitCode = 1;
+    }
+  }
+}
+report.kv = kvResult;
 writeFileSync(join(outDir, `${kstDate}.json`), JSON.stringify(report, null, 1));
 
 const lines = [
   `골드박스 점검 ${kstDate} (수집 ${data.collectedAt})`,
   `수집: ${Object.entries(report.tabs).map(([k, v]) => `${k} ${v}`).join(", ")}${items.length ? "" : " — 0건, 페이지 구조 변경 의심"}`,
   `일치: ${report.matched.length ? report.matched.map((m) => `${m.slug} [${m.via}] ~${m.expiresAt}`).join(", ") : "없음"}`,
+  `KV: ${kvResult}`,
   `확인 필요: ${review.length ? "" : "없음"}`,
   ...review.map((r) => `  - ${r.title} [${r.pid}] → ${r.tie ? "동률 후보 여러 개" : r.candidates.map((c) => `${c.slug}${c.capOk ? "" : "(용량 다름)"}${c.missing.length ? ` 빠짐:${c.missing.join("/")}` : ""}`).join("; ")}`),
 ];

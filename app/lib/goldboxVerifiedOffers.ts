@@ -149,14 +149,18 @@ function isOffer(value: unknown): value is VerifiedGoldboxOffer {
   if (!value || typeof value !== "object") return false;
   const offer = value as Record<string, unknown>;
   let safeHref = offer.href === "";
-  if (typeof offer.href === "string" && offer.href) {
+  if (typeof offer.href === "string" && offer.href.startsWith("/api/out/coupang?")) {
+    // scripts/goldbox/daily-goldbox.mjs 가 웹 골드박스에서 확인한 상품 옵션으로 만든 사이트 내부 딥링크 경로.
+    safeHref = true;
+  } else if (typeof offer.href === "string" && offer.href) {
     try {
       const url = new URL(offer.href);
       safeHref = url.protocol === "https:" && url.hostname === "link.coupang.com";
     } catch { safeHref = false; }
   }
+  // price 0 = 가격 줄 숨김(EXPIRING_SEED와 같은 규칙).
   return typeof offer.slug === "string" && typeof offer.offerName === "string" &&
-    typeof offer.price === "number" && Number.isFinite(offer.price) && offer.price > 0 && safeHref &&
+    typeof offer.price === "number" && Number.isFinite(offer.price) && offer.price >= 0 && safeHref &&
     (offer.source === "coupang_app" || offer.source === "coupang_web") &&
     typeof offer.verifiedAt === "string" && typeof offer.startsAt === "string" &&
     typeof offer.expiresAt === "string";
