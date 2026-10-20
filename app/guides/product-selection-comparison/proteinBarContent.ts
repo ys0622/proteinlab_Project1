@@ -671,3 +671,21 @@ export const dietProteinBarConfig: CategoryGuideConfig = {
 };
 dietProteinBarConfig.jsonLd = [articleJsonLd(dietProteinBarConfig), faqJsonLd(dietProteinBarConfig)];
 dietProteinBarConfig.dataSection = { category: "bar", mode: "lowCalorie" };
+
+// 네이버 CTR(2026-10-20 기준 TOP10 노출 30,370·CTR 0.2%, 다이어트 12,594·0.4%): 브랜드+성분 검색이 클릭률이 높아
+// 검색 제목에 실제 순위 상위 브랜드를 넣는다. 순위가 바뀌면 브랜드도 같이 바뀐다. 본문 H1(title)은 그대로 둔다.
+function leadBrands(list: { brand: string }[], count = 3): string {
+  const brands: string[] = [];
+  for (const product of list) {
+    const short = product.brand.split(" ")[0];
+    if (!brands.includes(short)) brands.push(short);
+    if (brands.length >= count) break;
+  }
+  return brands.join("·");
+}
+proteinBarTop10Config.seoTitle = `단백질바 추천 순위 TOP 10 (2026) | ${leadBrands(barTop10)} 등 ${barProducts.length}개 성분 비교`;
+proteinBarTop10Config.description =
+  `${leadBrands(barTop10)} 등 단백질바 ${barProducts.length}개의 단백질·칼로리·당류를 1개 기준 성분표로 비교한 추천 순위 TOP 10. 운동 후·다이어트·편의점용 후보를 따로 정리했습니다.`;
+dietProteinBarConfig.seoTitle = `다이어트 단백질바 추천 (2026) | ${leadBrands(dietBarProducts)} 등 200kcal·당류 5g 이하 ${dietBarProducts.length}종`;
+dietProteinBarConfig.description =
+  `${leadBrands(dietBarProducts)} 등 200kcal 이하·당류 5g 이하·단백질 15g 이상을 모두 충족한 단백질바 ${dietBarProducts.length}종만 추려 칼로리 낮은 순으로 비교했습니다.`;

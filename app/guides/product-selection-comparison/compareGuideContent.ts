@@ -314,6 +314,8 @@ export const selexVsTakefitVsHimuneConfig: ComparePageConfig = {
   slug: "selex-vs-takefit-vs-himune",
   dataSection: [{ category: "drink", brand: "셀렉스", limit: 8 }, { category: "drink", brand: "테이크핏", limit: 8 }, { category: "drink", brand: "하이뮨", limit: 8 }],
   title: "셀렉스 vs 테이크핏 vs 하이뮨 비교 | 단백질·당류·칼로리 차이",
+  // 네이버 CTR(2026-10-20 노출 9,951·CTR 0.7%): 검색 제목에 대표 제품명과 실제 단백질 수치를 넣는다.
+  seoTitle: `셀렉스 프로핏 vs 테이크핏 맥스 vs 하이뮨 액티브 | 단백질 ${sellex.proteinPerServing}g·${takefitMax.proteinPerServing}g·${hymune.proteinPerServing}g 성분 비교`,
   description: "셀렉스 프로핏, 테이크핏 맥스, 하이뮨 액티브의 단백질·당류·칼로리·나트륨을 한 표로 비교하고 다이어트, 운동 후, 일상용 선택 기준을 정리합니다.",
   keywords: ["셀렉스 테이크핏 하이뮨 비교", "단백질 음료 3종 비교", "셀렉스 vs 테이크핏 vs 하이뮨", "셀렉스 테이크핏 차이", "테이크핏 하이뮨 차이"],
   badge: "3자 비교",
