@@ -4,7 +4,8 @@ import Footer from "@/app/components/Footer";
 import GuideBuySection from "@/app/components/GuideBuySection";
 import { buildGuideJsonLd } from "@/app/lib/guideJsonLd";
 
-const _pageTitle = "노인 단백질 보충 | 음료·두유 성분 비교";
+// 네이버 자동완성 "어르신 단백질(두유·쉐이크·추천)"(2026-10-20)에 맞춘 검색 제목.
+const _pageTitle = "어르신 단백질 보충 | 노인 단백질 음료·두유 성분 비교";
 const _pageDesc = "노인 단백질 보충 제품을 찾을 때 음료·두유·요거트의 단백질, 당류, 열량, 원재료와 섭취 형태를 비교하는 방법을 정리했습니다.";
 export const metadata = {
   title: _pageTitle,

@@ -65,6 +65,8 @@ const PAIRS: PairSpec[] = [
   { slug: "oatmont-vs-sellex-profit-drink", a: "oatmont-protein-savory-250", b: "sellex-profit-milk-vanilla-250", titleA: "오트몬드 프로틴", titleB: "셀렉스 프로핏" },
   { slug: "mymil-vs-hymune-balance-drink", a: "mymil-newprotein-original-190", b: "hymune-protein-balance-190", titleA: "마이밀 뉴프로틴", titleB: "하이뮨 프로틴 밸런스" },
   { slug: "ultive-vs-mymil-furotein-drink", a: "ultive-protein-savory-250", b: "mymil-furotein-gosohan-250", titleA: "얼티브 프로틴", titleB: "마이밀 퓨로틴" },
+  // 자동완성 "아이슬란딕 요거트 차이"(2026-10-20). 100g당 단백질은 두 제품 모두 12g으로 같다(데이터 기준).
+  { slug: "lookt-icelandic-vs-yozm-greek-yogurt", a: "lookt-icelandic-thick-450", b: "yozm-plain-greek-450", titleA: "룩트 아이슬란딕 요거트", titleB: "요즘 그릭요거트", topic: "성분 차이" },
   { slug: "yozm-vs-greekday-greek-yogurt", a: "yozm-plain-greek-450", b: "greekday-signature-450", titleA: "YOZM 그릭요거트", titleB: "그릭데이 시그니처" },
 ];
 
@@ -88,6 +90,8 @@ const LINES: LineSpec[] = [
   { slug: "greekday-greek-yogurt-lineup-comparison", title: "그릭데이 그릭요거트 종류별 비교 (시그니처·라이트·유자)", lineName: "그릭데이 그릭요거트", itemWord: "제품", filter: (p) => p.productType === "yogurt" && p.brand === "그릭데이" },
   { slug: "maeil-soymilk-lineup-comparison", title: "매일두유 종류별 비교 (고단백·99.9·렌틸콩)", lineName: "매일두유", itemWord: "제품", filter: (p) => p.productType === "soymilk" && p.brand === "매일두유" },
   // 2026-10-20 2차 자동완성(쉐이크·바·요거트·두유 브랜드 + 맛/성분/종류) 묶음. 랩노쉬 슬림쉐이크는 전용 가이드(labnoshe-slim-shake)가 있어 뺐다.
+  // 자동완성 "식물성 단백질 음료 비교"(2026-10-20). 제품명에 식물성·비건이 들어간 음료만 묶는다.
+  { slug: "plant-protein-drink-comparison", title: "식물성 단백질 음료 비교 (뉴케어·얼티브·하이뮨)", lineName: "식물성 단백질 음료", itemWord: "제품", filter: (p) => p.productType === "drink" && /식물성|비건/.test(p.name) },
   { slug: "milit-shake-flavor-comparison", title: "밀잇 쉐이크 맛별 비교", lineName: "밀잇 쉐이크", filter: (p) => p.productType === "shake" && p.brand === "밀잇" },
   { slug: "kkobak-shake-flavor-comparison", title: "꼬박꼬밥 고단저당 쉐이크 맛별 비교", lineName: "꼬박꼬밥 쉐이크", filter: (p) => p.productType === "shake" && p.brand === "꼬박꼬밥" },
   { slug: "shakebaby-flavor-comparison", title: "쉐이크베이비 맛별 비교", lineName: "쉐이크베이비", filter: (p) => p.productType === "shake" && p.brand === "쉐이크베이비" },

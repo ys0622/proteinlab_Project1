@@ -388,6 +388,8 @@ selexVsTakefitVsHimuneConfig.jsonLd = [articleJsonLd(selexVsTakefitVsHimuneConfi
 export const lactoseFreeProteinDrinkConfig: ComparePageConfig = {
   slug: "lactose-free-protein-drink",
   title: "유당불내증인데 단백질 음료 먹을 수 있나",
+  // 네이버 자동완성 "락토프리 단백질 음료(추천)"(2026-10-20)에 맞춘 검색 제목. H1은 그대로.
+  seoTitle: "락토프리 단백질 음료 | 유당불내증이면 고르는 기준·제품 성분 비교",
   description: "유당불내증이 있어도 락토프리 또는 유당 부담이 낮은 단백질 음료를 고를 수 있습니다. ProteinLab DB 기준 후보 제품과 읽는 법을 정리했습니다.",
   keywords: ["유당불내증 단백질 음료", "락토프리 단백질 음료", "WPI 단백질 음료", "유당불내증 단백질 보충"],
   badge: "문제 해결",
