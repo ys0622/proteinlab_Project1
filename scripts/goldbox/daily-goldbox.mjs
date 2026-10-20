@@ -102,7 +102,9 @@ function cardTitle(text) {
   return text
     .replace(/^.*?\d{1,2}:\d{2}:\d{2}\s*남음\s*/, "")
     .replace(/^(무료배송|얼마 남지 않았어요!)\s*/g, "")
-    .replace(/\s\d+\s?%.*$|\s[\d,]+원.*$/, "")
+    // 첫 가격(…원) 앞에서 자른 뒤 끝에 남은 할인율만 지운다. 제품명 속 "99%"(연세두유 국산약콩 99%)는 남긴다(2026-10-21).
+    .replace(/\s[\d,]+원.*$/, "")
+    .replace(/\s\d+\s?%$/, "")
     .trim();
 }
 
@@ -149,7 +151,8 @@ function toOffer({ item, title, product }) {
   const rem = remainingMs(item.text);
   // 골드박스는 매일 07:00에 바뀐다. 카드 타이머로 종료 시각을 계산하고 10분 단위로 맞춘다. 타이머가 없으면 다음 07:00.
   let end;
-  if (rem) end = new Date(Math.round((now.getTime() + rem) / 600_000) * 600_000);
+  // 타이머는 수집 시각 기준이다(--from 으로 나중에 다시 돌려도 종료 시각이 밀리지 않게).
+  if (rem) end = new Date(Math.round((Date.parse(collectedAt) + rem) / 600_000) * 600_000);
   else {
     const kst = new Date(now.getTime() + 9 * 3600_000);
     end = new Date(Date.UTC(kst.getUTCFullYear(), kst.getUTCMonth(), kst.getUTCDate() + (kst.getUTCHours() >= 7 ? 1 : 0), 7 - 9));
@@ -195,6 +198,7 @@ function writeKvOffers(list) {
 
 // ---------- run ----------
 const data = collect();
+const collectedAt = data.collectedAt || now.toISOString();
 const items = Object.values(data.tabs || {}).filter(Array.isArray).flat();
 const { matched, review } = match(items, loadProducts());
 const offers = matched.map(toOffer);
