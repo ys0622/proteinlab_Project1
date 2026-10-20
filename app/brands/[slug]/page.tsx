@@ -303,7 +303,9 @@ export async function generateMetadata({ params }: PageProps) {
   const isSingleCategory = mainCount === items.length;
   const title = isSingleCategory
     ? `${brand}${mainLabel ? ` ${mainLabel}` : ""} 성분표 — 맛별 단백질·당류·칼로리 ${items.length}종 비교`
-    : `${brand} 성분표 — ${mainLabel} ${mainCount}종 포함 ${items.length}종 단백질·당류 비교`;
+    : // 여러 제품군 브랜드도 "브랜드 + 주력 제품군 + 성분표"로 시작한다. 네이버 브랜드 검색("하이뮨", "커클랜드 프로틴바")의
+      // 클릭률이 0.3~0.9%로 낮아(2026-10-20), 검색어와 같은 말이 제목 맨 앞에 오게 했다.
+      `${brand}${mainLabel ? ` ${mainLabel}` : ""} 성분표 — ${mainCount}종 포함 전체 ${items.length}종 단백질·당류·칼로리 비교`;
   const description =
     `${brand} ${isSingleCategory ? `${mainLabel || "제품"} ${items.length}종` : `제품 ${items.length}종(${mainLabel} ${mainCount}종 포함)`}의 성분표를 표로 비교합니다.` +
     (facts.length ? ` 1회 기준 ${facts.join(" · ")}.` : "") +
