@@ -1,6 +1,5 @@
 "use client";
 
-import { useRef } from "react";
 import KakaoShareButton from "./KakaoShareButton";
 import MobileStickyBuyButton from "./MobileStickyBuyButton";
 import ProductDetailPurchaseActions, { type DiscontinuedAlternative } from "./ProductDetailPurchaseActions";
@@ -21,14 +20,14 @@ type Props = {
 };
 
 export default function ProductDetailBuyWrapper(props: Props) {
-  const anchorRef = useRef<HTMLDivElement>(null);
 
   const shareTitle = `${props.brand} ${props.productName}${props.proteinG ? ` — 단백질 ${props.proteinG}g` : ""}`;
   const shareUrl = `/product/${props.slug}`;
 
   return (
     <>
-      <div ref={anchorRef}>
+      {/* 모바일은 하단 고정 바(MobileStickyBuyButton)가 쿠팡 버튼을 맡으므로 구매 카드를 숨겨 중복을 없앤다. 링크 없는 단종 제품은 대체 상품 안내 때문에 그대로 보인다. */}
+      <div className={props.coupangHref ? "hidden md:block" : undefined}>
         <ProductDetailPurchaseActions
           {...props}
           headerAction={
@@ -50,7 +49,7 @@ export default function ProductDetailBuyWrapper(props: Props) {
         productName={props.productName}
         slug={props.slug}
         productType={props.productType}
-        anchorRef={anchorRef}
+        quickFacts={props.quickFacts}
       />
     </>
   );

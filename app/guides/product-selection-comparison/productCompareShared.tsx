@@ -6,6 +6,7 @@ import AffiliateDisclosure from "@/app/components/AffiliateDisclosure";
 import CommercialAdSection from "@/app/components/CommercialAdSection";
 import CategoryDataSection from "@/app/components/CategoryDataSection";
 import TrackedCoupangLink from "@/app/components/TrackedCoupangLink";
+import GuideProductHeroCards, { resolveGuideHeroProducts } from "@/app/components/GuideProductHeroCards";
 import { getDrinkProducts } from "@/app/data/drinkProductsData";
 import { shakeProducts, soymilkProducts, type ProductDetailProps } from "@/app/data/products";
 import { getCoupangRedirectHref } from "@/app/lib/purchaseLinks";
@@ -228,6 +229,7 @@ export function ComparisonGuidePage({ config }: { config: ComparePageConfig }) {
   const longestValue = Math.max(0, ...config.comparisonRows.flatMap((row) => row.values.map((value) => value.length)));
   const compactMobileTable = columnCount > 0 && columnCount <= 3 && longestValue <= 16;
   const compactPriorityMobile = config.slug === "selex-vs-takefit-vs-himune";
+  const heroProducts = resolveGuideHeroProducts(config.purchaseLinks);
 
   return (
     <div className="min-h-screen bg-white">
@@ -251,6 +253,7 @@ export function ComparisonGuidePage({ config }: { config: ComparePageConfig }) {
             {config.updatedAt ? <span className="text-[11px] font-medium text-[var(--foreground-muted)]">업데이트 {config.updatedAt}</span> : null}
           </div>
           <h1 className="mt-3 text-2xl font-bold leading-tight text-[#16412D] md:text-3xl">{config.title}</h1>
+          <GuideProductHeroCards products={heroProducts} />
           <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">{config.intro}</p>
         </div>
       </section>
@@ -267,7 +270,7 @@ export function ComparisonGuidePage({ config }: { config: ComparePageConfig }) {
               ))}
             </ul>
           </section>
-          {config.promoteAffiliateCtas && config.purchaseLinks.length > 0 ? (
+          {heroProducts.length === 0 && config.promoteAffiliateCtas && config.purchaseLinks.length > 0 ? (
             <section className="rounded-[28px] border border-[#d9e4f0] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(32,46,68,0.05)]">
               <div className="flex flex-wrap items-center justify-between gap-2">
                 <h2 className="text-lg font-bold text-[var(--foreground)]">추천 제품 가격·옵션 빠르게 확인</h2>

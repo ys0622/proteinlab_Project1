@@ -2,6 +2,7 @@ import Link from "next/link";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 import MpiDrinkList from "@/app/components/MpiDrinkList";
+import GuideProductHeroCards, { resolveGuideHeroProducts } from "@/app/components/GuideProductHeroCards";
 import { buildGuideJsonLd } from "@/app/lib/guideJsonLd";
 
 const _pageTitle = "MPI 단백질이란? WPI·WPC·MPC 차이와 유당 비교";
@@ -150,6 +151,11 @@ function SourceGroupBadge({ group }: { group: string }) {
 }
 
 export default function ProteinSourceTypesGuidePage() {
+  const heroProducts = resolveGuideHeroProducts([
+    { slug: "sellex-profit-sports-choco-330", contextLabel: "WPI 대표" },
+    { slug: "takefit-max-goso-250", contextLabel: "MPI 표기" },
+    { slug: "ultive-vegan-protein-choco-250", contextLabel: "식물성 대표" },
+  ]);
   const jsonLd = buildGuideJsonLd({
     title: (metadata as { title: string; description: string }).title,
     description: (metadata as { title: string; description: string }).description,
@@ -179,6 +185,7 @@ export default function ProteinSourceTypesGuidePage() {
           <h1 className="mt-3 text-2xl font-bold leading-tight text-[#16412D] md:text-3xl">
             MPI 단백질이란? WPI·WPC와 원료부터 다릅니다
           </h1>
+          <GuideProductHeroCards products={heroProducts} />
           <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
             MPI는 우유의 카제인과 유청을 함께 담은 분리우유단백입니다. WPI·WPC는 유청 단백질이므로
             이름이 비슷해도 원료 구성이 다릅니다. 유당 함량은 원료명만으로 단정하지 말고 완제품 표시를 확인하세요.

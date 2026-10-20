@@ -7,6 +7,7 @@ import CommercialAdSection from "@/app/components/CommercialAdSection";
 import CategoryDataSection from "@/app/components/CategoryDataSection";
 import TrackedLink from "@/app/components/TrackedLink";
 import TrackedCoupangLink from "@/app/components/TrackedCoupangLink";
+import GuideProductHeroCards, { resolveGuideHeroProducts } from "@/app/components/GuideProductHeroCards";
 import { getProductBySlug } from "@/app/data/products";
 import { getCoupangRedirectHref } from "@/app/lib/purchaseLinks";
 import { formatProductLabel } from "@/app/lib/productLabel";
@@ -277,6 +278,7 @@ export function CategoryGuidePage({ config }: { config: CategoryGuideConfig }) {
     (item, index, array) => array.findIndex((candidate) => candidate.href === item.href) === index,
   );
   const jsonLd = buildCategoryJsonLd(config);
+  const heroProducts = resolveGuideHeroProducts(config.purchaseLinks);
 
   return (
     <div className="min-h-screen bg-white">
@@ -300,6 +302,7 @@ export function CategoryGuidePage({ config }: { config: CategoryGuideConfig }) {
             {config.updatedAt ? <span className="text-[11px] font-medium text-[var(--foreground-muted)]">업데이트 {config.updatedAt}</span> : null}
           </div>
           <h1 className="mt-3 text-2xl font-bold leading-tight text-[#16412D] md:text-3xl">{config.title}</h1>
+          <GuideProductHeroCards products={heroProducts} />
           <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">{config.intro}</p>
         </div>
       </section>
@@ -307,7 +310,7 @@ export function CategoryGuidePage({ config }: { config: CategoryGuideConfig }) {
       <main className="mx-auto max-w-[1200px] px-4 py-8 md:px-6">
         <div className="space-y-6">
           {config.conversion ? <ConversionLinks conversion={config.conversion} /> : null}
-          {config.promoteAffiliateCtas && config.purchaseLinks.length > 0 ? (
+          {heroProducts.length === 0 && config.promoteAffiliateCtas && config.purchaseLinks.length > 0 ? (
             <section className="rounded-[28px] border border-[#d9e4f0] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(32,46,68,0.05)]">
               <div className="flex flex-wrap items-center justify-between gap-2">
                 <h2 className="text-lg font-bold text-[var(--foreground)]">추천 제품 가격·옵션 빠르게 확인</h2>
