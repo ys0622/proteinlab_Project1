@@ -56,6 +56,7 @@ import {
   normalizeCoupangUrl,
 } from "../../lib/purchaseLinks";
 import { isComparableServing } from "../../lib/servingScope";
+import { labelWithSearchAlias } from "@/app/lib/brandSearchAliases";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -211,7 +212,7 @@ function buildProductTitle(product: ProductDetailProps): string {
         ? `${product.calories}kcal`
         : null;
   const metrics = second ? `${protein} · ${second}` : protein;
-  return `${formatProductLabel(product.brand, product.name)} ${metrics} — ${kind} 성분 비교`;
+  return `${labelWithSearchAlias(formatProductLabel(product.brand, product.name), product.brand)} ${metrics} — ${kind} 성분 비교`;
 }
 
 function getCategoryDetailHref(category: "drink" | "bar" | "yogurt" | "shake" | "soymilk"): string {

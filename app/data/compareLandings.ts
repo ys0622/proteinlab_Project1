@@ -647,7 +647,7 @@ const compareLandings: CompareLanding[] = [
   },
   {
     slug: "barebells-vs-quest-proteinbar",
-    title: "베어벨즈 vs 퀘스트 단백질바 비교 | 성분·당류·칼로리",
+    title: "베어벨즈(베어벨스) vs 퀘스트 단백질바 비교 | 성분·당류·칼로리",
     description: `${formatBarNutrition("베어벨즈 쿠키 앤 크림", barebellsQuestProducts.barebells)}, ${formatBarNutrition("퀘스트 쿠키 앤 크림", barebellsQuestProducts.quest)}입니다.`,
     intro: `베어벨즈와 퀘스트의 쿠키 앤 크림 제품을 1개 기준으로 비교합니다. 표시 단백질은 각각 ${barebellsQuestProducts.barebells.proteinPerServing}g과 ${barebellsQuestProducts.quest.proteinPerServing}g이며, 당류는 각각 ${barebellsQuestProducts.barebells.sugar}g과 ${barebellsQuestProducts.quest.sugar}g입니다.`,
     bullets: [
@@ -664,7 +664,7 @@ const compareLandings: CompareLanding[] = [
   },
   {
     slug: "barebells-vs-grenade-proteinbar",
-    title: "베어벨즈 vs 그레네이드 카브킬라 비교 | 성분·당류·칼로리",
+    title: "베어벨즈(베어벨스) vs 그레네이드 카브킬라 비교 | 성분·당류·칼로리",
     description: `${formatBarNutrition("베어벨즈 피넛 버터", barebellsGrenadeProducts.barebells)}, ${formatBarNutrition("그레네이드 카브킬라 피넛 너터", barebellsGrenadeProducts.grenade)}입니다.`,
     intro: `베어벨즈 피넛 버터와 그레네이드 카브킬라 피넛 너터를 1개 기준으로 비교합니다. 표시 단백질은 각각 ${barebellsGrenadeProducts.barebells.proteinPerServing}g과 ${barebellsGrenadeProducts.grenade.proteinPerServing}g이며, 당류는 각각 ${barebellsGrenadeProducts.barebells.sugar}g과 ${barebellsGrenadeProducts.grenade.sugar}g입니다.`,
     bullets: [
@@ -681,7 +681,7 @@ const compareLandings: CompareLanding[] = [
   },
   {
     slug: "barebells-proteinbar-flavor-comparison",
-    title: "베어벨즈 프로틴바 맛별 비교 | 일반·소프트 성분·당류·칼로리",
+    title: "베어벨즈(베어벨스) 프로틴바 맛별 비교 | 일반·소프트 성분·당류·칼로리",
     description: `등록된 베어벨즈 ${barebellsFlavorProducts.length}종을 비교합니다. 일반 프로틴바는 단백질 ${formatProductRange(barebellsRegularProducts, (product) => product.proteinPerServing)}g, 소프트 프로틴바는 ${formatProductRange(barebellsSoftProducts, (product) => product.proteinPerServing)}g입니다.`,
     intro: `베어벨즈 일반 프로틴바 ${barebellsRegularProducts.length}종과 소프트 프로틴바 ${barebellsSoftProducts.length}종을 1개(${barebellsFlavorProducts[0].capacity}) 기준으로 비교합니다. 일반 라인과 소프트 라인의 단백질·당류·칼로리 범위를 함께 확인할 수 있습니다.`,
     bullets: [
