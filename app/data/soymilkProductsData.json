@@ -1656,6 +1656,43 @@
     "coupangUrl": "https://www.coupang.com/vp/products/6617782152?itemId=2998449664&vendorItemId=3000267625"
   },
   {
+    "slug": "vegemil-17grain-meal-190",
+    "brand": "베지밀",
+    "name": "17곡 한끼두유",
+    "capacity": "190mL",
+    "variant": "곡물",
+    "tags": [
+      "팩"
+    ],
+    "proteinPerServing": 5,
+    "calories": 115,
+    "sugar": 11,
+    "density": "2.6g/100ml",
+    "productUrl": "#",
+    "productType": "soymilk",
+    "gradeTags": [],
+    "flavor": "17곡",
+    "proteinSource": "대두",
+    "fat": 3.5,
+    "sodium": 150,
+    "calorieDensity": "60.5kcal/100ml",
+    "soymilkType": "두유",
+    "nutritionPerBottle": {
+      "caloriesKcal": 115,
+      "proteinG": 5,
+      "carbsG": 16,
+      "sugarsG": 11,
+      "fatG": 3.5,
+      "satFatG": 1,
+      "transFatG": 0,
+      "cholesterolMg": 0,
+      "sodiumMg": 150
+    },
+    "manufacturer": "정식품",
+    "naverUrl": "https://search.shopping.naver.com/search/all?query=%EB%B2%A0%EC%A7%80%EB%B0%80%2017%EA%B3%A1%20%ED%95%9C%EB%81%BC%EB%91%90%EC%9C%A0%20190ml&vertical=search",
+    "coupangUrl": "https://www.coupang.com/vp/products/181252754?itemId=54146621&vendorItemId=3084829518"
+  },
+  {
     "slug": "gokmuldogam-seoritae-soymilk-180",
     "brand": "곡물도감",
     "name": "서리태 가득 콩물 두유",
