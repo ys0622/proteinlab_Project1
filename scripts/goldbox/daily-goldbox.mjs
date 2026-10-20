@@ -72,10 +72,29 @@ function capacityOf(p) {
   return m ? { n: m[1], unit: m[2].toLowerCase() } : null;
 }
 
-function titleHasCapacity(title, cap) {
-  if (!cap) return false;
+// 카테고리 단어. 묶음 총중량("600g, 1개" = 50g×12)이나 구분 단어가 없는 제품을 맞출 때 반드시 함께 있어야 한다.
+// 바는 "바나나"와 헷갈리지 않게 "단백질바/프로틴바/bar"만 본다(하이뮨 분말 608g이 38g 바의 16배로 잡히는 것 방지).
+const CATEGORY_WORD = {
+  bar: /(단백질|프로틴|protein)\s?바(?!나)|bar/i,
+  drink: /음료|드링크|프로틴|단백질/,
+  shake: /쉐이크|셰이크/,
+  yogurt: /요거트|요구르트/,
+  soymilk: /두유/,
+};
+
+/** "exact"(용량 같음) · "multiple"(묶음 총용량이 낱개의 정수배, 카테고리 단어 필요) · null */
+function capacityMatch(title, p) {
+  const cap = capacityOf(p);
+  if (!cap) return null;
   const unit = cap.unit === "ml" ? "m[lL]" : cap.unit;
-  return new RegExp(`(^|[^\\d.])${cap.n.replace(".", "\\.")}\\s*${unit}(?![a-zA-Z])`, "i").test(title);
+  if (new RegExp(`(^|[^\d.])${cap.n.replace(".", "\.")}\s*${unit}(?![a-zA-Z])`, "i").test(title)) return "exact";
+  if (!CATEGORY_WORD[p.category]?.test(title)) return null;
+  for (const m of title.matchAll(/(\d+(?:\.\d+)?)\s*(ml|g|l)(?![a-zA-Z])/gi)) {
+    if (m[2].toLowerCase() !== cap.unit) continue;
+    const ratio = Number(m[1]) / Number(cap.n);
+    if (Number.isInteger(ratio) && ratio >= 2 && ratio <= 60) return "multiple";
+  }
+  return null;
 }
 
 function tokensOf(p) {
@@ -131,20 +150,39 @@ function match(items, products) {
       if (pidOf(p) && pidOf(p) === it.pid) { best = { p, toks: Infinity, via: "coupang-product-id" }; break; }
       const brand = norm(p.brand);
       if (!brand || !nt.includes(brand)) continue;
-      const capOk = titleHasCapacity(title, capacityOf(p));
+      const capKind = capacityMatch(title, p);
+      const capOk = !!capKind;
       const toks = tokensOf(p);
       const hit = toks.filter((t) => nt.includes(t) || (t.endsWith("맛") && nt.includes(t.slice(0, -1))));
-      if (capOk && toks.length && hit.length === toks.length) {
-        if (!best || toks.length > best.toks) best = { p, toks: toks.length, via: "brand+capacity+name" };
+      // 구분 단어가 없는 제품(곰곰 "단백질바 50g")은 카테고리 단어가 있고, 같은 브랜드·카테고리의 다른 제품을 가르는 단어(곰곰 "미니")가
+      // 제목에 하나도 없을 때만 맞춘다(2026-10-21).
+      const catWord = !!CATEGORY_WORD[p.category]?.test(title);
+      const onlyOne = !toks.length && catWord &&
+        products.every((q) => q === p || q.category !== p.category || q.brand !== p.brand || tokensOf(q).some((t) => !nt.includes(t)));
+      if (capOk && ((toks.length && hit.length === toks.length) || onlyOne)) {
+        const via = `brand+capacity${capKind === "multiple" ? "(묶음)" : ""}+${onlyOne ? "단일제품" : "name"}`;
+        if (!best || toks.length > best.toks) best = { p, toks: toks.length, via };
         else if (toks.length === best.toks) best.tie = true;
-      } else if (capOk || (toks.length && hit.length / toks.length >= 0.5)) {
+      } else if (catWord && (capOk || !toks.length || hit.length / toks.length >= 0.5)) {
         partial.push({ slug: p.slug, name: `${p.brand} ${p.name} ${p.capacity || ""}`.trim(), capOk, missing: toks.filter((t) => !hit.includes(t)) });
       }
     }
     if (best && !best.tie) matched.push({ item: it, title, product: best.p, via: best.via });
-    else if (best?.tie || partial.length) review.push({ pid: it.pid, title, tie: !!best?.tie, candidates: partial.slice(0, 5) });
+    else if ((best?.tie || partial.length) && !review.some((r) => r.pid === it.pid)) review.push({ pid: it.pid, title, tie: !!best?.tie, candidates: partial.slice(0, 5) });
   }
   return { matched, review };
+}
+
+/** "190mL × 24개" 또는 묶음 총중량일 때 "600g(50g × 12개)" */
+function packLabel(title, product, count) {
+  const cap = capacityOf(product);
+  if (cap) {
+    for (const m of title.matchAll(/(\d+(?:\.\d+)?)\s*(ml|g|l)(?![a-zA-Z])/gi)) {
+      const ratio = Number(m[1]) / Number(cap.n);
+      if (m[2].toLowerCase() === cap.unit && Number.isInteger(ratio) && ratio >= 2) return `${m[1]}${m[2]}(${product.capacity} × ${ratio}개)`;
+    }
+  }
+  return product.capacity && count > 1 ? `${product.capacity} × ${count}개` : product.capacity;
 }
 
 function toOffer({ item, title, product }) {
@@ -161,7 +199,7 @@ function toOffer({ item, title, product }) {
   const params = new URLSearchParams({ pageKey: item.pid, itemId: item.itemId || "", vendorItemId: item.vendorItemId || "", category: product.category, slug: product.slug });
   return {
     slug: product.slug,
-    offerName: [product.capacity && count > 1 ? `${product.capacity} × ${count}개` : product.capacity, "골드박스 특가", "쿠팡 확인"].filter(Boolean).join(" · "),
+    offerName: [packLabel(title, product, count), "골드박스 특가", "쿠팡 확인"].filter(Boolean).join(" · "),
     price: 0,
     href: `/api/out/coupang?${params.toString()}`,
     source: "coupang_web",
@@ -173,12 +211,13 @@ function toOffer({ item, title, product }) {
 
 // ---------- 4. write ----------
 function wrangler(argv) {
-  const res = spawnSync("npx", ["wrangler", ...argv], { cwd: root, encoding: "utf-8", shell: true, maxBuffer: 16 * 1024 * 1024, timeout: 180_000 });
+  // npx + shell:true 는 Node 경고(DEP0190)가 나서 wrangler 진입 스크립트를 node로 직접 실행한다. 인자 따옴표도 필요 없다.
+  const res = spawnSync(process.execPath, [join(root, "node_modules/wrangler/bin/wrangler.js"), ...argv], { cwd: root, encoding: "utf-8", maxBuffer: 16 * 1024 * 1024, timeout: 180_000 });
   return { ok: res.status === 0, out: (res.stdout || "").trim(), err: (res.stderr || "").trim() };
 }
 
 function readKvOffers() {
-  const r = wrangler(["kv", "key", "get", `"${KV_KEY}"`, `--namespace-id=${KV_NAMESPACE_ID}`, "--remote", "--text"]);
+  const r = wrangler(["kv", "key", "get", KV_KEY, `--namespace-id=${KV_NAMESPACE_ID}`, "--remote", "--text"]);
   if (!r.ok) {
     if (/not found/i.test(r.out + r.err)) return [];
     throw new Error("KV 읽기 실패: " + r.err.slice(0, 300));
@@ -192,7 +231,7 @@ function readKvOffers() {
 function writeKvOffers(list) {
   const file = join(outDir, `${kstDate}-kv.json`);
   writeFileSync(file, JSON.stringify(list));
-  const r = wrangler(["kv", "key", "put", `"${KV_KEY}"`, `--path="${file}"`, `--namespace-id=${KV_NAMESPACE_ID}`, "--remote"]);
+  const r = wrangler(["kv", "key", "put", KV_KEY, `--path=${file}`, `--namespace-id=${KV_NAMESPACE_ID}`, "--remote"]);
   if (!r.ok) throw new Error("KV 쓰기 실패: " + r.err.slice(0, 300));
 }
 
