@@ -159,6 +159,18 @@ const exactNutritionBySlug: Record<string, NutritionPatch> = {
     sodiumMg: 100,
     fiberG: 3.8,
   },
+  // 2026-10-21 사용자가 보낸 쿠팡 상세 영양정보(1개 50g 기준).
+  "gomgom-proteinbar-50": {
+    caloriesKcal: 260,
+    proteinG: 14,
+    carbsG: 18,
+    sugarsG: 10,
+    fatG: 14,
+    satFatG: 2.9,
+    transFatG: 0,
+    cholesterolMg: 0,
+    sodiumMg: 90,
+  },
   "barebells-proteinbar-cookies-cream-55": {
     caloriesKcal: 200,
     proteinG: 20,
