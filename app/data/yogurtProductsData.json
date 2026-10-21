@@ -42,7 +42,8 @@
       "fatG": 0,
       "cholesterolMg": 10,
       "sodiumMg": 85,
-      "bcaaMg": 3250
+      "bcaaMg": 3250,
+      "satFatG": 0
     },
     "coupangUrl": "https://www.coupang.com/vp/products/9181041542?itemId=27135694124&vendorItemId=94103639497&q=%EC%9A%94%ED%94%84%EB%A1%9C+%ED%94%84%EB%A1%9C%ED%8B%B4+%EC%84%A4%ED%83%95%EB%AC%B4%EC%B2%A8%EA%B0%80+%ED%94%8C%EB%A0%88%EC%9D%B8+%EC%9A%94%EA%B1%B0%ED%8A%B8+150g&searchId=2f1296fb4474231&sourceType=search&itemsCount=36&searchRank=1&rank=1&traceId=mmyv95bv",
     "naverUrl": "https://search.shopping.naver.com/search/all?where=all&frm=NVSCTAB&query=%EC%9A%94%ED%94%84%EB%A1%9C+%ED%94%84%EB%A1%9C%ED%8B%B4+%EC%84%A4%ED%83%95%EB%AC%B4%EC%B2%A8%EA%B0%80+%ED%94%8C%EB%A0%88%EC%9D%B8+%EC%9A%94%EA%B1%B0%ED%8A%B8+150g",
@@ -91,7 +92,8 @@
       "fatG": 0,
       "cholesterolMg": 5,
       "sodiumMg": 80,
-      "bcaaMg": 3250
+      "bcaaMg": 3250,
+      "satFatG": 0
     },
     "coupangUrl": "https://www.coupang.com/vp/products/9181041541?itemId=27135693609&vendorItemId=94103639306&pickType=COU_PICK&q=%EC%9A%94%ED%94%84%EB%A1%9C+%ED%94%84%EB%A1%9C%ED%8B%B4+%EB%B8%94%EB%A3%A8%EB%B2%A0%EB%A6%AC+%EC%9A%94%EA%B1%B0%ED%8A%B8+150g&searchId=20e63bca1784784&sourceType=search&itemsCount=36&searchRank=0&rank=0&traceId=mmyv9mse",
     "naverUrl": "https://search.shopping.naver.com/search/all?query=%EC%9A%94%ED%94%84%EB%A1%9C%20%ED%94%84%EB%A1%9C%ED%8B%B4%20%EB%B8%94%EB%A3%A8%EB%B2%A0%EB%A6%AC%20%EC%9A%94%EA%B1%B0%ED%8A%B8%20150g&prevQuery=%EC%9A%94%ED%94%84%EB%A1%9C%20%ED%94%84%EB%A1%9C%ED%8B%B4%20%EC%84%A4%ED%83%95%EB%AC%B4%EC%B2%A8%EA%B0%80%20%ED%94%8C%EB%A0%88%EC%9D%B8%20%EC%9A%94%EA%B1%B0%ED%8A%B8%20150g&vertical=search",
@@ -901,10 +903,11 @@
     "nutritionPerBottle": {
       "caloriesKcal": 100,
       "proteinG": 6.8,
-      "carbsG": 5,
+      "carbsG": 2.7,
       "sugarsG": 2.5,
       "fatG": 7,
-      "sodiumMg": 30.5
+      "sodiumMg": 30.5,
+      "satFatG": 4.3
     },
     "officialUrl": "https://greekday.co.kr/product/list.html?cate_no=42",
     "coupangUrl": "https://www.coupang.com/vp/products/5463245073?itemId=8368941696&vendorItemId=75656677392&pickType=COU_PICK&q=%EA%B7%B8%EB%A6%AD%EB%8D%B0%EC%9D%B4+%EA%B7%B8%EB%A6%AD%EC%9A%94%EA%B1%B0%ED%8A%B8+%EB%9D%BC%EC%9D%B4%ED%8A%B8+100g&searchId=a32ff01c2611509&sourceType=search&itemsCount=36&searchRank=1&rank=1&traceId=mmyvga5p",
@@ -946,10 +949,11 @@
     "nutritionPerBottle": {
       "caloriesKcal": 450,
       "proteinG": 30.4,
-      "carbsG": 22.5,
+      "carbsG": 12.15,
       "sugarsG": 11.1,
       "fatG": 31.4,
-      "sodiumMg": 137.3
+      "sodiumMg": 137.3,
+      "satFatG": 19.35
     },
     "officialUrl": "https://greekday.co.kr/product/list.html?cate_no=42",
     "coupangUrl": "https://www.coupang.com/vp/products/7798461431?itemId=14628773109&vendorItemId=77964863727&q=%EA%B7%B8%EB%A6%AD%EB%8D%B0%EC%9D%B4+%EA%B7%B8%EB%A6%AD%EC%9A%94%EA%B1%B0%ED%8A%B8+%EB%9D%BC%EC%9D%B4%ED%8A%B8+450g&searchId=629eecae4527260&sourceType=search&itemsCount=36&searchRank=1&rank=1&traceId=mmyvgka9",
@@ -991,10 +995,11 @@
     "nutritionPerBottle": {
       "caloriesKcal": 800,
       "proteinG": 54,
-      "carbsG": 40,
+      "carbsG": 21.6,
       "sugarsG": 19.7,
       "fatG": 55.8,
-      "sodiumMg": 244
+      "sodiumMg": 244,
+      "satFatG": 34.4
     },
     "officialUrl": "https://greekday.co.kr/product/list.html?cate_no=42",
     "coupangUrl": "https://www.coupang.com/vp/products/5463245073?itemId=17468368446&vendorItemId=84636080357&pickType=COU_PICK&q=그릭데이%20그릭요거트%20라이트%20800g&searchId=47cc4c794547067&sourceType=search&itemsCount=36&searchRank=1&rank=1&traceId=mmyvgruo",
@@ -1036,7 +1041,9 @@
       "caloriesKcal": 160,
       "proteinG": 11.42,
       "sugarsG": 1.86,
-      "fatG": 9.19
+      "fatG": 10.69,
+      "carbsG": 4.8,
+      "satFatG": 6
     },
     "officialUrl": "https://greekday.co.kr/product/list.html?cate_no=42",
     "coupangUrl": "https://www.coupang.com/vp/products/5463245022?itemId=19225411927&vendorItemId=86342060152&q=그릭데이%20그릭요거트%20시그니처%20100g&searchId=b6f0a23c4529549&sourceType=search&itemsCount=36&searchRank=2&rank=2&traceId=mmyvh19u",
@@ -1079,7 +1086,9 @@
       "caloriesKcal": 720,
       "proteinG": 51.39,
       "sugarsG": 8.37,
-      "fatG": 41.35
+      "fatG": 48.11,
+      "carbsG": 21.6,
+      "satFatG": 27
     },
     "officialUrl": "https://greekday.co.kr/product/list.html?cate_no=42",
     "coupangUrl": "https://www.coupang.com/vp/products/5463245022?itemId=17894188425&vendorItemId=85057078619&pickType=COU_PICK&q=%EA%B7%B8%EB%A6%AD%EB%8D%B0%EC%9D%B4+%EA%B7%B8%EB%A6%AD%EC%9A%94%EA%B1%B0%ED%8A%B8+%EC%8B%9C%EA%B7%B8%EB%8B%88%EC%B2%98+450g&searchId=c27b29624552625&sourceType=search&itemsCount=36&searchRank=0&rank=0",
@@ -1122,7 +1131,9 @@
       "caloriesKcal": 1280,
       "proteinG": 91.36,
       "sugarsG": 14.88,
-      "fatG": 73.52
+      "fatG": 85.52,
+      "carbsG": 38.4,
+      "satFatG": 48
     },
     "officialUrl": "https://greekday.co.kr/product/list.html?cate_no=42",
     "coupangUrl": "https://www.coupang.com/vp/products/5463245022?itemId=17468368450&vendorItemId=84636080373&pickType=COU_PICK&q=그릭데이%20그릭요거트%20시그니처%20800g&searchId=5cad5da44557131&sourceType=search&itemsCount=36&searchRank=0&rank=0&traceId=mmyvhpbw",
@@ -1461,7 +1472,9 @@
       "proteinG": 5,
       "fatG": 1.5,
       "sugarsG": 6,
-      "sodiumMg": 50
+      "sodiumMg": 50,
+      "carbsG": 10,
+      "satFatG": 1
     },
     "calories": 70,
     "sugar": 6,
@@ -1509,7 +1522,9 @@
       "proteinG": 7,
       "sugarsG": 8,
       "fatG": 5,
-      "sodiumMg": 100
+      "sodiumMg": 100,
+      "carbsG": 12,
+      "satFatG": 3
     },
     "fat": 5,
     "coupangUrl": "https://www.coupang.com/vp/products/8312114740?itemId=27988823442&vendorItemId=94946464409&q=%EB%A7%A4%EC%9D%BC+%EB%B0%94%EC%9D%B4%EC%98%A4+%EA%B7%B8%EB%A6%AD%EC%9A%94%EA%B1%B0%ED%8A%B8+to+go+%ED%94%8C%EB%A0%88%EC%9D%B8+120g&searchId=df9b57cc4580462&sourceType=search&itemsCount=36&searchRank=0&rank=0&traceId=mmyvks4e",
@@ -1609,7 +1624,8 @@
       "carbsG": 17,
       "sugarsG": 12.5,
       "fatG": 3.4,
-      "sodiumMg": 94
+      "sodiumMg": 94,
+      "satFatG": 2
     },
     "coupangUrl": "https://www.coupang.com/vp/products/8700623501?itemId=25312670423&vendorItemId=92307757067&pickType=COU_PICK&q=매일%20바이오%20그릭요거트%20Drink%20플레인%20190mL&searchId=8ae5a8e83490693&sourceType=search&itemsCount=36&searchRank=3&rank=3&traceId=mmyvm06x",
     "naverUrl": "https://search.shopping.naver.com/search/all?query=%EB%A7%A4%EC%9D%BC%20%EB%B0%94%EC%9D%B4%EC%98%A4%20%EA%B7%B8%EB%A6%AD%EC%9A%94%EA%B1%B0%ED%8A%B8%20Drink%20%ED%94%8C%EB%A0%88%EC%9D%B8%20190mL&prevQuery=%EB%A7%A4%EC%9D%BC%20%EB%B0%94%EC%9D%B4%EC%98%A4%20%EA%B7%B8%EB%A6%AD%EC%9A%94%EA%B1%B0%ED%8A%B8%20to%20go%20%ED%97%88%EB%8B%88%20120g&vertical=search",
@@ -1703,10 +1719,11 @@
     "nutritionPerBottle": {
       "caloriesKcal": 362.1,
       "proteinG": 34.8,
-      "carbsG": 63.53,
+      "carbsG": 25.56,
       "sugarsG": 10.7,
       "fatG": 13.5,
-      "sodiumMg": 362.1
+      "sodiumMg": 362.1,
+      "satFatG": 8.52
     },
     "coupangUrl": "https://www.coupang.com/vp/products/8700623491?itemId=25312670392&vendorItemId=92307757040&pickType=COU_PICK&q=매일%20바이오%20그릭요거트%20Drink%20무가당%20플레인%20710mL&searchId=5bcf46ae610164&sourceType=search&itemsCount=36&searchRank=0&rank=0&traceId=mmyvmmqv",
     "naverUrl": "https://search.shopping.naver.com/search/all?query=%EB%A7%A4%EC%9D%BC%20%EB%B0%94%EC%9D%B4%EC%98%A4%20%EA%B7%B8%EB%A6%AD%EC%9A%94%EA%B1%B0%ED%8A%B8%20Drink%20%EB%AC%B4%EA%B0%80%EB%8B%B9%20%ED%94%8C%EB%A0%88%EC%9D%B8%20710mL&prevQuery=%EB%A7%A4%EC%9D%BC%20%EB%B0%94%EC%9D%B4%EC%98%A4%20%EA%B7%B8%EB%A6%AD%EC%9A%94%EA%B1%B0%ED%8A%B8%20Drink%20%EB%B0%94%EB%82%98%EB%82%98%20190mL&vertical=search",
@@ -1750,10 +1767,11 @@
     "nutritionPerBottle": {
       "caloriesKcal": 497,
       "proteinG": 31.2,
-      "carbsG": 63.53,
+      "carbsG": 63.9,
       "sugarsG": 46.2,
       "fatG": 12.8,
-      "sodiumMg": 355
+      "sodiumMg": 355,
+      "satFatG": 7.81
     },
     "coupangUrl": "https://www.coupang.com/vp/products/8700623491?itemId=25312670392&vendorItemId=92307757040&pickType=COU_PICK&q=%EB%A7%A4%EC%9D%BC%20%EB%B0%94%EC%9D%B4%EC%98%A4%20%EA%B7%B8%EB%A6%AD%EC%9A%94%EA%B1%B0%ED%8A%B8%20Drink%20%EB%AC%B4%EA%B0%80%EB%8B%B9%20%ED%94%8C%EB%A0%88%EC%9D%B8%20710mL&searchId=5bcf46ae610164&sourceType=search&itemsCount=36&searchRank=0&rank=0&traceId=mmyvo3pp",
     "naverUrl": "https://search.shopping.naver.com/search/all?query=%EB%A7%A4%EC%9D%BC%20%EB%B0%94%EC%9D%B4%EC%98%A4%20%EA%B7%B8%EB%A6%AD%EC%9A%94%EA%B1%B0%ED%8A%B8%20Drink%20%ED%94%8C%EB%A0%88%EC%9D%B8%20710mL&prevQuery=%EB%A7%A4%EC%9D%BC%20%EB%B0%94%EC%9D%B4%EC%98%A4%20%EA%B7%B8%EB%A6%AD%EC%9A%94%EA%B1%B0%ED%8A%B8%20Drink%20%EB%AC%B4%EA%B0%80%EB%8B%B9%20%ED%94%8C%EB%A0%88%EC%9D%B8%20710mL&vertical=search",
@@ -1797,10 +1815,11 @@
     "nutritionPerBottle": {
       "caloriesKcal": 497,
       "proteinG": 31.2,
-      "carbsG": 63.53,
+      "carbsG": 63.9,
       "sugarsG": 46.2,
       "fatG": 12.8,
-      "sodiumMg": 390.5
+      "sodiumMg": 390.5,
+      "satFatG": 7.81
     },
     "coupangUrl": "https://www.coupang.com/vp/products/8700604294?itemId=25265378481&vendorItemId=92261189320&q=%EB%A7%A4%EC%9D%BC+%EB%B0%94%EC%9D%B4%EC%98%A4+%EA%B7%B8%EB%A6%AD%EC%9A%94%EA%B1%B0%ED%8A%B8+Drink+%EB%B0%94%EB%82%98%EB%82%98+710mL&searchId=0a74e16b4605105&sourceType=search&itemsCount=36&searchRank=0&rank=0&traceId=mmyvodf9",
     "naverUrl": "https://search.shopping.naver.com/search/all?query=%EB%A7%A4%EC%9D%BC%20%EB%B0%94%EC%9D%B4%EC%98%A4%20%EA%B7%B8%EB%A6%AD%EC%9A%94%EA%B1%B0%ED%8A%B8%20Drink%20%EB%B0%94%EB%82%98%EB%82%98%20710mL&prevQuery=%EB%A7%A4%EC%9D%BC%20%EB%B0%94%EC%9D%B4%EC%98%A4%20%EA%B7%B8%EB%A6%AD%EC%9A%94%EA%B1%B0%ED%8A%B8%20Drink%20%ED%94%8C%EB%A0%88%EC%9D%B8%20710mL&vertical=search",

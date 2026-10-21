@@ -231,9 +231,15 @@ function buildRecommendedFor(product: ProductDetailProps): string[] {
 /** 이 제품(없으면 같은 브랜드 제품)이 들어간 비교 랜딩을 찾는다. 예전에는 카테고리마다 랜딩 1개로 고정돼 있었다. */
 function findRelevantCompareLanding(product: ProductDetailProps) {
   const landings = getAllCompareLandings();
-  const exact = landings.find((landing) => landing.productSlugs.includes(product.slug));
-  if (exact) return exact;
   const brandBySlug = new Map(getAllProducts().map((item) => [item.slug, item.brand]));
+  // 이 제품이 들어간 랜딩이 여러 개면 같은 브랜드 제품 비율이 높은 것(맛별·종류별 비교)을 먼저 쓴다(2026-10-21).
+  // 예전에는 목록의 첫 번째 일치 랜딩을 써서 다른 브랜드와의 1:1 비교가 잡히는 경우가 많았다.
+  const share = (landing: (typeof landings)[number]) =>
+    landing.productSlugs.filter((slug) => brandBySlug.get(slug) === product.brand).length / landing.productSlugs.length;
+  const exact = landings
+    .filter((landing) => landing.productSlugs.includes(product.slug))
+    .sort((a, b) => share(b) - share(a) || b.productSlugs.length - a.productSlugs.length)[0];
+  if (exact) return exact;
   return (
     landings.find((landing) => landing.productSlugs.some((slug) => brandBySlug.get(slug) === product.brand)) ?? null
   );
