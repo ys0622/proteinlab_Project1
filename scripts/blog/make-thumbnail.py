@@ -24,9 +24,12 @@ from PIL import Image, ImageChops, ImageDraw, ImageFilter, ImageFont
 
 ROOT = Path(__file__).resolve().parents[2]
 W = H = 1080
-INK = (23, 63, 53)
-ACCENT = (196, 120, 34)
-SUBINK = (70, 78, 74)
+# 딥그린 배경 테마(2026-10-21 v3, 사장님 피드백 "배경이 촌스럽다")
+BG_TOP = (14, 44, 37)
+BG_BOTTOM = (27, 72, 60)
+IVORY = (246, 240, 226)
+GOLD = (227, 178, 98)
+SAGE = (176, 201, 184)
 FONT_TITLE = "C:/Windows/Fonts/GmarketSansTTFBold.ttf"
 FONT_MED = "C:/Windows/Fonts/GmarketSansTTFMedium.ttf"
 IMAGE_DIRS = {"drink": "rtd-drink-image", "bar": "bar-image", "shake": "shake-image", "yogurt": "protein-yogurt-image", "soymilk": "soymilk-image"}
@@ -60,20 +63,32 @@ def product_image(category, slug):
 
 
 def gradient_bg():
-    bg = Image.new("RGB", (W, H), (255, 255, 255))
-    top, bottom = (246, 241, 230), (255, 255, 255)
-    px = bg.load()
+    """위→아래 딥그린 그라데이션 + 제품 자리 뒤 은은한 조명."""
+    col = Image.new("RGB", (1, H))
     for y in range(H):
         t = y / (H - 1)
-        c = tuple(int(top[i] + (bottom[i] - top[i]) * t) for i in range(3))
-        for x in range(W):
-            px[x, y] = c
-    # 오른쪽 위 은은한 원
+        col.putpixel((0, y), tuple(int(BG_TOP[i] + (BG_BOTTOM[i] - BG_TOP[i]) * t) for i in range(3)))
+    bg = col.resize((W, H))
+    light = Image.new("L", (W, H), 0)
+    ImageDraw.Draw(light).ellipse([60, 620, W - 60, H + 180], fill=120)
+    light = light.filter(ImageFilter.GaussianBlur(90))
+    bg = Image.composite(Image.new("RGB", (W, H), (88, 130, 112)), bg, light)
+    # 오른쪽 위 금색 빛 번짐
     glow = Image.new("L", (W, H), 0)
-    ImageDraw.Draw(glow).ellipse([620, -220, 1300, 460], fill=70)
-    glow = glow.filter(ImageFilter.GaussianBlur(60))
-    tint = Image.new("RGB", (W, H), (214, 226, 214))
-    return Image.composite(tint, bg, glow)
+    ImageDraw.Draw(glow).ellipse([700, -260, 1320, 300], fill=38)
+    return Image.composite(Image.new("RGB", (W, H), GOLD), bg, glow.filter(ImageFilter.GaussianBlur(80)))
+
+
+def cutout_mask(p):
+    """가장자리와 이어진 흰 배경만 지운다(포장 안의 흰 글자·바탕은 남긴다)."""
+    near_white = ImageChops.difference(p, Image.new("RGB", p.size, (255, 255, 255))).convert("L").point(lambda v: 0 if v <= 12 else 255)
+    m = near_white.copy()
+    w, h = m.size
+    for xy in [(0, 0), (w - 1, 0), (0, h - 1), (w - 1, h - 1), (w // 2, 0), (w // 2, h - 1), (0, h // 2), (w - 1, h // 2)]:
+        if m.getpixel(xy) == 0:
+            ImageDraw.floodfill(m, xy, 128)
+    mask = m.point(lambda v: 0 if v == 128 else 255)
+    return mask.filter(ImageFilter.MinFilter(3)).filter(ImageFilter.GaussianBlur(1.2))
 
 
 def stat_range(rows, field):
@@ -92,53 +107,54 @@ def main():
     rows = ev["rows"]
     category = ev["topic"]["category_data"]
 
-    img = gradient_bg()
+    img = gradient_bg().convert("RGBA")
     d = ImageDraw.Draw(img)
     mx = 78
 
-    # 상단 라벨
+    # 상단 라벨: 금색 테두리 알약
     kf = font(FONT_MED, 30)
     kw = d.textlength(spec["kicker"], font=kf)
-    d.rounded_rectangle([mx, 70, mx + kw + 44, 70 + 56], radius=28, fill=INK)
-    d.text((mx + 22, 70 + 13), spec["kicker"], font=kf, fill=(255, 255, 255))
+    d.rounded_rectangle([mx, 70, mx + kw + 48, 70 + 58], radius=29, outline=GOLD, width=3)
+    d.text((mx + 24, 70 + 14), spec["kicker"], font=kf, fill=GOLD)
 
     # 제목
-    y = 160
+    y = 168
     for text, tone in spec["lines"]:
         f = fit(d, text, FONT_TITLE, W - mx * 2, 118)
-        d.text((mx, y), text, font=f, fill=ACCENT if tone == "accent" else INK)
+        d.text((mx, y), text, font=f, fill=GOLD if tone == "accent" else IVORY)
         y += int(f.size * 1.18)
 
     # 보조 문구
     sf = fit(d, spec["sub"], FONT_MED, W - mx * 2, 46)
-    d.text((mx, y + 4), spec["sub"], font=sf, fill=SUBINK)
-    y += sf.size + 40
+    d.text((mx, y + 4), spec["sub"], font=sf, fill=SAGE)
+    y += sf.size + 42
 
-    # 수치 배지
+    # 수치 배지: 반투명 유리 카드
     stats = spec.get("stats", [])
     if stats:
         gap = 22
         bw = (W - mx * 2 - gap * (len(stats) - 1)) / len(stats)
         bh = 150
+        layer = Image.new("RGBA", img.size, (0, 0, 0, 0))
+        ld = ImageDraw.Draw(layer)
+        for i in range(len(stats)):
+            x0 = mx + i * (bw + gap)
+            ld.rounded_rectangle([x0, y, x0 + bw, y + bh], radius=26, fill=(255, 255, 255, 26), outline=(255, 255, 255, 60), width=2)
+        img = Image.alpha_composite(img, layer)
+        d = ImageDraw.Draw(img)
         for i, s in enumerate(stats):
             x0 = mx + i * (bw + gap)
-            d.rounded_rectangle([x0, y, x0 + bw, y + bh], radius=26, fill=(255, 255, 255), outline=(216, 222, 214), width=3)
-            lf = font(FONT_MED, 30)
-            d.text((x0 + 30, y + 22), s["label"] + " · 1개 기준", font=lf, fill=SUBINK)
+            d.text((x0 + 30, y + 24), s["label"] + " · 1개 기준", font=font(FONT_MED, 30), fill=SAGE)
             value = stat_range(rows, s["field"]) + s["unit"]
             vf = fit(d, value, FONT_TITLE, bw - 60, 66)
-            d.text((x0 + 30, y + 62), value, font=vf, fill=INK)
+            d.text((x0 + 30, y + 64), value, font=vf, fill=IVORY)
         y += bh + 30
 
-    # 제품 사진: 아래쪽 판 위에 나란히(흰 배경이라 곱하기로 합성)
+    # 제품 사진
     prods = [product_image(category, s) for s in spec["products"]][:4]
     area_top = y + 10
     area_h = H - 110 - area_top
-    plate = Image.new("L", (W, H), 0)
-    ImageDraw.Draw(plate).ellipse([mx - 20, H - 150, W - mx + 20, H - 96], fill=90)
-    img = Image.composite(Image.new("RGB", (W, H), (205, 214, 204)), img, plate.filter(ImageFilter.GaussianBlur(18)))
     n = len(prods)
-    # 가로로 긴 바 포장은 칸보다 조금 크게 그려 살짝 겹치게 한다(가운데 제품이 앞).
     span = W - mx * 2 + 60
     slot = span / n
     placed = []
@@ -151,19 +167,21 @@ def main():
         placed.append((i, p, x, yy))
     mid = n // 2
     for i, p, x, yy in sorted(placed, key=lambda t: -abs(t[0] - mid)):
-        # 흰 배경은 투명하게(곱하기는 겹친 제품이 비쳐 보여서, 흰색 마스크로 붙인다)
-        mask = ImageChops.difference(p, Image.new("RGB", p.size, (255, 255, 255))).convert("L").point(lambda v: 255 if v > 10 else 0).filter(ImageFilter.MaxFilter(3)).filter(ImageFilter.GaussianBlur(1))
+        mask = cutout_mask(p)
         shadow = Image.new("L", img.size, 0)
-        shadow.paste(mask.point(lambda v: v * 0.35), (x + 10, yy + 14))
-        img = Image.composite(Image.new("RGB", img.size, (150, 160, 150)), img, shadow.filter(ImageFilter.GaussianBlur(14)))
+        shadow.paste(mask.point(lambda v: int(v * 0.55)), (x + 12, yy + 18))
+        sh = Image.new("RGBA", img.size, (4, 18, 14, 255))
+        sh.putalpha(shadow.filter(ImageFilter.GaussianBlur(16)))
+        img = Image.alpha_composite(img, sh)
         img.paste(p, (x, yy), mask)
 
     d = ImageDraw.Draw(img)
-    # 하단 띠
-    d.rectangle([0, H - 72, W, H], fill=INK)
+    # 하단: 금색 가는 선 + 문구
     ff = font(FONT_MED, 30)
     fw = d.textlength(spec["footer"], font=ff)
-    d.text(((W - fw) / 2, H - 72 + 20), spec["footer"], font=ff, fill=(255, 255, 255))
+    d.line([mx, H - 78, W - mx, H - 78], fill=(227, 178, 98), width=2)
+    d.text(((W - fw) / 2, H - 62), spec["footer"], font=ff, fill=IVORY)
+    img = img.convert("RGB")
 
     out = out_dir / "thumbnail.png"
     img.save(out)
