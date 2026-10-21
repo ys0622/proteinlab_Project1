@@ -22,6 +22,11 @@ type Props = {
   placement: "product" | "category";
   /** 바깥 여백. 특가가 없으면 컴포넌트 전체가 빠지므로 여백도 같이 사라진다. */
   className?: string;
+  /**
+   * 서버에서 미리 받은 카드(매 요청 렌더링하는 카테고리 목록). 있으면 첫 HTML에 바로 그려
+   * 나중에 끼어들며 목록을 밀어내지 않는다(/bars CLS 0.25, 2026-10-21). 상품 상세는 1시간 캐시라 넘기지 않는다.
+   */
+  initialCards?: ActiveGoldboxCard[];
 };
 
 /**
@@ -29,10 +34,11 @@ type Props = {
  * 상품 상세는 1시간 캐시라 서버 렌더 대신 /api/goldbox/active(5분 캐시)를 브라우저에서 불러 07:00 교체를 놓치지 않는다.
  * 특가가 없으면 아무것도 그리지 않는다.
  */
-export default function GoldboxStrip({ category, currentSlug, placement, className = "" }: Props) {
-  const [cards, setCards] = useState<ActiveGoldboxCard[] | null>(null);
+export default function GoldboxStrip({ category, currentSlug, placement, className = "", initialCards }: Props) {
+  const [cards, setCards] = useState<ActiveGoldboxCard[] | null>(initialCards ?? null);
 
   useEffect(() => {
+    if (initialCards) return;
     let alive = true;
     fetch("/api/goldbox/active")
       .then((res) => (res.ok ? res.json() : { cards: [] }))
@@ -43,7 +49,7 @@ export default function GoldboxStrip({ category, currentSlug, placement, classNa
     return () => {
       alive = false;
     };
-  }, []);
+  }, [initialCards]);
 
   if (!cards || cards.length === 0) return null;
 

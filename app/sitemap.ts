@@ -208,9 +208,6 @@ const REDIRECT_ONLY_ROUTES = new Set([
   "/guides/by-goal",
   "/guides/how-to-choose",
   "/guides/how-to-choose/checklist",
-  "/guides/ingredients",
-  "/guides/ingredients/bcaa-guide",
-  "/guides/ingredients/zero-sugar-allulose",
   "/guides/product-selection-comparison/doctoru-lineup",
 ]);
 

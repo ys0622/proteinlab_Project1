@@ -10,6 +10,7 @@ import { getProductsByCategoryAsync } from "../lib/productData";
 import { getCategoryProductsWithCountsAsync } from "../lib/productCounts";
 import { formatProductLabel } from "../lib/productLabel";
 import GoldboxStrip from "../components/GoldboxStrip";
+import { getActiveGoldboxCards } from "../lib/activeGoldbox";
 
 // ProductListWithFilters가 useSearchParams()를 쓰기 때문에, 정적/ISR로 렌더링하면
 // Next.js가 그 부분을 Suspense fallback(null)으로 대체해버려 실제 제품 카드가
@@ -48,6 +49,8 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function DrinksPage() {
+  // 골드박스 줄을 첫 HTML에 바로 그린다(브라우저에서 늦게 끼어들며 목록을 밀어내지 않게). KV 캐시를 읽는다.
+  const goldboxCards = (await getActiveGoldboxCards().catch(() => ({ cards: [] }))).cards.filter((card) => card.href);
   const { products, categoryCounts, totalCount } =
     await getCategoryProductsWithCountsAsync("drink");
 
@@ -91,7 +94,7 @@ export default async function DrinksPage() {
 
       <main className="mx-auto max-w-[1200px] px-4 pb-2 pt-0 md:px-6 md:pb-3">
         <AffiliateDisclosure />
-        <GoldboxStrip category="drink" placement="category" className="mb-3 mt-1" />
+        <GoldboxStrip category="drink" placement="category" className="mb-3 mt-1" initialCards={goldboxCards} />
         <ProductListWithFilters
           productType="drink"
           products={products}

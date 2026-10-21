@@ -92,7 +92,7 @@ export default function RaceWeekPage() {
               가이드
             </Link>
             <span>/</span>
-            <Link href="/guides/running" className="hover:text-[var(--accent)]">
+            <Link href="/guides/fitness-lifestyle" className="hover:text-[var(--accent)]">
               💪 운동 &amp; 라이프스타일
             </Link>
             <span>/</span>

@@ -446,7 +446,7 @@ export const lactoseFreeProteinDrinkConfig: ComparePageConfig = {
   relatedGuides: [
     commonRelated[1],
     { title: "셀렉스 vs 테이크핏 vs 하이뮨", href: "/guides/product-selection-comparison/selex-vs-takefit-vs-himune", description: "유당 부담 외에 브랜드별 일반 RTD 차이도 같이 확인합니다." },
-    { title: "BCAA란 무엇인가", href: "/guides/ingredients/bcaa-guide", description: "원료와 아미노산 표기를 어떻게 해석할지 함께 읽어두면 좋습니다." },
+    { title: "단백질 원료 종류(WPI·WPC·MPI)", href: "/guides/basics/protein-source-types", description: "원료와 아미노산 표기를 어떻게 해석할지 함께 읽어두면 좋습니다." },
   ],
   purchaseLinks: [
     { label: "뉴케어 올프로틴 박스 보기", slug: newcare25.slug },

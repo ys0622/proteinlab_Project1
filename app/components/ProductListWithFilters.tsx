@@ -1,7 +1,7 @@
 ﻿"use client";
 
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { Suspense, useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import type { ProductDetailProps } from "../data/products";
 import newProductsRaw from "../data/newProducts.json";
 import { type ProductCategory } from "../lib/categories";
@@ -796,10 +796,9 @@ function ProductListWithFiltersResolved(props: ProductListWithFiltersProps) {
   );
 }
 
+// Suspense로 감싸면 React가 목록을 별도 조각으로 늦게 흘려보내, 첫 화면에는 목록 자리가 비어 있다가
+// 스크립트가 3,000px 넘는 목록을 끼워 넣으며 아래 FAQ·광고가 크게 밀렸다(/drinks CLS 0.88, 2026-10-21).
+// 이 컴포넌트를 쓰는 페이지는 모두 force-dynamic이라 useSearchParams에 Suspense 경계가 필요 없다.
 export default function ProductListWithFilters(props: ProductListWithFiltersProps) {
-  return (
-    <Suspense fallback={null}>
-      <ProductListWithFiltersResolved {...props} />
-    </Suspense>
-  );
+  return <ProductListWithFiltersResolved {...props} />;
 }

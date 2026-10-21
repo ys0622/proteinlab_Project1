@@ -204,11 +204,12 @@ export default async function Home() {
             </div>
 
             <div className="hidden md:block">
-              <h1 className="text-[38px] font-extrabold leading-[1.25]" style={{ color: "#16412D", letterSpacing: "-0.02em" }}>
+              {/* H1은 위 모바일 제목 하나만 둔다(구글은 모바일 화면 기준으로 색인). 데스크톱 제목은 같은 모양의 p. */}
+              <p className="text-[38px] font-extrabold leading-[1.25]" style={{ color: "#16412D", letterSpacing: "-0.02em" }}>
                 나에게 맞는 단백질 제품,
                 <br />
                 수치로 비교하세요
-              </h1>
+              </p>
               <p className="mt-2.5 break-keep text-[16px] leading-[1.5]" style={{ color: "#5E6E61" }}>
                 단백질·당류·칼로리를 한눈에 비교하고
                 <br />
