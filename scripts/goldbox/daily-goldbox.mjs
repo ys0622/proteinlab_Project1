@@ -30,7 +30,7 @@ const KV_KEY = "coupang-goldbox:verified-offers:v1";
 
 const CATEGORIES = ["drink", "bar", "shake", "yogurt", "soymilk"];
 // 제품명에서 구분 단어로 보지 않는 말(어느 제품에나 붙는다).
-const GENERIC = new Set(["프로틴", "단백질", "음료", "드링크", "고단백", "쉐이크", "단백질바", "프로틴바", "요거트", "두유", "protein"]);
+const GENERIC = new Set(["프로틴", "단백질", "음료", "드링크", "고단백", "쉐이크", "단백질바", "프로틴바", "요거트", "그릭요거트", "두유", "protein"]);
 
 const outDir = join(root, ".goldbox-auto");
 mkdirSync(outDir, { recursive: true });
@@ -147,7 +147,12 @@ function match(items, products) {
     let best = null;
     const partial = [];
     for (const p of products) {
-      if (pidOf(p) && pidOf(p) === it.pid) { best = { p, toks: Infinity, via: "coupang-product-id" }; break; }
+      // 쿠팡 상품 ID 하나에 여러 용량 옵션이 묶인다(그릭데이 라이트 100g·800g 페이지에 450g 특가). 제목 용량이 다르면 ID만으로 맞추지 않는다(2026-10-22).
+      const titleHasCap = /\d\s*(ml|g|l)(?![a-zA-Z])/i.test(title);
+      if (pidOf(p) && pidOf(p) === it.pid) {
+        if (!titleHasCap || capacityMatch(title, p)) { best = { p, toks: Infinity, via: "coupang-product-id" }; break; }
+        partial.push({ slug: p.slug, name: `${p.brand} ${p.name} ${p.capacity || ""}`.trim(), capOk: false, missing: ["같은 쿠팡 상품 ID, 용량 다름"] });
+      }
       const brand = norm(p.brand);
       if (!brand || !nt.includes(brand)) continue;
       const capKind = capacityMatch(title, p);
