@@ -4,65 +4,353 @@
     "title": "닥터유 단백질바 미니·한입쏙·프로, 칼로리와 단백질은 얼마나 다를까?",
     "category": "제품 비교",
     "question": "닥터유 단백질바는 크기(미니·한입쏙·프로)마다 1개 단백질·열량·당류가 어떻게 다르고, 간식용과 보충용으로 무엇을 고르면 되는가",
-    "searchTerms": ["닥터유 단백질바 미니 칼로리", "닥터유 단백질바 24g", "닥터유 단백질바 칼로리"],
+    "searchTerms": [
+      "닥터유 단백질바 미니 칼로리",
+      "닥터유 단백질바 24g",
+      "닥터유 단백질바 칼로리"
+    ],
     "category_data": "bar",
     "brand": "닥터유",
     "compareUrl": "https://proteinlab.kr/compare/dryou-proteinbar-lineup-comparison",
-    "tags": ["닥터유단백질바", "닥터유프로", "단백질바칼로리", "단백질바비교", "프로틴바", "프로틴랩"]
+    "tags": [
+      "닥터유단백질바",
+      "닥터유프로",
+      "단백질바칼로리",
+      "단백질바비교",
+      "프로틴바",
+      "프로틴랩"
+    ]
   },
   {
     "id": "T02",
     "title": "아이슬란딕 요거트와 그릭요거트, 단백질은 정말 다를까?",
     "category": "단백질 가이드",
     "question": "아이슬란딕 요거트(룩트)와 그릭요거트(요즘)를 같은 450g 기준으로 보면 단백질·당류·열량이 얼마나 다른가",
-    "searchTerms": ["아이슬란딕 요거트 차이", "룩트 아이슬란딕 요거트", "그릭요거트 단백질 함량"],
+    "searchTerms": [
+      "아이슬란딕 요거트 차이",
+      "룩트 아이슬란딕 요거트",
+      "그릭요거트 단백질 함량"
+    ],
     "category_data": "yogurt",
-    "slugs": ["lookt-icelandic-thick-450", "lookt-icelandic-mild-450", "yozm-plain-greek-450", "greekday-signature-450"],
+    "slugs": [
+      "lookt-icelandic-thick-450",
+      "lookt-icelandic-mild-450",
+      "yozm-plain-greek-450",
+      "greekday-signature-450"
+    ],
     "compareUrl": "https://proteinlab.kr/compare/lookt-icelandic-vs-yozm-greek-yogurt",
-    "tags": ["아이슬란딕요거트", "그릭요거트", "룩트", "요즘그릭요거트", "그릭요거트단백질", "프로틴랩"]
+    "tags": [
+      "아이슬란딕요거트",
+      "그릭요거트",
+      "룩트",
+      "요즘그릭요거트",
+      "그릭요거트단백질",
+      "프로틴랩"
+    ]
   },
   {
     "id": "T03",
     "title": "무가당 두유 고를 때, '무가당' 표시보다 먼저 볼 숫자",
     "category": "목적별 추천",
     "question": "무가당 두유를 찾을 때 표시 문구와 실제 당류·단백질을 어떻게 읽고, 당류 2g 이하 두유 중 단백질은 어떻게 다른가",
-    "searchTerms": ["무가당 두유 추천", "무가당 두유", "저당 두유"],
+    "searchTerms": [
+      "무가당 두유 추천",
+      "무가당 두유",
+      "저당 두유"
+    ],
     "category_data": "soymilk",
     "filter": "sugar<=2",
     "compareUrl": "https://proteinlab.kr/guides/product-selection-comparison/low-sugar-soymilk-guide",
-    "tags": ["무가당두유", "저당두유", "두유추천", "두유당류", "고단백두유", "프로틴랩"]
+    "tags": [
+      "무가당두유",
+      "저당두유",
+      "두유추천",
+      "두유당류",
+      "고단백두유",
+      "프로틴랩"
+    ]
   },
   {
     "id": "T04",
     "title": "베어벨스 프로틴바, 일반과 소프트는 무엇이 다를까?",
     "category": "제품 비교",
     "question": "베어벨스(베어벨즈) 프로틴바 일반 라인과 소프트 라인은 1개 단백질·당류·열량이 어떻게 다른가",
-    "searchTerms": ["베어벨스 프로틴바", "베어벨스 단백질", "베어벨스"],
+    "searchTerms": [
+      "베어벨스 프로틴바",
+      "베어벨스 단백질",
+      "베어벨스"
+    ],
     "category_data": "bar",
     "brand": "베어벨즈",
     "compareUrl": "https://proteinlab.kr/compare/barebells-proteinbar-flavor-comparison",
-    "tags": ["베어벨스", "베어벨스프로틴바", "베어벨즈", "프로틴바추천", "단백질바", "프로틴랩"]
+    "tags": [
+      "베어벨스",
+      "베어벨스프로틴바",
+      "베어벨즈",
+      "프로틴바추천",
+      "단백질바",
+      "프로틴랩"
+    ]
   },
   {
     "id": "T05",
     "title": "식물성 단백질 음료, 우유 단백질 음료와 무엇을 비교해야 할까?",
     "category": "단백질 가이드",
     "question": "제품명에 식물성·비건이 들어간 단백질 음료들은 1병 단백질·당류·열량이 어떻게 다르고, 고를 때 무엇을 확인해야 하는가",
-    "searchTerms": ["식물성 단백질 음료", "식물성 단백질 음료 비교"],
+    "searchTerms": [
+      "식물성 단백질 음료",
+      "식물성 단백질 음료 비교"
+    ],
     "category_data": "drink",
     "nameMatch": "식물성|비건",
     "compareUrl": "https://proteinlab.kr/compare/plant-protein-drink-comparison",
-    "tags": ["식물성단백질음료", "비건프로틴", "식물성단백질", "단백질음료비교", "프로틴랩"]
+    "tags": [
+      "식물성단백질음료",
+      "비건프로틴",
+      "식물성단백질",
+      "단백질음료비교",
+      "프로틴랩"
+    ]
   },
   {
     "id": "T06",
     "title": "퀘스트바 맛별로 단백질·당류는 얼마나 다를까?",
     "category": "제품 비교",
     "question": "퀘스트 프로틴바는 맛마다 1개(60g) 단백질·당류·열량·식이섬유가 어떻게 다른가",
-    "searchTerms": ["퀘스트바 성분", "퀘스트바 맛 추천", "퀘스트바"],
+    "searchTerms": [
+      "퀘스트바 성분",
+      "퀘스트바 맛 추천",
+      "퀘스트바"
+    ],
     "category_data": "bar",
     "brand": "퀘스트 뉴트리션",
     "compareUrl": "https://proteinlab.kr/compare/quest-proteinbar-flavor-comparison",
-    "tags": ["퀘스트바", "퀘스트프로틴바", "프로틴바성분", "단백질바", "프로틴랩"]
+    "tags": [
+      "퀘스트바",
+      "퀘스트프로틴바",
+      "프로틴바성분",
+      "단백질바",
+      "프로틴랩"
+    ]
+  },
+  {
+    "id": "T07",
+    "title": "테이크핏 맥스와 몬스터, 단백질 24g과 45g은 어떻게 다를까?",
+    "category": "제품 비교",
+    "question": "테이크핏 맥스(250mL)와 몬스터(350mL)는 1병 단백질·열량·당류가 어떻게 다르고 누구에게 맞는가",
+    "searchTerms": [
+      "테이크핏 맥스",
+      "테이크핏 몬스터",
+      "테이크핏 몬스터 vs 맥스"
+    ],
+    "category_data": "drink",
+    "brand": "테이크핏",
+    "nameMatch": "맥스|몬스터",
+    "compareUrl": "https://proteinlab.kr/compare/takefit-max-vs-takefit-monster",
+    "tags": [
+      "테이크핏",
+      "테이크핏맥스",
+      "테이크핏몬스터",
+      "단백질음료비교",
+      "프로틴랩"
+    ]
+  },
+  {
+    "id": "T08",
+    "title": "뉴케어 올프로틴 25g과 41g, 무엇이 다를까?",
+    "category": "제품 비교",
+    "question": "뉴케어 올프로틴 245mL(25g)와 41g 제품은 용량·단백질·열량·당류가 어떻게 다른가",
+    "searchTerms": [
+      "뉴케어 올프로틴 25g",
+      "뉴케어 올프로틴 41g",
+      "뉴케어 올프로틴"
+    ],
+    "category_data": "drink",
+    "brand": "뉴케어",
+    "nameMatch": "^올프로틴 (\\(|41g)",
+    "compareUrl": "https://proteinlab.kr/compare/newcare-allprotein-41g-flavor-comparison",
+    "tags": [
+      "뉴케어",
+      "뉴케어올프로틴",
+      "올프로틴41g",
+      "단백질음료",
+      "프로틴랩"
+    ]
+  },
+  {
+    "id": "T09",
+    "title": "하이뮨 프로틴 밸런스 액티브, 맛마다 무엇이 다를까?",
+    "category": "제품 비교",
+    "question": "하이뮨 프로틴 밸런스 액티브는 맛마다 1병 단백질·당류·열량이 어떻게 다른가",
+    "searchTerms": [
+      "하이뮨 액티브",
+      "하이뮨 프로틴",
+      "하이뮨 밀크쉐이크"
+    ],
+    "category_data": "drink",
+    "brand": "하이뮨",
+    "nameMatch": "액티브",
+    "compareUrl": "https://proteinlab.kr/compare/hymune-balance-active-flavor-comparison",
+    "tags": [
+      "하이뮨",
+      "하이뮨액티브",
+      "하이뮨프로틴",
+      "단백질음료",
+      "프로틴랩"
+    ]
+  },
+  {
+    "id": "T10",
+    "title": "매일 바이오 그릭요거트, 무가당·투고·드링크 중 무엇을 고를까?",
+    "category": "제품 비교",
+    "question": "매일 바이오 그릭요거트 제품군은 종류마다 단백질·당류·열량이 어떻게 다른가",
+    "searchTerms": [
+      "매일 바이오 그릭요거트 무가당",
+      "매일 바이오 그릭요거트 투고",
+      "매일 바이오 그릭요거트 드링크"
+    ],
+    "category_data": "yogurt",
+    "brand": "매일 바이오",
+    "compareUrl": "https://proteinlab.kr/compare/maeilbio-greek-yogurt-lineup-comparison",
+    "tags": [
+      "매일바이오",
+      "그릭요거트",
+      "무가당그릭요거트",
+      "그릭요거트단백질",
+      "프로틴랩"
+    ]
+  },
+  {
+    "id": "T11",
+    "title": "요즘(YOZM) 그릭요거트, 플레인과 맛 제품은 얼마나 다를까?",
+    "category": "제품 비교",
+    "question": "요즘 그릭요거트 플레인과 블루베리·말차 등 맛 제품은 단백질·당류·열량이 어떻게 다른가",
+    "searchTerms": [
+      "요즘 그릭요거트 성분",
+      "요즘 그릭요거트 블루베리",
+      "요즘 그릭요거트 말차"
+    ],
+    "category_data": "yogurt",
+    "brand": "YOZM",
+    "compareUrl": "https://proteinlab.kr/compare/yozm-greek-yogurt-flavor-comparison",
+    "tags": [
+      "요즘그릭요거트",
+      "YOZM",
+      "그릭요거트",
+      "그릭요거트칼로리",
+      "프로틴랩"
+    ]
+  },
+  {
+    "id": "T12",
+    "title": "랩노쉬 프로틴 드링크, 맛별로 고를 때 볼 숫자",
+    "category": "제품 비교",
+    "question": "랩노쉬 프로틴 드링크는 맛마다 단백질·당류·열량이 어떻게 다른가",
+    "searchTerms": [
+      "랩노쉬 프로틴",
+      "랩노쉬 프로틴 드링크",
+      "랩노쉬 52g"
+    ],
+    "category_data": "drink",
+    "brand": "랩노쉬",
+    "nameMatch": "프로틴 드링크",
+    "compareUrl": "https://proteinlab.kr/compare/labnosh-protein-drink-flavor-comparison",
+    "tags": [
+      "랩노쉬",
+      "랩노쉬프로틴",
+      "랩노쉬프로틴드링크",
+      "단백질음료",
+      "프로틴랩"
+    ]
+  },
+  {
+    "id": "T13",
+    "title": "연세두유 고단백, 종류별로 무엇이 다를까?",
+    "category": "제품 비교",
+    "question": "연세두유 고단백 제품들은 1팩 단백질·당류·열량이 어떻게 다른가",
+    "searchTerms": [
+      "연세두유 고단백",
+      "연세두유 고단백 프로",
+      "연세두유 무가당"
+    ],
+    "category_data": "soymilk",
+    "brand": "연세두유",
+    "compareUrl": "https://proteinlab.kr/compare/yonsei-soymilk-lineup-comparison",
+    "tags": [
+      "연세두유",
+      "고단백두유",
+      "연세두유고단백",
+      "두유추천",
+      "프로틴랩"
+    ]
+  },
+  {
+    "id": "T14",
+    "title": "플라이밀 단백질 쉐이크, 맛마다 무엇이 다를까?",
+    "category": "제품 비교",
+    "question": "플라이밀 단백질 쉐이크는 맛마다 1회 단백질·당류·열량이 어떻게 다른가",
+    "searchTerms": [
+      "플라이밀 쉐이크",
+      "플라이밀 맛 비교",
+      "플라이밀 초코 쉐이크"
+    ],
+    "category_data": "shake",
+    "brand": "플라이밀",
+    "compareUrl": "https://proteinlab.kr/compare/flymill-shake-flavor-comparison",
+    "tags": [
+      "플라이밀",
+      "플라이밀쉐이크",
+      "단백질쉐이크",
+      "쉐이크추천",
+      "프로틴랩"
+    ]
+  },
+  {
+    "id": "T15",
+    "title": "셀렉스 프로틴 190mL, 오리지널·로우슈거·락토프리·당솔브 차이",
+    "category": "제품 비교",
+    "question": "셀렉스 프로틴 190mL 제품들은 단백질·당류·열량이 어떻게 다르고 누구에게 맞는가",
+    "searchTerms": [
+      "셀렉스 당솔브",
+      "셀렉스 락토프리",
+      "셀렉스 프로틴"
+    ],
+    "category_data": "drink",
+    "slugs": [
+      "sellex-protein-original-190",
+      "sellex-protein-lowsugar-190",
+      "sellex-protein-lactosefree-original-190",
+      "sellex-protein-dangsolve-corn-190",
+      "sellex-protein-dangsolve-fivegrain-190"
+    ],
+    "compareUrl": "https://proteinlab.kr/compare/sellex-protein-190-lineup-comparison",
+    "tags": [
+      "셀렉스",
+      "셀렉스프로틴",
+      "셀렉스당솔브",
+      "락토프리",
+      "프로틴랩"
+    ]
+  },
+  {
+    "id": "T16",
+    "title": "커클랜드 프로틴바, 맛마다 칼로리와 단백질은?",
+    "category": "제품 비교",
+    "question": "커클랜드 프로틴바는 맛마다 1개 단백질·당류·열량이 어떻게 다른가",
+    "searchTerms": [
+      "커클랜드 프로틴바 칼로리",
+      "커클랜드 프로틴바 성분",
+      "커클랜드 프로틴바 맛"
+    ],
+    "category_data": "bar",
+    "brand": "커클랜드",
+    "compareUrl": "https://proteinlab.kr/compare/kirkland-proteinbar-flavor-comparison",
+    "tags": [
+      "커클랜드프로틴바",
+      "코스트코프로틴바",
+      "프로틴바칼로리",
+      "단백질바",
+      "프로틴랩"
+    ]
   }
 ]
