@@ -92,6 +92,15 @@ const LINES: LineSpec[] = [
   // 2026-10-20 2차 자동완성(쉐이크·바·요거트·두유 브랜드 + 맛/성분/종류) 묶음. 랩노쉬 슬림쉐이크는 전용 가이드(labnoshe-slim-shake)가 있어 뺐다.
   // 자동완성 "식물성 단백질 음료 비교"(2026-10-20). 제품명에 식물성·비건이 들어간 음료만 묶는다.
   { slug: "plant-protein-drink-comparison", title: "식물성 단백질 음료 비교 (뉴케어·얼티브·하이뮨)", lineName: "식물성 단백질 음료", itemWord: "제품", filter: (p) => p.productType === "drink" && /식물성|비건/.test(p.name) },
+  // 2026-10-21 음료 브랜드 라인별 맛 비교(자동완성: 뉴케어 올프로틴 고소한맛·41g, 테이크핏 맥스·몬스터 맛, 랩노쉬 프로틴 드링크, 셀렉스 당솔브·락토프리).
+  { slug: "newcare-allprotein-245-flavor-comparison", title: "뉴케어 올프로틴 245mL 맛별 비교", lineName: "뉴케어 올프로틴 245mL", filter: (p) => p.productType === "drink" && p.brand === "뉴케어" && p.name.startsWith("올프로틴 (") && p.capacity === "245mL" },
+  { slug: "newcare-allprotein-41g-flavor-comparison", title: "뉴케어 올프로틴 41g 맛별 비교", lineName: "뉴케어 올프로틴 41g", filter: (p) => p.productType === "drink" && p.brand === "뉴케어" && p.name.startsWith("올프로틴 41g") },
+  { slug: "takefit-max-flavor-comparison", title: "테이크핏 맥스 맛별 비교", lineName: "테이크핏 맥스", filter: (p) => p.productType === "drink" && p.brand === "테이크핏" && p.name.startsWith("테이크핏 맥스") },
+  { slug: "takefit-monster-flavor-comparison", title: "테이크핏 몬스터 맛별 비교", lineName: "테이크핏 몬스터", filter: (p) => p.productType === "drink" && p.brand === "테이크핏" && p.name.startsWith("테이크핏 몬스터") },
+  { slug: "takefit-pro-flavor-comparison", title: "테이크핏 프로 500mL 맛별 비교", lineName: "테이크핏 프로", filter: (p) => p.productType === "drink" && p.brand === "테이크핏" && p.name.startsWith("테이크핏 프로") },
+  { slug: "labnosh-protein-drink-flavor-comparison", title: "랩노쉬 프로틴 드링크 맛별 비교 (350mL)", lineName: "랩노쉬 프로틴 드링크", filter: (p) => p.productType === "drink" && p.brand === "랩노쉬" && p.capacity === "350mL" },
+  { slug: "sellex-protein-190-lineup-comparison", title: "셀렉스 프로틴 190mL 종류별 비교 (오리지널·로우슈거·락토프리·당솔브)", lineName: "셀렉스 프로틴 190mL", itemWord: "제품", filter: (p) => p.productType === "drink" && p.brand === "셀렉스" && p.capacity === "190mL" },
+  { slug: "danbaek-water-protein-flavor-comparison", title: "더단백 워터 프로틴 맛별 비교", lineName: "더단백 워터 프로틴", filter: (p) => p.productType === "drink" && p.brand === "더단백" && p.name.includes("워터 프로틴") },
   { slug: "milit-shake-flavor-comparison", title: "밀잇 쉐이크 맛별 비교", lineName: "밀잇 쉐이크", filter: (p) => p.productType === "shake" && p.brand === "밀잇" },
   { slug: "kkobak-shake-flavor-comparison", title: "꼬박꼬밥 고단저당 쉐이크 맛별 비교", lineName: "꼬박꼬밥 쉐이크", filter: (p) => p.productType === "shake" && p.brand === "꼬박꼬밥" },
   { slug: "shakebaby-flavor-comparison", title: "쉐이크베이비 맛별 비교", lineName: "쉐이크베이비", filter: (p) => p.productType === "shake" && p.brand === "쉐이크베이비" },
