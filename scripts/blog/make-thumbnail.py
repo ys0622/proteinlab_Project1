@@ -167,7 +167,7 @@ def main():
         d = ImageDraw.Draw(img)
         for i, s in enumerate(stats):
             x0 = mx + i * (bw + gap)
-            d.text((x0 + 30, y + 24), s["label"] + " · 1개 기준", font=font(FONT_MED, 30), fill=SAGE)
+            d.text((x0 + 30, y + 24), s["label"] + " · " + s.get("basis", spec.get("basis", "1개 기준")), font=font(FONT_MED, 30), fill=SAGE)
             value = stat_range(rows, s["field"]) + s["unit"]
             vf = fit(d, value, FONT_TITLE, bw - 60, 66)
             d.text((x0 + 30, y + 64), value, font=vf, fill=IVORY)
@@ -189,6 +189,24 @@ def main():
         yy = int(H - 112 - p.height)
         placed.append((i, p, x, yy))
     mid = n // 2
+    if spec.get("productCards"):
+        # 흰 포장(요거트·두유·음료)은 배경을 지우면 포장까지 깎인다. 흰 카드 위에 사진 그대로 올린다.
+        gap = 22
+        cw = (W - mx * 2 - gap * (n - 1)) / n
+        ch = area_h - 6
+        top = H - 112 - ch
+        for i, p in enumerate(prods):
+            x0 = int(mx + i * (cw + gap))
+            sh = Image.new("RGBA", img.size, (0, 0, 0, 0))
+            ImageDraw.Draw(sh).rounded_rectangle([x0 + 8, top + 14, x0 + cw + 8, top + ch + 14], radius=28, fill=(0, 0, 0, 110))
+            img = Image.alpha_composite(img, sh.filter(ImageFilter.GaussianBlur(14)))
+            card = Image.new("RGBA", (int(cw), int(ch)), (0, 0, 0, 0))
+            ImageDraw.Draw(card).rounded_rectangle([0, 0, int(cw) - 1, int(ch) - 1], radius=28, fill=(255, 255, 255, 255))
+            scale = min((cw - 40) / p.width, (ch - 40) / p.height)
+            q = p.resize((int(p.width * scale), int(p.height * scale)), Image.LANCZOS)
+            card.paste(q, ((int(cw) - q.width) // 2, (int(ch) - q.height) // 2))
+            img.alpha_composite(card, (x0, int(top)))
+        placed = []
     for i, p, x, yy in sorted(placed, key=lambda t: -abs(t[0] - mid)):
         mask = cutout_mask(p)
         shadow = Image.new("L", img.size, 0)

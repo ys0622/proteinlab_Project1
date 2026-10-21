@@ -54,9 +54,11 @@ const ok = new Set();
 const add = (v) => { if (v != null && Number.isFinite(Number(v))) ok.add(String(Math.round(Number(v) * 10) / 10)); };
 const verified = ev.rows.filter((r) => r.verified);
 for (const r of verified) {
-  for (const k of ["proteinG", "caloriesKcal", "sugarG", "fatG", "sodiumMg", "carbsG", "proteinPer100kcal"]) add(r[k]);
+  for (const k of ["proteinG", "caloriesKcal", "sugarG", "fatG", "sodiumMg", "carbsG", "proteinPer100kcal", "proteinPer100", "sugarPer100", "kcalPer100"]) add(r[k]);
   add(parseFloat(r.capacity));
 }
+// 기준 단위 표현("100g당", "100kcal당")은 수치 주장이 아니다.
+add(100);
 const vals = (k) => verified.map((r) => r[k]).filter((v) => v != null);
 for (const k of ["proteinG", "caloriesKcal", "sugarG", "fatG", "sodiumMg", "carbsG"]) {
   const v = vals(k);
