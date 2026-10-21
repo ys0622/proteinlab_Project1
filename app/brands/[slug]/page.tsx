@@ -11,6 +11,7 @@ import { brandToSlug, getBrandSummary, slugToBrand } from "../../lib/brandHubs";
 import { formatProductLabel } from "../../lib/productLabel";
 import { getBrandProfile } from "@/app/lib/brandProfile";
 import { brandWithSearchAlias } from "@/app/lib/brandSearchAliases";
+import { getAllCompareLandings } from "@/app/data/compareLandings";
 import type { ProductDetailProps } from "../../data/products";
 
 function getBrandQuickLinks(brand: string) {
@@ -340,7 +341,23 @@ export default async function BrandPage({ params }: PageProps) {
   const { slug } = await params;
   const brandName = slugToBrand(slug, brands.map((item) => item.brand));
   const brand = brands.find((item) => item.brand === brandName);
-  const quickLinks = brand ? getBrandQuickLinks(brand.brand) : [];
+  const manualLinks = brand ? getBrandQuickLinks(brand.brand) : [];
+  // 이 브랜드 제품이 들어간 비교 랜딩을 자동으로 붙인다(2026-10-21, 비교 랜딩 내부 링크 보강). 직접 넣은 링크가 먼저다.
+  const brandSlugs = new Set(products.filter((item) => item.brand === brandName).map((item) => item.slug));
+  const compareLinks = brand
+    ? getAllCompareLandings()
+        .filter((landing) => landing.productSlugs.some((s) => brandSlugs.has(s)))
+        // 브랜드 제품 비율이 높은 랜딩(맛별·종류별 비교)을 먼저 둔다.
+        .map((landing) => ({ landing, share: landing.productSlugs.filter((s) => brandSlugs.has(s)).length / landing.productSlugs.length }))
+        .sort((a, b) => b.share - a.share)
+        .map(({ landing }) => ({
+          href: `/compare/${landing.slug}`,
+          title: landing.title.split(" | ")[0],
+          description: `등록 제품 ${landing.productSlugs.length}종을 단백질·당류·칼로리로 비교합니다.`,
+        }))
+    : [];
+  // 직접 넣은 링크는 4개까지, 나머지 자리는 비교 랜딩(하이뮨처럼 직접 링크가 많은 브랜드도 비교 랜딩이 보이게). 전체 8개.
+  const quickLinks = [...manualLinks.slice(0, 4), ...compareLinks.filter((link) => !manualLinks.slice(0, 4).some((m) => m.href === link.href))].slice(0, 8);
 
   if (!brand) {
     // 예전 한글 슬러그(/brands/매일두유 등)로 수집된 URL은 ASCII 슬러그로 영구 이동한다.
@@ -410,9 +427,9 @@ export default async function BrandPage({ params }: PageProps) {
             편이 더 빠릅니다.
           </p>
           <div className="mt-4 flex flex-wrap gap-2">
-            {quickLinks[0] ? (
+            {manualLinks[0] ? (
               <TrackedLink
-                href={quickLinks[0].href}
+                href={manualLinks[0].href}
                 trackingLabel={`${brand.brand} 라인업 보기`}
                 trackingSection="brand_hero_cta"
                 trackingPageType="brand"
