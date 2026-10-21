@@ -11,7 +11,7 @@
 | 2 근거 | `node scripts/blog/build-evidence.mjs T01` | `content/PL-YYYYMMDD-NN/{brief.md, evidence.md, evidence.json}` |
 | 3 집필 | Claude가 brief·evidence와 블로그 규칙으로 `article.md` 작성 | blogpilot 원고 형식 |
 | 4 검사 | `node scripts/blog/check-post.mjs PL-...` | `check.json` (수치·형식·분량·금지 표현·링크) |
-| 5 썸네일 | `python scripts/blog/make-thumbnail.py <폴더> <폴더>/thumbnail.spec.json` (제목·강조·배지 항목·실제 제품 사진 slug) | `thumbnail.png` 1080×1080, 배지 수치는 evidence 검증값만 |\|줄2" --sub "..." --cards "A\|B\|C"` | `thumbnail.png` |
+| 5 썸네일 | `python scripts/blog/make-thumbnail.py <폴더> <폴더>/thumbnail.spec.json` (제목·강조·배지 항목·실제 제품 사진 slug) | `thumbnail.png` 1080×1080, 배지 수치는 evidence 검증값만 |
 | 6 승인 | 사장님이 원고·썸네일을 보고 `review.md`의 `승인: 아니오`를 `승인: 예`로 | |
 | 7 목록 | `node scripts/blog/make-manifest.mjs --date 2026-10-22` | `발행대기/<날짜>_manifest.json` (승인+검사 통과만, 하루 최대 2편, 10:00·15:00) |
 | 8 발행 | blogpilot: `python -m blogpilot import protein_lab --date ...` → `publish ...` | blogpilot 쪽 담당 |
