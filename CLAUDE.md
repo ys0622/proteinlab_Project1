@@ -10,6 +10,7 @@ proteinlab.kr — 단백질 음료·바·요거트·쉐이크 제품 비교 서�
 - 가이드는 대부분 `app/guides/**`에 있고, 비교 가이드는 `app/guides/product-selection-comparison/*Content.ts`의 config를 공통 템플릿이 렌더링한다. 비교 랜딩은 `app/data/compareLandings.ts`.
 - 쿠팡 골드박스: `/goldbox`, 상태 확인 `/api/goldbox/health`, 로직은 `app/lib/coupangGoldbox.ts`, 갱신 워크플로우 `.github/workflows/goldbox-refresh.yml`. 파트너스 API 피드(26개 안팎)는 앱 식품 탭 상품을 빠뜨린다(`coverage: confirmed_gap`).
 - 골드박스 자동 등록(2026-10-20~): 매일 07:10 Windows 작업 스케줄러 "ProteinLab Goldbox Daily"가 `scripts/goldbox/run-daily.cmd` → `daily-goldbox.mjs --write`를 실행한다. aside로 웹 골드박스(landingId=3712) 푸드·신선식품 탭을 읽고(앱 식품 탭과 같은 목록), 브랜드·용량·제품명 단어가 모두 맞는 제품만 KV `coupang-goldbox:verified-offers:v1`에 기록한다(배포 불필요). 결과는 `.goldbox-auto/latest.txt`, 로그 `.goldbox-auto/run.log`. "확인 필요" 후보는 등록하지 않는다. PC가 켜져 있어야 돈다.
+- 네이버 블로그 원고 준비(2026-10-21~): `scripts/blog/` (README 참고). 주제 → 근거(build-evidence) → Claude 집필 → 검사(check-post) → 썸네일 → 사장님 승인(review.md `승인: 예`) → 발행 목록(make-manifest, blogpilot 형식). 원고 폴더는 바탕화면 `네이버 블로그\프로틴랩\content`. 발행은 blogpilot(`D:\네이버 블로그 자동화`, 다른 세션 담당)이 하고 여기서는 발행하지 않는다. 하루 최대 2편.
 - 신규 쉐이크 등록은 `scripts/add-shake.mjs`(사진·성분표를 `inbox/shake/`에 넣고 실행). 다른 카테고리용 스크립트는 없다.
 
 ## 배포
