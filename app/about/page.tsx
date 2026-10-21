@@ -7,7 +7,7 @@ import { getProductsByCategoryAsync } from "../lib/productData";
 export const metadata = {
   title: "ProteinLab 소개 | 단백질 제품 성분 비교 플랫폼",
   description:
-    "ProteinLab은 국내 단백질 음료·바·요거트·쉐이크를 성분 데이터 기준으로 직접 수집·정리한 독립 비교 플랫폼입니다. 데이터 수집 기준, 운영 방침, 업데이트 정책을 안내합니다.",
+    "ProteinLab은 국내 단백질 음료·바·요거트·쉐이크·두유를 성분 데이터 기준으로 직접 수집·정리한 독립 비교 플랫폼입니다. 데이터 수집 기준, 운영 방침, 업데이트 정책을 안내합니다.",
   alternates: { canonical: "https://proteinlab.kr/about" },
 };
 
@@ -16,6 +16,22 @@ const dataSourceList = [
   "제조사·브랜드 공식 홈페이지 및 공식 쇼핑몰 상품 페이지",
   "쿠팡·네이버쇼핑 등 주요 온라인 유통 채널 상품 정보",
   "BCAA·단백질 급원 등 추가 정보는 공식 광고 소재 또는 제조사 발표 기준",
+];
+
+// 2026-10-21: "즉시 수정합니다"를 실제로 어떻게 하는지 보여 주는 검증 방법과 수정 이력(신뢰 신호).
+const verificationList = [
+  "제품마다 포장의 영양정보(성분표) 사진을 받아 수치를 입력하고, 제품 페이지에 그 성분표 이미지를 함께 보여 줍니다.",
+  "1개(1병·1팩) 기준 표시가 원칙입니다. 라벨이 100g·100mL당으로만 적힌 대용량 제품은 용량에 맞춰 곱한 값으로 바꿉니다.",
+  "100kcal당 단백질처럼 비교를 위해 계산한 지표는 라벨에 적힌 수치가 아니라 표시값으로 계산한 값입니다.",
+  "한 제품의 대표 수치와 상세 성분표가 서로 맞는지, 당류가 탄수화물보다 크지 않은지 등을 주기적으로 자동 점검합니다.",
+  "성분표 이미지가 다른 제품과 같거나 맛·용량이 맞지 않으면 성분표를 내리고, 새 자료를 받을 때까지 비워 둡니다.",
+];
+
+const correctionLog = [
+  { date: "2026-10-21", body: "요거트 10개 제품의 상세 성분표 수치를 라벨과 다시 대조해 수정했습니다(상하목장 유기농 그릭 400g, 요즘 플레인 그릭 800g 등)." },
+  { date: "2026-10-21", body: "다른 제품의 성분표가 연결돼 있던 8개 제품은 성분표 연결을 내리고 해당 제품 자료를 다시 확보하고 있습니다." },
+  { date: "2026-10-21", body: "켈로그 프로틴바K 3종의 1개 중량·열량·단백질을 포장 표기 기준으로 바로잡았습니다." },
+  { date: "2026-10-21", body: "단백질바 39종, 요거트·쉐이크 15종에 탄수화물·포화지방 등 상세 성분을 성분표 기준으로 추가했습니다." },
 ];
 
 const editorialList = [
@@ -38,13 +54,15 @@ const editorialList = [
 ];
 
 export default async function AboutPage() {
-  const [drinks, bars, yogurts, shakes] = await Promise.all([
+  const [drinks, bars, yogurts, shakes, soymilks] = await Promise.all([
     getProductsByCategoryAsync("drink"),
     getProductsByCategoryAsync("bar"),
     getProductsByCategoryAsync("yogurt"),
     getProductsByCategoryAsync("shake"),
+    getProductsByCategoryAsync("soymilk"),
   ]);
-  const totalCount = drinks.length + bars.length + yogurts.length + shakes.length;
+  // 두유가 빠져 있어 소개 페이지 숫자가 실제보다 적게 보였다(2026-10-21).
+  const totalCount = drinks.length + bars.length + yogurts.length + shakes.length + soymilks.length;
 
   const stats = [
     { label: "등록 제품", value: `${totalCount}종` },
@@ -68,7 +86,7 @@ export default async function AboutPage() {
             단백질 제품 성분 비교 플랫폼
           </h1>
           <p className="mt-3 max-w-2xl text-sm leading-6 text-[var(--foreground-muted)]">
-            ProteinLab은 국내에서 판매되는 단백질 음료·바·요거트·쉐이크 {totalCount}종을
+            ProteinLab은 국내에서 판매되는 단백질 음료·바·요거트·쉐이크·두유 {totalCount}종을
             성분 데이터 기준으로 직접 수집·정리한 독립 비교 플랫폼입니다.
             마케팅 문구 대신 영양성분표 수치를 기준으로 소비자가 목적에 맞는 제품을 찾을 수 있도록 돕습니다.
           </p>
@@ -96,7 +114,7 @@ export default async function AboutPage() {
           <section>
             <h2 className="text-lg font-bold text-[var(--foreground)]">왜 만들었나요</h2>
             <p className="mt-3 text-[14px] leading-7 text-[var(--foreground-muted)]">
-              국내 단백질 제품 시장이 빠르게 커지면서 음료·바·요거트·쉐이크까지 선택지가 수백 종에 달하지만,
+              국내 단백질 제품 시장이 빠르게 커지면서 음료·바·요거트·쉐이크·두유까지 선택지가 수백 종에 달하지만,
               소비자가 성분을 직접 비교할 수 있는 곳은 많지 않았습니다.
             </p>
             <p className="mt-3 text-[14px] leading-7 text-[var(--foreground-muted)]">
@@ -127,6 +145,32 @@ export default async function AboutPage() {
               </Link>
               로 알려주세요. 공식 자료와 대조 후 즉시 수정합니다.
             </p>
+          </section>
+
+          {/* 검증 방법 */}
+          <section>
+            <h2 className="text-lg font-bold text-[var(--foreground)]">성분 수치 검증 방법</h2>
+            <ul className="mt-3 space-y-2">
+              {verificationList.map((item) => (
+                <li key={item} className="flex items-start gap-2 text-[14px] leading-6 text-[var(--foreground-muted)]">
+                  <span className="mt-0.5 shrink-0 text-[#1b7f5b]">✓</span>
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </section>
+
+          {/* 수정 이력 */}
+          <section>
+            <h2 className="text-lg font-bold text-[var(--foreground)]">최근 데이터 수정 이력</h2>
+            <ul className="mt-3 space-y-2">
+              {correctionLog.map((item) => (
+                <li key={item.body} className="text-[14px] leading-6 text-[var(--foreground-muted)]">
+                  <span className="mr-2 font-semibold text-[#1f5138]">{item.date}</span>
+                  {item.body}
+                </li>
+              ))}
+            </ul>
           </section>
 
           {/* 편집 방침 */}
