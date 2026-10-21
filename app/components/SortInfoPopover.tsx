@@ -6,14 +6,6 @@ import { createPortal } from "react-dom";
 const MOBILE_MEDIA_QUERY = "(max-width: 768px), (hover: none), (pointer: coarse)";
 const DESKTOP_CLOSE_DELAY_MS = 120;
 
-function matchesClientMedia(query: string) {
-  if (typeof window === "undefined" || typeof window.matchMedia !== "function") {
-    return false;
-  }
-
-  return window.matchMedia(query).matches;
-}
-
 function Portal({ children }: { children: React.ReactNode }) {
   if (typeof document === "undefined") {
     return null;
@@ -32,7 +24,7 @@ export default function SortInfoPopover({ label, description }: SortInfoPopoverP
   const popoverRef = useRef<HTMLDivElement | null>(null);
   const closeTimerRef = useRef<number | null>(null);
   const [isOpen, setIsOpen] = useState(false);
-  const [isMobile, setIsMobile] = useState(() => matchesClientMedia(MOBILE_MEDIA_QUERY));
+  const [isMobile, setIsMobile] = useState(false); // 서버 렌더와 같게 시작하고, 아래 effect에서 실제 화면 크기로 맞춘다(hydration 불일치 방지).
   const popoverId = useId();
   const sheetTitleId = useId();
 

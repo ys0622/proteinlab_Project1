@@ -24,14 +24,6 @@ type ProductBadgeProps = {
 const MOBILE_MEDIA_QUERY = "(max-width: 768px), (hover: none), (pointer: coarse)";
 const DESKTOP_CLOSE_DELAY_MS = 120;
 
-function matchesClientMedia(query: string) {
-  if (typeof window === "undefined" || typeof window.matchMedia !== "function") {
-    return false;
-  }
-
-  return window.matchMedia(query).matches;
-}
-
 function isGradeTone(value: string | undefined): value is Exclude<ProductBadgeTone, "neutral"> {
   return value === "grade-a" || value === "grade-b" || value === "grade-c" || value === "grade-d";
 }
@@ -74,7 +66,7 @@ export default function ProductBadge({
   const sheetTitleId = useId();
   const tooltipId = useId();
   const [isOpen, setIsOpen] = useState(false);
-  const [isMobile, setIsMobile] = useState(() => matchesClientMedia(MOBILE_MEDIA_QUERY));
+  const [isMobile, setIsMobile] = useState(false); // 서버 렌더와 같게 시작하고, 아래 effect에서 실제 화면 크기로 맞춘다(hydration 불일치 방지).
 
   const badgeClassName = [
     "metric-badge",

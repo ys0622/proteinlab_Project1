@@ -1,6 +1,7 @@
 {
   "allowedMissingSpecSlugs": {
-    "bars": ["crown-highprotein-chocobar", "dryou-proteinbar-bite-crunch", "dryou-proteinbar-pro-bite-choco-classic"]
+    "bars": ["crown-highprotein-chocobar", "dryou-proteinbar-bite-crunch", "dryou-proteinbar-pro-bite-choco-classic", "syntha6-crispy-choco", "bsn-protein-crisp-peanut-butter-crunch", "labnosh-foodbar-mildchoco", "kellogg-protein-granolabar-savory"],
+    "drinks": ["oneuldanbaek-caramel-latte-250"]
   },
   "specOverrides": {
     "bars": {
