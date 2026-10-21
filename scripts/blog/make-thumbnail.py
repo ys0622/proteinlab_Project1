@@ -79,6 +79,29 @@ def gradient_bg():
     return Image.composite(Image.new("RGB", (W, H), GOLD), bg, glow.filter(ImageFilter.GaussianBlur(80)))
 
 
+def photo_bg(name):
+    """실사 배경(scripts/blog/backgrounds, Unsplash 무료 라이선스): 정사각 맞춤 → 딥그린 덧칠 → 위쪽(제목)은 더 어둡게."""
+    path = ROOT / "scripts/blog/backgrounds" / name
+    if not path.exists():
+        raise SystemExit(f"배경 사진 없음: {path}")
+    im = Image.open(path).convert("RGB")
+    side = min(im.size)
+    left, top = (im.width - side) // 2, (im.height - side) // 2
+    im = im.crop((left, top, left + side, top + side)).resize((W, H), Image.LANCZOS)
+    im = im.filter(ImageFilter.GaussianBlur(2))
+    # 딥그린 톤으로 덮기
+    tint = Image.new("RGB", (W, H), BG_TOP)
+    im = Image.blend(im, tint, 0.45)
+    # 위→아래 어둡기 그라데이션(제목 영역 0.82, 가운데 0.45, 제품 영역 0.6)
+    shade = Image.new("L", (1, H))
+    for y in range(H):
+        t = y / (H - 1)
+        a = 0.82 - 0.55 * min(t / 0.62, 1) + 0.25 * max(0, (t - 0.62) / 0.38)
+        shade.putpixel((0, y), int(255 * max(0, min(1, a))))
+    dark = Image.new("RGB", (W, H), (6, 22, 18))
+    return Image.composite(dark, im, shade.resize((W, H)))
+
+
 def cutout_mask(p):
     """가장자리와 이어진 흰 배경만 지운다(포장 안의 흰 글자·바탕은 남긴다)."""
     near_white = ImageChops.difference(p, Image.new("RGB", p.size, (255, 255, 255))).convert("L").point(lambda v: 0 if v <= 12 else 255)
@@ -107,7 +130,7 @@ def main():
     rows = ev["rows"]
     category = ev["topic"]["category_data"]
 
-    img = gradient_bg().convert("RGBA")
+    img = (photo_bg(spec["background"]) if spec.get("background") else gradient_bg()).convert("RGBA")
     d = ImageDraw.Draw(img)
     mx = 78
 
