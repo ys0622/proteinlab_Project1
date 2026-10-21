@@ -23,7 +23,7 @@ proteinlab.kr — 단백질 음료·바·요거트·쉐이크 제품 비교 서�
 - 커밋 전에 `git fetch origin master`로 어긋남을 확인한다.
 
 ## 배포 후 회귀 검사 (이 사이트에서 실제로 터진 것)
-- `/drinks /bars /shake /yogurt /products`는 서버 렌더링 HTML에 상품 링크가 전부 있어야 한다: `grep -o 'href="/product/[a-zA-Z0-9-]*"' | sort -u | wc -l` 이 135/100/112/57과 비슷해야 한다(과거에 정적 빌드가 Suspense fallback으로 빈 목록을 내보냈다). 이 페이지들은 `force-dynamic`이어야 한다.
+- `/drinks /bars /shake /yogurt /products`는 서버 렌더링 HTML에 상품 링크가 전부 있어야 한다: `grep -o 'href="/product/[a-zA-Z0-9-]*"' | sort -u | wc -l` 이 135/100/112/57과 비슷해야 한다(과거에 정적 빌드가 Suspense fallback으로 빈 목록을 내보냈다). 2026-10-21부터 이 페이지들은 `revalidate = 300`이다. 목록 컴포넌트가 `useSearchParams`·`Suspense`를 쓰지 않게 바꿔(URL 파라미터는 브라우저에서 읽음) 정적 HTML에도 목록 전체가 들어간다. `next build` 후 `.next/server/app/<page>.html`의 제품 링크 수와 `<div hidden id="S:` 0개로 확인한다. 단, OpenNext 캐시 저장소(R2)가 없어 실제로는 매 요청 렌더링이다(`x-nextjs-cache: MISS`).
 - 개발 서버(`next dev`)는 이 문제를 숨긴다. 프로덕션 빌드와 라이브 응답으로 확인한다.
 - robots 메타 `index, follow`, canonical 자기 참조, `/robots.txt`, `og:image` 존재.
 - 쿠팡 링크에 `rel="sponsored"`가 있다.

@@ -8,11 +8,10 @@ import ProductListWithFilters from "../components/ProductListWithFilters";
 import { getProductsByCategoryAsync } from "../lib/productData";
 import type { ProductCategory } from "../lib/categories";
 
-// ProductListWithFilters가 useSearchParams()를 쓰기 때문에, 정적/ISR로 렌더링하면
-// Next.js가 그 부분을 Suspense fallback(null)으로 대체해버려 실제 제품 카드가
-// 정적 HTML에 전혀 포함되지 않는다(구글 첫 크롤링에서 상품 목록이 통째로 비어 보임).
-// force-dynamic으로 매 요청마다 실제 렌더링해서 완전한 HTML을 내려준다.
-export const dynamic = "force-dynamic";
+// 2026-10-21: 5분 캐시(ISR). 예전에는 ProductListWithFilters의 useSearchParams 때문에 정적 렌더링에서 목록이
+// Suspense fallback으로 비어 force-dynamic이었다. 이제 URL 파라미터는 브라우저에서 읽어 서버 HTML에 목록 전체가 들어간다.
+// 매 요청 렌더링으로 첫 응답이 3~6초 걸리던 것을 줄인다. 배포 후 회귀 검사(제품 링크 수)로 확인한다.
+export const revalidate = 300;
 
 export async function generateMetadata(): Promise<Metadata> {
   const [drinks, bars, yogurts, shakes, soymilks] = await Promise.all([

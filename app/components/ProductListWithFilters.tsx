@@ -1,7 +1,7 @@
 ﻿"use client";
 
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { useEffect, useMemo, useState } from "react";
+import { usePathname, useRouter } from "next/navigation";
+import { useEffect, useMemo, useState, useSyncExternalStore } from "react";
 import type { ProductDetailProps } from "../data/products";
 import newProductsRaw from "../data/newProducts.json";
 import { type ProductCategory } from "../lib/categories";
@@ -746,29 +746,40 @@ function ProductListWithFiltersInner(props: ProductListWithFiltersInnerProps) {
   );
 }
 
+// 브라우저의 현재 주소 검색어. 서버 렌더와 하이드레이션 첫 렌더에서는 null이라 둘이 같고, 그다음 렌더부터 실제 값을 읽는다.
+const subscribeNothing = () => () => {};
+const readLocationSearch = () => window.location.search;
+const readNoSearchOnServer = () => null;
+
 function ProductListWithFiltersResolved(props: ProductListWithFiltersProps) {
   const pathname = usePathname();
   const router = useRouter();
-  const searchParams = useSearchParams();
+  // URL 파라미터·sessionStorage는 브라우저에서만 읽는다(2026-10-21). useSearchParams는 정적(캐시) 렌더링에서
+  // Suspense 경계를 요구해 목록이 늦게 끼어들거나(CLS) 빈 목록으로 나갔다. 서버와 첫 화면은 기본 상태로 같게 그리고,
+  // 적용할 상태(?sort·?q·?curation·이전 필터)가 있을 때만 마운트 후 목록을 다시 만든다.
+  const search = useSyncExternalStore(subscribeNothing, readLocationSearch, readNoSearchOnServer);
+  const urlParams = useMemo(() => (search === null ? null : new URLSearchParams(search)), [search]);
+  const searchParams = useMemo(() => urlParams ?? new URLSearchParams(), [urlParams]);
   const resolvedCurationSlug =
     props.curationSlug ?? (searchParams.get("curation") || undefined);
   const storageKey = useMemo(
     () => `product-list-state:${pathname}:${props.productType}:${resolvedCurationSlug ?? "all"}`,
     [pathname, props.productType, resolvedCurationSlug],
   );
-  const initialPersistedState = getPersistedFilterState(storageKey);
+  const initialPersistedState = urlParams ? getPersistedFilterState(storageKey) : null;
 
   // URL params take priority over sessionStorage for sort and searchQuery
   const urlSort = normalizeSortValue(searchParams.get("sort") as SortOptionValue | null);
   const urlQuery = searchParams.get("q") ?? "";
   const mergedInitialState: Partial<PersistedFilterState> = {
-    ...initialPersistedState,
+    ...(initialPersistedState ?? {}),
     ...(searchParams.has("sort") ? { sort: urlSort } : {}),
     ...(searchParams.has("q") ? { searchQuery: urlQuery } : {}),
   };
+  const needsRestore = Object.keys(mergedInitialState).length > 0;
 
   function updateUrlParams(sort: SortOptionValue, searchQuery: string) {
-    const params = new URLSearchParams(searchParams.toString());
+    const params = new URLSearchParams(window.location.search);
     if (sort && sort !== "recommended") {
       params.set("sort", sort);
     } else {
@@ -786,7 +797,7 @@ function ProductListWithFiltersResolved(props: ProductListWithFiltersProps) {
 
   return (
     <ProductListWithFiltersInner
-      key={storageKey}
+      key={needsRestore ? `${storageKey}:restored` : storageKey}
       {...props}
       curationSlug={resolvedCurationSlug}
       storageKey={storageKey}

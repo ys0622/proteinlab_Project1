@@ -117,7 +117,7 @@ export interface GoldboxSnapshot {
   status: "ready" | "unavailable";
   sourceCount?: number;
   invalidCount?: number;
-  error?: "credentials" | "http" | "payload" | "empty" | "network";
+  error?: "credentials" | "http" | "payload" | "empty" | "network" | "cache-miss";
   dailyBaselineCount?: number;
   suspiciousDrop?: boolean;
 }
@@ -135,7 +135,11 @@ export async function getLastGoldboxDiagnostic(): Promise<GoldboxSnapshot | null
   }
 }
 
-export async function fetchGoldboxSnapshot(): Promise<GoldboxSnapshot> {
+/**
+ * cacheOnly: KV에 저장된 스냅샷만 읽고 쿠팡 API는 부르지 않는다(카테고리 목록 5분 캐시 렌더링용, 2026-10-21).
+ * API 호출(cache: "no-store")이 렌더 중에 일어나면 페이지가 매 요청 렌더링으로 바뀌고, 케어맵과 같이 쓰는 호출 한도도 쓴다.
+ */
+export async function fetchGoldboxSnapshot(options: { cacheOnly?: boolean } = {}): Promise<GoldboxSnapshot> {
   const kv = await getGoldboxKV();
   const record = async (snapshot: GoldboxSnapshot) => {
     if (kv) {
@@ -158,6 +162,7 @@ export async function fetchGoldboxSnapshot(): Promise<GoldboxSnapshot> {
       // Ignore invalid cache and refresh it below.
     }
   }
+  if (options.cacheOnly) return unavailable("cache-miss");
 
   const [accessKey, secretKey, subId] = await Promise.all([
     getRuntimeEnvValue("COUPANG_ACCESS_KEY"),
