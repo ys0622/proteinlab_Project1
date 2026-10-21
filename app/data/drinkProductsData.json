@@ -3148,7 +3148,7 @@
       "carbsG": 12,
       "sugarsG": 6,
       "fatG": 0.5,
-      "satFatG": 0.6,
+      "satFatG": 0.4,
       "transFatG": 0,
       "sodiumMg": 185,
       "cholesterolMg": 15,
@@ -3489,10 +3489,10 @@
     "nutritionPerBottle": {
       "caloriesKcal": 99,
       "proteinG": 20,
-      "carbsG": 8,
+      "carbsG": 6,
       "sugarsG": 0,
       "fatG": 0,
-      "satFatG": 2,
+      "satFatG": 0,
       "sodiumMg": 130,
       "bcaaMg": 4500
     },

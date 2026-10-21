@@ -60,15 +60,15 @@ export const barServingAuditBySlug: Record<string, BarServingAuditEntry> = {
   },
   "kellogg-proteinbark-nuts": {
     nutritionBasis: "per_unit",
-    sourceHint: "프로틴바K 계열 외부 판매 규격 기준 1개 단위 제품으로 확인",
+    sourceHint: "2026-10-21 성분표 이미지·포장 표기(1개 중량·열량)로 확인해 수치를 바로잡음",
   },
   "kellogg-proteinbark-caramel-nuts": {
     nutritionBasis: "per_unit",
-    sourceHint: "프로틴바K 계열 외부 판매 규격 기준 1개 단위 제품으로 확인",
+    sourceHint: "2026-10-21 성분표 이미지·포장 표기(1개 중량·열량)로 확인해 수치를 바로잡음",
   },
   "kellogg-proteinbark-hazelnut-darkchoco": {
     nutritionBasis: "per_unit",
-    sourceHint: "프로틴바K 계열 외부 판매 규격 기준 1개 단위 제품으로 확인",
+    sourceHint: "2026-10-21 성분표 이미지·포장 표기(1개 중량·열량)로 확인해 수치를 바로잡음",
   },
   "gomgom-proteinbar-mini": {
     nutritionBasis: "per_unit",
