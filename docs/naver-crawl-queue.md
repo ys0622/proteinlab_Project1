@@ -1,0 +1,46 @@
+# 네이버 수집 요청 대기열
+
+2026-10-22: 하루 50건 접수(51번째부터 접수 안 됨, 안내 문구 없음). 아래는 아직 넣지 않은 비교 페이지. 넣은 줄은 지운다.
+
+- https://proteinlab.kr/compare/maeilhankki-shake-flavor-comparison
+- https://proteinlab.kr/compare/maeil-vs-vegemil-blackbean-soymilk
+- https://proteinlab.kr/compare/maeil-vs-yonsei-protein-soymilk
+- https://proteinlab.kr/compare/milit-shake-flavor-comparison
+- https://proteinlab.kr/compare/milit-vs-kkobak-shake
+- https://proteinlab.kr/compare/mymil-vs-hymune-balance-drink
+- https://proteinlab.kr/compare/myprotein-bar-comparison
+- https://proteinlab.kr/compare/newcare-41g-vs-labnosh-max-drink
+- https://proteinlab.kr/compare/newcare-41g-vs-takefit-monster
+- https://proteinlab.kr/compare/newcare-allprotein-245-flavor-comparison
+- https://proteinlab.kr/compare/newcare-vs-danbaek-drink
+- https://proteinlab.kr/compare/newcare-vs-hymune
+- https://proteinlab.kr/compare/oatmont-vs-sellex-profit-drink
+- https://proteinlab.kr/compare/oneuldanbaek-bar-flavor-comparison
+- https://proteinlab.kr/compare/plant-protein-drink-comparison
+- https://proteinlab.kr/compare/post-vs-doctoru-proteinbar
+- https://proteinlab.kr/compare/ppaeba-proteinbar-flavor-comparison
+- https://proteinlab.kr/compare/proteinbangatgan-bar-flavor-comparison
+- https://proteinlab.kr/compare/protein-water-vs-rtd-drink
+- https://proteinlab.kr/compare/proteone-vs-flymill-shake
+- https://proteinlab.kr/compare/proteone-vs-itthefit-shake
+- https://proteinlab.kr/compare/proteone-vs-labnosh-shake
+- https://proteinlab.kr/compare/sangha-greek-yogurt-comparison
+- https://proteinlab.kr/compare/sellex-profit-flavor-comparison
+- https://proteinlab.kr/compare/sellex-profit-vs-lactosefree
+- https://proteinlab.kr/compare/sellex-vs-takefit
+- https://proteinlab.kr/compare/shakebaby-flavor-comparison
+- https://proteinlab.kr/compare/soyjoy-flavor-comparison
+- https://proteinlab.kr/compare/takefit-max-vs-takefit-monster
+- https://proteinlab.kr/compare/takefit-pro-500-vs-max-250
+- https://proteinlab.kr/compare/takefit-pro-flavor-comparison
+- https://proteinlab.kr/compare/takefit-vs-newcare
+- https://proteinlab.kr/compare/ultive-protein-flavor-comparison
+- https://proteinlab.kr/compare/ultive-vegan-vs-sellex-dangsolve-drink
+- https://proteinlab.kr/compare/ultive-vs-mymil-furotein-drink
+- https://proteinlab.kr/compare/vegemil-soymilk-flavor-comparison
+- https://proteinlab.kr/compare/wanjeon-soymilk-lineup-comparison
+- https://proteinlab.kr/compare/yonsei-pro-vs-erom-pro-soymilk
+- https://proteinlab.kr/compare/yoplait-protein-yogurt-comparison
+- https://proteinlab.kr/compare/yopro-vs-maeilbio-yogurt
+- https://proteinlab.kr/compare/yopro-vs-yoplait-yogurt
+- https://proteinlab.kr/compare/yozm-vs-greekday-greek-yogurt
