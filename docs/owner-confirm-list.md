@@ -14,7 +14,7 @@
 - [ ] 백링크·블로그 글 게시: `docs/backlink-post-drafts-2026-10-09.md`(3개), `docs/blog-drafts-2026-10-12.md`(플라이밀·프로티원 성분, 2개). 게시 전 수치 확인.
 - [ ] 네이버 서치어드바이저 평균 순위 스크린샷(브랜드 단어 CTR 판단용).
 - [ ] 10/12(월) 루틴 첫 푸시 알림이 오는지 확인.
-- [ ] Bing Webmaster Tools 등록(서치콘솔 가져오기). 등록 후 알려주면 IndexNow로 사이트맵 URL 제출 여부를 확인받고 진행한다.
+- [ ] IndexNow 제출(2026-10-22 사장님 승인, 자동 권한 검사가 막아 직접 실행 필요): Git Bash에서 `cd /d/proteinlab && node scripts/indexnow.mjs` → "응답: 200" 또는 202 확인. Bing Webmaster Tools 등록은 선택.
 - [ ] 네이버 서치어드바이저 "웹 페이지 수집 요청": `/brands/takefit`, `/brands/hymune`, 테이크핏·하이뮨·뉴케어 41g 라인업 가이드.
 - [ ] `D:\proteinlab\.cc-wt` 폴더 삭제(비어 있는 임시 폴더, 에이전트는 지우지 않는다).
 - [ ] 구글 서치콘솔 색인 리포트를 2~4주 뒤 다시 캡처해 변화 확인.
