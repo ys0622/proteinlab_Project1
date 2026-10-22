@@ -18,7 +18,9 @@ const STRIP_QUERY_PARAMS = new Set([
   "wbraid",
 ]);
 
-const STRIP_QUERY_PREFIXES = ["utm_"];
+// utm_ 은 지우지 않는다(2026-10-22). 서버에서 지우고 308 하면 GA4가 캠페인을 못 읽어 블로그 유입을 잴 수 없다.
+// 중복 주소는 각 페이지의 canonical(자기 참조)이 막는다.
+const STRIP_QUERY_PREFIXES: string[] = [];
 
 function isStaticAsset(pathname: string) {
   return /\.[a-z0-9]+$/i.test(pathname);
@@ -68,7 +70,8 @@ export function middleware(request: NextRequest) {
   const normalizedUrl = nextUrl.clone();
   let changed = false;
 
-  for (const [key] of normalizedUrl.searchParams) {
+  // 순회 중에 지우면 다음 키를 건너뛰므로 키 목록을 먼저 복사한다.
+  for (const key of [...new Set(normalizedUrl.searchParams.keys())]) {
     if (!shouldStripParam(key)) continue;
     normalizedUrl.searchParams.delete(key);
     changed = true;
