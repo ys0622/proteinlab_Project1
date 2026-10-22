@@ -13,6 +13,8 @@ QUERIES = [
     '단백질 음료 추천', '단백질바 추천', '그릭요거트 단백질', '고단백 두유', '연세두유 고단백',
     '베어벨스 프로틴바', '퀘스트바', '커클랜드 프로틴바 칼로리', '랩노쉬 프로틴', '단백질 쉐이크 추천',
 ]
+if len(sys.argv) > 1:  # 일부 검색어만 다시 잴 때: python scripts/naver/rank.py 퀘스트바 ...
+    QUERIES = sys.argv[1:]
 ROOT = Path(__file__).resolve().parent.parent.parent
 LOG = ROOT / 'docs' / 'naver-rank-log.csv'
 ASIDE = Path(os.path.expandvars(r'%LOCALAPPDATA%\Aside\CLI\current\aside.exe'))
