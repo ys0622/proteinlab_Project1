@@ -16,7 +16,7 @@
  * 매일 07:10 Windows 작업 스케줄러 "ProteinLab Goldbox Daily"가 scripts/goldbox/run-daily.cmd 로 --write 실행한다.
  */
 import { spawnSync } from "node:child_process";
-import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -113,7 +113,26 @@ function tokensOf(p) {
 }
 
 function pidOf(p) {
-  return (String(p.coupangUrl || "").match(/\/vp\/products\/(\d+)/) || [])[1] || null;
+  return p._pid || (String(p.coupangUrl || "").match(/\/vp\/products\/(\d+)/) || [])[1] || null;
+}
+
+// 단축 링크(link.coupang.com/a/...)가 가리키는 쿠팡 상품 ID를 알아내 캐시한다(2026-10-23).
+// 약콩두유 오리지널은 상품 ID가 같았는데 제목에 브랜드가 없어 놓쳤고, 완전두유 "검은콩 검은참깨 고칼슘"은 ID가 다른 제품인데 이름 단어만으로 맞춰졌다.
+async function resolveShortLinkPids(products) {
+  const cacheFile = join(outDir, "shortlink-pids.json");
+  const cache = existsSync(cacheFile) ? JSON.parse(readFileSync(cacheFile, "utf-8")) : {};
+  const todo = [...new Set(products.map((p) => p.coupangUrl).filter((u) => /link\.coupang\.com\/a\//.test(u || "") && !(u in cache)))];
+  for (let i = 0; i < todo.length; i += 5) {
+    await Promise.all(todo.slice(i, i + 5).map(async (u) => {
+      try {
+        const r = await fetch(u, { redirect: "manual", headers: { "User-Agent": "Mozilla/5.0" } });
+        cache[u] = (String(r.headers.get("location") || "").match(/products\/(\d+)/) || [])[1] || null;
+      } catch { /* 다음 실행에서 다시 시도 */ }
+    }));
+  }
+  if (todo.length) writeFileSync(cacheFile, JSON.stringify(cache, null, 1));
+  for (const p of products) if (cache[p.coupangUrl]) p._pid = cache[p.coupangUrl];
+  return products;
 }
 
 function cardTitle(text) {
@@ -164,7 +183,11 @@ function match(items, products) {
       const catWord = !!CATEGORY_WORD[p.category]?.test(title);
       const onlyOne = !toks.length && catWord &&
         products.every((q) => q === p || q.category !== p.category || q.brand !== p.brand || tokensOf(q).some((t) => !nt.includes(t)));
-      if (capOk && ((toks.length && hit.length === toks.length) || onlyOne)) {
+      // 우리 링크의 쿠팡 상품 ID를 아는데 특가 상품 ID와 다르면 이름이 맞아도 자동 등록하지 않는다(완전두유 검은콩 고칼슘 ≠ 검은콩 검은참깨 고칼슘, 2026-10-23).
+      const otherPid = !!(pidOf(p) && it.pid && pidOf(p) !== it.pid);
+      if (otherPid && capOk && ((toks.length && hit.length === toks.length) || onlyOne)) {
+        partial.push({ slug: p.slug, name: `${p.brand} ${p.name} ${p.capacity || ""}`.trim(), capOk, missing: ["이름은 맞지만 쿠팡 상품 ID가 다름"] });
+      } else if (capOk && ((toks.length && hit.length === toks.length) || onlyOne)) {
         const via = `brand+capacity${capKind === "multiple" ? "(묶음)" : ""}+${onlyOne ? "단일제품" : "name"}`;
         if (!best || toks.length > best.toks) best = { p, toks: toks.length, via };
         else if (toks.length === best.toks) best.tie = true;
@@ -244,7 +267,7 @@ function writeKvOffers(list) {
 const data = collect();
 const collectedAt = data.collectedAt || now.toISOString();
 const items = Object.values(data.tabs || {}).filter(Array.isArray).flat();
-const { matched, review } = match(items, loadProducts());
+const { matched, review } = match(items, await resolveShortLinkPids(loadProducts()));
 const offers = matched.map(toOffer);
 writeFileSync(join(outDir, `${kstDate}-offers.json`), JSON.stringify(offers, null, 1));
 
