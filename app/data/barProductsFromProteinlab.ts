@@ -133,5 +133,5 @@ export const mockBarProducts: ProductDetailProps[] = [
   bar("gomgom-proteinbar-mini", "곰곰", "단백질바 미니", 2.2, 54, 2, "4.07g/100kcal", "10g"),
   barUnknown("nobrand-proteinbar-mini", "노브랜드", "단백질바 미니", "35g"),
   barUnknown("lottewellfood-easyprotein-highprotein-crispy", "롯데웰푸드", "이지프로틴 고단백질바 (크리스피)", "50g"),
-  barUnknown("lottewellfood-easyprotein-energy-bar", "롯데웰푸드", "이지프로틴 에너지단백질바", "45g"),
+  barUnknown("lottewellfood-easyprotein-energy-bar", "롯데웰푸드", "이지프로틴 에너지단백질바", "40g"),
 ];

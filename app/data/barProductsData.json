@@ -1266,9 +1266,11 @@
       "바"
     ],
     "proteinPerServing": 12,
-    "calories": 160,
+    "calories": 170,
     "sugar": 0,
-    "density": "7.5g/100kcal",
+    "fat": 6,
+    "sodium": 180,
+    "density": "7.06g/100kcal",
     "productUrl": "#",
     "productType": "bar",
     "gradeTags": [],
@@ -1685,7 +1687,7 @@
     "slug": "lottewellfood-easyprotein-energy-bar",
     "brand": "롯데웰푸드",
     "name": "이지프로틴 에너지단백질바",
-    "capacity": "45g",
+    "capacity": "40g",
     "variant": "일반",
     "tags": [
       "바"
