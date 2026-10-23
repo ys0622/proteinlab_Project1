@@ -12,6 +12,7 @@ import { formatProductLabel } from "../../lib/productLabel";
 import { getBrandProfile } from "@/app/lib/brandProfile";
 import { brandWithSearchAlias } from "@/app/lib/brandSearchAliases";
 import { getAllCompareLandings } from "@/app/data/compareLandings";
+import { compareLandingHref } from "@/app/data/compareCanonicalOverrides";
 import type { ProductDetailProps } from "../../data/products";
 
 function getBrandQuickLinks(brand: string) {
@@ -351,7 +352,7 @@ export default async function BrandPage({ params }: PageProps) {
         .map((landing) => ({ landing, share: landing.productSlugs.filter((s) => brandSlugs.has(s)).length / landing.productSlugs.length }))
         .sort((a, b) => b.share - a.share)
         .map(({ landing }) => ({
-          href: `/compare/${landing.slug}`,
+          href: compareLandingHref(landing.slug),
           title: landing.title.split(" | ")[0],
           description: `등록 제품 ${landing.productSlugs.length}종을 단백질·당류·칼로리로 비교합니다.`,
         }))

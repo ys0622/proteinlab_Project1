@@ -281,7 +281,8 @@ export default async function CompareLandingPage({ params }: PageProps) {
   const differenceCards = buildDifferenceCards(products);
   const verdict = buildVerdict(products);
   const specRows = SPEC_ROWS.filter((row) => products.some((p) => row.value(p) !== undefined));
-  const canonical = `https://proteinlab.kr/compare/${landing.slug}`;
+  // 메타 canonical과 같은 값을 쓴다(가이드로 대표 주소를 넘긴 비교 페이지가 JSON-LD에서만 자기 주소를 말하던 불일치, 2026-10-23).
+  const canonical = compareCanonicalOverrides[landing.slug] ?? `https://proteinlab.kr/compare/${landing.slug}`;
   const jsonLd = [
     {
       "@context": "https://schema.org",

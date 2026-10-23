@@ -6,3 +6,8 @@ export const compareCanonicalOverrides: Record<string, string> = {
   "danbaek-vs-sellex-drink": "https://proteinlab.kr/guides/product-selection-comparison/danbaek-vs-selexs",
   "newcare-vs-sellex-drink": "https://proteinlab.kr/guides/product-selection-comparison/newcare-vs-sellex",
 };
+
+/** 비교 랜딩으로 가는 내부 링크 주소. 대표 주소를 가이드로 넘긴 비교는 그 가이드 경로를 준다(2026-10-23). */
+export function compareLandingHref(slug: string): string {
+  return compareCanonicalOverrides[slug]?.replace("https://proteinlab.kr", "") ?? `/compare/${slug}`;
+}

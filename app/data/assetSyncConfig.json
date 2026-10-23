@@ -2,7 +2,7 @@
   "allowedMissingSpecSlugs": {
     "bars": ["crown-highprotein-chocobar", "dryou-proteinbar-bite-crunch", "dryou-proteinbar-pro-bite-choco-classic", "syntha6-crispy-choco", "bsn-protein-crisp-peanut-butter-crunch", "labnosh-foodbar-mildchoco", "kellogg-protein-granolabar-savory", "quest-nutrition-protein-bar-deep-dish-cookie-cream-60", "nobrand-proteinbar-choco", "mymil-new-proteinbar", "calobye-daily-nuts-proteinbar", "dryou-proteinbar-mini-nuts"],
     "drinks": ["oneuldanbaek-caramel-latte-250"],
-    "yogurt": ["yoplait-protein-plain-210", "maeil-bio-greek-plain-400"]
+    "yogurt": ["yoplait-protein-plain-210", "maeil-bio-greek-plain-400", "who-greek-plain-80", "maeil-bio-greek-plain-150"]
   },
   "specOverrides": {
     "bars": {

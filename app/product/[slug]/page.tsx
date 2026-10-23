@@ -37,6 +37,7 @@ import ProductReviewSection from "../../components/ProductReviewSection";
 import ServingBasisNotice from "../../components/ServingBasisNotice";
 import { getAllProducts, getNutritionDetail } from "../../data/products";
 import { getAllCompareLandings } from "../../data/compareLandings";
+import { compareLandingHref as canonicalCompareHref } from "../../data/compareCanonicalOverrides";
 import { brandToSlug } from "../../lib/brandHubs";
 import { getCategoryHref, getCategoryLabel } from "../../lib/categories";
 import {
@@ -340,7 +341,7 @@ function buildProductInternalLinks(product: ProductDetailProps) {
   const protein = product.proteinPerServing;
   const compareLandingHref =
     category === "drink"
-      ? "/compare/newcare-vs-sellex-drink"
+      ? "/guides/product-selection-comparison/newcare-vs-sellex" // /compare/newcare-vs-sellex-drink 의 대표 주소(compareCanonicalOverrides)
       : category === "bar"
         ? "/compare/doctoru-vs-benof-bar"
         : category === "yogurt"
@@ -475,7 +476,8 @@ function buildProductInternalLinks(product: ProductDetailProps) {
     },
     relevantLanding
       ? {
-          href: `/compare/${relevantLanding.slug}`,
+          // 대표 주소를 가이드로 넘긴 비교 페이지는 대표 주소로 바로 링크한다(2026-10-23).
+          href: canonicalCompareHref(relevantLanding.slug),
           title: relevantLanding.title,
           description: "이 제품이 들어간 대표 비교입니다. 수치를 나란히 보고 차이를 바로 읽습니다.",
         }

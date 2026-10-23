@@ -1,6 +1,7 @@
 import type { CompareLanding } from "./compareLandings";
 import { getAllProducts, type ProductDetailProps } from "./products";
 import { brandToSlug } from "../lib/brandHubs";
+import { compareLandingHref } from "./compareCanonicalOverrides";
 
 /**
  * 데이터로 만드는 비교 랜딩(2026-10-20, 네이버 신규 유입용).
@@ -200,7 +201,7 @@ export function withAutoRelatedLandings(landing: CompareLanding, all: CompareLan
     relatedLinks: [
       ...landing.relatedLinks,
       ...picks.map((item) => ({
-        href: `/compare/${item.slug}`,
+        href: compareLandingHref(item.slug),
         title: item.title.split(" | ")[0],
         description: "같은 브랜드·제품군의 다른 비교를 이어서 확인합니다.",
       })),
