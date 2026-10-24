@@ -2,6 +2,7 @@
 
 proteinlab.kr — 단백질 음료·바·요거트·쉐이크 제품 비교 서비스. 이 문서는 이 저장소에서 일하는 Claude가 매번 읽는다. 검증된 사실만 적는다.
 작업 이력과 진단 결과는 `.claude/team-brief.md`, 사용자 결정 대기 목록은 `docs/owner-confirm-list.md`를 본다.
+**일의 기준은 `docs/operating-plan.md`(KPI·매일/매주 리듬·로드맵·백로그·이번 주 계획)다.** 새 요청은 백로그에 넣고 주간 계획에서 고른다. 급한 것(특가 만료·사이트 오류·잘못된 수치/링크)만 바로 한다. 주간 보고는 `docs/weekly/YYYY-MM-DD.md`(토요일).
 
 ## 구조
 - Next.js 16 App Router, TypeScript, Cloudflare Workers(OpenNext), Windows에서 개발·배포. 빌드는 `next build --webpack`.
