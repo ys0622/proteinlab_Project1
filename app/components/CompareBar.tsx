@@ -3,17 +3,21 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useCompare } from "../context/CompareContext";
+import useVisualViewportBox from "../lib/useVisualViewportBox";
 
 export default function CompareBar() {
   const { selectedSlugs, clear } = useCompare();
   const pathname = usePathname();
+  const viewport = useVisualViewportBox();
   const canCompare = selectedSlugs.length >= 2;
 
   if (selectedSlugs.length === 0 || pathname === "/compare") return null;
 
   return (
+    // 웨일 전체화면 스크롤에서 bottom 고정이 화면 밖으로 밀리는 문제 때문에 보이는 화면 크기 상자의 바닥에 둔다(useVisualViewportBox).
+    <div className="pointer-events-none fixed inset-x-0 z-[90] flex flex-col justify-end pb-2 md:pb-4" style={viewport}>
     <div
-      className="fixed inset-x-0 bottom-2 z-[90] mx-auto flex w-[min(960px,calc(100%-16px))] items-center justify-between gap-2 rounded-xl px-3 py-2.5 text-white shadow-[0_16px_40px_rgba(17,24,39,0.22)] md:bottom-4 md:w-[min(960px,calc(100%-24px))] md:gap-3 md:rounded-2xl md:px-6 md:py-4"
+      className="pointer-events-auto mx-auto flex w-[min(960px,calc(100%-16px))] items-center justify-between gap-2 rounded-xl px-3 py-2.5 text-white shadow-[0_16px_40px_rgba(17,24,39,0.22)] md:w-[min(960px,calc(100%-24px))] md:gap-3 md:rounded-2xl md:px-6 md:py-4"
       style={{
         background: "#2F5D46",
       }}
@@ -45,6 +49,7 @@ export default function CompareBar() {
           </span>
         )}
       </div>
+    </div>
     </div>
   );
 }

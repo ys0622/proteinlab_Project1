@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react";
 import { affiliateImpression, purchaseClick } from "@/lib/analytics";
 import { useCompare } from "../context/CompareContext";
 import { useFavorites } from "../context/FavoritesContext";
+import useVisualViewportBox from "../lib/useVisualViewportBox";
 
 type Props = {
   coupangHref: string | null;
@@ -24,6 +25,7 @@ export default function MobileStickyBuyButton({ coupangHref, brand, productName,
   const { selectedSlugs, isSelected, toggle: toggleCompare } = useCompare();
   const { isFavorited, toggle: toggleFavorite } = useFavorites();
   const hidden = selectedSlugs.length > 0;
+  const viewport = useVisualViewportBox();
 
   useEffect(() => {
     if (hidden || !coupangHref || impressionSent.current) return;
@@ -63,9 +65,10 @@ export default function MobileStickyBuyButton({ coupangHref, brand, productName,
     "flex h-[52px] w-[52px] shrink-0 flex-col items-center justify-center gap-0.5 rounded-xl border bg-white text-[11px] font-semibold";
 
   return (
-    <>
+    // 바깥 상자: 보이는 화면 크기의 투명 상자(누름은 통과). 바는 그 바닥에 둔다(웨일 전체화면 스크롤 대응, useVisualViewportBox 참고).
+    <div className="pointer-events-none fixed inset-x-0 z-40 flex flex-col justify-end md:hidden" style={viewport}>
       <div
-        className="fixed bottom-0 left-0 right-0 z-40 md:hidden"
+        className="pointer-events-auto"
         style={{
           background: "rgba(250,248,243,0.97)",
           borderTop: "1px solid #e8e6e3",
@@ -133,6 +136,6 @@ export default function MobileStickyBuyButton({ coupangHref, brand, productName,
           )}
         </div>
       </div>
-    </>
+    </div>
   );
 }
