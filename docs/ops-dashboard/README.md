@@ -58,7 +58,7 @@
 ```json
 {"kind":"decision|todo","status":"open","priority":10,"area":"구글 색인","title":"…","why":"한두 문장",
  "options":[{"key":"yes","label":"진행","recommended":true},{"key":"no","label":"보류"}],
- "steps":["할 일 순서(선택)"],"copy":"복사할 명령(선택)","createdAt":"ISO"}
+ "steps":["할 일 순서(선택)"],"copy":"복사할 명령(선택)","links":[{"label":"목록 보기","url":"docs/파일.md"}],"createdAt":"ISO"}
 ```
 - Scott이 누르면 페이지가 `status:"answered"`, `answer`, `answerLabel`, `note`, `answeredAt`를 쓴다. 처리한 쪽이 `status:"done"`, `result:"한 줄"`을 쓴다.
 - priority는 작을수록 위. 주간 계획 승인 카드는 5.
@@ -96,3 +96,7 @@
 | gindex | 구글 색인 페이지 | 개 | 월 목표 |
 
 북극성 지표 = "이 숫자 하나가 오르면 제대로 가고 있다"고 정한 단 하나의 숫자. 일을 고를 때 이 숫자를 움직이는지로 판단한다.
+
+## 파일 링크 (2026-10-24 추가)
+- 카드의 why·steps·result 글 속 `docs/…md` 같은 저장소 경로는 자동으로 GitHub 링크가 된다(빌드 6번째 인자 GitHub blob 주소, 예: `https://github.com/ys0622/caremap_F/blob/master/`).
+- 문서를 꼭 열어 봐야 하는 카드는 `links`로 버튼을 단다(url이 `docs/…`면 같은 GitHub 주소가 앞에 붙고, http로 시작하면 그대로). Scott이 "목록이 어디 있냐"를 묻지 않게, 파일을 언급하는 카드는 항상 링크를 단다.
