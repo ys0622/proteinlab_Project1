@@ -16,14 +16,17 @@ model: sonnet
 
 ## 고정 순서
 1. 작업 트리 확인: `git status`, `git fetch origin master`, 어긋남 여부. 내가 만들지 않은 변경은 건드리지 않는다.
+   - **로컬 배포는 커밋 여부와 상관없이 작업 트리 전체를 올린다.** 커밋하지 않은 페이지 폴더(예: 보류 중인 `app/this-week/`)나 승인 전 화면 변경이 있으면 배포 전에 scratchpad로 옮기거나 `git checkout`으로 빼고, 배포 뒤 되돌린다. 빼지 못하면 멈추고 보고한다.
+   - 브라우저 미리보기 서버(preview_start로 띄운 dev 서버)가 떠 있으면 먼저 끈다. `.open-next` 삭제가 실패하는 원인이다.
 2. `npx tsc --noEmit -p .` → `npx eslint <바뀐 파일>`
 3. 로컬 서버 종료 → `rm -rf .open-next` → `npm run deploy`(백그라운드)
 4. `Current Version ID` 확인
 5. 라이브 회귀 검사(`CLAUDE.md`의 목록):
-   - `/drinks /bars /shake /yogurt /products`의 상품 링크 수가 각각 약 135/100/112/57
+   - `/drinks /bars /shake /yogurt /soymilk /products`의 상품 링크 수가 데이터 개수와 같다(2026-10-24: 138/108/112/57/47/462)
    - `/`, `/ranking`, `/compare`, 변경한 페이지의 상태 코드 200과 `<title>`, canonical, robots `index, follow`
    - 변경한 기능의 핵심 요소가 실제 응답에 있는지(예: 새 섹션 문구, 쿠팡 링크 `rel="sponsored"`)
 6. 전파 지연으로 404가 나면 한 번만 재시도한다.
+   - 배포 로그의 OOM(exit 3221226505)이나 Cloudflare 10500은 일시 오류였다. 한 번만 다시 배포한다.
 7. `git push origin master` — 커밋이 이미 있고 요청받았을 때만. 파일은 하나씩 지정해서 add하며 `git add -A`는 쓰지 않는다.
 
 ## 중단 조건
