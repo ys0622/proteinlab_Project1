@@ -8,10 +8,53 @@ const FOOTER_LINKS = [
   { label: "블로그", href: "https://blog.naver.com/proteinlab2026", external: true },
 ];
 
+// 모든 페이지에서 주요 허브로 가는 링크(2026-10-23). 구글이 홈 1개만 색인한 상태라 허브까지 가는 길을 서버 HTML에 고정해 둔다.
+const SITE_SECTIONS = [
+  {
+    title: "제품 비교",
+    links: [
+      { label: "단백질 음료", href: "/drinks" },
+      { label: "단백질 바", href: "/bars" },
+      { label: "단백질 쉐이크", href: "/shake" },
+      { label: "단백질 요거트", href: "/yogurt" },
+      { label: "고단백 두유", href: "/soymilk" },
+      { label: "전체 제품", href: "/products" },
+    ],
+  },
+  {
+    title: "고르는 법",
+    links: [
+      { label: "가이드", href: "/guides" },
+      { label: "제품끼리 비교", href: "/compare" },
+      { label: "브랜드별", href: "/brands" },
+      { label: "랭킹", href: "/ranking" },
+      { label: "골드박스 특가", href: "/goldbox" },
+    ],
+  },
+];
+
 export default function Footer() {
   return (
     <footer className="mt-12 border-t border-[var(--border)] bg-[var(--beige-warm)] py-10">
       <div className="mx-auto max-w-[1200px] px-4 md:px-6">
+        {/* 사이트 주요 메뉴 */}
+        <nav className="mb-8 grid grid-cols-2 gap-6 sm:mx-auto sm:max-w-[560px]" aria-label="사이트 주요 메뉴">
+          {SITE_SECTIONS.map((section) => (
+            <div key={section.title}>
+              <p className="mb-2 text-sm font-semibold text-[var(--foreground)]">{section.title}</p>
+              <ul className="space-y-1.5 text-sm">
+                {section.links.map((item) => (
+                  <li key={item.href}>
+                    <Link href={item.href} className="text-[var(--foreground-muted)] hover:text-[var(--accent)] hover:underline">
+                      {item.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </nav>
+
         {/* 링크 */}
         <nav className="flex flex-wrap justify-center gap-x-6 gap-y-1 text-sm" aria-label="푸터 메뉴">
           {FOOTER_LINKS.map((item) =>
