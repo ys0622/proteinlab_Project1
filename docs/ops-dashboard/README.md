@@ -94,7 +94,7 @@
 | 2 | clickUsers | 쿠팡을 누른 사람 | 명 | affiliate_click 총 사용자 |
 | 3 | clickRate | 쿠팡 클릭 사용자 비율 | % | clickUsers ÷ users × 100 (소수 1자리) |
 | 4 | users | 주간 사용자 | 명 | 이벤트 보고서 합계 총 사용자 |
-| 5 | pdvUsers | 제품 상세를 본 사람 | 명 | product_detail_view 총 사용자 |
+| 5 | pdvUsers | 제품 상세를 본 사람 | 명 | 제품 상세 이벤트 총 사용자 — 프로틴랩 product_detail_view, 케어맵 product_view |
 | 6 | engage | 사용자당 참여 시간 | 초 | 사용자 획득 보고서 '활성 사용자당 평균 참여 시간' |
 | 7 | returning | 재방문 비율 | % | 사용자 획득 보고서 재방문자 수 ÷ 총 사용자 × 100 |
 | 8 | blogUsers | 블로그 → 사이트 사용자 | 명 | 세션 소스 naver_blog·blog.naver 사용자 |
