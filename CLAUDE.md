@@ -40,7 +40,7 @@ proteinlab.kr — 단백질 음료·바·요거트·쉐이크 제품 비교 서�
 - 링크를 지어내지 않는다. 쿠팡에 없는 제품은 링크 없이 둔다. 검색 URL은 수익이 나지 않는다.
 - **구매 버튼 같은 수익 진입점은 개편하면서 빼지 않는다.**
 - 쿠팡파트너스 계정은 케어맵과 공용이다. 쿠팡 보고서 수치는 사이트별로 분리되지 않는다. GA4는 계정(`proteinlab`)만 같고 **속성은 분리**돼 있다(프로틴랩 526849422, 케어맵 531248967, 키즈픽 533061815). 프로틴랩 데이터는 반드시 `proteinlab` 속성에서 본다.
-- 코드는 딥링크 변환 시 `subId=proteinlab`을 붙인다(`NEXT_PUBLIC_COUPANG_PARTNERS_SUB_ID`). 이미 만들어진 `link.coupang.com/a/...` 단축 링크의 subId는 쿠팡파트너스에서 만들 때 정해져 있어 미검증이다.
+- 구분값(subId)은 모든 구매 링크에서 `proteinlab`이다(2026-10-24 Scott 결정, `getCoupangSubId`, `NEXT_PUBLIC_COUPANG_PARTNERS_SUB_ID`). 그 전에는 카테고리 이름(drink 등)이 들어갔고, 쿠팡파트너스에서 만든 단축 링크 364개는 subId가 비어 있었다. 지금은 단축 링크도 `app/data/coupangShortLinkTargets.json`(단축 코드→상품 번호)으로 `/api/out/coupang?short=<코드>`를 거쳐 subId=proteinlab 딥링크를 새로 만들고, 실패하면 원래 단축 링크로 보낸다. 새 단축 링크를 넣으면 `python -X utf8 scripts/coupang/resolve-short-links.py`를 돌린다. `AF2667911`은 subId가 아니라 계정 ID(lptag, 케어맵과 같음)다.
 - 골드박스 API는 두 사이트가 같은 키를 쓰므로 호출량 한도를 공유한다. 케어맵과 코드를 합치지 않는다.
 
 ## 일하는 원칙

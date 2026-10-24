@@ -3,6 +3,8 @@ import { NextRequest, NextResponse } from "next/server";
 import {
   extractCoupangProductParams,
   getCoupangDestinationUrl,
+  getCoupangShortLinkTarget,
+  getCoupangSubId,
   getKnownSourceCoupangUrlBySlug,
   type CoupangLinkCategory,
   isValidExternalUrl,
@@ -43,13 +45,14 @@ function toCategory(value: string | null): CoupangLinkCategory | null {
   return null;
 }
 
+// 딥링크 API에 넘길 상품 URL. 단축 링크에서 풀어낸 주소에는 vendorItemId가 없어서(2026-10-24 확인) 비어 있어도 된다.
 function getCoupangProductParams(url: string) {
   try {
     const parsed = new URL(url);
     const pageKey = parsed.pathname.match(/\/vp\/products\/(\d+)/)?.[1];
     const itemId = parsed.searchParams.get("itemId");
-    const vendorItemId = parsed.searchParams.get("vendorItemId");
-    if (!pageKey || !itemId || !vendorItemId) {
+    const vendorItemId = parsed.searchParams.get("vendorItemId") ?? "";
+    if (!pageKey || !itemId) {
       return null;
     }
     return { pageKey, itemId, vendorItemId };
@@ -174,17 +177,25 @@ export async function GET(request: NextRequest) {
   const slug = searchParams.get("slug");
   const category = toCategory(searchParams.get("category"));
   const debug = searchParams.get("debug") === "1";
+  // 쿠팡파트너스에서 만든 단축 링크(link.coupang.com/a/<short>)는 구분값(subId)이 비어 있다. 미리 풀어 둔 상품 번호
+  // (app/data/coupangShortLinkTargets.json)로 subId를 붙인 딥링크를 만들고, 실패하면 원래 단축 링크로 보낸다(2026-10-24).
+  const shortCode = searchParams.get("short");
+  const shortTarget = getCoupangShortLinkTarget(shortCode);
 
-  const normalizedSourceUrl =
-    pageKey && itemId && vendorItemId
+  const normalizedSourceUrl = shortTarget
+    ? `https://www.coupang.com/vp/products/${shortTarget.pageKey}?itemId=${shortTarget.itemId}${shortTarget.vendorItemId ? `&vendorItemId=${shortTarget.vendorItemId}` : ""}`
+    : pageKey && itemId && vendorItemId
       ? `https://www.coupang.com/vp/products/${pageKey}?itemId=${itemId}&vendorItemId=${vendorItemId}`
       : url;
-  const fallbackDestination = getCoupangDestinationUrl(normalizedSourceUrl, category, slug);
+  const fallbackDestination = shortTarget
+    ? `https://link.coupang.com/a/${shortCode}`
+    : getCoupangDestinationUrl(normalizedSourceUrl, category, slug);
   // 딥링크 API에는 실제 쿠팡 상품 URL(raw)이 필요 — fallbackDestination은 이미
   // link.coupang.com 형태로 가공된 값이라 그대로 쓰면 파싱이 실패한다.
   const rawProductUrl = getCoupangProductParams(normalizedSourceUrl ?? "")
     ? normalizedSourceUrl
     : getKnownSourceCoupangUrlBySlug(slug);
+  const subId = getCoupangSubId();
 
   const [accessKey, secretKey] = await Promise.all([
     getRuntimeEnvValue("COUPANG_ACCESS_KEY"),
@@ -199,7 +210,8 @@ export async function GET(request: NextRequest) {
   if (rawProductUrl && accessKey && secretKey) {
     const params = getCoupangProductParams(rawProductUrl);
     if (params) {
-      const cacheKey = `${DEEPLINK_CACHE_PREFIX}${params.pageKey}:${params.itemId}:${params.vendorItemId}:${category ?? "proteinlab"}`;
+      // 키에 subId를 넣어, 예전(카테고리 이름 subId) 캐시를 쓰지 않고 새로 만든다.
+      const cacheKey = `${DEEPLINK_CACHE_PREFIX}${params.pageKey}:${params.itemId}:${params.vendorItemId || "-"}:sub-${subId}`;
 
       const cached = kv ? await kv.get(cacheKey).catch(() => null) : null;
       if (cached) {
@@ -211,7 +223,7 @@ export async function GET(request: NextRequest) {
           rawProductUrl,
           accessKey,
           secretKey,
-          category ?? "proteinlab",
+          subId,
         );
         partnersDestination = result.url;
         deeplinkDebug = result.debug;
@@ -243,6 +255,8 @@ export async function GET(request: NextRequest) {
       destination,
       fallbackDestination,
       sourceParams: extractCoupangProductParams(normalizedSourceUrl),
+      shortCode: shortTarget ? shortCode : null,
+      subId,
       slug,
       category,
     });

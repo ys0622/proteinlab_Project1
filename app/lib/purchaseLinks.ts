@@ -4,6 +4,7 @@
  * - Naver: product-name search results.
  * - Official mall: brand homepage when known.
  */
+import coupangShortLinkTargets from "../data/coupangShortLinkTargets.json";
 
 const BRAND_OFFICIAL_MALL: Record<string, string> = {
   "그릭데이": "https://greekday.co.kr/",
@@ -91,22 +92,19 @@ const KNOWN_SOURCE_COUPANG_URLS_BY_SLUG: Record<string, string> = {
     "https://www.coupang.com/vp/products/8869229030?itemId=26181687745&vendorItemId=93475736005",
 };
 
-const COUPANG_SUB_ID_BY_CATEGORY: Record<CoupangLinkCategory, string> = {
-  drink: "drink",
-  bar: "bar",
-  yogurt: "yogurt",
-  shake: "shake",
-  soymilk: "soymilk",
-  guide: "guide",
-  ranking: "ranking",
-};
+// 쿠팡 보고서에서 프로틴랩 수익을 케어맵(같은 파트너스 계정)과 나눠 보기 위한 구분값. 2026-10-24 Scott 결정으로 모든 링크에 "proteinlab".
+// (예전에는 카테고리 이름 drink/bar/… 를 넣고 있었다.)
+export function getCoupangSubId(): string {
+  return COUPANG_PARTNERS_SUB_ID;
+}
 
-function getCoupangSubId(category?: CoupangLinkCategory | null): string {
-  if (!category) {
-    return COUPANG_PARTNERS_SUB_ID;
-  }
+type CoupangShortLinkTarget = { pageKey: string; itemId: string; vendorItemId?: string };
+const COUPANG_SHORT_LINK_TARGETS = coupangShortLinkTargets as Record<string, CoupangShortLinkTarget>;
 
-  return COUPANG_SUB_ID_BY_CATEGORY[category] ?? COUPANG_PARTNERS_SUB_ID;
+/** 쿠팡파트너스 단축 링크 코드(link.coupang.com/a/<code>)가 가리키는 상품. 미리 풀어 둔 표에 있는 코드만 받는다. */
+export function getCoupangShortLinkTarget(code?: string | null): CoupangShortLinkTarget | null {
+  if (!code || !/^[A-Za-z0-9]{4,20}$/.test(code)) return null;
+  return COUPANG_SHORT_LINK_TARGETS[code] ?? null;
 }
 
 export function isValidExternalUrl(value?: string | null): value is string {
@@ -224,7 +222,8 @@ function buildCoupangPartnersProductUrl(
 
   const url = new URL("https://link.coupang.com/a/AFFSDP");
   url.searchParams.set("lptag", COUPANG_PARTNERS_TAG);
-  const subId = getCoupangSubId(category);
+  void category;
+  const subId = getCoupangSubId();
   if (subId) {
     url.searchParams.set("subid", subId);
   }
@@ -246,11 +245,20 @@ export function getCoupangRedirectHref(
     return null;
   }
 
-  // 쿠팡 파트너스 사이트에서 직접 발급한 정적 링크(link.coupang.com/a/...)는
-  // 이미 완성된 추적 링크이므로 그대로 사용한다. 짧은 코드라 pageKey 등을
-  // 재추출할 수 없어 우리 리다이렉트 라우트를 거치면 안 된다.
+  // 쿠팡 파트너스 사이트에서 직접 발급한 정적 링크(link.coupang.com/a/...)는 구분값(subId)이 비어 있다.
+  // 미리 풀어 둔 상품 번호가 있으면 우리 리다이렉트 라우트로 보내 subId를 붙인 딥링크를 만들고(실패하면 라우트가
+  // 원래 단축 링크로 보낸다), 표에 없는 코드는 그대로 쓴다(2026-10-24).
   if (isCoupangPartnersUrl(sourceUrl)) {
-    return sourceUrl;
+    const shortCode = sourceUrl.match(/^https:\/\/link\.coupang\.com\/a\/([A-Za-z0-9]+)$/)?.[1];
+    const target = getCoupangShortLinkTarget(shortCode);
+    if (!shortCode || !target) {
+      return sourceUrl;
+    }
+    const shortRedirect = new URL("/api/out/coupang", "https://proteinlab.kr");
+    shortRedirect.searchParams.set("short", shortCode);
+    if (category) shortRedirect.searchParams.set("category", category);
+    if (slug) shortRedirect.searchParams.set("slug", slug);
+    return `${shortRedirect.pathname}${shortRedirect.search}`;
   }
 
   const params = extractCoupangProductParams(sourceUrl);
