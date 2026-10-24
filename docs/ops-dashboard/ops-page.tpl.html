@@ -317,7 +317,7 @@ td.trend{width:92px}
   const NS = "http://www.w3.org/2000/svg";
   const svgEl = (tag, attrs) => { const e = document.createElementNS(NS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); return e; };
   function barChart(weeks, target, unit, avg){
-    const W = 300, H = 120, L = 6, R = 6, T = 14, B = 22;
+    const W = 300, H = 130, L = 6, R = 6, T = 18, B = 22;
     const svg = svgEl("svg", { viewBox: `0 0 ${W} ${H}`, role: "img" });
     const vals = weeks.map(w => typeof w.v === "number" ? w.v : null);
     const nums = vals.filter(v => v != null);
@@ -330,7 +330,8 @@ td.trend{width:92px}
       if (typeof w.v === "number"){
         const top = y(w.v);
         svg.append(svgEl("rect", { x: cx - bw / 2, y: top, width: bw, height: Math.max(1, H - B - top), rx: 3, fill: last ? "var(--accent)" : "var(--accent-weak)", stroke: last ? "none" : "var(--accent)", "stroke-width": last ? 0 : 0.8 }));
-        if (last || weeks.length <= 6){ const t = svgEl("text", { x: cx, y: top - 4, "text-anchor": "middle" }); t.textContent = fmtVal(w.v, unit); if (last) { t.setAttribute("style","fill:var(--fg);font-weight:700"); } svg.append(t); }
+        // 모든 주의 값을 막대 위에 쓴다(2026-10-24 Scott 요청 "과거 데이터 숫자도 다 보여줘"). 막대가 많으면 글자를 줄이고 단위는 뺀다.
+        { const t = svgEl("text", { x: cx, y: top - 4, "text-anchor": "middle" }); t.textContent = weeks.length > 8 ? fmtVal(w.v, null) : fmtVal(w.v, unit); const fs = weeks.length > 12 ? 8 : weeks.length > 8 ? 9 : 10; t.setAttribute("style", (last ? "fill:var(--fg);font-weight:700;" : "") + "font-size:" + fs + "px"); svg.append(t); }
       }
       const lab = svgEl("text", { x: cx, y: H - 7, "text-anchor": "middle" }); lab.textContent = String(w.w || ""); svg.append(lab);
     });
