@@ -4,10 +4,10 @@
  * 승인(review.md에 "승인: 예")되고 검사(check.json pass)를 통과한 원고만
  * <블로그 폴더>/발행대기/<날짜>_manifest.json 으로 낸다. blogpilot importer 형식과 같다.
  *
- * 하루 기본 3편·최대 4편(2026-10-24 사장님 지시: 미리 써 둔 원고를 하루 3~4편씩 차례로 발행). 예약 시각은 SLOTS 순서.
+ * 하루 기본 4편(2026-10-24 Scott 지시: 미리 써 둔 원고를 하루 3~4편씩, 오전·점심 두 번에 10분 간격으로 발행). 예약 시각은 SLOTS 순서.
  * 이미 다른 날짜 manifest에 들어간 원고는 다시 넣지 않는다. 블로그 발행 자체는 하지 않는다.
  *
- * 사용: node scripts/blog/make-manifest.mjs [--date 2026-10-22] [--max 3]
+ * 사용: node scripts/blog/make-manifest.mjs [--date 2026-10-22] [--max 4]
  */
 import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
@@ -16,8 +16,8 @@ const BLOG_ROOT = "C:/Users/ys062/Desktop/네이버 블로그/프로틴랩";
 const args = process.argv.slice(2);
 const opt = (k, d) => (args.includes(k) ? args[args.indexOf(k) + 1] : d);
 const date = opt("--date", new Date(Date.now() + 9 * 3600_000 + 86400_000).toISOString().slice(0, 10));
-const max = Math.min(Number(opt("--max", 3)), 4);
-const SLOTS = ["09:40", "12:40", "16:10", "19:40"];
+const max = Math.min(Number(opt("--max", 4)), 4);
+const SLOTS = ["09:40", "09:50", "12:00", "12:10"];
 
 const queueDir = join(BLOG_ROOT, "발행대기");
 mkdirSync(queueDir, { recursive: true });
