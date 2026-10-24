@@ -31,6 +31,9 @@
 .kc .k-unit{font-size:14px;color:var(--muted)}
 .kc .k-delta{font-family:var(--mono);font-size:13px;font-weight:600;border-radius:6px;padding:1px 6px}
 .kc .k-delta.up{background:var(--ok-weak);color:var(--ok)} .kc .k-delta.down{background:var(--bad-weak);color:var(--bad)}
+.kc .k-avg{font-size:13px;color:var(--muted)}
+.kc .k-avg b{color:var(--fg);font-family:var(--mono);font-weight:700;font-variant-numeric:tabular-nums}
+.kc .k-vs.up{color:var(--ok)} .kc .k-vs.down{color:var(--bad)}
 .kc .k-goal{font-size:12.5px;color:var(--muted);display:flex;align-items:center;gap:8px}
 .kc .k-goal .bar{flex:1;height:6px;border-radius:3px;background:var(--line);overflow:hidden}
 .kc .k-goal .bar i{display:block;height:100%;background:var(--accent)}
@@ -313,7 +316,7 @@ td.trend{width:92px}
   function fmtVal(v, unit){ if (typeof v !== "number") return v == null ? "—" : String(v); const s = unit === "%" ? v.toFixed(1) : (Math.abs(v) >= 100 ? Math.round(v).toLocaleString("ko-KR") : String(Math.round(v*10)/10)); return s + (unit && unit !== "명" && unit !== "회" ? unit : ""); }
   const NS = "http://www.w3.org/2000/svg";
   const svgEl = (tag, attrs) => { const e = document.createElementNS(NS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); return e; };
-  function barChart(weeks, target, unit){
+  function barChart(weeks, target, unit, avg){
     const W = 300, H = 120, L = 6, R = 6, T = 14, B = 22;
     const svg = svgEl("svg", { viewBox: `0 0 ${W} ${H}`, role: "img" });
     const vals = weeks.map(w => typeof w.v === "number" ? w.v : null);
@@ -335,12 +338,17 @@ td.trend{width:92px}
       const ty = y(target);
       svg.append(svgEl("line", { x1: L, x2: W - R, y1: ty, y2: ty, stroke: "var(--target)", "stroke-width": 1.5, "stroke-dasharray": "5 4" }));
     }
+    // 최근 4주 평균: 마지막 4칸 위에만 회색 선(2026-10-24 Scott 요청 "한 달 정도 주간 평균").
+    if (typeof avg === "number" && weeks.length >= 2){
+      const k = Math.min(4, weeks.length), x1 = L + slot * (weeks.length - k), ay = y(avg);
+      svg.append(svgEl("line", { x1, x2: W - R, y1: ay, y2: ay, stroke: "var(--muted)", "stroke-width": 1.5, "stroke-dasharray": "2 3" }));
+    }
     const desc = svgEl("title", {}); desc.textContent = weeks.map(w => `${w.w}: ${fmtVal(w.v, unit)}`).join(", ") + (target != null ? ` / 목표 ${fmtVal(target, unit)}` : ""); svg.prepend(desc);
     return svg;
   }
   function renderKpi(doc){
     const ms = doc && Array.isArray(doc.metrics) ? doc.metrics : []; if (!ms.length) return;
-    if (doc.note) $("kpiNote").textContent = doc.note + " 막대는 주별 값, 주황 점선은 주간 목표입니다.";
+    if (doc.note) $("kpiNote").textContent = doc.note + " 막대는 주별 값, 주황 점선은 주간 목표, 회색 점선은 최근 4주 평균입니다.";
     $("kpi").replaceChildren(...ms.map((m, idx) => {
       const weeks = (Array.isArray(m.weeks) ? m.weeks : []).slice(-12); const vals = weeks.map(w => w.v);
       const cur = vals[vals.length-1], prev = vals[vals.length-2];
@@ -351,13 +359,20 @@ td.trend{width:92px}
       if (m.unit) row.append(el("span","k-unit", m.unit));
       if (typeof cur === "number" && typeof prev === "number" && prev !== 0){ const pct = (cur-prev)/Math.abs(prev)*100; row.append(el("span","k-delta "+(pct>=0?"up":"down"), (pct>=0?"▲ ":"▼ ")+Math.abs(pct).toFixed(0)+"%")); }
       c.append(row);
+      const last4 = vals.filter(v => typeof v === "number").slice(-4);
+      const avg = last4.length >= 2 ? last4.reduce((a, b) => a + b, 0) / last4.length : null;
+      if (avg != null){
+        const a = el("div","k-avg"); a.append(el("span",null,"최근 " + last4.length + "주 평균 "), el("b",null,fmtVal(Math.round(avg*10)/10, m.unit)));
+        if (typeof cur === "number" && avg !== 0){ const d = (cur-avg)/Math.abs(avg)*100; a.append(el("span","k-vs " + (d>=0?"up":"down"), " · 지난주는 평균보다 " + (d>=0?"+":"") + d.toFixed(0) + "%")); }
+        c.append(a);
+      }
       if (typeof m.target === "number" && m.target > 0){
         const g = el("div","k-goal"); const bar = el("div","bar"); const i = el("i"); const ratio = typeof cur === "number" ? cur / m.target : 0;
         i.style.width = Math.min(100, ratio * 100) + "%"; if (ratio >= 1) i.className = "met"; bar.append(i);
         g.append(el("span",null,"목표 " + fmtVal(m.target, m.unit)), bar, el("span",null, typeof cur === "number" ? Math.round(ratio*100) + "%" : "—"));
         c.append(g);
       }
-      if (weeks.length) c.append(barChart(weeks, m.target, m.unit));
+      if (weeks.length) c.append(barChart(weeks, m.target, m.unit, avg));
       if (m.source) c.append(el("div","k-src", m.source));
       return c;
     }));
