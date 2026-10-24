@@ -330,7 +330,7 @@ td.trend{width:92px}
     $("kpi").replaceChildren(...ms.map((m, idx) => {
       const weeks = (Array.isArray(m.weeks) ? m.weeks : []).slice(-12); const vals = weeks.map(w => w.v);
       const cur = vals[vals.length-1], prev = vals[vals.length-2];
-      const c = el("div", "kc" + (m.key === "clicks" ? " star" : ""));
+      const c = el("div", "kc" + (m.star || m.key === "clicks" ? " star" : ""));
       c.append(el("div","k-lab", m.label || m.key));
       const row = el("div","k-row");
       row.append(el("span","k-val", typeof cur === "number" ? fmtVal(cur, m.unit === "%" ? "" : null) : "—"));
