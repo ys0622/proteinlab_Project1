@@ -8,7 +8,6 @@ import RecentlyViewedSection from "../../components/RecentlyViewedSection";
 import ShareButton from "../../components/ShareButton";
 import AffiliateDisclosure from "../../components/AffiliateDisclosure";
 import CommercialAdSection from "../../components/CommercialAdSection";
-import NewsletterBanner from "../../components/NewsletterBanner";
 import BackButton from "../../components/BackButton";
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
@@ -58,6 +57,7 @@ import {
 } from "../../lib/purchaseLinks";
 import { isComparableServing } from "../../lib/servingScope";
 import { labelWithSearchAlias } from "@/app/lib/brandSearchAliases";
+import { formatSugar } from "@/app/lib/sugarLabel";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -90,7 +90,7 @@ function getMetricLine(product: ProductDetailProps) {
   const parts = [
     `단백질 ${product.proteinPerServing}g`,
     product.calories != null ? `${product.calories}kcal` : null,
-    product.sugar != null ? `당류 ${product.sugar}g` : null,
+    product.sugar != null ? `당류 ${formatSugar(product)}` : null,
     product.density ? product.density : null,
   ].filter(Boolean);
 
@@ -185,7 +185,7 @@ function buildProductDescription(product: ProductDetailProps): string {
   const metrics = [
     `단백질 ${product.proteinPerServing}g`,
     product.calories != null ? `${product.calories}kcal` : null,
-    product.sugar != null ? `당류 ${product.sugar}g` : null,
+    product.sugar != null ? `당류 ${formatSugar(product)}` : null,
   ].filter(Boolean);
   const tail =
     product.productType === "drink"
@@ -209,7 +209,7 @@ function buildProductTitle(product: ProductDetailProps): string {
   // 네이버 자동완성에 "○○ 칼로리"가 많아(닥터유 단백질바·커클랜드 프로틴바·그릭요거트, 2026-10-20) 칼로리도 같이 넣는다.
   const metrics = [
     protein,
-    product.sugar != null ? `당류 ${product.sugar}g` : null,
+    product.sugar != null ? `당류 ${formatSugar(product)}` : null,
     product.calories != null ? `${product.calories}kcal` : null,
   ].filter(Boolean).join(" · ");
   return `${labelWithSearchAlias(formatProductLabel(product.brand, product.name), product.brand)} ${metrics} — ${kind} 성분 비교`;
@@ -581,7 +581,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
             name: formatProductLabel(item.brand, item.name),
             imageUrl: getProductImageUrl(item.slug) ?? null,
             href,
-            facts: [`단백질 ${item.proteinPerServing}g`, item.sugar != null ? `당류 ${item.sugar}g` : null].filter((x): x is string => Boolean(x)),
+            facts: [`단백질 ${item.proteinPerServing}g`, item.sugar != null ? `당류 ${formatSugar(item)}` : null].filter((x): x is string => Boolean(x)),
             reason: item.brand === product.brand ? "같은 브랜드" : "단백질·당류가 비슷한 다른 브랜드",
           }))
       : [];
@@ -590,7 +590,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
     !product.needsServingCheck && isComparableServing(product)
       ? [
           product.proteinPerServing != null ? `단백질 ${product.proteinPerServing}g` : null,
-          product.sugar != null ? `당류 ${product.sugar}g` : null,
+          product.sugar != null ? `당류 ${formatSugar(product)}` : null,
           product.calories != null ? `${product.calories}kcal` : null,
         ].filter((fact): fact is string => Boolean(fact))
       : [];
@@ -677,7 +677,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
         "@type": "NutritionInformation",
         proteinContent: `${product.proteinPerServing} g`,
         ...(product.calories != null ? { calories: `${product.calories} kcal` } : {}),
-        ...(product.sugar != null ? { sugarContent: `${product.sugar} g` } : {}),
+        ...(product.sugar != null && !product.sugarLabel ? { sugarContent: `${product.sugar} g` } : {}),
         ...(product.fat != null ? { fatContent: `${product.fat} g` } : {}),
         ...(product.sodium != null ? { sodiumContent: `${product.sodium} mg` } : {}),
       },
@@ -892,9 +892,11 @@ export default async function ProductDetailPage({ params }: PageProps) {
                         className="mt-1 font-extrabold leading-none"
                         style={{ fontSize: "clamp(20px, 3.5vw, 28px)", color: product.sugar <= 1 ? "#1B7F5B" : "#1E2A22" }}
                       >
-                        {product.sugar}
+                        {product.sugarLabel ? product.sugarLabel.replace(/g.*$/, "") : product.sugar}
                       </p>
-                      <p className="text-[10px] font-semibold" style={{ color: "#5F6B61" }}>g</p>
+                      <p className="text-[10px] font-semibold" style={{ color: "#5F6B61" }}>
+                        {product.sugarLabel ? product.sugarLabel.replace(/^[\d.]+/, "") : "g"}
+                      </p>
                       <p className="mt-0.5 text-[10px]" style={{ color: "#8A938B" }}>{servingBasisLabel}</p>
                     </>
                   ) : (
@@ -1212,7 +1214,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
                         </p>
                         <p className="mt-1.5 text-[12px] leading-5" style={{ color: "#5F6B61" }}>
                           단백질 {candidate.proteinPerServing}g
-                          {candidate.sugar != null ? ` · 당류 ${candidate.sugar}g` : ""}
+                          {candidate.sugar != null ? ` · 당류 ${formatSugar(candidate)}` : ""}
                           {candidate.calories != null ? ` · ${candidate.calories}kcal` : ""}
                         </p>
                       </TrackedLink>
@@ -1268,9 +1270,6 @@ export default async function ProductDetailPage({ params }: PageProps) {
       </div>
       <div className="mx-auto max-w-[1200px] px-4 pb-8 md:px-6">
         <CommercialAdSection pageType="product" />
-      </div>
-      <div className="mx-auto max-w-[1200px] px-4 pb-8 md:px-6">
-        <NewsletterBanner />
       </div>
       <Footer />
     </div>

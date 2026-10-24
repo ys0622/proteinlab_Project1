@@ -1001,7 +1001,6 @@ const exactNutritionBySlug: Record<string, NutritionPatch> = {
     caloriesKcal: 170,
     proteinG: 12,
     carbsG: 17,
-    sugarsG: 4,
     fatG: 6,
     satFatG: 3.5,
     transFatG: 0,

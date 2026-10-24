@@ -36,7 +36,7 @@ export function getNutritionDetail(p: ProductDetailProps): NutritionDetailRow[] 
     return [
       { label: "칼로리", value: formatValue(n.caloriesKcal, "kcal") },
       { label: "탄수화물", value: formatValue(n.carbsG, "g") },
-      { label: "당류", value: formatValue(n.sugarsG, "g") },
+      { label: "당류", value: p.sugarLabel ?? formatValue(n.sugarsG, "g") },
       { label: "단백질", value: formatValue(n.proteinG, "g") },
       { label: "지방", value: formatValue(n.fatG, "g") },
       { label: "포화지방", value: formatValue(n.satFatG, "g") },
@@ -50,7 +50,7 @@ export function getNutritionDetail(p: ProductDetailProps): NutritionDetailRow[] 
     const rows: NutritionDetailRow[] = [
       { label: "칼로리", value: formatValue(n.caloriesKcal, "kcal") },
       { label: "탄수화물", value: formatValue(n.carbsG, "g") },
-      { label: "당류", value: formatValue(n.sugarsG, "g") },
+      { label: "당류", value: p.sugarLabel ?? formatValue(n.sugarsG, "g") },
       { label: "단백질", value: formatValue(n.proteinG, "g") },
       { label: "지방", value: formatValue(n.fatG, "g") },
       { label: "포화지방", value: formatValue(n.satFatG, "g") },
@@ -70,7 +70,7 @@ export function getNutritionDetail(p: ProductDetailProps): NutritionDetailRow[] 
     const rows: NutritionDetailRow[] = [
       { label: "칼로리", value: formatValue(n.caloriesKcal, "kcal") },
       { label: "탄수화물", value: formatValue(n.carbsG, "g") },
-      { label: "당류", value: formatValue(n.sugarsG, "g") },
+      { label: "당류", value: p.sugarLabel ?? formatValue(n.sugarsG, "g") },
       { label: "단백질", value: formatValue(n.proteinG, "g") },
       { label: "지방", value: formatValue(n.fatG, "g") },
       { label: "포화지방", value: formatValue(n.satFatG, "g") },
@@ -87,7 +87,7 @@ export function getNutritionDetail(p: ProductDetailProps): NutritionDetailRow[] 
     const rows: NutritionDetailRow[] = [
       { label: "칼로리", value: formatValue(n.caloriesKcal, "kcal") },
       { label: "탄수화물", value: formatValue(n.carbsG, "g") },
-      { label: "당류", value: formatValue(n.sugarsG, "g") },
+      { label: "당류", value: p.sugarLabel ?? formatValue(n.sugarsG, "g") },
       { label: "단백질", value: formatValue(n.proteinG, "g") },
       { label: "지방", value: formatValue(n.fatG, "g") },
       { label: "포화지방", value: formatValue(n.satFatG, "g") },
@@ -104,7 +104,7 @@ export function getNutritionDetail(p: ProductDetailProps): NutritionDetailRow[] 
     const rows: NutritionDetailRow[] = [
       { label: "칼로리", value: formatValue(n.caloriesKcal, "kcal") },
       { label: "탄수화물", value: formatValue(n.carbsG, "g") },
-      { label: "당류", value: formatValue(n.sugarsG, "g") },
+      { label: "당류", value: p.sugarLabel ?? formatValue(n.sugarsG, "g") },
       { label: "단백질", value: formatValue(n.proteinG, "g") },
       { label: "지방", value: formatValue(n.fatG, "g") },
       { label: "포화지방", value: formatValue(n.satFatG, "g") },
@@ -121,7 +121,7 @@ export function getNutritionDetail(p: ProductDetailProps): NutritionDetailRow[] 
     return [
       { label: "칼로리", value: formatValue(p.calories, "kcal") },
       { label: "탄수화물", value: "-" },
-      { label: "당류", value: formatValue(p.sugar, "g") },
+      { label: "당류", value: p.sugarLabel ?? formatValue(p.sugar, "g") },
       { label: "단백질", value: `${p.proteinPerServing}g` },
       { label: "지방", value: formatValue(p.fat, "g") },
       { label: "포화지방", value: "-" },
@@ -133,7 +133,7 @@ export function getNutritionDetail(p: ProductDetailProps): NutritionDetailRow[] 
     return [
       { label: "칼로리", value: formatValue(p.calories, "kcal") },
       { label: "탄수화물", value: "-" },
-      { label: "당류", value: formatValue(p.sugar, "g") },
+      { label: "당류", value: p.sugarLabel ?? formatValue(p.sugar, "g") },
       { label: "단백질", value: `${p.proteinPerServing}g` },
       { label: "지방", value: formatValue(p.fat, "g") },
       { label: "포화지방", value: "-" },
@@ -146,7 +146,7 @@ export function getNutritionDetail(p: ProductDetailProps): NutritionDetailRow[] 
   return [
     { label: "칼로리", value: formatValue(p.calories, "kcal") },
     { label: "단백질", value: `${p.proteinPerServing}g` },
-    { label: "당류", value: formatValue(p.sugar, "g") },
+    { label: "당류", value: p.sugarLabel ?? formatValue(p.sugar, "g") },
   ];
 }
 

@@ -1,4 +1,5 @@
 import type { ProductDetailProps } from "../data/productTypes";
+import { formatSugar } from "./sugarLabel";
 
 export type CompareColumnId =
   | "brand"
@@ -67,7 +68,7 @@ export const COMPARE_COLUMNS: CompareColumnDef[] = [
   {
     id: "sugar",
     label: "당류",
-    getValue: (p) => (p.sugar !== undefined ? `${p.sugar}g` : "-"),
+    getValue: (p) => (p.sugar !== undefined ? (formatSugar(p) ?? "-") : "-"),
     highlight: "lower",
     toNumber: toNumericValue,
   },

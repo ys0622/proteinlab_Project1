@@ -9,6 +9,8 @@ export interface ProductCardProps {
   proteinPerServing: number;
   calories?: number;
   sugar?: number;
+  /** 라벨 표기가 숫자 하나가 아닐 때의 당류 표시(예: "1g 미만"). sugar는 정렬·필터용 상한값. */
+  sugarLabel?: string;
   density: string;
   productUrl?: string;
   coupangUrl?: string;

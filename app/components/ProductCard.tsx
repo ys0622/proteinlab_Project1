@@ -123,6 +123,7 @@ export default function ProductCard({
   proteinPerServing,
   calories,
   sugar,
+  sugarLabel,
   density,
   productUrl: _productUrl = "#",
   coupangUrl,
@@ -508,7 +509,7 @@ export default function ProductCard({
           {[
             { label: "단백질", value: `${proteinPerServing}g`, isDensity: false },
             { label: "칼로리", value: calories != null ? `${calories}` : "-", isDensity: false },
-            { label: "당류", value: sugar !== undefined ? `${sugar}g` : "-", isDensity: false },
+            { label: "당류", value: sugar !== undefined ? (sugarLabel ?? `${sugar}g`) : "-", isDensity: false },
             { label: "단백질 밀도", value: density, isDensity: true },
           ].map(({ label, value, isDensity }) => (
             <div

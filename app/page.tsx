@@ -4,7 +4,6 @@ import Link from "next/link";
 import GuideThumbImage from "./components/GuideThumbImage";
 import HomeGuideCardLink from "./components/HomeGuideCardLink";
 import HomeHeroSearch from "./components/HomeHeroSearch";
-import NewsletterBanner from "./components/NewsletterBanner";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import HomePopularCarousel, { type CarouselProduct } from "./components/HomePopularCarousel";
@@ -362,10 +361,6 @@ export default async function Home() {
             ))}
           </div>
         </div>
-      </section>
-
-      <section className="mx-auto max-w-[1180px] px-4 pb-6 md:px-5">
-        <NewsletterBanner />
       </section>
 
       <Footer />
