@@ -2,7 +2,7 @@
 
 proteinlab.kr — 단백질 음료·바·요거트·쉐이크 제품 비교 서비스. 이 문서는 이 저장소에서 일하는 Claude가 매번 읽는다. 검증된 사실만 적는다.
 작업 이력과 진단 결과는 `.claude/team-brief.md`, 사용자 결정 대기 목록은 `docs/owner-confirm-list.md`를 본다.
-**사용자는 Scott이라고 부른다.** Scott이 승인할 것·직접 할 일·요청·오늘 상태는 운영실 페이지(https://claude.ai/artifact/D89GJZzP51Zkg2H7BMYiuW, ArtifactData로 읽고 씀)에 모은다. 새 승인 건은 채팅에만 쓰지 말고 거기에 카드로 넣는다.
+**사용자는 Scott이라고 부른다.** Scott이 승인할 것·직접 할 일·요청·오늘 상태는 운영실 페이지(https://claude.ai/artifact/D89GJZzP51Zkg2H7BMYiuW, ArtifactData로 읽고 씀)에 모은다. 새 승인 건은 채팅에만 쓰지 말고 거기에 카드로 넣는다. **채팅에서 한 작업도 끝날 때마다 운영실 `ops/log`(그날 날짜 한 줄)와 해당 `ops/status` 항목을 같이 고친다**(2026-10-26 Scott: 매번 말하지 않아도 되게).
 **일의 기준은 `docs/operating-plan.md`(KPI·매일/매주 리듬·로드맵·백로그·이번 주 계획)다.** 새 요청은 백로그에 넣고 주간 계획에서 고른다. 급한 것(특가 만료·사이트 오류·잘못된 수치/링크)만 바로 한다. 주간 보고는 `docs/weekly/YYYY-MM-DD.md`(토요일).
 
 ## 구조
