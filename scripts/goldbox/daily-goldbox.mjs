@@ -178,6 +178,16 @@ function match(items, products) {
     const nt = norm(title);
     let best = null;
     const partial = [];
+    // 사이트의 두 제품 링크가 같은 쿠팡 상품(맛 옵션)을 가리키면 ID만으로는 못 가른다(하이뮨 액티브 밀크쉐이크 링크가 오리지널 상품, 2026-10-26).
+    // 이때는 제목에 맛·이름 단어가 모두 들어간 제품 하나만 고르고, 못 고르면 확인 필요로 둔다.
+    const titleHasCap0 = /\d\s*(ml|g|l)(?![a-zA-Z])/i.test(title);
+    const idCands = products.filter((p) => pidOf(p) && pidOf(p) === it.pid && (!titleHasCap0 || capacityMatch(title, p)));
+    if (idCands.length > 1) {
+      const named = idCands.filter((p) => { const toks = tokensOf(p); return toks.length && toks.every((t) => nt.includes(t) || (t.endsWith("맛") && nt.includes(t.slice(0, -1)))); });
+      if (named.length === 1) matched.push({ item: it, title, product: named[0], via: "coupang-product-id+name" });
+      else if (!review.some((r) => r.pid === it.pid)) review.push({ pid: it.pid, title, tie: true, candidates: idCands.slice(0, 5).map((p) => ({ slug: p.slug, name: `${p.brand} ${p.name} ${p.capacity || ""}`.trim(), capOk: true, missing: ["같은 쿠팡 상품 ID를 쓰는 사이트 제품이 여럿"] })) });
+      continue;
+    }
     for (const p of products) {
       // 쿠팡 상품 ID 하나에 여러 용량 옵션이 묶인다(그릭데이 라이트 100g·800g 페이지에 450g 특가). 제목 용량이 다르면 ID만으로 맞추지 않는다(2026-10-22).
       const titleHasCap = /\d\s*(ml|g|l)(?![a-zA-Z])/i.test(title);
