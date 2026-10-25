@@ -18,7 +18,7 @@ Claude in Chrome은 프로필마다 기기 ID가 다르다. 작업 전에 `list_
 
 | 이름 | 폴더(`%LOCALAPPDATA%\Google\Chrome\User Data\`) | Claude in Chrome 기기 ID |
 |---|---|---|
-| 크롬1 프로틴랩 | `Profile 3` | (확장 설치 필요) |
+| 크롬1 프로틴랩 | `Profile 3` | `09ce1256-d05a-48de-a500-bb966e895ce2` (쓰레드 @proteinlab_2026 로그인 확인) |
 | 크롬2 케어맵 | `Profile Caremap` | `a6a05e3f-d69b-445f-b2a2-be4ba916a19c` |
 | 크롬3 정보픽 | `Profile Proteinlab`(폴더 이름과 달리 정보픽·@yslee7028) | `b2074465-27b9-489e-a794-78227e5ef2ac` |
 | 크롬4 인스타 | `Default` | `2ee3da47-a7fa-4409-ad83-5852814c6a18` |
