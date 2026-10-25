@@ -1,5 +1,6 @@
 // 네이버 서치어드바이저 '콘텐츠 노출/클릭'을 월~일 주 단위로 합산한다(읽기 전용, 2026-10-24).
 // 사용(Git Bash): aside repl "$(sed "s#__SITE__#https://proteinlab.kr#" scripts/naver/search-weekly.aside.js)"
+//   작업용 크롬(2026-10-25부터 기본): sed ... > .naver-crawl/sw.js && node scripts/browser/chrome-repl.mjs --profile naver-ys0622 --file .naver-crawl/sw.js
 //   케어맵은 __SITE__ 를 https://caremap.co.kr 로 바꾼다. Aside에서 서치어드바이저에 로그인돼 있어야 한다.
 // 출력: WEEKS [[주 시작 "M/D", 그 주 날짜 수, 클릭, 노출, CTR%], ...] — 날짜 수가 7인 주만 운영실에 넣는다.
 // 화면이 부르는 /api-console/report/expose/<사이트 id>?period=…&device=d 응답의 items[0].logs(일별)를 쓴다.

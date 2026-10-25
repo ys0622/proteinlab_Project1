@@ -65,6 +65,15 @@ else for(const path of paths){
   if(!ok)break;
 }`;
 
+// 2026-10-25 Scott 결정: 작업용 크롬(D:/browser-profiles/naver-ys0622)을 먼저 쓰고, 안 되면 Aside(백업).
+let backend = "chrome";
+function run(code) {
+  if (backend === "chrome") {
+    return spawnSync(process.execPath, [join(root, "scripts/browser/chrome-repl.mjs"), "--profile", "naver-ys0622", "--code", code, "--timeout", "240000"], { encoding: "utf-8", maxBuffer: 16 * 1024 * 1024, timeout: 300_000 });
+  }
+  return spawnSync(aside, ["repl", code], { encoding: "utf-8", maxBuffer: 16 * 1024 * 1024, timeout: 240_000 });
+}
+
 const accepted = [];
 let stop = "";
 if (dry) {
@@ -75,9 +84,15 @@ if (dry) {
 for (let i = 0; i < todo.length && !stop; ) {
   const chunk = todo.slice(i, i + CHUNK);
   const code = `const paths=${JSON.stringify(chunk)};${BODY}`;
-  const res = spawnSync(aside, ["repl", code], { encoding: "utf-8", maxBuffer: 16 * 1024 * 1024, timeout: 240_000 });
+  let res = run(code);
+  // 크롬 프로필이 로그인 안 됐거나 실패하면 Aside(백업)로 바꿔 같은 묶음을 다시 넣는다.
+  if (backend === "chrome" && (/LOGIN_NEEDED/.test(res.stdout || "") || !/^(OK|NO) /m.test(res.stdout || ""))) {
+    console.log(`크롬 실패 → Aside로 전환: ${/LOGIN_NEEDED/.test(res.stdout || "") ? "naver-ys0622 로그인 필요" : (res.stderr || res.error?.message || "").slice(0, 200)}`);
+    backend = "aside";
+    res = run(code);
+  }
   const out = res.stdout || "";
-  if (/LOGIN_NEEDED/.test(out)) { stop = "네이버 로그인 필요(Aside에서 서치어드바이저 로그인)"; break; }
+  if (/LOGIN_NEEDED/.test(out)) { stop = "네이버 로그인 필요(크롬 naver-ys0622·Aside 모두)"; break; }
   const ok = [...out.matchAll(/^OK (\S+)/gm)].map((m) => m[1]);
   for (const p of ok) { accepted.push(p); appendFileSync(submittedFile, p + "\n"); }
   if (/^NO /m.test(out)) stop = "접수 안 됨 — 하루 한도(약 50건)로 추정";
@@ -96,6 +111,7 @@ const summary = [
   `네이버 수집 요청 ${kstDate}`,
   `접수: ${accepted.length}건 / 대상 ${todo.length}건`,
   stop ? `중단: ${stop}` : "중단: 없음",
+  `브라우저: ${backend === "chrome" ? "크롬(naver-ys0622)" : "Aside(백업)"}`,
   `남은 주소: ${remaining}건`,
   ...accepted.map((p) => `  ${p}`),
 ].join("\n");

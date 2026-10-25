@@ -40,20 +40,30 @@ const kstDate = new Date(now.getTime() + 9 * 3600_000).toISOString().slice(0, 10
 // ---------- 1. collect ----------
 function collect() {
   if (fromFile) return JSON.parse(readFileSync(fromFile, "utf-8"));
-  const code = readFileSync(join(root, "scripts/goldbox/collect-web-goldbox.aside.js"), "utf-8");
+  const script = join(root, "scripts/goldbox/collect-web-goldbox.aside.js");
+  const code = readFileSync(script, "utf-8");
   const aside = join(process.env.LOCALAPPDATA, "Aside/CLI/current/aside.exe");
-  // 2026-10-25: PC를 켠 직후에는 Aside 창은 떠 있어도 데몬 연결 전이라 "is not connected to the daemon"·ETIMEDOUT으로 실패했다.
-  // 실패하면 2분씩 기다리며 4번까지 다시 시도한다(최대 약 6분 대기).
+  const parse = (res) => {
+    const line = (res.stdout || "").split(/\r?\n/).find((l) => l.startsWith("GOLDBOX "));
+    if (!line) return null;
+    const data = JSON.parse(line.slice("GOLDBOX ".length));
+    writeFileSync(join(outDir, `${kstDate}-collect.json`), JSON.stringify(data, null, 1));
+    return data;
+  };
+  // 2026-10-25 Scott 결정: 작업용 크롬(D:/browser-profiles/work-nologin)을 먼저 쓰고, 실패하면 Aside(백업)로 한다.
+  for (let attempt = 1; attempt <= 2; attempt++) {
+    const res = spawnSync(process.execPath, [join(root, "scripts/browser/chrome-repl.mjs"), "--profile", "work-nologin", "--file", script], { encoding: "utf-8", maxBuffer: 64 * 1024 * 1024, timeout: 360_000 });
+    const data = parse(res);
+    if (data) { console.log("수집: 크롬"); return data; }
+    console.log(`크롬 수집 실패(${attempt}회): ${(res.stderr || res.error?.message || "").slice(0, 300)}`);
+  }
+  // Aside: PC를 켠 직후에는 데몬 연결 전이라 "is not connected to the daemon"·ETIMEDOUT으로 실패했다(2026-10-25). 2분씩 기다리며 4번까지.
   for (let attempt = 1; attempt <= 4; attempt++) {
     if (attempt > 1) Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, 120_000);
     const res = spawnSync(aside, ["repl", code], { encoding: "utf-8", maxBuffer: 64 * 1024 * 1024, timeout: 300_000 });
-    const line = (res.stdout || "").split(/\r?\n/).find((l) => l.startsWith("GOLDBOX "));
-    if (line) {
-      const data = JSON.parse(line.slice("GOLDBOX ".length));
-      writeFileSync(join(outDir, `${kstDate}-collect.json`), JSON.stringify(data, null, 1));
-      return data;
-    }
-    console.log(`수집 실패(${attempt}회): ${(res.stderr || res.error?.message || "").slice(0, 300)}`);
+    const data = parse(res);
+    if (data) { console.log("수집: Aside(백업)"); return data; }
+    console.log(`Aside 수집 실패(${attempt}회): ${(res.stderr || res.error?.message || "").slice(0, 300)}`);
   }
   throw new Error("골드박스 수집 실패");
 }
