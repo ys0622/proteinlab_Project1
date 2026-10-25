@@ -1763,5 +1763,79 @@
     },
     "naverUrl": "https://search.shopping.naver.com/search/all?query=%EA%B3%A1%EB%AC%BC%EB%8F%84%EA%B0%90%2021%EA%B3%A1%20%EC%84%9C%EB%A6%AC%ED%83%9C%20%EA%B0%80%EB%93%9D%20%EC%BD%A9%EB%AC%BC%EB%91%90%EC%9C%A0%20180ml&vertical=search",
     "coupangUrl": "https://www.coupang.com/vp/products/8924562907?itemId=26083404409&vendorItemId=93384905843"
+  },
+  {
+    "slug": "yonsei-lowsugar-blackbean-calcium-190",
+    "brand": "연세두유",
+    "name": "저당 검은콩&고칼슘",
+    "capacity": "190mL",
+    "variant": "검은콩",
+    "tags": [
+      "팩"
+    ],
+    "proteinPerServing": 6,
+    "calories": 125,
+    "sugar": 3,
+    "density": "3.2g/100ml",
+    "productUrl": "#",
+    "productType": "soymilk",
+    "gradeTags": [],
+    "flavor": "검은콩",
+    "proteinSource": "대두",
+    "fat": 4.8,
+    "sodium": 140,
+    "calorieDensity": "65.8kcal/100ml",
+    "soymilkType": "두유",
+    "nutritionPerBottle": {
+      "caloriesKcal": 125,
+      "proteinG": 6,
+      "carbsG": 14,
+      "sugarsG": 3,
+      "fatG": 4.8,
+      "satFatG": 1,
+      "transFatG": 0,
+      "cholesterolMg": 0,
+      "sodiumMg": 140,
+      "calciumMg": 230
+    },
+    "naverUrl": "https://search.shopping.naver.com/search/all?query=%EC%97%B0%EC%84%B8%EB%91%90%EC%9C%A0%20%EC%A0%80%EB%8B%B9%20%EA%B2%80%EC%9D%80%EC%BD%A9%26%EA%B3%A0%EC%B9%BC%EC%8A%98%20190mL",
+    "coupangUrl": "https://www.coupang.com/vp/products/8606960122?itemId=28463778757&vendorItemId=95414170130"
+  },
+  {
+    "slug": "yonsei-lowsugar-almond-pine-190",
+    "brand": "연세두유",
+    "name": "저당 아몬드&잣",
+    "capacity": "190mL",
+    "variant": "아몬드&잣",
+    "tags": [
+      "팩"
+    ],
+    "proteinPerServing": 6,
+    "calories": 125,
+    "sugar": 3,
+    "density": "3.2g/100ml",
+    "productUrl": "#",
+    "productType": "soymilk",
+    "gradeTags": [],
+    "flavor": "아몬드&잣",
+    "proteinSource": "대두",
+    "fat": 4.8,
+    "sodium": 140,
+    "calorieDensity": "65.8kcal/100ml",
+    "soymilkType": "두유",
+    "nutritionPerBottle": {
+      "caloriesKcal": 125,
+      "proteinG": 6,
+      "carbsG": 14,
+      "sugarsG": 3,
+      "fatG": 4.8,
+      "satFatG": 1,
+      "transFatG": 0,
+      "cholesterolMg": 0,
+      "sodiumMg": 140,
+      "calciumMg": 230
+    },
+    "naverUrl": "https://search.shopping.naver.com/search/all?query=%EC%97%B0%EC%84%B8%EB%91%90%EC%9C%A0%20%EC%A0%80%EB%8B%B9%20%EC%95%84%EB%AA%AC%EB%93%9C%26%EC%9E%A3%20190mL",
+    "coupangUrl": "https://www.coupang.com/vp/products/8608358880?itemId=25613190846&vendorItemId=95414170131"
   }
 ]
