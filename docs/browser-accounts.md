@@ -10,8 +10,21 @@
 | 크롬2 | 케어맵 블로그(네이버 shamet), 쓰레드 @caremap1 | 케어맵 블로그·쓰레드 수동 작업 |
 | 크롬3 | 오늘의 정보픽 블로그(네이버 yongsama86), 쓰레드 @yslee7028 | 정보픽 블로그·육아 쓰레드 |
 | 크롬4 | 인스타 | 인스타 |
-| 크롬5(제안) | 구글 ys7028@gmail.com(GA4·서치콘솔·애드센스), 쿠팡파트너스 | 세 사이트 분석·수익 확인(Claude in Chrome) |
+| 크롬5 | 구글 ys7028@gmail.com(GA4·서치콘솔·애드센스), 쿠팡파트너스 | 세 사이트 분석·수익 확인(Claude in Chrome) |
 | Aside | 네이버 ys0622 | 서치어드바이저: 수집 요청(`scripts/naver/crawl-daily.mjs`), 주간 지표(`search-weekly.aside.js`) |
+
+## 크롬 프로필 폴더와 Claude in Chrome 기기 ID (2026-10-25 확인)
+Claude in Chrome은 프로필마다 기기 ID가 다르다. 작업 전에 `list_connected_browsers` → `select_browser`로 맞는 크롬을 고른다(켜져 있는 프로필만 목록에 나온다).
+
+| 이름 | 폴더(`%LOCALAPPDATA%\Google\Chrome\User Data\`) | Claude in Chrome 기기 ID |
+|---|---|---|
+| 크롬1 프로틴랩 | `Profile 3` | (확장 설치 필요) |
+| 크롬2 케어맵 | `Profile Caremap` | `a6a05e3f-d69b-445f-b2a2-be4ba916a19c` |
+| 크롬3 정보픽 | `Profile Proteinlab`(폴더 이름과 달리 정보픽·@yslee7028) | `b2074465-27b9-489e-a794-78227e5ef2ac` |
+| 크롬4 인스타 | `Default` | `2ee3da47-a7fa-4409-ad83-5852814c6a18` |
+| 크롬5 구글 | `Profile 5` | `49b822e6-ba74-439e-b160-5c2acf356b99` (GA4 열림 확인) |
+
+크롬5만 열기: `"C:\Program Files\Google\Chrome\Application\chrome.exe" --profile-directory="Profile 5"`
 
 ## 자동화 전용 크롬 프로필 (`D:\browser-profiles\`)
 사람이 쓰는 크롬과 별개로, 스크립트가 `scripts/browser/chrome-repl.mjs --profile <이름>`으로 띄운다(화면 밖 창, `.lock`으로 동시 사용 방지).
