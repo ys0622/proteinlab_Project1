@@ -17,7 +17,7 @@ proteinlab.kr — 단백질 음료·바·요거트·쉐이크 제품 비교 서�
 - 네이버 순위 주간 기록: `python -X utf8 scripts/naver/rank.py [검색어...]` → `docs/naver-rank-log.csv`(Aside 에이전트가 화면에서 읽은 값). 매주 토요일 주간 점검(proteinlab-weekly)에서 잰다. 2026-10-22 기준: 15개 중 7개 노출(블로그는 0).
 - 블로그 원고 링크에는 `scripts/blog/add-utm.mjs`로 `utm_source=naver_blog&utm_medium=blog&utm_campaign=<원고ID>`를 붙인다. `middleware.ts`는 2026-10-22부터 utm_ 을 지우지 않는다(지우면 GA4가 캠페인을 못 읽음, 중복은 canonical이 막음). fbclid·gclid 등은 계속 308로 지운다.
 - 앱 예약 작업(2026-10-22 정리): 프로틴랩은 `proteinlab-morning`(매일 09:50, 골드박스·네이버 수집 결과 확인 → 블로그 발행 확인·재시도 → 다음 원고 1편·내일 발행 목록 → 보고)와 `proteinlab-weekly`(토 10:30, KPI·GA4·검색·순위·다음 주 계획) 두 개만 둔다. Windows 작업은 골드박스·네이버 수집(프로틴랩), BlogPilot_Daily(블로그 발행, 다른 세션).
-- 브라우저 배치(2026-10-25 Scott 결정, `docs/browser-accounts.md`): 웨일은 Scott 개인용, **크롬이 작업용**(자동화는 `scripts/browser/chrome-repl.mjs --profile <이름>`로 `D:rowser-profiles\<이름>` 프로필을 띄움, 계정 하나 = 프로필 하나), **Aside는 백업**(크롬 실패 시 자동 전환). 골드박스는 `work-nologin`, 네이버 수집·서치어드바이저는 `naver-ys0622`. Claude 내장 브라우저에는 계정을 로그인하지 않는다.
+- 브라우저 배치(2026-10-25 Scott 결정, `docs/browser-accounts.md`): 웨일은 Scott 개인용. 크롬1 프로틴랩(블로그·쓰레드), 크롬2 케어맵, 크롬3 정보픽·@yslee7028, 크롬4 인스타, **Aside는 네이버 서치어드바이저 전용**(수집 요청·주간 지표). 그 밖의 자동화는 크롬(`scripts/browser/chrome-repl.mjs --profile <이름>`, `D:rowser-profiles\<이름>`; 골드박스는 `work-nologin`, 실패 시 Aside). Claude 내장 브라우저에는 계정을 로그인하지 않는다.
 - 신규 쉐이크 등록은 `scripts/add-shake.mjs`(사진·성분표를 `inbox/shake/`에 넣고 실행). 다른 카테고리용 스크립트는 없다.
 
 ## 배포

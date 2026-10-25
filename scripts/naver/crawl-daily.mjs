@@ -65,8 +65,9 @@ else for(const path of paths){
   if(!ok)break;
 }`;
 
-// 2026-10-25 Scott 결정: 작업용 크롬(D:/browser-profiles/naver-ys0622)을 먼저 쓰고, 안 되면 Aside(백업).
-let backend = "chrome";
+// 2026-10-25 Scott 결정: 네이버 서치어드바이저는 Aside 담당(브라우저 배치 docs/browser-accounts.md).
+// 크롬 경로(naver-ys0622)는 BROWSER=chrome 일 때만 쓴다.
+let backend = process.env.BROWSER === "chrome" ? "chrome" : "aside";
 function run(code) {
   if (backend === "chrome") {
     return spawnSync(process.execPath, [join(root, "scripts/browser/chrome-repl.mjs"), "--profile", "naver-ys0622", "--code", code, "--timeout", "240000"], { encoding: "utf-8", maxBuffer: 16 * 1024 * 1024, timeout: 300_000 });
