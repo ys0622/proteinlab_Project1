@@ -58,7 +58,6 @@ export const RECENT_REVISIONS: { date: string; paths: string[] }[] = [
       "/guides/product-selection-comparison/flymill-protein-shake",
       "/guides/product-selection-comparison/flymill-vs-danbaekhani",
       "/guides/product-selection-comparison/labnoshe-slim-shake",
-      "/guides/product-selection-comparison/proteone-protein-shake",
       "/guides/product-selection-comparison/shakebaby-protein-shake",
       "/guides/product-selection-comparison/shakebaby-vs-danbaekhani",
       "/guides/product-selection-comparison/drinking-yogurt-guide",

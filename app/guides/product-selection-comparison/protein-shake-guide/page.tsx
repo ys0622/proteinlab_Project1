@@ -62,7 +62,7 @@ export default function ProteinShakeGuidePage() {
         { label: "플라이밀과 단백하니 비교가 궁금하다면 → 플라이밀 vs 단백하니", href: "/guides/product-selection-comparison/flymill-vs-danbaekhani" },
         { label: "플라이밀 브랜드 정리가 궁금하다면 → 플라이밀 단백질 쉐이크 추천", href: "/guides/product-selection-comparison/flymill-protein-shake" },
         { label: "단백하니 종류가 궁금하다면 → 단백하니 단백질 쉐이크 추천", href: "/guides/product-selection-comparison/danbaekhani-protein-shake" },
-        { label: "프로티원 종류가 궁금하다면 → 프로티원 단백질 쉐이크 추천", href: "/guides/product-selection-comparison/proteone-protein-shake" },
+        { label: "프로티원 종류가 궁금하다면 → 프로티원 단백질 쉐이크 추천", href: "/compare/proteone-vs-itthefit-shake" },
         { label: "식사대용 기준이 궁금하다면 → 식사대용 단백질 쉐이크", href: "/guides/product-selection-comparison/meal-replacement-protein-shake-guide" },
         { label: "음료와 차이가 궁금하다면 → 단백질 음료 vs 단백질 쉐이크", href: "/guides/product-selection-comparison/protein-drink-vs-protein-shake" },
         { label: "추천 후보를 바로 보고 싶다면 → 단백질 쉐이크 추천 TOP 7", href: "/guides/product-selection-comparison/protein-shake-top7" },

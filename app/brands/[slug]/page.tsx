@@ -166,7 +166,7 @@ function getBrandQuickLinks(brand: string) {
     ],
     프로티원: [
       {
-        href: "/guides/product-selection-comparison/proteone-protein-shake",
+        href: "/compare/proteone-vs-itthefit-shake",
         title: "프로티원 쉐이크 라인업",
         description: "프로티원 맛별 단백질 밀도와 저당 여부를 한 번에 확인합니다.",
       },

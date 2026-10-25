@@ -305,7 +305,7 @@ export const morningProteinShakeConfig: CategoryGuideConfig = {
     relatedGuides: [
       {
         title: "프로티원 단백질 쉐이크 추천",
-        href: "/guides/product-selection-comparison/proteone-protein-shake",
+        href: "/compare/proteone-vs-itthefit-shake",
         description: "아침용 중에서도 더 가볍고 단백질 밀도가 높은 후보를 보고 싶다면 프로티원 브랜드 페이지가 더 직접적입니다.",
       },
       {

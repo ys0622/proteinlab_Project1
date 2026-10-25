@@ -269,7 +269,7 @@ function getShakeGuideLink(product: ProductDetailProps) {
       description: "쉐이크베이비 맛별 성분과 선택 기준을 확인합니다.",
     },
     "프로티원": {
-      href: "/guides/product-selection-comparison/proteone-protein-shake",
+      href: "/compare/proteone-vs-itthefit-shake",
       title: "프로티원 쉐이크 비교",
       description: "프로티원 맛별 단백질 밀도와 저당 기준을 확인합니다.",
     },

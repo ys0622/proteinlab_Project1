@@ -61,7 +61,7 @@ export default function LowSugarProteinShakeGuidePage() {
       internalLinks={[
         { label: "테이크핏 신규 4종이 궁금하다면 → 테이크핏 브레드밀 비교", href: "/guides/product-selection-comparison/takefit-breadmeal-protein-shake" },
         { label: "신규 쉐이크 전체가 궁금하다면 → 2026 신제품 24종 비교", href: "/guides/product-selection-comparison/protein-shake-new-products-2026" },
-        { label: "프로티원 저당 라인이 궁금하다면 → 프로티원 단백질 쉐이크 추천", href: "/guides/product-selection-comparison/proteone-protein-shake" },
+        { label: "프로티원 저당 라인이 궁금하다면 → 프로티원 단백질 쉐이크 추천", href: "/compare/proteone-vs-itthefit-shake" },
         { label: "플라이밀 피넛버터 기준이 궁금하다면 → 플라이밀 단백질 쉐이크 추천", href: "/guides/product-selection-comparison/flymill-protein-shake" },
         { label: "단백하니 저당 라인업이 궁금하다면 → 단백하니 단백질 쉐이크 추천", href: "/guides/product-selection-comparison/danbaekhani-protein-shake" },
         { label: "랩노쉬 슬림쉐이크가 궁금하다면 → 랩노쉬 슬림쉐이크 추천", href: "/guides/product-selection-comparison/labnoshe-slim-shake" },

@@ -233,7 +233,7 @@ export const proteinShakeTop7Config: CategoryGuideConfig = {
       { title: "플라이밀 단백질 쉐이크 추천", href: "/guides/product-selection-comparison/flymill-protein-shake", description: "플라이밀 피넛버터와 초코, 쿠키앤크림 중 무엇이 더 맞는지 브랜드 기준으로 먼저 좁힐 수 있습니다." },
       { title: "단백하니 단백질 쉐이크 추천", href: "/guides/product-selection-comparison/danbaekhani-protein-shake", description: "단백하니 시그니처, 초코, 말차 차이를 저당과 칼로리 기준으로 정리한 브랜드 가이드입니다." },
       { title: "플라이밀 vs 단백하니", href: "/guides/product-selection-comparison/flymill-vs-danbaekhani", description: "고단백 우선인지, 더 가벼운 저당 균형형이 더 맞는지 두 인기 브랜드를 바로 비교합니다." },
-      { title: "프로티원 단백질 쉐이크 추천", href: "/guides/product-selection-comparison/proteone-protein-shake", description: "초코와 커피맛 중 무엇이 더 가볍고 단백질 밀도가 높은지 브랜드 기준으로 빠르게 볼 수 있습니다." },
+      { title: "프로티원 단백질 쉐이크 추천", href: "/compare/proteone-vs-itthefit-shake", description: "초코와 커피맛 중 무엇이 더 가볍고 단백질 밀도가 높은지 브랜드 기준으로 빠르게 볼 수 있습니다." },
       { title: "쉐이크베이비 단백질 쉐이크 추천", href: "/guides/product-selection-comparison/shakebaby-protein-shake", description: "초코, 딸기, 말차, 곡물, 스윗콘 플레이크 5종을 성분 기준으로 비교한 신규 브랜드 가이드입니다." },
       { title: "테이크핏 브레드밀 4종 비교", href: "/guides/product-selection-comparison/takefit-breadmeal-protein-shake", description: "초코 브라우니·바나나브륄레·고소오트식빵·고구마소보로를 단백질과 당류 기준으로 비교합니다." },
       { title: "2026 쉐이크 신제품 24종", href: "/guides/product-selection-comparison/protein-shake-new-products-2026", description: "최근 등록된 다섯 브랜드 24종의 대표 성분과 목적별 후보를 확인합니다." },
@@ -435,7 +435,7 @@ export const dietProteinShakeConfig: CategoryGuideConfig = {
     },
   ],
     relatedGuides: [
-      { title: "프로티원 단백질 쉐이크 추천", href: "/guides/product-selection-comparison/proteone-protein-shake", description: "다이어트용으로 자주 비교되는 프로티원 초코·커피맛 차이를 브랜드 기준으로 먼저 볼 수 있습니다." },
+      { title: "프로티원 단백질 쉐이크 추천", href: "/compare/proteone-vs-itthefit-shake", description: "다이어트용으로 자주 비교되는 프로티원 초코·커피맛 차이를 브랜드 기준으로 먼저 볼 수 있습니다." },
       { title: "단백하니 단백질 쉐이크 추천", href: "/guides/product-selection-comparison/danbaekhani-protein-shake", description: "저당과 칼로리 균형형 브랜드를 찾는다면 단백하니 브랜드 페이지가 바로 이어집니다." },
       { title: "랩노쉬 라인업", href: "/guides/product-selection-comparison/labnosh-lineup", description: "식대용으로 꾸준히 먹기 좋은 브랜드를 더 자세히 봅니다." },
       { title: "단백질 쉐이크 칼로리 순위", href: "/guides/product-selection-comparison/protein-shake-calorie-ranking", description: "전체 DB에서 칼로리만 놓고 보면 어떤 제품이 더 가벼운지 확인합니다." },
