@@ -11,7 +11,7 @@ if errorlevel 1 (
 )
 node scripts\naver\crawl-daily.mjs >> .naver-crawl\run.log 2>&1
 rem 2026-10-24: "Aside isn't running" right after boot made the whole run fail. Restart Aside and retry once.
-findstr /C:"Aside isn't running" /C:"fetch failed" .naver-crawl\latest.txt >nul
+findstr /C:"Aside isn't running" /C:"fetch failed" /C:"not connected to the daemon" /C:"ETIMEDOUT" .naver-crawl\latest.txt >nul
 if not errorlevel 1 (
   echo retry after Aside restart >> .naver-crawl\run.log
   start "" "C:\Program Files\Aside\Application\Aside.exe"
