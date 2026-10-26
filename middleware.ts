@@ -1,5 +1,10 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
+import googleIndexKeep from "./app/data/googleIndexKeep.json";
+
+// 구글은 이 목록의 주소만 색인하게 한다(2026-10-26 Scott 승인, docs/google-index-recovery-2026-10-26.md).
+// 836개 중 1개만 색인돼 있어 얇은 페이지를 빼고 좋은 페이지로 사이트를 다시 평가받게 한다. 네이버 등은 영향 없음.
+const GOOGLE_INDEX_KEEP = new Set<string>(googleIndexKeep.paths);
 
 const STRIP_QUERY_PARAMS = new Set([
   "_ga",
@@ -85,6 +90,8 @@ export function middleware(request: NextRequest) {
 
   if (shouldNoindex(pathname, nextUrl.searchParams)) {
     response.headers.set("X-Robots-Tag", "noindex, follow");
+  } else if (!GOOGLE_INDEX_KEEP.has(pathname.length > 1 ? pathname.replace(/\/+$/, "") : pathname)) {
+    response.headers.set("X-Robots-Tag", "googlebot: noindex, follow");
   }
 
   return response;

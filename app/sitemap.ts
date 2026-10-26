@@ -69,6 +69,7 @@ const PAGE_DATES: Record<string, string> = {
   "/topics": "2026-07-20",
   "/brands": "2026-06-01",
   "/about": "2026-03-01",
+  "/methodology": "2026-10-26",
   "/contact": "2026-03-01",
   "/privacy": "2026-03-01",
   "/disclaimer": "2026-03-01",
@@ -181,6 +182,7 @@ const CATEGORY_GUIDE_CONFIGS = [
 const staticRoutes = [
   "/",
   "/about",
+  "/methodology",
   "/contact",
   "/privacy",
   "/disclaimer",

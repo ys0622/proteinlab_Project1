@@ -150,6 +150,13 @@ export default async function AboutPage() {
           {/* 검증 방법 */}
           <section>
             <h2 className="text-lg font-bold text-[var(--foreground)]">성분 수치 검증 방법</h2>
+            <p className="mt-3 text-[14px] leading-7 text-[var(--foreground-muted)]">
+              계산식·표시 규칙·성분표 확보 현황은{" "}
+              <Link href="/methodology" className="text-[var(--accent)] hover:underline">
+                데이터 방법론
+              </Link>
+              에 자세히 정리했습니다.
+            </p>
             <ul className="mt-3 space-y-2">
               {verificationList.map((item) => (
                 <li key={item} className="flex items-start gap-2 text-[14px] leading-6 text-[var(--foreground-muted)]">
