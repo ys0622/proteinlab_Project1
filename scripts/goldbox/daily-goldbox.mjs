@@ -169,11 +169,15 @@ function packCount(title) {
   return m ? m.map((x) => +x.replace(/\D/g, "")).sort((a, b) => b - a)[0] : null;
 }
 
+// 사이트에 넣지 않기로 정한 상품(scripts/goldbox/excluded-pids.json)은 '확인 필요'에 다시 올리지 않는다(2026-10-26).
+const EXCLUDED = JSON.parse(readFileSync(join(root, "scripts/goldbox/excluded-pids.json"), "utf-8"));
+
 function match(items, products) {
   const matched = [];
   const review = [];
   for (const it of items) {
     if (/한정 수량 마감/.test(it.text)) continue;
+    if (EXCLUDED[it.pid]) continue;
     const title = cardTitle(it.text);
     const nt = norm(title);
     let best = null;
