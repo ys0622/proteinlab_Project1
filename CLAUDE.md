@@ -65,4 +65,4 @@ proteinlab.kr — 단백질 음료·바·요거트·쉐이크 제품 비교 서�
 
 ## 에이전트
 기본 구성은 메인 작업자(나) 1명과 검수·감사 에이전트 3명이다(`.claude/agents/`). 검수자는 기본적으로 읽기 전용이며 파일 수정과 배포는 메인 작업자만 한다. 호출 기준은 `.claude/team-brief.md`에 있다.
-프로젝트 스킬(`.claude/skills/`): `proteinlab-add-product`(사진·성분표로 신규 제품 등록→배포→골드박스), `proteinlab-goldbox-fix`(골드박스 확인 필요·잘못 붙은 특가 정정). 반복 절차가 생기면 스킬로 묶자고 제안한다.
+프로젝트 스킬(`.claude/skills/`): `proteinlab-add-product`(사진·성분표로 신규 제품 등록→배포→골드박스), `proteinlab-goldbox-fix`(골드박스 확인 필요·잘못 붙은 특가 정정). 반복 절차가 생기면 스킬로 묶자고 제안한다. 마케팅 스킬 9개(seo-audit, programmatic-seo, schema, site-architecture, ai-seo, content-strategy, copy-editing, cro, analytics — coreyhaines31/marketingskills, 2026-10-27)는 SaaS·구글 기준이라 `.claude/product-marketing.md`(프로틴랩 규칙)를 먼저 읽고, 충돌하면 그 파일과 이 문서가 우선한다.
