@@ -54,6 +54,12 @@ proteinlab.kr — 단백질 음료·바·요거트·쉐이크 제품 비교 서�
 7. 에이전트가 낸 결과는 검토 없이 쓰지 않는다. 근거 없는 수치(순위, 가격, 판매량)가 섞였는지 확인한다.
 8. GA4 일반 보고서는 하루 이상 늦게 채워진다. 실시간 화면으로 수집 여부를 먼저 보고, 일 단위 수치는 24~48시간 뒤에 판단한다.
 
+## 크레딧 절약 원칙 (2026-10-28 Scott 승인 — 품질은 낮추지 않는다)
+- 반복·대량 작업(콘텐츠 보강, 데이터 정리, 전수 조사 초안)은 Codex(`codex exec -C D:\proteinlab -s workspace-write -c approval_policy="never"`)가 쓰고, Claude는 diff 검토·수치 대조·배포만 한다. 배포 전 검사(tsc·라이브·회귀)와 성분표 판독은 줄이지 않는다.
+- 브라우저 작업은 화면 글자 읽기 스크립트(`scripts/browser/chrome-repl.mjs`, `aside repl`)를 기본으로 하고, 스크린샷·좌표 클릭은 다른 방법이 없을 때만.
+- 아침 작업은 `scripts/ops/morning-summary.mjs` 요약이 이상 없으면 짧게 기록만 하고 끝낸다.
+- 한 대화를 며칠씩 이어 가지 않는다. 하루 일(또는 큰 주제)이 끝나면 새 세션으로 시작한다. 맥락은 운영실·docs·메모리에 남긴다.
+
 ## Windows 주의점
 - 로컬 개발 서버(`next dev`)가 페이지 컴파일에서 멈추면 Tailwind v4가 프로젝트 전체를 스캔하는 것이 원인이다(크롬 임시 폴더·로그·워크트리 등). `app/globals.css`에서 `@import "tailwindcss" source(none)`와 `@source "../app"` 등으로 스캔 범위를 제한해 두었다. 새 소스 폴더에서 클래스를 쓰면 `@source`에 추가한다. 개발 서버는 `npx next dev --webpack -p 3111`로 띄우면 `/soymilk`가 7초 안에 열린다.
 - 사용자에게 터미널 명령을 줄 때 Git Bash용인지 PowerShell용인지 구분한다. PowerShell에는 `&&`와 `/d/...` 경로가 없다.
