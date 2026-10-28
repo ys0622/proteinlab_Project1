@@ -5,6 +5,7 @@ import Footer from "../../components/Footer";
 import CommercialAdSection from "../../components/CommercialAdSection";
 import ProductCard from "../../components/ProductCard";
 import TrackedLink from "../../components/TrackedLink";
+import GuideBuySection from "../../components/GuideBuySection";
 import { getAllProducts } from "../../data/products";
 import { getCategoryLabel, type ProductCategory } from "../../lib/categories";
 import { brandToSlug, getBrandSummary, slugToBrand } from "../../lib/brandHubs";
@@ -474,6 +475,16 @@ export default async function BrandPage({ params }: PageProps) {
             가이드와 대표 비교 페이지를 같이 보면 후보를 더 빨리 좁힐 수 있습니다.
           </p>
         </section>
+
+        {/* 브랜드 페이지는 구매 버튼이 3.5~4.8화면 아래 제품 목록에만 있었다(2026-10-28). 단백질 많은 순 대표 3개를 요약 바로 아래에 둔다. */}
+        <div className="mt-6">
+          <GuideBuySection
+            slugs={brand.items.slice().sort((a: ProductDetailProps, b: ProductDetailProps) => b.proteinPerServing - a.proteinPerServing).map((p: ProductDetailProps) => p.slug)}
+            variant="top"
+            title={`${brand.brand} 대표 제품 가격 보기`}
+            caption="이 브랜드 제품 중 1회 단백질이 많은 순서입니다(쿠팡 판매 확인된 제품만)."
+          />
+        </div>
 
         {profileGroups.length > 0 ? (
           <section className="mt-6 rounded-2xl border border-[#e8e6e3] bg-white p-5">

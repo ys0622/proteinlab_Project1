@@ -10,29 +10,33 @@ export default function GuideBuySection({
   topic,
   embedded = false,
   variant = "bottom",
+  title = "이 글과 함께 보는 제품",
+  caption: captionOverride,
 }: {
   slugs?: string[];
   topic?: GuideBuyTopic;
   embedded?: boolean;
   /** "top": 첫 답변 바로 아래에 두는 짧은 목록. 정보성 가이드는 구매 버튼이 3.5~7화면 아래 이 섹션 하나뿐이었다(2026-10-28). */
   variant?: "top" | "bottom";
+  title?: string;
+  caption?: string;
 }) {
   const picks = topic ? GUIDE_BUY_PICKS[topic] : undefined;
   const targetSlugs = slugs.length > 0 ? slugs : picks?.slugs ?? [];
-  const caption = slugs.length > 0 ? undefined : picks?.caption;
+  const caption = captionOverride ?? (slugs.length > 0 ? undefined : picks?.caption);
   const products = targetSlugs.map((slug) => getProductBySlug(slug)).filter((product) => product && !hasNoPurchasableCoupangLink(product.coupangUrl, product.slug));
   if (products.length === 0) return null;
 
   if (variant === "top") {
     return (
-      <section className="rounded-[28px] border border-[#dce8df] bg-[#f7fbf8] px-5 py-4" aria-label="이 글과 함께 보는 제품">
+      <section className="rounded-[28px] border border-[#dce8df] bg-[#f7fbf8] px-5 py-4" aria-label={title}>
         <div className="flex flex-wrap items-center justify-between gap-2">
-          <h2 className="text-base font-bold text-[#16412D]">이 글과 함께 보는 제품</h2>
+          <h2 className="text-base font-bold text-[#16412D]">{title}</h2>
           <AffiliateDisclosure className="mb-0" />
         </div>
         {caption && <p className="mt-1 text-xs leading-5 text-[var(--foreground-muted)]">{caption}</p>}
         <div className="mt-3 grid gap-2 md:grid-cols-3">
-          {products.map((product) => {
+          {products.slice(0, 3).map((product) => {
             if (!product) return null;
             const href = getCoupangRedirectHref(product.coupangUrl, "guide", product.slug);
             return (
