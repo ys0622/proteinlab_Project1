@@ -53,9 +53,9 @@ export default function ProteinShakeGuidePage() {
         { title: "식이섬유", body: "식사대용 적합성과 포만감을 판단할 때 중요합니다. 식사대용으로 보려면 4g 이상 여부를 같이 보는 편이 좋습니다." },
       ]}
       products={[
-        { name: "프로티원 단백쉐이크 초코", protein: "23g", sugar: "1g", calories: "128kcal", feature: "고단백·저당·저칼로리 균형이 뛰어나 단백질 밀도 기준으로 상위권입니다.", recommendedFor: "칼로리 부담 없이 단백질 효율을 높이고 싶은 사람" },
-        { name: "단백하니 단백질쉐이크 시그니처", protein: "22g", sugar: "2g", calories: "155kcal", feature: "고단백 중심으로 설계돼 운동 후 보충용 비교에 잘 들어옵니다.", recommendedFor: "운동 후 단백질 보충 효율을 우선하는 사람" },
-        { name: "잇더핏 단백질쉐이크 미숫가루", protein: "28.7g", sugar: "0.9g", calories: "154kcal", feature: "단백질 함량이 가장 높고 당류도 낮아 고단백 기준 최상위권입니다.", recommendedFor: "단백질 함량과 밀도를 최우선으로 보는 사람" },
+        { name: "프로티원 단백쉐이크 초코", slug: "proteone-proteinshake-choco-40", protein: "23g", sugar: "1g", calories: "128kcal", feature: "고단백·저당·저칼로리 균형이 뛰어나 단백질 밀도 기준으로 상위권입니다.", recommendedFor: "칼로리 부담 없이 단백질 효율을 높이고 싶은 사람" },
+        { name: "단백하니 단백질쉐이크 시그니처", slug: "danbaekhani-proteinshake-signature-40", protein: "22g", sugar: "2g", calories: "155kcal", feature: "고단백 중심으로 설계돼 운동 후 보충용 비교에 잘 들어옵니다.", recommendedFor: "운동 후 단백질 보충 효율을 우선하는 사람" },
+        { name: "잇더핏 단백질쉐이크 미숫가루", slug: "itthefit-proteinshake-misugaru-40", protein: "28.7g", sugar: "0.9g", calories: "154kcal", feature: "단백질 함량이 가장 높고 당류도 낮아 고단백 기준 최상위권입니다.", recommendedFor: "단백질 함량과 밀도를 최우선으로 보는 사람" },
       ]}
       closing="단백질 쉐이크 추천은 무조건 단백질이 높은 제품을 고르는 문제가 아니라 내 목적에 맞는 후보를 먼저 줄이는 문제에 가깝습니다. 운동 후라면 단백질과 밀도, 식사대용이라면 칼로리와 식이섬유, 다이어트라면 당류까지 같이 본 뒤 브랜드 페이지로 한 단계 더 들어가면 실제 선택이 훨씬 쉬워집니다."
       internalLinks={[

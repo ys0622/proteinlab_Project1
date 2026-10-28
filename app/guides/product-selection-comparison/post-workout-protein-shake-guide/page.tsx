@@ -50,9 +50,9 @@ export default function PostWorkoutProteinShakeGuidePage() {
         { title: "칼로리", body: "운동 직후 가볍게 보충할지, 식사까지 겸할지에 따라 해석이 달라집니다. 목적에 맞지 않게 과도하게 높거나 낮지 않은지 확인해야 합니다." },
       ]}
       products={[
-        { name: "잇더핏 단백질쉐이크 미숫가루", protein: "28.7g", sugar: "0.9g", calories: "154kcal", feature: "단백질 밀도 18.6g/100kcal로 전체 쉐이크 중 최상위권입니다. 운동 후 보충 효율이 가장 높습니다.", recommendedFor: "단백질 밀도를 최우선으로 보는 사람" },
-        { name: "프로티원 단백쉐이크 초코", protein: "23g", sugar: "1g", calories: "128kcal", feature: "단백질 밀도 18.0g/100kcal로 고단백·저칼로리 균형이 뛰어납니다.", recommendedFor: "칼로리 부담 없이 단백질 효율을 높이고 싶은 사람" },
-        { name: "프로티원 단백쉐이크 커피맛", protein: "22g", sugar: "1g", calories: "108kcal", feature: "칼로리 108kcal로 전체 중 가장 낮은 수준이며 단백질 밀도 20.4g/100kcal로 최고 효율입니다.", recommendedFor: "칼로리를 최대한 낮추면서 단백질 효율을 높이고 싶은 사람" },
+        { name: "잇더핏 단백질쉐이크 미숫가루", slug: "itthefit-proteinshake-misugaru-40", protein: "28.7g", sugar: "0.9g", calories: "154kcal", feature: "단백질 밀도 18.6g/100kcal로 전체 쉐이크 중 최상위권입니다. 운동 후 보충 효율이 가장 높습니다.", recommendedFor: "단백질 밀도를 최우선으로 보는 사람" },
+        { name: "프로티원 단백쉐이크 초코", slug: "proteone-proteinshake-choco-40", protein: "23g", sugar: "1g", calories: "128kcal", feature: "단백질 밀도 18.0g/100kcal로 고단백·저칼로리 균형이 뛰어납니다.", recommendedFor: "칼로리 부담 없이 단백질 효율을 높이고 싶은 사람" },
+        { name: "프로티원 단백쉐이크 커피맛", slug: "proteone-proteinshake-coffee-40", protein: "22g", sugar: "1g", calories: "108kcal", feature: "칼로리 108kcal로 전체 중 가장 낮은 수준이며 단백질 밀도 20.4g/100kcal로 최고 효율입니다.", recommendedFor: "칼로리를 최대한 낮추면서 단백질 효율을 높이고 싶은 사람" },
       ]}
       closing="운동 후 단백질 쉐이크는 단백질 함량만 보지 말고, 당류와 단백질 밀도까지 함께 보는 게 좋습니다. 그래야 같은 쉐이크라도 실제 보충 효율이 더 좋은 제품을 걸러낼 수 있습니다."
       internalLinks={[

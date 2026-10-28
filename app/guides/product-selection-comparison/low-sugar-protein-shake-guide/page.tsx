@@ -50,12 +50,12 @@ export default function LowSugarProteinShakeGuidePage() {
         { title: "식이섬유", body: "저당 + 식사대용을 동시에 보고 싶다면 같이 봐야 하는 지표입니다. 포만감과 섭취 만족도를 끌어올리는 데 도움이 됩니다." },
       ]}
       products={[
-        { name: "스포식스 프로틴쉐이크 고쇼율무", protein: "22g", sugar: "1g", calories: "170kcal", feature: "단백질 22g·당류 1g으로 신규 제품 중 고단백·저당 균형이 좋습니다.", recommendedFor: "곡물 계열 맛과 저당을 함께 보는 사람" },
-        { name: "매일한끼 단백질 쉐이크 곡물", protein: "20g", sugar: "1g", calories: "145kcal", feature: "145kcal에 단백질 20g·당류 1g으로 가벼운 저당 후보입니다.", recommendedFor: "칼로리와 당류를 함께 낮추고 싶은 사람" },
-        { name: "테이크핏 브레드밀 초코 브라우니", protein: "24g", sugar: "1.9g", calories: "170kcal", feature: "단백질 24g으로 저당과 고단백을 함께 충족합니다.", recommendedFor: "초코 맛과 단백질 총량을 우선하는 사람" },
-        { name: "잇더핏 단백질쉐이크 더블초코", protein: "21.3g", sugar: "0.6g", calories: "122kcal", feature: "당류 0.6g으로 저당 기준 최상위권입니다. 칼로리도 낮아 다이어트 목적에 적합합니다.", recommendedFor: "당류를 최대한 낮추고 싶은 사람" },
-        { name: "프로티원 단백쉐이크 초코", protein: "23g", sugar: "1g", calories: "128kcal", feature: "당류 1g·칼로리 128kcal로 저당·저칼로리 균형이 좋습니다.", recommendedFor: "저당이면서 단백질 효율도 챙기고 싶은 사람" },
-        { name: "플라이밀 프로틴쉐이크 피넛버터", protein: "24g", sugar: "1.2g", calories: "179kcal", feature: "당류가 낮고 단백질 24g으로 저당 고단백 기준을 동시에 만족합니다.", recommendedFor: "저당 기준과 고단백을 같이 보는 사람" },
+        { name: "스포식스 프로틴쉐이크 고쇼율무", slug: "sportsix-protein-shake-savory-yulmu-45", protein: "22g", sugar: "1g", calories: "170kcal", feature: "단백질 22g·당류 1g으로 신규 제품 중 고단백·저당 균형이 좋습니다.", recommendedFor: "곡물 계열 맛과 저당을 함께 보는 사람" },
+        { name: "매일한끼 단백질 쉐이크 곡물", slug: "maeilhankki-shake-grain-40", protein: "20g", sugar: "1g", calories: "145kcal", feature: "145kcal에 단백질 20g·당류 1g으로 가벼운 저당 후보입니다.", recommendedFor: "칼로리와 당류를 함께 낮추고 싶은 사람" },
+        { name: "테이크핏 브레드밀 초코 브라우니", slug: "takefit-breadmeal-shake-choco-brownie-45", protein: "24g", sugar: "1.9g", calories: "170kcal", feature: "단백질 24g으로 저당과 고단백을 함께 충족합니다.", recommendedFor: "초코 맛과 단백질 총량을 우선하는 사람" },
+        { name: "잇더핏 단백질쉐이크 더블초코", slug: "itthefit-proteinshake-double-choco-40", protein: "21.3g", sugar: "0.6g", calories: "122kcal", feature: "당류 0.6g으로 저당 기준 최상위권입니다. 칼로리도 낮아 다이어트 목적에 적합합니다.", recommendedFor: "당류를 최대한 낮추고 싶은 사람" },
+        { name: "프로티원 단백쉐이크 초코", slug: "proteone-proteinshake-choco-40", protein: "23g", sugar: "1g", calories: "128kcal", feature: "당류 1g·칼로리 128kcal로 저당·저칼로리 균형이 좋습니다.", recommendedFor: "저당이면서 단백질 효율도 챙기고 싶은 사람" },
+        { name: "플라이밀 프로틴쉐이크 피넛버터", slug: "flymill-proteinshake-peanut-butter-45", protein: "24g", sugar: "1.2g", calories: "179kcal", feature: "당류가 낮고 단백질 24g으로 저당 고단백 기준을 동시에 만족합니다.", recommendedFor: "저당 기준과 고단백을 같이 보는 사람" },
       ]}
       closing="저당 단백질 쉐이크는 당류만 낮다고 좋은 제품이 되는 건 아닙니다. 단백질, 칼로리, 식이섬유까지 함께 봐야 실제로 만족도가 높은 제품을 고를 수 있습니다."
       internalLinks={[

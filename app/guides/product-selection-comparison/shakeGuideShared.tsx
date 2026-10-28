@@ -4,6 +4,10 @@ import Header from "@/app/components/Header";
 import CommercialAdSection from "@/app/components/CommercialAdSection";
 import Footer from "@/app/components/Footer";
 import GuideBuySection from "@/app/components/GuideBuySection";
+import TrackedCoupangLink from "@/app/components/TrackedCoupangLink";
+import { getProductBySlug } from "@/app/data/products";
+import { getCoupangRedirectHref, hasNoPurchasableCoupangLink } from "@/app/lib/purchaseLinks";
+import { formatProductLabel } from "@/app/lib/productLabel";
 import { getGuideThumbnailUrl } from "@/app/lib/guideThumbnails";
 
 type SummaryItem = {
@@ -13,6 +17,8 @@ type SummaryItem = {
 
 type ProductExample = {
   name: string;
+  /** 있으면 카드에 쿠팡 버튼을 붙인다(첫 화면 다음 9화면 동안 구매 버튼이 없었다, 2026-10-28). */
+  slug?: string;
   protein: string;
   sugar?: string;
   calories?: string;
@@ -62,6 +68,24 @@ type ShakeGuideConfig = {
   faqItems?: FaqItem[];
   buyProductSlugs?: string[];
 };
+
+function ExampleBuyLink({ slug }: { slug?: string }) {
+  const product = slug ? getProductBySlug(slug) : undefined;
+  if (!product || hasNoPurchasableCoupangLink(product.coupangUrl, product.slug)) return null;
+  return (
+    <TrackedCoupangLink
+      href={getCoupangRedirectHref(product.coupangUrl, "guide", product.slug)}
+      productId={product.slug}
+      productName={formatProductLabel(product.brand, product.name)}
+      productBrand={product.brand}
+      productCategory={product.productType}
+      linkPosition="mid_content"
+      className="mt-3 inline-flex min-h-10 items-center rounded-full bg-[#1F5A3D] px-4 text-xs font-bold text-white hover:bg-[#16412D]"
+    >
+      쿠팡 가격 보기 →
+    </TrackedCoupangLink>
+  );
+}
 
 export function buildShakeGuideMetadata(title: string, description: string, slug?: string): Metadata {
   const canonical = slug
@@ -338,6 +362,7 @@ export function ShakeGuidePage({
                   <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">
                     추천 대상: {item.recommendedFor}
                   </p>
+                  <ExampleBuyLink slug={item.slug} />
                 </article>
               ))}
             </div>
