@@ -171,7 +171,7 @@ const compareLandings: CompareLanding[] = [
   {
     slug: "doctoru-vs-kirkland-bar",
     title: "커클랜드 프로틴바 성분·칼로리 | 닥터유 단백질바와 비교",
-    description: "국내 대표 프로틴바와 커클랜드 프로틴바를 단백질 총량과 당류 기준으로 비교합니다.",
+    description: "커클랜드 프로틴바 초콜릿 브라우니(60g)는 단백질 21g·당류 1g·190kcal, 닥터유 프로 단백질바 초코 클래식(70g)은 24g·당류 9g·312kcal입니다. 1개 기준 당류·열량 차이를 비교했습니다.",
     intro: "단백질 바 검색에서 자주 비교되는 조합을 고정 URL로 만든 랜딩입니다.",
     bullets: ["국내/해외 대표 프로틴바 비교", "고단백 바 검색어 대응", "상세 페이지 진입 유도에 적합"],
     productSlugs: ["dryou-proteinbar-pro-choco-classic", "kirkland-proteinbar-choco-brownie"],
@@ -292,7 +292,7 @@ const compareLandings: CompareLanding[] = [
   {
     slug: "greekday-vs-maeilbio-yogurt",
     title: "매일 바이오 그릭요거트 성분·칼로리 | 그릭데이와 비교",
-    description: "그릭데이와 매일 바이오 그릭요거트를 단백질, 당류, 용량 기준으로 비교합니다.",
+    description: "매일 바이오 그릭요거트 무가당 플레인 400g은 단백질 28g·당류 7.2g·360kcal, 그릭데이 시그니처 450g은 51.4g·8.4g·720kcal입니다(통 전체 기준). 100g당 단백질은 그릭데이 11.4g, 매일 바이오 7.0g입니다.",
     intro: "대용량 그릭요거트와 일반 그릭요거트 브랜드를 함께 비교하는 랜딩입니다.",
     bullets: ["그릭요거트 브랜드 비교", "대용량 구매 전 탐색용", "주제 랜딩과 브랜드 허브 연결에 적합"],
     productSlugs: ["greekday-signature-450", "maeil-bio-greek-unsweetened-400"],
@@ -473,7 +473,7 @@ const compareLandings: CompareLanding[] = [
   {
     slug: "takefit-pro-500-vs-max-250",
     title: "테이크핏 프로 500mL vs 테이크핏 맥스 250mL 비교",
-    description: "테이크핏 프로 500mL PET병과 테이크핏 맥스 250mL를 단백질, 칼로리, 가성비 기준으로 비교합니다.",
+    description: "테이크핏 프로 레몬 500mL는 단백질 25g·100kcal·당류 0g, 테이크핏 맥스 고소한맛 250mL는 24g·105kcal·당류 0.7g입니다. 용량은 2배지만 단백질은 비슷해 목적별로 고르는 기준을 정리했습니다.",
     intro: "같은 브랜드 내에서 용량과 타겟이 다른 프로 라인과 맥스 라인을 성분 기준으로 구분합니다.",
     bullets: ["테이크핏 프로 vs 맥스 완전 분석", "500mL vs 250mL 용량별 선택 기준", "다이어트·벌크업 목적별 추천"],
     productSlugs: ["takefit-pro-lemon-500", "takefit-max-goso-250"],
