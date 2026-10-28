@@ -226,6 +226,7 @@ export default function ProteinSourceTypesGuidePage() {
               원료 기준: <a href="https://www.thinkusadairy.org/products/milk-proteins/milk-protein-categories/milk-protein-isolate" target="_blank" rel="noopener noreferrer" className="underline underline-offset-2">미국 유제품 수출협의회 MPI 성분 자료</a>
             </p>
           </section>
+          <MpiDrinkList variant="picks" />
           <section className="rounded-2xl border border-[#e8e6e3] bg-[#fffdf8] px-5 py-5">
             <h2 className="text-xl font-bold text-[var(--foreground)]">단백질 급원 특징 한눈에 보기</h2>
             <p className="mt-3 text-sm leading-6 text-[var(--foreground-muted)]">

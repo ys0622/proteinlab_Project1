@@ -17,7 +17,8 @@ type Group = {
 };
 
 // 식약처 품목제조보고(원재료)에서 분리유단백(분리우유단백, MPI)이 확인된 음료. 신고 기준이라 포장 표시와 다를 수 있다.
-export default function MpiDrinkList() {
+// variant "picks": 글 앞쪽에 둘 TOP 3 카드만(검색어 "MPI 단백질"로 들어온 사람이 13화면 아래 표까지 내려가야 제품을 봤다, 2026-10-28).
+export default function MpiDrinkList({ variant = "full" }: { variant?: "full" | "picks" }) {
   const groups = (mpiDrinks.groups as Group[]).filter((group) => group.items.length > 0);
   if (groups.length === 0) return null;
   const total = groups.reduce((sum, group) => sum + group.items.length, 0);
@@ -35,6 +36,56 @@ export default function MpiDrinkList() {
     .filter((p): p is NonNullable<typeof p> => p != null)
     .sort((a, b) => density(b) - density(a))
     .slice(0, 3);
+
+  const picksGrid = (
+    <div className="mt-3 grid gap-3 sm:grid-cols-3">
+      {topPicks.map((product) => {
+        const imageUrl = getProductImageUrl(product.slug);
+        return (
+          <TrackedCoupangLink
+            key={product.slug}
+            href={getCoupangRedirectHref(product.coupangUrl, "guide", product.slug)}
+            productId={product.slug}
+            productName={formatProductLabel(product.brand, product.name)}
+            productBrand={product.brand}
+            productCategory={product.productType}
+            linkPosition="mid_content"
+            className="flex flex-col rounded-2xl border border-[#e8e6e3] bg-white p-3 transition-colors hover:bg-[#fffdf8]"
+          >
+            {imageUrl ? (
+              <span className="relative block h-24 w-full">
+                <Image src={imageUrl} alt="" fill className="object-contain" sizes="160px" />
+              </span>
+            ) : null}
+            <span className="mt-2 text-[11px] text-[var(--foreground-muted)]">{product.brand}</span>
+            <span className="text-sm font-semibold leading-5 text-[var(--foreground)]">{product.name}</span>
+            <span className="text-[11px] text-[var(--foreground-muted)]">{product.capacity}</span>
+            <span className="mt-2 text-xs text-[var(--foreground-muted)]">
+              단백질 {product.proteinPerServing}g · 당류 {product.sugar}g · {product.calories}kcal · 100mL당 {(Math.round(density(product) * 10) / 10).toString()}g
+            </span>
+            <span className="mt-3 rounded-full bg-[#1F5A3D] py-2 text-center text-xs font-bold text-white">쿠팡에서 가격 확인 →</span>
+          </TrackedCoupangLink>
+        );
+      })}
+    </div>
+  );
+
+  if (variant === "picks") {
+    if (topPicks.length === 0) return null;
+    return (
+      <section className="rounded-2xl border border-[#dce8df] bg-[#f7fbf8] px-5 py-5" aria-labelledby="mpi-picks-title">
+        <div className="flex flex-wrap items-center justify-between gap-2">
+          <h2 id="mpi-picks-title" className="text-lg font-bold text-[#16412D]">원재료에 MPI가 표기된 음료 TOP 3</h2>
+          <AffiliateDisclosure className="mb-0" />
+        </div>
+        <p className="mt-1 text-xs leading-5 text-[var(--foreground-muted)]">
+          식약처 품목제조보고 원재료에 분리유단백(MPI)이 적힌 {total}종 중 100mL당 단백질이 높은 순서입니다(제품군당 1개).
+        </p>
+        {picksGrid}
+        <a href="#mpi-drinks-title" className="mt-3 inline-block text-sm font-semibold text-[#1F5A3D] underline underline-offset-2">MPI 표기 음료 전체 {total}종 보기 ↓</a>
+      </section>
+    );
+  }
 
   return (
     <section className="rounded-2xl border border-[#e2ebe4] bg-white px-5 py-5" aria-labelledby="mpi-drinks-title">
@@ -130,36 +181,7 @@ export default function MpiDrinkList() {
           <p className="mt-1 text-xs leading-5 text-[var(--foreground-muted)]">
             원재료에 MPI(분리유단백)가 표기된 제품 중 100mL당 단백질이 높은 순서입니다(제품군당 1개).
           </p>
-          <div className="mt-3 grid gap-3 sm:grid-cols-3">
-            {topPicks.map((product) => {
-              const imageUrl = getProductImageUrl(product.slug);
-              return (
-                <TrackedCoupangLink
-                  key={product.slug}
-                  href={getCoupangRedirectHref(product.coupangUrl, "guide", product.slug)}
-                  productId={product.slug}
-                  productName={formatProductLabel(product.brand, product.name)}
-                  productBrand={product.brand}
-                  productCategory={product.productType}
-                  linkPosition="mid_content"
-                  className="flex flex-col rounded-2xl border border-[#e8e6e3] bg-white p-3 transition-colors hover:bg-[#fffdf8]"
-                >
-                  {imageUrl ? (
-                    <span className="relative block h-24 w-full">
-                      <Image src={imageUrl} alt="" fill className="object-contain" sizes="160px" />
-                    </span>
-                  ) : null}
-                  <span className="mt-2 text-[11px] text-[var(--foreground-muted)]">{product.brand}</span>
-                  <span className="text-sm font-semibold leading-5 text-[var(--foreground)]">{product.name}</span>
-                  <span className="text-[11px] text-[var(--foreground-muted)]">{product.capacity}</span>
-                  <span className="mt-2 text-xs text-[var(--foreground-muted)]">
-                    단백질 {product.proteinPerServing}g · 당류 {product.sugar}g · {product.calories}kcal · 100mL당 {(Math.round(density(product) * 10) / 10).toString()}g
-                  </span>
-                  <span className="mt-3 rounded-full bg-[#1F5A3D] py-2 text-center text-xs font-bold text-white">쿠팡에서 가격 확인 →</span>
-                </TrackedCoupangLink>
-              );
-            })}
-          </div>
+          {picksGrid}
         </div>
       ) : null}
     </section>

@@ -355,7 +355,7 @@ export default async function CompareLandingPage({ params }: PageProps) {
                   return (
                     <div key={product.slug} className="flex flex-col rounded-xl border border-[#e3ebe5] bg-white p-2">
                       <a href={`/product/${product.slug}`} className="flex h-28 items-center justify-center overflow-hidden rounded-lg bg-white md:h-36">
-                        {image ? <Image src={image} alt={formatProductLabel(product.brand, product.name)} width={200} height={144} className="h-full w-full object-contain" /> : null}
+                        {image ? <Image src={image} alt={formatProductLabel(product.brand, product.name)} width={200} height={144} priority className="h-full w-full object-contain" /> : null}
                       </a>
                       <a href={`/product/${product.slug}`} className="mt-1.5 line-clamp-2 min-h-[2.5rem] text-xs font-semibold leading-5 text-[#24543d] hover:underline">
                         {formatProductLabel(product.brand, product.name)}
