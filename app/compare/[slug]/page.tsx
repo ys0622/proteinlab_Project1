@@ -443,6 +443,32 @@ export default async function CompareLandingPage({ params }: PageProps) {
                       <td key={p.slug} className="px-2 py-2.5 text-[var(--foreground)]">{p.capacity || "-"}</td>
                     ))}
                   </tr>
+                  {/* 표를 읽고 고른 제품을 바로 확인하게 한다(비교 랜딩은 첫 화면 다음 구매 버튼이 3화면 아래 '비교 대상 제품'에 있었다, 2026-10-28). */}
+                  <tr>
+                    <th className="py-2.5 pr-2 text-left text-xs font-semibold text-[var(--foreground-muted)]">구매</th>
+                    {products.map((p) => {
+                      const href = getCoupangRedirectHref(p.coupangUrl, p.productType ?? null, p.slug);
+                      return (
+                        <td key={p.slug} className="px-2 py-2.5">
+                          {href ? (
+                            <TrackedCoupangLink
+                              href={href}
+                              productId={p.slug}
+                              productName={formatProductLabel(p.brand, p.name)}
+                              productBrand={p.brand}
+                              productCategory={p.productType}
+                              linkPosition="spec_table"
+                              className="inline-flex min-h-9 items-center whitespace-nowrap rounded-full bg-[#1F5A3D] px-3 text-xs font-bold text-white hover:bg-[#16412D]"
+                            >
+                              쿠팡 가격 →
+                            </TrackedCoupangLink>
+                          ) : (
+                            <span className="text-xs text-[var(--foreground-muted)]">판매처 확인 중</span>
+                          )}
+                        </td>
+                      );
+                    })}
+                  </tr>
                 </tbody>
               </table>
             </div>
