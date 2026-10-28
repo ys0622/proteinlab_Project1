@@ -34,6 +34,7 @@ type DataSectionSpec = {
   brand?: string;
   mode?: "protein" | "lowSugar" | "lowCalorie" | "density";
   limit?: number;
+  showCapacity?: boolean;
 };
 
 export interface ComparePageConfig {
@@ -167,6 +168,39 @@ function PurchaseLinks({ links, linkPosition = "mid_content", compactMobile = fa
                 <p className="mt-3 text-xs font-medium text-[#24543d]">옵션과 최신 가격 보기 →</p>
               </>
             )}
+          </TrackedCoupangLink>
+        );
+      })}
+    </div>
+  );
+}
+
+// 추천 문단이 언급한 제품만 골라 그 자리에 구매 버튼을 둔다(구매 결정이 나는 곳에 버튼이 없어 5화면 아래 FAQ 뒤에서야 나왔다).
+function findMentionedLinks(links: PurchaseGuideLink[], text: string) {
+  return links.filter((item) => {
+    const brandWord = item.label.split(" ")[0];
+    return brandWord.length >= 2 && text.includes(brandWord);
+  });
+}
+
+function InlinePurchaseLinks({ links }: { links: PurchaseGuideLink[] }) {
+  if (links.length === 0) return null;
+  return (
+    <div className="mt-3 flex flex-wrap gap-2">
+      {links.map((item) => {
+        const product = getDrinkProduct(item.slug);
+        return (
+          <TrackedCoupangLink
+            key={item.slug}
+            href={getCoupangRedirectHref(product.coupangUrl, "guide", product.slug)}
+            productId={product.slug}
+            productName={formatProductLabel(product.brand, product.name)}
+            productBrand={product.brand}
+            productCategory={product.productType ?? "drink"}
+            linkPosition="mid_content"
+            className="inline-flex min-h-10 items-center gap-1 rounded-full bg-[#24543d] px-3.5 py-2 text-xs font-bold text-white transition-colors hover:bg-[#1b4330]"
+          >
+            {item.label.replace(" 박스 보기", "")} 가격 보기 →
           </TrackedCoupangLink>
         );
       })}
@@ -331,6 +365,15 @@ export function ComparisonGuidePage({ config }: { config: ComparePageConfig }) {
                 </tbody>
               </table>
             </div>
+            {config.purchaseLinks.length > 0 ? (
+              <div className="mt-4 border-t border-[#eef2f6] pt-4">
+                <div className="mb-2 flex flex-wrap items-center justify-between gap-2">
+                  <p className="text-sm font-semibold text-[var(--foreground)]">표의 제품 쿠팡 가격 보기</p>
+                  <span className="text-[11px] text-[var(--foreground-muted)]">쿠팡 파트너스 링크</span>
+                </div>
+                <PurchaseLinks links={config.purchaseLinks} linkPosition="mid_content" compactMobile />
+              </div>
+            ) : null}
           </section>
           {config.sections.map((section) => (
             <section key={section.title} className="rounded-[28px] border border-[#d9e4f0] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(32,46,68,0.05)]">
@@ -346,6 +389,9 @@ export function ComparisonGuidePage({ config }: { config: ComparePageConfig }) {
                       <h3 className="text-sm font-semibold leading-5 text-[#4a6178]">{item.title}</h3>
                     </div>
                     <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">{item.body}</p>
+                    {section.title.includes("추천") ? (
+                      <InlinePurchaseLinks links={findMentionedLinks(config.purchaseLinks, `${item.title} ${item.body}`)} />
+                    ) : null}
                   </article>
                 ))}
               </div>
@@ -400,6 +446,7 @@ export function ComparisonGuidePage({ config }: { config: ComparePageConfig }) {
               mode={spec.mode ?? "protein"}
               brand={spec.brand}
               limit={spec.limit ?? (spec.brand ? 20 : 8)}
+              showCapacity={spec.showCapacity}
             />
           ))
         : null}

@@ -9,6 +9,7 @@ export interface CompareLanding {
   bullets: string[];
   productSlugs: string[];
   relatedLinks: { href: string; title: string; description: string }[];
+  faq?: { question: string; answer: string }[];
 }
 
 const barProductsBySlug = new Map(getBarProducts().map((product) => [product.slug, product]));
@@ -382,11 +383,17 @@ const compareLandings: CompareLanding[] = [
     title: "플라이밀 vs 올더배러 단백질 쉐이크 비교",
     description: "플라이밀과 올더배러 쉐이크를 단백질, 당류, 칼로리 기준으로 비교합니다.",
     intro: "맛 선택 폭이 넓은 쉐이크 브랜드 두 곳을 직접 비교하는 랜딩입니다.",
-    bullets: ["쉐이크 브랜드 비교", "맛 구성과 저당 라인 탐색에 적합", "상세 페이지와 브랜드 허브 연결용"],
+    bullets: ["단백질: 플라이밀 22g, 올더배러 25g", "당류: 플라이밀 3.6g, 올더배러 2g", "100kcal당 단백질: 플라이밀 14.7g, 올더배러 14.3g"],
     productSlugs: ["flymill-proteinshake-choco-45", "allthebetter-proteinshake-low-sugar-chocolate-mousse-45"],
     relatedLinks: [
       { href: "/brands/flymill", title: "플라이밀 브랜드 허브", description: "플라이밀 쉐이크 라인을 브랜드 단위로 봅니다." },
       { href: "/guides/product-selection-comparison/low-sugar-protein-shake-guide", title: "저당 단백질 쉐이크", description: "당류 기준으로 다시 제품을 비교합니다." },
+      { href: "/guides/product-selection-comparison/protein-shake-top7", title: "단백질 쉐이크 TOP 7", description: "두 제품을 전체 상위 후보와 다시 비교합니다." },
+    ],
+    faq: [
+      { question: "두 제품 중 한 팩 단백질이 더 많은 것은 무엇인가", answer: "올더배러 저당 초콜릿무스가 25g으로 플라이밀 초코 22g보다 3g 많습니다." },
+      { question: "당류와 열량은 어떻게 다른가", answer: "플라이밀 초코는 당류 3.6g·150kcal, 올더배러 저당 초콜릿무스는 당류 2g·175kcal입니다." },
+      { question: "100kcal당 단백질은 어느 쪽이 높은가", answer: "단백질 g을 kcal로 나눠 100을 곱하면 플라이밀 14.7g, 올더배러 14.3g입니다." },
     ],
   },
   {
@@ -401,6 +408,11 @@ const compareLandings: CompareLanding[] = [
       { href: "/guides/product-selection-comparison/takefit-lineup", title: "테이크핏 맥스·몬스터·프로·익스트림 비교", description: "두 제품 외에 워터형 프로와 60g대 익스트림까지 전체 라인업을 비교합니다." },
       { href: "/guides/product-selection-comparison/high-protein-40g-comparison", title: "40g 이상 고단백 음료 비교", description: "몬스터를 다른 40g대 고단백 RTD와 나란히 비교합니다." },
       { href: "/topics/high-protein-drink-20g", title: "고단백 음료 20g 이상", description: "단백질 함량 기준으로 전체 후보군을 봅니다." },
+    ],
+    faq: [
+      { question: "맥스와 몬스터의 단백질 차이는 얼마인가", answer: "고소한맛 기준 맥스는 24g, 몬스터는 45g으로 몬스터가 21g 많습니다." },
+      { question: "열량과 당류 차이는 얼마인가", answer: "맥스는 105kcal·당류 0.7g, 몬스터는 195kcal·당류 1g입니다." },
+      { question: "100kcal당 단백질 밀도도 몬스터가 높은가", answer: "맥스는 22.9g, 몬스터는 23.1g으로 거의 비슷하지만 몬스터가 0.2g 높습니다." },
     ],
   },
   {
@@ -445,11 +457,17 @@ const compareLandings: CompareLanding[] = [
     title: "셀렉스 프로핏 vs 테이크핏 맥스 비교",
     description: "매일유업 셀렉스 프로핏과 남양 테이크핏 맥스를 단백질, 당류, 칼로리 기준으로 비교합니다.",
     intro: "퍼포먼스와 일상 보충을 각각 대표하는 셀렉스와 테이크핏을 성분 기준으로 비교합니다.",
-    bullets: ["셀렉스 vs 테이크핏 대표 제품 비교", "운동 목적별 선택 기준 제시", "브랜드 검색 유입 대응"],
+    bullets: ["단백질: 셀렉스 20g, 테이크핏 24g", "열량: 셀렉스 105kcal, 테이크핏 105kcal", "100kcal당 단백질: 셀렉스 19.0g, 테이크핏 22.9g"],
     productSlugs: ["sellex-profit-milk-vanilla-250", "takefit-max-goso-250"],
     relatedLinks: [
       { href: "/brands/sellex", title: "셀렉스 브랜드 허브", description: "셀렉스 전 제품을 확인합니다." },
       { href: "/brands/takefit", title: "테이크핏 브랜드 허브", description: "테이크핏 전 제품을 확인합니다." },
+      { href: "/guides/product-selection-comparison/selex-vs-takefit-vs-himune", title: "셀렉스·테이크핏·하이뮨 3종 비교", description: "하이뮨까지 더해 대표 RTD 세 제품을 같은 기준으로 비교합니다." },
+    ],
+    faq: [
+      { question: "열량이 같은데 단백질은 얼마나 다른가", answer: "두 제품 모두 105kcal이며 셀렉스 프로핏은 20g, 테이크핏 맥스는 24g으로 4g 차이입니다." },
+      { question: "당류와 나트륨을 같이 보면 어떻게 다른가", answer: "셀렉스는 당류 0g·나트륨 300mg, 테이크핏은 당류 0.7g·나트륨 210mg입니다." },
+      { question: "100kcal당 단백질은 어느 쪽이 높은가", answer: "셀렉스 19.0g, 테이크핏 22.9g으로 열량 대비 단백질은 테이크핏이 높습니다." },
     ],
   },
   {

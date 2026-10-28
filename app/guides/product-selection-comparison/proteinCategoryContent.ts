@@ -170,7 +170,7 @@ export const proteinShakeTop7Config: CategoryGuideConfig = {
     "처음 시작이라면 순위에서 후보를 줄인 뒤 브랜드 페이지까지 한 단계 더 들어가 맛과 칼로리 차이를 확인하는 편이 가장 안전합니다.",
   ],
   comparisonTitle: "TOP 7 순위표",
-  comparisonColumns: ["제품명", "단백질", "칼로리", "당류", "포인트"],
+  comparisonColumns: ["제품명", "단백질", "칼로리", "당류", "100kcal당 단백질", "포인트"],
   comparisonRows: shakeTop7.map((product, index) => ({
     label: `${index + 1}위`,
     values: [
@@ -178,6 +178,7 @@ export const proteinShakeTop7Config: CategoryGuideConfig = {
       `${product.proteinPerServing}g`,
       `${product.calories}kcal`,
       `${product.sugar}g`,
+      `${(product.proteinPerServing / (product.calories ?? 1) * 100).toFixed(1)}g`,
       fiber(product) >= 5 ? `식이섬유 ${fiber(product)}g` : "저당·고단백 균형형",
     ],
   })),
@@ -264,6 +265,8 @@ export const proteinShakeTop7Config: CategoryGuideConfig = {
     { question: "TOP 7이면 1위 제품만 사면 되는 건가", answer: "아닙니다. 이 페이지는 상위 후보를 좁혀주는 역할이 더 큽니다. 최종 선택은 맛 취향과 식사 대용 여부까지 같이 봐야 합니다." },
     { question: "프로틴 쉐이크 추천과 단백질 쉐이크 추천은 같은 의미인가요?", answer: "대부분 같은 의도로 검색됩니다. 다만 프로틴 쉐이크는 운동 보충용까지 넓게 쓰이고, 이 페이지는 다이어트와 식사대용까지 포함해 실제로 오래 마시기 쉬운 제품을 먼저 좁혔습니다." },
     { question: "다이어트 단백질 쉐이크는 칼로리와 단백질 중 무엇을 먼저 봐야 하나요?", answer: "둘 다 봐야 하지만 순서는 목적에 따라 다릅니다. 식사대용이면 단백질 20g 전후와 식이섬유를 먼저 보고, 간식 대체라면 칼로리와 당류를 먼저 확인하는 편이 좋습니다." },
+    { question: "TOP 7의 열량 대비 단백질은 어떻게 비교하나요?", answer: "표의 100kcal당 단백질을 보면 됩니다. 한 팩 단백질 g을 열량 kcal로 나눈 뒤 100을 곱해 소수 첫째 자리까지 표시했습니다." },
+    { question: "단백질 양이 같다면 다음으로 무엇을 보나요?", answer: "같은 단백질이면 당류와 열량을 먼저 비교하고, 식사대용 목적이라면 표의 포인트에 표시된 식이섬유도 함께 확인하세요." },
   ],
 };
 proteinShakeTop7Config.jsonLd = [articleJsonLd(proteinShakeTop7Config), faqJsonLd(proteinShakeTop7Config)];

@@ -4,11 +4,22 @@ import Footer from "@/app/components/Footer";
 import GuideBuySection from "@/app/components/GuideBuySection";
 import CategoryDataSection from "@/app/components/CategoryDataSection";
 import { buildGuideJsonLd } from "@/app/lib/guideJsonLd";
+import { getDrinkProducts } from "@/app/data/drinkProductsData";
 
 const pageTitle = "단백질 음료 공복에 마셔도 되나요? | 아침·운동 전 부담 줄이는 기준";
 const pageDescription =
   "단백질 음료를 공복에 마셔도 되는지 아침, 운동 전, 소화 부담, 당류와 칼로리 기준으로 정리하고 부담 적은 제품 선택 순서를 안내합니다.";
 const canonical = "https://proteinlab.kr/guides/intake-strategy-health/protein-drink-empty-stomach";
+const drinkProducts = getDrinkProducts();
+const emptyStomachCandidates = [
+  "sellex-profit-milk-vanilla-250",
+  "hymune-balance-active-deepchoco-250",
+  "takefit-max-goso-250",
+].map((slug) => {
+  const product = drinkProducts.find((item) => item.slug === slug);
+  if (!product) throw new Error(`Unknown drink product: ${slug}`);
+  return product;
+});
 
 export const metadata = {
   title: pageTitle,
@@ -66,6 +77,14 @@ const faq = [
     question: "공복감 때문에 매일 마셔도 괜찮나요?",
     answer:
       "간식 대체나 식사 보완용이라면 가능하지만, 식사에 계속 추가하면 칼로리가 늘 수 있습니다. 매일 섭취 기준도 함께 보는 편이 좋습니다.",
+  },
+  {
+    question: "20g대 제품 세 가지 중 열량이 가장 낮은 것은 무엇인가요?",
+    answer: `비교 제품 기준 셀렉스 프로핏 ${emptyStomachCandidates[0].calories}kcal, 테이크핏 맥스 ${emptyStomachCandidates[2].calories}kcal, 하이뮨 액티브 ${emptyStomachCandidates[1].calories}kcal입니다.`,
+  },
+  {
+    question: "공복용 후보의 당류와 단백질 밀도는 어떻게 비교하나요?",
+    answer: `세 제품의 당류는 셀렉스 ${emptyStomachCandidates[0].sugar}g, 하이뮨 ${emptyStomachCandidates[1].sugar}g, 테이크핏 ${emptyStomachCandidates[2].sugar}g입니다. 100kcal당 단백질은 각각 ${(emptyStomachCandidates[0].proteinPerServing / (emptyStomachCandidates[0].calories ?? 1) * 100).toFixed(1)}g, ${(emptyStomachCandidates[1].proteinPerServing / (emptyStomachCandidates[1].calories ?? 1) * 100).toFixed(1)}g, ${(emptyStomachCandidates[2].proteinPerServing / (emptyStomachCandidates[2].calories ?? 1) * 100).toFixed(1)}g입니다.`,
   },
 ];
 
@@ -132,6 +151,28 @@ export default function ProteinDrinkEmptyStomachPage() {
               <li className="rounded-xl border border-[#dce8df] bg-[#f6fbf7] px-4 py-3">2. 당류와 칼로리를 확인해 간식 대체인지 추가 섭취인지 구분합니다.</li>
               <li className="rounded-xl border border-[#dce8df] bg-[#f6fbf7] px-4 py-3">3. 불편감이 반복되면 식후로 옮기거나 워터형·락토프리 제품을 봅니다.</li>
             </ol>
+          </section>
+
+          <section className="rounded-[28px] border border-[#e2ebe4] bg-white p-5">
+            <h2 className="text-xl font-bold text-[var(--foreground)]">20g대 후보 성분 비교</h2>
+            <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">공복 반응은 개인차가 있으므로 아래 표는 효능 순위가 아니라 한 병 수치를 비교하는 기준입니다.</p>
+            <div className="mt-5 overflow-x-auto">
+              <table className="min-w-[680px] border-collapse text-left text-sm">
+                <thead><tr className="border-b border-[#dce8df]">
+                  <th className="px-3 py-3 font-semibold">제품</th><th className="px-3 py-3 text-right font-semibold">단백질</th>
+                  <th className="px-3 py-3 text-right font-semibold">당류</th><th className="px-3 py-3 text-right font-semibold">열량</th>
+                  <th className="px-3 py-3 text-right font-semibold">나트륨</th><th className="px-3 py-3 text-right font-semibold">100kcal당 단백질</th>
+                </tr></thead>
+                <tbody>{emptyStomachCandidates.map((product) => (
+                  <tr key={product.slug} className="border-b border-[#e8efe9] last:border-b-0">
+                    <td className="px-3 py-3"><Link href={`/product/${product.slug}`} className="font-medium text-[#24543d] underline">{product.brand} {product.name}</Link></td>
+                    <td className="px-3 py-3 text-right">{product.proteinPerServing}g</td><td className="px-3 py-3 text-right">{product.sugar}g</td>
+                    <td className="px-3 py-3 text-right">{product.calories}kcal</td><td className="px-3 py-3 text-right">{product.sodium}mg</td>
+                    <td className="px-3 py-3 text-right">{(product.proteinPerServing / (product.calories ?? 1) * 100).toFixed(1)}g</td>
+                  </tr>
+                ))}</tbody>
+              </table>
+            </div>
           </section>
 
           <section className="rounded-[28px] border border-[#e2ebe4] bg-white p-5">

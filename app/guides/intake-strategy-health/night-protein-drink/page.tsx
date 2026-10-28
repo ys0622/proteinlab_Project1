@@ -4,6 +4,7 @@ import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 import GuideBuySection from "@/app/components/GuideBuySection";
 import TrackedLink from "@/app/components/TrackedLink";
+import { getDrinkProducts } from "@/app/data/drinkProductsData";
 
 const _pageTitle = "밤에 단백질 음료 마셔도 될까 | 야식·저녁 보충 기준 정리";
 const _pageDesc = "저녁이나 자기 전에 단백질 음료를 마셔도 되는지, 야식처럼 마실 때 주의할 점과 칼로리·당류 기준을 실전적으로 정리했습니다.";
@@ -132,6 +133,11 @@ const productRecommendations = [
     body: "단백질 20g, 당류와 칼로리 부담을 함께 보는 사용자에게 비교 기준점으로 쓰기 좋은 RTD 후보입니다.",
   },
 ];
+const nightProducts = productRecommendations.map((item) => {
+  const product = getDrinkProducts().find((candidate) => candidate.slug === item.productId);
+  if (!product) throw new Error(`Unknown drink product: ${item.productId}`);
+  return product;
+});
 
 const faqItems = [
   {
@@ -145,6 +151,14 @@ const faqItems = [
   {
     question: "운동을 늦게 끝냈을 때도 밤에 마셔도 되나요?",
     answer: "운동 직후 회복 목적이라면 늦은 시간이어도 보충 자체가 더 중요할 수 있습니다. 다만 자기 직전이라면 너무 무겁지 않은 제품을 고르는 것이 낫습니다.",
+  },
+  {
+    question: "세 후보 중 열량이 가장 낮은 제품은 무엇인가요?",
+    answer: `셀렉스 프로핏 ${nightProducts[2].calories}kcal, 테이크핏 맥스 ${nightProducts[0].calories}kcal, 하이뮨 액티브 ${nightProducts[1].calories}kcal 순입니다.`,
+  },
+  {
+    question: "밤 후보의 당류와 100kcal당 단백질은 어떻게 다른가요?",
+    answer: `당류는 테이크핏 ${nightProducts[0].sugar}g, 하이뮨 ${nightProducts[1].sugar}g, 셀렉스 ${nightProducts[2].sugar}g입니다. 100kcal당 단백질은 각각 ${(nightProducts[0].proteinPerServing / (nightProducts[0].calories ?? 1) * 100).toFixed(1)}g, ${(nightProducts[1].proteinPerServing / (nightProducts[1].calories ?? 1) * 100).toFixed(1)}g, ${(nightProducts[2].proteinPerServing / (nightProducts[2].calories ?? 1) * 100).toFixed(1)}g입니다.`,
   },
 ];
 
@@ -224,6 +238,12 @@ export default function NightProteinDrinkPage() {
                 </article>
               ))}
             </div>
+            <div className="mt-5 overflow-x-auto"><table className="min-w-[680px] border-collapse text-left text-sm">
+              <thead><tr className="border-b border-[#dce8df]"><th className="px-3 py-3 font-semibold">제품</th><th className="px-3 py-3 text-right font-semibold">단백질</th><th className="px-3 py-3 text-right font-semibold">당류</th><th className="px-3 py-3 text-right font-semibold">열량</th><th className="px-3 py-3 text-right font-semibold">나트륨</th><th className="px-3 py-3 text-right font-semibold">100kcal당 단백질</th></tr></thead>
+              <tbody>{nightProducts.map((product) => (
+                <tr key={product.slug} className="border-b border-[#eef1f3] last:border-b-0"><td className="px-3 py-3 font-medium text-[var(--foreground)]">{product.brand} {product.name}</td><td className="px-3 py-3 text-right">{product.proteinPerServing}g</td><td className="px-3 py-3 text-right">{product.sugar}g</td><td className="px-3 py-3 text-right">{product.calories}kcal</td><td className="px-3 py-3 text-right">{product.sodium}mg</td><td className="px-3 py-3 text-right">{(product.proteinPerServing / (product.calories ?? 1) * 100).toFixed(1)}g</td></tr>
+              ))}</tbody>
+            </table></div>
           </section>
 
           <section className="rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">

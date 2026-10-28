@@ -48,7 +48,7 @@ export default function GuideProductHeroCards({ products }: { products: Resolved
           return (
             <div key={product.slug} className={`${index >= 2 ? "hidden md:flex" : "flex"} min-w-0 flex-col rounded-xl border border-[#e3ebe5] bg-white p-2`}>
               <Link href={`/product/${product.slug}`} className="flex h-28 items-center justify-center overflow-hidden rounded-lg bg-white md:h-36">
-                <Image src={imageUrl} alt={productName} width={200} height={144} className="h-full w-full object-contain" />
+                <Image src={imageUrl} alt={productName} width={200} height={144} priority className="h-full w-full object-contain" />
               </Link>
               {contextLabel ? <span className="mt-1.5 text-[10px] font-bold tracking-wide text-[#4c7a57]">{contextLabel}</span> : null}
               <Link href={`/product/${product.slug}`} className={`${contextLabel ? "mt-0.5" : "mt-1.5"} line-clamp-2 min-h-[2.5rem] text-xs font-semibold leading-5 text-[#24543d] hover:underline`}>

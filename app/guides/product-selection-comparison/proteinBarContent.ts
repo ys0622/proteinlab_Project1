@@ -108,6 +108,7 @@ function rankingRows(products: typeof barProducts): CategoryMetricRow[] {
       `${product.proteinPerServing}g`,
       `${product.calories}kcal`,
       `${product.sugar}g`,
+      `${(product.proteinPerServing / (product.calories ?? 1) * 100).toFixed(1)}g`,
       parseDensity(product.density) >= 10.5
         ? "단백질 밀도가 높아 운동 후 간식용으로 유리"
         : product.nutritionPerBottle?.fiberG
@@ -135,7 +136,7 @@ export const proteinBarTop10Config: CategoryGuideConfig = {
     "운동 후 간식, 다이어트 간식, 편의점 즉시 구매는 서로 기준이 다르기 때문에 숫자 하나만 보고 고르면 실패할 가능성이 큽니다.",
   ],
   comparisonTitle: "TOP 10 순위표",
-  comparisonColumns: ["제품명", "단백질", "칼로리", "당류", "포인트"],
+  comparisonColumns: ["제품명", "단백질", "칼로리", "당류", "100kcal당 단백질", "포인트"],
   comparisonRows: rankingRows(barTop10),
   sections: [
     {
@@ -299,7 +300,7 @@ proteinBarTop10Config.summary = [
   "처음 사는 제품은 박스 구매보다 단품이나 소량 묶음으로 식감과 단맛을 확인하는 편이 안전합니다.",
 ];
 proteinBarTop10Config.comparisonTitle = "단백질바 종합 추천 순위 TOP 10";
-proteinBarTop10Config.comparisonColumns = ["제품명", "단백질", "칼로리", "당류", "선택 포인트"];
+proteinBarTop10Config.comparisonColumns = ["제품명", "단백질", "칼로리", "당류", "100kcal당 단백질", "선택 포인트"];
 proteinBarTop10Config.comparisonRows = rankingRows(barTop10);
 proteinBarTop10Config.sections = [
   {
@@ -405,6 +406,14 @@ proteinBarTop10Config.faq = [
     question: "처음 구매할 때 박스로 사도 되나요?",
     answer:
       "처음이면 단품이나 소량 묶음이 낫습니다. 단백질 바는 식감과 단맛 취향 차이가 커서, 맛이 맞는지 확인한 뒤 박스로 넘어가는 편이 안전합니다.",
+  },
+  {
+    question: "TOP 10의 100kcal당 단백질은 어떻게 계산하나요?",
+    answer: "1개 단백질 g을 1개 열량 kcal로 나누고 100을 곱해 소수 첫째 자리까지 표시합니다. 열량이 다른 바를 같은 기준으로 비교하기 위한 값입니다.",
+  },
+  {
+    question: "단백질이 같은 바끼리는 무엇으로 고르나요?",
+    answer: "100kcal당 단백질과 당류를 함께 보세요. 같은 단백질이면 열량이 낮을수록 밀도가 높고, 같은 열량이면 당류가 낮은 쪽을 먼저 좁힐 수 있습니다.",
   },
 ];
 proteinBarTop10Config.jsonLd = [articleJsonLd(proteinBarTop10Config), faqJsonLd(proteinBarTop10Config)];
@@ -567,7 +576,7 @@ export const dietProteinBarConfig: CategoryGuideConfig = {
     "단백질 바도 과식하면 충분히 칼로리가 높아지므로 하루 1개 전후 기준으로 보는 편이 현실적입니다.",
   ],
   comparisonTitle: "다이어트 조건 통과 추천 순위",
-  comparisonColumns: ["제품명", "단백질", "칼로리", "당류", "포인트"],
+  comparisonColumns: ["제품명", "단백질", "칼로리", "당류", "100kcal당 단백질", "포인트"],
   comparisonRows: dietBarProducts.map((product, index) => ({
     label: `${index + 1}위`,
     values: [
@@ -575,6 +584,7 @@ export const dietProteinBarConfig: CategoryGuideConfig = {
       `${product.proteinPerServing}g`,
       `${product.calories}kcal`,
       `${product.sugar}g`,
+      `${(product.proteinPerServing / (product.calories ?? 1) * 100).toFixed(1)}g`,
       product.nutritionPerBottle?.fiberG
         ? `식이섬유 ${product.nutritionPerBottle.fiberG}g`
         : "숫자가 단순해 관리하기 쉬움",
@@ -666,6 +676,14 @@ export const dietProteinBarConfig: CategoryGuideConfig = {
     {
       question: "다이어트 바와 쉐이크 중 뭐가 더 낫나요?",
       answer: "씹는 간식이 필요하면 바, 아침 대용이나 포만감이 중요하면 쉐이크가 더 잘 맞는 경우가 많습니다. 상황이 다르기 때문에 역할을 나누는 편이 좋습니다.",
+    },
+    {
+      question: "표의 100kcal당 단백질은 어떻게 계산했나요?",
+      answer: "1개 단백질 g을 1개 열량 kcal로 나눈 뒤 100을 곱하고 소수 첫째 자리까지 표시했습니다. 열량이 다른 바를 같은 기준으로 볼 때 쓰는 값입니다.",
+    },
+    {
+      question: "조건을 통과한 제품끼리는 무엇으로 다시 고르나요?",
+      answer: "표에서 100kcal당 단백질과 당류를 함께 비교하세요. 같은 단백질이어도 열량이 낮으면 밀도가 높고, 같은 열량이면 당류가 낮은 쪽을 먼저 좁힐 수 있습니다.",
     },
   ],
 };

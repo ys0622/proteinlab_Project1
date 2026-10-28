@@ -4,6 +4,7 @@ import Footer from "@/app/components/Footer";
 import MpiDrinkList from "@/app/components/MpiDrinkList";
 import GuideProductHeroCards, { resolveGuideHeroProducts } from "@/app/components/GuideProductHeroCards";
 import { buildGuideJsonLd } from "@/app/lib/guideJsonLd";
+import { getDrinkProducts } from "@/app/data/drinkProductsData";
 
 const _pageTitle = "MPI 단백질이란? WPI·WPC·MPC 차이와 유당 비교";
 const _pageDesc = "MPI는 카제인과 유청을 함께 담은 분리우유단백입니다. WPI·WPC·MPC와 원료, 단백질 비율, 유당 함량이 어떻게 다른지 비교하고 제품 표시를 읽는 기준을 정리했습니다.";
@@ -119,6 +120,16 @@ const purposeRows = [
   ["깔끔한 목넘김, 피부·관절 관리가 목적일 때", "Collagen", "근육 합성용 단백질로는 적합하지 않지만, 흡수가 빠르며, 비타민C와 함께 섭취하는 조합이 자주 언급됩니다."],
 ];
 
+const sourceCandidates = [
+  "sellex-profit-sports-choco-330",
+  "takefit-max-goso-250",
+  "ultive-vegan-protein-choco-250",
+].map((slug) => {
+  const product = getDrinkProducts().find((item) => item.slug === slug);
+  if (!product) throw new Error(`Unknown drink product: ${slug}`);
+  return product;
+});
+
 const faqItems = [
   {
     q: "WPI와 WPC 중 뭘 먼저 골라야 하나요?",
@@ -135,6 +146,14 @@ const faqItems = [
   {
     q: "콜라겐을 먹으면 근육에도 도움이 되나요?",
     a: "근육 합성 목적이라면 큰 도움이 되지 않습니다. 콜라겐은 근육 합성의 핵심 아미노산인 류신 함량이 낮아, 근육용 단백질 총량에 포함해 계산하지 않는 편이 정확합니다.",
+  },
+  {
+    q: "원료가 달라도 한 병 단백질은 비슷할 수 있나요?",
+    a: `그렇습니다. 비교 제품 기준 셀렉스는 ${sourceCandidates[0].proteinPerServing}g, 테이크핏은 ${sourceCandidates[1].proteinPerServing}g, 얼티브 식물성은 ${sourceCandidates[2].proteinPerServing}g입니다. 원료명과 완제품 단백질 수치를 따로 확인하세요.`,
+  },
+  {
+    q: "열량 대비 단백질은 어떤 제품이 높은가요?",
+    a: `100kcal당 단백질은 셀렉스 ${(sourceCandidates[0].proteinPerServing / (sourceCandidates[0].calories ?? 1) * 100).toFixed(1)}g, 테이크핏 ${(sourceCandidates[1].proteinPerServing / (sourceCandidates[1].calories ?? 1) * 100).toFixed(1)}g, 얼티브 식물성 ${(sourceCandidates[2].proteinPerServing / (sourceCandidates[2].calories ?? 1) * 100).toFixed(1)}g입니다.`,
   },
 ];
 
@@ -161,6 +180,7 @@ export default function ProteinSourceTypesGuidePage() {
     description: (metadata as { title: string; description: string }).description,
     url: "https://proteinlab.kr/guides/basics/protein-source-types",
     dateModified: "2026-10-08",
+    faq: faqItems.map((item) => ({ question: item.q, answer: item.a })),
   });
 
   return (
@@ -336,6 +356,17 @@ export default function ProteinSourceTypesGuidePage() {
                 </tbody>
               </table>
             </div>
+          </section>
+
+          <section className="rounded-2xl border border-[#e8e6e3] bg-[#fffdf8] px-5 py-5">
+            <h2 className="text-xl font-bold text-[var(--foreground)]">원료 표기가 다른 대표 제품 수치</h2>
+            <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">원료 종류의 우열표가 아니라 ProteinLab 데이터에 적힌 완제품 한 병 수치를 비교한 표입니다.</p>
+            <div className="mt-5 overflow-x-auto"><table className="min-w-[720px] border-collapse text-left text-sm">
+              <thead><tr className="border-b border-[#e8e6e3]"><th className="px-3 py-3 font-semibold">제품</th><th className="px-3 py-3 font-semibold">데이터 원료 표기</th><th className="px-3 py-3 text-right font-semibold">용량</th><th className="px-3 py-3 text-right font-semibold">단백질</th><th className="px-3 py-3 text-right font-semibold">당류</th><th className="px-3 py-3 text-right font-semibold">열량</th><th className="px-3 py-3 text-right font-semibold">100kcal당 단백질</th></tr></thead>
+              <tbody>{sourceCandidates.map((product) => (
+                <tr key={product.slug} className="border-b border-[#f0eeeb] last:border-b-0"><td className="px-3 py-3"><Link href={`/product/${product.slug}`} className="font-medium text-[#24543d] underline">{product.brand} {product.name}</Link></td><td className="px-3 py-3 text-[var(--foreground-muted)]">{product.proteinSource ?? "-"}</td><td className="px-3 py-3 text-right">{product.capacity}</td><td className="px-3 py-3 text-right">{product.proteinPerServing}g</td><td className="px-3 py-3 text-right">{product.sugar}g</td><td className="px-3 py-3 text-right">{product.calories}kcal</td><td className="px-3 py-3 text-right">{(product.proteinPerServing / (product.calories ?? 1) * 100).toFixed(1)}g</td></tr>
+              ))}</tbody>
+            </table></div>
           </section>
 
           <section className="rounded-2xl border border-[#e8e6e3] bg-[#fffdf8] px-5 py-5">

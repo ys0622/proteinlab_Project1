@@ -275,7 +275,7 @@ export default async function CompareLandingPage({ params }: PageProps) {
     .filter((item): item is NonNullable<typeof item> => item != null);
 
   const landingCopy = resolveLandingCopy(landing, products);
-  const faqs = buildCompareFaqs(landing.title, landingCopy.intro, products);
+  const faqs = [...buildCompareFaqs(landing.title, landingCopy.intro, products), ...(landing.faq ?? [])];
   const compareHref = `/compare?slugs=${landing.productSlugs.join(",")}`;
   const conversionPlan = priorityConversionPlans[landing.slug];
   const differenceCards = buildDifferenceCards(products);

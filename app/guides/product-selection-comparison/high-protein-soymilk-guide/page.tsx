@@ -24,6 +24,22 @@ const stdProtein = minMax(std.map((p) => p.proteinPerServing));
 const stdCal = minMax(std.map((p) => p.calories ?? 0));
 const allSugar = minMax(soymilkProducts.map((p) => p.sugar ?? 0));
 const lowSugarCount = soymilkProducts.filter((p) => (p.sugar ?? 999) < 3).length;
+const highProteinProducts = soymilkProducts
+  .filter((p) => p.proteinPerServing >= 11)
+  .sort((a, b) => b.proteinPerServing - a.proteinPerServing || (a.sugar ?? 999) - (b.sugar ?? 999));
+const enhancedProteinProducts = soymilkProducts
+  .filter((p) => p.proteinPerServing >= 8 && p.proteinPerServing < 11)
+  .sort((a, b) => b.proteinPerServing - a.proteinPerServing || (a.sugar ?? 999) - (b.sugar ?? 999));
+const lowSugarHighProteinProducts = highProteinProducts.filter((p) => (p.sugar ?? 999) < 3);
+const brandSummaries = ["연세두유", "매일두유", "베지밀", "이롬"].map((brand) => {
+  const products = soymilkProducts.filter((p) => p.brand === brand && p.proteinPerServing >= 8);
+  return {
+    brand,
+    count: products.length,
+    protein: minMax(products.map((p) => p.proteinPerServing)),
+    sugar: minMax(products.map((p) => p.sugar ?? 0)),
+  };
+});
 const otherSizes = soymilkProducts
   .filter((p) => getCapacityMl(p) !== 190)
   .map((p) => `${p.brand} ${p.name} ${p.capacity} ${p.proteinPerServing}g`)
@@ -89,6 +105,18 @@ const faqItems = [
     question: "단백질이 같으면 어떤 항목을 비교하나요?",
     answer: "한 팩 당류와 열량, 용량, 맛 유형을 비교하세요. 같은 단백질 수치라도 제품 라인에 따라 다른 영양정보가 달라질 수 있습니다.",
   },
+  {
+    question: "당류 3g 미만이면서 고단백인 두유는 몇 종인가요?",
+    answer: `ProteinLab 등록 데이터 기준 ${lowSugarHighProteinProducts.length}종입니다. 제품별 단백질·당류·열량은 저당 고단백 표에서 확인할 수 있습니다.`,
+  },
+  {
+    question: "단백질 24g 두유와 12g 두유를 그대로 비교해도 되나요?",
+    answer: "팩 용량을 함께 봐야 합니다. 24g 제품은 240mL, 다수의 12g 제품은 190mL이므로 한 팩 총량과 용량을 나란히 확인하세요.",
+  },
+  {
+    question: "칼슘 수치가 없는 제품은 0mg이라는 뜻인가요?",
+    answer: "아닙니다. 표의 대시는 ProteinLab 데이터에 칼슘 수치가 입력되지 않았다는 뜻이며 0mg으로 해석하지 않습니다.",
+  },
 ];
 
 export default function HighProteinSoymilkGuidePage() {
@@ -138,6 +166,62 @@ export default function HighProteinSoymilkGuidePage() {
                 </article>
               ))}
             </div>
+          </section>
+
+          <section className="rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
+            <h2 className="text-xl font-bold text-[var(--foreground)]">고단백 두유 전 제품</h2>
+            <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">
+              ProteinLab 기준인 1팩 단백질 11g 이상 제품 {highProteinProducts.length}종입니다. 칼슘은 제품 데이터에 수치가 있을 때만 표시합니다.
+            </p>
+            <div className="mt-5 overflow-x-auto">
+              <table className="min-w-[760px] border-collapse text-left text-sm">
+                <thead><tr className="border-b border-[#e8e6e3] text-[var(--foreground)]">
+                  <th className="px-3 py-3 font-semibold">브랜드</th><th className="px-3 py-3 font-semibold">제품</th>
+                  <th className="px-3 py-3 text-right font-semibold">용량</th><th className="px-3 py-3 text-right font-semibold">단백질</th>
+                  <th className="px-3 py-3 text-right font-semibold">당류</th><th className="px-3 py-3 text-right font-semibold">열량</th>
+                  <th className="px-3 py-3 text-right font-semibold">칼슘</th>
+                </tr></thead>
+                <tbody>{highProteinProducts.map((product) => (
+                  <tr key={product.slug} className="border-b border-[#f0eeeb] last:border-b-0">
+                    <td className="px-3 py-3 font-medium text-[var(--foreground)]">{product.brand}</td>
+                    <td className="px-3 py-3"><Link href={`/product/${product.slug}`} className="text-[#24543d] underline">{product.name}</Link></td>
+                    <td className="px-3 py-3 text-right text-[var(--foreground-muted)]">{product.capacity}</td>
+                    <td className="px-3 py-3 text-right font-semibold text-[#24543d]">{product.proteinPerServing}g</td>
+                    <td className="px-3 py-3 text-right text-[var(--foreground-muted)]">{product.sugar}g</td>
+                    <td className="px-3 py-3 text-right text-[var(--foreground-muted)]">{product.calories}kcal</td>
+                    <td className="px-3 py-3 text-right text-[var(--foreground-muted)]">{product.nutritionPerBottle?.calciumMg != null ? `${product.nutritionPerBottle.calciumMg}mg` : "-"}</td>
+                  </tr>
+                ))}</tbody>
+              </table>
+            </div>
+          </section>
+
+          <section className="rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
+            <h2 className="text-xl font-bold text-[var(--foreground)]">단백질 강화 8~10g 대표 제품</h2>
+            <div className="mt-5 grid gap-3 md:grid-cols-3">{enhancedProteinProducts.map((product) => (
+              <article key={product.slug} className="rounded-2xl border border-[#dce8df] bg-[#f6fbf7] p-4">
+                <h3 className="text-sm font-semibold text-[#24543d]">{product.brand} {product.name}</h3>
+                <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">{product.capacity} · 단백질 {product.proteinPerServing}g · 당류 {product.sugar}g · {product.calories}kcal</p>
+              </article>
+            ))}</div>
+          </section>
+
+          <section className="rounded-[28px] border border-[#e2ebe4] bg-[#f7fbf8] px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
+            <h2 className="text-xl font-bold text-[var(--foreground)]">저당이면서 고단백인 제품</h2>
+            <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">당류 3g 미만과 단백질 11g 이상을 동시에 충족한 {lowSugarHighProteinProducts.length}종입니다.</p>
+            <ul className="mt-4 grid gap-3 text-sm leading-6 text-[var(--foreground-muted)] md:grid-cols-2">{lowSugarHighProteinProducts.map((product) => (
+              <li key={product.slug} className="rounded-xl border border-[#dce8df] bg-white px-4 py-3">{product.brand} {product.name} · 단백질 {product.proteinPerServing}g · 당류 {product.sugar}g · {product.calories}kcal</li>
+            ))}</ul>
+          </section>
+
+          <section className="rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
+            <h2 className="text-xl font-bold text-[var(--foreground)]">브랜드별 단백질 강화 제품 차이</h2>
+            <div className="mt-5 grid gap-3 md:grid-cols-2">{brandSummaries.map((item) => (
+              <article key={item.brand} className="rounded-2xl border border-[#dce8df] bg-[#f6fbf7] p-4">
+                <h3 className="text-sm font-semibold text-[#24543d]">{item.brand === "베지밀" ? "베지밀(정식품)" : item.brand}</h3>
+                <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">8g 이상 등록 제품 {item.count}종 · 단백질 {item.protein.min}~{item.protein.max}g · 당류 {item.sugar.min}~{item.sugar.max}g</p>
+              </article>
+            ))}</div>
           </section>
 
           <section className="rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">

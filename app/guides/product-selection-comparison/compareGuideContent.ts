@@ -86,6 +86,10 @@ function buildComparisonRows(rows: CompareMetricRow[]) {
   return rows;
 }
 
+function formatProteinCalorieDensity(product: ReturnType<typeof getDrinkProduct>) {
+  return `${(product.proteinPerServing / (product.calories ?? 1) * 100).toFixed(1)}g`;
+}
+
 const commonRelated: RelatedGuideLink[] = [
   {
     title: "단백질 음료 선택 가이드",
@@ -337,6 +341,7 @@ export const selexVsTakefitVsHimuneConfig: ComparePageConfig = {
     { label: "지방", values: [`${sellex.fat ?? "-"}g`, `${takefitMax.fat ?? "-"}g`, `${hymune.fat ?? "-"}g`] },
     { label: "나트륨", values: [`${sellex.sodium ?? "-"}mg`, `${takefitMax.sodium ?? "-"}mg`, `${hymune.sodium ?? "-"}mg`] },
     { label: "100mL당 단백질", values: [formatDensity(sellex), formatDensity(takefitMax), formatDensity(hymune)] },
+    { label: "100kcal당 단백질", values: [formatProteinCalorieDensity(sellex), formatProteinCalorieDensity(takefitMax), formatProteinCalorieDensity(hymune)] },
     { label: "대표 맛 수", values: ["7종", "4종", "9종"] },
     { label: "제조사", values: [sellex.manufacturer ?? "-", takefitMax.manufacturer ?? "-", hymune.manufacturer ?? "-"] },
   ]),
@@ -371,6 +376,8 @@ export const selexVsTakefitVsHimuneConfig: ComparePageConfig = {
     { question: "셋 중 하나만 처음 사본다면 무엇이 무난한가", answer: "가장 무난한 쪽은 셀렉스 프로핏입니다. 수치가 과하게 튀지 않고 브랜드 인지도와 맛 안정감이 있어 첫 입문 실패 확률이 낮습니다." },
     { question: "운동 후에는 테이크핏이 확실히 유리한가", answer: "ProteinLab DB 기준으로는 그렇습니다. 250mL에 24g이라 밀도가 가장 높고, 같은 양 대비 단백질 체감이 분명합니다." },
     { question: "하이뮨은 왜 추천되나", answer: "대표 20g급 RTD 기준으로 당류 0g이고, 비교 제품 중 나트륨이 가장 낮고 지방은 테이크핏과 같은 0.7g입니다. 칼로리는 셀렉스와 테이크핏보다 높으므로 우선하는 항목에 따라 선택이 갈립니다." },
+    { question: "열량 대비 단백질이 가장 높은 제품은 무엇인가", answer: `100kcal당 단백질은 테이크핏 맥스 ${formatProteinCalorieDensity(takefitMax)}, 셀렉스 프로핏 ${formatProteinCalorieDensity(sellex)}, 하이뮨 액티브 ${formatProteinCalorieDensity(hymune)}입니다. 열량 대비 단백질을 우선하면 테이크핏 맥스가 앞섭니다.` },
+    { question: "나트륨을 가장 적게 섭취하려면 무엇을 고르나", answer: `대표 제품 한 병 기준 하이뮨 액티브 ${hymune.sodium}mg, 테이크핏 맥스 ${takefitMax.sodium}mg, 셀렉스 프로핏 ${sellex.sodium}mg 순입니다.` },
   ],
   relatedGuides: [
     { title: "셀렉스 vs 하이뮨 비교", href: "/guides/product-selection-comparison/selex-vs-himune", description: "셀렉스와 하이뮨만 좁혀서 더 자세히 봅니다." },
@@ -481,6 +488,7 @@ export const proteinDrinkFor50sConfig: ComparePageConfig = {
     { label: "칼로리", values: [`${hymuneBalance.calories}kcal`, `${newcare41.calories}kcal`, `${sellex.calories}kcal`] },
     { label: "당류", values: [`${hymuneBalance.sugar}g`, `${newcare41.sugar}g`, `${sellex.sugar}g`] },
     { label: "나트륨", values: [`${hymuneBalance.sodium ?? "-"}mg`, `${newcare41.sodium ?? "-"}mg`, `${sellex.sodium ?? "-"}mg`] },
+    { label: "100kcal당 단백질", values: [formatProteinCalorieDensity(hymuneBalance), formatProteinCalorieDensity(newcare41), formatProteinCalorieDensity(sellex)] },
     { label: "포인트", values: ["적은 용량, 중장년 친화 인지", "균형영양식·락토프리", "저칼로리·저지방"] },
   ]),
   sections: [
@@ -521,6 +529,8 @@ export const proteinDrinkFor50sConfig: ComparePageConfig = {
     { question: "50대는 어떤 단백질 음료부터 시작하는 게 좋나", answer: "처음에는 하이뮨 프로틴 밸런스처럼 용량이 작고 익숙한 제품이나, 뉴케어 올프로틴처럼 균형형으로 설계된 제품부터 시작하는 편이 부담이 적습니다." },
     { question: "50대에게 40g 제품도 괜찮나", answer: "운동 목적이 뚜렷하지 않다면 40g급 초고단백은 우선순위가 낮습니다. 건강 유지 목적이라면 10~25g대 제품을 나눠 섭취하는 편이 더 현실적입니다." },
     { question: "식사 대신 마셔도 되나", answer: "단백질 음료는 기본적으로 보충용으로 보는 편이 안전합니다. 식사를 완전히 대체하기보다 식사와 함께 또는 식후 보충으로 쓰는 흐름이 더 무난합니다." },
+    { question: "세 제품 중 한 병 열량이 가장 낮은 것은 무엇인가", answer: `대표 제품 기준 셀렉스 프로핏 ${sellex.calories}kcal, 하이뮨 프로틴 밸런스 ${hymuneBalance.calories}kcal, 뉴케어 올프로틴 41g ${newcare41.calories}kcal 순입니다.` },
+    { question: "열량 대비 단백질을 우선하면 무엇을 고르나", answer: `100kcal당 단백질은 뉴케어 올프로틴 41g ${formatProteinCalorieDensity(newcare41)}, 셀렉스 프로핏 ${formatProteinCalorieDensity(sellex)}, 하이뮨 프로틴 밸런스 ${formatProteinCalorieDensity(hymuneBalance)}입니다.` },
   ],
   relatedGuides: [
     { title: "셀렉스 vs 하이뮨 비교", href: "/guides/product-selection-comparison/selex-vs-himune", description: "중장년층이 자주 비교하는 두 브랜드를 직접 비교합니다." },
@@ -1090,13 +1100,13 @@ const dryou40Strawberry = getDrinkProduct("dryou-protein-40g-strawberry-350");
 
 export const himuneLineupConfig: ComparePageConfig = {
   slug: "himune-lineup",
-  dataSection: { category: "drink", brand: "하이뮨", limit: 20 },
+  dataSection: { category: "drink", brand: "하이뮨", limit: 20, showCapacity: true },
   title: "하이뮨 프로틴 성분표 | 액티브·밸런스·울트라 종류별 단백질·당류 비교",
   description: "하이뮨 프로틴 밸런스, 액티브, 액티브 제로, 식물성 고단백, 울트라의 단백질·당류·칼로리를 비교하고 운동·저당·일상 보충 목적별 추천을 정리했습니다.",
   keywords: ["하이뮨 단백질음료", "하이뮨 성분", "하이뮨 종류", "하이뮨 라인업", "하이뮨 프로틴밸런스 액티브 차이", "하이뮨 액티브 제로", "하이뮨 울트라"],
   badge: "브랜드 라인업",
   readingTime: "5분 읽기",
-  updatedAt: "2026-09-30",
+  updatedAt: "2026-10-27",
   methodologyNote: "ProteinLab DB RTD 기준",
   intro: "하이뮨 단백질음료는 프로틴 밸런스, 액티브, 액티브 제로, 식물성, 울트라처럼 종류가 많아 제품명만으로 고르기 어렵습니다. ProteinLab DB의 RTD 라인업을 같은 표에 놓고 일상 보충은 프로틴 밸런스, 운동 후는 액티브, 저당은 액티브 제로, 초고단백은 울트라처럼 목적별 추천을 바로 구분했습니다.",
   summary: [
@@ -1156,6 +1166,9 @@ export const himuneLineupConfig: ComparePageConfig = {
     { question: "하이뮨 액티브 제로는 어떤 사람에게 맞나", answer: "당류와 칼로리를 더 낮게 보고 싶은 사람에게 맞습니다. 22g, 99kcal, 당류 0g이라 하이뮨 안에서 가장 가벼운 축입니다." },
     { question: "하이뮨은 왜 시니어용 이미지가 강한가", answer: "산양유와 건강관리 메시지가 강하고, 프로틴 밸런스처럼 일상 보완형 제품 비중도 있기 때문입니다. 그래서 운동 전용 브랜드보다 폭이 넓게 읽힙니다." },
     { question: "하이뮨 울트라는 액티브랑 뭐가 다른가", answer: `단백질 총량 자체가 다릅니다. 액티브가 하이뮨의 표준 운동 보충형이라면, 울트라는 ${hymuneUltra.proteinPerServing}g으로 브랜드 내 가장 높은 총량을 채울 때 선택하는 라인입니다.` },
+    { question: "하이뮨 RTD는 ProteinLab에 몇 종 등록되어 있나", answer: "하단 전체 수치표에는 ProteinLab에 등록된 하이뮨 음료 19종이 표시됩니다. 제품명에서 라인과 맛을, 옆 열에서 용량·단백질·당류·열량을 확인할 수 있습니다." },
+    { question: "당류 0g인 하이뮨 제품끼리도 차이가 있나", answer: "있습니다. 식물성 고단백은 190mL·단백질 10g·65kcal이고, 액티브 제로 두 맛은 250mL·22g·99kcal, 액티브 딥초코는 250mL·20g·110kcal입니다. 울트라(400mL·49g)는 당류 0.9g이라 여기서 뺐습니다." },
+    { question: "가장 작은 용량과 가장 큰 용량은 무엇인가", answer: "등록 제품 기준 마시는 프로틴 밸런스가 125mL로 가장 작고, 하이뮨 울트라가 400mL로 가장 큽니다. 단백질은 각각 8g과 49g입니다." },
   ],
   relatedGuides: [
     { title: "테이크핏 vs 하이뮨 비교", href: "/guides/product-selection-comparison/takefit-vs-himune", description: "운동용 대표 RTD 기준으로 하이뮨 액티브와 테이크핏을 직접 비교합니다." },
@@ -1692,6 +1705,7 @@ export const newcareVsHymuneConfig: ComparePageConfig = {
     { label: "칼로리", values: [`${newcare41.calories}kcal`, `${hymuneBalance.calories}kcal`] },
     { label: "당류", values: [`${newcare41.sugar}g`, `${hymuneBalance.sugar}g`] },
     { label: "나트륨", values: [`${newcare41.sodium ?? "-"}mg`, `${hymuneBalance.sodium ?? "-"}mg`] },
+    { label: "100kcal당 단백질", values: [formatProteinCalorieDensity(newcare41), formatProteinCalorieDensity(hymuneBalance)] },
   ]),
   sections: [
     {
@@ -1723,6 +1737,8 @@ export const newcareVsHymuneConfig: ComparePageConfig = {
     { question: "50대나 시니어는 뉴케어와 하이뮨 중 뭘 먼저 보나요?", answer: "처음 시작이면 하이뮨이 더 무난하고, 고단백 보충이 분명하면 뉴케어 41g이 더 직접적입니다." },
     { question: "뉴케어와 하이뮨은 같은 용도인가요?", answer: "검색 의도는 비슷할 수 있지만 결은 다릅니다. 뉴케어는 고단백 예외형, 하이뮨은 진입형 균형 라인에 가깝습니다." },
     { question: "유당 부담까지 보면 어느 쪽이 낫나요?", answer: "ProteinLab DB 기준으로는 뉴케어 41g이 락토프리 성격으로 읽히기 때문에 그 관점에서 우선순위가 올라갑니다." },
+    { question: "열량 대비 단백질 차이는 얼마나 나나요?", answer: `100kcal당 단백질은 뉴케어 41g이 ${formatProteinCalorieDensity(newcare41)}, 하이뮨 프로틴 밸런스가 ${formatProteinCalorieDensity(hymuneBalance)}입니다. 단백질 총량뿐 아니라 열량 대비 밀도도 뉴케어가 높습니다.` },
+    { question: "두 제품의 한 병 열량과 당류는 어떻게 다른가요?", answer: `뉴케어 41g은 ${newcare41.calories}kcal·당류 ${newcare41.sugar}g, 하이뮨 프로틴 밸런스는 ${hymuneBalance.calories}kcal·당류 ${hymuneBalance.sugar}g입니다.` },
   ],
   relatedGuides: [
     { title: "뉴케어 올프로틴 완전 분석", href: "/guides/product-selection-comparison/newcare-allprotein", description: "뉴케어 라인을 자세히 풀어본 메인 페이지입니다." },
@@ -2376,6 +2392,7 @@ export const danbaekVsSelexsConfig: ComparePageConfig = {
     { label: "지방", values: [`${danbaekDrinkChoco.fat ?? "-"}g`, `${sellexProfitSports.fat ?? "-"}g`] },
     { label: "나트륨", values: [`${danbaekDrinkChoco.sodium ?? "-"}mg`, `${sellexProfitSports.sodium ?? "-"}mg`] },
     { label: "100mL당 단백질", values: [formatDensity(danbaekDrinkChoco), formatDensity(sellexProfitSports)] },
+    { label: "100kcal당 단백질", values: [formatProteinCalorieDensity(danbaekDrinkChoco), formatProteinCalorieDensity(sellexProfitSports)] },
     { label: "대표 이미지", values: ["저나트륨·안정형", "저칼로리·대중형"] },
   ]),
   sections: [
@@ -2408,6 +2425,8 @@ export const danbaekVsSelexsConfig: ComparePageConfig = {
     { question: "더단백과 셀렉스 중 다이어트에는 어느 쪽이 낫나", answer: "칼로리만 보면 셀렉스 프로핏 웨이프로틴이 더 가볍습니다. 다만 나트륨까지 신경 쓰면 더단백이 더 나을 수 있습니다." },
     { question: "저염이 중요한 사람에게는 무엇이 낫나", answer: "더단백입니다. 대표 초코 SKU 기준으로 나트륨 차이가 매우 큽니다." },
     { question: "둘 다 20g대인데 왜 비교하나", answer: "같은 20g대라도 칼로리, 나트륨, 음용감이 다르기 때문입니다. 실제 선택에서는 이 차이가 더 크게 느껴집니다." },
+    { question: "열량 대비 단백질 밀도는 어느 쪽이 높나", answer: `100kcal당 단백질은 더단백 ${formatProteinCalorieDensity(danbaekDrinkChoco)}, 셀렉스 프로핏 ${formatProteinCalorieDensity(sellexProfitSports)}입니다.` },
+    { question: "대표 제품의 나트륨은 얼마나 차이 나나", answer: `더단백은 ${danbaekDrinkChoco.sodium}mg, 셀렉스 프로핏은 ${sellexProfitSports.sodium}mg으로 한 병 기준 ${Math.abs((sellexProfitSports.sodium ?? 0) - (danbaekDrinkChoco.sodium ?? 0))}mg 차이입니다.` },
   ],
   relatedGuides: [
     { title: "셀렉스 vs 하이뮨 비교", href: "/guides/product-selection-comparison/selex-vs-himune", description: "셀렉스를 다른 대표 브랜드와도 비교합니다." },
@@ -2445,6 +2464,7 @@ export const danbaekVsHimuneConfig: ComparePageConfig = {
     { label: "당류", values: [`${danbaekDrinkChoco.sugar}g`, `${hymuneOriginal.sugar}g`] },
     { label: "지방", values: [`${danbaekDrinkChoco.fat ?? "-"}g`, `${hymuneOriginal.fat ?? "-"}g`] },
     { label: "나트륨", values: [`${danbaekDrinkChoco.sodium ?? "-"}mg`, `${hymuneOriginal.sodium ?? "-"}mg`] },
+    { label: "100kcal당 단백질", values: [formatProteinCalorieDensity(danbaekDrinkChoco), formatProteinCalorieDensity(hymuneOriginal)] },
     { label: "브랜드 이미지", values: ["저나트륨·가벼움", "산양유·건강관리"] },
   ]),
   sections: [
@@ -2477,6 +2497,8 @@ export const danbaekVsHimuneConfig: ComparePageConfig = {
     { question: "숫자만 보면 어느 쪽이 더 좋은가", answer: "대표 초코 기준으로는 더단백이 더 낮은 칼로리, 당류, 지방, 나트륨을 보여줍니다." },
     { question: "하이뮨은 왜 여전히 선택할 이유가 있나", answer: "산양유와 건강관리형 브랜드 이미지, 다양한 맛, 중장년 친화적 포지셔닝, 그리고 최근 추가된 울트라 초고단백 라인 때문입니다." },
     { question: "다이어트 중이면 어느 쪽이 낫나", answer: "일반적으로는 더단백이 더 유리합니다. 다만 개인 취향과 포만감 선호는 같이 보아야 합니다." },
+    { question: "열량 대비 단백질은 어느 제품이 더 높은가", answer: `100kcal당 단백질은 더단백 ${formatProteinCalorieDensity(danbaekDrinkChoco)}, 하이뮨 액티브 ${formatProteinCalorieDensity(hymuneOriginal)}입니다.` },
+    { question: "나트륨 차이는 한 병 기준 얼마나 되나", answer: `더단백은 ${danbaekDrinkChoco.sodium}mg, 하이뮨 액티브는 ${hymuneOriginal.sodium}mg으로 ${Math.abs((hymuneOriginal.sodium ?? 0) - (danbaekDrinkChoco.sodium ?? 0))}mg 차이입니다.` },
   ],
   relatedGuides: [
     { title: "하이뮨 제품 종류 전체 정리", href: "/guides/product-selection-comparison/himune-lineup", description: "하이뮨 라인업 전체를 따로 봅니다." },

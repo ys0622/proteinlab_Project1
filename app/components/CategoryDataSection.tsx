@@ -49,11 +49,13 @@ export default function CategoryDataSection({
   mode,
   brand,
   limit = 8,
+  showCapacity = false,
 }: {
   category: Category;
   mode: Mode;
   brand?: string;
   limit?: number;
+  showCapacity?: boolean;
 }) {
   const pool = getAllProducts().filter((p) => (p.productType ?? "drink") === category && usable(p) && isComparableServing(p));
   if (pool.length < 5) return null;
@@ -109,6 +111,7 @@ export default function CategoryDataSection({
             <thead>
               <tr className="border-b border-[#e8e6e3] text-xs text-[var(--foreground-muted)]">
                 <th className="px-3 py-2 font-medium">제품</th>
+                {showCapacity ? <th className="px-3 py-2 text-right font-medium">용량</th> : null}
                 <th className="px-3 py-2 text-right font-medium">단백질</th>
                 <th className="px-3 py-2 text-right font-medium">열량</th>
                 <th className="px-3 py-2 text-right font-medium">당류</th>
@@ -124,6 +127,7 @@ export default function CategoryDataSection({
                       {formatProductLabel(p.brand, p.name)}
                     </Link>
                   </td>
+                  {showCapacity ? <td className="px-3 py-2 text-right text-[var(--foreground-muted)]">{p.capacity}</td> : null}
                   <td className="px-3 py-2 text-right font-bold text-[var(--accent)]">{p.proteinPerServing}g</td>
                   <td className="px-3 py-2 text-right text-[var(--foreground-muted)]">{p.calories}kcal</td>
                   <td className="px-3 py-2 text-right text-[var(--foreground-muted)]">{p.sugar}g</td>
