@@ -9,7 +9,7 @@ import TrackedLink from "@/app/components/TrackedLink";
 import TrackedCoupangLink from "@/app/components/TrackedCoupangLink";
 import GuideProductHeroCards, { resolveGuideHeroProducts } from "@/app/components/GuideProductHeroCards";
 import { getProductBySlug } from "@/app/data/products";
-import { getCoupangRedirectHref } from "@/app/lib/purchaseLinks";
+import { getCoupangRedirectHref, hasNoPurchasableCoupangLink } from "@/app/lib/purchaseLinks";
 import { formatProductLabel } from "@/app/lib/productLabel";
 import { getGuideThumbnailUrl } from "@/app/lib/guideThumbnails";
 
@@ -210,6 +210,25 @@ function PurchaseCards({ links, linkPosition = "mid_content" }: { links: Categor
   );
 }
 
+// 순위표 제품명 아래 쿠팡 버튼. 단백질바 TOP10은 5.7화면 동안 첫 화면 말고는 구매 버튼이 없었다(2026-10-28).
+function RowBuyLink({ slug }: { slug: string }) {
+  const product = getProductBySlug(slug);
+  if (!product || hasNoPurchasableCoupangLink(product.coupangUrl, product.slug)) return null;
+  return (
+    <TrackedCoupangLink
+      href={getCoupangRedirectHref(product.coupangUrl, "guide", product.slug)}
+      productId={product.slug}
+      productName={formatProductLabel(product.brand, product.name)}
+      productBrand={product.brand}
+      productCategory={product.productType}
+      linkPosition="spec_table"
+      className="mt-1.5 inline-flex whitespace-nowrap rounded-full bg-[#24543d] px-2.5 py-1 text-[11px] font-bold text-white hover:bg-[#1b4330]"
+    >
+      쿠팡 가격 보기 →
+    </TrackedCoupangLink>
+  );
+}
+
 function ExternalCards({ links }: { links: CategoryExternalLink[] }) {
   return (
     <div className="-mx-1 flex gap-2 overflow-x-auto px-1 pb-1 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:mx-0 md:grid md:grid-cols-2 md:gap-3 md:overflow-visible md:px-0 md:pb-0">
@@ -367,6 +386,7 @@ export function CategoryGuidePage({ config }: { config: CategoryGuideConfig }) {
                             >
                               {value}
                             </TrackedLink>
+                            <div><RowBuyLink slug={row.slug} /></div>
                           </td>
                         ) : (
                           <td key={`${row.label}-${index}`} className="px-3 py-2 leading-5 text-[var(--foreground-muted)]">{value}</td>
@@ -407,6 +427,7 @@ export function CategoryGuidePage({ config }: { config: CategoryGuideConfig }) {
                             >
                               {value}
                             </TrackedLink>
+                            <div><RowBuyLink slug={row.slug} /></div>
                           </td>
                         ) : (
                           <td key={`${row.label}-${index}`} className="px-3 py-3 text-[var(--foreground-muted)]">{value}</td>

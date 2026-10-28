@@ -439,6 +439,7 @@ export const convenienceProteinBarConfig: CategoryGuideConfig = {
   comparisonTitle: "편의점별 구매 가능 제품",
   comparisonColumns: ["제품명", "단백질", "칼로리", "구매 가능 편의점", "메모"],
   comparisonRows: convenienceBars.map((product) => ({
+    slug: product.slug,
     label: product.brand,
     values: [
       product.name,
@@ -578,6 +579,7 @@ export const dietProteinBarConfig: CategoryGuideConfig = {
   comparisonTitle: "다이어트 조건 통과 추천 순위",
   comparisonColumns: ["제품명", "단백질", "칼로리", "당류", "100kcal당 단백질", "포인트"],
   comparisonRows: dietBarProducts.map((product, index) => ({
+    slug: product.slug,
     label: `${index + 1}위`,
     values: [
       product.name,

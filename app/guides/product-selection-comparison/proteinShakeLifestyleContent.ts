@@ -92,6 +92,7 @@ export const proteinShakeForWomenConfig: CategoryGuideConfig = {
   comparisonTitle: "여성 추천 제품",
   comparisonColumns: ["제품명", "단백질", "칼로리", "당류", "포인트"],
   comparisonRows: womenShakePicks.map((product) => ({
+    slug: product.slug,
     label: product.brand,
     values: [
       product.name,
@@ -234,6 +235,7 @@ export const morningProteinShakeConfig: CategoryGuideConfig = {
   comparisonTitle: "아침 대용 추천 제품",
   comparisonColumns: ["제품명", "단백질", "칼로리", "포만감", "포인트"],
   comparisonRows: morningShakePicks.map((product) => ({
+    slug: product.slug,
     label: product.brand,
     values: [
       product.name,
@@ -381,6 +383,7 @@ export const oliveYoungProteinShakeConfig: CategoryGuideConfig = {
   comparisonTitle: `올리브영 채널 확인 ${oliveYoungShakeProducts.length}종 중 대표 6종`,
   comparisonColumns: ["제품명", "단백질", "칼로리", "당류", "채널 메모"],
   comparisonRows: oliveYoungShakePicks.map((product) => ({
+    slug: product.slug,
     label: product.brand,
     values: [
       product.name,

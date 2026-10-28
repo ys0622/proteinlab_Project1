@@ -172,6 +172,7 @@ export const proteinShakeTop7Config: CategoryGuideConfig = {
   comparisonTitle: "TOP 7 순위표",
   comparisonColumns: ["제품명", "단백질", "칼로리", "당류", "100kcal당 단백질", "포인트"],
   comparisonRows: shakeTop7.map((product, index) => ({
+    slug: product.slug,
     label: `${index + 1}위`,
     values: [
       formatProductLabel(product.brand, product.name),
@@ -290,6 +291,7 @@ export const labnoshLineupConfig: CategoryGuideConfig = {
   comparisonTitle: "랩노쉬 주요 라인업",
   comparisonColumns: ["제품명", "단백질", "칼로리", "당류", "특징"],
   comparisonRows: labnoshProducts.slice(0, 6).map((product) => ({
+    slug: product.slug,
     label: product.flavor ?? product.name,
     values: [
       product.name,
@@ -385,6 +387,7 @@ export const dietProteinShakeConfig: CategoryGuideConfig = {
   comparisonTitle: "다이어트 추천 쉐이크",
   comparisonColumns: ["제품명", "단백질", "칼로리", "당류", "포인트"],
   comparisonRows: dietShakeTop.map((product, index) => ({
+    slug: product.slug,
     label: `${index + 1}순위`,
     values: [
       formatProductLabel(product.brand, product.name),
@@ -489,6 +492,7 @@ export const proteinShakeCalorieRankingConfig: CategoryGuideConfig = {
   comparisonTitle: "칼로리 낮은 순 TOP 20",
   comparisonColumns: ["제품명", "칼로리", "단백질", "당류", "메모"],
   comparisonRows: shakeCalorieTop20.map((product, index) => ({
+    slug: product.slug,
     label: `${index + 1}위`,
     values: [
       formatProductLabel(product.brand, product.name),

@@ -90,6 +90,7 @@ export const proteinYogurtTop5Config: CategoryGuideConfig = {
   comparisonTitle: "TOP 5 순위표",
   comparisonColumns: ["제품명", "단백질", "칼로리", "당류", "포인트"],
   comparisonRows: yogurtTopPicks.map((product, index) => ({
+    slug: product.slug,
     label: `${index + 1}위`,
     values: [
       formatProductLabel(product.brand, product.name),
@@ -353,6 +354,7 @@ export const dietProteinYogurtConfig: CategoryGuideConfig = {
   comparisonTitle: "다이어트 추천 제품",
   comparisonColumns: ["제품명", "단백질", "칼로리", "당류", "포인트"],
   comparisonRows: dietYogurtPicks.map((product) => ({
+    slug: product.slug,
     label: product.brand,
     values: [
       product.name,
