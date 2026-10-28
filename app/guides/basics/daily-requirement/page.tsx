@@ -205,6 +205,7 @@ export default function DailyRequirementPage() {
               </TrackedLink>
             </div>
           </section>
+          <GuideBuySection topic="general" variant="top" />
 
           <section className="rounded-2xl border border-[#e8e6e3] bg-[#fffdf8] px-5 py-5">
             <h2 className="text-xl font-bold text-[var(--foreground)]">단백질 섭취 3가지 원칙</h2>

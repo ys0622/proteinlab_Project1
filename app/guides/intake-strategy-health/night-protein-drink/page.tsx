@@ -204,6 +204,7 @@ export default function NightProteinDrinkPage() {
               <TrackedLink href="/guides/product-selection-comparison/protein-drink-top10" trackingLabel="단백질 음료 후보 비교" trackingSection="night_protein_hero" trackingPageType="guide" contentId="plv3:landing:guide:night-protein-drink" linkPosition="hero" ctaType="compare" className="rounded-full bg-[var(--accent)] px-4 py-2 text-sm font-semibold text-white hover:opacity-90">단백질 음료 후보 비교</TrackedLink>
             </div>
           </section>
+          <GuideBuySection topic="night" variant="top" />
           <section className="rounded-[28px] border border-[#e2ebe4] bg-[#f7fbf8] px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
             <h2 className="text-xl font-bold text-[var(--foreground)]">밤 시간대에 마셔도 되는 경우</h2>
             <div className="mt-5 overflow-x-auto">

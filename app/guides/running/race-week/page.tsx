@@ -149,6 +149,7 @@ export default function RaceWeekPage() {
 
             <ImageSlot alt="마라톤 레이스 주간 영양 전략 타임라인" />
           </section>
+          <GuideBuySection topic="workout" variant="top" />
 
           <section className="rounded-2xl border border-[#e8e6e3] bg-[#fffdf8] px-5 py-5">
             <h2 className="text-xl font-bold text-[var(--foreground)]">레이스 직후 골든 타임 회복법</h2>

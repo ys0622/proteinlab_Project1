@@ -334,6 +334,7 @@ export default async function GuideSlugPage({
               />
               <p className="mt-3 text-xs text-[var(--foreground-muted)]">출처: 한국영양학회·보건복지부 「한국인 영양소 섭취기준」(2015)</p>
             </section>
+            <GuideBuySection topic="general" variant="top" />
 
             {/* 섹션 2: 3가지 역할 */}
             <section className="rounded-2xl border border-[#e8e6e3] bg-[#fffdf8] px-5 py-5">

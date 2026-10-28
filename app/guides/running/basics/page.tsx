@@ -149,6 +149,7 @@ export default function RunningBasicsPage() {
               출처: Moore et al., Sports Science Exchange (2021)
             </p>
           </section>
+          <GuideBuySection topic="workout" variant="top" />
 
           <section className="rounded-2xl border border-[#e8e6e3] bg-[#fffdf8] px-5 py-5">
             <h2 className="text-xl font-bold text-[var(--foreground)]">언제 먹어야 효과적일까?</h2>

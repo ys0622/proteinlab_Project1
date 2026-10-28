@@ -179,6 +179,7 @@ export default function ProteinDrinkTrend2026Page() {
               ))}
             </div>
           </section>
+          <GuideBuySection topic="general" variant="top" />
 
           <section className="rounded-[28px] border border-[#eadff1] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(44,23,58,0.05)]">
             <h2 className="text-xl font-bold text-[var(--foreground)]">브랜드별 2025~2026 주요 변화</h2>

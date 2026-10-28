@@ -159,6 +159,7 @@ export default function ProteinMarketHistoryPage() {
               </table>
             </div>
           </section>
+          <GuideBuySection topic="general" variant="top" />
 
           <section className="rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
             <h2 className="text-xl font-bold text-[var(--foreground)]">흐름에서 읽어야 할 3가지 전환점</h2>

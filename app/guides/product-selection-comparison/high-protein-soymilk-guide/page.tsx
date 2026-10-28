@@ -167,6 +167,7 @@ export default function HighProteinSoymilkGuidePage() {
               ))}
             </div>
           </section>
+          <GuideBuySection slugs={["maeil-soymilk-protein-plain-190", "vegemil-protein-plain-190", "nam-gt-protein-190"]} variant="top" />
 
           <section className="rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
             <h2 className="text-xl font-bold text-[var(--foreground)]">고단백 두유 전 제품</h2>

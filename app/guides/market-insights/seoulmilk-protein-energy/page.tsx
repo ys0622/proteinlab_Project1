@@ -135,6 +135,7 @@ export default function SeoulmilkProteinEnergyGuidePage() {
               함께 챙기고 싶을 때 비교 후보에 넣기 좋은 포지션입니다.
             </p>
           </section>
+          <GuideBuySection topic="general" variant="top" />
 
           <section className="rounded-[28px] border border-[#e2ebe4] bg-[#f7fbf8] px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
             <h2 className="text-xl font-bold text-[var(--foreground)]">등록 제품 기준 성분 비교</h2>

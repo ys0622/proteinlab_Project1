@@ -95,6 +95,7 @@ export default function ProteinDeficiencySelfCheckPage() {
               ))}
             </ul>
           </section>
+          <GuideBuySection topic="general" variant="top" />
 
           <section className="rounded-[28px] border border-[#e8e6e3] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
             <h2 className="text-xl font-bold text-[var(--foreground)]">몇 개 이상이면 부족 가능성을 의심할까</h2>

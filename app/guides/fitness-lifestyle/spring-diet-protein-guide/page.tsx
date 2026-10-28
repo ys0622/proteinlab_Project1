@@ -102,6 +102,7 @@ export default function SpringDietProteinGuidePage() {
               ))}
             </div>
           </section>
+          <GuideBuySection topic="diet" variant="top" />
 
           <section className="rounded-[28px] border border-[#e8e6e3] bg-[#fffdf8] px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
             <h2 className="text-xl font-bold text-[var(--foreground)]">카테고리별 봄 체크포인트</h2>

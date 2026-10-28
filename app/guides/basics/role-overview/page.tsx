@@ -211,6 +211,7 @@ export default function RoleOverviewGuidePage() {
               출처: 대한영양사협회, 보건복지부 식품구성자전거
             </p>
           </section>
+          <GuideBuySection topic="general" variant="top" />
 
           <section className="rounded-2xl border border-[#e8e6e3] bg-[#fffdf8] px-5 py-5">
             <h2 className="text-xl font-bold text-[var(--foreground)]">단백질이 하는 대표적 3가지 역할</h2>

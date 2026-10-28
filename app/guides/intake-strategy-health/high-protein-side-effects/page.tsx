@@ -173,6 +173,7 @@ export default function HighProteinSideEffectsPage() {
               ))}
             </ul>
           </section>
+          <GuideBuySection topic="general" variant="top" />
 
           <section className="rounded-[28px] border border-[#e5deca] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(38,28,18,0.05)]">
             <h2 className="text-xl font-bold text-[var(--foreground)]">실제로 걱정되는 부분, 하나씩 보면</h2>

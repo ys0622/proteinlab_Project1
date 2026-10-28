@@ -143,6 +143,7 @@ export default function ProteinDrinkDailyPage() {
               </table>
             </div>
           </section>
+          <GuideBuySection topic="general" variant="top" />
 
           <section className="rounded-[28px] border border-[#e2ebe4] bg-white p-5">
             <h2 className="text-xl font-bold text-[var(--foreground)]">매일 마실 제품을 고르는 기준</h2>

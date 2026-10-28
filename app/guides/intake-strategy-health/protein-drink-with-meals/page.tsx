@@ -169,6 +169,7 @@ export default function ProteinDrinkWithMealsPage() {
               ))}
             </div>
           </section>
+          <GuideBuySection topic="general" variant="top" />
 
           <section className="rounded-[28px] border border-[#e2ebe4] bg-white p-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
             <h2 className="text-xl font-bold text-[var(--foreground)]">단백질 음료에 무엇을 더해야 하나</h2>

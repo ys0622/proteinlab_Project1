@@ -85,6 +85,7 @@ export default function LabNosheLimShakePage() {
               ))}
             </div>
           </section>
+          <GuideBuySection slugs={["labnosh-slimshake-double-choco-45", "labnosh-slimshake-injeolmi-45", "labnosh-slimshake-goguma-45"]} variant="top" />
 
           <section className="rounded-[28px] border border-[#e5deca] bg-[#fdfaf5] px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
             <h2 className="text-xl font-bold text-[var(--foreground)]">💬 자주 묻는 질문</h2>

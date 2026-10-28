@@ -106,6 +106,7 @@ export default function ProteinYogurtRankingGuidePage() {
               ))}
             </div>
           </section>
+          <GuideBuySection slugs={["yoplait-protein-max-210", "yopro-plain-150", "yozm-cacao-granola-120"]} variant="top" />
           <section className="rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
             <h2 className="text-xl font-bold text-[var(--foreground)]">💬 자주 묻는 질문</h2>
             <div className="mt-5 space-y-3">

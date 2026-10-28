@@ -140,6 +140,7 @@ export default function ProteinDrinkAdChecklistPage() {
               나눠 보는 것이 실용적입니다.
             </p>
           </section>
+          <GuideBuySection topic="general" variant="top" />
 
           <section className="rounded-[28px] border border-[#e2ebe4] bg-[#f7fbf8] px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
             <h2 className="text-xl font-bold text-[var(--foreground)]">구매 전 체크리스트</h2>

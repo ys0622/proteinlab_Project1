@@ -143,6 +143,7 @@ export default function ProteinDrinkEmptyStomachPage() {
               </table>
             </div>
           </section>
+          <GuideBuySection slugs={emptyStomachCandidates.map((product) => product.slug)} variant="top" />
 
           <section className="rounded-[28px] border border-[#e2ebe4] bg-white p-5">
             <h2 className="text-xl font-bold text-[var(--foreground)]">공복 부담을 줄이는 순서</h2>

@@ -124,6 +124,7 @@ export default function ProteinDrinkSugarPage() {
               </table>
             </div>
           </section>
+          <GuideBuySection topic="lowSugar" variant="top" />
 
           <section className="rounded-[28px] border border-[#e2ebe4] bg-white p-5">
             <h2 className="text-xl font-bold text-[var(--foreground)]">라벨은 이 순서로 보면 됩니다</h2>

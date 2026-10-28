@@ -207,6 +207,7 @@ export default function DigestionGuidePage() {
             </p>
             <DigestionFlowGraphic />
           </section>
+          <GuideBuySection topic="general" variant="top" />
 
           <section className="rounded-2xl border border-[#e8e6e3] bg-[#fffdf8] px-5 py-5">
             <h2 className="text-xl font-bold text-[var(--foreground)]">위에서는 분해 준비가 시작됩니다</h2>

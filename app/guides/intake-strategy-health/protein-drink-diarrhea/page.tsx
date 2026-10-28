@@ -143,6 +143,7 @@ export default function ProteinDrinkDiarrheaPage() {
               </table>
             </div>
           </section>
+          <GuideBuySection topic="general" variant="top" />
 
           <section className="rounded-[28px] border border-[#e2ebe4] bg-white p-5">
             <h2 className="text-xl font-bold text-[var(--foreground)]">부담을 줄이는 선택 순서</h2>

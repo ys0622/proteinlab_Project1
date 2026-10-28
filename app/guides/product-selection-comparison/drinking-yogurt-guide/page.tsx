@@ -101,6 +101,7 @@ export default function DrinkingYogurtGuidePage() {
               ))}
             </div>
           </section>
+          <GuideBuySection slugs={["yoplait-protein-plain-210", "yoplait-protein-max-210", "maeil-bio-greek-drink-banana-190"]} variant="top" />
 
           <section className="rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
             <h2 className="text-xl font-bold text-[var(--foreground)]">💬 자주 묻는 질문</h2>

@@ -171,6 +171,7 @@ export default function HighProtein50gComparisonPage() {
               </TrackedLink>
             </div>
           </section>
+          <GuideBuySection topic="highProtein" variant="top" />
 
           <section className="rounded-[28px] border border-[#d9e4f0] bg-[#f7f9fc] px-5 py-5 shadow-[0_18px_50px_rgba(32,46,68,0.05)]">
             <h2 className="text-xl font-bold text-[var(--foreground)]">먼저 확인할 초고함량 후보</h2>

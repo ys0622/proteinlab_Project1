@@ -143,6 +143,7 @@ export default function ProteinDrinkWeightGainPage() {
               </table>
             </div>
           </section>
+          <GuideBuySection topic="workout" variant="top" />
 
           <section className="rounded-[28px] border border-[#e2ebe4] bg-white p-5">
             <h2 className="text-xl font-bold text-[var(--foreground)]">체중 관리 중이면 이 순서로 보세요</h2>

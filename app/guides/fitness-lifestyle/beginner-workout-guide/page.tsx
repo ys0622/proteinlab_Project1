@@ -130,6 +130,7 @@ export default function BeginnerWorkoutGuidePage() {
               ))}
             </div>
           </section>
+          <GuideBuySection topic="workout" variant="top" />
 
           <section className="rounded-[28px] border border-[#e8e6e3] bg-[#fffdf8] px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
             <h2 className="text-xl font-bold text-[var(--foreground)]">하루 식사 흐름 예시</h2>

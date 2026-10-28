@@ -167,6 +167,7 @@ export default function PreWorkoutProteinPage() {
             ))}
           </div>
         </section>
+        <GuideBuySection topic="workout" variant="top" />
 
         <section className="mt-6 rounded-2xl border border-[#e8e6e3] bg-white px-5 py-5">
           <h2 className="text-xl font-bold text-[var(--foreground)]">운동 전 자주 하는 실수</h2>

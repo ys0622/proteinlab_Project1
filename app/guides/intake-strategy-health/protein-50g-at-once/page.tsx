@@ -151,6 +151,7 @@ export default function Protein50gAtOncePage() {
               ))}
             </ul>
           </section>
+          <GuideBuySection topic="highProtein" variant="top" />
 
           <section className="rounded-[28px] border border-[#e5deca] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(38,28,18,0.05)]">
             <h2 className="text-xl font-bold text-[var(--foreground)]">체중별로 보면 50g은 어느 정도일까</h2>
