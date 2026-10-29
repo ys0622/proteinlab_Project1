@@ -2,6 +2,7 @@ import type { CompareLanding } from "./compareLandings";
 import { getAllProducts, type ProductDetailProps } from "./products";
 import { brandToSlug } from "../lib/brandHubs";
 import { compareLandingHref } from "./compareCanonicalOverrides";
+import { withSubject } from "../lib/koreanParticle";
 
 /**
  * 데이터로 만드는 비교 랜딩(2026-10-20, 네이버 신규 유입용).
@@ -163,25 +164,68 @@ function buildPair(spec: PairSpec, bySlug: Map<string, ProductDetailProps>): Com
   };
 }
 
+// 같은 라인 안에서 제품을 구분하는 짧은 이름: 모든 제품명에 공통인 앞 단어를 떼고 괄호를 벗긴다.
+// "단백질 쉐이크 (초코맛)"·"단백질 쉐이크 (커피맛)" → "초코맛"·"커피맛". 남는 게 없으면 전체 이름.
+function shortItemNames(items: ProductDetailProps[]): Map<string, string> {
+  const words = items.map((p) => p.name.split(/\s+/));
+  let common = 0;
+  while (words.every((w) => w.length > common + 1 && w[common] === words[0][common])) common += 1;
+  const names = items.map((p, i) => {
+    const rest = words[i].slice(common).join(" ").replace(/^\((.*)\)$/, "$1").trim();
+    return rest || label(p);
+  });
+  // 줄인 이름이 겹치면(용량만 다른 제품 등) 용량을 붙인다.
+  const fixed = names.map((name, i) => (names.indexOf(name) !== names.lastIndexOf(name) ? `${name} ${items[i].capacity ?? ""}`.trim() : name));
+  return new Map(items.map((p, i) => [p.slug, fixed[i]]));
+}
+
+// "단백질은 초코맛이 23g으로 가장 많고" — 같은 값이 여럿이면 함께 적는다(최대 3개, 넘으면 "등 N종").
+function extremePhrase(
+  items: ProductDetailProps[],
+  names: Map<string, string>,
+  pick: (p: ProductDetailProps) => number | undefined,
+  topic: string,
+  unit: string,
+  higher: boolean,
+) {
+  const values = items.map(pick).filter((v): v is number => v != null);
+  if (values.length < 2) return null;
+  const best = higher ? Math.max(...values) : Math.min(...values);
+  const winners = items.filter((p) => pick(p) === best).map((p) => names.get(p.slug) ?? label(p));
+  const particle = unit === "g" ? "으로" : "로";
+  if (winners.length === items.length) return `${topic} 모두 ${fmt(best)}${unit}${particle} 같고`;
+  const who = winners.length > 3 ? `${winners.slice(0, 3).join("·")} 등 ${winners.length}종` : winners.join("·");
+  return `${topic} ${withSubject(who)} ${fmt(best)}${unit}${particle} 가장 ${higher ? "많고" : "낮고"}`;
+}
+
 function buildLine(spec: LineSpec, products: ProductDetailProps[]): CompareLanding | null {
   const items = products.filter(spec.filter);
   if (items.length < 3) return null;
   const brand = items[0].brand;
   const category = CATEGORY_PAGE[items[0].productType ?? "drink"];
-  const byProtein = [...items].sort((x, y) => (y.proteinPerServing ?? 0) - (x.proteinPerServing ?? 0))[0];
-  const bySugar = [...items].sort((x, y) => (x.sugar ?? 99) - (y.sugar ?? 99))[0];
-  const byKcal = [...items].sort((x, y) => (x.calories ?? 9999) - (y.calories ?? 9999))[0];
   const word = spec.itemWord ?? "맛";
+  const names = shortItemNames(items);
+  const phrases = [
+    extremePhrase(items, names, (p) => p.proteinPerServing, "단백질은", "g", true),
+    extremePhrase(items, names, (p) => p.sugar, "당류는", "g", false),
+    extremePhrase(items, names, (p) => p.calories, "열량은", "kcal", false),
+  ].filter((v): v is string => v !== null);
+  const verdict = phrases.length
+    ? `${spec.lineName} ${items.length}종 중 ${phrases.join(", ").replace(/(많고|낮고|같고)$/, (m) => ({ 많고: "많습니다", 낮고: "낮습니다", 같고: "같습니다" })[m] ?? m)}.`
+    : undefined;
   return {
     slug: spec.slug,
     title: `${spec.title} | 단백질·당류·칼로리`,
     description: `등록된 ${spec.lineName} ${items.length}종을 비교합니다. 단백질 ${range(items, (p) => p.proteinPerServing)}g, 당류 ${range(items, (p) => p.sugar)}g, 열량 ${range(items, (p) => p.calories)}kcal 범위입니다.`,
     intro: `${spec.lineName} ${items.length}종의 표시 기준량 성분을 한 번에 비교합니다. ${word}마다 단백질·당류·칼로리가 어떻게 다른지 확인하고 제품 상세로 이어서 볼 수 있습니다.`,
-    bullets: [
-      `단백질이 가장 높은 ${word}: ${nutrition(byProtein)}`,
-      `당류가 가장 낮은 ${word}: ${nutrition(bySugar)}`,
-      `열량이 가장 낮은 ${word}: ${nutrition(byKcal)}`,
-    ],
+    // 맛(제품)마다 한 줄: "초코맛 1회(40g): 단백질 23g·당류 1g·128kcal"
+    bullets: items.map((p) => {
+      const name = names.get(p.slug) ?? label(p);
+      // 이름에 이미 용량이 붙어 있으면 "1개(150g)"의 괄호를 뺀다.
+      const unit = p.capacity && name.endsWith(p.capacity) ? basis(p).replace(/\(.*\)$/, "") : basis(p);
+      return `${name} ${unit}: 단백질 ${fmt(p.proteinPerServing)}g·당류 ${fmt(p.sugar)}g·${fmt(p.calories)}kcal`;
+    }),
+    verdict,
     productSlugs: items.map((p) => p.slug),
     relatedLinks: [brandHub(brand), { href: category.href, title: category.title, description: "다른 브랜드 제품과 같은 항목으로 비교합니다." }],
   };

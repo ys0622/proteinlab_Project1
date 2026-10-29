@@ -4,6 +4,9 @@
 function hasBatchim(trimmed: string): boolean {
   if (/\d\s*(g|kg)$/i.test(trimmed)) return true;
   if (/\d\s*(ml|l)$/i.test(trimmed)) return false;
+  // 숫자로 끝나면 마지막 숫자를 읽은 소리로 정한다(99.9 → "구" → 받침 없음).
+  const digit = trimmed.match(/(\d)$/);
+  if (digit) return "013678".includes(digit[1]);
   const syllables = trimmed.match(/[가-힣]/g);
   return syllables ? (syllables[syllables.length - 1].charCodeAt(0) - 0xac00) % 28 !== 0 : false;
 }
@@ -14,6 +17,10 @@ export function withTopic(text: string): string {
 
 export function withAnd(text: string): string {
   return `${text}${hasBatchim(text.trim()) ? "과" : "와"}`;
+}
+
+export function withSubject(text: string): string {
+  return `${text}${hasBatchim(text.trim()) ? "이" : "가"}`;
 }
 
 export function withObject(text: string): string {

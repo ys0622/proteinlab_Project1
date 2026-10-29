@@ -10,6 +10,8 @@ export interface CompareLanding {
   productSlugs: string[];
   relatedLinks: { href: string; title: string; description: string }[];
   faq?: { question: string; answer: string }[];
+  /** 성분 비교표 위 한 줄 결론. 없으면 두 제품 비교에서만 데이터로 만든다. */
+  verdict?: string;
 }
 
 const barProductsBySlug = new Map(getBarProducts().map((product) => [product.slug, product]));
