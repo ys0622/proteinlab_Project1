@@ -1,4 +1,7 @@
 import { getBarProducts } from "./barProductsData";
+import type { ProductDetailProps } from "./products";
+import { getShakeProducts } from "./shakeProductsData";
+import { getYogurtProducts } from "./yogurtProductsData";
 import { getGeneratedCompareLandings, withAutoRelatedLandings } from "./compareLandingsGenerated";
 
 export interface CompareLanding {
@@ -59,6 +62,155 @@ const kirklandFlavorProducts = [
   "kirkland-proteinbar-choco-brownie",
   "kirkland-proteinbar-choco-chip-cookie-dough-60",
 ].map(getRequiredBarProduct);
+
+type LineupProduct = ProductDetailProps;
+
+const lineupSources: Record<string, LineupProduct[]> = {
+  shake: getShakeProducts(),
+  bar: getBarProducts(),
+  yogurt: getYogurtProducts(),
+};
+
+// 브랜드 맛별(종류별) 비교: 등록 제품을 단백질 많은 순으로 정렬한다(맛 평가 순위가 아님).
+function getBrandLineup(category: keyof typeof lineupSources, brand: string) {
+  const products = lineupSources[category]
+    .filter((product) => product.brand === brand)
+    .sort((a, b) => b.proteinPerServing - a.proteinPerServing || (a.sugar ?? 0) - (b.sugar ?? 0));
+  if (products.length < 3) throw new Error(`맛별 비교 랜딩 제품이 부족합니다: ${brand}`);
+  return products;
+}
+
+function lineupLabel(product: LineupProduct) {
+  return product.name.startsWith(product.brand) ? product.name : `${product.brand} ${product.name}`;
+}
+
+function lineupBullet(product: LineupProduct) {
+  return `${lineupLabel(product)} ${product.capacity}: 단백질 ${product.proteinPerServing}g·당류 ${product.sugar ?? "-"}g·${product.calories ?? "-"}kcal`;
+}
+
+function lineupRange(products: LineupProduct[], selector: (product: LineupProduct) => number) {
+  return formatRange(products.map(selector));
+}
+
+function pickBy(products: LineupProduct[], selector: (product: LineupProduct) => number, direction: "max" | "min") {
+  return products.reduce((best, product) => {
+    const better = direction === "max" ? selector(product) > selector(best) : selector(product) < selector(best);
+    return better ? product : best;
+  });
+}
+
+function buildLineupLanding(options: {
+  slug: string;
+  brand: string;
+  category: keyof typeof lineupSources;
+  title: (count: number) => string;
+  unit: string;
+  intro: string;
+  relatedLinks: CompareLanding["relatedLinks"];
+}): CompareLanding {
+  const products = getBrandLineup(options.category, options.brand);
+  const protein = (product: LineupProduct) => product.proteinPerServing;
+  const sugar = (product: LineupProduct) => product.sugar ?? 0;
+  const calories = (product: LineupProduct) => product.calories ?? 0;
+  const topProtein = pickBy(products, protein, "max");
+  const lowSugar = pickBy(products, sugar, "min");
+  const lowCalories = pickBy(products, calories, "min");
+  return {
+    slug: options.slug,
+    title: options.title(products.length),
+    description: `등록된 ${options.brand} ${products.length}종의 성분표를 비교합니다. ${options.unit} 기준 단백질 ${lineupRange(products, protein)}g, 당류 ${lineupRange(products, sugar)}g, 열량 ${lineupRange(products, calories)}kcal이고 단백질이 가장 많은 것은 ${lineupLabel(topProtein)}, ${topProtein.proteinPerServing}g입니다.`,
+    intro: options.intro,
+    bullets: products.map(lineupBullet),
+    productSlugs: products.map((product) => product.slug),
+    relatedLinks: options.relatedLinks,
+    faq: [
+      { question: `${options.brand}에서 단백질이 가장 많은 제품은`, answer: `${lineupLabel(topProtein)} ${topProtein.capacity}이 단백질 ${topProtein.proteinPerServing}g으로 가장 많습니다. 등록된 ${products.length}종의 범위는 ${lineupRange(products, protein)}g입니다.` },
+      { question: `${options.brand}에서 당류가 가장 낮은 제품은`, answer: `${lineupLabel(lowSugar)} ${lowSugar.capacity}이 당류 ${lowSugar.sugar ?? 0}g으로 가장 낮습니다.` },
+      { question: `${options.brand}에서 칼로리가 가장 낮은 제품은`, answer: `${lineupLabel(lowCalories)} ${lowCalories.capacity}이 ${lowCalories.calories ?? 0}kcal로 가장 낮습니다. 순서는 성분표 수치 기준이며 맛 평가가 아닙니다.` },
+    ],
+  };
+}
+
+const brandLineupLandings: CompareLanding[] = [
+  buildLineupLanding({
+    slug: "itthefit-shake-flavor-comparison",
+    brand: "잇더핏",
+    category: "shake",
+    title: (count) => `잇더핏 단백질 쉐이크 맛별 성분표 비교 | ${count}가지 맛 단백질·당류·칼로리`,
+    unit: "1회 40g",
+    intro: "잇더핏 단백질 쉐이크를 맛별로 한 번에 비교합니다. 목록은 단백질이 많은 순서이며, 맛 평가가 아니라 성분표 수치(단백질·당류·칼로리) 기준입니다.",
+    relatedLinks: [
+      { href: "/brands/itthefit", title: "잇더핏 브랜드 허브", description: "잇더핏 등록 제품의 상세 성분을 확인합니다." },
+      { href: "/compare/proteone-vs-itthefit-shake", title: "프로티원 vs 잇더핏", description: "40g 파우치 쉐이크 두 브랜드를 맛별로 비교합니다." },
+      { href: "/compare/proteone-shake-flavor-comparison", title: "프로티원 맛별 성분표", description: "프로티원 쉐이크 전 맛의 성분을 비교합니다." },
+    ],
+  }),
+  buildLineupLanding({
+    slug: "proteone-shake-flavor-comparison",
+    brand: "프로티원",
+    category: "shake",
+    title: (count) => `프로티원 쉐이크 맛별 성분표 비교 | ${count}가지 맛 단백질·당류·칼로리`,
+    unit: "1회 40g",
+    intro: "프로티원 단백질 쉐이크를 맛별로 한 번에 비교합니다. 목록은 단백질이 많은 순서이며, 맛 평가가 아니라 성분표 수치(단백질·당류·칼로리) 기준입니다.",
+    relatedLinks: [
+      { href: "/brands/proteone", title: "프로티원 브랜드 허브", description: "프로티원 등록 제품의 상세 성분을 확인합니다." },
+      { href: "/compare/proteone-vs-itthefit-shake", title: "프로티원 vs 잇더핏", description: "40g 파우치 쉐이크 두 브랜드를 맛별로 비교합니다." },
+      { href: "/compare/itthefit-shake-flavor-comparison", title: "잇더핏 맛별 성분표", description: "잇더핏 쉐이크 전 맛의 성분을 비교합니다." },
+    ],
+  }),
+  buildLineupLanding({
+    slug: "flymill-shake-flavor-comparison",
+    brand: "플라이밀",
+    category: "shake",
+    title: (count) => `플라이밀 단백질 쉐이크 맛별 성분표 비교 | ${count}가지 맛 단백질·당류·칼로리`,
+    unit: "1회 45g",
+    intro: "플라이밀 단백질 쉐이크를 맛별로 한 번에 비교합니다. 목록은 단백질이 많은 순서이며, 맛 평가가 아니라 성분표 수치(단백질·당류·칼로리) 기준입니다.",
+    relatedLinks: [
+      { href: "/brands/flymill", title: "플라이밀 브랜드 허브", description: "플라이밀 등록 제품의 상세 성분을 확인합니다." },
+      { href: "/compare/flymill-vs-shakebaby-shake", title: "플라이밀 vs 쉐이크베이비", description: "45g 초코 쉐이크 두 제품을 비교합니다." },
+      { href: "/guides/product-selection-comparison/flymill-protein-shake", title: "플라이밀 쉐이크 가이드", description: "플라이밀 쉐이크 고르는 기준을 정리했습니다." },
+    ],
+  }),
+  buildLineupLanding({
+    slug: "benof-proteinbar-flavor-comparison",
+    brand: "베노프",
+    category: "bar",
+    title: (count) => `베노프 소프트바·단백질바 맛별 성분표 비교 | ${count}종 단백질·당류·칼로리`,
+    unit: "1개",
+    intro: "베노프 소프트바와 단백질바를 맛별로 한 번에 비교합니다. 목록은 단백질이 많은 순서이며, 맛 평가가 아니라 성분표 수치(단백질·당류·칼로리) 기준입니다.",
+    relatedLinks: [
+      { href: "/brands/benof", title: "베노프 브랜드 허브", description: "베노프 등록 제품의 상세 성분을 확인합니다." },
+      { href: "/compare/benof-vs-barebells-bar", title: "베노프 vs 베어벨즈", description: "소프트 프로틴바 두 브랜드를 비교합니다." },
+      { href: "/compare/quest-vs-benof-bar", title: "퀘스트 vs 베노프", description: "60g 초코 계열 프로틴바를 비교합니다." },
+    ],
+  }),
+  buildLineupLanding({
+    slug: "quest-proteinbar-flavor-comparison",
+    brand: "퀘스트 뉴트리션",
+    category: "bar",
+    title: (count) => `퀘스트 프로틴바 맛별 성분표 비교 | ${count}가지 맛 단백질·당류·칼로리`,
+    unit: "1개 60g",
+    intro: "퀘스트 뉴트리션 프로틴바를 맛별로 한 번에 비교합니다. 목록은 단백질이 많은 순서이며, 맛 평가가 아니라 성분표 수치(단백질·당류·칼로리) 기준입니다.",
+    relatedLinks: [
+      { href: "/brands/quest-nutrition", title: "퀘스트 뉴트리션 브랜드 허브", description: "퀘스트 등록 제품의 상세 성분을 확인합니다." },
+      { href: "/compare/quest-vs-benof-bar", title: "퀘스트 vs 베노프", description: "60g 초코 계열 프로틴바를 비교합니다." },
+      { href: "/compare/kirkland-vs-quest-proteinbar", title: "커클랜드 vs 퀘스트", description: "초콜릿 계열 프로틴바의 성분을 비교합니다." },
+    ],
+  }),
+  buildLineupLanding({
+    slug: "maeilbio-greek-yogurt-lineup-comparison",
+    brand: "매일 바이오",
+    category: "yogurt",
+    title: (count) => `매일 바이오 그릭요거트 종류별 성분표 비교 | 무가당·플레인·드링크 ${count}종`,
+    unit: "한 통(한 병)",
+    intro: "매일 바이오 그릭요거트를 무가당·플레인·to go·드링크까지 종류와 용량별로 비교합니다. 용량이 서로 달라 단백질이 많은 순서는 한 통 기준이며, 맛 평가가 아니라 성분표 수치 기준입니다.",
+    relatedLinks: [
+      { href: "/brands/maeil-bio", title: "매일 바이오 브랜드 허브", description: "매일 바이오 등록 제품의 상세 성분을 확인합니다." },
+      { href: "/compare/greekday-vs-maeilbio-yogurt", title: "그릭데이 vs 매일 바이오", description: "두 그릭요거트를 100g당 단백질로 비교합니다." },
+      { href: "/yogurt", title: "요거트 전체 비교", description: "등록된 요거트를 단백질·당류 기준으로 비교합니다." },
+    ],
+  }),
+];
 
 function formatProductRange(
   products: ReturnType<typeof getRequiredBarProduct>[],
@@ -297,6 +449,7 @@ const compareLandings: CompareLanding[] = [
     bullets: ["그릭요거트 브랜드 비교", "대용량 구매 전 탐색용", "주제 랜딩과 브랜드 허브 연결에 적합"],
     productSlugs: ["greekday-signature-450", "maeil-bio-greek-unsweetened-400"],
     relatedLinks: [
+      { href: "/compare/maeilbio-greek-yogurt-lineup-comparison", title: "매일 바이오 그릭요거트 종류별 성분표", description: "무가당·플레인·드링크를 용량별로 비교합니다." },
       { href: "/topics/high-protein-greek-yogurt", title: "고단백 그릭요거트", description: "그릭요거트 전체 후보를 다시 비교합니다." },
       { href: "/brands/maeil-bio", title: "매일 바이오 브랜드 허브", description: "매일 바이오 제품군을 브랜드 단위로 봅니다." },
     ],
@@ -321,6 +474,8 @@ const compareLandings: CompareLanding[] = [
     bullets: ["단백질 우선: 프로티원 초코 23g > 커피 22g > 잇더핏 21.3g", "열량 우선: 프로티원 커피맛 108kcal", "당류 우선: 잇더핏 0.6g, 프로티원 두 맛은 1g"],
     productSlugs: ["proteone-proteinshake-choco-40", "proteone-proteinshake-coffee-40", "itthefit-proteinshake-double-choco-40"],
     relatedLinks: [
+      { href: "/compare/proteone-shake-flavor-comparison", title: "프로티원 맛별 성분표", description: "프로티원 쉐이크 전 맛의 단백질·당류·칼로리를 비교합니다." },
+      { href: "/compare/itthefit-shake-flavor-comparison", title: "잇더핏 맛별 성분표", description: "잇더핏 쉐이크 전 맛의 단백질·당류·칼로리를 비교합니다." },
       { href: "/guides/product-selection-comparison/low-sugar-protein-shake-guide", title: "저당 단백질 쉐이크 선택 기준", description: "두 제품 외에 당류가 낮은 쉐이크와 성분표를 이어서 비교합니다." },
       { href: "/topics/meal-replacement-protein-shake", title: "식사대용 쉐이크", description: "쉐이크 카테고리 전체를 다시 비교합니다." },
       { href: "/recommend", title: "맞춤 추천", description: "운동 목적과 섭취 상황에 맞는 제품을 다시 추립니다." },
@@ -897,6 +1052,7 @@ const compareLandings: CompareLanding[] = [
       { question: "플라이밀과 쉐이크베이비의 100kcal당 단백질은 얼마인가", answer: "플라이밀은 14.7g, 쉐이크베이비는 13.5g입니다." },
     ],
   },
+  ...brandLineupLandings,
 ];
 
 const compareLandingOverrides: Record<string, Partial<CompareLanding>> = {

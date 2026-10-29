@@ -28,7 +28,7 @@ export interface CompareColumnDef {
 
 const toNumericValue = (v: string | number | undefined) =>
   typeof v === "string"
-    ? parseFloat(v.replace(/[^\d.]/g, ""))
+    ? parseFloat(v.replace(/,/g, "").match(/\d+(?:\.\d+)?/)?.[0] ?? "")
     : typeof v === "number"
       ? v
       : null;

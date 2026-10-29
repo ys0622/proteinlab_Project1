@@ -73,7 +73,7 @@ const compareMetrics: CompareMetric[] = [
     label: "단백질",
     direction: "higher",
     getValue: (product) => product.proteinPerServing ?? null,
-    format: (value) => `${value}g`,
+    format: (value) => `${fmt(value)}g`,
     threshold: 2,
     reason: "운동 후 보충이나 포만감 기준에서 먼저 보는 수치입니다.",
   },
@@ -82,7 +82,7 @@ const compareMetrics: CompareMetric[] = [
     label: "당류",
     direction: "lower",
     getValue: (product) => product.sugar ?? null,
-    format: (value) => `${value}g`,
+    format: (value) => `${fmt(value)}g`,
     threshold: 1,
     reason: "저당 설계나 야간 섭취 기준에서 차이를 크게 만듭니다.",
   },
@@ -91,7 +91,7 @@ const compareMetrics: CompareMetric[] = [
     label: "칼로리",
     direction: "lower",
     getValue: (product) => product.calories ?? null,
-    format: (value) => `${value}kcal`,
+    format: (value) => `${fmt(value)}kcal`,
     threshold: 15,
     reason: "다이어트나 간식 대체 목적이면 총열량 차이를 함께 봐야 합니다.",
   },
@@ -99,20 +99,14 @@ const compareMetrics: CompareMetric[] = [
     id: "density",
     label: "단백질 밀도",
     direction: "higher",
-    getValue: (product) => {
-      if (typeof product.density === "number") return product.density;
-      if (typeof product.density === "string") {
-        const parsed = Number.parseFloat(product.density.replace(/[^\d.]/g, ""));
-        return Number.isFinite(parsed) ? parsed : null;
-      }
-      const capacity = Number.parseFloat(String(product.capacity ?? "").replace(/[^\d.]/g, ""));
-      return product.proteinPerServing != null && capacity > 0
-        ? Number(((product.proteinPerServing / capacity) * 100).toFixed(1))
-        : null;
-    },
+    // 데이터의 density 문자열은 카테고리마다 단위(100kcal·100mL·100g)가 달라 표시 단위와 맞게 직접 계산한다.
+    getValue: (product) =>
+      product.proteinPerServing != null && product.calories != null && product.calories > 0
+        ? Number(((product.proteinPerServing / product.calories) * 100).toFixed(1))
+        : null,
     format: (value) => `${value.toFixed(1)}g/100kcal`,
     threshold: 0.8,
-    reason: "같은 용량 대비 단백질이 얼마나 압축되어 있는지 보여줍니다.",
+    reason: "같은 열량(100kcal)에 단백질이 얼마나 들어 있는지 보여줍니다.",
   },
   {
     id: "bcaa",
