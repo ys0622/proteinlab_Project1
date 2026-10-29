@@ -463,33 +463,44 @@ export const lactoseFreeProteinDrinkConfig: ComparePageConfig = {
 };
 lactoseFreeProteinDrinkConfig.jsonLd = [articleJsonLd(lactoseFreeProteinDrinkConfig), faqJsonLd(lactoseFreeProteinDrinkConfig)];
 
+// 50대 가이드 후보: 본문 기준(당류 3g 이하·단백질 10~25g·250mL 이하)에 맞는 제품만 쓴다.
+const fiftiesPicks = (() => {
+  const items = [hymune, newcare25, sellexLactoseFree];
+  const range = (values: number[]) => (Math.min(...values) === Math.max(...values) ? `${values[0]}` : `${Math.min(...values)}~${Math.max(...values)}`);
+  return {
+    items,
+    sugarRange: range(items.map((p) => p.sugar ?? 0)),
+    proteinRange: range(items.map((p) => p.proteinPerServing)),
+  };
+})();
+
 export const proteinDrinkFor50sConfig: ComparePageConfig = {
   slug: "protein-drink-for-50s",
   dataSection: [{category: "drink", mode: "protein"}],
   title: "50대 단백질 음료 추천",
-  seoTitle: "50대 단백질 음료 추천 | 건강 유지·근육량 관리 기준",
-  description: "50대 이상이 건강 유지와 근육량 관리 관점에서 단백질 음료를 고를 때 무엇을 봐야 하는지, 부담이 덜한 후보 제품을 ProteinLab DB 기준으로 정리했습니다.",
+  seoTitle: `50대 단백질 음료 추천 | 당류 ${fiftiesPicks.sugarRange}g·단백질 ${fiftiesPicks.proteinRange}g 3종 성분 비교`,
+  description: `50대가 매일 마시기 좋은 단백질 음료를 당류 3g 이하·단백질 10~25g·250mL 이하 기준으로 골랐습니다. 하이뮨 프로틴 밸런스 액티브 ${hymune.proteinPerServing}g, 뉴케어 올프로틴 ${newcare25.proteinPerServing}g, 셀렉스 락토프리 ${sellexLactoseFree.proteinPerServing}g을 성분표로 비교합니다.`,
   keywords: ["50대 단백질 음료", "중장년 단백질 추천", "근감소증 단백질", "시니어 단백질 음료"],
   badge: "연령 맞춤",
   readingTime: "4분 읽기",
-  updatedAt: "2026-08-26",
-  methodologyNote: "ProteinLab DB 중장년 관점 후보 제품 기준",
+  updatedAt: "2026-10-29",
+  methodologyNote: "ProteinLab DB 음료 중 당류 3g 이하·단백질 10~25g·250mL 이하·쿠팡 판매 확인 제품 기준",
   intro: "50대 이후에는 근육량이 서서히 줄기 시작하고, 식사량이나 소화 부담 때문에 단백질을 꾸준히 챙기기 더 어려워집니다. 그래서 단순히 고단백만 보기보다 소화 부담, 당류, 나트륨, 균형영양 성격을 함께 보는 편이 더 현실적입니다.",
   summary: [
-    "50대는 초고단백보다 꾸준히 마실 수 있는 균형형 RTD가 더 중요합니다.",
+    "이 글의 기준은 당류 3g 이하, 단백질 10~25g, 250mL 이하입니다. 아래 세 제품이 모두 이 기준에 들어갑니다.",
     "소화 부담이 적고 당류·나트륨이 과하지 않은 제품부터 좁히는 편이 실용적입니다.",
     "한 번에 많이 마시기보다 하루 1~2회 나눠 보충하는 흐름이 더 무난합니다.",
   ],
   comparisonTitle: "50대 추천 제품 표",
-  comparisonColumns: ["하이뮨 프로틴 밸런스", "뉴케어 올프로틴 41g", "셀렉스 프로핏"],
+  comparisonColumns: ["하이뮨 프로틴 밸런스 액티브", "뉴케어 올프로틴 25g", "셀렉스 락토프리"],
   comparisonRows: buildComparisonRows([
-    { label: "단백질", values: [`${hymuneBalance.proteinPerServing}g`, `${newcare41.proteinPerServing}g`, `${sellex.proteinPerServing}g`] },
-    { label: "용량", values: [hymuneBalance.capacity ?? "-", newcare41.capacity ?? "-", sellex.capacity ?? "-"] },
-    { label: "칼로리", values: [`${hymuneBalance.calories}kcal`, `${newcare41.calories}kcal`, `${sellex.calories}kcal`] },
-    { label: "당류", values: [`${hymuneBalance.sugar}g`, `${newcare41.sugar}g`, `${sellex.sugar}g`] },
-    { label: "나트륨", values: [`${hymuneBalance.sodium ?? "-"}mg`, `${newcare41.sodium ?? "-"}mg`, `${sellex.sodium ?? "-"}mg`] },
-    { label: "100kcal당 단백질", values: [formatProteinCalorieDensity(hymuneBalance), formatProteinCalorieDensity(newcare41), formatProteinCalorieDensity(sellex)] },
-    { label: "포인트", values: ["적은 용량, 중장년 친화 인지", "균형영양식·락토프리", "저칼로리·저지방"] },
+    { label: "단백질", values: fiftiesPicks.items.map((p) => `${p.proteinPerServing}g`) },
+    { label: "용량", values: fiftiesPicks.items.map((p) => p.capacity ?? "-") },
+    { label: "칼로리", values: fiftiesPicks.items.map((p) => `${p.calories}kcal`) },
+    { label: "당류", values: fiftiesPicks.items.map((p) => `${p.sugar}g`) },
+    { label: "나트륨", values: fiftiesPicks.items.map((p) => `${p.sodium ?? "-"}mg`) },
+    { label: "100kcal당 단백질", values: fiftiesPicks.items.map(formatProteinCalorieDensity) },
+    { label: "포인트", values: ["당류 0g, 250mL 한 팩", "1팩 단백질 25g으로 셋 중 가장 많음", "유당을 뺀 락토프리, 190mL 소용량"] },
   ]),
   sections: [
     {
@@ -503,7 +514,7 @@ export const proteinDrinkFor50sConfig: ComparePageConfig = {
     {
       title: "50대 기준 선택 포인트",
       items: [
-        { title: "소화 부담 낮은 제품 우선", body: "용량이 너무 크지 않거나 락토프리 성격이 있는 제품이 접근성이 좋습니다. 뉴케어 올프로틴처럼 균형형 제품이 대표적입니다." },
+        { title: "소화 부담 낮은 제품 우선", body: "우유를 마시면 속이 불편했다면 셀렉스 락토프리처럼 유당을 뺀 제품부터 보는 편이 무난합니다. 용량도 190~250mL 한 팩이면 부담이 적습니다." },
         { title: "고단백보다 균형 우선", body: "무조건 40g 이상을 고르기보다 일상적으로 마실 수 있는 10~25g대 제품이 더 현실적일 때가 많습니다." },
         { title: "당류·나트륨 확인", body: "혈압과 혈당을 같이 생각해야 하는 경우가 많기 때문에 당류 0~3g대, 나트륨 과다하지 않은 제품이 유리합니다." },
       ],
@@ -526,11 +537,11 @@ export const proteinDrinkFor50sConfig: ComparePageConfig = {
     },
   ],
   faq: [
-    { question: "50대는 어떤 단백질 음료부터 시작하는 게 좋나", answer: "처음에는 하이뮨 프로틴 밸런스처럼 용량이 작고 익숙한 제품이나, 뉴케어 올프로틴처럼 균형형으로 설계된 제품부터 시작하는 편이 부담이 적습니다." },
+    { question: "50대는 어떤 단백질 음료부터 시작하는 게 좋나", answer: `이 글 기준(당류 3g 이하·단백질 10~25g·250mL 이하)에 맞는 하이뮨 프로틴 밸런스 액티브(${hymune.proteinPerServing}g·당류 ${hymune.sugar}g), 뉴케어 올프로틴(${newcare25.proteinPerServing}g·당류 ${newcare25.sugar}g), 셀렉스 락토프리(${sellexLactoseFree.proteinPerServing}g·당류 ${sellexLactoseFree.sugar}g) 중에서 시작하면 됩니다. 우유가 부담되면 락토프리부터 봅니다.` },
     { question: "50대에게 40g 제품도 괜찮나", answer: "운동 목적이 뚜렷하지 않다면 40g급 초고단백은 우선순위가 낮습니다. 건강 유지 목적이라면 10~25g대 제품을 나눠 섭취하는 편이 더 현실적입니다." },
     { question: "식사 대신 마셔도 되나", answer: "단백질 음료는 기본적으로 보충용으로 보는 편이 안전합니다. 식사를 완전히 대체하기보다 식사와 함께 또는 식후 보충으로 쓰는 흐름이 더 무난합니다." },
-    { question: "세 제품 중 한 병 열량이 가장 낮은 것은 무엇인가", answer: `대표 제품 기준 셀렉스 프로핏 ${sellex.calories}kcal, 하이뮨 프로틴 밸런스 ${hymuneBalance.calories}kcal, 뉴케어 올프로틴 41g ${newcare41.calories}kcal 순입니다.` },
-    { question: "열량 대비 단백질을 우선하면 무엇을 고르나", answer: `100kcal당 단백질은 뉴케어 올프로틴 41g ${formatProteinCalorieDensity(newcare41)}, 셀렉스 프로핏 ${formatProteinCalorieDensity(sellex)}, 하이뮨 프로틴 밸런스 ${formatProteinCalorieDensity(hymuneBalance)}입니다.` },
+    { question: "세 제품 중 한 병 열량이 가장 낮은 것은 무엇인가", answer: `한 팩 기준 하이뮨 프로틴 밸런스 액티브 ${hymune.calories}kcal, 뉴케어 올프로틴 ${newcare25.calories}kcal, 셀렉스 락토프리 ${sellexLactoseFree.calories}kcal입니다.` },
+    { question: "열량 대비 단백질을 우선하면 무엇을 고르나", answer: `100kcal당 단백질은 하이뮨 프로틴 밸런스 액티브 ${formatProteinCalorieDensity(hymune)}, 뉴케어 올프로틴 ${formatProteinCalorieDensity(newcare25)}, 셀렉스 락토프리 ${formatProteinCalorieDensity(sellexLactoseFree)}입니다.` },
   ],
   relatedGuides: [
     { title: "셀렉스 vs 하이뮨 비교", href: "/guides/product-selection-comparison/selex-vs-himune", description: "중장년층이 자주 비교하는 두 브랜드를 직접 비교합니다." },
@@ -539,9 +550,9 @@ export const proteinDrinkFor50sConfig: ComparePageConfig = {
     commonRelated[1],
   ],
   purchaseLinks: [
-    { label: "하이뮨 프로틴 밸런스 보기", slug: hymuneBalance.slug },
-    { label: "뉴케어 올프로틴 41g 보기", slug: newcare41.slug },
-    { label: "셀렉스 프로핏 보기", slug: sellex.slug },
+    { label: "하이뮨 프로틴 밸런스 액티브 보기", slug: hymune.slug },
+    { label: "뉴케어 올프로틴 보기", slug: newcare25.slug },
+    { label: "셀렉스 락토프리 보기", slug: sellexLactoseFree.slug },
   ],
 };
 proteinDrinkFor50sConfig.jsonLd = [articleJsonLd(proteinDrinkFor50sConfig), faqJsonLd(proteinDrinkFor50sConfig)];
