@@ -13,9 +13,4 @@
 - https://proteinlab.kr/compare/quest-vs-myprotein-bar
 - https://proteinlab.kr/compare/flymill-vs-delight-project-shake
 - https://proteinlab.kr/compare/flymill-vs-shakebaby-shake
-- https://proteinlab.kr/compare/itthefit-shake-flavor-comparison
 - https://proteinlab.kr/compare/proteone-shake-flavor-comparison
-- https://proteinlab.kr/compare/maeilbio-greek-yogurt-lineup-comparison
-- https://proteinlab.kr/compare/benof-proteinbar-flavor-comparison
-- https://proteinlab.kr/compare/quest-proteinbar-flavor-comparison
-- https://proteinlab.kr/compare/flymill-shake-flavor-comparison
