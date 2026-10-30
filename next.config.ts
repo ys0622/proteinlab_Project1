@@ -20,6 +20,12 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
+        // 2026-10-31 Scott: 이벤트/핫딜(10월 조회 18·쿠팡 클릭 0) → 매일 자동 갱신되는 골드박스로 대체
+        source: "/official-events",
+        destination: "/goldbox",
+        permanent: true,
+      },
+      {
         source: "/feed",
         destination: "/rss.xml",
         permanent: true,

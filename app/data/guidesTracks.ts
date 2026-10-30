@@ -541,7 +541,7 @@ export const guideTracks: GuideTrack[] = [
         searchIntent: "시즌 스포츠 단백질 가이드",
         futureFocus: ["시즌성 허브", "이벤트 확장", "운동 트렌드 연결"],
         internalLinkTargets: [
-          { label: "공식 이벤트", href: "/official-events" },
+          { label: "골드박스 특가", href: "/goldbox" },
           { label: "마라톤", href: "/guides/running/race-week" },
         ],
       },
@@ -601,7 +601,7 @@ export const guideTracks: GuideTrack[] = [
         futureFocus: ["브랜드 포트폴리오", "가격대", "포지셔닝"],
         internalLinkTargets: [
           { label: "신제품 분석", href: "/guides/market-insights/new-product-analysis" },
-          { label: "공식 이벤트", href: "/official-events" },
+          { label: "골드박스 특가", href: "/goldbox" },
         ],
       },
       {

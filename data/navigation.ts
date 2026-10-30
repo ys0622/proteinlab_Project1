@@ -29,7 +29,7 @@ export const navigationItems: NavigationItem[] = [
       { label: "등급 기준", href: "/grade-criteria" },
     ],
   },
-  { label: "🔥 이벤트/핫딜", href: "/official-events" },
+  { label: "🔥 골드박스 특가", href: "/goldbox" },
   { label: "가이드", href: "/guides" },
   { label: "문의", href: "/contact" },
 ];
