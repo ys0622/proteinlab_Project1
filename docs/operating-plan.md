@@ -121,7 +121,7 @@ Scott은 운영실 페이지(https://claude.ai/artifact/D89GJZzP51Zkg2H7BMYiuW)�
 |---|---|---|
 | seo-audit | Codex 보강분(10/27) 검토, 구글 남긴 112개 점검(제목·설명·내부 링크·중복) | 10/28 |
 | copy-editing | 노출 많고 클릭 적은 페이지 제목·설명 다듬기(예: 단백질바 TOP10 노출 3.3만·CTR 0.2%) — 순위 걸린 제목은 근거 있을 때만 | 10/29~30 |
-| schema | 제품·FAQ·브레드크럼 JSON-LD 점검, 서치콘솔 '개선사항' 오류 확인 | 10/30 |
+| schema | 제품·FAQ·브레드크럼 JSON-LD 점검, 서치콘솔 '개선사항' 오류 확인 | **완료 10/30**(ccf252f): 비교 가이드 55개 Article·FAQPage 중복 제거. 제품 Product에 offers 없음(가격 근거 없어 유지) |
 | site-architecture | 가이드 → 제품 상세 동선(첫 방문 53% 가이드, 제품 직행 9%) 시안 — Scott 승인 필요 | 11/2~4 |
 | cro | 제품 상세·가이드의 쿠팡 클릭 흐름 점검(버튼 중복 금지 안에서) — 시안 | 11/2~4 |
 | analytics | 채널별 유입·쿠팡 클릭(블로그·쓰레드 UTM) 주간 표, affiliate_click 출처별 | 매주 토 |
