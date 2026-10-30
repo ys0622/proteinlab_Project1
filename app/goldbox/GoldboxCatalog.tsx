@@ -6,7 +6,8 @@ import Image from "next/image";
 import TrackedCoupangLink from "@/app/components/TrackedCoupangLink";
 import GoldboxIcon from "@/app/components/GoldboxIcon";
 
-export type GoldboxCard = { id: string; slug: string; name: string; brand: string; category: string; image: string; offerName: string; price: number; href: string | null };
+export type GoldboxCard = { id: string; slug: string; name: string; brand: string; category: string; image: string; offerName: string; price: number; href: string | null; protein?: number; sugarLabel?: string; calories?: number; capacity?: string };
+const categoryLabel: Record<string, string> = { drink: "단백질 음료", bar: "단백질 바", yogurt: "요거트", shake: "쉐이크", soymilk: "두유" };
 const categories = [{ id: "all", name: "전체" }, { id: "drink", name: "음료" }, { id: "bar", name: "바" }, { id: "yogurt", name: "요거트" }, { id: "shake", name: "쉐이크" }, { id: "soymilk", name: "두유" }];
 
 export default function GoldboxCatalog({ cards, status, checkedAt, preview }: { cards: GoldboxCard[]; status: "ready" | "unavailable"; checkedAt: string | null; preview: boolean }) {
@@ -28,24 +29,43 @@ export default function GoldboxCatalog({ cards, status, checkedAt, preview }: { 
           return <button type="button" key={category.id} disabled={!count} aria-pressed={active === category.id} onClick={() => setActive(category.id)} className={`min-h-11 shrink-0 rounded-full border px-3 text-sm font-semibold disabled:cursor-default disabled:opacity-40 ${active === category.id ? "border-[#16412d] bg-[#16412d] text-white" : "border-[#dddcd3] bg-white text-[#526155]"}`}>{category.name} <span className="ml-1 text-xs">{count}</span></button>;
         })}
       </nav>
-      <div className="grid grid-cols-2 gap-3 md:grid-cols-3">
-        {filtered.map(card => <article key={card.id} className="flex min-w-0 flex-col overflow-hidden rounded-2xl border border-[#e5ddc9] bg-white">
-          <div className="relative flex h-32 items-center justify-center bg-white p-4 md:h-44">
-            <span className="absolute left-2 top-2 rounded bg-[#fff0bd] px-2 py-1 text-[10px] font-bold text-[#71501a]">{preview ? "예시" : "골드박스"}</span>
-            {card.image && <Image src={card.image} alt={card.name} width={140} height={140} className="h-full w-full object-contain" />}
-          </div>
-          <div className="flex flex-1 flex-col p-3">
-            <p className="text-[11px] text-[#6b756c]">{card.brand}</p>
-            <h2 className="mt-1 min-h-10 text-sm font-bold leading-5 text-[#193c2b]">{card.name}</h2>
-            <p className="mt-2 text-[11px] leading-4 text-[#6b756c]">{card.offerName}</p>
-            {card.price > 0
-              ? <p className="mb-3 mt-3 text-xl font-extrabold tracking-tight text-[#9a5b08]">{card.price.toLocaleString("ko-KR")}<span className="ml-0.5 text-sm">원</span></p>
-              : <div className="mb-3 mt-3" />}
-            <div className="mt-auto"><TrackedCoupangLink href={card.href} productId={card.slug} productName={card.name} productBrand={card.brand} productCategory={card.category} linkPosition="goldbox_deal" className="flex min-h-11 items-center justify-center rounded-lg bg-[#16412d] px-2 text-xs font-bold text-white aria-disabled:opacity-50">{preview ? "구매 버튼 예시" : "쿠팡에서 특가 보기 ↗"}</TrackedCoupangLink>
-              <Link href={`/product/${card.slug}`} className="mt-1 flex min-h-9 items-center justify-center text-xs text-[#5c7060] underline underline-offset-2">제품 정보</Link>
+      {/* 케어맵처럼 제품 하나를 크게(2026-10-30 Scott): 사진·이름은 쿠팡 특가, 수치 칸, 큰 버튼 */}
+      <div className="grid gap-4">
+        {filtered.map((card, index) => {
+          const deal = card.href && !preview;
+          const dealLink = (children: React.ReactNode, className: string) => deal
+            ? <TrackedCoupangLink href={card.href} productId={card.slug} productName={card.name} productBrand={card.brand} productCategory={card.category} linkPosition="goldbox_deal" className={className}>{children}</TrackedCoupangLink>
+            : <Link href={`/product/${card.slug}`} className={className}>{children}</Link>;
+          const stats = [
+            card.calories != null && { value: card.calories, unit: "", label: "kcal" },
+            card.protein != null && { value: card.protein, unit: "g", label: "단백질" },
+            card.capacity && { value: card.capacity.replace(/(\d)\s*(mL|ml|g)$/i, "$1"), unit: card.capacity.match(/(mL|ml|g)$/i)?.[1] ?? "", label: "용량" },
+            card.sugarLabel && { value: card.sugarLabel.replace(/g$/, ""), unit: card.sugarLabel.endsWith("g") ? "g" : "", label: "당류" },
+          ].filter(Boolean) as { value: string | number; unit: string; label: string }[];
+          return <article key={card.id} className="flex flex-col overflow-hidden rounded-3xl border border-[#e5e1d6] bg-white sm:flex-row">
+            <div className="relative flex h-56 shrink-0 items-center justify-center bg-white p-5 sm:h-auto sm:min-h-[260px] sm:w-[38%] md:w-[300px]">
+              <span className="absolute left-3 top-3 z-10 rounded-full border border-[#f2c7c2] bg-[#fff1ef] px-2.5 py-1 text-[11px] font-bold text-[#bc362f]">{preview ? "예시" : "오늘 특가"}</span>
+              {card.image && dealLink(<Image src={card.image} alt={card.name} width={260} height={260} priority={index < 2} className="h-full max-h-[220px] w-full object-contain" />, "flex h-full w-full items-center justify-center")}
             </div>
-          </div>
-        </article>)}
+            <div className="flex flex-1 flex-col border-t border-[#efece4] p-4 sm:border-l sm:border-t-0 md:p-6">
+              <span className="w-fit rounded-full bg-[#eef4ef] px-2.5 py-1 text-[11px] font-semibold text-[#2f5c43]">{categoryLabel[card.category] ?? card.category}</span>
+              <p className="mt-3 text-xs text-[#6b756c]">{card.brand}</p>
+              <h2 className="mt-0.5 text-lg font-extrabold leading-7 text-[#193c2b] md:text-xl">{dealLink(card.name, "hover:underline")}</h2>
+              {stats.length > 0 && <dl className="mt-3 grid grid-cols-4 overflow-hidden rounded-xl bg-[#f6f3ec]">
+                {stats.map((stat, index) => <div key={stat.label} className={`px-1 py-2.5 text-center ${index > 0 ? "border-l border-[#e8e3d8]" : ""}`}>
+                  <dd className="text-base font-extrabold text-[#193c2b] md:text-lg">{stat.value}<span className="ml-0.5 text-xs font-bold">{stat.unit}</span></dd>
+                  <dt className="mt-0.5 text-[11px] text-[#6b756c]">{stat.label}</dt>
+                </div>)}
+              </dl>}
+              <p className="mt-3 text-xs leading-5 text-[#6b756c]">{card.offerName}</p>
+              {card.price > 0 && <p className="mt-2 text-2xl font-extrabold tracking-tight text-[#9a5b08]">{card.price.toLocaleString("ko-KR")}<span className="ml-0.5 text-sm">원</span></p>}
+              <div className="mt-4 md:mt-auto md:pt-4">
+                <TrackedCoupangLink href={card.href} productId={card.slug} productName={card.name} productBrand={card.brand} productCategory={card.category} linkPosition="goldbox_deal" className="flex min-h-12 items-center justify-center rounded-full bg-[#16412d] px-4 text-sm font-bold text-white aria-disabled:opacity-50">{preview ? "구매 버튼 예시" : "쿠팡 특가 확인하기 ↗"}</TrackedCoupangLink>
+                <Link href={`/product/${card.slug}`} className="mt-1 flex min-h-10 items-center justify-center text-xs text-[#5c7060] underline underline-offset-2">제품 성분 자세히 보기</Link>
+              </div>
+            </div>
+          </article>;
+        })}
       </div>
       <p className="mt-4 text-xs leading-5 text-[#747b71]">가격·판매 구성·행사 여부는 변경될 수 있습니다. 쿠팡에서 최종 확인해 주세요.</p>
     </> : <section className="rounded-2xl border border-[#e7ddbf] bg-[#fff9e9] px-5 py-7">

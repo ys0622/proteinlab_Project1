@@ -21,6 +21,7 @@ export default async function GoldboxPage({ searchParams }: { searchParams: Prom
       id: `preview-${index}`, slug: product.slug, name: product.name, brand: product.brand,
       category: product.productType ?? "drink", image: getProductImageUrl(product.slug) ?? "",
       offerName: "화면 예시 · 판매 구성 확인 전", price: [19900, 15900, 12900, 24900][index], href: null,
+      protein: product.proteinPerServing, sugarLabel: product.sugarLabel ?? `${product.sugar}g`, calories: product.calories, capacity: product.capacity,
     })) : [];
     status = preview === "error" ? "unavailable" : "ready";
     checkedAt = null;

@@ -18,6 +18,20 @@ export interface ActiveGoldboxCard {
   /** 0이면 가격을 표시하지 않는다(앱에서 확인한 수동 등록 특가). */
   price: number;
   href: string | null;
+  /** 카드에 크게 보여 줄 1회 제공량 수치(제조사 표기). */
+  protein?: number;
+  sugarLabel?: string;
+  calories?: number;
+  capacity?: string;
+}
+
+function nutritionOf(product: { proteinPerServing?: number; sugar?: number; sugarLabel?: string; calories?: number; capacity?: string }) {
+  return {
+    protein: product.proteinPerServing,
+    sugarLabel: product.sugarLabel ?? (product.sugar != null ? `${product.sugar}g` : undefined),
+    calories: product.calories,
+    capacity: product.capacity,
+  };
 }
 
 /**
@@ -38,6 +52,7 @@ export async function getActiveGoldboxCards(options: { cacheOnly?: boolean } = {
     offerName: deal.productName,
     price: deal.productPrice,
     href: deal.productUrl,
+    ...nutritionOf(product),
   }));
   for (const offer of verifiedOffers) {
     if (cards.some((card) => card.slug === offer.slug)) continue;
@@ -54,6 +69,7 @@ export async function getActiveGoldboxCards(options: { cacheOnly?: boolean } = {
       offerName: offer.offerName,
       price: offer.price,
       href: offer.href || getCoupangRedirectHref(product.coupangUrl, category, product.slug),
+      ...nutritionOf(product),
     });
   }
   return { cards, status: snapshot.status, checkedAt: snapshot.checkedAt };
