@@ -66,3 +66,14 @@ export function buildGuideJsonLd(options: GuideJsonLdOptions): Record<string, un
 
   return result;
 }
+
+// 템플릿이 만든 블록에 페이지별 추가 블록을 합친다. 같은 @type이면 추가 블록으로 바꿔 Article·FAQPage가 두 번 나가지 않게 한다.
+export function mergeJsonLd(base: Record<string, unknown>[], extra: Record<string, unknown>[] = []): Record<string, unknown>[] {
+  const result = [...base];
+  for (const item of extra) {
+    const index = result.findIndex((existing) => existing["@type"] === item["@type"]);
+    if (index >= 0) result[index] = item;
+    else result.push(item);
+  }
+  return result;
+}

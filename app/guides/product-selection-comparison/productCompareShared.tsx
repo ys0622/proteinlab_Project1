@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { mergeJsonLd } from "@/app/lib/guideJsonLd";
 import Link from "next/link";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
@@ -280,7 +281,7 @@ function buildCompareJsonLd(config: ComparePageConfig): Record<string, unknown>[
       })),
     });
   }
-  return [...schemas, ...(config.jsonLd ?? [])];
+  return mergeJsonLd(schemas, config.jsonLd);
 }
 
 export function ComparisonGuidePage({ config }: { config: ComparePageConfig }) {

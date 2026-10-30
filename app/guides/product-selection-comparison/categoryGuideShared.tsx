@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { mergeJsonLd } from "@/app/lib/guideJsonLd";
 import Link from "next/link";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
@@ -289,7 +290,7 @@ function buildCategoryJsonLd(config: CategoryGuideConfig): Record<string, unknow
       })),
     });
   }
-  return [...schemas, ...(config.jsonLd ?? [])];
+  return mergeJsonLd(schemas, config.jsonLd);
 }
 
 export function CategoryGuidePage({ config }: { config: CategoryGuideConfig }) {
