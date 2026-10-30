@@ -2,6 +2,7 @@ import type { ProductDetailProps } from "../data/products";
 import { withAnd, withObject } from "./koreanParticle";
 import { formatProductLabel } from "./productLabel";
 import { isComparableServing } from "./servingScope";
+import { getCategoryLabel, isProductCategory } from "./categories";
 
 export interface CompareFaq {
   question: string;
@@ -16,9 +17,37 @@ function per100(value: number | undefined, p: ProductDetailProps): number | null
   return (value / size) * 100;
 }
 
+// 같은 카테고리(1회 제공량 비교 대상) 안에서 몇 번째인지. 같은 값은 공동 순위로 센다.
+function rankIn(pool: ProductDetailProps[], value: number, pick: (p: ProductDetailProps) => number | undefined, higher: boolean) {
+  const values = pool.map(pick).filter((v): v is number => v != null && Number.isFinite(v));
+  const rank = 1 + values.filter((v) => (higher ? v > value : v < value)).length;
+  const tied = values.filter((v) => v === value).length > 1;
+  if (rank === 1) return tied ? "공동으로 가장" : "가장";
+  return `${tied ? "공동 " : ""}${rank}번째로`;
+}
+
+function buildCategoryRankFaq(products: ProductDetailProps[], allProducts: ProductDetailProps[]): CompareFaq | null {
+  if (products.length < 2 || products.length > 4 || !products.every(isComparableServing)) return null;
+  const lines = products.map((p) => {
+    const type = p.productType ?? "drink";
+    const pool = allProducts.filter((item) => (item.productType ?? "drink") === type && isComparableServing(item));
+    const label = isProductCategory(type) ? getCategoryLabel(type) : "제품";
+    const name = formatProductLabel(p.brand, p.name);
+    const protein = `단백질 ${fmt(p.proteinPerServing)}g은 ${rankIn(pool, p.proteinPerServing, (item) => item.proteinPerServing, true)} 많고`;
+    const sugar = p.sugar != null
+      ? `, 당류 ${p.sugarLabel ?? `${fmt(p.sugar)}g`}은 ${rankIn(pool, p.sugar, (item) => item.sugar, false)} 적습니다`
+      : "입니다";
+    return `${name}: 등록된 ${label} ${pool.length}종 중 ${protein}${sugar}.`;
+  });
+  return {
+    question: "같은 종류 제품 전체에서 보면 어느 정도인가요?",
+    answer: `${lines.join(" ")} 순위는 프로틴랩에 등록된 제품의 제조사 표기 1회 제공량 기준입니다.`,
+  };
+}
+
 // 비교 랜딩 FAQ. 화면과 FAQPage 구조화 데이터에 같은 내용을 쓴다(구조화 데이터만 있고 화면에 없으면 구글 지침 위반).
 // 답변 수치는 모두 제품 데이터(제조사 표기)에서 계산한다.
-export function buildCompareFaqs(title: string, intro: string, products: ProductDetailProps[]): CompareFaq[] {
+export function buildCompareFaqs(title: string, intro: string, products: ProductDetailProps[], allProducts: ProductDetailProps[] = []): CompareFaq[] {
   const faqs: CompareFaq[] = [];
   const [a, b] = products;
   if (a && b) {
@@ -76,6 +105,9 @@ export function buildCompareFaqs(title: string, intro: string, products: Product
       faqs.push({ question: "목적에 따라 어떤 제품을 고르면 되나요?", answer: pick });
     }
   }
+
+  const rankFaq = buildCategoryRankFaq(products, allProducts);
+  if (rankFaq) faqs.push(rankFaq);
 
   faqs.push({
     question: `${title}에서 가장 중요하게 봐야 할 기준은 무엇인가요?`,
