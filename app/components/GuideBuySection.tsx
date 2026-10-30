@@ -1,8 +1,11 @@
 import AffiliateDisclosure from "./AffiliateDisclosure";
+import Image from "next/image";
 import TrackedCoupangLink from "./TrackedCoupangLink";
+import TrackedLink from "./TrackedLink";
 import { getProductBySlug } from "@/app/data/products";
 import { getCoupangRedirectHref, hasNoPurchasableCoupangLink } from "@/app/lib/purchaseLinks";
 import { formatProductLabel } from "@/app/lib/productLabel";
+import { getProductImageUrl } from "@/app/lib/productImage";
 import { GUIDE_BUY_PICKS, type GuideBuyTopic } from "@/app/lib/guideBuyPicks";
 
 export default function GuideBuySection({
@@ -28,34 +31,54 @@ export default function GuideBuySection({
   if (products.length === 0) return null;
 
   if (variant === "top") {
+    // 사진·이름은 제품 상세로, 버튼은 쿠팡으로(2026-10-30 Scott D안). 상세를 본 사람의 약 1/3이 쿠팡을 누르는데 가이드에서 상세로 가는 길이 없었다.
     return (
-      <section className="rounded-[28px] border border-[#dce8df] bg-[#f7fbf8] px-5 py-4" aria-label={title}>
+      <section className="rounded-[28px] border border-[#dce8df] bg-white px-4 py-4 md:px-5" aria-label={title}>
         <div className="flex flex-wrap items-center justify-between gap-2">
           <h2 className="text-base font-bold text-[#16412D]">{title}</h2>
           <AffiliateDisclosure className="mb-0" />
         </div>
         {caption && <p className="mt-1 text-xs leading-5 text-[var(--foreground-muted)]">{caption}</p>}
-        <div className="mt-3 grid gap-2 md:grid-cols-3">
+        <div className="mt-3 grid grid-cols-3 gap-2">
           {products.slice(0, 3).map((product) => {
             if (!product) return null;
             const href = getCoupangRedirectHref(product.coupangUrl, "guide", product.slug);
+            const label = formatProductLabel(product.brand, product.name);
+            const image = getProductImageUrl(product.slug);
             return (
-              <TrackedCoupangLink
-                key={product.slug}
-                href={href}
-                productId={product.slug}
-                productName={formatProductLabel(product.brand, product.name)}
-                productBrand={product.brand}
-                productCategory={product.productType}
-                linkPosition="mid_content"
-                className="flex min-h-12 items-center justify-between gap-3 rounded-xl border border-[#e3ebe5] bg-white px-3 py-2.5 transition-colors hover:bg-[#fffdf8]"
-              >
-                <span className="min-w-0">
-                  <span className="block truncate text-sm font-semibold text-[var(--foreground)]">{formatProductLabel(product.brand, product.name)}</span>
-                  <span className="block text-[11px] text-[var(--foreground-muted)]">단백질 {product.proteinPerServing}g · 당류 {product.sugar}g{product.calories ? ` · ${product.calories}kcal` : ""}</span>
-                </span>
-                <span className="shrink-0 rounded-full bg-[#1F5A3D] px-3 py-1.5 text-xs font-bold text-white">가격 보기 →</span>
-              </TrackedCoupangLink>
+              <div key={product.slug} className="flex h-full flex-col rounded-xl border border-[#e3ebe5] bg-white p-2">
+                <TrackedLink
+                  href={`/product/${product.slug}`}
+                  trackingLabel={`${label} 상세 보기`}
+                  trackingSection="guide_buy_top"
+                  trackingPageType="guide"
+                  productId={product.slug}
+                  linkPosition="mid_content"
+                  ctaType="product_detail"
+                  className="mb-2 flex flex-col"
+                >
+                  <span className="flex h-24 items-center justify-center rounded-lg bg-white md:h-32">
+                    {image ? <Image src={image} alt={label} width={96} height={128} className="h-full w-full object-contain p-1" /> : null}
+                  </span>
+                  <span className="mt-1.5 line-clamp-2 min-h-[2.5rem] text-xs font-semibold leading-5 text-[var(--foreground)]">{label}</span>
+                  <span className="text-[10px] leading-4 text-[var(--foreground-muted)]">
+                    단백질 {product.proteinPerServing}g
+                    <br />
+                    당류 {product.sugarLabel ?? `${product.sugar}g`}
+                  </span>
+                </TrackedLink>
+                <TrackedCoupangLink
+                  href={href}
+                  productId={product.slug}
+                  productName={label}
+                  productBrand={product.brand}
+                  productCategory={product.productType}
+                  linkPosition="mid_content"
+                  className="mt-auto rounded-full bg-[#1F5A3D] px-2 py-1.5 text-center text-[11px] font-bold text-white"
+                >
+                  가격 보기
+                </TrackedCoupangLink>
+              </div>
             );
           })}
         </div>
