@@ -1,4 +1,8 @@
 import { getCategoryProductCountsAsync } from "../lib/productCounts";
+import { getAllCompareLandings } from "../data/compareLandings";
+import { compareLandingHref } from "../data/compareCanonicalOverrides";
+import { getAllProducts } from "../data/products";
+import { getBrandSummary } from "../lib/brandHubs";
 
 const SITE_URL = "https://proteinlab.kr";
 
@@ -6,6 +10,18 @@ const SITE_URL = "https://proteinlab.kr";
 export async function GET() {
   const counts = await getCategoryProductCountsAsync();
   const total = counts.drink + counts.bar + counts.yogurt + counts.shake + counts.soymilk;
+
+  // 사이트맵과 같은 기준: 비교 페이지는 대표 주소 하나만, 브랜드는 제품 3개 이상만
+  const seen = new Set<string>();
+  const compareLines = getAllCompareLandings()
+    .map((landing) => ({ title: landing.title, href: compareLandingHref(landing.slug) }))
+    .filter((item) => !seen.has(item.href) && seen.add(item.href))
+    .map((item) => `- [${item.title}](${SITE_URL}${item.href})`)
+    .join("\n");
+  const brandLines = getBrandSummary(getAllProducts())
+    .filter((brand) => brand.total >= 3)
+    .map((brand) => `- [${brand.brand} 제품 성분 비교](${SITE_URL}/brands/${brand.slug}): ${brand.total}종`)
+    .join("\n");
 
   const body = `# ProteinLab
 
@@ -25,6 +41,13 @@ export async function GET() {
 - [맞춤 추천](${SITE_URL}/recommend): 목적별 추천
 - [가이드](${SITE_URL}/guides): 단백질 기초, 제품 선택·비교, 섭취 전략 가이드
 - [MPI 단백질이란? 원재료에 MPI가 표기된 음료 조사](${SITE_URL}/guides/basics/protein-source-types)
+- [데이터 수집·검증 방법](${SITE_URL}/methodology)
+
+## 제품·브랜드·맛별 성분 비교
+${compareLines}
+
+## 브랜드별 제품
+${brandLines}
 
 ## 기타
 - [사이트맵](${SITE_URL}/sitemap.xml)
