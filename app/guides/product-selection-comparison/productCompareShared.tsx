@@ -176,6 +176,37 @@ function PurchaseLinks({ links, linkPosition = "mid_content", compactMobile = fa
 }
 
 // 추천 문단이 언급한 제품만 골라 그 자리에 구매 버튼을 둔다(구매 결정이 나는 곳에 버튼이 없어 5화면 아래 FAQ 뒤에서야 나왔다).
+// 비교표 열 이름("뉴케어 41g")을 구매 링크 제품과 이어 상세 페이지로 보낸다(2026-10-30, 상세를 본 사람의 약 1/3이 쿠팡으로 감).
+// 열 이름의 단어가 모두 한 제품의 라벨·브랜드·이름·용량에 들어 있을 때만 잇고, 둘 이상 맞거나 없으면 글자로 둔다.
+function matchColumnSlugs(columns: string[], links: PurchaseGuideLink[]): (string | null)[] {
+// 브랜드 이름만 있는 열("매일두유")이나 여러 브랜드 페이지의 맛 이름 열("복숭아")은 한 제품이 아니라서 잇지 않는다.
+  const words = (text: string) => text.replace(/[()·,/]/g, " ").split(/\s+/).filter(Boolean);
+  const productOf = (slug: string) => purchasableProducts.find((item) => item.slug === slug);
+  const brands = new Set(links.map((link) => productOf(link.slug)?.brand).filter(Boolean));
+  return columns.map((column) => {
+    const need = words(column);
+    if (need.length === 0 || brands.has(column.trim())) return null;
+    const hits = links.filter((link) => {
+      const product = productOf(link.slug);
+      const hay = words(`${link.label} ${product?.brand ?? ""} ${product?.name ?? ""} ${product?.capacity ?? ""}`).join(" ");
+      return need.every((word) => hay.includes(word));
+    });
+    if (new Set(hits.map((link) => link.slug)).size !== 1) return null;
+    const brand = productOf(hits[0].slug)?.brand ?? "";
+    if (brands.size > 1 && !column.includes(brand)) return null;
+    return hits[0].slug;
+  });
+}
+
+function ColumnHeading({ column, slug }: { column: string; slug: string | null }) {
+  if (!slug) return <>{column}</>;
+  return (
+    <Link href={`/product/${slug}`} className="underline decoration-[#b8c7d9] underline-offset-4 hover:text-[var(--accent)]">
+      {column}
+    </Link>
+  );
+}
+
 function findMentionedLinks(links: PurchaseGuideLink[], text: string) {
   return links.filter((item) => {
     const brandWord = item.label.split(" ")[0];
@@ -262,6 +293,7 @@ export function ComparisonGuidePage({ config }: { config: ComparePageConfig }) {
   const columnCount = (config.comparisonColumns ?? []).length;
   const longestValue = Math.max(0, ...config.comparisonRows.flatMap((row) => row.values.map((value) => value.length)));
   const compactMobileTable = columnCount > 0 && columnCount <= 3 && longestValue <= 16;
+  const columnSlugs = matchColumnSlugs(config.comparisonColumns ?? [], config.purchaseLinks);
   const compactPriorityMobile = config.slug === "selex-vs-takefit-vs-himune";
   const heroProducts = resolveGuideHeroProducts(config.purchaseLinks);
 
@@ -325,8 +357,8 @@ export function ComparisonGuidePage({ config }: { config: ComparePageConfig }) {
                 <thead>
                   <tr className="border-b border-[#e8edf3] text-[var(--foreground)]">
                     <th className={`px-2 py-2 font-semibold ${compactMobileTable ? "w-[64px]" : "whitespace-nowrap px-3"}`}>항목</th>
-                    {(config.comparisonColumns ?? []).map((column) => (
-                      <th key={column} className={`px-2 py-2 font-semibold ${compactMobileTable ? "break-keep leading-4" : "whitespace-nowrap px-3"}`}>{column}</th>
+                    {(config.comparisonColumns ?? []).map((column, index) => (
+                      <th key={column} className={`px-2 py-2 font-semibold ${compactMobileTable ? "break-keep leading-4" : "whitespace-nowrap px-3"}`}><ColumnHeading column={column} slug={columnSlugs[index]} /></th>
                     ))}
                   </tr>
                 </thead>
@@ -348,8 +380,8 @@ export function ComparisonGuidePage({ config }: { config: ComparePageConfig }) {
                 <thead>
                   <tr className="border-b border-[#e8edf3] text-[var(--foreground)]">
                     <th className="px-3 py-3 font-semibold">항목</th>
-                    {(config.comparisonColumns ?? []).map((column) => (
-                      <th key={column} className="px-3 py-3 font-semibold">{column}</th>
+                    {(config.comparisonColumns ?? []).map((column, index) => (
+                      <th key={column} className="px-3 py-3 font-semibold"><ColumnHeading column={column} slug={columnSlugs[index]} /></th>
                     ))}
                   </tr>
                 </thead>
