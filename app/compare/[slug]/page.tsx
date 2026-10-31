@@ -25,7 +25,7 @@ interface PageProps {
 const priorityConversionPlans: Record<string, { contentId: string; conclusion: string }> = {
   "proteone-vs-itthefit-shake": {
     contentId: "plv3:landing:compare:proteone-vs-itthefit-shake",
-    conclusion: "같은 40g 파우치 기준, 단백질은 프로티원 23g·잇더핏 21.3g입니다. 당류와 열량은 잇더핏 0.6g·122kcal로 프로티원 1g·128kcal보다 낮습니다.",
+    conclusion: "프로티원 단백질 쉐이크는 40g 파우치 1회에 단백질 20~23g·당류 1~2g·108~134kcal입니다(초코·커피·딸기·흑임자·곡물 5개 맛, 성분표 기준). 단백질은 초코맛 23g이 가장 많고, 열량은 커피맛 108kcal가 가장 낮습니다. 잇더핏 더블초코(21.3g·당류 0.6g·122kcal)와 비교하면 단백질은 프로티원 초코·커피가 많고, 당류는 잇더핏이 낮습니다.",
   },
   "takefit-vs-hymune-drink": {
     contentId: "plv3:landing:compare:takefit-vs-hymune-drink",
@@ -379,7 +379,7 @@ export default async function CompareLandingPage({ params }: PageProps) {
           <p className="mt-2 max-w-[760px] text-sm leading-6 text-[var(--foreground-muted)] md:text-[15px]">
             {conversionPlan?.conclusion ?? `${landing.description} 비교표로 바로 들어가고 제품 상세까지 이어서 확인할 수 있게 정리했습니다.`}
           </p>
-          {conversionPlan ? <p className="mt-2 text-xs text-[var(--foreground-muted)]">업데이트 {landing.slug === "proteone-vs-itthefit-shake" ? "2026-10-07" : "2026-07-15"}</p> : null}
+          {conversionPlan ? <p className="mt-2 text-xs text-[var(--foreground-muted)]">업데이트 {landing.slug === "proteone-vs-itthefit-shake" ? "2026-10-31" : "2026-07-15"}</p> : null}
         </div>
       </section>
 

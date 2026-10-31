@@ -319,9 +319,9 @@ const compareLandings: CompareLanding[] = [
   {
     slug: "proteone-vs-itthefit-shake",
     title: "프로티원 쉐이크 성분·칼로리 | 잇더핏과 맛별 비교",
-    description: "40g 파우치 기준 프로티원 초코맛은 단백질 23g·당류 1g·128kcal, 커피맛은 22g·1g·108kcal, 잇더핏 더블초코는 21.3g·0.6g·122kcal입니다. 맛별 성분과 가격 확인 링크를 함께 정리했습니다.",
+    description: "프로티원 쉐이크(40g)는 5개 맛 모두 단백질 20~23g·당류 1~2g입니다. 초코맛 23g·128kcal, 커피맛 22g·108kcal, 잇더핏 더블초코 21.3g·당류 0.6g·122kcal를 성분표 기준으로 비교했습니다.",
     intro: "같은 40g 파우치형 쉐이크라도 단백질은 프로티원 초코맛이 가장 많고(23g), 열량은 프로티원 커피맛이 가장 낮으며(108kcal), 당류는 잇더핏이 가장 낮습니다(0.6g). 목적에 따라 어느 차이를 먼저 볼지 정리했습니다.",
-    bullets: ["단백질 우선: 프로티원 초코 23g > 커피 22g > 잇더핏 21.3g", "열량 우선: 프로티원 커피맛 108kcal", "당류 우선: 잇더핏 0.6g, 프로티원 두 맛은 1g"],
+    bullets: ["단백질 우선: 프로티원 초코 23g > 커피 22g > 잇더핏 21.3g", "열량 우선: 프로티원 커피맛 108kcal", "당류 우선: 잇더핏 0.6g, 프로티원 두 맛은 1g", "프로티원 딸기·흑임자·곡물맛: 단백질 각 20g, 당류 2g·1g·1g, 123·133·134kcal"],
     productSlugs: ["proteone-proteinshake-choco-40", "proteone-proteinshake-coffee-40", "itthefit-proteinshake-double-choco-40"],
     relatedLinks: [
       { href: "/compare/proteone-shake-flavor-comparison", title: "프로티원 맛별 성분표", description: "프로티원 쉐이크 전 맛의 단백질·당류·칼로리를 비교합니다." },
