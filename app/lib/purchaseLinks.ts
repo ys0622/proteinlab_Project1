@@ -220,7 +220,9 @@ function buildCoupangPartnersProductUrl(
     return null;
   }
 
-  const url = new URL("https://link.coupang.com/a/AFFSDP");
+  // 딥링크 API가 내주는 landingUrl과 같은 /re/ 경로. /a/AFFSDP는 쿠팡 홈으로 보낸다(2026-10-31 확인: 딥링크 변환이
+  // 실패하는 상품 18개가 이 예비 주소로 쿠팡 홈에 떨어지고 있었다).
+  const url = new URL("https://link.coupang.com/re/AFFSDP");
   url.searchParams.set("lptag", COUPANG_PARTNERS_TAG);
   void category;
   const subId = getCoupangSubId();
