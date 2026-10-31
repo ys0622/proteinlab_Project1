@@ -2,6 +2,14 @@ import type { CategoryGuideConfig, CategoryMetricRow } from "./categoryGuideShar
 import { getDrinkProducts } from "@/app/data/drinkProductsData";
 import { formatProductLabel } from "@/app/lib/productLabel";
 
+// 첫 문단이 '추천' 검색에 바로 답하도록 상위 3개 제품명과 성분 수치를 쓴다(2026-10-31, ChatGPT·네이버 인용용).
+function topPickSentence(list: Array<{ brand: string; name: string; proteinPerServing?: number; sugar?: number; calories?: number }>) {
+  return list
+    .slice(0, 3)
+    .map((p, i) => `${i + 1}위 ${formatProductLabel(p.brand, p.name)}(단백질 ${p.proteinPerServing}g·당류 ${p.sugar}g·${p.calories}kcal)`)
+    .join(", ");
+}
+
 const drinkProducts = getDrinkProducts();
 
 function articleJsonLd(config: CategoryGuideConfig) {
@@ -134,7 +142,7 @@ export const proteinDrinkTop10Config: CategoryGuideConfig = {
   updatedAt: "2026-10-03",
   methodologyNote: `ProteinLab DB 음료 ${drinkProducts.length}종 기준 · 단백질/당류/칼로리/밀도 종합 + 동일 브랜드 최대 2개 반영`,
   intro:
-    `단백질 음료 추천을 찾는다면 1위만 보는 것보다 단백질 함량, 당류, 칼로리, 단백질 밀도를 함께 보는 편이 정확합니다. ProteinLab DB 음료 ${drinkProducts.length}종 중 단백질 20g 이상, 당류 8g 이하, 205kcal 이하 조건을 통과한 제품을 종합 점수화하고 테이크핏·더단백·이정후 프로틴·랩노쉬·뉴케어 등 브랜드별 2개까지만 반영했습니다.`,
+    `ProteinLab DB 음료 ${drinkProducts.length}종 중 단백질 20g 이상, 당류 8g 이하, 205kcal 이하 조건을 통과한 제품을 종합 점수화한 단백질 음료 추천 순위는 ${topPickSentence(drinkTop10)}입니다. 테이크핏·더단백·이정후 프로틴·랩노쉬·뉴케어 등 브랜드별 2개까지만 반영했고, 1위만 보기보다 단백질 함량·당류·칼로리·단백질 밀도를 함께 보는 편이 정확합니다.`,
   summary: [
     "상위권은 단백질 25~47g, 당류 0~1.2g, 125~204kcal 구간에 몰려 있어 단백질 밀도와 칼로리 조합이 최종 판단 포인트입니다.",
     "테이크핏 47g, 더단백 40g, 이정후 프로틴 33g, 랩노쉬 퍼펙트 27g, 뉴케어 올프로틴 25g처럼 단백질 구간이 넓어 1위보다 자신의 용도에 맞는 구간 선택이 더 중요합니다.",
@@ -292,7 +300,7 @@ export const proteinDrinkTop10Config: CategoryGuideConfig = {
   ],
 };
 
-proteinDrinkTop10Config.updatedAt = "2026-07-20";
+proteinDrinkTop10Config.updatedAt = "2026-10-31";
 proteinDrinkTop10Config.summary = [
   proteinDrinkTop10Config.summary[0],
   "테이크핏·더단백 같은 상위 고단백 RTD와 함께 뉴케어 올프로틴도 별도 라인업으로 봐야 합니다. 41g, 25g, 워터, 식물성 라인이 서로 다른 목적을 담당하기 때문입니다.",

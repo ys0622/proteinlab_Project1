@@ -2,6 +2,14 @@ import type { CategoryGuideConfig, CategoryMetricRow } from "./categoryGuideShar
 import { getShakeProducts } from "@/app/data/shakeProductsData";
 import { formatProductLabel } from "@/app/lib/productLabel";
 
+// 첫 문단이 '추천' 검색에 바로 답하도록 상위 3개 제품명과 성분 수치를 쓴다(2026-10-31, ChatGPT·네이버 인용용).
+function topPickSentence(list: Array<{ brand: string; name: string; proteinPerServing?: number; sugar?: number; calories?: number }>) {
+  return list
+    .slice(0, 3)
+    .map((p, i) => `${i + 1}위 ${formatProductLabel(p.brand, p.name)}(단백질 ${p.proteinPerServing}g·당류 ${p.sugar}g·${p.calories}kcal)`)
+    .join(", ");
+}
+
 const shakeProducts = getShakeProducts();
 
 function articleJsonLd(config: CategoryGuideConfig) {
@@ -160,10 +168,10 @@ export const proteinShakeTop7Config: CategoryGuideConfig = {
   keywords: ["단백질 쉐이크 추천", "프로틴 쉐이크 추천", "다이어트 단백질 쉐이크", "식사대용 쉐이크", "여성 단백질 쉐이크", "파우치 단백질 쉐이크"],
   badge: "쉐이크 랭킹",
   readingTime: "6분 읽기",
-  updatedAt: "2026-10-01",
+  updatedAt: "2026-10-31",
   promoteAffiliateCtas: true,
   methodologyNote: `ProteinLab DB 쉐이크 ${shakeProducts.length}개 기준 · 단백질·칼로리·당류·식이섬유 종합 점수`,
-  intro: `이 페이지는 단백질쉐이크를 고르는 일반 기준이 아니라, ProteinLab DB 파우치형 쉐이크 ${shakeProducts.length}개에서 다이어트·아침 대용·허기 관리에 유리한 상위 후보 7개를 빠르게 확인하는 순위표입니다. 단백질·칼로리·당류·식이섬유를 종합해 후보를 줄인 뒤 브랜드별 맛과 성분 차이까지 이어서 비교할 수 있습니다.`,
+  intro: `ProteinLab DB 파우치형 쉐이크 ${shakeProducts.length}개를 단백질·칼로리·당류·식이섬유 종합 점수로 비교한 단백질쉐이크 추천 순위는 ${topPickSentence(shakeTop7)}입니다. 다이어트·아침 대용·허기 관리에 맞는 상위 7개를 아래 순위표에서 확인하고, 브랜드별 맛과 성분 차이까지 이어서 비교할 수 있습니다.`,
   summary: [
     "상위권은 단백질 20g 이상에 당류가 낮고 식이섬유까지 챙긴 제품들입니다.",
     "랩노쉬는 맛과 포만감, 프로티원은 저칼로리, 잇더핏은 고단백 효율처럼 브랜드별 강점이 분명히 갈립니다.",
