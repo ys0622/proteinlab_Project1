@@ -195,10 +195,12 @@ function isCoupangDestination(destinationUrl?: string) {
   return url.pathname === "/api/out/coupang" || hostname === "coupang.com" || hostname.endsWith(".coupang.com");
 }
 
+// /api/out/coupang은 URL의 값과 상관없이 모든 링크에 같은 구분값을 붙인다(app/lib/purchaseLinks.ts getCoupangSubId).
+// GA4 subid도 그 값으로 남겨 쿠팡 보고서와 맞춘다. 카테고리는 product_category·affiliate_link_id에 따로 있다.
+const COUPANG_SUB_ID = process.env.NEXT_PUBLIC_COUPANG_PARTNERS_SUB_ID?.trim() || "proteinlab";
+
 function getCoupangSubId(destinationUrl?: string) {
-  const url = parseAnalyticsUrl(destinationUrl);
-  if (!url) return undefined;
-  return url.searchParams.get("subid") ?? url.searchParams.get("subId") ?? url.searchParams.get("category") ?? undefined;
+  return parseAnalyticsUrl(destinationUrl) ? COUPANG_SUB_ID : undefined;
 }
 
 function getCoupangAffiliateLinkId(destinationUrl?: string, productId?: string) {
