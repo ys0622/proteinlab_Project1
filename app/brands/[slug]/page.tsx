@@ -221,7 +221,7 @@ function getBrandQuickLinks(brand: string) {
 }
 
 function getShakeHighlights(items: ProductDetailProps[]) {
-  const used = new Set<string>();
+  const used = new Map<string, { label: string; description: string; display: string; product: ProductDetailProps }>();
   const pick = (
     label: string,
     description: string,
@@ -229,20 +229,32 @@ function getShakeHighlights(items: ProductDetailProps[]) {
     direction: "asc" | "desc",
     display: (product: ProductDetailProps) => string,
   ) => {
-    const product = items
-      .filter((item) => Number.isFinite(value(item)))
-      .sort((a, b) => (direction === "asc" ? value(a) - value(b) : value(b) - value(a)))
-      .find((item) => !used.has(item.slug));
-    if (!product) return null;
-    used.add(product.slug);
-    return { label, description, display: display(product), product };
+    const candidates = items.filter((item) => Number.isFinite(value(item)));
+    if (candidates.length === 0) return null;
+    const best = direction === "asc"
+      ? Math.min(...candidates.map(value))
+      : Math.max(...candidates.map(value));
+    // 브랜드 안 최고값과 같은 제품만 쓴다(2등을 '저칼로리'로 보이지 않게). 그 제품이 이미 다른 칸이면 그 카드에 기준을 합친다.
+    const tied = candidates.filter((item) => value(item) === best);
+    const product = tied.find((item) => !used.has(item.slug));
+    if (!product) {
+      const existing = used.get(tied[0].slug);
+      if (existing) {
+        existing.label = `${existing.label} · ${label}`;
+        existing.display = `${existing.display} · ${display(tied[0])}`;
+      }
+      return null;
+    }
+    const entry = { label, description, display: display(product), product };
+    used.set(product.slug, entry);
+    return entry;
   };
 
-  return [
-    pick("고단백", "운동 후 단백질 총량을 우선할 때", (item) => item.proteinPerServing, "desc", (item) => `${item.proteinPerServing}g`),
-    pick("저당", "당류 부담이 적은 맛부터 고를 때", (item) => item.sugar ?? Number.POSITIVE_INFINITY, "asc", (item) => `당류 ${item.sugar ?? 0}g`),
-    pick("저칼로리", "가벼운 간식형 쉐이크를 찾을 때", (item) => item.calories ?? Number.POSITIVE_INFINITY, "asc", (item) => `${item.calories ?? 0}kcal`),
-  ].filter((item): item is NonNullable<typeof item> => item !== null);
+  // 동률이 흔한 당류를 마지막에 골라야 열량 최저 제품이 저당 칸에 먼저 쓰이지 않는다.
+  const highProtein = pick("고단백", "운동 후 단백질 총량을 우선할 때", (item) => item.proteinPerServing, "desc", (item) => `${item.proteinPerServing}g`);
+  const lowCalorie = pick("저칼로리", "가벼운 간식형 쉐이크를 찾을 때", (item) => item.calories ?? Number.POSITIVE_INFINITY, "asc", (item) => `${item.calories ?? 0}kcal`);
+  const lowSugar = pick("저당", "당류 부담이 적은 맛부터 고를 때", (item) => item.sugar ?? Number.POSITIVE_INFINITY, "asc", (item) => `당류 ${item.sugar ?? 0}g`);
+  return [highProtein, lowSugar, lowCalorie].filter((item): item is NonNullable<typeof item> => item !== null);
 }
 
 interface PageProps {
