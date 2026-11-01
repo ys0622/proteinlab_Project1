@@ -1,4 +1,4 @@
-import { readFileSync, writeFileSync } from "fs";
+import { mkdirSync, readFileSync, writeFileSync } from "fs";
 import { resolve, dirname } from "path";
 import { fileURLToPath } from "url";
 
@@ -71,7 +71,10 @@ const output = {
   products,
 };
 
-writeFileSync(resolve(root, "public/products.json"), JSON.stringify(output, null, 2), "utf-8");
+// 전체 목록은 내부 스크립트용으로만 남긴다. 2026-11-01까지 public/products.json으로 공개했는데 다른 사이트가 통째로 가져다 썼다
+// (docs/competitor-proteinfact-2026-11-01.md). 화면은 /api/products/search로 필요한 제품만 받는다.
+mkdirSync(resolve(root, ".generated"), { recursive: true });
+writeFileSync(resolve(root, ".generated/products.json"), JSON.stringify(output, null, 2), "utf-8");
 writeFileSync(
   resolve(root, "app/data/productCategoryCounts.json"),
   JSON.stringify(

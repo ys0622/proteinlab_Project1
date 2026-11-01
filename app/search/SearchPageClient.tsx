@@ -60,34 +60,42 @@ const START_LINKS = [
 
 export default function SearchPageClient({ initialQuery }: { initialQuery: string }) {
   const [query, setQuery] = useState(initialQuery);
-  const [allProducts, setAllProducts] = useState<ProductEntry[]>([]);
-  const [loaded, setLoaded] = useState(false);
+  const [result, setResult] = useState<{ query: string; products: ProductEntry[]; more: boolean }>({
+    query: "",
+    products: [],
+    more: false,
+  });
   const inputRef = useRef<HTMLInputElement>(null);
   const router = useRouter();
 
+  const trimmed = query.trim().toLowerCase();
+
+  // 전체 데이터를 내려받지 않고 검색어에 맞는 제품만 서버에서 받는다(app/api/products/search).
   useEffect(() => {
-    fetch("/products.json")
-      .then((response) => response.json())
-      .then((data: ProductsJson) => {
-        setAllProducts(data.products ?? []);
-        setLoaded(true);
-      })
-      .catch(() => setLoaded(true));
-  }, []);
+    if (!trimmed) return;
+    const controller = new AbortController();
+    const timer = setTimeout(() => {
+      fetch(`/api/products/search?q=${encodeURIComponent(trimmed)}`, { signal: controller.signal })
+        .then((response) => response.json())
+        .then((data: ProductsJson & { more?: boolean }) =>
+          setResult({ query: trimmed, products: data.products ?? [], more: Boolean(data.more) }),
+        )
+        .catch((error: unknown) => {
+          if ((error as { name?: string })?.name !== "AbortError") setResult({ query: trimmed, products: [], more: false });
+        });
+    }, 200);
+    return () => {
+      clearTimeout(timer);
+      controller.abort();
+    };
+  }, [trimmed]);
 
   useEffect(() => {
     inputRef.current?.focus();
-  }, [loaded]);
+  }, []);
 
-  const trimmed = query.trim().toLowerCase();
-  const filtered =
-    trimmed.length >= 1
-      ? allProducts.filter(
-          (product) =>
-            product.name.toLowerCase().includes(trimmed) ||
-            product.brand.toLowerCase().includes(trimmed),
-        )
-      : [];
+  const loaded = !trimmed || result.query === trimmed;
+  const filtered = trimmed && result.query === trimmed ? result.products : [];
 
   const grouped = CATEGORY_ORDER.reduce<Record<string, ProductEntry[]>>((accumulator, category) => {
     const items = filtered.filter((product) => product.category === category);
@@ -204,7 +212,7 @@ export default function SearchPageClient({ initialQuery }: { initialQuery: strin
           <div className="flex flex-wrap items-center justify-between gap-2 rounded-xl border border-[#e3e8e4] bg-[#fcfaf6] px-3 py-2.5 md:rounded-2xl md:px-4 md:py-3">
             <p className="text-sm text-[var(--foreground-muted)]">
               <span className="font-semibold text-[var(--foreground)]">“{query.trim()}”</span> 검색 결과
-              <span className="ml-1 font-bold text-[var(--accent)]">{totalCount}개</span>
+              <span className="ml-1 font-bold text-[var(--accent)]">{totalCount}개{result.more ? "+" : ""}</span>
             </p>
             <div className="flex gap-1.5">
                 <TrackedLink

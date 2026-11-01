@@ -8,7 +8,7 @@ const assetSyncConfig = JSON.parse(
 );
 
 const dataset = JSON.parse(
-  fs.readFileSync(path.join(rootDir, "public", "products.json"), "utf8"),
+  fs.readFileSync(path.join(rootDir, ".generated", "products.json"), "utf8"),
 );
 
 const categories = [

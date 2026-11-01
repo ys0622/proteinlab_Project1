@@ -59,3 +59,6 @@ proteinlab_source.html
 # 골드박스 자동 점검 보고서(scripts/goldbox/daily-goldbox.mjs)
 .goldbox-auto/
 .naver-crawl/
+
+# 내부 스크립트용 전체 제품 목록(scripts/generate-products-json.mjs) — 공개하지 않는다
+/.generated/

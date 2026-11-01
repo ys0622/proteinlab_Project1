@@ -22,19 +22,22 @@ export default function FavoritesClient() {
   const [allProducts, setAllProducts] = useState<ProductEntry[]>([]);
   const [loaded, setLoaded] = useState(false);
 
+  // 찜한 제품만 서버에서 받는다(app/api/products/search). 전체 데이터 파일은 2026-11-01에 공개를 멈췄다.
+  const slugKey = favoriteSlugs.join(",");
   useEffect(() => {
-    fetch("/products.json")
+    if (!slugKey) return;
+    fetch(`/api/products/search?slugs=${encodeURIComponent(slugKey)}`)
       .then((r) => r.json())
       .then((data: ProductsJson) => {
         setAllProducts(data.products ?? []);
         setLoaded(true);
       })
       .catch(() => setLoaded(true));
-  }, []);
+  }, [slugKey]);
 
   const favorites = allProducts.filter((p) => typeof p.slug === "string" && favoriteSlugs.includes(p.slug));
 
-  if (!loaded) {
+  if (!loaded && slugKey) {
     return (
       <div className="py-20 text-center text-sm text-[var(--foreground-muted)]">불러오는 중...</div>
     );

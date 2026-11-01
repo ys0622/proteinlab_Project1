@@ -12,7 +12,7 @@ const SOURCES = [
   { category: "shake", label: "Shake", file: "docs/shake-coupang-template.csv" },
 ];
 
-const PRODUCT_INDEX = "public/products.json";
+const PRODUCT_INDEX = ".generated/products.json";
 const OUTPUT = "docs/purchase-link-update-template.csv";
 const FALLBACK_OUTPUT = "docs/purchase-link-update-template-with-new-products.csv";
 
@@ -172,7 +172,7 @@ for (const product of productIndex.products || []) {
     currentOfficialUrl: "",
     newOfficialUrl: "",
     status: "new-product",
-    memo: "Added from public/products.json because it was missing from category link templates.",
+    memo: "Added from .generated/products.json because it was missing from category link templates.",
   });
 }
 
