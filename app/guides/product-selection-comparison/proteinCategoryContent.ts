@@ -163,6 +163,7 @@ proteinCategoryGuideConfig.jsonLd = [articleJsonLd(proteinCategoryGuideConfig), 
 
 export const proteinShakeTop7Config: CategoryGuideConfig = {
   slug: "protein-shake-top7",
+  compareListCta: { category: "shake" },
   title: "단백질쉐이크 추천 TOP 7 (2026) | 다이어트·식사대용 순위",
   description: `ProteinLab DB 파우치형 쉐이크 ${shakeProducts.length}개의 단백질·칼로리·당류·식이섬유를 비교해 다이어트와 식사대용에 맞는 추천 TOP 7을 선정했습니다.`,
   keywords: ["단백질 쉐이크 추천", "프로틴 쉐이크 추천", "다이어트 단백질 쉐이크", "식사대용 쉐이크", "여성 단백질 쉐이크", "파우치 단백질 쉐이크"],

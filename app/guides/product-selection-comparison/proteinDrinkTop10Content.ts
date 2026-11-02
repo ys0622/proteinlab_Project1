@@ -133,6 +133,7 @@ function rankingRows(products: typeof drinkTop10): CategoryMetricRow[] {
 
 export const proteinDrinkTop10Config: CategoryGuideConfig = {
   slug: "protein-drink-top10",
+  compareListCta: { category: "drink" },
   title: "단백질 음료 추천 TOP 10 | 47g·52g 초고단백 RTD까지 비교 2026",
   description:
     `2026년 ProteinLab DB 음료 ${drinkProducts.length}종을 기준으로 단백질 함량, 당류, 칼로리, 밀도를 비교해 단백질 음료·프로틴 음료 추천 TOP 10을 정리했습니다. 테이크핏 47g과 랩노쉬 52g 같은 초고단백 RTD도 함께 해석합니다.`,

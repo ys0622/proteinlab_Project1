@@ -1,4 +1,5 @@
 import { buildGuideJsonLd } from "@/app/lib/guideJsonLd";
+import GuideCompareListCta from "@/app/components/GuideCompareListCta";
 import Link from "next/link";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
@@ -304,6 +305,8 @@ export default function DailyRequirementPage() {
           </section>
 
           <GuideBuySection topic="general" variant="top" />
+
+          <GuideCompareListCta category="drink" slugs={["sellex-profit-sports-choco-330", "ultive-vegan-protein-choco-250", "newcare-all-protein-savory-245"]} />
 
           <section className="rounded-2xl border border-[#e8e6e3] bg-[#fffdf8] px-5 py-5">
             <h2 className="text-xl font-bold text-[var(--foreground)]">운동할 때는 얼마나 늘려야 할까</h2>

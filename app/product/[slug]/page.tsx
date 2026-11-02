@@ -1152,6 +1152,86 @@ export default async function ProductDetailPage({ params }: PageProps) {
             </section>
           ) : null}
 
+          {similarProducts.length > 0 ? (
+            // 2026-11-02 시안: 카드 묶음(본 사람 중 0.6% 클릭)을 비교표로. 표 안 버튼은 11.0%, 제품 카드 목록은 19.7%(GA4 28일).
+            <section className="mt-8 rounded-[24px] border bg-white p-5 md:p-6" style={{ borderColor: "#E6DDCC", boxShadow: "0 8px 22px rgba(31,90,61,0.05)" }}>
+              <div className="mb-4">
+                <p className="mb-0.5 text-[12px] font-bold uppercase tracking-wider" style={{ color: "#1F5A3D" }}>ProteinLab 비교</p>
+                <h2 className="font-bold" style={{ fontSize: "17px", color: "#1E2A22" }}>비슷한 제품과 나란히 비교</h2>
+                <p className="mt-0.5 text-[13px]" style={{ color: "#5F6B61" }}>
+                  같은 카테고리에서 단백질·당류가 가까운 제품을 1회 제공량 기준으로 모았습니다.
+                </p>
+              </div>
+              <ul className="break-keep divide-y divide-[#F0EBE0]">
+                <li className="flex items-center gap-3 rounded-xl px-3 py-3" style={{ background: "#F3F8F4" }}>
+                  <span className="flex h-16 w-14 shrink-0 items-center justify-center rounded-lg bg-white">
+                    {productImageUrl ? <Image src={productImageUrl} alt={formatProductLabel(product.brand, product.name)} width={56} height={64} className="h-full w-full object-contain p-1" /> : null}
+                  </span>
+                  <div className="min-w-0">
+                    <span className="mb-1 inline-block rounded-full px-1.5 py-0.5 text-[10px] font-bold text-white" style={{ background: "#1F5A3D" }}>지금 보는 제품</span>
+                    <p className="text-[13px] font-bold leading-snug" style={{ color: "#1E2A22" }}>{formatProductLabel(product.brand, product.name)}</p>
+                    <p className="mt-0.5 text-[12px]" style={{ color: "#5F6B61" }}>
+                      <b style={{ color: "#1E2A22" }}>단백질 {product.proteinPerServing}g</b><br />
+                      {product.sugar != null ? `당류 ${formatSugar(product)}` : ""}
+                      {product.calories != null ? ` · ${product.calories}kcal` : ""}
+                    </p>
+                  </div>
+                </li>
+                {similarProducts.map((candidate) => {
+                  const candidateCoupangHref = getCoupangRedirectHref(
+                    normalizeCoupangUrl(candidate.coupangUrl) ?? getKnownSourceCoupangUrlBySlug(candidate.slug),
+                    candidate.productType ?? null,
+                    candidate.slug,
+                  );
+                  const candidateLabel = formatProductLabel(candidate.brand, candidate.name);
+                  const candidateImage = getProductImageUrl(candidate.slug);
+                  return (
+                    <li key={candidate.slug} className="flex items-center gap-3 px-3 py-3">
+                      <TrackedLink
+                        href={`/product/${candidate.slug}`}
+                        trackingLabel={candidateLabel}
+                        trackingSection="product_detail_similar_products"
+                        trackingPageType="product_detail"
+                        className="flex min-w-0 flex-1 items-center gap-3"
+                      >
+                        <span className="flex h-16 w-14 shrink-0 items-center justify-center rounded-lg bg-white">
+                          {candidateImage ? <Image src={candidateImage} alt={candidateLabel} width={56} height={64} className="h-full w-full object-contain p-1" /> : null}
+                        </span>
+                        <div className="min-w-0">
+                        <p className="text-[13px] font-semibold leading-snug" style={{ color: "#1E2A22" }}>{candidateLabel}</p>
+                        <p className="mt-0.5 text-[12px]" style={{ color: "#5F6B61" }}>
+                          <b style={{ color: "#1E2A22" }}>단백질 {candidate.proteinPerServing}g</b><br />
+                          {candidate.sugar != null ? `당류 ${formatSugar(candidate)}` : ""}
+                          {candidate.calories != null ? ` · ${candidate.calories}kcal` : ""}
+                        </p>
+                        </div>
+                      </TrackedLink>
+                      <div className="shrink-0">
+                        {candidateCoupangHref ? (
+                          <PurchaseLinkButton
+                            href={candidateCoupangHref}
+                            label="쿠팡 가격"
+                            tone="coupang"
+                            size="sm"
+                            tracking={{
+                              productId: candidate.slug,
+                              productName: candidate.name,
+                              productBrand: candidate.brand,
+                              productCategory: candidate.productType,
+                              linkPosition: "related_product",
+                            }}
+                          />
+                        ) : (
+                          <span className="text-[12px]" style={{ color: "#5F6B61" }}>판매 확인 안 됨</span>
+                        )}
+                      </div>
+                    </li>
+                  );
+                })}
+              </ul>
+            </section>
+          ) : null}
+
           <section className="mt-8 rounded-[24px] border bg-white p-5 md:p-6" style={{ borderColor: "#E6DDCC", boxShadow: "0 8px 22px rgba(31,90,61,0.05)" }}>
             <div className="mb-4">
               <h2 className="font-bold" style={{ fontSize: "17px", color: "#1E2A22" }}>자주 묻는 질문</h2>
@@ -1180,67 +1260,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
             sectionId="product_detail_internal_links"
           />
 
-          {similarProducts.length > 0 ? (
-            <section className="mt-8 rounded-[24px] border bg-white p-5 md:p-6" style={{ borderColor: "#E6DDCC", boxShadow: "0 8px 22px rgba(31,90,61,0.05)" }}>
-              <div className="mb-4">
-                <p className="mb-0.5 text-[12px] font-bold uppercase tracking-wider" style={{ color: "#1F5A3D" }}>ProteinLab 추천</p>
-                <h2 className="font-bold" style={{ fontSize: "17px", color: "#1E2A22" }}>비슷한 제품 비교</h2>
-                <p className="mt-0.5 text-[13px]" style={{ color: "#5F6B61" }}>
-                  같은 카테고리에서 단백질·당류 스펙이 가까운 제품입니다.
-                </p>
-              </div>
-              <div className="grid gap-3 sm:grid-cols-2 md:grid-cols-3">
-                {similarProducts.map((candidate) => {
-                  const candidateCoupangHref = getCoupangRedirectHref(
-                    normalizeCoupangUrl(candidate.coupangUrl) ?? getKnownSourceCoupangUrlBySlug(candidate.slug),
-                    candidate.productType ?? null,
-                    candidate.slug,
-                  );
-                  const candidateLabel = formatProductLabel(candidate.brand, candidate.name);
-                  return (
-                    <div
-                      key={candidate.slug}
-                      className="flex flex-col rounded-[16px] border border-[#E6DDCC] bg-[#FFFDF8] p-4"
-                    >
-                      <TrackedLink
-                        href={`/product/${candidate.slug}`}
-                        trackingLabel={candidateLabel}
-                        trackingSection="product_detail_similar_products"
-                        trackingPageType="product_detail"
-                        className="flex-1"
-                      >
-                        <p className="text-[13px] font-bold leading-tight" style={{ color: "#1E2A22" }}>
-                          {candidateLabel}
-                        </p>
-                        <p className="mt-1.5 text-[12px] leading-5" style={{ color: "#5F6B61" }}>
-                          단백질 {candidate.proteinPerServing}g
-                          {candidate.sugar != null ? ` · 당류 ${formatSugar(candidate)}` : ""}
-                          {candidate.calories != null ? ` · ${candidate.calories}kcal` : ""}
-                        </p>
-                      </TrackedLink>
-                      {candidateCoupangHref && (
-                        <div className="mt-3">
-                          <PurchaseLinkButton
-                            href={candidateCoupangHref}
-                            label="쿠팡 구매"
-                            tone="coupang"
-                            size="sm"
-                            tracking={{
-                              productId: candidate.slug,
-                              productName: candidate.name,
-                              productBrand: candidate.brand,
-                              productCategory: candidate.productType,
-                              linkPosition: "related_product",
-                            }}
-                          />
-                        </div>
-                      )}
-                    </div>
-                  );
-                })}
-              </div>
-            </section>
-          ) : null}
+
 
           <div className="mt-4 flex flex-wrap gap-3">
             <TrackedLink

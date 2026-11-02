@@ -120,6 +120,7 @@ function rankingRows(products: typeof barProducts): CategoryMetricRow[] {
 
 export const proteinBarTop10Config: CategoryGuideConfig = {
   slug: "protein-bar-top10",
+  compareListCta: { category: "bar" },
   title: "단백질바 추천 TOP 10 (2026) | 저당·고단백·다이어트 비교",
   description:
     `ProteinLab DB 단백질바 ${barProducts.length}개의 단백질·칼로리·당류·밀도를 비교해 2026년 추천 TOP 10을 선정하고 운동 후, 다이어트, 편의점용 선택 기준을 정리했습니다.`,

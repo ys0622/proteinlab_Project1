@@ -1,4 +1,5 @@
 import Link from "next/link";
+import GuideCompareListCta from "@/app/components/GuideCompareListCta";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 import MpiDrinkList from "@/app/components/MpiDrinkList";
@@ -239,6 +240,8 @@ export default function ProteinSourceTypesGuidePage() {
             </p>
           </section>
           <MpiDrinkList variant="picks" />
+          <GuideCompareListCta category="drink" slugs={["sellex-profit-sports-choco-330", "takefit-max-goso-250", "ultive-vegan-protein-choco-250"]} />
+
           <section className="rounded-2xl border border-[#e8e6e3] bg-[#fffdf8] px-5 py-5">
             <h2 className="text-xl font-bold text-[var(--foreground)]">단백질 급원 특징 한눈에 보기</h2>
             <p className="mt-3 text-sm leading-6 text-[var(--foreground-muted)]">

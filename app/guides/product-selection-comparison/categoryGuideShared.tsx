@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import GuideCompareListCta from "@/app/components/GuideCompareListCta";
 import { mergeJsonLd } from "@/app/lib/guideJsonLd";
 import Link from "next/link";
 import Header from "@/app/components/Header";
@@ -73,6 +74,8 @@ export interface CategoryGuideConfig {
     compareHref?: string;
   };
   externalLinks?: CategoryExternalLink[];
+  // 지정하면 비교표 바로 아래에 '전체 비교로 가기' 카드(제품 3개 미리보기)를 넣는다(2026-11-02 시안).
+  compareListCta?: { category: "drink" | "bar" | "yogurt" | "shake" | "soymilk" };
   // 지정하면 제품 데이터로 계산한 순위표 섹션을 본문 아래에 붙인다.
   dataSection?: {
     category: "drink" | "bar" | "yogurt" | "shake" | "soymilk";
@@ -440,6 +443,12 @@ export function CategoryGuidePage({ config }: { config: CategoryGuideConfig }) {
               </table>
             </div>
           </section>
+          {config.compareListCta ? (
+            <GuideCompareListCta
+              category={config.compareListCta.category}
+              slugs={config.comparisonRows.map((row) => row.slug).filter((slug): slug is string => Boolean(slug))}
+            />
+          ) : null}
 
           {config.sections.map((section) => (
             <section key={section.title} className="rounded-[28px] border border-[#d9e4f0] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(32,46,68,0.05)]">
