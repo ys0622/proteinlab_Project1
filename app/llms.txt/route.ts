@@ -49,6 +49,9 @@ export async function GET() {
 - [단백질 부족 증상 — 근육 감소·부종·탈모·회복 지연](${SITE_URL}/guides/basics/deficiency-symptoms): 증상별 다른 원인 구분, 근감소증 자가 점검(AWGS 2019 악력·의자 일어서기·보행 속도)
 - [단백질 한 번에 흡수량 — 30g 넘으면 버려질까](${SITE_URL}/guides/intake-strategy-health/protein-50g-at-once): Moore 2009·Areta 2013·Macnaughton 2016·Trommelen 2023 연구 비교, 끼니당 0.4~0.55g/kg
 - [단백질 먹는 시간 — 운동 후 30분? 아침·자기 전](${SITE_URL}/guides/intake-strategy-health/protein-timing): 타이밍 메타분석(Schoenfeld 2013), 끼니 분산(Mamerow 2014), 자기 전 카제인(Res 2012)
+- [단백질 쉐이크 효과 — 근육·다이어트·포만감, 연구로 확인한 것과 아닌 것](${SITE_URL}/guides/intake-strategy-health/protein-shake-effects): 근력 운동 시 제지방 +0.30kg·1.6g/kg 이후 정체(Morton 2018 메타분석 49개 연구), 감량 중 1.2~1.6g/kg(Leidy 2015), 등록 쉐이크·음료 성분 중앙값
+- [단백질 쉐이크 다이어트 — 한 끼 대신? 간식 대신?](${SITE_URL}/guides/intake-strategy-health/protein-shake-diet): 식사대용 3개월 약 2.5kg 추가 감량·1년 차이 불분명(Heymsfield 2003), 식약처 체중조절용 조제식품 1회 200~400kcal, 등록 쉐이크 열량·당류 분포
+- [단백질 쉐이크·단백질 음료 살찌나요](${SITE_URL}/guides/intake-strategy-health/protein-drink-weight-gain): 1개 열량을 하루·30일 기준으로 계산(2020 에너지 필요추정량 대비), 과식 실험에서 체지방은 단백질 비율과 무관하게 증가(Bray 2012 JAMA)
 - [MPI 단백질이란? WPI·WPC·MPC 차이와 식물성 vs 동물성](${SITE_URL}/guides/basics/protein-source-types): 원료별 단백질 비율·유당, 대두와 동물성 단백질의 근육 증가 차이(Messina 2018)
 
 ## 제품·브랜드·맛별 성분 비교

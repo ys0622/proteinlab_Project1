@@ -186,6 +186,8 @@ const sections: AdminGuideSection[] = [
       article("meal-replacement-strategy", "식사대용 전략", "식사대용과 보충용의 차이를 설명합니다.", "/guides/intake-strategy-health/meal-replacement-strategy", { emoji: "🍽️", tags: ["식사대용", "포만감"] }),
       article("morning-protein-drink", "아침 대용 단백질 음료", "공복과 출근길 기준으로 아침 대용 단백질 음료를 고르는 법을 정리합니다.", "/guides/intake-strategy-health/morning-protein-drink", { emoji: "🌅", tags: ["아침", "음료", "식사대용"] }),
       article("protein-drink-without-exercise", "운동 안 해도 단백질 음료", "운동을 안 해도 단백질 음료가 필요한 상황을 정리합니다.", "/guides/intake-strategy-health/protein-drink-without-exercise", { emoji: "🥛", tags: ["입문", "생활 보완"] }),
+      article("protein-shake-effects", "단백질 쉐이크 효과", "근육·근력·포만감·식사대용 효과를 연구 근거 수준별로 정리합니다.", "/guides/intake-strategy-health/protein-shake-effects", { emoji: "💪", tags: ["쉐이크", "효과"] }),
+      article("protein-shake-diet", "단백질 쉐이크 다이어트", "한 끼 대신·간식 대신 기준과 식사대용 연구, 식약처 기준을 정리합니다.", "/guides/intake-strategy-health/protein-shake-diet", { emoji: "🥗", tags: ["쉐이크", "다이어트"] }),
       article("protein-50g-at-once", "단백질 50g 한 번에 먹어도 될까", "체중별·타이밍별로 50g 섭취가 적절한지 판단하는 기준을 정리합니다.", "/guides/intake-strategy-health/protein-50g-at-once", { emoji: "🥤", tags: ["초고단백", "섭취량"] }),
       article("high-protein-side-effects", "고단백 음료 부담·부작용", "60g대 초고단백 제품까지 나온 지금, 소화 부담·과다 섭취 우려를 정리합니다.", "/guides/intake-strategy-health/high-protein-side-effects", { emoji: "⚠️", tags: ["부작용", "초고단백", "안전"] }),
       article("light-protein-under-20g", "저함량 단백질 음료, 오히려 필요한 사람들이 있습니다", "마이밀·하이뮨·더단백 저함량 라인이 대부분 190mL인 이유와 적합한 대상을 정리합니다.", "/guides/intake-strategy-health/light-protein-under-20g", { emoji: "🌱", tags: ["저함량", "소용량", "시니어"] }),

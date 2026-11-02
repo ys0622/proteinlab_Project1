@@ -411,13 +411,35 @@ export const guideTracks: GuideTrack[] = [
       },
       {
         slug: "protein-drink-weight-gain",
-        title: "단백질 음료 살찌나요",
-        description: "단백질 음료가 살찌는지 칼로리, 당류, 간식 대체 여부, 운동량 기준으로 판단합니다.",
+        title: "단백질 쉐이크·음료 살찌나요",
+        description: "단백질 쉐이크·음료 1개 열량을 하루·한 달 기준으로 계산하고 과식 연구로 살찌는 조건을 정리합니다.",
         searchIntent: "단백질 음료 살찌나요",
         futureFocus: ["칼로리 판단", "당류 확인", "간식 대체"],
         internalLinkTargets: [
           { label: "다이어트 단백질 음료", href: "/topics/diet-protein-drink" },
           { label: "저당 단백질 음료", href: "/guides/product-selection-comparison/low-sugar-protein-drink-guide" },
+        ],
+      },
+      {
+        slug: "protein-shake-effects",
+        title: "단백질 쉐이크 효과",
+        description: "단백질 쉐이크·음료의 근육·근력·포만감·식사대용 효과를 연구 근거 수준별로 정리합니다.",
+        searchIntent: "단백질 쉐이크 효과",
+        futureFocus: ["근육·근력 효과", "운동 없이 마실 때", "쉐이크 vs 음료"],
+        internalLinkTargets: [
+          { label: "단백질 쉐이크 다이어트", href: "/guides/intake-strategy-health/protein-shake-diet" },
+          { label: "단백질 하루 섭취량", href: "/guides/basics/daily-requirement" },
+        ],
+      },
+      {
+        slug: "protein-shake-diet",
+        title: "단백질 쉐이크 다이어트",
+        description: "단백질 쉐이크로 한 끼나 간식을 바꿀 때의 열량·단백질 기준과 식사대용 연구, 식약처 기준을 정리합니다.",
+        searchIntent: "단백질 쉐이크 다이어트",
+        futureFocus: ["한 끼 대용", "간식 대체", "감량 중 단백질 목표"],
+        internalLinkTargets: [
+          { label: "단백질 쉐이크·음료 살찌나요", href: "/guides/intake-strategy-health/protein-drink-weight-gain" },
+          { label: "다이어트 단백질 쉐이크 비교", href: "/guides/product-selection-comparison/diet-protein-shake" },
         ],
       },
       {

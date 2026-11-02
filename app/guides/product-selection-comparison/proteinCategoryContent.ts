@@ -450,6 +450,7 @@ export const dietProteinShakeConfig: CategoryGuideConfig = {
     },
   ],
     relatedGuides: [
+      { title: "단백질 쉐이크 다이어트 방법", href: "/guides/intake-strategy-health/protein-shake-diet", description: "한 끼 대신·간식 대신 중 무엇이 맞는지 연구와 식약처 기준으로 정리했습니다." },
       { title: "프로티원 단백질 쉐이크 추천", href: "/compare/proteone-vs-itthefit-shake", description: "다이어트용으로 자주 비교되는 프로티원 초코·커피맛 차이를 브랜드 기준으로 먼저 볼 수 있습니다." },
       { title: "단백하니 단백질 쉐이크 추천", href: "/guides/product-selection-comparison/danbaekhani-protein-shake", description: "저당과 칼로리 균형형 브랜드를 찾는다면 단백하니 브랜드 페이지가 바로 이어집니다." },
       { title: "랩노쉬 라인업", href: "/guides/product-selection-comparison/labnosh-lineup", description: "식대용으로 꾸준히 먹기 좋은 브랜드를 더 자세히 봅니다." },

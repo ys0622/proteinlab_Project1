@@ -72,6 +72,11 @@ const decisionSteps = [
 
 const weightLinks = [
   {
+    href: "/guides/intake-strategy-health/protein-shake-diet",
+    title: "단백질 쉐이크 다이어트",
+    body: "쉐이크로 한 끼나 간식을 바꿀 때의 열량·단백질 기준과 식사대용 연구를 정리했습니다.",
+  },
+  {
     href: "/guides/product-selection-comparison/protein-drink-for-diabetes",
     title: "당류 기준 제품 보기",
     body: "체중 관리에서 당류를 먼저 걸러내고 싶다면 저당 기준으로 정리한 이 비교 페이지가 바로 이어집니다.",
