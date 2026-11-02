@@ -130,6 +130,14 @@ const sourceCandidates = [
   return product;
 });
 
+const plantAnimalRows = [
+  ["필수아미노산", "9종이 고르게 많음", "대두는 고르게 포함, 곡류·견과 등은 제한아미노산이 있음(곡류는 라이신이 대표적)"],
+  ["소화율", "높음", "대두는 높음, 기타 식물성은 낮은 경향"],
+  ["한 번 먹었을 때 근단백 합성", "유청이 가장 빠르게 높임", "같은 양이면 대두가 유청보다 낮게 나온 연구가 있음(Tang 2009)"],
+  ["6주 이상 운동하며 먹었을 때", "근육량·근력 증가", "대두 보충과 동물성 보충의 차이 없음(Messina 2018, 9개 연구)"],
+  ["함께 따라오는 것", "유당(유제품), 포화지방(육류)", "유당 없음, 식이섬유(가공 정도에 따라 다름)"],
+];
+
 const faqItems = [
   {
     q: "WPI와 WPC 중 뭘 먼저 골라야 하나요?",
@@ -138,6 +146,10 @@ const faqItems = [
   {
     q: "카제인은 근육 합성에 정말 안 좋은가요?",
     a: "아닙니다. 카제인도 운동 후 근단백 합성을 높일 수 있습니다. 유청과 아미노산이 공급되는 시간대가 다르므로, 한 원료를 근육 합성에 부적합하다고 단정하면 안 됩니다.",
+  },
+  {
+    q: "식물성 단백질과 동물성 단백질, 뭐가 다른가요?",
+    a: "동물성과 대두 단백질은 필수아미노산이 풍부하고 소화율이 높아 질 좋은 단백질로 분류됩니다. 곡류·견과 등 기타 식물성 단백질은 부족한 아미노산(제한아미노산)이 있고 소화율이 낮은 편이라, 여러 식물성 급원을 섞거나 양을 조금 늘려 먹는 것이 좋습니다. 6주 이상 운동하며 먹은 연구들을 모으면 대두 보충과 동물성 보충의 근육량·근력 증가 차이는 없었습니다.",
   },
   {
     q: "식물성 단백질(ISP)만으로 근육을 만들 수 있나요?",
@@ -179,7 +191,7 @@ export default function ProteinSourceTypesGuidePage() {
     title: (metadata as { title: string; description: string }).title,
     description: (metadata as { title: string; description: string }).description,
     url: "https://proteinlab.kr/guides/basics/protein-source-types",
-    dateModified: "2026-10-08",
+    dateModified: "2026-11-02",
     faq: faqItems.map((item) => ({ question: item.q, answer: item.a })),
   });
 
@@ -318,6 +330,51 @@ export default function ProteinSourceTypesGuidePage() {
             </div>
           </section>
 
+          <section className="rounded-2xl border border-[#e8e6e3] bg-[#fffdf8] px-5 py-5" id="plant-vs-animal">
+            <h2 className="text-xl font-bold text-[var(--foreground)]">식물성 vs 동물성 단백질 — 무엇이 다르고, 근육엔 차이가 있을까</h2>
+            <p className="mt-4 text-sm leading-6 text-[var(--foreground-muted)]">
+              한국인 영양소 섭취기준(2020) 단백질 근거 논문은 동물성 단백질과 대두 단백질을 필수아미노산이 풍부하고
+              소화율이 높은 &lsquo;질 좋은 단백질&rsquo;로, 기타 식물성 단백질은 제한아미노산이 있어 체내 이용률과 소화율이
+              낮은 경향이 있다고 정리합니다. 같은 논문은 우리나라 식사의 동물성 단백질 비중이 50% 이하로, 60~70%인
+              서양보다 낮다고 적고 있습니다.
+            </p>
+            <div className="mt-5 overflow-x-auto">
+              <table className="min-w-full border-collapse text-left text-sm">
+                <thead>
+                  <tr className="border-b border-[#e8e6e3] text-[var(--foreground)]">
+                    <th className="px-3 py-3 font-semibold">비교 항목</th>
+                    <th className="px-3 py-3 font-semibold">동물성(유청·우유·달걀·육류)</th>
+                    <th className="px-3 py-3 font-semibold">식물성(대두·완두·곡류 등)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {plantAnimalRows.map((row) => (
+                    <tr key={row[0]} className="border-b border-[#f0eeeb] last:border-b-0">
+                      {row.map((cell, i) => (
+                        <td key={cell} className={`px-3 py-3 ${i === 0 ? "font-semibold text-[var(--foreground)]" : "text-[var(--foreground-muted)]"}`}>
+                          {cell}
+                        </td>
+                      ))}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <p className="mt-4 text-sm leading-6 text-[var(--foreground-muted)]">
+              단기 실험에서는 차이가 보입니다. Tang 등(2009)은 같은 양(필수아미노산 10g)을 운동 후 먹였을 때 근단백 합성이
+              유청 &gt; 대두 &gt; 카제인 순이었고, 유청이 대두보다 약 31% 높았다고 보고했습니다. 반면 6주 이상 운동하며 보충한
+              9개 연구(266명)를 모은 Messina 등(2018)의 분석에서는 대두와 동물성 단백질 사이에 근육량·벤치프레스·스쿼트
+              증가 차이가 없었습니다. 다만 연구 수가 적고 참여자가 대부분 남성이었다는 한계가 있습니다.
+            </p>
+            <p className="mt-3 text-sm leading-6 text-[var(--foreground-muted)]">
+              정리하면, 하루 단백질 총량을 채운다면 원료가 식물성이라는 이유만으로 손해를 보지는 않습니다. 유당이 불편하거나
+              채식을 한다면 대두 단백질(ISP)이나 두유가 현실적인 선택이고, 대두가 아닌 식물성 원료만 먹는다면 여러 급원을
+              섞거나 양을 조금 넉넉히 잡는 편이 안전합니다. 두유 제품은{" "}
+              <a href="/soymilk" className="font-semibold underline underline-offset-2">두유 단백질 비교</a>에서
+              1팩 단백질 순으로 볼 수 있습니다.
+            </p>
+          </section>
+
           <section className="rounded-2xl border border-[#e8e6e3] bg-[#fffdf8] px-5 py-5">
             <h2 className="text-xl font-bold text-[var(--foreground)]">식물성(ISP)과 콜라겐 — 근육보다 다른 목적</h2>
             <p className="mt-4 text-sm leading-6 text-[var(--foreground-muted)]">
@@ -406,7 +463,8 @@ export default function ProteinSourceTypesGuidePage() {
             <a href="https://pubmed.ncbi.nlm.nih.gov/21045172/" target="_blank" rel="noopener noreferrer" className="underline underline-offset-2">유청·카제인 운동 후 비교 연구</a>.{" "}
             참고 문헌: Boirie Y, et al. (1997) PNAS · Res PT, et al. (2012) Med Sci Sports Exerc ·
             Trommelen J, van Loon LJ. (2016) Nutrients · Veldhorst MA, et al. (2009) Am J Clin Nutr ·
-            Bendtsen LQ, et al. (2013) Nutrients · van Vliet S, et al. (2015) J Nutr · Shaw G, et al. (2017) Am J Clin Nutr.
+            Bendtsen LQ, et al. (2013) Nutrients · van Vliet S, et al. (2015) J Nutr · Shaw G, et al. (2017) Am J Clin Nutr ·
+            Tang JE, et al. (2009) J Appl Physiol · Messina M, et al. (2018) Int J Sport Nutr Exerc Metab · Kim EJ, et al. (2022) J Nutr Health(2020 한국인 영양소 섭취기준 단백질).
             본 페이지는 각 연구의 결론을 일반 대중 눈높이로 요약한 것으로, 특정 제품의 의학적 효능을 보증하지 않습니다.
           </p>
           <MpiDrinkList />
