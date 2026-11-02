@@ -51,6 +51,9 @@ export async function GET() {
 - [단백질 먹는 시간 — 운동 후 30분? 아침·자기 전](${SITE_URL}/guides/intake-strategy-health/protein-timing): 타이밍 메타분석(Schoenfeld 2013), 끼니 분산(Mamerow 2014), 자기 전 카제인(Res 2012)
 - [근육 합성에 단백질 얼마나? — 한 끼 20~40g·하루 1.6g/kg](${SITE_URL}/guides/basics/muscle): 근단백질 합성 조건별 근거(Moore 2009, Witard 2014, Macnaughton 2016, Trommelen 2023, Areta 2013, Res 2012, Moore 2015 노인 0.40g/kg), 체중별 하루 목표
 - [마운자로·위고비 단백질 — 근육 빠짐 막으려면 하루 얼마나](${SITE_URL}/guides/intake-strategy-health/glp1-protein): 빠진 체중 중 제지방 약 25%(SURMOUNT-1)·약 40%(STEP 1), 2025 미국 4개 학회 공동 권고(하루 80~120g 또는 감량 중 1.2~1.6g/kg, 근력 운동 병행), 250mL 이하 고단백 음료 성분표
+- [노인 단백질 섭취량 — 65세 이상 하루 얼마나](${SITE_URL}/guides/intake-strategy-health/senior-protein-strategy): 2020 한국인 영양소 섭취기준 65세 이상 남 60g·여 50g, PROT-AGE·ESPEN 1.0~1.2g/kg, 75세 이상 여성 실제 섭취 권장량의 75%, 한 끼 0.4g/kg(Moore 2015), Health ABC 3년 추적(Houston 2008), AWGS 2019 근감소증 점검
+- [자기 전 단백질 — 근육에 효과 있을까, 살찔까](${SITE_URL}/guides/intake-strategy-health/night-protein-drink): Res 2012, Snijders 2015(12주 허벅지 근육 단면적 +8.4 vs +4.8cm²), Kouw 2017(노인 40g만 효과), 체중은 하루 총열량(Bray 2012)
+- [운동 안 하고 단백질 음료 마시면](${SITE_URL}/guides/intake-strategy-health/protein-drink-without-exercise): 필요량 0.91g/kg은 운동과 무관, 근육 증가 근거는 근력 운동 병행 연구(Morton 2018), 비활동 시 근육 감소(Kortebein 2007)
 - [단백질 쉐이크 효과 — 근육·다이어트·포만감, 연구로 확인한 것과 아닌 것](${SITE_URL}/guides/intake-strategy-health/protein-shake-effects): 근력 운동 시 제지방 +0.30kg·1.6g/kg 이후 정체(Morton 2018 메타분석 49개 연구), 감량 중 1.2~1.6g/kg(Leidy 2015), 등록 쉐이크·음료 성분 중앙값
 - [단백질 쉐이크 다이어트 — 한 끼 대신? 간식 대신?](${SITE_URL}/guides/intake-strategy-health/protein-shake-diet): 식사대용 3개월 약 2.5kg 추가 감량·1년 차이 불분명(Heymsfield 2003), 식약처 체중조절용 조제식품 1회 200~400kcal, 등록 쉐이크 열량·당류 분포
 - [단백질 쉐이크·단백질 음료 살찌나요](${SITE_URL}/guides/intake-strategy-health/protein-drink-weight-gain): 1개 열량을 하루·30일 기준으로 계산(2020 에너지 필요추정량 대비), 과식 실험에서 체지방은 단백질 비율과 무관하게 증가(Bray 2012 JAMA)

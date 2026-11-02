@@ -334,7 +334,7 @@ export const guideTracks: GuideTrack[] = [
       },
       {
         slug: "senior-protein-strategy",
-        title: "시니어 단백질 전략",
+        title: "노인 단백질 섭취량",
         description: "시니어 단백질 섭취 전략과 제품 선택 기준을 다루는 페이지입니다.",
         searchIntent: "시니어 단백질 전략",
         futureFocus: ["고령층 전략", "부담 적은 선택", "건강 관리 연결"],
@@ -488,7 +488,7 @@ export const guideTracks: GuideTrack[] = [
       },
       {
         slug: "protein-drink-without-exercise",
-        title: "운동 안 해도 단백질 음료 마셔도 될까",
+        title: "운동 안 하고 단백질 음료 마시면",
         description: "운동을 하지 않는 경우에도 단백질 음료가 필요한지, 어떤 경우에 도움이 되는지 정리합니다.",
         searchIntent: "운동 안 해도 단백질 음료",
         futureFocus: ["비운동자 기준", "영양 보충 목적", "과다 섭취 주의"],
@@ -499,7 +499,7 @@ export const guideTracks: GuideTrack[] = [
       },
       {
         slug: "night-protein-drink",
-        title: "밤에 단백질 음료 마셔도 될까",
+        title: "자기 전 단백질",
         description: "야식·저녁 시간대 단백질 음료 섭취가 괜찮은지 소화 부담과 수면 영향 기준으로 정리합니다.",
         searchIntent: "밤에 단백질 음료 마셔도 될까",
         futureFocus: ["야식 기준", "소화 부담", "수면 영향"],

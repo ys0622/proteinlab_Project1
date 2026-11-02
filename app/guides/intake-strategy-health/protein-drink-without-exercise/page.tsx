@@ -4,8 +4,9 @@ import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 import GuideBuySection from "@/app/components/GuideBuySection";
 
-const _pageTitle = "운동 안 해도 단백질 음료 마셔도 될까";
-const _pageDesc = "운동을 안 해도 단백질 음료를 마셔도 되는지, 어떤 상황에서 필요하고 어떤 제품이 부담이 적은지 실용적으로 정리했습니다.";
+// 2026-11-02 질문 허브 A-2: "운동 안 하고 단백질" 질문형 제목과 기준·연구를 더했다(기존 제목 "운동 안 해도 단백질 음료 마셔도 될까").
+const _pageTitle = "운동 안 하고 단백질 음료 마시면? 살찌는지·근육 생기는지, 하루 필요량으로 정리";
+const _pageDesc = "운동을 안 해도 하루 단백질 필요량(체중 1kg당 0.91g, 2020 한국인 영양소 섭취기준)은 같습니다. 운동 없이 마시면 근육이 생기는지(Morton 2018), 살찌는지(Bray 2012), 필요한 경우와 필요 없는 경우, 고르는 기준을 정리했습니다.";
 export const metadata = {
   title: _pageTitle,
   description: _pageDesc,
@@ -26,6 +27,33 @@ export const metadata = {
     description: _pageDesc,
   },
 };
+
+const quickAnswer = [
+  "운동을 안 해도 단백질은 필요합니다. 2020 한국인 영양소 섭취기준의 권장섭취량은 체중 1kg당 약 0.91g(성인 남 60~65g, 여 50~55g)이고, 운동 여부와 관계없는 기본 필요량입니다. 식사로 이 양을 못 채울 때 음료는 쉬운 보충 수단입니다.",
+  "다만 운동 없이 단백질만 늘린다고 근육이 눈에 띄게 늘지는 않습니다. 단백질 보충으로 근육이 더 늘었다는 근거는 대부분 근력 운동을 같이 한 연구(Morton 2018, 49개 연구)에서 나왔습니다.",
+  "살이 찌는지는 단백질이 아니라 하루 총열량이 정합니다. 과식 실험에서 체지방은 단백질 비율과 관계없이 남는 열량만큼 늘었습니다(Bray 2012). 식사로 이미 충분히 먹고 있다면 음료 1병(약 100~200kcal)은 그대로 열량이 더해집니다.",
+];
+
+const evidenceRows: Array<[string, string, string]> = [
+  ["하루 필요량", "체중 1kg당 약 0.91g", "2020 한국인 영양소 섭취기준 권장섭취량. 운동하지 않는 성인 기준이며, 운동하면 더 필요(ISSN 1.4~2.0g/kg)"],
+  ["근육이 늘까", "운동 없이는 효과가 작음", "Morton 2018 메타분석: 단백질 보충의 근육 증가 효과는 근력 운동을 같이 한 연구에서 확인됨"],
+  ["근육 유지", "덜 빠지게 하는 데는 도움", "Houston 2008: 70~79세 2,066명 3년 추적, 단백질 섭취 상위 20%가 하위 20%보다 제지방이 약 40% 덜 줄었음(관찰 연구)"],
+  ["안 움직이면", "근육이 빠르게 줄어듦", "Kortebein 2007: 건강한 노인 10일 침상 안정 뒤 다리 제지방 약 0.95kg 감소. 단백질만으로 막기 어렵고 움직임이 필요"],
+  ["살이 찔까", "총열량이 결정", "Bray 2012: 같은 열량을 더 먹으면 단백질 비율과 관계없이 체지방이 비슷하게 늘었음"],
+  ["포만감", "단백질이 많은 식사가 유리", "Leidy 2015 리뷰: 단백질 비중을 높인 식사가 포만감과 감량 중 제지방 유지에 유리"],
+];
+
+const weights = [50, 55, 60, 70, 80];
+
+const sources = [
+  "보건복지부·한국영양학회, 2020 한국인 영양소 섭취기준",
+  "Morton RW et al., A systematic review, meta-analysis and meta-regression of the effect of protein supplementation on resistance training-induced gains in muscle mass and strength in healthy adults. Br J Sports Med 2018;52(6):376-384",
+  "Houston DK et al., Dietary protein intake is associated with lean mass change in older, community-dwelling adults: the Health ABC Study. Am J Clin Nutr 2008;87(1):150-155",
+  "Kortebein P et al., Effect of 10 days of bed rest on skeletal muscle in healthy older adults. JAMA 2007;297(16):1772-1774",
+  "Bray GA et al., Effect of dietary protein content on weight gain, energy expenditure, and body composition during overeating. JAMA 2012;307(1):47-55",
+  "Leidy HJ et al., The role of protein in weight loss and maintenance. Am J Clin Nutr 2015;101(6):1320S-1329S",
+  "Jäger R et al., International Society of Sports Nutrition Position Stand: protein and exercise. J Int Soc Sports Nutr 2017;14:20",
+];
 
 const situations = [
   ["아침을 자주 거를 때", "식사 보완용에 가까운 제품", "식사 공백이 길어지면 단백질보다 포만감과 지속성이 먼저 중요합니다."],
@@ -93,7 +121,15 @@ const selectionSteps = [
 const faqItems = [
   {
     question: "운동을 하지 않는데 단백질 음료를 마셔도 되나요?",
-    answer: "네, 괜찮습니다. 아침을 자주 거르거나 식사에서 단백질이 부족한 경우, 부모님 건강 보완용으로도 충분히 쓸 수 있습니다. 다만 운동용 고단백 제품보다 생활 보완형 제품이 더 맞습니다.",
+    answer: "네, 괜찮습니다. 운동을 안 해도 하루 체중 1kg당 약 0.91g의 단백질이 필요하고(2020 한국인 영양소 섭취기준), 아침을 자주 거르거나 단백질 반찬이 적다면 음료로 채울 수 있습니다. 다만 운동용 고단백 제품보다 20g 전후 저당 제품이 더 맞습니다.",
+  },
+  {
+    question: "운동 안 하고 단백질 음료만 마시면 근육이 생기나요?",
+    answer: "눈에 띄게 늘지는 않습니다. 단백질 보충으로 근육이 더 늘었다는 근거는 대부분 근력 운동을 같이 한 연구에서 나왔습니다(Morton 2018). 운동 없이 마시는 단백질은 근육을 만들기보다 덜 빠지게 하는 쪽에 가깝습니다.",
+  },
+  {
+    question: "운동 안 하고 단백질 음료 마시면 살찌나요?",
+    answer: "하루 총열량을 넘기면 찝니다. 단백질이라서 덜 찌는 것이 아니라, 과식 실험에서 체지방은 단백질 비율과 관계없이 남는 열량만큼 늘었습니다(Bray 2012). 간식이나 음료 한 잔을 대신하는 식으로 바꾸면 열량이 늘지 않습니다.",
   },
   {
     question: "운동을 안 하면 어떤 함량대 제품을 골라야 하나요?",
@@ -106,7 +142,7 @@ const faqItems = [
 ];
 
 export default function ProteinDrinkWithoutExercisePage() {
-  const jsonLd = buildGuideJsonLd({ title: (metadata as {title:string;description:string}).title, description: (metadata as {title:string;description:string}).description, url: 'https://proteinlab.kr/guides/intake-strategy-health/protein-drink-without-exercise', faq: faqItems });
+  const jsonLd = buildGuideJsonLd({ title: (metadata as {title:string;description:string}).title, description: (metadata as {title:string;description:string}).description, url: 'https://proteinlab.kr/guides/intake-strategy-health/protein-drink-without-exercise', dateModified: "2026-11-02", faq: faqItems });
   return (
     <div className="min-h-screen bg-white">
       {jsonLd.map((item, i) => (<script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(item) }} />))}
@@ -120,13 +156,14 @@ export default function ProteinDrinkWithoutExercisePage() {
             <span>/</span>
             <span>운동 안 해도 단백질 음료</span>
           </div>
-          <div className="mt-3">
-            <span className="rounded-md bg-[#f5f0ea] px-2 py-0.5 text-[11px] font-semibold tracking-wide text-[#7a5230]">TRACK C</span>
+          <div className="mt-3 flex flex-wrap items-center gap-2">
+            <span className="rounded-md bg-[#f5f0ea] px-2 py-0.5 text-[11px] font-semibold tracking-wide text-[#7a5230]">상황별 질문</span>
+            <span className="text-[11px] font-medium text-[var(--foreground-muted)]">업데이트 2026-11-02</span>
           </div>
           <h1 className="mt-3 text-2xl font-bold leading-tight text-[#16412D] md:text-3xl">
-            운동 안 해도 단백질 음료 마셔도 됩니다.
+            운동 안 하고 단백질 음료 마시면
             <br />
-            다만 운동용이 아니라 식사 보완 기준으로 봐야 합니다.
+            근육이 생길까, 살이 찔까
           </h1>
           <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
             단백질 음료는 운동하는 사람만 마시는 제품이 아닙니다. 아침을 자주 거르거나, 식사에서 단백질이 부족하거나,
@@ -138,6 +175,71 @@ export default function ProteinDrinkWithoutExercisePage() {
 
       <main className="mx-auto max-w-[1200px] px-4 py-8 md:px-6">
         <div className="space-y-6">
+          <section className="rounded-[28px] border border-[#dce8df] bg-[#f6fbf7] px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
+            <h2 className="text-xl font-bold text-[var(--foreground)]">짧게 답하면</h2>
+            <ul className="mt-4 space-y-3">
+              {quickAnswer.map((item) => (
+                <li key={item} className="flex gap-3 rounded-xl border border-[#dce8df] bg-white px-4 py-3 text-sm leading-6 text-[var(--foreground-muted)]">
+                  <span className="mt-1 h-2 w-2 shrink-0 rounded-full bg-[#2d6a4f]" />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </section>
+
+          <section className="rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
+            <h2 className="text-xl font-bold text-[var(--foreground)]">운동 없이 단백질을 먹으면 — 기준과 연구</h2>
+            <div className="mt-4 overflow-x-auto rounded-2xl border border-[#e2ebe4] bg-[#f7fbf8]">
+              <table className="min-w-full border-collapse text-left text-sm">
+                <thead>
+                  <tr className="border-b border-[#e2ebe4] text-[var(--foreground)]">
+                    <th className="px-3 py-3 font-semibold">질문</th>
+                    <th className="px-3 py-3 font-semibold">답</th>
+                    <th className="px-3 py-3 font-semibold">근거</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {evidenceRows.map(([q, a, why]) => (
+                    <tr key={q} className="border-b border-[#eef3ef] last:border-b-0">
+                      <td className="px-3 py-3 font-semibold text-[var(--foreground)]">{q}</td>
+                      <td className="px-3 py-3 text-[var(--foreground-muted)]">{a}</td>
+                      <td className="px-3 py-3 text-[var(--foreground-muted)]">{why}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <h3 className="mt-5 text-base font-bold text-[var(--foreground)]">운동 안 할 때 하루 단백질 (체중 × 0.91g)</h3>
+            <div className="mt-3 overflow-x-auto rounded-2xl border border-[#e2ebe4] bg-[#f7fbf8]">
+              <table className="min-w-full border-collapse text-left text-sm">
+                <thead>
+                  <tr className="border-b border-[#e2ebe4] text-[var(--foreground)]">
+                    <th className="px-3 py-3 font-semibold">체중</th>
+                    <th className="px-3 py-3 font-semibold">하루 권장량</th>
+                    <th className="px-3 py-3 font-semibold">3끼로 나누면</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {weights.map((w) => (
+                    <tr key={w} className="border-b border-[#eef3ef] last:border-b-0">
+                      <td className="px-3 py-3 font-semibold text-[var(--foreground)]">{w}kg</td>
+                      <td className="px-3 py-3 text-[var(--foreground-muted)]">{Math.round(w * 0.91)}g</td>
+                      <td className="px-3 py-3 text-[var(--foreground-muted)]">약 {Math.round((w * 0.91) / 3)}g씩</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <p className="mt-3 text-sm leading-6 text-[var(--foreground-muted)]">
+              한 끼에 단백질 반찬이 없었던 날, 그 끼니만큼을 음료 1병(20g 전후)으로 채우는 것이 운동 안 할 때의 적당한 쓰임입니다.
+              내 체중·나이 기준은{" "}
+              <Link href="/guides/basics/daily-requirement" className="font-semibold text-[#2d6a4f] underline underline-offset-2">
+                단백질 하루 섭취량
+              </Link>
+              에서 계산할 수 있습니다.
+            </p>
+          </section>
+
           <section className="rounded-[28px] border border-[#e2ebe4] bg-[#f7fbf8] px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
             <h2 className="text-xl font-bold text-[var(--foreground)]">운동 안 해도 단백질 음료가 도움이 되는 상황은 언제일까</h2>
             <div className="mt-5 overflow-x-auto">
@@ -255,6 +357,14 @@ export default function ProteinDrinkWithoutExercisePage() {
             </div>
           </section>
         </div>
+        <section className="mt-6 rounded-2xl border border-[#e8e6e3] bg-white px-5 py-4">
+          <h2 className="text-sm font-bold text-[var(--foreground)]">출처</h2>
+          <ul className="mt-2 space-y-1 text-xs leading-5 text-[var(--foreground-muted)]">
+            {sources.map((s) => (
+              <li key={s}>· {s}</li>
+            ))}
+          </ul>
+        </section>
       </main>
       <GuideBuySection topic="general" />
       <Footer />

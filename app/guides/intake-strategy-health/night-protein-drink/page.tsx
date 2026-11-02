@@ -6,8 +6,9 @@ import GuideBuySection from "@/app/components/GuideBuySection";
 import TrackedLink from "@/app/components/TrackedLink";
 import { getDrinkProducts } from "@/app/data/drinkProductsData";
 
-const _pageTitle = "밤에 단백질 음료 마셔도 될까 | 야식·저녁 보충 기준 정리";
-const _pageDesc = "저녁이나 자기 전에 단백질 음료를 마셔도 되는지, 야식처럼 마실 때 주의할 점과 칼로리·당류 기준을 실전적으로 정리했습니다.";
+// 2026-11-02 질문 허브 A-2: "자기 전 단백질" 질문형 제목과 연구 근거를 더했다(기존 제목 "밤에 단백질 음료 마셔도 될까 | 야식·저녁 보충 기준 정리").
+const _pageTitle = "자기 전 단백질 — 근육에 효과 있을까, 살찔까? 연구로 본 밤 단백질 음료 기준";
+const _pageDesc = "자기 전 단백질 연구(Res 2012, Snijders 2015 12주 근육 단면적 +8.4 vs +4.8cm², Kouw 2017 노인 40g)와 한계, 살찌는지(하루 총열량), 야식 대신 마실 때 당류·열량 기준, 밤 단백질 음료 후보 성분까지 정리했습니다.";
 export const metadata = {
   title: _pageTitle,
   description: _pageDesc,
@@ -33,7 +34,7 @@ const timingRows = [
   ["저녁 식사 후 보충", "가능", "식사에서 단백질이 부족했다면 가벼운 보충용 RTD는 무난합니다."],
   ["운동 후 늦은 시간", "상황 따라 가능", "운동 직후 회복 목적이라면 늦은 시간이어도 보충 자체가 더 중요할 수 있습니다."],
   ["야식처럼 반복적으로 섭취", "비추천", "배고픔 해소용으로 칼로리와 당류가 있는 제품을 반복하면 체중 관리가 흔들리기 쉽습니다."],
-  ["자기 직전 40g 고단백", "대체로 비추천", "소화 부담과 칼로리 부담이 같이 커질 수 있어 목적이 분명할 때만 고려하는 편이 낫습니다."],
+  ["자기 전 30~40g 고단백", "근력 운동을 하는 경우", "연구에서 쓴 양은 카제인 30~40g입니다. 운동을 안 하고 열량을 줄이는 중이라면 20g 전후 저당 제품이 부담이 적습니다."],
 ];
 
 const checkCards = [
@@ -55,6 +56,19 @@ const mistakeList = [
   "밤에는 무조건 안 좋다고 생각해서 식사 부족분까지 무시하는 경우",
   "바로 자기 전이니까 고단백일수록 좋다고 생각하고 40g 제품부터 찾는 경우",
   "야식 대용으로 가볍지 않은 제품을 반복해서 마시는 경우",
+];
+
+const sleepStudyRows: Array<[string, string, string]> = [
+  ["Res 2012", "젊은 남성, 저녁 근력 운동 뒤 자기 전 카제인 40g vs 위약", "자기 전에 먹은 단백질이 밤사이 소화·흡수되어 근육 합성에 쓰였고, 밤사이 단백질 균형이 위약보다 좋았음"],
+  ["Snijders 2015", "젊은 남성 44명, 12주 근력 운동 중 자기 전 단백질 27.5g vs 위약", "허벅지 근육 단면적 증가 +8.4cm² vs +4.8cm², 근력 증가도 더 컸음. 다만 보충군은 하루 총 단백질도 더 많았음"],
+  ["Kouw 2017", "건강한 노인 남성 48명(평균 72세), 자기 전 카제인 40g·20g·20g+류신 vs 위약", "40g에서만 밤사이 근육 합성이 위약보다 높았고, 20g은 뚜렷한 차이가 없었음"],
+];
+
+const sleepSources = [
+  "Res PT et al., Protein ingestion before sleep improves postexercise overnight recovery. Med Sci Sports Exerc 2012;44(8):1560-1569",
+  "Snijders T et al., Protein ingestion before sleep increases muscle mass and strength gains during prolonged resistance-type exercise training in healthy young men. J Nutr 2015;145(6):1178-1184",
+  "Kouw IWK et al., Protein ingestion before sleep increases overnight muscle protein synthesis rates in healthy older men: a randomized controlled trial. J Nutr 2017;147(12):2252-2261",
+  "Bray GA et al., Effect of dietary protein content on weight gain, energy expenditure, and body composition during overeating. JAMA 2012;307(1):47-55",
 ];
 
 const nightCases = [
@@ -142,7 +156,15 @@ const nightProducts = productRecommendations.map((item) => {
 const faqItems = [
   {
     question: "자기 전에 단백질 음료를 마셔도 괜찮나요?",
-    answer: "저녁 식사에서 단백질이 부족했다면 가벼운 보충용 RTD는 괜찮습니다. 다만 40g 고단백 제품은 소화·칼로리 부담이 같이 커질 수 있어 목적이 분명할 때만 고려하는 편이 좋습니다.",
+    answer: "괜찮습니다. 자기 전에 먹은 단백질도 밤사이 소화·흡수되어 근육 합성에 쓰인다는 연구가 있습니다(Res 2012). 다만 하루 총열량 안에서 마셔야 하므로, 운동을 안 하거나 체중을 줄이는 중이라면 20g 전후 저당·저열량 제품이 부담이 적습니다.",
+  },
+  {
+    question: "자기 전 단백질은 근육에 효과가 있나요?",
+    answer: "근력 운동을 하는 사람에게는 근거가 있습니다. 12주 동안 자기 전 단백질 27.5g을 먹은 쪽이 허벅지 근육 단면적이 더 늘었습니다(Snijders 2015, +8.4 vs +4.8cm²). 다만 이 연구는 보충군의 하루 총 단백질도 많아, 시간보다 총량 효과일 수 있습니다. 노인에서는 40g에서만 밤사이 근육 합성이 올랐습니다(Kouw 2017).",
+  },
+  {
+    question: "자기 전에 단백질을 먹으면 살찌나요?",
+    answer: "밤에 먹었다는 이유만으로 살이 더 찐다는 근거는 약합니다. 체중은 하루 총열량으로 정해지며, 과식 실험에서도 체지방은 단백질 비율과 관계없이 남는 열량만큼 늘었습니다(Bray 2012). 음료 1병 열량(약 100~200kcal)이 하루 총량을 넘기지 않게 보세요.",
   },
   {
     question: "야식 대신 단백질 음료를 마셔도 되나요?",
@@ -163,7 +185,7 @@ const faqItems = [
 ];
 
 export default function NightProteinDrinkPage() {
-  const jsonLd = buildGuideJsonLd({ title: (metadata as {title:string;description:string}).title, description: (metadata as {title:string;description:string}).description, url: 'https://proteinlab.kr/guides/intake-strategy-health/night-protein-drink', faq: faqItems });
+  const jsonLd = buildGuideJsonLd({ title: (metadata as {title:string;description:string}).title, description: (metadata as {title:string;description:string}).description, url: 'https://proteinlab.kr/guides/intake-strategy-health/night-protein-drink', dateModified: "2026-11-02", faq: faqItems });
   return (
     <div className="min-h-screen bg-white">
       {jsonLd.map((item, i) => (<script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(item) }} />))}
@@ -175,16 +197,16 @@ export default function NightProteinDrinkPage() {
             <span>/</span>
             <Link href="/guides/intake-strategy-health" className="hover:text-[var(--accent)]">섭취 전략·건강</Link>
             <span>/</span>
-            <span>밤에 단백질 음료 마셔도 될까</span>
+            <span>자기 전 단백질</span>
           </div>
           <div className="mt-3">
             <span className="rounded-md bg-[#f5f0ea] px-2 py-0.5 text-[11px] font-semibold tracking-wide text-[#7a5230]">TRACK C</span>
-            <span className="ml-2 text-[11px] font-medium text-[var(--foreground-muted)]">업데이트 2026-07-15</span>
+            <span className="ml-2 text-[11px] font-medium text-[var(--foreground-muted)]">업데이트 2026-11-02</span>
           </div>
           <h1 className="mt-3 text-2xl font-bold leading-tight text-[#16412D] md:text-3xl">
-            밤에 단백질 음료를 마셔도 됩니다.
+            자기 전 단백질, 근육에 효과 있을까?
             <br />
-            다만 야식처럼 마실지, 보충용으로 마실지부터 나눠 봐야 합니다.
+            연구 결과와 밤에 마실 때의 기준
           </h1>
           <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
             저녁이나 자기 전에 마신다는 이유만으로 무조건 피할 필요는 없습니다. 중요한 건 밤이라는 시간대보다 부족한 단백질을 채우는 보충인지, 허기를 달래는 야식인지, 그리고 당류와 칼로리가 어떤 제품인지입니다.
@@ -197,7 +219,9 @@ export default function NightProteinDrinkPage() {
           <section className="border-y border-[#dce8df] py-5">
             <h2 className="text-lg font-bold text-[var(--foreground)]">핵심 결론</h2>
             <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">
-              밤에는 식사 부족분을 보완할 때만 가볍게 선택하고, 야식 목적이라면 당류와 칼로리부터 확인하는 편이 좋습니다.
+              근력 운동을 하는 사람에게 자기 전 단백질(연구에서는 카제인 30~40g)은 밤사이 근육 합성을 높였고, 12주 연구에서 근육
+              증가도 더 컸습니다. 운동을 안 한다면 밤이라서 특별히 좋을 이유는 없고, 저녁 식사에서 모자란 단백질을 채우는 보충으로
+              충분합니다. 살찌는지는 시간보다 하루 총열량이 정하므로, 야식 대신이라면 당류와 열량부터 확인하세요.
             </p>
             <div className="mt-4 flex flex-wrap gap-2">
               <TrackedLink href="/topics/low-sugar-protein-drink" trackingLabel="저당 단백질 음료 보기" trackingSection="night_protein_hero" trackingPageType="guide" contentId="plv3:landing:guide:night-protein-drink" linkPosition="hero" ctaType="related_products" className="rounded-full border border-[#dce8df] px-4 py-2 text-sm font-semibold text-[#24543d] hover:bg-[#f6fbf7]">저당 단백질 음료 보기</TrackedLink>
@@ -205,6 +229,41 @@ export default function NightProteinDrinkPage() {
             </div>
           </section>
           <GuideBuySection topic="night" variant="top" />
+          <section className="rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
+            <h2 className="text-xl font-bold text-[var(--foreground)]">자기 전 단백질 연구 — 무엇이 확인됐나</h2>
+            <div className="mt-4 overflow-x-auto rounded-2xl border border-[#e2ebe4] bg-[#f7fbf8]">
+              <table className="min-w-full border-collapse text-left text-sm">
+                <thead>
+                  <tr className="border-b border-[#e2ebe4] text-[var(--foreground)]">
+                    <th className="px-3 py-3 font-semibold">연구</th>
+                    <th className="px-3 py-3 font-semibold">대상·비교</th>
+                    <th className="px-3 py-3 font-semibold">결과</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {sleepStudyRows.map(([study, design, result]) => (
+                    <tr key={study} className="border-b border-[#eef3ef] last:border-b-0">
+                      <td className="px-3 py-3 font-semibold text-[var(--foreground)]">{study}</td>
+                      <td className="px-3 py-3 text-[var(--foreground-muted)]">{design}</td>
+                      <td className="px-3 py-3 text-[var(--foreground-muted)]">{result}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <p className="mt-3 text-sm leading-6 text-[var(--foreground-muted)]">
+              연구는 대부분 근력 운동을 하는 사람, 천천히 소화되는 카제인 30~40g으로 했습니다. 운동하지 않는 사람이 20g 안팎 음료를
+              마셨을 때도 같은 효과가 있는지는 확인되지 않았습니다. 하루 전체 배치는{" "}
+              <Link href="/guides/intake-strategy-health/protein-timing" className="font-semibold text-[#2d6a4f] underline underline-offset-2">
+                단백질 먹는 시간
+              </Link>
+              , 한 끼 양은{" "}
+              <Link href="/guides/basics/muscle" className="font-semibold text-[#2d6a4f] underline underline-offset-2">
+                근육 합성에 단백질 얼마나
+              </Link>
+              에 정리했습니다.
+            </p>
+          </section>
           <section className="rounded-[28px] border border-[#e2ebe4] bg-[#f7fbf8] px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
             <h2 className="text-xl font-bold text-[var(--foreground)]">밤 시간대에 마셔도 되는 경우</h2>
             <div className="mt-5 overflow-x-auto">
@@ -323,6 +382,14 @@ export default function NightProteinDrinkPage() {
             </div>
           </section>
         </div>
+        <section className="mt-6 rounded-2xl border border-[#e8e6e3] bg-white px-5 py-4">
+          <h2 className="text-sm font-bold text-[var(--foreground)]">출처</h2>
+          <ul className="mt-2 space-y-1 text-xs leading-5 text-[var(--foreground-muted)]">
+            {sleepSources.map((s) => (
+              <li key={s}>· {s}</li>
+            ))}
+          </ul>
+        </section>
       </main>
       <GuideBuySection topic="night" />
       <Footer />

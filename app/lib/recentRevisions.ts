@@ -3,6 +3,25 @@
 // 제목·설명은 app/data/feedPageMeta.json에서 가져온다.
 export const RECENT_REVISIONS: { date: string; paths: string[] }[] = [
   {
+    // 질문 허브 1·2차와 A-2(2026-11-01~02 다시 쓴 정보형 가이드)
+    date: "2026-11-02",
+    paths: [
+      "/guides/basics/daily-requirement",
+      "/guides/intake-strategy-health/high-protein-side-effects",
+      "/guides/basics/deficiency-symptoms",
+      "/guides/intake-strategy-health/protein-50g-at-once",
+      "/guides/intake-strategy-health/protein-timing",
+      "/guides/intake-strategy-health/protein-shake-effects",
+      "/guides/intake-strategy-health/protein-shake-diet",
+      "/guides/intake-strategy-health/protein-drink-weight-gain",
+      "/guides/intake-strategy-health/glp1-protein",
+      "/guides/basics/muscle",
+      "/guides/intake-strategy-health/senior-protein-strategy",
+      "/guides/intake-strategy-health/night-protein-drink",
+      "/guides/intake-strategy-health/protein-drink-without-exercise"
+    ],
+  },
+  {
     date: "2026-10-12",
     paths: [
       "/soymilk",
