@@ -1837,5 +1837,79 @@
     },
     "naverUrl": "https://search.shopping.naver.com/search/all?query=%EC%97%B0%EC%84%B8%EB%91%90%EC%9C%A0%20%EC%A0%80%EB%8B%B9%20%EC%95%84%EB%AA%AC%EB%93%9C%26%EC%9E%A3%20190mL",
     "coupangUrl": "https://www.coupang.com/vp/products/8608358880?itemId=25613190846&vendorItemId=95414170131"
+  },
+  {
+    "slug": "yonsei-calcium-blackbean-190",
+    "brand": "연세두유",
+    "name": "뼈를 생각한 고칼슘 두유 검은콩",
+    "capacity": "190mL",
+    "variant": "검은콩",
+    "tags": [
+      "팩"
+    ],
+    "proteinPerServing": 5.2,
+    "calories": 90,
+    "sugar": 2,
+    "density": "2.7g/100ml",
+    "productUrl": "#",
+    "productType": "soymilk",
+    "gradeTags": [],
+    "flavor": "검은콩",
+    "proteinSource": "대두",
+    "fat": 3.9,
+    "sodium": 150,
+    "calorieDensity": "47.4kcal/100ml",
+    "soymilkType": "두유",
+    "nutritionPerBottle": {
+      "caloriesKcal": 90,
+      "proteinG": 5.2,
+      "carbsG": 9,
+      "sugarsG": 2,
+      "fatG": 3.9,
+      "satFatG": 0.8,
+      "transFatG": 0,
+      "cholesterolMg": 0,
+      "sodiumMg": 150,
+      "calciumMg": 220
+    },
+    "naverUrl": "https://search.shopping.naver.com/search/all?query=%EC%97%B0%EC%84%B8%EB%91%90%EC%9C%A0%20%EB%BC%88%EB%A5%BC%20%EC%83%9D%EA%B0%81%ED%95%9C%20%EA%B3%A0%EC%B9%BC%EC%8A%98%20%EB%91%90%EC%9C%A0%20%EA%B2%80%EC%9D%80%EC%BD%A9%20190mL",
+    "coupangUrl": "https://link.coupang.com/a/ik3lGfVcdM"
+  },
+  {
+    "slug": "yonsei-calcium-walnut-almond-190",
+    "brand": "연세두유",
+    "name": "뼈를 생각한 고칼슘 두유 호두&아몬드",
+    "capacity": "190mL",
+    "variant": "호두&아몬드",
+    "tags": [
+      "팩"
+    ],
+    "proteinPerServing": 5.4,
+    "calories": 95,
+    "sugar": 2,
+    "density": "2.8g/100ml",
+    "productUrl": "#",
+    "productType": "soymilk",
+    "gradeTags": [],
+    "flavor": "호두&아몬드",
+    "proteinSource": "대두",
+    "fat": 3.8,
+    "sodium": 150,
+    "calorieDensity": "50.0kcal/100ml",
+    "soymilkType": "두유",
+    "nutritionPerBottle": {
+      "caloriesKcal": 95,
+      "proteinG": 5.4,
+      "carbsG": 9.4,
+      "sugarsG": 2,
+      "fatG": 3.8,
+      "satFatG": 0.8,
+      "transFatG": 0,
+      "cholesterolMg": 0,
+      "sodiumMg": 150,
+      "calciumMg": 220
+    },
+    "naverUrl": "https://search.shopping.naver.com/search/all?query=%EC%97%B0%EC%84%B8%EB%91%90%EC%9C%A0%20%EB%BC%88%EB%A5%BC%20%EC%83%9D%EA%B0%81%ED%95%9C%20%EA%B3%A0%EC%B9%BC%EC%8A%98%20%EB%91%90%EC%9C%A0%20%ED%98%B8%EB%91%90%26%EC%95%84%EB%AA%AC%EB%93%9C%20190mL",
+    "coupangUrl": "https://link.coupang.com/a/ik3jTNO2ua"
   }
 ]
