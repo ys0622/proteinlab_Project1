@@ -56,7 +56,7 @@ export const guideTracks: GuideTrack[] = [
         searchIntent: "단백질이 몸에서 어떤 역할을 하나",
         futureFocus: ["근육과 회복", "면역과 호르몬", "하루 섭취량 기준"],
         internalLinkTargets: [
-          { label: "근육과 단백질", href: "/guides/basics/muscle" },
+          { label: "근육 합성과 단백질", href: "/guides/basics/muscle" },
           { label: "면역·호르몬과 단백질", href: "/guides/basics/immunity-hormone" },
         ],
       },
@@ -418,6 +418,17 @@ export const guideTracks: GuideTrack[] = [
         internalLinkTargets: [
           { label: "다이어트 단백질 음료", href: "/topics/diet-protein-drink" },
           { label: "저당 단백질 음료", href: "/guides/product-selection-comparison/low-sugar-protein-drink-guide" },
+        ],
+      },
+      {
+        slug: "glp1-protein",
+        title: "마운자로·위고비 단백질",
+        description: "GLP-1 비만 치료 중 근육 손실을 줄이기 위한 단백질 양(2025 학회 공동 권고)과 적게 마셔도 단백질이 많은 음료를 정리합니다.",
+        searchIntent: "마운자로 단백질",
+        futureFocus: ["빠진 체중 중 제지방 비율", "하루 80~120g·1.2~1.6g/kg", "250mL 이하 고단백 음료"],
+        internalLinkTargets: [
+          { label: "근육 합성과 단백질", href: "/guides/basics/muscle" },
+          { label: "단백질 하루 섭취량", href: "/guides/basics/daily-requirement" },
         ],
       },
       {

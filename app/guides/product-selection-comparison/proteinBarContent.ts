@@ -704,7 +704,8 @@ function leadBrands(list: { brand: string }[], count = 3): string {
   }
   return brands.join("·");
 }
-proteinBarTop10Config.seoTitle = `단백질바 추천 순위 TOP 10 (2026) | ${leadBrands(barTop10)} 등 ${barProducts.length}개 성분 비교`;
+// 네이버 '단백질바' 노출 대비 클릭률이 0.3%라(2026-11-02) 고른 기준(단백질 15g 이상·당류 8g 이하·220kcal 이하)을 제목에 넣는다.
+proteinBarTop10Config.seoTitle = `단백질바 추천 순위 TOP 10 (2026) | ${barProducts.length}개 중 단백질 15g↑·당류 8g↓만 골라 비교`;
 proteinBarTop10Config.description =
   `${leadBrands(barTop10)} 등 단백질바 ${barProducts.length}개의 단백질·칼로리·당류를 1개 기준 성분표로 비교한 추천 순위 TOP 10. 운동 후·다이어트·편의점용 후보를 따로 정리했습니다.`;
 dietProteinBarConfig.seoTitle = `다이어트 단백질바 추천 (2026) | ${leadBrands(dietBarProducts)} 등 200kcal·당류 5g 이하 ${dietBarProducts.length}종`;

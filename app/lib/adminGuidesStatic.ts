@@ -80,7 +80,7 @@ const sections: AdminGuideSection[] = [
     previewHref: "/guides/protein-basics",
     articles: [
       article("protein-functions", "단백질의 역할 개요", "단백질이 근육, 면역, 호르몬과 어떻게 연결되는지 설명합니다.", "/guides/protein-basics/protein-functions", { emoji: "🧩", tags: ["기초", "역할"] }),
-      article("muscle", "근육과 단백질", "근육 성장과 회복 관점에서 단백질의 역할을 정리합니다.", "/guides/basics/muscle", { emoji: "💪", tags: ["근육", "회복"] }),
+      article("muscle", "근육 합성과 단백질", "근단백질 합성을 높이는 한 끼 양·하루 총량·나누기·자기 전·나이별 차이를 연구로 정리합니다.", "/guides/basics/muscle", { emoji: "💪", tags: ["근육", "회복"] }),
       article("immunity-hormone", "면역·호르몬과 단백질", "항체, 면역세포, 호르몬과 단백질의 연결을 설명합니다.", "/guides/basics/immunity-hormone", { emoji: "🛡️", tags: ["면역", "호르몬"] }),
       article("deficiency-symptoms", "단백질 부족 신호", "피로, 근육 감소, 부종 등 부족 신호를 정리합니다.", "/guides/basics/deficiency-symptoms", { emoji: "🚨", tags: ["결핍", "증상"] }),
       article("daily-requirement", "하루 단백질 섭취량", "체중과 활동량 기준으로 하루 단백질 권장량을 설명합니다.", "/guides/basics/daily-requirement", { emoji: "📏", tags: ["섭취량", "권장량"] }),
@@ -186,6 +186,7 @@ const sections: AdminGuideSection[] = [
       article("meal-replacement-strategy", "식사대용 전략", "식사대용과 보충용의 차이를 설명합니다.", "/guides/intake-strategy-health/meal-replacement-strategy", { emoji: "🍽️", tags: ["식사대용", "포만감"] }),
       article("morning-protein-drink", "아침 대용 단백질 음료", "공복과 출근길 기준으로 아침 대용 단백질 음료를 고르는 법을 정리합니다.", "/guides/intake-strategy-health/morning-protein-drink", { emoji: "🌅", tags: ["아침", "음료", "식사대용"] }),
       article("protein-drink-without-exercise", "운동 안 해도 단백질 음료", "운동을 안 해도 단백질 음료가 필요한 상황을 정리합니다.", "/guides/intake-strategy-health/protein-drink-without-exercise", { emoji: "🥛", tags: ["입문", "생활 보완"] }),
+      article("glp1-protein", "마운자로·위고비 단백질", "GLP-1 비만 치료 중 근육 손실을 줄이기 위한 단백질 양과 근력 운동, 소용량 고단백 음료를 정리합니다.", "/guides/intake-strategy-health/glp1-protein", { emoji: "💉", tags: ["GLP-1", "근육"] }),
       article("protein-shake-effects", "단백질 쉐이크 효과", "근육·근력·포만감·식사대용 효과를 연구 근거 수준별로 정리합니다.", "/guides/intake-strategy-health/protein-shake-effects", { emoji: "💪", tags: ["쉐이크", "효과"] }),
       article("protein-shake-diet", "단백질 쉐이크 다이어트", "한 끼 대신·간식 대신 기준과 식사대용 연구, 식약처 기준을 정리합니다.", "/guides/intake-strategy-health/protein-shake-diet", { emoji: "🥗", tags: ["쉐이크", "다이어트"] }),
       article("protein-50g-at-once", "단백질 50g 한 번에 먹어도 될까", "체중별·타이밍별로 50g 섭취가 적절한지 판단하는 기준을 정리합니다.", "/guides/intake-strategy-health/protein-50g-at-once", { emoji: "🥤", tags: ["초고단백", "섭취량"] }),

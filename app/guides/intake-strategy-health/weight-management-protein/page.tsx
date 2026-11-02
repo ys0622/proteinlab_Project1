@@ -72,6 +72,11 @@ const decisionSteps = [
 
 const weightLinks = [
   {
+    href: "/guides/intake-strategy-health/glp1-protein",
+    title: "마운자로·위고비 단백질",
+    body: "GLP-1 비만 치료 중 근육 손실을 줄이는 단백질 양과 근력 운동을 학회 권고로 정리했습니다.",
+  },
+  {
     href: "/guides/intake-strategy-health/protein-shake-diet",
     title: "단백질 쉐이크 다이어트",
     body: "쉐이크로 한 끼나 간식을 바꿀 때의 열량·단백질 기준과 식사대용 연구를 정리했습니다.",

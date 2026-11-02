@@ -37,3 +37,19 @@ Aside로 `scripts/naver/search-weekly.aside.js`, `scripts/naver/url-query-30d.as
 1. 고노출·저CTR 8개 주소 제목·설명 재작성(브랜드명 + 성분표/맛/가격 비교 문구). 라이브 `<title>` 먼저 확인 후.
 2. '단백질바'(순위 10) — protein-bar-top10 보강으로 1페이지 진입.
 3. 질문 허브 2차는 그대로 진행. protein-drink-weight-gain은 순위 1·CTR 9.5%를 지키도록 제목에 '단백질 음료 살찌나요'를 남긴다.
+
+## 11/2 제목 재작성 (같은 날 실행) — 효과 비교 기준
+5개는 10/20에 '브랜드 + 성분·칼로리'로 이미 바꿨는데 최근 7일(10/26~11/1)에도 CTR이 낮아, 이번에는 답이 되는 숫자를 제목에 넣었다. 네이버 검색 결과에서 이 검색어들은 가격비교·스토어·클립·이미지가 위를 차지해 웹문서가 첫 화면에 보이지 않았다(Aside로 '프로티원 쉐이크'·'단백질바'·'뉴케어 올프로틴' 확인). 제목만으로 크게 오르지 않을 수 있다.
+
+| 주소 | 7일 노출 | 7일 CTR | 새 제목 |
+|---|---|---|---|
+| /compare/proteone-vs-itthefit-shake | 5,254 | 0.1% | 프로티원 쉐이크 맛별 성분표 — 초코 23g·커피 108kcal, 5가지 맛·잇더핏 비교 |
+| /g/protein-bar-top10 | 6,092 | 0.3% | 단백질바 추천 순위 TOP 10 (2026) \| 108개 중 단백질 15g↑·당류 8g↓만 골라 비교 |
+| /compare/greekday-vs-maeilbio-yogurt | (상위 100 밖) | — | 매일 바이오 그릭요거트 vs 그릭데이 — 100g당 단백질 7.0g·11.4g 비교 |
+| /compare/doctoru-vs-kirkland-bar | (상위 100 밖) | — | 커클랜드 프로틴바 vs 닥터유 단백질바 — 당류 1g·9g, 190·312kcal 비교 |
+| /g/newcare-allprotein | 590 | 0.5% | 뉴케어 올프로틴 41g·25g 차이 — 210·135kcal, 식물성·워터까지 성분 비교 |
+| /compare/takefit-max-vs-takefit-monster | 503 | 0.4% | 테이크핏 몬스터 vs 맥스 차이 — 단백질 45g·24g, 195·105kcal 비교 |
+
+- /guides/product-selection-comparison/proteone-protein-shake는 이미 proteone-vs-itthefit로 리디렉트된다(별도 수정 없음).
+- /brands/myprotein은 브랜드 공통 제목 틀이라 손대지 않았다(7일 CTR 1.4%로 나쁘지 않음).
+- 판정: 11/16 이후 7일 CTR을 위 값과 비교(네이버 재수집 후).
