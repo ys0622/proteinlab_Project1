@@ -5,17 +5,20 @@ import GuideBuySection from "@/app/components/GuideBuySection";
 import ProteinDailyContext from "@/app/components/ProteinDailyContext";
 import { buildGuideJsonLd } from "@/app/lib/guideJsonLd";
 
-const _pageTitle = "단백질 섭취 타이밍 가이드 | 하루에 언제 먹어야 할까";
-const _pageDesc = "단백질을 아침, 운동 후, 간식, 저녁 중 언제 넣어야 할지 정리했습니다. 하루 총량과 분산 섭취 기준으로 바로 적용할 수 있는 루틴 가이드입니다.";
+const PAGE_URL = "https://proteinlab.kr/guides/intake-strategy-health/protein-timing";
+const _pageTitle = "단백질 먹는 시간 — 운동 후 30분? 아침·자기 전, 언제 먹어야 할까";
+const _pageDesc =
+  "단백질은 언제 먹어야 할까요? 운동 후 '30분 골든타임', 아침 단백질, 자기 전 단백질을 연구(ISSN 2017, Schoenfeld 2013 메타분석, Mamerow 2014, Res 2012)로 확인하고, 운동 시간대별로 하루 단백질을 나누는 예시를 정리했습니다.";
+
 export const metadata = {
   title: _pageTitle,
   description: _pageDesc,
-  alternates: { canonical: "https://proteinlab.kr/guides/intake-strategy-health/protein-timing" },
+  alternates: { canonical: PAGE_URL },
   openGraph: {
     images: [{ url: "https://proteinlab.kr/opengraph-image", width: 1200, height: 630, alt: "ProteinLab 단백질 제품 비교" }],
     title: _pageTitle,
     description: _pageDesc,
-    url: "https://proteinlab.kr/guides/intake-strategy-health/protein-timing",
+    url: PAGE_URL,
     type: "website" as const,
     locale: "ko_KR",
     siteName: "ProteinLab",
@@ -28,93 +31,127 @@ export const metadata = {
   },
 };
 
-const timingRows = [
-  ["아침", "20~30g", "공복 시간이 길었다면 첫 식사에서 단백질을 넣어 하루 시작 리듬을 안정적으로 만드는 편이 좋습니다."],
-  ["운동 전", "상황별 판단", "직전 식사 여부와 소화 부담을 먼저 보고 결정합니다. 무조건 추가 보충이 필요한 구간은 아닙니다."],
-  ["운동 후", "20~30g", "운동 후 1시간 안팎에서 회복 신호를 만들고 다음 식사까지 루틴을 연결하는 데 초점을 둡니다."],
-  ["간식·저녁", "20~30g", "하루 총량이 부족할 때 간식이나 저녁 식사에서 보완하면 분산 섭취가 쉬워집니다."],
+const quickAnswer = [
+  "가장 중요한 것은 시간이 아니라 하루 총량입니다. 하루 총량을 맞춘 연구들을 모아 보면 '운동 직후에 먹었느냐'에 따른 근육 차이는 거의 사라졌습니다(Schoenfeld 2013 메타분석).",
+  "운동 후 '30분 골든타임'은 과장입니다. 국제스포츠영양학회(ISSN 2017)는 운동 전후 2시간 안쪽이면 충분하다고 봅니다. 운동 전 식사를 오래 굶었다면 운동 후에 조금 서두르는 편이 낫습니다.",
+  "시간보다 더 차이를 만드는 것은 나누는 방법입니다. 저녁에 몰아 먹기보다 아침·점심·저녁에 고르게(한 끼 20~40g) 나눈 쪽이 하루 근육 합성이 더 높았습니다(Mamerow 2014).",
 ];
 
-const principles = [
+const timingRows: Array<[string, string, string]> = [
+  [
+    "운동 직후",
+    "운동 전후 2시간 안에 20~40g(체중 1kg당 0.25g)",
+    "ISSN 2017. 30분 안에 꼭 먹어야 한다는 근거는 약함. 공복 운동이었다면 빨리 먹는 편이 나음",
+  ],
+  [
+    "아침",
+    "다른 끼니와 비슷하게 20~40g",
+    "한국인은 단백질이 저녁에 몰리기 쉬움. 아침에 채우면 하루 분배가 고르게 됨(Mamerow 2014)",
+  ],
+  [
+    "자기 전",
+    "카제인 등 천천히 소화되는 단백질 30~40g",
+    "ISSN 2017. 자기 전 40g 카제인이 밤사이 근육 합성을 높였음(Res 2012)",
+  ],
+  [
+    "운동 전",
+    "운동 1~2시간 전 식사에 단백질 포함",
+    "운동 전에 먹은 단백질도 운동 후까지 혈중 아미노산을 유지해 운동 후 섭취와 비슷한 역할",
+  ],
+  [
+    "공복(아침 첫 끼 전)",
+    "특별한 이점 근거 없음",
+    "공복에 고함량 음료는 더부룩함이 잦음. 식사와 함께 먹어도 효과 차이는 크지 않음",
+  ],
+];
+
+const scheduleRows: Array<[string, string, string, string, string]> = [
+  ["아침 운동(07시)", "운동 후 아침 식사 30g", "점심 30g", "간식 20g", "저녁 30g"],
+  ["저녁 운동(19시)", "아침 30g", "점심 30g", "운동 전 간식 20g", "운동 후 저녁 30g"],
+  ["운동 안 하는 날", "아침 25g", "점심 25g", "간식 10~15g", "저녁 25g"],
+];
+
+const faqs = [
   {
-    title: "운동 직후만 보지 않기",
-    body: "운동 후 보충은 중요하지만 실제 결과는 하루 총량과 분산 섭취가 더 크게 좌우합니다. 타이밍은 총량을 채우기 위한 도구입니다.",
+    question: "단백질은 언제 먹는 게 가장 좋나요?",
+    answer:
+      "하루 총량을 채우는 것이 먼저이고, 그다음은 아침·점심·저녁에 고르게 나누는 것입니다. 특정 시간에 먹어야 효과가 난다는 근거는 생각보다 약합니다. 운동을 한다면 운동 전후 2시간 안에 한 번, 근육을 늘리려면 자기 전 한 번을 더하는 정도가 연구로 뒷받침됩니다.",
   },
   {
-    title: "한 번에 몰아먹지 않기",
-    body: "여러 끼에 나눠 먹는 쪽이 유지하기도 쉽고, 아침·간식·운동 후처럼 생활 루틴에 자연스럽게 녹이기 좋습니다.",
+    question: "운동 후 30분 안에 단백질을 꼭 먹어야 하나요?",
+    answer:
+      "아닙니다. 하루 총량을 맞춘 연구들을 묶어 보면 운동 직후 섭취 여부에 따른 근육 차이는 거의 없었습니다(Schoenfeld 2013). ISSN은 운동 전후 2시간 안쪽을 권합니다. 다만 운동 전에 오래 굶었다면 운동 후 너무 늦지 않게 먹는 편이 좋습니다.",
   },
   {
-    title: "생활 루틴에 맞추기",
-    body: "출근 전 운동, 저녁 운동, 학생 루틴처럼 하루 패턴이 다르면 좋은 타이밍도 달라집니다. 반복 가능한 배치가 우선입니다.",
+    question: "자기 전에 단백질 먹으면 살찌나요?",
+    answer:
+      "하루 총 열량이 늘지 않는다면 자기 전에 먹었다고 살이 더 찌지는 않습니다. 오히려 자기 전 카제인 30~40g은 밤사이 근육 합성을 높이는 것으로 보고됐습니다. 야식으로 열량을 더하는 것이 문제입니다.",
+    href: "/guides/intake-strategy-health/night-protein-drink",
+    linkLabel: "자기 전 단백질 음료 가이드",
+  },
+  {
+    question: "아침에 단백질을 먹어야 하는 이유가 있나요?",
+    answer:
+      "아침을 거르거나 빵·밥 위주로 먹으면 하루 단백질이 저녁에 몰립니다. 같은 하루 총량이라도 세 끼에 고르게 나눈 쪽이 하루 근육 합성이 약 25% 높았다는 연구가 있습니다(Mamerow 2014).",
+    href: "/guides/intake-strategy-health/morning-protein-drink",
+    linkLabel: "아침 단백질 음료 가이드",
+  },
+  {
+    question: "공복에 단백질 음료 마셔도 되나요?",
+    answer:
+      "마셔도 되지만 공복에만 생기는 특별한 이점은 확인되지 않았습니다. 공복에 고함량 음료를 마시면 더부룩하거나 묽은 변이 생기는 경우가 있어 식사와 함께 마시는 편이 편합니다.",
+    href: "/guides/intake-strategy-health/protein-drink-empty-stomach",
+    linkLabel: "공복 단백질 음료 가이드",
   },
 ];
 
-const routineRows = [
-  ["아침 운동형", "기상 후 가벼운 보충, 운동 후 단백질 보충", "공복감을 줄이고 회복 루틴을 빠르게 만들기 좋습니다."],
-  ["저녁 운동형", "점심~간식에서 미리 총량 확보, 운동 후 RTD 또는 식사", "운동 후 과식과 결식으로 이어지지 않게 루틴을 묶기 좋습니다."],
-  ["운동 없는 날", "아침과 간식에서 고르게 분산", "운동과 관계없이 하루 전체 단백질 감각을 너무 낮추지 않는 데 유용합니다."],
+const sources = [
+  "Jäger R. et al., ISSN Position Stand: Protein and Exercise. J Int Soc Sports Nutr 2017;14:20",
+  "Schoenfeld BJ, Aragon AA, Krieger JW, The effect of protein timing on muscle strength and hypertrophy: a meta-analysis. J Int Soc Sports Nutr 2013;10:53",
+  "Mamerow MM et al., Dietary protein distribution positively influences 24-h muscle protein synthesis in healthy adults. J Nutr 2014;144(6):876-880",
+  "Res PT et al., Protein ingestion before sleep improves postexercise overnight recovery. Med Sci Sports Exerc 2012;44(8):1560-1569",
+  "Areta JL et al., Timing and distribution of protein ingestion during prolonged recovery from resistance exercise. J Physiol 2013;591(9):2319-2331",
 ];
 
-const timingLinks = [
-  {
-    href: "/guides/intake-strategy-health/post-workout-protein",
-    title: "운동 직후 보완 기준 더 보기",
-    body: "운동 직후 루틴만 더 깊게 보고 싶다면 이 페이지로 바로 이어서 판단할 수 있습니다.",
-  },
-  {
-    href: "/guides/intake-strategy-health/meal-replacement-strategy",
-    title: "식사대용이 맞는지 바로 판단하기",
-    body: "아침이나 저녁을 제품으로 대체하는 루틴까지 연결해서 보려면 이 페이지가 같이 필요합니다.",
-  },
-  {
-    href: "/guides/product-selection-comparison/protein-drink-beginners-guide",
-    title: "처음 마실 제품부터 바로 고르기",
-    body: "타이밍은 알겠는데 어떤 제품부터 마실지 모르겠다면 입문용 비교 페이지로 바로 넘어가는 편이 더 빠릅니다.",
-  },
-];
-
-const faqItems = [
-  {
-    question: "단백질은 운동 후에만 챙기면 되나요?",
-    answer: "운동 후 보충은 중요하지만 실제 결과는 하루 총량과 분산 섭취가 더 크게 좌우합니다. 아침, 간식, 저녁까지 나눠서 채우는 것이 더 효과적입니다.",
-  },
-  {
-    question: "단백질을 하루 몇 번에 나눠 먹는 것이 좋나요?",
-    answer: "한 번에 몰아먹기보다 아침, 운동 후, 간식·저녁처럼 여러 끼에 나눠 먹는 편이 유지하기도 쉽고 생활 루틴에도 자연스럽게 녹아듭니다.",
-  },
-  {
-    question: "아침 운동과 저녁 운동은 단백질 타이밍이 다른가요?",
-    answer: "네. 아침 운동형은 기상 후 가벼운 보충과 운동 후 보충으로 회복 루틴을 빠르게 만드는 것이 좋고, 저녁 운동형은 점심·간식에서 미리 총량을 확보해두는 편이 과식이나 결식을 막는 데 유리합니다.",
-  },
-];
+const cardClass = "rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]";
+const thClass = "px-3 py-3 font-semibold";
+const tdClass = "px-3 py-3 text-[var(--foreground-muted)]";
 
 export default function ProteinTimingPage() {
-  const jsonLd = buildGuideJsonLd({ title: (metadata as {title:string;description:string}).title, description: (metadata as {title:string;description:string}).description, url: 'https://proteinlab.kr/guides/intake-strategy-health/protein-timing', faq: faqItems });
+  const jsonLd = buildGuideJsonLd({
+    title: _pageTitle,
+    description: _pageDesc,
+    url: PAGE_URL,
+    dateModified: "2026-11-02",
+    faq: faqs.map(({ question, answer }) => ({ question, answer })),
+  });
+
   return (
     <div className="min-h-screen bg-white">
-            {jsonLd.map((item, i) => (<script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(item) }} />))}
+      {jsonLd.map((item, i) => (
+        <script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(item) }} />
+      ))}
       <Header />
+
       <section className="w-full border-t border-b bg-[var(--hero-bg)]" style={{ borderColor: "var(--hero-border)" }}>
         <div className="mx-auto max-w-[1200px] px-4 py-5 md:px-6 md:py-6">
           <div className="flex flex-wrap items-center gap-1.5 text-xs text-[var(--foreground-muted)]">
-            <Link href="/guides" className="hover:text-[var(--accent)]">Guides</Link>
+            <Link href="/guides" className="hover:text-[var(--accent)]">
+              가이드
+            </Link>
             <span>/</span>
-            <Link href="/guides/intake-strategy-health" className="hover:text-[var(--accent)]">섭취 전략·건강</Link>
+            <Link href="/guides/intake-strategy-health" className="hover:text-[var(--accent)]">
+              섭취 전략 & 건강
+            </Link>
             <span>/</span>
-            <span>단백질 섭취 타이밍</span>
-          </div>
-          <div className="mt-3">
-            <span className="rounded-md bg-[#f5f0ea] px-2 py-0.5 text-[11px] font-semibold tracking-wide text-[#7a5230]">TRACK C</span>
+            <span>단백질 먹는 시간</span>
           </div>
           <h1 className="mt-3 text-2xl font-bold leading-tight text-[#16412D] md:text-3xl">
-            단백질은 얼마나 먹을지와 함께
-            <br />
-            언제 먹을지도 같이 봐야 합니다
+            단백질 먹는 시간, 운동 후 30분이 정말 중요할까?
           </h1>
           <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
-            운동 후 한 번만 보는 것보다 하루 전체 식사 안에서 단백질이 어떻게 분산되는지 보는 편이 더 실전적입니다.
-            기준을 잡고 나면 내 생활 패턴에 맞는 제품 선택까지 바로 이어져야 실행이 쉬워집니다.
+            운동 후 골든타임, 아침 단백질, 자기 전 단백질까지 &quot;언제 먹어야 하나&quot;에 대한 연구 결과를 정리하고, 운동
+            시간대별로 하루 단백질을 나누는 예시를 붙였습니다. 기준일 2026-11-02.
           </p>
         </div>
       </section>
@@ -122,95 +159,153 @@ export default function ProteinTimingPage() {
       <main className="mx-auto max-w-[1200px] px-4 py-8 md:px-6">
         <div className="space-y-6">
           <section className="rounded-[28px] border border-[#e2ebe4] bg-[#f7fbf8] px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
-            <h2 className="text-xl font-bold text-[var(--foreground)]">단백질은 하루 중 언제 나눠 먹는 게 가장 실전적일까</h2>
-            <div className="mt-5 overflow-x-auto">
+            <h2 className="text-xl font-bold text-[var(--foreground)]">짧게 답하면</h2>
+            <ul className="mt-4 space-y-3">
+              {quickAnswer.map((item) => (
+                <li key={item} className="flex gap-3 rounded-xl border border-[#dce8df] bg-white px-4 py-3 text-sm leading-6 text-[var(--foreground-muted)]">
+                  <span className="mt-1 h-2 w-2 shrink-0 rounded-full bg-[#2d6a4f]" />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </section>
+          <GuideBuySection topic="general" variant="top" />
+
+          <section className={cardClass}>
+            <h2 className="text-xl font-bold text-[var(--foreground)]">시간대별로 연구가 말하는 것</h2>
+            <div className="mt-4 overflow-x-auto">
               <table className="min-w-full border-collapse text-left text-sm">
                 <thead>
                   <tr className="border-b border-[#e8e6e3] text-[var(--foreground)]">
-                    <th className="px-3 py-3 font-semibold">구간</th>
-                    <th className="px-3 py-3 font-semibold">권장량</th>
-                    <th className="px-3 py-3 font-semibold">실전 해석</th>
+                    <th className={thClass}>언제</th>
+                    <th className={thClass}>얼마나</th>
+                    <th className={thClass}>근거</th>
                   </tr>
                 </thead>
                 <tbody>
-                  {timingRows.map((row) => (
-                    <tr key={row[0]} className="border-b border-[#f0eeeb] last:border-b-0">
-                      {row.map((cell) => (
-                        <td key={cell} className="px-3 py-3 text-[var(--foreground-muted)]">{cell}</td>
-                      ))}
+                  {timingRows.map(([when, howMuch, basis]) => (
+                    <tr key={when} className="border-b border-[#f0eeeb] last:border-b-0">
+                      <td className={`${tdClass} font-semibold text-[var(--foreground)]`}>{when}</td>
+                      <td className={tdClass}>{howMuch}</td>
+                      <td className={tdClass}>{basis}</td>
                     </tr>
                   ))}
                 </tbody>
               </table>
             </div>
           </section>
-          <GuideBuySection topic="general" variant="top" />
 
-          <section className="rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
-            <h2 className="text-xl font-bold text-[var(--foreground)]">타이밍만 보다가 놓치기 쉬운 기준은 무엇일까</h2>
-            <div className="mt-5 grid gap-3 md:grid-cols-3">
-              {principles.map((item) => (
-                <article key={item.title} className="rounded-2xl border border-[#dce8df] bg-[#f6fbf7] p-4">
-                  <h3 className="text-sm font-semibold text-[#24543d]">{item.title}</h3>
-                  <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">{item.body}</p>
+          <section className={cardClass}>
+            <h2 className="text-xl font-bold text-[var(--foreground)]">&apos;운동 후 30분&apos;은 어디서 나왔나</h2>
+            <div className="mt-3 space-y-3 text-sm leading-6 text-[var(--foreground-muted)]">
+              <p>
+                운동 직후 근육이 아미노산을 잘 받아들인다는 초기 연구들이 &quot;30분~1시간 안에 먹어야 한다&quot;는 골든타임
+                이야기로 퍼졌습니다. 그런데 이 연구들 상당수는 운동 직후 단백질을 먹은 쪽이 하루 총량도 더 많았습니다.
+              </p>
+              <p>
+                Schoenfeld 외(2013)는 23개 연구를 모아 하루 총량 차이를 보정했습니다. 그러자 운동 직후 섭취의 효과는 통계적으로
+                의미가 없어졌습니다. 근육 성장을 가른 것은 &quot;언제&quot;보다 &quot;하루에 얼마나&quot;였습니다.
+              </p>
+              <p>
+                그래서 ISSN(2017)은 운동 후 섭취를 권하면서도 그 시간을 운동 전후 2시간 안쪽으로 넓게 봅니다. 운동 1~2시간 전에
+                단백질이 든 식사를 했다면 운동 후에 서두를 필요는 더 줄어듭니다.
+              </p>
+            </div>
+            <div className="mt-4">
+              <Link
+                href="/guides/intake-strategy-health/post-workout-protein"
+                className="text-sm font-semibold text-[var(--accent)] hover:underline"
+              >
+                운동 후 단백질, 무엇을 얼마나 →
+              </Link>
+            </div>
+          </section>
+
+          <section className={cardClass}>
+            <h2 className="text-xl font-bold text-[var(--foreground)]">시간보다 중요한 것: 고르게 나누기</h2>
+            <div className="mt-3 space-y-3 text-sm leading-6 text-[var(--foreground-muted)]">
+              <p>
+                Mamerow 외(2014)는 같은 양의 단백질을 아침·점심·저녁에 약 30g씩 고르게 먹은 경우와 저녁에 몰아 먹은 경우를
+                비교했습니다. 고르게 먹은 쪽의 24시간 근육 합성이 약 25% 높았습니다.
+              </p>
+              <p>
+                Areta 외(2013)도 12시간 동안 같은 80g을 먹을 때 20g씩 4번이 40g씩 2번이나 10g씩 8번보다 근육 합성이 높았습니다.
+                한 끼에 몇 g이 적당한지는{" "}
+                <Link href="/guides/intake-strategy-health/protein-50g-at-once" className="font-semibold text-[var(--accent)] hover:underline">
+                  단백질 한 번에 흡수량
+                </Link>
+                에서 자세히 다뤘습니다.
+              </p>
+            </div>
+          </section>
+
+          <section className={cardClass}>
+            <h2 className="text-xl font-bold text-[var(--foreground)]">운동 시간대별 하루 나누기 예시 (체중 70kg, 운동하는 날 110g)</h2>
+            <div className="mt-4 overflow-x-auto">
+              <table className="min-w-full border-collapse text-left text-sm">
+                <thead>
+                  <tr className="border-b border-[#e8e6e3] text-[var(--foreground)]">
+                    <th className={thClass}>루틴</th>
+                    <th className={thClass}>아침</th>
+                    <th className={thClass}>점심</th>
+                    <th className={thClass}>간식</th>
+                    <th className={thClass}>저녁</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {scheduleRows.map(([routine, ...meals]) => (
+                    <tr key={routine} className="border-b border-[#f0eeeb] last:border-b-0">
+                      <td className={`${tdClass} font-semibold text-[var(--foreground)]`}>{routine}</td>
+                      {meals.map((meal, i) => (
+                        <td key={i} className={tdClass}>
+                          {meal}
+                        </td>
+                      ))}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <p className="mt-3 text-xs leading-5 text-[var(--foreground-muted)]">
+              110g은 체중 70kg이 근력 운동을 할 때 1kg당 약 1.6g입니다. 운동하지 않는 날은 권장섭취량(1kg당 0.91g, 약 64g)
+              이상이면 충분합니다. 내 목표량은{" "}
+              <Link href="/guides/basics/daily-requirement" className="font-semibold text-[var(--accent)] hover:underline">
+                단백질 하루 섭취량
+              </Link>
+              에서 계산하세요.
+            </p>
+          </section>
+
+          <section className="rounded-[28px] border border-[#e8e6e3] bg-[#fffdf8] px-5 py-5">
+            <h2 className="text-xl font-bold text-[var(--foreground)]">자주 묻는 질문</h2>
+            <div className="mt-5 space-y-4">
+              {faqs.map((faq) => (
+                <article key={faq.question} className="rounded-2xl border border-[#e8e6e3] bg-white px-4 py-4">
+                  <h3 className="text-base font-semibold text-[var(--foreground)]">Q. {faq.question}</h3>
+                  <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">A. {faq.answer}</p>
+                  {faq.href ? (
+                    <div className="mt-3">
+                      <Link href={faq.href} className="text-sm font-semibold text-[var(--accent)] hover:underline">
+                        {faq.linkLabel}
+                      </Link>
+                    </div>
+                  ) : null}
                 </article>
               ))}
             </div>
           </section>
 
-          <section className="rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
-            <h2 className="text-xl font-bold text-[var(--foreground)]">출근 전 운동, 저녁 운동이면 배분이 어떻게 달라질까</h2>
-            <div className="mt-5 overflow-x-auto">
-              <table className="min-w-full border-collapse text-left text-sm">
-                <thead>
-                  <tr className="border-b border-[#e8e6e3] text-[var(--foreground)]">
-                    <th className="px-3 py-3 font-semibold">루틴</th>
-                    <th className="px-3 py-3 font-semibold">추천 배치</th>
-                    <th className="px-3 py-3 font-semibold">목적</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {routineRows.map((row) => (
-                    <tr key={row[0]} className="border-b border-[#f0eeeb] last:border-b-0">
-                      {row.map((cell) => (
-                        <td key={cell} className="px-3 py-3 text-[var(--foreground-muted)]">{cell}</td>
-                      ))}
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </section>
-
-          <section className="rounded-[28px] border border-[#e2ebe4] bg-[#f7fbf8] px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
-            <h2 className="text-xl font-bold text-[var(--foreground)]">💬 자주 묻는 질문</h2>
-            <div className="mt-5 space-y-3">
-              {faqItems.map((item) => (
-                <div key={item.question} className="rounded-xl border border-[#dce8df] bg-white px-4 py-4">
-                  <p className="text-sm font-semibold text-[var(--foreground)]">Q. {item.question}</p>
-                  <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">A. {item.answer}</p>
-                </div>
+          <section className="rounded-2xl border border-[#e8e6e3] bg-white px-5 py-4">
+            <h2 className="text-sm font-bold text-[var(--foreground)]">출처</h2>
+            <ul className="mt-2 space-y-1 text-xs leading-5 text-[var(--foreground-muted)]">
+              {sources.map((s) => (
+                <li key={s}>· {s}</li>
               ))}
-            </div>
-          </section>
-
-          <section className="rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
-            <h2 className="text-xl font-bold text-[var(--foreground)]">📖 다음 단계로 바로 넘어가기</h2>
-            <p className="mt-3 text-sm leading-6 text-[var(--foreground-muted)]">
-              타이밍 감이 잡혔다면 다음은 운동 직후 루틴을 더 볼지, 식사대용 여부를 판단할지, 처음 마실 제품부터 고를지
-              방향을 정하면 됩니다.
-            </p>
-            <div className="mt-5 grid gap-3 md:grid-cols-3">
-              {timingLinks.map((item) => (
-                <Link key={item.href} href={item.href} className="rounded-2xl border border-[#dce8df] bg-[#f6fbf7] p-4 transition-colors hover:bg-white">
-                  <h3 className="text-sm font-semibold text-[#24543d]">{item.title}</h3>
-                  <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">{item.body}</p>
-                </Link>
-              ))}
-            </div>
+            </ul>
           </section>
         </div>
       </main>
+
       <ProteinDailyContext />
       <GuideBuySection topic="general" />
       <Footer />

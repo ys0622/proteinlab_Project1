@@ -4,9 +4,9 @@ import Footer from "@/app/components/Footer";
 import GuideBuySection from "@/app/components/GuideBuySection";
 import { buildGuideJsonLd } from "@/app/lib/guideJsonLd";
 
-const pageTitle = "고단백 음료 부담·부작용 — 60g 제품까지 나온 지금 알아야 할 것";
+const pageTitle = "단백질 과다섭취 부작용 — 얼마부터 많은지, 신장에 무리가 가는지";
 const pageDescription =
-  "단백질 40~60g대 초고함량 음료가 늘면서 소화 부담, 신장 부담, 과다 섭취 우려가 함께 커지고 있습니다. 실제로 문제가 되는 경우와 아닌 경우를 정리했습니다.";
+  "단백질을 많이 먹으면 생길 수 있는 문제(소화 불편, 열량 초과, 신장 질환자의 부담)와 얼마부터 많다고 보는지를 2020 한국인 영양소 섭취기준·메타분석·신장학회 지침으로 정리했습니다. 고단백 음료 40~60g 제품 기준도 함께 봅니다.";
 const canonical = "https://proteinlab.kr/guides/intake-strategy-health/high-protein-side-effects";
 
 export const metadata = {
@@ -31,77 +31,105 @@ export const metadata = {
 };
 
 const quickAnswer = [
-  "신장 기능이 정상인 성인이 일시적으로 40~60g을 섭취하는 것 자체는 일반적으로 심각한 위험으로 보지 않습니다.",
-  "다만 소화 부담(더부룩함, 가스, 묽은 변)은 실제로 흔하게 나타나는 반응이며, 한 번에 먹는 양을 줄이면 개선되는 경우가 많습니다.",
-  "기존 신장질환, 당뇨 합병증 등 단백질 제한이 필요한 상태라면 고함량 제품을 임의로 늘리지 말고 반드시 전문가와 먼저 상담해야 합니다.",
+  "단백질에는 공식 상한섭취량이 없습니다. 2020 한국인 영양소 섭취기준은 보충제·고단백 식사의 장기 영향에 대한 근거가 부족해 상한을 정하지 못했다고 밝혔습니다.",
+  "신장 기능이 정상인 성인은 고단백 식사로 신장 기능이 나빠진다는 근거가 약합니다(28개 연구 메타분석, 2018). 반대로 만성 신장 질환이 있으면 단백질을 줄이는 것이 표준 치료입니다.",
+  "건강한 사람에게 실제로 흔한 문제는 소화 불편(더부룩함·가스·묽은 변)과 열량 초과입니다. 한 번에 먹는 양을 줄이고 하루 목표량 안에서 먹으면 대부분 피할 수 있습니다.",
 ];
 
-const concernRows = [
+const thresholdRows: Array<[string, string, string]> = [
+  ["권장섭취량", "체중 1kg당 0.91g (성인 남 60~65g, 여 50~55g)", "2020 한국인 영양소 섭취기준"],
+  ["운동하는 사람 권장 범위", "체중 1kg당 1.4~2.0g", "ISSN 입장문 2017"],
+  ["열량 비율 상단", "하루 섭취 열량의 20% (2,000kcal면 100g)", "2020 기준 에너지적정비율 7~20%"],
+  ["메타분석의 '고단백' 기준", "1kg당 1.5g 이상, 열량의 20% 이상 또는 하루 100g 이상", "Devries 외 2018"],
+  ["만성 신장 질환(투석 전 3~5기)", "체중 1kg당 0.55~0.6g으로 제한", "KDOQI 영양 지침 2020"],
+];
+
+const concernRows: Array<[string, string, string]> = [
   [
     "소화 불편 (더부룩함·가스·묽은 변)",
     "흔함",
-    "한 번에 많은 양을 빠르게 마시면 소화 부담으로 더부룩함이나 묽은 변이 생길 수 있습니다. 20~30g씩 나눠 마시면 대부분 완화됩니다.",
+    "한 번에 40g 이상을 빠르게 마시거나, 유당에 약한 사람이 우유 기반 음료를 마실 때 잘 생깁니다. 20~30g씩 나눠 마시거나 유당이 적은 WPI·두유 기반 제품으로 바꾸면 줄어드는 경우가 많습니다.",
   ],
   [
-    "신장 부담 우려",
-    "건강한 성인은 낮음",
-    "정상 신기능인 경우 장기간 고단백 식단의 신장 손상 근거는 명확하지 않습니다. 다만 기존 신장질환자는 예외입니다.",
+    "열량 초과로 체중 증가",
+    "흔함",
+    "단백질도 1g에 약 4kcal입니다. 식사는 그대로 두고 단백질 음료만 더하면 하루 열량이 늘어 체중이 오를 수 있습니다. 음료 1개 열량(100~300kcal)을 식사 일부와 바꾸는 편이 맞습니다.",
   ],
   [
-    "칼로리·나트륨 과다",
-    "제품에 따라 다름",
-    "고단백 제품일수록 칼로리·나트륨도 함께 높은 경우가 있어 단백질 수치만 보고 고르면 안 됩니다.",
+    "신장 기능 저하",
+    "건강한 성인은 근거 약함",
+    "건강한 성인을 대상으로 한 28개 연구 메타분석에서 고단백 식사군과 보통 식사군의 사구체여과율 변화에 의미 있는 차이가 없었습니다. 다만 대부분 수개월 연구라 수십 년 영향은 확인되지 않았습니다.",
   ],
   [
-    "맛 피로감으로 인한 중도 포기",
-    "매우 흔함",
-    "고함량 제품은 농도가 진해 단맛·비린맛이 강하게 느껴지는 경우가 많습니다. 완주 못 할 제품보다 매일 마실 수 있는 제품이 낫습니다.",
+    "신장 질환자의 악화",
+    "주의 필요",
+    "만성 신장 질환이 있으면 단백질 제한이 표준 치료입니다. 고단백 음료를 스스로 더하면 안 되고 담당 의료진과 먼저 상의해야 합니다.",
+  ],
+  [
+    "다른 영양소 부족",
+    "식단에 따라",
+    "단백질 음료·쉐이크로 식사를 자주 대신하면 채소·통곡물에서 오는 식이섬유와 미량 영양소가 줄 수 있습니다.",
   ],
 ];
 
 const whoShouldCareCards = [
   {
-    title: "이런 분은 60g대도 검토 가능",
-    body: "체중이 많이 나가고 근력 운동 강도가 높으며, 하루 단백질 목표량 자체가 150g을 넘는 경우. 그래도 한 번에 다 마시기보다 나눠 마시는 방법을 권장합니다.",
+    title: "고함량 제품을 검토할 만한 경우",
+    body: "근력 운동을 꾸준히 하고 체중이 많이 나가 하루 목표량이 120g을 넘는 경우. 그래도 한 번에 다 마시기보다 나눠 마시는 편이 소화에 낫습니다.",
   },
   {
-    title: "이런 분은 40g대도 부담일 수 있음",
-    body: "평소 운동을 거의 하지 않거나, 식사에서 이미 단백질을 충분히 섭취하고 있는 경우. 이때 고함량 제품은 필요량을 크게 초과할 수 있습니다.",
+    title: "40g대도 과할 수 있는 경우",
+    body: "운동을 거의 하지 않고 식사에서 이미 단백질을 충분히 먹는 경우. 19~64세 한국인은 평균적으로 권장량의 116~138%를 이미 먹고 있습니다(국민건강영양조사 2013~2017).",
   },
   {
-    title: "이런 분은 전문가 상담이 먼저",
-    body: "신장질환, 통풍, 특정 대사질환이 있는 경우. 고단백 제품을 스스로 판단해 늘리지 말고 담당 의료진과 먼저 상의해야 합니다.",
+    title: "의료진 상담이 먼저인 경우",
+    body: "만성 신장 질환, 신장 기능이 떨어진 당뇨병, 통풍, 간 질환이 있거나 임신 중인 경우. 단백질을 늘리기 전에 담당 의료진과 상의하세요.",
   },
 ];
 
 const faqItems = [
   {
-    question: "프로틴 60g 한 번에 마셔도 되나요?",
+    question: "단백질 과다섭취 부작용에는 무엇이 있나요?",
     answer:
-      "신장 기능이 정상인 성인이라면 60g을 한 번에 마시는 것 자체가 즉시 위험한 것은 아닙니다. 다만 소화 부담(더부룩함, 가스)이 흔하게 나타날 수 있어 나눠 마시는 것을 권장합니다.",
+      "건강한 성인에게 흔한 것은 소화 불편(더부룩함·가스·묽은 변)과 열량 초과로 인한 체중 증가입니다. 신장 손상은 건강한 성인에서는 근거가 약하지만, 신장 질환이 있는 사람에게는 실제 부담이 되므로 제한이 필요합니다.",
   },
   {
-    question: "단백질을 너무 많이 먹으면 부작용이 있나요?",
+    question: "하루 단백질 몇 g부터 과다섭취인가요?",
     answer:
-      "건강한 성인 기준으로는 장기간 고단백 식단이 신장을 손상시킨다는 근거는 명확하지 않습니다. 다만 소화 불편, 칼로리·나트륨 과다 섭취는 실제로 흔히 발생하는 문제입니다.",
+      "공식 상한선은 없습니다. 참고 기준으로는 운동하는 사람 권장 범위의 위쪽인 체중 1kg당 2.0g, 또는 하루 열량의 20%(2,000kcal 기준 100g)를 넘기 시작하면 '많이 먹는 편'으로 볼 수 있습니다. 이 선을 넘는다고 바로 해롭다는 뜻은 아닙니다.",
   },
   {
-    question: "40g대 고단백 음료도 부담스러운데 괜찮은 건가요?",
+    question: "단백질을 많이 먹으면 신장에 무리가 가나요?",
     answer:
-      "평소 운동을 하지 않거나 식사에서 이미 단백질을 충분히 섭취하고 있다면 40g대도 필요량을 초과할 수 있습니다. 이 경우 20~29g대 중단백 제품이 더 적합할 수 있습니다.",
+      "신장 기능이 정상인 성인을 대상으로 한 메타분석(2018, 28개 연구)에서는 고단백 식사가 신장 기능을 떨어뜨린다는 결과가 나오지 않았습니다. 그러나 이미 신장 기능이 떨어진 사람은 단백질 제한이 권고됩니다(KDOQI 2020, 투석 전 체중 1kg당 0.55~0.6g).",
   },
   {
-    question: "신장질환이 있는데 고단백 음료를 먹어도 되나요?",
+    question: "프로틴 60g을 한 번에 마셔도 되나요?",
     answer:
-      "신장질환, 통풍 등 단백질 섭취 제한이 필요한 상태라면 고함량 제품을 임의로 늘리지 말고 반드시 담당 의료진과 먼저 상담해야 합니다.",
+      "신장 기능이 정상인 성인이라면 한 번에 60g이 바로 위험하지는 않습니다. 다만 소화 불편이 생기기 쉽고, 한 끼 근육 합성에 쓰이는 양은 대략 20~40g으로 알려져 있어 나눠 마시는 편이 효율적입니다.",
+  },
+  {
+    question: "단백질 음료를 마시면 설사를 하는데 왜 그런가요?",
+    answer:
+      "우유 기반 음료의 유당, 감미료(당알코올), 한 번에 많은 양이 흔한 원인입니다. 유당을 줄인 WPI·두유 기반 제품으로 바꾸거나 양을 나누면 나아지는 경우가 많습니다.",
   },
 ];
 
 const relatedLinks = [
   {
+    href: "/guides/basics/daily-requirement",
+    title: "단백질 하루 섭취량",
+    body: "성별·나이·체중별 권장량과 운동할 때 기준을 먼저 계산해 보세요.",
+  },
+  {
     href: "/guides/intake-strategy-health/protein-50g-at-once",
     title: "단백질 50g, 한 번에 먹어도 될까",
-    body: "체중별·타이밍별로 50g 섭취가 적절한지 판단하는 기준을 정리했습니다.",
+    body: "한 번에 흡수·활용되는 양과 나눠 먹는 기준을 정리했습니다.",
+  },
+  {
+    href: "/guides/intake-strategy-health/protein-drink-diarrhea",
+    title: "단백질 음료 마시고 설사할 때",
+    body: "유당·감미료·양 중 어디가 원인인지 구분하는 법.",
   },
   {
     href: "/topics/mid-protein-alternatives",
@@ -111,7 +139,7 @@ const relatedLinks = [
   {
     href: "/guides/product-selection-comparison/high-protein-40g-comparison",
     title: "40g 이상 고단백 RTD 비교",
-    body: "60g이 과하다고 느껴질 때 바로 아래 구간 제품을 함께 비교합니다.",
+    body: "고함량 제품의 열량·당류·나트륨을 같이 비교합니다.",
   },
   {
     href: "/guides/intake-strategy-health/light-protein-under-20g",
@@ -120,11 +148,21 @@ const relatedLinks = [
   },
 ];
 
+const sources = [
+  "김은정 외, 2020 한국인 영양소 섭취기준: 단백질. J Nutr Health 2022;55(1):10-29 (상한섭취량 미설정 사유, 에너지적정비율, 국민건강영양조사 섭취량)",
+  "Devries MC et al., Changes in Kidney Function Do Not Differ between Healthy Adults Consuming Higher- Compared with Lower- or Normal-Protein Diets: A Systematic Review and Meta-Analysis. J Nutr 2018;148(11):1760-1775",
+  "Ikizler TA et al., KDOQI Clinical Practice Guideline for Nutrition in CKD: 2020 Update. Am J Kidney Dis 2020;76(3 Suppl 1):S1-S107",
+  "Jäger R. et al., ISSN Position Stand: Protein and Exercise. J Int Soc Sports Nutr 2017;14:20",
+];
+
+const cardClass = "rounded-[28px] border border-[#e5deca] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(38,28,18,0.05)]";
+
 export default function HighProteinSideEffectsPage() {
   const jsonLd = buildGuideJsonLd({
     title: pageTitle,
     description: pageDescription,
     url: canonical,
+    dateModified: "2026-11-02",
     faq: faqItems.map((item) => ({ question: item.question, answer: item.answer })),
   });
 
@@ -141,21 +179,18 @@ export default function HighProteinSideEffectsPage() {
             <span>/</span>
             <Link href="/guides/intake-strategy-health" className="hover:text-[var(--accent)]">섭취 전략 & 건강</Link>
             <span>/</span>
-            <span>고단백 부담·부작용</span>
+            <span>단백질 과다섭취 부작용</span>
           </div>
           <div className="mt-3 flex flex-wrap items-center gap-2">
-            <span className="rounded-md bg-[#f5f0ea] px-2 py-0.5 text-[11px] font-semibold tracking-wide text-[#7a5230]">TRACK C</span>
             <span className="rounded-md bg-[#fbf7f1] px-2 py-0.5 text-[11px] font-semibold tracking-wide text-[#7a5230]">섭취량 질문</span>
-            <span className="text-[11px] font-medium text-[var(--foreground-muted)]">업데이트 2026-07-01</span>
+            <span className="text-[11px] font-medium text-[var(--foreground-muted)]">업데이트 2026-11-02</span>
           </div>
           <h1 className="mt-3 text-2xl font-bold leading-tight text-[#16412D] md:text-3xl">
-            60g 단백질 음료까지 나온 지금,
-            <br />
-            부담과 부작용을 먼저 짚고 갑니다.
+            단백질 과다섭취 부작용, 얼마부터 많고 신장에는 괜찮을까
           </h1>
           <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
-            초고함량 제품이 잘 팔린다는 이야기가 나오지만, 실제로는 소수의 헤비 유저가 반복 구매하는 경우가 많고
-            대다수는 과다 섭취·소화 부담·맛 피로감 때문에 선뜻 손이 가지 않습니다. 걱정되는 부분을 하나씩 정리했습니다.
+            40~60g짜리 단백질 음료까지 나오면서 &quot;너무 많이 먹는 건 아닐까&quot;라는 질문이 늘었습니다. 공식 기준과
+            연구 결과로 얼마부터 많은지, 누구에게 실제로 문제가 되는지 정리했습니다.
           </p>
         </div>
       </section>
@@ -175,23 +210,55 @@ export default function HighProteinSideEffectsPage() {
           </section>
           <GuideBuySection topic="general" variant="top" />
 
-          <section className="rounded-[28px] border border-[#e5deca] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(38,28,18,0.05)]">
-            <h2 className="text-xl font-bold text-[var(--foreground)]">실제로 걱정되는 부분, 하나씩 보면</h2>
+          <section className={cardClass}>
+            <h2 className="text-xl font-bold text-[var(--foreground)]">얼마부터 &apos;많이&apos; 먹는 걸까 — 기준선 모음</h2>
+            <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">
+              상한섭취량이 없기 때문에 &quot;몇 g부터 해롭다&quot;는 공식 숫자는 없습니다. 대신 판단에 쓸 수 있는 기준선은 아래와
+              같습니다.
+            </p>
+            <div className="mt-4 overflow-x-auto rounded-2xl border border-[#e8e3da] bg-[#fdfaf5]">
+              <table className="min-w-full border-collapse text-left text-sm">
+                <thead>
+                  <tr className="border-b border-[#e8e3da] text-[var(--foreground)]">
+                    <th className="px-3 py-3 font-semibold">기준</th>
+                    <th className="px-3 py-3 font-semibold">양</th>
+                    <th className="px-3 py-3 font-semibold">출처</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {thresholdRows.map(([label, amount, source]) => (
+                    <tr key={label} className="border-b border-[#f0ece5] last:border-b-0">
+                      <td className="px-3 py-3 font-semibold text-[var(--foreground)]">{label}</td>
+                      <td className="px-3 py-3 text-[var(--foreground-muted)]">{amount}</td>
+                      <td className="px-3 py-3 text-[var(--foreground-muted)]">{source}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <p className="mt-3 text-sm leading-6 text-[var(--foreground-muted)]">
+              예: 체중 60kg, 운동을 하지 않는 사람이 식사로 70g을 먹고 50g짜리 음료를 하루 2개 더하면 170g, 체중 1kg당 2.8g입니다.
+              운동하는 사람 권장 범위의 위쪽(2.0g)도 크게 넘습니다. 같은 사람이 음료를 1개만 더해도 1kg당 2.0g이 됩니다.
+            </p>
+          </section>
+
+          <section className={cardClass}>
+            <h2 className="text-xl font-bold text-[var(--foreground)]">실제로 생길 수 있는 문제, 하나씩</h2>
             <div className="mt-5 overflow-x-auto rounded-2xl border border-[#e8e3da] bg-[#fdfaf5]">
               <table className="min-w-full border-collapse text-left text-sm">
                 <thead>
                   <tr className="border-b border-[#e8e3da] text-[var(--foreground)]">
-                    <th className="px-3 py-3 font-semibold">우려 사항</th>
-                    <th className="px-3 py-3 font-semibold">실제 빈도</th>
+                    <th className="px-3 py-3 font-semibold">문제</th>
+                    <th className="px-3 py-3 font-semibold">얼마나 흔한가</th>
                     <th className="px-3 py-3 font-semibold">설명</th>
                   </tr>
                 </thead>
                 <tbody>
-                  {concernRows.map((row) => (
-                    <tr key={row[0]} className="border-b border-[#f0ece5] last:border-b-0">
-                      {row.map((cell) => (
-                        <td key={cell} className="px-3 py-3 text-[var(--foreground-muted)]">{cell}</td>
-                      ))}
+                  {concernRows.map(([concern, frequency, detail]) => (
+                    <tr key={concern} className="border-b border-[#f0ece5] last:border-b-0">
+                      <td className="px-3 py-3 font-semibold text-[var(--foreground)]">{concern}</td>
+                      <td className="px-3 py-3 text-[var(--foreground-muted)]">{frequency}</td>
+                      <td className="px-3 py-3 text-[var(--foreground-muted)]">{detail}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -199,7 +266,30 @@ export default function HighProteinSideEffectsPage() {
             </div>
           </section>
 
-          <section className="rounded-[28px] border border-[#e5deca] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(38,28,18,0.05)]">
+          <section className={cardClass}>
+            <h2 className="text-xl font-bold text-[var(--foreground)]">신장(콩팥)에 대해 연구가 말하는 것</h2>
+            <div className="mt-3 space-y-3 text-sm leading-6 text-[var(--foreground-muted)]">
+              <p>
+                <strong className="text-[var(--foreground)]">건강한 성인:</strong> Devries 외(2018)는 건강한 성인을 대상으로
+                고단백 식사(체중 1kg당 1.5g 이상, 열량의 20% 이상 또는 하루 100g 이상)와 보통·저단백 식사를 비교한 28개 연구를
+                묶어 분석했습니다. 신장 기능 지표인 사구체여과율 변화에 의미 있는 차이가 없었습니다. 고단백 식사를 하면
+                사구체여과율이 일시적으로 올라가는 것은 몸이 늘어난 단백질 대사물을 처리하는 정상 반응으로 해석됩니다.
+              </p>
+              <p>
+                <strong className="text-[var(--foreground)]">한계:</strong> 포함된 연구 대부분이 수주~수개월 단위입니다. 수십 년
+                고단백 식사의 영향은 아직 충분히 확인되지 않았고, 2020 한국인 영양소 섭취기준이 상한섭취량을 정하지 못한
+                이유도 이 근거 부족입니다.
+              </p>
+              <p>
+                <strong className="text-[var(--foreground)]">신장 질환이 있는 경우:</strong> 미국 신장재단 영양 지침(KDOQI 2020)은
+                투석 전 만성 신장 질환(3~5기)에서 단백질을 체중 1kg당 0.55~0.6g(당뇨병이 함께 있으면 0.6~0.8g)으로 줄이도록 권합니다. 이 경우 고단백 음료는
+                오히려 피해야 할 수 있습니다. 당뇨병이 오래됐거나 건강검진에서 신장 수치(크레아티닌·사구체여과율·단백뇨)를
+                지적받았다면 단백질을 늘리기 전에 먼저 확인하세요.
+              </p>
+            </div>
+          </section>
+
+          <section className={cardClass}>
             <h2 className="text-xl font-bold text-[var(--foreground)]">누구에게 필요하고, 누구에게는 과할까</h2>
             <div className="mt-5 grid gap-3 md:grid-cols-3">
               {whoShouldCareCards.map((item) => (
@@ -212,15 +302,28 @@ export default function HighProteinSideEffectsPage() {
           </section>
 
           <section className="rounded-[28px] border border-[#e5deca] bg-[#fdfaf5] px-5 py-5 shadow-[0_18px_50px_rgba(38,28,18,0.05)]">
-            <h2 className="text-xl font-bold text-[var(--foreground)]">결론</h2>
-            <p className="mt-3 text-sm leading-6 text-[var(--foreground-muted)]">
-              고단백 제품 자체가 위험한 건 아니지만, "많을수록 좋다"는 접근은 대다수에게 맞지 않습니다.
-              소화 부담과 맛 피로감 때문에 완주하지 못하는 경우가 실제로 훨씬 많으므로, 하루 목표량을 먼저 계산하고
-              그 목표에 맞는 구간(20g·30g·40g·50g 이상)을 고르는 순서가 가장 안전하고 꾸준히 지속하기 쉽습니다.
-            </p>
+            <h2 className="text-xl font-bold text-[var(--foreground)]">부작용 없이 먹는 법</h2>
+            <ol className="mt-3 space-y-2 text-sm leading-6 text-[var(--foreground-muted)]">
+              <li>
+                <strong className="text-[var(--foreground)]">1. 하루 목표량부터 계산</strong> — 체중 × 0.91g(운동하면 1.4~2.0g).
+                식사로 먹는 양을 빼고 모자란 만큼만 제품으로 채웁니다.
+              </li>
+              <li>
+                <strong className="text-[var(--foreground)]">2. 한 번에 20~40g</strong> — 근육 합성에 쓰이는 양도 이 정도이고
+                소화 부담도 적습니다.
+              </li>
+              <li>
+                <strong className="text-[var(--foreground)]">3. 열량을 식사와 바꾸기</strong> — 음료를 더하는 대신 간식이나 식사
+                일부를 바꿔 하루 열량이 늘지 않게 합니다.
+              </li>
+              <li>
+                <strong className="text-[var(--foreground)]">4. 배가 불편하면 원료를 바꾸기</strong> — 유당이 적은 WPI나 두유
+                기반 제품을 고릅니다.
+              </li>
+            </ol>
           </section>
 
-          <section className="rounded-[28px] border border-[#e5deca] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(38,28,18,0.05)]">
+          <section className={cardClass}>
             <h2 className="text-xl font-bold text-[var(--foreground)]">자주 묻는 질문</h2>
             <div className="mt-4 space-y-3">
               {faqItems.map((item) => (
@@ -232,7 +335,7 @@ export default function HighProteinSideEffectsPage() {
             </div>
           </section>
 
-          <section className="rounded-[28px] border border-[#e5deca] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(38,28,18,0.05)]">
+          <section className={cardClass}>
             <h2 className="text-xl font-bold text-[var(--foreground)]">이어 읽기</h2>
             <div className="mt-5 grid gap-3 md:grid-cols-3">
               {relatedLinks.map((item) => (
@@ -242,6 +345,18 @@ export default function HighProteinSideEffectsPage() {
                 </Link>
               ))}
             </div>
+          </section>
+
+          <section className="rounded-2xl border border-[#e8e6e3] bg-white px-5 py-4">
+            <h2 className="text-sm font-bold text-[var(--foreground)]">출처</h2>
+            <ul className="mt-2 space-y-1 text-xs leading-5 text-[var(--foreground-muted)]">
+              {sources.map((s) => (
+                <li key={s}>· {s}</li>
+              ))}
+            </ul>
+            <p className="mt-2 text-xs leading-5 text-[var(--foreground-muted)]">
+              이 글은 일반 정보이며 진단이나 치료를 대신하지 않습니다. 질환이 있다면 담당 의료진과 상의하세요.
+            </p>
           </section>
         </div>
       </main>

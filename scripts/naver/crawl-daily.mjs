@@ -44,7 +44,8 @@ const queued = existsSync(queueFile)
   ? [...readFileSync(queueFile, "utf-8").matchAll(/^- https:\/\/proteinlab\.kr(\/\S*)/gm)].map((m) => m[1])
   : [];
 const fromSitemap = (await sitemapPaths()).sort((a, b) => rank(a) - rank(b));
-const todo = [...new Set([...queued, ...fromSitemap])].filter((p) => !submitted.has(p)).slice(0, max);
+// 대기열은 이미 낸 주소라도 다시 낸다(크게 고친 페이지 재수집용, 접수되면 대기열에서 지워짐).
+const todo = [...new Set([...queued, ...fromSitemap.filter((p) => !submitted.has(p))])].slice(0, max);
 
 const aside = join(process.env.LOCALAPPDATA, "Aside/CLI/current/aside.exe");
 const BODY = `
