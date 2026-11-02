@@ -40,8 +40,16 @@ export async function GET() {
 - [제품 비교](${SITE_URL}/compare): 제품 2~3개를 나란히 비교
 - [맞춤 추천](${SITE_URL}/recommend): 목적별 추천
 - [가이드](${SITE_URL}/guides): 단백질 기초, 제품 선택·비교, 섭취 전략 가이드
-- [MPI 단백질이란? 원재료에 MPI가 표기된 음료 조사](${SITE_URL}/guides/basics/protein-source-types)
 - [데이터 수집·검증 방법](${SITE_URL}/methodology)
+- [단백질 섭취량 계산기](${SITE_URL}/tools/calculator): 체중·목적별 하루 단백질 목표
+
+## 단백질 질문 가이드 (공식 기준·논문 출처 표기)
+- [단백질 하루 섭취량 — 성별·나이·체중별 권장량과 운동할 때 기준](${SITE_URL}/guides/basics/daily-requirement): 2020 한국인 영양소 섭취기준(성인 남성 60~65g, 여성 50~55g, 체중 1kg당 0.91g), 국민건강영양조사 실제 섭취량, 운동 시 ISSN 1.4~2.0g/kg
+- [단백질 과다섭취 부작용 — 얼마부터 많은지, 신장에 무리가 가는지](${SITE_URL}/guides/intake-strategy-health/high-protein-side-effects): 섭취기준에 상한섭취량이 없는 이유, 신장 기능 정상인 메타분석(Devries 2018), 만성콩팥병 기준(KDOQI 2020)
+- [단백질 부족 증상 — 근육 감소·부종·탈모·회복 지연](${SITE_URL}/guides/basics/deficiency-symptoms): 증상별 다른 원인 구분, 근감소증 자가 점검(AWGS 2019 악력·의자 일어서기·보행 속도)
+- [단백질 한 번에 흡수량 — 30g 넘으면 버려질까](${SITE_URL}/guides/intake-strategy-health/protein-50g-at-once): Moore 2009·Areta 2013·Macnaughton 2016·Trommelen 2023 연구 비교, 끼니당 0.4~0.55g/kg
+- [단백질 먹는 시간 — 운동 후 30분? 아침·자기 전](${SITE_URL}/guides/intake-strategy-health/protein-timing): 타이밍 메타분석(Schoenfeld 2013), 끼니 분산(Mamerow 2014), 자기 전 카제인(Res 2012)
+- [MPI 단백질이란? WPI·WPC·MPC 차이와 식물성 vs 동물성](${SITE_URL}/guides/basics/protein-source-types): 원료별 단백질 비율·유당, 대두와 동물성 단백질의 근육 증가 차이(Messina 2018)
 
 ## 제품·브랜드·맛별 성분 비교
 ${compareLines}

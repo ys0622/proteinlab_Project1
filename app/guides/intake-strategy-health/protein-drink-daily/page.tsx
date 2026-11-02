@@ -34,6 +34,11 @@ const dailyRows = [
 
 const nextLinks = [
   {
+    href: "/guides/basics/daily-requirement",
+    title: "단백질 하루 섭취량",
+    body: "음료 한 병이 하루 권장량에서 얼마를 채우는지 성별·나이·체중별로 확인합니다.",
+  },
+  {
     href: "/guides/intake-strategy-health/protein-drink-sugar",
     title: "단백질 음료 당류 기준",
     body: "매일 마실수록 당류 누적을 먼저 확인합니다.",
