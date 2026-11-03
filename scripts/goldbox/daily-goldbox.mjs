@@ -28,7 +28,7 @@ const write = args.includes("--write");
 const KV_NAMESPACE_ID = "cb0554d5dbaf413d8fe971f91d1d968c"; // GUIDES_STATIC_DRAFTS_KV (wrangler.jsonc)
 const KV_KEY = "coupang-goldbox:verified-offers:v1";
 
-const CATEGORIES = ["drink", "bar", "shake", "yogurt", "soymilk"];
+const CATEGORIES = ["drink", "bar", "shake", "yogurt", "soymilk", "powder"]; // powder: 2026-11-04 추가(하이뮨 프로틴 밸런스 L 608g 특가)
 // 제품명에서 구분 단어로 보지 않는 말(어느 제품에나 붙는다).
 const GENERIC = new Set(["프로틴", "단백질", "음료", "드링크", "고단백", "쉐이크", "단백질바", "프로틴바", "요거트", "그릭요거트", "두유", "protein"]);
 
@@ -93,6 +93,7 @@ const CATEGORY_WORD = {
   shake: /쉐이크|셰이크/,
   yogurt: /요거트|요구르트/,
   soymilk: /두유/,
+  powder: /단백질|프로틴|보충제|파우더|분말|protein/i,
 };
 
 /** "exact"(용량 같음) · "multiple"(묶음 총용량이 낱개의 정수배, 카테고리 단어 필요) · null */

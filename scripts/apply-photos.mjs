@@ -156,7 +156,11 @@ if (!dryRun) {
     if (s.dirtyMap) saveJson(s.mapPath, s.map);
   }
   // 새 단축 코드는 위에서 표에 적었다. resolve-short-links.py는 돌리지 않는다(다른 미확인 코드를 열어 클릭을 늘리지 않게).
-  if (shortTargetsDirty) saveJson(shortTargetsPath, shortTargets);
+  // resolve-short-links.py와 같은 형식(들여쓰기 1칸·키 정렬·LF)으로 써서 파일 전체가 바뀌지 않게 한다.
+  if (shortTargetsDirty) {
+    const sorted = Object.fromEntries(Object.keys(shortTargets).sort().map((k) => [k, Object.fromEntries(Object.entries(shortTargets[k]).sort())]));
+    writeFileSync(shortTargetsPath, JSON.stringify(sorted, null, 1), "utf-8");
+  }
   if (moved.length) {
     const doneDir = join(inbox, "done", new Date().toISOString().slice(0, 10));
     mkdirSync(doneDir, { recursive: true });

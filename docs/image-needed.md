@@ -4,7 +4,6 @@
 
 | 카테고리 | 제품(브랜드 이름 용량) | slug | 쿠팡 링크 | 넣을 파일 경로 |
 |---|---|---|---|---|
-| 파우더 | 하이뮨 프로틴 밸런스 L 608g | hymune-protein-balance-l-608 | https://www.coupang.com/vp/products/7127545378?itemId=24377331092&vendorItemId=88559627052 | public/powder-image/hymune-protein-balance-l-608.webp |
 | 파우더 | 뉴욕웨이 라이트 단백질 보충제 2kg | newyorkwhey-light-2000 | https://www.coupang.com/vp/products/8288998026?itemId=27863137394&vendorItemId=86624554388 | public/powder-image/newyorkwhey-light-2000.webp |
 | 파우더 | 셀렉스 프로틴 락토프리 570g | selex-protein-lactosefree-570 | https://www.coupang.com/vp/products/6825320316?itemId=16189216203&vendorItemId=87437331484 | public/powder-image/selex-protein-lactosefree-570.webp |
 | 파우더 | 원데이뉴트리션 머슬킹 80 프로틴 (초코) 2kg | onedaynutrition-muscleking80-choco-2000 | https://www.coupang.com/vp/products/12849541?itemId=54093368&vendorItemId=72824366128 | public/powder-image/onedaynutrition-muscleking80-choco-2000.webp |
