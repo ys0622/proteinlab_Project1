@@ -3,6 +3,15 @@
 // 제목·설명은 app/data/feedPageMeta.json에서 가져온다.
 export const RECENT_REVISIONS: { date: string; paths: string[] }[] = [
   {
+    // 단백질 파우더 가이드 3편(TOP 10·원료별·목적별)
+    date: "2026-11-03",
+    paths: [
+      "/guides/product-selection-comparison/protein-powder-top10",
+      "/guides/product-selection-comparison/wpi-wpc-isp-powder-guide",
+      "/guides/product-selection-comparison/protein-powder-by-purpose"
+    ],
+  },
+  {
     // 질문 허브 A-2 둘째 묶음(대상별: 임산부·청소년·신장 질환)과 단백질 많은 음식
     date: "2026-11-03",
     paths: [

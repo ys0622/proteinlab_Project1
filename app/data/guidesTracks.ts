@@ -186,6 +186,39 @@ export const guideTracks: GuideTrack[] = [
         ],
       },
       {
+        slug: "protein-powder-top10",
+        title: "단백질 파우더 추천 TOP 10",
+        description: "게이너·식사대용을 뺀 파우더를 단백질 함량(%)이 높고 당류가 낮은 순으로 10종 비교합니다.",
+        searchIntent: "단백질 파우더 추천",
+        futureFocus: ["단백질 함량 %", "당류 0g 보충제", "해외 직구 표시"],
+        internalLinkTargets: [
+          { label: "단백질 파우더 비교", href: "/powder" },
+          { label: "WPI·WPC·분리대두 차이", href: "/guides/product-selection-comparison/wpi-wpc-isp-powder-guide" },
+        ],
+      },
+      {
+        slug: "wpi-wpc-isp-powder-guide",
+        title: "WPI·WPC·분리대두 파우더 차이",
+        description: "아이솔레이트·웨이·식물성·혼합 파우더의 평균 단백질 함량과 당류를 성분표 수치로 비교합니다.",
+        searchIntent: "WPI WPC 차이",
+        futureFocus: ["원료별 평균 함량", "원료 표기 읽기", "식물성 파우더"],
+        internalLinkTargets: [
+          { label: "단백질 원료 종류", href: "/guides/basics/protein-source-types" },
+          { label: "단백질 파우더 비교", href: "/powder" },
+        ],
+      },
+      {
+        slug: "protein-powder-by-purpose",
+        title: "목적별 단백질 파우더",
+        description: "운동용·시니어·식사대용·게이너 파우더의 1회 제공량·열량·당류 차이를 비교합니다.",
+        searchIntent: "목적별 단백질 파우더",
+        futureFocus: ["게이너 열량", "시니어 분말 당류 표시", "식사대용 파우더"],
+        internalLinkTargets: [
+          { label: "단백질 파우더 비교", href: "/powder" },
+          { label: "단백질 파우더 추천 TOP 10", href: "/guides/product-selection-comparison/protein-powder-top10" },
+        ],
+      },
+      {
         slug: "greek-yogurt-guide",
         title: "그릭요거트 추천 기준",
         description: "그릭요거트를 고를 때 단백질 밀도와 당류를 어떻게 읽어야 하는지 정리합니다.",

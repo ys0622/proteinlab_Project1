@@ -8,8 +8,9 @@ import CommercialAdSection from "@/app/components/CommercialAdSection";
 import CategoryDataSection from "@/app/components/CategoryDataSection";
 import TrackedCoupangLink from "@/app/components/TrackedCoupangLink";
 import GuideProductHeroCards, { resolveGuideHeroProducts } from "@/app/components/GuideProductHeroCards";
+import GuideProductPhotoCards, { type GuideProductCardGroup } from "@/app/components/GuideProductPhotoCards";
 import { getDrinkProducts } from "@/app/data/drinkProductsData";
-import { shakeProducts, soymilkProducts, type ProductDetailProps } from "@/app/data/products";
+import { powderProducts, shakeProducts, soymilkProducts, type ProductDetailProps } from "@/app/data/products";
 import { getCoupangRedirectHref } from "@/app/lib/purchaseLinks";
 import { formatProductLabel } from "@/app/lib/productLabel";
 import { getGuideThumbnailUrl } from "@/app/lib/guideThumbnails";
@@ -71,11 +72,13 @@ export interface ComparePageConfig {
   relatedGuides: RelatedGuideLink[];
   purchaseLinks: PurchaseGuideLink[];
   promoteAffiliateCtas?: boolean;
+  /** 비교표 아래에 붙이는 사진 카드 목록(파우더 가이드, 2026-11-03). 없으면 아무것도 그리지 않는다. */
+  productCards?: GuideProductCardGroup[];
   jsonLd?: Record<string, unknown>[];
 }
 
 const drinkProducts = getDrinkProducts();
-const purchasableProducts = [...drinkProducts, ...shakeProducts, ...soymilkProducts];
+const purchasableProducts = [...drinkProducts, ...shakeProducts, ...soymilkProducts, ...powderProducts];
 const trackBHubLink: RelatedGuideLink = {
   title: "다른 비교 가이드 더 보기",
   href: "/guides/product-selection-comparison",
@@ -408,6 +411,9 @@ export function ComparisonGuidePage({ config }: { config: ComparePageConfig }) {
               </div>
             ) : null}
           </section>
+          {config.productCards?.map((group) => (
+            <GuideProductPhotoCards key={group.title} group={group} contentId={`guide:${config.slug}`} />
+          ))}
           {config.sections.map((section) => (
             <section key={section.title} className="rounded-[28px] border border-[#d9e4f0] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(32,46,68,0.05)]">
               <h2 className="text-xl font-bold text-[var(--foreground)]">{section.title}</h2>
