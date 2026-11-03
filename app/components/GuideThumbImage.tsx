@@ -9,62 +9,75 @@ interface GuideThumbImageProps {
   fallbackBg: string;
   fallbackEmoji: string;
   category: string;
+  /** 사진 아래 마지막 줄에 보일 데이터 표시(예: "쉐이크 112종"). 없으면 생략. */
+  meta?: string;
   productSrcs?: readonly string[];
 }
 
-export default function GuideThumbImage({ src, alt, title, desc, fallbackBg, fallbackEmoji, category, productSrcs }: GuideThumbImageProps) {
+/*
+ * 홈 '가이드 & 인사이트' 카드. 2026-11-03 Scott: 사진 위에 흰 글씨를 얹던 방식에서
+ * 잡지형(사진 위 · 크림색 글 영역 아래)으로 바꿨다. 썸네일 사진에는 글자가 없다.
+ */
+export default function GuideThumbImage({ src, alt, title, desc, fallbackBg, fallbackEmoji, category, meta, productSrcs }: GuideThumbImageProps) {
   const [failed, setFailed] = useState(false);
 
   return (
-    /* 사진이 카드 전체를 채우고, 하단에 텍스트 오버레이 */
-    <div className="relative flex flex-col overflow-hidden rounded-[16px]" style={{ minHeight: "200px" }}>
-      {/* 배경: 에디토리얼 이미지 또는 그라디언트 */}
-      {productSrcs?.length ? (
-        <div className="absolute inset-0 isolate overflow-hidden" style={{ background: "linear-gradient(135deg, #c5a47a 0%, #e6d4b7 54%, #b99166 100%)" }}>
-          <div className="absolute -right-10 -top-20 h-56 w-56 rounded-full bg-[#f7e9ce]/45" />
-          <div className="absolute inset-x-2 top-2 flex h-[174px] items-start justify-center gap-1.5 sm:inset-x-3 sm:gap-3">
-            {productSrcs.map((productSrc, index) => (
-              // eslint-disable-next-line @next/next/no-img-element
-              <img
-                key={productSrc}
-                src={productSrc}
-                alt=""
-                loading="lazy"
-                className={`h-full min-w-0 flex-1 object-contain mix-blend-multiply ${productSrcs.length > 2 && index === 0 ? "hidden sm:block" : ""}`}
-              />
-            ))}
+    <div className="flex h-full flex-col overflow-hidden rounded-[16px] bg-[#FFFDF8]">
+      <div className="relative aspect-[16/10] w-full overflow-hidden">
+        {productSrcs?.length ? (
+          <div className="absolute inset-0 isolate overflow-hidden" style={{ background: "linear-gradient(135deg, #c5a47a 0%, #e6d4b7 54%, #b99166 100%)" }}>
+            <div className="absolute inset-x-2 inset-y-2 flex items-center justify-center gap-1.5 sm:gap-3">
+              {productSrcs.map((productSrc, index) => (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img
+                  key={productSrc}
+                  src={productSrc}
+                  alt=""
+                  loading="lazy"
+                  className={`h-full min-w-0 flex-1 object-contain mix-blend-multiply ${productSrcs.length > 2 && index === 0 ? "hidden sm:block" : ""}`}
+                />
+              ))}
+            </div>
           </div>
-        </div>
-      ) : !failed ? (
-        // eslint-disable-next-line @next/next/no-img-element
-        <img
-          src={src}
-          alt={alt}
-          loading="lazy"
-          onError={() => setFailed(true)}
-          className="absolute inset-0 h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
-        />
-      ) : (
-        <div className="absolute inset-0 flex items-center justify-center" style={{ background: fallbackBg }}>
-          <span style={{ fontSize: "48px", lineHeight: 1 }}>{fallbackEmoji}</span>
-        </div>
-      )}
+        ) : !failed ? (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            src={src}
+            alt={alt}
+            loading="lazy"
+            onError={() => setFailed(true)}
+            className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
+          />
+        ) : (
+          <div className="absolute inset-0 flex items-center justify-center" style={{ background: fallbackBg }}>
+            <span style={{ fontSize: "40px", lineHeight: 1 }}>{fallbackEmoji}</span>
+          </div>
+        )}
+        <span
+          className="absolute left-2.5 top-2.5 z-10 inline-flex items-center gap-1.5 rounded-full px-2.5 py-[5px] text-[10px] font-bold tracking-[0.02em] text-white md:left-3 md:top-3 md:text-[11px]"
+          style={{ background: "rgba(14,34,26,0.62)", backdropFilter: "blur(6px)" }}
+        >
+          <span className="h-1.5 w-1.5 rounded-full" style={{ background: "#C6EE78" }} aria-hidden="true" />
+          {category}
+        </span>
+      </div>
 
-      {/* 카테고리 뱃지 (상단 좌측) */}
-      <span
-        className="absolute left-3 top-3 z-10 rounded-full px-2.5 py-1 text-[10px] font-bold tracking-wide"
-        style={{ background: "rgba(255,255,255,0.92)", color: "#1F5A3D", backdropFilter: "blur(6px)" }}
-      >
-        {category}
-      </span>
-
-      {/* 하단 텍스트 오버레이 */}
-      <div
-        className="absolute bottom-0 left-0 right-0 z-10 px-4 pb-4 pt-10"
-        style={{ background: "linear-gradient(to top, rgba(9,31,24,0.88) 0%, rgba(9,31,24,0.32) 60%, transparent 100%)" }}
-      >
-        <p className="break-keep font-extrabold leading-snug text-white" style={{ fontSize: "15px", letterSpacing: "-0.02em" }}>{title}</p>
-        <p className="mt-1.5 break-keep leading-snug text-white/70" style={{ fontSize: "12px" }}>{desc}</p>
+      <div className="flex flex-1 flex-col px-3.5 pb-3.5 pt-3 md:px-4 md:pb-4 md:pt-3.5">
+        <p
+          className="line-clamp-2 break-keep font-extrabold leading-[1.3] text-[#14201A] md:text-[17px]"
+          style={{ fontSize: "14.5px", letterSpacing: "-0.025em" }}
+        >
+          {title}
+        </p>
+        <p className="mt-1 line-clamp-2 break-keep text-[12px] leading-snug text-[#6B7A70] md:text-[13px]">{desc}</p>
+        <div className="mt-auto flex items-center justify-between gap-2 pt-2.5">
+          {meta ? (
+            <span className="truncate text-[11px] font-semibold text-[#8A958D] md:text-[12px]">{meta}</span>
+          ) : <span />}
+          <span className="shrink-0 text-[11.5px] font-bold text-[#1F5A3D] transition-transform duration-200 group-hover:translate-x-0.5 md:text-[12.5px]">
+            읽기 →
+          </span>
+        </div>
       </div>
     </div>
   );

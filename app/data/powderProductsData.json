@@ -1373,5 +1373,43 @@
     },
     "coupangUrl": "https://www.coupang.com/vp/products/7737550652?itemId=20808674167&vendorItemId=79037009532",
     "productUrl": "#"
+  },
+  {
+    "slug": "onedaynutrition-wpi-1300",
+    "brand": "원데이뉴트리션",
+    "name": "웨이프로틴 WPI",
+    "capacity": "1.3kg",
+    "variant": "통",
+    "tags": [
+      "아이솔레이트",
+      "국내"
+    ],
+    "flavor": "기본",
+    "productType": "powder",
+    "nutritionBasis": "per_serving",
+    "servingSizeG": 30,
+    "servingsPerContainer": 43,
+    "proteinSource": "분리유청단백(WPI)",
+    "powderType": "isolate",
+    "origin": "domestic",
+    "proteinPerServing": 27,
+    "calories": 114,
+    "sugar": 0,
+    "fat": 0.4,
+    "sodium": 70,
+    "density": "23.7g/100kcal",
+    "nutritionPerBottle": {
+      "caloriesKcal": 114,
+      "proteinG": 27,
+      "carbsG": 0.5,
+      "sugarsG": 0,
+      "fatG": 0.4,
+      "satFatG": 0,
+      "transFatG": 0,
+      "cholesterolMg": 0,
+      "sodiumMg": 70
+    },
+    "coupangUrl": "https://www.coupang.com/vp/products/7687401050?itemId=20548012847&vendorItemId=72941938751",
+    "productUrl": "#"
   }
 ]

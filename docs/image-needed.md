@@ -15,7 +15,7 @@
 | 파우더 | 뉴욕웨이 올에이지 단백질 보충제 (곡물맛) 2kg | newyorkwhey-allage-grain-2000 | https://www.coupang.com/vp/products/8629011490?itemId=27924528714&vendorItemId=90949833407 | public/powder-image/newyorkwhey-allage-grain-2000.webp |
 | 파우더 | 플라이밀 고단백 쉐이크 (17곡 미숫가루) 대용량 630g | flymill-proteinshake-misugaru-630 | https://www.coupang.com/vp/products/7537043284?itemId=23428822892&vendorItemId=93298164916 | public/powder-image/flymill-proteinshake-misugaru-630.webp |
 | 파우더 | 경성포유틴 분리유청 산양유 단백질 400g | kyungsung-foutin-goatmilk-protein-400 | https://www.coupang.com/vp/products/8717832581?itemId=26548267668&vendorItemId=95453938458 | public/powder-image/kyungsung-foutin-goatmilk-protein-400.webp |
-| 파우더 | BSN 신타6 단백질 파우더 (초코) 1.32kg | syntha6-choco-1320 | https://www.coupang.com/vp/products/7470533914?itemId=19492433684&vendorItemId=86602114206 | public/powder-image/syntha6-choco-1320.webp |
+| 파우더 | 비에스엔 신타6 단백질 파우더 (초코) 1.32kg | syntha6-choco-1320 | https://www.coupang.com/vp/products/7470533914?itemId=19492433684&vendorItemId=86602114206 | public/powder-image/syntha6-choco-1320.webp |
 | 파우더 | 뉴트리라이트 파이토 푸로틴 900g | nutrilite-phyto-protein-900 | https://www.coupang.com/vp/products/345530613?itemId=20485479468&vendorItemId=95970460902 | public/powder-image/nutrilite-phyto-protein-900.webp |
 | 파우더 | 푸른빈 WPI 분리유청단백질 500g | purunbean-wpi-500 | https://www.coupang.com/vp/products/273875262?itemId=13470649417&vendorItemId=92377530796 | public/powder-image/purunbean-wpi-500.webp |
 | 파우더 | 셀렉스 프로틴 락토프리 플러스 근력단백질 570g | selex-protein-lactosefree-plus-570 | https://www.coupang.com/vp/products/8429083184?itemId=24611836906&vendorItemId=91623133616 | public/powder-image/selex-protein-lactosefree-plus-570.webp |
@@ -41,3 +41,4 @@
 | 파우더 | 다이마타이즈 ISO 100 (고메 초콜릿) 2.3kg | dymatize-iso100-gourmetchoco-2300 | https://www.coupang.com/vp/products/7788595839?itemId=9080902&vendorItemId=3273060332 | public/powder-image/dymatize-iso100-gourmetchoco-2300.webp |
 | 파우더 | NS 프로틴 블렌드 WPI 함유 (딥초코) 2kg | ns-proteinblend-deepchoco-2000 | https://www.coupang.com/vp/products/9289492019?itemId=27510831332&vendorItemId=94475748513 | public/powder-image/ns-proteinblend-deepchoco-2000.webp |
 | 파우더 | 프로티원 단백질 쉐이크 (곡물맛) 대용량 490g | proteone-proteinshake-grain-490 | https://www.coupang.com/vp/products/7737550652?itemId=20808674167&vendorItemId=79037009532 | public/powder-image/proteone-proteinshake-grain-490.webp |
+| 파우더 | 원데이뉴트리션 웨이프로틴 WPI 1.3kg | onedaynutrition-wpi-1300 | https://www.coupang.com/vp/products/7687401050?itemId=20548012847&vendorItemId=72941938751 | public/powder-image/onedaynutrition-wpi-1300.webp |

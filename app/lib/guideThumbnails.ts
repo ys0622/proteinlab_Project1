@@ -11,6 +11,6 @@ const GUIDE_THUMBNAIL_SLUGS = new Set([
 
 export function getGuideThumbnailUrl(slug: string) {
   return GUIDE_THUMBNAIL_SLUGS.has(slug)
-    ? `/guide-thumbnails/${encodeURIComponent(slug)}.png`
+    ? `/guide-thumbnails/${encodeURIComponent(slug)}.jpg`
     : null;
 }
