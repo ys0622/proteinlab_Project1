@@ -9,8 +9,9 @@
  * 하는 일
  *   1. 사진: 흰 배경으로 평탄화 → 여백 자르기 → 카테고리 규격(register.mjs와 같은 imageBox)에 맞춰 webp 저장
  *      → public/<카테고리 이미지 폴더>/<slug>.webp, 이미지 맵(slugTo*Image.json)을 <slug>.webp로 바꾼다.
- *   2. 링크: 단축 링크가 가리키는 쿠팡 상품 번호를 확인해, 지금 coupangUrl의 상품 번호와 같을 때만 coupangUrl을 바꾼다
- *      (다른 상품이면 바꾸지 않고 보고). 바꾼 게 있으면 scripts/coupang/resolve-short-links.py 를 돌린다.
+ *   2. 링크: 단축 링크가 가리키는 쿠팡 상품 번호를 확인해(코드당 한 번만 열고 결과를 단축 코드 표에 기록 — 여는 것도 쿠팡 클릭으로 잡힐 수 있음),
+ *      지금 coupangUrl의 상품 번호와 같을 때만 coupangUrl을 바꾼다
+ *      (다른 상품이면 바꾸지 않고 보고).
  *   3. 처리한 파일은 <폴더>/done/<날짜>/ 로 옮기고, docs/image-needed.md 를 다시 만든다.
  *   마지막에 운영실 photos 표에서 '완료'로 바꿀 slug 목록을 출력한다(운영실은 Claude가 ArtifactData로 고친다).
  */
@@ -60,7 +61,9 @@ function findProduct(slug) {
   }
   return null;
 }
-const shortTargets = load(join(dataDir, "coupangShortLinkTargets.json"));
+const shortTargetsPath = join(dataDir, "coupangShortLinkTargets.json");
+const shortTargets = load(shortTargetsPath);
+let shortTargetsDirty = false;
 // 상품 페이지 주소면 그 번호, 단축 링크면 단축 코드 표(resolve-short-links.py가 만든 것)의 상품 번호.
 function productIdOf(url) {
   const text = String(url ?? "");
@@ -112,15 +115,26 @@ if (existsSync(linksPath)) {
     if (!slug || !/^https:\/\/link\.coupang\.com\/a\/[A-Za-z0-9]+$/.test(url ?? "")) { problems.push(`링크 줄 형식 오류: ${line}`); continue; }
     const hit = findProduct(slug);
     if (!hit) { problems.push(`링크 ${slug}: 이 slug의 제품이 없음`); continue; }
-    let location = "";
-    try {
-      const res = await fetch(url, { redirect: "manual", headers: { "User-Agent": "Mozilla/5.0" } });
-      location = res.headers.get("location") ?? "";
-    } catch (e) {
-      problems.push(`링크 ${slug}: 단축 링크를 열지 못함(${String(e).slice(0, 60)})`);
-      continue;
+    // 단축 링크를 여는 것만으로 쿠팡 클릭으로 잡힐 수 있어(2026-11-03 운영 도구 방 확인) 링크마다 한 번만 연다:
+    // 단축 코드 표에 이미 있으면 열지 않고, 처음 여는 링크는 결과를 표에 바로 적어 resolve-short-links.py가 다시 열지 않게 한다.
+    const code = url.split("/").pop();
+    let linkPid = shortTargets[code]?.pageKey ?? null;
+    if (!linkPid) {
+      let location = "";
+      try {
+        const res = await fetch(url, { redirect: "manual", headers: { "User-Agent": "Mozilla/5.0" } });
+        location = res.headers.get("location") ?? "";
+      } catch (e) {
+        problems.push(`링크 ${slug}: 단축 링크를 열지 못함(${String(e).slice(0, 60)})`);
+        continue;
+      }
+      linkPid = productIdOf(location);
+      const itemId = (location.match(/[?&]itemId=(\d+)/) || [])[1];
+      if (linkPid && itemId) {
+        shortTargets[code] = { pageKey: linkPid, itemId };
+        shortTargetsDirty = true;
+      }
     }
-    const linkPid = productIdOf(location);
     const currentPid = productIdOf(hit.product.coupangUrl);
     if (!linkPid) { problems.push(`링크 ${slug}: 단축 링크가 쿠팡 상품으로 가지 않음(${location.slice(0, 80)})`); continue; }
     if (currentPid && currentPid !== linkPid) {
@@ -141,7 +155,8 @@ if (!dryRun) {
     if (s.dirtyData) saveJson(s.dataPath, s.data);
     if (s.dirtyMap) saveJson(s.mapPath, s.map);
   }
-  if (linkDone.length) execFileSync("python", ["-X", "utf8", "scripts/coupang/resolve-short-links.py"], { cwd: root, stdio: "inherit" });
+  // 새 단축 코드는 위에서 표에 적었다. resolve-short-links.py는 돌리지 않는다(다른 미확인 코드를 열어 클릭을 늘리지 않게).
+  if (shortTargetsDirty) saveJson(shortTargetsPath, shortTargets);
   if (moved.length) {
     const doneDir = join(inbox, "done", new Date().toISOString().slice(0, 10));
     mkdirSync(doneDir, { recursive: true });
