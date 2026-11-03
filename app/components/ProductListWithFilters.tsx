@@ -4,24 +4,28 @@ import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useMemo, useState, useSyncExternalStore } from "react";
 import type { ProductDetailProps } from "../data/products";
 import newProductsRaw from "../data/newProducts.json";
-import { type ProductCategory } from "../lib/categories";
+import { type CatalogProductCategory } from "../lib/categories";
 import { applyCurationToCategoryProducts, getCurationDefinition } from "../lib/curationSystem";
 import {
   defaultBarFilters,
   defaultDrinkFilters,
+  defaultPowderFilters,
   defaultShakeFilters,
   defaultSoymilkFilters,
   defaultYogurtFilters,
   filterBarProducts,
   filterDrinkProducts,
+  filterPowderProducts,
   filterShakeProducts,
   filterSoymilkProducts,
   filterYogurtProducts,
   getCapacityMl,
+  getPowderProteinPercentage,
   getYogurtFlavorCategory,
   getYogurtTypeCategory,
   type BarFilters,
   type DrinkFilters,
+  type PowderFilters,
   type ShakeFilters,
   type SoymilkFilters,
   type YogurtFilters,
@@ -39,10 +43,10 @@ import SortBar, { sortOptions, type SortOptionValue } from "./SortBar";
 const PAGE_SIZE = 20;
 
 type ProductListWithFiltersProps = {
-  productType: ProductCategory;
+  productType: CatalogProductCategory;
   products: ProductDetailProps[];
   curationSlug?: string;
-  categoryCounts?: Partial<Record<ProductCategory, number>>;
+  categoryCounts?: Partial<Record<CatalogProductCategory, number>>;
   stickyTabs?: boolean;
   tabsPlacement?: "top" | "before_grid";
 };
@@ -53,6 +57,7 @@ type PersistedFilterState = {
   yogurtFilters: YogurtFilters;
   shakeFilters: ShakeFilters;
   soymilkFilters: SoymilkFilters;
+  powderFilters: PowderFilters;
   sort: SortOptionValue;
   page: number;
   searchQuery: string;
@@ -127,6 +132,14 @@ function normalizeSoymilkFilters(value: unknown): SoymilkFilters {
   };
 }
 
+function normalizePowderFilters(value: unknown): PowderFilters {
+  const candidate = (value ?? {}) as Partial<Record<keyof PowderFilters, unknown>>;
+  return {
+    powderType: toStringArray(candidate.powderType),
+    origin: toStringArray(candidate.origin),
+  };
+}
+
 function getPersistedFilterState(storageKey: string): Partial<PersistedFilterState> | null {
   if (typeof window === "undefined") return null;
 
@@ -143,6 +156,7 @@ function getPersistedFilterState(storageKey: string): Partial<PersistedFilterSta
       yogurtFilters: normalizeYogurtFilters(parsed.yogurtFilters),
       shakeFilters: normalizeShakeFilters(parsed.shakeFilters),
       soymilkFilters: normalizeSoymilkFilters(parsed.soymilkFilters),
+      powderFilters: normalizePowderFilters(parsed.powderFilters),
       sort: normalizeSortValue(parsed.sort),
       page: typeof parsed.page === "number" && Number.isFinite(parsed.page) && parsed.page > 0 ? parsed.page : 1,
       searchQuery: typeof parsed.searchQuery === "string" ? parsed.searchQuery : "",
@@ -154,6 +168,10 @@ function getPersistedFilterState(storageKey: string): Partial<PersistedFilterSta
 }
 
 function getDensityValue(product: ProductDetailProps): number {
+  // 파우더 capacity는 통 전체 중량('2kg')이라 용량 기준 밀도가 성립하지 않는다. 100kcal당 단백질로 본다.
+  if (product.productType === "powder") {
+    return product.calories ? (product.proteinPerServing / product.calories) * 100 : 0;
+  }
   const capacity = getCapacityMl(product);
   if (capacity <= 0) return 0;
   return ((product.proteinPerServing ?? 0) / capacity) * 100;
@@ -174,7 +192,7 @@ function getFallbackPopularity(index: number): number {
 
 function getRecommendedScore(
   product: ProductDetailProps,
-  productType: ProductCategory,
+  productType: CatalogProductCategory,
   index: number,
 ): number {
   const density = getDensityValue(product);
@@ -186,6 +204,14 @@ function getRecommendedScore(
     const calories = getPer100UnitValue(product.calories, product);
 
     return density * 18 + protein * 2.5 + popularity * 0.01 - sugar * 4 - calories * 0.06;
+  }
+
+  // 파우더는 1회 제공량이 12.5~300g으로 제각각이라 1회 단백질(g) 대신 단백질 함량(%)과 당류 비율로 본다.
+  // 1회 단백질로 점수를 매기면 1회 300g짜리 게이너가 맨 위에 온다.
+  if (productType === "powder") {
+    const servingG = product.servingSizeG ?? 0;
+    const sugarPct = servingG > 0 && product.sugar != null ? (product.sugar / servingG) * 100 : 0;
+    return getPowderProteinPercentage(product) * 1.2 + density * 2 + popularity * 0.01 - sugarPct * 1.5;
   }
 
   const protein = product.proteinPerServing ?? 0;
@@ -208,14 +234,14 @@ function getAddedTime(product: ProductDetailProps): number {
 }
 
 // 요거트는 통 크기가 제각각이라 100g/mL 기준으로 비교한다(추천순과 같은 기준). 나머지는 1회 제공량 기준이다.
-function getComparableValue(value: number | undefined, product: ProductDetailProps, productType: ProductCategory): number {
+function getComparableValue(value: number | undefined, product: ProductDetailProps, productType: CatalogProductCategory): number {
   return productType === "yogurt" ? getPer100UnitValue(value, product) : (value ?? 0);
 }
 
 function applySort(
   products: ProductDetailProps[],
   sort: SortOptionValue,
-  productType: ProductCategory,
+  productType: CatalogProductCategory,
   allProducts: ProductDetailProps[],
 ): ProductDetailProps[] {
   const arr = [...products];
@@ -225,6 +251,8 @@ function applySort(
       return arr.sort((a, b) => (b.proteinPerServing ?? 0) - (a.proteinPerServing ?? 0));
     case "density":
       return arr.sort((a, b) => getDensityValue(b) - getDensityValue(a));
+    case "protein_percentage":
+      return arr.sort((a, b) => getPowderProteinPercentage(b) - getPowderProteinPercentage(a));
     case "sugar_asc":
       return arr.sort(
         (a, b) => getComparableValue(a.sugar, a, productType) - getComparableValue(b.sugar, b, productType),
@@ -281,6 +309,9 @@ function ProductListWithFiltersInner(props: ProductListWithFiltersInnerProps) {
   const [soymilkFilters, setSoymilkFilters] = useState<SoymilkFilters>(
     () => initialPersistedState?.soymilkFilters ?? defaultSoymilkFilters,
   );
+  const [powderFilters, setPowderFilters] = useState<PowderFilters>(
+    () => initialPersistedState?.powderFilters ?? defaultPowderFilters,
+  );
   const [sort, setSort] = useState<SortOptionValue>(
     () => normalizeSortValue(initialPersistedState?.sort),
   );
@@ -304,10 +335,14 @@ function ProductListWithFiltersInner(props: ProductListWithFiltersInnerProps) {
           ? yogurtFilters
           : productType === "soymilk"
             ? soymilkFilters
-            : shakeFilters;
+            : productType === "powder"
+              ? powderFilters
+              : shakeFilters;
 
   const curationFiltered = useMemo(() => {
-    return applyCurationToCategoryProducts(products, productType, curationSlug);
+    return productType === "powder"
+      ? products
+      : applyCurationToCategoryProducts(products, productType, curationSlug);
   }, [curationSlug, productType, products]);
 
   const filtered = useMemo(() => {
@@ -322,6 +357,9 @@ function ProductListWithFiltersInner(props: ProductListWithFiltersInnerProps) {
     }
     if (productType === "soymilk") {
       return filterSoymilkProducts(curationFiltered, filters as SoymilkFilters);
+    }
+    if (productType === "powder") {
+      return filterPowderProducts(curationFiltered, filters as PowderFilters);
     }
     return filterShakeProducts(curationFiltered, filters as ShakeFilters);
   }, [curationFiltered, filters, productType]);
@@ -374,13 +412,14 @@ function ProductListWithFiltersInner(props: ProductListWithFiltersInnerProps) {
       yogurtFilters,
       shakeFilters,
       soymilkFilters,
+      powderFilters,
       sort,
       page,
       searchQuery,
     };
 
     window.sessionStorage.setItem(storageKey, JSON.stringify(persistedState));
-  }, [barFilters, drinkFilters, page, searchQuery, shakeFilters, soymilkFilters, sort, storageKey, yogurtFilters]);
+  }, [barFilters, drinkFilters, page, powderFilters, searchQuery, shakeFilters, soymilkFilters, sort, storageKey, yogurtFilters]);
 
   useEffect(() => {
     onUrlStateChange?.(sort, searchQuery);
@@ -450,6 +489,17 @@ function ProductListWithFiltersInner(props: ProductListWithFiltersInnerProps) {
     });
   };
 
+  const handlePowderFilterToggle = (key: keyof PowderFilters, value: string) => {
+    setPage(1);
+    setPowderFilters((prev) => {
+      const current = prev[key];
+      const next = current.includes(value)
+        ? current.filter((item) => item !== value)
+        : [...current, value];
+      return { ...prev, [key]: next };
+    });
+  };
+
   const handleResetFilters = () => {
     setPage(1);
     setSearchQuery("");
@@ -467,6 +517,10 @@ function ProductListWithFiltersInner(props: ProductListWithFiltersInnerProps) {
     }
     if (productType === "soymilk") {
       setSoymilkFilters(defaultSoymilkFilters);
+      return;
+    }
+    if (productType === "powder") {
+      setPowderFilters(defaultPowderFilters);
       return;
     }
     setShakeFilters(defaultShakeFilters);
@@ -543,7 +597,7 @@ function ProductListWithFiltersInner(props: ProductListWithFiltersInnerProps) {
           stickyMobile={stickyTabs}
         />
       </div>
-      <SortBar sort={sort} onSortChange={handleSortChange} className="relative z-[31] shrink-0" />
+      <SortBar sort={sort} onSortChange={handleSortChange} showProteinPercentage={productType === "powder"} className="relative z-[31] shrink-0" />
     </div>
   );
 
@@ -602,6 +656,15 @@ function ProductListWithFiltersInner(props: ProductListWithFiltersInnerProps) {
             desktopSearchSlot={desktopSearchSlot}
             soymilkBrandOptions={brandOptions}
           />
+        ) : productType === "powder" ? (
+          <FilterSection
+            productType="powder"
+            filters={filters as PowderFilters}
+            onFilterToggle={handlePowderFilterToggle}
+            onResetFilters={handleResetFilters}
+            mobileToolbarSlot={mobileSearchButton}
+            desktopSearchSlot={desktopSearchSlot}
+          />
         ) : (
           <FilterSection
             productType="shake"
@@ -625,7 +688,7 @@ function ProductListWithFiltersInner(props: ProductListWithFiltersInnerProps) {
         {filterBox}
 
         <div>
-          <QuickCuration productType={productType} variant="inline" className="mt-1.5 mb-1 md:mt-2 md:mb-2" />
+          {productType !== "powder" ? <QuickCuration productType={productType} variant="inline" className="mt-1.5 mb-1 md:mt-2 md:mb-2" /> : null}
 
           {mobileSearchOpen ? (
         <div
@@ -671,7 +734,7 @@ function ProductListWithFiltersInner(props: ProductListWithFiltersInnerProps) {
 
       {sorted.length !== products.length ? (
         <p className="mt-3 px-1 text-xs text-[var(--foreground-muted)]" aria-live="polite">
-          {curationSlug && getCurationDefinition(curationSlug)?.categories[productType]
+          {productType !== "powder" && curationSlug && getCurationDefinition(curationSlug)?.categories[productType]
             ? `'${getCurationDefinition(curationSlug)?.label}' 조건 · `
             : ""}
           조건에 맞는 제품 {sorted.length}개 (전체 {products.length}개)

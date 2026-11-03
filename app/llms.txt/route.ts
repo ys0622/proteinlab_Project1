@@ -47,6 +47,7 @@ export async function GET() {
 - [단백질 하루 섭취량 — 성별·나이·체중별 권장량과 운동할 때 기준](${SITE_URL}/guides/basics/daily-requirement): 2020 한국인 영양소 섭취기준(성인 남성 60~65g, 여성 50~55g, 체중 1kg당 0.91g), 국민건강영양조사 실제 섭취량, 운동 시 ISSN 1.4~2.0g/kg
 - [단백질 과다섭취 부작용 — 얼마부터 많은지, 신장에 무리가 가는지](${SITE_URL}/guides/intake-strategy-health/high-protein-side-effects): 섭취기준에 상한섭취량이 없는 이유, 신장 기능 정상인 메타분석(Devries 2018), 만성콩팥병 기준(KDOQI 2020)
 - [단백질 부족 증상 — 근육 감소·부종·탈모·회복 지연](${SITE_URL}/guides/basics/deficiency-symptoms): 증상별 다른 원인 구분, 근감소증 자가 점검(AWGS 2019 악력·의자 일어서기·보행 속도)
+- [단백질 많은 음식 순위 — 100g당·한 번 먹는 양·열량 대비](${SITE_URL}/guides/basics/high-protein-foods): 식약처 식품영양성분 DB 원재료성 식품 25가지 100g당 값(황태포 79g, 건멸치 60.29g, 구운 돼지 안심 30.23g, 삶은 닭가슴살 28.09g, 삶은 달걀 13.49g, 두부 9.62g, 우유 3.09g), 100kcal당 단백질 순위(달걀흰자 22.8g·황태포 22.6g·삶은 닭가슴살 22.1g), 편의점 음식과 단백질 음료·바·요거트 비교
 - [단백질 한 번에 흡수량 — 30g 넘으면 버려질까](${SITE_URL}/guides/intake-strategy-health/protein-50g-at-once): Moore 2009·Areta 2013·Macnaughton 2016·Trommelen 2023 연구 비교, 끼니당 0.4~0.55g/kg
 - [단백질 먹는 시간 — 운동 후 30분? 아침·자기 전](${SITE_URL}/guides/intake-strategy-health/protein-timing): 타이밍 메타분석(Schoenfeld 2013), 끼니 분산(Mamerow 2014), 자기 전 카제인(Res 2012)
 - [근육 합성에 단백질 얼마나? — 한 끼 20~40g·하루 1.6g/kg](${SITE_URL}/guides/basics/muscle): 근단백질 합성 조건별 근거(Moore 2009, Witard 2014, Macnaughton 2016, Trommelen 2023, Areta 2013, Res 2012, Moore 2015 노인 0.40g/kg), 체중별 하루 목표
@@ -54,6 +55,7 @@ export async function GET() {
 - [노인 단백질 섭취량 — 65세 이상 하루 얼마나](${SITE_URL}/guides/intake-strategy-health/senior-protein-strategy): 2020 한국인 영양소 섭취기준 65세 이상 남 60g·여 50g, PROT-AGE·ESPEN 1.0~1.2g/kg, 75세 이상 여성 실제 섭취 권장량의 75%, 한 끼 0.4g/kg(Moore 2015), Health ABC 3년 추적(Houston 2008), AWGS 2019 근감소증 점검
 - [임산부 단백질 하루 얼마나](${SITE_URL}/guides/intake-strategy-health/pregnancy-protein): 2020 한국인 영양소 섭취기준 임신 2분기 +15g·3분기 +30g·수유기 +25g(1분기 추가 없음), 지표 아미노산 산화법 추정 1.22~1.52g/kg(Stephens 2015, 공식 기준 아님), WHO 2016 고단백 보충 비권고, 당류 낮은 고단백 두유 성분표
 - [청소년 단백질 섭취량 — 중학생·고등학생](${SITE_URL}/guides/intake-strategy-health/teen-protein): 12~14세 남 60g·여 55g, 15~18세 남 65g·여 55g(성장 몫 포함), 국민건강영양조사 평균 섭취량과 하위 25%(15~18세 여자 42.7g < 평균필요량 45g), 에너지적정비율 7~20%
+- [신장 질환 단백질 섭취량 — 콩팥병 단계별·투석 중 하루 얼마나](${SITE_URL}/guides/intake-strategy-health/kidney-disease-protein): KDOQI 2020 투석 전 3~5기 0.55~0.6g/kg(당뇨 동반 0.6~0.8g, 초저단백 0.28~0.43g + 케토산), 투석 중 1.0~1.2g/kg, KDIGO 2024 3~5기 0.8g/kg·1.3g/kg 초과 피하기·나트륨 2g 미만, 국내 일차 의료용 만성콩팥병 진료지침(2022) 0.8g/kg, 체중별 표
 - [자기 전 단백질 — 근육에 효과 있을까, 살찔까](${SITE_URL}/guides/intake-strategy-health/night-protein-drink): Res 2012, Snijders 2015(12주 허벅지 근육 단면적 +8.4 vs +4.8cm²), Kouw 2017(노인 40g만 효과), 체중은 하루 총열량(Bray 2012)
 - [운동 안 하고 단백질 음료 마시면](${SITE_URL}/guides/intake-strategy-health/protein-drink-without-exercise): 필요량 0.91g/kg은 운동과 무관, 근육 증가 근거는 근력 운동 병행 연구(Morton 2018), 비활동 시 근육 감소(Kortebein 2007)
 - [단백질 쉐이크 효과 — 근육·다이어트·포만감, 연구로 확인한 것과 아닌 것](${SITE_URL}/guides/intake-strategy-health/protein-shake-effects): 근력 운동 시 제지방 +0.30kg·1.6g/kg 이후 정체(Morton 2018 메타분석 49개 연구), 감량 중 1.2~1.6g/kg(Leidy 2015), 등록 쉐이크·음료 성분 중앙값

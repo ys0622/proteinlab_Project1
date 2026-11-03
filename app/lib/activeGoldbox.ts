@@ -4,7 +4,7 @@ import { getVerifiedGoldboxOffers } from "@/app/lib/goldboxVerifiedOffers";
 import { getProductImageUrl } from "@/app/lib/productImage";
 import { getCoupangRedirectHref } from "@/app/lib/purchaseLinks";
 
-export type GoldboxCategory = "drink" | "bar" | "yogurt" | "shake" | "soymilk";
+export type GoldboxCategory = "drink" | "bar" | "yogurt" | "shake" | "soymilk" | "powder";
 export const GOLDBOX_CATEGORIES: GoldboxCategory[] = ["drink", "bar", "yogurt", "shake", "soymilk"];
 
 export interface ActiveGoldboxCard {

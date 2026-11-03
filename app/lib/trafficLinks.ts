@@ -1,5 +1,5 @@
 import { brandToSlug } from "./brandHubs";
-import type { ProductCategory } from "./productData";
+import type { ProductCategory } from "./categories";
 import type { ProductDetailProps } from "../data/products";
 
 export interface TrafficLinkItem {
@@ -229,8 +229,24 @@ function dedupeLinks(links: TrafficLinkItem[]) {
 export function getProductTrafficLinks(
   product: Pick<ProductDetailProps, "brand" | "productType" | "slug">,
 ): TrafficLinkItem[] {
-  const category = (product.productType ?? "drink") as ProductCategory;
+  const rawCategory = product.productType ?? "drink";
   const slug = product.slug;
+  if (rawCategory === "powder") {
+    return dedupeLinks([
+      ...(BRAND_PRODUCT_LINKS[product.brand] ?? []),
+      {
+        href: "/powder",
+        title: "단백질 파우더 더 보기",
+        description: "단백질 원료와 1회 제공량 기준으로 파우더 제품을 살펴봅니다.",
+      },
+      {
+        href: `/brands/${brandToSlug(product.brand)}`,
+        title: `${product.brand} 브랜드 허브`,
+        description: "같은 브랜드의 단백질 제품을 한곳에서 확인합니다.",
+      },
+    ]);
+  }
+  const category = rawCategory as ProductCategory;
   const common: TrafficLinkItem[] = [
     {
       href: "/ranking",

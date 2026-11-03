@@ -86,6 +86,23 @@ const BRAND_SLUG_MAP: Record<string, string> = {
   베어벨즈: "barebells",
   곡물도감: "gokmuldogam",
   그레네이드: "grenade",
+  // 2026-11-03 파우더 카테고리 브랜드(한글 slug는 Workers 정적 내보내기에서 깨진다)
+  "BPI 스포츠": "bpi-sports",
+  "EVL뉴트리션": "evl-nutrition",
+  경성포유틴: "kyungsung-foutin",
+  나우푸드: "now-foods",
+  뉴욕웨이: "newyork-whey",
+  뉴트리라이트: "nutrilite",
+  다이마타이즈: "dymatize",
+  머슬팜: "musclepharm",
+  옵티멈뉴트리션: "optimum-nutrition",
+  원데이뉴트리션: "oneday-nutrition",
+  웰핏: "wellfit",
+  인테로: "intero",
+  퍼스널벌크포뮬러: "personal-bulk-formula",
+  푸른빈: "purunbean",
+  프로틴스토리: "protein-story",
+  프로틴컴퍼니: "protein-company",
 };
 
 export function brandToSlug(brand: string) {

@@ -7,6 +7,7 @@ import type {
 } from "./productTypes";
 import { getShakeProducts } from "./shakeProductsData";
 import { getSoymilkProducts } from "./soymilkProductsData";
+import { getPowderProducts } from "./powderProductsData";
 import { getYogurtProducts } from "./yogurtProductsData";
 
 export type {
@@ -23,6 +24,7 @@ export const yogurtProducts: ProductDetailProps[] = getYogurtProducts();
 export const yogurtProductsWithGrades: ProductDetailProps[] = applyYogurtGrades(yogurtProducts);
 export const shakeProducts: ProductDetailProps[] = applyShakeGrades(getShakeProducts());
 export const soymilkProducts: ProductDetailProps[] = getSoymilkProducts();
+export const powderProducts: ProductDetailProps[] = getPowderProducts();
 
 function formatValue(value: number | undefined, unit: string) {
   return value != null ? `${value}${unit}` : "-";
@@ -66,7 +68,7 @@ export function getNutritionDetail(p: ProductDetailProps): NutritionDetailRow[] 
     return rows;
   }
 
-  if (n && p.productType === "soymilk") {
+  if (n && (p.productType === "soymilk" || p.productType === "powder")) {
     const rows: NutritionDetailRow[] = [
       { label: "칼로리", value: formatValue(n.caloriesKcal, "kcal") },
       { label: "탄수화물", value: formatValue(n.carbsG, "g") },
@@ -151,7 +153,7 @@ export function getNutritionDetail(p: ProductDetailProps): NutritionDetailRow[] 
 }
 
 export function getAllProducts(): ProductDetailProps[] {
-  return [...mockProducts, ...barProductsWithGrades, ...yogurtProductsWithGrades, ...shakeProducts, ...soymilkProducts];
+  return [...mockProducts, ...barProductsWithGrades, ...yogurtProductsWithGrades, ...shakeProducts, ...soymilkProducts, ...powderProducts];
 }
 
 export function getProductBySlug(slug: string): ProductDetailProps | null {
@@ -163,6 +165,8 @@ export function getProductBySlug(slug: string): ProductDetailProps | null {
   if (shake) return shake;
   const soymilk = soymilkProducts.find((p) => p.slug === slug);
   if (soymilk) return soymilk;
+  const powder = powderProducts.find((p) => p.slug === slug);
+  if (powder) return powder;
   return mockProducts.find((p) => p.slug === slug) ?? null;
 }
 

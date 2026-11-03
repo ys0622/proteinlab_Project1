@@ -15,7 +15,7 @@ type Props = {
   quickFacts?: string[];
   imageUrl?: string;
   description?: string;
-  productType?: "drink" | "bar" | "yogurt" | "shake" | "soymilk";
+  productType?: "drink" | "bar" | "yogurt" | "shake" | "soymilk" | "powder";
   alternatives?: DiscontinuedAlternative[];
 };
 

@@ -454,6 +454,28 @@ export const guideTracks: GuideTrack[] = [
         ],
       },
       {
+        slug: "kidney-disease-protein",
+        title: "신장 질환 단백질",
+        description: "만성콩팥병 단계별·투석 중 단백질 섭취량(투석 전 0.55~0.6g/kg, KDIGO 0.8g/kg, 투석 중 1.0~1.2g/kg)과 나트륨·칼륨·인 확인할 점을 정리합니다.",
+        searchIntent: "신장 질환 단백질 섭취량",
+        futureFocus: ["콩팥병 단계별 기준", "투석 중 단백질", "나트륨·칼륨·인 확인"],
+        internalLinkTargets: [
+          { label: "단백질 과다섭취 부작용", href: "/guides/intake-strategy-health/high-protein-side-effects" },
+          { label: "노인 단백질 섭취량", href: "/guides/intake-strategy-health/senior-protein-strategy" },
+        ],
+      },
+      {
+        slug: "high-protein-foods",
+        title: "단백질 많은 음식",
+        description: "식약처 식품영양성분 DB 100g당 값으로 단백질 많은 음식 25가지와 한 번 먹는 양·열량 대비 순위, 편의점 음식을 정리합니다.",
+        searchIntent: "단백질 많은 음식",
+        futureFocus: ["100g당 단백질 순위", "열량 대비 단백질", "편의점 단백질 음식"],
+        internalLinkTargets: [
+          { label: "단백질 하루 섭취량", href: "/guides/basics/daily-requirement" },
+          { label: "편의점 단백질 음료·바", href: "/guides/product-selection-comparison/convenience-store-protein-guide" },
+        ],
+      },
+      {
         slug: "protein-shake-effects",
         title: "단백질 쉐이크 효과",
         description: "단백질 쉐이크·음료의 근육·근력·포만감·식사대용 효과를 연구 근거 수준별로 정리합니다.",

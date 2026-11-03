@@ -98,12 +98,13 @@ function toCarouselProduct(p: ProductDetailProps): CarouselProduct {
 }
 
 export default async function Home() {
-  const [drinks, bars, yogurts, shakes, soymilks, popularRes, bestSnapshot] = await Promise.all([
+  const [drinks, bars, yogurts, shakes, soymilks, powders, popularRes, bestSnapshot] = await Promise.all([
     getProductsByCategoryAsync("drink"),
     getProductsByCategoryAsync("bar"),
     getProductsByCategoryAsync("yogurt"),
     getProductsByCategoryAsync("shake"),
     getProductsByCategoryAsync("soymilk"),
+    getProductsByCategoryAsync("powder"),
     // Worker 자기 호출 대신 공유 KV 스냅샷을 직접 읽는다.
     getRecentPopularity(),
     getCoupangCategoryBest(),
@@ -112,7 +113,7 @@ export default async function Home() {
   // views: { drink: {slug: count}, bar: {...}, ... }
   const { views, available } = popularRes;
 
-  const categoryCounts = getCategoryProductCounts({ drink: drinks, bar: bars, yogurt: yogurts, shake: shakes, soymilk: soymilks });
+  const categoryCounts = getCategoryProductCounts({ drink: drinks, bar: bars, yogurt: yogurts, shake: shakes, soymilk: soymilks, powder: powders });
 
   const coupangRanks = matchCoupangCategoryBest([...drinks, ...bars, ...yogurts, ...shakes, ...soymilks], bestSnapshot);
   const topDrinks = selectHomeDiscovery(drinks, views.drink ?? {}, coupangRanks);
@@ -224,30 +225,30 @@ export default async function Home() {
 
       {/* ─── 2. 카테고리 (센터 정렬 아이콘 카드) ─── */}
       <section className="mx-auto max-w-[1180px] px-2.5 pt-2 md:px-5 md:pt-4">
-        <div className="grid grid-cols-5 gap-1 md:gap-3">
+        <div className="grid grid-cols-6 gap-1 md:gap-3">
           {([
             { label: "단백질 음료", icon: "drink", href: "/drinks", countKey: "drink" as const },
             { label: "단백질 바", icon: "bar", href: "/bars", countKey: "bar" as const },
             { label: "단백질 요거트", icon: "yogurt", href: "/yogurt", countKey: "yogurt" as const },
             { label: "단백질 쉐이크", icon: "shake", href: "/shake", countKey: "shake" as const },
             { label: "두유", icon: "soymilk", href: "/soymilk", countKey: "soymilk" as const },
+            { label: "단백질 파우더", icon: "powder", href: "/powder", countKey: "powder" as const },
           ] as const).map((cat) => (
             <HomeTrackedLink
               key={cat.href}
               href={cat.href}
               eventName="home_category_click"
               eventParams={{ category: cat.countKey, destination_url: cat.href }}
-              className="group flex min-w-0 items-center justify-center gap-[3px] rounded-[10px] border border-[#E3E8E4] bg-white px-[3px] py-1.5 text-left shadow-[0_2px_6px_rgba(20,32,26,0.07)] transition-all duration-150 hover:shadow-[0_6px_16px_rgba(20,32,26,0.10)] md:justify-start md:gap-3 md:rounded-[12px] md:border-0 md:px-3.5 md:py-3"
+              className="group flex min-w-0 flex-col items-center justify-center gap-0.5 rounded-[10px] border border-[#E3E8E4] bg-white px-0.5 pb-1 pt-1.5 text-center lg:flex-row shadow-[0_2px_6px_rgba(20,32,26,0.07)] transition-all duration-150 hover:shadow-[0_6px_16px_rgba(20,32,26,0.10)] md:gap-1.5 md:rounded-[12px] md:border-0 md:py-2.5 lg:justify-start lg:gap-3 lg:px-3.5 lg:py-3 lg:text-left"
             >
-              <span className="relative h-[clamp(26px,7.4vw,36px)] w-[clamp(26px,7.4vw,36px)] shrink-0 overflow-hidden rounded-[7px] transition-transform duration-150 group-hover:scale-105 md:h-14 md:w-14 md:rounded-[10px]">
+              <span className="relative h-[clamp(30px,9vw,38px)] w-[clamp(30px,9vw,38px)] shrink-0 overflow-hidden rounded-[7px] transition-transform duration-150 group-hover:scale-105 md:h-11 md:w-11 md:rounded-[10px] lg:h-14 lg:w-14">
                 <Image src={`/category-icons/${cat.icon}-v2.jpg`} alt="" fill className="object-cover" sizes="56px" />
               </span>
               <div className="min-w-0">
-                <p className="break-keep text-[clamp(11px,2.6vw,12px)] font-extrabold leading-tight tracking-[-0.04em] md:text-[18px] md:tracking-[-0.02em]" style={{ color: "#14201A" }}>
-                  <span className="md:hidden">{cat.label.replace("단백질 ", "").replace("고단백 ", "")}</span>
-                  <span className="hidden md:inline">{cat.label}</span>
+                <p className="whitespace-nowrap text-[clamp(11px,2.9vw,12px)] font-extrabold leading-tight tracking-[-0.04em] md:text-[16px] md:tracking-[-0.02em] lg:text-[18px]" style={{ color: "#14201A" }}>
+                  {cat.label.replace("단백질 ", "").replace("고단백 ", "")}
                 </p>
-                <p className="mt-0.5 break-keep text-[10px] font-bold md:mt-[3px] md:text-[15px]" style={{ color: "#1F5A3D" }}>
+                <p className="break-keep text-[10px] font-bold md:mt-[3px] md:text-[13px] lg:text-[15px]" style={{ color: "#1F5A3D" }}>
                   {categoryCounts[cat.countKey]}종
                 </p>
               </div>

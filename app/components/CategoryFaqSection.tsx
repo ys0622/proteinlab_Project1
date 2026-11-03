@@ -1,8 +1,8 @@
-import type { ProductCategory } from "../lib/categories";
+import type { CatalogProductCategory } from "../lib/categories";
 
 type FaqItem = { question: string; answer: string };
 
-const FAQ_MAP: Record<ProductCategory, FaqItem[]> = {
+const FAQ_MAP: Record<CatalogProductCategory, FaqItem[]> = {
   drink: [
     {
       question: "단백질 음료 고를 때 가장 중요한 기준은?",
@@ -98,13 +98,27 @@ const FAQ_MAP: Record<ProductCategory, FaqItem[]> = {
         "두유는 대두를 원료로 한 식물성 음료이고, 단백질 음료(RTD)는 우유단백·유청 등을 쓴 제품이 많습니다. 소비자가 느끼는 제품군도 달라서 ProteinLab은 두유를 별도 카테고리로 나누어 비교합니다.",
     },
   ],
+  powder: [
+    {
+      question: "단백질 파우더는 어떤 기준으로 비교하나요?",
+      answer: "1회 제공량의 단백질 g과 단백질 함량 %, 당류, 칼로리를 함께 비교합니다. 같은 단백질량이라도 스쿱 크기가 다르므로 단백질 함량 비율을 같이 보는 편이 좋습니다.",
+    },
+    {
+      question: "웨이와 아이솔레이트(WPI)는 어떻게 다른가요?",
+      answer: "웨이는 일반적인 유청 단백질 제품군이고, 아이솔레이트는 분리유청단백(WPI)을 중심으로 한 제품입니다. 실제 선택 전에는 제품별 원재료명과 영양정보를 확인하세요.",
+    },
+    {
+      question: "국내 제품과 해외 직구 제품을 나눠 볼 수 있나요?",
+      answer: "네. 필터에서 국내 또는 해외 직구를 선택해 유통 구분별로 제품을 좁힐 수 있습니다.",
+    },
+  ],
 };
 
-export function getCategoryFaqs(category: ProductCategory): FaqItem[] {
+export function getCategoryFaqs(category: CatalogProductCategory): FaqItem[] {
   return FAQ_MAP[category] ?? [];
 }
 
-export default function CategoryFaqSection({ category }: { category: ProductCategory }) {
+export default function CategoryFaqSection({ category }: { category: CatalogProductCategory }) {
   const faqs = getCategoryFaqs(category);
   if (faqs.length === 0) return null;
 

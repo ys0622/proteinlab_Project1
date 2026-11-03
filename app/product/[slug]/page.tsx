@@ -44,7 +44,7 @@ import {
   getStaticProductBySlug,
   getStaticProductsByCategory,
 } from "../../lib/productDataStatic";
-import { getProductImageUrl } from "../../lib/productImage";
+import { getProductImageUrl, getProductSpecImageUrl } from "../../lib/productImage";
 import { formatProductLabel } from "../../lib/productLabel";
 import { getSimilarProducts } from "../../lib/similarProducts";
 import { getProductPosition } from "../../lib/productPosition";
@@ -82,7 +82,7 @@ export function generateStaticParams() {
     }));
 }
 
-function getProductKindLabel(productType?: "drink" | "bar" | "yogurt" | "shake" | "soymilk") {
+function getProductKindLabel(productType?: "drink" | "bar" | "yogurt" | "shake" | "soymilk" | "powder") {
   return getCategoryLabel(productType ?? "drink");
 }
 
@@ -98,7 +98,7 @@ function getMetricLine(product: ProductDetailProps) {
 }
 
 function getProductFaqs(product: ProductDetailProps) {
-  const categoryHref = getCategoryHref((product.productType ?? "drink") as "drink" | "bar" | "yogurt" | "shake" | "soymilk");
+  const categoryHref = getCategoryHref((product.productType ?? "drink") as "drink" | "bar" | "yogurt" | "shake" | "soymilk" | "powder");
   const categoryLabel = getProductKindLabel(product.productType);
 
   const baseFaqs = [
@@ -215,7 +215,7 @@ function buildProductTitle(product: ProductDetailProps): string {
   return `${labelWithSearchAlias(formatProductLabel(product.brand, product.name), product.brand)} ${metrics} — ${kind} 성분 비교`;
 }
 
-function getCategoryDetailHref(category: "drink" | "bar" | "yogurt" | "shake" | "soymilk"): string {
+function getCategoryDetailHref(category: "drink" | "bar" | "yogurt" | "shake" | "soymilk" | "powder"): string {
   if (category === "drink") return "/drinks";
   return getCategoryHref(category);
 }
@@ -333,9 +333,23 @@ function getShakeGuideLink(product: ProductDetailProps) {
 
 function buildProductInternalLinks(product: ProductDetailProps) {
   const relevantLanding = findRelevantCompareLanding(product);
-  const category = (product.productType ?? "drink") as "drink" | "bar" | "yogurt" | "shake" | "soymilk";
+  const category = (product.productType ?? "drink") as "drink" | "bar" | "yogurt" | "shake" | "soymilk" | "powder";
   const categoryHref = getCategoryDetailHref(category);
   const categoryLabel = getProductKindLabel(product.productType);
+  if (category === "powder") {
+    return [
+      {
+        href: categoryHref,
+        title: "단백질 파우더 전체 보기",
+        description: "1회 단백질과 단백질 함량 기준으로 파우더 제품을 비교합니다.",
+      },
+      {
+        href: `/brands/${brandToSlug(product.brand)}`,
+        title: `${product.brand} 브랜드 보기`,
+        description: "같은 브랜드의 등록 제품을 확인합니다.",
+      },
+    ];
+  }
   const sugar = product.sugar ?? null;
   const calories = product.calories ?? null;
   const protein = product.proteinPerServing;
@@ -537,8 +551,10 @@ export default async function ProductDetailPage({ params }: PageProps) {
   const isBar = product.productType === "bar";
   const isYogurt = product.productType === "yogurt";
   const isShake = product.productType === "shake";
+  const isPowder = product.productType === "powder";
   const productImageUrl = getProductImageUrl(product.slug);
-  const category = (product.productType ?? "drink") as "drink" | "bar" | "yogurt" | "shake" | "soymilk";
+  const productSpecImageUrl = getProductSpecImageUrl(product.slug, product.productType);
+  const category = (product.productType ?? "drink") as "drink" | "bar" | "yogurt" | "shake" | "soymilk" | "powder";
   const faqItems = getProductFaqs(product);
   const hasCapacityInName = Boolean(product.capacity && product.name.includes(product.capacity));
   const metaParts = [
@@ -605,12 +621,19 @@ export default async function ProductDetailPage({ params }: PageProps) {
   const detailCategoryHref = getCategoryDetailHref(category);
   const categoryProducts = getStaticProductsByCategory(category);
   const similarProducts = getSimilarProducts(product, categoryProducts, 6);
-  const position = getProductPosition(product, categoryProducts);
+  const position = isPowder ? null : getProductPosition(product, categoryProducts);
   const internalLinks = buildProductInternalLinks(product).slice(0, 6);
   const recommendedFor = buildRecommendedFor(product);
   const tasteAwards = product.awards ?? [];
 
-  const summaryMetrics = isBar
+  const summaryMetrics = isPowder
+    ? [
+        { label: "1회 제공량", value: product.servingSizeG != null ? `${product.servingSizeG}g` : "-", isCompact: false },
+        { label: "통 전체", value: product.servingsPerContainer != null ? `${product.servingsPerContainer}회분` : "-", isCompact: false },
+        { label: "단백질 원료", value: product.proteinSource ?? "-", isCompact: true },
+        { label: "단백질 함량", value: product.servingSizeG ? `${Math.round((product.proteinPerServing / product.servingSizeG) * 100)}%` : "-", isCompact: false },
+      ]
+    : isBar
     ? [
         { label: "단백질 밀도", value: product.density ?? "-", isCompact: true },
         { label: "중량", value: product.capacity ?? "-", isCompact: false },
@@ -696,7 +719,9 @@ export default async function ProductDetailPage({ params }: PageProps) {
     },
   ];
 
-  const servingBasisLabel = isBar ? "1개 기준" : isYogurt ? "1컵 기준" : isShake ? "1포 기준" : product.productType === "soymilk" ? "1팩 기준" : "1병 기준";
+  const servingBasisLabel = isPowder
+    ? `1회${product.servingSizeG ? `(${product.servingSizeG}g)` : ""}`
+    : isBar ? "1개 기준" : isYogurt ? "1컵 기준" : isShake ? "1포 기준" : product.productType === "soymilk" ? "1팩 기준" : "1병 기준";
 
   return (
     <div className="min-h-screen" style={{ background: "#FAF8F3" }}>
@@ -1115,8 +1140,16 @@ export default async function ProductDetailPage({ params }: PageProps) {
             <NutritionDetailSection
               rows={getNutritionDetail(product)}
               capacity={product.capacity}
-              unit={isBar ? "piece" : isYogurt ? "cup" : isShake || product.productType === "soymilk" ? "pack" : "bottle"}
+              unit={isBar ? "piece" : isYogurt ? "cup" : isShake || isPowder || product.productType === "soymilk" ? "pack" : "bottle"}
             />
+            {productSpecImageUrl ? (
+              <section className="mt-6 rounded-[24px] border bg-white p-5 md:p-6" style={{ borderColor: "#E6DDCC" }}>
+                <h2 className="text-[17px] font-bold" style={{ color: "#1E2A22" }}>성분표 이미지</h2>
+                <div className="relative mt-4 min-h-[320px] w-full overflow-hidden rounded-xl bg-white">
+                  <Image src={productSpecImageUrl} alt={`${formatProductLabel(product.brand, product.name)} 성분표`} fill className="object-contain" unoptimized />
+                </div>
+              </section>
+            ) : null}
           </div>
 
           <div className="mt-6">

@@ -7,7 +7,7 @@ import ProductCard from "../../components/ProductCard";
 import TrackedLink from "../../components/TrackedLink";
 import GuideBuySection from "../../components/GuideBuySection";
 import { getAllProducts } from "../../data/products";
-import { getCategoryLabel, type ProductCategory } from "../../lib/categories";
+import { getCategoryLabel, type CatalogProductCategory, type ProductCategory } from "../../lib/categories";
 import { brandToSlug, getBrandSummary, slugToBrand } from "../../lib/brandHubs";
 import { formatProductLabel } from "../../lib/productLabel";
 import { getBrandProfile } from "@/app/lib/brandProfile";
@@ -261,18 +261,19 @@ interface PageProps {
   params: Promise<{ slug: string }>;
 }
 
-const BRAND_TITLE_CATEGORY_LABEL: Record<ProductCategory, string> = {
+const BRAND_TITLE_CATEGORY_LABEL: Record<CatalogProductCategory, string> = {
   drink: "단백질 음료",
   shake: "단백질 쉐이크",
   bar: "단백질바",
   yogurt: "단백질 요거트",
   soymilk: "두유",
+  powder: "단백질 파우더",
 };
 
 function getBrandMainCategory(brand: string, items: { productType?: string }[]) {
-  const counts = new Map<ProductCategory, number>();
+  const counts = new Map<CatalogProductCategory, number>();
   for (const item of items) {
-    const category = (item.productType ?? "drink") as ProductCategory;
+    const category = (item.productType ?? "drink") as CatalogProductCategory;
     counts.set(category, (counts.get(category) ?? 0) + 1);
   }
   const [category, count] = [...counts.entries()].sort((a, b) => b[1] - a[1])[0] ?? ["drink", 0];

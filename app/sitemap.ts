@@ -22,6 +22,7 @@ import {
   barProductsWithGrades,
   shakeProducts,
   soymilkProducts,
+  powderProducts,
   yogurtProductsWithGrades,
 } from "./data/products";
 
@@ -34,6 +35,7 @@ const PAGE_DATES: Record<string, string> = {
   "/bars": "2026-08-28",
   "/shake": "2026-09-30",
   "/yogurt": "2026-08-28",
+  "/powder": "2026-11-03",
   "/products": "2026-06-28",
   "/ranking": "2026-07-15",
   "/trending": "2026-07-03",
@@ -60,6 +62,8 @@ const PAGE_DATES: Record<string, string> = {
   "/guides/intake-strategy-health/glp1-protein": "2026-11-02",
   "/guides/intake-strategy-health/pregnancy-protein": "2026-11-03",
   "/guides/intake-strategy-health/teen-protein": "2026-11-03",
+  "/guides/intake-strategy-health/kidney-disease-protein": "2026-11-03",
+  "/guides/basics/high-protein-foods": "2026-11-03",
   "/guides/intake-strategy-health/senior-protein-strategy": "2026-11-02",
   "/guides/intake-strategy-health/night-protein-drink": "2026-11-02",
   "/guides/intake-strategy-health/protein-drink-without-exercise": "2026-11-02",
@@ -166,6 +170,7 @@ const PRODUCT_DATES: Record<string, string> = {
   yogurt: "2026-10-09",
   shake: "2026-10-09",
   soymilk: "2026-10-12",
+  powder: "2026-11-03",
 };
 
 const CATEGORY_GUIDE_CONFIGS = [
@@ -204,6 +209,7 @@ const staticRoutes = [
   "/compare",
   "/shake",
   "/soymilk",
+  "/powder",
   "/yogurt",
   "/brands",
 ] as const;
@@ -222,6 +228,7 @@ const REDIRECT_ONLY_ROUTES = new Set([
 const STATIC_GUIDE_ROUTES: string[] = [
   "/guides/basics/daily-requirement",
   "/guides/basics/deficiency-symptoms",
+  "/guides/basics/high-protein-foods",
   "/guides/basics/digestion",
   "/guides/basics/immunity-hormone",
   "/guides/basics/muscle",
@@ -257,6 +264,7 @@ const STATIC_GUIDE_ROUTES: string[] = [
   "/guides/intake-strategy-health/glp1-protein",
   "/guides/intake-strategy-health/pregnancy-protein",
   "/guides/intake-strategy-health/teen-protein",
+  "/guides/intake-strategy-health/kidney-disease-protein",
   "/guides/intake-strategy-health/protein-timing",
   "/guides/intake-strategy-health/senior-protein-strategy",
   "/guides/intake-strategy-health/weight-management-protein",
@@ -406,6 +414,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...barProductsWithGrades,
     ...shakeProducts,
     ...soymilkProducts,
+    ...powderProducts,
     ...yogurtProductsWithGrades,
   ];
   const productRoutes = allProducts
@@ -431,7 +440,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       url: `${SITE_URL}${route}`,
       lastModified,
       changeFrequency:
-        route === "/" || route === "/drinks" || route === "/bars" || route === "/yogurt" || route === "/shake" || route === "/soymilk" || route === "/ranking"
+        route === "/" || route === "/drinks" || route === "/bars" || route === "/yogurt" || route === "/shake" || route === "/soymilk" || route === "/powder" || route === "/ranking"
           ? ("daily" as const)
           : route.startsWith("/guides/") || route.startsWith("/curation/") || route.startsWith("/topics/") || route.startsWith("/compare/") || route.startsWith("/picks/")
             ? ("weekly" as const)
@@ -441,7 +450,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
           ? 1
           : route === "/guides" || route === "/recommend" || route === "/ranking"
             ? 0.9
-            : route === "/drinks" || route === "/bars" || route === "/yogurt" || route === "/shake" || route === "/soymilk"
+            : route === "/drinks" || route === "/bars" || route === "/yogurt" || route === "/shake" || route === "/soymilk" || route === "/powder"
               ? 0.88
               : route.startsWith("/curation/")
                 ? 0.85

@@ -104,7 +104,10 @@ export default function GradeCriteriaPage() {
         <CategoryTabs
           activeCategory={productType}
           counts={categoryCounts}
-          onSelect={setProductType}
+          onSelect={(category) => {
+            if (category !== "powder") setProductType(category);
+          }}
+          hiddenCategories={["powder"]}
           stickyMobile
           className="mb-4"
         />

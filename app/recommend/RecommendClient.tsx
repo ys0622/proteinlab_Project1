@@ -570,7 +570,8 @@ export default function RecommendClient({ categoryCounts }: RecommendClientProps
     setError(null);
   }
 
-  function handleCategoryChange(nextCategory: ProductType) {
+  function handleCategoryChange(nextCategory: import("@/app/lib/categories").CatalogProductCategory) {
+    if (nextCategory === "powder") return;
     setCategory(nextCategory);
     setStep(0);
     setAnswers({ purpose: "", priority: "", conditions: [] });
@@ -637,6 +638,7 @@ export default function RecommendClient({ categoryCounts }: RecommendClientProps
             onSelect={handleCategoryChange}
             stickyMobile
             className="mb-4"
+            hiddenCategories={["powder"]}
           />
 
           {step === 0 && (

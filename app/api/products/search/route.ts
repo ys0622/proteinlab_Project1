@@ -4,6 +4,7 @@ import bars from "@/app/data/barProductsData.json";
 import yogurts from "@/app/data/yogurtProductsData.json";
 import shakes from "@/app/data/shakeProductsData.json";
 import soymilks from "@/app/data/soymilkProductsData.json";
+import powders from "@/app/data/powderProductsData.json";
 
 // 검색·찜 화면용. 예전에는 전체 제품 데이터를 /products.json 한 파일로 공개했는데,
 // 다른 사이트가 그 파일을 통째로 가져다 썼다(2026-11-01 확인, docs/competitor-proteinfact-2026-11-01.md).
@@ -19,6 +20,7 @@ const CATEGORY_SOURCES: Array<[string, string, RawProduct[]]> = [
   ["yogurt", "yogurt", yogurts as RawProduct[]],
   ["shake", "shake", shakes as RawProduct[]],
   ["soymilk", "soymilk", soymilks as RawProduct[]],
+  ["powder", "powder", powders as RawProduct[]],
 ];
 
 const PRODUCTS = CATEGORY_SOURCES.flatMap(([category, productType, list]) =>
@@ -42,6 +44,11 @@ const PRODUCTS = CATEGORY_SOURCES.flatMap(([category, productType, list]) =>
       naverUrl: (p.naverUrl as string | undefined) ?? null,
       officialUrl: (p.officialUrl as string | undefined) ?? null,
       yogurtType: (p.yogurtType as string | undefined) ?? null,
+      servingSizeG: (p.servingSizeG as number | undefined) ?? null,
+      servingsPerContainer: (p.servingsPerContainer as number | undefined) ?? null,
+      proteinSource: (p.proteinSource as string | undefined) ?? null,
+      powderType: (p.powderType as string | undefined) ?? null,
+      origin: (p.origin as string | undefined) ?? null,
     })),
 );
 

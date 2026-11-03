@@ -3,22 +3,26 @@ import slugToBarImage from "../data/slugToBarImage.json";
 import slugToShakeImage from "../data/slugToShakeImage.json";
 import slugToYogurtImage from "../data/slugToYogurtImage.json";
 import slugToSoymilkImage from "../data/slugToSoymilkImage.json";
+import slugToPowderImage from "../data/slugToPowderImage.json";
 import slugToSoymilkSpec from "../data/slugToSoymilkSpec.json";
 import slugToBarSpec from "../data/slugToBarSpec.json";
 import slugToDrinkSpec from "../data/slugToDrinkSpec.json";
 import slugToShakeSpec from "../data/slugToShakeSpec.json";
 import slugToYogurtSpec from "../data/slugToYogurtSpec.json";
+import slugToPowderSpec from "../data/slugToPowderSpec.json";
 
 const drinkImageMap: Record<string, string> = slugToImage;
 const barImageMap: Record<string, string> = slugToBarImage;
 const shakeImageMap: Record<string, string> = slugToShakeImage;
 const yogurtImageMap: Record<string, string> = slugToYogurtImage;
 const soymilkImageMap: Record<string, string> = slugToSoymilkImage;
+const powderImageMap: Record<string, string> = slugToPowderImage;
 const soymilkSpecImageMap: Record<string, string> = slugToSoymilkSpec;
 const barSpecImageMap: Record<string, string> = slugToBarSpec;
 const drinkSpecImageMap: Record<string, string> = slugToDrinkSpec;
 const shakeSpecImageMap: Record<string, string> = slugToShakeSpec;
 const yogurtSpecImageMap: Record<string, string> = slugToYogurtSpec;
+const powderSpecImageMap: Record<string, string> = slugToPowderSpec;
 
 const DRINK_IMAGE_BASE = "/rtd-drink-image";
 const DRINK_SPEC_IMAGE_BASE = "/rtd-drink-spec";
@@ -30,9 +34,11 @@ const YOGURT_IMAGE_BASE = "/protein-yogurt-image";
 const YOGURT_SPEC_IMAGE_BASE = "/protein-yogurt-spec";
 const SOYMILK_IMAGE_BASE = "/soymilk-image";
 const SOYMILK_SPEC_IMAGE_BASE = "/soymilk-spec";
+const POWDER_IMAGE_BASE = "/powder-image";
+const POWDER_SPEC_IMAGE_BASE = "/powder-spec";
 
 export function getProductImageFilename(slug: string): string | null {
-  return drinkImageMap[slug] ?? barImageMap[slug] ?? shakeImageMap[slug] ?? yogurtImageMap[slug] ?? soymilkImageMap[slug] ?? null;
+  return drinkImageMap[slug] ?? barImageMap[slug] ?? shakeImageMap[slug] ?? yogurtImageMap[slug] ?? soymilkImageMap[slug] ?? powderImageMap[slug] ?? null;
 }
 
 /** 제품 상세/카드에서 쓸 이미지 URL. 없으면 null */
@@ -52,7 +58,15 @@ export function getProductImageUrl(slug: string): string | null {
   if (soymilkImageMap[slug]) {
     return `${SOYMILK_IMAGE_BASE}/${encodeURIComponent(soymilkImageMap[slug])}`;
   }
+  if (powderImageMap[slug]) {
+    return `${POWDER_IMAGE_BASE}/${encodeURIComponent(powderImageMap[slug])}`;
+  }
   return null;
+}
+
+export function isPlaceholderImage(slug: string): boolean {
+  return [drinkImageMap, barImageMap, shakeImageMap, yogurtImageMap, soymilkImageMap, powderImageMap]
+    .some((map) => map[slug] === "no-image.webp");
 }
 
 export function getDrinkSpecImageUrl(slug: string): string | null {
@@ -85,14 +99,21 @@ export function getSoymilkSpecImageUrl(slug: string): string | null {
   return `${SOYMILK_SPEC_IMAGE_BASE}/${encodeURIComponent(filename)}`;
 }
 
+export function getPowderSpecImageUrl(slug: string): string | null {
+  const filename = powderSpecImageMap[slug];
+  if (!filename) return null;
+  return `${POWDER_SPEC_IMAGE_BASE}/${encodeURIComponent(filename)}`;
+}
+
 export function getProductSpecImageUrl(
   slug: string,
-  productType?: "drink" | "bar" | "yogurt" | "shake" | "soymilk",
+  productType?: "drink" | "bar" | "yogurt" | "shake" | "soymilk" | "powder",
 ): string | null {
   if (productType === "drink") return getDrinkSpecImageUrl(slug);
   if (productType === "bar") return getBarSpecImageUrl(slug);
   if (productType === "yogurt") return getYogurtSpecImageUrl(slug);
   if (productType === "shake") return getShakeSpecImageUrl(slug);
   if (productType === "soymilk") return getSoymilkSpecImageUrl(slug);
+  if (productType === "powder") return getPowderSpecImageUrl(slug);
   return null;
 }

@@ -11,11 +11,12 @@ import {
   shakeProducts,
   yogurtProductsWithGrades,
   soymilkProducts,
+  powderProducts,
 } from "@/app/data/products";
 import { getAllNewProductsFromKV } from "./productKV";
 import { withProductOverride } from "./productOverride";
 
-export type ProductCategory = "drink" | "bar" | "yogurt" | "shake" | "soymilk";
+export type ProductCategory = "drink" | "bar" | "yogurt" | "shake" | "soymilk" | "powder";
 
 function toProductDetailProps(raw: Record<string, unknown>): ProductDetailProps {
   const p = raw as unknown as ProductDetailProps;
@@ -39,7 +40,8 @@ export function slugExistsInJson(slug: string): boolean {
     barProductsWithGrades.some((p) => p.slug === slug) ||
     yogurtProductsWithGrades.some((p) => p.slug === slug) ||
     shakeProducts.some((p) => p.slug === slug) ||
-    soymilkProducts.some((p) => p.slug === slug)
+    soymilkProducts.some((p) => p.slug === slug) ||
+    powderProducts.some((p) => p.slug === slug)
   );
 }
 
@@ -52,6 +54,7 @@ export async function getProductBySlugAsync(
     yogurtProductsWithGrades.find((p) => p.slug === slug) ??
     shakeProducts.find((p) => p.slug === slug) ??
     soymilkProducts.find((p) => p.slug === slug) ??
+    powderProducts.find((p) => p.slug === slug) ??
     mockProducts.find((p) => p.slug === slug) ??
     null;
 
@@ -98,7 +101,9 @@ async function loadProductsByCategory(
           ? yogurtProductsWithGrades
           : category === "shake"
             ? shakeProducts
-            : soymilkProducts;
+            : category === "soymilk"
+              ? soymilkProducts
+              : powderProducts;
 
   const kvNew = await getAllNewProductsFromKV();
   const newInCategory = kvNew
@@ -116,12 +121,13 @@ async function loadProductsByCategory(
 
 /** 전체 제품 (JSON + KV 신규, 카테고리별 병합) */
 export async function getAllProductsAsync(): Promise<ProductDetailProps[]> {
-  const [drinks, bars, yogurts, shakes, soymilks] = await Promise.all([
+  const [drinks, bars, yogurts, shakes, soymilks, powders] = await Promise.all([
     getProductsByCategoryAsync("drink"),
     getProductsByCategoryAsync("bar"),
     getProductsByCategoryAsync("yogurt"),
     getProductsByCategoryAsync("shake"),
     getProductsByCategoryAsync("soymilk"),
+    getProductsByCategoryAsync("powder"),
   ]);
-  return [...drinks, ...bars, ...yogurts, ...shakes, ...soymilks];
+  return [...drinks, ...bars, ...yogurts, ...shakes, ...soymilks, ...powders];
 }

@@ -12,6 +12,7 @@ const CATEGORY_LABEL: Record<GoldboxCategory, string> = {
   yogurt: "요거트",
   shake: "쉐이크",
   soymilk: "두유",
+  powder: "파우더",
 };
 
 type Props = {

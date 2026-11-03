@@ -19,6 +19,7 @@ const popularitySeeds = {
   yogurt: [],
   shake: [],
   soymilk: [],
+  powder: [],
 } as const;
 
 export interface PopularProductItem {
@@ -30,7 +31,7 @@ export interface PopularProductItem {
 
 export function getPopularityScore(
   product: ProductDetailProps,
-  productType: "drink" | "bar" | "yogurt" | "shake" | "soymilk",
+  productType: "drink" | "bar" | "yogurt" | "shake" | "soymilk" | "powder",
 ): number | null {
   const haystack = `${product.brand} ${product.name}`.toLowerCase();
   const seed = popularitySeeds[productType].find((entry) =>
@@ -42,7 +43,7 @@ export function getPopularityScore(
 
 export function getPopularProducts(
   products: ProductDetailProps[],
-  productType: "drink" | "bar" | "yogurt" | "shake" | "soymilk",
+  productType: "drink" | "bar" | "yogurt" | "shake" | "soymilk" | "powder",
   limit = 5,
 ): PopularProductItem[] {
   const scored = products.map((product, index) => ({

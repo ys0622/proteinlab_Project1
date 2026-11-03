@@ -34,6 +34,12 @@ const PAGE_META: Record<string, { h1: string; sub: string; title: string; desc: 
     title: "두유 비교 | ProteinLab",
     desc: "두유 성분 비교",
   },
+  "/powder": {
+    h1: "단백질 파우더 추천 비교",
+    sub: "단백질 파우더 {count}종 · 1회 단백질·단백질 함량(%)·원료 성분표 기준 직접 비교",
+    title: "단백질 파우더 비교 | ProteinLab",
+    desc: "단백질 파우더 성분 비교",
+  },
 };
 
 interface HeroSectionProps {

@@ -11,7 +11,7 @@ type Props = {
   brand: string;
   productName: string;
   slug: string;
-  productType?: "drink" | "bar" | "yogurt" | "shake" | "soymilk";
+  productType?: "drink" | "bar" | "yogurt" | "shake" | "soymilk" | "powder";
   /** 버튼 아래에 보여 줄 핵심 수치(예: "단백질 20g", "당류 1g"). */
   quickFacts?: string[];
 };
@@ -93,18 +93,20 @@ export default function MobileStickyBuyButton({ coupangHref, brand, productName,
             </svg>
             찜
           </button>
-          <button
-            type="button"
-            onClick={() => toggleCompare(slug)}
-            aria-pressed={comparing}
-            aria-label="비교에 담기"
-            className={`${sideButton} border-[#dedbd3] text-[#5f6b61]`}
-          >
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
-              <path d="M6 20V10M12 20V4M18 20v-6" />
-            </svg>
-            비교
-          </button>
+          {productType !== "powder" ? (
+            <button
+              type="button"
+              onClick={() => toggleCompare(slug)}
+              aria-pressed={comparing}
+              aria-label="비교에 담기"
+              className={`${sideButton} border-[#dedbd3] text-[#5f6b61]`}
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
+                <path d="M6 20V10M12 20V4M18 20v-6" />
+              </svg>
+              비교
+            </button>
+          ) : null}
           {coupangHref ? (
             <a
               href={coupangHref}

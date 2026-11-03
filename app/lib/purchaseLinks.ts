@@ -61,7 +61,7 @@ const COUPANG_PARTNERS_TAG =
 const COUPANG_PARTNERS_SUB_ID =
   process.env.NEXT_PUBLIC_COUPANG_PARTNERS_SUB_ID || process.env.COUPANG_PARTNERS_SUB_ID || "proteinlab";
 
-export type CoupangLinkCategory = "drink" | "bar" | "yogurt" | "shake" | "soymilk" | "guide" | "ranking";
+export type CoupangLinkCategory = "drink" | "bar" | "yogurt" | "shake" | "soymilk" | "powder" | "guide" | "ranking";
 
 /**
  * 쿠팡 홈으로 가는 공용 링크. 실제 구매 링크가 아니라서(단종 확인 제품에 임시로 들어 있던 값)

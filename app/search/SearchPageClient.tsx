@@ -23,6 +23,7 @@ const CATEGORY_LABEL: Record<string, string> = {
   yogurt: "요거트",
   shake: "쉐이크",
   soymilk: "두유",
+  powder: "파우더",
 };
 
 const CATEGORY_ORDER = ["drinks", "bars", "yogurt", "shake", "soymilk"];

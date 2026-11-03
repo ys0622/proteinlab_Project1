@@ -14,6 +14,7 @@ const bars = readJson("app/data/barProductsData.json");
 const yogurts = readJson("app/data/yogurtProductsData.json");
 const shakes = readJson("app/data/shakeProductsData.json");
 const soymilks = readJson("app/data/soymilkProductsData.json");
+const powders = readJson("app/data/powderProductsData.json");
 
 // barProductsData.ts 와 JSON 제품 수 불일치 경고 (TS는 JSON을 import하므로 동일해야 함)
 // 향후 TS가 별도 배열을 가질 경우를 대비해 경고 로직만 유지
@@ -32,7 +33,7 @@ function mapProducts(list, category) {
     category,
     productType:
       p.productType ??
-      ({ drinks: "drink", bars: "bar", yogurt: "yogurt", shake: "shake", soymilk: "soymilk" }[category]),
+      ({ drinks: "drink", bars: "bar", yogurt: "yogurt", shake: "shake", soymilk: "soymilk", powder: "powder" }[category]),
     capacity: p.capacity ?? "",
     variant: p.variant ?? "",
     tags: Array.isArray(p.tags) ? p.tags : [],
@@ -56,6 +57,7 @@ const products = [
   ...mapProducts(yogurts, "yogurt"),
   ...mapProducts(shakes, "shake"),
   ...mapProducts(soymilks, "soymilk"),
+  ...mapProducts(powders, "powder"),
 ];
 
 const output = {
@@ -67,6 +69,7 @@ const output = {
     yogurt: yogurts.length,
     shake: shakes.length,
     soymilk: soymilks.length,
+    powder: powders.length,
   },
   products,
 };
@@ -84,6 +87,7 @@ writeFileSync(
       yogurt: yogurts.length,
       shake: shakes.length,
       soymilk: soymilks.length,
+      powder: powders.length,
     },
     null,
     2,
@@ -93,5 +97,5 @@ writeFileSync(
 
 console.log("✅ products.json 생성 완료");
 console.log(
-  `   음료: ${drinks.length}개 / 바: ${bars.length}개 / 요거트: ${yogurts.length}개 / 쉐이크: ${shakes.length}개 / 두유: ${soymilks.length}개 / 합계: ${products.length}개`
+  `   음료: ${drinks.length}개 / 바: ${bars.length}개 / 요거트: ${yogurts.length}개 / 쉐이크: ${shakes.length}개 / 두유: ${soymilks.length}개 / 파우더: ${powders.length}개 / 합계: ${products.length}개`
 );

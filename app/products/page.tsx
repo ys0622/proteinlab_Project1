@@ -6,7 +6,7 @@ import Footer from "../components/Footer";
 import CommercialAdSection from "../components/CommercialAdSection";
 import ProductListWithFilters from "../components/ProductListWithFilters";
 import { getProductsByCategoryAsync } from "../lib/productData";
-import type { ProductCategory } from "../lib/categories";
+import type { CatalogProductCategory } from "../lib/categories";
 
 // 2026-10-21: 5분 캐시(ISR). 예전에는 ProductListWithFilters의 useSearchParams 때문에 정적 렌더링에서 목록이
 // Suspense fallback으로 비어 force-dynamic이었다. 이제 URL 파라미터는 브라우저에서 읽어 서버 HTML에 목록 전체가 들어간다.
@@ -14,16 +14,17 @@ import type { ProductCategory } from "../lib/categories";
 export const revalidate = 300;
 
 export async function generateMetadata(): Promise<Metadata> {
-  const [drinks, bars, yogurts, shakes, soymilks] = await Promise.all([
+  const [drinks, bars, yogurts, shakes, soymilks, powders] = await Promise.all([
     getProductsByCategoryAsync("drink"),
     getProductsByCategoryAsync("bar"),
     getProductsByCategoryAsync("yogurt"),
     getProductsByCategoryAsync("shake"),
     getProductsByCategoryAsync("soymilk"),
+    getProductsByCategoryAsync("powder"),
   ]);
-  const totalCount = drinks.length + bars.length + yogurts.length + shakes.length + soymilks.length;
+  const totalCount = drinks.length + bars.length + yogurts.length + shakes.length + soymilks.length + powders.length;
   const title = `단백질 제품 ${totalCount}종 비교 — 브랜드·카테고리·목적별로 찾기`;
-  const description = `단백질 음료, 바, 요거트, 쉐이크, 두유 ${totalCount}종을 브랜드, 단백질 함량, 당류, 칼로리, 목적별로 바로 비교해보세요. 저당, 40g, 다이어트, 50대 기준도 빠르게 찾을 수 있습니다.`;
+  const description = `단백질 음료, 바, 요거트, 쉐이크, 두유, 파우더 ${totalCount}종을 브랜드, 단백질 함량, 당류, 칼로리, 목적별로 바로 비교해보세요.`;
 
   return {
     title,
@@ -98,25 +99,32 @@ const categoryLinks = [
     title: "두유",
     body: "두유를 찾는다면 고단백(11g 이상)부터 저당까지 1팩 기준으로 비교해보세요.",
   },
+  {
+    href: "/powder",
+    title: "단백질 파우더",
+    body: "스쿱당 단백질과 단백질 함량 비율로 보충제를 비교해보세요.",
+  },
 ];
 
 export default async function ProductsPage() {
-  const [drinks, bars, yogurts, shakes, soymilks] = await Promise.all([
+  const [drinks, bars, yogurts, shakes, soymilks, powders] = await Promise.all([
     getProductsByCategoryAsync("drink"),
     getProductsByCategoryAsync("bar"),
     getProductsByCategoryAsync("yogurt"),
     getProductsByCategoryAsync("shake"),
     getProductsByCategoryAsync("soymilk"),
+    getProductsByCategoryAsync("powder"),
   ]);
 
-  const categoryCounts: Record<ProductCategory, number> = {
+  const categoryCounts: Record<CatalogProductCategory, number> = {
     drink: drinks.length,
     bar: bars.length,
     yogurt: yogurts.length,
     shake: shakes.length,
     soymilk: soymilks.length,
+    powder: powders.length,
   };
-  const totalCount = drinks.length + bars.length + yogurts.length + shakes.length + soymilks.length;
+  const totalCount = drinks.length + bars.length + yogurts.length + shakes.length + soymilks.length + powders.length;
   const byBrand = (list: typeof drinks) =>
     [...list].filter((product) => product.slug).sort((a, b) => a.brand.localeCompare(b.brand, "ko") || a.name.localeCompare(b.name, "ko"));
   const allGroups = [
@@ -125,6 +133,7 @@ export default async function ProductsPage() {
     { href: "/yogurt", title: "단백질 요거트", products: byBrand(yogurts) },
     { href: "/shake", title: "단백질 쉐이크", products: byBrand(shakes) },
     { href: "/soymilk", title: "두유", products: byBrand(soymilks) },
+    { href: "/powder", title: "단백질 파우더", products: byBrand(powders) },
   ];
 
   const breadcrumbJsonLd = {

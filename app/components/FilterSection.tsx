@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import type { BarFilters, DrinkFilters, ShakeFilters, SoymilkFilters, YogurtFilters } from "../lib/productFilters";
+import type { BarFilters, DrinkFilters, PowderFilters, ShakeFilters, SoymilkFilters, YogurtFilters } from "../lib/productFilters";
 
 const drinkProteinOptions = ["초고단백(40g 이상)", "고단백(20g 이상)", "일반단백(20g 미만)"];
 const drinkSourceOptions = ["식물성", "혼합"];
@@ -22,6 +22,8 @@ const soymilkFlavorOptions = ["플레인", "검은콩", "초코", "견과", "기
 const shakeUseCaseOptions = ["운동보충형", "식사대용형", "저당형"];
 const shakeFiberOptions = ["식이섬유 높음(5g 이상)", "식이섬유 보통(3~5g)", "식이섬유 낮음(3g 미만)"];
 const shakeTasteOptions = ["초콜릿/디저트", "커피", "곡물/미숫가루", "말차/차", "과일", "고소/견과", "기타"];
+const powderTypeOptions = ["웨이", "아이솔레이트(WPI)", "식물성", "혼합", "시니어", "게이너", "식사대용"];
+const powderOriginOptions = ["국내", "해외 직구"];
 
 const labelMinWidth = "5rem";
 const chipBase =
@@ -116,6 +118,11 @@ type FilterSectionProps =
       filters: SoymilkFilters;
       onFilterToggle: (key: keyof SoymilkFilters, value: string) => void;
       soymilkBrandOptions?: string[];
+    } & SharedProps)
+  | ({
+      productType: "powder";
+      filters: PowderFilters;
+      onFilterToggle: (key: keyof PowderFilters, value: string) => void;
     } & SharedProps);
 
 export default function FilterSection(props: FilterSectionProps) {
@@ -380,6 +387,29 @@ export default function FilterSection(props: FilterSectionProps) {
               label={flavor}
               selected={filters.flavor.includes(flavor)}
               onClick={() => onFilterToggle("flavor", flavor)}
+            />
+          ))}
+        </FilterRow>
+      </div>
+    ) : productType === "powder" ? (
+      <div className="flex flex-col" style={{ gap: "4px" }}>
+        <FilterRow title="파우더 유형">
+          {powderTypeOptions.map((type) => (
+            <FilterChip
+              key={type}
+              label={type}
+              selected={filters.powderType.includes(type)}
+              onClick={() => onFilterToggle("powderType", type)}
+            />
+          ))}
+        </FilterRow>
+        <FilterRow title="유통 구분">
+          {powderOriginOptions.map((origin) => (
+            <FilterChip
+              key={origin}
+              label={origin}
+              selected={filters.origin.includes(origin)}
+              onClick={() => onFilterToggle("origin", origin)}
             />
           ))}
         </FilterRow>

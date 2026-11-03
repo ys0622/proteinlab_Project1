@@ -10,6 +10,7 @@ export const sortOptions = [
   { value: "calories_asc", label: "칼로리 낮은 순" },
   { value: "recent_desc", label: "최근 등록순" },
   { value: "density", label: "단백질 밀도순" },
+  { value: "protein_percentage", label: "단백질 함량 %순" },
 ] as const;
 
 export type SortOptionValue = (typeof sortOptions)[number]["value"];
@@ -21,18 +22,23 @@ interface SortBarProps {
   sort: SortOptionValue;
   onSortChange: (sort: SortOptionValue) => void;
   className?: string;
+  showProteinPercentage?: boolean;
 }
 
 export default function SortBar({
   sort,
   onSortChange,
   className = "",
+  showProteinPercentage = false,
 }: SortBarProps) {
   const [menuOpen, setMenuOpen] = useState(false);
   const menuButtonRef = useRef<HTMLButtonElement | null>(null);
   const menuPanelRef = useRef<HTMLDivElement | null>(null);
   const menuId = useId();
 
+  const visibleOptions = showProteinPercentage
+    ? sortOptions
+    : sortOptions.filter((option) => option.value !== "protein_percentage");
   const selectedOption =
     sortOptions.find((option) => option.value === sort) ?? sortOptions[0];
 
@@ -103,7 +109,7 @@ export default function SortBar({
                 aria-label="정렬 옵션"
                 className="absolute right-0 top-full z-20 mt-2 min-w-[180px] rounded-xl border border-[var(--border)] bg-white py-1 shadow-[0_8px_24px_rgba(0,0,0,0.08)]"
               >
-                {sortOptions.map((option) => (
+                {visibleOptions.map((option) => (
                   <button
                     key={option.value}
                     type="button"

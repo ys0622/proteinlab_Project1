@@ -3,11 +3,13 @@
 // 제목·설명은 app/data/feedPageMeta.json에서 가져온다.
 export const RECENT_REVISIONS: { date: string; paths: string[] }[] = [
   {
-    // 질문 허브 A-2 둘째 묶음(대상별: 임산부·청소년)
+    // 질문 허브 A-2 둘째 묶음(대상별: 임산부·청소년·신장 질환)과 단백질 많은 음식
     date: "2026-11-03",
     paths: [
       "/guides/intake-strategy-health/pregnancy-protein",
-      "/guides/intake-strategy-health/teen-protein"
+      "/guides/intake-strategy-health/teen-protein",
+      "/guides/intake-strategy-health/kidney-disease-protein",
+      "/guides/basics/high-protein-foods"
     ],
   },
   {

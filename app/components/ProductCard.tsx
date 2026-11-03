@@ -134,6 +134,8 @@ export default function ProductCard({
   priority = false,
   productType,
   yogurtType,
+  servingSizeG,
+  powderType,
   purchaseLinkCategory,
   maxVisibleBadges,
   fixedTitleLines,
@@ -151,7 +153,7 @@ export default function ProductCard({
   void _productUrl;
 
   const detailHref = slug ? `/product/${slug}` : "#";
-  const usesUnifiedSurface = ["drink", "bar", "yogurt", "shake", "soymilk"].includes(productType ?? "");
+  const usesUnifiedSurface = ["drink", "bar", "yogurt", "shake", "soymilk", "powder"].includes(productType ?? "");
   const imageUrl = slug ? getProductImageUrl(slug) : null;
   const resolvedPurchaseLinkCategory = purchaseLinkCategory ?? productType ?? null;
   const rawCoupangUrl = normalizeCoupangUrl(coupangUrl) ?? getKnownSourceCoupangUrlBySlug(slug);
@@ -188,13 +190,19 @@ export default function ProductCard({
         ? visibleGradeTags.slice(0, 3)
         : visibleGradeTags;
   const canShowSupplementalBadge = limitedGradeTags.length < 3;
-  const hasVisibleVariant = Boolean(variant && variant !== "일반" && productType !== "yogurt");
+  const hasVisibleVariant = Boolean(variant && variant !== "일반" && productType !== "yogurt" && productType !== "powder");
   const feedbackMeta = reviewSummary && reviewSummary.reviewCount > 0 ? reviewSummary : null;
   const cardSurfaceBg = "color-mix(in srgb, var(--hero-bg) 64%, white)";
   const tasteAward = awards?.[0];
   const isTvAdProduct = Boolean(slug && TV_AD_SLUGS.has(slug));
   const tasteAwardStars = getTasteAwardStars(tasteAward?.rating);
   const isCompactSquareImage = productType === "yogurt" || productType === "shake";
+  const proteinPercentage = servingSizeG && servingSizeG > 0
+    ? Math.round((proteinPerServing / servingSizeG) * 100)
+    : null;
+  const powderTypeLabel = powderType
+    ? ({ whey: "웨이", isolate: "아이솔레이트(WPI)", plant: "식물성", blend: "혼합", senior: "시니어", gainer: "게이너", meal: "식사대용" } as const)[powderType]
+    : null;
 
   useEffect(() => {
     if (!slug) return;
@@ -485,7 +493,10 @@ export default function ProductCard({
               {sugar != null && sugar < 3 ? <ProductBadge label="저당" tone="neutral" className="product-card__badge" /> : null}
             </>
           ) : null}
-          {variant && variant !== "일반" && productType !== "yogurt" && !hideSupplementalBadges && canShowSupplementalBadge ? (
+          {productType === "powder" && powderTypeLabel ? (
+            <ProductBadge label={powderTypeLabel} tone="neutral" className="product-card__badge" />
+          ) : null}
+          {variant && variant !== "일반" && productType !== "yogurt" && productType !== "powder" && !hideSupplementalBadges && canShowSupplementalBadge ? (
             <ProductBadge
               label={variant}
               tone="neutral"
@@ -506,12 +517,17 @@ export default function ProductCard({
             usesUnifiedSurface ? "mt-1 md:mt-1.5" : "mt-1.5 md:mt-3"
           }`}
         >
-          {[
+          {(productType === "powder" ? [
+            { label: "1회 단백질", value: `${proteinPerServing}g`, isDensity: false },
+            { label: "단백질 함량", value: proteinPercentage != null ? `${proteinPercentage}%` : "-", isDensity: false },
+            { label: "당류", value: sugar !== undefined ? (sugarLabel ?? `${sugar}g`) : "-", isDensity: false },
+            { label: "칼로리", value: calories != null ? `${calories}` : "-", isDensity: false },
+          ] : [
             { label: "단백질", value: `${proteinPerServing}g`, isDensity: false },
             { label: "칼로리", value: calories != null ? `${calories}` : "-", isDensity: false },
             { label: "당류", value: sugar !== undefined ? (sugarLabel ?? `${sugar}g`) : "-", isDensity: false },
             { label: "단백질 밀도", value: density, isDensity: true },
-          ].map(({ label, value, isDensity }) => (
+          ]).map(({ label, value, isDensity }) => (
             <div
               key={label}
               className={`product-card__metric flex min-w-0 flex-col justify-center rounded-lg border px-2 text-left md:px-2.5 ${
@@ -596,7 +612,7 @@ export default function ProductCard({
                 }
               />
             </div>
-            {slug ? (
+            {slug && productType !== "powder" ? (
               <div className="flex shrink-0 items-center gap-1">
                 <ActionTooltip label="비교 담기">
                   <CompareButton slug={slug} detailHref={detailHref} compact />

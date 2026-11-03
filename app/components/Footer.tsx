@@ -18,6 +18,7 @@ const SITE_SECTIONS = [
       { label: "단백질 쉐이크", href: "/shake" },
       { label: "단백질 요거트", href: "/yogurt" },
       { label: "고단백 두유", href: "/soymilk" },
+      { label: "단백질 파우더", href: "/powder" },
       { label: "전체 제품", href: "/products" },
     ],
   },

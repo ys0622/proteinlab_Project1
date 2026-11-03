@@ -52,6 +52,14 @@ const categories = [
     imageDir: path.join(rootDir, "public", "soymilk-image"),
     specDir: path.join(rootDir, "public", "soymilk-spec"),
   },
+  {
+    key: "powder",
+    label: "powder",
+    imageMapFile: path.join(rootDir, "app", "data", "slugToPowderImage.json"),
+    specMapFile: path.join(rootDir, "app", "data", "slugToPowderSpec.json"),
+    imageDir: path.join(rootDir, "public", "powder-image"),
+    specDir: path.join(rootDir, "public", "powder-spec"),
+  },
 ];
 
 function readJson(filePath) {
@@ -88,12 +96,15 @@ function main() {
     const missingSpecMap = [];
     const missingImageFile = [];
     const missingSpecFile = [];
+    const placeholderImages = [];
 
     for (const product of products) {
       const imageFilename = imageMap[product.slug];
       const specFilename = specMap[product.slug];
 
-      if (!imageFilename) {
+      if (imageFilename === "no-image.webp") {
+        placeholderImages.push(product.slug);
+      } else if (!imageFilename) {
         missingImageMap.push(product.slug);
       } else if (!fileExists(category.imageDir, imageFilename)) {
         missingImageFile.push(`${product.slug} -> ${imageFilename}`);
@@ -116,6 +127,7 @@ function main() {
     console.log(`spec_map_coverage=${products.length - missingSpecMap.length}/${products.length}`);
     console.log(`mapped_image_files_missing=${missingImageFile.length}`);
     console.log(`mapped_spec_files_missing=${missingSpecFile.length}`);
+    console.log(`placeholder_image=${placeholderImages.length}`);
 
     printList("missing_image_map", missingImageMap);
     printList("missing_spec_map", unexpectedMissingSpecMap);

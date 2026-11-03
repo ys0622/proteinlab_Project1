@@ -224,6 +224,45 @@ export function filterSoymilkProducts(
   });
 }
 
+export const POWDER_TYPE_LABELS = {
+  whey: "웨이",
+  isolate: "아이솔레이트(WPI)",
+  plant: "식물성",
+  blend: "혼합",
+  senior: "시니어",
+  gainer: "게이너",
+  meal: "식사대용",
+} as const;
+
+export function getPowderProteinPercentage(product: ProductDetailProps): number {
+  if (!product.servingSizeG || product.servingSizeG <= 0) return 0;
+  return (product.proteinPerServing / product.servingSizeG) * 100;
+}
+
+export interface PowderFilters {
+  powderType: string[];
+  origin: string[];
+}
+
+export const defaultPowderFilters: PowderFilters = {
+  powderType: [],
+  origin: [],
+};
+
+export function filterPowderProducts(
+  products: ProductDetailProps[],
+  filters: PowderFilters,
+): ProductDetailProps[] {
+  return products.filter((product) => {
+    if (product.productType !== "powder") return false;
+    const typeLabel = product.powderType ? POWDER_TYPE_LABELS[product.powderType] : "";
+    const originLabel = product.origin === "overseas" ? "해외 직구" : "국내";
+    if (filters.powderType.length > 0 && !filters.powderType.includes(typeLabel)) return false;
+    if (filters.origin.length > 0 && !filters.origin.includes(originLabel)) return false;
+    return true;
+  });
+}
+
 export interface DrinkFilters {
   brand: string[];
   protein: string[];

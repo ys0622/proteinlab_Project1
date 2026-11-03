@@ -4,30 +4,34 @@ import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
 import {
   CATEGORY_META,
-  ORDERED_CATEGORY_IDS,
+  ALL_CATEGORY_IDS,
   getCategoryHref,
-  type ProductCategory,
+  type CatalogProductCategory,
 } from "../lib/categories";
+import productCategoryCounts from "../data/productCategoryCounts.json";
 
 interface CategoryTabsProps {
-  activeCategory: ProductCategory;
-  counts?: Partial<Record<ProductCategory, number>>;
-  onSelect?: (category: ProductCategory) => void;
+  activeCategory: CatalogProductCategory;
+  counts?: Partial<Record<CatalogProductCategory, number>>;
+  onSelect?: (category: CatalogProductCategory) => void;
   stickyMobile?: boolean;
   className?: string;
   ariaLabel?: string;
+  hiddenCategories?: readonly CatalogProductCategory[];
 }
 
 function CategoryInfoPanel({
   counts,
+  hiddenCategories = [],
 }: {
-  counts?: Partial<Record<ProductCategory, number>>;
+  counts?: Partial<Record<CatalogProductCategory, number>>;
+  hiddenCategories?: readonly CatalogProductCategory[];
 }) {
   return (
     <div className="space-y-2.5">
-      {ORDERED_CATEGORY_IDS.map((category) => {
+      {ALL_CATEGORY_IDS.filter((category) => !hiddenCategories.includes(category)).map((category) => {
         const meta = CATEGORY_META[category];
-        const count = counts?.[category];
+        const count = counts?.[category] ?? productCategoryCounts[category];
 
         return (
           <div key={category}>
@@ -52,6 +56,7 @@ export default function CategoryTabs({
   stickyMobile = false,
   className = "",
   ariaLabel = "카테고리 탭",
+  hiddenCategories = [],
 }: CategoryTabsProps) {
   const [desktopInfoOpen, setDesktopInfoOpen] = useState(false);
   const [mobileInfoOpen, setMobileInfoOpen] = useState(false);
@@ -98,7 +103,7 @@ export default function CategoryTabs({
             className="min-w-0 flex-1 overflow-x-auto overflow-y-visible pb-1 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:overflow-visible"
           >
             <div className="flex min-w-max items-center gap-2">
-              {ORDERED_CATEGORY_IDS.map((category) => {
+              {ALL_CATEGORY_IDS.filter((category) => !hiddenCategories.includes(category)).map((category) => {
                 const meta = CATEGORY_META[category];
                 const active = activeCategory === category;
                 const commonClassName =
@@ -160,7 +165,7 @@ export default function CategoryTabs({
 
                 {desktopInfoOpen ? (
                   <div className="absolute bottom-full right-0 z-[100] mb-3 hidden w-[320px] rounded-xl border border-[var(--border)] bg-white p-3 shadow-lg md:block">
-                    <CategoryInfoPanel counts={counts} />
+                    <CategoryInfoPanel counts={counts} hiddenCategories={hiddenCategories} />
                   </div>
                 ) : null}
               </div>
@@ -177,7 +182,7 @@ export default function CategoryTabs({
               onClick={() => setMobileInfoOpen(false)}
             />
             <div className="absolute right-0 top-full z-[100] mt-2 w-[300px] rounded-xl border border-[var(--border)] bg-white p-3 shadow-lg md:hidden">
-              <CategoryInfoPanel counts={counts} />
+              <CategoryInfoPanel counts={counts} hiddenCategories={hiddenCategories} />
             </div>
           </>
         ) : null}

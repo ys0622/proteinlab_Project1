@@ -1,4 +1,4 @@
-type CategoryIconType = "drink" | "bar" | "yogurt" | "shake" | "soymilk";
+type CategoryIconType = "drink" | "bar" | "yogurt" | "shake" | "soymilk" | "powder";
 
 function Svg({ children }: { children: React.ReactNode }) {
   return (
@@ -107,6 +107,8 @@ export default function CategoryIcon({ type, color = "rgba(255,255,255,0.92)" }:
       return <ShakeIcon color={color} />;
     case "soymilk":
       return <SoymilkIcon color={color} />;
+    case "powder":
+      return <ShakeIcon color={color} />;
     default:
       return null;
   }

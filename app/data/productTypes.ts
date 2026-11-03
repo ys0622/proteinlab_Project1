@@ -19,8 +19,11 @@ export interface ProductCardProps {
   gradeTags?: string[];
   slug?: string;
   priority?: boolean;
-  productType?: "drink" | "bar" | "yogurt" | "shake" | "soymilk";
+  productType?: "drink" | "bar" | "yogurt" | "shake" | "soymilk" | "powder";
   yogurtType?: string;
+  servingSizeG?: number;
+  powderType?: "whey" | "isolate" | "plant" | "blend" | "senior" | "gainer" | "meal";
+  origin?: "domestic" | "overseas";
   purchaseLinkCategory?: CoupangLinkCategory | null;
   maxVisibleBadges?: number;
   fixedTitleLines?: 1 | 2;
@@ -69,8 +72,8 @@ export interface ProductDetailFields {
   slug: string;
   /** First registration in ProteinLab; not necessarily the market launch date. */
   createdAt?: string;
-  productType?: "drink" | "bar" | "yogurt" | "shake" | "soymilk";
-  nutritionBasis?: "per_unit" | "per_pack" | "unknown";
+  productType?: "drink" | "bar" | "yogurt" | "shake" | "soymilk" | "powder";
+  nutritionBasis?: "per_unit" | "per_pack" | "per_serving" | "unknown";
   needsServingCheck?: boolean;
   servingCheckNote?: string;
   manufacturer?: string;
@@ -83,6 +86,11 @@ export interface ProductDetailFields {
   drinkType?: string;
   yogurtType?: string;
   soymilkType?: string;
+  servingSizeG?: number;
+  servingsPerContainer?: number;
+  powderType?: "whey" | "isolate" | "plant" | "blend" | "senior" | "gainer" | "meal";
+  origin?: "domestic" | "overseas";
+  _temp?: boolean;
   storageType?: string;
   lactoseFree?: boolean;
   proteinPer100g?: number;

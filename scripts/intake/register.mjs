@@ -1,10 +1,11 @@
 /**
  * run-intake.mjs 결과(inbox/intake/<id>/)를 카테고리별 제품 데이터에 등록한다.
  *
- * 사용법: node scripts/intake/register.mjs <등록.json> [--dry-run]
+ * 사용법: node scripts/intake/register.mjs <등록.json> [--dry-run] [--with-photo]
+ * 기본은 사진을 넣지 않고 이미지 맵에 no-image.webp를 쓴다(Scott이 사진을 따로 넣음). --with-photo면 product.png를 쓴다.
  * 등록.json: [{ id, category, slug, brand, name, capacity, ...카테고리별 필드 }]
  */
-import { existsSync, readFileSync, writeFileSync } from "fs";
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from "fs";
 import { dirname, join, resolve } from "path";
 import { fileURLToPath } from "url";
 import sharp from "sharp";
@@ -12,6 +13,7 @@ import sharp from "sharp";
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "../..");
 const args = process.argv.slice(2);
 const dryRun = args.includes("--dry-run");
+const withPhoto = args.includes("--with-photo");
 const inputPath = args.find((arg) => !arg.startsWith("--"));
 if (!inputPath) {
   console.error("사용법: node scripts/intake/register.mjs <등록.json> [--dry-run]");
@@ -63,6 +65,15 @@ const CATEGORY_CONFIG = {
     specDir: "public/soymilk-spec",
     imageBox: { width: 600, height: 732 },
     feedRoute: "/soymilk",
+  },
+  powder: {
+    data: "powderProductsData.json",
+    imageMap: "slugToPowderImage.json",
+    specMap: "slugToPowderSpec.json",
+    imageDir: "public/powder-image",
+    specDir: "public/powder-spec",
+    imageBox: { width: 600, height: 732 },
+    feedRoute: "/powder",
   },
 };
 
@@ -120,8 +131,12 @@ function validateCategoryFields(item, where, errors) {
   } else if (item.category === "soymilk") {
     requireFields(item, ["variant", "tags", "flavor", "soymilkType"], where, errors);
     if (present(item.proteinSource) && item.proteinSource !== "대두") errors.push(`${where}: soymilk proteinSource는 '대두'여야 함`);
+  } else if (item.category === "powder") {
+    requireFields(item, ["variant", "tags", "flavor", "servingSizeG", "servingsPerContainer", "proteinSource", "powderType", "origin"], where, errors);
+    if (!['whey', 'isolate', 'plant', 'blend', 'senior', 'gainer', 'meal'].includes(item.powderType)) errors.push(`${where}: powderType 값이 올바르지 않음`);
+    if (!['domestic', 'overseas'].includes(item.origin)) errors.push(`${where}: origin 값이 올바르지 않음`);
   }
-  if (["drink", "yogurt", "soymilk"].includes(item.category) && present(item.tags)) {
+  if (["drink", "yogurt", "soymilk", "powder"].includes(item.category) && present(item.tags)) {
     if (!Array.isArray(item.tags) || !item.tags.length || item.tags.some((tag) => typeof tag !== "string" || !tag)) {
       errors.push(`${where}: 'tags'는 하나 이상의 문자열 배열이어야 함`);
     }
@@ -160,6 +175,31 @@ function buildEntry(item, n, coupangUrl, capacityValue) {
     capacity: item.capacity,
   };
   const nutritionPerBottle = nutritionObject(n);
+
+  if (item.category === "powder") {
+    return {
+      ...common,
+      variant: item.variant,
+      tags: item.tags,
+      flavor: item.flavor,
+      productType: "powder",
+      nutritionBasis: "per_serving",
+      servingSizeG: item.servingSizeG,
+      servingsPerContainer: item.servingsPerContainer,
+      proteinSource: item.proteinSource,
+      powderType: item.powderType,
+      origin: item.origin,
+      proteinPerServing: n.protein_g,
+      calories: n.kcal,
+      sugar: n.sugar_g,
+      fat: n.fat_g,
+      sodium: n.sodium_mg,
+      density: `${round1((n.protein_g / n.kcal) * 100).toFixed(1)}g/100kcal`,
+      nutritionPerBottle,
+      coupangUrl,
+      productUrl: "#",
+    };
+  }
 
   if (item.category === "bar") {
     const entry = {
@@ -385,14 +425,15 @@ for (const item of items) {
   }
 
   const intakeDir = resolve(root, "inbox/intake", item.id ?? "");
-  const requiredFiles = ["meta.json", "gemini.json", "product.png", "spec.png"];
+  const requiredFiles = ["meta.json", "gemini.json", "spec.png"];
   for (const file of requiredFiles) if (!existsSync(join(intakeDir, file))) errors.push(`${where}: ${file} 없음`);
   if (!requiredFiles.every((file) => existsSync(join(intakeDir, file)))) continue;
 
   const meta = load(join(intakeDir, "meta.json"));
   const gemini = load(join(intakeDir, "gemini.json"));
   const nutrition = gemini.nutrition_per_unit ?? {};
-  const requiredNutrition = ["kcal", "protein_g", "sugar_g", "fat_g", "sodium_mg"];
+  // 건강기능식품 영양·기능정보 표는 당류를 적지 않는 경우가 있어 파우더는 당류를 비워 둘 수 있다.
+  const requiredNutrition = item.category === "powder" ? ["kcal", "protein_g", "fat_g", "sodium_mg"] : ["kcal", "protein_g", "sugar_g", "fat_g", "sodium_mg"];
   const missingNutrition = requiredNutrition.filter((key) => typeof nutrition[key] !== "number");
   if (missingNutrition.length) errors.push(`${where}: 수치 없음: ${missingNutrition.join(", ")}`);
   for (const key of ["carbs_g", "sat_fat_g", "trans_fat_g", "cholesterol_mg", "fiber_g"]) {
@@ -435,7 +476,9 @@ for (const { item, intakeDir, nutrition, entry } of prepared) {
   const store = stores[item.category];
   const config = CATEGORY_CONFIG[item.category];
   store.data.push(entry);
-  store.imageMap[item.slug] = `${item.slug}.webp`;
+  // 2026-11-03 Scott: 사진은 Scott이 따로 넣는다. --with-photo를 줄 때만 자동으로 자른 사진을 쓴다.
+  const hasProductPhoto = withPhoto && existsSync(join(intakeDir, "product.png"));
+  store.imageMap[item.slug] = hasProductPhoto ? `${item.slug}.webp` : "no-image.webp";
   store.specMap[item.slug] = `${item.slug}.png`;
   newProducts.push({ slug: item.slug, addedAt: today });
   touchedCategories.add(item.category);
@@ -450,10 +493,16 @@ for (const { item, intakeDir, nutrition, entry } of prepared) {
     continue;
   }
 
-  const imageOut = resolve(root, config.imageDir, `${item.slug}.webp`);
-  const photo = await processPhoto(join(intakeDir, "product.png"), imageOut, item.category);
-  console.log(`  사진 → ${config.imageDir}/${item.slug}.webp (${photo.width}x${photo.height})`);
+  if (hasProductPhoto) {
+    const imageOut = resolve(root, config.imageDir, `${item.slug}.webp`);
+    mkdirSync(dirname(imageOut), { recursive: true });
+    const photo = await processPhoto(join(intakeDir, "product.png"), imageOut, item.category);
+    console.log(`  사진 → ${config.imageDir}/${item.slug}.webp (${photo.width}x${photo.height})`);
+  } else {
+    console.log(`  사진 없음 → ${config.imageDir}/no-image.webp 사용`);
+  }
   const specOut = resolve(root, config.specDir, `${item.slug}.png`);
+  mkdirSync(dirname(specOut), { recursive: true });
   await sharp(join(intakeDir, "spec.png")).resize({ width: 900, withoutEnlargement: false }).png({ compressionLevel: 9 }).toFile(specOut);
   console.log(`  성분표 → ${config.specDir}/${item.slug}.png (가로 900px)`);
 }
