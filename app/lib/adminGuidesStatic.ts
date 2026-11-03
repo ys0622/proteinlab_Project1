@@ -186,6 +186,8 @@ const sections: AdminGuideSection[] = [
       article("meal-replacement-strategy", "식사대용 전략", "식사대용과 보충용의 차이를 설명합니다.", "/guides/intake-strategy-health/meal-replacement-strategy", { emoji: "🍽️", tags: ["식사대용", "포만감"] }),
       article("morning-protein-drink", "아침 대용 단백질 음료", "공복과 출근길 기준으로 아침 대용 단백질 음료를 고르는 법을 정리합니다.", "/guides/intake-strategy-health/morning-protein-drink", { emoji: "🌅", tags: ["아침", "음료", "식사대용"] }),
       article("protein-drink-without-exercise", "운동 안 하고 단백질 음료 마시면", "하루 필요량 0.91g/kg, 근육이 생기는지·살찌는지 연구로 정리합니다.", "/guides/intake-strategy-health/protein-drink-without-exercise", { emoji: "🥛", tags: ["입문", "생활 보완"] }),
+      article("pregnancy-protein", "임산부 단백질", "임신 2분기 +15g·3분기 +30g·수유기 +25g(2020 섭취기준)과 보충 시 확인할 점을 정리합니다.", "/guides/intake-strategy-health/pregnancy-protein", { emoji: "🤰", tags: ["임신", "건강"] }),
+      article("teen-protein", "청소년 단백질 섭취량", "12~18세 권장량·실제 섭취량·다이어트와 운동할 때 기준을 정리합니다.", "/guides/intake-strategy-health/teen-protein", { emoji: "🎒", tags: ["청소년", "건강"] }),
       article("glp1-protein", "마운자로·위고비 단백질", "GLP-1 비만 치료 중 근육 손실을 줄이기 위한 단백질 양과 근력 운동, 소용량 고단백 음료를 정리합니다.", "/guides/intake-strategy-health/glp1-protein", { emoji: "💉", tags: ["GLP-1", "근육"] }),
       article("protein-shake-effects", "단백질 쉐이크 효과", "근육·근력·포만감·식사대용 효과를 연구 근거 수준별로 정리합니다.", "/guides/intake-strategy-health/protein-shake-effects", { emoji: "💪", tags: ["쉐이크", "효과"] }),
       article("protein-shake-diet", "단백질 쉐이크 다이어트", "한 끼 대신·간식 대신 기준과 식사대용 연구, 식약처 기준을 정리합니다.", "/guides/intake-strategy-health/protein-shake-diet", { emoji: "🥗", tags: ["쉐이크", "다이어트"] }),

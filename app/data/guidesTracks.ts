@@ -432,6 +432,28 @@ export const guideTracks: GuideTrack[] = [
         ],
       },
       {
+        slug: "pregnancy-protein",
+        title: "임산부 단백질",
+        description: "임신 시기·나이별 단백질 권장량(2020 섭취기준 2분기 +15g·3분기 +30g·수유 +25g)과 보충 시 확인할 점을 정리합니다.",
+        searchIntent: "임산부 단백질",
+        futureFocus: ["임신 시기별 추가량", "고단백 보충 비권고", "카페인·당류 확인"],
+        internalLinkTargets: [
+          { label: "임산부 두유 성분 비교", href: "/guides/product-selection-comparison/pregnancy-soymilk-guide" },
+          { label: "단백질 하루 섭취량", href: "/guides/basics/daily-requirement" },
+        ],
+      },
+      {
+        slug: "teen-protein",
+        title: "청소년 단백질 섭취량",
+        description: "중학생·고등학생 단백질 권장량과 실제 섭취량, 다이어트·운동할 때 볼 점을 정리합니다.",
+        searchIntent: "청소년 단백질 섭취량",
+        futureFocus: ["12~18세 권장량", "실제 섭취량 분포", "카페인·당류 확인"],
+        internalLinkTargets: [
+          { label: "단백질 하루 섭취량", href: "/guides/basics/daily-requirement" },
+          { label: "단백질 부족 증상", href: "/guides/basics/deficiency-symptoms" },
+        ],
+      },
+      {
         slug: "protein-shake-effects",
         title: "단백질 쉐이크 효과",
         description: "단백질 쉐이크·음료의 근육·근력·포만감·식사대용 효과를 연구 근거 수준별로 정리합니다.",
