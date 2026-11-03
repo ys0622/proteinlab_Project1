@@ -19,6 +19,7 @@ proteinlab.kr — 단백질 음료·바·요거트·쉐이크 제품 비교 서�
 - 앱 예약 작업(2026-10-28 KPI 중심으로 재작성): 프로틴랩은 `proteinlab-morning`(매일 09:50, 어제 쿠팡 클릭·주문·수익을 subId별로 뽑아 고점 대비 → 사이트 이상 여부 → 3줄 보고. 블로그 발행 확인은 블로그 세션)와 `proteinlab-weekly`(토 10:30, 고점 대비 표 → 지난주 고친 것의 효과 → 다음 주 고칠 것 1~3개) 두 개만 둔다. **모든 일의 목표는 KPI 고점 돌파를 최단기간에**(docs/operating-plan.md '고점 돌파 최단 로드맵'). Windows 작업은 골드박스·네이버 수집(프로틴랩), BlogPilot_Daily(블로그 발행, 다른 세션).
 - 브라우저 배치(2026-10-25 Scott 결정, `docs/browser-accounts.md`): 웨일은 Scott 개인용. 크롬1 프로틴랩(블로그·쓰레드), 크롬2 케어맵, 크롬3 정보픽·@yslee7028, 크롬4 인스타, **Aside는 네이버 서치어드바이저 전용**(수집 요청·주간 지표). 그 밖의 자동화는 크롬(`scripts/browser/chrome-repl.mjs --profile <이름>`, `D:rowser-profiles\<이름>`; 골드박스는 `work-nologin`, 실패 시 Aside). Claude 내장 브라우저에는 계정을 로그인하지 않는다.
 - 신규 쉐이크 등록은 `scripts/add-shake.mjs`(사진·성분표를 `inbox/shake/`에 넣고 실행). 다른 카테고리용 스크립트는 없다.
+- 신제품은 사진 없이 먼저 등록한다(2026-11-03 Scott): `scripts/intake/run-intake.mjs`→성분표 대조→`register.mjs`(기본은 이미지 맵 `no-image.webp`, `--with-photo`일 때만 자동 사진). 사진이 필요한 제품은 `docs/image-needed.md`와 운영실 photos 표(쿠팡 링크 포함). Scott이 보낸 사진(`<slug>.jpg`)과 쿠파스 링크(`links.txt`: `<slug> <단축 링크>`)는 `inbox/photos/`에 넣고 `node scripts/apply-photos.mjs`(먼저 `--dry-run`). 링크는 지금 상품과 같은 상품일 때만 바꾸고, 끝나면 출력된 slug를 운영실 photos 표에서 done으로 바꾼다.
 
 ## 배포
 1. `npx tsc --noEmit -p .` 와 `npx eslint <바꾼 파일>`
