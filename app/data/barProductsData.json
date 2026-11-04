@@ -466,7 +466,7 @@
     "productUrl": "#",
     "productType": "bar",
     "gradeTags": [],
-    "coupangUrl": "https://link.coupang.com/a/fg1XtIkg8W",
+    "coupangUrl": "https://www.coupang.com/vp/products/8011816243?itemId=28089807602&vendorItemId=95046136051",
     "naverUrl": "https://search.shopping.naver.com/search/all?query=%ED%80%98%EC%8A%A4%ED%8A%B8%20%EB%8B%A8%EB%B0%B1%EC%A7%88%EB%B0%94%20(%EB%94%A5%20%EC%B4%88%EC%BD%9C%EB%A6%BF%EC%B9%A9%20%EC%BF%A0%ED%82%A4%EB%8F%84%EC%9A%B0)&prevQuery=%ED%80%98%EC%8A%A4%ED%8A%B8%20%EB%8B%A8%EB%B0%B1%EC%A7%88%EB%B0%94%20(%EB%94%A5%EB%94%94%EC%89%AC%20%EC%BF%A0%ED%82%A4%20%EC%95%A4%20%ED%81%AC%EB%A6%BC)&vertical=search",
     "fat": 9,
     "sodium": 220
@@ -613,7 +613,7 @@
     "productUrl": "#",
     "productType": "bar",
     "gradeTags": [],
-    "coupangUrl": "https://link.coupang.com/a/fg11Ouyxsi",
+    "coupangUrl": null,
     "naverUrl": "https://search.shopping.naver.com/search/all?query=%ED%80%98%EC%8A%A4%ED%8A%B8%EB%89%B4%ED%8A%B8%EB%A6%AC%EC%85%98%20%ED%94%84%EB%A1%9C%ED%8B%B4%EB%B0%94%20%EB%94%A5%20%EC%BF%A0%ED%82%A4%20%EC%95%A4%20%ED%81%AC%EB%A6%BC%2050g%20%EB%8B%A8%EB%B0%B1%EC%A7%88%EB%B0%94%2012%EA%B0%9C%EC%9E%85&prevQuery=%ED%80%98%EC%8A%A4%ED%8A%B8%20%EB%8B%A8%EB%B0%B1%EC%A7%88%EB%B0%94%20(%EB%94%A5%EB%94%94%EC%89%AC%20%EC%BF%A0%ED%82%A4%20%EC%95%A4%20%ED%81%AC%EB%A6%BC)&vertical=search"
   },
   {
@@ -920,21 +920,23 @@
     "slug": "mymil-new-proteinbar",
     "brand": "마이밀",
     "name": "뉴프로틴바",
-    "capacity": "50g",
+    "capacity": "21g",
     "variant": "일반",
     "tags": [
       "바"
     ],
-    "proteinPerServing": 12,
-    "calories": 210,
-    "sugar": 8,
-    "density": "5.71g/100kcal",
+    "proteinPerServing": 2.5,
+    "calories": 107,
+    "sugar": 7,
+    "density": "2.34g/100kcal",
     "productUrl": "#",
     "productType": "bar",
     "gradeTags": [],
     "coupangUrl": "https://link.coupang.com/a/fg2dxlvoXc",
     "naverUrl": "https://search.shopping.naver.com/search/all?query=%EB%A7%88%EC%9D%B4%EB%B0%80%20%EB%89%B4%ED%94%84%EB%A1%9C%ED%8B%B4%EB%B0%94&prevQuery=%EB%89%B4%ED%94%84%EB%A1%9C%ED%8B%B4%EB%B0%94&vertical=search",
-    "officialUrl": "https://www.wellife.co.kr/categories/index/102000000000"
+    "officialUrl": "https://www.wellife.co.kr/categories/index/102000000000",
+    "fat": 5,
+    "sodium": 40
   },
   {
     "slug": "myprotein-soft-lemon-earlgrey",
@@ -1277,7 +1279,7 @@
     "productUrl": "#",
     "productType": "bar",
     "gradeTags": [],
-    "coupangUrl": "https://www.coupang.com/vp/products/9238581579?itemId=27316846673&vendorItemId=94995221455",
+    "coupangUrl": "https://www.coupang.com/vp/products/9791582629?itemId=29316075159&vendorItemId=96231110527",
     "naverUrl": "https://search.shopping.naver.com/search/all?query=%EB%8B%A8%EB%B0%B1%ED%95%98%EB%8B%88%20%ED%94%84%EB%A1%9C%ED%8B%B4%EB%B0%94%20%EB%A7%90%EC%B0%A8%EC%B4%88%EC%BD%94%2C%2038g%2C%2012%EA%B0%9C&prevQuery=%EB%8B%A8%EB%B0%B1%ED%95%98%EB%8B%88%20%ED%94%84%EB%A1%9C%ED%8B%B4%EB%B0%94%20%EB%A7%90%EC%B0%A8%EC%B4%88%EC%BD%94%2C%2038g%2C%2012%EA%B0%9C&vertical=search"
   },
   {
@@ -1531,7 +1533,7 @@
     "productUrl": "#",
     "productType": "bar",
     "gradeTags": [],
-    "coupangUrl": "https://link.coupang.com/a/fg2yp1YmTk",
+    "coupangUrl": null,
     "naverUrl": "https://search.shopping.naver.com/search/all?query=%EC%BC%88%EB%A1%9C%EA%B7%B8%20%ED%94%84%EB%A1%9C%ED%8B%B4%EB%B0%94K%20(%EC%B9%B4%EB%9D%BC%EB%A9%9C%26%EB%84%9B)&prevQuery=%EC%BC%88%EB%A1%9C%EA%B7%B8&vertical=search",
     "officialUrl": "https://brand.naver.com/kellogg/category/8a6244213e0e409eb4cf4cc20c4b9027?cp=1",
     "fat": 12.5,

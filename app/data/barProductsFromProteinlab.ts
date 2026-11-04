@@ -105,7 +105,7 @@ export const mockBarProducts: ProductDetailProps[] = [
   bar("thedanbaek-crunchbar-peanutbutter", "더단백", "크런치바 (피넛버터)", 15, 185, 8, "8.11g/100kcal", "40g"),
   bar("thedanbaek-mildbar-almondcookie", "더단백", "마일드바 (아몬드쿠키)", 15, 220, 0.7, "6.82g/100kcal", "50g"),
   bar("hymune-activebar-nuts", "하이뮨", "액티브바 (넛츠)", 12, 250, 5, "4.8g/100kcal", "50g"),
-  bar("mymil-new-proteinbar", "마이밀", "뉴프로틴바", 12, 210, 8, "5.71g/100kcal", "50g"),
+  bar("mymil-new-proteinbar", "마이밀", "뉴프로틴바", 2.5, 107, 7, "2.34g/100kcal", "21g"),
   bar("myprotein-soft-lemon-earlgrey", "마이프로틴", "소프트 단백질바 (레몬 얼그레이)", 12, 210, 8, "5.71g/100kcal", "50g"),
   bar("myprotein-soft-caramel-choco", "마이프로틴", "소프트 단백질바 (카라멜 초코)", 12, 210, 8, "5.71g/100kcal", "50g"),
   bar("myprotein-soft-strawberry-yogurt", "마이프로틴", "소프트 단백질바 (딸기 요거트)", 12, 210, 8, "5.71g/100kcal", "50g"),
