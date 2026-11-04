@@ -2,9 +2,11 @@
  * 검색 사용자가 실제로 치는 브랜드 표기가 우리 표기와 다른 경우(2026-10-20 네이버 자동완성 확인).
  * "베어벨즈"로 표기하지만 네이버 자동완성은 전부 "베어벨스 프로틴바/프로틴/단백질"이다.
  * 검색 제목에만 "베어벨즈(베어벨스)"처럼 붙인다. 본문 표기는 그대로 둔다.
+ * "비에스엔"은 네이버 자동완성이 "bsn 신타6"·"BSN 신타-6"처럼 영문으로만 이어진다(2026-11-05 확인).
  */
 export const BRAND_SEARCH_ALIASES: Record<string, string> = {
   베어벨즈: "베어벨스",
+  비에스엔: "BSN",
 };
 
 export function brandWithSearchAlias(brand: string): string {

@@ -113,6 +113,11 @@ const BRAND_SLUG_MAP: Record<string, string> = {
   아임푸디: "imfoody",
   프로우틴: "proutin",
   린코어: "leancore",
+  // 2026-11-05 파우더 2차
+  아이소퓨어: "isopure",
+  오늘의바디: "oneul-body",
+  베네틴: "benetin",
+  스타트프로틴: "startprotein",
 };
 
 export function brandToSlug(brand: string) {
