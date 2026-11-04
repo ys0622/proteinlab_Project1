@@ -2057,5 +2057,42 @@
     "manufacturer": "연두",
     "naverUrl": "https://search.shopping.naver.com/search/all?query=%EC%B4%9D%EA%B0%81%EB%84%A4%20%EA%B5%AD%EC%82%B0%20%EC%84%9C%EB%A6%AC%ED%83%9C%20%EB%AC%B4%EA%B0%80%EB%8B%B9%20%EB%91%90%EC%9C%A0%20190mL",
     "coupangUrl": "https://www.coupang.com/vp/products/8243611632?itemId=88725812&vendorItemId=3061930281"
+  },
+  {
+    "slug": "gomgom-blackbean-soymilk-190",
+    "brand": "곰곰",
+    "name": "고소한 검은콩 두유",
+    "capacity": "190mL",
+    "variant": "검은콩",
+    "tags": [
+      "팩"
+    ],
+    "proteinPerServing": 5,
+    "calories": 100,
+    "sugar": 7,
+    "density": "2.6g/100ml",
+    "productUrl": "#",
+    "productType": "soymilk",
+    "gradeTags": [],
+    "flavor": "검은콩",
+    "proteinSource": "대두",
+    "fat": 5.1,
+    "sodium": 150,
+    "calorieDensity": "52.6kcal/100ml",
+    "soymilkType": "두유",
+    "nutritionPerBottle": {
+      "caloriesKcal": 100,
+      "proteinG": 5,
+      "carbsG": 8,
+      "sugarsG": 7,
+      "fatG": 5.1,
+      "satFatG": 1,
+      "transFatG": 0,
+      "cholesterolMg": 0,
+      "sodiumMg": 150
+    },
+    "manufacturer": "연세대학교 연세유업",
+    "naverUrl": "https://search.shopping.naver.com/search/all?query=%EA%B3%B0%EA%B3%B0%20%EA%B3%A0%EC%86%8C%ED%95%9C%20%EA%B2%80%EC%9D%80%EC%BD%A9%20%EB%91%90%EC%9C%A0%20190mL",
+    "coupangUrl": "https://www.coupang.com/vp/products/312940632?itemId=988830917&vendorItemId=5413212677"
   }
 ]
