@@ -5846,5 +5846,42 @@
     },
     "naverUrl": "https://search.shopping.naver.com/search/all?query=%EB%A7%88%EC%9D%B4%ED%94%84%EB%A1%9C%ED%8B%B4%20%EB%A7%88%EC%9D%B4%ED%94%84%EB%A1%9C%ED%8B%B4%20%EB%93%9C%EB%A7%81%ED%81%AC%20(%EC%8B%9C%EA%B7%B8%EB%8B%88%EC%B2%98%20%EC%B4%88%EC%BD%9C%EB%A6%BF)%20340mL",
     "coupangUrl": "https://www.coupang.com/vp/products/9484529613?itemId=28242374002&vendorItemId=95199643424"
+  },
+  {
+    "slug": "oatmont-protein-zerosugar-choco-250",
+    "brand": "오트몬드",
+    "name": "프로틴 제로슈거 (초코)",
+    "capacity": "250mL",
+    "variant": "일반",
+    "tags": [
+      "팩"
+    ],
+    "proteinPerServing": 21,
+    "calories": 107,
+    "sugar": 0,
+    "density": "8.4g/100ml",
+    "productUrl": "#",
+    "productType": "drink",
+    "gradeTags": [],
+    "manufacturer": "롯데칠성음료",
+    "flavor": "초코",
+    "proteinSource": "혼합",
+    "fat": 1.7,
+    "sodium": 365,
+    "calorieDensity": "42.8kcal/100ml",
+    "drinkType": "밀크형",
+    "nutritionPerBottle": {
+      "caloriesKcal": 107,
+      "proteinG": 21,
+      "carbsG": 2,
+      "sugarsG": 0,
+      "fatG": 1.7,
+      "satFatG": 0.4,
+      "transFatG": 0,
+      "cholesterolMg": 0,
+      "sodiumMg": 365
+    },
+    "naverUrl": "https://search.shopping.naver.com/search/all?query=%EC%98%A4%ED%8A%B8%EB%AA%AC%EB%93%9C%20%ED%94%84%EB%A1%9C%ED%8B%B4%20%EC%A0%9C%EB%A1%9C%EC%8A%88%EA%B1%B0%20(%EC%B4%88%EC%BD%94)%20250mL",
+    "coupangUrl": "https://www.coupang.com/vp/products/9734080728?itemId=29130244489&vendorItemId=96066957663"
   }
 ]

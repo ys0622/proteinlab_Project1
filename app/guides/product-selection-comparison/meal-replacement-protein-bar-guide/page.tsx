@@ -112,7 +112,7 @@ export default function MealReplacementProteinBarGuidePage() {
               ))}
             </div>
           </section>
-          <GuideBuySection slugs={["dryou-proteinbar-pro-3nuts-crunch", "kirkland-proteinbar-choco-chip-cookie-dough-60", "quest-nutrition-protein-bar-deep-dish-cookie-cream-60"]} variant="top" />
+          <GuideBuySection slugs={["dryou-proteinbar-pro-3nuts-crunch", "kirkland-proteinbar-choco-chip-cookie-dough-60", "quest-nutrition-protein-bar-cookie-cream-60"]} variant="top" />
 
           <section className="rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
             <h2 className="text-xl font-bold text-[var(--foreground)]">체크 매트릭스</h2>
@@ -154,7 +154,7 @@ export default function MealReplacementProteinBarGuidePage() {
         </div>
       </main>
       <CategoryDataSection category="bar" mode="density" />
-      <GuideBuySection slugs={["dryou-proteinbar-pro-3nuts-crunch", "kirkland-proteinbar-choco-chip-cookie-dough-60", "quest-nutrition-protein-bar-deep-dish-cookie-cream-60"]} />
+      <GuideBuySection slugs={["dryou-proteinbar-pro-3nuts-crunch", "kirkland-proteinbar-choco-chip-cookie-dough-60", "quest-nutrition-protein-bar-cookie-cream-60"]} />
       <GuideNextReads path="/guides/product-selection-comparison/meal-replacement-protein-bar-guide" />
       <Footer />
     </div>

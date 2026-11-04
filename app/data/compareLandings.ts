@@ -285,7 +285,7 @@ const compareLandings: CompareLanding[] = [
     description: "요프로와 매일 바이오 그릭 요거트를 단백질, 당류, 용량 기준으로 비교합니다.",
     intro: "마시는 타입과 그릭 타입 사이에서 고민하는 사용자가 많이 찾는 요거트 비교 조합입니다.",
     bullets: ["브랜드 검색 유입 대응", "떠먹는 타입과 그릭 타입 비교", "요거트 허브 페이지로 이어지기 좋음"],
-    productSlugs: ["yopro-plain-150", "maeil-bio-greek-plain-150"],
+    productSlugs: ["yopro-plain-150", "maeil-bio-greek-unsweetened-150"],
     relatedLinks: [
       { href: "/brands/yopro", title: "요프로 브랜드 허브", description: "요프로 제품군 전체를 확인합니다." },
       { href: "/brands/maeil-bio", title: "매일 바이오 브랜드 허브", description: "매일 바이오 요거트 라인을 모아 봅니다." },

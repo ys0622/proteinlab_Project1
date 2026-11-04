@@ -598,25 +598,6 @@
     "sodium": 240
   },
   {
-    "slug": "quest-nutrition-protein-bar-deep-dish-cookie-cream-60",
-    "brand": "퀘스트 뉴트리션",
-    "name": "단백질바 (딥디쉬 쿠키 앤 크림)",
-    "capacity": "60g",
-    "variant": "일반",
-    "tags": [
-      "바"
-    ],
-    "proteinPerServing": 21,
-    "calories": 200,
-    "sugar": 1,
-    "density": "10.5g/100kcal",
-    "productUrl": "#",
-    "productType": "bar",
-    "gradeTags": [],
-    "coupangUrl": null,
-    "naverUrl": "https://search.shopping.naver.com/search/all?query=%ED%80%98%EC%8A%A4%ED%8A%B8%EB%89%B4%ED%8A%B8%EB%A6%AC%EC%85%98%20%ED%94%84%EB%A1%9C%ED%8B%B4%EB%B0%94%20%EB%94%A5%20%EC%BF%A0%ED%82%A4%20%EC%95%A4%20%ED%81%AC%EB%A6%BC%2050g%20%EB%8B%A8%EB%B0%B1%EC%A7%88%EB%B0%94%2012%EA%B0%9C%EC%9E%85&prevQuery=%ED%80%98%EC%8A%A4%ED%8A%B8%20%EB%8B%A8%EB%B0%B1%EC%A7%88%EB%B0%94%20(%EB%94%A5%EB%94%94%EC%89%AC%20%EC%BF%A0%ED%82%A4%20%EC%95%A4%20%ED%81%AC%EB%A6%BC)&vertical=search"
-  },
-  {
     "slug": "quest-nutrition-protein-bar-smores-60",
     "brand": "퀘스트 뉴트리션",
     "name": "단백질바 (스모어)",
@@ -764,25 +745,6 @@
     "coupangUrl": "https://www.coupang.com/vp/products/7714630927?itemId=20688361215&vendorItemId=87999990294&q=%ED%9E%98%EB%82%B4%EA%B3%A0+%EB%8B%A8%EC%A7%88%EB%B0%94+%28%EB%8B%A4%ED%81%AC+%EC%B4%88%EC%BD%9C%EB%A6%BF%29&searchId=c449fd41844298&sourceType=search&itemsCount=36&searchRank=15&rank=15&traceId=mmylluzq",
     "fat": 12,
     "sodium": 210
-  },
-  {
-    "slug": "nobrand-proteinbar-choco",
-    "brand": "노브랜드",
-    "name": "단백질바 초코",
-    "capacity": "48g",
-    "variant": "일반",
-    "tags": [
-      "바"
-    ],
-    "proteinPerServing": 12,
-    "calories": 220,
-    "sugar": 10,
-    "density": "5.45g/100kcal",
-    "productUrl": "#",
-    "productType": "bar",
-    "gradeTags": [],
-    "officialUrl": "https://emart.ssg.com/entity/nobrands.ssg",
-    "coupangUrl": "https://link.coupang.com/a/gaIdNRGs2u"
   },
   {
     "slug": "thedanbaek-crunchbar-choco",
@@ -1560,26 +1522,6 @@
     "officialUrl": "https://brand.naver.com/kellogg/category/8a6244213e0e409eb4cf4cc20c4b9027?cp=1",
     "fat": 12,
     "sodium": 68.8
-  },
-  {
-    "slug": "dryou-proteinbar-mini-nuts",
-    "brand": "닥터유",
-    "name": "단백질바 미니 (견과)",
-    "capacity": "35g",
-    "variant": "일반",
-    "tags": [
-      "바"
-    ],
-    "proteinPerServing": 8,
-    "calories": 160,
-    "sugar": 6,
-    "density": "5g/100kcal",
-    "productUrl": "#",
-    "productType": "bar",
-    "gradeTags": [],
-    "coupangUrl": "https://link.coupang.com/a/fg2zh5XV9w",
-    "naverUrl": "https://search.shopping.naver.com/search/all?query=%EB%8B%A5%ED%84%B0%EC%9C%A0%20%EB%8B%A8%EB%B0%B1%EC%A7%88%EB%B0%94%20%EB%AF%B8%EB%8B%88%20(%EA%B2%AC%EA%B3%BC)&prevQuery=%EB%8B%A5%ED%84%B0%EC%9C%A0%20%ED%94%84%EB%A1%9C%20%EB%8B%A8%EB%B0%B1%EC%A7%88%EB%B0%94%20%ED%95%9C%EC%9E%85%EC%8F%99%20(%ED%81%AC%EB%9F%B0%EC%B9%98)&vertical=search",
-    "officialUrl": "https://dryoumall.com/product/list.html?cate_no=44"
   },
   {
     "slug": "organica-ola-chewy-protein-bar-peanut-cacao-35",

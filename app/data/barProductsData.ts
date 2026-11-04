@@ -803,15 +803,6 @@ const exactNutritionBySlug: Record<string, NutritionPatch> = {
     satFatG: 2.5,
     sodiumMg: 220,
   },
-  "quest-nutrition-protein-bar-deep-dish-cookie-cream-60": {
-    caloriesKcal: 200,
-    proteinG: 21,
-    carbsG: 21,
-    sugarsG: 1,
-    fatG: 8,
-    satFatG: 2.5,
-    sodiumMg: 280,
-  },
   "post-proteinbar": {
     caloriesKcal: 257,
     proteinG: 16,
@@ -876,15 +867,6 @@ const exactNutritionBySlug: Record<string, NutritionPatch> = {
     satFatG: 3.5,
     sodiumMg: 210,
     cholesterolMg: 0,
-  },
-  "nobrand-proteinbar-choco": {
-    caloriesKcal: 220,
-    proteinG: 12,
-    carbsG: 25,
-    sugarsG: 10,
-    fatG: 7,
-    satFatG: 3.9,
-    sodiumMg: 130,
   },
   "selex-proteinbar-berryoat": {
     caloriesKcal: 220,
@@ -1138,15 +1120,6 @@ const exactNutritionBySlug: Record<string, NutritionPatch> = {
     sodiumMg: 169,
     cholesterolMg: 0,
     transFatG: 0,
-  },
-  "dryou-proteinbar-mini-nuts": {
-    caloriesKcal: 160,
-    proteinG: 8,
-    carbsG: 15,
-    sugarsG: 6,
-    fatG: 9,
-    satFatG: 2.8,
-    sodiumMg: 74,
   },
   "organica-ola-chewy-protein-bar-peanut-cacao-35": {
     caloriesKcal: 125,

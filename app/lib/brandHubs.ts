@@ -104,6 +104,14 @@ const BRAND_SLUG_MAP: Record<string, string> = {
   푸른빈: "purunbean",
   프로틴스토리: "protein-story",
   프로틴컴퍼니: "protein-company",
+  // 2026-11-04 신제품(두유·쉐이크)
+  파이토메이드: "phytomade",
+  성균관: "sungkyunkwan",
+  총각네: "chonggakne",
+  코어리지: "coreage",
+  아임푸디: "imfoody",
+  프로우틴: "proutin",
+  린코어: "leancore",
 };
 
 export function brandToSlug(brand: string) {
