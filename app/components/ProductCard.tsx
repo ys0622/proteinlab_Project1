@@ -520,12 +520,12 @@ export default function ProductCard({
           {(productType === "powder" ? [
             { label: "1회 단백질", value: `${proteinPerServing}g`, isDensity: false },
             { label: "단백질 함량", value: proteinPercentage != null ? `${proteinPercentage}%` : "-", isDensity: false },
-            { label: "당류", value: sugar !== undefined ? (sugarLabel ?? `${sugar}g`) : "-", isDensity: false },
+            { label: "당류", value: sugar != null ? (sugarLabel ?? `${sugar}g`) : "-", isDensity: false },
             { label: "칼로리", value: calories != null ? `${calories}` : "-", isDensity: false },
           ] : [
             { label: "단백질", value: `${proteinPerServing}g`, isDensity: false },
             { label: "칼로리", value: calories != null ? `${calories}` : "-", isDensity: false },
-            { label: "당류", value: sugar !== undefined ? (sugarLabel ?? `${sugar}g`) : "-", isDensity: false },
+            { label: "당류", value: sugar != null ? (sugarLabel ?? `${sugar}g`) : "-", isDensity: false },
             { label: "단백질 밀도", value: density, isDensity: true },
           ]).map(({ label, value, isDensity }) => (
             <div

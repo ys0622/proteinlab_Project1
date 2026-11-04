@@ -64,7 +64,7 @@ export default function GuideBuySection({
                   <span className="text-[10px] leading-4 text-[var(--foreground-muted)]">
                     단백질 {product.proteinPerServing}g
                     <br />
-                    당류 {product.sugarLabel ?? `${product.sugar}g`}
+                    당류 {product.sugarLabel ?? (product.sugar != null ? `${product.sugar}g` : "-")}
                   </span>
                 </TrackedLink>
                 <TrackedCoupangLink
@@ -109,7 +109,7 @@ export default function GuideBuySection({
                 className="rounded-2xl border border-[#d9e4f0] bg-[#f7f9fc] p-4 transition-colors hover:bg-[#eef3f9]"
               >
                 <p className="text-sm font-semibold text-[var(--foreground)]">{formatProductLabel(product.brand, product.name)}</p>
-                <p className="mt-2 text-xs text-[var(--foreground-muted)]">단백질 {product.proteinPerServing}g · 당류 {product.sugar}g</p>
+                <p className="mt-2 text-xs text-[var(--foreground-muted)]">단백질 {product.proteinPerServing}g · 당류 {product.sugar != null ? `${product.sugar}g` : "-"}</p>
                 <p className="mt-3 text-sm font-semibold text-[#24543d]">현재 가격·옵션 확인 →</p>
               </TrackedCoupangLink>
             );

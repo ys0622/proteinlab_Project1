@@ -1,4 +1,4 @@
-import { ORDERED_CATEGORY_IDS, getCategoryHref, getCategoryLabel } from "@/app/lib/categories";
+import { ALL_CATEGORY_IDS, getCategoryHref, getCategoryLabel } from "@/app/lib/categories";
 
 export type NavigationChildItem = {
   label: string;
@@ -15,7 +15,7 @@ export type NavigationItem = {
 export const navigationItems: NavigationItem[] = [
   {
     label: "제품 카테고리",
-    children: ORDERED_CATEGORY_IDS.map((category) => ({
+    children: ALL_CATEGORY_IDS.map((category) => ({
       label: getCategoryLabel(category),
       href: getCategoryHref(category),
     })),
