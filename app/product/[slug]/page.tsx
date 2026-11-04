@@ -337,11 +337,44 @@ function buildProductInternalLinks(product: ProductDetailProps) {
   const categoryHref = getCategoryDetailHref(category);
   const categoryLabel = getProductKindLabel(product.productType);
   if (category === "powder") {
+    // 파우더 비교 랜딩(2026-11-04)은 파우더끼리만 고른다. 셀렉스·하이뮨처럼 음료도 있는 브랜드에서 음료 비교가 잡히지 않게.
+    const powderSlugs = new Set(getAllProducts().filter((item) => item.productType === "powder").map((item) => item.slug));
+    const powderLandings = getAllCompareLandings().filter((landing) => landing.productSlugs.every((slug) => powderSlugs.has(slug)));
+    const brandBySlug = new Map(getAllProducts().map((item) => [item.slug, item.brand]));
+    const powderLanding =
+      powderLandings.find((landing) => landing.productSlugs.includes(product.slug)) ??
+      powderLandings.find((landing) => landing.productSlugs.some((slug) => brandBySlug.get(slug) === product.brand)) ??
+      null;
+    const purposeType = product.powderType === "senior" || product.powderType === "gainer" || product.powderType === "meal";
     return [
+      ...(powderLanding
+        ? [{ href: `/compare/${powderLanding.slug}`, title: powderLanding.title.split(" | ")[0], description: "이 제품이 들어간 파우더 비교를 1회 단백질·함량·당류로 확인합니다." }]
+        : []),
       {
         href: categoryHref,
         title: "단백질 파우더 전체 보기",
         description: "1회 단백질과 단백질 함량 기준으로 파우더 제품을 비교합니다.",
+      },
+      purposeType
+        ? {
+            href: "/guides/product-selection-comparison/protein-powder-by-purpose",
+            title: "목적별 단백질 파우더 비교",
+            description: "시니어·식사대용·게이너·운동용 파우더의 1회 제공량과 열량을 비교합니다.",
+          }
+        : {
+            href: "/guides/product-selection-comparison/wpi-wpc-isp-powder-guide",
+            title: "WPI·WPC·분리대두 차이",
+            description: "원료 유형별 평균 단백질 함량과 당류를 비교합니다.",
+          },
+      {
+        href: "/guides/product-selection-comparison/protein-powder-scoop-guide",
+        title: "단백질 보충제 1스쿱 단백질 비교",
+        description: "다른 파우더의 1회 제공량·1회 단백질·한 통 회분과 나란히 봅니다.",
+      },
+      {
+        href: "/guides/product-selection-comparison/protein-powder-top10",
+        title: "단백질 파우더 추천 TOP 10",
+        description: "단백질 함량(%)이 높고 당류가 낮은 순으로 고른 10종입니다.",
       },
       {
         href: `/brands/${brandToSlug(product.brand)}`,

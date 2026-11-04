@@ -15,6 +15,7 @@ const CATEGORY_PAGE: Record<string, { href: string; title: string }> = {
   shake: { href: "/shake", title: "단백질 쉐이크 전체 비교" },
   yogurt: { href: "/yogurt", title: "단백질 요거트 전체 비교" },
   soymilk: { href: "/soymilk", title: "두유 전체 비교" },
+  powder: { href: "/powder", title: "단백질 파우더 전체 비교" },
 };
 
 const fmt = (value: number | undefined) => (value == null ? "-" : String(Math.round(value * 10) / 10));
@@ -28,6 +29,9 @@ function basis(product: ProductDetailProps) {
       return `1팩(${capacity})`;
     case "shake":
       return `1회(${capacity})`;
+    // 파우더 capacity는 한 통 용량(예: 2kg)이라 1회 제공량(g)을 쓴다.
+    case "powder":
+      return `1회(${product.servingSizeG ?? "-"}g)`;
     default:
       return `1개(${capacity})`;
   }
@@ -49,11 +53,61 @@ function range(products: ProductDetailProps[], pick: (p: ProductDetailProps) => 
   return min === max ? fmt(min) : `${fmt(min)}~${fmt(max)}`;
 }
 
+// 파우더 단백질 함량(%) = 1회 단백질 ÷ 1회 제공량 × 100 (productFilters.getPowderProteinPercentage와 같은 정의)
+function powderPct(product: ProductDetailProps) {
+  return product.servingSizeG ? (product.proteinPerServing / product.servingSizeG) * 100 : undefined;
+}
+
+const sugarOrNone = (product: ProductDetailProps) => (product.sugar == null ? "표에 없음" : `${fmt(product.sugar)}g`);
+
+function powderLine(product: ProductDetailProps, name = label(product)) {
+  return `${name} ${basis(product)}: 단백질 ${fmt(product.proteinPerServing)}g(함량 ${fmt(powderPct(product))}%)·당류 ${sugarOrNone(product)}·${fmt(product.calories)}kcal`;
+}
+
+function powderGuides() {
+  return [
+    { href: "/guides/product-selection-comparison/protein-powder-scoop-guide", title: "단백질 보충제 1스쿱 단백질 비교", description: "등록 파우더 전체의 1회 제공량·1회 단백질·한 통 회분을 한 표로 봅니다." },
+    { href: "/guides/product-selection-comparison/wpi-wpc-isp-powder-guide", title: "WPI·WPC·분리대두 차이", description: "원료 유형별 평균 단백질 함량과 당류를 비교합니다." },
+  ];
+}
+
+// 파우더 비교 FAQ: 공통 FAQ(compareLandingFaq)는 1회 수치를 비교하므로, 1회 제공량이 다른 파우더는 함량·한 통 회분을 따로 답한다.
+function powderFaq(items: ProductDetailProps[], names: Map<string, string>) {
+  const name = (p: ProductDetailProps) => names.get(p.slug) ?? label(p);
+  const withPct = items.filter((p) => powderPct(p) != null);
+  const faq: { question: string; answer: string }[] = [];
+  // 1회 제공량이 모두 같으면 1회 수치를 그대로 비교하면 되므로 이 질문은 넣지 않는다.
+  if (withPct.length >= 2 && new Set(withPct.map((p) => p.servingSizeG)).size > 1) {
+    const top = Math.max(...withPct.map((p) => Math.round((powderPct(p) ?? 0) * 10)));
+    const best = withPct.filter((p) => Math.round((powderPct(p) ?? 0) * 10) === top).map(name);
+    const lead = best.length === withPct.length ? "함량은 모두 같습니다" : `${withSubject(best.join("·"))} ${withPct.length === 2 ? "더" : "가장"} 높습니다`;
+    faq.push({
+      question: "1회 제공량이 다른데 어떻게 비교하나요?",
+      answer: `1회 제공량은 ${items.map((p) => `${name(p)} ${p.servingSizeG ?? "-"}g`).join(", ")}입니다. 같은 무게 안의 단백질 비율(단백질 함량 %)로 보면 ${items.map((p) => `${name(p)} ${fmt(powderPct(p))}%`).join(", ")}이고, ${lead}.`,
+    });
+  }
+  const servings = items.filter((p) => p.servingsPerContainer);
+  if (servings.length >= 2) {
+    faq.push({
+      question: "한 통은 몇 회분인가요?",
+      answer: `제조사 표기 기준 ${servings.map((p) => `${name(p)} ${p.capacity} ${p.servingsPerContainer}회분`).join(", ")}입니다. 가격은 쿠팡에서 직접 확인하세요.`,
+    });
+  }
+  const noSugar = items.filter((p) => p.sugar == null);
+  if (noSugar.length) {
+    faq.push({
+      question: "당류가 '표에 없음'인 제품은 당류 0g인가요?",
+      answer: `아닙니다. ${noSugar.map(name).join(", ")} 제품은 성분표에 당류 줄이 없어 ProteinLab은 0g으로 보지 않고 '표에 없음'으로 둡니다. 원재료명과 표시 사항을 직접 확인하세요.`,
+    });
+  }
+  return faq;
+}
+
 function brandHub(brand: string) {
   return { href: `/brands/${brandToSlug(brand)}`, title: `${brand} 브랜드 허브`, description: `${brand} 등록 제품의 상세 성분을 확인합니다.` };
 }
 
-type PairSpec = { slug: string; a: string; b: string; titleA: string; titleB: string; topic?: string };
+type PairSpec = { slug: string; a: string; b: string; titleA: string; titleB: string; topic?: string; intro?: string };
 // itemWord: 맛이 아니라 크기·라인이 다른 묶음은 "제품"으로 쓴다(기본 "맛").
 type LineSpec = { slug: string; title: string; filter: (p: ProductDetailProps) => boolean; lineName: string; itemWord?: string };
 
@@ -70,6 +124,10 @@ const PAIRS: PairSpec[] = [
   // 자동완성 "아이슬란딕 요거트 차이"(2026-10-20). 100g당 단백질은 두 제품 모두 12g으로 같다(데이터 기준).
   { slug: "lookt-icelandic-vs-yozm-greek-yogurt", a: "lookt-icelandic-thick-450", b: "yozm-plain-greek-450", titleA: "룩트 아이슬란딕 요거트", titleB: "요즘 그릭요거트", topic: "성분 차이" },
   { slug: "yozm-vs-greekday-greek-yogurt", a: "yozm-plain-greek-450", b: "greekday-signature-450", titleA: "YOZM 그릭요거트", titleB: "그릭데이 시그니처" },
+  // 2026-11-04 단백질 파우더(11/3 카테고리 개설). 실제 등록 제품끼리만 묶는다.
+  { slug: "optimum-gold-standard-vs-dymatize-elite-whey", a: "on-goldstandard-whey-doublerich-899", b: "dymatize-elite-whey-richchoco-2300", titleA: "옵티멈 골드스탠다드 웨이", titleB: "다이마타이즈 엘리트 웨이", topic: "단백질 보충제", intro: "ProteinLab 분류로 두 제품 모두 웨이(WPC 포함) 유형의 초콜릿 맛입니다." },
+  { slug: "optimum-hydrowhey-vs-dymatize-iso100", a: "on-platinum-hydrowhey-turbochoco-1640", b: "dymatize-iso100-gourmetchoco-2300", titleA: "옵티멈 플래티넘 하이드로웨이", titleB: "다이마타이즈 ISO 100", topic: "단백질 보충제", intro: "ProteinLab 분류로 두 제품 모두 아이솔레이트(WPI) 유형의 초콜릿 맛입니다." },
+  { slug: "selex-vs-hymune-protein-powder", a: "selex-protein-savory-304", b: "hymune-protein-balance-savory-304", titleA: "셀렉스 프로틴", titleB: "하이뮨 프로틴 밸런스", topic: "단백질 분말", intro: "두 제품 모두 304g 통의 고소한맛 분말입니다." },
 ];
 
 const LINES: LineSpec[] = [
@@ -140,6 +198,10 @@ const LINES: LineSpec[] = [
   { slug: "erom-soymilk-lineup-comparison", title: "이롬 황성주 두유 종류별 비교", lineName: "이롬 두유", itemWord: "제품", filter: (p) => p.productType === "soymilk" && p.brand === "이롬" },
   { slug: "bobsnu-soymilk-lineup-comparison", title: "밥스누 약콩두유 종류별 비교", lineName: "밥스누 약콩두유", itemWord: "제품", filter: (p) => p.productType === "soymilk" && p.brand === "밥스누" },
   { slug: "wanjeon-soymilk-lineup-comparison", title: "완전두유 종류별 비교 (국산콩·서리태·검은콩)", lineName: "완전두유", itemWord: "제품", filter: (p) => p.productType === "soymilk" && p.brand === "완전두유" },
+  // 2026-11-04 단백질 파우더 브랜드 종류별 묶음(등록 3종 이상인 브랜드).
+  { slug: "newyorkwhey-protein-powder-lineup-comparison", title: "뉴욕웨이 단백질 보충제 종류별 비교 (라이트·WPI·올에이지·몬스터)", lineName: "뉴욕웨이 단백질 보충제", itemWord: "제품", filter: (p) => p.productType === "powder" && p.brand === "뉴욕웨이" },
+  { slug: "selex-protein-powder-lineup-comparison", title: "셀렉스 단백질 분말 종류별 비교 (프로틴·락토프리·프로핏)", lineName: "셀렉스 단백질 분말", itemWord: "제품", filter: (p) => p.productType === "powder" && p.brand === "셀렉스" },
+  { slug: "optimum-nutrition-protein-powder-lineup-comparison", title: "옵티멈 뉴트리션 단백질 보충제 비교 (골드스탠다드·하이드로웨이)", lineName: "옵티멈 뉴트리션 단백질 보충제", itemWord: "제품", filter: (p) => p.productType === "powder" && p.brand === "옵티멈뉴트리션" },
   { slug: "calobye-protein-drink-comparison", title: "칼로바이 프로틴 음료 종류별 비교 (스파클링·파워쉐이크)", lineName: "칼로바이 프로틴 음료", itemWord: "제품", filter: (p) => p.productType === "drink" && p.brand === "칼로바이" },
 ];
 
@@ -149,6 +211,29 @@ function buildPair(spec: PairSpec, bySlug: Map<string, ProductDetailProps>): Com
   if (!a || !b) return null;
   const category = CATEGORY_PAGE[a.productType ?? "drink"];
   const subject = spec.topic ? `${spec.topic} ` : "";
+  if (a.productType === "powder" && b.productType === "powder") {
+    const names = new Map([[a.slug, spec.titleA], [b.slug, spec.titleB]]);
+    return {
+      slug: spec.slug,
+      title: `${spec.titleA} vs ${spec.titleB} ${subject}비교 | 1회 단백질·함량·당류`,
+      description: `${powderLine(a)}, ${powderLine(b)}입니다.`,
+      intro: `${label(a)}, ${label(b)} 두 단백질 파우더를 성분표 1회 제공량 기준으로 비교합니다. 1회 단백질은 각각 ${fmt(a.proteinPerServing)}g·${fmt(b.proteinPerServing)}g이고, 1회 제공량 대비 단백질 함량은 ${fmt(powderPct(a))}%·${fmt(powderPct(b))}%입니다.${spec.intro ? ` ${spec.intro}` : ""}`,
+      bullets: [
+        powderLine(a),
+        powderLine(b),
+        `원료: ${label(a)} ${a.proteinSource ?? "-"} · ${label(b)} ${b.proteinSource ?? "-"}`,
+        `한 통: ${label(a)} ${a.capacity ?? "-"}(${a.servingsPerContainer ?? "-"}회분) · ${label(b)} ${b.capacity ?? "-"}(${b.servingsPerContainer ?? "-"}회분)`,
+      ],
+      productSlugs: [a.slug, b.slug],
+      faq: powderFaq([a, b], names),
+      relatedLinks: [
+        brandHub(a.brand),
+        ...(a.brand === b.brand ? [] : [brandHub(b.brand)]),
+        { href: category.href, title: category.title, description: "등록 파우더를 유형·단백질 함량 기준으로 비교합니다." },
+        ...powderGuides(),
+      ],
+    };
+  }
   return {
     slug: spec.slug,
     title: `${spec.titleA} vs ${spec.titleB} ${subject}비교 | 단백질·당류·칼로리`,
@@ -205,6 +290,7 @@ function buildLine(spec: LineSpec, products: ProductDetailProps[]): CompareLandi
   const category = CATEGORY_PAGE[items[0].productType ?? "drink"];
   const word = spec.itemWord ?? "맛";
   const names = shortItemNames(items);
+  if (items[0].productType === "powder") return buildPowderLine(spec, items, names, category);
   const phrases = [
     extremePhrase(items, names, (p) => p.proteinPerServing, "단백질은", "g", true),
     extremePhrase(items, names, (p) => p.sugar, "당류는", "g", false),
@@ -228,6 +314,43 @@ function buildLine(spec: LineSpec, products: ProductDetailProps[]): CompareLandi
     verdict,
     productSlugs: items.map((p) => p.slug),
     relatedLinks: [brandHub(brand), { href: category.href, title: category.title, description: "다른 브랜드 제품과 같은 항목으로 비교합니다." }],
+  };
+}
+
+// 파우더 묶음: 1회 제공량이 제품마다 달라 함량(%)을 함께 적고, 결론도 함량 기준으로 쓴다.
+function buildPowderLine(
+  spec: LineSpec,
+  items: ProductDetailProps[],
+  names: Map<string, string>,
+  category: { href: string; title: string },
+): CompareLanding {
+  const word = spec.itemWord ?? "맛";
+  const pctRounded = (p: ProductDetailProps) => {
+    const v = powderPct(p);
+    return v == null ? undefined : Math.round(v * 10) / 10;
+  };
+  const phrases = [
+    extremePhrase(items, names, (p) => p.proteinPerServing, "1회 단백질은", "g", true),
+    extremePhrase(items, names, pctRounded, "단백질 함량은", "%", true)?.replace(/가장 많고$/, "가장 높고") ?? null,
+    extremePhrase(items, names, (p) => p.calories, "1회 열량은", "kcal", false),
+  ].filter((v): v is string => v !== null);
+  const verdict = phrases.length
+    ? `${spec.lineName} ${items.length}종 중 ${phrases.join(", ").replace(/(많고|높고|낮고|같고)$/, (m) => ({ 많고: "많습니다", 높고: "높습니다", 낮고: "낮습니다", 같고: "같습니다" })[m] ?? m)}.`
+    : undefined;
+  return {
+    slug: spec.slug,
+    title: `${spec.title} | 1회 단백질·함량·당류`,
+    description: `등록된 ${spec.lineName} ${items.length}종을 비교합니다. 1회 단백질 ${range(items, (p) => p.proteinPerServing)}g, 1회 제공량 ${range(items, (p) => p.servingSizeG)}g, 1회 열량 ${range(items, (p) => p.calories)}kcal 범위입니다.`,
+    intro: `${spec.lineName} ${items.length}종의 성분표 1회 제공량 기준 수치를 한 번에 비교합니다. ${word}마다 1회 제공량이 달라 1회 단백질(g)과 함께 1회 제공량 대비 단백질 함량(%)을 적었습니다.`,
+    bullets: items.map((p) => powderLine(p, names.get(p.slug) ?? label(p))),
+    verdict,
+    productSlugs: items.map((p) => p.slug),
+    faq: powderFaq(items, names),
+    relatedLinks: [
+      brandHub(items[0].brand),
+      { href: category.href, title: category.title, description: "다른 브랜드 파우더와 같은 항목으로 비교합니다." },
+      ...powderGuides(),
+    ],
   };
 }
 

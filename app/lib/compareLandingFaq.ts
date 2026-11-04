@@ -11,6 +11,9 @@ export interface CompareFaq {
 
 const fmt = (n: number) => (Math.round(n * 10) / 10).toString();
 
+// 파우더 capacity는 한 통 용량(예: 2kg)이라 1회 수치 옆에는 1회 제공량(g)을 적는다.
+const servingText = (p: ProductDetailProps) => (p.productType === "powder" && p.servingSizeG ? `1회 ${p.servingSizeG}g` : p.capacity);
+
 function per100(value: number | undefined, p: ProductDetailProps): number | null {
   const size = Number(p.capacity?.match(/(\d+(?:\.\d+)?)/)?.[1]);
   if (value == null || !Number.isFinite(size) || size <= 0) return null;
@@ -28,6 +31,8 @@ function rankIn(pool: ProductDetailProps[], value: number, pick: (p: ProductDeta
 
 function buildCategoryRankFaq(products: ProductDetailProps[], allProducts: ProductDetailProps[]): CompareFaq | null {
   if (products.length < 2 || products.length > 4 || !products.every(isComparableServing)) return null;
+  // 파우더는 1회 제공량이 12.5~300g으로 달라 1회 단백질 순위가 의미 없다(게이너가 1위가 됨). 파우더 비교 FAQ는 compareLandingsGenerated가 따로 만든다.
+  if (products.some((p) => p.productType === "powder")) return null;
   const lines = products.map((p) => {
     const type = p.productType ?? "drink";
     const pool = allProducts.filter((item) => (item.productType ?? "drink") === type && isComparableServing(item));
@@ -66,7 +71,7 @@ export function buildCompareFaqs(title: string, intro: string, products: Product
         : "";
       faqs.push({
         question: `${withAnd(aName)} ${bName}, 단백질은 어느 쪽이 더 많나요?`,
-        answer: `1회 제공량 기준 단백질은 ${aName} ${fmt(a.proteinPerServing)}g(${a.capacity}), ${bName} ${fmt(b.proteinPerServing)}g(${b.capacity})이며 ${lead}${kcalLine}`,
+        answer: `1회 제공량 기준 단백질은 ${aName} ${fmt(a.proteinPerServing)}g(${servingText(a)}), ${bName} ${fmt(b.proteinPerServing)}g(${servingText(b)})이며 ${lead}${kcalLine}`,
       });
     } else {
       const ap = per100(a.proteinPerServing, a);

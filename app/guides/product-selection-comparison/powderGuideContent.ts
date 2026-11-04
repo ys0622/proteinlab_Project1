@@ -62,6 +62,21 @@ const purposeLink: RelatedGuideLink = {
   href: `${BASE}/protein-powder-by-purpose`,
   description: "시니어·식사대용·게이너·운동용 파우더의 1회 제공량과 열량을 비교합니다.",
 };
+const scoopLink: RelatedGuideLink = {
+  title: "단백질 보충제 1스쿱 단백질 비교",
+  href: `${BASE}/protein-powder-scoop-guide`,
+  description: "1회 제공량(1스쿱 기준)·1회 단백질·한 통 회분을 등록 파우더 전체로 비교합니다.",
+};
+const brandCompareLink: RelatedGuideLink = {
+  title: "하이드로웨이 vs ISO 100 비교",
+  href: "/compare/optimum-hydrowhey-vs-dymatize-iso100",
+  description: "아이솔레이트 보충제 두 제품의 1회 단백질·함량·당류를 나란히 봅니다.",
+};
+const seniorCompareLink: RelatedGuideLink = {
+  title: "셀렉스 vs 하이뮨 단백질 분말 비교",
+  href: "/compare/selex-vs-hymune-protein-powder",
+  description: "304g 고소한맛 분말 두 제품의 1회 단백질·열량을 나란히 봅니다.",
+};
 const sourceTypesLink: RelatedGuideLink = {
   title: "단백질 원료 종류 정리",
   href: "/guides/basics/protein-source-types",
@@ -154,7 +169,7 @@ export const proteinPowderTop10Config: ComparePageConfig = {
     { question: "당류 0g인 단백질 파우더는 몇 종인가요?", answer: `등록 ${powder.length}종 중 성분표 당류가 0g인 제품은 ${powder.filter((p) => p.sugar === 0).length}종입니다. 당류 줄이 아예 없는 제품 ${powder.filter((p) => !hasSugar(p)).length}종은 0g으로 세지 않았습니다.` },
     { question: "해외 직구 제품도 순위에 들어가나요?", answer: `네. 국내 유통 제품과 같은 기준으로 계산했고, TOP 10 중 ${top10OverseasCount}종이 해외 직구 제품입니다. 표와 카드에 '해외 직구'로 표시했습니다.` },
   ],
-  relatedGuides: [powderListLink, sourceLink, purposeLink, sourceTypesLink],
+  relatedGuides: [powderListLink, scoopLink, sourceLink, purposeLink, brandCompareLink, sourceTypesLink],
   purchaseLinks: top10.slice(0, 3).map((p) => ({ label: `${label(p)} 보기`, slug: p.slug })),
 };
 
@@ -241,7 +256,7 @@ export const wpiWpcIspPowderConfig: ComparePageConfig = {
     { question: "분리대두단백(ISP)만 쓴 파우더도 있나요?", answer: `등록 제품 중 분리대두단백이 들어간 제품은 ${withIsp.length}종이지만 대부분 유청과 섞은 혼합형입니다. 식물성 유형은 ${sourceGroups[2].list.length}종(${sourceGroups[2].list.map(label).join(", ")})입니다.` },
     { question: "원료 유형별 당류 차이가 있나요?", answer: `표시 제품 평균은 ${sourceGroups.map((g) => `${g.name} ${sugarMean(g.list)}`).join(", ")}입니다. 유형보다 제품별 차이가 커서 성분표의 당류 줄을 직접 확인하는 편이 정확합니다.` },
   ],
-  relatedGuides: [sourceTypesLink, powderListLink, top10Link, purposeLink],
+  relatedGuides: [sourceTypesLink, powderListLink, top10Link, scoopLink, purposeLink, brandCompareLink],
   purchaseLinks: sourceGroups
     .map((g) => [...g.list].sort(byPctThenSugar)[0])
     .filter((p): p is ProductDetailProps => Boolean(p))
@@ -340,7 +355,7 @@ export const proteinPowderByPurposeConfig: ComparePageConfig = {
     { question: "식사대용 파우더와 일반 단백질 보충제는 무엇이 다른가요?", answer: `등록 데이터 기준 식사대용 ${meal.length}종의 평균 단백질 함량은 ${fmt(mean(meal.map(pct)))}%로, 운동용 ${workout.length}종 평균 ${fmt(mean(workout.map(pct)))}%보다 낮습니다. 1회 제공량에서 단백질 외 성분 비중이 크다는 뜻이며, 평균 1회 탄수화물은 식사대용 ${carbsMean(meal)}, 운동용 ${carbsMean(workout)}입니다.${mealNoSugar.length ? ` ${mealNoSugar.map(label).join(", ")}은 당류가 표에 없습니다.` : ""}` },
     { question: "어떤 유형을 골라야 하나요?", answer: "이 페이지는 성분표 수치로 유형별 차이를 보여 줄 뿐 개인에게 맞는 제품을 정해 주지 않습니다. 식단이나 건강 상태에 따라 필요한 열량·단백질이 다르니 필요하면 전문가와 상담하세요." },
   ],
-  relatedGuides: [powderListLink, top10Link, sourceLink, sourceTypesLink],
+  relatedGuides: [powderListLink, top10Link, scoopLink, sourceLink, seniorCompareLink, sourceTypesLink],
   purchaseLinks: [
     [...workout].sort(byPctThenSugar)[0],
     [...senior].sort(byPctThenSugar)[0],
@@ -350,4 +365,98 @@ export const proteinPowderByPurposeConfig: ComparePageConfig = {
     .map((p) => ({ label: `${label(p)} 보기`, slug: p.slug })),
 };
 
-export const powderGuideConfigs: ComparePageConfig[] = [proteinPowderTop10Config, wpiWpcIspPowderConfig, proteinPowderByPurposeConfig];
+// ---------- 4) 1스쿱(1회 제공량) 단백질 (2026-11-04) ----------
+// 검색어 "단백질 보충제 1스쿱 단백질". 성분표에는 '1스쿱'이 아니라 1회 제공량(g)이 적혀 있어 그 값을 쓴다.
+const scoopPool = powder.filter((p) => p.powderType !== "gainer" && serving(p) > 0);
+const scoopSorted = [...scoopPool].sort((a, b) => b.proteinPerServing - a.proteinPerServing || pct(b) - pct(a));
+const scoopOver20 = scoopPool.filter((p) => p.proteinPerServing >= 20);
+const scoopOver25 = scoopPool.filter((p) => p.proteinPerServing >= 25);
+const scoopLowKcal = [...scoopPool].filter((p) => p.calories != null).sort((a, b) => kcal(a) - kcal(b) || b.proteinPerServing - a.proteinPerServing);
+const withServings = scoopPool.filter((p) => typeof p.servingsPerContainer === "number");
+const scoopMaxPct = [...scoopPool].sort((a, b) => pct(b) - pct(a))[0];
+const scoopMaxPctAll = scoopPool.filter((p) => fmt(pct(p)) === fmt(pct(scoopMaxPct)));
+const scoopMinPct = [...scoopPool].sort((a, b) => pct(a) - pct(b))[0];
+// 단백질 20g이 들어 있는 분말 양 = 20 ÷ 함량. 계산 예시일 뿐 섭취 권장량이 아니다.
+const gramsFor20 = (p: ProductDetailProps) => (pct(p) > 0 ? (20 / pct(p)) * 100 : 0);
+const servingsText = (p: ProductDetailProps) => (typeof p.servingsPerContainer === "number" ? `${p.servingsPerContainer}회분` : "-");
+const dailyLink: RelatedGuideLink = {
+  title: "하루 단백질 권장량",
+  href: "/guides/basics/daily-requirement",
+  description: "체중과 상황에 따른 하루 단백질 기준을 정리한 기초 가이드입니다.",
+};
+
+export const proteinPowderScoopConfig: ComparePageConfig = {
+  slug: "protein-powder-scoop-guide",
+  title: "단백질 보충제 1스쿱 단백질 비교 | 1회 제공량·칼로리",
+  seoTitle: `단백질 보충제 1스쿱 단백질 몇 g? 파우더 ${scoopPool.length}종 1회 제공량·칼로리 비교`,
+  description: `단백질 보충제 1스쿱(제조사 1회 제공량)은 등록 제품 기준 ${range(scoopPool.map(serving), "g")}이고 1회 단백질은 ${range(scoopPool.map((p) => p.proteinPerServing), "g")}입니다. 파우더 ${scoopPool.length}종(게이너 제외)의 1회 제공량·단백질·함량·열량·한 통 회분을 성분표 수치로 비교합니다.`,
+  keywords: ["단백질 보충제 1스쿱 단백질", "프로틴 1스쿱 몇 g", "단백질 파우더 1회 제공량", "보충제 1스쿱 칼로리", "단백질 보충제 한 통 몇 회분", "단백질 20g 보충제"],
+  badge: "1스쿱 비교",
+  readingTime: "4분 읽기",
+  updatedAt: "2026-11-04",
+  methodologyNote: `ProteinLab 파우더 ${powder.length}종 중 게이너 ${ofType("gainer").length}종 제외 ${scoopPool.length}종 · 제조사 표기 1회 제공량 기준`,
+  intro: `보충제 통에 들어 있는 스쿱 1개가 곧 1회 제공량인 제품이 많지만, 성분표에 적히는 것은 '1스쿱'이 아니라 1회 제공량(g)입니다. 그래서 이 페이지는 성분표의 1회 제공량을 1스쿱 기준으로 봅니다. 등록 파우더 ${scoopPool.length}종(게이너 제외)의 1회 제공량은 ${range(scoopPool.map(serving), "g")}, 1회 단백질은 ${range(scoopPool.map((p) => p.proteinPerServing), "g")}으로 제품마다 꽤 다릅니다.`,
+  summary: [
+    `1회 단백질이 가장 많은 제품은 ${label(scoopSorted[0])}(1회 ${fmt(serving(scoopSorted[0]))}g에 ${fmt(scoopSorted[0].proteinPerServing)}g)입니다.`,
+    `${scoopPool.length}종 중 1회 단백질 20g 이상은 ${scoopOver20.length}종, 25g 이상은 ${scoopOver25.length}종입니다.`,
+    `단백질 함량(1회 제공량 대비 %)은 ${label(scoopMinPct)} ${pctText(scoopMinPct)}부터 ${scoopMaxPctAll.map(label).join("·")} ${pctText(scoopMaxPct)}까지입니다. 같은 1스쿱이라도 단백질 비율이 다릅니다.`,
+    `한 통 회분은 제조사 표기 기준 ${range(withServings.map((p) => p.servingsPerContainer as number), "회")}입니다.`,
+  ],
+  comparisonTitle: `파우더 ${scoopPool.length}종 1회 제공량(1스쿱 기준) 단백질 많은 순`,
+  comparisonColumns: ["1회 제공량", "1회 단백질", "단백질 함량", "열량", "한 통"],
+  comparisonRows: scoopSorted.map((p) => ({
+    label: `${label(p)}${p.origin === "overseas" ? " (해외 직구)" : ""}`,
+    values: [`${fmt(serving(p))}g`, `${fmt(p.proteinPerServing)}g`, pctText(p), kcalText(p), `${p.capacity ?? "-"} · ${servingsText(p)}`],
+  })),
+  productCards: [
+    {
+      title: "1회 단백질 많은 순 6종",
+      caption: "사진·이름을 누르면 성분표가 있는 상세 페이지로, 버튼을 누르면 쿠팡으로 갑니다.",
+      items: scoopSorted.slice(0, 6).map((p, i) => card(p, i + 1, [typeLabel(p)])),
+    },
+    {
+      title: "1회 열량 낮은 순 4종",
+      caption: "1회 열량이 낮은 제품입니다. 1회 제공량이 작으면 1회 단백질도 함께 작아지니 함량을 같이 보세요.",
+      items: scoopLowKcal.slice(0, 4).map((p) => card(p, undefined, [typeLabel(p)])),
+      moreLink: { href: "/powder", label: `파우더 ${powder.length}종 전체 비교 보기 →` },
+    },
+  ],
+  sections: [
+    {
+      title: "1스쿱과 1회 제공량",
+      items: [
+        { title: "성분표의 기준은 1회 제공량(g)", body: "영양정보 표는 '1회 제공량 ○○g당'으로 적힙니다. 동봉 스쿱 1개와 1회 제공량이 같은지는 제품마다 다를 수 있으니 통의 섭취 방법 문구를 함께 확인하세요." },
+        { title: "1회 제공량이 큰 제품 = 단백질이 많은 제품은 아닙니다", body: `1회 단백질은 1회 제공량에 비례해 커집니다. 1회 제공량 대비 단백질 비율(함량 %)이 가장 높은 제품은 ${scoopMaxPctAll.map(label).join("·")}(${pctText(scoopMaxPct)})입니다.` },
+        { title: "게이너는 따로 봅니다", body: `게이너 ${ofType("gainer").length}종은 1회 제공량이 ${range(ofType("gainer").map(serving), "g")}으로 커서 이 표에서 뺐습니다. 목적별 가이드에서 열량과 함께 비교합니다.` },
+      ],
+    },
+    {
+      title: "단백질 20g이 들어 있는 분말 양 (계산 예)",
+      items: [scoopMaxPct, scoopSorted[0], scoopMinPct]
+        .filter((p, i, list) => list.findIndex((q) => q.slug === p.slug) === i)
+        .map((p) => ({
+          title: label(p),
+          body: `함량 ${pctText(p)}로 계산하면 단백질 20g이 들어 있는 분말은 약 ${fmt(gramsFor20(p))}g입니다(1회 제공량 ${fmt(serving(p))}g). 섭취량 권장이 아니라 성분표 비율로 계산한 값입니다.`,
+        })),
+    },
+    {
+      title: "표를 읽을 때 주의할 점",
+      items: [
+        { title: "수치는 제조사 표기", body: "1회 제공량·단백질·열량은 각 제품 성분표의 제조사 표기를 옮긴 값입니다. 맛이나 판매처에 따라 표기가 다를 수 있어 상세 페이지의 성분표 사진을 함께 확인하세요." },
+        { title: "한 통 회분은 표기된 제품만", body: `한 통 회분은 성분표·포장에 적힌 값입니다. 가격은 수시로 바뀌므로 회당 가격은 쿠팡에서 직접 확인하세요.` },
+        { title: "하루 섭취량은 사람마다 다릅니다", body: "필요한 단백질 양은 체중·활동량·건강 상태에 따라 다릅니다. 기준이 궁금하면 하루 단백질 권장량 가이드를 참고하고, 질환이 있다면 전문가와 상담하세요." },
+      ],
+    },
+  ],
+  faq: [
+    { question: "단백질 보충제 1스쿱에는 단백질이 몇 g 들어 있나요?", answer: `등록 파우더 ${scoopPool.length}종(게이너 제외)의 1회 제공량 기준 단백질은 ${range(scoopPool.map((p) => p.proteinPerServing), "g")}, 평균 ${fmt(mean(scoopPool.map((p) => p.proteinPerServing)))}g입니다. 1회 제공량은 ${range(scoopPool.map(serving), "g")}입니다.` },
+    { question: "1스쿱 칼로리는 얼마인가요?", answer: `같은 ${scoopPool.length}종의 1회 열량은 ${range(scoopPool.map(kcal), "kcal")}, 평균 ${fmt(mean(scoopPool.map(kcal)))}kcal입니다. 게이너는 1회 ${range(ofType("gainer").map(kcal), "kcal")}로 따로 봐야 합니다.` },
+    { question: "1회 단백질 20g 이상인 보충제는 몇 종인가요?", answer: `${scoopPool.length}종 중 ${scoopOver20.length}종입니다. 1회 제공량이 큰 혼합·식사대용 제품도 포함되니 단백질 함량(%)과 열량을 함께 보세요.` },
+    { question: "단백질 보충제 한 통은 몇 회분인가요?", answer: `제조사 표기 기준 ${range(withServings.map((p) => p.servingsPerContainer as number), "회")}입니다. 같은 2kg 통이라도 1회 제공량이 다르면 회분이 달라집니다.` },
+    { question: "1스쿱이 1회 제공량과 다른 제품도 있나요?", answer: "제품마다 다를 수 있습니다. 그래서 이 페이지는 스쿱 개수가 아니라 성분표의 1회 제공량(g)으로 비교했습니다. 섭취 방법은 제품 포장의 문구를 확인하세요." },
+  ],
+  relatedGuides: [powderListLink, top10Link, sourceLink, purposeLink, dailyLink],
+  purchaseLinks: scoopSorted.slice(0, 3).map((p) => ({ label: `${label(p)} 보기`, slug: p.slug })),
+};
+
+export const powderGuideConfigs: ComparePageConfig[] = [proteinPowderTop10Config, wpiWpcIspPowderConfig, proteinPowderByPurposeConfig, proteinPowderScoopConfig];

@@ -38,6 +38,8 @@ export async function GET() {
 - [단백질 파우더 추천 TOP 10](${SITE_URL}/guides/product-selection-comparison/protein-powder-top10): 등록 파우더 38종 중 게이너·식사대용 제외, 단백질 함량(1회 제공량 대비 %) 높은 순·같으면 당류 낮은 순, 1위 원데이뉴트리션 WPI 90%(27g/30g, 당류 0g), TOP 10 함량 75~90%, 해외 직구 5종, 당류 미표시 제품은 순위 제외
 - [WPI·WPC·분리대두 단백질 파우더 차이](${SITE_URL}/guides/product-selection-comparison/wpi-wpc-isp-powder-guide): 유형별 평균 단백질 함량 아이솔레이트 78.3%(11종)·웨이 72.1%(3종)·식물성 76.4%(2종)·혼합 66.4%(7종), 평균 당류(표시 제품) 0.5·2.3·0·1.5g
 - [목적별 단백질 파우더 — 시니어·식사대용·게이너·운동용](${SITE_URL}/guides/product-selection-comparison/protein-powder-by-purpose): 1회 제공량 운동용 12.5~55g·시니어 30~40g·식사대용 35~45g·게이너 120~300g, 게이너 1회 417.7~1149kcal(1,000kcal 초과 2종), 시니어 7종 중 6종은 당류 미표시
+- [단백질 보충제 1스쿱 단백질 비교](${SITE_URL}/guides/product-selection-comparison/protein-powder-scoop-guide): 게이너를 뺀 등록 파우더의 1회 제공량(1스쿱 기준)·1회 단백질·단백질 함량·열량·한 통 회분을 단백질 많은 순으로 비교
+- 단백질 파우더 브랜드 비교: [골드스탠다드 vs 엘리트 웨이](${SITE_URL}/compare/optimum-gold-standard-vs-dymatize-elite-whey), [하이드로웨이 vs ISO 100](${SITE_URL}/compare/optimum-hydrowhey-vs-dymatize-iso100), [셀렉스 vs 하이뮨 분말](${SITE_URL}/compare/selex-vs-hymune-protein-powder), [뉴욕웨이 종류별](${SITE_URL}/compare/newyorkwhey-protein-powder-lineup-comparison), [셀렉스 분말 종류별](${SITE_URL}/compare/selex-protein-powder-lineup-comparison), [옵티멈 뉴트리션 종류별](${SITE_URL}/compare/optimum-nutrition-protein-powder-lineup-comparison)
 - [랭킹](${SITE_URL}/ranking): 단백질 밀도, 다이어트, 퍼포먼스 기준 순위(1회 제공량 비교가 가능한 제품만)
 - [실시간 인기](${SITE_URL}/trending): 최근 7일 조회 기반 인기 제품
 - [제품 비교](${SITE_URL}/compare): 제품 2~3개를 나란히 비교

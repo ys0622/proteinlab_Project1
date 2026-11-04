@@ -134,12 +134,13 @@ type SpecRow = {
   value: (p: ProductDetailProps) => number | undefined;
 };
 
+// 데이터의 null(성분표에 그 줄이 없음, 예: 시니어 분말 당류)은 undefined로 바꿔 "-"로 보인다. 0g으로 보이면 안 된다.
 const SPEC_ROWS: SpecRow[] = [
-  { label: "단백질", unit: "g", better: "higher", value: (p) => p.proteinPerServing },
-  { label: "칼로리", unit: "kcal", better: "lower", value: (p) => p.calories },
-  { label: "당류", unit: "g", better: "lower", value: (p) => p.sugar },
-  { label: "지방", unit: "g", better: "lower", value: (p) => p.fat },
-  { label: "나트륨", unit: "mg", better: "lower", value: (p) => p.sodium },
+  { label: "단백질", unit: "g", better: "higher", value: (p) => p.proteinPerServing ?? undefined },
+  { label: "칼로리", unit: "kcal", better: "lower", value: (p) => p.calories ?? undefined },
+  { label: "당류", unit: "g", better: "lower", value: (p) => p.sugar ?? undefined },
+  { label: "지방", unit: "g", better: "lower", value: (p) => p.fat ?? undefined },
+  { label: "나트륨", unit: "mg", better: "lower", value: (p) => p.sodium ?? undefined },
 ];
 
 const fmt = (n: number) => `${Math.round(n * 10) / 10}`;

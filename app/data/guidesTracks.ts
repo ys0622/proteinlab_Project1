@@ -219,6 +219,17 @@ export const guideTracks: GuideTrack[] = [
         ],
       },
       {
+        slug: "protein-powder-scoop-guide",
+        title: "단백질 보충제 1스쿱 단백질 비교",
+        description: "게이너를 뺀 파우더의 1회 제공량(1스쿱 기준)·1회 단백질·함량·열량·한 통 회분을 한 표로 비교합니다.",
+        searchIntent: "단백질 보충제 1스쿱 단백질",
+        futureFocus: ["1회 제공량", "1스쿱 칼로리", "한 통 회분"],
+        internalLinkTargets: [
+          { label: "단백질 파우더 비교", href: "/powder" },
+          { label: "하루 단백질 권장량", href: "/guides/basics/daily-requirement" },
+        ],
+      },
+      {
         slug: "greek-yogurt-guide",
         title: "그릭요거트 추천 기준",
         description: "그릭요거트를 고를 때 단백질 밀도와 당류를 어떻게 읽어야 하는지 정리합니다.",

@@ -3,6 +3,19 @@
 // 제목·설명은 app/data/feedPageMeta.json에서 가져온다.
 export const RECENT_REVISIONS: { date: string; paths: string[] }[] = [
   {
+    // 단백질 파우더 1스쿱 가이드와 파우더 비교 랜딩 6개(브랜드 1:1 3개, 브랜드 종류별 3개)
+    date: "2026-11-04",
+    paths: [
+      "/guides/product-selection-comparison/protein-powder-scoop-guide",
+      "/compare/optimum-gold-standard-vs-dymatize-elite-whey",
+      "/compare/optimum-hydrowhey-vs-dymatize-iso100",
+      "/compare/selex-vs-hymune-protein-powder",
+      "/compare/newyorkwhey-protein-powder-lineup-comparison",
+      "/compare/selex-protein-powder-lineup-comparison",
+      "/compare/optimum-nutrition-protein-powder-lineup-comparison",
+    ],
+  },
+  {
     // 단백질 파우더 가이드 3편(TOP 10·원료별·목적별)
     date: "2026-11-03",
     paths: [
