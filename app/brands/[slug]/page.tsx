@@ -10,6 +10,7 @@ import { getAllProducts } from "../../data/products";
 import { getCategoryLabel, type CatalogProductCategory, type ProductCategory } from "../../lib/categories";
 import { brandToSlug, getBrandSummary, slugToBrand } from "../../lib/brandHubs";
 import { formatProductLabel } from "../../lib/productLabel";
+import { isComparableServing } from "../../lib/servingScope";
 import { getBrandProfile } from "@/app/lib/brandProfile";
 import { brandWithSearchAlias } from "@/app/lib/brandSearchAliases";
 import { getAllCompareLandings } from "@/app/data/compareLandings";
@@ -270,6 +271,11 @@ const BRAND_TITLE_CATEGORY_LABEL: Record<CatalogProductCategory, string> = {
   powder: "단백질 파우더",
 };
 
+// 요거트 400~907g 통·1회분 미확인 제품은 용기 전체 수치라 "1회 기준" 범위에서 뺀다(커클랜드 907g 90.7g이 1회 최고로 나오던 문제, 2026-11-04).
+function isOneServing(item: ProductDetailProps) {
+  return isComparableServing(item) && !item.needsServingCheck;
+}
+
 function getBrandMainCategory(brand: string, items: { productType?: string }[]) {
   const counts = new Map<CatalogProductCategory, number>();
   for (const item of items) {
@@ -306,9 +312,10 @@ export async function generateMetadata({ params }: PageProps) {
     const max = Math.max(...nums);
     return min === max ? `${min}${unit}` : `${min}~${max}${unit}`;
   };
-  const proteinRange = range(items.map((item) => item.proteinPerServing), "g");
-  const sugarRange = range(items.map((item) => item.sugar), "g");
-  const calorieRange = range(items.map((item) => item.calories), "kcal");
+  const servingItems = items.filter(isOneServing);
+  const proteinRange = range(servingItems.map((item) => item.proteinPerServing), "g");
+  const sugarRange = range(servingItems.map((item) => item.sugar), "g");
+  const calorieRange = range(servingItems.map((item) => item.calories), "kcal");
   const facts = [
     proteinRange && `단백질 ${proteinRange}`,
     sugarRange && `당류 ${sugarRange}`,
@@ -325,7 +332,7 @@ export async function generateMetadata({ params }: PageProps) {
       `${brandWithSearchAlias(brand)}${mainLabel ? ` ${mainLabel}` : ""} 성분표 — ${mainCount}종 포함 전체 ${items.length}종 단백질·당류·칼로리 비교`;
   const description =
     `${brand} ${isSingleCategory ? `${mainLabel || "제품"} ${items.length}종` : `제품 ${items.length}종(${mainLabel} ${mainCount}종 포함)`}의 성분표를 표로 비교합니다.` +
-    (facts.length ? ` 1회 기준 ${facts.join(" · ")}.` : "") +
+    (facts.length ? ` 1회 기준 ${facts.join(" · ")}${servingItems.length < items.length ? `(1회 제공량 비교가 되는 ${servingItems.length}종)` : ""}.` : "") +
     ` 어떤 제품부터 봐야 할지 바로 확인하세요.`;
   return {
     title,
@@ -360,15 +367,22 @@ function getBrandAnswer(brandName: string, total: number, items: ProductDetailPr
     const max = Math.max(...list);
     return min === max ? `${min}${unit}` : `${min}~${max}${unit}`;
   };
-  const protein = span(items.map((item) => item.proteinPerServing), "g");
-  const sugar = span(items.map((item) => item.sugar), "g");
-  const facts = [protein && `단백질 ${protein}`, sugar && `당류 ${sugar}`, span(items.map((item) => item.calories), "kcal")].filter(Boolean);
-  const withProtein = items.filter((item) => typeof item.proteinPerServing === "number");
+  const servingItems = items.filter(isOneServing);
+  const protein = span(servingItems.map((item) => item.proteinPerServing), "g");
+  const sugar = span(servingItems.map((item) => item.sugar), "g");
+  const facts = [protein && `단백질 ${protein}`, sugar && `당류 ${sugar}`, span(servingItems.map((item) => item.calories), "kcal")].filter(Boolean);
+  // 파우더 1스쿱과 음료 1병처럼 제공 단위가 다른 제품을 한 줄에 세우지 않도록 주력 제품군 안에서만 1위를 고른다.
+  const main = getBrandMainCategory(brandName, items);
+  const isMultiCategory = main.count < items.length;
+  const withProtein = servingItems.filter(
+    (item) => typeof item.proteinPerServing === "number" && (item.productType ?? "drink") === main.category,
+  );
   const top = withProtein.length > 1 ? [...withProtein].sort((a, b) => (b.proteinPerServing ?? 0) - (a.proteinPerServing ?? 0))[0] : null;
   const zeroSugar = items.filter((item) => item.sugar === 0).length;
+  const scope = servingItems.length < total ? `제품 ${total}종 중 1회 제공량 비교가 되는 ${servingItems.length}종은` : `제품 ${total}종은`;
   const sentences = [
-    facts.length > 0 ? `${brandName} 제품 ${total}종은 성분표 1회 기준 ${facts.join(" · ")}입니다.` : `${brandName} 제품 ${total}종을 한 번에 볼 수 있게 정리했습니다.`,
-    top ? `단백질이 가장 많은 제품은 ${formatProductLabel(top.brand, top.name)}(${top.proteinPerServing}g)${zeroSugar > 0 ? `이고, 당류 0g 제품은 ${zeroSugar}종` : ""}입니다.` : null,
+    facts.length > 0 ? `${brandName} ${scope} 성분표 1회 기준 ${facts.join(" · ")}입니다.` : `${brandName} 제품 ${total}종을 한 번에 볼 수 있게 정리했습니다.`,
+    top ? `${isMultiCategory ? `${BRAND_TITLE_CATEGORY_LABEL[main.category]} 중 ` : ""}단백질이 가장 많은 제품은 ${formatProductLabel(top.brand, top.name)}(${top.proteinPerServing}g)${zeroSugar > 0 ? `이고, 당류 0g 제품은 ${zeroSugar}종` : ""}입니다.` : null,
     "라인업 차이와 대표 비교 페이지를 먼저 보고 제품 상세로 이어서 확인하세요.",
   ];
   return sentences.filter(Boolean).join(" ");

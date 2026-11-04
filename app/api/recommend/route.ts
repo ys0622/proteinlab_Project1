@@ -232,7 +232,7 @@ function applyPriorityScore(item: ScoredProduct, priority: RecommendRequest["pri
     return { ...item, score: item.score + Math.max(0, 300 - calories), reason: `${item.reason} 칼로리 부담이 낮은 제품을 우선으로 반영했습니다.` };
   }
   if (priority === "density") {
-    return { ...item, score: item.score + density * 8, reason: `${item.reason} 칼로리 대비 단백질 밀도를 우선으로 반영했습니다.` };
+    return { ...item, score: item.score + density * 8, reason: `${item.reason} 단백질 밀도를 우선으로 반영했습니다.` };
   }
 
   return item;

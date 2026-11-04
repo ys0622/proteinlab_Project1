@@ -1194,7 +1194,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
               <div className="mb-4">
                 <p className="mb-0.5 text-[12px] font-bold uppercase tracking-wider" style={{ color: "#1F5A3D" }}>ProteinLab 분석</p>
                 <h2 className="font-bold" style={{ fontSize: "17px", color: "#1E2A22" }}>카테고리 내 위치</h2>
-                <p className="mt-0.5 text-[13px]" style={{ color: "#5F6B61" }}>{product.productType === "soymilk" ? "1회 제공량(1팩)" : "1회 제공량(1병·1개)"} 기준, 같은 카테고리 {position.total}종과 비교한 순위입니다.</p>
+                <p className="mt-0.5 text-[13px]" style={{ color: "#5F6B61" }}>1회 제공량({isBar ? "1개" : isYogurt ? "1컵" : isShake ? "1포" : product.productType === "soymilk" ? "1팩" : "1병"}) 기준, 같은 카테고리 {position.total}종과 비교한 순위입니다.</p>
               </div>
               <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
                 {position.rows.map((row) => (

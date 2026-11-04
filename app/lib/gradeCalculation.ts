@@ -1,4 +1,5 @@
 import type { ProductDetailProps } from "../data/products";
+import { isComparableServing } from "./servingScope";
 
 function parseDensityNum(d: string): number {
   const m = d.match(/([\d.]+)/);
@@ -49,34 +50,63 @@ export function getPerformanceScore(p: ProductDetailProps): number {
   return protein / (1 + (cal + sug * 2) / 100);
 }
 
+// 등급 백분위는 1회 제공량 비교가 되는 제품끼리만 낸다(랭킹·상품 위치와 같은 기준).
+// 요거트 400~907g 통처럼 용기 전체 수치인 제품이 다이어트 D·퍼포먼스 A를 받고 1컵 제품 등급까지 밀어내던 문제(2026-11-04).
+function isGradeComparable(p: ProductDetailProps): boolean {
+  return isComparableServing(p) && !p.needsServingCheck;
+}
+
+// 비교 풀 밖 제품은 밀도(100g·100mL·100kcal당이라 용량과 무관)만 풀 기준 구간에 넣는다.
+function gradeAgainst(pool: number[], value: number, higherIsBetter: boolean): string {
+  const better = pool.filter((v) => (higherIsBetter ? v > value : v < value)).length;
+  const pct = better / Math.max(pool.length, 1);
+  if (pct < 0.2) return "A";
+  if (pct < 0.5) return "B";
+  if (pct < 0.8) return "C";
+  return "D";
+}
+
 function applyGradesInternal(products: ProductDetailProps[]): ProductDetailProps[] {
   if (products.length === 0) return [];
 
-  const densityVals = products.map(getDensityValue);
-  const dietVals = products.map(getDietScore);
-  const perfVals = products.map(getPerformanceScore);
+  const comparable = products.filter(isGradeComparable);
+  const densityVals = comparable.map(getDensityValue);
+  const dietVals = comparable.map(getDietScore);
+  const perfVals = comparable.map(getPerformanceScore);
 
   const densityGrades = assignGrades(densityVals, true);
   const dietGrades = assignGrades(dietVals, false);
   const perfGrades = assignGrades(perfVals, true);
+  const indexBySlug = new Map(comparable.map((p, i) => [p.slug, i] as const));
 
-  return products.map((p, i) => ({
-    ...p,
-    gradeTags: [
-      `밀도 ${densityGrades[i]}`,
-      `다이어트 ${dietGrades[i]}`,
-      `퍼포먼스 ${perfGrades[i]}`,
-    ],
-    gradeDescriptions: [
-      descDensity(densityGrades[i]),
-      descDiet(dietGrades[i]),
-      descPerf(perfGrades[i]),
-    ] as [string, string, string],
-  }));
+  return products.map((p) => {
+    const i = isGradeComparable(p) ? indexBySlug.get(p.slug) : undefined;
+    if (i === undefined) {
+      const density = gradeAgainst(densityVals, getDensityValue(p), true);
+      return {
+        ...p,
+        gradeTags: [`밀도 ${density}`],
+        gradeDescriptions: [descDensity(density), "-", "-"] as [string, string, string],
+      };
+    }
+    return {
+      ...p,
+      gradeTags: [
+        `밀도 ${densityGrades[i]}`,
+        `다이어트 ${dietGrades[i]}`,
+        `퍼포먼스 ${perfGrades[i]}`,
+      ],
+      gradeDescriptions: [
+        descDensity(densityGrades[i]),
+        descDiet(dietGrades[i]),
+        descPerf(perfGrades[i]),
+      ] as [string, string, string],
+    };
+  });
 }
 
 function descDensity(g: string): string {
-  if (g === "A") return "용량 대비 단백질 밀도가 상위 20% 그룹이에요.";
+  if (g === "A") return "단백질 밀도가 같은 카테고리 상위 20% 그룹이에요.";
   if (g === "B") return "단백질 밀도가 평균 이상이에요.";
   if (g === "C") return "단백질 밀도가 평균 수준이에요.";
   return "단백질 밀도가 하위 그룹이에요.";
@@ -90,7 +120,7 @@ function descDiet(g: string): string {
 }
 
 function descPerf(g: string): string {
-  if (g === "A") return "단백질 밀도 기준 퍼포먼스 상위 그룹이에요.";
+  if (g === "A") return "단백질 대비 열량·당 효율(퍼포먼스)이 상위 20% 그룹이에요.";
   if (g === "B") return "퍼포먼스 효율이 평균 이상이에요.";
   if (g === "C") return "퍼포먼스 효율이 평균 수준이에요.";
   return "퍼포먼스 효율이 하위 그룹이에요.";

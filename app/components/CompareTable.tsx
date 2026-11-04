@@ -9,6 +9,7 @@ import {
   normalizeCompareDisplayValue,
 } from "../lib/compareDisplay";
 import { getProductImageUrl } from "../lib/productImage";
+import { isComparableServing } from "../lib/servingScope";
 import {
   getCoupangRedirectHref,
   getKnownSourceCoupangUrlBySlug,
@@ -36,6 +37,13 @@ interface RowAnalysis {
   diffRatio: number;
   isSignificant: boolean;
   isIdentical: boolean;
+}
+
+const PER_SERVING_COLUMNS = new Set<CompareColumnId>(["proteinPerServing", "bcaa", "calories", "sugar", "fat", "sodium", "fiber"]);
+const UNIT_COLUMNS = new Set<CompareColumnId>(["density", "calorieDensity"]);
+
+function isOneServing(product: ProductDetailProps) {
+  return isComparableServing(product) && !product.needsServingCheck;
 }
 
 function getNumericValues(
@@ -67,9 +75,16 @@ function getHighlight(
     .filter(
       (x): x is { n: number; i: number; normalizedDisplay: string } =>
         x.n != null && !Number.isNaN(x.n),
-    );
+    )
+    // 요거트 대용량 통·1회분 미확인 제품은 용기 전체 수치라 1회 기준 "최고/최저"에서 뺀다.
+    .filter((x) => !PER_SERVING_COLUMNS.has(colId) || isOneServing(products[x.i]));
 
   if (valid.length === 0) return null;
+  // 밀도는 카테고리마다 단위가 다르다(음료·두유 g/100mL, 바·쉐이크 g/100kcal, 요거트 g/100g). 단위가 섞이면 비교하지 않는다.
+  if (UNIT_COLUMNS.has(colId)) {
+    const units = new Set(valid.map((x) => String(col.getValue(products[x.i]) ?? "").replace(/[\d.,\s]+/g, "").toLowerCase()));
+    if (units.size > 1) return null;
+  }
 
   if (col.highlight === "higher") {
     const max = Math.max(...valid.map((x) => x.n));

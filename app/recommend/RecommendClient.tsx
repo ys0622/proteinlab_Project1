@@ -80,7 +80,7 @@ const PRIORITY_OPTIONS = [
   { icon: "💪", label: "단백질 함량", desc: "한 번에 보충하는 단백질을 우선", value: "protein" },
   { icon: "🍬", label: "당류 부담", desc: "당류가 낮은 제품을 우선", value: "low_sugar" },
   { icon: "🥗", label: "칼로리 부담", desc: "칼로리가 낮은 제품을 우선", value: "low_calorie" },
-  { icon: "📈", label: "단백질 밀도", desc: "칼로리 대비 단백질 효율을 우선", value: "density" },
+  { icon: "📈", label: "단백질 밀도", desc: "용량·열량 대비 단백질 효율을 우선", value: "density" },
 ] as const;
 
 const CONDITION_OPTIONS_BY_CATEGORY: Record<ProductType, ConditionOption[]> = {
@@ -89,7 +89,7 @@ const CONDITION_OPTIONS_BY_CATEGORY: Record<ProductType, ConditionOption[]> = {
     { icon: "💪", label: "고단백", desc: "20g 이상 선호", value: "highpro" },
     { icon: "🌿", label: "식물성", desc: "식물성 단백질 원료 선호", value: "vegan" },
     { icon: "😋", label: "맛 우선", desc: "기호성과 만족감 중시", value: "taste" },
-    { icon: "📈", label: "단백질 밀도", desc: "칼로리 대비 단백질 효율 중시", value: "density" },
+    { icon: "📈", label: "단백질 밀도", desc: "용량(100mL) 대비 단백질 효율 중시", value: "density" },
     { icon: "🍬", label: "저당", desc: "당류 2g 이하 선호", value: "lowsugar" },
   ],
   bar: [
@@ -105,7 +105,7 @@ const CONDITION_OPTIONS_BY_CATEGORY: Record<ProductType, ConditionOption[]> = {
     { icon: "🥣", label: "그릭", desc: "꾸덕한 그릭 계열 선호", value: "greek" },
     { icon: "🥛", label: "드링크형", desc: "마시기 쉬운 타입 선호", value: "drinking" },
     { icon: "📦", label: "대용량", desc: "400g 이상 제품 선호", value: "bulk" },
-    { icon: "📈", label: "단백질 밀도", desc: "칼로리 대비 단백질 효율 중시", value: "density" },
+    { icon: "📈", label: "단백질 밀도", desc: "100g당 단백질 효율 중시", value: "density" },
     { icon: "🍬", label: "저당", desc: "당류 5g 이하 선호", value: "lowsugar" },
   ],
   shake: [

@@ -1,6 +1,7 @@
 import type { CategoryGuideConfig } from "./categoryGuideShared";
 import { getYogurtProducts } from "@/app/data/yogurtProductsData";
 import { formatProductLabel } from "@/app/lib/productLabel";
+import { isComparableServing } from "@/app/lib/servingScope";
 
 const yogurtProducts = getYogurtProducts();
 
@@ -55,11 +56,13 @@ const yogurtTopPicks = [
 
 const dietYogurtPicks = [getBySlug("yopro-plain-150"), getBySlug("lookt-icelandic-mild-100"), getBySlug("greekday-light-100")];
 
-const greekProducts = yogurtProducts.filter(
+// 범위는 1회분 제품만으로 낸다. 400~800g 통은 용기 전체 수치라 "96g" 같은 값이 섞였다(2026-11-04).
+const singleServingYogurts = yogurtProducts.filter((product) => isComparableServing(product) && !product.needsServingCheck);
+const greekProducts = singleServingYogurts.filter(
   (product) =>
     product.name.includes("그릭") || product.name.includes("아이슬란딕") || product.brand.includes("그릭") || product.brand.includes("룩트"),
 );
-const proteinYogurtProducts = yogurtProducts.filter((product) => product.name.includes("프로틴") || product.brand.includes("요프로"));
+const proteinYogurtProducts = singleServingYogurts.filter((product) => product.name.includes("프로틴") || product.brand.includes("요프로"));
 
 const greekProteinRange = {
   proteinMin: Math.min(...greekProducts.map((product) => product.proteinPerServing)),
@@ -240,7 +243,7 @@ export const greekVsProteinYogurtConfig: CategoryGuideConfig = {
     "요거트 카테고리에서 가장 많이 헷갈리는 조합이 그릭요거트와 단백질 요거트입니다. 둘 다 건강식처럼 보이지만 만들어지는 방식도 다르고, 잘 맞는 상황도 다릅니다. 그래서 이 페이지는 숫자보다 용도 기준으로 쉽게 정리했습니다.",
   summary: [
     "그릭요거트는 농축형이라 질감과 포만감이 강하고, 단백질 요거트는 제품 설계상 숫자를 읽기 쉬운 편입니다.",
-    `ProteinLab DB 기준으로 그릭·아이슬란딕 계열은 단백질 ${greekProteinRange.proteinMin.toFixed(1)}~${greekProteinRange.proteinMax.toFixed(1)}g, 프로틴 요거트 계열은 ${proteinYogurtRange.proteinMin.toFixed(1)}~${proteinYogurtRange.proteinMax.toFixed(1)}g 범위가 확인됩니다.`,
+    `ProteinLab DB의 1회분(250g 이하) 제품 기준으로 그릭·아이슬란딕 계열은 단백질 ${greekProteinRange.proteinMin.toFixed(1)}~${greekProteinRange.proteinMax.toFixed(1)}g, 프로틴 요거트 계열은 ${proteinYogurtRange.proteinMin.toFixed(1)}~${proteinYogurtRange.proteinMax.toFixed(1)}g 범위가 확인됩니다.`,
     "입문자는 한 컵 기준으로 판단하기 쉬운 단백질 요거트, 자연식과 포만감을 중시하면 그릭요거트 쪽이 더 맞는 경우가 많습니다.",
   ],
   comparisonTitle: "핵심 차이 비교표",
@@ -326,7 +329,7 @@ export const greekVsProteinYogurtConfig: CategoryGuideConfig = {
   ],
 };
 greekVsProteinYogurtConfig.summary = [
-  `ProteinLab DB 기준으로 그릭·아이슬란딕 계열은 단백질 ${greekProteinRange.proteinMin.toFixed(1)}~${greekProteinRange.proteinMax.toFixed(1)}g, 프로틴 요거트 계열은 ${proteinYogurtRange.proteinMin.toFixed(1)}~${proteinYogurtRange.proteinMax.toFixed(1)}g 범위를 확인할 수 있습니다.`,
+  `ProteinLab DB의 1회분(250g 이하) 제품 기준으로 그릭·아이슬란딕 계열은 단백질 ${greekProteinRange.proteinMin.toFixed(1)}~${greekProteinRange.proteinMax.toFixed(1)}g, 프로틴 요거트 계열은 ${proteinYogurtRange.proteinMin.toFixed(1)}~${proteinYogurtRange.proteinMax.toFixed(1)}g 범위를 확인할 수 있습니다.`,
   "그릭요거트는 질감과 포만감이 강하고, 프로틴 요거트는 한 컵 기준으로 숫자를 읽기 쉬운 쪽에 가깝습니다.",
   "TOP 5 페이지는 프로틴 요거트 검색 의도에 맞춘 큐레이션이고, 카테고리 차이는 이 페이지에서 보는 구조로 이해하면 됩니다.",
 ];

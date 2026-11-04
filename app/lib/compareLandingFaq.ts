@@ -59,6 +59,10 @@ export function buildCompareFaqs(title: string, intro: string, products: Product
     const aName = formatProductLabel(a.brand, a.name);
     const bName = formatProductLabel(b.brand, b.name);
     const comparable = isComparableServing(a) && isComparableServing(b);
+    // 파우더끼리 1회 제공량(스쿱 g)이 다르면 1회 단백질 g만으로 "더 많다"를 정하지 않는다. 같은 무게 기준 함량(%)을 함께 쓴다(2026-11-04).
+    const powderScoopDiffers =
+      a.productType === "powder" && b.productType === "powder" && a.servingSizeG != null && b.servingSizeG != null && a.servingSizeG !== b.servingSizeG;
+    const pct = (p: ProductDetailProps) => fmt((p.proteinPerServing / (p.servingSizeG ?? 1)) * 100);
 
     if (comparable) {
       const diff = Math.abs(a.proteinPerServing - b.proteinPerServing);
@@ -71,7 +75,11 @@ export function buildCompareFaqs(title: string, intro: string, products: Product
         : "";
       faqs.push({
         question: `${withAnd(aName)} ${bName}, 단백질은 어느 쪽이 더 많나요?`,
-        answer: `1회 제공량 기준 단백질은 ${aName} ${fmt(a.proteinPerServing)}g(${servingText(a)}), ${bName} ${fmt(b.proteinPerServing)}g(${servingText(b)})이며 ${lead}${kcalLine}`,
+        answer: `1회 제공량 기준 단백질은 ${aName} ${fmt(a.proteinPerServing)}g(${servingText(a)}), ${bName} ${fmt(b.proteinPerServing)}g(${servingText(b)})이며 ${lead}${kcalLine}${
+          powderScoopDiffers
+            ? ` 다만 1회 제공량이 달라, 같은 무게 안의 단백질 함량은 ${aName} ${pct(a)}%, ${bName} ${pct(b)}%입니다.`
+            : ""
+        }`,
       });
     } else {
       const ap = per100(a.proteinPerServing, a);
@@ -107,7 +115,8 @@ export function buildCompareFaqs(title: string, intro: string, products: Product
       } else {
         pick = "두 제품의 단백질이 같아 열량·당류와 맛, 용량, 가격으로 고르는 편이 좋습니다.";
       }
-      faqs.push({ question: "목적에 따라 어떤 제품을 고르면 되나요?", answer: pick });
+      // 스쿱 크기가 다른 파우더는 "단백질 총량 우선" 추천이 함량(%) 비교와 반대가 될 수 있어 넣지 않는다.
+      if (!powderScoopDiffers) faqs.push({ question: "목적에 따라 어떤 제품을 고르면 되나요?", answer: pick });
     }
   }
 

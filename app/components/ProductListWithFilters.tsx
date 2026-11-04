@@ -177,6 +177,11 @@ function getDensityValue(product: ProductDetailProps): number {
   return ((product.proteinPerServing ?? 0) / capacity) * 100;
 }
 
+function getDisplayedDensity(product: ProductDetailProps): number {
+  const shown = Number.parseFloat(product.density?.match(/[\d.]+/)?.[0] ?? "");
+  return Number.isFinite(shown) ? shown : getDensityValue(product);
+}
+
 function getPer100UnitValue(value: number | undefined, product: ProductDetailProps): number {
   if (value == null) return 0;
 
@@ -250,12 +255,17 @@ function applySort(
     case "protein_desc":
       return arr.sort((a, b) => (b.proteinPerServing ?? 0) - (a.proteinPerServing ?? 0));
     case "density":
-      return arr.sort((a, b) => getDensityValue(b) - getDensityValue(a));
+      // 카드에 보이는 밀도 값(바·쉐이크는 g/100kcal, 음료·두유는 g/100mL, 요거트는 g/100g) 순서로 정렬한다.
+      // 바·쉐이크를 중량(g) 기준으로 정렬하면 카드 값이 10.0 → 11.1 → 9.6처럼 뒤섞여 보였다(2026-11-04).
+      return arr.sort((a, b) => getDisplayedDensity(b) - getDisplayedDensity(a));
     case "protein_percentage":
       return arr.sort((a, b) => getPowderProteinPercentage(b) - getPowderProteinPercentage(a));
     case "sugar_asc":
+      // 당류 미표시(null, 파우더 9종 등)는 0g이 아니므로 맨 뒤로 보낸다.
       return arr.sort(
-        (a, b) => getComparableValue(a.sugar, a, productType) - getComparableValue(b.sugar, b, productType),
+        (a, b) =>
+          Number(a.sugar == null) - Number(b.sugar == null) ||
+          getComparableValue(a.sugar, a, productType) - getComparableValue(b.sugar, b, productType),
       );
     case "calories_asc":
       return arr.sort(
