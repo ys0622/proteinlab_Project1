@@ -121,7 +121,7 @@ export const mockBarProducts: ProductDetailProps[] = [
   bar("labnosh-foodbar-mildchoco", "랩노쉬", "푸드바 마일드 초코", 11, 230, 9, "4.78g/100kcal", "55g"),
   bar("cralo-plant-proteinbar", "씨알로", "식물성단백질바", 10, 185, 7, "5.41g/100kcal", "45g"),
   bar("crown-highprotein-chocobar", "크라운", "고단백질초코바", 10, 210, 11, "4.76g/100kcal", "45g"),
-  bar("calobye-daily-nuts-proteinbar", "칼로바이", "하루견과 단백질바", 10, 190, 7, "5.26g/100kcal", "45g"),
+  bar("calobye-daily-nuts-proteinbar", "칼로바이", "하루견과 단백질바", 11, 140, 2, "7.86g/100kcal", "30g"),
   bar("organica-ola-chewy-protein-bar-berry-almond-35", "올가니카", "올라 츄이프로틴바 (베리아몬드)", 9, 130, 3, "6.92g/100kcal", "35g"),
   bar("kellogg-protein-granolabar-savory", "켈로그", "프로틴 그래놀라바 (고소한맛)", 8, 165, 7, "4.85g/100kcal", "35g"),
   bar("kellogg-proteinbark-nuts", "켈로그", "프로틴바K (견과)", 8, 165, 7, "4.85g/100kcal", "35g"),

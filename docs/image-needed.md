@@ -4,6 +4,11 @@
 
 | 카테고리 | 제품(브랜드 이름 용량) | slug | 쿠팡 링크 | 넣을 파일 경로 |
 |---|---|---|---|---|
+| 바 | 미트리 저당 프로틴바 (카라멜 초코) 40g | meatree-lowsugar-proteinbar-caramel-choco-40 | https://www.coupang.com/vp/products/9796637824?itemId=29333891380&vendorItemId=96247850910 | public/bar-image/meatree-lowsugar-proteinbar-caramel-choco-40.webp |
+| 바 | 미트리 저당 프로틴바 (코코아 밀크) 40g | meatree-lowsugar-proteinbar-cocoa-milk-40 | https://www.coupang.com/vp/products/9796639146?itemId=29333895977&vendorItemId=96247855202 | public/bar-image/meatree-lowsugar-proteinbar-cocoa-milk-40.webp |
+| 요거트 | 후디스 후디스 다이어트 무지방 그릭요거트 400g 400g | who-diet-nofat-greek-400 | https://www.coupang.com/vp/products/9572545978?itemId=28572236027&vendorItemId=95516572855 | public/protein-yogurt-image/who-diet-nofat-greek-400.webp |
+| 쉐이크 | 하이뮨 액티브 프로틴 쉐이크 (인절미) 40g | hymune-active-protein-shake-injeolmi-40 | https://www.coupang.com/vp/products/9796353251?itemId=29332853252&vendorItemId=96247149517 | public/shake-image/hymune-active-protein-shake-injeolmi-40.webp |
+| 쉐이크 | 하이뮨 액티브 프로틴 쉐이크 (얼그레이밀크티) 40g | hymune-active-protein-shake-earlgrey-milktea-40 | https://www.coupang.com/vp/products/9796409434?itemId=29333055598&vendorItemId=96247055031 | public/shake-image/hymune-active-protein-shake-earlgrey-milktea-40.webp |
 | 파우더 | 뉴욕웨이 라이트 단백질 보충제 2kg | newyorkwhey-light-2000 | https://www.coupang.com/vp/products/8288998026?itemId=27863137394&vendorItemId=86624554388 | public/powder-image/newyorkwhey-light-2000.webp |
 | 파우더 | 셀렉스 프로틴 락토프리 570g | selex-protein-lactosefree-570 | https://www.coupang.com/vp/products/6825320316?itemId=16189216203&vendorItemId=87437331484 | public/powder-image/selex-protein-lactosefree-570.webp |
 | 파우더 | 원데이뉴트리션 머슬킹 80 프로틴 (초코) 2kg | onedaynutrition-muscleking80-choco-2000 | https://www.coupang.com/vp/products/12849541?itemId=54093368&vendorItemId=72824366128 | public/powder-image/onedaynutrition-muscleking80-choco-2000.webp |

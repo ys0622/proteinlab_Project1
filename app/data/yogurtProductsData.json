@@ -2676,5 +2676,45 @@
     "coupangUrl": "https://www.coupang.com/vp/products/8564152398?itemId=24810245578&vendorItemId=91817799894&q=%EB%8D%B4%EB%A7%88%ED%81%AC+%ED%95%98%EC%9D%B4+%EA%B7%B8%EB%A6%AD%EC%9A%94%EA%B1%B0%ED%8A%B8+400g&searchId=54b4925d9456206&sourceType=search&itemsCount=36&searchRank=1&rank=1&traceId=mnpsf9r1",
     "naverUrl": "https://search.shopping.naver.com/search/all?query=%EB%8D%B4%EB%A7%88%ED%81%AC%20%ED%95%98%EC%9D%B4%20%EA%B7%B8%EB%A6%AD%EC%9A%94%EA%B1%B0%ED%8A%B8%20400g&prevQuery=%ED%9B%84%EB%94%94%EC%8A%A4%20%EC%9C%A0%EA%B8%B0%EB%86%8D%20%EA%B7%B8%EB%A6%AD%EC%9A%94%EA%B1%B0%ED%8A%B8%20%ED%94%8C%EB%A0%88%EC%9D%B8%20480g&vertical=search",
     "officialUrl": "https://brand.naver.com/denmark/category/67b8ab52f4674b2f88a351f04949ca15?cp=1"
+  },
+  {
+    "slug": "who-diet-nofat-greek-400",
+    "brand": "후디스",
+    "name": "후디스 다이어트 무지방 그릭요거트 400g",
+    "capacity": "400g",
+    "variant": "플레인",
+    "tags": [
+      "컵"
+    ],
+    "proteinPerServing": 24,
+    "calories": 176,
+    "sugar": 12,
+    "density": "6.0g/100g",
+    "productUrl": "#",
+    "productType": "yogurt",
+    "gradeTags": [],
+    "manufacturer": "일동후디스",
+    "flavor": "플레인",
+    "fat": 0,
+    "sodium": 280,
+    "yogurtType": "그릭 요거트",
+    "storageType": "냉장",
+    "lactoseFree": false,
+    "proteinPer100g": 6,
+    "nutritionPerBottle": {
+      "caloriesKcal": 176,
+      "proteinG": 24,
+      "carbsG": 32,
+      "sugarsG": 12,
+      "fatG": 0,
+      "satFatG": 0,
+      "transFatG": 0,
+      "cholesterolMg": 16,
+      "sodiumMg": 280
+    },
+    "needsServingCheck": false,
+    "nutritionBasis": "per_unit",
+    "coupangUrl": "https://www.coupang.com/vp/products/9572545978?itemId=28572236027&vendorItemId=95516572855",
+    "naverUrl": "https://search.shopping.naver.com/search/all?query=%ED%9B%84%EB%94%94%EC%8A%A4%20%ED%9B%84%EB%94%94%EC%8A%A4%20%EB%8B%A4%EC%9D%B4%EC%96%B4%ED%8A%B8%20%EB%AC%B4%EC%A7%80%EB%B0%A9%20%EA%B7%B8%EB%A6%AD%EC%9A%94%EA%B1%B0%ED%8A%B8%20400g"
   }
 ]

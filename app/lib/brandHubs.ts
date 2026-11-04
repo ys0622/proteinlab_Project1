@@ -95,6 +95,7 @@ const BRAND_SLUG_MAP: Record<string, string> = {
   뉴트리라이트: "nutrilite",
   다이마타이즈: "dymatize",
   머슬팜: "musclepharm",
+  미트리: "meatree",
   옵티멈뉴트리션: "optimum-nutrition",
   원데이뉴트리션: "oneday-nutrition",
   웰핏: "wellfit",
