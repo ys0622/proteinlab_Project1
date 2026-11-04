@@ -7,12 +7,6 @@ export const RECENT_REVISIONS: { date: string; paths: string[] }[] = [
     date: "2026-11-04",
     paths: [
       "/guides/product-selection-comparison/protein-powder-scoop-guide",
-      "/compare/optimum-gold-standard-vs-dymatize-elite-whey",
-      "/compare/optimum-hydrowhey-vs-dymatize-iso100",
-      "/compare/selex-vs-hymune-protein-powder",
-      "/compare/newyorkwhey-protein-powder-lineup-comparison",
-      "/compare/selex-protein-powder-lineup-comparison",
-      "/compare/optimum-nutrition-protein-powder-lineup-comparison",
     ],
   },
   {

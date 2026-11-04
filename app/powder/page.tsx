@@ -97,18 +97,6 @@ export default async function PowderPage() {
             <Link href="/guides/basics/protein-source-types" className="rounded-full border border-[#cadbcd] bg-white px-4 py-2 text-xs font-semibold text-[#24543d] hover:bg-[#eef7f1]">
               MPI·WPI·WPC 원료 설명
             </Link>
-            <Link href="/compare/optimum-gold-standard-vs-dymatize-elite-whey" className="rounded-full border border-[#cadbcd] bg-white px-4 py-2 text-xs font-semibold text-[#24543d] hover:bg-[#eef7f1]">
-              골드스탠다드 vs 엘리트 웨이
-            </Link>
-            <Link href="/compare/optimum-hydrowhey-vs-dymatize-iso100" className="rounded-full border border-[#cadbcd] bg-white px-4 py-2 text-xs font-semibold text-[#24543d] hover:bg-[#eef7f1]">
-              하이드로웨이 vs ISO 100
-            </Link>
-            <Link href="/compare/selex-vs-hymune-protein-powder" className="rounded-full border border-[#cadbcd] bg-white px-4 py-2 text-xs font-semibold text-[#24543d] hover:bg-[#eef7f1]">
-              셀렉스 vs 하이뮨 분말
-            </Link>
-            <Link href="/compare/newyorkwhey-protein-powder-lineup-comparison" className="rounded-full border border-[#cadbcd] bg-white px-4 py-2 text-xs font-semibold text-[#24543d] hover:bg-[#eef7f1]">
-              뉴욕웨이 종류별
-            </Link>
           </div>
         </section>
         <CommercialAdSection pageType="category" className="mt-6" />

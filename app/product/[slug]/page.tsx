@@ -36,7 +36,7 @@ import ProductReviewSection from "../../components/ProductReviewSection";
 import ServingBasisNotice from "../../components/ServingBasisNotice";
 import { getAllProducts, getNutritionDetail } from "../../data/products";
 import { getAllCompareLandings } from "../../data/compareLandings";
-import { compareLandingHref as canonicalCompareHref } from "../../data/compareCanonicalOverrides";
+import { compareLandingHref as canonicalCompareHref, compareNoindexSlugs } from "../../data/compareCanonicalOverrides";
 import { brandToSlug } from "../../lib/brandHubs";
 import { getCategoryHref, getCategoryLabel } from "../../lib/categories";
 import {
@@ -339,7 +339,7 @@ function buildProductInternalLinks(product: ProductDetailProps) {
   if (category === "powder") {
     // 파우더 비교 랜딩(2026-11-04)은 파우더끼리만 고른다. 셀렉스·하이뮨처럼 음료도 있는 브랜드에서 음료 비교가 잡히지 않게.
     const powderSlugs = new Set(getAllProducts().filter((item) => item.productType === "powder").map((item) => item.slug));
-    const powderLandings = getAllCompareLandings().filter((landing) => landing.productSlugs.every((slug) => powderSlugs.has(slug)));
+    const powderLandings = getAllCompareLandings().filter((landing) => !compareNoindexSlugs.has(landing.slug) && landing.productSlugs.every((slug) => powderSlugs.has(slug)));
     const brandBySlug = new Map(getAllProducts().map((item) => [item.slug, item.brand]));
     const powderLanding =
       powderLandings.find((landing) => landing.productSlugs.includes(product.slug)) ??

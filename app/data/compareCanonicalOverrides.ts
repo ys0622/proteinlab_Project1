@@ -10,3 +10,14 @@ export const compareCanonicalOverrides: Record<string, string> = {
 export function compareLandingHref(slug: string): string {
   return compareCanonicalOverrides[slug]?.replace("https://proteinlab.kr", "") ?? `/compare/${slug}`;
 }
+
+// 네이버 노출 하락(10/29~) 재측정 기간에는 새 파우더 비교 6개를 검색에서 뺀다(2026-11-05 Scott, 11/7 판단).
+// noindex·사이트맵 제외·내부 링크 제외. 기간이 끝나면 이 목록을 비운다.
+export const compareNoindexSlugs = new Set<string>([
+  "optimum-gold-standard-vs-dymatize-elite-whey",
+  "optimum-hydrowhey-vs-dymatize-iso100",
+  "selex-vs-hymune-protein-powder",
+  "newyorkwhey-protein-powder-lineup-comparison",
+  "selex-protein-powder-lineup-comparison",
+  "optimum-nutrition-protein-powder-lineup-comparison",
+]);

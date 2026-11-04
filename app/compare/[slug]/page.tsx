@@ -10,7 +10,7 @@ import TrackedLink from "../../components/TrackedLink";
 import { getCompareLandingBySlug, getAllCompareLandingStaticSlugs } from "../../data/compareLandings";
 import { resolveLandingCopy } from "../../lib/compareLandingCopy";
 import { buildCompareFaqs } from "../../lib/compareLandingFaq";
-import { compareCanonicalOverrides } from "../../data/compareCanonicalOverrides";
+import { compareCanonicalOverrides, compareNoindexSlugs } from "../../data/compareCanonicalOverrides";
 import { formatProductLabel } from "../../lib/productLabel";
 import { getCoupangRedirectHref } from "../../lib/purchaseLinks";
 import { getProductImageUrl } from "../../lib/productImage";
@@ -241,6 +241,7 @@ export async function generateMetadata({ params }: PageProps) {
     title,
     description,
     alternates: { canonical },
+    ...(compareNoindexSlugs.has(landing.slug) ? { robots: { index: false, follow: true } } : {}),
     openGraph: {
     images: [{ url: "https://proteinlab.kr/opengraph-image", width: 1200, height: 630, alt: "ProteinLab 단백질 제품 비교" }],
       title,

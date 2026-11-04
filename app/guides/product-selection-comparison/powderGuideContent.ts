@@ -67,16 +67,6 @@ const scoopLink: RelatedGuideLink = {
   href: `${BASE}/protein-powder-scoop-guide`,
   description: "1회 제공량(1스쿱 기준)·1회 단백질·한 통 회분을 등록 파우더 전체로 비교합니다.",
 };
-const brandCompareLink: RelatedGuideLink = {
-  title: "하이드로웨이 vs ISO 100 비교",
-  href: "/compare/optimum-hydrowhey-vs-dymatize-iso100",
-  description: "아이솔레이트 보충제 두 제품의 1회 단백질·함량·당류를 나란히 봅니다.",
-};
-const seniorCompareLink: RelatedGuideLink = {
-  title: "셀렉스 vs 하이뮨 단백질 분말 비교",
-  href: "/compare/selex-vs-hymune-protein-powder",
-  description: "304g 고소한맛 분말 두 제품의 1회 단백질·열량을 나란히 봅니다.",
-};
 const sourceTypesLink: RelatedGuideLink = {
   title: "단백질 원료 종류 정리",
   href: "/guides/basics/protein-source-types",
@@ -169,7 +159,7 @@ export const proteinPowderTop10Config: ComparePageConfig = {
     { question: "당류 0g인 단백질 파우더는 몇 종인가요?", answer: `등록 ${powder.length}종 중 성분표 당류가 0g인 제품은 ${powder.filter((p) => p.sugar === 0).length}종입니다. 당류 줄이 아예 없는 제품 ${powder.filter((p) => !hasSugar(p)).length}종은 0g으로 세지 않았습니다.` },
     { question: "해외 직구 제품도 순위에 들어가나요?", answer: `네. 국내 유통 제품과 같은 기준으로 계산했고, TOP 10 중 ${top10OverseasCount}종이 해외 직구 제품입니다. 표와 카드에 '해외 직구'로 표시했습니다.` },
   ],
-  relatedGuides: [powderListLink, scoopLink, sourceLink, purposeLink, brandCompareLink, sourceTypesLink],
+  relatedGuides: [powderListLink, scoopLink, sourceLink, purposeLink, sourceTypesLink],
   purchaseLinks: top10.slice(0, 3).map((p) => ({ label: `${label(p)} 보기`, slug: p.slug })),
 };
 
@@ -256,7 +246,7 @@ export const wpiWpcIspPowderConfig: ComparePageConfig = {
     { question: "분리대두단백(ISP)만 쓴 파우더도 있나요?", answer: `등록 제품 중 분리대두단백이 들어간 제품은 ${withIsp.length}종이지만 대부분 유청과 섞은 혼합형입니다. 식물성 유형은 ${sourceGroups[2].list.length}종(${sourceGroups[2].list.map(label).join(", ")})입니다.` },
     { question: "원료 유형별 당류 차이가 있나요?", answer: `표시 제품 평균은 ${sourceGroups.map((g) => `${g.name} ${sugarMean(g.list)}`).join(", ")}입니다. 유형보다 제품별 차이가 커서 성분표의 당류 줄을 직접 확인하는 편이 정확합니다.` },
   ],
-  relatedGuides: [sourceTypesLink, powderListLink, top10Link, scoopLink, purposeLink, brandCompareLink],
+  relatedGuides: [sourceTypesLink, powderListLink, top10Link, scoopLink, purposeLink],
   purchaseLinks: sourceGroups
     .map((g) => [...g.list].sort(byPctThenSugar)[0])
     .filter((p): p is ProductDetailProps => Boolean(p))
@@ -355,7 +345,7 @@ export const proteinPowderByPurposeConfig: ComparePageConfig = {
     { question: "식사대용 파우더와 일반 단백질 보충제는 무엇이 다른가요?", answer: `등록 데이터 기준 식사대용 ${meal.length}종의 평균 단백질 함량은 ${fmt(mean(meal.map(pct)))}%로, 운동용 ${workout.length}종 평균 ${fmt(mean(workout.map(pct)))}%보다 낮습니다. 1회 제공량에서 단백질 외 성분 비중이 크다는 뜻이며, 평균 1회 탄수화물은 식사대용 ${carbsMean(meal)}, 운동용 ${carbsMean(workout)}입니다.${mealNoSugar.length ? ` ${mealNoSugar.map(label).join(", ")}은 당류가 표에 없습니다.` : ""}` },
     { question: "어떤 유형을 골라야 하나요?", answer: "이 페이지는 성분표 수치로 유형별 차이를 보여 줄 뿐 개인에게 맞는 제품을 정해 주지 않습니다. 식단이나 건강 상태에 따라 필요한 열량·단백질이 다르니 필요하면 전문가와 상담하세요." },
   ],
-  relatedGuides: [powderListLink, top10Link, scoopLink, sourceLink, seniorCompareLink, sourceTypesLink],
+  relatedGuides: [powderListLink, top10Link, scoopLink, sourceLink, sourceTypesLink],
   purchaseLinks: [
     [...workout].sort(byPctThenSugar)[0],
     [...senior].sort(byPctThenSugar)[0],

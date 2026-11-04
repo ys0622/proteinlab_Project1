@@ -14,7 +14,7 @@ import { isComparableServing } from "../../lib/servingScope";
 import { getBrandProfile } from "@/app/lib/brandProfile";
 import { brandWithSearchAlias } from "@/app/lib/brandSearchAliases";
 import { getAllCompareLandings } from "@/app/data/compareLandings";
-import { compareLandingHref } from "@/app/data/compareCanonicalOverrides";
+import { compareLandingHref, compareNoindexSlugs } from "@/app/data/compareCanonicalOverrides";
 import type { ProductDetailProps } from "../../data/products";
 
 function getBrandQuickLinks(brand: string) {
@@ -399,7 +399,7 @@ export default async function BrandPage({ params }: PageProps) {
   const brandSlugs = new Set(products.filter((item) => item.brand === brandName).map((item) => item.slug));
   const compareLinks = brand
     ? getAllCompareLandings()
-        .filter((landing) => landing.productSlugs.some((s) => brandSlugs.has(s)))
+        .filter((landing) => !compareNoindexSlugs.has(landing.slug) && landing.productSlugs.some((s) => brandSlugs.has(s)))
         // 브랜드 제품 비율이 높은 랜딩(맛별·종류별 비교)을 먼저 둔다.
         .map((landing) => ({ landing, share: landing.productSlugs.filter((s) => brandSlugs.has(s)).length / landing.productSlugs.length }))
         .sort((a, b) => b.share - a.share)

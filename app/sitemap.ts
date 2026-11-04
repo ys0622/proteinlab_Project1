@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 import { RECENT_REVISIONS } from "./lib/recentRevisions";
 import { getAllCompareLandings } from "./data/compareLandings";
-import { compareCanonicalOverrides } from "./data/compareCanonicalOverrides";
+import { compareCanonicalOverrides, compareNoindexSlugs } from "./data/compareCanonicalOverrides";
 import { getAllCurations } from "./lib/curationSystem";
 import { getBrandSummary } from "./lib/brandHubs";
 import { getAllPickSlugs } from "./data/picksConfig";
@@ -401,7 +401,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // /topics/* 는 얇은 랜딩이라 noindex 처리했으므로 사이트맵에서 제외한다
   const topicRoutes: string[] = [];
   const compareRoutes = getAllCompareLandings()
-    .filter((landing) => !(landing.slug in compareCanonicalOverrides))
+    .filter((landing) => !(landing.slug in compareCanonicalOverrides) && !compareNoindexSlugs.has(landing.slug))
     .map((landing) => `/compare/${landing.slug}`);
   const pickRoutes = getAllPickSlugs().map((slug) => `/picks/${slug}`);
 
