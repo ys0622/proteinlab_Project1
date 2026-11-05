@@ -296,7 +296,7 @@ export default function ConvenienceStoreProteinGuidePage() {
               </li>
               <li>
                 <Link href="/guides/product-selection-comparison/protein-bar-top10" className="font-semibold text-[#24543d] underline underline-offset-4">
-                  단백질바 추천 TOP 10 — 100개 제품 성분 비교
+                  단백질바 추천 TOP 10 — 전체 바 성분 비교
                 </Link>
               </li>
               <li>

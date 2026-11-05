@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import GuideThumbImage from "./components/GuideThumbImage";
+import productCategoryCountsData from "./data/productCategoryCounts.json";
 import HomeGuideCardLink from "./components/HomeGuideCardLink";
 import HomeHeroSearch from "./components/HomeHeroSearch";
 import Footer from "./components/Footer";
@@ -70,11 +71,11 @@ const GUIDE_CARDS: {
   // MPI 가이드(첫 방문 1위·네이버 클릭 274), 쉐이크 TOP7(첫 방문 38·쿠팡 클릭 5), 바 TOP10(35·6), 프로티원 vs 잇더핏(네이버 클릭 155),
   // 당뇨 음료(네이버 CTR 10.4%), 쉐이크 칼로리 순위(쿠팡 클릭 3). 사진은 글자 없는 생활 장면(Codex 생성).
   { category: "성분 가이드", title: "MPI·WPI·WPC 단백질 차이", desc: "우유·유청 단백질 원료별 특징 비교", meta: "가장 많이 읽는 글", href: "/guides/basics/protein-source-types", thumbImg: "/guide-thumbnails/protein-source-types-v1.png", thumbBg: "linear-gradient(135deg, #5a4a2e 0%, #8c7040 100%)", thumbEmoji: "🧪" },
-  { category: "쉐이크 랭킹", title: "단백질 쉐이크 추천 TOP 7", desc: "성분표로 고른 쉐이크 7가지", meta: "쉐이크 112종 비교", href: "/guides/product-selection-comparison/protein-shake-top7", thumbImg: "/guide-thumbnails/home-shake-top7.jpg", thumbBg: "linear-gradient(135deg, #1f3a2e 0%, #2f5a45 100%)", thumbEmoji: "🥤" },
-  { category: "바 랭킹", title: "단백질 바 추천 TOP 10", desc: "운동 후·다이어트 간식 기준으로 골랐어요", meta: "바 108종 비교", href: "/guides/product-selection-comparison/protein-bar-top10", thumbImg: "/guide-thumbnails/home-bar-top10-v2.webp", thumbBg: "linear-gradient(135deg, #6a4a2a 0%, #a8763c 100%)", thumbEmoji: "🍫" },
+  { category: "쉐이크 랭킹", title: "단백질 쉐이크 추천 TOP 7", desc: "성분표로 고른 쉐이크 7가지", meta: `쉐이크 ${productCategoryCountsData.shake}종 비교`, href: "/guides/product-selection-comparison/protein-shake-top7", thumbImg: "/guide-thumbnails/home-shake-top7.jpg", thumbBg: "linear-gradient(135deg, #1f3a2e 0%, #2f5a45 100%)", thumbEmoji: "🥤" },
+  { category: "바 랭킹", title: "단백질 바 추천 TOP 10", desc: "운동 후·다이어트 간식 기준으로 골랐어요", meta: `바 ${productCategoryCountsData.bar}종 비교`, href: "/guides/product-selection-comparison/protein-bar-top10", thumbImg: "/guide-thumbnails/home-bar-top10-v2.webp", thumbBg: "linear-gradient(135deg, #6a4a2a 0%, #a8763c 100%)", thumbEmoji: "🍫" },
   { category: "쉐이크 비교", title: "프로티원 vs 잇더핏", desc: "저당 파우치형 쉐이크 맛별 성분 비교", meta: "맛별 성분표", href: "/compare/proteone-vs-itthefit-shake", thumbImg: "/guide-thumbnails/home-shake-compare-v3.webp", thumbBg: "linear-gradient(135deg, #6b4a2e 0%, #a67c4a 100%)", thumbEmoji: "🥤" },
   { category: "건강 가이드", title: "당뇨 있을 때 단백질 음료", desc: "당류·칼로리·탄수화물로 고르는 기준", meta: "저당 음료 후보", href: "/guides/product-selection-comparison/protein-drink-for-diabetes", thumbImg: "/guide-thumbnails/home-diabetes-drink.jpg", thumbBg: "linear-gradient(135deg, #4a6b3a 0%, #7fa060 100%)", thumbEmoji: "🥛" },
-  { category: "칼로리 데이터", title: "단백질 쉐이크 칼로리 순위", desc: "칼로리 낮은 순 TOP 20, 당류도 함께", meta: "쉐이크 112종", href: "/guides/product-selection-comparison/protein-shake-calorie-ranking", thumbImg: "/guide-thumbnails/home-shake-calorie.jpg", thumbBg: "linear-gradient(135deg, #3a5a52 0%, #6a9a8a 100%)", thumbEmoji: "📊" },
+  { category: "칼로리 데이터", title: "단백질 쉐이크 칼로리 순위", desc: "칼로리 낮은 순 TOP 20, 당류도 함께", meta: `쉐이크 ${productCategoryCountsData.shake}종`, href: "/guides/product-selection-comparison/protein-shake-calorie-ranking", thumbImg: "/guide-thumbnails/home-shake-calorie.jpg", thumbBg: "linear-gradient(135deg, #3a5a52 0%, #6a9a8a 100%)", thumbEmoji: "📊" },
 ];
 
 function toCarouselProduct(p: ProductDetailProps): CarouselProduct {
@@ -123,8 +124,7 @@ export default async function Home() {
   const topYogurts = selectHomeDiscovery(yogurts, views.yogurt ?? {}, coupangRanks);
   const topShakes = selectHomeDiscovery(shakes, views.shake ?? {}, coupangRanks);
   const topSoymilks = selectHomeDiscovery(soymilks, views.soymilk ?? {}, coupangRanks);
-  // 최근 조회 집계(recentPopularity)에 파우더가 없어 쿠팡 베스트·신규 순으로만 고른다.
-  const topPowders = selectHomeDiscovery(powders, {}, coupangRanks);
+  const topPowders = selectHomeDiscovery(powders, views.powder ?? {}, coupangRanks);
 
   const productBySlug = new Map(
     [...drinks, ...bars, ...yogurts, ...shakes, ...soymilks].map((p) => [p.slug ?? "", p] as const),

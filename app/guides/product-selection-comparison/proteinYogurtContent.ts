@@ -77,14 +77,14 @@ export const proteinYogurtTop5Config: CategoryGuideConfig = {
   slug: "protein-yogurt-top5",
   title: "프로틴 요거트 추천 TOP 5 (2026) | 단백질·당류·칼로리 비교",
   description:
-    "ProteinLab DB 요거트 57개의 단백질·당류·칼로리를 비교해 2026년 프로틴 요거트 추천 TOP 5와 그릭요거트와의 차이, 목적별 선택 기준을 정리했습니다.",
+    `ProteinLab DB 요거트 ${yogurtProducts.length}개의 단백질·당류·칼로리를 비교해 2026년 프로틴 요거트 추천 TOP 5와 그릭요거트와의 차이, 목적별 선택 기준을 정리했습니다.`,
   keywords: ["단백질 요거트 추천", "프로틴 요거트 추천", "고단백 요거트", "그릭요거트 단백질", "다이어트 요거트 추천", "단백질 요거트 순위"],
   badge: "요거트 랭킹",
   readingTime: "5분 읽기",
   updatedAt: "2026-09-30",
-  methodologyNote: "ProteinLab DB 요거트 57개 기준 · 1회 섭취 현실성 + 단백질 + 칼로리 + 당류",
+  methodologyNote: `ProteinLab DB 요거트 ${yogurtProducts.length}개 기준 · 1회 섭취 현실성 + 단백질 + 칼로리 + 당류`,
   intro:
-    "프로틴 요거트를 고를 때는 단백질 숫자만 아니라 당류·칼로리와 1회 섭취량을 함께 봐야 합니다. ProteinLab DB 요거트 57개에서 실제 한 번에 먹기 쉬운 제품을 추려 TOP 5를 정리하고, 그릭요거트와 프로틴 요거트의 차이도 함께 비교했습니다.",
+    `프로틴 요거트를 고를 때는 단백질 숫자만 아니라 당류·칼로리와 1회 섭취량을 함께 봐야 합니다. ProteinLab DB 요거트 ${yogurtProducts.length}개에서 실제 한 번에 먹기 쉬운 제품을 추려 TOP 5를 정리하고, 그릭요거트와 프로틴 요거트의 차이도 함께 비교했습니다.`,
   summary: [
     "상위권은 100~150g 내외에서 단백질 10g 이상을 채우면서 칼로리를 크게 올리지 않는 제품들입니다.",
     "그릭요거트는 농축형이라 포만감이 좋고, 프로틴 요거트는 단백질 숫자를 읽기 쉬워 입문자에게 편합니다.",
@@ -196,7 +196,7 @@ export const proteinYogurtTop5Config: CategoryGuideConfig = {
     },
   ],
 };
-proteinYogurtTop5Config.methodologyNote = "ProteinLab DB 요거트 57개 기준 · 프로틴 요거트/드링크 SKU 우선 선정";
+proteinYogurtTop5Config.methodologyNote = `ProteinLab DB 요거트 ${yogurtProducts.length}개 기준 · 프로틴 요거트/드링크 SKU 우선 선정`;
 proteinYogurtTop5Config.summary = [
   "이번 TOP 5는 그릭요거트 전체가 아니라 프로틴 설계형 요거트와 드링크 SKU를 먼저 좁혀서 정리한 리스트입니다.",
   "요프로는 저당·플레인 쪽, 요플레 프로틴은 드링크와 떠먹는 타입을 함께 비교하기 좋다는 장점이 있습니다.",

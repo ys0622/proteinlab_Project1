@@ -128,6 +128,9 @@ const PAIRS: PairSpec[] = [
   { slug: "optimum-gold-standard-vs-dymatize-elite-whey", a: "on-goldstandard-whey-doublerich-899", b: "dymatize-elite-whey-richchoco-2300", titleA: "옵티멈 골드스탠다드 웨이", titleB: "다이마타이즈 엘리트 웨이", topic: "단백질 보충제", intro: "ProteinLab 분류로 두 제품 모두 웨이(WPC 포함) 유형의 초콜릿 맛입니다." },
   { slug: "optimum-hydrowhey-vs-dymatize-iso100", a: "on-platinum-hydrowhey-turbochoco-1640", b: "dymatize-iso100-gourmetchoco-2300", titleA: "옵티멈 플래티넘 하이드로웨이", titleB: "다이마타이즈 ISO 100", topic: "단백질 보충제", intro: "ProteinLab 분류로 두 제품 모두 아이솔레이트(WPI) 유형의 초콜릿 맛입니다." },
   { slug: "selex-vs-hymune-protein-powder", a: "selex-protein-savory-304", b: "hymune-protein-balance-savory-304", titleA: "셀렉스 프로틴", titleB: "하이뮨 프로틴 밸런스", topic: "단백질 분말", intro: "두 제품 모두 304g 통의 고소한맛 분말입니다." },
+  // 2026-11-05 신규 등록 제품이 비교 페이지에 하나도 안 걸려 있던 것(파스퇴르 단백질+).
+  { slug: "pasteur-protein-plus-vs-hymune-balance-blacksesame", a: "pasteur-protein-plus-blackbean-blacksesame-195", b: "hymune-protein-balance-black-sesame-190", titleA: "파스퇴르 단백질+ 검은콩&검은깨", titleB: "하이뮨 프로틴 밸런스 흑임자", intro: "두 제품 모두 190mL 안팎의 검은깨·흑임자 맛 단백질 음료입니다." },
+  { slug: "hymune-active-shake-injeolmi-vs-earlgrey", a: "hymune-active-protein-shake-injeolmi-40", b: "hymune-active-protein-shake-earlgrey-milktea-40", titleA: "하이뮨 액티브 쉐이크 인절미", titleB: "하이뮨 액티브 쉐이크 얼그레이밀크티", topic: "맛별 성분", intro: "같은 하이뮨 액티브 프로틴 쉐이크 40g 파우치의 두 가지 맛입니다." },
 ];
 
 const LINES: LineSpec[] = [
@@ -160,6 +163,8 @@ const LINES: LineSpec[] = [
   { slug: "dryou-proteinbar-lineup-comparison", title: "닥터유 단백질바 종류별 비교 (프로·미니·한입쏙)", lineName: "닥터유 단백질바", itemWord: "제품", filter: (p) => p.productType === "bar" && p.brand === "닥터유" },
   { slug: "hymune-balance-active-flavor-comparison", title: "하이뮨 프로틴 밸런스 액티브 맛별 비교", lineName: "하이뮨 프로틴 밸런스 액티브", filter: (p) => p.productType === "drink" && p.brand === "하이뮨" && p.name.includes("액티브") },
   { slug: "hymune-protein-balance-190-flavor-comparison", title: "하이뮨 프로틴 밸런스 190mL 맛별 비교", lineName: "하이뮨 프로틴 밸런스 190mL", filter: (p) => p.productType === "drink" && p.brand === "하이뮨" && p.name.startsWith("프로틴 밸런스 (") && p.capacity === "190mL" },
+  // 2026-11-05 하이뮨 액티브 프로틴바·쉐이크 신규 등록분.
+  { slug: "hymune-proteinbar-lineup-comparison", title: "하이뮨 단백질바 종류별 비교 (액티브 프로틴바·액티브바·프로틴밸런스바)", lineName: "하이뮨 단백질바", itemWord: "제품", filter: (p) => p.productType === "bar" && p.brand === "하이뮨" },
   { slug: "danbaek-drink-flavor-comparison", title: "더단백 드링크 맛별 비교", lineName: "더단백 드링크", filter: (p) => p.productType === "drink" && p.brand === "더단백" && p.name.includes("더단백 드링크") },
   { slug: "mymil-protein-lineup-comparison", title: "마이밀 뉴프로틴·퓨로틴 종류별 비교", lineName: "마이밀 프로틴 음료", itemWord: "제품", filter: (p) => p.productType === "drink" && p.brand === "마이밀" },
   { slug: "oatmont-protein-flavor-comparison", title: "오트몬드 프로틴 맛별 비교", lineName: "오트몬드 프로틴", filter: (p) => p.productType === "drink" && p.brand === "오트몬드" },

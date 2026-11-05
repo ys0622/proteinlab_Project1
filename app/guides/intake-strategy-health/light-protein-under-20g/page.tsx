@@ -81,7 +81,7 @@ const relatedLinks = [
   {
     href: "/picks/light-protein-under-20",
     title: "20g 미만 저함량 음료 전체 보기",
-    body: "저함량 제품 22종을 한 번에 비교합니다.",
+    body: "단백질 20g 미만 저함량 제품을 한 번에 비교합니다.",
   },
   {
     href: "/guides/intake-strategy-health/high-protein-side-effects",

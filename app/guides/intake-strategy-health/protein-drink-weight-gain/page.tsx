@@ -9,7 +9,7 @@ import { MILK_200ML, drinkStats, shakeStats } from "@/app/lib/shakeStats";
 
 const pageTitle = "단백질 쉐이크 살찌나요? 단백질 음료 살찌나요 — 1개 열량과 과식 연구로 답합니다";
 const pageDescription =
-  "단백질 쉐이크·단백질 음료가 살찌는지 등록 제품 성분표(쉐이크 112개 1포 중앙값, 음료 1병 중앙값)와 과식 연구(Bray 2012 JAMA), 고단백 연구(Antonio 2014)로 계산했습니다. 식사에 더할 때와 대신할 때, 우유에 탈 때 하루·한 달 열량이 얼마나 달라지는지 정리했습니다.";
+  `단백질 쉐이크·단백질 음료가 살찌는지 등록 제품 성분표(쉐이크 ${shakeStats.total}개 1포 중앙값, 음료 1병 중앙값)와 과식 연구(Bray 2012 JAMA), 고단백 연구(Antonio 2014)로 계산했습니다. 식사에 더할 때와 대신할 때, 우유에 탈 때 하루·한 달 열량이 얼마나 달라지는지 정리했습니다.`;
 const canonical = "https://proteinlab.kr/guides/intake-strategy-health/protein-drink-weight-gain";
 
 export const metadata = {

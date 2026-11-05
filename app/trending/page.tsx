@@ -5,7 +5,7 @@ import Footer from "../components/Footer";
 import CommercialAdSection from "../components/CommercialAdSection";
 import ProductCard from "../components/ProductCard";
 import type { ProductDetailProps } from "../data/products";
-import { getCategoryHref, getCategoryLabel, type ProductCategory } from "../lib/categories";
+import { getCategoryHref, getCategoryLabel, type CatalogProductCategory as ProductCategory } from "../lib/categories";
 import { getProductsByCategoryAsync } from "../lib/productData";
 import { selectHomeDiscovery } from "../lib/homeDiscovery";
 import { getRecentPopularity } from "../lib/recentPopularity";
@@ -43,15 +43,17 @@ const CATEGORIES: { type: ProductCategory; emoji: string }[] = [
   { type: "yogurt", emoji: "🥛" },
   { type: "shake", emoji: "🥣" },
   { type: "soymilk", emoji: "🫘" },
+  { type: "powder", emoji: "🥄" },
 ];
 
 export default async function TrendingPage() {
-  const [drinks, bars, yogurts, shakes, soymilks, popularRes] = await Promise.all([
+  const [drinks, bars, yogurts, shakes, soymilks, powders, popularRes] = await Promise.all([
     getProductsByCategoryAsync("drink"),
     getProductsByCategoryAsync("bar"),
     getProductsByCategoryAsync("yogurt"),
     getProductsByCategoryAsync("shake"),
     getProductsByCategoryAsync("soymilk"),
+    getProductsByCategoryAsync("powder"),
     getRecentPopularity(),
   ]);
 
@@ -63,6 +65,7 @@ export default async function TrendingPage() {
     yogurt: yogurts,
     shake: shakes,
     soymilk: soymilks,
+    powder: powders,
   };
 
   // 홈 "지금 인기 제품"과 같은 기준: 최근 7일 조회수 + 영양 품질 + 쿠팡 순위(확인될 때) + 신제품 소량 가점, 브랜드당 최대 2개.
