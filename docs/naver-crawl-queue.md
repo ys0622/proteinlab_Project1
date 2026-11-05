@@ -2,6 +2,18 @@
 
 2026-10-22: 하루 50건 접수(51번째부터 접수 안 됨, 안내 문구 없음). 아래는 아직 넣지 않은 비교 페이지. 넣은 줄은 지운다.
 
+2026-11-05 구매 줄 시험군 10개(구매 줄을 뺀 상태를 네이버가 빨리 읽도록 맨 앞에).
+- https://proteinlab.kr/compare/greekday-vs-maeilbio-yogurt
+- https://proteinlab.kr/compare/doctoru-vs-kirkland-bar
+- https://proteinlab.kr/compare/takefit-max-vs-takefit-monster
+- https://proteinlab.kr/compare/takefit-pro-500-vs-max-250
+- https://proteinlab.kr/compare/labnosh-vs-flymill-shake
+- https://proteinlab.kr/compare/doctoru-vs-benof-crunch-bar
+- https://proteinlab.kr/compare/greek-yogurt-brand-compare
+- https://proteinlab.kr/compare/flymill-vs-allthebetter-shake
+- https://proteinlab.kr/compare/labnosh-vs-danbaekhani-shake
+- https://proteinlab.kr/compare/sellex-vs-takefit
+
 2026-11-05: 308→301 변경 후 네이버가 다시 읽도록 옛 프로티원 가이드 주소(301)를 맨 앞에.
 - https://proteinlab.kr/guides/product-selection-comparison/proteone-protein-shake
 

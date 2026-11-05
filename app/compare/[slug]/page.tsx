@@ -10,7 +10,7 @@ import TrackedLink from "../../components/TrackedLink";
 import { getCompareLandingBySlug, getAllCompareLandingStaticSlugs } from "../../data/compareLandings";
 import { resolveLandingCopy } from "../../lib/compareLandingCopy";
 import { buildCompareFaqs } from "../../lib/compareLandingFaq";
-import { compareCanonicalOverrides, compareNoindexSlugs } from "../../data/compareCanonicalOverrides";
+import { compareBuyRowTestOffSlugs, compareCanonicalOverrides, compareNoindexSlugs } from "../../data/compareCanonicalOverrides";
 import { formatProductLabel } from "../../lib/productLabel";
 import { getCoupangRedirectHref } from "../../lib/purchaseLinks";
 import { getProductImageUrl } from "../../lib/productImage";
@@ -440,7 +440,7 @@ export default async function CompareLandingPage({ params }: PageProps) {
                     ))}
                   </tr>
                   {/* 표를 읽고 고른 제품을 바로 확인하게 한다(비교 랜딩은 첫 화면 다음 구매 버튼이 3화면 아래 '비교 대상 제품'에 있었다, 2026-10-28). */}
-                  <tr>
+                  {!compareBuyRowTestOffSlugs.has(landing.slug) && (<tr>
                     <th className="py-2.5 pr-2 text-left text-xs font-semibold text-[var(--foreground-muted)]">구매</th>
                     {products.map((p) => {
                       const href = getCoupangRedirectHref(p.coupangUrl, p.productType ?? null, p.slug);
@@ -464,7 +464,7 @@ export default async function CompareLandingPage({ params }: PageProps) {
                         </td>
                       );
                     })}
-                  </tr>
+                  </tr>)}
                 </tbody>
               </table>
             </div>

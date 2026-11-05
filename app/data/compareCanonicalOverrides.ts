@@ -21,3 +21,19 @@ export const compareNoindexSlugs = new Set<string>([
   "selex-protein-powder-lineup-comparison",
   "optimum-nutrition-protein-powder-lineup-comparison",
 ]);
+
+// 네이버 노출 하락 원인 시험(2026-11-05 Scott "시험 시작", docs/weekly/2026-11-04-rebound.md 5장 2번):
+// 10/29부터 노출이 크게 빠진 비교 페이지 10개만 10/28에 넣은 표 안 '구매' 줄을 빼고(10/27 상태) 나머지 비교 페이지와 7일 비교한다.
+// 위쪽 카드·'비교 대상 제품'의 구매 버튼은 그대로 둔다. 11/12 판정 뒤 이 목록을 비우거나 전체에 적용한다.
+export const compareBuyRowTestOffSlugs = new Set<string>([
+  "greekday-vs-maeilbio-yogurt",
+  "doctoru-vs-kirkland-bar",
+  "takefit-max-vs-takefit-monster",
+  "takefit-pro-500-vs-max-250",
+  "labnosh-vs-flymill-shake",
+  "doctoru-vs-benof-crunch-bar",
+  "greek-yogurt-brand-compare",
+  "flymill-vs-allthebetter-shake",
+  "labnosh-vs-danbaekhani-shake",
+  "sellex-vs-takefit",
+]);
