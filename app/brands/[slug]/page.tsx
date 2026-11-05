@@ -325,13 +325,20 @@ export async function generateMetadata({ params }: PageProps) {
   // 카테고리를 쓴다(테이크핏·랩노쉬처럼 음료가 많은 브랜드가 쉐이크 몇 개 때문에 "쉐이크 성분 비교"로 잡히던 문제, 2026-10-15).
   const { label: mainLabel, count: mainCount } = getBrandMainCategory(brand, items);
   const isSingleCategory = mainCount === items.length;
-  const title = isSingleCategory
+  // 제품이 1개인 브랜드는 "맛별 … 1종 비교"가 어색해 제품명과 수치를 제목에 쓴다(2026-11-05, 36개 브랜드).
+  const single = items.length === 1 ? items[0] : null;
+  const title = single
+    ? `${brandWithSearchAlias(brand)}${mainLabel ? ` ${mainLabel}` : ""} 성분표 — ${single.name}${facts.length ? ` ${facts.join("·")}` : ""}`
+    : isSingleCategory
     ? `${brandWithSearchAlias(brand)}${mainLabel ? ` ${mainLabel}` : ""} 성분표 — 맛별 단백질·당류·칼로리 ${items.length}종 비교`
     : // 여러 제품군 브랜드도 "브랜드 + 주력 제품군 + 성분표"로 시작한다. 네이버 브랜드 검색("하이뮨", "커클랜드 프로틴바")의
       // 클릭률이 0.3~0.9%로 낮아(2026-10-20), 검색어와 같은 말이 제목 맨 앞에 오게 했다.
       `${brandWithSearchAlias(brand)}${mainLabel ? ` ${mainLabel}` : ""} 성분표 — ${mainCount}종 포함 전체 ${items.length}종 단백질·당류·칼로리 비교`;
-  const description =
-    `${brand} ${isSingleCategory ? `${mainLabel || "제품"} ${items.length}종` : `제품 ${items.length}종(${mainLabel} ${mainCount}종 포함)`}의 성분표를 표로 비교합니다.` +
+  const description = single
+    ? `${brand} ${single.name} 성분표를 정리했습니다.` +
+      (facts.length ? ` 1회 기준 ${facts.join(" · ")}.` : "") +
+      ` 같은 제품군의 다른 브랜드와 단백질·당류를 비교해 보세요.`
+    : `${brand} ${isSingleCategory ? `${mainLabel || "제품"} ${items.length}종` : `제품 ${items.length}종(${mainLabel} ${mainCount}종 포함)`}의 성분표를 표로 비교합니다.` +
     (facts.length ? ` 1회 기준 ${facts.join(" · ")}${servingItems.length < items.length ? `(1회 제공량 비교가 되는 ${servingItems.length}종)` : ""}.` : "") +
     ` 어떤 제품부터 봐야 할지 바로 확인하세요.`;
   return {
@@ -472,7 +479,7 @@ export default async function BrandPage({ params }: PageProps) {
             <span className="text-[var(--foreground)]">{brand.brand}</span>
           </nav>
           <h1 className="text-2xl font-bold leading-[1.25] text-[#16412D] md:text-3xl">
-            {brand.brand} 성분표 · 제품 {brand.total}종 비교
+            {brand.total === 1 && brand.items[0] ? `${brand.brand} 성분표 · ${brand.items[0].name}` : `${brand.brand} 성분표 · 제품 ${brand.total}종 비교`}
           </h1>
           <p className="mt-2 max-w-[760px] text-sm leading-6 text-[var(--foreground-muted)] md:text-[15px]">
             {getBrandAnswer(brand.brand, brand.total, brand.items)}

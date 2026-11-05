@@ -9,7 +9,7 @@ import type { DiscoveryReason } from "../lib/homeDiscovery";
 
 export type CarouselProduct = ProductCardProps & { rank?: number; discoveryReason?: DiscoveryReason };
 
-type CategoryKey = "drink" | "bar" | "yogurt" | "shake" | "soymilk";
+type CategoryKey = "drink" | "bar" | "yogurt" | "shake" | "soymilk" | "powder";
 
 const TABS: { key: CategoryKey; label: string; href: string }[] = [
   { key: "drink", label: "음료", href: "/drinks" },
@@ -17,6 +17,7 @@ const TABS: { key: CategoryKey; label: string; href: string }[] = [
   { key: "yogurt", label: "요거트", href: "/yogurt" },
   { key: "shake", label: "쉐이크", href: "/shake" },
   { key: "soymilk", label: "두유", href: "/soymilk" },
+  { key: "powder", label: "파우더", href: "/powder" },
 ];
 
 interface Props {
@@ -126,14 +127,15 @@ export default function HomePopularCarousel({ products, available }: Props) {
       </AutoProductCarousel>}
 
       {/* Mobile category selector */}
-      <div className="mt-2 flex items-center justify-center gap-1.5 md:hidden">
+      {/* 6개 카테고리가 한 줄에 다 보이게 칸을 나눠 쓴다(2026-11-05 파우더 추가). */}
+      <div className="mt-2 grid grid-cols-6 gap-1 md:hidden">
         {TABS.map((tab, i) => (
           <button
             key={tab.key}
             type="button"
             onClick={() => handleTabClick(i)}
             aria-pressed={i === tabIdx}
-            className="inline-flex h-7 items-center justify-center rounded-full px-3 text-[10px] font-bold transition-colors"
+            className="inline-flex h-7 min-w-0 items-center justify-center whitespace-nowrap rounded-full px-1 text-[11px] font-bold transition-colors"
             style={
               i === tabIdx
                 ? { background: "#1F5A3D", color: "#fff" }

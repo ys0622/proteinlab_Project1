@@ -117,12 +117,14 @@ export default async function Home() {
 
   const categoryCounts = getCategoryProductCounts({ drink: drinks, bar: bars, yogurt: yogurts, shake: shakes, soymilk: soymilks, powder: powders });
 
-  const coupangRanks = matchCoupangCategoryBest([...drinks, ...bars, ...yogurts, ...shakes, ...soymilks], bestSnapshot);
+  const coupangRanks = matchCoupangCategoryBest([...drinks, ...bars, ...yogurts, ...shakes, ...soymilks, ...powders], bestSnapshot);
   const topDrinks = selectHomeDiscovery(drinks, views.drink ?? {}, coupangRanks);
   const topBars = selectHomeDiscovery(bars, views.bar ?? {}, coupangRanks);
   const topYogurts = selectHomeDiscovery(yogurts, views.yogurt ?? {}, coupangRanks);
   const topShakes = selectHomeDiscovery(shakes, views.shake ?? {}, coupangRanks);
   const topSoymilks = selectHomeDiscovery(soymilks, views.soymilk ?? {}, coupangRanks);
+  // 최근 조회 집계(recentPopularity)에 파우더가 없어 쿠팡 베스트·신규 순으로만 고른다.
+  const topPowders = selectHomeDiscovery(powders, {}, coupangRanks);
 
   const productBySlug = new Map(
     [...drinks, ...bars, ...yogurts, ...shakes, ...soymilks].map((p) => [p.slug ?? "", p] as const),
@@ -139,6 +141,7 @@ export default async function Home() {
     yogurt: topYogurts.map(({ product, reason }) => ({ ...toCarouselProduct(product), discoveryReason: reason })),
     shake: topShakes.map(({ product, reason }) => ({ ...toCarouselProduct(product), discoveryReason: reason })),
     soymilk: topSoymilks.map(({ product, reason }) => ({ ...toCarouselProduct(product), discoveryReason: reason })),
+    powder: topPowders.map(({ product, reason }) => ({ ...toCarouselProduct(product), discoveryReason: reason })),
   };
 
 
