@@ -20,7 +20,8 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function SearchPage({ searchParams }: SearchPageProps) {
   const params = (await searchParams) ?? {};
-  const q = typeof params.q === "string" ? params.q : "";
+  // ChatGPT가 "/search?q=셀렉스?q=셀렉스"처럼 쿼리를 두 번 붙인 주소로 보내는 경우가 있어 첫 "?" 앞까지만 쓴다(2026-11-05).
+  const q = typeof params.q === "string" ? params.q.split("?")[0].trim() : "";
 
   return (
     <div className="min-h-screen bg-white">
