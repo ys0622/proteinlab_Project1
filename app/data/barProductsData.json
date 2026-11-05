@@ -2303,5 +2303,236 @@
     "naverUrl": "https://search.shopping.naver.com/search/all?query=%EB%AF%B8%ED%8A%B8%EB%A6%AC%20%EC%A0%80%EB%8B%B9%20%ED%94%84%EB%A1%9C%ED%8B%B4%EB%B0%94%20(%EC%BD%94%EC%BD%94%EC%95%84%20%EB%B0%80%ED%81%AC)",
     "fat": 5,
     "sodium": 201
+  },
+  {
+    "slug": "barebells-vegan-proteinbar-caramel-chocochip-55",
+    "brand": "베어벨즈",
+    "name": "비건 프로틴바 (카라멜 초코칩)",
+    "capacity": "55g",
+    "variant": "일반",
+    "tags": [
+      "바"
+    ],
+    "proteinPerServing": 15,
+    "calories": 205,
+    "sugar": 2,
+    "density": "7.32g/100kcal",
+    "productUrl": "#",
+    "productType": "bar",
+    "gradeTags": [],
+    "coupangUrl": "https://www.coupang.com/vp/products/8648618945?itemId=27847457085&vendorItemId=94806871780",
+    "naverUrl": "https://search.shopping.naver.com/search/all?query=%EB%B2%A0%EC%96%B4%EB%B2%A8%EC%A6%88%20%EB%B9%84%EA%B1%B4%20%ED%94%84%EB%A1%9C%ED%8B%B4%EB%B0%94%20(%EC%B9%B4%EB%9D%BC%EB%A9%9C%20%EC%B4%88%EC%BD%94%EC%B9%A9)",
+    "fat": 8.7,
+    "sodium": 232
+  },
+  {
+    "slug": "barebells-soft-proteinbar-salted-peanut-caramel-55",
+    "brand": "베어벨즈",
+    "name": "소프트 프로틴바 (솔티드 피넛 카라멜)",
+    "capacity": "55g",
+    "variant": "일반",
+    "tags": [
+      "바"
+    ],
+    "proteinPerServing": 16,
+    "calories": 210,
+    "sugar": 2,
+    "density": "7.62g/100kcal",
+    "productUrl": "#",
+    "productType": "bar",
+    "gradeTags": [],
+    "coupangUrl": "https://www.coupang.com/vp/products/8188242779?itemId=17998695818&vendorItemId=85154918815",
+    "naverUrl": "https://search.shopping.naver.com/search/all?query=%EB%B2%A0%EC%96%B4%EB%B2%A8%EC%A6%88%20%EC%86%8C%ED%94%84%ED%8A%B8%20%ED%94%84%EB%A1%9C%ED%8B%B4%EB%B0%94%20(%EC%86%94%ED%8B%B0%EB%93%9C%20%ED%94%BC%EB%84%9B%20%EC%B9%B4%EB%9D%BC%EB%A9%9C)",
+    "fat": 10,
+    "sodium": 210
+  },
+  {
+    "slug": "barebells-vegan-proteinbar-caramel-peanut-55",
+    "brand": "베어벨즈",
+    "name": "비건 프로틴바 (카라멜 피넛)",
+    "capacity": "55g",
+    "variant": "일반",
+    "tags": [
+      "바"
+    ],
+    "proteinPerServing": 15,
+    "calories": 217,
+    "sugar": 1.5,
+    "density": "6.91g/100kcal",
+    "productUrl": "#",
+    "productType": "bar",
+    "gradeTags": [],
+    "coupangUrl": "https://www.coupang.com/vp/products/8521301285?itemId=24885751542&vendorItemId=93971024078",
+    "naverUrl": "https://search.shopping.naver.com/search/all?query=%EB%B2%A0%EC%96%B4%EB%B2%A8%EC%A6%88%20%EB%B9%84%EA%B1%B4%20%ED%94%84%EB%A1%9C%ED%8B%B4%EB%B0%94%20(%EC%B9%B4%EB%9D%BC%EB%A9%9C%20%ED%94%BC%EB%84%9B)",
+    "fat": 9.8,
+    "sodium": 240
+  },
+  {
+    "slug": "barebells-proteinbar-sunny-strawberry-55",
+    "brand": "베어벨즈",
+    "name": "프로틴바 (써니 스트로베리)",
+    "capacity": "55g",
+    "variant": "일반",
+    "tags": [
+      "바"
+    ],
+    "proteinPerServing": 20,
+    "calories": 205,
+    "sugar": 1.4,
+    "density": "9.76g/100kcal",
+    "productUrl": "#",
+    "productType": "bar",
+    "gradeTags": [],
+    "coupangUrl": "https://www.coupang.com/vp/products/8635808130?itemId=24886014447&vendorItemId=91892718168",
+    "naverUrl": "https://search.shopping.naver.com/search/all?query=%EB%B2%A0%EC%96%B4%EB%B2%A8%EC%A6%88%20%ED%94%84%EB%A1%9C%ED%8B%B4%EB%B0%94%20(%EC%8D%A8%EB%8B%88%20%EC%8A%A4%ED%8A%B8%EB%A1%9C%EB%B2%A0%EB%A6%AC)",
+    "fat": 9.1,
+    "sodium": 72
+  },
+  {
+    "slug": "grenade-carbkilla-white-chocolate-cookie-60",
+    "brand": "그레네이드",
+    "name": "카브킬라 프로틴바 (화이트 초콜릿 쿠키)",
+    "capacity": "60g",
+    "variant": "일반",
+    "tags": [
+      "바"
+    ],
+    "proteinPerServing": 22,
+    "calories": 215,
+    "sugar": 2,
+    "density": "10.23g/100kcal",
+    "productUrl": "#",
+    "productType": "bar",
+    "gradeTags": [],
+    "coupangUrl": "https://www.coupang.com/vp/products/1946480101?itemId=17775178050&vendorItemId=84939324075",
+    "naverUrl": "https://search.shopping.naver.com/search/all?query=%EA%B7%B8%EB%A0%88%EB%84%A4%EC%9D%B4%EB%93%9C%20%EC%B9%B4%EB%B8%8C%ED%82%AC%EB%9D%BC%20%ED%94%84%EB%A1%9C%ED%8B%B4%EB%B0%94%20(%ED%99%94%EC%9D%B4%ED%8A%B8%20%EC%B4%88%EC%BD%9C%EB%A6%BF%20%EC%BF%A0%ED%82%A4)",
+    "fat": 8.1,
+    "sodium": 148
+  },
+  {
+    "slug": "one-proteinbar-cinnamon-roll-60",
+    "brand": "ONE",
+    "name": "프로틴바 (시나몬 롤)",
+    "capacity": "60g",
+    "variant": "일반",
+    "tags": [
+      "바"
+    ],
+    "proteinPerServing": 20,
+    "calories": 230,
+    "sugar": 1,
+    "density": "8.7g/100kcal",
+    "productUrl": "#",
+    "productType": "bar",
+    "gradeTags": [],
+    "coupangUrl": "https://www.coupang.com/vp/products/4553458751?itemId=28229036745&vendorItemId=95219615949",
+    "naverUrl": "https://search.shopping.naver.com/search/all?query=ONE%20%ED%94%84%EB%A1%9C%ED%8B%B4%EB%B0%94%20(%EC%8B%9C%EB%82%98%EB%AA%AC%20%EB%A1%A4)",
+    "fat": 9,
+    "sodium": 160
+  },
+  {
+    "slug": "one-proteinbar-hersheys-double-chocolate-60",
+    "brand": "ONE",
+    "name": "프로틴바 (허쉬 더블 초콜릿)",
+    "capacity": "60g",
+    "variant": "일반",
+    "tags": [
+      "바"
+    ],
+    "proteinPerServing": 18,
+    "calories": 230,
+    "sugar": 1,
+    "density": "7.83g/100kcal",
+    "productUrl": "#",
+    "productType": "bar",
+    "gradeTags": [],
+    "coupangUrl": "https://www.coupang.com/vp/products/8888613903?itemId=26394034530&vendorItemId=93370343436",
+    "naverUrl": "https://search.shopping.naver.com/search/all?query=ONE%20%ED%94%84%EB%A1%9C%ED%8B%B4%EB%B0%94%20(%ED%97%88%EC%89%AC%20%EB%8D%94%EB%B8%94%20%EC%B4%88%EC%BD%9C%EB%A6%BF)",
+    "fat": 9,
+    "sodium": 85
+  },
+  {
+    "slug": "one-proteinbar-peanut-butter-cup-60",
+    "brand": "ONE",
+    "name": "프로틴바 (피넛 버터 컵)",
+    "capacity": "60g",
+    "variant": "일반",
+    "tags": [
+      "바"
+    ],
+    "proteinPerServing": 20,
+    "calories": 230,
+    "sugar": 1,
+    "density": "8.7g/100kcal",
+    "productUrl": "#",
+    "productType": "bar",
+    "gradeTags": [],
+    "coupangUrl": "https://www.coupang.com/vp/products/7803842889?itemId=7094685162&vendorItemId=83833338512",
+    "naverUrl": "https://search.shopping.naver.com/search/all?query=ONE%20%ED%94%84%EB%A1%9C%ED%8B%B4%EB%B0%94%20(%ED%94%BC%EB%84%9B%20%EB%B2%84%ED%84%B0%20%EC%BB%B5)",
+    "fat": 9,
+    "sodium": 150
+  },
+  {
+    "slug": "heodak-bite-lowsugar-proteinbar-choco-caramel-40",
+    "brand": "허닭",
+    "name": "BITE 저당 프로틴바 (초코카라멜)",
+    "capacity": "40g",
+    "variant": "일반",
+    "tags": [
+      "바"
+    ],
+    "proteinPerServing": 13,
+    "calories": 160,
+    "sugar": 1,
+    "density": "8.13g/100kcal",
+    "productUrl": "#",
+    "productType": "bar",
+    "gradeTags": [],
+    "coupangUrl": "https://www.coupang.com/vp/products/9683301700?itemId=28956725463&vendorItemId=95887109317",
+    "naverUrl": "https://search.shopping.naver.com/search/all?query=%ED%97%88%EB%8B%AD%20BITE%20%EC%A0%80%EB%8B%B9%20%ED%94%84%EB%A1%9C%ED%8B%B4%EB%B0%94%20(%EC%B4%88%EC%BD%94%EC%B9%B4%EB%9D%BC%EB%A9%9C)",
+    "fat": 5,
+    "sodium": 230
+  },
+  {
+    "slug": "hymune-active-proteinbar-nutty-choco-40",
+    "brand": "하이뮨",
+    "name": "액티브 프로틴바 (너티초코)",
+    "capacity": "40g",
+    "variant": "일반",
+    "tags": [
+      "바"
+    ],
+    "proteinPerServing": 12,
+    "calories": 195,
+    "sugar": 1,
+    "density": "6.15g/100kcal",
+    "productUrl": "#",
+    "productType": "bar",
+    "gradeTags": [],
+    "coupangUrl": "https://www.coupang.com/vp/products/9726492834?itemId=29106828434&vendorItemId=96031691776",
+    "naverUrl": "https://search.shopping.naver.com/search/all?query=%ED%95%98%EC%9D%B4%EB%AE%A8%20%EC%95%A1%ED%8B%B0%EB%B8%8C%20%ED%94%84%EB%A1%9C%ED%8B%B4%EB%B0%94%20(%EB%84%88%ED%8B%B0%EC%B4%88%EC%BD%94)",
+    "fat": 10,
+    "sodium": 170
+  },
+  {
+    "slug": "hymune-active-proteinbar-strawberry-yogurt-40",
+    "brand": "하이뮨",
+    "name": "액티브 프로틴바 (딸기요거트)",
+    "capacity": "40g",
+    "variant": "일반",
+    "tags": [
+      "바"
+    ],
+    "proteinPerServing": 12,
+    "calories": 185,
+    "sugar": 1.5,
+    "density": "6.49g/100kcal",
+    "productUrl": "#",
+    "productType": "bar",
+    "gradeTags": [],
+    "coupangUrl": "https://www.coupang.com/vp/products/9726492836?itemId=29106828437&vendorItemId=96031691777",
+    "naverUrl": "https://search.shopping.naver.com/search/all?query=%ED%95%98%EC%9D%B4%EB%AE%A8%20%EC%95%A1%ED%8B%B0%EB%B8%8C%20%ED%94%84%EB%A1%9C%ED%8B%B4%EB%B0%94%20(%EB%94%B8%EA%B8%B0%EC%9A%94%EA%B1%B0%ED%8A%B8)",
+    "fat": 9,
+    "sodium": 180
   }
 ]

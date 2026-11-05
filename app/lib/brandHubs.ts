@@ -108,6 +108,8 @@ const BRAND_SLUG_MAP: Record<string, string> = {
   // 2026-11-04 신제품(두유·쉐이크)
   파이토메이드: "phytomade",
   바디랩: "bodylab", // 2026-11-05 두유
+  허닭: "heodak", // 2026-11-05 바
+  ONE: "one-brands", // 2026-11-05 프로틴바
   성균관: "sungkyunkwan",
   총각네: "chonggakne",
   코어리지: "coreage",
