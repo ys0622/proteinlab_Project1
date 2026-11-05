@@ -65,6 +65,9 @@ export interface CurationDefinition {
   categories: Partial<Record<CurationCategory, CategoryCurationDefinition>>;
 }
 
+// '카라멜&넛'·'헤이즐넛'·'너티초코'도 견과로 본다(도넛·코코넛은 제외). 무견과 큐레이션에 견과 바가 섞이던 문제(2026-11-05).
+const NUT_PATTERN = /견과|아몬드|(?<!도|코코)넛|너츠|너티|호두|캐슈|피스타치오|마카다미아/i;
+
 function parseDensityValue(density?: string): number {
   if (!density) return 0;
   const match = density.match(/(\d+(?:\.\d+)?)/);
@@ -565,10 +568,10 @@ const curations: CurationDefinition[] = [
         quickLabel: "검은콩",
         quickIcon: "🫘",
         quickOrder: 30,
-        filter: (product) => product.productType === "soymilk" && /검은콩|서리태/.test(`${product.name} ${product.flavor ?? ""}`),
+        filter: (product) => product.productType === "soymilk" && /검은콩|서리태|약콩/.test(`${product.name} ${product.flavor ?? ""}`),
         recommend: (products) =>
           sortSoymilkByProtein(
-            products.filter((product) => product.productType === "soymilk" && /검은콩|서리태/.test(`${product.name} ${product.flavor ?? ""}`)),
+            products.filter((product) => product.productType === "soymilk" && /검은콩|서리태|약콩/.test(`${product.name} ${product.flavor ?? ""}`)),
           ),
         landingCopy: {
           recommendationTitle: "추천 검은콩 두유",
@@ -1110,12 +1113,12 @@ const curations: CurationDefinition[] = [
         quickOrder: 60,
         filter: (product) =>
           product.productType === "bar" &&
-          /견과|아몬드|피넛|넛츠|너츠|호두|캐슈|피스타치오/i.test(
+          NUT_PATTERN.test(
             `${product.name} ${product.flavor ?? ""} ${(product.tags ?? []).join(" ")}`,
           ),
         recommend: (products) =>
           products.filter((product) =>
-            /견과|아몬드|피넛|넛츠|너츠|호두|캐슈|피스타치오/i.test(
+            NUT_PATTERN.test(
               `${product.name} ${product.flavor ?? ""} ${(product.tags ?? []).join(" ")}`,
             ),
           ),
@@ -1139,13 +1142,13 @@ const curations: CurationDefinition[] = [
         quickOrder: 70,
         filter: (product) =>
           product.productType === "bar" &&
-          !/견과|아몬드|피넛|넛츠|너츠|호두|캐슈|피스타치오/i.test(
+          !NUT_PATTERN.test(
             `${product.name} ${product.flavor ?? ""} ${(product.tags ?? []).join(" ")}`,
           ),
         recommend: (products) =>
           products.filter(
             (product) =>
-              !/견과|아몬드|피넛|넛츠|너츠|호두|캐슈|피스타치오/i.test(
+              !NUT_PATTERN.test(
                 `${product.name} ${product.flavor ?? ""} ${(product.tags ?? []).join(" ")}`,
               ),
           ),

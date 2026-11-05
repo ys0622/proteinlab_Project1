@@ -1851,7 +1851,7 @@
     ],
     "gradeDescriptions": [
       "룩트 공식몰 기준 현재 판매 중인 마일드 100g 제품입니다.",
-      "100g 기준 단백질 10.6g으로 고단백 요거트 기준에 들어가는 편입니다.",
+      "100g 기준 단백질 10g으로 고단백 요거트 기준에 들어가는 편입니다.",
       "지방이 낮아 상대적으로 가볍게 먹기 좋은 스키르 계열 제품입니다."
     ],
     "manufacturer": "주식회사 아티튜드",
@@ -1860,7 +1860,7 @@
     "yogurtType": "아이슬란딕 요거트",
     "storageType": "냉장",
     "lactoseFree": false,
-    "proteinPer100g": 10.6,
+    "proteinPer100g": 10,
     "nutritionPerBottle": {
       "proteinG": 10,
       "fatG": 2.8,
@@ -1956,7 +1956,7 @@
     "yogurtType": "아이슬란딕 요거트",
     "storageType": "냉장",
     "lactoseFree": false,
-    "proteinPer100g": 10.6,
+    "proteinPer100g": 10,
     "nutritionPerBottle": {
       "proteinG": 45,
       "fatG": 12.6,

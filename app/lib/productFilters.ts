@@ -27,7 +27,7 @@ export function getTasteCategory(
   if (/커피|모카|라떼|에스프레소/.test(haystack)) return "커피";
   if (/바나나|바닐라/.test(haystack)) return "바나나/바닐라";
   if (/딸기|베리|복숭아|사과|감귤|망고|포도|블루베리/.test(haystack)) return "과일맛";
-  if (/고소|견과|곡물|귀리|참깨|유자|치즈넛/.test(haystack)) return "고소/견과";
+  if (/고소|견과|곡물|귀리|참깨|검은깨|흑임자|검은콩|미숫가루|인절미|유자|치즈넛/.test(haystack)) return "고소/견과";
   return "기타";
 }
 
@@ -190,9 +190,10 @@ export function getSoymilkSugarRange(product: { sugar?: number }): SoymilkSugarR
 export function getSoymilkFlavorCategory(product: ProductDetailProps): string {
   const haystack = [product.name, product.flavor].filter(Boolean).join(" ");
   if (/초코|초콜릿/.test(haystack)) return "초코";
-  if (/검은콩|서리태/.test(haystack)) return "검은콩";
+  // 약콩(쥐눈이콩)도 검은콩이다. 흑임자·미숫가루·○○곡은 플레인이 아니라 기타로 둔다(2026-11-05).
+  if (/검은콩|서리태|약콩/.test(haystack)) return "검은콩";
   if (/아몬드|잣|견과|땅콩/.test(haystack)) return "견과";
-  if (/렌틸|약콩|곡물/.test(haystack)) return "기타";
+  if (/렌틸|곡물|흑임자|미숫가루|\d+곡/.test(haystack)) return "기타";
   return "플레인";
 }
 
