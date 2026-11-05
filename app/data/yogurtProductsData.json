@@ -2572,5 +2572,45 @@
     "nutritionBasis": "per_unit",
     "coupangUrl": "https://www.coupang.com/vp/products/9572545978?itemId=28572236027&vendorItemId=95516572855",
     "naverUrl": "https://search.shopping.naver.com/search/all?query=%ED%9B%84%EB%94%94%EC%8A%A4%20%ED%9B%84%EB%94%94%EC%8A%A4%20%EB%8B%A4%EC%9D%B4%EC%96%B4%ED%8A%B8%20%EB%AC%B4%EC%A7%80%EB%B0%A9%20%EA%B7%B8%EB%A6%AD%EC%9A%94%EA%B1%B0%ED%8A%B8%20400g"
+  },
+  {
+    "slug": "selecttheyog-greek-yogurt-original-500",
+    "brand": "셀렉더요그",
+    "name": "그릭요거트 오리지널",
+    "capacity": "500g",
+    "variant": "플레인",
+    "tags": [
+      "통"
+    ],
+    "proteinPerServing": 60,
+    "calories": 875,
+    "sugar": 10,
+    "density": "12.0g/100g",
+    "productUrl": "#",
+    "productType": "yogurt",
+    "gradeTags": [],
+    "manufacturer": "(주)달리에프앤비",
+    "flavor": "플레인",
+    "fat": 50,
+    "sodium": 175,
+    "yogurtType": "그릭 요거트",
+    "storageType": "냉장",
+    "lactoseFree": false,
+    "proteinPer100g": 12,
+    "nutritionPerBottle": {
+      "caloriesKcal": 875,
+      "proteinG": 60,
+      "carbsG": 45,
+      "sugarsG": 10,
+      "fatG": 50,
+      "satFatG": 30,
+      "transFatG": 0,
+      "cholesterolMg": 200,
+      "sodiumMg": 175
+    },
+    "needsServingCheck": false,
+    "nutritionBasis": "per_unit",
+    "coupangUrl": "https://www.coupang.com/vp/products/8527378949?itemId=24718359816&vendorItemId=91727649233",
+    "naverUrl": "https://search.shopping.naver.com/search/all?query=%EC%85%80%EB%A0%89%EB%8D%94%EC%9A%94%EA%B7%B8%20%EA%B7%B8%EB%A6%AD%EC%9A%94%EA%B1%B0%ED%8A%B8%20%EC%98%A4%EB%A6%AC%EC%A7%80%EB%84%90%20500g"
   }
 ]
