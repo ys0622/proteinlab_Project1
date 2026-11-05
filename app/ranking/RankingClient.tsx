@@ -3,7 +3,7 @@ import AffiliateDisclosure from "../components/AffiliateDisclosure";
 import ScoredProductCard from "../components/ScoredProductCard";
 import TrackedLink from "../components/TrackedLink";
 import type { ProductDetailProps } from "../data/products";
-import { getCategoryLabel, type ProductCategory } from "../lib/categories";
+import { getCategoryLabel, type CatalogProductCategory as ProductCategory } from "../lib/categories";
 
 type GradeMetric = "density" | "diet" | "performance";
 interface RankingItem { product: ProductDetailProps; score: number; grade: string; rank: number }
@@ -27,6 +27,11 @@ function rankingHref(category: ProductCategory, metric: GradeMetric, page = 1) {
 }
 function getMetricGuide(category: ProductCategory, metric: GradeMetric) {
   if (category === "soymilk") return "점수가 높을수록 용량 대비 단백질 함량이 높은 두유입니다.";
+  if (category === "powder") {
+    if (metric === "density") return "1회 제공량의 칼로리 대비 단백질(g/100kcal)이 높을수록 점수가 높습니다.";
+    if (metric === "diet") return "1회 제공량의 칼로리와 당류가 낮을수록 점수가 높습니다. 게이너·식사대용은 열량이 커서 뒤로 갑니다.";
+    return "1회 단백질 양과 칼로리·당류 균형으로 운동 후 보충 효율을 계산한 점수입니다.";
+  }
   if (category === "shake") {
     if (metric === "density") return "칼로리 대비 단백질 함량이 높은 쉐이크를 먼저 보고 싶을 때 확인하면 좋습니다.";
     if (metric === "diet") return "당류, 칼로리, 단백질 균형을 함께 반영한 다이어트 중심 점수입니다.";
@@ -38,6 +43,7 @@ function getMetricGuide(category: ProductCategory, metric: GradeMetric) {
 }
 function getCategoryRankingDescription(category: ProductCategory, metric: GradeMetric) {
   if (category === "soymilk") return "두유는 1팩 용량 대비 단백질(g/100mL)이 높은 순서로 정리했습니다. 단백질 구간(고단백·강화·일반)은 상품 카드와 목록 필터에서 확인할 수 있습니다.";
+  if (category === "powder") return "파우더는 1회 제공량(스쿱) 기준 성분표로 계산했습니다. 웨이·아이솔레이트·식물성·게이너가 함께 있으니 종류는 상품 카드에서 확인하세요.";
   if (category === "shake") {
     if (metric === "density") return "쉐이크는 칼로리 대비 단백질 함량 차이가 커서, 같은 파우치형이어도 실제 체감이 크게 갈립니다.";
     if (metric === "diet") return "쉐이크 다이어트 점수는 당류뿐 아니라 칼로리, 단백질, 포만감 균형까지 함께 봅니다.";
@@ -61,7 +67,7 @@ export default function RankingClient({ category, metric, items, categoryCounts,
       </section>
       <main className="mx-auto max-w-[1200px] px-4 py-6 md:px-6">
         <nav aria-label="제품 종류" className="mb-4 flex flex-wrap gap-2">
-          {(["drink", "bar", "yogurt", "shake", "soymilk"] as ProductCategory[]).map((categoryKey) => (
+          {(["drink", "bar", "yogurt", "shake", "soymilk", "powder"] as ProductCategory[]).map((categoryKey) => (
             <Link key={categoryKey} href={rankingHref(categoryKey, "density")} prefetch={false}
               aria-current={category === categoryKey ? "page" : undefined}
               className={`rounded-full border px-4 py-2 text-sm font-semibold transition-colors ${category === categoryKey ? "border-[#16412D] bg-[#16412D] text-white" : "border-[#DCE6DE] bg-white text-[#16412D] hover:bg-[#F5F8F5]"}`}>

@@ -3,7 +3,7 @@ import Footer from "../components/Footer";
 import CommercialAdSection from "../components/CommercialAdSection";
 import type { ProductDetailProps } from "../data/products";
 import { getDensityValue, getDietScore, getPerformanceScore } from "../lib/gradeCalculation";
-import type { ProductCategory } from "../lib/categories";
+import type { CatalogProductCategory } from "../lib/categories";
 import { getProductsByCategoryAsync } from "../lib/productData";
 import { formatProductLabel } from "../lib/productLabel";
 import { isComparableServing } from "../lib/servingScope";
@@ -16,7 +16,7 @@ const PAGE_SIZE = 16;
 export const metadata = {
   title: "단백질 랭킹 2026 — 밀도·다이어트·퍼포먼스 기준 순위",
   description:
-    "단백질 음료, 바, 요거트, 쉐이크, 두유를 단백질 밀도, 다이어트 점수, 퍼포먼스 기준으로 계산한 순위입니다. 카테고리별로 상위 제품을 한눈에 확인하세요.",
+    "단백질 음료, 바, 요거트, 쉐이크, 두유, 파우더를 단백질 밀도, 다이어트 점수, 퍼포먼스 기준으로 계산한 순위입니다. 카테고리별로 상위 제품을 한눈에 확인하세요.",
   alternates: {
     canonical: "https://proteinlab.kr/ranking",
   },
@@ -24,7 +24,7 @@ export const metadata = {
     images: [{ url: "https://proteinlab.kr/opengraph-image", width: 1200, height: 630, alt: "ProteinLab 단백질 제품 비교" }],
     title: "단백질 랭킹 2026 — 밀도·다이어트·퍼포먼스 기준 순위",
     description:
-      "단백질 음료, 바, 요거트, 쉐이크, 두유를 단백질 밀도, 다이어트 점수, 퍼포먼스 기준으로 계산한 순위입니다. 카테고리별로 상위 제품을 한눈에 확인하세요.",
+      "단백질 음료, 바, 요거트, 쉐이크, 두유, 파우더를 단백질 밀도, 다이어트 점수, 퍼포먼스 기준으로 계산한 순위입니다. 카테고리별로 상위 제품을 한눈에 확인하세요.",
     url: "https://proteinlab.kr/ranking",
     type: "website",
     locale: "ko_KR",
@@ -35,7 +35,7 @@ export const metadata = {
     card: "summary",
     title: "단백질 랭킹 2026 — 밀도·다이어트·퍼포먼스 기준 순위",
     description:
-      "단백질 음료, 바, 요거트, 쉐이크, 두유를 단백질 밀도, 다이어트 점수, 퍼포먼스 기준으로 계산한 순위입니다. 카테고리별로 상위 제품을 한눈에 확인하세요.",
+      "단백질 음료, 바, 요거트, 쉐이크, 두유, 파우더를 단백질 밀도, 다이어트 점수, 퍼포먼스 기준으로 계산한 순위입니다. 카테고리별로 상위 제품을 한눈에 확인하세요.",
   },
 };
 
@@ -89,23 +89,25 @@ export type RankingItem = {
   rank: number;
 };
 
-export async function renderRankingPage(category: ProductCategory, metric: GradeMetric, requestedPage: number) {
+export async function renderRankingPage(category: CatalogProductCategory, metric: GradeMetric, requestedPage: number) {
   const page = Number.isSafeInteger(requestedPage) && requestedPage > 0 ? requestedPage : 1;
-  const [drinkProducts, barProducts, yogurtProducts, shakeProducts, soymilkProducts] = await Promise.all([
+  const [drinkProducts, barProducts, yogurtProducts, shakeProducts, soymilkProducts, powderProducts] = await Promise.all([
     getProductsByCategoryAsync("drink"),
     getProductsByCategoryAsync("bar"),
     getProductsByCategoryAsync("yogurt"),
     getProductsByCategoryAsync("shake"),
     getProductsByCategoryAsync("soymilk"),
+    getProductsByCategoryAsync("powder"),
   ]);
 
-  const productsByCategory = { drink: drinkProducts, bar: barProducts, yogurt: yogurtProducts, shake: shakeProducts, soymilk: soymilkProducts };
+  const productsByCategory = { drink: drinkProducts, bar: barProducts, yogurt: yogurtProducts, shake: shakeProducts, soymilk: soymilkProducts, powder: powderProducts };
   const categoryCounts = {
     drink: drinkProducts.length,
     bar: barProducts.length,
     yogurt: yogurtProducts.length,
     shake: shakeProducts.length,
     soymilk: soymilkProducts.length,
+    powder: powderProducts.length,
   };
   const allItems = prepareRankingData(productsByCategory[category], metric);
   const totalPages = Math.max(1, Math.ceil(allItems.length / PAGE_SIZE));
@@ -113,15 +115,16 @@ export async function renderRankingPage(category: ProductCategory, metric: Grade
   const currentPage = page;
   const items = allItems.slice((currentPage - 1) * PAGE_SIZE, currentPage * PAGE_SIZE);
 
-  const categoryLabelMap: Record<ProductCategory, string> = {
+  const categoryLabelMap: Record<CatalogProductCategory, string> = {
     drink: "단백질 음료",
     bar: "단백질 바",
     yogurt: "단백질 요거트",
     shake: "단백질 쉐이크",
     soymilk: "두유",
+    powder: "단백질 파우더",
   };
 
-  const itemListJsonLd = (Object.entries(productsByCategory) as [ProductCategory, ProductDetailProps[]][]).map(
+  const itemListJsonLd = (Object.entries(productsByCategory) as [CatalogProductCategory, ProductDetailProps[]][]).map(
     ([categoryKey, products]) => ({
       "@context": "https://schema.org",
       "@type": "ItemList",
