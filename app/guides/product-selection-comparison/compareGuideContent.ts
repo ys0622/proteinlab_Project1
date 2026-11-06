@@ -1,5 +1,5 @@
 import type { CompareMetricRow, ComparePageConfig, RelatedGuideLink } from "./productCompareShared";
-import { formatCalories100, formatDensity, getDrinkProduct } from "./productCompareShared";
+import { formatCalories100, formatDensity, getDrinkProduct, getMl } from "./productCompareShared";
 import { formatProductLabel } from "../../lib/productLabel";
 import { getDrinkProducts } from "@/app/data/drinkProductsData";
 import { soymilkGuideConfigs } from "./soymilkGuideContent";
@@ -24,28 +24,23 @@ const newcareWater = getDrinkProduct("newcare-olprotein-water-lemon-350");
 const sellexLactoseFree = getDrinkProduct("sellex-protein-lactosefree-original-190");
 const sellexAmericano = getDrinkProduct("sellex-profit-whey-protein-americano-330");
 const hymuneBalance = getDrinkProduct("hymune-protein-balance-190");
-const rankingRows = [
-  dryou62,
-  takefitMonster,
-  takefitExtreme,
-  labnoshMax,
-  getDrinkProduct("labnosh-protein-max-strawberry-400"),
-  getDrinkProduct("takefit-monster-goso-350"),
-  getDrinkProduct("takefit-monster-chocobanana-350"),
-  getDrinkProduct("hymune-ultra-400"),
-  newcare41,
-  getDrinkProduct("danbaek-drink-doublechoco-350"),
-  getDrinkProduct("dryou-protein-40g-strawberry-350"),
-  dryou40,
-  getDrinkProduct("danbaek-drink-darkchoco-330"),
-  newcare25,
-  getDrinkProduct("newcare-all-protein-banana-245"),
-  getDrinkProduct("newcare-all-protein-savory-245"),
-  getDrinkProduct("7eleven-junghoo-choco-protein-330"),
-  getDrinkProduct("7eleven-junghoo-vanilla-protein-330"),
-  getDrinkProduct("takefit-max-goso-250"),
-  takefitMax,
-];
+// 100mL당 단백질 순위는 손으로 쓴 목록이 신제품을 빠뜨려(셀렉스 와일드초코 6위 누락) 데이터로 계산한다(2026-11-04 Scott 승인).
+const rankingRows = getDrinkProducts()
+  .filter((product) => getMl(product) > 0 && product.proteinPerServing > 0)
+  .sort(
+    (a, b) =>
+      b.proteinPerServing / getMl(b) - a.proteinPerServing / getMl(a) ||
+      b.proteinPerServing - a.proteinPerServing,
+  )
+  .slice(0, 20);
+const rankingTop5 = rankingRows.slice(0, 5);
+const rankingLower = rankingRows.slice(9);
+const rangeText = (values: number[], unit: string) => {
+  const min = Math.min(...values);
+  const max = Math.max(...values);
+  return min === max ? `${min}${unit}` : `${min}~${max}${unit}`;
+};
+const rankingLowerBrands = [...new Set(rankingLower.map((product) => product.brand))].join(", ");
 
 function articleJsonLd(config: ComparePageConfig) {
   return {
@@ -262,12 +257,12 @@ export const proteinDensityRankingConfig: ComparePageConfig = {
   keywords: ["단백질 밀도", "단백질 음료 가성비", "단백질 음료 효율", "100mL당 단백질"],
   badge: "데이터 랭킹",
   readingTime: "5분 읽기",
-  updatedAt: "2026-08-26",
+  updatedAt: "2026-11-06",
   methodologyNote: "ProteinLab DB 단백질 ÷ 용량 × 100 계산",
   intro: `한 병 기준으로만 보면 190mL 제품과 350mL 제품이 뒤섞여서 실제 효율이 잘 안 보입니다. 그래서 ProteinLab DB 음료 ${drinkProductCount}개를 단백질 ÷ 용량 × 100 방식으로 다시 계산했습니다. 이 순위는 같은 양 대비 단백질이 얼마나 들어 있는지 가장 빠르게 확인하려는 사람에게 특히 유용합니다.`,
   summary: [
     "현재 상위권은 40g 이상 고단백 RTD가 거의 장악하고 있습니다.",
-    "닥터유 62g 말차맛은 13.8g/100mL로 새로 등장한 전체 1위이고, 테이크핏 익스트림과 랩노쉬 맥스도 13g대 상위권에 새로 들어왔습니다.",
+    `1위는 ${formatProductLabel(rankingRows[0].brand, rankingRows[0].name)}(${formatDensity(rankingRows[0])}/100mL), 2위는 ${formatProductLabel(rankingRows[1].brand, rankingRows[1].name)}(${formatDensity(rankingRows[1])}), 3위는 ${formatProductLabel(rankingRows[2].brand, rankingRows[2].name)}(${formatDensity(rankingRows[2])})입니다.`,
     "다만 밀도 1위가 항상 최종 1위는 아니어서 칼로리와 지방까지 같이 봐야 실제 선택이 완성됩니다.",
   ],
   comparisonTitle: "상위 20개 밀도 순위",
@@ -282,8 +277,8 @@ export const proteinDensityRankingConfig: ComparePageConfig = {
     {
       title: "순위 해석",
       items: [
-        { title: "상위 5개 공통점", body: "350mL 전후 대용량 고단백 RTD가 상위권을 차지합니다. 총 단백질이 40g 안팎으로 높고, 운동 후 보충 목적에 맞춘 설계가 많습니다." },
-        { title: "10위권 이후 특징", body: "25g급 뉴케어, 24g급 테이크핏 맥스, 닥터유 일반 드링크처럼 균형형 RTD가 들어옵니다. 이 구간부터는 밀도와 칼로리 균형이 더 중요해집니다." },
+        { title: "상위 5개 공통점", body: `상위 5개는 ${rangeText(rankingTop5.map(getMl), "mL")} 대용량 고단백 RTD이고, 1병 단백질이 ${rangeText(rankingTop5.map((product) => product.proteinPerServing), "g")}입니다. 운동 후 보충 목적에 맞춘 설계가 많습니다.` },
+        { title: "10위권 이후 특징", body: `10위부터는 1병 단백질 ${rangeText(rankingLower.map((product) => product.proteinPerServing), "g")}인 ${rankingLowerBrands} 제품이 들어옵니다. 이 구간부터는 밀도와 칼로리 균형이 더 중요해집니다.` },
         { title: "주의할 점", body: "밀도 상위권이라도 칼로리 100mL당 수치가 높으면 다이어트 가성비는 다르게 읽어야 합니다. 같은 11g대 밀도라도 뉴케어 41g과 닥터유 40g의 체감은 다릅니다." },
       ],
     },

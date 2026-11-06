@@ -66,6 +66,24 @@ export default function CategoryTabs({
   const [mobileInfoOpen, setMobileInfoOpen] = useState(false);
   const [isDesktop, setIsDesktop] = useState(false);
   const navRef = useRef<HTMLElement>(null);
+  // 모바일에서 탭 6개가 한 줄에 다 안 들어갈 때 가려진 쪽 끝을 흐리게 해 옆으로 넘길 수 있다고 보여 준다(2026-11-04 Scott A안).
+  const [hiddenEdges, setHiddenEdges] = useState({ left: false, right: false });
+
+  useEffect(() => {
+    const nav = navRef.current;
+    if (!nav) return;
+    const sync = () => {
+      const max = nav.scrollWidth - nav.clientWidth;
+      setHiddenEdges({ left: nav.scrollLeft > 2, right: max - nav.scrollLeft > 2 });
+    };
+    sync();
+    nav.addEventListener("scroll", sync, { passive: true });
+    window.addEventListener("resize", sync);
+    return () => {
+      nav.removeEventListener("scroll", sync);
+      window.removeEventListener("resize", sync);
+    };
+  }, [activeCategory]);
 
   // 탭이 5개가 되면서 모바일에서 오른쪽 탭(두유)이 정렬 버튼 뒤로 잘렸다. 활성 탭을 보이는 영역 안으로 가져온다.
   useEffect(() => {
@@ -100,6 +118,12 @@ export default function CategoryTabs({
   return (
     <div className={wrapperClassName}>
       <div className="relative z-40">
+        {hiddenEdges.left ? (
+          <div aria-hidden className="pointer-events-none absolute inset-y-0 left-0 z-10 w-6 bg-gradient-to-r from-white to-transparent md:hidden" />
+        ) : null}
+        {hiddenEdges.right ? (
+          <div aria-hidden className="pointer-events-none absolute inset-y-0 right-0 z-10 w-8 bg-gradient-to-l from-white to-transparent md:hidden" />
+        ) : null}
         <div className="flex items-center">
           <nav
             ref={navRef}

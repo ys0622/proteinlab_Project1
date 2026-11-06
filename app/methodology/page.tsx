@@ -39,10 +39,12 @@ const categoryLabels: Record<string, string> = {
   powder: "단백질 파우더",
 };
 
+// '단백질 밀도'는 카드·정렬·등급에 쓰는 값 그대로 카테고리마다 기준이 다르다(2026-11-04 Scott: 카테고리별로 적기).
 const formulaRows = [
-  { name: "단백질 밀도", formula: "단백질(g) ÷ 열량(kcal) × 100", note: "100kcal를 먹을 때 단백질이 몇 g인지. 다이어트·체중 관리 비교에 쓴다." },
-  { name: "용량당 단백질", formula: "단백질(g) ÷ 용량(mL) × 100", note: "음료·두유를 100mL 기준으로 맞춰 본다." },
-  { name: "열량 밀도", formula: "열량(kcal) ÷ 용량(mL) × 100", note: "같은 양을 마실 때 열량 차이를 본다." },
+  { name: "단백질 밀도 · 음료·두유", formula: "단백질(g) ÷ 용량(mL) × 100", note: "100mL를 마실 때 단백질이 몇 g인지. 190mL와 350mL처럼 용량이 다른 병을 같은 양으로 맞춰 본다." },
+  { name: "단백질 밀도 · 요거트", formula: "단백질(g) ÷ 중량(g) × 100", note: "100g을 먹을 때 단백질이 몇 g인지. 드링킹 요거트는 100mL 기준으로 계산한다." },
+  { name: "단백질 밀도 · 바·쉐이크·파우더", formula: "단백질(g) ÷ 열량(kcal) × 100", note: "100kcal를 먹을 때 단백질이 몇 g인지. 크기와 1회 제공량이 제각각인 제품을 같은 열량으로 맞춰 본다." },
+  { name: "열량 밀도", formula: "열량(kcal) ÷ 용량(mL) × 100", note: "음료·두유를 같은 양 마실 때 열량 차이를 본다." },
 ];
 
 const displayRules = [
@@ -174,9 +176,9 @@ export default async function MethodologyPage() {
           <section>
             <h2 className="text-lg font-bold text-[var(--foreground)]">비교 지표 계산식</h2>
             <p className="mt-3 text-[14px] leading-7 text-[var(--foreground-muted)]">
-              아래 지표는 라벨에 적힌 값이 아니라 라벨 수치로 계산한 값입니다. 소수 첫째 자리에서 반올림합니다.
+              아래 지표는 라벨에 적힌 값이 아니라 라벨 수치로 계산한 값입니다. 소수 첫째 자리에서 반올림합니다. 단백질 밀도는 카테고리마다 비교에 맞는 기준이 달라, 다른 카테고리끼리는 숫자를 바로 비교하지 않습니다.
             </p>
-            <div className="mt-4 grid gap-3 sm:grid-cols-3">
+            <div className="mt-4 grid gap-3 sm:grid-cols-2">
               {formulaRows.map((row) => (
                 <div key={row.name} className="rounded-2xl border border-[#e8e6e3] bg-[#fffdf8] px-4 py-4">
                   <p className="text-sm font-semibold text-[#1f5138]">{row.name}</p>

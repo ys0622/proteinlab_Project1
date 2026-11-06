@@ -599,15 +599,16 @@ function ProductListWithFiltersInner(props: ProductListWithFiltersInnerProps) {
   );
 
   const categoryTabs = (
-    <div className="mt-2.5 flex items-center gap-2 md:mt-3">
-      <div className="min-w-0 flex-1">
+    // 모바일은 정렬을 탭 아래 줄로 내려 카테고리 탭 6개가 한 줄에 다 보이게 한다(2026-11-04 Scott B안 시안).
+    <div className="mt-2.5 flex flex-col gap-1.5 md:mt-3 md:flex-row md:items-center md:gap-2">
+      <div className="min-w-0 md:flex-1">
         <CategoryTabs
           activeCategory={productType}
           counts={categoryCounts}
           stickyMobile={stickyTabs}
         />
       </div>
-      <SortBar sort={sort} onSortChange={handleSortChange} showProteinPercentage={productType === "powder"} className="relative z-[31] shrink-0" />
+      <SortBar sort={sort} onSortChange={handleSortChange} showProteinPercentage={productType === "powder"} className="relative z-[31] shrink-0 self-end md:self-auto" />
     </div>
   );
 
