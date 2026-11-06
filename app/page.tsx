@@ -127,7 +127,7 @@ export default async function Home() {
   const topPowders = selectHomeDiscovery(powders, views.powder ?? {}, coupangRanks);
 
   const productBySlug = new Map(
-    [...drinks, ...bars, ...yogurts, ...shakes, ...soymilks].map((p) => [p.slug ?? "", p] as const),
+    [...drinks, ...bars, ...yogurts, ...shakes, ...soymilks, ...powders].map((p) => [p.slug ?? "", p] as const),
   );
   const newlyAdded = [...(newProductsRaw as { slug: string; addedAt: string }[])]
     .sort((a, b) => b.addedAt.localeCompare(a.addedAt))

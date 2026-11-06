@@ -132,9 +132,7 @@ export default function ComparePage() {
 
   const quickCurationChips = useMemo(
     () =>
-      pickerCategory === "powder"
-        ? []
-        : getQuickCurations(pickerCategory as CurationCategory).filter((item) => item.slug !== "popular"),
+      getQuickCurations(pickerCategory as CurationCategory).filter((item) => item.slug !== "popular"),
     [pickerCategory],
   );
 
@@ -198,7 +196,7 @@ export default function ComparePage() {
     [allProducts, pickerCategory],
   );
   const pickerCurationFilter = useMemo(() => {
-    if (!pickerCurationSlug || pickerCategory === "powder") return null;
+    if (!pickerCurationSlug) return null;
     const curation = getCurationDefinition(pickerCurationSlug);
     const categoryConfig = curation?.categories[pickerCategory as CurationCategory];
     return categoryConfig?.filter ?? null;

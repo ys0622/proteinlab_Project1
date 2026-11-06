@@ -670,7 +670,12 @@ export default async function ProductDetailPage({ params }: PageProps) {
   const detailCategoryHref = getCategoryDetailHref(category);
   const categoryProducts = getStaticProductsByCategory(category);
   const similarProducts = getSimilarProducts(product, categoryProducts, 6);
-  const position = isPowder ? null : getProductPosition(product, categoryProducts);
+  // 파우더는 게이너(1회 400kcal 이상)를 빼고 비교한다. 게이너 자체는 비교할 제품이 적어 위치를 내지 않는다.
+  const position = isPowder
+    ? product.powderType === "gainer"
+      ? null
+      : getProductPosition(product, categoryProducts.filter((p) => p.powderType !== "gainer"))
+    : getProductPosition(product, categoryProducts);
   const internalLinks = buildProductInternalLinks(product).slice(0, 6);
   const recommendedFor = buildRecommendedFor(product);
   const tasteAwards = product.awards ?? [];
@@ -1245,7 +1250,8 @@ export default async function ProductDetailPage({ params }: PageProps) {
             <NutritionDetailSection
               rows={getNutritionDetail(product)}
               capacity={product.capacity}
-              unit={isBar ? "piece" : isYogurt ? "cup" : isShake || isPowder || product.productType === "soymilk" ? "pack" : "bottle"}
+              unit={isPowder ? "serving" : isBar ? "piece" : isYogurt ? "cup" : isShake || product.productType === "soymilk" ? "pack" : "bottle"}
+              servingSizeG={product.servingSizeG}
             />
             {productSpecImageUrl ? (
               <section className="mt-6 rounded-[24px] border bg-white p-5 md:p-6" style={{ borderColor: "#E6DDCC" }}>
@@ -1266,7 +1272,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
               <div className="mb-4">
                 <p className="mb-0.5 text-[12px] font-bold uppercase tracking-wider" style={{ color: "#1F5A3D" }}>ProteinLab 분석</p>
                 <h2 className="font-bold" style={{ fontSize: "17px", color: "#1E2A22" }}>카테고리 내 위치</h2>
-                <p className="mt-0.5 text-[13px]" style={{ color: "#5F6B61" }}>1회 제공량({isBar ? "1개" : isYogurt ? "1컵" : isShake ? "1포" : product.productType === "soymilk" ? "1팩" : "1병"}) 기준, 같은 카테고리 {position.total}종과 비교한 순위입니다.</p>
+                <p className="mt-0.5 text-[13px]" style={{ color: "#5F6B61" }}>1회 제공량({isPowder ? "1스쿱" : isBar ? "1개" : isYogurt ? "1컵" : isShake ? "1포" : product.productType === "soymilk" ? "1팩" : "1병"}) 기준, 같은 카테고리 {position.total}종{isPowder ? "(게이너 제외)" : ""}과 비교한 순위입니다.</p>
               </div>
               <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
                 {position.rows.map((row) => (

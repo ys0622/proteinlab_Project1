@@ -3,16 +3,21 @@ import type { NutritionDetailRow } from "../data/products";
 interface NutritionDetailSectionProps {
   rows: NutritionDetailRow[];
   capacity?: string;
-  unit?: "bottle" | "piece" | "cup" | "pack";
+  unit?: "bottle" | "piece" | "cup" | "pack" | "serving";
+  /** unit="serving"(파우더)일 때 1회 제공량 g */
+  servingSizeG?: number;
 }
 
 export default function NutritionDetailSection({
   rows,
   capacity,
   unit = "bottle",
+  servingSizeG,
 }: NutritionDetailSectionProps) {
   const unitLabel =
-    unit === "piece" ? "1개" : unit === "cup" ? "1컵" : unit === "pack" ? "1팩" : "1병";
+    unit === "serving"
+      ? `1회 제공량${servingSizeG ? `(${servingSizeG}g)` : ""}`
+      : unit === "piece" ? "1개" : unit === "cup" ? "1컵" : unit === "pack" ? "1팩" : "1병";
 
   return (
     <section

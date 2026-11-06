@@ -11,7 +11,7 @@ export type ProductPosition = {
   alternative?: { slug: string; label: string; detail: string };
 };
 
-const KIND_LABEL = { drink: "단백질 음료", bar: "단백질 바", yogurt: "단백질 요거트", shake: "단백질 쉐이크", soymilk: "두유", powder: "단백질 파우더" } as const;
+const KIND_LABEL = { drink: "단백질 음료", bar: "단백질 바", yogurt: "단백질 요거트", shake: "단백질 쉐이크", soymilk: "두유", powder: "단백질 파우더(게이너 제외)" } as const;
 
 type Metric = "proteinPerServing" | "calories" | "sugar";
 

@@ -26,14 +26,15 @@ const CATEGORY_LABEL: Record<string, string> = {
   powder: "파우더",
 };
 
-const CATEGORY_ORDER = ["drinks", "bars", "yogurt", "shake", "soymilk"];
+const CATEGORY_ORDER = ["drinks", "bars", "yogurt", "shake", "soymilk", "powder"];
 
-const PRODUCT_CARD_TYPE: Record<string, "drink" | "bar" | "yogurt" | "shake" | "soymilk"> = {
+const PRODUCT_CARD_TYPE: Record<string, "drink" | "bar" | "yogurt" | "shake" | "soymilk" | "powder"> = {
   drinks: "drink",
   bars: "bar",
   yogurt: "yogurt",
   shake: "shake",
   soymilk: "soymilk",
+  powder: "powder",
 };
 
 const START_LINKS = [
