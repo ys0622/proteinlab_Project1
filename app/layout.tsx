@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     "supported-color-schemes": "light",
   },
   title: "단백질 제품 비교 — ProteinLab",
-  description: "단백질 음료·바·요거트·쉐이크를 단백질 함량, 당류, 칼로리 기준으로 바로 비교합니다.",
+  description: "단백질 음료·바·요거트·쉐이크·두유·파우더를 단백질 함량, 당류, 칼로리 기준으로 바로 비교합니다.",
   icons: {
     icon: "/proteinlab-logo.png",
     apple: "/proteinlab-logo.png",
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "단백질 제품 비교 — ProteinLab",
-    description: "단백질 음료·바·요거트·쉐이크를 단백질 함량, 당류, 칼로리 기준으로 바로 비교합니다.",
+    description: "단백질 음료·바·요거트·쉐이크·두유·파우더를 단백질 함량, 당류, 칼로리 기준으로 바로 비교합니다.",
     url: "https://proteinlab.kr",
     siteName: "ProteinLab",
     locale: "ko_KR",
@@ -57,7 +57,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "단백질 제품 비교 — ProteinLab",
-    description: "단백질 음료·바·요거트·쉐이크를 단백질 함량, 당류, 칼로리 기준으로 바로 비교합니다.",
+    description: "단백질 음료·바·요거트·쉐이크·두유·파우더를 단백질 함량, 당류, 칼로리 기준으로 바로 비교합니다.",
     images: ["/opengraph-image"],
   },
   verification: {

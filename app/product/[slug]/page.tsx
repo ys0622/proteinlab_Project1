@@ -38,7 +38,7 @@ import { getAllProducts, getNutritionDetail } from "../../data/products";
 import { getAllCompareLandings } from "../../data/compareLandings";
 import { compareLandingHref as canonicalCompareHref, compareNoindexSlugs } from "../../data/compareCanonicalOverrides";
 import { brandToSlug } from "../../lib/brandHubs";
-import { getCategoryHref, getCategoryLabel } from "../../lib/categories";
+import { BAR_MIN_PROTEIN_G, getCategoryHref, getCategoryLabel, isProteinSnackBar } from "../../lib/categories";
 import {
   getAllStaticProducts,
   getStaticProductBySlug,
@@ -585,6 +585,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
   const isYogurt = product.productType === "yogurt";
   const isShake = product.productType === "shake";
   const isPowder = product.productType === "powder";
+  const isSnackBar = isProteinSnackBar(product);
   const productImageUrl = getProductImageUrl(product.slug);
   const productSpecImageUrl = getProductSpecImageUrl(product.slug, product.productType);
   const category = (product.productType ?? "drink") as "drink" | "bar" | "yogurt" | "shake" | "soymilk" | "powder";
@@ -858,7 +859,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
                 {metaLine && (
                   <p className="mt-0.5 text-[12px]" style={{ color: "#8A938B" }}>{metaLine}</p>
                 )}
-                {(isNewProduct || Boolean(tvAdInfo) || gradeLabels.length > 0) && (
+                {(isNewProduct || Boolean(tvAdInfo) || isSnackBar || gradeLabels.length > 0) && (
                   <div className="mt-2 flex flex-wrap gap-1.5">
                     {isNewProduct ? (
                       <span
@@ -875,6 +876,16 @@ export default async function ProductDetailPage({ params }: PageProps) {
                       >
                         📺 TV 광고 {tvAdInfo.year}
                       </span>
+                    ) : null}
+                    {isSnackBar ? (
+                      <Link
+                        href="/methodology"
+                        title={`단백질 바 등록 기준(1개 ${BAR_MIN_PROTEIN_G}g 이상)보다 단백질이 적은 제품`}
+                        className="rounded-full px-2.5 py-0.5 text-[11px] font-bold"
+                        style={{ background: "#F1EFEA", color: "#6B6B6B" }}
+                      >
+                        단백질 보조 간식 · 1개 {BAR_MIN_PROTEIN_G}g 미만
+                      </Link>
                     ) : null}
                     {gradeLabels.map((label) => {
                       const displayLabel = formatProductBadgeLabel(label);

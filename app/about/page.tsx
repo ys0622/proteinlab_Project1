@@ -7,7 +7,7 @@ import { getProductsByCategoryAsync } from "../lib/productData";
 export const metadata = {
   title: "ProteinLab 소개 | 단백질 제품 성분 비교 플랫폼",
   description:
-    "ProteinLab은 국내 단백질 음료·바·요거트·쉐이크·두유를 성분 데이터 기준으로 직접 수집·정리한 독립 비교 플랫폼입니다. 데이터 수집 기준, 운영 방침, 업데이트 정책을 안내합니다.",
+    "ProteinLab은 국내 단백질 음료·바·요거트·쉐이크·두유·파우더를 성분 데이터 기준으로 직접 수집·정리한 독립 비교 플랫폼입니다. 데이터 수집 기준, 운영 방침, 업데이트 정책을 안내합니다.",
   alternates: { canonical: "https://proteinlab.kr/about" },
 };
 
@@ -54,15 +54,16 @@ const editorialList = [
 ];
 
 export default async function AboutPage() {
-  const [drinks, bars, yogurts, shakes, soymilks] = await Promise.all([
+  const [drinks, bars, yogurts, shakes, soymilks, powders] = await Promise.all([
     getProductsByCategoryAsync("drink"),
     getProductsByCategoryAsync("bar"),
     getProductsByCategoryAsync("yogurt"),
     getProductsByCategoryAsync("shake"),
     getProductsByCategoryAsync("soymilk"),
+    getProductsByCategoryAsync("powder"),
   ]);
-  // 두유가 빠져 있어 소개 페이지 숫자가 실제보다 적게 보였다(2026-10-21).
-  const totalCount = drinks.length + bars.length + yogurts.length + shakes.length + soymilks.length;
+  // 두유(2026-10-21)·파우더(2026-11-06)가 빠져 있어 소개 페이지 숫자가 실제보다 적게 보였다.
+  const totalCount = drinks.length + bars.length + yogurts.length + shakes.length + soymilks.length + powders.length;
 
   const stats = [
     { label: "등록 제품", value: `${totalCount}종` },
@@ -86,7 +87,7 @@ export default async function AboutPage() {
             단백질 제품 성분 비교 플랫폼
           </h1>
           <p className="mt-3 max-w-2xl text-sm leading-6 text-[var(--foreground-muted)]">
-            ProteinLab은 국내에서 판매되는 단백질 음료·바·요거트·쉐이크·두유 {totalCount}종을
+            ProteinLab은 국내에서 판매되는 단백질 음료·바·요거트·쉐이크·두유·파우더 {totalCount}종을
             성분 데이터 기준으로 직접 수집·정리한 독립 비교 플랫폼입니다.
             마케팅 문구 대신 영양성분표 수치를 기준으로 소비자가 목적에 맞는 제품을 찾을 수 있도록 돕습니다.
           </p>
@@ -114,7 +115,7 @@ export default async function AboutPage() {
           <section>
             <h2 className="text-lg font-bold text-[var(--foreground)]">왜 만들었나요</h2>
             <p className="mt-3 text-[14px] leading-7 text-[var(--foreground-muted)]">
-              국내 단백질 제품 시장이 빠르게 커지면서 음료·바·요거트·쉐이크·두유까지 선택지가 수백 종에 달하지만,
+              국내 단백질 제품 시장이 빠르게 커지면서 음료·바·요거트·쉐이크·두유·파우더까지 선택지가 수백 종에 달하지만,
               소비자가 성분을 직접 비교할 수 있는 곳은 많지 않았습니다.
             </p>
             <p className="mt-3 text-[14px] leading-7 text-[var(--foreground-muted)]">
@@ -144,6 +145,13 @@ export default async function AboutPage() {
                 문의 페이지
               </Link>
               로 알려주세요. 공식 자료와 대조 후 즉시 수정합니다.
+            </p>
+            <p className="mt-3 text-[14px] leading-7 text-[var(--foreground-muted)]">
+              카테고리마다 등록 기준이 있습니다(예: 음료 1병 단백질 8g 이상, 바 1개 5g 이상, 쉐이크·파우더 1회 10g 이상). 자세한 기준은{" "}
+              <Link href="/methodology" className="text-[var(--accent)] hover:underline">
+                데이터 방법론
+              </Link>
+              에 정리했습니다.
             </p>
           </section>
 

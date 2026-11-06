@@ -7,13 +7,15 @@ import barSpec from "../data/slugToBarSpec.json";
 import shakeSpec from "../data/slugToShakeSpec.json";
 import yogurtSpec from "../data/slugToYogurtSpec.json";
 import soymilkSpec from "../data/slugToSoymilkSpec.json";
+import powderSpec from "../data/slugToPowderSpec.json";
+import { BAR_MIN_PROTEIN_G } from "../lib/categories";
 
 // 2026-10-26: 데이터를 어떻게 모으고 계산·표시하는지 한 곳에 적은 방법론 페이지(신뢰 신호, docs/google-index-recovery-2026-10-26.md).
 // 숫자는 빌드 시점 데이터에서 계산한다. 규칙은 실제 코드·운영 기준(CLAUDE.md)과 같아야 한다.
 export const metadata = {
   title: "ProteinLab 데이터 방법론 | 성분표 수집·계산·표시 기준",
   description:
-    "ProteinLab이 단백질 음료·바·쉐이크·요거트·두유의 성분 수치를 어떻게 모으고, 단백질 밀도 같은 비교 지표를 어떻게 계산하며, 구매 링크와 특가를 어떤 기준으로 붙이는지 정리했습니다.",
+    "ProteinLab이 단백질 음료·바·쉐이크·요거트·두유·파우더를 어떤 기준으로 등록하고, 성분 수치를 어떻게 모으고, 단백질 밀도 같은 비교 지표를 어떻게 계산하며, 구매 링크와 특가를 어떤 기준으로 붙이는지 정리했습니다.",
   alternates: { canonical: "https://proteinlab.kr/methodology" },
 };
 
@@ -25,6 +27,7 @@ const specMaps: Record<string, Record<string, string>> = {
   shake: shakeSpec,
   yogurt: yogurtSpec,
   soymilk: soymilkSpec,
+  powder: powderSpec,
 };
 
 const categoryLabels: Record<string, string> = {
@@ -33,6 +36,7 @@ const categoryLabels: Record<string, string> = {
   shake: "단백질 쉐이크",
   yogurt: "단백질 요거트",
   soymilk: "두유",
+  powder: "단백질 파우더",
 };
 
 const formulaRows = [
@@ -46,6 +50,16 @@ const displayRules = [
   "라벨에 '1g 미만'처럼 숫자 하나로 적히지 않은 값은 그 표기를 그대로 보여 줍니다. 정렬·필터에는 상한값(1g)을 씁니다. '0g'으로 바꿔 적지 않습니다.",
   "확인하지 못한 칸(원재료, 제조사, 나트륨 등)은 추정해서 채우지 않고 비워 둡니다.",
   "같은 성분표 이미지가 서로 다른 제품에 붙어 있거나 맛·용량이 맞지 않으면 성분표 연결을 내리고 새 자료를 받을 때까지 비워 둡니다.",
+];
+
+// 카테고리별 등록 기준(2026-11-06 Scott 승인). 실제 데이터 최소값과 맞춰 둔다.
+const registrationRules = [
+  { label: "단백질 음료", body: "바로 마시는 RTD 제품 중 1병(1팩) 단백질이 8g 이상인 제품. 두유는 아래 두유 기준으로 따로 봅니다." },
+  { label: "단백질 바", body: `1개 단백질 ${BAR_MIN_PROTEIN_G}g 이상이 기준입니다. 기준을 정하기 전부터 올라와 있던 ${BAR_MIN_PROTEIN_G}g 미만 제품(미니 바·곡물바 등)은 비교용으로 남기고 '단백질 보조 간식'으로 표시합니다.` },
+  { label: "단백질 쉐이크", body: "물이나 우유에 타 먹는 1회분 파우치·스틱 제품 중 1회 단백질 10g 이상. 여러 번 덜어 먹는 통·대용량 제품은 파우더로 분류합니다." },
+  { label: "단백질 요거트", body: "단백질을 강화했거나 그릭 요거트로, 1개(1컵·1병) 단백질 5g 이상. 대용량은 100g당 수치를 함께 봅니다." },
+  { label: "두유", body: "250mL 이하 소포장, 대두 기반, 1팩 단백질 g 표기 5g 이상(아래 구간 참고)." },
+  { label: "단백질 파우더", body: "통·봉지에 담아 스쿱으로 덜어 먹는 단백질 보충제 중 1회 제공량 단백질 10g 이상. 수치는 라벨의 1회 제공량 기준입니다." },
 ];
 
 const soymilkRules = [
@@ -75,7 +89,7 @@ const correctionLog = [
 ];
 
 export default async function MethodologyPage() {
-  const categories = ["drink", "bar", "shake", "yogurt", "soymilk"] as const;
+  const categories = ["drink", "bar", "shake", "yogurt", "soymilk", "powder"] as const;
   const lists = await Promise.all(categories.map((category) => getProductsByCategoryAsync(category)));
   const coverage = categories.map((category, index) => {
     const products = lists[index];
@@ -174,7 +188,22 @@ export default async function MethodologyPage() {
           </section>
 
           <section>
-            <h2 className="text-lg font-bold text-[var(--foreground)]">두유 등록·구간 기준</h2>
+            <h2 className="text-lg font-bold text-[var(--foreground)]">카테고리별 등록 기준</h2>
+            <p className="mt-3 text-[14px] leading-7 text-[var(--foreground-muted)]">
+              이름에 “단백질”이 들어가도 아래 기준에 맞지 않으면 등록하지 않습니다. 수치는 모두 성분표 기준입니다.
+            </p>
+            <dl className="mt-4 divide-y divide-[#f0eeeb] rounded-2xl border border-[#e8e6e3]">
+              {registrationRules.map((row) => (
+                <div key={row.label} className="flex flex-col gap-1 px-4 py-3 sm:flex-row sm:gap-4">
+                  <dt className="shrink-0 text-sm font-semibold text-[#1f5138] sm:w-28">{row.label}</dt>
+                  <dd className="text-[14px] leading-6 text-[var(--foreground-muted)]">{row.body}</dd>
+                </div>
+              ))}
+            </dl>
+          </section>
+
+          <section>
+            <h2 className="text-lg font-bold text-[var(--foreground)]">두유 구간 기준</h2>
             <ul className="mt-3 space-y-2">
               {soymilkRules.map((item) => (
                 <li key={item} className="flex items-start gap-2 text-[14px] leading-6 text-[var(--foreground-muted)]">

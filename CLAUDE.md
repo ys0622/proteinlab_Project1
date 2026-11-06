@@ -8,6 +8,7 @@ proteinlab.kr — 단백질 음료·바·요거트·쉐이크 제품 비교 서�
 ## 구조
 - Next.js 16 App Router, TypeScript, Cloudflare Workers(OpenNext), Windows에서 개발·배포. 빌드는 `next build --webpack`.
 - 제품 데이터: `app/data/{drink,bar,shake,yogurt,soymilk}ProductsData.json` (음료 136, 바 108, 쉐이크 112, 요거트 57, 두유 47). 이미지 매핑은 `slugTo*Image.json`, 성분표 원본 이미지는 `public/*-spec/`.
+- 카테고리 등록 기준(2026-11-06 Scott 승인, `/methodology` '카테고리별 등록 기준'에 공개): 음료 RTD 1병 단백질 8g 이상 · 바 1개 5g 이상(`BAR_MIN_PROTEIN_G`, 그 전 등록된 5g 미만 9개는 남기고 제품 페이지에 '단백질 보조 간식' 배지) · 쉐이크 1회분 파우치·스틱 10g 이상(통 제품은 파우더) · 요거트 1개 5g 이상 · 파우더 1회 제공량 10g 이상. 기준을 바꾸면 methodology·categories.ts·grade-criteria FAQ를 같이 고친다.
 - 두유(`/soymilk`) 등록 기준: 소포장(250mL 이하) 대두 기반 두유 중 1팩 단백질 g 표기 5g 이상(% 표기만 있는 제품·대용량·유단백 혼합 프로틴밀류는 제외). 구간: 고단백 11g 이상(기준치 55g의 20%), 단백질 강화 8~10g, 일반 5~7g(`getSoymilkTier`). 링크는 파트너스 단축 링크를 받아 `coupangUrl`에 넣는다.
 - 가이드는 대부분 `app/guides/**`에 있고, 비교 가이드는 `app/guides/product-selection-comparison/*Content.ts`의 config를 공통 템플릿이 렌더링한다. 비교 랜딩은 `app/data/compareLandings.ts`(손으로 쓴 것)와 `app/data/compareLandingsGenerated.ts`(데이터로 만드는 PAIRS·LINES, 맛별 비교 대부분)를 합친 것이다. 같은 slug면 손으로 쓴 쪽이 덮어쓴다 — 새 비교를 넣기 전에 `getAllCompareLandings()`로 두 곳 모두 확인한다(2026-10-29 이미 있는 맛별 5개를 새 페이지로 잘못 보고함).
 - 쿠팡 골드박스: `/goldbox`, 상태 확인 `/api/goldbox/health`, 로직은 `app/lib/coupangGoldbox.ts`, 갱신 워크플로우 `.github/workflows/goldbox-refresh.yml`. 파트너스 API 피드(26개 안팎)는 앱 식품 탭 상품을 빠뜨린다(`coverage: confirmed_gap`).

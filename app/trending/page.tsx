@@ -14,7 +14,7 @@ export const revalidate = 300; // 5분마다 재생성 (조회수 실시간 반�
 
 const canonical = "https://proteinlab.kr/trending";
 const title = "최근 7일 인기 단백질 제품 순위";
-const description = "최근 7일 상세페이지 조회수에 단백질 밀도·당류·칼로리 기준을 함께 반영한 단백질 음료, 바, 요거트, 쉐이크 인기 순위를 카테고리별로 확인해보세요.";
+const description = "최근 7일 상세페이지 조회수에 단백질 밀도·당류·칼로리 기준을 함께 반영한 단백질 음료, 바, 요거트, 쉐이크, 두유, 파우더 인기 순위를 카테고리별로 확인해보세요.";
 
 export const metadata: Metadata = {
   title,

@@ -71,6 +71,14 @@ const FAQ = [
     q: "쉐이크도 같은 방식으로 계산하나요?",
     a: "네. 파우치형 단백질 쉐이크도 같은 카테고리 내부에서 단백질 밀도, 다이어트, 퍼포먼스 지표를 각각 계산한 뒤 상대 순위 기준으로 A~D 등급을 부여합니다.",
   },
+  {
+    q: "두유와 파우더는 등급이 없나요?",
+    a: "두유는 A~D 등급 대신 1팩 단백질로 고단백(11g 이상)·단백질 강화(8~10g)·일반(5~7g) 구간을 나눕니다. 파우더는 등급 대신 1회 제공량 기준 단백질 밀도·다이어트·퍼포먼스 순위로 비교합니다(순위 페이지).",
+  },
+  {
+    q: "어떤 제품을 등록하나요?",
+    a: "카테고리마다 등록 기준이 있습니다. 음료는 1병 단백질 8g 이상, 바는 1개 5g 이상, 쉐이크·파우더는 1회 10g 이상, 요거트·두유는 1개 5g 이상입니다. 자세한 기준은 데이터 방법론 페이지에 있습니다.",
+  },
 ];
 
 export default function GradeCriteriaPage() {
@@ -112,6 +120,17 @@ export default function GradeCriteriaPage() {
           className="mb-4"
         />
 
+        {productType === "soymilk" ? (
+          <div className="mt-3 rounded-xl border border-[#e8e6e3] bg-[#FFFDF8] px-4 py-3.5" style={{ borderRadius: "16px" }}>
+            <p className="text-sm font-semibold" style={{ color: "#16412D" }}>두유는 A~D 등급 대신 1팩 단백질 구간으로 나눕니다</p>
+            <ul className="mt-1.5 space-y-1 text-xs leading-relaxed" style={{ color: "#6b6b6b" }}>
+              <li>고단백: 1팩 단백질 11g 이상(1일 기준치 55g의 20%)</li>
+              <li>단백질 강화: 8~10g · 일반: 5~7g</li>
+              <li>등록 기준은 250mL 이하 소포장, 대두 기반, 1팩 단백질 g 표기 5g 이상입니다.</li>
+            </ul>
+          </div>
+        ) : (
+        <>
         <div className="md:hidden">
           <div className="flex items-center gap-2 rounded-xl border border-[#e8e6e3] bg-[#FFFDF8] px-3 py-2 text-xs text-[#6b7280]">
             <span aria-hidden="true">←</span>
@@ -176,12 +195,14 @@ export default function GradeCriteriaPage() {
             </tbody>
           </table>
         </div>
+        </>
+        )}
 
         {productType === "shake" && (
           <div className="mt-4 rounded-xl border border-[#e8e6e3] bg-[#FFFDF8] px-4 py-3.5" style={{ borderRadius: "16px" }}>
             <p className="text-xs font-semibold" style={{ color: "#6b6b6b" }}>쉐이크 등급 산정 기준 안내</p>
             <ul className="mt-1.5 space-y-1 text-xs leading-relaxed" style={{ color: "#6b6b6b" }}>
-              <li>쉐이크 등급은 현재 등록된 1포 32~60g 제품의 영양성분을 기준으로 카테고리 내에서 상대 비교합니다.</li>
+              <li>쉐이크 등급은 1회분 파우치·스틱 제품의 영양성분을 기준으로 카테고리 내에서 상대 비교합니다. 통에 든 제품은 파우더로 따로 봅니다.</li>
               <li>단백질 밀도는 100kcal당 단백질(g) 기준으로 산출됩니다.</li>
               <li>음료(100mL 기준)와 직접 비교되지 않으며, 쉐이크 제품 간 상대 평가입니다.</li>
             </ul>
@@ -196,7 +217,7 @@ export default function GradeCriteriaPage() {
             <ul className="mt-1.5 space-y-1 text-xs leading-relaxed" style={{ color: "#6b6b6b" }}>
               <li>제품 유형별 기준 단위에 맞춰 비교합니다.</li>
               <li>음료는 mL, 요거트와 바는 g 기준으로 해석합니다.</li>
-              <li>쉐이크는 파우치형만 같은 구조로 추가 가능합니다.</li>
+              <li>쉐이크·파우더는 100kcal당 단백질로 봅니다.</li>
             </ul>
           </div>
           <div className="rounded-xl border border-[#e8e6e3] bg-[#FFFDF8] px-4 py-3.5" style={{ borderRadius: "16px" }}>
@@ -216,7 +237,7 @@ export default function GradeCriteriaPage() {
             <ul className="mt-1.5 space-y-1 text-xs leading-relaxed" style={{ color: "#6b6b6b" }}>
               <li>단백질 보충 효율과 실제 섭취 체감을 같이 반영합니다.</li>
               <li>추천과 랭킹도 같은 데이터 구조를 사용합니다.</li>
-              <li>신규 카테고리도 별도 예외 없이 여기에 연결됩니다.</li>
+              <li>두유는 1팩 단백질 구간, 파우더는 1회 제공량 기준 순위로 비교합니다.</li>
             </ul>
           </div>
         </div>

@@ -12,28 +12,28 @@ export interface CategoryMeta {
 export const CATEGORY_META: Record<CatalogProductCategory, CategoryMeta> = {
   drink: {
     label: "음료",
-    description: "바로 마실 수 있는 단백질 RTD 음료 비교 (두유는 별도 카테고리)",
+    description: "바로 마시는 단백질 RTD 음료 비교 · 등록 기준 1병 단백질 8g 이상 (두유는 별도 카테고리)",
     order: 1,
     href: "/drinks",
     icon: "/category-icons/drink-v2.jpg",
   },
   bar: {
     label: "바",
-    description: "간편하게 단백질을 보충할 수 있는 바 형태 제품 비교",
+    description: "간편하게 단백질을 보충하는 바 제품 비교 · 등록 기준 1개 단백질 5g 이상 (그 미만은 단백질 보조 간식으로 표시)",
     order: 2,
     href: "/bars",
     icon: "/category-icons/bar-v2.jpg",
   },
   yogurt: {
     label: "요거트",
-    description: "그릭요거트, 드링킹 요거트 등 단백질 함량이 강화된 요거트 제품 비교",
+    description: "그릭요거트, 드링킹 요거트 등 단백질을 강화한 요거트 비교 · 등록 기준 1개 단백질 5g 이상",
     order: 3,
     href: "/yogurt",
     icon: "/category-icons/yogurt-v2.jpg",
   },
   shake: {
     label: "쉐이크",
-    description: "파우치형 중심의 간편 섭취 단백질 쉐이크 비교 (파우더 제외)",
+    description: "물·우유에 타 먹는 1회분 파우치·스틱 쉐이크 비교 · 등록 기준 1회 단백질 10g 이상 (통 제품은 파우더)",
     order: 4,
     href: "/shake",
     icon: "/category-icons/shake-v2.jpg",
@@ -47,7 +47,7 @@ export const CATEGORY_META: Record<CatalogProductCategory, CategoryMeta> = {
   },
   powder: {
     label: "파우더",
-    description: "단백질 파우더를 1회 제공량의 단백질·함량·당류·칼로리 기준으로 비교",
+    description: "스쿱으로 덜어 먹는 통·봉지 단백질 파우더를 1회 제공량의 단백질·함량·당류·칼로리 기준으로 비교 · 등록 기준 1회 단백질 10g 이상",
     order: 6,
     href: "/powder",
     icon: "/category-icons/powder-v2.jpg",
@@ -62,6 +62,17 @@ export const ALL_CATEGORY_IDS = (Object.keys(CATEGORY_META) as CatalogProductCat
 export const ORDERED_CATEGORY_IDS: ProductCategory[] = ALL_CATEGORY_IDS.filter(
   (category): category is ProductCategory => category !== "powder",
 );
+
+/** 단백질 바 등록 기준(2026-11-06). 이보다 적은 기존 제품은 지우지 않고 '단백질 보조 간식'으로 표시한다. */
+export const BAR_MIN_PROTEIN_G = 5;
+
+export function isProteinSnackBar(product: { productType?: string; proteinPerServing?: number | null }): boolean {
+  return (
+    product.productType === "bar" &&
+    typeof product.proteinPerServing === "number" &&
+    product.proteinPerServing < BAR_MIN_PROTEIN_G
+  );
+}
 
 export function getCategoryMeta(category: CatalogProductCategory): CategoryMeta {
   return CATEGORY_META[category];
