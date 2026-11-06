@@ -1,6 +1,7 @@
 ﻿import Header from "../components/Header";
 import AffiliateDisclosure from "../components/AffiliateDisclosure";
 import CommercialAdSection from "../components/CommercialAdSection";
+import CategoryGuideLinks from "../components/CategoryGuideLinks";
 import Footer from "../components/Footer";
 import HeroSection from "../components/HeroSection";
 import ProductListWithFilters from "../components/ProductListWithFilters";
@@ -95,6 +96,15 @@ export default async function BarsPage() {
           products={products}
           categoryCounts={categoryCounts}
           tabsPlacement="before_grid"
+        />
+        <CategoryGuideLinks
+          id="bar-guides"
+          title="단백질 바 고르는 가이드"
+          links={[
+            { href: "/guides/product-selection-comparison/protein-bar-top10", label: "단백질 바 추천 TOP 10" },
+            { href: "/guides/product-selection-comparison/protein-bar-guide", label: "단백질 바 고르는 법" },
+            { href: "/guides/product-selection-comparison/meal-replacement-protein-bar-guide", label: "식사대용 단백질 바" },
+          ]}
         />
         <CommercialAdSection pageType="category" className="mt-6" />
       </main>

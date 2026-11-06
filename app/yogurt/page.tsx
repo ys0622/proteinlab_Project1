@@ -1,5 +1,6 @@
 ﻿import AffiliateDisclosure from "../components/AffiliateDisclosure";
 import CommercialAdSection from "../components/CommercialAdSection";
+import CategoryGuideLinks from "../components/CategoryGuideLinks";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import HeroSection from "../components/HeroSection";
@@ -95,6 +96,15 @@ export default async function YogurtPage() {
           products={products}
           categoryCounts={categoryCounts}
           tabsPlacement="before_grid"
+        />
+        <CategoryGuideLinks
+          id="yogurt-guides"
+          title="단백질 요거트 고르는 가이드"
+          links={[
+            { href: "/guides/product-selection-comparison/protein-yogurt-top5", label: "단백질 요거트 추천 TOP 5" },
+            { href: "/guides/product-selection-comparison/protein-yogurt-guide", label: "단백질 요거트 고르는 법" },
+            { href: "/guides/product-selection-comparison/greek-vs-protein-yogurt", label: "그릭 vs 단백질 요거트" },
+          ]}
         />
         <CommercialAdSection pageType="category" className="mt-6" />
       </main>

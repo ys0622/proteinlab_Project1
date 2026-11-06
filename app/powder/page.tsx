@@ -1,6 +1,6 @@
-import Link from "next/link";
 import AffiliateDisclosure from "../components/AffiliateDisclosure";
 import CommercialAdSection from "../components/CommercialAdSection";
+import CategoryGuideLinks from "../components/CategoryGuideLinks";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import HeroSection from "../components/HeroSection";
@@ -79,26 +79,15 @@ export default async function PowderPage() {
         <AffiliateDisclosure />
         <GoldboxStrip category="powder" placement="category" className="mb-3 mt-1" initialCards={goldboxCards} />
         <ProductListWithFilters productType="powder" products={products} categoryCounts={categoryCounts} tabsPlacement="before_grid" />
-        <section className="mt-6 rounded-2xl border border-[#dfe8df] bg-[#f7fbf7] p-4 md:p-5" aria-labelledby="powder-guides">
-          <h2 id="powder-guides" className="text-[15px] font-bold text-[#1E2A22] md:text-base">파우더 고르는 가이드</h2>
-          <div className="mt-3 flex flex-wrap gap-2">
-            <Link href="/guides/product-selection-comparison/protein-powder-top10" className="rounded-full bg-[#24543d] px-4 py-2 text-xs font-semibold text-white hover:bg-[#1d4633]">
-              단백질 파우더 추천 TOP 10
-            </Link>
-            <Link href="/guides/product-selection-comparison/wpi-wpc-isp-powder-guide" className="rounded-full border border-[#cadbcd] bg-white px-4 py-2 text-xs font-semibold text-[#24543d] hover:bg-[#eef7f1]">
-              WPI·WPC·분리대두 차이
-            </Link>
-            <Link href="/guides/product-selection-comparison/protein-powder-by-purpose" className="rounded-full border border-[#cadbcd] bg-white px-4 py-2 text-xs font-semibold text-[#24543d] hover:bg-[#eef7f1]">
-              목적별(시니어·게이너·식사대용)
-            </Link>
-            <Link href="/guides/product-selection-comparison/protein-powder-scoop-guide" className="rounded-full border border-[#cadbcd] bg-white px-4 py-2 text-xs font-semibold text-[#24543d] hover:bg-[#eef7f1]">
-              1스쿱 단백질·칼로리
-            </Link>
-            <Link href="/guides/basics/protein-source-types" className="rounded-full border border-[#cadbcd] bg-white px-4 py-2 text-xs font-semibold text-[#24543d] hover:bg-[#eef7f1]">
-              MPI·WPI·WPC 원료 설명
-            </Link>
-          </div>
-        </section>
+        <CategoryGuideLinks
+          id="powder-guides"
+          title="파우더 고르는 가이드"
+          links={[
+            { href: "/guides/product-selection-comparison/protein-powder-top10", label: "단백질 파우더 추천 TOP 10" },
+            { href: "/guides/product-selection-comparison/wpi-wpc-isp-powder-guide", label: "WPI·WPC·분리대두 차이" },
+            { href: "/guides/product-selection-comparison/protein-powder-scoop-guide", label: "1스쿱 단백질·칼로리" },
+          ]}
+        />
         <CommercialAdSection pageType="category" className="mt-6" />
       </main>
       <CategoryFaqSection category="powder" />

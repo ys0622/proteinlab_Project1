@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import AffiliateDisclosure from "../components/AffiliateDisclosure";
 import CommercialAdSection from "../components/CommercialAdSection";
+import CategoryGuideLinks from "../components/CategoryGuideLinks";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import HeroSection from "../components/HeroSection";
@@ -100,6 +101,15 @@ export default async function DrinksPage() {
           categoryCounts={categoryCounts}
           stickyTabs={false}
           tabsPlacement="before_grid"
+        />
+        <CategoryGuideLinks
+          id="drink-guides"
+          title="단백질 음료 고르는 가이드"
+          links={[
+            { href: "/guides/product-selection-comparison/protein-drink-top10", label: "단백질 음료 추천 TOP 10" },
+            { href: "/guides/product-selection-comparison/protein-drink-guide", label: "단백질 음료 고르는 법" },
+            { href: "/guides/product-selection-comparison/protein-drink-for-50s", label: "50대 이상 단백질 음료" },
+          ]}
         />
         <CommercialAdSection pageType="category" className="mt-6" />
       </main>

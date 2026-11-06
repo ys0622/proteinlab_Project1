@@ -1,5 +1,6 @@
 import AffiliateDisclosure from "../components/AffiliateDisclosure";
 import CommercialAdSection from "../components/CommercialAdSection";
+import CategoryGuideLinks from "../components/CategoryGuideLinks";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import HeroSection from "../components/HeroSection";
@@ -95,6 +96,15 @@ export default async function SoymilkPage() {
           products={products}
           categoryCounts={categoryCounts}
           tabsPlacement="before_grid"
+        />
+        <CategoryGuideLinks
+          id="soymilk-guides"
+          title="두유 고르는 가이드"
+          links={[
+            { href: "/guides/product-selection-comparison/soymilk-protein-ranking", label: "두유 단백질 순위" },
+            { href: "/guides/product-selection-comparison/high-protein-soymilk-guide", label: "고단백 두유 고르는 법" },
+            { href: "/guides/product-selection-comparison/soymilk-vs-protein-drink", label: "두유 vs 단백질 음료" },
+          ]}
         />
         <CommercialAdSection pageType="category" className="mt-6" />
       </main>
