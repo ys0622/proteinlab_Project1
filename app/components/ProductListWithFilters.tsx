@@ -349,11 +349,10 @@ function ProductListWithFiltersInner(props: ProductListWithFiltersInnerProps) {
               ? powderFilters
               : shakeFilters;
 
-  const curationFiltered = useMemo(() => {
-    return productType === "powder"
-      ? products
-      : applyCurationToCategoryProducts(products, productType, curationSlug);
-  }, [curationSlug, productType, products]);
+  const curationFiltered = useMemo(
+    () => applyCurationToCategoryProducts(products, productType, curationSlug),
+    [curationSlug, productType, products],
+  );
 
   const filtered = useMemo(() => {
     if (productType === "drink") {
@@ -745,7 +744,7 @@ function ProductListWithFiltersInner(props: ProductListWithFiltersInnerProps) {
 
       {sorted.length !== products.length ? (
         <p className="mt-3 px-1 text-xs text-[var(--foreground-muted)]" aria-live="polite">
-          {productType !== "powder" && curationSlug && getCurationDefinition(curationSlug)?.categories[productType]
+          {curationSlug && getCurationDefinition(curationSlug)?.categories[productType]
             ? `'${getCurationDefinition(curationSlug)?.label}' 조건 · `
             : ""}
           조건에 맞는 제품 {sorted.length}개 (전체 {products.length}개)

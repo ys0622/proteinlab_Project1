@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { getAllProducts } from "@/app/data/products";
-import { CATEGORY_META, ORDERED_CATEGORY_IDS } from "@/app/lib/categories";
+import { ALL_CATEGORY_IDS, CATEGORY_META } from "@/app/lib/categories";
 import { isComparableServing } from "@/app/lib/servingScope";
 
 // 영양성분 기준치(식품 표시용 1일 기준) — 제품 성분표의 "1일 영양성분 기준치에 대한 비율(%)"의 분모.
@@ -18,7 +18,7 @@ function median(values: number[]) {
  */
 export default function ProteinDailyContext() {
   const products = getAllProducts().filter((p) => isComparableServing(p) && !p.needsServingCheck && p.proteinPerServing > 0);
-  const rows = ORDERED_CATEGORY_IDS.map((category) => {
+  const rows = ALL_CATEGORY_IDS.map((category) => {
     const list = products.filter((p) => (p.productType ?? "drink") === category);
     if (list.length < 5) return null;
     const med = median(list.map((p) => p.proteinPerServing));
@@ -49,7 +49,7 @@ export default function ProteinDailyContext() {
               <tr className="border-b border-[#e8e6e3] text-xs text-[var(--foreground-muted)]">
                 <th className="px-2 py-2 md:px-3 font-medium">카테고리</th>
                 <th className="px-2 py-2 md:px-3 font-medium">제품 수</th>
-                <th className="px-2 py-2 md:px-3 font-medium">1개 단백질<br className="md:hidden" /> 중앙값</th>
+                <th className="px-2 py-2 md:px-3 font-medium">1회분 단백질<br className="md:hidden" /> 중앙값</th>
                 <th className="px-2 py-2 md:px-3 font-medium">기준치 {DAILY_VALUE_G}g<br className="md:hidden" /> 대비</th>
               </tr>
             </thead>
@@ -70,7 +70,7 @@ export default function ProteinDailyContext() {
           </table>
         </div>
         <p className="mt-3 text-xs leading-5 text-[var(--foreground-muted)]">
-          중앙값은 ProteinLab에 등록된 제품의 1회 제공량(1병·1개·1팩) 기준이며, 대용량 요거트처럼 1회분을 알 수 없는 제품은 뺐습니다.
+          중앙값은 ProteinLab에 등록된 제품의 1회 제공량(1병·1개·1팩, 파우더는 1스쿱) 기준이며, 대용량 요거트처럼 1회분을 알 수 없는 제품은 뺐습니다.
           제품 하나로 하루 필요량을 채우기보다 식사와 나눠 보충하는 용도로 보는 편이 현실적입니다.
         </p>
       </div>

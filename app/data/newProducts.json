@@ -890,5 +890,29 @@
   {
     "slug": "calobye-balance-powershake-isolate-grain-2000",
     "addedAt": "2026-11-06"
+  },
+  {
+    "slug": "newyorkwhey-gold-grain-3000",
+    "addedAt": "2026-11-06"
+  },
+  {
+    "slug": "newyorkwhey-alpha-grain-3000",
+    "addedAt": "2026-11-06"
+  },
+  {
+    "slug": "newyorkwhey-sports-grain-3000",
+    "addedAt": "2026-11-06"
+  },
+  {
+    "slug": "newyorkwhey-wpc-choco-2000",
+    "addedAt": "2026-11-06"
+  },
+  {
+    "slug": "ns-wheyprotein-deepchoco-1000",
+    "addedAt": "2026-11-06"
+  },
+  {
+    "slug": "ns-proteinstandard-choco-2000",
+    "addedAt": "2026-11-06"
   }
 ]
