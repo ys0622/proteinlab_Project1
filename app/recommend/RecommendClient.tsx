@@ -99,6 +99,13 @@ const POWDER_PRIORITY_OPTIONS = [
   { icon: "📊", label: "단백질 함량", desc: "1회 제공량 중 단백질 비율(%)을 우선", value: "density" },
 ] as const;
 
+// 카테고리 이름 뒤 목적격 조사(음료를·바를). 받침이 있으면 '을'.
+function objectParticle(word: string): string {
+  const code = word.charCodeAt(word.length - 1) - 0xac00;
+  if (code < 0 || code > 11171) return "를";
+  return code % 28 === 0 ? "를" : "을";
+}
+
 const CONDITION_OPTIONS_BY_CATEGORY: Record<ProductType, ConditionOption[]> = {
   drink: [
     { icon: "🥗", label: "저칼로리", desc: "150kcal 이하 선호", value: "lowcal" },
@@ -111,7 +118,6 @@ const CONDITION_OPTIONS_BY_CATEGORY: Record<ProductType, ConditionOption[]> = {
   bar: [
     { icon: "💪", label: "고단백", desc: "12g 이상 선호", value: "highpro" },
     { icon: "🍽️", label: "식사 보완", desc: "포만감 있는 제품 선호", value: "meal" },
-    { icon: "🌿", label: "식물성", desc: "식물성 단백질 원료 선호", value: "vegan" },
     { icon: "😋", label: "맛 우선", desc: "식감과 만족감 중시", value: "taste" },
     { icon: "📈", label: "단백질 밀도", desc: "단백질 효율 우선", value: "density" },
     { icon: "🍬", label: "저당", desc: "당류 5g 이하 선호", value: "lowsugar" },
@@ -673,16 +679,16 @@ export default function RecommendClient({ categoryCounts }: RecommendClientProps
                 >
                   맞춤 추천
                 </span>
-                <h2 className="text-3xl font-extrabold mb-4 leading-tight text-[#1a1a1a]">
+                <h2 className="text-3xl font-extrabold mb-4 leading-tight text-[#1a1a1a] break-keep">
                   나에게 맞는
                   <br />
                   {productLabel} 찾기
                 </h2>
-                <p className="text-base mb-3 leading-relaxed text-[#6b6b6b]">
+                <p className="text-base mb-3 leading-relaxed text-[#6b6b6b] break-keep">
                   {getCategoryDescription(category)}
                 </p>
-                <p className="text-base mb-8 leading-relaxed text-[#6b6b6b]">
-                  제품 형태와 3가지 질문으로 {productCount}개 제품 중 현재 조건에 맞는 {productLabel}을 추천해드립니다.
+                <p className="text-base mb-8 leading-relaxed text-[#6b6b6b] break-keep">
+                  제품 형태와 3가지 질문으로 {productCount}개 제품 중 현재 조건에 맞는 {productLabel}{objectParticle(productLabel)} 추천해드립니다.
                 </p>
 
                 {isShakeEmpty ? (
@@ -712,7 +718,7 @@ export default function RecommendClient({ categoryCounts }: RecommendClientProps
                     </button>
                     <div className="flex justify-center gap-6 mt-10 text-sm text-[#6b6b6b]">
                       <span>💪 {productCount}개 제품</span>
-                      <span>등급 기반</span>
+                      <span>{category === "soymilk" || category === "powder" ? "성분표 기준" : "등급 기반"}</span>
                       <span>성분 비교</span>
                     </div>
                   </>
@@ -730,7 +736,7 @@ export default function RecommendClient({ categoryCounts }: RecommendClientProps
                     <>
                       <div>
                         <p className="text-xs font-semibold mb-1 text-[#16412D]">STEP 2 / 4</p>
-                        <p className="text-lg font-bold text-[#1a1a1a]">주로 어떤 목적에서 {productLabel}을 찾고 있나요?</p>
+                        <p className="text-lg font-bold text-[#1a1a1a]">주로 어떤 목적에서 {productLabel}{objectParticle(productLabel)} 찾고 있나요?</p>
                       </div>
                       <div className="space-y-2.5">
                         {(category === "powder" ? POWDER_PURPOSE_OPTIONS : PURPOSE_OPTIONS).map((option) => (

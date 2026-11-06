@@ -6,6 +6,7 @@ import { getProductsByCategoryAsync } from "../../lib/productData";
 import { getPowderProteinPercentage } from "../../lib/productFilters";
 import { hasNoPurchasableCoupangLink } from "../../lib/purchaseLinks";
 import { isComparableServing } from "../../lib/servingScope";
+import { isProteinSnackBar } from "../../lib/categories";
 
 interface RecommendRequest {
   category: "drink" | "bar" | "yogurt" | "shake" | "soymilk" | "powder";
@@ -205,8 +206,12 @@ function applyConditionPrefilters(products: ProductDetailProps[], req: Recommend
       filtered = filtered.filter((product) => product.powderType === "gainer");
     }
     if (req.conditions.includes("low_lactose")) {
+      // 라벨에 '락토프리'로 표시된 제품(셀렉스 락토프리 등)도 유당 부담이 적은 쪽에 넣는다.
       filtered = filtered.filter(
-        (product) => product.powderType === "isolate" || product.powderType === "plant",
+        (product) =>
+          product.powderType === "isolate" ||
+          product.powderType === "plant" ||
+          /락토프리|lactose/i.test(`${product.name} ${product.flavor ?? ""}`),
       );
     }
     if (req.conditions.includes("plant_only")) {
@@ -871,6 +876,8 @@ export async function POST(request: Request) {
     let products = categoryProducts.filter(
       (product) =>
         !hasNoPurchasableCoupangLink(product.coupangUrl, product.slug) &&
+        // 1개 단백질 5g 미만 '단백질 보조 간식' 바는 추천하지 않는다(다이어트 목적에서 3g 미니 바가 1위로 나오던 문제, 2026-11-06).
+        !isProteinSnackBar(product) &&
         (wantsBulk || (!product.needsServingCheck && isComparableServing(product))),
     );
 
