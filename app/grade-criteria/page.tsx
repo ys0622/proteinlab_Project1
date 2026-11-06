@@ -1,11 +1,12 @@
 "use client";
 
+import Link from "next/link";
 import { useState } from "react";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import CategoryTabs from "../components/CategoryTabs";
 import CommercialAdSection from "../components/CommercialAdSection";
-import type { ProductCategory } from "../lib/categories";
+import type { CatalogProductCategory } from "../lib/categories";
 import productCategoryCounts from "../data/productCategoryCounts.json";
 
 const GRADE_COLORS: Record<string, { color: string; bg: string; border: string }> = {
@@ -73,7 +74,7 @@ const FAQ = [
   },
   {
     q: "두유와 파우더는 등급이 없나요?",
-    a: "두유는 A~D 등급 대신 1팩 단백질로 고단백(11g 이상)·단백질 강화(8~10g)·일반(5~7g) 구간을 나눕니다. 파우더는 등급 대신 1회 제공량 기준 단백질 밀도·다이어트·퍼포먼스 순위로 비교합니다(순위 페이지).",
+    a: "두유는 A~D 등급 대신 1팩 단백질로 고단백(11g 이상)·단백질 강화(8~10g)·일반(5~7g) 구간을 나눕니다. 파우더는 제품 페이지에 등급을 붙이지 않고, 1회 제공량 기준 단백질 밀도·다이어트·퍼포먼스 순위로 파우더끼리 비교합니다(파우더 탭·순위 페이지).",
   },
   {
     q: "어떤 제품을 등록하나요?",
@@ -82,7 +83,7 @@ const FAQ = [
 ];
 
 export default function GradeCriteriaPage() {
-  const [productType, setProductType] = useState<ProductCategory>("drink");
+  const [productType, setProductType] = useState<CatalogProductCategory>("drink");
   const categoryCounts = productCategoryCounts;
   const rows =
     productType === "drink"
@@ -112,15 +113,26 @@ export default function GradeCriteriaPage() {
         <CategoryTabs
           activeCategory={productType}
           counts={categoryCounts}
-          onSelect={(category) => {
-            if (category !== "powder") setProductType(category);
-          }}
-          hiddenCategories={["powder"]}
+          onSelect={setProductType}
           stickyMobile
           className="mb-4"
         />
 
-        {productType === "soymilk" ? (
+        {productType === "powder" ? (
+          <div className="mt-3 rounded-xl border border-[#e8e6e3] bg-[#FFFDF8] px-4 py-3.5" style={{ borderRadius: "16px" }}>
+            <p className="text-sm font-semibold" style={{ color: "#16412D" }}>파우더는 제품 페이지에 등급을 붙이지 않고, 파우더끼리 순위로 비교합니다</p>
+            <ul className="mt-1.5 space-y-1 text-xs leading-relaxed" style={{ color: "#6b6b6b" }}>
+              <li>모든 수치는 성분표의 1회 제공량(1스쿱 등) 기준입니다.</li>
+              <li>단백질 밀도: 1회 제공량의 100kcal당 단백질(g)이 높을수록 위입니다.</li>
+              <li>다이어트: 1회 제공량의 칼로리와 당류가 낮을수록 위입니다. 게이너·식사대용은 열량이 커서 뒤로 갑니다.</li>
+              <li>퍼포먼스: 1회 단백질 양과 칼로리·당류 균형으로 계산한 운동 후 보충 효율입니다.</li>
+              <li>순위 화면의 A~D는 등록된 파우더 안에서 상위 20%·50%·80%·나머지로 나눈 구간입니다.</li>
+            </ul>
+            <Link href="/ranking/powder/density/1" className="mt-2 inline-block text-xs font-semibold text-[var(--accent)] hover:underline">
+              파우더 순위 보기 →
+            </Link>
+          </div>
+        ) : productType === "soymilk" ? (
           <div className="mt-3 rounded-xl border border-[#e8e6e3] bg-[#FFFDF8] px-4 py-3.5" style={{ borderRadius: "16px" }}>
             <p className="text-sm font-semibold" style={{ color: "#16412D" }}>두유는 A~D 등급 대신 1팩 단백질 구간으로 나눕니다</p>
             <ul className="mt-1.5 space-y-1 text-xs leading-relaxed" style={{ color: "#6b6b6b" }}>

@@ -1,10 +1,10 @@
-import { barProductsWithGrades, mockProducts, shakeProducts, soymilkProducts, yogurtProducts } from "../data/products";
+import { barProductsWithGrades, mockProducts, powderProducts, shakeProducts, soymilkProducts, yogurtProducts } from "../data/products";
 import type { ProductDetailProps } from "../data/products";
 import { selectHomeDiscovery } from "./homeDiscovery";
 import type { CurationDefinition, CurationGuideLink, CurationInfoSection } from "./curationSystem";
 import { getCurationDefinition, getPopularCurations, getRecommendedProductsForCuration } from "./curationSystem";
 
-type CategoryKey = "drink" | "bar" | "yogurt" | "shake" | "soymilk" | "both";
+type CategoryKey = "drink" | "bar" | "yogurt" | "shake" | "soymilk" | "powder" | "both";
 
 interface LandingProfile {
   heroTitle?: string;
@@ -21,6 +21,7 @@ function getCategoryKey(curation: CurationDefinition): CategoryKey {
   const hasShake = Boolean(curation.categories.shake);
   const hasSoymilk = Boolean(curation.categories.soymilk);
   if (hasDrink && hasBar) return "both";
+  if (curation.categories.powder) return "powder";
   if (hasSoymilk) return "soymilk";
   if (hasShake) return "shake";
   if (hasYogurt) return "yogurt";
@@ -33,6 +34,7 @@ function getCategoryLabel(categoryKey: CategoryKey) {
   if (categoryKey === "bar") return "단백질 바";
   if (categoryKey === "shake") return "단백질 쉐이크";
   if (categoryKey === "soymilk") return "두유";
+  if (categoryKey === "powder") return "단백질 파우더";
   return "단백질 요거트";
 }
 
@@ -564,6 +566,15 @@ function buildDefaultGuideLinks(curation: CurationDefinition): CurationGuideLink
     });
   }
 
+  if (curation.categories.powder) {
+    links.push({
+      href: "/ranking/powder/density/1",
+      title: "단백질 파우더 순위",
+      description: "1회 제공량 기준 단백질 밀도·다이어트·퍼포먼스 순위로 파우더끼리 비교합니다.",
+    });
+    return links;
+  }
+
   links.push({
     href: curation.categories.soymilk
       ? "/guides/product-selection-comparison/high-protein-soymilk-guide"
@@ -657,6 +668,10 @@ export function getCurationLandingData(slug: string, views?: Record<string, Reco
     ? soymilkProducts.filter(curation.categories.soymilk.filter)
     : [];
 
+  const powderProductsForCuration = curation.categories.powder
+    ? powderProducts.filter(curation.categories.powder.filter)
+    : [];
+
   // 인기 랜딩은 정적 점수 대신 홈·트렌딩과 같은 블렌딩 순위를 쓴다(조회수 데이터가 넘어온 경우).
   const popularPick = (products: ProductDetailProps[], category: "drink" | "bar" | "yogurt" | "shake" | "soymilk") =>
     slug === "popular" && views
@@ -691,5 +706,9 @@ export function getCurationLandingData(slug: string, views?: Record<string, Reco
     recommendedShakes,
     soymilkProducts: soymilkProductsForCuration,
     recommendedSoymilks,
+    powderProducts: powderProductsForCuration,
+    recommendedPowders: curation.categories.powder
+      ? getRecommendedProductsForCuration(powderProducts, "powder", curation.slug, 6)
+      : [],
   };
 }

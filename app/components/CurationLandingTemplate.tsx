@@ -16,7 +16,9 @@ interface CurationLandingTemplateProps {
   recommendedShakes: ProductDetailProps[];
   soymilkProducts: ProductDetailProps[];
   recommendedSoymilks: ProductDetailProps[];
-  focusCategory?: "drink" | "bar" | "yogurt" | "shake" | "soymilk";
+  powderProducts?: ProductDetailProps[];
+  recommendedPowders?: ProductDetailProps[];
+  focusCategory?: "drink" | "bar" | "yogurt" | "shake" | "soymilk" | "powder";
 }
 
 function ProductSection({
@@ -88,6 +90,8 @@ export default function CurationLandingTemplate({
   recommendedShakes,
   soymilkProducts,
   recommendedSoymilks,
+  powderProducts = [],
+  recommendedPowders = [],
   focusCategory,
 }: CurationLandingTemplateProps) {
   const drinkCopy = curation.categories.drink?.landingCopy;
@@ -100,6 +104,8 @@ export default function CurationLandingTemplate({
   const hasYogurtCategory = Boolean(curation.categories.yogurt);
   const hasShakeCategory = Boolean(curation.categories.shake);
   const hasSoymilkCategory = Boolean(curation.categories.soymilk);
+  const powderCopy = curation.categories.powder?.landingCopy;
+  const hasPowderCategory = Boolean(curation.categories.powder);
   const isPopularLanding = curation.slug === "popular";
   // ?category= 로 들어온 경우 그 카테고리만 보여준다(큐레이션이 지원하지 않는 카테고리면 무시하고 전체를 보여준다).
   const focus = focusCategory && curation.categories[focusCategory] ? focusCategory : undefined;
@@ -264,6 +270,23 @@ export default function CurationLandingTemplate({
               note={recommendedSoymilks.length > 0 ? "위 추천 제품을 제외한 나머지입니다." : undefined}
               totalCount={soymilkProducts.length}
               allProductsHref={isPopularLanding ? "/soymilk?curation=popular" : undefined}
+            />
+          </>
+        ) : null}
+
+        {hasPowderCategory && (!focus || focus === "powder") ? (
+          <>
+            <ProductSection
+              title={powderCopy?.recommendationTitle ?? "추천 단백질 파우더"}
+              note={powderCopy?.recommendationNote}
+              products={recommendedPowders}
+            />
+            <ProductSection
+              title={powderCopy?.comparisonTitle ?? "단백질 파우더 비교"}
+              products={restOf(powderProducts, recommendedPowders)}
+              hideWhenEmpty
+              note={recommendedPowders.length > 0 ? "위 추천 제품을 제외한 나머지입니다." : undefined}
+              totalCount={powderProducts.length}
             />
           </>
         ) : null}

@@ -3,7 +3,7 @@ import { getPopularityScore } from "./productPopularity";
 import { hasNoPurchasableCoupangLink } from "./purchaseLinks";
 import { isComparableServing } from "./servingScope";
 
-export type CurationCategory = "drink" | "bar" | "yogurt" | "shake" | "soymilk";
+export type CurationCategory = "drink" | "bar" | "yogurt" | "shake" | "soymilk" | "powder";
 export type CurationKind = "ingredient" | "goal" | "context";
 
 type CurationFilter = (product: ProductDetailProps) => boolean;
@@ -203,6 +203,18 @@ function sortSoymilkByProtein(products: ProductDetailProps[]) {
     if (proteinDelta !== 0) return proteinDelta;
     return (a.sugar ?? 999) - (b.sugar ?? 999);
   });
+}
+
+function sortPowderByProtein(products: ProductDetailProps[]) {
+  return [...products].sort((a, b) => (b.proteinPerServing ?? 0) - (a.proteinPerServing ?? 0) || (a.calories ?? 999) - (b.calories ?? 999));
+}
+
+function sortPowderByLowSugar(products: ProductDetailProps[]) {
+  return [...products].sort((a, b) => (a.sugar ?? 999) - (b.sugar ?? 999) || (b.proteinPerServing ?? 0) - (a.proteinPerServing ?? 0));
+}
+
+function sortPowderByCalories(products: ProductDetailProps[]) {
+  return [...products].sort((a, b) => (a.calories ?? 999) - (b.calories ?? 999) || (b.proteinPerServing ?? 0) - (a.proteinPerServing ?? 0));
 }
 
 function getFiberValue(product: ProductDetailProps) {
@@ -577,6 +589,202 @@ const curations: CurationDefinition[] = [
           recommendationTitle: "추천 검은콩 두유",
           recommendationNote: "단백질 함량을 우선으로 본 검은콩 제품입니다.",
           comparisonTitle: "검은콩 두유 비교",
+        },
+      },
+    },
+  },
+  {
+    id: "powder-high-protein",
+    slug: "powder-high-protein",
+    label: "고단백 25g+",
+    icon: "💪",
+    kind: "ingredient",
+    categoryTargets: ["powder"],
+    routeMode: "category-query",
+    seoTitle: "고단백 단백질 파우더 추천 (1회 25g 이상) | ProteinLab",
+    seoDescription:
+      "1회 제공량 단백질 25g 이상인 단백질 파우더를 칼로리·당류와 함께 성분표 기준으로 비교합니다.",
+    categories: {
+      powder: {
+        category: "powder",
+        quickLabel: "고단백 25g+",
+        quickIcon: "💪",
+        quickOrder: 5,
+        filter: (product) => product.productType === "powder" && (product.proteinPerServing ?? 0) >= 25,
+        recommend: (products) =>
+          sortPowderByProtein(products.filter((product) => product.productType === "powder" && (product.proteinPerServing ?? 0) >= 25)),
+        landingCopy: {
+          recommendationTitle: "추천 고단백 파우더",
+          recommendationNote: "1회 단백질 25g 이상 제품을 단백질 함량 순으로 보여줍니다.",
+          comparisonTitle: "고단백 파우더 비교",
+        },
+      },
+    },
+  },
+  {
+    id: "powder-sugar-0-1",
+    slug: "powder-sugar-0-1",
+    label: "당류 0~1g",
+    icon: "🍬",
+    kind: "ingredient",
+    categoryTargets: ["powder"],
+    routeMode: "category-query",
+    seoTitle: "당류 0~1g 단백질 파우더 추천 | ProteinLab",
+    seoDescription:
+      "1회 제공량 당류 1g 이하인 단백질 파우더를 단백질·칼로리와 함께 성분표 기준으로 비교합니다.",
+    categories: {
+      powder: {
+        category: "powder",
+        quickLabel: "당류 0~1g",
+        quickIcon: "🍬",
+        quickOrder: 10,
+        filter: (product) => product.productType === "powder" && product.sugar != null && product.sugar <= 1,
+        recommend: (products) =>
+          sortPowderByLowSugar(products.filter((product) => product.productType === "powder" && product.sugar != null && product.sugar <= 1)),
+        landingCopy: {
+          recommendationTitle: "추천 저당 파우더",
+          recommendationNote: "1회 당류 1g 이하 제품을 당류가 낮고 단백질이 높은 순으로 보여줍니다.",
+          comparisonTitle: "당류 0~1g 파우더 비교",
+        },
+      },
+    },
+  },
+  {
+    id: "powder-low-calorie",
+    slug: "powder-low-calorie",
+    label: "저칼로리",
+    icon: "🪶",
+    kind: "ingredient",
+    categoryTargets: ["powder"],
+    routeMode: "category-query",
+    seoTitle: "저칼로리 단백질 파우더 추천 (1회 120kcal 이하) | ProteinLab",
+    seoDescription:
+      "1회 제공량 120kcal 이하인 단백질 파우더를 단백질·당류와 함께 성분표 기준으로 비교합니다.",
+    categories: {
+      powder: {
+        category: "powder",
+        quickLabel: "저칼로리",
+        quickIcon: "🪶",
+        quickOrder: 15,
+        filter: (product) => product.productType === "powder" && (product.calories ?? 999) <= 120,
+        recommend: (products) =>
+          sortPowderByCalories(products.filter((product) => product.productType === "powder" && (product.calories ?? 999) <= 120)),
+        landingCopy: {
+          recommendationTitle: "추천 저칼로리 파우더",
+          recommendationNote: "1회 120kcal 이하 제품을 열량이 낮은 순으로 보여줍니다.",
+          comparisonTitle: "저칼로리 파우더 비교",
+        },
+      },
+    },
+  },
+  {
+    id: "powder-isolate",
+    slug: "powder-isolate",
+    label: "분리유청(WPI)",
+    icon: "🧪",
+    kind: "ingredient",
+    categoryTargets: ["powder"],
+    routeMode: "category-query",
+    seoTitle: "분리유청(WPI) 단백질 파우더 추천 | ProteinLab",
+    seoDescription:
+      "분리유청단백(WPI) 위주 단백질 파우더를 1회 단백질·칼로리·당류 기준으로 비교합니다.",
+    categories: {
+      powder: {
+        category: "powder",
+        quickLabel: "분리유청(WPI)",
+        quickIcon: "🧪",
+        quickOrder: 20,
+        filter: (product) => product.productType === "powder" && product.powderType === "isolate",
+        recommend: (products) =>
+          sortPowderByProtein(products.filter((product) => product.productType === "powder" && product.powderType === "isolate")),
+        landingCopy: {
+          recommendationTitle: "추천 분리유청 파우더",
+          recommendationNote: "분리유청(WPI) 위주 제품을 1회 단백질 순으로 보여줍니다.",
+          comparisonTitle: "분리유청 파우더 비교",
+        },
+      },
+    },
+  },
+  {
+    id: "powder-plant",
+    slug: "powder-plant",
+    label: "식물성",
+    icon: "🌱",
+    kind: "ingredient",
+    categoryTargets: ["powder"],
+    routeMode: "category-query",
+    seoTitle: "식물성 단백질 파우더 추천 | ProteinLab",
+    seoDescription:
+      "대두·완두 등 식물성 단백질 파우더를 1회 단백질·칼로리·당류 기준으로 비교합니다.",
+    categories: {
+      powder: {
+        category: "powder",
+        quickLabel: "식물성",
+        quickIcon: "🌱",
+        quickOrder: 30,
+        filter: (product) => product.productType === "powder" && product.powderType === "plant",
+        recommend: (products) =>
+          sortPowderByProtein(products.filter((product) => product.productType === "powder" && product.powderType === "plant")),
+        landingCopy: {
+          recommendationTitle: "추천 식물성 파우더",
+          recommendationNote: "식물성 단백질 제품을 1회 단백질 순으로 보여줍니다.",
+          comparisonTitle: "식물성 파우더 비교",
+        },
+      },
+    },
+  },
+  {
+    id: "powder-senior",
+    slug: "powder-senior",
+    label: "시니어",
+    icon: "🧓",
+    kind: "ingredient",
+    categoryTargets: ["powder"],
+    routeMode: "category-query",
+    seoTitle: "시니어 단백질 파우더 추천 | ProteinLab",
+    seoDescription:
+      "중장년·시니어용 단백질 파우더를 1회 단백질·칼로리·당류 기준으로 비교합니다.",
+    categories: {
+      powder: {
+        category: "powder",
+        quickLabel: "시니어",
+        quickIcon: "🧓",
+        quickOrder: 40,
+        filter: (product) => product.productType === "powder" && product.powderType === "senior",
+        recommend: (products) =>
+          sortPowderByProtein(products.filter((product) => product.productType === "powder" && product.powderType === "senior")),
+        landingCopy: {
+          recommendationTitle: "추천 시니어 파우더",
+          recommendationNote: "시니어용 제품을 1회 단백질 순으로 보여줍니다.",
+          comparisonTitle: "시니어 파우더 비교",
+        },
+      },
+    },
+  },
+  {
+    id: "powder-gainer",
+    slug: "powder-gainer",
+    label: "게이너",
+    icon: "🏋️",
+    kind: "ingredient",
+    categoryTargets: ["powder"],
+    routeMode: "category-query",
+    seoTitle: "게이너 단백질 파우더 추천 | ProteinLab",
+    seoDescription:
+      "체중 증량용 게이너 파우더를 1회 단백질·칼로리 기준으로 비교합니다.",
+    categories: {
+      powder: {
+        category: "powder",
+        quickLabel: "게이너",
+        quickIcon: "🏋️",
+        quickOrder: 50,
+        filter: (product) => product.productType === "powder" && product.powderType === "gainer",
+        recommend: (products) =>
+          sortPowderByProtein(products.filter((product) => product.productType === "powder" && product.powderType === "gainer")),
+        landingCopy: {
+          recommendationTitle: "추천 게이너",
+          recommendationNote: "게이너 제품을 1회 단백질 순으로 보여줍니다.",
+          comparisonTitle: "게이너 비교",
         },
       },
     },
@@ -1754,6 +1962,7 @@ export function buildCategoryCurationHref(category: CurationCategory, slug: stri
   if (category === "yogurt") return `/yogurt?curation=${slug}`;
   if (category === "shake") return `/shake?curation=${slug}`;
   if (category === "soymilk") return `/soymilk?curation=${slug}`;
+  if (category === "powder") return `/powder?curation=${slug}`;
   return `/?curation=${slug}`;
 }
 

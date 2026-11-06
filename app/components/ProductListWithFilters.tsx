@@ -699,7 +699,7 @@ function ProductListWithFiltersInner(props: ProductListWithFiltersInnerProps) {
         {filterBox}
 
         <div>
-          {productType !== "powder" ? <QuickCuration productType={productType} variant="inline" className="mt-1.5 mb-1 md:mt-2 md:mb-2" /> : null}
+          <QuickCuration productType={productType} variant="inline" className="mt-1.5 mb-1 md:mt-2 md:mb-2" />
 
           {mobileSearchOpen ? (
         <div

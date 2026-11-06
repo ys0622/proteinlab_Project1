@@ -12,7 +12,7 @@ interface CurationPageProps {
   searchParams?: Promise<{ category?: string }>;
 }
 
-const CATEGORIES: CurationCategory[] = ["drink", "bar", "yogurt", "shake", "soymilk"];
+const CATEGORIES: CurationCategory[] = ["drink", "bar", "yogurt", "shake", "soymilk", "powder"];
 
 export const dynamicParams = true;
 
