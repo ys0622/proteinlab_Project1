@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import AffiliateDisclosure from "../components/AffiliateDisclosure";
 import CommercialAdSection from "../components/CommercialAdSection";
+import CategoryGuideLinks from "../components/CategoryGuideLinks";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import HeroSection from "../components/HeroSection";
@@ -10,9 +11,7 @@ import CategoryFaqSection, { getCategoryFaqs } from "../components/CategoryFaqSe
 import { getProductsByCategoryAsync } from "../lib/productData";
 import { getCategoryProductsWithCountsAsync } from "../lib/productCounts";
 import { formatProductLabel } from "../lib/productLabel";
-import { brandToSlug } from "../lib/brandHubs";
 import { applyCurationToCategoryProducts, getCurationDefinition, getQuickCurations } from "../lib/curationSystem";
-import newProductsRaw from "../data/newProducts.json";
 import GoldboxStrip from "../components/GoldboxStrip";
 import { getActiveGoldboxCards } from "../lib/activeGoldbox";
 
@@ -56,20 +55,6 @@ export default async function ShakePage() {
   const goldboxCards = (await getActiveGoldboxCards({ cacheOnly: true }).catch(() => ({ cards: [] }))).cards.filter((card) => card.href);
   const { products, categoryCounts, totalCount } =
     await getCategoryProductsWithCountsAsync("shake");
-  const recentlyAddedSlugs = new Set(
-    (newProductsRaw as Array<{ slug: string; addedAt: string }>)
-      .filter((item) => item.addedAt === "2026-09-30")
-      .map((item) => item.slug),
-  );
-  const recentlyAddedGroups = [...new Set(products
-    .filter((product) => product.slug && recentlyAddedSlugs.has(product.slug))
-    .map((product) => product.brand))]
-    .map((brand) => ({
-      brand,
-      products: products.filter(
-        (product) => product.brand === brand && product.slug && recentlyAddedSlugs.has(product.slug),
-      ),
-    }));
   const intentLinks = getQuickCurations("shake")
     .filter((item) => item.slug !== "popular")
     .map((item) => {
@@ -140,9 +125,6 @@ export default async function ShakePage() {
                 제품명만 나열하지 않고 단백질·당류·칼로리·식이섬유와 맛 계열을 기준으로 후보를 나눴습니다.
               </p>
             </div>
-            <Link href="/guides/product-selection-comparison/protein-shake-guide" className="text-sm font-semibold text-[var(--accent)] hover:underline">
-              쉐이크 선택 기준 보기
-            </Link>
           </div>
           <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
             {intentLinks.map((item) => (
@@ -162,64 +144,15 @@ export default async function ShakePage() {
           </div>
         </section>
 
-        <section className="mb-6 rounded-2xl border border-[#dfe8df] bg-[#f7fbf7] p-5 md:p-6">
-          <div className="flex flex-col gap-2 md:flex-row md:items-end md:justify-between">
-            <div>
-              <p className="text-xs font-semibold text-[var(--accent)]">2026년 9월 신규 등록</p>
-              <h2 className="mt-1 text-lg font-bold text-[var(--foreground)]">새로 비교할 수 있는 단백질 쉐이크 24종</h2>
-              <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">
-                딜라이트 프로젝트, 한손한끼, 매일한끼, 테이크핏 브레드밀, 스포식스 제품을 맛별 성분표와 함께 추가했습니다.
-              </p>
-            </div>
-            <Link href="/brands" className="text-sm font-semibold text-[var(--accent)] hover:underline">
-              전체 브랜드 보기
-            </Link>
-          </div>
-          <div className="mt-5 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-            {recentlyAddedGroups.map((group) => (
-              <div key={group.brand} className="rounded-xl border border-[#e4ebe4] bg-white p-4">
-                <Link
-                  href={`/brands/${brandToSlug(group.brand)}`}
-                  className="font-bold text-[var(--foreground)] hover:text-[var(--accent)] hover:underline"
-                >
-                  {group.brand} {group.products.length}종
-                </Link>
-                <ul className="mt-3 space-y-2">
-                  {group.products.map((product) => (
-                    <li key={product.slug}>
-                      <Link
-                        href={`/product/${product.slug}`}
-                        className="text-sm leading-5 text-[var(--foreground-muted)] hover:text-[var(--accent)] hover:underline"
-                      >
-                        {product.name}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
-          <div className="mt-5 flex flex-wrap gap-2 border-t border-[#dfe8df] pt-4">
-            <Link href="/guides/product-selection-comparison/protein-shake-new-products-2026" className="rounded-full bg-[#24543d] px-4 py-2 text-xs font-semibold text-white hover:bg-[#1d4633]">
-              신제품 24종 비교
-            </Link>
-            <Link href="/guides/product-selection-comparison/delight-project-shake-flavors" className="rounded-full border border-[#cadbcd] bg-white px-4 py-2 text-xs font-semibold text-[#24543d] hover:bg-[#eef7f1]">
-              딜라이트 프로젝트 8종
-            </Link>
-            <Link href="/guides/product-selection-comparison/hansonhankki-vs-maeilhankki-shake" className="rounded-full border border-[#cadbcd] bg-white px-4 py-2 text-xs font-semibold text-[#24543d] hover:bg-[#eef7f1]">
-              한손한끼 vs 매일한끼
-            </Link>
-            <Link href="/guides/product-selection-comparison/takefit-breadmeal-protein-shake" className="rounded-full border border-[#cadbcd] bg-white px-4 py-2 text-xs font-semibold text-[#24543d] hover:bg-[#eef7f1]">
-              테이크핏 브레드밀 4종
-            </Link>
-            <Link href="/guides/product-selection-comparison/protein-shake-flavor-guide" className="rounded-full border border-[#cadbcd] bg-white px-4 py-2 text-xs font-semibold text-[#24543d] hover:bg-[#eef7f1]">
-              맛별 쉐이크 추천
-            </Link>
-            <Link href="/guides/product-selection-comparison/protein-shake-nutrition-label-guide" className="rounded-full border border-[#cadbcd] bg-white px-4 py-2 text-xs font-semibold text-[#24543d] hover:bg-[#eef7f1]">
-              성분표 보는 법
-            </Link>
-          </div>
-        </section>
+        <CategoryGuideLinks
+          id="shake-guides"
+          title="단백질 쉐이크 고르는 가이드"
+          links={[
+            { href: "/guides/product-selection-comparison/protein-shake-top7", label: "단백질 쉐이크 추천 TOP 7" },
+            { href: "/guides/product-selection-comparison/protein-shake-guide", label: "단백질 쉐이크 고르는 법" },
+            { href: "/guides/product-selection-comparison/protein-drink-vs-protein-shake", label: "단백질 음료 vs 쉐이크" },
+          ]}
+        />
         <CommercialAdSection pageType="category" className="mt-6" />
       </main>
 
