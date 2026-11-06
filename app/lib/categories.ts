@@ -4,6 +4,8 @@ export type CatalogProductCategory = ProductCategory | "powder";
 export interface CategoryMeta {
   label: string;
   description: string;
+  /** 등록 기준 한 줄(카테고리 설명 팝업용). 자세한 기준은 /methodology */
+  criteria: string;
   order: number;
   href: string;
   icon: string;
@@ -12,42 +14,48 @@ export interface CategoryMeta {
 export const CATEGORY_META: Record<CatalogProductCategory, CategoryMeta> = {
   drink: {
     label: "음료",
-    description: "바로 마시는 단백질 RTD 음료 비교 · 등록 기준 1병 단백질 8g 이상 (두유는 별도 카테고리)",
+    description: "바로 마실 수 있는 단백질 RTD 음료 비교 (두유는 별도 카테고리)",
+    criteria: "1병 단백질 8g 이상",
     order: 1,
     href: "/drinks",
     icon: "/category-icons/drink-v2.jpg",
   },
   bar: {
     label: "바",
-    description: "간편하게 단백질을 보충하는 바 제품 비교 · 등록 기준 1개 단백질 5g 이상 (그 미만은 단백질 보조 간식으로 표시)",
+    description: "간편하게 단백질을 보충할 수 있는 바 형태 제품 비교",
+    criteria: "1개 단백질 5g 이상",
     order: 2,
     href: "/bars",
     icon: "/category-icons/bar-v2.jpg",
   },
   yogurt: {
     label: "요거트",
-    description: "그릭요거트, 드링킹 요거트 등 단백질을 강화한 요거트 비교 · 등록 기준 1개 단백질 5g 이상",
+    description: "그릭요거트, 드링킹 요거트 등 단백질 함량이 강화된 요거트 제품 비교",
+    criteria: "1개 단백질 5g 이상",
     order: 3,
     href: "/yogurt",
     icon: "/category-icons/yogurt-v2.jpg",
   },
   shake: {
     label: "쉐이크",
-    description: "물·우유에 타 먹는 1회분 파우치·스틱 쉐이크 비교 · 등록 기준 1회 단백질 10g 이상 (통 제품은 파우더)",
+    description: "물·우유에 타 먹는 1회분 파우치·스틱 쉐이크 비교 (통 제품은 파우더)",
+    criteria: "1회 단백질 10g 이상",
     order: 4,
     href: "/shake",
     icon: "/category-icons/shake-v2.jpg",
   },
   soymilk: {
     label: "두유",
-    description: "소포장 두유를 1팩 단백질(g) 기준으로 비교 · 등록 기준 5g 이상 (고단백 11g+ / 강화 8~10g / 일반 5~7g)",
+    description: "250mL 이하 소포장 두유를 1팩 단백질 기준으로 비교",
+    criteria: "1팩 단백질 5g 이상",
     order: 5,
     href: "/soymilk",
     icon: "/category-icons/soymilk-v2.jpg",
   },
   powder: {
     label: "파우더",
-    description: "스쿱으로 덜어 먹는 통·봉지 단백질 파우더를 1회 제공량의 단백질·함량·당류·칼로리 기준으로 비교 · 등록 기준 1회 단백질 10g 이상",
+    description: "스쿱으로 덜어 먹는 통·봉지 단백질 파우더 비교",
+    criteria: "1회 단백질 10g 이상",
     order: 6,
     href: "/powder",
     icon: "/category-icons/powder-v2.jpg",

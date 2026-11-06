@@ -42,9 +42,13 @@ function CategoryInfoPanel({
             <p className="mt-0.5 text-xs leading-5 text-[var(--foreground-muted)]">
               {meta.description}
             </p>
+            <p className="mt-0.5 text-[11px] leading-4 text-[var(--accent)]">등록 기준 · {meta.criteria}</p>
           </div>
         );
       })}
+      <Link href="/methodology" className="block pt-1 text-[11px] font-semibold text-[var(--accent)] underline-offset-2 hover:underline">
+        카테고리별 등록 기준 자세히 →
+      </Link>
     </div>
   );
 }
@@ -88,14 +92,14 @@ export default function CategoryTabs({
 
   const wrapperClassName = useMemo(() => {
     const stickyClass = stickyMobile
-      ? "sticky top-14 z-30 -mx-4 bg-white/95 px-4 py-1.5 backdrop-blur md:static md:mx-0 md:bg-transparent md:px-0 md:py-0 md:backdrop-blur-0"
+      ? "sticky top-14 z-30 -mx-4 bg-white/95 px-4 py-1.5 backdrop-blur md:relative md:top-auto md:mx-0 md:bg-transparent md:px-0 md:py-0 md:backdrop-blur-0"
       : "";
     return [stickyClass, className].filter(Boolean).join(" ");
   }, [className, stickyMobile]);
 
   return (
     <div className={wrapperClassName}>
-      <div className="relative">
+      <div className="relative z-40">
         <div className="flex items-center">
           <nav
             ref={navRef}
@@ -164,8 +168,10 @@ export default function CategoryTabs({
                 </button>
 
                 {desktopInfoOpen ? (
-                  <div className="absolute bottom-full right-0 z-[100] mb-3 hidden w-[320px] rounded-xl border border-[var(--border)] bg-white p-3 shadow-lg md:block">
-                    <CategoryInfoPanel counts={counts} hiddenCategories={hiddenCategories} />
+                  <div className="absolute right-0 top-full z-[100] hidden pt-2 md:block">
+                    <div className="w-[320px] rounded-xl border border-[var(--border)] bg-white p-3 shadow-lg">
+                      <CategoryInfoPanel counts={counts} hiddenCategories={hiddenCategories} />
+                    </div>
                   </div>
                 ) : null}
               </div>
@@ -181,7 +187,7 @@ export default function CategoryTabs({
               className="fixed inset-0 z-[90] cursor-default"
               onClick={() => setMobileInfoOpen(false)}
             />
-            <div className="absolute right-0 top-full z-[100] mt-2 w-[300px] rounded-xl border border-[var(--border)] bg-white p-3 shadow-lg md:hidden">
+            <div className="absolute left-0 top-full z-[100] mt-2 w-[min(300px,calc(100vw-2rem))] rounded-xl border border-[var(--border)] bg-white p-3 shadow-lg md:hidden">
               <CategoryInfoPanel counts={counts} hiddenCategories={hiddenCategories} />
             </div>
           </>
