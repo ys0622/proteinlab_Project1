@@ -612,7 +612,7 @@ export default function ProductCard({
                 }
               />
             </div>
-            {slug && productType !== "powder" ? (
+            {slug ? (
               <div className="flex shrink-0 items-center gap-1">
                 <ActionTooltip label="비교 담기">
                   <CompareButton slug={slug} detailHref={detailHref} compact />

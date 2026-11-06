@@ -1,4 +1,5 @@
 import type { ProductDetailProps } from "../data/productTypes";
+import { getPowderProteinPercentage } from "./productFilters";
 import { formatSugar } from "./sugarLabel";
 
 export type CompareColumnId =
@@ -6,6 +7,9 @@ export type CompareColumnId =
   | "manufacturer"
   | "package"
   | "capacity"
+  | "servingSizeG"
+  | "proteinPercentage"
+  | "servingsPerContainer"
   | "proteinSource"
   | "proteinPerServing"
   | "bcaa"
@@ -43,6 +47,29 @@ export const COMPARE_COLUMNS: CompareColumnDef[] = [
     highlight: null,
   },
   { id: "capacity", label: "용량", getValue: (p) => p.capacity, highlight: null },
+  {
+    id: "servingSizeG",
+    label: "1회 제공량(g)",
+    getValue: (p) => (p.servingSizeG != null ? `${p.servingSizeG}g` : "-"),
+    highlight: null,
+  },
+  {
+    id: "proteinPercentage",
+    label: "단백질 함량(%)",
+    getValue: (p) =>
+      p.servingSizeG != null && p.servingSizeG > 0
+        ? `${getPowderProteinPercentage(p).toFixed(1)}%`
+        : "-",
+    highlight: "higher",
+    toNumber: toNumericValue,
+  },
+  {
+    id: "servingsPerContainer",
+    label: "한 통 회분",
+    getValue: (p) =>
+      p.servingsPerContainer != null ? `${p.servingsPerContainer}회분` : "-",
+    highlight: null,
+  },
   { id: "proteinSource", label: "단백질 원료", getValue: (p) => p.proteinSource ?? "-", highlight: null },
   {
     id: "proteinPerServing",

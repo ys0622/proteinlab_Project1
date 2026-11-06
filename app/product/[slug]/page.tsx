@@ -38,6 +38,7 @@ import { getAllProducts, getNutritionDetail } from "../../data/products";
 import { getAllCompareLandings } from "../../data/compareLandings";
 import { compareLandingHref as canonicalCompareHref, compareNoindexSlugs } from "../../data/compareCanonicalOverrides";
 import { brandToSlug } from "../../lib/brandHubs";
+import productEditorialData from "../../data/productEditorial.json";
 import { BAR_MIN_PROTEIN_G, getCategoryHref, getCategoryLabel, isProteinSnackBar } from "../../lib/categories";
 import {
   getAllStaticProducts,
@@ -166,6 +167,16 @@ function getShakePositioning(product: ProductDetailProps) {
   }
   return "운동보충형";
 }
+
+// 제품별 고유 설명(성분표·데이터로 계산한 근거만, sources는 내부 기록용이라 화면에 내지 않는다).
+type ProductEditorial = {
+  summary: string;
+  points: string[];
+  goodFor: string[];
+  watchOut: string[];
+  compareSlugs: string[];
+};
+const PRODUCT_EDITORIAL = productEditorialData as unknown as Record<string, ProductEditorial>;
 
 const PRODUCT_SEO_OVERRIDES: Record<string, { title: string; description: string }> = {
   "labnosh-protein-perfect-choco-350": {
@@ -586,6 +597,10 @@ export default async function ProductDetailPage({ params }: PageProps) {
   const isShake = product.productType === "shake";
   const isPowder = product.productType === "powder";
   const isSnackBar = isProteinSnackBar(product);
+  const editorial = product.slug ? PRODUCT_EDITORIAL[product.slug] : undefined;
+  const editorialCompare = (editorial?.compareSlugs ?? [])
+    .map((compareSlug) => getStaticProductBySlug(compareSlug))
+    .filter((item): item is NonNullable<typeof item> => Boolean(item?.slug));
   const productImageUrl = getProductImageUrl(product.slug);
   const productSpecImageUrl = getProductSpecImageUrl(product.slug, product.productType);
   const category = (product.productType ?? "drink") as "drink" | "bar" | "yogurt" | "shake" | "soymilk" | "powder";
@@ -1135,6 +1150,52 @@ export default async function ProductDetailPage({ params }: PageProps) {
               >
                 고단백 음료 부담·부작용 가이드 보기 →
               </Link>
+            </section>
+          ) : null}
+          {editorial ? (
+            <section className="mb-6 rounded-[24px] border bg-white p-5 md:p-6" style={{ borderColor: "#E6DDCC", boxShadow: "0 8px 22px rgba(31,90,61,0.05)" }}>
+              <p className="mb-0.5 text-[12px] font-bold uppercase tracking-wider" style={{ color: "#1F5A3D" }}>성분표로 본 특징</p>
+              <h2 className="font-bold" style={{ fontSize: "17px", color: "#1E2A22" }}>{product.brand} {product.name} 한눈에 보기</h2>
+              <p className="mt-2 text-[14px] leading-7" style={{ color: "#3D4A41" }}>{editorial.summary}</p>
+              <ul className="mt-3 space-y-1.5">
+                {editorial.points.map((point) => (
+                  <li key={point} className="flex items-start gap-2 text-[13px] leading-6" style={{ color: "#3D4A41" }}>
+                    <span className="mt-0.5 shrink-0 font-bold" style={{ color: "#1F5A3D" }}>·</span>
+                    <span>{point}</span>
+                  </li>
+                ))}
+              </ul>
+              <div className="mt-4 grid gap-3 sm:grid-cols-2">
+                <div className="rounded-2xl px-4 py-3" style={{ background: "#F3F8F4" }}>
+                  <p className="text-[12px] font-bold" style={{ color: "#1F5A3D" }}>이런 분께 맞아요</p>
+                  <ul className="mt-1 space-y-1">
+                    {editorial.goodFor.map((item) => (
+                      <li key={item} className="text-[13px] leading-6" style={{ color: "#3D4A41" }}>· {item}</li>
+                    ))}
+                  </ul>
+                </div>
+                <div className="rounded-2xl px-4 py-3" style={{ background: "#FBF6EC" }}>
+                  <p className="text-[12px] font-bold" style={{ color: "#8A5A1D" }}>고르기 전에 확인할 점</p>
+                  <ul className="mt-1 space-y-1">
+                    {editorial.watchOut.map((item) => (
+                      <li key={item} className="text-[13px] leading-6" style={{ color: "#3D4A41" }}>· {item}</li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+              {editorialCompare.length > 0 ? (
+                <p className="mt-3 text-[13px] leading-6" style={{ color: "#5F6B61" }}>
+                  함께 비교해 볼 제품:{" "}
+                  {editorialCompare.map((item, index) => (
+                    <span key={item.slug}>
+                      {index > 0 ? ", " : null}
+                      <Link href={`/product/${item.slug}`} className="font-semibold underline" style={{ color: "#1F5A3D" }}>
+                        {item.brand} {item.name}
+                      </Link>
+                    </span>
+                  ))}
+                </p>
+              ) : null}
             </section>
           ) : null}
           {gradeLabels.length > 0 ? (

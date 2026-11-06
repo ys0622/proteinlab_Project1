@@ -93,20 +93,18 @@ export default function MobileStickyBuyButton({ coupangHref, brand, productName,
             </svg>
             찜
           </button>
-          {productType !== "powder" ? (
-            <button
-              type="button"
-              onClick={() => toggleCompare(slug)}
-              aria-pressed={comparing}
-              aria-label="비교에 담기"
-              className={`${sideButton} border-[#dedbd3] text-[#5f6b61]`}
-            >
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
-                <path d="M6 20V10M12 20V4M18 20v-6" />
-              </svg>
-              비교
-            </button>
-          ) : null}
+          <button
+            type="button"
+            onClick={() => toggleCompare(slug)}
+            aria-pressed={comparing}
+            aria-label="비교에 담기"
+            className={`${sideButton} border-[#dedbd3] text-[#5f6b61]`}
+          >
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
+              <path d="M6 20V10M12 20V4M18 20v-6" />
+            </svg>
+            비교
+          </button>
           {coupangHref ? (
             <a
               href={coupangHref}

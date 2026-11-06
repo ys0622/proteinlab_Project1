@@ -3,6 +3,7 @@ import { getAllCompareLandings } from "../data/compareLandings";
 import { compareLandingHref, compareNoindexSlugs } from "../data/compareCanonicalOverrides";
 import { getAllProducts } from "../data/products";
 import { getBrandSummary } from "../lib/brandHubs";
+import { BAR_MIN_PROTEIN_G } from "../lib/categories";
 
 const SITE_URL = "https://proteinlab.kr";
 
@@ -33,10 +34,19 @@ export async function GET() {
 - 원재료 조사는 식약처 식품안전나라 품목제조보고(원재료) 자료를 출처로 하며, 제조원 신고 시점 기준입니다.
 - 일부 링크는 쿠팡 파트너스 링크이며 구매 시 수수료가 발생할 수 있습니다.
 
+## 카테고리별 등록 기준 (성분표 기준, ${SITE_URL}/methodology)
+- 단백질 음료: 바로 마시는 RTD, 1병 단백질 8g 이상. 두유는 별도 카테고리.
+- 단백질 바: 1개 단백질 ${BAR_MIN_PROTEIN_G}g 이상. 기준 이전에 등록된 ${BAR_MIN_PROTEIN_G}g 미만 제품은 '단백질 보조 간식'으로 표시.
+- 단백질 쉐이크: 물·우유에 타 먹는 1회분 파우치·스틱, 1회 단백질 10g 이상. 통에 든 제품은 파우더로 분류.
+- 단백질 요거트: 단백질 강화·그릭 요거트, 1개 단백질 5g 이상.
+- 두유: 250mL 이하 소포장, 대두 기반, 1팩 단백질 g 표기 5g 이상. 고단백 11g 이상(1일 기준치 55g의 20%)·단백질 강화 8~10g·일반 5~7g.
+- 단백질 파우더: 스쿱으로 덜어 먹는 통·봉지 보충제, 1회 제공량 단백질 10g 이상.
+- 등급(A~D)은 음료·바·요거트·쉐이크에서 같은 카테고리 안 상대 순위로 매기고, 두유는 단백질 구간, 파우더는 1회 제공량 기준 순위로 비교합니다.
+
 ## 주요 페이지
 - [전체 제품 목록](${SITE_URL}/products): 등록된 모든 제품을 카테고리별로 모았습니다.
 - [단백질 음료](${SITE_URL}/drinks), [단백질 바](${SITE_URL}/bars), [단백질 요거트](${SITE_URL}/yogurt), [단백질 쉐이크](${SITE_URL}/shake), [두유](${SITE_URL}/soymilk), [단백질 파우더](${SITE_URL}/powder): 카테고리별 비교와 필터
-- [단백질 파우더 추천 TOP 10](${SITE_URL}/guides/product-selection-comparison/protein-powder-top10): 등록 파우더 58종 중 게이너·식사대용 제외, 단백질 함량(1회 제공량 대비 %) 높은 순·같으면 당류 낮은 순, 1위 원데이뉴트리션 WPI 90%(27g/30g, 당류 0g), TOP 10 함량 77.8~90%, 해외 직구 5종, 당류 미표시 제품은 순위 제외
+- [단백질 파우더 추천 TOP 10](${SITE_URL}/guides/product-selection-comparison/protein-powder-top10): 등록 파우더 ${counts.powder}종 중 게이너·식사대용 제외, 단백질 함량(1회 제공량 대비 %) 높은 순·같으면 당류 낮은 순, 1위 원데이뉴트리션 WPI 90%(27g/30g, 당류 0g), TOP 10 함량 77.8~90%, 해외 직구 5종, 당류 미표시 제품은 순위 제외
 - [WPI·WPC·분리대두 단백질 파우더 차이](${SITE_URL}/guides/product-selection-comparison/wpi-wpc-isp-powder-guide): 유형별 평균 단백질 함량 아이솔레이트 79.1%(14종)·웨이 72.7%(11종)·식물성 74.2%(3종)·혼합 65.8%(14종), 평균 당류(표시 제품) 0.4·2·0.5·1.5g
 - [목적별 단백질 파우더 — 시니어·식사대용·게이너·운동용](${SITE_URL}/guides/product-selection-comparison/protein-powder-by-purpose): 1회 제공량 운동용 12.5~55g·시니어 30~40g·식사대용 35~45g·게이너 120~300g, 게이너 1회 417.7~1178kcal(1,000kcal 초과 3종), 시니어 7종 중 6종은 당류 미표시
 - [단백질 보충제 1스쿱 단백질 비교](${SITE_URL}/guides/product-selection-comparison/protein-powder-scoop-guide): 게이너를 뺀 등록 파우더의 1회 제공량(1스쿱 기준)·1회 단백질·단백질 함량·열량·한 통 회분을 단백질 많은 순으로 비교

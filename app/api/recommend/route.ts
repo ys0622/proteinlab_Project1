@@ -3,11 +3,12 @@ import type { ProductDetailProps } from "../../data/products";
 import { getDensityValue, getDietScore, getPerformanceScore } from "../../lib/gradeCalculation";
 import { getProductImageUrl } from "../../lib/productImage";
 import { getProductsByCategoryAsync } from "../../lib/productData";
+import { getPowderProteinPercentage } from "../../lib/productFilters";
 import { hasNoPurchasableCoupangLink } from "../../lib/purchaseLinks";
 import { isComparableServing } from "../../lib/servingScope";
 
 interface RecommendRequest {
-  category: "drink" | "bar" | "yogurt" | "shake" | "soymilk";
+  category: "drink" | "bar" | "yogurt" | "shake" | "soymilk" | "powder";
   purpose: string;
   priority: "protein" | "low_sugar" | "low_calorie" | "density" | "";
   conditions: string[];
@@ -20,6 +21,10 @@ interface ScoredProduct {
 }
 
 function getSubtypeKey(product: ProductDetailProps) {
+  if (product.productType === "powder") {
+    return `powder-${product.powderType ?? "default"}`;
+  }
+
   if (product.productType === "yogurt") {
     if (isGreekYogurt(product)) return "yogurt-greek";
     if (isDrinkingYogurt(product)) return "yogurt-drinking";
@@ -190,6 +195,30 @@ function applyConditionPrefilters(products: ProductDetailProps[], req: Recommend
     }
   }
 
+  if (req.category === "powder") {
+    if (req.purpose === "meal_senior") {
+      filtered = filtered.filter(
+        (product) => product.powderType === "meal" || product.powderType === "senior",
+      );
+    }
+    if (req.purpose === "gainer") {
+      filtered = filtered.filter((product) => product.powderType === "gainer");
+    }
+    if (req.conditions.includes("low_lactose")) {
+      filtered = filtered.filter(
+        (product) => product.powderType === "isolate" || product.powderType === "plant",
+      );
+    }
+    if (req.conditions.includes("plant_only")) {
+      filtered = filtered.filter((product) => product.powderType === "plant");
+    }
+    if (req.conditions.includes("sugar_0_1")) {
+      filtered = filtered.filter(
+        (product) => typeof product.sugar === "number" && product.sugar <= 1,
+      );
+    }
+  }
+
   return filtered;
 }
 
@@ -232,7 +261,11 @@ function applyPriorityScore(item: ScoredProduct, priority: RecommendRequest["pri
     return { ...item, score: item.score + Math.max(0, 300 - calories), reason: `${item.reason} 칼로리 부담이 낮은 제품을 우선으로 반영했습니다.` };
   }
   if (priority === "density") {
-    return { ...item, score: item.score + density * 8, reason: `${item.reason} 단백질 밀도를 우선으로 반영했습니다.` };
+    const densityScore = item.product.productType === "powder"
+      ? getPowderProteinPercentage(item.product)
+      : density;
+    const densityLabel = item.product.productType === "powder" ? "단백질 함량 비율" : "단백질 밀도";
+    return { ...item, score: item.score + densityScore * 8, reason: `${item.reason} ${densityLabel}을 우선으로 반영했습니다.` };
   }
 
   return item;
@@ -534,7 +567,49 @@ function scoreSoymilkProduct(product: ProductDetailProps, req: RecommendRequest)
   };
 }
 
+function scorePowderProduct(product: ProductDetailProps, req: RecommendRequest): ScoredProduct {
+  const proteinPercentage = getPowderProteinPercentage(product);
+  const protein = product.proteinPerServing ?? 0;
+  const calories = product.calories ?? 999;
+  const sugar = product.sugar;
+  let score = proteinPercentage * 3 + protein;
+  const reasons: string[] = [];
+
+  if (req.purpose === "muscle") {
+    score += proteinPercentage * 5;
+    reasons.push(`1회 제공량 대비 단백질 함량이 ${proteinPercentage.toFixed(1)}%입니다`);
+  } else if (req.purpose === "diet") {
+    score += Math.max(0, 250 - calories) * 1.5;
+    if (typeof sugar === "number") score += Math.max(0, 10 - sugar) * 8;
+    reasons.push(`1회 ${Math.round(calories)}kcal${typeof sugar === "number" ? `, 당류 ${sugar}g` : ""}입니다`);
+  } else if (req.purpose === "meal_senior") {
+    score += product.powderType === "meal" || product.powderType === "senior" ? 100 : 0;
+    reasons.push(product.powderType === "meal" ? "식사대용 유형입니다" : "시니어 유형입니다");
+  } else if (req.purpose === "gainer") {
+    score += product.powderType === "gainer" ? 100 : 0;
+    reasons.push(`게이너 유형으로 1회 ${Math.round(calories)}kcal입니다`);
+  }
+
+  if (req.conditions.includes("low_lactose")) {
+    reasons.push(product.powderType === "plant" ? "식물성 유형입니다" : "아이솔레이트(WPI) 유형입니다");
+  }
+  if (req.conditions.includes("plant_only")) reasons.push("식물성 유형입니다");
+  if (req.conditions.includes("sugar_0_1") && typeof sugar === "number") {
+    reasons.push(`성분표 당류가 ${sugar}g입니다`);
+  }
+
+  return {
+    product,
+    score,
+    reason: buildReason(
+      reasons,
+      `1회 단백질 ${protein}g, 단백질 함량 ${proteinPercentage.toFixed(1)}%입니다`,
+    ),
+  };
+}
+
 function scoreProduct(product: ProductDetailProps, req: RecommendRequest): ScoredProduct {
+  if (req.category === "powder") return scorePowderProduct(product, req);
   if (req.category === "soymilk") return scoreSoymilkProduct(product, req);
   if (req.category === "bar") return scoreBarProduct(product, req);
   if (req.category === "yogurt") return scoreYogurtProduct(product, req);
@@ -542,17 +617,30 @@ function scoreProduct(product: ProductDetailProps, req: RecommendRequest): Score
   return scoreDrinkProduct(product, req);
 }
 
-function getPurposeLabel(value: string) {
+function getPurposeLabel(category: RecommendRequest["category"], value: string) {
+  if (category === "powder") {
+    const powderMap: Record<string, string> = {
+      muscle: "운동 후 근육",
+      diet: "체중 관리",
+      meal_senior: "식사대용·시니어",
+      gainer: "체중 증가·게이너",
+    };
+    return powderMap[value] ?? value;
+  }
+
   const map: Record<string, string> = {
     muscle: "근성장·벌크업",
     diet: "다이어트·체중 감량",
     daily: "일상 간편식 보충",
     recovery: "운동 회복·컨디션",
+    meal_senior: "식사대용·시니어",
+    gainer: "체중 증가·게이너",
   };
   return map[value] ?? value;
 }
 
-function getPriorityLabel(value: RecommendRequest["priority"]) {
+function getPriorityLabel(category: RecommendRequest["category"], value: RecommendRequest["priority"]) {
+  if (category === "powder" && value === "density") return "단백질 함량 우선";
   const map: Record<string, string> = {
     protein: "단백질 함량 우선",
     low_sugar: "당류 부담 우선",
@@ -602,12 +690,32 @@ function getConditionLabel(category: RecommendRequest["category"], value: string
       blackbean: "검은콩",
       density: "단백질 밀도",
     },
+    powder: {
+      low_lactose: "WPI·식물성",
+      plant_only: "식물성만",
+      sugar_0_1: "당류 0~1g",
+    },
   };
 
   return map[category][value] ?? value;
 }
 
 function getCategoryTips(req: RecommendRequest) {
+  if (req.category === "powder") {
+    return [
+      {
+        icon: "🥄",
+        title: "1회 제공량을 함께 확인",
+        desc: "스쿱 크기가 제품마다 달라 1회 단백질 g과 단백질 함량 비율을 함께 비교하는 편이 좋습니다.",
+      },
+      {
+        icon: "📦",
+        title: "한 통 회분 확인",
+        desc: "용기 중량만 보지 말고 표시된 1회 제공량과 한 통 회분을 함께 확인하세요.",
+      },
+    ];
+  }
+
   if (req.category === "bar") {
     return [
       {
@@ -684,6 +792,36 @@ function getCategoryTips(req: RecommendRequest) {
 
 function getTips(req: RecommendRequest) {
   const tips: { icon: string; title: string; desc: string }[] = [...getCategoryTips(req)];
+
+  if (req.category === "powder") {
+    if (req.purpose === "muscle") {
+      tips.push({
+        icon: "📊",
+        title: "단백질 g과 함량을 구분",
+        desc: "1회 단백질 g은 섭취량, 단백질 함량(%)은 파우더 중 단백질 비율을 보여주는 값입니다.",
+      });
+    } else if (req.purpose === "diet") {
+      tips.push({
+        icon: "🔎",
+        title: "당류와 칼로리 확인",
+        desc: "체중 관리 목적에서는 성분표의 1회 당류와 칼로리를 함께 비교하세요.",
+      });
+    } else if (req.purpose === "meal_senior") {
+      tips.push({
+        icon: "🥣",
+        title: "제품 유형부터 확인",
+        desc: "식사대용과 시니어 유형은 일반 웨이 파우더와 영양 구성이 달라 같은 유형 안에서 비교합니다.",
+      });
+    } else if (req.purpose === "gainer") {
+      tips.push({
+        icon: "📈",
+        title: "게이너끼리 비교",
+        desc: "게이너 유형 안에서 1회 제공량, 단백질, 당류, 칼로리를 함께 확인하세요.",
+      });
+    }
+
+    return tips.slice(0, 4);
+  }
 
   if (req.purpose === "muscle") {
     tips.push({
@@ -776,8 +914,10 @@ export async function POST(request: Request) {
         volume: product.capacity,
         protein: product.proteinPerServing,
         calories: product.calories ?? 0,
-        sugar: product.sugar ?? 0,
+        sugar: product.sugar ?? (body.category === "powder" ? null : 0),
         density: product.density ?? getDensityValue(product).toFixed(1),
+        servingSizeG: product.servingSizeG ?? null,
+        powderType: product.powderType ?? null,
         gradeValue,
         reason: item.reason,
         detailPath: `/product/${product.slug}`,
@@ -800,8 +940,8 @@ export async function POST(request: Request) {
     });
 
     const profileChips = [
-      getPurposeLabel(body.purpose),
-      getPriorityLabel(body.priority),
+      getPurposeLabel(body.category, body.purpose),
+      getPriorityLabel(body.category, body.priority),
       ...body.conditions.map((condition) => getConditionLabel(body.category, condition)),
     ];
 

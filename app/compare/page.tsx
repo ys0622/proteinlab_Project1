@@ -95,6 +95,9 @@ export default function ComparePage() {
   } | null>(null);
   const [visibleIds, setVisibleIds] = useState<CompareColumnId[]>([
     "proteinSource",
+    "servingSizeG",
+    "proteinPercentage",
+    "servingsPerContainer",
     "proteinPerServing",
     "bcaa",
     "calories",
@@ -128,7 +131,10 @@ export default function ComparePage() {
   }, []);
 
   const quickCurationChips = useMemo(
-    () => getQuickCurations(pickerCategory as CurationCategory).filter((item) => item.slug !== "popular"),
+    () =>
+      pickerCategory === "powder"
+        ? []
+        : getQuickCurations(pickerCategory as CurationCategory).filter((item) => item.slug !== "popular"),
     [pickerCategory],
   );
 
@@ -192,7 +198,7 @@ export default function ComparePage() {
     [allProducts, pickerCategory],
   );
   const pickerCurationFilter = useMemo(() => {
-    if (!pickerCurationSlug) return null;
+    if (!pickerCurationSlug || pickerCategory === "powder") return null;
     const curation = getCurationDefinition(pickerCurationSlug);
     const categoryConfig = curation?.categories[pickerCategory as CurationCategory];
     return categoryConfig?.filter ?? null;
@@ -287,7 +293,21 @@ export default function ComparePage() {
             ? "단백질 쉐이크를 단백질 함량, 당류, 식이섬유, 용도 기준으로 비교합니다. 식사대용인지 운동 후 보완용인지 구분하기 쉽게 정리했습니다."
             : selectedCategory === "soymilk"
               ? "두유를 1팩 단백질, 당류, 칼로리 기준으로 비교합니다. 플레인과 검은콩, 저당 제품 차이를 한눈에 볼 수 있게 정리했습니다."
-              : "단백질 음료, 바, 요거트, 쉐이크, 두유를 최대 3개까지 한 화면에서 비교합니다.";
+              : selectedCategory === "powder"
+                ? "단백질 파우더를 1회 제공량 단백질 g, 단백질 함량(%), 당류, 칼로리 기준으로 비교합니다. 스쿱 크기와 한 통 회분도 함께 확인할 수 있습니다."
+                : "단백질 음료, 바, 요거트, 쉐이크, 두유, 파우더를 최대 3개까지 한 화면에서 비교합니다.";
+
+  const powderOnlyColumnIds = new Set<CompareColumnId>([
+    "servingSizeG",
+    "proteinPercentage",
+    "servingsPerContainer",
+  ]);
+  const comparisonVisibleIds = visibleIds.filter(
+    (id) => selectedCategory === "powder" || !powderOnlyColumnIds.has(id),
+  );
+  const availableColumns = COMPARE_COLUMNS.filter(
+    (column) => selectedCategory === "powder" || !powderOnlyColumnIds.has(column.id),
+  );
 
   if (products.length === 0) {
     return (
@@ -310,6 +330,7 @@ export default function ComparePage() {
                   { value: "yogurt", label: "요거트" },
                   { value: "shake", label: "쉐이크" },
                   { value: "soymilk", label: "두유" },
+                  { value: "powder", label: "파우더" },
                 ] as const
               ).map((tab) => {
                 const active = pickerCategory === tab.value;
@@ -324,7 +345,7 @@ export default function ComparePage() {
                       setPickerBrand("all");
                       setPickerCurationSlug(null);
                     }}
-                    className="rounded-full px-3.5 py-1.5 text-sm font-semibold transition-colors"
+                    className="rounded-full px-3 py-1.5 text-[13px] font-semibold transition-colors sm:px-3.5 sm:text-sm"
                     style={
                       active
                         ? { background: "var(--accent)", color: "#fff" }
@@ -532,7 +553,7 @@ export default function ComparePage() {
         <div className="flex flex-col gap-4 md:gap-6">
           <CompareSummary
             products={products}
-            visibleColumnIds={visibleIds}
+            visibleColumnIds={comparisonVisibleIds}
             onChipSelect={handleSummaryChipSelect}
           />
 
@@ -541,7 +562,7 @@ export default function ComparePage() {
               표시 항목 선택
             </p>
             <div className="-mx-4 flex gap-2 overflow-x-auto px-4 pb-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:mx-0 md:flex-wrap md:overflow-visible md:px-0">
-              {COMPARE_COLUMNS.map((col) => {
+              {availableColumns.map((col) => {
                 const on = visibleIds.includes(col.id);
                 const isFocused = focusedColumnId === col.id;
 
@@ -568,7 +589,7 @@ export default function ComparePage() {
             </div>
           </div>
 
-          <CompareTable products={products} visibleColumnIds={visibleIds} />
+          <CompareTable products={products} visibleColumnIds={comparisonVisibleIds} />
 
           <CompareInfoSections />
         </div>

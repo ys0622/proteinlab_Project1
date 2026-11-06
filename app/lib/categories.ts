@@ -58,7 +58,7 @@ export const ALL_CATEGORY_IDS = (Object.keys(CATEGORY_META) as CatalogProductCat
   (a, b) => CATEGORY_META[a].order - CATEGORY_META[b].order,
 );
 
-/** 기존 랭킹·추천·트렌딩은 파우더를 지원하지 않으므로 기존 5개만 유지한다. */
+/** 기존 랭킹·트렌딩 등 ProductCategory 기반 화면은 파우더를 지원하지 않으므로 기존 5개만 유지한다. 추천은 CatalogProductCategory를 사용한다. */
 export const ORDERED_CATEGORY_IDS: ProductCategory[] = ALL_CATEGORY_IDS.filter(
   (category): category is ProductCategory => category !== "powder",
 );

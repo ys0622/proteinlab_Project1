@@ -12,7 +12,7 @@ export const dynamic = "force-dynamic";
 export const metadata = {
   title: "단백질 제품 맞춤 추천 — 목적별·조건별로 바로 좁히기",
   description:
-    "저당·고단백·식사대용 등 내 조건에 맞는 단백질 음료, 바, 요거트, 쉐이크를 빠르게 추려드립니다. 목적만 선택하면 바로 제품 목록이 나옵니다.",
+    "저당·고단백·식사대용 등 내 조건에 맞는 단백질 음료, 바, 요거트, 쉐이크, 두유, 파우더를 빠르게 추려드립니다. 목적만 선택하면 바로 제품 목록이 나옵니다.",
   alternates: {
     canonical: "https://proteinlab.kr/recommend",
   },
@@ -20,7 +20,7 @@ export const metadata = {
     images: [{ url: "https://proteinlab.kr/opengraph-image", width: 1200, height: 630, alt: "ProteinLab 단백질 제품 비교" }],
     title: "단백질 제품 맞춤 추천 — 목적별·조건별로 바로 좁히기",
     description:
-      "저당·고단백·식사대용 등 내 조건에 맞는 단백질 음료, 바, 요거트, 쉐이크를 빠르게 추려드립니다. 목적만 선택하면 바로 제품 목록이 나옵니다.",
+      "저당·고단백·식사대용 등 내 조건에 맞는 단백질 음료, 바, 요거트, 쉐이크, 두유, 파우더를 빠르게 추려드립니다. 목적만 선택하면 바로 제품 목록이 나옵니다.",
     url: "https://proteinlab.kr/recommend",
     type: "website",
     locale: "ko_KR",
@@ -31,17 +31,18 @@ export const metadata = {
     card: "summary",
     title: "단백질 제품 맞춤 추천 — 목적별·조건별로 바로 좁히기",
     description:
-      "저당·고단백·식사대용 등 내 조건에 맞는 단백질 음료, 바, 요거트, 쉐이크를 빠르게 추려드립니다. 목적만 선택하면 바로 제품 목록이 나옵니다.",
+      "저당·고단백·식사대용 등 내 조건에 맞는 단백질 음료, 바, 요거트, 쉐이크, 두유, 파우더를 빠르게 추려드립니다. 목적만 선택하면 바로 제품 목록이 나옵니다.",
   },
 };
 
 export default async function RecommendPage() {
-  const [drinks, bars, yogurts, shakes, soymilks] = await Promise.all([
+  const [drinks, bars, yogurts, shakes, soymilks, powders] = await Promise.all([
     getProductsByCategoryAsync("drink"),
     getProductsByCategoryAsync("bar"),
     getProductsByCategoryAsync("yogurt"),
     getProductsByCategoryAsync("shake"),
     getProductsByCategoryAsync("soymilk"),
+    getProductsByCategoryAsync("powder"),
   ]);
   const categoryCounts = {
     drink: drinks.length,
@@ -49,6 +50,7 @@ export default async function RecommendPage() {
     yogurt: yogurts.length,
     shake: shakes.length,
     soymilk: soymilks.length,
+    powder: powders.length,
   };
 
   const breadcrumbJsonLd = {
@@ -66,8 +68,8 @@ export default async function RecommendPage() {
       answer: "선택한 조건을 모두 만족하는 제품만 추립니다. 조건이 너무 많으면 결과가 0개가 될 수 있어서, 가장 중요한 조건 1~2개로 먼저 좁힌 뒤 나머지는 결과 목록에서 직접 비교하는 것을 권합니다.",
     },
     {
-      question: "음료·바·요거트·쉐이크 중 뭘 골라야 할지 모르겠어요.",
-      answer: "휴대성과 간편함이 중요하면 음료나 바가, 포만감이 더 필요하면 쉐이크나 요거트가 잘 맞습니다. 목적을 먼저 고르면 카테고리는 자동으로 좁혀집니다.",
+      question: "음료·바·요거트·쉐이크·두유·파우더 중 뭘 골라야 할지 모르겠어요.",
+      answer: "휴대성과 간편함이 중요하면 음료나 바가, 물이나 우유에 타서 단백질 함량과 용도를 고르려면 파우더가 맞습니다. 각 카테고리에서 목적과 조건을 선택해 후보를 좁힐 수 있습니다.",
     },
     {
       question: "추천 결과는 어떤 기준으로 정렬되나요?",
@@ -95,7 +97,7 @@ export default async function RecommendPage() {
           <h2 className="text-lg font-bold text-[#16412D]">어떻게 추천하나요</h2>
           <ul className="mt-3 space-y-2 text-sm leading-6 text-[var(--foreground-muted)]">
             <li>• 저당·고단백·식사대용 같은 목적을 고르면, 그 조건에 맞는 제품만 걸러서 보여줍니다.</li>
-            <li>• 음료·바·요거트·쉐이크를 한 번에 비교하므로, 카테고리를 미리 정하지 않아도 됩니다.</li>
+            <li>• 음료·바·요거트·쉐이크·두유·파우더 중 카테고리를 고른 뒤 목적과 조건으로 후보를 좁힙니다.</li>
             <li>• 결과가 너무 많으면 조건을 하나 더 추가하고, 너무 적으면 하나를 빼서 다시 확인하세요.</li>
           </ul>
         </section>

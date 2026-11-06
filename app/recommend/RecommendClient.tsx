@@ -13,10 +13,10 @@ import {
   getCategoryDescription,
   getCategoryHref,
   getCategoryLabel,
-  type ProductCategory,
+  type CatalogProductCategory,
 } from "@/app/lib/categories";
 
-type ProductType = ProductCategory;
+type ProductType = CatalogProductCategory;
 type Step = 0 | 1 | 2 | 3 | "loading" | "result";
 
 interface QuizAnswers {
@@ -35,8 +35,10 @@ interface RecommendedProduct {
   volume: string;
   protein: number;
   calories: number;
-  sugar: number;
+  sugar: number | null;
   density: string;
+  servingSizeG: number | null;
+  powderType: ProductCardProps["powderType"] | null;
   gradeValue: Record<string, string>;
   reason: string;
   detailPath: string;
@@ -66,7 +68,7 @@ interface ConditionOption {
 }
 
 interface RecommendClientProps {
-  categoryCounts: Record<ProductType, number>;
+  categoryCounts: Partial<Record<ProductType, number>>;
 }
 
 const PURPOSE_OPTIONS = [
@@ -76,11 +78,25 @@ const PURPOSE_OPTIONS = [
   { icon: "🏃", label: "회복·컨디션 관리", desc: "운동 후 회복과 퍼포먼스 중심", value: "recovery" },
 ];
 
+const POWDER_PURPOSE_OPTIONS = [
+  { icon: "💪", label: "운동 후 근육", desc: "단백질 함량 비율이 높은 제품을 우선", value: "muscle" },
+  { icon: "⚖️", label: "체중 관리", desc: "당류와 칼로리가 낮은 제품을 우선", value: "diet" },
+  { icon: "🥣", label: "식사대용·시니어", desc: "식사대용 또는 시니어 유형에서 선택", value: "meal_senior" },
+  { icon: "📈", label: "체중 증가", desc: "게이너 유형에서 선택", value: "gainer" },
+];
+
 const PRIORITY_OPTIONS = [
   { icon: "💪", label: "단백질 함량", desc: "한 번에 보충하는 단백질을 우선", value: "protein" },
   { icon: "🍬", label: "당류 부담", desc: "당류가 낮은 제품을 우선", value: "low_sugar" },
   { icon: "🥗", label: "칼로리 부담", desc: "칼로리가 낮은 제품을 우선", value: "low_calorie" },
   { icon: "📈", label: "단백질 밀도", desc: "용량·열량 대비 단백질 효율을 우선", value: "density" },
+] as const;
+
+const POWDER_PRIORITY_OPTIONS = [
+  { icon: "💪", label: "1회 단백질", desc: "한 번에 섭취하는 단백질을 우선", value: "protein" },
+  { icon: "🍬", label: "당류 부담", desc: "1회 제공량의 당류가 낮은 제품을 우선", value: "low_sugar" },
+  { icon: "🥗", label: "칼로리 부담", desc: "1회 제공량의 칼로리가 낮은 제품을 우선", value: "low_calorie" },
+  { icon: "📊", label: "단백질 함량", desc: "1회 제공량 중 단백질 비율(%)을 우선", value: "density" },
 ] as const;
 
 const CONDITION_OPTIONS_BY_CATEGORY: Record<ProductType, ConditionOption[]> = {
@@ -122,6 +138,11 @@ const CONDITION_OPTIONS_BY_CATEGORY: Record<ProductType, ConditionOption[]> = {
     { icon: "🫘", label: "검은콩", desc: "고소한 검은콩 맛 선호", value: "blackbean" },
     { icon: "📈", label: "단백질 밀도", desc: "용량 대비 단백질 효율 중시", value: "density" },
   ],
+  powder: [
+    { icon: "🥛", label: "유당 부담 적게", desc: "WPI 또는 식물성 유형만", value: "low_lactose" },
+    { icon: "🌿", label: "식물성만", desc: "식물성 유형만", value: "plant_only" },
+    { icon: "🍬", label: "당류 0~1g", desc: "성분표 당류가 1g 이하인 제품만", value: "sugar_0_1" },
+  ],
 };
 
 const LOADING_STEPS = [
@@ -152,8 +173,10 @@ function toRecommendationCardProduct(
     tags: [],
     proteinPerServing: product.protein,
     calories: product.calories,
-    sugar: product.sugar,
+    sugar: product.sugar ?? undefined,
     density: product.density,
+    servingSizeG: product.servingSizeG ?? undefined,
+    powderType: product.powderType ?? undefined,
     productType: category,
     gradeTags,
     slug: product.id,
@@ -440,16 +463,18 @@ function ResultScreen({
   );
 }
 
-function getProductCount(category: ProductType, counts: Record<ProductType, number>) {
+function getProductCount(category: ProductType, counts: Partial<Record<ProductType, number>>) {
   return counts[category] ?? 0;
 }
 
-function getPurposeLabel(value: string) {
-  return PURPOSE_OPTIONS.find((item) => item.value === value)?.label ?? value;
+function getPurposeLabel(category: ProductType, value: string) {
+  const options = category === "powder" ? POWDER_PURPOSE_OPTIONS : PURPOSE_OPTIONS;
+  return options.find((item) => item.value === value)?.label ?? value;
 }
 
-function getPriorityLabel(value: QuizAnswers["priority"]) {
-  return PRIORITY_OPTIONS.find((item) => item.value === value)?.label ?? value;
+function getPriorityLabel(category: ProductType, value: QuizAnswers["priority"]) {
+  const options = category === "powder" ? POWDER_PRIORITY_OPTIONS : PRIORITY_OPTIONS;
+  return options.find((item) => item.value === value)?.label ?? value;
 }
 
 function getConditionLabel(category: ProductType, value: string) {
@@ -520,7 +545,7 @@ function getRecommendQuickLinks(category: ProductType, answers: QuizAnswers): Qu
         desc: "당류 3g 미만 두유만 모아 비교할 수 있습니다.",
       });
     }
-  } else {
+  } else if (category === "shake") {
     links.push({
       href: "/guides/product-selection-comparison/protein-shake-top7",
       title: "단백질 쉐이크 TOP 7 보기",
@@ -571,7 +596,6 @@ export default function RecommendClient({ categoryCounts }: RecommendClientProps
   }
 
   function handleCategoryChange(nextCategory: import("@/app/lib/categories").CatalogProductCategory) {
-    if (nextCategory === "powder") return;
     setCategory(nextCategory);
     setStep(0);
     setAnswers({ purpose: "", priority: "", conditions: [] });
@@ -605,8 +629,8 @@ export default function RecommendClient({ categoryCounts }: RecommendClientProps
   }
 
   const chips = [
-    answers.purpose ? getPurposeLabel(answers.purpose) : null,
-    answers.priority ? getPriorityLabel(answers.priority) : null,
+    answers.purpose ? getPurposeLabel(category, answers.purpose) : null,
+    answers.priority ? getPriorityLabel(category, answers.priority) : null,
     ...answers.conditions.map((condition) => getConditionLabel(category, condition)),
   ].filter(Boolean) as string[];
 
@@ -638,7 +662,6 @@ export default function RecommendClient({ categoryCounts }: RecommendClientProps
             onSelect={handleCategoryChange}
             stickyMobile
             className="mb-4"
-            hiddenCategories={["powder"]}
           />
 
           {step === 0 && (
@@ -710,7 +733,7 @@ export default function RecommendClient({ categoryCounts }: RecommendClientProps
                         <p className="text-lg font-bold text-[#1a1a1a]">주로 어떤 목적에서 {productLabel}을 찾고 있나요?</p>
                       </div>
                       <div className="space-y-2.5">
-                        {PURPOSE_OPTIONS.map((option) => (
+                        {(category === "powder" ? POWDER_PURPOSE_OPTIONS : PURPOSE_OPTIONS).map((option) => (
                           <OptionButton
                             key={option.value}
                             {...option}
@@ -730,7 +753,7 @@ export default function RecommendClient({ categoryCounts }: RecommendClientProps
                         <p className="text-lg font-bold text-[#1a1a1a]">가장 중요한 선택 기준은 무엇인가요?</p>
                       </div>
                       <div className="space-y-2.5">
-                        {PRIORITY_OPTIONS.map((option) => (
+                        {(category === "powder" ? POWDER_PRIORITY_OPTIONS : PRIORITY_OPTIONS).map((option) => (
                           <OptionButton
                             key={option.value}
                             {...option}
