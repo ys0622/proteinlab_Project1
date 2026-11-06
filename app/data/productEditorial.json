@@ -3,7 +3,7 @@
     "summary": "테이크핏 맥스 고소한맛은 250mL 팩에 단백질 24g을 담은 남양유업 음료입니다. 탄수화물 1g, 당류 0.7g, 지방 0.5g으로 단백질 외 성분이 적어 열량이 105kcal에 그칩니다.",
     "points": [
       "250mL 이하 음료 중 1팩 단백질이 이보다 많은 제품은 뉴케어 올프로틴 245mL 계열(25g)뿐입니다.",
-      "100kcal당 단백질 22.9g으로 음료 138종 중 13번째로 높습니다.",
+      "100kcal당 단백질 22.9g으로 등록된 음료 중 13번째로 높습니다.",
       "성분표에 류신 2,200mg 등 필수아미노산 함량이 따로 적혀 있습니다(BCAA 4,300mg).",
       "같은 맥스 라인의 초코·바나나·호박고구마도 단백질 24g, 105~106kcal로 수치가 거의 같아 맛만 고르면 됩니다."
     ],
@@ -23,11 +23,11 @@
       "drinkProductsData.json: proteinPerServing, calories, sugar, fat, sodium, bcaa, nutritionPerBottle.carbsG",
       "public/rtd-drink-spec/테이크핏 맥스 (고소한맛).png (류신 2,200mg, 탄수화물 1g)",
       "계산: capacity 250mL 이하 음료 중 proteinPerServing > 24 인 제품 목록",
-      "계산: proteinPerServing/calories×100 내림차순 순위(음료 138종)"
+      "계산: proteinPerServing/calories×100 내림차순 순위(음료 141종)"
     ]
   },
   "labnosh-protein-max-choco-400": {
-    "summary": "랩노쉬 프로틴 드링크 맥스 초코는 400mL 한 병에 단백질 52g이 들어 있습니다. 음료 138종 중 1병 단백질이 이보다 많은 제품은 2개뿐이고, 당류는 0g입니다.",
+    "summary": "랩노쉬 프로틴 드링크 맥스 초코는 400mL 한 병에 단백질 52g이 들어 있습니다. 등록된 음료 중 1병 단백질이 이보다 많은 제품은 2개뿐이고, 당류는 0g입니다.",
     "points": [
       "1병 단백질 52g은 닥터유 62g(450mL), 테이크핏 익스트림 60g(450mL) 다음입니다. 같은 맥스 딸기도 52g입니다.",
       "당류 0g, 지방 0.8g으로 열량 235kcal의 대부분이 단백질에서 옵니다.",
@@ -39,7 +39,7 @@
       "고함량이면서 당류 0g 제품을 찾는 분"
     ],
     "watchOut": [
-      "235kcal로 음료 중 열량이 높은 편입니다(138종 중 이보다 높은 제품 5개). 한 번에 다 마시기 부담되면 나눠 마시는 방법도 있습니다."
+      "235kcal로 등록된 음료 중 열량이 높은 편이며, 이보다 높은 제품은 5개입니다. 한 번에 다 마시기 부담되면 나눠 마시는 방법도 있습니다."
     ],
     "compareSlugs": [
       "labnosh-protein-max-strawberry-400",
@@ -49,7 +49,7 @@
     "sources": [
       "drinkProductsData.json: proteinPerServing, calories, sugar, fat, capacity",
       "public/rtd-drink-spec/labnosh-protein-max-choco-400.png (칼슘 700mg)",
-      "계산: proteinPerServing 내림차순(음료 138종), calories > 235 인 제품 수"
+      "계산: proteinPerServing 내림차순(음료 141종), calories > 235 인 제품 수"
     ]
   },
   "labnosh-protein-salted-caramel-350": {
@@ -64,7 +64,7 @@
       "단백질 20g대 후반, 열량 130kcal 안팎을 찾는 분"
     ],
     "watchOut": [
-      "나트륨이 480mg으로 음료 138종 중 이보다 많은 제품은 퍼펙트 초코(510mg) 하나뿐입니다. 나트륨을 줄이는 중이면 함께 비교해 보세요."
+      "나트륨이 480mg으로 등록된 음료 중 이보다 많은 제품은 퍼펙트 초코(510mg) 하나뿐입니다. 나트륨을 줄이는 중이면 함께 비교해 보세요."
     ],
     "compareSlugs": [
       "labnosh-protein-perfect-choco-350",
@@ -89,7 +89,7 @@
       "20g대 후반 단백질을 1병으로 채우려는 분"
     ],
     "watchOut": [
-      "나트륨 510mg은 음료 138종 중 가장 많습니다. 짠 음식을 줄이는 중이면 확인하세요."
+      "나트륨 510mg은 등록된 음료 중 가장 많습니다. 짠 음식을 줄이는 중이면 확인하세요."
     ],
     "compareSlugs": [
       "labnosh-protein-salted-caramel-350",
@@ -99,13 +99,13 @@
     "sources": [
       "drinkProductsData.json: proteinPerServing, calories, sugar, fat, sodium",
       "public/rtd-drink-spec/프로틴 드링크 퍼펙트 (초코).png (칼슘 180mg, 비타민 D 10μg, 아연 8.5mg)",
-      "계산: 음료 138종 sodium 최댓값, 같은 brand 퍼펙트 라인 calories 범위"
+      "계산: 음료 141종 sodium 최댓값, 같은 brand 퍼펙트 라인 calories 범위"
     ]
   },
   "takefit-monster-strawberry-350": {
-    "summary": "테이크핏 몬스터 딸기맛은 350mL 팩에 단백질 47g이 들어 있어 음료 138종 중 1병 단백질 6번째입니다. 같은 몬스터의 고소한맛·초코바나나맛(45g)보다 2g 많습니다.",
+    "summary": "테이크핏 몬스터 딸기맛은 350mL 팩에 단백질 47g이 들어 있어 등록된 음료 중 1병 단백질 6번째입니다. 같은 몬스터의 고소한맛·초코바나나맛(45g)보다 2g 많습니다.",
     "points": [
-      "100kcal당 단백질 23.0g으로 음료 138종 중 12번째로 높습니다.",
+      "100kcal당 단백질 23.0g으로 등록된 음료 중 12번째로 높습니다.",
       "성분표에 BCAA 9,000mg, EAA(9종) 19,000mg, 아르기닌 1,800mg이 따로 적혀 있습니다.",
       "칼슘 700mg(1일 기준치 100%)이 들어 있습니다.",
       "당류 1.2g, 탄수화물 1.5g입니다."
@@ -125,13 +125,13 @@
     "sources": [
       "drinkProductsData.json: proteinPerServing, calories, sugar, nutritionPerBottle(bcaaMg, eaaMg, arginineMg, calciumMg, carbsG)",
       "public/rtd-drink-spec/takefit-monster-strawberry-350.png",
-      "계산: proteinPerServing 내림차순, proteinPerServing/calories×100 내림차순(음료 138종)"
+      "계산: proteinPerServing 내림차순, proteinPerServing/calories×100 내림차순(음료 141종)"
     ]
   },
   "ottogi-dayprotein-choco-250": {
     "summary": "오뚜기 데이프로틴 초코맛은 250mL 팩에 단백질 21g, 135kcal인 음료입니다. 원재료에 농축우유단백분말과 분리우유단백분말이 표시된 우유 단백 음료입니다.",
     "points": [
-      "나트륨 90mg으로 음료 138종 중 100mg 미만인 18개에 들어갑니다.",
+      "나트륨 90mg으로 등록된 음료 중 100mg 미만인 18개에 들어갑니다.",
       "칼슘 550mg(1일 기준치 79%)이 들어 있습니다.",
       "당류 0.6g이며 탄수화물은 9g입니다.",
       "같은 데이프로틴 오곡맛(125kcal)·바나나맛(120kcal)도 단백질 21g입니다."
@@ -151,7 +151,7 @@
     "sources": [
       "drinkProductsData.json: proteinPerServing, calories, sugar, sodium, nutritionPerBottle.carbsG/calciumMg",
       "public/rtd-drink-spec/ottogi-dayprotein-choco-250-spec.png (원재료명, 칼슘 550mg 79%)",
-      "계산: 음료 138종 중 sodium < 100 인 제품 수, proteinPerServing/calories×100"
+      "계산: 음료 141종 중 sodium < 100 인 제품 수, proteinPerServing/calories×100"
     ]
   },
   "newcare-all-protein-blacksesame-245": {
@@ -180,7 +180,7 @@
     ]
   },
   "dryou-protein-62g-matcha-450": {
-    "summary": "닥터유 프로 단백질 드링크 62g 말차맛은 450mL에 단백질 62g으로, 음료 138종 중 1병 단백질이 가장 많습니다. 열량도 329kcal로 음료 중 가장 높습니다.",
+    "summary": "닥터유 프로 단백질 드링크 62g 말차맛은 450mL에 단백질 62g으로, 등록된 음료 중 1병 단백질이 가장 많습니다. 열량도 329kcal로 음료 중 가장 높습니다.",
     "points": [
       "2위인 테이크핏 익스트림(60g, 259kcal)보다 단백질 2g, 열량 70kcal 많습니다.",
       "성분표 기준 칼슘 800mg, BCAA 9,200mg입니다.",
@@ -192,7 +192,7 @@
       "식사 대신 열량이 있는 음료를 찾는 분"
     ],
     "watchOut": [
-      "100kcal당 단백질은 18.8g으로 음료 중 63번째입니다. 열량을 줄이려면 랩노쉬 맥스(52g, 235kcal)가 더 맞을 수 있습니다."
+      "100kcal당 단백질은 18.8g으로 음료 중 64번째입니다. 열량을 줄이려면 랩노쉬 맥스(52g, 235kcal)가 더 맞을 수 있습니다."
     ],
     "compareSlugs": [
       "takefit-extreme-450",
@@ -202,7 +202,7 @@
     "sources": [
       "drinkProductsData.json: proteinPerServing, calories, sugar, fat, bcaa, nutritionPerBottle.carbsG",
       "public/rtd-drink-spec/dryou-protein-62g-matcha-450-spec.png (칼슘 800mg)",
-      "계산: 음료 138종 proteinPerServing·calories 최댓값, proteinPerServing/calories×100 순위"
+      "계산: 음료 141종 proteinPerServing·calories 최댓값, proteinPerServing/calories×100 순위"
     ]
   },
   "danbaek-drink-doublechoco-350": {
@@ -260,14 +260,14 @@
     "points": [
       "닥터유 바 중 가장 큰 프로 단백질바(70g, 24~25g)와 비교하면 단백질은 3분의 1 수준이고 열량도 절반 이하입니다.",
       "당류는 6g입니다.",
-      "100kcal당 단백질은 5.0g으로 바 108종 중 낮은 편(86번째)입니다."
+      "100kcal당 단백질은 5.0g으로 등록된 바와 비교하면 낮은 편입니다."
     ],
     "goodFor": [
       "간식 한 개 분량으로 가볍게 먹고 싶은 분",
       "열량 200kcal 아래 견과 바를 찾는 분"
     ],
     "watchOut": [
-      "단백질 보충이 목적이면 바 108종의 중앙값(15g)보다 적다는 점을 감안하세요.",
+      "단백질 보충이 목적이면 등록된 바의 중앙값(15g)보다 적다는 점을 감안하세요.",
       "지방·나트륨 값과 성분표 이미지가 아직 등록되지 않았습니다."
     ],
     "compareSlugs": [
@@ -278,13 +278,13 @@
     "sources": [
       "barProductsData.json: proteinPerServing, calories, sugar, capacity (fat·sodium 미입력)",
       "성분표 이미지 없음(slugToBarSpec.json에 항목 없음) — 수치는 데이터 파일만 근거",
-      "계산: 바 108종 proteinPerServing 중앙값, proteinPerServing/calories×100 순위"
+      "계산: 바 115종 proteinPerServing 중앙값, proteinPerServing/calories×100 비교"
     ]
   },
   "dryou-proteinbar-pro-crunch": {
-    "summary": "닥터유 프로 단백질바 크런치는 70g짜리 큰 바로, 열량 355kcal는 바 108종 중 가장 높습니다. 단백질 24g보다 많은 바는 같은 닥터유 프로 3넛츠 크런치(25g) 하나입니다.",
+    "summary": "닥터유 프로 단백질바 크런치는 70g짜리 큰 바로, 열량 355kcal는 등록된 바 중 가장 높습니다. 단백질 24g보다 많은 바는 같은 닥터유 프로 3넛츠 크런치(25g) 하나입니다.",
     "points": [
-      "열량이 커서 100kcal당 단백질은 6.8g으로 바 108종 중 70번째입니다.",
+      "열량이 커서 100kcal당 단백질은 6.8g으로 등록된 바 중 78번째입니다.",
       "성분표 기준 탄수화물 22g, 지방 19g(포화지방 6g), 당류 9g입니다.",
       "BCAA 2,000mg(류신 1,000mg), 아르기닌 500mg이 따로 표시돼 있습니다.",
       "박스는 70g×8봉지(560g) 구성입니다."
@@ -304,14 +304,14 @@
     "sources": [
       "barProductsData.json: proteinPerServing, calories, sugar, fat, sodium, capacity",
       "public/bar-spec/프로 단백질바 (크런치).png (탄수화물 22g, 포화지방 6g 40%, BCAA·류신·아르기닌, 70g×8봉지)",
-      "계산: 바 108종 proteinPerServing·calories 내림차순"
+      "계산: 바 115종 proteinPerServing·calories 내림차순"
     ]
   },
   "marketo-nature-oh-granola-proteinbar-40": {
-    "summary": "마켓오네이처 오 그래놀라 단백질바는 40g에 단백질 6g, 183kcal입니다. 이름에 단백질바가 들어가지만 바 108종 중 단백질이 적은 편이고 당류는 12g입니다.",
+    "summary": "마켓오네이처 오 그래놀라 단백질바는 40g에 단백질 6g, 183kcal입니다. 이름에 단백질바가 들어가지만 등록된 바 중 단백질이 적은 편이고 당류는 12g입니다.",
     "points": [
-      "당류 12g은 바 108종 중 두 번째로 많습니다(가장 많은 제품 13g).",
-      "100kcal당 단백질은 3.3g으로 바 중 낮은 쪽(102번째)입니다.",
+      "당류 12g은 등록된 바 중 두 번째로 많습니다(가장 많은 제품 13g).",
+      "100kcal당 단백질은 3.3g으로 바 중 낮은 쪽(108번째)입니다.",
       "나트륨은 55mg으로 적은 편입니다.",
       "성분표 기준 탄수화물은 24g입니다."
     ],
@@ -330,13 +330,13 @@
     "sources": [
       "barProductsData.json: proteinPerServing, calories, sugar, fat, sodium",
       "public/bar-spec/오 그래놀라 단백질바 40g.png (탄수화물 24g)",
-      "계산: 바 108종 sugar 내림차순, proteinPerServing/calories×100 순위"
+      "계산: 바 115종 sugar 내림차순, proteinPerServing/calories×100 순위"
     ]
   },
   "proteinbangatgan-harudanbaekbar-jetchococake": {
     "summary": "프로틴방앗간 하루단백바 제트초코케이크는 40g에 단백질 12g, 148kcal입니다. 당류는 3g이고, 성분표에 식이섬유 3g이 표시돼 있습니다.",
     "points": [
-      "같은 하루단백바 흑임자(45g, 15g, 116.1kcal)는 100kcal당 단백질이 바 108종 중 가장 높습니다. 제트초코케이크는 8.1g입니다.",
+      "같은 하루단백바 흑임자(45g, 15g, 116.1kcal)는 100kcal당 단백질이 등록된 바 중 가장 높습니다. 제트초코케이크는 8.1g입니다.",
       "치즈베리(45g, 14g)는 당류 8g으로 제트초코케이크(3g)보다 많습니다.",
       "성분표 기준 지방 8g 중 포화지방 4g입니다."
     ],
@@ -355,11 +355,11 @@
     "sources": [
       "barProductsData.json: proteinPerServing, calories, sugar, fat, sodium",
       "public/bar-spec/하루단백바 (제트초코케이크).png (식이섬유 3g, 포화지방 4g)",
-      "계산: 바 108종 proteinPerServing/calories×100 내림차순"
+      "계산: 바 115종 proteinPerServing/calories×100 내림차순"
     ]
   },
   "myprotein-soft-caramel-choco": {
-    "summary": "마이프로틴 소프트 단백질바 카라멜 초코는 45g에 단백질 16g, 125kcal입니다. 100kcal당 단백질 12.8g으로 바 108종 중 두 번째로 높습니다.",
+    "summary": "마이프로틴 소프트 단백질바 카라멜 초코는 45g에 단백질 16g, 125kcal입니다. 100kcal당 단백질 12.8g으로 등록된 바 중 두 번째로 높습니다.",
     "points": [
       "당류 1g, 지방 2.6g입니다.",
       "성분표에 식이섬유 6.7g, 알룰로스 5g, 에리스리톨 3g이 따로 표시돼 있습니다.",
@@ -370,7 +370,7 @@
       "당류를 1g 안팎으로 맞추려는 분"
     ],
     "watchOut": [
-      "나트륨 220mg으로 나트륨 값이 있는 바 96종 중 이보다 많은 제품은 10개입니다.",
+      "나트륨 220mg으로 나트륨 값이 있는 바 108종 중 이보다 많은 제품은 12개입니다.",
       "에리스리톨·알룰로스가 들어 있어 많이 먹으면 배가 불편할 수 있는 분은 양을 확인하세요."
     ],
     "compareSlugs": [
@@ -381,11 +381,11 @@
     "sources": [
       "barProductsData.json: proteinPerServing, calories, sugar, fat, sodium",
       "public/bar-spec/소프트 단백질 (카라멜 초코).png (식이섬유 6.7g, 알룰로스 5g, 에리스리톨 3g)",
-      "계산: 바 108종 proteinPerServing/calories×100 내림차순, sodium 값이 있는 96종 중 sodium > 220 개수"
+      "계산: 바 115종 proteinPerServing/calories×100 내림차순, sodium 값이 있는 108종 중 sodium > 220 개수"
     ]
   },
   "post-proteinbar-mini": {
-    "summary": "포스트 단백질바 미니는 11g 한 개에 단백질 3g, 53kcal인 한입 크기 바입니다. 열량은 바 108종 중 가장 낮습니다.",
+    "summary": "포스트 단백질바 미니는 11g 한 개에 단백질 3g, 53kcal인 한입 크기 바입니다. 열량은 등록된 바 중 가장 낮습니다.",
     "points": [
       "성분표 기준 박스는 11g×21개(231g) 구성입니다.",
       "당류 2g, 지방 2.8g, 나트륨 45mg입니다.",
@@ -396,7 +396,7 @@
       "열량을 잘게 나눠 조절하고 싶은 분"
     ],
     "watchOut": [
-      "1개 단백질 3g은 바 108종 중 세 번째로 적습니다. 단백질 보충이 목적이면 여러 개를 먹어야 합니다."
+      "1개 단백질 3g은 등록된 바 중 네 번째로 적습니다. 단백질 보충이 목적이면 여러 개를 먹어야 합니다."
     ],
     "compareSlugs": [
       "post-proteinbar",
@@ -406,15 +406,15 @@
     "sources": [
       "barProductsData.json: proteinPerServing, calories, sugar, fat, sodium, capacity",
       "public/bar-spec/단백질바 미니.png (11g×21개 231g)",
-      "계산: 바 108종 calories 오름차순, proteinPerServing 오름차순"
+      "계산: 바 115종 calories 오름차순, proteinPerServing 오름차순"
     ]
   },
   "proteone-proteinshake-choco-40": {
-    "summary": "프로티원 초코맛은 프로티원 쉐이크 5가지 맛 중 단백질이 가장 많은 23g입니다. 40g 한 포의 열량은 128kcal이고, 쉐이크 112종 중 1포 단백질이 이보다 많은 제품은 10개입니다.",
+    "summary": "프로티원 초코맛은 프로티원 쉐이크 5가지 맛 중 단백질이 가장 많은 23g입니다. 40g 한 포의 열량은 128kcal이고, 등록된 쉐이크 중 1포 단백질이 이보다 많은 제품은 12개입니다.",
     "points": [
-      "100kcal당 단백질 18.0g으로 쉐이크 중 5번째로 높습니다. 당류 1g, 탄수화물 11g, 식이섬유 3g입니다.",
+      "100kcal당 단백질 18.0g으로 쉐이크 중 6번째로 높습니다. 당류 1g, 탄수화물 11g, 식이섬유 3g입니다.",
       "성분표에 칼슘 205mg, 비타민 C 63mg, 엽산 282μg 등 비타민·무기질이 함께 적혀 있습니다.",
-      "프로티원 다른 맛 중 커피맛은 단백질 22g, 108kcal로 쉐이크 중 열량이 가장 낮고, 딸기·흑임자·곡물맛은 20g입니다."
+      "프로티원 다른 맛 중 커피맛은 단백질 22g, 108kcal로 쉐이크 중 열량이 두 번째로 낮고, 딸기·흑임자·곡물맛은 20g입니다."
     ],
     "goodFor": [
       "열량 대비 단백질이 높은 파우치 쉐이크를 찾는 분",
@@ -431,13 +431,13 @@
     "sources": [
       "shakeProductsData.json: proteinPerServing, calories, sugar, nutritionPerBottle(carbsG, fiberG), nutritionBasis=per_pack",
       "public/shake-spec/프로티원 단백쉐이크 초코맛.png (칼슘 205mg, 비타민 C 63mg, 엽산 282μg)",
-      "계산: 쉐이크 112종 proteinPerServing/calories×100 내림차순, calories 오름차순"
+      "계산: 쉐이크 123종 proteinPerServing/calories×100 내림차순, calories 오름차순"
     ]
   },
   "hansonhankki-petit-shake-chestnut-latte-40": {
     "summary": "한손한끼 Petit 단백질 쉐이크 밤라떼맛은 40g 한 포에 단백질 15.6g, 155kcal입니다. 식품유형은 체중조절용 조제식품이고, 1포를 우유나 두유 100mL에 타 먹도록 안내돼 있습니다.",
     "points": [
-      "당류 7.7g으로 쉐이크 112종 중 세 번째로 많습니다.",
+      "당류 7.7g으로 등록된 쉐이크 중 세 번째로 많습니다.",
       "원재료에 분리대두단백, 혼합탈지분유, 콜라겐펩타이드가 표시돼 있습니다.",
       "같은 Petit 라인 중 곡물맛이 단백질 16.5g으로 가장 많고, 딸기맛은 당류 1.8g으로 가장 적습니다."
     ],
@@ -447,7 +447,7 @@
     ],
     "watchOut": [
       "표시된 수치는 분말 1포 기준입니다. 우유나 두유 100mL를 더하면 열량·당류가 늘어납니다.",
-      "1포 단백질 15.6g은 쉐이크 112종 중 적은 편(105번째)입니다."
+      "1포 단백질 15.6g은 등록된 쉐이크 중 적은 편(115번째)입니다."
     ],
     "compareSlugs": [
       "hansonhankki-petit-shake-grain-40",
@@ -457,13 +457,13 @@
     "sources": [
       "shakeProductsData.json: proteinPerServing, calories, sugar, nutritionBasis=per_pack",
       "public/shake-spec/hansonhankki-petit-shake-chestnut-latte-40.png (식품유형, 섭취방법, 원재료명)",
-      "계산: 쉐이크 112종 sugar 내림차순, proteinPerServing 내림차순"
+      "계산: 쉐이크 123종 sugar 내림차순, proteinPerServing 내림차순"
     ]
   },
   "delight-project-shake-blueberry-yogurt-45": {
     "summary": "딜라이트 프로젝트 단백질 쉐이크 블루베리요거트는 45g 한 포에 단백질 18g, 180kcal입니다. 같은 브랜드의 딸기요거트(20g, 175kcal)와 함께 요거트 계열 맛입니다.",
     "points": [
-      "열량 180kcal은 쉐이크 112종 중 높은 편이며, 이보다 높은 제품은 6개입니다.",
+      "열량 180kcal은 등록된 쉐이크 중 높은 편이며, 이보다 높은 제품은 7개입니다.",
       "탄수화물 21g, 당류 4g, 포화지방 1.8g입니다.",
       "딜라이트 프로젝트 안에서는 피스타치오초코가 단백질 22g으로 가장 많습니다."
     ],
@@ -482,7 +482,7 @@
     "sources": [
       "shakeProductsData.json: proteinPerServing, calories, sugar, nutritionPerBottle(carbsG, satFatG)",
       "public/shake-spec/delight-project-shake-blueberry-yogurt-45.png",
-      "계산: 쉐이크 112종 중 calories > 180 개수, 같은 brand proteinPerServing 최댓값"
+      "계산: 쉐이크 123종 중 calories > 180 개수, 같은 brand proteinPerServing 최댓값"
     ]
   },
   "maeilhankki-shake-purple-sweet-potato-40": {
@@ -497,7 +497,7 @@
       "비타민·무기질이 들어간 한 끼용 쉐이크를 원하는 분"
     ],
     "watchOut": [
-      "나트륨 329mg으로 쉐이크 112종 중 이보다 많은 제품은 11개입니다. 당류를 더 줄이려면 같은 브랜드 곡물(1g)·초코(2g)가 있습니다."
+      "나트륨 329mg으로 등록된 쉐이크 중 이보다 많은 제품은 12개입니다. 당류를 더 줄이려면 같은 브랜드 곡물(1g)·초코(2g)가 있습니다."
     ],
     "compareSlugs": [
       "maeilhankki-shake-grain-40",
@@ -507,14 +507,14 @@
     "sources": [
       "shakeProductsData.json: proteinPerServing, calories, sugar, fat, sodium",
       "public/shake-spec/maeilhankki-shake-purple-sweet-potato-40.png (식품유형, 원재료명, 비타민·무기질 %)",
-      "계산: 같은 brand calories 범위, 쉐이크 112종 중 sodium > 329 개수"
+      "계산: 같은 brand calories 범위, 쉐이크 123종 중 sodium > 329 개수"
     ]
   },
   "thedanbaek-proteinshake-powder-choco-32": {
-    "summary": "더단백 단백질쉐이크 파우더 초코는 32g 한 포에 단백질 20g, 110kcal입니다. 쉐이크 112종 중 포 크기가 가장 작은 제품(32g)이고, 열량은 두 번째로 낮습니다.",
+    "summary": "더단백 단백질쉐이크 파우더 초코는 32g 한 포에 단백질 20g, 110kcal입니다. 등록된 쉐이크 중 포 크기가 세 번째로 작고, 열량도 세 번째로 낮습니다.",
     "points": [
-      "100kcal당 단백질 18.2g으로 쉐이크 중 3번째로 높습니다(같은 더단백 곡물과 같음).",
-      "당류 0.8g으로 쉐이크 112종 중 세 번째로 적은 축입니다.",
+      "100kcal당 단백질 18.2g으로 쉐이크 중 4번째로 높습니다(같은 더단백 곡물과 같음).",
+      "당류 0.8g으로 등록된 쉐이크 중 다섯 번째로 적은 축입니다.",
       "성분표에 류신 2,000mg, 아르기닌 1,000mg 등 아미노산 함량이 적혀 있습니다.",
       "에리스리톨 1.56g, 식이섬유 2.7g이 표시돼 있습니다."
     ],
@@ -523,7 +523,7 @@
       "열량·당류를 함께 낮게 유지하려는 분"
     ],
     "watchOut": [
-      "나트륨 360mg으로 쉐이크 112종 중 이보다 많은 제품은 5개입니다."
+      "나트륨 360mg으로 등록된 쉐이크 중 이보다 많은 제품은 5개입니다."
     ],
     "compareSlugs": [
       "thedanbaek-proteinshake-powder-grain-32",
@@ -533,7 +533,7 @@
     "sources": [
       "shakeProductsData.json: proteinPerServing, calories, sugar, sodium, capacity",
       "public/shake-spec/더단백 단백질쉐이크 파우더 초코.png (류신·아르기닌, 에리스리톨 1.56g, 식이섬유 2.7g)",
-      "계산: 쉐이크 112종 capacity 최솟값, calories·sugar 오름차순, proteinPerServing/calories×100 순위, sodium > 360 개수"
+      "계산: 쉐이크 123종 capacity·calories·sugar 오름차순, proteinPerServing/calories×100 순위, sodium > 360 개수"
     ]
   },
   "fromit-proteinshake-blueberry-greek-yogurt-45": {
@@ -563,8 +563,8 @@
   "soybilab-lowsugar-blackbean-190": {
     "summary": "소이비랩 저당 검은콩두유는 190mL에 단백질 5g, 70kcal입니다. 사이트 두유 등록 기준(1팩 5g 이상)의 하한에 있는 일반 두유입니다.",
     "points": [
-      "당류 0.8g으로 두유 51종 중 낮은 축입니다.",
-      "열량 70kcal보다 낮은 두유는 4개입니다.",
+      "당류 0.8g으로 등록된 두유 중 낮은 축입니다.",
+      "열량 70kcal보다 낮은 두유는 6개입니다.",
       "탄수화물 8g, 지방 3.4g, 나트륨 140mg입니다."
     ],
     "goodFor": [
@@ -572,7 +572,7 @@
       "검은콩 두유를 가볍게 마시려는 분"
     ],
     "watchOut": [
-      "1팩 단백질 5g은 두유 51종 중 가장 적은 축(5개)입니다. 단백질을 더 원하면 같은 검은콩 계열의 고단백 두유(11g 이상)와 비교하세요."
+      "1팩 단백질 5g은 등록된 두유 중 가장 적으며, 단백질이 같은 5g인 제품이 12개입니다. 단백질을 더 원하면 같은 검은콩 계열의 고단백 두유(11g 이상)와 비교하세요."
     ],
     "compareSlugs": [
       "bobsnu-healthy-yakkong100-190",
@@ -582,14 +582,14 @@
     "sources": [
       "soymilkProductsData.json: proteinPerServing, calories, sugar, fat, sodium, nutritionPerBottle.carbsG",
       "public/soymilk-spec/소이비랩 저당 검은콩두유 5g 190ml spec.png",
-      "계산: 두유 51종 calories < 70 개수, proteinPerServing = 5 개수, getSoymilkTier 구간(일반 5~7g)"
+      "계산: 두유 61종 calories < 70 개수, proteinPerServing = 5 개수, getSoymilkTier 구간(일반 5~7g)"
     ]
   },
   "maeil-999-seoritae-unsweetened-190": {
     "summary": "매일두유 99.9 서리태 무가당은 190mL에 단백질 9g, 95kcal입니다. 사이트 구간으로는 단백질 강화(8~10g) 두유에 속합니다.",
     "points": [
       "당류 1.8g, 탄수화물 4.5g, 식이섬유 2g입니다.",
-      "나트륨 115mg으로 두유 51종 중 적은 편(낮은 순 7번째)입니다.",
+      "나트륨 115mg으로 등록된 두유 중 적은 편(낮은 순 13번째)입니다.",
       "같은 99.9 플레인 무가당과 단백질·열량·당류가 같고, 콩 종류(서리태)만 다릅니다.",
       "매일두유 고단백 검은콩은 단백질 12g, 105kcal입니다."
     ],
@@ -608,11 +608,11 @@
     "sources": [
       "soymilkProductsData.json: proteinPerServing, calories, sugar, sodium, nutritionPerBottle(carbsG, fiberG)",
       "public/soymilk-spec/매일두유 99.9 서리태 9g 190ml spec.png",
-      "계산: 두유 51종 sodium 오름차순, getSoymilkTier 구간"
+      "계산: 두유 61종 sodium 오름차순, getSoymilkTier 구간"
     ]
   },
   "bobsnu-healthy-yakkong100-190": {
-    "summary": "밥스누 더 건강한 약콩 100 두유는 190mL에 단백질 6g, 75kcal입니다. 나트륨이 60mg으로 두유 51종 중 가장 적습니다.",
+    "summary": "밥스누 더 건강한 약콩 100 두유는 190mL에 단백질 6g, 75kcal입니다. 나트륨이 60mg으로 등록된 두유 중 가장 적습니다.",
     "points": [
       "성분표 기준 당류는 1g 미만입니다.",
       "칼슘 230mg, 마그네슘 32mg, 비오틴 40μg, 셀레늄 23μg 등이 표시돼 있습니다.",
@@ -633,11 +633,11 @@
     "sources": [
       "soymilkProductsData.json: proteinPerServing, calories, sugar, sodium, nutritionPerBottle.calciumMg",
       "public/soymilk-spec/밥스누 더 건강한 약콩 100 두유 6g 190ml spec.png (당류 1g 미만, 마그네슘·비오틴·셀레늄)",
-      "계산: 두유 51종 sodium 최솟값"
+      "계산: 두유 61종 sodium 최솟값"
     ]
   },
   "erom-protein-pro-plain-240": {
-    "summary": "이롬 고단백 두유 Pro 24g은 240mL에 단백질 24g이 들어 있습니다. 두유 51종 중 연세두유 고단백 Pro 플레인과 함께 1팩 단백질이 가장 많고, 당류는 1g입니다.",
+    "summary": "이롬 고단백 두유 Pro 24g은 240mL에 단백질 24g이 들어 있습니다. 등록된 두유 중 연세두유 고단백 Pro 플레인과 함께 1팩 단백질이 가장 많고, 당류는 1g입니다.",
     "points": [
       "연세두유 고단백 Pro 플레인(24g, 180kcal, 당류 2.2g)보다 열량 5kcal, 당류 1.2g 적습니다.",
       "칼슘 300mg으로 데이터상 두유 중 가장 많습니다. 성분표에 아연 8.5mg도 표시돼 있습니다.",
@@ -648,7 +648,7 @@
       "우유 단백 대신 대두 단백 음료를 찾는 분"
     ],
     "watchOut": [
-      "나트륨 320mg, 열량 175kcal로 두유 중 높은 쪽입니다(나트륨은 51종 중 가장 많음)."
+      "나트륨 320mg, 열량 175kcal로 두유 중 높은 쪽입니다(나트륨은 등록된 두유 중 가장 많음)."
     ],
     "compareSlugs": [
       "yonsei-protein-pro-plain-240",
@@ -658,7 +658,7 @@
     "sources": [
       "soymilkProductsData.json: proteinPerServing, calories, sugar, sodium, nutritionPerBottle.calciumMg",
       "public/soymilk-spec/이롬 황성주 박사의 고단백 두유 Pro 플레인 24g 240ml spec.png (아연 8.5mg)",
-      "계산: 두유 51종 proteinPerServing·sodium·calciumMg 최댓값"
+      "계산: 두유 61종 proteinPerServing·sodium·calciumMg 최댓값"
     ]
   },
   "yonsei-protein-blackbean-calcium-190": {
@@ -684,13 +684,13 @@
     "sources": [
       "soymilkProductsData.json: proteinPerServing, calories, sugar, fat, nutritionPerBottle(carbsG, calciumMg)",
       "public/soymilk-spec/연세두유 고단백 검은콩&고칼슘 12g 190ml spec.png (비타민 A·B1·D·E)",
-      "계산: 두유 51종 중 proteinPerServing ≥ 11 개수, calories > 155 제품"
+      "계산: 두유 61종 중 proteinPerServing ≥ 11 개수, calories > 155 제품"
     ]
   },
   "yoplait-protein-plain-100": {
     "summary": "빙그레 요플레 프로틴 플레인은 100g 컵에 단백질 10.4g, 105kcal인 떠먹는 요구르트입니다. 원재료에 원유와 함께 유청단백분말·분리우유단백분말이 들어 있습니다.",
     "points": [
-      "100kcal당 단백질 9.9g으로 요거트 57종 중 8번째입니다.",
+      "100kcal당 단백질 9.9g으로 등록된 요거트 중 9번째입니다.",
       "성분표 기준 칼슘 140mg, 지방 2.5g, 나트륨 80mg입니다.",
       "같은 요플레 프로틴 블루베리(100g)는 단백질 9g, 당류 12g입니다."
     ],
@@ -709,7 +709,7 @@
     "sources": [
       "yogurtProductsData.json: proteinPerServing, calories, sugar, fat, sodium, manufacturer",
       "public/protein-yogurt-spec/요플레 프로틴 플레인 떠먹는 요구르트 100g.png (원재료명, 칼슘 140mg)",
-      "계산: 요거트 57종 proteinPerServing/calories×100 내림차순"
+      "계산: 요거트 56종 proteinPerServing/calories×100 내림차순"
     ]
   },
   "yozm-apple-cinnamon-130": {
@@ -763,7 +763,7 @@
     ]
   },
   "vegemil-sweet-protein-250": {
-    "summary": "베지밀 스위트 고단백은 250mL 한 팩에 단백질 16g, 130kcal인 두유입니다. 당류 2g, 지방 5.5g이며 두유 61종 중 단백질이 더 많은 제품은 2개뿐입니다.",
+    "summary": "베지밀 스위트 고단백은 250mL 한 팩에 단백질 16g, 130kcal인 두유입니다. 당류 2g, 지방 5.5g이며 등록된 두유 중 단백질이 더 많은 제품은 2개뿐입니다.",
     "points": [
       "1팩 단백질 16g으로 고단백 구간(11g 이상)에 해당합니다.",
       "같은 베지밀 고단백두유 190mL 3종은 단백질 12g이라 이 제품이 4g 많습니다.",
@@ -834,7 +834,7 @@
     ]
   },
   "yonsei-protein-pro-plain-240": {
-    "summary": "연세두유 고단백 Pro 플레인은 240mL 한 팩에 단백질 24g, 180kcal입니다. 두유 61종에서 1팩 단백질 공동 최댓값이며 고단백 구간에 해당합니다.",
+    "summary": "연세두유 고단백 Pro 플레인은 240mL 한 팩에 단백질 24g, 180kcal입니다. 등록된 두유에서 1팩 단백질 공동 최댓값이며 고단백 구간에 해당합니다.",
     "points": [
       "같은 24g인 이롬 고단백 두유 Pro는 175kcal, 당류 1g입니다.",
       "이 제품은 당류 2.2g, 지방 5.3g입니다.",
@@ -845,7 +845,7 @@
       "240mL 플레인 두유를 찾는 분"
     ],
     "watchOut": [
-      "180kcal로 두유 61종 중 열량이 가장 높습니다."
+      "180kcal로 등록된 두유 중 열량이 가장 높습니다."
     ],
     "compareSlugs": [
       "erom-protein-pro-plain-240",
@@ -930,7 +930,7 @@
     ]
   },
   "danbaek-water-grapefruit-400": {
-    "summary": "더단백 워터 프로틴 백자몽은 400mL에 단백질 25g, 100kcal입니다. 음료 141종에서 100kcal당 단백질 25g으로 공동 최댓값이며 당류와 지방은 0g입니다.",
+    "summary": "더단백 워터 프로틴 백자몽은 400mL에 단백질 25g, 100kcal입니다. 등록된 음료에서 100kcal당 단백질 25g으로 공동 최댓값이며 당류와 지방은 0g입니다.",
     "points": [
       "같은 워터 프로틴 청사과도 400mL, 단백질 25g, 100kcal입니다.",
       "탄수화물 10g, 나트륨 48mg입니다.",
@@ -978,7 +978,7 @@
     ]
   },
   "takefit-extreme-450": {
-    "summary": "테이크핏 익스트림은 450mL 한 팩에 단백질 60g, 259kcal입니다. 음료 141종 중 단백질이 더 많은 제품은 닥터유 62g 한 개뿐입니다.",
+    "summary": "테이크핏 익스트림은 450mL 한 팩에 단백질 60g, 259kcal입니다. 등록된 음료 중 단백질이 더 많은 제품은 닥터유 62g 한 개뿐입니다.",
     "points": [
       "100kcal당 단백질은 23.2g입니다.",
       "당류 1.3g, 지방 1.4g이며 탄수화물은 1.5g입니다.",
@@ -1147,7 +1147,7 @@
     ]
   },
   "nam-gt-protein-190": {
-    "summary": "맛있는두유 GT 고단백은 190mL에 단백질 13g, 90kcal입니다. 고단백 구간이며 두유 61종에서 100kcal당 단백질 14.4g으로 가장 높습니다.",
+    "summary": "맛있는두유 GT 고단백은 190mL에 단백질 13g, 90kcal입니다. 고단백 구간이며 등록된 두유에서 100kcal당 단백질 14.4g으로 가장 높습니다.",
     "points": [
       "당류 1g, 지방 3.3g입니다.",
       "탄수화물 2.5g, 나트륨 195mg입니다.",
@@ -1220,7 +1220,7 @@
     ]
   },
   "labnosh-protein-max-strawberry-400": {
-    "summary": "랩노쉬 프로틴 드링크 맥스 딸기는 400mL에 단백질 52g, 230kcal입니다. 음료 141종 중 단백질이 더 많은 제품은 2개뿐이며 당류는 0g입니다.",
+    "summary": "랩노쉬 프로틴 드링크 맥스 딸기는 400mL에 단백질 52g, 230kcal입니다. 등록된 음료 중 단백질이 더 많은 제품은 2개뿐이며 당류는 0g입니다.",
     "points": [
       "같은 맥스 초코도 단백질 52g이며 열량은 235kcal입니다.",
       "100kcal당 단백질은 22.6g입니다.",
@@ -1319,7 +1319,7 @@
     ]
   },
   "sellex-profit-sports-wildchoco-350": {
-    "summary": "셀렉스 프로핏 스포츠 와일드 초코는 350mL에 단백질 45g, 210kcal입니다. 음료 141종 중 단백질이 더 많은 제품은 6개이며 당류는 0g입니다.",
+    "summary": "셀렉스 프로핏 스포츠 와일드 초코는 350mL에 단백질 45g, 210kcal입니다. 등록된 음료 중 단백질이 더 많은 제품은 6개이며 당류는 0g입니다.",
     "points": [
       "100kcal당 단백질은 21.4g입니다.",
       "지방 1.3g, 탄수화물 4g, 나트륨 300mg입니다.",
@@ -1346,7 +1346,7 @@
   "lottewellfood-easyprotein-highprotein-crispy": {
     "summary": "롯데웰푸드 이지프로틴 고단백질바 크리스피는 50g 한 개에 단백질 20g, 180kcal입니다. 당류 5g, 지방 7g이며 100kcal당 단백질은 11.1g입니다.",
     "points": [
-      "바 118종 중 단백질이 더 많은 제품은 12개입니다.",
+      "등록된 바 중 단백질이 더 많은 제품은 12개입니다.",
       "나트륨은 300mg입니다.",
       "같은 20g·180kcal인 퀘스트 바 여러 맛은 당류 1g으로 기록돼 있습니다."
     ],
@@ -1364,7 +1364,7 @@
     ],
     "sources": [
       "barProductsData.json: capacity, proteinPerServing, calories, sugar, fat, sodium",
-      "계산: proteinPerServing/calories×100, 바 118종 중 proteinPerServing > 20 인 제품 수, proteinPerServing 20·calories 180 제품 비교"
+      "계산: proteinPerServing/calories×100, 바 115종 중 proteinPerServing > 20 인 제품 수, proteinPerServing 20·calories 180 제품 비교"
     ]
   },
   "myprotein-protein-wafer-42": {
@@ -1392,7 +1392,7 @@
     ]
   },
   "pulmuone-dannon-greek-unsweetened-90": {
-    "summary": "풀무원다논 그릭요거트 무가당 플레인은 90g 한 컵에 단백질 6g, 70kcal입니다. 당류 6g, 지방 1.6g이며 요거트 56종 중 열량이 공동 최저입니다.",
+    "summary": "풀무원다논 그릭요거트 무가당 플레인은 90g 한 컵에 단백질 6g, 70kcal입니다. 당류 6g, 지방 1.6g이며 등록된 요거트 중 열량이 공동 최저입니다.",
     "points": [
       "100g당 단백질은 6.7g입니다.",
       "탄수화물 8g, 나트륨 45mg입니다.",
