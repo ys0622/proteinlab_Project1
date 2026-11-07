@@ -303,6 +303,13 @@ proteinBarTop10Config.summary = [
 proteinBarTop10Config.comparisonTitle = "단백질바 종합 추천 순위 TOP 10";
 proteinBarTop10Config.comparisonColumns = ["제품명", "단백질", "칼로리", "당류", "100kcal당 단백질", "선택 포인트"];
 proteinBarTop10Config.comparisonRows = rankingRows(barTop10);
+// '단백질바 추천' 검색어 답을 첫 화면에(2026-11-07): 순위표 1~5위를 사진 목록으로 제목 바로 아래에 둔다.
+proteinBarTop10Config.heroRankList = {
+  label: `단백질바 추천 TOP 5 · ${barProducts.length}개 중 단백질·당류·칼로리 종합`,
+  slugs: barTop10.slice(0, 5).map((product) => product.slug),
+  moreHref: "#ranking-table",
+  moreLabel: "6~10위까지 순위표 보기 ↓",
+};
 proteinBarTop10Config.sections = [
   {
     title: "목적별로 먼저 나누세요",

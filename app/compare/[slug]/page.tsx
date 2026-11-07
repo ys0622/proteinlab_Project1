@@ -24,7 +24,20 @@ interface PageProps {
 }
 
 // 검색어 답을 첫 화면에(2026-11-07): '프로티원' 검색 방문자가 5가지 맛을 바로 보도록 두 제품 카드 대신 사진 순위 목록.
-const heroRankLists: Record<string, HeroRankListConfig> = {};
+const heroRankLists: Record<string, HeroRankListConfig> = {
+  "proteone-vs-itthefit-shake": {
+    label: "프로티원 쉐이크 5가지 맛 · 단백질 많은 순",
+    slugs: [
+      "proteone-proteinshake-choco-40",
+      "proteone-proteinshake-coffee-40",
+      "proteone-proteinshake-strawberry-40",
+      "proteone-proteinshake-black-sesame-40",
+      "proteone-proteinshake-grain-40",
+    ],
+    moreHref: "#compare-summary",
+    moreLabel: "잇더핏과 성분 비교 보기 ↓",
+  },
+};
 
 const priorityConversionPlans: Record<string, { contentId: string; conclusion: string }> = {
   "proteone-vs-itthefit-shake": {
