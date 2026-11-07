@@ -94,6 +94,7 @@ const BRAND_SLUG_MAP: Record<string, string> = {
   뉴욕웨이: "newyork-whey",
   뉴트리라이트: "nutrilite",
   다이마타이즈: "dymatize",
+  스포츠리서치: "sports-research",
   머슬테크: "muscletech",
   머슬팜: "musclepharm",
   미트리: "meatree",

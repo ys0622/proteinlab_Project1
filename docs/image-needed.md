@@ -11,3 +11,4 @@
 | 파우더 | 뉴욕웨이 WPC 단백질 보충제 (초코) 2kg | newyorkwhey-wpc-choco-2000 | https://www.coupang.com/vp/products/8313255518?itemId=28564029596&vendorItemId=95508550157 | public/powder-image/newyorkwhey-wpc-choco-2000.webp |
 | 파우더 | NS 웨이 프로틴 (딥초코) 1kg | ns-wheyprotein-deepchoco-1000 | https://www.coupang.com/vp/products/9615106413?itemId=28709017174&vendorItemId=95455003744 | public/powder-image/ns-wheyprotein-deepchoco-1000.webp |
 | 파우더 | NS 프로틴 스탠다드 (초콜릿 무스) 2kg | ns-proteinstandard-choco-2000 | https://www.coupang.com/vp/products/9500997648?itemId=28304702819&vendorItemId=95936144208 | public/powder-image/ns-proteinstandard-choco-2000.webp |
+| 파우더 | 스포츠리서치 유청 단백질 아이솔레이트 (더치 초콜릿) 1.03kg | sportsresearch-whey-isolate-dutchchoco-1030 | https://www.coupang.com/vp/products/7540120909?itemId=22812356321&vendorItemId=89847224392 | public/powder-image/sportsresearch-whey-isolate-dutchchoco-1030.webp |

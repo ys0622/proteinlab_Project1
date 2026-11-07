@@ -2554,5 +2554,43 @@
     },
     "coupangUrl": "https://www.coupang.com/vp/products/9500997648?itemId=28304702819&vendorItemId=95936144208",
     "productUrl": "#"
+  },
+  {
+    "slug": "sportsresearch-whey-isolate-dutchchoco-1030",
+    "brand": "스포츠리서치",
+    "name": "유청 단백질 아이솔레이트 (더치 초콜릿)",
+    "capacity": "1.03kg",
+    "variant": "통",
+    "tags": [
+      "아이솔레이트",
+      "해외 직구"
+    ],
+    "flavor": "더치 초콜릿",
+    "productType": "powder",
+    "nutritionBasis": "per_serving",
+    "servingSizeG": 41,
+    "servingsPerContainer": 25,
+    "proteinSource": "분리유청단백(WPI)·카제인나트륨",
+    "powderType": "isolate",
+    "origin": "overseas",
+    "proteinPerServing": 25,
+    "calories": 150,
+    "sugar": 1,
+    "fat": 4,
+    "sodium": 250,
+    "density": "16.7g/100kcal",
+    "nutritionPerBottle": {
+      "caloriesKcal": 150,
+      "proteinG": 25,
+      "carbsG": 4,
+      "sugarsG": 1,
+      "fatG": 4,
+      "satFatG": 3.5,
+      "sodiumMg": 250,
+      "fiberG": 2
+    },
+    "coupangUrl": "https://www.coupang.com/vp/products/7540120909?itemId=22812356321&vendorItemId=89847224392",
+    "productUrl": "#",
+    "sugarLabel": "1g 미만"
   }
 ]
