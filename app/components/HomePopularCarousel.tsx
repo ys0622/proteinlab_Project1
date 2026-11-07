@@ -99,6 +99,8 @@ export default function HomePopularCarousel({ products, available }: Props) {
   };
 
   const curTab = TABS[tabIdx];
+  const prevTab = tabIdx > 0 ? TABS[tabIdx - 1] : null;
+  const nextTab = tabIdx < TABS.length - 1 ? TABS[tabIdx + 1] : null;
   const curProducts = (products[curTab.key] ?? []).slice(0, MAX_PRODUCTS);
 
   return (
@@ -116,6 +118,10 @@ export default function HomePopularCarousel({ products, available }: Props) {
             {curTab.label}
           </span>
         </div>
+        {/* 밀어서 넘길 수 있다는 안내(2026-11-07 Scott 시안 B). 화살표는 처음에 세 번만 흔들린다. */}
+        <span aria-hidden className="home-swipe-hint inline-flex shrink-0 items-center gap-0.5 text-[11px] font-bold text-[#6b7a6e]">
+          <i>‹</i>밀어서 넘기기<i>›</i>
+        </span>
       </div>
       {/* Mobile category selector */}
       {/* 6개 카테고리가 한 줄에 다 보이게 칸을 나눠 쓴다(2026-11-05 파우더 추가). 2026-11-07 제품 위로 옮김: 아래에 있으면 작은 폰 첫 화면에서 탭이 안 보였다. */}
@@ -190,6 +196,34 @@ export default function HomePopularCarousel({ products, available }: Props) {
           onAnimationEnd={nudging ? (event) => { if (event.target === event.currentTarget) setNudging(false); } : undefined}
         >
           <HomePopularList products={curProducts.slice(0, MOBILE_LIST_COUNT)} category={curTab.key} />
+        </div>
+        {/* 이전·다음 카테고리 줄(2026-11-07 Scott 시안 A): 늘 보이고 눌러도 넘어간다. */}
+        <div className="mt-1.5 flex items-center justify-between gap-2">
+          <button
+            type="button"
+            onClick={() => handleTabClick(tabIdx - 1, "nav")}
+            disabled={!prevTab}
+            className="min-w-[72px] py-1.5 text-left text-[12px] font-bold text-[#1F5A3D] disabled:invisible"
+          >
+            {prevTab ? `‹ ${prevTab.label}` : ""}
+          </button>
+          <span className="flex items-center gap-[5px]" aria-hidden>
+            {TABS.map((tab, i) => (
+              <span
+                key={tab.key}
+                className="h-[5px] rounded-full transition-all duration-300"
+                style={{ width: i === tabIdx ? 18 : 5, background: i === tabIdx ? "#1F5A3D" : "#D5CFC7" }}
+              />
+            ))}
+          </span>
+          <button
+            type="button"
+            onClick={() => handleTabClick(tabIdx + 1, "nav")}
+            disabled={!nextTab}
+            className="min-w-[72px] py-1.5 text-right text-[12px] font-bold text-[#1F5A3D] disabled:invisible"
+          >
+            {nextTab ? `${nextTab.label} ›` : ""}
+          </button>
         </div>
         <Link
           href={`/trending#${curTab.key}`}

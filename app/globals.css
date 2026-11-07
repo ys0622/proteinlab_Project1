@@ -1354,8 +1354,14 @@ h1, h2, h3, h4, h5, h6 {
 .popular-list-stagger li:nth-child(5) { animation-delay: 0.16s; }
 .popular-list-nudge { animation: popularListNudge 0.9s ease-in-out; }
 .popular-tab-pill { transition: transform 0.28s cubic-bezier(0.3, 0.7, 0.2, 1); }
+@keyframes swipeHintLeft { 50% { transform: translateX(-3px); } }
+@keyframes swipeHintRight { 50% { transform: translateX(3px); } }
+.home-swipe-hint i { display: inline-block; font-style: normal; }
+.home-swipe-hint i:first-child { animation: swipeHintLeft 0.7s ease-in-out 0.6s 3; }
+.home-swipe-hint i:last-child { animation: swipeHintRight 0.7s ease-in-out 0.6s 3; }
 @media (prefers-reduced-motion: reduce) {
   .popular-list-stagger li,
-  .popular-list-nudge { animation: none; }
+  .popular-list-nudge,
+  .home-swipe-hint i { animation: none; }
   .popular-tab-pill { transition: none; }
 }
