@@ -48,7 +48,7 @@ export default function HomePopularList({ products, category }: Props) {
           >
             <span className="w-4 shrink-0 text-center text-[14px] font-extrabold text-[#1F5A3D]">{i + 1}</span>
             <Link href={detailHref} onClick={onOpen} className="flex min-w-0 flex-1 items-center gap-2">
-              <span className="relative h-[54px] w-[54px] shrink-0 overflow-hidden rounded-[10px] bg-[#F4F1EA]">
+              <span className="relative h-[54px] w-[54px] shrink-0 overflow-hidden rounded-[10px] border border-[#eee] bg-white">
                 {imageUrl && (
                   <Image src={imageUrl} alt={`${brand} ${name}`} fill sizes="54px" className="object-contain p-1" unoptimized />
                 )}
