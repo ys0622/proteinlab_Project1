@@ -2279,5 +2279,42 @@
     "manufacturer": "(주)연두",
     "naverUrl": "https://search.shopping.naver.com/search/all?query=%EB%B0%94%EB%94%94%EB%9E%A9%20%EA%B2%80%EC%9D%80%EC%95%BD%EC%BD%A9%20%EC%88%9C%EC%88%98%EB%91%90%EC%9C%A0%2099.9%20185mL",
     "coupangUrl": "https://www.coupang.com/vp/products/9089669372?itemId=29213723761&vendorItemId=96133590101"
+  },
+  {
+    "slug": "gomgom-almond-walnut-soymilk-190",
+    "brand": "곰곰",
+    "name": "아몬드와 호두 두유",
+    "capacity": "190mL",
+    "variant": "아몬드 호두",
+    "tags": [
+      "팩"
+    ],
+    "proteinPerServing": 5,
+    "calories": 100,
+    "sugar": 7,
+    "density": "2.6g/100ml",
+    "productUrl": "#",
+    "productType": "soymilk",
+    "gradeTags": [],
+    "flavor": "아몬드 호두",
+    "proteinSource": "대두",
+    "fat": 5.1,
+    "sodium": 150,
+    "calorieDensity": "52.6kcal/100ml",
+    "soymilkType": "두유",
+    "nutritionPerBottle": {
+      "caloriesKcal": 100,
+      "proteinG": 5,
+      "carbsG": 8,
+      "sugarsG": 7,
+      "fatG": 5.1,
+      "satFatG": 1,
+      "transFatG": 0,
+      "cholesterolMg": 0,
+      "sodiumMg": 150
+    },
+    "manufacturer": "연세대학교 연세유업",
+    "naverUrl": "https://search.shopping.naver.com/search/all?query=%EA%B3%B0%EA%B3%B0%20%EC%95%84%EB%AA%AC%EB%93%9C%EC%99%80%20%ED%98%B8%EB%91%90%20%EB%91%90%EC%9C%A0%20190mL",
+    "coupangUrl": "https://www.coupang.com/vp/products/344621939?itemId=1094710052&vendorItemId=5613481874"
   }
 ]
