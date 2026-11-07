@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { productClick, purchaseClick } from "@/lib/analytics";
+import type { LinkPosition } from "@/lib/analytics";
 import type { CarouselProduct } from "./HomePopularCarousel";
 import { getProductImageUrl } from "../lib/productImage";
 import { getCoupangRedirectHref, getKnownSourceCoupangUrlBySlug, normalizeCoupangUrl } from "../lib/purchaseLinks";
@@ -13,10 +14,13 @@ import PurchaseLinkRow from "./PurchaseLinkRow";
 interface Props {
   products: CarouselProduct[];
   category: CoupangLinkCategory;
+  // 홈 밖(가이드·비교 첫 화면)에서 쓸 때 분석 구분값과 링크 위치를 바꾼다.
+  source?: string;
+  linkPosition?: LinkPosition;
 }
 
-export default function HomePopularList({ products, category }: Props) {
-  const source = `home_popular_${category}`;
+export default function HomePopularList({ products, category, source: sourceOverride, linkPosition = "home_featured" }: Props) {
+  const source = sourceOverride ?? `home_popular_${category}`;
   return (
     <ol className="flex flex-col gap-1.5">
       {products.map((product, i) => {
@@ -80,7 +84,7 @@ export default function HomePopularList({ products, category }: Props) {
                   productName: name,
                   productBrand: brand,
                   productCategory: category,
-                  linkPosition: "home_featured",
+                  linkPosition,
                   contentId: source,
                   itemPosition: i + 1,
                 }}

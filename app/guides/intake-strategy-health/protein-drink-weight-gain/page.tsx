@@ -163,8 +163,8 @@ export default function ProteinDrinkWeightGainPage() {
             단백질 쉐이크·단백질 음료, 살찌나요?
           </h1>
           <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
-            &quot;단백질은 살 안 찐다&quot;와 &quot;쉐이크 먹고 살쪘다&quot;가 둘 다 들립니다. 등록 제품 성분표로 1개 열량을 하루·한 달
-            기준으로 계산하고, 일부러 과식시킨 연구 결과로 답했습니다.
+            단백질 쉐이크·단백질 음료가 살찌는지는 먹던 것에 더하는지, 대신하는지로 갈립니다. 단백질도 1g에 4kcal라 더하면 그만큼
+            열량이 늘고, 대신하면 대개 줄어듭니다. 등록 제품 성분표로 1개 열량을 하루·한 달 기준으로 계산하고, 일부러 과식시킨 연구(Bray 2012)로 답했습니다.
           </p>
           <GuideProductHeroCards products={heroProducts} />
         </div>
@@ -173,7 +173,7 @@ export default function ProteinDrinkWeightGainPage() {
       <main className="mx-auto max-w-[1200px] px-4 py-8 md:px-6">
         <div className="space-y-6">
           <section className="rounded-[28px] border border-[#e5deca] bg-[#fdfaf5] px-5 py-5 shadow-[0_18px_50px_rgba(38,28,18,0.05)]">
-            <h2 className="text-xl font-bold text-[var(--foreground)]">짧게 답하면</h2>
+            <h2 className="text-xl font-bold text-[var(--foreground)]">단백질 쉐이크·음료 먹으면 살찌나요?</h2>
             <ul className="mt-4 space-y-3">
               {quickAnswer.map((item) => (
                 <li key={item} className="flex gap-3 rounded-xl border border-[#e8e3da] bg-white px-4 py-3 text-sm leading-6 text-[var(--foreground-muted)]">

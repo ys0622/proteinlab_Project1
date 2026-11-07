@@ -209,7 +209,8 @@ export default function NightProteinDrinkPage() {
             연구 결과와 밤에 마실 때의 기준
           </h1>
           <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
-            저녁이나 자기 전에 마신다는 이유만으로 무조건 피할 필요는 없습니다. 중요한 건 밤이라는 시간대보다 부족한 단백질을 채우는 보충인지, 허기를 달래는 야식인지, 그리고 당류와 칼로리가 어떤 제품인지입니다.
+            자기 전 단백질은 저녁 근력 운동을 한 사람에게 카제인 30~40g을 먹인 연구에서 밤사이 근육 합성을 높였습니다(Res
+            2012, Kouw 2017). 운동을 안 한다면 저녁 식사에서 부족한 양만 채우고 하루 총열량을 확인하세요.
           </p>
         </div>
       </section>
@@ -230,7 +231,7 @@ export default function NightProteinDrinkPage() {
           </section>
           <GuideBuySection topic="night" variant="top" />
           <section className="rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
-            <h2 className="text-xl font-bold text-[var(--foreground)]">자기 전 단백질 연구 — 무엇이 확인됐나</h2>
+            <h2 className="text-xl font-bold text-[var(--foreground)]">자기 전 단백질은 근육 합성에 효과 있나요?</h2>
             <div className="mt-4 overflow-x-auto rounded-2xl border border-[#e2ebe4] bg-[#f7fbf8]">
               <table className="min-w-full border-collapse text-left text-sm">
                 <thead>

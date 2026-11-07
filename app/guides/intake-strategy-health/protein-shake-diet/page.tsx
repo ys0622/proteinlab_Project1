@@ -172,8 +172,8 @@ export default function ProteinShakeDietPage() {
             단백질 쉐이크 다이어트, 한 끼 대신일까 간식 대신일까
           </h1>
           <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
-            단백질 쉐이크나 단백질 음료로 살을 빼려면 언제, 무엇을 바꿔야 하는지. 식사대용 연구와 식약처 기준, 등록 쉐이크{" "}
-            {shakeStats.total}개의 성분표로 정리했습니다.
+            단백질 쉐이크 다이어트는 한 끼나 간식을 쉐이크로 바꾸되, 한 끼 대용은 200~400kcal로 맞추는 방식입니다(식약처
+            체중조절용 조제식품 기준). 먹던 식사에 쉐이크를 추가하면 감량 효과를 기대하기 어렵습니다.
           </p>
           <GuideProductHeroCards products={heroProducts} />
         </div>
@@ -195,7 +195,7 @@ export default function ProteinShakeDietPage() {
           <GuideBuySection topic="diet" variant="top" />
 
           <section className={cardClass}>
-            <h2 className="text-xl font-bold text-[var(--foreground)]">방법별 판단 — 무엇을 쉐이크로 바꿀까</h2>
+            <h2 className="text-xl font-bold text-[var(--foreground)]">단백질 쉐이크 다이어트는 어떻게 하나요?</h2>
             <div className="mt-4 overflow-x-auto rounded-2xl border border-[#e8e3da] bg-[#fdfaf5]">
               <table className="min-w-full border-collapse text-left text-sm">
                 <thead>

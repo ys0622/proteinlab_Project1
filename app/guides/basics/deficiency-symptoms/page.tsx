@@ -10,7 +10,7 @@ import TrackedLink from "@/app/components/TrackedLink";
 const PAGE_URL = "https://proteinlab.kr/guides/basics/deficiency-symptoms";
 const _pageTitle = "단백질 부족 증상 — 근육 감소·부종·탈모·회복 지연, 정말 단백질 때문일까";
 const _pageDesc =
-  "단백질이 부족할 때 나타나는 신호(근육량·근력 감소, 부종, 머리카락·피부 변화, 상처 회복 지연, 잦은 감염)와 실제로 부족해지기 쉬운 사람, 근감소증 자가 점검 기준(AWGS 2019), 식사로 채우는 순서를 정리했습니다.";
+  "단백질 부족 증상은 근육량·근력 감소, 회복 지연, 잦은 감염, 머리카락·피부 변화와 심한 경우 부종입니다. 성인 권장섭취량 체중 1kg당 0.91g(2020 한국인 영양소 섭취기준)과 함께 점검합니다.";
 
 export const metadata = {
   title: _pageTitle,
@@ -164,8 +164,8 @@ export default function DeficiencySymptomsPage() {
             단백질 부족 증상, 정말 단백질 때문일까?
           </h1>
           <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
-            근육이 빠지고, 잘 붓고, 머리카락이 빠질 때 단백질 부족을 의심하게 됩니다. 실제로 어떤 신호가 단백질과 관련이
-            있고, 누가 부족해지기 쉬운지, 스스로 점검하는 방법을 정리했습니다. 기준일 2026-11-02.
+            단백질 부족 증상은 근육량·근력 감소, 회복 지연, 잦은 감염, 머리카락·피부 변화와 심한 경우 부종입니다. 먼저 성인
+            권장섭취량인 체중 1kg당 0.91g을 채우는지 확인하세요(2020 한국인 영양소 섭취기준). 기준일 2026-11-02.
           </p>
         </div>
       </section>
@@ -194,7 +194,7 @@ export default function DeficiencySymptomsPage() {
           </section>
 
           <section className={cardClass}>
-            <h2 className="text-xl font-bold text-[var(--foreground)]">단백질이 부족할 때 나타나는 신호 5가지</h2>
+            <h2 className="text-xl font-bold text-[var(--foreground)]">단백질 부족 증상은 무엇인가요?</h2>
             <div className="mt-4 overflow-x-auto">
               <table className="min-w-full border-collapse text-left text-sm">
                 <thead>

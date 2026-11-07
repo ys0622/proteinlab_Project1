@@ -166,7 +166,7 @@ export default function ProteinDrinkWithoutExercisePage() {
             근육이 생길까, 살이 찔까
           </h1>
           <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
-            단백질 음료는 운동하는 사람만 마시는 제품이 아닙니다. 아침을 자주 거르거나, 식사에서 단백질이 부족하거나,
+            운동 안 하고 단백질을 먹어도 권장섭취량은 체중 1kg당 0.91g으로 같습니다(2020 한국인 영양소 섭취기준). 아침을 자주 거르거나, 식사에서 단백질이 부족하거나,
             부모님 건강 보완용이 필요할 때도 충분히 쓸 수 있습니다. 다만 40g 고단백 제품보다 현재 생활에서 어떤 공백을
             메울지 먼저 정하고 제품을 고르는 것이 더 중요합니다.
           </p>
@@ -188,7 +188,7 @@ export default function ProteinDrinkWithoutExercisePage() {
           </section>
 
           <section className="rounded-[28px] border border-[#e2ebe4] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(20,32,24,0.04)]">
-            <h2 className="text-xl font-bold text-[var(--foreground)]">운동 없이 단백질을 먹으면 — 기준과 연구</h2>
+            <h2 className="text-xl font-bold text-[var(--foreground)]">운동 안 하고 단백질을 먹어도 되나요?</h2>
             <div className="mt-4 overflow-x-auto rounded-2xl border border-[#e2ebe4] bg-[#f7fbf8]">
               <table className="min-w-full border-collapse text-left text-sm">
                 <thead>

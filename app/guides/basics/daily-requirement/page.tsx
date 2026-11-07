@@ -170,8 +170,8 @@ export default function DailyRequirementPage() {
             단백질 하루 섭취량, 나는 몇 g 먹어야 할까?
           </h1>
           <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
-            성별·나이별 공식 권장량, 체중으로 계산하는 법, 운동하거나 나이가 들었을 때 늘리는 기준, 그리고 한국인이 실제로
-            먹는 양까지 한 페이지에 정리했습니다. 기준일 2026-11-02.
+            성인의 단백질 하루 섭취량 권장 기준은 체중 1kg당 0.91g이며, 남자 19~49세는 65g, 여자 19~29세는
+            55g입니다(2020 한국인 영양소 섭취기준). 성별·나이·운동 여부에 따른 계산법도 정리했습니다. 기준일 2026-11-02.
           </p>
         </div>
       </section>
@@ -207,7 +207,7 @@ export default function DailyRequirementPage() {
           </section>
 
           <section className="rounded-2xl border border-[#e8e6e3] bg-[#fffdf8] px-5 py-5">
-            <h2 className="text-xl font-bold text-[var(--foreground)]">성별·나이별 단백질 권장섭취량 (2020 기준)</h2>
+            <h2 className="text-xl font-bold text-[var(--foreground)]">단백질 하루 섭취량은 얼마인가요?</h2>
             <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">
               평균필요량은 그 나이대 사람 절반이 충분한 양이고, 권장섭취량은 대부분(97~98%)이 충분한 양입니다. 목표로 삼을
               숫자는 권장섭취량입니다.

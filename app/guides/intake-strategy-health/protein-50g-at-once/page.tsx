@@ -175,8 +175,8 @@ export default function Protein50gAtOncePage() {
             단백질 한 번에 흡수량, 30g 넘으면 정말 버려질까?
           </h1>
           <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
-            &quot;한 번에 30g까지만 흡수된다&quot;는 말 때문에 40~50g짜리 음료를 망설이는 분이 많습니다. 이 말이 어디서 왔는지,
-            최신 연구는 뭐라고 하는지, 그래서 한 끼에 몇 g이 적당한지 정리했습니다.
+            단백질 한 번에 흡수량에는 정해진 상한이 없으며, 근육 합성을 위한 실전 기준은 한 끼 체중 1kg당 약
+            0.4g입니다(Schoenfeld·Aragon 2018). 50g을 먹어도 대부분 흡수되지만 하루 여러 끼로 나누는 편이 효율적입니다.
           </p>
         </div>
       </section>
@@ -244,7 +244,7 @@ export default function Protein50gAtOncePage() {
           </section>
 
           <section className={cardClass}>
-            <h2 className="text-xl font-bold text-[var(--foreground)]">그래서 한 끼에 몇 g? — 체중별 기준</h2>
+            <h2 className="text-xl font-bold text-[var(--foreground)]">단백질은 한 번에 얼마나 흡수되나요?</h2>
             <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">
               Schoenfeld와 Aragon(2018)은 근육 성장을 목표로 할 때 한 끼 <strong>체중 1kg당 0.4g</strong>을 하루 4끼 이상,
               많이 먹는 경우 한 끼 <strong>0.55g</strong>까지를 제안했습니다(하루 1.6~2.2g/kg에 해당).

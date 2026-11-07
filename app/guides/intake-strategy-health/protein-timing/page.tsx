@@ -8,7 +8,7 @@ import { buildGuideJsonLd } from "@/app/lib/guideJsonLd";
 const PAGE_URL = "https://proteinlab.kr/guides/intake-strategy-health/protein-timing";
 const _pageTitle = "단백질 먹는 시간 — 운동 후 30분? 아침·자기 전, 언제 먹어야 할까";
 const _pageDesc =
-  "단백질은 언제 먹어야 할까요? 운동 후 '30분 골든타임', 아침 단백질, 자기 전 단백질을 연구(ISSN 2017, Schoenfeld 2013 메타분석, Mamerow 2014, Res 2012)로 확인하고, 운동 시간대별로 하루 단백질을 나누는 예시를 정리했습니다.";
+  "단백질 먹는 시간은 운동 전후 2시간 안쪽이면 충분하고, 한 끼 20~40g씩 고르게 나누는 것이 좋습니다(ISSN 2017, Mamerow 2014). 운동 후 30분 골든타임의 근거도 확인합니다.";
 
 export const metadata = {
   title: _pageTitle,
@@ -150,8 +150,8 @@ export default function ProteinTimingPage() {
             단백질 먹는 시간, 운동 후 30분이 정말 중요할까?
           </h1>
           <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
-            운동 후 골든타임, 아침 단백질, 자기 전 단백질까지 &quot;언제 먹어야 하나&quot;에 대한 연구 결과를 정리하고, 운동
-            시간대별로 하루 단백질을 나누는 예시를 붙였습니다. 기준일 2026-11-02.
+            단백질 먹는 시간은 운동 전후 2시간 안쪽이면 충분하고, 한 끼 20~40g씩 고르게 나누는 것이 좋습니다(ISSN 2017,
+            Mamerow 2014). 운동 후 30분 골든타임과 아침·자기 전 섭취도 정리했습니다. 기준일 2026-11-02.
           </p>
         </div>
       </section>
@@ -172,7 +172,7 @@ export default function ProteinTimingPage() {
           <GuideBuySection topic="general" variant="top" />
 
           <section className={cardClass}>
-            <h2 className="text-xl font-bold text-[var(--foreground)]">시간대별로 연구가 말하는 것</h2>
+            <h2 className="text-xl font-bold text-[var(--foreground)]">단백질은 언제 먹어야 하나요?</h2>
             <div className="mt-4 overflow-x-auto">
               <table className="min-w-full border-collapse text-left text-sm">
                 <thead>

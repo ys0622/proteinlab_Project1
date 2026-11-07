@@ -164,8 +164,8 @@ export default function PregnancyProteinPage() {
             임산부 단백질, 하루 얼마나 먹어야 할까
           </h1>
           <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
-            임신 시기·나이별 권장량을 2020 한국인 영양소 섭취기준으로 계산하고, 관련 연구와 WHO 권고, 제품을 고를 때 확인할 점을
-            정리했습니다. 임신 중 식사와 보충제는 다니는 산부인과·영양 상담의 안내가 우선입니다.
+            임산부 단백질은 임신 전 권장량에 2분기 하루 15g, 3분기 30g을 더하며 1분기 추가량은 없습니다(2020 한국인
+            영양소 섭취기준). 임신 중 식사와 보충제는 다니는 산부인과·영양 상담의 안내가 우선입니다.
           </p>
         </div>
       </section>
@@ -187,7 +187,7 @@ export default function PregnancyProteinPage() {
           <GuideBuySection topic="lowSugar" variant="top" />
 
           <section className={cardClass}>
-            <h2 className="text-xl font-bold text-[var(--foreground)]">임신 시기·나이별 단백질 권장량 (2020 한국인 영양소 섭취기준)</h2>
+            <h2 className="text-xl font-bold text-[var(--foreground)]">임산부 단백질은 하루 얼마나 먹어야 하나요?</h2>
             <div className="mt-4 overflow-x-auto rounded-2xl border border-[#e2ebe4] bg-[#f7fbf8]">
               <table className="min-w-full border-collapse text-left text-sm">
                 <thead>

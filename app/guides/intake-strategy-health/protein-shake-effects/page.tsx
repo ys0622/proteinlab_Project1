@@ -8,7 +8,7 @@ import { MILK_200ML, drinkStats, shakeStats } from "@/app/lib/shakeStats";
 
 const pageTitle = "단백질 쉐이크 효과 — 근육·다이어트·포만감, 연구로 확인한 것과 아닌 것";
 const pageDescription =
-  "단백질 쉐이크·단백질 음료의 효과를 연구(Morton 2018 메타분석 49개 연구, Leidy 2015, Heymsfield 2003)로 정리했습니다. 근력 운동과 함께일 때 근육·근력, 다이어트 중 포만감과 근육 유지, 운동 없이 마실 때의 차이와 등록 쉐이크 112개 성분 중앙값까지.";
+  "단백질 쉐이크·단백질 음료 효과는 부족한 하루 단백질을 채우는 것입니다. 근력 운동과 병행한 49개 연구에서 제지방량이 평균 0.30kg 더 늘었습니다(Morton 2018).";
 const canonical = "https://proteinlab.kr/guides/intake-strategy-health/protein-shake-effects";
 
 export const metadata = {
@@ -168,8 +168,8 @@ export default function ProteinShakeEffectsPage() {
             단백질 쉐이크 효과, 연구로 확인된 것과 아닌 것
           </h1>
           <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
-            단백질 쉐이크나 단백질 음료를 마시면 근육이 붙는지, 살이 빠지는지, 운동을 안 해도 의미가 있는지. 효과를 주장하는
-            광고 대신 연구 결과와 등록 제품 성분표로 정리했습니다.
+            단백질 쉐이크·단백질 음료 효과는 부족한 하루 단백질을 채우는 것이며, 근력 운동과 병행한 49개 연구에서는
+            제지방량이 평균 0.30kg 더 늘었습니다(Morton 2018 메타분석). 운동 없이 이미 충분히 먹는 사람의 추가 효과는 작습니다.
           </p>
         </div>
       </section>
@@ -190,7 +190,7 @@ export default function ProteinShakeEffectsPage() {
           <GuideBuySection topic="workout" variant="top" />
 
           <section className={cardClass}>
-            <h2 className="text-xl font-bold text-[var(--foreground)]">기대하는 효과별 근거</h2>
+            <h2 className="text-xl font-bold text-[var(--foreground)]">단백질 쉐이크·단백질 음료 효과는 무엇인가요?</h2>
             <div className="mt-4 overflow-x-auto rounded-2xl border border-[#e8e3da] bg-[#fdfaf5]">
               <table className="min-w-full border-collapse text-left text-sm">
                 <thead>

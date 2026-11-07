@@ -193,8 +193,8 @@ export default function SeniorProteinStrategyPage() {
             노인 단백질, 하루 얼마나 먹어야 할까
           </h1>
           <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
-            65세 이상 권장량, 국제 권고, 한국 노인의 실제 섭취량, 한 끼 양과 근감소증 점검까지 공식 기준과 연구로 정리했습니다.
-            질환이 있거나 약을 먹고 있다면 이 글보다 담당 의료진의 안내가 우선입니다.
+            노인 단백질 섭취량은 65세 이상 남자 하루 60g, 여자 50g이 권장됩니다(2020 한국인 영양소 섭취기준). 질환이
+            있거나 약을 먹고 있다면 이 글보다 담당 의료진의 안내가 우선입니다.
           </p>
         </div>
       </section>
@@ -216,7 +216,7 @@ export default function SeniorProteinStrategyPage() {
           <GuideBuySection topic="general" variant="top" />
 
           <section className={cardClass}>
-            <h2 className="text-xl font-bold text-[var(--foreground)]">65세 이상 단백질 권장량 (2020 한국인 영양소 섭취기준)</h2>
+            <h2 className="text-xl font-bold text-[var(--foreground)]">노인 단백질 섭취량은 하루 얼마인가요?</h2>
             <div className="mt-4 overflow-x-auto rounded-2xl border border-[#e2ebe4] bg-[#f7fbf8]">
               <table className="min-w-full border-collapse text-left text-sm">
                 <thead>

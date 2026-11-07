@@ -183,8 +183,8 @@ export default function KidneyDiseaseProteinPage() {
             신장 질환(콩팥병) 단백질, 하루 얼마나 먹어야 할까
           </h1>
           <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
-            만성콩팥병 단계별·투석 중 단백질 섭취량을 미국 신장재단 영양 지침(KDOQI 2020), 국제 신장 지침(KDIGO 2024), 대한신장학회가
-            주관한 국내 진료지침으로 정리했습니다. 개인 목표량은 혈액검사와 영양 상태를 보고 담당 의사·영양사가 정합니다.
+            신장 질환 단백질 섭취량은 투석 전 3~5기에는 체중 1kg당 0.55~0.6g(KDOQI 2020), 투석 중에는 1.0~1.2g입니다.
+            개인 목표량은 혈액검사와 영양 상태를 보고 담당 의사·영양사가 정합니다.
           </p>
         </div>
       </section>
@@ -214,7 +214,7 @@ export default function KidneyDiseaseProteinPage() {
           </section>
 
           <section className={cardClass}>
-            <h2 className="text-xl font-bold text-[var(--foreground)]">콩팥병 단계별 단백질 기준</h2>
+            <h2 className="text-xl font-bold text-[var(--foreground)]">신장 질환·콩팥병 단백질 섭취량은 얼마인가요?</h2>
             <div className="mt-4 overflow-x-auto rounded-2xl border border-[#e2ebe4] bg-[#f7fbf8]">
               <table className="min-w-full border-collapse text-left text-sm">
                 <thead>

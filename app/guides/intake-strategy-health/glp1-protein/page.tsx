@@ -161,8 +161,8 @@ export default function Glp1ProteinPage() {
             마운자로·위고비 맞는 중 단백질, 하루 얼마나 먹어야 할까
           </h1>
           <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
-            GLP-1 계열 비만 치료제로 체중이 빠질 때 근육을 덜 잃으려면 무엇을 먹어야 하는지, 임상시험 결과와 2025년 학회 공동
-            권고로 정리했습니다. 이 글은 약 사용법이 아니라 식사 정보이며, 복용·용량은 처방 의료진의 판단을 따르세요.
+            마운자로·위고비 사용 중 단백질은 하루 80~120g 또는 감량 중 체중 1kg당 1.2~1.6g이 제안됩니다(2025 미국
+            4개 학회 공동 권고). 근력 운동을 병행하고, 신장 질환이나 심한 구토가 있으면 처방 의료진과 상담하세요.
           </p>
           <GuideProductHeroCards products={heroProducts} />
         </div>
@@ -215,7 +215,7 @@ export default function Glp1ProteinPage() {
           </section>
 
           <section className={cardClass}>
-            <h2 className="text-xl font-bold text-[var(--foreground)]">2025 학회 공동 권고 — 단백질과 운동</h2>
+            <h2 className="text-xl font-bold text-[var(--foreground)]">마운자로·위고비 사용 중 단백질은 얼마나 먹어야 하나요?</h2>
             <div className="mt-4 overflow-x-auto rounded-2xl border border-[#e8e3da] bg-[#fdfaf5]">
               <table className="min-w-full border-collapse text-left text-sm">
                 <thead>

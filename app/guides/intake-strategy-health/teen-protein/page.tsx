@@ -162,8 +162,8 @@ export default function TeenProteinPage() {
             청소년 단백질, 하루 얼마나 먹어야 할까
           </h1>
           <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
-            중학생·고등학생 권장량, 한국 청소년이 실제로 먹는 양, 다이어트·운동할 때 볼 점을 2020 한국인 영양소 섭취기준과
-            국민건강영양조사로 정리했습니다.
+            청소년 단백질 섭취량은 12~14세 남자 60g·여자 55g, 15~18세 남자 65g·여자 55g이 하루 권장량입니다(2020
+            한국인 영양소 섭취기준). 다이어트·운동할 때의 기준도 함께 정리했습니다.
           </p>
         </div>
       </section>
@@ -185,7 +185,7 @@ export default function TeenProteinPage() {
           <GuideBuySection topic="lowSugar" variant="top" />
 
           <section className={cardClass}>
-            <h2 className="text-xl font-bold text-[var(--foreground)]">청소년 단백질 기준과 실제 섭취량</h2>
+            <h2 className="text-xl font-bold text-[var(--foreground)]">청소년 단백질 섭취량은 하루 얼마인가요?</h2>
             <div className="mt-4 overflow-x-auto rounded-2xl border border-[#e2ebe4] bg-[#f7fbf8]">
               <table className="min-w-full border-collapse text-left text-sm">
                 <thead>

@@ -334,12 +334,11 @@ export default function ProteinSourceTypesGuidePage() {
           </section>
 
           <section className="rounded-2xl border border-[#e8e6e3] bg-[#fffdf8] px-5 py-5" id="plant-vs-animal">
-            <h2 className="text-xl font-bold text-[var(--foreground)]">식물성 vs 동물성 단백질 — 무엇이 다르고, 근육엔 차이가 있을까</h2>
+            <h2 className="text-xl font-bold text-[var(--foreground)]">식물성 단백질과 동물성 단백질은 무엇이 다른가요?</h2>
             <p className="mt-4 text-sm leading-6 text-[var(--foreground-muted)]">
-              한국인 영양소 섭취기준(2020) 단백질 근거 논문은 동물성 단백질과 대두 단백질을 필수아미노산이 풍부하고
-              소화율이 높은 &lsquo;질 좋은 단백질&rsquo;로, 기타 식물성 단백질은 제한아미노산이 있어 체내 이용률과 소화율이
-              낮은 경향이 있다고 정리합니다. 같은 논문은 우리나라 식사의 동물성 단백질 비중이 50% 이하로, 60~70%인
-              서양보다 낮다고 적고 있습니다.
+              식물성 단백질과 동물성 단백질의 차이는 필수아미노산과 소화율이며, 동물성과 대두는 질 좋은 단백질로, 기타
+              식물성은 체내 이용률과 소화율이 낮은 경향으로 분류됩니다(2020 한국인 영양소 섭취기준 근거 논문). 우리나라
+              식사의 동물성 단백질 비중은 50% 이하로, 60~70%인 서양보다 낮습니다.
             </p>
             <div className="mt-5 overflow-x-auto">
               <table className="min-w-full border-collapse text-left text-sm">

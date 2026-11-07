@@ -6,7 +6,7 @@ import { buildGuideJsonLd } from "@/app/lib/guideJsonLd";
 
 const pageTitle = "단백질 과다섭취 부작용 — 얼마부터 많은지, 신장에 무리가 가는지";
 const pageDescription =
-  "단백질을 많이 먹으면 생길 수 있는 문제(소화 불편, 열량 초과, 신장 질환자의 부담)와 얼마부터 많다고 보는지를 2020 한국인 영양소 섭취기준·메타분석·신장학회 지침으로 정리했습니다. 고단백 음료 40~60g 제품 기준도 함께 봅니다.";
+  "단백질 과다섭취 부작용은 소화 불편과 열량 초과가 흔하며, 공식 상한섭취량은 없습니다. 2020 한국인 영양소 섭취기준의 하루 열량 20%(2,000kcal면 100g)를 참고 기준으로 정리했습니다.";
 const canonical = "https://proteinlab.kr/guides/intake-strategy-health/high-protein-side-effects";
 
 export const metadata = {
@@ -189,8 +189,8 @@ export default function HighProteinSideEffectsPage() {
             단백질 과다섭취 부작용, 얼마부터 많고 신장에는 괜찮을까
           </h1>
           <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
-            40~60g짜리 단백질 음료까지 나오면서 &quot;너무 많이 먹는 건 아닐까&quot;라는 질문이 늘었습니다. 공식 기준과
-            연구 결과로 얼마부터 많은지, 누구에게 실제로 문제가 되는지 정리했습니다.
+            단백질 과다섭취 부작용은 소화 불편과 열량 초과가 흔하며, 공식 상한섭취량은 없습니다. 참고 기준은 하루 열량의
+            20%(2,000kcal면 100g)입니다(2020 한국인 영양소 섭취기준).
           </p>
         </div>
       </section>
@@ -211,7 +211,7 @@ export default function HighProteinSideEffectsPage() {
           <GuideBuySection topic="general" variant="top" />
 
           <section className={cardClass}>
-            <h2 className="text-xl font-bold text-[var(--foreground)]">얼마부터 &apos;많이&apos; 먹는 걸까 — 기준선 모음</h2>
+            <h2 className="text-xl font-bold text-[var(--foreground)]">단백질은 얼마부터 과다섭취인가요?</h2>
             <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">
               상한섭취량이 없기 때문에 &quot;몇 g부터 해롭다&quot;는 공식 숫자는 없습니다. 대신 판단에 쓸 수 있는 기준선은 아래와
               같습니다.

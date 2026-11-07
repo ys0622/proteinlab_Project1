@@ -13,14 +13,8 @@ export function compareLandingHref(slug: string): string {
 
 // 네이버 노출 하락(10/29~) 재측정 기간에는 새 파우더 비교 6개를 검색에서 뺀다(2026-11-05 Scott, 11/7 판단).
 // noindex·사이트맵 제외·내부 링크 제외. 기간이 끝나면 이 목록을 비운다.
-export const compareNoindexSlugs = new Set<string>([
-  "optimum-gold-standard-vs-dymatize-elite-whey",
-  "optimum-hydrowhey-vs-dymatize-iso100",
-  "selex-vs-hymune-protein-powder",
-  "newyorkwhey-protein-powder-lineup-comparison",
-  "selex-protein-powder-lineup-comparison",
-  "optimum-nutrition-protein-powder-lineup-comparison",
-]);
+// 2026-11-07 비움(Scott 진행): 6개를 뺀 뒤에도 네이버 노출 감소가 이어져 원인이 아니었다(백로그 #13). 다시 색인 허용.
+export const compareNoindexSlugs = new Set<string>([]);
 
 // 네이버 노출 하락 원인 시험(2026-11-05 Scott "시험 시작", docs/weekly/2026-11-04-rebound.md 5장 2번):
 // 10/29부터 노출이 크게 빠진 비교 페이지 10개만 10/28에 넣은 표 안 '구매' 줄을 빼고(10/27 상태) 나머지 비교 페이지와 7일 비교한다.

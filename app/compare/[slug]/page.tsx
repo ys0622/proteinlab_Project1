@@ -15,12 +15,16 @@ import { formatProductLabel } from "../../lib/productLabel";
 import { getCoupangRedirectHref } from "../../lib/purchaseLinks";
 import { getProductImageUrl } from "../../lib/productImage";
 import Image from "next/image";
+import HeroRankList, { type HeroRankListConfig } from "../../components/HeroRankList";
 import { getAllProducts } from "../../data/products";
 import type { ProductDetailProps } from "../../data/products";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
 }
+
+// 검색어 답을 첫 화면에(2026-11-07): '프로티원' 검색 방문자가 5가지 맛을 바로 보도록 두 제품 카드 대신 사진 순위 목록.
+const heroRankLists: Record<string, HeroRankListConfig> = {};
 
 const priorityConversionPlans: Record<string, { contentId: string; conclusion: string }> = {
   "proteone-vs-itthefit-shake": {
@@ -341,7 +345,9 @@ export default async function CompareLandingPage({ params }: PageProps) {
           <h1 className="text-2xl font-bold leading-[1.25] text-[#16412D] md:text-3xl">
             {landing.title}
           </h1>
-          {products.length >= 2 ? (
+          {heroRankLists[landing.slug] ? (
+            <HeroRankList config={heroRankLists[landing.slug]} contentId={`compare_hero_rank:${landing.slug}`} />
+          ) : products.length >= 2 ? (
             <>
               {/* 비교 랜딩은 제품 사진이 먼저 보여야 한다: 제목 바로 아래 두 제품 사진과 쿠팡 가격 버튼(신규 방문자 대부분이 모바일로 이 페이지에 바로 들어온다). */}
               <div className="mt-3 grid max-w-[560px] grid-cols-2 gap-2">
@@ -387,7 +393,7 @@ export default async function CompareLandingPage({ params }: PageProps) {
 
       <main className="mx-auto max-w-[1200px] px-4 pb-12 pt-6 md:px-6">
         {products.length >= 2 ? (
-          <section className="mb-6 rounded-2xl border border-[#dce8df] bg-white p-4 md:p-5" style={{ wordBreak: "keep-all" }}>
+          <section id="compare-summary" className="mb-6 scroll-mt-20 rounded-2xl border border-[#dce8df] bg-white p-4 md:p-5" style={{ wordBreak: "keep-all" }}>
             <h2 className="text-lg font-bold leading-snug text-[var(--foreground)]">성분 한눈에 비교</h2>
             {verdict ? (
               <p className="mt-2 text-sm font-semibold leading-6 text-[#16412D] md:text-[15px]">{verdict}</p>

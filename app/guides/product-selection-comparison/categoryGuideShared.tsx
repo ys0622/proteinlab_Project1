@@ -10,6 +10,7 @@ import CategoryDataSection from "@/app/components/CategoryDataSection";
 import TrackedLink from "@/app/components/TrackedLink";
 import TrackedCoupangLink from "@/app/components/TrackedCoupangLink";
 import GuideProductHeroCards, { resolveGuideHeroProducts } from "@/app/components/GuideProductHeroCards";
+import HeroRankList, { type HeroRankListConfig } from "@/app/components/HeroRankList";
 import { getProductBySlug } from "@/app/data/products";
 import { getCoupangRedirectHref, hasNoPurchasableCoupangLink } from "@/app/lib/purchaseLinks";
 import { formatProductLabel } from "@/app/lib/productLabel";
@@ -60,6 +61,7 @@ export interface CategoryGuideConfig {
   intro: string;
   summary: string[];
   comparisonTitle: string;
+  heroRankList?: HeroRankListConfig;
   comparisonColumns: string[];
   comparisonRows: CategoryMetricRow[];
   sections: CategoryGuideSection[];
@@ -325,7 +327,11 @@ export function CategoryGuidePage({ config }: { config: CategoryGuideConfig }) {
             {config.updatedAt ? <span className="text-[11px] font-medium text-[var(--foreground-muted)]">업데이트 {config.updatedAt}</span> : null}
           </div>
           <h1 className="mt-3 text-2xl font-bold leading-tight text-[#16412D] md:text-3xl">{config.title}</h1>
-          <GuideProductHeroCards products={heroProducts} />
+          {config.heroRankList ? (
+            <HeroRankList config={config.heroRankList} contentId={`guide_hero_rank:${config.slug}`} />
+          ) : (
+            <GuideProductHeroCards products={heroProducts} />
+          )}
           <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">{config.intro}</p>
         </div>
       </section>
@@ -355,7 +361,7 @@ export function CategoryGuidePage({ config }: { config: CategoryGuideConfig }) {
             </ul>
           </section>
 
-          <section className="rounded-[28px] border border-[#d9e4f0] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(32,46,68,0.05)]">
+          <section id="ranking-table" className="scroll-mt-20 rounded-[28px] border border-[#d9e4f0] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(32,46,68,0.05)]">
             <div className="flex items-center justify-between gap-4">
               <h2 className="text-xl font-bold text-[var(--foreground)]">{config.comparisonTitle}</h2>
               <span className="text-xs text-[var(--foreground-muted)]">{config.methodologyNote ?? "ProteinLab DB 기준"}</span>

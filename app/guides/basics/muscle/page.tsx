@@ -148,8 +148,8 @@ export default function MuscleGuidePage() {
             근육 합성에 단백질은 얼마나, 어떻게 먹어야 할까
           </h1>
           <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
-            근단백질 합성(MPS)은 근육 단백질이 새로 만들어지는 과정입니다. 한 끼 양, 하루 총량, 나누는 횟수, 자기 전, 나이까지
-            사람을 대상으로 한 연구 결과로 정리했습니다.
+            근육 합성을 위한 단백질 기준은 한 끼 20~40g, 하루 체중 1kg당 약 1.6g입니다(Moore 2009·Macnaughton 2016,
+            Morton 2018). 하루 총량을 3~4끼로 나누고 근력 운동을 함께해야 효과가 큽니다.
           </p>
         </div>
       </section>
@@ -170,7 +170,7 @@ export default function MuscleGuidePage() {
           <GuideBuySection topic="workout" variant="top" />
 
           <section className={cardClass}>
-            <h2 className="text-xl font-bold text-[var(--foreground)]">근육 합성을 높이는 조건과 근거</h2>
+            <h2 className="text-xl font-bold text-[var(--foreground)]">근육 합성에 단백질은 얼마나 필요한가요?</h2>
             <div className="mt-4 overflow-x-auto rounded-2xl border border-[#e2ebe4] bg-[#f7fbf8]">
               <table className="min-w-full border-collapse text-left text-sm">
                 <thead>
