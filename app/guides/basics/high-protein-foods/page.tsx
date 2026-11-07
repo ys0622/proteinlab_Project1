@@ -128,6 +128,18 @@ const productRows: Array<{ kind: string; row: ProductRow }> = [
   ...yogurtPicks.map((row) => ({ kind: "단백질 요거트", row })),
 ];
 
+// 검색어 '단백질 많은 음식 순위'·'편의점 단백질 음식'에 첫 문장으로 답한다(2026-11-07, AI 브리핑 인용용).
+const foodLabel = (f: Food) => f.name.replace(/, /g, " ");
+const heroAnswer =
+  `단백질 많은 음식 순위는 100g당 ${byProtein100g
+    .slice(0, 6)
+    .map((f) => `${foodLabel(f)} ${round1(f.protein)}g`)
+    .join(", ")} 순입니다(식약처 식품영양성분 DB). ` +
+  `편의점에서 살 수 있는 음식은 한 번 먹는 양 기준 ${storeFoods
+    .slice(0, 3)
+    .map((f) => `${foodLabel(f)}(${f.portionLabel}) ${portionProtein(f)}g`)
+    .join(", ")}이 단백질이 많습니다.`;
+
 const quickAnswer = [
   `100g당 단백질이 가장 많은 음식은 말린 수산물입니다. 식약처 식품영양성분 DB 기준 황태포 ${pollock.protein}g, 건멸치 ${anchovy.protein}g입니다. 다만 한 번에 먹는 양이 적고 건멸치는 나트륨이 100g당 ${anchovy.sodium.toLocaleString()}mg입니다.`,
   `식사로 먹는 음식 중에서는 익힌 살코기가 100g당 28~30g으로 가장 많습니다(구운 돼지 안심 30.2g, 구운 소고기 설도 28.45g, 삶은 닭가슴살 ${chickenBoiled.protein}g). 삶은 달걀 ${egg.protein}g, 두부 ${tofu.protein}g, 우유 ${milk.protein}g이 뒤를 잇습니다.`,
@@ -229,8 +241,8 @@ export default function HighProteinFoodsPage() {
           </div>
           <h1 className="mt-3 text-2xl font-bold leading-tight text-[#16412D] md:text-3xl">단백질 많은 음식 순위 25가지</h1>
           <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
-            식약처 식품영양성분 데이터베이스에서 음식마다 100g당 단백질·열량·지방을 직접 찾아 정리했습니다. 100g당 순위, 한 번 먹는
-            양으로 계산한 단백질, 열량 대비 순위를 따로 보고, 편의점에서 살 수 있는 음식과 단백질 제품도 비교합니다.
+            {heroAnswer} 식약처 식품영양성분 데이터베이스에서 음식마다 100g당 단백질·열량·지방을 직접 찾아 정리했고, 한 번 먹는
+            양으로 계산한 단백질, 열량 대비 순위, 단백질 제품도 따로 비교합니다.
           </p>
         </div>
       </section>
