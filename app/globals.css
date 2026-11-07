@@ -1338,18 +1338,24 @@ h1, h2, h3, h4, h5, h6 {
   animation: carouselSlideIn 0.32s ease;
 }
 
-/* 홈 모바일 인기 순위: 카테고리를 넘기면 민 방향에서 목록이 들어온다 */
-@keyframes popularListFromRight {
-  from { opacity: 0; transform: translateX(28px); }
-  to   { opacity: 1; transform: translateX(0); }
+/* 홈 모바일 인기 순위(2026-11-07 Scott 시안 1·2·3번): 카테고리를 바꾸면 1위부터 차례로 떠오르고, 처음 한 번은 목록이 옆으로 살짝 밀렸다 돌아와 밀 수 있음을 알린다 */
+@keyframes popularListRise {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
-@keyframes popularListFromLeft {
-  from { opacity: 0; transform: translateX(-28px); }
-  to   { opacity: 1; transform: translateX(0); }
+@keyframes popularListNudge {
+  0%, 100% { transform: translateX(0); }
+  35%, 60% { transform: translateX(-22px); }
 }
-.popular-list-from-right { animation: popularListFromRight 0.22s ease-out; }
-.popular-list-from-left { animation: popularListFromLeft 0.22s ease-out; }
+.popular-list-stagger li { animation: popularListRise 0.28s ease-out both; }
+.popular-list-stagger li:nth-child(2) { animation-delay: 0.04s; }
+.popular-list-stagger li:nth-child(3) { animation-delay: 0.08s; }
+.popular-list-stagger li:nth-child(4) { animation-delay: 0.12s; }
+.popular-list-stagger li:nth-child(5) { animation-delay: 0.16s; }
+.popular-list-nudge { animation: popularListNudge 0.9s ease-in-out; }
+.popular-tab-pill { transition: transform 0.28s cubic-bezier(0.3, 0.7, 0.2, 1); }
 @media (prefers-reduced-motion: reduce) {
-  .popular-list-from-right,
-  .popular-list-from-left { animation: none; }
+  .popular-list-stagger li,
+  .popular-list-nudge { animation: none; }
+  .popular-tab-pill { transition: none; }
 }
