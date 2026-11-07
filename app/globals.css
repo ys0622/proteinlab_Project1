@@ -1337,3 +1337,19 @@ h1, h2, h3, h4, h5, h6 {
 .carousel-slide-in {
   animation: carouselSlideIn 0.32s ease;
 }
+
+/* 홈 모바일 인기 순위: 카테고리를 넘기면 민 방향에서 목록이 들어온다 */
+@keyframes popularListFromRight {
+  from { opacity: 0; transform: translateX(28px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes popularListFromLeft {
+  from { opacity: 0; transform: translateX(-28px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+.popular-list-from-right { animation: popularListFromRight 0.22s ease-out; }
+.popular-list-from-left { animation: popularListFromLeft 0.22s ease-out; }
+@media (prefers-reduced-motion: reduce) {
+  .popular-list-from-right,
+  .popular-list-from-left { animation: none; }
+}

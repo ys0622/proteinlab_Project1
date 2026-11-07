@@ -1,7 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useRef, useState } from "react";
+import type { TouchEvent } from "react";
 import AutoProductCarousel from "./AutoProductCarousel";
 import type { ProductCardProps } from "../data/productTypes";
 import ProductCard from "./ProductCard";
@@ -28,12 +29,36 @@ interface Props {
 
 const MAX_PRODUCTS = 10;
 const MOBILE_LIST_COUNT = 5;
+// 옆으로 확실히 민 경우만 카테고리를 넘긴다(위아래 스크롤과 헷갈리지 않게).
+const SWIPE_MIN_PX = 50;
+const SWIPE_DOMINANCE = 1.5;
 
 export default function HomePopularCarousel({ products, available }: Props) {
   const [tabIdx, setTabIdx] = useState(0);
+  const [slideFrom, setSlideFrom] = useState<"left" | "right" | null>(null);
+  const touchStart = useRef<{ x: number; y: number } | null>(null);
 
   const handleTabClick = (idx: number) => {
+    if (idx === tabIdx) return;
+    setSlideFrom(idx > tabIdx ? "right" : "left");
     setTabIdx(idx);
+  };
+
+  // 모바일 목록을 왼쪽으로 밀면 다음 카테고리, 오른쪽으로 밀면 이전 카테고리(끝에서는 멈춤).
+  const handleTouchStart = (event: TouchEvent<HTMLDivElement>) => {
+    const touch = event.touches[0];
+    touchStart.current = touch ? { x: touch.clientX, y: touch.clientY } : null;
+  };
+  const handleTouchEnd = (event: TouchEvent<HTMLDivElement>) => {
+    const start = touchStart.current;
+    const touch = event.changedTouches[0];
+    touchStart.current = null;
+    if (!start || !touch) return;
+    const dx = touch.clientX - start.x;
+    const dy = touch.clientY - start.y;
+    if (Math.abs(dx) < SWIPE_MIN_PX || Math.abs(dx) < Math.abs(dy) * SWIPE_DOMINANCE) return;
+    const next = dx < 0 ? tabIdx + 1 : tabIdx - 1;
+    if (next >= 0 && next < TABS.length) handleTabClick(next);
   };
 
   const curTab = TABS[tabIdx];
@@ -108,8 +133,13 @@ export default function HomePopularCarousel({ products, available }: Props) {
           {available ? "최근 7일 조회 기록이 없습니다." : "조회 순위를 잠시 불러올 수 없습니다."}
         </div>
       ) : <>
-      <div className="md:hidden">
-        <HomePopularList products={curProducts.slice(0, MOBILE_LIST_COUNT)} category={curTab.key} />
+      <div className="touch-pan-y overscroll-x-contain md:hidden" onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd}>
+        <div
+          key={curTab.key}
+          className={slideFrom === "right" ? "popular-list-from-right" : slideFrom === "left" ? "popular-list-from-left" : undefined}
+        >
+          <HomePopularList products={curProducts.slice(0, MOBILE_LIST_COUNT)} category={curTab.key} />
+        </div>
         <Link
           href={`/trending#${curTab.key}`}
           className="mt-1.5 block rounded-xl border border-[#d9e3db] bg-white py-2 text-center text-[12px] font-bold"
