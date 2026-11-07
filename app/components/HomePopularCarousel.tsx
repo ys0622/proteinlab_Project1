@@ -5,6 +5,7 @@ import { useState } from "react";
 import AutoProductCarousel from "./AutoProductCarousel";
 import type { ProductCardProps } from "../data/productTypes";
 import ProductCard from "./ProductCard";
+import HomePopularList from "./HomePopularList";
 import type { DiscoveryReason } from "../lib/homeDiscovery";
 
 export type CarouselProduct = ProductCardProps & { rank?: number; discoveryReason?: DiscoveryReason };
@@ -26,6 +27,7 @@ interface Props {
 }
 
 const MAX_PRODUCTS = 10;
+const MOBILE_LIST_COUNT = 5;
 
 export default function HomePopularCarousel({ products, available }: Props) {
   const [tabIdx, setTabIdx] = useState(0);
@@ -56,6 +58,27 @@ export default function HomePopularCarousel({ products, available }: Props) {
           전체 순위 →
         </Link>
       </div>
+      {/* Mobile category selector */}
+      {/* 6개 카테고리가 한 줄에 다 보이게 칸을 나눠 쓴다(2026-11-05 파우더 추가). 2026-11-07 제품 위로 옮김: 아래에 있으면 작은 폰 첫 화면에서 탭이 안 보였다. */}
+      <div className="mb-2 grid grid-cols-6 gap-1 md:hidden">
+        {TABS.map((tab, i) => (
+          <button
+            key={tab.key}
+            type="button"
+            onClick={() => handleTabClick(i)}
+            aria-pressed={i === tabIdx}
+            className="inline-flex h-7 min-w-0 items-center justify-center whitespace-nowrap rounded-full px-1 text-[11px] font-bold transition-colors"
+            style={
+              i === tabIdx
+                ? { background: "#1F5A3D", color: "#fff" }
+                : { background: "#FFFDF7", color: "#5E6E61", border: "1px solid #E4D9CC" }
+            }
+          >
+            {tab.label}
+          </button>
+        ))}
+      </div>
+
       <div className="mb-3 hidden flex-nowrap items-center justify-between gap-2 md:flex">
         <h2 className="shrink-0 text-[24px] font-extrabold" style={{ color: "#1A2B1E", letterSpacing: "-0.02em" }}>
           지금 인기 제품
@@ -87,7 +110,19 @@ export default function HomePopularCarousel({ products, available }: Props) {
         <div className="rounded-xl border border-[#E3E8E4] bg-white px-4 py-6 text-center text-sm text-[#5E6E61]">
           {available ? "최근 7일 조회 기록이 없습니다." : "조회 순위를 잠시 불러올 수 없습니다."}
         </div>
-      ) : <AutoProductCarousel key={curTab.key} label="지금 인기 제품">
+      ) : <>
+      <div className="md:hidden">
+        <HomePopularList products={curProducts.slice(0, MOBILE_LIST_COUNT)} category={curTab.key} />
+        <Link
+          href={`/trending#${curTab.key}`}
+          className="mt-1.5 block rounded-xl border border-[#d9e3db] bg-white py-2 text-center text-[12px] font-bold"
+          style={{ color: "#1F5A3D" }}
+        >
+          {curTab.label} 인기 순위 더 보기 →
+        </Link>
+      </div>
+      <div className="hidden md:block">
+      <AutoProductCarousel key={curTab.key} label="지금 인기 제품">
         {curProducts.map((product, i) => {
           const reasonLabel = product.discoveryReason === "coupang_best" ? "쿠팡 베스트"
             : product.discoveryReason === "recently_added" ? "NEW" : null;
@@ -124,28 +159,9 @@ export default function HomePopularCarousel({ products, available }: Props) {
             </div>
           );
         })}
-      </AutoProductCarousel>}
-
-      {/* Mobile category selector */}
-      {/* 6개 카테고리가 한 줄에 다 보이게 칸을 나눠 쓴다(2026-11-05 파우더 추가). */}
-      <div className="mt-2 grid grid-cols-6 gap-1 md:hidden">
-        {TABS.map((tab, i) => (
-          <button
-            key={tab.key}
-            type="button"
-            onClick={() => handleTabClick(i)}
-            aria-pressed={i === tabIdx}
-            className="inline-flex h-7 min-w-0 items-center justify-center whitespace-nowrap rounded-full px-1 text-[11px] font-bold transition-colors"
-            style={
-              i === tabIdx
-                ? { background: "#1F5A3D", color: "#fff" }
-                : { background: "#FFFDF7", color: "#5E6E61", border: "1px solid #E4D9CC" }
-            }
-          >
-            {tab.label}
-          </button>
-        ))}
+      </AutoProductCarousel>
       </div>
+      </>}
 
       {/* Desktop tab dots — existing desktop UI preserved */}
       <div className="mt-3 hidden items-center justify-center gap-1.5 md:flex">
