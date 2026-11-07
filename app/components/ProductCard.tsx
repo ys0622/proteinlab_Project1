@@ -177,11 +177,16 @@ export default function ProductCard({
   const titlePrefix = capacityIndex > 0 ? name.slice(0, capacityIndex).trim() : name;
   const titleCapacityLabel = capacity ? `${capacity}${capacitySuffix}` : "";
   const canOpenDetail = Boolean(detailHref && detailHref !== "#");
+  // 요거트는 다이어트·퍼포먼스만 보인다. 통 제품(1컵 비교 밖)은 그 둘이 없어 배지가 비므로 100g당 밀도만 보인다(2026-11-07).
+  const yogurtGradeTags =
+    productType === "yogurt"
+      ? gradeTags.filter((tag) => tag.includes("가성비") || tag.includes("다이어트") || tag.includes("퍼포먼스"))
+      : [];
   const visibleGradeTags =
     productType === "yogurt"
-      ? gradeTags.filter(
-          (tag) => tag.includes("가성비") || tag.includes("다이어트") || tag.includes("퍼포먼스"),
-        )
+      ? yogurtGradeTags.length > 0
+        ? yogurtGradeTags
+        : gradeTags.filter((tag) => tag.includes("밀도"))
       : gradeTags;
   const limitedGradeTags =
     typeof maxVisibleBadges === "number"
@@ -487,9 +492,12 @@ export default function ProductCard({
           })}
           {productType === "soymilk" ? (
             <>
-              {proteinPerServing >= 8 ? (
-                <ProductBadge label={proteinPerServing >= 11 ? "고단백" : "단백질 강화"} tone={proteinPerServing >= 11 ? "grade-a" : "grade-b"} className="product-card__badge" />
-              ) : null}
+              {/* 5~7g 구간에도 구간 배지를 붙여 세 구간이 모두 보이게(2026-11-07 Scott 요청: 새 제품 배지 빠짐) */}
+              <ProductBadge
+                label={proteinPerServing >= 11 ? "고단백" : proteinPerServing >= 8 ? "단백질 강화" : "일반(5~7g)"}
+                tone={proteinPerServing >= 11 ? "grade-a" : proteinPerServing >= 8 ? "grade-b" : "grade-c"}
+                className="product-card__badge"
+              />
               {sugar != null && sugar < 3 ? <ProductBadge label="저당" tone="neutral" className="product-card__badge" /> : null}
             </>
           ) : null}

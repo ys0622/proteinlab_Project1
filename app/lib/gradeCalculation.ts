@@ -53,6 +53,8 @@ export function getPerformanceScore(p: ProductDetailProps): number {
 // 등급 백분위는 1회 제공량 비교가 되는 제품끼리만 낸다(랭킹·상품 위치와 같은 기준).
 // 요거트 400~907g 통처럼 용기 전체 수치인 제품이 다이어트 D·퍼포먼스 A를 받고 1컵 제품 등급까지 밀어내던 문제(2026-11-04).
 function isGradeComparable(p: ProductDetailProps): boolean {
+  // 파우더 중 당류 표기가 없는 통 제품은 당 0g으로 다이어트 등급이 부풀므로 밀도만 낸다(2026-11-07).
+  if (p.productType === "powder" && p.sugar == null) return false;
   return isComparableServing(p) && !p.needsServingCheck;
 }
 
@@ -139,6 +141,11 @@ export function applyYogurtGrades(products: ProductDetailProps[]): ProductDetail
 }
 
 export function applyShakeGrades(products: ProductDetailProps[]): ProductDetailProps[] {
+  return applyGradesInternal(products);
+}
+
+// 파우더도 파우더끼리 1회 제공량(스쿱) 기준으로 등급을 낸다(2026-11-07, 카드 배지가 종류 1개뿐이던 문제).
+export function applyPowderGrades(products: ProductDetailProps[]): ProductDetailProps[] {
   return applyGradesInternal(products);
 }
 

@@ -1,4 +1,4 @@
-import { applyBarGrades, applyDrinkGrades, applyShakeGrades, applyYogurtGrades } from "../lib/gradeCalculation";
+import { applyBarGrades, applyDrinkGrades, applyPowderGrades, applyShakeGrades, applyYogurtGrades } from "../lib/gradeCalculation";
 import { getBarProducts } from "./barProductsData";
 import { getDrinkProducts } from "./drinkProductsData";
 import type {
@@ -24,7 +24,7 @@ export const yogurtProducts: ProductDetailProps[] = getYogurtProducts();
 export const yogurtProductsWithGrades: ProductDetailProps[] = applyYogurtGrades(yogurtProducts);
 export const shakeProducts: ProductDetailProps[] = applyShakeGrades(getShakeProducts());
 export const soymilkProducts: ProductDetailProps[] = getSoymilkProducts();
-export const powderProducts: ProductDetailProps[] = getPowderProducts();
+export const powderProducts: ProductDetailProps[] = applyPowderGrades(getPowderProducts());
 
 function formatValue(value: number | undefined, unit: string) {
   return value != null ? `${value}${unit}` : "-";
