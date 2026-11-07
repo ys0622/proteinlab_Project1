@@ -46,6 +46,7 @@ import {
   getStaticProductsByCategory,
 } from "../../lib/productDataStatic";
 import { getProductImageUrl, getProductSpecImageUrl } from "../../lib/productImage";
+import specSearchTitleSlugs from "../../data/specSearchTitleSlugs.json";
 import { formatProductLabel } from "../../lib/productLabel";
 import { getSimilarProducts } from "../../lib/similarProducts";
 import { getProductPosition } from "../../lib/productPosition";
@@ -189,6 +190,9 @@ const PRODUCT_SEO_OVERRIDES: Record<string, { title: string; description: string
   },
 };
 
+// '제품명 + 성분표' 검색어 시험(2026-11-07): 성분표 원본이 있는 조회 상위 30개만 제목·설명에 '성분표'를 넣는다.
+const SPEC_SEARCH_TITLE_SLUGS = new Set<string>(specSearchTitleSlugs.slugs);
+
 function buildProductDescription(product: ProductDetailProps): string {
   const override = PRODUCT_SEO_OVERRIDES[product.slug];
   if (override) return override.description;
@@ -208,6 +212,9 @@ function buildProductDescription(product: ProductDetailProps): string {
           : product.productType === "soymilk"
             ? "단백질·당류 기준으로 비슷한 두유와 한눈에 비교하세요."
             : "당류·단백질 기준으로 비슷한 요거트와 한눈에 비교하세요.";
+  if (SPEC_SEARCH_TITLE_SLUGS.has(product.slug)) {
+    return `${formatProductLabel(product.brand, product.name)} 성분표 원본으로 확인한 영양성분 — ${metrics.join(" · ")}. ${tail}`;
+  }
   return `${formatProductLabel(product.brand, product.name)} — ${metrics.join(" · ")}. ${tail}`;
 }
 
@@ -223,7 +230,8 @@ function buildProductTitle(product: ProductDetailProps): string {
     product.sugar != null ? `당류 ${formatSugar(product)}` : null,
     product.calories != null ? `${product.calories}kcal` : null,
   ].filter(Boolean).join(" · ");
-  return `${labelWithSearchAlias(formatProductLabel(product.brand, product.name), product.brand)} ${metrics} — ${kind} 성분 비교`;
+  const suffix = SPEC_SEARCH_TITLE_SLUGS.has(product.slug) ? `성분표·${kind} 비교` : `${kind} 성분 비교`;
+  return `${labelWithSearchAlias(formatProductLabel(product.brand, product.name), product.brand)} ${metrics} — ${suffix}`;
 }
 
 function getCategoryDetailHref(category: "drink" | "bar" | "yogurt" | "shake" | "soymilk" | "powder"): string {
@@ -1255,7 +1263,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
             />
             {productSpecImageUrl ? (
               <section className="mt-6 rounded-[24px] border bg-white p-5 md:p-6" style={{ borderColor: "#E6DDCC" }}>
-                <h2 className="text-[17px] font-bold" style={{ color: "#1E2A22" }}>성분표 이미지</h2>
+                <h2 className="text-[17px] font-bold" style={{ color: "#1E2A22" }}>{formatProductLabel(product.brand, product.name)} 성분표</h2>
                 <div className="relative mt-4 min-h-[320px] w-full overflow-hidden rounded-xl bg-white">
                   <Image src={productSpecImageUrl} alt={`${formatProductLabel(product.brand, product.name)} 성분표`} fill className="object-contain" unoptimized />
                 </div>

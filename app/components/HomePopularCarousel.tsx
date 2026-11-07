@@ -7,6 +7,7 @@ import AutoProductCarousel from "./AutoProductCarousel";
 import type { ProductCardProps } from "../data/productTypes";
 import ProductCard from "./ProductCard";
 import HomePopularList from "./HomePopularList";
+import { event as trackEvent } from "@/lib/analytics";
 import type { DiscoveryReason } from "../lib/homeDiscovery";
 
 export type CarouselProduct = ProductCardProps & { rank?: number; discoveryReason?: DiscoveryReason };
@@ -42,8 +43,14 @@ export default function HomePopularCarousel({ products, available }: Props) {
   const touchStart = useRef<{ x: number; y: number } | null>(null);
   const mobileListRef = useRef<HTMLDivElement>(null);
 
-  const handleTabClick = (idx: number) => {
+  // 탭을 눌렀는지 밀었는지 GA4로 남긴다(2026-11-07, 밀기·힌트가 실제로 쓰이는지 보려고).
+  const handleTabClick = (idx: number, method: "tap" | "swipe" | "nav" | "dots" = "tap") => {
     if (idx === tabIdx) return;
+    trackEvent("home_popular_tab", {
+      product_category: TABS[idx].key,
+      content_id: `home_popular_${method}`,
+      method,
+    });
     setSwitched(true);
     setNudging(false);
     setTabIdx(idx);
@@ -88,7 +95,7 @@ export default function HomePopularCarousel({ products, available }: Props) {
     const dy = touch.clientY - start.y;
     if (Math.abs(dx) < SWIPE_MIN_PX || Math.abs(dx) < Math.abs(dy) * SWIPE_DOMINANCE) return;
     const next = dx < 0 ? tabIdx + 1 : tabIdx - 1;
-    if (next >= 0 && next < TABS.length) handleTabClick(next);
+    if (next >= 0 && next < TABS.length) handleTabClick(next, "swipe");
   };
 
   const curTab = TABS[tabIdx];
@@ -240,7 +247,7 @@ export default function HomePopularCarousel({ products, available }: Props) {
           <button
             key={i}
             type="button"
-            onClick={() => handleTabClick(i)}
+            onClick={() => handleTabClick(i, "dots")}
             aria-label={`${TABS[i].label} 탭`}
             className="rounded-full transition-all duration-300"
             style={{
