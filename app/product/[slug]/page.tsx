@@ -211,7 +211,9 @@ function buildProductDescription(product: ProductDetailProps): string {
           ? "칼로리·당류 기준으로 비슷한 단백질 바와 한눈에 비교하세요."
           : product.productType === "soymilk"
             ? "단백질·당류 기준으로 비슷한 두유와 한눈에 비교하세요."
-            : "당류·단백질 기준으로 비슷한 요거트와 한눈에 비교하세요.";
+            : product.productType === "powder"
+              ? "1회 제공량(1스쿱) 기준으로 비슷한 단백질 파우더와 한눈에 비교하세요."
+              : "당류·단백질 기준으로 비슷한 요거트와 한눈에 비교하세요.";
   if (SPEC_SEARCH_TITLE_SLUGS.has(product.slug)) {
     return `${formatProductLabel(product.brand, product.name)} 성분표 원본으로 확인한 영양성분 — ${metrics.join(" · ")}. ${tail}`;
   }
