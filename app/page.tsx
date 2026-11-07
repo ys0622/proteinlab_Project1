@@ -244,9 +244,9 @@ export default async function Home() {
               href={cat.href}
               eventName="home_category_click"
               eventParams={{ category: cat.countKey, destination_url: cat.href }}
-              className="group flex min-w-0 flex-col items-center justify-center gap-0.5 rounded-[10px] border border-[#E3E8E4] bg-white px-0.5 pb-1 pt-1.5 text-center lg:flex-row shadow-[0_2px_6px_rgba(20,32,26,0.07)] transition-all duration-150 hover:shadow-[0_6px_16px_rgba(20,32,26,0.10)] md:gap-1.5 md:rounded-[12px] md:border-0 md:py-2.5 lg:justify-start lg:gap-3 lg:px-3.5 lg:py-3 lg:text-left"
+              className="group flex min-w-0 flex-col items-center justify-center gap-px rounded-[10px] border border-[#E3E8E4] bg-white px-0.5 pb-1 pt-[5px] text-center lg:flex-row shadow-[0_2px_6px_rgba(20,32,26,0.07)] transition-all duration-150 hover:shadow-[0_6px_16px_rgba(20,32,26,0.10)] md:gap-1.5 md:rounded-[12px] md:border-0 md:py-2.5 lg:justify-start lg:gap-3 lg:px-3.5 lg:py-3 lg:text-left"
             >
-              <span className="relative h-[clamp(30px,9vw,38px)] w-[clamp(30px,9vw,38px)] shrink-0 overflow-hidden rounded-[7px] transition-transform duration-150 group-hover:scale-105 md:h-11 md:w-11 md:rounded-[10px] lg:h-14 lg:w-14">
+              <span className="relative h-6 w-6 shrink-0 overflow-hidden rounded-[7px] transition-transform duration-150 group-hover:scale-105 md:h-11 md:w-11 md:rounded-[10px] lg:h-14 lg:w-14">
                 <Image src={`/category-icons/${cat.icon}-v2.jpg`} alt="" fill className="object-cover" sizes="56px" />
               </span>
               <div className="min-w-0">

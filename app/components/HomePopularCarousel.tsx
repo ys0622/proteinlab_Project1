@@ -54,9 +54,6 @@ export default function HomePopularCarousel({ products, available }: Props) {
             {curTab.label}
           </span>
         </div>
-        <Link href="/trending" className="shrink-0 text-[10px] font-bold md:text-[11px]" style={{ color: "#1F5A3D" }}>
-          전체 순위 →
-        </Link>
       </div>
       {/* Mobile category selector */}
       {/* 6개 카테고리가 한 줄에 다 보이게 칸을 나눠 쓴다(2026-11-05 파우더 추가). 2026-11-07 제품 위로 옮김: 아래에 있으면 작은 폰 첫 화면에서 탭이 안 보였다. */}
