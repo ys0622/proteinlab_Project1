@@ -111,6 +111,9 @@ const BRAND_SLUG_MAP: Record<string, string> = {
   바디랩: "bodylab", // 2026-11-05 두유
   허닭: "heodak", // 2026-11-05 바
   ONE: "one-brands", // 2026-11-05 프로틴바
+  허쉬: "hershey", // 2026-11-08 음료
+  메치니코프: "metchnikoff", // 2026-11-08 요거트
+  불가리스: "bulgaris", // 2026-11-08 요거트
   파스퇴르: "pasteur", // 2026-11-05 음료
   셀렉더요그: "selecttheyog", // 2026-11-05 요거트
   성균관: "sungkyunkwan",
