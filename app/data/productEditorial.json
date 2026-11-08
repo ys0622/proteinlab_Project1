@@ -1488,5 +1488,2886 @@
       "shakeProductsData.json: capacity, proteinPerServing, calories, sugar, fat, sodium, variant, nutritionPerBottle(carbsG, fiberG, cholesterolMg)",
       "계산: proteinPerServing/calories×100, 같은 name 계열 '슬림쉐이크' 제품 비교"
     ]
+  },
+  "hymune-protein-balance-l-608": {
+    "summary": "하이뮨 프로틴 밸런스 L은 38g 한 스쿱에 단백질 20g을 담은 시니어용 파우더입니다. 원료에 농축유청·분리대두단백과 함께 산양유단백이 들어가고, 열량은 155kcal입니다.",
+    "points": [
+      "시니어 파우더 7종 중 6종이 1회 단백질 20g으로 같고, 이 제품의 100kcal당 단백질 12.9g은 그 7종 중 5번째입니다.",
+      "같은 하이뮨의 고소한맛(304g)과 스쿱·단백질·탄수화물(12g)이 같고, 열량은 이 제품이 10kcal 높습니다.",
+      "나트륨 150mg으로 시니어 파우더 중 가장 낮습니다. 경성포유틴 산양유 단백질(405mg)보다 255mg 적습니다.",
+      "전체 파우더 69종 기준으로는 100kcal당 단백질이 58번째라, 단백질만 보면 밀도가 낮은 편입니다."
+    ],
+    "goodFor": [
+      "우유 단백질에 산양유단백이 섞인 시니어용 제품을 찾는 분",
+      "608g 통으로 하루 한 스쿱씩 16회 정도 나눠 먹으려는 분"
+    ],
+    "watchOut": [
+      "데이터에 당류 값이 없고, 탄수화물은 12g입니다. 100kcal당 단백질은 같은 20g인 셀렉스 락토프리(14.4g)보다 1.5g 낮습니다."
+    ],
+    "compareSlugs": [
+      "hymune-protein-balance-savory-304",
+      "selex-protein-lactosefree-570",
+      "kyungsung-foutin-goatmilk-protein-400"
+    ],
+    "sources": [
+      "powderProductsData.json: servingSizeG, servingsPerContainer, proteinSource, proteinPerServing, calories, sugar(null), fat, sodium, nutritionPerBottle.carbsG",
+      "계산: powderType=senior 7종의 proteinPerServing·proteinPerServing/calories×100 순위(더 큰 값 수+1)",
+      "계산: 파우더 69종 proteinPerServing/calories×100 순위 = 58번째",
+      "계산: senior 7종 sodium 최솟값, kyungsung-foutin-goatmilk-protein-400과 차이 405-150",
+      "계산: hymune-protein-balance-savory-304와 calories 차이 155-145",
+      "계산: selex-protein-lactosefree-570과 proteinPerServing/calories×100 차이 14.39-12.90"
+    ]
+  },
+  "newyorkwhey-light-2000": {
+    "summary": "뉴욕웨이 라이트는 30g 한 스쿱에 단백질 23g, 120kcal인 대두·유청 혼합 파우더입니다. 같은 뉴욕웨이 올에이지보다 스쿱이 10g 작아 열량이 34kcal 낮습니다.",
+    "points": [
+      "100kcal당 단백질 19.2g으로 파우더 69종 중 25번째, 혼합 파우더 24종 중 5번째입니다.",
+      "올에이지 곡물맛(40g, 단백질 30g, 154kcal)과 비교하면 단백질은 7g 적고 나트륨은 58mg 적습니다.",
+      "같은 23g인 머슬킹 80 초코보다 열량 15kcal, 당류 3.7g, 나트륨 147mg이 낮습니다.",
+      "당류 1g, 지방 1.5g, 탄수화물 4g입니다."
+    ],
+    "goodFor": [
+      "한 스쿱 120kcal 정도로 단백질 20g대 초반을 채우고 싶은 분",
+      "유청만이 아니라 대두단백이 섞인 혼합 제품도 괜찮은 분"
+    ],
+    "watchOut": [
+      "1회 단백질이 이보다 많은 파우더가 37개입니다. 한 번에 30g 이상이 필요하면 올에이지(30g)나 아이솔레이트 쪽을 보세요."
+    ],
+    "compareSlugs": [
+      "newyorkwhey-allage-grain-2000",
+      "onedaynutrition-muscleking80-choco-2000",
+      "newyorkwhey-wpc-choco-2000"
+    ],
+    "sources": [
+      "powderProductsData.json: servingSizeG, proteinSource, proteinPerServing, calories, sugar, fat, sodium, nutritionPerBottle.carbsG",
+      "계산: 파우더 69종 proteinPerServing/calories×100 순위(반올림 전 값 비교) = 25번째, powderType=blend 24종 중 5번째",
+      "계산: proteinPerServing > 23 인 파우더 수 = 37",
+      "계산: newyorkwhey-allage-grain-2000·onedaynutrition-muscleking80-choco-2000과 servingSizeG·proteinPerServing·calories·sugar·sodium 차이"
+    ]
+  },
+  "selex-protein-lactosefree-570": {
+    "summary": "셀렉스 프로틴 락토프리는 유당을 뺀 시니어용 파우더로, 38g 한 스쿱에 단백질 20g과 139kcal를 담았습니다. 원료는 분리유단백(MPI)·분리유청단백(WPI)·분리대두단백(ISP)입니다.",
+    "points": [
+      "100kcal당 단백질 14.4g으로 시니어 파우더 7종 중 2번째입니다. 1번째는 같은 셀렉스의 락토프리 플러스(14.6g)입니다.",
+      "락토프리 플러스와 단백질·스쿱·탄수화물(7.5g)이 같고 열량은 2kcal 차이입니다. 나트륨은 이 제품이 110mg 적습니다(170mg 대 280mg).",
+      "같은 셀렉스의 고소한맛(165kcal, 지방 5.8g)보다 열량이 26kcal, 지방이 2.6g 낮습니다."
+    ],
+    "goodFor": [
+      "우유를 마시면 속이 불편해 락토프리 제품을 찾는 분",
+      "셀렉스 제품 중 나트륨을 더 낮게 두고 싶은 분"
+    ],
+    "watchOut": [
+      "데이터에 당류 값이 없습니다.",
+      "파우더 69종 기준으로 1회 단백질이 이보다 많은 제품이 57개입니다."
+    ],
+    "compareSlugs": [
+      "selex-protein-lactosefree-plus-570",
+      "selex-protein-savory-304",
+      "hymune-protein-balance-l-608"
+    ],
+    "sources": [
+      "powderProductsData.json: servingSizeG, proteinSource, proteinPerServing, calories, sugar(null), fat, sodium, nutritionPerBottle.carbsG",
+      "계산: powderType=senior 7종 proteinPerServing/calories×100 순위",
+      "계산: selex-protein-lactosefree-plus-570·selex-protein-savory-304와 calories·sodium·fat 차이",
+      "계산: proteinPerServing > 20 인 파우더 수 = 57"
+    ]
+  },
+  "onedaynutrition-muscleking80-choco-2000": {
+    "summary": "원데이뉴트리션 머슬킹 80 프로틴 초코는 35g 한 스쿱에 단백질 23g, 135kcal인 혼합 파우더입니다. 원료는 분리대두단백·농축유청단백·가수분해유청단백입니다.",
+    "points": [
+      "당류 4.7g으로 당류 값이 있는 파우더 60종 중 이보다 높은 제품은 6개뿐입니다(게이너 포함).",
+      "나트륨 299mg은 파우더 69종 중 높은 쪽으로, 이보다 많은 제품은 13개입니다.",
+      "같은 23g인 뉴욕웨이 라이트(30g, 120kcal)와 비교하면 스쿱이 5g 크고 열량이 15kcal 높습니다.",
+      "100kcal당 단백질 17.0g으로 혼합 파우더 24종 중 18번째입니다."
+    ],
+    "goodFor": [
+      "2kg 대용량 초코맛 혼합 파우더를 찾는 분",
+      "한 스쿱에 단백질 20g대 초반이면 충분한 분"
+    ],
+    "watchOut": [
+      "같은 단백질 23g 제품보다 당류(4.7g)와 나트륨(299mg)이 높습니다. 당류가 적은 쪽을 원하면 뉴욕웨이 라이트(당류 1g)를 보세요."
+    ],
+    "compareSlugs": [
+      "newyorkwhey-light-2000",
+      "startprotein-soywheyplus-chocograin-2000",
+      "newyorkwhey-wpc-choco-2000"
+    ],
+    "sources": [
+      "powderProductsData.json: servingSizeG, proteinSource, proteinPerServing, calories, sugar, fat, sodium",
+      "계산: sugar가 있는 파우더 60종 중 sugar > 4.7 인 제품 수 = 6",
+      "계산: 파우더 69종 중 sodium > 299 인 제품 수 = 13",
+      "계산: powderType=blend 24종 proteinPerServing/calories×100 순위 = 18번째",
+      "계산: newyorkwhey-light-2000과 servingSizeG·calories·sugar·sodium 차이"
+    ]
+  },
+  "on-platinum-hydrowhey-turbochoco-1640": {
+    "summary": "옵티멈뉴트리션 플래티넘 하이드로웨이 터보 초콜릿은 가수분해분리유청단백(HWPI) 한 가지로 만든 파우더입니다. 41g 한 스쿱에 단백질 30g으로, 게이너를 빼면 1회 단백질 30g 이상인 제품 9종 안에 듭니다.",
+    "points": [
+      "1회 단백질이 이보다 많은 파우더는 9개이고, 그중 3개는 300g을 한 번에 먹는 게이너입니다.",
+      "아이솔레이트 15종 중 단백질이 이보다 많은 제품은 오늘의바디 에이치프로틴 WPI(34g) 하나입니다.",
+      "100kcal당 단백질 21.4g으로 파우더 69종 중 공동 11번째입니다. 당류 1g, 지방 1g, 탄수화물 3g입니다.",
+      "같은 라인 바닐라(40g)와 단백질·열량·당류가 같고, 나트륨이 10mg 적습니다(150mg)."
+    ],
+    "goodFor": [
+      "한 스쿱으로 단백질 30g을 채우되 열량은 140kcal에 두고 싶은 분",
+      "유청 원료를 가수분해 분리유청 한 가지로 고르고 싶은 분"
+    ],
+    "watchOut": [
+      "한 스쿱이 41g으로 일반적인 30g 스쿱보다 큽니다. 100kcal당 단백질은 EVL 아이솔레이트(25.0g)보다 3.6g 낮습니다."
+    ],
+    "compareSlugs": [
+      "on-platinum-hydrowhey-vanilla-1600",
+      "oneulbody-hprotein-wpi-choco-1000",
+      "dymatize-iso100-gourmetchoco-2300"
+    ],
+    "sources": [
+      "powderProductsData.json: servingSizeG, proteinSource, proteinPerServing, calories, sugar, fat, sodium, nutritionPerBottle.carbsG",
+      "계산: 파우더 69종 proteinPerServing > 30 인 제품 수 = 9 (powderType=gainer 3개 포함)",
+      "계산: powderType=isolate 15종 중 proteinPerServing > 30 인 제품",
+      "계산: proteinPerServing/calories×100 순위 = 공동 11번째(바닐라와 같은 값), evl-isolate-doublerich-2268과 차이 25.0-21.4",
+      "계산: on-platinum-hydrowhey-vanilla-1600과 sodium 차이"
+    ]
+  },
+  "wellfit-colostrum-goatmilk-protein-500": {
+    "summary": "웰핏 고단백 초유 산양유 콜라겐 단백질은 30g 한 스쿱에 단백질 13g, 119kcal인 시니어용 파우더입니다. 원료는 분리대두단백·농축유청단백·우유단백농축(MPC)·산양유단백입니다.",
+    "points": [
+      "1회 단백질 13g은 파우더 69종 중 뒤에서 2번째입니다. 이보다 적은 제품은 뉴트리라이트 파이토 푸로틴(10g)뿐입니다.",
+      "시니어 파우더 7종 중 나머지 6종은 모두 1회 20g입니다. 하이뮨 고소한맛보다 단백질 7g, 열량 26kcal가 적습니다.",
+      "당류 7g으로 당류 값이 있는 파우더 60종 중 이보다 높은 제품은 4개입니다.",
+      "100kcal당 단백질 10.9g으로 시니어 파우더 7종 중 가장 낮습니다."
+    ],
+    "goodFor": [
+      "한 번에 많은 양보다 적은 스쿱(30g)으로 가볍게 단백질을 보태려는 분",
+      "산양유단백이 들어간 시니어용 제품을 찾는 분"
+    ],
+    "watchOut": [
+      "단백질 대비 당류가 많습니다(단백질 13g에 당류 7g). 같은 시니어용에서 단백질을 더 채우려면 하이뮨·셀렉스 20g 제품이 맞습니다."
+    ],
+    "compareSlugs": [
+      "hymune-protein-balance-savory-304",
+      "kyungsung-foutin-goatmilk-protein-400",
+      "selex-protein-lactosefree-570"
+    ],
+    "sources": [
+      "powderProductsData.json: servingSizeG, proteinSource, proteinPerServing, calories, sugar, fat, sodium",
+      "계산: 파우더 69종 proteinPerServing 오름차순(이보다 적은 제품 = nutrilite-phyto-protein-900 1개)",
+      "계산: sugar가 있는 파우더 60종 중 sugar > 7 인 제품 수 = 4",
+      "계산: powderType=senior 7종 proteinPerServing/calories×100 순위 = 7번째",
+      "계산: hymune-protein-balance-savory-304와 proteinPerServing·calories 차이"
+    ]
+  },
+  "calobye-perfect-powershake-isolate-choco-1000": {
+    "summary": "칼로바이 퍼펙트 파워쉐이크 아이솔레이트 초코는 분리유청단백(WPI)만 쓴 파우더로, 40g 한 스쿱에 단백질 27.5g을 담았습니다. 같은 분리유청 제품 중에서는 탄수화물이 11g으로 많은 편입니다.",
+    "points": [
+      "1회 단백질 27.5g은 파우더 69종 중 16번째로 많습니다(이보다 많은 제품 15개).",
+      "같은 27g대인 푸른빈 WPI(30g, 114kcal)보다 열량이 42kcal, 나트륨이 192mg 높습니다.",
+      "셀렉스 프로핏 스포츠 초콜릿(27g, 145kcal)과 비교하면 단백질은 0.5g 많고 열량은 11kcal 높습니다.",
+      "당류 0.5g으로 당류 값이 있는 파우더 60종 중 이보다 낮은 제품은 14개입니다."
+    ],
+    "goodFor": [
+      "분리유청 단독 원료이면서 초코맛을 원하는 분",
+      "1kg 통으로 25회 정도 먹으려는 분"
+    ],
+    "watchOut": [
+      "100kcal당 단백질 17.6g으로 아이솔레이트 15종 중 14번째입니다. 열량을 낮추려면 푸른빈 WPI나 EVL 아이솔레이트가 낫습니다."
+    ],
+    "compareSlugs": [
+      "selex-profit-sports-powder-choco-1035",
+      "purunbean-wpi-500",
+      "oneulbody-hprotein-wpi-choco-1000"
+    ],
+    "sources": [
+      "powderProductsData.json: servingSizeG, servingsPerContainer, proteinSource, proteinPerServing, calories, sugar, fat, sodium, nutritionPerBottle.carbsG",
+      "계산: 파우더 69종 proteinPerServing > 27.5 인 제품 수 = 15",
+      "계산: sugar가 있는 60종 중 sugar < 0.5 인 제품 수 = 14",
+      "계산: powderType=isolate 15종 proteinPerServing/calories×100 순위 = 14번째",
+      "계산: purunbean-wpi-500·selex-profit-sports-powder-choco-1035와 proteinPerServing·calories·sodium 차이"
+    ]
+  },
+  "selex-protein-savory-304": {
+    "summary": "셀렉스 프로틴 고소한맛은 38g 한 스쿱에 단백질 20g을 담은 시니어용 파우더입니다. 열량 165kcal, 지방 5.8g으로 1회 20g인 시니어 제품 중 열량과 지방이 가장 높습니다.",
+    "points": [
+      "같은 셀렉스 락토프리(139kcal, 지방 3.2g)보다 열량 26kcal, 지방 2.6g이 많습니다.",
+      "100kcal당 단백질 12.1g으로 시니어 파우더 7종 중 6번째입니다.",
+      "원료는 농축유청(WPC)·분리대두(ISP)·분리유청(WPI)으로, 기본 락토프리에 들어가는 분리유단백(MPI)이 없습니다.",
+      "304g 소용량 통으로 8회분입니다."
+    ],
+    "goodFor": [
+      "큰 통을 사기 전에 304g(8회분)으로 먼저 먹어 보려는 분",
+      "한 스쿱에 열량도 어느 정도 있는 시니어용 제품을 원하는 분"
+    ],
+    "watchOut": [
+      "데이터에 당류 값이 없습니다.",
+      "열량을 낮게 두려면 같은 20g 단백질에 137~139kcal인 셀렉스 락토프리 계열이 맞습니다."
+    ],
+    "compareSlugs": [
+      "selex-protein-lactosefree-570",
+      "hymune-protein-balance-savory-304",
+      "selex-protein-lactosefree-plus-570"
+    ],
+    "sources": [
+      "powderProductsData.json: capacity, servingSizeG, servingsPerContainer, proteinSource, proteinPerServing, calories, sugar(null), fat, sodium",
+      "계산: powderType=senior 중 proteinPerServing=20 인 6종의 calories·fat 최댓값",
+      "계산: powderType=senior 7종 proteinPerServing/calories×100 순위 = 6번째",
+      "계산: selex-protein-lactosefree-570과 calories·fat 차이"
+    ]
+  },
+  "newyorkwhey-allage-grain-2000": {
+    "summary": "뉴욕웨이 올에이지 곡물맛은 40g 한 스쿱에 단백질 30g을 담은 혼합 파우더입니다. 분리대두·분리유청·농축유청에 산양유단백까지 들어갔고, 당류는 1g입니다.",
+    "points": [
+      "1회 단백질 30g은 혼합 파우더 24종 중 6번째로 많습니다(이보다 많은 제품 5개).",
+      "100kcal당 단백질 19.5g으로 혼합 파우더 중 4번째입니다.",
+      "같은 30g인 하이드로웨이 터보 초콜릿(41g)보다 열량이 14kcal, 나트륨이 60mg 높습니다.",
+      "같은 브랜드 라이트(30g 스쿱, 23g)보다 단백질이 7g 많고 열량은 34kcal 많습니다."
+    ],
+    "goodFor": [
+      "곡물맛으로 한 스쿱에 단백질 30g을 채우고 싶은 분",
+      "유청과 대두, 산양유단백이 섞인 혼합 원료가 괜찮은 분"
+    ],
+    "watchOut": [
+      "한 스쿱이 40g이라 30g 스쿱 제품보다 가루 양이 많습니다. 열량 154kcal도 함께 보세요."
+    ],
+    "compareSlugs": [
+      "newyorkwhey-light-2000",
+      "on-platinum-hydrowhey-turbochoco-1640",
+      "calobye-balance-powershake-isolate-grain-2000"
+    ],
+    "sources": [
+      "powderProductsData.json: servingSizeG, proteinSource, proteinPerServing, calories, sugar, fat, sodium",
+      "계산: powderType=blend 24종 proteinPerServing > 30 인 제품 수 = 5, proteinPerServing/calories×100 순위 = 4번째",
+      "계산: on-platinum-hydrowhey-turbochoco-1640·newyorkwhey-light-2000과 proteinPerServing·calories·sodium 차이"
+    ]
+  },
+  "flymill-proteinshake-misugaru-630": {
+    "summary": "플라이밀 고단백 쉐이크 17곡 미숫가루는 45g 한 번에 단백질 20g, 166kcal인 식사대용 파우더입니다. 탄수화물 17.5g으로 같은 플라이밀 630g 3종 중 가장 많습니다.",
+    "points": [
+      "같은 플라이밀 초코(22g, 150kcal)보다 단백질은 2g 적고 열량은 16kcal 많습니다. 당류는 이 제품이 2.6g 적습니다(1g).",
+      "리얼초코(23.7g, 159kcal)와 비교하면 단백질이 3.7g 적습니다.",
+      "100kcal당 단백질 12.0g으로 식사대용 파우더 5종 중 가장 낮습니다.",
+      "당류 1g, 지방 3.5g, 나트륨 207.6mg입니다."
+    ],
+    "goodFor": [
+      "아침 대용으로 곡물 맛 한 잔에 열량도 160kcal대가 필요한 분",
+      "식사대용 제품 중 당류를 1g 수준으로 두고 싶은 분"
+    ],
+    "watchOut": [
+      "단백질만 보려면 같은 플라이밀 리얼초코(23.7g)나 초코(22g)가 더 많습니다."
+    ],
+    "compareSlugs": [
+      "flymill-proteinshake-choco-630",
+      "flymill-proteinshake-realchoco-630",
+      "intero-anotherlevel-choco-630"
+    ],
+    "sources": [
+      "powderProductsData.json: servingSizeG, proteinPerServing, calories, sugar, fat, sodium, nutritionPerBottle.carbsG",
+      "계산: flymill 630g 3종 carbsG 비교",
+      "계산: powderType=meal 5종 proteinPerServing/calories×100 순위 = 5번째",
+      "계산: flymill-proteinshake-choco-630·flymill-proteinshake-realchoco-630과 proteinPerServing·calories·sugar 차이"
+    ]
+  },
+  "kyungsung-foutin-goatmilk-protein-400": {
+    "summary": "경성포유틴 분리유청 산양유 단백질은 40g 한 스쿱에 단백질 20g, 145kcal인 시니어용 파우더입니다. 지방은 0.6g으로 낮지만 나트륨은 405mg입니다.",
+    "points": [
+      "나트륨 405mg은 1회 300g 게이너 3종을 빼면 파우더 중 2번째로 높습니다(머슬코어 아이솔레이트 곡물 425mg 다음).",
+      "하이뮨 고소한맛과 단백질·열량(145kcal)이 같고, 나트륨은 이 제품이 245mg 많습니다.",
+      "지방 0.6g으로 시니어 파우더 7종 중 가장 낮습니다.",
+      "100kcal당 단백질 13.8g으로 시니어 7종 중 공동 3번째입니다(하이뮨 고소한맛과 같은 값)."
+    ],
+    "goodFor": [
+      "분리유청·분리대두에 산양유단백이 들어간 시니어용 제품을 찾는 분",
+      "시니어용 중 지방이 적은 제품을 원하는 분"
+    ],
+    "watchOut": [
+      "나트륨이 405mg으로 높습니다. 같은 20g 시니어 제품 중 하이뮨 프로틴 밸런스 L은 150mg입니다.",
+      "데이터에 당류 값이 없습니다. 탄수화물은 14g입니다."
+    ],
+    "compareSlugs": [
+      "hymune-protein-balance-savory-304",
+      "hymune-protein-balance-l-608",
+      "selex-protein-lactosefree-570"
+    ],
+    "sources": [
+      "powderProductsData.json: servingSizeG, proteinSource, proteinPerServing, calories, sugar(null), fat, sodium, nutritionPerBottle.carbsG",
+      "계산: 파우더 69종 sodium 내림차순(sodium > 405 인 제품 4개 = 게이너 3개 + proteincompany-musclecore-isolate-grain-1000)",
+      "계산: powderType=senior 7종 fat 최솟값, proteinPerServing/calories×100 순위",
+      "계산: hymune-protein-balance-savory-304와 sodium 차이 405-160"
+    ]
+  },
+  "syntha6-choco-1320": {
+    "summary": "비에스엔 신타6 초코는 47g 한 스쿱에 단백질 22g, 189kcal인 혼합 파우더입니다. 농축유청·카제인칼슘·가수분해유청·분리유청을 섞었고, 지방이 5g입니다.",
+    "points": [
+      "100kcal당 단백질 11.6g으로 파우더 69종 중 61번째, 혼합 파우더 24종 중 21번째입니다.",
+      "골드스탠다드 웨이 더블 리치 초콜릿(31g, 24g)보다 단백질은 2g 적고 열량은 69kcal, 지방은 3.5g 많습니다.",
+      "같은 신타6 쿠키앤크림(200kcal)보다 열량이 11kcal 낮고 나트륨은 80mg 많습니다(240mg).",
+      "탄수화물 14g, 당류 3g입니다."
+    ],
+    "goodFor": [
+      "단백질과 함께 탄수화물·지방도 어느 정도 들어간 한 잔을 원하는 분",
+      "카제인이 섞인 혼합 원료를 찾는 분"
+    ],
+    "watchOut": [
+      "한 스쿱이 47g으로 크고 열량이 189kcal입니다. 열량 대비 단백질을 보려면 30g 스쿱의 웨이 제품이 낫습니다."
+    ],
+    "compareSlugs": [
+      "syntha6-cookiecream-1320",
+      "on-goldstandard-whey-doublerich-899",
+      "ns-proteinstandard-choco-2000"
+    ],
+    "sources": [
+      "powderProductsData.json: servingSizeG, proteinSource, proteinPerServing, calories, sugar, fat, sodium, nutritionPerBottle.carbsG",
+      "계산: 파우더 69종 proteinPerServing/calories×100 순위 = 61번째, powderType=blend 24종 중 21번째",
+      "계산: on-goldstandard-whey-doublerich-899·syntha6-cookiecream-1320과 proteinPerServing·calories·fat·sodium 차이"
+    ]
+  },
+  "nutrilite-phyto-protein-900": {
+    "summary": "뉴트리라이트 파이토 푸로틴은 대두·밀·완두단백으로 만든 식물성 파우더입니다. 1회 제공량이 12.5g으로 작아 단백질 10g, 45kcal이고, 열량은 파우더 69종 중 가장 낮습니다.",
+    "points": [
+      "1회 단백질 10g은 파우더 69종 중 가장 적습니다. 다른 제품 대부분은 20g 이상입니다.",
+      "100kcal당 단백질은 22.2g으로 파우더 중 7번째로 높습니다. 양이 적을 뿐 열량 대비 단백질은 높은 편입니다.",
+      "같은 식물성인 나우푸드 피 프로틴(33g, 24g)보다 단백질 14g, 나트륨 225mg이 적습니다.",
+      "지방 0g, 나트륨 95mg입니다."
+    ],
+    "goodFor": [
+      "음식이나 음료에 조금씩 섞어 단백질을 10g 정도 보태려는 분",
+      "동물성 원료 없이 식물성 단백질만 찾는 분"
+    ],
+    "watchOut": [
+      "한 번에 20g 이상을 채우려면 2회분 이상이 필요합니다.",
+      "데이터에 당류·탄수화물 값이 없습니다."
+    ],
+    "compareSlugs": [
+      "nowfoods-pea-protein-unflavored-907",
+      "calobye-perfect-powershake-soy-choco-1800",
+      "purunbean-wpi-500"
+    ],
+    "sources": [
+      "powderProductsData.json: servingSizeG, proteinSource, proteinPerServing, calories, sugar(null), fat, sodium, nutritionPerBottle.carbsG(없음)",
+      "계산: 파우더 69종 calories·proteinPerServing 최솟값",
+      "계산: proteinPerServing/calories×100 순위 = 7번째",
+      "계산: nowfoods-pea-protein-unflavored-907과 proteinPerServing·sodium 차이"
+    ]
+  },
+  "purunbean-wpi-500": {
+    "summary": "푸른빈 WPI 분리유청단백질은 분리유청단백만 쓴 무맛 파우더로, 30g에 단백질 27g, 114kcal입니다. 100kcal당 단백질 23.7g으로 파우더 69종 중 공동 2번째입니다.",
+    "points": [
+      "100kcal당 단백질이 이보다 높은 제품은 EVL 아이솔레이트(25.0g) 하나입니다.",
+      "원데이뉴트리션 웨이프로틴 WPI와 스쿱·단백질·열량·지방(0.4g)·나트륨(70mg)·탄수화물(0.5g)이 모두 같습니다. 데이터상 차이는 당류 값 표기 여부뿐입니다.",
+      "나트륨 70mg은 파우더 69종 중 낮은 쪽이며, 이보다 적은 제품은 5개입니다.",
+      "같은 27g인 셀렉스 프로핏 스포츠 초콜릿(45g)보다 열량이 31kcal, 나트륨이 170mg 적습니다."
+    ],
+    "goodFor": [
+      "다른 음료나 요리에 섞기 좋은 무맛 분리유청을 찾는 분",
+      "500g 작은 통(16회분)으로 먼저 써 보려는 분"
+    ],
+    "watchOut": [
+      "데이터에 당류 값이 없습니다. 같은 수치의 원데이뉴트리션 WPI는 당류 0g으로 표기돼 있습니다.",
+      "1회 단백질이 이보다 많은 파우더는 16개입니다."
+    ],
+    "compareSlugs": [
+      "onedaynutrition-wpi-1300",
+      "evl-isolate-doublerich-2268",
+      "nowfoods-whey-isolate-unflavored-2270"
+    ],
+    "sources": [
+      "powderProductsData.json: capacity, servingSizeG, servingsPerContainer, flavor, proteinSource, proteinPerServing, calories, sugar(null), fat, sodium, nutritionPerBottle.carbsG",
+      "계산: 파우더 69종 proteinPerServing/calories×100 순위 = 공동 2번째(onedaynutrition-wpi-1300과 같은 값)",
+      "계산: 파우더 69종 중 sodium < 70 인 제품 수 = 5",
+      "계산: onedaynutrition-wpi-1300 전 항목 대조, selex-profit-sports-powder-choco-1035와 calories·sodium 차이",
+      "계산: proteinPerServing > 27 인 파우더 수 = 16"
+    ]
+  },
+  "selex-protein-lactosefree-plus-570": {
+    "summary": "셀렉스 프로틴 락토프리 플러스 근력단백질은 38g 한 스쿱에 단백질 20g, 137kcal인 시니어용 파우더입니다. 시니어 파우더 7종 중 100kcal당 단백질(14.6g)이 가장 높고, 열량은 1회 단백질 13g인 웰핏(119kcal) 다음으로 낮습니다.",
+    "points": [
+      "기본 락토프리와 단백질·스쿱·탄수화물(7.5g)이 같고 열량은 2kcal 낮습니다.",
+      "원료가 기본 락토프리와 다릅니다. 분리유단백(MPI) 대신 유청단백가수분해물이 들어갑니다.",
+      "나트륨 280mg으로 기본 락토프리(170mg)보다 110mg 많습니다.",
+      "파우더 69종 전체에서는 100kcal당 단백질 53번째입니다."
+    ],
+    "goodFor": [
+      "락토프리 시니어 제품 중 열량을 가장 낮게 두고 싶은 분",
+      "유청단백가수분해물이 들어간 시니어용 제품을 찾는 분"
+    ],
+    "watchOut": [
+      "나트륨이 280mg으로 셀렉스 시니어 제품 중 가장 높습니다.",
+      "데이터에 당류 값이 없습니다."
+    ],
+    "compareSlugs": [
+      "selex-protein-lactosefree-570",
+      "selex-protein-savory-304",
+      "hymune-protein-balance-l-608"
+    ],
+    "sources": [
+      "powderProductsData.json: servingSizeG, proteinSource, proteinPerServing, calories, sugar(null), fat, sodium, nutritionPerBottle.carbsG",
+      "계산: powderType=senior 7종 calories 오름차순 = 2번째(1번째 wellfit-colostrum-goatmilk-protein-500 119kcal), proteinPerServing/calories×100 순위 = 1번째",
+      "계산: 파우더 69종 proteinPerServing/calories×100 순위 = 53번째",
+      "계산: selex-protein-lactosefree-570과 calories·sodium 차이, selex 시니어 3종 sodium 비교"
+    ]
+  },
+  "flymill-proteinshake-choco-630": {
+    "summary": "플라이밀 고단백 쉐이크 초코는 45g 한 번에 단백질 22g, 150kcal인 식사대용 파우더입니다. 같은 플라이밀 630g 3종 중 열량이 가장 낮고, 당류는 3.6g으로 가장 높습니다.",
+    "points": [
+      "인테로 어나더레벨 초코와 단백질(22g)·스쿱·탄수화물(16g)이 같습니다. 이 제품이 열량 7kcal, 당류 1.2g 많고 나트륨은 76.1mg 적습니다.",
+      "같은 플라이밀 미숫가루보다 단백질 2g이 많고 열량은 16kcal 적습니다.",
+      "100kcal당 단백질 14.7g으로 식사대용 파우더 5종 중 4번째입니다."
+    ],
+    "goodFor": [
+      "아침 대용 초코맛 한 잔에 단백질 20g대를 원하는 분",
+      "식사대용 중 나트륨을 200mg대 초반으로 두고 싶은 분"
+    ],
+    "watchOut": [
+      "당류 3.6g은 같은 플라이밀 리얼초코(1.2g)의 3배입니다. 당류를 줄이려면 리얼초코가 맞습니다."
+    ],
+    "compareSlugs": [
+      "intero-anotherlevel-choco-630",
+      "flymill-proteinshake-realchoco-630",
+      "flymill-proteinshake-misugaru-630"
+    ],
+    "sources": [
+      "powderProductsData.json: servingSizeG, proteinPerServing, calories, sugar, fat, sodium, nutritionPerBottle.carbsG",
+      "계산: flymill 630g 3종 calories·sugar 비교",
+      "계산: intero-anotherlevel-choco-630·flymill-proteinshake-misugaru-630과 proteinPerServing·calories·sugar·sodium 차이",
+      "계산: powderType=meal 5종 proteinPerServing/calories×100 순위 = 4번째"
+    ]
+  },
+  "bpi-isohd-chocobrownie-2208": {
+    "summary": "BPI 스포츠 ISO HD 초콜릿 브라우니는 분리유청단백(WPI)만 쓴 해외 직구 파우더로, 32g 한 스쿱에 단백질 25g, 120kcal입니다. 당류는 0g입니다.",
+    "points": [
+      "다이마타이즈 ISO 100 고메 초콜릿과 스쿱(32g)·단백질·열량·지방·탄수화물(2g)이 같습니다. 이 제품이 당류 1g, 나트륨 10mg 적습니다.",
+      "100kcal당 단백질 20.8g으로 파우더 69종 중 공동 13번째입니다(ISO 100과 같은 값).",
+      "당류 0g 파우더는 등록된 69종 중 12개이고, 이 제품이 그중 하나입니다."
+    ],
+    "goodFor": [
+      "당류 0g인 초코맛 분리유청을 찾는 분",
+      "2.2kg 대용량(69회분)을 오래 두고 먹으려는 분"
+    ],
+    "watchOut": [
+      "100kcal당 단백질은 EVL 아이솔레이트(25.0g)보다 4.2g 낮습니다. 열량을 더 낮추려면 EVL(100kcal)을 보세요."
+    ],
+    "compareSlugs": [
+      "dymatize-iso100-gourmetchoco-2300",
+      "evl-isolate-doublerich-2268",
+      "isopure-zerocarb-cookiecream-1360"
+    ],
+    "sources": [
+      "powderProductsData.json: servingSizeG, servingsPerContainer, proteinSource, origin, proteinPerServing, calories, sugar, fat, sodium, nutritionPerBottle.carbsG",
+      "계산: dymatize-iso100-gourmetchoco-2300과 전 항목 대조(sugar 0 대 1, sodium 170 대 180)",
+      "계산: 파우더 69종 proteinPerServing/calories×100 순위 = 공동 13번째, evl-isolate-doublerich-2268과 차이",
+      "계산: sugar == 0 인 파우더 수 = 12"
+    ]
+  },
+  "proteincompany-musclecore-isolate-choco-1000": {
+    "summary": "프로틴컴퍼니 머슬코어 아이솔레이트 초코는 분리대두단백과 분리유청단백을 섞은 파우더로, 45g 한 스쿱에 단백질 35g입니다. 300g 단위 게이너 3종을 빼면 1회 단백질이 가장 많고(뉴욕웨이 골드와 같음), 당류는 0g입니다.",
+    "points": [
+      "같은 머슬코어 곡물보다 단백질이 1g 많고 나트륨이 57mg 적습니다(368mg 대 425mg).",
+      "오늘의바디 에이치프로틴 WPI(40g, 34g)와 비교하면 단백질은 1g 많지만 열량이 24kcal, 나트륨이 266mg 높습니다.",
+      "100kcal당 단백질 20.1g으로 혼합 파우더 24종 중 2번째입니다.",
+      "당류 0g, 지방 1.6g, 탄수화물 5g입니다."
+    ],
+    "goodFor": [
+      "한 스쿱으로 단백질 35g을 채우고 싶은 분",
+      "당류 0g이면서 단백질 30g 이상인 초코맛을 찾는 분"
+    ],
+    "watchOut": [
+      "나트륨 368mg으로 파우더 69종 중 높은 편이며, 이보다 많은 제품은 9개입니다. 한 스쿱이 45g, 174kcal인 점도 함께 보세요."
+    ],
+    "compareSlugs": [
+      "proteincompany-musclecore-isolate-grain-1000",
+      "oneulbody-hprotein-wpi-choco-1000",
+      "newyorkwhey-gold-grain-3000"
+    ],
+    "sources": [
+      "powderProductsData.json: servingSizeG, proteinSource, proteinPerServing, calories, sugar, fat, sodium, nutritionPerBottle.carbsG",
+      "계산: 파우더 69종 proteinPerServing 내림차순(이보다 많은 제품 3개 = powderType=gainer, 같은 값 newyorkwhey-gold-grain-3000)",
+      "계산: powderType=blend 24종 proteinPerServing/calories×100 순위 = 2번째",
+      "계산: 파우더 69종 중 sodium > 368 인 제품 수 = 9",
+      "계산: proteincompany-musclecore-isolate-grain-1000·oneulbody-hprotein-wpi-choco-1000과 proteinPerServing·calories·sodium 차이"
+    ]
+  },
+  "personalbulk-gainer-3200": {
+    "summary": "퍼스널벌크포뮬러 게이너는 1회 제공량 120g에 417.66kcal를 담은 열량 보충용 게이너입니다. 같은 1회분에 단백질은 22g이고 탄수화물이 79.04g으로, 열량 대부분이 탄수화물에서 나옵니다.",
+    "points": [
+      "100kcal당 단백질 5.3g으로 파우더 69종 중 가장 낮습니다. 단백질보다 열량을 채우는 성격의 제품입니다.",
+      "당류 52.7g으로 당류 값이 있는 파우더 60종 중 이보다 높은 제품은 2개(뉴욕웨이 몬스터, 칼로리몬스터 쿠키 블라스트)입니다.",
+      "BUP 칼로리몬스터 초코퍼지(1회 300g)와 비교하면 1회 제공량이 180g 작고 열량은 725.34kcal 낮습니다.",
+      "지방 1.5g, 나트륨 370.04mg입니다."
+    ],
+    "goodFor": [
+      "식사량이 적어 하루 열량을 한 번에 400kcal가량 더하려는 분",
+      "300g 단위 게이너는 양이 부담스러운 분"
+    ],
+    "watchOut": [
+      "1회 당류가 52.7g입니다. 단백질 보충이 목적이면 일반 파우더(30g 스쿱, 20g대 단백질, 100~150kcal)가 맞습니다."
+    ],
+    "compareSlugs": [
+      "bup-caloriemonster-chocofudge-2000",
+      "newyorkwhey-monster-2000",
+      "bup-caloriemonster-cookieblast-4000"
+    ],
+    "sources": [
+      "powderProductsData.json: servingSizeG, powderType, proteinPerServing, calories, sugar, fat, sodium, nutritionPerBottle.carbsG",
+      "계산: 파우더 69종 proteinPerServing/calories×100 순위 = 69번째",
+      "계산: sugar가 있는 60종 중 sugar > 52.7 인 제품 = newyorkwhey-monster-2000, bup-caloriemonster-cookieblast-4000",
+      "계산: bup-caloriemonster-chocofudge-2000과 servingSizeG·calories 차이"
+    ]
+  },
+  "bup-caloriemonster-chocofudge-2000": {
+    "summary": "BUP 칼로리몬스터 게이너 초코퍼지는 1회 제공량 300g에 1,143kcal인 열량 보충용 게이너입니다. 같은 1회분에 단백질 89.1g, 탄수화물 181.2g이 들어 있습니다.",
+    "points": [
+      "1회 단백질 89.1g은 파우더 69종 중 뉴욕웨이 몬스터(122g) 다음입니다.",
+      "같은 칼로리몬스터 쿠키 블라스트(4kg)보다 단백질 7.5g이 많고 열량 35kcal, 당류 16.2g, 지방 5.1g이 적습니다.",
+      "뉴욕웨이 몬스터와 열량은 6kcal 차이지만 당류는 33.1g 적습니다(39.9g 대 73g).",
+      "100kcal당 단백질 7.8g으로 게이너 4종 중 2번째입니다."
+    ],
+    "goodFor": [
+      "체중을 늘리려고 하루 열량을 1,000kcal 넘게 더해야 하는 분",
+      "게이너 중 당류를 상대적으로 낮게 두고 싶은 분"
+    ],
+    "watchOut": [
+      "1회 300g은 한 번에 먹기 많은 양입니다. 2kg 통이 7회분입니다.",
+      "1회 나트륨이 1,165.5mg입니다."
+    ],
+    "compareSlugs": [
+      "bup-caloriemonster-cookieblast-4000",
+      "newyorkwhey-monster-2000",
+      "personalbulk-gainer-3200"
+    ],
+    "sources": [
+      "powderProductsData.json: servingSizeG, servingsPerContainer, powderType, proteinPerServing, calories, sugar, fat, sodium, nutritionPerBottle.carbsG",
+      "계산: 파우더 69종 proteinPerServing 내림차순 = 2번째",
+      "계산: bup-caloriemonster-cookieblast-4000·newyorkwhey-monster-2000과 proteinPerServing·calories·sugar·fat 차이",
+      "계산: powderType=gainer 4종 proteinPerServing/calories×100 순위 = 2번째"
+    ]
+  },
+  "proteinstory-pureprotein7-chocolat-3000": {
+    "summary": "프로틴스토리 퓨어프로틴7 쇼콜라초코는 대두·유청 원료 4가지를 섞은 혼합 파우더로, 45g 한 스쿱에 단백질 32g, 171kcal입니다. 당류는 0g입니다.",
+    "points": [
+      "1회 단백질 32g은 파우더 69종 중 이보다 많은 제품이 7개(게이너 3개 포함)입니다.",
+      "같은 32g인 뉴욕웨이 알파 곡물맛(45g)보다 열량 5kcal, 당류 5g, 나트륨 29mg이 적습니다.",
+      "100kcal당 단백질 18.7g으로 혼합 파우더 24종 중 8번째입니다.",
+      "3kg 대용량으로 67회분입니다."
+    ],
+    "goodFor": [
+      "당류 0g으로 한 스쿱에 단백질 30g 이상을 채우려는 분",
+      "3kg 큰 통으로 오래 먹으려는 분"
+    ],
+    "watchOut": [
+      "나트륨 366mg으로 파우더 69종 중 이보다 많은 제품은 10개입니다. 한 스쿱이 45g인 점도 함께 보세요."
+    ],
+    "compareSlugs": [
+      "newyorkwhey-alpha-grain-3000",
+      "proteincompany-musclecore-isolate-choco-1000",
+      "ns-proteinblend-deepchoco-2000"
+    ],
+    "sources": [
+      "powderProductsData.json: servingSizeG, servingsPerContainer, proteinSource, proteinPerServing, calories, sugar, fat, sodium",
+      "계산: 파우더 69종 proteinPerServing > 32 인 제품 수 = 7, sodium > 366 인 제품 수 = 10",
+      "계산: powderType=blend 24종 proteinPerServing/calories×100 순위 = 8번째",
+      "계산: newyorkwhey-alpha-grain-3000과 calories·sugar·sodium 차이"
+    ]
+  },
+  "nowfoods-whey-isolate-unflavored-2270": {
+    "summary": "나우푸드 웨이 프로틴 아이솔레이트 무맛은 분리유청단백만 쓴 해외 직구 파우더로, 28g 한 스쿱에 단백질 24g, 110kcal입니다. 나트륨 45mg은 파우더 69종 중 가장 낮습니다.",
+    "points": [
+      "당류 0g, 지방 0g, 탄수화물 1g입니다.",
+      "100kcal당 단백질 21.8g으로 파우더 69종 중 10번째입니다.",
+      "뉴욕웨이 WPI 초코(30g, 25g)와 비교하면 단백질은 1g 적고 열량 4kcal, 나트륨 5mg이 적습니다.",
+      "열량 110kcal는 파우더 중 낮은 쪽이며, 이보다 낮은 제품은 4개입니다."
+    ],
+    "goodFor": [
+      "나트륨을 최대한 낮게 두고 싶은 분",
+      "맛이 없는 분리유청을 다른 음료나 음식에 섞어 쓰려는 분"
+    ],
+    "watchOut": [
+      "1회 단백질이 이보다 많은 파우더가 28개입니다. 한 스쿱 28g으로 양이 작은 편입니다."
+    ],
+    "compareSlugs": [
+      "newyorkwhey-wpi-choco-2000",
+      "purunbean-wpi-500",
+      "evl-isolate-doublerich-2268"
+    ],
+    "sources": [
+      "powderProductsData.json: servingSizeG, flavor, origin, proteinSource, proteinPerServing, calories, sugar, fat, sodium, nutritionPerBottle.carbsG",
+      "계산: 파우더 69종 sodium 최솟값, calories < 110 인 제품 수 = 4, proteinPerServing > 24 인 제품 수 = 28",
+      "계산: proteinPerServing/calories×100 순위 = 10번째",
+      "계산: newyorkwhey-wpi-choco-2000과 proteinPerServing·calories·sodium 차이"
+    ]
+  },
+  "hymune-protein-balance-savory-304": {
+    "summary": "하이뮨 프로틴 밸런스 고소한맛은 38g 한 스쿱에 단백질 20g, 145kcal인 시니어용 파우더입니다. 304g 소용량 통으로 8회분입니다.",
+    "points": [
+      "같은 하이뮨의 L(608g)과 단백질·탄수화물(12g)이 같고 열량은 10kcal 낮습니다. 원료는 L의 산양유단백 대신 분리유단백(MPI)이 들어갑니다.",
+      "경성포유틴 산양유 단백질과 단백질·열량이 같고, 나트륨은 이 제품이 245mg 적습니다(160mg).",
+      "100kcal당 단백질 13.8g으로 시니어 파우더 7종 중 공동 3번째입니다(경성포유틴과 같은 값).",
+      "지방 2g으로 시니어 7종 중 경성포유틴(0.6g)·웰핏(1.8g) 다음으로 낮습니다."
+    ],
+    "goodFor": [
+      "시니어용 파우더를 304g 작은 통으로 먼저 먹어 보려는 분",
+      "시니어용 제품 중 나트륨이 적은 쪽을 고르려는 분"
+    ],
+    "watchOut": [
+      "데이터에 당류 값이 없습니다. 탄수화물은 12g입니다."
+    ],
+    "compareSlugs": [
+      "hymune-protein-balance-l-608",
+      "kyungsung-foutin-goatmilk-protein-400",
+      "selex-protein-savory-304"
+    ],
+    "sources": [
+      "powderProductsData.json: capacity, servingSizeG, servingsPerContainer, proteinSource, proteinPerServing, calories, sugar(null), fat, sodium, nutritionPerBottle.carbsG",
+      "계산: hymune-protein-balance-l-608·kyungsung-foutin-goatmilk-protein-400과 calories·sodium 차이",
+      "계산: powderType=senior 7종 proteinPerServing/calories×100 순위 = 공동 3번째(kyungsung-foutin-goatmilk-protein-400과 같은 값), fat 오름차순"
+    ]
+  },
+  "musclepharm-combat-vanilla-1810": {
+    "summary": "머슬팜 컴뱃 프로틴 파우더 바닐라는 농축유청·농축우유·분리유청에 난백단백까지 섞은 파우더로, 36g 한 스쿱에 단백질 25g입니다. 웨이(WPC) 11종 중 1회 단백질이 가장 많은 제품 3개에 듭니다.",
+    "points": [
+      "웨이 11종 중 25g은 이 제품과 다이마타이즈 엘리트 웨이 2종뿐입니다. 엘리트 웨이보다 열량이 10kcal, 지방이 1.5g 적습니다.",
+      "골드스탠다드 웨이 바닐라(31g, 24g)보다 단백질 1g이 많고 열량은 12kcal, 당류는 2g 많습니다.",
+      "100kcal당 단백질 19.2g으로 웨이 11종 중 6번째입니다.",
+      "당류 4g으로 당류 값이 있는 60종 중 이보다 높은 제품은 7개입니다."
+    ],
+    "goodFor": [
+      "여러 단백질 원료가 섞인 바닐라맛 웨이를 찾는 분",
+      "웨이 제품 중 한 스쿱에 25g을 원하는 분"
+    ],
+    "watchOut": [
+      "당류 4g은 골드스탠다드 바닐라·엘리트 웨이(2g)의 2배입니다."
+    ],
+    "compareSlugs": [
+      "dymatize-elite-whey-gourmetvanilla-2300",
+      "on-goldstandard-whey-vanilla-2270",
+      "dymatize-elite-whey-richchoco-2300"
+    ],
+    "sources": [
+      "powderProductsData.json: servingSizeG, proteinSource, proteinPerServing, calories, sugar, fat, sodium",
+      "계산: powderType=whey 11종 proteinPerServing 최댓값(25g 3종), proteinPerServing/calories×100 순위 = 6번째",
+      "계산: sugar가 있는 60종 중 sugar > 4 인 제품 수 = 7",
+      "계산: dymatize-elite-whey-gourmetvanilla-2300·on-goldstandard-whey-vanilla-2270과 proteinPerServing·calories·sugar·fat 차이"
+    ]
+  },
+  "newyorkwhey-monster-2000": {
+    "summary": "뉴욕웨이 몬스터는 1회 제공량 300g에 1,149kcal인 열량 보충용 게이너입니다. 1회 단백질 122g은 파우더 69종 중 가장 많지만 당류 73g, 나트륨 1,479mg도 가장 많습니다.",
+    "points": [
+      "BUP 칼로리몬스터 초코퍼지와 열량은 6kcal 차이고, 단백질은 이 제품이 32.9g 많습니다.",
+      "100kcal당 단백질 10.6g으로 게이너 4종 중 가장 높습니다.",
+      "탄수화물 149g으로 칼로리몬스터 2종(181.2g·186g)보다는 적습니다.",
+      "2kg 통이 6회분입니다."
+    ],
+    "goodFor": [
+      "체중을 늘리려고 열량과 단백질을 한 번에 크게 더해야 하는 분",
+      "게이너 중 1회 단백질이 가장 많은 제품을 원하는 분"
+    ],
+    "watchOut": [
+      "1회 당류 73g, 나트륨 1,479mg으로 등록된 파우더 중 둘 다 가장 높습니다. 나눠 먹는 방법도 생각해 보세요."
+    ],
+    "compareSlugs": [
+      "bup-caloriemonster-chocofudge-2000",
+      "bup-caloriemonster-cookieblast-4000",
+      "personalbulk-gainer-3200"
+    ],
+    "sources": [
+      "powderProductsData.json: servingSizeG, servingsPerContainer, powderType, proteinPerServing, calories, sugar, fat, sodium, nutritionPerBottle.carbsG",
+      "계산: 파우더 69종 proteinPerServing·sugar·sodium 최댓값",
+      "계산: powderType=gainer 4종 proteinPerServing/calories×100 순위 = 1번째, carbsG 비교",
+      "계산: bup-caloriemonster-chocofudge-2000과 calories·proteinPerServing 차이"
+    ]
+  },
+  "intero-anotherlevel-choco-630": {
+    "summary": "인테로 어나더레벨 단백질 쉐이크 초코는 45g 한 번에 단백질 22g, 143kcal인 식사대용 파우더입니다. 원료는 분리대두단백과 분리밀크단백(MPI)입니다.",
+    "points": [
+      "100kcal당 단백질 15.4g으로 식사대용 파우더 5종 중 프로티원 곡물맛과 함께 가장 높습니다(같은 값).",
+      "플라이밀 초코와 단백질·탄수화물(16g)이 같고, 이 제품이 열량 7kcal, 당류 1.2g 적습니다.",
+      "플라이밀 리얼초코(23.7g)와 비교하면 단백질 1.7g, 열량 16kcal가 적습니다."
+    ],
+    "goodFor": [
+      "식사대용 쉐이크 중 열량 대비 단백질이 높은 쪽을 고르려는 분",
+      "아침에 초코맛 한 잔으로 단백질 20g대를 채우려는 분"
+    ],
+    "watchOut": [
+      "나트륨 293mg으로 식사대용 5종 중 가장 높습니다. 플라이밀 초코(216.9mg)보다 76.1mg 많습니다."
+    ],
+    "compareSlugs": [
+      "flymill-proteinshake-choco-630",
+      "flymill-proteinshake-realchoco-630",
+      "proteone-proteinshake-grain-490"
+    ],
+    "sources": [
+      "powderProductsData.json: servingSizeG, proteinSource, proteinPerServing, calories, sugar, fat, sodium, nutritionPerBottle.carbsG",
+      "계산: powderType=meal 5종 proteinPerServing/calories×100 순위 = 1번째(proteone-proteinshake-grain-490과 같은 값 2/13), sodium 최댓값",
+      "계산: flymill-proteinshake-choco-630·flymill-proteinshake-realchoco-630과 proteinPerServing·calories·sugar·sodium 차이"
+    ]
+  },
+  "on-goldstandard-whey-doublerich-899": {
+    "summary": "옵티멈뉴트리션 골드스탠다드 웨이 더블 리치 초콜릿은 분리유청·농축유청·가수분해유청을 섞은 파우더로, 31g 한 스쿱에 단백질 24g, 120kcal입니다. 899g 소용량 통(29회분)입니다.",
+    "points": [
+      "100kcal당 단백질 20.0g으로 웨이(WPC) 11종 중 공동 2번째입니다.",
+      "같은 골드스탠다드 익스트림 밀크 초콜릿(2.27kg)과 단백질·열량·나트륨(130mg)이 같고, 이 제품이 당류 1g, 지방 0.5g 적습니다.",
+      "나트륨 130mg은 파우더 69종 중 낮은 쪽이며, 이보다 적은 제품은 13개입니다.",
+      "당류 1g, 지방 1.5g, 탄수화물 3g입니다."
+    ],
+    "goodFor": [
+      "큰 통 대신 1kg 미만 통으로 웨이를 먹어 보려는 분",
+      "30g 안팎 한 스쿱에 120kcal 정도인 웨이를 찾는 분"
+    ],
+    "watchOut": [
+      "1회 단백질이 이보다 많은 파우더가 28개입니다. 25g 이상이 필요하면 다이마타이즈 엘리트 웨이(25g)를 보세요."
+    ],
+    "compareSlugs": [
+      "on-goldstandard-whey-extrememilkchoco-2270",
+      "on-goldstandard-whey-vanilla-2270",
+      "dymatize-elite-whey-richchoco-2300"
+    ],
+    "sources": [
+      "powderProductsData.json: capacity, servingSizeG, servingsPerContainer, proteinSource, proteinPerServing, calories, sugar, fat, sodium, nutritionPerBottle.carbsG",
+      "계산: powderType=whey 11종 proteinPerServing/calories×100 순위 = 공동 2번째(3개 같은 값)",
+      "계산: 파우더 69종 중 sodium < 130 인 제품 수 = 13, proteinPerServing > 24 인 제품 수 = 28",
+      "계산: on-goldstandard-whey-extrememilkchoco-2270과 sugar·fat 차이"
+    ]
+  },
+  "newyorkwhey-wpi-choco-2000": {
+    "summary": "뉴욕웨이 WPI 초코는 분리유청단백(WPI)에 분리우유·분리대두단백을 더한 파우더로, 30g 한 스쿱에 단백질 25g, 114kcal입니다. 당류·지방 0g, 나트륨 50mg입니다.",
+    "points": [
+      "나트륨 50mg은 파우더 69종 중 나우푸드 WPI(45mg) 다음으로 낮습니다(같은 50mg 제품 2개 더 있음).",
+      "100kcal당 단백질 21.9g으로 파우더 69종 중 9번째입니다.",
+      "같은 뉴욕웨이 WPC 초코(22g, 119kcal)보다 단백질 3g이 많고 열량 5kcal, 당류 2g, 나트륨 28mg이 적습니다."
+    ],
+    "goodFor": [
+      "당류·지방 0g인 초코맛 파우더를 찾는 분",
+      "나트륨을 낮게 두면서 한 스쿱에 25g을 채우려는 분"
+    ],
+    "watchOut": [
+      "100kcal당 단백질은 EVL 아이솔레이트(25.0g)보다 3.1g 낮습니다."
+    ],
+    "compareSlugs": [
+      "newyorkwhey-wpc-choco-2000",
+      "nowfoods-whey-isolate-unflavored-2270",
+      "evl-isolate-doublerich-2268"
+    ],
+    "sources": [
+      "powderProductsData.json: servingSizeG, proteinSource, proteinPerServing, calories, sugar, fat, sodium",
+      "계산: 파우더 69종 sodium 오름차순(sodium < 50 인 제품 1개, sodium = 50 인 다른 제품 2개)",
+      "계산: proteinPerServing/calories×100 순위 = 9번째, evl-isolate-doublerich-2268과 차이",
+      "계산: newyorkwhey-wpc-choco-2000과 proteinPerServing·calories·sugar·sodium 차이"
+    ]
+  },
+  "nowfoods-pea-protein-unflavored-907": {
+    "summary": "나우푸드 피 프로틴 무맛은 분리완두단백 하나로 만든 식물성 파우더로, 33g에 단백질 24g, 120kcal입니다. 식물성 파우더 3종 중 1회 단백질이 가장 많습니다.",
+    "points": [
+      "같은 식물성인 칼로바이 소이 프로틴 초코(30g, 21g)와 열량이 같고 단백질은 3g 많습니다.",
+      "100kcal당 단백질 20.0g으로 파우더 69종 중 공동 17번째입니다.",
+      "당류 0g, 탄수화물 1g, 지방 2g입니다."
+    ],
+    "goodFor": [
+      "유제품·대두를 빼고 완두단백만 쓴 제품을 찾는 분",
+      "무맛 식물성 단백질을 다른 음료에 섞어 쓰려는 분"
+    ],
+    "watchOut": [
+      "나트륨 320mg으로 칼로바이 소이 프로틴(170mg)보다 150mg 많습니다. 파우더 69종 중 이보다 나트륨이 많은 제품은 11개입니다."
+    ],
+    "compareSlugs": [
+      "calobye-perfect-powershake-soy-choco-1800",
+      "nutrilite-phyto-protein-900",
+      "nowfoods-whey-isolate-unflavored-2270"
+    ],
+    "sources": [
+      "powderProductsData.json: servingSizeG, flavor, proteinSource, proteinPerServing, calories, sugar, fat, sodium, nutritionPerBottle.carbsG",
+      "계산: powderType=plant 3종 proteinPerServing 최댓값",
+      "계산: 파우더 69종 proteinPerServing/calories×100 순위 = 공동 17번째(같은 값 4개), sodium > 320 인 제품 수 = 11",
+      "계산: calobye-perfect-powershake-soy-choco-1800과 proteinPerServing·calories·sodium 차이"
+    ]
+  },
+  "evl-isolate-doublerich-2268": {
+    "summary": "EVL뉴트리션 아이솔레이트 프로틴 더블 리치 초콜릿은 분리유청단백(WPI)만 쓴 해외 직구 파우더로, 31.4g에 단백질 25g, 100kcal입니다. 100kcal당 단백질 25.0g으로 파우더 69종 중 가장 높습니다.",
+    "points": [
+      "열량 100kcal는 파우더 중 뉴트리라이트 파이토 푸로틴(1회 10g, 45kcal) 다음으로 낮습니다.",
+      "아이소퓨어 제로 카브 쿠키앤크림(25g)과 단백질이 같고, 이 제품이 열량 10kcal, 나트륨 30mg 적습니다.",
+      "마이프로틴 임팩트 웨이 아이솔레이트(24g, 105kcal)보다 단백질 1g 많고 열량 5kcal 적습니다.",
+      "당류 0g, 지방 0g, 탄수화물 1g입니다."
+    ],
+    "goodFor": [
+      "열량을 최대한 낮추면서 한 스쿱에 단백질 25g을 채우려는 분",
+      "당류·지방 0g인 초코맛 분리유청을 찾는 분"
+    ],
+    "watchOut": [
+      "나트륨 210mg으로 마이프로틴 임팩트 웨이 아이솔레이트(75mg)보다 135mg 많습니다."
+    ],
+    "compareSlugs": [
+      "isopure-zerocarb-cookiecream-1360",
+      "myprotein-impactisolate-choco-1000",
+      "dymatize-iso100-gourmetchoco-2300"
+    ],
+    "sources": [
+      "powderProductsData.json: servingSizeG, origin, proteinSource, proteinPerServing, calories, sugar, fat, sodium, nutritionPerBottle.carbsG",
+      "계산: 파우더 69종 proteinPerServing/calories×100 최댓값, calories 오름차순 = 2번째",
+      "계산: isopure-zerocarb-cookiecream-1360·myprotein-impactisolate-choco-1000과 proteinPerServing·calories·sodium 차이"
+    ]
+  },
+  "flymill-proteinshake-realchoco-630": {
+    "summary": "플라이밀 리얼초코 고단백 쉐이크는 45g 한 번에 단백질 23.7g, 159kcal인 식사대용 파우더입니다. 식사대용 파우더 5종 중 1회 단백질이 가장 많고, 원료에 콜라겐펩타이드가 들어 있습니다.",
+    "points": [
+      "같은 플라이밀 초코(22g)보다 단백질이 1.7g 많고 당류는 1.2g으로 2.4g 적습니다.",
+      "같은 플라이밀 미숫가루(20g)보다 단백질 3.7g이 많고 열량은 7kcal 적습니다.",
+      "인테로 어나더레벨 초코보다 열량이 16kcal 높고 나트륨은 87.9mg 적습니다.",
+      "100kcal당 단백질 14.9g으로 식사대용 5종 중 3번째입니다."
+    ],
+    "goodFor": [
+      "식사대용 초코맛 중 단백질과 당류를 같이 따지는 분",
+      "아침 한 잔에 열량 150kcal 이상이 필요한 분"
+    ],
+    "watchOut": [
+      "단백질 원료 표기의 첫 번째가 콜라겐펩타이드로, 같은 플라이밀 초코·미숫가루(분리대두단백이 첫 번째)와 원료 구성이 다릅니다."
+    ],
+    "compareSlugs": [
+      "flymill-proteinshake-choco-630",
+      "intero-anotherlevel-choco-630",
+      "flymill-proteinshake-misugaru-630"
+    ],
+    "sources": [
+      "powderProductsData.json: servingSizeG, proteinSource, proteinPerServing, calories, sugar, fat, sodium",
+      "계산: powderType=meal 5종 proteinPerServing 최댓값, proteinPerServing/calories×100 순위 = 3번째",
+      "계산: flymill-proteinshake-choco-630(22-23.7, 3.6-1.2), flymill-proteinshake-misugaru-630, intero-anotherlevel-choco-630과 차이"
+    ]
+  },
+  "on-platinum-hydrowhey-vanilla-1600": {
+    "summary": "옵티멈뉴트리션 플래티넘 하이드로웨이 바닐라는 가수분해분리유청단백(HWPI)으로 만든 해외 직구 파우더로, 40g 한 스쿱에 단백질 30g, 140kcal입니다. 같은 라인 터보 초콜릿과 수치가 거의 같습니다.",
+    "points": [
+      "터보 초콜릿(41g)과 단백질·열량·당류(1g)·지방(1g)·탄수화물(3g)이 같고, 나트륨이 10mg 많습니다(160mg).",
+      "아이솔레이트 15종 중 1회 단백질이 이보다 많은 제품은 오늘의바디 에이치프로틴 WPI(34g) 하나입니다.",
+      "100kcal당 단백질 21.4g으로 파우더 69종 중 공동 11번째입니다."
+    ],
+    "goodFor": [
+      "바닐라맛으로 한 스쿱에 단백질 30g을 채우려는 분",
+      "가수분해 분리유청 단독 원료를 찾는 분"
+    ],
+    "watchOut": [
+      "한 스쿱이 40g입니다. 100kcal당 단백질은 EVL 아이솔레이트(25.0g)보다 3.6g 낮습니다."
+    ],
+    "compareSlugs": [
+      "on-platinum-hydrowhey-turbochoco-1640",
+      "oneulbody-hprotein-wpi-choco-1000",
+      "on-goldstandard-whey-vanilla-2270"
+    ],
+    "sources": [
+      "powderProductsData.json: servingSizeG, origin, proteinSource, proteinPerServing, calories, sugar, fat, sodium, nutritionPerBottle.carbsG",
+      "계산: on-platinum-hydrowhey-turbochoco-1640과 전 항목 대조",
+      "계산: powderType=isolate 15종 proteinPerServing > 30 인 제품, 파우더 69종 proteinPerServing/calories×100 순위 = 공동 11번째(터보 초콜릿과 같은 값)"
+    ]
+  },
+  "selex-profit-sports-powder-choco-1035": {
+    "summary": "셀렉스 프로핏 스포츠 프로틴 파우더 초콜릿은 분리유청단백(WPI)만 쓴 파우더로, 45g 한 스쿱에 단백질 27g, 145kcal입니다. 지방은 0g이지만 탄수화물이 14g입니다.",
+    "points": [
+      "같은 27g인 푸른빈 WPI(30g, 114kcal)보다 스쿱이 15g 크고 열량이 31kcal, 나트륨이 170mg 많습니다.",
+      "칼로바이 아이솔레이트 초코(27.5g)보다 열량은 11kcal 낮고 지방은 2g 적습니다.",
+      "100kcal당 단백질 18.6g으로 아이솔레이트 15종 중 13번째입니다.",
+      "1회 단백질이 이보다 많은 파우더는 16개입니다."
+    ],
+    "goodFor": [
+      "국내 브랜드 분리유청 초코맛을 찾는 분",
+      "단백질과 함께 탄수화물이 조금 있는 한 잔을 원하는 분"
+    ],
+    "watchOut": [
+      "분리유청 제품치고 한 스쿱(45g)과 탄수화물(14g)이 큽니다. 열량을 낮추려면 30g 스쿱의 WPI 제품을 보세요."
+    ],
+    "compareSlugs": [
+      "calobye-perfect-powershake-isolate-choco-1000",
+      "purunbean-wpi-500",
+      "oneulbody-hprotein-wpi-choco-1000"
+    ],
+    "sources": [
+      "powderProductsData.json: servingSizeG, proteinSource, proteinPerServing, calories, sugar, fat, sodium, nutritionPerBottle.carbsG",
+      "계산: purunbean-wpi-500·calobye-perfect-powershake-isolate-choco-1000과 servingSizeG·calories·fat·sodium 차이",
+      "계산: powderType=isolate 15종 proteinPerServing/calories×100 순위 = 13번째, 파우더 69종 proteinPerServing > 27 인 제품 수 = 16"
+    ]
+  },
+  "dymatize-elite-whey-richchoco-2300": {
+    "summary": "다이마타이즈 엘리트 웨이 프로틴 리치 초콜릿은 농축유청·분리유청·가수분해유청을 섞은 해외 직구 파우더로, 36g 한 스쿱에 단백질 25g, 140kcal입니다. 웨이(WPC) 11종 중 1회 단백질이 가장 많은 쪽입니다.",
+    "points": [
+      "같은 엘리트 웨이 고메 바닐라(34g)와 단백질·열량·당류(2g)·지방(3g)이 같고, 나트륨은 이 제품이 65mg 많습니다(160mg).",
+      "머슬팜 컴뱃 바닐라(25g, 130kcal)보다 열량이 10kcal, 지방이 1.5g 많습니다.",
+      "100kcal당 단백질 17.9g으로 웨이 11종 중 공동 9번째입니다."
+    ],
+    "goodFor": [
+      "웨이 제품 중 한 스쿱에 25g을 원하는 분",
+      "2.3kg 대용량(63회분) 초코맛을 찾는 분"
+    ],
+    "watchOut": [
+      "지방 3g으로 웨이 제품 중 높은 편입니다. 같은 초코 계열 골드스탠다드 더블 리치(24g)는 120kcal, 지방 1.5g입니다."
+    ],
+    "compareSlugs": [
+      "dymatize-elite-whey-gourmetvanilla-2300",
+      "musclepharm-combat-vanilla-1810",
+      "on-goldstandard-whey-doublerich-899"
+    ],
+    "sources": [
+      "powderProductsData.json: servingSizeG, servingsPerContainer, origin, proteinSource, proteinPerServing, calories, sugar, fat, sodium",
+      "계산: dymatize-elite-whey-gourmetvanilla-2300과 전 항목 대조(sodium 160-95)",
+      "계산: musclepharm-combat-vanilla-1810과 calories·fat 차이",
+      "계산: powderType=whey 11종 proteinPerServing 최댓값, proteinPerServing/calories×100 순위 = 공동 9번째(고메 바닐라와 같은 값)"
+    ]
+  },
+  "dymatize-iso100-gourmetchoco-2300": {
+    "summary": "다이마타이즈 ISO 100 고메 초콜릿은 가수분해분리유청(HWPI)과 분리유청(WPI)으로 만든 해외 직구 파우더로, 32g 한 스쿱에 단백질 25g, 120kcal입니다. 당류 1g, 지방 1g, 탄수화물 2g입니다.",
+    "points": [
+      "BPI ISO HD 초콜릿 브라우니와 스쿱·단백질·열량·지방·탄수화물이 같고, 이 제품이 당류 1g, 나트륨 10mg 많습니다.",
+      "EVL 아이솔레이트(31.4g, 25g)와 단백질이 같고 열량은 20kcal 높습니다.",
+      "100kcal당 단백질 20.8g으로 파우더 69종 중 공동 13번째입니다."
+    ],
+    "goodFor": [
+      "가수분해 분리유청이 들어간 초코맛을 찾는 분",
+      "한 스쿱 120kcal로 단백질 25g을 채우려는 분"
+    ],
+    "watchOut": [
+      "같은 수치대에서 당류 0g을 원하면 BPI ISO HD(당류 0g)나 EVL 아이솔레이트(0g)가 맞습니다."
+    ],
+    "compareSlugs": [
+      "bpi-isohd-chocobrownie-2208",
+      "evl-isolate-doublerich-2268",
+      "on-platinum-hydrowhey-turbochoco-1640"
+    ],
+    "sources": [
+      "powderProductsData.json: servingSizeG, origin, proteinSource, proteinPerServing, calories, sugar, fat, sodium, nutritionPerBottle.carbsG",
+      "계산: bpi-isohd-chocobrownie-2208과 전 항목 대조, evl-isolate-doublerich-2268과 calories 차이",
+      "계산: 파우더 69종 proteinPerServing/calories×100 순위 = 공동 13번째(bpi-isohd-chocobrownie-2208과 같은 값)"
+    ]
+  },
+  "ns-proteinblend-deepchoco-2000": {
+    "summary": "NS 프로틴 블렌드 딥초코는 분리대두단백·농축유청단백·분리유청단백·카제인 등을 섞은 2kg 혼합 파우더입니다. 1회 제공량이 55g으로 게이너를 뺀 파우더 중 가장 많고, 한 번에 단백질 28.4g과 213kcal를 담았습니다.",
+    "points": [
+      "1회 단백질 28.4g보다 많은 파우더는 69종 중 12개이고, 그중 3개는 1회 300g 게이너입니다.",
+      "1회 열량 213kcal는 게이너 4종을 빼면 가장 높습니다. 탄수화물 19.8g도 뉴욕웨이 스포츠(20g) 다음입니다.",
+      "100kcal당 단백질은 13.3g으로 69종 중 57번째입니다.",
+      "같은 NS의 프로틴 스탠다드는 1회 50g에 단백질 28.1g으로 거의 같고 열량은 21kcal 낮습니다."
+    ],
+    "goodFor": [
+      "탄수화물까지 들어간 한 잔으로 운동 전 공복을 채우려는 분",
+      "스쿱 양이 많아도 한 번에 단백질 28g 이상을 타려는 분"
+    ],
+    "watchOut": [
+      "열량 대비 단백질이 낮은 편입니다. 같은 단백질을 열량 적게 채우려면 100kcal당 23.7g인 원데이뉴트리션 WPI 같은 아이솔레이트가 맞습니다."
+    ],
+    "compareSlugs": [
+      "ns-proteinstandard-choco-2000",
+      "newyorkwhey-gold-grain-3000",
+      "calobye-balance-powershake-isolate-grain-2000"
+    ],
+    "sources": [
+      "powderProductsData.json: servingSizeG, proteinPerServing, calories, sugar, fat, sodium, nutritionPerBottle.carbsG, proteinSource",
+      "계산: 파우더 69종에서 proteinPerServing > 28.4 인 제품 수(12, 게이너 3 포함)",
+      "계산: servingSizeG < 100 인 65종에서 servingSizeG·calories·carbsG 최댓값 비교",
+      "계산: proteinPerServing/calories×100 내림차순 순위(69종, 같은 값은 같은 순위)"
+    ]
+  },
+  "proteone-proteinshake-grain-490": {
+    "summary": "프로티원 단백질 쉐이크 곡물맛은 분리대두단백·분리유청단백을 쓴 490g 식사대용형 파우더입니다. 1회 35g에 단백질 18g, 117kcal로 식사대용 5종 가운데 단백질은 가장 적고 열량도 가장 낮습니다.",
+    "points": [
+      "100kcal당 단백질 15.4g은 식사대용 5종 중 인테로 어나더레벨 초코와 함께 가장 높습니다.",
+      "1회 제공량 35g은 같은 유형 다른 4종(45g)보다 10g 적습니다.",
+      "1회 단백질 18g보다 적은 파우더는 69종 중 2개뿐입니다.",
+      "490g에 14회분으로, 같은 유형 630g 제품들과 회분 수가 같습니다."
+    ],
+    "goodFor": [
+      "아침을 거르기 쉬워 가볍게 한 잔 타 먹을 곡물맛 파우더를 찾는 분",
+      "대용량 통보다 작은 490g으로 먼저 써 보려는 분"
+    ],
+    "watchOut": [
+      "1회 단백질 20g 이상인 파우더가 69종 중 66개라, 18g은 적은 쪽입니다. 단백질을 더 원하면 같은 유형 플라이밀 리얼초코가 45g에 23.7g입니다."
+    ],
+    "compareSlugs": [
+      "flymill-proteinshake-realchoco-630",
+      "intero-anotherlevel-choco-630",
+      "flymill-proteinshake-misugaru-630"
+    ],
+    "sources": [
+      "powderProductsData.json: servingSizeG, servingsPerContainer, proteinPerServing, calories, powderType, proteinSource",
+      "계산: powderType=meal 5종의 proteinPerServing·calories·servingSizeG·servingsPerContainer 비교, 밀도 순위",
+      "계산: 69종에서 proteinPerServing < 18 인 제품 수(2), proteinPerServing ≥ 20 인 제품 수(66)"
+    ]
+  },
+  "onedaynutrition-wpi-1300": {
+    "summary": "원데이뉴트리션 웨이프로틴 WPI는 분리유청단백(WPI)만 쓴 1.3kg 아이솔레이트입니다. 30g 한 스쿱에 단백질 27g이 들어 있어 제공량 대비 단백질 비율 90%가 푸른빈 WPI와 함께 69종 중 가장 높습니다.",
+    "points": [
+      "100kcal당 단백질 23.7g으로 EVL 아이솔레이트(25.0g) 다음이며, 푸른빈 WPI와 같은 값입니다.",
+      "탄수화물 0.5g, 당류 0g, 지방 0.4g이라 114kcal 대부분이 단백질 몫입니다.",
+      "나트륨 70mg보다 낮은 파우더는 69종 중 5개뿐입니다.",
+      "푸른빈 WPI 500g과 1회 제공량·단백질·열량·나트륨이 같고, 통 용량은 1.3kg으로 더 큽니다."
+    ],
+    "goodFor": [
+      "탄수화물·지방을 거의 더하지 않고 단백질만 한 스쿱 채우려는 분",
+      "우유나 요거트에 섞어 단백질을 보태려는 분"
+    ],
+    "watchOut": [
+      "한 스쿱 단백질 30g 이상이 필요하면 40g에 34g인 오늘의바디 에이치프로틴 WPI나 30g인 플래티넘 하이드로웨이가 맞습니다."
+    ],
+    "compareSlugs": [
+      "purunbean-wpi-500",
+      "evl-isolate-doublerich-2268",
+      "myprotein-impactisolate-choco-1000"
+    ],
+    "sources": [
+      "powderProductsData.json: servingSizeG, proteinPerServing, calories, sugar, fat, sodium, nutritionPerBottle.carbsG, proteinSource",
+      "계산: proteinPerServing/servingSizeG×100 내림차순(69종, 90.0% 2개 공동 1위)",
+      "계산: proteinPerServing/calories×100 내림차순 순위, sodium < 70 인 제품 수(5)"
+    ]
+  },
+  "myprotein-impactwhey-choco-1000": {
+    "summary": "마이프로틴 임팩트 웨이 초콜릿은 농축유청단백(WPC) 하나로 만든 1kg 웨이 파우더입니다. 30g 한 스쿱에 단백질 21g, 110kcal이고, 나트륨 50mg은 69종 중 나우푸드 WPI(45mg) 다음으로 낮습니다(같은 50mg 제품 2개 더 있음).",
+    "points": [
+      "같은 라인 딸기크림은 열량 110kcal·나트륨 50mg이 같고 단백질이 1g 많습니다.",
+      "웨이(WPC) 11종 중 1회 단백질 21g은 가장 적습니다.",
+      "100kcal당 단백질 19.1g으로 69종 중 28번째입니다.",
+      "같은 브랜드 임팩트 아이솔레이트 초콜릿은 같은 30g에 단백질 3g 많고 열량 5kcal 낮습니다."
+    ],
+    "goodFor": [
+      "나트륨을 낮게 두면서 하루 한 스쿱 가볍게 타 먹을 분",
+      "1kg 작은 통으로 웨이 파우더를 처음 써 보려는 분"
+    ],
+    "watchOut": [
+      "단백질 20g 중반이 필요하면 24g인 같은 브랜드 아이솔레이트나 24~25g인 다른 웨이 제품이 맞습니다."
+    ],
+    "compareSlugs": [
+      "myprotein-impactwhey-strawberrycream-1000",
+      "myprotein-impactisolate-choco-1000",
+      "on-goldstandard-whey-doublerich-899"
+    ],
+    "sources": [
+      "powderProductsData.json: servingSizeG, proteinPerServing, calories, sugar, fat, sodium, proteinSource",
+      "계산: 69종에서 sodium < 50 인 제품 수(1), powderType=whey 11종 proteinPerServing 비교",
+      "계산: proteinPerServing/calories×100 내림차순 순위(69종)"
+    ]
+  },
+  "myprotein-impactwhey-cookiecream-1000": {
+    "summary": "마이프로틴 임팩트 웨이 쿠키앤크림은 농축유청단백(WPC) 1kg 파우더로, 30g 한 스쿱에 단백질 22g과 113kcal를 담았습니다. 나트륨 55mg보다 낮은 파우더는 69종 중 4개뿐입니다.",
+    "points": [
+      "같은 라인 딸기크림과 단백질 22g이 같고, 열량은 3kcal·나트륨은 5mg 높아 차이가 작습니다.",
+      "100kcal당 단백질 19.5g으로 69종 중 23번째, 웨이 11종 중 5번째입니다.",
+      "1회 단백질 22g보다 많은 파우더는 69종 중 40개입니다."
+    ],
+    "goodFor": [
+      "쿠키앤크림 맛 웨이를 1kg 통으로 먼저 써 보려는 분",
+      "나트륨이 적은 파우더를 하루 두 번 나눠 먹으려는 분"
+    ],
+    "watchOut": [
+      "같은 30g 기준으로 마이프로틴 임팩트 아이솔레이트 초콜릿이 단백질 2g 많고 열량 8kcal 낮습니다."
+    ],
+    "compareSlugs": [
+      "myprotein-impactwhey-strawberrycream-1000",
+      "myprotein-impactwhey-choco-1000",
+      "ns-wheyprotein-cookiecream-2000"
+    ],
+    "sources": [
+      "powderProductsData.json: servingSizeG, proteinPerServing, calories, sugar, sodium, proteinSource",
+      "계산: 69종에서 sodium < 55 인 제품 수(4), proteinPerServing > 22 인 제품 수(40)",
+      "계산: proteinPerServing/calories×100 순위(69종 23번째, whey 11종 5번째)"
+    ]
+  },
+  "myprotein-impactwhey-strawberrycream-1000": {
+    "summary": "마이프로틴 임팩트 웨이 딸기크림은 농축유청단백(WPC) 1kg 파우더입니다. 같은 라인 세 가지 맛 중 단백질 22g으로 가장 많은 쪽이고 열량 110kcal로 가장 낮은 쪽이라, 100kcal당 단백질 20.0g이 셋 중 가장 높습니다.",
+    "points": [
+      "100kcal당 20.0g은 웨이 11종 중 골드스탠다드 바닐라(20.3g) 다음인 공동 2번째입니다(골드스탠다드 익스트림 밀크 초콜릿·더블 리치 초콜릿과 같은 값).",
+      "나트륨 50mg은 69종 중 나우푸드 WPI(45mg) 다음으로 낮습니다(같은 50mg 제품 2개 더 있음).",
+      "초콜릿 맛보다 단백질이 1g 많고 열량·나트륨은 같습니다.",
+      "당류 1.6g은 같은 라인 중 가장 높지만 세 맛의 차이는 0.2g 안입니다."
+    ],
+    "goodFor": [
+      "초콜릿 계열이 아닌 맛으로 웨이를 고르려는 분",
+      "나트륨 섭취를 신경 쓰면서 운동 후 한 스쿱을 타 먹을 분"
+    ],
+    "watchOut": [
+      "한 스쿱 단백질 22g은 웨이 11종 중 적은 편이며, 이보다 적은 것은 같은 라인 초콜릿(21g)뿐입니다."
+    ],
+    "compareSlugs": [
+      "myprotein-impactwhey-choco-1000",
+      "myprotein-impactwhey-cookiecream-1000",
+      "on-goldstandard-whey-vanilla-2270"
+    ],
+    "sources": [
+      "powderProductsData.json: servingSizeG, proteinPerServing, calories, sugar, sodium, proteinSource",
+      "계산: proteinPerServing/calories×100 내림차순(whey 11종, 69종)",
+      "계산: 69종에서 sodium < 50 인 제품 수(1)"
+    ]
+  },
+  "myprotein-impactisolate-choco-1000": {
+    "summary": "마이프로틴 임팩트 웨이 아이솔레이트 초콜릿은 분리유청단백(WPI) 1kg 파우더로, 30g 한 스쿱에 단백질 24g, 105kcal입니다. 1회 열량은 69종 중 4번째로 낮고, 100kcal당 단백질 22.9g은 4번째로 높습니다.",
+    "points": [
+      "같은 브랜드 임팩트 웨이 초콜릿(WPC)보다 단백질 3g 많고 열량 5kcal, 지방 1.5g 낮습니다.",
+      "나트륨 75mg은 웨이 초콜릿(50mg)보다 25mg 많지만, 69종 중 이보다 낮은 제품은 7개입니다.",
+      "당류 0.4g보다 낮은 제품은 당류가 표기된 60종 중 13개입니다."
+    ],
+    "goodFor": [
+      "아이솔레이트를 1kg 작은 통으로 먼저 써 보려는 분",
+      "열량을 낮게 두고 하루 두 스쿱까지 나눠 먹으려는 분"
+    ],
+    "watchOut": [
+      "아이솔레이트 15종 중 한 스쿱 단백질 24g은 나우푸드 WPI와 함께 가장 적습니다."
+    ],
+    "compareSlugs": [
+      "myprotein-impactwhey-choco-1000",
+      "onedaynutrition-wpi-1300",
+      "evl-isolate-doublerich-2268"
+    ],
+    "sources": [
+      "powderProductsData.json: servingSizeG, proteinPerServing, calories, sugar, fat, sodium, proteinSource",
+      "계산: 69종에서 calories < 105 인 제품 수(3), proteinPerServing/calories×100 순위(4번째)",
+      "계산: sodium < 75 인 제품 수(7), sugar 표기 60종 중 sugar < 0.4 인 제품 수(13), isolate 15종 proteinPerServing 비교"
+    ]
+  },
+  "syntha6-cookiecream-1320": {
+    "summary": "비에스엔 신타6 쿠키앤크림은 농축유청단백·카제인칼슘·미셀라카제인 등을 섞은 1.32kg 혼합 파우더(해외 직구)입니다. 47g 한 스쿱에 단백질 22g, 200kcal로 100kcal당 단백질 11.0g은 게이너를 뺀 65종 중 낮은 쪽에서 4번째입니다.",
+    "points": [
+      "지방 5g, 탄수화물 14g이 함께 들어 있어, 단백질이 같은 22g인 칼로바이 아이솔레이트 블렌드 초코(30g)보다 열량이 85kcal 높습니다.",
+      "같은 신타6 딸기보다 열량 2kcal, 당류 2g, 지방 1g 낮고 단백질·나트륨은 같습니다.",
+      "같은 신타6 초코는 189kcal로 11kcal 낮지만 나트륨이 240mg으로 80mg 많습니다.",
+      "1회 열량 200kcal보다 높은 파우더는 69종 중 7개이고, 그중 4개가 게이너입니다."
+    ],
+    "goodFor": [
+      "카제인이 섞인 혼합 단백질 파우더를 찾는 분",
+      "간식 대신 든든한 한 잔을 원하는 분"
+    ],
+    "watchOut": [
+      "열량 대비 단백질이 낮아, 같은 단백질을 열량 적게 채우려면 마이프로틴 임팩트 웨이 쿠키앤크림(30g, 113kcal)처럼 웨이·아이솔레이트 제품이 맞습니다."
+    ],
+    "compareSlugs": [
+      "syntha6-strawberry-1320",
+      "syntha6-choco-1320",
+      "myprotein-impactwhey-cookiecream-1000"
+    ],
+    "sources": [
+      "powderProductsData.json: servingSizeG, proteinPerServing, calories, sugar, fat, sodium, nutritionPerBottle.carbsG, proteinSource, origin",
+      "계산: servingSizeG < 100 인 65종에서 proteinPerServing/calories×100 오름차순 위치(4번째)",
+      "계산: 69종에서 calories > 200 인 제품 수(7, 게이너 4 포함), 신타6 3종 값 차이"
+    ]
+  },
+  "muscletech-nitrotech-wheygold-doublerich-2270": {
+    "summary": "머슬테크 니트로테크 웨이 골드 더블 리치 초콜릿은 농축·분리·가수분해 유청단백을 섞은 2.27kg 웨이 파우더(해외 직구)입니다. 34g 한 스쿱에 단백질 24g, 130kcal이고, 나트륨 240mg은 웨이 11종 중 가장 많습니다.",
+    "points": [
+      "같은 2.27kg급 골드스탠다드 익스트림 밀크 초콜릿은 32g에 단백질 24g이 같고 열량 10kcal, 나트륨 110mg이 낮습니다.",
+      "100kcal당 단백질 18.5g으로 웨이 11종 중 8번째입니다.",
+      "1회 단백질 24g보다 많은 파우더는 69종 중 28개입니다."
+    ],
+    "goodFor": [
+      "가수분해유청단백이 들어간 웨이를 찾는 분",
+      "2kg대 큰 통 하나로 웨이를 오래 쓰려는 분"
+    ],
+    "watchOut": [
+      "나트륨이 신경 쓰이면 같은 웨이 중 머슬팜 컴뱃 100% 웨이 80mg, 다이마타이즈 엘리트 고메 바닐라 95mg으로 100mg 아래 제품이 있습니다."
+    ],
+    "compareSlugs": [
+      "on-goldstandard-whey-extrememilkchoco-2270",
+      "musclepharm-combat100whey-chocomilk-2270",
+      "dymatize-elite-whey-richchoco-2300"
+    ],
+    "sources": [
+      "powderProductsData.json: servingSizeG, proteinPerServing, calories, sodium, proteinSource, origin",
+      "계산: powderType=whey 11종 sodium 최댓값, proteinPerServing/calories×100 순위(8번째)",
+      "계산: 69종에서 proteinPerServing > 24 인 제품 수(28)"
+    ]
+  },
+  "calobye-perfect-powershake-soy-choco-1800": {
+    "summary": "칼로바이 퍼펙트 파워쉐이크 소이 프로틴 초코는 분리대두단백(ISP)만 쓴 1.8kg 식물성 파우더입니다. 30g 한 스쿱에 단백질 21g, 120kcal로 식물성 3종 중 나우푸드 피 프로틴(24g) 다음으로 단백질이 많습니다.",
+    "points": [
+      "완두 단백인 나우푸드 피 프로틴과는 열량 120kcal가 같고, 단백질은 3g 적지만 나트륨은 150mg 낮습니다.",
+      "유청·유단백·대두를 섞은 같은 라인 블렌드 초코와는 단백질 21g이 같고, 열량은 5kcal 높으며 나트륨은 30mg 적습니다.",
+      "100kcal당 단백질 17.5g으로 69종 중 43번째입니다."
+    ],
+    "goodFor": [
+      "유청 대신 대두 단백 파우더를 찾는 분",
+      "해외 직구 없이 국내 판매 식물성 파우더를 큰 통으로 두려는 분"
+    ],
+    "watchOut": [
+      "열량 대비 단백질은 같은 라인 아이솔레이트 블렌드 초코(100kcal당 19.1g)보다 낮습니다."
+    ],
+    "compareSlugs": [
+      "nowfoods-pea-protein-unflavored-907",
+      "calobye-perfect-powershake-blend-choco-1800",
+      "calobye-perfect-powershake-isolateblend-choco-1800"
+    ],
+    "sources": [
+      "powderProductsData.json: servingSizeG, proteinPerServing, calories, sodium, proteinSource, origin, powderType",
+      "계산: powderType=plant 3종 proteinPerServing 비교, 같은 라인 제품과 값 차이",
+      "계산: proteinPerServing/calories×100 내림차순 순위(69종)"
+    ]
+  },
+  "syntha6-strawberry-1320": {
+    "summary": "비에스엔 신타6 딸기는 농축유청단백·카제인칼슘·미셀라카제인 등을 섞은 1.32kg 혼합 파우더입니다. 47g 한 스쿱에 단백질 22g이고, 신타6 세 가지 맛 중 열량 202kcal, 당류 4g, 지방 6g이 모두 가장 높습니다.",
+    "points": [
+      "지방 6g은 게이너를 뺀 65종 중 가장 많습니다.",
+      "100kcal당 단백질 10.9g으로 게이너를 뺀 65종 중 뉴욕웨이 스포츠(9.8g) 다음으로 낮습니다.",
+      "당류 4g보다 많은 파우더는 당류가 표기된 60종 중 7개입니다."
+    ],
+    "goodFor": [
+      "딸기 맛 혼합 파우더를 찾는 분",
+      "열량을 줄이기보다 간식처럼 든든한 한 잔을 원하는 분"
+    ],
+    "watchOut": [
+      "같은 단백질 22g을 열량 적게 채우려면 30g에 110kcal인 마이프로틴 임팩트 웨이 딸기크림이 92kcal 낮습니다."
+    ],
+    "compareSlugs": [
+      "syntha6-cookiecream-1320",
+      "syntha6-choco-1320",
+      "myprotein-impactwhey-strawberrycream-1000"
+    ],
+    "sources": [
+      "powderProductsData.json: servingSizeG, proteinPerServing, calories, sugar, fat, proteinSource",
+      "계산: servingSizeG < 100 인 65종 fat 최댓값, proteinPerServing/calories×100 오름차순",
+      "계산: sugar 표기 60종 중 sugar > 4 인 제품 수(7)"
+    ]
+  },
+  "on-goldstandard-whey-extrememilkchoco-2270": {
+    "summary": "옵티멈뉴트리션 골드스탠다드 웨이 익스트림 밀크 초콜릿은 분리·농축·가수분해 유청단백을 섞은 2.27kg 웨이 파우더(해외 직구)입니다. 32g 한 스쿱에 단백질 24g, 120kcal로 100kcal당 20.0g은 웨이 11종 중 공동 2번째로 높습니다(마이프로틴 딸기크림·골드스탠다드 더블 리치 초콜릿과 같은 값).",
+    "points": [
+      "같은 2.27kg 바닐라는 31g에 단백질 24g이 같고 열량 2kcal, 지방 0.5g 낮습니다.",
+      "899g 더블 리치 초콜릿은 1g 적은 31g에 단백질·열량·나트륨이 같고 당류는 1g 낮습니다.",
+      "나트륨 130mg보다 낮은 파우더는 69종 중 13개입니다."
+    ],
+    "goodFor": [
+      "초콜릿 맛 웨이를 큰 통으로 두고 매일 한 스쿱씩 먹을 분",
+      "작은 899g 통을 써 본 뒤 같은 라인 큰 통으로 옮기려는 분"
+    ],
+    "watchOut": [
+      "한 스쿱 단백질 30g 이상이 필요하면 40~41g에 30g인 같은 브랜드 플래티넘 하이드로웨이가 맞습니다."
+    ],
+    "compareSlugs": [
+      "on-goldstandard-whey-vanilla-2270",
+      "on-goldstandard-whey-doublerich-899",
+      "muscletech-nitrotech-wheygold-doublerich-2270"
+    ],
+    "sources": [
+      "powderProductsData.json: servingSizeG, proteinPerServing, calories, sugar, fat, sodium, proteinSource, origin",
+      "계산: powderType=whey 11종 proteinPerServing/calories×100 순위(공동 2번째, 동률 2)",
+      "계산: 69종에서 sodium < 130 인 제품 수(13), 골드스탠다드 3종 값 차이"
+    ]
+  },
+  "on-goldstandard-whey-vanilla-2270": {
+    "summary": "옵티멈뉴트리션 골드스탠다드 웨이 바닐라는 분리·농축·가수분해 유청단백을 섞은 2.27kg 웨이 파우더입니다. 31g 한 스쿱에 단백질 24g, 118kcal로 100kcal당 단백질 20.3g은 웨이 11종 중 가장 높습니다.",
+    "points": [
+      "같은 라인 익스트림 밀크 초콜릿(32g)보다 열량 2kcal, 지방 0.5g, 탄수화물 1g 낮고 나트륨은 130mg으로 같습니다.",
+      "1회 열량 118kcal보다 낮은 파우더는 69종 중 20개입니다.",
+      "34g 스쿱인 다이마타이즈 엘리트 고메 바닐라는 단백질이 1g 많지만 열량이 22kcal 높습니다."
+    ],
+    "goodFor": [
+      "바닐라 맛 웨이를 우유나 오트밀에 섞어 쓰려는 분",
+      "웨이 가운데 열량 대비 단백질이 높은 제품을 고르려는 분"
+    ],
+    "watchOut": [
+      "당류가 2g 있습니다. 당류 0g을 원하면 아이소퓨어 제로 카브나 원데이뉴트리션 WPI 같은 아이솔레이트를 봐야 합니다."
+    ],
+    "compareSlugs": [
+      "on-goldstandard-whey-extrememilkchoco-2270",
+      "dymatize-elite-whey-gourmetvanilla-2300",
+      "musclepharm-combat-vanilla-1810"
+    ],
+    "sources": [
+      "powderProductsData.json: servingSizeG, proteinPerServing, calories, sugar, fat, sodium, nutritionPerBottle.carbsG, proteinSource",
+      "계산: powderType=whey 11종 proteinPerServing/calories×100 최댓값",
+      "계산: 69종에서 calories < 118 인 제품 수(20)"
+    ]
+  },
+  "musclepharm-combat100whey-chocomilk-2270": {
+    "summary": "머슬팜 컴뱃 100% 웨이 초콜릿 밀크는 농축·분리유청단백으로 만든 2.27kg 웨이 파우더(해외 직구)입니다. 34g 한 스쿱에 단백질 24g이고, 나트륨 80mg보다 낮은 파우더는 69종 중 9개입니다.",
+    "points": [
+      "100kcal당 단백질 17.1g으로 웨이 11종 중 가장 낮습니다.",
+      "36g 스쿱인 같은 머슬팜 컴뱃 프로틴 바닐라는 단백질 1g 많고 열량 10kcal 낮지만 나트륨이 160mg으로 2배입니다.",
+      "같은 34g·2.27kg급 니트로테크 웨이 골드보다 열량은 10kcal 높고 나트륨은 160mg 낮습니다."
+    ],
+    "goodFor": [
+      "나트륨이 적은 웨이를 큰 통으로 쓰려는 분",
+      "가수분해 원료 없이 WPC·WPI로만 된 웨이를 찾는 분"
+    ],
+    "watchOut": [
+      "같은 단백질 24g을 골드스탠다드 바닐라는 118kcal로 채워, 이 제품(140kcal)보다 22kcal 낮습니다."
+    ],
+    "compareSlugs": [
+      "musclepharm-combat-vanilla-1810",
+      "muscletech-nitrotech-wheygold-doublerich-2270",
+      "on-goldstandard-whey-vanilla-2270"
+    ],
+    "sources": [
+      "powderProductsData.json: servingSizeG, proteinPerServing, calories, sodium, proteinSource, origin",
+      "계산: 69종에서 sodium < 80 인 제품 수(9)",
+      "계산: powderType=whey 11종 proteinPerServing/calories×100 최솟값, 비교 제품과 값 차이"
+    ]
+  },
+  "isopure-zerocarb-cookiecream-1360": {
+    "summary": "아이소퓨어 제로 카브 쿠키앤크림은 분리유청단백(WPI) 1.36kg 파우더(해외 직구)입니다. 31g 한 스쿱에 단백질 25g이고, 탄수화물이 0g으로 표기된 파우더는 69종 중 이 제품 하나입니다.",
+    "points": [
+      "100kcal당 단백질 22.7g으로 69종 중 5번째입니다.",
+      "나트륨 240mg은 아이솔레이트 15종 중 많은 편으로, 이보다 많은 것은 스포츠리서치 250mg, 칼로바이 아이솔레이트 초코 262mg뿐입니다.",
+      "단백질이 같은 25g인 EVL 아이솔레이트는 31.4g 스쿱에 열량 10kcal, 나트륨 30mg이 낮습니다."
+    ],
+    "goodFor": [
+      "탄수화물을 더하지 않는 쉐이크가 필요한 분",
+      "쿠키앤크림 맛 아이솔레이트를 찾는 분"
+    ],
+    "watchOut": [
+      "나트륨을 낮추려면 같은 아이솔레이트 중 나트륨 45mg인 나우푸드 WPI나 50mg인 뉴욕웨이 WPI가 있습니다."
+    ],
+    "compareSlugs": [
+      "evl-isolate-doublerich-2268",
+      "newyorkwhey-wpi-choco-2000",
+      "nowfoods-whey-isolate-unflavored-2270"
+    ],
+    "sources": [
+      "powderProductsData.json: servingSizeG, proteinPerServing, calories, sodium, nutritionPerBottle.carbsG, proteinSource, origin",
+      "계산: 69종 중 nutritionPerBottle.carbsG == 0 인 제품(1개)",
+      "계산: proteinPerServing/calories×100 순위(69종), isolate 15종 sodium 비교"
+    ]
+  },
+  "dymatize-elite-whey-gourmetvanilla-2300": {
+    "summary": "다이마타이즈 엘리트 웨이 고메 바닐라는 농축·분리·가수분해 유청단백을 섞은 2.3kg 웨이 파우더(해외 직구)입니다. 34g 한 스쿱에 단백질 25g으로 웨이 11종 중 가장 많은 값이며, 같은 25g이 3개 있습니다.",
+    "points": [
+      "36g 스쿱인 같은 엘리트 웨이 리치 초콜릿과 단백질·열량이 같고, 나트륨은 95mg으로 65mg 낮으며 탄수화물도 1g 적습니다.",
+      "100kcal당 단백질 17.9g으로 웨이 11종 중 공동 9번째입니다.",
+      "나트륨 95mg보다 낮은 파우더는 69종 중 10개입니다."
+    ],
+    "goodFor": [
+      "바닐라 웨이 중 한 스쿱 단백질이 많은 쪽을 고르려는 분",
+      "나트륨을 낮게 유지하며 큰 통 웨이를 쓰려는 분"
+    ],
+    "watchOut": [
+      "1회 140kcal로 골드스탠다드 바닐라(118kcal, 단백질 24g)보다 22kcal 높습니다."
+    ],
+    "compareSlugs": [
+      "dymatize-elite-whey-richchoco-2300",
+      "on-goldstandard-whey-vanilla-2270",
+      "musclepharm-combat-vanilla-1810"
+    ],
+    "sources": [
+      "powderProductsData.json: servingSizeG, proteinPerServing, calories, sodium, nutritionPerBottle.carbsG, proteinSource, origin",
+      "계산: powderType=whey 11종 proteinPerServing 최댓값(25g 3개), proteinPerServing/calories×100 순위(공동 9번째)",
+      "계산: 69종에서 sodium < 95 인 제품 수(10)"
+    ]
+  },
+  "calobye-perfect-powershake-isolateblend-choco-1800": {
+    "summary": "칼로바이 퍼펙트 파워쉐이크 아이솔레이트 블렌드 초코는 분리대두단백·분리유단백·분리유청단백을 섞은 1.8kg 파우더입니다. 30g 한 스쿱에 단백질 22g, 115kcal이며, 같은 라인 곡물맛보다 당류는 0.4g 낮고 나트륨은 30mg 많습니다.",
+    "points": [
+      "같은 퍼펙트 파워쉐이크 블렌드 초코(농축 원료)보다 단백질 1g 많고 나트륨 20mg 적으며 열량은 115kcal로 같습니다.",
+      "100kcal당 단백질 19.1g으로 혼합 24종 중 공동 6번째입니다.",
+      "당류 0.6g보다 낮은 제품은 당류가 표기된 60종 중 15개입니다."
+    ],
+    "goodFor": [
+      "유청·대두를 섞은 분리 원료로 열량 낮은 한 스쿱을 찾는 분",
+      "1.8kg 큰 통에 60회분으로 오래 쓸 분"
+    ],
+    "watchOut": [
+      "한 스쿱 단백질이 22g이라, 칼로바이에서 1회 단백질을 더 원하면 40g에 27.5g인 퍼펙트 아이솔레이트 초코가 있습니다."
+    ],
+    "compareSlugs": [
+      "calobye-perfect-powershake-isolateblend-grain-1800",
+      "calobye-perfect-powershake-blend-choco-1800",
+      "calobye-perfect-powershake-isolate-choco-1000"
+    ],
+    "sources": [
+      "powderProductsData.json: servingSizeG, servingsPerContainer, proteinPerServing, calories, sugar, sodium, proteinSource",
+      "계산: powderType=blend 24종 proteinPerServing/calories×100 순위(공동 6번째)",
+      "계산: sugar 표기 60종 중 sugar < 0.6 인 제품 수(15), 같은 라인 제품과 값 차이"
+    ]
+  },
+  "oneulbody-hprotein-wpi-choco-1000": {
+    "summary": "오늘의바디 에이치프로틴 WPI 초코는 분리유청단백(WPI)만 쓴 1kg 아이솔레이트입니다. 40g 한 스쿱에 단백질 34g으로 아이솔레이트 15종 중 가장 많고, 게이너를 빼면 35g 제품 2개 다음입니다.",
+    "points": [
+      "당류 0g, 지방 0g에 150kcal이며, 100kcal당 단백질 22.7g은 69종 중 6번째입니다.",
+      "같은 34g인 머슬코어 아이솔레이트 곡물(혼합, 45g)보다 열량 22kcal 낮고 나트륨은 102mg으로 323mg 적습니다.",
+      "플래티넘 하이드로웨이(40~41g, 30g)보다 한 스쿱 단백질이 4g 많고 열량은 10kcal 높습니다.",
+      "제공량 대비 단백질 비율 85%로 69종 중 4번째입니다."
+    ],
+    "goodFor": [
+      "한 번에 단백질 30g 넘게 채우되 당류·지방은 더하지 않으려는 분",
+      "1kg 통으로 고함량 아이솔레이트를 먼저 써 보려는 분"
+    ],
+    "watchOut": [
+      "1kg에 25회분이라 하루 한 번 먹으면 한 달이 안 됩니다."
+    ],
+    "compareSlugs": [
+      "on-platinum-hydrowhey-turbochoco-1640",
+      "proteincompany-musclecore-isolate-choco-1000",
+      "onedaynutrition-wpi-1300"
+    ],
+    "sources": [
+      "powderProductsData.json: servingSizeG, servingsPerContainer, proteinPerServing, calories, sugar, fat, sodium, proteinSource",
+      "계산: isolate 15종 proteinPerServing 최댓값, servingSizeG < 100 인 65종에서 proteinPerServing > 34 인 제품(2개)",
+      "계산: proteinPerServing/calories×100 순위(6번째), proteinPerServing/servingSizeG 순위(4번째)"
+    ]
+  },
+  "benetin-plantprotein-isolate-choco-2000": {
+    "summary": "베네틴 플랜트 프로틴 아이솔레이트 초코는 분리대두단백과 카제인을 쓴 2kg 혼합 파우더입니다. 30g 한 스쿱에 단백질 20g, 115kcal로 1회 단백질은 혼합 24종 중 뉴욕웨이 스포츠와 함께 가장 적습니다.",
+    "points": [
+      "100kcal당 단백질 17.4g으로 69종 중 44번째입니다.",
+      "분리대두단백만 쓴 30g 스쿱 칼로바이 소이 프로틴 초코는 단백질 1g 많고 열량 5kcal 높으며 나트륨은 70mg 적습니다.",
+      "2kg에 66회분이라 같은 2kg급 30g 스쿱 제품들과 회분 수가 비슷합니다."
+    ],
+    "goodFor": [
+      "대두 단백 위주에 우유 단백을 조금 섞은 파우더를 찾는 분",
+      "30g 작은 스쿱으로 큰 통을 오래 쓰려는 분"
+    ],
+    "watchOut": [
+      "이름에 '플랜트'가 있지만 원료에 우유 단백인 카제인이 함께 표기돼 있습니다. 완전 식물성이 필요하면 칼로바이 소이 프로틴이나 나우푸드 피 프로틴을 보세요."
+    ],
+    "compareSlugs": [
+      "calobye-perfect-powershake-soy-choco-1800",
+      "nowfoods-pea-protein-unflavored-907",
+      "startprotein-soywheyplus-chocograin-2000"
+    ],
+    "sources": [
+      "powderProductsData.json: servingSizeG, servingsPerContainer, proteinPerServing, calories, sodium, proteinSource",
+      "계산: powderType=blend 24종 proteinPerServing 최솟값(20g 2개)",
+      "계산: proteinPerServing/calories×100 순위(69종), 비교 제품과 값 차이"
+    ]
+  },
+  "proteincompany-musclecore-isolate-grain-1000": {
+    "summary": "프로틴컴퍼니 머슬코어 아이솔레이트 곡물은 분리대두단백·분리유청단백을 섞은 1kg 파우더입니다. 45g 한 스쿱에 단백질 34g, 당류 0g이지만, 나트륨 425mg은 게이너를 뺀 파우더 중 가장 많습니다.",
+    "points": [
+      "같은 라인 초코는 단백질 1g 많고(35g) 열량 2kcal 높으며 나트륨은 368mg으로 57mg 적습니다.",
+      "1회 단백질 34g보다 많은 파우더는 69종 중 5개이고, 그중 3개는 게이너입니다.",
+      "100kcal당 단백질 19.8g으로 혼합 24종 중 3번째입니다."
+    ],
+    "goodFor": [
+      "곡물맛으로 한 번에 단백질 30g 넘게 먹으려는 분",
+      "당류 0g인 고함량 혼합 파우더를 찾는 분"
+    ],
+    "watchOut": [
+      "나트륨이 신경 쓰이면 단백질이 같은 34g인 오늘의바디 에이치프로틴 WPI가 102mg으로 323mg 낮습니다."
+    ],
+    "compareSlugs": [
+      "proteincompany-musclecore-isolate-choco-1000",
+      "oneulbody-hprotein-wpi-choco-1000",
+      "newyorkwhey-alpha-grain-3000"
+    ],
+    "sources": [
+      "powderProductsData.json: servingSizeG, proteinPerServing, calories, sugar, sodium, proteinSource",
+      "계산: servingSizeG < 100 인 65종 sodium 최댓값",
+      "계산: 69종에서 proteinPerServing > 34 인 제품 수(5, 게이너 3 포함), blend 24종 밀도 순위(3번째)"
+    ]
+  },
+  "startprotein-soywheyplus-chocograin-2000": {
+    "summary": "스타트프로틴 SOY&WHEY PLUS 초코곡물은 분리대두단백과 농축유청단백을 섞은 2kg 파우더입니다. 30g 한 스쿱에 단백질 23g, 104kcal로 1회 열량은 69종 중 3번째로 낮습니다.",
+    "points": [
+      "100kcal당 단백질 22.1g으로 혼합 24종 중 가장 높고, 69종 전체에서는 8번째입니다.",
+      "당류 0g인 혼합 파우더는 이 제품과 머슬코어 2종, 퓨어프로틴7까지 4종입니다.",
+      "대두·유청을 섞은 같은 30g 스쿱의 뉴욕웨이 라이트와 단백질 23g이 같고 열량은 16kcal 낮습니다."
+    ],
+    "goodFor": [
+      "하루 간식 열량을 줄이면서 단백질 쉐이크를 넣으려는 분",
+      "대두·유청 혼합 원료로 당류 없는 파우더를 찾는 분"
+    ],
+    "watchOut": [
+      "한 스쿱 단백질 30g 이상 제품은 스쿱이 40~50g으로 커지고 열량도 140kcal 이상이라, 이 제품으로 그만큼 채우려면 한 스쿱 넘게 타야 합니다."
+    ],
+    "compareSlugs": [
+      "newyorkwhey-light-2000",
+      "calobye-perfect-powershake-isolateblend-choco-1800",
+      "benetin-plantprotein-isolate-choco-2000"
+    ],
+    "sources": [
+      "powderProductsData.json: servingSizeG, proteinPerServing, calories, sugar, proteinSource",
+      "계산: 69종에서 calories < 104 인 제품 수(2), proteinPerServing/calories×100 순위(69종 8번째, blend 1번째)",
+      "계산: blend 중 sugar == 0 인 제품(4개), servingSizeG < 100 이고 proteinPerServing ≥ 30 인 제품의 servingSizeG·calories 범위"
+    ]
+  },
+  "ns-wheyprotein-cookiecream-2000": {
+    "summary": "NS 웨이 프로틴 쿠키앤크림은 분리대두단백·농축유청단백·분리유청단백·카제인 등을 섞은 2kg 혼합 파우더입니다. 30g 한 스쿱에 단백질 21.2g, 115kcal입니다.",
+    "points": [
+      "같은 NS 웨이 프로틴 딥초코(1kg)보다 단백질 0.6g, 열량 4kcal 많고 당류는 2.3g으로 2.1g 높습니다.",
+      "당류 2.3g보다 많은 파우더는 당류가 표기된 60종 중 14개입니다.",
+      "100kcal당 단백질 18.4g으로 69종 중 34번째입니다."
+    ],
+    "goodFor": [
+      "쿠키앤크림 맛을 2kg 큰 통으로 두고 쓰려는 분",
+      "대두와 유청이 섞인 원료도 괜찮은 분"
+    ],
+    "watchOut": [
+      "이름은 '웨이'지만 데이터의 원료 표기 첫 항목이 분리대두단백(ISP)입니다. 유청만 쓴 제품을 원하면 농축유청단백(WPC)만 쓴 마이프로틴 임팩트 웨이 쿠키앤크림이 맞습니다."
+    ],
+    "compareSlugs": [
+      "ns-wheyprotein-deepchoco-1000",
+      "myprotein-impactwhey-cookiecream-1000",
+      "syntha6-cookiecream-1320"
+    ],
+    "sources": [
+      "powderProductsData.json: servingSizeG, proteinPerServing, calories, sugar, sodium, proteinSource",
+      "계산: sugar 표기 60종 중 sugar > 2.3 인 제품 수(14)",
+      "계산: proteinPerServing/calories×100 순위(69종), NS 웨이 프로틴 2종 값 차이"
+    ]
+  },
+  "bup-caloriemonster-cookieblast-4000": {
+    "summary": "BUP 칼로리몬스터 게이너 쿠키 블라스트는 열량 보충용 4kg 게이너로, 1회 제공량 300g에 1178kcal와 탄수화물 186g이 들어 있습니다. 1회 열량과 탄수화물 모두 등록된 파우더 69종 중 가장 많습니다.",
+    "points": [
+      "1회 단백질 81.6g은 뉴욕웨이 몬스터(122g), 같은 BUP 초코퍼지(89.1g) 다음입니다.",
+      "같은 칼로리몬스터 초코퍼지(2kg)보다 단백질 7.5g 적고 열량 35kcal, 당류 16.2g, 지방 5.1g 많습니다.",
+      "탄수화물 비중이 커서 100kcal당 단백질 6.9g은 69종 중 68번째입니다.",
+      "4kg 통에 13회분입니다."
+    ],
+    "goodFor": [
+      "식사량이 적어 하루 열량을 쉐이크로 크게 보태야 하는 분",
+      "체중을 늘리려고 탄수화물과 단백질을 함께 보충하려는 분"
+    ],
+    "watchOut": [
+      "1회 당류 56.1g은 당류가 표기된 60종 중 뉴욕웨이 몬스터(73g) 다음으로 많고, 나트륨도 1,076mg입니다. 300g을 한 번에 먹기 부담되면 나눠 먹는 방법도 있습니다."
+    ],
+    "compareSlugs": [
+      "bup-caloriemonster-chocofudge-2000",
+      "newyorkwhey-monster-2000",
+      "personalbulk-gainer-3200"
+    ],
+    "sources": [
+      "powderProductsData.json: servingSizeG, servingsPerContainer, proteinPerServing, calories, sugar, fat, sodium, nutritionPerBottle.carbsG, powderType",
+      "계산: 69종 calories·carbsG 최댓값, proteinPerServing 내림차순(3번째)",
+      "계산: proteinPerServing/calories×100 순위(68번째), sugar 표기 60종 sugar 내림차순(2번째)"
+    ]
+  },
+  "calobye-perfect-powershake-blend-choco-1800": {
+    "summary": "칼로바이 퍼펙트 파워쉐이크 블렌드 초코는 농축유청단백·농축유단백·분리대두단백을 섞은 1.8kg 파우더입니다. 같은 라인 곡물맛과 단백질 21g, 열량 115kcal, 당류 1g이 같고 나트륨과 탄수화물만 다릅니다.",
+    "points": [
+      "곡물맛보다 나트륨이 40mg 많고(200mg) 탄수화물은 1g 적습니다.",
+      "분리 원료를 쓴 같은 열량의 아이솔레이트 블렌드 초코는 단백질 1g 많고 나트륨 20mg 적습니다.",
+      "100kcal당 단백질 18.3g으로 혼합 24종 중 공동 12번째입니다."
+    ],
+    "goodFor": [
+      "유청·유단백·대두를 고루 섞은 원료를 원하는 분",
+      "30g 작은 스쿱으로 하루 두 번 나눠 먹으려는 분"
+    ],
+    "watchOut": [
+      "나트륨 200mg은 같은 퍼펙트 파워쉐이크 30g 제품 5종 중 가장 많습니다."
+    ],
+    "compareSlugs": [
+      "calobye-perfect-powershake-blend-grain-1800",
+      "calobye-perfect-powershake-isolateblend-choco-1800",
+      "calobye-perfect-powershake-soy-choco-1800"
+    ],
+    "sources": [
+      "powderProductsData.json: servingSizeG, proteinPerServing, calories, sugar, sodium, nutritionPerBottle.carbsG, proteinSource",
+      "계산: 칼로바이 퍼펙트 파워쉐이크 30g 5종 sodium 비교",
+      "계산: blend 24종 proteinPerServing/calories×100 순위(공동 12번째)"
+    ]
+  },
+  "calobye-perfect-powershake-blend-grain-1800": {
+    "summary": "칼로바이 퍼펙트 파워쉐이크 블렌드 곡물은 농축유청단백·농축유단백·분리대두단백을 섞은 1.8kg 파우더로, 30g 한 스쿱에 단백질 21g, 115kcal입니다. 같은 블렌드 초코와 단백질·열량·당류·지방이 같고 나트륨은 40mg 낮습니다.",
+    "points": [
+      "나트륨 160mg은 퍼펙트 파워쉐이크 30g 5종 중 아이솔레이트 블렌드 곡물(150mg) 다음으로 낮습니다.",
+      "같은 곡물맛 아이솔레이트 블렌드는 단백질 1g 많고 지방 0.2g 적으며 열량은 같습니다.",
+      "1회 단백질 21g보다 많은 파우더는 69종 중 52개입니다."
+    ],
+    "goodFor": [
+      "곡물맛 파우더를 우유에 타 아침에 마시려는 분",
+      "농축 원료 혼합 파우더를 1.8kg 통으로 쓰려는 분"
+    ],
+    "watchOut": [
+      "1회 단백질 21g보다 적은 파우더는 69종 중 13개뿐이라 단백질은 적은 쪽입니다. 곡물맛에서 더 많이 필요하면 40g에 28g인 칼로바이 밸런스 아이솔레이트 곡물이 있습니다."
+    ],
+    "compareSlugs": [
+      "calobye-perfect-powershake-blend-choco-1800",
+      "calobye-perfect-powershake-isolateblend-grain-1800",
+      "calobye-balance-powershake-isolate-grain-2000"
+    ],
+    "sources": [
+      "powderProductsData.json: servingSizeG, proteinPerServing, calories, sugar, fat, sodium, proteinSource",
+      "계산: 칼로바이 퍼펙트 파워쉐이크 30g 5종 sodium 비교",
+      "계산: 69종에서 proteinPerServing > 21 인 제품 수(52), < 21 인 제품 수(13)"
+    ]
+  },
+  "calobye-perfect-powershake-isolateblend-grain-1800": {
+    "summary": "칼로바이 퍼펙트 파워쉐이크 아이솔레이트 블렌드 곡물은 분리유청단백·분리유단백·분리대두단백을 섞은 1.8kg 파우더입니다. 30g 한 스쿱에 단백질 22g, 115kcal이고, 나트륨 150mg은 퍼펙트 파워쉐이크 30g 제품 5종 중 가장 낮습니다.",
+    "points": [
+      "100kcal당 단백질 19.1g으로 혼합 24종 중 공동 6번째입니다(같은 라인 초코와 같은 값).",
+      "같은 아이솔레이트 블렌드 초코보다 나트륨 30mg 적고 당류 0.4g, 탄수화물 1g 많습니다.",
+      "나트륨 150mg보다 낮은 혼합 파우더는 24종 중 뉴욕웨이 WPC 초코(78mg) 하나입니다."
+    ],
+    "goodFor": [
+      "곡물맛이면서 분리 원료 위주인 파우더를 찾는 분",
+      "나트륨을 낮게 두고 하루 한두 스쿱 먹을 분"
+    ],
+    "watchOut": [
+      "한 번에 단백질을 더 원하면 40g 스쿱인 칼로바이 밸런스 아이솔레이트 곡물이 6g 많지만 나트륨이 300mg으로 2배입니다."
+    ],
+    "compareSlugs": [
+      "calobye-perfect-powershake-isolateblend-choco-1800",
+      "calobye-perfect-powershake-blend-grain-1800",
+      "calobye-balance-powershake-isolate-grain-2000"
+    ],
+    "sources": [
+      "powderProductsData.json: servingSizeG, proteinPerServing, calories, sugar, sodium, nutritionPerBottle.carbsG, proteinSource",
+      "계산: 칼로바이 퍼펙트 파워쉐이크 30g 5종 sodium 최솟값, blend 24종 sodium < 150 인 제품(1개)",
+      "계산: blend 24종 proteinPerServing/calories×100 순위(공동 6번째)"
+    ]
+  },
+  "calobye-balance-powershake-isolate-grain-2000": {
+    "summary": "칼로바이 밸런스 파워쉐이크 아이솔레이트 곡물은 분리대두단백·분리유청단백을 섞은 2kg 파우더입니다. 40g 한 스쿱에 단백질 28g, 155kcal로 같은 칼로바이 퍼펙트 라인 30g 제품(21~22g)보다 한 번에 6~7g 많습니다.",
+    "points": [
+      "1회 단백질 28g보다 많은 파우더는 69종 중 14개입니다.",
+      "WPI를 쓴 같은 40g 칼로바이 퍼펙트 아이솔레이트 초코는 단백질 0.5g 적고 열량 1kcal 높으며 나트륨은 38mg 적습니다.",
+      "나트륨 300mg보다 많은 파우더는 69종 중 12개입니다.",
+      "100kcal당 단백질 18.1g으로 혼합 24종 중 15번째입니다."
+    ],
+    "goodFor": [
+      "곡물맛으로 한 스쿱에 단백질 30g 가까이 채우려는 분",
+      "2kg 통 50회분으로 오래 쓸 분"
+    ],
+    "watchOut": [
+      "나트륨 300mg으로 퍼펙트 아이솔레이트 블렌드 곡물(150mg)의 2배입니다."
+    ],
+    "compareSlugs": [
+      "calobye-perfect-powershake-isolate-choco-1000",
+      "calobye-perfect-powershake-isolateblend-grain-1800",
+      "proteincompany-musclecore-isolate-grain-1000"
+    ],
+    "sources": [
+      "powderProductsData.json: servingSizeG, servingsPerContainer, proteinPerServing, calories, sodium, proteinSource",
+      "계산: 69종에서 proteinPerServing > 28 인 제품 수(14), sodium > 300 인 제품 수(12)",
+      "계산: blend 24종 proteinPerServing/calories×100 순위(15번째)"
+    ]
+  },
+  "newyorkwhey-gold-grain-3000": {
+    "summary": "뉴욕웨이 골드 WPI 함유 곡물맛은 분리대두·분리유청·농축유청·분리우유·농축우유 단백 다섯 가지를 섞은 3kg 파우더입니다. 50g 1회분에 단백질 35g으로, 게이너를 뺀 파우더 중 머슬코어 아이솔레이트 초코와 함께 가장 많습니다.",
+    "points": [
+      "같은 3kg 곡물맛 알파(45g)보다 단백질 3g, 열량 20kcal 많고 당류는 1g 적습니다.",
+      "같은 35g인 머슬코어 아이솔레이트 초코(45g)보다 열량 22kcal, 나트륨 27mg 높습니다.",
+      "100kcal당 단백질 17.9g으로 혼합 24종 중 16번째입니다.",
+      "3kg에 60회분입니다."
+    ],
+    "goodFor": [
+      "한 번에 단백질 35g을 채우려는 분",
+      "하루 한 번이면 두 달 가는 큰 통을 원하는 분"
+    ],
+    "watchOut": [
+      "1회 50g을 타야 해서 30g 스쿱 제품보다 양이 많고, 열량 196kcal는 게이너를 뺀 65종 중 5번째로 높습니다."
+    ],
+    "compareSlugs": [
+      "newyorkwhey-alpha-grain-3000",
+      "proteincompany-musclecore-isolate-grain-1000",
+      "ns-proteinstandard-choco-2000"
+    ],
+    "sources": [
+      "powderProductsData.json: servingSizeG, servingsPerContainer, proteinPerServing, calories, sugar, sodium, proteinSource",
+      "계산: servingSizeG < 100 인 65종 proteinPerServing 최댓값(35g 2개), calories 내림차순(5번째)",
+      "계산: blend 24종 proteinPerServing/calories×100 순위(16번째), 비교 제품과 값 차이"
+    ]
+  },
+  "newyorkwhey-alpha-grain-3000": {
+    "summary": "뉴욕웨이 알파 WPI 함유 곡물맛은 골드와 같은 다섯 가지 단백 원료를 쓴 3kg 파우더로, 45g 1회분에 단백질 32g, 176kcal입니다. 1회 단백질 32g보다 많은 파우더는 69종 중 7개입니다.",
+    "points": [
+      "골드(50g)보다 1회 단백질 3g, 열량 20kcal 적고, 회분은 66회로 6회 많습니다.",
+      "당류 5g은 같은 뉴욕웨이 3kg 곡물맛 3종 중 가장 많고, 당류가 표기된 60종 중 이보다 많은 제품은 5개입니다.",
+      "단백질이 같은 32g인 프로틴스토리 퓨어프로틴7 쇼콜라초코는 같은 45g에 열량 5kcal 낮고 당류 0g입니다.",
+      "100kcal당 단백질 18.2g으로 혼합 24종 중 14번째입니다."
+    ],
+    "goodFor": [
+      "곡물맛으로 한 번에 30g대 단백질을 채우려는 분",
+      "3kg 통 66회분으로 오래 쓸 분"
+    ],
+    "watchOut": [
+      "나트륨 395mg은 게이너를 뺀 65종 중 공동 3번째로 많은 값입니다(골드·스포츠와 같은 값)."
+    ],
+    "compareSlugs": [
+      "newyorkwhey-gold-grain-3000",
+      "proteinstory-pureprotein7-chocolat-3000",
+      "proteincompany-musclecore-isolate-grain-1000"
+    ],
+    "sources": [
+      "powderProductsData.json: servingSizeG, servingsPerContainer, proteinPerServing, calories, sugar, sodium, proteinSource",
+      "계산: 69종에서 proteinPerServing > 32 인 제품 수(7), sugar 표기 60종 중 sugar > 5 인 제품 수(5)",
+      "계산: servingSizeG < 100 인 65종 sodium 내림차순(425, 405 다음 395 3개)"
+    ]
+  },
+  "newyorkwhey-sports-grain-3000": {
+    "summary": "뉴욕웨이 스포츠 WPI 함유 곡물맛은 골드·알파와 같은 원료를 쓴 3kg 파우더지만, 50g 1회분에 단백질 20g, 탄수화물 20g, 205kcal로 구성이 다릅니다. 100kcal당 단백질 9.8g은 게이너를 뺀 65종 중 가장 낮습니다.",
+    "points": [
+      "같은 50g의 골드는 단백질 35g으로 15g 많고 열량은 9kcal 낮습니다.",
+      "탄수화물 20g은 게이너를 뺀 파우더 중 가장 많습니다.",
+      "지방 5g으로 같은 뉴욕웨이 3kg 곡물맛 3종 중 가장 높습니다."
+    ],
+    "goodFor": [
+      "단백질보다 열량·탄수화물 보충이 먼저인 분",
+      "1회 300g 게이너는 부담스럽고 200kcal 정도 한 잔이면 되는 분"
+    ],
+    "watchOut": [
+      "나트륨 395mg은 게이너를 빼면 65종 중 공동 3번째로 많은 값(골드·알파와 같은 값)으로, 단백질 20g 제품으로는 높습니다."
+    ],
+    "compareSlugs": [
+      "newyorkwhey-gold-grain-3000",
+      "newyorkwhey-alpha-grain-3000",
+      "ns-proteinblend-deepchoco-2000"
+    ],
+    "sources": [
+      "powderProductsData.json: servingSizeG, proteinPerServing, calories, fat, sodium, nutritionPerBottle.carbsG, proteinSource",
+      "계산: servingSizeG < 100 인 65종 proteinPerServing/calories×100 최솟값, carbsG 최댓값, sodium 내림차순",
+      "계산: 뉴욕웨이 3kg 곡물맛 3종 값 비교"
+    ]
+  },
+  "newyorkwhey-wpc-choco-2000": {
+    "summary": "뉴욕웨이 WPC 단백질 보충제 리치 초콜릿은 농축유청단백·우유단백·분리대두단백을 섞은 2kg 파우더입니다. 30g 한 스쿱에 단백질 22g이고, 나트륨 78mg은 혼합 24종 중 가장 낮습니다.",
+    "points": [
+      "같은 30g 스쿱의 아이솔레이트인 뉴욕웨이 WPI 리치 초콜릿은 단백질 3g 많고 열량 5kcal, 나트륨 28mg 낮습니다.",
+      "나트륨 78mg보다 낮은 파우더는 69종 전체에서도 8개입니다.",
+      "100kcal당 단백질 18.5g으로 혼합 24종 중 10번째입니다."
+    ],
+    "goodFor": [
+      "나트륨이 낮은 혼합 파우더를 2kg 통으로 쓰려는 분",
+      "유청 위주에 대두를 조금 섞은 원료를 찾는 분"
+    ],
+    "watchOut": [
+      "당류 2g이 있습니다. 같은 브랜드 WPI 리치 초콜릿은 당류 0g입니다."
+    ],
+    "compareSlugs": [
+      "newyorkwhey-wpi-choco-2000",
+      "calobye-perfect-powershake-blend-choco-1800",
+      "myprotein-impactwhey-choco-1000"
+    ],
+    "sources": [
+      "powderProductsData.json: servingSizeG, proteinPerServing, calories, sugar, sodium, proteinSource",
+      "계산: blend 24종 sodium 최솟값, 69종에서 sodium < 78 인 제품 수(8)",
+      "계산: blend 24종 proteinPerServing/calories×100 순위(10번째)"
+    ]
+  },
+  "ns-wheyprotein-deepchoco-1000": {
+    "summary": "NS 웨이 프로틴 딥초코는 분리대두단백·농축유청단백·미셀라카제인 등 일곱 가지 단백 원료를 섞은 1kg 혼합 파우더입니다. 30g 한 스쿱에 단백질 20.6g, 111kcal이고 당류는 0.2g입니다.",
+    "points": [
+      "당류 0.2g은 당류 0g 제품 12종 다음으로 낮습니다.",
+      "1회 열량 111kcal보다 낮은 파우더는 69종 중 8개입니다.",
+      "같은 NS 웨이 프로틴 쿠키앤크림(2kg)보다 단백질 0.6g, 당류 2.1g 적고 나트륨은 23.4mg 많습니다.",
+      "100kcal당 단백질 18.6g으로 혼합 24종 중 9번째입니다."
+    ],
+    "goodFor": [
+      "당류를 거의 더하지 않는 초코 맛 파우더를 찾는 분",
+      "1kg 작은 통으로 혼합 파우더를 먼저 써 보려는 분"
+    ],
+    "watchOut": [
+      "한 스쿱 단백질 20.6g은 혼합 24종 중 적은 편이며, 이보다 적은 혼합 제품은 2개입니다."
+    ],
+    "compareSlugs": [
+      "ns-wheyprotein-cookiecream-2000",
+      "startprotein-soywheyplus-chocograin-2000",
+      "calobye-perfect-powershake-isolateblend-choco-1800"
+    ],
+    "sources": [
+      "powderProductsData.json: servingSizeG, proteinPerServing, calories, sugar, sodium, proteinSource",
+      "계산: sugar 표기 60종 중 sugar < 0.2 인 제품 수(12, 모두 0g), 69종에서 calories < 111 인 제품 수(8)",
+      "계산: blend 24종 proteinPerServing/calories×100 순위(9번째), proteinPerServing < 20.6 인 blend 수(2)"
+    ]
+  },
+  "ns-proteinstandard-choco-2000": {
+    "summary": "NS 프로틴 스탠다드 초콜릿 무스는 분리대두단백·농축유청단백·분리유청단백 등을 섞은 2kg 파우더입니다. 50g 1회분에 단백질 28.1g, 탄수화물 15.8g, 192kcal로, 게이너를 뺀 65종 중 이보다 열량이 높은 제품은 5개입니다.",
+    "points": [
+      "NS 프로틴 블렌드 딥초코(55g)보다 1회 5g 적게 타고, 단백질은 0.3g 적으며 열량 21kcal, 탄수화물 4g 낮습니다.",
+      "100kcal당 단백질 14.6g으로 69종 중 52번째입니다.",
+      "같은 50g인 뉴욕웨이 골드 곡물맛은 단백질이 6.9g 많고 열량은 4kcal 높습니다."
+    ],
+    "goodFor": [
+      "단백질과 탄수화물을 한 잔에 같이 채워 간식 대신 마시려는 분",
+      "초콜릿 맛 혼합 파우더를 2kg 통 40회분으로 쓰려는 분"
+    ],
+    "watchOut": [
+      "열량 대비 단백질을 우선하면 같은 NS의 웨이 프로틴 딥초코가 100kcal당 18.6g으로 더 높습니다."
+    ],
+    "compareSlugs": [
+      "ns-proteinblend-deepchoco-2000",
+      "newyorkwhey-gold-grain-3000",
+      "ns-wheyprotein-deepchoco-1000"
+    ],
+    "sources": [
+      "powderProductsData.json: servingSizeG, servingsPerContainer, proteinPerServing, calories, nutritionPerBottle.carbsG, proteinSource",
+      "계산: servingSizeG < 100 인 65종에서 calories > 192 인 제품 수(5)",
+      "계산: proteinPerServing/calories×100 순위(69종 52번째), 비교 제품과 값 차이"
+    ]
+  },
+  "sportsresearch-whey-isolate-dutchchoco-1030": {
+    "summary": "스포츠리서치 유청 단백질 아이솔레이트 더치 초콜릿은 분리유청단백에 카제인나트륨을 더한 1.03kg 파우더(해외 직구)입니다. 41g 한 스쿱에 단백질 25g, 150kcal로 100kcal당 16.7g은 아이솔레이트 15종 중 가장 낮습니다.",
+    "points": [
+      "지방 4g은 아이솔레이트 15종 중 가장 많습니다(나머지는 0~2g).",
+      "같은 25g인 EVL 아이솔레이트(31.4g)보다 열량 50kcal, 지방 4g 높습니다.",
+      "나트륨 250mg은 아이솔레이트 중 칼로바이 퍼펙트 아이솔레이트 초코(262mg) 다음으로 많습니다."
+    ],
+    "goodFor": [
+      "유청에 카제인이 조금 섞인 아이솔레이트를 찾는 분",
+      "1kg 남짓 작은 통으로 해외 아이솔레이트를 써 보려는 분"
+    ],
+    "watchOut": [
+      "열량을 낮게 두려면 같은 단백질 25g의 아이소퓨어 제로 카브 110kcal, 다이마타이즈 ISO 100 120kcal로 30~40kcal 낮은 제품이 있습니다."
+    ],
+    "compareSlugs": [
+      "isopure-zerocarb-cookiecream-1360",
+      "dymatize-iso100-gourmetchoco-2300",
+      "evl-isolate-doublerich-2268"
+    ],
+    "sources": [
+      "powderProductsData.json: servingSizeG, proteinPerServing, calories, fat, sodium, proteinSource, origin",
+      "계산: isolate 15종 proteinPerServing/calories×100 최솟값, fat 최댓값, sodium 내림차순(2번째)",
+      "계산: 비교 제품과 calories·fat 값 차이"
+    ]
+  },
+  "meatree-lowsugar-proteinbar-caramel-choco-40": {
+    "summary": "미트리 저당 프로틴바 카라멜 초코는 40g 한 개에 단백질 13g, 166kcal인 작은 바입니다. 40g 이하 바 47종 중 단백질이 이보다 많은 제품은 더단백 크런치바 2종(15g)뿐입니다.",
+    "points": [
+      "당류는 1g으로, 같은 40g인 더단백 크런치바(당류 7~8g)보다 6~7g 적습니다.",
+      "허닭 BITE 저당 프로틴바 초코카라멜과 단백질·당류가 같고(13g, 1g), 열량은 6kcal 많지만 나트륨은 38mg 적습니다(192mg 대 230mg).",
+      "같은 미트리 코코아 밀크맛보다 단백질이 1g 많고 지방은 1g 적습니다.",
+      "100kcal당 단백질은 7.8g으로 바 115종 중 62번째입니다."
+    ],
+    "goodFor": [
+      "가방에 넣어 다닐 작은 크기의 저당 바를 찾는 분",
+      "오후 간식 한 개로 단백질 10g대를 채우려는 분"
+    ],
+    "watchOut": [
+      "한 개 단백질 13g은 등록된 바의 중앙값(15g)보다 적습니다. 20g 이상이 필요하면 55~60g 크기 바가 맞습니다."
+    ],
+    "compareSlugs": [
+      "meatree-lowsugar-proteinbar-cocoa-milk-40",
+      "heodak-bite-lowsugar-proteinbar-choco-caramel-40",
+      "thedanbaek-crunchbar-choco"
+    ],
+    "sources": [
+      "barProductsData.json: capacity, proteinPerServing, calories, sugar, fat, sodium",
+      "계산: capacity 40g 이하 바 47종 중 proteinPerServing > 13 제품(더단백 크런치바 초코·피넛버터 15g)",
+      "계산: 바 115종 proteinPerServing 중앙값 15g, proteinPerServing/calories×100 내림차순 순위(62번째)",
+      "계산: 허닭 BITE·미트리 코코아 밀크와 calories·sodium·fat 차이"
+    ]
+  },
+  "meatree-lowsugar-proteinbar-cocoa-milk-40": {
+    "summary": "미트리 저당 프로틴바 코코아 밀크는 40g 한 개에 단백질 12g, 168kcal, 당류 1g입니다. 같은 라인 카라멜 초코와 크기·당류가 같고 단백질은 1g 적습니다.",
+    "points": [
+      "단백질 13g, 166kcal, 지방 4g, 나트륨 192mg인 카라멜 초코와 비교하면 열량 2kcal, 지방 1g, 나트륨 9mg이 더 많습니다.",
+      "40g 이하 바 47종 중 단백질이 12g보다 많은 제품은 4개입니다.",
+      "당류 1g 이하인 바는 115종 중 32개이고, 이 제품도 그중 하나입니다.",
+      "나트륨 201mg은 나트륨 값이 있는 바 108종 중 높은 쪽에서 25번째입니다."
+    ],
+    "goodFor": [
+      "카라멜보다 우유·코코아 계열 맛의 저당 바를 고르는 분",
+      "식사 사이 단 과자 대신 먹을 작은 바를 찾는 분"
+    ],
+    "watchOut": [
+      "같은 라인 카라멜 초코가 단백질은 1g 많고 열량은 2kcal 적어, 수치만 보면 이 제품이 앞서는 항목은 없습니다."
+    ],
+    "compareSlugs": [
+      "meatree-lowsugar-proteinbar-caramel-choco-40",
+      "heodak-bite-lowsugar-proteinbar-choco-caramel-40",
+      "hymune-active-proteinbar-strawberry-yogurt-40"
+    ],
+    "sources": [
+      "barProductsData.json: capacity, proteinPerServing, calories, sugar, fat, sodium",
+      "계산: capacity 40g 이하 바 47종 중 proteinPerServing > 12 개수(4개)",
+      "계산: 바 115종 중 sugar ≤ 1 개수(32개), 나트륨 값이 있는 108종 중 sodium > 201 개수(24개)",
+      "계산: 미트리 카라멜 초코와 calories·fat·sodium 차이"
+    ]
+  },
+  "barebells-vegan-proteinbar-caramel-chocochip-55": {
+    "summary": "베어벨즈 비건 프로틴바 카라멜 초코칩은 55g 한 개에 단백질 15g, 205kcal입니다. 이름에 비건·식물성이 들어간 바는 이 제품과 씨알로 식물성단백질바(10g, 240kcal) 둘이고, 둘 중 단백질이 5g 많습니다.",
+    "points": [
+      "같은 55g인 베어벨즈 일반 프로틴바 4종은 단백질 20g, 200~203kcal로 열량은 비슷하고 단백질이 5g 많습니다.",
+      "맛 계열이 가까운 베어벨즈 소프트 프로틴바 카라멜 초코(16g, 203kcal)보다 단백질이 1g 적습니다.",
+      "100kcal당 단백질은 7.3g으로 바 115종 중 70번째입니다.",
+      "당류 2g, 지방 8.7g입니다."
+    ],
+    "goodFor": [
+      "유제품 원료 대신 비건 표기 바를 찾는 분",
+      "단백질 15g 정도의 든든한 간식 바를 원하는 분"
+    ],
+    "watchOut": [
+      "단백질 20g이 필요하면 같은 브랜드 일반 프로틴바가 비슷한 열량에 5g 더 많습니다.",
+      "나트륨 232mg은 나트륨 값이 있는 바 108종 중 높은 쪽에서 9번째이며, 베어벨즈 일반 바(75~204mg)보다 많습니다."
+    ],
+    "compareSlugs": [
+      "barebells-soft-proteinbar-caramel-choco-55",
+      "barebells-proteinbar-cookies-cream-55",
+      "cralo-plant-proteinbar"
+    ],
+    "sources": [
+      "barProductsData.json: capacity, proteinPerServing, calories, sugar, fat, sodium",
+      "계산: 바 이름에 '비건'·'식물' 포함 제품 목록(2개)",
+      "계산: 베어벨즈 바 7종 proteinPerServing·calories·sodium 비교",
+      "계산: proteinPerServing/calories×100 내림차순 순위(바 115종), sodium > 232 개수(108종 중 8개)"
+    ]
+  },
+  "grenade-carbkilla-white-chocolate-cookie-60": {
+    "summary": "그레네이드 카브킬라 프로틴바 화이트 초콜릿 쿠키는 60g 한 개에 단백질 22g, 215kcal입니다. 60g 이하 바 중 단백질이 가장 많고, 이보다 많은 바는 70g짜리 닥터유 프로 단백질바 3종(24~25g)뿐입니다.",
+    "points": [
+      "닥터유 프로 단백질바(312~355kcal)보다 단백질은 2~3g 적지만 열량은 97~140kcal 낮습니다.",
+      "같은 카브킬라 피넛 너터(21g, 223kcal)보다 단백질은 1g 많고 열량은 8kcal 적습니다.",
+      "100kcal당 단백질은 10.2g으로 바 115종 중 30번째입니다.",
+      "당류 2g, 나트륨 148mg입니다."
+    ],
+    "goodFor": [
+      "바 하나로 단백질 20g 넘게 채우고 싶은 분",
+      "운동 가방에 넣어 둘 고함량 바를 찾는 분"
+    ],
+    "watchOut": [
+      "215kcal로 바 115종 중 이보다 열량이 높은 제품은 18개입니다. 가벼운 간식으로 보기에는 열량이 큰 편입니다."
+    ],
+    "compareSlugs": [
+      "grenade-carbkilla-peanut-nutter-60",
+      "dryou-proteinbar-pro-choco-classic",
+      "quest-nutrition-protein-bar-smores-60"
+    ],
+    "sources": [
+      "barProductsData.json: capacity, proteinPerServing, calories, sugar, fat, sodium",
+      "계산: 바 115종 중 proteinPerServing > 22 제품(닥터유 프로 3종, 70g), capacity 60g 이하 바 중 최댓값 22g",
+      "계산: proteinPerServing/calories×100 내림차순 순위(30번째), calories > 215 개수(18개)"
+    ]
+  },
+  "one-proteinbar-cinnamon-roll-60": {
+    "summary": "ONE 프로틴바 시나몬 롤은 60g 한 개에 단백질 20g, 230kcal, 당류 1g입니다. ONE 바 3종은 모두 230kcal·지방 9g이고, 시나몬 롤과 피넛 버터 컵이 허쉬 더블 초콜릿(18g)보다 단백질이 2g 많습니다.",
+    "points": [
+      "바 115종 중 단백질이 이보다 많은 제품은 12개입니다.",
+      "230kcal보다 열량이 높은 바는 12개로, 열량은 높은 쪽에 속합니다.",
+      "단백질 20~21g인 퀘스트 바(180~200kcal)보다 열량이 30~50kcal 많습니다.",
+      "나트륨은 160mg으로 피넛 버터 컵(150mg)보다 10mg, 허쉬 더블 초콜릿(85mg)보다 75mg 많습니다."
+    ],
+    "goodFor": [
+      "시나몬 같은 디저트 맛 바로 단백질 20g을 채우려는 분",
+      "운동 전후 간식으로 단백질 20g짜리 바를 들고 다니려는 분"
+    ],
+    "watchOut": [
+      "100kcal당 단백질 8.7g으로 바 115종 중 공동 46번째입니다. 같은 단백질 20g이라도 열량이 더 낮은 바가 여럿 있습니다."
+    ],
+    "compareSlugs": [
+      "one-proteinbar-peanut-butter-cup-60",
+      "one-proteinbar-hersheys-double-chocolate-60",
+      "quest-nutrition-protein-bar-double-chocolate-chunk-60"
+    ],
+    "sources": [
+      "barProductsData.json: capacity, proteinPerServing, calories, sugar, fat, sodium",
+      "계산: 바 115종 중 proteinPerServing > 20 개수(12개), calories > 230 개수(12개)",
+      "계산: proteinPerServing/calories×100 내림차순 순위(공동 46번째, 피넛 버터 컵과 같은 값)",
+      "계산: 퀘스트 바 20~21g 제품 calories 범위(180~200kcal)와 차이"
+    ]
+  },
+  "one-proteinbar-hersheys-double-chocolate-60": {
+    "summary": "ONE 프로틴바 허쉬 더블 초콜릿은 60g 한 개에 단백질 18g, 230kcal입니다. ONE 3종 중 단백질은 2g 적지만 나트륨은 85mg으로 가장 낮습니다.",
+    "points": [
+      "나트륨 85mg은 나트륨 값이 있는 바 108종 중 낮은 쪽에서 20번째입니다.",
+      "바 115종 중 단백질이 18g보다 많은 제품은 37개입니다.",
+      "100kcal당 단백질 7.8g으로 115종 중 63번째이며, 같은 230kcal인 ONE 다른 맛(8.7g)보다 낮습니다.",
+      "당류 1g, 지방 9g입니다."
+    ],
+    "goodFor": [
+      "초콜릿 맛 바를 나트륨 낮은 쪽으로 고르려는 분",
+      "끼니 사이가 길 때 한 개로 버틸 간식 바가 필요한 분"
+    ],
+    "watchOut": [
+      "열량이 같은 시나몬 롤·피넛 버터 컵이 단백질을 2g 더 줍니다."
+    ],
+    "compareSlugs": [
+      "one-proteinbar-cinnamon-roll-60",
+      "one-proteinbar-peanut-butter-cup-60",
+      "barebells-proteinbar-cookies-cream-55"
+    ],
+    "sources": [
+      "barProductsData.json: capacity, proteinPerServing, calories, sugar, fat, sodium",
+      "계산: 나트륨 값이 있는 바 108종 중 sodium < 85 개수(19개)",
+      "계산: 바 115종 중 proteinPerServing > 18 개수(37개), proteinPerServing/calories×100 순위(63번째)"
+    ]
+  },
+  "one-proteinbar-peanut-butter-cup-60": {
+    "summary": "ONE 프로틴바 피넛 버터 컵은 60g 한 개에 단백질 20g, 230kcal, 당류 1g입니다. 같은 ONE 시나몬 롤과 단백질·열량·지방이 모두 같고 나트륨만 10mg 적습니다.",
+    "points": [
+      "피넛 버터 계열인 55g에 단백질 20g, 203kcal인 베어벨즈 프로틴바 피넛 버터와 단백질이 같고, 이 제품이 열량은 27kcal 많지만 나트륨은 54mg 적습니다.",
+      "100kcal당 단백질 8.7g으로 바 115종 중 공동 46번째입니다.",
+      "바 115종 중 이보다 열량이 높은 제품은 12개입니다.",
+      "나트륨 150mg은 나트륨 값이 있는 바 108종 중 낮은 쪽에서 공동 45번째입니다."
+    ],
+    "goodFor": [
+      "땅콩버터 맛 바로 단백질 20g을 채우려는 분",
+      "끼니 사이 간식을 바 하나로 해결하려는 분"
+    ],
+    "watchOut": [
+      "같은 단백질 20g인 베노프 소프트바(171~177kcal)보다 열량이 53kcal 이상 많습니다."
+    ],
+    "compareSlugs": [
+      "barebells-proteinbar-peanut-butter-55",
+      "one-proteinbar-cinnamon-roll-60",
+      "quest-nutrition-protein-bar-chocolate-peanutbutter-60"
+    ],
+    "sources": [
+      "barProductsData.json: capacity, proteinPerServing, calories, sugar, fat, sodium",
+      "계산: 베어벨즈 피넛 버터·베노프 소프트바 calories·sodium 차이",
+      "계산: proteinPerServing/calories×100 순위(바 115종 중 공동 46번째), calories > 230 개수(12개), 나트륨 108종 중 sodium < 150 개수(44개)"
+    ]
+  },
+  "heodak-bite-lowsugar-proteinbar-choco-caramel-40": {
+    "summary": "허닭 BITE 저당 프로틴바 초코카라멜은 40g 한 개에 단백질 13g, 160kcal, 당류 1g입니다. 40g 이하 바 47종 중 단백질이 이보다 많은 제품은 2개뿐입니다.",
+    "points": [
+      "미트리 저당 프로틴바 카라멜 초코와 단백질·당류가 같고, 열량은 6kcal 적지만 나트륨은 38mg 많습니다.",
+      "열량 160kcal보다 낮은 바는 115종 중 35개입니다.",
+      "100kcal당 단백질 8.1g으로 바 115종 중 53번째입니다.",
+      "지방 5g입니다."
+    ],
+    "goodFor": [
+      "한입 크기 저당 바를 간식으로 두려는 분",
+      "40g대 작은 바 중 단백질이 많은 쪽을 고르는 분"
+    ],
+    "watchOut": [
+      "나트륨 230mg은 나트륨 값이 있는 바 108종 중 높은 쪽에서 공동 10번째이며, 같은 크기 미트리 바(192~201mg)보다 많습니다."
+    ],
+    "compareSlugs": [
+      "meatree-lowsugar-proteinbar-caramel-choco-40",
+      "meatree-lowsugar-proteinbar-cocoa-milk-40",
+      "thedanbaek-crunchbar-choco"
+    ],
+    "sources": [
+      "barProductsData.json: capacity, proteinPerServing, calories, sugar, fat, sodium",
+      "계산: capacity 40g 이하 바 47종 중 proteinPerServing > 13 개수(2개)",
+      "계산: calories < 160 개수(35개), proteinPerServing/calories×100 순위(53번째), 나트륨 108종 중 sodium > 230 개수(9개)"
+    ]
+  },
+  "hymune-active-proteinbar-nutty-choco-40": {
+    "summary": "하이뮨 액티브 프로틴바 너티초코는 40g 한 개에 단백질 12g, 195kcal입니다. 지방 10g은 약 90kcal로, 열량의 절반 가까이를 차지합니다.",
+    "points": [
+      "같은 액티브 딸기요거트(12g, 185kcal, 지방 9g)보다 열량 10kcal, 지방 1g이 많고 당류는 0.5g 적습니다.",
+      "지방이 10g 이상인 바는 지방 값이 있는 108종 중 16개입니다.",
+      "100kcal당 단백질 6.2g으로 바 115종 중 82번째입니다.",
+      "40g 이하 바 47종 중 단백질이 12g보다 많은 제품은 4개입니다."
+    ],
+    "goodFor": [
+      "견과·초코 맛 바를 당류 낮은 쪽으로 고르려는 분",
+      "등산·산책 중 작은 크기로 열량을 챙기려는 분"
+    ],
+    "watchOut": [
+      "같은 40g·당류 1g인 허닭 BITE(13g, 160kcal)보다 단백질은 1g 적고 열량은 35kcal 많습니다."
+    ],
+    "compareSlugs": [
+      "hymune-active-proteinbar-strawberry-yogurt-40",
+      "heodak-bite-lowsugar-proteinbar-choco-caramel-40",
+      "meatree-lowsugar-proteinbar-caramel-choco-40"
+    ],
+    "sources": [
+      "barProductsData.json: capacity, proteinPerServing, calories, sugar, fat, sodium",
+      "계산: fat×9 = 90kcal, 90/195 = 46%",
+      "계산: 지방 값이 있는 바 108종 중 fat ≥ 10 개수(16개), proteinPerServing/calories×100 순위(82번째)",
+      "계산: capacity 40g 이하 바 47종 중 proteinPerServing > 12 개수(4개)"
+    ]
+  },
+  "hymune-active-proteinbar-strawberry-yogurt-40": {
+    "summary": "하이뮨 액티브 프로틴바 딸기요거트는 40g 한 개에 단백질 12g, 185kcal입니다. 같은 액티브 너티초코보다 열량은 10kcal 적고, 당류는 1.5g으로 0.5g 많습니다.",
+    "points": [
+      "하이뮨 프로틴밸런스 단백질바(8g, 152kcal, 당류 9.2g)보다 단백질은 4g 많고 당류는 7.7g 적습니다.",
+      "바 115종 중 단백질이 12g보다 많은 제품은 65개입니다.",
+      "100kcal당 단백질 6.5g으로 115종 중 79번째입니다.",
+      "지방 9g, 나트륨 180mg입니다."
+    ],
+    "goodFor": [
+      "초코가 아닌 과일·요거트 맛 바를 찾는 분",
+      "하이뮨 바 중 당류가 낮은 쪽을 고르려는 분"
+    ],
+    "watchOut": [
+      "같은 40g인 미트리 저당 바 2종은 단백질 12~13g, 166~168kcal입니다. 이와 비교하면 단백질은 같거나 적고 열량은 17~19kcal 많습니다."
+    ],
+    "compareSlugs": [
+      "hymune-active-proteinbar-nutty-choco-40",
+      "hymune-protein-balance-bar",
+      "meatree-lowsugar-proteinbar-cocoa-milk-40"
+    ],
+    "sources": [
+      "barProductsData.json: capacity, proteinPerServing, calories, sugar, fat, sodium",
+      "계산: 하이뮨 바 4종 proteinPerServing·calories·sugar 차이",
+      "계산: 바 115종 중 proteinPerServing > 12 개수(65개), proteinPerServing/calories×100 순위(79번째)"
+    ]
+  },
+  "oatmont-protein-zerosugar-choco-250": {
+    "summary": "오트몬드 프로틴 제로슈거 초코는 250mL 한 팩에 단백질 21g, 107kcal, 당류 0g인 롯데칠성음료 음료입니다. 성분표 원재료 첫 줄이 분리대두단백이고, 같은 오트몬드 초콜릿과는 탄수화물만 2g 대 1.7g으로 다릅니다.",
+    "points": [
+      "성분표에 류신 1,578mg, 칼슘 131.3mg이 적혀 있고, 포장에는 BCAA 3,200mg이 표시돼 있습니다.",
+      "음료 141종 중 1팩 단백질이 이보다 많은 제품은 58개입니다.",
+      "100kcal당 단백질 19.6g으로 141종 중 공동 47번째입니다.",
+      "오트몬드 4종은 모두 단백질 21g, 103~107kcal, 나트륨 365mg입니다."
+    ],
+    "goodFor": [
+      "단 음료 대신 당류 0g 초코 음료를 찾는 분",
+      "작은 팩 하나로 단백질 20g 안팎을 채우려는 분"
+    ],
+    "watchOut": [
+      "나트륨 365mg은 음료 141종 중 높은 쪽에서 공동 12번째입니다(오트몬드 4종 같은 값)."
+    ],
+    "compareSlugs": [
+      "oatmont-protein-choco-250",
+      "ultive-protein-choco-250",
+      "oatmont-protein-cookiecream-250"
+    ],
+    "sources": [
+      "drinkProductsData.json: proteinPerServing, calories, sugar, fat, sodium, nutritionPerBottle.carbsG",
+      "public/rtd-drink-spec/oatmont-protein-zerosugar-choco-250.png (원재료 첫 줄 분리대두단백, 류신 1,578mg, 칼슘 131.3mg, 포장 BCAA 3200mg, 판매원 롯데칠성음료)",
+      "계산: 음료 141종 중 proteinPerServing > 21 개수(58개), proteinPerServing/calories×100 순위(공동 47번째), sodium > 365 개수(11개, 365mg 4개 동점)",
+      "계산: 오트몬드 4종 수치 비교"
+    ]
+  },
+  "newcare-all-protein-plant-choco-250": {
+    "summary": "뉴케어 올프로틴 식물성단백질 초코맛은 250mL에 단백질 20g, 130kcal, 당류 0g인 식물성 단백질 음료입니다. 같은 브랜드 올프로틴 245mL(25g, 135kcal)보다 단백질이 5g 적습니다.",
+    "points": [
+      "등록된 식물성 단백질 음료 6종 중 얼티브 비건 프로틴(21g) 다음이며, 20g인 제품은 이 제품을 포함해 3개입니다.",
+      "같은 식물성 250mL 제품인 하이뮨 프로틴 밸런스 액티브는 단백질이 20g으로 같고 열량이 31kcal 낮습니다.",
+      "100kcal당 단백질 15.4g으로 음료 141종 중 공동 106번째입니다.",
+      "식물성 고소한맛과는 맛만 다르고 수치는 같습니다."
+    ],
+    "goodFor": [
+      "우유 단백질 대신 식물성 단백질 음료를 찾는 분",
+      "락토프리로 분류된 음료가 필요한 분"
+    ],
+    "watchOut": [
+      "지방 3.5g으로 같은 20g 식물성 음료인 하이뮨 액티브(0.8g)보다 2.7g 많습니다."
+    ],
+    "compareSlugs": [
+      "newcare-all-protein-plant-savory-250",
+      "ultive-vegan-protein-choco-250",
+      "hymune-balance-active-plant-protein-250"
+    ],
+    "sources": [
+      "drinkProductsData.json: proteinPerServing, calories, sugar, fat, sodium, proteinSource, variant(락토프리)",
+      "계산: proteinSource '식물성' 음료 6종 proteinPerServing·calories·fat 비교",
+      "계산: proteinPerServing/calories×100 내림차순 순위(141종 중 공동 106번째)"
+    ]
+  },
+  "pasteur-protein-plus-blackbean-blacksesame-195": {
+    "summary": "파스퇴르 단백질+ 검은콩&검은깨는 195mL에 단백질 12g, 120kcal인 작은 음료입니다. 200mL 이하 음료 21종 중 단백질이 이보다 많은 제품은 4개입니다.",
+    "points": [
+      "나트륨 340mg은 200mL 이하 음료 21종 중 가장 많습니다.",
+      "단백질이 같은 12g인 190mL 연세 세브란스 A2 프로틴 초콜릿은 열량이 30kcal 적은 90kcal입니다.",
+      "지방 6g으로, 음료 141종 중 지방이 6g보다 많은 제품은 5개입니다.",
+      "100kcal당 단백질 10.0g으로 141종 중 공동 125번째입니다."
+    ],
+    "goodFor": [
+      "검은콩·검은깨 맛 음료로 단백질 10g대를 마시려는 분",
+      "아침에 작은 병 하나를 곁들이려는 분"
+    ],
+    "watchOut": [
+      "음료 141종 중 123개가 이 제품보다 단백질이 많습니다. 20g 이상이 목적이면 250mL급 음료가 맞습니다."
+    ],
+    "compareSlugs": [
+      "yonsei-severance-a2-protein-choco-190",
+      "sellex-protein-lowsugar-190",
+      "hymune-protein-balance-black-sesame-190"
+    ],
+    "sources": [
+      "drinkProductsData.json: capacity, proteinPerServing, calories, sugar, fat, sodium",
+      "계산: capacity 200mL 이하 음료 21종 중 proteinPerServing > 12 개수(4개), sodium 최댓값",
+      "계산: 음료 141종 중 fat > 6 개수(5개), proteinPerServing > 12 개수(123개), proteinPerServing/calories×100 순위(공동 125번째)"
+    ]
+  },
+  "hymune-active-protein-shake-injeolmi-40": {
+    "summary": "하이뮨 액티브 프로틴 쉐이크 인절미는 40g 한 포에 단백질 22g, 145kcal입니다. 쉐이크 123종 중 단백질이 이보다 많은 제품은 14개입니다.",
+    "points": [
+      "같은 액티브 얼그레이밀크티와 열량 145kcal, 당류 1g이 같고 단백질은 2g 많습니다.",
+      "100kcal당 단백질 15.2g으로 쉐이크 중 공동 19번째입니다.",
+      "같은 인절미 맛인 랩노쉬 슬림쉐이크 인절미(45g, 20g, 165kcal)에 비해 단백질은 2g 많고 열량은 20kcal 적습니다.",
+      "열량이 145kcal보다 낮은 쉐이크는 23개입니다."
+    ],
+    "goodFor": [
+      "떡·곡물 계열의 고소한 맛 쉐이크를 찾는 분",
+      "물에 타서 단백질 20g 넘게 마시려는 분"
+    ],
+    "watchOut": [
+      "나트륨 290mg은 쉐이크 123종 중 높은 쪽에서 공동 23번째입니다. 우유에 타면 우유 성분이 더해집니다."
+    ],
+    "compareSlugs": [
+      "hymune-active-protein-shake-earlgrey-milktea-40",
+      "labnosh-slimshake-injeolmi-45",
+      "proteone-proteinshake-grain-40"
+    ],
+    "sources": [
+      "shakeProductsData.json: proteinPerServing, calories, sugar, fat, sodium, nutritionBasis=per_pack",
+      "계산: 쉐이크 123종 중 proteinPerServing > 22 개수(14개), calories < 145 개수(23개), sodium > 290 개수(22개)",
+      "계산: proteinPerServing/calories×100 내림차순 순위(공동 19번째)",
+      "계산: 랩노쉬 슬림쉐이크 인절미와 proteinPerServing·calories 차이"
+    ]
+  },
+  "hymune-active-protein-shake-earlgrey-milktea-40": {
+    "summary": "하이뮨 액티브 프로틴 쉐이크 얼그레이밀크티는 40g 한 포에 단백질 20g, 145kcal, 당류 1g입니다. 같은 라인 인절미와 열량·당류가 같고 단백질은 2g 적습니다.",
+    "points": [
+      "같은 얼그레이밀크티 맛인 랩노쉬 슬림쉐이크는 45g에 단백질 20g, 165kcal로, 단백질이 같고 열량은 이 제품이 20kcal 적습니다.",
+      "나트륨은 235mg으로 인절미(290mg)보다 55mg, 랩노쉬 얼그레이밀크티(266.2mg)보다 31.2mg 적습니다.",
+      "100kcal당 단백질 13.8g으로 쉐이크 123종 중 공동 36번째입니다.",
+      "탄수화물 13g, 식이섬유 2.3g입니다."
+    ],
+    "goodFor": [
+      "홍차·밀크티 맛 쉐이크를 찾는 분",
+      "아침 대용 한 포를 가볍게 두려는 분"
+    ],
+    "watchOut": [
+      "단백질을 더 원하면 같은 라인 인절미가 같은 열량에 2g 많습니다."
+    ],
+    "compareSlugs": [
+      "hymune-active-protein-shake-injeolmi-40",
+      "labnosh-slimshake-earl-grey-milk-tea-45",
+      "coreage-protein-energy-shake-milktea-40"
+    ],
+    "sources": [
+      "shakeProductsData.json: proteinPerServing, calories, sugar, sodium, nutritionPerBottle(carbsG, fiberG)",
+      "계산: 하이뮨 인절미·랩노쉬 슬림쉐이크 얼그레이밀크티와 calories·sodium 차이",
+      "계산: proteinPerServing/calories×100 내림차순 순위(쉐이크 123종 중 공동 36번째)"
+    ]
+  },
+  "coreage-protein-energy-shake-milktea-40": {
+    "summary": "코어리지 프로틴 에너지 쉐이크 밀크티는 40g 한 포에 단백질 20g, 154kcal입니다. 당류는 4g으로, 쉐이크 123종 중 이보다 당류가 많은 제품은 17개입니다.",
+    "points": [
+      "같은 코어리지 초코(146kcal, 당류 5.3g)보다 열량 8kcal, 지방 1.4g이 많고 당류는 1.3g 적습니다.",
+      "밀크티 계열인 하이뮨 액티브 얼그레이밀크티는 단백질 20g, 145kcal, 당류 1g으로, 단백질은 같고 이 제품이 당류가 3g 많습니다.",
+      "100kcal당 단백질 13.0g으로 쉐이크 중 56번째입니다.",
+      "탄수화물 13.3g, 지방 2.3g입니다."
+    ],
+    "goodFor": [
+      "단맛이 조금 있는 밀크티 쉐이크를 원하는 분",
+      "운동 후 한 포로 단백질 20g을 마시려는 분"
+    ],
+    "watchOut": [
+      "나트륨 305.6mg은 쉐이크 123종 중 높은 쪽에서 20번째이고, 당류 4g도 높은 쪽입니다."
+    ],
+    "compareSlugs": [
+      "coreage-protein-energy-shake-choco-40",
+      "hymune-active-protein-shake-earlgrey-milktea-40",
+      "labnosh-slimshake-earl-grey-milk-tea-45"
+    ],
+    "sources": [
+      "shakeProductsData.json: proteinPerServing, calories, sugar, fat, sodium, nutritionPerBottle.carbsG",
+      "계산: 쉐이크 123종 중 sugar > 4 개수(17개), sodium > 305.6 개수(19개)",
+      "계산: proteinPerServing/calories×100 순위(56번째), 코어리지 초코·하이뮨 얼그레이밀크티와 차이"
+    ]
+  },
+  "coreage-protein-energy-shake-choco-40": {
+    "summary": "코어리지 프로틴 에너지 쉐이크 초코는 40g 한 포에 단백질 20g, 146kcal입니다. 당류 5.3g은 쉐이크 123종 중 높은 쪽으로, 이보다 많은 제품은 12개입니다.",
+    "points": [
+      "지방 0.9g으로 같은 코어리지 밀크티(2.3g)보다 1.4g 적고, 열량도 8kcal 낮습니다.",
+      "단백질 23g, 128kcal, 당류 1g인 프로티원 초코맛과 비교하면 단백질은 3g 적고 당류는 4.3g 많습니다.",
+      "100kcal당 단백질 13.7g으로 쉐이크 중 40번째입니다.",
+      "탄수화물 14.4g, 나트륨 289.7mg입니다."
+    ],
+    "goodFor": [
+      "지방이 적은 초코 쉐이크를 찾는 분",
+      "운동 후 간단히 타 마실 초코 맛 한 포가 필요한 분"
+    ],
+    "watchOut": [
+      "쉐이크 123종 중 110개가 이 제품보다 당류가 낮습니다. 당류를 1~2g으로 줄이려면 다른 초코 쉐이크가 맞습니다."
+    ],
+    "compareSlugs": [
+      "coreage-protein-energy-shake-milktea-40",
+      "proteone-proteinshake-choco-40",
+      "flymill-proteinshake-choco-45"
+    ],
+    "sources": [
+      "shakeProductsData.json: proteinPerServing, calories, sugar, fat, sodium, nutritionPerBottle.carbsG",
+      "계산: 쉐이크 123종 중 sugar > 5.3 개수(12개), sugar < 5.3 개수(110개)",
+      "계산: proteinPerServing/calories×100 순위(40번째), 코어리지 밀크티·프로티원 초코와 차이"
+    ]
+  },
+  "dryou-pro-protein-shake-grain-42": {
+    "summary": "닥터유 프로 단백질 쉐이크 곡물은 42g 한 포에 단백질 24g, 153kcal입니다. 쉐이크 123종 중 단백질이 이보다 많은 제품은 잇더핏 미숫가루 28.7g, 올더배러 저당 초콜릿무스 25g 등 2개뿐입니다.",
+    "points": [
+      "단백질 24g인 다른 쉐이크 9종은 45~50g 한 포에 160~195kcal로, 이 제품이 그중 열량이 가장 낮습니다.",
+      "100kcal당 단백질 15.7g으로 쉐이크 중 14번째입니다.",
+      "곡물 계열인 올더배러 저당 17곡 미숫가루는 45g에 단백질 24g, 170kcal로, 단백질은 같고 열량은 이 제품이 17kcal 적습니다.",
+      "식이섬유 5g, 당류 2g입니다."
+    ],
+    "goodFor": [
+      "곡물 맛 쉐이크로 한 번에 단백질 24g을 채우려는 분",
+      "아침 대용으로 한 포를 타 마시려는 분"
+    ],
+    "watchOut": [
+      "나트륨은 250mg입니다. 우유에 타면 우유의 단백질·열량·나트륨이 더해집니다."
+    ],
+    "compareSlugs": [
+      "itthefit-proteinshake-misugaru-40",
+      "allthebetter-proteinshake-low-sugar-17grain-misugaru-45",
+      "proteone-proteinshake-grain-40"
+    ],
+    "sources": [
+      "shakeProductsData.json: capacity, proteinPerServing, calories, sugar, sodium, nutritionPerBottle.fiberG",
+      "계산: 쉐이크 123종 중 proteinPerServing > 24 제품(2개), proteinPerServing = 24 제품 10개의 capacity·calories 범위",
+      "계산: proteinPerServing/calories×100 내림차순 순위(14번째)"
+    ]
+  },
+  "imfoody-protein-shake-blacksesame-45": {
+    "summary": "아임푸디 맛있는 단백질 쉐이크 흑임자는 통에 담긴 제품으로, 1회분 45g에 단백질 20g, 156kcal입니다. 식이섬유가 7g으로 쉐이크 중 이보다 많은 제품은 8개입니다.",
+    "points": [
+      "지방 5.2g은 쉐이크 123종 중 높은 쪽으로, 이보다 많은 제품은 5개입니다.",
+      "40g에 단백질 20g, 133kcal인 프로티원 흑임자맛과 단백질이 같고 열량은 23kcal 많습니다.",
+      "랩노쉬 슬림쉐이크 로스팅흑임자(20g, 165kcal)보다는 열량이 9kcal 적습니다.",
+      "100kcal당 단백질 12.8g으로 쉐이크 중 61번째입니다."
+    ],
+    "goodFor": [
+      "흑임자 맛 쉐이크를 통으로 두고 덜어 먹으려는 분",
+      "식이섬유가 함께 든 쉐이크를 찾는 분"
+    ],
+    "watchOut": [
+      "나트륨 332mg은 쉐이크 123종 중 높은 쪽에서 10번째입니다.",
+      "통 제품이라 1회분 45g을 직접 계량해야 표시된 수치와 같아집니다."
+    ],
+    "compareSlugs": [
+      "proteone-proteinshake-black-sesame-40",
+      "labnosh-slimshake-roasting-black-sesame-45",
+      "kkobak-kobab-high-protein-low-sugar-black-sesame-40"
+    ],
+    "sources": [
+      "shakeProductsData.json: capacity, variant(통형), proteinPerServing, calories, fat, sodium, nutritionPerBottle.fiberG",
+      "계산: fiberG 값이 있는 쉐이크 119종 중 fiberG > 7 개수(8개), 123종 중 fat > 5.2 개수(5개), sodium > 332 개수(9개)",
+      "계산: proteinPerServing/calories×100 순위(61번째), 흑임자 맛 쉐이크와 calories 차이"
+    ]
+  },
+  "proutin-protein-shake-grain-40": {
+    "summary": "프로우틴 단백질 쉐이크 곡물은 40g 스틱 한 개에 단백질 20g, 153kcal, 당류 1g입니다. 쉐이크 123종 중 스틱형은 이 제품과 린코어 제로슈거 초코 2개입니다.",
+    "points": [
+      "40g에 단백질 20g, 134kcal인 프로티원 곡물맛과 단백질이 같고 열량은 19kcal 많습니다.",
+      "매일한끼 곡물(40g, 20g, 145kcal, 나트륨 238mg)보다 열량 8kcal, 나트륨 86mg이 많습니다.",
+      "100kcal당 단백질 13.1g으로 쉐이크 중 공동 52번째입니다.",
+      "포화지방 1.8g, 식이섬유 2g입니다."
+    ],
+    "goodFor": [
+      "파우치보다 스틱 포장이 편한 분",
+      "곡물 맛 쉐이크를 당류 낮은 쪽으로 고르려는 분"
+    ],
+    "watchOut": [
+      "나트륨 324mg은 쉐이크 123종 중 높은 쪽에서 14번째입니다."
+    ],
+    "compareSlugs": [
+      "proteone-proteinshake-grain-40",
+      "maeilhankki-shake-grain-40",
+      "dryou-pro-protein-shake-grain-42"
+    ],
+    "sources": [
+      "shakeProductsData.json: variant(스틱형), proteinPerServing, calories, sugar, sodium, nutritionPerBottle(satFatG, fiberG)",
+      "계산: 쉐이크 variant 집계(파우치형 119, 통형 2, 스틱형 2)",
+      "계산: proteinPerServing/calories×100 순위(공동 52번째), sodium > 324 개수(13개), 곡물 맛 쉐이크와 차이"
+    ]
+  },
+  "leancore-zerosugar-choco-protein-30": {
+    "summary": "린코어 제로슈거 초코 프로틴은 30g 스틱 한 개에 단백질 20.1g, 102kcal입니다. 쉐이크 123종 중 열량이 가장 낮고, 당류 0g인 쉐이크는 이 제품 하나입니다.",
+    "points": [
+      "100kcal당 단백질 19.7g으로 프로티원 커피맛(20.4g) 다음 2번째입니다.",
+      "더단백 단백질쉐이크 파우더 초코(32g, 20g, 110kcal)보다 열량 8kcal, 나트륨 175.8mg이 적습니다.",
+      "나트륨 184.2mg은 쉐이크 중 낮은 쪽에서 30번째입니다.",
+      "탄수화물 6.9g, 지방 0.81g입니다."
+    ],
+    "goodFor": [
+      "물에 타서 당류 없이 초코 맛 단백질을 마시려는 분",
+      "가방에 넣기 쉬운 스틱 하나로 단백질 20g을 챙기려는 분"
+    ],
+    "watchOut": [
+      "열량 102kcal, 탄수화물 6.9g이라 이것만으로 한 끼를 대신하기에는 적습니다."
+    ],
+    "compareSlugs": [
+      "proteone-proteinshake-coffee-40",
+      "thedanbaek-proteinshake-powder-choco-32",
+      "proteone-proteinshake-choco-40"
+    ],
+    "sources": [
+      "shakeProductsData.json: proteinPerServing, calories, sugar, fat, sodium, nutritionPerBottle.carbsG",
+      "계산: 쉐이크 123종 calories 오름차순(1번째), sugar = 0 개수(1개)",
+      "계산: proteinPerServing/calories×100 내림차순(2번째, 1번째는 프로티원 커피맛 20.4g), sodium < 184.2 개수(29개)"
+    ]
+  },
+  "milit-proteinshake-misutgaru-30": {
+    "summary": "밀잇 단백질 쉐이크 미숫가루맛은 통에 담긴 제품으로, 1회분 30g에 단백질 10g, 118kcal입니다. 쉐이크 123종 중 1회분 단백질이 가장 적습니다.",
+    "points": [
+      "같은 밀잇의 40g 파우치 7종은 단백질 14~20g입니다.",
+      "탄수화물 17.4g이 단백질보다 많아 100kcal당 단백질은 8.5g, 쉐이크 중 121번째입니다.",
+      "당류는 0.3g으로, 이보다 낮은 쉐이크는 린코어 제로슈거 초코(0g) 하나입니다.",
+      "열량이 118kcal보다 낮은 쉐이크는 4개입니다."
+    ],
+    "goodFor": [
+      "미숫가루 맛 음료를 단맛 적게 마시려는 분",
+      "단백질보다 곡물 음료에 가까운 가벼운 한 잔을 원하는 분"
+    ],
+    "watchOut": [
+      "1회분 단백질 10g은 사이트 쉐이크 등록 기준(10g 이상)의 하한입니다. 20g을 채우려면 두 번 분량이 필요합니다."
+    ],
+    "compareSlugs": [
+      "milit-proteinshake-cereal-40",
+      "itthefit-proteinshake-misugaru-40",
+      "kkobak-kobab-high-protein-low-sugar-misugaru-40"
+    ],
+    "sources": [
+      "shakeProductsData.json: capacity, variant(통형), proteinPerServing, calories, sugar, nutritionPerBottle.carbsG",
+      "계산: 쉐이크 123종 proteinPerServing 오름차순(1번째), sugar < 0.3 개수(1개), calories < 118 개수(4개)",
+      "계산: proteinPerServing/calories×100 순위(121번째), 밀잇 40g 7종 proteinPerServing 범위"
+    ]
+  },
+  "myprotein-shake-yogurt-strawberry-45": {
+    "summary": "마이프로틴 쉐이크 요거트 스트로베리는 45g 한 포에 단백질 20g, 170kcal, 당류 2g입니다. 등록된 마이프로틴 쉐이크는 이 맛 하나입니다.",
+    "points": [
+      "딸기요거트 계열인 딜라이트 프로젝트 딸기요거트는 45g에 단백질 20g, 175kcal, 당류 6g으로, 단백질은 같고 이 제품이 당류가 4g 적습니다.",
+      "랩노쉬 프로틴쉐이크 딸기요거트(50g)보다 단백질은 4g 적고 열량은 25kcal 낮습니다.",
+      "100kcal당 단백질 11.8g으로 쉐이크 123종 중 공동 88번째입니다.",
+      "식이섬유 4.8g, 나트륨 190mg입니다."
+    ],
+    "goodFor": [
+      "과일·요거트 맛 쉐이크를 당류 낮은 쪽으로 고르려는 분",
+      "아침 대용 한 포를 물이나 우유에 타려는 분"
+    ],
+    "watchOut": [
+      "쉐이크 123종 중 이보다 열량이 높은 제품은 26개뿐이라, 쉐이크 중에서는 열량이 높은 편입니다."
+    ],
+    "compareSlugs": [
+      "labnosh-proteinshake-strawberry-yogurt-50",
+      "delight-project-shake-strawberry-yogurt-45",
+      "fromit-proteinshake-blueberry-greek-yogurt-45"
+    ],
+    "sources": [
+      "shakeProductsData.json: proteinPerServing, calories, sugar, sodium, nutritionPerBottle.fiberG",
+      "계산: 딜라이트 딸기요거트·랩노쉬 딸기요거트와 proteinPerServing·calories·sugar 차이",
+      "계산: proteinPerServing/calories×100 순위(공동 88번째), calories > 170 개수(26개)"
+    ]
+  },
+  "labnosh-proteinshake-strawberry-yogurt-50": {
+    "summary": "랩노쉬 프로틴쉐이크 딸기요거트는 50g 한 포에 단백질 24g, 195kcal입니다. 쉐이크 123종 중 단백질이 이보다 많은 제품은 2개, 열량이 더 높은 제품은 3개입니다.",
+    "points": [
+      "같은 랩노쉬 슬림쉐이크(45g, 20g, 160~175kcal)보다 한 포가 5g 크고 단백질은 4g 많습니다.",
+      "딸기 계열 마이프로틴 요거트 스트로베리(20g, 170kcal)보다 단백질 4g, 열량 25kcal가 많습니다.",
+      "100kcal당 단백질 12.3g으로 쉐이크 중 공동 70번째입니다.",
+      "당류 2.4g, 식이섬유 3.2g입니다."
+    ],
+    "goodFor": [
+      "한 포로 단백질 24g을 마시려는 분",
+      "아침 대용으로 열량 있는 한 잔이 필요한 분"
+    ],
+    "watchOut": [
+      "같은 단백질 24g인 42g짜리 닥터유 프로 곡물은 153kcal로 이 제품보다 42kcal 낮습니다."
+    ],
+    "compareSlugs": [
+      "labnosh-slimshake-strawberry-banana-45",
+      "myprotein-shake-yogurt-strawberry-45",
+      "dryou-pro-protein-shake-grain-42"
+    ],
+    "sources": [
+      "shakeProductsData.json: capacity, proteinPerServing, calories, sugar, nutritionPerBottle.fiberG",
+      "계산: 쉐이크 123종 중 proteinPerServing > 24 개수(2개), calories > 195 개수(3개)",
+      "계산: 랩노쉬 슬림쉐이크 9종 calories 범위, proteinPerServing/calories×100 순위(공동 70번째)"
+    ]
+  },
+  "yonsei-lowsugar-blackbean-calcium-190": {
+    "summary": "연세두유 저당 검은콩&고칼슘은 190mL에 단백질 6g, 125kcal, 당류 3g인 일반 두유(5~7g)입니다. 칼슘은 230mg으로, 칼슘 값이 있는 두유 34종 중 이보다 많은 제품은 2개입니다.",
+    "points": [
+      "같은 연세 고단백 검은콩&고칼슘은 단백질 12g, 155kcal입니다. 칼슘은 230mg으로 같고, 이 제품은 단백질이 절반, 열량이 30kcal 적습니다.",
+      "같은 일반 구간인 베지밀 검은콩 고칼슘(6g, 130kcal, 당류 10g)에 비해 단백질은 같고 당류는 7g 적습니다.",
+      "열량 125kcal보다 높은 두유는 62종 중 14개입니다.",
+      "100kcal당 단백질 4.8g으로 두유 중 공동 49번째입니다."
+    ],
+    "goodFor": [
+      "검은콩 두유를 당류 낮은 쪽으로 고르려는 분",
+      "칼슘이 함께 표시된 두유를 찾는 분"
+    ],
+    "watchOut": [
+      "두유 62종 중 29개가 이 제품보다 단백질이 많습니다. 단백질이 목적이면 같은 연세 고단백 라인이 12g으로 두 배입니다."
+    ],
+    "compareSlugs": [
+      "yonsei-protein-blackbean-calcium-190",
+      "yonsei-lowsugar-almond-pine-190",
+      "vegemil-blackbean-calcium-190"
+    ],
+    "sources": [
+      "soymilkProductsData.json: proteinPerServing, calories, sugar, fat, sodium, nutritionPerBottle.calciumMg",
+      "계산: calciumMg 값이 있는 두유 34종 중 calciumMg > 230 개수(2개)",
+      "계산: 두유 62종 중 calories > 125 개수(14개), proteinPerServing > 6 개수(29개), proteinPerServing/calories×100 순위(공동 49번째), getSoymilkTier 구간(일반 5~7g)"
+    ]
+  },
+  "yonsei-lowsugar-almond-pine-190": {
+    "summary": "연세두유 저당 아몬드&잣은 190mL에 단백질 6g, 125kcal, 당류 3g입니다. 같은 저당 검은콩&고칼슘과 맛만 다르고 수치는 같습니다(칼슘 230mg 포함).",
+    "points": [
+      "같은 연세 고단백 아몬드&잣(12g, 155kcal, 당류 4g)보다 단백질 6g, 열량 30kcal, 당류 1g이 적습니다.",
+      "단백질 6g, 120kcal, 당류 8.5g인 베지밀 아몬드와 호두 두유와 단백질이 같고 당류는 5.5g 적습니다.",
+      "곰곰 아몬드와 호두 두유(5g, 100kcal, 당류 7g)보다 단백질은 1g, 열량은 25kcal 많습니다.",
+      "두유 62종 중 1팩 단백질이 이보다 많은 제품은 29개입니다."
+    ],
+    "goodFor": [
+      "견과 맛 두유를 단맛 적은 쪽으로 고르려는 분",
+      "아침에 두유 한 팩을 곁들이는 분"
+    ],
+    "watchOut": [
+      "일반 구간(5~7g) 두유 37종 중 열량이 이보다 높은 제품은 6개뿐입니다. 같은 구간에서는 열량이 높은 편입니다."
+    ],
+    "compareSlugs": [
+      "yonsei-protein-almond-pine-190",
+      "vegemil-almond-walnut-190",
+      "gomgom-almond-walnut-soymilk-190"
+    ],
+    "sources": [
+      "soymilkProductsData.json: proteinPerServing, calories, sugar, fat, sodium, nutritionPerBottle.calciumMg",
+      "계산: 견과 맛 두유 3종과 proteinPerServing·calories·sugar 차이",
+      "계산: 두유 62종 중 proteinPerServing > 6 개수(29개), proteinPerServing < 8 일반 구간 37종 중 calories > 125 개수(6개)"
+    ]
+  },
+  "yonsei-calcium-blackbean-190": {
+    "summary": "연세두유 뼈를 생각한 고칼슘 두유 검은콩은 190mL에 단백질 5.2g, 90kcal, 칼슘 220mg입니다. 같은 연세 저당 검은콩&고칼슘보다 단백질은 0.8g 적지만 열량은 35kcal, 당류는 1g 낮습니다.",
+    "points": [
+      "열량 90kcal보다 낮은 두유는 62종 중 17개입니다.",
+      "베지밀 검은콩 고칼슘(6g, 130kcal, 당류 10g)보다 열량 40kcal, 당류 8g이 적습니다.",
+      "같은 라인 호두&아몬드는 5.4g, 95kcal이며 칼슘·당류·나트륨이 같습니다.",
+      "두유 62종 중 단백질이 5.2g보다 많은 제품은 48개입니다."
+    ],
+    "goodFor": [
+      "칼슘 표시가 있는 검은콩 두유를 가볍게 마시려는 분",
+      "간식 대신 가벼운 두유 한 팩을 찾는 분"
+    ],
+    "watchOut": [
+      "단백질 5.2g은 두유 등록 기준(5g)에 가까운 일반 구간입니다."
+    ],
+    "compareSlugs": [
+      "yonsei-calcium-walnut-almond-190",
+      "yonsei-lowsugar-blackbean-calcium-190",
+      "hanmi-wanjeon-blackbean-calcium-190"
+    ],
+    "sources": [
+      "soymilkProductsData.json: proteinPerServing, calories, sugar, sodium, nutritionPerBottle.calciumMg",
+      "계산: 두유 62종 중 calories < 90 개수(17개), proteinPerServing > 5.2 개수(48개)",
+      "계산: 연세 저당 검은콩&고칼슘·베지밀 검은콩 고칼슘과 차이"
+    ]
+  },
+  "yonsei-calcium-walnut-almond-190": {
+    "summary": "연세두유 뼈를 생각한 고칼슘 두유 호두&아몬드는 190mL에 단백질 5.4g, 95kcal, 칼슘 220mg입니다. 같은 라인 검은콩보다 단백질 0.2g, 열량 5kcal가 많고 나머지 수치는 거의 같습니다.",
+    "points": [
+      "곰곰 아몬드와 호두 두유(5g, 100kcal, 당류 7g)보다 열량은 5kcal, 당류는 5g 적습니다.",
+      "베지밀 아몬드와 호두 두유(6g, 120kcal, 당류 8.5g)보다 단백질은 0.6g 적고 당류는 6.5g 적습니다.",
+      "칼슘 값이 있는 두유 34종 중 칼슘이 220mg보다 많은 제품은 9개입니다.",
+      "열량 95kcal보다 낮은 두유는 62종 중 22개입니다."
+    ],
+    "goodFor": [
+      "견과 맛 두유를 당류 낮은 쪽으로 고르는 분",
+      "칼슘이 표시된 두유를 아침에 곁들이는 분"
+    ],
+    "watchOut": [
+      "단백질 5.4g은 일반 구간(5~7g)입니다. 견과 맛에서 단백질을 우선하면 연세 고단백 아몬드&잣이 12g으로 두 배 이상입니다."
+    ],
+    "compareSlugs": [
+      "yonsei-calcium-blackbean-190",
+      "gomgom-almond-walnut-soymilk-190",
+      "yonsei-protein-almond-pine-190"
+    ],
+    "sources": [
+      "soymilkProductsData.json: proteinPerServing, calories, sugar, nutritionPerBottle.calciumMg",
+      "계산: calciumMg 값이 있는 두유 34종 중 calciumMg > 220 개수(9개), 두유 62종 중 calories < 95 개수(22개)",
+      "계산: 곰곰·베지밀 아몬드와 호두와 sugar·calories 차이"
+    ]
+  },
+  "phytomade-calcium-vitd-blackbean-190": {
+    "summary": "파이토메이드 고칼슘&비타민D 두유 검은콩은 190mL에 단백질 5g, 105kcal입니다. 성분표에 칼슘 210mg과 비타민D 3μg이 적혀 있습니다. 둘 다 1일 기준치의 30%입니다.",
+    "points": [
+      "당류는 10g으로, 두유 62종 중 이보다 당류가 많은 제품은 2개뿐입니다.",
+      "완전두유 검은콩 고칼슘과 단백질 5g, 열량 105kcal, 당류 10g이 모두 같습니다.",
+      "같은 파이토메이드 21곡 미숫가루와 단백질·당류가 같고 열량은 5kcal 많습니다.",
+      "100kcal당 단백질 4.8g으로 두유 중 공동 52번째입니다."
+    ],
+    "goodFor": [
+      "비타민D가 함께 표시된 두유를 찾는 분",
+      "단맛 있는 검은콩 두유를 원하는 분"
+    ],
+    "watchOut": [
+      "같은 칼슘 검은콩 두유 중 연세 뼈를 생각한 고칼슘 검은콩은 당류가 2g으로 8g 적습니다."
+    ],
+    "compareSlugs": [
+      "phytomade-calcium-vitd-21grain-190",
+      "hanmi-wanjeon-blackbean-calcium-190",
+      "yonsei-calcium-blackbean-190"
+    ],
+    "sources": [
+      "soymilkProductsData.json: proteinPerServing, calories, sugar, fat, sodium",
+      "public/soymilk-spec/phytomade-calcium-vitd-blackbean-190.png (칼슘 210mg 30%, 비타민D 3μg 30%)",
+      "계산: 두유 62종 중 sugar > 10 개수(2개), proteinPerServing/calories×100 순위(공동 52번째)"
+    ]
+  },
+  "phytomade-calcium-vitd-21grain-190": {
+    "summary": "파이토메이드 고칼슘&비타민D 두유 21곡 미숫가루는 190mL에 단백질 5g, 100kcal입니다. 같은 라인 검은콩처럼 성분표에 칼슘 210mg, 비타민D 3μg이 적혀 있습니다.",
+    "points": [
+      "검은콩 맛보다 열량은 5kcal, 탄수화물은 1g 적고 단백질 5g, 당류 10g은 같습니다.",
+      "곡물 계열 베지밀 17곡 한끼두유(5g, 115kcal, 당류 11g)보다 열량 15kcal, 당류 1g이 적습니다.",
+      "당류 10g 이상인 두유는 62종 중 10개이고, 이 제품도 여기에 들어갑니다.",
+      "100kcal당 단백질 5.0g으로 두유 중 공동 44번째입니다."
+    ],
+    "goodFor": [
+      "미숫가루 맛 두유를 찾는 분",
+      "비타민D와 칼슘이 표시된 두유를 아침에 곁들이는 분"
+    ],
+    "watchOut": [
+      "단백질 5g은 두유 등록 기준(5g)의 하한입니다. 단백질을 우선하면 11g 이상인 고단백 두유가 두 배 넘게 많습니다."
+    ],
+    "compareSlugs": [
+      "phytomade-calcium-vitd-blackbean-190",
+      "vegemil-17grain-meal-190",
+      "gokmuldogam-21grain-seoritae-soymilk-180"
+    ],
+    "sources": [
+      "soymilkProductsData.json: proteinPerServing, calories, sugar, nutritionPerBottle.carbsG",
+      "public/soymilk-spec/phytomade-calcium-vitd-21grain-190.png (칼슘 210mg 30%, 비타민D 3μg 30%)",
+      "계산: 두유 62종 중 sugar ≥ 10 개수(10개), proteinPerServing/calories×100 순위(공동 44번째)"
+    ]
+  },
+  "sungkyunkwan-blackbean-calcium-190": {
+    "summary": "성균관 뼈를위한 검은콩 고칼슘 두유는 190mL에 단백질 5g, 80kcal입니다. 성분표 기준 칼슘 210mg이 들어 있고, 생산자는 한미사이언스입니다.",
+    "points": [
+      "열량 80kcal보다 낮은 두유는 62종 중 12개입니다.",
+      "완전두유 검은콩 고칼슘(5g, 105kcal, 당류 10g)보다 열량 25kcal, 당류 4g이 적습니다.",
+      "연세 뼈를 생각한 고칼슘 검은콩(5.2g, 90kcal, 당류 2g)보다 열량은 10kcal 적고 당류는 4g 많습니다.",
+      "나트륨 110mg은 두유 중 낮은 쪽에서 공동 11번째입니다."
+    ],
+    "goodFor": [
+      "열량이 낮은 검은콩 두유를 찾는 분",
+      "칼슘 표시가 있는 두유를 간식으로 두려는 분"
+    ],
+    "watchOut": [
+      "같은 80kcal인 총각네 서리태 무가당(당류 1g)보다 당류가 5g 많습니다."
+    ],
+    "compareSlugs": [
+      "hanmi-wanjeon-blackbean-calcium-190",
+      "yonsei-calcium-blackbean-190",
+      "chonggakne-seoritae-unsweetened-190"
+    ],
+    "sources": [
+      "soymilkProductsData.json: proteinPerServing, calories, sugar, sodium",
+      "public/soymilk-spec/sungkyunkwan-blackbean-calcium-190.png (칼슘 210mg 30%, 생산자 한미사이언스(주))",
+      "계산: 두유 62종 중 calories < 80 개수(12개), sodium < 110 개수(10개)",
+      "계산: 완전두유 검은콩 고칼슘·연세 고칼슘 검은콩·총각네와 calories·sugar 차이"
+    ]
+  },
+  "chonggakne-seoritae-unsweetened-190": {
+    "summary": "총각네 국산 서리태 무가당 두유는 190mL에 단백질 7g, 80kcal, 당류 1g입니다. 7g은 일반 두유 구간(5~7g)의 위쪽 끝으로, 이 구간 37종 중 7g인 제품은 3개입니다.",
+    "points": [
+      "100kcal당 단백질 8.8g으로 두유 62종 중 25번째입니다.",
+      "같은 서리태 무가당인 완전두유 더진한 서리태 99.9(5g, 65kcal)보다 단백질은 2g, 열량은 15kcal 많습니다.",
+      "180mL에 7g, 65kcal인 곡물도감 서리태 가득 콩물과 단백질이 같고, 나트륨은 이 제품이 85mg 적습니다.",
+      "나트륨 105mg은 두유 중 낮은 쪽에서 공동 9번째이고, 탄수화물은 5g입니다."
+    ],
+    "goodFor": [
+      "단맛 없는 국산 서리태 두유를 찾는 분",
+      "일반 두유 중 단백질이 조금이라도 많은 쪽을 고르려는 분"
+    ],
+    "watchOut": [
+      "단백질 8g 이상(단백질 강화·고단백)인 두유가 25개 있습니다. 단백질이 우선이면 그쪽이 맞습니다."
+    ],
+    "compareSlugs": [
+      "hanmi-wanjeon-thick-seoritae-999-190",
+      "gokmuldogam-seoritae-soymilk-180",
+      "bodylab-seoritae-pure-soymilk-999-190"
+    ],
+    "sources": [
+      "soymilkProductsData.json: proteinPerServing, calories, sugar, sodium, nutritionPerBottle.carbsG",
+      "계산: getSoymilkTier 일반 구간(proteinPerServing < 8) 37종 중 proteinPerServing = 7 개수(3개), 62종 중 proteinPerServing > 7 개수(25개)",
+      "계산: proteinPerServing/calories×100 순위(25번째), sodium < 105 개수(8개)"
+    ]
+  },
+  "gomgom-blackbean-soymilk-190": {
+    "summary": "곰곰 고소한 검은콩 두유는 190mL에 단백질 5g, 100kcal, 당류 7g입니다. 같은 곰곰 아몬드와 호두 두유와 맛만 다르고 수치는 같습니다.",
+    "points": [
+      "70kcal, 당류 0.8g인 소이비랩 저당 검은콩과 단백질 5g이 같고, 열량은 30kcal, 당류는 6.2g 많습니다.",
+      "베지밀 검은콩 고칼슘(6g, 130kcal, 당류 10g)보다는 열량 30kcal, 당류 3g이 적습니다.",
+      "당류가 7g보다 많은 두유는 62종 중 16개입니다.",
+      "100kcal당 단백질 5.0g으로 두유 중 공동 44번째입니다."
+    ],
+    "goodFor": [
+      "단맛 있는 기본 검은콩 두유를 찾는 분",
+      "아이 간식이나 아침 곁들임용 두유를 고르는 분"
+    ],
+    "watchOut": [
+      "단백질 5g은 두유 등록 기준의 하한이며, 단백질이 같은 5g인 두유가 13개입니다."
+    ],
+    "compareSlugs": [
+      "gomgom-almond-walnut-soymilk-190",
+      "soybilab-lowsugar-blackbean-190",
+      "vegemil-blackbean-calcium-190"
+    ],
+    "sources": [
+      "soymilkProductsData.json: proteinPerServing, calories, sugar, fat, sodium",
+      "계산: 두유 62종 중 sugar > 7 개수(16개), proteinPerServing = 5 개수(13개), proteinPerServing/calories×100 순위(공동 44번째)",
+      "계산: 소이비랩·베지밀 검은콩 고칼슘과 calories·sugar 차이"
+    ]
+  },
+  "seoulmilk-blacksesame-yakkong-soymilk-190": {
+    "summary": "서울우유 흑임자 검은 약콩 두유는 190mL에 단백질 5g, 117kcal, 당류 9g입니다. 같은 서울우유 검은깨·검은콩 두유보다 열량 22kcal, 지방 2g, 나트륨 90mg이 적습니다.",
+    "points": [
+      "100kcal당 단백질 4.3g으로 두유 62종 중 60번째입니다.",
+      "약콩 두유인 밥스누 약콩두유 오리지널(6g, 75kcal, 당류 1g)보다 단백질은 1g 적고 열량은 42kcal 많습니다.",
+      "베지밀 검은콩과 검은참깨(6g, 125kcal, 당류 10g)보다 열량 8kcal, 당류 1g이 적습니다.",
+      "당류가 9g보다 많은 두유는 62종 중 10개입니다."
+    ],
+    "goodFor": [
+      "흑임자 맛 두유를 찾는 분",
+      "디저트 대신 달콤한 두유 한 팩을 고르는 분"
+    ],
+    "watchOut": [
+      "같은 단백질 5g인 바디랩 서리태 순수두유(70kcal)보다 열량이 47kcal 많습니다."
+    ],
+    "compareSlugs": [
+      "seoulmilk-blacksesame-blackbean-soymilk-190",
+      "vegemil-blackbean-blacksesame-190",
+      "bobsnu-yakkong-original-190"
+    ],
+    "sources": [
+      "soymilkProductsData.json: proteinPerServing, calories, sugar, fat, sodium",
+      "계산: proteinPerServing/calories×100 순위(두유 62종 중 60번째), sugar > 9 개수(10개)",
+      "계산: 서울우유 검은깨·검은콩, 밥스누 오리지널, 베지밀 검은콩과 검은참깨, 바디랩 서리태와 차이"
+    ]
+  },
+  "seoulmilk-blacksesame-blackbean-soymilk-190": {
+    "summary": "서울우유 검은깨·검은콩 두유는 190mL에 단백질 5g, 139kcal입니다. 100kcal당 단백질은 3.6g으로 등록된 두유 62종 중 가장 낮습니다.",
+    "points": [
+      "열량이 139kcal보다 높은 두유는 62종 중 6개입니다.",
+      "지방 7g으로, 두유 중 이보다 지방이 많은 제품은 1개입니다.",
+      "나트륨 230mg은 두유 중 높은 쪽에서 5번째입니다.",
+      "같은 서울우유 흑임자 검은 약콩과 단백질·당류는 같고, 열량은 117kcal보다 22kcal 많습니다."
+    ],
+    "goodFor": [
+      "검은깨와 검은콩이 함께 든 두유를 찾는 분",
+      "열량 있는 두유 한 팩으로 간식을 대신하려는 분"
+    ],
+    "watchOut": [
+      "단백질이 목적이면 155kcal로 열량이 비슷한 연세 고단백 검은콩&고칼슘이 단백질 12g으로 두 배 넘게 많습니다."
+    ],
+    "compareSlugs": [
+      "seoulmilk-blacksesame-yakkong-soymilk-190",
+      "vegemil-blackbean-blacksesame-190",
+      "yonsei-protein-blackbean-calcium-190"
+    ],
+    "sources": [
+      "soymilkProductsData.json: proteinPerServing, calories, sugar, fat, sodium",
+      "계산: proteinPerServing/calories×100 순위(62종 중 62번째), calories > 139 개수(6개), fat > 7 개수(1개), sodium > 230 개수(4개)"
+    ]
+  },
+  "bodylab-blackbean-pure-soymilk-999-185": {
+    "summary": "바디랩 검은콩 순수두유 99.9는 185mL에 단백질 6g, 60kcal, 당류 0g입니다. 두유 62종 중 이보다 열량이 낮은 제품은 앱솔리 퀴노아 약콩두유(55kcal) 하나입니다.",
+    "points": [
+      "당류 0g인 두유는 이 제품을 포함해 3개입니다.",
+      "100kcal당 단백질 10.0g으로 두유 중 17번째이고, 일반 구간(5~7g) 37종 중에서는 3번째입니다.",
+      "나트륨 65mg은 밥스누 더 건강한 약콩 100(60mg) 다음으로 낮습니다.",
+      "62kcal인 같은 바디랩 검은약콩과 단백질 6g이 같고, 열량은 2kcal, 당류는 1g 적습니다."
+    ],
+    "goodFor": [
+      "단맛 없는 검은콩 두유를 찾는 분",
+      "나트륨과 열량을 함께 낮게 보는 분"
+    ],
+    "watchOut": [
+      "포화지방이 1.7g으로 같은 바디랩 검은약콩(0.4g)보다 1.3g 많습니다."
+    ],
+    "compareSlugs": [
+      "bodylab-yakkong-pure-soymilk-999-185",
+      "absolli-quinoa-yakkong-unsweetened-190",
+      "hanmi-wanjeon-thick-kukkong-190"
+    ],
+    "sources": [
+      "soymilkProductsData.json: proteinPerServing, calories, sugar, sodium, nutritionPerBottle.satFatG",
+      "계산: 두유 62종 중 calories < 60 개수(1개), sugar = 0 개수(3개), sodium < 65 개수(1개)",
+      "계산: proteinPerServing/calories×100 순위(62종 중 17번째, proteinPerServing < 8 일반 구간 37종 중 3번째)"
+    ]
+  },
+  "bodylab-seoritae-pure-soymilk-999-190": {
+    "summary": "바디랩 서리태 순수두유 99.9는 190mL에 단백질 5g, 70kcal입니다. 같은 바디랩 검은콩·검은약콩(185mL, 6g)보다 용량은 5mL 많고 단백질은 1g 적습니다.",
+    "points": [
+      "당류 2.5g으로 바디랩 3종 중 가장 많습니다(검은콩 0g, 검은약콩 1g).",
+      "같은 서리태 계열 완전두유 더진한 서리태 99.9(5g, 65kcal, 당류 0.8g)보다 열량 5kcal, 당류 1.7g이 많습니다.",
+      "나트륨 70mg은 두유 62종 중 낮은 쪽에서 3번째입니다.",
+      "열량이 70kcal보다 낮은 두유는 6개입니다."
+    ],
+    "goodFor": [
+      "서리태 두유를 가볍게 마시려는 분",
+      "나트륨이 적은 두유를 찾는 분"
+    ],
+    "watchOut": [
+      "단백질 5g은 등록 기준의 하한입니다. 같은 서리태로 단백질이 7g으로 많은 총각네 무가당은 열량이 10kcal 많습니다."
+    ],
+    "compareSlugs": [
+      "bodylab-blackbean-pure-soymilk-999-185",
+      "hanmi-wanjeon-thick-seoritae-999-190",
+      "chonggakne-seoritae-unsweetened-190"
+    ],
+    "sources": [
+      "soymilkProductsData.json: capacity, proteinPerServing, calories, sugar, sodium",
+      "계산: 두유 62종 중 sodium < 70 개수(2개), calories < 70 개수(6개)",
+      "계산: 바디랩 3종·완전두유 더진한 서리태·총각네와 차이"
+    ]
+  },
+  "bodylab-yakkong-pure-soymilk-999-185": {
+    "summary": "바디랩 검은약콩 순수두유 99.9는 185mL에 단백질 6g, 62kcal, 당류 1g입니다. 두유 62종 중 이보다 열량이 낮은 제품은 2개뿐입니다.",
+    "points": [
+      "포화지방 0.4g으로 같은 바디랩 검은콩(1.7g)보다 1.3g 적습니다.",
+      "190mL에 6g, 70kcal인 연세 무가당 국산약콩과 단백질이 같고 열량은 8kcal 적습니다.",
+      "밥스누 약콩두유 오리지널(6g, 75kcal)보다 열량 13kcal, 나트륨 55mg이 적습니다.",
+      "100kcal당 단백질 9.7g으로 두유 중 18번째입니다."
+    ],
+    "goodFor": [
+      "약콩 두유를 단맛 적게 마시려는 분",
+      "가벼운 두유 한 팩을 아침에 곁들이는 분"
+    ],
+    "watchOut": [
+      "185mL로 일반 190mL 두유보다 5mL 적고, 단백질 6g은 일반 구간(5~7g)입니다."
+    ],
+    "compareSlugs": [
+      "bodylab-blackbean-pure-soymilk-999-185",
+      "yonsei-unsweetened-kukkong-yakkong-190",
+      "bobsnu-yakkong-original-190"
+    ],
+    "sources": [
+      "soymilkProductsData.json: capacity, proteinPerServing, calories, sugar, sodium, nutritionPerBottle.satFatG",
+      "계산: 두유 62종 중 calories < 62 개수(2개), proteinPerServing/calories×100 순위(18번째)",
+      "계산: 연세 무가당 국산약콩·밥스누 오리지널과 calories·sodium 차이"
+    ]
+  },
+  "gomgom-almond-walnut-soymilk-190": {
+    "summary": "곰곰 아몬드와 호두 두유는 190mL에 단백질 5g, 100kcal, 당류 7g입니다. 이름이 같은 계열인 베지밀 아몬드와 호두 두유(6g, 120kcal)보다 단백질 1g, 열량 20kcal가 적습니다.",
+    "points": [
+      "베지밀 아몬드와 호두보다 당류도 1.5g 적습니다(7g 대 8.5g).",
+      "연세 뼈를 생각한 고칼슘 호두&아몬드(5.4g, 95kcal, 당류 2g)보다 당류가 5g 많습니다.",
+      "같은 곰곰 검은콩 두유와 영양 수치가 같습니다.",
+      "열량이 100kcal보다 높은 두유는 62종 중 30개입니다."
+    ],
+    "goodFor": [
+      "견과 맛 두유를 찾는 분",
+      "단맛 있는 두유를 간식으로 마시려는 분"
+    ],
+    "watchOut": [
+      "단백질 5g은 등록 기준의 하한입니다. 견과 맛에서 단백질을 우선하면 1팩 12g인 연세 고단백 아몬드&잣이 있습니다."
+    ],
+    "compareSlugs": [
+      "vegemil-almond-walnut-190",
+      "yonsei-calcium-walnut-almond-190",
+      "gomgom-blackbean-soymilk-190"
+    ],
+    "sources": [
+      "soymilkProductsData.json: proteinPerServing, calories, sugar, fat, sodium",
+      "계산: 베지밀 아몬드와 호두·연세 고칼슘 호두&아몬드와 proteinPerServing·calories·sugar 차이",
+      "계산: 두유 62종 중 calories > 100 개수(30개)"
+    ]
+  },
+  "who-diet-nofat-greek-400": {
+    "summary": "후디스 다이어트 무지방 그릭요거트 400g은 한 통에 단백질 24g, 176kcal, 지방 0g입니다. 성분표 기준 100g당 44kcal로, 등록된 요거트 56종 중 100g당 열량이 가장 낮습니다.",
+    "points": [
+      "지방 0g인 요거트는 이 제품을 포함해 4개입니다(요프로 2종, 커클랜드 그릭요거트).",
+      "100kcal당 단백질 13.6g으로 요거트 중 3번째입니다.",
+      "같은 후디스 고단백 무가당 그릭요거트(400g, 단백질 40g, 580kcal)보다 단백질은 16g 적고 열량은 404kcal 낮습니다.",
+      "성분표상 100g당 단백질 6g, 당류 3g, 칼슘 150mg입니다."
+    ],
+    "goodFor": [
+      "큰 통으로 덜어 먹는 무지방 그릭요거트를 찾는 분",
+      "열량이 낮은 요거트를 아침 곁들임으로 쓰려는 분"
+    ],
+    "watchOut": [
+      "100g당 단백질 6g은 요거트 56종 중 43개보다 낮습니다.",
+      "한 통 당류 12g은 400g을 다 먹었을 때 값입니다."
+    ],
+    "compareSlugs": [
+      "who-highprotein-greek-unsweetened-400",
+      "kirkland-greek-plain-907",
+      "yopro-plain-150"
+    ],
+    "sources": [
+      "yogurtProductsData.json: capacity, proteinPerServing, calories, sugar, fat, proteinPer100g",
+      "public/protein-yogurt-spec/who-diet-nofat-greek-400.png (100g당 44kcal, 단백질 6g, 당류 3g, 지방 0g, 칼슘 150mg)",
+      "계산: 요거트 56종 calories/capacity×100 오름차순(1번째), fat = 0 제품 4개, proteinPer100g > 6 개수(43개), proteinPerServing/calories×100 순위(3번째)"
+    ]
+  },
+  "selecttheyog-greek-yogurt-original-500": {
+    "summary": "셀렉더요그 그릭요거트 오리지널은 500g 한 통에 단백질 60g, 875kcal입니다. 성분표 기준 100g당 단백질 12g으로, 요거트 56종 중 이보다 높은 제품은 3개입니다.",
+    "points": [
+      "100g당 단백질 12g인 YOZM 플레인 그릭요거트·룩트 띠크와 비교하면 100g당 열량은 175kcal로 YOZM(180kcal)·룩트 띠크(188kcal)보다 낮습니다.",
+      "한 통 단백질 60g은 요거트 중 4번째로 많고, 이보다 많은 것은 800g 이상 대용량 3개입니다.",
+      "성분표상 100g당 지방 10g, 포화지방 6g입니다.",
+      "100g당 당류 2g, 나트륨 35mg입니다."
+    ],
+    "goodFor": [
+      "단백질 밀도가 높은 그릭요거트를 큰 통으로 두려는 분",
+      "그래놀라·과일과 섞어 한 끼를 만드는 분"
+    ],
+    "watchOut": [
+      "100g당 175kcal로, 이보다 100g당 열량이 높은 요거트는 11개뿐입니다. 덜어 먹는 양에 따라 열량이 빠르게 늘어납니다."
+    ],
+    "compareSlugs": [
+      "yozm-plain-greek-450",
+      "lookt-icelandic-thick-450",
+      "greekday-signature-450"
+    ],
+    "sources": [
+      "yogurtProductsData.json: capacity, proteinPerServing, calories, sugar, fat, sodium, proteinPer100g",
+      "public/protein-yogurt-spec/selecttheyog-greek-yogurt-original-500.png (100g당 175kcal, 단백질 12g, 당류 2g, 지방 10g, 포화지방 6g, 나트륨 35mg)",
+      "계산: 요거트 56종 중 proteinPer100g > 12 개수(3개), proteinPerServing > 60 제품(YOZM 800g, 그릭데이 800g, 커클랜드 907g), calories/capacity×100 > 175 개수(11개)"
+    ]
   }
 }
