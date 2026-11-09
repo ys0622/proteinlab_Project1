@@ -103,6 +103,13 @@ export default function RootLayout({
                 window.dataLayer = window.dataLayer || [];
                 function gtag(){dataLayer.push(arguments);}
                 window.gtag = gtag;
+                // 2026-11-09 Scott: 스팸 추천 유입(aocr.org, 11/2 주 63세션·평균 1초)을 GA4에서 뺀다. 그 탭 세션 동안 전송 중지.
+                try {
+                  var spamRef = /(^|\\.)aocr\\.org$/i;
+                  var refHost = document.referrer ? new URL(document.referrer).hostname : '';
+                  if (spamRef.test(refHost)) sessionStorage.setItem('pl_spam_ref', '1');
+                  if (sessionStorage.getItem('pl_spam_ref') === '1') window['ga-disable-${GA_ID}'] = true;
+                } catch (e) {}
                 gtag('js', new Date());
                 try {
                   var internalFlag = new URLSearchParams(location.search).get('internal');
