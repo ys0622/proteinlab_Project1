@@ -339,23 +339,37 @@ const byProtein = [...soy].sort((a, b) => proteinOf(b) - proteinOf(a) || sugarOf
 const proteinTop = byProtein.slice(0, 4);
 const protein24 = soy.filter((p) => proteinOf(p) >= 20);
 const protein11 = soy.filter((p) => proteinOf(p) >= 11);
+// 2026-11-09 보강: 네이버 자동완성 "두유 단백질 함량·함량 비교·단백질량·함량 12g". TOP 10 → 등록 전체 순위, 100mL당·12g 답 추가.
+const ml = (p: { capacity?: string }) => parseFloat(p.capacity ?? "190") || 190;
+const per100ml = (p: { proteinPerServing: number; capacity?: string }) => (proteinOf(p) / ml(p)) * 100;
+const twelve = soy.filter((p) => proteinOf(p) === 12);
+const twelveSugar = twelve.map(sugarOf);
+const twelveKcal = twelve.map((p) => p.calories ?? 0);
+const regular = soy.filter((p) => proteinOf(p) < 8);
+const std190 = soy.filter((p) => ml(p) === 190);
+const std190Max = Math.max(...std190.map(proteinOf));
+const std190Top = std190.filter((p) => proteinOf(p) === std190Max);
+const by100 = [...soy].sort((a, b) => per100ml(b) - per100ml(a) || sugarOf(a) - sugarOf(b));
+const top100 = by100.filter((p) => fmt(per100ml(p)) === fmt(per100ml(by100[0])));
+const next100 = by100.filter((p) => !top100.includes(p)).slice(0, 3);
 
 export const proteinRankSoymilkConfig: ComparePageConfig = {
   slug: "soymilk-protein-ranking",
-  dataSection: { category: "soymilk", mode: "protein", limit: 10 },
-  title: "두유 단백질 함량 순위 | 1팩 단백질 높은 순 TOP 10",
-  seoTitle: `두유 단백질 함량 순위 | 1팩 ${fmt(proteinOf(byProtein[0]))}g부터 TOP 10`,
-  description: `ProteinLab 등록 두유 ${soy.length}종을 1팩 단백질 높은 순으로 정리했습니다. 20g 이상 ${protein24.length}종, 11g 이상 ${protein11.length}종이며 당류·열량·용량을 함께 보는 법을 안내합니다.`,
-  keywords: ["두유 단백질 순위", "두유 단백질 함량", "단백질 높은 두유", "고단백 두유 순위", "두유 단백질 비교"],
+  dataSection: { category: "soymilk", mode: "protein", limit: soy.length, showCapacity: true },
+  title: `두유 단백질 함량 순위 | 1팩 단백질 높은 순 ${soy.length}종 전체`,
+  seoTitle: `두유 단백질 함량 순위 | 1팩 ${fmt(proteinOf(byProtein[0]))}g부터 ${soy.length}종 전체 비교`,
+  description: `ProteinLab 등록 두유 ${soy.length}종 전체를 1팩 단백질 높은 순으로 정리했습니다. 1팩 ${fmt(Math.min(...soy.map(proteinOf)))}~${fmt(Math.max(...soy.map(proteinOf)))}g, 11g 이상 고단백 ${protein11.length}종, 12g 제품 ${twelve.length}종이며 100mL당 단백질·당류·열량을 함께 비교합니다.`,
+  keywords: ["두유 단백질 순위", "두유 단백질 함량", "두유 단백질 함량 비교", "두유 단백질량", "두유 단백질 12g", "단백질 높은 두유", "고단백 두유 순위"],
   badge: "단백질 순위",
   readingTime: "4분 읽기",
-  updatedAt: UPDATED,
+  updatedAt: "2026-11-09",
   methodologyNote: `ProteinLab 두유 ${soy.length}종 1팩 단백질(g) 기준 · 성분표 수치`,
   intro: `두유 1팩 단백질은 ${fmt(Math.min(...soy.map(proteinOf)))}g부터 ${fmt(Math.max(...soy.map(proteinOf)))}g까지입니다. 등록 ${soy.length}종 중 20g 이상은 ${protein24.length}종, 11g 이상은 ${protein11.length}종입니다. 용량이 190mL부터 250mL까지 달라서, 1팩 단백질 순위와 100mL당 단백질을 같이 봐야 합니다.`,
   summary: [
     `1팩 단백질 1위는 ${label(proteinTop[0])}(${fmt(proteinOf(proteinTop[0]))}g, ${proteinTop[0].capacity})입니다.`,
-    `단백질 20g 이상 두유는 ${protein24.length}종이고 모두 240mL 이상 팩입니다.`,
-    `같은 12g이라도 당류는 0.5g부터 7.5g까지 차이가 납니다. 순위와 함께 당류를 확인하세요.`,
+    `단백질 20g 이상 두유는 ${protein24.length}종이고 모두 240mL 이상 팩입니다. 가장 흔한 190mL 팩에서 가장 높은 제품은 ${std190Top.map(label).join("·")}(${fmt(std190Max)}g)입니다.`,
+    `고단백 두유는 대부분 190mL 1팩 12g입니다(${twelve.length}종). 일반 두유는 1팩 5~7g대가 ${regular.length}종으로 가장 많습니다.`,
+    `같은 12g이라도 당류는 ${fmt(Math.min(...twelveSugar))}g부터 ${fmt(Math.max(...twelveSugar))}g까지 차이가 납니다. 순위와 함께 당류를 확인하세요.`,
   ],
   comparisonTitle: "1팩 단백질 상위 4종",
   comparisonColumns: proteinTop.map(label),
@@ -371,12 +385,15 @@ export const proteinRankSoymilkConfig: ComparePageConfig = {
       title: "순위를 읽는 법",
       items: [
         { title: "1팩 단백질과 100mL당 단백질은 다릅니다", body: "240mL 제품은 팩이 커서 1팩 단백질이 높게 나옵니다. 팩 크기가 다른 제품끼리는 100mL당 단백질로 다시 비교하세요." },
-        { title: "단백질이 같다면 당류와 열량", body: "12g 제품만 해도 당류 0.5~7.5g, 열량 85~135kcal로 갈립니다. 단백질 순위가 같을 때는 당류와 열량으로 가르면 됩니다." },
+        { title: "100mL당 단백질 순위", body: `팩 크기를 같은 양으로 바꾸면 100mL당 단백질이 가장 높은 제품은 ${top100.map(label).join("·")}(${fmt(per100ml(top100[0]))}g)이고, 그다음은 ${next100.map((p) => `${label(p)} ${fmt(per100ml(p))}g`).join(", ")}입니다.` },
+        { title: "단백질이 같다면 당류와 열량", body: `12g 제품만 해도 당류 ${fmt(Math.min(...twelveSugar))}~${fmt(Math.max(...twelveSugar))}g, 열량 ${Math.min(...twelveKcal)}~${Math.max(...twelveKcal)}kcal로 갈립니다. 단백질 순위가 같을 때는 당류와 열량으로 가르면 됩니다.` },
         { title: "등록 기준", body: "ProteinLab은 소포장(250mL 이하) 대두 기반 두유 중 1팩 단백질이 g으로 표기된 5g 이상 제품만 등록합니다. %만 표기된 제품과 대용량은 제외합니다." },
       ],
     },
   ],
   faq: [
+    { question: "두유 단백질 함량은 보통 얼마인가요?", answer: `등록 두유 ${soy.length}종 기준 1팩 ${fmt(Math.min(...soy.map(proteinOf)))}~${fmt(Math.max(...soy.map(proteinOf)))}g입니다. 일반 두유는 190mL 1팩에 5~7g(${regular.length}종)이 많고, 고단백 두유는 190mL 12g 안팎, 240mL 제품은 24g입니다.` },
+    { question: "두유 단백질 12g이면 많은 편인가요?", answer: `190mL 1팩 12g은 ProteinLab 기준 고단백 구간(11g 이상)이고, 일반 두유(5~7g)의 약 2배입니다. 등록 두유 중 12g 제품은 ${twelve.length}종입니다.` },
     { question: "단백질이 가장 높은 두유는 무엇인가요?", answer: `등록 기준 1팩 단백질 1위는 ${label(proteinTop[0])}(${fmt(proteinOf(proteinTop[0]))}g, ${proteinTop[0].capacity})입니다. 같은 24g 제품이 더 있어 당류·열량으로 비교해야 합니다.` },
     { question: "고단백 두유는 단백질이 몇 g부터인가요?", answer: `ProteinLab은 1팩 기준 11g 이상을 고단백(기준치 55g의 20%), 8~10g을 단백질 강화로 나눕니다. 11g 이상 등록 제품은 ${protein11.length}종입니다.` },
     { question: "190mL와 240mL 두유는 어떻게 비교하나요?", answer: "팩 크기가 달라 1팩 단백질을 그대로 비교하면 큰 팩이 유리합니다. 100mL당 단백질을 같이 확인하세요." },
