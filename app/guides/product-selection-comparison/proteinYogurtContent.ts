@@ -176,6 +176,11 @@ export const proteinYogurtTop5Config: CategoryGuideConfig = {
       href: "/guides/product-selection-comparison/diet-protein-yogurt",
       description: "칼로리와 당류를 더 엄격하게 보고 싶다면 다이어트 버전 페이지로 이어집니다.",
     },
+    {
+      title: "그릭요거트 하루 권장량",
+      href: "/guides/intake-strategy-health/greek-yogurt-per-day",
+      description: "하루 몇 개, 몇 g을 먹으면 단백질 권장섭취량의 몇 %인지 계산했습니다.",
+    },
   ],
   purchaseLinks: yogurtTopPicks.slice(0, 3).map((product) => ({
     label: `${formatProductLabel(product.brand, product.name)} 보기`,

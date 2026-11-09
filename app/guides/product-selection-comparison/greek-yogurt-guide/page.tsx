@@ -120,6 +120,7 @@ const relatedLinks = [
   { href: "/guides/product-selection-comparison/unsweetened-greek-yogurt-guide", title: "무가당 그릭요거트", body: "무가당 플레인 제품 비교." },
   { href: "/compare/greek-yogurt-brand-compare", title: "그릭요거트 브랜드 비교", body: "브랜드별 대표 제품을 나란히." },
   { href: "/guides/product-selection-comparison/greek-vs-protein-yogurt", title: "그릭요거트 vs 단백질 요거트", body: "두 종류의 차이와 고르는 법." },
+  { href: "/guides/intake-strategy-health/greek-yogurt-per-day", title: "그릭요거트 하루 권장량", body: "하루 몇 개·몇 g이 권장량의 몇 %인지." },
   { href: "/yogurt", title: "요거트 전체 목록", body: "등록된 요거트 전체 성분표." },
 ];
 
