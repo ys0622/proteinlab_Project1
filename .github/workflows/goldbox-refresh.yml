@@ -19,14 +19,25 @@ concurrency:
 jobs:
   refresh:
     runs-on: ubuntu-latest
-    timeout-minutes: 3
+    timeout-minutes: 8
     steps:
       - name: Refresh and inspect Goldbox coverage
         shell: bash
         run: |
-          curl --fail --silent --show-error --location --max-time 45 \
-            --retry 2 --retry-delay 15 \
-            https://proteinlab.kr/api/goldbox/health -o /tmp/goldbox-health.json
+          # 2026-11-09: 쿠팡 API 일시 연결 오류(network, 상품 0개)는 몇 분 안에 회복된다(11/7·11/9).
+          # 'ready'이고 상품이 1개 이상이 될 때까지 60초 간격으로 4번 확인하고, 그래도 안 되면 실패로 본다.
+          for attempt in 1 2 3 4; do
+            curl --fail --silent --show-error --location --max-time 45 \
+              --retry 2 --retry-delay 15 \
+              "https://proteinlab.kr/api/goldbox/health?attempt=${attempt}" -o /tmp/goldbox-health.json
+            status="$(jq -r '.status' /tmp/goldbox-health.json)"
+            count="$(jq -r '.sourceCount // 0' /tmp/goldbox-health.json)"
+            if [ "$status" = "ready" ] && [ "$count" -gt 0 ]; then
+              break
+            fi
+            echo "attempt ${attempt}: status=${status} sourceCount=${count} error=$(jq -r '.error' /tmp/goldbox-health.json)"
+            if [ "$attempt" -lt 4 ]; then sleep 60; fi
+          done
           jq -r '"checkedAt=\(.checkedAt) status=\(.status) source=\(.sourceCount) valid=\(.validCount) baseline=\(.dailyBaselineCount) matched=\(.matchedCount) verified=\(.verifiedCount) gap=\(.verifiedMissingFromApiCount)"' /tmp/goldbox-health.json
           if [ "$(jq -r '.status' /tmp/goldbox-health.json)" != "ready" ]; then
             echo "::error::Goldbox API unavailable: $(jq -r '.error' /tmp/goldbox-health.json)"
