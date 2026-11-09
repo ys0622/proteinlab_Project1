@@ -266,6 +266,7 @@ const STATIC_GUIDE_ROUTES: string[] = [
   "/guides/intake-strategy-health/protein-drink-without-exercise",
   "/guides/intake-strategy-health/protein-shake-effects",
   "/guides/intake-strategy-health/protein-shake-per-day",
+  "/guides/intake-strategy-health/protein-bar-per-day",
   "/guides/intake-strategy-health/glp1-protein",
   "/guides/intake-strategy-health/pregnancy-protein",
   "/guides/intake-strategy-health/teen-protein",
