@@ -374,6 +374,11 @@ proteinBarTop10Config.conversion = {
 };
 proteinBarTop10Config.relatedGuides = [
   {
+    title: "프로틴바 단백질 함량 순위",
+    href: "/guides/product-selection-comparison/protein-bar-protein-ranking",
+    description: "등록 단백질바 전체를 1개 단백질 높은 순으로, 100g당·100kcal당 값과 함께 봅니다.",
+  },
+  {
     title: "베어벨즈 프로틴바 맛별 비교",
     href: "/compare/barebells-proteinbar-flavor-comparison",
     description: "베어벨즈 일반·소프트 라인의 단백질, 당류, 칼로리 범위를 맛별로 확인합니다.",

@@ -339,6 +339,7 @@ const STATIC_GUIDE_ROUTES: string[] = [
   "/guides/product-selection-comparison/oliveyoung-protein-shake",
   "/guides/product-selection-comparison/post-workout-protein-shake-guide",
   "/guides/product-selection-comparison/protein-bar-top10",
+  "/guides/product-selection-comparison/protein-bar-protein-ranking",
   "/guides/product-selection-comparison/protein-category-guide",
   "/guides/product-selection-comparison/protein-density-ranking",
   "/guides/product-selection-comparison/protein-drink-beginners-guide",
