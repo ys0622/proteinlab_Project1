@@ -67,6 +67,7 @@ export default function ProteinShakeGuidePage() {
         { label: "음료와 차이가 궁금하다면 → 단백질 음료 vs 단백질 쉐이크", href: "/guides/product-selection-comparison/protein-drink-vs-protein-shake" },
         { label: "추천 후보를 바로 보고 싶다면 → 단백질 쉐이크 추천 TOP 7", href: "/guides/product-selection-comparison/protein-shake-top7" },
         { label: "칼로리 낮은 순서가 궁금하다면 → 단백질 쉐이크 칼로리 순위", href: "/guides/product-selection-comparison/protein-shake-calorie-ranking" },
+        { label: "단백질 많은 순서가 궁금하다면 → 단백질 쉐이크 단백질 함량 비교 순위", href: "/guides/product-selection-comparison/protein-shake-protein-ranking" },
         { label: "아침에 먹을 제품이 궁금하다면 → 아침 식사대용 단백질 쉐이크", href: "/guides/product-selection-comparison/morning-protein-shake" },
         { label: "운동 전후 기준이 궁금하다면 → 운동 후 단백질 쉐이크", href: "/guides/product-selection-comparison/post-workout-protein-shake-guide" },
         { label: "다이어트 식단용이 궁금하다면 → 다이어트 단백질 쉐이크", href: "/guides/product-selection-comparison/diet-protein-shake" },

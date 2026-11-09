@@ -352,6 +352,7 @@ const STATIC_GUIDE_ROUTES: string[] = [
   "/guides/product-selection-comparison/protein-drink-top10",
   "/guides/product-selection-comparison/protein-drink-vs-protein-shake",
   "/guides/product-selection-comparison/protein-shake-calorie-ranking",
+  "/guides/product-selection-comparison/protein-shake-protein-ranking",
   "/guides/product-selection-comparison/protein-shake-for-women",
   "/guides/product-selection-comparison/protein-shake-flavor-guide",
   "/guides/product-selection-comparison/protein-shake-guide",
