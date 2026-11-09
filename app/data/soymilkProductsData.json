@@ -2316,5 +2316,79 @@
     "manufacturer": "연세대학교 연세유업",
     "naverUrl": "https://search.shopping.naver.com/search/all?query=%EA%B3%B0%EA%B3%B0%20%EC%95%84%EB%AA%AC%EB%93%9C%EC%99%80%20%ED%98%B8%EB%91%90%20%EB%91%90%EC%9C%A0%20190mL",
     "coupangUrl": "https://www.coupang.com/vp/products/344621939?itemId=1094710052&vendorItemId=5613481874"
+  },
+  {
+    "slug": "sahmyook-blackbean-black-sesame-190",
+    "brand": "삼육두유",
+    "name": "검은콩 흑임자",
+    "capacity": "190mL",
+    "variant": "검은콩",
+    "tags": [
+      "팩"
+    ],
+    "proteinPerServing": 5,
+    "calories": 135,
+    "sugar": 11,
+    "density": "2.6g/100ml",
+    "productUrl": "#",
+    "productType": "soymilk",
+    "gradeTags": [],
+    "flavor": "흑임자",
+    "proteinSource": "대두",
+    "fat": 6,
+    "sodium": 200,
+    "calorieDensity": "71.1kcal/100ml",
+    "soymilkType": "두유",
+    "nutritionPerBottle": {
+      "caloriesKcal": 135,
+      "proteinG": 5,
+      "carbsG": 15,
+      "sugarsG": 11,
+      "fatG": 6,
+      "satFatG": 1.2,
+      "transFatG": 0,
+      "cholesterolMg": 0,
+      "sodiumMg": 200
+    },
+    "manufacturer": "삼육식품",
+    "naverUrl": "https://search.shopping.naver.com/search/all?query=%EC%82%BC%EC%9C%A1%EB%91%90%EC%9C%A0%20%EA%B2%80%EC%9D%80%EC%BD%A9%20%ED%9D%91%EC%9E%84%EC%9E%90%20190mL",
+    "coupangUrl": "https://www.coupang.com/vp/products/8007956516?itemId=23183131863&vendorItemId=89565998917"
+  },
+  {
+    "slug": "bobsnu-seomoktae-kongmul-997-190",
+    "brand": "밥스누",
+    "name": "서목태 약콩 콩물 99.7",
+    "capacity": "190mL",
+    "variant": "약콩",
+    "tags": [
+      "팩"
+    ],
+    "proteinPerServing": 6,
+    "calories": 47,
+    "sugar": 0.6,
+    "density": "3.2g/100ml",
+    "productUrl": "#",
+    "productType": "soymilk",
+    "gradeTags": [],
+    "flavor": "약콩",
+    "proteinSource": "대두",
+    "fat": 1.9,
+    "sodium": 180,
+    "calorieDensity": "24.7kcal/100ml",
+    "soymilkType": "두유",
+    "nutritionPerBottle": {
+      "caloriesKcal": 47,
+      "proteinG": 6,
+      "carbsG": 2,
+      "sugarsG": 0.6,
+      "fatG": 1.9,
+      "satFatG": 0.4,
+      "transFatG": 0,
+      "cholesterolMg": 0,
+      "sodiumMg": 180
+    },
+    "manufacturer": "농업회사법인 대학두유",
+    "naverUrl": "https://search.shopping.naver.com/search/all?query=%EB%B0%A5%EC%8A%A4%EB%88%84%20%EC%84%9C%EB%AA%A9%ED%83%9C%20%EC%95%BD%EC%BD%A9%20%EC%BD%A9%EB%AC%BC%2099.7%20190mL",
+    "coupangUrl": "https://www.coupang.com/vp/products/8735761087?itemId=25555962521&vendorItemId=92765225917"
   }
 ]
