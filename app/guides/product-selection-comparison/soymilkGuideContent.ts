@@ -60,6 +60,7 @@ const related = (extra: RelatedGuideLink[]): RelatedGuideLink[] => [
   { title: "두유 전체 비교", href: "/soymilk", description: "등록된 두유를 단백질 구간·당류·열량 기준으로 한 화면에서 비교합니다." },
   { title: "고단백 두유 고르는 법", href: `${BASE}/high-protein-soymilk-guide`, description: "1팩 단백질 구간(11g 이상·8~10g·5~7g)과 읽는 순서를 먼저 정리합니다." },
   { title: "두유 하루 몇 개", href: "/guides/intake-strategy-health/soymilk-per-day", description: "1팩·2팩·3팩이 하루 권장섭취량의 몇 %인지, 당류·열량과 함께 계산했습니다." },
+  { title: "두유 칼로리", href: `${BASE}/soymilk-calories`, description: "1팩 열량 낮은 순으로 전체 두유를 비교하고, 고단백·당류별 열량 차이를 정리했습니다." },
 ];
 
 // ---------- 1) 저당 두유 ----------

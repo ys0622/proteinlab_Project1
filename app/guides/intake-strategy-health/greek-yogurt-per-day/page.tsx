@@ -164,7 +164,7 @@ const faqItems = [
 
 const relatedLinks = [
   { href: "/guides/product-selection-comparison/greek-yogurt-guide", title: "그릭요거트 단백질 함량 순위", body: "100g당 단백질 높은 순 전체 비교." },
-  { href: "/yogurt", title: "요거트 전체 비교", body: "단백질·당류·열량으로 전체 제품 보기." },
+  { href: "/guides/product-selection-comparison/greek-yogurt-calories", title: "그릭요거트 칼로리", body: "100g당 열량 낮은 순 전체 비교." },
   { href: "/guides/basics/daily-requirement", title: "단백질 하루 섭취량", body: "성별·나이·체중별 권장량과 계산법." },
   { href: "/guides/intake-strategy-health/soymilk-per-day", title: "두유 하루 몇 개", body: "1팩·2팩·3팩 단백질과 당류." },
   { href: "/guides/intake-strategy-health/protein-bar-per-day", title: "단백질바 하루 몇 개", body: "1개·2개 단백질과 열량." },
