@@ -2592,5 +2592,42 @@
     "coupangUrl": "https://www.coupang.com/vp/products/7540120909?itemId=22812356321&vendorItemId=89847224392",
     "productUrl": "#",
     "sugarLabel": "1g 미만"
+  },
+  {
+    "slug": "on-goldstandard-whey-doublerich-2270",
+    "brand": "옵티멈뉴트리션",
+    "name": "골드스탠다드 웨이 (더블 리치 초콜릿)",
+    "capacity": "2.29kg",
+    "variant": "통",
+    "tags": [
+      "웨이(WPC)",
+      "해외 직구"
+    ],
+    "flavor": "더블 리치 초콜릿",
+    "productType": "powder",
+    "nutritionBasis": "per_serving",
+    "servingSizeG": 31,
+    "servingsPerContainer": 74,
+    "proteinSource": "분리유청단백·농축유청단백·가수분해유청단백",
+    "powderType": "whey",
+    "origin": "overseas",
+    "proteinPerServing": 24,
+    "calories": 120,
+    "sugar": 1,
+    "fat": 1.5,
+    "sodium": 130,
+    "density": "20.0g/100kcal",
+    "nutritionPerBottle": {
+      "caloriesKcal": 120,
+      "proteinG": 24,
+      "carbsG": 3,
+      "sugarsG": 1,
+      "fatG": 1.5,
+      "satFatG": 1,
+      "cholesterolMg": 55,
+      "sodiumMg": 130
+    },
+    "coupangUrl": "https://www.coupang.com/vp/products/9788750068?itemId=29307849217&vendorItemId=3161234171",
+    "productUrl": "#"
   }
 ]
