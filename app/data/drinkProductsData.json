@@ -6034,45 +6034,5 @@
     },
     "naverUrl": "https://search.shopping.naver.com/search/all?query=%ED%97%88%EC%89%AC%20%EC%B4%88%EC%BD%9C%EB%A6%BF%EB%93%9C%EB%A7%81%ED%81%AC%20%ED%94%84%EB%A1%9C%ED%8B%B4%20235mL",
     "coupangUrl": "https://www.coupang.com/vp/products/9746614380?itemId=29179078295&vendorItemId=96100319222"
-  },
-  {
-    "slug": "seoulmilk-hankki-sugarbalance-walnut-190",
-    "brand": "서울우유",
-    "name": "한끼식사 당밸런스 (호두맛)",
-    "capacity": "190mL",
-    "variant": "일반",
-    "tags": [
-      "팩"
-    ],
-    "proteinPerServing": 10,
-    "calories": 115,
-    "sugar": 1,
-    "density": "5.3g/100ml",
-    "productUrl": "#",
-    "productType": "drink",
-    "gradeTags": [],
-    "manufacturer": "서울우유협동조합",
-    "flavor": "호두",
-    "proteinSource": "혼합",
-    "fat": 4.5,
-    "sodium": 180,
-    "calorieDensity": "60.5kcal/100ml",
-    "drinkType": "밀크형",
-    "nutritionPerBottle": {
-      "caloriesKcal": 115,
-      "proteinG": 10,
-      "carbsG": 16,
-      "sugarsG": 1,
-      "fatG": 4.5,
-      "satFatG": 1,
-      "transFatG": 0,
-      "cholesterolMg": 7,
-      "sodiumMg": 180,
-      "fiberG": 7
-    },
-    "naverUrl": "https://search.shopping.naver.com/search/all?query=%EC%84%9C%EC%9A%B8%EC%9A%B0%EC%9C%A0%20%ED%95%9C%EB%81%BC%EC%8B%9D%EC%82%AC%20%EB%8B%B9%EB%B0%B8%EB%9F%B0%EC%8A%A4%20(%ED%98%B8%EB%91%90%EB%A7%9B)%20190mL",
-    "coupangUrl": "https://www.coupang.com/vp/products/9799285405?itemId=29356690131&vendorItemId=96278925759",
-    "sugarLabel": "1g 미만",
-    "officialUrl": "https://www.seoulmilk.co.kr/enterprise/product/product_view.sm?subname=P2&gubun=&nmNo=10000000000731&page=2"
   }
 ]
