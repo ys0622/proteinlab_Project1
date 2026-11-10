@@ -114,6 +114,7 @@ const BRAND_SLUG_MAP: Record<string, string> = {
   허쉬: "hershey", // 2026-11-08 음료
   메치니코프: "metchnikoff", // 2026-11-08 요거트
   불가리스: "bulgaris", // 2026-11-08 요거트
+  쉐이크어스: "shakeus", // 2026-11-10 쉐이크(비비드몽타주)
   파스퇴르: "pasteur", // 2026-11-05 음료
   셀렉더요그: "selecttheyog", // 2026-11-05 요거트
   성균관: "sungkyunkwan",

@@ -2691,5 +2691,44 @@
     "nutritionBasis": "per_unit",
     "coupangUrl": "https://www.coupang.com/vp/products/9595380669?itemId=28644236460&vendorItemId=95586879543",
     "naverUrl": "https://search.shopping.naver.com/search/all?query=%EB%B6%88%EA%B0%80%EB%A6%AC%EC%8A%A4%20%EA%B7%B8%EB%A6%AD%20%ED%94%84%EB%A1%9C%ED%8B%B4%20%EB%9D%BD%ED%86%A0%ED%94%84%EB%A6%AC%20400g"
+  },
+  {
+    "slug": "seoulmilk-farmers-greek-plain-granola-128",
+    "brand": "서울우유",
+    "name": "파머스 그릭 플레인 요거트 그래놀라 128g",
+    "capacity": "128g",
+    "variant": "그래놀라",
+    "tags": [
+      "컵"
+    ],
+    "proteinPerServing": 9,
+    "calories": 195,
+    "sugar": 11,
+    "density": "7.0g/100g",
+    "productUrl": "#",
+    "productType": "yogurt",
+    "gradeTags": [],
+    "manufacturer": "서울우유협동조합",
+    "flavor": "플레인 그래놀라",
+    "fat": 9,
+    "sodium": 105,
+    "yogurtType": "그릭 요거트",
+    "storageType": "냉장",
+    "lactoseFree": true,
+    "proteinPer100g": 7,
+    "nutritionPerBottle": {
+      "caloriesKcal": 195,
+      "proteinG": 9,
+      "carbsG": 20,
+      "sugarsG": 11,
+      "fatG": 9,
+      "satFatG": 7,
+      "cholesterolMg": 20,
+      "sodiumMg": 105
+    },
+    "needsServingCheck": false,
+    "nutritionBasis": "per_unit",
+    "coupangUrl": "https://www.coupang.com/vp/products/9810745770?itemId=29380998250&vendorItemId=96292731032",
+    "naverUrl": "https://search.shopping.naver.com/search/all?query=%EC%84%9C%EC%9A%B8%EC%9A%B0%EC%9C%A0%20%ED%8C%8C%EB%A8%B8%EC%8A%A4%20%EA%B7%B8%EB%A6%AD%20%ED%94%8C%EB%A0%88%EC%9D%B8%20%EC%9A%94%EA%B1%B0%ED%8A%B8%20%EA%B7%B8%EB%9E%98%EB%86%80%EB%9D%BC%20128g"
   }
 ]

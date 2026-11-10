@@ -669,6 +669,18 @@ const exactNutritionBySlug: Record<string, NutritionPatch> = {
     sodiumMg: 232,
     fiberG: 2.6,
   },
+  "dryou-proteinbar-lowsugar-50": {
+    caloriesKcal: 248,
+    proteinG: 12,
+    carbsG: 20,
+    sugarsG: 2.4,
+    fatG: 14,
+    satFatG: 3.6,
+    transFatG: 0,
+    cholesterolMg: 0,
+    sodiumMg: 120,
+    fiberG: 3,
+  },
   "grenade-carbkilla-white-chocolate-cookie-60": {
     caloriesKcal: 215,
     proteinG: 22,
