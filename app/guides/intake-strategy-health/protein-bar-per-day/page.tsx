@@ -123,6 +123,7 @@ const faqItems = [
 
 const relatedLinks = [
   { href: "/guides/product-selection-comparison/protein-bar-protein-ranking", title: "단백질바 단백질 함량 순위", body: "1개 단백질 높은 순 전체 비교." },
+  { href: "/guides/product-selection-comparison/protein-bar-calories", title: "단백질바 칼로리", body: "1개 열량 낮은 순 전체 비교." },
   { href: "/guides/basics/daily-requirement", title: "단백질 하루 섭취량", body: "성별·나이·체중별 권장량과 계산법." },
   { href: "/guides/intake-strategy-health/protein-shake-per-day", title: "단백질 쉐이크 하루 몇 번", body: "1포·2포가 권장량의 몇 %인지." },
   { href: "/guides/intake-strategy-health/protein-timing", title: "단백질 먹는 시간", body: "운동 후·아침·자기 전, 언제 먹을까." },

@@ -63,6 +63,11 @@ const nextLinks = [
     title: "단백질 음료 살찌나요",
     body: "매일 마실 때 체중 관리 관점도 함께 확인합니다.",
   },
+  {
+    href: "/guides/product-selection-comparison/protein-drink-calories",
+    title: "단백질 음료 칼로리",
+    body: "1병 열량 낮은 순으로 전체 음료를 비교합니다.",
+  },
 ];
 
 const faq = [

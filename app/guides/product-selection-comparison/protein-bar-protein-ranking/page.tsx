@@ -128,6 +128,7 @@ const relatedLinks = [
   { href: "/guides/product-selection-comparison/protein-bar-guide", title: "단백질바 고르는 법", body: "단백질·당류·열량 읽는 순서." },
   { href: "/guides/intake-strategy-health/protein-bar-per-day", title: "단백질바 하루 몇 개", body: "1개·2개가 권장량의 몇 %인지." },
   { href: "/guides/product-selection-comparison/diet-protein-bar", title: "다이어트 단백질바", body: "열량·당류 기준 비교." },
+  { href: "/guides/product-selection-comparison/protein-bar-calories", title: "단백질바 칼로리", body: "1개 열량 낮은 순 전체 비교." },
   { href: "/guides/product-selection-comparison/convenience-protein-bar", title: "편의점 단백질바", body: "편의점에서 살 수 있는 바 비교." },
   { href: "/guides/product-selection-comparison/meal-replacement-protein-bar-guide", title: "식사대용 단백질바", body: "한 끼 대용으로 볼 때 기준." },
   { href: "/bars", title: "단백질바 전체 목록", body: "등록된 단백질바 전체 성분표." },

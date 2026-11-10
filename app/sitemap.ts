@@ -271,6 +271,8 @@ const STATIC_GUIDE_ROUTES: string[] = [
   "/guides/intake-strategy-health/greek-yogurt-per-day",
   "/guides/product-selection-comparison/greek-yogurt-calories",
   "/guides/product-selection-comparison/soymilk-calories",
+  "/guides/product-selection-comparison/protein-bar-calories",
+  "/guides/product-selection-comparison/protein-drink-calories",
   "/guides/intake-strategy-health/glp1-protein",
   "/guides/intake-strategy-health/pregnancy-protein",
   "/guides/intake-strategy-health/teen-protein",
