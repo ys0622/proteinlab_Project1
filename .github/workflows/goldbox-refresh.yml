@@ -52,11 +52,9 @@ jobs:
             exit 1
           fi
           if [ "$(jq -r '.verifiedMissingFromApiCount' /tmp/goldbox-health.json)" -gt 0 ]; then
+            # 2026-11-11: web Goldbox offers are registered daily by the local task (daily-goldbox.mjs) and are
+            # normally absent from the Partners API feed, so a gap is expected, not a failure (it failed every day 11/2~11/11).
             echo "::warning::Confirmed Coupang app/web offers are missing from the Partners API; verified fallback cards remain active until expiry."
-            if [ "${{ github.event.schedule }}" = "5 23 * * *" ]; then
-              echo "::error::08:05 KST verification found a confirmed API coverage gap. Review /admin/goldbox."
-              exit 1
-            fi
           fi
           if [ "$(jq -r '.matchedCount' /tmp/goldbox-health.json)" -eq 0 ]; then
             echo "::warning::No registered ProteinLab products matched the API feed; this may be a genuinely empty day or a matching gap."
