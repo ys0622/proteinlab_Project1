@@ -11,10 +11,10 @@ const PAGE_META: Record<string, { h1: string; sub: string; title: string; desc: 
     desc: "RTD 단백질 음료 성분 비교",
   },
   "/bars": {
-    h1: "단백질 바 추천 비교",
-    sub: "단백질 바 {count}종 · 단백질·당류·칼로리·중량 기준 직접 비교",
-    title: "단백질 바 비교 | ProteinLab",
-    desc: "단백질 바 성분 비교",
+    h1: "단백질바 추천 비교",
+    sub: "단백질바 {count}종 · 단백질·당류·칼로리·중량 기준 직접 비교",
+    title: "단백질바 비교 | ProteinLab",
+    desc: "단백질바 성분 비교",
   },
   "/yogurt": {
     h1: "단백질 요거트 추천 비교",
@@ -45,9 +45,11 @@ const PAGE_META: Record<string, { h1: string; sub: string; title: string; desc: 
 interface HeroSectionProps {
   totalCount: number;
   categoryCount?: number;
+  /** 검색어에 바로 답하는 한 줄(성분표 데이터로 계산). 없으면 그리지 않는다. */
+  answer?: string;
 }
 
-export default function HeroSection({ totalCount, categoryCount }: HeroSectionProps) {
+export default function HeroSection({ totalCount, categoryCount, answer }: HeroSectionProps) {
   const pathname = usePathname();
   const meta = PAGE_META[pathname] ?? {
     h1: "단백질 제품 추천 비교",
@@ -81,6 +83,7 @@ export default function HeroSection({ totalCount, categoryCount }: HeroSectionPr
             />
           </div>
         </div>
+        {answer ? <p className="mt-0.5 text-xs leading-5 text-[var(--foreground-muted)] md:text-sm">{answer}</p> : null}
       </div>
     </section>
   );
