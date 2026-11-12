@@ -77,6 +77,17 @@ const seniorCompareLink: RelatedGuideLink = {
   href: "/compare/selex-vs-hymune-protein-powder",
   description: "304g 고소한맛 분말 두 제품의 1회 단백질·열량을 나란히 봅니다.",
 };
+// 2026-11-12 질문 허브 2개(프로틴 칼로리·단백질 보충제 하루 섭취량).
+const caloriesLink: RelatedGuideLink = {
+  title: "프로틴 칼로리 비교",
+  href: `/protein-powder-calories`,
+  description: "단백질 보충제 1스쿱 열량 낮은 순 전체 순위와 유형별 열량입니다.",
+};
+const perDayLink: RelatedGuideLink = {
+  title: "단백질 보충제 하루 섭취량",
+  href: "/guides/intake-strategy-health/protein-powder-per-day",
+  description: "1스쿱·2스쿱이 하루 권장량의 몇 %인지, 운동할 때 체중별 기준과 함께 계산했습니다.",
+};
 const sourceTypesLink: RelatedGuideLink = {
   title: "단백질 원료 종류 정리",
   href: "/guides/basics/protein-source-types",
@@ -169,7 +180,7 @@ export const proteinPowderTop10Config: ComparePageConfig = {
     { question: "당류 0g인 단백질 파우더는 몇 종인가요?", answer: `등록 ${powder.length}종 중 성분표 당류가 0g인 제품은 ${powder.filter((p) => p.sugar === 0).length}종입니다. 당류 줄이 아예 없는 제품 ${powder.filter((p) => !hasSugar(p)).length}종은 0g으로 세지 않았습니다.` },
     { question: "해외 직구 제품도 순위에 들어가나요?", answer: `네. 국내 유통 제품과 같은 기준으로 계산했고, TOP 10 중 ${top10OverseasCount}종이 해외 직구 제품입니다. 표와 카드에 '해외 직구'로 표시했습니다.` },
   ],
-  relatedGuides: [powderListLink, scoopLink, sourceLink, purposeLink, brandCompareLink, sourceTypesLink],
+  relatedGuides: [powderListLink, scoopLink, caloriesLink, sourceLink, purposeLink, brandCompareLink, sourceTypesLink],
   purchaseLinks: top10.slice(0, 3).map((p) => ({ label: `${label(p)} 보기`, slug: p.slug })),
 };
 
@@ -455,7 +466,7 @@ export const proteinPowderScoopConfig: ComparePageConfig = {
     { question: "단백질 보충제 한 통은 몇 회분인가요?", answer: `제조사 표기 기준 ${range(withServings.map((p) => p.servingsPerContainer as number), "회")}입니다. 같은 2kg 통이라도 1회 제공량이 다르면 회분이 달라집니다.` },
     { question: "1스쿱이 1회 제공량과 다른 제품도 있나요?", answer: "제품마다 다를 수 있습니다. 그래서 이 페이지는 스쿱 개수가 아니라 성분표의 1회 제공량(g)으로 비교했습니다. 섭취 방법은 제품 포장의 문구를 확인하세요." },
   ],
-  relatedGuides: [powderListLink, top10Link, sourceLink, purposeLink, dailyLink],
+  relatedGuides: [perDayLink, caloriesLink, powderListLink, top10Link, sourceLink, purposeLink, dailyLink],
   purchaseLinks: scoopSorted.slice(0, 3).map((p) => ({ label: `${label(p)} 보기`, slug: p.slug })),
 };
 
