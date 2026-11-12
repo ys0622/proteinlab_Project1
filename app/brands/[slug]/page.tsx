@@ -6,6 +6,7 @@ import CommercialAdSection from "../../components/CommercialAdSection";
 import ProductCard from "../../components/ProductCard";
 import TrackedLink from "../../components/TrackedLink";
 import GuideBuySection from "../../components/GuideBuySection";
+import BrandLineupGlance, { getBrandLines } from "../../components/BrandLineupGlance";
 import { getAllProducts } from "../../data/products";
 import { getCategoryLabel, type CatalogProductCategory, type ProductCategory } from "../../lib/categories";
 import { brandToSlug, getBrandSummary, slugToBrand } from "../../lib/brandHubs";
@@ -276,6 +277,18 @@ function isOneServing(item: ProductDetailProps) {
   return isComparableServing(item) && !item.needsServingCheck;
 }
 
+// 주력 제품군 안의 라인 이름(맥스·몬스터·프로 등)을 단백질 많은 순으로. 2개 미만이면 빈 배열(2026-11-11 브랜드명 검색 시안).
+function getMainLineNames(brand: string, items: ProductDetailProps[], category: string) {
+  const lines = getBrandLines(brand, items).filter((line) => line.category === category);
+  if (lines.length < 2) return [];
+  return lines
+    .sort((a, b) => Math.max(...b.items.map((i) => i.proteinPerServing ?? 0)) - Math.max(...a.items.map((i) => i.proteinPerServing ?? 0)))
+    .map((line) => line.shortName)
+    .slice(0, 4)
+    // 라인 이름이 긴 브랜드(하이뮨·셀렉스·랩노쉬)는 제목이 검색 결과에서 잘려 이름 합 24자 안에서 끊는다(최소 2개).
+    .filter((_, i, all) => i < 2 || all.slice(0, i + 1).join("·").length <= 24);
+}
+
 function getBrandMainCategory(brand: string, items: { productType?: string }[]) {
   const counts = new Map<CatalogProductCategory, number>();
   for (const item of items) {
@@ -327,8 +340,11 @@ export async function generateMetadata({ params }: PageProps) {
   const isSingleCategory = mainCount === items.length;
   // 제품이 1개인 브랜드는 "맛별 … 1종 비교"가 어색해 제품명과 수치를 제목에 쓴다(2026-11-05, 36개 브랜드).
   const single = items.length === 1 ? items[0] : null;
+  const lineNames = single ? [] : getMainLineNames(brand, items, getBrandMainCategory(brand, items).category);
   const title = single
     ? `${brandWithSearchAlias(brand)}${mainLabel ? ` ${mainLabel}` : ""} 성분표 — ${single.name}${facts.length ? ` ${facts.join("·")}` : ""}`
+    : lineNames.length >= 2
+    ? `${brandWithSearchAlias(brand)} 성분표 — ${lineNames.join("·")} 차이, ${mainLabel ? `${mainLabel} ` : ""}${isSingleCategory ? `${items.length}종` : `${mainCount}종 포함 전체 ${items.length}종`} 비교`
     : isSingleCategory
     ? `${brandWithSearchAlias(brand)}${mainLabel ? ` ${mainLabel}` : ""} 성분표 — 맛별 단백질·당류·칼로리 ${items.length}종 비교`
     : // 여러 제품군 브랜드도 "브랜드 + 주력 제품군 + 성분표"로 시작한다. 네이버 브랜드 검색("하이뮨", "커클랜드 프로틴바")의
@@ -433,6 +449,9 @@ export default async function BrandPage({ params }: PageProps) {
   const profileGroups = getBrandProfile(brand.brand, brand.items, products);
   const rankBySlug = new Map(profileGroups.flatMap((g) => g.rows.map((r) => [r.slug, `${r.proteinRank}위 / ${g.poolSize}종`] as const)));
 
+  const brandMain = getBrandMainCategory(brand.brand, brand.items);
+  const mainLineNames = getMainLineNames(brand.brand, brand.items, brandMain.category);
+
   const shakeItems = brand.items.filter((item) => item.productType === "shake");
   const shakeHighlights = getShakeHighlights(shakeItems);
   const shakeFlavors = [...new Set(shakeItems.map((item) => item.flavor).filter((flavor): flavor is string => Boolean(flavor)))];
@@ -479,7 +498,11 @@ export default async function BrandPage({ params }: PageProps) {
             <span className="text-[var(--foreground)]">{brand.brand}</span>
           </nav>
           <h1 className="text-2xl font-bold leading-[1.25] text-[#16412D] md:text-3xl">
-            {brand.total === 1 && brand.items[0] ? `${brand.brand} 성분표 · ${brand.items[0].name}` : `${brand.brand} 성분표 · 제품 ${brand.total}종 비교`}
+            {brand.total === 1 && brand.items[0]
+              ? `${brand.brand} 성분표 · ${brand.items[0].name}`
+              : mainLineNames.length >= 2
+              ? `${brand.brand} 라인업·성분표 — ${mainLineNames.join("·")} 차이`
+              : `${brand.brand} 성분표 · 제품 ${brand.total}종 비교`}
           </h1>
           <p className="mt-2 max-w-[760px] text-sm leading-6 text-[var(--foreground-muted)] md:text-[15px]">
             {getBrandAnswer(brand.brand, brand.total, brand.items)}
@@ -519,6 +542,10 @@ export default async function BrandPage({ params }: PageProps) {
       </section>
 
       <main className="mx-auto max-w-[1200px] px-4 pb-12 pt-6 md:px-6">
+        {/* 브랜드명만 검색한 사람에게 라인 차이를 첫 화면에서 답한다(2026-11-11, '테이크핏' 단독 검색 클릭 30일 120→1). */}
+        <div className="mb-6">
+          <BrandLineupGlance brand={brand.brand} items={brand.items} mainCategory={brandMain.category} />
+        </div>
         <section className="rounded-2xl border border-[#e8e6e3] bg-[#FFFDF8] p-5">
           <h2 className="text-base font-semibold text-[var(--foreground)]">브랜드 요약</h2>
           <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">
