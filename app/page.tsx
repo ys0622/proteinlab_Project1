@@ -5,6 +5,7 @@ import GuideThumbImage from "./components/GuideThumbImage";
 import productCategoryCountsData from "./data/productCategoryCounts.json";
 import HomeGuideCardLink from "./components/HomeGuideCardLink";
 import HomeHeroSearch from "./components/HomeHeroSearch";
+import HomeIndexLinks from "./components/HomeIndexLinks";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import HomePopularCarousel, { type CarouselProduct } from "./components/HomePopularCarousel";
@@ -338,6 +339,9 @@ export default async function Home() {
           ))}
         </div>
       </section>
+
+      {/* ─── 5-1. 자주 찾는 비교·가이드(구글 색인 대상 링크) ─── */}
+      <HomeIndexLinks />
 
       {/* ─── 6. 플랫폼 특징 ─── */}
       <section className="mx-auto max-w-[1180px] px-4 pb-8 pt-4 md:px-5 md:pb-16 md:pt-6">

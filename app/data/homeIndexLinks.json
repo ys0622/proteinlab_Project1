@@ -1,0 +1,380 @@
+{
+ "compare": [
+  {
+   "href": "/guides/product-selection-comparison/danbaek-vs-selexs",
+   "label": "더단백 vs 셀렉스 프로핏 비교"
+  },
+  {
+   "href": "/guides/product-selection-comparison/selex-vs-himune",
+   "label": "셀렉스 vs 하이뮨 비교"
+  },
+  {
+   "href": "/guides/product-selection-comparison/newcare-vs-hymune",
+   "label": "뉴케어 vs 하이뮨 비교"
+  },
+  {
+   "href": "/guides/product-selection-comparison/selex-vs-takefit-vs-himune",
+   "label": "셀렉스 vs 테이크핏 vs 하이뮨"
+  },
+  {
+   "href": "/compare/sellex-vs-takefit",
+   "label": "셀렉스 프로핏 vs 테이크핏 맥스 비교"
+  },
+  {
+   "href": "/guides/product-selection-comparison/newcare-vs-sellex",
+   "label": "뉴케어 vs 셀렉스 단백질 음료 비교"
+  },
+  {
+   "href": "/guides/basics/protein-drink-vs-powder",
+   "label": "단백질 음료 vs 프로틴 파우더 차이"
+  },
+  {
+   "href": "/compare/greekday-vs-maeilbio-yogurt",
+   "label": "매일 바이오 그릭요거트 vs 그릭데이"
+  },
+  {
+   "href": "/compare/flymill-vs-itthefit-shake",
+   "label": "플라이밀 vs 잇더핏 단백질 쉐이크 비교"
+  },
+  {
+   "href": "/compare/takefit-max-vs-takefit-monster",
+   "label": "테이크핏 몬스터 vs 맥스 차이"
+  },
+  {
+   "href": "/compare/doctoru-vs-kirkland-bar",
+   "label": "커클랜드 프로틴바 vs 닥터유 단백질바"
+  },
+  {
+   "href": "/compare/doctoru-vs-benof-crunch-bar",
+   "label": "닥터유 vs 베노프 프로틴바 비교"
+  },
+  {
+   "href": "/guides/product-selection-comparison/protein-drink-vs-protein-shake",
+   "label": "단백질 음료 vs 쉐이크 차이"
+  },
+  {
+   "href": "/compare/flymill-vs-allthebetter-shake",
+   "label": "플라이밀 vs 올더배러 단백질 쉐이크 비교"
+  },
+  {
+   "href": "/guides/product-selection-comparison/danbaek-vs-himune",
+   "label": "더단백 vs 하이뮨 차이"
+  },
+  {
+   "href": "/compare/labnosh-vs-flymill-shake",
+   "label": "랩노쉬 vs 플라이밀 단백질 쉐이크 비교"
+  },
+  {
+   "href": "/compare/labnosh-vs-danbaekhani-shake",
+   "label": "랩노쉬 vs 단백하니 쉐이크 비교"
+  },
+  {
+   "href": "/compare/greek-yogurt-brand-compare",
+   "label": "후디스 vs 매일바이오 그릭요거트 비교"
+  },
+  {
+   "href": "/compare/yopro-vs-yoplait-yogurt",
+   "label": "요프로 vs 요플레 프로틴 요거트 비교"
+  },
+  {
+   "href": "/guides/product-selection-comparison/newcare-41g-vs-25g",
+   "label": "뉴케어 올프로틴 41g 성분·맛 비교"
+  },
+  {
+   "href": "/guides/product-selection-comparison/doctoru-40g-vs-takefit-monster-43g",
+   "label": "닥터유PRO 40g vs 테이크핏 몬스터 47g"
+  },
+  {
+   "href": "/compare/takefit-pro-500-vs-max-250",
+   "label": "테이크핏 프로 500mL vs 테이크핏 맥스 250mL 비교"
+  },
+  {
+   "href": "/compare/protein-water-vs-rtd-drink",
+   "label": "프로틴 워터 vs 일반 RTD 단백질 음료 비교"
+  },
+  {
+   "href": "/guides/product-selection-comparison/takefit-vs-himune",
+   "label": "테이크핏 vs 하이뮨 차이"
+  },
+  {
+   "href": "/compare/takefit-vs-newcare",
+   "label": "테이크핏 vs 뉴케어 올프로틴 비교"
+  },
+  {
+   "href": "/compare/newcare-vs-danbaek-drink",
+   "label": "뉴케어 올프로틴 vs 더단백 드링크 비교"
+  },
+  {
+   "href": "/guides/product-selection-comparison/newcare-plant-vs-lactosefree",
+   "label": "뉴케어 식물성 vs 셀렉스 락토프리 비교"
+  },
+  {
+   "href": "/compare/drink-vs-bar-post-workout",
+   "label": "운동 후 단백질 음료 vs 단백질 바 비교"
+  },
+  {
+   "href": "/compare/takefit-vs-hymune-drink",
+   "label": "테이크핏 vs 하이뮨 단백질 음료 비교"
+  },
+  {
+   "href": "/compare/newcare-vs-hymune",
+   "label": "뉴케어 올프로틴 25g vs 하이뮨 액티브 20g"
+  }
+ ],
+ "pick": [
+  {
+   "href": "/guides/product-selection-comparison/diet-protein-bar",
+   "label": "다이어트 단백질바 추천"
+  },
+  {
+   "href": "/guides/product-selection-comparison/high-protein-soymilk-guide",
+   "label": "단백질 두유 추천"
+  },
+  {
+   "href": "/guides/product-selection-comparison/himune-lineup",
+   "label": "하이뮨 프로틴 성분표"
+  },
+  {
+   "href": "/guides/product-selection-comparison/convenience-protein-bar",
+   "label": "편의점 단백질 바 추천"
+  },
+  {
+   "href": "/guides/product-selection-comparison/diet-soymilk-guide",
+   "label": "다이어트 두유 추천"
+  },
+  {
+   "href": "/guides/product-selection-comparison/soymilk-brand-comparison",
+   "label": "단백질 두유 비교"
+  },
+  {
+   "href": "/guides/product-selection-comparison/low-sugar-yogurt-guide",
+   "label": "저당 단백질 요거트 추천 기준"
+  },
+  {
+   "href": "/guides/product-selection-comparison/soymilk-protein-ranking",
+   "label": "두유 단백질 함량 순위"
+  },
+  {
+   "href": "/guides/product-selection-comparison/protein-shake-nutrition-label-guide",
+   "label": "단백질 쉐이크 성분표 보는 법"
+  },
+  {
+   "href": "/guides/product-selection-comparison/oliveyoung-protein-shake",
+   "label": "올리브영 단백질쉐이크 추천"
+  },
+  {
+   "href": "/guides/product-selection-comparison/convenience-store-protein-guide",
+   "label": "편의점 단백질 음료·바 추천"
+  },
+  {
+   "href": "/guides/product-selection-comparison/protein-shake-guide",
+   "label": "단백질 쉐이크 고르는 법"
+  },
+  {
+   "href": "/guides/product-selection-comparison/newcare-allprotein",
+   "label": "뉴케어 올프로틴 성분표 12종"
+  },
+  {
+   "href": "/guides/product-selection-comparison/danbaekhani-protein-shake",
+   "label": "단백하니 단백질 쉐이크 추천"
+  },
+  {
+   "href": "/guides/product-selection-comparison/labnosh-lineup",
+   "label": "랩노쉬 쉐이크 종류·성분 비교"
+  },
+  {
+   "href": "/guides/product-selection-comparison/morning-protein-shake",
+   "label": "아침 단백질쉐이크 추천"
+  },
+  {
+   "href": "/guides/product-selection-comparison/protein-shake-for-women",
+   "label": "여성을 위한 단백질 쉐이크 추천"
+  },
+  {
+   "href": "/guides/product-selection-comparison/high-protein-40g-comparison",
+   "label": "단백질 음료 40g 이상 추천 비교"
+  },
+  {
+   "href": "/guides/product-selection-comparison/diet-protein-shake",
+   "label": "다이어트 단백질쉐이크 추천"
+  },
+  {
+   "href": "/guides/product-selection-comparison/protein-drink-by-content",
+   "label": "단백질 음료 함량대별 정리"
+  },
+  {
+   "href": "/guides/product-selection-comparison/meal-replacement-protein-shake-guide",
+   "label": "식사대용 단백질쉐이크 추천"
+  },
+  {
+   "href": "/guides/product-selection-comparison/protein-drink-top10",
+   "label": "단백질 음료 추천 TOP 10"
+  },
+  {
+   "href": "/guides/product-selection-comparison/low-sugar-protein-drink-guide",
+   "label": "저당 단백질 음료 추천 기준"
+  },
+  {
+   "href": "/guides/product-selection-comparison/protein-drink-for-50s",
+   "label": "50대 단백질 음료 추천"
+  },
+  {
+   "href": "/guides/product-selection-comparison/protein-drink-by-flavor",
+   "label": "단백질 음료 맛별 추천"
+  },
+  {
+   "href": "/guides/product-selection-comparison/protein-yogurt-top5",
+   "label": "프로틴 요거트 추천 TOP 5"
+  },
+  {
+   "href": "/guides/product-selection-comparison/selexs-lineup",
+   "label": "셀렉스 단백질음료 추천"
+  },
+  {
+   "href": "/guides/product-selection-comparison/lactose-free-protein-drink",
+   "label": "락토프리 단백질 음료"
+  },
+  {
+   "href": "/guides/product-selection-comparison/protein-density-ranking",
+   "label": "단백질 음료 100mL당 단백질 순위"
+  },
+  {
+   "href": "/guides/product-selection-comparison/morning-protein-products-guide",
+   "label": "아침 대용 단백질 추천"
+  },
+  {
+   "href": "/guides/product-selection-comparison/flymill-protein-shake",
+   "label": "플라이밀 단백질 쉐이크 추천"
+  }
+ ],
+ "intake": [
+  {
+   "href": "/guides/intake-strategy-health/protein-drink-empty-stomach",
+   "label": "단백질 음료 공복에 마셔도 되나요?"
+  },
+  {
+   "href": "/guides/intake-strategy-health/night-protein-drink",
+   "label": "자기 전 단백질, 효과 있을까"
+  },
+  {
+   "href": "/guides/intake-strategy-health/protein-50g-at-once",
+   "label": "단백질 한 번에 흡수량, 30g 넘으면?"
+  },
+  {
+   "href": "/guides/basics/daily-requirement",
+   "label": "단백질 하루 섭취량"
+  },
+  {
+   "href": "/guides/intake-strategy-health/protein-drink-weight-gain",
+   "label": "단백질 쉐이크·음료 살찌나요?"
+  },
+  {
+   "href": "/guides/intake-strategy-health/protein-drink-diarrhea",
+   "label": "단백질 음료 마시고 설사하는 이유"
+  },
+  {
+   "href": "/guides/intake-strategy-health/protein-drink-without-exercise",
+   "label": "운동 안 하고 단백질 음료 마시면?"
+  },
+  {
+   "href": "/guides/intake-strategy-health/senior-protein-strategy",
+   "label": "노인 단백질 하루 섭취량"
+  },
+  {
+   "href": "/guides/intake-strategy-health/protein-timing",
+   "label": "단백질 먹는 시간, 언제가 좋을까"
+  },
+  {
+   "href": "/guides/fitness-lifestyle/running-protein-category-guide",
+   "label": "러닝하는 사람은 음료·바·쉐이크 중 뭐가 맞을까"
+  },
+  {
+   "href": "/guides/intake-strategy-health/protein-drink-daily",
+   "label": "단백질 음료 매일 마셔도 되나요?"
+  },
+  {
+   "href": "/guides/intake-strategy-health/high-protein-side-effects",
+   "label": "단백질 과다섭취 부작용"
+  },
+  {
+   "href": "/guides/fitness-lifestyle/marathon-distance-strategy",
+   "label": "마라톤 거리별 영양과 훈련 전략"
+  },
+  {
+   "href": "/guides/intake-strategy-health/morning-protein-drink",
+   "label": "아침 대용 단백질 음료 추천 기준"
+  },
+  {
+   "href": "/guides/intake-strategy-health/lean-massup-protein-intake",
+   "label": "린매스업 단백질 섭취량 계산"
+  },
+  {
+   "href": "/guides/intake-strategy-health/light-protein-under-20g",
+   "label": "저함량 단백질 음료가 맞는 사람"
+  },
+  {
+   "href": "/guides/basics/digestion",
+   "label": "단백질 소화와 흡수 메커니즘"
+  },
+  {
+   "href": "/guides/basics/role-overview",
+   "label": "단백질은 몸에서 어떤 역할을 할까"
+  },
+  {
+   "href": "/guides/intake-strategy-health/pre-workout-protein",
+   "label": "운동 전 단백질 가이드"
+  },
+  {
+   "href": "/guides/intake-strategy-health/protein-drink-sugar",
+   "label": "단백질 음료 당류 얼마나 봐야 하나요?"
+  }
+ ],
+ "brand": [
+  {
+   "href": "/brands/itthefit",
+   "label": "잇더핏 성분표"
+  },
+  {
+   "href": "/brands/shakebaby",
+   "label": "쉐이크베이비 성분표"
+  },
+  {
+   "href": "/brands/cruntin",
+   "label": "크런틴 성분표"
+  },
+  {
+   "href": "/brands/kkobak-kobab",
+   "label": "꼬박꼬밥 성분표"
+  },
+  {
+   "href": "/brands/labnosh",
+   "label": "랩노쉬 성분표"
+  },
+  {
+   "href": "/brands/milit",
+   "label": "밀잇 성분표"
+  },
+  {
+   "href": "/brands/myprotein",
+   "label": "마이프로틴 성분표"
+  },
+  {
+   "href": "/brands/newcare",
+   "label": "뉴케어 성분표"
+  },
+  {
+   "href": "/brands/hymune",
+   "label": "하이뮨 성분표"
+  }
+ ],
+ "etc": [
+  {
+   "href": "/grade-criteria",
+   "label": "등급 산정 기준"
+  },
+  {
+   "href": "/methodology",
+   "label": "데이터 방법론"
+  }
+ ]
+}
