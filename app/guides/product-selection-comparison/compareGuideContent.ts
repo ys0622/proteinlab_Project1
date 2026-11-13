@@ -1356,9 +1356,15 @@ export const newcareAllproteinConfig: ComparePageConfig = {
   ],
 };
 newcareAllproteinConfig.title = "뉴케어 올프로틴 완전 분석";
-newcareAllproteinConfig.updatedAt = "2026-07-20";
-newcareAllproteinConfig.description =
-  "뉴케어 올프로틴 41g뿐 아니라 25g, 식물성, 워터 라인까지 함께 보고 어떤 제품이 어떤 목적에 맞는지 정리합니다.";
+newcareAllproteinConfig.updatedAt = "2026-11-13";
+// 2026-11-13: 이 줄이 위의 수치 설명을 숫자 없는 문장으로 덮어쓰고 있었다(네이버 30일 노출 4,579·평균 2위·클릭 8).
+// '뉴케어 올프로틴' 검색에 라인별 수치로 바로 답하도록 제목·설명·첫 문단을 등록 데이터로 계산한다.
+const newcareAllproteinCount = getDrinkProducts().filter(
+  (product) => product.brand === "뉴케어" && product.name.startsWith("올프로틴"),
+).length;
+newcareAllproteinConfig.seoTitle = `뉴케어 올프로틴 성분표 ${newcareAllproteinCount}종 — 41g ${newcare41.calories}kcal·25g ${newcare25.calories}kcal·식물성·워터 비교`;
+newcareAllproteinConfig.description = `뉴케어 올프로틴 41g(350mL)은 단백질 ${newcare41.proteinPerServing}g·${newcare41.calories}kcal·당류 ${newcare41.sugar}g, 245mL는 ${newcare25.proteinPerServing}g·${newcare25.calories}kcal·당류 ${newcare25.sugar}g, 식물성(250mL)은 ${newcarePlant.proteinPerServing}g·${newcarePlant.calories}kcal, 워터(350mL)는 ${newcareWater.proteinPerServing}g·${newcareWater.calories}kcal입니다(성분표 기준). ${newcareAllproteinCount}종의 라인별 차이와 고르는 기준을 정리했습니다.`;
+newcareAllproteinConfig.intro = `뉴케어 올프로틴은 ProteinLab에 등록된 ${newcareAllproteinCount}종이 41g·245mL·식물성·워터 4개 라인으로 나뉩니다. 단백질은 41g 라인이 ${newcare41.proteinPerServing}g(${newcare41.calories}kcal)로 가장 많고, 245mL는 ${newcare25.proteinPerServing}g(${newcare25.calories}kcal), 식물성과 워터는 각각 ${newcarePlant.proteinPerServing}g이며 워터가 ${newcareWater.calories}kcal로 가장 가볍습니다. 등록된 제품은 모두 락토프리로 표기돼 있습니다.`;
 newcareAllproteinConfig.keywords = [
   "뉴케어 올프로틴",
   "뉴케어 올프로틴 41g",
@@ -1500,29 +1506,7 @@ newcareAllproteinConfig.purchaseLinks = [
   { label: "뉴케어 식물성 단백질 보기", slug: newcarePlant.slug },
   { label: "뉴케어 올프로틴 워터 보기", slug: newcareWater.slug },
 ];
-newcareAllproteinConfig.sections = [
-  ...newcareAllproteinConfig.sections,
-  {
-    title: "국제 미각상 수상 이력은 맛 참고 기준입니다",
-    items: [
-      {
-        title: "고소한맛은 2026 Superior Taste Award 2스타",
-        body:
-          "2026년 보도 기준 뉴케어 올프로틴 고소한맛은 International Taste Institute의 Superior Taste Award 2스타를 받은 것으로 확인됩니다. 곡물·고소한맛 계열을 선호한다면 맛 적응 가능성을 판단하는 보조 신호로 볼 수 있습니다.",
-      },
-      {
-        title: "초코맛과 바나나맛은 2026 Superior Taste Award 1스타",
-        body:
-          "같은 보도에서 뉴케어 올프로틴 초코맛과 바나나맛은 각각 1스타 수상 제품으로 언급됐습니다. 처음 구매할 때 맛 실패 가능성을 줄이는 참고 정보가 될 수 있지만, 개인 취향까지 보장하는 근거는 아닙니다.",
-      },
-      {
-        title: "맛 수상과 영양 평가는 분리해서 봐야 합니다",
-        body:
-          "국제 미각상은 외부 미각 전문가의 맛 품질 평가 이력입니다. 단백질 함량, 당류, 칼로리, 유당 부담 같은 영양 기준은 별도로 확인해야 하며 건강 효과를 의미하지 않습니다.",
-      },
-    ],
-  },
-];
+// 미각상 섹션은 위 sections에 이미 있어 같은 내용을 두 번 붙이던 블록을 뺐다(2026-11-13). FAQ는 유지.
 newcareAllproteinConfig.faq = [
   ...newcareAllproteinConfig.faq,
   {
