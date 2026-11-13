@@ -7,6 +7,7 @@ import ProductCard from "../../components/ProductCard";
 import TrackedLink from "../../components/TrackedLink";
 import GuideBuySection from "../../components/GuideBuySection";
 import BrandLineupGlance, { getBrandLines } from "../../components/BrandLineupGlance";
+import BrandAlternatives from "../../components/BrandAlternatives";
 import { getAllProducts } from "../../data/products";
 import { getCategoryLabel, type CatalogProductCategory, type ProductCategory } from "../../lib/categories";
 import { brandToSlug, getBrandSummary, slugToBrand } from "../../lib/brandHubs";
@@ -568,6 +569,13 @@ export default async function BrandPage({ params }: PageProps) {
             caption="이 브랜드 제품 중 1회 단백질이 많은 순서입니다(쿠팡 판매 확인된 제품만)."
           />
         </div>
+
+        {/* 제품 1개뿐인 브랜드: 성분이 비슷한 다른 브랜드 5종을 같은 페이지에서 비교(2026-11-13, 백로그 #14). */}
+        {brand.total === 1 && brand.items[0] ? (
+          <div className="mt-6">
+            <BrandAlternatives product={brand.items[0]} all={products} />
+          </div>
+        ) : null}
 
         {profileGroups.length > 0 ? (
           <section className="mt-6 rounded-2xl border border-[#e8e6e3] bg-white p-5">
