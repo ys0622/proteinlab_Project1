@@ -235,6 +235,38 @@ function buildDifferenceCards(products: ProductDetailProps[]): DifferenceCard[] 
     .slice(0, 3);
 }
 
+/** 첫 두 제품의 1회 기준 단백질·당류·칼로리(성분표 데이터)로 메타 제목 꼬리말과 설명 첫 문장을 만든다. 수치가 빠지면 null. */
+function buildNumericMeta(productSlugs: string[]): { titleSuffix: string; descriptionLead: string } | null {
+  const allProducts = getAllProducts();
+  const pair = productSlugs
+    .slice(0, 2)
+    .map((productSlug) => allProducts.find((item) => item.slug === productSlug))
+    .filter((item): item is NonNullable<typeof item> => item != null);
+  if (pair.length !== 2) return null;
+  if (pair.some((p) => p.proteinPerServing == null || p.calories == null)) return null;
+  const [a, b] = pair;
+  const facts = (p: ProductDetailProps) =>
+    [`단백질 ${fmt(p.proteinPerServing as number)}g`, p.sugar != null ? `당류 ${fmt(p.sugar)}g` : null, `${fmt(p.calories as number)}kcal`]
+      .filter(Boolean)
+      .join("·");
+  // 이름이 용량으로 끝나면 단위 읽는 소리로 조사를 고른다(150g=그램은, 250mL=밀리리터는).
+  const label = (p: ProductDetailProps) => {
+    const name = formatProductLabel(p.brand, p.name);
+    const particle = /\d\s*(g|kg|kcal)$/i.test(name)
+      ? "은"
+      : /\d\s*(ml|l)$/i.test(name)
+        ? "는"
+        : hasBatchim(name)
+          ? "은"
+          : "는";
+    return `${name}${particle}`;
+  };
+  return {
+    titleSuffix: `단백질 ${fmt(a.proteinPerServing as number)}g·${fmt(b.proteinPerServing as number)}g, ${fmt(a.calories as number)}·${fmt(b.calories as number)}kcal`,
+    descriptionLead: `${label(a)} ${facts(a)}, ${label(b)} ${facts(b)}입니다(성분표 기준).`,
+  };
+}
+
 export async function generateStaticParams() {
   return getAllCompareLandingStaticSlugs().map((slug) => ({ slug }));
 }
@@ -252,8 +284,12 @@ export async function generateMetadata({ params }: PageProps) {
   const canonical = compareCanonicalOverrides[landing.slug] ?? `https://proteinlab.kr/compare/${landing.slug}`;
   // 각 랜딩 제목과 설명 자체에 비교 대상·핵심 수치·검색 의도가 이미 들어 있다.
   // 공통 문구를 덧붙이면 모바일 검색결과에서 핵심 제품명이 잘리고 설명도 반복된다.
-  const title = landing.title;
-  const description = landing.description;
+  // 2026-11-13: 숫자가 하나도 없는 제목·설명(예: "닥터유 vs 베노프 프로틴바 비교", "…기준으로 비교합니다.")만
+  // 첫 두 제품의 성분표 수치를 붙인다(네이버 30일: 이런 비교 페이지가 노출 1,000회대에 클릭 1% 미만).
+  const numeric = buildNumericMeta(landing.productSlugs);
+  const title = numeric && !/\d/.test(landing.title) ? `${landing.title} — ${numeric.titleSuffix}` : landing.title;
+  const description =
+    numeric && !/\d/.test(landing.description) ? `${numeric.descriptionLead} ${landing.description}` : landing.description;
   return {
     title,
     description,
