@@ -152,6 +152,7 @@ const faqItems = [
 const relatedLinks = [
   { href: "/guides/basics/protein-source-types", title: "MPI·WPI·WPC·ISP 차이", body: "단백질 원료 7가지를 한 표로." },
   { href: "/guides/product-selection-comparison/isolated-soy-protein-guide", title: "분리대두단백(ISP)이란", body: "대두단백이 들어간 프로틴과 원료 순서." },
+  { href: "/guides/product-selection-comparison/milk-protein-mpc-mpi-guide", title: "MPC·MPI 단백질이란", body: "농축·분리우유단백 뜻과 차이." },
   { href: "/guides/product-selection-comparison/wpi-wpc-isp-powder-guide", title: "WPI·WPC·분리대두 파우더 차이", body: "유형별 평균 함량과 당류." },
   { href: "/guides/product-selection-comparison/protein-powder-top10", title: "단백질 파우더 추천 TOP 10", body: "함량·당류로 고른 보충제." },
   { href: "/guides/product-selection-comparison/protein-powder-calories", title: "프로틴 칼로리 비교", body: "1스쿱 열량 낮은 순." },
@@ -246,7 +247,8 @@ export default function WpiProteinGuidePage() {
               </table>
             </div>
             <p className="mt-3 text-xs leading-5 text-[var(--foreground-muted)]">
-              MPI(분리우유단백)는 유청이 아니라 카제인과 유청을 함께 담은 우유 단백 원료입니다. MPI·카제인·분리대두단백까지 비교하려면{" "}
+              MPI(분리우유단백)는 유청이 아니라 카제인과 유청을 함께 담은 우유 단백 원료입니다(
+              <Link href="/guides/product-selection-comparison/milk-protein-mpc-mpi-guide" className="font-semibold text-[#2d6a4f] hover:underline">MPC·MPI 단백질이란</Link>). MPI·카제인·분리대두단백까지 비교하려면{" "}
               <Link href="/guides/basics/protein-source-types" className="font-semibold text-[#2d6a4f] hover:underline">단백질 원료 차이</Link>를 보세요.
             </p>
           </section>

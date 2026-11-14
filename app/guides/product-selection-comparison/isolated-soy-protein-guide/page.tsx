@@ -141,6 +141,7 @@ const faqItems = [
 
 const relatedLinks = [
   { href: "/guides/product-selection-comparison/wpi-protein-guide", title: "분리유청단백질(WPI)이란", body: "WPI만 쓴 프로틴 함량 순위." },
+  { href: "/guides/product-selection-comparison/milk-protein-mpc-mpi-guide", title: "MPC·MPI 단백질이란", body: "농축·분리우유단백 뜻과 차이." },
   { href: "/guides/basics/protein-source-types", title: "MPI·WPI·WPC·ISP 차이", body: "단백질 원료 7가지를 한 표로." },
   { href: "/guides/product-selection-comparison/wpi-wpc-isp-powder-guide", title: "WPI·WPC·분리대두 파우더 차이", body: "유형별 평균 함량과 당류." },
   { href: "/guides/product-selection-comparison/soymilk-protein-ranking", title: "두유 단백질 함량 순위", body: "콩을 통째로 쓴 두유 전체 비교." },

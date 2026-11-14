@@ -99,6 +99,11 @@ const ispLink: RelatedGuideLink = {
   href: "/guides/product-selection-comparison/isolated-soy-protein-guide",
   description: "분리대두단백 뜻·원산지 확인법과 분리대두단백이 첫 원료인 프로틴 비교입니다.",
 };
+const milkProteinLink: RelatedGuideLink = {
+  title: "MPC·MPI 단백질이란",
+  href: "/guides/product-selection-comparison/milk-protein-mpc-mpi-guide",
+  description: "농축우유단백(MPC)·분리우유단백(MPI) 뜻과 WPI 차이, 들어간 프로틴의 원료 순서입니다.",
+};
 const sourceTypesLink: RelatedGuideLink = {
   title: "단백질 원료 종류 정리",
   href: "/guides/basics/protein-source-types",
@@ -278,7 +283,7 @@ export const wpiWpcIspPowderConfig: ComparePageConfig = {
     { question: "분리대두단백(ISP)만 쓴 파우더도 있나요?", answer: `등록 제품 중 분리대두단백이 들어간 제품은 ${withIsp.length}종이지만 대부분 유청과 섞은 혼합형입니다. 식물성 유형은 ${sourceGroups[2].list.length}종(${sourceGroups[2].list.map(label).join(", ")})입니다.` },
     { question: "원료 유형별 당류 차이가 있나요?", answer: `표시 제품 평균은 ${sourceGroups.map((g) => `${g.name} ${sugarMean(g.list)}`).join(", ")}입니다. 유형보다 제품별 차이가 커서 성분표의 당류 줄을 직접 확인하는 편이 정확합니다.` },
   ],
-  relatedGuides: [wpiLink, ispLink, sourceTypesLink, powderListLink, top10Link, scoopLink, purposeLink, brandCompareLink],
+  relatedGuides: [wpiLink, ispLink, milkProteinLink, sourceTypesLink, powderListLink, top10Link, scoopLink, purposeLink, brandCompareLink],
   purchaseLinks: sourceGroups
     .map((g) => [...g.list].sort(byPctThenSugar)[0])
     .filter((p): p is ProductDetailProps => Boolean(p))

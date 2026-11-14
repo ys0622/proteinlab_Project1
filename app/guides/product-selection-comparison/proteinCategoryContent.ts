@@ -72,6 +72,21 @@ const shakeCalorieTop20 = [...shakeProducts]
   .sort((a, b) => (a.calories ?? 999) - (b.calories ?? 999) || b.proteinPerServing - a.proteinPerServing)
   .slice(0, 20);
 
+// '단백질쉐이크 칼로리' 검색에 첫 문장으로 답하도록 등록 제품 전체의 1회분 칼로리 범위를 데이터에서 계산한다(2026-11-14, 네이버 AI 브리핑 미인용).
+const shakeKcalSorted = shakeProducts
+  .map((product) => product.calories)
+  .filter((kcal): kcal is number => typeof kcal === "number")
+  .sort((a, b) => a - b);
+const shakeKcalStats = {
+  count: shakeKcalSorted.length,
+  min: shakeKcalSorted[0],
+  max: shakeKcalSorted[shakeKcalSorted.length - 1],
+  median: shakeKcalSorted[Math.floor(shakeKcalSorted.length / 2)],
+  under150: shakeProducts.filter((p) => typeof p.calories === "number" && p.calories <= 150).length,
+  under150Protein20: shakeProducts.filter((p) => typeof p.calories === "number" && p.calories <= 150 && p.proteinPerServing >= 20).length,
+};
+const shakeCalorieLowBrands = [...new Set(shakeCalorieTop20.slice(0, 8).map((p) => p.brand))].slice(0, 4).join(", ");
+
 const labnoshProducts = shakeProducts
   .filter((product) => product.brand === "랩노쉬")
   .sort((a, b) => (a.calories ?? 999) - (b.calories ?? 999) || a.name.localeCompare(b.name, "ko"));
@@ -486,16 +501,16 @@ dietProteinShakeConfig.jsonLd = [articleJsonLd(dietProteinShakeConfig), faqJsonL
 export const proteinShakeCalorieRankingConfig: CategoryGuideConfig = {
   slug: "protein-shake-calorie-ranking",
   title: "단백질쉐이크 칼로리 순위 TOP 20 (2026) | 저칼로리·저당 비교",
-  description: "ProteinLab DB 파우치형 단백질쉐이크를 칼로리 낮은 순으로 정렬하고 단백질·당류를 함께 비교해 다이어트용 TOP 20 후보를 정리했습니다.",
-  keywords: ["단백질 쉐이크 칼로리", "저칼로리 단백질 쉐이크 순위", "칼로리 낮은 쉐이크", "다이어트 쉐이크 순위"],
+  description: `단백질쉐이크 칼로리는 1회분 ${shakeKcalStats.min}~${shakeKcalStats.max}kcal(중간값 ${shakeKcalStats.median}kcal)입니다. 등록 제품 ${shakeKcalStats.count}개를 성분표 기준 칼로리 낮은 순으로 정렬하고 단백질·당류를 함께 비교해 다이어트용 TOP 20을 정리했습니다.`,
+  keywords: ["단백질쉐이크 칼로리", "단백질 쉐이크 칼로리", "저칼로리 단백질 쉐이크 순위", "칼로리 낮은 쉐이크", "다이어트 쉐이크 순위"],
   badge: "데이터 랭킹",
   readingTime: "6분 읽기",
-  updatedAt: "2026-10-01",
+  updatedAt: "2026-11-14",
   promoteAffiliateCtas: true,
-  methodologyNote: "ProteinLab DB 파우치형 쉐이크를 칼로리 오름차순 정렬",
-  intro: "다이어트용 단백질 쉐이크를 찾을 때 가장 먼저 눈에 들어오는 숫자는 칼로리입니다. 하지만 실제로는 같은 120kcal 제품 안에서도 단백질과 당류 차이가 꽤 큽니다. 그래서 이 페이지는 저칼로리 후보를 빠르게 좁힌 뒤, 그 안에서 실제로 오래 마시기 쉬운 제품을 다시 가려내는 출발점 역할을 합니다.",
+  methodologyNote: "ProteinLab DB 쉐이크 1회분 성분표 칼로리 오름차순 정렬(같으면 단백질 많은 순)",
+  intro: `단백질쉐이크 칼로리는 1회분 ${shakeKcalStats.min}~${shakeKcalStats.max}kcal이고 중간값은 ${shakeKcalStats.median}kcal입니다(ProteinLab 등록 ${shakeKcalStats.count}개, 성분표 기준). 칼로리가 가장 낮은 제품은 ${topPickSentence(shakeCalorieTop20)}이며, 150kcal 이하 ${shakeKcalStats.under150}개 중 단백질 20g 이상은 ${shakeKcalStats.under150Protein20}개입니다. 같은 칼로리라도 단백질과 당류 차이가 커서, 아래 표는 저칼로리 후보를 좁힌 뒤 단백질·당류로 다시 고르는 출발점입니다.`,
   summary: [
-    "최저 칼로리권은 프로티원, 더단백 파우더, 베노프, 잇더핏 계열이 차지합니다.",
+    `최저 칼로리권은 ${shakeCalorieLowBrands} 제품이 차지합니다.`,
     "칼로리만 낮고 단백질이 낮은 제품보다 20g 이상 단백질을 유지한 저칼로리 제품이 실전 다이어트엔 더 유리합니다.",
     "결국 이 표는 출발점이고 최종 선택은 단백질과 당류, 포만감까지 같이 봐야 완성됩니다.",
   ],
@@ -559,6 +574,7 @@ export const proteinShakeCalorieRankingConfig: CategoryGuideConfig = {
     { label: "더단백 파우더 곡물 보기", slug: "thedanbaek-proteinshake-powder-grain-32" },
   ],
   faq: [
+    { question: "단백질쉐이크 칼로리는 보통 얼마인가", answer: `ProteinLab에 등록된 단백질쉐이크 ${shakeKcalStats.count}개는 1회분 ${shakeKcalStats.min}~${shakeKcalStats.max}kcal이고 중간값은 ${shakeKcalStats.median}kcal입니다. 150kcal 이하 제품은 ${shakeKcalStats.under150}개입니다. 우유나 두유에 타 먹으면 그만큼 열량이 더해지므로 포장에 적힌 조제 기준(물·우유)을 확인하세요.` },
     { question: "가장 낮은 칼로리 제품이 다이어트에 최고인가", answer: "반드시 그렇지는 않습니다. 단백질과 포만감이 받쳐주지 않으면 오히려 금방 허기가 와서 더 먹게 될 수 있습니다." },
     { question: "칼로리 150kcal 아래만 보면 충분한가", answer: "출발점으로는 좋지만 단백질 20g 이상인지도 함께 봐야 합니다. 그래야 실제 다이어트 식대용으로 쓰기 쉽습니다." },
     { question: "식사 대용이면 이 순위표보다 무엇을 봐야 하나", answer: "식이섬유와 맛 지속성까지 같이 보는 가이드를 함께 보면 더 빠르게 좁힐 수 있습니다." },

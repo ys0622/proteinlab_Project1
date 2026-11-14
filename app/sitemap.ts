@@ -277,6 +277,7 @@ const STATIC_GUIDE_ROUTES: string[] = [
   "/guides/intake-strategy-health/protein-powder-per-day",
   "/guides/product-selection-comparison/wpi-protein-guide",
   "/guides/product-selection-comparison/isolated-soy-protein-guide",
+  "/guides/product-selection-comparison/milk-protein-mpc-mpi-guide",
   "/guides/intake-strategy-health/glp1-protein",
   "/guides/intake-strategy-health/pregnancy-protein",
   "/guides/intake-strategy-health/teen-protein",
