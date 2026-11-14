@@ -9,6 +9,7 @@ import CategoryFaqSection, { getCategoryFaqs } from "../components/CategoryFaqSe
 import { getProductsByCategoryAsync } from "../lib/productData";
 import { getCategoryProductsWithCountsAsync } from "../lib/productCounts";
 import { formatProductLabel } from "../lib/productLabel";
+import { getCategoryAnswer } from "../lib/categoryAnswer";
 import GoldboxStrip from "../components/GoldboxStrip";
 import { getActiveGoldboxCards } from "../lib/activeGoldbox";
 
@@ -74,7 +75,7 @@ export default async function PowderPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListJsonLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <Header />
-      <HeroSection totalCount={totalCount} categoryCount={products.length} />
+      <HeroSection totalCount={totalCount} categoryCount={products.length} answer={`단백질 파우더 ${products.length}종 성분표 기준 ${getCategoryAnswer(products.filter((p) => p.powderType !== "gainer"), "게이너를 뺀 1회 제공량", 25)}`} />
       <main className="mx-auto max-w-[1200px] px-4 pb-2 pt-0 md:px-6 md:pb-3">
         <AffiliateDisclosure />
         <GoldboxStrip category="powder" placement="category" className="mb-3 mt-1" initialCards={goldboxCards} />

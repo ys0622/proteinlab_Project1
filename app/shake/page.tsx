@@ -11,6 +11,7 @@ import CategoryFaqSection, { getCategoryFaqs } from "../components/CategoryFaqSe
 import { getProductsByCategoryAsync } from "../lib/productData";
 import { getCategoryProductsWithCountsAsync } from "../lib/productCounts";
 import { formatProductLabel } from "../lib/productLabel";
+import { getCategoryAnswer } from "../lib/categoryAnswer";
 import { applyCurationToCategoryProducts, getCurationDefinition, getQuickCurations } from "../lib/curationSystem";
 import GoldboxStrip from "../components/GoldboxStrip";
 import { getActiveGoldboxCards } from "../lib/activeGoldbox";
@@ -103,7 +104,7 @@ export default async function ShakePage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListJsonLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <Header />
-      <HeroSection totalCount={totalCount} categoryCount={products.length} />
+      <HeroSection totalCount={totalCount} categoryCount={products.length} answer={`단백질 쉐이크 ${products.length}종 성분표 기준 ${getCategoryAnswer(products, "1회분", 20)}`} />
 
       <main className="mx-auto max-w-[1200px] px-4 pb-2 pt-0 md:px-6 md:pb-3">
         <AffiliateDisclosure />

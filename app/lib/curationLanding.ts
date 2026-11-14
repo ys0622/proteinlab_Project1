@@ -634,6 +634,37 @@ function normalizeLandingCuration(curation: CurationDefinition): CurationDefinit
   };
 }
 
+const fmtNum = (v: number) => String(Math.round(v * 10) / 10);
+const fmtRange = (values: number[], unit: string) => {
+  const min = Math.min(...values);
+  const max = Math.max(...values);
+  return min === max ? `${fmtNum(min)}${unit}` : `${fmtNum(min)}~${fmtNum(max)}${unit}`;
+};
+
+function buildCurationAnswer(label: string, groups: Array<[string, ProductDetailProps[]]>) {
+  const present = groups.filter(([, list]) => list.length > 0);
+  const all = present.flatMap(([, list]) => list);
+  if (all.length === 0) return null;
+  const counts = present.map(([name, list]) => `${name} ${list.length}종`).join("·");
+  const proteins = all.map((p) => p.proteinPerServing).filter((v) => typeof v === "number" && v > 0);
+  const sugars = all.map((p) => p.sugar).filter((v): v is number => typeof v === "number");
+  const kcals = all.map((p) => p.calories).filter((v): v is number => typeof v === "number" && v > 0);
+  const ranges = [
+    proteins.length ? `단백질 ${fmtRange(proteins, "g")}` : "",
+    sugars.length ? `당류 ${fmtRange(sugars, "g")}` : "",
+    kcals.length ? fmtRange(kcals, "kcal") : "",
+  ].filter(Boolean).join("·");
+  const top = [...all]
+    .filter((p) => !p.needsServingCheck)
+    .sort((a, b) => b.proteinPerServing - a.proteinPerServing || (a.sugar ?? 99) - (b.sugar ?? 99))[0];
+  const topLabel = top
+    ? `${(top.name.startsWith(top.brand) ? top.name : `${top.brand} ${top.name}`).replace(/\s*\(([^)]*)\)$/, " $1")}(단백질 ${fmtNum(top.proteinPerServing)}g${typeof top.sugar === "number" ? `·당류 ${top.sugarLabel ?? `${fmtNum(top.sugar)}g`}` : ""}${typeof top.calories === "number" ? `·${fmtNum(top.calories)}kcal` : ""})`
+    : "";
+  const lead = `${label} 조건에 맞는 ProteinLab 등록 제품은 ${counts}이며, 성분표 1회 기준 ${ranges}입니다.`;
+  const full = topLabel ? `${lead} 단백질이 가장 많은 제품은 ${topLabel}입니다.` : lead;
+  return { full, short: `${lead} 성분표 수치로 비교하고 쿠팡 가격까지 확인할 수 있습니다.` };
+}
+
 export function getCurationLandingData(slug: string, views?: Record<string, Record<string, number>>) {
   const definition = getCurationDefinition(slug);
   if (!definition) return null;
@@ -693,6 +724,29 @@ export function getCurationLandingData(slug: string, views?: Record<string, Reco
   const recommendedSoymilks = curation.categories.soymilk
     ? (popularPick(soymilkProducts, "soymilk") ?? getRecommendedProductsForCuration(soymilkProducts, "soymilk", curation.slug, 6))
     : [];
+
+  // 첫 문장이 "조건에 맞는 제품이 몇 개이고 수치가 어떤지"에 바로 답하도록 데이터에서 계산한다(2026-11-14, ChatGPT 유입 랜딩 보강).
+  // 원래 안내 문장은 일반 문구('데이터 기준으로 확인하세요')가 아니면 뒤에 남긴다. 인기 큐레이션은 조회수 기준이라 건드리지 않는다.
+  // 요거트는 대용량 통 제품의 값이 1통 전체 기준(예: 800g 91g)이라 1회 범위로 쓰면 오해를 사서 요거트가 든 큐레이션은 뺀다.
+  if (slug !== "popular" && yogurtProductsForCuration.length === 0) {
+    const answer = buildCurationAnswer(curation.label, [
+      ["음료", drinkProducts],
+      ["바", barProducts],
+      ["쉐이크", shakeProductsForCuration],
+      ["두유", soymilkProductsForCuration],
+      ["파우더", powderProductsForCuration],
+    ]);
+    if (answer) {
+      const intro = curation.introText ?? "";
+      const keepIntro = intro && !intro.includes("데이터 기준으로 확인하세요") ? ` ${intro}` : "";
+      const genericSeo = !curation.seoDescription || curation.seoDescription.includes("바로 비교하고 추천 제품까지 확인해보세요");
+      curation = {
+        ...curation,
+        introText: `${answer.full}${keepIntro}`,
+        seoDescription: genericSeo ? answer.short : curation.seoDescription,
+      };
+    }
+  }
 
   return {
     curation,
