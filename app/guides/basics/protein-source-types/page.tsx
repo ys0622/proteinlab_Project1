@@ -444,7 +444,15 @@ export default function ProteinSourceTypesGuidePage() {
           <section className="rounded-2xl border border-[#e8e6e3] bg-white px-5 py-5">
             <h2 className="text-xl font-bold text-[var(--foreground)]">📖 이어서 보면 좋은 가이드</h2>
             <div className="mt-5 grid gap-3 md:grid-cols-3">
-              <Link href="/guides/basics/digestion" className="rounded-2xl border border-[#dce8df] bg-[#f6fbf7] p-4 transition-colors hover:bg-white">
+              <Link href="/guides/product-selection-comparison/wpi-protein-guide" className="rounded-2xl border border-[#dce8df] bg-[#f6fbf7] p-4 transition-colors hover:bg-white">
+                <h3 className="text-sm font-semibold text-[#24543d]">분리유청단백질(WPI)이란</h3>
+                <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">WPI만 쓴 프로틴 함량 순위와 &lsquo;WPI 함유&rsquo; 제품의 원료 순서를 봅니다.</p>
+              </Link>
+              <Link href="/guides/product-selection-comparison/isolated-soy-protein-guide" className="rounded-2xl border border-[#dce8df] bg-[#f6fbf7] p-4 transition-colors hover:bg-white">
+                <h3 className="text-sm font-semibold text-[#24543d]">분리대두단백(ISP)이란</h3>
+                <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">분리대두단백 뜻·원산지 확인법과 대두단백 프로틴 비교입니다.</p>
+              </Link>
+              <Link href="/guides/basics/digestion"className="rounded-2xl border border-[#dce8df] bg-[#f6fbf7] p-4 transition-colors hover:bg-white">
                 <h3 className="text-sm font-semibold text-[#24543d]">단백질 소화와 흡수 메커니즘</h3>
                 <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">급원 이야기를 몸속 흡수 과정과 함께 다시 봅니다.</p>
               </Link>

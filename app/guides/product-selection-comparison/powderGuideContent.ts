@@ -88,6 +88,17 @@ const perDayLink: RelatedGuideLink = {
   href: "/guides/intake-strategy-health/protein-powder-per-day",
   description: "1스쿱·2스쿱이 하루 권장량의 몇 %인지, 운동할 때 체중별 기준과 함께 계산했습니다.",
 };
+// 2026-11-14 원료 질문 허브 2개(분리유청단백질·분리대두단백).
+const wpiLink: RelatedGuideLink = {
+  title: "분리유청단백질(WPI)이란",
+  href: "/guides/product-selection-comparison/wpi-protein-guide",
+  description: "WPI 뜻·WPC 차이와 WPI만 쓴 프로틴 함량 순위, 혼합 제품의 원료 순서입니다.",
+};
+const ispLink: RelatedGuideLink = {
+  title: "분리대두단백(ISP)이란",
+  href: "/guides/product-selection-comparison/isolated-soy-protein-guide",
+  description: "분리대두단백 뜻·원산지 확인법과 분리대두단백이 첫 원료인 프로틴 비교입니다.",
+};
 const sourceTypesLink: RelatedGuideLink = {
   title: "단백질 원료 종류 정리",
   href: "/guides/basics/protein-source-types",
@@ -180,7 +191,7 @@ export const proteinPowderTop10Config: ComparePageConfig = {
     { question: "당류 0g인 단백질 파우더는 몇 종인가요?", answer: `등록 ${powder.length}종 중 성분표 당류가 0g인 제품은 ${powder.filter((p) => p.sugar === 0).length}종입니다. 당류 줄이 아예 없는 제품 ${powder.filter((p) => !hasSugar(p)).length}종은 0g으로 세지 않았습니다.` },
     { question: "해외 직구 제품도 순위에 들어가나요?", answer: `네. 국내 유통 제품과 같은 기준으로 계산했고, TOP 10 중 ${top10OverseasCount}종이 해외 직구 제품입니다. 표와 카드에 '해외 직구'로 표시했습니다.` },
   ],
-  relatedGuides: [powderListLink, scoopLink, caloriesLink, sourceLink, purposeLink, brandCompareLink, sourceTypesLink],
+  relatedGuides: [powderListLink, scoopLink, caloriesLink, wpiLink, sourceLink, purposeLink, brandCompareLink, sourceTypesLink],
   purchaseLinks: top10.slice(0, 3).map((p) => ({ label: `${label(p)} 보기`, slug: p.slug })),
 };
 
@@ -267,7 +278,7 @@ export const wpiWpcIspPowderConfig: ComparePageConfig = {
     { question: "분리대두단백(ISP)만 쓴 파우더도 있나요?", answer: `등록 제품 중 분리대두단백이 들어간 제품은 ${withIsp.length}종이지만 대부분 유청과 섞은 혼합형입니다. 식물성 유형은 ${sourceGroups[2].list.length}종(${sourceGroups[2].list.map(label).join(", ")})입니다.` },
     { question: "원료 유형별 당류 차이가 있나요?", answer: `표시 제품 평균은 ${sourceGroups.map((g) => `${g.name} ${sugarMean(g.list)}`).join(", ")}입니다. 유형보다 제품별 차이가 커서 성분표의 당류 줄을 직접 확인하는 편이 정확합니다.` },
   ],
-  relatedGuides: [sourceTypesLink, powderListLink, top10Link, scoopLink, purposeLink, brandCompareLink],
+  relatedGuides: [wpiLink, ispLink, sourceTypesLink, powderListLink, top10Link, scoopLink, purposeLink, brandCompareLink],
   purchaseLinks: sourceGroups
     .map((g) => [...g.list].sort(byPctThenSugar)[0])
     .filter((p): p is ProductDetailProps => Boolean(p))
