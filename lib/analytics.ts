@@ -29,6 +29,7 @@ export type LinkPosition =
   | "bottom_cta"
   | "sticky_mobile"
   | "related_product"
+  | "quick_alternative"
   | "comparison_result"
   | "recommend_result"
   | "ranking"

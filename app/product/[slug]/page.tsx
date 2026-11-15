@@ -16,6 +16,7 @@ import NutritionDetailSection from "../../components/NutritionDetailSection";
 import { withTopic } from "../../lib/koreanParticle";
 import ProductBadge from "../../components/ProductBadge";
 import ProductDetailBuyWrapper from "../../components/ProductDetailBuyWrapper";
+import RankingReturnLink from "../../components/RankingReturnLink";
 import GoldboxStrip from "../../components/GoldboxStrip";
 import PurchaseLinkButton from "../../components/PurchaseLinkButton";
 import RelatedLinkCards from "../../components/RelatedLinkCards";
@@ -680,6 +681,40 @@ export default async function ProductDetailPage({ params }: PageProps) {
   const detailCategoryHref = getCategoryDetailHref(category);
   const categoryProducts = getStaticProductsByCategory(category);
   const similarProducts = getSimilarProducts(product, categoryProducts, 6);
+  // 2026-11-15 시안 ①: 구매 버튼 바로 아래 '다른 맛·비슷한 제품' 최대 3개(쿠팡 링크 있는 것만).
+  // 같은 브랜드·같은 용량의 다른 맛 1개를 먼저, 나머지는 비슷한 제품(다른 브랜드 우선) 순.
+  const withCoupangHref = (item: ProductDetailProps) => ({
+    item,
+    href: getCoupangRedirectHref(
+      normalizeCoupangUrl(item.coupangUrl) ?? getKnownSourceCoupangUrlBySlug(item.slug),
+      item.productType ?? null,
+      item.slug,
+    ),
+  });
+  const flavorSibling = resolvedCoupangHref
+    ? categoryProducts
+        .filter(
+          (item) =>
+            item.slug !== product.slug &&
+            item.brand === product.brand &&
+            item.capacity === product.capacity &&
+            Math.abs((item.proteinPerServing ?? 0) - (product.proteinPerServing ?? 0)) <= 2,
+        )
+        .map(withCoupangHref)
+        .find((entry) => Boolean(entry.href))
+    : undefined;
+  const quickAlternatives = resolvedCoupangHref
+    ? [
+        ...(flavorSibling ? [{ ...flavorSibling, reason: "같은 제품 다른 맛" }] : []),
+        ...[
+          ...similarProducts.filter((item) => item.brand !== product.brand),
+          ...similarProducts.filter((item) => item.brand === product.brand && item.slug !== flavorSibling?.item.slug),
+        ]
+          .map(withCoupangHref)
+          .filter((entry) => Boolean(entry.href))
+          .map((entry) => ({ ...entry, reason: entry.item.brand === product.brand ? "같은 브랜드" : "비슷한 제품" })),
+      ].slice(0, 3)
+    : [];
   // 파우더는 게이너(1회 400kcal 이상)를 빼고 비교한다. 게이너 자체는 비교할 제품이 적어 위치를 내지 않는다.
   const position = isPowder
     ? product.powderType === "gainer"
@@ -809,6 +844,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
               <AdminQuickEdit slug={slug} />
             </div>
           </div>
+          <RankingReturnLink />
 
           {/*
             레이아웃:
@@ -1044,6 +1080,54 @@ export default async function ProductDetailPage({ params }: PageProps) {
                   alternatives={discontinuedAlternatives}
                 />
               </div>
+
+              {quickAlternatives.length > 0 ? (
+                <div className="rounded-2xl border bg-white p-3" style={{ borderColor: "#E6DDCC" }}>
+                  <p className="mb-2 text-[12px] font-bold" style={{ color: "#1F5A3D" }}>다른 맛·비슷한 제품도 같이 보기</p>
+                  <ul className="grid grid-cols-3 gap-2">
+                    {quickAlternatives.map(({ item, href, reason }) => {
+                      const label = formatProductLabel(item.brand, item.name);
+                      const image = getProductImageUrl(item.slug);
+                      return (
+                        <li key={item.slug} className="flex min-w-0 flex-col rounded-xl border p-2" style={{ borderColor: "#EFE9DD" }}>
+                          <TrackedLink
+                            href={`/product/${item.slug}`}
+                            trackingLabel={label}
+                            trackingSection="product_detail_quick_alternatives"
+                            trackingPageType="product_detail"
+                            className="flex min-w-0 flex-1 flex-col"
+                          >
+                            <span className="flex h-16 w-full items-center justify-center rounded-lg bg-white">
+                              {image ? <Image src={image} alt={label} width={56} height={64} className="h-full w-auto object-contain p-0.5" /> : null}
+                            </span>
+                            <span className="mt-1 text-[10px] font-semibold" style={{ color: "#1F5A3D" }}>{reason}</span>
+                            <span className="line-clamp-2 break-keep text-[11px] font-semibold leading-snug" style={{ color: "#1E2A22" }}>{label}</span>
+                            <span className="mt-0.5 text-[11px] leading-snug" style={{ color: "#5F6B61" }}>
+                              <b style={{ color: "#1E2A22" }}>단백질 {item.proteinPerServing}g</b>
+                              {item.sugar != null ? <><br />당류 {formatSugar(item)}</> : null}
+                            </span>
+                          </TrackedLink>
+                          <div className="mt-1.5">
+                            <PurchaseLinkButton
+                              href={href as string}
+                              label="쿠팡 가격"
+                              tone="coupang"
+                              size="sm"
+                              tracking={{
+                                productId: item.slug,
+                                productName: item.name,
+                                productBrand: item.brand,
+                                productCategory: item.productType,
+                                linkPosition: "quick_alternative",
+                              }}
+                            />
+                          </div>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </div>
+              ) : null}
 
               {/* 오늘의 골드박스: 같은 카테고리 특가(이 제품이 특가면 강조). 특가가 없으면 그리지 않는다. */}
               <GoldboxStrip category={category} currentSlug={product.slug} placement="product" />

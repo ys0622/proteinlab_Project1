@@ -15,6 +15,7 @@ import { getProductBySlug } from "@/app/data/products";
 import { getCoupangRedirectHref, hasNoPurchasableCoupangLink } from "@/app/lib/purchaseLinks";
 import { formatProductLabel } from "@/app/lib/productLabel";
 import { getGuideThumbnailUrl } from "@/app/lib/guideThumbnails";
+import { RankingOriginRecorder } from "@/app/components/RankingReturnLink";
 
 export interface CategoryGuideLink {
   title: string;
@@ -337,6 +338,7 @@ export function CategoryGuidePage({ config }: { config: CategoryGuideConfig }) {
       </section>
 
       <main className="mx-auto max-w-[1200px] px-4 py-8 md:px-6">
+        <RankingOriginRecorder title={config.title} />
         <div className="space-y-6">
           {config.conversion ? <ConversionLinks conversion={config.conversion} /> : null}
           {heroProducts.length === 0 && config.promoteAffiliateCtas && config.purchaseLinks.length > 0 ? (
@@ -489,6 +491,20 @@ export function CategoryGuidePage({ config }: { config: CategoryGuideConfig }) {
             </section>
           ) : null}
 
+          {/* 2026-11-15 시안 ③: 쿠팡 블록을 관련 가이드·구매 채널(수익 없음)보다 먼저 둔다. */}
+          {config.showPurchaseLinks !== false ? <section className="rounded-[28px] border border-[#d9e4f0] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(32,46,68,0.05)]">
+            <div className="flex items-center justify-between gap-4">
+              <h2 className="text-xl font-bold text-[var(--foreground)]">🛒 쿠팡에서 가격 보기</h2>
+              <AffiliateDisclosure />
+            </div>
+            <p className="mt-3 text-sm leading-6 text-[var(--foreground-muted)]">
+              제품이 어느 정도 좁혀졌다면 쿠팡에서 옵션과 최신 가격을 바로 확인해보세요.
+            </p>
+            <div className="mt-4">
+              <PurchaseCards links={config.purchaseLinks} linkPosition="bottom_cta" />
+            </div>
+          </section> : null}
+
           <section className="rounded-[28px] border border-[#d9e4f0] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(32,46,68,0.05)]">
             <h2 className="text-xl font-bold text-[var(--foreground)]">📖 관련 가이드</h2>
             <div className="-mx-1 mt-4 flex gap-2 overflow-x-auto px-1 pb-1 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:mx-0 md:mt-5 md:grid md:grid-cols-2 md:gap-3 md:overflow-visible md:px-0 md:pb-0 xl:grid-cols-4">
@@ -509,19 +525,6 @@ export function CategoryGuidePage({ config }: { config: CategoryGuideConfig }) {
               </div>
             </section>
           ) : null}
-
-          {config.showPurchaseLinks !== false ? <section className="rounded-[28px] border border-[#d9e4f0] bg-white px-5 py-5 shadow-[0_18px_50px_rgba(32,46,68,0.05)]">
-            <div className="flex items-center justify-between gap-4">
-              <h2 className="text-xl font-bold text-[var(--foreground)]">🛒 쿠팡에서 가격 보기</h2>
-              <AffiliateDisclosure />
-            </div>
-            <p className="mt-3 text-sm leading-6 text-[var(--foreground-muted)]">
-              제품이 어느 정도 좁혀졌다면 쿠팡에서 옵션과 최신 가격을 바로 확인해보세요.
-            </p>
-            <div className="mt-4">
-              <PurchaseCards links={config.purchaseLinks} linkPosition="bottom_cta" />
-            </div>
-          </section> : null}
         </div>
         <div className="mt-6">
           <CommercialAdSection pageType="guide" />
