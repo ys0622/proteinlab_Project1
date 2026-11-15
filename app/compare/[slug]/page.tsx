@@ -12,6 +12,7 @@ import { resolveLandingCopy } from "../../lib/compareLandingCopy";
 import { buildCompareFaqs } from "../../lib/compareLandingFaq";
 import { compareBuyRowTestOffSlugs, compareCanonicalOverrides, compareNoindexSlugs } from "../../data/compareCanonicalOverrides";
 import { formatProductLabel } from "../../lib/productLabel";
+import { getGuideAnswer, introHasNumber } from "../../lib/guideAnswer";
 import { getCoupangRedirectHref } from "../../lib/purchaseLinks";
 import { getProductImageUrl } from "../../lib/productImage";
 import Image from "next/image";
@@ -330,6 +331,9 @@ export default async function CompareLandingPage({ params }: PageProps) {
   const differenceCards = buildDifferenceCards(products);
   const verdict = landing.verdict ?? buildVerdict(products);
   const specRows = SPEC_ROWS.filter((row) => products.some((p) => row.value(p) !== undefined));
+  // 첫 화면 한 줄 답(2026-11-15, ChatGPT 랜딩 160 중 20이 비교 랜딩, 102개 중 19개가 첫 문장에 수치 없음).
+  const introText = conversionPlan?.conclusion ?? landing.description;
+  const compareAnswer = introHasNumber(introText) ? "" : getGuideAnswer(products.map((p) => p.slug));
   // 메타 canonical과 같은 값을 쓴다(가이드로 대표 주소를 넘긴 비교 페이지가 JSON-LD에서만 자기 주소를 말하던 불일치, 2026-10-23).
   const canonical = compareCanonicalOverrides[landing.slug] ?? `https://proteinlab.kr/compare/${landing.slug}`;
   const jsonLd = [
@@ -432,6 +436,9 @@ export default async function CompareLandingPage({ params }: PageProps) {
               </div>
               <AffiliateDisclosure className="mb-0 mt-2" />
             </>
+          ) : null}
+          {compareAnswer ? (
+            <p className="mt-2 max-w-[760px] break-keep text-sm font-semibold leading-6 text-[#2F3B33] md:text-[15px]">{compareAnswer}</p>
           ) : null}
           <p className="mt-2 max-w-[760px] text-sm leading-6 text-[var(--foreground-muted)] md:text-[15px]">
             {conversionPlan?.conclusion ?? `${landing.description} 비교표로 바로 들어가고 제품 상세까지 이어서 확인할 수 있게 정리했습니다.`}
