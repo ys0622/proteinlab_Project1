@@ -5,6 +5,7 @@ import Footer from "@/app/components/Footer";
 import GuideBuySection from "@/app/components/GuideBuySection";
 import CategoryDataSection from "@/app/components/CategoryDataSection";
 
+import GuideDataAnswer from "@/app/components/GuideDataAnswer";
 export const metadata = {
   alternates: { canonical: "https://proteinlab.kr/guides/product-selection-comparison/shakebaby-protein-shake" },
   title: "쉐이크베이비 단백질 쉐이크 추천 | 초코·딸기·말차·곡물·스윗콘 비교 2026",
@@ -86,6 +87,7 @@ export default function ShakebabyProteinShakePage() {
           <h1 className="mt-3 text-2xl font-bold leading-tight text-[#16412D] md:text-3xl">
             쉐이크베이비 단백질 쉐이크 추천 | 초코·딸기·말차·곡물·스윗콘 비교
           </h1>
+          <GuideDataAnswer slugs={["shakebaby-proteinshake-choco-45", "shakebaby-proteinshake-strawberry-45", "shakebaby-proteinshake-matcha-45"]} />
           <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
             쉐이크베이비는 5가지 맛을 한 번에 갖춘 신규 브랜드로, 단백질과 칼로리 편차가 작아 맛으로 고르기 좋습니다.
             <br />

@@ -7,6 +7,7 @@ import { buildGuideJsonLd } from "@/app/lib/guideJsonLd";
 import { soymilkProducts } from "@/app/data/products";
 import { getCapacityMl } from "@/app/lib/productFilters";
 
+import GuideDataAnswer from "@/app/components/GuideDataAnswer";
 const TITLE = "단백질 두유 추천 | 성분·당류 비교";
 const DESCRIPTION =
   "단백질 두유 추천을 찾을 때 한 팩 단백질, 당류, 열량, 용량을 비교하는 순서를 등록 제품 성분표 수치로 정리합니다.";
@@ -146,6 +147,7 @@ export default function HighProteinSoymilkGuidePage() {
           <h1 className="mt-3 text-2xl font-bold leading-tight text-[#16412D] md:text-3xl">
             고단백 두유는 1팩 단백질과 당류부터 봅니다
           </h1>
+          <GuideDataAnswer slugs={["maeil-soymilk-protein-plain-190", "vegemil-protein-plain-190", "nam-gt-protein-190"]} />
           <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
             이름이 비슷한 두유도 단백질과 당류, 열량 차이가 큽니다.
             <br />

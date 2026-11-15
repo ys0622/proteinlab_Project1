@@ -16,6 +16,7 @@ import { getCoupangRedirectHref, hasNoPurchasableCoupangLink } from "@/app/lib/p
 import { formatProductLabel } from "@/app/lib/productLabel";
 import { getGuideThumbnailUrl } from "@/app/lib/guideThumbnails";
 import { RankingOriginRecorder } from "@/app/components/RankingReturnLink";
+import { getGuideAnswer, introHasNumber } from "@/app/lib/guideAnswer";
 
 export interface CategoryGuideLink {
   title: string;
@@ -299,12 +300,29 @@ function buildCategoryJsonLd(config: CategoryGuideConfig): Record<string, unknow
   return mergeJsonLd(schemas, config.jsonLd);
 }
 
+const GENERIC_PRODUCT_GUIDES = new Set([
+  "low-calorie-protein-products-guide",
+  "low-sugar-protein-products-guide",
+  "morning-protein-products-guide",
+  "protein-category-guide",
+]);
+
 export function CategoryGuidePage({ config }: { config: CategoryGuideConfig }) {
   const relatedGuides = [...config.relatedGuides, trackBHubLink].filter(
     (item, index, array) => array.findIndex((candidate) => candidate.href === item.href) === index,
   );
   const jsonLd = buildCategoryJsonLd(config);
   const heroProducts = resolveGuideHeroProducts(config.purchaseLinks);
+  // 첫 화면 한 줄 답(2026-11-15): 이 페이지에 나온 제품의 성분표 수치로 계산(app/lib/guideAnswer.ts).
+  // 저칼로리·저당·아침·카테고리 입문 가이드 4개는 바·음료·쉐이크 공용 예시 4개(312kcal 바 포함)를 써서 범위 문장이 주제와 어긋나므로 뺀다.
+  const guideAnswer = introHasNumber(config.intro) || GENERIC_PRODUCT_GUIDES.has(config.slug)
+    ? ""
+    : getGuideAnswer([
+        ...(config.heroRankList?.slugs ?? []),
+        ...config.comparisonRows.map((row) => row.slug).filter((slug): slug is string => Boolean(slug)),
+        ...(config.conversion?.products.map((item) => item.slug) ?? []),
+        ...config.purchaseLinks.map((link) => link.slug),
+      ]);
 
   return (
     <div className="min-h-screen bg-white">
@@ -333,6 +351,7 @@ export function CategoryGuidePage({ config }: { config: CategoryGuideConfig }) {
           ) : (
             <GuideProductHeroCards products={heroProducts} />
           )}
+          {guideAnswer ? <p className="mt-2 max-w-3xl break-keep text-sm font-semibold leading-6 text-[#2F3B33]">{guideAnswer}</p> : null}
           <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">{config.intro}</p>
         </div>
       </section>

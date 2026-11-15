@@ -6,6 +6,7 @@ import Footer from "@/app/components/Footer";
 import GuideBuySection from "@/app/components/GuideBuySection";
 import CategoryDataSection from "@/app/components/CategoryDataSection";
 
+import GuideDataAnswer from "@/app/components/GuideDataAnswer";
 export const metadata = {
   alternates: { canonical: "https://proteinlab.kr/guides/product-selection-comparison/danbaekhani-protein-shake" },
   title: "단백하니 단백질 쉐이크 추천 | 시그니처·초코·말차 비교 2026",
@@ -86,6 +87,7 @@ export default function DanbaekhaniProteinShakePage() {
           <h1 className="mt-3 text-2xl font-bold leading-tight text-[#16412D] md:text-3xl">
             단백하니 단백질 쉐이크 추천 | 시그니처·초코·말차 비교
           </h1>
+          <GuideDataAnswer slugs={["danbaekhani-proteinshake-signature-40", "danbaekhani-proteinshake-choco-40", "danbaekhani-proteinshake-matcha-40"]} />
           <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
             단백하니는 저당 기준을 유지하면서도 칼로리와 맛 선택 폭 균형이 좋아 처음 고르는 사람에게 자주 비교됩니다.
             <br />

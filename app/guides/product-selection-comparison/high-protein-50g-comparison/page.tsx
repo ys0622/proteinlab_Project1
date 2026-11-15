@@ -9,6 +9,7 @@ import drinkProductsData from "@/app/data/drinkProductsData.json";
 import type { ProductDetailProps } from "@/app/data/products";
 import { formatProductLabel } from "@/app/lib/productLabel";
 
+import GuideDataAnswer from "@/app/components/GuideDataAnswer";
 const pageTitle = "단백질 음료 50g 이상 비교 | 52g 초고함량 제품까지";
 const pageDescription =
   "ProteinLab DB 기준 단백질 50g 이상 RTD 제품과 45g 이상 고함량 후보를 함께 비교합니다. 단백질 총량, 칼로리, 당류, 용량 기준으로 초고함량 제품을 고를 때의 판단 기준을 정리했습니다.";
@@ -149,6 +150,7 @@ export default function HighProtein50gComparisonPage() {
             <br />
             단백질 숫자보다 목적을 먼저 봐야 합니다.
           </h1>
+          <GuideDataAnswer slugs={["takefit-extreme-450", "labnosh-protein-max-choco-400", "hymune-ultra-400"]} />
           <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
             초고함량 제품은 한 번에 단백질을 많이 채울 수 있지만 누구에게나 정답은 아닙니다. 운동량, 하루 총 단백질 목표, 당류와 칼로리 부담을 함께 확인해야 실제 구매 실패를 줄일 수 있습니다.
           </p>

@@ -6,6 +6,7 @@ import GuideNextReads from "@/app/components/GuideNextReads";
 import GuideBuySection from "@/app/components/GuideBuySection";
 import CategoryDataSection from "@/app/components/CategoryDataSection";
 
+import GuideDataAnswer from "@/app/components/GuideDataAnswer";
 export const metadata = {
   alternates: { canonical: "https://proteinlab.kr/guides/product-selection-comparison/unsweetened-greek-yogurt-guide" },
   title: "무가당 그릭요거트 추천 기준 | 당류·단백질 밀도 비교",
@@ -85,6 +86,7 @@ export default function UnsweetenedGreekYogurtGuidePage() {
           <h1 className="mt-3 text-2xl font-bold leading-tight text-[#16412D] md:text-3xl">
             무가당 그릭요거트는 당류와 단백질 밀도를 같이 봐야 합니다
           </h1>
+          <GuideDataAnswer slugs={["maeil-bio-greek-unsweetened-150", "yozm-low-sugar-matcha-100", "greekday-signature-100"]} />
           <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
             무가당 그릭요거트는 플레인 대용량 제품과 섞여 있어 제품명만으로는 비교가 어렵습니다.
             당류, 100g당 단백질 밀도, 칼로리, 용량을 함께 읽는 흐름을 정리합니다.

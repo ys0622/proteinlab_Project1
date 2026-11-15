@@ -6,6 +6,7 @@ import GuideNextReads from "@/app/components/GuideNextReads";
 import GuideBuySection from "@/app/components/GuideBuySection";
 import CategoryDataSection from "@/app/components/CategoryDataSection";
 
+import GuideDataAnswer from "@/app/components/GuideDataAnswer";
 export const metadata = {
   alternates: { canonical: "https://proteinlab.kr/guides/product-selection-comparison/meal-replacement-protein-bar-guide" },
   title: "식사대용 단백질 바 기준 | 포만감·칼로리·단백질 비교",
@@ -85,6 +86,7 @@ export default function MealReplacementProteinBarGuidePage() {
           <h1 className="mt-3 text-2xl font-bold leading-tight text-[#16412D] md:text-3xl">
             식사대용 단백질 바는 간식형과 기준이 다릅니다
           </h1>
+          <GuideDataAnswer slugs={["dryou-proteinbar-pro-3nuts-crunch", "kirkland-proteinbar-choco-chip-cookie-dough-60", "quest-nutrition-protein-bar-cookie-cream-60"]} />
           <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
             식사대용 단백질 바는 단백질만 높다고 끝나지 않습니다.
             <br />

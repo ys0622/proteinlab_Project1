@@ -6,6 +6,7 @@ import GuideNextReads from "@/app/components/GuideNextReads";
 import CategoryDataSection from "@/app/components/CategoryDataSection";
 import TrackedLink from "@/app/components/TrackedLink";
 
+import GuideDataAnswer from "@/app/components/GuideDataAnswer";
 export const metadata = {
   alternates: { canonical: "https://proteinlab.kr/guides/product-selection-comparison/low-sugar-protein-drink-guide" },
   title: "저당 단백질 음료 추천 기준 | 당류 낮은 RTD 비교",
@@ -83,6 +84,7 @@ export default function LowSugarProteinDrinkGuidePage() {
           <h1 className="mt-3 text-2xl font-bold leading-tight text-[#16412D] md:text-3xl">
             저당 단백질 음료는 당류 컷부터 정해야 합니다
           </h1>
+          <GuideDataAnswer slugs={["labnosh-protein-salted-caramel-350", "labnosh-protein-sweet-corn-350", "labnosh-protein-perfect-melon-350", "labnosh-protein-perfect-cookie-cream-350", "labnosh-protein-max-choco-400"]} />
           <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
             저당 단백질 음료는 단순히 단백질만 높은 제품이 아닙니다. 당류 기준 안에서 비교가
             가능한 제품군을 먼저 정한 뒤 읽어야 합니다.

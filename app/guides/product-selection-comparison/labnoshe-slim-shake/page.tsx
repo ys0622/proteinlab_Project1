@@ -6,6 +6,7 @@ import Footer from "@/app/components/Footer";
 import GuideBuySection from "@/app/components/GuideBuySection";
 import CategoryDataSection from "@/app/components/CategoryDataSection";
 
+import GuideDataAnswer from "@/app/components/GuideDataAnswer";
 export const metadata = {
   alternates: { canonical: "https://proteinlab.kr/guides/product-selection-comparison/labnoshe-slim-shake" },
   title: "랩노쉬 슬림쉐이크 추천 | 저당·식사대용 기준 정리 2026",
@@ -64,6 +65,7 @@ export default function LabNosheLimShakePage() {
           <h1 className="mt-3 text-2xl font-bold leading-tight text-[#16412D] md:text-3xl">
             랩노쉬 슬림쉐이크 추천 | 저당·식사대용 기준 정리
           </h1>
+          <GuideDataAnswer slugs={["labnosh-slimshake-double-choco-45", "labnosh-slimshake-injeolmi-45", "labnosh-slimshake-goguma-45"]} />
           <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
             다이어트 중이거나 한 끼를 너무 무겁지 않게 대체하고 싶다면 랩노쉬 슬림쉐이크가 가장 먼저 후보로 들어옵니다.
             <br />

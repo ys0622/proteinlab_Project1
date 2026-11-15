@@ -9,6 +9,7 @@ import { getProductBySlug } from "@/app/data/products";
 import { getCoupangRedirectHref, hasNoPurchasableCoupangLink } from "@/app/lib/purchaseLinks";
 import { formatProductLabel } from "@/app/lib/productLabel";
 import { getGuideThumbnailUrl } from "@/app/lib/guideThumbnails";
+import { getGuideAnswer, introHasNumber } from "@/app/lib/guideAnswer";
 
 type SummaryItem = {
   title: string;
@@ -142,6 +143,10 @@ export function ShakeGuidePage({
   const internalGuideLinks = [...internalLinks, trackBHubLink].filter(
     (item, index, array) => array.findIndex((candidate) => candidate.href === item.href) === index,
   );
+  // 첫 화면 한 줄 답(2026-11-15): 이 페이지에 나온 제품의 성분표 수치로 계산(app/lib/guideAnswer.ts).
+  const guideAnswer = introHasNumber(description)
+    ? ""
+    : getGuideAnswer([...products.map((item) => item.slug).filter((slug): slug is string => Boolean(slug)), ...(buyProductSlugs ?? [])]);
   const faqJsonLd = faqItems && faqItems.length > 0
     ? {
         "@context": "https://schema.org",
@@ -187,6 +192,7 @@ export function ShakeGuidePage({
           <h1 className="mt-3 text-2xl font-bold leading-tight text-[#16412D] md:text-3xl">
             {title}
           </h1>
+          {guideAnswer ? <p className="mt-2 max-w-3xl break-keep text-sm font-semibold leading-6 text-[#2F3B33]">{guideAnswer}</p> : null}
           <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
             {description}
           </p>

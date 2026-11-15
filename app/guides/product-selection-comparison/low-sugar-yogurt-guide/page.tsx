@@ -5,6 +5,7 @@ import Footer from "@/app/components/Footer";
 import GuideBuySection from "@/app/components/GuideBuySection";
 import CategoryDataSection from "@/app/components/CategoryDataSection";
 
+import GuideDataAnswer from "@/app/components/GuideDataAnswer";
 export const metadata = {
   alternates: { canonical: "https://proteinlab.kr/guides/product-selection-comparison/low-sugar-yogurt-guide" },
   title: "저당 단백질 요거트 추천 기준 | 당류 5g 이하 비교",
@@ -86,6 +87,7 @@ export default function LowSugarYogurtGuidePage() {
           <h1 className="mt-3 text-2xl font-bold leading-tight text-[#16412D] md:text-3xl">
             저당 단백질 요거트는 당류만 보면 부족합니다
           </h1>
+          <GuideDataAnswer slugs={["yopro-plain-150", "yozm-low-sugar-matcha-100", "lookt-icelandic-thick-100"]} />
           <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
             당류를 먼저 좁히는 것은 좋지만, 단백질 함량과 제품 유형까지 같이 봐야 실제로 먹을 만한
             제품을 찾을 수 있습니다.

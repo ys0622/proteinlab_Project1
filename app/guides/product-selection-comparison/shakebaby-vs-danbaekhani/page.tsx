@@ -6,6 +6,7 @@ import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 import GuideBuySection from "@/app/components/GuideBuySection";
 
+import GuideDataAnswer from "@/app/components/GuideDataAnswer";
 export const metadata = {
   alternates: { canonical: "https://proteinlab.kr/guides/product-selection-comparison/shakebaby-vs-danbaekhani" },
   title: "쉐이크베이비 vs 단백하니 쉐이크 비교 | 단백질·당류·칼로리 기준 2026",
@@ -75,6 +76,7 @@ export default function ShakebabyVsDanbaekhaniPage() {
           <h1 className="mt-3 text-2xl font-bold leading-tight text-[#16412D] md:text-3xl">
             쉐이크베이비 vs 단백하니, 어떤 쉐이크가 더 맞을까?
           </h1>
+          <GuideDataAnswer slugs={["shakebaby-proteinshake-choco-45", "danbaekhani-proteinshake-choco-40", "shakebaby-proteinshake-matcha-45"]} />
           <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
             맛 선택 폭을 우선하면 쉐이크베이비, 칼로리 효율을 우선하면 단백하니가 더 잘 맞을 수 있습니다.
             <br />

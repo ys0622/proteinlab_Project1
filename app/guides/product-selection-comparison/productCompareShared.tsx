@@ -14,6 +14,7 @@ import { powderProducts, shakeProducts, soymilkProducts, type ProductDetailProps
 import { getCoupangRedirectHref } from "@/app/lib/purchaseLinks";
 import { formatProductLabel } from "@/app/lib/productLabel";
 import { getGuideThumbnailUrl } from "@/app/lib/guideThumbnails";
+import { getGuideAnswer, introHasNumber } from "@/app/lib/guideAnswer";
 
 export interface RelatedGuideLink {
   title: string;
@@ -300,6 +301,10 @@ export function ComparisonGuidePage({ config }: { config: ComparePageConfig }) {
   const columnSlugs = matchColumnSlugs(config.comparisonColumns ?? [], config.purchaseLinks);
   const compactPriorityMobile = config.slug === "selex-vs-takefit-vs-himune";
   const heroProducts = resolveGuideHeroProducts(config.purchaseLinks);
+  // 첫 문장에 이미 수치가 있으면(예: '…단백질 20g…') 계산 답을 덧붙이지 않는다.
+  const guideAnswer = introHasNumber(config.intro)
+    ? ""
+    : getGuideAnswer([...config.purchaseLinks.map((link) => link.slug), ...(config.productCards ?? []).flatMap((group) => group.items.map((item) => item.slug))]);
 
   return (
     <div className="min-h-screen bg-white">
@@ -324,6 +329,7 @@ export function ComparisonGuidePage({ config }: { config: ComparePageConfig }) {
           </div>
           <h1 className="mt-3 text-2xl font-bold leading-tight text-[#16412D] md:text-3xl">{config.title}</h1>
           <GuideProductHeroCards products={heroProducts} />
+          {guideAnswer ? <p className="mt-2 max-w-3xl break-keep text-sm font-semibold leading-6 text-[#2F3B33]">{guideAnswer}</p> : null}
           <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">{config.intro}</p>
         </div>
       </section>

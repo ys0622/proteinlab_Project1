@@ -5,6 +5,7 @@ import Footer from "@/app/components/Footer";
 import GuideBuySection from "@/app/components/GuideBuySection";
 import CategoryDataSection from "@/app/components/CategoryDataSection";
 
+import GuideDataAnswer from "@/app/components/GuideDataAnswer";
 export const metadata = {
   alternates: { canonical: "https://proteinlab.kr/guides/product-selection-comparison/drinking-yogurt-guide" },
   title: "드링킹 단백질 요거트 추천 기준 | 마시는 요거트 비교",
@@ -81,6 +82,7 @@ export default function DrinkingYogurtGuidePage() {
           <h1 className="mt-3 text-2xl font-bold leading-tight text-[#16412D] md:text-3xl">
             드링킹 단백질 요거트는 용량과 당류를 같이 봐야 합니다
           </h1>
+          <GuideDataAnswer slugs={["yoplait-protein-plain-210", "yoplait-protein-max-210", "maeil-bio-greek-drink-banana-190"]} />
           <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
             마시는 타입은 휴대성이 좋지만 제품마다 용량과 단백질 차이가 큽니다. 인상만 보지 말고 당류와
             밀도까지 함께 읽어야 합니다.

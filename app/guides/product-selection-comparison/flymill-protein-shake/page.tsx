@@ -5,6 +5,7 @@ import Footer from "@/app/components/Footer";
 import GuideBuySection from "@/app/components/GuideBuySection";
 import CategoryDataSection from "@/app/components/CategoryDataSection";
 
+import GuideDataAnswer from "@/app/components/GuideDataAnswer";
 export const metadata = {
   alternates: { canonical: "https://proteinlab.kr/guides/product-selection-comparison/flymill-protein-shake" },
   title: "플라이밀 단백질 쉐이크 추천 | 피넛버터·초코·쿠키앤크림 비교 2026",
@@ -83,6 +84,7 @@ export default function FlymillProteinShakePage() {
           <h1 className="mt-3 text-2xl font-bold leading-tight text-[#16412D] md:text-3xl">
             플라이밀 단백질 쉐이크 추천 | 피넛버터·초코·쿠키앤크림 비교
           </h1>
+          <GuideDataAnswer slugs={["flymill-proteinshake-peanut-butter-45", "flymill-proteinshake-choco-45", "flymill-proteinshake-banana-45"]} />
           <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
             플라이밀은 고단백과 저당 기준에서 가장 먼저 비교되는 쉐이크 브랜드 중 하나입니다.
             <br />

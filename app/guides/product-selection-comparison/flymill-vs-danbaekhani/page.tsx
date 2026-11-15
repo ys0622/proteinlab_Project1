@@ -6,6 +6,7 @@ import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 import GuideBuySection from "@/app/components/GuideBuySection";
 
+import GuideDataAnswer from "@/app/components/GuideDataAnswer";
 export const metadata = {
   alternates: { canonical: "https://proteinlab.kr/guides/product-selection-comparison/flymill-vs-danbaekhani" },
   title: "플라이밀 vs 단백하니 쉐이크 비교 | 단백질·당류·칼로리 기준 2026",
@@ -74,6 +75,7 @@ export default function FlymillVsDanbaekhaniPage() {
           <h1 className="mt-3 text-2xl font-bold leading-tight text-[#16412D] md:text-3xl">
             플라이밀 vs 단백하니, 어떤 쉐이크가 더 맞을까?
           </h1>
+          <GuideDataAnswer slugs={["flymill-proteinshake-peanut-butter-45", "danbaekhani-proteinshake-signature-40", "flymill-proteinshake-choco-45"]} />
           <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
             고단백을 우선하면 플라이밀, 칼로리와 맛 선택 폭까지 같이 보면 단백하니가 더 잘 맞을 수 있습니다.
             <br />
