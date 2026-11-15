@@ -721,6 +721,10 @@ export default async function ProductDetailPage({ params }: PageProps) {
       ? null
       : getProductPosition(product, categoryProducts.filter((p) => p.powderType !== "gainer"))
     : getProductPosition(product, categoryProducts);
+  // 첫 FAQ 답을 일반론 대신 같은 카테고리 순위로(2026-11-15, AI 답변 인용용). 화면 첫 줄 답과 같은 문장.
+  if (position && faqItems[0]) {
+    faqItems[0].answer = `${position.lead} 자세한 순위와 비슷한 제품은 이 페이지의 '카테고리 내 위치'에서 볼 수 있습니다.`;
+  }
   const internalLinks = buildProductInternalLinks(product).slice(0, 6);
   const recommendedFor = buildRecommendedFor(product);
   const tasteAwards = product.awards ?? [];
@@ -925,6 +929,9 @@ export default async function ProductDetailPage({ params }: PageProps) {
                 {metaLine && (
                   <p className="mt-0.5 text-[12px]" style={{ color: "#8A938B" }}>{metaLine}</p>
                 )}
+                {position ? (
+                  <p className="mt-1.5 break-keep text-[13px] leading-[1.55]" style={{ color: "#3F4A42" }}>{position.lead}</p>
+                ) : null}
                 {(isNewProduct || Boolean(tvAdInfo) || isSnackBar || gradeLabels.length > 0) && (
                   <div className="mt-2 flex flex-wrap gap-1.5">
                     {isNewProduct ? (

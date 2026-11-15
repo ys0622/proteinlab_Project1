@@ -6,6 +6,7 @@ import { withTopic } from "./koreanParticle";
 export type ProductPositionRow = { label: string; value: string; note: string };
 export type ProductPosition = {
   total: number;
+  lead: string;
   rows: ProductPositionRow[];
   summary: string;
   alternative?: { slug: string; label: string; detail: string };
@@ -92,6 +93,8 @@ export function getProductPosition(
 
   return {
     total: usable.length,
+    // 첫 화면 한 줄 답(2026-11-15, ChatGPT·빙 AI 인용용): 순위 문장 + 당류 문장
+    lead: `${sentences[0]} ${sentences[1]}`,
     summary: sentences.join(" "),
     alternative,
     rows: [
