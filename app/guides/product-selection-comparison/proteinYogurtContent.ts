@@ -19,7 +19,7 @@ function articleJsonLd(config: CategoryGuideConfig) {
       name: "ProteinLab",
       logo: { "@type": "ImageObject", url: "https://proteinlab.kr/proteinlab-logo.png" },
     },
-    dateModified: "2026-04-13",
+    ...(config.updatedAt ? { dateModified: config.updatedAt } : {}),
   };
 }
 
@@ -77,11 +77,12 @@ export const proteinYogurtTop5Config: CategoryGuideConfig = {
   slug: "protein-yogurt-top5",
   title: "프로틴 요거트 추천 TOP 5 (2026) | 단백질·당류·칼로리 비교",
   description:
-    `ProteinLab DB 요거트 ${yogurtProducts.length}개의 단백질·당류·칼로리를 비교해 2026년 프로틴 요거트 추천 TOP 5와 그릭요거트와의 차이, 목적별 선택 기준을 정리했습니다.`,
+    // 첫 문장을 1위 제품과 수치로 시작한다(2026-11-15, 빙 AI 인용 2위 페이지).
+    `프로틴 요거트 추천 1위는 ${formatProductLabel(yogurtTopPicks[0].brand, yogurtTopPicks[0].name)}(단백질 ${yogurtTopPicks[0].proteinPerServing}g·당류 ${yogurtTopPicks[0].sugar}g·${yogurtTopPicks[0].calories}kcal)입니다. 요거트 ${yogurtProducts.length}개의 성분표로 고른 TOP 5(단백질 ${Math.min(...yogurtTopPicks.map((p) => p.proteinPerServing))}~${Math.max(...yogurtTopPicks.map((p) => p.proteinPerServing))}g)와 그릭요거트와의 차이, 다이어트·운동 후 선택 기준을 정리했습니다.`,
   keywords: ["단백질 요거트 추천", "프로틴 요거트 추천", "고단백 요거트", "그릭요거트 단백질", "다이어트 요거트 추천", "단백질 요거트 순위"],
   badge: "요거트 랭킹",
   readingTime: "5분 읽기",
-  updatedAt: "2026-09-30",
+  updatedAt: "2026-11-15",
   methodologyNote: `ProteinLab DB 요거트 ${yogurtProducts.length}개 기준 · 1회 섭취 현실성 + 단백질 + 칼로리 + 당류`,
   intro:
     `프로틴 요거트를 고를 때는 단백질 숫자만 아니라 당류·칼로리와 1회 섭취량을 함께 봐야 합니다. ProteinLab DB 요거트 ${yogurtProducts.length}개에서 실제 한 번에 먹기 쉬운 제품을 추려 TOP 5를 정리하고, 그릭요거트와 프로틴 요거트의 차이도 함께 비교했습니다.`,

@@ -23,7 +23,8 @@ export async function generateMetadata(): Promise<Metadata> {
   const products = await getProductsByCategoryAsync("drink");
 
   const title = `단백질 음료 추천 비교 ${products.length}종 — 저당·고단백·40g 기준 2026`;
-  const description = `단백질 음료 ${products.length}종을 단백질 함량, 당류, 칼로리, 단백질 밀도 기준으로 비교합니다. 셀렉스, 하이뮨, 뉴케어, 닥터유, 테이크핏 같은 대표 제품을 성분 데이터로 바로 좁혀보세요.`;
+  // 검색·AI 답변 요약에 바로 쓰이도록 첫 문장을 데이터로 계산한 답으로 시작한다(2026-11-15, 빙 AI 인용 상위 페이지).
+const description = `단백질 음료 ${products.length}종 성분표 기준 ${getCategoryAnswer(products, "1병", 20)} 셀렉스·하이뮨·뉴케어·테이크핏 등 단백질 함량·당류·칼로리·밀도를 비교합니다.`;
 
   return {
     title,

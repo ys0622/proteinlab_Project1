@@ -25,7 +25,8 @@ export async function generateMetadata(): Promise<Metadata> {
   const products = await getProductsByCategoryAsync("shake");
 
   const title = `단백질 쉐이크 추천 비교 ${products.length}종 — 식사대용·저당·고단백 기준 2026`;
-  const description = `단백질 쉐이크 ${products.length}종을 단백질 총량, 당류, 칼로리, 식사대용 적합도 기준으로 비교합니다. 식사대용, 다이어트, 운동 후 보충용 쉐이크를 성분 데이터로 바로 좁혀보세요.`;
+  // 검색·AI 답변 요약에 바로 쓰이도록 첫 문장을 데이터로 계산한 답으로 시작한다(2026-11-15, 빙 AI 인용 상위 페이지).
+const description = `단백질 쉐이크 ${products.length}종 성분표 기준 ${getCategoryAnswer(products, "1회분", 20)} 단백질 총량·당류·칼로리·식사대용 적합도로 다이어트·운동 후 보충용 쉐이크를 비교합니다.`;
 
   return {
     title,
