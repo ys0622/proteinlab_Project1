@@ -229,7 +229,7 @@ const searchTopics: SearchTopic[] = [
     primaryCta: { href: "/picks/bar-low-sugar", title: "저당 단백질 바 보기", description: "저당 기준 제품만 모아 둔 페이지입니다." },
     relatedLinks: [
       { href: "/topics/high-protein-bar", title: "고단백 단백질 바", description: "함량 중심 제품군도 함께 볼 수 있습니다." },
-      { href: "/compare/barebells-proteinbar-flavor-comparison", title: "베어벨즈 맛별 비교", description: "일반·소프트 라인의 당류와 칼로리 범위를 확인합니다." },
+      { href: "/brands/barebells", title: "베어벨즈 전 제품", description: "일반·소프트 라인의 당류와 칼로리 범위를 확인합니다." },
       { href: "/guides/product-selection-comparison/meal-replacement-protein-bar-guide", title: "식사대용 바 가이드", description: "포만감과 칼로리 기준을 함께 봅니다." },
       { href: "/recommend", title: "맞춤 추천", description: "목적에 따라 다른 카테고리 후보도 추천합니다." },
     ],

@@ -181,7 +181,7 @@ export const proteinShakeTop7Config: CategoryGuideConfig = {
   compareListCta: { category: "shake" },
   title: "단백질쉐이크 추천 TOP 7 (2026) | 다이어트·식사대용 순위",
   // 첫 문장을 1위 제품과 수치로 시작한다(2026-11-15, 빙 AI 인용 3위 페이지).
-  description: `단백질쉐이크 추천 1위는 ${formatProductLabel(shakeTop7[0].brand, shakeTop7[0].name)}(단백질 ${shakeTop7[0].proteinPerServing}g·당류 ${shakeTop7[0].sugar}g·${shakeTop7[0].calories}kcal)입니다. 파우치형 쉐이크 ${shakeProducts.length}개를 단백질·칼로리·당류·식이섬유 성분표로 점수화해 다이어트·식사대용에 맞는 TOP 7을 정리했습니다.`,
+  description: `단백질쉐이크 추천 1위는 ${formatProductLabel(shakeTop7[0].brand, shakeTop7[0].name).replace(/\s*\(([^)]*)\)$/, " $1")}(단백질 ${shakeTop7[0].proteinPerServing}g·당류 ${shakeTop7[0].sugar}g·${shakeTop7[0].calories}kcal)입니다. 파우치형 쉐이크 ${shakeProducts.length}개를 단백질·칼로리·당류·식이섬유 성분표로 점수화해 다이어트·식사대용에 맞는 TOP 7을 정리했습니다.`,
   keywords: ["단백질 쉐이크 추천", "프로틴 쉐이크 추천", "다이어트 단백질 쉐이크", "식사대용 쉐이크", "여성 단백질 쉐이크", "파우치 단백질 쉐이크"],
   badge: "쉐이크 랭킹",
   readingTime: "6분 읽기",

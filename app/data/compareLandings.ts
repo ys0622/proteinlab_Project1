@@ -1,5 +1,6 @@
 import { getBarProducts } from "./barProductsData";
 import { getGeneratedCompareLandings, withAutoRelatedLandings } from "./compareLandingsGenerated";
+import compareRetired from "./compareRetired.json";
 
 export interface CompareLanding {
   slug: string;
@@ -324,7 +325,7 @@ const compareLandings: CompareLanding[] = [
     bullets: ["단백질 우선: 프로티원 초코 23g > 커피 22g > 잇더핏 21.3g", "열량 우선: 프로티원 커피맛 108kcal", "당류 우선: 잇더핏 0.6g, 프로티원 두 맛은 1g", "프로티원 딸기·흑임자·곡물맛: 단백질 각 20g, 당류 2g·1g·1g, 123·133·134kcal"],
     productSlugs: ["proteone-proteinshake-choco-40", "proteone-proteinshake-coffee-40", "itthefit-proteinshake-double-choco-40"],
     relatedLinks: [
-      { href: "/compare/proteone-shake-flavor-comparison", title: "프로티원 맛별 성분표", description: "프로티원 쉐이크 전 맛의 단백질·당류·칼로리를 비교합니다." },
+      { href: "/brands/proteone", title: "프로티원 전 제품 성분표", description: "프로티원 쉐이크 전 맛의 단백질·당류·칼로리를 한 페이지에서 봅니다." },
       { href: "/compare/itthefit-shake-flavor-comparison", title: "잇더핏 맛별 성분표", description: "잇더핏 쉐이크 전 맛의 단백질·당류·칼로리를 비교합니다." },
       { href: "/guides/product-selection-comparison/low-sugar-protein-shake-guide", title: "저당 단백질 쉐이크 선택 기준", description: "두 제품 외에 당류가 낮은 쉐이크와 성분표를 이어서 비교합니다." },
       { href: "/topics/meal-replacement-protein-shake", title: "식사대용 쉐이크", description: "쉐이크 카테고리 전체를 다시 비교합니다." },
@@ -682,7 +683,7 @@ const compareLandings: CompareLanding[] = [
     relatedLinks: [
       { href: "/brands/barebells", title: "베어벨즈 브랜드 허브", description: "베어벨즈 일반·소프트 프로틴바를 확인합니다." },
       { href: "/brands/quest-nutrition", title: "퀘스트 뉴트리션 브랜드 허브", description: "퀘스트 프로틴바 맛별 제품을 확인합니다." },
-      { href: "/compare/barebells-proteinbar-flavor-comparison", title: "베어벨즈 맛별 비교", description: "베어벨즈 일반·소프트 라인의 성분 범위를 비교합니다." },
+      { href: "/brands/barebells", title: "베어벨즈 전 제품", description: "베어벨즈 일반·소프트 라인의 성분 범위를 한 페이지에서 봅니다." },
     ],
   },
   {
@@ -953,7 +954,11 @@ let mergedLandings: CompareLanding[] | null = null;
 function allLandings(): CompareLanding[] {
   if (!mergedLandings) {
     const own = new Set(compareLandings.map((item) => item.slug));
-    mergedLandings = [...compareLandings, ...getGeneratedCompareLandings().filter((item) => !own.has(item.slug))];
+    // 2026-11-15 Scott 승인(thin-pages-1114): 클릭 0 맛별·라인업 비교 42개는 브랜드 페이지로 301(next.config.ts).
+    // 목록에서 빼서 사이트맵·관련 비교·브랜드 페이지 링크에 더 나오지 않게 한다. 되돌리려면 compareRetired.json에서 지운다.
+    mergedLandings = [...compareLandings, ...getGeneratedCompareLandings().filter((item) => !own.has(item.slug))].filter(
+      (item) => !(item.slug in compareRetired),
+    );
   }
   return mergedLandings;
 }

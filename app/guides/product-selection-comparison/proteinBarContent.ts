@@ -384,8 +384,8 @@ proteinBarTop10Config.relatedGuides = [
     description: "1개·2개가 하루 권장섭취량의 몇 %인지, 열량은 얼마나 더해지는지 계산했습니다.",
   },
   {
-    title: "베어벨즈 프로틴바 맛별 비교",
-    href: "/compare/barebells-proteinbar-flavor-comparison",
+    title: "베어벨즈 프로틴바 전 제품",
+    href: "/brands/barebells",
     description: "베어벨즈 일반·소프트 라인의 단백질, 당류, 칼로리 범위를 맛별로 확인합니다.",
   },
   {

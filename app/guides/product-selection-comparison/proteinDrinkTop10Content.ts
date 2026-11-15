@@ -168,7 +168,7 @@ export const proteinDrinkTop10Config: CategoryGuideConfig = {
   compareListCta: { category: "drink" },
   title: "단백질 음료 추천 TOP 10 | 47g·52g 초고단백 RTD까지 비교 2026",
   description:
-    `단백질 음료 추천 1위는 ${formatProductLabel(top1.brand, top1.name)}(단백질 ${top1.proteinPerServing}g·당류 ${top1.sugar}g·${top1.calories}kcal)입니다. 음료 ${drinkProducts.length}종 중 단백질 20g 이상·당류 8g 이하·205kcal 이하 제품을 성분표 기준으로 점수화한 TOP 10(단백질 ${top10Protein}g)과 52g 초고단백 RTD 선택 기준을 정리했습니다.`,
+    `단백질 음료 추천 1위는 ${formatProductLabel(top1.brand, top1.name).replace(/\s*\(([^)]*)\)$/, " $1")}(단백질 ${top1.proteinPerServing}g·당류 ${top1.sugar}g·${top1.calories}kcal)입니다. 음료 ${drinkProducts.length}종 중 단백질 20g 이상·당류 8g 이하·205kcal 이하 제품을 성분표 기준으로 점수화한 TOP 10(단백질 ${top10Protein}g)과 52g 초고단백 RTD 선택 기준을 정리했습니다.`,
   keywords: ["단백질 음료 추천", "단백질 음료 TOP10", "프로틴 음료 추천", "RTD 단백질 음료", "저당 단백질 음료", "고단백 RTD", "단백질 음료 47g", "단백질 음료 52g"],
   badge: "음료 랭킹",
   readingTime: "6분 읽기",

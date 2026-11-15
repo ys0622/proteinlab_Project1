@@ -1,4 +1,5 @@
 import type { NextConfig } from "next";
+import compareRetired from "./app/data/compareRetired.json";
 
 const nextConfig: NextConfig = {
   output: "standalone",
@@ -86,6 +87,12 @@ const nextConfig: NextConfig = {
       { source: "/guides/product-selection-comparison/newcare-box-value", destination: "/guides/product-selection-comparison/newcare-allprotein", statusCode: 301 },
       // 2026-10-24 Scott 승인: 네이버 '프로티원' 노출을 두 페이지가 나눠 가져 비교 페이지로 모은다(docs/funnel-naver-analysis-2026-10-24.md).
       { source: "/guides/product-selection-comparison/proteone-protein-shake", destination: "/compare/proteone-vs-itthefit-shake", statusCode: 301 },
+      // 2026-11-15 Scott 승인(thin-pages-1114, docs/strategy-2026-11-14.md 8장): 네이버 90일 클릭 0 맛별·라인업 비교 42개 → 브랜드 페이지. 판정 12/12.
+      ...Object.entries(compareRetired as Record<string, string>).map(([slug, destination]) => ({
+        source: `/compare/${slug}`,
+        destination,
+        statusCode: 301 as const,
+      })),
     ];
   },
 };
