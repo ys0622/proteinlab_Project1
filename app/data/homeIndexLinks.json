@@ -119,6 +119,18 @@
   {
    "href": "/compare/newcare-vs-hymune",
    "label": "뉴케어 올프로틴 25g vs 하이뮨 액티브 20g"
+  },
+  {
+   "href": "/compare/maeil-vs-vegemil-soymilk",
+   "label": "매일두유 vs 베지밀 고단백 두유 비교"
+  },
+  {
+   "href": "/compare/maeil-vs-vegemil-blackbean-soymilk",
+   "label": "매일두유 vs 베지밀 검은콩 두유 비교"
+  },
+  {
+   "href": "/compare/danbaek-vs-takefit",
+   "label": "더단백 vs 테이크핏 비교"
   }
  ],
  "pick": [
@@ -245,6 +257,46 @@
   {
    "href": "/guides/product-selection-comparison/flymill-protein-shake",
    "label": "플라이밀 단백질 쉐이크 추천"
+  },
+  {
+   "href": "/guides/product-selection-comparison/greek-yogurt-calories",
+   "label": "그릭요거트 칼로리 비교"
+  },
+  {
+   "href": "/guides/product-selection-comparison/protein-bar-calories",
+   "label": "단백질바 칼로리 비교"
+  },
+  {
+   "href": "/guides/product-selection-comparison/protein-drink-calories",
+   "label": "단백질 음료 칼로리 비교"
+  },
+  {
+   "href": "/guides/product-selection-comparison/protein-powder-calories",
+   "label": "프로틴 칼로리 비교"
+  },
+  {
+   "href": "/guides/product-selection-comparison/soymilk-calories",
+   "label": "두유 칼로리 비교"
+  },
+  {
+   "href": "/guides/product-selection-comparison/protein-bar-protein-ranking",
+   "label": "프로틴바 단백질 함량 순위"
+  },
+  {
+   "href": "/guides/product-selection-comparison/protein-shake-protein-ranking",
+   "label": "단백질 쉐이크 단백질 함량 순위"
+  },
+  {
+   "href": "/guides/product-selection-comparison/protein-powder-scoop-guide",
+   "label": "단백질 보충제 1스쿱 단백질 비교"
+  },
+  {
+   "href": "/guides/product-selection-comparison/wpi-protein-guide",
+   "label": "분리유청단백질(WPI)이란"
+  },
+  {
+   "href": "/guides/product-selection-comparison/isolated-soy-protein-guide",
+   "label": "분리대두단백(ISP)이란"
   }
  ],
  "intake": [
@@ -327,6 +379,30 @@
   {
    "href": "/guides/intake-strategy-health/protein-drink-sugar",
    "label": "단백질 음료 당류 얼마나 봐야 하나요?"
+  },
+  {
+   "href": "/guides/intake-strategy-health/greek-yogurt-per-day",
+   "label": "그릭요거트 하루 몇 개 먹을까"
+  },
+  {
+   "href": "/guides/intake-strategy-health/protein-bar-per-day",
+   "label": "단백질바 하루 몇 개 먹을까"
+  },
+  {
+   "href": "/guides/intake-strategy-health/protein-powder-per-day",
+   "label": "단백질 보충제 하루 몇 스쿱"
+  },
+  {
+   "href": "/guides/intake-strategy-health/protein-shake-per-day",
+   "label": "단백질 쉐이크 하루 몇 번"
+  },
+  {
+   "href": "/guides/intake-strategy-health/soymilk-per-day",
+   "label": "두유 하루 몇 개 마실까"
+  },
+  {
+   "href": "/guides/intake-strategy-health/protein-drink-with-meals",
+   "label": "단백질 음료, 식사와 같이 먹어도 될까"
   }
  ],
  "brand": [
@@ -365,6 +441,18 @@
   {
    "href": "/brands/hymune",
    "label": "하이뮨 성분표"
+  },
+  {
+   "href": "/brands/newyork-whey",
+   "label": "뉴욕웨이 성분표"
+  },
+  {
+   "href": "/brands/flymill",
+   "label": "플라이밀 성분표"
+  },
+  {
+   "href": "/brands/danbaek",
+   "label": "더단백 성분표"
   }
  ],
  "etc": [
