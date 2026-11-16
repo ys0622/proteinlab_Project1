@@ -1,11 +1,14 @@
 #!/usr/bin/env python3
-"""네이버 통합검색에서 핵심 검색어의 프로틴랩 노출 순위를 Aside CLI로 확인해 docs/naver-rank-log.csv 에 추가한다(읽기 전용).
-사이트(proteinlab.kr)와 블로그(blog.naver.com/proteinlab2026)를 함께 본다. 케어맵 scripts/aside_naver_rank.py 를 옮겨 왔다(2026-10-22).
+"""네이버 통합검색에서 핵심 검색어의 프로틴랩 노출을 확인해 docs/naver-rank-log.csv 에 추가한다(읽기 전용).
+사이트(proteinlab.kr)와 블로그(blog.naver.com/proteinlab2026)를 함께 본다.
 
-실행: python scripts/naver/rank.py
+2026-11-16(백로그 #18): Aside 에이전트(크레딧 소모, 11/14 크레딧 부족 402로 15개 모두 실패) 대신
+작업용 크롬에서 scripts/naver/rank.repl.js 를 돌려 DOM 링크를 직접 센다(CLAUDE.md: 자동화는 크롬, 실패 시 Aside repl).
+
+실행: python -X utf8 scripts/naver/rank.py [검색어...]   (--dry-run: csv에 쓰지 않고 결과만 출력)
 출력: 마지막에 지난 측정 대비 변화 요약. 결과 줄을 읽지 못한 검색어는 '확인 실패'로 기록한다.
 """
-import csv, datetime, os, re, subprocess, sys
+import csv, datetime, json, os, re, subprocess, sys, tempfile
 from pathlib import Path
 
 QUERIES = [
@@ -13,40 +16,41 @@ QUERIES = [
     '단백질 음료 추천', '단백질바 추천', '그릭요거트 단백질', '고단백 두유', '연세두유 고단백',
     '베어벨스 프로틴바', '퀘스트바', '커클랜드 프로틴바 칼로리', '랩노쉬 프로틴', '단백질 쉐이크 추천',
 ]
-if len(sys.argv) > 1:  # 일부 검색어만 다시 잴 때: python scripts/naver/rank.py 퀘스트바 ...
-    QUERIES = sys.argv[1:]
+args = [a for a in sys.argv[1:] if not a.startswith('--')]
+DRY = '--dry-run' in sys.argv
+if args:  # 일부 검색어만 다시 잴 때: python scripts/naver/rank.py 퀘스트바 ...
+    QUERIES = args
 ROOT = Path(__file__).resolve().parent.parent.parent
 LOG = ROOT / 'docs' / 'naver-rank-log.csv'
-ASIDE = Path(os.path.expandvars(r'%LOCALAPPDATA%\Aside\CLI\current\aside.exe'))
-if not ASIDE.exists():
-    print('ERROR aside.exe 를 찾을 수 없습니다:', ASIDE); sys.exit(2)
+TEMPLATE = ROOT / 'scripts' / 'naver' / 'rank.repl.js'
+REPL = ROOT / 'scripts' / 'browser' / 'chrome-repl.mjs'
+PROFILE = 'work-nologin'
 
-BATCH = 5   # 한 번에 5개씩, medium 노력으로 DOM 링크를 직접 확인(15개를 한 번에 빠르게 읽으면 오판이 나온 적이 있다)
-
-def run_batch(qs):
-    prompt = (
-        "읽기 전용 조사입니다. 로그인, 광고 클릭, 구매, 폼 제출은 하지 마세요. 네이버(search.naver.com)에서 검색어를 각각 검색합니다: " + ' / '.join(qs) + ". "
-        "각 검색어마다 통합검색 결과 페이지를 끝까지 스크롤하면서(웹문서 '더보기'나 '웹사이트' 탭은 누르지 않고 통합검색 첫 화면에 보이는 범위만) "
-        "반드시 페이지 DOM에서 href 에 proteinlab.kr 또는 blog.naver.com/proteinlab2026 이 들어간 링크를 직접 찾아 확인하세요(눈으로만 보지 마세요). "
-        "찾았다면 그 링크 주소와 제목, 그 링크가 속한 섹션 이름과 섹션 안 순서(예: 웹문서 1번째, AI 브리핑 추천문서 1번째·출처 2번째)를 적으세요. "
-        "없으면 '없음'이라고 쓰세요. 화면에 보이는 것만 적고 추측하지 마세요. "
-        "출력은 마지막에 정확히 이 형식의 한 줄씩만: CHECK|검색어|있음 또는 없음|첫 번째 프로틴랩 URL 또는 -|섹션과 순서들(세미콜론으로 구분) 또는 -|상위 외부 도메인들."
-    )
-    proc = subprocess.run([str(ASIDE), '--effort', 'medium', prompt], capture_output=True, text=True, encoding='utf-8', errors='replace', timeout=1800)
-    return re.sub(r'\[[0-9;]*m', '', proc.stdout or '')
+code = TEMPLATE.read_text(encoding='utf-8').replace('__QUERIES__', json.dumps(QUERIES, ensure_ascii=False))
+with tempfile.NamedTemporaryFile('w', suffix='.js', delete=False, encoding='utf-8') as fh:
+    fh.write(code)
+    tmp = fh.name
+try:
+    proc = subprocess.run(['node', str(REPL).replace('\\', '/'), '--profile', PROFILE, '--timeout', str(60_000 + 40_000 * len(QUERIES)), '--file', tmp.replace('\\', '/')],
+                          capture_output=True, text=True, encoding='utf-8', errors='replace', timeout=120 + 60 * len(QUERIES), cwd=str(ROOT))
+    out = proc.stdout or ''
+finally:
+    os.unlink(tmp)
 
 rows = {}
-for k in range(0, len(QUERIES), BATCH):
-    out = run_batch(QUERIES[k:k + BATCH])
-    for line in out.splitlines():
-        m = re.match(r'CHECK\|([^|]+)\|(있음|없음)\|([^|]*)\|([^|]*)\|?(.*)$', line.strip())
-        if not m:
-            continue
-        q, found, urlfield, secs = m.group(1).strip(), m.group(2), m.group(3).strip(), m.group(4).strip()
-        url = (re.findall(r'https?://[^\s<>;]+', urlfield) or ['-'])[0]
-        ranks = [int(x) for x in re.findall(r'웹문서\s*(\d+)번째', secs)]
-        ai = 'AI 브리핑' in secs
-        rows[q] = ['Y' if found == '있음' else 'N', '웹문서' if ranks else ('AI 브리핑' if ai else '-'), str(min(ranks)) if ranks else '-', url, 'AI 브리핑 노출' if ai else '']
+for line in out.splitlines():
+    m = re.match(r'RANK (.+?) => (\{.*\})\s*$', line.strip())
+    if not m:
+        continue
+    q, r = m.group(1).strip(), json.loads(m.group(2))
+    if 'error' in r:
+        continue
+    if r.get('found'):
+        sec = 'AI 브리핑' if r.get('ai') else (r.get('section') or '-')
+        note = 'chrome repl DOM' + (' · AI 브리핑 출처' if r.get('ai') else '') + (' · 블로그' if 'blog.naver.com' in r.get('url', '') else '')
+        rows[q] = ['Y', sec, str(r.get('rank') or '-'), r.get('url', '-'), note]
+    else:
+        rows[q] = ['N', '-', '-', '-', 'chrome repl DOM']
 
 today = datetime.date.today().isoformat()
 prev = {}
@@ -62,21 +66,27 @@ for q in QUERIES:
     else:
         new_rows.append([today, q, '?', '-', '-', '-', '확인 실패'])
 
-with LOG.open('a', encoding='utf-8', newline='') as fh:
-    w = csv.writer(fh)
+if DRY:
     for r in new_rows:
-        w.writerow(r)
+        print('ROW', r)
+else:
+    with LOG.open('a', encoding='utf-8', newline='') as fh:
+        w = csv.writer(fh)
+        for r in new_rows:
+            w.writerow(r)
 
 def label(r):
-    return f"{r['found']}/{r['rank_in_section']}" if r['found'] == 'Y' else 'N'
+    return 'Y' if r['found'] == 'Y' else ('N' if r['found'] == 'N' else '?')
 
 changes = []
 for r in new_rows:
     q = r[1]
-    cur = f"{r[2]}/{r[4]}" if r[2] == 'Y' else ('N' if r[2] == 'N' else '?')
+    cur = r[2]
     old = label(prev[q]) if q in prev else '(처음)'
     if cur != old:
         changes.append(f'{q}: {old} → {cur}')
-print(f"SUMMARY date={today} 확인={sum(1 for r in new_rows if r[2] != '?')}/{len(new_rows)} 변화={len(changes)}")
+print(f"SUMMARY date={today} 확인={sum(1 for r in new_rows if r[2] != '?')}/{len(new_rows)} 변화={len(changes)}{' (dry-run, 기록 안 함)' if DRY else ''}")
 for c in changes:
     print('CHANGE', c)
+if not rows:
+    print('STDERR', (proc.stderr or '')[-800:])
