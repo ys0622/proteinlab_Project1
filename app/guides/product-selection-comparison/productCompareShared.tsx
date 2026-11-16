@@ -9,6 +9,7 @@ import CategoryDataSection from "@/app/components/CategoryDataSection";
 import TrackedCoupangLink from "@/app/components/TrackedCoupangLink";
 import GuideProductHeroCards, { resolveGuideHeroProducts } from "@/app/components/GuideProductHeroCards";
 import GuideProductPhotoCards, { type GuideProductCardGroup } from "@/app/components/GuideProductPhotoCards";
+import GuideBrowseMore from "@/app/components/GuideBrowseMore";
 import { getDrinkProducts } from "@/app/data/drinkProductsData";
 import { powderProducts, shakeProducts, soymilkProducts, type ProductDetailProps } from "@/app/data/products";
 import { getCoupangRedirectHref } from "@/app/lib/purchaseLinks";
@@ -416,6 +417,7 @@ export function ComparisonGuidePage({ config }: { config: ComparePageConfig }) {
                 <PurchaseLinks links={config.purchaseLinks} linkPosition="mid_content" compactMobile />
               </div>
             ) : null}
+            <GuideBrowseMore slugs={config.purchaseLinks.map((link) => link.slug)} contentId={`guide:${config.slug}`} />
           </section>
           {config.productCards?.map((group) => (
             <GuideProductPhotoCards key={group.title} group={group} contentId={`guide:${config.slug}`} />

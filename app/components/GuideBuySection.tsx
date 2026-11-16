@@ -2,6 +2,7 @@ import AffiliateDisclosure from "./AffiliateDisclosure";
 import Image from "next/image";
 import TrackedCoupangLink from "./TrackedCoupangLink";
 import TrackedLink from "./TrackedLink";
+import GuideBrowseMore from "./GuideBrowseMore";
 import { getProductBySlug } from "@/app/data/products";
 import { getCoupangRedirectHref, hasNoPurchasableCoupangLink } from "@/app/lib/purchaseLinks";
 import { formatProductLabel } from "@/app/lib/productLabel";
@@ -82,6 +83,16 @@ export default function GuideBuySection({
             );
           })}
         </div>
+        {topic && slugs.length === 0 ? (
+          <GuideBrowseMore
+            slugs={targetSlugs}
+            contentId={`guide_buy_top:${topic}`}
+            heading="다른 제품까지 비교하려면"
+            showBrands={false}
+            showRanking
+            className="mt-3"
+          />
+        ) : null}
       </section>
     );
   }
