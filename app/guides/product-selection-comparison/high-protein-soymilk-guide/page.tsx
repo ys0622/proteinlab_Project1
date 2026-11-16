@@ -8,9 +8,28 @@ import { soymilkProducts } from "@/app/data/products";
 import { getCapacityMl } from "@/app/lib/productFilters";
 
 import GuideDataAnswer from "@/app/components/GuideDataAnswer";
-const TITLE = "단백질 두유 추천 | 성분·당류 비교";
-const DESCRIPTION =
-  "단백질 두유 추천을 찾을 때 한 팩 단백질, 당류, 열량, 용량을 비교하는 순서를 등록 제품 성분표 수치로 정리합니다.";
+
+// 2026-11-16: 빙 '고단백 두유' 1~2쪽에 없음(쿠팡·다나와·제조사 쇼핑 페이지가 차지). 제목·설명·첫 문장을 데이터 수치 답으로.
+const highProteinAll = soymilkProducts
+  .filter((p) => p.proteinPerServing >= 11)
+  .sort((a, b) => b.proteinPerServing - a.proteinPerServing || (a.sugar ?? 999) - (b.sugar ?? 999));
+const hp190 = highProteinAll.filter((p) => getCapacityMl(p) === 190);
+const hpLowSugar = highProteinAll.filter((p) => (p.sugar ?? 999) < 3);
+const hpBrands = [...new Set(highProteinAll.map((p) => p.brand))];
+const hpTop = highProteinAll[0];
+const hpTopAll = highProteinAll.filter((p) => p.proteinPerServing === hpTop?.proteinPerServing);
+const hpTopLabel = `${hpTopAll.map((p) => `${p.brand} ${p.name}`).join("·")}(${hpTop?.capacity} ${hpTop?.proteinPerServing}g)`;
+const hp190Counts = hp190.reduce<Record<number, number>>((acc, p) => ({ ...acc, [p.proteinPerServing]: (acc[p.proteinPerServing] ?? 0) + 1 }), {});
+const hp190Mode = Number(Object.entries(hp190Counts).sort((a, b) => b[1] - a[1])[0]?.[0] ?? 0);
+const hp190ModeCount = hp190Counts[hp190Mode] ?? 0;
+const hp190MinSugar = Math.min(...hp190.map((p) => p.sugar ?? 999));
+const hp190LowestSugarLabel = hp190
+  .filter((p) => (p.sugar ?? 999) === hp190MinSugar)
+  .map((p) => `${p.brand} ${p.name}(${p.calories}kcal)`)
+  .join("·");
+
+const TITLE = `고단백 두유 추천 ${highProteinAll.length}종 | 1팩 단백질 11g 이상 당류·열량 비교`;
+const DESCRIPTION = `고단백 두유는 1팩 단백질 11g 이상 두유입니다. 등록 두유 ${soymilkProducts.length}종 중 ${highProteinAll.length}종(${hpBrands.length}개 브랜드)이고, 가장 높은 제품은 ${hpTopLabel}입니다. 190mL 고단백 두유 ${hp190.length}종 중 ${hp190ModeCount}종이 ${hp190Mode}g이고, 당류 3g 미만은 ${hpLowSugar.length}종입니다. 성분표 기준으로 비교했습니다.`;
 const URL = "https://proteinlab.kr/guides/product-selection-comparison/high-protein-soymilk-guide";
 
 export const metadata = {
@@ -95,6 +114,20 @@ const relatedLinks = [
 
 const faqItems = [
   {
+    question: "고단백 두유 중 단백질이 가장 높은 제품은?",
+    answer: `ProteinLab 등록 데이터 기준 ${highProteinAll
+      .filter((p) => p.proteinPerServing === hpTop?.proteinPerServing)
+      .map((p) => `${p.brand} ${p.name}(${p.capacity}, 단백질 ${p.proteinPerServing}g·당류 ${p.sugar}g·${p.calories}kcal)`)
+      .join(", ")}입니다. 240mL 제품이라 190mL 제품과는 100mL당 값으로도 비교하세요. 190mL 중에서는 ${hp190
+      .filter((p) => p.proteinPerServing === Math.max(...hp190.map((x) => x.proteinPerServing)))
+      .map((p) => `${p.brand} ${p.name}(${p.proteinPerServing}g)`)
+      .join(", ")}이 가장 높습니다.`,
+  },
+  {
+    question: "연세두유·매일두유·베지밀·이롬 고단백 두유는 단백질이 다른가요?",
+    answer: `190mL 고단백 라인은 브랜드가 달라도 대부분 1팩 ${hp190Mode}g입니다(${hp190ModeCount}종). 차이는 당류와 열량에서 나며, 등록 190mL 고단백 두유의 당류는 ${Math.min(...hp190.map((p) => p.sugar ?? 0))}~${Math.max(...hp190.map((p) => p.sugar ?? 0))}g, 열량은 ${Math.min(...hp190.map((p) => p.calories ?? 0))}~${Math.max(...hp190.map((p) => p.calories ?? 0))}kcal입니다.`,
+  },
+  {
     question: "단백질 두유 추천 제품은 단백질 수치만 보면 되나요?",
     answer: "단백질만으로 고르지 말고 당류, 열량, 팩 용량을 함께 비교하세요. 용량이 다른 제품은 한 팩 총량과 용량당 수치를 같이 확인해야 합니다.",
   },
@@ -126,7 +159,7 @@ export default function HighProteinSoymilkGuidePage() {
     description: DESCRIPTION,
     url: URL,
     datePublished: "2026-10-12",
-    dateModified: "2026-10-18",
+    dateModified: "2026-11-16",
     faq: faqItems,
   });
 
@@ -149,9 +182,10 @@ export default function HighProteinSoymilkGuidePage() {
           </h1>
           <GuideDataAnswer slugs={["maeil-soymilk-protein-plain-190", "vegemil-protein-plain-190", "nam-gt-protein-190"]} />
           <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
-            이름이 비슷한 두유도 단백질과 당류, 열량 차이가 큽니다.
-            <br />
-            성분표 수치를 기준으로 어떤 순서로 비교하면 좋은지 정리했습니다.
+            고단백 두유(1팩 단백질 11g 이상)는 등록 두유 {soymilkProducts.length}종 중 {highProteinAll.length}종입니다.
+            단백질이 가장 높은 제품은 {hpTopLabel}이고,
+            190mL 팩 {hp190.length}종 중 {hp190ModeCount}종이 {hp190Mode}g입니다.
+            190mL 중 당류가 가장 낮은 제품은 당류 {hp190MinSugar}g인 {hp190LowestSugarLabel}입니다.
           </p>
         </div>
       </section>
