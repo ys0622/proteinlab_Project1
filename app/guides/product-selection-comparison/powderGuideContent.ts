@@ -136,15 +136,16 @@ const excludedGainerMeal = ofType("gainer", "meal");
 
 export const proteinPowderTop10Config: ComparePageConfig = {
   slug: "protein-powder-top10",
-  title: "단백질 파우더 추천 TOP 10 | 함량·당류 비교",
-  seoTitle: "단백질 파우더 추천 TOP 10 (2026) | 단백질 함량·당류로 고른 보충제",
-  description: `ProteinLab 등록 단백질 파우더 ${powder.length}종 중 게이너·식사대용을 뺀 제품을 단백질 함량(1회 제공량 대비 단백질 %)이 높고 당류가 낮은 순으로 10종 골랐습니다. 1회 단백질·함량·당류·열량·원료를 성분표 수치로 비교합니다.`,
+  // 2026-11-18 빙 '단백질 보충제 추천' 1~8위에 없음('파우더 추천'은 2위) → 제목 앞에 '보충제'와 데이터 수치.
+  title: "단백질 보충제·파우더 추천 TOP 10 | 함량·당류 비교",
+  seoTitle: `단백질 보충제 추천 TOP 10 (2026) | 파우더 ${powder.length}종 중 함량 ${range(top10.map(pct), "%")}·당류 0g ${top10ZeroSugar}종`,
+  description: `단백질 보충제(파우더) 추천: ProteinLab 등록 단백질 파우더 ${powder.length}종 중 게이너·식사대용을 뺀 제품을 단백질 함량(1회 제공량 대비 단백질 %)이 높고 당류가 낮은 순으로 10종 골랐습니다. 1회 단백질·함량·당류·열량·원료를 성분표 수치로 비교합니다.`,
   keywords: ["단백질 파우더 추천", "단백질 보충제 추천", "프로틴 파우더 추천", "단백질 함량 높은 보충제", "저당 단백질 파우더", "WPI 보충제 추천"],
   badge: "파우더 TOP 10",
   readingTime: "5분 읽기",
-  updatedAt: UPDATED,
+  updatedAt: "2026-11-18",
   methodologyNote: `ProteinLab 파우더 ${powder.length}종 성분표 기준 · 게이너·식사대용 제외 · 당류 표시 제품만 순위`,
-  intro: `단백질 파우더는 1회 제공량이 ${range(powder.map(serving), "g")}로 제품마다 달라서 1회 단백질 g만 보면 비교가 어렵습니다. 그래서 이 순위는 1회 제공량 중 단백질이 차지하는 비율(단백질 함량 %)을 먼저 보고, 같으면 당류가 낮은 순으로 정했습니다. 게이너·식사대용 ${excludedGainerMeal.length}종은 목적이 달라 따로 다룹니다.`,
+  intro: `단백질 보충제(파우더)는 1회 제공량이 ${range(powder.map(serving), "g")}로 제품마다 달라서 1회 단백질 g만 보면 비교가 어렵습니다. 그래서 이 순위는 1회 제공량 중 단백질이 차지하는 비율(단백질 함량 %)을 먼저 보고, 같으면 당류가 낮은 순으로 정했습니다. 게이너·식사대용 ${excludedGainerMeal.length}종은 목적이 달라 따로 다룹니다.`,
   summary: [
     `1위는 ${label(top10[0])}(단백질 함량 ${pctText(top10[0])}, 1회 ${fmt(top10[0].proteinPerServing)}g, 당류 ${sugarText(top10[0])})입니다.`,
     `TOP 10의 단백질 함량은 ${range(top10.map(pct), "%")}이고, 10종 중 ${top10ZeroSugar}종은 당류 0g입니다. 해외 직구 제품은 ${top10OverseasCount}종입니다.`,
@@ -191,6 +192,7 @@ export const proteinPowderTop10Config: ComparePageConfig = {
   ],
   faq: [
     { question: "단백질 함량이 가장 높은 파우더는 무엇인가요?", answer: `당류가 표시된 제품 중에서는 ${label(top10[0])}(${pctText(top10[0])})입니다. 당류 표시가 없는 제품까지 포함하면 ${label(noSugarGeneral[0])}도 ${pctText(noSugarGeneral[0])}입니다.` },
+    { question: "단백질 보충제와 단백질 파우더는 같은 건가요?", answer: `물이나 우유에 타 먹는 가루 형태의 단백질 보충제를 이 사이트에서는 '단백질 파우더'로 분류합니다(등록 ${powder.length}종). 병·팩에 담긴 완제품은 단백질 음료, 1회분 파우치·스틱은 단백질 쉐이크로 따로 비교합니다. 이 TOP 10은 파우더 중 게이너·식사대용을 뺀 제품의 순위입니다.` },
     { question: "단백질 함량(%)은 어떻게 계산했나요?", answer: "성분표의 1회 제공량(g)에 들어 있는 단백질(g)을 1회 제공량으로 나누고 100을 곱했습니다. 예를 들어 30g 중 27g이 단백질이면 90%입니다." },
     { question: "게이너와 식사대용 파우더는 왜 빠졌나요?", answer: `1회 제공량이 크고 탄수화물·열량 비중이 큰 제품이라 단백질 함량으로 줄을 세우면 목적과 맞지 않습니다. 게이너 ${ofType("gainer").length}종·식사대용 ${ofType("meal").length}종은 목적별 가이드에서 비교합니다.` },
     { question: "당류 0g인 단백질 파우더는 몇 종인가요?", answer: `등록 ${powder.length}종 중 성분표 당류가 0g인 제품은 ${powder.filter((p) => p.sugar === 0).length}종입니다. 당류 줄이 아예 없는 제품 ${powder.filter((p) => !hasSugar(p)).length}종은 0g으로 세지 않았습니다.` },
