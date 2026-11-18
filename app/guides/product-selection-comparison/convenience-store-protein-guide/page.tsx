@@ -1,15 +1,45 @@
 import { buildGuideJsonLd } from "@/app/lib/guideJsonLd";
-﻿import Link from "next/link";
+import Link from "next/link";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
+import GuideCompareListCta from "@/app/components/GuideCompareListCta";
+import { mockProducts, mockBarProducts } from "@/app/data/products";
+
+// 편의점 큐레이션(app/lib/curationSystem.ts matchesConvenienceDrink/Bar)과 같은 브랜드 기준.
+// 브랜드 기준이라 매장 재고를 뜻하지 않는다. 숫자는 등록 성분표에서 계산한다(2026-11-18, 빙 '편의점 단백질 음료' 6위).
+const DRINK_BRANDS = ["더단백", "셀렉스", "하이뮨", "랩노쉬", "닥터유"];
+const BAR_BRANDS = ["닥터유", "랩노쉬", "롯데웰푸드", "롯데"];
+const convDrinks = mockProducts.filter(
+  (p) => DRINK_BRANDS.some((b) => p.brand.includes(b)) || `${p.brand} ${p.name}`.includes("뉴케어 올프로틴"),
+);
+const convBars = mockBarProducts.filter((p) => BAR_BRANDS.some((b) => p.brand.includes(b)));
+const label = (p: (typeof convDrinks)[number]) => `${p.brand} ${p.name}${p.capacity ? ` ${p.capacity}` : ""}`;
+const drinkProteins = convDrinks.map((p) => p.proteinPerServing);
+const dMax = Math.max(...drinkProteins);
+const dMin = Math.min(...drinkProteins);
+const d20 = convDrinks.filter((p) => p.proteinPerServing >= 20);
+const d20LowSugar = d20.filter((p) => (p.sugar ?? 99) <= 3);
+const dTop = convDrinks.filter((p) => p.proteinPerServing === dMax);
+const dLowSugarPick = [...d20]
+  .sort((a, b) => (a.sugar ?? 99) - (b.sugar ?? 99) || b.proteinPerServing - a.proteinPerServing || (a.calories ?? 999) - (b.calories ?? 999))
+  .slice(0, 1);
+const barProteins = convBars.map((p) => p.proteinPerServing);
+const bMax = Math.max(...barProteins);
+const bTop = convBars.filter((p) => p.proteinPerServing === bMax);
+const b10 = convBars.filter((p) => p.proteinPerServing >= 10);
+const listSlugs = [...dTop, ...dLowSugarPick, ...d20LowSugar]
+  .map((p) => p.slug)
+  .filter((s, i, arr) => arr.indexOf(s) === i)
+  .slice(0, 3);
+
+const PAGE_TITLE = `편의점 단백질 음료 추천 | 편의점 브랜드 ${convDrinks.length}종 비교 · 20g 이상 ${d20.length}종·당류 3g 이하 ${d20LowSugar.length}종`;
+const PAGE_DESC = `더단백·셀렉스·하이뮨·뉴케어 올프로틴·랩노쉬·닥터유 등 편의점 유통 브랜드의 단백질 음료 ${convDrinks.length}종을 성분표로 비교했습니다. 한 병 단백질 ${dMin}~${dMax}g, 20g 이상 ${d20.length}종, 그중 당류 3g 이하 ${d20LowSugar.length}종. 가장 높은 제품은 ${dTop.map(label).join("·")}(${dMax}g)입니다. 단백질바 ${convBars.length}종도 함께 정리했습니다.`;
+const PAGE_URL = "https://proteinlab.kr/guides/product-selection-comparison/convenience-store-protein-guide";
 
 export const metadata = {
-  title: "편의점 단백질 음료·바 추천 | CU·GS25·세븐일레븐 성분 기준",
-  description:
-    "편의점에서 살 수 있는 단백질 음료와 단백질 바를 단백질 함량, 당류, 칼로리 기준으로 비교합니다. 더단백·셀렉스·하이뮨·닥터유·랩노쉬 브랜드를 성분 데이터로 바로 선택하세요.",
-  alternates: {
-    canonical: "https://proteinlab.kr/guides/product-selection-comparison/convenience-store-protein-guide",
-  },
+  title: PAGE_TITLE,
+  description: PAGE_DESC,
+  alternates: { canonical: PAGE_URL },
 };
 
 const drinkBrands = [
@@ -90,6 +120,10 @@ const commonMistakes = [
 
 const faqItems = [
   {
+    question: "편의점 단백질 음료 중 단백질이 가장 많은 제품은?",
+    answer: `등록된 편의점 유통 브랜드 음료 ${convDrinks.length}종 중 한 병 단백질이 가장 높은 제품은 ${dTop.map(label).join("·")}(${dMax}g)입니다. 20g 이상은 ${d20.length}종이고, 그중 당류 3g 이하는 ${d20LowSugar.length}종입니다. 매장마다 입고 품목이 다르니 진열된 제품의 라벨로 다시 확인하세요.`,
+  },
+  {
     question: "편의점 단백질 음료는 무엇부터 비교하나요?",
     answer: "한 병 기준 단백질, 당류, 열량, 용량을 먼저 확인하세요. 병 크기가 다르면 총량과 용량당 수치를 함께 보는 편이 정확합니다.",
   },
@@ -105,11 +139,11 @@ const faqItems = [
 
 export default function ConvenienceStoreProteinGuidePage() {
   const jsonLd = buildGuideJsonLd({
-    title: "편의점 단백질 음료·바 추천 | CU·GS25·세븐일레븐 성분 기준",
-    description: "편의점에서 살 수 있는 단백질 음료와 단백질 바를 단백질 함량, 당류, 칼로리 기준으로 비교합니다. 더단백·셀렉스·하이뮨·닥터유·랩노쉬 브랜드를 성분 데이터로 바로 선택하세요.",
-    url: "https://proteinlab.kr/guides/product-selection-comparison/convenience-store-protein-guide",
+    title: PAGE_TITLE,
+    description: PAGE_DESC,
+    url: PAGE_URL,
     datePublished: "2026-03-01",
-    dateModified: "2026-10-18",
+    dateModified: "2026-11-18",
     faq: faqItems,
   });
 
@@ -137,17 +171,26 @@ export default function ConvenienceStoreProteinGuidePage() {
             </span>
           </div>
           <h1 className="mt-3 text-2xl font-bold leading-tight text-[#16412D] md:text-3xl">
-            편의점 단백질 음료·바, 성분 기준으로 고르는 법
+            편의점 단백질 음료 추천: 편의점 브랜드 음료 {convDrinks.length}종·바 {convBars.length}종 성분 비교
           </h1>
+          <p className="mt-2 max-w-3xl break-keep text-sm font-semibold leading-6 text-[#2F3B33]">
+            편의점 유통 브랜드 음료 {convDrinks.length}종의 한 병 단백질은 {dMin}~{dMax}g이고, 20g 이상은 {d20.length}종,
+            그중 당류 3g 이하는 {d20LowSugar.length}종입니다. 단백질이 가장 높은 제품은 {dTop.map(label).join("·")}({dMax}g)
+            {dLowSugarPick[0]
+              ? `, 20g 이상 중 당류가 가장 낮은 제품은 ${label(dLowSugarPick[0])}(단백질 ${dLowSugarPick[0].proteinPerServing}g·당류 ${dLowSugarPick[0].sugar ?? "-"}g)`
+              : ""}
+            입니다. 바 {convBars.length}종 중 10g 이상은 {b10.length}종, 가장 높은 제품은 {bTop.map(label).join("·")}({bMax}g)입니다.
+          </p>
           <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
-            CU, GS25, 세븐일레븐에서 볼 수 있는 단백질 음료와 단백질 바를 단백질 함량, 당류, 칼로리 기준으로 비교합니다.
-            더단백·셀렉스·하이뮨·닥터유·랩노쉬 등 편의점 유통 브랜드를 ProteinLab 데이터로 바로 확인하세요.
+            CU, GS25, 세븐일레븐에서 볼 수 있는 더단백·셀렉스·하이뮨·뉴케어 올프로틴·랩노쉬·닥터유(음료), 닥터유·랩노쉬·롯데(바)
+            브랜드의 등록 제품을 성분표 기준으로 셌습니다. 매장마다 입고 품목은 다릅니다. 기준일 2026-11-18.
           </p>
         </div>
       </section>
 
       <main className="mx-auto max-w-[1200px] px-4 py-8 md:px-6">
         <div className="space-y-6">
+          <GuideCompareListCta category="drink" slugs={listSlugs} />
 
           {/* 빠른 이동 */}
           <section className="grid gap-3 md:grid-cols-3">
