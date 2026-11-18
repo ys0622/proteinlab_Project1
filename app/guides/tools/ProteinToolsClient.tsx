@@ -8,7 +8,7 @@ type ActivityLevel = "none" | "light" | "moderate" | "intense";
 type Goal = "wellness" | "diet" | "muscle";
 
 const activityOptions: { value: ActivityLevel; label: string; factor: number }[] = [
-  { value: "none", label: "운동 없음", factor: 0.8 },
+  { value: "none", label: "운동 없음", factor: 0.91 },
   { value: "light", label: "주 1~2회 가벼운 운동", factor: 1.2 },
   { value: "moderate", label: "주 3~4회 운동", factor: 1.6 },
   { value: "intense", label: "고강도 운동 / 근력 운동", factor: 2.0 },

@@ -6,12 +6,25 @@ import Footer from "@/app/components/Footer";
 import GuideNextReads from "@/app/components/GuideNextReads";
 import GuideBuySection from "@/app/components/GuideBuySection";
 import CategoryDataSection from "@/app/components/CategoryDataSection";
-import TrackedLink from "@/app/components/TrackedLink";
+import DailyProteinCalc, { type CalcCategory } from "./DailyProteinCalc";
+import { mockProducts, mockBarProducts, shakeProducts, yogurtProducts, soymilkProducts } from "@/app/data/products";
 
 const PAGE_URL = "https://proteinlab.kr/guides/basics/daily-requirement";
-const _pageTitle = "단백질 하루 섭취량 | 성별·나이·체중별 권장량과 운동할 때 기준";
+const _pageTitle = "단백질 하루 섭취량 계산기 | 체중·나이·운동별 권장량(2020 섭취기준)";
 const _pageDesc =
-  "2020 한국인 영양소 섭취기준으로 본 단백질 하루 권장량(성인 남자 60~65g, 여자 50~55g, 체중 1kg당 0.91g)과 운동·노년·체중별 계산법, 한국인이 실제로 먹는 양을 정리했습니다.";
+  "체중만 넣으면 단백질 하루 섭취량을 바로 계산합니다. 2020 한국인 영양소 섭취기준 권장량은 체중 1kg당 0.91g(성인 남자 60~65g, 여자 50~55g), 근력 운동 1.4~2.0g, 65세 이상 1.0~1.2g. 한 끼 목표와 그 양을 1개로 채우는 등록 제품 수도 함께 보여줍니다.";
+
+const calcCategories: CalcCategory[] = [
+  { key: "drink", label: "단백질 음료", href: "/drinks", proteins: mockProducts.map((p) => p.proteinPerServing) },
+  { key: "shake", label: "쉐이크", href: "/shake", proteins: shakeProducts.map((p) => p.proteinPerServing) },
+  { key: "bar", label: "단백질바", href: "/bars", proteins: mockBarProducts.map((p) => p.proteinPerServing) },
+  { key: "yogurt", label: "요거트", href: "/yogurt", proteins: yogurtProducts.map((p) => p.proteinPerServing) },
+  { key: "soymilk", label: "두유", href: "/soymilk", proteins: soymilkProducts.map((p) => p.proteinPerServing) },
+].map((c) => ({ ...c, proteins: c.proteins.filter((n) => Number.isFinite(n) && n > 0) }));
+
+// 본문 예시(체중 60kg): 한 끼 15g을 1개로 채우는 단백질 음료 수
+const example60Meal = Math.round(60 * 0.25);
+const example60Drinks = calcCategories[0].proteins.filter((n) => n >= example60Meal).length;
 export const metadata = {
   title: _pageTitle,
   description: _pageDesc,
@@ -72,6 +85,11 @@ const faqs = [
       "2020 한국인 영양소 섭취기준의 권장섭취량은 남자 19~49세 65g, 50세 이상 60g, 여자 19~29세 55g, 30세 이상 50g입니다. 체중으로 계산하면 1kg당 0.91g입니다.",
   },
   {
+    question: "단백질 하루 섭취량은 어떻게 계산하나요?",
+    answer:
+      "체중(kg)에 기준 배수를 곱합니다. 건강한 성인 권장섭취량은 0.91g(2020 한국인 영양소 섭취기준), 65세 이상은 1.0~1.2g(PROT-AGE), 근력 운동은 1.4~2.0g(ISSN 2017)입니다. 예를 들어 60kg이면 권장량 55g, 근력 운동 시 96g(1.6g 기준)입니다. 한 끼 목표는 체중 1kg당 0.25g입니다.",
+  },
+  {
     question: "여자 단백질 하루 섭취량은 얼마인가요?",
     answer:
       "여자 19~29세는 하루 55g, 30세 이상은 50g이 권장섭취량입니다. 체중이 기준보다 많이 나가거나 근력 운동을 한다면 체중 1kg당 0.91g(운동 시 1.4~2.0g)으로 다시 계산하는 편이 맞습니다. 임신 2·3분기와 수유기에는 추가량이 따로 정해져 있습니다.",
@@ -130,7 +148,7 @@ export default function DailyRequirementPage() {
     description: _pageDesc,
     url: PAGE_URL,
     datePublished: "2026-03-01",
-    dateModified: "2026-11-02",
+    dateModified: "2026-11-18",
   });
 
   const faqJsonLd = {
@@ -171,13 +189,19 @@ export default function DailyRequirementPage() {
           </h1>
           <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--foreground-muted)]">
             성인의 단백질 하루 섭취량 권장 기준은 체중 1kg당 0.91g이며, 남자 19~49세는 65g, 여자 19~29세는
-            55g입니다(2020 한국인 영양소 섭취기준). 성별·나이·운동 여부에 따른 계산법도 정리했습니다. 기준일 2026-11-02.
+            55g입니다(2020 한국인 영양소 섭취기준). 아래 계산기에 체중을 넣으면 운동·나이 기준별 하루 섭취량과 한 끼
+            목표를 바로 볼 수 있습니다. 기준일 2026-11-18.
           </p>
         </div>
       </section>
 
       <main className="mx-auto max-w-[1200px] px-4 py-8 md:px-6">
         <div className="space-y-6">
+          <DailyProteinCalc
+            levels={perKgLevels.map((l) => ({ key: l.label, label: l.label, perKg: l.perKg, note: l.note }))}
+            categories={calcCategories}
+          />
+
           <section
             aria-labelledby="daily-answer-title"
             className="rounded-2xl border border-[#d7e6da] bg-[#f5fbf6] px-5 py-5"
@@ -202,6 +226,11 @@ export default function DailyRequirementPage() {
               <li>
                 · 한국 성인 대부분은 평균적으로 권장량보다 많이 먹지만, <strong>75세 이상 여성은 권장량의 75%</strong>에
                 그칩니다(국민건강영양조사 2013~2017).
+              </li>
+              <li>
+                · 한 끼에는 <strong>체중 1kg당 0.25g</strong>(ISSN 2017)이 목표입니다. 체중 60kg이면 {example60Meal}g이고, 등록
+                단백질 음료 {calcCategories[0].proteins.length}종 중 <strong>{example60Drinks}종</strong>이 1병으로 이 양을
+                채웁니다.
               </li>
             </ul>
           </section>
@@ -287,21 +316,13 @@ export default function DailyRequirementPage() {
               이 표는 건강한 성인 기준이며 신장·간 질환이 있는 경우에는 맞지 않습니다.
             </p>
 
-            <div className="mt-5 rounded-2xl border border-[#d7e6da] bg-[#f5fbf6] px-4 py-4">
-              <p className="text-sm font-semibold text-[#24543d]">내 체중·활동량으로 바로 계산하기</p>
-              <p className="mt-1 text-sm leading-6 text-[var(--foreground-muted)]">
-                계산기에 체중과 운동 정도를 넣으면 하루 목표량과 한 끼 목표량을 같이 보여줍니다.
-              </p>
-              <TrackedLink
-                href="/guides/tools#daily-protein-calculator"
-                trackingLabel="하루 단백질 계산기"
-                trackingSection="daily_requirement_calculator_cta"
-                trackingPageType="guide"
-                className="mt-3 inline-flex items-center rounded-xl bg-[#24543d] px-4 py-2 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-[#1d4532]"
-              >
-                하루 단백질 계산기 열기
-              </TrackedLink>
-            </div>
+            <p className="mt-3 text-sm leading-6 text-[var(--foreground-muted)]">
+              체중을 넣어 바로 계산하려면{" "}
+              <a href="#daily-protein-calculator" className="font-semibold text-[var(--accent)] hover:underline">
+                맨 위 계산기
+              </a>
+              를 쓰세요.
+            </p>
           </section>
 
           <GuideBuySection topic="general" variant="top" />
