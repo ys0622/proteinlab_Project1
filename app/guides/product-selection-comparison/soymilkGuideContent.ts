@@ -55,8 +55,15 @@ function faqJsonLd(config: ComparePageConfig) {
   };
 }
 
-const related = (extra: RelatedGuideLink[]): RelatedGuideLink[] => [
+// 2026-11-19 빙이 두유 단백질 함량 순위(10/14~)를 아직 색인하지 않아(url: 결과 없음) 빙에 색인된 두유 가이드마다 링크한다.
+const rankingLink: RelatedGuideLink = {
+  title: "두유 단백질 함량 순위",
+  href: `${BASE}/soymilk-protein-ranking`,
+  description: `등록 두유 ${soy.length}종 전체를 1팩 단백질 높은 순으로 정리했습니다.`,
+};
+const related = (extra: RelatedGuideLink[], { isRanking = false } = {}): RelatedGuideLink[] => [
   ...extra,
+  ...(isRanking ? [] : [rankingLink]),
   { title: "두유 전체 비교", href: "/soymilk", description: "등록된 두유를 단백질 구간·당류·열량 기준으로 한 화면에서 비교합니다." },
   { title: "고단백 두유 고르는 법", href: `${BASE}/high-protein-soymilk-guide`, description: "1팩 단백질 구간(11g 이상·8~10g·5~7g)과 읽는 순서를 먼저 정리합니다." },
   { title: "두유 하루 몇 개", href: "/guides/intake-strategy-health/soymilk-per-day", description: "1팩·2팩·3팩이 하루 권장섭취량의 몇 %인지, 당류·열량과 함께 계산했습니다." },
@@ -403,7 +410,7 @@ export const proteinRankSoymilkConfig: ComparePageConfig = {
   relatedGuides: related([
     { title: "두유 단백질 밀도 순위", href: "/ranking/soymilk/density/1", description: "100mL당 단백질 기준으로 계산한 순위를 봅니다." },
     { title: "저당 두유 추천", href: `${BASE}/low-sugar-soymilk-guide`, description: "당류 2g 이하 두유를 봅니다." },
-  ]),
+  ], { isRanking: true }),
   purchaseLinks: proteinTop.slice(0, 3).map((p) => ({ label: `${label(p)} 보기`, slug: p.slug })),
 };
 proteinRankSoymilkConfig.jsonLd = [articleJsonLd(proteinRankSoymilkConfig), faqJsonLd(proteinRankSoymilkConfig)];

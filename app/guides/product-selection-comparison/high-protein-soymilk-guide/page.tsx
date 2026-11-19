@@ -96,6 +96,11 @@ const checks = [
 
 const relatedLinks = [
   {
+    href: "/guides/product-selection-comparison/soymilk-protein-ranking",
+    title: "두유 단백질 함량 순위",
+    description: "등록 두유 전체를 1팩 단백질 높은 순으로 정리했습니다.",
+  },
+  {
     href: "/soymilk",
     title: "두유 전체 비교",
     description: "등록된 두유를 단백질 구간, 당류, 열량 기준으로 한 화면에서 비교합니다.",
