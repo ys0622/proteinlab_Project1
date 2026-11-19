@@ -80,7 +80,7 @@ const seniorCompareLink: RelatedGuideLink = {
 // 2026-11-12 질문 허브 2개(프로틴 칼로리·단백질 보충제 하루 섭취량).
 const caloriesLink: RelatedGuideLink = {
   title: "프로틴 칼로리 비교",
-  href: `/protein-powder-calories`,
+  href: `${BASE}/protein-powder-calories`, // 11/19 수정: `/protein-powder-calories`는 404였다(11/12~)
   description: "단백질 보충제 1스쿱 열량 낮은 순 전체 순위와 유형별 열량입니다.",
 };
 const perDayLink: RelatedGuideLink = {

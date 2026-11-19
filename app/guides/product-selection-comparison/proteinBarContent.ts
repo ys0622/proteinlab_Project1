@@ -379,6 +379,11 @@ proteinBarTop10Config.relatedGuides = [
     description: "등록 단백질바 전체를 1개 단백질 높은 순으로, 100g당·100kcal당 값과 함께 봅니다.",
   },
   {
+    title: "단백질바 칼로리 비교",
+    href: "/guides/product-selection-comparison/protein-bar-calories",
+    description: "등록 단백질바 전체를 1개 열량 낮은 순으로 정리했습니다.",
+  },
+  {
     title: "단백질바 하루 몇 개",
     href: "/guides/intake-strategy-health/protein-bar-per-day",
     description: "1개·2개가 하루 권장섭취량의 몇 %인지, 열량은 얼마나 더해지는지 계산했습니다.",

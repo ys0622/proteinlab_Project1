@@ -363,6 +363,11 @@ proteinDrinkTop10Config.sections = [
 ];
 proteinDrinkTop10Config.relatedGuides = [
   {
+    title: "단백질 음료 칼로리 비교",
+    href: "/guides/product-selection-comparison/protein-drink-calories",
+    description: "등록 단백질 음료 전체를 1병 열량 낮은 순으로 정리했습니다.",
+  },
+  {
     title: "뉴케어 올프로틴 완전 분석",
     href: "/guides/product-selection-comparison/newcare-allprotein",
     description: "41g, 25g, 워터, 식물성 라인을 한 번에 비교합니다.",

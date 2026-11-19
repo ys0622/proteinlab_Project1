@@ -257,6 +257,7 @@ export const proteinShakeTop7Config: CategoryGuideConfig = {
       { title: "단백질쉐이크 고르는 법", href: "/guides/product-selection-comparison/protein-shake-guide", description: "순위보다 먼저 단백질·당류·칼로리·식이섬유 선택 기준을 알고 싶다면 이 가이드부터 확인합니다." },
       { title: "단백질 음료 vs 단백질 쉐이크", href: "/guides/product-selection-comparison/protein-drink-vs-protein-shake", description: "RTD 음료와 파우치형 쉐이크 중 내 섭취 상황에 맞는 형태를 먼저 구분합니다." },
       { title: "단백질 쉐이크 칼로리 순위", href: "/guides/product-selection-comparison/protein-shake-calorie-ranking", description: "종합 추천이 아니라 칼로리가 낮은 순서로 전체 후보를 다시 비교합니다." },
+      { title: "단백질 쉐이크 단백질 함량 순위", href: "/guides/product-selection-comparison/protein-shake-protein-ranking", description: "등록 쉐이크 전체를 1포 단백질 높은 순으로 정리했습니다." },
       { title: "플라이밀 단백질 쉐이크 추천", href: "/guides/product-selection-comparison/flymill-protein-shake", description: "플라이밀 피넛버터와 초코, 쿠키앤크림 중 무엇이 더 맞는지 브랜드 기준으로 먼저 좁힐 수 있습니다." },
       { title: "단백하니 단백질 쉐이크 추천", href: "/guides/product-selection-comparison/danbaekhani-protein-shake", description: "단백하니 시그니처, 초코, 말차 차이를 저당과 칼로리 기준으로 정리한 브랜드 가이드입니다." },
       { title: "플라이밀 vs 단백하니", href: "/guides/product-selection-comparison/flymill-vs-danbaekhani", description: "고단백 우선인지, 더 가벼운 저당 균형형이 더 맞는지 두 인기 브랜드를 바로 비교합니다." },
