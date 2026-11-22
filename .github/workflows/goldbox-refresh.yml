@@ -24,6 +24,12 @@ jobs:
       - name: Refresh and inspect Goldbox coverage
         shell: bash
         run: |
+          # 2026-11-22: 쿠팡 파트너스 API가 2026-11-23 12:59 KST(03:59Z)까지 계정 전체 차단(분당 100회 초과 1회, 3회면 이용 제한).
+          # 차단 중에는 부르지 않고 성공으로 끝낸다. 이 날짜가 지나면 이 블록은 아무 일도 하지 않는다.
+          if [ "$(date -u +%Y%m%d%H%M)" -lt 202611230405 ]; then
+            echo "::warning::Coupang Partners API blocked until 2026-11-23 03:59Z; skipping this run."
+            exit 0
+          fi
           # 2026-11-09: 쿠팡 API 일시 연결 오류(network, 상품 0개)는 몇 분 안에 회복된다(11/7·11/9).
           # 'ready'이고 상품이 1개 이상이 될 때까지 60초 간격으로 4번 확인하고, 그래도 안 되면 실패로 본다.
           for attempt in 1 2 3 4; do
