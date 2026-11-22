@@ -307,6 +307,10 @@ const GENERIC_PRODUCT_GUIDES = new Set([
   "protein-category-guide",
 ]);
 
+// 되돌림 시험(2026-11-22 Scott): 바 TOP 10은 11/15 첫 문장 답 뒤 네이버 7일 클릭이 0(30일 44)이 돼 이 문장을 뺀다.
+// 1주 뒤 네이버 클릭이 돌아오면 쉐이크 TOP 7 등도 같은 방식으로 검토한다(docs/naver-judgment-2026-11-21.md).
+const DATA_ANSWER_REVERTED_GUIDES = new Set(["protein-bar-top10"]);
+
 export function CategoryGuidePage({ config }: { config: CategoryGuideConfig }) {
   const relatedGuides = [...config.relatedGuides, trackBHubLink].filter(
     (item, index, array) => array.findIndex((candidate) => candidate.href === item.href) === index,
@@ -315,7 +319,7 @@ export function CategoryGuidePage({ config }: { config: CategoryGuideConfig }) {
   const heroProducts = resolveGuideHeroProducts(config.purchaseLinks);
   // 첫 화면 한 줄 답(2026-11-15): 이 페이지에 나온 제품의 성분표 수치로 계산(app/lib/guideAnswer.ts).
   // 저칼로리·저당·아침·카테고리 입문 가이드 4개는 바·음료·쉐이크 공용 예시 4개(312kcal 바 포함)를 써서 범위 문장이 주제와 어긋나므로 뺀다.
-  const guideAnswer = introHasNumber(config.intro) || GENERIC_PRODUCT_GUIDES.has(config.slug)
+  const guideAnswer = introHasNumber(config.intro) || GENERIC_PRODUCT_GUIDES.has(config.slug) || DATA_ANSWER_REVERTED_GUIDES.has(config.slug)
     ? ""
     : getGuideAnswer([
         ...(config.heroRankList?.slugs ?? []),
