@@ -41,12 +41,22 @@ proteinlab.kr — 단백질 음료·바·요거트·쉐이크 제품 비교 서�
 ## 쿠팡·수익 규칙
 - 제품의 `coupangUrl`은 (a) `link.coupang.com/a/...` 단축 링크(그대로 사용) 또는 (b) 쿠팡 상품 페이지 URL(`/api/out/coupang`이 딥링크로 변환)이다.
 - `link.coupang.com/a/gaIdNRGs2u`는 쿠팡 **홈**으로 가는 공용 폴백이다(실제 구매 링크가 아님). 데이터에서 15개 제품이 이 링크를 쓰고 구매 버튼 대신 '판매 확인 안 됨'으로 보인다(`hasNoPurchasableCoupangLink`). 단, `app/data/productOverrideLocal.json`의 `coupangUrl`이 데이터보다 우선한다(KV override보다도 우선). 이 중 4개(랩노쉬 푸드바·크라운 고단백질바·켈로그 그래놀라바·요플레 블루베리)는 override의 쿠팡 상품이 판매 중이라 버튼이 있다(2026-10-24 확인).
-- 링크를 지어내지 않는다. 쿠팡에 없는 제품은 링크 없이 둔다. 검색 URL은 수익이 나지 않는다.
+- 링크를 지어내지 않는다. 쿠팡에 없는 제품은 링크 없이 둔다. 일반 검색 URL(`np/search`)은 수익이 나지 않는다. 단, 쿠팡이 옵션을 거부하고 같은 맛 단품도 없는 제품은 파트너스 검색 결과 링크(`link.coupang.com/a/...` → AFFSRP, subid=proteinlab)를 쓴다(2026-11-22 Scott 결정, 11/23 57개 적용, 목록 `docs/coupang-link-audit-2026-11-22.md`).
 - **구매 버튼 같은 수익 진입점은 개편하면서 빼지 않는다.**
 - 쿠팡파트너스 계정은 케어맵과 공용이다. 쿠팡 보고서 수치는 사이트별로 분리되지 않는다. GA4는 계정(`proteinlab`)만 같고 **속성은 분리**돼 있다(프로틴랩 526849422, 케어맵 531248967, 키즈픽 533061815). 프로틴랩 데이터는 반드시 `proteinlab` 속성에서 본다.
 - 구분값(subId)은 모든 구매 링크에서 `proteinlab`이다(2026-10-24 Scott 결정, `getCoupangSubId`, `NEXT_PUBLIC_COUPANG_PARTNERS_SUB_ID`). 그 전에는 카테고리 이름(drink 등)이 들어갔고, 쿠팡파트너스에서 만든 단축 링크 364개는 subId가 비어 있었다. 지금은 단축 링크도 `app/data/coupangShortLinkTargets.json`(단축 코드→상품 번호)으로 `/api/out/coupang?short=<코드>`를 거쳐 subId=proteinlab 딥링크를 새로 만들고, 실패하면 원래 단축 링크로 보낸다. 새 단축 링크를 넣으면 `python -X utf8 scripts/coupang/resolve-short-links.py`를 돌린다. `AF2667911`은 subId가 아니라 계정 ID(lptag, 케어맵과 같음)다.
 - 쿠팡은 **마이 페이지 → 채널 아이디 관리**에 등록된 subId(영문·숫자 8~20자, 밑줄 불가)만 리포트·API에 남기고, 나머지는 빈값으로 합친다. 2026-10-28 등록: proteinlab·threadsliving(쓰레드 생활)·instaseason(인스타). 기존 caremap7028·naverblog·ProteinLabThreads. 새 subId를 쓰기 전에 먼저 등록한다(등록은 본인 인증 필요, Scott이 인증하면 크롬5에서 Claude가 추가 가능).
 - 골드박스 API는 두 사이트가 같은 키를 쓰므로 호출량 한도를 공유한다. 케어맵과 코드를 합치지 않는다.
+
+## ⚠ 쿠팡 파트너스 API 한도 (공용 계정, 2026-11-22 사고 뒤 Scott 지시 — 매우 중요)
+- 쿠팡 파트너스 계정·API 키는 프로틴랩·케어맵·K-RamenLab·키즈픽·마실맵·쓰레드/인스타 쿠파스·쇼핑쇼츠·블로그(kdp-tools)가 **모두 같이 쓴다**. 한도도 모든 프로젝트 호출을 합쳐서 센다.
+- 딥링크 API 한도는 **1분당 100회(모든 프로젝트 합산)**. 넘으면 24시간 차단되고, **총 3회 넘으면 파트너스 이용이 제한된다**(수익 전체가 막힘). 2026-11-22 12:58~13:00에 K-RamenLab 링크 점검(약 100건)과 프로틴랩 구매 버튼 전수 점검(약 200건)이 겹쳐 **1회째 초과**, 11/23 12:59까지 차단됐다.
+- 대량 호출(딥링크·검색·골드박스 등 한 번에 30건 넘게) 규칙:
+  1. 시작 전에 다른 프로젝트가 같은 시간에 쿠팡 API를 쓰고 있는지 확인한다(다른 세션 상태, 예약 작업 시간: 프로틴랩 골드박스 평일 07:40·주말 08:40, 케어맵 매일 운영 08:40).
+  2. **한 번에 50건 이하, 순차 호출(동시 호출 금지), 호출 간격 2초 이상**. 더 필요하면 시간을 나눠서 한다.
+  3. 응답에 rCode 403·'사용 횟수 초과'·HTML 응답이 나오면 **즉시 멈추고** 안내된 해제 시각까지 아무 프로젝트에서도 부르지 않는다. 다른 프로젝트 세션에도 알린다.
+  4. 저장된 링크가 있으면 API를 다시 부르지 말고 저장된 링크와 라이브 이동 주소를 비교해 점검한다.
+- 초과 횟수(현재 1/3)가 바뀌면 이 항목을 모든 프로젝트에서 같이 고친다.
 
 ## 일하는 원칙
 1. **수치·주장은 라벨이나 원문으로 검증한다.** 성분표 이미지가 수치의 1차 근거다. 근거 없는 효능 표현, 출처 없는 통계·순위는 쓰지 않는다. 불확실하면 "추정"이라고 쓴다.
@@ -74,5 +84,5 @@ proteinlab.kr — 단백질 음료·바·요거트·쉐이크 제품 비교 서�
 - `.cc-wt`는 비어 있는 임시 폴더다. 사용자가 직접 지운다. 내가 지우지 않는다.
 
 ## 에이전트
-기본 구성은 메인 작업자(나) 1명과 검수·감사 에이전트 3명이다(`.claude/agents/`). 검수자는 기본적으로 읽기 전용이며 파일 수정과 배포는 메인 작업자만 한다. 호출 기준은 `.claude/team-brief.md`에 있다.
+기본 구성은 메인 작업자(나) 1명과 읽기 전용 에이전트 3명이다(`.claude/agents/`: strategist 전략·로드맵, growth-analyst 유입·AI 인용·동선, auditor 데이터·코드 어긋남·완료 검증; 2026-11-23 7개→5개, 2026-11-24 reality-checker를 auditor 모드 C로 합치고 release는 보관해 3개(Scott 승인), 원본 `.claude/agents-archive/`). 배포는 메인 작업자가 배포 절차대로 직접 한다. 검수자는 기본적으로 읽기 전용이며 파일 수정과 배포는 메인 작업자만 한다. 호출 기준은 `.claude/team-brief.md`에 있다.
 프로젝트 스킬(`.claude/skills/`): `proteinlab-add-product`(사진·성분표로 신규 제품 등록→배포→골드박스), `proteinlab-goldbox-fix`(골드박스 확인 필요·잘못 붙은 특가 정정). 반복 절차가 생기면 스킬로 묶자고 제안한다. 마케팅 스킬 9개(seo-audit, programmatic-seo, schema, site-architecture, ai-seo, content-strategy, copy-editing, cro, analytics — coreyhaines31/marketingskills, 2026-10-27)는 SaaS·구글 기준이라 `.claude/product-marketing.md`(프로틴랩 규칙)를 먼저 읽고, 충돌하면 그 파일과 이 문서가 우선한다.
