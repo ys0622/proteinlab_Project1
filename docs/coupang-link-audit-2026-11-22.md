@@ -131,3 +131,99 @@
 | soymilk | 삼육두유 검은콩&칼슘 파우치 190mL | sahmyook-blackbean-calcium-pouch-190 | 8128605871 |
 | soymilk | 매일두유 렌틸콩 저당 190mL | maeil-lentil-lowsugar-190 | 8890159701 |
 | soymilk | 베지밀 달콤한 비 190mL | vegemil-sweet-b-190 | 8126806548 |
+
+## 11/23 후속 정리 (차단 해제 뒤, 14:22~14:50)
+- 쿠팡 API: 검색 100회 + 딥링크 약 60회를 한 번에 1건씩 4.5초 간격(분당 13회 이하)으로 불렀다. 403·사용 횟수 초과 없음. 시작 전 K-RamenLab 세션에 시간대를 알렸다.
+- 원인 불명 38개는 대부분 판매 중이었다(검색 API에 같은 상품 번호가 나옴). HTML 응답은 판매 중인 상품에서도 나와서 차단 신호가 아니라 상품별 응답 차이로 보인다(추정). 이때 버튼은 subId=proteinlab 파트너스 링크(/re/AFFSDP)로 간다.
+- 주의: 제품 페이지의 첫 /api/out/coupang 링크는 관련 제품 버튼일 수 있다. 점검은 `slug=<그 제품>`이 붙은 버튼으로 해야 한다(처음에 잘못 집어 다시 했다).
+- **같은 제품이 다른 상품 번호로 판매 중인 25개는 링크를 바꿨다**(제품명·맛·용량이 맞는 것만, 묶음 수량 차이는 허용, 다른 맛이 섞인 세트는 제외). 새 링크는 변환 성공 16, HTML 응답 9(파트너스 폴백).
+
+| slug | 이전 상품 번호 | 새 상품 번호 | 쿠팡 상품명 |
+|---|---|---|---|
+| danbaek-water-peach-250 | 8710022731 | 8646782495 | 더단백 워터 프로틴 복숭아 250ml |
+| sellex-profit-sports-wildchoco-350 | 9481373144 | 9678482395 | 셀렉스 프로핏 스포츠 와일드 초코 |
+| takefit-pro-flatpeach-500 | 7936837232 | 7944540385 | [로켓프레시] 남양유업 테이크핏 프로 납작복숭아맛 |
+| takefit-max-pumpkin-250 | 7923592222 | 8527808871 | 테이크핏 맥스 호박고구마맛 남양 |
+| dryou-protein-drink-choco-250 | 9536016898 | 6612465223 | 닥터유 단백질 프로 초코 250ml 24개 |
+| seoulmilk-protein-energy-choco-240 | 8590463503 | 9772670052 | 서울우유 프로틴 에너지 초코 240ML x 10 아이스박스포장 /코스트코 |
+| hymune-drinking-protein-balance-125 | 7293623577 | 9808367993 | 후디스 하이뮨 마시는 프로틴 밸런스 125ml 12개 |
+| dryou-proteinbar-pro-crunch | 9334616536 | 7537130432 | 오리온 닥터유 프로 단백질바 크런치 |
+| quest-nutrition-protein-bar-lemon-cake-60 | 9295121509 | 9737130517 | 퀘스트 뉴트리션, 프로틴바, 레몬 케이크, 바 4개, 개당 60g(2.12oz) QST-0 |
+| post-proteinbar | 8990838579 | 7563811408 | 동서 포스트 단백질바 50g |
+| grenade-carbkilla-peanut-nutter-60 | 5613757276 | 9769919927 | 그레네이드 카브 킬라 단백질바 피넛 너터 60g 12개입 |
+| flymill-proteinshake-peanut-butter-45 | 8997072204 | 9677681774 | 플라이밀리얼초코 플라이밀 단백질 쉐이크 파우치, 45g, 7개 (피넛버터) |
+| hyindam-ttukttak-shake-seoritae-60 | 8158575026 | 9574263770 | 혜인담 뚝딱쉐이크 [서리태] /다이어트식단 체중조절 단백질 식사대용건강한끼 |
+| delight-project-shake-blueberry-yogurt-45 | 9403022440 | 9826050820 | 딜라이트프로젝트 단백질 쉐이크 블루베리요거트 |
+| maeil-bio-greek-togo-plain-120 | 8312114740 | 8310404719 | 매일바이오 그릭요거트 투고 플레인 120g 6개입/냉장무배 |
+| maeil-bio-greek-drink-banana-190 | 8713507821 | 8700604294 | 매일 바이오 그릭요거트 드링크 바나나 |
+| graintab-unsweetened-protein-190 | 9726013580 | 9620604823 | 그레인랩 담백한 무가당 고단백 두유, 24개, 190ml |
+| nam-gt-blackbean-sesame-190 | 9698996861 | 9743418340 | 남양 맛있는두유GT 검은콩깨 190mlx24팩 |
+| bobsnu-ssalnun-yakkong-190 | 194633279 | 9827678358 | 서울대 밥스누 쌀눈으로 더 똑똑한! 약콩100 1BOX (190ml, 총 16팩) |
+| vegemil-calcium-blackbean-sesame-rice-190 | 7611814399 | 9830846466 | 베지밀 뼈에좋은 칼슘두유 검은콩 깨 쌀 |
+| baggio-shakeyam-corn-45 | 9016778021 | 9680357045 | 바지오 단백질 쉐이크얌 옥수수 |
+| newcare-all-protein-plant-savory-250 | 9413959502 | 9662804308 | 뉴케어올프로틴 식물성단백질 고소한맛 |
+| milit-proteinshake-melon-40 | 8538147039 | 9738148469 | 밀잇 식단관리 단백질 쉐이크 멜론맛 포켓형 |
+| itthefit-proteinshake-double-choco-40 | 7467524918 | 9740777415 | 델리스푼 잇더핏 더블초코맛 단백질 프로틴 쉐이크 |
+| yoplait-protein-strawberry-banana-210 | 7828219997 | 6063696769 | 요플레 프로틴 딸기바나나 |
+
+- **남은 57개**: 변환 거부이고 검색에서도 같은 제품(같은 맛 단품)을 못 찾았다. 품절·판매 종료 가능성이 높다(추정). 버튼은 그대로 두었다(원래 링크로 감, 수익 진입점 유지). 다음 점검 때 다시 본다.
+
+| 분류 | 제품 | slug |
+|---|---|---|
+| drink | 셀렉스 프로핏 (모카 초콜릿) 250mL | sellex-profit-mocha-chocolate-250 |
+| drink | 셀렉스 프로핏 스포츠 (초콜릿) 330mL | sellex-profit-sports-choco-330 |
+| drink | 하이뮨 프로틴 밸런스 (식물성 고단백) 190mL | hymune-protein-balance-plant-highprotein-190 |
+| drink | 테이크핏 테이크핏 맥스 (초코맛) 250mL | takefit-max-choco-250 |
+| drink | 더단백 더단백 밸런스 (오리지널) 190mL | danbaek-balance-original-190 |
+| drink | 랩노쉬 프로틴 드링크 (카카오) 350mL | labnosh-protein-cacao-350 |
+| drink | 칼로바이 퍼펙트 파워쉐이크 (딸기맛) 250mL | calobye-perfect-powershake-strawberry-250 |
+| drink | 칼로바이 퍼펙트 파워쉐이크 (초코맛) 250mL | calobye-perfect-powershake-choco-250 |
+| drink | 함소아제약 미니언즈 프로틴액트 (초콜릿) 330mL | hamsoa-minions-proteinact-choco-330 |
+| bar | 베노프 단백질바 (청키초콜릿) 50g | benof-proteinbar-chunky-choco |
+| bar | 하이뮨 액티브바 (넛츠) 50g | hymune-activebar-nuts |
+| bar | 마이프로틴 소프트 단백질바 (레몬 얼그레이) 45g | myprotein-soft-lemon-earlgrey |
+| bar | 마이프로틴 소프트 단백질바 (카라멜 초코) 45g | myprotein-soft-caramel-choco |
+| bar | 마이프로틴 소프트 단백질바 (딸기 요거트) 45g | myprotein-soft-strawberry-yogurt |
+| bar | 단백하니 프로틴바 (피넛버터) 38g | danbaekhani-protein-bar-peanutbutter-38 |
+| bar | 랩노쉬 푸드바 마일드 초코 55g | labnosh-foodbar-mildchoco |
+| bar | 랩노쉬 단백쿠키바 밀크티 35g | labnosh-cookiebar-milktea-35 |
+| bar | 씨알로 식물성단백질바 43g | cralo-plant-proteinbar |
+| bar | 크라운 고단백질초코바 45g | crown-highprotein-chocobar |
+| bar | 켈로그 프로틴 그래놀라바 (고소한맛) 35g | kellogg-protein-granolabar-savory |
+| bar | 하이뮨 프로틴밸런스 단백질바 40g | hymune-protein-balance-bar |
+| bar | 빼바 리얼초콜릿 프로틴바 다크 40g 40g | ppaeba-realchoco-proteinbar-dark-40 |
+| bar | 빼바 리얼초콜릿 프로틴바 화이트 40g 40g | ppaeba-realchoco-proteinbar-white-40 |
+| bar | 빼바 리얼초콜릿 프로틴바 쿠키앤크림 40g 40g | ppaeba-realchoco-proteinbar-cookies-cream-40 |
+| bar | 소이조이 스트로베리 30g 30g | soyjoy-strawberry-30 |
+| shake | 플라이밀 단백질 쉐이크 (고구마) 45g | flymill-proteinshake-goguma-45 |
+| shake | 프로티원 단백질 쉐이크 (딸기맛) 40g | proteone-proteinshake-strawberry-40 |
+| shake | 꼬박꼬밥 단백질 쉐이크 고단저당 (제주 말차) 40g | kkobak-kobab-high-protein-low-sugar-jeju-matcha-40 |
+| shake | 꼬박꼬밥 단백질 쉐이크 고단저당 (흑임자) 40g | kkobak-kobab-high-protein-low-sugar-black-sesame-40 |
+| shake | 잇더핏 단백질 쉐이크 (미숫가루) 40g | itthefit-proteinshake-misugaru-40 |
+| shake | 플라이밀 단백질 쉐이크 (블랙) 45g | flymill-proteinshake-black-45 |
+| shake | 랩노쉬 슬림쉐이크 (딸기쿠키크럼블) 45g | labnosh-slimshake-strawberry-cookie-crumble-45 |
+| shake | 더단백 단백질쉐이크 파우더 (초코) 32g | thedanbaek-proteinshake-powder-choco-32 |
+| shake | 프롬잇 단백질 쉐이크 (곡물흑임자) 45g | fromit-proteinshake-grain-black-sesame-45 |
+| shake | 프롬잇 단백질 쉐이크 (초코) 45g | fromit-proteinshake-choco-45 |
+| shake | 바지오 단백질 쉐이크얌 (곡물) 45g | baggio-shakeyam-grain-45 |
+| shake | 쉐이크베이비 단백질 쉐이크 (말차맛) 45g | shakebaby-proteinshake-matcha-45 |
+| shake | 쉐이크베이비 단백질 쉐이크 (곡물맛) 45g | shakebaby-proteinshake-grain-45 |
+| shake | 한손한끼 Petit 단백질 쉐이크 (딸기) 40g | hansonhankki-petit-shake-strawberry-40 |
+| yogurt | 요플레 요플레 프로틴 드링크 플레인 210mL 210mL | yoplait-protein-plain-210 |
+| yogurt | 요플레 요플레 프로틴 MAX 210mL 210mL | yoplait-protein-max-210 |
+| yogurt | 매일 바이오 매일 바이오 그릭요거트 to go 허니 120g 120g | maeil-bio-greek-togo-honey-120 |
+| yogurt | YOZM YOZM 그릭요거트 스트로베리 콩포트 130g 130g | yozm-strawberry-compote-130 |
+| yogurt | YOZM YOZM 그릭요거트 애플시나몬 130g 130g | yozm-apple-cinnamon-130 |
+| yogurt | YOZM YOZM 그릭요거트 카페라떼 100g 100g | yozm-cafe-latte-100 |
+| yogurt | YOZM YOZM 오! 그래놀라 저당 그릭요거트 115g 115g | yozm-oh-granola-low-sugar-115 |
+| drink | 더단백 더단백 드링크 (카라멜) 250mL | danbaek-drink-caramel-250 |
+| drink | 하이뮨 프로틴 밸런스 (흑임자) 190mL | hymune-protein-balance-black-sesame-190 |
+| bar | 온단백 프로틴바 (애플크랜베리) 50g | ondanbaek-protein-bar-apple-cranberry-50 |
+| bar | 온단백 프로틴바 (초콜릿퍼지) 50g | ondanbaek-protein-bar-chocolate-fudge-50 |
+| bar | 단백하니 프로틴바 (베리) 30g | danbaekhani-protein-bar-berry-30 |
+| shake | 프로티원 단백질 쉐이크 (커피맛) 40g | proteone-proteinshake-coffee-40 |
+| shake | 잇더핏 단백질 쉐이크 (옥수수) 40g | itthefit-proteinshake-corn-40 |
+| shake | 잇더핏 단백질 쉐이크 (녹차라떼) 40g | itthefit-proteinshake-green-tea-latte-40 |
+| shake | 플라이밀 단백질 쉐이크 (피스타치오) 45g | flymill-proteinshake-pistachio-45 |
+| shake | 프롬잇 단백질 쉐이크 (블루베리그릭요거트) 45g | fromit-proteinshake-blueberry-greek-yogurt-45 |
+| yogurt | 요플레 요플레 프로틴 블루베리 떠먹는 요구르트 100g 100g | yoplait-protein-blueberry-100 |

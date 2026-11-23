@@ -1,5 +1,5 @@
 {
- "_설명": "구글에만 색인을 허용하는 주소(2026-10-26 Scott 승인). 나머지 페이지는 middleware가 X-Robots-Tag: googlebot: noindex, follow 를 붙인다(네이버 등 다른 검색엔진은 영향 없음). 기준: 핵심 허브 + 네이버 90일 클릭 가이드 10·비교 8·브랜드 10·제품 20 이상. 근거 docs/google-index-recovery-2026-10-26.md · 2026-11-16 +22(Scott 주간 계획 진행: 11/9~14 새 가이드 15 + 네이버 30일 클릭 기준 7, 124→146)",
+ "_설명": "구글에만 색인을 허용하는 주소(2026-10-26 Scott 승인). 나머지 페이지는 middleware가 X-Robots-Tag: googlebot: noindex, follow 를 붙인다(네이버 등 다른 검색엔진은 영향 없음). 기준: 핵심 허브 + 네이버 90일 클릭 가이드 10·비교 8·브랜드 10·제품 20 이상. 근거 docs/google-index-recovery-2026-10-26.md · 2026-11-16 +22(Scott 주간 계획 진행: 11/9~14 새 가이드 15 + 네이버 30일 클릭 기준 7, 124→146) · 2026-11-23 +4(Scott 주간 계획 2ⓐ: 11/3에 생긴 파우더 카테고리·파우더 TOP10이 빠져 있었음)",
  "paths": [
   "/",
   "/grade-criteria",
@@ -146,6 +146,10 @@
   "/compare/maeil-vs-vegemil-soymilk",
   "/compare/maeil-vs-vegemil-blackbean-soymilk",
   "/compare/danbaek-vs-takefit",
-  "/guides/intake-strategy-health/protein-drink-with-meals"
+  "/guides/intake-strategy-health/protein-drink-with-meals",
+  "/powder",
+  "/guides/product-selection-comparison/protein-powder-top10",
+  "/guides/product-selection-comparison/protein-powder-by-purpose",
+  "/guides/product-selection-comparison/wpi-wpc-isp-powder-guide"
  ]
 }
