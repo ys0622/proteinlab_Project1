@@ -2,11 +2,22 @@
 // Next.js MetadataRoute.Robots로는 주석 줄을 넣을 수 없어서 2026-11-09 app/robots.ts에서 옮겼다. 규칙은 그때와 같다.
 // - 제휴 리다이렉트(/api/out/coupang), 추적·조회수 API, 관리자 화면은 크롤링할 이유가 없다.
 // - 구글 AdsBot은 '*' 규칙을 따르지 않아 따로 적어야 한다. 크롤링 통계에서 JSON(/api/reviews 등)이 31%였다(2026-10-23).
+// - Googlebot 전용(2026-11-24): 크롤링 통계 '기타'(RSC ?_rsc=)와 HTML 표본이 대부분 /compare?products=·?slugs= 조합 주소였다.
+//   이 주소들은 이미 googlebot noindex라 색인될 일이 없고 조합이 끝없이 늘어난다. 네이버·빙은 그대로 둔다.
+//   Googlebot 그룹을 따로 만들면 '*' 규칙을 따르지 않으므로 /api/·/admin/도 다시 적는다.
 const BODY = `#DaumWebMasterTool:3b2ff1b178605a24979ac56f1e5d4cca8ac86945ded2f0e9c032270bd16dcfb1:fjbPToQo9CIdABBLcO2OJw==
 User-Agent: *
 Allow: /
 Disallow: /api/
 Disallow: /admin/
+
+User-Agent: Googlebot
+Allow: /
+Disallow: /api/
+Disallow: /admin/
+Disallow: /compare?
+Disallow: /*?_rsc=
+Disallow: /*&_rsc=
 
 User-Agent: AdsBot-Google
 User-Agent: AdsBot-Google-Mobile
