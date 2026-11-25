@@ -15,6 +15,13 @@ export type DiscontinuedAlternative = {
   reason: string;
 };
 
+/** 신제품이라 아직 쿠팡에 없는 제품(2026-11-25 셀렉스 프로틴바 3종, 셀렉스 직영스토어·셀렉스몰만 판매). */
+const NOT_YET_ON_COUPANG = new Set([
+  "selex-proteinbar-realnuts-40",
+  "selex-proteinbar-slimberry-40",
+  "selex-proteinbar-realnuts-mini-20",
+]);
+
 type ProductDetailPurchaseActionsProps = {
   brand: string;
   coupangHref: string | null;
@@ -66,18 +73,22 @@ export default function ProductDetailPurchaseActions({
     });
 
   if (!hasPurchaseLink) {
+    // 막 출시돼 아직 쿠팡에 없는 제품(단종 아님). 쿠팡에 들어오면 링크를 넣고 여기서 뺀다.
+    const notYetOnCoupang = productType === "soymilk" || NOT_YET_ON_COUPANG.has(slug);
     return (
       <div
         className="rounded-2xl border border-[#ded8cf] bg-white/72 p-3 md:p-4"
         style={{ borderRadius: "16px" }}
       >
         <p className="text-[11px] font-bold tracking-[0.08em] text-[#9b9287]">판매 정보</p>
-        <h2 className="text-base font-bold text-[var(--foreground-muted)]" style={productType === "soymilk" ? { color: "var(--foreground)" } : undefined}>
-          {productType === "soymilk" ? "쿠팡 구매 링크를 준비 중입니다" : "현재 쿠팡에서 판매가 확인되지 않습니다"}
+        <h2 className="text-base font-bold text-[var(--foreground-muted)]" style={notYetOnCoupang ? { color: "var(--foreground)" } : undefined}>
+          {notYetOnCoupang ? "쿠팡 구매 링크를 준비 중입니다" : "현재 쿠팡에서 판매가 확인되지 않습니다"}
         </h2>
         <p className="mt-2 text-xs leading-5 text-[var(--foreground-muted)] md:text-sm">
           {productType === "soymilk"
             ? "성분 정보를 먼저 공개했고, 쿠팡 구매 링크는 확인되는 대로 연결합니다. 비슷한 조건의 두유는 아래 비교 제품이나 목록에서 확인해보세요."
+            : notYetOnCoupang
+            ? "새로 나온 제품이라 아직 쿠팡에 들어오지 않았습니다. 성분 정보를 먼저 공개했고, 쿠팡에 판매가 확인되면 구매 링크를 연결합니다."
             : alternatives.length > 0
               ? "단종되었거나 판매가 중단된 제품이라 구매 링크를 제공하지 않습니다. 성분 정보는 참고용으로 남겨두었습니다."
               : "단종되었거나 판매가 중단된 제품으로 확인되어 구매 링크를 제공하지 않습니다. 성분 정보는 참고용으로 남겨두었으니, 비슷한 조건의 판매 중인 제품은 아래 비교 제품이나 카테고리 목록에서 확인해보세요."}
