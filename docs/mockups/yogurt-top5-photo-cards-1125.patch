@@ -1,0 +1,60 @@
+diff --git a/app/guides/product-selection-comparison/categoryGuideShared.tsx b/app/guides/product-selection-comparison/categoryGuideShared.tsx
+index 7394cd89..24791123 100644
+--- a/app/guides/product-selection-comparison/categoryGuideShared.tsx
++++ b/app/guides/product-selection-comparison/categoryGuideShared.tsx
+@@ -11,6 +11,7 @@ import TrackedLink from "@/app/components/TrackedLink";
+ import TrackedCoupangLink from "@/app/components/TrackedCoupangLink";
+ import GuideProductHeroCards, { resolveGuideHeroProducts } from "@/app/components/GuideProductHeroCards";
+ import HeroRankList, { type HeroRankListConfig } from "@/app/components/HeroRankList";
++import GuideProductPhotoCards, { type GuideProductCardGroup } from "@/app/components/GuideProductPhotoCards";
+ import { getProductBySlug } from "@/app/data/products";
+ import { getCoupangRedirectHref, hasNoPurchasableCoupangLink } from "@/app/lib/purchaseLinks";
+ import { formatProductLabel } from "@/app/lib/productLabel";
+@@ -80,6 +81,8 @@ export interface CategoryGuideConfig {
+   externalLinks?: CategoryExternalLink[];
+   // 지정하면 비교표 바로 아래에 '전체 비교로 가기' 카드(제품 3개 미리보기)를 넣는다(2026-11-02 시안).
+   compareListCta?: { category: "drink" | "bar" | "yogurt" | "shake" | "soymilk" };
++  /** 비교표 아래 사진 카드(파우더 TOP 10 방식, 2026-11-25 요거트 TOP 5 시안). 없으면 그리지 않는다. */
++  productCards?: GuideProductCardGroup[];
+   // 지정하면 제품 데이터로 계산한 순위표 섹션을 본문 아래에 붙인다.
+   dataSection?: {
+     category: "drink" | "bar" | "yogurt" | "shake" | "soymilk";
+@@ -474,6 +477,9 @@ export function CategoryGuidePage({ config }: { config: CategoryGuideConfig }) {
+               </table>
+             </div>
+           </section>
++          {config.productCards?.map((group) => (
++            <GuideProductPhotoCards key={group.title} group={group} contentId={`guide:${config.slug}`} />
++          ))}
+           {config.compareListCta ? (
+             <GuideCompareListCta
+               category={config.compareListCta.category}
+diff --git a/app/guides/product-selection-comparison/proteinYogurtContent.ts b/app/guides/product-selection-comparison/proteinYogurtContent.ts
+index bda2c87e..5b96ddc4 100644
+--- a/app/guides/product-selection-comparison/proteinYogurtContent.ts
++++ b/app/guides/product-selection-comparison/proteinYogurtContent.ts
+@@ -108,6 +108,24 @@ export const proteinYogurtTop5Config: CategoryGuideConfig = {
+           : "포만감이 좋아 한 끼 보완용으로 보기 쉬움",
+     ],
+   })),
++  // 2026-11-25 시안: 파우더 TOP 10처럼 순위 제품 전부를 사진 카드로(11/14~19 파우더 TOP 10 15세션 → 쿠팡 11클릭).
++  productCards: [
++    {
++      title: "TOP 5 사진으로 보기",
++      caption: "사진·이름을 누르면 성분표가 있는 상세 페이지로, 버튼을 누르면 쿠팡으로 갑니다.",
++      items: yogurtTopPicks.map((product, index) => ({
++        slug: product.slug,
++        rank: index + 1,
++        badges: [product.capacity].filter((v): v is string => Boolean(v)),
++        metrics: [
++          { label: "단백질", value: `${product.proteinPerServing}g` },
++          { label: "당류", value: `${product.sugar}g` },
++          { label: "열량", value: `${product.calories}kcal` },
++        ],
++      })),
++      moreLink: { href: "/yogurt", label: `요거트 ${yogurtProducts.length}개 전체 비교 보기 →` },
++    },
++  ],
+   sections: [
+     {
+       title: "목적별 추천",
