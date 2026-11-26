@@ -6034,5 +6034,81 @@
     },
     "naverUrl": "https://search.shopping.naver.com/search/all?query=%ED%97%88%EC%89%AC%20%EC%B4%88%EC%BD%9C%EB%A6%BF%EB%93%9C%EB%A7%81%ED%81%AC%20%ED%94%84%EB%A1%9C%ED%8B%B4%20235mL",
     "coupangUrl": "https://www.coupang.com/vp/products/9746614380?itemId=29179078295&vendorItemId=96100319222"
+  },
+  {
+    "slug": "danbaek-drink-bamlatte-350",
+    "brand": "더단백",
+    "name": "더단백 드링크 (밤라떼)",
+    "capacity": "350mL",
+    "variant": "일반",
+    "tags": [
+      "PET"
+    ],
+    "proteinPerServing": 40,
+    "calories": 177,
+    "sugar": 0.7,
+    "density": "11.4g/100ml",
+    "productUrl": "#",
+    "productType": "drink",
+    "gradeTags": [],
+    "manufacturer": "빙그레",
+    "flavor": "밤라떼",
+    "bcaa": "8500mg",
+    "proteinSource": "우유",
+    "fat": 0.5,
+    "sodium": 20,
+    "calorieDensity": "50.6kcal/100ml",
+    "drinkType": "밀크형",
+    "nutritionPerBottle": {
+      "caloriesKcal": 177,
+      "proteinG": 40,
+      "carbsG": 3,
+      "sugarsG": 0.7,
+      "fatG": 0.5,
+      "satFatG": 0.2,
+      "transFatG": 0,
+      "cholesterolMg": 25,
+      "sodiumMg": 20
+    },
+    "naverUrl": "https://search.shopping.naver.com/search/all?query=%EB%8D%94%EB%8B%A8%EB%B0%B1%20%EB%8D%94%EB%8B%A8%EB%B0%B1%20%EB%93%9C%EB%A7%81%ED%81%AC%20(%EB%B0%A4%EB%9D%BC%EB%96%BC)%20350mL",
+    "officialUrl": "https://www.bing.co.kr/news/news_announced_view?anno_idx=376",
+    "coupangUrl": "https://www.coupang.com/vp/products/9803239071?itemId=29398519013&vendorItemId=96309443514"
+  },
+  {
+    "slug": "takefit-max-strawberry-250",
+    "brand": "테이크핏",
+    "name": "테이크핏 맥스 (딸기맛)",
+    "capacity": "250mL",
+    "variant": "일반",
+    "tags": [
+      "팩"
+    ],
+    "proteinPerServing": 24,
+    "calories": 105,
+    "sugar": 0.7,
+    "density": "9.6g/100ml",
+    "productUrl": "#",
+    "productType": "drink",
+    "gradeTags": [],
+    "manufacturer": "남양유업",
+    "flavor": "딸기맛",
+    "bcaa": "4300mg",
+    "proteinSource": "혼합",
+    "fat": 0.5,
+    "sodium": 220,
+    "calorieDensity": "42.0kcal/100ml",
+    "drinkType": "밀크형",
+    "nutritionPerBottle": {
+      "caloriesKcal": 105,
+      "proteinG": 24,
+      "carbsG": 1,
+      "sugarsG": 0.7,
+      "fatG": 0.5,
+      "satFatG": 0,
+      "transFatG": 0,
+      "sodiumMg": 220
+    },
+    "naverUrl": "https://search.shopping.naver.com/search/all?query=%ED%85%8C%EC%9D%B4%ED%81%AC%ED%95%8F%20%ED%85%8C%EC%9D%B4%ED%81%AC%ED%95%8F%20%EB%A7%A5%EC%8A%A4%20(%EB%94%B8%EA%B8%B0%EB%A7%9B)%20250mL",
+    "coupangUrl": "https://www.coupang.com/vp/products/9675021781?itemId=28988522015&vendorItemId=95917380113"
   }
 ]
