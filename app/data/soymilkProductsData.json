@@ -2428,5 +2428,42 @@
     "manufacturer": "연두",
     "naverUrl": "https://search.shopping.naver.com/search/all?query=%ED%94%8C%EB%9D%BC%EC%9D%B4%EB%B0%80%20%EA%B3%A0%EB%8B%A8%EB%B0%B1%20%EC%84%B8%EC%BD%A9%20%EB%91%90%EC%9C%A0%20%EC%98%A4%EB%A6%AC%EC%A7%80%EB%84%90%EB%A7%9B%20190mL",
     "coupangUrl": "https://www.coupang.com/vp/products/9803271441?itemId=29355831151&vendorItemId=96268788434"
+  },
+  {
+    "slug": "nam-gt-comfort-blackbean-lowsugar-190",
+    "brand": "맛있는두유",
+    "name": "GT 편안한 두유 고단백 저당 검은콩",
+    "capacity": "190mL",
+    "variant": "검은콩",
+    "tags": [
+      "팩"
+    ],
+    "proteinPerServing": 13,
+    "calories": 98,
+    "sugar": 2.2,
+    "density": "6.8g/100ml",
+    "productUrl": "#",
+    "productType": "soymilk",
+    "gradeTags": [],
+    "flavor": "검은콩",
+    "proteinSource": "대두",
+    "fat": 3.8,
+    "sodium": 210,
+    "calorieDensity": "51.6kcal/100ml",
+    "soymilkType": "고단백 두유",
+    "nutritionPerBottle": {
+      "caloriesKcal": 98,
+      "proteinG": 13,
+      "carbsG": 3,
+      "sugarsG": 2.2,
+      "fatG": 3.8,
+      "satFatG": 0.9,
+      "transFatG": 0,
+      "cholesterolMg": 0,
+      "sodiumMg": 210
+    },
+    "manufacturer": "남양유업",
+    "naverUrl": "https://search.shopping.naver.com/search/all?query=%EB%A7%9B%EC%9E%88%EB%8A%94%EB%91%90%EC%9C%A0%20GT%20%ED%8E%B8%EC%95%88%ED%95%9C%20%EB%91%90%EC%9C%A0%20%EA%B3%A0%EB%8B%A8%EB%B0%B1%20%EC%A0%80%EB%8B%B9%20%EA%B2%80%EC%9D%80%EC%BD%A9%20190mL",
+    "coupangUrl": "https://www.coupang.com/vp/products/9796801235?itemId=29334668599&vendorItemId=96248407325"
   }
 ]
