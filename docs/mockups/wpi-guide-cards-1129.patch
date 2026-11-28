@@ -1,0 +1,47 @@
+diff --git a/app/guides/product-selection-comparison/wpi-protein-guide/page.tsx b/app/guides/product-selection-comparison/wpi-protein-guide/page.tsx
+index 1f1ffd75..a067fbcf 100644
+--- a/app/guides/product-selection-comparison/wpi-protein-guide/page.tsx
++++ b/app/guides/product-selection-comparison/wpi-protein-guide/page.tsx
+@@ -3,6 +3,7 @@ import Header from "@/app/components/Header";
+ import Footer from "@/app/components/Footer";
+ import GuideBuySection from "@/app/components/GuideBuySection";
+ import SourceProductTable, { type SourceRow } from "@/app/components/SourceProductTable";
++import GuideProductPhotoCards, { type GuideProductCardGroup } from "@/app/components/GuideProductPhotoCards";
+ import { buildGuideJsonLd } from "@/app/lib/guideJsonLd";
+ import { hasNoPurchasableCoupangLink } from "@/app/lib/purchaseLinks";
+ import powderProducts from "@/app/data/powderProductsData.json";
+@@ -88,6 +89,25 @@ const wpiDrinks = (drinkProducts as Drink[]).filter((d) => d.proteinSource === "
+ 
+ const buySlugs = pure.filter((d) => !hasNoPurchasableCoupangLink(d.coupangUrl, d.slug)).slice(0, 3).map((d) => d.slug);
+ 
++// 2026-11-29 시안(#28 이어서): 11/21~27 쿠팡 클릭 0. 첫 답 바로 아래에 WPI만 쓴 파우더 상위 4종을 사진 카드로(구매 가능한 것만, 수치는 데이터에서).
++const wpiPickGroup: GuideProductCardGroup = {
++  title: `WPI만 쓴 파우더 — 단백질 비율 상위 4종`,
++  caption: `원재료 단백질이 분리유청(WPI) 하나인 파우더 ${pure.length}종 중 1회 제공량 대비 단백질 비율이 높은 순서입니다. 전체 순위는 아래 표에 있습니다.`,
++  items: pure
++    .filter((d) => !hasNoPurchasableCoupangLink(d.coupangUrl, d.slug))
++    .slice(0, 4)
++    .map((d, i) => ({
++      slug: d.slug,
++      rank: i + 1,
++      badges: [/가수분해/.test(d.source) ? "가수분해 WPI" : "WPI"],
++      metrics: [
++        { label: "단백질(1회)", value: `${d.proteinPerServing}g` },
++        { label: "단백질 비율", value: `${d.proteinPct}%` },
++        { label: "열량", value: `${d.kcal}kcal` },
++      ],
++    })),
++};
++
+ const pageTitle = `분리유청단백질(WPI)이란? 뜻·WPC 차이, WPI 프로틴 ${pure.length}종 함량 순위`;
+ const pageDescription = `분리유청단백질(WPI, Whey Protein Isolate)은 유청에서 단백질 비율을 90% 이상으로 높인 원료입니다. WPI만 쓴 단백질 파우더 ${pure.length}종을 1회 단백질 함량 순으로, WPI가 들어간 혼합 제품 ${mixed.length}종은 원재료 표시 순서와 함께 성분표로 비교했습니다.`;
+ 
+@@ -212,6 +232,8 @@ export default function WpiProteinGuidePage() {
+             </ul>
+           </section>
+ 
++          <GuideProductPhotoCards group={wpiPickGroup} contentId="guide:wpi-protein-guide" />
++
+           <section className={cardClass}>
+             <h2 className="text-xl font-bold text-[var(--foreground)]">WPI·WPC·WPH 차이</h2>
+             <div className="mt-4 overflow-x-auto rounded-2xl border border-[#e2ebe4] bg-[#f7fbf8]">
