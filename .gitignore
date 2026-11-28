@@ -62,3 +62,4 @@ proteinlab_source.html
 
 # 내부 스크립트용 전체 제품 목록(scripts/generate-products-json.mjs) — 공개하지 않는다
 /.generated/
+.cvs-auto/

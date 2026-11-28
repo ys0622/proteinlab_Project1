@@ -3,6 +3,7 @@ import Link from "next/link";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 import GuideCompareListCta from "@/app/components/GuideCompareListCta";
+import ConvenienceStoreDeals from "@/app/components/ConvenienceStoreDeals";
 import { mockProducts, mockBarProducts } from "@/app/data/products";
 
 // 편의점 큐레이션(app/lib/curationSystem.ts matchesConvenienceDrink/Bar)과 같은 브랜드 기준.
@@ -35,6 +36,9 @@ const listSlugs = [...dTop, ...dLowSugarPick, ...d20LowSugar]
 const PAGE_TITLE = `편의점 단백질 음료 추천 | 편의점 브랜드 ${convDrinks.length}종 비교 · 20g 이상 ${d20.length}종·당류 3g 이하 ${d20LowSugar.length}종`;
 const PAGE_DESC = `더단백·셀렉스·하이뮨·뉴케어 올프로틴·랩노쉬·닥터유 등 편의점 유통 브랜드의 단백질 음료 ${convDrinks.length}종을 성분표로 비교했습니다. 한 병 단백질 ${dMin}~${dMax}g, 20g 이상 ${d20.length}종, 그중 당류 3g 이하 ${d20LowSugar.length}종. 가장 높은 제품은 ${dTop.map(label).join("·")}(${dMax}g)입니다. 단백질바 ${convBars.length}종도 함께 정리했습니다.`;
 const PAGE_URL = "https://proteinlab.kr/guides/product-selection-comparison/convenience-store-protein-guide";
+
+// 편의점 행사 칸(#cvs-deals)이 KV를 읽어 매달 바뀐다(배포 없이 갱신, 2026-11-28).
+export const revalidate = 300;
 
 export const metadata = {
   title: PAGE_TITLE,
@@ -191,6 +195,7 @@ export default function ConvenienceStoreProteinGuidePage() {
       <main className="mx-auto max-w-[1200px] px-4 py-8 md:px-6">
         <div className="space-y-6">
           <GuideCompareListCta category="drink" slugs={listSlugs} />
+          <ConvenienceStoreDeals />
 
           {/* 빠른 이동 */}
           <section className="grid gap-3 md:grid-cols-3">

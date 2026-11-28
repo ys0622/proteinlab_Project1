@@ -42,6 +42,17 @@ out.crawl = { date: nvDate, accepted: nvAccepted, left: nvLeft, stop: nvStop };
 if (nvDate !== today) reasons.push(`네이버 수집 오늘 실행 안 됨(마지막 ${nvDate || "없음"})`);
 else if (nvStop && nvStop !== "없음" && !/하루 한도/.test(nvStop)) reasons.push(`네이버 수집 중단: ${nvStop}`);
 
+// 2-1. 편의점 단백질 행사(scripts/cvs, 매일 09:20)
+const cv = read(join(root, ".cvs-auto/latest.txt"));
+const cvDate = (cv.match(/편의점 단백질 행사 (\d{4}-\d{2}-\d{2})/) || [])[1];
+const cvItems = +((cv.match(/우리 제품 (\d+)개/) || [])[1] || 0);
+const cvStatus = (cv.match(/^상태: (.*)$/m) || [])[1] || (cv.includes("수집 실패") ? "수집 실패" : "");
+const cvReview = +((cv.match(/확인 필요\(대조표에 없는 단백질 관련 이름 (\d+)개/) || [])[1] || 0);
+out.cvs = { date: cvDate, items: cvItems, status: cvStatus, review: cvReview };
+if (cvDate !== today) reasons.push(`편의점 행사 오늘 실행 안 됨(마지막 ${cvDate || "없음"})`);
+else if (!/KV 기록 완료|아직 이달 행사로 안 바꿈/.test(cvStatus)) reasons.push(`편의점 행사: ${cvStatus || "결과 없음"}`);
+if (cvReview) reasons.push(`편의점 행사 확인 필요 ${cvReview}건(scripts/cvs/aliases.json)`);
+
 // 3. 블로그(blogpilot 오늘 상태) — 엔진은 다른 세션 소관, 읽기만
 let blogRows = [];
 try {
