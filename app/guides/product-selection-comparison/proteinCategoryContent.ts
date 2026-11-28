@@ -208,6 +208,24 @@ export const proteinShakeTop7Config: CategoryGuideConfig = {
       fiber(product) >= 5 ? `식이섬유 ${fiber(product)}g` : "저당·고단백 균형형",
     ],
   })),
+  // 파우더 TOP10처럼 순위 제품을 사진 카드로도 보여 준다(2026-11-26 시안, 주간 계획 5).
+  productCards: [
+    {
+      title: "TOP 7 사진으로 보기",
+      caption: "사진·이름을 누르면 성분표가 있는 상세 페이지로, 버튼을 누르면 쿠팡으로 갑니다.",
+      items: shakeTop7.map((product, index) => ({
+        slug: product.slug,
+        rank: index + 1,
+        badges: [product.capacity].filter((v): v is string => Boolean(v)),
+        metrics: [
+          { label: "단백질", value: `${product.proteinPerServing}g` },
+          { label: "당류", value: `${product.sugar}g` },
+          { label: "열량", value: `${product.calories}kcal` },
+        ],
+      })),
+      moreLink: { href: "/shake", label: `쉐이크 ${shakeProducts.length}개 전체 비교 보기 →` },
+    },
+  ],
   sections: [
     {
       title: "이 순위가 잘 맞는 사람",

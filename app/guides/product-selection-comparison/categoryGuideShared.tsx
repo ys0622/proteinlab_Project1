@@ -11,6 +11,7 @@ import TrackedLink from "@/app/components/TrackedLink";
 import TrackedCoupangLink from "@/app/components/TrackedCoupangLink";
 import GuideProductHeroCards, { resolveGuideHeroProducts } from "@/app/components/GuideProductHeroCards";
 import HeroRankList, { type HeroRankListConfig } from "@/app/components/HeroRankList";
+import GuideProductPhotoCards, { type GuideProductCardGroup } from "@/app/components/GuideProductPhotoCards";
 import { getProductBySlug } from "@/app/data/products";
 import { getCoupangRedirectHref, hasNoPurchasableCoupangLink } from "@/app/lib/purchaseLinks";
 import { formatProductLabel } from "@/app/lib/productLabel";
@@ -80,6 +81,8 @@ export interface CategoryGuideConfig {
   externalLinks?: CategoryExternalLink[];
   // 지정하면 비교표 바로 아래에 '전체 비교로 가기' 카드(제품 3개 미리보기)를 넣는다(2026-11-02 시안).
   compareListCta?: { category: "drink" | "bar" | "yogurt" | "shake" | "soymilk" };
+  /** 비교표 아래 사진 카드(파우더 TOP 10 방식, 2026-11-25 요거트 TOP 5 시안). 없으면 그리지 않는다. */
+  productCards?: GuideProductCardGroup[];
   // 지정하면 제품 데이터로 계산한 순위표 섹션을 본문 아래에 붙인다.
   dataSection?: {
     category: "drink" | "bar" | "yogurt" | "shake" | "soymilk";
@@ -474,6 +477,9 @@ export function CategoryGuidePage({ config }: { config: CategoryGuideConfig }) {
               </table>
             </div>
           </section>
+          {config.productCards?.map((group) => (
+            <GuideProductPhotoCards key={group.title} group={group} contentId={`guide:${config.slug}`} />
+          ))}
           {config.compareListCta ? (
             <GuideCompareListCta
               category={config.compareListCta.category}
