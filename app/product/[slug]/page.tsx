@@ -18,6 +18,7 @@ import ProductBadge from "../../components/ProductBadge";
 import ProductDetailBuyWrapper from "../../components/ProductDetailBuyWrapper";
 import RankingReturnLink from "../../components/RankingReturnLink";
 import GoldboxStrip from "../../components/GoldboxStrip";
+import ProductCvsDealNote from "../../components/ProductCvsDealNote";
 import PurchaseLinkButton from "../../components/PurchaseLinkButton";
 import RelatedLinkCards from "../../components/RelatedLinkCards";
 import TrackedLink from "../../components/TrackedLink";
@@ -1072,6 +1073,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
 
               {/* 구매 버튼 */}
               <div className="mt-auto">
+                <ProductCvsDealNote slug={product.slug} />
                 <ProductDetailBuyWrapper
                   brand={product.brand}
                   coupangHref={resolvedCoupangHref}

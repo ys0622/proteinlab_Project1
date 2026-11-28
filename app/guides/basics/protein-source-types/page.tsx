@@ -6,6 +6,8 @@ import MpiDrinkList from "@/app/components/MpiDrinkList";
 import GuideProductHeroCards, { resolveGuideHeroProducts } from "@/app/components/GuideProductHeroCards";
 import { buildGuideJsonLd } from "@/app/lib/guideJsonLd";
 import { getDrinkProducts } from "@/app/data/drinkProductsData";
+import { getProductBySlug } from "@/app/data/products";
+import GuideProductPhotoCards, { type GuideProductCardGroup } from "@/app/components/GuideProductPhotoCards";
 
 const _pageTitle = "MPI 단백질이란? WPI·WPC·MPC 차이와 유당 비교";
 const _pageDesc = "MPI는 카제인과 유청을 함께 담은 분리우유단백입니다. WPI·WPC·MPC와 원료, 단백질 비율, 유당 함량이 어떻게 다른지 비교하고 제품 표시를 읽는 기준을 정리했습니다.";
@@ -130,6 +132,61 @@ const sourceCandidates = [
   if (!product) throw new Error(`Unknown drink product: ${slug}`);
   return product;
 });
+
+// 2026-11-28 시안(이번 주 계획 3, #28): 네이버 클릭 1위인데 쿠팡 클릭 0 → 원료별 대표 제품을 사진 카드로.
+// 원료 배지는 각 제품 데이터의 proteinSource 표기를 줄여 쓴 것(지어내지 않음). 수치는 데이터에서 계산.
+const sourcePickGroups: { title: string; caption: string; items: { slug: string; badges: string[] }[] }[] = [
+  {
+    title: "WPI(분리유청)만 쓴 제품",
+    caption: "원재료 단백질이 분리유청(WPI) 하나인 파우더입니다. 유당이 적은 쪽을 찾을 때 먼저 보세요.",
+    items: [
+      { slug: "oneulbody-hprotein-wpi-choco-1000", badges: ["WPI", "파우더"] },
+      { slug: "calobye-perfect-powershake-isolate-choco-1000", badges: ["WPI", "파우더"] },
+      { slug: "on-platinum-hydrowhey-turbochoco-1640", badges: ["가수분해 WPI", "파우더"] },
+      { slug: "purunbean-wpi-500", badges: ["WPI", "파우더"] },
+    ],
+  },
+  {
+    title: "우유단백(MPI·MPC)이 들어간 제품",
+    caption: "카제인과 유청을 함께 담은 우유단백 원료가 원재료에 적힌 제품입니다.",
+    items: [
+      { slug: "newyorkwhey-wpi-choco-2000", badges: ["WPI·MPI", "파우더"] },
+      { slug: "intero-anotherlevel-choco-630", badges: ["MPI 포함", "파우더"] },
+      { slug: "musclepharm-combat-vanilla-1810", badges: ["MPC 포함", "파우더"] },
+      { slug: "syntha6-cookiecream-1320", badges: ["MPI 포함", "파우더"] },
+    ],
+  },
+  {
+    title: "식물성(대두·완두) 제품",
+    caption: "유제품 원료 없이 식물성 단백질로 만든 음료와 파우더입니다.",
+    items: [
+      { slug: "ultive-vegan-protein-choco-250", badges: ["식물성", "음료"] },
+      { slug: "hymune-balance-active-plant-protein-250", badges: ["식물성", "음료"] },
+      { slug: "calobye-perfect-powershake-soy-choco-1800", badges: ["분리대두(ISP)", "파우더"] },
+      { slug: "nowfoods-pea-protein-unflavored-907", badges: ["분리완두", "파우더"] },
+    ],
+  },
+];
+
+function buildSourcePickGroup(group: (typeof sourcePickGroups)[number]): GuideProductCardGroup {
+  return {
+    title: group.title,
+    caption: group.caption,
+    items: group.items.map(({ slug, badges }) => {
+      const product = getProductBySlug(slug);
+      return {
+        slug,
+        badges,
+        metrics: product
+          ? [
+              { label: "단백질(1회)", value: `${product.proteinPerServing}g` },
+              { label: "열량", value: `${product.calories ?? "-"}kcal` },
+            ]
+          : [],
+      };
+    }),
+  };
+}
 
 const plantAnimalRows = [
   ["필수아미노산", "9종이 고르게 많음", "대두는 고르게 포함, 곡류·견과 등은 제한아미노산이 있음(곡류는 라이신이 대표적)"],
@@ -277,6 +334,10 @@ export default function ProteinSourceTypesGuidePage() {
               </table>
             </div>
           </section>
+
+          {sourcePickGroups.map((group) => (
+            <GuideProductPhotoCards key={group.title} group={buildSourcePickGroup(group)} contentId="guide:protein-source-types" />
+          ))}
 
           <section className="rounded-2xl border border-[#e8e6e3] bg-[#fffdf8] px-5 py-5">
             <h2 className="text-xl font-bold text-[var(--foreground)]">유청(Whey) 3형제 — WPH·WPI·WPC 차이</h2>
