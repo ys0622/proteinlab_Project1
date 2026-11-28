@@ -290,13 +290,24 @@ function getMainLineNames(brand: string, items: ProductDetailProps[], category: 
     .filter((_, i, all) => i < 2 || all.slice(0, i + 1).join("·").length <= 24);
 }
 
+const BRAND_MAIN_CATEGORY_OVERRIDE: Record<string, CatalogProductCategory> = {
+  비에스엔: "powder",
+  마이프로틴: "powder",
+};
+
 function getBrandMainCategory(brand: string, items: { productType?: string }[]) {
   const counts = new Map<CatalogProductCategory, number>();
   for (const item of items) {
     const category = (item.productType ?? "drink") as CatalogProductCategory;
     counts.set(category, (counts.get(category) ?? 0) + 1);
   }
-  const [category, count] = [...counts.entries()].sort((a, b) => b[1] - a[1])[0] ?? ["drink", 0];
+  // 파우더가 주력인데 바 개수가 같거나 많아 제목이 '단백질바 성분표'로 잡히던 브랜드(2026-11-28: 빙 '신타6 성분표'·
+  // '마이프로틴 임팩트웨이 성분' 첫 화면 밖, 쿠팡 클릭은 빙 → 파우더 브랜드 페이지에서 가장 많이 남).
+  const forced = BRAND_MAIN_CATEGORY_OVERRIDE[brand];
+  const [category, count] =
+    forced && counts.has(forced)
+      ? [forced, counts.get(forced) ?? 0]
+      : [...counts.entries()].sort((a, b) => b[1] - a[1])[0] ?? ["drink", 0];
   // "매일두유 두유 성분표"처럼 브랜드명에 이미 제품군이 들어 있으면 빼고 쓴다.
   const label = BRAND_TITLE_CATEGORY_LABEL[category];
   return { category, count, label: brand.includes(label) ? "" : label };
@@ -342,6 +353,11 @@ export async function generateMetadata({ params }: PageProps) {
   // 제품이 1개인 브랜드는 "맛별 … 1종 비교"가 어색해 제품명과 수치를 제목에 쓴다(2026-11-05, 36개 브랜드).
   const single = items.length === 1 ? items[0] : null;
   const lineNames = single ? [] : getMainLineNames(brand, items, getBrandMainCategory(brand, items).category);
+  // 주력 제품군을 지정한 브랜드인데 그 제품군 라인이 하나뿐이면(BSN 신타6) 라인 이름을 제목에 넣는다.
+  const forcedLines = BRAND_MAIN_CATEGORY_OVERRIDE[brand] && !single && lineNames.length < 2
+    ? getBrandLines(brand, items).filter((line) => line.category === BRAND_MAIN_CATEGORY_OVERRIDE[brand])
+    : [];
+  const forcedLineName = forcedLines.length === 1 ? forcedLines[0].shortName : "";
   const title = single
     ? `${brandWithSearchAlias(brand)}${mainLabel ? ` ${mainLabel}` : ""} 성분표 — ${single.name}${facts.length ? ` ${facts.join("·")}` : ""}`
     : lineNames.length >= 2
@@ -350,7 +366,7 @@ export async function generateMetadata({ params }: PageProps) {
     ? `${brandWithSearchAlias(brand)}${mainLabel ? ` ${mainLabel}` : ""} 성분표 — 맛별 단백질·당류·칼로리 ${items.length}종 비교`
     : // 여러 제품군 브랜드도 "브랜드 + 주력 제품군 + 성분표"로 시작한다. 네이버 브랜드 검색("하이뮨", "커클랜드 프로틴바")의
       // 클릭률이 0.3~0.9%로 낮아(2026-10-20), 검색어와 같은 말이 제목 맨 앞에 오게 했다.
-      `${brandWithSearchAlias(brand)}${mainLabel ? ` ${mainLabel}` : ""} 성분표 — ${mainCount}종 포함 전체 ${items.length}종 단백질·당류·칼로리 비교`;
+      `${brandWithSearchAlias(brand)}${forcedLineName ? ` ${(mainLabel ? forcedLineName.replace(mainLabel, "") : forcedLineName).trim()}` : ""}${mainLabel ? ` ${mainLabel}` : ""} 성분표 — ${mainCount}종 포함 전체 ${items.length}종 단백질·당류·칼로리 비교`;
   const description = single
     ? `${brand} ${single.name} 성분표를 정리했습니다.` +
       (facts.length ? ` 1회 기준 ${facts.join(" · ")}.` : "") +
