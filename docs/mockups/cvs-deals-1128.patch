@@ -1,0 +1,219 @@
+diff --git a/app/guides/product-selection-comparison/convenience-store-protein-guide/page.tsx b/app/guides/product-selection-comparison/convenience-store-protein-guide/page.tsx
+index a7c1872d..66e8e98a 100644
+--- a/app/guides/product-selection-comparison/convenience-store-protein-guide/page.tsx
++++ b/app/guides/product-selection-comparison/convenience-store-protein-guide/page.tsx
+@@ -3,6 +3,7 @@ import Link from "next/link";
+ import Header from "@/app/components/Header";
+ import Footer from "@/app/components/Footer";
+ import GuideCompareListCta from "@/app/components/GuideCompareListCta";
++import ConvenienceStoreDeals from "@/app/components/ConvenienceStoreDeals";
+ import { mockProducts, mockBarProducts } from "@/app/data/products";
+ 
+ // 편의점 큐레이션(app/lib/curationSystem.ts matchesConvenienceDrink/Bar)과 같은 브랜드 기준.
+@@ -192,6 +193,9 @@ export default function ConvenienceStoreProteinGuidePage() {
+         <div className="space-y-6">
+           <GuideCompareListCta category="drink" slugs={listSlugs} />
+ 
++          {/* 2026-11-28 시안: 이번 달 편의점 1+1·2+1 행사(CU·세븐일레븐 공식 목록, 매달 갱신) */}
++          <ConvenienceStoreDeals />
++
+           {/* 빠른 이동 */}
+           <section className="grid gap-3 md:grid-cols-3">
+             <Link
+diff --git a/app/data/convenienceStoreDeals.ts b/app/data/convenienceStoreDeals.ts
+new file mode 100644
+index 00000000..c2bbe37d
+--- /dev/null
++++ b/app/data/convenienceStoreDeals.ts
+@@ -0,0 +1,114 @@
++// 편의점 단백질 1+1·2+1 행사(매달 갱신).
++// 출처: CU 공식 행사상품(cu.bgfretail.com/event/plus.do), 세븐일레븐 이달의 증정할인(7-eleven.co.kr/product/presentList.asp).
++// GS25는 웹 행사 목록이 없어(앱 전용) 넣지 않는다. 편의점 상품명·사진으로 같은 제품(브랜드·맛·용량)일 때만 slug를 붙인다.
++
++export type ConvenienceStore = "CU" | "세븐일레븐";
++export type ConvenienceDealType = "1+1" | "2+1";
++
++export interface ConvenienceDealOffer {
++  store: ConvenienceStore;
++  type: ConvenienceDealType;
++  /** 편의점 정상가(원, 1개). */
++  price: number;
++  /** 편의점 행사 목록의 상품명 그대로. */
++  storeName: string;
++}
++
++export interface ConvenienceDealItem {
++  slug: string;
++  offers: ConvenienceDealOffer[];
++}
++
++export interface ConvenienceDealGroup {
++  key: "drink" | "bar-shake" | "yogurt" | "soymilk";
++  title: string;
++  items: ConvenienceDealItem[];
++}
++
++export const CONVENIENCE_DEALS_MONTH = "2026년 11월";
++export const CONVENIENCE_DEALS_CHECKED = "2026-11-28 확인";
++export const CONVENIENCE_DEALS_UNTIL = "11월 30일까지";
++
++const cu = (type: ConvenienceDealType, price: number, storeName: string): ConvenienceDealOffer => ({ store: "CU", type, price, storeName });
++const seven = (type: ConvenienceDealType, price: number, storeName: string): ConvenienceDealOffer => ({
++  store: "세븐일레븐",
++  type,
++  price,
++  storeName,
++});
++
++export const CONVENIENCE_DEAL_GROUPS: ConvenienceDealGroup[] = [
++  {
++    key: "drink",
++    title: "단백질 음료",
++    items: [
++      { slug: "takefit-max-choco-250", offers: [cu("2+1", 2900, "남양)테이크핏프로틴초코"), seven("2+1", 2900, "남양)테이크핏초코250ml")] },
++      { slug: "takefit-max-goso-250", offers: [cu("2+1", 2900, "남양)테이크핏프로틴곡물"), seven("2+1", 2900, "남양)테이크핏고소한맛250ml")] },
++      { slug: "takefit-max-banana-250", offers: [cu("2+1", 2900, "남양)테이크핏프로틴바나"), seven("2+1", 2900, "남양)테이크핏바나나250ml")] },
++      { slug: "takefit-max-pumpkin-250", offers: [cu("2+1", 2900, "남양)테이크핏호박고구마"), seven("2+1", 2900, "남양)테이크핏호박고구마250ml")] },
++      { slug: "hymune-balance-active-deepchoco-250", offers: [cu("2+1", 2900, "하이뮨)프로틴액티브초코"), seven("2+1", 2900, "일동)하이뮨액티브딥초코제로250")] },
++      { slug: "hymune-balance-active-milkshake-deepchoco-250", offers: [cu("2+1", 2900, "하이뮨)프로틴액티브밀크"), seven("2+1", 2900, "일동)하이뮨액티브밀크쉐이크제")] },
++      { slug: "hymune-balance-active-banana-250", offers: [seven("2+1", 2900, "일동)하이뮨액티브바나나250ml")] },
++      { slug: "sellex-profit-mocha-chocolate-250", offers: [cu("2+1", 2900, "매일)셀렉스프로핏모카250"), seven("2+1", 2900, "매일)셀렉스모카초코250ml")] },
++      { slug: "sellex-profit-milk-vanilla-250", offers: [cu("2+1", 2900, "매일)셀렉스프로핏밀크250"), seven("2+1", 2900, "매일)셀렉스밀크바닐라250ml")] },
++      { slug: "sellex-profit-banana-250", offers: [cu("2+1", 2900, "매일)셀렉스프로핏바나250"), seven("2+1", 2900, "매일)셀렉스바나나250ml")] },
++      { slug: "ultive-protein-choco-250", offers: [cu("1+1", 2900, "CJ)얼티브프로틴초코"), seven("2+1", 2900, "CJ)얼티브프로틴초코250ml")] },
++      { slug: "ultive-protein-banana-250", offers: [cu("1+1", 2900, "CJ)얼티브프로틴바나나"), seven("2+1", 2900, "CJ)얼티브프로틴바나나250ml")] },
++      { slug: "ultive-protein-chestnut-250", offers: [cu("1+1", 2900, "CJ)얼티브프로틴맛밤"), seven("2+1", 2900, "CJ)맛밤프로틴밤맛250mL")] },
++      { slug: "ultive-protein-pistachio-250", offers: [cu("1+1", 2900, "CJ)얼티브프로틴피스타치")] },
++      { slug: "labnosh-protein-perfect-choco-350", offers: [cu("2+1", 3800, "랩노쉬)N프로틴초코P350"), seven("2+1", 3800, "랩노쉬)프로틴드링크퍼펙트초코3")] },
++      { slug: "labnosh-protein-perfect-banana-350", offers: [cu("2+1", 3800, "랩노쉬)N프로틴바나나P350"), seven("2+1", 3800, "랩노쉬)프로틴드링크퍼펙트바나")] },
++      { slug: "labnosh-protein-perfect-cookie-cream-350", offers: [cu("2+1", 3800, "랩노쉬)N프로틴쿠앤크P350")] },
++      { slug: "newcare-all-protein-choco-245", offers: [cu("2+1", 3300, "대상)뉴케어올프로틴초코")] },
++      { slug: "newcare-all-protein-banana-245", offers: [cu("2+1", 3300, "대상)뉴케어올프로틴바나")] },
++      { slug: "newcare-all-protein-savory-245", offers: [cu("2+1", 3300, "대상)뉴케어올프로틴곡물")] },
++      { slug: "newcare-all-protein-blacksesame-245", offers: [cu("2+1", 3300, "대상)뉴케어올프로틴흑임")] },
++      { slug: "oatmont-protein-choco-250", offers: [seven("2+1", 2900, "칠성)오트몬드프로틴초코250ml")] },
++      { slug: "oatmont-protein-cookiecream-250", offers: [seven("2+1", 2900, "칠성)오트몬드프로틴쿠키앤크림2")] },
++    ],
++  },
++  {
++    key: "bar-shake",
++    title: "단백질 바·쉐이크",
++    items: [
++      { slug: "post-proteinbar", offers: [cu("2+1", 2100, "동서)포스트단백질바"), seven("2+1", 2100, "동서)포스트단백질바50g")] },
++      { slug: "oneuldanbaek-milkchoco-caramel-bar-48", offers: [cu("2+1", 2900, "하림)오늘단백바카라멜")] },
++      { slug: "oneuldanbaek-milkchoco-pistachio-bar-48", offers: [cu("2+1", 2900, "하림)오늘단백바피스타치")] },
++      { slug: "oneuldanbaek-milkchoco-strawberry-bar-48", offers: [cu("2+1", 2900, "하림)단백바스트로베리")] },
++      { slug: "oneuldanbaek-milkchoco-cheesecake-bar-48", offers: [cu("2+1", 2900, "하림)단백바치즈케이크")] },
++      { slug: "benof-proteinbar-chunky-choco", offers: [seven("1+1", 2400, "써라클)베노프단백질바(청키초코")] },
++      { slug: "balance-meal-protein-bar-matcha-choco-38", offers: [seven("1+1", 2900, "CJ)밸런스밀프로틴바(말차초코)3")] },
++      { slug: "balance-meal-protein-bar-peanutbutter-34", offers: [seven("1+1", 2900, "CJ)밸런스밀프로틴바(피넛버터)3")] },
++      { slug: "maeilhankki-shake-choco-40", offers: [seven("2+1", 4000, "매일한끼)단백질쉐이크초코40g")] },
++      { slug: "maeilhankki-shake-grain-40", offers: [seven("2+1", 4000, "매일한끼)단백질쉐이크곡물40g")] },
++      { slug: "maeilhankki-shake-sweet-corn-40", offers: [seven("2+1", 4000, "매일한끼)단백질쉐이크스윗콘40g")] },
++    ],
++  },
++  {
++    key: "yogurt",
++    title: "그릭요거트",
++    items: [
++      { slug: "maeil-bio-greek-togo-plain-120", offers: [cu("1+1", 3900, "매일)그릭파우치플레인120"), seven("1+1", 3900, "매일)바이오그릭파우치플레인120")] },
++      { slug: "maeil-bio-greek-togo-honey-120", offers: [cu("1+1", 3900, "매일)그릭파우치허니120"), seven("1+1", 3900, "매일)바이오그릭파우치허니120g")] },
++      { slug: "maeil-bio-greek-drink-plain-190", offers: [cu("1+1", 2900, "매일)그릭드링킹플레인190"), seven("2+1", 2900, "매일)그릭드링크플레인190ml")] },
++      { slug: "maeil-bio-greek-drink-banana-190", offers: [cu("1+1", 2900, "매일)그릭드링킹바나나190"), seven("2+1", 2900, "매일)그릭드링크바나나190ml")] },
++      { slug: "yozm-crispy-granola-120", offers: [cu("2+1", 4900, "요즘)그릭그래놀라")] },
++      { slug: "yozm-blueberry-compote-130", offers: [seven("2+1", 4900, "요즘)블루베리콩포트그릭요거트")] },
++      { slug: "yozm-strawberry-compote-130", offers: [seven("2+1", 4900, "요즘)스트로베리콩포트그릭요거")] },
++    ],
++  },
++  {
++    key: "soymilk",
++    title: "고단백 두유",
++    items: [
++      { slug: "vegemil-protein-blackbean-190", offers: [cu("2+1", 1600, "정식품)고단백두유팩190"), seven("2+1", 1600, "정식품)고단백검은콩두유190ml")] },
++      { slug: "vegemil-protein-choco-190", offers: [cu("2+1", 1600, "정식품)고단백두유초코팩"), seven("2+1", 1600, "정식품)고단백두유초코190ml")] },
++      { slug: "vegemil-protein-plain-190", offers: [cu("2+1", 1600, "정식품)고단백플레인팩"), seven("2+1", 1600, "정식품)베지밀고단백두유190ml")] },
++    ],
++  },
++];
++
++/** 행사 묶음으로 샀을 때 1개 값(원 단위 반올림). */
++export function getDealUnitPrice(offer: ConvenienceDealOffer): number {
++  return offer.type === "1+1" ? Math.round(offer.price / 2) : Math.round((offer.price * 2) / 3);
++}
+diff --git a/app/components/ConvenienceStoreDeals.tsx b/app/components/ConvenienceStoreDeals.tsx
+new file mode 100644
+index 00000000..bf95b922
+--- /dev/null
++++ b/app/components/ConvenienceStoreDeals.tsx
+@@ -0,0 +1,71 @@
++import GuideProductPhotoCards from "./GuideProductPhotoCards";
++import { getProductBySlug } from "@/app/data/products";
++import {
++  CONVENIENCE_DEAL_GROUPS,
++  CONVENIENCE_DEALS_CHECKED,
++  CONVENIENCE_DEALS_MONTH,
++  CONVENIENCE_DEALS_UNTIL,
++  getDealUnitPrice,
++  type ConvenienceDealOffer,
++} from "@/app/data/convenienceStoreDeals";
++
++const STORE_SHORT: Record<ConvenienceDealOffer["store"], string> = { CU: "CU", 세븐일레븐: "세븐" };
++
++function won(value: number) {
++  return `${value.toLocaleString("ko-KR")}원`;
++}
++
++/** 편의점 단백질 1+1·2+1 행사를 사진 카드로 보여 준다(사진·이름 → 성분표 상세, 버튼 → 쿠팡 박스 가격). */
++export default function ConvenienceStoreDeals() {
++  const groups = CONVENIENCE_DEAL_GROUPS.map((group) => ({
++    ...group,
++    items: group.items.filter((item) => getProductBySlug(item.slug) != null),
++  })).filter((group) => group.items.length > 0);
++  const total = groups.reduce((sum, group) => sum + group.items.length, 0);
++
++  return (
++    <section id="cvs-deals" aria-labelledby="cvs-deals-title">
++      <div className="rounded-[28px] border border-[#E7DFC9] bg-[#FFFDF8] px-4 py-5 md:px-6">
++        <div className="inline-flex items-center gap-1.5 rounded-full bg-[#FDEDE3] px-3 py-1 text-xs font-bold text-[#C2410C]">
++          편의점 행사 · {CONVENIENCE_DEALS_UNTIL}
++        </div>
++        <h2 id="cvs-deals-title" className="mt-2 text-xl font-bold leading-tight text-[#16412D] md:text-2xl">
++          {CONVENIENCE_DEALS_MONTH} 편의점 단백질 1+1·2+1 행사 {total}개
++        </h2>
++        <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">
++          CU·세븐일레븐 공식 행사 목록에서 프로틴랩에 성분표가 있는 단백질 음료·바·요거트·두유만 골랐습니다({CONVENIENCE_DEALS_CHECKED}).
++          카드의 &apos;개당&apos;은 행사 묶음으로 샀을 때 1개 값이고, 매장·재고에 따라 행사 여부가 다를 수 있습니다. GS25는 웹에 행사 목록이 없어 빠졌습니다.
++        </p>
++        <p className="mt-1 text-sm leading-6 text-[var(--foreground-muted)]">
++          매일 마신다면 박스 단위 쿠팡 가격과 개당 값을 비교해 보세요.
++        </p>
++      </div>
++
++      <div className="mt-4 space-y-4">
++        {groups.map((group) => (
++          <GuideProductPhotoCards
++            key={group.key}
++            contentId={`events:cvs-deals:${group.key}`}
++            group={{
++              title: `${group.title} ${group.items.length}개`,
++              items: group.items.map((item) => {
++                const product = getProductBySlug(item.slug)!;
++                return {
++                  slug: item.slug,
++                  badges: item.offers.map((offer) => `${STORE_SHORT[offer.store]} ${offer.type}`),
++                  metrics: [
++                    { label: "단백질", value: `${product.proteinPerServing}g` },
++                    ...item.offers.map((offer) => ({
++                      label: `${STORE_SHORT[offer.store]} 개당`,
++                      value: won(getDealUnitPrice(offer)),
++                    })),
++                  ],
++                };
++              }),
++            }}
++          />
++        ))}
++      </div>
++    </section>
++  );
++}
